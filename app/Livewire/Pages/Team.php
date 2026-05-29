@@ -130,7 +130,7 @@ class Team extends Component
             $request = new StoreColleagueRequest;
             $validated = $this->validateColleague($request->rules(), $request->messages());
 
-            $createColleague->handle($validated);
+            $createColleague->handle($validated, (int) Tenancy::id());
         }
 
         $this->showColleagueModal = false;
@@ -247,7 +247,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
-            ]);
+            ], (int) Tenancy::id());
         }
 
         $this->showTeamModal = false;

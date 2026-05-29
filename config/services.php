@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'winprox' => [
+        'inbound_hook_secret' => env('WINPROX_INBOUND_HOOK_SECRET'),
+    ],
+
 ];

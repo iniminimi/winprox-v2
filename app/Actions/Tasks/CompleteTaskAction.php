@@ -3,6 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Enums\TaskStatus;
+use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
 use App\Models\Task;
 use App\Models\Worker;
@@ -21,7 +22,7 @@ class CompleteTaskAction
     /**
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Task $task, Worker $worker, ?string $note = null, array $photos = []): Task
+    public function handle(Task $task, ?Worker $worker = null, ?string $note = null, array $photos = []): Task
     {
         if (! $task->canComplete()) {
             return $task;
@@ -30,7 +31,7 @@ class CompleteTaskAction
         $issue = $task->issue;
         $note = $note !== null && trim($note) !== '' ? trim($note) : null;
 
-        if ($note !== null) {
+        if ($note !== null && $worker !== null) {
             $issue->updates()->create([
                 'worker_id' => $worker->id,
                 'kind' => 'worker_note',
@@ -39,7 +40,7 @@ class CompleteTaskAction
         }
 
         $files = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
-        if ($files !== []) {
+        if ($files !== [] && $worker !== null) {
             /** @var IssueUpdate $update */
             $update = $issue->updates()->create([
                 'worker_id' => $worker->id,
@@ -61,8 +62,10 @@ class CompleteTaskAction
             'completed_at' => now(),
         ]);
 
+        event(new TaskCompleted($task->fresh()));
+
         $issue->recalculateStatus();
 
-        return $task;
+        return $task->fresh();
     }
 }

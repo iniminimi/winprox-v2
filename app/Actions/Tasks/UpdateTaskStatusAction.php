@@ -16,6 +16,6 @@ class UpdateTaskStatusAction
 
         $task->issue->recalculateStatus();
 
-        return $task;
+        return $task->fresh();
     }
 }

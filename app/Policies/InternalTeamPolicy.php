@@ -14,6 +14,11 @@ use App\Models\User;
  */
 class InternalTeamPolicy
 {
+    public function viewAny(User $user): bool
+    {
+        return $user->is_superuser || $user->tenant_id !== null;
+    }
+
     public function create(User $user): bool
     {
         return $user->isAdmin();

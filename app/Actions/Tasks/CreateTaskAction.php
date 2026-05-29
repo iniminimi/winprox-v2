@@ -3,6 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Enums\TaskStatus;
+use App\Events\Tasks\TaskCreated;
 use App\Models\Issue;
 use App\Models\Task;
 
@@ -17,6 +18,8 @@ class CreateTaskAction
             'internal_team_id' => $internalTeamId,
             'status' => TaskStatus::New,
         ]);
+
+        event(new TaskCreated($task));
 
         $issue->recalculateStatus();
 

@@ -1,0 +1,84 @@
+<div class="wp-stack">
+    <div class="wp-stack-tight">
+        <h1 class="wp-page-title">{{ __('settings.api.title') }}</h1>
+        <p class="wp-muted">{{ __('settings.api.subtitle') }}</p>
+    </div>
+
+    @if (session('api_token_plain'))
+        <div class="wp-card wp-card-pad">
+            <p class="wp-text-body">{{ __('settings.api.token_created') }}</p>
+            <code class="wp-code-block">{{ session('api_token_plain') }}</code>
+        </div>
+    @endif
+
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('settings.api.tokens_heading') }}</h2>
+        <form wire:submit="createToken" class="wp-cluster">
+            <input type="text" wire:model="newTokenName" class="wp-input" placeholder="{{ __('settings.api.token_name') }}">
+            <button type="submit" class="btn btn--primary">{{ __('settings.api.token_create') }}</button>
+        </form>
+        @forelse ($tokens as $token)
+            <div class="wp-data-row" wire:key="token-{{ $token->id }}">
+                <span>{{ $token->name }}</span>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="revokeToken({{ $token->id }})">
+                    {{ __('settings.api.token_revoke') }}
+                </button>
+            </div>
+        @empty
+            <p class="wp-muted">{{ __('settings.api.tokens_empty') }}</p>
+        @endforelse
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('settings.api.webhooks_heading') }}</h2>
+        <form wire:submit="saveEndpoint" class="wp-stack-tight">
+            <input type="url" wire:model="endpointUrl" class="wp-input" placeholder="{{ __('settings.api.endpoint_url') }}">
+            <div class="wp-chip-row">
+                @foreach ($availableEvents as $event)
+                    <label class="wp-chip">
+                        <input type="checkbox" wire:model="endpointEvents" value="{{ $event }}">
+                        <span>{{ $event }}</span>
+                    </label>
+                @endforeach
+            </div>
+            <input type="text" wire:model="endpointDescription" class="wp-input" placeholder="{{ __('settings.api.endpoint_description') }}">
+            <button type="submit" class="btn btn--primary">{{ __('settings.api.endpoint_save') }}</button>
+        </form>
+
+        @forelse ($endpoints as $endpoint)
+            <div class="wp-data-row" wire:key="endpoint-{{ $endpoint->id }}">
+                <div>
+                    <p class="wp-text-body">{{ $endpoint->url }}</p>
+                    <p class="wp-muted">{{ implode(', ', $endpoint->events ?? []) }}</p>
+                </div>
+                <div class="wp-cluster">
+                    <span class="wp-pill {{ $endpoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                        {{ $endpoint->is_active ? __('settings.api.active') : __('settings.api.inactive') }}
+                    </span>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleEndpoint({{ $endpoint->id }})">
+                        {{ __('settings.api.toggle') }}
+                    </button>
+                    <button type="button" class="btn btn--danger btn--sm" wire:click="deleteEndpoint({{ $endpoint->id }})">
+                        {{ __('common.button.delete') }}
+                    </button>
+                </div>
+            </div>
+        @empty
+            <p class="wp-muted">{{ __('settings.api.endpoints_empty') }}</p>
+        @endforelse
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('settings.api.deliveries_heading') }}</h2>
+        @forelse ($deliveries as $delivery)
+            <div class="wp-data-row" wire:key="delivery-{{ $delivery->id }}">
+                <span>{{ $delivery->event }}</span>
+                <span class="wp-pill wp-pill--{{ $delivery->status === 'success' ? 'done' : ($delivery->status === 'failed' ? 'closed' : 'progress') }}">
+                    {{ $delivery->status }}
+                </span>
+            </div>
+        @empty
+            <p class="wp-muted">{{ __('settings.api.deliveries_empty') }}</p>
+        @endforelse
+    </div>
+</div>

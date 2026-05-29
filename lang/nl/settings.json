@@ -1,0 +1,23 @@
+{
+    "api": {
+        "nav": "API & webhooks",
+        "title": "API & webhooks",
+        "subtitle": "Tokens en uitgaande webhooks voor integraties.",
+        "tokens_heading": "API-tokens",
+        "token_name": "Naam",
+        "token_create": "Token aanmaken",
+        "token_revoke": "Intrekken",
+        "token_created": "Nieuw token (eenmalig zichtbaar):",
+        "tokens_empty": "Nog geen tokens.",
+        "webhooks_heading": "Webhook-endpoints",
+        "endpoint_url": "https://…",
+        "endpoint_description": "Omschrijving (optioneel)",
+        "endpoint_save": "Endpoint opslaan",
+        "endpoints_empty": "Nog geen endpoints.",
+        "deliveries_heading": "Recente leveringen",
+        "deliveries_empty": "Nog geen leveringen.",
+        "active": "Actief",
+        "inactive": "Inactief",
+        "toggle": "Actief/inactief"
+    }
+}

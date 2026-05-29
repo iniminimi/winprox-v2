@@ -3,6 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Enums\TaskStatus;
+use App\Events\Tasks\TaskStarted;
 use App\Models\Task;
 
 /**
@@ -21,8 +22,10 @@ class StartTaskAction
             'started_at' => $task->started_at ?? now(),
         ]);
 
+        event(new TaskStarted($task->fresh()));
+
         $task->issue->recalculateStatus();
 
-        return $task;
+        return $task->fresh();
     }
 }

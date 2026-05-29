@@ -1,0 +1,23 @@
+{
+    "api": {
+        "nav": "API & webhooks",
+        "title": "API & webhooks",
+        "subtitle": "Jetons et webhooks sortants pour les intégrations.",
+        "tokens_heading": "Jetons API",
+        "token_name": "Nom",
+        "token_create": "Créer un jeton",
+        "token_revoke": "Révoquer",
+        "token_created": "Nouveau jeton (affiché une fois) :",
+        "tokens_empty": "Aucun jeton pour l'instant.",
+        "webhooks_heading": "Points de terminaison webhook",
+        "endpoint_url": "https://…",
+        "endpoint_description": "Description (facultatif)",
+        "endpoint_save": "Enregistrer",
+        "endpoints_empty": "Aucun point de terminaison.",
+        "deliveries_heading": "Livraisons récentes",
+        "deliveries_empty": "Aucune livraison.",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "toggle": "Activer/désactiver"
+    }
+}

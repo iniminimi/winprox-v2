@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Webhook\IssueStatusWebhook;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,6 +29,16 @@ class Issue extends Model
     protected $casts = [
         'status' => TaskStatus::class,
         'approved_at' => 'datetime',
+    ];
+
+    /**
+     * Beginstatus Nieuw zodat een nét aangemaakte melding geen valse
+     * "status_changed" afvuurt bij de eerste recalculateStatus() (zie events).
+     *
+     * @var array<string, mixed>
+     */
+    protected $attributes = [
+        'status' => TaskStatus::New->value,
     ];
 
     public function location(): BelongsTo
@@ -88,8 +99,12 @@ class Issue extends Model
         };
 
         if ($this->status !== $derived) {
+            $before = $this->status instanceof TaskStatus
+                ? $this->status
+                : (TaskStatus::tryFrom((string) $this->status) ?? TaskStatus::New);
             $this->status = $derived;
             $this->save();
+            IssueStatusWebhook::dispatchIfChanged($this, $before);
         }
 
         return $derived;

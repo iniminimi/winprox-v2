@@ -11,6 +11,7 @@ use App\Livewire\Issues\Create as IssueCreate;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
@@ -53,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tasks', Tasks::class)->name('tasks.index');
     Route::get('/calendar', Calendar::class)->name('calendar.index');
     Route::get('/team', Team::class)->name('team.index');
+    Route::get('/settings/api', ApiSettings::class)->name('settings.api');
     Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
     Route::get('/subscription', Subscription::class)->name('subscription.index');
     Route::get('/faq', Faq::class)->name('faq.index');

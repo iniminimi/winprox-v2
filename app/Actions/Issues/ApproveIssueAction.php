@@ -2,6 +2,7 @@
 
 namespace App\Actions\Issues;
 
+use App\Events\Issues\IssueApproved;
 use App\Models\Issue;
 use App\Models\User;
 
@@ -18,6 +19,8 @@ class ApproveIssueAction
             'approved_by' => $reviewer->getKey(),
         ])->save();
 
-        return $issue;
+        event(new IssueApproved($issue->fresh()));
+
+        return $issue->fresh();
     }
 }

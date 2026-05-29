@@ -1,0 +1,23 @@
+{
+    "api": {
+        "nav": "API & Webhooks",
+        "title": "API & Webhooks",
+        "subtitle": "Tokens und ausgehende Webhooks für Integrationen.",
+        "tokens_heading": "API-Tokens",
+        "token_name": "Name",
+        "token_create": "Token erstellen",
+        "token_revoke": "Widerrufen",
+        "token_created": "Neues Token (nur einmal sichtbar):",
+        "tokens_empty": "Noch keine Tokens.",
+        "webhooks_heading": "Webhook-Endpunkte",
+        "endpoint_url": "https://…",
+        "endpoint_description": "Beschreibung (optional)",
+        "endpoint_save": "Endpunkt speichern",
+        "endpoints_empty": "Noch keine Endpunkte.",
+        "deliveries_heading": "Letzte Zustellungen",
+        "deliveries_empty": "Noch keine Zustellungen.",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "toggle": "Aktiv umschalten"
+    }
+}
