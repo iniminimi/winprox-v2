@@ -51,15 +51,16 @@ class DatabaseSeeder extends Seeder
         $locationA = Location::create(['name' => 'Hoofdgebouw', 'address' => 'Stationsstraat 1, Antwerpen']);
         $locationB = Location::create(['name' => 'Magazijn Noord', 'address' => 'Havenlaan 22, Antwerpen']);
 
+        // Vaste, URL-veilige QR-tokens zodat de publieke meld-URL's stabiel/testbaar zijn.
         $units = [
-            Unit::create(['location_id' => $locationA->id, 'name' => 'Lift A']),
-            Unit::create(['location_id' => $locationA->id, 'name' => 'Vergaderzaal 1.04']),
-            Unit::create(['location_id' => $locationB->id, 'name' => 'Laadkade 3']),
+            Unit::create(['location_id' => $locationA->id, 'name' => 'Lift A', 'qr_token' => 'unit-lift-a']),
+            Unit::create(['location_id' => $locationA->id, 'name' => 'Vergaderzaal 1.04', 'qr_token' => 'unit-vergaderzaal-104']),
+            Unit::create(['location_id' => $locationB->id, 'name' => 'Laadkade 3', 'qr_token' => 'unit-laadkade-3']),
         ];
 
-        $teamTechniek = InternalTeam::create(['name' => 'Technische dienst']);
-        $teamSchoonmaak = InternalTeam::create(['name' => 'Schoonmaak']);
-        $teamElektriciteit = InternalTeam::create(['name' => 'Elektriciteit']);
+        $teamTechniek = InternalTeam::create(['name' => 'Technische dienst', 'field_qr_token' => 'team-technische-dienst']);
+        $teamSchoonmaak = InternalTeam::create(['name' => 'Schoonmaak', 'field_qr_token' => 'team-schoonmaak']);
+        $teamElektriciteit = InternalTeam::create(['name' => 'Elektriciteit', 'field_qr_token' => 'team-elektriciteit']);
 
         foreach ([$teamTechniek, $teamSchoonmaak, $teamElektriciteit] as $team) {
             Worker::create(['internal_team_id' => $team->id, 'name' => fake()->name()]);

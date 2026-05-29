@@ -178,3 +178,52 @@
     max-width: 14rem;
 }
 
+/* ---------------------------------------------------------------------------
+ | Foto-upload (publieke QR-melding, §7). Client-side comprimeren + previews.
+ * ------------------------------------------------------------------------- */
+.wp-photo-upload-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.wp-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.wp-photo-grid:empty {
+    display: none;
+}
+
+.wp-photo-thumb {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface-2);
+}
+
+.wp-photo-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wp-photo-add {
+    cursor: pointer;
+}
+
+.wp-photo-status {
+    font-size: 0.8125rem;
+    color: var(--wp-text-muted);
+    min-height: 1.25rem;
+}
+
+.wp-photo-status:empty {
+    display: none;
+}
+

@@ -5,12 +5,18 @@ use App\Livewire\Dashboard;
 use App\Livewire\Issues\Create as IssueCreate;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
+use App\Livewire\Public\FieldPortal;
+use App\Livewire\Public\Report;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect()->route(Auth::check() ? 'dashboard' : 'login');
 });
+
+// Publieke QR-schermen (geen auth) — mobiel-first.
+Route::get('/melden/{token}', Report::class)->name('public.report');
+Route::get('/team/{token}', FieldPortal::class)->name('public.field-portal');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');

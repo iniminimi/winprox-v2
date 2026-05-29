@@ -1,0 +1,29 @@
+{
+    "title": "Signaler un problème",
+    "submit": "Envoyer le signalement",
+    "fields": {
+        "description": "Que se passe-t-il ?",
+        "description_placeholder": "Décrivez le problème le plus clairement possible.",
+        "photos": "Photos (max. 4)",
+        "reporter_name": "Votre nom",
+        "reporter_contact": "Vos coordonnées",
+        "optional": "Facultatif"
+    },
+    "photos": {
+        "add": "Ajouter une photo",
+        "hint": "Jusqu'à 4 photos. Elles sont redimensionnées automatiquement avant l'envoi.",
+        "uploading": "Téléversement des photos…",
+        "ready": "Photos prêtes."
+    },
+    "confirm": {
+        "title": "Merci pour votre signalement",
+        "body": "Merci, votre signalement a bien été reçu et est en attente de vérification."
+    },
+    "errors": {
+        "description_required": "Veuillez décrire le problème.",
+        "description_max": "La description est trop longue.",
+        "photos_max": "Vous pouvez ajouter jusqu'à 4 photos.",
+        "photos_image": "Seules les images sont autorisées.",
+        "photos_size": "Une photo est trop volumineuse."
+    }
+}

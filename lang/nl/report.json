@@ -1,0 +1,29 @@
+{
+    "title": "Een melding maken",
+    "submit": "Melding versturen",
+    "fields": {
+        "description": "Wat is er aan de hand?",
+        "description_placeholder": "Omschrijf het probleem zo duidelijk mogelijk.",
+        "photos": "Foto's (max. 4)",
+        "reporter_name": "Je naam",
+        "reporter_contact": "Je contactgegevens",
+        "optional": "Optioneel"
+    },
+    "photos": {
+        "add": "Foto toevoegen",
+        "hint": "Tot 4 foto's. Ze worden automatisch verkleind voor verzending.",
+        "uploading": "Foto's worden geüpload…",
+        "ready": "Foto's klaar."
+    },
+    "confirm": {
+        "title": "Bedankt voor je melding",
+        "body": "Bedankt, je melding is ontvangen en wordt gecontroleerd."
+    },
+    "errors": {
+        "description_required": "Geef een omschrijving van de melding.",
+        "description_max": "De omschrijving is te lang.",
+        "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
+        "photos_image": "Alleen afbeeldingen zijn toegestaan.",
+        "photos_size": "Een foto is te groot."
+    }
+}
