@@ -1,0 +1,97 @@
+{
+    "back": "Zurück",
+    "pending_review": "Wartet auf Prüfung",
+    "issues_empty": "Es gibt noch keine Meldungen.",
+    "inactive": {
+        "title": "Nicht verfügbar",
+        "location_inactive": "Dieses Portal ist derzeit nicht verfügbar.",
+        "unit_inactive": "Dieses Portal ist derzeit nicht verfügbar.",
+        "team_inactive": "Dieses Teamportal ist derzeit nicht verfügbar."
+    },
+    "tiles": {
+        "new": "Meldung erstellen",
+        "new_sub": "Ein Problem melden",
+        "issues": "Meldungen",
+        "announcements": "Mitteilungen",
+        "documents": "Dokumente"
+    },
+    "report": {
+        "title": "Eine Meldung erstellen",
+        "description": "Worum geht es?",
+        "description_placeholder": "Beschreiben Sie das Problem so genau wie möglich.",
+        "submit": "Meldung senden",
+        "sent": "Danke, Ihre Meldung wurde empfangen und wird geprüft.",
+        "photos": {
+            "label": "Fotos (max. 4)",
+            "add": "Foto hinzufügen",
+            "hint": "Bis zu 4 Fotos. Sie werden vor dem Senden automatisch verkleinert.",
+            "uploading": "Fotos werden hochgeladen…",
+            "ready": "Fotos bereit."
+        },
+        "errors": {
+            "description_required": "Bitte beschreiben Sie die Meldung.",
+            "description_max": "Die Beschreibung ist zu lang.",
+            "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
+            "photos_image": "Nur Bilder sind erlaubt.",
+            "photos_size": "Ein Foto ist zu groß."
+        }
+    },
+    "worker": {
+        "title": "Als Mitarbeiter anmelden",
+        "identify_hint": "Geben Sie Ihren Namen ein, um Ihre Aufgaben zu sehen.",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "continue": "Weiter",
+        "verify_hint": "Bestätigen Sie Ihr persönliches Symbol",
+        "attempts_left": "Noch {count} Versuch(e).",
+        "confirm_icon": "Bestätigen",
+        "different_worker": "Als anderer Mitarbeiter anmelden",
+        "no_workers": "Für dieses Team gibt es noch keine Mitarbeiter. Das Onboarding erfolgt über den Team-QR.",
+        "wrong_team": "Dieses Gerät gehört zu einem anderen Team.",
+        "signed_in": "Sie sind angemeldet.",
+        "signed_in_as": "Angemeldet als",
+        "sign_out": "Abmelden",
+        "open_tasks": "Offene Aufgaben",
+        "no_open_tasks": "Keine offenen Aufgaben.",
+        "start_task": "Aufgabe starten",
+        "complete_task": "Aufgabe abschließen",
+        "note": "Notiz",
+        "note_placeholder": "Optionale Notiz zur Erledigung.",
+        "photos": "Fotos (max. 4)",
+        "confirm_complete": "Erledigung bestätigen",
+        "task_started": "Aufgabe gestartet.",
+        "task_completed": "Aufgabe abgeschlossen.",
+        "errors": {
+            "name_required": "Geben Sie Ihren Vor- und Nachnamen ein.",
+            "identify_unknown": "Es wurde kein Mitarbeiter mit diesem Namen gefunden.",
+            "identify_ambiguous": "Es gibt mehrere Mitarbeiter mit diesem Namen. Wenden Sie sich an Ihren Administrator.",
+            "blocked": "Sie sind nach zu vielen Versuchen gesperrt. Wenden Sie sich an Ihren Administrator.",
+            "icon_required": "Wählen Sie Ihr persönliches Symbol.",
+            "icon_wrong": "Das ist nicht das richtige Symbol.",
+            "icon_wrong_one_left": "Das ist nicht das richtige Symbol. Noch 1 Versuch.",
+            "note_max": "Die Notiz ist zu lang."
+        }
+    },
+    "documents": {
+        "download": "Herunterladen",
+        "verification_required": "Verifizierung erforderlich",
+        "empty": "Es gibt keine Dokumente."
+    },
+    "announcements": {
+        "empty": "Es gibt keine Mitteilungen."
+    },
+    "worker_icon": {
+        "heart": "Herz",
+        "plane": "Flugzeug",
+        "car": "Auto",
+        "star": "Stern",
+        "zap": "Blitz",
+        "gem": "Edelstein",
+        "crown": "Krone",
+        "moon": "Mond",
+        "bell": "Glocke",
+        "leaf": "Blatt",
+        "key": "Schlüssel",
+        "anchor": "Anker"
+    }
+}

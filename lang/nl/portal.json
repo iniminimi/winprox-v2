@@ -1,0 +1,97 @@
+{
+    "back": "Terug",
+    "pending_review": "Wacht op controle",
+    "issues_empty": "Er zijn nog geen meldingen.",
+    "inactive": {
+        "title": "Niet beschikbaar",
+        "location_inactive": "Dit portaal is momenteel niet beschikbaar.",
+        "unit_inactive": "Dit portaal is momenteel niet beschikbaar.",
+        "team_inactive": "Dit teamportaal is momenteel niet beschikbaar."
+    },
+    "tiles": {
+        "new": "Melding maken",
+        "new_sub": "Meld een probleem",
+        "issues": "Meldingen",
+        "announcements": "Mededelingen",
+        "documents": "Documenten"
+    },
+    "report": {
+        "title": "Een melding maken",
+        "description": "Wat is er aan de hand?",
+        "description_placeholder": "Omschrijf het probleem zo duidelijk mogelijk.",
+        "submit": "Melding versturen",
+        "sent": "Bedankt, je melding is ontvangen en wordt gecontroleerd.",
+        "photos": {
+            "label": "Foto's (max. 4)",
+            "add": "Foto toevoegen",
+            "hint": "Tot 4 foto's. Ze worden automatisch verkleind voor verzending.",
+            "uploading": "Foto's worden geüpload…",
+            "ready": "Foto's klaar."
+        },
+        "errors": {
+            "description_required": "Geef een omschrijving van de melding.",
+            "description_max": "De omschrijving is te lang.",
+            "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
+            "photos_image": "Alleen afbeeldingen zijn toegestaan.",
+            "photos_size": "Een foto is te groot."
+        }
+    },
+    "worker": {
+        "title": "Aanmelden als medewerker",
+        "identify_hint": "Vul je naam in om je taken te zien.",
+        "first_name": "Voornaam",
+        "last_name": "Achternaam",
+        "continue": "Doorgaan",
+        "verify_hint": "Bevestig je persoonlijke icoon",
+        "attempts_left": "Nog {count} poging(en).",
+        "confirm_icon": "Bevestigen",
+        "different_worker": "Aanmelden als andere medewerker",
+        "no_workers": "Er zijn nog geen medewerkers voor dit team. Onboarding gebeurt via de team-QR.",
+        "wrong_team": "Dit toestel hoort bij een ander team.",
+        "signed_in": "Je bent aangemeld.",
+        "signed_in_as": "Aangemeld als",
+        "sign_out": "Afmelden",
+        "open_tasks": "Open taken",
+        "no_open_tasks": "Geen open taken.",
+        "start_task": "Taak starten",
+        "complete_task": "Taak afhandelen",
+        "note": "Notitie",
+        "note_placeholder": "Optionele toelichting bij de afhandeling.",
+        "photos": "Foto's (max. 4)",
+        "confirm_complete": "Afhandelen bevestigen",
+        "task_started": "Taak gestart.",
+        "task_completed": "Taak afgehandeld.",
+        "errors": {
+            "name_required": "Vul je voor- en achternaam in.",
+            "identify_unknown": "We vonden geen medewerker met deze naam.",
+            "identify_ambiguous": "Er zijn meerdere medewerkers met deze naam. Neem contact op met je beheerder.",
+            "blocked": "Je bent geblokkeerd na te veel pogingen. Neem contact op met je beheerder.",
+            "icon_required": "Kies je persoonlijke icoon.",
+            "icon_wrong": "Dat is niet het juiste icoon.",
+            "icon_wrong_one_left": "Dat is niet het juiste icoon. Nog 1 poging.",
+            "note_max": "De notitie is te lang."
+        }
+    },
+    "documents": {
+        "download": "Downloaden",
+        "verification_required": "Verificatie vereist",
+        "empty": "Er zijn geen documenten."
+    },
+    "announcements": {
+        "empty": "Er zijn geen mededelingen."
+    },
+    "worker_icon": {
+        "heart": "Hart",
+        "plane": "Vliegtuig",
+        "car": "Auto",
+        "star": "Ster",
+        "zap": "Bliksem",
+        "gem": "Diamant",
+        "crown": "Kroon",
+        "moon": "Maan",
+        "bell": "Bel",
+        "leaf": "Blad",
+        "key": "Sleutel",
+        "anchor": "Anker"
+    }
+}

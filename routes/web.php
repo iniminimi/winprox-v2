@@ -18,7 +18,7 @@ use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Tasks;
 use App\Livewire\Pages\Team;
 use App\Livewire\Public\FieldPortal;
-use App\Livewire\Public\Report;
+use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +30,8 @@ Route::get('/', function () {
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
 // Publieke QR-schermen (geen auth) — mobiel-first.
-Route::get('/melden/{token}', Report::class)->name('public.report');
-Route::get('/team/{token}', FieldPortal::class)->name('public.field-portal');
+Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
+Route::get('/team/{token}', FieldPortal::class)->name('public.team-portal');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');

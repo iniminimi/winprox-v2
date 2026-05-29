@@ -14,22 +14,21 @@ class ReportIssueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'reporter_name' => ['nullable', 'string', 'max:255'],
-            'reporter_contact' => ['nullable', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:2000'],
-            'photos' => ['array', 'max:4'],
-            'photos.*' => ['image', 'max:8192'],
+            'description' => ['required', 'string', 'min:3', 'max:2000'],
+            'photos' => ['nullable', 'array', 'max:4'],
+            'photos.*' => ['image', 'max:10240'],
         ];
     }
 
     public function messages(): array
     {
         return [
-            'description.required' => __('report.errors.description_required'),
-            'description.max' => __('report.errors.description_max'),
-            'photos.max' => __('report.errors.photos_max'),
-            'photos.*.image' => __('report.errors.photos_image'),
-            'photos.*.max' => __('report.errors.photos_size'),
+            'description.required' => __('portal.report.errors.description_required'),
+            'description.min' => __('portal.report.errors.description_required'),
+            'description.max' => __('portal.report.errors.description_max'),
+            'photos.max' => __('portal.report.errors.photos_max'),
+            'photos.*.image' => __('portal.report.errors.photos_image'),
+            'photos.*.max' => __('portal.report.errors.photos_size'),
         ];
     }
 }

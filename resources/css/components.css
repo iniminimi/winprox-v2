@@ -482,3 +482,137 @@
     display: none;
 }
 
+/* ---------------------------------------------------------------------------
+ | QR-portaal (publiek, mobiel-first): kop, tegels, taalkeuze, terugknop.
+ * ------------------------------------------------------------------------- */
+.wp-portal-head-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.wp-flash {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--wp-accent-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.wp-tiles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.wp-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.125rem;
+    text-align: left;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    box-shadow: var(--wp-shadow-sm);
+    cursor: pointer;
+    transition: transform var(--wp-transition), border-color var(--wp-transition);
+}
+
+.wp-tile:hover {
+    transform: translateY(-2px);
+    border-color: var(--wp-border-strong);
+}
+
+.wp-tile--primary {
+    grid-column: 1 / -1;
+    background-color: var(--wp-accent);
+    border-color: var(--wp-accent);
+    color: var(--wp-text-on-accent);
+}
+
+.wp-tile-title {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.wp-tile-sub {
+    font-size: 0.8125rem;
+    opacity: 0.85;
+}
+
+.wp-back {
+    align-self: flex-start;
+    padding: 0.25rem 0;
+    background: none;
+    border: none;
+    color: var(--wp-text-muted);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.wp-back:hover {
+    color: var(--wp-text);
+}
+
+.wp-doc-title {
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-issue-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+.wp-issue-link:hover {
+    border-color: var(--wp-border-strong);
+}
+
+/* ---------------------------------------------------------------------------
+ | Worker-aanmelding: icoonraster (12 persoonlijke iconen).
+ * ------------------------------------------------------------------------- */
+.wp-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.wp-icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    padding: 0.5rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    color: var(--wp-text-muted);
+    cursor: pointer;
+    transition: border-color var(--wp-transition), color var(--wp-transition), background-color var(--wp-transition);
+}
+
+.wp-icon-tile:hover {
+    border-color: var(--wp-border-strong);
+    color: var(--wp-text);
+}
+
+.wp-icon-tile.is-selected {
+    background-color: var(--wp-accent-soft);
+    border-color: var(--wp-accent);
+    color: var(--wp-accent-text);
+}
+
+.wp-icon-tile svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+

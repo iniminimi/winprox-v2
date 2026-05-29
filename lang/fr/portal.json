@@ -1,0 +1,97 @@
+{
+    "back": "Retour",
+    "pending_review": "En attente de contrôle",
+    "issues_empty": "Il n'y a pas encore de signalements.",
+    "inactive": {
+        "title": "Indisponible",
+        "location_inactive": "Ce portail est actuellement indisponible.",
+        "unit_inactive": "Ce portail est actuellement indisponible.",
+        "team_inactive": "Ce portail d'équipe est actuellement indisponible."
+    },
+    "tiles": {
+        "new": "Nouveau signalement",
+        "new_sub": "Signaler un problème",
+        "issues": "Signalements",
+        "announcements": "Annonces",
+        "documents": "Documents"
+    },
+    "report": {
+        "title": "Créer un signalement",
+        "description": "Que se passe-t-il ?",
+        "description_placeholder": "Décrivez le problème aussi clairement que possible.",
+        "submit": "Envoyer le signalement",
+        "sent": "Merci, votre signalement a été reçu et sera contrôlé.",
+        "photos": {
+            "label": "Photos (max. 4)",
+            "add": "Ajouter une photo",
+            "hint": "Jusqu'à 4 photos. Elles sont automatiquement redimensionnées avant l'envoi.",
+            "uploading": "Téléversement des photos…",
+            "ready": "Photos prêtes."
+        },
+        "errors": {
+            "description_required": "Veuillez décrire le signalement.",
+            "description_max": "La description est trop longue.",
+            "photos_max": "Vous pouvez ajouter jusqu'à 4 photos.",
+            "photos_image": "Seules les images sont autorisées.",
+            "photos_size": "Une photo est trop volumineuse."
+        }
+    },
+    "worker": {
+        "title": "Se connecter en tant qu'employé",
+        "identify_hint": "Saisissez votre nom pour voir vos tâches.",
+        "first_name": "Prénom",
+        "last_name": "Nom",
+        "continue": "Continuer",
+        "verify_hint": "Confirmez votre icône personnelle",
+        "attempts_left": "{count} tentative(s) restante(s).",
+        "confirm_icon": "Confirmer",
+        "different_worker": "Se connecter en tant qu'autre employé",
+        "no_workers": "Il n'y a pas encore d'employés pour cette équipe. L'intégration se fait via le QR d'équipe.",
+        "wrong_team": "Cet appareil appartient à une autre équipe.",
+        "signed_in": "Vous êtes connecté.",
+        "signed_in_as": "Connecté en tant que",
+        "sign_out": "Se déconnecter",
+        "open_tasks": "Tâches ouvertes",
+        "no_open_tasks": "Aucune tâche ouverte.",
+        "start_task": "Démarrer la tâche",
+        "complete_task": "Terminer la tâche",
+        "note": "Note",
+        "note_placeholder": "Note facultative sur la réalisation.",
+        "photos": "Photos (max. 4)",
+        "confirm_complete": "Confirmer la réalisation",
+        "task_started": "Tâche démarrée.",
+        "task_completed": "Tâche terminée.",
+        "errors": {
+            "name_required": "Saisissez votre prénom et votre nom.",
+            "identify_unknown": "Aucun employé trouvé avec ce nom.",
+            "identify_ambiguous": "Plusieurs employés portent ce nom. Contactez votre administrateur.",
+            "blocked": "Vous êtes bloqué après trop de tentatives. Contactez votre administrateur.",
+            "icon_required": "Choisissez votre icône personnelle.",
+            "icon_wrong": "Ce n'est pas la bonne icône.",
+            "icon_wrong_one_left": "Ce n'est pas la bonne icône. 1 tentative restante.",
+            "note_max": "La note est trop longue."
+        }
+    },
+    "documents": {
+        "download": "Télécharger",
+        "verification_required": "Vérification requise",
+        "empty": "Il n'y a aucun document."
+    },
+    "announcements": {
+        "empty": "Il n'y a aucune annonce."
+    },
+    "worker_icon": {
+        "heart": "Cœur",
+        "plane": "Avion",
+        "car": "Voiture",
+        "star": "Étoile",
+        "zap": "Éclair",
+        "gem": "Gemme",
+        "crown": "Couronne",
+        "moon": "Lune",
+        "bell": "Cloche",
+        "leaf": "Feuille",
+        "key": "Clé",
+        "anchor": "Ancre"
+    }
+}

@@ -1,0 +1,97 @@
+{
+    "back": "Back",
+    "pending_review": "Awaiting review",
+    "issues_empty": "There are no reports yet.",
+    "inactive": {
+        "title": "Unavailable",
+        "location_inactive": "This portal is currently unavailable.",
+        "unit_inactive": "This portal is currently unavailable.",
+        "team_inactive": "This team portal is currently unavailable."
+    },
+    "tiles": {
+        "new": "New report",
+        "new_sub": "Report a problem",
+        "issues": "Reports",
+        "announcements": "Announcements",
+        "documents": "Documents"
+    },
+    "report": {
+        "title": "Create a report",
+        "description": "What is the matter?",
+        "description_placeholder": "Describe the problem as clearly as possible.",
+        "submit": "Send report",
+        "sent": "Thank you, your report has been received and will be reviewed.",
+        "photos": {
+            "label": "Photos (max. 4)",
+            "add": "Add photo",
+            "hint": "Up to 4 photos. They are automatically resized before sending.",
+            "uploading": "Uploading photos…",
+            "ready": "Photos ready."
+        },
+        "errors": {
+            "description_required": "Please describe the report.",
+            "description_max": "The description is too long.",
+            "photos_max": "You can add up to 4 photos.",
+            "photos_image": "Only images are allowed.",
+            "photos_size": "A photo is too large."
+        }
+    },
+    "worker": {
+        "title": "Sign in as worker",
+        "identify_hint": "Enter your name to see your tasks.",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "continue": "Continue",
+        "verify_hint": "Confirm your personal icon",
+        "attempts_left": "{count} attempt(s) left.",
+        "confirm_icon": "Confirm",
+        "different_worker": "Sign in as a different worker",
+        "no_workers": "There are no workers for this team yet. Onboarding happens via the team QR.",
+        "wrong_team": "This device belongs to a different team.",
+        "signed_in": "You are signed in.",
+        "signed_in_as": "Signed in as",
+        "sign_out": "Sign out",
+        "open_tasks": "Open tasks",
+        "no_open_tasks": "No open tasks.",
+        "start_task": "Start task",
+        "complete_task": "Complete task",
+        "note": "Note",
+        "note_placeholder": "Optional note about the completion.",
+        "photos": "Photos (max. 4)",
+        "confirm_complete": "Confirm completion",
+        "task_started": "Task started.",
+        "task_completed": "Task completed.",
+        "errors": {
+            "name_required": "Enter your first and last name.",
+            "identify_unknown": "We could not find a worker with this name.",
+            "identify_ambiguous": "There are several workers with this name. Contact your administrator.",
+            "blocked": "You are blocked after too many attempts. Contact your administrator.",
+            "icon_required": "Choose your personal icon.",
+            "icon_wrong": "That is not the correct icon.",
+            "icon_wrong_one_left": "That is not the correct icon. 1 attempt left.",
+            "note_max": "The note is too long."
+        }
+    },
+    "documents": {
+        "download": "Download",
+        "verification_required": "Verification required",
+        "empty": "There are no documents."
+    },
+    "announcements": {
+        "empty": "There are no announcements."
+    },
+    "worker_icon": {
+        "heart": "Heart",
+        "plane": "Plane",
+        "car": "Car",
+        "star": "Star",
+        "zap": "Lightning",
+        "gem": "Gem",
+        "crown": "Crown",
+        "moon": "Moon",
+        "bell": "Bell",
+        "leaf": "Leaf",
+        "key": "Key",
+        "anchor": "Anchor"
+    }
+}
