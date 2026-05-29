@@ -153,6 +153,65 @@ WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels p
 
 ---
 
+## 3. Meldingen
+
+**Doel:** beheerlijst van alle meldingen (issues) van de tenant, met filters, statusgroepering en
+de aanmaak-flow. Bron: V1 `app/Livewire/Issues.php` + `resources/views/livewire/issues.blade.php`
+(sterk uitgedund: geen onboarding/demo, contractors/invitations/quoting, hospitality-triage,
+fulfillment-routing of trades). **Beheerscherm = nooit blur.**
+
+### 3.0 Statusmapping (V1 → V2, 4 verminderde statussen)
+| V1-status | V2 |
+|---|---|
+| `new` + `open` | **Nieuw (Open)** (`new`) |
+| `in_progress`, `on_hold` | **In uitvoering** (`in_progress`) |
+| `completed` / afgehandeld | **Afgehandeld** (`done`) |
+| `closed`, `not_executed` | **Gesloten** (`closed`) |
+
+Taken hebben hun eigen status; de **meldingstatus rolt af** uit de taken (bestaande
+`Issue::recalculateStatus`). Geen losse `open` meer naast `new`.
+
+### 3.1 Lijst
+- Header: titel + primair **"+ Melding toevoegen"** (opent aanmaak-flow §3.3) + ghost
+  **"Briefing afdrukken"**.
+- **Filterkaart**: status-select (de 4 statussen + "alle") + **GO!**, **team**-select, **zoek**veld,
+  checkbox **"terugkerend"** (alleen recurring tonen). Zoeken over: omschrijving, melder, en
+  locatie (naam/adres/straat/nr/postcode/plaats) + unitnaam.
+- **Groepering per status** met accent-header + telbadge, volgorde
+  **Nieuw → In uitvoering → Afgehandeld → Gesloten**, daarbinnen nieuwste eerst.
+- **Meldingskaart**: NR (id), omschrijving (onverkort — beheer), locatie · unit · adres,
+  herkomst (QR/handmatig) + "gemeld door", toegewezen **team(s)**, status-pill. Net aangemaakte
+  melding kort **gehighlight** (query `highlight_issue` / sessie).
+- Klik → detail (`issues.show`).
+
+### 3.2 Teamscope (later)
+V1 kan de lijst scopen tot teams die een beheerder mag zien (`FacilityTeamAccess`). V2: optioneel
+later; standaard ziet een tenant-beheerder alles binnen de tenant.
+
+### 3.3 Aanmaak-flow (Facility = 2 stappen)
+V1 "easy flow" voor facility, ontdaan van contractor/hospitality-stappen:
+1. **Stap 1** — locatie + (optioneel) unit + **omschrijving** (min 3) + tot 4 foto's
+   (+ optioneel **terugkerend**, §3.4). → maakt `Issue` (`source=manager`, `status=new`).
+2. **Stap 2** — **taaknotitie** + **team** kiezen → maakt `Task` (status `new`/assigned-equivalent);
+   melding → **In uitvoering**. Voor Facility sluit de flow hierna af (geen stap 3).
+Logica in Actions (`CreateIssueAction` + taak-aanmaak), validatie via Form Request. Foto-golden-path.
+
+### 3.4 Terugkerende meldingen (recurring) — **schema nodig**
+V1: een melding kan **terugkerend** zijn (interval **waarde** + **eenheid** week/maand/kwartaal/jaar,
+**lead days**, **eerste vervaldatum**) en genereert periodiek taakcycli (koppelt aan **Kalender**).
+- Schema (toevoegen bij datamodel-uitbreiding): `issues.is_recurring`, `recurrence_interval_value`,
+  `recurrence_interval_unit`, `recurrence_lead_days`, `recurrence_next_due_at`,
+  `recurrence_last_task_created_at`; op `tasks` velden voor cyclus (`due_at`, `scheduled_for`,
+  `is_recurring_cycle`, `cycle_number`, `recurrence_issue_id`).
+- **BESLISSEN:** nemen we recurring nu mee of als aparte fase? (Hangt samen met Kalender §5.)
+
+### 3.5 NIET overnemen (cruft / vereenvoudiging)
+Onboarding/demo quick-flow, contractors + `TaskInvitation`/quoting/assignment-modes,
+hospitality-triage (`awaitingTriageOnly`, `fulfillment_routing`), trades/work-types,
+desktop-handoff-login, `report_finalized_at`, categorie-verplichting. Property→Location.
+
+---
+
 ## QR-portaal (publiek, ná scan) — uitgebreid, overnemen uit `winprox_old`
 
 > Dit is het scherm dat een bezoeker/worker ziet **na het scannen van een QR-code**. In de oude
