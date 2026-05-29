@@ -75,6 +75,27 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 
 ### 3.3 Form Requests — validatie
 - Validatieregels altijd in `app/Http/Requests/[Module]/[Naam]Request.php`. Nooit in Livewire of Action.
+- Regels **herbruikbaar** (statische `rules()`) zodat niet-HTTP-ingangen (API/CLI/job/scheduler) dezelfde validatie kunnen toepassen.
+
+### 3.3a DTOs — getypte input voor Actions
+- Actions ontvangen waar mogelijk een **getypte DTO** (`app/Data/[Module]/[Naam]Data.php`), **nooit** een HTTP `Request`.
+- De ingang (Livewire/API/CLI) bouwt de DTO uit gevalideerde input; de Action werkt puur met de DTO + actor/tenant-context.
+
+### 3.3b Enums — geen magic strings
+- Alle statussen/typen als **PHP enum** in `app/Enums`. Nooit losse string-literals in queries, Blade of Livewire.
+
+### 3.3c Policies — autorisatie op één plek
+- Autorisatie **altijd** via `app/Policies`. **Geen** handmatige rolchecks (`isAdmin()` e.d.) verspreid in controllers, Livewire of Blade — gebruik `authorize()`/`can()` die naar de policy verwijzen.
+
+### 3.3d Audit logging — elke DB-write
+- Elke schrijfactie wordt gelogd in `audit_logs`: **`user_id, tenant_id, action, model_type, model_id, payload, created_at`**.
+- Centraal (bv. een `LogAuditAction`/listener op domein-events), niet ad hoc per scherm dupliceren.
+
+### 3.3e Verboden patronen (hard)
+- **Geen** `DB::` of `Model::create()/update()/delete()` buiten een Action.
+- **Geen** business-logica in models, Blade of Livewire (models = relaties/scopes/casts/accessors).
+- **Geen** repository-pattern, service-laag-duplicatie of static workflow-helpers.
+- **Geen** N+1: eager-load relaties, filter in de database (niet in collections), **pagineer** lijsten.
 
 ### 3.4 API & Webhooks — first-class (vanaf het begin)
 - **WinProx is API-first.** Elke domeinmutatie loopt via een **Action**; web (Livewire) én **REST API**
@@ -181,6 +202,10 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - **Veld- en publieke schermen** (publieke QR-meldpagina, team-QR veldportaal, worker-schermen) → **mobiel-first**: één kolom, grote tap-doelen (knoppen min. 2.5rem hoog), belangrijkste actie onderaan binnen duimbereik.
 - Zelfde tokens/componenten en **één** CSS-bundel; responsiviteit via eenvoudige breakpoints, geen aparte stylesheet-stack per apparaat.
 
+### 6.5a UI-filosofie
+- Voorkeur voor **modals/inline-interacties** boven losse pagina's; minimale navigatiediepte.
+- Workers ronden een flow af in **zo weinig mogelijk taps** (veld/portaal, mobiel-first).
+
 ### 6.6 Na UI-wijziging
 - Altijd `npm run build`; vraag bij visuele controle om harde refresh (`Ctrl+F5`).
 
@@ -219,7 +244,8 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ## 9. Tests
 
 - **Pest** + **factories** voor elk model.
-- Dek de kern-flow: melding aanmaken → taak/taken → statusovergangen → afgeleide meldingstatus → tenant-isolatie → superuser-impersonatie.
+- **Elke Action heeft tests**; voorkeur voor **integratietests** op workflows. Mock alleen externe services.
+- Dek de kern-flow: melding aanmaken → taak/taken → statusovergangen → afgeleide meldingstatus → tenant-isolatie → superuser-impersonatie → **API + webhook-dispatch (HMAC)**.
 - CI-check (tests + locale-parity + build) groen vóór merge.
 
 ---
