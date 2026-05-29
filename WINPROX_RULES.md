@@ -11,7 +11,7 @@ externe partijen (contractors, eigenaars/owners) bestaan **niet** meer. Houd all
 ## 1. Stack
 
 - **Backend:** Laravel 12 (PHP 8.2+).
-- **Frontend:** Livewire 3 + Blade.
+- **Frontend:** Livewire 4 + Blade.
 - **Styling:** Tailwind v4 (via `@tailwindcss/vite`) + een kleine, gedeelde `wp-*` componentlaag.
 - **Build:** Vite. **DB:** MySQL. **Lokaal:** Windows → **Productie:** Linux.
 
