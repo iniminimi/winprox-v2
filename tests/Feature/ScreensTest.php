@@ -37,7 +37,7 @@ it('weigert verkeerde inloggegevens', function () {
     expect(auth()->check())->toBeFalse();
 });
 
-it('toont de moderatie-blur voor een niet-goedgekeurde melding', function () {
+it('toont beheerschermen NOOIT geblurd, ook niet voor een niet-goedgekeurde melding', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
@@ -46,13 +46,13 @@ it('toont de moderatie-blur voor een niet-goedgekeurde melding', function () {
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'approved_at' => null,
-        'description' => 'Gevoelige inhoud die geblurd moet blijven',
+        'description' => 'Niet-goedgekeurde inhoud, onverkort zichtbaar voor beheer',
     ]);
 
     Livewire::actingAs($user)
         ->test(Index::class)
-        ->assertSeeHtml('wp-pending-review')
-        ->assertSee(__('issues.pending_review'));
+        ->assertDontSeeHtml('wp-pending-review')
+        ->assertSee('Niet-goedgekeurde inhoud, onverkort zichtbaar voor beheer');
 });
 
 it('keurt een melding goed vanuit de lijst', function () {

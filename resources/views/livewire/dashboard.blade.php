@@ -41,13 +41,7 @@
             @forelse ($recent as $issue)
                 <a href="{{ route('issues.show', $issue) }}" class="wp-issue-row" wire:key="recent-{{ $issue->id }}">
                     <div class="wp-grow">
-                        @if ($issue->isApproved())
-                            <p class="wp-issue-desc">{{ \Illuminate\Support\Str::limit($issue->description, 90) }}</p>
-                        @else
-                            <div class="wp-pending-review" data-pending-label="{{ __('issues.pending_review') }}">
-                                <p class="wp-issue-desc">{{ \Illuminate\Support\Str::limit($issue->description, 90) }}</p>
-                            </div>
-                        @endif
+                        <p class="wp-issue-desc">{{ \Illuminate\Support\Str::limit($issue->description, 90) }}</p>
                         <p class="wp-muted">
                             {{ $issue->location?->name ?? __('dashboard.recent.no_location') }}@if ($issue->unit) &middot; {{ $issue->unit->name }}@endif@if ($issue->location?->address) &middot; {{ $issue->location->address }}@endif
                         </p>

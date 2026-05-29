@@ -152,9 +152,15 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 7.1 Moderatie (review vóór publicatie) — verplicht
 - Een melding uit een QR-inzending is **niet goedgekeurd** bij aanmaken (`issues.approved_at` is null).
-- Zolang niet goedgekeurd worden **beschrijving én foto's geblurd** getoond met overlay "Wacht op controle" — overal waar ze zichtbaar zijn (publiek/portaal én previews in de beheerlijst). Gebruik de klasse **`.wp-pending-review`** (blur + overlay).
-- Een beheerder/medewerker keurt goed via **`ApproveIssueAction`** (zet `approved_at`/`approved_by`); pas dan unblurt de inhoud. Afkeuren = verwijderen.
-- Doel: voorkomen dat een malafide melder compromitterende foto's of tekst publiceert.
+- **Blur geldt UITSLUITEND op publieke QR-pagina's** (na scan): zolang niet goedgekeurd worden
+  **beschrijving én foto's geblurd** getoond met overlay "Wacht op controle". Gebruik de klasse
+  **`.wp-pending-review`** (blur + overlay).
+- **Beheerschermen (desktop) tonen NOOIT geblurd.** Dashboard, meldingen, taken, detail enz. zijn
+  alleen voor **beheerders en medewerkers**; zij moeten de inhoud juist **onverkort** zien om te
+  kunnen beoordelen en goedkeuren.
+- Een beheerder/medewerker keurt goed via **`ApproveIssueAction`** (zet `approved_at`/`approved_by`);
+  pas dan unblurt de inhoud ook op de publieke pagina's. Afkeuren = verwijderen.
+- Doel: voorkomen dat een malafide melder compromitterende foto's of tekst **publiek** publiceert.
 
 ---
 

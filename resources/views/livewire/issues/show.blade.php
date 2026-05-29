@@ -23,24 +23,12 @@
             <p class="wp-muted">{{ $issue->reporter_name }}@if ($issue->reporter_contact) ({{ $issue->reporter_contact }})@endif</p>
         @endif
 
-        @if ($issue->isApproved())
-            <p class="wp-text-body">{{ $issue->description }}</p>
-        @else
-            <div class="wp-pending-review" data-pending-label="{{ __('issues.pending_review') }}">
-                <p class="wp-text-body">{{ $issue->description }}</p>
-            </div>
-        @endif
+        <p class="wp-text-body">{{ $issue->description }}</p>
 
         @if ($issue->photos->isNotEmpty())
             <div class="wp-cluster">
                 @foreach ($issue->photos as $photo)
-                    @if ($issue->isApproved())
-                        <span class="wp-pill wp-pill--closed" wire:key="photo-{{ $photo->id }}">{{ $photo->path }}</span>
-                    @else
-                        <div class="wp-pending-review" data-pending-label="{{ __('issues.pending_review') }}" wire:key="photo-{{ $photo->id }}">
-                            <span class="wp-pill wp-pill--closed">{{ $photo->path }}</span>
-                        </div>
-                    @endif
+                    <span class="wp-pill wp-pill--closed" wire:key="photo-{{ $photo->id }}">{{ $photo->path }}</span>
                 @endforeach
             </div>
         @endif

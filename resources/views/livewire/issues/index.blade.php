@@ -75,13 +75,7 @@
                             <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
                         </div>
 
-                        @if ($issue->isApproved())
-                            <p class="wp-melding-desc">{{ \Illuminate\Support\Str::limit($issue->description, 120) }}</p>
-                        @else
-                            <div class="wp-pending-review" data-pending-label="{{ __('issues.pending_review') }}">
-                                <p class="wp-melding-desc">{{ \Illuminate\Support\Str::limit($issue->description, 120) }}</p>
-                            </div>
-                        @endif
+                        <p class="wp-melding-desc">{{ \Illuminate\Support\Str::limit($issue->description, 120) }}</p>
 
                         <div class="wp-melding-meta">
                             <span class="wp-muted">

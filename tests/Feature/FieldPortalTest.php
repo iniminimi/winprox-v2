@@ -77,6 +77,34 @@ it('voegt een notitie toe als de uitvoerder (worker)', function () {
         ->and($update->body)->toBe('Onderdeel besteld, kom morgen terug.');
 });
 
+it('blurt een niet-goedgekeurde melding op het publieke veldportaal', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'field_qr_token' => 'veld-token-blur',
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => null,
+    ]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+    ]);
+
+    Livewire::test(FieldPortal::class, ['token' => 'veld-token-blur'])
+        ->call('selectWorker', $worker->id)
+        ->assertSeeHtml('wp-pending-review');
+});
+
 it('geeft 404 voor een onbekend team-token', function () {
     $this->get('/team/bestaat-niet')->assertNotFound();
 });
