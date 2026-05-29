@@ -16,13 +16,6 @@
         "subtitle": "Planen Sie Aufgaben und Wartung über die Zeit.",
         "soon": "Dieser Bereich ist bald verfügbar."
     },
-    "team": {
-        "title": "Team",
-        "subtitle": "Ihre internen Teams und die Ausführenden darin.",
-        "empty": "Es gibt noch keine Teams.",
-        "no_workers": "Noch keine Ausführenden in diesem Team.",
-        "worker_count": ":count Ausführende"
-    },
     "subscription": {
         "title": "Abonnement",
         "subtitle": "Verwalten Sie Ihr Abonnement und Ihre Testphase.",

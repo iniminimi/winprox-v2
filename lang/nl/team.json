@@ -1,0 +1,79 @@
+{
+    "title": "Team",
+    "subtitle": "Beheer collega-gebruikers, teams en uitvoerders.",
+    "org": {
+        "title": "Organisatie",
+        "name_label": "Organisatienaam"
+    },
+    "colleagues": {
+        "title": "Collega-gebruikers",
+        "add": "Gebruiker toevoegen",
+        "invite_hint": "Nieuwe gebruikers krijgen een e-mail om hun wachtwoord in te stellen.",
+        "empty": "Er zijn nog geen collega-gebruikers.",
+        "active": "Actief",
+        "inactive": "Inactief",
+        "role_admin": "Beheerder",
+        "role_employee": "Medewerker",
+        "edit": "Bewerken",
+        "deactivate": "Deactiveren",
+        "activate": "Activeren",
+        "you": "Jij",
+        "modal": {
+            "create_title": "Gebruiker toevoegen",
+            "edit_title": "Gebruiker bewerken",
+            "name": "Naam",
+            "email": "E-mailadres",
+            "role": "Rol"
+        }
+    },
+    "teams": {
+        "title": "Teams",
+        "add": "Team toevoegen",
+        "empty": "Er zijn nog geen teams.",
+        "active": "Actief",
+        "inactive": "Inactief",
+        "worker_count": ":count actieve uitvoerders",
+        "qr": "Team-QR",
+        "edit": "Bewerken",
+        "deactivate": "Deactiveren",
+        "activate": "Activeren",
+        "modal": {
+            "create_title": "Team toevoegen",
+            "edit_title": "Team bewerken",
+            "name": "Teamnaam",
+            "sort_order": "Sorteervolgorde",
+            "active": "Team is actief"
+        }
+    },
+    "workers": {
+        "title": "Uitvoerders",
+        "add": "Uitvoerder toevoegen",
+        "add_submit": "Toevoegen",
+        "empty": "Nog geen uitvoerders in dit team.",
+        "first_name": "Voornaam",
+        "last_name": "Achternaam",
+        "no_icon": "Geen icoon bevestigd",
+        "locked": "Geblokkeerd",
+        "inactive": "Inactief",
+        "teamleader": "Teamleader",
+        "make_teamleader": "Teamleader maken",
+        "remove_teamleader": "Teamleader intrekken",
+        "reset_icon": "Icoon resetten",
+        "deactivate": "Deactiveren",
+        "activate": "Activeren"
+    },
+    "qr": {
+        "subtitle": "Scan deze code om het team-veldportaal te openen.",
+        "print": "Afdrukken"
+    },
+    "errors": {
+        "name_required": "Geef een naam op.",
+        "email_required": "Geef een e-mailadres op.",
+        "email_invalid": "Geef een geldig e-mailadres op.",
+        "email_taken": "Dit e-mailadres is al in gebruik.",
+        "role_required": "Kies een rol.",
+        "team_name_required": "Geef een teamnaam op.",
+        "worker_name_required": "Geef voor- en achternaam op.",
+        "organisation_name_required": "Geef een organisatienaam op."
+    }
+}

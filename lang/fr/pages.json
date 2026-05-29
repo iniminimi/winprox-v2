@@ -16,13 +16,6 @@
         "subtitle": "Planifiez les tâches et la maintenance dans le temps.",
         "soon": "Cette section sera bientôt disponible."
     },
-    "team": {
-        "title": "Équipe",
-        "subtitle": "Vos équipes internes et les intervenants qui les composent.",
-        "empty": "Il n'y a pas encore d'équipes.",
-        "no_workers": "Pas encore d'intervenants dans cette équipe.",
-        "worker_count": ":count intervenants"
-    },
     "subscription": {
         "title": "Abonnement",
         "subtitle": "Gérez votre abonnement et votre période d'essai.",

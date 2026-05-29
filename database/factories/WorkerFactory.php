@@ -24,7 +24,13 @@ class WorkerFactory extends Factory
             'field_icon_failed_attempts' => 0,
             'field_icon_locked_at' => null,
             'is_active' => true,
+            'is_teamleader' => false,
         ];
+    }
+
+    public function teamleader(): static
+    {
+        return $this->state(fn () => ['is_teamleader' => true]);
     }
 
     /** Worker zonder bevestigd icoon (admin voegde enkel een naam toe). */

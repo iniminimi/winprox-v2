@@ -13,6 +13,13 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public const ROLE_ADMIN = 'admin';
+
+    public const ROLE_EMPLOYEE = 'employee';
+
+    /** @var list<string> */
+    public const ROLES = [self::ROLE_ADMIN, self::ROLE_EMPLOYEE];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,11 +31,25 @@ class User extends Authenticatable
         'email',
         'password',
         'is_superuser',
+        'is_active',
+        'role',
     ];
 
     public function tenant(): BelongsTo
     {
         return $this->belongsTo(Tenant::class);
+    }
+
+    /** Beheerder: mag accounts, bedrijfsgegevens, teams aanmaken/deactiveren, billing. */
+    public function isAdmin(): bool
+    {
+        return ! $this->is_superuser && $this->role === self::ROLE_ADMIN;
+    }
+
+    /** Medewerker: operationeel + teams/workers-inhoud beheren (geen accountbeheer). */
+    public function isEmployee(): bool
+    {
+        return ! $this->is_superuser && $this->role === self::ROLE_EMPLOYEE;
     }
 
     /**
@@ -52,6 +73,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_superuser' => 'boolean',
+            'is_active' => 'boolean',
+            'role' => 'string',
         ];
     }
 }

@@ -21,12 +21,14 @@ class Worker extends Model
         'field_icon_failed_attempts',
         'field_icon_locked_at',
         'is_active',
+        'is_teamleader',
     ];
 
     protected $casts = [
         'field_icon_failed_attempts' => 'integer',
         'field_icon_locked_at' => 'datetime',
         'is_active' => 'boolean',
+        'is_teamleader' => 'boolean',
     ];
 
     public function team(): BelongsTo

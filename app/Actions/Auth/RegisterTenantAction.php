@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Hash;
 class RegisterTenantAction
 {
     /**
-     * Maakt een nieuwe organisatie (Tenant) + een beheerder-gebruiker die erbij hoort.
+     * Maakt een nieuwe organisatie (Tenant) + de eigenaar-gebruiker (rol admin).
      *
-     * NB: de users-tabel kent geen aparte 'role'-kolom; een tenant-gebruiker is per
-     * definitie beheerder. De platform-superuser (is_superuser) staat hier los van en
-     * wordt hier nooit aangemaakt.
+     * De platform-superuser (is_superuser) staat hier los van en wordt hier nooit
+     * aangemaakt.
      *
      * @param  array<string, mixed>  $data  organization, name, email, password
      */
@@ -31,6 +30,7 @@ class RegisterTenantAction
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'is_superuser' => false,
+                'role' => User::ROLE_ADMIN,
             ]);
         });
     }

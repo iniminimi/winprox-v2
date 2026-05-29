@@ -1,0 +1,79 @@
+{
+    "title": "Team",
+    "subtitle": "Manage colleague users, teams and workers.",
+    "org": {
+        "title": "Organisation",
+        "name_label": "Organisation name"
+    },
+    "colleagues": {
+        "title": "Colleague users",
+        "add": "Add user",
+        "invite_hint": "New users receive an email to set their password.",
+        "empty": "There are no colleague users yet.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "role_admin": "Administrator",
+        "role_employee": "Employee",
+        "edit": "Edit",
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "you": "You",
+        "modal": {
+            "create_title": "Add user",
+            "edit_title": "Edit user",
+            "name": "Name",
+            "email": "Email address",
+            "role": "Role"
+        }
+    },
+    "teams": {
+        "title": "Teams",
+        "add": "Add team",
+        "empty": "There are no teams yet.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "worker_count": ":count active workers",
+        "qr": "Team QR",
+        "edit": "Edit",
+        "deactivate": "Deactivate",
+        "activate": "Activate",
+        "modal": {
+            "create_title": "Add team",
+            "edit_title": "Edit team",
+            "name": "Team name",
+            "sort_order": "Sort order",
+            "active": "Team is active"
+        }
+    },
+    "workers": {
+        "title": "Workers",
+        "add": "Add worker",
+        "add_submit": "Add",
+        "empty": "No workers in this team yet.",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "no_icon": "No icon confirmed",
+        "locked": "Locked",
+        "inactive": "Inactive",
+        "teamleader": "Team leader",
+        "make_teamleader": "Make team leader",
+        "remove_teamleader": "Remove team leader",
+        "reset_icon": "Reset icon",
+        "deactivate": "Deactivate",
+        "activate": "Activate"
+    },
+    "qr": {
+        "subtitle": "Scan this code to open the team field portal.",
+        "print": "Print"
+    },
+    "errors": {
+        "name_required": "Enter a name.",
+        "email_required": "Enter an email address.",
+        "email_invalid": "Enter a valid email address.",
+        "email_taken": "This email address is already in use.",
+        "role_required": "Choose a role.",
+        "team_name_required": "Enter a team name.",
+        "worker_name_required": "Enter a first and last name.",
+        "organisation_name_required": "Enter an organisation name."
+    }
+}

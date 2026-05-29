@@ -16,13 +16,6 @@
         "subtitle": "Plan tasks and maintenance over time.",
         "soon": "This section will be available soon."
     },
-    "team": {
-        "title": "Team",
-        "subtitle": "Your internal teams and the workers in them.",
-        "empty": "There are no teams yet.",
-        "no_workers": "No workers in this team yet.",
-        "worker_count": ":count workers"
-    },
     "subscription": {
         "title": "Subscription",
         "subtitle": "Manage your subscription and trial period.",

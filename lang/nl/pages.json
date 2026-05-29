@@ -16,13 +16,6 @@
         "subtitle": "Plan taken en onderhoud in de tijd.",
         "soon": "Dit onderdeel is binnenkort beschikbaar."
     },
-    "team": {
-        "title": "Team",
-        "subtitle": "Je interne teams en de uitvoerders daarin.",
-        "empty": "Er zijn nog geen teams.",
-        "no_workers": "Nog geen uitvoerders in dit team.",
-        "worker_count": ":count uitvoerders"
-    },
     "subscription": {
         "title": "Abonnement",
         "subtitle": "Beheer je abonnement en proefperiode.",

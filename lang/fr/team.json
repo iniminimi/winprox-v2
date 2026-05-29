@@ -1,0 +1,79 @@
+{
+    "title": "Équipe",
+    "subtitle": "Gérez les utilisateurs collègues, les équipes et les intervenants.",
+    "org": {
+        "title": "Organisation",
+        "name_label": "Nom de l'organisation"
+    },
+    "colleagues": {
+        "title": "Utilisateurs collègues",
+        "add": "Ajouter un utilisateur",
+        "invite_hint": "Les nouveaux utilisateurs reçoivent un e-mail pour définir leur mot de passe.",
+        "empty": "Aucun utilisateur collègue pour le moment.",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "role_admin": "Administrateur",
+        "role_employee": "Employé",
+        "edit": "Modifier",
+        "deactivate": "Désactiver",
+        "activate": "Activer",
+        "you": "Vous",
+        "modal": {
+            "create_title": "Ajouter un utilisateur",
+            "edit_title": "Modifier l'utilisateur",
+            "name": "Nom",
+            "email": "Adresse e-mail",
+            "role": "Rôle"
+        }
+    },
+    "teams": {
+        "title": "Équipes",
+        "add": "Ajouter une équipe",
+        "empty": "Aucune équipe pour le moment.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "worker_count": ":count intervenants actifs",
+        "qr": "QR de l'équipe",
+        "edit": "Modifier",
+        "deactivate": "Désactiver",
+        "activate": "Activer",
+        "modal": {
+            "create_title": "Ajouter une équipe",
+            "edit_title": "Modifier l'équipe",
+            "name": "Nom de l'équipe",
+            "sort_order": "Ordre de tri",
+            "active": "L'équipe est active"
+        }
+    },
+    "workers": {
+        "title": "Intervenants",
+        "add": "Ajouter un intervenant",
+        "add_submit": "Ajouter",
+        "empty": "Aucun intervenant dans cette équipe.",
+        "first_name": "Prénom",
+        "last_name": "Nom",
+        "no_icon": "Aucune icône confirmée",
+        "locked": "Bloqué",
+        "inactive": "Inactif",
+        "teamleader": "Chef d'équipe",
+        "make_teamleader": "Nommer chef d'équipe",
+        "remove_teamleader": "Retirer le rôle de chef d'équipe",
+        "reset_icon": "Réinitialiser l'icône",
+        "deactivate": "Désactiver",
+        "activate": "Activer"
+    },
+    "qr": {
+        "subtitle": "Scannez ce code pour ouvrir le portail de terrain de l'équipe.",
+        "print": "Imprimer"
+    },
+    "errors": {
+        "name_required": "Indiquez un nom.",
+        "email_required": "Indiquez une adresse e-mail.",
+        "email_invalid": "Indiquez une adresse e-mail valide.",
+        "email_taken": "Cette adresse e-mail est déjà utilisée.",
+        "role_required": "Choisissez un rôle.",
+        "team_name_required": "Indiquez un nom d'équipe.",
+        "worker_name_required": "Indiquez un prénom et un nom.",
+        "organisation_name_required": "Indiquez un nom d'organisation."
+    }
+}

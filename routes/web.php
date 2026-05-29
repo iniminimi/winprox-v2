@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Team\TeamQrController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/tasks', Tasks::class)->name('tasks.index');
     Route::get('/calendar', Calendar::class)->name('calendar.index');
     Route::get('/team', Team::class)->name('team.index');
+    Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
     Route::get('/subscription', Subscription::class)->name('subscription.index');
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');

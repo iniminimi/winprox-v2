@@ -24,7 +24,7 @@ class Login extends Component
 
         $this->validate($request->rules(), $request->messages());
 
-        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password, 'is_active' => true], $this->remember)) {
             $this->addError('email', __('auth.errors.failed'));
 
             return;

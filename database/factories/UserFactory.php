@@ -31,6 +31,8 @@ class UserFactory extends Factory
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'is_superuser' => false,
+            'is_active' => true,
+            'role' => \App\Models\User::ROLE_ADMIN,
         ];
     }
 
@@ -41,6 +43,36 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Gedeactiveerde gebruiker (kan niet inloggen).
+     */
+    public function inactive(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_active' => false,
+        ]);
+    }
+
+    /**
+     * Medewerker (operationeel; geen accountbeheer/bedrijfsgegevens).
+     */
+    public function employee(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => \App\Models\User::ROLE_EMPLOYEE,
+        ]);
+    }
+
+    /**
+     * Beheerder (kan alles binnen de tenant).
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => \App\Models\User::ROLE_ADMIN,
         ]);
     }
 

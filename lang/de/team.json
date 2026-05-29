@@ -1,0 +1,79 @@
+{
+    "title": "Team",
+    "subtitle": "Verwalten Sie Kollegenkonten, Teams und Mitarbeiter.",
+    "org": {
+        "title": "Organisation",
+        "name_label": "Organisationsname"
+    },
+    "colleagues": {
+        "title": "Kollegenkonten",
+        "add": "Benutzer hinzufügen",
+        "invite_hint": "Neue Benutzer erhalten eine E-Mail, um ihr Passwort festzulegen.",
+        "empty": "Es gibt noch keine Kollegenkonten.",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "role_admin": "Administrator",
+        "role_employee": "Mitarbeiter",
+        "edit": "Bearbeiten",
+        "deactivate": "Deaktivieren",
+        "activate": "Aktivieren",
+        "you": "Sie",
+        "modal": {
+            "create_title": "Benutzer hinzufügen",
+            "edit_title": "Benutzer bearbeiten",
+            "name": "Name",
+            "email": "E-Mail-Adresse",
+            "role": "Rolle"
+        }
+    },
+    "teams": {
+        "title": "Teams",
+        "add": "Team hinzufügen",
+        "empty": "Es gibt noch keine Teams.",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "worker_count": ":count aktive Mitarbeiter",
+        "qr": "Team-QR",
+        "edit": "Bearbeiten",
+        "deactivate": "Deaktivieren",
+        "activate": "Aktivieren",
+        "modal": {
+            "create_title": "Team hinzufügen",
+            "edit_title": "Team bearbeiten",
+            "name": "Teamname",
+            "sort_order": "Sortierreihenfolge",
+            "active": "Team ist aktiv"
+        }
+    },
+    "workers": {
+        "title": "Mitarbeiter",
+        "add": "Mitarbeiter hinzufügen",
+        "add_submit": "Hinzufügen",
+        "empty": "Noch keine Mitarbeiter in diesem Team.",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "no_icon": "Kein Symbol bestätigt",
+        "locked": "Gesperrt",
+        "inactive": "Inaktiv",
+        "teamleader": "Teamleiter",
+        "make_teamleader": "Zum Teamleiter machen",
+        "remove_teamleader": "Teamleiter entfernen",
+        "reset_icon": "Symbol zurücksetzen",
+        "deactivate": "Deaktivieren",
+        "activate": "Aktivieren"
+    },
+    "qr": {
+        "subtitle": "Scannen Sie diesen Code, um das Team-Feldportal zu öffnen.",
+        "print": "Drucken"
+    },
+    "errors": {
+        "name_required": "Geben Sie einen Namen an.",
+        "email_required": "Geben Sie eine E-Mail-Adresse an.",
+        "email_invalid": "Geben Sie eine gültige E-Mail-Adresse an.",
+        "email_taken": "Diese E-Mail-Adresse wird bereits verwendet.",
+        "role_required": "Wählen Sie eine Rolle.",
+        "team_name_required": "Geben Sie einen Teamnamen an.",
+        "worker_name_required": "Geben Sie Vor- und Nachnamen an.",
+        "organisation_name_required": "Geben Sie einen Organisationsnamen an."
+    }
+}
