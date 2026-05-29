@@ -33,15 +33,18 @@ Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
   moeten afhandelen** (dagoverzicht per team).
 - **Proefperiode-capsule**: "Proefperiode nog X dagen." (zie §Abonnement).
 
-**KPI-kaarten** (neutraal/minimaal, emerald enkel als subtiel accent):
-- Locaties/units — totaal
-- Units — totaal
-- Nieuwe meldingen — aantal nieuw/open
-- Open taken — "In uitvoering"
+**KPI-kaarten** (neutraal/minimaal, emerald enkel als subtiel accent) — **klikbaar** (elke tegel
+linkt naar zijn lijst):
+- Locaties — totaal → locatie-lijst
+- Units — totaal → unit-lijst
+- Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
+- Open taken — "In uitvoering" → taken (open/in uitvoering).
 
 **Recente meldingen** (kaart met lijst)
-- "Laatste activiteit door melders of team", met nadruk op **nieuwe** meldingen.
+- "Laatste activiteit door melders of team", met nadruk op **nieuwe** meldingen; laatste **5**.
 - Rij: omschrijving · locatie — unit · adres · datum/tijd + "gemeld door {naam}" · status-pill.
+- **Net-aangemaakte melding** krijgt kort een highlight-accent in de lijst.
+- Lege staat: nette "nog geen meldingen"-tekst (géén onboarding-CTA-blok uit V1).
 - Knop **"Meldingen openen"** → meldingenlijst.
 
 **Zwevende elementen**
@@ -55,7 +58,13 @@ Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
 **Device:** desktop-first (laptop).
 
 **Nieuw t.o.v. huidige bouw (backlog):** Briefing-print (taken van vandaag per team),
-WinProx-assistent (DB-Q&A + onbeantwoorde-vragen-tabel + superuser-mail + FAQ-koppeling).
+WinProx-assistent (DB-Q&A + onbeantwoorde-vragen-tabel + superuser-mail + FAQ-koppeling),
+klikbare KPI-tegels + alert-state, highlight net-aangemaakte melding, proefperiode-capsule.
+
+**NIET overnemen uit V1-dashboard:** `facility-setup-panel` (onboarding-checklist), contractor-
+panelen ("offerte-documenten" + "wacht op aannemers-reacties"), onboarding-banners,
+proefperiode-**battery-png** (capsule wordt platte tekst), `SectorCapabilities`/`SectorUiCopy`/
+`appMarketingFlow`, alle sector-/property-conditionals. Property → **Location** in copy en data.
 
 ---
 
@@ -301,6 +310,169 @@ zie Dashboard §1 / Taken §4.1.
 ### 5.5 NIET overnemen
 Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboarding/demo, complexe
 `FacilityTeamAccess` manager-scoping (optioneel later). Property→Location.
+
+---
+
+## 6. Team
+
+**Doel:** beheer van **collega-gebruikers** (WinProx-accounts: admin) én **operationele teams +
+workers** (+ team-QR). In V1 zit dit op `/users` met een facility-teams-blok; in V2 houden we het
+als één **Team**-hub. Bron: `Users.php`, `FacilityTeams.php`, `facility-teams.blade.php`,
+team-QR route. **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
+
+### 6.1 Collega-gebruikers
+- Lijst + aanmaken/bewerken/deactiveren van gebruikers (admin); organisatieblok (naam/logo);
+  welkomst-/accountmail. Rollen: **admin** (+ **superuser** kan overnemen, los van dit scherm).
+
+### 6.2 Teams
+- Lijst: teamnaam (`label`), managers, aantal workers, actief/inactief.
+- Aanmaken/bewerken (naam, sorteervolgorde, **managers**, actief) — aanmaken/deactiveren = admin;
+  bewerken = admin of teammanager. Team-manager-concept (RBAC) **behouden**, sectorcopy eruit.
+- **Team-QR**: `field_qr_token` auto-gegenereerd bij aanmaak; printbare QR → publieke
+  `team`-veldportaal-URL (`/team/{token}`).
+
+### 6.3 Workers
+- Per team: workers toevoegen (voor-/achternaam), lijst met **icoon-status**, **icoon resetten**
+  (= ontgrendelt + wist icoon/devices/sessies — admin "unlock"), verwijderen.
+- Worker **actief/inactief**: in V1 geen admin-toggle (alleen in portaal gebruikt) → **V2: wél een
+  expliciete actief-toggle** in beheer (kleine verbetering).
+- Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen, admin reset heft op.
+
+### 6.4 NIET overnemen
+Hospitality `InternalTeams`-component, `category_slug`, triage-categorieën, `SectorUiCopy`/JSON
+sector-suffixes, marketing-query-params. Property→Location.
+
+**Device:** desktop-first (beheer). **Bouwvolgorde:** ná de QR-portaal-build (deelt worker/team-model).
+
+---
+
+## 7. Abonnement (proefperiode / plan)
+
+**Doel:** abonnementsbeheer (admin): proefperiode/grace-status, planlimieten, plan kiezen, beheren.
+Bron: `Billing.php`, `billing.blade.php`, `Tenant.php`, `config/billing.php`,
+`EnsureActiveSubscriptionOrTrial`. **Eén facility-trialplan; hospitality-plan eruit.**
+
+### 7.1 Status & toegang (behouden, generiek)
+- Tenant-velden: `trial_ends_at`, `billing_plan`, `billing_active_until`, `is_active`,
+  `stripe_customer_id` (optioneel).
+- `hasFullAppAccess()` = trial **of** betaald **of** grace; middleware blokkeert de app
+  (behalve `billing.*`, `faq.*`, logout) wanneer geen toegang.
+- **Proefperiode-capsule** (dashboard §1 + dit scherm): resterende dagen. V1 had battery-PNG's →
+  **V2: tekstuele/minimalistische capsule** (geen PNG-animatie).
+
+### 7.2 Plannen
+- Plankaarten met **limieten** (units/users) per plan; admin activeert (gesimuleerde activatie zet
+  `billing_plan` + `billing_active_until`, beëindigt trial). Enterprise = mailto.
+- **Grace-periode** na verloop behouden.
+
+### 7.3 Stripe — **BESLIST: later**
+Nu: **trial + plan-state + limieten + gesimuleerde activatie** (lokaal). Stripe-integratie
+(env price-ids, checkout, customer portal, webhooks) als **aparte latere fase**.
+
+### 7.4 NIET overnemen
+`micro_hospitality`, hospitality-trialplan-split, demo/marketing-query-params, sector-subtitels,
+battery-PNG-widget (vervangen door tekstcapsule).
+
+---
+
+## 8. FAQ & kennisbank (+ WinProx-assistent)
+
+**Doel:** in-app FAQ-accordeon voor ingelogde gebruikers; voedt de **help-chat/assistent**
+(zie dashboard §1). Bron: `faq.blade.php`, `lang/*/faq.php`, `HelpChat.php`,
+`config/help_chat_faq.php`, `HelpChatKnowledgeBaseEntry`, `HelpChatUnansweredQuestion`.
+
+### 8.1 FAQ-pagina
+- Accordeon met FAQ-items per **slug** (geen DB-categoriemodel nodig). Facility-specifieke items
+  (bv. interne teams, opvolging) **herschrijven** (geen contractor-flow).
+- **V2-opslag: `lang/[locale]/faq.json`** (4 talen, pariteit) — **niet** de oude dubbele
+  JSON+PHP-opslag. Let op cross-platform regel: vermijd `__('FAQ')` dat botst met een `faq`-groep;
+  gebruik unieke per-page keys.
+
+### 8.2 WinProx-assistent (help-chat)
+- Volgorde: **tenant-inzicht** (DB-tellingen) → **FAQ-matcher** (KB-entries + patroonconfig) →
+  **geen match** → vraag opslaan (`help_chat_unanswered_questions`) + **e-mail naar helpdesk/
+  superuser**; gebruiker kan een antwoord laten **escaleren** naar de helpdesk.
+- Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
+- **Superuser-beheer** (buiten dit menu): onbeantwoorde vragen + Q&A-kennisbank.
+
+### 8.3 NIET overnemen
+Contractor/owner-FAQ-slugs, hospitality-only help-chat-entries, real-estate `how_it_works`-flow,
+dubbele FAQ-opslag, sector-suffixes, mojibake (DE umlauts correct: ä/ö/ü/ß), foutieve facility-copy.
+
+---
+
+## 9. Juridische documenten (legal)
+
+**Doel:** statische juridische documenten (privacy, voorwaarden, cookies, DPA, subverwerkers),
+publiek + in-app, per taal. Bron: `routes/web.php` (legal.*), `layouts/legal.blade.php`,
+`legal/content/{locale}/*`, `config/legal.php`.
+
+### 9.1 Documenten & weergave
+- Vijf documenten: **privacy, voorwaarden (terms), cookies, DPA, subverwerkers**.
+- Per-locale inhoud; **laatst bijgewerkt**-datum (config); navigatie tussen documenten.
+- Facility-ingelogd: opent in **nieuw tabblad** vanuit sidebar; geen "← WinProx"-marketingterug.
+
+### 9.2 V2-opzet
+- **Eén schone legal-layout** met token-CSS/`wp-*` (geen aparte Arial `legal-pages.css`-stack;
+  eigen Vite-entry mag volgens stijlregel, maar dan token-gebaseerd).
+- Labels/meta in `lang/[locale]/legal.json` (4 talen). Operator-/jurisdictieblok uit config.
+- **Geen** acceptatie/versietracking (zoals V1) tenzij later gewenst.
+
+### 9.3 NIET overnemen
+`DemoSectorCopy` + `?sector=`-marketing, dubbele nav-labels, Arial niet-token CSS-stack.
+
+---
+
+## 10. Contact
+
+**Doel:** eenvoudige contactpagina. Bron: `contact.blade.php` (gast), `contact-auth.blade.php`
+(ingelogd). V1 = **geen** formulier/tabel, enkel **mailto** + verwijzing naar de assistent.
+
+### 10.1 V2
+- Ingelogd: app-layout, kaart met dashboard-link + **mailto** (`info@winprox.app`) + verwijzing naar
+  de **assistent** rechtsonder.
+- Gast: publieke layout, mailto + login-verwijzing.
+- Sidebar-label **vertaald** (niet hardcoded "Contact").
+- **BESLIST: mailto behouden** (zoals V1) + verwijzing naar de assistent; geen formulier/tabel.
+
+### 10.2 NIET overnemen
+Hospitality/facility lead-copy-varianten (één facility-copy), demo/marketing-query-params,
+foutieve `card_body_facility` (hotel-tekst in DE).
+
+---
+
+## 11. Welcome / landingspagina (publiek)
+
+**Doel:** publieke marketing-/landingspagina op `/`. Bron: V1 `resources/views/welcome-facility.blade.php`
++ home-route. **Facility-only, voorlopig ZONDER demo.** In V2 vervangt dit de tijdelijke
+`welcome.blade.php` (nu een stijl-preview).
+
+### 11.1 Structuur (behouden, opgeschoond)
+- **Nav:** WinProx-logo, **taal-pillen** (NL/FR/EN/DE), **Inloggen**, **Account aanmaken**.
+- **Hero:** kicker, titel, subtitel; CTA's **Account aanmaken** (primair) + **Inloggen** (ghost/lijn).
+- **Probleem** (3 kaarten) · **Oplossing** (lead + **QR-leaflet** als illustratie) · **Features**
+  (6 kaarten met iconen) · **Hoe werkt het** (stappen) · **CTA-band** · **screenshots** · **footer**
+  (juridische links + contact).
+
+### 11.2 Zonder demo (voorlopig)
+- **Verwijderen:** alle "Probeer demo"-CTA's, `demo.index`-links en de flow-stap "demo".
+- **Hoe werkt het** → herschrijven naar productflow: **1) QR scannen & melden · 2) taak naar team ·
+  3) afgehandeld** (i.p.v. demo→register→login).
+- **QR-leaflet:** behouden als **illustratie** (statisch voorbeeld); **geen** live demo-portaal-link
+  (`WelcomePageDemoPortal`) zolang demo uit staat. Later eventueel koppelen aan een echt voorbeeld.
+- Demo kan in een **latere fase** terugkomen (apart beslissen).
+
+### 11.3 Schoon maken (V2-regels)
+- `DemoSectorCopy::trans(...)` → **`lang/[locale]/welcome.json`** (4 talen, pariteit), unieke keys.
+- **Geen** sector-/marketing-query-params (`$publicMarketingFlow`, `?sector=`), geen sector-redirects
+  in de `/`-route.
+- **`wp-welcome-*`** CSS behouden maar **token-gebaseerd** (emerald + neutralen, geen losse hexen);
+  geen inline Tailwind-soup. Publieke layout (`layouts/public`).
+- Screenshots: eigen, actuele WinProx-screenshots als assets (TODO) i.p.v. de oude.
+
+### 11.4 NIET overnemen
+Sector-hub/real-estate/hospitality welcome-varianten + `/`-sector-routing, demo-flow, marketing-query-
+params, `DemoSectorCopy`. Property→Location in copy.
 
 ---
 

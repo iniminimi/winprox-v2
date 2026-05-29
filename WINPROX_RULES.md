@@ -16,6 +16,15 @@ FAQ & kennisbank, juridische documenten, contact, hulp-chat, briefing), zonder d
 UX** — **kleuren NIET kopiëren**. Behoud het minimale `standard`-thema (emerald als enige accent,
 wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 
+> ## ⚠ Werkwijze nr. 0 (hard) — Herlees ALTIJD eerst deze regels
+> **V1 is ontspoord doordat regels niet (her)gelezen werden.** Daarom, vóór én tijdens elke taak:
+> 1. Lees **`WINPROX_RULES.md`** en de relevante **`.cursor/rules/*`** opnieuw — ook bij kleine wijzigingen.
+> 2. Toets je plan expliciet aan: één stijl voor knoppen/pillen/kaders, minimale locales (4 talen
+>    in pariteit), token-CSS/`wp-*`, thin Livewire → Actions + Form Requests, case-sensitive paden,
+>    foto-golden-path, géén blur op beheer, geen sector-/contractor-/owner-overhead.
+> 3. Bij twijfel of conflict: **stop en herlees**, kies de regel — niet de snelste hack.
+> Doel: kleine, consistente diffs; geen wildgroei zoals in V1.
+
 ---
 
 ## 1. Stack
@@ -103,7 +112,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 - Structuur: **`lang/[locale]/[page].json`** (één bestand per pagina/module). Plus `common.json` voor gedeelde labels (knoppen, statussen).
 - Talen **altijd samen**: `nl`, `en`, `fr`, `de`. Uitbreidbaar (es, it, …) — talenlijst is data-gedreven.
-- Bestanden **klein houden**: alleen sleutels die echt gebruikt worden. Volledig herschreven vanaf nul; geen oude rommel meeslepen.
+- Bestanden **minimaal houden (hard)**: **alleen** sleutels die op het scherm écht gebruikt worden. Geen ongebruikte/legacy keys, geen duplicaten, geen "voor het geval dat". Volledig herschreven vanaf nul; geen oude rommel meeslepen. Bij twijfel: key verwijderen i.p.v. behouden.
 - **Eén sleutel-conventie:** lowercase, punt-genest, betekenisvol: `[page].[sectie].[element]` (bv. `issues.list.empty_title`, `common.button.save`).
 - **Nooit hardcoden** in Blade/PHP. Strikte JSON (geen comments/trailing comma's), UTF-8 **zonder BOM**.
 - Na elke edit: `npm run fix:locales` → `npm run check:locales` → `npm run check:locales:parity`. Vier talen moeten identieke sleutels hebben.
@@ -127,10 +136,14 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Tekst: kop `#111827`, body `#4b5563`, secundair `#6b7280`. **Nooit puur zwart `#000`.**
 - Accent emerald: `#059669` / `#047857` / `#ecfdf5` / `#bbf7d0`.
 
-### 6.4 Knoppen & pillen — ÉÉN definitie
+### 6.4 Knoppen, pillen & kaders — ÉÉN definitie, ALTIJD hergebruiken
+- **Hard principe (overal, altijd):** knoppen, pillen en kaders/kaarten hebben **één** gedeelde
+  stijl-definitie en worden **overal consistent hergebruikt**. **Nooit** per scherm opnieuw stijlen
+  met losse utility-combinaties of inline CSS. Eén visuele taal door de hele app — beheer én publiek.
 - **Knop:** altijd `.btn` + één variant (`--primary` emerald, `--ghost` secundair, `--warning` amber, `--danger` red). Geometrie uit tokens (hoogte 2.5rem, radius 1rem, `font-weight:700`). Hover `translateY(-2px)` + zachte schaduw; active terug naar 0. **Geen** losse utility-knoppen per scherm.
 - **Pil/status:** altijd `.wp-pill` + één variant per status: `--new` (Nieuw), `--progress` (In uitvoering), `--done` (Afgehandeld), `--closed` (Gesloten). **Geen tien stijlen voor dezelfde pil.**
-- Nieuwe variant nodig? Definieer hem één keer in de gedeelde CSS, hergebruik overal.
+- **Kader/kaart/paneel:** altijd `.wp-card` (oppervlak `#ffffff`, rand `#e5e7eb`, radius 12–16px, zachte gelaagde schaduw, consistente padding). Sectiekop binnen een kaart via gedeelde class, geen ad-hoc varianten. **Geen tien soorten kaders.**
+- Nieuwe variant nodig? Definieer hem **één keer** in de gedeelde CSS (tokens + component-class), hergebruik daarna overal. Wijk je af, dan eerst de gedeelde class uitbreiden — niet lokaal overschrijven.
 
 ### 6.5 Apparaat-targeting (responsive)
 - **Beheersschermen** (dashboard, meldingen, beheer van locaties/units/teams) → **laptop/desktop-first**. Mogen breed/meerkoloms zijn, maar blijven bruikbaar op kleiner scherm.
