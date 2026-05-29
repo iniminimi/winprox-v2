@@ -72,6 +72,21 @@
             "note_max": "Die Notiz ist zu lang."
         }
     },
+    "team": {
+        "title": "Teamübersicht",
+        "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
+        "claimable_hint": "Wir kennen Ihren Namen, aber Sie haben noch kein Symbol. Wählen Sie unten Ihr persönliches Symbol.",
+        "onboarding_done": "Sie sind registriert und angemeldet.",
+        "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
+        "register": {
+            "title": "Neuer Mitarbeiter",
+            "hint": "Geben Sie Ihren Namen ein und wählen Sie ein persönliches Symbol.",
+            "empty_team_hint": "Für dieses Team gibt es noch keine Mitarbeiter. Registrieren Sie sich, um zu beginnen.",
+            "choose_icon": "Wählen Sie Ihr persönliches Symbol",
+            "submit": "Registrieren",
+            "cta": "Neuen Mitarbeiter registrieren"
+        }
+    },
     "documents": {
         "download": "Herunterladen",
         "verification_required": "Verifizierung erforderlich",

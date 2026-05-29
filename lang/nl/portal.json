@@ -72,6 +72,21 @@
             "note_max": "De notitie is te lang."
         }
     },
+    "team": {
+        "title": "Teamoverzicht",
+        "read_only_hint": "Dit is een overzicht. Taken afhandelen kan alleen via de unit-QR ter plaatse.",
+        "claimable_hint": "We kennen je naam, maar je hebt nog geen icoon. Kies hieronder je persoonlijke icoon.",
+        "onboarding_done": "Je bent geregistreerd en aangemeld.",
+        "icon_taken": "Dit icoon is al in gebruik. Kies een ander.",
+        "register": {
+            "title": "Nieuwe medewerker",
+            "hint": "Vul je naam in en kies een persoonlijk icoon.",
+            "empty_team_hint": "Er zijn nog geen medewerkers voor dit team. Registreer jezelf om te starten.",
+            "choose_icon": "Kies je persoonlijke icoon",
+            "submit": "Registreren",
+            "cta": "Nieuwe medewerker aanmelden"
+        }
+    },
     "documents": {
         "download": "Downloaden",
         "verification_required": "Verificatie vereist",

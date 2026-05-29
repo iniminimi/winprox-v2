@@ -616,3 +616,15 @@
     height: 1.75rem;
 }
 
+.wp-icon-tile.is-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.wp-flash--muted {
+    background-color: var(--wp-surface-2);
+    border-color: var(--wp-border);
+    color: var(--wp-text-body);
+    font-weight: 500;
+}
+

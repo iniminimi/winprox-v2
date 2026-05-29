@@ -72,6 +72,21 @@
             "note_max": "La note est trop longue."
         }
     },
+    "team": {
+        "title": "Aperçu de l'équipe",
+        "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
+        "claimable_hint": "Nous connaissons votre nom, mais vous n'avez pas encore d'icône. Choisissez votre icône personnelle ci-dessous.",
+        "onboarding_done": "Vous êtes enregistré et connecté.",
+        "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
+        "register": {
+            "title": "Nouvel employé",
+            "hint": "Saisissez votre nom et choisissez une icône personnelle.",
+            "empty_team_hint": "Il n'y a pas encore d'employés pour cette équipe. Enregistrez-vous pour commencer.",
+            "choose_icon": "Choisissez votre icône personnelle",
+            "submit": "S'enregistrer",
+            "cta": "Enregistrer un nouvel employé"
+        }
+    },
     "documents": {
         "download": "Télécharger",
         "verification_required": "Vérification requise",
