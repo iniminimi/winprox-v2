@@ -1,0 +1,103 @@
+/*
+ | Knoppen — ÉÉN bron van waarheid.
+ |
+ | Gebruik altijd `.btn` + één variant. Geen losse utility-combinaties per scherm.
+ | Geometrie komt uit de gedeelde tokens (--wp-btn-*), kleur per variant uit status-tokens.
+*/
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: var(--wp-btn-height);
+    height: var(--wp-btn-height);
+    padding: 0 var(--wp-btn-padding-x);
+    border: 1px solid transparent;
+    border-radius: var(--wp-btn-radius);
+    font-size: var(--wp-btn-font-size);
+    font-weight: var(--wp-btn-font-weight);
+    line-height: 1.25;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: transform var(--wp-transition), box-shadow var(--wp-transition),
+        background-color var(--wp-transition), border-color var(--wp-transition), color var(--wp-transition);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--wp-shadow);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Primair (emerald) — de hoofd-CTA. */
+.btn--primary {
+    background-color: var(--wp-accent);
+    border-color: var(--wp-accent);
+    color: var(--wp-text-on-accent);
+}
+.btn--primary:hover {
+    background-color: var(--wp-accent-strong);
+    border-color: var(--wp-accent-strong);
+}
+
+/* Ghost — secundaire acties. */
+.btn--ghost {
+    background-color: transparent;
+    border-color: var(--wp-border);
+    color: var(--wp-text);
+}
+.btn--ghost:hover {
+    background-color: var(--wp-surface-2);
+}
+
+/* Waarschuwing (amber) — flow/let-op acties. */
+.btn--warning {
+    background-color: var(--wp-warning);
+    border-color: var(--wp-warning);
+    color: var(--wp-text-on-accent);
+}
+.btn--warning:hover {
+    background-color: var(--wp-warning-strong);
+    border-color: var(--wp-warning-strong);
+}
+
+/* Gevaar (red) — finale/destructieve acties. */
+.btn--danger {
+    background-color: var(--wp-danger);
+    border-color: var(--wp-danger);
+    color: var(--wp-text-on-accent);
+}
+.btn--danger:hover {
+    background-color: var(--wp-danger-strong);
+    border-color: var(--wp-danger-strong);
+}
+
+/* Maatvarianten (zelfde taal, andere schaal). */
+.btn--sm {
+    height: 2rem;
+    min-height: 2rem;
+    padding: 0 0.75rem;
+    font-size: 0.8125rem;
+}
+.btn--block {
+    width: 100%;
+}

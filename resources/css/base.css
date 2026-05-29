@@ -1,0 +1,58 @@
+/* Base: reset-aanvullingen, typografie en pagina-achtergrond op basis van tokens. */
+
+html {
+    font-family: 'Inter', 'Segoe UI Variable', system-ui, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--wp-bg);
+    color: var(--wp-text-body);
+    line-height: 1.5;
+    transition: background-color var(--wp-transition), color var(--wp-transition);
+}
+
+h1, h2, h3, h4 {
+    color: var(--wp-text);
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+a {
+    color: var(--wp-accent-text);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Sectie-/paginatitel — één gedeelde stijl. */
+.wp-section-title {
+    color: var(--wp-text);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.wp-page-title {
+    color: var(--wp-text);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+
+/* Cijfers/KPI's netjes uitlijnen. */
+.wp-tabular {
+    font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}

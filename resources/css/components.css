@@ -1,0 +1,64 @@
+/*
+ | Gedeelde UI-componenten. Alles leest tokens; geen harde kleuren.
+ | Hergebruik deze classes overal i.p.v. losse utility-combinaties.
+*/
+
+/* ---------------------------------------------------------------------------
+ | Kaart / paneel
+ * ------------------------------------------------------------------------- */
+.wp-card {
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-card-pad {
+    padding: 1.25rem;
+}
+
+/* ---------------------------------------------------------------------------
+ | Pil / statusbadge — ÉÉN definitie + varianten per status.
+ |
+ | De vier WinProx-statussen hebben elk exact één variant:
+ |   .wp-pill--new        Nieuw (Open)
+ |   .wp-pill--progress   In uitvoering
+ |   .wp-pill--done       Afgehandeld
+ |   .wp-pill--closed     Gesloten
+ * ------------------------------------------------------------------------- */
+.wp-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.125rem 0.625rem;
+    border: 1px solid transparent;
+    border-radius: var(--wp-radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.wp-pill--new {
+    background-color: var(--wp-info-soft);
+    border-color: var(--wp-info-border);
+    color: var(--wp-info-text);
+}
+
+.wp-pill--progress {
+    background-color: var(--wp-warning-soft);
+    border-color: var(--wp-warning-border);
+    color: var(--wp-warning-text);
+}
+
+.wp-pill--done {
+    background-color: var(--wp-accent-soft);
+    border-color: var(--wp-accent-border);
+    color: var(--wp-accent-text);
+}
+
+.wp-pill--closed {
+    background-color: var(--wp-surface-2);
+    border-color: var(--wp-border);
+    color: var(--wp-text-muted);
+}

@@ -1,0 +1,18 @@
+/* Layout: paginabreedte en basisritme. Bewust minimaal; uitbreiden per scherm later. */
+
+.wp-shell {
+    min-height: 100vh;
+    background-color: var(--wp-bg);
+}
+
+.wp-container {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 1.5rem;
+}
+
+/* Verticale ruimte tussen secties. */
+.wp-stack > * + * {
+    margin-top: 1.25rem;
+}

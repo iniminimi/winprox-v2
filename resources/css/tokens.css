@@ -1,0 +1,30 @@
+/*
+ | Structurele tokens — thema-ONAFHANKELIJK.
+ |
+ | Hier staan maten, radius, schaduw, knop-geometrie en transitie.
+ | KLEUREN staan NIET hier maar in themes/standard.css (en later andere thema's).
+ | Componenten verwijzen altijd naar deze variabelen, nooit naar harde waarden.
+*/
+
+:root {
+    /* Radius */
+    --wp-radius-sm: 0.5rem;
+    --wp-radius: 0.75rem;
+    --wp-radius-lg: 1rem;
+    --wp-radius-pill: 999px;
+
+    /* Schaduw (zacht, gelaagd, lage opacity) */
+    --wp-shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.04), 0 1px 1px rgba(17, 24, 39, 0.03);
+    --wp-shadow: 0 1px 3px rgba(17, 24, 39, 0.06), 0 4px 12px rgba(17, 24, 39, 0.05);
+    --wp-shadow-lg: 0 8px 24px rgba(17, 24, 39, 0.10), 0 2px 6px rgba(17, 24, 39, 0.06);
+
+    /* Knop-geometrie (gedeeld door alle knoppen) */
+    --wp-btn-height: 2.5rem;
+    --wp-btn-padding-x: 1rem;
+    --wp-btn-radius: 1rem;
+    --wp-btn-font-size: 0.875rem;
+    --wp-btn-font-weight: 700;
+
+    /* Transitie */
+    --wp-transition: 0.15s ease;
+}
