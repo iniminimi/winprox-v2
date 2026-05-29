@@ -13,6 +13,16 @@ enum TaskStatus: string
     case Done = 'done';          // Afgehandeld
     case Closed = 'closed';      // Gesloten
 
+    /**
+     * Statussen die als "open" gelden op de werkvloer (worker moet nog handelen).
+     *
+     * @return list<string>
+     */
+    public static function openValues(): array
+    {
+        return [self::New->value, self::InProgress->value];
+    }
+
     /** Vertaalsleutel (lang/[locale]/common.json -> common.status.*). */
     public function labelKey(): string
     {

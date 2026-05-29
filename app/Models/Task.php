@@ -37,4 +37,23 @@ class Task extends Model
     {
         return $this->belongsTo(InternalTeam::class, 'internal_team_id');
     }
+
+    /** Open op de werkvloer: nog Nieuw of In uitvoering. */
+    public function isOpen(): bool
+    {
+        return in_array($this->status, [TaskStatus::New, TaskStatus::InProgress], true);
+    }
+
+    /** Mag gestart worden: nog Nieuw. */
+    public function canStart(): bool
+    {
+        return $this->status === TaskStatus::New;
+    }
+
+    /** Mag afgehandeld worden: In uitvoering (of al gestart maar nog open). */
+    public function canComplete(): bool
+    {
+        return $this->status === TaskStatus::InProgress
+            || ($this->isOpen() && $this->started_at !== null);
+    }
 }

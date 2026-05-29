@@ -271,6 +271,39 @@ demo, hospitality, trades/work-types, complexe morning-briefing-routing. Propert
 
 ---
 
+## 5. Kalender (Facility-only)
+
+**Doel:** geplande taken en meldingen in een kalender. Bron: V1 `app/Livewire/Calendar.php`
+(alleen de **Facility**-takken behouden; hospitality/contractor/onboarding eruit).
+**Beheerscherm = nooit blur.**
+
+### 5.1 Weergave & navigatie
+- **Views:** maand / week / dag (toggle). Knoppen **vorige / volgende / vandaag**; periodelabel
+  (bv. "mei 2026", "maandag 4 mei 2026", "Week 04/05 – 10/05"). Maandgrid start op **maandag**.
+- **Type-toggle:** **Taken** (standaard) of **Meldingen**.
+- **Locatie-filter** (was `property_id`): toon alles of één locatie.
+- Per dag: kleine entries met **status-badge** (onze 4 statussen) + titel/omschrijving; klik → detail.
+
+### 5.2 Wat verschijnt waar
+- **Taken-modus:** taken met een **`scheduled_for`**-datum (vooral **recurring-cycli** §3.4/§4.4 +
+  handmatig geplande taken), gegroepeerd per dag. (V1 mergde dit met "operationele
+  briefing-entries"; voor V2 = gewoon geplande taken van de tenant/locatie.)
+- **Meldingen-modus:** meldingen op **aanmaakdatum**.
+
+### 5.3 Status-badges (verminderd)
+Gebruik onze pill-modifiers: `new`→Nieuw, `in_progress`(+oud `on_hold`)→In uitvoering,
+`done`→Afgehandeld, `closed`(+oud `not_executed`)→Gesloten.
+
+### 5.4 Briefing
+Vanuit de kalender (dag/team) link naar de **Briefing afdrukken** (taken van die dag per team) —
+zie Dashboard §1 / Taken §4.1.
+
+### 5.5 NIET overnemen
+Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboarding/demo, complexe
+`FacilityTeamAccess` manager-scoping (optioneel later). Property→Location.
+
+---
+
 ## QR-portaal (publiek, ná scan) — uitgebreid, overnemen uit `winprox_old`
 
 > Dit is het scherm dat een bezoeker/worker ziet **na het scannen van een QR-code**. In de oude
