@@ -144,3 +144,99 @@ WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels p
 **Dependencies (toevoegen):** `phpoffice/phpword: ^1.1`, `bacon/bacon-qr-code`, en PHP-extensie
 **gd** of **imagick** voor PNG-rendering. ⚠️ Let op: de "geen server-side resize"-regel geldt voor
 **foto-uploads**, niet voor QR-generatie — GD/Imagick is hier legitiem nodig.
+
+---
+
+## QR-portaal (publiek, ná scan) — uitgebreid, overnemen uit `winprox_old`
+
+> Dit is het scherm dat een bezoeker/worker ziet **na het scannen van een QR-code**. In de oude
+> app is dit zeer uitgebreid en werkt het goed → **gedrag overnemen**, maar **schoon herschreven**
+> (Property→Location, één sector, geen contractors/owners, geen debug-logging, geen dode variabelen).
+> Onze huidige nieuwe bouw heeft slechts een **minimale** meld-/portaalversie; dit hoofdstuk
+> beschrijft de **doel**-functionaliteit.
+
+### Twee QR-types / twee persona's
+- **Unit-QR** (`/melden/{unit_token}`, oud: `facility.report.show`): **burger** én **on-site worker**
+  zien dezelfde URL; de worker-acties verschijnen alleen als het toestel als veldtoestel herkend
+  wordt (device-cookie/verified sessie).
+- **Team-QR** (`/team/{field_qr_token}`, oud: `facility.team.field.show`): **worker**-overzicht van
+  open taken. Belangrijk: via team-QR zijn taakacties **alleen-lezen** — afhandelen moet via de
+  **unit-QR** (oude regel `actions_require_unit_qr`). (Te bevestigen of we deze beperking behouden.)
+
+### Unit-portaal — secties (burger)
+`home · new · issues · issue_detail · documents · announcements`
+- **home**: tenant-logo, locatie/unit-regel, tegels: **Nieuwe melding** (altijd), en — alleen indien
+  niet leeg — **Open meldingen**, **Mededelingen**, **Documenten**. Voor veldworkers extra: blok met
+  open taken + sign-in.
+- **new** (melden): veld **omschrijving** (verplicht, min 3) + **tot 4 foto's** (`image`, max 10 MB).
+  Geen naam/e-mail/categorie op de Facility-unitpagina. Submit → maakt:
+  - `Issue` (`source=tenant`, `category=unspecified`, `priority=medium`, `status=new`,
+    `report_finalized_at=now`), gescoped op tenant/location/unit.
+  - Foto's via `IssuePhotoStorage` (client comprimeert ≤1600px/JPEG ~72%, queue; server geen resize).
+  - **Automatisch een taak** voor het **standaardteam van de unit** (oud: `FacilityQrIntake`),
+    starttaakstatus = onze `Nieuw`/`assigned`-equivalent; geen team → enkel melding.
+  - Daarna flash "melding verzonden" → sectie `issues`.
+- **issues**: lijst open meldingen van deze unit (omschrijving), → **detail**.
+- **issue_detail**: omschrijving + datum; burger ziet evt. statusregel ("gepland"/"in uitvoering");
+  worker ziet sign-in + taakacties.
+- **documents**: titel + omschrijving; downloadlink alleen als `is_public && !requires_verification`,
+  anders "verificatie vereist". Bron: documenten gekoppeld aan **locatie** (en optioneel unit),
+  `is_active`, gepubliceerd (`published_at ≤ now`). (Oud: `PropertyDocument`.)
+- **announcements** (mededelingen): bericht-tekst; `is_active`, gepubliceerd en niet verlopen
+  (`expires_at`). Use-case: "volgende week groot onderhoud". (Oud: `PropertyAnnouncement`.)
+
+### Worker-identificatie & verificatie (anti-misbruik)
+Bedoeld voor gedeelde telefoons op de werkvloer:
+1. **Naam** (voor- + achternaam) → opzoeken in het team. Statussen: `found` (→ icoonstap),
+   `claimable` (match zonder icoon), `ambiguous` (meerdere matches), `not_found`.
+2. **Persoonlijk icoon** bevestigen (uit een vaste set iconen) → bewijst identiteit.
+3. **Device-cookie** (1 jaar) onthoudt de worker per toestel; **unit-field-trust** ~12u na
+   geslaagde on-site icoonbevestiging.
+4. **Lockout**: na **2** foute icoonpogingen geblokkeerd (sessie + worker-rij
+   `field_icon_locked_at`); beheerder kan ontgrendelen/icoon resetten.
+5. **"Aanmelden als andere medewerker"** wist device/sessie/trust.
+6. **Team-QR** wist verificatie bij elke scan (icoon opnieuw bevestigen) en kan **open registratie**
+   bieden als het team nog geen actieve workers heeft (onboarding: worker + icoon aanmaken).
+
+### Worker-taakafhandeling
+- **Start**: taak → `In uitvoering` (`started_at`).
+- **Afhandelen**: optionele notitie (max 2000) + tot 4 foto's → vastgelegd als `IssueUpdate`
+  (notitie/foto's); taak → `Afgehandeld` (`completed_at`).
+- **Rollup**: zijn er geen open taken meer op de melding → melding → `Gesloten`.
+- Worker ziet de **melder-foto's** bij de taak (op de publieke worker-weergave).
+
+### Toegang/gating (oud: `ResidentPortalAccess`)
+Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder geldig abonnement,
+tenant inactief, locatie inactief, unit inactief, team inactief. 404 bij onbekend token.
+
+### Locale
+`?lang=nl|fr|en|de` → sessie + cookie (1 jaar); taal-pillen op het portaal; standaard nl.
+
+### Layout/UX (alleen structuur, geen kleuren)
+Mobile-first kaart, grote tapbare tegels op home, full-width primaire knoppen, sticky acties,
+foto-picker 96×96 met previews, worker-iconenraster, status-chips. Minimale `standard`-stijl.
+
+### NIEUW t.o.v. oude app: moderatie/blur (alleen publiek)
+De oude app heeft **geen** blur/goedkeuring (geen `approved_at`). Dit is **onze nieuwe eis**:
+- Een via QR aangemaakte melding is **niet goedgekeurd** (`approved_at` null).
+- Op de **publieke** portaalpagina's worden **omschrijving én foto's geblurd** met overlay
+  "Wacht op controle" tot een beheerder/medewerker goedkeurt (`ApproveIssueAction`).
+- **Beheerschermen blurren nooit** (zie de hardregel bovenaan).
+
+### NIET overnemen (cruft / vereenvoudiging)
+- `debug-d00184.log`-logging in `render()`; dode render-variabelen (`showFieldWorkerTaskEntry`,
+  `issueUpdatePhotoPaths`).
+- `property_*`-redirect, generieke `ReportIssue`/`TeamFieldPortal`, JSON
+  `report.documents`/`report.announcements` (wij doen Livewire), sector/hospitality/contractor/owner-
+  takken. Property→Location overal.
+- Beslissen: unit-portaal `claimable` doodlopend vs. unified onboarding (oud: registratie alleen via
+  team-QR).
+
+### Bron-bestanden (oud, ter referentie bij herbouw)
+`app/Livewire/FacilityUnitPortal.php`, `app/Livewire/FacilityTeamFieldPortal.php`,
+`app/Support/FacilityUnitPortal.php`, `app/Support/FacilityTeamFieldPortal.php`,
+`app/Support/FacilityQrIntake.php`, worker-stack (`FacilityWorkerSession`,
+`FacilityWorkerPortalVerification`, `FacilityWorkerIcon`, `FacilityWorkerIconSignInGuard`,
+`FacilityUnitWorkerSignIn`), `FacilityWorkerIssueEvidence`, `ResidentPortalAccess`,
+`resources/views/livewire/facility-unit-portal.blade.php` (+ team-variant),
+`resources/js/image-upload-compress.js`.
