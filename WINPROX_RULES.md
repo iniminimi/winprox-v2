@@ -129,11 +129,17 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ## 7. Foto-upload (QR-meldingen) — golden path
 
-1. Client-side comprimeren vóór upload (max 1600px, JPEG ~72%) in `.wp-photo-upload-area`.
+1. Client-side comprimeren vóór upload (max 1600px, JPEG ~72%) in `.wp-photo-upload-area` (tot 4 foto's).
 2. Directe preview via lokale `objectURL`.
 3. Upload op achtergrond (queue), UI niet blokkeren.
 4. `wire:ignore` op de upload-area; **geen** `wire:model` op de file-input.
-5. Server slaat op zonder backend-resize (geen Imagick/GD-resize).
+5. Server slaat op zonder backend-resize (geen Imagick/GD-resize). Foto's in tabel `issue_photos`.
+
+### 7.1 Moderatie (review vóór publicatie) — verplicht
+- Een melding uit een QR-inzending is **niet goedgekeurd** bij aanmaken (`issues.approved_at` is null).
+- Zolang niet goedgekeurd worden **beschrijving én foto's geblurd** getoond met overlay "Wacht op controle" — overal waar ze zichtbaar zijn (publiek/portaal én previews in de beheerlijst). Gebruik de klasse **`.wp-pending-review`** (blur + overlay).
+- Een beheerder/medewerker keurt goed via **`ApproveIssueAction`** (zet `approved_at`/`approved_by`); pas dan unblurt de inhoud. Afkeuren = verwijderen.
+- Doel: voorkomen dat een malafide melder compromitterende foto's of tekst publiceert.
 
 ---
 

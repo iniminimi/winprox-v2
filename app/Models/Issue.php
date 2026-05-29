@@ -21,10 +21,13 @@ class Issue extends Model
         'reporter_contact',
         'description',
         'status',
+        'approved_at',
+        'approved_by',
     ];
 
     protected $casts = [
         'status' => TaskStatus::class,
+        'approved_at' => 'datetime',
     ];
 
     public function location(): BelongsTo
@@ -45,6 +48,25 @@ class Issue extends Model
     public function updates(): HasMany
     {
         return $this->hasMany(IssueUpdate::class);
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(IssuePhoto::class);
+    }
+
+    public function approvedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'approved_by');
+    }
+
+    /**
+     * Tot goedkeuring blijven beschrijving + foto's geblurd (moderatie van
+     * QR-inzendingen om compromitterende inhoud te voorkomen).
+     */
+    public function isApproved(): bool
+    {
+        return $this->approved_at !== null;
     }
 
     /**
