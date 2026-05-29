@@ -14,6 +14,9 @@ return new class extends Migration
             $table->foreignId('issue_id')->constrained()->cascadeOnDelete();
             $table->foreignId('internal_team_id')->nullable()->constrained()->nullOnDelete();
             $table->string('status', 20)->default('new')->index();
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('completed_at')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

@@ -13,7 +13,11 @@ class Unit extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'location_id', 'name', 'qr_token'];
+    protected $fillable = ['tenant_id', 'location_id', 'default_internal_team_id', 'name', 'qr_token', 'is_active'];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 
     protected static function booted(): void
     {
@@ -27,6 +31,11 @@ class Unit extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function defaultInternalTeam(): BelongsTo
+    {
+        return $this->belongsTo(InternalTeam::class, 'default_internal_team_id');
     }
 
     public function issues(): HasMany

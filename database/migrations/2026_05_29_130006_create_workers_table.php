@@ -12,7 +12,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('internal_team_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('field_icon_slug')->nullable();
+            $table->unsignedInteger('field_icon_failed_attempts')->default(0);
+            $table->timestamp('field_icon_locked_at')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

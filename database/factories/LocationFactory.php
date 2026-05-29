@@ -17,6 +17,7 @@ class LocationFactory extends Factory
             'tenant_id' => Tenant::factory(),
             'name' => fake()->streetName(),
             'address' => fake()->address(),
+            'is_active' => true,
         ];
     }
 }

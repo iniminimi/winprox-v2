@@ -88,7 +88,8 @@ class FieldPortal extends Component
     public function render()
     {
         $workers = Worker::where('internal_team_id', $this->teamId)
-            ->orderBy('name')
+            ->orderBy('first_name')
+            ->orderBy('last_name')
             ->get();
 
         $tasks = $this->workerId

@@ -18,6 +18,7 @@ class UnitFactory extends Factory
             'tenant_id' => Tenant::factory(),
             'location_id' => Location::factory(),
             'name' => fake()->bothify('Asset ##??'),
+            'is_active' => true,
         ];
     }
 }

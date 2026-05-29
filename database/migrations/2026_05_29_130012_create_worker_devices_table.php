@@ -8,18 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('internal_teams', function (Blueprint $table) {
+        Schema::create('worker_devices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
-            $table->string('field_qr_token', 64)->unique();
-            $table->boolean('is_active')->default(true);
+            $table->foreignId('worker_id')->constrained()->cascadeOnDelete();
+            $table->string('device_token', 64)->unique();
+            $table->timestamp('last_seen_at')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('internal_teams');
+        Schema::dropIfExists('worker_devices');
     }
 };

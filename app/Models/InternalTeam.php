@@ -12,7 +12,11 @@ class InternalTeam extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'name', 'field_qr_token'];
+    protected $fillable = ['tenant_id', 'name', 'field_qr_token', 'is_active'];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 
     protected static function booted(): void
     {
@@ -26,6 +30,11 @@ class InternalTeam extends Model
     public function workers(): HasMany
     {
         return $this->hasMany(Worker::class);
+    }
+
+    public function activeWorkerCount(): int
+    {
+        return (int) $this->workers()->where('is_active', true)->count();
     }
 
     public function tasks(): HasMany

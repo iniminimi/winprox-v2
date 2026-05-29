@@ -214,6 +214,63 @@ desktop-handoff-login, `report_finalized_at`, categorie-verplichting. Property�
 
 ---
 
+## 4. Taken
+
+**Doel:** beheerlijst van alle **taken**. Een taak = werk onder een melding, toegewezen aan **één
+team**. Bron: V1 `app/Livewire/Tasks.php` + `app/Support/FacilityTaskStatus.php` +
+`app/Livewire/TaskDetail.php` (uitgedund: geen contractors/invitations/quoting, onboarding,
+hospitality, trades/work-types). **Beheerscherm = nooit blur.**
+
+### 4.0 Statusmapping (V1 → V2, verminderd)
+| V1-taakstatus | V2 |
+|---|---|
+| `assigned` (+ legacy `open`/`invited`/`quoting`) | **Nieuw (Open)** (`new`) |
+| `in_progress`, `on_hold` | **In uitvoering** (`in_progress`) |
+| `completed` | **Afgehandeld** (`done`) |
+| `not_executed` | **Gesloten** (`closed`) |
+
+- Onze `TaskStatus`-enum (`new/in_progress/done/closed`) is leidend. `on_hold` (pauze, bv. "wacht op
+  onderdeel") en `not_executed` (niet uitgevoerd) verdwijnen als **aparte** status maar blijven als
+  **reden-notitie** behouden (zie 4.3).
+- Een nieuwe taak start op **Nieuw** (team is al gekoppeld bij aanmaak/intake).
+
+### 4.1 Lijst
+- Header: titel + ghost **"Briefing afdrukken"** (taken van vandaag per team).
+- Optioneel **"Nieuwe taken"**-snelblok bovenaan (recent aangemaakte taken met status Nieuw).
+- **Filterkaart**: status-select (4 statussen + "alle") + GO!, **team**-select, **zoek**veld,
+  checkbox **"terugkerend"** (alleen recurring-cycli). Zoeken over: taaknotitie/omschrijving,
+  melding-omschrijving + melder, en locatie (naam/adres/postcode/plaats) + unitnaam.
+- **Groepering per status** met accent-header + telbadge, volgorde
+  **Nieuw → In uitvoering → Afgehandeld → Gesloten**, nieuwste eerst.
+- **Taakkaart**: melding-omschrijving (onverkort — beheer), locatie · unit · adres, **team**,
+  status-pill, evt. **gepland/vervaldatum** (recurring), "aangemaakt door". Klik → taakdetail.
+
+### 4.2 Taakdetail
+- Toont de melding-context + de taak; statuswijziging (4.3); notities/voortgang (`IssueUpdate`);
+  evt. foto's van melder/worker (onverkort in beheer).
+
+### 4.3 Statuswijziging (verminderde transities + reden-notitie)
+Toegestane overgangen tussen de 4 statussen (afgeleid van V1):
+- **Nieuw** → In uitvoering · Afgehandeld · **Gesloten** (= niet uitgevoerd, reden vereist).
+- **In uitvoering** → Afgehandeld · **Gesloten** (reden vereist) · terug naar In uitvoering met
+  "pauze"-notitie (was `on_hold`).
+- **Afgehandeld** → (eind) — geen verdere overgang.
+- **Gesloten** → heropenen naar Nieuw (correctie) toegestaan.
+- **Verplichte reden-notitie** bij: pauzeren (oud `on_hold`) en sluiten-zonder-uitvoering
+  (oud `not_executed`). Logica in een Action; notitie als `IssueUpdate`.
+- Bij **Afgehandeld** → meldingstatus rolt mee op (alle taken klaar → melding Afgehandeld/Gesloten,
+  bestaande `Issue::recalculateStatus`).
+
+### 4.4 Terugkerende taakcycli
+Taken die uit een **terugkerende melding** (§3.4) komen zijn `is_recurring_cycle` met `due_at`/
+`scheduled_for`/`cycle_number`; verschijnen in de **Kalender** (§5). Samen bouwen met recurring.
+
+### 4.5 NIET overnemen
+Contractors + `TaskInvitation`/quoting/`expired_invitations`-filter, assign/invite-modi, onboarding/
+demo, hospitality, trades/work-types, complexe morning-briefing-routing. Property→Location.
+
+---
+
 ## QR-portaal (publiek, ná scan) — uitgebreid, overnemen uit `winprox_old`
 
 > Dit is het scherm dat een bezoeker/worker ziet **na het scannen van een QR-code**. In de oude

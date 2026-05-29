@@ -15,6 +15,9 @@ return new class extends Migration
             $table->foreignId('unit_id')->nullable()->constrained()->nullOnDelete();
             $table->string('title');
             $table->text('body');
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
         });
     }

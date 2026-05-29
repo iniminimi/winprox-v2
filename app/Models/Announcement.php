@@ -3,14 +3,30 @@
 namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Announcement extends Model
 {
-    use BelongsToTenant;
+    use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'location_id', 'unit_id', 'title', 'body'];
+    protected $fillable = [
+        'tenant_id',
+        'location_id',
+        'unit_id',
+        'title',
+        'body',
+        'is_active',
+        'published_at',
+        'expires_at',
+    ];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+        'published_at' => 'datetime',
+        'expires_at' => 'datetime',
+    ];
 
     public function location(): BelongsTo
     {

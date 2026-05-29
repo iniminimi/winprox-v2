@@ -12,8 +12,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('location_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('default_internal_team_id')->nullable()->constrained('internal_teams')->nullOnDelete();
             $table->string('name');
             $table->string('qr_token', 64)->unique();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

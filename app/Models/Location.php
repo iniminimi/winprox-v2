@@ -11,7 +11,11 @@ class Location extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'name', 'address'];
+    protected $fillable = ['tenant_id', 'name', 'address', 'is_active'];
+
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
 
     public function units(): HasMany
     {

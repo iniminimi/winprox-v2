@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tenant_id')->constrained()->cascadeOnDelete();
             $table->foreignId('issue_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('issue_update_id')->nullable()->constrained('issue_updates')->nullOnDelete();
             $table->string('path');
             $table->timestamps();
         });

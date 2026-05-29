@@ -17,10 +17,15 @@ class Task extends Model
         'issue_id',
         'internal_team_id',
         'status',
+        'started_at',
+        'completed_at',
+        'note',
     ];
 
     protected $casts = [
         'status' => TaskStatus::class,
+        'started_at' => 'datetime',
+        'completed_at' => 'datetime',
     ];
 
     public function issue(): BelongsTo

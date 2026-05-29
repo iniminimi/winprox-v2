@@ -14,7 +14,14 @@ return new class extends Migration
             $table->foreignId('location_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('unit_id')->nullable()->constrained()->nullOnDelete();
             $table->string('title');
+            $table->text('description')->nullable();
             $table->string('file_path');
+            $table->string('mime_type')->nullable();
+            $table->unsignedBigInteger('file_size_bytes')->nullable();
+            $table->boolean('is_public')->default(true);
+            $table->boolean('requires_verification')->default(false);
+            $table->boolean('is_active')->default(true);
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

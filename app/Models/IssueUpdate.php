@@ -5,16 +5,22 @@ namespace App\Models;
 use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class IssueUpdate extends Model
 {
     use BelongsToTenant;
 
-    protected $fillable = ['tenant_id', 'issue_id', 'user_id', 'worker_id', 'body'];
+    protected $fillable = ['tenant_id', 'issue_id', 'user_id', 'worker_id', 'kind', 'body'];
 
     public function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
+    }
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(IssuePhoto::class);
     }
 
     public function user(): BelongsTo

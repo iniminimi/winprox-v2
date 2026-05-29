@@ -16,6 +16,7 @@ class InternalTeamFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'name' => fake()->randomElement(['Technische dienst', 'Schoonmaak', 'Onderhoud', 'Logistiek']),
+            'is_active' => true,
         ];
     }
 }

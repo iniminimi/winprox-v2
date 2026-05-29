@@ -16,7 +16,7 @@
                             class="btn btn--ghost btn--block"
                             wire:key="worker-{{ $worker->id }}"
                             wire:click="selectWorker({{ $worker->id }})">
-                        {{ $worker->name }}
+                        {{ $worker->displayName() }}
                     </button>
                 @empty
                     <p class="wp-muted">{{ __('field-portal.identify.empty') }}</p>
@@ -25,7 +25,7 @@
         </div>
     @else
         <div class="wp-card wp-card-pad wp-row">
-            <span class="wp-text-body">{{ __('field-portal.tasks.signed_in_as') }} <strong>{{ collect($workers)->firstWhere('id', $workerId)?->name }}</strong></span>
+            <span class="wp-text-body">{{ __('field-portal.tasks.signed_in_as') }} <strong>{{ collect($workers)->firstWhere('id', $workerId)?->displayName() }}</strong></span>
             <button type="button" class="btn btn--ghost btn--sm" wire:click="signOut">{{ __('field-portal.tasks.sign_out') }}</button>
         </div>
 
