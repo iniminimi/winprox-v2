@@ -47,10 +47,26 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 
 ## 3. Architectuur (verplicht)
 
+### 3.0 Integration First (hard, fundament)
+- **Alle business logic is volledig onafhankelijk van de UI.** Een Action moet **identiek**
+  aanroepbaar zijn door **Livewire, REST API, Webhook, Scheduler, Queue Job en CLI Command** —
+  **zonder enige code-duplicatie**.
+- Gevolg voor Actions:
+  - **Geen** `auth()`, `request()`, `session()`, flash, redirects of Blade/HTTP-afhankelijkheden
+    binnen een Action. Geef **expliciete** input mee: gevalideerde data + **actor-context**
+    (uitvoerende user/worker + tenant) als argumenten/DTO.
+  - **Return data** (model/DTO/primitives), nooit een view of HTTP-response.
+  - Validatie woont in **Form Requests** voor HTTP-ingangen, maar de regels zijn **herbruikbaar**
+    (bv. een statische `rules()`) zodat niet-HTTP-ingangen (scheduler/CLI/job) dezelfde validatie
+    kunnen toepassen.
+  - Idempotent/queue-veilig waar relevant; tenant-scope expliciet (nooit impliciet via globale state).
+- Elke ingang (Livewire-component, API-controller, webhook-handler, command, job) is **dun**:
+  input verzamelen → valideren → **één** Action aanroepen → resultaat presenteren in dat kanaal.
+
 ### 3.1 Actions — alle business logic
 - Alle business logic in `app/Actions/[Module]/[Naam]Action.php`.
-- Eén publieke methode: `handle()`.
-- Actions doen DB-mutaties, notificaties, jobs, berekeningen. Een Action mag een andere Action aanroepen.
+- Eén publieke methode: `handle(...)` met expliciete argumenten (zie §3.0); geen verborgen globals.
+- Actions doen DB-mutaties, notificaties, jobs, berekeningen, **event-dispatch (webhooks)**. Een Action mag een andere Action aanroepen.
 - Geen logica dupliceren: bestaat de workflow al, roep de Action aan.
 
 ### 3.2 Livewire-componenten — dun
@@ -60,8 +76,23 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 ### 3.3 Form Requests — validatie
 - Validatieregels altijd in `app/Http/Requests/[Module]/[Naam]Request.php`. Nooit in Livewire of Action.
 
-### 3.4 API (indien aanwezig)
-- Zelfde patroon als Livewire en **dezelfde** Form Requests.
+### 3.4 API & Webhooks — first-class (vanaf het begin)
+- **WinProx is API-first.** Elke domeinmutatie loopt via een **Action**; web (Livewire) én **REST API**
+  zijn slechts twee dunne ingangen op **dezelfde Actions + dezelfde Form Requests**. Nooit logica
+  dupliceren voor de API.
+- **REST API:** versioned onder **`/api/v1`**, JSON in/uit, **token-auth via Laravel Sanctum**
+  (personal access tokens, per gebruiker, **tenant-scoped** via de token-eigenaar). Consistente
+  response-envelope + foutformaat; paginatie op lijsten. Routes in `routes/api.php`,
+  controllers in `app/Http/Controllers/Api/V1/...` (dun → Form Request → Action → JSON resource).
+- **Webhooks (uitgaand):** domein-events (bv. `issue.created`, `issue.approved`,
+  `issue.status_changed`, `task.created`, `task.started`, `task.completed`) worden **per tenant**
+  naar geregistreerde endpoints gestuurd. Verplicht: **queued** levering, **HMAC-signature** header
+  (shared secret per endpoint), **retries** met backoff, en een **delivery-log**. Beheer van
+  endpoints + events in de app (admin).
+- **Webhooks (inkomend):** generieke, geverifieerde ontvangst-endpoints onder `/api/v1/hooks/...`
+  (signature/secret check) → mappen naar een Action. (Stripe-webhooks blijven hun eigen latere fase.)
+- **Elke nieuwe feature** levert daarom mee: (a) de Action(s), (b) waar zinvol een API-endpoint, en
+  (c) de relevante webhook-event(s). Test API + webhook-dispatch in Pest.
 
 ---
 

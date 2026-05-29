@@ -320,23 +320,39 @@ workers** (+ team-QR). In V1 zit dit op `/users` met een facility-teams-blok; in
 als één **Team**-hub. Bron: `Users.php`, `FacilityTeams.php`, `facility-teams.blade.php`,
 team-QR route. **Sector/hospitality (`InternalTeams`, `category_slug`) eruit.**
 
-### 6.1 Collega-gebruikers
-- Lijst + aanmaken/bewerken/deactiveren van gebruikers (admin); organisatieblok (naam/logo);
-  welkomst-/accountmail. Rollen: **admin** (+ **superuser** kan overnemen, los van dit scherm).
+### 6.0 Rollen (drie actoren — hard)
+- **Beheerder (`admin`)** — login-account; **kan alles**: collega-accounts aanmaken/bewerken/
+  deactiveren, **bedrijfsgegevens** aanpassen, teams aanmaken/deactiveren, workers beheren,
+  abonnement. (`superuser` = platformrol die kan overnemen, los van dit scherm.)
+- **Medewerker (`employee`)** — login-account; **kan minder**: operationeel (dashboard, meldingen
+  incl. goedkeuren, taken, locaties/units, kalender) + workers/teams-inhoud beheren. **Geen**
+  accountbeheer, **geen** bedrijfsgegevens, **geen** abonnement.
+- **Worker** — veldmedewerker **zonder login** (identificatie via naam + persoonlijk icoon op het
+  QR-portaal). **Handelt taken af.** Elke worker kan **teamleader** zijn.
+- **Teamleader** = een worker met vlag `is_teamleader`. Mag **iconen vrijgeven** (lockout + icoon van
+  een collega-worker resetten) — in het **veld-portaal** (teamleader bevestigt eerst eigen icoon).
+- Implementatie: `users.role` (`admin`|`employee`), `workers.is_teamleader` (bool). Géén losse
+  "team-manager"-user-pivot meer (RBAC verloopt via `role`).
+
+### 6.1 Collega-gebruikers (alleen admin)
+- Lijst + aanmaken/bewerken/deactiveren van gebruikers, met **rol** (admin/medewerker);
+  organisatieblok (bedrijfsnaam, logo optioneel); welkomst-/accountmail (set-password-link via
+  reset-broker). `users.is_active` → inactief = geen login.
 
 ### 6.2 Teams
-- Lijst: teamnaam (`label`), managers, aantal workers, actief/inactief.
-- Aanmaken/bewerken (naam, sorteervolgorde, **managers**, actief) — aanmaken/deactiveren = admin;
-  bewerken = admin of teammanager. Team-manager-concept (RBAC) **behouden**, sectorcopy eruit.
+- Lijst: teamnaam, aantal actieve workers, actief/inactief.
+- Aanmaken/bewerken (naam, `sort_order`, actief) — **aanmaken/deactiveren = admin**; inhoud
+  bewerken = admin of medewerker. Geen sectorcopy.
 - **Team-QR**: `field_qr_token` auto-gegenereerd bij aanmaak; printbare QR → publieke
   `team`-veldportaal-URL (`/team/{token}`).
 
 ### 6.3 Workers
-- Per team: workers toevoegen (voor-/achternaam), lijst met **icoon-status**, **icoon resetten**
-  (= ontgrendelt + wist icoon/devices/sessies — admin "unlock"), verwijderen.
-- Worker **actief/inactief**: in V1 geen admin-toggle (alleen in portaal gebruikt) → **V2: wél een
-  expliciete actief-toggle** in beheer (kleine verbetering).
-- Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen, admin reset heft op.
+- Per team: workers toevoegen (voor-/achternaam), lijst met **icoon-status**; **teamleader-vlag**
+  (`is_teamleader`) toewijzen/intrekken; **actief/inactief**-toggle (V2-verbetering); verwijderen.
+- **Icoon vrijgeven/resetten** (= ontgrendelt lockout + wist icoon/devices/sessies):
+  - In **beheer** (Team-hub): door admin/medewerker.
+  - In het **veld-portaal**: door een **teamleader** van het team (follow-up op de portaal-build).
+- Icoon-set = **12** (zie QR-portaal); lockout automatisch na 2 foute pogingen.
 
 ### 6.4 NIET overnemen
 Hospitality `InternalTeams`-component, `category_slug`, triage-categorieën, `SectorUiCopy`/JSON
