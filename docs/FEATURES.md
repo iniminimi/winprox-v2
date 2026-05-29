@@ -86,7 +86,8 @@ Acties: **Annuleren** / **Locatie opslaan**. Validatie via Form Request; logica 
   **"Deactiveren"**, **"QR-code locatie (algemeen)"** (algemene locatie-QR, los van unit-QR's).
 - Kaart **"Units"** met badge **"{n} Totaal"** + "Beheer units gekoppeld aan deze locatie."
   Knoppen:
-  - **"QR-stickerblad downloaden"** → printbaar vel met QR-codes van de units (QR-pack).
+  - **"QR-stickerblad downloaden"** → **MS Word (.docx)** met **Avery 55×55 mm, 15 stickers/A4**
+    (zie §2.5 — werkt perfect in oude app, **overnemen i.p.v. herbouwen**).
   - **"+ Unit toevoegen"** → unit per stuk.
   - **"Bulk units toevoegen"** → modal (§2.4).
 - **"Recente bulk-aanmaak"**: lijst van bulk-batches (datum/tijd · aantal · unitnaam-bereik),
@@ -120,3 +121,26 @@ qr_token, bulk-batch-referentie t.b.v. "recente bulk-aanmaak", actief/inactief).
 locatie-detail met vorige/volgende, algemene locatie-QR, QR-stickerblad (QR-pack) downloaden,
 unit-CRUD per stuk, **bulk-aanmaak met patroon + preview**, recente-bulk-beheer met veilige
 verwijderregels (niet verwijderen wat een melding/taak heeft), unit-QR → publieke meld-link.
+
+### 2.5 QR-stickerblad (.docx) — OVERNEMEN uit `winprox_old`
+De Word-export werkt perfect in de oude app → **bijna 1-op-1 porten**, niet herbouwen. Formaat:
+**Avery 55×55 mm, 15 stickers per A4** (5 rijen × 3 labelkolommen + gutterkolommen), QR ±35 mm met
+WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels per sticker.
+
+**Bron (kopiëren, `App\Support\Qr\…` namespace behouden):**
+- `app/Support/Qr/Word/Avery55x55WordStickerSheetBuilder.php` — bouwt de .docx (PhpWord, vaste
+  Avery-marges/maten, 5×5 tabel met label-kolommen [0,2,4]).
+- `app/Support/Qr/Word/QrStickerWordExporter.php` — orchestratie/entry-point.
+- `app/Support/Qr/Word/WordDocxStickerExportSanitizer.php` — post-processing van de .docx.
+- `app/Support/Qr/QrStickerSheetTemplate.php` (enum: labels-per-pagina), `QrStickerEntry.php`
+  (DTO: reportUrl + primary/secondary label), `FacilityQrPackStickerEntries.php`
+  (units → sticker-entries).
+- `app/Support/Qr/QrCodePngWriter.php` — QR-PNG met logo-overlay (bacon/bacon-qr-code + GD/Imagick).
+- `app/Http/Controllers/FacilityQrPackDownloadController.php` — download-route.
+- Tests: `FacilityQrPackWordDownloadTest`, `FacilityQrPackStickerEntriesTest`,
+  `WordDocxStickerExportSanitizerTest` (mee overnemen).
+- Asset: `public/images/Winprox_logo_200.png` (logo-overlay).
+
+**Dependencies (toevoegen):** `phpoffice/phpword: ^1.1`, `bacon/bacon-qr-code`, en PHP-extensie
+**gd** of **imagick** voor PNG-rendering. ⚠️ Let op: de "geen server-side resize"-regel geldt voor
+**foto-uploads**, niet voor QR-generatie — GD/Imagick is hier legitiem nodig.
