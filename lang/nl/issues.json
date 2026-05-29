@@ -1,0 +1,39 @@
+{
+    "pending_review": "Wacht op controle",
+    "approve": "Goedkeuren",
+    "list": {
+        "title": "Meldingen",
+        "new": "Nieuwe melding",
+        "view": "Bekijken",
+        "empty": "Er zijn nog geen meldingen."
+    },
+    "create": {
+        "title": "Nieuwe melding",
+        "location": "Locatie",
+        "location_none": "Geen locatie",
+        "unit": "Eenheid",
+        "unit_none": "Geen eenheid",
+        "reporter_name": "Naam melder",
+        "reporter_contact": "Contact melder",
+        "description": "Omschrijving",
+        "teams": "Teams",
+        "teams_hint": "Elk gekozen team krijgt een taak voor deze melding.",
+        "teams_empty": "Er zijn nog geen teams.",
+        "submit": "Melding aanmaken"
+    },
+    "errors": {
+        "description_required": "Geef een omschrijving van de melding.",
+        "description_max": "De omschrijving is te lang."
+    },
+    "show": {
+        "title": "Melding",
+        "back": "Terug naar meldingen",
+        "report": "Melding",
+        "tasks": "Taken",
+        "tasks_empty": "Er zijn nog geen taken.",
+        "no_team": "Geen team",
+        "add_task": "Taak toevoegen voor een team",
+        "add_task_placeholder": "Kies een team",
+        "add_task_submit": "Taak toevoegen"
+    }
+}

@@ -1,4 +1,12 @@
 {
+    "app": {
+        "platform": "Plattform"
+    },
+    "nav": {
+        "label": "Hauptnavigation",
+        "dashboard": "Dashboard",
+        "issues": "Meldungen"
+    },
     "status": {
         "new": "Neu (Offen)",
         "in_progress": "In Bearbeitung",
@@ -8,6 +16,7 @@
     "button": {
         "save": "Speichern",
         "cancel": "Abbrechen",
-        "delete": "Löschen"
+        "delete": "Löschen",
+        "logout": "Abmelden"
     }
 }

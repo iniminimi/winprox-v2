@@ -1,0 +1,39 @@
+{
+    "pending_review": "En attente de contrôle",
+    "approve": "Approuver",
+    "list": {
+        "title": "Signalements",
+        "new": "Nouveau signalement",
+        "view": "Voir",
+        "empty": "Il n'y a pas encore de signalements."
+    },
+    "create": {
+        "title": "Nouveau signalement",
+        "location": "Emplacement",
+        "location_none": "Aucun emplacement",
+        "unit": "Unité",
+        "unit_none": "Aucune unité",
+        "reporter_name": "Nom du déclarant",
+        "reporter_contact": "Contact du déclarant",
+        "description": "Description",
+        "teams": "Équipes",
+        "teams_hint": "Chaque équipe sélectionnée reçoit une tâche pour ce signalement.",
+        "teams_empty": "Il n'y a pas encore d'équipes.",
+        "submit": "Créer le signalement"
+    },
+    "errors": {
+        "description_required": "Veuillez décrire le signalement.",
+        "description_max": "La description est trop longue."
+    },
+    "show": {
+        "title": "Signalement",
+        "back": "Retour aux signalements",
+        "report": "Signalement",
+        "tasks": "Tâches",
+        "tasks_empty": "Il n'y a pas encore de tâches.",
+        "no_team": "Aucune équipe",
+        "add_task": "Ajouter une tâche pour une équipe",
+        "add_task_placeholder": "Choisir une équipe",
+        "add_task_submit": "Ajouter la tâche"
+    }
+}

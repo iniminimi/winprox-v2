@@ -1,4 +1,12 @@
 {
+    "app": {
+        "platform": "Platform"
+    },
+    "nav": {
+        "label": "Hoofdnavigatie",
+        "dashboard": "Dashboard",
+        "issues": "Meldingen"
+    },
     "status": {
         "new": "Nieuw (Open)",
         "in_progress": "In uitvoering",
@@ -8,6 +16,7 @@
     "button": {
         "save": "Opslaan",
         "cancel": "Annuleren",
-        "delete": "Verwijderen"
+        "delete": "Verwijderen",
+        "logout": "Uitloggen"
     }
 }

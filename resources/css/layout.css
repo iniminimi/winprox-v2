@@ -16,3 +16,101 @@
 .wp-stack > * + * {
     margin-top: 1.25rem;
 }
+
+/* ---------------------------------------------------------------------------
+ | App-shell: bovenbalk + zijnavigatie + hoofdkolom.
+ * ------------------------------------------------------------------------- */
+.wp-topbar {
+    background-color: var(--wp-surface);
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 0.75rem 1.5rem;
+}
+
+.wp-brand {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    letter-spacing: -0.02em;
+}
+
+.wp-topbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.wp-tenant {
+    font-size: 0.875rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-body {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 1.5rem;
+}
+
+@media (max-width: 48rem) {
+    .wp-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wp-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.wp-nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--wp-radius);
+    color: var(--wp-text-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.wp-nav-link:hover {
+    background-color: var(--wp-surface-hover);
+    text-decoration: none;
+}
+
+.wp-nav-link.is-active {
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+}
+
+.wp-main {
+    min-width: 0;
+}
+
+/* Gast-/loginscherm: gecentreerde kaart. */
+.wp-auth {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: var(--wp-bg);
+}
+
+.wp-auth-card {
+    width: 100%;
+    max-width: 24rem;
+}

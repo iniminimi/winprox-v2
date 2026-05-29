@@ -1,4 +1,12 @@
 {
+    "app": {
+        "platform": "Plateforme"
+    },
+    "nav": {
+        "label": "Navigation principale",
+        "dashboard": "Tableau de bord",
+        "issues": "Signalements"
+    },
     "status": {
         "new": "Nouveau (Ouvert)",
         "in_progress": "En cours",
@@ -8,6 +16,7 @@
     "button": {
         "save": "Enregistrer",
         "cancel": "Annuler",
-        "delete": "Supprimer"
+        "delete": "Supprimer",
+        "logout": "Se déconnecter"
     }
 }

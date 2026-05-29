@@ -1,4 +1,12 @@
 {
+    "app": {
+        "platform": "Platform"
+    },
+    "nav": {
+        "label": "Main navigation",
+        "dashboard": "Dashboard",
+        "issues": "Issues"
+    },
     "status": {
         "new": "New (Open)",
         "in_progress": "In progress",
@@ -8,6 +16,7 @@
     "button": {
         "save": "Save",
         "cancel": "Cancel",
-        "delete": "Delete"
+        "delete": "Delete",
+        "logout": "Log out"
     }
 }

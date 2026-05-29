@@ -1,0 +1,39 @@
+{
+    "pending_review": "Awaiting review",
+    "approve": "Approve",
+    "list": {
+        "title": "Issues",
+        "new": "New issue",
+        "view": "View",
+        "empty": "There are no issues yet."
+    },
+    "create": {
+        "title": "New issue",
+        "location": "Location",
+        "location_none": "No location",
+        "unit": "Unit",
+        "unit_none": "No unit",
+        "reporter_name": "Reporter name",
+        "reporter_contact": "Reporter contact",
+        "description": "Description",
+        "teams": "Teams",
+        "teams_hint": "Each selected team gets a task for this issue.",
+        "teams_empty": "There are no teams yet.",
+        "submit": "Create issue"
+    },
+    "errors": {
+        "description_required": "Please describe the issue.",
+        "description_max": "The description is too long."
+    },
+    "show": {
+        "title": "Issue",
+        "back": "Back to issues",
+        "report": "Issue",
+        "tasks": "Tasks",
+        "tasks_empty": "There are no tasks yet.",
+        "no_team": "No team",
+        "add_task": "Add a task for a team",
+        "add_task_placeholder": "Choose a team",
+        "add_task_submit": "Add task"
+    }
+}

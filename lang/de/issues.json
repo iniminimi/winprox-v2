@@ -1,0 +1,39 @@
+{
+    "pending_review": "Wartet auf Prüfung",
+    "approve": "Genehmigen",
+    "list": {
+        "title": "Meldungen",
+        "new": "Neue Meldung",
+        "view": "Ansehen",
+        "empty": "Es gibt noch keine Meldungen."
+    },
+    "create": {
+        "title": "Neue Meldung",
+        "location": "Standort",
+        "location_none": "Kein Standort",
+        "unit": "Einheit",
+        "unit_none": "Keine Einheit",
+        "reporter_name": "Name des Melders",
+        "reporter_contact": "Kontakt des Melders",
+        "description": "Beschreibung",
+        "teams": "Teams",
+        "teams_hint": "Jedes ausgewählte Team erhält eine Aufgabe für diese Meldung.",
+        "teams_empty": "Es gibt noch keine Teams.",
+        "submit": "Meldung erstellen"
+    },
+    "errors": {
+        "description_required": "Bitte beschreiben Sie die Meldung.",
+        "description_max": "Die Beschreibung ist zu lang."
+    },
+    "show": {
+        "title": "Meldung",
+        "back": "Zurück zu den Meldungen",
+        "report": "Meldung",
+        "tasks": "Aufgaben",
+        "tasks_empty": "Es gibt noch keine Aufgaben.",
+        "no_team": "Kein Team",
+        "add_task": "Aufgabe für ein Team hinzufügen",
+        "add_task_placeholder": "Team auswählen",
+        "add_task_submit": "Aufgabe hinzufügen"
+    }
+}
