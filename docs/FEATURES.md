@@ -6,6 +6,12 @@ minimale `standard`-stijl (kleuren NIET uit de oude app overnemen — zie `WINPR
 
 Per scherm: doel · weergave · acties · data · rollen · device · bijzonderheden.
 
+> **Hergebruik-principe:** oude code uit `winprox_old` mag (en moet, om niet alles opnieuw uit te
+> vinden) als basis dienen, **maar moet voldoen aan de WinProx V2-regels** (`WINPROX_RULES.md` +
+> `.cursor/rules/*`): token-CSS/`wp-*`, thin Livewire → Actions, Form Requests, 4 locales met
+> pariteit, case-sensitive paden, foto-golden-path, géén blur op beheer. **Regels regelmatig
+> herlezen** vóór en tijdens het bouwen.
+
 > **Moderatie/blur (hard):** Het bluren van foto's én tekst geldt **uitsluitend op de publieke
 > QR-pagina's** (na scan), om compromitterende inhoud vóór goedkeuring te verbergen. De
 > **beheerschermen** (dashboard, meldingen, taken, …) zijn alleen voor **beheerders en
@@ -160,8 +166,8 @@ WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels p
   zien dezelfde URL; de worker-acties verschijnen alleen als het toestel als veldtoestel herkend
   wordt (device-cookie/verified sessie).
 - **Team-QR** (`/team/{field_qr_token}`, oud: `facility.team.field.show`): **worker**-overzicht van
-  open taken. Belangrijk: via team-QR zijn taakacties **alleen-lezen** — afhandelen moet via de
-  **unit-QR** (oude regel `actions_require_unit_qr`). (Te bevestigen of we deze beperking behouden.)
+  open taken. **BESLIST:** via team-QR zijn taakacties **alleen-lezen** — afhandelen moet via de
+  **unit-QR** (oude regel `actions_require_unit_qr`).
 
 ### Unit-portaal — secties (burger)
 `home · new · issues · issue_detail · documents · announcements`
@@ -185,18 +191,22 @@ WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels p
 - **announcements** (mededelingen): bericht-tekst; `is_active`, gepubliceerd en niet verlopen
   (`expires_at`). Use-case: "volgende week groot onderhoud". (Oud: `PropertyAnnouncement`.)
 
-### Worker-identificatie & verificatie (anti-misbruik)
+### Worker-identificatie & verificatie (anti-misbruik) — **BESLIST: volledig overnemen**
 Bedoeld voor gedeelde telefoons op de werkvloer:
 1. **Naam** (voor- + achternaam) → opzoeken in het team. Statussen: `found` (→ icoonstap),
    `claimable` (match zonder icoon), `ambiguous` (meerdere matches), `not_found`.
 2. **Persoonlijk icoon** bevestigen (uit een vaste set iconen) → bewijst identiteit.
+   **BESLIST: 12 iconen** (oud waren er 8). Porten: `heart, plane, car, star, zap, gem, crown, moon`
+   (+ PNG-assets uit `public/icons/login`); **4 nieuwe** toevoegen (voorstel: `bell, leaf, key,
+   anchor`) met bijbehorende PNG's + vertaalde labels (`worker_icon.*` in nl/en/fr/de).
 3. **Device-cookie** (1 jaar) onthoudt de worker per toestel; **unit-field-trust** ~12u na
    geslaagde on-site icoonbevestiging.
 4. **Lockout**: na **2** foute icoonpogingen geblokkeerd (sessie + worker-rij
    `field_icon_locked_at`); beheerder kan ontgrendelen/icoon resetten.
 5. **"Aanmelden als andere medewerker"** wist device/sessie/trust.
-6. **Team-QR** wist verificatie bij elke scan (icoon opnieuw bevestigen) en kan **open registratie**
-   bieden als het team nog geen actieve workers heeft (onboarding: worker + icoon aanmaken).
+6. **Team-QR** wist verificatie bij elke scan (icoon opnieuw bevestigen). **BESLIST: open
+   registratie** via team-QR als het team nog **geen** actieve workers heeft (onboarding: worker +
+   icoon aanmaken). Daarna identificeren bestaande workers zich met naam + icoon.
 
 ### Worker-taakafhandeling
 - **Start**: taak → `In uitvoering` (`started_at`).
@@ -229,8 +239,8 @@ De oude app heeft **geen** blur/goedkeuring (geen `approved_at`). Dit is **onze 
 - `property_*`-redirect, generieke `ReportIssue`/`TeamFieldPortal`, JSON
   `report.documents`/`report.announcements` (wij doen Livewire), sector/hospitality/contractor/owner-
   takken. Property→Location overal.
-- Beslissen: unit-portaal `claimable` doodlopend vs. unified onboarding (oud: registratie alleen via
-  team-QR).
+- Unit-portaal `claimable` doodlopend → **BESLIST**: registratie/onboarding loopt via **team-QR**
+  (open registratie bij leeg team); de unit-QR doet enkel identificatie van bestaande workers.
 
 ### Bron-bestanden (oud, ter referentie bij herbouw)
 `app/Livewire/FacilityUnitPortal.php`, `app/Livewire/FacilityTeamFieldPortal.php`,
