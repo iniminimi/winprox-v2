@@ -1,6 +1,19 @@
 {
     "title": "Dashboard",
-    "by_status": "Issues by status",
-    "total": "Total issues",
-    "view_issues": "View issues"
+    "subtitle": "Overview of your facility activity.",
+    "trial": "Trial period: :days days",
+    "briefing": "Briefing",
+    "kpi": {
+        "locations": "Locations",
+        "units": "Units",
+        "new_issues": "New issues",
+        "open_tasks": "Open tasks"
+    },
+    "recent": {
+        "title": "Recent issues",
+        "open_issues": "Open issues",
+        "empty": "There are no issues yet.",
+        "reporter_anon": "Anonymous",
+        "no_location": "No location"
+    }
 }

@@ -1,11 +1,20 @@
 {
     "app": {
-        "platform": "Plattform"
+        "platform": "Plattform",
+        "workspace": "Arbeitsbereich"
     },
     "nav": {
         "label": "Hauptnavigation",
         "dashboard": "Dashboard",
-        "issues": "Meldungen"
+        "locations": "Standorte & Einheiten",
+        "issues": "Meldungen",
+        "tasks": "Aufgaben",
+        "calendar": "Kalender",
+        "team": "Team",
+        "subscription": "Abonnement",
+        "faq": "FAQ & Wissensdatenbank",
+        "legal": "Rechtsdokumente",
+        "contact": "Kontakt"
     },
     "status": {
         "new": "Neu (Offen)",
@@ -18,5 +27,17 @@
         "cancel": "Abbrechen",
         "delete": "Löschen",
         "logout": "Abmelden"
+    },
+    "language": {
+        "label": "Sprache"
+    },
+    "help": {
+        "button": "Hilfe",
+        "title": "Brauchen Sie Hilfe?",
+        "text": "Durchsuchen Sie die Wissensdatenbank oder kontaktieren Sie den Support.",
+        "contact": "Kontakt aufnehmen"
+    },
+    "brand": {
+        "tagline": "Work In Proximity"
     }
 }

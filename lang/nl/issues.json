@@ -1,11 +1,33 @@
 {
     "pending_review": "Wacht op controle",
     "approve": "Goedkeuren",
+    "briefing": "Briefing",
     "list": {
         "title": "Meldingen",
+        "subtitle": "Alle meldingen, gegroepeerd per status.",
         "new": "Nieuwe melding",
+        "add": "Melding toevoegen",
         "view": "Bekijken",
-        "empty": "Er zijn nog geen meldingen."
+        "empty": "Er zijn nog geen meldingen.",
+        "empty_filtered": "Geen meldingen gevonden voor deze filters."
+    },
+    "filter": {
+        "status": "Status",
+        "status_all": "Alle statussen",
+        "team": "Team",
+        "team_all": "Alle teams",
+        "search": "Zoeken",
+        "search_placeholder": "Zoek in omschrijving…",
+        "recurring": "Alleen terugkerend",
+        "apply": "GO!",
+        "reset": "Filters wissen",
+        "hint": "Combineer status, team en zoekterm om de lijst te verfijnen."
+    },
+    "card": {
+        "nr": "NR :nr",
+        "source_qr": "Via QR",
+        "source_manual": "Handmatig",
+        "no_team": "Geen team"
     },
     "create": {
         "title": "Nieuwe melding",

@@ -1,11 +1,33 @@
 {
     "pending_review": "En attente de contrôle",
     "approve": "Approuver",
+    "briefing": "Briefing",
     "list": {
         "title": "Signalements",
+        "subtitle": "Tous les signalements, regroupés par statut.",
         "new": "Nouveau signalement",
+        "add": "Ajouter un signalement",
         "view": "Voir",
-        "empty": "Il n'y a pas encore de signalements."
+        "empty": "Il n'y a pas encore de signalements.",
+        "empty_filtered": "Aucun signalement trouvé pour ces filtres."
+    },
+    "filter": {
+        "status": "Statut",
+        "status_all": "Tous les statuts",
+        "team": "Équipe",
+        "team_all": "Toutes les équipes",
+        "search": "Rechercher",
+        "search_placeholder": "Rechercher dans la description…",
+        "recurring": "Récurrents uniquement",
+        "apply": "GO !",
+        "reset": "Effacer les filtres",
+        "hint": "Combinez statut, équipe et terme de recherche pour affiner la liste."
+    },
+    "card": {
+        "nr": "NR :nr",
+        "source_qr": "Via QR",
+        "source_manual": "Manuel",
+        "no_team": "Aucune équipe"
     },
     "create": {
         "title": "Nouveau signalement",

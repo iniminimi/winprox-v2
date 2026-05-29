@@ -1,6 +1,19 @@
 {
     "title": "Tableau de bord",
-    "by_status": "Signalements par statut",
-    "total": "Total des signalements",
-    "view_issues": "Voir les signalements"
+    "subtitle": "Aperçu de l'activité de votre site.",
+    "trial": "Période d'essai : :days jours",
+    "briefing": "Briefing",
+    "kpi": {
+        "locations": "Sites",
+        "units": "Unités",
+        "new_issues": "Nouveaux signalements",
+        "open_tasks": "Tâches ouvertes"
+    },
+    "recent": {
+        "title": "Signalements récents",
+        "open_issues": "Ouvrir les signalements",
+        "empty": "Il n'y a pas encore de signalements.",
+        "reporter_anon": "Anonyme",
+        "no_location": "Aucun emplacement"
+    }
 }

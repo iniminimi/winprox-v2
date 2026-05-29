@@ -1,11 +1,33 @@
 {
     "pending_review": "Wartet auf Prüfung",
     "approve": "Genehmigen",
+    "briefing": "Briefing",
     "list": {
         "title": "Meldungen",
+        "subtitle": "Alle Meldungen, nach Status gruppiert.",
         "new": "Neue Meldung",
+        "add": "Meldung hinzufügen",
         "view": "Ansehen",
-        "empty": "Es gibt noch keine Meldungen."
+        "empty": "Es gibt noch keine Meldungen.",
+        "empty_filtered": "Keine Meldungen für diese Filter gefunden."
+    },
+    "filter": {
+        "status": "Status",
+        "status_all": "Alle Status",
+        "team": "Team",
+        "team_all": "Alle Teams",
+        "search": "Suchen",
+        "search_placeholder": "In Beschreibung suchen…",
+        "recurring": "Nur wiederkehrend",
+        "apply": "GO!",
+        "reset": "Filter zurücksetzen",
+        "hint": "Kombinieren Sie Status, Team und Suchbegriff, um die Liste einzugrenzen."
+    },
+    "card": {
+        "nr": "NR :nr",
+        "source_qr": "Per QR",
+        "source_manual": "Manuell",
+        "no_team": "Kein Team"
     },
     "create": {
         "title": "Neue Meldung",

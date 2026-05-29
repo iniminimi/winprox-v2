@@ -179,6 +179,261 @@
 }
 
 /* ---------------------------------------------------------------------------
+ | Paginakop (titel + acties) en compacte stack.
+ * ------------------------------------------------------------------------- */
+.wp-page-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.wp-stack-tight > * + * {
+    margin-top: 0.625rem;
+}
+
+.wp-cluster--tight {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+ | KPI-tegels (dashboard) — NEUTRAAL: grijs/wit, emerald hooguit subtiel.
+ * ------------------------------------------------------------------------- */
+.wp-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    gap: 1rem;
+}
+
+.wp-kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-kpi-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface-2);
+    border: 1px solid var(--wp-border);
+    color: var(--wp-text-muted);
+}
+
+.wp-kpi-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.wp-kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    line-height: 1.1;
+}
+
+.wp-kpi-label {
+    font-size: 0.8125rem;
+    color: var(--wp-text-muted);
+}
+
+/* ---------------------------------------------------------------------------
+ | Meldingsrijen (dashboard "recente meldingen").
+ * ------------------------------------------------------------------------- */
+.wp-issue-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+    text-decoration: none;
+    transition: background-color var(--wp-transition), border-color var(--wp-transition);
+}
+
+.wp-issue-row:hover {
+    background-color: var(--wp-surface-2);
+    border-color: var(--wp-border-strong);
+    text-decoration: none;
+}
+
+.wp-issue-desc {
+    color: var(--wp-text);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.wp-issue-row-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------------
+ | Filterbalk (meldingenlijst).
+ * ------------------------------------------------------------------------- */
+.wp-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.wp-filter-field {
+    min-width: 12rem;
+}
+
+.wp-filter-field.wp-grow {
+    flex: 1 1 16rem;
+}
+
+/* ---------------------------------------------------------------------------
+ | Statusgroepen + meldingkaarten (meldingenlijst).
+ * ------------------------------------------------------------------------- */
+.wp-group-head {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.375rem 0 0.375rem 0.75rem;
+    border-left: 3px solid var(--wp-accent);
+    border-bottom: 1px solid var(--wp-accent-border);
+}
+
+.wp-group-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--wp-accent-text);
+}
+
+.wp-group-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    padding-inline: 0.5rem;
+    border-radius: var(--wp-radius-pill);
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.wp-issue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 0.875rem;
+}
+
+.wp-melding-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    text-decoration: none;
+    transition: transform var(--wp-transition), box-shadow var(--wp-transition), border-color var(--wp-transition);
+}
+
+.wp-melding-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--wp-shadow);
+    border-color: var(--wp-border-strong);
+    text-decoration: none;
+}
+
+.wp-melding-nr {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--wp-text-muted);
+}
+
+.wp-melding-desc {
+    color: var(--wp-text);
+    font-weight: 600;
+}
+
+.wp-melding-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-melding-meta .wp-muted {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+/* ---------------------------------------------------------------------------
+ | Stub-pagina's + chips (beheers-stubs, locaties/teams).
+ * ------------------------------------------------------------------------- */
+.wp-stub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    padding-block: 2.5rem;
+}
+
+.wp-stub-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--wp-radius-lg);
+    background-color: var(--wp-surface-2);
+    border: 1px solid var(--wp-border);
+    color: var(--wp-text-muted);
+}
+
+.wp-stub-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.wp-stub-text {
+    color: var(--wp-text-muted);
+    max-width: 28rem;
+}
+
+.wp-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.wp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-pill);
+    background-color: var(--wp-surface-2);
+    color: var(--wp-text-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------------
  | Foto-upload (publieke QR-melding, §7). Client-side comprimeren + previews.
  * ------------------------------------------------------------------------- */
 .wp-photo-upload-area {

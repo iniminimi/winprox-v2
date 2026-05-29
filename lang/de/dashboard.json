@@ -1,6 +1,19 @@
 {
     "title": "Dashboard",
-    "by_status": "Meldungen nach Status",
-    "total": "Meldungen insgesamt",
-    "view_issues": "Meldungen ansehen"
+    "subtitle": "Überblick über Ihre Facility-Aktivitäten.",
+    "trial": "Testphase: :days Tage",
+    "briefing": "Briefing",
+    "kpi": {
+        "locations": "Standorte",
+        "units": "Einheiten",
+        "new_issues": "Neue Meldungen",
+        "open_tasks": "Offene Aufgaben"
+    },
+    "recent": {
+        "title": "Aktuelle Meldungen",
+        "open_issues": "Meldungen öffnen",
+        "empty": "Es gibt noch keine Meldungen.",
+        "reporter_anon": "Anonym",
+        "no_location": "Kein Standort"
+    }
 }

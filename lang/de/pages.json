@@ -1,0 +1,46 @@
+{
+    "locations": {
+        "title": "Standorte & Einheiten",
+        "subtitle": "Ihre Standorte und die darin enthaltenen Einheiten (Assets/Räume).",
+        "empty": "Es gibt noch keine Standorte.",
+        "no_units": "Noch keine Einheiten an diesem Standort.",
+        "unit_count": ":count Einheiten"
+    },
+    "tasks": {
+        "title": "Aufgaben",
+        "subtitle": "Überblick über alle Aufgaben pro Team.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    },
+    "calendar": {
+        "title": "Kalender",
+        "subtitle": "Planen Sie Aufgaben und Wartung über die Zeit.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    },
+    "team": {
+        "title": "Team",
+        "subtitle": "Ihre internen Teams und die Ausführenden darin.",
+        "empty": "Es gibt noch keine Teams.",
+        "no_workers": "Noch keine Ausführenden in diesem Team.",
+        "worker_count": ":count Ausführende"
+    },
+    "subscription": {
+        "title": "Abonnement",
+        "subtitle": "Verwalten Sie Ihr Abonnement und Ihre Testphase.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    },
+    "faq": {
+        "title": "FAQ & Wissensdatenbank",
+        "subtitle": "Antworten auf häufige Fragen und Anleitungen.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    },
+    "legal": {
+        "title": "Rechtsdokumente",
+        "subtitle": "Bedingungen, Datenschutz und andere Dokumente.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    },
+    "contact": {
+        "title": "Kontakt",
+        "subtitle": "Kontaktieren Sie das WinProx-Team.",
+        "soon": "Dieser Bereich ist bald verfügbar."
+    }
+}

@@ -4,6 +4,9 @@ namespace App\Livewire;
 
 use App\Enums\TaskStatus;
 use App\Models\Issue;
+use App\Models\Location;
+use App\Models\Task;
+use App\Models\Unit;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,20 +17,22 @@ class Dashboard extends Component
 {
     public function render()
     {
-        $counts = Issue::query()
-            ->selectRaw('status, count(*) as aggregate')
-            ->groupBy('status')
-            ->pluck('aggregate', 'status');
+        $stats = [
+            'locations' => Location::query()->count(),
+            'units' => Unit::query()->count(),
+            'new_issues' => Issue::query()->where('status', TaskStatus::New->value)->count(),
+            'open_tasks' => Task::query()->where('status', '!=', TaskStatus::Closed->value)->count(),
+        ];
 
-        $stats = [];
-        foreach (TaskStatus::cases() as $status) {
-            $stats[$status->value] = (int) ($counts[$status->value] ?? 0);
-        }
+        $recent = Issue::query()
+            ->with(['location', 'unit'])
+            ->latest()
+            ->take(5)
+            ->get();
 
         return view('livewire.dashboard', [
-            'statuses' => TaskStatus::cases(),
             'stats' => $stats,
-            'total' => array_sum($stats),
+            'recent' => $recent,
         ]);
     }
 }

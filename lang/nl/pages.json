@@ -1,0 +1,46 @@
+{
+    "locations": {
+        "title": "Locaties & units",
+        "subtitle": "Je locaties en de units (assets/ruimtes) daarbinnen.",
+        "empty": "Er zijn nog geen locaties.",
+        "no_units": "Nog geen units op deze locatie.",
+        "unit_count": ":count units"
+    },
+    "tasks": {
+        "title": "Taken",
+        "subtitle": "Overzicht van alle taken per team.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    },
+    "calendar": {
+        "title": "Kalender",
+        "subtitle": "Plan taken en onderhoud in de tijd.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    },
+    "team": {
+        "title": "Team",
+        "subtitle": "Je interne teams en de uitvoerders daarin.",
+        "empty": "Er zijn nog geen teams.",
+        "no_workers": "Nog geen uitvoerders in dit team.",
+        "worker_count": ":count uitvoerders"
+    },
+    "subscription": {
+        "title": "Abonnement",
+        "subtitle": "Beheer je abonnement en proefperiode.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    },
+    "faq": {
+        "title": "FAQ & kennisbank",
+        "subtitle": "Antwoorden op veelgestelde vragen en handleidingen.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    },
+    "legal": {
+        "title": "Juridische documenten",
+        "subtitle": "Voorwaarden, privacy en andere documenten.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Neem contact op met het WinProx-team.",
+        "soon": "Dit onderdeel is binnenkort beschikbaar."
+    }
+}

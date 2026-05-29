@@ -1,11 +1,33 @@
 {
     "pending_review": "Awaiting review",
     "approve": "Approve",
+    "briefing": "Briefing",
     "list": {
         "title": "Issues",
+        "subtitle": "All issues, grouped by status.",
         "new": "New issue",
+        "add": "Add issue",
         "view": "View",
-        "empty": "There are no issues yet."
+        "empty": "There are no issues yet.",
+        "empty_filtered": "No issues found for these filters."
+    },
+    "filter": {
+        "status": "Status",
+        "status_all": "All statuses",
+        "team": "Team",
+        "team_all": "All teams",
+        "search": "Search",
+        "search_placeholder": "Search in description…",
+        "recurring": "Recurring only",
+        "apply": "GO!",
+        "reset": "Clear filters",
+        "hint": "Combine status, team and search term to refine the list."
+    },
+    "card": {
+        "nr": "NR :nr",
+        "source_qr": "Via QR",
+        "source_manual": "Manual",
+        "no_team": "No team"
     },
     "create": {
         "title": "New issue",

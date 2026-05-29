@@ -1,11 +1,20 @@
 {
     "app": {
-        "platform": "Platform"
+        "platform": "Platform",
+        "workspace": "Werkruimte"
     },
     "nav": {
         "label": "Hoofdnavigatie",
         "dashboard": "Dashboard",
-        "issues": "Meldingen"
+        "locations": "Locaties & units",
+        "issues": "Meldingen",
+        "tasks": "Taken",
+        "calendar": "Kalender",
+        "team": "Team",
+        "subscription": "Abonnement",
+        "faq": "FAQ & kennisbank",
+        "legal": "Juridische documenten",
+        "contact": "Contact"
     },
     "status": {
         "new": "Nieuw (Open)",
@@ -18,5 +27,17 @@
         "cancel": "Annuleren",
         "delete": "Verwijderen",
         "logout": "Uitloggen"
+    },
+    "language": {
+        "label": "Taal"
+    },
+    "help": {
+        "button": "Hulp",
+        "title": "Hulp nodig?",
+        "text": "Bekijk de kennisbank of neem contact op met support.",
+        "contact": "Contact opnemen"
+    },
+    "brand": {
+        "tagline": "Work In Proximity"
     }
 }

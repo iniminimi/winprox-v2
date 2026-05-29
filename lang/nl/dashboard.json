@@ -1,6 +1,19 @@
 {
     "title": "Dashboard",
-    "by_status": "Meldingen per status",
-    "total": "Totaal aantal meldingen",
-    "view_issues": "Bekijk meldingen"
+    "subtitle": "Overzicht van je facility-activiteit.",
+    "trial": "Proefperiode: :days dagen",
+    "briefing": "Briefing",
+    "kpi": {
+        "locations": "Locaties",
+        "units": "Units",
+        "new_issues": "Nieuwe meldingen",
+        "open_tasks": "Open taken"
+    },
+    "recent": {
+        "title": "Recente meldingen",
+        "open_issues": "Meldingen openen",
+        "empty": "Er zijn nog geen meldingen.",
+        "reporter_anon": "Anoniem",
+        "no_location": "Geen locatie"
+    }
 }

@@ -1,0 +1,46 @@
+{
+    "locations": {
+        "title": "Locations & units",
+        "subtitle": "Your locations and the units (assets/spaces) within them.",
+        "empty": "There are no locations yet.",
+        "no_units": "No units at this location yet.",
+        "unit_count": ":count units"
+    },
+    "tasks": {
+        "title": "Tasks",
+        "subtitle": "Overview of all tasks per team.",
+        "soon": "This section will be available soon."
+    },
+    "calendar": {
+        "title": "Calendar",
+        "subtitle": "Plan tasks and maintenance over time.",
+        "soon": "This section will be available soon."
+    },
+    "team": {
+        "title": "Team",
+        "subtitle": "Your internal teams and the workers in them.",
+        "empty": "There are no teams yet.",
+        "no_workers": "No workers in this team yet.",
+        "worker_count": ":count workers"
+    },
+    "subscription": {
+        "title": "Subscription",
+        "subtitle": "Manage your subscription and trial period.",
+        "soon": "This section will be available soon."
+    },
+    "faq": {
+        "title": "FAQ & knowledge base",
+        "subtitle": "Answers to frequently asked questions and guides.",
+        "soon": "This section will be available soon."
+    },
+    "legal": {
+        "title": "Legal documents",
+        "subtitle": "Terms, privacy and other documents.",
+        "soon": "This section will be available soon."
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Get in touch with the WinProx team.",
+        "soon": "This section will be available soon."
+    }
+}
