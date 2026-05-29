@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Support\JsonTranslationLoader;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +12,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Ondersteun per-page JSON-vertaalbestanden: lang/[locale]/[page].json
+        $this->app->extend('translation.loader', function ($loader, $app) {
+            return new JsonTranslationLoader($app['files'], $app['path.lang']);
+        });
     }
 
     /**

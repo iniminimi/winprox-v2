@@ -1,0 +1,13 @@
+{
+    "status": {
+        "new": "Nouveau (Ouvert)",
+        "in_progress": "En cours",
+        "done": "Traité",
+        "closed": "Fermé"
+    },
+    "button": {
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "delete": "Supprimer"
+    }
+}

@@ -3,7 +3,10 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "fix:locales": "node scripts/locales.mjs fix",
+        "check:locales": "node scripts/locales.mjs check",
+        "check:locales:parity": "node scripts/locales.mjs parity"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

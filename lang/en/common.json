@@ -1,0 +1,13 @@
+{
+    "status": {
+        "new": "New (Open)",
+        "in_progress": "In progress",
+        "done": "Handled",
+        "closed": "Closed"
+    },
+    "button": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    }
+}

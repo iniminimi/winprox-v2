@@ -1,0 +1,13 @@
+{
+    "status": {
+        "new": "Nieuw (Open)",
+        "in_progress": "In uitvoering",
+        "done": "Afgehandeld",
+        "closed": "Gesloten"
+    },
+    "button": {
+        "save": "Opslaan",
+        "cancel": "Annuleren",
+        "delete": "Verwijderen"
+    }
+}
