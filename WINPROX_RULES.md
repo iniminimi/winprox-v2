@@ -1,10 +1,20 @@
 # WinProx — Project Rules (v2, vereenvoudigde herbouw)
 
 WinProx is **één** facilitaire meldingsapp. De oude sectoren (Real Estate, Hospitality) en
-externe partijen (contractors, eigenaars/owners) bestaan **niet** meer. Houd alles **simpel**.
+externe partijen (contractors, eigenaars/owners) bestaan **niet** meer.
+
+**Doel:** **dezelfde functionaliteit als de oude WinProx Facility**, maar volledig **schoon
+herschreven**. "Simpel" slaat op de **architectuur, de code en de visuele stijl** — niet op het
+weglaten van features. We mikken dus op **Facility-pariteit** (locaties/units met bulk + QR-pack,
+meldingen met filters, taken, kalender, teams + workers + team-QR, abonnement/proefperiode,
+FAQ & kennisbank, juridische documenten, contact, hulp-chat, briefing), zonder de oude rommel.
 
 > Kern: **Melding → Taken → afhandeling**. Een melding kan **meerdere taken** hebben,
 > elk toegewezen aan **één operationeel team**.
+
+**Visuele stijl (hard):** screenshots van de oude app dienen als doel voor **layout, structuur en
+UX** — **kleuren NIET kopiëren**. Behoud het minimale `standard`-thema (emerald als enige accent,
+wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 
 ---
 
