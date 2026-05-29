@@ -122,7 +122,12 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - **Pil/status:** altijd `.wp-pill` + één variant per status: `--new` (Nieuw), `--progress` (In uitvoering), `--done` (Afgehandeld), `--closed` (Gesloten). **Geen tien stijlen voor dezelfde pil.**
 - Nieuwe variant nodig? Definieer hem één keer in de gedeelde CSS, hergebruik overal.
 
-### 6.5 Na UI-wijziging
+### 6.5 Apparaat-targeting (responsive)
+- **Beheersschermen** (dashboard, meldingen, beheer van locaties/units/teams) → **laptop/desktop-first**. Mogen breed/meerkoloms zijn, maar blijven bruikbaar op kleiner scherm.
+- **Veld- en publieke schermen** (publieke QR-meldpagina, team-QR veldportaal, worker-schermen) → **mobiel-first**: één kolom, grote tap-doelen (knoppen min. 2.5rem hoog), belangrijkste actie onderaan binnen duimbereik.
+- Zelfde tokens/componenten en **één** CSS-bundel; responsiviteit via eenvoudige breakpoints, geen aparte stylesheet-stack per apparaat.
+
+### 6.6 Na UI-wijziging
 - Altijd `npm run build`; vraag bij visuele controle om harde refresh (`Ctrl+F5`).
 
 ---
