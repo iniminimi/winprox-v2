@@ -196,14 +196,16 @@ V1 "easy flow" voor facility, ontdaan van contractor/hospitality-stappen:
    melding → **In uitvoering**. Voor Facility sluit de flow hierna af (geen stap 3).
 Logica in Actions (`CreateIssueAction` + taak-aanmaak), validatie via Form Request. Foto-golden-path.
 
-### 3.4 Terugkerende meldingen (recurring) — **schema nodig**
+### 3.4 Terugkerende meldingen (recurring) — **BESLIST: nu meenemen**
 V1: een melding kan **terugkerend** zijn (interval **waarde** + **eenheid** week/maand/kwartaal/jaar,
 **lead days**, **eerste vervaldatum**) en genereert periodiek taakcycli (koppelt aan **Kalender**).
-- Schema (toevoegen bij datamodel-uitbreiding): `issues.is_recurring`, `recurrence_interval_value`,
+Samen bouwen met **Meldingen + Kalender** (volgende fase, na het QR-portaal).
+- Schema (nieuwe migratie, greenfield): `issues.is_recurring`, `recurrence_interval_value`,
   `recurrence_interval_unit`, `recurrence_lead_days`, `recurrence_next_due_at`,
   `recurrence_last_task_created_at`; op `tasks` velden voor cyclus (`due_at`, `scheduled_for`,
   `is_recurring_cycle`, `cycle_number`, `recurrence_issue_id`).
-- **BESLISSEN:** nemen we recurring nu mee of als aparte fase? (Hangt samen met Kalender §5.)
+- Filter **"terugkerend"** wordt een echte filter (niet langer no-op); aanmaak-flow krijgt de
+  recurring-opties; cycli verschijnen in de Kalender.
 
 ### 3.5 NIET overnemen (cruft / vereenvoudiging)
 Onboarding/demo quick-flow, contractors + `TaskInvitation`/quoting/assignment-modes,
