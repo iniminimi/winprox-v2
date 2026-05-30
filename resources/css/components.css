@@ -977,20 +977,27 @@ a.wp-kpi:hover {
     display: flex;
     flex-direction: column;
     padding: 0;
+    max-height: calc(100vh - 2rem);
     overflow: hidden;
 }
 
 .wp-modal-head--bordered {
+    flex-shrink: 0;
     padding: 1.25rem 1.5rem;
     border-bottom: 1px solid var(--wp-border);
 }
 
 .wp-modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
     padding: 1.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
 .wp-modal-foot {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: flex-end;
     gap: 0.75rem;
