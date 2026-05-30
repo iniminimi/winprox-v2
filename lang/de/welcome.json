@@ -1,0 +1,29 @@
+{
+    "meta_title": "WinProx — Facility-Meldungen per QR",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "hero": {
+        "title": "Vom Boden ins Team",
+        "lead": "WinProx verknüpft QR-Meldungen mit Aufgaben für interne Facility-Teams — ohne verstreute Tabellen.",
+        "cta_register": "Kostenlos testen",
+        "cta_login": "Anmelden"
+    },
+    "flow": {
+        "title": "So funktioniert es",
+        "steps": [
+            {
+                "title": "QR scannen",
+                "body": "Jemand scannt den Unit-Code und beschreibt das Problem."
+            },
+            {
+                "title": "Aufgabe ans Team",
+                "body": "Verwaltung weist ein internes Team zu; es erhält eine Aufgabe im Portal."
+            },
+            {
+                "title": "Erledigt",
+                "body": "Nachverfolgung und Status bleiben sichtbar bis zum Abschluss."
+            }
+        ]
+    },
+    "qr_illustration_label": "Dekorative QR-Darstellung"
+}

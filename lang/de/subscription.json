@@ -1,0 +1,54 @@
+{
+    "title": "Abonnement",
+    "subtitle": "Verwalten Sie Testphase und Facility-Plan.",
+    "plans_heading": "Verfügbare Pläne",
+    "activate_plan": "Plan aktivieren",
+    "current_plan": "Aktueller Plan",
+    "admin_required": "Nur Administratoren können Pläne aktivieren.",
+    "activated": "Plan :plan wurde aktiviert.",
+    "enterprise_hint": "Kontaktieren Sie uns für individuelle Skalierung.",
+    "enterprise_cta": "Vertrieb kontaktieren",
+    "enterprise_mail_subject": "WinProx Enterprise",
+    "enterprise_contact": "Für Enterprise schreiben Sie an :email.",
+    "status": {
+        "title": "Status",
+        "access": "App-Zugang",
+        "access_ok": "Aktiv",
+        "access_blocked": "Gesperrt",
+        "trial": "Testphase",
+        "trial_days": ":days Tage verbleibend",
+        "plan": "Plan",
+        "active_until": "Gültig bis",
+        "usage": "Nutzung",
+        "usage_counts": ":units Units · :users Benutzer"
+    },
+    "limits": {
+        "units": ":count Units",
+        "users": ":count Benutzer",
+        "unlimited": "unbegrenzt"
+    },
+    "plans": {
+        "starter": {
+            "name": "Starter",
+            "description": "Kleine Standorte mit QR-Meldungen und Aufgaben."
+        },
+        "pro": {
+            "name": "Pro",
+            "description": "Mehr Units und Teams für wachsende Organisationen."
+        },
+        "business": {
+            "name": "Business",
+            "description": "Höhere Limits und API für Integrationen."
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "description": "Individuell, SLA und dedizierter Support."
+        }
+    },
+    "errors": {
+        "plan_required": "Wählen Sie einen Plan.",
+        "plan_invalid": "Dieser Plan ist nicht verfügbar.",
+        "admin_only": "Nur Administratoren dürfen aktivieren.",
+        "activation_disabled": "Selbstaktivierung ist deaktiviert."
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "title": "FAQ & knowledge base",
+    "subtitle": "Answers about QR reports, tasks and teams in WinProx.",
+    "items": {
+        "qr_scan": {
+            "slug": "qr_scan",
+            "title": "Scan QR and report",
+            "body": "Visitors scan the unit QR and submit the report form. The issue reaches your facility team immediately."
+        },
+        "issues": {
+            "slug": "issues",
+            "title": "Managing issues",
+            "body": "Issues lists new, in-progress and closed reports. Approve, assign teams and log follow-up."
+        },
+        "tasks": {
+            "slug": "tasks",
+            "title": "Tasks and follow-up",
+            "body": "Create tasks for internal teams from an issue. Teams complete work via the team portal or app."
+        },
+        "teams": {
+            "slug": "teams",
+            "title": "Internal teams",
+            "body": "Teams group colleagues and workers. Link teams to units and issues to route work correctly."
+        },
+        "locations": {
+            "slug": "locations",
+            "title": "Locations and units",
+            "body": "Locations are sites; units are spaces or assets each with their own QR code for reporting."
+        },
+        "notifications": {
+            "slug": "notifications",
+            "title": "Issues and status",
+            "body": "Statuses follow the workflow: new, in progress, done and closed. Filters help you prioritise."
+        },
+        "calendar": {
+            "slug": "calendar",
+            "title": "Calendar and planning",
+            "body": "Recurring tasks and planned work appear in the calendar per team."
+        },
+        "subscription": {
+            "slug": "subscription",
+            "title": "Subscription and trial",
+            "body": "New organisations start with a trial. Administrators activate a plan under Subscription."
+        }
+    }
+}

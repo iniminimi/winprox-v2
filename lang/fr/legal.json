@@ -1,0 +1,13 @@
+{
+    "index_title": "Documents juridiques",
+    "index_subtitle": "Ouvrez confidentialité, conditions et DPA dans un nouvel onglet.",
+    "nav_label": "Documents",
+    "updated": "Dernière mise à jour : :date",
+    "documents": {
+        "privacy": "Politique de confidentialité",
+        "terms": "Conditions générales",
+        "cookies": "Politique cookies",
+        "dpa": "Accord de traitement (DPA)",
+        "subprocessors": "Sous-traitants"
+    }
+}

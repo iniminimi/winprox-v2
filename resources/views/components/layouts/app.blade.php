@@ -21,7 +21,7 @@
             ...(auth()->user()?->isAdmin() ? [['route' => 'settings.api', 'active' => 'settings.*', 'icon' => 'subscription', 'label' => 'settings.api.nav']] : []),
             ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],
-            ['route' => 'legal.index', 'active' => 'legal.*', 'icon' => 'legal', 'label' => 'common.nav.legal'],
+            ['route' => 'legal.index', 'active' => 'legal.index', 'icon' => 'legal', 'label' => 'common.nav.legal', 'target' => '_blank'],
             ['route' => 'contact.index', 'active' => 'contact.*', 'icon' => 'contact', 'label' => 'common.nav.contact'],
         ];
     @endphp
@@ -38,6 +38,7 @@
                     @foreach ($primaryNav as $item)
                         <a href="{{ route($item['route']) }}"
                            class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
+                           @if (! empty($item['target'])) target="{{ $item['target'] }}" rel="noopener noreferrer" @endif
                            @click="nav = false">
                             <x-wp-icon :name="$item['icon']" class="wp-nav-icon" />
                             <span>{{ __($item['label']) }}</span>
@@ -49,6 +50,7 @@
                     @foreach ($secondaryNav as $item)
                         <a href="{{ route($item['route']) }}"
                            class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
+                           @if (! empty($item['target'])) target="{{ $item['target'] }}" rel="noopener noreferrer" @endif
                            @click="nav = false">
                             <x-wp-icon :name="$item['icon']" class="wp-nav-icon" />
                             <span>{{ __($item['label']) }}</span>
@@ -89,12 +91,10 @@
             </main>
         </div>
 
-        {{-- Zwevende hulpknop (rechtsonder) — toggelt een klein paneel. --}}
         <div class="wp-help">
             <div class="wp-help-panel" x-show="help" x-cloak x-transition>
-                <h3 class="wp-help-title">{{ __('common.help.title') }}</h3>
-                <p class="wp-help-text">{{ __('common.help.text') }}</p>
-                <a href="{{ route('contact.index') }}" class="btn btn--primary btn--sm btn--block">{{ __('common.help.contact') }}</a>
+                <h3 class="wp-help-title">{{ __('help.panel_title') }}</h3>
+                <livewire:components.help-chat />
             </div>
             <button type="button" class="wp-help-button" @click="help = !help" aria-label="{{ __('common.help.button') }}">
                 <x-wp-icon name="help" class="wp-icon" />

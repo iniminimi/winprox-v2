@@ -1,0 +1,54 @@
+{
+    "title": "Subscription",
+    "subtitle": "Manage your trial and facility plan.",
+    "plans_heading": "Available plans",
+    "activate_plan": "Activate plan",
+    "current_plan": "Current plan",
+    "admin_required": "Only an administrator can activate a plan.",
+    "activated": "Plan :plan has been activated.",
+    "enterprise_hint": "Contact us for custom scale and limits.",
+    "enterprise_cta": "Email sales",
+    "enterprise_mail_subject": "WinProx Enterprise",
+    "enterprise_contact": "For Enterprise, email :email.",
+    "status": {
+        "title": "Status",
+        "access": "App access",
+        "access_ok": "Active",
+        "access_blocked": "Blocked",
+        "trial": "Trial",
+        "trial_days": ":days days remaining",
+        "plan": "Plan",
+        "active_until": "Valid until",
+        "usage": "Usage",
+        "usage_counts": ":units units · :users users"
+    },
+    "limits": {
+        "units": ":count units",
+        "users": ":count users",
+        "unlimited": "unlimited"
+    },
+    "plans": {
+        "starter": {
+            "name": "Starter",
+            "description": "For small sites with QR reports and tasks."
+        },
+        "pro": {
+            "name": "Pro",
+            "description": "More units and teams for growing organisations."
+        },
+        "business": {
+            "name": "Business",
+            "description": "Higher limits and API for integrations."
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "description": "Custom setup, SLA and dedicated support."
+        }
+    },
+    "errors": {
+        "plan_required": "Choose a plan.",
+        "plan_invalid": "This plan is not available.",
+        "admin_only": "Only administrators can activate plans.",
+        "activation_disabled": "Self-activation is disabled."
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "panel_title": "Assistant WinProx",
+    "welcome": "Posez une question sur les signalements, tâches ou votre organisation. Tapez « aperçu » pour les chiffres.",
+    "input_label": "Votre question",
+    "input_placeholder": "ex. Comment assigner une tâche à une équipe ?",
+    "send": "Envoyer",
+    "escalate": "Transférer au support",
+    "escalated": "Votre question a été transférée au support.",
+    "empty_message": "Saisissez une question pour commencer.",
+    "no_match": "Aucune réponse trouvée. Votre question est enregistrée ; vous pouvez la transférer au support.",
+    "rate_limited": "Patientez — réessayez dans une minute.",
+    "no_tenant": "Aucune organisation liée à votre compte.",
+    "insight": {
+        "summary": "Aperçu : :locations sites, :units unités, :issues signalements, :tasks tâches."
+    },
+    "mail": {
+        "unanswered_subject": "WinProx : question aide sans réponse",
+        "unanswered_body": "Utilisateur : :user (:email)\nOrganisation : :tenant\n\nQuestion :\n:question",
+        "escalation_subject": "WinProx : escalade chat aide",
+        "escalation_body": "Utilisateur : :user (:email)\nOrganisation : :tenant\n\nQuestion :\n:question\n\nDernière réponse :\n:reply"
+    }
+}

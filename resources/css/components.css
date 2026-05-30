@@ -856,3 +856,105 @@
     }
 }
 
+.wp-dl {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.wp-dl-row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) 1fr;
+    gap: 0.5rem 1rem;
+}
+
+.wp-dl-row dt {
+    font-weight: 600;
+    color: var(--wp-text-muted);
+}
+
+.wp-plan-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.wp-plan-card.is-current {
+    border-color: var(--wp-accent-border);
+    box-shadow: var(--wp-shadow-md);
+}
+
+.wp-plan-limits {
+    margin: 0.75rem 0 1rem;
+    padding-left: 1.25rem;
+    color: var(--wp-text-muted);
+    font-size: 0.875rem;
+}
+
+.wp-faq {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.wp-faq-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    text-align: left;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.wp-faq-body {
+    padding: 0 1rem 1rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-help-chat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 16rem;
+}
+
+.wp-help-chat-messages {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 10rem;
+}
+
+.wp-help-chat-bubble {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--wp-radius);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+}
+
+.wp-help-chat-bubble--user {
+    align-self: flex-end;
+    background: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+}
+
+.wp-help-chat-bubble--assistant {
+    align-self: flex-start;
+    background: var(--wp-surface-2);
+    color: var(--wp-text);
+}
+
+.wp-help-chat-form .wp-input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.wp-help-panel {
+    width: min(22rem, calc(100vw - 2rem));
+}
+

@@ -1,0 +1,46 @@
+{
+    "title": "FAQ & Wissensdatenbank",
+    "subtitle": "Antworten zu QR-Meldungen, Aufgaben und Teams in WinProx.",
+    "items": {
+        "qr_scan": {
+            "slug": "qr_scan",
+            "title": "QR scannen und melden",
+            "body": "Besucher scannen den Unit-QR und senden das Formular. Die Meldung erreicht sofort Ihr Facility-Team."
+        },
+        "issues": {
+            "slug": "issues",
+            "title": "Meldungen verwalten",
+            "body": "In Meldungen sehen Sie neue, laufende und geschlossene Fälle. Freigeben, Teams zuweisen und nachverfolgen."
+        },
+        "tasks": {
+            "slug": "tasks",
+            "title": "Aufgaben und Nachverfolgung",
+            "body": "Erstellen Sie Aufgaben für interne Teams aus einer Meldung. Teams arbeiten im Portal oder in der App."
+        },
+        "teams": {
+            "slug": "teams",
+            "title": "Interne Teams",
+            "body": "Teams bündeln Kollegen und Workers. Verknüpfen Sie Teams mit Units und Meldungen."
+        },
+        "locations": {
+            "slug": "locations",
+            "title": "Standorte und Units",
+            "body": "Standorte sind Gebäude oder Areale; Units sind Räume oder Assets mit eigenem QR-Code."
+        },
+        "notifications": {
+            "slug": "notifications",
+            "title": "Meldungen und Status",
+            "body": "Status folgen dem Workflow: neu, in Bearbeitung, erledigt und geschlossen. Filter helfen bei Prioritäten."
+        },
+        "calendar": {
+            "slug": "calendar",
+            "title": "Kalender und Planung",
+            "body": "Wiederkehrende und geplante Aufgaben erscheinen im Kalender pro Team."
+        },
+        "subscription": {
+            "slug": "subscription",
+            "title": "Abonnement und Testphase",
+            "body": "Neue Organisationen starten mit einer Testphase. Administratoren aktivieren danach einen Plan."
+        }
+    }
+}

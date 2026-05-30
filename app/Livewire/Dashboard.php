@@ -30,9 +30,12 @@ class Dashboard extends Component
             ->take(5)
             ->get();
 
+        $tenant = auth()->user()?->tenant;
+
         return view('livewire.dashboard', [
             'stats' => $stats,
             'recent' => $recent,
+            'trialDays' => $tenant?->isTrialActive() ? $tenant->trialDaysRemaining() : null,
         ]);
     }
 }

@@ -4,10 +4,12 @@
             <h1 class="wp-page-title">{{ __('dashboard.title') }}</h1>
             <p class="wp-muted">{{ __('dashboard.subtitle') }}</p>
         </div>
-        <div class="wp-cluster">
-            <span class="wp-pill wp-pill--closed">{{ __('dashboard.trial', ['days' => 14]) }}</span>
-            <button type="button" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing') }}</button>
-        </div>
+        @if ($trialDays !== null)
+            <div class="wp-cluster">
+                <span class="wp-pill wp-pill--progress">{{ __('dashboard.trial', ['days' => $trialDays]) }}</span>
+                <button type="button" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing') }}</button>
+            </div>
+        @endif
     </div>
 
     @php

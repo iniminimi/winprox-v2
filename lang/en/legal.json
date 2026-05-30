@@ -1,0 +1,13 @@
+{
+    "index_title": "Legal documents",
+    "index_subtitle": "Open privacy, terms and data processing agreements in a new tab.",
+    "nav_label": "Documents",
+    "updated": "Last updated: :date",
+    "documents": {
+        "privacy": "Privacy policy",
+        "terms": "Terms of service",
+        "cookies": "Cookie policy",
+        "dpa": "Data processing agreement (DPA)",
+        "subprocessors": "Subprocessors"
+    }
+}

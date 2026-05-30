@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell">
+<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
     <main class="wp-portal">
         {{ $slot }}
     </main>

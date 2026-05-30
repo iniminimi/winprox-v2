@@ -1,0 +1,93 @@
+<?php
+
+use App\Livewire\Auth\Register;
+use App\Livewire\Pages\Subscription;
+use App\Models\Tenant;
+use App\Models\User;
+use App\Support\Tenancy;
+use Livewire\Livewire;
+
+afterEach(fn () => Tenancy::forget());
+
+it('toont de welcome-pagina voor gasten', function () {
+    $this->get(route('welcome'))
+        ->assertOk()
+        ->assertSee(__('welcome.hero.title'));
+});
+
+it('zet een proefperiode bij registratie', function () {
+    Livewire::test(Register::class)
+        ->set('organization', 'Trial Facility BV')
+        ->set('name', 'Trial Admin')
+        ->set('email', 'trial@winprox.test')
+        ->set('password', 'wachtwoord123')
+        ->set('password_confirmation', 'wachtwoord123')
+        ->call('register')
+        ->assertHasNoErrors();
+
+    $tenant = Tenant::where('name', 'Trial Facility BV')->first();
+
+    expect($tenant)->not->toBeNull()
+        ->and($tenant->trial_ends_at)->not->toBeNull()
+        ->and($tenant->isTrialActive())->toBeTrue();
+});
+
+it('stuurt gebruikers zonder toegang door naar abonnement', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->subDay(),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+        'is_active' => true,
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertRedirect(route('subscription.index'));
+});
+
+it('laat een beheerder een plan activeren', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(3),
+        'is_active' => true,
+    ]);
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->call('activatePlan', 'pro')
+        ->assertHasNoErrors();
+
+    $tenant->refresh();
+
+    expect($tenant->billing_plan)->toBe('pro')
+        ->and($tenant->billing_active_until)->not->toBeNull()
+        ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
+        ->and($tenant->isTrialActive())->toBeFalse();
+});
+
+it('laadt de FAQ-pagina', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->get(route('faq.index'))
+        ->assertOk()
+        ->assertSee(__('faq.title'));
+});
+
+it('toont privacy-document publiek', function () {
+    $this->get(route('legal.privacy'))
+        ->assertOk()
+        ->assertSee(__('legal.documents.privacy'));
+});
+
+it('toont contact voor gasten', function () {
+    $this->get(route('contact.index'))
+        ->assertOk()
+        ->assertSee('info@winprox.app')
+        ->assertSee(__('contact.title'));
+});

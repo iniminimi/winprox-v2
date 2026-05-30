@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -22,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Locale-keuze (sessie) toepassen op elke web-request.
         $middleware->web(append: [
             SetLocale::class,
+            EnsureTenantHasAppAccess::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

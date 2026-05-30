@@ -12,6 +12,8 @@ class Legal extends Component
 {
     public function render()
     {
-        return view('livewire.pages.legal');
+        return view('livewire.pages.legal', [
+            'documents' => config('legal.documents', []),
+        ]);
     }
 }

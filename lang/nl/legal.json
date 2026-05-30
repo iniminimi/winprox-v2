@@ -1,0 +1,13 @@
+{
+    "index_title": "Juridische documenten",
+    "index_subtitle": "Privacy, voorwaarden en verwerkersovereenkomsten openen in een nieuw tabblad.",
+    "nav_label": "Documenten",
+    "updated": "Laatst bijgewerkt: :date",
+    "documents": {
+        "privacy": "Privacyverklaring",
+        "terms": "Algemene voorwaarden",
+        "cookies": "Cookiebeleid",
+        "dpa": "Verwerkersovereenkomst (DPA)",
+        "subprocessors": "Subverwerkers"
+    }
+}

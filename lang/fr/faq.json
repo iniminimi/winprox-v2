@@ -1,0 +1,46 @@
+{
+    "title": "FAQ & base de connaissances",
+    "subtitle": "Réponses sur les signalements QR, tâches et équipes dans WinProx.",
+    "items": {
+        "qr_scan": {
+            "slug": "qr_scan",
+            "title": "Scanner le QR et signaler",
+            "body": "Les visiteurs scannent le QR de l'unité et envoient le formulaire. Le signalement arrive immédiatement à votre équipe."
+        },
+        "issues": {
+            "slug": "issues",
+            "title": "Gérer les signalements",
+            "body": "La liste montre les signalements nouveaux, en cours et clos. Approuvez, assignez des équipes et suivez l'avancement."
+        },
+        "tasks": {
+            "slug": "tasks",
+            "title": "Tâches et suivi",
+            "body": "Créez des tâches pour les équipes internes depuis un signalement. Les équipes travaillent via le portail ou l'app."
+        },
+        "teams": {
+            "slug": "teams",
+            "title": "Équipes internes",
+            "body": "Les équipes regroupent collègues et workers. Liez-les aux unités et signalements pour router le travail."
+        },
+        "locations": {
+            "slug": "locations",
+            "title": "Sites et unités",
+            "body": "Les sites sont des bâtiments ; les unités sont des espaces ou actifs avec un QR dédié."
+        },
+        "notifications": {
+            "slug": "notifications",
+            "title": "Signalements et statuts",
+            "body": "Les statuts suivent le flux : nouveau, en cours, traité et clos. Les filtres aident à prioriser."
+        },
+        "calendar": {
+            "slug": "calendar",
+            "title": "Calendrier et planification",
+            "body": "Les tâches récurrentes et planifiées apparaissent dans le calendrier par équipe."
+        },
+        "subscription": {
+            "slug": "subscription",
+            "title": "Abonnement et essai",
+            "body": "Les nouvelles organisations démarrent avec un essai. Les administrateurs activent un forfait."
+        }
+    }
+}

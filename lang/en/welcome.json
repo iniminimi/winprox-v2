@@ -1,0 +1,29 @@
+{
+    "meta_title": "WinProx — facility issues via QR",
+    "login": "Log in",
+    "register": "Register",
+    "hero": {
+        "title": "From floor report to your team",
+        "lead": "WinProx links QR reports to tasks for internal facility teams — without scattered spreadsheets.",
+        "cta_register": "Start free trial",
+        "cta_login": "Log in"
+    },
+    "flow": {
+        "title": "How it works",
+        "steps": [
+            {
+                "title": "Scan QR",
+                "body": "Someone scans the unit code and describes the issue."
+            },
+            {
+                "title": "Task to team",
+                "body": "Managers assign an internal team; the team receives a task in the portal."
+            },
+            {
+                "title": "Done",
+                "body": "Follow-up and status stay visible until the issue is closed."
+            }
+        ]
+    },
+    "qr_illustration_label": "Decorative QR illustration"
+}

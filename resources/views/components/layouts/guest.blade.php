@@ -24,7 +24,7 @@
             </div>
 
             <div class="wp-auth-footer">
-                <a href="{{ route('legal.index') }}">{{ __('common.nav.legal') }}</a>
+                <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener noreferrer">{{ __('common.nav.legal') }}</a>
                 <span class="wp-muted">&middot;</span>
                 <a href="{{ route('contact.index') }}">{{ __('common.nav.contact') }}</a>
             </div>

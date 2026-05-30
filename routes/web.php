@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Team\TeamQrController;
 use App\Livewire\Auth\ForgotPassword;
@@ -26,15 +27,25 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return redirect()->route(Auth::check() ? 'dashboard' : 'login');
-});
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    }
 
-// Talenkeuze: bewaart de locale in de sessie (gast én ingelogd).
+    return view('welcome');
+})->name('welcome');
+
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
-// Publieke QR-schermen (geen auth) — mobiel-first.
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
+
+Route::get('/contact', Contact::class)->name('contact.index');
+
+foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+    Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
+        return app(LegalDocumentController::class)->show(request(), $legalDoc);
+    })->name($legalMeta['route']);
+}
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');
@@ -50,7 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/issues/create', IssueCreate::class)->name('issues.create');
     Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
-    // Beheers-stubs (navigatie werkt; volledige features volgen later).
     Route::get('/locations', Locations::class)->name('locations.index');
     Route::get('/tasks', TaskIndex::class)->name('tasks.index');
     Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
@@ -61,7 +71,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/subscription', Subscription::class)->name('subscription.index');
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');
-    Route::get('/contact', Contact::class)->name('contact.index');
 
     Route::post('/logout', function () {
         Auth::logout();

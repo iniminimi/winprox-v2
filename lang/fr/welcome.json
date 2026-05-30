@@ -1,0 +1,29 @@
+{
+    "meta_title": "WinProx — signalements facility via QR",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "hero": {
+        "title": "Du terrain vers votre équipe",
+        "lead": "WinProx relie les signalements QR aux tâches des équipes facility internes — sans tableurs éparpillés.",
+        "cta_register": "Essai gratuit",
+        "cta_login": "Connexion"
+    },
+    "flow": {
+        "title": "Comment ça marche",
+        "steps": [
+            {
+                "title": "Scanner le QR",
+                "body": "Quelqu'un scanne le code de l'unité et décrit le problème."
+            },
+            {
+                "title": "Tâche à l'équipe",
+                "body": "Le gestionnaire assigne une équipe interne ; elle reçoit une tâche dans le portail."
+            },
+            {
+                "title": "Terminé",
+                "body": "Le suivi et le statut restent visibles jusqu'à la clôture."
+            }
+        ]
+    },
+    "qr_illustration_label": "Illustration QR décorative"
+}

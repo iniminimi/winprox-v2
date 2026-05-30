@@ -10,8 +10,23 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Faq extends Component
 {
+    public ?string $openSlug = null;
+
+    public function toggle(string $slug): void
+    {
+        $this->openSlug = $this->openSlug === $slug ? null : $slug;
+    }
+
     public function render()
     {
-        return view('livewire.pages.faq');
+        $raw = __('faq.items');
+        $items = is_array($raw) ? array_values(array_filter(
+            $raw,
+            fn ($item) => is_array($item) && isset($item['slug'], $item['title'], $item['body'])
+        )) : [];
+
+        return view('livewire.pages.faq', [
+            'items' => $items,
+        ]);
     }
 }

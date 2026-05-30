@@ -1,0 +1,29 @@
+{
+    "meta_title": "WinProx — facility meldingen via QR",
+    "login": "Inloggen",
+    "register": "Registreren",
+    "hero": {
+        "title": "Meldingen van de vloer naar je team",
+        "lead": "WinProx koppelt QR-meldingen aan taken voor interne facility-teams — zonder losse spreadsheets.",
+        "cta_register": "Start gratis proefperiode",
+        "cta_login": "Inloggen"
+    },
+    "flow": {
+        "title": "Zo werkt het",
+        "steps": [
+            {
+                "title": "QR scannen",
+                "body": "Iemand scant de code op een unit en beschrijft het probleem."
+            },
+            {
+                "title": "Taak naar team",
+                "body": "Beheer wijst een intern team toe; het team krijgt een taak in het portaal."
+            },
+            {
+                "title": "Klaar",
+                "body": "Opvolging en status zijn zichtbaar tot de melding is afgehandeld."
+            }
+        ]
+    },
+    "qr_illustration_label": "Decoratieve QR-illustratie"
+}

@@ -1,0 +1,22 @@
+{
+    "panel_title": "WinProx-Assistent",
+    "welcome": "Fragen Sie zu Meldungen, Aufgaben oder Ihrer Organisation. Tippen Sie \"Überblick\" für Zahlen.",
+    "input_label": "Ihre Frage",
+    "input_placeholder": "z. B. Wie weise ich eine Aufgabe einem Team zu?",
+    "send": "Senden",
+    "escalate": "An Helpdesk weiterleiten",
+    "escalated": "Ihre Frage wurde an den Helpdesk weitergeleitet.",
+    "empty_message": "Geben Sie eine Frage ein, um zu starten.",
+    "no_match": "Keine passende Antwort gefunden. Ihre Frage wurde gespeichert; Sie können sie an den Helpdesk weiterleiten.",
+    "rate_limited": "Bitte warten — versuchen Sie es in einer Minute erneut.",
+    "no_tenant": "Keine Organisation mit Ihrem Konto verknüpft.",
+    "insight": {
+        "summary": "Überblick: :locations Standorte, :units Units, :issues Meldungen, :tasks Aufgaben."
+    },
+    "mail": {
+        "unanswered_subject": "WinProx: unbeantwortete Hilfefrage",
+        "unanswered_body": "Benutzer: :user (:email)\nOrganisation: :tenant\n\nFrage:\n:question",
+        "escalation_subject": "WinProx: Hilfe-Chat-Eskalation",
+        "escalation_body": "Benutzer: :user (:email)\nOrganisation: :tenant\n\nFrage:\n:question\n\nLetzte Antwort:\n:reply"
+    }
+}

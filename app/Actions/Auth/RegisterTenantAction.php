@@ -2,6 +2,7 @@
 
 namespace App\Actions\Auth;
 
+use App\Actions\Billing\StartTenantTrialAction;
 use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterTenantAction
 {
+    public function __construct(private StartTenantTrialAction $startTrial) {}
     /**
      * Maakt een nieuwe organisatie (Tenant) + de eigenaar-gebruiker (rol admin).
      *
@@ -23,6 +25,8 @@ class RegisterTenantAction
             $tenant = Tenant::create([
                 'name' => $data['organization'],
             ]);
+
+            $this->startTrial->handle($tenant);
 
             return User::create([
                 'tenant_id' => $tenant->id,

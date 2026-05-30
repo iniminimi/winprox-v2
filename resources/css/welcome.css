@@ -1,0 +1,118 @@
+.wp-welcome-shell {
+    background: var(--wp-bg);
+    color: var(--wp-text);
+}
+
+.wp-welcome-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-welcome-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wp-welcome {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+}
+
+.wp-welcome-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wp-welcome-lead {
+    margin-top: 0.75rem;
+    font-size: 1.125rem;
+    color: var(--wp-text-muted);
+    max-width: 40rem;
+}
+
+.wp-welcome-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.wp-welcome-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.wp-welcome-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.wp-welcome-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+}
+
+.wp-welcome-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--wp-radius-pill);
+    background: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.wp-welcome-qr-art {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px dashed var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    text-align: center;
+}
+
+.wp-welcome-qr-grid {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto 0.75rem;
+    background:
+        linear-gradient(90deg, var(--wp-border) 1px, transparent 1px) 0 0 / 12px 12px,
+        linear-gradient(var(--wp-border) 1px, transparent 1px) 0 0 / 12px 12px;
+    border: 2px solid var(--wp-text);
+    border-radius: var(--wp-radius);
+}
+
+.wp-welcome-qr-label {
+    font-size: 0.875rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-welcome-footer-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    font-size: 0.875rem;
+}
+
+.wp-welcome-flow {
+    margin-top: 3rem;
+}

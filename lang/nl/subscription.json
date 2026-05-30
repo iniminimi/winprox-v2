@@ -1,0 +1,54 @@
+{
+    "title": "Abonnement",
+    "subtitle": "Beheer je proefperiode en facility-plan.",
+    "plans_heading": "Beschikbare plannen",
+    "activate_plan": "Plan activeren",
+    "current_plan": "Huidig plan",
+    "admin_required": "Alleen een beheerder kan een plan activeren.",
+    "activated": "Plan :plan is geactiveerd.",
+    "enterprise_hint": "Neem contact op voor maatwerk en onbeperkte schaal.",
+    "enterprise_cta": "Mail sales",
+    "enterprise_mail_subject": "WinProx Enterprise",
+    "enterprise_contact": "Voor Enterprise mail je naar :email.",
+    "status": {
+        "title": "Status",
+        "access": "App-toegang",
+        "access_ok": "Actief",
+        "access_blocked": "Geblokkeerd",
+        "trial": "Proefperiode",
+        "trial_days": ":days dagen resterend",
+        "plan": "Plan",
+        "active_until": "Geldig tot",
+        "usage": "Gebruik",
+        "usage_counts": ":units units · :users gebruikers"
+    },
+    "limits": {
+        "units": ":count units",
+        "users": ":count gebruikers",
+        "unlimited": "onbeperkt"
+    },
+    "plans": {
+        "starter": {
+            "name": "Starter",
+            "description": "Voor kleine locaties met QR-meldingen en taken."
+        },
+        "pro": {
+            "name": "Pro",
+            "description": "Meer units en teams voor groeiende organisaties."
+        },
+        "business": {
+            "name": "Business",
+            "description": "Hogere limieten en API voor integraties."
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "description": "Maatwerk, SLA en dedicated support."
+        }
+    },
+    "errors": {
+        "plan_required": "Kies een plan.",
+        "plan_invalid": "Dit plan is niet beschikbaar.",
+        "admin_only": "Alleen beheerders mogen plannen activeren.",
+        "activation_disabled": "Zelfactivatie is uitgeschakeld."
+    }
+}

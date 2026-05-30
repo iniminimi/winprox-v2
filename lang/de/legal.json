@@ -1,0 +1,13 @@
+{
+    "index_title": "Rechtliche Dokumente",
+    "index_subtitle": "Datenschutz, Bedingungen und AVV in einem neuen Tab öffnen.",
+    "nav_label": "Dokumente",
+    "updated": "Zuletzt aktualisiert: :date",
+    "documents": {
+        "privacy": "Datenschutzerklärung",
+        "terms": "Allgemeine Bedingungen",
+        "cookies": "Cookie-Richtlinie",
+        "dpa": "Auftragsverarbeitung (AVV)",
+        "subprocessors": "Unterauftragsverarbeiter"
+    }
+}

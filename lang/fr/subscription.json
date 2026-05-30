@@ -1,0 +1,54 @@
+{
+    "title": "Abonnement",
+    "subtitle": "Gérez votre essai et votre forfait facility.",
+    "plans_heading": "Forfaits disponibles",
+    "activate_plan": "Activer le forfait",
+    "current_plan": "Forfait actuel",
+    "admin_required": "Seul un administrateur peut activer un forfait.",
+    "activated": "Le forfait :plan est activé.",
+    "enterprise_hint": "Contactez-nous pour une échelle sur mesure.",
+    "enterprise_cta": "Contacter les ventes",
+    "enterprise_mail_subject": "WinProx Enterprise",
+    "enterprise_contact": "Pour Enterprise, écrivez à :email.",
+    "status": {
+        "title": "Statut",
+        "access": "Accès application",
+        "access_ok": "Actif",
+        "access_blocked": "Bloqué",
+        "trial": "Essai",
+        "trial_days": ":days jours restants",
+        "plan": "Forfait",
+        "active_until": "Valable jusqu'au",
+        "usage": "Utilisation",
+        "usage_counts": ":units unités · :users utilisateurs"
+    },
+    "limits": {
+        "units": ":count unités",
+        "users": ":count utilisateurs",
+        "unlimited": "illimité"
+    },
+    "plans": {
+        "starter": {
+            "name": "Starter",
+            "description": "Petits sites avec signalements QR et tâches."
+        },
+        "pro": {
+            "name": "Pro",
+            "description": "Plus d'unités et d'équipes pour grandir."
+        },
+        "business": {
+            "name": "Business",
+            "description": "Limites élevées et API pour intégrations."
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "description": "Sur mesure, SLA et support dédié."
+        }
+    },
+    "errors": {
+        "plan_required": "Choisissez un forfait.",
+        "plan_invalid": "Ce forfait n'est pas disponible.",
+        "admin_only": "Seuls les administrateurs peuvent activer.",
+        "activation_disabled": "L'auto-activation est désactivée."
+    }
+}

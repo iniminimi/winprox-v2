@@ -1,0 +1,73 @@
+.wp-legal-doc {
+    background: var(--wp-bg);
+}
+
+.wp-legal {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+}
+
+.wp-legal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.wp-legal-meta {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-legal-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-legal-nav-link {
+    font-size: 0.875rem;
+    color: var(--wp-link);
+    text-decoration: none;
+}
+
+.wp-legal-nav-link.is-active {
+    font-weight: 600;
+    color: var(--wp-text);
+}
+
+.wp-legal-body {
+    margin-top: 1.5rem;
+    line-height: 1.6;
+}
+
+.wp-legal-body h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.wp-legal-index {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.wp-legal-index-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    color: var(--wp-link);
+    text-decoration: none;
+}
+
+.wp-legal-index-link:hover {
+    border-color: var(--wp-accent-border);
+}

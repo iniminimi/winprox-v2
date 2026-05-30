@@ -1,0 +1,22 @@
+{
+    "panel_title": "WinProx assistant",
+    "welcome": "Ask about issues, tasks or your organisation. Type \"overview\" for counts.",
+    "input_label": "Your question",
+    "input_placeholder": "e.g. How do I assign a task to a team?",
+    "send": "Send",
+    "escalate": "Forward to helpdesk",
+    "escalated": "Your question was forwarded to the helpdesk.",
+    "empty_message": "Type a question to get started.",
+    "no_match": "I could not find a matching answer. Your question was saved; you can forward it to the helpdesk.",
+    "rate_limited": "Please wait — try again in a minute.",
+    "no_tenant": "No organisation linked to your account.",
+    "insight": {
+        "summary": "Overview: :locations locations, :units units, :issues issues, :tasks tasks."
+    },
+    "mail": {
+        "unanswered_subject": "WinProx: unanswered help question",
+        "unanswered_body": "User: :user (:email)\nOrganisation: :tenant\n\nQuestion:\n:question",
+        "escalation_subject": "WinProx: help chat escalation",
+        "escalation_body": "User: :user (:email)\nOrganisation: :tenant\n\nQuestion:\n:question\n\nLast reply:\n:reply"
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "title": "FAQ & kennisbank",
+    "subtitle": "Antwoorden over QR-meldingen, taken en teams in WinProx.",
+    "items": {
+        "qr_scan": {
+            "slug": "qr_scan",
+            "title": "QR-code scannen en melden",
+            "body": "Bezoekers scannen de QR op een unit en vullen het meldingsformulier in. De melding komt direct binnen bij je facility-team."
+        },
+        "issues": {
+            "slug": "issues",
+            "title": "Meldingen beheren",
+            "body": "In Meldingen zie je nieuwe, lopende en afgehandelde meldingen. Je kunt goedkeuren, toewijzen aan teams en opvolging vastleggen."
+        },
+        "tasks": {
+            "slug": "tasks",
+            "title": "Taken en opvolging",
+            "body": "Vanuit een melding maak je taken voor interne teams. Teams werken taken af via het teamportaal of in de app."
+        },
+        "teams": {
+            "slug": "teams",
+            "title": "Interne teams",
+            "body": "Teams groeperen medewerkers en workers. Koppel teams aan units en meldingen zodat de juiste groep wordt ingeschakeld."
+        },
+        "locations": {
+            "slug": "locations",
+            "title": "Locaties en units",
+            "body": "Locaties zijn gebouwen of sites; units zijn ruimtes of assets met een eigen QR-code voor meldingen."
+        },
+        "notifications": {
+            "slug": "notifications",
+            "title": "Meldingen en status",
+            "body": "Statussen volgen de workflow: nieuw, in uitvoering, afgehandeld en gesloten. Filters helpen je prioriteit te stellen."
+        },
+        "calendar": {
+            "slug": "calendar",
+            "title": "Kalender en planning",
+            "body": "Terugkerende taken en geplande werkzaamheden verschijnen in de kalender voor overzicht per team."
+        },
+        "subscription": {
+            "slug": "subscription",
+            "title": "Abonnement en proefperiode",
+            "body": "Nieuwe organisaties starten met een proefperiode. Beheerders activeren daarna een plan onder Abonnement."
+        }
+    }
+}

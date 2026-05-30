@@ -1,57 +1,57 @@
+@php
+    $locale = app()->getLocale();
+@endphp
 <!DOCTYPE html>
-<html lang="nl" data-theme="standard">
+<html lang="{{ str_replace('_', '-', $locale) }}" data-theme="standard">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WinProx — preview</title>
+    <title>{{ __('welcome.meta_title') }}</title>
     @vite(['resources/css/app.css'])
 </head>
-<body class="wp-shell">
-    <div class="wp-container wp-stack">
+<body class="wp-shell wp-welcome-shell">
+    <header class="wp-welcome-header">
+        <a href="{{ route('login') }}" class="wp-brand">WinProx</a>
+        <div class="wp-welcome-header-actions">
+            @include('partials.wp-lang-switch', ['variant' => 'inline'])
+            <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
+            <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.register') }}</a>
+        </div>
+    </header>
 
-        <header class="wp-stack">
-            <h1 class="wp-page-title">WinProx</h1>
-            <p>Preview van het <strong>standard</strong>-thema en de gedeelde componenten. Dit is een tijdelijke stijlpagina.</p>
-        </header>
-
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">Knoppen</h2>
-            <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
-                <button class="btn btn--primary">Primair</button>
-                <button class="btn btn--ghost">Ghost</button>
-                <button class="btn btn--warning">Waarschuwing</button>
-                <button class="btn btn--danger">Gevaar</button>
-                <button class="btn btn--primary" disabled>Uitgeschakeld</button>
+    <main class="wp-welcome">
+        <section class="wp-welcome-hero">
+            <h1 class="wp-welcome-title">{{ __('welcome.hero.title') }}</h1>
+            <p class="wp-welcome-lead">{{ __('welcome.hero.lead') }}</p>
+            <div class="wp-welcome-cta">
+                <a href="{{ route('register') }}" class="btn btn--primary">{{ __('welcome.hero.cta_register') }}</a>
+                <a href="{{ route('login') }}" class="btn btn--ghost">{{ __('welcome.hero.cta_login') }}</a>
             </div>
         </section>
 
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">Statussen (pillen)</h2>
-            <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
-                <span class="wp-pill wp-pill--new">Nieuw (Open)</span>
-                <span class="wp-pill wp-pill--progress">In uitvoering</span>
-                <span class="wp-pill wp-pill--done">Afgehandeld</span>
-                <span class="wp-pill wp-pill--closed">Gesloten</span>
+        <section class="wp-welcome-flow" aria-labelledby="welcome-flow-title">
+            <h2 id="welcome-flow-title" class="wp-welcome-section-title">{{ __('welcome.flow.title') }}</h2>
+            <ol class="wp-welcome-steps">
+                @foreach (__('welcome.flow.steps') as $index => $step)
+                    <li class="wp-welcome-step">
+                        <span class="wp-welcome-step-num">{{ $index + 1 }}</span>
+                        <div>
+                            <h3>{{ $step['title'] ?? '' }}</h3>
+                            <p class="wp-muted">{{ $step['body'] ?? '' }}</p>
+                        </div>
+                    </li>
+                @endforeach
+            </ol>
+            <div class="wp-welcome-qr-art" aria-hidden="true">
+                <div class="wp-welcome-qr-grid"></div>
+                <span class="wp-welcome-qr-label">{{ __('welcome.qr_illustration_label') }}</span>
             </div>
         </section>
 
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">Moderatie — melding wacht op controle</h2>
-            <p>Beschrijving en foto's van een QR-melding blijven geblurd tot goedkeuring.</p>
-            <div class="wp-pending-review" data-pending-label="Wacht op controle">
-                <p>Voorbeeldbeschrijving die een melder via de QR-code heeft ingestuurd en die nog niet is gecontroleerd.</p>
-            </div>
+        <section class="wp-welcome-footer-links">
+            <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener">{{ __('legal.documents.privacy') }}</a>
+            <a href="{{ route('contact.index') }}">{{ __('contact.title') }}</a>
         </section>
-
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">Formulier</h2>
-            <div>
-                <label class="wp-label" for="demo-desc">Omschrijving</label>
-                <textarea id="demo-desc" class="wp-textarea" placeholder="Beschrijf de melding..."></textarea>
-                <p class="wp-hint">Voorbeeld van een tekstveld met het standaardthema.</p>
-            </div>
-        </section>
-
-    </div>
+    </main>
 </body>
 </html>
