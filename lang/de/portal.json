@@ -111,7 +111,9 @@
     },
     "documents": {
         "download": "Herunterladen",
-        "verification_required": "Verifizierung erforderlich",
+        "verification_required": "Nur für angemeldete Mitarbeiter",
+        "staff_only": "Nicht öffentlich verfügbar",
+        "published": "Veröffentlicht am {date}",
         "empty": "Es gibt keine Dokumente."
     },
     "announcements": {

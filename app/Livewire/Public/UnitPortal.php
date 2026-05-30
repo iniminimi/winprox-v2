@@ -117,6 +117,10 @@ class UnitPortal extends Component
 
         $this->portalSection = $section;
         $this->flashMessage = '';
+
+        if ($section === 'new') {
+            $this->dispatch('wp-prepare-photo-inputs');
+        }
     }
 
     public function openIssueDetail(int $issueId): void
@@ -126,7 +130,7 @@ class UnitPortal extends Component
         }
 
         $issue = UnitPortalData::findActiveIssueForUnit($this->unit(), $issueId);
-        if ($issue === null) {
+        if ($issue === null || ! $issue->isApproved()) {
             return;
         }
 
@@ -157,6 +161,7 @@ class UnitPortal extends Component
         $submitReport->handle($this->unit(), ['description' => $this->description], $this->photos);
 
         $this->reset(['description', 'photos']);
+        $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.report.sent');
         $this->portalSection = 'issues';
     }
@@ -244,13 +249,9 @@ class UnitPortal extends Component
             ['sign_in_icon_slug.required' => __('portal.worker.errors.icon_required'), 'sign_in_icon_slug.in' => __('portal.worker.errors.icon_required')],
         );
 
-        $expected = trim((string) $deviceWorker->field_icon_slug);
-        $worker = $expected !== '' && $this->sign_in_icon_slug === $expected
-            ? WorkerVerification::confirmIcon($team, $this->sign_in_icon_slug)
-            : null;
+        $worker = WorkerVerification::confirmIconForWorker($team, $deviceWorker, $this->sign_in_icon_slug);
 
-        if ($worker === null || (int) $worker->id !== (int) $deviceWorker->id
-            || ! WorkerDeviceSession::workerCanActOnUnit($worker, $this->unit())) {
+        if ($worker === null || ! WorkerDeviceSession::workerCanActOnUnit($worker, $this->unit())) {
             WorkerIconGuard::recordFailedAttempt($team);
             $this->sign_in_icon_slug = '';
             $this->addFailedSignInError($team);
@@ -288,6 +289,7 @@ class UnitPortal extends Component
         $this->completingTaskId = $task->id;
         $this->completingNote = '';
         $this->completingPhotos = [];
+        $this->dispatch('wp-prepare-photo-inputs');
     }
 
     public function cancelCompleteTask(): void
@@ -295,6 +297,7 @@ class UnitPortal extends Component
         $this->completingTaskId = null;
         $this->completingNote = '';
         $this->completingPhotos = [];
+        $this->dispatch('wp-clear-photo-previews');
     }
 
     public function removeCompletingPhoto(int $index): void
@@ -385,9 +388,12 @@ class UnitPortal extends Component
 
             if ($this->selectedIssueId !== null) {
                 $selectedIssue = UnitPortalData::findActiveIssueForUnit($unit, $this->selectedIssueId);
-                if ($selectedIssue === null) {
+                if ($selectedIssue === null || ! $selectedIssue->isApproved()) {
                     $this->selectedIssueId = null;
-                    $this->portalSection = 'issues';
+                    $selectedIssue = null;
+                    if ($this->portalSection === 'issue_detail') {
+                        $this->portalSection = 'issues';
+                    }
                 } elseif ($team !== null) {
                     $openTasksForIssue = UnitPortalData::openTeamTasksForIssue($selectedIssue, (int) $team->id);
                 }

@@ -69,6 +69,24 @@
         "no_team": "No team",
         "add_task": "Add task for a team",
         "add_task_placeholder": "Choose a team",
-        "add_task_submit": "Add task"
+        "add_task_submit": "Add task",
+        "updates": "Timeline",
+        "updates_empty": "No notes on this issue yet.",
+        "add_update": "Add note",
+        "add_update_placeholder": "e.g. extra info for the team…",
+        "add_update_photos": "Photos (optional)",
+        "add_update_submit": "Save note"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Field worker",
+            "worker_photos": "Field worker photos"
+        },
+        "errors": {
+            "body_required": "Enter a note.",
+            "body_min": "The note must be at least 2 characters.",
+            "photos_max": "Maximum 4 photos per note.",
+            "photos_image": "Only images are allowed."
+        }
     }
 }

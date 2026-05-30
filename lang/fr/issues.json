@@ -69,6 +69,24 @@
         "no_team": "Aucune équipe",
         "add_task": "Ajouter une tâche pour une équipe",
         "add_task_placeholder": "Choisir une équipe",
-        "add_task_submit": "Ajouter la tâche"
+        "add_task_submit": "Ajouter la tâche",
+        "updates": "Chronologie",
+        "updates_empty": "Aucune note sur ce signalement.",
+        "add_update": "Ajouter une note",
+        "add_update_placeholder": "p. ex. info supplémentaire pour l'équipe…",
+        "add_update_photos": "Photos (optionnel)",
+        "add_update_submit": "Enregistrer la note"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Exécutant",
+            "worker_photos": "Photos exécutant"
+        },
+        "errors": {
+            "body_required": "Saisissez une note.",
+            "body_min": "La note doit comporter au moins 2 caractères.",
+            "photos_max": "Maximum 4 photos par note.",
+            "photos_image": "Seules les images sont autorisées."
+        }
     }
 }

@@ -34,6 +34,29 @@ it('dashboard KPI links return 200', function () {
         ->assertOk();
 });
 
+it('finds locations by house number in search', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn Zuid',
+        'house_number' => '42B',
+        'is_active' => true,
+    ]);
+    Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hal Noord',
+        'house_number' => '7',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationIndex::class)
+        ->set('search', '42B')
+        ->assertSee('Magazijn Zuid')
+        ->assertDontSee('Hal Noord');
+});
+
 it('creates a location via Livewire', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

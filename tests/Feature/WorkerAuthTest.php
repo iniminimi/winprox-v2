@@ -103,3 +103,35 @@ it('registreert een nieuwe worker met icoon via open registratie', function () {
         ->and($result['worker']->internal_team_id)->toBe($team->id)
         ->and($result['worker']->devices()->count())->toBe(1);
 });
+
+it('laat meerdere workers hetzelfde icoon kiezen', function () {
+    $team = authTeam();
+
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $team->tenant_id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Eerste',
+        'last_name' => 'Worker',
+    ]);
+
+    $second = WorkerDeviceSession::registerWorkerForTeam($team, 'Tweede', 'Worker', 'star');
+
+    expect($second['worker']->field_icon_slug)->toBe('star');
+});
+
+it('bevestigt icoon voor de worker die al op naam is gekoppeld', function () {
+    $team = authTeam();
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $team->tenant_id,
+        'internal_team_id' => $team->id,
+    ]);
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $team->tenant_id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $confirmed = WorkerVerification::confirmIconForWorker($team, $worker, 'star');
+
+    expect($confirmed)->not->toBeNull()
+        ->and($confirmed->id)->toBe($worker->id);
+});

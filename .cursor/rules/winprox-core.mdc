@@ -5,7 +5,9 @@ alwaysApply: true
 
 # WinProx V2 — mager & consistent
 
-Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bij conflict: **regel wint**, geen snelle hack.
+Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bij ontwerpkeuzes ook
+**`WINPROX_DIRECTION.md`** (roadmap — **achtergrond**, niet proactief bouwen). Bij conflict:
+**regel wint**, geen snelle hack.
 
 ## Product (hard)
 - Eén **Facility**-app: melding → taken → afhandeling. Geen hospitality, contractors, owners, demo.

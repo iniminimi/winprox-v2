@@ -69,6 +69,24 @@
         "no_team": "Kein Team",
         "add_task": "Aufgabe für ein Team hinzufügen",
         "add_task_placeholder": "Team wählen",
-        "add_task_submit": "Aufgabe hinzufügen"
+        "add_task_submit": "Aufgabe hinzufügen",
+        "updates": "Zeitachse",
+        "updates_empty": "Noch keine Notizen zu dieser Meldung.",
+        "add_update": "Notiz hinzufügen",
+        "add_update_placeholder": "z. B. zusätzliche Info für das Team…",
+        "add_update_photos": "Fotos (optional)",
+        "add_update_submit": "Notiz speichern"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Ausführender",
+            "worker_photos": "Fotos Ausführender"
+        },
+        "errors": {
+            "body_required": "Geben Sie eine Notiz ein.",
+            "body_min": "Die Notiz muss mindestens 2 Zeichen haben.",
+            "photos_max": "Maximal 4 Fotos pro Notiz.",
+            "photos_image": "Nur Bilder sind erlaubt."
+        }
     }
 }

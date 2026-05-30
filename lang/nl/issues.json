@@ -69,6 +69,24 @@
         "no_team": "Geen team",
         "add_task": "Taak toevoegen voor een team",
         "add_task_placeholder": "Kies een team",
-        "add_task_submit": "Taak toevoegen"
+        "add_task_submit": "Taak toevoegen",
+        "updates": "Tijdlijn",
+        "updates_empty": "Nog geen notities op deze melding.",
+        "add_update": "Notitie toevoegen",
+        "add_update_placeholder": "Bijv. extra info voor het team…",
+        "add_update_photos": "Foto's (optioneel)",
+        "add_update_submit": "Notitie opslaan"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Uitvoerder",
+            "worker_photos": "Foto's uitvoerder"
+        },
+        "errors": {
+            "body_required": "Geef een notitie.",
+            "body_min": "De notitie moet minstens 2 tekens bevatten.",
+            "photos_max": "Maximaal 4 foto's per notitie.",
+            "photos_image": "Alleen afbeeldingen zijn toegestaan."
+        }
     }
 }

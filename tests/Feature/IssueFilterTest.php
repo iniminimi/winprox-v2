@@ -59,6 +59,7 @@ it('filtert meldingen op status', function () {
     Livewire::actingAs($user)
         ->test(Index::class)
         ->set('statusFilter', TaskStatus::New->value)
+        ->call('applyFilters')
         ->assertSee('Kraan lekt in de keuken')
         ->assertDontSee('Lamp stuk in het magazijn');
 });
@@ -73,6 +74,7 @@ it('filtert meldingen op team', function () {
     Livewire::actingAs($user)
         ->test(Index::class)
         ->set('teamFilter', $teamA->id)
+        ->call('applyFilters')
         ->assertSee('Kraan lekt in de keuken')
         ->assertDontSee('Lamp stuk in het magazijn');
 });
@@ -87,6 +89,39 @@ it('filtert meldingen op zoekterm', function () {
     Livewire::actingAs($user)
         ->test(Index::class)
         ->set('search', 'magazijn')
+        ->call('applyFilters')
         ->assertSee('Lamp stuk in het magazijn')
         ->assertDontSee('Kraan lekt in de keuken');
+});
+
+it('zoekt meldingen op locatiestraat', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $location = \App\Models\Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'street' => 'Industrieweg',
+        'house_number' => '99',
+    ]);
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'description' => 'Melding op industrieweg',
+    ]);
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'description' => 'Andere melding',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(Index::class)
+        ->set('search', 'Industrieweg')
+        ->call('applyFilters')
+        ->assertSee('Melding op industrieweg')
+        ->assertDontSee('Andere melding');
 });

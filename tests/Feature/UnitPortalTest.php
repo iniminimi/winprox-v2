@@ -91,7 +91,7 @@ it('returns 404 for an unknown unit token', function () {
 it('blurs unapproved issue content on the public portal', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
 
-    Issue::factory()->create([
+    $issue = Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'unit_id' => $unit->id,
@@ -102,7 +102,10 @@ it('blurs unapproved issue content on the public portal', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('openSection', 'issues')
-        ->assertSee('Wacht op controle');
+        ->assertSee('Wacht op controle')
+        ->call('openIssueDetail', $issue->id)
+        ->assertSet('portalSection', 'issues')
+        ->assertSet('selectedIssueId', null);
 });
 
 it('lets a verified field worker start and complete a task (issue rolls up to done)', function () {
@@ -161,6 +164,53 @@ it('hides worker UI from anonymous citizen visitors', function () {
         ->assertDontSee('Aanmelden als medewerker');
 });
 
+it('scopes documents to the current unit and location-wide entries', function () {
+    ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+
+    $otherUnit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Andere machine',
+    ]);
+
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'title' => 'Handleiding deze unit',
+        'is_public' => true,
+        'requires_verification' => false,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $otherUnit->id,
+        'title' => 'Handleiding andere unit',
+        'is_public' => true,
+        'requires_verification' => false,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => null,
+        'title' => 'Algemeen gebouwreglement',
+        'is_public' => true,
+        'requires_verification' => false,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'documents')
+        ->assertSee('Handleiding deze unit')
+        ->assertSee('Algemeen gebouwreglement')
+        ->assertDontSee('Handleiding andere unit');
+});
+
 it('only allows downloading public documents that do not require verification', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
 
@@ -187,7 +237,32 @@ it('only allows downloading public documents that do not require verification', 
         ->call('openSection', 'documents')
         ->assertSee('Open huisregels')
         ->assertSee('Vertrouwelijk contract')
-        ->assertSee('Verificatie vereist')
+        ->assertSee('aangemelde medewerkers')
+        ->assertSee('Downloaden');
+});
+
+it('lets a verified worker download verification-required documents', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('key')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'title' => 'Intern contract',
+        'is_public' => true,
+        'requires_verification' => true,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'documents')
+        ->assertSee('Intern contract')
         ->assertSee('Downloaden');
 });
 

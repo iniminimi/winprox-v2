@@ -140,6 +140,7 @@ class Index extends Component
                 $q->where(function ($query) use ($like) {
                     $query->where('name', 'like', $like)
                         ->orWhere('street', 'like', $like)
+                        ->orWhere('house_number', 'like', $like)
                         ->orWhere('postal_code', 'like', $like)
                         ->orWhere('city', 'like', $like)
                         ->orWhere('address', 'like', $like);

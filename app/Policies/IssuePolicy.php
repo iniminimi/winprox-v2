@@ -28,6 +28,12 @@ class IssuePolicy
             && ($user->isAdmin() || $user->isEmployee());
     }
 
+    public function update(User $user, Issue $issue): bool
+    {
+        return $this->sameTenant($user, $issue->tenant_id)
+            && ($user->isAdmin() || $user->isEmployee());
+    }
+
     private function hasTenantAccess(User $user): bool
     {
         return $user->is_superuser || $user->tenant_id !== null;

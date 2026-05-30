@@ -72,6 +72,7 @@
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
             <h1 class="wp-page-title">{{ __('portal.report.title') }}</h1>
             <form x-data
+                  x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
@@ -102,18 +103,25 @@
             <h1 class="wp-page-title">{{ __('portal.tiles.issues') }}</h1>
             <div class="wp-list">
                 @forelse ($issues as $issue)
-                    <button type="button" class="wp-card wp-card-pad wp-issue-link" wire:key="issue-{{ $issue->id }}" wire:click="openIssueDetail({{ $issue->id }})">
-                        <div class="wp-cluster">
-                            <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
-                        </div>
-                        @if ($issue->isApproved())
+                    @if ($issue->isApproved())
+                        <button type="button" class="wp-card wp-card-pad wp-issue-link" wire:key="issue-{{ $issue->id }}" wire:click="openIssueDetail({{ $issue->id }})">
+                            <div class="wp-cluster">
+                                <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+                            </div>
                             <p class="wp-text-body">{{ \Illuminate\Support\Str::limit($issue->description, 100) }}</p>
-                        @else
+                        </button>
+                    @else
+                        <div class="wp-card wp-card-pad wp-issue-card--pending" wire:key="issue-{{ $issue->id }}">
+                            <div class="wp-cluster">
+                                <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+                                <span class="wp-pill wp-pill--progress">{{ __('portal.pending_review') }}</span>
+                            </div>
+                            <p class="wp-muted">{{ __('portal.issue.awaiting_review_hint') }}</p>
                             <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
                                 <p class="wp-text-body">{{ \Illuminate\Support\Str::limit($issue->description, 100) }}</p>
                             </div>
-                        @endif
-                    </button>
+                        </div>
+                    @endif
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.issues_empty') }}</p></div>
                 @endforelse
@@ -179,12 +187,22 @@
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="doc-{{ $document->id }}">
                         <p class="wp-doc-title">{{ $document->title }}</p>
                         @if ($document->description)<p class="wp-muted">{{ $document->description }}</p>@endif
+                        @if ($document->published_at)
+                            <p class="wp-muted">{{ __('portal.documents.published', ['date' => $document->published_at->isoFormat('D MMM YYYY')]) }}</p>
+                        @endif
                         @if ($document->isPubliclyDownloadable())
                             <a class="btn btn--ghost btn--sm" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener">
                                 {{ __('portal.documents.download') }}
                             </a>
-                        @else
+                        @elseif ($document->requires_verification)
                             <span class="wp-chip">{{ __('portal.documents.verification_required') }}</span>
+                            @if ($canAct)
+                                <a class="btn btn--ghost btn--sm" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener">
+                                    {{ __('portal.documents.download') }}
+                                </a>
+                            @endif
+                        @else
+                            <span class="wp-chip">{{ __('portal.documents.staff_only') }}</span>
                         @endif
                     </div>
                 @empty

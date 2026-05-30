@@ -111,7 +111,9 @@
     },
     "documents": {
         "download": "Downloaden",
-        "verification_required": "Verificatie vereist",
+        "verification_required": "Alleen voor aangemelde medewerkers",
+        "staff_only": "Niet publiek beschikbaar",
+        "published": "Gepubliceerd op {date}",
         "empty": "Er zijn geen documenten."
     },
     "announcements": {

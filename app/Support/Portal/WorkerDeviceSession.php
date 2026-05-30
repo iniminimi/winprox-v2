@@ -228,8 +228,8 @@ final class WorkerDeviceSession
         string $iconSlug,
     ): array {
         $iconSlug = trim($iconSlug);
-        if (! WorkerIcon::isSlugAvailableOnTeam($team, $iconSlug)) {
-            throw new \InvalidArgumentException('Icon is not available for this team.');
+        if (! WorkerIcon::isValidSlug($iconSlug)) {
+            throw new \InvalidArgumentException('Invalid worker icon slug.');
         }
 
         $claimable = self::findClaimableWorkerOnTeam($team, $firstName, $lastName);

@@ -36,6 +36,25 @@ it('returns 404 for an unknown team token', function () {
     $this->get('/team/bestaat-niet')->assertNotFound();
 });
 
+it('allows onboarding when the chosen icon is already used by a colleague', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    Worker::factory()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->call('showRegister')
+        ->set('first_name', 'Nora')
+        ->set('last_name', 'Janssen')
+        ->set('selected_icon_slug', 'heart')
+        ->call('completeOnboarding')
+        ->assertHasNoErrors();
+
+    expect(Worker::where('internal_team_id', $team->id)->where('field_icon_slug', 'heart')->count())->toBe(2);
+});
+
 it('shows the open-registration form when the team has no active workers', function () {
     ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
 

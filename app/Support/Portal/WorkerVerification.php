@@ -89,6 +89,26 @@ final class WorkerVerification
             return null;
         }
 
+        return self::confirmIconForWorker($team, $worker, $iconSlug);
+    }
+
+    /**
+     * Bevestig het icoon van een worker die al via naam op dit toestel is gekoppeld.
+     * Ondersteunt dezelfde icoon-keuze bij meerdere collega's (geen team-brede uniciteit).
+     */
+    public static function confirmIconForWorker(InternalTeam $team, Worker $worker, string $iconSlug): ?Worker
+    {
+        $iconSlug = trim($iconSlug);
+        $expected = trim((string) $worker->field_icon_slug);
+
+        if (! WorkerIcon::isValidSlug($iconSlug) || $expected === '' || $iconSlug !== $expected) {
+            return null;
+        }
+
+        if (! self::workerBelongsToTeam($worker, $team)) {
+            return null;
+        }
+
         self::markVerified($team, $worker);
         WorkerIconGuard::clearAfterSuccessfulSignIn($team, $worker);
 

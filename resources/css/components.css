@@ -713,6 +713,10 @@ a.wp-kpi:hover {
     border-color: var(--wp-border-strong);
 }
 
+.wp-issue-card--pending {
+    cursor: default;
+}
+
 /* ---------------------------------------------------------------------------
  | Worker-aanmelding: icoonraster (12 persoonlijke iconen).
  * ------------------------------------------------------------------------- */

@@ -36,6 +36,7 @@
     @if ($completingTaskId === $task->id)
         <form wire:submit="submitCompleteTask"
               x-data
+              x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
               @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
               class="wp-stack">
             <div class="wp-field">

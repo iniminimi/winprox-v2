@@ -44,6 +44,7 @@
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
             <h1 class="wp-page-title">{{ __('portal.report.title') }}</h1>
             <form x-data
+                  x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
                   class="wp-card wp-card-pad wp-stack">
                 <div class="wp-field">

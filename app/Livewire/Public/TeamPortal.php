@@ -176,12 +176,9 @@ class TeamPortal extends Component
             ['sign_in_icon_slug.required' => __('portal.worker.errors.icon_required'), 'sign_in_icon_slug.in' => __('portal.worker.errors.icon_required')],
         );
 
-        $expected = trim((string) $deviceWorker->field_icon_slug);
-        $worker = $expected !== '' && $this->sign_in_icon_slug === $expected
-            ? WorkerVerification::confirmIcon($team, $this->sign_in_icon_slug)
-            : null;
+        $worker = WorkerVerification::confirmIconForWorker($team, $deviceWorker, $this->sign_in_icon_slug);
 
-        if ($worker === null || (int) $worker->id !== (int) $deviceWorker->id) {
+        if ($worker === null) {
             WorkerIconGuard::recordFailedAttempt($team);
             $this->sign_in_icon_slug = '';
             $this->addFailedSignInError($team);
@@ -241,24 +238,12 @@ class TeamPortal extends Component
             }
         }
 
-        if (! WorkerIcon::isSlugAvailableOnTeam($team, $validated['selected_icon_slug'])) {
-            $this->addError('selected_icon_slug', __('portal.team.icon_taken'));
-
-            return;
-        }
-
-        try {
-            $result = WorkerDeviceSession::registerWorkerForTeam(
-                $team,
-                $validated['first_name'],
-                $validated['last_name'],
-                $validated['selected_icon_slug'],
-            );
-        } catch (\InvalidArgumentException) {
-            $this->addError('selected_icon_slug', __('portal.team.icon_taken'));
-
-            return;
-        }
+        $result = WorkerDeviceSession::registerWorkerForTeam(
+            $team,
+            $validated['first_name'],
+            $validated['last_name'],
+            $validated['selected_icon_slug'],
+        );
 
         $worker = $result['worker'];
         WorkerDeviceSession::bindRememberedWorker($team, $worker);
@@ -305,7 +290,6 @@ class TeamPortal extends Component
             'iconBlocked' => $iconBlocked,
             'deviceWorker' => $deviceWorker,
             'remainingAttempts' => $team !== null ? WorkerIconGuard::remainingAttempts($team) : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
-            'takenIconSlugs' => $team !== null ? WorkerIcon::takenSlugsOnTeam($team) : [],
             'tasks' => $tasks,
         ]);
     }

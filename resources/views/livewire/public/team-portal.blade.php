@@ -40,16 +40,10 @@
                         <label class="wp-label">{{ __('portal.team.register.choose_icon') }}</label>
                         <div class="wp-icon-grid">
                             @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
-                                @php($taken = in_array($slug, $takenIconSlugs, true))
                                 <button type="button"
                                         wire:key="reg-icon-{{ $slug }}"
-                                        @if (! $taken) wire:click="$set('selected_icon_slug', '{{ $slug }}')" @endif
-                                        @class([
-                                            'wp-icon-tile',
-                                            'is-selected' => $selected_icon_slug === $slug,
-                                            'is-disabled' => $taken,
-                                        ])
-                                        @disabled($taken)
+                                        wire:click="$set('selected_icon_slug', '{{ $slug }}')"
+                                        @class(['wp-icon-tile', 'is-selected' => $selected_icon_slug === $slug])
                                         title="{{ \App\Support\Portal\WorkerIcon::label($slug) }}"
                                         aria-label="{{ \App\Support\Portal\WorkerIcon::label($slug) }}">
                                     <x-wp-worker-icon :slug="$slug" />

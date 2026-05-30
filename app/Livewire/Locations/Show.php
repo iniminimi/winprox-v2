@@ -304,7 +304,7 @@ class Show extends Component
         ]);
 
         $activeLocations = Location::query()
-            ->where('is_active', true)
+            ->orderByDesc('is_active')
             ->orderBy('name')
             ->pluck('id')
             ->all();

@@ -76,6 +76,17 @@ class LocationPortal extends Component
     public function openSection(string $section): void
     {
         $this->portalSection = $section;
+
+        if ($section === 'new') {
+            $this->dispatch('wp-prepare-photo-inputs');
+        }
+    }
+
+    public function removePhoto(int $index): void
+    {
+        if (isset($this->photos[$index])) {
+            array_splice($this->photos, $index, 1);
+        }
     }
 
     public function submitReport(SubmitLocationReportAction $submit): void
@@ -99,6 +110,7 @@ class LocationPortal extends Component
         $submit->handle($this->location(), ['description' => $this->description], $this->photos);
 
         $this->reset(['description', 'photos']);
+        $this->dispatch('wp-clear-photo-previews');
         $this->portalSection = 'home';
         $this->flashMessage = __('portal.report.sent');
     }

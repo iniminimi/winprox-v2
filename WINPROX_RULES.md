@@ -18,7 +18,8 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 
 > ## ⚠ Werkwijze nr. 0 (hard) — Herlees ALTIJD eerst deze regels
 > **V1 is ontspoord doordat regels niet (her)gelezen werden.** Daarom, vóór én tijdens elke taak:
-> 1. Lees **`WINPROX_RULES.md`** en de relevante **`.cursor/rules/*`** opnieuw — ook bij kleine wijzigingen.
+> 1. Lees **`WINPROX_RULES.md`**, de relevante **`.cursor/rules/*`**, en bij ontwerpkeuzes
+>    **`WINPROX_DIRECTION.md`** (roadmap, achtergrond) opnieuw — ook bij kleine wijzigingen.
 > 2. Toets je plan expliciet aan: één stijl voor knoppen/pillen/kaders, minimale locales (4 talen
 >    in pariteit), token-CSS/`wp-*`, thin Livewire → Actions + Form Requests, case-sensitive paden,
 >    foto-golden-path, géén blur op beheer, geen sector-/contractor-/owner-overhead.
@@ -264,3 +265,30 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Verwijder geen vertalingen/routes/CSS-classes zonder gebruik te checken.
 - Bij twijfel: stop en vraag het exacte gewenste gedrag.
 - Houd het **simpel**. Lees deze regels regelmatig.
+
+---
+
+## 12. Roadmap & toekomst (achtergrond — niet nu alles bouwen)
+
+WinProx heeft een **lange-termijnrichting** (offline veld, PLG, AI, enterprise-integraties). Die staat
+in **`WINPROX_DIRECTION.md`**. Houd die **in het achterhoofd** bij ontwerpkeuzes — bouw ze **niet**
+proactief tenzij de taak dat expliciet vraagt.
+
+**Lees `WINPROX_DIRECTION.md` wanneer je:**
+- een nieuw datamodelveld, API-contract of veld-flow ontwerpt;
+- twijfelt of iets “nu” of “later” hoort;
+- V1-code porteert en wilt weten wat we bewust **niet** terugbrengen.
+
+**Onthoud:**
+- **Nu:** Facility-pariteit (`docs/FEATURES.md` + `WINPROX_FEATURES.md`).
+- **Fundament al in deze regels:** Actions, Events, API v1, webhooks, Policies, audit — dat *is* de
+  voorbereiding op integraties; geen aparte “integration rewrite” later als je je aan §3 houdt.
+- **Later (roadmap):** offline PWA, PLG-marketingtools, AI, Zapier/SAP/… — elk als **laag boven**
+  dezelfde Actions, niet als vervanging van Livewire-logica of DB-hacks.
+- **Twee UI-oppervlakken:** beheer (Livewire) vs veld/publiek (QR/worker). Veldlogica altijd in
+  Actions — offline komt later via API, niet via Livewire-offline-hacks.
+
+**Prioriteit bij conflict:** `WINPROX_RULES.md` > `docs/FEATURES.md` > `WINPROX_DIRECTION.md` > V1-code.
+
+Roadmap-principes (QR first, worker first, mobile first, simplicity wins) **informeren** keuzes; ze
+**overschrijven** geen pariteit- of magerheidsregels uit dit document.

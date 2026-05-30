@@ -28,9 +28,12 @@
 
         <p class="wp-text-body">{{ $issue->description }}</p>
 
-        @if ($issue->photos->isNotEmpty())
+        @php
+            $reportPhotos = $issue->photos->whereNull('issue_update_id');
+        @endphp
+        @if ($reportPhotos->isNotEmpty())
             <div class="wp-photo-grid">
-                @foreach ($issue->photos as $photo)
+                @foreach ($reportPhotos as $photo)
                     <div class="wp-photo-thumb" wire:key="photo-{{ $photo->id }}">
                         <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
                     </div>
@@ -47,7 +50,7 @@
                 <div class="wp-row" wire:key="task-{{ $task->id }}">
                     <div class="wp-cluster">
                         <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-                        <span class="wp-text-body">{{ $task->team?->name ?? __('issues.show.no_team') }}</span>
+                        <a href="{{ route('tasks.show', $task) }}" class="wp-text-body">{{ $task->team?->name ?? __('issues.show.no_team') }}</a>
                     </div>
                     <select class="wp-select wp-select--inline"
                             wire:change="changeTaskStatus({{ $task->id }}, $event.target.value)">
@@ -75,6 +78,63 @@
                 </div>
                 @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
+        </form>
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-section-title">{{ __('issues.show.updates') }}</h2>
+
+        @forelse ($issue->updates as $update)
+            <div class="wp-stack-tight wp-border-top" wire:key="update-{{ $update->id }}">
+                <p class="wp-muted">
+                    {{ $update->created_at?->format('d/m/Y H:i') }}
+                    @if ($update->user)
+                        — {{ $update->user->name }}
+                    @elseif ($update->worker)
+                        — {{ $update->worker->displayName() }}
+                    @endif
+                    @if ($update->kind && $update->kind !== 'note')
+                        · {{ __('issues.updates.kind.'.$update->kind) }}
+                    @endif
+                </p>
+                @if ($update->body)
+                    <p class="wp-text-body">{{ $update->body }}</p>
+                @endif
+                @if ($update->photos->isNotEmpty())
+                    <div class="wp-photo-grid">
+                        @foreach ($update->photos as $photo)
+                            <div class="wp-photo-thumb" wire:key="up-{{ $update->id }}-{{ $photo->id }}">
+                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        @empty
+            <p class="wp-muted">{{ __('issues.show.updates_empty') }}</p>
+        @endforelse
+
+        <form x-data
+              x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+              @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveUpdate()"
+              class="wp-stack wp-border-top">
+            <div class="wp-field">
+                <label class="wp-label" for="updateBody">{{ __('issues.show.add_update') }}</label>
+                <textarea id="updateBody" class="wp-textarea" wire:model="updateBody" rows="3"
+                          placeholder="{{ __('issues.show.add_update_placeholder') }}"></textarea>
+                @error('updateBody') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-field">
+                <label class="wp-label">{{ __('issues.show.add_update_photos') }}</label>
+                @include('partials.wp-issue-photo-upload', [
+                    'model' => 'updatePhotos',
+                    'removeMethod' => 'removeUpdatePhoto',
+                ])
+                @error('updatePhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <button type="submit" class="btn btn--primary btn--sm" wire:loading.attr="disabled">
+                {{ __('issues.show.add_update_submit') }}
+            </button>
         </form>
     </div>
 </div>

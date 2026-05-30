@@ -17,20 +17,17 @@
         <div class="wp-filter-bar">
             <div class="wp-field wp-filter-field">
                 <label class="wp-label" for="statusFilter">{{ __('issues.filter.status') }}</label>
-                <div class="wp-cluster wp-cluster--tight">
-                    <select id="statusFilter" class="wp-select" wire:model="statusFilter">
-                        <option value="">{{ __('issues.filter.status_all') }}</option>
-                        @foreach ($statuses as $status)
-                            <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
-                        @endforeach
-                    </select>
-                    <button type="button" class="btn btn--primary" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
-                </div>
+                <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
+                    <option value="">{{ __('issues.filter.status_all') }}</option>
+                    @foreach ($statuses as $status)
+                        <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="wp-field wp-filter-field">
                 <label class="wp-label" for="teamFilter">{{ __('issues.filter.team') }}</label>
-                <select id="teamFilter" class="wp-select" wire:model.live="teamFilter">
+                <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
                     <option value="">{{ __('issues.filter.team_all') }}</option>
                     @foreach ($teams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>
@@ -40,18 +37,22 @@
 
             <div class="wp-field wp-filter-field wp-grow">
                 <label class="wp-label" for="search">{{ __('issues.filter.search') }}</label>
-                <input type="search" id="search" class="wp-input" wire:model.live.debounce.400ms="search" placeholder="{{ __('issues.filter.search_placeholder') }}">
+                <input type="search" id="search" class="wp-input" wire:model.defer="search"
+                       placeholder="{{ __('issues.filter.search_placeholder') }}">
             </div>
         </div>
 
         <div class="wp-row">
             <label class="wp-check">
-                <input type="checkbox" wire:model.live="recurring">
+                <input type="checkbox" wire:model.defer="recurring">
                 {{ __('issues.filter.recurring') }}
             </label>
-            @if ($hasFilters)
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('issues.filter.reset') }}</button>
-            @endif
+            <div class="wp-cluster">
+                <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
+                @if ($hasFilters)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('issues.filter.reset') }}</button>
+                @endif
+            </div>
         </div>
         <p class="wp-hint">{{ __('issues.filter.hint') }}</p>
     </div>
@@ -70,7 +71,7 @@
                         $locationLine = collect([
                             $issue->location?->name,
                             $issue->unit?->name,
-                            $issue->location?->address,
+                            $issue->location?->formattedAddress(),
                         ])->filter()->join(' · ');
                         $isHighlighted = $highlightIssue && (int) $highlightIssue === (int) $issue->id;
                     @endphp
