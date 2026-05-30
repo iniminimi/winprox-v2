@@ -115,7 +115,7 @@ class Index extends Component
     {
         $location = Location::findOrFail($locationId);
         $this->authorize('deactivate', $location);
-        $deactivateLocation->handle($location);
+        $deactivateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.deactivated'));
     }
 

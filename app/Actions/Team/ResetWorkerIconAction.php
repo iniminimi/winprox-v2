@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\Worker;
+use App\Support\Audit\AuditRecorder;
 
 /**
  * Beheerder-"unlock": wist het persoonlijke icoon van de worker, reset de
@@ -11,7 +12,9 @@ use App\Models\Worker;
  */
 class ResetWorkerIconAction
 {
-    public function handle(Worker $worker): Worker
+    public function __construct(private AuditRecorder $audit) {}
+
+    public function handle(Worker $worker, ?int $actorUserId = null): Worker
     {
         $worker->devices()->delete();
 
@@ -21,6 +24,17 @@ class ResetWorkerIconAction
             'field_icon_locked_at' => null,
         ])->save();
 
-        return $worker;
+        $fresh = $worker->fresh();
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: (int) $fresh->tenant_id,
+            action: 'worker.icon_reset',
+            modelType: Worker::class,
+            modelId: (int) $fresh->id,
+            payload: ['id' => $fresh->id],
+        );
+
+        return $fresh;
     }
 }

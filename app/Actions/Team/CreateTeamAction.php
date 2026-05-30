@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\InternalTeam;
+use App\Support\Audit\AuditRecorder;
 
 /**
  * Maakt een operationeel team aan (incl. auto-gegenereerde team-QR-token).
@@ -12,16 +13,29 @@ use App\Models\InternalTeam;
  */
 class CreateTeamAction
 {
+    public function __construct(private AuditRecorder $audit) {}
+
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(array $data, int $tenantId): InternalTeam
+    public function handle(array $data, int $tenantId, ?int $actorUserId = null): InternalTeam
     {
-        return InternalTeam::create([
+        $team = InternalTeam::create([
             'tenant_id' => $tenantId,
             'name' => $data['name'],
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? true),
         ]);
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: $tenantId,
+            action: 'team.created',
+            modelType: InternalTeam::class,
+            modelId: (int) $team->id,
+            payload: ['id' => $team->id, 'name' => $team->name],
+        );
+
+        return $team;
     }
 }

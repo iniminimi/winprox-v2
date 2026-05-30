@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\User;
+use App\Support\Audit\AuditRecorder;
 
 /**
  * (De)activeert een collega-gebruiker. Inactieve gebruikers kunnen niet inloggen
@@ -10,10 +11,23 @@ use App\Models\User;
  */
 class SetColleagueActiveAction
 {
-    public function handle(User $user, bool $active): User
+    public function __construct(private AuditRecorder $audit) {}
+
+    public function handle(User $user, bool $active, ?int $actorUserId = null): User
     {
         $user->update(['is_active' => $active]);
 
-        return $user;
+        $fresh = $user->fresh();
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: (int) $fresh->tenant_id,
+            action: 'user.colleague_active_changed',
+            modelType: User::class,
+            modelId: (int) $fresh->id,
+            payload: ['id' => $fresh->id, 'is_active' => $fresh->is_active],
+        );
+
+        return $fresh;
     }
 }

@@ -100,7 +100,7 @@ class Show extends Component
     public function deactivateLocation(DeactivateLocationAction $deactivateLocation): void
     {
         $this->authorize('deactivate', $this->location);
-        $deactivateLocation->handle($this->location);
+        $deactivateLocation->handle($this->location, (int) auth()->id());
         session()->flash('success', __('locations.flash.deactivated'));
 
         $this->redirect(route('locations.index'), navigate: true);
@@ -149,7 +149,7 @@ class Show extends Component
         if ($this->editingUnitId === null) {
             $this->authorize('create', Unit::class);
             try {
-                $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id);
+                $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id, (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'unit_limit_exceeded') {
                     $this->addError('unitName', __('locations.errors.unit_limit'));
@@ -163,7 +163,7 @@ class Show extends Component
         } else {
             $unit = Unit::findOrFail($this->editingUnitId);
             $this->authorize('update', $unit);
-            $updateUnit->handle($unit, $payload);
+            $updateUnit->handle($unit, $payload, (int) auth()->id());
             session()->flash('success', __('locations.units.flash.updated'));
         }
 
@@ -175,7 +175,7 @@ class Show extends Component
     {
         $unit = Unit::where('location_id', $this->location->id)->findOrFail($unitId);
         $this->authorize('deactivate', $unit);
-        $deactivateUnit->handle($unit);
+        $deactivateUnit->handle($unit, (int) auth()->id());
         session()->flash('success', __('locations.units.flash.deactivated'));
         $this->location->refresh();
     }
@@ -186,7 +186,7 @@ class Show extends Component
         $this->authorize('delete', $unit);
 
         try {
-            $deleteUnit->handle($unit);
+            $deleteUnit->handle($unit, (int) auth()->id());
             session()->flash('success', __('locations.units.flash.deleted'));
         } catch (InvalidArgumentException $e) {
             session()->flash('error', __(UnitDeletionGuard::blockMessageKey($e->getMessage())));
@@ -257,7 +257,7 @@ class Show extends Component
                 'scheme' => $validated['bulkScheme'],
                 'prefix' => $validated['bulkPrefix'] ?? '',
                 'default_internal_team_id' => $validated['bulkTeamId'] ?? null,
-            ], (int) auth()->user()->tenant_id);
+            ], (int) auth()->user()->tenant_id, (int) auth()->id());
 
             session()->flash('success', __('locations.bulk.created', ['count' => $result['created']]));
             $this->showBulkModal = false;
@@ -281,7 +281,7 @@ class Show extends Component
         $batch = UnitBulkBatch::where('location_id', $this->location->id)->findOrFail($batchId);
         $this->authorize('create', Unit::class);
 
-        $result = $deleteBatch->handle($batch);
+        $result = $deleteBatch->handle($batch, (int) auth()->id());
 
         if ($result['deleted'] === 0) {
             session()->flash('error', __('locations.bulk.batch_nothing_deletable'));

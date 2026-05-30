@@ -144,7 +144,7 @@ class Team extends Component
             $request->userId = $user->id;
             $validated = $this->validateColleague($request->rules(), $request->messages());
 
-            $updateColleague->handle($user, $validated);
+            $updateColleague->handle($user, $validated, (int) auth()->id());
         } else {
             $this->authorize('create', User::class);
 
@@ -207,7 +207,7 @@ class Team extends Component
 
         $user = User::where('tenant_id', Tenancy::id())->findOrFail($id);
         $this->authorize('update', $user);
-        $setActive->handle($user, $active);
+        $setActive->handle($user, $active, (int) auth()->id());
     }
 
     public function cancelColleague(): void
@@ -268,7 +268,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $active,
-            ]);
+            ], (int) auth()->id());
         } else {
             Gate::authorize('create', InternalTeam::class);
 
@@ -276,7 +276,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
-            ], (int) Tenancy::id());
+            ], (int) Tenancy::id(), (int) auth()->id());
         }
 
         $this->showTeamModal = false;
@@ -289,7 +289,7 @@ class Team extends Component
         $team = InternalTeam::findOrFail($id);
         Gate::authorize('deactivate', $team);
 
-        $setActive->handle($team, $active);
+        $setActive->handle($team, $active, (int) auth()->id());
     }
 
     public function cancelTeam(): void
@@ -328,7 +328,7 @@ class Team extends Component
             ['workerFirstName.required' => __('team.errors.worker_name_required'), 'workerLastName.required' => __('team.errors.worker_name_required')],
         );
 
-        $createWorker->handle($team, ['first_name' => $validated['workerFirstName'], 'last_name' => $validated['workerLastName']]);
+        $createWorker->handle($team, ['first_name' => $validated['workerFirstName'], 'last_name' => $validated['workerLastName']], (int) auth()->id());
 
         $this->reset(['workerFirstName', 'workerLastName', 'addingWorkerTeamId']);
         $this->dispatch('saved');
@@ -343,25 +343,25 @@ class Team extends Component
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $resetIcon->handle($worker);
+        $resetIcon->handle($worker, (int) auth()->id());
     }
 
     public function setWorkerActive(int $workerId, bool $active, SetWorkerActiveAction $setActive): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $setActive->handle($worker, $active);
+        $setActive->handle($worker, $active, (int) auth()->id());
     }
 
     public function setWorkerTeamleader(int $workerId, bool $isTeamleader, SetWorkerTeamleaderAction $setTeamleader): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $setTeamleader->handle($worker, $isTeamleader);
+        $setTeamleader->handle($worker, $isTeamleader, (int) auth()->id());
     }
 
     public function deleteWorker(int $workerId, DeleteWorkerAction $deleteWorker): void
     {
         $worker = $this->authorizedWorker($workerId);
-        $deleteWorker->handle($worker);
+        $deleteWorker->handle($worker, (int) auth()->id());
     }
 
     private function authorizedWorker(int $workerId): Worker

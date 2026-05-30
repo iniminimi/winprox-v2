@@ -6,6 +6,7 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
+use App\Support\Audit\AuditRecorder;
 use App\Support\Units\UnitBulkNaming;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
@@ -14,11 +15,13 @@ class BulkCreateUnitsAction
 {
     private const MAX_UNITS = 500;
 
+    public function __construct(private AuditRecorder $audit) {}
+
     /**
      * @param  array<string, mixed>  $data
      * @return array{batch: UnitBulkBatch, created: int}
      */
-    public function handle(Location $location, array $data, int $tenantId): array
+    public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): array
     {
         $floorCount = (int) $data['floors'];
         $roomsPerFloor = (int) $data['rooms_per_floor'];
@@ -69,6 +72,7 @@ class BulkCreateUnitsAction
             $floorCount,
             $roomsPerFloor,
             $teamId,
+            $actorUserId,
         ): array {
             $batch = UnitBulkBatch::create([
                 'tenant_id' => $tenantId,
@@ -91,6 +95,15 @@ class BulkCreateUnitsAction
                     'is_active' => true,
                 ]);
             }
+
+            $this->audit->record(
+                userId: $actorUserId,
+                tenantId: $tenantId,
+                action: 'unit_bulk.created',
+                modelType: UnitBulkBatch::class,
+                modelId: (int) $batch->id,
+                payload: ['id' => $batch->id, 'created' => $total, 'location_id' => $location->id],
+            );
 
             return ['batch' => $batch, 'created' => $total];
         });

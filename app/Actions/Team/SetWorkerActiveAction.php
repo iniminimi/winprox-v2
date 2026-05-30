@@ -3,13 +3,27 @@
 namespace App\Actions\Team;
 
 use App\Models\Worker;
+use App\Support\Audit\AuditRecorder;
 
 class SetWorkerActiveAction
 {
-    public function handle(Worker $worker, bool $active): Worker
+    public function __construct(private AuditRecorder $audit) {}
+
+    public function handle(Worker $worker, bool $active, ?int $actorUserId = null): Worker
     {
         $worker->update(['is_active' => $active]);
 
-        return $worker;
+        $fresh = $worker->fresh();
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: (int) $fresh->tenant_id,
+            action: 'worker.updated',
+            modelType: Worker::class,
+            modelId: (int) $fresh->id,
+            payload: ['id' => $fresh->id, 'is_active' => $fresh->is_active],
+        );
+
+        return $fresh;
     }
 }

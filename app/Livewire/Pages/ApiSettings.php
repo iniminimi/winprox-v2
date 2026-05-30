@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Api\CreateApiTokenAction;
+use App\Actions\Api\RevokeApiTokenAction;
 use App\Actions\Webhooks\DeleteWebhookEndpointAction;
 use App\Actions\Webhooks\SetWebhookEndpointActiveAction;
 use App\Actions\Webhooks\StoreWebhookEndpointAction;
@@ -69,22 +71,22 @@ class ApiSettings extends Component
         $delete->handle($endpoint, (int) auth()->id());
     }
 
-    public function createToken(): void
+    public function createToken(CreateApiTokenAction $createToken): void
     {
         $this->authorize('manageApiTokens', WebhookEndpoint::class);
 
         $this->validate(['newTokenName' => ['required', 'string', 'max:80']]);
 
-        $plain = auth()->user()->createToken($this->newTokenName)->plainTextToken;
+        $plain = $createToken->handle(auth()->user(), $this->newTokenName, (int) auth()->id());
         session()->flash('api_token_plain', $plain);
         $this->newTokenName = 'api';
     }
 
-    public function revokeToken(int $tokenId): void
+    public function revokeToken(int $tokenId, RevokeApiTokenAction $revokeToken): void
     {
         $this->authorize('manageApiTokens', WebhookEndpoint::class);
 
-        auth()->user()->tokens()->whereKey($tokenId)->delete();
+        $revokeToken->handle(auth()->user(), $tokenId, (int) auth()->id());
     }
 
     public function render()

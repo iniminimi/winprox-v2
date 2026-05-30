@@ -63,3 +63,22 @@ it('schrijft audit bij organisatie-update', function () {
     expect($log)->not->toBeNull()
         ->and($log->user_id)->toBe($admin->id);
 });
+
+it('schrijft audit bij unit aanmaken', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $location = Location::factory()->for($tenant)->create();
+
+    app(\App\Actions\Locations\CreateUnitAction::class)->handle(
+        $location,
+        ['name' => 'Lift B'],
+        $tenant->id,
+        $admin->id,
+    );
+
+    $log = AuditLog::query()->where('action', 'unit.created')->latest('id')->first();
+
+    expect($log)->not->toBeNull()
+        ->and($log->user_id)->toBe($admin->id);
+});
