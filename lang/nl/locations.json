@@ -1,0 +1,102 @@
+{
+    "title": "Locaties & units",
+    "subtitle": "Beheer je locaties en units (machines, installaties, zones).",
+    "show_subtitle": "Overzicht van locatie en units.",
+    "default_name": "Locatie",
+    "add": "+ Nieuwe locatie toevoegen",
+    "create_title": "Nieuwe locatie toevoegen",
+    "edit_title": "Locatie bewerken",
+    "save": "Locatie opslaan",
+    "edit": "Locatie bewerken",
+    "deactivate": "Deactiveren",
+    "confirm_deactivate": "Weet je zeker dat je deze locatie wilt deactiveren?",
+    "inactive": "Inactief",
+    "empty": "Er zijn nog geen locaties.",
+    "no_units": "Nog geen units op deze locatie.",
+    "search_placeholder": "Zoek op locatie, plaats, postcode of straat",
+    "search_hint": "Klik op een locatie om te beheren.",
+    "show_inactive": "Toon ook inactieve locaties",
+    "unit_count": ":count units",
+    "units_total": ":count totaal",
+    "details_title": "Gegevens van de locatie",
+    "units_title": "Units",
+    "units_subtitle": "Beheer units gekoppeld aan deze locatie.",
+    "units_add": "+ Unit toevoegen",
+    "bulk_add": "Bulk units toevoegen",
+    "location_qr": "QR-code locatie (algemeen)",
+    "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",
+    "location_qr_scan_hint": "Scan de locatie-QR om een melding door te geven.",
+    "unit_qr": "Unit-QR",
+    "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
+    "qr_pack_download": "QR-stickerblad downloaden",
+    "prev": "Vorige locatie",
+    "next": "Volgende locatie",
+    "fields": {
+        "name": "Locatienaam",
+        "street": "Straat",
+        "house_number": "Huisnummer",
+        "postal_code": "Postcode",
+        "city": "Plaats",
+        "country_code": "ISO-landcode",
+        "notes": "Interne notities"
+    },
+    "flash": {
+        "created": "Locatie aangemaakt.",
+        "updated": "Locatie bijgewerkt.",
+        "deactivated": "Locatie gedeactiveerd."
+    },
+    "units": {
+        "create_title": "Unit toevoegen",
+        "edit_title": "Unit bewerken",
+        "open_issue": "Open melding",
+        "no_team": "Geen team (later per unit koppelen)",
+        "fields": {
+            "name": "Unitnaam",
+            "team": "Team"
+        },
+        "errors": {
+            "name_required": "Vul een unitnaam in.",
+            "duplicate_name": "Deze unitnaam bestaat al op deze locatie."
+        },
+        "flash": {
+            "created": "Unit aangemaakt.",
+            "updated": "Unit bijgewerkt.",
+            "deactivated": "Unit gedeactiveerd.",
+            "deleted": "Unit verwijderd."
+        },
+        "delete_blocked_issues": "Deze unit heeft meldingen en kan niet worden verwijderd.",
+        "delete_blocked_tasks": "Deze unit heeft taken en kan niet worden verwijderd.",
+        "delete_blocked": "Deze unit kan niet worden verwijderd."
+    },
+    "bulk": {
+        "title": "Bulk units toevoegen",
+        "floors": "Aantal reeksen",
+        "rooms_per_floor": "Units per reeks",
+        "scheme": "Nummering",
+        "scheme_compact": "01, 11, 21… (twee cijfers, max. 9 per reeks)",
+        "scheme_block": "001, 101, 201… (drie cijfers)",
+        "prefix": "Optionele prefix",
+        "preview": "Voorbeeld",
+        "submit": "Alle units aanmaken",
+        "created": ":count units aangemaakt.",
+        "recent_title": "Recente bulk-aanmaak",
+        "recent_hint": "Verwijder per bulk alleen units zonder melding of taak.",
+        "batch_count": ":count units",
+        "delete_batch": "Bulk verwijderen (:count)",
+        "confirm_delete": ":count unit(s) zonder melding of taak verwijderen?",
+        "batch_deleted": ":deleted unit(s) verwijderd. :skipped unit(s) met melding of taak bleven staan.",
+        "batch_nothing_deletable": "Geen units in deze bulk kunnen worden verwijderd.",
+        "errors": {
+            "invalid": "Ongeldige bulk-configuratie.",
+            "scheme_rooms": "Maximaal 9 units per reeks bij dit nummeringsschema.",
+            "scheme_floors": "Maximaal 10 reeksen bij dit nummeringsschema.",
+            "scheme_range": "Nummering overschrijdt het toegestane bereik.",
+            "names_exist": "Alle gegenereerde namen bestaan al op deze locatie.",
+            "too_many": "Te veel units in één bulk (max. 500)."
+        }
+    },
+    "qr_pack": {
+        "headline": "Melding doorgeven",
+        "unavailable": "QR-export is niet beschikbaar op deze server."
+    }
+}

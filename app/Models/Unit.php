@@ -13,7 +13,15 @@ class Unit extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'location_id', 'default_internal_team_id', 'name', 'qr_token', 'is_active'];
+    protected $fillable = [
+        'tenant_id',
+        'location_id',
+        'default_internal_team_id',
+        'bulk_batch_id',
+        'name',
+        'qr_token',
+        'is_active',
+    ];
 
     protected $casts = [
         'is_active' => 'boolean',
@@ -31,6 +39,11 @@ class Unit extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function bulkBatch(): BelongsTo
+    {
+        return $this->belongsTo(UnitBulkBatch::class, 'bulk_batch_id');
     }
 
     public function defaultInternalTeam(): BelongsTo
@@ -51,5 +64,12 @@ class Unit extends Model
     public function announcements(): HasMany
     {
         return $this->hasMany(Announcement::class);
+    }
+
+    public function hasOpenIssues(): bool
+    {
+        return $this->issues()
+            ->whereIn('status', \App\Enums\TaskStatus::openValues())
+            ->exists();
     }
 }

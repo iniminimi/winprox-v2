@@ -1,8 +1,11 @@
 {
     "title": "Tableau de bord",
-    "subtitle": "Aperçu de l'activité de votre site.",
-    "trial": "Période d'essai : :days jours",
+    "subtitle": "Aperçu de vos sites, unités, signalements et tâches.",
+    "trial": "Essai : :days jours restants",
     "briefing": "Briefing",
+    "briefing_print": "Imprimer le briefing",
+    "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",
+    "briefing_no_team": "Aucune équipe",
     "kpi": {
         "locations": "Sites",
         "units": "Unités",
@@ -12,8 +15,8 @@
     "recent": {
         "title": "Signalements récents",
         "open_issues": "Ouvrir les signalements",
-        "empty": "Il n'y a pas encore de signalements.",
+        "empty": "Aucun signalement pour l'instant.",
         "reporter_anon": "Anonyme",
-        "no_location": "Aucun emplacement"
+        "no_location": "Aucun site"
     }
 }

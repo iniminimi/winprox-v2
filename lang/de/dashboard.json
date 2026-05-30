@@ -1,18 +1,21 @@
 {
     "title": "Dashboard",
-    "subtitle": "Überblick über Ihre Facility-Aktivitäten.",
-    "trial": "Testphase: :days Tage",
+    "subtitle": "Übersicht über Standorte, Units, Meldungen und Aufgaben.",
+    "trial": "Testphase: noch :days Tage",
     "briefing": "Briefing",
+    "briefing_print": "Briefing drucken",
+    "briefing_empty": "Keine Aufgaben für heute geplant.",
+    "briefing_no_team": "Kein Team",
     "kpi": {
         "locations": "Standorte",
-        "units": "Einheiten",
+        "units": "Units",
         "new_issues": "Neue Meldungen",
         "open_tasks": "Offene Aufgaben"
     },
     "recent": {
         "title": "Aktuelle Meldungen",
         "open_issues": "Meldungen öffnen",
-        "empty": "Es gibt noch keine Meldungen.",
+        "empty": "Noch keine Meldungen.",
         "reporter_anon": "Anonym",
         "no_location": "Kein Standort"
     }

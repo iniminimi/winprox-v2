@@ -1,8 +1,11 @@
 {
     "title": "Dashboard",
-    "subtitle": "Overview of your facility activity.",
-    "trial": "Trial period: :days days",
+    "subtitle": "Overview of your locations, units, issues and tasks.",
+    "trial": "Trial: :days days left",
     "briefing": "Briefing",
+    "briefing_print": "Print briefing",
+    "briefing_empty": "No tasks scheduled for today.",
+    "briefing_no_team": "No team",
     "kpi": {
         "locations": "Locations",
         "units": "Units",
@@ -12,7 +15,7 @@
     "recent": {
         "title": "Recent issues",
         "open_issues": "Open issues",
-        "empty": "There are no issues yet.",
+        "empty": "No issues yet.",
         "reporter_anon": "Anonymous",
         "no_location": "No location"
     }

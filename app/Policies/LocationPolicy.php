@@ -16,4 +16,19 @@ class LocationPolicy
     {
         return $user->is_superuser || (int) $user->tenant_id === (int) $location->tenant_id;
     }
+
+    public function create(User $user): bool
+    {
+        return $this->viewAny($user);
+    }
+
+    public function update(User $user, Location $location): bool
+    {
+        return $this->view($user, $location);
+    }
+
+    public function deactivate(User $user, Location $location): bool
+    {
+        return $this->view($user, $location);
+    }
 }

@@ -25,7 +25,9 @@
     "button": {
         "save": "Enregistrer",
         "cancel": "Annuler",
+        "edit": "Modifier",
         "delete": "Supprimer",
+        "print": "Imprimer",
         "logout": "Se déconnecter"
     },
     "language": {

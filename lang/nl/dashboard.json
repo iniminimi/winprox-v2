@@ -1,8 +1,11 @@
 {
     "title": "Dashboard",
-    "subtitle": "Overzicht van je facility-activiteit.",
+    "subtitle": "Overzicht van je locaties, units, meldingen en taken.",
     "trial": "Proefperiode: :days dagen",
     "briefing": "Briefing",
+    "briefing_print": "Briefing afdrukken",
+    "briefing_empty": "Geen taken gepland voor vandaag.",
+    "briefing_no_team": "Geen team",
     "kpi": {
         "locations": "Locaties",
         "units": "Units",

@@ -1,0 +1,102 @@
+{
+    "title": "Standorte & Units",
+    "subtitle": "Verwalten Sie Standorte und Units (Maschinen, Anlagen, Zonen).",
+    "show_subtitle": "Übersicht über Standort und Units.",
+    "default_name": "Standort",
+    "add": "+ Neuen Standort hinzufügen",
+    "create_title": "Neuen Standort hinzufügen",
+    "edit_title": "Standort bearbeiten",
+    "save": "Standort speichern",
+    "edit": "Standort bearbeiten",
+    "deactivate": "Deaktivieren",
+    "confirm_deactivate": "Diesen Standort wirklich deaktivieren?",
+    "inactive": "Inaktiv",
+    "empty": "Noch keine Standorte.",
+    "no_units": "Noch keine Units an diesem Standort.",
+    "search_placeholder": "Suche nach Standort, Ort, PLZ oder Straße",
+    "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
+    "show_inactive": "Auch inaktive Standorte anzeigen",
+    "unit_count": ":count Units",
+    "units_total": ":count gesamt",
+    "details_title": "Standortdaten",
+    "units_title": "Units",
+    "units_subtitle": "Units an diesem Standort verwalten.",
+    "units_add": "+ Unit hinzufügen",
+    "bulk_add": "Units massenhaft hinzufügen",
+    "location_qr": "Standort-QR (allgemein)",
+    "location_qr_subtitle": "Allgemeiner Standort-QR für Meldungen ohne Unit.",
+    "location_qr_scan_hint": "Standort-QR scannen, um eine Meldung zu senden.",
+    "unit_qr": "Unit-QR",
+    "unit_qr_subtitle": "QR-Code für diese Unit — Link zum Meldeportal.",
+    "qr_pack_download": "QR-Etikettenbogen herunterladen",
+    "prev": "Vorheriger Standort",
+    "next": "Nächster Standort",
+    "fields": {
+        "name": "Standortname",
+        "street": "Straße",
+        "house_number": "Hausnummer",
+        "postal_code": "PLZ",
+        "city": "Ort",
+        "country_code": "ISO-Ländercode",
+        "notes": "Interne Notizen"
+    },
+    "flash": {
+        "created": "Standort angelegt.",
+        "updated": "Standort aktualisiert.",
+        "deactivated": "Standort deaktiviert."
+    },
+    "units": {
+        "create_title": "Unit hinzufügen",
+        "edit_title": "Unit bearbeiten",
+        "open_issue": "Offene Meldung",
+        "no_team": "Kein Team (später pro Unit zuweisen)",
+        "fields": {
+            "name": "Unit-Name",
+            "team": "Team"
+        },
+        "errors": {
+            "name_required": "Bitte Unit-Namen eingeben.",
+            "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort."
+        },
+        "flash": {
+            "created": "Unit angelegt.",
+            "updated": "Unit aktualisiert.",
+            "deactivated": "Unit deaktiviert.",
+            "deleted": "Unit gelöscht."
+        },
+        "delete_blocked_issues": "Diese Unit hat Meldungen und kann nicht gelöscht werden.",
+        "delete_blocked_tasks": "Diese Unit hat Aufgaben und kann nicht gelöscht werden.",
+        "delete_blocked": "Diese Unit kann nicht gelöscht werden."
+    },
+    "bulk": {
+        "title": "Units massenhaft hinzufügen",
+        "floors": "Anzahl Serien",
+        "rooms_per_floor": "Units pro Serie",
+        "scheme": "Nummerierung",
+        "scheme_compact": "01, 11, 21… (zwei Ziffern, max. 9 pro Serie)",
+        "scheme_block": "001, 101, 201… (drei Ziffern)",
+        "prefix": "Optionales Präfix",
+        "preview": "Vorschau",
+        "submit": "Alle Units anlegen",
+        "created": ":count Units angelegt.",
+        "recent_title": "Letzte Massenanlage",
+        "recent_hint": "Massenlöschung entfernt nur Units ohne Meldung oder Aufgabe.",
+        "batch_count": ":count Units",
+        "delete_batch": "Bulk löschen (:count)",
+        "confirm_delete": ":count Unit(s) ohne Meldung oder Aufgabe löschen?",
+        "batch_deleted": ":deleted Unit(s) gelöscht. :skipped Unit(s) mit Meldung oder Aufgabe blieben.",
+        "batch_nothing_deletable": "Keine Units in diesem Bulk können gelöscht werden.",
+        "errors": {
+            "invalid": "Ungültige Bulk-Konfiguration.",
+            "scheme_rooms": "Maximal 9 Units pro Serie bei diesem Schema.",
+            "scheme_floors": "Maximal 10 Serien bei diesem Schema.",
+            "scheme_range": "Nummerierung überschreitet den erlaubten Bereich.",
+            "names_exist": "Alle generierten Namen existieren bereits an diesem Standort.",
+            "too_many": "Zu viele Units auf einmal (max. 500)."
+        }
+    },
+    "qr_pack": {
+        "headline": "Meldung senden",
+        "unavailable": "QR-Export ist auf diesem Server nicht verfügbar."
+    }
+}

@@ -25,7 +25,9 @@
     "button": {
         "save": "Opslaan",
         "cancel": "Annuleren",
+        "edit": "Bewerken",
         "delete": "Verwijderen",
+        "print": "Afdrukken",
         "logout": "Uitloggen"
     },
     "language": {

@@ -25,7 +25,9 @@
     "button": {
         "save": "Speichern",
         "cancel": "Abbrechen",
+        "edit": "Bearbeiten",
         "delete": "Löschen",
+        "print": "Drucken",
         "logout": "Abmelden"
     },
     "language": {

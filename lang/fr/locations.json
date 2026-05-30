@@ -1,0 +1,102 @@
+{
+    "title": "Sites & unités",
+    "subtitle": "Gérez vos sites et unités (machines, installations, zones).",
+    "show_subtitle": "Aperçu du site et des unités.",
+    "default_name": "Site",
+    "add": "+ Ajouter un site",
+    "create_title": "Ajouter un site",
+    "edit_title": "Modifier le site",
+    "save": "Enregistrer le site",
+    "edit": "Modifier le site",
+    "deactivate": "Désactiver",
+    "confirm_deactivate": "Désactiver ce site ?",
+    "inactive": "Inactif",
+    "empty": "Aucun site pour l'instant.",
+    "no_units": "Aucune unité sur ce site.",
+    "search_placeholder": "Rechercher par site, ville, code postal ou rue",
+    "search_hint": "Cliquez sur un site pour le gérer.",
+    "show_inactive": "Afficher aussi les sites inactifs",
+    "unit_count": ":count unités",
+    "units_total": ":count au total",
+    "details_title": "Données du site",
+    "units_title": "Unités",
+    "units_subtitle": "Gérez les unités liées à ce site.",
+    "units_add": "+ Ajouter une unité",
+    "bulk_add": "Ajout en masse d'unités",
+    "location_qr": "QR site (général)",
+    "location_qr_subtitle": "QR général du site pour les signalements sans unité.",
+    "location_qr_scan_hint": "Scannez le QR du site pour signaler un problème.",
+    "unit_qr": "QR unité",
+    "unit_qr_subtitle": "Code QR de cette unité — lien vers le portail de signalement.",
+    "qr_pack_download": "Télécharger la planche QR",
+    "prev": "Site précédent",
+    "next": "Site suivant",
+    "fields": {
+        "name": "Nom du site",
+        "street": "Rue",
+        "house_number": "Numéro",
+        "postal_code": "Code postal",
+        "city": "Ville",
+        "country_code": "Code pays ISO",
+        "notes": "Notes internes"
+    },
+    "flash": {
+        "created": "Site créé.",
+        "updated": "Site mis à jour.",
+        "deactivated": "Site désactivé."
+    },
+    "units": {
+        "create_title": "Ajouter une unité",
+        "edit_title": "Modifier l'unité",
+        "open_issue": "Signalement ouvert",
+        "no_team": "Aucune équipe (à lier plus tard)",
+        "fields": {
+            "name": "Nom de l'unité",
+            "team": "Équipe"
+        },
+        "errors": {
+            "name_required": "Indiquez un nom d'unité.",
+            "duplicate_name": "Ce nom d'unité existe déjà sur ce site."
+        },
+        "flash": {
+            "created": "Unité créée.",
+            "updated": "Unité mise à jour.",
+            "deactivated": "Unité désactivée.",
+            "deleted": "Unité supprimée."
+        },
+        "delete_blocked_issues": "Cette unité a des signalements et ne peut pas être supprimée.",
+        "delete_blocked_tasks": "Cette unité a des tâches et ne peut pas être supprimée.",
+        "delete_blocked": "Cette unité ne peut pas être supprimée."
+    },
+    "bulk": {
+        "title": "Ajout en masse d'unités",
+        "floors": "Nombre de séries",
+        "rooms_per_floor": "Unités par série",
+        "scheme": "Numérotation",
+        "scheme_compact": "01, 11, 21… (deux chiffres, max. 9 par série)",
+        "scheme_block": "001, 101, 201… (trois chiffres)",
+        "prefix": "Préfixe optionnel",
+        "preview": "Aperçu",
+        "submit": "Créer toutes les unités",
+        "created": ":count unités créées.",
+        "recent_title": "Création en masse récente",
+        "recent_hint": "La suppression en masse ne retire que les unités sans signalement ni tâche.",
+        "batch_count": ":count unités",
+        "delete_batch": "Supprimer le lot (:count)",
+        "confirm_delete": "Supprimer :count unité(s) sans signalement ni tâche ?",
+        "batch_deleted": ":deleted unité(s) supprimée(s). :skipped unité(s) avec signalement ou tâche conservées.",
+        "batch_nothing_deletable": "Aucune unité de ce lot ne peut être supprimée.",
+        "errors": {
+            "invalid": "Configuration en masse invalide.",
+            "scheme_rooms": "Maximum 9 unités par série avec ce schéma.",
+            "scheme_floors": "Maximum 10 séries avec ce schéma.",
+            "scheme_range": "La numérotation dépasse la plage autorisée.",
+            "names_exist": "Tous les noms générés existent déjà sur ce site.",
+            "too_many": "Trop d'unités en une fois (max. 500)."
+        }
+    },
+    "qr_pack": {
+        "headline": "Signaler un problème",
+        "unavailable": "L'export QR n'est pas disponible sur ce serveur."
+    }
+}

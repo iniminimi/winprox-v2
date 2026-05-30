@@ -1,0 +1,102 @@
+{
+    "title": "Locations & units",
+    "subtitle": "Manage your locations and units (machines, installations, zones).",
+    "show_subtitle": "Overview of location and units.",
+    "default_name": "Location",
+    "add": "+ Add new location",
+    "create_title": "Add new location",
+    "edit_title": "Edit location",
+    "save": "Save location",
+    "edit": "Edit location",
+    "deactivate": "Deactivate",
+    "confirm_deactivate": "Are you sure you want to deactivate this location?",
+    "inactive": "Inactive",
+    "empty": "No locations yet.",
+    "no_units": "No units at this location yet.",
+    "search_placeholder": "Search by location, city, postal code or street",
+    "search_hint": "Click a location to manage it.",
+    "show_inactive": "Show inactive locations too",
+    "unit_count": ":count units",
+    "units_total": ":count total",
+    "details_title": "Location details",
+    "units_title": "Units",
+    "units_subtitle": "Manage units linked to this location.",
+    "units_add": "+ Add unit",
+    "bulk_add": "Bulk add units",
+    "location_qr": "Location QR (general)",
+    "location_qr_subtitle": "General location QR for reports without a unit.",
+    "location_qr_scan_hint": "Scan the location QR to submit a report.",
+    "unit_qr": "Unit QR",
+    "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
+    "qr_pack_download": "Download QR sticker sheet",
+    "prev": "Previous location",
+    "next": "Next location",
+    "fields": {
+        "name": "Location name",
+        "street": "Street",
+        "house_number": "House number",
+        "postal_code": "Postal code",
+        "city": "City",
+        "country_code": "ISO country code",
+        "notes": "Internal notes"
+    },
+    "flash": {
+        "created": "Location created.",
+        "updated": "Location updated.",
+        "deactivated": "Location deactivated."
+    },
+    "units": {
+        "create_title": "Add unit",
+        "edit_title": "Edit unit",
+        "open_issue": "Open issue",
+        "no_team": "No team (assign per unit later)",
+        "fields": {
+            "name": "Unit name",
+            "team": "Team"
+        },
+        "errors": {
+            "name_required": "Enter a unit name.",
+            "duplicate_name": "This unit name already exists at this location."
+        },
+        "flash": {
+            "created": "Unit created.",
+            "updated": "Unit updated.",
+            "deactivated": "Unit deactivated.",
+            "deleted": "Unit deleted."
+        },
+        "delete_blocked_issues": "This unit has issues and cannot be deleted.",
+        "delete_blocked_tasks": "This unit has tasks and cannot be deleted.",
+        "delete_blocked": "This unit cannot be deleted."
+    },
+    "bulk": {
+        "title": "Bulk add units",
+        "floors": "Number of series",
+        "rooms_per_floor": "Units per series",
+        "scheme": "Numbering",
+        "scheme_compact": "01, 11, 21… (two digits, max. 9 per series)",
+        "scheme_block": "001, 101, 201… (three digits)",
+        "prefix": "Optional prefix",
+        "preview": "Preview",
+        "submit": "Create all units",
+        "created": ":count units created.",
+        "recent_title": "Recent bulk creation",
+        "recent_hint": "Bulk delete only removes units without issues or tasks.",
+        "batch_count": ":count units",
+        "delete_batch": "Delete bulk (:count)",
+        "confirm_delete": "Delete :count unit(s) without issues or tasks?",
+        "batch_deleted": ":deleted unit(s) deleted. :skipped unit(s) with issues or tasks were kept.",
+        "batch_nothing_deletable": "No units in this bulk can be deleted.",
+        "errors": {
+            "invalid": "Invalid bulk configuration.",
+            "scheme_rooms": "Maximum 9 units per series with this numbering scheme.",
+            "scheme_floors": "Maximum 10 series with this numbering scheme.",
+            "scheme_range": "Numbering exceeds the allowed range.",
+            "names_exist": "All generated names already exist at this location.",
+            "too_many": "Too many units in one bulk (max. 500)."
+        }
+    },
+    "qr_pack": {
+        "headline": "Report an issue",
+        "unavailable": "QR export is unavailable on this server."
+    }
+}

@@ -216,6 +216,24 @@
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-lg);
     box-shadow: var(--wp-shadow-sm);
+    text-decoration: none;
+    transition: transform var(--wp-transition), box-shadow var(--wp-transition), border-color var(--wp-transition);
+}
+
+a.wp-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--wp-shadow-md);
+    border-color: var(--wp-border-strong);
+    text-decoration: none;
+}
+
+.wp-kpi--alert {
+    border-color: var(--wp-accent-border, #bbf7d0);
+    background-color: var(--wp-accent-soft, #ecfdf5);
+}
+
+.wp-kpi--alert .wp-kpi-value {
+    color: var(--wp-accent, #059669);
 }
 
 .wp-kpi-icon {
@@ -267,6 +285,11 @@
     background-color: var(--wp-surface-2);
     border-color: var(--wp-border-strong);
     text-decoration: none;
+}
+
+.wp-issue-row--highlight {
+    border-color: var(--wp-accent-border, #bbf7d0);
+    background-color: var(--wp-accent-soft, #ecfdf5);
 }
 
 .wp-issue-desc {
@@ -956,5 +979,70 @@
 
 .wp-help-panel {
     width: min(22rem, calc(100vw - 2rem));
+}
+
+.wp-brand-float {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 30;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+.wp-location-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+}
+
+.wp-location-row-link {
+    flex: 1;
+    text-decoration: none;
+    color: inherit;
+}
+
+.wp-location-row-link:hover {
+    text-decoration: none;
+}
+
+.wp-location-unit-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+}
+
+.wp-flash--success {
+    padding: 0.75rem 1rem;
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-accent-soft, #ecfdf5);
+    border: 1px solid var(--wp-accent-border, #bbf7d0);
+    color: var(--wp-accent-text, #047857);
+}
+
+.wp-flash--danger {
+    padding: 0.75rem 1rem;
+    border-radius: var(--wp-radius);
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+.wp-briefing-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.wp-no-print-break {
+    break-inside: avoid;
 }
 

@@ -376,6 +376,13 @@
     color: var(--wp-text);
 }
 
+.wp-auth-logo-img {
+    display: block;
+    margin: 0 auto 0.5rem;
+    max-width: 7.5rem;
+    height: auto;
+}
+
 .wp-auth-tagline {
     font-size: 0.875rem;
     color: var(--wp-text-muted);

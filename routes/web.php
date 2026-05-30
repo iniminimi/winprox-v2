@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\Locations\LocationQrController;
+use App\Http\Controllers\Locations\LocationQrPackDownloadController;
+use App\Http\Controllers\Locations\UnitQrController;
 use App\Http\Controllers\Team\TeamQrController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
@@ -11,12 +15,13 @@ use App\Livewire\Dashboard;
 use App\Livewire\Issues\Create as IssueCreate;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
+use App\Livewire\Locations\Index as LocationIndex;
+use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Pages\Calendar;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
-use App\Livewire\Pages\Locations;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
 use App\Livewire\Tasks\Index as TaskIndex;
@@ -37,6 +42,15 @@ Route::get('/', function () {
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
+
+Route::get('/melden/locatie/{token}', function (string $token) {
+    $location = \App\Models\Location::query()
+        ->where('location_qr_token', $token)
+        ->where('is_active', true)
+        ->firstOrFail();
+
+    return view('public.location-scan', ['location' => $location]);
+})->name('public.location-portal');
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
 
 Route::get('/contact', Contact::class)->name('contact.index');
@@ -61,7 +75,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/issues/create', IssueCreate::class)->name('issues.create');
     Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
-    Route::get('/locations', Locations::class)->name('locations.index');
+    Route::get('/locations', LocationIndex::class)->name('locations.index');
+    Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
+    Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
+    Route::get('/locations/{location}/qr', LocationQrController::class)->name('locations.qr');
+    Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
+    Route::get('/briefing/print', BriefingPrintController::class)->name('briefing.print');
     Route::get('/tasks', TaskIndex::class)->name('tasks.index');
     Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
     Route::get('/calendar', Calendar::class)->name('calendar.index');
