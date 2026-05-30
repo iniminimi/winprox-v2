@@ -24,6 +24,7 @@
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
+        "source_qr_location": "Via QR site",
         "source_manual": "Manuel",
         "no_team": "Aucune équipe",
         "reported": "Signalé par :name · :datetime",

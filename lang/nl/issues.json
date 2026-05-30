@@ -24,6 +24,7 @@
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
+        "source_qr_location": "Via locatie-QR",
         "source_manual": "Handmatig",
         "no_team": "Geen team",
         "reported": "Gemeld door :name · :datetime",

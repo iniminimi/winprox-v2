@@ -13,6 +13,10 @@
     "issue": {
         "awaiting_review_hint": "Je melding wordt gecontroleerd voordat details zichtbaar worden voor anderen."
     },
+    "location": {
+        "units_title": "Units op deze locatie",
+        "units_hint": "Kies een unit voor een specifieke melding, of maak hieronder een algemene melding zonder unit."
+    },
     "tiles": {
         "new": "Melding maken",
         "new_sub": "Meld een probleem",

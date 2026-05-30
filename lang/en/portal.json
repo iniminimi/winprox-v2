@@ -13,6 +13,10 @@
     "issue": {
         "awaiting_review_hint": "Your report is being reviewed before details become visible to others."
     },
+    "location": {
+        "units_title": "Units at this location",
+        "units_hint": "Pick a unit for a specific report, or submit a general report without a unit below."
+    },
     "tiles": {
         "new": "New report",
         "new_sub": "Report a problem",

@@ -13,6 +13,10 @@
     "issue": {
         "awaiting_review_hint": "Votre signalement est en cours de contrôle avant que les détails ne deviennent visibles."
     },
+    "location": {
+        "units_title": "Unités sur ce site",
+        "units_hint": "Choisissez une unité pour un signalement ciblé, ou envoyez un signalement général sans unité ci-dessous."
+    },
     "tiles": {
         "new": "Nouveau signalement",
         "new_sub": "Signaler un problème",

@@ -24,6 +24,7 @@
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
+        "source_qr_location": "Via location QR",
         "source_manual": "Manual",
         "no_team": "No team",
         "reported": "Reported by :name · :datetime",

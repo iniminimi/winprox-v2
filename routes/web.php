@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
@@ -26,6 +27,7 @@ use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Livewire\Tasks\Show as TaskShow;
+use App\Livewire\Public\LocationPortal;
 use App\Livewire\Public\TeamPortal;
 use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
@@ -41,16 +43,11 @@ Route::get('/', function () {
 
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
+Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
+
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 
-Route::get('/melden/locatie/{token}', function (string $token) {
-    $location = \App\Models\Location::query()
-        ->where('location_qr_token', $token)
-        ->where('is_active', true)
-        ->firstOrFail();
-
-    return view('public.location-scan', ['location' => $location]);
-})->name('public.location-portal');
+Route::get('/melden/locatie/{token}', LocationPortal::class)->name('public.location-portal');
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
 
 Route::get('/contact', Contact::class)->name('contact.index');

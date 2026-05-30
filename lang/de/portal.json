@@ -13,6 +13,10 @@
     "issue": {
         "awaiting_review_hint": "Ihre Meldung wird geprüft, bevor Details für andere sichtbar werden."
     },
+    "location": {
+        "units_title": "Units an diesem Standort",
+        "units_hint": "Wählen Sie eine Unit für eine gezielte Meldung oder senden Sie unten eine allgemeine Meldung ohne Unit."
+    },
     "tiles": {
         "new": "Meldung erstellen",
         "new_sub": "Ein Problem melden",
