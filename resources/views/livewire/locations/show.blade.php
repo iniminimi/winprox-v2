@@ -90,6 +90,9 @@
         </div>
     </div>
 
+    <livewire:locations.documents :location="$location" />
+    <livewire:locations.announcements :location="$location" />
+
     @if ($bulkSummaries->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('locations.bulk.recent_title') }}</h2>

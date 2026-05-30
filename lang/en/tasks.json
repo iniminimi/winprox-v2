@@ -16,7 +16,8 @@
         "search_placeholder": "Note, issue, location or unit…",
         "recurring": "Recurring cycles only",
         "apply": "GO!",
-        "reset": "Clear filters"
+        "reset": "Clear filters",
+        "hint": "Combine status, team, search term and recurring to narrow results."
     },
     "card": {
         "no_team": "No team",

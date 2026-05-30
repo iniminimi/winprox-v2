@@ -101,5 +101,71 @@
     "qr_pack": {
         "headline": "Report an issue",
         "unavailable": "QR export is unavailable on this server."
+    },
+    "documents": {
+        "title": "Documents",
+        "subtitle": "Documents for the reporting portal at this location and its units.",
+        "add": "Add document",
+        "edit": "Edit document",
+        "empty": "No documents yet.",
+        "search_placeholder": "Search documents…",
+        "modal_subtitle": "Upload a file and optionally link it to a unit.",
+        "description": "Description",
+        "file": "File",
+        "link_unit": "Link to unit (optional)",
+        "for_location": "Entire location",
+        "unit_label": "Unit",
+        "open": "Open",
+        "public": "Visible in portal",
+        "private": "Not visible",
+        "requires_verification": "Verification required",
+        "active": "Active",
+        "activate": "Activate",
+        "deactivate": "Deactivate",
+        "no_description": "No description",
+        "default_title": "Document",
+        "allowed_types_hint": "Allowed: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (max. 10 MB)",
+        "replace_file": "Replace file (optional)",
+        "current_file": "Current file: :name",
+        "current_file_hint": "Leave empty to keep the current file.",
+        "confirm_delete": "Permanently delete this document?",
+        "errors": {
+            "invalid_unit": "Choose a valid unit at this location."
+        },
+        "flash": {
+            "created": "Document saved.",
+            "updated": "Document updated.",
+            "deleted": "Document deleted.",
+            "upload_failed": "The file could not be saved.",
+            "metadata_partial": "Document saved; file metadata was incomplete."
+        }
+    },
+    "announcements": {
+        "title": "Announcements",
+        "subtitle": "Announcements for the reporting portal at this location and its units.",
+        "add": "Add announcement",
+        "edit": "Edit announcement",
+        "empty": "No announcements yet.",
+        "search_placeholder": "Search announcements…",
+        "modal_subtitle": "Write a message and optionally link it to a unit.",
+        "body": "Message",
+        "link_unit": "Link to unit (optional)",
+        "for_location": "Entire location",
+        "unit_label": "Unit",
+        "expires_at": "Expires on (optional)",
+        "expires_on": "Expires :date",
+        "active": "Active",
+        "activate": "Activate",
+        "deactivate": "Deactivate",
+        "default_title": "Announcement",
+        "confirm_delete": "Permanently delete this announcement?",
+        "errors": {
+            "invalid_unit": "Choose a valid unit at this location."
+        },
+        "flash": {
+            "created": "Announcement saved.",
+            "updated": "Announcement updated.",
+            "deleted": "Announcement deleted."
+        }
     }
 }

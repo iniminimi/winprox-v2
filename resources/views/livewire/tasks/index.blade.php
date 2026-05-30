@@ -4,7 +4,7 @@
             <h1 class="wp-page-title">{{ __('tasks.list.title') }}</h1>
             <p class="wp-muted">{{ __('tasks.list.subtitle') }}</p>
         </div>
-        <a href="#" class="btn btn--ghost btn--sm">{{ __('tasks.briefing') }}</a>
+        <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('tasks.briefing') }}</a>
     </div>
 
     @if ($newTasks->isNotEmpty())
@@ -25,20 +25,17 @@
         <div class="wp-filter-bar">
             <div class="wp-field wp-filter-field">
                 <label class="wp-label" for="statusFilter">{{ __('tasks.filter.status') }}</label>
-                <div class="wp-cluster wp-cluster--tight">
-                    <select id="statusFilter" class="wp-select" wire:model="statusFilter">
-                        <option value="">{{ __('tasks.filter.status_all') }}</option>
-                        @foreach ($statuses as $status)
-                            <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
-                        @endforeach
-                    </select>
-                    <button type="button" class="btn btn--primary" wire:click="applyFilters">{{ __('tasks.filter.apply') }}</button>
-                </div>
+                <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
+                    <option value="">{{ __('tasks.filter.status_all') }}</option>
+                    @foreach ($statuses as $status)
+                        <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="wp-field wp-filter-field">
                 <label class="wp-label" for="teamFilter">{{ __('tasks.filter.team') }}</label>
-                <select id="teamFilter" class="wp-select" wire:model.live="teamFilter">
+                <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
                     <option value="">{{ __('tasks.filter.team_all') }}</option>
                     @foreach ($teams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>
@@ -48,19 +45,24 @@
 
             <div class="wp-field wp-filter-field wp-grow">
                 <label class="wp-label" for="search">{{ __('tasks.filter.search') }}</label>
-                <input type="search" id="search" class="wp-input" wire:model.live.debounce.400ms="search" placeholder="{{ __('tasks.filter.search_placeholder') }}">
+                <input type="search" id="search" class="wp-input" wire:model.defer="search"
+                       placeholder="{{ __('tasks.filter.search_placeholder') }}">
             </div>
         </div>
 
         <div class="wp-row">
             <label class="wp-check">
-                <input type="checkbox" wire:model.live="recurring">
+                <input type="checkbox" wire:model.defer="recurring">
                 {{ __('tasks.filter.recurring') }}
             </label>
-            @if ($hasFilters)
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('tasks.filter.reset') }}</button>
-            @endif
+            <div class="wp-cluster">
+                <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('tasks.filter.apply') }}</button>
+                @if ($hasFilters)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('tasks.filter.reset') }}</button>
+                @endif
+            </div>
         </div>
+        <p class="wp-hint">{{ __('tasks.filter.hint') }}</p>
     </div>
 
     @forelse ($groups as $group)

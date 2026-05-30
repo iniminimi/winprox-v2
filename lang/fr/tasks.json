@@ -16,7 +16,8 @@
         "search_placeholder": "Note, signalement, site ou unité…",
         "recurring": "Cycles récurrents uniquement",
         "apply": "GO!",
-        "reset": "Effacer les filtres"
+        "reset": "Effacer les filtres",
+        "hint": "Combinez statut, équipe, recherche et récurrent pour affiner."
     },
     "card": {
         "no_team": "Aucune équipe",

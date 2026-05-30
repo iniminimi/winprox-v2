@@ -25,16 +25,22 @@ class Index extends Component
     #[Url(as: 'q')]
     public string $search = '';
 
+    #[Url(as: 'recurring')]
     public bool $recurring = false;
 
     public function applyFilters(): void
     {
-        // Trigger re-render.
+        $this->redirect(route('tasks.index', array_filter([
+            'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
+            'team' => $this->teamFilter ?: null,
+            'q' => trim($this->search) !== '' ? trim($this->search) : null,
+            'recurring' => $this->recurring ? '1' : null,
+        ])), navigate: true);
     }
 
     public function resetFilters(): void
     {
-        $this->reset(['statusFilter', 'teamFilter', 'search', 'recurring']);
+        $this->redirect(route('tasks.index'), navigate: true);
     }
 
     public function render()
@@ -46,16 +52,21 @@ class Index extends Component
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring_cycle', true))
-            ->when($this->search !== '', function ($q) {
-                $term = '%'.$this->search.'%';
+            ->when(trim($this->search) !== '', function ($q) {
+                $term = '%'.trim($this->search).'%';
                 $q->where(function ($query) use ($term) {
                     $query->where('note', 'like', $term)
                         ->orWhereHas('issue', fn ($issue) => $issue
                             ->where('description', 'like', $term)
                             ->orWhere('reporter_name', 'like', $term)
-                            ->orWhereHas('location', fn ($loc) => $loc
-                                ->where('name', 'like', $term)
-                                ->orWhere('address', 'like', $term))
+                            ->orWhereHas('location', fn ($loc) => $loc->where(function ($locationQuery) use ($term) {
+                                $locationQuery->where('name', 'like', $term)
+                                    ->orWhere('street', 'like', $term)
+                                    ->orWhere('house_number', 'like', $term)
+                                    ->orWhere('postal_code', 'like', $term)
+                                    ->orWhere('city', 'like', $term)
+                                    ->orWhere('address', 'like', $term);
+                            }))
                             ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term)));
                 });
             })

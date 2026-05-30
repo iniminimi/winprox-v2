@@ -101,5 +101,71 @@
     "qr_pack": {
         "headline": "Signaler un problème",
         "unavailable": "L'export QR n'est pas disponible sur ce serveur."
+    },
+    "documents": {
+        "title": "Documents",
+        "subtitle": "Documents pour le portail de signalement sur ce site et ses unités.",
+        "add": "Ajouter un document",
+        "edit": "Modifier le document",
+        "empty": "Aucun document pour le moment.",
+        "search_placeholder": "Rechercher des documents…",
+        "modal_subtitle": "Téléversez un fichier et liez-le éventuellement à une unité.",
+        "description": "Description",
+        "file": "Fichier",
+        "link_unit": "Lier à une unité (optionnel)",
+        "for_location": "Site entier",
+        "unit_label": "Unité",
+        "open": "Ouvrir",
+        "public": "Visible dans le portail",
+        "private": "Non visible",
+        "requires_verification": "Vérification requise",
+        "active": "Actif",
+        "activate": "Activer",
+        "deactivate": "Désactiver",
+        "no_description": "Aucune description",
+        "default_title": "Document",
+        "allowed_types_hint": "Autorisé : PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (max. 10 Mo)",
+        "replace_file": "Remplacer le fichier (optionnel)",
+        "current_file": "Fichier actuel : :name",
+        "current_file_hint": "Laisser vide pour conserver le fichier actuel.",
+        "confirm_delete": "Supprimer définitivement ce document ?",
+        "errors": {
+            "invalid_unit": "Choisissez une unité valide sur ce site."
+        },
+        "flash": {
+            "created": "Document enregistré.",
+            "updated": "Document mis à jour.",
+            "deleted": "Document supprimé.",
+            "upload_failed": "Le fichier n'a pas pu être enregistré.",
+            "metadata_partial": "Document enregistré ; métadonnées incomplètes."
+        }
+    },
+    "announcements": {
+        "title": "Annonces",
+        "subtitle": "Annonces pour le portail de signalement sur ce site et ses unités.",
+        "add": "Ajouter une annonce",
+        "edit": "Modifier l'annonce",
+        "empty": "Aucune annonce pour le moment.",
+        "search_placeholder": "Rechercher des annonces…",
+        "modal_subtitle": "Rédigez un message et liez-le éventuellement à une unité.",
+        "body": "Message",
+        "link_unit": "Lier à une unité (optionnel)",
+        "for_location": "Site entier",
+        "unit_label": "Unité",
+        "expires_at": "Expire le (optionnel)",
+        "expires_on": "Expire le :date",
+        "active": "Actif",
+        "activate": "Activer",
+        "deactivate": "Désactiver",
+        "default_title": "Annonce",
+        "confirm_delete": "Supprimer définitivement cette annonce ?",
+        "errors": {
+            "invalid_unit": "Choisissez une unité valide sur ce site."
+        },
+        "flash": {
+            "created": "Annonce enregistrée.",
+            "updated": "Annonce mise à jour.",
+            "deleted": "Annonce supprimée."
+        }
     }
 }

@@ -16,7 +16,8 @@
         "search_placeholder": "Notiz, Meldung, Standort oder Unit…",
         "recurring": "Nur wiederkehrende Zyklen",
         "apply": "GO!",
-        "reset": "Filter zurücksetzen"
+        "reset": "Filter zurücksetzen",
+        "hint": "Kombinieren Sie Status, Team, Suchbegriff und Wiederkehrend zur Verfeinerung."
     },
     "card": {
         "no_team": "Kein Team",

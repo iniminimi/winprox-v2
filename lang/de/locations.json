@@ -101,5 +101,71 @@
     "qr_pack": {
         "headline": "Meldung senden",
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar."
+    },
+    "documents": {
+        "title": "Dokumente",
+        "subtitle": "Dokumente für das Meldeportal an diesem Standort und den Units.",
+        "add": "Dokument hinzufügen",
+        "edit": "Dokument bearbeiten",
+        "empty": "Noch keine Dokumente.",
+        "search_placeholder": "Dokumente suchen…",
+        "modal_subtitle": "Datei hochladen und optional mit einer Unit verknüpfen.",
+        "description": "Beschreibung",
+        "file": "Datei",
+        "link_unit": "Mit Unit verknüpfen (optional)",
+        "for_location": "Gesamter Standort",
+        "unit_label": "Unit",
+        "open": "Öffnen",
+        "public": "Im Portal sichtbar",
+        "private": "Nicht sichtbar",
+        "requires_verification": "Verifizierung erforderlich",
+        "active": "Aktiv",
+        "activate": "Aktivieren",
+        "deactivate": "Deaktivieren",
+        "no_description": "Keine Beschreibung",
+        "default_title": "Dokument",
+        "allowed_types_hint": "Erlaubt: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (max. 10 MB)",
+        "replace_file": "Datei ersetzen (optional)",
+        "current_file": "Aktuelle Datei: :name",
+        "current_file_hint": "Leer lassen, um die aktuelle Datei zu behalten.",
+        "confirm_delete": "Dieses Dokument endgültig löschen?",
+        "errors": {
+            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort."
+        },
+        "flash": {
+            "created": "Dokument gespeichert.",
+            "updated": "Dokument aktualisiert.",
+            "deleted": "Dokument gelöscht.",
+            "upload_failed": "Die Datei konnte nicht gespeichert werden.",
+            "metadata_partial": "Dokument gespeichert; Dateimetadaten unvollständig."
+        }
+    },
+    "announcements": {
+        "title": "Mitteilungen",
+        "subtitle": "Mitteilungen für das Meldeportal an diesem Standort und den Units.",
+        "add": "Mitteilung hinzufügen",
+        "edit": "Mitteilung bearbeiten",
+        "empty": "Noch keine Mitteilungen.",
+        "search_placeholder": "Mitteilungen suchen…",
+        "modal_subtitle": "Nachricht schreiben und optional mit einer Unit verknüpfen.",
+        "body": "Nachricht",
+        "link_unit": "Mit Unit verknüpfen (optional)",
+        "for_location": "Gesamter Standort",
+        "unit_label": "Unit",
+        "expires_at": "Läuft ab am (optional)",
+        "expires_on": "Läuft ab :date",
+        "active": "Aktiv",
+        "activate": "Aktivieren",
+        "deactivate": "Deaktivieren",
+        "default_title": "Mitteilung",
+        "confirm_delete": "Diese Mitteilung endgültig löschen?",
+        "errors": {
+            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort."
+        },
+        "flash": {
+            "created": "Mitteilung gespeichert.",
+            "updated": "Mitteilung aktualisiert.",
+            "deleted": "Mitteilung gelöscht."
+        }
     }
 }

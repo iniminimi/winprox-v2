@@ -101,5 +101,71 @@
     "qr_pack": {
         "headline": "Melding doorgeven",
         "unavailable": "QR-export is niet beschikbaar op deze server."
+    },
+    "documents": {
+        "title": "Documenten",
+        "subtitle": "Documenten voor het meldportaal op deze locatie en units.",
+        "add": "Document toevoegen",
+        "edit": "Document bewerken",
+        "empty": "Nog geen documenten.",
+        "search_placeholder": "Documenten zoeken…",
+        "modal_subtitle": "Upload een bestand en koppel het optioneel aan een unit.",
+        "description": "Omschrijving",
+        "file": "Bestand",
+        "link_unit": "Koppelen aan unit (optioneel)",
+        "for_location": "Hele locatie",
+        "unit_label": "Unit",
+        "open": "Openen",
+        "public": "Zichtbaar in portaal",
+        "private": "Niet zichtbaar",
+        "requires_verification": "Verificatie vereist",
+        "active": "Actief",
+        "activate": "Activeren",
+        "deactivate": "Deactiveren",
+        "no_description": "Geen omschrijving",
+        "default_title": "Document",
+        "allowed_types_hint": "Toegestaan: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (max. 10 MB)",
+        "replace_file": "Bestand vervangen (optioneel)",
+        "current_file": "Huidig bestand: :name",
+        "current_file_hint": "Laat leeg om het huidige bestand te behouden.",
+        "confirm_delete": "Dit document definitief verwijderen?",
+        "errors": {
+            "invalid_unit": "Kies een geldige unit op deze locatie."
+        },
+        "flash": {
+            "created": "Document opgeslagen.",
+            "updated": "Document bijgewerkt.",
+            "deleted": "Document verwijderd.",
+            "upload_failed": "Het bestand kon niet worden opgeslagen.",
+            "metadata_partial": "Document opgeslagen; bestandsmetadata was onvolledig."
+        }
+    },
+    "announcements": {
+        "title": "Mededelingen",
+        "subtitle": "Mededelingen voor het meldportaal op deze locatie en units.",
+        "add": "Mededeling toevoegen",
+        "edit": "Mededeling bewerken",
+        "empty": "Nog geen mededelingen.",
+        "search_placeholder": "Mededelingen zoeken…",
+        "modal_subtitle": "Schrijf een bericht en koppel het optioneel aan een unit.",
+        "body": "Bericht",
+        "link_unit": "Koppelen aan unit (optioneel)",
+        "for_location": "Hele locatie",
+        "unit_label": "Unit",
+        "expires_at": "Verloopt op (optioneel)",
+        "expires_on": "Verloopt :date",
+        "active": "Actief",
+        "activate": "Activeren",
+        "deactivate": "Deactiveren",
+        "default_title": "Mededeling",
+        "confirm_delete": "Deze mededeling definitief verwijderen?",
+        "errors": {
+            "invalid_unit": "Kies een geldige unit op deze locatie."
+        },
+        "flash": {
+            "created": "Mededeling opgeslagen.",
+            "updated": "Mededeling bijgewerkt.",
+            "deleted": "Mededeling verwijderd."
+        }
     }
 }

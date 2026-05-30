@@ -16,7 +16,8 @@
         "search_placeholder": "Notitie, melding, locatie of unit…",
         "recurring": "Alleen terugkerende cycli",
         "apply": "GO!",
-        "reset": "Filters wissen"
+        "reset": "Filters wissen",
+        "hint": "Combineer status, team, zoekterm en terugkerend om te verfijnen."
     },
     "card": {
         "no_team": "Geen team",

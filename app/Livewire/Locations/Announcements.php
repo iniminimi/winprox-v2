@@ -1,0 +1,215 @@
+<?php
+
+namespace App\Livewire\Locations;
+
+use App\Actions\Locations\CreateLocationAnnouncementAction;
+use App\Actions\Locations\DeleteLocationAnnouncementAction;
+use App\Actions\Locations\ToggleLocationAnnouncementActiveAction;
+use App\Actions\Locations\UpdateLocationAnnouncementAction;
+use App\Models\Announcement;
+use App\Models\Location;
+use App\Models\Unit;
+use Livewire\Component;
+
+class Announcements extends Component
+{
+    public Location $location;
+
+    public bool $showCreateModal = false;
+
+    public bool $showEditModal = false;
+
+    public ?int $editingAnnouncementId = null;
+
+    public string $body = '';
+
+    public string $unitId = '';
+
+    public bool $isActive = true;
+
+    public string $expiresAt = '';
+
+    public string $search = '';
+
+    public function mount(Location $location): void
+    {
+        $this->authorize('view', $location);
+        $this->location = $location;
+    }
+
+    protected function rules(): array
+    {
+        return [
+            'body' => ['required', 'string', 'max:5000'],
+            'unitId' => ['nullable', 'string'],
+            'isActive' => ['boolean'],
+            'expiresAt' => ['nullable', 'date'],
+        ];
+    }
+
+    public function openCreateModal(): void
+    {
+        $this->authorize('create', [Announcement::class, $this->location]);
+        $this->resetValidation();
+        $this->body = '';
+        $this->unitId = '';
+        $this->isActive = true;
+        $this->expiresAt = '';
+        $this->showCreateModal = true;
+    }
+
+    public function closeCreateModal(): void
+    {
+        $this->resetValidation();
+        $this->showCreateModal = false;
+    }
+
+    public function openEditModal(int $announcementId): void
+    {
+        $announcement = $this->findAnnouncement($announcementId);
+        $this->authorize('update', $announcement);
+
+        $this->resetValidation();
+        $this->editingAnnouncementId = $announcement->id;
+        $this->body = (string) $announcement->body;
+        $this->unitId = $announcement->unit_id ? (string) $announcement->unit_id : '';
+        $this->isActive = (bool) $announcement->is_active;
+        $this->expiresAt = $announcement->expires_at?->format('Y-m-d') ?? '';
+        $this->showEditModal = true;
+    }
+
+    public function closeEditModal(): void
+    {
+        $this->resetValidation();
+        $this->showEditModal = false;
+        $this->editingAnnouncementId = null;
+    }
+
+    public function createAnnouncement(CreateLocationAnnouncementAction $create): void
+    {
+        $this->authorize('create', [Announcement::class, $this->location]);
+        $validated = $this->validate();
+        $tenantId = (int) auth()->user()->tenant_id;
+
+        if (! $this->isValidUnitId($tenantId, $validated['unitId'] ?? '')) {
+            $this->addError('unitId', __('locations.announcements.errors.invalid_unit'));
+
+            return;
+        }
+
+        $create->handle($this->location, [
+            'body' => trim((string) $validated['body']),
+            'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
+            'is_active' => (bool) $validated['isActive'],
+            'expires_at' => $validated['expiresAt'] ?: null,
+        ], $tenantId, (int) auth()->id());
+
+        $this->closeCreateModal();
+        session()->flash('success', __('locations.announcements.flash.created'));
+    }
+
+    public function updateAnnouncement(UpdateLocationAnnouncementAction $update): void
+    {
+        if ($this->editingAnnouncementId === null) {
+            return;
+        }
+
+        $announcement = $this->findAnnouncement($this->editingAnnouncementId);
+        $this->authorize('update', $announcement);
+        $validated = $this->validate();
+        $tenantId = (int) auth()->user()->tenant_id;
+
+        if (! $this->isValidUnitId($tenantId, $validated['unitId'] ?? '')) {
+            $this->addError('unitId', __('locations.announcements.errors.invalid_unit'));
+
+            return;
+        }
+
+        $update->handle($this->location, $announcement, [
+            'body' => trim((string) $validated['body']),
+            'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
+            'is_active' => (bool) $validated['isActive'],
+            'expires_at' => $validated['expiresAt'] ?: null,
+        ], $tenantId, (int) auth()->id());
+
+        $this->closeEditModal();
+        session()->flash('success', __('locations.announcements.flash.updated'));
+    }
+
+    public function deleteAnnouncement(int $announcementId, DeleteLocationAnnouncementAction $delete): void
+    {
+        $announcement = $this->findAnnouncement($announcementId);
+        $this->authorize('delete', $announcement);
+        $delete->handle($announcement, (int) auth()->id());
+        session()->flash('success', __('locations.announcements.flash.deleted'));
+    }
+
+    public function toggleAnnouncementActive(int $announcementId, ToggleLocationAnnouncementActiveAction $toggle): void
+    {
+        $announcement = $this->findAnnouncement($announcementId);
+        $this->authorize('update', $announcement);
+        $toggle->handle($announcement, (int) auth()->id());
+        session()->flash('success', __('locations.announcements.flash.updated'));
+    }
+
+    public function render()
+    {
+        $tenantId = (int) auth()->user()->tenant_id;
+
+        $announcements = Announcement::query()
+            ->where('tenant_id', $tenantId)
+            ->where('location_id', $this->location->id)
+            ->when(trim($this->search) !== '', function ($query) {
+                $search = '%'.trim($this->search).'%';
+                $query->where(function ($subQuery) use ($search) {
+                    $subQuery->where('title', 'like', $search)
+                        ->orWhere('body', 'like', $search);
+                });
+            })
+            ->with('unit:id,name')
+            ->latest()
+            ->get();
+
+        $units = Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->where('location_id', $this->location->id)
+            ->where('is_active', true)
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        return view('livewire.locations.announcements', [
+            'announcements' => $announcements,
+            'units' => $units,
+        ]);
+    }
+
+    private function findAnnouncement(int $announcementId): Announcement
+    {
+        return Announcement::query()
+            ->where('tenant_id', auth()->user()->tenant_id)
+            ->where('location_id', $this->location->id)
+            ->findOrFail($announcementId);
+    }
+
+    private function isValidUnitId(int $tenantId, string $unitId): bool
+    {
+        if ($unitId === '') {
+            return true;
+        }
+
+        if (! ctype_digit($unitId)) {
+            return false;
+        }
+
+        return Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->where('location_id', $this->location->id)
+            ->whereKey((int) $unitId)
+            ->exists();
+    }
+
+    private function parsedUnitId(string $unitId): ?int
+    {
+        return $unitId !== '' ? (int) $unitId : null;
+    }
+}
