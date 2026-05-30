@@ -55,18 +55,20 @@
     </div>
 
     @if ($showModal)
-        <div class="wp-modal">
-            <form wire:submit="save" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
+        <div class="wp-modal" role="dialog" aria-modal="true">
+            <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 class="wp-section-title">
                         {{ $editingLocationId ? __('locations.edit_title') : __('locations.create_title') }}
                     </h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="closeModal" aria-label="{{ __('common.button.cancel') }}">
+                        <x-wp-icon name="x-mark" class="wp-icon" />
+                    </button>
                 </div>
-
-                @include('livewire.locations.partials.location-form-fields')
-
-                <div class="wp-row">
+                <div class="wp-modal-body wp-stack">
+                    @include('livewire.locations.partials.location-form-fields')
+                </div>
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
                 </div>

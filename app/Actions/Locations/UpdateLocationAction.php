@@ -14,16 +14,29 @@ class UpdateLocationAction
      */
     public function handle(Location $location, array $data, ?int $actorUserId = null): Location
     {
-        $name = trim((string) ($data['name'] ?? $location->name));
+        $street = $this->nullableString($data['street'] ?? null);
+        $houseNumber = $this->nullableString($data['house_number'] ?? null);
+        $postalCode = $this->nullableString($data['postal_code'] ?? null);
+        $city = $this->nullableString($data['city'] ?? null);
+        $name = trim((string) ($data['name'] ?? ''));
+
+        if ($name === '' && $street !== null && $postalCode !== null && $city !== null) {
+            $name = $street;
+        }
+
+        if ($name === '') {
+            $name = trim((string) $location->name);
+        }
 
         $location->update([
-            'name' => $name !== '' ? $name : $location->name,
-            'street' => $this->nullableString($data['street'] ?? null),
-            'house_number' => $this->nullableString($data['house_number'] ?? null),
-            'postal_code' => $this->nullableString($data['postal_code'] ?? null),
-            'city' => $this->nullableString($data['city'] ?? null),
+            'name' => $name,
+            'street' => $street,
+            'house_number' => $houseNumber,
+            'postal_code' => $postalCode,
+            'city' => $city,
             'country_code' => strtoupper((string) ($data['country_code'] ?? $location->country_code ?? 'BE')),
             'notes' => $this->nullableString($data['notes'] ?? null),
+            'address' => $this->legacyAddressLine($street, $houseNumber, $postalCode, $city),
         ]);
 
         $fresh = $location->fresh();
@@ -45,5 +58,14 @@ class UpdateLocationAction
         $trimmed = trim((string) $value);
 
         return $trimmed !== '' ? $trimmed : null;
+    }
+
+    private function legacyAddressLine(?string $street, ?string $houseNumber, ?string $postalCode, ?string $city): ?string
+    {
+        $lineOne = trim(trim((string) $street).' '.trim((string) $houseNumber));
+        $lineTwo = trim(trim((string) $postalCode).' '.trim((string) $city));
+        $legacy = trim(collect([$lineOne, $lineTwo])->filter()->implode(', '));
+
+        return $legacy !== '' ? $legacy : null;
     }
 }

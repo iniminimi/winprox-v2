@@ -96,6 +96,41 @@ it('maakt een locatie aan met alleen straat postcode en plaats', function () {
         ->and($location->country_code)->toBe('BE');
 });
 
+it('bewaart locatiegegevens via de bewerk-modal op detail', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Oude naam',
+        'street' => 'Oude straat',
+        'postal_code' => '9000',
+        'city' => 'Gent',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openEditLocation')
+        ->set('locationFormName', 'Nieuwe naam')
+        ->set('locationFormStreet', 'Nieuwstraat')
+        ->set('locationFormHouseNumber', '10')
+        ->set('locationFormPostalCode', '2000')
+        ->set('locationFormCity', 'Antwerpen')
+        ->set('locationFormCountryCode', 'BE')
+        ->set('locationFormNotes', 'Interne notitie')
+        ->call('saveLocation')
+        ->assertHasNoErrors()
+        ->assertSet('showLocationModal', false);
+
+    $location->refresh();
+
+    expect($location->name)->toBe('Nieuwe naam')
+        ->and($location->street)->toBe('Nieuwstraat')
+        ->and($location->house_number)->toBe('10')
+        ->and($location->postal_code)->toBe('2000')
+        ->and($location->city)->toBe('Antwerpen')
+        ->and($location->notes)->toBe('Interne notitie');
+});
+
 it('creates a location via Livewire', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -136,6 +171,22 @@ it('bulk creates units on location show', function () {
 
     expect($location->units()->count())->toBe(2)
         ->and($location->units()->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
+});
+
+it('toont geen QR-stickerblad-download zonder units', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Leeg']);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->assertDontSee(__('locations.qr_pack_download'));
+
+    if (QrCodePngWriter::canGenerate()) {
+        $this->actingAs($user)
+            ->get(route('locations.qr-pack', $location))
+            ->assertNotFound();
+    }
 });
 
 it('qr-pack download returns docx when GD available', function () {

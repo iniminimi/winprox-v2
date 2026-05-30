@@ -41,19 +41,19 @@ class Show extends Component
 
     public ?int $editingUnitId = null;
 
-    public string $name = '';
+    public string $locationFormName = '';
 
-    public string $street = '';
+    public string $locationFormStreet = '';
 
-    public string $house_number = '';
+    public string $locationFormHouseNumber = '';
 
-    public string $postal_code = '';
+    public string $locationFormPostalCode = '';
 
-    public string $city = '';
+    public string $locationFormCity = '';
 
-    public string $country_code = 'BE';
+    public string $locationFormCountryCode = 'BE';
 
-    public string $notes = '';
+    public string $locationFormNotes = '';
 
     public string $unitName = '';
 
@@ -78,31 +78,68 @@ class Show extends Component
     public function openEditLocation(): void
     {
         $this->authorize('update', $this->location);
-        $this->name = (string) $this->location->name;
-        $this->street = (string) ($this->location->street ?? '');
-        $this->house_number = (string) ($this->location->house_number ?? '');
-        $this->postal_code = (string) ($this->location->postal_code ?? '');
-        $this->city = (string) ($this->location->city ?? '');
-        $this->country_code = (string) ($this->location->country_code ?? 'BE');
-        $this->notes = (string) ($this->location->notes ?? '');
+        $this->location->refresh();
+        $this->fillLocationFormFromModel();
+        $this->resetErrorBag();
         $this->showLocationModal = true;
+    }
+
+    public function closeLocationModal(): void
+    {
+        $this->showLocationModal = false;
+        $this->location->refresh();
+        $this->resetLocationForm();
+        $this->resetErrorBag();
     }
 
     public function saveLocation(UpdateLocationAction $updateLocation): void
     {
         $this->authorize('update', $this->location);
-        $validated = UpdateLocationRequest::validatePayload([
-            'name' => $this->name,
-            'street' => $this->street,
-            'house_number' => $this->house_number,
-            'postal_code' => $this->postal_code,
-            'city' => $this->city,
-            'country_code' => $this->country_code,
-            'notes' => $this->notes,
-        ]);
+        $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload());
         $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
         $this->showLocationModal = false;
+        $this->resetLocationForm();
         session()->flash('success', __('locations.flash.updated'));
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function locationFormPayload(): array
+    {
+        return [
+            'name' => $this->locationFormName,
+            'street' => $this->locationFormStreet,
+            'house_number' => $this->locationFormHouseNumber,
+            'postal_code' => $this->locationFormPostalCode,
+            'city' => $this->locationFormCity,
+            'country_code' => $this->locationFormCountryCode,
+            'notes' => $this->locationFormNotes,
+        ];
+    }
+
+    private function fillLocationFormFromModel(): void
+    {
+        $this->locationFormName = (string) $this->location->name;
+        $this->locationFormStreet = (string) ($this->location->street ?? '');
+        $this->locationFormHouseNumber = (string) ($this->location->house_number ?? '');
+        $this->locationFormPostalCode = (string) ($this->location->postal_code ?? '');
+        $this->locationFormCity = (string) ($this->location->city ?? '');
+        $this->locationFormCountryCode = (string) ($this->location->country_code ?? 'BE');
+        $this->locationFormNotes = (string) ($this->location->notes ?? '');
+    }
+
+    private function resetLocationForm(): void
+    {
+        $this->reset([
+            'locationFormName',
+            'locationFormStreet',
+            'locationFormHouseNumber',
+            'locationFormPostalCode',
+            'locationFormCity',
+            'locationFormNotes',
+        ]);
+        $this->locationFormCountryCode = 'BE';
     }
 
     public function deactivateLocation(DeactivateLocationAction $deactivateLocation): void

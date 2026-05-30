@@ -130,8 +130,9 @@ class Index extends Component
     private function resetForm(): void
     {
         $this->reset([
-            'name', 'street', 'house_number', 'postal_code', 'city', 'notes',
+            'name', 'street', 'house_number', 'postal_code', 'city', 'notes', 'editingLocationId',
         ]);
+        $this->editingLocationId = null;
         $this->country_code = 'BE';
         $this->resetErrorBag();
     }
