@@ -31,8 +31,13 @@
     "qr_pack_download": "Download QR sticker sheet",
     "prev": "Previous location",
     "next": "Next location",
+    "form": {
+        "identity_hint": "Enter a location name, or fill in street, postal code and city."
+    },
     "fields": {
         "name": "Location name",
+        "name_optional": "optional",
+        "name_placeholder": "e.g. South warehouse",
         "street": "Street",
         "house_number": "House number",
         "postal_code": "Postal code",
@@ -96,6 +101,8 @@
         }
     },
     "errors": {
+        "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",
+        "country_code_invalid": "Enter a valid 2-letter ISO country code.",
         "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units."
     },
     "qr_pack": {

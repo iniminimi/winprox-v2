@@ -8,6 +8,11 @@
     color: var(--wp-text);
 }
 
+.wp-label-hint {
+    font-weight: 400;
+    color: var(--wp-text-muted);
+}
+
 .wp-input,
 .wp-select,
 .wp-textarea {

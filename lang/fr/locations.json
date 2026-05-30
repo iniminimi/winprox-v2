@@ -31,8 +31,13 @@
     "qr_pack_download": "Télécharger la planche QR",
     "prev": "Site précédent",
     "next": "Site suivant",
+    "form": {
+        "identity_hint": "Saisissez un nom de site, ou remplissez rue, code postal et ville."
+    },
     "fields": {
         "name": "Nom du site",
+        "name_optional": "facultatif",
+        "name_placeholder": "p. ex. Entrepôt Sud",
         "street": "Rue",
         "house_number": "Numéro",
         "postal_code": "Code postal",
@@ -96,6 +101,8 @@
         }
     },
     "errors": {
+        "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",
+        "country_code_invalid": "Saisissez un code pays ISO valide à 2 lettres.",
         "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter."
     },
     "qr_pack": {

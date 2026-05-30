@@ -31,8 +31,13 @@
     "qr_pack_download": "QR-Etikettenbogen herunterladen",
     "prev": "Vorheriger Standort",
     "next": "Nächster Standort",
+    "form": {
+        "identity_hint": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus."
+    },
     "fields": {
         "name": "Standortname",
+        "name_optional": "optional",
+        "name_placeholder": "z. B. Lager Süd",
         "street": "Straße",
         "house_number": "Hausnummer",
         "postal_code": "PLZ",
@@ -96,6 +101,8 @@
         }
     },
     "errors": {
+        "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",
+        "country_code_invalid": "Geben Sie einen gültigen ISO-Ländercode mit 2 Buchstaben ein.",
         "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen."
     },
     "qr_pack": {

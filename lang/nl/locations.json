@@ -31,8 +31,13 @@
     "qr_pack_download": "QR-stickerblad downloaden",
     "prev": "Vorige locatie",
     "next": "Volgende locatie",
+    "form": {
+        "identity_hint": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in."
+    },
     "fields": {
         "name": "Locatienaam",
+        "name_optional": "optioneel",
+        "name_placeholder": "Bijv. Magazijn Zuid",
         "street": "Straat",
         "house_number": "Huisnummer",
         "postal_code": "Postcode",
@@ -96,6 +101,8 @@
         }
     },
     "errors": {
+        "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",
+        "country_code_invalid": "Geef een geldige ISO-landcode van 2 letters op.",
         "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen."
     },
     "qr_pack": {

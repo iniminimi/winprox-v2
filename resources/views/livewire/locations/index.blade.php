@@ -64,49 +64,7 @@
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
                 </div>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.fields.name') }}</span>
-                    <input type="text" class="wp-input" wire:model="name" />
-                    @error('name') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
-
-                <div class="wp-form-grid-2">
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.fields.street') }}</span>
-                        <input type="text" class="wp-input" wire:model="street" />
-                        @error('street') <span class="wp-error">{{ $message }}</span> @enderror
-                    </label>
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.fields.house_number') }}</span>
-                        <input type="text" class="wp-input" wire:model="house_number" />
-                        @error('house_number') <span class="wp-error">{{ $message }}</span> @enderror
-                    </label>
-                </div>
-
-                <div class="wp-form-grid-2">
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.fields.postal_code') }}</span>
-                        <input type="text" class="wp-input" wire:model="postal_code" />
-                        @error('postal_code') <span class="wp-error">{{ $message }}</span> @enderror
-                    </label>
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.fields.city') }}</span>
-                        <input type="text" class="wp-input" wire:model="city" />
-                        @error('city') <span class="wp-error">{{ $message }}</span> @enderror
-                    </label>
-                </div>
-
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.fields.country_code') }}</span>
-                    <input type="text" class="wp-input" wire:model="country_code" maxlength="2" />
-                    @error('country_code') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
-
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.fields.notes') }}</span>
-                    <textarea class="wp-input" rows="3" wire:model="notes"></textarea>
-                    @error('notes') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                @include('livewire.locations.partials.location-form-fields')
 
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="closeModal">{{ __('common.button.cancel') }}</button>

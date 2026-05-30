@@ -57,6 +57,45 @@ it('finds locations by house number in search', function () {
         ->assertDontSee('Hal Noord');
 });
 
+it('weigert een locatie zonder naam en zonder volledig adres', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(LocationIndex::class)
+        ->call('openCreate')
+        ->set('name', '')
+        ->set('street', 'Industrieweg')
+        ->set('postal_code', '')
+        ->set('city', 'Gent')
+        ->call('save')
+        ->assertHasErrors(['name']);
+
+    expect(Location::count())->toBe(0);
+});
+
+it('maakt een locatie aan met alleen straat postcode en plaats', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(LocationIndex::class)
+        ->call('openCreate')
+        ->set('name', '')
+        ->set('street', 'Industrieweg')
+        ->set('postal_code', '9000')
+        ->set('city', 'Gent')
+        ->set('country_code', '')
+        ->call('save')
+        ->assertHasNoErrors();
+
+    $location = Location::where('street', 'Industrieweg')->first();
+
+    expect($location)->not->toBeNull()
+        ->and($location->name)->toBe('Industrieweg')
+        ->and($location->country_code)->toBe('BE');
+});
+
 it('creates a location via Livewire', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

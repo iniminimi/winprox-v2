@@ -85,25 +85,17 @@ class Index extends Component
         CreateLocationAction $createLocation,
         UpdateLocationAction $updateLocation,
     ): void {
-        $payload = [
-            'name' => $this->name,
-            'street' => $this->street,
-            'house_number' => $this->house_number,
-            'postal_code' => $this->postal_code,
-            'city' => $this->city,
-            'country_code' => $this->country_code,
-            'notes' => $this->notes,
-        ];
+        $payload = $this->locationFormPayload();
 
         if ($this->editingLocationId === null) {
             $this->authorize('create', Location::class);
-            $validated = $this->validate(StoreLocationRequest::ruleSet());
+            $validated = StoreLocationRequest::validatePayload($payload);
             $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
             session()->flash('success', __('locations.flash.created'));
         } else {
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('update', $location);
-            $validated = $this->validate(UpdateLocationRequest::ruleSet());
+            $validated = UpdateLocationRequest::validatePayload($payload);
             $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }
@@ -117,6 +109,22 @@ class Index extends Component
         $this->authorize('deactivate', $location);
         $deactivateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.deactivated'));
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function locationFormPayload(): array
+    {
+        return [
+            'name' => $this->name,
+            'street' => $this->street,
+            'house_number' => $this->house_number,
+            'postal_code' => $this->postal_code,
+            'city' => $this->city,
+            'country_code' => $this->country_code,
+            'notes' => $this->notes,
+        ];
     }
 
     private function resetForm(): void
