@@ -1,0 +1,30 @@
+---
+description: WinProx V2 kern — altijd lezen vóór wijzigingen
+alwaysApply: true
+---
+
+# WinProx V2 — mager & consistent
+
+Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bij conflict: **regel wint**, geen snelle hack.
+
+## Product (hard)
+- Eén **Facility**-app: melding → taken → afhandeling. Geen hospitality, contractors, owners, demo.
+- **Blur** alleen op publieke QR-portalen (`.wp-pending-review`). Beheer nooit geblurd.
+
+## Houd het mager
+- **Minimale diff**: alleen wat de taak vraagt; geen refactor “erbij”.
+- **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).
+- **Geen** ongebruikte locale-keys; 4 talen altijd in pariteit (`npm run check:locales:parity`).
+- **Geen** nieuwe UI-varianten: hergebruik `.btn`, `.wp-pill`, `.wp-card`, `wp-*` tokens.
+
+## Definition of done (elke feature)
+1. Business logic in **één Action** (`handle` met expliciete tenant + actor).
+2. Livewire/API **dun** → Form Request → Action.
+3. Waar zinvol: API `/api/v1` + domein-event/webhook; audit bij mutatie.
+4. Pest-test op de workflow; `php artisan test` groen.
+
+## Verboden (V1-valkuilen)
+- `Model::create/update/delete` of `DB::` buiten Actions.
+- Business logic in Livewire, Blade of Models.
+- `auth()` / `request()` / `session()` in Actions.
+- Losse `isAdmin()`-checks in UI — gebruik **Policies** + `authorize()`.

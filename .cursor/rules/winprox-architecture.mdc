@@ -1,0 +1,27 @@
+---
+description: Integration First — Actions, API, audit
+globs: app/Actions/**/*.php,app/Livewire/**/*.php,app/Http/**/*.php
+alwaysApply: false
+---
+
+# Architectuur
+
+## Actions (`app/Actions/[Module]/[Naam]Action.php`)
+- Eén publieke `handle(...)` met **expliciete** argumenten: data + `tenantId` + `?actorUserId` (of worker-context).
+- Return models/DTOs/primitives — geen views, redirects, flash.
+- Mutaties, events (`WebhookEvent`), optioneel `AuditRecorder` of bestaand domein-event.
+
+## Ingangen (dun)
+- **Livewire**: geen `Model::create`, geen queries met business rules; validate → Action.
+- **API** (`app/Http/Controllers/Api/V1`): zelfde Form Request rules als web; zelfde Actions.
+- **Webhooks inkomend**: signature check → map naar Action.
+
+## Status & types
+- Gebruik **`app/Enums`** — geen magic strings voor status/source.
+
+## Audit (richting regel §3.3d)
+- Nieuwe schrijf-Action: log via bestaand **WebhookEvent**-listener of `AuditRecorder::record`.
+- API-acteur: `actor_user_id` in event payload waar relevant.
+
+## Tests
+- Nieuwe Action of workflow → Feature-test in `tests/Feature/` (tenant-isolatie meenemen).
