@@ -74,6 +74,7 @@
         "role_required": "Choisissez un rôle.",
         "team_name_required": "Indiquez un nom d'équipe.",
         "worker_name_required": "Indiquez un prénom et un nom.",
-        "organisation_name_required": "Indiquez un nom d'organisation."
+        "organisation_name_required": "Indiquez un nom d'organisation.",
+        "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues."
     }
 }

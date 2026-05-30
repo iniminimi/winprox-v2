@@ -74,6 +74,7 @@
         "role_required": "Wählen Sie eine Rolle.",
         "team_name_required": "Geben Sie einen Teamnamen an.",
         "worker_name_required": "Geben Sie Vor- und Nachnamen an.",
-        "organisation_name_required": "Geben Sie einen Organisationsnamen an."
+        "organisation_name_required": "Geben Sie einen Organisationsnamen an.",
+        "user_limit": "Das Benutzerlimit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Kollegen hinzuzufügen."
     }
 }

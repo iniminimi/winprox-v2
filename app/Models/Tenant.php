@@ -167,4 +167,43 @@ class Tenant extends Model
             throw new \InvalidArgumentException('unit_limit_exceeded');
         }
     }
+
+    /** null = onbeperkt (legacy of enterprise). */
+    public function maxUsersLimit(): ?int
+    {
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return null;
+        }
+
+        $planKey = $this->effectivePlanKey();
+        if ($planKey === null) {
+            return null;
+        }
+
+        $max = config("billing.plans.{$planKey}.users_limit");
+
+        return is_int($max) ? $max : (is_numeric($max) ? (int) $max : null);
+    }
+
+    public function remainingUserSlots(): ?int
+    {
+        $max = $this->maxUsersLimit();
+        if ($max === null) {
+            return null;
+        }
+
+        return max(0, $max - $this->currentUsersCount());
+    }
+
+    public function assertCanAddUsers(int $count): void
+    {
+        $remaining = $this->remainingUserSlots();
+        if ($remaining === null) {
+            return;
+        }
+
+        if ($count > $remaining) {
+            throw new \InvalidArgumentException('user_limit_exceeded');
+        }
+    }
 }

@@ -74,6 +74,7 @@
         "role_required": "Kies een rol.",
         "team_name_required": "Geef een teamnaam op.",
         "worker_name_required": "Geef voor- en achternaam op.",
-        "organisation_name_required": "Geef een organisatienaam op."
+        "organisation_name_required": "Geef een organisatienaam op.",
+        "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen."
     }
 }

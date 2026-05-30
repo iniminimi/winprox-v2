@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
@@ -22,6 +23,9 @@ class CreateColleagueAction
      */
     public function handle(array $data, int $tenantId): User
     {
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $tenant->assertCanAddUsers(1);
+
         $user = User::create([
             'tenant_id' => $tenantId,
             'name' => $data['name'],

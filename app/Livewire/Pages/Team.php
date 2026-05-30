@@ -24,6 +24,7 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Gate;
+use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -130,7 +131,17 @@ class Team extends Component
             $request = new StoreColleagueRequest;
             $validated = $this->validateColleague($request->rules(), $request->messages());
 
-            $createColleague->handle($validated, (int) Tenancy::id());
+            try {
+                $createColleague->handle($validated, (int) Tenancy::id());
+            } catch (InvalidArgumentException $e) {
+                if ($e->getMessage() === 'user_limit_exceeded') {
+                    $this->addError('colleagueEmail', __('team.errors.user_limit'));
+
+                    return;
+                }
+
+                throw $e;
+            }
         }
 
         $this->showColleagueModal = false;

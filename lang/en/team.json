@@ -74,6 +74,7 @@
         "role_required": "Choose a role.",
         "team_name_required": "Enter a team name.",
         "worker_name_required": "Enter a first and last name.",
-        "organisation_name_required": "Enter an organisation name."
+        "organisation_name_required": "Enter an organisation name.",
+        "user_limit": "Your plan user limit has been reached. Upgrade your subscription to add more colleagues."
     }
 }
