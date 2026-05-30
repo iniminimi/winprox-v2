@@ -95,6 +95,9 @@
             "too_many": "Too many units in one bulk (max. 500)."
         }
     },
+    "errors": {
+        "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units."
+    },
     "qr_pack": {
         "headline": "Report an issue",
         "unavailable": "QR export is unavailable on this server."

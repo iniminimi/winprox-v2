@@ -128,4 +128,43 @@ class Tenant extends Model
 
         return null;
     }
+
+    /** null = onbeperkt (legacy of enterprise). */
+    public function maxUnitsLimit(): ?int
+    {
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return null;
+        }
+
+        $planKey = $this->effectivePlanKey();
+        if ($planKey === null) {
+            return null;
+        }
+
+        $max = config("billing.plans.{$planKey}.units_limit");
+
+        return is_int($max) ? $max : (is_numeric($max) ? (int) $max : null);
+    }
+
+    public function remainingUnitSlots(): ?int
+    {
+        $max = $this->maxUnitsLimit();
+        if ($max === null) {
+            return null;
+        }
+
+        return max(0, $max - $this->currentUnitsCount());
+    }
+
+    public function assertCanAddUnits(int $count): void
+    {
+        $remaining = $this->remainingUnitSlots();
+        if ($remaining === null) {
+            return;
+        }
+
+        if ($count > $remaining) {
+            throw new \InvalidArgumentException('unit_limit_exceeded');
+        }
+    }
 }

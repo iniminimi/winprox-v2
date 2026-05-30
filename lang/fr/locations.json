@@ -95,6 +95,9 @@
             "too_many": "Trop d'unités en une fois (max. 500)."
         }
     },
+    "errors": {
+        "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter."
+    },
     "qr_pack": {
         "headline": "Signaler un problème",
         "unavailable": "L'export QR n'est pas disponible sur ce serveur."

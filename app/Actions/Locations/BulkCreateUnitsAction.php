@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Support\Units\UnitBulkNaming;
@@ -51,6 +52,8 @@ class BulkCreateUnitsAction
         if ($total > self::MAX_UNITS) {
             throw new InvalidArgumentException('too_many');
         }
+
+        Tenant::query()->findOrFail($tenantId)->assertCanAddUnits($total);
 
         $teamId = isset($data['default_internal_team_id']) && $data['default_internal_team_id'] !== ''
             ? (int) $data['default_internal_team_id']

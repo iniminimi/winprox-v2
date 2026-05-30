@@ -95,6 +95,9 @@
             "too_many": "Te veel units in één bulk (max. 500)."
         }
     },
+    "errors": {
+        "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen."
+    },
     "qr_pack": {
         "headline": "Melding doorgeven",
         "unavailable": "QR-export is niet beschikbaar op deze server."

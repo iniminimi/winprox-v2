@@ -148,7 +148,17 @@ class Show extends Component
 
         if ($this->editingUnitId === null) {
             $this->authorize('create', Unit::class);
-            $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id);
+            try {
+                $createUnit->handle($this->location, $payload, (int) auth()->user()->tenant_id);
+            } catch (InvalidArgumentException $e) {
+                if ($e->getMessage() === 'unit_limit_exceeded') {
+                    $this->addError('unitName', __('locations.errors.unit_limit'));
+
+                    return;
+                }
+
+                throw $e;
+            }
             session()->flash('success', __('locations.units.flash.created'));
         } else {
             $unit = Unit::findOrFail($this->editingUnitId);
@@ -259,6 +269,7 @@ class Show extends Component
                 'scheme_range' => 'locations.bulk.errors.scheme_range',
                 'names_exist' => 'locations.bulk.errors.names_exist',
                 'too_many' => 'locations.bulk.errors.too_many',
+                'unit_limit_exceeded' => 'locations.errors.unit_limit',
                 default => 'locations.bulk.errors.invalid',
             };
             $this->addError('bulkFloors', __($key));

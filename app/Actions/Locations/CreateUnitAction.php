@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 
 class CreateUnitAction
@@ -12,6 +13,8 @@ class CreateUnitAction
      */
     public function handle(Location $location, array $data, int $tenantId): Unit
     {
+        Tenant::query()->findOrFail($tenantId)->assertCanAddUnits(1);
+
         return Unit::create([
             'tenant_id' => $tenantId,
             'location_id' => $location->id,

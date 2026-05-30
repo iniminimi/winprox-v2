@@ -95,6 +95,9 @@
             "too_many": "Zu viele Units auf einmal (max. 500)."
         }
     },
+    "errors": {
+        "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen."
+    },
     "qr_pack": {
         "headline": "Meldung senden",
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar."
