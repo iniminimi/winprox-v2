@@ -10,5 +10,26 @@
     "stop": "Support-Ansicht beenden",
     "active": "Sie sehen :name.",
     "banner": "Support-Ansicht: :name",
-    "nav": "Plattform"
+    "nav": "Plattform",
+    "help_nav": "Hilfe-Verwaltung",
+    "help": {
+        "title": "Hilfe-Verwaltung",
+        "subtitle": "Unbeantwortete Fragen und Wissensbasis für den WinProx-Assistenten.",
+        "unanswered_title": "Unbeantwortete Fragen",
+        "unanswered_empty": "Keine offenen Fragen.",
+        "dismiss": "Entfernen",
+        "dismiss_confirm": "Diese Frage aus der Liste entfernen?",
+        "kb_title": "Wissensbasis",
+        "kb_add": "Antwort hinzufügen",
+        "kb_edit": "Antwort bearbeiten",
+        "kb_empty": "Noch keine Wissensbasis-Einträge.",
+        "kb_locale": "Sprache (nl, en oder *)",
+        "kb_match_key": "Schlüssel",
+        "kb_patterns": "Muster (eines pro Zeile)",
+        "kb_answer": "Antwort",
+        "kb_active": "Aktiv",
+        "inactive": "Inaktiv",
+        "kb_delete_confirm": "Diesen Eintrag löschen?",
+        "patterns_required": "Mindestens ein Muster hinzufügen."
+    }
 }

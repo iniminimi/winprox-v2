@@ -10,5 +10,26 @@
     "stop": "Support view beëindigen",
     "active": "Je kijkt mee bij :name.",
     "banner": "Support view: :name",
-    "nav": "Platform"
+    "nav": "Platform",
+    "help_nav": "Help-beheer",
+    "help": {
+        "title": "Help-beheer",
+        "subtitle": "Onbeantwoorde vragen en kennisbank voor de WinProx-assistent.",
+        "unanswered_title": "Onbeantwoorde vragen",
+        "unanswered_empty": "Geen openstaande vragen.",
+        "dismiss": "Verwijderen",
+        "dismiss_confirm": "Deze vraag verwijderen uit de lijst?",
+        "kb_title": "Kennisbank",
+        "kb_add": "Antwoord toevoegen",
+        "kb_edit": "Antwoord bewerken",
+        "kb_empty": "Nog geen kennisbank-items. Voeg patronen toe die de assistent herkent.",
+        "kb_locale": "Taal (nl, en, of *)",
+        "kb_match_key": "Sleutel",
+        "kb_patterns": "Patronen (één per regel)",
+        "kb_answer": "Antwoord",
+        "kb_active": "Actief",
+        "inactive": "Inactief",
+        "kb_delete_confirm": "Dit kennisbank-item verwijderen?",
+        "patterns_required": "Voeg minstens één patroon toe."
+    }
 }

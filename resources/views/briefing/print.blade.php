@@ -2,7 +2,12 @@
     <div class="wp-stack">
         <div class="wp-stack-tight">
             <h1 class="wp-page-title">{{ __('dashboard.briefing_print') }}</h1>
-            <p class="wp-muted">{{ $date->format('d-m-Y') }} &middot; {{ $tenant?->name }}</p>
+            <p class="wp-muted">
+                {{ $date->format('d-m-Y') }} &middot; {{ $tenant?->name }}
+                @if ($filterTeam)
+                    &middot; {{ $filterTeam->name }}
+                @endif
+            </p>
         </div>
 
         @forelse ($grouped as $teamId => $teamTasks)

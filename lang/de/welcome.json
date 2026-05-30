@@ -3,27 +3,49 @@
     "login": "Anmelden",
     "register": "Registrieren",
     "hero": {
-        "title": "Vom Boden ins Team",
-        "lead": "WinProx verknüpft QR-Meldungen mit Aufgaben für interne Facility-Teams — ohne verstreute Tabellen.",
-        "cta_register": "Kostenlos testen",
+        "kicker": "Facility & technisches Management",
+        "title": "Meldungen vom Boden ans Team",
+        "lead": "WinProx verknüpft QR-Meldungen mit Aufgaben für interne Facility-Teams — ohne verstreute Tabellen oder E-Mail-Ketten.",
+        "cta_register": "Kostenlose Testphase starten",
         "cta_login": "Anmelden"
+    },
+    "problem": {
+        "title": "Kommt Ihnen bekannt vor?",
+        "cards": [
+            {"title": "Meldungen gehen verloren", "body": "Probleme kommen per Mail, Telefon oder Papier — niemand sieht den Gesamtstatus."},
+            {"title": "Kein klarer Verantwortlicher", "body": "Technik, Reinigung und Facility arbeiten parallel ohne klare Aufgabenzuweisung."},
+            {"title": "Langsame Nachverfolgung", "body": "Verwaltung sucht in Ordnern und Chats statt in einer Übersicht pro Standort und Team."}
+        ]
+    },
+    "solution": {
+        "title": "Eine Linie von Meldung bis Aufgabe",
+        "lead": "QR-Code auf einer Unit scannen, melden und dem richtigen internen Team zuweisen. Mitarbeiter vor Ort sehen Aufgaben im Portal — Verwaltung behält den Überblick am Desktop."
+    },
+    "features": {
+        "title": "Das erhalten Sie",
+        "items": [
+            {"icon": "issues", "title": "Meldungen & Moderation", "body": "QR-Eingaben freigeben; Manager-Meldungen starten direkt mit Aufgabe."},
+            {"icon": "tasks", "title": "Aufgaben pro Team", "body": "Vier klare Status, Briefing und Kalender für die Planung."},
+            {"icon": "locations", "title": "Standorte & Units", "body": "Standorte, Units, QR-Sticker und Dokumente an einem Ort."},
+            {"icon": "team", "title": "Teams & Mitarbeiter", "body": "Interne Teams mit Feldmitarbeitern per QR — kein Extra-Login vor Ort."},
+            {"icon": "calendar", "title": "Wiederkehrende Wartung", "body": "Zyklen planen und Fälligkeiten im Kalender sehen."},
+            {"icon": "subscription", "title": "Testphase & Skalierung", "body": "Mit Testphase starten; später passenden Plan wählen."}
+        ]
     },
     "flow": {
         "title": "So funktioniert es",
         "steps": [
-            {
-                "title": "QR scannen",
-                "body": "Jemand scannt den Unit-Code und beschreibt das Problem."
-            },
-            {
-                "title": "Aufgabe ans Team",
-                "body": "Verwaltung weist ein internes Team zu; es erhält eine Aufgabe im Portal."
-            },
-            {
-                "title": "Erledigt",
-                "body": "Nachverfolgung und Status bleiben sichtbar bis zum Abschluss."
-            }
+            {"title": "QR scannen", "body": "Jemand scannt den Code auf einer Unit und beschreibt das Problem (optional Fotos)."},
+            {"title": "Aufgabe ans Team", "body": "Verwaltung weist ein internes Team zu; das Team erhält eine Aufgabe im Portal."},
+            {"title": "Erledigt", "body": "Nachverfolgung und Status bleiben sichtbar bis die Meldung abgeschlossen ist."}
         ]
     },
-    "qr_illustration_label": "Dekorative QR-Darstellung"
+    "cta_band": {
+        "title": "Bereit zu starten?",
+        "body": "Konto anlegen und ersten Standort in wenigen Minuten einrichten.",
+        "register": "Konto anlegen",
+        "login": "Ich habe bereits ein Konto"
+    },
+    "qr_illustration_label": "QR auf Unit → Meldung → Aufgabe",
+    "footer": {"contact": "Kontakt"}
 }

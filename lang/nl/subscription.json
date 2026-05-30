@@ -25,7 +25,12 @@
     "limits": {
         "units": ":count units",
         "users": ":count gebruikers",
-        "unlimited": "onbeperkt"
+        "unlimited": "onbeperkt",
+        "warning_units": "Je hebt nog :remaining unit-slots over in je plan.",
+        "critical_units": "Je unit-limiet is bereikt. Upgrade je plan om meer units toe te voegen.",
+        "warning_users": "Je hebt nog :remaining gebruikersslots over in je plan.",
+        "critical_users": "Je gebruikerslimiet is bereikt. Upgrade je plan om meer collega's uit te nodigen.",
+        "cta": "Bekijk abonnement"
     },
     "plans": {
         "starter": {

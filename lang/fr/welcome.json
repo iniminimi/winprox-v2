@@ -3,27 +3,49 @@
     "login": "Connexion",
     "register": "S'inscrire",
     "hero": {
-        "title": "Du terrain vers votre équipe",
-        "lead": "WinProx relie les signalements QR aux tâches des équipes facility internes — sans tableurs éparpillés.",
+        "kicker": "Facility & gestion technique",
+        "title": "Des signalements du terrain vers votre équipe",
+        "lead": "WinProx relie les signalements QR aux tâches des équipes facility internes — sans tableurs dispersés ni chaînes d'e-mails.",
         "cta_register": "Essai gratuit",
         "cta_login": "Connexion"
+    },
+    "problem": {
+        "title": "Ça vous parle ?",
+        "cards": [
+            {"title": "Signalements perdus", "body": "Les problèmes arrivent par mail, téléphone ou papier — personne ne voit le statut complet."},
+            {"title": "Pas de responsable clair", "body": "Technique, nettoyage et facility travaillent en parallèle sans attribution claire."},
+            {"title": "Suivi lent", "body": "La gestion cherche dans des dossiers et chats au lieu d'une vue par site et équipe."}
+        ]
+    },
+    "solution": {
+        "title": "Une ligne du signalement à la tâche",
+        "lead": "Scannez un QR sur une unité, signalez le problème et assignez la bonne équipe interne. Les workers voient leurs tâches sur le portail — les managers gardent la vue sur desktop."
+    },
+    "features": {
+        "title": "Ce que vous obtenez",
+        "items": [
+            {"icon": "issues", "title": "Signalements & modération", "body": "Approuvez les QR ; les signalements manager créent une tâche directement."},
+            {"icon": "tasks", "title": "Tâches par équipe", "body": "Quatre statuts clairs, briefing et calendrier pour planifier."},
+            {"icon": "locations", "title": "Sites & unités", "body": "Gérez sites, unités, stickers QR et documents au même endroit."},
+            {"icon": "team", "title": "Équipes & workers", "body": "Équipes internes avec workers sur le terrain via QR — pas de login supplémentaire."},
+            {"icon": "calendar", "title": "Maintenance récurrente", "body": "Planifiez les cycles et voyez les échéances au calendrier."},
+            {"icon": "subscription", "title": "Essai & échelle", "body": "Commencez par un essai ; choisissez un plan adapté plus tard."}
+        ]
     },
     "flow": {
         "title": "Comment ça marche",
         "steps": [
-            {
-                "title": "Scanner le QR",
-                "body": "Quelqu'un scanne le code de l'unité et décrit le problème."
-            },
-            {
-                "title": "Tâche à l'équipe",
-                "body": "Le gestionnaire assigne une équipe interne ; elle reçoit une tâche dans le portail."
-            },
-            {
-                "title": "Terminé",
-                "body": "Le suivi et le statut restent visibles jusqu'à la clôture."
-            }
+            {"title": "Scanner le QR", "body": "Quelqu'un scanne le code sur une unité et décrit le problème (photos optionnelles)."},
+            {"title": "Tâche à l'équipe", "body": "La gestion assigne une équipe interne ; l'équipe reçoit une tâche sur le portail."},
+            {"title": "Terminé", "body": "Le suivi et le statut restent visibles jusqu'à clôture du signalement."}
         ]
     },
-    "qr_illustration_label": "Illustration QR décorative"
+    "cta_band": {
+        "title": "Prêt à commencer ?",
+        "body": "Créez un compte et configurez votre premier site en quelques minutes.",
+        "register": "Créer un compte",
+        "login": "J'ai déjà un compte"
+    },
+    "qr_illustration_label": "QR sur unité → signalement → tâche",
+    "footer": {"contact": "Contact"}
 }

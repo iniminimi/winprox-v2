@@ -10,6 +10,17 @@
         </div>
     @endif
 
+    @if ($tenant && ($tenant->unitLimitWarning() || $tenant->userLimitWarning()))
+        <div class="wp-flash {{ ($tenant->unitLimitWarning() === 'critical' || $tenant->userLimitWarning() === 'critical') ? 'wp-flash--danger' : 'wp-flash--muted' }}">
+            @if ($warning = $tenant->unitLimitWarning())
+                <p>{{ $warning === 'critical' ? __('subscription.limits.critical_units', ['remaining' => $tenant->remainingUnitSlots() ?? 0]) : __('subscription.limits.warning_units', ['remaining' => $tenant->remainingUnitSlots() ?? 0]) }}</p>
+            @endif
+            @if ($warning = $tenant->userLimitWarning())
+                <p>{{ $warning === 'critical' ? __('subscription.limits.critical_users', ['remaining' => $tenant->remainingUserSlots() ?? 0]) : __('subscription.limits.warning_users', ['remaining' => $tenant->remainingUserSlots() ?? 0]) }}</p>
+            @endif
+        </div>
+    @endif
+
     @error('plan')
         <p class="wp-form-error">{{ $message }}</p>
     @enderror

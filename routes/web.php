@@ -25,6 +25,7 @@ use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
+use App\Livewire\Platform\Help as PlatformHelp;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Support\Platform\SupportTenantContext;
@@ -76,6 +77,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/tenants', PlatformTenants::class)
         ->middleware('superuser')
         ->name('platform.tenants');
+    Route::get('/platform/help', PlatformHelp::class)
+        ->middleware('superuser')
+        ->name('platform.help');
 
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');

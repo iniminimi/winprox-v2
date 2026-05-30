@@ -26,7 +26,8 @@
         ];
         $secondaryNav = [
             ...(auth()->user()?->is_superuser ? [
-                ['route' => 'platform.tenants', 'active' => 'platform.*', 'icon' => 'subscription', 'label' => 'platform.nav'],
+                ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.nav'],
+                ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
             ] : []),
             ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.team'],
             ...(auth()->user()?->isAdmin() ? [

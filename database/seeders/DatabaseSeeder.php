@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@winprox.test',
             'password' => Hash::make('password'),
             'is_superuser' => false,
+            'role' => User::ROLE_ADMIN,
         ]);
 
         User::create([

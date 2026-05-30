@@ -10,5 +10,26 @@
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",
     "banner": "Vue support : :name",
-    "nav": "Plateforme"
+    "nav": "Plateforme",
+    "help_nav": "Gestion aide",
+    "help": {
+        "title": "Gestion de l'aide",
+        "subtitle": "Questions sans réponse et base de connaissances pour l'assistant WinProx.",
+        "unanswered_title": "Questions sans réponse",
+        "unanswered_empty": "Aucune question en attente.",
+        "dismiss": "Supprimer",
+        "dismiss_confirm": "Retirer cette question de la liste ?",
+        "kb_title": "Base de connaissances",
+        "kb_add": "Ajouter une réponse",
+        "kb_edit": "Modifier la réponse",
+        "kb_empty": "Aucune entrée pour l'instant.",
+        "kb_locale": "Langue (nl, en ou *)",
+        "kb_match_key": "Clé",
+        "kb_patterns": "Motifs (un par ligne)",
+        "kb_answer": "Réponse",
+        "kb_active": "Actif",
+        "inactive": "Inactif",
+        "kb_delete_confirm": "Supprimer cette entrée ?",
+        "patterns_required": "Ajoutez au moins un motif."
+    }
 }

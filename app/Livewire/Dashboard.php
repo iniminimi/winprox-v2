@@ -37,6 +37,10 @@ class Dashboard extends Component
             'recent' => $recent,
             'trialDays' => $tenant?->isTrialActive() ? $tenant->trialDaysRemaining() : null,
             'subscriptionGrace' => $tenant?->isInPaidSubscriptionGrace() ?? false,
+            'unitLimitWarning' => $tenant?->unitLimitWarning(),
+            'userLimitWarning' => $tenant?->userLimitWarning(),
+            'remainingUnits' => $tenant?->remainingUnitSlots(),
+            'remainingUsers' => $tenant?->remainingUserSlots(),
         ]);
     }
 }

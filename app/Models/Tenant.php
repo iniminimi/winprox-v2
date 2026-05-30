@@ -199,6 +199,43 @@ class Tenant extends Model
         return max(0, $max - $this->currentUsersCount());
     }
 
+    /** null = geen limiet of ruim voldoende; warning | critical */
+    public function unitLimitWarning(): ?string
+    {
+        return $this->limitWarningLevel(
+            $this->remainingUnitSlots(),
+            $this->maxUnitsLimit(),
+        );
+    }
+
+    /** null = geen limiet of ruim voldoende; warning | critical */
+    public function userLimitWarning(): ?string
+    {
+        return $this->limitWarningLevel(
+            $this->remainingUserSlots(),
+            $this->maxUsersLimit(),
+        );
+    }
+
+    private function limitWarningLevel(?int $remaining, ?int $max): ?string
+    {
+        if ($remaining === null || $max === null) {
+            return null;
+        }
+
+        if ($remaining === 0) {
+            return 'critical';
+        }
+
+        $threshold = max(2, (int) floor($max * 0.15));
+
+        if ($remaining <= $threshold) {
+            return 'warning';
+        }
+
+        return null;
+    }
+
     public function assertCanAddUsers(int $count): void
     {
         $remaining = $this->remainingUserSlots();

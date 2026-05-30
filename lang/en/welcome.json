@@ -1,29 +1,51 @@
 {
     "meta_title": "WinProx — facility issues via QR",
     "login": "Log in",
-    "register": "Register",
+    "register": "Sign up",
     "hero": {
-        "title": "From floor report to your team",
-        "lead": "WinProx links QR reports to tasks for internal facility teams — without scattered spreadsheets.",
+        "kicker": "Facility & technical management",
+        "title": "Issues from the floor to your team",
+        "lead": "WinProx links QR reports to tasks for internal facility teams — without scattered spreadsheets or email chains.",
         "cta_register": "Start free trial",
         "cta_login": "Log in"
+    },
+    "problem": {
+        "title": "Sound familiar?",
+        "cards": [
+            {"title": "Reports get lost", "body": "Issues arrive by email, phone or paper — nobody sees the full status."},
+            {"title": "No clear owner", "body": "Technical, cleaning and facility teams work in parallel without clear task assignment."},
+            {"title": "Slow follow-up", "body": "Managers search folders and chats instead of one overview per site and team."}
+        ]
+    },
+    "solution": {
+        "title": "One line from report to task",
+        "lead": "Scan a QR code on a unit, report the issue, and assign it to the right internal team. Field workers see tasks in the portal — managers keep overview on desktop."
+    },
+    "features": {
+        "title": "What you get",
+        "items": [
+            {"icon": "issues", "title": "Issues & moderation", "body": "Approve QR submissions; manager issues start with a task immediately."},
+            {"icon": "tasks", "title": "Tasks per team", "body": "Four clear statuses, briefing and calendar for planning."},
+            {"icon": "locations", "title": "Sites & units", "body": "Manage locations, units, QR stickers and documents in one place."},
+            {"icon": "team", "title": "Teams & workers", "body": "Internal teams with field workers via QR — no extra login on site."},
+            {"icon": "calendar", "title": "Recurring maintenance", "body": "Schedule cycles and see due dates in the calendar."},
+            {"icon": "subscription", "title": "Trial & scale", "body": "Start with a trial; choose a plan that fits your size later."}
+        ]
     },
     "flow": {
         "title": "How it works",
         "steps": [
-            {
-                "title": "Scan QR",
-                "body": "Someone scans the unit code and describes the issue."
-            },
-            {
-                "title": "Task to team",
-                "body": "Managers assign an internal team; the team receives a task in the portal."
-            },
-            {
-                "title": "Done",
-                "body": "Follow-up and status stay visible until the issue is closed."
-            }
+            {"title": "Scan QR", "body": "Someone scans the code on a unit and describes the issue (optional photos)."},
+            {"title": "Task to team", "body": "Management assigns an internal team; the team gets a task in the portal."},
+            {"title": "Done", "body": "Follow-up and status stay visible until the issue is completed or closed."}
         ]
     },
-    "qr_illustration_label": "Decorative QR illustration"
+    "cta_band": {
+        "title": "Ready to start?",
+        "body": "Create an account and set up your first location in minutes.",
+        "register": "Create account",
+        "login": "I already have an account"
+    },
+    "qr_illustration_label": "QR on unit → issue → task",
+    "footer": {"contact": "Contact"}
 }

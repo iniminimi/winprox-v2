@@ -10,5 +10,26 @@
     "stop": "End support view",
     "active": "You are viewing :name.",
     "banner": "Support view: :name",
-    "nav": "Platform"
+    "nav": "Platform",
+    "help_nav": "Help admin",
+    "help": {
+        "title": "Help administration",
+        "subtitle": "Unanswered questions and knowledge base for the WinProx assistant.",
+        "unanswered_title": "Unanswered questions",
+        "unanswered_empty": "No open questions.",
+        "dismiss": "Remove",
+        "dismiss_confirm": "Remove this question from the list?",
+        "kb_title": "Knowledge base",
+        "kb_add": "Add answer",
+        "kb_edit": "Edit answer",
+        "kb_empty": "No knowledge base entries yet.",
+        "kb_locale": "Locale (nl, en, or *)",
+        "kb_match_key": "Key",
+        "kb_patterns": "Patterns (one per line)",
+        "kb_answer": "Answer",
+        "kb_active": "Active",
+        "inactive": "Inactive",
+        "kb_delete_confirm": "Delete this knowledge base entry?",
+        "patterns_required": "Add at least one pattern."
+    }
 }

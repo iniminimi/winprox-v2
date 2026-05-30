@@ -3,27 +3,93 @@
     "login": "Inloggen",
     "register": "Registreren",
     "hero": {
+        "kicker": "Facility & technisch beheer",
         "title": "Meldingen van de vloer naar je team",
-        "lead": "WinProx koppelt QR-meldingen aan taken voor interne facility-teams — zonder losse spreadsheets.",
+        "lead": "WinProx koppelt QR-meldingen aan taken voor interne facility-teams — zonder losse spreadsheets of e-mailketens.",
         "cta_register": "Start gratis proefperiode",
         "cta_login": "Inloggen"
+    },
+    "problem": {
+        "title": "Herkenbaar?",
+        "cards": [
+            {
+                "title": "Meldingen verdwalen",
+                "body": "Problemen worden gemeld via mail, telefoon of papier — niemand ziet de volledige status."
+            },
+            {
+                "title": "Geen eigenaar",
+                "body": "Techniek, schoonmaak en facilitair werken naast elkaar zonder duidelijke taaktoewijzing."
+            },
+            {
+                "title": "Trage opvolging",
+                "body": "Beheerders zoeken in mappen en chats in plaats van één overzicht per locatie en team."
+            }
+        ]
+    },
+    "solution": {
+        "title": "Eén lijn van melding tot taak",
+        "lead": "Scan een QR-code op een unit, meld het probleem, en wijs het toe aan het juiste interne team. Workers op de werkvloer zien hun taken in het portaal — beheerders houden overzicht op desktop."
+    },
+    "features": {
+        "title": "Wat je krijgt",
+        "items": [
+            {
+                "icon": "issues",
+                "title": "Meldingen & moderatie",
+                "body": "QR-inzendingen keur je goed; manager-meldingen starten direct met taak."
+            },
+            {
+                "icon": "tasks",
+                "title": "Taken per team",
+                "body": "Vier duidelijke statussen, briefing en kalender voor planning."
+            },
+            {
+                "icon": "locations",
+                "title": "Locaties & units",
+                "body": "Beheer locaties, units, QR-stickers en documenten op één plek."
+            },
+            {
+                "icon": "team",
+                "title": "Teams & workers",
+                "body": "Interne teams met veldworkers via QR — geen extra login voor de werkvloer."
+            },
+            {
+                "icon": "calendar",
+                "title": "Terugkerend onderhoud",
+                "body": "Plan cyclische taken en zie vervaldata in de kalender."
+            },
+            {
+                "icon": "subscription",
+                "title": "Proefperiode & schaal",
+                "body": "Start met een proefperiode; kies later een plan dat past bij je omvang."
+            }
+        ]
     },
     "flow": {
         "title": "Zo werkt het",
         "steps": [
             {
                 "title": "QR scannen",
-                "body": "Iemand scant de code op een unit en beschrijft het probleem."
+                "body": "Iemand scant de code op een unit en beschrijft het probleem (optioneel met foto's)."
             },
             {
                 "title": "Taak naar team",
                 "body": "Beheer wijst een intern team toe; het team krijgt een taak in het portaal."
             },
             {
-                "title": "Klaar",
-                "body": "Opvolging en status zijn zichtbaar tot de melding is afgehandeld."
+                "title": "Afgehandeld",
+                "body": "Opvolging en status zijn zichtbaar tot de melding is afgehandeld of gesloten."
             }
         ]
     },
-    "qr_illustration_label": "Decoratieve QR-illustratie"
+    "cta_band": {
+        "title": "Klaar om te starten?",
+        "body": "Maak een account aan en richt je eerste locatie in binnen enkele minuten.",
+        "register": "Account aanmaken",
+        "login": "Ik heb al een account"
+    },
+    "qr_illustration_label": "QR op unit → melding → taak",
+    "footer": {
+        "contact": "Contact"
+    }
 }

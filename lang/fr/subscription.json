@@ -25,7 +25,12 @@
     "limits": {
         "units": ":count unités",
         "users": ":count utilisateurs",
-        "unlimited": "illimité"
+        "unlimited": "illimité",
+        "warning_units": "Il vous reste :remaining emplacements d'unités sur votre plan.",
+        "critical_units": "Limite d'unités atteinte. Passez à un plan supérieur.",
+        "warning_users": "Il vous reste :remaining emplacements utilisateurs sur votre plan.",
+        "critical_users": "Limite d'utilisateurs atteinte. Passez à un plan supérieur.",
+        "cta": "Voir l'abonnement"
     },
     "plans": {
         "starter": {
