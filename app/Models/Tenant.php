@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
+
 class Tenant extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
+        'logo_path',
         'trial_ends_at',
         'billing_plan',
         'billing_active_until',
@@ -205,5 +209,18 @@ class Tenant extends Model
         if ($count > $remaining) {
             throw new \InvalidArgumentException('user_limit_exceeded');
         }
+    }
+
+    /** Absoluut pad voor QR-centrelogo (organisatie of WinProx-fallback). */
+    public function centerLogoAbsolutePath(): string
+    {
+        if (is_string($this->logo_path) && $this->logo_path !== '') {
+            $absolute = Storage::disk('public')->path($this->logo_path);
+            if (is_file($absolute)) {
+                return $absolute;
+            }
+        }
+
+        return QrCodePngWriter::winproxLogoPath();
     }
 }

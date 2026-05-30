@@ -42,9 +42,13 @@ final class QrCodePngWriter
         }
     }
 
-    public static function writeFileForStickerSheet(string $reportUrl, string $absolutePath, int $pixelSize = 420): void
-    {
-        $bytes = self::writeStringWithWinproxLogo($reportUrl, $pixelSize, self::STICKER_LOGO_BOX_RATIO);
+    public static function writeFileForStickerSheet(
+        string $reportUrl,
+        string $absolutePath,
+        int $pixelSize = 420,
+        ?string $centerLogoPath = null,
+    ): void {
+        $bytes = self::writeStringWithCenterLogo($reportUrl, $pixelSize, self::STICKER_LOGO_BOX_RATIO, $centerLogoPath);
 
         if (file_put_contents($absolutePath, $bytes) === false) {
             throw new RuntimeException('Unable to write QR PNG file.');
@@ -64,10 +68,20 @@ final class QrCodePngWriter
 
     public static function writeStringWithWinproxLogo(string $reportUrl, int $pixelSize = 420, ?float $logoBoxRatio = null): string
     {
-        return self::overlayWinproxLogo(
+        return self::writeStringWithCenterLogo($reportUrl, $pixelSize, $logoBoxRatio, null);
+    }
+
+    public static function writeStringWithCenterLogo(
+        string $reportUrl,
+        int $pixelSize = 420,
+        ?float $logoBoxRatio = null,
+        ?string $centerLogoPath = null,
+    ): string {
+        return self::overlayCenterLogo(
             self::writeString($reportUrl, $pixelSize),
             $pixelSize,
             $logoBoxRatio ?? self::LOGO_BOX_RATIO,
+            $centerLogoPath,
         );
     }
 
@@ -98,40 +112,48 @@ final class QrCodePngWriter
         );
     }
 
-    private static function overlayWinproxLogo(string $qrPngBytes, int $pixelSize, float $logoBoxRatio = self::LOGO_BOX_RATIO): string
-    {
+    private static function overlayCenterLogo(
+        string $qrPngBytes,
+        int $pixelSize,
+        float $logoBoxRatio = self::LOGO_BOX_RATIO,
+        ?string $centerLogoPath = null,
+    ): string {
         if (self::gdRendererAvailable()) {
-            return self::overlayWinproxLogoWithGd($qrPngBytes, $pixelSize, $logoBoxRatio);
+            return self::overlayCenterLogoWithGd($qrPngBytes, $pixelSize, $logoBoxRatio, $centerLogoPath);
         }
 
         if (self::imagickRendererAvailable()) {
-            return self::overlayWinproxLogoWithImagick($qrPngBytes, $pixelSize, $logoBoxRatio);
+            return self::overlayCenterLogoWithImagick($qrPngBytes, $pixelSize, $logoBoxRatio, $centerLogoPath);
         }
 
         return $qrPngBytes;
     }
 
-    private static function overlayWinproxLogoWithGd(string $qrPngBytes, int $pixelSize, float $logoBoxRatio): string
-    {
+    private static function overlayCenterLogoWithGd(
+        string $qrPngBytes,
+        int $pixelSize,
+        float $logoBoxRatio,
+        ?string $centerLogoPath,
+    ): string {
         $qr = self::loadGdImageFromBinary($qrPngBytes);
         if ($qr === false) {
             throw new RuntimeException('Unable to decode QR PNG for logo overlay.');
         }
 
-        $logoPath = self::winproxLogoPath();
+        $logoPath = self::resolveCenterLogoPath($centerLogoPath);
         $logo = self::loadGdImageFromFile($logoPath);
         if ($logo === false) {
             imagedestroy($qr);
 
             throw new RuntimeException(is_file($logoPath)
-                ? 'Unable to load WinProx logo image.'
-                : 'WinProx logo image is missing.');
+                ? 'Unable to load center logo image.'
+                : 'Center logo image is missing.');
         }
 
         imagealphablending($qr, true);
         imagesavealpha($qr, true);
 
-        [$boxX, $boxY, $boxSize, $destX, $destY, $targetW, $targetH] = self::logoPlacement($pixelSize, $logoBoxRatio);
+        [$boxX, $boxY, $boxSize, $destX, $destY, $targetW, $targetH] = self::logoPlacement($pixelSize, $logoBoxRatio, $logoPath);
 
         $white = imagecolorallocate($qr, 255, 255, 255);
         $border = imagecolorallocate($qr, 229, 231, 235);
@@ -167,9 +189,13 @@ final class QrCodePngWriter
         return $result;
     }
 
-    private static function overlayWinproxLogoWithImagick(string $qrPngBytes, int $pixelSize, float $logoBoxRatio): string
-    {
-        $logoPath = self::winproxLogoPath();
+    private static function overlayCenterLogoWithImagick(
+        string $qrPngBytes,
+        int $pixelSize,
+        float $logoBoxRatio,
+        ?string $centerLogoPath,
+    ): string {
+        $logoPath = self::resolveCenterLogoPath($centerLogoPath);
         if (! is_file($logoPath)) {
             throw new RuntimeException('WinProx logo image is missing.');
         }
@@ -177,7 +203,7 @@ final class QrCodePngWriter
         $qr = new Imagick;
         $qr->readImageBlob($qrPngBytes);
 
-        [$boxX, $boxY, $boxSize, , , $targetW, $targetH] = self::logoPlacement($pixelSize, $logoBoxRatio);
+        [$boxX, $boxY, $boxSize, , , $targetW, $targetH] = self::logoPlacement($pixelSize, $logoBoxRatio, $logoPath);
 
         $background = new Imagick;
         $background->newImage($boxSize, $boxSize, new \ImagickPixel('white'));
@@ -213,9 +239,12 @@ final class QrCodePngWriter
     /**
      * @return array{int, int, int, int, int, int, int}
      */
-    private static function logoPlacement(int $pixelSize, float $logoBoxRatio = self::LOGO_BOX_RATIO): array
-    {
-        $logoPath = self::winproxLogoPath();
+    private static function logoPlacement(
+        int $pixelSize,
+        float $logoBoxRatio = self::LOGO_BOX_RATIO,
+        ?string $logoPath = null,
+    ): array {
+        $logoPath = self::resolveCenterLogoPath($logoPath);
         $logoWidth = 1;
         $logoHeight = 1;
 
@@ -241,9 +270,18 @@ final class QrCodePngWriter
         return [$boxX, $boxY, $boxSize, $destX, $destY, $targetW, $targetH];
     }
 
-    private static function winproxLogoPath(): string
+    public static function winproxLogoPath(): string
     {
         return public_path('images/Winprox_logo_200.png');
+    }
+
+    private static function resolveCenterLogoPath(?string $centerLogoPath): string
+    {
+        if ($centerLogoPath !== null && $centerLogoPath !== '' && is_file($centerLogoPath)) {
+            return $centerLogoPath;
+        }
+
+        return self::winproxLogoPath();
     }
 
     /**

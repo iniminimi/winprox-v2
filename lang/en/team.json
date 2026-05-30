@@ -3,7 +3,10 @@
     "subtitle": "Manage colleague users, teams and workers.",
     "org": {
         "title": "Organisation",
-        "name_label": "Organisation name"
+        "name_label": "Organisation name",
+        "logo_label": "Organisation logo",
+        "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB).",
+        "logo_current": "Current logo"
     },
     "colleagues": {
         "title": "Colleague users",

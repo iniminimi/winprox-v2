@@ -49,7 +49,7 @@ final class Avery55x55WordStickerSheetBuilder
     /**
      * @param  list<QrStickerEntry>  $entries
      */
-    public function build(array $entries, string $headline): string
+    public function build(array $entries, string $headline, ?string $centerLogoPath = null): string
     {
         $phpWord = new PhpWord;
         $phpWord->setDefaultFontName('Arial');
@@ -62,7 +62,7 @@ final class Avery55x55WordStickerSheetBuilder
         try {
             foreach ($pages as $pageIndex => $pageEntries) {
                 $section = $phpWord->addSection(self::sectionStyle($pageIndex > 0));
-                $this->addStickerTable($section, $pageEntries, $headline, $tempFiles);
+                $this->addStickerTable($section, $pageEntries, $headline, $tempFiles, $centerLogoPath);
             }
 
             return $this->saveToString($phpWord);
@@ -79,7 +79,13 @@ final class Avery55x55WordStickerSheetBuilder
      * @param  list<QrStickerEntry>  $pageEntries
      * @param  list<string>  $tempFiles
      */
-    private function addStickerTable(\PhpOffice\PhpWord\Element\Section $section, array $pageEntries, string $headline, array &$tempFiles): void
+    private function addStickerTable(
+        \PhpOffice\PhpWord\Element\Section $section,
+        array $pageEntries,
+        string $headline,
+        array &$tempFiles,
+        ?string $centerLogoPath = null,
+    ): void {
     {
         $table = $section->addTable([
             'alignment' => JcTable::START,
@@ -123,7 +129,7 @@ final class Avery55x55WordStickerSheetBuilder
                     'spaceBefore' => 0,
                 ]);
 
-                $pngPath = $this->writeTempQrPng($entry->reportUrl, $tempFiles);
+                $pngPath = $this->writeTempQrPng($entry->reportUrl, $tempFiles, $centerLogoPath);
                 $cell->addImage($pngPath, [
                     'width' => self::mmToPoint(self::QR_IMAGE_MM),
                     'height' => self::mmToPoint(self::QR_IMAGE_MM),
@@ -161,7 +167,7 @@ final class Avery55x55WordStickerSheetBuilder
     /**
      * @param  list<string>  $tempFiles
      */
-    private function writeTempQrPng(string $reportUrl, array &$tempFiles): string
+    private function writeTempQrPng(string $reportUrl, array &$tempFiles, ?string $centerLogoPath = null): string
     {
         $path = tempnam(sys_get_temp_dir(), 'wp-qr-');
         if ($path === false) {
@@ -171,7 +177,7 @@ final class Avery55x55WordStickerSheetBuilder
         $pngPath = $path.'.png';
         @unlink($path);
         $renderPx = max(480, self::mmToPixel(self::QR_IMAGE_MM) * 3);
-        QrCodePngWriter::writeFileForStickerSheet($reportUrl, $pngPath, $renderPx);
+        QrCodePngWriter::writeFileForStickerSheet($reportUrl, $pngPath, $renderPx, $centerLogoPath);
         $tempFiles[] = $pngPath;
 
         return $pngPath;

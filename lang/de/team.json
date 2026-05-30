@@ -3,7 +3,10 @@
     "subtitle": "Verwalten Sie Kollegenkonten, Teams und Mitarbeiter.",
     "org": {
         "title": "Organisation",
-        "name_label": "Organisationsname"
+        "name_label": "Organisationsname",
+        "logo_label": "Organisationslogo",
+        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
+        "logo_current": "Aktuelles Logo"
     },
     "colleagues": {
         "title": "Kollegenkonten",

@@ -3,7 +3,10 @@
     "subtitle": "Gérez les utilisateurs collègues, les équipes et les intervenants.",
     "org": {
         "title": "Organisation",
-        "name_label": "Nom de l'organisation"
+        "name_label": "Nom de l'organisation",
+        "logo_label": "Logo de l'organisation",
+        "logo_hint": "Affiché au centre des autocollants QR (PNG/JPG, max. 2 Mo).",
+        "logo_current": "Logo actuel"
     },
     "colleagues": {
         "title": "Utilisateurs collègues",

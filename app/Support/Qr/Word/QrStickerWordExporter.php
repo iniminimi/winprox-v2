@@ -38,11 +38,13 @@ final class QrStickerWordExporter
             );
         }
 
+        $location->loadMissing('tenant');
         $entries = LocationQrPackStickerEntries::forLocation($location);
         $headline = __('locations.qr_pack.headline');
+        $centerLogoPath = $location->tenant?->centerLogoAbsolutePath();
 
         return match ($template) {
-            QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $headline),
+            QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $headline, $centerLogoPath),
         };
     }
 }

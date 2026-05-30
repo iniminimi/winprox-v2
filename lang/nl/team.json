@@ -3,7 +3,10 @@
     "subtitle": "Beheer collega-gebruikers, teams en uitvoerders.",
     "org": {
         "title": "Organisatie",
-        "name_label": "Organisatienaam"
+        "name_label": "Organisatienaam",
+        "logo_label": "Organisatielogo",
+        "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB).",
+        "logo_current": "Huidig logo"
     },
     "colleagues": {
         "title": "Collega-gebruikers",
