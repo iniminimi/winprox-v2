@@ -7,13 +7,9 @@
             </div>
             <p class="wp-muted">{{ __('locations.announcements.subtitle') }}</p>
         </div>
-        <div class="wp-cluster">
-            <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-                   placeholder="{{ __('locations.announcements.search_placeholder') }}">
-            <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
-                {{ __('locations.announcements.add') }}
-            </button>
-        </div>
+        <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
+            {{ __('locations.announcements.add') }}
+        </button>
     </div>
 
     <div class="wp-list">

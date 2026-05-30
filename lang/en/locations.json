@@ -107,7 +107,8 @@
     },
     "qr_pack": {
         "headline": "Report an issue",
-        "unavailable": "QR export is unavailable on this server."
+        "unavailable": "QR export is unavailable on this server.",
+        "no_units": "There are no units yet to build a QR sticker sheet."
     },
     "documents": {
         "title": "Documents",
@@ -153,7 +154,6 @@
         "add": "Add announcement",
         "edit": "Edit announcement",
         "empty": "No announcements yet.",
-        "search_placeholder": "Search announcements…",
         "modal_subtitle": "Write a message and optionally link it to a unit.",
         "body": "Message",
         "link_unit": "Link to unit (optional)",

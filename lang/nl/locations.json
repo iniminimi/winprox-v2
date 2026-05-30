@@ -107,7 +107,8 @@
     },
     "qr_pack": {
         "headline": "Melding doorgeven",
-        "unavailable": "QR-export is niet beschikbaar op deze server."
+        "unavailable": "QR-export is niet beschikbaar op deze server.",
+        "no_units": "Er zijn nog geen units om een QR-stickerblad te maken."
     },
     "documents": {
         "title": "Documenten",
@@ -153,7 +154,6 @@
         "add": "Mededeling toevoegen",
         "edit": "Mededeling bewerken",
         "empty": "Nog geen mededelingen.",
-        "search_placeholder": "Mededelingen zoeken…",
         "modal_subtitle": "Schrijf een bericht en koppel het optioneel aan een unit.",
         "body": "Bericht",
         "link_unit": "Koppelen aan unit (optioneel)",

@@ -107,7 +107,8 @@
     },
     "qr_pack": {
         "headline": "Signaler un problème",
-        "unavailable": "L'export QR n'est pas disponible sur ce serveur."
+        "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
+        "no_units": "Il n'y a pas encore d'unités pour créer une planche QR."
     },
     "documents": {
         "title": "Documents",
@@ -153,7 +154,6 @@
         "add": "Ajouter une annonce",
         "edit": "Modifier l'annonce",
         "empty": "Aucune annonce pour le moment.",
-        "search_placeholder": "Rechercher des annonces…",
         "modal_subtitle": "Rédigez un message et liez-le éventuellement à une unité.",
         "body": "Message",
         "link_unit": "Lier à une unité (optionnel)",

@@ -29,8 +29,6 @@ class Announcements extends Component
 
     public string $expiresAt = '';
 
-    public string $search = '';
-
     public function mount(Location $location): void
     {
         $this->authorize('view', $location);
@@ -159,13 +157,6 @@ class Announcements extends Component
         $announcements = Announcement::query()
             ->where('tenant_id', $tenantId)
             ->where('location_id', $this->location->id)
-            ->when(trim($this->search) !== '', function ($query) {
-                $search = '%'.trim($this->search).'%';
-                $query->where(function ($subQuery) use ($search) {
-                    $subQuery->where('title', 'like', $search)
-                        ->orWhere('body', 'like', $search);
-                });
-            })
             ->with('unit:id,name')
             ->latest()
             ->get();

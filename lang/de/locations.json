@@ -107,7 +107,8 @@
     },
     "qr_pack": {
         "headline": "Meldung senden",
-        "unavailable": "QR-Export ist auf diesem Server nicht verfügbar."
+        "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
+        "no_units": "Es gibt noch keine Units für einen QR-Etikettenbogen."
     },
     "documents": {
         "title": "Dokumente",
@@ -153,7 +154,6 @@
         "add": "Mitteilung hinzufügen",
         "edit": "Mitteilung bearbeiten",
         "empty": "Noch keine Mitteilungen.",
-        "search_placeholder": "Mitteilungen suchen…",
         "modal_subtitle": "Nachricht schreiben und optional mit einer Unit verknüpfen.",
         "body": "Nachricht",
         "link_unit": "Mit Unit verknüpfen (optional)",
