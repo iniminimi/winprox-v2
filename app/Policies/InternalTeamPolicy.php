@@ -37,4 +37,10 @@ class InternalTeamPolicy
     {
         return $user->tenant_id === $team->tenant_id && $user->isAdmin();
     }
+
+    /** Inhoud + workers beheren (admin of medewerker). */
+    public function manageContent(User $user): bool
+    {
+        return $user->is_superuser || ($user->tenant_id !== null && ($user->isAdmin() || $user->isEmployee()));
+    }
 }

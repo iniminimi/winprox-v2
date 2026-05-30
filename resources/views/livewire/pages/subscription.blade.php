@@ -74,7 +74,7 @@
                            class="btn btn--primary btn--block">
                             {{ __('subscription.enterprise_cta') }}
                         </a>
-                    @elseif (auth()->user()?->isAdmin())
+                    @elseif ($tenant && auth()->user()?->can('manageSubscription', $tenant))
                         @if (! config('stripe.enabled') || ! app(\App\Services\Billing\StripeCheckoutService::class)->isConfiguredForPlan($planKey))
                             <p class="wp-hint">{{ __('subscription.stripe.simulated_hint') }}</p>
                         @endif

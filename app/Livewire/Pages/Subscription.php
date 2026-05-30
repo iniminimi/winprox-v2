@@ -7,6 +7,7 @@ use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Http\Requests\Billing\ActivateSubscriptionPlanRequest;
 use App\Models\Tenant;
 use App\Services\Billing\StripeCheckoutService;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,6 +16,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Subscription extends Component
 {
+    use AuthorizesRequests;
+
     public ?string $selectedPlan = null;
 
     public ?string $statusMessage = null;
@@ -36,14 +39,14 @@ class Subscription extends Component
     {
         $this->statusMessage = null;
 
-        if (! auth()->user()?->isAdmin()) {
-            $this->addError('plan', __('subscription.errors.admin_only'));
-
+        $tenant = auth()->user()->tenant;
+        if (! $tenant instanceof Tenant) {
             return;
         }
 
-        $tenant = auth()->user()->tenant;
-        if (! $tenant instanceof Tenant) {
+        if (! auth()->user()->can('manageSubscription', $tenant)) {
+            $this->addError('plan', __('subscription.errors.admin_only'));
+
             return;
         }
 
@@ -61,7 +64,12 @@ class Subscription extends Component
     {
         $this->statusMessage = null;
 
-        if (! auth()->user()?->isAdmin()) {
+        $tenant = auth()->user()->tenant;
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        if (! auth()->user()->can('manageSubscription', $tenant)) {
             $this->addError('plan', __('subscription.errors.admin_only'));
 
             return;
@@ -84,12 +92,6 @@ class Subscription extends Component
         if (! config('billing.allow_tenant_self_activation', true)) {
             $this->addError('plan', __('subscription.errors.activation_disabled'));
 
-            return;
-        }
-
-        $tenant = auth()->user()->tenant;
-
-        if (! $tenant instanceof Tenant) {
             return;
         }
 

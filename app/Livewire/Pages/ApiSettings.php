@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Webhooks\DeleteWebhookEndpointAction;
+use App\Actions\Webhooks\SetWebhookEndpointActiveAction;
 use App\Actions\Webhooks\StoreWebhookEndpointAction;
 use App\Models\WebhookDelivery;
 use App\Models\WebhookEndpoint;
@@ -28,12 +30,12 @@ class ApiSettings extends Component
 
     public function mount(): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
+        $this->authorize('viewAny', WebhookEndpoint::class);
     }
 
     public function saveEndpoint(StoreWebhookEndpointAction $store): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
+        $this->authorize('create', WebhookEndpoint::class);
 
         $validated = $this->validate([
             'endpointUrl' => ['required', 'url', 'max:500'],
@@ -51,24 +53,25 @@ class ApiSettings extends Component
         $this->reset(['endpointUrl', 'endpointEvents', 'endpointDescription']);
     }
 
-    public function toggleEndpoint(int $id): void
+    public function toggleEndpoint(int $id, SetWebhookEndpointActiveAction $setActive): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
-
         $endpoint = WebhookEndpoint::query()->findOrFail($id);
-        $endpoint->update(['is_active' => ! $endpoint->is_active]);
+        $this->authorize('update', $endpoint);
+
+        $setActive->handle($endpoint, ! $endpoint->is_active, (int) auth()->id());
     }
 
-    public function deleteEndpoint(int $id): void
+    public function deleteEndpoint(int $id, DeleteWebhookEndpointAction $delete): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
+        $endpoint = WebhookEndpoint::query()->findOrFail($id);
+        $this->authorize('delete', $endpoint);
 
-        WebhookEndpoint::query()->whereKey($id)->delete();
+        $delete->handle($endpoint, (int) auth()->id());
     }
 
     public function createToken(): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
+        $this->authorize('manageApiTokens', WebhookEndpoint::class);
 
         $this->validate(['newTokenName' => ['required', 'string', 'max:80']]);
 
@@ -79,7 +82,7 @@ class ApiSettings extends Component
 
     public function revokeToken(int $tokenId): void
     {
-        abort_unless(auth()->user()?->isAdmin(), 403);
+        $this->authorize('manageApiTokens', WebhookEndpoint::class);
 
         auth()->user()->tokens()->whereKey($tokenId)->delete();
     }

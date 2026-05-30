@@ -20,9 +20,11 @@ use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -41,6 +43,7 @@ use Livewire\WithFileUploads;
 #[Title('WinProx')]
 class Team extends Component
 {
+    use AuthorizesRequests;
     use WithFileUploads;
 
     // Organisatie
@@ -73,21 +76,16 @@ class Team extends Component
         $this->orgName = (string) (auth()->user()->tenant?->name ?? '');
     }
 
-    private function ensureAdmin(): void
-    {
-        abort_unless(auth()->user()->isAdmin(), 403);
-    }
-
     // --- Organisatie (alleen admin) ---------------------------------------
 
     public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
     {
-        $this->ensureAdmin();
-
         $tenant = auth()->user()->tenant;
-        if ($tenant === null) {
+        if (! $tenant instanceof Tenant) {
             return;
         }
+
+        $this->authorize('manageOrganisation', $tenant);
 
         $request = new UpdateOrganisationRequest;
         $rules = ['orgName' => $request->rules()['name']];
@@ -117,7 +115,7 @@ class Team extends Component
 
     public function openCreateColleague(): void
     {
-        $this->ensureAdmin();
+        $this->authorize('create', User::class);
         $this->resetColleagueForm();
         $this->editingColleagueId = null;
         $this->showColleagueModal = true;
@@ -125,8 +123,8 @@ class Team extends Component
 
     public function openEditColleague(int $id): void
     {
-        $this->ensureAdmin();
         $user = User::where('tenant_id', Tenancy::id())->findOrFail($id);
+        $this->authorize('update', $user);
 
         $this->editingColleagueId = $user->id;
         $this->colleagueName = $user->name;
@@ -138,10 +136,9 @@ class Team extends Component
 
     public function saveColleague(CreateColleagueAction $createColleague, UpdateColleagueAction $updateColleague): void
     {
-        $this->ensureAdmin();
-
         if ($this->editingColleagueId !== null) {
             $user = User::where('tenant_id', Tenancy::id())->findOrFail($this->editingColleagueId);
+            $this->authorize('update', $user);
 
             $request = new UpdateColleagueRequest;
             $request->userId = $user->id;
@@ -149,6 +146,8 @@ class Team extends Component
 
             $updateColleague->handle($user, $validated);
         } else {
+            $this->authorize('create', User::class);
+
             $request = new StoreColleagueRequest;
             $validated = $this->validateColleague($request->rules(), $request->messages());
 
@@ -202,14 +201,12 @@ class Team extends Component
 
     public function setColleagueActive(int $id, bool $active, SetColleagueActiveAction $setActive): void
     {
-        $this->ensureAdmin();
-
-        // Voorkom dat je je eigen account buitensluit.
         if ($id === auth()->id()) {
             return;
         }
 
         $user = User::where('tenant_id', Tenancy::id())->findOrFail($id);
+        $this->authorize('update', $user);
         $setActive->handle($user, $active);
     }
 
@@ -265,7 +262,7 @@ class Team extends Component
             Gate::authorize('update', $team);
 
             // Actief-status wijzigen mag alleen een admin (= deactiveren-recht).
-            $active = auth()->user()->isAdmin() ? $this->teamIsActive : $team->is_active;
+            $active = auth()->user()->can('deactivate', $team) ? $this->teamIsActive : $team->is_active;
 
             $updateTeam->handle($team, [
                 'name' => $validated['teamName'],
@@ -378,7 +375,7 @@ class Team extends Component
     public function render()
     {
         $user = auth()->user();
-        $canManageUsers = $user->isAdmin();
+        $canManageUsers = $user->can('create', User::class);
 
         $colleagues = $canManageUsers
             ? User::where('tenant_id', Tenancy::id())
@@ -396,8 +393,8 @@ class Team extends Component
             'colleagues' => $colleagues,
             'teams' => $teams,
             'canManageUsers' => $canManageUsers,
-            'canManageTeams' => $user->isAdmin(),
-            'canEditContent' => $user->isAdmin() || $user->isEmployee(),
+            'canManageTeams' => $user->can('create', InternalTeam::class),
+            'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'roles' => User::ROLES,
         ]);
     }
