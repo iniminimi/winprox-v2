@@ -10,7 +10,9 @@
         "locations": "Standorte",
         "units": "Units",
         "new_issues": "Neue Meldungen",
-        "open_tasks": "Offene Aufgaben"
+        "open_tasks": "Offene Aufgaben",
+        "meta_total": "Gesamt",
+        "meta_in_progress": "In Bearbeitung"
     },
     "recent": {
         "title": "Aktuelle Meldungen",

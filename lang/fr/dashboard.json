@@ -10,7 +10,9 @@
         "locations": "Sites",
         "units": "Unités",
         "new_issues": "Nouveaux signalements",
-        "open_tasks": "Tâches ouvertes"
+        "open_tasks": "Tâches ouvertes",
+        "meta_total": "Total",
+        "meta_in_progress": "En cours"
     },
     "recent": {
         "title": "Signalements récents",

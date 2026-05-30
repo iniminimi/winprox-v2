@@ -13,6 +13,7 @@ class EnsureTenantHasAppAccess
         'subscription.*',
         'faq.*',
         'contact.*',
+        'account.*',
         'legal.*',
         'logout',
         'livewire.*',

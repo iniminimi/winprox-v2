@@ -20,10 +20,10 @@
             'open_tasks' => route('tasks.index', ['status' => 'in_progress']),
         ];
         $kpis = [
-            ['key' => 'locations', 'icon' => 'locations', 'label' => 'dashboard.kpi.locations'],
-            ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units'],
-            ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues'],
-            ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks'],
+            ['key' => 'locations', 'icon' => 'locations', 'label' => 'dashboard.kpi.locations', 'meta' => 'dashboard.kpi.meta_total'],
+            ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units', 'meta' => 'dashboard.kpi.meta_total'],
+            ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null],
+            ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => 'dashboard.kpi.meta_in_progress'],
         ];
         $highlightCutoff = now()->subHours(3);
     @endphp
@@ -31,13 +31,22 @@
     <div class="wp-kpis">
         @foreach ($kpis as $kpi)
             <a href="{{ $kpiLinks[$kpi['key']] }}"
-               class="wp-kpi @if ($kpi['key'] === 'new_issues' && $stats['new_issues'] > 0) wp-kpi--alert @endif"
+               class="wp-kpi wp-kpi--{{ $kpi['key'] }} @if ($kpi['key'] === 'new_issues' && $stats['new_issues'] > 0) wp-kpi--alert @endif"
                wire:key="kpi-{{ $kpi['key'] }}">
-                <span class="wp-kpi-icon">
-                    <x-wp-icon :name="$kpi['icon']" />
-                </span>
-                <span class="wp-kpi-value wp-tabular">{{ $stats[$kpi['key']] }}</span>
-                <span class="wp-kpi-label">{{ __($kpi['label']) }}</span>
+                <div class="wp-kpi-body">
+                    <div class="wp-kpi-main">
+                        <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                        <p class="wp-kpi-stats">
+                            <span class="wp-kpi-value wp-tabular">{{ $stats[$kpi['key']] }}</span>
+                            @if ($kpi['meta'])
+                                <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
+                            @endif
+                        </p>
+                    </div>
+                    <span class="wp-kpi-icon" aria-hidden="true">
+                        <x-wp-icon :name="$kpi['icon']" />
+                    </span>
+                </div>
             </a>
         @endforeach
     </div>
@@ -71,7 +80,4 @@
         </div>
     </div>
 
-    @if (file_exists(public_path('images/Winprox_logo_200.png')))
-        <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="WinProx" class="wp-brand-float" width="80" height="80" />
-    @endif
 </div>

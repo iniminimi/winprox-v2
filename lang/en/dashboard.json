@@ -10,7 +10,9 @@
         "locations": "Locations",
         "units": "Units",
         "new_issues": "New issues",
-        "open_tasks": "Open tasks"
+        "open_tasks": "Open tasks",
+        "meta_total": "Total",
+        "meta_in_progress": "In progress"
     },
     "recent": {
         "title": "Recent issues",

@@ -31,8 +31,10 @@
     <div class="wp-app" x-data="{ nav: false, help: false }">
         <aside class="wp-sidebar" :class="{ 'is-open': nav }">
             <div class="wp-sidebar-head">
-                <span class="wp-sidebar-tenant-label">{{ __('common.app.workspace') }}</span>
-                <span class="wp-sidebar-tenant">{{ auth()->user()->tenant?->name ?? __('common.app.platform') }}</span>
+                <span class="wp-sidebar-brand">WinProx</span>
+                @if (auth()->user()?->tenant?->name)
+                    <span class="wp-sidebar-tenant">{{ auth()->user()->tenant->name }}</span>
+                @endif
             </div>
 
             <nav class="wp-sidebar-nav" aria-label="{{ __('common.nav.label') }}">
@@ -63,31 +65,34 @@
 
             <div class="wp-sidebar-foot">
                 @include('partials.wp-lang-switch', ['variant' => 'sidebar'])
+
+                @auth
+                    <div class="wp-sidebar-user">
+                        <p class="wp-sidebar-user-name">{{ auth()->user()->name }}</p>
+                        @if (auth()->user()->tenant?->name)
+                            <p class="wp-sidebar-user-meta">{{ auth()->user()->tenant->name }}</p>
+                        @endif
+                        <p class="wp-sidebar-user-meta">{{ auth()->user()->email }}</p>
+                        <form method="POST" action="{{ route('logout') }}" class="wp-sidebar-logout-form">
+                            @csrf
+                            <button type="submit" class="wp-sidebar-logout">{{ __('common.button.logout') }}</button>
+                        </form>
+                    </div>
+                @endauth
             </div>
         </aside>
 
         <div class="wp-sidebar-scrim" :class="{ 'is-open': nav }" @click="nav = false" aria-hidden="true"></div>
 
+        <button type="button" class="wp-nav-toggle-fixed btn btn--ghost btn--sm" @click="nav = !nav" aria-label="{{ __('common.nav.label') }}">
+            <x-wp-icon name="menu" class="wp-icon" />
+        </button>
+
+        <a href="{{ route('dashboard') }}" class="wp-brand-float" aria-label="WinProx">
+            <img src="{{ asset('images/qr/svg/A6_winprox_logo.svg') }}" alt="" width="72" height="40" class="wp-brand-float-img">
+        </a>
+
         <div class="wp-content">
-            <header class="wp-content-top">
-                <button type="button" class="wp-nav-toggle btn btn--ghost btn--sm" @click="nav = !nav" aria-label="{{ __('common.nav.label') }}">
-                    <x-wp-icon name="dashboard" class="wp-icon" />
-                </button>
-
-                <div class="wp-content-top-right">
-                    @auth
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="btn btn--ghost btn--sm">
-                                <x-wp-icon name="logout" class="wp-icon" />
-                                <span>{{ __('common.button.logout') }}</span>
-                            </button>
-                        </form>
-                    @endauth
-                    <a href="{{ route('dashboard') }}" class="wp-brand">WinProx</a>
-                </div>
-            </header>
-
             <main class="wp-main">
                 {{ $slot }}
             </main>

@@ -10,7 +10,9 @@
         "locations": "Locaties",
         "units": "Units",
         "new_issues": "Nieuwe meldingen",
-        "open_tasks": "Open taken"
+        "open_tasks": "Open taken",
+        "meta_total": "Totaal",
+        "meta_in_progress": "In uitvoering"
     },
     "recent": {
         "title": "Recente meldingen",

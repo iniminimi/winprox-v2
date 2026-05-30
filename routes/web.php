@@ -4,6 +4,7 @@ use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\Locations\LocationQrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
@@ -87,6 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/subscription', Subscription::class)->name('subscription.index');
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');
+    Route::get('/account/data-export', UserDataExportController::class)->name('account.data-export');
 
     Route::post('/logout', function () {
         Auth::logout();
