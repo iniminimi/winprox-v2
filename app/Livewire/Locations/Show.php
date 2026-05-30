@@ -92,7 +92,7 @@ class Show extends Component
     {
         $this->authorize('update', $this->location);
         $validated = $this->validate(UpdateLocationRequest::ruleSet());
-        $this->location = $updateLocation->handle($this->location, $validated);
+        $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
         $this->showLocationModal = false;
         session()->flash('success', __('locations.flash.updated'));
     }

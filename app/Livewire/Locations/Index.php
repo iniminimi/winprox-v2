@@ -98,13 +98,13 @@ class Index extends Component
         if ($this->editingLocationId === null) {
             $this->authorize('create', Location::class);
             $validated = $this->validate(StoreLocationRequest::ruleSet());
-            $createLocation->handle($validated, (int) auth()->user()->tenant_id);
+            $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
             session()->flash('success', __('locations.flash.created'));
         } else {
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('update', $location);
             $validated = $this->validate(UpdateLocationRequest::ruleSet());
-            $updateLocation->handle($location, $validated);
+            $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }
 

@@ -3,21 +3,24 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Str;
 
 class CreateLocationAction
 {
+    public function __construct(private AuditRecorder $audit) {}
+
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(array $data, int $tenantId): Location
+    public function handle(array $data, int $tenantId, ?int $actorUserId = null): Location
     {
         $name = trim((string) ($data['name'] ?? ''));
         if ($name === '') {
             $name = trim((string) ($data['street'] ?? '')) ?: __('locations.default_name');
         }
 
-        return Location::create([
+        $location = Location::create([
             'tenant_id' => $tenantId,
             'name' => $name,
             'street' => $this->nullableString($data['street'] ?? null),
@@ -30,6 +33,17 @@ class CreateLocationAction
             'location_qr_token' => Str::lower(Str::random(40)),
             'is_active' => true,
         ]);
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: $tenantId,
+            action: 'location.created',
+            modelType: Location::class,
+            modelId: (int) $location->id,
+            payload: ['id' => $location->id, 'name' => $location->name],
+        );
+
+        return $location;
     }
 
     private function nullableString(mixed $value): ?string

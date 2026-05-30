@@ -51,7 +51,7 @@ class IssueController extends Controller
         $teamIds = $validated['team_ids'] ?? [];
         unset($validated['team_ids']);
 
-        $issue = $create->handle($validated, $teamIds);
+        $issue = $create->handle($validated, $teamIds, $request->user()->id);
         $issue->load('tasks');
 
         return $this->item(new IssueResource($issue), 201);

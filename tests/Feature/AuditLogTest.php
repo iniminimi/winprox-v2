@@ -44,3 +44,22 @@ it('schrijft approved_by als user_id bij issue.approved', function () {
     expect($log)->not->toBeNull()
         ->and($log->user_id)->toBe($admin->id);
 });
+
+it('schrijft audit bij organisatie-update', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    app(\App\Actions\Team\UpdateOrganisationAction::class)->handle(
+        $tenant,
+        ['name' => 'Nieuwe Naam BV'],
+        $admin->id,
+    );
+
+    $log = AuditLog::query()
+        ->where('action', 'tenant.organisation_updated')
+        ->where('tenant_id', $tenant->id)
+        ->first();
+
+    expect($log)->not->toBeNull()
+        ->and($log->user_id)->toBe($admin->id);
+});

@@ -11,7 +11,7 @@ class TaskCompleted implements WebhookEvent
 {
     use Dispatchable, SerializesModels;
 
-    public function __construct(public Task $task) {}
+    public function __construct(public Task $task, public ?int $actorUserId = null) {}
 
     public function webhookEventName(): string
     {
@@ -20,12 +20,19 @@ class TaskCompleted implements WebhookEvent
 
     public function webhookPayload(): array
     {
-        return [
+        $payload = [
             'id' => $this->task->id,
             'issue_id' => $this->task->issue_id,
             'status' => $this->task->status->value,
             'completed_at' => optional($this->task->completed_at)->toIso8601String(),
         ];
+
+        if ($this->actorUserId !== null) {
+            $payload['actor_user_id'] = $this->actorUserId;
+            $payload['user_id'] = $this->actorUserId;
+        }
+
+        return $payload;
     }
 
     public function webhookTenantId(): int

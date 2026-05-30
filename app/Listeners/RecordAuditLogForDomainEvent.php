@@ -47,6 +47,11 @@ class RecordAuditLogForDomainEvent
         return match (true) {
             str_starts_with($eventName, 'issue.') => [Issue::class, $id],
             str_starts_with($eventName, 'task.') => [Task::class, $id],
+            str_starts_with($eventName, 'location.') => [\App\Models\Location::class, $id],
+            str_starts_with($eventName, 'user.') => [\App\Models\User::class, $payload['id'] ?? $id],
+            str_starts_with($eventName, 'tenant.') => [\App\Models\Tenant::class, $id],
+            str_starts_with($eventName, 'subscription.') => [\App\Models\Tenant::class, $id],
+            str_starts_with($eventName, 'webhook_endpoint.') => [\App\Models\WebhookEndpoint::class, $id],
             default => [null, $id],
         };
     }

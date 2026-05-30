@@ -4,6 +4,7 @@ namespace App\Actions\Team;
 
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 
@@ -18,10 +19,12 @@ use Illuminate\Support\Str;
  */
 class CreateColleagueAction
 {
+    public function __construct(private AuditRecorder $audit) {}
+
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(array $data, int $tenantId): User
+    public function handle(array $data, int $tenantId, ?int $actorUserId = null): User
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
         $tenant->assertCanAddUsers(1);
@@ -39,6 +42,15 @@ class CreateColleagueAction
         ]);
 
         Password::sendResetLink(['email' => $user->email]);
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: $tenantId,
+            action: 'user.colleague_created',
+            modelType: User::class,
+            modelId: (int) $user->id,
+            payload: ['id' => $user->id, 'email' => $user->email, 'role' => $user->role],
+        );
 
         return $user;
     }

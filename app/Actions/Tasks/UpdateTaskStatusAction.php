@@ -4,6 +4,8 @@ namespace App\Actions\Tasks;
 
 use App\Actions\Issues\AddIssueUpdateAction;
 use App\Enums\TaskStatus;
+use App\Events\Tasks\TaskCompleted;
+use App\Events\Tasks\TaskStarted;
 use App\Models\Task;
 use App\Models\User;
 use App\Support\Tasks\TaskStatusTransitions;
@@ -66,8 +68,19 @@ class UpdateTaskStatusAction
 
         $task->update($updates);
 
-        $task->issue->recalculateStatus();
+        $fresh = $task->fresh();
+        $actorId = $actor?->id;
 
-        return $task->fresh();
+        if ($status === TaskStatus::InProgress && $from !== TaskStatus::InProgress) {
+            event(new TaskStarted($fresh, $actorId));
+        }
+
+        if ($status === TaskStatus::Done && $from !== TaskStatus::Done) {
+            event(new TaskCompleted($fresh, $actorId));
+        }
+
+        $fresh->issue->recalculateStatus();
+
+        return $fresh;
     }
 }

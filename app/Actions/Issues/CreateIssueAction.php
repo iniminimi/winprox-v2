@@ -18,7 +18,7 @@ class CreateIssueAction
      * @param  array<string, mixed>  $data
      * @param  array<int>  $teamIds  interne teams die elk een taak krijgen
      */
-    public function handle(array $data, array $teamIds = []): Issue
+    public function handle(array $data, array $teamIds = [], ?int $actorUserId = null): Issue
     {
         $source = IssueSource::tryFrom((string) ($data['source'] ?? IssueSource::Manager->value))
             ?? IssueSource::Manager;
@@ -35,7 +35,7 @@ class CreateIssueAction
             ...$recurring,
         ]);
 
-        event(new IssueCreated($issue));
+        event(new IssueCreated($issue, $actorUserId));
 
         foreach ($teamIds as $teamId) {
             $this->createTask->handle($issue, $teamId);

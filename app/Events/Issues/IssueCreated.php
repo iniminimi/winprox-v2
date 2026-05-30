@@ -11,7 +11,7 @@ class IssueCreated implements WebhookEvent
 {
     use Dispatchable, SerializesModels;
 
-    public function __construct(public Issue $issue) {}
+    public function __construct(public Issue $issue, public ?int $actorUserId = null) {}
 
     public function webhookEventName(): string
     {
@@ -20,7 +20,7 @@ class IssueCreated implements WebhookEvent
 
     public function webhookPayload(): array
     {
-        return [
+        $payload = [
             'id' => $this->issue->id,
             'status' => $this->issue->status->value,
             'location_id' => $this->issue->location_id,
@@ -28,6 +28,13 @@ class IssueCreated implements WebhookEvent
             'approved' => $this->issue->isApproved(),
             'created_at' => optional($this->issue->created_at)->toIso8601String(),
         ];
+
+        if ($this->actorUserId !== null) {
+            $payload['actor_user_id'] = $this->actorUserId;
+            $payload['user_id'] = $this->actorUserId;
+        }
+
+        return $payload;
     }
 
     public function webhookTenantId(): int

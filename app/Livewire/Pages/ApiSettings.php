@@ -46,7 +46,7 @@ class ApiSettings extends Component
             'url' => $validated['endpointUrl'],
             'events' => $validated['endpointEvents'],
             'description' => $validated['endpointDescription'] ?: null,
-        ], (int) Tenancy::id());
+        ], (int) Tenancy::id(), (int) auth()->id());
 
         $this->reset(['endpointUrl', 'endpointEvents', 'endpointDescription']);
     }

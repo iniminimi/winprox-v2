@@ -3,13 +3,16 @@
 namespace App\Actions\Locations;
 
 use App\Models\Location;
+use App\Support\Audit\AuditRecorder;
 
 class UpdateLocationAction
 {
+    public function __construct(private AuditRecorder $audit) {}
+
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(Location $location, array $data): Location
+    public function handle(Location $location, array $data, ?int $actorUserId = null): Location
     {
         $name = trim((string) ($data['name'] ?? $location->name));
 
@@ -23,7 +26,18 @@ class UpdateLocationAction
             'notes' => $this->nullableString($data['notes'] ?? null),
         ]);
 
-        return $location->fresh();
+        $fresh = $location->fresh();
+
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: (int) $fresh->tenant_id,
+            action: 'location.updated',
+            modelType: Location::class,
+            modelId: (int) $fresh->id,
+            payload: ['id' => $fresh->id, 'name' => $fresh->name],
+        );
+
+        return $fresh;
     }
 
     private function nullableString(mixed $value): ?string

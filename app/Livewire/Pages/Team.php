@@ -27,7 +27,10 @@ use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use App\Support\TenantLogoStorage;
+use Illuminate\Http\UploadedFile;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 /**
  * Team-hub (V2-spec §6): collega-gebruikers + organisatie (alleen admin),
@@ -38,8 +41,13 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Team extends Component
 {
+    use WithFileUploads;
+
     // Organisatie
     public string $orgName = '';
+
+    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    public $orgLogo = null;
 
     // Collega-gebruiker (modal)
     public bool $showColleagueModal = false;
@@ -72,7 +80,7 @@ class Team extends Component
 
     // --- Organisatie (alleen admin) ---------------------------------------
 
-    public function saveOrganisation(UpdateOrganisationAction $updateOrganisation): void
+    public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
     {
         $this->ensureAdmin();
 
@@ -82,12 +90,25 @@ class Team extends Component
         }
 
         $request = new UpdateOrganisationRequest;
+        $rules = ['orgName' => $request->rules()['name']];
+        if ($this->orgLogo !== null) {
+            $rules['orgLogo'] = ['nullable', 'image', 'max:2048'];
+        }
+
         $validated = $this->validate(
-            ['orgName' => $request->rules()['name']],
+            $rules,
             ['orgName.required' => __('team.errors.organisation_name_required')],
         );
 
-        $updateOrganisation->handle($tenant, ['name' => $validated['orgName']]);
+        $payload = ['name' => $validated['orgName']];
+
+        if ($this->orgLogo instanceof UploadedFile) {
+            $logoStorage->delete($tenant->logo_path);
+            $payload['logo_path'] = $logoStorage->store($this->orgLogo, (int) $tenant->id);
+            $this->reset('orgLogo');
+        }
+
+        $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
 
         $this->dispatch('saved');
     }
@@ -132,7 +153,7 @@ class Team extends Component
             $validated = $this->validateColleague($request->rules(), $request->messages());
 
             try {
-                $createColleague->handle($validated, (int) Tenancy::id());
+                $createColleague->handle($validated, (int) Tenancy::id(), (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'user_limit_exceeded') {
                     $this->addError('colleagueEmail', __('team.errors.user_limit'));
