@@ -88,6 +88,7 @@
                         </p>
                     </div>
                     <div class="wp-issue-row-meta">
+                        <x-wp-ref-nr :id="$issue->id" />
                         <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
                         <span class="wp-muted">{{ $issue->created_at?->format('d-m-Y') }}</span>
                         <span class="wp-muted">{{ $issue->reporter_name ?: __('dashboard.recent.reporter_anon') }}</span>

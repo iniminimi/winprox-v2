@@ -20,11 +20,14 @@
         "hint": "Kombinieren Sie Status, Team, Suchbegriff und Wiederkehrend zur Verfeinerung."
     },
     "card": {
+        "nr": "NR :nr",
+        "issue_nr": "Meldung :nr",
         "no_team": "Kein Team",
         "scheduled": "Geplant :date"
     },
     "show": {
         "title": "Aufgabe",
+        "nr": "NR :nr",
         "back": "Zurück zu Aufgaben",
         "issue_context": "Meldung",
         "view_issue": "Meldung anzeigen",

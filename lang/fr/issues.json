@@ -67,6 +67,7 @@
     },
     "show": {
         "title": "Signalement",
+        "nr": "NR :nr",
         "back": "Retour aux signalements",
         "report": "Signalement",
         "tasks": "Tâches",

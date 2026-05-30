@@ -2,6 +2,7 @@
     <div class="wp-row">
         <div class="wp-cluster">
             <h1 class="wp-page-title">{{ __('issues.show.title') }}</h1>
+            <x-wp-ref-nr :id="$issue->id" />
             <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
         </div>
         <a href="{{ route('issues.index') }}" class="btn btn--ghost btn--sm">{{ __('issues.show.back') }}</a>
@@ -70,6 +71,7 @@
             @forelse ($issue->tasks as $task)
                 <div class="wp-row" wire:key="task-{{ $task->id }}">
                     <div class="wp-cluster">
+                        <x-wp-ref-nr type="task" :id="$task->id" />
                         <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                         <a href="{{ route('tasks.show', $task) }}" class="wp-text-body">{{ $task->team?->name ?? __('issues.show.no_team') }}</a>
                     </div>

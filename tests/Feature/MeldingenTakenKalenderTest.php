@@ -242,3 +242,32 @@ it('toont een geplande taak op de kalender op de juiste dag', function () {
         ->set('entryType', 'tasks')
         ->assertSee('Kalender taak test');
 });
+
+it('toont NR-referentie op melding- en taakdetail', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+    ]);
+
+    $issueNr = __('issues.card.nr', ['nr' => $issue->id]);
+    $taskNr = __('tasks.card.nr', ['nr' => $task->id]);
+
+    $this->actingAs($user)
+        ->get(route('issues.show', $issue))
+        ->assertOk()
+        ->assertSee($issueNr, false);
+
+    $this->actingAs($user)
+        ->get(route('tasks.show', $task))
+        ->assertOk()
+        ->assertSee($taskNr, false)
+        ->assertSee($issueNr, false);
+});

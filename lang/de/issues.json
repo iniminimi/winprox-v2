@@ -67,6 +67,7 @@
     },
     "show": {
         "title": "Meldung",
+        "nr": "NR :nr",
         "back": "Zurück zu Meldungen",
         "report": "Meldung",
         "tasks": "Aufgaben",

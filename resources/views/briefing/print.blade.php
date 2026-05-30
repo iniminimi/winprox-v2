@@ -20,6 +20,10 @@
                 <ul class="wp-briefing-list">
                     @foreach ($teamTasks as $task)
                         <li wire:key="briefing-task-{{ $task->id }}">
+                            <x-wp-ref-nr type="task" :id="$task->id" />
+                            @if ($task->issue)
+                                <span class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $task->issue->id]) }}</span>
+                            @endif
                             <strong>{{ \Illuminate\Support\Str::limit($task->issue?->description ?? '—', 120) }}</strong>
                             <span class="wp-muted">
                                 @if ($task->issue?->location)

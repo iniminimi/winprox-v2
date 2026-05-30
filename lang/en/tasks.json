@@ -20,11 +20,14 @@
         "hint": "Combine status, team, search term and recurring to narrow results."
     },
     "card": {
+        "nr": "NR :nr",
+        "issue_nr": "Issue :nr",
         "no_team": "No team",
         "scheduled": "Scheduled :date"
     },
     "show": {
         "title": "Task",
+        "nr": "NR :nr",
         "back": "Back to tasks",
         "issue_context": "Issue",
         "view_issue": "View issue",

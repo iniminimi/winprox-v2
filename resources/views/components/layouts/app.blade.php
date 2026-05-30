@@ -51,8 +51,8 @@
                 @endif
             </div>
 
-            <nav class="wp-sidebar-nav" aria-label="{{ __('common.nav.label') }}">
-                <div class="wp-nav-group">
+            <div class="wp-sidebar-body">
+                <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
                     @foreach ($primaryNav as $item)
                         <a href="{{ route($item['route']) }}"
                            class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
@@ -62,9 +62,9 @@
                             <span>{{ __($item['label']) }}</span>
                         </a>
                     @endforeach
-                </div>
 
-                <div class="wp-nav-group wp-nav-group--secondary">
+                    <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
+
                     @foreach ($secondaryNav as $item)
                         <a href="{{ route($item['route']) }}"
                            class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
@@ -74,27 +74,27 @@
                             <span>{{ __($item['label']) }}</span>
                         </a>
                     @endforeach
+                </nav>
+
+                <div class="wp-sidebar-bottom">
+                    @include('partials.wp-lang-switch', ['variant' => 'sidebar'])
+
+                    @auth
+                        <div class="wp-sidebar-user">
+                            <p class="wp-sidebar-user-name">{{ auth()->user()->name }}</p>
+                            @if ($supportTenant)
+                                <p class="wp-sidebar-user-meta">{{ $supportTenant->name }} ({{ __('platform.nav') }})</p>
+                            @elseif (auth()->user()->tenant?->name)
+                                <p class="wp-sidebar-user-meta">{{ auth()->user()->tenant->name }}</p>
+                            @endif
+                            <p class="wp-sidebar-user-meta">{{ auth()->user()->email }}</p>
+                            <form method="POST" action="{{ route('logout') }}" class="wp-sidebar-logout-form">
+                                @csrf
+                                <button type="submit" class="wp-sidebar-logout">{{ __('common.button.logout') }}</button>
+                            </form>
+                        </div>
+                    @endauth
                 </div>
-            </nav>
-
-            <div class="wp-sidebar-foot">
-                @include('partials.wp-lang-switch', ['variant' => 'sidebar'])
-
-                @auth
-                    <div class="wp-sidebar-user">
-                        <p class="wp-sidebar-user-name">{{ auth()->user()->name }}</p>
-                        @if ($supportTenant)
-                            <p class="wp-sidebar-user-meta">{{ $supportTenant->name }} ({{ __('platform.nav') }})</p>
-                        @elseif (auth()->user()->tenant?->name)
-                            <p class="wp-sidebar-user-meta">{{ auth()->user()->tenant->name }}</p>
-                        @endif
-                        <p class="wp-sidebar-user-meta">{{ auth()->user()->email }}</p>
-                        <form method="POST" action="{{ route('logout') }}" class="wp-sidebar-logout-form">
-                            @csrf
-                            <button type="submit" class="wp-sidebar-logout">{{ __('common.button.logout') }}</button>
-                        </form>
-                    </div>
-                @endauth
             </div>
         </aside>
 

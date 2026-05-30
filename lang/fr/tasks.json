@@ -20,11 +20,14 @@
         "hint": "Combinez statut, équipe, recherche et récurrent pour affiner."
     },
     "card": {
+        "nr": "NR :nr",
+        "issue_nr": "Signalement :nr",
         "no_team": "Aucune équipe",
         "scheduled": "Planifié :date"
     },
     "show": {
         "title": "Tâche",
+        "nr": "NR :nr",
         "back": "Retour aux tâches",
         "issue_context": "Signalement",
         "view_issue": "Voir le signalement",

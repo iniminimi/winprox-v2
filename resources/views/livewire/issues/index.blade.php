@@ -83,7 +83,7 @@
                        class="wp-card wp-card-pad wp-melding-card {{ $isHighlighted ? 'wp-melding-card--highlight' : '' }}"
                        wire:key="issue-{{ $issue->id }}">
                         <div class="wp-row">
-                            <span class="wp-melding-nr">{{ __('issues.card.nr', ['nr' => $issue->id]) }}</span>
+                            <x-wp-ref-nr :id="$issue->id" />
                             <div class="wp-cluster">
                                 @unless ($issue->isApproved())
                                     <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>

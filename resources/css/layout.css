@@ -22,35 +22,43 @@
 }
 
 /* ---------------------------------------------------------------------------
- | App-shell: vaste linker-zijbalk + hoofdkolom (desktop-first, §6.5).
+ | App-shell: vaste linker-zijbalk + hoofdkolom (V1: fixed sidebar, scroll body).
  * ------------------------------------------------------------------------- */
 .wp-app {
-    display: grid;
-    grid-template-columns: 17rem 1fr;
     min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .wp-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    min-height: 100vh;
-    padding: 1.25rem 1rem 1rem;
+    height: 100vh;
+    height: 100dvh;
     background-color: var(--wp-surface);
     border-right: 1px solid var(--wp-border);
-    position: sticky;
-    top: 0;
-    max-height: 100vh;
-    overflow-y: auto;
+    box-shadow: 4px 0 36px -18px rgba(15, 23, 42, 0.07);
+}
+
+@media (min-width: 60rem) {
+    .wp-sidebar {
+        position: fixed;
+        inset: 0 auto 0 0;
+        z-index: 20;
+        width: 18rem;
+    }
+
+    .wp-content {
+        margin-left: 18rem;
+    }
 }
 
 .wp-sidebar-head {
+    flex: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.25rem 0.5rem 1rem;
-    margin-bottom: 0.25rem;
+    padding: 1rem 1.25rem 0.875rem;
     border-bottom: 1px solid var(--wp-border);
     text-align: center;
 }
@@ -69,23 +77,26 @@
     line-height: 1.35;
 }
 
-.wp-sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+/* V1: één scrollkolom met menu + taal/gebruiker eronder (geen overlap). */
+.wp-sidebar-body {
     flex: 1 1 auto;
     min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem;
+    overscroll-behavior: contain;
 }
 
-.wp-nav-group {
+.wp-sidebar-menu {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.wp-nav-group--secondary {
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--wp-border);
+.wp-nav-divider {
+    margin: 0.75rem 0.75rem;
+    border: 0;
+    border-top: 2px solid var(--wp-accent-border);
 }
 
 .wp-nav-link {
@@ -175,19 +186,26 @@
     border-bottom: none;
 }
 
-.wp-sidebar-foot {
-    margin-top: auto;
-    padding-top: 0.875rem;
+.wp-sidebar-bottom {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--wp-border);
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
+.wp-sidebar-bottom .wp-lang--sidebar {
+    width: 95%;
+    margin-inline: auto;
+}
+
 .wp-sidebar-user {
+    width: 95%;
+    margin-inline: auto;
     padding: 1rem;
     border: 1px solid var(--wp-border);
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     background-color: var(--wp-surface);
     box-shadow: var(--wp-shadow-sm);
 }
@@ -415,21 +433,21 @@
 }
 
 /* Responsive: zijbalk schuift in/uit op smalle schermen. */
-@media (max-width: 60rem) {
-    .wp-app {
-        grid-template-columns: 1fr;
-    }
-
+@media (max-width: 59.99rem) {
     .wp-sidebar {
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         z-index: 40;
-        width: 16rem;
+        width: min(88vw, 20rem);
         transform: translateX(-100%);
         transition: transform var(--wp-transition);
         box-shadow: var(--wp-shadow-lg);
+    }
+
+    .wp-content {
+        margin-left: 0;
     }
 
     .wp-sidebar.is-open {

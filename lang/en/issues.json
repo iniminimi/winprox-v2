@@ -67,6 +67,7 @@
     },
     "show": {
         "title": "Issue",
+        "nr": "NR :nr",
         "back": "Back to issues",
         "report": "Issue",
         "tasks": "Tasks",

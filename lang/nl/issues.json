@@ -67,6 +67,7 @@
     },
     "show": {
         "title": "Melding",
+        "nr": "NR :nr",
         "back": "Terug naar meldingen",
         "report": "Melding",
         "tasks": "Taken",

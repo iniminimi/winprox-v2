@@ -13,6 +13,12 @@
             <div class="wp-issue-grid">
                 @foreach ($newTasks as $task)
                     <a href="{{ route('tasks.show', $task) }}" class="wp-card wp-card-pad wp-melding-card" wire:key="new-task-{{ $task->id }}">
+                        <div class="wp-row">
+                            <x-wp-ref-nr type="task" :id="$task->id" />
+                            @if ($task->issue)
+                                <span class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $task->issue->id]) }}</span>
+                            @endif
+                        </div>
                         <p class="wp-melding-desc">{{ $task->issue?->description }}</p>
                         <span class="wp-pill wp-pill--new">{{ __('common.status.new') }}</span>
                     </a>
@@ -84,6 +90,7 @@
                     @endphp
                     <a href="{{ route('tasks.show', $task) }}" class="wp-card wp-card-pad wp-melding-card" wire:key="task-{{ $task->id }}">
                         <div class="wp-row">
+                            <x-wp-ref-nr type="task" :id="$task->id" />
                             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                             @if ($task->scheduled_for || $task->due_at)
                                 <span class="wp-muted">{{ __('tasks.card.scheduled', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</span>
@@ -94,6 +101,9 @@
                             <p class="wp-muted">{{ $locationLine }}</p>
                         @endif
                         <div class="wp-melding-meta">
+                            @if ($issue)
+                                <span class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $issue->id]) }}</span>
+                            @endif
                             <span class="wp-muted">
                                 <x-wp-icon name="team" class="wp-icon" />
                                 {{ $task->team?->name ?: __('tasks.card.no_team') }}

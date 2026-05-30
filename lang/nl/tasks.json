@@ -20,11 +20,14 @@
         "hint": "Combineer status, team, zoekterm en terugkerend om te verfijnen."
     },
     "card": {
+        "nr": "NR :nr",
+        "issue_nr": "Melding :nr",
         "no_team": "Geen team",
         "scheduled": "Gepland :date"
     },
     "show": {
         "title": "Taak",
+        "nr": "NR :nr",
         "back": "Terug naar taken",
         "issue_context": "Melding",
         "view_issue": "Melding bekijken",

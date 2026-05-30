@@ -2,13 +2,21 @@
     <div class="wp-row">
         <div class="wp-stack-tight">
             <a href="{{ route('tasks.index') }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.back') }}</a>
-            <h1 class="wp-page-title">{{ __('tasks.show.title') }}</h1>
+            <div class="wp-cluster">
+                <h1 class="wp-page-title">{{ __('tasks.show.title') }}</h1>
+                <x-wp-ref-nr type="task" :id="$task->id" />
+            </div>
         </div>
         <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('tasks.show.issue_context') }}</h2>
+        <div class="wp-cluster">
+            <h2 class="wp-section-title">{{ __('tasks.show.issue_context') }}</h2>
+            @if ($task->issue)
+                <x-wp-ref-nr :id="$task->issue->id" />
+            @endif
+        </div>
         <p class="wp-melding-desc">{{ $task->issue?->description }}</p>
         @php
             $locationLine = collect([
