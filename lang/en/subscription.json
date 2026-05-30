@@ -45,6 +45,11 @@
             "description": "Custom setup, SLA and dedicated support."
         }
     },
+    "stripe": {
+        "activated": "Your subscription was activated via Stripe.",
+        "not_configured": "Stripe checkout is not available for this plan.",
+        "simulated_hint": "Without Stripe configuration the plan is activated locally (development mode)."
+    },
     "errors": {
         "plan_required": "Choose a plan.",
         "plan_invalid": "This plan is not available.",

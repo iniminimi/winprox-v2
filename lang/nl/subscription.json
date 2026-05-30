@@ -45,6 +45,11 @@
             "description": "Maatwerk, SLA en dedicated support."
         }
     },
+    "stripe": {
+        "activated": "Je abonnement is via Stripe geactiveerd.",
+        "not_configured": "Stripe-checkout is niet beschikbaar voor dit plan.",
+        "simulated_hint": "Zonder Stripe-configuratie wordt het plan lokaal geactiveerd (ontwikkelmodus)."
+    },
     "errors": {
         "plan_required": "Kies een plan.",
         "plan_invalid": "Dit plan is niet beschikbaar.",

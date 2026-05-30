@@ -45,6 +45,11 @@
             "description": "Sur mesure, SLA et support dédié."
         }
     },
+    "stripe": {
+        "activated": "Votre abonnement a été activé via Stripe.",
+        "not_configured": "Le paiement Stripe n'est pas disponible pour ce forfait.",
+        "simulated_hint": "Sans configuration Stripe, le forfait est activé localement (mode développement)."
+    },
     "errors": {
         "plan_required": "Choisissez un forfait.",
         "plan_invalid": "Ce forfait n'est pas disponible.",

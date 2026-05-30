@@ -75,6 +75,9 @@
                             {{ __('subscription.enterprise_cta') }}
                         </a>
                     @elseif (auth()->user()?->isAdmin())
+                        @if (! config('stripe.enabled') || ! app(\App\Services\Billing\StripeCheckoutService::class)->isConfiguredForPlan($planKey))
+                            <p class="wp-hint">{{ __('subscription.stripe.simulated_hint') }}</p>
+                        @endif
                         <button type="button"
                                 class="btn btn--primary btn--block"
                                 wire:click="activatePlan('{{ $planKey }}')"

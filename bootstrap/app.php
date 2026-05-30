@@ -20,6 +20,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->validateCsrfTokens(except: [
+            'stripe/webhook',
+        ]);
+
         // Locale-keuze (sessie) toepassen op elke web-request.
         $middleware->web(append: [
             SetLocale::class,

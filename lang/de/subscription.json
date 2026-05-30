@@ -45,6 +45,11 @@
             "description": "Individuell, SLA und dedizierter Support."
         }
     },
+    "stripe": {
+        "activated": "Ihr Abonnement wurde über Stripe aktiviert.",
+        "not_configured": "Stripe-Checkout ist für diesen Tarif nicht verfügbar.",
+        "simulated_hint": "Ohne Stripe-Konfiguration wird der Tarif lokal aktiviert (Entwicklungsmodus)."
+    },
     "errors": {
         "plan_required": "Wählen Sie einen Plan.",
         "plan_invalid": "Dieser Plan ist nicht verfügbar.",
