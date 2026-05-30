@@ -8,7 +8,7 @@ afterEach(fn () => Tenancy::forget());
 
 it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
     $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     $routes = [
         'dashboard',
@@ -30,4 +30,14 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
             ->assertOk()
             ->assertSee('Demo Facility');
     }
+});
+
+it('verbergt abonnement in de sidebar voor medewerkers', function () {
+    $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($employee)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee(__('common.nav.subscription'), false);
 });

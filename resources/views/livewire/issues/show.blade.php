@@ -26,6 +26,27 @@
             <p class="wp-muted">{{ $issue->reporter_name }}@if ($issue->reporter_contact) ({{ $issue->reporter_contact }})@endif</p>
         @endif
 
+        @if ($issue->is_recurring)
+            <div class="wp-card wp-card-pad wp-surface-2 wp-stack-tight">
+                <div class="wp-row">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-label">{{ __('issues.show.recurring_title') }}</p>
+                        @if ($issue->recurrence_next_due_at)
+                            <p class="wp-muted">{{ __('issues.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
+                        @endif
+                        @if ($issue->recurrence_paused_at)
+                            <span class="wp-pill wp-pill--closed">{{ __('issues.show.recurring_paused') }}</span>
+                        @else
+                            <span class="wp-pill wp-pill--progress">{{ __('issues.show.recurring_active') }}</span>
+                        @endif
+                    </div>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRecurrencePause">
+                        {{ $issue->recurrence_paused_at ? __('issues.show.recurring_resume') : __('issues.show.recurring_pause') }}
+                    </button>
+                </div>
+            </div>
+        @endif
+
         <p class="wp-text-body">{{ $issue->description }}</p>
 
         @php
@@ -52,12 +73,7 @@
                         <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                         <a href="{{ route('tasks.show', $task) }}" class="wp-text-body">{{ $task->team?->name ?? __('issues.show.no_team') }}</a>
                     </div>
-                    <select class="wp-select wp-select--inline"
-                            wire:change="changeTaskStatus({{ $task->id }}, $event.target.value)">
-                        @foreach ($statuses as $status)
-                            <option value="{{ $status->value }}" @selected($task->status === $status)>{{ __($status->labelKey()) }}</option>
-                        @endforeach
-                    </select>
+                    <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">{{ __('issues.show.manage_task_status') }}</a>
                 </div>
             @empty
                 <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>

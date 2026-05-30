@@ -4,9 +4,8 @@ namespace App\Livewire\Issues;
 
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
+use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
-use App\Actions\Tasks\UpdateTaskStatusAction;
-use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use Livewire\Attributes\Layout;
@@ -43,13 +42,10 @@ class Show extends Component
         $this->refreshIssue();
     }
 
-    public function changeTaskStatus(int $task, string $status, UpdateTaskStatusAction $updateStatus): void
+    public function toggleRecurrencePause(ToggleIssueRecurrencePauseAction $toggle): void
     {
-        $model = $this->issue->tasks()->findOrFail($task);
-        $this->authorize('update', $model);
-
-        $updateStatus->handle($model, TaskStatus::from($status), auth()->user());
-
+        $this->authorize('update', $this->issue);
+        $toggle->handle($this->issue, (int) auth()->id());
         $this->refreshIssue();
     }
 
@@ -122,7 +118,6 @@ class Show extends Component
                 'unit',
                 'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
             ]),
-            'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
         ]);
     }

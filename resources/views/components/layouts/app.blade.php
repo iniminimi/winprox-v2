@@ -18,8 +18,10 @@
         ];
         $secondaryNav = [
             ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.team'],
-            ...(auth()->user()?->isAdmin() ? [['route' => 'settings.api', 'active' => 'settings.*', 'icon' => 'subscription', 'label' => 'settings.api.nav']] : []),
-            ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
+            ...(auth()->user()?->isAdmin() ? [
+                ['route' => 'settings.api', 'active' => 'settings.*', 'icon' => 'subscription', 'label' => 'settings.api.nav'],
+                ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
+            ] : []),
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],
             ['route' => 'legal.index', 'active' => 'legal.index', 'icon' => 'legal', 'label' => 'common.nav.legal', 'target' => '_blank'],
             ['route' => 'contact.index', 'active' => 'contact.*', 'icon' => 'contact', 'label' => 'common.nav.contact'],
