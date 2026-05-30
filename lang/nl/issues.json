@@ -38,6 +38,8 @@
         "unit": "Unit",
         "unit_none": "Geen unit",
         "description": "Omschrijving",
+        "photos_label": "Foto's",
+        "photos_add": "Foto toevoegen",
         "recurring": "Terugkerende melding",
         "interval_value": "Interval",
         "interval_unit": "Eenheid",
@@ -58,7 +60,9 @@
     "errors": {
         "description_required": "Geef een omschrijving van de melding.",
         "description_min": "De omschrijving moet minstens 3 tekens bevatten.",
-        "description_max": "De omschrijving is te lang."
+        "description_max": "De omschrijving is te lang.",
+        "photos_max": "Maximaal 4 foto's per melding.",
+        "photos_image": "Alleen afbeeldingen zijn toegestaan."
     },
     "show": {
         "title": "Melding",

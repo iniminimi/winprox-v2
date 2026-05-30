@@ -3,7 +3,6 @@
 use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Enums\IssueSource;
 use App\Enums\TaskStatus;
-use App\Livewire\Issues\Create as IssueCreate;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Pages\Calendar;
 use App\Models\InternalTeam;
@@ -12,8 +11,11 @@ use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\IssuePhoto;
 use App\Support\Tenancy;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -27,15 +29,17 @@ it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () 
     Tenancy::actAs($tenant->id);
 
     Livewire::actingAs($user)
-        ->test(IssueCreate::class)
+        ->test(IssueIndex::class)
+        ->call('openCreateModal')
+        ->assertSet('showCreateModal', true)
         ->set('location_id', $location->id)
         ->set('description', 'Lekkende kraan in keuken')
-        ->call('saveStepOne')
+        ->call('saveCreateStepOne')
         ->assertHasNoErrors()
-        ->assertSet('step', 2)
+        ->assertSet('createStep', 2)
         ->set('internal_team_id', $team->id)
         ->set('task_note', 'Direct aanpakken')
-        ->call('saveStepTwo')
+        ->call('saveCreateStepTwo')
         ->assertRedirect(route('issues.index', ['highlight' => Issue::first()->id]));
 
     $issue = Issue::first();
@@ -47,6 +51,51 @@ it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () 
         ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
         ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
         ->and($issue->tasks->first()->note)->toBe('Direct aanpakken');
+});
+
+it('slaat foto\'s op bij aanmaken melding via modal', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    $photo = UploadedFile::fake()->create('melding.jpg', 120, 'image/jpeg');
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->call('openCreateModal')
+        ->set('location_id', $location->id)
+        ->set('description', 'Schade met foto')
+        ->set('photos', [$photo])
+        ->call('saveCreateStepOne')
+        ->assertHasNoErrors()
+        ->set('internal_team_id', $team->id)
+        ->call('saveCreateStepTwo');
+
+    $issue = Issue::first();
+
+    expect($issue)->not->toBeNull()
+        ->and(IssuePhoto::query()->where('issue_id', $issue->id)->count())->toBe(1)
+        ->and(Storage::disk('public')->exists(IssuePhoto::first()->path))->toBeTrue();
+});
+
+it('opent de aanmaak-modal via create-query en oude route', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $this->actingAs($user)
+        ->get(route('issues.create'))
+        ->assertRedirect(route('issues.index', ['create' => 1]));
+
+    Livewire::actingAs($user)
+        ->withQueryParams(['create' => '1'])
+        ->test(IssueIndex::class)
+        ->assertSet('showCreateModal', true);
 });
 
 it('filtert terugkerende meldingen op de index', function () {

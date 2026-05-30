@@ -1,6 +1,6 @@
 ---
 description: Issue/QR photo upload — mandatory client compress + queue (no regressions)
-globs: resources/js/image-upload-compress.js,resources/views/partials/wp-issue-photo-upload.blade.php,resources/views/livewire/**/unit-portal.blade.php,resources/views/livewire/**/location-portal.blade.php,resources/views/partials/wp-portal-task.blade.php,app/Support/IssuePhotoStorage.php
+globs: resources/js/image-upload-compress.js,resources/views/partials/wp-issue-photo-upload.blade.php,resources/views/livewire/**/unit-portal.blade.php,resources/views/livewire/**/location-portal.blade.php,resources/views/livewire/issues/partials/create-modal.blade.php,resources/views/partials/wp-portal-task.blade.php,app/Support/IssuePhotoStorage.php
 alwaysApply: true
 ---
 

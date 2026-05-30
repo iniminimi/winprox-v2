@@ -13,7 +13,6 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
     $routes = [
         'dashboard',
         'issues.index',
-        'issues.create',
         'locations.index',
         'tasks.index',
         'calendar.index',

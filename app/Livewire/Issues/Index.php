@@ -3,18 +3,26 @@
 namespace App\Livewire\Issues;
 
 use App\Actions\Issues\ApproveIssueAction;
+use App\Actions\Issues\AssignIssueTeamTaskAction;
+use App\Actions\Issues\CreateManagerIssueAction;
 use App\Enums\TaskStatus;
+use App\Http\Requests\Issues\AssignIssueTeamTaskRequest;
+use App\Http\Requests\Issues\StoreManagerIssueStepOneRequest;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Models\Location;
+use App\Models\Unit;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Index extends Component
 {
+    use WithFileUploads;
     #[Url(as: 'status')]
     public string $statusFilter = '';
 
@@ -30,10 +38,47 @@ class Index extends Component
     #[Url(as: 'highlight')]
     public ?int $highlightIssue = null;
 
+    #[Url(as: 'create')]
+    public bool $openCreate = false;
+
+    public bool $showCreateModal = false;
+
+    public int $createStep = 1;
+
+    public ?int $draftIssueId = null;
+
+    public ?int $location_id = null;
+
+    public ?int $unit_id = null;
+
+    public string $description = '';
+
+    public bool $is_recurring = false;
+
+    public int $recurrence_interval_value = 1;
+
+    public string $recurrence_interval_unit = 'month';
+
+    public int $recurrence_lead_days = 30;
+
+    public ?string $recurrence_first_due_date = null;
+
+    public ?int $internal_team_id = null;
+
+    public ?string $task_note = null;
+
+    /** @var array<int, mixed> */
+    public array $photos = [];
+
     public function mount(): void
     {
         if ($this->highlightIssue === null && session()->has('highlight_issue')) {
             $this->highlightIssue = (int) session()->pull('highlight_issue');
+        }
+
+        if ($this->openCreate) {
+            $this->openCreate = false;
+            $this->openCreateModal();
         }
     }
 
@@ -61,6 +106,99 @@ class Index extends Component
         $this->redirect(route('issues.index', array_filter([
             'highlight' => $this->highlightIssue ?: null,
         ])), navigate: true);
+    }
+
+    public function openCreateModal(): void
+    {
+        $this->authorize('create', Issue::class);
+        $this->resetCreateForm();
+        $this->showCreateModal = true;
+        $this->dispatch('wp-prepare-photo-inputs');
+    }
+
+    public function closeCreateModal(): void
+    {
+        $this->showCreateModal = false;
+        $this->resetCreateForm();
+    }
+
+    public function removePhoto(int $index): void
+    {
+        if (isset($this->photos[$index])) {
+            array_splice($this->photos, $index, 1);
+        }
+    }
+
+    public function updatedLocationId(): void
+    {
+        $this->unit_id = null;
+    }
+
+    public function saveCreateStepOne(CreateManagerIssueAction $createIssue): void
+    {
+        $this->authorize('create', Issue::class);
+
+        if (blank($this->unit_id)) {
+            $this->unit_id = null;
+        }
+        if (blank($this->location_id)) {
+            $this->location_id = null;
+        }
+
+        $validated = $this->validate(
+            StoreManagerIssueStepOneRequest::ruleSet(),
+            (new StoreManagerIssueStepOneRequest)->messages(),
+        );
+
+        $issue = $createIssue->handle($validated, auth()->user(), $this->photos);
+
+        $this->draftIssueId = $issue->id;
+        $this->createStep = 2;
+        $this->reset(['photos']);
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function saveCreateStepTwo(AssignIssueTeamTaskAction $assignTask): mixed
+    {
+        $issue = Issue::query()->findOrFail($this->draftIssueId);
+        $this->authorize('create', Issue::class);
+
+        $validated = $this->validate(AssignIssueTeamTaskRequest::ruleSet());
+
+        $assignTask->handle(
+            $issue,
+            (int) $validated['internal_team_id'],
+            $validated['task_note'] ?? null,
+        );
+
+        $this->showCreateModal = false;
+        $this->resetCreateForm();
+
+        return $this->redirectRoute('issues.index', ['highlight' => $issue->id], navigate: true);
+    }
+
+    public function backCreateToStepOne(): void
+    {
+        $this->createStep = 1;
+    }
+
+    private function resetCreateForm(): void
+    {
+        $this->createStep = 1;
+        $this->draftIssueId = null;
+        $this->location_id = null;
+        $this->unit_id = null;
+        $this->description = '';
+        $this->is_recurring = false;
+        $this->recurrence_interval_value = 1;
+        $this->recurrence_interval_unit = 'month';
+        $this->recurrence_lead_days = 30;
+        $this->recurrence_first_due_date = null;
+        $this->internal_team_id = null;
+        $this->task_note = null;
+        $this->photos = [];
+        $this->resetErrorBag();
+        $this->dispatch('wp-clear-photo-previews');
     }
 
     public function render()
@@ -107,6 +245,15 @@ class Index extends Component
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
             'highlightIssue' => $this->highlightIssue,
+            'createLocations' => $this->showCreateModal
+                ? Location::query()->orderBy('name')->get()
+                : collect(),
+            'createUnits' => $this->showCreateModal && $this->location_id
+                ? Unit::query()->where('location_id', $this->location_id)->orderBy('name')->get()
+                : collect(),
+            'createTeams' => $this->showCreateModal
+                ? InternalTeam::query()->where('is_active', true)->orderBy('name')->get()
+                : collect(),
         ]);
     }
 }

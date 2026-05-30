@@ -38,6 +38,8 @@
         "unit": "Unit",
         "unit_none": "Keine Unit",
         "description": "Beschreibung",
+        "photos_label": "Fotos",
+        "photos_add": "Foto hinzufügen",
         "recurring": "Wiederkehrende Meldung",
         "interval_value": "Intervall",
         "interval_unit": "Einheit",
@@ -58,7 +60,9 @@
     "errors": {
         "description_required": "Bitte geben Sie eine Beschreibung ein.",
         "description_min": "Die Beschreibung muss mindestens 3 Zeichen haben.",
-        "description_max": "Die Beschreibung ist zu lang."
+        "description_max": "Die Beschreibung ist zu lang.",
+        "photos_max": "Maximal 4 Fotos pro Meldung.",
+        "photos_image": "Nur Bilder sind erlaubt."
     },
     "show": {
         "title": "Meldung",

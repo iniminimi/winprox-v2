@@ -913,6 +913,10 @@ a.wp-kpi:hover {
     box-shadow: var(--wp-shadow-lg);
 }
 
+.wp-modal-card--wide {
+    max-width: 36rem;
+}
+
 .wp-modal-head {
     display: flex;
     align-items: center;

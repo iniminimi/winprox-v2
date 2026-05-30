@@ -14,7 +14,6 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Dashboard;
-use App\Livewire\Issues\Create as IssueCreate;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
@@ -86,7 +85,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
         Route::get('/issues', IssueIndex::class)->name('issues.index');
-        Route::get('/issues/create', IssueCreate::class)->name('issues.create');
+        Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');
         Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
         Route::get('/locations', LocationIndex::class)->name('locations.index');

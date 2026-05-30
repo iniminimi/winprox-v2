@@ -6,10 +6,10 @@
         </div>
         <div class="wp-cluster">
             <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
-            <a href="{{ route('issues.create') }}" class="btn btn--primary btn--sm">
+            <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 <x-wp-icon name="plus" class="wp-icon" />
                 <span>{{ __('issues.list.add') }}</span>
-            </a>
+            </button>
         </div>
     </div>
 
@@ -118,4 +118,8 @@
             <p class="wp-muted">{{ $hasFilters ? __('issues.list.empty_filtered') : __('issues.list.empty') }}</p>
         </div>
     @endforelse
+
+    @if ($showCreateModal)
+        @include('livewire.issues.partials.create-modal')
+    @endif
 </div>

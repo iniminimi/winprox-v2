@@ -38,6 +38,8 @@
         "unit": "Unité",
         "unit_none": "Aucune unité",
         "description": "Description",
+        "photos_label": "Photos",
+        "photos_add": "Ajouter une photo",
         "recurring": "Signalement récurrent",
         "interval_value": "Intervalle",
         "interval_unit": "Unité",
@@ -58,7 +60,9 @@
     "errors": {
         "description_required": "Veuillez saisir une description.",
         "description_min": "La description doit comporter au moins 3 caractères.",
-        "description_max": "La description est trop longue."
+        "description_max": "La description est trop longue.",
+        "photos_max": "Maximum 4 photos par signalement.",
+        "photos_image": "Seules les images sont autorisées."
     },
     "show": {
         "title": "Signalement",
