@@ -191,5 +191,11 @@ class DatabaseSeeder extends Seeder
             $updateStatus->handle($task, TaskStatus::Closed);
         }
         $approveIssue->handle($closed, $admin);
+
+        // Demo-beheerder: naam "Beheerder" is geen rol — oude seeds hadden soms employee.
+        User::query()
+            ->where('email', 'admin@winprox.test')
+            ->where('is_superuser', false)
+            ->update(['role' => User::ROLE_ADMIN]);
     }
 }
