@@ -134,6 +134,32 @@ class Index extends Component
         $this->unit_id = null;
     }
 
+    public function updatedUnitId(?int $value): void
+    {
+        if ($value === null) {
+            return;
+        }
+
+        $unit = Unit::query()->find($value);
+
+        if ($unit?->default_internal_team_id) {
+            $this->internal_team_id = (int) $unit->default_internal_team_id;
+        }
+    }
+
+    private function prefillTeamFromUnit(): void
+    {
+        if ($this->internal_team_id !== null || $this->unit_id === null) {
+            return;
+        }
+
+        $unit = Unit::query()->find($this->unit_id);
+
+        if ($unit?->default_internal_team_id) {
+            $this->internal_team_id = (int) $unit->default_internal_team_id;
+        }
+    }
+
     public function saveCreateStepOne(CreateManagerIssueAction $createIssue): void
     {
         $this->authorize('create', Issue::class);
@@ -153,6 +179,7 @@ class Index extends Component
         $issue = $createIssue->handle($validated, auth()->user(), $this->photos);
 
         $this->draftIssueId = $issue->id;
+        $this->prefillTeamFromUnit();
         $this->createStep = 2;
         $this->reset(['photos']);
         $this->dispatch('wp-clear-photo-previews');
@@ -173,6 +200,8 @@ class Index extends Component
 
         $this->showCreateModal = false;
         $this->resetCreateForm();
+
+        session()->flash('success', __('issues.create.success'));
 
         return $this->redirectRoute('issues.index', ['highlight' => $issue->id], navigate: true);
     }

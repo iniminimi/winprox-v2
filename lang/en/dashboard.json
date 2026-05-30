@@ -2,6 +2,8 @@
     "title": "Dashboard",
     "subtitle": "Overview of your locations, units, issues and tasks.",
     "trial": "Trial: :days days left",
+    "grace": "Subscription expired — grace period active",
+    "add_issue": "Add issue",
     "briefing": "Briefing",
     "briefing_print": "Print briefing",
     "briefing_empty": "No tasks scheduled for today.",

@@ -55,7 +55,8 @@
         "step_two_hint": "Assignez une équipe. La tâche démarre immédiatement en cours.",
         "next": "Suivant",
         "back": "Retour",
-        "finish": "Créer le signalement"
+        "finish": "Créer le signalement",
+        "success": "Le signalement et la tâche ont été créés."
     },
     "errors": {
         "description_required": "Veuillez saisir une description.",

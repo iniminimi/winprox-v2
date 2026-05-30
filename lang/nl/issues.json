@@ -55,7 +55,8 @@
         "step_two_hint": "Wijs één team toe. De taak start meteen in uitvoering.",
         "next": "Volgende",
         "back": "Terug",
-        "finish": "Melding aanmaken"
+        "finish": "Melding aanmaken",
+        "success": "Melding en taak zijn aangemaakt."
     },
     "errors": {
         "description_required": "Geef een omschrijving van de melding.",

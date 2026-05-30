@@ -13,6 +13,10 @@
         </div>
     </div>
 
+    @if (session('success'))
+        <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-filter-bar">
             <div class="wp-field wp-filter-field">

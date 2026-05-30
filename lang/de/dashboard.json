@@ -2,6 +2,8 @@
     "title": "Dashboard",
     "subtitle": "Übersicht über Standorte, Units, Meldungen und Aufgaben.",
     "trial": "Testphase: noch :days Tage",
+    "grace": "Abonnement abgelaufen — Kulanzfrist aktiv",
+    "add_issue": "Meldung hinzufügen",
     "briefing": "Briefing",
     "briefing_print": "Briefing drucken",
     "briefing_empty": "Keine Aufgaben für heute geplant.",

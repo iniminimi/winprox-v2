@@ -55,7 +55,8 @@
         "step_two_hint": "Weisen Sie ein Team zu. Die Aufgabe startet sofort in Bearbeitung.",
         "next": "Weiter",
         "back": "Zurück",
-        "finish": "Meldung anlegen"
+        "finish": "Meldung anlegen",
+        "success": "Meldung und Aufgabe wurden erstellt."
     },
     "errors": {
         "description_required": "Bitte geben Sie eine Beschreibung ein.",

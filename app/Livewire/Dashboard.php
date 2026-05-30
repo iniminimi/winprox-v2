@@ -36,6 +36,7 @@ class Dashboard extends Component
             'stats' => $stats,
             'recent' => $recent,
             'trialDays' => $tenant?->isTrialActive() ? $tenant->trialDaysRemaining() : null,
+            'subscriptionGrace' => $tenant?->isInPaidSubscriptionGrace() ?? false,
         ]);
     }
 }

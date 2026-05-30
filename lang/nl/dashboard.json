@@ -2,6 +2,8 @@
     "title": "Dashboard",
     "subtitle": "Overzicht van je locaties, units, meldingen en taken.",
     "trial": "Proefperiode: :days dagen",
+    "grace": "Abonnement verlopen — graceperiode actief",
+    "add_issue": "Melding toevoegen",
     "briefing": "Briefing",
     "briefing_print": "Briefing afdrukken",
     "briefing_empty": "Geen taken gepland voor vandaag.",

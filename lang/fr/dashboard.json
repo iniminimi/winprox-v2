@@ -2,6 +2,8 @@
     "title": "Tableau de bord",
     "subtitle": "Aperçu de vos sites, unités, signalements et tâches.",
     "trial": "Essai : :days jours restants",
+    "grace": "Abonnement expiré — période de grâce active",
+    "add_issue": "Ajouter un signalement",
     "briefing": "Briefing",
     "briefing_print": "Imprimer le briefing",
     "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",

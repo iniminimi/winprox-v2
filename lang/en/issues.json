@@ -55,7 +55,8 @@
         "step_two_hint": "Assign one team. The task starts in progress immediately.",
         "next": "Next",
         "back": "Back",
-        "finish": "Create issue"
+        "finish": "Create issue",
+        "success": "Issue and task have been created."
     },
     "errors": {
         "description_required": "Please enter a description.",

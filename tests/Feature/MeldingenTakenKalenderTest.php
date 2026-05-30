@@ -8,6 +8,7 @@ use App\Livewire\Pages\Calendar;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\Unit;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
@@ -51,6 +52,26 @@ it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () 
         ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
         ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
         ->and($issue->tasks->first()->note)->toBe('Direct aanpakken');
+});
+
+it('vult standaardteam in bij unit met default_internal_team_id', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'default_internal_team_id' => $team->id,
+    ]);
+
+    Tenancy::actAs($tenant->id);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->call('openCreateModal')
+        ->set('unit_id', $unit->id)
+        ->assertSet('internal_team_id', $team->id);
 });
 
 it('slaat foto\'s op bij aanmaken melding via modal', function () {
