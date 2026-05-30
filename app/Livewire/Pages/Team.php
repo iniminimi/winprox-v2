@@ -54,6 +54,9 @@ class Team extends Component
 
     // Worker toevoegen (inline per team)
     public ?int $addingWorkerTeamId = null;
+
+    /** @var list<int> */
+    public array $expandedTeamIds = [];
     public string $workerFirstName = '';
     public string $workerLastName = '';
 
@@ -238,6 +241,22 @@ class Team extends Component
         $setActive->handle($team, $active, (int) auth()->id());
     }
 
+    public function toggleTeam(int $teamId): void
+    {
+        $team = InternalTeam::findOrFail($teamId);
+        Gate::authorize('update', $team);
+
+        if (in_array($teamId, $this->expandedTeamIds, true)) {
+            $this->expandedTeamIds = array_values(array_diff($this->expandedTeamIds, [$teamId]));
+
+            if ($this->addingWorkerTeamId === $teamId) {
+                $this->cancelWorker();
+            }
+        } else {
+            $this->expandTeam($teamId);
+        }
+    }
+
     public function cancelTeam(): void
     {
         $this->showTeamModal = false;
@@ -258,6 +277,7 @@ class Team extends Component
         $team = InternalTeam::findOrFail($teamId);
         Gate::authorize('update', $team);
 
+        $this->expandTeam($teamId);
         $this->reset(['workerFirstName', 'workerLastName']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName']);
         $this->addingWorkerTeamId = $teamId;
@@ -316,6 +336,13 @@ class Team extends Component
         Gate::authorize('update', $worker->team);
 
         return $worker;
+    }
+
+    private function expandTeam(int $teamId): void
+    {
+        if (! in_array($teamId, $this->expandedTeamIds, true)) {
+            $this->expandedTeamIds[] = $teamId;
+        }
     }
 
     public function render()

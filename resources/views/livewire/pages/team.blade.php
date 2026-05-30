@@ -59,18 +59,26 @@
         </div>
 
         @forelse ($teams as $team)
-            <div class="wp-card wp-card-pad wp-stack-tight" wire:key="team-{{ $team->id }}">
-                <div class="wp-row">
-                    <div class="wp-cluster">
-                        <x-wp-icon name="team" class="wp-icon" />
-                        <h3 class="wp-section-title">{{ $team->name }}</h3>
-                        <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">
-                            {{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}
+            @php
+                $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
+            @endphp
+            <div class="wp-card wp-card-pad wp-team-disclosure {{ $isTeamExpanded ? 'is-open' : '' }}" wire:key="team-{{ $team->id }}">
+                <div class="wp-row wp-team-disclosure-head">
+                    <button type="button"
+                            class="wp-team-disclosure-toggle"
+                            wire:click="toggleTeam({{ $team->id }})"
+                            aria-expanded="{{ $isTeamExpanded ? 'true' : 'false' }}"
+                            aria-controls="team-panel-{{ $team->id }}">
+                        <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" />
+                        <span class="wp-cluster">
+                            <x-wp-icon name="team" class="wp-icon" />
+                            <span class="wp-team-disclosure-title">{{ $team->name }}</span>
+                            <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
+                            <span class="wp-pill wp-pill--new">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
                         </span>
-                        <span class="wp-pill wp-pill--new">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
-                    </div>
+                    </button>
                     <div class="wp-cluster wp-cluster--tight">
-                        <a href="{{ route('team.qr', $team) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('team.teams.qr') }}</a>
+                        <a href="{{ route('team.qr', $team) }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.teams.qr') }}</a>
                         @if ($canEditContent)
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
                         @endif
@@ -84,8 +92,8 @@
                     </div>
                 </div>
 
-                {{-- Workers --}}
-                <div class="wp-stack-tight">
+                @if ($isTeamExpanded)
+                <div id="team-panel-{{ $team->id }}" class="wp-team-disclosure-body wp-stack-tight">
                     <div class="wp-row">
                         <span class="wp-label">{{ __('team.workers.title') }}</span>
                         @if ($canEditContent)
@@ -162,6 +170,7 @@
                         @endforelse
                     </div>
                 </div>
+                @endif
             </div>
         @empty
             <div class="wp-card wp-card-pad wp-stub">
