@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\WebhookEvent;
 use App\Listeners\DispatchWebhooksForDomainEvent;
+use App\Listeners\RecordAuditLogForDomainEvent;
 use App\Support\JsonTranslationLoader;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
@@ -27,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Event::listen(WebhookEvent::class, DispatchWebhooksForDomainEvent::class);
+        Event::listen(WebhookEvent::class, RecordAuditLogForDomainEvent::class);
     }
 }

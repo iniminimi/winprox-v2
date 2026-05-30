@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Actions\Audit\LogAuditAction;
+use App\Contracts\WebhookEvent;
+use App\Models\Issue;
+use App\Models\Task;
+
+/**
+ * Schrijft audit_logs voor elk domein-event dat WebhookEvent implementeert.
+ */
+class RecordAuditLogForDomainEvent
+{
+    public function __construct(private LogAuditAction $logAudit) {}
+
+    public function handle(WebhookEvent $event): void
+    {
+        if (! config('audit.enabled', true)) {
+            return;
+        }
+
+        $payload = $event->webhookPayload();
+        [$modelType, $modelId] = $this->resolveModel($event->webhookEventName(), $payload);
+
+        $this->logAudit->handle(
+            userId: $this->resolveUserId($payload),
+            tenantId: $event->webhookTenantId(),
+            action: $event->webhookEventName(),
+            modelType: $modelType,
+            modelId: $modelId,
+            payload: $payload,
+        );
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     * @return array{0: ?string, 1: ?int}
+     */
+    private function resolveModel(string $eventName, array $payload): array
+    {
+        $id = isset($payload['id']) ? (int) $payload['id'] : null;
+        if ($id === null || $id <= 0) {
+            return [null, null];
+        }
+
+        return match (true) {
+            str_starts_with($eventName, 'issue.') => [Issue::class, $id],
+            str_starts_with($eventName, 'task.') => [Task::class, $id],
+            default => [null, $id],
+        };
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     */
+    private function resolveUserId(array $payload): ?int
+    {
+        foreach (['approved_by', 'user_id', 'actor_user_id'] as $key) {
+            if (isset($payload[$key]) && (int) $payload[$key] > 0) {
+                return (int) $payload[$key];
+            }
+        }
+
+        return null;
+    }
+}
