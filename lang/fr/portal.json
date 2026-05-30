@@ -6,7 +6,12 @@
         "title": "Indisponible",
         "location_inactive": "Ce portail est actuellement indisponible.",
         "unit_inactive": "Ce portail est actuellement indisponible.",
-        "team_inactive": "Ce portail d'équipe est actuellement indisponible."
+        "team_inactive": "Ce portail d'équipe est actuellement indisponible.",
+        "tenant_inactive": "Ce portail est actuellement indisponible pour cette organisation.",
+        "subscription_inactive": "Ce portail est temporairement indisponible. Contactez votre administrateur."
+    },
+    "issue": {
+        "awaiting_review_hint": "Votre signalement est en cours de contrôle avant que les détails ne deviennent visibles."
     },
     "tiles": {
         "new": "Nouveau signalement",

@@ -5,7 +5,7 @@
             <p class="wp-muted">{{ __('issues.list.subtitle') }}</p>
         </div>
         <div class="wp-cluster">
-            <a href="#" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
+            <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             <a href="{{ route('issues.create') }}" class="btn btn--primary btn--sm">
                 <x-wp-icon name="plus" class="wp-icon" />
                 <span>{{ __('issues.list.add') }}</span>
@@ -79,7 +79,12 @@
                        wire:key="issue-{{ $issue->id }}">
                         <div class="wp-row">
                             <span class="wp-melding-nr">{{ __('issues.card.nr', ['nr' => $issue->id]) }}</span>
-                            <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+                            <div class="wp-cluster">
+                                @unless ($issue->isApproved())
+                                    <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
+                                @endunless
+                                <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
+                            </div>
                         </div>
 
                         <p class="wp-melding-desc">{{ $issue->description }}</p>

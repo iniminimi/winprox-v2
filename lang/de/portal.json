@@ -6,7 +6,12 @@
         "title": "Nicht verfügbar",
         "location_inactive": "Dieses Portal ist derzeit nicht verfügbar.",
         "unit_inactive": "Dieses Portal ist derzeit nicht verfügbar.",
-        "team_inactive": "Dieses Teamportal ist derzeit nicht verfügbar."
+        "team_inactive": "Dieses Teamportal ist derzeit nicht verfügbar.",
+        "tenant_inactive": "Dieses Portal ist für diese Organisation derzeit nicht verfügbar.",
+        "subscription_inactive": "Dieses Portal ist vorübergehend nicht verfügbar. Wenden Sie sich an Ihren Administrator."
+    },
+    "issue": {
+        "awaiting_review_hint": "Ihre Meldung wird geprüft, bevor Details für andere sichtbar werden."
     },
     "tiles": {
         "new": "Meldung erstellen",

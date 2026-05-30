@@ -11,7 +11,10 @@
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('issues.show.report') }}</h2>
             @unless ($issue->isApproved())
-                <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
+                <div class="wp-cluster">
+                    <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
+                    <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
+                </div>
             @endunless
         </div>
 
@@ -26,9 +29,11 @@
         <p class="wp-text-body">{{ $issue->description }}</p>
 
         @if ($issue->photos->isNotEmpty())
-            <div class="wp-cluster">
+            <div class="wp-photo-grid">
                 @foreach ($issue->photos as $photo)
-                    <span class="wp-pill wp-pill--closed" wire:key="photo-{{ $photo->id }}">{{ $photo->path }}</span>
+                    <div class="wp-photo-thumb" wire:key="photo-{{ $photo->id }}">
+                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
+                    </div>
                 @endforeach
             </div>
         @endif

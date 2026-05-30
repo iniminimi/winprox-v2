@@ -6,7 +6,12 @@
         "title": "Unavailable",
         "location_inactive": "This portal is currently unavailable.",
         "unit_inactive": "This portal is currently unavailable.",
-        "team_inactive": "This team portal is currently unavailable."
+        "team_inactive": "This team portal is currently unavailable.",
+        "tenant_inactive": "This portal is currently unavailable for this organisation.",
+        "subscription_inactive": "This portal is temporarily unavailable. Please contact your administrator."
+    },
+    "issue": {
+        "awaiting_review_hint": "Your report is being reviewed before details become visible to others."
     },
     "tiles": {
         "new": "New report",

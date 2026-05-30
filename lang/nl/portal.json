@@ -6,7 +6,12 @@
         "title": "Niet beschikbaar",
         "location_inactive": "Dit portaal is momenteel niet beschikbaar.",
         "unit_inactive": "Dit portaal is momenteel niet beschikbaar.",
-        "team_inactive": "Dit teamportaal is momenteel niet beschikbaar."
+        "team_inactive": "Dit teamportaal is momenteel niet beschikbaar.",
+        "tenant_inactive": "Dit portaal is momenteel niet beschikbaar voor deze organisatie.",
+        "subscription_inactive": "Dit portaal is tijdelijk niet beschikbaar. Neem contact op met de beheerder."
+    },
+    "issue": {
+        "awaiting_review_hint": "Je melding wordt gecontroleerd voordat details zichtbaar worden voor anderen."
     },
     "tiles": {
         "new": "Melding maken",

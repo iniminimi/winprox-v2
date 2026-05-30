@@ -3,14 +3,12 @@
 namespace App\Support\Portal;
 
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\Unit;
 
 /**
  * Toegang/gating voor de publieke QR-portalen. Bij inactiviteit zijn alle acties
  * no-op en toont het portaal een gelokaliseerde reden. Onbekende tokens → 404.
- *
- * Tenant-niveau (abonnement/billing) bestaat nog niet in het V2-schema en wordt
- * hier daarom niet gecontroleerd.
  */
 final class PortalAccess
 {
@@ -19,7 +17,11 @@ final class PortalAccess
      */
     public static function unitPortalInactiveReasonKey(Unit $unit): ?string
     {
-        $unit->loadMissing('location');
+        $unit->loadMissing(['location', 'defaultInternalTeam', 'tenant']);
+
+        if ($reason = self::tenantInactiveReasonKey($unit->tenant)) {
+            return $reason;
+        }
 
         if ($unit->location === null || ! $unit->location->is_active) {
             return 'portal.inactive.location_inactive';
@@ -27,6 +29,11 @@ final class PortalAccess
 
         if (! $unit->is_active) {
             return 'portal.inactive.unit_inactive';
+        }
+
+        $team = $unit->defaultInternalTeam;
+        if ($team !== null && ! $team->is_active) {
+            return 'portal.inactive.team_inactive';
         }
 
         return null;
@@ -42,8 +49,34 @@ final class PortalAccess
      */
     public static function teamPortalInactiveReasonKey(InternalTeam $team): ?string
     {
+        $team->loadMissing('tenant');
+
+        if ($reason = self::tenantInactiveReasonKey($team->tenant)) {
+            return $reason;
+        }
+
         if (! $team->is_active) {
             return 'portal.inactive.team_inactive';
+        }
+
+        return null;
+    }
+
+    /**
+     * @return null|string Vertaalsleutel onder portal.inactive.*
+     */
+    private static function tenantInactiveReasonKey(?Tenant $tenant): ?string
+    {
+        if ($tenant === null) {
+            return 'portal.inactive.tenant_inactive';
+        }
+
+        if (! $tenant->is_active) {
+            return 'portal.inactive.tenant_inactive';
+        }
+
+        if (! $tenant->hasFullAppAccess()) {
+            return 'portal.inactive.subscription_inactive';
         }
 
         return null;

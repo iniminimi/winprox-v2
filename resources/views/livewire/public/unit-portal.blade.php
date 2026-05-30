@@ -128,6 +128,7 @@
                 @if ($selectedIssue->isApproved())
                     <p class="wp-text-body">{{ $selectedIssue->description }}</p>
                 @else
+                    <p class="wp-muted">{{ __('portal.issue.awaiting_review_hint') }}</p>
                     <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
                         <p class="wp-text-body">{{ $selectedIssue->description }}</p>
                     </div>
