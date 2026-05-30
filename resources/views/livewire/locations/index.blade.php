@@ -62,9 +62,7 @@
                     <h2 id="location-modal-title" class="wp-section-title">
                         {{ $editingLocationId ? __('locations.edit_title') : __('locations.create_title') }}
                     </h2>
-                    <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="closeModal" aria-label="{{ __('common.button.cancel') }}">
-                        <x-wp-icon name="x-mark" class="wp-icon" />
-                    </button>
+                    <x-wp-modal-close wire:click="closeModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
@@ -75,5 +73,6 @@
                 </div>
             </form>
         </div>
+        @endteleport
     @endif
 </div>

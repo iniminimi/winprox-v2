@@ -9,7 +9,7 @@
                     <h2 id="issue-create-title" class="wp-section-title">{{ __('issues.create.title') }}</h2>
                     <p class="wp-muted wp-text-sm">{{ __('issues.create.step', ['step' => $createStep, 'total' => 2]) }}</p>
                 </div>
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
+                <x-wp-modal-close wire:click="closeCreateModal" />
             </div>
 
             <div class="wp-field">
@@ -102,7 +102,7 @@
                     <h2 id="issue-create-title" class="wp-section-title">{{ __('issues.create.title') }}</h2>
                     <p class="wp-muted wp-text-sm">{{ __('issues.create.step', ['step' => $createStep, 'total' => 2]) }}</p>
                 </div>
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
+                <x-wp-modal-close wire:click="closeCreateModal" />
             </div>
 
             <p class="wp-muted">{{ __('issues.create.step_two_hint') }}</p>

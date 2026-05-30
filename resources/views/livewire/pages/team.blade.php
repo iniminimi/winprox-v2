@@ -189,9 +189,7 @@
                         <h2 class="wp-section-title">{{ $editingColleagueId ? __('team.colleagues.modal.edit_title') : __('team.colleagues.modal.create_title') }}</h2>
                         <p class="wp-muted wp-text-sm">{{ $editingColleagueId ? __('team.colleagues.modal.edit_subtitle') : __('team.colleagues.modal.create_subtitle') }}</p>
                     </div>
-                    <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="cancelColleague" aria-label="{{ __('common.button.cancel') }}">
-                        <x-wp-icon name="x-mark" class="wp-icon" />
-                    </button>
+                    <x-wp-modal-close wire:click="cancelColleague" />
                 </div>
 
                 <div class="wp-modal-body wp-stack">
@@ -255,6 +253,7 @@
             <form wire:submit="saveTeam" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
+                    <x-wp-modal-close wire:click="cancelTeam" />
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="teamName">{{ __('team.teams.modal.name') }}</label>

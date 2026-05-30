@@ -128,9 +128,7 @@
             <form wire:submit="saveLocation" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="location-edit-title" class="wp-section-title">{{ __('locations.edit_title') }}</h2>
-                    <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="closeLocationModal" aria-label="{{ __('common.button.cancel') }}">
-                        <x-wp-icon name="x-mark" class="wp-icon" />
-                    </button>
+                    <x-wp-modal-close wire:click="closeLocationModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields', ['formKey' => 'locationForm'])
@@ -149,7 +147,7 @@
             <form wire:submit="saveUnit" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ $editingUnitId ? __('locations.units.edit_title') : __('locations.units.create_title') }}</h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('showUnitModal', false)">{{ __('common.button.cancel') }}</button>
+                    <x-wp-modal-close wire:click="$set('showUnitModal', false)" />
                 </div>
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.name') }}</span>
@@ -179,7 +177,7 @@
             <form wire:submit="createBulk" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('showBulkModal', false)">{{ __('common.button.cancel') }}</button>
+                    <x-wp-modal-close wire:click="$set('showBulkModal', false)" />
                 </div>
 
                 <div class="wp-form-grid-2">

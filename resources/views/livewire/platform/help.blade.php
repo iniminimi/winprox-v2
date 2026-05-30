@@ -80,7 +80,7 @@
                     <h2 class="wp-section-title">
                         {{ $editingKbId ? __('platform.help.kb_edit') : __('platform.help.kb_add') }}
                     </h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="closeKbModal">{{ __('common.button.cancel') }}</button>
+                    <x-wp-modal-close wire:click="closeKbModal" />
                 </div>
 
                 <div class="wp-filter-bar">

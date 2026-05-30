@@ -51,7 +51,7 @@
             <form wire:submit="createAnnouncement" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.announcements.add') }}</h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
+                    <x-wp-modal-close wire:click="closeCreateModal" />
                 </div>
                 <p class="wp-muted">{{ __('locations.announcements.modal_subtitle') }}</p>
 
@@ -93,7 +93,7 @@
             <form wire:submit="updateAnnouncement" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.announcements.edit') }}</h2>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="closeEditModal">{{ __('common.button.cancel') }}</button>
+                    <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
                 <label class="wp-field">
