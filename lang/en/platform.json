@@ -1,0 +1,14 @@
+{
+    "title": "Platform",
+    "subtitle": "Choose an organisation to inspect (support view).",
+    "search": "Search",
+    "search_placeholder": "Organisation name…",
+    "empty": "No organisations found.",
+    "status_active": "active",
+    "status_inactive": "inactive",
+    "open_support": "Open support view",
+    "stop": "End support view",
+    "active": "You are viewing :name.",
+    "banner": "Support view: :name",
+    "nav": "Platform"
+}

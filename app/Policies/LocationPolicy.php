@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Location;
 use App\Models\User;
+use App\Support\Platform\SuperuserTenantAccess;
 
 class LocationPolicy
 {
@@ -14,7 +15,7 @@ class LocationPolicy
 
     public function view(User $user, Location $location): bool
     {
-        return $user->is_superuser || (int) $user->tenant_id === (int) $location->tenant_id;
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $location->tenant_id);
     }
 
     public function create(User $user): bool

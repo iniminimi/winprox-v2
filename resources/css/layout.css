@@ -149,6 +149,32 @@
 }
 
 /* Talen + gebruiker/uitloggen onderaan de zijbalk (V1-volgorde). */
+.wp-support-banner-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--wp-surface-elevated, #f4f6f5);
+    border-bottom: 1px solid var(--wp-border, #e2e8e6);
+    font-size: 0.875rem;
+}
+
+.wp-list-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--wp-border, #e2e8e6);
+}
+
+.wp-list-row:last-child {
+    border-bottom: none;
+}
+
 .wp-sidebar-foot {
     margin-top: auto;
     padding-top: 0.875rem;

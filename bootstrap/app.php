@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Middleware\ApplySupportTenantContext;
+use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
+use App\Http\Middleware\RequireSupportTenantForSuperuser;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
@@ -24,9 +27,15 @@ return Application::configure(basePath: dirname(__DIR__))
             'stripe/webhook',
         ]);
 
+        $middleware->alias([
+            'superuser' => EnsureSuperuser::class,
+            'support.tenant' => RequireSupportTenantForSuperuser::class,
+        ]);
+
         // Locale-keuze (sessie) toepassen op elke web-request.
         $middleware->web(append: [
             SetLocale::class,
+            ApplySupportTenantContext::class,
             EnsureTenantHasAppAccess::class,
         ]);
     })

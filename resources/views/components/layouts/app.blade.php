@@ -9,6 +9,14 @@
 </head>
 <body class="wp-shell">
     @php
+        use App\Models\Tenant;
+        use App\Support\Platform\SupportTenantContext;
+
+        $supportTenant = null;
+        if (auth()->user()?->is_superuser && SupportTenantContext::isActive()) {
+            $supportTenant = Tenant::query()->find(SupportTenantContext::activeTenantId());
+        }
+
         $primaryNav = [
             ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
             ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],
@@ -17,6 +25,9 @@
             ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
         ];
         $secondaryNav = [
+            ...(auth()->user()?->is_superuser ? [
+                ['route' => 'platform.tenants', 'active' => 'platform.*', 'icon' => 'subscription', 'label' => 'platform.nav'],
+            ] : []),
             ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.team'],
             ...(auth()->user()?->isAdmin() ? [
                 ['route' => 'settings.api', 'active' => 'settings.*', 'icon' => 'subscription', 'label' => 'settings.api.nav'],
@@ -32,7 +43,9 @@
         <aside class="wp-sidebar" :class="{ 'is-open': nav }">
             <div class="wp-sidebar-head">
                 <span class="wp-sidebar-brand">WinProx</span>
-                @if (auth()->user()?->tenant?->name)
+                @if ($supportTenant)
+                    <span class="wp-sidebar-tenant">{{ $supportTenant->name }}</span>
+                @elseif (auth()->user()?->tenant?->name)
                     <span class="wp-sidebar-tenant">{{ auth()->user()->tenant->name }}</span>
                 @endif
             </div>
@@ -69,7 +82,9 @@
                 @auth
                     <div class="wp-sidebar-user">
                         <p class="wp-sidebar-user-name">{{ auth()->user()->name }}</p>
-                        @if (auth()->user()->tenant?->name)
+                        @if ($supportTenant)
+                            <p class="wp-sidebar-user-meta">{{ $supportTenant->name }} ({{ __('platform.nav') }})</p>
+                        @elseif (auth()->user()->tenant?->name)
                             <p class="wp-sidebar-user-meta">{{ auth()->user()->tenant->name }}</p>
                         @endif
                         <p class="wp-sidebar-user-meta">{{ auth()->user()->email }}</p>
@@ -93,6 +108,12 @@
         </a>
 
         <div class="wp-content">
+            @if ($supportTenant)
+                <div class="wp-support-banner-bar" role="status">
+                    <span>{{ __('platform.banner', ['name' => $supportTenant->name]) }}</span>
+                    <a href="{{ route('platform.tenants') }}" class="btn btn--ghost btn--sm">{{ __('platform.stop') }}</a>
+                </div>
+            @endif
             <main class="wp-main">
                 {{ $slot }}
             </main>

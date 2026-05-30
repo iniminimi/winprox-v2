@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Locations;
 
 use App\Models\Location;
+use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Qr\Word\QrStickerWordExporter;
@@ -46,7 +47,7 @@ final class LocationQrPackDownloadController
     {
         abort_unless(auth()->check(), 403);
         abort_unless(
-            auth()->user()->is_superuser || (int) auth()->user()->tenant_id === (int) $location->tenant_id,
+            SuperuserTenantAccess::canAccessTenant(auth()->user(), (int) $location->tenant_id),
             403,
         );
     }

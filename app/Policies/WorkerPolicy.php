@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Worker;
+use App\Support\Platform\SuperuserTenantAccess;
 
 class WorkerPolicy
 {
@@ -14,6 +15,6 @@ class WorkerPolicy
 
     public function view(User $user, Worker $worker): bool
     {
-        return $user->is_superuser || (int) $user->tenant_id === (int) $worker->tenant_id;
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $worker->tenant_id);
     }
 }

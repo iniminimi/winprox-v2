@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Unit;
 use App\Models\User;
+use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Units\UnitDeletionGuard;
 
 class UnitPolicy
@@ -15,7 +16,7 @@ class UnitPolicy
 
     public function view(User $user, Unit $unit): bool
     {
-        return $user->is_superuser || (int) $user->tenant_id === (int) $unit->tenant_id;
+        return SuperuserTenantAccess::canAccessTenant($user, (int) $unit->tenant_id);
     }
 
     public function create(User $user): bool

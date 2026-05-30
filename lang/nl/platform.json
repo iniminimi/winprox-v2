@@ -1,0 +1,14 @@
+{
+    "title": "Platform",
+    "subtitle": "Kies een organisatie om mee te kijken (support view).",
+    "search": "Zoeken",
+    "search_placeholder": "Organisatienaam…",
+    "empty": "Geen organisaties gevonden.",
+    "status_active": "actief",
+    "status_inactive": "inactief",
+    "open_support": "Support view openen",
+    "stop": "Support view beëindigen",
+    "active": "Je kijkt mee bij :name.",
+    "banner": "Support view: :name",
+    "nav": "Platform"
+}

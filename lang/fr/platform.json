@@ -1,0 +1,14 @@
+{
+    "title": "Plateforme",
+    "subtitle": "Choisissez une organisation à consulter (vue support).",
+    "search": "Rechercher",
+    "search_placeholder": "Nom de l'organisation…",
+    "empty": "Aucune organisation trouvée.",
+    "status_active": "actif",
+    "status_inactive": "inactif",
+    "open_support": "Ouvrir la vue support",
+    "stop": "Terminer la vue support",
+    "active": "Vous consultez :name.",
+    "banner": "Vue support : :name",
+    "nav": "Plateforme"
+}

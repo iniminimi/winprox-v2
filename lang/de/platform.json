@@ -1,0 +1,14 @@
+{
+    "title": "Plattform",
+    "subtitle": "Organisation für die Support-Ansicht wählen.",
+    "search": "Suchen",
+    "search_placeholder": "Organisationsname…",
+    "empty": "Keine Organisationen gefunden.",
+    "status_active": "aktiv",
+    "status_inactive": "inaktiv",
+    "open_support": "Support-Ansicht öffnen",
+    "stop": "Support-Ansicht beenden",
+    "active": "Sie sehen :name.",
+    "banner": "Support-Ansicht: :name",
+    "nav": "Plattform"
+}

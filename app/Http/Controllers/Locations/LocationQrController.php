@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Locations;
 
 use App\Models\Location;
+use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Qr\TeamQrCode;
 
 final class LocationQrController
@@ -10,7 +11,7 @@ final class LocationQrController
     public function __invoke(Location $location): \Illuminate\Contracts\View\View
     {
         abort_unless(
-            auth()->user()->is_superuser || (int) auth()->user()->tenant_id === (int) $location->tenant_id,
+            SuperuserTenantAccess::canAccessTenant(auth()->user(), (int) $location->tenant_id),
             403,
         );
 

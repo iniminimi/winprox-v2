@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Support\Platform\SuperuserTenantAccess;
 
 class TaskPolicy
 {
@@ -30,10 +31,6 @@ class TaskPolicy
 
     private function sameTenant(User $user, int $tenantId): bool
     {
-        if ($user->is_superuser && $user->tenant_id === null) {
-            return true;
-        }
-
-        return (int) $user->tenant_id === $tenantId;
+        return SuperuserTenantAccess::canAccessTenant($user, $tenantId);
     }
 }
