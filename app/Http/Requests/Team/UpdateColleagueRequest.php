@@ -20,10 +20,21 @@ class UpdateColleagueRequest extends FormRequest
      */
     public function rules(): array
     {
+        return self::baseRules($this->userId);
+    }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public static function baseRules(?int $userId = null): array
+    {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($this->userId)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($userId)],
+            'locale' => ['required', Rule::in(config('locales.supported', []))],
             'role' => ['required', Rule::in(User::ROLES)],
+            'password' => ['nullable', 'string', 'min:8'],
+            'password_confirmation' => ['nullable', 'same:password'],
         ];
     }
 
@@ -32,13 +43,8 @@ class UpdateColleagueRequest extends FormRequest
      */
     public function messages(): array
     {
-        return [
-            'name.required' => __('team.errors.name_required'),
-            'email.required' => __('team.errors.email_required'),
-            'email.email' => __('team.errors.email_invalid'),
-            'email.unique' => __('team.errors.email_taken'),
-            'role.required' => __('team.errors.role_required'),
-            'role.in' => __('team.errors.role_required'),
-        ];
+        return array_merge(StoreColleagueRequest::messageMap(), [
+            'password.min' => __('team.errors.password_min'),
+        ]);
     }
 }

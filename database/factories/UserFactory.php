@@ -27,6 +27,7 @@ class UserFactory extends Factory
             'tenant_id' => \App\Models\Tenant::factory(),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'locale' => 'nl',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

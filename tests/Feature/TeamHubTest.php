@@ -40,7 +40,11 @@ it('laat een admin een collega-gebruiker aanmaken met set-wachtwoord-mail', func
         ->call('openCreateColleague')
         ->set('colleagueName', 'Nieuwe Collega')
         ->set('colleagueEmail', 'collega@acme.test')
+        ->set('colleagueLocale', 'nl')
         ->set('colleagueRole', User::ROLE_EMPLOYEE)
+        ->set('colleaguePassword', 'wachtwoord123')
+        ->set('colleaguePasswordConfirmation', 'wachtwoord123')
+        ->set('colleagueSendAccountEmail', true)
         ->call('saveColleague')
         ->assertHasNoErrors();
 
@@ -48,9 +52,34 @@ it('laat een admin een collega-gebruiker aanmaken met set-wachtwoord-mail', func
     expect($user)->not->toBeNull()
         ->and($user->tenant_id)->toBe($tenant->id)
         ->and($user->role)->toBe(User::ROLE_EMPLOYEE)
+        ->and($user->locale)->toBe('nl')
         ->and($user->is_active)->toBeTrue();
 
     Notification::assertSentTo($user, ResetPasswordNotification::class);
+});
+
+it('stuurt geen accountmail wanneer de checkbox uit staat', function () {
+    Notification::fake();
+    [, $admin] = tenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openCreateColleague')
+        ->set('colleagueName', 'Zonder Mail')
+        ->set('colleagueEmail', 'zonder-mail@acme.test')
+        ->set('colleagueLocale', 'en')
+        ->set('colleagueRole', User::ROLE_EMPLOYEE)
+        ->set('colleaguePassword', 'wachtwoord123')
+        ->set('colleaguePasswordConfirmation', 'wachtwoord123')
+        ->set('colleagueSendAccountEmail', false)
+        ->call('saveColleague')
+        ->assertHasNoErrors();
+
+    $user = User::where('email', 'zonder-mail@acme.test')->first();
+    expect($user)->not->toBeNull()
+        ->and($user->locale)->toBe('en');
+
+    Notification::assertNothingSent();
 });
 
 it('laat een admin een collega bewerken en deactiveren', function () {
@@ -62,12 +91,14 @@ it('laat een admin een collega bewerken en deactiveren', function () {
         ->call('openEditColleague', $colleague->id)
         ->set('colleagueName', 'Nieuw')
         ->set('colleagueEmail', $colleague->email)
+        ->set('colleagueLocale', 'fr')
         ->set('colleagueRole', User::ROLE_ADMIN)
         ->call('saveColleague')
         ->assertHasNoErrors();
 
     expect($colleague->fresh()->name)->toBe('Nieuw')
-        ->and($colleague->fresh()->role)->toBe(User::ROLE_ADMIN);
+        ->and($colleague->fresh()->role)->toBe(User::ROLE_ADMIN)
+        ->and($colleague->fresh()->locale)->toBe('fr');
 
     Livewire::actingAs($admin)
         ->test(Team::class)

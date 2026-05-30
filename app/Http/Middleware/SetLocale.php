@@ -17,7 +17,12 @@ class SetLocale
         $supported = config('locales.supported', []);
         $default = config('locales.default', config('app.locale'));
 
-        $locale = $request->session()->get('locale', $default);
+        $userLocale = $request->user()?->locale;
+        if (is_string($userLocale) && in_array($userLocale, $supported, true)) {
+            $locale = $userLocale;
+        } else {
+            $locale = $request->session()->get('locale', $default);
+        }
 
         if (! in_array($locale, $supported, true)) {
             $locale = $default;

@@ -28,7 +28,10 @@ class BillingUserLimitTest extends TestCase
         app(CreateColleagueAction::class)->handle([
             'name' => 'Zesde',
             'email' => 'zes@example.test',
+            'locale' => 'nl',
             'role' => User::ROLE_EMPLOYEE,
+            'password' => 'wachtwoord123',
+            'send_account_email' => false,
         ], $tenant->id);
     }
 
@@ -43,7 +46,10 @@ class BillingUserLimitTest extends TestCase
         $user = app(CreateColleagueAction::class)->handle([
             'name' => 'Vijfde',
             'email' => 'vijf@example.test',
+            'locale' => 'nl',
             'role' => User::ROLE_EMPLOYEE,
+            'password' => 'wachtwoord123',
+            'send_account_email' => false,
         ], $tenant->id);
 
         $this->assertSame('vijf@example.test', $user->email);

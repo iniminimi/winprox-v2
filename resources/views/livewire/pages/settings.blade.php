@@ -14,9 +14,15 @@
         </div>
         <div class="wp-field">
             <label class="wp-label" for="orgLogo">{{ __('settings.org.logo_label') }}</label>
-            @if (auth()->user()->tenant?->logo_path)
+            @php
+                $settingsTenant = auth()->user()->tenant;
+                if (! $settingsTenant && auth()->user()->is_superuser && \App\Support\Platform\SupportTenantContext::isActive()) {
+                    $settingsTenant = \App\Models\Tenant::query()->find(\App\Support\Platform\SupportTenantContext::activeTenantId());
+                }
+            @endphp
+            @if ($settingsTenant?->logo_path)
                 <p class="wp-hint">{{ __('settings.org.logo_current') }}</p>
-                <img src="{{ Storage::disk('public')->url(auth()->user()->tenant->logo_path) }}" alt="" class="wp-org-logo-preview" width="80" height="80">
+                <img src="{{ Storage::disk('public')->url($settingsTenant->logo_path) }}" alt="" class="wp-org-logo-preview" width="80" height="80">
             @endif
             <input type="file" id="orgLogo" class="wp-input" wire:model="orgLogo" accept="image/*">
             @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror

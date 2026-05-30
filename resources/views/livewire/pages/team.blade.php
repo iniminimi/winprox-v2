@@ -182,32 +182,68 @@
 
     {{-- Modal: collega-gebruiker --------------------------------------------}}
     @if ($canManageUsers && $showColleagueModal)
-        <div class="wp-modal">
-            <form wire:submit="saveColleague" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ $editingColleagueId ? __('team.colleagues.modal.edit_title') : __('team.colleagues.modal.create_title') }}</h2>
+        <div class="wp-modal" role="dialog" aria-modal="true">
+            <form wire:submit="saveColleague" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <div class="wp-stack-tight">
+                        <h2 class="wp-section-title">{{ $editingColleagueId ? __('team.colleagues.modal.edit_title') : __('team.colleagues.modal.create_title') }}</h2>
+                        <p class="wp-muted wp-text-sm">{{ $editingColleagueId ? __('team.colleagues.modal.edit_subtitle') : __('team.colleagues.modal.create_subtitle') }}</p>
+                    </div>
+                    <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="cancelColleague" aria-label="{{ __('common.button.cancel') }}">
+                        <x-wp-icon name="x-mark" class="wp-icon" />
+                    </button>
                 </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="colleagueName">{{ __('team.colleagues.modal.name') }}</label>
-                    <input type="text" id="colleagueName" class="wp-input" wire:model="colleagueName">
-                    @error('colleagueName') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <input type="text" id="colleagueName" class="wp-input" wire:model="colleagueName"
+                               placeholder="{{ __('team.colleagues.modal.placeholder_name') }}" autocomplete="name">
+                        @error('colleagueName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <input type="email" id="colleagueEmail" class="wp-input" wire:model="colleagueEmail"
+                               placeholder="{{ __('team.colleagues.modal.placeholder_email') }}" autocomplete="email">
+                        @error('colleagueEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <select id="colleagueLocale" class="wp-select" wire:model="colleagueLocale" aria-label="{{ __('team.colleagues.modal.locale') }}">
+                            @foreach (config('locales.supported', []) as $localeCode)
+                                <option value="{{ $localeCode }}">{{ config('locales.labels.'.$localeCode, strtoupper($localeCode)) }}</option>
+                            @endforeach
+                        </select>
+                        @error('colleagueLocale') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <select id="colleagueRole" class="wp-select" wire:model="colleagueRole" aria-label="{{ __('team.colleagues.modal.role') }}">
+                            <option value="{{ \App\Models\User::ROLE_EMPLOYEE }}">{{ __('team.colleagues.role_employee') }}</option>
+                            <option value="{{ \App\Models\User::ROLE_ADMIN }}">{{ __('team.colleagues.role_admin') }}</option>
+                        </select>
+                        @error('colleagueRole') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <x-wp-password-input wireModel="colleaguePassword" id="colleaguePassword"
+                                             placeholder="{{ __('team.colleagues.modal.placeholder_password') }}" />
+                        @error('colleaguePassword') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <x-wp-password-input wireModel="colleaguePasswordConfirmation" id="colleaguePasswordConfirmation"
+                                             placeholder="{{ __('team.colleagues.modal.placeholder_password_confirm') }}" />
+                        @error('colleaguePasswordConfirmation') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
+                    @if (! $editingColleagueId)
+                        <label class="wp-check wp-check--boxed">
+                            <input type="checkbox" wire:model="colleagueSendAccountEmail">
+                            <span>{{ __('team.colleagues.modal.send_account_email') }}</span>
+                        </label>
+                    @else
+                        <p class="wp-hint">{{ __('team.colleagues.modal.edit_password_hint') }}</p>
+                    @endif
                 </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="colleagueEmail">{{ __('team.colleagues.modal.email') }}</label>
-                    <input type="email" id="colleagueEmail" class="wp-input" wire:model="colleagueEmail">
-                    @error('colleagueEmail') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="colleagueRole">{{ __('team.colleagues.modal.role') }}</label>
-                    <select id="colleagueRole" class="wp-select" wire:model="colleagueRole">
-                        <option value="{{ \App\Models\User::ROLE_EMPLOYEE }}">{{ __('team.colleagues.role_employee') }}</option>
-                        <option value="{{ \App\Models\User::ROLE_ADMIN }}">{{ __('team.colleagues.role_admin') }}</option>
-                    </select>
-                    @error('colleagueRole') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-cluster wp-cluster--tight">
-                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="cancelColleague">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('team.colleagues.modal.save') }}</button>
                 </div>
             </form>
         </div>

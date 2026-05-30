@@ -30,6 +30,7 @@ class User extends Authenticatable
         'tenant_id',
         'name',
         'email',
+        'locale',
         'password',
         'is_superuser',
         'is_active',

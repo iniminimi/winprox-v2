@@ -17,9 +17,19 @@
         "modal": {
             "create_title": "Ajouter un utilisateur",
             "edit_title": "Modifier l'utilisateur",
+            "create_subtitle": "Créer un utilisateur pour votre organisation ou votre équipe sur site",
+            "edit_subtitle": "Modifier le nom, l'e-mail, la langue et le rôle de cet utilisateur",
             "name": "Nom",
             "email": "Adresse e-mail",
-            "role": "Rôle"
+            "locale": "Langue",
+            "role": "Rôle",
+            "placeholder_name": "Nom complet",
+            "placeholder_email": "Adresse e-mail professionnelle",
+            "placeholder_password": "Mot de passe",
+            "placeholder_password_confirm": "Confirmer le mot de passe",
+            "send_account_email": "Envoyer immédiatement l'e-mail du compte avec lien de mot de passe",
+            "edit_password_hint": "Laissez les champs mot de passe vides pour conserver le mot de passe actuel.",
+            "save": "Enregistrer l'utilisateur"
         }
     },
     "teams": {
@@ -68,6 +78,10 @@
         "email_invalid": "Indiquez une adresse e-mail valide.",
         "email_taken": "Cette adresse e-mail est déjà utilisée.",
         "role_required": "Choisissez un rôle.",
+        "locale_required": "Choisissez une langue.",
+        "password_required": "Saisissez un mot de passe.",
+        "password_min": "Le mot de passe doit comporter au moins 8 caractères.",
+        "password_confirm_required": "Confirmez le mot de passe.",
         "team_name_required": "Indiquez un nom d'équipe.",
         "worker_name_required": "Indiquez un prénom et un nom.",
         "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues."

@@ -6,16 +6,14 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Support\Str;
 
 /**
- * Maakt een collega-gebruiker (beheerder) in de opgegeven tenant aan en stuurt
- * een account-/welkomstmail met een set-wachtwoord-link via de password broker
- * (hergebruikt de bestaande reset-flow).
+ * Maakt een collega-gebruiker (beheerder) in de opgegeven tenant aan.
+ * Wachtwoord wordt door de beheerder ingesteld; optioneel accountmail met reset-link.
  *
  * Integration-first (§3.0): tenant expliciet als parameter, geen globale state.
  *
- * @phpstan-param array{name: string, email: string, role: string} $data
+ * @phpstan-param array{name: string, email: string, role: string, locale: string, password: string, send_account_email?: bool} $data
  */
 class CreateColleagueAction
 {
@@ -33,15 +31,16 @@ class CreateColleagueAction
             'tenant_id' => $tenantId,
             'name' => $data['name'],
             'email' => $data['email'],
+            'locale' => $data['locale'],
             'role' => $data['role'] ?? User::ROLE_EMPLOYEE,
-            // Tijdelijk willekeurig wachtwoord; de gebruiker stelt zijn eigen
-            // wachtwoord in via de set-wachtwoord-link uit de mail.
-            'password' => Str::random(40),
+            'password' => $data['password'],
             'is_superuser' => false,
             'is_active' => true,
         ]);
 
-        Password::sendResetLink(['email' => $user->email]);
+        if (! empty($data['send_account_email'])) {
+            Password::sendResetLink(['email' => $user->email]);
+        }
 
         $this->audit->record(
             userId: $actorUserId,
@@ -49,7 +48,7 @@ class CreateColleagueAction
             action: 'user.colleague_created',
             modelType: User::class,
             modelId: (int) $user->id,
-            payload: ['id' => $user->id, 'email' => $user->email, 'role' => $user->role],
+            payload: ['id' => $user->id, 'email' => $user->email, 'role' => $user->role, 'locale' => $user->locale],
         );
 
         return $user;

@@ -43,7 +43,11 @@ class Team extends Component
     public ?int $editingColleagueId = null;
     public string $colleagueName = '';
     public string $colleagueEmail = '';
+    public string $colleagueLocale = 'nl';
     public string $colleagueRole = User::ROLE_EMPLOYEE;
+    public string $colleaguePassword = '';
+    public string $colleaguePasswordConfirmation = '';
+    public bool $colleagueSendAccountEmail = true;
 
     // Team (modal)
     public bool $showTeamModal = false;
@@ -78,7 +82,11 @@ class Team extends Component
         $this->editingColleagueId = $user->id;
         $this->colleagueName = $user->name;
         $this->colleagueEmail = $user->email;
+        $this->colleagueLocale = $user->locale ?: config('locales.default', 'nl');
         $this->colleagueRole = $user->role;
+        $this->colleaguePassword = '';
+        $this->colleaguePasswordConfirmation = '';
+        $this->colleagueSendAccountEmail = false;
         $this->resetErrorBag();
         $this->showColleagueModal = true;
     }
@@ -89,16 +97,13 @@ class Team extends Component
             $user = User::where('tenant_id', Tenancy::id())->findOrFail($this->editingColleagueId);
             $this->authorize('update', $user);
 
-            $request = new UpdateColleagueRequest;
-            $request->userId = $user->id;
-            $validated = $this->validateColleague($request->rules(), $request->messages());
+            $validated = $this->validateColleagueForUpdate($user->id);
 
             $updateColleague->handle($user, $validated, (int) auth()->id());
         } else {
             $this->authorize('create', User::class);
 
-            $request = new StoreColleagueRequest;
-            $validated = $this->validateColleague($request->rules(), $request->messages());
+            $validated = $this->validateColleagueForCreate();
 
             try {
                 $createColleague->handle($validated, (int) Tenancy::id(), (int) auth()->id());
@@ -119,32 +124,89 @@ class Team extends Component
     }
 
     /**
-     * @param  array<string, mixed>  $rules
-     * @param  array<string, string>  $messages
      * @return array<string, mixed>
      */
-    private function validateColleague(array $rules, array $messages): array
+    private function validateColleagueForCreate(): array
     {
+        $rules = StoreColleagueRequest::baseRules();
+        $messages = StoreColleagueRequest::messageMap();
+
         $validated = $this->validate(
             [
                 'colleagueName' => $rules['name'],
                 'colleagueEmail' => $rules['email'],
+                'colleagueLocale' => $rules['locale'],
                 'colleagueRole' => $rules['role'],
+                'colleaguePassword' => $rules['password'],
+                'colleaguePasswordConfirmation' => ['required', 'same:colleaguePassword'],
+                'colleagueSendAccountEmail' => $rules['send_account_email'],
             ],
-            [
-                'colleagueName.required' => $messages['name.required'] ?? '',
-                'colleagueEmail.required' => $messages['email.required'] ?? '',
-                'colleagueEmail.email' => $messages['email.email'] ?? '',
-                'colleagueEmail.unique' => $messages['email.unique'] ?? '',
-                'colleagueRole.required' => $messages['role.required'] ?? '',
-                'colleagueRole.in' => $messages['role.in'] ?? '',
-            ],
+            $this->colleagueValidationMessages($messages),
         );
 
         return [
             'name' => $validated['colleagueName'],
             'email' => $validated['colleagueEmail'],
+            'locale' => $validated['colleagueLocale'],
             'role' => $validated['colleagueRole'],
+            'password' => $validated['colleaguePassword'],
+            'send_account_email' => (bool) $validated['colleagueSendAccountEmail'],
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function validateColleagueForUpdate(int $userId): array
+    {
+        $rules = UpdateColleagueRequest::baseRules($userId);
+        $messages = (new UpdateColleagueRequest)->messages();
+
+        $validated = $this->validate(
+            [
+                'colleagueName' => $rules['name'],
+                'colleagueEmail' => $rules['email'],
+                'colleagueLocale' => $rules['locale'],
+                'colleagueRole' => $rules['role'],
+                'colleaguePassword' => $rules['password'],
+                'colleaguePasswordConfirmation' => ['nullable', 'required_with:colleaguePassword', 'same:colleaguePassword'],
+            ],
+            $this->colleagueValidationMessages($messages),
+        );
+
+        $payload = [
+            'name' => $validated['colleagueName'],
+            'email' => $validated['colleagueEmail'],
+            'locale' => $validated['colleagueLocale'],
+            'role' => $validated['colleagueRole'],
+        ];
+
+        if ($validated['colleaguePassword'] !== '') {
+            $payload['password'] = $validated['colleaguePassword'];
+        }
+
+        return $payload;
+    }
+
+    /**
+     * @param  array<string, string>  $messages
+     * @return array<string, string>
+     */
+    private function colleagueValidationMessages(array $messages): array
+    {
+        return [
+            'colleagueName.required' => $messages['name.required'] ?? '',
+            'colleagueEmail.required' => $messages['email.required'] ?? '',
+            'colleagueEmail.email' => $messages['email.email'] ?? '',
+            'colleagueEmail.unique' => $messages['email.unique'] ?? '',
+            'colleagueLocale.required' => $messages['locale.required'] ?? '',
+            'colleagueLocale.in' => $messages['locale.in'] ?? '',
+            'colleagueRole.required' => $messages['role.required'] ?? '',
+            'colleagueRole.in' => $messages['role.in'] ?? '',
+            'colleaguePassword.required' => $messages['password.required'] ?? '',
+            'colleaguePassword.min' => $messages['password.min'] ?? '',
+            'colleaguePasswordConfirmation.required' => $messages['password_confirmation.required'] ?? '',
+            'colleaguePasswordConfirmation.same' => $messages['password_confirmation.same'] ?? '',
         ];
     }
 
@@ -167,7 +229,19 @@ class Team extends Component
 
     private function resetColleagueForm(): void
     {
-        $this->reset(['colleagueName', 'colleagueEmail', 'colleagueRole', 'editingColleagueId']);
+        $this->reset([
+            'colleagueName',
+            'colleagueEmail',
+            'colleagueLocale',
+            'colleagueRole',
+            'colleaguePassword',
+            'colleaguePasswordConfirmation',
+            'colleagueSendAccountEmail',
+            'editingColleagueId',
+        ]);
+        $this->colleagueLocale = (string) (auth()->user()?->locale ?: config('locales.default', 'nl'));
+        $this->colleagueRole = User::ROLE_EMPLOYEE;
+        $this->colleagueSendAccountEmail = true;
         $this->resetErrorBag();
     }
 

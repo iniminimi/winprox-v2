@@ -24,6 +24,11 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
         'contact.index',
     ];
 
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('common.nav.settings'), false);
+
     foreach ($routes as $route) {
         $this->actingAs($user)
             ->get(route($route))

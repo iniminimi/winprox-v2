@@ -14,11 +14,18 @@ class UpdateColleagueAction
      */
     public function handle(User $user, array $data, ?int $actorUserId = null): User
     {
-        $user->update([
+        $attributes = [
             'name' => $data['name'],
             'email' => $data['email'],
+            'locale' => $data['locale'],
             'role' => $data['role'] ?? $user->role,
-        ]);
+        ];
+
+        if (! empty($data['password'])) {
+            $attributes['password'] = $data['password'];
+        }
+
+        $user->update($attributes);
 
         $fresh = $user->fresh();
 

@@ -24,13 +24,19 @@
             ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
             ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
         ];
+        $authUser = auth()->user();
+        $showTenantAdminNav = $authUser && (
+            $authUser->isAdmin()
+            || ($authUser->is_superuser && $supportTenant !== null)
+        );
+
         $secondaryNav = [
             ...(auth()->user()?->is_superuser ? [
                 ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.nav'],
                 ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
             ] : []),
             ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.users'],
-            ...(auth()->user()?->isAdmin() ? [
+            ...($showTenantAdminNav ? [
                 ['route' => 'settings.index', 'active' => 'settings.index', 'icon' => 'settings', 'label' => 'common.nav.settings'],
                 ['route' => 'settings.api', 'active' => 'settings.api', 'icon' => 'subscription', 'label' => 'settings.api.nav'],
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],

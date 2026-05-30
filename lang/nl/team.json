@@ -17,9 +17,19 @@
         "modal": {
             "create_title": "Gebruiker toevoegen",
             "edit_title": "Gebruiker bewerken",
+            "create_subtitle": "Maak een nieuwe gebruiker aan voor je organisatie of team ter plaatse",
+            "edit_subtitle": "Pas naam, e-mail, taal en rol van deze gebruiker aan",
             "name": "Naam",
             "email": "E-mailadres",
-            "role": "Rol"
+            "locale": "Taal",
+            "role": "Rol",
+            "placeholder_name": "Volledige naam",
+            "placeholder_email": "Werk-e-mailadres",
+            "placeholder_password": "Wachtwoord",
+            "placeholder_password_confirm": "Bevestig wachtwoord",
+            "send_account_email": "Stuur meteen accountmail met wachtwoordlink",
+            "edit_password_hint": "Laat wachtwoordvelden leeg om het huidige wachtwoord te behouden.",
+            "save": "Gebruiker opslaan"
         }
     },
     "teams": {
@@ -68,6 +78,10 @@
         "email_invalid": "Geef een geldig e-mailadres op.",
         "email_taken": "Dit e-mailadres is al in gebruik.",
         "role_required": "Kies een rol.",
+        "locale_required": "Kies een taal.",
+        "password_required": "Geef een wachtwoord op.",
+        "password_min": "Het wachtwoord moet minstens 8 tekens zijn.",
+        "password_confirm_required": "Bevestig het wachtwoord.",
         "team_name_required": "Geef een teamnaam op.",
         "worker_name_required": "Geef voor- en achternaam op.",
         "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen."
