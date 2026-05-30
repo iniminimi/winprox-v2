@@ -55,10 +55,11 @@
     </div>
 
     @if ($showModal)
-        <div class="wp-modal" role="dialog" aria-modal="true">
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-modal-title">
             <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
-                    <h2 class="wp-section-title">
+                    <h2 id="location-modal-title" class="wp-section-title">
                         {{ $editingLocationId ? __('locations.edit_title') : __('locations.create_title') }}
                     </h2>
                     <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="closeModal" aria-label="{{ __('common.button.cancel') }}">

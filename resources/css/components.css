@@ -948,18 +948,28 @@ a.wp-kpi:hover {
     inset: 0;
     z-index: 60;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    min-height: 100%;
     padding: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background-color: color-mix(in srgb, var(--wp-text) 45%, transparent);
 }
 
 .wp-modal-card {
     width: 100%;
     max-width: 32rem;
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
+    margin-block: auto;
+    flex-shrink: 0;
     box-shadow: var(--wp-shadow-lg);
+}
+
+.wp-modal-card:not(.wp-modal-card--form) {
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
 }
 
 .wp-modal-card--wide {
@@ -977,7 +987,8 @@ a.wp-kpi:hover {
     display: flex;
     flex-direction: column;
     padding: 0;
-    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    min-height: 0;
     overflow: hidden;
 }
 
@@ -990,9 +1001,12 @@ a.wp-kpi:hover {
 .wp-modal-body {
     flex: 1 1 auto;
     min-height: 0;
+    max-height: calc(100dvh - 11rem);
     padding: 1.5rem;
+    overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
 }
 
 .wp-modal-foot {

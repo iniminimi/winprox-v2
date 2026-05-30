@@ -123,10 +123,11 @@
     @endif
 
     @if ($showLocationModal)
-        <div class="wp-modal" role="dialog" aria-modal="true">
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-edit-title">
             <form wire:submit="saveLocation" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
-                    <h2 class="wp-section-title">{{ __('locations.edit_title') }}</h2>
+                    <h2 id="location-edit-title" class="wp-section-title">{{ __('locations.edit_title') }}</h2>
                     <button type="button" class="btn btn--ghost btn--sm wp-modal-close" wire:click="closeLocationModal" aria-label="{{ __('common.button.cancel') }}">
                         <x-wp-icon name="x-mark" class="wp-icon" />
                     </button>
@@ -140,6 +141,7 @@
                 </div>
             </form>
         </div>
+        @endteleport
     @endif
 
     @if ($showUnitModal)
