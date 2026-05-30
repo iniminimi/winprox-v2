@@ -360,7 +360,7 @@
 }
 
 /* Menu-knop linksboven op smalle schermen (zijbalk is off-canvas). */
-.wp-nav-toggle-fixed {
+.wp-nav-toggle-fixed.btn {
     display: none;
     position: fixed;
     top: max(0.75rem, env(safe-area-inset-top));
@@ -462,7 +462,7 @@
         background-color: rgba(17, 24, 39, 0.4);
     }
 
-    .wp-nav-toggle-fixed {
+    .wp-nav-toggle-fixed.btn {
         display: inline-flex;
     }
 

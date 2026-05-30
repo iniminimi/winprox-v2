@@ -12,12 +12,6 @@
         <p class="wp-muted">{{ __('contact.assistant_hint') }}</p>
 
         @auth
-            <div class="wp-stack-tight">
-                <p>
-                    <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('gdpr.export_link') }}</a>
-                </p>
-                <p class="wp-muted wp-text-sm">{{ __('gdpr.export_hint') }}</p>
-            </div>
             <p>
                 <a href="{{ route('dashboard') }}" class="btn btn--ghost btn--sm">{{ __('contact.back_dashboard') }}</a>
             </p>

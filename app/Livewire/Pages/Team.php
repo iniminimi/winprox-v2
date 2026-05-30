@@ -12,15 +12,12 @@ use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
 use App\Actions\Team\SetWorkerTeamleaderAction;
 use App\Actions\Team\UpdateColleagueAction;
-use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateTeamAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
-use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\InternalTeam;
-use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
@@ -29,14 +26,10 @@ use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
-use App\Support\TenantLogoStorage;
-use Illuminate\Http\UploadedFile;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 /**
- * Team-hub (V2-spec §6): collega-gebruikers + organisatie (alleen admin),
- * operationele teams (+ team-QR) en workers (icoon-reset/lockout/actief/teamleader).
+ * Gebruikers-hub: collega-gebruikers (admin), operationele teams (+ team-QR) en workers.
  * Dun: validatie via Form Requests, mutaties via Actions; RBAC via role + policy.
  */
 #[Layout('components.layouts.app')]
@@ -44,13 +37,6 @@ use Livewire\WithFileUploads;
 class Team extends Component
 {
     use AuthorizesRequests;
-    use WithFileUploads;
-
-    // Organisatie
-    public string $orgName = '';
-
-    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
-    public $orgLogo = null;
 
     // Collega-gebruiker (modal)
     public bool $showColleagueModal = false;
@@ -70,46 +56,6 @@ class Team extends Component
     public ?int $addingWorkerTeamId = null;
     public string $workerFirstName = '';
     public string $workerLastName = '';
-
-    public function mount(): void
-    {
-        $this->orgName = (string) (auth()->user()->tenant?->name ?? '');
-    }
-
-    // --- Organisatie (alleen admin) ---------------------------------------
-
-    public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
-    {
-        $tenant = auth()->user()->tenant;
-        if (! $tenant instanceof Tenant) {
-            return;
-        }
-
-        $this->authorize('manageOrganisation', $tenant);
-
-        $request = new UpdateOrganisationRequest;
-        $rules = ['orgName' => $request->rules()['name']];
-        if ($this->orgLogo !== null) {
-            $rules['orgLogo'] = ['nullable', 'image', 'max:2048'];
-        }
-
-        $validated = $this->validate(
-            $rules,
-            ['orgName.required' => __('team.errors.organisation_name_required')],
-        );
-
-        $payload = ['name' => $validated['orgName']];
-
-        if ($this->orgLogo instanceof UploadedFile) {
-            $logoStorage->delete($tenant->logo_path);
-            $payload['logo_path'] = $logoStorage->store($this->orgLogo, (int) $tenant->id);
-            $this->reset('orgLogo');
-        }
-
-        $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
-
-        $this->dispatch('saved');
-    }
 
     // --- Collega-gebruikers (alleen admin) --------------------------------
 

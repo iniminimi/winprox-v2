@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Team;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
@@ -75,18 +76,17 @@ it('laat een admin een collega bewerken en deactiveren', function () {
     expect($colleague->fresh()->is_active)->toBeFalse();
 });
 
-it('verbergt de gebruikers- en organisatiesectie voor een medewerker', function () {
+it('verbergt de collega-sectie voor een medewerker op gebruikers', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($employee)
         ->test(Team::class)
         ->assertDontSee(__('team.colleagues.title'))
-        ->assertDontSee(__('team.org.title'))
         ->assertSee(__('team.teams.title'));
 });
 
-it('weigert dat een medewerker gebruikers of bedrijfsgegevens beheert', function () {
+it('weigert dat een medewerker collega-gebruikers beheert', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
@@ -94,26 +94,31 @@ it('weigert dat een medewerker gebruikers of bedrijfsgegevens beheert', function
         ->test(Team::class)
         ->call('openCreateColleague')
         ->assertForbidden();
-
-    Livewire::actingAs($employee)
-        ->test(Team::class)
-        ->set('orgName', 'Hack BV')
-        ->call('saveOrganisation')
-        ->assertForbidden();
-
-    expect($tenant->fresh()->name)->toBe('Acme NV');
 });
 
-it('laat een admin de bedrijfsnaam aanpassen', function () {
+it('laat een admin de bedrijfsnaam aanpassen via instellingen', function () {
     [$tenant, $admin] = tenantWithAdmin();
 
     Livewire::actingAs($admin)
-        ->test(Team::class)
+        ->test(Settings::class)
         ->set('orgName', 'Acme Holding')
         ->call('saveOrganisation')
         ->assertHasNoErrors();
 
     expect($tenant->fresh()->name)->toBe('Acme Holding');
+});
+
+it('weigert instellingen voor een medewerker', function () {
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($employee)
+        ->get(route('settings.index'))
+        ->assertForbidden();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->assertForbidden();
 });
 
 // --- Login-afdwinging ------------------------------------------------------

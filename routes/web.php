@@ -23,6 +23,7 @@ use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
+use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
 use App\Livewire\Platform\Help as PlatformHelp;
@@ -102,6 +103,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/team', Team::class)->name('team.index');
+        Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');
         Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
         Route::get('/subscription', Subscription::class)->name('subscription.index');

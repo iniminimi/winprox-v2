@@ -1,13 +1,6 @@
 {
-    "title": "Team",
-    "subtitle": "Verwalten Sie Kollegenkonten, Teams und Mitarbeiter.",
-    "org": {
-        "title": "Organisation",
-        "name_label": "Organisationsname",
-        "logo_label": "Organisationslogo",
-        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
-        "logo_current": "Aktuelles Logo"
-    },
+    "title": "Benutzer",
+    "subtitle": "Verwalten Sie Kollegenkonten, operative Teams und Mitarbeiter.",
     "colleagues": {
         "title": "Kollegenkonten",
         "add": "Benutzer hinzufügen",
@@ -77,7 +70,6 @@
         "role_required": "Wählen Sie eine Rolle.",
         "team_name_required": "Geben Sie einen Teamnamen an.",
         "worker_name_required": "Geben Sie Vor- und Nachnamen an.",
-        "organisation_name_required": "Geben Sie einen Organisationsnamen an.",
         "user_limit": "Das Benutzerlimit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Kollegen hinzuzufügen."
     }
 }

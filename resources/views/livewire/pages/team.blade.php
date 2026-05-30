@@ -1,4 +1,3 @@
-@php use Illuminate\Support\Facades\Storage; @endphp
 <div class="wp-stack">
     <div class="wp-stack-tight">
         <h1 class="wp-page-title">{{ __('team.title') }}</h1>
@@ -6,30 +5,6 @@
     </div>
 
     @if ($canManageUsers)
-        {{-- Organisatie (alleen admin) --------------------------------------}}
-        <form wire:submit="saveOrganisation" class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('team.org.title') }}</h2>
-            <div class="wp-field">
-                <label class="wp-label" for="orgName">{{ __('team.org.name_label') }}</label>
-                <input type="text" id="orgName" class="wp-input" wire:model="orgName">
-                @error('orgName') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <div class="wp-field">
-                <label class="wp-label" for="orgLogo">{{ __('team.org.logo_label') }}</label>
-                @if (auth()->user()->tenant?->logo_path)
-                    <p class="wp-hint">{{ __('team.org.logo_current') }}</p>
-                    <img src="{{ Storage::disk('public')->url(auth()->user()->tenant->logo_path) }}" alt="" class="wp-org-logo-preview" width="80" height="80">
-                @endif
-                <input type="file" id="orgLogo" class="wp-input" wire:model="orgLogo" accept="image/*">
-                @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                <p class="wp-hint">{{ __('team.org.logo_hint') }}</p>
-            </div>
-            <div class="wp-cluster">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-            </div>
-        </form>
-
-        {{-- Collega-gebruikers (alleen admin) -------------------------------}}
         <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('team.colleagues.title') }}</h2>

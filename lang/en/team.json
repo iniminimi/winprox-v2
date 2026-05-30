@@ -1,13 +1,6 @@
 {
-    "title": "Team",
-    "subtitle": "Manage colleague users, teams and workers.",
-    "org": {
-        "title": "Organisation",
-        "name_label": "Organisation name",
-        "logo_label": "Organisation logo",
-        "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB).",
-        "logo_current": "Current logo"
-    },
+    "title": "Users",
+    "subtitle": "Manage colleague users, operational teams and workers.",
     "colleagues": {
         "title": "Colleague users",
         "add": "Add user",
@@ -77,7 +70,6 @@
         "role_required": "Choose a role.",
         "team_name_required": "Enter a team name.",
         "worker_name_required": "Enter a first and last name.",
-        "organisation_name_required": "Enter an organisation name.",
         "user_limit": "Your plan user limit has been reached. Upgrade your subscription to add more colleagues."
     }
 }

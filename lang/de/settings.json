@@ -1,4 +1,25 @@
 {
+    "title": "Einstellungen",
+    "subtitle": "Unternehmensdaten, Datenschutz und Einstellungen Ihrer Organisation.",
+    "org": {
+        "title": "Ihre Organisation",
+        "name_label": "Name der Organisation",
+        "logo_label": "Organisationslogo",
+        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
+        "logo_current": "Aktuelles Logo"
+    },
+    "privacy": {
+        "title": "Datenschutz & Datenexport",
+        "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",
+        "download": "JSON-Export herunterladen"
+    },
+    "style": {
+        "title": "Stil",
+        "coming_soon": "Hier können Sie bald das visuelle Thema Ihrer Umgebung wählen."
+    },
+    "errors": {
+        "organisation_name_required": "Geben Sie einen Organisationsnamen an."
+    },
     "api": {
         "nav": "API & Webhooks",
         "title": "API & Webhooks",

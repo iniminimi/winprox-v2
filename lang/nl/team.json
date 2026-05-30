@@ -1,13 +1,6 @@
 {
-    "title": "Team",
-    "subtitle": "Beheer collega-gebruikers, teams en uitvoerders.",
-    "org": {
-        "title": "Organisatie",
-        "name_label": "Organisatienaam",
-        "logo_label": "Organisatielogo",
-        "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB).",
-        "logo_current": "Huidig logo"
-    },
+    "title": "Gebruikers",
+    "subtitle": "Beheer collega-gebruikers, operationele teams en uitvoerders.",
     "colleagues": {
         "title": "Collega-gebruikers",
         "add": "Gebruiker toevoegen",
@@ -77,7 +70,6 @@
         "role_required": "Kies een rol.",
         "team_name_required": "Geef een teamnaam op.",
         "worker_name_required": "Geef voor- en achternaam op.",
-        "organisation_name_required": "Geef een organisatienaam op.",
         "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen."
     }
 }

@@ -17,6 +17,7 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
         'tasks.index',
         'calendar.index',
         'team.index',
+        'settings.index',
         'subscription.index',
         'faq.index',
         'legal.index',
@@ -31,12 +32,14 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
     }
 });
 
-it('verbergt abonnement in de sidebar voor medewerkers', function () {
+it('verbergt abonnement en instellingen in de sidebar voor medewerkers', function () {
     $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($employee)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertDontSee(__('common.nav.subscription'), false);
+        ->assertDontSee(__('common.nav.subscription'), false)
+        ->assertDontSee(__('common.nav.settings'), false)
+        ->assertSee(__('common.nav.users'), false);
 });

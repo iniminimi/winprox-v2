@@ -1,13 +1,6 @@
 {
-    "title": "Équipe",
-    "subtitle": "Gérez les utilisateurs collègues, les équipes et les intervenants.",
-    "org": {
-        "title": "Organisation",
-        "name_label": "Nom de l'organisation",
-        "logo_label": "Logo de l'organisation",
-        "logo_hint": "Affiché au centre des autocollants QR (PNG/JPG, max. 2 Mo).",
-        "logo_current": "Logo actuel"
-    },
+    "title": "Utilisateurs",
+    "subtitle": "Gérez les utilisateurs collègues, les équipes opérationnelles et les intervenants.",
     "colleagues": {
         "title": "Utilisateurs collègues",
         "add": "Ajouter un utilisateur",
@@ -77,7 +70,6 @@
         "role_required": "Choisissez un rôle.",
         "team_name_required": "Indiquez un nom d'équipe.",
         "worker_name_required": "Indiquez un prénom et un nom.",
-        "organisation_name_required": "Indiquez un nom d'organisation.",
         "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues."
     }
 }

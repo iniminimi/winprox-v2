@@ -1,4 +1,25 @@
 {
+    "title": "Paramètres",
+    "subtitle": "Données de l'entreprise, confidentialité et préférences de votre organisation.",
+    "org": {
+        "title": "Votre organisation",
+        "name_label": "Nom de l'organisation",
+        "logo_label": "Logo de l'organisation",
+        "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo).",
+        "logo_current": "Logo actuel"
+    },
+    "privacy": {
+        "title": "Confidentialité et export de données",
+        "hint": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr.",
+        "download": "Télécharger l'export JSON"
+    },
+    "style": {
+        "title": "Style",
+        "coming_soon": "Bientôt vous pourrez choisir ici le thème visuel de votre espace."
+    },
+    "errors": {
+        "organisation_name_required": "Indiquez un nom d'organisation."
+    },
     "api": {
         "nav": "API & webhooks",
         "title": "API & webhooks",
