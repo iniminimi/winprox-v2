@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Public;
 
+use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Models\InternalTeam;
+use App\Models\Worker;
 use App\Support\Portal\PortalAccess;
 use App\Support\Portal\TeamPortalData;
 use App\Support\Portal\WorkerDeviceSession;
@@ -25,6 +27,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class TeamPortal extends Component
 {
+    use PortalTeamleaderRelease;
+
     public string $token;
     public int $teamId;
     public int $tenantId;
@@ -343,5 +347,27 @@ class TeamPortal extends Component
         }
 
         app()->setLocale($this->locale);
+    }
+
+    protected function portalTeamleaderWorker(): ?Worker
+    {
+        $team = $this->activeTeam();
+        if ($team === null) {
+            return null;
+        }
+
+        $worker = WorkerVerification::verifiedWorker($team);
+
+        return ($worker !== null && $worker->is_teamleader) ? $worker : null;
+    }
+
+    protected function portalReleaseTeam(): ?InternalTeam
+    {
+        return $this->activeTeam();
+    }
+
+    protected function portalReleaseFlash(string $message): void
+    {
+        $this->flashMessage = $message;
     }
 }

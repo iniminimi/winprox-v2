@@ -92,6 +92,19 @@
             "cta": "Nieuwe medewerker aanmelden"
         }
     },
+    "teamleader": {
+        "title": "Icoon collega vrijgeven",
+        "open": "Vrijgeven",
+        "hint": "Alleen voor teamleaders: ontgrendel een collega na lockout of reset het persoonlijke icoon.",
+        "confirm_own_icon": "Bevestig eerst je eigen icoon",
+        "submit": "Collega vrijgeven",
+        "released_ok": ":name is vrijgegeven en kan opnieuw een icoon kiezen.",
+        "errors": {
+            "icon_wrong": "Dat is niet jouw icoon.",
+            "colleague_not_found": "Geen medewerker met deze naam gevonden op je team.",
+            "cannot_release": "Deze collega kan niet worden vrijgegeven."
+        }
+    },
     "documents": {
         "download": "Downloaden",
         "verification_required": "Verificatie vereist",

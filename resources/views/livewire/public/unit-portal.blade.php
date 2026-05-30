@@ -52,6 +52,9 @@
                         <span class="wp-text-body">{{ __('portal.worker.signed_in_as') }} <strong>{{ $worker?->displayName() }}</strong></span>
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
                     </div>
+                    @if ($worker?->is_teamleader)
+                        @include('partials.wp-portal-teamleader-release')
+                    @endif
                     <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
                     @forelse ($allOpenUnitTasks as $task)
                         @include('partials.wp-portal-task', ['task' => $task])

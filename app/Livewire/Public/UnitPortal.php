@@ -5,6 +5,7 @@ namespace App\Livewire\Public;
 use App\Actions\Public\SubmitReportAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
+use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Models\Task;
 use App\Models\Unit;
@@ -28,6 +29,7 @@ use Livewire\WithFileUploads;
 #[Title('WinProx')]
 class UnitPortal extends Component
 {
+    use PortalTeamleaderRelease;
     use WithFileUploads;
 
     public string $token;
@@ -503,5 +505,22 @@ class UnitPortal extends Component
         }
 
         app()->setLocale($this->locale);
+    }
+
+    protected function portalTeamleaderWorker(): ?Worker
+    {
+        $worker = $this->authorizedWorker();
+
+        return ($worker !== null && $worker->is_teamleader) ? $worker : null;
+    }
+
+    protected function portalReleaseTeam(): ?\App\Models\InternalTeam
+    {
+        return $this->activeTeam();
+    }
+
+    protected function portalReleaseFlash(string $message): void
+    {
+        $this->flashMessage = $message;
     }
 }

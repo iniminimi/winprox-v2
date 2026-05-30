@@ -92,6 +92,19 @@
             "cta": "Enregistrer un nouvel employé"
         }
     },
+    "teamleader": {
+        "title": "Libérer l'icône d'un collègue",
+        "open": "Libérer",
+        "hint": "Réservé aux chefs d'équipe : débloquer un collègue après verrouillage ou réinitialiser son icône.",
+        "confirm_own_icon": "Confirmez d'abord votre propre icône",
+        "submit": "Libérer le collègue",
+        "released_ok": ":name a été libéré et peut choisir à nouveau une icône.",
+        "errors": {
+            "icon_wrong": "Ce n'est pas votre icône.",
+            "colleague_not_found": "Aucun employé avec ce nom sur votre équipe.",
+            "cannot_release": "Ce collègue ne peut pas être libéré."
+        }
+    },
     "documents": {
         "download": "Télécharger",
         "verification_required": "Vérification requise",

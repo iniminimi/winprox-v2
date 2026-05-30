@@ -140,6 +140,10 @@
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
             </div>
 
+            @if ($verifiedWorker?->is_teamleader)
+                @include('partials.wp-portal-teamleader-release')
+            @endif
+
             <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
             <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>

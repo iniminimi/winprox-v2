@@ -92,6 +92,19 @@
             "cta": "Register a new worker"
         }
     },
+    "teamleader": {
+        "title": "Release colleague icon",
+        "open": "Release",
+        "hint": "Team leaders only: unlock a colleague after lockout or reset their personal icon.",
+        "confirm_own_icon": "Confirm your own icon first",
+        "submit": "Release colleague",
+        "released_ok": ":name has been released and can choose an icon again.",
+        "errors": {
+            "icon_wrong": "That is not your icon.",
+            "colleague_not_found": "No worker with this name found on your team.",
+            "cannot_release": "This colleague cannot be released."
+        }
+    },
     "documents": {
         "download": "Download",
         "verification_required": "Verification required",
