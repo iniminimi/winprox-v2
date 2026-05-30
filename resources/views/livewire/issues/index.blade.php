@@ -5,7 +5,7 @@
             <p class="wp-muted">{{ __('issues.list.subtitle') }}</p>
         </div>
         <div class="wp-cluster">
-            <button type="button" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</button>
+            <a href="#" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             <a href="{{ route('issues.create') }}" class="btn btn--primary btn--sm">
                 <x-wp-icon name="plus" class="wp-icon" />
                 <span>{{ __('issues.list.add') }}</span>
@@ -46,7 +46,7 @@
 
         <div class="wp-row">
             <label class="wp-check">
-                <input type="checkbox" wire:model="recurring">
+                <input type="checkbox" wire:model.live="recurring">
                 {{ __('issues.filter.recurring') }}
             </label>
             @if ($hasFilters)
@@ -67,24 +67,40 @@
                 @foreach ($group['issues'] as $issue)
                     @php
                         $teamNames = $issue->tasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values();
-                        $fromQr = filled($issue->reporter_name) || filled($issue->reporter_contact);
+                        $locationLine = collect([
+                            $issue->location?->name,
+                            $issue->unit?->name,
+                            $issue->location?->address,
+                        ])->filter()->join(' · ');
+                        $isHighlighted = $highlightIssue && (int) $highlightIssue === (int) $issue->id;
                     @endphp
-                    <a href="{{ route('issues.show', $issue) }}" class="wp-card wp-card-pad wp-melding-card" wire:key="issue-{{ $issue->id }}">
+                    <a href="{{ route('issues.show', $issue) }}"
+                       class="wp-card wp-card-pad wp-melding-card {{ $isHighlighted ? 'wp-melding-card--highlight' : '' }}"
+                       wire:key="issue-{{ $issue->id }}">
                         <div class="wp-row">
                             <span class="wp-melding-nr">{{ __('issues.card.nr', ['nr' => $issue->id]) }}</span>
                             <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
                         </div>
 
-                        <p class="wp-melding-desc">{{ \Illuminate\Support\Str::limit($issue->description, 120) }}</p>
+                        <p class="wp-melding-desc">{{ $issue->description }}</p>
+
+                        @if ($locationLine !== '')
+                            <p class="wp-muted wp-melding-location">{{ $locationLine }}</p>
+                        @endif
 
                         <div class="wp-melding-meta">
                             <span class="wp-muted">
-                                <x-wp-icon name="search" class="wp-icon" />
-                                {{ $fromQr ? __('issues.card.source_qr') : __('issues.card.source_manual') }}
+                                {{ __($issue->source?->labelKey() ?? 'issues.card.source_manual') }}
                             </span>
                             <span class="wp-muted">
                                 <x-wp-icon name="team" class="wp-icon" />
                                 {{ $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team') }}
+                            </span>
+                            <span class="wp-muted">
+                                {{ __('issues.card.reported', [
+                                    'name' => $issue->reporter_name ?: __('issues.card.unknown_reporter'),
+                                    'datetime' => optional($issue->created_at)->timezone(config('app.timezone'))->format('d/m/Y H:i'),
+                                ]) }}
                             </span>
                         </div>
                     </a>

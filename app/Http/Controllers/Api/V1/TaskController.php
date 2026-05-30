@@ -69,13 +69,6 @@ class TaskController extends Controller
         return $this->item(new TaskResource($start->handle($task)));
     }
 
-    public function start(Task $task, StartTaskAction $start): JsonResponse
-    {
-        $this->authorize('update', $task);
-
-        return $this->item(new TaskResource($start->handle($task)));
-    }
-
     public function complete(Task $task, CompleteTaskAction $complete): JsonResponse
     {
         $this->authorize('update', $task);
@@ -90,6 +83,11 @@ class TaskController extends Controller
         $validated = $request->validate(UpdateTaskStatusRequest::ruleSet());
         $status = TaskStatus::from($validated['status']);
 
-        return $this->item(new TaskResource($update->handle($task, $status)));
+        return $this->item(new TaskResource($update->handle(
+            $task,
+            $status,
+            $request->user(),
+            $validated['reason'] ?? null,
+        )));
     }
 }

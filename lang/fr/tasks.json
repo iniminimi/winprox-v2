@@ -1,0 +1,44 @@
+{
+    "briefing": "Imprimer le briefing",
+    "list": {
+        "title": "Tâches",
+        "subtitle": "Toutes les tâches, regroupées par statut.",
+        "new_block": "Nouvelles tâches",
+        "empty": "Aucune tâche pour le moment.",
+        "empty_filtered": "Aucune tâche ne correspond à ces filtres."
+    },
+    "filter": {
+        "status": "Statut",
+        "status_all": "Tous les statuts",
+        "team": "Équipe",
+        "team_all": "Toutes les équipes",
+        "search": "Rechercher",
+        "search_placeholder": "Note, signalement, site ou unité…",
+        "recurring": "Cycles récurrents uniquement",
+        "apply": "GO!",
+        "reset": "Effacer les filtres"
+    },
+    "card": {
+        "no_team": "Aucune équipe",
+        "scheduled": "Planifié :date"
+    },
+    "show": {
+        "title": "Tâche",
+        "back": "Retour aux tâches",
+        "issue_context": "Signalement",
+        "view_issue": "Voir le signalement",
+        "task": "Détails de la tâche",
+        "due": "Échéance :date",
+        "change_status": "Changer le statut",
+        "reason": "Motif (obligatoire si clôture sans exécution)",
+        "confirm_status": "Appliquer le statut",
+        "pause": "Note de pause",
+        "pause_submit": "Enregistrer la pause",
+        "updates": "Mises à jour du signalement"
+    },
+    "errors": {
+        "invalid_transition": "Ce changement de statut n'est pas autorisé.",
+        "reason_required": "Un motif est obligatoire pour clôturer sans exécution.",
+        "pause_only_in_progress": "La pause n'est possible qu'en cours d'exécution."
+    }
+}

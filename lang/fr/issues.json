@@ -1,15 +1,13 @@
 {
-    "pending_review": "En attente de contrôle",
+    "pending_review": "En attente de validation",
     "approve": "Approuver",
-    "briefing": "Briefing",
+    "briefing": "Imprimer le briefing",
     "list": {
         "title": "Signalements",
         "subtitle": "Tous les signalements, regroupés par statut.",
-        "new": "Nouveau signalement",
         "add": "Ajouter un signalement",
-        "view": "Voir",
-        "empty": "Il n'y a pas encore de signalements.",
-        "empty_filtered": "Aucun signalement trouvé pour ces filtres."
+        "empty": "Aucun signalement pour le moment.",
+        "empty_filtered": "Aucun signalement ne correspond à ces filtres."
     },
     "filter": {
         "status": "Statut",
@@ -17,34 +15,48 @@
         "team": "Équipe",
         "team_all": "Toutes les équipes",
         "search": "Rechercher",
-        "search_placeholder": "Rechercher dans la description…",
+        "search_placeholder": "Description, signaleur, site ou unité…",
         "recurring": "Récurrents uniquement",
-        "apply": "GO !",
+        "apply": "GO!",
         "reset": "Effacer les filtres",
-        "hint": "Combinez statut, équipe et terme de recherche pour affiner la liste."
+        "hint": "Combinez statut, équipe, recherche et récurrent pour affiner."
     },
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_manual": "Manuel",
-        "no_team": "Aucune équipe"
+        "no_team": "Aucune équipe",
+        "reported": "Signalé par :name · :datetime",
+        "unknown_reporter": "Inconnu"
     },
     "create": {
         "title": "Nouveau signalement",
-        "location": "Emplacement",
-        "location_none": "Aucun emplacement",
+        "step": "Étape :step sur :total",
+        "location": "Site",
+        "location_none": "Aucun site",
         "unit": "Unité",
         "unit_none": "Aucune unité",
-        "reporter_name": "Nom du déclarant",
-        "reporter_contact": "Contact du déclarant",
         "description": "Description",
-        "teams": "Équipes",
-        "teams_hint": "Chaque équipe sélectionnée reçoit une tâche pour ce signalement.",
-        "teams_empty": "Il n'y a pas encore d'équipes.",
-        "submit": "Créer le signalement"
+        "recurring": "Signalement récurrent",
+        "interval_value": "Intervalle",
+        "interval_unit": "Unité",
+        "unit_week": "Semaine",
+        "unit_month": "Mois",
+        "unit_quarter": "Trimestre",
+        "unit_year": "Année",
+        "lead_days": "Anticipation (jours)",
+        "first_due": "Première échéance",
+        "team": "Équipe",
+        "team_none": "Choisir une équipe",
+        "task_note": "Note de tâche",
+        "step_two_hint": "Assignez une équipe. La tâche démarre immédiatement en cours.",
+        "next": "Suivant",
+        "back": "Retour",
+        "finish": "Créer le signalement"
     },
     "errors": {
-        "description_required": "Veuillez décrire le signalement.",
+        "description_required": "Veuillez saisir une description.",
+        "description_min": "La description doit comporter au moins 3 caractères.",
         "description_max": "La description est trop longue."
     },
     "show": {
@@ -52,7 +64,7 @@
         "back": "Retour aux signalements",
         "report": "Signalement",
         "tasks": "Tâches",
-        "tasks_empty": "Il n'y a pas encore de tâches.",
+        "tasks_empty": "Aucune tâche pour le moment.",
         "no_team": "Aucune équipe",
         "add_task": "Ajouter une tâche pour une équipe",
         "add_task_placeholder": "Choisir une équipe",

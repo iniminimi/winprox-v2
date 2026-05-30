@@ -17,8 +17,9 @@ use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
 use App\Livewire\Pages\Locations;
 use App\Livewire\Pages\Subscription;
-use App\Livewire\Pages\Tasks;
 use App\Livewire\Pages\Team;
+use App\Livewire\Tasks\Index as TaskIndex;
+use App\Livewire\Tasks\Show as TaskShow;
 use App\Livewire\Public\TeamPortal;
 use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,8 @@ Route::middleware('auth')->group(function () {
 
     // Beheers-stubs (navigatie werkt; volledige features volgen later).
     Route::get('/locations', Locations::class)->name('locations.index');
-    Route::get('/tasks', Tasks::class)->name('tasks.index');
+    Route::get('/tasks', TaskIndex::class)->name('tasks.index');
+    Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
     Route::get('/calendar', Calendar::class)->name('calendar.index');
     Route::get('/team', Team::class)->name('team.index');
     Route::get('/settings/api', ApiSettings::class)->name('settings.api');

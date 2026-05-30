@@ -1,15 +1,13 @@
 {
     "pending_review": "Awaiting review",
     "approve": "Approve",
-    "briefing": "Briefing",
+    "briefing": "Print briefing",
     "list": {
         "title": "Issues",
-        "subtitle": "All issues, grouped by status.",
-        "new": "New issue",
+        "subtitle": "All issues grouped by status.",
         "add": "Add issue",
-        "view": "View",
-        "empty": "There are no issues yet.",
-        "empty_filtered": "No issues found for these filters."
+        "empty": "No issues yet.",
+        "empty_filtered": "No issues match these filters."
     },
     "filter": {
         "status": "Status",
@@ -17,44 +15,58 @@
         "team": "Team",
         "team_all": "All teams",
         "search": "Search",
-        "search_placeholder": "Search in description…",
+        "search_placeholder": "Description, reporter, location or unit…",
         "recurring": "Recurring only",
         "apply": "GO!",
         "reset": "Clear filters",
-        "hint": "Combine status, team and search term to refine the list."
+        "hint": "Combine status, team, search and recurring to refine."
     },
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_manual": "Manual",
-        "no_team": "No team"
+        "no_team": "No team",
+        "reported": "Reported by :name · :datetime",
+        "unknown_reporter": "Unknown"
     },
     "create": {
         "title": "New issue",
+        "step": "Step :step of :total",
         "location": "Location",
         "location_none": "No location",
         "unit": "Unit",
         "unit_none": "No unit",
-        "reporter_name": "Reporter name",
-        "reporter_contact": "Reporter contact",
         "description": "Description",
-        "teams": "Teams",
-        "teams_hint": "Each selected team gets a task for this issue.",
-        "teams_empty": "There are no teams yet.",
-        "submit": "Create issue"
+        "recurring": "Recurring issue",
+        "interval_value": "Interval",
+        "interval_unit": "Unit",
+        "unit_week": "Week",
+        "unit_month": "Month",
+        "unit_quarter": "Quarter",
+        "unit_year": "Year",
+        "lead_days": "Lead (days)",
+        "first_due": "First due date",
+        "team": "Team",
+        "team_none": "Choose a team",
+        "task_note": "Task note",
+        "step_two_hint": "Assign one team. The task starts in progress immediately.",
+        "next": "Next",
+        "back": "Back",
+        "finish": "Create issue"
     },
     "errors": {
-        "description_required": "Please describe the issue.",
-        "description_max": "The description is too long."
+        "description_required": "Please enter a description.",
+        "description_min": "Description must be at least 3 characters.",
+        "description_max": "Description is too long."
     },
     "show": {
         "title": "Issue",
         "back": "Back to issues",
         "report": "Issue",
         "tasks": "Tasks",
-        "tasks_empty": "There are no tasks yet.",
+        "tasks_empty": "No tasks yet.",
         "no_team": "No team",
-        "add_task": "Add a task for a team",
+        "add_task": "Add task for a team",
         "add_task_placeholder": "Choose a team",
         "add_task_submit": "Add task"
     }

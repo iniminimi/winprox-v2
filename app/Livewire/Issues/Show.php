@@ -35,8 +35,9 @@ class Show extends Component
     public function changeTaskStatus(int $task, string $status, UpdateTaskStatusAction $updateStatus): void
     {
         $model = $this->issue->tasks()->findOrFail($task);
+        $this->authorize('update', $model);
 
-        $updateStatus->handle($model, TaskStatus::from($status));
+        $updateStatus->handle($model, TaskStatus::from($status), auth()->user());
 
         $this->refreshIssue();
     }

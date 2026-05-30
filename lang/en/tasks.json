@@ -1,0 +1,44 @@
+{
+    "briefing": "Print briefing",
+    "list": {
+        "title": "Tasks",
+        "subtitle": "All tasks grouped by status.",
+        "new_block": "New tasks",
+        "empty": "No tasks yet.",
+        "empty_filtered": "No tasks match these filters."
+    },
+    "filter": {
+        "status": "Status",
+        "status_all": "All statuses",
+        "team": "Team",
+        "team_all": "All teams",
+        "search": "Search",
+        "search_placeholder": "Note, issue, location or unit…",
+        "recurring": "Recurring cycles only",
+        "apply": "GO!",
+        "reset": "Clear filters"
+    },
+    "card": {
+        "no_team": "No team",
+        "scheduled": "Scheduled :date"
+    },
+    "show": {
+        "title": "Task",
+        "back": "Back to tasks",
+        "issue_context": "Issue",
+        "view_issue": "View issue",
+        "task": "Task details",
+        "due": "Due :date",
+        "change_status": "Change status",
+        "reason": "Reason (required when closing without execution)",
+        "confirm_status": "Apply status",
+        "pause": "Pause note",
+        "pause_submit": "Save pause note",
+        "updates": "Issue updates"
+    },
+    "errors": {
+        "invalid_transition": "This status change is not allowed.",
+        "reason_required": "A reason is required when closing without execution.",
+        "pause_only_in_progress": "Pause notes are only allowed while in progress."
+    }
+}

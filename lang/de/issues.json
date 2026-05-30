@@ -1,15 +1,13 @@
 {
     "pending_review": "Wartet auf Prüfung",
-    "approve": "Genehmigen",
-    "briefing": "Briefing",
+    "approve": "Freigeben",
+    "briefing": "Briefing drucken",
     "list": {
         "title": "Meldungen",
-        "subtitle": "Alle Meldungen, nach Status gruppiert.",
-        "new": "Neue Meldung",
+        "subtitle": "Alle Meldungen, gruppiert nach Status.",
         "add": "Meldung hinzufügen",
-        "view": "Ansehen",
-        "empty": "Es gibt noch keine Meldungen.",
-        "empty_filtered": "Keine Meldungen für diese Filter gefunden."
+        "empty": "Noch keine Meldungen.",
+        "empty_filtered": "Keine Meldungen für diese Filter."
     },
     "filter": {
         "status": "Status",
@@ -17,45 +15,59 @@
         "team": "Team",
         "team_all": "Alle Teams",
         "search": "Suchen",
-        "search_placeholder": "In Beschreibung suchen…",
+        "search_placeholder": "Beschreibung, Melder, Standort oder Unit…",
         "recurring": "Nur wiederkehrend",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
-        "hint": "Kombinieren Sie Status, Team und Suchbegriff, um die Liste einzugrenzen."
+        "hint": "Status, Team, Suche und Wiederkehrend kombinieren."
     },
     "card": {
         "nr": "NR :nr",
-        "source_qr": "Per QR",
+        "source_qr": "Via QR",
         "source_manual": "Manuell",
-        "no_team": "Kein Team"
+        "no_team": "Kein Team",
+        "reported": "Gemeldet von :name · :datetime",
+        "unknown_reporter": "Unbekannt"
     },
     "create": {
         "title": "Neue Meldung",
+        "step": "Schritt :step von :total",
         "location": "Standort",
         "location_none": "Kein Standort",
-        "unit": "Einheit",
-        "unit_none": "Keine Einheit",
-        "reporter_name": "Name des Melders",
-        "reporter_contact": "Kontakt des Melders",
+        "unit": "Unit",
+        "unit_none": "Keine Unit",
         "description": "Beschreibung",
-        "teams": "Teams",
-        "teams_hint": "Jedes ausgewählte Team erhält eine Aufgabe für diese Meldung.",
-        "teams_empty": "Es gibt noch keine Teams.",
-        "submit": "Meldung erstellen"
+        "recurring": "Wiederkehrende Meldung",
+        "interval_value": "Intervall",
+        "interval_unit": "Einheit",
+        "unit_week": "Woche",
+        "unit_month": "Monat",
+        "unit_quarter": "Quartal",
+        "unit_year": "Jahr",
+        "lead_days": "Vorlauf (Tage)",
+        "first_due": "Erstes Fälligkeitsdatum",
+        "team": "Team",
+        "team_none": "Team wählen",
+        "task_note": "Aufgabennotiz",
+        "step_two_hint": "Weisen Sie ein Team zu. Die Aufgabe startet sofort in Bearbeitung.",
+        "next": "Weiter",
+        "back": "Zurück",
+        "finish": "Meldung anlegen"
     },
     "errors": {
-        "description_required": "Bitte beschreiben Sie die Meldung.",
+        "description_required": "Bitte geben Sie eine Beschreibung ein.",
+        "description_min": "Die Beschreibung muss mindestens 3 Zeichen haben.",
         "description_max": "Die Beschreibung ist zu lang."
     },
     "show": {
         "title": "Meldung",
-        "back": "Zurück zu den Meldungen",
+        "back": "Zurück zu Meldungen",
         "report": "Meldung",
         "tasks": "Aufgaben",
-        "tasks_empty": "Es gibt noch keine Aufgaben.",
+        "tasks_empty": "Noch keine Aufgaben.",
         "no_team": "Kein Team",
         "add_task": "Aufgabe für ein Team hinzufügen",
-        "add_task_placeholder": "Team auswählen",
+        "add_task_placeholder": "Team wählen",
         "add_task_submit": "Aufgabe hinzufügen"
     }
 }

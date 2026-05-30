@@ -380,6 +380,119 @@
     gap: 0.375rem;
 }
 
+.wp-melding-card--highlight {
+    border-color: var(--wp-accent-border);
+    box-shadow: 0 0 0 2px var(--wp-accent-soft);
+}
+
+.wp-melding-location {
+    font-size: 0.875rem;
+}
+
+.wp-surface-muted {
+    background-color: var(--wp-surface-2);
+}
+
+.wp-border-top {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-select--compact {
+    max-width: 14rem;
+}
+
+.wp-pill--xs {
+    font-size: 0.625rem;
+    padding: 0.0625rem 0.375rem;
+}
+
+/* ---------------------------------------------------------------------------
+ | Kalender
+ * ------------------------------------------------------------------------- */
+.wp-calendar-head {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.wp-calendar-head-cell {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--wp-text-muted);
+    padding: 0.375rem;
+}
+
+.wp-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+}
+
+.wp-calendar-cell {
+    min-height: 6.5rem;
+    padding: 0.375rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+}
+
+.wp-calendar-cell--muted {
+    opacity: 0.55;
+}
+
+.wp-calendar-cell--today {
+    border-color: var(--wp-accent-border);
+    background-color: var(--wp-accent-soft);
+}
+
+.wp-calendar-day-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--wp-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.wp-calendar-entries {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.wp-calendar-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.25rem;
+    border-radius: var(--wp-radius-sm);
+    text-decoration: none;
+    font-size: 0.6875rem;
+    color: var(--wp-text-body);
+}
+
+.wp-calendar-entry:hover {
+    background-color: var(--wp-surface-2);
+    text-decoration: none;
+}
+
+.wp-calendar-entry--row {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-calendar-entry-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 /* ---------------------------------------------------------------------------
  | Stub-pagina's + chips (beheers-stubs, locaties/teams).
  * ------------------------------------------------------------------------- */

@@ -1,0 +1,20 @@
+{
+    "title": "Calendar",
+    "subtitle": "Scheduled tasks and issues over time.",
+    "briefing": "Print briefing",
+    "today": "Today",
+    "all_locations": "All locations",
+    "empty_day": "Nothing scheduled.",
+    "view": {
+        "month": "Month",
+        "week": "Week",
+        "day": "Day"
+    },
+    "type": {
+        "tasks": "Tasks",
+        "issues": "Issues"
+    },
+    "period": {
+        "week": "Week :start – :end"
+    }
+}

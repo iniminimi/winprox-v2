@@ -1,0 +1,20 @@
+{
+    "title": "Kalender",
+    "subtitle": "Geplande taken en meldingen in de tijd.",
+    "briefing": "Briefing afdrukken",
+    "today": "Vandaag",
+    "all_locations": "Alle locaties",
+    "empty_day": "Niets gepland.",
+    "view": {
+        "month": "Maand",
+        "week": "Week",
+        "day": "Dag"
+    },
+    "type": {
+        "tasks": "Taken",
+        "issues": "Meldingen"
+    },
+    "period": {
+        "week": "Week :start – :end"
+    }
+}

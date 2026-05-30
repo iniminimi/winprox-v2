@@ -24,11 +24,22 @@ class Index extends Component
     #[Url(as: 'q')]
     public string $search = '';
 
+    #[Url(as: 'highlight')]
+    public ?int $highlightIssue = null;
+
     public bool $recurring = false;
+
+    public function mount(): void
+    {
+        if ($this->highlightIssue === null && session()->has('highlight_issue')) {
+            $this->highlightIssue = (int) session()->pull('highlight_issue');
+        }
+    }
 
     public function approve(int $issue, ApproveIssueAction $approveIssue): void
     {
         $model = Issue::findOrFail($issue);
+        $this->authorize('approve', $model);
 
         $approveIssue->handle($model, auth()->user());
     }
@@ -45,19 +56,32 @@ class Index extends Component
 
     public function render()
     {
+        $this->authorize('viewAny', Issue::class);
+
         $issues = Issue::query()
             ->with(['location', 'unit', 'tasks.team'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
-            ->when($this->search !== '', fn ($q) => $q->where('description', 'like', '%'.$this->search.'%'))
+            ->when($this->recurring, fn ($q) => $q->where('is_recurring', true))
+            ->when($this->search !== '', function ($q) {
+                $term = '%'.$this->search.'%';
+                $q->where(function ($query) use ($term) {
+                    $query->where('description', 'like', $term)
+                        ->orWhere('reporter_name', 'like', $term)
+                        ->orWhereHas('location', fn ($loc) => $loc
+                            ->where('name', 'like', $term)
+                            ->orWhere('address', 'like', $term))
+                        ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term));
+                });
+            })
             ->latest()
             ->get();
 
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $issues->where('status', $status);
+            $bucket = $issues->where('status', $status)->sortByDesc('created_at');
             if ($bucket->isNotEmpty()) {
-                $groups[] = ['status' => $status, 'issues' => $bucket];
+                $groups[] = ['status' => $status, 'issues' => $bucket->values()];
             }
         }
 
@@ -67,6 +91,7 @@ class Index extends Component
             'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
+            'highlightIssue' => $this->highlightIssue,
         ]);
     }
 }

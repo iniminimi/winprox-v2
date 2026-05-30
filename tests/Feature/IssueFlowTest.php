@@ -32,9 +32,11 @@ it('leidt de meldingstatus af uit de taken (rollup)', function () {
     app(UpdateTaskStatusAction::class)->handle($taskB, TaskStatus::Done);
     expect($issue->fresh()->status)->toBe(TaskStatus::Done);
 
-    app(UpdateTaskStatusAction::class)->handle($taskA, TaskStatus::Closed);
-    app(UpdateTaskStatusAction::class)->handle($taskB, TaskStatus::Closed);
-    expect($issue->fresh()->status)->toBe(TaskStatus::Closed);
+    $closedIssue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten flow'], [$teamA->id]);
+    $closedTask = $closedIssue->tasks->first();
+    app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::InProgress);
+    app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::Closed, null, 'Niet uitgevoerd');
+    expect($closedIssue->fresh()->status)->toBe(TaskStatus::Closed);
 });
 
 it('maakt één taak per team aan via CreateIssueAction', function () {

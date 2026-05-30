@@ -1,13 +1,11 @@
 {
     "pending_review": "Wacht op controle",
     "approve": "Goedkeuren",
-    "briefing": "Briefing",
+    "briefing": "Briefing afdrukken",
     "list": {
         "title": "Meldingen",
         "subtitle": "Alle meldingen, gegroepeerd per status.",
-        "new": "Nieuwe melding",
         "add": "Melding toevoegen",
-        "view": "Bekijken",
         "empty": "Er zijn nog geen meldingen.",
         "empty_filtered": "Geen meldingen gevonden voor deze filters."
     },
@@ -17,34 +15,48 @@
         "team": "Team",
         "team_all": "Alle teams",
         "search": "Zoeken",
-        "search_placeholder": "Zoek in omschrijving…",
+        "search_placeholder": "Omschrijving, melder, locatie of unit…",
         "recurring": "Alleen terugkerend",
         "apply": "GO!",
         "reset": "Filters wissen",
-        "hint": "Combineer status, team en zoekterm om de lijst te verfijnen."
+        "hint": "Combineer status, team, zoekterm en terugkerend om te verfijnen."
     },
     "card": {
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_manual": "Handmatig",
-        "no_team": "Geen team"
+        "no_team": "Geen team",
+        "reported": "Gemeld door :name · :datetime",
+        "unknown_reporter": "Onbekend"
     },
     "create": {
         "title": "Nieuwe melding",
+        "step": "Stap :step van :total",
         "location": "Locatie",
         "location_none": "Geen locatie",
-        "unit": "Eenheid",
-        "unit_none": "Geen eenheid",
-        "reporter_name": "Naam melder",
-        "reporter_contact": "Contact melder",
+        "unit": "Unit",
+        "unit_none": "Geen unit",
         "description": "Omschrijving",
-        "teams": "Teams",
-        "teams_hint": "Elk gekozen team krijgt een taak voor deze melding.",
-        "teams_empty": "Er zijn nog geen teams.",
-        "submit": "Melding aanmaken"
+        "recurring": "Terugkerende melding",
+        "interval_value": "Interval",
+        "interval_unit": "Eenheid",
+        "unit_week": "Week",
+        "unit_month": "Maand",
+        "unit_quarter": "Kwartaal",
+        "unit_year": "Jaar",
+        "lead_days": "Lead (dagen)",
+        "first_due": "Eerste vervaldatum",
+        "team": "Team",
+        "team_none": "Kies een team",
+        "task_note": "Taaknotitie",
+        "step_two_hint": "Wijs één team toe. De taak start meteen in uitvoering.",
+        "next": "Volgende",
+        "back": "Terug",
+        "finish": "Melding aanmaken"
     },
     "errors": {
         "description_required": "Geef een omschrijving van de melding.",
+        "description_min": "De omschrijving moet minstens 3 tekens bevatten.",
         "description_max": "De omschrijving is te lang."
     },
     "show": {

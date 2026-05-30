@@ -1,0 +1,20 @@
+{
+    "title": "Calendrier",
+    "subtitle": "Tâches planifiées et signalements dans le temps.",
+    "briefing": "Imprimer le briefing",
+    "today": "Aujourd'hui",
+    "all_locations": "Tous les sites",
+    "empty_day": "Rien de planifié.",
+    "view": {
+        "month": "Mois",
+        "week": "Semaine",
+        "day": "Jour"
+    },
+    "type": {
+        "tasks": "Tâches",
+        "issues": "Signalements"
+    },
+    "period": {
+        "week": "Semaine :start – :end"
+    }
+}

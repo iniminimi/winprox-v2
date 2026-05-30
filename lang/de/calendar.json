@@ -1,0 +1,20 @@
+{
+    "title": "Kalender",
+    "subtitle": "Geplante Aufgaben und Meldungen im Zeitverlauf.",
+    "briefing": "Briefing drucken",
+    "today": "Heute",
+    "all_locations": "Alle Standorte",
+    "empty_day": "Nichts geplant.",
+    "view": {
+        "month": "Monat",
+        "week": "Woche",
+        "day": "Tag"
+    },
+    "type": {
+        "tasks": "Aufgaben",
+        "issues": "Meldungen"
+    },
+    "period": {
+        "week": "Woche :start – :end"
+    }
+}

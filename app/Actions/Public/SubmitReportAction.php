@@ -37,6 +37,7 @@ class SubmitReportAction
             'reporter_name' => $data['reporter_name'] ?? null,
             'reporter_contact' => $data['reporter_contact'] ?? null,
             'description' => $data['description'],
+            'source' => 'qr',
         ], $teamIds);
 
         foreach ($photos as $photo) {

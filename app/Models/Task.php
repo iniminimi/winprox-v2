@@ -20,12 +20,20 @@ class Task extends Model
         'started_at',
         'completed_at',
         'note',
+        'scheduled_for',
+        'due_at',
+        'is_recurring_cycle',
+        'recurrence_issue_id',
+        'cycle_number',
     ];
 
     protected $casts = [
         'status' => TaskStatus::class,
         'started_at' => 'datetime',
         'completed_at' => 'datetime',
+        'scheduled_for' => 'date',
+        'due_at' => 'datetime',
+        'is_recurring_cycle' => 'boolean',
     ];
 
     public function issue(): BelongsTo
@@ -36,6 +44,11 @@ class Task extends Model
     public function team(): BelongsTo
     {
         return $this->belongsTo(InternalTeam::class, 'internal_team_id');
+    }
+
+    public function recurrenceIssue(): BelongsTo
+    {
+        return $this->belongsTo(Issue::class, 'recurrence_issue_id');
     }
 
     /** Open op de werkvloer: nog Nieuw of In uitvoering. */

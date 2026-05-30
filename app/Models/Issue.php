@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\IssueSource;
+use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Webhook\IssueStatusWebhook;
@@ -21,6 +23,15 @@ class Issue extends Model
         'reporter_name',
         'reporter_contact',
         'description',
+        'source',
+        'is_recurring',
+        'recurrence_interval_value',
+        'recurrence_interval_unit',
+        'recurrence_lead_days',
+        'recurrence_active',
+        'recurrence_paused_at',
+        'recurrence_next_due_at',
+        'recurrence_last_task_created_at',
         'status',
         'approved_at',
         'approved_by',
@@ -28,6 +39,13 @@ class Issue extends Model
 
     protected $casts = [
         'status' => TaskStatus::class,
+        'source' => IssueSource::class,
+        'is_recurring' => 'boolean',
+        'recurrence_interval_unit' => RecurrenceIntervalUnit::class,
+        'recurrence_active' => 'boolean',
+        'recurrence_paused_at' => 'datetime',
+        'recurrence_next_due_at' => 'datetime',
+        'recurrence_last_task_created_at' => 'datetime',
         'approved_at' => 'datetime',
     ];
 
@@ -39,6 +57,7 @@ class Issue extends Model
      */
     protected $attributes = [
         'status' => TaskStatus::New->value,
+        'source' => IssueSource::Manager->value,
     ];
 
     public function location(): BelongsTo

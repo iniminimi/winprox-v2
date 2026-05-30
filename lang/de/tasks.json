@@ -1,0 +1,44 @@
+{
+    "briefing": "Briefing drucken",
+    "list": {
+        "title": "Aufgaben",
+        "subtitle": "Alle Aufgaben, gruppiert nach Status.",
+        "new_block": "Neue Aufgaben",
+        "empty": "Noch keine Aufgaben.",
+        "empty_filtered": "Keine Aufgaben für diese Filter."
+    },
+    "filter": {
+        "status": "Status",
+        "status_all": "Alle Status",
+        "team": "Team",
+        "team_all": "Alle Teams",
+        "search": "Suchen",
+        "search_placeholder": "Notiz, Meldung, Standort oder Unit…",
+        "recurring": "Nur wiederkehrende Zyklen",
+        "apply": "GO!",
+        "reset": "Filter zurücksetzen"
+    },
+    "card": {
+        "no_team": "Kein Team",
+        "scheduled": "Geplant :date"
+    },
+    "show": {
+        "title": "Aufgabe",
+        "back": "Zurück zu Aufgaben",
+        "issue_context": "Meldung",
+        "view_issue": "Meldung anzeigen",
+        "task": "Aufgabendetails",
+        "due": "Fällig :date",
+        "change_status": "Status ändern",
+        "reason": "Grund (Pflicht bei Schließen ohne Ausführung)",
+        "confirm_status": "Status anwenden",
+        "pause": "Pausennotiz",
+        "pause_submit": "Pausennotiz speichern",
+        "updates": "Meldungs-Updates"
+    },
+    "errors": {
+        "invalid_transition": "Diese Statusänderung ist nicht erlaubt.",
+        "reason_required": "Ein Grund ist beim Schließen ohne Ausführung erforderlich.",
+        "pause_only_in_progress": "Pausieren ist nur während der Bearbeitung möglich."
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\IssueSource;
 use App\Models\Issue;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -24,6 +25,9 @@ class IssueResource extends JsonResource
             'reporter_contact' => $this->reporter_contact,
             'approved' => $this->isApproved(),
             'approved_at' => optional($this->approved_at)->toIso8601String(),
+            'source' => $this->source?->value ?? IssueSource::Manager->value,
+            'is_recurring' => (bool) $this->is_recurring,
+            'recurrence_next_due_at' => optional($this->recurrence_next_due_at)->toIso8601String(),
             'created_at' => optional($this->created_at)->toIso8601String(),
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
         ];
