@@ -11,22 +11,22 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
 use Livewire\Livewire;
+use Tests\Support\RegisterFormData;
 
 afterEach(fn () => Tenancy::forget());
 
 it('registreert een nieuwe tenant met beheerder en logt in', function () {
     Livewire::test(Register::class)
-        ->set('organization', 'Nieuwe Facility')
-        ->set('name', 'Nieuwe Beheerder')
-        ->set('email', 'nieuw@winprox.test')
-        ->set('password', 'wachtwoord123')
-        ->set('password_confirmation', 'wachtwoord123')
+        ->set(RegisterFormData::valid())
         ->call('register')
         ->assertHasNoErrors()
         ->assertRedirect(route('dashboard'));
 
     $tenant = Tenant::where('name', 'Nieuwe Facility')->first();
-    expect($tenant)->not->toBeNull();
+    expect($tenant)->not->toBeNull()
+        ->and($tenant->email)->toBe('nieuw@winprox.test')
+        ->and($tenant->street)->toBe('Bosrandstraat')
+        ->and($tenant->country_code)->toBe('BE');
 
     $user = User::where('email', 'nieuw@winprox.test')->first();
     expect($user)->not->toBeNull()
@@ -40,12 +40,14 @@ it('registreert een nieuwe tenant met beheerder en logt in', function () {
 it('valideert de registratievelden', function () {
     Livewire::test(Register::class)
         ->set('organization', '')
+        ->set('phone', 'abc')
         ->set('name', '')
         ->set('email', 'geen-geldig-adres')
         ->set('password', 'kort')
         ->set('password_confirmation', 'anders')
+        ->set('accept_terms', false)
         ->call('register')
-        ->assertHasErrors(['organization', 'name', 'email', 'password']);
+        ->assertHasErrors(['organization', 'phone', 'name', 'email', 'password', 'accept_terms']);
 
     expect(auth()->check())->toBeFalse();
 });

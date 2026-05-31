@@ -1,45 +1,74 @@
+@php
+    $termsUrl = route('legal.terms');
+    $privacyUrl = route('legal.privacy');
+@endphp
+
 <div class="wp-stack">
     <div class="wp-stack">
         <h1 class="wp-section-title">{{ __('auth.register.title') }}</h1>
         <p class="wp-muted">{{ __('auth.register.subtitle') }}</p>
     </div>
 
-    <form wire:submit="register" class="wp-stack" x-data="{ show: false }">
-        <div class="wp-field">
-            <label class="wp-label" for="organization">{{ __('auth.register.organization') }}</label>
-            <input type="text" id="organization" class="wp-input" wire:model="organization" autocomplete="organization" autofocus>
-            @error('organization') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
+    <form wire:submit="register" class="wp-auth-form wp-stack">
+        <h2 class="wp-auth-section-title">{{ __('auth.register.section_company') }}</h2>
 
-        <div class="wp-field">
-            <label class="wp-label" for="name">{{ __('auth.register.name') }}</label>
-            <input type="text" id="name" class="wp-input" wire:model="name" autocomplete="name">
-            @error('name') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
+        <input type="text" id="organization" class="wp-input" wire:model="organization"
+               placeholder="{{ __('auth.register.placeholder_company') }}" autocomplete="organization" autofocus required>
+        @error('organization') <p class="wp-error">{{ $message }}</p> @enderror
 
-        <div class="wp-field">
-            <label class="wp-label" for="email">{{ __('auth.email') }}</label>
-            <input type="email" id="email" class="wp-input" wire:model="email" autocomplete="email">
-            @error('email') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
+        <input type="tel" id="phone" class="wp-input" wire:model="phone"
+               placeholder="{{ __('auth.register.placeholder_phone') }}" inputmode="tel" autocomplete="tel">
+        @error('phone') <p class="wp-error">{{ $message }}</p> @enderror
 
-        <div class="wp-field">
-            <label class="wp-label" for="password">{{ __('auth.password') }}</label>
-            <div class="wp-input-group">
-                <input :type="show ? 'text' : 'password'" id="password" class="wp-input" wire:model="password" autocomplete="new-password">
-                <button type="button" class="wp-input-reveal" @click="show = !show"
-                        :aria-label="show ? '{{ __('auth.hide_password') }}' : '{{ __('auth.show_password') }}'">
-                    <x-wp-icon name="eye" class="wp-icon" x-show="!show" />
-                    <x-wp-icon name="eye-slash" class="wp-icon" x-show="show" x-cloak />
-                </button>
-            </div>
-            @error('password') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
+        <input type="text" id="street" class="wp-input" wire:model="street"
+               placeholder="{{ __('auth.register.placeholder_street') }}" autocomplete="street-address">
+        @error('street') <p class="wp-error">{{ $message }}</p> @enderror
 
-        <div class="wp-field">
-            <label class="wp-label" for="password_confirmation">{{ __('auth.register.password_confirm') }}</label>
-            <input type="password" id="password_confirmation" class="wp-input" wire:model="password_confirmation" autocomplete="new-password">
-        </div>
+        <input type="text" id="house_number" class="wp-input" wire:model="house_number"
+               placeholder="{{ __('auth.register.placeholder_house_number') }}">
+        @error('house_number') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <input type="text" id="postal_code" class="wp-input" wire:model="postal_code"
+               placeholder="{{ __('auth.register.placeholder_postal_code') }}" autocomplete="postal-code">
+        @error('postal_code') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <input type="text" id="city" class="wp-input" wire:model="city"
+               placeholder="{{ __('auth.register.placeholder_city') }}" autocomplete="address-level2">
+        @error('city') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <select id="country_code" class="wp-select" wire:model="country_code" autocomplete="country">
+            <option value="">{{ __('auth.register.placeholder_country') }}</option>
+            @foreach ($countries as $country)
+                <option value="{{ $country['code'] }}">{{ $country['label'] }}</option>
+            @endforeach
+        </select>
+        @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <h2 class="wp-auth-section-title">{{ __('auth.register.section_admin') }}</h2>
+
+        <input type="text" id="name" class="wp-input" wire:model="name"
+               placeholder="{{ __('auth.register.placeholder_name') }}" autocomplete="name" required>
+        @error('name') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <input type="email" id="email" class="wp-input" wire:model="email"
+               placeholder="{{ __('auth.email') }}" autocomplete="email" required>
+        @error('email') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <x-wp-password-input wireModel="password" id="password" :placeholder="__('auth.password')" autocomplete="new-password" />
+        @error('password') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <x-wp-password-input wireModel="password_confirmation" id="password_confirmation"
+                             :placeholder="__('auth.register.password_confirm')" autocomplete="new-password" />
+        @error('password_confirmation') <p class="wp-error">{{ $message }}</p> @enderror
+
+        <label class="wp-check wp-check--boxed">
+            <input type="checkbox" wire:model="accept_terms">
+            <span>{!! __('auth.register.accept_terms_html', [
+                'terms' => '<a href="'.e($termsUrl).'" class="wp-auth-inline-link" target="_blank" rel="noopener noreferrer">'.e(__('legal.documents.terms')).'</a>',
+                'privacy' => '<a href="'.e($privacyUrl).'" class="wp-auth-inline-link" target="_blank" rel="noopener noreferrer">'.e(__('legal.documents.privacy')).'</a>',
+            ]) !!}</span>
+        </label>
+        @error('accept_terms') <p class="wp-error">{{ $message }}</p> @enderror
 
         <button type="submit" class="btn btn--primary btn--block">{{ __('auth.register.submit') }}</button>
         <a href="{{ route('login') }}" class="btn btn--ghost btn--block">{{ __('auth.register.have_account') }}</a>

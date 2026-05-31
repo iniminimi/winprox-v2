@@ -6,6 +6,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
 use Livewire\Livewire;
+use Tests\Support\RegisterFormData;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -17,11 +18,11 @@ it('toont de welcome-pagina voor gasten', function () {
 
 it('zet een proefperiode bij registratie', function () {
     Livewire::test(Register::class)
-        ->set('organization', 'Trial Facility BV')
-        ->set('name', 'Trial Admin')
-        ->set('email', 'trial@winprox.test')
-        ->set('password', 'wachtwoord123')
-        ->set('password_confirmation', 'wachtwoord123')
+        ->set(array_replace(RegisterFormData::valid(), [
+            'organization' => 'Trial Facility BV',
+            'name' => 'Trial Admin',
+            'email' => 'trial@winprox.test',
+        ]))
         ->call('register')
         ->assertHasNoErrors();
 

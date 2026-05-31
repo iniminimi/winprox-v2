@@ -666,6 +666,25 @@
     gap: 0.75rem;
 }
 
+.wp-auth-section-title {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text-muted);
+    text-align: left;
+}
+
+.wp-auth-inline-link {
+    font-weight: 600;
+    color: var(--wp-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.wp-auth-inline-link:hover {
+    color: var(--wp-accent);
+}
+
 .wp-auth-forgot {
     text-align: right;
 }
