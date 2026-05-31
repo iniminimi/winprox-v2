@@ -12,12 +12,16 @@
         $blocksRemaining = (int) ($battery['blocks_remaining'] ?? 0);
         $daysRemaining = (int) ($battery['days_remaining'] ?? 0);
         $imageLevel = max(1, min(5, 6 - $blocksRemaining));
-        $shortText = $kind === 'grace'
-            ? __('dashboard.trial_capsule.grace_short', ['days' => $daysRemaining])
-            : __('dashboard.trial_capsule.trial_short', ['days' => $daysRemaining]);
-        $ariaTitle = $kind === 'grace'
-            ? __('dashboard.trial_capsule.grace_title')
-            : __('dashboard.trial_capsule.trial_title');
+        $shortText = match ($kind) {
+            'grace' => __('dashboard.trial_capsule.grace_short', ['days' => $daysRemaining]),
+            'paid' => __('dashboard.trial_capsule.paid_short', ['days' => $daysRemaining]),
+            default => __('dashboard.trial_capsule.trial_short', ['days' => $daysRemaining]),
+        };
+        $ariaTitle = match ($kind) {
+            'grace' => __('dashboard.trial_capsule.grace_title'),
+            'paid' => __('dashboard.trial_capsule.paid_title'),
+            default => __('dashboard.trial_capsule.trial_title'),
+        };
     @endphp
 
     <a

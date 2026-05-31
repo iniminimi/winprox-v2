@@ -7,36 +7,25 @@
     />
 
     @if ($canManageOrganisation)
-        <form wire:submit="saveOrganisation" class="wp-card wp-card-pad wp-stack-tight">
+        <div class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
-            <div class="wp-field">
-                <label class="wp-label" for="orgName">{{ __('settings.org.name_label') }}</label>
-                <input type="text" id="orgName" class="wp-input" wire:model="orgName">
-                @error('orgName') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <div class="wp-field">
-                <label class="wp-label" for="orgLogo">{{ __('settings.org.logo_label') }}</label>
-                @if ($organisationLogoUrl)
-                    <div class="wp-org-logo-preview-wrap">
-                        <p class="wp-hint">{{ __('settings.org.logo_current') }}</p>
-                        <img
-                            src="{{ $organisationLogoUrl }}"
-                            alt=""
-                            class="wp-org-logo-preview"
-                            width="120"
-                            height="120"
-                            wire:key="org-logo-preview-{{ md5($organisationLogoUrl) }}"
-                        >
-                    </div>
-                @endif
-                <input type="file" id="orgLogo" class="wp-input" wire:model="orgLogo" accept="image/*">
-                @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                <p class="wp-hint">{{ __('settings.org.logo_hint') }}</p>
-            </div>
+            <p class="wp-text-body"><strong>{{ $orgDisplayName }}</strong></p>
+            @if ($organisationLogoUrl)
+                <img
+                    src="{{ $organisationLogoUrl }}"
+                    alt=""
+                    class="wp-org-logo-preview"
+                    width="120"
+                    height="120"
+                    wire:key="org-logo-card-{{ md5($organisationLogoUrl) }}"
+                >
+            @endif
             <div class="wp-cluster">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
+                    {{ __('settings.org.edit') }}
+                </button>
             </div>
-        </form>
+        </div>
     @else
         <div class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
@@ -74,4 +63,49 @@
             <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('settings.privacy.download') }}</a>
         </p>
     </div>
+
+    @if ($canManageOrganisation && $showOrgModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="org-edit-title">
+            <form wire:submit="saveOrganisation" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <div class="wp-stack-tight">
+                        <h2 id="org-edit-title" class="wp-section-title">{{ __('settings.org.modal_title') }}</h2>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.org.modal_hint') }}</p>
+                    </div>
+                    <x-wp-modal-close wire:click="closeOrgModal" />
+                </div>
+
+                <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="orgName">{{ __('settings.org.name_label') }}</label>
+                        <input type="text" id="orgName" class="wp-input" wire:model="orgName" autocomplete="organization">
+                        @error('orgName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="orgLogo">{{ __('settings.org.logo_label') }}</label>
+                        @if ($organisationLogoUrl)
+                            <img
+                                src="{{ $organisationLogoUrl }}"
+                                alt=""
+                                class="wp-org-logo-preview"
+                                width="120"
+                                height="120"
+                                wire:key="org-logo-modal-{{ md5($organisationLogoUrl) }}"
+                            >
+                        @endif
+                        <input type="file" id="orgLogo" class="wp-input" wire:model="orgLogo" accept="image/*">
+                        @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                        <p class="wp-hint">{{ __('settings.org.logo_hint') }}</p>
+                    </div>
+                </div>
+
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeOrgModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                </div>
+            </form>
+        </div>
+        @endteleport
+    @endif
 </div>

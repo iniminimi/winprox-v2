@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\Location;
@@ -15,7 +16,7 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Dashboard extends Component
 {
-    public function render()
+    public function render(RealignSubscriptionPeriodAction $realign)
     {
         $stats = [
             'locations' => Location::query()->count(),
@@ -31,15 +32,14 @@ class Dashboard extends Component
             ->get();
 
         $tenant = auth()->user()?->tenant;
+        if ($tenant !== null) {
+            $tenant = $realign->handle($tenant);
+        }
 
         return view('livewire.dashboard', [
             'stats' => $stats,
             'recent' => $recent,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
-            'unitLimitWarning' => $tenant?->unitLimitWarning(),
-            'userLimitWarning' => $tenant?->userLimitWarning(),
-            'remainingUnits' => $tenant?->remainingUnitSlots(),
-            'remainingUsers' => $tenant?->remainingUserSlots(),
         ]);
     }
 }

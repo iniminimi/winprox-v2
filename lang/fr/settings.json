@@ -4,10 +4,12 @@
     "org": {
         "title": "Votre organisation",
         "readonly_hint": "Seul l'administrateur peut modifier les données de l'entreprise.",
+        "edit": "Modifier les données de l'organisation",
+        "modal_title": "Données de l'organisation",
+        "modal_hint": "Nom et logo pour votre espace et sur les étiquettes QR.",
         "name_label": "Nom de l'organisation",
         "logo_label": "Logo de l'organisation",
-        "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo).",
-        "logo_current": "Logo actuel"
+        "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo)."
     },
     "privacy": {
         "title": "Confidentialité et export de données",

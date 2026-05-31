@@ -4,6 +4,8 @@
     "trial_capsule": {
         "trial_short": "Proefperiode nog :days dagen.",
         "trial_title": "Proefperiode",
+        "paid_short": "Abonnement nog :days dagen.",
+        "paid_title": "Abonnement",
         "grace_short": "Nalichtperiode: nog :days dagen volledige toegang.",
         "grace_title": "Nalichtperiode na verlopen abonnement"
     },

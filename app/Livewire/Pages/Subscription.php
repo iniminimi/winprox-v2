@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
+use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Http\Requests\Billing\ActivateSubscriptionPlanRequest;
 use App\Models\Tenant;
 use App\Services\Billing\StripeCheckoutService;
@@ -22,15 +23,27 @@ class Subscription extends Component
 
     public ?string $statusMessage = null;
 
-    public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe): void
+    public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe, RealignSubscriptionPeriodAction $realign): void
     {
+        $tenant = auth()->user()?->tenant;
+        if ($tenant !== null) {
+            $realign->handle($tenant);
+            auth()->user()?->load('tenant');
+        }
+
         $this->selectedPlan = auth()->user()?->tenant?->effectivePlanKey();
+
+        if (request()->query('stripe') === 'cancel') {
+            session()->flash('error', __('subscription.stripe.checkout_cancelled'));
+        }
 
         $sessionId = request()->query('session_id');
         if (request()->query('stripe') === 'success' && is_string($sessionId) && $sessionId !== '') {
             if ($fulfillStripe->handle($sessionId)) {
                 $this->selectedPlan = auth()->user()?->tenant?->fresh()?->effectivePlanKey();
-                $this->statusMessage = __('subscription.stripe.activated');
+                session()->flash('success', __('subscription.stripe.activated'));
+            } else {
+                session()->flash('warning', __('subscription.stripe.return_unconfirmed'));
             }
         }
     }
@@ -104,19 +117,41 @@ class Subscription extends Component
         $activate->handle(auth()->user(), $tenant, $planKey, 'manual');
 
         $this->selectedPlan = $planKey;
-        $this->statusMessage = __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]);
+        session()->flash('success', __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]));
     }
 
-    public function render()
+    public function render(RealignSubscriptionPeriodAction $realign)
     {
         $tenant = auth()->user()?->tenant;
-        $plans = config('billing.plans', []);
+        if ($tenant !== null) {
+            $tenant = $realign->handle($tenant);
+        }
+        $planKeys = array_keys(config('billing.plans', []));
+
+        $billingStatus = match (true) {
+            $tenant?->isLegacyWithoutBillingTracking() => 'legacy',
+            $tenant?->isTrialActive() => 'trial',
+            $tenant?->isPaidSubscriptionActive() => 'paid',
+            $tenant?->isInPaidSubscriptionGrace() => 'grace',
+            default => 'expired',
+        };
+
+        $stripeService = app(StripeCheckoutService::class);
+        $stripeReadyPlans = collect($planKeys)
+            ->filter(fn (string $key) => $key !== 'enterprise' && $stripeService->isConfiguredForPlan($key))
+            ->values()
+            ->all();
+
+        $stripeLive = config('stripe.enabled') && $stripeReadyPlans !== [];
 
         return view('livewire.pages.subscription', [
             'tenant' => $tenant,
-            'plans' => $plans,
-            'unitsCount' => $tenant?->currentUnitsCount() ?? 0,
-            'usersCount' => $tenant?->currentUsersCount() ?? 0,
+            'planKeys' => $planKeys,
+            'billingStatus' => $billingStatus,
+            'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
+            'canManage' => $tenant && auth()->user()?->can('manageSubscription', $tenant),
+            'stripeReadyPlans' => $stripeReadyPlans,
+            'stripeLive' => $stripeLive,
         ]);
     }
 }

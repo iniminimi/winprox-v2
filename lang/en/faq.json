@@ -47,27 +47,32 @@
             "type": "pricing",
             "title": "How much does WinProx cost?",
             "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription.",
-            "summary": "Trial period, then Starter, Pro, Business, or Enterprise plans based on units and users.",
+            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise plans based on units and users.",
             "plans": {
+                "micro": {
+                    "units": "Up to 10 units/spaces",
+                    "users": "Includes 1 administrator and 1 staff member",
+                    "description": "Ideal for small businesses and compact property managers."
+                },
                 "starter": {
-                    "units": "Up to 25 units",
-                    "users": "Up to 5 users",
+                    "units": "Up to 25 units/spaces",
+                    "users": "Includes 1 administrator and 2 staff members",
                     "description": "Ideal for a single site or pilot with a compact coordination team."
                 },
                 "pro": {
-                    "units": "Up to 75 units",
-                    "users": "Up to 15 users",
-                    "description": "Suited for growing facility organisations with more units and internal crews."
+                    "units": "Up to 100 units/spaces",
+                    "users": "Includes 1 administrator and 5 staff members",
+                    "description": "Suited for growing facility organisations with more units and internal teams."
                 },
                 "business": {
-                    "units": "Up to 200 units",
-                    "users": "Up to 40 users",
+                    "units": "Up to 300 units/spaces",
+                    "users": "Includes 1 administrator and 15 staff members",
                     "description": "For organisations with multiple sites, many units, and larger teams."
                 },
                 "enterprise": {
-                    "units": "Unlimited units",
-                    "users": "Unlimited users",
-                    "description": "Full support for large site operators and complex portfolios. Contact us for custom terms."
+                    "units": "More than 300 units/spaces",
+                    "users": "Includes 1 administrator and unlimited staff members",
+                    "description": "Full support for large site operators and complex portfolios."
                 }
             }
         },

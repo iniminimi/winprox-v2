@@ -1,23 +1,39 @@
 {
-    "title": "Abonnement",
-    "subtitle": "Gérez votre essai et votre forfait facility.",
-    "plans_heading": "Forfaits disponibles",
-    "activate_plan": "Activer le forfait",
-    "current_plan": "Forfait actuel",
-    "admin_required": "Seul un administrateur peut activer un forfait.",
-    "activated": "Le forfait :plan est activé.",
-    "enterprise_hint": "Contactez-nous pour une échelle sur mesure.",
-    "enterprise_cta": "Contacter les ventes",
-    "enterprise_mail_subject": "WinProx Enterprise",
-    "enterprise_contact": "Pour Enterprise, écrivez à :email.",
+    "title": "Abonnement, limites et paiement",
+    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites comptent les unités (machines, installations, …) ; voir la FAQ pour les détails.",
+    "plans_heading": "Formules disponibles",
+    "choose_plan": "Choisir cette formule",
+    "activate_plan": "Choisir cette formule",
+    "current_plan": "Formule actuelle",
+    "admin_required": "Seul un administrateur peut choisir un abonnement. Contactez l'administrateur de votre organisation.",
+    "activated": "Vous avez choisi :plan. Votre abonnement est actif pour la période configurée.",
+    "enterprise_hint": "Prise en charge complète pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous pour un devis sur mesure.",
+    "enterprise_cta": "Nous contacter",
+    "enterprise_mail_subject": "WinProx Enterprise - demande de devis",
+    "enterprise_contact": "Contactez-nous via :email pour un devis sur mesure.",
+    "status_heading": "Statut actuel",
+    "status_legacy": "Votre organisation n'utilise pas encore le suivi d'essai (compte existant). Toutes les fonctionnalités restent disponibles.",
+    "status_trial": "Essai avec :plan actif jusqu'au :date.",
+    "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
+    "status_grace": "Abonnement :plan terminé le :ended. Délai de grâce jusqu'au :grace_end — encore :days jours d'accès complet. Renouvelez à temps pour éviter une interruption.",
+    "status_expired": "Votre période d'essai est terminée. Choisissez une formule ci-dessous pour continuer.",
+    "pricing_intro": "WinProx inclut un mois d'essai gratuit. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces).",
+    "page_limits_title": "Pourquoi certaines actions ne sont pas disponibles",
+    "page_limits_units_body": "Vous utilisez :current unités sur :max. « Ajouter une unité » et « Ajouter un site » restent désactivés jusqu'à la mise à niveau.",
+    "page_limits_users_body": "Vous utilisez :current places d'équipe sur :max (1 administrateur plus max. :max collaborateurs). « Ajouter un utilisateur » est désactivé jusqu'à la mise à niveau.",
+    "manage_in_stripe": "Gérer l'abonnement (facture, moyen de paiement)",
+    "legal_footer_intro": "Votre compte est notamment soumis à :",
+    "legal_terms": "Conditions générales",
+    "legal_privacy": "Confidentialité",
+    "legal_dpa": "DPA",
     "status": {
         "title": "Statut",
-        "access": "Accès application",
+        "access": "Accès à l'app",
         "access_ok": "Actif",
         "access_blocked": "Bloqué",
-        "trial": "Essai",
+        "trial": "Période d'essai",
         "trial_days": ":days jours restants",
-        "plan": "Forfait",
+        "plan": "Formule",
         "active_until": "Valable jusqu'au",
         "usage": "Utilisation",
         "usage_counts": ":units unités · :users utilisateurs"
@@ -26,39 +42,62 @@
         "units": ":count unités",
         "users": ":count utilisateurs",
         "unlimited": "illimité",
-        "warning_units": "Il vous reste :remaining emplacements d'unités sur votre plan.",
-        "critical_units": "Limite d'unités atteinte. Passez à un plan supérieur.",
-        "warning_users": "Il vous reste :remaining emplacements utilisateurs sur votre plan.",
-        "critical_users": "Limite d'utilisateurs atteinte. Passez à un plan supérieur.",
+        "warning_units": "Il vous reste :remaining emplacements d'unités dans votre formule.",
+        "critical_units": "Limite d'unités atteinte. Passez à une formule supérieure pour en ajouter.",
+        "warning_users": "Il vous reste :remaining emplacements utilisateurs dans votre formule.",
+        "critical_users": "Limite d'utilisateurs atteinte. Passez à une formule supérieure pour inviter plus de collègues.",
         "cta": "Voir l'abonnement"
     },
     "plans": {
+        "micro": {
+            "name": "Micro",
+            "price": "€99 / an",
+            "units": "Jusqu'à 10 unités/espaces",
+            "users": "Inclut 1 administrateur et 1 collaborateur",
+            "description": "Idéal pour les petites entreprises et les gestionnaires immobiliers compacts."
+        },
         "starter": {
             "name": "Starter",
-            "description": "Petits sites avec signalements QR et tâches."
+            "price": "€29 / mois",
+            "units": "Jusqu'à 25 unités/espaces",
+            "users": "Inclut 1 administrateur et 2 collaborateurs",
+            "description": "Idéal pour un site unique ou un pilote avec une petite équipe de coordination."
         },
         "pro": {
             "name": "Pro",
-            "description": "Plus d'unités et d'équipes pour grandir."
+            "price": "€59 / mois",
+            "units": "Jusqu'à 100 unités/espaces",
+            "users": "Inclut 1 administrateur et 5 collaborateurs",
+            "description": "Adapté aux organisations facility en croissance avec plus d'unités et d'équipes internes."
         },
         "business": {
             "name": "Business",
-            "description": "Limites élevées et API pour intégrations."
+            "price": "€99 / mois",
+            "units": "Jusqu'à 300 unités/espaces",
+            "users": "Inclut 1 administrateur et 15 collaborateurs",
+            "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues."
         },
         "enterprise": {
             "name": "Enterprise",
-            "description": "Sur mesure, SLA et support dédié."
+            "price": "Sur mesure",
+            "units": "Plus de 300 unités/espaces",
+            "users": "Inclut 1 administrateur et des collaborateurs illimités",
+            "description": "Prise en charge complète pour les grands opérateurs de sites et portefeuilles complexes."
         }
     },
     "stripe": {
-        "activated": "Votre abonnement a été activé via Stripe.",
-        "not_configured": "Le paiement Stripe n'est pas disponible pour ce forfait.",
-        "simulated_hint": "Sans configuration Stripe, le forfait est activé localement (mode développement)."
+        "activated": "Merci ! Votre paiement a été reçu ; votre abonnement sera actif sous peu (actualisez si nécessaire).",
+        "not_configured": "Le paiement en ligne n'est pas encore configuré. Contactez WinProx ou réessayez plus tard.",
+        "simulated_hint": "Stripe n'est pas entièrement configuré : votre choix active la période d'abonnement telle que définie ici (sans paiement réel).",
+        "checkout_cancelled": "Paiement annulé. Vous pourrez choisir une formule plus tard.",
+        "return_unconfirmed": "Nous n'avons pas pu confirmer le paiement ici. Si vous venez de payer, votre statut sera mis à jour — actualisez la page."
     },
+    "stripe_notice_live": "Paiement et renouvellement via Stripe. Enterprise reste via contact personnel.",
+    "stripe_notice_simulated": "Stripe n'est pas entièrement configuré : votre choix active la période d'abonnement telle que définie ici (sans paiement réel). Enterprise nécessite toujours un contact personnel.",
     "errors": {
-        "plan_required": "Choisissez un forfait.",
-        "plan_invalid": "Ce forfait n'est pas disponible.",
-        "admin_only": "Seuls les administrateurs peuvent activer.",
-        "activation_disabled": "L'auto-activation est désactivée."
+        "plan_required": "Choisissez une formule.",
+        "plan_invalid": "Cette formule n'est pas disponible.",
+        "admin_only": "Seul un administrateur peut choisir un abonnement.",
+        "activation_disabled": "L'auto-activation est désactivée. Contactez WinProx."
     }
 }

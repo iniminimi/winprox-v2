@@ -20,18 +20,6 @@
         </div>
     </div>
 
-    @if ($unitLimitWarning || $userLimitWarning)
-        <div class="wp-flash {{ ($unitLimitWarning === 'critical' || $userLimitWarning === 'critical') ? 'wp-flash--danger' : 'wp-flash--muted' }}">
-            @if ($unitLimitWarning)
-                <p>{{ $unitLimitWarning === 'critical' ? __('subscription.limits.critical_units', ['remaining' => $remainingUnits ?? 0]) : __('subscription.limits.warning_units', ['remaining' => $remainingUnits ?? 0]) }}</p>
-            @endif
-            @if ($userLimitWarning)
-                <p>{{ $userLimitWarning === 'critical' ? __('subscription.limits.critical_users', ['remaining' => $remainingUsers ?? 0]) : __('subscription.limits.warning_users', ['remaining' => $remainingUsers ?? 0]) }}</p>
-            @endif
-            <p><a href="{{ route('subscription.index') }}" class="btn btn--ghost btn--sm">{{ __('subscription.limits.cta') }}</a></p>
-        </div>
-    @endif
-
     @php
         $kpiLinks = [
             'locations' => route('locations.index'),

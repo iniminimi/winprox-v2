@@ -1,21 +1,37 @@
 {
-    "title": "Subscription",
-    "subtitle": "Manage your trial and facility plan.",
+    "title": "Subscription, limits & billing",
+    "subtitle": "After your free month, choose a plan. Limits count units (machines, installations, …); see the FAQ for details.",
     "plans_heading": "Available plans",
-    "activate_plan": "Activate plan",
+    "choose_plan": "Choose this plan",
+    "activate_plan": "Choose this plan",
     "current_plan": "Current plan",
-    "admin_required": "Only an administrator can activate a plan.",
-    "activated": "Plan :plan has been activated.",
-    "enterprise_hint": "Contact us for custom scale and limits.",
-    "enterprise_cta": "Email sales",
-    "enterprise_mail_subject": "WinProx Enterprise",
-    "enterprise_contact": "For Enterprise, email :email.",
+    "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",
+    "activated": "You chose :plan. Your subscription is active for the configured period.",
+    "enterprise_hint": "Full support for large site operators and complex portfolios. Contact us for a custom quote.",
+    "enterprise_cta": "Contact us",
+    "enterprise_mail_subject": "WinProx Enterprise - quote request",
+    "enterprise_contact": "Contact us at :email for a custom quote.",
+    "status_heading": "Current status",
+    "status_legacy": "Your organisation does not use trial tracking yet (legacy account). All features remain available.",
+    "status_trial": "Trial with :plan active until :date.",
+    "status_active": "Active subscription: :plan, valid until :date.",
+    "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
+    "status_expired": "Your trial has ended. Choose a plan below to continue.",
+    "pricing_intro": "WinProx includes a one-month free trial. After that, choose a plan based on the number of units at your sites (machines, zones, or areas).",
+    "page_limits_title": "Why certain actions are unavailable",
+    "page_limits_units_body": "You are using :current of :max units. \"Add unit\" and \"Add location\" stay disabled until you upgrade.",
+    "page_limits_users_body": "You are using :current of :max team seats on your plan (1 administrator plus up to :max staff). \"Add user\" is disabled until you upgrade.",
+    "manage_in_stripe": "Manage subscription (invoice, payment method)",
+    "legal_footer_intro": "Your account is subject to, among others:",
+    "legal_terms": "Terms of service",
+    "legal_privacy": "Privacy",
+    "legal_dpa": "DPA",
     "status": {
         "title": "Status",
         "access": "App access",
         "access_ok": "Active",
         "access_blocked": "Blocked",
-        "trial": "Trial",
+        "trial": "Trial period",
         "trial_days": ":days days remaining",
         "plan": "Plan",
         "active_until": "Valid until",
@@ -26,39 +42,62 @@
         "units": ":count units",
         "users": ":count users",
         "unlimited": "unlimited",
-        "warning_units": "You have :remaining unit slots left on your plan.",
+        "warning_units": "You have :remaining unit slots left in your plan.",
         "critical_units": "Your unit limit is reached. Upgrade your plan to add more units.",
-        "warning_users": "You have :remaining user slots left on your plan.",
+        "warning_users": "You have :remaining user slots left in your plan.",
         "critical_users": "Your user limit is reached. Upgrade your plan to invite more colleagues.",
         "cta": "View subscription"
     },
     "plans": {
+        "micro": {
+            "name": "Micro",
+            "price": "€99 / year",
+            "units": "Up to 10 units/spaces",
+            "users": "Includes 1 administrator and 1 staff member",
+            "description": "Ideal for small businesses and compact property managers."
+        },
         "starter": {
             "name": "Starter",
-            "description": "For small sites with QR reports and tasks."
+            "price": "€29 / month",
+            "units": "Up to 25 units/spaces",
+            "users": "Includes 1 administrator and 2 staff members",
+            "description": "Ideal for a single site or pilot with a compact coordination team."
         },
         "pro": {
             "name": "Pro",
-            "description": "More units and teams for growing organisations."
+            "price": "€59 / month",
+            "units": "Up to 100 units/spaces",
+            "users": "Includes 1 administrator and 5 staff members",
+            "description": "Suited for growing facility organisations with more units and internal teams."
         },
         "business": {
             "name": "Business",
-            "description": "Higher limits and API for integrations."
+            "price": "€99 / month",
+            "units": "Up to 300 units/spaces",
+            "users": "Includes 1 administrator and 15 staff members",
+            "description": "For organisations with multiple sites, many units, and larger teams."
         },
         "enterprise": {
             "name": "Enterprise",
-            "description": "Custom setup, SLA and dedicated support."
+            "price": "Custom",
+            "units": "More than 300 units/spaces",
+            "users": "Includes 1 administrator and unlimited staff members",
+            "description": "Full support for large site operators and complex portfolios."
         }
     },
     "stripe": {
-        "activated": "Your subscription was activated via Stripe.",
-        "not_configured": "Stripe checkout is not available for this plan.",
-        "simulated_hint": "Without Stripe configuration the plan is activated locally (development mode)."
+        "activated": "Thank you! Your payment was received; your subscription will be active shortly (refresh if needed).",
+        "not_configured": "Online payment is not configured yet. Contact WinProx or try again later.",
+        "simulated_hint": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
+        "checkout_cancelled": "Checkout cancelled. You can choose a plan again later.",
+        "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page."
     },
+    "stripe_notice_live": "Payment and renewal run through Stripe. Enterprise remains via personal contact.",
+    "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment). Enterprise always requires personal contact.",
     "errors": {
         "plan_required": "Choose a plan.",
         "plan_invalid": "This plan is not available.",
-        "admin_only": "Only administrators can activate plans.",
-        "activation_disabled": "Self-activation is disabled."
+        "admin_only": "Only an administrator can choose a subscription.",
+        "activation_disabled": "Self-activation is disabled. Contact WinProx."
     }
 }

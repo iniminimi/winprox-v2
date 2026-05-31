@@ -32,6 +32,8 @@ class Settings extends Component
 
     public bool $canManageOrganisation = false;
 
+    public bool $showOrgModal = false;
+
     public function mount(): void
     {
         $tenant = $this->resolveTenant();
@@ -44,6 +46,28 @@ class Settings extends Component
         if ($this->canManageOrganisation) {
             $this->orgName = (string) $tenant->name;
         }
+    }
+
+    public function openOrgModal(): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $this->orgName = (string) $tenant->name;
+        $this->reset('orgLogo');
+        $this->resetErrorBag();
+        $this->showOrgModal = true;
+    }
+
+    public function closeOrgModal(): void
+    {
+        $this->showOrgModal = false;
+        $this->reset('orgLogo');
+        $this->resetErrorBag();
     }
 
     public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
@@ -82,6 +106,7 @@ class Settings extends Component
             $user->setRelation('tenant', $updated);
         }
 
+        $this->closeOrgModal();
         $this->dispatch('saved');
     }
 
@@ -109,9 +134,12 @@ class Settings extends Component
 
     public function render()
     {
+        $tenant = $this->resolveTenant();
+
         return view('livewire.pages.settings', [
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
+            'orgDisplayName' => $tenant instanceof Tenant ? (string) $tenant->name : '',
         ]);
     }
 

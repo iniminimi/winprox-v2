@@ -4,10 +4,12 @@
     "org": {
         "title": "Ihre Organisation",
         "readonly_hint": "Nur der Administrator kann Unternehmensdaten bearbeiten.",
+        "edit": "Organisationsdaten bearbeiten",
+        "modal_title": "Organisationsdaten",
+        "modal_hint": "Name und Logo für Ihre Umgebung und auf QR-Aufklebern.",
         "name_label": "Name der Organisation",
         "logo_label": "Organisationslogo",
-        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
-        "logo_current": "Aktuelles Logo"
+        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB)."
     },
     "privacy": {
         "title": "Datenschutz & Datenexport",

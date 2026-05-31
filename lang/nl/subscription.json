@@ -1,15 +1,31 @@
 {
-    "title": "Abonnement",
-    "subtitle": "Beheer je proefperiode en facility-plan.",
-    "plans_heading": "Beschikbare plannen",
-    "activate_plan": "Plan activeren",
+    "title": "Abonnement, limieten & betaling",
+    "subtitle": "Na je gratis maand kies je een formule. Limieten tellen units (machines, installaties, …); details in de FAQ.",
+    "plans_heading": "Beschikbare formules",
+    "choose_plan": "Kies dit plan",
+    "activate_plan": "Kies dit plan",
     "current_plan": "Huidig plan",
-    "admin_required": "Alleen een beheerder kan een plan activeren.",
-    "activated": "Plan :plan is geactiveerd.",
-    "enterprise_hint": "Neem contact op voor maatwerk en onbeperkte schaal.",
-    "enterprise_cta": "Mail sales",
-    "enterprise_mail_subject": "WinProx Enterprise",
-    "enterprise_contact": "Voor Enterprise mail je naar :email.",
+    "admin_required": "Enkel een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
+    "activated": "Je koos :plan. Je abonnement is geactiveerd voor de geconfigureerde periode.",
+    "enterprise_hint": "Volledige ontzorging voor grote site-operators en complexe portefeuilles. Neem contact op voor maatwerk.",
+    "enterprise_cta": "Contact opnemen",
+    "enterprise_mail_subject": "WinProx Enterprise - offerte aanvraag",
+    "enterprise_contact": "Neem contact op via :email voor een offerte op maat.",
+    "status_heading": "Huidige status",
+    "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (bestaand account). Alle functies blijven beschikbaar.",
+    "status_trial": "Proefperiode met :plan actief tot :date.",
+    "status_active": "Actief abonnement: :plan, geldig tot :date.",
+    "status_grace": "Abonnement :plan afgelopen op :ended. Nalichtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng tijdig om onderbreking te vermijden.",
+    "status_expired": "Je proefperiode is afgelopen. Kies hieronder een plan om verder te gaan.",
+    "pricing_intro": "WinProx is 1 maand gratis te testen. Daarna kies je een formule op basis van het aantal units op je locaties (machines, zones of ruimtes).",
+    "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
+    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Nieuwe locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
+    "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule (1 beheerder plus maximaal :max medewerkers). \"Medewerker toevoegen\" is uitgeschakeld tot je upgradet.",
+    "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
+    "legal_footer_intro": "Op je account zijn onder meer van toepassing:",
+    "legal_terms": "Algemene voorwaarden",
+    "legal_privacy": "Privacy",
+    "legal_dpa": "DPA",
     "status": {
         "title": "Status",
         "access": "App-toegang",
@@ -33,32 +49,55 @@
         "cta": "Bekijk abonnement"
     },
     "plans": {
+        "micro": {
+            "name": "Micro",
+            "price": "€99 / jaar",
+            "units": "Tot 10 units/ruimtes",
+            "users": "Inclusief 1 beheerder en 1 medewerker",
+            "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
+        },
         "starter": {
             "name": "Starter",
-            "description": "Voor kleine locaties met QR-meldingen en taken."
+            "price": "€29 / maand",
+            "units": "Tot 25 units/ruimtes",
+            "users": "Inclusief 1 beheerder en 2 medewerkers",
+            "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
         },
         "pro": {
             "name": "Pro",
-            "description": "Meer units en teams voor groeiende organisaties."
+            "price": "€59 / maand",
+            "units": "Tot 100 units/ruimtes",
+            "users": "Inclusief 1 beheerder en 5 medewerkers",
+            "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
         },
         "business": {
             "name": "Business",
-            "description": "Hogere limieten en API voor integraties."
+            "price": "€99 / maand",
+            "units": "Tot 300 units/ruimtes",
+            "users": "Inclusief 1 beheerder en 15 medewerkers",
+            "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
         },
         "enterprise": {
             "name": "Enterprise",
-            "description": "Maatwerk, SLA en dedicated support."
+            "price": "Op maat",
+            "units": "Meer dan 300 units/ruimtes",
+            "users": "Inclusief 1 beheerder en onbeperkt medewerkers",
+            "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles."
         }
     },
     "stripe": {
-        "activated": "Je abonnement is via Stripe geactiveerd.",
-        "not_configured": "Stripe-checkout is niet beschikbaar voor dit plan.",
-        "simulated_hint": "Zonder Stripe-configuratie wordt het plan lokaal geactiveerd (ontwikkelmodus)."
+        "activated": "Bedankt! Je betaling is ontvangen; je abonnement wordt zo dadelijk actief (even vernieuwen indien nodig).",
+        "not_configured": "Online betaling is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
+        "simulated_hint": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
+        "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een plan kiezen.",
+        "return_unconfirmed": "We konden het betaalresultaat hier niet tonen. Als je net betaald hebt, wordt je status zo bijgewerkt — vernieuw de pagina."
     },
+    "stripe_notice_live": "Betaling en verlenging lopen via Stripe. Enterprise blijft via persoonlijk contact.",
+    "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling). Voor Enterprise geldt altijd persoonlijk contact.",
     "errors": {
         "plan_required": "Kies een plan.",
         "plan_invalid": "Dit plan is niet beschikbaar.",
-        "admin_only": "Alleen beheerders mogen plannen activeren.",
-        "activation_disabled": "Zelfactivatie is uitgeschakeld."
+        "admin_only": "Enkel een beheerder kan een abonnement kiezen.",
+        "activation_disabled": "Zelf activeren is uitgeschakeld. Neem contact op met WinProx."
     }
 }

@@ -1,25 +1,34 @@
 <div class="wp-stack">
-    <x-wp-page-head-title
-        icon="subscription"
-        :title="__('subscription.title')"
-        help-page="subscription"
-        :subtitle="__('subscription.subtitle')"
-    />
+    <div class="wp-page-head">
+        <x-wp-page-head-title
+            icon="subscription"
+            :title="__('subscription.title')"
+            help-page="subscription"
+            :subtitle="$billingStatus === 'paid' ? null : __('subscription.subtitle')"
+        >
+            @if ($portalBatteryState)
+                <x-slot:toolbar>
+                    <x-wp-trial-battery-capsule :state="$portalBatteryState" />
+                </x-slot:toolbar>
+            @endif
+        </x-wp-page-head-title>
+    </div>
 
-    @if ($statusMessage)
-        <div class="wp-card wp-card-pad">
-            <p>{{ $statusMessage }}</p>
-        </div>
+    @if (session('success'))
+        <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
-    @if ($tenant && ($tenant->unitLimitWarning() || $tenant->userLimitWarning()))
-        <div class="wp-flash {{ ($tenant->unitLimitWarning() === 'critical' || $tenant->userLimitWarning() === 'critical') ? 'wp-flash--danger' : 'wp-flash--muted' }}">
-            @if ($warning = $tenant->unitLimitWarning())
-                <p>{{ $warning === 'critical' ? __('subscription.limits.critical_units', ['remaining' => $tenant->remainingUnitSlots() ?? 0]) : __('subscription.limits.warning_units', ['remaining' => $tenant->remainingUnitSlots() ?? 0]) }}</p>
-            @endif
-            @if ($warning = $tenant->userLimitWarning())
-                <p>{{ $warning === 'critical' ? __('subscription.limits.critical_users', ['remaining' => $tenant->remainingUserSlots() ?? 0]) : __('subscription.limits.warning_users', ['remaining' => $tenant->remainingUserSlots() ?? 0]) }}</p>
-            @endif
+    @if (session('error'))
+        <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
+    @endif
+
+    @if (session('warning'))
+        <div class="wp-flash wp-flash--muted">{{ session('warning') }}</div>
+    @endif
+
+    @if ($statusMessage)
+        <div class="wp-flash wp-flash--muted">
+            <p>{{ $statusMessage }}</p>
         </div>
     @endif
 
@@ -27,81 +36,137 @@
         <p class="wp-form-error">{{ $message }}</p>
     @enderror
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('subscription.status.title') }}</h2>
-        <dl class="wp-dl">
-            <div class="wp-dl-row">
-                <dt>{{ __('subscription.status.access') }}</dt>
-                <dd>
-                    @if ($tenant?->hasFullAppAccess())
-                        <span class="wp-pill wp-pill--done">{{ __('subscription.status.access_ok') }}</span>
-                    @else
-                        <span class="wp-pill wp-pill--closed">{{ __('subscription.status.access_blocked') }}</span>
-                    @endif
-                </dd>
-            </div>
-            @if ($tenant?->isTrialActive())
-                <div class="wp-dl-row">
-                    <dt>{{ __('subscription.status.trial') }}</dt>
-                    <dd>{{ __('subscription.status.trial_days', ['days' => $tenant->trialDaysRemaining()]) }}</dd>
-                </div>
+    @if ($tenant)
+        <div class="wp-card wp-card-pad wp-stack-tight" wire:key="subscription-status-{{ $billingStatus }}-{{ $tenant->billing_plan }}-{{ $tenant->billing_active_until?->timestamp }}">
+            <p class="wp-section-title">{{ __('subscription.status_heading') }}</p>
+            <ul class="wp-billing-status-list">
+                @if ($billingStatus === 'legacy')
+                    <li>{{ __('subscription.status_legacy') }}</li>
+                @elseif ($billingStatus === 'trial')
+                    @php
+                        $trialPlanKey = $tenant->effectivePlanKey();
+                    @endphp
+                    <li>{{ __('subscription.status_trial', [
+                        'plan' => $trialPlanKey ? __("subscription.plans.{$trialPlanKey}.name") : '—',
+                        'date' => $tenant->trial_ends_at?->timezone(config('app.timezone'))->format('d/m/Y') ?? '—',
+                    ]) }}</li>
+                @elseif ($billingStatus === 'paid')
+                    <li>{{ __('subscription.status_active', [
+                        'plan' => __("subscription.plans.{$tenant->billing_plan}.name"),
+                        'date' => $tenant->billing_active_until->timezone(config('app.timezone'))->format('d/m/Y'),
+                    ]) }}</li>
+                @elseif ($billingStatus === 'grace')
+                    <li class="wp-billing-status-list__warn">{{ __('subscription.status_grace', [
+                        'plan' => __("subscription.plans.{$tenant->billing_plan}.name"),
+                        'ended' => $tenant->billing_active_until->timezone(config('app.timezone'))->format('d/m/Y'),
+                        'grace_end' => $tenant->paidSubscriptionGraceEndsAt()?->timezone(config('app.timezone'))->format('d/m/Y'),
+                        'days' => (int) ($tenant->paidSubscriptionGraceBatteryState()['days_remaining'] ?? 0),
+                    ]) }}</li>
+                @else
+                    <li class="wp-billing-status-list__warn">{{ __('subscription.status_expired') }}</li>
+                @endif
+            </ul>
+            @if (! in_array($billingStatus, ['paid', 'grace'], true))
+                <p class="wp-muted">{{ __('subscription.pricing_intro') }}</p>
             @endif
-            @if ($tenant?->billing_plan)
-                <div class="wp-dl-row">
-                    <dt>{{ __('subscription.status.plan') }}</dt>
-                    <dd>{{ __('subscription.plans.' . $tenant->billing_plan . '.name') }}</dd>
-                </div>
-            @endif
-            @if ($tenant?->billing_active_until)
-                <div class="wp-dl-row">
-                    <dt>{{ __('subscription.status.active_until') }}</dt>
-                    <dd>{{ $tenant->billing_active_until->format('d-m-Y') }}</dd>
-                </div>
-            @endif
-            <div class="wp-dl-row">
-                <dt>{{ __('subscription.status.usage') }}</dt>
-                <dd>{{ __('subscription.status.usage_counts', ['units' => $unitsCount, 'users' => $usersCount]) }}</dd>
-            </div>
-        </dl>
-    </div>
+        </div>
 
-    <div class="wp-stack">
-        <h2 class="wp-section-title">{{ __('subscription.plans_heading') }}</h2>
-        <div class="wp-plan-grid">
-            @foreach ($plans as $planKey => $plan)
-                @php
-                    $isEnterprise = ! ($plan['self_activate'] ?? false);
-                    $isCurrent = $selectedPlan === $planKey;
-                @endphp
-                <div class="wp-card wp-card-pad wp-plan-card {{ $isCurrent ? 'is-current' : '' }}">
-                    <h3 class="wp-plan-name">{{ __("subscription.plans.{$planKey}.name") }}</h3>
-                    <p class="wp-muted">{{ __("subscription.plans.{$planKey}.description") }}</p>
-                    <ul class="wp-plan-limits">
-                        <li>{{ __('subscription.limits.units', ['count' => $plan['units_limit'] ?? __('subscription.limits.unlimited')]) }}</li>
-                        <li>{{ __('subscription.limits.users', ['count' => $plan['users_limit'] ?? __('subscription.limits.unlimited')]) }}</li>
-                    </ul>
-
-                    @if ($isEnterprise)
-                        <p class="wp-muted">{{ __('subscription.enterprise_hint') }}</p>
-                        <a href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.enterprise_mail_subject')) }}"
-                           class="btn btn--primary btn--block">
-                            {{ __('subscription.enterprise_cta') }}
-                        </a>
-                    @elseif ($tenant && auth()->user()?->can('manageSubscription', $tenant))
-                        @if (! config('stripe.enabled') || ! app(\App\Services\Billing\StripeCheckoutService::class)->isConfiguredForPlan($planKey))
-                            <p class="wp-hint">{{ __('subscription.stripe.simulated_hint') }}</p>
+        @if (! $tenant->isLegacyWithoutBillingTracking())
+            @php
+                $limitMaxUnits = $tenant->maxUnitsLimit();
+                $limitMaxUsers = $tenant->maxUsersLimit();
+                $limitShowUnits = $limitMaxUnits !== null
+                    && $tenant->isAtUnitLimit()
+                    && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
+                $limitShowUsers = $limitMaxUsers !== null
+                    && ! $tenant->canAddUser()
+                    && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
+            @endphp
+            @if ($limitShowUnits || $limitShowUsers)
+                <div class="wp-flash wp-flash--muted">
+                    <p class="wp-section-title">{{ __('subscription.page_limits_title') }}</p>
+                    <ul class="wp-billing-status-list">
+                        @if ($limitShowUnits)
+                            <li>{{ __('subscription.page_limits_units_body', ['max' => $limitMaxUnits, 'current' => $tenant->currentUnitsCount()]) }}</li>
                         @endif
-                        <button type="button"
+                        @if ($limitShowUsers)
+                            <li>{{ __('subscription.page_limits_users_body', ['max' => $limitMaxUsers, 'current' => $tenant->currentUsersCount()]) }}</li>
+                        @endif
+                    </ul>
+                </div>
+            @endif
+        @endif
+    @endif
+
+    @if ($tenant && ! $canManage)
+        <div class="wp-flash wp-flash--muted">
+            {{ __('subscription.admin_required') }}
+        </div>
+    @endif
+
+    <div class="wp-billing-plan-list">
+        @foreach ($planKeys as $planKey)
+            @php
+                $isEnterprise = $planKey === 'enterprise';
+            @endphp
+            <article class="wp-billing-plan-card">
+                <div class="wp-billing-plan-card-body">
+                    <div class="wp-billing-plan-card-head">
+                        <h2 class="wp-billing-plan-card-title">{{ __("subscription.plans.{$planKey}.name") }}</h2>
+                        <p class="wp-billing-plan-card-price">{{ __("subscription.plans.{$planKey}.price") }}</p>
+                    </div>
+                    <ul class="wp-billing-plan-card-meta">
+                        <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
+                        <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
+                    </ul>
+                    <p class="wp-billing-plan-card-desc">{{ __("subscription.plans.{$planKey}.description") }}</p>
+                </div>
+                @if ($canManage)
+                    <div class="wp-billing-plan-card-action">
+                        @if ($isEnterprise)
+                            <a
+                                href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.enterprise_mail_subject')) }}"
+                                class="btn btn--primary btn--block"
+                            >
+                                {{ __('subscription.enterprise_cta') }}
+                            </a>
+                        @elseif (in_array($planKey, $stripeReadyPlans, true))
+                            <button
+                                type="button"
                                 class="btn btn--primary btn--block"
                                 wire:click="activatePlan('{{ $planKey }}')"
-                                wire:loading.attr="disabled">
-                            {{ $isCurrent ? __('subscription.current_plan') : __('subscription.activate_plan') }}
-                        </button>
-                    @else
-                        <p class="wp-muted">{{ __('subscription.admin_required') }}</p>
-                    @endif
-                </div>
-            @endforeach
-        </div>
+                                wire:loading.attr="disabled"
+                            >
+                                {{ __('subscription.choose_plan') }}
+                            </button>
+                        @else
+                            <button
+                                type="button"
+                                class="btn btn--primary btn--block"
+                                wire:click="activatePlan('{{ $planKey }}')"
+                                wire:loading.attr="disabled"
+                            >
+                                {{ __('subscription.choose_plan') }}
+                            </button>
+                        @endif
+                    </div>
+                @endif
+            </article>
+        @endforeach
     </div>
+
+    <p class="wp-billing-legal">
+        <span>{{ __('subscription.legal_footer_intro') }}</span>
+        <a href="{{ route('legal.terms') }}" target="_blank" rel="noopener noreferrer">{{ __('subscription.legal_terms') }}</a><span class="wp-billing-legal-sep">,</span>
+        <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener noreferrer">{{ __('subscription.legal_privacy') }}</a><span class="wp-billing-legal-sep">,</span>
+        <a href="{{ route('legal.dpa') }}" target="_blank" rel="noopener noreferrer">{{ __('subscription.legal_dpa') }}</a>.
+    </p>
+    <p class="wp-billing-legal wp-billing-legal--hint">{{ __('legal.inline_jurisdiction_hint') }}</p>
+    <p class="wp-billing-legal wp-billing-legal--notice">
+        @if ($stripeLive)
+            {{ __('subscription.stripe_notice_live') }}
+        @else
+            {{ __('subscription.stripe_notice_simulated') }}
+        @endif
+    </p>
 </div>

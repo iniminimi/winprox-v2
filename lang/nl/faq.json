@@ -47,27 +47,32 @@
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
             "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement.",
-            "summary": "Proefperiode, daarna plannen Starter, Pro, Business of Enterprise op basis van units en gebruikers.",
+            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise op basis van units en gebruikers.",
             "plans": {
+                "micro": {
+                    "units": "Tot 10 units/ruimtes",
+                    "users": "Inclusief 1 beheerder en 1 medewerker",
+                    "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
+                },
                 "starter": {
-                    "units": "Tot 25 units",
-                    "users": "Tot 5 gebruikers",
+                    "units": "Tot 25 units/ruimtes",
+                    "users": "Inclusief 1 beheerder en 2 medewerkers",
                     "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
                 },
                 "pro": {
-                    "units": "Tot 75 units",
-                    "users": "Tot 15 gebruikers",
+                    "units": "Tot 100 units/ruimtes",
+                    "users": "Inclusief 1 beheerder en 5 medewerkers",
                     "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
                 },
                 "business": {
-                    "units": "Tot 200 units",
-                    "users": "Tot 40 gebruikers",
+                    "units": "Tot 300 units/ruimtes",
+                    "users": "Inclusief 1 beheerder en 15 medewerkers",
                     "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
                 },
                 "enterprise": {
-                    "units": "Onbeperkt units",
-                    "users": "Onbeperkt gebruikers",
-                    "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles. Neem contact op voor maatwerk."
+                    "units": "Meer dan 300 units/ruimtes",
+                    "users": "Inclusief 1 beheerder en onbeperkt medewerkers",
+                    "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles."
                 }
             }
         },

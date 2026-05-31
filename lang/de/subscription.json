@@ -1,23 +1,39 @@
 {
-    "title": "Abonnement",
-    "subtitle": "Verwalten Sie Testphase und Facility-Plan.",
-    "plans_heading": "Verfügbare Pläne",
-    "activate_plan": "Plan aktivieren",
-    "current_plan": "Aktueller Plan",
-    "admin_required": "Nur Administratoren können Pläne aktivieren.",
-    "activated": "Plan :plan wurde aktiviert.",
-    "enterprise_hint": "Kontaktieren Sie uns für individuelle Skalierung.",
-    "enterprise_cta": "Vertrieb kontaktieren",
-    "enterprise_mail_subject": "WinProx Enterprise",
-    "enterprise_contact": "Für Enterprise schreiben Sie an :email.",
+    "title": "Abonnement, Limits & Abrechnung",
+    "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits zählen Units (Maschinen, Anlagen, …); Details in der FAQ.",
+    "plans_heading": "Verfügbare Formeln",
+    "choose_plan": "Diese Formel wählen",
+    "activate_plan": "Diese Formel wählen",
+    "current_plan": "Aktuelle Formel",
+    "admin_required": "Nur ein Administrator kann ein Abonnement wählen. Wenden Sie sich an den Administrator Ihrer Organisation.",
+    "activated": "Sie haben :plan gewählt. Ihr Abonnement ist für den konfigurierten Zeitraum aktiv.",
+    "enterprise_hint": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns für ein individuelles Angebot.",
+    "enterprise_cta": "Kontakt aufnehmen",
+    "enterprise_mail_subject": "WinProx Enterprise - Angebotsanfrage",
+    "enterprise_contact": "Kontaktieren Sie uns unter :email für ein individuelles Angebot.",
+    "status_heading": "Aktueller Status",
+    "status_legacy": "Ihre Organisation nutzt noch kein Testphasen-Tracking (Bestandskonto). Alle Funktionen bleiben verfügbar.",
+    "status_trial": "Testphase mit :plan aktiv bis :date.",
+    "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
+    "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugriff. Verlängern Sie rechtzeitig, um Unterbrechungen zu vermeiden.",
+    "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten eine Formel, um fortzufahren.",
+    "pricing_intro": "WinProx bietet einen Gratis-Monat zum Testen. Danach wählen Sie eine Formel nach der Anzahl Units an Ihren Standorten (Maschinen, Zonen oder Bereiche).",
+    "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
+    "page_limits_units_body": "Sie nutzen :current von :max Units. „Unit hinzufügen“ und „Neuen Standort hinzufügen“ bleiben deaktiviert, bis Sie upgraden.",
+    "page_limits_users_body": "Sie nutzen :current von :max Team-Plätzen (1 Administrator plus max. :max Mitarbeitende). „Mitarbeiter hinzufügen“ ist deaktiviert, bis Sie upgraden.",
+    "manage_in_stripe": "Abonnement verwalten (Rechnung, Zahlungsmethode)",
+    "legal_footer_intro": "Für Ihr Konto gelten unter anderem:",
+    "legal_terms": "Allgemeine Geschäftsbedingungen",
+    "legal_privacy": "Datenschutz",
+    "legal_dpa": "DPA",
     "status": {
         "title": "Status",
-        "access": "App-Zugang",
+        "access": "App-Zugriff",
         "access_ok": "Aktiv",
         "access_blocked": "Gesperrt",
         "trial": "Testphase",
-        "trial_days": ":days Tage verbleibend",
-        "plan": "Plan",
+        "trial_days": "Noch :days Tage",
+        "plan": "Formel",
         "active_until": "Gültig bis",
         "usage": "Nutzung",
         "usage_counts": ":units Units · :users Benutzer"
@@ -26,39 +42,62 @@
         "units": ":count Units",
         "users": ":count Benutzer",
         "unlimited": "unbegrenzt",
-        "warning_units": "Noch :remaining Unit-Plätze in Ihrem Plan.",
-        "critical_units": "Unit-Limit erreicht. Plan upgraden für mehr Units.",
-        "warning_users": "Noch :remaining Benutzer-Plätze in Ihrem Plan.",
-        "critical_users": "Benutzer-Limit erreicht. Plan upgraden für mehr Kollegen.",
+        "warning_units": "Sie haben noch :remaining Unit-Plätze in Ihrer Formel.",
+        "critical_units": "Unit-Limit erreicht. Upgraden Sie Ihre Formel, um mehr Units hinzuzufügen.",
+        "warning_users": "Sie haben noch :remaining Benutzer-Plätze in Ihrer Formel.",
+        "critical_users": "Benutzer-Limit erreicht. Upgraden Sie Ihre Formel, um mehr Kolleginnen und Kollegen einzuladen.",
         "cta": "Abonnement ansehen"
     },
     "plans": {
+        "micro": {
+            "name": "Micro",
+            "price": "€99 / Jahr",
+            "units": "Bis zu 10 Units/Räume",
+            "users": "Inklusive 1 Administrator und 1 Mitarbeitende",
+            "description": "Ideal für kleine Unternehmen und kompakte Immobilienverwalter."
+        },
         "starter": {
             "name": "Starter",
-            "description": "Kleine Standorte mit QR-Meldungen und Aufgaben."
+            "price": "€29 / Monat",
+            "units": "Bis zu 25 Units/Räume",
+            "users": "Inklusive 1 Administrator und 2 Mitarbeitende",
+            "description": "Ideal für einen einzelnen Standort oder Pilot mit kompaktem Koordinationsteam."
         },
         "pro": {
             "name": "Pro",
-            "description": "Mehr Units und Teams für wachsende Organisationen."
+            "price": "€59 / Monat",
+            "units": "Bis zu 100 Units/Räume",
+            "users": "Inklusive 1 Administrator und 5 Mitarbeitende",
+            "description": "Geeignet für wachsende Facility-Organisationen mit mehr Units und internen Teams."
         },
         "business": {
             "name": "Business",
-            "description": "Höhere Limits und API für Integrationen."
+            "price": "€99 / Monat",
+            "units": "Bis zu 300 Units/Räume",
+            "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
+            "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams."
         },
         "enterprise": {
             "name": "Enterprise",
-            "description": "Individuell, SLA und dedizierter Support."
+            "price": "Individuell",
+            "units": "Mehr als 300 Units/Räume",
+            "users": "Inklusive 1 Administrator und unbegrenzt Mitarbeitende",
+            "description": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios."
         }
     },
     "stripe": {
-        "activated": "Ihr Abonnement wurde über Stripe aktiviert.",
-        "not_configured": "Stripe-Checkout ist für diesen Tarif nicht verfügbar.",
-        "simulated_hint": "Ohne Stripe-Konfiguration wird der Tarif lokal aktiviert (Entwicklungsmodus)."
+        "activated": "Danke! Ihre Zahlung ist eingegangen; Ihr Abonnement wird in Kürze aktiv (ggf. Seite aktualisieren).",
+        "not_configured": "Online-Zahlung ist noch nicht konfiguriert. Kontaktieren Sie WinProx oder versuchen Sie es später erneut.",
+        "simulated_hint": "Stripe ist nicht vollständig konfiguriert: Ihre Wahl aktiviert den Abonnementzeitraum wie hier eingestellt (ohne echte Zahlung).",
+        "checkout_cancelled": "Checkout abgebrochen. Sie können später erneut eine Formel wählen.",
+        "return_unconfirmed": "Wir konnten das Zahlungsergebnis hier nicht bestätigen. Wenn Sie gerade bezahlt haben, wird Ihr Status aktualisiert — Seite aktualisieren."
     },
+    "stripe_notice_live": "Zahlung und Verlängerung laufen über Stripe. Enterprise bleibt über persönlichen Kontakt.",
+    "stripe_notice_simulated": "Stripe ist nicht vollständig konfiguriert: Ihre Wahl aktiviert den Abonnementzeitraum wie hier eingestellt (ohne echte Zahlung). Enterprise erfordert immer persönlichen Kontakt.",
     "errors": {
-        "plan_required": "Wählen Sie einen Plan.",
-        "plan_invalid": "Dieser Plan ist nicht verfügbar.",
-        "admin_only": "Nur Administratoren dürfen aktivieren.",
-        "activation_disabled": "Selbstaktivierung ist deaktiviert."
+        "plan_required": "Wählen Sie eine Formel.",
+        "plan_invalid": "Diese Formel ist nicht verfügbar.",
+        "admin_only": "Nur ein Administrator kann ein Abonnement wählen.",
+        "activation_disabled": "Selbstaktivierung ist deaktiviert. Kontaktieren Sie WinProx."
     }
 }

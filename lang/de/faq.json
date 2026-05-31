@@ -47,27 +47,32 @@
             "type": "pricing",
             "title": "Was kostet WinProx?",
             "intro": "WinProx startet mit einer Testphase. Danach wählen Sie ein Paket nach der Anzahl der Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Aktivierung unter Abonnement.",
-            "summary": "Testphase, danach Starter-, Pro-, Business- oder Enterprise-Pakete nach Units und Benutzern.",
+            "summary": "Testphase, dan Micro-, Starter-, Pro-, Business- oder Enterprise-Pakete nach Units und Benutzern.",
             "plans": {
+                "micro": {
+                    "units": "Bis zu 10 Units/Räume",
+                    "users": "Inklusive 1 Administrator und 1 Mitarbeitende",
+                    "description": "Ideal für kleine Unternehmen und kompakte Immobilienverwalter."
+                },
                 "starter": {
-                    "units": "Bis zu 25 Units",
-                    "users": "Bis zu 5 Benutzer",
+                    "units": "Bis zu 25 Units/Räume",
+                    "users": "Inklusive 1 Administrator und 2 Mitarbeitende",
                     "description": "Ideal für einen einzelnen Standort oder Pilot mit kompaktem Koordinationsteam."
                 },
                 "pro": {
-                    "units": "Bis zu 75 Units",
-                    "users": "Bis zu 15 Benutzer",
-                    "description": "Für wachsende Facility-Organisationen mit mehr Units und internen Teams."
+                    "units": "Bis zu 100 Units/Räume",
+                    "users": "Inklusive 1 Administrator und 5 Mitarbeitende",
+                    "description": "Geeignet für wachsende Facility-Organisationen mit mehr Units und internen Teams."
                 },
                 "business": {
-                    "units": "Bis zu 200 Units",
-                    "users": "Bis zu 40 Benutzer",
+                    "units": "Bis zu 300 Units/Räume",
+                    "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
                     "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams."
                 },
                 "enterprise": {
-                    "units": "Unbegrenzte Units",
-                    "users": "Unbegrenzte Benutzer",
-                    "description": "Volle Betreuung für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns für Maßlösungen."
+                    "units": "Mehr als 300 Units/Räume",
+                    "users": "Inklusive 1 Administrator und unbegrenzt Mitarbeitende",
+                    "description": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios."
                 }
             }
         },

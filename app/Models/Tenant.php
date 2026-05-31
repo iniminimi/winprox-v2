@@ -111,6 +111,36 @@ class Tenant extends Model
         return max(0, (int) now()->diffInDays($this->trial_ends_at, false));
     }
 
+    public static function subscriptionPeriodDaysForPlan(?string $planKey): int
+    {
+        if (! is_string($planKey) || $planKey === '') {
+            return max(1, (int) config('billing.subscription_period_days', 30));
+        }
+
+        $row = config("billing.plans.{$planKey}");
+        if (is_array($row) && isset($row['subscription_period_days'])) {
+            return max(1, (int) $row['subscription_period_days']);
+        }
+
+        return max(1, (int) config('billing.subscription_period_days', 30));
+    }
+
+    public function subscriptionPeriodDays(?string $planKey = null): int
+    {
+        return self::subscriptionPeriodDaysForPlan($planKey ?? $this->billing_plan ?? $this->effectivePlanKey());
+    }
+
+    public function needsBillingPeriodRealignment(): bool
+    {
+        if (! $this->isPaidSubscriptionActive() || $this->billing_active_until === null || $this->billing_plan === null) {
+            return false;
+        }
+
+        $remaining = max(0, (int) now()->diffInDays($this->billing_active_until, false));
+
+        return $remaining > $this->subscriptionPeriodDays();
+    }
+
     public function paidSubscriptionGraceEndsAt(): ?Carbon
     {
         if ($this->billing_active_until === null) {
@@ -184,7 +214,35 @@ class Tenant extends Model
     }
 
     /**
-     * @return array{type: 'trial'|'grace', days_remaining: int, blocks_remaining: int, ends_on: Carbon, trial_days?: int, grace_days?: int}|null
+     * @return array{period_days: int, days_remaining: int, blocks_remaining: int, ends_on: Carbon}|null
+     */
+    public function paidSubscriptionBatteryState(): ?array
+    {
+        if (! $this->isPaidSubscriptionActive() || $this->billing_active_until === null) {
+            return null;
+        }
+
+        $periodDays = $this->subscriptionPeriodDays();
+        $endsOn = $this->billing_active_until->copy();
+        $now = Carbon::now();
+        $daysRemaining = max(0, (int) $now->diffInDays($endsOn, false));
+        if ($daysRemaining === 0 && $now->lt($endsOn)) {
+            $daysRemaining = 1;
+        }
+
+        $daysPerBlock = max(1, (int) ceil($periodDays / 5));
+        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+
+        return [
+            'period_days' => $periodDays,
+            'days_remaining' => $daysRemaining,
+            'blocks_remaining' => $blocksRemaining,
+            'ends_on' => $endsOn,
+        ];
+    }
+
+    /**
+     * @return array{type: 'trial'|'grace'|'paid', days_remaining: int, blocks_remaining: int, ends_on: Carbon, trial_days?: int, grace_days?: int, period_days?: int, plan?: string}|null
      */
     public function portalDashboardBatteryState(): ?array
     {
@@ -193,7 +251,19 @@ class Tenant extends Model
         }
 
         if ($this->isPaidSubscriptionActive()) {
-            return null;
+            $paid = $this->paidSubscriptionBatteryState();
+            if ($paid === null) {
+                return null;
+            }
+
+            return [
+                'type' => 'paid',
+                'days_remaining' => $paid['days_remaining'],
+                'blocks_remaining' => $paid['blocks_remaining'],
+                'ends_on' => $paid['ends_on'],
+                'period_days' => $paid['period_days'],
+                'plan' => $this->billing_plan,
+            ];
         }
 
         if ($this->isInPaidSubscriptionGrace()) {
@@ -236,7 +306,10 @@ class Tenant extends Model
 
     public function currentUsersCount(): int
     {
-        return $this->users()->where('is_superuser', false)->count();
+        return $this->users()
+            ->where('is_superuser', false)
+            ->where('role', '!=', User::ROLE_ADMIN)
+            ->count();
     }
 
     public function effectivePlanKey(): ?string
@@ -316,6 +389,20 @@ class Tenant extends Model
         }
 
         return max(0, $max - $this->currentUsersCount());
+    }
+
+    public function isAtUnitLimit(): bool
+    {
+        $remaining = $this->remainingUnitSlots();
+
+        return $remaining !== null && $remaining === 0;
+    }
+
+    public function canAddUser(): bool
+    {
+        $remaining = $this->remainingUserSlots();
+
+        return $remaining === null || $remaining > 0;
     }
 
     /** null = geen limiet of ruim voldoende; warning | critical */

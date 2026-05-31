@@ -47,27 +47,32 @@
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
             "intro": "WinProx démarre avec une période d'essai. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces). Activation sous Abonnement.",
-            "summary": "Essai, puis formules Starter, Pro, Business ou Enterprise selon unités et utilisateurs.",
+            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise selon unités et utilisateurs.",
             "plans": {
+                "micro": {
+                    "units": "Jusqu'à 10 unités/espaces",
+                    "users": "Inclut 1 administrateur et 1 collaborateur",
+                    "description": "Idéal pour les petites entreprises et les gestionnaires immobiliers compacts."
+                },
                 "starter": {
-                    "units": "Jusqu'à 25 unités",
-                    "users": "Jusqu'à 5 utilisateurs",
-                    "description": "Idéal pour un site unique ou pilote avec une petite équipe de coordination."
+                    "units": "Jusqu'à 25 unités/espaces",
+                    "users": "Inclut 1 administrateur et 2 collaborateurs",
+                    "description": "Idéal pour un site unique ou un pilote avec une petite équipe de coordination."
                 },
                 "pro": {
-                    "units": "Jusqu'à 75 unités",
-                    "users": "Jusqu'à 15 utilisateurs",
-                    "description": "Pour des organisations facility en croissance avec plus d'unités et d'équipes internes."
+                    "units": "Jusqu'à 100 unités/espaces",
+                    "users": "Inclut 1 administrateur et 5 collaborateurs",
+                    "description": "Adapté aux organisations facility en croissance avec plus d'unités et d'équipes internes."
                 },
                 "business": {
-                    "units": "Jusqu'à 200 unités",
-                    "users": "Jusqu'à 40 utilisateurs",
-                    "description": "Pour organisations multi-sites, nombreuses unités et équipes plus larges."
+                    "units": "Jusqu'à 300 unités/espaces",
+                    "users": "Inclut 1 administrateur et 15 collaborateurs",
+                    "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues."
                 },
                 "enterprise": {
-                    "units": "Unités illimitées",
-                    "users": "Utilisateurs illimités",
-                    "description": "Accompagnement complet pour grands opérateurs et portefeuilles complexes. Contactez-nous pour du sur mesure."
+                    "units": "Plus de 300 unités/espaces",
+                    "users": "Inclut 1 administrateur et des collaborateurs illimités",
+                    "description": "Prise en charge complète pour les grands opérateurs de sites et portefeuilles complexes."
                 }
             }
         },

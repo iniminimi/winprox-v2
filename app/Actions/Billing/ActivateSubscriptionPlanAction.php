@@ -13,7 +13,7 @@ class ActivateSubscriptionPlanAction
 
     public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
     {
-        $periodDays = (int) config('billing.subscription_period_days', 365);
+        $periodDays = Tenant::subscriptionPeriodDaysForPlan($plan);
 
         $tenant->forceFill([
             'billing_plan' => $plan,

@@ -4,6 +4,8 @@
     "trial_capsule": {
         "trial_short": "Testphase noch :days Tage.",
         "trial_title": "Testphase",
+        "paid_short": "Abonnement noch :days Tage.",
+        "paid_title": "Abonnement",
         "grace_short": "Nachlaufzeit: noch :days Tage voller Zugriff.",
         "grace_title": "Nachlaufzeit nach abgelaufenem Abonnement"
     },

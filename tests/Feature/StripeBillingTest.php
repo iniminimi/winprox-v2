@@ -28,6 +28,23 @@ class StripeBillingTest extends TestCase
         $tenant->refresh();
         $this->assertSame('starter', $tenant->billing_plan);
         $this->assertTrue($tenant->isPaidSubscriptionActive());
+        $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(30)));
+        $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(29)));
+    }
+
+    public function test_realigns_starter_subscription_after_yearly_misactivation(): void
+    {
+        $tenant = Tenant::factory()->create([
+            'trial_ends_at' => now(),
+            'billing_plan' => 'starter',
+            'billing_active_until' => now()->addDays(364),
+        ]);
+
+        app(\App\Actions\Billing\RealignSubscriptionPeriodAction::class)->handle($tenant);
+
+        $tenant->refresh();
+        $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(30)));
+        $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(29)));
     }
 
     public function test_stripe_webhook_rejects_invalid_signature(): void

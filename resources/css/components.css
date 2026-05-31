@@ -164,10 +164,6 @@
     margin-top: 1rem;
 }
 
-.wp-org-logo-preview-wrap {
-    margin-bottom: 0.625rem;
-}
-
 .wp-org-logo-preview {
     display: block;
     width: 7.5rem;
@@ -1558,6 +1554,148 @@ a.wp-kpi:hover {
     padding-left: 1.25rem;
     color: var(--wp-text-muted);
     font-size: 0.875rem;
+}
+
+/* ---------------------------------------------------------------------------
+ | Abonnement — planlijst (V1-pariteit)
+ * ------------------------------------------------------------------------- */
+.wp-billing-status-list {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+    color: var(--wp-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.55;
+}
+
+.wp-billing-status-list li + li {
+    margin-top: 0.35rem;
+}
+
+.wp-billing-status-list__warn {
+    font-weight: 600;
+    color: var(--wp-warning-text, #92400e);
+}
+
+.wp-billing-plan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 48rem;
+    margin-inline: auto;
+    width: 100%;
+}
+
+.wp-billing-plan-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    background: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+@media (min-width: 40rem) {
+    .wp-billing-plan-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.25rem;
+    }
+}
+
+.wp-billing-plan-card-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.wp-billing-plan-card-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+}
+
+.wp-billing-plan-card-title {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--wp-text);
+}
+
+.wp-billing-plan-card-price {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--wp-accent);
+    white-space: nowrap;
+}
+
+.wp-billing-plan-card-meta {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+}
+
+.wp-billing-plan-card-meta li {
+    font-size: 0.875rem;
+    color: var(--wp-text-muted);
+    line-height: 1.45;
+}
+
+.wp-billing-plan-card-desc {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--wp-text-muted);
+}
+
+.wp-billing-plan-card-action {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+@media (min-width: 40rem) {
+    .wp-billing-plan-card-action {
+        width: auto;
+        min-width: 12rem;
+    }
+}
+
+.wp-billing-legal {
+    margin: 2rem 0 0;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--wp-text-muted);
+}
+
+.wp-billing-legal a {
+    margin-left: 0.25rem;
+    font-weight: 600;
+    color: var(--wp-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.wp-billing-legal-sep {
+    color: var(--wp-text-muted);
+}
+
+.wp-billing-legal--hint {
+    margin-top: 0.5rem;
+    font-size: 0.6875rem;
+    line-height: 1.45;
+}
+
+.wp-billing-legal--notice {
+    margin-top: 0.75rem;
 }
 
 /* ---------------------------------------------------------------------------
