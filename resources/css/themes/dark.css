@@ -1,0 +1,57 @@
+/*
+ | Thema "Donker" — nachtmodus (mobiel-achtig, rustig contrast).
+ */
+
+[data-theme='dark'] {
+    --wp-bg: #0b0b0f;
+    --wp-surface: #1c1c1e;
+    --wp-surface-2: #2c2c2e;
+    --wp-surface-hover: #3a3a3c;
+
+    --wp-border: #3a3a3c;
+    --wp-border-strong: #48484a;
+
+    --wp-text: #f5f5f7;
+    --wp-text-body: #d1d1d6;
+    --wp-text-muted: #98989d;
+    --wp-text-on-accent: #ffffff;
+
+    --wp-accent: #34d399;
+    --wp-accent-strong: #10b981;
+    --wp-accent-soft: rgba(16, 185, 129, 0.18);
+    --wp-accent-border: rgba(52, 211, 153, 0.35);
+    --wp-accent-text: #6ee7b7;
+
+    --wp-warning: #fbbf24;
+    --wp-warning-strong: #f59e0b;
+    --wp-warning-soft: rgba(251, 191, 36, 0.15);
+    --wp-warning-border: rgba(251, 191, 36, 0.35);
+    --wp-warning-text: #fcd34d;
+
+    --wp-danger: #f87171;
+    --wp-danger-strong: #ef4444;
+    --wp-danger-soft: rgba(248, 113, 113, 0.15);
+    --wp-danger-border: rgba(248, 113, 113, 0.35);
+    --wp-danger-text: #fca5a5;
+
+    --wp-info: #60a5fa;
+    --wp-info-soft: rgba(96, 165, 250, 0.15);
+    --wp-info-border: rgba(96, 165, 250, 0.35);
+    --wp-info-text: #93c5fd;
+
+    --wp-shell-gradient: radial-gradient(ellipse 120% 80% at 50% -20%, rgba(16, 185, 129, 0.12), transparent 55%);
+    --wp-card-backdrop: none;
+    --wp-sidebar-glass: rgba(28, 28, 30, 0.92);
+}
+
+[data-theme='dark'] .wp-sidebar {
+    background-color: var(--wp-sidebar-glass);
+    border-color: var(--wp-border);
+}
+
+[data-theme='dark'] .wp-input,
+[data-theme='dark'] .wp-select,
+[data-theme='dark'] .wp-textarea {
+    background-color: var(--wp-surface-2);
+    color: var(--wp-text);
+}

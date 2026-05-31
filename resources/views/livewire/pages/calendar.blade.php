@@ -1,8 +1,12 @@
 <div class="wp-stack">
     <div class="wp-page-head">
-        <div class="wp-stack-tight">
-            <h1 class="wp-page-title">{{ __('calendar.title') }}</h1>
-            <p class="wp-muted">{{ __('calendar.subtitle') }}</p>
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                icon="calendar"
+                :title="__('calendar.title')"
+                help-page="calendar"
+                :subtitle="__('calendar.subtitle')"
+            />
         </div>
         <a href="{{ route('briefing.print', array_filter(['date' => $entryType === 'tasks' ? $currentDate : null])) }}"
            target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('calendar.briefing') }}</a>

@@ -27,7 +27,7 @@ class StoreManagerIssueStepOneRequest extends FormRequest
     public static function ruleSet(): array
     {
         return [
-            'location_id' => ['nullable', 'integer', 'exists:locations,id'],
+            'location_id' => ['required', 'integer', 'exists:locations,id'],
             'unit_id' => ['nullable', 'integer', 'exists:units,id'],
             'description' => ['required', 'string', 'min:3', 'max:2000'],
             'is_recurring' => ['sometimes', 'boolean'],
@@ -43,14 +43,35 @@ class StoreManagerIssueStepOneRequest extends FormRequest
     /**
      * @return array<string, string>
      */
-    public function messages(): array
+    public static function messageSet(): array
     {
         return [
+            'location_id.required' => __('issues.errors.location_required'),
+            'location_id.integer' => __('issues.errors.location_required'),
+            'location_id.exists' => __('issues.errors.location_required'),
+            'unit_id.exists' => __('issues.errors.unit_invalid'),
             'description.required' => __('issues.errors.description_required'),
             'description.min' => __('issues.errors.description_min'),
             'description.max' => __('issues.errors.description_max'),
+            'recurrence_interval_value.required_if' => __('issues.errors.recurrence_interval_required'),
+            'recurrence_interval_value.min' => __('issues.errors.recurrence_interval_required'),
+            'recurrence_interval_value.max' => __('issues.errors.recurrence_interval_required'),
+            'recurrence_interval_unit.required_if' => __('issues.errors.recurrence_unit_required'),
+            'recurrence_lead_days.required_if' => __('issues.errors.recurrence_lead_required'),
+            'recurrence_lead_days.min' => __('issues.errors.recurrence_lead_required'),
+            'recurrence_lead_days.max' => __('issues.errors.recurrence_lead_required'),
+            'recurrence_first_due_date.required_if' => __('issues.errors.recurrence_due_required'),
+            'recurrence_first_due_date.after_or_equal' => __('issues.errors.recurrence_due_future'),
             'photos.max' => __('issues.errors.photos_max'),
             'photos.*.image' => __('issues.errors.photos_image'),
         ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return self::messageSet();
     }
 }

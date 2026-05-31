@@ -23,6 +23,12 @@
         "done": "Afgehandeld",
         "closed": "Gesloten"
     },
+    "detail_nav": {
+        "first": "Eerste",
+        "prev": "Vorige",
+        "next": "Volgende",
+        "last": "Laatste"
+    },
     "button": {
         "save": "Opslaan",
         "cancel": "Annuleren",

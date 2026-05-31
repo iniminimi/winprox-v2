@@ -1,8 +1,10 @@
 <div class="{{ auth()->check() ? 'wp-stack' : 'wp-public-page wp-stack' }}">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('contact.title') }}</h1>
-        <p class="wp-muted">{{ __('contact.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="contact"
+        :title="__('contact.title')"
+        help-page="contact"
+        :subtitle="__('contact.subtitle')"
+    />
 
     <div class="wp-card wp-card-pad wp-stack">
         <p>{{ __('contact.intro') }}</p>

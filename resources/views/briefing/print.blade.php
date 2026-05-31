@@ -1,14 +1,13 @@
 <x-layouts.print :title="__('dashboard.briefing_print')">
     <div class="wp-stack">
-        <div class="wp-stack-tight">
-            <h1 class="wp-page-title">{{ __('dashboard.briefing_print') }}</h1>
+        <x-wp-page-head-title icon="calendar" :title="__('dashboard.briefing_print')">
             <p class="wp-muted">
                 {{ $date->format('d-m-Y') }} &middot; {{ $tenant?->name }}
                 @if ($filterTeam)
                     &middot; {{ $filterTeam->name }}
                 @endif
             </p>
-        </div>
+        </x-wp-page-head-title>
 
         @forelse ($grouped as $teamId => $teamTasks)
             @php

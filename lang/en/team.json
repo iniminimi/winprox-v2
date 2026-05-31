@@ -35,6 +35,7 @@
     "teams": {
         "title": "Teams",
         "add": "Add team",
+        "hint": "Click a team to manage workers.",
         "empty": "There are no teams yet.",
         "active": "Active",
         "inactive": "Inactive",

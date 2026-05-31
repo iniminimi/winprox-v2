@@ -86,7 +86,6 @@ final class Avery55x55WordStickerSheetBuilder
         array &$tempFiles,
         ?string $centerLogoPath = null,
     ): void {
-    {
         $table = $section->addTable([
             'alignment' => JcTable::START,
             'width' => 100 * 50,

@@ -17,6 +17,7 @@ use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Support\EntityDetailNavigation;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Support\Units\UnitBulkBatchRegistry;
@@ -348,18 +349,6 @@ class Show extends Component
             ->orderBy('name'),
         ]);
 
-        $activeLocations = Location::query()
-            ->orderByDesc('is_active')
-            ->orderBy('name')
-            ->pluck('id')
-            ->all();
-
-        $currentIndex = array_search($this->location->id, $activeLocations, true);
-        $prevId = ($currentIndex !== false && $currentIndex > 0) ? $activeLocations[$currentIndex - 1] : null;
-        $nextId = ($currentIndex !== false && $currentIndex < count($activeLocations) - 1)
-            ? $activeLocations[$currentIndex + 1]
-            : null;
-
         $bulkSummaries = UnitBulkBatchRegistry::recentBatchesForLocation($this->location)
             ->map(fn (UnitBulkBatch $batch) => array_merge(
                 ['batch' => $batch],
@@ -376,8 +365,7 @@ class Show extends Component
             'units' => $this->location->units,
             'bulkSummaries' => $bulkSummaries,
             'teams' => $teams,
-            'prevLocationId' => $prevId,
-            'nextLocationId' => $nextId,
+            'nav' => EntityDetailNavigation::forLocation($this->location),
             'bulkPreview' => $this->bulkPreviewNames(),
         ]);
     }

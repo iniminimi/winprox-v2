@@ -53,3 +53,19 @@ it('toont meldingen van een andere tenant niet op het dashboard', function () {
         ->test(Dashboard::class)
         ->assertDontSee('Melding van een andere tenant');
 });
+
+it('toont de proefperiode-batterijcapsule op het dashboard', function () {
+    config(['billing.trial_days' => 30]);
+
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(18),
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.trial_capsule.trial_short', ['days' => 18]))
+        ->assertSee('wp-dashboard-trial-capsule', false);
+});

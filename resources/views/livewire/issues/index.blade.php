@@ -1,15 +1,19 @@
-<div class="wp-stack">
+<div class="wp-stack wp-issues-page">
     <div class="wp-page-head">
-        <div class="wp-stack-tight">
-            <h1 class="wp-page-title">{{ __('issues.list.title') }}</h1>
-            <p class="wp-muted">{{ __('issues.list.subtitle') }}</p>
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                icon="issues"
+                :title="__('issues.list.title')"
+                help-page="issues.list"
+                :subtitle="__('issues.list.subtitle')"
+            />
         </div>
-        <div class="wp-cluster">
-            <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
+        <div class="wp-cluster wp-page-actions">
             <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 <x-wp-icon name="plus" class="wp-icon" />
                 <span>{{ __('issues.list.add') }}</span>
             </button>
+            <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
         </div>
     </div>
 
@@ -17,19 +21,22 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <div class="wp-filter-bar">
-            <div class="wp-field wp-filter-field">
+    <div class="wp-card wp-filter-panel">
+        <div class="wp-filter-grid">
+            <div class="wp-filter-field">
                 <label class="wp-label" for="statusFilter">{{ __('issues.filter.status') }}</label>
-                <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
-                    <option value="">{{ __('issues.filter.status_all') }}</option>
-                    @foreach ($statuses as $status)
-                        <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
-                    @endforeach
-                </select>
+                <div class="wp-filter-status-row">
+                    <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
+                        <option value="">{{ __('issues.filter.status_all') }}</option>
+                        @foreach ($statuses as $status)
+                            <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
+                        @endforeach
+                    </select>
+                    <button type="button" class="btn btn--primary btn--sm wp-filter-go-btn" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
+                </div>
             </div>
 
-            <div class="wp-field wp-filter-field">
+            <div class="wp-filter-field">
                 <label class="wp-label" for="teamFilter">{{ __('issues.filter.team') }}</label>
                 <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
                     <option value="">{{ __('issues.filter.team_all') }}</option>
@@ -39,81 +46,41 @@
                 </select>
             </div>
 
-            <div class="wp-field wp-filter-field wp-grow">
+            <div class="wp-filter-field">
                 <label class="wp-label" for="search">{{ __('issues.filter.search') }}</label>
                 <input type="search" id="search" class="wp-input" wire:model.defer="search"
                        placeholder="{{ __('issues.filter.search_placeholder') }}">
             </div>
-        </div>
 
-        <div class="wp-row">
-            <label class="wp-check">
-                <input type="checkbox" wire:model.defer="recurring">
-                {{ __('issues.filter.recurring') }}
-            </label>
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('issues.filter.apply') }}</button>
-                @if ($hasFilters)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('issues.filter.reset') }}</button>
-                @endif
+            <div class="wp-filter-field wp-filter-field--recurring">
+                <span class="wp-label" id="recurringFilterLabel">{{ __('issues.filter.recurring') }}</span>
+                <div class="wp-filter-recurring-row">
+                    <label class="wp-check" aria-labelledby="recurringFilterLabel">
+                        <input type="checkbox" wire:model.defer="recurring">
+                        {{ __('issues.filter.recurring_only') }}
+                    </label>
+                    @if ($hasFilters)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('issues.filter.reset') }}</button>
+                    @endif
+                </div>
             </div>
         </div>
-        <p class="wp-hint">{{ __('issues.filter.hint') }}</p>
+        <p class="wp-hint wp-filter-panel-hint">{{ __('issues.filter.hint') }}</p>
     </div>
 
     @forelse ($groups as $group)
-        <section class="wp-stack-tight" wire:key="group-{{ $group['status']->value }}">
+        <section class="wp-status-block" wire:key="group-{{ $group['status']->value }}">
             <div class="wp-group-head wp-group-head--{{ $group['status']->pillModifier() }}">
                 <h2 class="wp-group-title">{{ __($group['status']->labelKey()) }}</h2>
-                <span class="wp-group-count">{{ $group['issues']->count() }}</span>
+                <span class="wp-group-count">{{ trans_choice('issues.list.group_count', $group['issues']->count()) }}</span>
             </div>
 
-            <div class="wp-issue-grid">
+            <div class="wp-status-block__list">
                 @foreach ($group['issues'] as $issue)
-                    @php
-                        $teamNames = $issue->tasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values();
-                        $locationLine = collect([
-                            $issue->location?->name,
-                            $issue->unit?->name,
-                            $issue->location?->formattedAddress(),
-                        ])->filter()->join(' · ');
-                        $isHighlighted = $highlightIssue && (int) $highlightIssue === (int) $issue->id;
-                    @endphp
-                    <a href="{{ route('issues.show', $issue) }}"
-                       class="wp-card wp-card-pad wp-melding-card {{ $isHighlighted ? 'wp-melding-card--highlight' : '' }}"
-                       wire:key="issue-{{ $issue->id }}">
-                        <div class="wp-row">
-                            <x-wp-ref-nr :id="$issue->id" />
-                            <div class="wp-cluster">
-                                @unless ($issue->isApproved())
-                                    <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
-                                @endunless
-                                <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
-                            </div>
-                        </div>
-
-                        <p class="wp-melding-desc">{{ $issue->description }}</p>
-
-                        @if ($locationLine !== '')
-                            <p class="wp-muted wp-melding-location">{{ $locationLine }}</p>
-                        @endif
-
-                        <div class="wp-melding-meta">
-                            <span class="wp-muted">
-                                {{ __($issue->source?->labelKey() ?? 'issues.card.source_manual') }}
-                            </span>
-                            <span class="wp-muted">
-                                <x-wp-icon name="team" class="wp-icon" />
-                                {{ $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team') }}
-                            </span>
-                            <span class="wp-muted">
-                                {{ __('issues.card.reported', [
-                                    'name' => $issue->reporter_name ?: __('issues.card.unknown_reporter'),
-                                    'datetime' => optional($issue->created_at)->timezone(config('app.timezone'))->format('d/m/Y H:i'),
-                                ]) }}
-                            </span>
-                        </div>
-                    </a>
+                    @include('partials.wp-issue-list-row', [
+                        'issue' => $issue,
+                        'highlight' => $highlightIssue && (int) $highlightIssue === (int) $issue->id,
+                    ])
                 @endforeach
             </div>
         </section>

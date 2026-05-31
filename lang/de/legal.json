@@ -1,8 +1,16 @@
 {
+    "inline_title": "Rechtliche Informationen",
+    "inline_jurisdiction_hint": "Anwendbares Recht: EU-DSGVO (GDPR) und belgisches Recht. Das vollständige Rahmenwerk finden Sie auf den verlinkten juristischen Seiten.",
     "index_title": "Rechtliche Dokumente",
     "index_subtitle": "Datenschutz, Bedingungen und AVV in einem neuen Tab öffnen.",
     "nav_label": "Dokumente",
+    "back_home": "Startseite",
+    "last_updated": "Zuletzt aktualisiert: :date",
     "updated": "Zuletzt aktualisiert: :date",
+    "applicable_law_notice": "WinProx wird aus Belgien angeboten. Diese rechtlichen Seiten und die Verarbeitung personenbezogener Daten unterliegen der Verordnung (EU) 2016/679 (DSGVO) und dem belgischen Gesetz vom 30. Juli 2018 zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten sowie weiteren relevanten belgischen und EU-Vorschriften. Für Cookies und ähnliche Technologien gelten die anwendbaren EU- und belgischen Regeln.",
+    "operator_vat": "USt-IdNr.: :value",
+    "operator_enterprise": "Unternehmensnummer: :value",
+    "operator_email_label": "E-Mail:",
     "documents": {
         "privacy": "Datenschutzerklärung",
         "terms": "Allgemeine Bedingungen",

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Support\Faq\FaqSections;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -19,14 +20,8 @@ class Faq extends Component
 
     public function render()
     {
-        $raw = __('faq.items');
-        $items = is_array($raw) ? array_values(array_filter(
-            $raw,
-            fn ($item) => is_array($item) && isset($item['slug'], $item['title'], $item['body'])
-        )) : [];
-
         return view('livewire.pages.faq', [
-            'items' => $items,
+            'items' => FaqSections::orderedItems(),
         ]);
     }
 }

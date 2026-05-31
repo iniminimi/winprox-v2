@@ -1,34 +1,46 @@
 <?php
 
+/**
+ * Juridische pagina's (privacy, voorwaarden, DPA).
+ * Pas aan via .env zonder Blade-bestanden te wijzigen.
+ */
 return [
-    'operator' => env('LEGAL_OPERATOR', 'WinProx B.V.'),
-    'jurisdiction' => env('LEGAL_JURISDICTION', 'Netherlands'),
+
+    'documents_last_updated' => env('LEGAL_DOCUMENTS_LAST_UPDATED', '2026-05-10'),
+
+    'operator' => [
+        'name' => env('LEGAL_OPERATOR_NAME', 'Dominique Schaepdrijver'),
+        'address_lines' => array_values(array_filter(array_map(
+            'trim',
+            explode("\n", (string) env('LEGAL_OPERATOR_ADDRESS', "Pannenstraat 223\n8301 Knokke-Heist\nBelgië"))
+        ))),
+        'vat_label' => env('LEGAL_OPERATOR_VAT_LABEL', 'in aanvraag'),
+        'enterprise_number' => env('LEGAL_OPERATOR_ENTERPRISE_NUMBER'),
+        'email' => env('LEGAL_OPERATOR_EMAIL', 'info@winprox.app'),
+    ],
+
+    'jurisdiction' => env('LEGAL_JURISDICTION', 'België'),
 
     'documents' => [
         'privacy' => [
             'route' => 'legal.privacy',
             'label_key' => 'legal.documents.privacy',
-            'updated' => '2026-05-01',
         ],
         'terms' => [
             'route' => 'legal.terms',
             'label_key' => 'legal.documents.terms',
-            'updated' => '2026-05-01',
         ],
         'cookies' => [
             'route' => 'legal.cookies',
             'label_key' => 'legal.documents.cookies',
-            'updated' => '2026-05-01',
         ],
         'dpa' => [
             'route' => 'legal.dpa',
             'label_key' => 'legal.documents.dpa',
-            'updated' => '2026-05-01',
         ],
         'subprocessors' => [
             'route' => 'legal.subprocessors',
             'label_key' => 'legal.documents.subprocessors',
-            'updated' => '2026-05-01',
         ],
     ],
 ];

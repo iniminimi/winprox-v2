@@ -35,6 +35,7 @@
     "teams": {
         "title": "Teams",
         "add": "Team hinzufügen",
+        "hint": "Klicken Sie auf ein Team, um Mitarbeiter zu verwalten.",
         "empty": "Es gibt noch keine Teams.",
         "active": "Aktiv",
         "inactive": "Inaktiv",

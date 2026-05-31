@@ -37,7 +37,7 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
     }
 });
 
-it('verbergt abonnement en instellingen in de sidebar voor medewerkers', function () {
+it('toont instellingen maar geen abonnement in de sidebar voor medewerkers', function () {
     $tenant = Tenant::factory()->create(['name' => 'Demo Facility']);
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
@@ -45,6 +45,11 @@ it('verbergt abonnement en instellingen in de sidebar voor medewerkers', functio
         ->get(route('dashboard'))
         ->assertOk()
         ->assertDontSee(__('common.nav.subscription'), false)
-        ->assertDontSee(__('common.nav.settings'), false)
+        ->assertSee(__('common.nav.settings'), false)
         ->assertSee(__('common.nav.users'), false);
+
+    $this->actingAs($employee)
+        ->get(route('settings.index'))
+        ->assertOk()
+        ->assertSee(__('settings.style.title'), false);
 });

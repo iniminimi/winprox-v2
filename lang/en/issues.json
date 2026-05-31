@@ -4,24 +4,35 @@
     "briefing": "Print briefing",
     "list": {
         "title": "Issues",
-        "subtitle": "All issues grouped by status.",
+        "subtitle": "All problems reported by reporters",
         "add": "Add issue",
+        "group_count": ":count issues",
         "empty": "No issues yet.",
         "empty_filtered": "No issues match these filters."
     },
     "filter": {
-        "status": "Status",
+        "status": "Filter by status",
         "status_all": "All statuses",
-        "team": "Team",
+        "team": "Filter by team",
         "team_all": "All teams",
         "search": "Search",
-        "search_placeholder": "Description, reporter, location or unit…",
-        "recurring": "Recurring only",
+        "search_placeholder": "Search by location, address, postal code, city, unit or reporter",
+        "recurring": "Recurring issue",
+        "recurring_only": "Recurring issues only",
         "apply": "GO!",
         "reset": "Clear filters",
-        "hint": "Combine status, team, search and recurring to refine."
+        "hint": "Click an issue to view details."
     },
     "card": {
+        "kind": "Issue",
+        "kind_nr": "Issue no. :nr",
+        "description_label": "Description: ",
+        "meta_via_team": "Reported via :source on :datetime, Team :teams",
+        "meta_by_team": "Reported by :name on :datetime, Team :teams",
+        "report_source_qr": "QR",
+        "report_source_qr_location": "location QR",
+        "team": "Team: :teams",
+        "recurring": "Recurring",
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_qr_location": "Via location QR",
@@ -59,14 +70,24 @@
         "success": "Issue and task have been created."
     },
     "errors": {
+        "location_required": "Choose a location.",
+        "unit_invalid": "The selected unit is invalid.",
         "description_required": "Please enter a description.",
         "description_min": "Description must be at least 3 characters.",
         "description_max": "Description is too long.",
+        "team_required": "Choose a team.",
+        "recurrence_interval_required": "Enter a valid interval.",
+        "recurrence_unit_required": "Choose an interval unit.",
+        "recurrence_lead_required": "Enter a valid lead time (days).",
+        "recurrence_due_required": "Choose a first due date.",
+        "recurrence_due_future": "The first due date must be today or later.",
         "photos_max": "Maximum 4 photos per issue.",
         "photos_image": "Only images are allowed."
     },
     "show": {
         "title": "Issue",
+        "overview_title": "Issue overview",
+        "nav_label": "Issue navigation",
         "nr": "NR :nr",
         "back": "Back to issues",
         "report": "Issue",
@@ -74,8 +95,20 @@
         "tasks_empty": "No tasks yet.",
         "no_team": "No team",
         "add_task": "Add task for a team",
+        "add_task_button": "+ Add task",
+        "add_task_modal_title": "Add task",
+        "add_task_modal_subtitle": "Fill in the task details and assign a team.",
+        "add_task_team_label": "Team",
         "add_task_placeholder": "Choose a team",
-        "add_task_submit": "Add task",
+        "add_task_submit": "Save task",
+        "task_note_label": "Description",
+        "task_note_placeholder": "Describe what needs to be done…",
+        "task_scheduled_label": "Scheduled for (optional)",
+        "errors": {
+            "team_required": "Choose a team.",
+            "task_note_required": "Enter a description.",
+            "task_note_min": "The description must be at least 2 characters."
+        },
         "manage_task_status": "Manage status",
         "recurring_title": "Recurring issue",
         "recurring_next_due": "Next cycle: :date",
@@ -88,7 +121,8 @@
         "add_update": "Add note",
         "add_update_placeholder": "e.g. extra info for the team…",
         "add_update_photos": "Photos (optional)",
-        "add_update_submit": "Save note"
+        "add_update_submit": "Save note",
+        "photo_enlarge": "Enlarge photo"
     },
     "updates": {
         "kind": {

@@ -5,6 +5,7 @@ use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
 use App\Http\Middleware\SetLocale;
+use App\Http\Middleware\ShareUiTheme;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
@@ -35,6 +36,7 @@ return Application::configure(basePath: dirname(__DIR__))
         // Locale-keuze (sessie) toepassen op elke web-request.
         $middleware->web(append: [
             SetLocale::class,
+            ShareUiTheme::class,
             ApplySupportTenantContext::class,
             EnsureTenantHasAppAccess::class,
         ]);

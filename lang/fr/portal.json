@@ -52,7 +52,7 @@
         "last_name": "Nom",
         "continue": "Continuer",
         "verify_hint": "Confirmez votre icône personnelle",
-        "attempts_left": "{count} tentative(s) restante(s).",
+        "attempts_left": ":count tentative(s) restante(s).",
         "confirm_icon": "Confirmer",
         "different_worker": "Se connecter en tant qu'autre employé",
         "no_workers": "Il n'y a pas encore d'employés pour cette équipe. L'intégration se fait via le QR d'équipe.",
@@ -77,14 +77,12 @@
             "blocked": "Vous êtes bloqué après trop de tentatives. Contactez votre administrateur.",
             "icon_required": "Choisissez votre icône personnelle.",
             "icon_wrong": "Ce n'est pas la bonne icône.",
-            "icon_wrong_one_left": "Ce n'est pas la bonne icône. 1 tentative restante.",
             "note_max": "La note est trop longue."
         }
     },
     "team": {
         "title": "Aperçu de l'équipe",
         "read_only_hint": "Ceci est un aperçu. La réalisation des tâches n'est possible que via le QR de l'unité sur place.",
-        "claimable_hint": "Nous connaissons votre nom, mais vous n'avez pas encore d'icône. Choisissez votre icône personnelle ci-dessous.",
         "onboarding_done": "Vous êtes enregistré et connecté.",
         "icon_taken": "Cette icône est déjà utilisée. Choisissez-en une autre.",
         "register": {
@@ -113,7 +111,7 @@
         "download": "Télécharger",
         "verification_required": "Réservé aux exécutants connectés",
         "staff_only": "Non disponible au public",
-        "published": "Publié le {date}",
+        "published": "Publié le :date",
         "empty": "Il n'y a aucun document."
     },
     "announcements": {

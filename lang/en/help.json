@@ -1,5 +1,7 @@
 {
     "panel_title": "WinProx assistant",
+    "open_fab": "Open assistant",
+    "close_fab": "Close assistant",
     "welcome": "Ask about issues, tasks or your organisation. Type \"overview\" for counts.",
     "input_label": "Your question",
     "input_placeholder": "e.g. How do I assign a task to a team?",

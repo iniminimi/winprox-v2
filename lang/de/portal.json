@@ -52,7 +52,7 @@
         "last_name": "Nachname",
         "continue": "Weiter",
         "verify_hint": "Bestätigen Sie Ihr persönliches Symbol",
-        "attempts_left": "Noch {count} Versuch(e).",
+        "attempts_left": "Noch :count Versuch(e).",
         "confirm_icon": "Bestätigen",
         "different_worker": "Als anderer Mitarbeiter anmelden",
         "no_workers": "Für dieses Team gibt es noch keine Mitarbeiter. Das Onboarding erfolgt über den Team-QR.",
@@ -77,14 +77,12 @@
             "blocked": "Sie sind nach zu vielen Versuchen gesperrt. Wenden Sie sich an Ihren Administrator.",
             "icon_required": "Wählen Sie Ihr persönliches Symbol.",
             "icon_wrong": "Das ist nicht das richtige Symbol.",
-            "icon_wrong_one_left": "Das ist nicht das richtige Symbol. Noch 1 Versuch.",
             "note_max": "Die Notiz ist zu lang."
         }
     },
     "team": {
         "title": "Teamübersicht",
         "read_only_hint": "Dies ist eine Übersicht. Aufgaben können nur über den Einheiten-QR vor Ort abgeschlossen werden.",
-        "claimable_hint": "Wir kennen Ihren Namen, aber Sie haben noch kein Symbol. Wählen Sie unten Ihr persönliches Symbol.",
         "onboarding_done": "Sie sind registriert und angemeldet.",
         "icon_taken": "Dieses Symbol wird bereits verwendet. Wählen Sie ein anderes.",
         "register": {
@@ -113,7 +111,7 @@
         "download": "Herunterladen",
         "verification_required": "Nur für angemeldete Mitarbeiter",
         "staff_only": "Nicht öffentlich verfügbar",
-        "published": "Veröffentlicht am {date}",
+        "published": "Veröffentlicht am :date",
         "empty": "Es gibt keine Dokumente."
     },
     "announcements": {

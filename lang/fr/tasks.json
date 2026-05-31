@@ -2,35 +2,48 @@
     "briefing": "Imprimer le briefing",
     "list": {
         "title": "Tâches",
-        "subtitle": "Toutes les tâches, regroupées par statut.",
-        "new_block": "Nouvelles tâches",
+        "subtitle": "Toutes les tâches par équipe et statut",
+        "group_count": "{0} aucune tâche|{1} :count tâche|[2,*] :count tâches",
         "empty": "Aucune tâche pour le moment.",
         "empty_filtered": "Aucune tâche ne correspond à ces filtres."
     },
     "filter": {
-        "status": "Statut",
+        "status": "Filtrer par statut",
         "status_all": "Tous les statuts",
-        "team": "Équipe",
+        "team": "Filtrer par équipe",
         "team_all": "Toutes les équipes",
         "search": "Rechercher",
-        "search_placeholder": "Note, signalement, site ou unité…",
-        "recurring": "Cycles récurrents uniquement",
+        "search_placeholder": "Recherche par note, signalement, site, adresse, code postal, ville ou unité",
+        "recurring": "Tâche récurrente",
+        "recurring_only": "Cycles récurrents uniquement",
         "apply": "GO!",
         "reset": "Effacer les filtres",
-        "hint": "Combinez statut, équipe, recherche et récurrent pour affiner."
+        "hint": "Cliquez sur une tâche pour voir les détails."
     },
     "card": {
+        "kind_nr": "Tâche n° :nr",
+        "description_label": "Description : ",
+        "meta_team": "Équipe :team",
         "nr": "NR :nr",
-        "issue_nr": "Signalement :nr",
+        "issue_nr": "Signalement n° :nr",
         "no_team": "Aucune équipe",
-        "scheduled": "Planifié :date"
+        "scheduled": "Planifié :date",
+        "recurring": "Récurrent"
     },
     "show": {
         "title": "Tâche",
+        "overview_title": "Aperçu de la tâche",
         "nr": "NR :nr",
         "back": "Retour aux tâches",
+        "nav_label": "Navigation des tâches",
         "issue_context": "Signalement",
-        "view_issue": "Voir le signalement",
+        "view_issue": "Signalement complet",
+        "team_section": "Équipe",
+        "team_hint": "Assignez cette tâche à une équipe ou modifiez l'équipe.",
+        "team_current": "Équipe actuelle : :name",
+        "team_select_label": "Choisir une équipe",
+        "team_select_placeholder": "Choisir une équipe",
+        "team_save": "Enregistrer l'équipe",
         "task": "Détails de la tâche",
         "due": "Échéance :date",
         "change_status": "Changer le statut",
@@ -38,7 +51,10 @@
         "confirm_status": "Appliquer le statut",
         "pause": "Note de pause",
         "pause_submit": "Enregistrer la pause",
-        "updates": "Mises à jour du signalement"
+        "updates": "Mises à jour du signalement",
+        "errors": {
+            "team_required": "Choisissez une équipe."
+        }
     },
     "errors": {
         "invalid_transition": "Ce changement de statut n'est pas autorisé.",

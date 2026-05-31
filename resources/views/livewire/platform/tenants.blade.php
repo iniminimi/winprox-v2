@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('platform.title') }}</h1>
-        <p class="wp-muted">{{ __('platform.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="subscription"
+        :title="__('platform.title')"
+        help-page="platform.tenants"
+        :subtitle="__('platform.subtitle')"
+    />
 
     @if ($activeTenant)
         <div class="wp-card wp-card-pad wp-support-banner">

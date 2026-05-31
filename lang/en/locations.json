@@ -29,6 +29,7 @@
     "unit_qr": "Unit QR",
     "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
     "qr_pack_download": "Download QR sticker sheet",
+    "nav_label": "Location navigation",
     "prev": "Previous location",
     "next": "Next location",
     "form": {
@@ -54,6 +55,7 @@
         "create_title": "Add unit",
         "edit_title": "Edit unit",
         "open_issue": "Open issue",
+        "meta_team": "Team :team",
         "no_team": "No team (assign per unit later)",
         "fields": {
             "name": "Unit name",

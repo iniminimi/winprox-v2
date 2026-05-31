@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('settings.api.title') }}</h1>
-        <p class="wp-muted">{{ __('settings.api.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="subscription"
+        :title="__('settings.api.title')"
+        help-page="settings.api"
+        :subtitle="__('settings.api.subtitle')"
+    />
 
     @if (session('api_token_plain'))
         <div class="wp-card wp-card-pad">

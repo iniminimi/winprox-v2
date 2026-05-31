@@ -1,0 +1,425 @@
+{
+    "button_label": "Aide page",
+    "modal": {
+        "close": "Fermer",
+        "actions_heading": "Actions",
+        "statuses_heading": "Statuts"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Aide — Tableau de bord",
+            "actions": [
+                {
+                    "label": "Vue d'ensemble",
+                    "text": "Le tableau de bord affiche le nombre de sites, d'unités, de signalements ouverts et de tâches ouvertes. Cliquez sur une carte pour accéder à l'écran correspondant."
+                },
+                {
+                    "label": "Imprimer le briefing",
+                    "text": "Ouvre un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain."
+                },
+                {
+                    "label": "Checklist de configuration",
+                    "text": "Tant que votre tenant n'est pas entièrement configuré, vous voyez les étapes : équipes, site, unités, workers et pack QR."
+                }
+            ],
+            "status_note": "Le statut du signalement sur le tableau de bord suit le statut des tâches liées.",
+            "statuses": {
+                "new": "Au moins une tâche n'a pas encore été démarrée.",
+                "in_progress": "Au moins une tâche est en cours.",
+                "done": "Toutes les tâches sont terminées ; un administrateur peut clôturer le signalement.",
+                "closed": "Toutes les tâches sont clôturées — le signalement est terminé."
+            }
+        },
+        "issues.list": {
+            "title": "Aide — Signalements",
+            "actions": [
+                {
+                    "label": "Ajouter un signalement",
+                    "text": "Créez un signalement en deux étapes : site/unité + description, puis une tâche pour la bonne équipe."
+                },
+                {
+                    "label": "Imprimer le briefing",
+                    "text": "Imprimez un aperçu des tâches ouvertes par équipe."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Combinez statut, équipe, terme de recherche et récurrent pour affiner la liste. Appuyez sur GO! pour appliquer."
+                },
+                {
+                    "label": "Approuver",
+                    "text": "Les signalements via QR attendent une approbation. Approuvez pour rendre le contenu visible sur les pages publiques."
+                }
+            ],
+            "status_note": "Le statut du signalement est dérivé automatiquement des tâches associées.",
+            "statuses": {
+                "new": "Nouveau signalement ; au moins une tâche n'a pas encore été démarrée.",
+                "in_progress": "Suivi en cours — une tâche a été démarrée ou est en cours.",
+                "done": "Toutes les tâches ont été terminées par l'équipe.",
+                "closed": "Un administrateur a tout confirmé et clôturé."
+            }
+        },
+        "issues.show": {
+            "title": "Aide — Détail du signalement",
+            "actions": [
+                {
+                    "label": "Ajouter une tâche",
+                    "text": "Créez une tâche supplémentaire sur ce signalement et assignez-la à une équipe opérationnelle."
+                },
+                {
+                    "label": "Publier une mise à jour",
+                    "text": "Ajoutez une note ou une photo à la chronologie pour que vos collègues puissent suivre."
+                },
+                {
+                    "label": "Approuver",
+                    "text": "Approuvez les signalements QR avant que la description et les photos ne deviennent publiques."
+                }
+            ],
+            "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",
+            "statuses": {
+                "new": "En attente du démarrage d'au moins une tâche.",
+                "in_progress": "Au moins une tâche est activement en cours.",
+                "done": "Toutes les tâches sont terminées ; clôturez le signalement une fois tout confirmé.",
+                "closed": "Signalement définitivement clôturé."
+            }
+        },
+        "tasks.list": {
+            "title": "Aide — Tâches",
+            "actions": [
+                {
+                    "label": "Filtrer par équipe",
+                    "text": "Affichez uniquement les tâches d'une équipe opérationnelle. Les managers d'équipe ne voient que leurs équipes par défaut."
+                },
+                {
+                    "label": "Ouvrir une tâche",
+                    "text": "Cliquez sur une tâche pour le détail, le changement de statut et le lien vers le signalement."
+                }
+            ],
+            "status_note": "Les statuts sont souvent mis à jour automatiquement via le portail terrain QR de l'équipe. Vous pouvez aussi les ajuster manuellement.",
+            "statuses": {
+                "new": "La tâche a été créée et attend le démarrage par l'équipe.",
+                "in_progress": "L'équipe est en train de l'exécuter.",
+                "done": "Le travail est terminé par l'exécutant ; un administrateur peut clôturer.",
+                "closed": "Tâche confirmée et clôturée."
+            }
+        },
+        "tasks.show": {
+            "title": "Aide — Détail de la tâche",
+            "actions": [
+                {
+                    "label": "Assigner une équipe",
+                    "text": "Choisissez une équipe et enregistrez. Vous pouvez aussi modifier une assignation existante."
+                },
+                {
+                    "label": "Changer le statut",
+                    "text": "Passez la tâche à En cours, Terminé ou Clôturé selon l'avancement."
+                },
+                {
+                    "label": "Ouvrir le signalement",
+                    "text": "Accédez au signalement lié pour le contexte, les photos et les tâches supplémentaires."
+                }
+            ],
+            "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR de l'équipe.",
+            "statuses": {
+                "new": "Pas encore démarré sur site.",
+                "in_progress": "L'équipe est en cours.",
+                "done": "L'exécutant signale le travail comme terminé.",
+                "closed": "L'administrateur confirme et clôture."
+            }
+        },
+        "locations.list": {
+            "title": "Aide — Sites",
+            "actions": [
+                {
+                    "label": "Ajouter un site",
+                    "text": "Créez un nouveau site avec adresse et données de base."
+                },
+                {
+                    "label": "Ouvrir un site",
+                    "text": "Gérez les unités, documents, annonces et codes QR par site."
+                },
+                {
+                    "label": "Afficher inactifs",
+                    "text": "Affichez les sites désactivés pour les réactiver ou les consulter."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Aide — Détail du site",
+            "actions": [
+                {
+                    "label": "Ajouter une unité",
+                    "text": "Ajoutez un actif/espace avec jeton QR et équipe par défaut."
+                },
+                {
+                    "label": "Unités en masse",
+                    "text": "Créez plusieurs unités à la fois (étages × pièces) et liez-les à une équipe."
+                },
+                {
+                    "label": "Télécharger le pack QR",
+                    "text": "Téléchargez un fichier Word (Avery 55×55) avec des autocollants QR pour toutes les unités de ce site."
+                },
+                {
+                    "label": "QR du site",
+                    "text": "QR pour les signalements sans unité spécifique (couloir, zone, espace commun)."
+                },
+                {
+                    "label": "Documents & annonces",
+                    "text": "Gérez les manuels et annonces visibles sur la page QR."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Aide — Calendrier",
+            "actions": [
+                {
+                    "label": "Navigation",
+                    "text": "Utilisez précédent, aujourd'hui et suivant pour parcourir la période."
+                },
+                {
+                    "label": "Affichage",
+                    "text": "Basculez entre la vue mois, semaine et jour."
+                },
+                {
+                    "label": "Filtre",
+                    "text": "Filtrez par site, équipe et type (tâches ou signalements)."
+                }
+            ],
+            "status_note": "La couleur et le statut sur le calendrier suivent le statut de la tâche ou du signalement.",
+            "statuses": {
+                "new": "Planifié mais pas encore démarré.",
+                "in_progress": "Exécution en cours.",
+                "done": "Terminé, en attente de clôture.",
+                "closed": "Entièrement clôturé."
+            }
+        },
+        "team": {
+            "title": "Aide — Équipes & utilisateurs",
+            "actions": [
+                {
+                    "label": "Équipes opérationnelles",
+                    "text": "Créez des équipes, assignez des managers et gérez les workers par équipe."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom et icône."
+                },
+                {
+                    "label": "QR d'équipe",
+                    "text": "Imprimez ou ouvrez le QR du portail terrain pour que les workers voient et traitent les tâches."
+                },
+                {
+                    "label": "Collègues",
+                    "text": "Gérez le personnel avec login (admin ou user) et les managers d'équipe."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Aide — Paramètres",
+            "actions": [
+                {
+                    "label": "Organisation",
+                    "text": "Mettez à jour le nom, les coordonnées et le logo de votre tenant."
+                },
+                {
+                    "label": "Compte",
+                    "text": "Modifiez votre profil, langue et mot de passe."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Aide — API & webhooks",
+            "actions": [
+                {
+                    "label": "Qu'est-ce que cette page ?",
+                    "text": "Ici vous connectez WinProx à d'autres logiciels — par exemple votre ERP, un outil de planification ou un tableau de bord sur mesure. WinProx communique alors avec ce système, sans retaper les signalements à la main."
+                },
+                {
+                    "label": "En ai-je besoin ?",
+                    "text": "En général non. Si vous utilisez WinProx uniquement via le site et les QR, laissez cette page vide. Elle est destinée aux administrateurs ou partenaires IT qui souhaitent une intégration."
+                },
+                {
+                    "label": "API — c'est quoi ?",
+                    "text": "Une API permet à d'autres programmes de lire les données WinProx ou d'effectuer des actions (p. ex. consulter signalements et tâches). Cela se fait via un jeton API — comme un mot de passe utilisé par le logiciel, pas par les personnes."
+                },
+                {
+                    "label": "Créer un jeton API",
+                    "text": "Donnez un nom clair au jeton (p. ex. « Intégration ERP »). Après création, le code n'est affiché qu'une fois : copiez-le et conservez-le tout de suite. WinProx ne le montrera plus. Perdu ? Créez un nouveau jeton et révoquez l'ancien."
+                },
+                {
+                    "label": "Révoquer un jeton",
+                    "text": "Vous n'utilisez plus une intégration ou un jeton a fuité ? Cliquez sur Révoquer. L'intégration cesse de fonctionner. Les autres jetons restent actifs."
+                },
+                {
+                    "label": "Que peut faire l'API ?",
+                    "text": "Avec un jeton valide, un logiciel peut entre autres lire signalements et tâches, lister sites/unités/équipes/intervenants, créer ou approuver des signalements, et démarrer ou clôturer des tâches. Documentation technique : demandez à votre partenaire IT ou au support WinProx."
+                },
+                {
+                    "label": "Webhooks — c'est quoi ?",
+                    "text": "Un webhook est l'inverse de l'API : WinProx envoie un message à votre système dès qu'il se passe quelque chose (p. ex. nouveau signalement ou tâche terminée). Vous indiquez une URL où WinProx peut poster des données."
+                },
+                {
+                    "label": "Ajouter un endpoint webhook",
+                    "text": "Saisissez une URL complète commençant par https:// (connexion sécurisée). Cochez les événements souhaités. Description optionnelle (p. ex. « ERP production »). Enregistrez — WinProx enverra automatiquement les données pour ces événements."
+                },
+                {
+                    "label": "Événement : issue.created",
+                    "text": "Un nouveau signalement est arrivé (via QR, manuellement ou via l'API). Utile pour créer tout de suite un ticket dans un système externe."
+                },
+                {
+                    "label": "Événement : issue.approved",
+                    "text": "Un administrateur a approuvé un signalement (souvent via QR). Seulement alors le contenu devient visible sur les pages QR publiques."
+                },
+                {
+                    "label": "Événement : issue.status_changed",
+                    "text": "Le statut d'un signalement a changé (p. ex. ouvert → en cours), généralement parce que des tâches ont démarré ou été terminées."
+                },
+                {
+                    "label": "Événement : task.created",
+                    "text": "Une nouvelle tâche a été créée pour une équipe, liée à un signalement."
+                },
+                {
+                    "label": "Événement : task.started",
+                    "text": "Un intervenant a démarré une tâche via le portail terrain (QR unité)."
+                },
+                {
+                    "label": "Événement : task.completed",
+                    "text": "Une tâche a été terminée par l'équipe. Utile pour mettre à jour des systèmes ou rapports externes."
+                },
+                {
+                    "label": "Endpoint actif ou inactif",
+                    "text": "Désactivez temporairement un endpoint sans le supprimer (p. ex. maintenance serveur). Les endpoints inactifs ne reçoivent aucun message."
+                },
+                {
+                    "label": "Livraisons récentes",
+                    "text": "Journal des dernières tentatives webhook. « success » = votre système a reçu le message. « failed » = problème (URL incorrecte, serveur hors ligne, …). Affiche uniquement le statut de livraison — pas le contenu des signalements."
+                },
+                {
+                    "label": "Sécurité",
+                    "text": "Traitez les jetons API comme des mots de passe : ne les partagez pas par e-mail ou chat. Les webhooks sont signés cryptographiquement pour que votre serveur vérifie qu'ils viennent bien de WinProx — votre partenaire IT peut implémenter ce contrôle."
+                },
+                {
+                    "label": "Aide pour l'intégration",
+                    "text": "Vous doutez du bon fonctionnement ? Demandez à votre partenaire IT de vérifier l'URL, les événements et les livraisons récentes. Pour WinProx : Contact ou FAQ si vous n'avez pas de développeur."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Aide — Abonnement",
+            "actions": [
+                {
+                    "label": "Période d'essai",
+                    "text": "Pendant l'essai, vous disposez de limites étendues. Le tableau de bord affiche les jours restants."
+                },
+                {
+                    "label": "Choisir un plan",
+                    "text": "Sélectionnez un plan adapté au nombre d'unités que vous gérez."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Aide — FAQ",
+            "actions": [
+                {
+                    "label": "Base de connaissances",
+                    "text": "Réponses aux questions fréquentes sur WinProx, QR, équipes et abonnement."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Aide — Contact",
+            "actions": [
+                {
+                    "label": "Support",
+                    "text": "Contactez WinProx si vous avez besoin d'aide au-delà de cette aide page et de la FAQ."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Aide — QR unité",
+            "actions": [
+                {
+                    "label": "Signaler un problème",
+                    "text": "Scannez le QR, décrivez le problème et ajoutez éventuellement des photos. Une tâche est créée pour l'équipe."
+                },
+                {
+                    "label": "Mode worker",
+                    "text": "Les exécutants reconnus s'identifient avec nom et icône pour démarrer ou terminer les tâches ouvertes."
+                },
+                {
+                    "label": "Documents & annonces",
+                    "text": "Consultez les manuels et annonces pour cette unité."
+                }
+            ],
+            "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",
+            "statuses": {
+                "new": "Tâche en attente de démarrage.",
+                "in_progress": "L'équipe est en cours.",
+                "done": "Travail terminé.",
+                "closed": "Tâche clôturée."
+            }
+        },
+        "portal.team": {
+            "title": "Aide — QR équipe",
+            "actions": [
+                {
+                    "label": "S'identifier",
+                    "text": "Entrez votre nom et choisissez votre icône pour vous identifier comme exécutant."
+                },
+                {
+                    "label": "Traiter les tâches",
+                    "text": "Démarrez les tâches, ajoutez des notes et terminez avec des photos si nécessaire."
+                }
+            ],
+            "statuses": {
+                "new": "Pas encore démarré.",
+                "in_progress": "En cours sur site.",
+                "done": "Terminé par vous ou un collègue.",
+                "closed": "Clôturé par la gestion."
+            }
+        },
+        "portal.location": {
+            "title": "Aide — QR site",
+            "actions": [
+                {
+                    "label": "Signalement sans unité",
+                    "text": "Utilisez ce QR pour les problèmes dans les couloirs ou zones communes sans unité spécifique."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Aide — Plateforme",
+            "actions": [
+                {
+                    "label": "Gérer les tenants",
+                    "text": "Vue d'ensemble de toutes les organisations. Ouvrez un tenant pour travailler en support dans son environnement."
+                },
+                {
+                    "label": "Mode support",
+                    "text": "Démarrez le support pour utiliser l'app au nom d'un tenant. Arrêtez le support pour revenir à l'aperçu plateforme."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Aide — Base de connaissances plateforme",
+            "actions": [
+                {
+                    "label": "Questions sans réponse",
+                    "text": "Questions du chat d'aide sans correspondance FAQ. Répondez-y ou ajoutez-les à la base de connaissances."
+                },
+                {
+                    "label": "Base de connaissances",
+                    "text": "Gérez les articles FAQ et réponses d'aide pour tous les tenants."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Aide — Documents juridiques",
+            "actions": [
+                {
+                    "label": "Documents",
+                    "text": "Politique de confidentialité, conditions générales et autres textes juridiques de WinProx."
+                }
+            ]
+        }
+    }
+}

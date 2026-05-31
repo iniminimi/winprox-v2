@@ -5,6 +5,7 @@ use App\Enums\IssueSource;
 use App\Enums\TaskStatus;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Tasks\Show as TaskShow;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -52,6 +53,42 @@ it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () 
         ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
         ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
         ->and($issue->tasks->first()->note)->toBe('Direct aanpakken');
+});
+
+it('toont validatiefouten bij lege stap 1 van aanmaak-modal', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->call('openCreateModal')
+        ->call('saveCreateStepOne')
+        ->assertHasErrors(['location_id', 'description'])
+        ->assertSet('createStep', 1);
+
+    expect(Issue::count())->toBe(0);
+});
+
+it('toont validatiefout bij stap 2 zonder team', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->call('openCreateModal')
+        ->set('location_id', $location->id)
+        ->set('description', 'Lekkende kraan')
+        ->call('saveCreateStepOne')
+        ->assertHasNoErrors()
+        ->assertSet('createStep', 2)
+        ->call('saveCreateStepTwo')
+        ->assertHasErrors(['internal_team_id'])
+        ->assertSet('createStep', 2);
 });
 
 it('vult standaardteam in bij unit met default_internal_team_id', function () {
@@ -270,4 +307,32 @@ it('toont NR-referentie op melding- en taakdetail', function () {
         ->assertOk()
         ->assertSee($taskNr, false)
         ->assertSee($issueNr, false);
+});
+
+it('wijzigt het team op taakdetail', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Elektriciteit']);
+    $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kolombor schilderen',
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $teamA->id,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(TaskShow::class, ['task' => $task])
+        ->assertSee('Elektriciteit')
+        ->set('teamId', $teamB->id)
+        ->call('saveTeam')
+        ->assertHasNoErrors();
+
+    expect($task->fresh()->internal_team_id)->toBe($teamB->id);
 });

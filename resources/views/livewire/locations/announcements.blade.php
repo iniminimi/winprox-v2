@@ -14,7 +14,7 @@
 
     <div class="wp-list">
         @forelse ($announcements as $announcement)
-            <div class="wp-location-unit-row" wire:key="ann-{{ $announcement->id }}">
+            <div class="wp-issue-row" wire:key="ann-{{ $announcement->id }}">
                 <div class="wp-grow wp-stack-tight">
                     <p class="wp-issue-desc">{{ $announcement->body }}</p>
                     <p class="wp-muted wp-text-sm">

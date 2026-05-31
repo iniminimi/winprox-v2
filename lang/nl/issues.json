@@ -4,24 +4,35 @@
     "briefing": "Briefing afdrukken",
     "list": {
         "title": "Meldingen",
-        "subtitle": "Alle meldingen, gegroepeerd per status.",
+        "subtitle": "Alle door melders gemelde problemen",
         "add": "Melding toevoegen",
+        "group_count": ":count meldingen",
         "empty": "Er zijn nog geen meldingen.",
         "empty_filtered": "Geen meldingen gevonden voor deze filters."
     },
     "filter": {
-        "status": "Status",
+        "status": "Filter op status",
         "status_all": "Alle statussen",
-        "team": "Team",
+        "team": "Filter op team",
         "team_all": "Alle teams",
         "search": "Zoeken",
-        "search_placeholder": "Omschrijving, melder, locatie of unit…",
-        "recurring": "Alleen terugkerend",
+        "search_placeholder": "Zoek op locatie, adres, postcode, plaats, unit of melder",
+        "recurring": "Terugkerende melding",
+        "recurring_only": "Alleen terugkerende meldingen",
         "apply": "GO!",
         "reset": "Filters wissen",
-        "hint": "Combineer status, team, zoekterm en terugkerend om te verfijnen."
+        "hint": "Klik op de melding om details te bekijken."
     },
     "card": {
+        "kind": "Melding",
+        "kind_nr": "Melding nr :nr",
+        "description_label": "Beschrijving : ",
+        "meta_via_team": "Gemeld via :source op :datetime, Team :teams",
+        "meta_by_team": "Gemeld door :name op :datetime, Team :teams",
+        "report_source_qr": "QR",
+        "report_source_qr_location": "locatie-QR",
+        "team": "Team: :teams",
+        "recurring": "Terugkerend",
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_qr_location": "Via locatie-QR",
@@ -59,14 +70,24 @@
         "success": "Melding en taak zijn aangemaakt."
     },
     "errors": {
+        "location_required": "Kies een locatie.",
+        "unit_invalid": "De gekozen unit is ongeldig.",
         "description_required": "Geef een omschrijving van de melding.",
         "description_min": "De omschrijving moet minstens 3 tekens bevatten.",
         "description_max": "De omschrijving is te lang.",
+        "team_required": "Kies een team.",
+        "recurrence_interval_required": "Geef een geldig interval op.",
+        "recurrence_unit_required": "Kies een interval-eenheid.",
+        "recurrence_lead_required": "Geef een geldige lead (dagen) op.",
+        "recurrence_due_required": "Kies een eerste vervaldatum.",
+        "recurrence_due_future": "De eerste vervaldatum moet vandaag of later zijn.",
         "photos_max": "Maximaal 4 foto's per melding.",
         "photos_image": "Alleen afbeeldingen zijn toegestaan."
     },
     "show": {
         "title": "Melding",
+        "overview_title": "Meldingsoverzicht",
+        "nav_label": "Meldingnavigatie",
         "nr": "NR :nr",
         "back": "Terug naar meldingen",
         "report": "Melding",
@@ -74,8 +95,20 @@
         "tasks_empty": "Er zijn nog geen taken.",
         "no_team": "Geen team",
         "add_task": "Taak toevoegen voor een team",
+        "add_task_button": "+ Taak toevoegen",
+        "add_task_modal_title": "Taak toevoegen",
+        "add_task_modal_subtitle": "Vul de taakgegevens in en wijs een team toe.",
+        "add_task_team_label": "Team",
         "add_task_placeholder": "Kies een team",
-        "add_task_submit": "Taak toevoegen",
+        "add_task_submit": "Taak opslaan",
+        "task_note_label": "Omschrijving",
+        "task_note_placeholder": "Beschrijf wat er moet gebeuren…",
+        "task_scheduled_label": "Gepland op (optioneel)",
+        "errors": {
+            "team_required": "Kies een team.",
+            "task_note_required": "Geef een omschrijving op.",
+            "task_note_min": "De omschrijving moet minstens 2 tekens bevatten."
+        },
         "manage_task_status": "Status beheren",
         "recurring_title": "Terugkerende melding",
         "recurring_next_due": "Volgende cyclus: :date",
@@ -88,7 +121,8 @@
         "add_update": "Notitie toevoegen",
         "add_update_placeholder": "Bijv. extra info voor het team…",
         "add_update_photos": "Foto's (optioneel)",
-        "add_update_submit": "Notitie opslaan"
+        "add_update_submit": "Notitie opslaan",
+        "photo_enlarge": "Foto vergroten"
     },
     "updates": {
         "kind": {

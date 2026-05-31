@@ -1,8 +1,12 @@
 <div class="wp-stack">
     <div class="wp-page-head">
-        <div class="wp-stack-tight">
-            <h1 class="wp-page-title">{{ __('locations.title') }}</h1>
-            <p class="wp-muted">{{ __('locations.subtitle') }}</p>
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                icon="locations"
+                :title="__('locations.title')"
+                help-page="locations.list"
+                :subtitle="__('locations.subtitle')"
+            />
         </div>
         <button type="button" class="btn btn--primary" wire:click="openCreate">
             {{ __('locations.add') }}
@@ -24,23 +28,26 @@
         </div>
         <p class="wp-muted">{{ __('locations.search_hint') }}</p>
 
-        <div class="wp-list">
+        <div class="wp-list wp-list--entity-rows">
             @forelse ($locations as $location)
-                <div class="wp-location-row" wire:key="loc-{{ $location->id }}">
-                    <a href="{{ route('locations.show', $location) }}" class="wp-location-row-link">
-                        <div class="wp-grow">
-                            <div class="wp-cluster">
-                                <span class="wp-section-title">{{ $location->name }}</span>
-                                <span class="wp-pill wp-pill--closed">{{ __('locations.unit_count', ['count' => $location->units_count]) }}</span>
-                                @if (! $location->is_active)
-                                    <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                                @endif
-                            </div>
-                            @if ($location->formattedAddress())
-                                <p class="wp-muted">{{ $location->formattedAddress() }}</p>
-                            @endif
-                        </div>
+                @php
+                    $addressLine = $location->formattedAddress()
+                        ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
+                        : '';
+                @endphp
+                <div class="wp-issue-row" wire:key="loc-{{ $location->id }}">
+                    <a href="{{ route('locations.show', $location) }}" class="wp-issue-row-link wp-stack-tight">
+                        <p class="wp-issue-card-title">{{ $location->name }}</p>
+                        @if ($addressLine !== '')
+                            <p class="wp-issue-card-meta">{{ $addressLine }}</p>
+                        @endif
                     </a>
+                    <div class="wp-issue-row-meta">
+                        <span class="wp-pill wp-pill--closed">{{ __('locations.unit_count', ['count' => $location->units_count]) }}</span>
+                        @if (! $location->is_active)
+                            <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                        @endif
+                    </div>
                     @if ($location->is_active)
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivate({{ $location->id }})"
                                 wire:confirm="{{ __('locations.confirm_deactivate') }}">

@@ -164,6 +164,8 @@ class Index extends Component
     {
         $this->authorize('create', Issue::class);
 
+        $this->description = trim($this->description);
+
         if (blank($this->unit_id)) {
             $this->unit_id = null;
         }
@@ -173,7 +175,7 @@ class Index extends Component
 
         $validated = $this->validate(
             StoreManagerIssueStepOneRequest::ruleSet(),
-            (new StoreManagerIssueStepOneRequest)->messages(),
+            StoreManagerIssueStepOneRequest::messageSet(),
         );
 
         $issue = $createIssue->handle($validated, auth()->user(), $this->photos);
@@ -190,7 +192,10 @@ class Index extends Component
         $issue = Issue::query()->findOrFail($this->draftIssueId);
         $this->authorize('create', Issue::class);
 
-        $validated = $this->validate(AssignIssueTeamTaskRequest::ruleSet());
+        $validated = $this->validate(
+            AssignIssueTeamTaskRequest::ruleSet(),
+            AssignIssueTeamTaskRequest::messageSet(),
+        );
 
         $assignTask->handle(
             $issue,

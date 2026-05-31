@@ -1,0 +1,47 @@
+/*
+ | Thema "Eenvoudig" — licht, modern, emerald (standaard).
+ */
+
+:root,
+[data-theme='simple'],
+[data-theme='standard'] {
+    --wp-bg: #f9fafb;
+    --wp-surface: #ffffff;
+    --wp-surface-2: #f9fafb;
+    --wp-surface-hover: #f3f4f6;
+
+    --wp-border: #e5e7eb;
+    --wp-border-strong: #d1d5db;
+
+    --wp-text: #111827;
+    --wp-text-body: #4b5563;
+    --wp-text-muted: #6b7280;
+    --wp-text-on-accent: #ffffff;
+
+    --wp-accent: #059669;
+    --wp-accent-strong: #047857;
+    --wp-accent-soft: #ecfdf5;
+    --wp-accent-border: #bbf7d0;
+    --wp-accent-text: #047857;
+
+    --wp-warning: #d97706;
+    --wp-warning-strong: #b45309;
+    --wp-warning-soft: #fffbeb;
+    --wp-warning-border: #fde68a;
+    --wp-warning-text: #b45309;
+
+    --wp-danger: #dc2626;
+    --wp-danger-strong: #b91c1c;
+    --wp-danger-soft: #fef2f2;
+    --wp-danger-border: #fecaca;
+    --wp-danger-text: #b91c1c;
+
+    --wp-info: #2563eb;
+    --wp-info-soft: #eff6ff;
+    --wp-info-border: #bfdbfe;
+    --wp-info-text: #1d4ed8;
+
+    --wp-shell-gradient: none;
+    --wp-card-backdrop: none;
+    --wp-sidebar-glass: transparent;
+}

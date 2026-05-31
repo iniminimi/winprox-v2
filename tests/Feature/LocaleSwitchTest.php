@@ -13,11 +13,11 @@ it('past de gekozen locale toe via de middleware', function () {
     $this->withSession(['locale' => 'fr'])
         ->get(route('login'))
         ->assertOk()
-        ->assertSee(__('auth.title', [], 'fr'));
+        ->assertSee(__('auth.submit', [], 'fr'));
 });
 
 it('valt terug op de standaardlocale (nl) zonder keuze', function () {
     $this->get(route('login'))
         ->assertOk()
-        ->assertSee(__('auth.title', [], 'nl'));
+        ->assertSee(__('auth.submit', [], 'nl'));
 });

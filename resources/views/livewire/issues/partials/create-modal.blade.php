@@ -2,7 +2,7 @@
     @if ($createStep === 1)
         <form x-data
               x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-              @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveCreateStepOne()"
+              @submit.prevent="await window.wpAwaitPhotoUploads($el); await $wire.saveCreateStepOne()"
               class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
             <div class="wp-modal-head">
                 <div class="wp-stack-tight">
@@ -11,6 +11,16 @@
                 </div>
                 <x-wp-modal-close wire:click="closeCreateModal" />
             </div>
+
+            @if ($errors->any())
+                <div class="wp-flash wp-flash--danger" role="alert">
+                    <ul class="wp-form-error-list">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
             <div class="wp-field">
                 <label class="wp-label" for="create_location_id">{{ __('issues.create.location') }}</label>
@@ -105,11 +115,21 @@
                 <x-wp-modal-close wire:click="closeCreateModal" />
             </div>
 
+            @if ($errors->any())
+                <div class="wp-flash wp-flash--danger" role="alert">
+                    <ul class="wp-form-error-list">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <p class="wp-muted">{{ __('issues.create.step_two_hint') }}</p>
 
             <div class="wp-field">
                 <label class="wp-label" for="create_internal_team_id">{{ __('issues.create.team') }}</label>
-                <select id="create_internal_team_id" class="wp-select" wire:model="internal_team_id" required>
+                <select id="create_internal_team_id" class="wp-select" wire:model="internal_team_id">
                     <option value="">{{ __('issues.create.team_none') }}</option>
                     @foreach ($createTeams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>

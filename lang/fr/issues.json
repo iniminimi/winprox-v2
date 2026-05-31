@@ -4,24 +4,35 @@
     "briefing": "Imprimer le briefing",
     "list": {
         "title": "Signalements",
-        "subtitle": "Tous les signalements, regroupés par statut.",
+        "subtitle": "Tous les problèmes signalés par les rapporteurs",
         "add": "Ajouter un signalement",
+        "group_count": ":count signalements",
         "empty": "Aucun signalement pour le moment.",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres."
     },
     "filter": {
-        "status": "Statut",
+        "status": "Filtrer par statut",
         "status_all": "Tous les statuts",
-        "team": "Équipe",
+        "team": "Filtrer par équipe",
         "team_all": "Toutes les équipes",
         "search": "Rechercher",
-        "search_placeholder": "Description, signaleur, site ou unité…",
-        "recurring": "Récurrents uniquement",
+        "search_placeholder": "Rechercher par site, adresse, code postal, ville, unité ou signaleur",
+        "recurring": "Signalement récurrent",
+        "recurring_only": "Signalements récurrents uniquement",
         "apply": "GO!",
         "reset": "Effacer les filtres",
-        "hint": "Combinez statut, équipe, recherche et récurrent pour affiner."
+        "hint": "Cliquez sur un signalement pour voir les détails."
     },
     "card": {
+        "kind": "Signalement",
+        "kind_nr": "Signalement n° :nr",
+        "description_label": "Description : ",
+        "meta_via_team": "Signalé via :source le :datetime, Équipe :teams",
+        "meta_by_team": "Signalé par :name le :datetime, Équipe :teams",
+        "report_source_qr": "QR",
+        "report_source_qr_location": "QR site",
+        "team": "Équipe : :teams",
+        "recurring": "Récurrent",
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_qr_location": "Via QR site",
@@ -59,14 +70,24 @@
         "success": "Le signalement et la tâche ont été créés."
     },
     "errors": {
+        "location_required": "Choisissez un site.",
+        "unit_invalid": "L'unité sélectionnée est invalide.",
         "description_required": "Veuillez saisir une description.",
         "description_min": "La description doit comporter au moins 3 caractères.",
         "description_max": "La description est trop longue.",
+        "team_required": "Choisissez une équipe.",
+        "recurrence_interval_required": "Indiquez un intervalle valide.",
+        "recurrence_unit_required": "Choisissez une unité d'intervalle.",
+        "recurrence_lead_required": "Indiquez un délai d'anticipation valide (jours).",
+        "recurrence_due_required": "Choisissez une première échéance.",
+        "recurrence_due_future": "La première échéance doit être aujourd'hui ou plus tard.",
         "photos_max": "Maximum 4 photos par signalement.",
         "photos_image": "Seules les images sont autorisées."
     },
     "show": {
         "title": "Signalement",
+        "overview_title": "Aperçu du signalement",
+        "nav_label": "Navigation des signalements",
         "nr": "NR :nr",
         "back": "Retour aux signalements",
         "report": "Signalement",
@@ -74,8 +95,20 @@
         "tasks_empty": "Aucune tâche pour le moment.",
         "no_team": "Aucune équipe",
         "add_task": "Ajouter une tâche pour une équipe",
+        "add_task_button": "+ Ajouter une tâche",
+        "add_task_modal_title": "Ajouter une tâche",
+        "add_task_modal_subtitle": "Renseignez la tâche et assignez une équipe.",
+        "add_task_team_label": "Équipe",
         "add_task_placeholder": "Choisir une équipe",
-        "add_task_submit": "Ajouter la tâche",
+        "add_task_submit": "Enregistrer la tâche",
+        "task_note_label": "Description",
+        "task_note_placeholder": "Décrivez ce qui doit être fait…",
+        "task_scheduled_label": "Prévu le (optionnel)",
+        "errors": {
+            "team_required": "Choisissez une équipe.",
+            "task_note_required": "Indiquez une description.",
+            "task_note_min": "La description doit comporter au moins 2 caractères."
+        },
         "manage_task_status": "Gérer le statut",
         "recurring_title": "Signalement récurrent",
         "recurring_next_due": "Prochain cycle : :date",
@@ -88,7 +121,8 @@
         "add_update": "Ajouter une note",
         "add_update_placeholder": "p. ex. info supplémentaire pour l'équipe…",
         "add_update_photos": "Photos (optionnel)",
-        "add_update_submit": "Enregistrer la note"
+        "add_update_submit": "Enregistrer la note",
+        "photo_enlarge": "Agrandir la photo"
     },
     "updates": {
         "kind": {

@@ -1,8 +1,9 @@
 {
     "title": "Settings",
-    "subtitle": "Company details, privacy and preferences for your organisation.",
+    "subtitle": "Company details, privacy and your personal preferences.",
     "org": {
         "title": "Your organisation",
+        "readonly_hint": "Only the administrator can edit company details.",
         "name_label": "Organisation name",
         "logo_label": "Organisation logo",
         "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB).",
@@ -14,8 +15,22 @@
         "download": "Download JSON export"
     },
     "style": {
-        "title": "Style",
-        "coming_soon": "Soon you will be able to choose the visual theme for your workspace here."
+        "title": "Customise WinProx style",
+        "hint": "Choose how WinProx looks for you. Your choice applies on every device where you are signed in.",
+        "options": {
+            "simple": {
+                "label": "Simple",
+                "description": "Clear and calm — the default WinProx look."
+            },
+            "dark": {
+                "label": "Dark",
+                "description": "Night mode with dark backgrounds, like on your phone."
+            },
+            "highres": {
+                "label": "High Res",
+                "description": "Refined with soft gradients, richer colours and glassmorphism."
+            }
+        }
     },
     "errors": {
         "organisation_name_required": "Enter an organisation name."

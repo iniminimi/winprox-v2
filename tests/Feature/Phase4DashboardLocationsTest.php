@@ -5,7 +5,9 @@ use App\Livewire\Locations\Show as LocationShow;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
+use Illuminate\Support\Facades\Storage;
 use App\Support\Tenancy;
 use App\Support\Units\UnitBulkNaming;
 use Illuminate\Support\Carbon;
@@ -230,4 +232,45 @@ it('qr-pack download returns docx when GD available', function () {
     expect($documentXml)->toBeString()
         ->and($documentXml)->toContain('Machine 12')
         ->and($documentXml)->toContain('Hal A');
+});
+
+it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5), 'logo_path' => null]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = $location->units()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Lift 1',
+        'qr_token' => 'qr-unit-logo-test',
+        'is_active' => true,
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('units.qr', $unit))
+        ->assertOk()
+        ->assertSee('wp-qr-code-center-logo', false)
+        ->assertSee(QrCenterLogo::winproxPublicUrl(), false);
+});
+
+it('toont organisatielogo in locatie-QR wanneer geüpload', function () {
+    Storage::fake('public');
+    Storage::disk('public')->put('tenant-logos/org.png', 'png-bytes');
+
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(5),
+        'logo_path' => 'tenant-logos/org.png',
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_qr_token' => 'loc-qr-logo-test',
+    ]);
+
+    $orgLogoUrl = QrCenterLogo::publicUrl($tenant);
+
+    $this->actingAs($user)
+        ->get(route('locations.qr', $location))
+        ->assertOk()
+        ->assertSee($orgLogoUrl, false)
+        ->assertSee('wp-qr-code-center-logo', false);
 });

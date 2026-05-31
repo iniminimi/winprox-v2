@@ -4,24 +4,35 @@
     "briefing": "Briefing drucken",
     "list": {
         "title": "Meldungen",
-        "subtitle": "Alle Meldungen, gruppiert nach Status.",
+        "subtitle": "Alle von Meldern gemeldeten Probleme",
         "add": "Meldung hinzufügen",
+        "group_count": ":count Meldungen",
         "empty": "Noch keine Meldungen.",
         "empty_filtered": "Keine Meldungen für diese Filter."
     },
     "filter": {
-        "status": "Status",
+        "status": "Nach Status filtern",
         "status_all": "Alle Status",
-        "team": "Team",
+        "team": "Nach Team filtern",
         "team_all": "Alle Teams",
         "search": "Suchen",
-        "search_placeholder": "Beschreibung, Melder, Standort oder Unit…",
-        "recurring": "Nur wiederkehrend",
+        "search_placeholder": "Suche nach Standort, Adresse, PLZ, Ort, Unit oder Melder",
+        "recurring": "Wiederkehrende Meldung",
+        "recurring_only": "Nur wiederkehrende Meldungen",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
-        "hint": "Status, Team, Suche und Wiederkehrend kombinieren."
+        "hint": "Klicken Sie auf eine Meldung, um Details anzuzeigen."
     },
     "card": {
+        "kind": "Meldung",
+        "kind_nr": "Meldung Nr. :nr",
+        "description_label": "Beschreibung: ",
+        "meta_via_team": "Gemeldet via :source am :datetime, Team :teams",
+        "meta_by_team": "Gemeldet von :name am :datetime, Team :teams",
+        "report_source_qr": "QR",
+        "report_source_qr_location": "Standort-QR",
+        "team": "Team: :teams",
+        "recurring": "Wiederkehrend",
         "nr": "NR :nr",
         "source_qr": "Via QR",
         "source_qr_location": "Via Standort-QR",
@@ -59,14 +70,24 @@
         "success": "Meldung und Aufgabe wurden erstellt."
     },
     "errors": {
+        "location_required": "Wählen Sie einen Standort.",
+        "unit_invalid": "Die gewählte Einheit ist ungültig.",
         "description_required": "Bitte geben Sie eine Beschreibung ein.",
         "description_min": "Die Beschreibung muss mindestens 3 Zeichen haben.",
         "description_max": "Die Beschreibung ist zu lang.",
+        "team_required": "Wählen Sie ein Team.",
+        "recurrence_interval_required": "Geben Sie ein gültiges Intervall an.",
+        "recurrence_unit_required": "Wählen Sie eine Intervall-Einheit.",
+        "recurrence_lead_required": "Geben Sie eine gültige Vorlaufzeit (Tage) an.",
+        "recurrence_due_required": "Wählen Sie ein erstes Fälligkeitsdatum.",
+        "recurrence_due_future": "Das erste Fälligkeitsdatum muss heute oder später sein.",
         "photos_max": "Maximal 4 Fotos pro Meldung.",
         "photos_image": "Nur Bilder sind erlaubt."
     },
     "show": {
         "title": "Meldung",
+        "overview_title": "Meldungsübersicht",
+        "nav_label": "Meldungsnavigation",
         "nr": "NR :nr",
         "back": "Zurück zu Meldungen",
         "report": "Meldung",
@@ -74,8 +95,20 @@
         "tasks_empty": "Noch keine Aufgaben.",
         "no_team": "Kein Team",
         "add_task": "Aufgabe für ein Team hinzufügen",
+        "add_task_button": "+ Aufgabe hinzufügen",
+        "add_task_modal_title": "Aufgabe hinzufügen",
+        "add_task_modal_subtitle": "Geben Sie die Aufgabendetails ein und weisen Sie ein Team zu.",
+        "add_task_team_label": "Team",
         "add_task_placeholder": "Team wählen",
-        "add_task_submit": "Aufgabe hinzufügen",
+        "add_task_submit": "Aufgabe speichern",
+        "task_note_label": "Beschreibung",
+        "task_note_placeholder": "Beschreiben Sie, was zu tun ist…",
+        "task_scheduled_label": "Geplant am (optional)",
+        "errors": {
+            "team_required": "Wählen Sie ein Team.",
+            "task_note_required": "Geben Sie eine Beschreibung ein.",
+            "task_note_min": "Die Beschreibung muss mindestens 2 Zeichen enthalten."
+        },
         "manage_task_status": "Status verwalten",
         "recurring_title": "Wiederkehrende Meldung",
         "recurring_next_due": "Nächster Zyklus: :date",
@@ -88,7 +121,8 @@
         "add_update": "Notiz hinzufügen",
         "add_update_placeholder": "z. B. zusätzliche Info für das Team…",
         "add_update_photos": "Fotos (optional)",
-        "add_update_submit": "Notiz speichern"
+        "add_update_submit": "Notiz speichern",
+        "photo_enlarge": "Foto vergrößern"
     },
     "updates": {
         "kind": {

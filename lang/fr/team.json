@@ -35,6 +35,7 @@
     "teams": {
         "title": "Équipes",
         "add": "Ajouter une équipe",
+        "hint": "Cliquez sur une équipe pour gérer les intervenants.",
         "empty": "Aucune équipe pour le moment.",
         "active": "Active",
         "inactive": "Inactive",

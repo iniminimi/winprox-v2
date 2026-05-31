@@ -1,15 +1,14 @@
 <x-layouts.print :title="$unit->name">
     <div class="wp-qr-page">
-        <div class="wp-stack-tight">
-            <h1 class="wp-page-title">{{ $unit->name }}</h1>
-            <p class="wp-muted">{{ __('locations.unit_qr_subtitle') }}</p>
-        </div>
+        <x-wp-page-head-title
+            icon="units"
+            :title="$unit->name"
+            :subtitle="__('locations.unit_qr_subtitle')"
+        />
 
         <div class="wp-qr-frame">
-            {!! $qrSvg !!}
+            @include('partials.qr-print-code', ['qrSvg' => $qrSvg, 'centerLogoUrl' => $centerLogoUrl])
         </div>
-
-        <p class="wp-qr-url">{{ $url }}</p>
 
         <div class="wp-qr-actions wp-no-print">
             <button type="button" class="btn btn--primary" onclick="window.print()">{{ __('common.button.print') }}</button>

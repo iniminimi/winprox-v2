@@ -2,35 +2,48 @@
     "briefing": "Briefing afdrukken",
     "list": {
         "title": "Taken",
-        "subtitle": "Alle taken, gegroepeerd per status.",
-        "new_block": "Nieuwe taken",
+        "subtitle": "Alle taken per team en status",
+        "group_count": "{0} geen taken|{1} :count taak|[2,*] :count taken",
         "empty": "Er zijn nog geen taken.",
         "empty_filtered": "Geen taken gevonden voor deze filters."
     },
     "filter": {
-        "status": "Status",
+        "status": "Filter op status",
         "status_all": "Alle statussen",
-        "team": "Team",
+        "team": "Filter op team",
         "team_all": "Alle teams",
         "search": "Zoeken",
-        "search_placeholder": "Notitie, melding, locatie of unit…",
-        "recurring": "Alleen terugkerende cycli",
+        "search_placeholder": "Zoek op notitie, melding, locatie, adres, postcode, plaats of unit",
+        "recurring": "Terugkerende taak",
+        "recurring_only": "Alleen terugkerende cycli",
         "apply": "GO!",
         "reset": "Filters wissen",
-        "hint": "Combineer status, team, zoekterm en terugkerend om te verfijnen."
+        "hint": "Klik op de taak om details te bekijken."
     },
     "card": {
+        "kind_nr": "Taak nr :nr",
+        "description_label": "Beschrijving : ",
+        "meta_team": "Team :team",
         "nr": "NR :nr",
-        "issue_nr": "Melding :nr",
+        "issue_nr": "Melding nr :nr",
         "no_team": "Geen team",
-        "scheduled": "Gepland :date"
+        "scheduled": "Gepland :date",
+        "recurring": "Terugkerend"
     },
     "show": {
         "title": "Taak",
+        "overview_title": "Taakoverzicht",
         "nr": "NR :nr",
         "back": "Terug naar taken",
+        "nav_label": "Taaknavigatie",
         "issue_context": "Melding",
-        "view_issue": "Melding bekijken",
+        "view_issue": "Volledige melding",
+        "team_section": "Team",
+        "team_hint": "Wijs deze taak toe aan een operationeel team of wijzig het team.",
+        "team_current": "Huidig team: :name",
+        "team_select_label": "Team kiezen",
+        "team_select_placeholder": "Kies een team",
+        "team_save": "Team opslaan",
         "task": "Taakgegevens",
         "due": "Vervaldatum :date",
         "change_status": "Status wijzigen",
@@ -38,7 +51,10 @@
         "confirm_status": "Status toepassen",
         "pause": "Pauzenotitie",
         "pause_submit": "Pauzenotitie opslaan",
-        "updates": "Melding-updates"
+        "updates": "Melding-updates",
+        "errors": {
+            "team_required": "Kies een team."
+        }
     },
     "errors": {
         "invalid_transition": "Deze statuswijziging is niet toegestaan.",

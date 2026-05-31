@@ -23,6 +23,12 @@
         "done": "Handled",
         "closed": "Closed"
     },
+    "detail_nav": {
+        "first": "First",
+        "prev": "Previous",
+        "next": "Next",
+        "last": "Last"
+    },
     "button": {
         "save": "Save",
         "cancel": "Cancel",

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Locations;
 
 use App\Models\Location;
 use App\Support\Platform\SuperuserTenantAccess;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\TeamQrCode;
 
 final class LocationQrController
@@ -15,12 +16,14 @@ final class LocationQrController
             403,
         );
 
+        $location->load('tenant');
         $url = route('public.location-portal', $location->location_qr_token);
 
         return view('locations.qr', [
             'location' => $location,
             'url' => $url,
             'qrSvg' => TeamQrCode::svg($url),
+            'centerLogoUrl' => QrCenterLogo::publicUrl($location->tenant),
         ]);
     }
 }

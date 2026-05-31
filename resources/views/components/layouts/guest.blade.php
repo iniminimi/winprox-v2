@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="standard">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="{{ $uiTheme ?? 'simple' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,31 +7,31 @@
     @vite(['resources/css/app.css'])
     @livewireStyles
 </head>
-<body class="wp-shell">
+<body class="wp-shell wp-auth-body">
     <div class="wp-auth">
-        <div class="wp-auth-shell">
+        <div class="wp-auth-card wp-card">
             <div class="wp-auth-top">
                 @include('partials.wp-lang-switch', ['variant' => 'inline'])
             </div>
 
-            <div class="wp-auth-brand">
-                @if (file_exists(public_path('images/Winprox_logo_300.png')))
-                    <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="WinProx" class="wp-auth-logo-img" width="120" height="120" />
+            <a href="{{ route('welcome') }}" class="wp-auth-logo-link" aria-label="{{ __('welcome.back_home') }}">
+                @if (file_exists(public_path('images/Winprox_logo_200.png')))
+                    <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" class="wp-auth-logo-img" width="180" height="auto" />
+                @elseif (file_exists(public_path('images/Winprox_logo_300.png')))
+                    <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="" class="wp-auth-logo-img" width="120" height="120" />
                 @else
                     <span class="wp-auth-logo">WinProx</span>
                 @endif
                 <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
-            </div>
+            </a>
 
-            <div class="wp-auth-card wp-card wp-card-pad">
+            <div class="wp-auth-content">
                 {{ $slot }}
             </div>
 
-            <div class="wp-auth-footer">
-                <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener noreferrer">{{ __('common.nav.legal') }}</a>
-                <span class="wp-muted">&middot;</span>
-                <a href="{{ route('contact.index') }}">{{ __('common.nav.contact') }}</a>
-            </div>
+            @include('partials.wp-auth-legal-links')
+
+            <p class="wp-auth-copyright">&copy; {{ date('Y') }} WinProx</p>
         </div>
     </div>
 

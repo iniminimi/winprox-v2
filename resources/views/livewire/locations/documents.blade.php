@@ -22,7 +22,7 @@
 
     <div class="wp-list">
         @forelse ($documents as $document)
-            <div class="wp-location-unit-row" wire:key="doc-{{ $document->id }}">
+            <div class="wp-issue-row" wire:key="doc-{{ $document->id }}">
                 <div class="wp-grow wp-stack-tight">
                     <p class="wp-issue-desc">{{ $document->description ?: __('locations.documents.no_description') }}</p>
                     <p class="wp-muted wp-text-sm">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="standard">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="{{ $uiTheme ?? 'simple' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,14 +30,21 @@
             || ($authUser->is_superuser && $supportTenant !== null)
         );
 
+        $showSettingsNav = $authUser && (
+            $authUser->tenant_id !== null
+            || ($authUser->is_superuser && $supportTenant !== null)
+        );
+
         $secondaryNav = [
             ...(auth()->user()?->is_superuser ? [
                 ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.nav'],
                 ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
             ] : []),
             ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.users'],
-            ...($showTenantAdminNav ? [
+            ...($showSettingsNav ? [
                 ['route' => 'settings.index', 'active' => 'settings.index', 'icon' => 'settings', 'label' => 'common.nav.settings'],
+            ] : []),
+            ...($showTenantAdminNav ? [
                 ['route' => 'settings.api', 'active' => 'settings.api', 'icon' => 'subscription', 'label' => 'settings.api.nav'],
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
             ] : []),
@@ -49,15 +56,6 @@
 
     <div class="wp-app" x-data="{ nav: false, help: false }">
         <aside class="wp-sidebar" :class="{ 'is-open': nav }">
-            <div class="wp-sidebar-head">
-                <span class="wp-sidebar-brand">WinProx</span>
-                @if ($supportTenant)
-                    <span class="wp-sidebar-tenant">{{ $supportTenant->name }}</span>
-                @elseif (auth()->user()?->tenant?->name)
-                    <span class="wp-sidebar-tenant">{{ auth()->user()->tenant->name }}</span>
-                @endif
-            </div>
-
             <div class="wp-sidebar-body">
                 <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
                     @foreach ($primaryNav as $item)
@@ -112,7 +110,11 @@
         </button>
 
         <a href="{{ route('dashboard') }}" class="wp-brand-float" aria-label="WinProx">
-            <img src="{{ asset('images/qr/svg/A6_winprox_logo.svg') }}" alt="" width="72" height="40" class="wp-brand-float-img">
+            @if (file_exists(public_path('images/Winprox_logo_100.png')))
+                <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="" width="32" height="32" class="wp-brand-float-img">
+            @else
+                <img src="{{ asset('images/qr/svg/A6_winprox_logo.svg') }}" alt="" width="72" height="40" class="wp-brand-float-img">
+            @endif
         </a>
 
         <div class="wp-content">
@@ -128,12 +130,23 @@
         </div>
 
         <div class="wp-help">
-            <div class="wp-help-panel" x-show="help" x-cloak x-transition>
-                <h3 class="wp-help-title">{{ __('help.panel_title') }}</h3>
+            <div class="wp-help-panel" x-show="help" x-cloak x-transition id="wp-help-chat-panel" role="dialog" aria-modal="true" aria-labelledby="wp-help-chat-title">
+                <div class="wp-help-panel-header">
+                    <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
+                    <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">×</button>
+                </div>
                 <livewire:components.help-chat />
             </div>
-            <button type="button" class="wp-help-button" @click="help = !help" aria-label="{{ __('common.help.button') }}">
-                <x-wp-icon name="help" class="wp-icon" />
+            <button
+                type="button"
+                class="wp-help-button"
+                @click="help = !help"
+                :aria-expanded="help ? 'true' : 'false'"
+                aria-controls="wp-help-chat-panel"
+                :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
+            >
+                <x-wp-icon name="chat-bubble" class="wp-icon wp-help-button-icon" x-show="!help" />
+                <x-wp-icon name="x-mark" class="wp-icon wp-help-button-icon" x-show="help" x-cloak />
             </button>
         </div>
     </div>

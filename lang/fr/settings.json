@@ -1,8 +1,9 @@
 {
     "title": "Paramètres",
-    "subtitle": "Données de l'entreprise, confidentialité et préférences de votre organisation.",
+    "subtitle": "Données de l'entreprise, confidentialité et vos préférences personnelles.",
     "org": {
         "title": "Votre organisation",
+        "readonly_hint": "Seul l'administrateur peut modifier les données de l'entreprise.",
         "name_label": "Nom de l'organisation",
         "logo_label": "Logo de l'organisation",
         "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo).",
@@ -14,8 +15,22 @@
         "download": "Télécharger l'export JSON"
     },
     "style": {
-        "title": "Style",
-        "coming_soon": "Bientôt vous pourrez choisir ici le thème visuel de votre espace."
+        "title": "Personnaliser le style WinProx",
+        "hint": "Choisissez l'apparence de WinProx pour vous. Votre choix s'applique sur tous les appareils où vous êtes connecté.",
+        "options": {
+            "simple": {
+                "label": "Simple",
+                "description": "Clair et calme — le style WinProx par défaut."
+            },
+            "dark": {
+                "label": "Sombre",
+                "description": "Mode nuit avec fonds sombres, comme sur votre téléphone."
+            },
+            "highres": {
+                "label": "High Res",
+                "description": "Raffiné avec dégradés doux, couleurs plus riches et glassmorphism."
+            }
+        }
     },
     "errors": {
         "organisation_name_required": "Indiquez un nom d'organisation."

@@ -139,17 +139,34 @@ it('laat een admin de bedrijfsnaam aanpassen via instellingen', function () {
     expect($tenant->fresh()->name)->toBe('Acme Holding');
 });
 
-it('weigert instellingen voor een medewerker', function () {
+it('laat een medewerker instellingen zien maar niet bedrijfsgegevens bewerken', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($employee)
         ->get(route('settings.index'))
-        ->assertForbidden();
+        ->assertOk()
+        ->assertSee(__('settings.org.readonly_hint'), false);
 
     Livewire::actingAs($employee)
         ->test(Settings::class)
+        ->set('orgName', 'Hacked')
+        ->call('saveOrganisation')
         ->assertForbidden();
+
+    expect($tenant->fresh()->name)->not->toBe('Hacked');
+});
+
+it('laat een medewerker de WinProx-stijl aanpassen', function () {
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('uiTheme', 'dark')
+        ->assertHasNoErrors();
+
+    expect($employee->fresh()->ui_theme)->toBe('dark');
 });
 
 // --- Login-afdwinging ------------------------------------------------------

@@ -2,7 +2,10 @@
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">WinProx</span>
-            @include('partials.wp-portal-lang')
+            <div class="wp-cluster">
+                <x-wp-page-help page="portal.unit" />
+                @include('partials.wp-portal-lang')
+            </div>
         </div>
         <p class="wp-muted">
             @if ($locationName){{ $locationName }} &middot; @endif{{ $unitName }}
@@ -70,7 +73,7 @@
         {{-- ============================ NEW ============================ --}}
         @if ($portalSection === 'new')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
-            <h1 class="wp-page-title">{{ __('portal.report.title') }}</h1>
+            <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
             <form x-data
                   x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
@@ -100,7 +103,7 @@
         {{-- ============================ ISSUES ============================ --}}
         @if ($portalSection === 'issues')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
-            <h1 class="wp-page-title">{{ __('portal.tiles.issues') }}</h1>
+            <x-wp-page-head-title icon="issues" :title="__('portal.tiles.issues')" />
             <div class="wp-list">
                 @forelse ($issues as $issue)
                     @if ($issue->isApproved())
@@ -181,7 +184,7 @@
         {{-- ========================== DOCUMENTS ========================== --}}
         @if ($portalSection === 'documents')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
-            <h1 class="wp-page-title">{{ __('portal.tiles.documents') }}</h1>
+            <x-wp-page-head-title icon="document" :title="__('portal.tiles.documents')" />
             <div class="wp-list">
                 @forelse ($documents as $document)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="doc-{{ $document->id }}">
@@ -214,7 +217,7 @@
         {{-- ======================== ANNOUNCEMENTS ======================== --}}
         @if ($portalSection === 'announcements')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
-            <h1 class="wp-page-title">{{ __('portal.tiles.announcements') }}</h1>
+            <x-wp-page-head-title icon="document" :title="__('portal.tiles.announcements')" />
             <div class="wp-list">
                 @forelse ($announcements as $announcement)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ann-{{ $announcement->id }}">

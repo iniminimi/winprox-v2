@@ -1,0 +1,425 @@
+{
+    "button_label": "Seitenhilfe",
+    "modal": {
+        "close": "Schließen",
+        "actions_heading": "Aktionen",
+        "statuses_heading": "Status"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Hilfe — Dashboard",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Das Dashboard zeigt Anzahlen von Standorten, Units, offenen Meldungen und offenen Aufgaben. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen."
+                },
+                {
+                    "label": "Briefing drucken",
+                    "text": "Öffnet eine druckbare Übersicht offener Aufgaben pro Team — praktisch auf der Baustelle."
+                },
+                {
+                    "label": "Setup-Checkliste",
+                    "text": "Solange Ihr Tenant noch nicht vollständig eingerichtet ist, sehen Sie Schritte: Teams, Standort, Units, Workers und QR-Pack."
+                }
+            ],
+            "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",
+            "statuses": {
+                "new": "Mindestens eine Aufgabe wurde noch nicht gestartet.",
+                "in_progress": "Mindestens eine Aufgabe ist in Bearbeitung.",
+                "done": "Alle Aufgaben sind erledigt; ein Administrator kann die Meldung schließen.",
+                "closed": "Alle Aufgaben sind geschlossen — die Meldung ist abgeschlossen."
+            }
+        },
+        "issues.list": {
+            "title": "Hilfe — Meldungen",
+            "actions": [
+                {
+                    "label": "Meldung hinzufügen",
+                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
+                },
+                {
+                    "label": "Briefing drucken",
+                    "text": "Drucken Sie eine Übersicht offener Aufgaben pro Team."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Kombinieren Sie Status, Team, Suchbegriff und wiederkehrend, um die Liste zu verfeinern. Drücken Sie GO!, um anzuwenden."
+                },
+                {
+                    "label": "Freigeben",
+                    "text": "QR-Meldungen warten auf Freigabe. Geben Sie frei, damit Inhalte auf öffentlichen Seiten sichtbar werden."
+                }
+            ],
+            "status_note": "Der Meldungsstatus wird automatisch aus den Aufgaben dieser Meldung abgeleitet.",
+            "statuses": {
+                "new": "Neue Meldung; mindestens eine Aufgabe wurde noch nicht gestartet.",
+                "in_progress": "Nachverfolgung läuft — eine Aufgabe wurde gestartet oder ist in Bearbeitung.",
+                "done": "Alle Aufgaben wurden vom Team erledigt.",
+                "closed": "Ein Administrator hat alles bestätigt und geschlossen."
+            }
+        },
+        "issues.show": {
+            "title": "Hilfe — Meldungsdetail",
+            "actions": [
+                {
+                    "label": "Aufgabe hinzufügen",
+                    "text": "Erstellen Sie eine zusätzliche Aufgabe zu dieser Meldung und weisen Sie sie einem operativen Team zu."
+                },
+                {
+                    "label": "Update posten",
+                    "text": "Fügen Sie der Zeitleiste eine Notiz oder ein Foto hinzu, damit Kollegen mitverfolgen können."
+                },
+                {
+                    "label": "Freigeben",
+                    "text": "Geben Sie QR-Meldungen frei, bevor Beschreibung und Fotos öffentlich sichtbar werden."
+                }
+            ],
+            "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",
+            "statuses": {
+                "new": "Wartet auf Start mindestens einer Aufgabe.",
+                "in_progress": "Mindestens eine Aufgabe wird aktiv bearbeitet.",
+                "done": "Alle Aufgaben sind erledigt; schließen Sie die Meldung, wenn alles bestätigt ist.",
+                "closed": "Meldung ist endgültig geschlossen."
+            }
+        },
+        "tasks.list": {
+            "title": "Hilfe — Aufgaben",
+            "actions": [
+                {
+                    "label": "Nach Team filtern",
+                    "text": "Zeigen Sie nur Aufgaben eines operativen Teams. Team-Manager sehen standardmäßig nur ihre Teams."
+                },
+                {
+                    "label": "Aufgabe öffnen",
+                    "text": "Klicken Sie auf eine Aufgabe für Details, Statusänderung und Verknüpfung zur Meldung."
+                }
+            ],
+            "status_note": "Status werden oft automatisch über das Team-QR-Feldportal aktualisiert. Sie können sie auch manuell anpassen.",
+            "statuses": {
+                "new": "Aufgabe wurde erstellt und wartet auf Start durch das Team.",
+                "in_progress": "Das Team arbeitet daran.",
+                "done": "Arbeit vom Ausführenden abgeschlossen; Administrator kann schließen.",
+                "closed": "Aufgabe bestätigt und geschlossen."
+            }
+        },
+        "tasks.show": {
+            "title": "Hilfe — Aufgabendetail",
+            "actions": [
+                {
+                    "label": "Team zuweisen",
+                    "text": "Wählen Sie ein Team und speichern. So ändern Sie auch eine bestehende Zuweisung."
+                },
+                {
+                    "label": "Status ändern",
+                    "text": "Setzen Sie die Aufgabe je nach Fortschritt auf In Bearbeitung, Erledigt oder Geschlossen."
+                },
+                {
+                    "label": "Meldung öffnen",
+                    "text": "Gehen Sie zur verknüpften Meldung für Kontext, Fotos und weitere Aufgaben."
+                }
+            ],
+            "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Team-QR-Portal.",
+            "statuses": {
+                "new": "Noch nicht vor Ort gestartet.",
+                "in_progress": "Team ist beschäftigt.",
+                "done": "Ausführender meldet die Arbeit als erledigt.",
+                "closed": "Administrator bestätigt und schließt ab."
+            }
+        },
+        "locations.list": {
+            "title": "Hilfe — Standorte",
+            "actions": [
+                {
+                    "label": "Standort hinzufügen",
+                    "text": "Erstellen Sie einen neuen Standort mit Adresse und Basisdaten."
+                },
+                {
+                    "label": "Standort öffnen",
+                    "text": "Verwalten Sie Units, Dokumente, Mitteilungen und QR-Codes pro Standort."
+                },
+                {
+                    "label": "Inaktive anzeigen",
+                    "text": "Zeigen Sie deaktivierte Standorte, um sie erneut zu aktivieren oder einzusehen."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Hilfe — Standortdetail",
+            "actions": [
+                {
+                    "label": "Unit hinzufügen",
+                    "text": "Fügen Sie ein Asset/Raum mit QR-Token und Standardteam hinzu."
+                },
+                {
+                    "label": "Bulk-Units",
+                    "text": "Erstellen Sie mehrere Units gleichzeitig (Etagen × Räume) und verknüpfen Sie sie mit einem Team."
+                },
+                {
+                    "label": "QR-Pack herunterladen",
+                    "text": "Laden Sie eine Word-Datei (Avery 55×55) mit QR-Aufklebern für alle Units an diesem Standort herunter."
+                },
+                {
+                    "label": "Standort-QR",
+                    "text": "QR für Meldungen ohne spezifische Unit (Flur, Zone, Gemeinschaftsbereich)."
+                },
+                {
+                    "label": "Dokumente & Mitteilungen",
+                    "text": "Verwalten Sie Handbücher und Mitteilungen, die Melder auf der QR-Seite sehen."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Hilfe — Kalender",
+            "actions": [
+                {
+                    "label": "Navigation",
+                    "text": "Verwenden Sie zurück, heute und weiter, um durch den Zeitraum zu blättern."
+                },
+                {
+                    "label": "Ansicht",
+                    "text": "Wechseln Sie zwischen Monats-, Wochen- und Tagesansicht."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filtern Sie nach Standort, Team und Typ (Aufgaben oder Meldungen)."
+                }
+            ],
+            "status_note": "Farbe und Status im Kalender folgen dem Aufgaben- oder Meldungsstatus.",
+            "statuses": {
+                "new": "Geplant, aber noch nicht gestartet.",
+                "in_progress": "Laufende Ausführung.",
+                "done": "Abgeschlossen, wartet auf Schließung.",
+                "closed": "Vollständig geschlossen."
+            }
+        },
+        "team": {
+            "title": "Hilfe — Teams & Benutzer",
+            "actions": [
+                {
+                    "label": "Operative Teams",
+                    "text": "Erstellen Sie Teams, weisen Sie Manager zu und verwalten Sie Workers pro Team."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name und Icon an."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Drucken oder öffnen Sie das Feldportal-QR, damit Workers Aufgaben sehen und erledigen."
+                },
+                {
+                    "label": "Kollegen",
+                    "text": "Verwalten Sie Mitarbeiter mit Login (Admin oder User) und Team-Manager."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Hilfe — Einstellungen",
+            "actions": [
+                {
+                    "label": "Organisation",
+                    "text": "Aktualisieren Sie Name, Kontaktdaten und Logo Ihres Tenants."
+                },
+                {
+                    "label": "Konto",
+                    "text": "Ändern Sie Profil, Sprache und Passwort."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Hilfe — API & Webhooks",
+            "actions": [
+                {
+                    "label": "Was ist diese Seite?",
+                    "text": "Hier verbinden Sie WinProx mit anderer Software — z. B. Ihrem ERP, einem Planungstool oder einem eigenen Dashboard. WinProx tauscht dann digital Daten aus, ohne Meldungen manuell abzutippen."
+                },
+                {
+                    "label": "Brauche ich das?",
+                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, können Sie diese Seite leer lassen. Sie richtet sich an Administratoren oder IT-Partner, die eine Anbindung bauen."
+                },
+                {
+                    "label": "API — was ist das?",
+                    "text": "Eine API erlaubt anderen Programmen, WinProx-Daten abzurufen oder Aktionen auszuführen (z. B. Meldungen und Aufgaben lesen). Das geschieht sicher mit einem API-Token — vergleichbar mit einem Passwort für Software, nicht für Menschen."
+                },
+                {
+                    "label": "API-Token anlegen",
+                    "text": "Geben Sie dem Token einen klaren Namen (z. B. „ERP-Anbindung“). Nach dem Anlegen sehen Sie den Code nur einmal: sofort kopieren und sicher aufbewahren. WinProx zeigt ihn nicht erneut. Verloren? Neues Token anlegen und das alte widerrufen."
+                },
+                {
+                    "label": "Token widerrufen",
+                    "text": "Integration nicht mehr in Gebrauch oder Token geleakt? Klicken Sie auf Widerrufen. Die Anbindung funktioniert dann nicht mehr. Andere Tokens bleiben aktiv."
+                },
+                {
+                    "label": "Was kann die API?",
+                    "text": "Mit gültigem Token kann Software u. a. Meldungen und Aufgaben lesen, Standorte/Units/Teams/Mitarbeiter auflisten, Meldungen anlegen oder freigeben sowie Aufgaben starten oder abschließen. Technische Doku: IT-Partner oder WinProx-Support."
+                },
+                {
+                    "label": "Webhooks — was ist das?",
+                    "text": "Ein Webhook ist das Gegenteil der API: WinProx sendet selbst eine Nachricht an Ihr System, sobald etwas passiert (z. B. neue Meldung oder Aufgabe erledigt). Sie geben eine URL an, an die WinProx Daten senden darf."
+                },
+                {
+                    "label": "Webhook-Endpoint hinzufügen",
+                    "text": "Vollständige URL mit https:// eingeben (sichere Verbindung). Gewünschte Ereignisse ankreuzen. Optional Beschreibung (z. B. „Produktions-ERP“). Speichern — WinProx sendet bei diesen Events automatisch Daten."
+                },
+                {
+                    "label": "Ereignis: issue.created",
+                    "text": "Neue Meldung eingegangen (via QR, manuell oder API). Praktisch, um sofort ein Ticket in einem externen System anzulegen."
+                },
+                {
+                    "label": "Ereignis: issue.approved",
+                    "text": "Ein Administrator hat eine Meldung freigegeben (oft via QR). Erst dann ist der Inhalt auch auf öffentlichen QR-Seiten sichtbar."
+                },
+                {
+                    "label": "Ereignis: issue.status_changed",
+                    "text": "Der Status einer Meldung hat sich geändert (z. B. von offen zu in Bearbeitung), meist weil Aufgaben gestartet oder erledigt wurden."
+                },
+                {
+                    "label": "Ereignis: task.created",
+                    "text": "Neue Aufgabe für ein Team angelegt, verknüpft mit einer Meldung."
+                },
+                {
+                    "label": "Ereignis: task.started",
+                    "text": "Ein Mitarbeiter hat eine Aufgabe über das Feldportal (Unit-QR) gestartet."
+                },
+                {
+                    "label": "Ereignis: task.completed",
+                    "text": "Eine Aufgabe wurde vom Team abgeschlossen. Nützlich für externe Systeme oder Berichte."
+                },
+                {
+                    "label": "Endpoint aktiv oder inaktiv",
+                    "text": "Endpoint vorübergehend abschalten ohne zu löschen (z. B. Server-Wartung). Inaktive Endpoints erhalten keine Nachrichten."
+                },
+                {
+                    "label": "Letzte Zustellungen",
+                    "text": "Protokoll der letzten Webhook-Versuche. „success“ = Ihr System hat die Nachricht erhalten. „failed“ = Fehler (falsche URL, Server offline, …). Zeigt nur den Zustellstatus — nicht den Meldungsinhalt."
+                },
+                {
+                    "label": "Sicherheit",
+                    "text": "Behandeln Sie API-Tokens wie Passwörter: nicht per E-Mail oder Chat teilen. Webhooks werden kryptografisch signiert, damit Ihr Server prüfen kann, dass die Nachricht von WinProx stammt — Ihr IT-Partner kann das umsetzen."
+                },
+                {
+                    "label": "Hilfe bei der Anbindung",
+                    "text": "Unklar, ob etwas funktioniert? Lassen Sie URL, Events und letzte Zustellungen von Ihrem IT-Partner prüfen. Für WinProx selbst: Kontakt oder FAQ, wenn Sie keinen Entwickler haben."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Hilfe — Abonnement",
+            "actions": [
+                {
+                    "label": "Testphase",
+                    "text": "Während der Testphase haben Sie erweiterte Limits. Das Dashboard zeigt verbleibende Tage."
+                },
+                {
+                    "label": "Plan wählen",
+                    "text": "Wählen Sie einen Plan, der zur Anzahl der Units passt, die Sie verwalten."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Hilfe — FAQ",
+            "actions": [
+                {
+                    "label": "Wissensdatenbank",
+                    "text": "Antworten auf häufig gestellte Fragen zu WinProx, QR, Teams und Abonnement."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Hilfe — Kontakt",
+            "actions": [
+                {
+                    "label": "Support",
+                    "text": "Kontaktieren Sie WinProx, wenn Sie Hilfe über diese Seitenhilfe und die FAQ hinaus benötigen."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Hilfe — Unit-QR",
+            "actions": [
+                {
+                    "label": "Meldung erstellen",
+                    "text": "Scannen Sie den QR, beschreiben Sie das Problem und fügen Sie optional Fotos hinzu. Es wird eine Aufgabe für das Team erstellt."
+                },
+                {
+                    "label": "Worker-Modus",
+                    "text": "Bekannte Ausführende melden sich mit Name und Icon an, um offene Aufgaben zu starten oder abzuschließen."
+                },
+                {
+                    "label": "Dokumente & Mitteilungen",
+                    "text": "Sehen Sie Handbücher und Mitteilungen für diese Unit ein."
+                }
+            ],
+            "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",
+            "statuses": {
+                "new": "Aufgabe wartet auf Start.",
+                "in_progress": "Team ist beschäftigt.",
+                "done": "Arbeit ist abgeschlossen.",
+                "closed": "Aufgabe ist geschlossen."
+            }
+        },
+        "portal.team": {
+            "title": "Hilfe — Team-QR",
+            "actions": [
+                {
+                    "label": "Anmelden",
+                    "text": "Geben Sie Ihren Namen ein und wählen Sie Ihr Icon, um sich als Ausführender zu identifizieren."
+                },
+                {
+                    "label": "Aufgaben erledigen",
+                    "text": "Starten Sie Aufgaben, fügen Sie Notizen hinzu und schließen Sie bei Bedarf mit Fotos ab."
+                }
+            ],
+            "statuses": {
+                "new": "Noch nicht gestartet.",
+                "in_progress": "Vor Ort in Bearbeitung.",
+                "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
+                "closed": "Von der Verwaltung geschlossen."
+            }
+        },
+        "portal.location": {
+            "title": "Hilfe — Standort-QR",
+            "actions": [
+                {
+                    "label": "Meldung ohne Unit",
+                    "text": "Verwenden Sie diesen QR für Probleme in Fluren oder gemeinsamen Bereichen ohne spezifische Unit."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Hilfe — Plattform",
+            "actions": [
+                {
+                    "label": "Tenants verwalten",
+                    "text": "Übersicht aller Organisationen. Öffnen Sie einen Tenant, um im Support-Modus in dessen Umgebung zu arbeiten."
+                },
+                {
+                    "label": "Support-Modus",
+                    "text": "Starten Sie den Support, um die App im Namen eines Tenants zu nutzen. Beenden Sie den Support, um zur Plattform-Übersicht zurückzukehren."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Hilfe — Plattform-Wissensdatenbank",
+            "actions": [
+                {
+                    "label": "Unbeantwortete Fragen",
+                    "text": "Fragen aus dem Hilfe-Chat ohne FAQ-Treffer. Beantworten Sie sie oder fügen Sie sie der Wissensdatenbank hinzu."
+                },
+                {
+                    "label": "Wissensdatenbank",
+                    "text": "Verwalten Sie FAQ-Artikel und Hilfe-Antworten für alle Tenants."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Hilfe — Rechtliche Dokumente",
+            "actions": [
+                {
+                    "label": "Dokumente",
+                    "text": "Datenschutzrichtlinie, Allgemeine Geschäftsbedingungen und andere rechtliche Texte von WinProx."
+                }
+            ]
+        }
+    }
+}

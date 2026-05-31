@@ -1,8 +1,12 @@
 {
     "title": "Tableau de bord",
     "subtitle": "Aperçu de vos sites, unités, signalements et tâches.",
-    "trial": "Essai : :days jours restants",
-    "grace": "Abonnement expiré — période de grâce active",
+    "trial_capsule": {
+        "trial_short": "Période d'essai : encore :days jours.",
+        "trial_title": "Période d'essai",
+        "grace_short": "Délai de grâce : encore :days jours d'accès complet.",
+        "grace_title": "Délai de grâce après fin d'abonnement"
+    },
     "add_issue": "Ajouter un signalement",
     "briefing": "Briefing",
     "briefing_print": "Imprimer le briefing",

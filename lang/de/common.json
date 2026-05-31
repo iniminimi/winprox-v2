@@ -23,6 +23,12 @@
         "done": "Erledigt",
         "closed": "Geschlossen"
     },
+    "detail_nav": {
+        "first": "Erste",
+        "prev": "Vorherige",
+        "next": "Nächste",
+        "last": "Letzte"
+    },
     "button": {
         "save": "Speichern",
         "cancel": "Abbrechen",

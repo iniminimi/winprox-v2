@@ -3,12 +3,11 @@
   Props (via @include): $title, $text, $icon (optioneel), $subtitle (optioneel).
 --}}
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ $title }}</h1>
-        @isset($subtitle)
-            <p class="wp-muted">{{ $subtitle }}</p>
-        @endisset
-    </div>
+    <x-wp-page-head-title
+        :icon="$icon ?? 'document'"
+        :title="$title"
+        :subtitle="$subtitle ?? null"
+    />
 
     <div class="wp-card wp-card-pad wp-stub">
         <span class="wp-stub-icon">

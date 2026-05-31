@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Locations;
 
 use App\Models\Location;
 use App\Support\Platform\SuperuserTenantAccess;
+use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Qr\Word\QrStickerWordExporter;
@@ -21,6 +22,10 @@ final class LocationQrPackDownloadController
 
         if (! QrCodePngWriter::canGenerate()) {
             abort(503, __('locations.qr_pack.unavailable'));
+        }
+
+        if (LocationQrPackStickerEntries::forLocation($location) === []) {
+            abort(404, __('locations.qr_pack.no_units'));
         }
 
         try {

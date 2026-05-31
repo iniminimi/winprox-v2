@@ -1,8 +1,12 @@
 {
     "title": "Dashboard",
     "subtitle": "Übersicht über Standorte, Units, Meldungen und Aufgaben.",
-    "trial": "Testphase: noch :days Tage",
-    "grace": "Abonnement abgelaufen — Kulanzfrist aktiv",
+    "trial_capsule": {
+        "trial_short": "Testphase noch :days Tage.",
+        "trial_title": "Testphase",
+        "grace_short": "Nachlaufzeit: noch :days Tage voller Zugriff.",
+        "grace_title": "Nachlaufzeit nach abgelaufenem Abonnement"
+    },
     "add_issue": "Meldung hinzufügen",
     "briefing": "Briefing",
     "briefing_print": "Briefing drucken",

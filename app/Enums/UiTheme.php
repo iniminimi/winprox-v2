@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Enums;
+
+enum UiTheme: string
+{
+    case Simple = 'simple';
+    case Dark = 'dark';
+    case HighRes = 'highres';
+
+    public static function default(): self
+    {
+        return self::Simple;
+    }
+
+    public static function tryFromString(?string $value): self
+    {
+        return self::tryFrom((string) $value) ?? self::default();
+    }
+
+    /** @return list<self> */
+    public static function choices(): array
+    {
+        return [self::Simple, self::Dark, self::HighRes];
+    }
+}

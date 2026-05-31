@@ -52,7 +52,7 @@
         "last_name": "Achternaam",
         "continue": "Doorgaan",
         "verify_hint": "Bevestig je persoonlijke icoon",
-        "attempts_left": "Nog {count} poging(en).",
+        "attempts_left": "Nog :count poging(en).",
         "confirm_icon": "Bevestigen",
         "different_worker": "Aanmelden als andere medewerker",
         "no_workers": "Er zijn nog geen medewerkers voor dit team. Onboarding gebeurt via de team-QR.",
@@ -77,14 +77,12 @@
             "blocked": "Je bent geblokkeerd na te veel pogingen. Neem contact op met je beheerder.",
             "icon_required": "Kies je persoonlijke icoon.",
             "icon_wrong": "Dat is niet het juiste icoon.",
-            "icon_wrong_one_left": "Dat is niet het juiste icoon. Nog 1 poging.",
             "note_max": "De notitie is te lang."
         }
     },
     "team": {
         "title": "Teamoverzicht",
         "read_only_hint": "Dit is een overzicht. Taken afhandelen kan alleen via de unit-QR ter plaatse.",
-        "claimable_hint": "We kennen je naam, maar je hebt nog geen icoon. Kies hieronder je persoonlijke icoon.",
         "onboarding_done": "Je bent geregistreerd en aangemeld.",
         "icon_taken": "Dit icoon is al in gebruik. Kies een ander.",
         "register": {
@@ -113,7 +111,7 @@
         "download": "Downloaden",
         "verification_required": "Alleen voor aangemelde medewerkers",
         "staff_only": "Niet publiek beschikbaar",
-        "published": "Gepubliceerd op {date}",
+        "published": "Gepubliceerd op :date",
         "empty": "Er zijn geen documenten."
     },
     "announcements": {

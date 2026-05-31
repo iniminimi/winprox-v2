@@ -1,8 +1,16 @@
 {
+    "inline_title": "Juridische informatie",
+    "inline_jurisdiction_hint": "Van toepassing: EU-AVG (GDPR) en Belgisch recht. Het volledige kader staat op de gekoppelde juridische pagina's.",
     "index_title": "Juridische documenten",
     "index_subtitle": "Privacy, voorwaarden en verwerkersovereenkomsten openen in een nieuw tabblad.",
     "nav_label": "Documenten",
+    "back_home": "Startpagina",
+    "last_updated": "Laatst bijgewerkt: :date",
     "updated": "Laatst bijgewerkt: :date",
+    "applicable_law_notice": "WinProx wordt vanuit België aangeboden. Op deze juridische pagina's en op de verwerking van persoonsgegevens zijn van toepassing: Verordening (EU) 2016/679 (AVG/GDPR) en de Belgische wet van 30 juli 2018 betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens, alsmede andere relevante Belgische en EU-regelgeving. Bij cookies en gelijkaardige technologieën gelden daarnaast de toepasselijke EU- en Belgische regels.",
+    "operator_vat": "BTW-nummer: :value",
+    "operator_enterprise": "Ondernemingsnummer: :value",
+    "operator_email_label": "E-mail:",
     "documents": {
         "privacy": "Privacyverklaring",
         "terms": "Algemene voorwaarden",

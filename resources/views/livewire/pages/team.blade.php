@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('team.title') }}</h1>
-        <p class="wp-muted">{{ __('team.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="team"
+        :title="__('team.title')"
+        help-page="team"
+        :subtitle="__('team.subtitle')"
+    />
 
     @if ($canManageUsers)
         <div class="wp-card wp-card-pad wp-stack-tight">
@@ -47,7 +49,7 @@
     @endif
 
     {{-- Teams ---------------------------------------------------------------}}
-    <div class="wp-stack-tight">
+    <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
@@ -57,127 +59,121 @@
                 </button>
             @endif
         </div>
+        <p class="wp-hint">{{ __('team.teams.hint') }}</p>
 
-        @forelse ($teams as $team)
-            @php
-                $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
-            @endphp
-            <div class="wp-card wp-card-pad wp-team-disclosure {{ $isTeamExpanded ? 'is-open' : '' }}" wire:key="team-{{ $team->id }}">
-                <div class="wp-row wp-team-disclosure-head">
-                    <button type="button"
-                            class="wp-team-disclosure-toggle"
-                            wire:click="toggleTeam({{ $team->id }})"
-                            aria-expanded="{{ $isTeamExpanded ? 'true' : 'false' }}"
-                            aria-controls="team-panel-{{ $team->id }}">
-                        <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" />
-                        <span class="wp-cluster">
-                            <x-wp-icon name="team" class="wp-icon" />
-                            <span class="wp-team-disclosure-title">{{ $team->name }}</span>
-                            <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
-                            <span class="wp-pill wp-pill--new">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
-                        </span>
-                    </button>
-                    <div class="wp-cluster wp-cluster--tight">
-                        <a href="{{ route('team.qr', $team) }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.teams.qr') }}</a>
-                        @if ($canEditContent)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
-                        @endif
-                        @if ($canManageTeams)
-                            @if ($team->is_active)
-                                <button type="button" class="btn btn--warning btn--sm" wire:click="setTeamActive({{ $team->id }}, false)">{{ __('team.teams.deactivate') }}</button>
-                            @else
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="setTeamActive({{ $team->id }}, true)">{{ __('team.teams.activate') }}</button>
-                            @endif
-                        @endif
-                    </div>
-                </div>
-
-                @if ($isTeamExpanded)
-                <div id="team-panel-{{ $team->id }}" class="wp-team-disclosure-body wp-stack-tight">
-                    <div class="wp-row">
-                        <span class="wp-label">{{ __('team.workers.title') }}</span>
-                        @if ($canEditContent)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
-                                <x-wp-icon name="plus" class="wp-icon" />
-                                <span>{{ __('team.workers.add') }}</span>
+        <div class="wp-list">
+            @forelse ($teams as $team)
+                @php
+                    $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
+                @endphp
+                <div class="wp-stack-tight" wire:key="team-{{ $team->id }}">
+                    <div class="wp-data-row">
+                        <div class="wp-data-row-main">
+                            <button type="button"
+                                    class="wp-team-row-toggle"
+                                    wire:click="toggleTeam({{ $team->id }})"
+                                    aria-expanded="{{ $isTeamExpanded ? 'true' : 'false' }}"
+                                    aria-controls="team-panel-{{ $team->id }}">
+                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron {{ $isTeamExpanded ? 'is-open' : '' }}" />
+                                <span class="wp-data-row-title">{{ $team->name }}</span>
                             </button>
-                        @endif
+                            <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
+                        </div>
+                        <div class="wp-cluster wp-cluster--tight">
+                            <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
+                            <a href="{{ route('team.qr', $team) }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.teams.qr') }}</a>
+                            @if ($canEditContent)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
+                            @endif
+                            @if ($canManageTeams)
+                                @if ($team->is_active)
+                                    <button type="button" class="btn btn--warning btn--sm" wire:click="setTeamActive({{ $team->id }}, false)">{{ __('team.teams.deactivate') }}</button>
+                                @else
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setTeamActive({{ $team->id }}, true)">{{ __('team.teams.activate') }}</button>
+                                @endif
+                            @endif
+                        </div>
                     </div>
 
-                    @if ($canEditContent && $addingWorkerTeamId === $team->id)
-                        <form wire:submit="saveWorker" class="wp-card wp-card-pad wp-stack-tight">
-                            <div class="wp-filter-bar">
-                                <div class="wp-field wp-grow">
-                                    <label class="wp-label" for="workerFirstName-{{ $team->id }}">{{ __('team.workers.first_name') }}</label>
-                                    <input type="text" id="workerFirstName-{{ $team->id }}" class="wp-input" wire:model="workerFirstName">
-                                    @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
-                                </div>
-                                <div class="wp-field wp-grow">
-                                    <label class="wp-label" for="workerLastName-{{ $team->id }}">{{ __('team.workers.last_name') }}</label>
-                                    <input type="text" id="workerLastName-{{ $team->id }}" class="wp-input" wire:model="workerLastName">
-                                    @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
-                                </div>
-                            </div>
-                            <div class="wp-cluster wp-cluster--tight">
-                                <button type="submit" class="btn btn--primary btn--sm">{{ __('team.workers.add_submit') }}</button>
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelWorker">{{ __('common.button.cancel') }}</button>
-                            </div>
-                        </form>
-                    @endif
-
-                    <div class="wp-list">
-                        @forelse ($team->workers as $worker)
-                            <div class="wp-data-row" wire:key="worker-{{ $worker->id }}">
-                                <div class="wp-cluster">
-                                    @if ($worker->field_icon_slug)
-                                        <x-wp-worker-icon :slug="$worker->field_icon_slug" class="wp-worker-icon-status" />
-                                    @endif
-                                    <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
-                                    @if ($worker->field_icon_slug)
-                                        <span class="wp-muted">{{ \App\Support\Portal\WorkerIcon::label($worker->field_icon_slug) }}</span>
-                                    @else
-                                        <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
-                                    @endif
-                                    @if ($worker->is_teamleader)
-                                        <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
-                                    @endif
-                                    @if ($worker->field_icon_locked_at)
-                                        <span class="wp-pill wp-pill--closed">{{ __('team.workers.locked') }}</span>
-                                    @endif
-                                    @unless ($worker->is_active)
-                                        <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
-                                    @endunless
-                                </div>
+                    @if ($isTeamExpanded)
+                        <div id="team-panel-{{ $team->id }}" class="wp-team-workers-panel wp-stack-tight">
+                            <div class="wp-row">
+                                <span class="wp-label">{{ __('team.workers.title') }}</span>
                                 @if ($canEditContent)
-                                    <div class="wp-cluster wp-cluster--tight">
-                                        @if ($worker->is_teamleader)
-                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, false)">{{ __('team.workers.remove_teamleader') }}</button>
-                                        @else
-                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, true)">{{ __('team.workers.make_teamleader') }}</button>
-                                        @endif
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $worker->id }})">{{ __('team.workers.reset_icon') }}</button>
-                                        @if ($worker->is_active)
-                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, false)">{{ __('team.workers.deactivate') }}</button>
-                                        @else
-                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, true)">{{ __('team.workers.activate') }}</button>
-                                        @endif
-                                        <button type="button" class="btn btn--danger btn--sm" wire:click="deleteWorker({{ $worker->id }})">{{ __('common.button.delete') }}</button>
-                                    </div>
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
+                                        <x-wp-icon name="plus" class="wp-icon" />
+                                        <span>{{ __('team.workers.add') }}</span>
+                                    </button>
                                 @endif
                             </div>
-                        @empty
-                            <p class="wp-muted">{{ __('team.workers.empty') }}</p>
-                        @endforelse
-                    </div>
+
+                            @if ($canEditContent && $addingWorkerTeamId === $team->id)
+                                <form wire:submit="saveWorker" class="wp-card wp-card-pad wp-stack-tight">
+                                    <div class="wp-filter-bar">
+                                        <div class="wp-field wp-grow">
+                                            <label class="wp-label" for="workerFirstName-{{ $team->id }}">{{ __('team.workers.first_name') }}</label>
+                                            <input type="text" id="workerFirstName-{{ $team->id }}" class="wp-input" wire:model="workerFirstName">
+                                            @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                                        </div>
+                                        <div class="wp-field wp-grow">
+                                            <label class="wp-label" for="workerLastName-{{ $team->id }}">{{ __('team.workers.last_name') }}</label>
+                                            <input type="text" id="workerLastName-{{ $team->id }}" class="wp-input" wire:model="workerLastName">
+                                            @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                                        </div>
+                                    </div>
+                                    <div class="wp-cluster wp-cluster--tight">
+                                        <button type="submit" class="btn btn--primary btn--sm">{{ __('team.workers.add_submit') }}</button>
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelWorker">{{ __('common.button.cancel') }}</button>
+                                    </div>
+                                </form>
+                            @endif
+
+                            <div class="wp-list">
+                                @forelse ($team->workers as $worker)
+                                    <div class="wp-data-row" wire:key="worker-{{ $worker->id }}">
+                                        <div class="wp-data-row-main">
+                                            <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
+                                            @unless ($worker->field_icon_slug)
+                                                <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
+                                            @endunless
+                                        </div>
+                                        <div class="wp-cluster wp-cluster--tight">
+                                            @if ($worker->is_teamleader)
+                                                <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
+                                            @endif
+                                            @if ($worker->field_icon_locked_at)
+                                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.locked') }}</span>
+                                            @endif
+                                            @unless ($worker->is_active)
+                                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
+                                            @endunless
+                                            @if ($canEditContent)
+                                                @if ($worker->is_teamleader)
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, false)">{{ __('team.workers.remove_teamleader') }}</button>
+                                                @else
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, true)">{{ __('team.workers.make_teamleader') }}</button>
+                                                @endif
+                                                <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $worker->id }})">{{ __('team.workers.reset_icon') }}</button>
+                                                @if ($worker->is_active)
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, false)">{{ __('team.workers.deactivate') }}</button>
+                                                @else
+                                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerActive({{ $worker->id }}, true)">{{ __('team.workers.activate') }}</button>
+                                                @endif
+                                                <button type="button" class="btn btn--danger btn--sm" wire:click="deleteWorker({{ $worker->id }})">{{ __('common.button.delete') }}</button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @empty
+                                    <p class="wp-muted">{{ __('team.workers.empty') }}</p>
+                                @endforelse
+                            </div>
+                        </div>
+                    @endif
                 </div>
-                @endif
-            </div>
-        @empty
-            <div class="wp-card wp-card-pad wp-stub">
-                <span class="wp-stub-icon"><x-wp-icon name="team" /></span>
-                <p class="wp-stub-text">{{ __('team.teams.empty') }}</p>
-            </div>
-        @endforelse
+            @empty
+                <p class="wp-muted">{{ __('team.teams.empty') }}</p>
+            @endforelse
+        </div>
     </div>
 
     {{-- Modal: collega-gebruiker --------------------------------------------}}

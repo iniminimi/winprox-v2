@@ -1,8 +1,16 @@
 {
+    "inline_title": "Informations juridiques",
+    "inline_jurisdiction_hint": "Droit applicable : RGPD (UE) et droit belge. Le cadre complet figure sur les pages juridiques liées.",
     "index_title": "Documents juridiques",
     "index_subtitle": "Ouvrez confidentialité, conditions et DPA dans un nouvel onglet.",
     "nav_label": "Documents",
+    "back_home": "Accueil",
+    "last_updated": "Dernière mise à jour : :date",
     "updated": "Dernière mise à jour : :date",
+    "applicable_law_notice": "WinProx est proposé depuis la Belgique. Ces pages juridiques et le traitement des données personnelles sont régis par le règlement (UE) 2016/679 (RGPD) et la loi belge du 30 juillet 2018 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, ainsi que par d'autres règles belges et européennes pertinentes. Pour les cookies et technologies similaires, les règles européennes et belges applicables s'appliquent également.",
+    "operator_vat": "Numéro de TVA : :value",
+    "operator_enterprise": "Numéro d'entreprise : :value",
+    "operator_email_label": "E-mail :",
     "documents": {
         "privacy": "Politique de confidentialité",
         "terms": "Conditions générales",

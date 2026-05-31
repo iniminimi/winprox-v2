@@ -1,8 +1,9 @@
 {
     "title": "Einstellungen",
-    "subtitle": "Unternehmensdaten, Datenschutz und Einstellungen Ihrer Organisation.",
+    "subtitle": "Unternehmensdaten, Datenschutz und Ihre persönlichen Einstellungen.",
     "org": {
         "title": "Ihre Organisation",
+        "readonly_hint": "Nur der Administrator kann Unternehmensdaten bearbeiten.",
         "name_label": "Name der Organisation",
         "logo_label": "Organisationslogo",
         "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
@@ -14,8 +15,22 @@
         "download": "JSON-Export herunterladen"
     },
     "style": {
-        "title": "Stil",
-        "coming_soon": "Hier können Sie bald das visuelle Thema Ihrer Umgebung wählen."
+        "title": "WinProx-Stil anpassen",
+        "hint": "Wählen Sie, wie WinProx für Sie aussieht. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind.",
+        "options": {
+            "simple": {
+                "label": "Einfach",
+                "description": "Klar und ruhig — der Standard-WinProx-Stil."
+            },
+            "dark": {
+                "label": "Dunkel",
+                "description": "Nachtmodus mit dunklen Hintergründen, wie auf dem Smartphone."
+            },
+            "highres": {
+                "label": "High Res",
+                "description": "Verfeinert mit weichen Verläufen, reicheren Farben und Glassmorphismus."
+            }
+        }
     },
     "errors": {
         "organisation_name_required": "Geben Sie einen Organisationsnamen an."

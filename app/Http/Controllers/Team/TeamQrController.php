@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Team;
 
 use App\Models\InternalTeam;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\TeamQrCode;
 use Illuminate\Contracts\View\View;
 
@@ -15,12 +16,14 @@ class TeamQrController
 {
     public function __invoke(InternalTeam $team): View
     {
+        $team->load('tenant');
         $url = route('public.team-portal', $team->field_qr_token);
 
         return view('team.qr', [
             'team' => $team,
             'url' => $url,
             'qrSvg' => TeamQrCode::svg($url),
+            'centerLogoUrl' => QrCenterLogo::publicUrl($team->tenant),
         ]);
     }
 }

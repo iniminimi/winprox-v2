@@ -1,0 +1,425 @@
+{
+    "button_label": "Hulp bij deze pagina",
+    "modal": {
+        "close": "Sluiten",
+        "actions_heading": "Acties",
+        "statuses_heading": "Statussen"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Hulp — Dashboard",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Het dashboard toont tellingen van locaties, units, open meldingen en open taken. Klik op een kaart om naar het bijhorende scherm te gaan."
+                },
+                {
+                    "label": "Briefing afdrukken",
+                    "text": "Opent een afdrukbaar overzicht van open taken per team — handig voor de werkvloer."
+                },
+                {
+                    "label": "Setup-checklist",
+                    "text": "Zolang je tenant nog niet volledig is ingericht, zie je stappen: teams, locatie, units, workers en QR-pack."
+                }
+            ],
+            "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",
+            "statuses": {
+                "new": "Er is minstens één taak die nog niet gestart is.",
+                "in_progress": "Minstens één taak is in uitvoering.",
+                "done": "Alle taken zijn afgehandeld; een beheerder kan de melding sluiten.",
+                "closed": "Alle taken zijn gesloten — de melding is afgewerkt."
+            }
+        },
+        "issues.list": {
+            "title": "Hulp — Meldingen",
+            "actions": [
+                {
+                    "label": "Melding toevoegen",
+                    "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
+                },
+                {
+                    "label": "Briefing afdrukken",
+                    "text": "Print een overzicht van open taken per team."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Combineer status, team, zoekterm en terugkerend om de lijst te verfijnen. Druk op GO! om toe te passen."
+                },
+                {
+                    "label": "Goedkeuren",
+                    "text": "Meldingen via QR wachten op goedkeuring. Keur goed zodat inhoud op publieke pagina's zichtbaar wordt."
+                }
+            ],
+            "status_note": "De meldingstatus wordt automatisch afgeleid uit de taken op die melding.",
+            "statuses": {
+                "new": "Nieuwe melding; minstens één taak is nog niet gestart.",
+                "in_progress": "Opvolging loopt — een taak is gestart of bezig.",
+                "done": "Alle taken zijn afgehandeld door het team.",
+                "closed": "Beheerder heeft alles bevestigd en afgesloten."
+            }
+        },
+        "issues.show": {
+            "title": "Hulp — Meldingdetail",
+            "actions": [
+                {
+                    "label": "Taak toevoegen",
+                    "text": "Maak een extra taak op deze melding en wijs die toe aan een operationeel team."
+                },
+                {
+                    "label": "Update plaatsen",
+                    "text": "Voeg een notitie of foto toe aan de tijdlijn zodat collega's mee kunnen volgen."
+                },
+                {
+                    "label": "Goedkeuren",
+                    "text": "Keur QR-meldingen goed voordat omschrijving en foto's publiek zichtbaar zijn."
+                }
+            ],
+            "status_note": "Wijzig de meldingstatus door de taken bij te werken.",
+            "statuses": {
+                "new": "Wacht op start van minstens één taak.",
+                "in_progress": "Er wordt actief aan minstens één taak gewerkt.",
+                "done": "Alle taken zijn afgehandeld; sluit de melding wanneer alles bevestigd is.",
+                "closed": "Melding is definitief afgesloten."
+            }
+        },
+        "tasks.list": {
+            "title": "Hulp — Taken",
+            "actions": [
+                {
+                    "label": "Filter op team",
+                    "text": "Toon alleen taken van één operationeel team. Team managers zien standaard alleen hun teams."
+                },
+                {
+                    "label": "Taak openen",
+                    "text": "Klik op een taak voor detail, statuswijziging en koppeling naar de melding."
+                }
+            ],
+            "status_note": "Statussen worden vaak automatisch bijgewerkt via het team-QR veldportaal. Je kan ze ook handmatig aanpassen.",
+            "statuses": {
+                "new": "Taak is aangemaakt en wacht op start door het team.",
+                "in_progress": "Het team is bezig met de uitvoering.",
+                "done": "Werk is afgerond door de uitvoerder; beheerder kan sluiten.",
+                "closed": "Taak is bevestigd en afgesloten."
+            }
+        },
+        "tasks.show": {
+            "title": "Hulp — Taakdetail",
+            "actions": [
+                {
+                    "label": "Team toewijzen",
+                    "text": "Kies een operationeel team en sla op. Zo wijzig je ook een bestaande toewijzing."
+                },
+                {
+                    "label": "Status wijzigen",
+                    "text": "Zet de taak op In uitvoering, Afgehandeld of Gesloten naargelang de voortgang."
+                },
+                {
+                    "label": "Melding openen",
+                    "text": "Ga naar de gekoppelde melding voor context, foto's en extra taken."
+                }
+            ],
+            "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het team-QR portaal.",
+            "statuses": {
+                "new": "Nog niet gestart op locatie.",
+                "in_progress": "Team is bezig.",
+                "done": "Uitvoerder meldt het werk klaar.",
+                "closed": "Beheerder bevestigt en sluit af."
+            }
+        },
+        "locations.list": {
+            "title": "Hulp — Locaties",
+            "actions": [
+                {
+                    "label": "Locatie toevoegen",
+                    "text": "Maak een nieuwe site met adres en basisgegevens."
+                },
+                {
+                    "label": "Locatie openen",
+                    "text": "Beheer units, documenten, mededelingen en QR-codes per locatie."
+                },
+                {
+                    "label": "Inactieve tonen",
+                    "text": "Toon gedeactiveerde locaties om ze opnieuw te activeren of te raadplegen."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Hulp — Locatiedetail",
+            "actions": [
+                {
+                    "label": "Unit toevoegen",
+                    "text": "Voeg een asset/ruimte toe met QR-token en standaard team."
+                },
+                {
+                    "label": "Bulk units",
+                    "text": "Maak meerdere units tegelijk (vloeren × kamers) en koppel ze aan een team."
+                },
+                {
+                    "label": "QR-pack downloaden",
+                    "text": "Download een Word-bestand (Avery 55×55) met QR-stickers voor alle units op deze locatie."
+                },
+                {
+                    "label": "Locatie-QR",
+                    "text": "QR voor meldingen zonder specifieke unit (gang, zone, gemeenschappelijke ruimte)."
+                },
+                {
+                    "label": "Documenten & mededelingen",
+                    "text": "Beheer handleidingen en mededelingen die melders op de QR-pagina zien."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Hulp — Kalender",
+            "actions": [
+                {
+                    "label": "Navigatie",
+                    "text": "Gebruik vorige, vandaag en volgende om door de periode te bladeren."
+                },
+                {
+                    "label": "Weergave",
+                    "text": "Schakel tussen maand-, week- en dagoverzicht."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filter op locatie, team en type (taken of meldingen)."
+                }
+            ],
+            "status_note": "Kleur en status op de kalender volgen de taak- of meldingstatus.",
+            "statuses": {
+                "new": "Gepland maar nog niet gestart.",
+                "in_progress": "Lopende uitvoering.",
+                "done": "Afgerond, wacht op sluiting.",
+                "closed": "Volledig afgesloten."
+            }
+        },
+        "team": {
+            "title": "Hulp — Teams & gebruikers",
+            "actions": [
+                {
+                    "label": "Operationele teams",
+                    "text": "Maak teams aan, wijs managers toe en beheer workers per team."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam en icoon."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Print of open het veldportaal-QR zodat workers taken zien en afhandelen."
+                },
+                {
+                    "label": "Collega's",
+                    "text": "Beheer medewerkers met login (admin of user) en team-managers."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Hulp — Instellingen",
+            "actions": [
+                {
+                    "label": "Organisatie",
+                    "text": "Werk naam, contactgegevens en logo van je tenant bij."
+                },
+                {
+                    "label": "Account",
+                    "text": "Pas je profiel, taal en wachtwoord aan."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Hulp — API & webhooks",
+            "actions": [
+                {
+                    "label": "Wat is deze pagina?",
+                    "text": "Hier koppel je WinProx aan andere software, bijvoorbeeld je ERP, een planningstool of een eigen dashboard. WinProx praat dan digitaal met dat systeem — je hoeft meldingen niet handmatig over te typen."
+                },
+                {
+                    "label": "Heb ik dit nodig?",
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen. Deze pagina is bedoeld voor beheerders of IT-partners die een koppeling willen bouwen."
+                },
+                {
+                    "label": "API — wat is dat?",
+                    "text": "API betekent: andere programma's mogen gegevens uit WinProx opvragen of acties uitvoeren (bv. meldingen en taken lezen). Dat gebeurt veilig met een API-token — vergelijkbaar met een wachtwoord dat alleen software gebruikt, niet mensen."
+                },
+                {
+                    "label": "API-token aanmaken",
+                    "text": "Geef het token een herkenbare naam (bv. \"Koppeling ERP\"). Na aanmaken zie je de code één keer: kopieer en bewaar hem meteen. WinProx toont hem daarna niet opnieuw. Verlies je hem, maak een nieuw token en trek het oude in."
+                },
+                {
+                    "label": "Token intrekken",
+                    "text": "Gebruik je een koppeling niet meer of is er een token gelekt? Klik op Intrekken. Vanaf dan werkt die koppeling niet meer. Andere tokens blijven gewoon actief."
+                },
+                {
+                    "label": "Wat kan de API?",
+                    "text": "Met een geldig token kan software o.a. meldingen en taken opvragen, locaties/units/teams/uitvoerders inlezen, meldingen aanmaken of goedkeuren, en taken starten of afhandelen. Technische documentatie: vraag je IT-partner of neem contact op met WinProx-support."
+                },
+                {
+                    "label": "Webhooks — wat is dat?",
+                    "text": "Een webhook is het omgekeerde van de API: WinProx stuurt zelf een bericht naar jouw systeem zodra er iets gebeurt (bv. nieuwe melding of taak afgerond). Je geeft een internetadres (URL) op waar WinProx naartoe mag posten."
+                },
+                {
+                    "label": "Webhook-endpoint toevoegen",
+                    "text": "Vul een volledige URL in die begint met https:// (beveiligde verbinding). Vink aan welke gebeurtenissen je wilt ontvangen. Optioneel: voeg een omschrijving toe (bv. \"Productie ERP\"). Sla op — WinProx bewaart het adres en stuurt bij die events automatisch data."
+                },
+                {
+                    "label": "Gebeurtenis: issue.created",
+                    "text": "Er is een nieuwe melding binnengekomen (via QR, handmatig of via de API). Handig om meteen een ticket in een extern systeem aan te maken."
+                },
+                {
+                    "label": "Gebeurtenis: issue.approved",
+                    "text": "Een beheerder heeft een melding (meestal via QR) goedgekeurd. Pas daarna is de inhoud ook publiek zichtbaar op de QR-pagina's."
+                },
+                {
+                    "label": "Gebeurtenis: issue.status_changed",
+                    "text": "De status van een melding is gewijzigd (bv. van \"open\" naar \"in uitvoering\"), meestal omdat taken zijn gestart of afgerond."
+                },
+                {
+                    "label": "Gebeurtenis: task.created",
+                    "text": "Er is een nieuwe taak aangemaakt voor een team, gekoppeld aan een melding."
+                },
+                {
+                    "label": "Gebeurtenis: task.started",
+                    "text": "Een uitvoerder heeft een taak gestart via het veldportaal (unit-QR)."
+                },
+                {
+                    "label": "Gebeurtenis: task.completed",
+                    "text": "Een taak is afgehandeld door het team. Handig om externe systemen of rapportages bij te werken."
+                },
+                {
+                    "label": "Endpoint actief of inactief",
+                    "text": "Zet een endpoint tijdelijk uit zonder het te verwijderen (bv. tijdens onderhoud aan je server). Inactieve endpoints ontvangen geen berichten."
+                },
+                {
+                    "label": "Recente leveringen",
+                    "text": "Logboek van de laatste webhook-pogingen. \"success\" = je systeem heeft het bericht ontvangen. \"failed\" = er ging iets mis (verkeerde URL, server offline, …). Toont alleen of de levering lukte — niet de inhoud van meldingen."
+                },
+                {
+                    "label": "Veiligheid",
+                    "text": "Behandel API-tokens als wachtwoorden: deel ze niet in e-mail of chat. Webhooks worden cryptografisch ondertekend zodat je server kan controleren dat het bericht echt van WinProx komt — je IT-partner kan dat verifiëren."
+                },
+                {
+                    "label": "Hulp bij de koppeling",
+                    "text": "Twijfel je of iets werkt? Laat je IT-partner de URL, events en recente leveringen nakijken. Voor WinProx zelf: gebruik Contact of FAQ als je geen eigen ontwikkelaar hebt."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Hulp — Abonnement",
+            "actions": [
+                {
+                    "label": "Proefperiode",
+                    "text": "Tijdens de proef heb je uitgebreide limieten. Het dashboard toont resterende dagen."
+                },
+                {
+                    "label": "Plan kiezen",
+                    "text": "Selecteer een plan dat past bij het aantal units dat je beheert."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Hulp — FAQ",
+            "actions": [
+                {
+                    "label": "Kennisbank",
+                    "text": "Antwoorden op veelgestelde vragen over WinProx, QR, teams en abonnement."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Hulp — Contact",
+            "actions": [
+                {
+                    "label": "Support",
+                    "text": "Neem contact op met WinProx als je hulp nodig hebt buiten deze paginahulp en FAQ."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Hulp — Unit QR",
+            "actions": [
+                {
+                    "label": "Melding doen",
+                    "text": "Scan de QR, beschrijf het probleem en voeg optioneel foto's toe. Er wordt een taak voor het team aangemaakt."
+                },
+                {
+                    "label": "Worker-modus",
+                    "text": "Herkenbare uitvoerders melden zich aan met naam en icoon om open taken te starten of af te ronden."
+                },
+                {
+                    "label": "Documenten & mededelingen",
+                    "text": "Raadpleeg handleidingen en mededelingen voor deze unit."
+                }
+            ],
+            "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",
+            "statuses": {
+                "new": "Taak wacht op start.",
+                "in_progress": "Team is bezig.",
+                "done": "Werk is afgerond.",
+                "closed": "Taak is afgesloten."
+            }
+        },
+        "portal.team": {
+            "title": "Hulp — Team QR",
+            "actions": [
+                {
+                    "label": "Aanmelden",
+                    "text": "Geef je naam op en kies je icoon om je te identificeren als uitvoerder."
+                },
+                {
+                    "label": "Taken afhandelen",
+                    "text": "Start taken, voeg notities toe en rond af met foto's indien nodig."
+                }
+            ],
+            "statuses": {
+                "new": "Nog niet gestart.",
+                "in_progress": "Bezig op locatie.",
+                "done": "Afgerond door jou of een collega.",
+                "closed": "Afgesloten door beheer."
+            }
+        },
+        "portal.location": {
+            "title": "Hulp — Locatie QR",
+            "actions": [
+                {
+                    "label": "Melding zonder unit",
+                    "text": "Gebruik deze QR voor problemen in gangen of gedeelde zones zonder specifieke unit."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Hulp — Platform",
+            "actions": [
+                {
+                    "label": "Tenants beheren",
+                    "text": "Overzicht van alle organisaties. Open een tenant om als support te werken in hun omgeving."
+                },
+                {
+                    "label": "Support-modus",
+                    "text": "Start support om de app te gebruiken namens een tenant. Stop support om terug te keren naar het platform-overzicht."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Hulp — Platform kennisbank",
+            "actions": [
+                {
+                    "label": "Onbeantwoorde vragen",
+                    "text": "Vragen uit de help-chat die geen FAQ-match hadden. Beantwoord ze of voeg ze toe aan de kennisbank."
+                },
+                {
+                    "label": "Kennisbank",
+                    "text": "Beheer FAQ-artikelen en help-antwoorden voor alle tenants."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Hulp — Juridische documenten",
+            "actions": [
+                {
+                    "label": "Documenten",
+                    "text": "Privacybeleid, algemene voorwaarden en andere juridische teksten van WinProx."
+                }
+            ]
+        }
+    }
+}

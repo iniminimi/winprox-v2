@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('legal.index_title') }}</h1>
-        <p class="wp-muted">{{ __('legal.index_subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="legal"
+        :title="__('legal.index_title')"
+        help-page="legal"
+        :subtitle="__('legal.index_subtitle')"
+    />
 
     <ul class="wp-legal-index">
         @foreach ($documents as $document)

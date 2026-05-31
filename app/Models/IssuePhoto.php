@@ -6,6 +6,7 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class IssuePhoto extends Model
 {
@@ -21,5 +22,17 @@ class IssuePhoto extends Model
     public function issueUpdate(): BelongsTo
     {
         return $this->belongsTo(IssueUpdate::class);
+    }
+
+    public function hasPublicFile(): bool
+    {
+        return is_string($this->path)
+            && trim($this->path) !== ''
+            && Storage::disk('public')->exists($this->path);
+    }
+
+    public function publicUrl(): ?string
+    {
+        return $this->hasPublicFile() ? Storage::disk('public')->url($this->path) : null;
     }
 }

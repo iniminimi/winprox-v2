@@ -145,6 +145,25 @@ it('signs in an existing worker via name then icon confirmation', function () {
     expect(WorkerVerification::verifiedWorker($team)?->id)->toBe($worker->id);
 });
 
+it('toont fout icoon en resterende pogingen zonder dubbele tekst', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('key')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'moon')
+        ->call('signInWithIcon')
+        ->assertHasErrors(['sign_in_icon_slug'])
+        ->assertSee(__('portal.worker.errors.icon_wrong'))
+        ->assertSee(__('portal.worker.attempts_left', ['count' => 1]))
+        ->assertDontSee('{count}');
+});
+
 it('treats a name without an icon as claimable and opens registration', function () {
     ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
 

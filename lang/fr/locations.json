@@ -29,6 +29,7 @@
     "unit_qr": "QR unité",
     "unit_qr_subtitle": "Code QR de cette unité — lien vers le portail de signalement.",
     "qr_pack_download": "Télécharger la planche QR",
+    "nav_label": "Navigation des sites",
     "prev": "Site précédent",
     "next": "Site suivant",
     "form": {
@@ -54,6 +55,7 @@
         "create_title": "Ajouter une unité",
         "edit_title": "Modifier l'unité",
         "open_issue": "Signalement ouvert",
+        "meta_team": "Équipe :team",
         "no_team": "Aucune équipe (à lier plus tard)",
         "fields": {
             "name": "Nom de l'unité",

@@ -6,6 +6,7 @@ namespace App\Support\Qr\Word;
 
 use App\Models\Location;
 use App\Support\Qr\LocationQrPackStickerEntries;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Support\Carbon;
@@ -41,7 +42,7 @@ final class QrStickerWordExporter
         $location->loadMissing('tenant');
         $entries = LocationQrPackStickerEntries::forLocation($location);
         $headline = __('locations.qr_pack.headline');
-        $centerLogoPath = $location->tenant?->centerLogoAbsolutePath();
+        $centerLogoPath = QrCenterLogo::absolutePath($location->tenant);
 
         return match ($template) {
             QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $headline, $centerLogoPath),

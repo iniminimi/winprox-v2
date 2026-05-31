@@ -23,6 +23,12 @@
         "done": "Traité",
         "closed": "Fermé"
     },
+    "detail_nav": {
+        "first": "Premier",
+        "prev": "Précédent",
+        "next": "Suivant",
+        "last": "Dernier"
+    },
     "button": {
         "save": "Enregistrer",
         "cancel": "Annuler",

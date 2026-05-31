@@ -1,46 +1,183 @@
 {
     "title": "FAQ & kennisbank",
-    "subtitle": "Antwoorden over QR-meldingen, taken en teams in WinProx.",
+    "subtitle": "Korte uitleg voor coördinatoren, teamleiders en veldteams.",
     "items": {
-        "qr_scan": {
-            "slug": "qr_scan",
-            "title": "QR-code scannen en melden",
-            "body": "Bezoekers scannen de QR op een unit en vullen het meldingsformulier in. De melding komt direct binnen bij je facility-team."
+        "how_it_works": {
+            "slug": "how_it_works",
+            "type": "steps",
+            "title": "Hoe werkt WinProx",
+            "intro": "Een eenvoudige workflow om locaties, meldingen en interne teams te beheren.",
+            "summary": "Workflow: locatie en units, melding via QR, taken voor interne teams, opvolging via dashboard, briefing en kalender.",
+            "steps": [
+                {
+                    "title": "Maak een locatie",
+                    "text": "Start met het aanmaken van een locatie. Voeg units toe (machines, zones of ruimtes) met een korte beschrijving of locatiehint, zodat meldingen en taken correct gelinkt worden."
+                },
+                {
+                    "title": "Maak een melding",
+                    "text": "Maak zelf een melding of laat melders melden via een QR-code, eventueel met foto's. Alles blijft op één centrale plaats."
+                },
+                {
+                    "title": "Voeg updates toe",
+                    "text": "Voeg extra informatie of foto's toe zodat coördinatoren en teams dezelfde situatie zien."
+                },
+                {
+                    "title": "Pas de status aan",
+                    "text": "Geef aan wat er gebeurt met de melding: nieuw, in uitvoering, afgehandeld of gesloten."
+                },
+                {
+                    "title": "Taak voor intern team",
+                    "text": "Bij een unit-melding wordt automatisch een taak aangemaakt voor het gekoppelde team. U kunt ook manueel taken toewijzen of terugkerend onderhoud plannen (bijvoorbeeld maandelijks) via de kalender."
+                },
+                {
+                    "title": "Registratie uitvoerder via team-QR",
+                    "text": "Uitvoerders scannen de team-QR en starten of ronden taken af op locatie.",
+                    "highlight": "Uitvoerders gebruiken de team-QR zonder WinProx-login."
+                },
+                {
+                    "title": "Opvolgen en afsluiten",
+                    "text": "Coördinatoren volgen taken op in dashboard, briefing en kalender. Zet status op voltooid wanneer het werk klaar is."
+                }
+            ],
+            "box_title": "Interne teams",
+            "box_body": "Organiseer uw onderhoudsteams per team. Koppel teams aan units zodat meldingen automatisch op de juiste lijst belanden. Via de team-QR registreren uitvoerders updates en foto's op locatie."
         },
-        "issues": {
-            "slug": "issues",
-            "title": "Meldingen beheren",
-            "body": "In Meldingen zie je nieuwe, lopende en afgehandelde meldingen. Je kunt goedkeuren, toewijzen aan teams en opvolging vastleggen."
+        "pricing": {
+            "slug": "pricing",
+            "type": "pricing",
+            "title": "Hoeveel kost WinProx?",
+            "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement.",
+            "summary": "Proefperiode, daarna plannen Starter, Pro, Business of Enterprise op basis van units en gebruikers.",
+            "plans": {
+                "starter": {
+                    "units": "Tot 25 units",
+                    "users": "Tot 5 gebruikers",
+                    "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
+                },
+                "pro": {
+                    "units": "Tot 75 units",
+                    "users": "Tot 15 gebruikers",
+                    "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
+                },
+                "business": {
+                    "units": "Tot 200 units",
+                    "users": "Tot 40 gebruikers",
+                    "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
+                },
+                "enterprise": {
+                    "units": "Onbeperkt units",
+                    "users": "Onbeperkt gebruikers",
+                    "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles. Neem contact op voor maatwerk."
+                }
+            }
         },
-        "tasks": {
-            "slug": "tasks",
-            "title": "Taken en opvolging",
-            "body": "Vanuit een melding maak je taken voor interne teams. Teams werken taken af via het teamportaal of in de app."
+        "qr_code": {
+            "slug": "qr_code",
+            "type": "text",
+            "title": "Hoe werken de QR-codes?",
+            "body": "Er zijn twee QR-codes: de unit-QR voor melders (nieuwe melding, open meldingen, optioneel documenten en mededelingen) en de team-QR voor uitvoerders (taken starten, foto's en status op locatie). Print beide zichtbaar op. Scannen opent het juiste portaal in de browser — zonder app-installatie.",
+            "summary": "Unit-QR voor melders en team-QR voor uitvoerders; beide werken in de browser zonder app."
         },
-        "teams": {
-            "slug": "teams",
-            "title": "Interne teams",
-            "body": "Teams groeperen medewerkers en workers. Koppel teams aan units en meldingen zodat de juiste groep wordt ingeschakeld."
+        "reporter_portal": {
+            "slug": "reporter_portal",
+            "type": "portal",
+            "title": "Hoe werkt het meldersportaal?",
+            "intro": "Na het scannen van de unit-QR opent een eenvoudige webpagina voor die unit. Melders geven problemen door; uitvoerders met toegang tot het gekoppelde team kunnen daar ook open taken voor die unit afhandelen.",
+            "summary": "Na scan van de unit-QR: melding doorgeven, open meldingen, documenten, mededelingen en optioneel taken op locatie.",
+            "sections": [
+                {
+                    "title": "Nieuwe melding",
+                    "text": "Snel een probleem doorgeven met categorie, beschrijving en optioneel foto's. Zo ontstaat een melding die aan de juiste unit hangt."
+                },
+                {
+                    "title": "Open meldingen",
+                    "text": "Overzicht van actieve meldingen voor deze unit, met detail en status."
+                },
+                {
+                    "title": "Documenten",
+                    "text": "Documenten bekijken die uw organisatie heeft gedeeld voor de locatie of unit, wanneer beschikbaar."
+                },
+                {
+                    "title": "Mededelingen",
+                    "text": "Aankondigingen lezen die bedoeld zijn voor melders of teams op deze locatie."
+                },
+                {
+                    "title": "Taken op locatie (uitvoerders)",
+                    "text": "Uitvoerders die via de unit-QR binnenkomen en bij het gekoppelde team horen, zien open taken voor die unit. Ze kunnen taken starten, foto's toevoegen en afronden — dezelfde flow als via de team-QR."
+                }
+            ]
         },
-        "locations": {
-            "slug": "locations",
-            "title": "Locaties en units",
-            "body": "Locaties zijn gebouwen of sites; units zijn ruimtes of assets met een eigen QR-code voor meldingen."
+        "for_who": {
+            "slug": "for_who",
+            "type": "text",
+            "title": "Voor wie is WinProx?",
+            "body": "WinProx is nuttig voor fabrieken, ziekenhuizen, gemeenten en grote site-beheerders die meldingen, interne teams en veldopvolging centraal willen sturen.",
+            "summary": "Voor facility-organisaties die meldingen, teams en veldwerk centraal opvolgen."
         },
-        "notifications": {
-            "slug": "notifications",
-            "title": "Meldingen en status",
-            "body": "Statussen volgen de workflow: nieuw, in uitvoering, afgehandeld en gesloten. Filters helpen je prioriteit te stellen."
+        "user_roles": {
+            "slug": "user_roles",
+            "type": "roles",
+            "title": "Hoe werken de verschillende gebruikers?",
+            "summary": "Beheerder: volledige controle en abonnement. Gewone gebruiker: dagelijkse opvolging zonder gebruikersbeheer.",
+            "roles": [
+                {
+                    "title": "Beheerder",
+                    "text": "Heeft volledige controle over WinProx en is de enige die gebruikers binnen jullie organisatie kan toevoegen of verwijderen. Ook gebruikers- en abonnementsinstellingen zijn voorbehouden aan de beheerder."
+                },
+                {
+                    "title": "Gewone gebruiker",
+                    "text": "Kan de dagelijkse opvolging afhandelen: locaties, meldingen en taken. Geen toegang tot collega-accounts of abonnementsinstellingen."
+                }
+            ]
         },
-        "calendar": {
-            "slug": "calendar",
-            "title": "Kalender en planning",
-            "body": "Terugkerende taken en geplande werkzaamheden verschijnen in de kalender voor overzicht per team."
+        "data_export": {
+            "slug": "data_export",
+            "type": "text",
+            "title": "Kan ik mijn gegevens exporteren?",
+            "body": "Ja. Onderaan de pagina Gebruikers kan de beheerder een JSON-export downloaden met account- en activiteitsgegevens binnen jullie omgeving (locaties, meldingen, taken). Bewaar het bestand veilig en deel het niet onnodig.",
+            "summary": "Beheerders kunnen onder Gebruikers een JSON-export van account- en activiteitsgegevens downloaden."
         },
-        "subscription": {
-            "slug": "subscription",
-            "title": "Abonnement en proefperiode",
-            "body": "Nieuwe organisaties starten met een proefperiode. Beheerders activeren daarna een plan onder Abonnement."
+        "internal_teams": {
+            "slug": "internal_teams",
+            "type": "text",
+            "title": "Hoe richt ik interne teams in?",
+            "body": "Teams worden aangemaakt via het menu Team. Koppel teams aan units zodat meldingen en taken automatisch bij de juiste groep terechtkomen.",
+            "summary": "Maak teams aan via Team en koppel ze aan units."
+        },
+        "team_follow_up": {
+            "slug": "team_follow_up",
+            "type": "text",
+            "title": "Hoe volgen interne teams taken op?",
+            "body": "Taken verschijnen op de team-QR en in het dashboard. Werknemers handelen de taak ter plaatse af, posten een beschrijving en nemen eventueel foto's. De verantwoordelijke volgt de voortgang op via de ochtendbriefing en de kalender.",
+            "summary": "Taken via team-QR en dashboard; opvolging via briefing en kalender."
+        },
+        "multiple_locations": {
+            "slug": "multiple_locations",
+            "type": "text",
+            "title": "Kan ik meerdere locaties beheren?",
+            "body": "Ja. U kunt meerdere locaties en units op één plek opvolgen en houdt overzicht per locatie, melding en taak.",
+            "summary": "Meerdere locaties en units zijn centraal beheerbaar."
+        },
+        "mobile": {
+            "slug": "mobile",
+            "type": "text",
+            "title": "Werkt WinProx op smartphone?",
+            "body": "Ja. WinProx werkt volledig in de browser op smartphone, tablet en desktop. Uitvoerders gebruiken de team-QR op de gsm.",
+            "summary": "WinProx werkt in de browser op gsm, tablet en desktop."
+        },
+        "install": {
+            "slug": "install",
+            "type": "text",
+            "title": "Moet ik software installeren?",
+            "body": "Nee. WinProx is een webapplicatie. Coördinatoren en veldteams starten meteen in de browser, zonder aparte installatie.",
+            "summary": "Geen installatie nodig — alles via de browser."
+        },
+        "status_help": {
+            "slug": "status_help",
+            "type": "text",
+            "title": "Waar vind ik uitleg over statussen?",
+            "body": "Op de gsm gebruikt u de knop \"Status hulp\" en leest u wat elke status betekent. Op desktop ziet u een toelichting wanneer u met de muis over de status beweegt.",
+            "summary": "Status hulp op meldingen en taken legt elke status en de aanbevolen vervolgstap uit."
         }
     }
 }

@@ -1,8 +1,12 @@
 {
     "title": "Dashboard",
     "subtitle": "Overzicht van je locaties, units, meldingen en taken.",
-    "trial": "Proefperiode: :days dagen",
-    "grace": "Abonnement verlopen — graceperiode actief",
+    "trial_capsule": {
+        "trial_short": "Proefperiode nog :days dagen.",
+        "trial_title": "Proefperiode",
+        "grace_short": "Nalichtperiode: nog :days dagen volledige toegang.",
+        "grace_title": "Nalichtperiode na verlopen abonnement"
+    },
     "add_issue": "Melding toevoegen",
     "briefing": "Briefing",
     "briefing_print": "Briefing afdrukken",

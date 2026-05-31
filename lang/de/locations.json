@@ -29,6 +29,7 @@
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-Code für diese Unit — Link zum Meldeportal.",
     "qr_pack_download": "QR-Etikettenbogen herunterladen",
+    "nav_label": "Standortnavigation",
     "prev": "Vorheriger Standort",
     "next": "Nächster Standort",
     "form": {
@@ -54,6 +55,7 @@
         "create_title": "Unit hinzufügen",
         "edit_title": "Unit bearbeiten",
         "open_issue": "Offene Meldung",
+        "meta_team": "Team :team",
         "no_team": "Kein Team (später pro Unit zuweisen)",
         "fields": {
             "name": "Unit-Name",

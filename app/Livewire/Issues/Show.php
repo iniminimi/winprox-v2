@@ -8,6 +8,7 @@ use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Support\EntityDetailNavigation;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -21,7 +22,13 @@ class Show extends Component
 
     public Issue $issue;
 
+    public bool $showAddTaskModal = false;
+
     public ?int $newTeamId = null;
+
+    public string $taskNote = '';
+
+    public ?string $taskScheduledFor = null;
 
     public string $updateBody = '';
 
@@ -49,13 +56,53 @@ class Show extends Component
         $this->refreshIssue();
     }
 
-    public function addTask(CreateTaskAction $createTask): void
+    public function openAddTaskModal(): void
     {
-        $this->validate(['newTeamId' => ['required', 'integer', 'exists:internal_teams,id']]);
-
-        $createTask->handle($this->issue, $this->newTeamId);
+        $this->authorize('update', $this->issue);
 
         $this->newTeamId = null;
+        $this->taskNote = trim((string) $this->issue->description);
+        $this->taskScheduledFor = $this->issue->recurrence_next_due_at?->format('Y-m-d');
+
+        $this->resetValidation();
+        $this->showAddTaskModal = true;
+    }
+
+    public function closeAddTaskModal(): void
+    {
+        $this->showAddTaskModal = false;
+    }
+
+    public function addTask(CreateTaskAction $createTask): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $this->taskNote = trim($this->taskNote);
+
+        $validated = $this->validate([
+            'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskScheduledFor' => ['nullable', 'date'],
+        ], [
+            'newTeamId.required' => __('issues.show.errors.team_required'),
+            'taskNote.required' => __('issues.show.errors.task_note_required'),
+            'taskNote.min' => __('issues.show.errors.task_note_min'),
+        ]);
+
+        $extra = [];
+        if (! empty($validated['taskScheduledFor'])) {
+            $extra['scheduled_for'] = $validated['taskScheduledFor'];
+        }
+
+        $createTask->handle(
+            $this->issue,
+            (int) $validated['newTeamId'],
+            note: $validated['taskNote'],
+            extra: $extra,
+        );
+
+        $this->closeAddTaskModal();
+        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor']);
 
         $this->refreshIssue();
     }
@@ -110,15 +157,26 @@ class Show extends Component
 
     public function render()
     {
+        $issue = $this->issue->load([
+            'tasks.team',
+            'photos',
+            'location',
+            'unit',
+            'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
+        ]);
+
+        $location = $issue->location;
+        $headline = collect([$location?->name, $issue->unit?->name])->filter()->join(' · ');
+        $addressLine = $location
+            ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
+            : '';
+
         return view('livewire.issues.show', [
-            'issue' => $this->issue->load([
-                'tasks.team',
-                'photos',
-                'location',
-                'unit',
-                'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
-            ]),
+            'issue' => $issue,
             'teams' => InternalTeam::query()->orderBy('name')->get(),
+            'headline' => $headline,
+            'addressLine' => $addressLine,
+            'nav' => EntityDetailNavigation::forIssue($issue),
         ]);
     }
 }

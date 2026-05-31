@@ -1,8 +1,12 @@
 {
     "title": "Dashboard",
     "subtitle": "Overview of your locations, units, issues and tasks.",
-    "trial": "Trial: :days days left",
-    "grace": "Subscription expired — grace period active",
+    "trial_capsule": {
+        "trial_short": "Trial period: :days days left.",
+        "trial_title": "Trial period",
+        "grace_short": "Grace period: :days days of full access left.",
+        "grace_title": "Grace period after subscription ended"
+    },
     "add_issue": "Add issue",
     "briefing": "Briefing",
     "briefing_print": "Print briefing",

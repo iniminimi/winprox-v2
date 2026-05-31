@@ -2,35 +2,48 @@
     "briefing": "Briefing drucken",
     "list": {
         "title": "Aufgaben",
-        "subtitle": "Alle Aufgaben, gruppiert nach Status.",
-        "new_block": "Neue Aufgaben",
+        "subtitle": "Alle Aufgaben nach Team und Status",
+        "group_count": "{0} keine Aufgaben|{1} :count Aufgabe|[2,*] :count Aufgaben",
         "empty": "Noch keine Aufgaben.",
         "empty_filtered": "Keine Aufgaben für diese Filter."
     },
     "filter": {
-        "status": "Status",
+        "status": "Nach Status filtern",
         "status_all": "Alle Status",
-        "team": "Team",
+        "team": "Nach Team filtern",
         "team_all": "Alle Teams",
         "search": "Suchen",
-        "search_placeholder": "Notiz, Meldung, Standort oder Unit…",
-        "recurring": "Nur wiederkehrende Zyklen",
+        "search_placeholder": "Suche nach Notiz, Meldung, Standort, Adresse, PLZ, Ort oder Unit",
+        "recurring": "Wiederkehrende Aufgabe",
+        "recurring_only": "Nur wiederkehrende Zyklen",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
-        "hint": "Kombinieren Sie Status, Team, Suchbegriff und Wiederkehrend zur Verfeinerung."
+        "hint": "Klicken Sie auf eine Aufgabe, um Details anzuzeigen."
     },
     "card": {
+        "kind_nr": "Aufgabe Nr. :nr",
+        "description_label": "Beschreibung: ",
+        "meta_team": "Team :team",
         "nr": "NR :nr",
-        "issue_nr": "Meldung :nr",
+        "issue_nr": "Meldung Nr. :nr",
         "no_team": "Kein Team",
-        "scheduled": "Geplant :date"
+        "scheduled": "Geplant :date",
+        "recurring": "Wiederkehrend"
     },
     "show": {
         "title": "Aufgabe",
+        "overview_title": "Aufgabenübersicht",
         "nr": "NR :nr",
         "back": "Zurück zu Aufgaben",
+        "nav_label": "Aufgabennavigation",
         "issue_context": "Meldung",
-        "view_issue": "Meldung anzeigen",
+        "view_issue": "Vollständige Meldung",
+        "team_section": "Team",
+        "team_hint": "Weisen Sie diese Aufgabe einem Team zu oder ändern Sie das Team.",
+        "team_current": "Aktuelles Team: :name",
+        "team_select_label": "Team wählen",
+        "team_select_placeholder": "Team wählen",
+        "team_save": "Team speichern",
         "task": "Aufgabendetails",
         "due": "Fällig :date",
         "change_status": "Status ändern",
@@ -38,7 +51,10 @@
         "confirm_status": "Status anwenden",
         "pause": "Pausennotiz",
         "pause_submit": "Pausennotiz speichern",
-        "updates": "Meldungs-Updates"
+        "updates": "Meldungs-Updates",
+        "errors": {
+            "team_required": "Wählen Sie ein Team."
+        }
     },
     "errors": {
         "invalid_transition": "Diese Statusänderung ist nicht erlaubt.",

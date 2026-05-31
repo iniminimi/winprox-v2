@@ -1,5 +1,7 @@
 {
     "panel_title": "Assistant WinProx",
+    "open_fab": "Ouvrir l'assistant",
+    "close_fab": "Fermer l'assistant",
     "welcome": "Posez une question sur les signalements, tâches ou votre organisation. Tapez « aperçu » pour les chiffres.",
     "input_label": "Votre question",
     "input_placeholder": "ex. Comment assigner une tâche à une équipe ?",

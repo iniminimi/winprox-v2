@@ -1,3 +1,37 @@
-<h2>Subprocessors</h2>
-<p>Ce document WinProx pour les clients facility.</p>
-<p>info@winprox.app</p>
+<p>
+    WinProx recourt à des prestataires externes pour l’hébergement, l’e-mail et (le cas échéant) le traitement des paiements.
+</p>
+
+<h2>Aperçu</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Finalité</th>
+            <th>Localisation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cloud86</td>
+            <td>Hébergement de la plateforme</td>
+            <td>UE</td>
+        </tr>
+        <tr>
+            <td>Prestataire SMTP</td>
+            <td>Envoi d’e-mails</td>
+            <td>UE</td>
+        </tr>
+        <tr>
+            <td>Stripe</td>
+            <td>Traitement des paiements (si activé)</td>
+            <td>UE/US</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Modifications</h2>
+<p>
+    Cette liste peut être modifiée lorsque de nouveaux sous-traitants sont ajoutés.
+</p>

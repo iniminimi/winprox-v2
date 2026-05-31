@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Enums\UiTheme;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -31,6 +32,7 @@ class User extends Authenticatable
         'name',
         'email',
         'locale',
+        'ui_theme',
         'password',
         'is_superuser',
         'is_active',
@@ -77,6 +79,12 @@ class User extends Authenticatable
             'is_superuser' => 'boolean',
             'is_active' => 'boolean',
             'role' => 'string',
+            'ui_theme' => 'string',
         ];
+    }
+
+    public function uiThemeEnum(): UiTheme
+    {
+        return UiTheme::tryFromString($this->ui_theme);
     }
 }

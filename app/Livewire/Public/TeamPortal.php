@@ -119,7 +119,6 @@ class TeamPortal extends Component
         if ($identity['status'] === 'claimable') {
             $this->showRegisterForm = true;
             $this->selected_icon_slug = '';
-            $this->flashMessage = __('portal.team.claimable_hint');
 
             return;
         }
@@ -311,11 +310,7 @@ class TeamPortal extends Component
             return;
         }
 
-        $message = WorkerIconGuard::remainingAttempts($team) === 1
-            ? __('portal.worker.errors.icon_wrong_one_left')
-            : __('portal.worker.errors.icon_wrong');
-
-        $this->addError('sign_in_icon_slug', $message);
+        $this->addError('sign_in_icon_slug', __('portal.worker.errors.icon_wrong'));
     }
 
     private function syncLocaleFromRequest(): void

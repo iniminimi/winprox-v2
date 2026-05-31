@@ -2,10 +2,14 @@
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">WinProx</span>
-            @include('partials.wp-portal-lang')
+            <div class="wp-cluster">
+                <x-wp-page-help page="portal.team" />
+                @include('partials.wp-portal-lang')
+            </div>
         </div>
-        <h1 class="wp-page-title">{{ __('portal.team.title') }}</h1>
-        <p class="wp-muted">{{ $teamName }}</p>
+        <x-wp-page-head-title icon="team" :title="__('portal.team.title')">
+            <p class="wp-muted">{{ $teamName }}</p>
+        </x-wp-page-head-title>
     </div>
 
     @if ($inactiveReasonKey !== null)

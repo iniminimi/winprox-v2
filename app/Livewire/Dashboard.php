@@ -25,7 +25,7 @@ class Dashboard extends Component
         ];
 
         $recent = Issue::query()
-            ->with(['location', 'unit'])
+            ->with(['location', 'unit', 'tasks.team'])
             ->latest()
             ->take(5)
             ->get();
@@ -35,8 +35,7 @@ class Dashboard extends Component
         return view('livewire.dashboard', [
             'stats' => $stats,
             'recent' => $recent,
-            'trialDays' => $tenant?->isTrialActive() ? $tenant->trialDaysRemaining() : null,
-            'subscriptionGrace' => $tenant?->isInPaidSubscriptionGrace() ?? false,
+            'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'unitLimitWarning' => $tenant?->unitLimitWarning(),
             'userLimitWarning' => $tenant?->userLimitWarning(),
             'remainingUnits' => $tenant?->remainingUnitSlots(),

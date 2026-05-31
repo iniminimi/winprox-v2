@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use App\Support\Qr\QrCodePngWriter;
+use App\Support\Qr\QrCenterLogo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class Tenant extends Model
@@ -108,6 +109,124 @@ class Tenant extends Model
         }
 
         return max(0, (int) now()->diffInDays($this->trial_ends_at, false));
+    }
+
+    public function paidSubscriptionGraceEndsAt(): ?Carbon
+    {
+        if ($this->billing_active_until === null) {
+            return null;
+        }
+
+        $graceDays = max(1, (int) config('billing.paid_expiry_grace_days', 7));
+
+        return $this->billing_active_until->copy()->addDays($graceDays);
+    }
+
+    /**
+     * @return array{grace_days: int, days_remaining: int, blocks_remaining: int, ends_on: Carbon}|null
+     */
+    public function paidSubscriptionGraceBatteryState(): ?array
+    {
+        if (! $this->isInPaidSubscriptionGrace()) {
+            return null;
+        }
+
+        $graceDays = max(1, (int) config('billing.paid_expiry_grace_days', 7));
+        $endsOn = $this->paidSubscriptionGraceEndsAt();
+        if ($endsOn === null) {
+            return null;
+        }
+
+        $now = Carbon::now();
+        $daysRemaining = max(0, (int) $now->diffInDays($endsOn, false));
+        if ($daysRemaining === 0 && $now->lt($endsOn)) {
+            $daysRemaining = 1;
+        }
+
+        $daysPerBlock = max(1, (int) ceil($graceDays / 5));
+        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+
+        return [
+            'grace_days' => $graceDays,
+            'days_remaining' => $daysRemaining,
+            'blocks_remaining' => $blocksRemaining,
+            'ends_on' => $endsOn,
+        ];
+    }
+
+    /**
+     * @return array{trial_days: int, days_remaining: int, blocks_remaining: int, ends_on: Carbon}|null
+     */
+    public function trialBatteryState(): ?array
+    {
+        if ($this->trial_ends_at === null) {
+            return null;
+        }
+
+        $trialDays = max(1, (int) config('billing.trial_days', 14));
+        $endsOn = $this->trial_ends_at->copy();
+        $startsOn = $endsOn->copy()->subDays($trialDays);
+        $now = Carbon::now();
+
+        $elapsedDays = $startsOn->diffInDays($now, false);
+        $elapsedDays = max(0, min($trialDays, (int) $elapsedDays));
+
+        $daysRemaining = max(0, $trialDays - $elapsedDays);
+        $daysPerBlock = max(1, (int) ceil($trialDays / 5));
+        $blocksRemaining = $daysRemaining > 0 ? (int) ceil($daysRemaining / $daysPerBlock) : 0;
+
+        return [
+            'trial_days' => $trialDays,
+            'days_remaining' => $daysRemaining,
+            'blocks_remaining' => $blocksRemaining,
+            'ends_on' => $endsOn,
+        ];
+    }
+
+    /**
+     * @return array{type: 'trial'|'grace', days_remaining: int, blocks_remaining: int, ends_on: Carbon, trial_days?: int, grace_days?: int}|null
+     */
+    public function portalDashboardBatteryState(): ?array
+    {
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return null;
+        }
+
+        if ($this->isPaidSubscriptionActive()) {
+            return null;
+        }
+
+        if ($this->isInPaidSubscriptionGrace()) {
+            $grace = $this->paidSubscriptionGraceBatteryState();
+            if ($grace === null) {
+                return null;
+            }
+
+            return [
+                'type' => 'grace',
+                'days_remaining' => $grace['days_remaining'],
+                'blocks_remaining' => $grace['blocks_remaining'],
+                'ends_on' => $grace['ends_on'],
+                'grace_days' => $grace['grace_days'],
+            ];
+        }
+
+        if ($this->isTrialActive()) {
+            $trial = $this->trialBatteryState();
+            if ($trial === null) {
+                return null;
+            }
+
+            return [
+                'type' => 'trial',
+                'days_remaining' => $trial['days_remaining'],
+                'blocks_remaining' => $trial['blocks_remaining'],
+                'ends_on' => $trial['ends_on'],
+                'trial_days' => $trial['trial_days'],
+            ];
+        }
+
+        return null;
     }
 
     public function currentUnitsCount(): int
@@ -251,13 +370,12 @@ class Tenant extends Model
     /** Absoluut pad voor QR-centrelogo (organisatie of WinProx-fallback). */
     public function centerLogoAbsolutePath(): string
     {
-        if (is_string($this->logo_path) && $this->logo_path !== '') {
-            $absolute = Storage::disk('public')->path($this->logo_path);
-            if (is_file($absolute)) {
-                return $absolute;
-            }
-        }
+        return QrCenterLogo::absolutePath($this);
+    }
 
-        return QrCodePngWriter::winproxLogoPath();
+    /** Publieke URL van het organisatielogo (instellingen), of null. */
+    public function logoPublicUrl(): ?string
+    {
+        return QrCenterLogo::tenantLogoPublicUrl($this);
     }
 }

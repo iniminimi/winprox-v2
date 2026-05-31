@@ -29,4 +29,16 @@ class AssignIssueTeamTaskRequest extends FormRequest
             'task_note' => ['nullable', 'string', 'max:2000'],
         ];
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function messageSet(): array
+    {
+        return [
+            'internal_team_id.required' => __('issues.errors.team_required'),
+            'internal_team_id.integer' => __('issues.errors.team_required'),
+            'internal_team_id.exists' => __('issues.errors.team_required'),
+        ];
+    }
 }

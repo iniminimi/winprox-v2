@@ -52,7 +52,7 @@
         "last_name": "Last name",
         "continue": "Continue",
         "verify_hint": "Confirm your personal icon",
-        "attempts_left": "{count} attempt(s) left.",
+        "attempts_left": ":count attempt(s) left.",
         "confirm_icon": "Confirm",
         "different_worker": "Sign in as a different worker",
         "no_workers": "There are no workers for this team yet. Onboarding happens via the team QR.",
@@ -77,14 +77,12 @@
             "blocked": "You are blocked after too many attempts. Contact your administrator.",
             "icon_required": "Choose your personal icon.",
             "icon_wrong": "That is not the correct icon.",
-            "icon_wrong_one_left": "That is not the correct icon. 1 attempt left.",
             "note_max": "The note is too long."
         }
     },
     "team": {
         "title": "Team overview",
         "read_only_hint": "This is an overview. Completing tasks is only possible via the unit QR on site.",
-        "claimable_hint": "We know your name, but you don't have an icon yet. Choose your personal icon below.",
         "onboarding_done": "You are registered and signed in.",
         "icon_taken": "This icon is already in use. Choose another one.",
         "register": {
@@ -113,7 +111,7 @@
         "download": "Download",
         "verification_required": "Signed-in field workers only",
         "staff_only": "Not publicly available",
-        "published": "Published on {date}",
+        "published": "Published on :date",
         "empty": "There are no documents."
     },
     "announcements": {

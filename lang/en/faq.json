@@ -1,46 +1,183 @@
 {
     "title": "FAQ & knowledge base",
-    "subtitle": "Answers about QR reports, tasks and teams in WinProx.",
+    "subtitle": "Quick guide for coordinators, team leads, and field crews.",
     "items": {
-        "qr_scan": {
-            "slug": "qr_scan",
-            "title": "Scan QR and report",
-            "body": "Visitors scan the unit QR and submit the report form. The issue reaches your facility team immediately."
+        "how_it_works": {
+            "slug": "how_it_works",
+            "type": "steps",
+            "title": "How WinProx works",
+            "intro": "A simple workflow to manage sites, issues, and internal teams.",
+            "summary": "Workflow: sites and units, QR issues, tasks for internal teams, follow-up via dashboard, briefing, and calendar.",
+            "steps": [
+                {
+                    "title": "Create a site",
+                    "text": "Start by creating a site. Add units (machines, zones, or areas) with a short description or location hint so issues and tasks link correctly."
+                },
+                {
+                    "title": "Create an issue",
+                    "text": "Create an issue yourself or let reporters submit via QR code, optionally with photos. Everything stays in one place."
+                },
+                {
+                    "title": "Add updates",
+                    "text": "Add extra information or photos so coordinators and crews see the same picture."
+                },
+                {
+                    "title": "Update status",
+                    "text": "Show what happens with the issue: new, in progress, done, or closed."
+                },
+                {
+                    "title": "Task for an internal team",
+                    "text": "For a unit issue, a task is created automatically for the linked team. You can also assign tasks manually or schedule recurring maintenance (for example monthly) via the calendar."
+                },
+                {
+                    "title": "Field worker registration via team QR",
+                    "text": "Field workers scan the team QR and start or complete tasks on site.",
+                    "highlight": "Field workers use the team QR without a WinProx login."
+                },
+                {
+                    "title": "Follow up and close",
+                    "text": "Coordinators track tasks in the dashboard, briefing, and calendar. Mark completed when work is done."
+                }
+            ],
+            "box_title": "Internal teams",
+            "box_body": "Organise maintenance crews by team. Link teams to units so issues land on the right list automatically. Via the team QR, field workers log updates and photos on site."
         },
-        "issues": {
-            "slug": "issues",
-            "title": "Managing issues",
-            "body": "Issues lists new, in-progress and closed reports. Approve, assign teams and log follow-up."
+        "pricing": {
+            "slug": "pricing",
+            "type": "pricing",
+            "title": "How much does WinProx cost?",
+            "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription.",
+            "summary": "Trial period, then Starter, Pro, Business, or Enterprise plans based on units and users.",
+            "plans": {
+                "starter": {
+                    "units": "Up to 25 units",
+                    "users": "Up to 5 users",
+                    "description": "Ideal for a single site or pilot with a compact coordination team."
+                },
+                "pro": {
+                    "units": "Up to 75 units",
+                    "users": "Up to 15 users",
+                    "description": "Suited for growing facility organisations with more units and internal crews."
+                },
+                "business": {
+                    "units": "Up to 200 units",
+                    "users": "Up to 40 users",
+                    "description": "For organisations with multiple sites, many units, and larger teams."
+                },
+                "enterprise": {
+                    "units": "Unlimited units",
+                    "users": "Unlimited users",
+                    "description": "Full support for large site operators and complex portfolios. Contact us for custom terms."
+                }
+            }
         },
-        "tasks": {
-            "slug": "tasks",
-            "title": "Tasks and follow-up",
-            "body": "Create tasks for internal teams from an issue. Teams complete work via the team portal or app."
+        "qr_code": {
+            "slug": "qr_code",
+            "type": "text",
+            "title": "How do the QR codes work?",
+            "body": "There are two QR codes: the unit QR for reporters (new issue, open issues, optional documents and announcements) and the team QR for field workers (start tasks, photos, and status on site). Print both visibly. Scanning opens the right portal in the browser — no app install.",
+            "summary": "Unit QR for reporters and team QR for field workers; both work in the browser without an app."
         },
-        "teams": {
-            "slug": "teams",
-            "title": "Internal teams",
-            "body": "Teams group colleagues and workers. Link teams to units and issues to route work correctly."
+        "reporter_portal": {
+            "slug": "reporter_portal",
+            "type": "portal",
+            "title": "How does the reporter portal work?",
+            "intro": "After scanning the unit QR, a simple web page opens for that unit. Reporters submit problems; field workers linked to the team can also complete open tasks for that unit there.",
+            "summary": "After scanning the unit QR: report issues, open issues, documents, announcements, and optional on-site tasks.",
+            "sections": [
+                {
+                    "title": "New issue",
+                    "text": "Report a problem quickly with category, description, and optional photos. The issue links to the correct unit."
+                },
+                {
+                    "title": "Open issues",
+                    "text": "Overview of active issues for this unit, with detail and status."
+                },
+                {
+                    "title": "Documents",
+                    "text": "View documents your organisation shared for the site or unit, when available."
+                },
+                {
+                    "title": "Announcements",
+                    "text": "Read announcements meant for reporters or teams on this site."
+                },
+                {
+                    "title": "On-site tasks (field workers)",
+                    "text": "Field workers who open the unit QR and belong to the linked team see open tasks for that unit. They can start tasks, add photos, and complete them — the same flow as via the team QR."
+                }
+            ]
         },
-        "locations": {
-            "slug": "locations",
-            "title": "Locations and units",
-            "body": "Locations are sites; units are spaces or assets each with their own QR code for reporting."
+        "for_who": {
+            "slug": "for_who",
+            "type": "text",
+            "title": "Who is WinProx for?",
+            "body": "WinProx helps factories, hospitals, municipalities, and large site operators centralise issues, internal teams, and field follow-up.",
+            "summary": "For facility organisations that centralise issues, teams, and field work."
         },
-        "notifications": {
-            "slug": "notifications",
-            "title": "Issues and status",
-            "body": "Statuses follow the workflow: new, in progress, done and closed. Filters help you prioritise."
+        "user_roles": {
+            "slug": "user_roles",
+            "type": "roles",
+            "title": "How do user roles work?",
+            "summary": "Administrator: full control and subscription. Standard user: daily follow-up without user management.",
+            "roles": [
+                {
+                    "title": "Administrator",
+                    "text": "Has full control over WinProx and is the only role that can add or remove users. Also manages subscription and user settings."
+                },
+                {
+                    "title": "Standard user",
+                    "text": "Handles daily follow-up: sites, issues, and tasks. No access to colleague accounts or subscription settings."
+                }
+            ]
         },
-        "calendar": {
-            "slug": "calendar",
-            "title": "Calendar and planning",
-            "body": "Recurring tasks and planned work appear in the calendar per team."
+        "data_export": {
+            "slug": "data_export",
+            "type": "text",
+            "title": "Can I export my data?",
+            "body": "Yes. At the bottom of the Users page, an administrator can download a JSON export with account and activity data in your environment (sites, issues, tasks). Keep the file secure and do not share it unnecessarily.",
+            "summary": "Administrators can download a JSON export of account and activity data under Users."
         },
-        "subscription": {
-            "slug": "subscription",
-            "title": "Subscription and trial",
-            "body": "New organisations start with a trial. Administrators activate a plan under Subscription."
+        "internal_teams": {
+            "slug": "internal_teams",
+            "type": "text",
+            "title": "How do I set up internal teams?",
+            "body": "Create teams via the Team menu. Link teams to units so issues and tasks route to the right group automatically.",
+            "summary": "Create teams via Team and link them to units."
+        },
+        "team_follow_up": {
+            "slug": "team_follow_up",
+            "type": "text",
+            "title": "How do internal teams follow up on tasks?",
+            "body": "Tasks appear on the team QR and in the dashboard. Workers handle tasks on site, add a description, and take photos when needed. Coordinators follow progress via the morning briefing and calendar.",
+            "summary": "Tasks via team QR and dashboard; follow-up via briefing and calendar."
+        },
+        "multiple_locations": {
+            "slug": "multiple_locations",
+            "type": "text",
+            "title": "Can I manage multiple sites?",
+            "body": "Yes. You can follow multiple sites and units in one place and keep overview per site, issue, and task.",
+            "summary": "Multiple sites and units can be managed centrally."
+        },
+        "mobile": {
+            "slug": "mobile",
+            "type": "text",
+            "title": "Does WinProx work on smartphones?",
+            "body": "Yes. WinProx runs fully in the browser on phone, tablet, and desktop. Field workers use the team QR on their phone.",
+            "summary": "WinProx works in the browser on phone, tablet, and desktop."
+        },
+        "install": {
+            "slug": "install",
+            "type": "text",
+            "title": "Do I need to install software?",
+            "body": "No. WinProx is a web application. Coordinators and field teams start immediately in the browser without a separate install.",
+            "summary": "No install needed — everything runs in the browser."
+        },
+        "status_help": {
+            "slug": "status_help",
+            "type": "text",
+            "title": "Where can I find help about statuses?",
+            "body": "On mobile, use the \"Status help\" button to read what each status means. On desktop, you see a description when you hover over the status.",
+            "summary": "Status help on issues and tasks explains each status and the recommended next step."
         }
     }
 }

@@ -4,8 +4,11 @@ namespace App\Livewire\Tasks;
 
 use App\Actions\Tasks\PauseTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
+use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskStatus;
+use App\Models\InternalTeam;
 use App\Models\Task;
+use App\Support\EntityDetailNavigation;
 use App\Support\Tasks\TaskStatusTransitions;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -23,10 +26,27 @@ class Show extends Component
 
     public string $pauseNote = '';
 
+    public ?int $teamId = null;
+
     public function mount(Task $task): void
     {
         $this->authorize('view', $task);
         $this->task = $task->load(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
+        $this->teamId = $task->internal_team_id;
+    }
+
+    public function saveTeam(UpdateTaskTeamAction $updateTeam): void
+    {
+        $this->authorize('update', $this->task);
+
+        $validated = $this->validate([
+            'teamId' => ['required', 'integer', 'exists:internal_teams,id'],
+        ], [
+            'teamId.required' => __('tasks.show.errors.team_required'),
+        ]);
+
+        $this->task = $updateTeam->handle($this->task, (int) $validated['teamId']);
+        $this->teamId = $this->task->internal_team_id;
     }
 
     public function selectStatus(string $status): void
@@ -83,6 +103,7 @@ class Show extends Component
     protected function refreshTask(): void
     {
         $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
+        $this->teamId = $this->task->internal_team_id;
     }
 
     public function render()
@@ -93,10 +114,28 @@ class Show extends Component
 
         $target = TaskStatus::tryFrom($this->targetStatus);
 
+        $issue = $this->task->issue;
+        $location = $issue?->location;
+        $headline = collect([$location?->name, $issue?->unit?->name])->filter()->join(' · ');
+        if ($headline === '' && $issue) {
+            $headline = \Illuminate\Support\Str::limit($issue->description, 80);
+        }
+        $addressLine = $location
+            ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
+            : '';
+
         return view('livewire.tasks.show', [
             'task' => $this->task,
+            'headline' => $headline,
+            'addressLine' => $addressLine,
+            'teams' => InternalTeam::query()
+                ->where('is_active', true)
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get(['id', 'name']),
             'transitions' => TaskStatusTransitions::nextOptions($current),
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),
+            'nav' => EntityDetailNavigation::forTask($this->task),
         ]);
     }
 }

@@ -69,20 +69,25 @@ it('laat een beheerder een plan activeren', function () {
         ->and($tenant->isTrialActive())->toBeFalse();
 });
 
-it('laadt de FAQ-pagina', function () {
+it('laadt de FAQ-pagina met facility-inhoud', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($user)
         ->get(route('faq.index'))
         ->assertOk()
-        ->assertSee(__('faq.title'));
+        ->assertSee(__('faq.title'))
+        ->assertSee(__('faq.items.how_it_works.title'))
+        ->assertSee(__('faq.items.qr_code.title'))
+        ->assertSee(__('faq.items.internal_teams.title'), false);
 });
 
 it('toont privacy-document publiek', function () {
     $this->get(route('legal.privacy'))
         ->assertOk()
-        ->assertSee(__('legal.documents.privacy'));
+        ->assertSee(__('legal.documents.privacy'))
+        ->assertSee(__('legal.applicable_law_notice'))
+        ->assertSee('QR-meldingen', false);
 });
 
 it('toont contact voor gasten', function () {

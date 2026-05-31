@@ -1,41 +1,81 @@
-<div class="wp-stack">
-    <div class="wp-row">
-        <div class="wp-stack-tight">
-            <a href="{{ route('tasks.index') }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.back') }}</a>
-            <div class="wp-cluster">
-                <h1 class="wp-page-title">{{ __('tasks.show.title') }}</h1>
-                <x-wp-ref-nr type="task" :id="$task->id" />
-            </div>
-        </div>
-        <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-    </div>
+@php
+    $issue = $task->issue;
+    $canUpdate = auth()->user()?->can('update', $task) ?? false;
+@endphp
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-cluster">
-            <h2 class="wp-section-title">{{ __('tasks.show.issue_context') }}</h2>
-            @if ($task->issue)
-                <x-wp-ref-nr :id="$task->issue->id" />
+<div class="wp-stack">
+    <x-wp-entity-detail-head
+        icon="tasks"
+        :title="__('tasks.show.overview_title')"
+        help-page="tasks.show"
+        ref-type="task"
+        :ref-id="$task->id"
+        :headline="$headline"
+        :address="$addressLine"
+        route-name="tasks.show"
+        :current-id="$task->id"
+        :nav-label="__('tasks.show.nav_label')"
+        :first-id="$nav['firstId']"
+        :prev-id="$nav['prevId']"
+        :next-id="$nav['nextId']"
+        :last-id="$nav['lastId']"
+    >
+        <x-slot name="meta">
+            @if ($issue)
+                <a href="{{ route('issues.show', $issue) }}" class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $issue->id]) }}</a>
+            @endif
+            <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+        </x-slot>
+    </x-wp-entity-detail-head>
+
+    @if ($issue)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('tasks.show.issue_context') }}</h2>
+                <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
+            </div>
+            <p class="wp-melding-desc">{{ $issue->description }}</p>
+            @if ($issue->reporter_name || $issue->reporter_contact)
+                <p class="wp-muted">
+                    {{ $issue->reporter_name }}
+                    @if ($issue->reporter_contact)
+                        ({{ $issue->reporter_contact }})
+                    @endif
+                </p>
             @endif
         </div>
-        <p class="wp-melding-desc">{{ $task->issue?->description }}</p>
-        @php
-            $locationLine = collect([
-                $task->issue?->location?->name,
-                $task->issue?->unit?->name,
-                $task->issue?->location?->address,
-            ])->filter()->join(' · ');
-        @endphp
-        @if ($locationLine !== '')
-            <p class="wp-muted">{{ $locationLine }}</p>
-        @endif
-        <a href="{{ route('issues.show', $task->issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
-    </div>
+    @endif
 
     <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('tasks.show.task') }}</h2>
-        <p class="wp-muted">{{ $task->team?->name ?: __('tasks.card.no_team') }}</p>
-        @if ($task->note)
-            <p>{{ $task->note }}</p>
+        <h2 class="wp-section-title">{{ __('tasks.show.team_section') }}</h2>
+        <p class="wp-muted">{{ __('tasks.show.team_hint') }}</p>
+
+        @if ($task->team)
+            <p class="wp-text-body">
+                {{ __('tasks.show.team_current', ['name' => $task->team->name]) }}
+            </p>
+        @else
+            <p class="wp-muted">{{ __('tasks.card.no_team') }}</p>
+        @endif
+
+        @if ($canUpdate)
+            <form wire:submit="saveTeam" class="wp-stack-tight">
+                <div class="wp-field">
+                    <label class="wp-label" for="teamId">{{ __('tasks.show.team_select_label') }}</label>
+                    <select id="teamId" class="wp-select" wire:model="teamId">
+                        <option value="">{{ __('tasks.show.team_select_placeholder') }}</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('teamId') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <button type="submit" class="btn btn--primary">{{ __('tasks.show.team_save') }}</button>
+            </form>
+        @endif
+
+        @if ($task->note && $task->note !== $issue?->description)
+            <p class="wp-muted wp-border-top">{{ $task->note }}</p>
         @endif
         @if ($task->scheduled_for || $task->due_at)
             <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
@@ -77,10 +117,10 @@
         </div>
     @endif
 
-    @if ($task->issue?->updates->isNotEmpty())
+    @if ($issue?->updates->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('tasks.show.updates') }}</h2>
-            @foreach ($task->issue->updates->sortByDesc('created_at') as $update)
+            @foreach ($issue->updates->sortByDesc('created_at') as $update)
                 <div class="wp-stack-tight" wire:key="update-{{ $update->id }}">
                     <p class="wp-muted">{{ optional($update->created_at)->format('d/m/Y H:i') }}
                         @if ($update->user) — {{ $update->user->name }} @endif

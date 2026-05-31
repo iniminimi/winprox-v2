@@ -1,0 +1,425 @@
+{
+    "button_label": "Page help",
+    "modal": {
+        "close": "Close",
+        "actions_heading": "Actions",
+        "statuses_heading": "Statuses"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Help — Dashboard",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "The dashboard shows counts of locations, units, open issues and open tasks. Click a card to go to the related screen."
+                },
+                {
+                    "label": "Print briefing",
+                    "text": "Opens a printable overview of open tasks per team — useful on the shop floor."
+                },
+                {
+                    "label": "Setup checklist",
+                    "text": "Until your tenant is fully set up, you will see steps: teams, location, units, workers and QR pack."
+                }
+            ],
+            "status_note": "Issue status on the dashboard follows the status of linked tasks.",
+            "statuses": {
+                "new": "At least one task has not been started yet.",
+                "in_progress": "At least one task is in progress.",
+                "done": "All tasks are completed; an administrator can close the issue.",
+                "closed": "All tasks are closed — the issue is finished."
+            }
+        },
+        "issues.list": {
+            "title": "Help — Issues",
+            "actions": [
+                {
+                    "label": "Add issue",
+                    "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
+                },
+                {
+                    "label": "Print briefing",
+                    "text": "Print an overview of open tasks per team."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Combine status, team, search term and recurring to refine the list. Press GO! to apply."
+                },
+                {
+                    "label": "Approve",
+                    "text": "QR issues wait for approval. Approve so content becomes visible on public pages."
+                }
+            ],
+            "status_note": "Issue status is derived automatically from the tasks on that issue.",
+            "statuses": {
+                "new": "New issue; at least one task has not been started yet.",
+                "in_progress": "Follow-up is underway — a task has been started or is in progress.",
+                "done": "All tasks have been completed by the team.",
+                "closed": "An administrator has confirmed and closed everything."
+            }
+        },
+        "issues.show": {
+            "title": "Help — Issue detail",
+            "actions": [
+                {
+                    "label": "Add task",
+                    "text": "Create an additional task on this issue and assign it to an operational team."
+                },
+                {
+                    "label": "Post update",
+                    "text": "Add a note or photo to the timeline so colleagues can follow progress."
+                },
+                {
+                    "label": "Approve",
+                    "text": "Approve QR issues before description and photos become publicly visible."
+                }
+            ],
+            "status_note": "Change issue status by updating the tasks.",
+            "statuses": {
+                "new": "Waiting for at least one task to start.",
+                "in_progress": "At least one task is actively being worked on.",
+                "done": "All tasks are completed; close the issue when everything is confirmed.",
+                "closed": "Issue is definitively closed."
+            }
+        },
+        "tasks.list": {
+            "title": "Help — Tasks",
+            "actions": [
+                {
+                    "label": "Filter by team",
+                    "text": "Show only tasks for one operational team. Team managers see only their teams by default."
+                },
+                {
+                    "label": "Open task",
+                    "text": "Click a task for detail, status changes and the link to the issue."
+                }
+            ],
+            "status_note": "Statuses are often updated automatically via the team QR field portal. You can also adjust them manually.",
+            "statuses": {
+                "new": "Task has been created and is waiting for the team to start.",
+                "in_progress": "The team is working on it.",
+                "done": "Work is finished by the worker; an administrator can close it.",
+                "closed": "Task has been confirmed and closed."
+            }
+        },
+        "tasks.show": {
+            "title": "Help — Task detail",
+            "actions": [
+                {
+                    "label": "Assign team",
+                    "text": "Choose an operational team and save. You can also change an existing assignment."
+                },
+                {
+                    "label": "Change status",
+                    "text": "Set the task to In progress, Completed or Closed depending on progress."
+                },
+                {
+                    "label": "Open issue",
+                    "text": "Go to the linked issue for context, photos and additional tasks."
+                }
+            ],
+            "status_note": "On the shop floor, workers start and complete tasks via the team QR portal.",
+            "statuses": {
+                "new": "Not yet started on site.",
+                "in_progress": "Team is working on it.",
+                "done": "Worker reports the work as done.",
+                "closed": "Administrator confirms and closes."
+            }
+        },
+        "locations.list": {
+            "title": "Help — Locations",
+            "actions": [
+                {
+                    "label": "Add location",
+                    "text": "Create a new site with address and basic details."
+                },
+                {
+                    "label": "Open location",
+                    "text": "Manage units, documents, announcements and QR codes per location."
+                },
+                {
+                    "label": "Show inactive",
+                    "text": "Show deactivated locations to reactivate or review them."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Help — Location detail",
+            "actions": [
+                {
+                    "label": "Add unit",
+                    "text": "Add an asset/space with QR token and default team."
+                },
+                {
+                    "label": "Bulk units",
+                    "text": "Create multiple units at once (floors × rooms) and link them to a team."
+                },
+                {
+                    "label": "Download QR pack",
+                    "text": "Download a Word file (Avery 55×55) with QR stickers for all units at this location."
+                },
+                {
+                    "label": "Location QR",
+                    "text": "QR for issues without a specific unit (corridor, zone, common area)."
+                },
+                {
+                    "label": "Documents & announcements",
+                    "text": "Manage manuals and announcements that reporters see on the QR page."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Help — Calendar",
+            "actions": [
+                {
+                    "label": "Navigation",
+                    "text": "Use previous, today and next to browse through the period."
+                },
+                {
+                    "label": "View",
+                    "text": "Switch between month, week and day view."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filter by location, team and type (tasks or issues)."
+                }
+            ],
+            "status_note": "Colour and status on the calendar follow task or issue status.",
+            "statuses": {
+                "new": "Planned but not yet started.",
+                "in_progress": "Work in progress.",
+                "done": "Completed, waiting to be closed.",
+                "closed": "Fully closed."
+            }
+        },
+        "team": {
+            "title": "Help — Teams & users",
+            "actions": [
+                {
+                    "label": "Operational teams",
+                    "text": "Create teams, assign managers and manage workers per team."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Workers have no login; they sign in via team QR with name and icon."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Print or open the field portal QR so workers can see and complete tasks."
+                },
+                {
+                    "label": "Colleagues",
+                    "text": "Manage staff with login (admin or user) and team managers."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Help — Settings",
+            "actions": [
+                {
+                    "label": "Organisation",
+                    "text": "Update your tenant name, contact details and logo."
+                },
+                {
+                    "label": "Account",
+                    "text": "Change your profile, language and password."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Help — API & webhooks",
+            "actions": [
+                {
+                    "label": "What is this page?",
+                    "text": "Here you connect WinProx to other software — for example your ERP, a planning tool or a custom dashboard. WinProx then talks to that system digitally, so you do not have to retype issues manually."
+                },
+                {
+                    "label": "Do I need this?",
+                    "text": "Usually not. If you only use WinProx via the website and QR codes, you can leave this page empty. It is meant for administrators or IT partners who want to build an integration."
+                },
+                {
+                    "label": "API — what is it?",
+                    "text": "An API lets other programs read WinProx data or perform actions (e.g. list issues and tasks). This works securely with an API token — like a password used by software, not by people."
+                },
+                {
+                    "label": "Creating an API token",
+                    "text": "Give the token a clear name (e.g. \"ERP integration\"). After creation you see the code once: copy and store it immediately. WinProx will not show it again. If you lose it, create a new token and revoke the old one."
+                },
+                {
+                    "label": "Revoking a token",
+                    "text": "No longer using an integration, or worried a token was exposed? Click Revoke. That integration stops working. Other tokens stay active."
+                },
+                {
+                    "label": "What can the API do?",
+                    "text": "With a valid token, software can among other things read issues and tasks, list locations/units/teams/workers, create or approve issues, and start or complete tasks. For technical docs, ask your IT partner or WinProx support."
+                },
+                {
+                    "label": "Webhooks — what are they?",
+                    "text": "A webhook is the opposite of the API: WinProx sends a message to your system when something happens (e.g. new issue or task completed). You provide a URL where WinProx may post data."
+                },
+                {
+                    "label": "Adding a webhook endpoint",
+                    "text": "Enter a full URL starting with https:// (secure connection). Tick the events you want to receive. Optionally add a description (e.g. \"Production ERP\"). Save — WinProx stores the address and sends data automatically for those events."
+                },
+                {
+                    "label": "Event: issue.created",
+                    "text": "A new issue was received (via QR, manually or via the API). Useful to create a ticket in an external system right away."
+                },
+                {
+                    "label": "Event: issue.approved",
+                    "text": "An administrator approved an issue (often from QR). Only then is the content also visible on public QR pages."
+                },
+                {
+                    "label": "Event: issue.status_changed",
+                    "text": "An issue's status changed (e.g. from open to in progress), usually because tasks were started or completed."
+                },
+                {
+                    "label": "Event: task.created",
+                    "text": "A new task was created for a team, linked to an issue."
+                },
+                {
+                    "label": "Event: task.started",
+                    "text": "A worker started a task via the field portal (unit QR)."
+                },
+                {
+                    "label": "Event: task.completed",
+                    "text": "A task was completed by the team. Useful to update external systems or reports."
+                },
+                {
+                    "label": "Endpoint active or inactive",
+                    "text": "Temporarily turn off an endpoint without deleting it (e.g. during server maintenance). Inactive endpoints receive no messages."
+                },
+                {
+                    "label": "Recent deliveries",
+                    "text": "Log of the latest webhook attempts. \"success\" means your system received the message. \"failed\" means something went wrong (wrong URL, server offline, …). Shows delivery status only — not issue content."
+                },
+                {
+                    "label": "Security",
+                    "text": "Treat API tokens like passwords: do not share them in email or chat. Webhooks are cryptographically signed so your server can verify the message really came from WinProx — your IT partner can implement this check."
+                },
+                {
+                    "label": "Help with the integration",
+                    "text": "Not sure if something works? Ask your IT partner to check the URL, events and recent deliveries. For WinProx itself, use Contact or the FAQ if you do not have a developer."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Help — Subscription",
+            "actions": [
+                {
+                    "label": "Trial period",
+                    "text": "During the trial you have extended limits. The dashboard shows remaining days."
+                },
+                {
+                    "label": "Choose plan",
+                    "text": "Select a plan that fits the number of units you manage."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Help — FAQ",
+            "actions": [
+                {
+                    "label": "Knowledge base",
+                    "text": "Answers to frequently asked questions about WinProx, QR, teams and subscription."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Help — Contact",
+            "actions": [
+                {
+                    "label": "Support",
+                    "text": "Contact WinProx if you need help beyond this page help and the FAQ."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Help — Unit QR",
+            "actions": [
+                {
+                    "label": "Report issue",
+                    "text": "Scan the QR, describe the problem and optionally add photos. A task is created for the team."
+                },
+                {
+                    "label": "Worker mode",
+                    "text": "Known workers sign in with name and icon to start or complete open tasks."
+                },
+                {
+                    "label": "Documents & announcements",
+                    "text": "View manuals and announcements for this unit."
+                }
+            ],
+            "status_note": "Open tasks on this page follow the statuses below.",
+            "statuses": {
+                "new": "Task waiting to start.",
+                "in_progress": "Team is working on it.",
+                "done": "Work is completed.",
+                "closed": "Task is closed."
+            }
+        },
+        "portal.team": {
+            "title": "Help — Team QR",
+            "actions": [
+                {
+                    "label": "Sign in",
+                    "text": "Enter your name and choose your icon to identify yourself as a worker."
+                },
+                {
+                    "label": "Complete tasks",
+                    "text": "Start tasks, add notes and complete with photos if needed."
+                }
+            ],
+            "statuses": {
+                "new": "Not yet started.",
+                "in_progress": "In progress on site.",
+                "done": "Completed by you or a colleague.",
+                "closed": "Closed by management."
+            }
+        },
+        "portal.location": {
+            "title": "Help — Location QR",
+            "actions": [
+                {
+                    "label": "Issue without unit",
+                    "text": "Use this QR for problems in corridors or shared zones without a specific unit."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Help — Platform",
+            "actions": [
+                {
+                    "label": "Manage tenants",
+                    "text": "Overview of all organisations. Open a tenant to work in their environment as support."
+                },
+                {
+                    "label": "Support mode",
+                    "text": "Start support to use the app on behalf of a tenant. Stop support to return to the platform overview."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Help — Platform knowledge base",
+            "actions": [
+                {
+                    "label": "Unanswered questions",
+                    "text": "Questions from the help chat with no FAQ match. Answer them or add them to the knowledge base."
+                },
+                {
+                    "label": "Knowledge base",
+                    "text": "Manage FAQ articles and help answers for all tenants."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Help — Legal documents",
+            "actions": [
+                {
+                    "label": "Documents",
+                    "text": "Privacy policy, terms of service and other legal texts from WinProx."
+                }
+            ]
+        }
+    }
+}

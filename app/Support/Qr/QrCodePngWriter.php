@@ -19,11 +19,6 @@ final class QrCodePngWriter
 {
     private const QUIET_ZONE_MODULES = 2;
 
-    private const LOGO_BOX_RATIO = 0.30;
-
-    /** Smaller center logo for small printed sticker sheets (better scan reliability). */
-    private const STICKER_LOGO_BOX_RATIO = 0.22;
-
     public static function writeFile(string $reportUrl, string $absolutePath, int $pixelSize = 420): void
     {
         $bytes = self::writeString($reportUrl, $pixelSize);
@@ -48,7 +43,7 @@ final class QrCodePngWriter
         int $pixelSize = 420,
         ?string $centerLogoPath = null,
     ): void {
-        $bytes = self::writeStringWithCenterLogo($reportUrl, $pixelSize, self::STICKER_LOGO_BOX_RATIO, $centerLogoPath);
+        $bytes = self::writeStringWithCenterLogo($reportUrl, $pixelSize, QrLogoLayout::STICKER_BOX_RATIO, $centerLogoPath);
 
         if (file_put_contents($absolutePath, $bytes) === false) {
             throw new RuntimeException('Unable to write QR PNG file.');
@@ -80,7 +75,7 @@ final class QrCodePngWriter
         return self::overlayCenterLogo(
             self::writeString($reportUrl, $pixelSize),
             $pixelSize,
-            $logoBoxRatio ?? self::LOGO_BOX_RATIO,
+            $logoBoxRatio ?? QrLogoLayout::DISPLAY_BOX_RATIO,
             $centerLogoPath,
         );
     }
@@ -115,7 +110,7 @@ final class QrCodePngWriter
     private static function overlayCenterLogo(
         string $qrPngBytes,
         int $pixelSize,
-        float $logoBoxRatio = self::LOGO_BOX_RATIO,
+        float $logoBoxRatio = QrLogoLayout::DISPLAY_BOX_RATIO,
         ?string $centerLogoPath = null,
     ): string {
         if (self::gdRendererAvailable()) {
@@ -216,7 +211,7 @@ final class QrCodePngWriter
         $background->drawImage($draw);
 
         $logo = new Imagick;
-        $logo->readImage($logoPath);
+        self::readLogoIntoImagick($logo, $logoPath);
         $logo->resizeImage($targetW, $targetH, Imagick::FILTER_LANCZOS, 1, true);
 
         $background->compositeImage(
@@ -241,7 +236,7 @@ final class QrCodePngWriter
      */
     private static function logoPlacement(
         int $pixelSize,
-        float $logoBoxRatio = self::LOGO_BOX_RATIO,
+        float $logoBoxRatio = QrLogoLayout::DISPLAY_BOX_RATIO,
         ?string $logoPath = null,
     ): array {
         $logoPath = self::resolveCenterLogoPath($logoPath);
@@ -253,11 +248,14 @@ final class QrCodePngWriter
             if (is_array($info)) {
                 $logoWidth = max(1, (int) $info[0]);
                 $logoHeight = max(1, (int) $info[1]);
+            } elseif (str_ends_with(strtolower($logoPath), '.svg')) {
+                $logoWidth = 100;
+                $logoHeight = 100;
             }
         }
 
         $boxSize = max(1, (int) round($pixelSize * $logoBoxRatio));
-        $padding = max(2, (int) round($boxSize * 0.12));
+        $padding = max(QrLogoLayout::innerPaddingPx(), (int) round($boxSize * QrLogoLayout::BOX_INNER_PADDING_RATIO));
         $innerSize = max(1, $boxSize - ($padding * 2));
         $boxX = (int) floor(($pixelSize - $boxSize) / 2);
         $boxY = (int) floor(($pixelSize - $boxSize) / 2);
@@ -272,7 +270,7 @@ final class QrCodePngWriter
 
     public static function winproxLogoPath(): string
     {
-        return public_path('images/Winprox_logo_200.png');
+        return QrCenterLogo::winproxAbsolutePath();
     }
 
     private static function resolveCenterLogoPath(?string $centerLogoPath): string
@@ -294,6 +292,10 @@ final class QrCodePngWriter
             return false;
         }
 
+        if (str_ends_with(strtolower($absolutePath), '.svg')) {
+            return self::rasterizeSvgWithGd($absolutePath);
+        }
+
         $binary = file_get_contents($absolutePath);
 
         if ($binary === false || $binary === '') {
@@ -303,6 +305,24 @@ final class QrCodePngWriter
         return self::loadGdImageFromBinary($binary);
     }
 
+    private static function rasterizeSvgWithGd(string $svgPath): \GdImage|false
+    {
+        if (! class_exists(Imagick::class)) {
+            return false;
+        }
+
+        try {
+            $imagick = new Imagick;
+            $imagick->setBackgroundColor(new \ImagickPixel('transparent'));
+            $imagick->readImage($svgPath);
+            $imagick->setImageFormat('png');
+
+            return self::loadGdImageFromBinary($imagick->getImageBlob());
+        } catch (\Throwable) {
+            return false;
+        }
+    }
+
     private static function loadGdImageFromBinary(string $binary): \GdImage|false
     {
         if ($binary === '') {
@@ -310,6 +330,15 @@ final class QrCodePngWriter
         }
 
         return @imagecreatefromstring($binary);
+    }
+
+    private static function readLogoIntoImagick(Imagick $logo, string $logoPath): void
+    {
+        if (str_ends_with(strtolower($logoPath), '.svg')) {
+            $logo->setBackgroundColor(new \ImagickPixel('transparent'));
+        }
+
+        $logo->readImage($logoPath);
     }
 
     private static function gdRendererAvailable(): bool

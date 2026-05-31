@@ -2,7 +2,10 @@
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">WinProx</span>
-            @include('partials.wp-portal-lang')
+            <div class="wp-cluster">
+                <x-wp-page-help page="portal.location" />
+                @include('partials.wp-portal-lang')
+            </div>
         </div>
         <p class="wp-muted">{{ $locationName }}</p>
     </div>
@@ -42,7 +45,7 @@
 
         @if ($portalSection === 'new')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
-            <h1 class="wp-page-title">{{ __('portal.report.title') }}</h1>
+            <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
             <form x-data
                   x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"

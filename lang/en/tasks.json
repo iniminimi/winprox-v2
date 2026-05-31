@@ -2,35 +2,48 @@
     "briefing": "Print briefing",
     "list": {
         "title": "Tasks",
-        "subtitle": "All tasks grouped by status.",
-        "new_block": "New tasks",
+        "subtitle": "All tasks by team and status",
+        "group_count": "{0} no tasks|{1} :count task|[2,*] :count tasks",
         "empty": "No tasks yet.",
         "empty_filtered": "No tasks match these filters."
     },
     "filter": {
-        "status": "Status",
+        "status": "Filter by status",
         "status_all": "All statuses",
-        "team": "Team",
+        "team": "Filter by team",
         "team_all": "All teams",
         "search": "Search",
-        "search_placeholder": "Note, issue, location or unit…",
-        "recurring": "Recurring cycles only",
+        "search_placeholder": "Search by note, issue, location, address, postcode, city or unit",
+        "recurring": "Recurring task",
+        "recurring_only": "Recurring cycles only",
         "apply": "GO!",
         "reset": "Clear filters",
-        "hint": "Combine status, team, search term and recurring to narrow results."
+        "hint": "Click a task to view details."
     },
     "card": {
+        "kind_nr": "Task no. :nr",
+        "description_label": "Description: ",
+        "meta_team": "Team :team",
         "nr": "NR :nr",
-        "issue_nr": "Issue :nr",
+        "issue_nr": "Issue no. :nr",
         "no_team": "No team",
-        "scheduled": "Scheduled :date"
+        "scheduled": "Scheduled :date",
+        "recurring": "Recurring"
     },
     "show": {
         "title": "Task",
+        "overview_title": "Task overview",
         "nr": "NR :nr",
         "back": "Back to tasks",
+        "nav_label": "Task navigation",
         "issue_context": "Issue",
-        "view_issue": "View issue",
+        "view_issue": "Full issue",
+        "team_section": "Team",
+        "team_hint": "Assign this task to an operational team or change the team.",
+        "team_current": "Current team: :name",
+        "team_select_label": "Choose team",
+        "team_select_placeholder": "Choose a team",
+        "team_save": "Save team",
         "task": "Task details",
         "due": "Due :date",
         "change_status": "Change status",
@@ -38,7 +51,10 @@
         "confirm_status": "Apply status",
         "pause": "Pause note",
         "pause_submit": "Save pause note",
-        "updates": "Issue updates"
+        "updates": "Issue updates",
+        "errors": {
+            "team_required": "Choose a team."
+        }
     },
     "errors": {
         "invalid_transition": "This status change is not allowed.",

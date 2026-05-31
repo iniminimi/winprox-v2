@@ -1,18 +1,24 @@
 <div class="wp-stack">
     <div class="wp-page-head">
-        <div class="wp-stack-tight">
-            <div class="wp-cluster">
-                <h1 class="wp-page-title">{{ $location->name }}</h1>
-                <div class="wp-cluster">
-                    @if ($prevLocationId)
-                        <a href="{{ route('locations.show', $prevLocationId) }}" class="btn btn--ghost btn--sm" aria-label="{{ __('locations.prev') }}">&lsaquo;</a>
-                    @endif
-                    @if ($nextLocationId)
-                        <a href="{{ route('locations.show', $nextLocationId) }}" class="btn btn--ghost btn--sm" aria-label="{{ __('locations.next') }}">&rsaquo;</a>
-                    @endif
-                </div>
-            </div>
-            <p class="wp-muted">{{ __('locations.show_subtitle') }}</p>
+        <div class="wp-grow wp-stack-tight">
+            <x-wp-page-head-title
+                icon="locations"
+                :title="$location->name"
+                help-page="locations.show"
+                :subtitle="__('locations.show_subtitle')"
+            >
+                <x-slot:toolbar>
+                    <x-wp-detail-nav
+                        route-name="locations.show"
+                        :current-id="$location->id"
+                        :nav-label="__('locations.nav_label')"
+                        :first-id="$nav['firstId']"
+                        :prev-id="$nav['prevId']"
+                        :next-id="$nav['nextId']"
+                        :last-id="$nav['lastId']"
+                    />
+                </x-slot:toolbar>
+            </x-wp-page-head-title>
         </div>
         <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost">{{ __('dashboard.briefing_print') }}</a>
     </div>
@@ -56,25 +62,25 @@
         </div>
         <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>
 
-        <div class="wp-list">
+        <div class="wp-list wp-list--entity-rows">
             @forelse ($units as $unit)
                 @php
                     $canDelete = \App\Support\Units\UnitDeletionGuard::canDelete($unit);
                 @endphp
-                <div class="wp-location-unit-row" wire:key="unit-{{ $unit->id }}">
-                    <div class="wp-grow">
-                        <div class="wp-cluster">
-                            <span class="wp-issue-desc">{{ $unit->name }}</span>
-                            @if ($unit->defaultInternalTeam)
-                                <span class="wp-pill wp-pill--progress">{{ $unit->defaultInternalTeam->name }}</span>
-                            @endif
-                            @if ($unit->hasOpenIssues())
-                                <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
-                            @endif
-                            @if (! $unit->is_active)
-                                <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                            @endif
-                        </div>
+                <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-issue-card-title">{{ $unit->name }}</p>
+                        @if ($unit->defaultInternalTeam)
+                            <p class="wp-issue-card-meta">{{ __('locations.units.meta_team', ['team' => $unit->defaultInternalTeam->name]) }}</p>
+                        @endif
+                    </div>
+                    <div class="wp-issue-row-meta">
+                        @if ($unit->hasOpenIssues())
+                            <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
+                        @endif
+                        @if (! $unit->is_active)
+                            <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                        @endif
                     </div>
                     <div class="wp-cluster">
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>

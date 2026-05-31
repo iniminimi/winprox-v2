@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('platform.help.title') }}</h1>
-        <p class="wp-muted">{{ __('platform.help.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="faq"
+        :title="__('platform.help.title')"
+        help-page="platform.help"
+        :subtitle="__('platform.help.subtitle')"
+    />
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">

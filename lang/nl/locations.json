@@ -29,6 +29,7 @@
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
     "qr_pack_download": "QR-stickerblad downloaden",
+    "nav_label": "Locatienavigatie",
     "prev": "Vorige locatie",
     "next": "Volgende locatie",
     "form": {
@@ -54,6 +55,7 @@
         "create_title": "Unit toevoegen",
         "edit_title": "Unit bewerken",
         "open_issue": "Open melding",
+        "meta_team": "Team :team",
         "no_team": "Geen team (later per unit koppelen)",
         "fields": {
             "name": "Unitnaam",

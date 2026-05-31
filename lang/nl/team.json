@@ -35,6 +35,7 @@
     "teams": {
         "title": "Teams",
         "add": "Team toevoegen",
+        "hint": "Klik op een team om uitvoerders te beheren.",
         "empty": "Er zijn nog geen teams.",
         "active": "Actief",
         "inactive": "Inactief",

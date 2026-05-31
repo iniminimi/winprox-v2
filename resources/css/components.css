@@ -164,6 +164,21 @@
     margin-top: 1rem;
 }
 
+.wp-org-logo-preview-wrap {
+    margin-bottom: 0.625rem;
+}
+
+.wp-org-logo-preview {
+    display: block;
+    width: 7.5rem;
+    height: 7.5rem;
+    object-fit: contain;
+    padding: 0.5rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    background-color: var(--wp-surface-muted);
+}
+
 .wp-check {
     display: flex;
     align-items: center;
@@ -187,6 +202,205 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.wp-page-head-main {
+    align-items: flex-start;
+}
+
+.wp-page-actions {
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+@media (max-width: 639px) {
+    .wp-page-actions {
+        width: 100%;
+    }
+
+    .wp-page-actions .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+}
+
+.wp-page-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.wp-page-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--wp-accent) 14%, transparent);
+    color: var(--wp-accent);
+    flex-shrink: 0;
+}
+
+.wp-page-icon .wp-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+/* Paginahulp (?-knop + modal) — V1 Actiehulp + Statushulp unified */
+.wp-page-help {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.wp-page-help-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-pill);
+    background-color: var(--wp-surface);
+    color: var(--wp-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform var(--wp-transition), border-color var(--wp-transition), color var(--wp-transition);
+}
+
+.wp-page-help-trigger:hover {
+    transform: translateY(-1px);
+    border-color: var(--wp-accent);
+    color: var(--wp-accent);
+}
+
+.wp-page-help-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.wp-page-help-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgb(17 24 39 / 0.45);
+}
+
+.wp-page-help-dialog {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 40rem);
+    margin: auto 0;
+    max-height: calc(100dvh - 2rem);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.wp-page-help-dialog-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-page-help-dialog-title {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--wp-text-heading);
+}
+
+.wp-page-help-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--wp-radius-md);
+    background: transparent;
+    color: var(--wp-text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.wp-page-help-close:hover {
+    background-color: var(--wp-surface-muted);
+    color: var(--wp-text-heading);
+}
+
+.wp-page-help-dialog-body {
+    padding: 1rem 1.25rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.wp-page-help-section-title {
+    margin: 0 0 0.625rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--wp-text-secondary);
+}
+
+.wp-page-help-note {
+    margin: 0 0 0.75rem;
+    font-size: 0.875rem;
+    color: var(--wp-text-body);
+}
+
+.wp-page-help-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.wp-page-help-item {
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    background-color: var(--wp-surface-muted);
+}
+
+.wp-page-help-item-label {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text-heading);
+}
+
+.wp-page-help-item-text {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--wp-text-body);
+    line-height: 1.45;
+}
+
+.wp-page-help-dialog-foot {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem 1.25rem 1rem;
+    border-top: 1px solid var(--wp-border);
 }
 
 .wp-stack-tight > * + * {
@@ -360,7 +574,7 @@ a.wp-kpi:hover {
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.75rem;
+    padding: 0.625rem 0.75rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
     background-color: var(--wp-surface);
@@ -379,6 +593,10 @@ a.wp-kpi:hover {
     background-color: var(--wp-accent-soft, #ecfdf5);
 }
 
+.wp-issue-row .wp-stack-tight > * + * {
+    margin-top: 0.125rem;
+}
+
 .wp-issue-desc {
     color: var(--wp-text);
     font-weight: 600;
@@ -393,60 +611,215 @@ a.wp-kpi:hover {
     white-space: nowrap;
 }
 
+.wp-issue-row-link {
+    flex: 1;
+    min-width: 0;
+    text-decoration: none;
+    color: inherit;
+}
+
+.wp-issue-row-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.wp-list--entity-rows {
+    gap: 0.5rem;
+}
+
 /* ---------------------------------------------------------------------------
- | Filterbalk (meldingenlijst).
+ | Filterbalk (meldingenlijst — V1: 2×2-grid, compact paneel).
  * ------------------------------------------------------------------------- */
-.wp-filter-bar {
+.wp-issues-page > * + *,
+.wp-tasks-page > * + * {
+    margin-top: 1rem;
+}
+
+.wp-filter-panel {
+    padding: 1rem;
+}
+
+.wp-filter-panel-hint {
+    margin: 0.75rem 0 0;
+    font-size: 0.8125rem;
+}
+
+.wp-filter-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.wp-filter-grid > * {
+    min-width: 0;
+}
+
+.wp-filter-grid .wp-label {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+}
+
+.wp-filter-status-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wp-filter-status-row .wp-select {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.wp-filter-go-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.wp-filter-recurring-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    min-height: 2.375rem;
 }
 
 .wp-filter-field {
-    min-width: 12rem;
+    min-width: 0;
 }
 
-.wp-filter-field.wp-grow {
-    flex: 1 1 16rem;
+.wp-filter-field--recurring .wp-label {
+    margin-bottom: 0.25rem;
 }
 
 /* ---------------------------------------------------------------------------
  | Statusgroepen + meldingkaarten (meldingenlijst).
  * ------------------------------------------------------------------------- */
+.wp-status-block {
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    overflow: hidden;
+    background-color: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
+}
+
 .wp-group-head {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-    padding: 0.375rem 0 0.375rem 0.75rem;
-    border-left: 3px solid var(--wp-accent);
-    border-bottom: 1px solid var(--wp-accent-border);
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    border-left: 4px solid var(--wp-accent);
+    background-color: var(--wp-surface-2);
+}
+
+.wp-group-head--new {
+    border-left-color: var(--wp-info-border);
+}
+
+.wp-group-head--new .wp-group-title {
+    color: var(--wp-info-text);
+}
+
+.wp-group-head--new .wp-group-count {
+    color: var(--wp-info-text);
+}
+
+.wp-group-head--progress {
+    border-left-color: var(--wp-warning-border);
+}
+
+.wp-group-head--progress .wp-group-title {
+    color: var(--wp-warning-text);
+}
+
+.wp-group-head--progress .wp-group-count {
+    color: var(--wp-warning-text);
+}
+
+.wp-group-head--done {
+    border-left-color: var(--wp-accent-border);
+}
+
+.wp-group-head--done .wp-group-title {
+    color: var(--wp-accent-text);
+}
+
+.wp-group-head--done .wp-group-count {
+    color: var(--wp-accent-text);
+}
+
+.wp-group-head--closed {
+    border-left-color: var(--wp-border-strong);
+}
+
+.wp-group-head--closed .wp-group-title {
+    color: var(--wp-text-muted);
+}
+
+.wp-group-head--closed .wp-group-count {
+    color: var(--wp-text-muted);
 }
 
 .wp-group-title {
+    margin: 0;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--wp-accent-text);
 }
 
 .wp-group-count {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 1.5rem;
-    height: 1.5rem;
-    padding-inline: 0.5rem;
-    border-radius: var(--wp-radius-pill);
-    background-color: var(--wp-accent-soft);
-    color: var(--wp-accent-text);
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
-.wp-issue-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-    gap: 0.875rem;
+.wp-status-block__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.wp-issue-card-title {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    line-height: 1.35;
+}
+
+.wp-issue-card-meta,
+.wp-issue-card-desc {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--wp-muted);
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-issue-card-desc-label {
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-issue-card-body {
+    margin: 0.375rem 0 0;
+    font-size: 0.8125rem;
+    color: var(--wp-text);
+    line-height: 1.35;
+}
+
+.wp-issue-card-team {
+    margin: 0.25rem 0 0;
+    font-size: 0.75rem;
 }
 
 .wp-melding-card {
@@ -462,6 +835,12 @@ a.wp-kpi:hover {
     box-shadow: var(--wp-shadow);
     border-color: var(--wp-border-strong);
     text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .wp-filter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .wp-melding-nr {
@@ -675,6 +1054,12 @@ a.wp-kpi:hover {
     display: none;
 }
 
+.wp-photo-grid--gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
 .wp-photo-thumb {
     position: relative;
     aspect-ratio: 1 / 1;
@@ -684,11 +1069,56 @@ a.wp-kpi:hover {
     background-color: var(--wp-surface-2);
 }
 
+.wp-photo-grid--gallery .wp-photo-thumb {
+    flex: none;
+    width: 5rem;
+    height: 5rem;
+    aspect-ratio: auto;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    transition: box-shadow var(--wp-transition), transform var(--wp-transition);
+}
+
+.wp-photo-grid--gallery .wp-photo-thumb:hover {
+    box-shadow: var(--wp-shadow);
+    transform: translateY(-1px);
+}
+
+.wp-photo-grid--gallery .wp-photo-thumb:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 2px;
+}
+
 .wp-photo-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+.wp-photo-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: rgba(17, 24, 39, 0.88);
+    cursor: zoom-out;
+}
+
+.wp-photo-lightbox img {
+    max-width: min(96vw, 56rem);
+    max-height: 90dvh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--wp-radius-lg);
+    box-shadow: var(--wp-shadow-lg);
+    cursor: default;
 }
 
 .wp-photo-add {
@@ -883,35 +1313,22 @@ a.wp-kpi:hover {
     color: var(--wp-text);
 }
 
-/* Inklapbare teamblokken op Gebruikers-pagina. */
-.wp-team-disclosure-head {
-    align-items: flex-start;
-    gap: 0.75rem;
-}
-
-.wp-team-disclosure-toggle {
-    display: flex;
+/* Inklapbare teamrijen op Gebruikers-pagina. */
+.wp-team-row-toggle {
+    display: inline-flex;
     align-items: center;
-    gap: 0.625rem;
-    flex: 1 1 auto;
-    min-width: 0;
+    gap: 0.375rem;
     padding: 0;
     border: none;
     background: transparent;
     text-align: left;
     cursor: pointer;
-    color: var(--wp-text);
+    color: inherit;
     font: inherit;
 }
 
-.wp-team-disclosure-toggle:hover {
+.wp-team-row-toggle:hover .wp-data-row-title {
     color: var(--wp-accent-text);
-}
-
-.wp-team-disclosure-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: var(--wp-text);
 }
 
 .wp-disclosure-chevron {
@@ -922,14 +1339,14 @@ a.wp-kpi:hover {
     transition: transform var(--wp-transition);
 }
 
-.wp-team-disclosure.is-open .wp-disclosure-chevron {
+.wp-disclosure-chevron.is-open {
     transform: rotate(180deg);
 }
 
-.wp-team-disclosure-body {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--wp-border);
+.wp-team-workers-panel {
+    margin-left: 0.5rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--wp-border);
 }
 
 /* Statusvariant van het worker-icoon in beheerlijsten. */
@@ -1053,16 +1470,45 @@ a.wp-kpi:hover {
     box-shadow: var(--wp-shadow-sm);
 }
 
-.wp-qr-frame svg {
+.wp-qr-code-frame {
+    box-sizing: border-box;
+}
+
+.wp-qr-code-frame-inner {
+    position: relative;
+    display: block;
+    line-height: 0;
+}
+
+.wp-qr-code-frame-inner > svg {
     width: 16rem;
     height: 16rem;
     display: block;
 }
 
-.wp-qr-url {
-    font-size: 0.8125rem;
-    color: var(--wp-text-muted);
-    word-break: break-all;
+.wp-qr-code-center-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    width: var(--wp-qr-logo-box, 30%);
+    aspect-ratio: 1;
+    padding: var(--wp-qr-logo-pad, 2px);
+    border-radius: var(--wp-radius-sm);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px var(--wp-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.wp-qr-code-center-logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .wp-qr-actions {
@@ -1114,36 +1560,69 @@ a.wp-kpi:hover {
     font-size: 0.875rem;
 }
 
-.wp-faq {
-    display: grid;
-    gap: 0.5rem;
+/* ---------------------------------------------------------------------------
+ | FAQ — alleen accordeon-shell; inhoud = .wp-card, .wp-stack, .wp-muted, .wp-flash.
+ * ------------------------------------------------------------------------- */
+.wp-faq-wrap {
+    width: 100%;
+    max-width: 57.5rem;
+    margin-inline: auto;
+}
+
+.wp-faq-item {
+    overflow: hidden;
 }
 
 .wp-faq-trigger {
     width: 100%;
+    border: 0;
+    background: transparent;
+    padding: 1rem 1.25rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.875rem 1rem;
+    gap: 0.875rem;
     text-align: left;
-    background: var(--wp-surface);
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius);
-    font-weight: 600;
     cursor: pointer;
+    transition: transform var(--wp-transition);
 }
 
-.wp-faq-body {
-    padding: 0 1rem 1rem;
-    color: var(--wp-text-muted);
+.wp-faq-trigger:hover {
+    transform: translateY(-2px);
+}
+
+.wp-faq-trigger:focus-visible {
+    outline: 2px solid var(--wp-border-strong);
+    outline-offset: -2px;
+}
+
+.wp-faq-icon {
+    width: 2.375rem;
+    height: 2.375rem;
+    flex-shrink: 0;
+    border: 1px solid var(--wp-accent-border);
+    border-radius: var(--wp-radius);
+    background: var(--wp-surface);
+    color: var(--wp-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-faq-panel {
+    border-top: 1px solid var(--wp-border);
 }
 
 .wp-help-chat {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    max-height: 16rem;
+    padding: 0.75rem 1rem 1rem;
+    min-height: 0;
+    flex: 1;
 }
 
 .wp-help-chat-messages {
@@ -1151,7 +1630,8 @@ a.wp-kpi:hover {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-height: 10rem;
+    min-height: 8rem;
+    max-height: min(18rem, 45vh);
 }
 
 .wp-help-chat-bubble {
@@ -1178,40 +1658,6 @@ a.wp-kpi:hover {
     margin-bottom: 0.5rem;
 }
 
-.wp-help-panel {
-    width: min(22rem, calc(100vw - 2rem));
-}
-
-.wp-location-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem;
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius);
-    background-color: var(--wp-surface);
-}
-
-.wp-location-row-link {
-    flex: 1;
-    text-decoration: none;
-    color: inherit;
-}
-
-.wp-location-row-link:hover {
-    text-decoration: none;
-}
-
-.wp-location-unit-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem;
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius);
-}
 
 .wp-flash--success {
     padding: 0.75rem 1rem;
@@ -1229,6 +1675,15 @@ a.wp-kpi:hover {
     color: #b91c1c;
 }
 
+.wp-form-error-list {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+.wp-form-error-list li + li {
+    margin-top: 0.25rem;
+}
+
 .wp-briefing-list {
     margin: 0;
     padding-left: 1.25rem;
@@ -1236,5 +1691,173 @@ a.wp-kpi:hover {
 
 .wp-no-print-break {
     break-inside: avoid;
+}
+
+/* ---------------------------------------------------------------------------
+ | Dashboard — proefperiode batterijcapsule (V1-pariteit)
+ * ------------------------------------------------------------------------- */
+@keyframes wp-dashboard-trial-pulse {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.2;
+        transform: scale(1.02);
+    }
+}
+
+.wp-dashboard-trial-capsule {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: var(--wp-text);
+    border: 1px solid var(--wp-border);
+    background: var(--wp-surface);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 4px 20px rgba(15, 23, 42, 0.05);
+    overflow: visible;
+    isolation: isolate;
+    transition:
+        border-color var(--wp-transition),
+        box-shadow var(--wp-transition);
+}
+
+.wp-dashboard-trial-capsule:hover {
+    border-color: var(--wp-accent-border);
+    box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.05),
+        0 8px 28px rgba(15, 23, 42, 0.07);
+}
+
+.wp-dashboard-trial-capsule__pulse {
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    border: 2px solid rgba(16, 185, 129, 0.45);
+    animation: wp-dashboard-trial-pulse 2.8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wp-dashboard-trial-capsule__shine {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        105deg,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0) 42%,
+        rgba(255, 255, 255, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.wp-dashboard-trial-capsule__body {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.9rem 0.4rem 0.65rem;
+    border-radius: inherit;
+}
+
+.wp-dashboard-trial-capsule__icon {
+    height: 2rem;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+.wp-dashboard-trial-capsule__text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    padding-right: 0.15rem;
+}
+
+.wp-dashboard-trial-capsule:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wp-dashboard-trial-capsule__pulse {
+        animation: none;
+        opacity: 0.35;
+    }
+}
+
+/* ---------------------------------------------------------------------------
+ | Instellingen — WinProx-stijl (themakeuze)
+ * ------------------------------------------------------------------------- */
+.wp-style-options {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+@media (min-width: 40rem) {
+    .wp-style-options {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.wp-style-option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem;
+    border: 2px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    background-color: var(--wp-surface);
+    cursor: pointer;
+    transition:
+        border-color var(--wp-transition),
+        box-shadow var(--wp-transition),
+        background-color var(--wp-transition);
+}
+
+.wp-style-option:hover {
+    border-color: var(--wp-accent-border);
+    background-color: var(--wp-surface-hover);
+}
+
+.wp-style-option.is-selected {
+    border-color: var(--wp-accent);
+    box-shadow: 0 0 0 1px var(--wp-accent-border);
+    background-color: var(--wp-accent-soft);
+}
+
+.wp-style-option-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.wp-style-option-label {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-style-option-desc {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--wp-text-muted);
 }
 

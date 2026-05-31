@@ -1,27 +1,35 @@
 <div class="wp-stack">
-    <div class="wp-row">
-        <div class="wp-cluster">
-            <h1 class="wp-page-title">{{ __('issues.show.title') }}</h1>
-            <x-wp-ref-nr :id="$issue->id" />
+    <x-wp-entity-detail-head
+        icon="issues"
+        :title="__('issues.show.overview_title')"
+        help-page="issues.show"
+        ref-type="issue"
+        :ref-id="$issue->id"
+        :headline="$headline"
+        :address="$addressLine"
+        route-name="issues.show"
+        :current-id="$issue->id"
+        :nav-label="__('issues.show.nav_label')"
+        :first-id="$nav['firstId']"
+        :prev-id="$nav['prevId']"
+        :next-id="$nav['nextId']"
+        :last-id="$nav['lastId']"
+    >
+        <x-slot name="meta">
             <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
-        </div>
-        <a href="{{ route('issues.index') }}" class="btn btn--ghost btn--sm">{{ __('issues.show.back') }}</a>
-    </div>
+            @unless ($issue->isApproved())
+                <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
+            @endunless
+        </x-slot>
+    </x-wp-entity-detail-head>
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('issues.show.report') }}</h2>
             @unless ($issue->isApproved())
-                <div class="wp-cluster">
-                    <span class="wp-pill wp-pill--progress">{{ __('issues.pending_review') }}</span>
-                    <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
-                </div>
+                <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
             @endunless
         </div>
-
-        @if ($issue->location)
-            <p class="wp-muted">{{ $issue->location->name }}@if ($issue->unit) &middot; {{ $issue->unit->name }}@endif</p>
-        @endif
 
         @if ($issue->reporter_name || $issue->reporter_contact)
             <p class="wp-muted">{{ $issue->reporter_name }}@if ($issue->reporter_contact) ({{ $issue->reporter_contact }})@endif</p>
@@ -50,22 +58,19 @@
 
         <p class="wp-text-body">{{ $issue->description }}</p>
 
-        @php
-            $reportPhotos = $issue->photos->whereNull('issue_update_id');
-        @endphp
-        @if ($reportPhotos->isNotEmpty())
-            <div class="wp-photo-grid">
-                @foreach ($reportPhotos as $photo)
-                    <div class="wp-photo-thumb" wire:key="photo-{{ $photo->id }}">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
-                    </div>
-                @endforeach
-            </div>
-        @endif
+        @include('partials.wp-issue-photo-gallery', [
+            'photos' => $issue->photos->whereNull('issue_update_id'),
+            'wireKeyPrefix' => 'photo',
+        ])
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
+        <div class="wp-row">
+            <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
+            <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddTaskModal">
+                {{ __('issues.show.add_task_button') }}
+            </button>
+        </div>
 
         <div class="wp-list">
             @forelse ($issue->tasks as $task)
@@ -81,23 +86,48 @@
                 <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>
             @endforelse
         </div>
-
-        <form wire:submit="addTask" class="wp-stack">
-            <div class="wp-field">
-                <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task') }}</label>
-                <div class="wp-cluster">
-                    <select id="newTeamId" class="wp-select wp-grow" wire:model="newTeamId">
-                        <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
-                        @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                        @endforeach
-                    </select>
-                    <button type="submit" class="btn btn--primary btn--sm">{{ __('issues.show.add_task_submit') }}</button>
-                </div>
-                @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-        </form>
     </div>
+
+    @if ($showAddTaskModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-add-task-title">
+            <form wire:submit="addTask" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="issue-add-task-title" class="wp-section-title">{{ __('issues.show.add_task_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeAddTaskModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.show.add_task_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
+                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
+                        <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
+                        @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task_team_label') }}</label>
+                        <select id="newTeamId" class="wp-select" wire:model="newTeamId">
+                            <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeAddTaskModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('issues.show.add_task_submit') }}</button>
+                </div>
+            </form>
+        </div>
+        @endteleport
+    @endif
 
     <div class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-section-title">{{ __('issues.show.updates') }}</h2>
@@ -118,15 +148,10 @@
                 @if ($update->body)
                     <p class="wp-text-body">{{ $update->body }}</p>
                 @endif
-                @if ($update->photos->isNotEmpty())
-                    <div class="wp-photo-grid">
-                        @foreach ($update->photos as $photo)
-                            <div class="wp-photo-thumb" wire:key="up-{{ $update->id }}-{{ $photo->id }}">
-                                <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
+                @include('partials.wp-issue-photo-gallery', [
+                    'photos' => $update->photos,
+                    'wireKeyPrefix' => 'up-'.$update->id,
+                ])
             </div>
         @empty
             <p class="wp-muted">{{ __('issues.show.updates_empty') }}</p>

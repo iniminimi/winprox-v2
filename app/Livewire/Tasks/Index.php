@@ -73,13 +73,6 @@ class Index extends Component
             ->latest()
             ->get();
 
-        $newTasks = Task::query()
-            ->with(['issue.location', 'issue.unit', 'team'])
-            ->where('status', TaskStatus::New)
-            ->latest()
-            ->limit(5)
-            ->get();
-
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
             $bucket = $tasks->where('status', $status)->sortByDesc('created_at');
@@ -90,7 +83,6 @@ class Index extends Component
 
         return view('livewire.tasks.index', [
             'groups' => $groups,
-            'newTasks' => $newTasks,
             'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,

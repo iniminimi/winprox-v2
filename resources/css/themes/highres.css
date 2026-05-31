@@ -1,0 +1,78 @@
+/*
+ | Thema "High Res" — verfijnd, gradients en glassmorphism.
+ */
+
+[data-theme='highres'] {
+    --wp-bg: #eef2ff;
+    --wp-surface: rgba(255, 255, 255, 0.78);
+    --wp-surface-2: rgba(255, 255, 255, 0.55);
+    --wp-surface-hover: rgba(255, 255, 255, 0.92);
+
+    --wp-border: rgba(99, 102, 241, 0.18);
+    --wp-border-strong: rgba(79, 70, 229, 0.28);
+
+    --wp-text: #0f172a;
+    --wp-text-body: #334155;
+    --wp-text-muted: #64748b;
+    --wp-text-on-accent: #ffffff;
+
+    --wp-accent: #0d9488;
+    --wp-accent-strong: #0f766e;
+    --wp-accent-soft: rgba(45, 212, 191, 0.22);
+    --wp-accent-border: rgba(13, 148, 136, 0.35);
+    --wp-accent-text: #0f766e;
+
+    --wp-warning: #d97706;
+    --wp-warning-strong: #b45309;
+    --wp-warning-soft: rgba(251, 191, 36, 0.25);
+    --wp-warning-border: rgba(217, 119, 6, 0.35);
+    --wp-warning-text: #b45309;
+
+    --wp-danger: #e11d48;
+    --wp-danger-strong: #be123c;
+    --wp-danger-soft: rgba(251, 113, 133, 0.22);
+    --wp-danger-border: rgba(225, 29, 72, 0.3);
+    --wp-danger-text: #be123c;
+
+    --wp-info: #4f46e5;
+    --wp-info-soft: rgba(129, 140, 248, 0.22);
+    --wp-info-border: rgba(79, 70, 229, 0.3);
+    --wp-info-text: #4338ca;
+
+    --wp-shell-gradient:
+        radial-gradient(ellipse 90% 60% at 10% 0%, rgba(129, 140, 248, 0.28), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 90% 10%, rgba(45, 212, 191, 0.22), transparent 45%),
+        linear-gradient(165deg, #eef2ff 0%, #f0fdfa 45%, #faf5ff 100%);
+    --wp-card-backdrop: blur(14px) saturate(1.35);
+    --wp-sidebar-glass: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme='highres'] body.wp-shell {
+    background: var(--wp-shell-gradient);
+    background-color: var(--wp-bg);
+}
+
+[data-theme='highres'] .wp-card {
+    backdrop-filter: var(--wp-card-backdrop);
+    -webkit-backdrop-filter: var(--wp-card-backdrop);
+    box-shadow:
+        var(--wp-shadow-lg),
+        0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+}
+
+[data-theme='highres'] .wp-sidebar {
+    background-color: var(--wp-sidebar-glass);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    border-color: var(--wp-border);
+    box-shadow: var(--wp-shadow-lg);
+}
+
+[data-theme='highres'] .btn--primary {
+    background: linear-gradient(135deg, var(--wp-accent) 0%, #14b8a6 55%, var(--wp-accent-strong) 100%);
+    border-color: transparent;
+}
+
+[data-theme='highres'] .wp-nav-link.is-active {
+    background: linear-gradient(90deg, var(--wp-accent-soft), transparent);
+}

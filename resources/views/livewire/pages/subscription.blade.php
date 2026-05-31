@@ -1,8 +1,10 @@
 <div class="wp-stack">
-    <div class="wp-stack-tight">
-        <h1 class="wp-page-title">{{ __('subscription.title') }}</h1>
-        <p class="wp-muted">{{ __('subscription.subtitle') }}</p>
-    </div>
+    <x-wp-page-head-title
+        icon="subscription"
+        :title="__('subscription.title')"
+        help-page="subscription"
+        :subtitle="__('subscription.subtitle')"
+    />
 
     @if ($statusMessage)
         <div class="wp-card wp-card-pad">

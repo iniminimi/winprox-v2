@@ -1,8 +1,9 @@
 {
     "title": "Instellingen",
-    "subtitle": "Bedrijfsgegevens, privacy en voorkeuren van je organisatie.",
+    "subtitle": "Bedrijfsgegevens, privacy en je persoonlijke voorkeuren.",
     "org": {
         "title": "Je organisatie",
+        "readonly_hint": "Alleen de beheerder kan bedrijfsgegevens aanpassen.",
         "name_label": "Organisatienaam",
         "logo_label": "Organisatielogo",
         "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB).",
@@ -14,8 +15,22 @@
         "download": "JSON-export downloaden"
     },
     "style": {
-        "title": "Stijl",
-        "coming_soon": "Binnenkort kun je hier het visuele thema van jullie omgeving kiezen."
+        "title": "WinProx-stijl aanpassen",
+        "hint": "Kies hoe WinProx er voor jou uitziet. Je keuze geldt op al je apparaten waar je bent ingelogd.",
+        "options": {
+            "simple": {
+                "label": "Eenvoudig",
+                "description": "Helder en rustig — de standaard WinProx-stijl."
+            },
+            "dark": {
+                "label": "Donker",
+                "description": "Nachtmodus met donkere achtergronden, zoals op je telefoon."
+            },
+            "highres": {
+                "label": "High Res",
+                "description": "Verfijnd met zachte verlopen, rijkere kleuren en glassmorphism."
+            }
+        }
     },
     "errors": {
         "organisation_name_required": "Geef een organisatienaam op."

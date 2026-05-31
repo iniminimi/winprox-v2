@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
+use App\Enums\UiTheme;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
@@ -26,20 +28,27 @@ class Settings extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $orgLogo = null;
 
+    public string $uiTheme = '';
+
+    public bool $canManageOrganisation = false;
+
     public function mount(): void
     {
-        $tenant = auth()->user()->tenant;
-        if (! $tenant instanceof Tenant) {
-            abort(403);
-        }
+        $tenant = $this->resolveTenant();
+        abort_unless($tenant instanceof Tenant, 403);
 
-        $this->authorize('manageOrganisation', $tenant);
-        $this->orgName = (string) $tenant->name;
+        $user = auth()->user();
+        $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);
+        $this->uiTheme = $user->uiThemeEnum()->value;
+
+        if ($this->canManageOrganisation) {
+            $this->orgName = (string) $tenant->name;
+        }
     }
 
     public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
     {
-        $tenant = auth()->user()->tenant;
+        $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
             return;
         }
@@ -65,13 +74,58 @@ class Settings extends Component
             $this->reset('orgLogo');
         }
 
-        $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $this->orgName = $updated->name;
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
 
         $this->dispatch('saved');
     }
 
+    public function organisationLogoPreviewUrl(): ?string
+    {
+        if ($this->orgLogo !== null) {
+            return $this->orgLogo->temporaryUrl();
+        }
+
+        return $this->resolveTenant()?->fresh()?->logoPublicUrl();
+    }
+
+    public function updatedUiTheme(string $value, UpdateUserUiThemeAction $updateUserUiTheme): void
+    {
+        abort_unless($this->resolveTenant() instanceof Tenant, 403);
+
+        $theme = UiTheme::tryFromString($value);
+        $user = auth()->user();
+
+        $updateUserUiTheme->handle($user, $theme, (int) $user->id);
+
+        $this->uiTheme = $theme->value;
+        $this->dispatch('ui-theme-changed', theme: $theme->value);
+    }
+
     public function render()
     {
-        return view('livewire.pages.settings');
+        return view('livewire.pages.settings', [
+            'themeChoices' => UiTheme::choices(),
+            'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
+        ]);
+    }
+
+    private function resolveTenant(): ?Tenant
+    {
+        $user = auth()->user();
+        if ($user->tenant instanceof Tenant) {
+            return $user->tenant;
+        }
+
+        if ($user->is_superuser && SupportTenantContext::isActive()) {
+            return Tenant::query()->find(SupportTenantContext::activeTenantId());
+        }
+
+        return null;
     }
 }
