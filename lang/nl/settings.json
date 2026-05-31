@@ -5,8 +5,20 @@
         "title": "Je organisatie",
         "readonly_hint": "Alleen de beheerder kan bedrijfsgegevens aanpassen.",
         "edit": "Organisatiegegevens bewerken",
-        "modal_title": "Organisatiegegevens",
-        "modal_hint": "Naam en logo voor je omgeving en op QR-stickers.",
+        "modal_title": "Gegevens organisatie",
+        "modal_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes, unitlabels en ander meldergericht materiaal.",
+        "card_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes en unitlabels.",
+        "label_email": "E-mail",
+        "label_phone": "Telefoon",
+        "label_address": "Adres",
+        "placeholder_name": "Naam",
+        "placeholder_email": "E-mail",
+        "placeholder_phone": "Telefoon",
+        "placeholder_street": "Straat",
+        "placeholder_house_number": "Huisnummer",
+        "placeholder_postal_code": "Postcode",
+        "placeholder_city": "Plaats",
+        "placeholder_country": "Land (bv. BE)",
         "name_label": "Organisatienaam",
         "logo_label": "Organisatielogo",
         "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB)."
@@ -35,7 +47,9 @@
         }
     },
     "errors": {
-        "organisation_name_required": "Geef een organisatienaam op."
+        "organisation_name_required": "Geef een organisatienaam op.",
+        "organisation_email_invalid": "Geef een geldig e-mailadres op.",
+        "organisation_country_invalid": "Gebruik een landcode van twee letters (bv. BE) of laat leeg."
     },
     "api": {
         "nav": "API & webhooks",

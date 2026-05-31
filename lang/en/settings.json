@@ -6,7 +6,19 @@
         "readonly_hint": "Only the administrator can edit company details.",
         "edit": "Edit organisation details",
         "modal_title": "Organisation details",
-        "modal_hint": "Name and logo for your workspace and on QR stickers.",
+        "modal_hint": "These details appear on printed QR codes, unit labels, and other reporter-facing materials.",
+        "card_hint": "These details appear on printed QR codes and unit labels.",
+        "label_email": "Email",
+        "label_phone": "Phone",
+        "label_address": "Address",
+        "placeholder_name": "Name",
+        "placeholder_email": "Email",
+        "placeholder_phone": "Phone",
+        "placeholder_street": "Street",
+        "placeholder_house_number": "House number",
+        "placeholder_postal_code": "Postal code",
+        "placeholder_city": "City",
+        "placeholder_country": "Country (e.g. BE)",
         "name_label": "Organisation name",
         "logo_label": "Organisation logo",
         "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB)."
@@ -35,7 +47,9 @@
         }
     },
     "errors": {
-        "organisation_name_required": "Enter an organisation name."
+        "organisation_name_required": "Enter an organisation name.",
+        "organisation_email_invalid": "Enter a valid email address.",
+        "organisation_country_invalid": "Use a two-letter country code (e.g. BE) or leave empty."
     },
     "api": {
         "nav": "API & webhooks",

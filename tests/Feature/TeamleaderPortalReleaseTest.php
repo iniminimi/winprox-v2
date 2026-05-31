@@ -48,8 +48,7 @@ it('laat een teamleader een geblokkeerde collega vrijgeven op het unit-portaal',
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-tl-release'])
         ->set('release_teamleader_icon_slug', 'crown')
-        ->set('release_first_name', 'Locked')
-        ->set('release_last_name', 'Colleague')
+        ->set('release_worker_id', $locked->id)
         ->call('releaseColleagueIcon')
         ->assertHasNoErrors();
 
@@ -92,8 +91,35 @@ it('weigert vrijgave wanneer het teamleader-icoon niet klopt', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-tl-wrong'])
         ->set('release_teamleader_icon_slug', 'heart')
-        ->set('release_first_name', 'Other')
-        ->set('release_last_name', 'Worker')
+        ->set('release_worker_id', Worker::where('internal_team_id', $team->id)->where('first_name', 'Other')->value('id'))
         ->call('releaseColleagueIcon')
         ->assertHasErrors('release_teamleader_icon_slug');
+});
+
+it('toont geen naamvelden meer en vereist selectie van een geblokkeerde collega', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'default_internal_team_id' => $team->id,
+        'is_active' => true,
+        'qr_token' => 'unit-tl-select',
+    ]);
+
+    $teamleader = Worker::factory()->withIcon('crown')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_teamleader' => true,
+    ]);
+
+    WorkerVerification::markVerified($team, $teamleader);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-tl-select'])
+        ->set('release_teamleader_icon_slug', 'crown')
+        ->call('releaseColleagueIcon')
+        ->assertHasErrors('release_worker_id');
 });

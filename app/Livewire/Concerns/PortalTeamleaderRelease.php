@@ -5,7 +5,6 @@ namespace App\Livewire\Concerns;
 use App\Actions\Portal\TeamleaderReleaseWorkerIconAction;
 use App\Models\InternalTeam;
 use App\Models\Worker;
-use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use Illuminate\Validation\Rule;
 
@@ -18,9 +17,7 @@ trait PortalTeamleaderRelease
 {
     public bool $showReleasePanel = false;
 
-    public string $release_first_name = '';
-
-    public string $release_last_name = '';
+    public ?int $release_worker_id = null;
 
     public string $release_teamleader_icon_slug = '';
 
@@ -30,6 +27,26 @@ trait PortalTeamleaderRelease
         if (! $this->showReleasePanel) {
             $this->resetReleaseForm();
         }
+    }
+
+    /** @return \Illuminate\Support\Collection<int, Worker> */
+    public function blockedReleaseCandidates()
+    {
+        $team = $this->portalReleaseTeam();
+        $teamleader = $this->portalTeamleaderWorker();
+
+        if ($team === null) {
+            return collect();
+        }
+
+        return Worker::query()
+            ->where('internal_team_id', $team->id)
+            ->where('is_active', true)
+            ->whereNotNull('field_icon_locked_at')
+            ->when($teamleader !== null, fn ($query) => $query->where('id', '!=', $teamleader->id))
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->get();
     }
 
     public function releaseColleagueIcon(TeamleaderReleaseWorkerIconAction $releaseIcon): void
@@ -43,12 +60,10 @@ trait PortalTeamleaderRelease
 
         $this->validate([
             'release_teamleader_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)],
-            'release_first_name' => ['required', 'string', 'max:120'],
-            'release_last_name' => ['required', 'string', 'max:120'],
+            'release_worker_id' => ['required', 'integer'],
         ], [
             'release_teamleader_icon_slug.required' => __('portal.worker.errors.icon_required'),
-            'release_first_name.required' => __('portal.worker.errors.name_required'),
-            'release_last_name.required' => __('portal.worker.errors.name_required'),
+            'release_worker_id.required' => __('portal.teamleader.errors.colleague_required'),
         ]);
 
         $expected = trim((string) $teamleader->field_icon_slug);
@@ -58,27 +73,19 @@ trait PortalTeamleaderRelease
             return;
         }
 
-        $identity = WorkerDeviceSession::resolveIdentityOnTeam(
-            $team,
-            $this->release_first_name,
-            $this->release_last_name,
-        );
+        $target = Worker::query()
+            ->where('internal_team_id', $team->id)
+            ->whereKey($this->release_worker_id)
+            ->first();
 
-        if ($identity['status'] === 'ambiguous') {
-            $this->addError('release_identify', __('portal.worker.errors.identify_ambiguous'));
-
-            return;
-        }
-
-        if ($identity['status'] !== 'found') {
-            $this->addError('release_identify', __('portal.teamleader.errors.colleague_not_found'));
+        if ($target === null || $target->field_icon_locked_at === null) {
+            $this->addError('release_worker_id', __('portal.teamleader.errors.colleague_not_found'));
 
             return;
         }
 
-        $target = $identity['worker'] ?? null;
-        if (! $target instanceof Worker) {
-            $this->addError('release_identify', __('portal.teamleader.errors.colleague_not_found'));
+        if ((int) $target->id === (int) $teamleader->id) {
+            $this->addError('release_worker_id', __('portal.teamleader.errors.cannot_release'));
 
             return;
         }
@@ -86,7 +93,7 @@ trait PortalTeamleaderRelease
         try {
             $releaseIcon->handle($team, $teamleader, $target);
         } catch (\InvalidArgumentException) {
-            $this->addError('release_identify', __('portal.teamleader.errors.cannot_release'));
+            $this->addError('release_worker_id', __('portal.teamleader.errors.cannot_release'));
 
             return;
         }
@@ -98,10 +105,9 @@ trait PortalTeamleaderRelease
 
     protected function resetReleaseForm(): void
     {
-        $this->release_first_name = '';
-        $this->release_last_name = '';
+        $this->release_worker_id = null;
         $this->release_teamleader_icon_slug = '';
-        $this->resetErrorBag(['release_teamleader_icon_slug', 'release_first_name', 'release_last_name', 'release_identify']);
+        $this->resetErrorBag(['release_teamleader_icon_slug', 'release_worker_id', 'release_identify']);
     }
 
     /** Ingelogde teamleader op dit portaal (unit of team). */

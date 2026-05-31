@@ -97,13 +97,16 @@
     "teamleader": {
         "title": "Kollegen-Icon freigeben",
         "open": "Freigeben",
-        "hint": "Nur für Teamleiter: Kollegen nach Sperre entsperren oder persönliches Icon zurücksetzen.",
+        "hint": "Nur für Teamleiter: Wählen Sie einen gesperrten Kollegen und geben Sie das Icon frei.",
         "confirm_own_icon": "Bestätigen Sie zuerst Ihr eigenes Icon",
+        "choose_blocked_colleague": "Gesperrten Kollegen wählen",
+        "no_blocked_colleagues": "In diesem Team gibt es keine gesperrten Kollegen.",
         "submit": "Kollege freigeben",
         "released_ok": ":name wurde freigegeben und kann erneut ein Icon wählen.",
         "errors": {
             "icon_wrong": "Das ist nicht Ihr Icon.",
-            "colleague_not_found": "Kein Mitarbeiter mit diesem Namen in Ihrem Team gefunden.",
+            "colleague_required": "Wählen Sie einen gesperrten Kollegen.",
+            "colleague_not_found": "Dieser Kollege ist nicht gesperrt oder gehört nicht zu Ihrem Team.",
             "cannot_release": "Dieser Kollege kann nicht freigegeben werden."
         }
     },

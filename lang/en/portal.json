@@ -97,13 +97,16 @@
     "teamleader": {
         "title": "Release colleague icon",
         "open": "Release",
-        "hint": "Team leaders only: unlock a colleague after lockout or reset their personal icon.",
+        "hint": "Team leaders only: choose a blocked colleague and release their icon after lockout.",
         "confirm_own_icon": "Confirm your own icon first",
+        "choose_blocked_colleague": "Choose a blocked colleague",
+        "no_blocked_colleagues": "There are no blocked colleagues on this team.",
         "submit": "Release colleague",
         "released_ok": ":name has been released and can choose an icon again.",
         "errors": {
             "icon_wrong": "That is not your icon.",
-            "colleague_not_found": "No worker with this name found on your team.",
+            "colleague_required": "Choose a blocked colleague.",
+            "colleague_not_found": "This colleague is not blocked or is not on your team.",
             "cannot_release": "This colleague cannot be released."
         }
     },

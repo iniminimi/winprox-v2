@@ -15,6 +15,13 @@ class Tenant extends Model
 
     protected $fillable = [
         'name',
+        'email',
+        'phone',
+        'street',
+        'house_number',
+        'postal_code',
+        'city',
+        'country_code',
         'logo_path',
         'trial_ends_at',
         'billing_plan',
@@ -464,5 +471,28 @@ class Tenant extends Model
     public function logoPublicUrl(): ?string
     {
         return QrCenterLogo::tenantLogoPublicUrl($this);
+    }
+
+    public function organisationAddressLine(): ?string
+    {
+        $streetLine = trim(implode(' ', array_filter([
+            trim((string) ($this->street ?? '')),
+            trim((string) ($this->house_number ?? '')),
+        ], fn (string $part) => $part !== '')));
+
+        $localityLine = trim(implode(' ', array_filter([
+            trim((string) ($this->country_code ?? '')),
+            trim((string) ($this->postal_code ?? '')),
+            trim((string) ($this->city ?? '')),
+        ], fn (string $part) => $part !== '')));
+
+        $line = match (true) {
+            $streetLine !== '' && $localityLine !== '' => $streetLine.', '.$localityLine,
+            $streetLine !== '' => $streetLine,
+            $localityLine !== '' => $localityLine,
+            default => '',
+        };
+
+        return $line !== '' ? $line : null;
     }
 }

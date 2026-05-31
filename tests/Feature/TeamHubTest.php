@@ -127,16 +127,31 @@ it('weigert dat een medewerker collega-gebruikers beheert', function () {
         ->assertForbidden();
 });
 
-it('laat een admin de bedrijfsnaam aanpassen via instellingen', function () {
+it('laat een admin bedrijfsgegevens aanpassen via instellingen', function () {
     [$tenant, $admin] = tenantWithAdmin();
 
     Livewire::actingAs($admin)
         ->test(Settings::class)
         ->set('orgName', 'Acme Holding')
+        ->set('orgEmail', 'info@acme.test')
+        ->set('orgPhone', '+32 50 00 00 00')
+        ->set('orgStreet', 'Bosrandstraat')
+        ->set('orgHouseNumber', '10')
+        ->set('orgPostalCode', '8000')
+        ->set('orgCity', 'Brugge')
+        ->set('orgCountryCode', 'be')
         ->call('saveOrganisation')
         ->assertHasNoErrors();
 
-    expect($tenant->fresh()->name)->toBe('Acme Holding');
+    $fresh = $tenant->fresh();
+    expect($fresh->name)->toBe('Acme Holding')
+        ->and($fresh->email)->toBe('info@acme.test')
+        ->and($fresh->phone)->toBe('+32 50 00 00 00')
+        ->and($fresh->street)->toBe('Bosrandstraat')
+        ->and($fresh->house_number)->toBe('10')
+        ->and($fresh->postal_code)->toBe('8000')
+        ->and($fresh->city)->toBe('Brugge')
+        ->and($fresh->country_code)->toBe('BE');
 });
 
 it('laat een medewerker instellingen zien maar niet bedrijfsgegevens bewerken', function () {

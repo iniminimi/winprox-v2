@@ -14,7 +14,17 @@ class UpdateOrganisationAction
      */
     public function handle(Tenant $tenant, array $data, ?int $actorUserId = null): Tenant
     {
-        $updates = ['name' => $data['name']];
+        $updates = [
+            'name' => trim((string) $data['name']),
+            'email' => filled($data['email'] ?? null) ? $data['email'] : null,
+            'phone' => filled($data['phone'] ?? null) ? $data['phone'] : null,
+            'street' => filled($data['street'] ?? null) ? $data['street'] : null,
+            'house_number' => filled($data['house_number'] ?? null) ? $data['house_number'] : null,
+            'postal_code' => filled($data['postal_code'] ?? null) ? $data['postal_code'] : null,
+            'city' => filled($data['city'] ?? null) ? $data['city'] : null,
+            'country_code' => filled($data['country_code'] ?? null) ? strtoupper((string) $data['country_code']) : null,
+        ];
+
         if (array_key_exists('logo_path', $data)) {
             $updates['logo_path'] = $data['logo_path'];
         }
@@ -27,7 +37,14 @@ class UpdateOrganisationAction
             action: 'tenant.organisation_updated',
             modelType: Tenant::class,
             modelId: (int) $tenant->id,
-            payload: ['name' => $tenant->name, 'logo_path' => $tenant->logo_path],
+            payload: [
+                'name' => $tenant->name,
+                'email' => $tenant->email,
+                'phone' => $tenant->phone,
+                'city' => $tenant->city,
+                'country_code' => $tenant->country_code,
+                'logo_path' => $tenant->logo_path,
+            ],
         );
 
         return $tenant->fresh();

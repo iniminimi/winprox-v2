@@ -6,7 +6,19 @@
         "readonly_hint": "Seul l'administrateur peut modifier les données de l'entreprise.",
         "edit": "Modifier les données de l'organisation",
         "modal_title": "Données de l'organisation",
-        "modal_hint": "Nom et logo pour votre espace et sur les étiquettes QR.",
+        "modal_hint": "Ces informations apparaissent notamment sur les codes QR imprimés, les étiquettes d'unité et autres supports visibles par les rapporteurs.",
+        "card_hint": "Ces informations apparaissent notamment sur les codes QR imprimés et les étiquettes d'unité.",
+        "label_email": "E-mail",
+        "label_phone": "Téléphone",
+        "label_address": "Adresse",
+        "placeholder_name": "Nom",
+        "placeholder_email": "E-mail",
+        "placeholder_phone": "Téléphone",
+        "placeholder_street": "Rue",
+        "placeholder_house_number": "Numéro",
+        "placeholder_postal_code": "Code postal",
+        "placeholder_city": "Ville",
+        "placeholder_country": "Pays (ex. BE)",
         "name_label": "Nom de l'organisation",
         "logo_label": "Logo de l'organisation",
         "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo)."
@@ -35,7 +47,9 @@
         }
     },
     "errors": {
-        "organisation_name_required": "Indiquez un nom d'organisation."
+        "organisation_name_required": "Indiquez un nom d'organisation.",
+        "organisation_email_invalid": "Indiquez une adresse e-mail valide.",
+        "organisation_country_invalid": "Utilisez un code pays à deux lettres (ex. BE) ou laissez vide."
     },
     "api": {
         "nav": "API & webhooks",

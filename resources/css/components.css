@@ -1274,6 +1274,42 @@ a.wp-kpi:hover {
     cursor: not-allowed;
 }
 
+.wp-release-worker-row {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    background: var(--wp-surface);
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color var(--wp-transition),
+        background-color var(--wp-transition),
+        box-shadow var(--wp-transition);
+}
+
+.wp-release-worker-row:hover {
+    border-color: var(--wp-accent-border);
+    background: var(--wp-surface-hover);
+}
+
+.wp-release-worker-row.is-selected {
+    border-color: var(--wp-accent);
+    background: var(--wp-accent-soft);
+    box-shadow: 0 0 0 1px var(--wp-accent-border);
+}
+
+.wp-release-worker-row__icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.wp-release-worker-row__name {
+    font-weight: 600;
+    color: var(--wp-text);
+}
+
 .wp-flash--muted {
     background-color: var(--wp-surface-2);
     border-color: var(--wp-border);

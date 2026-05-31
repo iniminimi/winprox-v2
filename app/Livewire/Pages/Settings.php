@@ -11,6 +11,7 @@ use App\Support\Platform\SupportTenantContext;
 use App\Support\TenantLogoStorage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -24,6 +25,20 @@ class Settings extends Component
     use WithFileUploads;
 
     public string $orgName = '';
+
+    public string $orgEmail = '';
+
+    public string $orgPhone = '';
+
+    public string $orgStreet = '';
+
+    public string $orgHouseNumber = '';
+
+    public string $orgPostalCode = '';
+
+    public string $orgCity = '';
+
+    public string $orgCountryCode = '';
 
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $orgLogo = null;
@@ -44,7 +59,7 @@ class Settings extends Component
         $this->uiTheme = $user->uiThemeEnum()->value;
 
         if ($this->canManageOrganisation) {
-            $this->orgName = (string) $tenant->name;
+            $this->fillOrganisationFromTenant($tenant);
         }
     }
 
@@ -57,7 +72,7 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
-        $this->orgName = (string) $tenant->name;
+        $this->fillOrganisationFromTenant($tenant->fresh());
         $this->reset('orgLogo');
         $this->resetErrorBag();
         $this->showOrgModal = true;
@@ -79,18 +94,40 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
+        $this->orgCountryCode = strtoupper(trim($this->orgCountryCode));
+
         $request = new UpdateOrganisationRequest;
-        $rules = ['orgName' => $request->rules()['name']];
+        $rules = $request->rules();
         if ($this->orgLogo !== null) {
             $rules['orgLogo'] = ['nullable', 'image', 'max:2048'];
         }
 
-        $validated = $this->validate(
+        $validated = Validator::make(
+            [
+                'name' => $this->orgName,
+                'email' => $this->orgEmail,
+                'phone' => $this->orgPhone,
+                'street' => $this->orgStreet,
+                'house_number' => $this->orgHouseNumber,
+                'postal_code' => $this->orgPostalCode,
+                'city' => $this->orgCity,
+                'country_code' => $this->orgCountryCode,
+                'orgLogo' => $this->orgLogo,
+            ],
             $rules,
-            ['orgName.required' => __('settings.errors.organisation_name_required')],
-        );
+            $request->messages(),
+        )->validate();
 
-        $payload = ['name' => $validated['orgName']];
+        $payload = [
+            'name' => $validated['name'],
+            'email' => $validated['email'] ?? null,
+            'phone' => $validated['phone'] ?? null,
+            'street' => $validated['street'] ?? null,
+            'house_number' => $validated['house_number'] ?? null,
+            'postal_code' => $validated['postal_code'] ?? null,
+            'city' => $validated['city'] ?? null,
+            'country_code' => $validated['country_code'] ?? null,
+        ];
 
         if ($this->orgLogo instanceof UploadedFile) {
             $logoStorage->delete($tenant->logo_path);
@@ -99,7 +136,7 @@ class Settings extends Component
         }
 
         $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
-        $this->orgName = $updated->name;
+        $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -139,8 +176,22 @@ class Settings extends Component
         return view('livewire.pages.settings', [
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
-            'orgDisplayName' => $tenant instanceof Tenant ? (string) $tenant->name : '',
+            'organisationTenant' => $tenant instanceof Tenant ? $tenant->fresh() : null,
         ]);
+    }
+
+    private function fillOrganisationFromTenant(Tenant $tenant): void
+    {
+        $this->orgName = trim((string) $tenant->name);
+        $this->orgEmail = (string) ($tenant->email ?? '');
+        $this->orgPhone = (string) ($tenant->phone ?? '');
+        $this->orgStreet = (string) ($tenant->street ?? '');
+        $this->orgHouseNumber = (string) ($tenant->house_number ?? '');
+        $this->orgPostalCode = (string) ($tenant->postal_code ?? '');
+        $this->orgCity = (string) ($tenant->city ?? '');
+        $this->orgCountryCode = $tenant->country_code
+            ? strtoupper((string) $tenant->country_code)
+            : '';
     }
 
     private function resolveTenant(): ?Tenant

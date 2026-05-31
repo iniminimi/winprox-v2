@@ -97,13 +97,16 @@
     "teamleader": {
         "title": "Icoon collega vrijgeven",
         "open": "Vrijgeven",
-        "hint": "Alleen voor teamleaders: ontgrendel een collega na lockout of reset het persoonlijke icoon.",
+        "hint": "Alleen voor teamleaders: kies een geblokkeerde collega en geef het icoon vrij na lockout.",
         "confirm_own_icon": "Bevestig eerst je eigen icoon",
+        "choose_blocked_colleague": "Kies een geblokkeerde collega",
+        "no_blocked_colleagues": "Er zijn geen geblokkeerde collega's op dit team.",
         "submit": "Collega vrijgeven",
         "released_ok": ":name is vrijgegeven en kan opnieuw een icoon kiezen.",
         "errors": {
             "icon_wrong": "Dat is niet jouw icoon.",
-            "colleague_not_found": "Geen medewerker met deze naam gevonden op je team.",
+            "colleague_required": "Kies een geblokkeerde collega.",
+            "colleague_not_found": "Deze collega is niet geblokkeerd of hoort niet bij je team.",
             "cannot_release": "Deze collega kan niet worden vrijgegeven."
         }
     },

@@ -18,6 +18,13 @@ class UpdateOrganisationRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'email' => ['nullable', 'string', 'email', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'street' => ['nullable', 'string', 'max:255'],
+            'house_number' => ['nullable', 'string', 'max:32'],
+            'postal_code' => ['nullable', 'string', 'max:32'],
+            'city' => ['nullable', 'string', 'max:128'],
+            'country_code' => ['nullable', 'string', 'regex:/^$|^[A-Z]{2}$/'],
         ];
     }
 
@@ -27,7 +34,9 @@ class UpdateOrganisationRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => __('team.errors.organisation_name_required'),
+            'name.required' => __('settings.errors.organisation_name_required'),
+            'email.email' => __('settings.errors.organisation_email_invalid'),
+            'country_code.regex' => __('settings.errors.organisation_country_invalid'),
         ];
     }
 }

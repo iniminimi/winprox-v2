@@ -27,21 +27,40 @@
                 @error('release_teamleader_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 
-            <div class="wp-filter-bar">
-                <div class="wp-field wp-grow">
-                    <label class="wp-label" for="release_first">{{ __('portal.worker.first_name') }}</label>
-                    <input id="release_first" type="text" class="wp-input" wire:model="release_first_name" autocomplete="given-name">
-                </div>
-                <div class="wp-field wp-grow">
-                    <label class="wp-label" for="release_last">{{ __('portal.worker.last_name') }}</label>
-                    <input id="release_last" type="text" class="wp-input" wire:model="release_last_name" autocomplete="family-name">
-                </div>
-            </div>
-            @error('release_first_name') <p class="wp-error">{{ $message }}</p> @enderror
-            @error('release_last_name') <p class="wp-error">{{ $message }}</p> @enderror
-            @error('release_identify') <p class="wp-error">{{ $message }}</p> @enderror
+            @php($blockedColleagues = $this->blockedReleaseCandidates())
 
-            <button type="submit" class="btn btn--warning btn--block" @disabled($release_teamleader_icon_slug === '')>
+            @if ($blockedColleagues->isEmpty())
+                <p class="wp-muted">{{ __('portal.teamleader.no_blocked_colleagues') }}</p>
+            @else
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.teamleader.choose_blocked_colleague') }}</label>
+                    <div class="wp-list wp-list--entity-rows">
+                        @foreach ($blockedColleagues as $colleague)
+                            <button type="button"
+                                    wire:key="release-worker-{{ $colleague->id }}"
+                                    wire:click="$set('release_worker_id', {{ $colleague->id }})"
+                                    @class([
+                                        'wp-release-worker-row',
+                                        'is-selected' => $release_worker_id === $colleague->id,
+                                    ])
+                                    aria-pressed="{{ $release_worker_id === $colleague->id ? 'true' : 'false' }}">
+                                <span class="wp-cluster">
+                                    @if ($colleague->field_icon_slug)
+                                        <x-wp-worker-icon :slug="$colleague->field_icon_slug" class="wp-release-worker-row__icon" />
+                                    @endif
+                                    <span class="wp-release-worker-row__name">{{ $colleague->displayName() }}</span>
+                                </span>
+                            </button>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+
+            @error('release_worker_id') <p class="wp-error">{{ $message }}</p> @enderror
+
+            <button type="submit"
+                    class="btn btn--warning btn--block"
+                    @disabled($release_teamleader_icon_slug === '' || $release_worker_id === null || $blockedColleagues->isEmpty())>
                 {{ __('portal.teamleader.submit') }}
             </button>
         </form>

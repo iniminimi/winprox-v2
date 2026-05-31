@@ -66,6 +66,13 @@ final class UserDataExporter
         return [
             'id' => $tenant->id,
             'name' => $tenant->name,
+            'email' => $tenant->email,
+            'phone' => $tenant->phone,
+            'street' => $tenant->street,
+            'house_number' => $tenant->house_number,
+            'postal_code' => $tenant->postal_code,
+            'city' => $tenant->city,
+            'country_code' => $tenant->country_code,
             'is_active' => $tenant->is_active,
             'trial_ends_at' => $tenant->trial_ends_at?->toIso8601String(),
             'billing_plan' => $tenant->billing_plan,

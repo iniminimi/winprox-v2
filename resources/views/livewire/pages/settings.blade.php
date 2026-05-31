@@ -6,10 +6,31 @@
         :subtitle="__('settings.subtitle')"
     />
 
-    @if ($canManageOrganisation)
+    @if ($canManageOrganisation && $organisationTenant)
         <div class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
-            <p class="wp-text-body"><strong>{{ $orgDisplayName }}</strong></p>
+            <p class="wp-muted wp-text-sm">{{ __('settings.org.card_hint') }}</p>
+            <p class="wp-text-body"><strong>{{ $organisationTenant->name }}</strong></p>
+            <div class="wp-stack-tight wp-text-sm">
+                @if ($organisationTenant->email)
+                    <p class="wp-muted">
+                        <span class="wp-text-body">{{ __('settings.org.label_email') }}:</span>
+                        {{ $organisationTenant->email }}
+                    </p>
+                @endif
+                @if ($organisationTenant->phone)
+                    <p class="wp-muted">
+                        <span class="wp-text-body">{{ __('settings.org.label_phone') }}:</span>
+                        {{ $organisationTenant->phone }}
+                    </p>
+                @endif
+                @if ($organisationTenant->organisationAddressLine())
+                    <p class="wp-muted">
+                        <span class="wp-text-body">{{ __('settings.org.label_address') }}:</span>
+                        {{ $organisationTenant->organisationAddressLine() }}
+                    </p>
+                @endif
+            </div>
             @if ($organisationLogoUrl)
                 <img
                     src="{{ $organisationLogoUrl }}"
@@ -26,12 +47,31 @@
                 </button>
             </div>
         </div>
+    @elseif ($canManageOrganisation)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
+            <div class="wp-cluster">
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
+                    {{ __('settings.org.edit') }}
+                </button>
+            </div>
+        </div>
     @else
         <div class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
             <p class="wp-muted">{{ __('settings.org.readonly_hint') }}</p>
-            @if (auth()->user()->tenant?->name)
-                <p><strong>{{ auth()->user()->tenant->name }}</strong></p>
+            @php $readonlyTenant = auth()->user()->tenant; @endphp
+            @if ($readonlyTenant?->name)
+                <p><strong>{{ $readonlyTenant->name }}</strong></p>
+                @if ($readonlyTenant->email)
+                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_email') }}: {{ $readonlyTenant->email }}</p>
+                @endif
+                @if ($readonlyTenant->phone)
+                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_phone') }}: {{ $readonlyTenant->phone }}</p>
+                @endif
+                @if ($readonlyTenant->organisationAddressLine())
+                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_address') }}: {{ $readonlyTenant->organisationAddressLine() }}</p>
+                @endif
             @endif
         </div>
     @endif
@@ -78,9 +118,47 @@
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
-                        <label class="wp-label" for="orgName">{{ __('settings.org.name_label') }}</label>
-                        <input type="text" id="orgName" class="wp-input" wire:model="orgName" autocomplete="organization">
-                        @error('orgName') <p class="wp-error">{{ $message }}</p> @enderror
+                        <input type="text" id="orgName" class="wp-input" wire:model="orgName"
+                               placeholder="{{ __('settings.org.placeholder_name') }}" autocomplete="organization">
+                        @error('name') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <input type="email" id="orgEmail" class="wp-input" wire:model="orgEmail"
+                               placeholder="{{ __('settings.org.placeholder_email') }}" autocomplete="email">
+                        @error('email') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <input type="text" id="orgPhone" class="wp-input" wire:model="orgPhone"
+                               placeholder="{{ __('settings.org.placeholder_phone') }}" autocomplete="tel">
+                        @error('phone') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <input type="text" id="orgStreet" class="wp-input" wire:model="orgStreet"
+                               placeholder="{{ __('settings.org.placeholder_street') }}" autocomplete="street-address">
+                        @error('street') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <input type="text" id="orgHouseNumber" class="wp-input" wire:model="orgHouseNumber"
+                                   placeholder="{{ __('settings.org.placeholder_house_number') }}">
+                            @error('house_number') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <input type="text" id="orgPostalCode" class="wp-input" wire:model="orgPostalCode"
+                                   placeholder="{{ __('settings.org.placeholder_postal_code') }}" autocomplete="postal-code">
+                            @error('postal_code') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+                    <div class="wp-field">
+                        <input type="text" id="orgCity" class="wp-input" wire:model="orgCity"
+                               placeholder="{{ __('settings.org.placeholder_city') }}" autocomplete="address-level2">
+                        @error('city') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <input type="text" id="orgCountryCode" class="wp-input" wire:model="orgCountryCode"
+                               maxlength="2" placeholder="{{ __('settings.org.placeholder_country') }}"
+                               autocomplete="country">
+                        @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="orgLogo">{{ __('settings.org.logo_label') }}</label>

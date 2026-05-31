@@ -6,7 +6,19 @@
         "readonly_hint": "Nur der Administrator kann Unternehmensdaten bearbeiten.",
         "edit": "Organisationsdaten bearbeiten",
         "modal_title": "Organisationsdaten",
-        "modal_hint": "Name und Logo für Ihre Umgebung und auf QR-Aufklebern.",
+        "modal_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes, Unit-Etiketten und anderem Melder-Material.",
+        "card_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes und Unit-Etiketten.",
+        "label_email": "E-Mail",
+        "label_phone": "Telefon",
+        "label_address": "Adresse",
+        "placeholder_name": "Name",
+        "placeholder_email": "E-Mail",
+        "placeholder_phone": "Telefon",
+        "placeholder_street": "Straße",
+        "placeholder_house_number": "Hausnummer",
+        "placeholder_postal_code": "Postleitzahl",
+        "placeholder_city": "Ort",
+        "placeholder_country": "Land (z. B. BE)",
         "name_label": "Name der Organisation",
         "logo_label": "Organisationslogo",
         "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB)."
@@ -35,7 +47,9 @@
         }
     },
     "errors": {
-        "organisation_name_required": "Geben Sie einen Organisationsnamen an."
+        "organisation_name_required": "Geben Sie einen Organisationsnamen an.",
+        "organisation_email_invalid": "Geben Sie eine gültige E-Mail-Adresse an.",
+        "organisation_country_invalid": "Verwenden Sie einen zweistelligen Ländercode (z. B. BE) oder lassen Sie das Feld leer."
     },
     "api": {
         "nav": "API & Webhooks",
