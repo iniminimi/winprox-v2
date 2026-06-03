@@ -5,17 +5,19 @@
         "qr_info": "QR-code informatie",
         "sticker_number": "Stickernummer",
         "status": "Status",
-        "select_unit": "Selecteer een unit",
         "search_units": "Zoek units",
         "search_placeholder": "Typ om te zoeken...",
         "no_units": "Geen units gevonden",
         "link_button": "Koppel QR-code",
         "success_title": "QR-code gekoppeld",
         "success_message": "QR-code :sticker is succesvol gekoppeld.",
-        "go_to_unit": "Ga naar unit"
+        "go_to_unit": "Ga naar unit",
+        "linked_qr": "gekoppeld",
+        "category": "Categorie",
+        "team": "Team"
     },
     "unassigned_guest": {
-        "title": "QR-code nog niet geactiveerd",
+        "title": "(her)koppel een unit",
         "message": "Deze QR-code is nog niet gekoppeld aan een unit. Log in om deze te koppelen.",
         "sticker": "Stickernummer",
         "login": "Inloggen"

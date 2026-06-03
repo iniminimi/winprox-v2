@@ -146,8 +146,8 @@
         "anchor": "Anker"
     },
     "unassigned_qr": {
-        "title": "QR-code koppelen",
-        "subtitle": "Dynamische QR-code - nog niet gekoppeld aan een unit",
+        "title": "(her)koppel een unit",
+        "subtitle": "Dynamische QR-code - (her)koppel aan een unit",
         "sticker_number": "Stickernummer",
         "description": "Log in om deze QR-code te koppelen aan een unit. Na koppeling kun je deze QR-code gebruiken om meldingen te maken.",
         "login_button": "Inloggen",

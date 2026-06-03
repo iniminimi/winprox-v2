@@ -20,7 +20,7 @@
 
 <details class="wp-lang-select wp-lang-select--{{ $variant }}">
     <summary class="wp-lang-select-trigger" aria-label="{{ __('settings.style.title') }}">
-        <x-wp-icon name="pen-tool" class="wp-lang-select-icon" />
+        <x-wp-icon name="eye" class="wp-lang-select-icon" />
         <span>{{ __('settings.style.options.'.$current->value.'.label') }}</span>
         <svg class="wp-lang-select-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>

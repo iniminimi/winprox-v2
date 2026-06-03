@@ -155,8 +155,8 @@
                     "text": "Erstellen Sie mehrere Units gleichzeitig (Etagen × Räume) und verknüpfen Sie sie mit einem Team."
                 },
                 {
-                    "label": "QR-Pack herunterladen",
-                    "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind - diese können später über die QR-connect-Seite verknüpft werden."
+                    "label": "QR-Aufkleberblatt herunterladen",
+                    "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
                 },
                 {
                     "label": "Standort-QR",

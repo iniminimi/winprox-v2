@@ -80,9 +80,9 @@
         "enterprise": {
             "name": "Enterprise",
             "price": "Individuell",
-            "units": "Mehr als 300 Units/Räume",
-            "users": "Inklusive 1 Administrator und unbegrenzt Mitarbeitende",
-            "description": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios."
+            "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
+            "users": "",
+            "description": ""
         }
     },
     "stripe": {

@@ -5,17 +5,19 @@
         "qr_info": "QR-Code-Informationen",
         "sticker_number": "Aufklebernummer",
         "status": "Status",
-        "select_unit": "Wählen Sie eine Einheit",
         "search_units": "Einheiten durchsuchen",
         "search_placeholder": "Zum Suchen tippen...",
         "no_units": "Keine Einheiten gefunden",
         "link_button": "QR-Code verknüpfen",
         "success_title": "QR-Code verknüpft",
         "success_message": "QR-Code :sticker wurde erfolgreich verknüpft.",
-        "go_to_unit": "Zur Einheit gehen"
+        "go_to_unit": "Zur Einheit gehen",
+        "linked_qr": "verknüpft",
+        "category": "Kategorie",
+        "team": "Team"
     },
     "unassigned_guest": {
-        "title": "QR-Code nicht aktiviert",
+        "title": "(neu)verknüpfen einer Einheit",
         "message": "Dieser QR-Code ist noch nicht mit einer Einheit verknüpft. Melden Sie sich an, um ihn zu verknüpfen.",
         "sticker": "Aufklebernummer",
         "login": "Anmelden"

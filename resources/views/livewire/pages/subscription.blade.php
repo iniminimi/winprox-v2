@@ -108,6 +108,7 @@
         @foreach ($planKeys as $planKey)
             @php
                 $isEnterprise = $planKey === 'enterprise';
+                $isBusiness = $planKey === 'business';
             @endphp
             <article class="wp-billing-plan-card">
                 <div class="wp-billing-plan-card-body">
@@ -126,6 +127,13 @@
                         @if ($isEnterprise)
                             <a
                                 href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.enterprise_mail_subject')) }}"
+                                class="btn btn--primary btn--block"
+                            >
+                                {{ __('subscription.enterprise_cta') }}
+                            </a>
+                        @elseif ($isBusiness)
+                            <a
+                                href="{{ route('contact.index') }}"
                                 class="btn btn--primary btn--block"
                             >
                                 {{ __('subscription.enterprise_cta') }}

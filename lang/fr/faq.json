@@ -70,9 +70,9 @@
                     "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues."
                 },
                 "enterprise": {
-                    "units": "Plus de 300 unités/espaces",
-                    "users": "Inclut 1 administrateur et des collaborateurs illimités",
-                    "description": "Prise en charge complète pour les grands opérateurs de sites et portefeuilles complexes."
+                    "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
+                    "users": "",
+                    "description": ""
                 }
             }
         },
@@ -183,6 +183,20 @@
             "title": "Où trouver l'aide sur les statuts ?",
             "body": "Sur mobile, utilisez le bouton « Aide statut » pour lire chaque statut. Sur ordinateur, une info s'affiche au survol du statut.",
             "summary": "L'aide statut sur signalements et tâches explique chaque statut et la prochaine étape recommandée."
+        },
+        "dynamic_qr_codes": {
+            "slug": "dynamic_qr_codes",
+            "type": "text",
+            "title": "Codes QR dynamiques",
+            "body": "WinProx prend en charge deux types d'étiquettes QR : les codes QR dynamiques et les codes QR statiques. Les codes QR dynamiques peuvent être reliés à une autre unité à tout moment (reliables). Les codes QR statiques sont fixés à une unité spécifique. Imprimez les étiquettes dynamiques en bulk. Allez sur site, collez une étiquette et scannez-la avec votre téléphone. Vous devez être connecté, après quoi vous pouvez assigner une unité à cette étiquette QR.",
+            "summary": "Les codes QR dynamiques sont reliables, les codes QR statiques sont fixes. Imprimez les étiquettes dynamiques en bulk et assignez une unité sur site."
+        },
+        "stickers": {
+            "slug": "stickers",
+            "type": "text",
+            "title": "Quelles étiquettes puis-je utiliser ?",
+            "body": "Pour l'impression, nous recommandons les étiquettes Avery ou Herma pour leur qualité et compatibilité avec les imprimantes standard. Les types de feuilles A4 corrects sont indiqués.",
+            "summary": "Étiquettes Avery et Herma recommandées pour l'impression. Types de feuilles A4 corrects indiqués."
         }
     }
 }

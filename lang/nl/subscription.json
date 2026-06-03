@@ -80,9 +80,9 @@
         "enterprise": {
             "name": "Enterprise",
             "price": "Op maat",
-            "units": "Meer dan 300 units/ruimtes",
-            "users": "Inclusief 1 beheerder en onbeperkt medewerkers",
-            "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles."
+            "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
+            "users": "",
+            "description": ""
         }
     },
     "stripe": {

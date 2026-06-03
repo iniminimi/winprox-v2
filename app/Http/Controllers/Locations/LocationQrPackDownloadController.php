@@ -49,6 +49,10 @@ final class LocationQrPackDownloadController
                     route('qr.scan', ['token' => $qrCode->token]),
                 );
             }
+
+            // Get tenant logo for dynamic QR codes
+            $location->loadMissing('tenant');
+            $centerLogoPath = \App\Support\Qr\QrCenterLogo::absolutePath($location->tenant);
         } else {
             // Use existing location units
             $entries = LocationQrPackStickerEntries::forLocation($location);
@@ -56,13 +60,15 @@ final class LocationQrPackDownloadController
             if ($entries === []) {
                 abort(404, __('locations.qr_pack.no_units'));
             }
+
+            $centerLogoPath = null; // Will be loaded in exporter
         }
 
         $template = QrStickerSheetTemplate::tryFrom((string) $request->query('template', ''))
             ?? QrStickerSheetTemplate::Avery55x55S;
 
         try {
-            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template);
+            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath);
             $filename = $exporter->downloadFilename($location, $template);
         } catch (InvalidArgumentException $exception) {
             abort(503, $exception->getMessage());

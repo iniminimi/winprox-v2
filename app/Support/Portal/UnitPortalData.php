@@ -128,7 +128,7 @@ final class UnitPortalData
             ->where('internal_team_id', $teamId)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
-            ->with(['issue.photos'])
+            ->with(['issue.photos', 'issue.updates'])
             ->orderBy('id')
             ->get();
     }
@@ -145,7 +145,7 @@ final class UnitPortalData
             ->whereHas('issue', fn ($q) => $q
                 ->where('unit_id', $unit->id)
                 ->whereNotNull('approved_at'))
-            ->with(['issue.photos'])
+            ->with(['issue.photos', 'issue.updates'])
             ->orderBy('id')
             ->get();
     }

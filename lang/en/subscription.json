@@ -80,9 +80,9 @@
         "enterprise": {
             "name": "Enterprise",
             "price": "Custom",
-            "units": "More than 300 units/spaces",
-            "users": "Includes 1 administrator and unlimited staff members",
-            "description": "Full support for large site operators and complex portfolios."
+            "units": "For large site operators and complex portfolios. Contact us.",
+            "users": "",
+            "description": ""
         }
     },
     "stripe": {

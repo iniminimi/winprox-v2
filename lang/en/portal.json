@@ -146,8 +146,8 @@
         "anchor": "Anchor"
     },
     "unassigned_qr": {
-        "title": "Link QR code",
-        "subtitle": "Dynamic QR code - not yet linked to a unit",
+        "title": "(re)link a unit",
+        "subtitle": "Dynamic QR code - (re)link to a unit",
         "sticker_number": "Sticker number",
         "description": "Log in to link this QR code to a unit. After linking, you can use this QR code to submit reports.",
         "login_button": "Log in",

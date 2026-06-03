@@ -89,12 +89,17 @@
                 <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">{{ $unit->name }}</p>
-                        @if ($unit->category)
-                            <p class="wp-issue-card-meta">{{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}</p>
-                        @endif
-                        @if ($unit->defaultInternalTeam)
-                            <p class="wp-issue-card-meta">{{ __('locations.units.meta_team', ['team' => $unit->defaultInternalTeam->name]) }}</p>
-                        @endif
+                        <div class="wp-issue-card-meta">
+                            @if ($unit->category)
+                                {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}
+                            @endif
+                            @if ($unit->defaultInternalTeam)
+                                {{ $unit->category ? ', ' : '' }}{{ __('locations.units.meta_team', ['team' => $unit->defaultInternalTeam->name]) }}
+                            @endif
+                            @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                                {{ ($unit->category || $unit->defaultInternalTeam) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }}
+                            @endif
+                        </div>
                     </div>
                     <div class="wp-issue-row-meta">
                         @if ($unit->hasOpenIssues())
@@ -293,20 +298,23 @@
                 <p class="wp-muted">{{ __('locations.qr_pack.modal_subtitle') }}</p>
 
                 <div class="wp-card-section">
-                    <label class="wp-label wp-label--checkbox">
-                        <input type="checkbox" wire:model.live="qrPackGenerateDynamic">
-                        <span>{{ __('locations.qr_pack.generate_dynamic') }}</span>
-                    </label>
+                    <div class="wp-row wp-row--align-center">
+                        <label class="wp-label wp-label--checkbox">
+                            <input type="checkbox" wire:model.live="qrPackGenerateDynamic">
+                            <span>{{ __('locations.qr_pack.generate_dynamic') }}</span>
+                        </label>
+                        <x-wp-page-help page="locations.show" />
+                    </div>
 
                     @if ($qrPackGenerateDynamic)
                         <div class="wp-stack-tight">
                             <label class="wp-label" for="qr-pack-dynamic-count">
                                 {{ __('locations.qr_pack.dynamic_count_label') }}
                             </label>
-                            <input 
-                                id="qr-pack-dynamic-count" 
-                                type="number" 
-                                class="wp-input" 
+                            <input
+                                id="qr-pack-dynamic-count"
+                                type="number"
+                                class="wp-input"
                                 wire:model.live="qrPackDynamicCount"
                                 min="1"
                                 max="100"

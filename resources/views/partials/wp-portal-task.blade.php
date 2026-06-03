@@ -8,6 +8,12 @@
         'wireKeyPrefix' => 'tp-'.$task->id,
     ])
 
+    @if ($issue && $issue->updates && $issue->updates->isNotEmpty())
+        @foreach ($issue->updates as $update)
+            <p class="wp-text-sm wp-muted">Update : {{ $update->body }}</p>
+        @endforeach
+    @endif
+
     @if ($completingTaskId === $task->id)
         <form wire:submit="submitCompleteTask"
               x-data

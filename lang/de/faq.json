@@ -70,9 +70,9 @@
                     "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams."
                 },
                 "enterprise": {
-                    "units": "Mehr als 300 Units/Räume",
-                    "users": "Inklusive 1 Administrator und unbegrenzt Mitarbeitende",
-                    "description": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios."
+                    "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
+                    "users": "",
+                    "description": ""
                 }
             }
         },
@@ -183,6 +183,20 @@
             "title": "Wo finde ich Hilfe zu Status?",
             "body": "Auf dem Smartphone nutzen Sie die Schaltfläche „Status-Hilfe“ und lesen, was jeder Status bedeutet. Am Desktop sehen Sie einen Hinweis, wenn Sie mit der Maus über den Status fahren.",
             "summary": "Status-Hilfe bei Meldungen und Aufgaben erklärt jeden Status und den empfohlenen nächsten Schritt."
+        },
+        "dynamic_qr_codes": {
+            "slug": "dynamic_qr_codes",
+            "type": "text",
+            "title": "Dynamische QR-Codes",
+            "body": "WinProx unterstützt zwei Arten von QR-Aufklebern: dynamische QR-Codes und statische QR-Codes. Dynamische QR-Codes können jederzeit mit einer anderen Unit verknüpft werden (wiederverknüpfbar). Statische QR-Codes sind fest mit einer bestimmten Unit verknüpft. Drucken Sie dynamische Aufkleber in Bulk. Gehen Sie vor Ort, kleben Sie einen Aufkleber und scannen Sie ihn mit dem Handy. Sie müssen angemeldet sein, danach können Sie eine Unit diesem QR-Aufkleber zuweisen.",
+            "summary": "Dynamische QR-Codes sind wiederverknüpfbar, statische QR-Codes sind fest. Drucken Sie dynamische Aufkleber in Bulk und weisen Sie vor Ort eine Unit zu."
+        },
+        "stickers": {
+            "slug": "stickers",
+            "type": "text",
+            "title": "Welche Aufkleber kann ich verwenden?",
+            "body": "Für den Druck empfehlen wir Avery- oder Herma-Etiketten aufgrund ihrer Qualität und Kompatibilität mit Standarddruckern. Die korrekten A4-Blatttypen sind angegeben.",
+            "summary": "Avery- und Herma-Etiketten für den Druck empfohlen. Korrekte A4-Blatttypen angegeben."
         }
     }
 }

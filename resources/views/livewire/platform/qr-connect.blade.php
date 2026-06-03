@@ -19,24 +19,18 @@
         <div class="wp-card wp-card-pad wp-stack">
             <div class="wp-card-section">
                 <h3>{{ __('qr.connect.qr_info') }}</h3>
-                <dl class="wp-key-value">
-                    <dt>{{ __('qr.connect.sticker_number') }}</dt>
-                    <dd><code>{{ $qrCode->sticker_number }}</code></dd>
-                    <dt>{{ __('qr.connect.status') }}</dt>
-                    <dd>{{ __($qrCode->status->labelKey()) }}</dd>
-                </dl>
+                <p class="wp-muted">{{ __('qr.connect.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
+                <p class="wp-muted">{{ __('qr.connect.status') }} : {{ __($qrCode->status->labelKey()) }}</p>
             </div>
 
             <div class="wp-card-section">
-                <h3>{{ __('qr.connect.select_unit') }}</h3>
-                
                 <label class="wp-label" for="unit-search">{{ __('qr.connect.search_units') }}</label>
-                <input 
-                    id="unit-search" 
-                    type="search" 
-                    class="wp-input" 
+                <input
+                    id="unit-search"
+                    type="search"
+                    class="wp-input"
                     wire:model.live.debounce.300ms="search"
-                    placeholder="{{ __('qr.connect.search_placeholder') }}" 
+                    placeholder="{{ __('qr.connect.search_placeholder') }}"
                     autocomplete="off"
                 >
 

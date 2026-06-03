@@ -5,17 +5,19 @@
         "qr_info": "Informations du code QR",
         "sticker_number": "Numéro de sticker",
         "status": "Statut",
-        "select_unit": "Sélectionner une unité",
         "search_units": "Rechercher des unités",
         "search_placeholder": "Tapez pour rechercher...",
         "no_units": "Aucune unité trouvée",
         "link_button": "Lier le code QR",
         "success_title": "Code QR lié",
         "success_message": "Le code QR :sticker a été lié avec succès.",
-        "go_to_unit": "Aller à l'unité"
+        "go_to_unit": "Aller à l'unité",
+        "linked_qr": "lié",
+        "category": "Catégorie",
+        "team": "Équipe"
     },
     "unassigned_guest": {
-        "title": "Code QR non activé",
+        "title": "(re)lier une unité",
         "message": "Ce code QR n'est pas encore lié à une unité. Connectez-vous pour le lier.",
         "sticker": "Numéro de sticker",
         "login": "Se connecter"

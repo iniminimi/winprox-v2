@@ -65,8 +65,21 @@ class TeamPortal extends Component
 
         $this->inactiveReasonKey = PortalAccess::teamPortalInactiveReasonKey($team);
 
-        // Team-QR wist de bezoekverificatie bij elke scan (verse icoonbevestiging).
-        WorkerVerification::clearForTeam($this->teamId);
+        // Try to restore verification from device cookie if worker was recently verified
+        // This allows workers to skip icon confirmation on subsequent team QR scans
+        $deviceWorker = WorkerDeviceSession::workerFromDeviceCookie();
+        if ($deviceWorker && (int) $deviceWorker->tenant_id === $this->tenantId) {
+            $workerTeam = $deviceWorker->team;
+            if ($workerTeam && (int) $workerTeam->id === $this->teamId) {
+                // Worker belongs to this team - try to restore verification
+                WorkerVerification::markVerified($workerTeam, $deviceWorker);
+            }
+        }
+
+        // Only clear verification if we couldn't restore it
+        if (! WorkerVerification::verifiedWorker($team)) {
+            WorkerVerification::clearForTeam($this->teamId);
+        }
 
         $this->syncLocaleFromRequest();
     }
@@ -195,7 +208,7 @@ class TeamPortal extends Component
     public function showRegister(): void
     {
         $team = $this->activeTeam();
-        if ($team === null || ! TeamPortalData::allowsOpenRegistration($team)) {
+        if ($team === null) {
             return;
         }
 
@@ -229,13 +242,15 @@ class TeamPortal extends Component
             'selected_icon_slug.in' => __('portal.worker.errors.icon_required'),
         ]);
 
+        // Clear any previous errors when doing explicit registration
+        $this->resetErrorBag();
+
         // Buiten open registratie mag enkel een bestaande "claimable" worker zijn icoon claimen,
         // tenzij de gebruiker expliciet het registratieformulier opende (nieuwe collega, dubbel icoon ok).
         if (! TeamPortalData::allowsOpenRegistration($team) && ! $this->showRegisterForm) {
             $identity = WorkerDeviceSession::resolveIdentityOnTeam($team, $validated['first_name'], $validated['last_name']);
             if ($identity['status'] !== 'claimable') {
                 $this->addError('identify', __('portal.worker.errors.identify_unknown'));
-
                 return;
             }
         }

@@ -38,7 +38,7 @@
         "hint": "Choose how WinProx looks for you. Your choice applies on every device where you are signed in.",
         "options": {
             "simple": {
-                "label": "Simple",
+                "label": "Standard",
                 "description": "Clear and calm — the default WinProx look."
             },
             "dark": {

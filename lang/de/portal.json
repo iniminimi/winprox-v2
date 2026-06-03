@@ -146,8 +146,8 @@
         "anchor": "Anker"
     },
     "unassigned_qr": {
-        "title": "QR-Code verknüpfen",
-        "subtitle": "Dynamischer QR-Code - noch nicht mit einer Unit verknüpft",
+        "title": "(neu)verknüpfen einer Einheit",
+        "subtitle": "Dynamischer QR-Code - (neu)verknüpfen mit einer Einheit",
         "sticker_number": "Aufklebernummer",
         "description": "Melden Sie sich an, um diesen QR-Code mit einer Unit zu verknüpfen. Nach der Verknüpfung können Sie diesen QR-Code verwenden, um Meldungen zu senden.",
         "login_button": "Anmelden",

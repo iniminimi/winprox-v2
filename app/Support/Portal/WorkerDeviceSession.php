@@ -83,6 +83,12 @@ final class WorkerDeviceSession
             return null;
         }
 
+        // Check tenant boundary - worker must belong to current tenant context
+        $currentTenantId = \App\Support\Tenancy::id();
+        if ($currentTenantId !== null && (int) $worker->tenant_id !== $currentTenantId) {
+            return null;
+        }
+
         return $worker;
     }
 
@@ -265,12 +271,16 @@ final class WorkerDeviceSession
 
     private static function restoreDeviceCookieForWorker(Worker $worker): void
     {
-        if (self::deviceTokenFromRequest() !== '') {
+        $existingToken = self::deviceTokenFromRequest();
+
+        if ($existingToken !== '') {
             return;
         }
 
         $device = $worker->devices()->orderByDesc('last_seen_at')->first();
         if ($device === null) {
+            // Create a new device session if none exists
+            self::attachDeviceSession($worker);
             return;
         }
 

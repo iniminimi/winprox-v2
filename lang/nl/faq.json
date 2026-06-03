@@ -70,9 +70,9 @@
                     "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
                 },
                 "enterprise": {
-                    "units": "Meer dan 300 units/ruimtes",
-                    "users": "Inclusief 1 beheerder en onbeperkt medewerkers",
-                    "description": "Volledige ontzorging voor grote site-operators en complexe portefeuilles."
+                    "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
+                    "users": "",
+                    "description": ""
                 }
             }
         },
@@ -183,6 +183,20 @@
             "title": "Waar vind ik uitleg over statussen?",
             "body": "Op de gsm gebruikt u de knop \"Status hulp\" en leest u wat elke status betekent. Op desktop ziet u een toelichting wanneer u met de muis over de status beweegt.",
             "summary": "Status hulp op meldingen en taken legt elke status en de aanbevolen vervolgstap uit."
+        },
+        "dynamic_qr_codes": {
+            "slug": "dynamic_qr_codes",
+            "type": "text",
+            "title": "Dynamische QR-codes",
+            "body": "WinProx ondersteunt twee types QR-stickers: dynamische QR-codes en statische QR-codes. Dynamische QR-codes kunnen op elk moment aan een andere unit worden gekoppeld (herkoppelbaar). Statische QR-codes zijn vastgelegd aan één specifieke unit. Print dynamische stickers in bulk. Ga op pad, kleef een sticker en scan die met de gsm. Je moet aangemeld zijn waarna je een unit kan toewijzen aan die QR-code sticker.",
+            "summary": "Dynamische QR-codes zijn herkoppelbaar, statische QR-codes zijn vast. Print dynamische stickers in bulk en wijs op locatie een unit toe."
+        },
+        "stickers": {
+            "slug": "stickers",
+            "type": "text",
+            "title": "Welke stickers kan ik gebruiken?",
+            "body": "Voor het printen adviseren we labels van Avery of Herma vanwege hun kwaliteit en compatibiliteit met standaard printers. De correcte types A4-vellen staan aangeduid.",
+            "summary": "Avery en Herma labels aanbevolen voor printen. Correcte A4-vellen types aangeduid."
         }
     }
 }

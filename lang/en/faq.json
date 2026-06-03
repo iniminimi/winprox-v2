@@ -70,9 +70,9 @@
                     "description": "For organisations with multiple sites, many units, and larger teams."
                 },
                 "enterprise": {
-                    "units": "More than 300 units/spaces",
-                    "users": "Includes 1 administrator and unlimited staff members",
-                    "description": "Full support for large site operators and complex portfolios."
+                    "units": "For large site operators and complex portfolios. Contact us.",
+                    "users": "",
+                    "description": ""
                 }
             }
         },
@@ -183,6 +183,20 @@
             "title": "Where can I find help about statuses?",
             "body": "On mobile, use the \"Status help\" button to read what each status means. On desktop, you see a description when you hover over the status.",
             "summary": "Status help on issues and tasks explains each status and the recommended next step."
+        },
+        "dynamic_qr_codes": {
+            "slug": "dynamic_qr_codes",
+            "type": "text",
+            "title": "Dynamic QR codes",
+            "body": "WinProx supports two types of QR stickers: dynamic QR codes and static QR codes. Dynamic QR codes can be linked to a different unit at any time (re-linkable). Static QR codes are fixed to one specific unit. Print dynamic stickers in bulk. Go on site, stick a sticker and scan it with your phone. You must be logged in, after which you can assign a unit to that QR code sticker.",
+            "summary": "Dynamic QR codes are re-linkable, static QR codes are fixed. Print dynamic stickers in bulk and assign a unit on site."
+        },
+        "stickers": {
+            "slug": "stickers",
+            "type": "text",
+            "title": "Which stickers can I use?",
+            "body": "For printing, we recommend labels from Avery or Herma due to their quality and compatibility with standard printers. The correct A4 sheet types are indicated.",
+            "summary": "Avery and Herma labels recommended for printing. Correct A4 sheet types indicated."
         }
     }
 }

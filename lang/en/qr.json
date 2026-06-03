@@ -5,17 +5,19 @@
         "qr_info": "QR code information",
         "sticker_number": "Sticker number",
         "status": "Status",
-        "select_unit": "Select a unit",
         "search_units": "Search units",
         "search_placeholder": "Type to search...",
         "no_units": "No units found",
         "link_button": "Link QR code",
         "success_title": "QR code linked",
         "success_message": "QR code :sticker has been successfully linked.",
-        "go_to_unit": "Go to unit"
+        "go_to_unit": "Go to unit",
+        "linked_qr": "linked",
+        "category": "Category",
+        "team": "Team"
     },
     "unassigned_guest": {
-        "title": "QR code not activated",
+        "title": "(re)link a unit",
         "message": "This QR code is not yet linked to a unit. Log in to link it.",
         "sticker": "Sticker number",
         "login": "Log in"

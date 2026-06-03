@@ -23,7 +23,7 @@ final class TeamPortalData
         return Task::where('internal_team_id', $team->id)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
-            ->with(['issue', 'issue.location', 'issue.unit', 'issue.photos'])
+            ->with(['issue', 'issue.location', 'issue.unit', 'issue.photos', 'issue.updates'])
             ->orderByDesc('created_at')
             ->limit(50)
             ->get();

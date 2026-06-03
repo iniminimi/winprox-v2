@@ -470,7 +470,9 @@ class Show extends Component
 
         $units = Unit::query()
             ->where('location_id', $this->location->id)
-            ->with(['defaultInternalTeam:id,name'])
+            ->with(['defaultInternalTeam:id,name', 'qrCodes' => function ($q) {
+                $q->where('status', \App\Enums\QrCodeStatus::Active);
+            }])
             ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
             ->withCount('issues')
             ->when($categoriesEnabled && $this->unitCategoryFilter !== '', fn ($q) => $q->where('category_id', (int) $this->unitCategoryFilter))

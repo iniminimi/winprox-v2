@@ -150,7 +150,7 @@
                         <x-wp-worker-icon :slug="$verifiedWorker->field_icon_slug" />
                     </div>
                 @endif
-                <strong class="wp-text-body">{{ $verifiedWorker?->displayName() }}</strong>
+                <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
             </div>
 
             @if ($verifiedWorker?->is_teamleader)

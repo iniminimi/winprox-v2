@@ -87,26 +87,36 @@
             </form>
         </div>
     @else
+        @if ($worker)
+            <div class="wp-card wp-card-pad wp-cluster">
+                @if ($worker->field_icon_slug)
+                    <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
+                        <x-wp-worker-icon :slug="$worker->field_icon_slug" />
+                    </div>
+                @endif
+                <strong class="wp-text-body">{{ __('common.welcome') }} {{ $worker->displayName() }}</strong>
+            </div>
+        @elseif (Auth::check())
+            <div class="wp-card wp-card-pad wp-cluster">
+                <strong class="wp-text-body">{{ __('common.welcome') }} {{ Auth::user()->name }}</strong>
+            </div>
+        @endif
+
         <div class="wp-card wp-card-pad wp-stack">
             <h1 class="wp-section-title">{{ __('portal.unassigned_qr.title') }}</h1>
-            
+
             <div class="wp-card-section">
-                <dl class="wp-key-value">
-                    <dt>{{ __('portal.unassigned_qr.sticker_number') }}</dt>
-                    <dd><code>{{ $qrCode->sticker_number }}</code></dd>
-                </dl>
+                <p class="wp-muted">{{ __('portal.unassigned_qr.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
             </div>
 
             <div class="wp-card-section">
-                <h3>{{ __('qr.connect.select_unit') }}</h3>
-                
                 <label class="wp-label" for="unit-search">{{ __('qr.connect.search_units') }}</label>
-                <input 
-                    id="unit-search" 
-                    type="search" 
-                    class="wp-input" 
+                <input
+                    id="unit-search"
+                    type="search"
+                    class="wp-input"
                     wire:model.live.debounce.300ms="search"
-                    placeholder="{{ __('qr.connect.search_placeholder') }}" 
+                    placeholder="{{ __('qr.connect.search_placeholder') }}"
                     autocomplete="off"
                 >
 
@@ -128,8 +138,8 @@
                                 >
                                 <div class="wp-grow">
                                     <strong>{{ $unit->name }}</strong>
-                                    @if ($unit->location)
-                                        <span class="wp-muted wp-text-sm"> — {{ $unit->location->name }}</span>
+                                    @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                                        <span class="wp-muted wp-text-sm"> ({{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }})</span>
                                     @endif
                                 </div>
                             </label>

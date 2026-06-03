@@ -155,8 +155,8 @@
                     "text": "Maak meerdere units tegelijk (vloeren × kamers) en koppel ze aan een team."
                 },
                 {
-                    "label": "QR-pack downloaden",
-                    "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit - deze kunnen later worden gekoppeld via de QR-connect pagina."
+                    "label": "QR-stickerblad downloaden",
+                    "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
                 {
                     "label": "Locatie-QR",

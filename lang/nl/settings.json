@@ -38,7 +38,7 @@
         "hint": "Kies hoe WinProx er voor jou uitziet. Je keuze geldt op al je apparaten waar je bent ingelogd.",
         "options": {
             "simple": {
-                "label": "Eenvoudig",
+                "label": "Standaard",
                 "description": "Helder en rustig — de standaard WinProx-stijl."
             },
             "dark": {

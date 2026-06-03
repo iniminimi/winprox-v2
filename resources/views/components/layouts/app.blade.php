@@ -99,7 +99,7 @@
 
                     @auth
                         <div class="wp-sidebar-user">
-                            <p class="wp-sidebar-user-name">{{ auth()->user()->name }}</p>
+                            <p class="wp-sidebar-user-name">{{ __('common.welcome') }} {{ auth()->user()->name }}</p>
                             @if ($supportTenant)
                                 <p class="wp-sidebar-user-meta">{{ $supportTenant->name }} ({{ __('platform.nav') }})</p>
                             @elseif (auth()->user()->tenant?->name)

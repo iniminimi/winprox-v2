@@ -87,8 +87,6 @@
                     @empty
                         <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                     @endforelse
-                @else
-                    @include('partials.wp-unit-worker-signin')
                 @endif
             @endif
         @endif
@@ -209,8 +207,6 @@
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                 @endforelse
-            @elseif ($isFieldVisitor && $hasUnitTeam)
-                @include('partials.wp-unit-worker-signin')
             @endif
         @endif
 

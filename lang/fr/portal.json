@@ -146,8 +146,8 @@
         "anchor": "Ancre"
     },
     "unassigned_qr": {
-        "title": "Lier le code QR",
-        "subtitle": "Code QR dynamique - pas encore lié à une unité",
+        "title": "(re)lier une unité",
+        "subtitle": "Code QR dynamique - (re)lier à une unité",
         "sticker_number": "Numéro d'étiquette",
         "description": "Connectez-vous pour lier ce code QR à une unité. Après liaison, vous pourrez utiliser ce code QR pour soumettre des signalements.",
         "login_button": "Se connecter",

@@ -3,8 +3,12 @@
 namespace App\Livewire\Public;
 
 use App\Actions\QrCodes\LinkQrCodeToUnitAction;
+use App\Livewire\Concerns\SwitchesPortalUiTheme;
+use App\Models\InternalTeam;
 use App\Models\QrCode;
 use App\Models\Unit;
+use App\Models\Worker;
+use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -16,6 +20,7 @@ use Livewire\WithPagination;
 #[Title('WinProx')]
 class UnassignedQrPortal extends Component
 {
+    use SwitchesPortalUiTheme;
     use WithPagination;
 
     public string $token;
@@ -29,6 +34,9 @@ class UnassignedQrPortal extends Component
     public ?int $selectedUnitId = null;
     public string $search = '';
     public string $flashMessage = '';
+
+    public ?Worker $worker = null;
+    public ?InternalTeam $team = null;
 
     public function mount(string $token): void
     {
@@ -45,15 +53,44 @@ class UnassignedQrPortal extends Component
             return;
         }
 
-        // If already logged in and has permission, show unit selection
+        // Default to showing login
+        $this->showLogin = true;
+
+        // Check for logged in admin/employee
         if (Auth::check() && Auth::user()->can('link', $this->qrCode)) {
             $this->showLogin = false;
+            return;
+        }
+
+        // Check for logged in team worker
+        // First, try to get worker from device cookie without team restriction
+        $this->worker = WorkerDeviceSession::workerFromDeviceCookie();
+        if ($this->worker) {
+            // Verify worker belongs to current tenant
+            if ((int) $this->worker->tenant_id === $this->tenantId) {
+                // Get the worker's team - load without tenant scoping to ensure we get it
+                $this->team = InternalTeam::withoutGlobalScope('tenant')->find($this->worker->internal_team_id);
+                if ($this->team && $this->workerCanLinkQrCode()) {
+                    $this->showLogin = false;
+                    return;
+                }
+            }
         }
     }
 
     public function booted(): void
     {
         Tenancy::actAs($this->tenantId);
+    }
+
+    private function workerCanLinkQrCode(): bool
+    {
+        if (!$this->worker || !$this->team) {
+            return false;
+        }
+
+        // Worker can link if they belong to the same tenant as the QR code
+        return (int) $this->worker->tenant_id === $this->tenantId;
     }
 
     public function login(): void
@@ -93,21 +130,36 @@ class UnassignedQrPortal extends Component
         $unit = Unit::withoutGlobalScopes()->findOrFail($this->selectedUnitId);
 
         // Verify unit belongs to current tenant
-        if ($unit->tenant_id !== Auth::user()->tenant_id) {
+        if ($unit->tenant_id !== $this->tenantId) {
             $this->addError('selectedUnitId', 'Invalid unit selected');
             return;
         }
 
+        // For team workers, verify unit belongs to their team
+        if ($this->worker && $this->team) {
+            if ($unit->default_internal_team_id !== $this->team->id) {
+                $this->addError('selectedUnitId', 'Unit not assigned to your team');
+                return;
+            }
+        }
+
         try {
+            // Reload QR code to ensure we have the latest state
+            $this->qrCode = QrCode::withoutGlobalScopes()->where('token', $this->qrCode->token)->firstOrFail();
+
+            // linked_by must be a user ID (foreign key to users table)
+            // Workers are not users, so set to null for worker actions
+            $actorId = $this->worker ? null : Auth::id();
+
             app(LinkQrCodeToUnitAction::class)->handle(
                 $this->qrCode,
                 $unit,
-                Auth::user()->tenant_id,
-                Auth::id()
+                $this->tenantId,
+                $actorId
             );
 
-            // Redirect to refresh component and show success
-            $this->redirectRoute('public.unassigned-qr-portal', ['token' => $this->qrCode->token], navigate: true);
+            // Redirect to unit portal directly after successful linking
+            $this->redirectRoute('public.unit-portal', ['token' => $unit->qr_token], navigate: true);
         } catch (\InvalidArgumentException $e) {
             $this->addError('selectedUnitId', $e->getMessage());
         }
@@ -122,13 +174,23 @@ class UnassignedQrPortal extends Component
 
     public function getUnitsProperty()
     {
-        return Unit::query()
-            ->where('tenant_id', Auth::user()->tenant_id)
-            ->where('is_active', true)
+        $query = Unit::withoutGlobalScope('tenant')
+            ->where('tenant_id', $this->tenantId)
+            ->where('is_active', true);
+
+        // For team workers, filter by their team AND ensure units belong to correct tenant
+        if ($this->worker && $this->team) {
+            $query->where('default_internal_team_id', $this->team->id)
+                  ->where('tenant_id', $this->tenantId);
+        }
+
+        return $query
             ->when($this->search, function ($query) {
                 $query->where('name', 'like', '%'.$this->search.'%');
             })
-            ->with('location')
+            ->with(['location', 'category', 'defaultInternalTeam', 'qrCodes' => function ($query) {
+                $query->where('status', \App\Enums\QrCodeStatus::Active);
+            }])
             ->orderBy('name')
             ->paginate(20);
     }
@@ -140,6 +202,7 @@ class UnassignedQrPortal extends Component
         return view('livewire.public.unassigned-qr-portal', [
             'qrCode' => $this->qrCode,
             'units' => $this->showLogin ? collect() : $this->units,
+            'worker' => $this->worker,
         ]);
     }
 }

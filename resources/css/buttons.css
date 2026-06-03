@@ -62,7 +62,7 @@
 /* Ghost — secundaire acties. */
 .btn--ghost {
     background-color: transparent;
-    border-color: var(--wp-border);
+    border-color: #6b7280;
     color: var(--wp-text);
 }
 .btn--ghost:hover {

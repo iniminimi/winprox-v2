@@ -80,9 +80,9 @@
         "enterprise": {
             "name": "Enterprise",
             "price": "Sur mesure",
-            "units": "Plus de 300 unités/espaces",
-            "users": "Inclut 1 administrateur et des collaborateurs illimités",
-            "description": "Prise en charge complète pour les grands opérateurs de sites et portefeuilles complexes."
+            "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
+            "users": "",
+            "description": ""
         }
     },
     "stripe": {

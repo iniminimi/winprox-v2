@@ -38,7 +38,7 @@
         "hint": "Choisissez l'apparence de WinProx pour vous. Votre choix s'applique sur tous les appareils où vous êtes connecté.",
         "options": {
             "simple": {
-                "label": "Simple",
+                "label": "Standard",
                 "description": "Clair et calme — le style WinProx par défaut."
             },
             "dark": {
