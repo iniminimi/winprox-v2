@@ -20,7 +20,7 @@ class BillingUserLimitTest extends TestCase
 
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         User::factory()->admin()->for($tenant)->create();
-        User::factory()->count(4)->for($tenant)->create();
+        User::factory()->employee()->count(4)->for($tenant)->create();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('user_limit_exceeded');

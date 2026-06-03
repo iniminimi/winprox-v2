@@ -62,7 +62,6 @@
     </div>
 
     @if ($showModal)
-        @teleport('body')
         <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-modal-title">
             <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
@@ -80,6 +79,5 @@
                 </div>
             </form>
         </div>
-        @endteleport
     @endif
 </div>

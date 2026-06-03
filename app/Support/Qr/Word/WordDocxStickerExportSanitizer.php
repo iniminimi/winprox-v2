@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Support\Qr\Word;
 
+use App\Support\Qr\QrStickerSheetTemplate;
 use RuntimeException;
 use ZipArchive;
 
 /**
- * Sticker Word exports must print as plain white Avery cells (QR + text only).
- * PhpWord may still emit black table borders and gray cell shading — strip those here.
+ * Sticker Word exports: plain white cells (QR + text only).
+ * PhpWord may emit black table borders and gray cell shading — strip those here.
  */
 final class WordDocxStickerExportSanitizer
 {
-    public static function apply(string $absoluteDocxPath): void
+    public static function apply(string $absoluteDocxPath, QrStickerSheetTemplate $template): void
     {
         $zip = new ZipArchive;
         if ($zip->open($absoluteDocxPath) !== true) {
@@ -22,7 +23,7 @@ final class WordDocxStickerExportSanitizer
 
         try {
             self::patchSettings($zip);
-            self::patchDocument($zip);
+            self::patchDocument($zip, $template);
         } finally {
             $zip->close();
         }
@@ -48,7 +49,7 @@ final class WordDocxStickerExportSanitizer
         }
     }
 
-    private static function patchDocument(ZipArchive $zip): void
+    private static function patchDocument(ZipArchive $zip, QrStickerSheetTemplate $template): void
     {
         $documentXml = $zip->getFromName('word/document.xml');
         if ($documentXml === false) {
@@ -59,6 +60,10 @@ final class WordDocxStickerExportSanitizer
         $documentXml = preg_replace('/<w:shd\b[^>]*>.*?<\/w:shd>/s', '', $documentXml) ?? $documentXml;
         $documentXml = preg_replace('/<w:tblBorders>.*?<\/w:tblBorders>/s', '', $documentXml) ?? $documentXml;
         $documentXml = preg_replace('/<w:tcBorders>.*?<\/w:tcBorders>/s', '', $documentXml) ?? $documentXml;
+        $documentXml = match ($template) {
+            QrStickerSheetTemplate::Avery55x55S => Avery55x55StickerTableLayout::patchDocument($documentXml),
+            QrStickerSheetTemplate::Herma7050 => Herma7050StickerTableLayout::patchDocument($documentXml),
+        };
 
         if ($zip->addFromString('word/document.xml', $documentXml) === false) {
             throw new RuntimeException('Unable to patch word/document.xml in generated DOCX.');

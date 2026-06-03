@@ -29,13 +29,13 @@ php artisan key:generate
 
 ### Database (MySQL)
 
-Maak een lege database aan (bv. `winprox_v2`) en pas `.env` aan:
+Maak een lege database aan (bv. `winprox`) en pas `.env` aan:
 
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=winprox_v2
+DB_DATABASE=winprox
 DB_USERNAME=root
 DB_PASSWORD=
 ```

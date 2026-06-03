@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitLocationReportAction;
+use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Models\Location;
 use App\Models\Unit;
@@ -18,6 +19,7 @@ use Livewire\WithFileUploads;
 #[Title('WinProx')]
 class LocationPortal extends Component
 {
+    use SwitchesPortalUiTheme;
     use WithFileUploads;
 
     public string $token;
@@ -32,6 +34,10 @@ class LocationPortal extends Component
     public string $description = '';
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $photos = [];
+
+    public string $reporter_first_name = '';
+    public string $reporter_last_name = '';
+    public string $reporter_email = '';
 
     public string $flashMessage = '';
 
@@ -95,21 +101,25 @@ class LocationPortal extends Component
             return;
         }
 
-        $request = new ReportIssueRequest;
-        $this->validate(
-            ['description' => $request->rules()['description'], 'photos' => $request->rules()['photos']],
-            [
-                'description.required' => __('portal.report.errors.description_required'),
-                'description.min' => __('portal.report.errors.description_required'),
-                'description.max' => __('portal.report.errors.description_max'),
-                'photos.max' => __('portal.report.errors.photos_max'),
-                'photos.*.image' => __('portal.report.errors.photos_image'),
-            ],
+        $this->description = trim($this->description);
+        $this->reporter_first_name = trim($this->reporter_first_name);
+        $this->reporter_last_name = trim($this->reporter_last_name);
+        $this->reporter_email = trim($this->reporter_email);
+
+        $this->validate(ReportIssueRequest::portalRules(), ReportIssueRequest::validationMessages());
+
+        $submit->handle(
+            $this->location(),
+            ReportIssueRequest::issueDataFromInput([
+                'description' => $this->description,
+                'reporter_first_name' => $this->reporter_first_name,
+                'reporter_last_name' => $this->reporter_last_name,
+                'reporter_email' => $this->reporter_email,
+            ]),
+            $this->photos,
         );
 
-        $submit->handle($this->location(), ['description' => $this->description], $this->photos);
-
-        $this->reset(['description', 'photos']);
+        $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
         $this->dispatch('wp-clear-photo-previews');
         $this->portalSection = 'home';
         $this->flashMessage = __('portal.report.sent');

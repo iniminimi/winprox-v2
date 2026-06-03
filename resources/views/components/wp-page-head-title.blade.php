@@ -1,12 +1,14 @@
 @props([
-    'icon',
+    'icon' => null,
     'title',
     'helpPage' => null,
     'subtitle' => null,
 ])
 
 <div class="wp-cluster wp-page-head-main">
-    <span class="wp-page-icon" aria-hidden="true"><x-wp-icon :name="$icon" /></span>
+    @if ($icon)
+        <span class="wp-page-icon" aria-hidden="true"><x-wp-icon :name="$icon" /></span>
+    @endif
     <div class="wp-stack-tight wp-grow">
         @if (isset($toolbar))
             <div class="wp-cluster">

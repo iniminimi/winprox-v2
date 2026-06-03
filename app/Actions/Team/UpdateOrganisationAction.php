@@ -23,6 +23,9 @@ class UpdateOrganisationAction
             'postal_code' => filled($data['postal_code'] ?? null) ? $data['postal_code'] : null,
             'city' => filled($data['city'] ?? null) ? $data['city'] : null,
             'country_code' => filled($data['country_code'] ?? null) ? strtoupper((string) $data['country_code']) : null,
+            'custom_theme_active' => (bool) ($data['custom_theme_active'] ?? false),
+            'custom_theme_bg' => filled($data['custom_theme_bg'] ?? null) ? strtolower($data['custom_theme_bg']) : null,
+            'custom_theme_btn' => filled($data['custom_theme_btn'] ?? null) ? strtolower($data['custom_theme_btn']) : null,
         ];
 
         if (array_key_exists('logo_path', $data)) {
@@ -44,6 +47,9 @@ class UpdateOrganisationAction
                 'city' => $tenant->city,
                 'country_code' => $tenant->country_code,
                 'logo_path' => $tenant->logo_path,
+                'custom_theme_active' => $tenant->custom_theme_active,
+                'custom_theme_bg' => $tenant->custom_theme_bg,
+                'custom_theme_btn' => $tenant->custom_theme_btn,
             ],
         );
 

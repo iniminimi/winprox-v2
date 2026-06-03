@@ -28,5 +28,10 @@
         "empty": "Er zijn nog geen meldingen.",
         "reporter_anon": "Anoniem",
         "no_location": "Geen locatie"
+    },
+    "onboarding": {
+        "title": "Begin met het aanmaken van Locaties en Units",
+        "text": "Maak locaties en units aan om te starten met meldingen en taken.",
+        "button": "Locaties beheren"
     }
 }

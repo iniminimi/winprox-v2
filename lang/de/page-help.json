@@ -67,7 +67,7 @@
                 },
                 {
                     "label": "Update posten",
-                    "text": "Fügen Sie der Zeitleiste eine Notiz oder ein Foto hinzu, damit Kollegen mitverfolgen können."
+                    "text": "Fügen Sie der Meldung eine Notiz oder ein Foto hinzu; dies wird im Portal angezeigt."
                 },
                 {
                     "label": "Freigeben",
@@ -156,7 +156,7 @@
                 },
                 {
                     "label": "QR-Pack herunterladen",
-                    "text": "Laden Sie eine Word-Datei (Avery 55×55) mit QR-Aufklebern für alle Units an diesem Standort herunter."
+                    "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind - diese können später über die QR-connect-Seite verknüpft werden."
                 },
                 {
                     "label": "Standort-QR",
@@ -348,6 +348,14 @@
                 {
                     "label": "Dokumente & Mitteilungen",
                     "text": "Sehen Sie Handbücher und Mitteilungen für diese Unit ein."
+                },
+                {
+                    "label": "Sprachwahl",
+                    "text": "Wählen Sie Ihre Sprache oben rechts (NL, EN, DE, FR). Die Portaltexte werden sofort aktualisiert."
+                },
+                {
+                    "label": "Thema",
+                    "text": "Wechseln Sie oben rechts zwischen Themen (einfach, dunkel, high-res) für eine angepasste Ansicht."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",
@@ -423,3 +431,4 @@
         }
     }
 }
+

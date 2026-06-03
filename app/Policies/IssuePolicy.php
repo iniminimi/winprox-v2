@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Issue;
 use App\Models\User;
 use App\Support\Platform\SuperuserTenantAccess;
+use App\Support\Tenancy;
 
 class IssuePolicy
 {
@@ -20,6 +21,10 @@ class IssuePolicy
 
     public function create(User $user): bool
     {
+        if ($user->is_superuser) {
+            return Tenancy::id() !== null;
+        }
+
         return $user->isAdmin() || $user->isEmployee();
     }
 

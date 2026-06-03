@@ -21,7 +21,12 @@
         "placeholder_country": "Land (bv. BE)",
         "name_label": "Organisatienaam",
         "logo_label": "Organisatielogo",
-        "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB)."
+        "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB).",
+        "custom_theme_title": "Eigen portaal-stijl",
+        "custom_theme_hint": "Kies eigen kleuren voor het QR-portaal.",
+        "custom_theme_active_label": "Eigen portaal-stijl gebruiken",
+        "custom_theme_bg_label": "Achtergrondkleur",
+        "custom_theme_btn_label": "Knopkleur"
     },
     "privacy": {
         "title": "Privacy & export van gegevens",
@@ -49,7 +54,8 @@
     "errors": {
         "organisation_name_required": "Geef een organisatienaam op.",
         "organisation_email_invalid": "Geef een geldig e-mailadres op.",
-        "organisation_country_invalid": "Gebruik een landcode van twee letters (bv. BE) of laat leeg."
+        "organisation_country_invalid": "Gebruik een landcode van twee letters (bv. BE) of laat leeg.",
+        "custom_theme_hex_invalid": "Kies een geldige kleur (HEX code zoals #ff0000)."
     },
     "api": {
         "nav": "API & webhooks",

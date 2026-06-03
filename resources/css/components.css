@@ -593,6 +593,12 @@ a.wp-kpi:hover {
     margin-top: 0.125rem;
 }
 
+.wp-issue-row .wp-stack-tight > .wp-issue-card-desc {
+    margin-top: 0;
+    padding-top: calc(0.75rem * 1.35);
+    white-space: normal;
+}
+
 .wp-issue-desc {
     color: var(--wp-text);
     font-weight: 600;
@@ -1141,6 +1147,11 @@ a.wp-kpi:hover {
     gap: 1rem;
 }
 
+.wp-portal-head-top .wp-lang-select,
+.wp-portal-head-top .wp-theme {
+    flex-shrink: 0;
+}
+
 .wp-flash {
     padding: 0.75rem 1rem;
     border: 1px solid var(--wp-accent-border);
@@ -1174,6 +1185,15 @@ a.wp-kpi:hover {
 .wp-tile:hover {
     transform: translateY(-2px);
     border-color: var(--wp-border-strong);
+}
+
+.wp-tile--static {
+    cursor: default;
+}
+
+.wp-tile--static:hover {
+    transform: none;
+    border-color: var(--wp-border);
 }
 
 .wp-tile--primary {
@@ -1377,8 +1397,6 @@ a.wp-kpi:hover {
 
 .wp-team-workers-panel {
     margin-left: 0.5rem;
-    padding-left: 0.75rem;
-    border-left: 2px solid var(--wp-border);
 }
 
 /* Statusvariant van het worker-icoon in beheerlijsten. */
@@ -2027,6 +2045,207 @@ a.wp-kpi:hover {
     font-size: 0.9375rem;
     font-weight: 700;
     color: var(--wp-text);
+}
+
+/* ---------------------------------------------------------------------------
+ | Globale zoekbalk (header dropdown search).
+ * ------------------------------------------------------------------------- */
+.wp-global-search {
+    position: relative;
+}
+
+.wp-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    transition: border-color var(--wp-transition);
+}
+
+.wp-search-bar:focus-within {
+    border-color: var(--wp-accent);
+}
+
+.wp-search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.wp-search-icon {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: 0.875rem;
+    color: var(--wp-text);
+    outline: none;
+}
+
+.wp-search-input::placeholder {
+    color: var(--wp-text-muted);
+}
+
+.wp-search-clear {
+    flex-shrink: 0;
+    padding: 0.25rem;
+    background: transparent;
+    border: none;
+    color: var(--wp-text-muted);
+    cursor: pointer;
+    border-radius: var(--wp-radius-sm);
+    transition: color var(--wp-transition), background-color var(--wp-transition);
+}
+
+.wp-search-clear:hover {
+    color: var(--wp-text);
+    background-color: var(--wp-surface-2);
+}
+
+.wp-search-shortcut {
+    flex-shrink: 0;
+    padding: 0.125rem 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--wp-text-muted);
+    background-color: var(--wp-surface-2);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-sm);
+}
+
+.wp-search-results {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    box-shadow: var(--wp-shadow-lg);
+    max-height: 24rem;
+    overflow-y: auto;
+}
+
+.wp-search-results--empty {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.wp-search-empty {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-search-section {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-search-section:last-child {
+    border-bottom: none;
+}
+
+.wp-search-section-title {
+    margin: 0 0 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--wp-text-muted);
+}
+
+.wp-search-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.wp-search-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.5rem 0.625rem;
+    border-radius: var(--wp-radius);
+    text-decoration: none;
+    color: var(--wp-text);
+    transition: background-color var(--wp-transition);
+}
+
+.wp-search-item:hover {
+    background-color: var(--wp-surface-2);
+    text-decoration: none;
+    color: var(--wp-text);
+}
+
+.wp-search-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.wp-search-item-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wp-search-item-subtitle {
+    font-size: 0.75rem;
+    color: var(--wp-text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wp-search-item-icon {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-search-results-enter,
+.wp-search-results-leave {
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.wp-search-results-enter {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+}
+
+.wp-search-results-enter-end {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wp-search-results-leave {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.wp-search-results-leave-end {
+    opacity: 0;
+    transform: translateY(-0.25rem);
 }
 
 .wp-style-option-desc {

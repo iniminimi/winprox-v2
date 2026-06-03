@@ -1,6 +1,9 @@
 {
     "title": "Platform",
     "subtitle": "Kies een organisatie om mee te kijken (support view).",
+    "nav": "Platform",
+    "back_nav": "Terug naar platform",
+    "tenants_nav": "Organisaties",
     "search": "Zoeken",
     "search_placeholder": "Organisatienaam…",
     "empty": "Geen organisaties gevonden.",
@@ -10,7 +13,39 @@
     "stop": "Support view beëindigen",
     "active": "Je kijkt mee bij :name.",
     "banner": "Support view: :name",
-    "nav": "Platform",
+    "dashboard": {
+        "nav": "Overzicht",
+        "title": "Platformoverzicht",
+        "subtitle": "Globale gezondheid van WinProx zonder tenant-acties.",
+        "stat_tenants": "Organisaties",
+        "stat_active_tenants": ":count actief",
+        "stat_users": "Gebruikers",
+        "stat_issues": "Meldingen",
+        "stat_tasks": "Taken",
+        "stat_help": "Open helpvragen",
+        "recent_tenants": "Recente organisaties",
+        "recent_users": "Recente gebruikers",
+        "recent_audit": "Recente audit",
+        "open_audit": "Audit openen",
+        "empty": "Nog geen gegevens."
+    },
+    "users": {
+        "nav": "Gebruikers",
+        "title": "Platformgebruikers",
+        "subtitle": "Read-only overzicht van gebruikers over alle organisaties.",
+        "search_placeholder": "Naam, e-mail of organisatie…",
+        "empty": "Geen gebruikers gevonden.",
+        "superuser": "Superuser",
+        "inactive": "Inactief",
+        "no_tenant": "Geen organisatie"
+    },
+    "audit": {
+        "nav": "Audit",
+        "title": "Platformaudit",
+        "subtitle": "Recente auditregels over alle organisaties.",
+        "search_placeholder": "Actie, model, gebruiker of organisatie…",
+        "empty": "Geen auditregels gevonden."
+    },
     "help_nav": "Help-beheer",
     "help": {
         "title": "Help-beheer",

@@ -62,6 +62,10 @@ class BulkCreateUnitsAction
             ? (int) $data['default_internal_team_id']
             : null;
 
+        $categoryId = isset($data['category_id']) && $data['category_id'] !== ''
+            ? (int) $data['category_id']
+            : null;
+
         return DB::transaction(function () use (
             $location,
             $tenantId,
@@ -72,6 +76,7 @@ class BulkCreateUnitsAction
             $floorCount,
             $roomsPerFloor,
             $teamId,
+            $categoryId,
             $actorUserId,
         ): array {
             $batch = UnitBulkBatch::create([
@@ -92,6 +97,7 @@ class BulkCreateUnitsAction
                     'bulk_batch_id' => $batch->id,
                     'name' => $name,
                     'default_internal_team_id' => $teamId,
+                    'category_id' => $categoryId,
                     'is_active' => true,
                 ]);
             }

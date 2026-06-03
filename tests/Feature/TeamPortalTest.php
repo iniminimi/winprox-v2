@@ -95,7 +95,7 @@ it('is read-only: a verified worker sees tasks but no start/complete actions', f
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertHasNoErrors()
-        ->assertSee('Dit is een overzicht. Taken afhandelen kan alleen via de unit-QR ter plaatse.')
+        ->assertSee(__('portal.team.read_only_hint'))
         ->assertDontSeeHtml('wire:click="startTask')
         ->assertDontSeeHtml('wire:click="beginCompleteTask');
 });
@@ -121,7 +121,8 @@ it('blurs unapproved issue content on the team portal', function () {
         ->set('sign_in_icon_slug', 'moon')
         ->call('signInWithIcon')
         ->assertHasNoErrors()
-        ->assertSeeHtml('wp-pending-review');
+        ->assertSee(__('portal.worker.no_open_tasks'))
+        ->assertDontSeeHtml('wp-pending-review');
 });
 
 it('signs in an existing worker via name then icon confirmation', function () {
@@ -140,7 +141,7 @@ it('signs in an existing worker via name then icon confirmation', function () {
         ->set('sign_in_icon_slug', 'key')
         ->call('signInWithIcon')
         ->assertHasNoErrors()
-        ->assertSee('Open taken');
+        ->assertSee(__('portal.worker.open_tasks'));
 
     expect(WorkerVerification::verifiedWorker($team)?->id)->toBe($worker->id);
 });
@@ -191,5 +192,5 @@ it('shows an inactive notice when the team is inactive', function () {
 
     Livewire::test(TeamPortal::class, ['token' => 'team-token'])
         ->assertSet('inactiveReasonKey', 'portal.inactive.team_inactive')
-        ->assertSee('Niet beschikbaar');
+        ->assertSee(__('portal.inactive.title'));
 });

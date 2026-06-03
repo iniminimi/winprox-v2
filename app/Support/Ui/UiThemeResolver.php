@@ -19,4 +19,22 @@ final class UiThemeResolver
 
         return UiTheme::tryFromString($user->ui_theme)->value;
     }
+
+    /** QR-portalen: sessie (gast/medewerker), anders account-stijl, anders standaard. */
+    public static function resolvePortal(): string
+    {
+        $fromSession = session('ui_theme');
+
+        if (is_string($fromSession) && UiTheme::tryFrom($fromSession) instanceof UiTheme) {
+            return $fromSession;
+        }
+
+        $user = auth()->user();
+
+        if ($user instanceof User) {
+            return UiTheme::tryFromString($user->ui_theme)->value;
+        }
+
+        return UiTheme::default()->value;
+    }
 }

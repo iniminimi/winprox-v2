@@ -1,6 +1,18 @@
 @php
+    use App\Enums\IssueSource;
+
     $issue = $task->issue;
     $canUpdate = auth()->user()?->can('update', $task) ?? false;
+    $teamName = $task->team?->name ?: __('tasks.card.no_team');
+    $taskDescription = trim((string) ($task->note ?: $issue?->description));
+    $issueDescriptionDiffers = $issue
+        && filled($issue->description)
+        && trim((string) $issue->description) !== trim((string) $task->note);
+    $reporterName = $issue?->reporter_name ?: __('issues.card.unknown_reporter');
+    $issueHeading = $issue ? match ($issue->source) {
+        IssueSource::Qr, IssueSource::QrLocation => __('issues.show.report_reported_by', ['name' => $reporterName]),
+        default => __('issues.show.report_created_by', ['name' => $reporterName]),
+    } : null;
 @endphp
 
 <div class="wp-stack">
@@ -28,23 +40,15 @@
         </x-slot>
     </x-wp-entity-detail-head>
 
-    @if ($issue)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <div class="wp-row">
-                <h2 class="wp-section-title">{{ __('tasks.show.issue_context') }}</h2>
-                <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
-            </div>
-            <p class="wp-melding-desc">{{ $issue->description }}</p>
-            @if ($issue->reporter_name || $issue->reporter_contact)
-                <p class="wp-muted">
-                    {{ $issue->reporter_name }}
-                    @if ($issue->reporter_contact)
-                        ({{ $issue->reporter_contact }})
-                    @endif
-                </p>
-            @endif
-        </div>
-    @endif
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>
+        @if ($taskDescription !== '')
+            <p class="wp-text-body">{{ $taskDescription }}</p>
+        @endif
+        @if ($task->scheduled_for || $task->due_at)
+            <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
+        @endif
+    </div>
 
     <div class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-section-title">{{ __('tasks.show.team_section') }}</h2>
@@ -74,12 +78,6 @@
             </form>
         @endif
 
-        @if ($task->note && $task->note !== $issue?->description)
-            <p class="wp-muted wp-border-top">{{ $task->note }}</p>
-        @endif
-        @if ($task->scheduled_for || $task->due_at)
-            <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
-        @endif
     </div>
 
     @if ($transitions !== [])
@@ -113,6 +111,21 @@
                     @error('pauseNote') <p class="wp-error">{{ $message }}</p> @enderror
                     <button type="button" class="btn btn--ghost" wire:click="pause">{{ __('tasks.show.pause_submit') }}</button>
                 </div>
+            @endif
+        </div>
+    @endif
+
+    @if ($issue)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ $issueHeading }}</h2>
+                <a href="{{ route('issues.show', $issue) }}" class="btn btn--ghost btn--sm">{{ __('tasks.show.view_issue') }}</a>
+            </div>
+            @if ($issue->reporter_contact)
+                <p class="wp-muted">{{ $issue->reporter_contact }}</p>
+            @endif
+            @if ($issueDescriptionDiffers)
+                <p class="wp-text-body">{{ $issue->description }}</p>
             @endif
         </div>
     @endif

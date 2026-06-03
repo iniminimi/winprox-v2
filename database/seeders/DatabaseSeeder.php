@@ -92,10 +92,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $units = [
-            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Lift A', 'qr_token' => 'unit-lift-a']),
-            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Vergaderzaal 1.04', 'qr_token' => 'unit-vergaderzaal-104']),
-            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamElektriciteit->id, 'name' => 'Laadkade 3', 'qr_token' => 'unit-laadkade-3']),
-            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamSchoonmaak->id, 'name' => 'Sanitair magazijn', 'qr_token' => 'unit-sanitair-magazijn']),
+            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Lift A']),
+            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Vergaderzaal 1.04']),
+            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamElektriciteit->id, 'name' => 'Laadkade 3']),
+            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamSchoonmaak->id, 'name' => 'Sanitair magazijn']),
         ];
 
         // Documenten: publiek downloadbaar + één dat verificatie vereist.
@@ -188,7 +188,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Kapotte tl-lamp in het magazijn vervangen.',
         ], [$teamElektriciteit->id]);
         foreach ($closed->tasks as $task) {
-            $updateStatus->handle($task, TaskStatus::Closed);
+            $updateStatus->handle($task, TaskStatus::Closed, $admin, 'Demo: taak gesloten zonder uitvoering.');
         }
         $approveIssue->handle($closed, $admin);
 

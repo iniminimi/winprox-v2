@@ -1,6 +1,9 @@
 {
     "title": "Plattform",
     "subtitle": "Organisation für die Support-Ansicht wählen.",
+    "nav": "Plattform",
+    "back_nav": "Zurück zur Plattform",
+    "tenants_nav": "Organisationen",
     "search": "Suchen",
     "search_placeholder": "Organisationsname…",
     "empty": "Keine Organisationen gefunden.",
@@ -10,7 +13,39 @@
     "stop": "Support-Ansicht beenden",
     "active": "Sie sehen :name.",
     "banner": "Support-Ansicht: :name",
-    "nav": "Plattform",
+    "dashboard": {
+        "nav": "Übersicht",
+        "title": "Plattformübersicht",
+        "subtitle": "Globaler WinProx-Zustand ohne Mandantenaktionen.",
+        "stat_tenants": "Organisationen",
+        "stat_active_tenants": ":count aktiv",
+        "stat_users": "Benutzer",
+        "stat_issues": "Meldungen",
+        "stat_tasks": "Aufgaben",
+        "stat_help": "Offene Hilfefragen",
+        "recent_tenants": "Neueste Organisationen",
+        "recent_users": "Neueste Benutzer",
+        "recent_audit": "Neueste Audit-Einträge",
+        "open_audit": "Audit öffnen",
+        "empty": "Noch keine Daten."
+    },
+    "users": {
+        "nav": "Benutzer",
+        "title": "Plattformbenutzer",
+        "subtitle": "Schreibgeschützte Übersicht der Benutzer aller Organisationen.",
+        "search_placeholder": "Name, E-Mail oder Organisation…",
+        "empty": "Keine Benutzer gefunden.",
+        "superuser": "Superuser",
+        "inactive": "Inaktiv",
+        "no_tenant": "Keine Organisation"
+    },
+    "audit": {
+        "nav": "Audit",
+        "title": "Plattformaudit",
+        "subtitle": "Neueste Audit-Einträge über alle Organisationen.",
+        "search_placeholder": "Aktion, Modell, Benutzer oder Organisation…",
+        "empty": "Keine Audit-Einträge gefunden."
+    },
     "help_nav": "Hilfe-Verwaltung",
     "help": {
         "title": "Hilfe-Verwaltung",

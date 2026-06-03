@@ -19,12 +19,11 @@ it('laat een teamleader een geblokkeerde collega vrijgeven op het unit-portaal',
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $unit = Unit::factory()->create([
+    $unit = Unit::factory()->withQrToken('unit-tl-release')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'unit-tl-release',
     ]);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
@@ -66,12 +65,11 @@ it('weigert vrijgave wanneer het teamleader-icoon niet klopt', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->create([
+    Unit::factory()->withQrToken('unit-tl-wrong')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'unit-tl-wrong',
     ]);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
@@ -102,12 +100,11 @@ it('toont geen vrijgeven-knop wanneer er geen geblokkeerde collegas zijn', funct
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->create([
+    Unit::factory()->withQrToken('unit-tl-empty')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'unit-tl-empty',
     ]);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
@@ -121,7 +118,7 @@ it('toont geen vrijgeven-knop wanneer er geen geblokkeerde collegas zijn', funct
     Livewire::test(UnitPortal::class, ['token' => 'unit-tl-empty'])
         ->assertSee(__('portal.teamleader.title'))
         ->assertSee(__('portal.teamleader.no_blocked_colleagues'))
-        ->assertDontSee(__('portal.teamleader.open'));
+        ->assertDontSeeHtml('wire:click="toggleReleasePanel"');
 });
 
 it('vereist selectie van een geblokkeerde collega bij vrijgave', function () {
@@ -130,12 +127,11 @@ it('vereist selectie van een geblokkeerde collega bij vrijgave', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->create([
+    Unit::factory()->withQrToken('unit-tl-select')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'unit-tl-select',
     ]);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([

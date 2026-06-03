@@ -7,8 +7,7 @@ namespace App\Support\Qr;
 final readonly class QrStickerEntry
 {
     public function __construct(
-        public string $primaryLabel,
-        public string $secondaryLabel,
+        public string $unitLabel,
         public string $reportUrl,
     ) {}
 }

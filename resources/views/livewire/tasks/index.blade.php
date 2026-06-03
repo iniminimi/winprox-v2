@@ -80,16 +80,17 @@
                             ? trim(($issue->location->country_code ?: 'BE').' '.$issue->location->formattedAddress())
                             : '';
                         $teamName = $task->team?->name ?: __('tasks.card.no_team');
-                        $metaParts = collect([__('tasks.card.meta_team', ['team' => $teamName])]);
+                        $taskLine = __('tasks.card.line_team', ['team' => $teamName]);
+                        $metaParts = collect();
                         if ($issue) {
-                            $metaParts->push(__('tasks.card.issue_nr', ['nr' => $issue->id]));
+                            $metaParts->push(__('tasks.card.meta_context', ['issue_nr' => $issue->id]));
                         }
                         if ($task->scheduled_for || $task->due_at) {
                             $metaParts->push(__('tasks.card.scheduled', [
                                 'date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y'),
                             ]));
                         }
-                        $description = trim((string) ($issue?->description ?: $task->note));
+                        $description = trim((string) ($task->note ?: $issue?->description));
                     @endphp
                     <a href="{{ route('tasks.show', $task) }}"
                        class="wp-issue-row"
@@ -101,11 +102,12 @@
                             @if ($addressLine !== '')
                                 <p class="wp-issue-card-meta">{{ $addressLine }}</p>
                             @endif
-                            <p class="wp-issue-card-meta">{{ $metaParts->join(' · ') }}</p>
+                            <p class="wp-issue-card-title">{{ $taskLine }}</p>
+                            @if ($metaParts->isNotEmpty())
+                                <p class="wp-issue-card-meta">{{ $metaParts->join(' · ') }}</p>
+                            @endif
                             @if ($description !== '')
-                                <p class="wp-issue-card-desc">
-                                    <span class="wp-issue-card-desc-label">{{ __('tasks.card.description_label') }}</span>{{ $description }}
-                                </p>
+                                <p class="wp-issue-card-desc">{{ $description }}</p>
                             @endif
                         </div>
                         <div class="wp-issue-row-meta">

@@ -14,7 +14,15 @@ final class ShareUiTheme
 {
     public function handle(Request $request, Closure $next): Response
     {
-        View::share('uiTheme', UiThemeResolver::resolve($request->user()));
+        $theme = $request->routeIs(
+            'public.unit-portal',
+            'public.location-portal',
+            'public.team-portal',
+        )
+            ? UiThemeResolver::resolvePortal()
+            : UiThemeResolver::resolve($request->user());
+
+        View::share('uiTheme', $theme);
 
         return $next($request);
     }

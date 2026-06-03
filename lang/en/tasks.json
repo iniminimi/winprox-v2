@@ -23,7 +23,9 @@
     "card": {
         "kind_nr": "Task no. :nr",
         "description_label": "Description: ",
+        "line_team": "Task, team: :team",
         "meta_team": "Team :team",
+        "meta_context": "Issue no. :issue_nr",
         "nr": "NR :nr",
         "issue_nr": "Issue no. :nr",
         "no_team": "No team",
@@ -45,6 +47,7 @@
         "team_select_placeholder": "Choose a team",
         "team_save": "Save team",
         "task": "Task details",
+        "task_line": "Task, team: :team",
         "due": "Due :date",
         "change_status": "Change status",
         "reason": "Reason (required when closing without execution)",

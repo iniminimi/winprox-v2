@@ -96,6 +96,45 @@
         </div>
     </div>
 
+    @if ($canManageOrganisation && $organisationTenant)
+        <form wire:submit="saveOrganisationInline" class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('settings.org.custom_theme_title') }}</h2>
+            <p class="wp-muted">{{ __('settings.org.custom_theme_hint') }}</p>
+            
+            <div class="wp-stack-tight" style="margin-top: var(--wp-space-2);">
+                <label class="wp-checkbox-label">
+                    <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
+                    <span>{{ __('settings.org.custom_theme_active_label') }}</span>
+                </label>
+            </div>
+            
+            @if($customThemeActive)
+                <div class="wp-form-grid-2" style="margin-top: var(--wp-space-3);">
+                    <div class="wp-field">
+                        <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <input type="color" id="customThemeBgInline" wire:model="customThemeBg" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                            <input type="text" wire:model="customThemeBg" class="wp-input" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1;">
+                        </div>
+                        @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;">
+                            <input type="color" id="customThemeBtnInline" wire:model="customThemeBtn" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                            <input type="text" wire:model="customThemeBtn" class="wp-input" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1;">
+                        </div>
+                        @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+            @endif
+
+            <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </div>
+        </form>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack-tight">
         <h2 class="wp-section-title">{{ __('settings.privacy.title') }}</h2>
         <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>

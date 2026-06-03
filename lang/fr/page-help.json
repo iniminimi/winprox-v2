@@ -67,7 +67,7 @@
                 },
                 {
                     "label": "Publier une mise à jour",
-                    "text": "Ajoutez une note ou une photo à la chronologie pour que vos collègues puissent suivre."
+                    "text": "Ajoutez une note ou une photo au signalement ; cela sera affiché sur le portail."
                 },
                 {
                     "label": "Approuver",
@@ -156,7 +156,7 @@
                 },
                 {
                     "label": "Télécharger le pack QR",
-                    "text": "Téléchargez un fichier Word (Avery 55×55) avec des autocollants QR pour toutes les unités de ce site."
+                    "text": "Téléchargez un fichier Word (Avery 55×55 ou HERMA 70×50) avec des autocollants QR pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques qui ne sont pas encore liés à une unité - ceux-ci peuvent être liés ultérieurement via la page QR-connect."
                 },
                 {
                     "label": "QR du site",
@@ -348,6 +348,14 @@
                 {
                     "label": "Documents & annonces",
                     "text": "Consultez les manuels et annonces pour cette unité."
+                },
+                {
+                    "label": "Langue",
+                    "text": "Choisissez votre langue en haut à droite (NL, EN, DE, FR). Les textes du portail sont mis à jour immédiatement."
+                },
+                {
+                    "label": "Thème",
+                    "text": "Changez de thème (simple, sombre, high-res) en haut à droite pour une vue personnalisée."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",
@@ -423,3 +431,4 @@
         }
     }
 }
+

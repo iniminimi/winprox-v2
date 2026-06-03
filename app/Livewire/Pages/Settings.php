@@ -40,6 +40,12 @@ class Settings extends Component
 
     public string $orgCountryCode = '';
 
+    public bool $customThemeActive = false;
+
+    public string $customThemeBg = '#ffffff';
+
+    public string $customThemeBtn = '#059669';
+
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $orgLogo = null;
 
@@ -85,6 +91,29 @@ class Settings extends Component
         $this->resetErrorBag();
     }
 
+    public function saveOrganisationInline(UpdateOrganisationAction $updateOrganisation): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        // Alleen de thema-velden updaten
+        $payload = [
+            'name' => $tenant->name, // Action vereist name
+            'custom_theme_active' => $this->customThemeActive,
+            'custom_theme_bg' => $this->customThemeBg,
+            'custom_theme_btn' => $this->customThemeBtn,
+        ];
+
+        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $this->fillOrganisationFromTenant($updated);
+        
+        $this->dispatch('saved');
+    }
+
     public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
     {
         $tenant = $this->resolveTenant();
@@ -112,6 +141,9 @@ class Settings extends Component
                 'postal_code' => $this->orgPostalCode,
                 'city' => $this->orgCity,
                 'country_code' => $this->orgCountryCode,
+                'custom_theme_active' => $this->customThemeActive,
+                'custom_theme_bg' => $this->customThemeBg,
+                'custom_theme_btn' => $this->customThemeBtn,
                 'orgLogo' => $this->orgLogo,
             ],
             $rules,
@@ -127,6 +159,9 @@ class Settings extends Component
             'postal_code' => $validated['postal_code'] ?? null,
             'city' => $validated['city'] ?? null,
             'country_code' => $validated['country_code'] ?? null,
+            'custom_theme_active' => $validated['custom_theme_active'] ?? false,
+            'custom_theme_bg' => $validated['custom_theme_bg'] ?? null,
+            'custom_theme_btn' => $validated['custom_theme_btn'] ?? null,
         ];
 
         if ($this->orgLogo instanceof UploadedFile) {
@@ -192,6 +227,9 @@ class Settings extends Component
         $this->orgCountryCode = $tenant->country_code
             ? strtoupper((string) $tenant->country_code)
             : '';
+        $this->customThemeActive = (bool) $tenant->custom_theme_active;
+        $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
+        $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
     }
 
     private function resolveTenant(): ?Tenant

@@ -67,7 +67,7 @@
                 },
                 {
                     "label": "Update plaatsen",
-                    "text": "Voeg een notitie of foto toe aan de tijdlijn zodat collega's mee kunnen volgen."
+                    "text": "Voeg een notitie of foto toe aan de melding, dit wordt op het portaal getoond."
                 },
                 {
                     "label": "Goedkeuren",
@@ -156,7 +156,7 @@
                 },
                 {
                     "label": "QR-pack downloaden",
-                    "text": "Download een Word-bestand (Avery 55×55) met QR-stickers voor alle units op deze locatie."
+                    "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit - deze kunnen later worden gekoppeld via de QR-connect pagina."
                 },
                 {
                     "label": "Locatie-QR",
@@ -348,6 +348,14 @@
                 {
                     "label": "Documenten & mededelingen",
                     "text": "Raadpleeg handleidingen en mededelingen voor deze unit."
+                },
+                {
+                    "label": "Taalkeuze",
+                    "text": "Kies uw taal rechtsboven (NL, EN, DE, FR). De teksten in het portaal worden direct aangepast."
+                },
+                {
+                    "label": "Thema",
+                    "text": "Wissel tussen thema's (simpel, donker, high-res) rechtsboven voor een aangepaste weergave."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",
@@ -423,3 +431,4 @@
         }
     }
 }
+

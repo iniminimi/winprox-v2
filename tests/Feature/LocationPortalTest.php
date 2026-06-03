@@ -20,6 +20,9 @@ class LocationPortalTest extends TestCase
         $location = Location::factory()->for($tenant)->create(['is_active' => true]);
 
         Livewire::test(LocationPortal::class, ['token' => $location->location_qr_token])
+            ->set('reporter_first_name', 'Eva')
+            ->set('reporter_last_name', 'Bakker')
+            ->set('reporter_email', 'eva@example.test')
             ->set('description', 'Lek in gang')
             ->call('submitReport')
             ->assertHasNoErrors();
@@ -28,6 +31,8 @@ class LocationPortalTest extends TestCase
         $this->assertNotNull($issue);
         $this->assertNull($issue->unit_id);
         $this->assertSame('qr_location', $issue->source->value);
+        $this->assertSame('Eva Bakker', $issue->reporter_name);
+        $this->assertSame('eva@example.test', $issue->reporter_contact);
     }
 
     public function test_location_portal_lists_active_units(): void

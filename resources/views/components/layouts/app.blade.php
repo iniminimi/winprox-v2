@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'WinProx' }}</title>
-    @vite(['resources/css/app.css'])
+    @include('partials.favicon')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 <body class="wp-shell">
@@ -17,14 +18,25 @@
             $supportTenant = Tenant::query()->find(SupportTenantContext::activeTenantId());
         }
 
-        $primaryNav = [
-            ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
-            ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],
-            ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
-            ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
-            ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
-        ];
         $authUser = auth()->user();
+        $isPlatformOnlySuperuser = $authUser?->is_superuser && $supportTenant === null;
+
+        $primaryNav = [
+            ...($isPlatformOnlySuperuser ? [
+                ['route' => 'platform.dashboard', 'active' => 'platform.dashboard', 'icon' => 'dashboard', 'label' => 'platform.dashboard.nav'],
+                ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.tenants_nav'],
+                ['route' => 'platform.users', 'active' => 'platform.users', 'icon' => 'team', 'label' => 'platform.users.nav'],
+                ['route' => 'platform.audit', 'active' => 'platform.audit', 'icon' => 'document', 'label' => 'platform.audit.nav'],
+                ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
+            ] : [
+                ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
+                ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],
+                ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
+                ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
+                ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
+            ]),
+        ];
+
         $showTenantAdminNav = $authUser && (
             $authUser->isAdmin()
             || ($authUser->is_superuser && $supportTenant !== null)
@@ -36,16 +48,17 @@
         );
 
         $secondaryNav = [
-            ...(auth()->user()?->is_superuser ? [
-                ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.nav'],
-                ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
+            ...($authUser?->is_superuser && $supportTenant !== null ? [
+                ['route' => 'platform.dashboard', 'active' => 'platform.*', 'icon' => 'subscription', 'label' => 'platform.back_nav'],
             ] : []),
-            ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.users'],
+            ...(! $isPlatformOnlySuperuser ? [
+                ['route' => 'team.index', 'active' => 'team.*', 'icon' => 'team', 'label' => 'common.nav.users'],
+            ] : []),
             ...($showSettingsNav ? [
                 ['route' => 'settings.index', 'active' => 'settings.index', 'icon' => 'settings', 'label' => 'common.nav.settings'],
             ] : []),
             ...($showTenantAdminNav ? [
-                ['route' => 'settings.api', 'active' => 'settings.api', 'icon' => 'subscription', 'label' => 'settings.api.nav'],
+                ['route' => 'settings.api', 'active' => 'settings.api', 'icon' => 'api', 'label' => 'settings.api.nav'],
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
             ] : []),
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],
@@ -105,6 +118,8 @@
 
         <div class="wp-sidebar-scrim" :class="{ 'is-open': nav }" @click="nav = false" aria-hidden="true"></div>
 
+        @include('partials.wp-mobile-prefs')
+
         <button type="button" class="wp-nav-toggle-fixed btn btn--ghost btn--sm" @click="nav = !nav" aria-label="{{ __('common.nav.label') }}">
             <x-wp-icon name="menu" class="wp-icon" />
         </button>
@@ -124,6 +139,11 @@
                     <a href="{{ route('platform.tenants') }}" class="btn btn--ghost btn--sm">{{ __('platform.stop') }}</a>
                 </div>
             @endif
+
+            <div class="wp-header-search">
+                <livewire:global-search />
+            </div>
+
             <main class="wp-main">
                 {{ $slot }}
             </main>

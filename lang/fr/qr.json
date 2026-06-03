@@ -1,0 +1,44 @@
+{
+    "connect": {
+        "title": "Lier le code QR",
+        "subtitle": "Lier ce sticker QR à une unité",
+        "qr_info": "Informations du code QR",
+        "sticker_number": "Numéro de sticker",
+        "status": "Statut",
+        "select_unit": "Sélectionner une unité",
+        "search_units": "Rechercher des unités",
+        "search_placeholder": "Tapez pour rechercher...",
+        "no_units": "Aucune unité trouvée",
+        "link_button": "Lier le code QR",
+        "success_title": "Code QR lié",
+        "success_message": "Le code QR :sticker a été lié avec succès.",
+        "go_to_unit": "Aller à l'unité"
+    },
+    "unassigned_guest": {
+        "title": "Code QR non activé",
+        "message": "Ce code QR n'est pas encore lié à une unité. Connectez-vous pour le lier.",
+        "sticker": "Numéro de sticker",
+        "login": "Se connecter"
+    },
+    "damaged": {
+        "title": "Code QR endommagé",
+        "message": "Ce code QR est marqué comme endommagé. Veuillez contacter votre administrateur.",
+        "sticker": "Numéro de sticker"
+    },
+    "inactive": {
+        "title": "Code QR inactif",
+        "message": "Ce code QR est désactivé et ne peut pas être utilisé.",
+        "sticker": "Numéro de sticker"
+    },
+    "unassigned_no_permission": {
+        "title": "Aucune permission",
+        "message": "Vous n'avez pas la permission de lier des codes QR.",
+        "sticker": "Numéro de sticker",
+        "dashboard": "Aller au tableau de bord"
+    },
+    "error": {
+        "title": "Erreur",
+        "message": "Une erreur s'est produite lors du traitement de ce code QR.",
+        "sticker": "Numéro de sticker"
+    }
+}

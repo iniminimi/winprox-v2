@@ -3,6 +3,8 @@
     'removeMethod' => null,
     'max' => 4,
     'photoAlt' => null,
+    /** QR-portaal: camera voorrang op mobiel. Beheer: bestandskiezer (geen capture). */
+    'preferCamera' => false,
 ])
 
 @php
@@ -24,11 +26,11 @@
     data-wp-photo-max="{{ $max }}"
     x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
 >
-    <div class="wp-photo-grid" style="display:flex;flex-wrap:wrap;gap:8px;">
+    <div class="wp-photo-grid wp-photo-grid--gallery">
         <div wire:ignore data-wp-photo-preview-root style="display:contents;"></div>
 
         <div data-wp-photo-picker>
-            <label class="wp-photo-add" style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:2px dashed var(--wp-border, #d1d5db);border-radius:10px;background:var(--wp-surface-muted, #f9fafb);cursor:pointer;margin:0;">
+            <label class="wp-photo-add" style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:2px dashed var(--wp-border, #d1d5db);border-radius:10px;background:var(--wp-surface-muted, #f9fafb);margin:0;">
                 <input
                     type="file"
                     data-wp-photo-compress
@@ -36,7 +38,7 @@
                     aria-label="{{ $photoAlt }}"
                     multiple
                     accept="image/*"
-                    capture="environment"
+                    @if ($preferCamera) capture="environment" @endif
                     hidden
                 >
 

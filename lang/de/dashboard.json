@@ -28,5 +28,10 @@
         "empty": "Noch keine Meldungen.",
         "reporter_anon": "Anonym",
         "no_location": "Kein Standort"
+    },
+    "onboarding": {
+        "title": "Beginnen Sie mit der Erstellung von Standorten und Units",
+        "text": "Erstellen Sie Standorte und Units, um mit Meldungen und Aufgaben zu beginnen.",
+        "button": "Standorte verwalten"
     }
 }

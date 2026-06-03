@@ -15,7 +15,6 @@ final class LocationQrPackStickerEntries
     public static function forLocation(Location $location): array
     {
         $location->loadMissing(['units' => fn ($q) => $q->where('is_active', true)->orderBy('name')]);
-        $siteName = trim($location->name) !== '' ? trim($location->name) : '—';
         $entries = [];
 
         foreach ($location->units as $unit) {
@@ -28,12 +27,23 @@ final class LocationQrPackStickerEntries
             }
 
             $entries[] = new QrStickerEntry(
-                trim($unit->name) !== '' ? trim($unit->name) : '—',
-                $siteName,
-                route('public.unit-portal', ['token' => $unit->qr_token]),
+                self::stickerLabel($unit),
+                UnitPortalUrl::forUnit($unit),
             );
         }
 
         return $entries;
+    }
+
+    private static function stickerLabel(Unit $unit): string
+    {
+        $name = trim((string) $unit->name) !== '' ? trim((string) $unit->name) : '—';
+        $description = trim((string) ($unit->description ?? ''));
+
+        if ($description === '') {
+            return $name;
+        }
+
+        return $name.' - '.$description;
     }
 }

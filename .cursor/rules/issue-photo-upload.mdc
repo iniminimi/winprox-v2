@@ -1,6 +1,6 @@
 ---
 description: Issue/QR photo upload — mandatory client compress + queue (no regressions)
-globs: resources/js/image-upload-compress.js,resources/views/partials/wp-issue-photo-upload.blade.php,resources/views/livewire/**/unit-portal.blade.php,resources/views/livewire/**/location-portal.blade.php,resources/views/livewire/issues/partials/create-modal.blade.php,resources/views/partials/wp-portal-task.blade.php,app/Support/IssuePhotoStorage.php
+globs: resources/js/image-upload-compress.js,resources/views/partials/wp-issue-photo-upload.blade.php,resources/views/livewire/**/unit-portal.blade.php,resources/views/livewire/**/location-portal.blade.php,resources/views/livewire/issues/partials/create-modal.blade.php,resources/views/livewire/issues/partials/update-modal.blade.php,resources/views/partials/wp-portal-task.blade.php,app/Support/IssuePhotoStorage.php
 alwaysApply: true
 ---
 
@@ -30,7 +30,9 @@ Baseline: **winprox V1** `image-upload-compress.js` + `wp-issue-photo-upload.bla
 ## Livewire events
 
 - `wp-clear-photo-previews` na reset/submit.
-- `wp-prepare-photo-inputs` bij openen nieuwe melding / taak afhandelen.
+- `wp-prepare-photo-inputs` bij openen nieuwe melding / update-modal / taak afhandelen.
+- **Beheer (update, melding aanmaken):** geen `capture` — bestandskiezer op laptop. **QR-portaal:** `preferCamera` → `capture="environment"`.
+- **Geen `@teleport`** op modals met foto-upload (breekt `wire:id` → Livewire `upload`).
 
 ## Definition of done
 

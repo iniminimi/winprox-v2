@@ -33,6 +33,11 @@ class IssuePhoto extends Model
 
     public function publicUrl(): ?string
     {
-        return $this->hasPublicFile() ? Storage::disk('public')->url($this->path) : null;
+        if (! $this->hasPublicFile()) {
+            return null;
+        }
+
+        // Relatief pad: werkt ongeacht APP_URL (localhost vs LAN op Windows).
+        return '/storage/'.str_replace('\\', '/', $this->path);
     }
 }

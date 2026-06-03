@@ -25,7 +25,6 @@
     "bulk_add": "Units massenhaft hinzufügen",
     "location_qr": "Standort-QR (allgemein)",
     "location_qr_subtitle": "Allgemeiner Standort-QR für Meldungen ohne Unit.",
-    "location_qr_scan_hint": "Standort-QR scannen, um eine Meldung zu senden.",
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-Code für diese Unit — Link zum Meldeportal.",
     "qr_pack_download": "QR-Etikettenbogen herunterladen",
@@ -56,14 +55,25 @@
         "edit_title": "Unit bearbeiten",
         "open_issue": "Offene Meldung",
         "meta_team": "Team :team",
+        "meta_category": "Kategorie :category",
         "no_team": "Kein Team (später pro Unit zuweisen)",
+        "no_category": "Keine Kategorie",
         "fields": {
             "name": "Unit-Name",
-            "team": "Team"
+            "description": "Beschreibung",
+            "team": "Team",
+            "category": "Kategorie"
+        },
+        "filters": {
+            "category": "Nach Kategorie filtern",
+            "all_categories": "Alle Kategorien",
+            "search": "Suchen",
+            "search_placeholder": "Nach Unit-Name suchen"
         },
         "errors": {
             "name_required": "Bitte Unit-Namen eingeben.",
-            "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort."
+            "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort.",
+            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants."
         },
         "flash": {
             "created": "Unit angelegt.",
@@ -102,15 +112,50 @@
             "too_many": "Zu viele Units auf einmal (max. 500)."
         }
     },
+    "categories": {
+        "manage": "Kategorien",
+        "title": "Kategorien verwalten",
+        "subtitle": "Legen Sie tenant-spezifische Kategorien an und verknüpfen Sie sie mit Units.",
+        "add": "Kategorie hinzufügen",
+        "empty": "Noch keine Kategorien.",
+        "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",
+        "fields": {
+            "name": "Kategoriename"
+        },
+        "errors": {
+            "name_required": "Bitte einen Kategorienamen eingeben.",
+            "duplicate_name": "Dieser Kategoriename existiert bereits."
+        },
+        "flash": {
+            "created": "Kategorie erstellt.",
+            "updated": "Kategorie aktualisiert.",
+            "deleted": "Kategorie gelöscht."
+        }
+    },
     "errors": {
         "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",
         "country_code_invalid": "Geben Sie einen gültigen ISO-Ländercode mit 2 Buchstaben ein.",
         "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen."
     },
     "qr_pack": {
-        "headline": "Meldung senden",
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
-        "no_units": "Es gibt noch keine Units für einen QR-Etikettenbogen."
+        "no_units": "Es gibt noch keine Units für einen QR-Etikettenbogen.",
+        "invalid_count": "Die Anzahl der QR-Codes muss zwischen 1 und 100 liegen.",
+        "modal_title": "QR-Etikettenbogen herunterladen",
+        "modal_subtitle": "Wählen Sie das Etikettenformat, das zu Ihrem Bogen passt.",
+        "generate_dynamic": "Dynamische QR-Codes generieren (noch nicht mit Units verknüpft)",
+        "dynamic_count_label": "Anzahl QR-Codes",
+        "dynamic_count_help": "Dynamische QR-Codes können später über die QR-connect-Seite mit Units verknüpft werden. Maximum 100.",
+        "formats": {
+            "avery_55x55_s": {
+                "title": "Avery 55×55-S",
+                "description": "15 Etiketten pro Bogen (55 × 55 mm) — Avery L7159 / 283."
+            },
+            "herma_70x50": {
+                "title": "HERMA 70×50",
+                "description": "15 Etiketten pro Bogen (70 × 50 mm) — HERMA 8."
+            }
+        }
     },
     "documents": {
         "title": "Dokumente",
@@ -178,3 +223,7 @@
         }
     }
 }
+
+
+
+

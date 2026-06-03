@@ -1,6 +1,9 @@
 {
     "title": "Plateforme",
     "subtitle": "Choisissez une organisation à consulter (vue support).",
+    "nav": "Plateforme",
+    "back_nav": "Retour à la plateforme",
+    "tenants_nav": "Organisations",
     "search": "Rechercher",
     "search_placeholder": "Nom de l'organisation…",
     "empty": "Aucune organisation trouvée.",
@@ -10,7 +13,39 @@
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",
     "banner": "Vue support : :name",
-    "nav": "Plateforme",
+    "dashboard": {
+        "nav": "Aperçu",
+        "title": "Aperçu plateforme",
+        "subtitle": "Santé globale de WinProx sans actions tenant.",
+        "stat_tenants": "Organisations",
+        "stat_active_tenants": ":count actives",
+        "stat_users": "Utilisateurs",
+        "stat_issues": "Signalements",
+        "stat_tasks": "Tâches",
+        "stat_help": "Questions d'aide ouvertes",
+        "recent_tenants": "Organisations récentes",
+        "recent_users": "Utilisateurs récents",
+        "recent_audit": "Audit récent",
+        "open_audit": "Ouvrir l'audit",
+        "empty": "Pas encore de données."
+    },
+    "users": {
+        "nav": "Utilisateurs",
+        "title": "Utilisateurs plateforme",
+        "subtitle": "Aperçu en lecture seule des utilisateurs de toutes les organisations.",
+        "search_placeholder": "Nom, e-mail ou organisation…",
+        "empty": "Aucun utilisateur trouvé.",
+        "superuser": "Superuser",
+        "inactive": "Inactif",
+        "no_tenant": "Aucune organisation"
+    },
+    "audit": {
+        "nav": "Audit",
+        "title": "Audit plateforme",
+        "subtitle": "Entrées d'audit récentes pour toutes les organisations.",
+        "search_placeholder": "Action, modèle, utilisateur ou organisation…",
+        "empty": "Aucune entrée d'audit trouvée."
+    },
     "help_nav": "Gestion aide",
     "help": {
         "title": "Gestion de l'aide",

@@ -55,3 +55,12 @@
     background-color: var(--wp-surface-2);
     color: var(--wp-text);
 }
+
+[data-theme='dark'] body.wp-shell {
+    background-color: var(--wp-bg);
+    background-image: var(--wp-shell-gradient);
+}
+
+[data-theme='dark'] .wp-portal-actions {
+    background-color: color-mix(in srgb, var(--wp-surface) 92%, transparent);
+}

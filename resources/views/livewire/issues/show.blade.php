@@ -1,3 +1,12 @@
+@php
+    use App\Enums\IssueSource;
+
+    $reporterName = $issue->reporter_name ?: __('issues.card.unknown_reporter');
+    $reportHeading = match ($issue->source) {
+        IssueSource::Qr, IssueSource::QrLocation => __('issues.show.report_reported_by', ['name' => $reporterName]),
+        default => __('issues.show.report_created_by', ['name' => $reporterName]),
+    };
+@endphp
 <div class="wp-stack">
     <x-wp-entity-detail-head
         icon="issues"
@@ -25,14 +34,14 @@
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
-            <h2 class="wp-section-title">{{ __('issues.show.report') }}</h2>
+            <h2 class="wp-section-title">{{ $reportHeading }}</h2>
             @unless ($issue->isApproved())
                 <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
             @endunless
         </div>
 
-        @if ($issue->reporter_name || $issue->reporter_contact)
-            <p class="wp-muted">{{ $issue->reporter_name }}@if ($issue->reporter_contact) ({{ $issue->reporter_contact }})@endif</p>
+        @if ($issue->reporter_contact)
+            <p class="wp-muted">{{ $issue->reporter_contact }}</p>
         @endif
 
         @if ($issue->is_recurring)
@@ -58,10 +67,16 @@
 
         <p class="wp-text-body">{{ $issue->description }}</p>
 
-        @include('partials.wp-issue-photo-gallery', [
-            'photos' => $issue->photos->whereNull('issue_update_id'),
-            'wireKeyPrefix' => 'photo',
-        ])
+        @php
+            $issuePhotos = $issue->photos->whereNull('issue_update_id');
+        @endphp
+        @if ($issuePhotos->isNotEmpty())
+            <p class="wp-label">{{ __('issues.show.photos_heading') }}</p>
+            @include('partials.wp-issue-photo-gallery', [
+                'photos' => $issuePhotos,
+                'wireKeyPrefix' => 'photo',
+            ])
+        @endif
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
@@ -72,16 +87,26 @@
             </button>
         </div>
 
-        <div class="wp-list">
+        <div class="wp-list wp-list--entity-rows">
             @forelse ($issue->tasks as $task)
-                <div class="wp-row" wire:key="task-{{ $task->id }}">
-                    <div class="wp-cluster">
-                        <x-wp-ref-nr type="task" :id="$task->id" />
-                        <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-                        <a href="{{ route('tasks.show', $task) }}" class="wp-text-body">{{ $task->team?->name ?? __('issues.show.no_team') }}</a>
+                @php
+                    $taskDescription = trim((string) ($task->note ?: $issue->description));
+                    $teamName = $task->team?->name ?? __('issues.show.no_team');
+                @endphp
+                <a href="{{ route('tasks.show', $task) }}"
+                   class="wp-issue-row"
+                   wire:key="task-{{ $task->id }}">
+                    <div class="wp-grow wp-stack-tight">
+                        <div class="wp-cluster">
+                            <x-wp-ref-nr type="task" :id="$task->id" />
+                            <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                            <span class="wp-issue-card-title">{{ $teamName }}</span>
+                        </div>
+                        @if ($taskDescription !== '')
+                            <p class="wp-issue-card-desc">{{ $taskDescription }}</p>
+                        @endif
                     </div>
-                    <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">{{ __('issues.show.manage_task_status') }}</a>
-                </div>
+                </a>
             @empty
                 <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>
             @endforelse
@@ -129,55 +154,9 @@
         @endteleport
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('issues.show.updates') }}</h2>
+    @include('livewire.issues.partials.updates-section')
 
-        @forelse ($issue->updates as $update)
-            <div class="wp-stack-tight wp-border-top" wire:key="update-{{ $update->id }}">
-                <p class="wp-muted">
-                    {{ $update->created_at?->format('d/m/Y H:i') }}
-                    @if ($update->user)
-                        — {{ $update->user->name }}
-                    @elseif ($update->worker)
-                        — {{ $update->worker->displayName() }}
-                    @endif
-                    @if ($update->kind && $update->kind !== 'note')
-                        · {{ __('issues.updates.kind.'.$update->kind) }}
-                    @endif
-                </p>
-                @if ($update->body)
-                    <p class="wp-text-body">{{ $update->body }}</p>
-                @endif
-                @include('partials.wp-issue-photo-gallery', [
-                    'photos' => $update->photos,
-                    'wireKeyPrefix' => 'up-'.$update->id,
-                ])
-            </div>
-        @empty
-            <p class="wp-muted">{{ __('issues.show.updates_empty') }}</p>
-        @endforelse
-
-        <form x-data
-              x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-              @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveUpdate()"
-              class="wp-stack wp-border-top">
-            <div class="wp-field">
-                <label class="wp-label" for="updateBody">{{ __('issues.show.add_update') }}</label>
-                <textarea id="updateBody" class="wp-textarea" wire:model="updateBody" rows="3"
-                          placeholder="{{ __('issues.show.add_update_placeholder') }}"></textarea>
-                @error('updateBody') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <div class="wp-field">
-                <label class="wp-label">{{ __('issues.show.add_update_photos') }}</label>
-                @include('partials.wp-issue-photo-upload', [
-                    'model' => 'updatePhotos',
-                    'removeMethod' => 'removeUpdatePhoto',
-                ])
-                @error('updatePhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <button type="submit" class="btn btn--primary btn--sm" wire:loading.attr="disabled">
-                {{ __('issues.show.add_update_submit') }}
-            </button>
-        </form>
-    </div>
+    @if ($showUpdateModal)
+        @include('livewire.issues.partials.update-modal')
+    @endif
 </div>

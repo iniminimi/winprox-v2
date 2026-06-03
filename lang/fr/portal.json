@@ -11,7 +11,9 @@
         "subscription_inactive": "Ce portail est temporairement indisponible. Contactez votre administrateur."
     },
     "issue": {
-        "awaiting_review_hint": "Votre signalement est en cours de contrôle avant que les détails ne deviennent visibles."
+        "awaiting_review_hint": "Votre signalement est en cours de contrôle avant que les détails ne deviennent visibles.",
+        "list_line": "Signalement (nr :nr) : :description",
+        "updates_title": "Mises à jour"
     },
     "location": {
         "units_title": "Unités sur ce site",
@@ -21,6 +23,7 @@
         "new": "Nouveau signalement",
         "new_sub": "Signaler un problème",
         "issues": "Signalements",
+        "open_tasks": "Tâches ouvertes",
         "announcements": "Annonces",
         "documents": "Documents"
     },
@@ -28,6 +31,10 @@
         "title": "Créer un signalement",
         "description": "Que se passe-t-il ?",
         "description_placeholder": "Décrivez le problème aussi clairement que possible.",
+        "reporter_email": "Adresse e-mail",
+        "reporter_first_name_ph": "Prénom (facultatif)",
+        "reporter_last_name_ph": "Nom (facultatif)",
+        "reporter_email_ph": "E-mail (facultatif)",
         "submit": "Envoyer le signalement",
         "sent": "Merci, votre signalement a été reçu et sera contrôlé.",
         "photos": {
@@ -40,6 +47,7 @@
         "errors": {
             "description_required": "Veuillez décrire le signalement.",
             "description_max": "La description est trop longue.",
+            "reporter_email_invalid": "Veuillez indiquer une adresse e-mail valide.",
             "photos_max": "Vous pouvez ajouter jusqu'à 4 photos.",
             "photos_image": "Seules les images sont autorisées.",
             "photos_size": "Une photo est trop volumineuse."
@@ -61,6 +69,9 @@
         "signed_in_as": "Connecté en tant que",
         "sign_out": "Se déconnecter",
         "open_tasks": "Tâches ouvertes",
+        "task_heading": "Tâche (nr :nr)",
+        "issue_heading": "Signalement (nr :nr)",
+        "issue_meta": ":description, :datetime",
         "no_open_tasks": "Aucune tâche ouverte.",
         "start_task": "Démarrer la tâche",
         "complete_task": "Terminer la tâche",
@@ -133,5 +144,14 @@
         "leaf": "Feuille",
         "key": "Clé",
         "anchor": "Ancre"
+    },
+    "unassigned_qr": {
+        "title": "Lier le code QR",
+        "subtitle": "Code QR dynamique - pas encore lié à une unité",
+        "sticker_number": "Numéro d'étiquette",
+        "description": "Connectez-vous pour lier ce code QR à une unité. Après liaison, vous pourrez utiliser ce code QR pour soumettre des signalements.",
+        "login_button": "Se connecter",
+        "no_permission": "Vous n'avez pas la permission de lier des codes QR."
     }
 }
+

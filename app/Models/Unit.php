@@ -16,10 +16,11 @@ class Unit extends Model
     protected $fillable = [
         'tenant_id',
         'location_id',
+        'category_id',
         'default_internal_team_id',
         'bulk_batch_id',
         'name',
-        'qr_token',
+        'description',
         'is_active',
     ];
 
@@ -30,10 +31,18 @@ class Unit extends Model
     protected static function booted(): void
     {
         static::creating(function (Unit $unit) {
-            if (empty($unit->qr_token)) {
-                $unit->qr_token = Str::lower(Str::random(40));
-            }
+            // Willekeurige token per unit (niet afgeleid van naam); uniek in de database.
+            $unit->qr_token = self::generateUniqueQrToken();
         });
+    }
+
+    public static function generateUniqueQrToken(): string
+    {
+        do {
+            $token = Str::lower(Str::random(40));
+        } while (static::withoutGlobalScopes()->where('qr_token', $token)->exists());
+
+        return $token;
     }
 
     public function location(): BelongsTo
@@ -44,6 +53,11 @@ class Unit extends Model
     public function bulkBatch(): BelongsTo
     {
         return $this->belongsTo(UnitBulkBatch::class, 'bulk_batch_id');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function defaultInternalTeam(): BelongsTo
@@ -64,6 +78,11 @@ class Unit extends Model
     public function announcements(): HasMany
     {
         return $this->hasMany(Announcement::class);
+    }
+
+    public function qrCodes(): HasMany
+    {
+        return $this->hasMany(QrCode::class);
     }
 
     public function hasOpenIssues(): bool

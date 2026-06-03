@@ -15,12 +15,12 @@ afterEach(fn () => Tenancy::forget());
 it('toont volledige welcome landingspagina', function () {
     $this->get(route('welcome'))
         ->assertOk()
-        ->assertSee(__('welcome.problem.title'))
-        ->assertSee(__('welcome.features.title'))
-        ->assertSee(__('welcome.cta_band.title'));
+        ->assertSee(__('welcome.hero.badge'))
+        ->assertSee(__('welcome.how.title'))
+        ->assertSee(__('welcome.closing.title_before'));
 });
 
-it('briefing accepteert datum en team filter', function () {
+it('briefing filtert op datum en team', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
@@ -35,6 +35,7 @@ it('briefing accepteert datum en team filter', function () {
         'internal_team_id' => $team->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
+        'note' => 'Alleen team A',
     ]);
 
     Task::factory()->create([
@@ -42,12 +43,15 @@ it('briefing accepteert datum en team filter', function () {
         'internal_team_id' => $otherTeam->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
+        'note' => 'Alleen team B',
     ]);
 
     $this->actingAs($user)
         ->get(route('briefing.print', ['date' => $date, 'team' => $team->id]))
         ->assertOk()
-        ->assertSee($team->name);
+        ->assertSee($team->name)
+        ->assertSee('Alleen team A')
+        ->assertDontSee('Alleen team B');
 });
 
 it('superuser kan kennisbank beheren', function () {

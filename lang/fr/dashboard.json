@@ -28,5 +28,10 @@
         "empty": "Aucun signalement pour l'instant.",
         "reporter_anon": "Anonyme",
         "no_location": "Aucun site"
+    },
+    "onboarding": {
+        "title": "Commencez par créer des Sites et Unités",
+        "text": "Créez des sites et unités pour commencer avec les signalements et tâches.",
+        "button": "Gérer les sites"
     }
 }

@@ -54,13 +54,32 @@
             </div>
             <div class="wp-cluster">
                 @if ($units->isNotEmpty())
-                    <a href="{{ route('locations.qr-pack', $location) }}" class="btn btn--ghost btn--sm">{{ __('locations.qr_pack_download') }}</a>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal">{{ __('locations.qr_pack_download') }}</button>
                 @endif
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openCategoriesModal">{{ __('locations.categories.manage') }}</button>
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
             </div>
         </div>
         <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>
+        <div class="wp-filter-row">
+            <label class="wp-field">
+                <span class="wp-label">{{ __('locations.units.filters.category') }}</span>
+                <select class="wp-input" wire:model.live="unitCategoryFilter">
+                    <option value="">{{ __('locations.units.filters.all_categories') }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </label>
+        </div>
+        <div class="wp-filter-row">
+            <label class="wp-field">
+                <span class="wp-label">{{ __('locations.units.filters.search') }}</span>
+                <input type="search" class="wp-input" wire:model.live.debounce.300ms="unitSearch"
+                       placeholder="{{ __('locations.units.filters.search_placeholder') }}" />
+            </label>
+        </div>
 
         <div class="wp-list wp-list--entity-rows">
             @forelse ($units as $unit)
@@ -70,6 +89,9 @@
                 <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">{{ $unit->name }}</p>
+                        @if ($unit->category)
+                            <p class="wp-issue-card-meta">{{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}</p>
+                        @endif
                         @if ($unit->defaultInternalTeam)
                             <p class="wp-issue-card-meta">{{ __('locations.units.meta_team', ['team' => $unit->defaultInternalTeam->name]) }}</p>
                         @endif
@@ -98,9 +120,6 @@
         </div>
     </div>
 
-    <livewire:locations.documents :location="$location" />
-    <livewire:locations.announcements :location="$location" />
-
     @if ($bulkSummaries->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('locations.bulk.recent_title') }}</h2>
@@ -128,8 +147,10 @@
         </div>
     @endif
 
+    <livewire:locations.documents :location="$location" />
+    <livewire:locations.announcements :location="$location" />
+
     @if ($showLocationModal)
-        @teleport('body')
         <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-edit-title">
             <form wire:submit="saveLocation" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
@@ -137,7 +158,7 @@
                     <x-wp-modal-close wire:click="closeLocationModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
-                    @include('livewire.locations.partials.location-form-fields', ['formKey' => 'locationForm'])
+                    @include('livewire.locations.partials.location-form-fields')
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLocationModal">{{ __('common.button.cancel') }}</button>
@@ -145,7 +166,6 @@
                 </div>
             </form>
         </div>
-        @endteleport
     @endif
 
     @if ($showUnitModal)
@@ -161,6 +181,11 @@
                     @error('unitName') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
                 <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.description') }}</span>
+                    <textarea class="wp-input" wire:model="unitDescription" rows="1"></textarea>
+                    @error('unitDescription') <span class="wp-error">{{ $message }}</span> @enderror
+                </label>
+                <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.team') }}</span>
                     <select class="wp-input" wire:model="unitTeamId">
                         <option value="">{{ __('locations.units.no_team') }}</option>
@@ -170,9 +195,19 @@
                     </select>
                     @error('unitTeamId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    <select class="wp-input" wire:model="unitCategoryId">
+                        <option value="">{{ __('locations.units.no_category') }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
+                </label>
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="$set('showUnitModal', false)">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
         </div>
@@ -220,6 +255,16 @@
                     </select>
                 </label>
 
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    <select class="wp-input" wire:model="bulkCategoryId">
+                        <option value="">{{ __('locations.units.no_category') }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </label>
+
                 @if ($bulkPreview !== [])
                     <div class="wp-card wp-card-pad wp-surface-2">
                         <p class="wp-label">{{ __('locations.bulk.preview') }}</p>
@@ -234,6 +279,104 @@
                     <button type="submit" class="btn btn--primary">{{ __('locations.bulk.submit') }}</button>
                 </div>
             </form>
+        </div>
+    @endif
+
+    @if ($showQrPackModal)
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="qr-pack-modal-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="qr-pack-modal-title" class="wp-section-title">{{ __('locations.qr_pack.modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeQrPackModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('locations.qr_pack.modal_subtitle') }}</p>
+
+                <div class="wp-card-section">
+                    <label class="wp-label wp-label--checkbox">
+                        <input type="checkbox" wire:model.live="qrPackGenerateDynamic">
+                        <span>{{ __('locations.qr_pack.generate_dynamic') }}</span>
+                    </label>
+
+                    @if ($qrPackGenerateDynamic)
+                        <div class="wp-stack-tight">
+                            <label class="wp-label" for="qr-pack-dynamic-count">
+                                {{ __('locations.qr_pack.dynamic_count_label') }}
+                            </label>
+                            <input 
+                                id="qr-pack-dynamic-count" 
+                                type="number" 
+                                class="wp-input" 
+                                wire:model.live="qrPackDynamicCount"
+                                min="1"
+                                max="100"
+                                value="15"
+                            >
+                            <p class="wp-muted wp-text-sm">{{ __('locations.qr_pack.dynamic_count_help') }}</p>
+                        </div>
+                    @endif
+                </div>
+
+                <div class="wp-list wp-list--entity-rows">
+                    @foreach (\App\Support\Qr\QrStickerSheetTemplate::cases() as $template)
+                        <a href="{{ route('locations.qr-pack', ['location' => $location, 'template' => $template->value, 'dynamic' => $qrPackGenerateDynamic ? '1' : null, 'count' => $qrPackGenerateDynamic ? $qrPackDynamicCount : null]) }}"
+                           class="wp-issue-row"
+                           wire:key="qr-pack-format-{{ $template->value }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ __('locations.qr_pack.formats.'.$template->value.'.title') }}</p>
+                                <p class="wp-muted">{{ __('locations.qr_pack.formats.'.$template->value.'.description') }}</p>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if ($showCategoriesModal)
+        <div class="wp-modal">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCategoriesModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('locations.categories.subtitle') }}</p>
+
+                <form wire:submit="saveCategory" class="wp-stack">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.categories.fields.name') }}</span>
+                        <input type="text" class="wp-input" wire:model="categoryName" />
+                        @error('categoryName') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+
+                    <div class="wp-row">
+                        @if ($editingCategoryId !== null)
+                            <button type="button" class="btn btn--ghost" wire:click="cancelEditCategory">{{ __('common.button.cancel') }}</button>
+                        @endif
+                        <button type="submit" class="btn btn--primary">
+                            {{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}
+                        </button>
+                    </div>
+                </form>
+
+                <div class="wp-list wp-list--entity-rows">
+                    @forelse ($categories as $category)
+                        <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ $category->name }}</p>
+                            </div>
+                            <div class="wp-cluster">
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
+                                        wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
+                    @endforelse
+                </div>
+            </div>
         </div>
     @endif
 </div>

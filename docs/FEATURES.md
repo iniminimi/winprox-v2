@@ -139,8 +139,8 @@ verwijderregels (niet verwijderen wat een melding/taak heeft), unit-QR → publi
 
 ### 2.5 QR-stickerblad (.docx) — OVERNEMEN uit `winprox_old`
 De Word-export werkt perfect in de oude app → **bijna 1-op-1 porten**, niet herbouwen. Formaat:
-**Avery 55×55 mm, 15 stickers per A4** (5 rijen × 3 labelkolommen + gutterkolommen), QR ±35 mm met
-WinProx-logo-overlay in het midden, headline + primaire/secundaire labelregels per sticker.
+**Avery 55×55 mm, 15 stickers per A4** (5 rijen × 3 labelkolommen + gutterkolommen), QR ±42 mm met
+WinProx-logo-overlay in het midden, unitnaam onder de QR (geen scan- of locatietekst).
 
 **Bron (kopiëren, `App\Support\Qr\…` namespace behouden):**
 - `app/Support/Qr/Word/Avery55x55WordStickerSheetBuilder.php` — bouwt de .docx (PhpWord, vaste

@@ -31,11 +31,11 @@ class RegisterTenantAction
             $tenant = Tenant::create([
                 'name' => trim((string) $data['organization']),
                 'email' => $data['email'],
-                'phone' => filled($data['phone'] ?? null) ? $data['phone'] : null,
-                'street' => filled($data['street'] ?? null) ? $data['street'] : null,
-                'house_number' => filled($data['house_number'] ?? null) ? $data['house_number'] : null,
-                'postal_code' => filled($data['postal_code'] ?? null) ? $data['postal_code'] : null,
-                'city' => filled($data['city'] ?? null) ? $data['city'] : null,
+                'phone' => isset($data['phone']) && trim($data['phone']) !== '' ? trim($data['phone']) : null,
+                'street' => isset($data['street']) && trim($data['street']) !== '' ? trim($data['street']) : null,
+                'house_number' => isset($data['house_number']) && trim($data['house_number']) !== '' ? trim($data['house_number']) : null,
+                'postal_code' => isset($data['postal_code']) && trim($data['postal_code']) !== '' ? trim($data['postal_code']) : null,
+                'city' => isset($data['city']) && trim($data['city']) !== '' ? trim($data['city']) : null,
                 'country_code' => $countryCode,
             ]);
 

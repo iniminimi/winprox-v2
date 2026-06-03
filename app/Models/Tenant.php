@@ -23,6 +23,9 @@ class Tenant extends Model
         'city',
         'country_code',
         'logo_path',
+        'custom_theme_active',
+        'custom_theme_bg',
+        'custom_theme_btn',
         'trial_ends_at',
         'billing_plan',
         'billing_active_until',
@@ -33,6 +36,7 @@ class Tenant extends Model
     protected function casts(): array
     {
         return [
+            'custom_theme_active' => 'boolean',
             'trial_ends_at' => 'datetime',
             'billing_active_until' => 'datetime',
             'is_active' => 'boolean',
@@ -47,6 +51,11 @@ class Tenant extends Model
     public function locations(): HasMany
     {
         return $this->hasMany(Location::class);
+    }
+
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
     }
 
     public function internalTeams(): HasMany
@@ -232,7 +241,7 @@ class Tenant extends Model
         $periodDays = $this->subscriptionPeriodDays();
         $endsOn = $this->billing_active_until->copy();
         $now = Carbon::now();
-        $daysRemaining = max(0, (int) $now->diffInDays($endsOn, false));
+        $daysRemaining = max(0, (int) $now->copy()->startOfDay()->diffInDays($endsOn->copy()->startOfDay(), false));
         if ($daysRemaining === 0 && $now->lt($endsOn)) {
             $daysRemaining = 1;
         }

@@ -1,9 +1,20 @@
 <div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
-            <span class="wp-brand">WinProx</span>
-            <div class="wp-cluster">
+            <span class="wp-brand">
+                @php
+                    $tenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
+                    $logoUrl = $tenant ? $tenant->logoPublicUrl() : null;
+                @endphp
+                @if($logoUrl)
+                    <img src="{{ $logoUrl }}" alt="{{ $tenant->name ?? 'Logo' }}" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @else
+                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @endif
+            </span>
+            <div class="wp-cluster wp-cluster--tight">
                 <x-wp-page-help page="portal.location" />
+                @include('partials.wp-portal-theme')
                 @include('partials.wp-portal-lang')
             </div>
         </div>
@@ -34,7 +45,7 @@
                     <p class="wp-hint">{{ __('portal.location.units_hint') }}</p>
                     <div class="wp-list">
                         @foreach ($units as $unit)
-                            <a href="{{ route('public.unit-portal', $unit->qr_token) }}" class="wp-data-row" wire:key="unit-{{ $unit->id }}">
+                            <a href="{{ \App\Support\Qr\UnitPortalUrl::forUnit($unit) }}" class="wp-data-row" wire:key="unit-{{ $unit->id }}">
                                 <span class="wp-data-row-title">{{ $unit->name }}</span>
                             </a>
                         @endforeach
@@ -50,6 +61,7 @@
                   x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
                   class="wp-card wp-card-pad wp-stack">
+                @include('partials.wp-portal-report-reporter-fields')
                 <div class="wp-field">
                     <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
                     <textarea id="description" class="wp-input" rows="4" wire:model="description"
@@ -58,7 +70,7 @@
                 </div>
                 <div class="wp-field">
                     <label class="wp-label">{{ __('portal.report.photos.label') }}</label>
-                    @include('partials.wp-issue-photo-upload')
+                    @include('partials.wp-issue-photo-upload', ['preferCamera' => true])
                     @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>

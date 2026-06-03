@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Livewire\Concerns\PortalTeamleaderRelease;
+use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\InternalTeam;
 use App\Models\Worker;
 use App\Support\Portal\PortalAccess;
@@ -28,6 +29,7 @@ use Livewire\Component;
 class TeamPortal extends Component
 {
     use PortalTeamleaderRelease;
+    use SwitchesPortalUiTheme;
 
     public string $token;
     public int $teamId;
@@ -227,8 +229,9 @@ class TeamPortal extends Component
             'selected_icon_slug.in' => __('portal.worker.errors.icon_required'),
         ]);
 
-        // Buiten open registratie mag enkel een bestaande "claimable" worker zijn icoon claimen.
-        if (! TeamPortalData::allowsOpenRegistration($team)) {
+        // Buiten open registratie mag enkel een bestaande "claimable" worker zijn icoon claimen,
+        // tenzij de gebruiker expliciet het registratieformulier opende (nieuwe collega, dubbel icoon ok).
+        if (! TeamPortalData::allowsOpenRegistration($team) && ! $this->showRegisterForm) {
             $identity = WorkerDeviceSession::resolveIdentityOnTeam($team, $validated['first_name'], $validated['last_name']);
             if ($identity['status'] !== 'claimable') {
                 $this->addError('identify', __('portal.worker.errors.identify_unknown'));

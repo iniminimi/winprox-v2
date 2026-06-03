@@ -24,6 +24,8 @@ class Show extends Component
 
     public bool $showAddTaskModal = false;
 
+    public bool $showUpdateModal = false;
+
     public ?int $newTeamId = null;
 
     public string $taskNote = '';
@@ -107,6 +109,24 @@ class Show extends Component
         $this->refreshIssue();
     }
 
+    public function openUpdateModal(): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $this->reset(['updateBody', 'updatePhotos']);
+        $this->resetValidation();
+        $this->showUpdateModal = true;
+        $this->dispatch('wp-prepare-photo-inputs');
+    }
+
+    public function closeUpdateModal(): void
+    {
+        $this->showUpdateModal = false;
+        $this->reset(['updateBody', 'updatePhotos']);
+        $this->resetValidation();
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
     public function saveUpdate(CreateIssueUpdateAction $createUpdate): void
     {
         $this->authorize('update', $this->issue);
@@ -129,8 +149,7 @@ class Show extends Component
             $this->updatePhotos,
         );
 
-        $this->reset(['updateBody', 'updatePhotos']);
-        $this->dispatch('wp-clear-photo-previews');
+        $this->closeUpdateModal();
 
         $this->refreshIssue();
     }
@@ -146,12 +165,10 @@ class Show extends Component
     {
         $this->issue = $this->issue->fresh([
             'tasks.team',
-            'photos',
+            'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit',
-            'updates.user',
-            'updates.worker',
-            'updates.photos',
+            'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
     }
 
@@ -159,7 +176,7 @@ class Show extends Component
     {
         $issue = $this->issue->load([
             'tasks.team',
-            'photos',
+            'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),

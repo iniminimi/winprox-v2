@@ -23,7 +23,9 @@
     "card": {
         "kind_nr": "Taak nr :nr",
         "description_label": "Beschrijving : ",
+        "line_team": "Taak, team : :team",
         "meta_team": "Team :team",
+        "meta_context": "Melding nr :issue_nr",
         "nr": "NR :nr",
         "issue_nr": "Melding nr :nr",
         "no_team": "Geen team",
@@ -45,6 +47,7 @@
         "team_select_placeholder": "Kies een team",
         "team_save": "Team opslaan",
         "task": "Taakgegevens",
+        "task_line": "Taak, team : :team",
         "due": "Vervaldatum :date",
         "change_status": "Status wijzigen",
         "reason": "Reden (verplicht bij sluiten zonder uitvoering)",

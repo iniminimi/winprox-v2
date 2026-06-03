@@ -1,52 +1,156 @@
 {
-    "meta_title": "WinProx — facility issues via QR",
+    "meta_title": "WinProx — turn reports into completed tasks",
     "login": "Log in",
     "register": "Sign up",
-    "back_home": "Back to home page",
+    "back_home": "Back to home",
+    "nav": {
+        "how": "How it works",
+        "reporting": "Easy reporting",
+        "execution": "Field work",
+        "sectors": "Sectors"
+    },
     "hero": {
-        "kicker": "Facility & technical management",
-        "title": "Issues from the floor to your team",
-        "lead": "WinProx links QR reports to tasks for internal facility teams — without scattered spreadsheets or email chains.",
-        "cta_register": "Start free trial",
-        "cta_login": "Log in"
-    },
-    "problem": {
-        "title": "Sound familiar?",
-        "cards": [
-            {"title": "Reports get lost", "body": "Issues arrive by email, phone or paper — nobody sees the full status."},
-            {"title": "No clear owner", "body": "Technical, cleaning and facility teams work in parallel without clear task assignment."},
-            {"title": "Slow follow-up", "body": "Managers search folders and chats instead of one overview per site and team."}
+        "badge": "Turn reports into completed tasks",
+        "tagline_before": "Enterprise software manages the data.",
+        "tagline_highlight": "WinProx manages the execution.",
+        "lead_intro": "Receiving reports is easy. Resolving them effectively is the challenge.",
+        "lead_body": "WinProx ensures reports reach the right people, are turned into clear assignments, and are followed through until the task is fully completed.",
+        "cta_start": "Start for free",
+        "flow_steps": [
+            {"step": "Step 1", "title": "Report"},
+            {"step": "Step 2", "title": "Task"},
+            {"step": "Step 3", "title": "Execution"},
+            {"step": "Step 4", "title": "Completion"}
         ]
     },
-    "solution": {
-        "title": "One line from report to task",
-        "lead": "Scan a QR code on a unit, report the issue, and assign it to the right internal team. Field workers see tasks in the portal — managers keep overview on desktop."
-    },
-    "features": {
-        "title": "What you get",
-        "items": [
-            {"icon": "issues", "title": "Issues & moderation", "body": "Approve QR submissions; manager issues start with a task immediately."},
-            {"icon": "tasks", "title": "Tasks per team", "body": "Four clear statuses, briefing and calendar for planning."},
-            {"icon": "locations", "title": "Sites & units", "body": "Manage locations, units, QR stickers and documents in one place."},
-            {"icon": "team", "title": "Teams & workers", "body": "Internal teams with field workers via QR — no extra login on site."},
-            {"icon": "calendar", "title": "Recurring maintenance", "body": "Schedule cycles and see due dates in the calendar."},
-            {"icon": "subscription", "title": "Trial & scale", "body": "Start with a trial; choose a plan that fits your size later."}
+    "how": {
+        "eyebrow": "How WinProx works",
+        "title": "Clear assignments every day through a briefing.",
+        "lead": "WinProx collects reports and automatically turns them into clear assignments for your teams.",
+        "without": [
+            "No lost emails",
+            "No phone calls",
+            "No Excel files",
+            "No confusion"
+        ],
+        "panel_title": "Every employee knows exactly:",
+        "checklist": [
+            "What needs to be done",
+            "Where it needs to happen",
+            "What priority it has",
+            "Which photos or information are available",
+            "When it must be finished"
         ]
     },
-    "flow": {
-        "title": "How it works",
+    "reporting": {
+        "eyebrow": "Reporting is simple",
+        "title": "Anyone can submit a report.",
+        "who": ["Citizens", "Customers", "Visitors", "Employees"],
+        "via_before": "With a ",
+        "via_qr": "QR code",
+        "via_after": " they can report a problem immediately. No accounts or downloads required.",
+        "no_app": "No app required",
         "steps": [
-            {"title": "Scan QR", "body": "Someone scans the code on a unit and describes the issue (optional photos)."},
-            {"title": "Task to team", "body": "Management assigns an internal team; the team gets a task in the portal."},
-            {"title": "Done", "body": "Follow-up and status stay visible until the issue is completed or closed."}
+            {"title": "Add photos", "body": "Show the situation right away."},
+            {"title": "Description", "body": "Enter the necessary details."},
+            {"title": "Submit", "body": "Done! Straight into the system."}
         ]
     },
-    "cta_band": {
-        "title": "Ready to start?",
-        "body": "Create an account and set up your first location in minutes.",
-        "register": "Create account",
-        "login": "I already have an account"
+    "execution": {
+        "eyebrow": "Execution in the field",
+        "title": "Built for people who do the work.",
+        "contrast_before": "Most software is built for managers. ",
+        "contrast_highlight": "WinProx is built for field teams.",
+        "team_portal_title": "The Team Portal",
+        "team_portal_lead": "Through the portal, staff receive their assignments. On site they can:",
+        "actions": [
+            {"label": "Scan QR codes", "icon": "document"},
+            {"label": "Open tasks", "icon": "tasks"},
+            {"label": "Add photos", "icon": "document"},
+            {"label": "Log comments", "icon": "chat-bubble"},
+            {"label": "Sign off work", "icon": "tasks"},
+            {"label": "Close tasks", "icon": "x-mark"}
+        ],
+        "auth_notes": ["No username", "No password", "Just get to work"]
     },
-    "qr_illustration_label": "QR on unit → issue → task",
-    "footer": {"contact": "Contact"}
+    "briefing": {
+        "eyebrow": "Daily briefing",
+        "title": "Your digital work plan.",
+        "intro": "Every morning, teams see everything clearly on one screen:",
+        "mock": [
+            {"label": "Due today", "badge": "5 tasks"},
+            {"label": "New reports", "badge": "3 new"},
+            {"label": "Scheduled interventions", "badge": "2 planned"},
+            {"label": "Priority tasks", "badge": "HIGH", "priority": true},
+            {"label": "Overdue assignments", "badge": "0"}
+        ]
+    },
+    "qr_history": {
+        "concept": "Unique concept",
+        "title": "One QR code, full history",
+        "body": "Every location, room, machine or installation gets a unique QR code. Reusing the same QR code automatically builds a transparent history.",
+        "tags": ["Reports", "Tasks", "Interventions", "Photos", "Solutions"],
+        "availability": ["Always available", "Always accessible"]
+    },
+    "video": {
+        "title": "Video",
+        "placeholder": "Video coming soon."
+    },
+    "sectors": {
+        "eyebrow": "Flexibility",
+        "title": "Works in every organisation",
+        "lead": "Whether public services, facility teams or production environments.",
+        "items": [
+            {"name": "Municipalities", "body": "Follow up citizen reports.", "icon": "locations"},
+            {"name": "Hospitals", "body": "Process technical reports.", "icon": "issues"},
+            {"name": "Hotels", "body": "Resolve issues faster.", "icon": "calendar"},
+            {"name": "Real estate", "body": "Manage buildings and installations.", "icon": "units"},
+            {"name": "Manufacturing", "body": "Track breakdowns and maintenance.", "icon": "tasks"},
+            {"name": "Facility teams", "body": "Organise daily operations.", "icon": "team"}
+        ]
+    },
+    "integrations": {
+        "eyebrow": "Integrations",
+        "title": "Works with your existing software.",
+        "body_before": "WinProx does not replace your ERP, CRM or CAFM. ",
+        "body_highlight": "WinProx complements them.",
+        "body_after": " Through APIs and webhooks, WinProx connects easily to existing systems.",
+        "compare_other_label": "Existing software",
+        "compare_other_text": "Manages the data",
+        "compare_winprox_label": "WinProx",
+        "compare_winprox_text": "Manages execution"
+    },
+    "practical": {
+        "eyebrow": "Features & options",
+        "title": "Practical and flexible",
+        "subtitle": "Included by default on our powerful platform.",
+        "items": [
+            "QR codes with company logo",
+            "Multiple QR layouts",
+            "Dark layouts for smartphones",
+            "Avery label support",
+            "Herma label support",
+            "Word templates",
+            "Multilingual interface",
+            "Calendar and planning",
+            "Teams and roles",
+            "API & webhooks"
+        ]
+    },
+    "screenshots": {
+        "title": "Screenshots",
+        "desktop": "Desktop screenshot coming soon.",
+        "mobile": "Mobile screenshot coming soon."
+    },
+    "closing": {
+        "title_before": "Stop managing reports.",
+        "title_highlight": "Start solving problems.",
+        "body": "WinProx brings reports, teams and execution together in one easy-to-use platform.",
+        "quote": "Enterprise software manages the data. WinProx manages the execution.",
+        "cta_start": "Start for free"
+    },
+    "footer": {
+        "contact": "Contact",
+        "rights": "All rights reserved."
+    }
 }

@@ -25,6 +25,9 @@ class UpdateOrganisationRequest extends FormRequest
             'postal_code' => ['nullable', 'string', 'max:32'],
             'city' => ['nullable', 'string', 'max:128'],
             'country_code' => ['nullable', 'string', 'regex:/^$|^[A-Z]{2}$/'],
+            'custom_theme_active' => ['nullable', 'boolean'],
+            'custom_theme_bg' => ['nullable', 'string', 'regex:/^#[a-fA-F0-9]{6}$/'],
+            'custom_theme_btn' => ['nullable', 'string', 'regex:/^#[a-fA-F0-9]{6}$/'],
         ];
     }
 
@@ -37,6 +40,8 @@ class UpdateOrganisationRequest extends FormRequest
             'name.required' => __('settings.errors.organisation_name_required'),
             'email.email' => __('settings.errors.organisation_email_invalid'),
             'country_code.regex' => __('settings.errors.organisation_country_invalid'),
+            'custom_theme_bg.regex' => __('settings.errors.custom_theme_hex_invalid'),
+            'custom_theme_btn.regex' => __('settings.errors.custom_theme_hex_invalid'),
         ];
     }
 }

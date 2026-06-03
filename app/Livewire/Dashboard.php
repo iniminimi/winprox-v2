@@ -40,6 +40,7 @@ class Dashboard extends Component
             'stats' => $stats,
             'recent' => $recent,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
+            'hasNoLocationsOrUnits' => $stats['locations'] === 0 && $stats['units'] === 0,
         ]);
     }
 }

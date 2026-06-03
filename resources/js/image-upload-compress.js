@@ -122,9 +122,28 @@ function wpResolveUploadComponent(propertyName, fallbackInput) {
     });
 
     for (const input of candidates) {
+        let component = null;
+
         const root = input.closest('[wire\\:id]');
         const componentId = root?.getAttribute('wire:id');
-        const component = componentId && window.Livewire?.find(componentId);
+        if (componentId) {
+            component = window.Livewire?.find(componentId);
+        }
+
+        if (!component?.upload) {
+            document.querySelectorAll('[wire\\:id]').forEach((node) => {
+                if (!node.contains(input)) {
+                    return;
+                }
+
+                const id = node.getAttribute('wire:id');
+                const candidate = id && window.Livewire?.find(id);
+
+                if (candidate && typeof candidate.upload === 'function') {
+                    component = candidate;
+                }
+            });
+        }
 
         if (component && typeof component.upload === 'function') {
             return component;

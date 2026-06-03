@@ -2,8 +2,10 @@
 
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
+use App\Models\Category;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
@@ -66,10 +68,10 @@ it('weigert een locatie zonder naam en zonder volledig adres', function () {
     Livewire::actingAs($user)
         ->test(LocationIndex::class)
         ->call('openCreate')
-        ->set('name', '')
-        ->set('street', 'Industrieweg')
-        ->set('postal_code', '')
-        ->set('city', 'Gent')
+        ->set('locationFormName', '')
+        ->set('locationFormStreet', 'Industrieweg')
+        ->set('locationFormPostalCode', '')
+        ->set('locationFormCity', 'Gent')
         ->call('save')
         ->assertHasErrors(['name']);
 
@@ -83,11 +85,11 @@ it('maakt een locatie aan met alleen straat postcode en plaats', function () {
     Livewire::actingAs($user)
         ->test(LocationIndex::class)
         ->call('openCreate')
-        ->set('name', '')
-        ->set('street', 'Industrieweg')
-        ->set('postal_code', '9000')
-        ->set('city', 'Gent')
-        ->set('country_code', '')
+        ->set('locationFormName', '')
+        ->set('locationFormStreet', 'Industrieweg')
+        ->set('locationFormPostalCode', '9000')
+        ->set('locationFormCity', 'Gent')
+        ->set('locationFormCountryCode', '')
         ->call('save')
         ->assertHasNoErrors();
 
@@ -140,12 +142,12 @@ it('creates a location via Livewire', function () {
     Livewire::actingAs($user)
         ->test(LocationIndex::class)
         ->call('openCreate')
-        ->set('name', 'Hal A')
-        ->set('street', 'Industrieweg')
-        ->set('house_number', '12')
-        ->set('postal_code', '9000')
-        ->set('city', 'Gent')
-        ->set('country_code', 'BE')
+        ->set('locationFormName', 'Hal A')
+        ->set('locationFormStreet', 'Industrieweg')
+        ->set('locationFormHouseNumber', '12')
+        ->set('locationFormPostalCode', '9000')
+        ->set('locationFormCity', 'Gent')
+        ->set('locationFormCountryCode', 'BE')
         ->call('save')
         ->assertHasNoErrors();
 
@@ -175,6 +177,68 @@ it('bulk creates units on location show', function () {
         ->and($location->units()->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
 });
 
+it('filters units on location show by category', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Filter']);
+    $kranen = Category::query()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Kranen',
+    ]);
+    $kamers = Category::query()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hotelkamers',
+    ]);
+
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Kraan A',
+        'category_id' => $kranen->id,
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Kamer B',
+        'category_id' => $kamers->id,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->set('unitCategoryFilter', (string) $kranen->id)
+        ->assertSee('Kraan A')
+        ->assertDontSee('Kamer B');
+});
+
+it('manages categories from location popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Categorieen']);
+
+    $component = Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openCategoriesModal')
+        ->set('categoryName', 'Kranen')
+        ->call('saveCategory')
+        ->assertHasNoErrors()
+        ->assertSee('Kranen');
+
+    $category = Category::query()->where('tenant_id', $tenant->id)->where('name', 'Kranen')->first();
+    expect($category)->not->toBeNull();
+
+    $component
+        ->call('openEditCategory', (int) $category->id)
+        ->set('categoryName', 'Hotelkamers')
+        ->call('saveCategory')
+        ->assertHasNoErrors()
+        ->assertSee('Hotelkamers');
+
+    $component
+        ->call('deleteCategory', (int) $category->id)
+        ->assertHasNoErrors()
+        ->assertDontSee('Hotelkamers');
+});
+
 it('toont geen QR-stickerblad-download zonder units', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -202,16 +266,19 @@ it('qr-pack download returns docx when GD available', function () {
         'tenant_id' => $tenant->id,
         'name' => 'Hal A',
     ]);
-    $location->units()->create([
+    Unit::factory()->withQrToken('qr-facility-machine-12')->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
         'name' => 'Machine 12',
-        'qr_token' => 'qr-facility-machine-12',
         'is_active' => true,
     ]);
 
     Carbon::setTestNow('2026-05-20 08:18:11');
 
-    $response = $this->actingAs($user)->get(route('locations.qr-pack', $location));
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'avery_55x55_s',
+    ]));
 
     $response->assertOk();
     $response->assertHeader(
@@ -231,17 +298,79 @@ it('qr-pack download returns docx when GD available', function () {
 
     expect($documentXml)->toBeString()
         ->and($documentXml)->toContain('Machine 12')
-        ->and($documentXml)->toContain('Hal A');
+        ->and($documentXml)->toContain('<w:gridCol w:w="3118"/>')
+        ->and($documentXml)->toContain('<w:gridCol w:w="283"/>')
+        ->and($documentXml)->toContain('<w:tblLayout w:type="fixed"/>')
+        ->and($documentXml)->toContain('w:left="992"');
+});
+
+it('qr-pack download returns herma docx layout when GD available', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hal B',
+    ]);
+    Unit::factory()->withQrToken('qr-facility-herma')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Deur 3',
+        'is_active' => true,
+    ]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'herma_70x50',
+    ]));
+
+    $response->assertOk();
+
+    $zip = new \ZipArchive;
+    $tmp = tempnam(sys_get_temp_dir(), 'wp-docx-herma-');
+    file_put_contents($tmp, $response->streamedContent());
+    expect($zip->open($tmp))->toBeTrue();
+    $documentXml = $zip->getFromName('word/document.xml');
+    $zip->close();
+    @unlink($tmp);
+
+    expect($documentXml)->toBeString()
+        ->and($documentXml)->toContain('Deur 3')
+        ->and($documentXml)->toContain('<w:gridCol w:w="3968"/>')
+        ->and($documentXml)->toContain('w:top="1219"')
+        ->and($documentXml)->toContain('w:left="0"');
+});
+
+it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->assertSee(__('locations.qr_pack_download'))
+        ->call('openQrPackModal')
+        ->assertSet('showQrPackModal', true)
+        ->assertSee(__('locations.qr_pack.formats.avery_55x55_s.title'))
+        ->assertSee(__('locations.qr_pack.formats.herma_70x50.title'));
 });
 
 it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5), 'logo_path' => null]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
-    $unit = $location->units()->create([
+    $unit = Unit::factory()->withQrToken('qr-unit-logo-test')->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
         'name' => 'Lift 1',
-        'qr_token' => 'qr-unit-logo-test',
         'is_active' => true,
     ]);
 
@@ -273,4 +402,43 @@ it('toont organisatielogo in locatie-QR wanneer geüpload', function () {
         ->assertOk()
         ->assertSee($orgLogoUrl, false)
         ->assertSee('wp-qr-code-center-logo', false);
+});
+
+it('qr-pack download with dynamic QR codes generates unassigned codes', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'avery_55x55_s',
+        'dynamic' => '1',
+        'count' => '5',
+    ]));
+
+    $response->assertOk();
+
+    // Verify QR codes were created
+    $qrCodes = \App\Models\QrCode::where('tenant_id', $tenant->id)->get();
+    expect($qrCodes)->toHaveCount(5)
+        ->and($qrCodes->every(fn ($qr) => $qr->status === \App\Enums\QrCodeStatus::Unassigned))->toBeTrue();
+});
+
+it('qr-pack download with dynamic QR codes validates count', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'avery_55x55_s',
+        'dynamic' => '1',
+        'count' => '150',
+    ]));
+
+    $response->assertStatus(400);
 });

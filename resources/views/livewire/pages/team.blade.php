@@ -130,7 +130,7 @@
 
                             <div class="wp-list">
                                 @forelse ($team->workers as $worker)
-                                    <div class="wp-data-row" wire:key="worker-{{ $worker->id }}">
+                                    <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
                                         <div class="wp-data-row-main">
                                             <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
                                             @unless ($worker->field_icon_slug)

@@ -11,7 +11,9 @@
         "subscription_inactive": "Dit portaal is tijdelijk niet beschikbaar. Neem contact op met de beheerder."
     },
     "issue": {
-        "awaiting_review_hint": "Je melding wordt gecontroleerd voordat details zichtbaar worden voor anderen."
+        "awaiting_review_hint": "Je melding wordt gecontroleerd voordat details zichtbaar worden voor anderen.",
+        "list_line": "Melding (nr :nr) : :description",
+        "updates_title": "Updates"
     },
     "location": {
         "units_title": "Units op deze locatie",
@@ -21,6 +23,7 @@
         "new": "Melding maken",
         "new_sub": "Meld een probleem",
         "issues": "Meldingen",
+        "open_tasks": "Open Taken",
         "announcements": "Mededelingen",
         "documents": "Documenten"
     },
@@ -28,6 +31,10 @@
         "title": "Een melding maken",
         "description": "Wat is er aan de hand?",
         "description_placeholder": "Omschrijf het probleem zo duidelijk mogelijk.",
+        "reporter_email": "E-mailadres",
+        "reporter_first_name_ph": "Voornaam (optioneel)",
+        "reporter_last_name_ph": "Achternaam (optioneel)",
+        "reporter_email_ph": "E-mail (optioneel)",
         "submit": "Melding versturen",
         "sent": "Bedankt, je melding is ontvangen en wordt gecontroleerd.",
         "photos": {
@@ -40,6 +47,7 @@
         "errors": {
             "description_required": "Geef een omschrijving van de melding.",
             "description_max": "De omschrijving is te lang.",
+            "reporter_email_invalid": "Geef een geldig e-mailadres op.",
             "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
             "photos_image": "Alleen afbeeldingen zijn toegestaan.",
             "photos_size": "Een foto is te groot."
@@ -61,6 +69,9 @@
         "signed_in_as": "Aangemeld als",
         "sign_out": "Afmelden",
         "open_tasks": "Open taken",
+        "task_heading": "Taak (nr :nr)",
+        "issue_heading": "Melding (nr :nr)",
+        "issue_meta": ":description, :datetime",
         "no_open_tasks": "Geen open taken.",
         "start_task": "Taak starten",
         "complete_task": "Taak afhandelen",
@@ -133,5 +144,14 @@
         "leaf": "Blad",
         "key": "Sleutel",
         "anchor": "Anker"
+    },
+    "unassigned_qr": {
+        "title": "QR-code koppelen",
+        "subtitle": "Dynamische QR-code - nog niet gekoppeld aan een unit",
+        "sticker_number": "Stickernummer",
+        "description": "Log in om deze QR-code te koppelen aan een unit. Na koppeling kun je deze QR-code gebruiken om meldingen te maken.",
+        "login_button": "Inloggen",
+        "no_permission": "Je hebt geen rechten om QR-codes te koppelen."
     }
 }
+

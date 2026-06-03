@@ -28,5 +28,10 @@
         "empty": "No issues yet.",
         "reporter_anon": "Anonymous",
         "no_location": "No location"
+    },
+    "onboarding": {
+        "title": "Start by creating Locations and Units",
+        "text": "Create locations and units to start with issues and tasks.",
+        "button": "Manage locations"
     }
 }

@@ -52,6 +52,11 @@
     background-color: var(--wp-bg);
 }
 
+[data-theme='highres'] .wp-portal-actions {
+    background-color: color-mix(in srgb, var(--wp-surface) 88%, transparent);
+    border-top-color: var(--wp-border);
+}
+
 [data-theme='highres'] .wp-card {
     backdrop-filter: var(--wp-card-backdrop);
     -webkit-backdrop-filter: var(--wp-card-backdrop);
@@ -71,6 +76,11 @@
 [data-theme='highres'] .btn--primary {
     background: linear-gradient(135deg, var(--wp-accent) 0%, #14b8a6 55%, var(--wp-accent-strong) 100%);
     border-color: transparent;
+    color: var(--wp-text-on-accent);
+}
+
+[data-theme='highres'] .btn--primary:hover {
+    color: var(--wp-text-on-accent);
 }
 
 [data-theme='highres'] .wp-nav-link.is-active {

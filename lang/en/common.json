@@ -23,6 +23,12 @@
         "done": "Handled",
         "closed": "Closed"
     },
+    "qr_status": {
+        "unassigned": "Unassigned",
+        "active": "Active",
+        "damaged": "Damaged",
+        "inactive": "Inactive"
+    },
     "detail_nav": {
         "first": "First",
         "prev": "Previous",
@@ -39,6 +45,9 @@
     },
     "language": {
         "label": "Language"
+    },
+    "style": {
+        "label": "Style"
     },
     "help": {
         "button": "Help",

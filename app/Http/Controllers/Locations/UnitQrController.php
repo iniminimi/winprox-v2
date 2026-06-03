@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\TeamQrCode;
+use App\Support\Qr\UnitPortalUrl;
 
 final class UnitQrController
 {
@@ -17,7 +18,7 @@ final class UnitQrController
         );
 
         $unit->load('tenant');
-        $url = route('public.unit-portal', $unit->qr_token);
+        $url = UnitPortalUrl::forUnit($unit);
 
         return view('locations.unit-qr', [
             'unit' => $unit,

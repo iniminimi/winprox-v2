@@ -6,6 +6,7 @@ use App\Actions\Public\SubmitReportAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
+use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Models\Task;
 use App\Models\Unit;
@@ -30,6 +31,7 @@ use Livewire\WithFileUploads;
 class UnitPortal extends Component
 {
     use PortalTeamleaderRelease;
+    use SwitchesPortalUiTheme;
     use WithFileUploads;
 
     public string $token;
@@ -38,6 +40,7 @@ class UnitPortal extends Component
     public ?int $teamId = null;
     public string $locationName = '';
     public string $unitName = '';
+    public string $unitDescription = '';
 
     public string $locale = 'nl';
     public ?string $inactiveReasonKey = null;
@@ -48,6 +51,10 @@ class UnitPortal extends Component
     public string $description = '';
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $photos = [];
+
+    public string $reporter_first_name = '';
+    public string $reporter_last_name = '';
+    public string $reporter_email = '';
 
     public string $first_name = '';
     public string $last_name = '';
@@ -75,6 +82,7 @@ class UnitPortal extends Component
         $this->teamId = $unit->default_internal_team_id;
         $this->unitName = $unit->name;
         $this->locationName = $unit->location?->name ?? '';
+        $this->unitDescription = $unit->description ?? '';
 
         Tenancy::actAs($this->tenantId);
 
@@ -155,12 +163,24 @@ class UnitPortal extends Component
         }
 
         $this->description = trim($this->description);
-        $request = new ReportIssueRequest;
-        $this->validate($request->rules(), $request->messages());
+        $this->reporter_first_name = trim($this->reporter_first_name);
+        $this->reporter_last_name = trim($this->reporter_last_name);
+        $this->reporter_email = trim($this->reporter_email);
 
-        $submitReport->handle($this->unit(), ['description' => $this->description], $this->photos);
+        $this->validate(ReportIssueRequest::portalRules(), ReportIssueRequest::validationMessages());
 
-        $this->reset(['description', 'photos']);
+        $submitReport->handle(
+            $this->unit(),
+            ReportIssueRequest::issueDataFromInput([
+                'description' => $this->description,
+                'reporter_first_name' => $this->reporter_first_name,
+                'reporter_last_name' => $this->reporter_last_name,
+                'reporter_email' => $this->reporter_email,
+            ]),
+            $this->photos,
+        );
+
+        $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.report.sent');
         $this->portalSection = 'issues';
@@ -334,8 +354,8 @@ class UnitPortal extends Component
 
         $this->cancelCompleteTask();
         $this->selectedIssueId = null;
-        $this->portalSection = 'issues';
-        $this->flashMessage = __('portal.worker.task_completed');
+        $this->portalSection = 'task_done';
+        $this->flashMessage = '';
     }
 
     public function render()
@@ -370,6 +390,7 @@ class UnitPortal extends Component
         $selectedIssue = null;
         $openTasksForIssue = collect();
         $allOpenUnitTasks = collect();
+        $openTaskCount = 0;
 
         if ($this->inactiveReasonKey === null) {
             if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
@@ -382,8 +403,13 @@ class UnitPortal extends Component
                 $announcements = UnitPortalData::activeAnnouncementsForUnit($unit);
             }
 
-            if ($isFieldVisitor && $team !== null) {
-                $allOpenUnitTasks = UnitPortalData::allOpenUnitTasks($unit, (int) $team->id);
+            if ($team !== null) {
+                if ($this->portalSection === 'home') {
+                    $openTaskCount = UnitPortalData::openUnitTaskCount($unit, (int) $team->id);
+                }
+                if ($isFieldVisitor) {
+                    $allOpenUnitTasks = UnitPortalData::allOpenUnitTasks($unit, (int) $team->id);
+                }
             }
 
             if ($this->selectedIssueId !== null) {
@@ -415,6 +441,8 @@ class UnitPortal extends Component
             'selectedIssue' => $selectedIssue,
             'openTasksForIssue' => $openTasksForIssue,
             'allOpenUnitTasks' => $allOpenUnitTasks,
+            'openTaskCount' => $openTaskCount,
+            'hasUnitTeam' => $team !== null,
         ]);
     }
 
@@ -427,6 +455,14 @@ class UnitPortal extends Component
     {
         if ($this->inactiveReasonKey !== null) {
             return null;
+        }
+
+        $cookieWorker = WorkerDeviceSession::workerFromDeviceCookie();
+        if ($cookieWorker !== null && $cookieWorker->internal_team_id !== null) {
+            $team = $cookieWorker->team;
+            if ($team !== null && $team->is_active) {
+                return $team;
+            }
         }
 
         $team = $this->unit()->defaultInternalTeam;

@@ -1,15 +1,29 @@
 <div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
-            <span class="wp-brand">WinProx</span>
-            <div class="wp-cluster">
+            <span class="wp-brand">
+                @php
+                    $tenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
+                    $logoUrl = $tenant ? $tenant->logoPublicUrl() : null;
+                @endphp
+                @if($logoUrl)
+                    <img src="{{ $logoUrl }}" alt="{{ $tenant->name ?? 'Logo' }}" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @else
+                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @endif
+            </span>
+            <div class="wp-cluster wp-cluster--tight">
                 <x-wp-page-help page="portal.unit" />
+                @include('partials.wp-portal-theme')
                 @include('partials.wp-portal-lang')
             </div>
         </div>
         <p class="wp-muted">
             @if ($locationName){{ $locationName }} &middot; @endif{{ $unitName }}
         </p>
+        @if ($unitDescription)
+            <p class="wp-muted">{{ $unitDescription }}</p>
+        @endif
     </div>
 
     @if ($inactiveReasonKey !== null)
@@ -29,36 +43,45 @@
                     <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
                     <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
                 </button>
-                @if ($issues->isNotEmpty())
-                    <button type="button" class="wp-tile" wire:click="openSection('issues')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.issues') }}</span>
-                        <span class="wp-tile-sub">{{ $issues->count() }}</span>
+                <button type="button" class="wp-tile" wire:click="openSection('issues')">
+                    <span class="wp-tile-title">{{ __('portal.tiles.issues') }} : {{ $issues->count() }}</span>
+                </button>
+                @if ($canAct)
+                    <button type="button"
+                            class="wp-tile"
+                            @click="document.getElementById('portal-open-tasks')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
+                        <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
                     </button>
+                @else
+                    <div class="wp-tile wp-tile--static" aria-disabled="true">
+                        <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
+                    </div>
                 @endif
-                @if ($announcements->isNotEmpty())
-                    <button type="button" class="wp-tile" wire:click="openSection('announcements')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.announcements') }}</span>
-                        <span class="wp-tile-sub">{{ $announcements->count() }}</span>
-                    </button>
-                @endif
-                @if ($documents->isNotEmpty())
-                    <button type="button" class="wp-tile" wire:click="openSection('documents')">
-                        <span class="wp-tile-title">{{ __('portal.tiles.documents') }}</span>
-                        <span class="wp-tile-sub">{{ $documents->count() }}</span>
-                    </button>
-                @endif
+                <button type="button" class="wp-tile" wire:click="openSection('announcements')">
+                    <span class="wp-tile-title">{{ __('portal.tiles.announcements') }} : {{ $announcements->count() }}</span>
+                </button>
+                <button type="button" class="wp-tile" wire:click="openSection('documents')">
+                    <span class="wp-tile-title">{{ __('portal.tiles.documents') }} : {{ $documents->count() }}</span>
+                </button>
             </div>
 
-            @if ($isFieldVisitor)
+            @if ($isFieldVisitor && $hasUnitTeam)
                 @if ($canAct)
-                    <div class="wp-row">
-                        <span class="wp-text-body">{{ __('portal.worker.signed_in_as') }} <strong>{{ $worker?->displayName() }}</strong></span>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                    <div class="wp-card wp-card-pad wp-cluster">
+                        @if ($worker?->field_icon_slug)
+                            <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
+                                <x-wp-worker-icon :slug="$worker->field_icon_slug" />
+                            </div>
+                        @endif
+                        <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
                     </div>
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
-                    <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
+                    <div class="wp-row">
+                        <h2 id="portal-open-tasks" class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                    </div>
                     @forelse ($allOpenUnitTasks as $task)
                         @include('partials.wp-portal-task', ['task' => $task])
                     @empty
@@ -79,6 +102,7 @@
                   @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
+                    @include('partials.wp-portal-report-reporter-fields')
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
                         <textarea id="description" class="wp-textarea" wire:model="description" rows="5"
@@ -87,7 +111,7 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label">{{ __('portal.report.photos.label') }}</label>
-                        @include('partials.wp-issue-photo-upload', ['model' => 'photos'])
+                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true])
                         @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
@@ -98,6 +122,12 @@
                     </button>
                 </div>
             </form>
+        @endif
+
+        {{-- ======================= TAAK AFGEHANDELD ======================= --}}
+        @if ($portalSection === 'task_done')
+            <p class="wp-section-title">{{ __('portal.worker.task_completed') }}</p>
+            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
         @endif
 
         {{-- ============================ ISSUES ============================ --}}
@@ -111,7 +141,10 @@
                             <div class="wp-cluster">
                                 <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
                             </div>
-                            <p class="wp-text-body">{{ \Illuminate\Support\Str::limit($issue->description, 100) }}</p>
+                            <p class="wp-text-body">{{ __('portal.issue.list_line', [
+                                'nr' => $issue->id,
+                                'description' => \Illuminate\Support\Str::limit($issue->description, 100),
+                            ]) }}</p>
                         </button>
                     @else
                         <div class="wp-card wp-card-pad wp-issue-card--pending" wire:key="issue-{{ $issue->id }}">
@@ -119,10 +152,7 @@
                                 <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
                                 <span class="wp-pill wp-pill--progress">{{ __('portal.pending_review') }}</span>
                             </div>
-                            <p class="wp-muted">{{ __('portal.issue.awaiting_review_hint') }}</p>
-                            <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-                                <p class="wp-text-body">{{ \Illuminate\Support\Str::limit($issue->description, 100) }}</p>
-                            </div>
+                            <p class="wp-text-body">{{ __('portal.worker.issue_heading', ['nr' => $issue->id]) }}</p>
                         </div>
                     @endif
                 @empty
@@ -139,33 +169,36 @@
                     <span class="wp-pill wp-pill--{{ $selectedIssue->status->pillModifier() }}">{{ __($selectedIssue->status->labelKey()) }}</span>
                     <span class="wp-muted">{{ $selectedIssue->created_at?->isoFormat('D MMM YYYY') }}</span>
                 </div>
-                @if ($selectedIssue->isApproved())
-                    <p class="wp-text-body">{{ $selectedIssue->description }}</p>
-                @else
+                @if (! $selectedIssue->isApproved())
                     <p class="wp-muted">{{ __('portal.issue.awaiting_review_hint') }}</p>
-                    <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-                        <p class="wp-text-body">{{ $selectedIssue->description }}</p>
-                    </div>
                 @endif
 
-                @if ($selectedIssue->photos->isNotEmpty())
-                    @if ($selectedIssue->isApproved())
-                        <div class="wp-photo-grid">
-                            @foreach ($selectedIssue->photos as $photo)
-                                <div class="wp-photo-thumb" wire:key="dp-{{ $photo->id }}">
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
-                                </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-                            <div class="wp-photo-grid">
-                                @foreach ($selectedIssue->photos as $photo)
-                                    <div class="wp-photo-thumb" wire:key="dp-{{ $photo->id }}"><span></span></div>
-                                @endforeach
+                @include('partials.wp-portal-issue-line', ['issue' => $selectedIssue])
+
+                @include('partials.wp-portal-issue-photos', [
+                    'issue' => $selectedIssue,
+                    'wireKeyPrefix' => 'dp',
+                ])
+
+                @if ($selectedIssue->updates->isNotEmpty())
+                    <h2 class="wp-section-title">{{ __('portal.issue.updates_title') }}</h2>
+                    <div class="wp-stack">
+                        @foreach ($selectedIssue->updates as $update)
+                            <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted" wire:key="issue-update-{{ $update->id }}">
+                                <p class="wp-muted">{{ $update->created_at?->isoFormat('D MMM YYYY, HH:mm') }}</p>
+                                @if (filled($update->body))
+                                    <p class="wp-text-body">{{ $update->body }}</p>
+                                @elseif ($update->kind && $update->kind !== 'note')
+                                    <p class="wp-text-body">{{ __('issues.updates.kind.'.$update->kind) }}</p>
+                                @endif
+
+                                @include('partials.wp-issue-photo-gallery', [
+                                    'photos' => $update->photos,
+                                    'wireKeyPrefix' => 'issue-update-photo-'.$update->id,
+                                ])
                             </div>
-                        </div>
-                    @endif
+                        @endforeach
+                    </div>
                 @endif
             </div>
 
@@ -176,7 +209,7 @@
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                 @endforelse
-            @elseif ($isFieldVisitor)
+            @elseif ($isFieldVisitor && $hasUnitTeam)
                 @include('partials.wp-unit-worker-signin')
             @endif
         @endif

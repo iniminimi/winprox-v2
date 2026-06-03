@@ -59,6 +59,18 @@
         @endforeach
     </div>
 
+    @if ($hasNoLocationsOrUnits)
+        <div class="wp-card wp-card-pad wp-onboarding-card">
+            <div class="wp-stack">
+                <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.onboarding.text') }}</p>
+                <a href="{{ route('locations.index') }}" class="btn btn--primary btn--sm">
+                    {{ __('dashboard.onboarding.button') }}
+                </a>
+            </div>
+        </div>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('dashboard.recent.title') }}</h2>

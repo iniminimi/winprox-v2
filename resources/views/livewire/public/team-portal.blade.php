@@ -1,9 +1,20 @@
 <div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
-            <span class="wp-brand">WinProx</span>
-            <div class="wp-cluster">
+            <span class="wp-brand">
+                @php
+                    $tenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
+                    $logoUrl = $tenant ? $tenant->logoPublicUrl() : null;
+                @endphp
+                @if($logoUrl)
+                    <img src="{{ $logoUrl }}" alt="{{ $tenant->name ?? 'Logo' }}" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @else
+                    <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx" style="max-width: 100px; max-height: 100px; object-fit: contain;">
+                @endif
+            </span>
+            <div class="wp-cluster wp-cluster--tight">
                 <x-wp-page-help page="portal.team" />
+                @include('partials.wp-portal-theme')
                 @include('partials.wp-portal-lang')
             </div>
         </div>
@@ -133,9 +144,13 @@
 
         {{-- ===================== READ-ONLY TAKENOVERZICHT ===================== --}}
         @if ($canAct)
-            <div class="wp-row">
-                <span class="wp-text-body">{{ __('portal.worker.signed_in_as') }} <strong>{{ $verifiedWorker?->displayName() }}</strong></span>
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+            <div class="wp-card wp-card-pad wp-cluster">
+                @if ($verifiedWorker?->field_icon_slug)
+                    <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
+                        <x-wp-worker-icon :slug="$verifiedWorker->field_icon_slug" />
+                    </div>
+                @endif
+                <strong class="wp-text-body">{{ $verifiedWorker?->displayName() }}</strong>
             </div>
 
             @if ($verifiedWorker?->is_teamleader)
@@ -144,7 +159,10 @@
 
             <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
-            <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+            </div>
             <div class="wp-list">
                 @forelse ($tasks as $task)
                     <div class="wp-card wp-card-pad wp-stack" wire:key="team-task-{{ $task->id }}">
@@ -156,10 +174,6 @@
                         </div>
                         @if ($task->issue?->isApproved())
                             <p class="wp-text-body">{{ $task->issue->description }}</p>
-                        @else
-                            <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-                                <p class="wp-text-body">{{ $task->issue?->description }}</p>
-                            </div>
                         @endif
                     </div>
                 @empty

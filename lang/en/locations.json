@@ -25,7 +25,6 @@
     "bulk_add": "Bulk add units",
     "location_qr": "Location QR (general)",
     "location_qr_subtitle": "General location QR for reports without a unit.",
-    "location_qr_scan_hint": "Scan the location QR to submit a report.",
     "unit_qr": "Unit QR",
     "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
     "qr_pack_download": "Download QR sticker sheet",
@@ -56,14 +55,25 @@
         "edit_title": "Edit unit",
         "open_issue": "Open issue",
         "meta_team": "Team :team",
+        "meta_category": "Category :category",
         "no_team": "No team (assign per unit later)",
+        "no_category": "No category",
         "fields": {
             "name": "Unit name",
-            "team": "Team"
+            "description": "Description",
+            "team": "Team",
+            "category": "Category"
+        },
+        "filters": {
+            "category": "Filter by category",
+            "all_categories": "All categories",
+            "search": "Search",
+            "search_placeholder": "Search by unit name"
         },
         "errors": {
             "name_required": "Enter a unit name.",
-            "duplicate_name": "This unit name already exists at this location."
+            "duplicate_name": "This unit name already exists at this location.",
+            "invalid_category": "Choose a valid category from your tenant."
         },
         "flash": {
             "created": "Unit created.",
@@ -102,15 +112,50 @@
             "too_many": "Too many units in one bulk (max. 500)."
         }
     },
+    "categories": {
+        "manage": "Categories",
+        "title": "Manage categories",
+        "subtitle": "Manage categories and link them to units.",
+        "add": "Add category",
+        "empty": "No categories yet.",
+        "confirm_delete": "Delete this category? Linked units will lose their category.",
+        "fields": {
+            "name": "Category name"
+        },
+        "errors": {
+            "name_required": "Enter a category name.",
+            "duplicate_name": "This category name already exists."
+        },
+        "flash": {
+            "created": "Category created.",
+            "updated": "Category updated.",
+            "deleted": "Category deleted."
+        }
+    },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",
         "country_code_invalid": "Enter a valid 2-letter ISO country code.",
         "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units."
     },
     "qr_pack": {
-        "headline": "Report an issue",
         "unavailable": "QR export is unavailable on this server.",
-        "no_units": "There are no units yet to build a QR sticker sheet."
+        "no_units": "There are no units yet to build a QR sticker sheet.",
+        "invalid_count": "The number of QR codes must be between 1 and 100.",
+        "modal_title": "Download QR sticker sheet",
+        "modal_subtitle": "Choose the label format that matches your sticker sheet.",
+        "generate_dynamic": "Generate dynamic QR codes (not yet linked to units)",
+        "dynamic_count_label": "Number of QR codes",
+        "dynamic_count_help": "Dynamic QR codes can be linked to units later via the QR-connect page. Maximum 100.",
+        "formats": {
+            "avery_55x55_s": {
+                "title": "Avery 55×55-S",
+                "description": "15 labels per sheet (55 × 55 mm) — Avery L7159 / 283."
+            },
+            "herma_70x50": {
+                "title": "HERMA 70×50",
+                "description": "15 labels per sheet (70 × 50 mm) — HERMA 8."
+            }
+        }
     },
     "documents": {
         "title": "Documents",
@@ -178,3 +223,7 @@
         }
     }
 }
+
+
+
+

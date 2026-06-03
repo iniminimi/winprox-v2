@@ -1,0 +1,23 @@
+{
+    "document_title": "Morgenbriefing",
+    "screen_brand": "Briefing",
+    "apply_filters": "Anwenden",
+    "select_team": "Wählen Sie ein Team für dieses Briefing",
+    "team_choose": "Wählen Sie Ihr Team:",
+    "select_date": "Datum",
+    "title": "Morgenbriefing",
+    "empty_team": "Keine offenen Aufgaben für heute für dieses Team.",
+    "empty_team_open": "Keine offenen Aufgaben für dieses Team.",
+    "section_units": "Units",
+    "section_general": "Allgemeine Bereiche",
+    "lines_count": ":count Einträge",
+    "print": "Drucken",
+    "open_tasks_button": "Offene Aufgaben",
+    "view_by_day": "Briefing nach Tag",
+    "scope_open_tasks": "Offene Aufgaben",
+    "powered_by": "Powered by WinProx.app",
+    "recurring_badge": "(wiederkehrend)",
+    "general_area_fallback": "Allgemeiner Bereich",
+    "unit_fallback": "Unit",
+    "no_description": "Keine Beschreibung"
+}

@@ -12,10 +12,13 @@ enum QrStickerSheetTemplate: string
 {
     case Avery55x55S = 'avery_55x55_s';
 
-    public function averySku(): string
+    case Herma7050 = 'herma_70x50';
+
+    public function fileSlug(): string
     {
         return match ($this) {
             self::Avery55x55S => '55x55-S',
+            self::Herma7050 => '70x50-herma',
         };
     }
 
@@ -23,6 +26,7 @@ enum QrStickerSheetTemplate: string
     {
         return match ($this) {
             self::Avery55x55S => 15,
+            self::Herma7050 => 15,
         };
     }
 
@@ -30,6 +34,15 @@ enum QrStickerSheetTemplate: string
     {
         return match ($this) {
             self::Avery55x55S => 55.0,
+            self::Herma7050 => 70.0,
+        };
+    }
+
+    public function stickerHeightMm(): float
+    {
+        return match ($this) {
+            self::Avery55x55S => 55.0,
+            self::Herma7050 => 50.0,
         };
     }
 }

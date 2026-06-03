@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 /**
@@ -61,8 +62,35 @@ class Team extends Component
 
     /** @var list<int> */
     public array $expandedTeamIds = [];
+
+    #[Url(as: 'q')]
+    public string $search = '';
+
+    #[Url(as: 'worker')]
+    public ?int $highlightWorkerId = null;
+
+    #[Url(as: 'team')]
+    public ?int $highlightTeamId = null;
+
     public string $workerFirstName = '';
     public string $workerLastName = '';
+
+    public function mount(): void
+    {
+        if ($this->highlightWorkerId !== null) {
+            $worker = Worker::query()
+                ->where('tenant_id', Tenancy::id())
+                ->find($this->highlightWorkerId);
+
+            if ($worker !== null) {
+                $this->expandTeam((int) $worker->internal_team_id);
+            }
+        }
+
+        if ($this->highlightTeamId !== null) {
+            $this->expandTeam($this->highlightTeamId);
+        }
+    }
 
     // --- Collega-gebruikers (alleen admin) --------------------------------
 
@@ -427,14 +455,37 @@ class Team extends Component
         $colleagues = $canManageUsers
             ? User::where('tenant_id', Tenancy::id())
                 ->where('is_superuser', false)
+                ->when(trim($this->search) !== '', function ($query) {
+                    $term = '%'.trim($this->search).'%';
+                    $query->where(function ($userQuery) use ($term) {
+                        $userQuery->where('name', 'like', $term)
+                            ->orWhere('email', 'like', $term);
+                    });
+                })
                 ->orderBy('name')
                 ->get()
             : collect();
 
         $teams = InternalTeam::with(['workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name')])
+            ->when(trim($this->search) !== '', function ($query) {
+                $term = '%'.trim($this->search).'%';
+                $query->where(function ($teamQuery) use ($term) {
+                    $teamQuery->where('name', 'like', $term)
+                        ->orWhereHas('workers', function ($workerQuery) use ($term) {
+                            $workerQuery->where('first_name', 'like', $term)
+                                ->orWhere('last_name', 'like', $term);
+                        });
+                });
+            })
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();
+
+        if (trim($this->search) !== '') {
+            foreach ($teams as $team) {
+                $this->expandTeam((int) $team->id);
+            }
+        }
 
         return view('livewire.pages.team', [
             'colleagues' => $colleagues,

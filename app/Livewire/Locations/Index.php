@@ -26,19 +26,19 @@ class Index extends Component
 
     public ?int $editingLocationId = null;
 
-    public string $name = '';
+    public string $locationFormName = '';
 
-    public string $street = '';
+    public string $locationFormStreet = '';
 
-    public string $house_number = '';
+    public string $locationFormHouseNumber = '';
 
-    public string $postal_code = '';
+    public string $locationFormPostalCode = '';
 
-    public string $city = '';
+    public string $locationFormCity = '';
 
-    public string $country_code = 'BE';
+    public string $locationFormCountryCode = 'BE';
 
-    public string $notes = '';
+    public string $locationFormNotes = '';
 
     public function mount(): void
     {
@@ -64,13 +64,13 @@ class Index extends Component
         $this->authorize('update', $location);
 
         $this->editingLocationId = $location->id;
-        $this->name = (string) $location->name;
-        $this->street = (string) ($location->street ?? '');
-        $this->house_number = (string) ($location->house_number ?? '');
-        $this->postal_code = (string) ($location->postal_code ?? '');
-        $this->city = (string) ($location->city ?? '');
-        $this->country_code = (string) ($location->country_code ?? 'BE');
-        $this->notes = (string) ($location->notes ?? '');
+        $this->locationFormName = (string) $location->name;
+        $this->locationFormStreet = (string) ($location->street ?? $location->address ?? '');
+        $this->locationFormHouseNumber = (string) ($location->house_number ?? '');
+        $this->locationFormPostalCode = (string) ($location->postal_code ?? '');
+        $this->locationFormCity = (string) ($location->city ?? '');
+        $this->locationFormCountryCode = (string) ($location->country_code ?? 'BE');
+        $this->locationFormNotes = (string) ($location->notes ?? '');
         $this->resetErrorBag();
         $this->showModal = true;
     }
@@ -117,23 +117,23 @@ class Index extends Component
     private function locationFormPayload(): array
     {
         return [
-            'name' => $this->name,
-            'street' => $this->street,
-            'house_number' => $this->house_number,
-            'postal_code' => $this->postal_code,
-            'city' => $this->city,
-            'country_code' => $this->country_code,
-            'notes' => $this->notes,
+            'name' => $this->locationFormName,
+            'street' => $this->locationFormStreet,
+            'house_number' => $this->locationFormHouseNumber,
+            'postal_code' => $this->locationFormPostalCode,
+            'city' => $this->locationFormCity,
+            'country_code' => $this->locationFormCountryCode,
+            'notes' => $this->locationFormNotes,
         ];
     }
 
     private function resetForm(): void
     {
         $this->reset([
-            'name', 'street', 'house_number', 'postal_code', 'city', 'notes', 'editingLocationId',
+            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'editingLocationId',
         ]);
         $this->editingLocationId = null;
-        $this->country_code = 'BE';
+        $this->locationFormCountryCode = 'BE';
         $this->resetErrorBag();
     }
 

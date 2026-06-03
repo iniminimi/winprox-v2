@@ -11,7 +11,9 @@
         "subscription_inactive": "Dieses Portal ist vorübergehend nicht verfügbar. Wenden Sie sich an Ihren Administrator."
     },
     "issue": {
-        "awaiting_review_hint": "Ihre Meldung wird geprüft, bevor Details für andere sichtbar werden."
+        "awaiting_review_hint": "Ihre Meldung wird geprüft, bevor Details für andere sichtbar werden.",
+        "list_line": "Meldung (nr :nr): :description",
+        "updates_title": "Updates"
     },
     "location": {
         "units_title": "Units an diesem Standort",
@@ -21,6 +23,7 @@
         "new": "Meldung erstellen",
         "new_sub": "Ein Problem melden",
         "issues": "Meldungen",
+        "open_tasks": "Offene Aufgaben",
         "announcements": "Mitteilungen",
         "documents": "Dokumente"
     },
@@ -28,6 +31,10 @@
         "title": "Eine Meldung erstellen",
         "description": "Worum geht es?",
         "description_placeholder": "Beschreiben Sie das Problem so genau wie möglich.",
+        "reporter_email": "E-Mail-Adresse",
+        "reporter_first_name_ph": "Vorname (optional)",
+        "reporter_last_name_ph": "Nachname (optional)",
+        "reporter_email_ph": "E-Mail (optional)",
         "submit": "Meldung senden",
         "sent": "Danke, Ihre Meldung wurde empfangen und wird geprüft.",
         "photos": {
@@ -40,6 +47,7 @@
         "errors": {
             "description_required": "Bitte beschreiben Sie die Meldung.",
             "description_max": "Die Beschreibung ist zu lang.",
+            "reporter_email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
             "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
             "photos_image": "Nur Bilder sind erlaubt.",
             "photos_size": "Ein Foto ist zu groß."
@@ -61,6 +69,9 @@
         "signed_in_as": "Angemeldet als",
         "sign_out": "Abmelden",
         "open_tasks": "Offene Aufgaben",
+        "task_heading": "Aufgabe (nr :nr)",
+        "issue_heading": "Meldung (nr :nr)",
+        "issue_meta": ":description, :datetime",
         "no_open_tasks": "Keine offenen Aufgaben.",
         "start_task": "Aufgabe starten",
         "complete_task": "Aufgabe abschließen",
@@ -133,5 +144,14 @@
         "leaf": "Blatt",
         "key": "Schlüssel",
         "anchor": "Anker"
+    },
+    "unassigned_qr": {
+        "title": "QR-Code verknüpfen",
+        "subtitle": "Dynamischer QR-Code - noch nicht mit einer Unit verknüpft",
+        "sticker_number": "Aufklebernummer",
+        "description": "Melden Sie sich an, um diesen QR-Code mit einer Unit zu verknüpfen. Nach der Verknüpfung können Sie diesen QR-Code verwenden, um Meldungen zu senden.",
+        "login_button": "Anmelden",
+        "no_permission": "Sie haben keine Berechtigung, QR-Codes zu verknüpfen."
     }
 }
+

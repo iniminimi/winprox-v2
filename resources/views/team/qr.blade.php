@@ -1,7 +1,6 @@
 <x-layouts.print :title="$team->name">
     <div class="wp-qr-page">
         <x-wp-page-head-title
-            icon="team"
             :title="$team->name"
             :subtitle="__('team.qr.subtitle')"
         />

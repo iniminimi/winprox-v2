@@ -1,6 +1,6 @@
 <div class="wp-stack">
     <x-wp-page-head-title
-        icon="subscription"
+        icon="api"
         :title="__('settings.api.title')"
         help-page="settings.api"
         :subtitle="__('settings.api.subtitle')"

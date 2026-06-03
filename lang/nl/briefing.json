@@ -1,0 +1,23 @@
+{
+    "document_title": "Ochtendbriefing",
+    "screen_brand": "Briefing",
+    "apply_filters": "Toepassen",
+    "select_team": "Kies een team voor de briefing",
+    "team_choose": "Kies uw team:",
+    "select_date": "Datum",
+    "title": "Ochtendbriefing",
+    "empty_team": "Geen open taken voor vandaag voor dit team.",
+    "empty_team_open": "Geen open taken voor dit team.",
+    "section_units": "Units",
+    "section_general": "Algemene zones",
+    "lines_count": ":count regels",
+    "print": "Afdrukken",
+    "open_tasks_button": "Open taken",
+    "view_by_day": "Briefing per dag",
+    "scope_open_tasks": "Open taken",
+    "powered_by": "Powered by WinProx.app",
+    "recurring_badge": "(terugkerend)",
+    "general_area_fallback": "Algemene zone",
+    "unit_fallback": "Unit",
+    "no_description": "Geen omschrijving"
+}

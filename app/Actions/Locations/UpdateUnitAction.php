@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use Illuminate\Support\Facades\Schema;
 
 class UpdateUnitAction
 {
@@ -14,10 +15,17 @@ class UpdateUnitAction
      */
     public function handle(Unit $unit, array $data, ?int $actorUserId = null): Unit
     {
-        $unit->update([
+        $payload = [
             'name' => trim((string) $data['name']),
+            'description' => $data['description'] ?? null,
             'default_internal_team_id' => $data['default_internal_team_id'] ?? null,
-        ]);
+        ];
+
+        if (Schema::hasColumn('units', 'category_id')) {
+            $payload['category_id'] = $data['category_id'] ?? null;
+        }
+
+        $unit->update($payload);
 
         $fresh = $unit->fresh();
 

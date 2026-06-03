@@ -23,6 +23,12 @@
         "done": "Traité",
         "closed": "Fermé"
     },
+    "qr_status": {
+        "unassigned": "Non assigné",
+        "active": "Actif",
+        "damaged": "Endommagé",
+        "inactive": "Inactif"
+    },
     "detail_nav": {
         "first": "Premier",
         "prev": "Précédent",
@@ -39,6 +45,9 @@
     },
     "language": {
         "label": "Langue"
+    },
+    "style": {
+        "label": "Style"
     },
     "help": {
         "button": "Aide",

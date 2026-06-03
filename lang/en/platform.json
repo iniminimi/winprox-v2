@@ -1,6 +1,9 @@
 {
     "title": "Platform",
     "subtitle": "Choose an organisation to inspect (support view).",
+    "nav": "Platform",
+    "back_nav": "Back to platform",
+    "tenants_nav": "Organisations",
     "search": "Search",
     "search_placeholder": "Organisation name…",
     "empty": "No organisations found.",
@@ -10,7 +13,39 @@
     "stop": "End support view",
     "active": "You are viewing :name.",
     "banner": "Support view: :name",
-    "nav": "Platform",
+    "dashboard": {
+        "nav": "Overview",
+        "title": "Platform overview",
+        "subtitle": "Global WinProx health without tenant actions.",
+        "stat_tenants": "Organisations",
+        "stat_active_tenants": ":count active",
+        "stat_users": "Users",
+        "stat_issues": "Issues",
+        "stat_tasks": "Tasks",
+        "stat_help": "Open help questions",
+        "recent_tenants": "Recent organisations",
+        "recent_users": "Recent users",
+        "recent_audit": "Recent audit",
+        "open_audit": "Open audit",
+        "empty": "No data yet."
+    },
+    "users": {
+        "nav": "Users",
+        "title": "Platform users",
+        "subtitle": "Read-only overview of users across all organisations.",
+        "search_placeholder": "Name, email or organisation…",
+        "empty": "No users found.",
+        "superuser": "Superuser",
+        "inactive": "Inactive",
+        "no_tenant": "No organisation"
+    },
+    "audit": {
+        "nav": "Audit",
+        "title": "Platform audit",
+        "subtitle": "Recent audit entries across all organisations.",
+        "search_placeholder": "Action, model, user or organisation…",
+        "empty": "No audit entries found."
+    },
     "help_nav": "Help admin",
     "help": {
         "title": "Help administration",

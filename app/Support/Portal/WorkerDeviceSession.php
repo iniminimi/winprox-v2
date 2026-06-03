@@ -207,12 +207,7 @@ final class WorkerDeviceSession
 
     public static function workerCanActOnUnit(Worker $worker, Unit $unit): bool
     {
-        $teamId = $unit->default_internal_team_id;
-        if ($teamId === null) {
-            return false;
-        }
-
-        return (int) $worker->internal_team_id === (int) $teamId;
+        return (int) $worker->tenant_id === (int) $unit->tenant_id;
     }
 
     /**

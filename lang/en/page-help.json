@@ -67,7 +67,7 @@
                 },
                 {
                     "label": "Post update",
-                    "text": "Add a note or photo to the timeline so colleagues can follow progress."
+                    "text": "Add a note or photo to the issue; this will be shown on the portal."
                 },
                 {
                     "label": "Approve",
@@ -156,7 +156,7 @@
                 },
                 {
                     "label": "Download QR pack",
-                    "text": "Download a Word file (Avery 55×55) with QR stickers for all units at this location."
+                    "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate dynamic QR codes that are not yet linked to a unit - these can be linked later via the QR-connect page."
                 },
                 {
                     "label": "Location QR",
@@ -348,6 +348,14 @@
                 {
                     "label": "Documents & announcements",
                     "text": "View manuals and announcements for this unit."
+                },
+                {
+                    "label": "Language",
+                    "text": "Choose your language in the top right (NL, EN, DE, FR). The portal texts update immediately."
+                },
+                {
+                    "label": "Theme",
+                    "text": "Switch themes (simple, dark, high-res) in the top right for a customized view."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",
@@ -423,3 +431,4 @@
         }
     }
 }
+

@@ -21,4 +21,12 @@ class UnitFactory extends Factory
             'is_active' => true,
         ];
     }
+
+    /** Vaste token voor tests (productie genereert altijd een willekeurige token). */
+    public function withQrToken(string $token): static
+    {
+        return $this->afterCreating(function (Unit $unit) use ($token): void {
+            $unit->forceFill(['qr_token' => $token])->saveQuietly();
+        });
+    }
 }

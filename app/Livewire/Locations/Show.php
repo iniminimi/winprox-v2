@@ -3,29 +3,37 @@
 namespace App\Livewire\Locations;
 
 use App\Actions\Locations\BulkCreateUnitsAction;
+use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeactivateUnitAction;
+use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Locations\DeleteUnitBulkBatchAction;
+use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
+use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\StoreUnitRequest;
+use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\EntityDetailNavigation;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
+use Illuminate\Support\Facades\Schema;
 use App\Support\Units\UnitBulkBatchRegistry;
 use App\Support\Units\UnitBulkNaming;
 use App\Support\Units\UnitDeletionGuard;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('components.layouts.app')]
@@ -40,7 +48,17 @@ class Show extends Component
 
     public bool $showBulkModal = false;
 
+    public bool $showCategoriesModal = false;
+
+    public bool $showQrPackModal = false;
+
+    public bool $qrPackGenerateDynamic = false;
+
+    public string $qrPackDynamicCount = '15';
+
     public ?int $editingUnitId = null;
+
+    public ?int $editingCategoryId = null;
 
     public string $locationFormName = '';
 
@@ -58,7 +76,16 @@ class Show extends Component
 
     public string $unitName = '';
 
+    public string $unitDescription = '';
+
     public ?int $unitTeamId = null;
+
+    public ?int $unitCategoryId = null;
+
+    public string $unitCategoryFilter = '';
+
+    #[Url(as: 'unit')]
+    public string $unitSearch = '';
 
     public string $bulkFloors = '1';
 
@@ -69,6 +96,10 @@ class Show extends Component
     public string $bulkPrefix = '';
 
     public ?int $bulkTeamId = null;
+
+    public ?int $bulkCategoryId = null;
+
+    public string $categoryName = '';
 
     public function mount(Location $location): void
     {
@@ -122,7 +153,7 @@ class Show extends Component
     private function fillLocationFormFromModel(): void
     {
         $this->locationFormName = (string) $this->location->name;
-        $this->locationFormStreet = (string) ($this->location->street ?? '');
+        $this->locationFormStreet = (string) ($this->location->street ?? $this->location->address ?? '');
         $this->locationFormHouseNumber = (string) ($this->location->house_number ?? '');
         $this->locationFormPostalCode = (string) ($this->location->postal_code ?? '');
         $this->locationFormCity = (string) ($this->location->city ?? '');
@@ -157,7 +188,9 @@ class Show extends Component
         $this->authorize('create', Unit::class);
         $this->editingUnitId = null;
         $this->unitName = '';
+        $this->unitDescription = '';
         $this->unitTeamId = null;
+        $this->unitCategoryId = null;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -168,28 +201,74 @@ class Show extends Component
         $this->authorize('update', $unit);
         $this->editingUnitId = $unit->id;
         $this->unitName = $unit->name;
+        $this->unitDescription = $unit->description ?? '';
         $this->unitTeamId = $unit->default_internal_team_id;
+        $this->unitCategoryId = $unit->category_id;
         $this->resetErrorBag();
         $this->showUnitModal = true;
+    }
+
+    public function openQrPackModal(): void
+    {
+        $this->showQrPackModal = true;
+    }
+
+    public function closeQrPackModal(): void
+    {
+        $this->showQrPackModal = false;
+    }
+
+    public function openCategoriesModal(): void
+    {
+        $this->authorize('update', $this->location);
+        $this->resetCategoryForm();
+        $this->showCategoriesModal = true;
+    }
+
+    public function closeCategoriesModal(): void
+    {
+        $this->showCategoriesModal = false;
+        $this->resetCategoryForm();
+        $this->resetErrorBag();
+    }
+
+    public function openEditCategory(int $categoryId): void
+    {
+        $this->authorize('update', $this->location);
+        $category = Category::query()->findOrFail($categoryId);
+        $this->editingCategoryId = (int) $category->id;
+        $this->categoryName = (string) $category->name;
+        $this->resetErrorBag();
+    }
+
+    public function cancelEditCategory(): void
+    {
+        $this->resetCategoryForm();
+        $this->resetErrorBag();
     }
 
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
     {
         $rules = $this->editingUnitId === null
-            ? StoreUnitRequest::ruleSet($this->location->id)
-            : UpdateUnitRequest::ruleSetFor($this->location->id, $this->editingUnitId);
+            ? StoreUnitRequest::ruleSet($this->location->id, null, (int) auth()->user()->tenant_id)
+            : UpdateUnitRequest::ruleSetFor($this->location->id, $this->editingUnitId, (int) auth()->user()->tenant_id);
 
         $validated = $this->validate([
             'unitName' => $rules['name'],
+            'unitDescription' => $rules['description'],
             'unitTeamId' => $rules['default_internal_team_id'],
+            'unitCategoryId' => $rules['category_id'],
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
+            'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
         ]);
 
         $payload = [
             'name' => $validated['unitName'],
+            'description' => $validated['unitDescription'] ?? null,
             'default_internal_team_id' => $validated['unitTeamId'] ?? null,
+            'category_id' => $validated['unitCategoryId'] ?? null,
         ];
 
         if ($this->editingUnitId === null) {
@@ -214,6 +293,7 @@ class Show extends Component
         }
 
         $this->showUnitModal = false;
+        $this->unitCategoryId = null;
         $this->location->refresh();
     }
 
@@ -249,6 +329,7 @@ class Show extends Component
         $this->bulkScheme = UnitBulkNaming::SCHEME_COMPACT_2;
         $this->bulkPrefix = '';
         $this->bulkTeamId = null;
+        $this->bulkCategoryId = null;
         $this->showBulkModal = true;
     }
 
@@ -294,6 +375,7 @@ class Show extends Component
             'bulkScheme' => $bulkRules['scheme'],
             'bulkPrefix' => $bulkRules['prefix'],
             'bulkTeamId' => $bulkRules['default_internal_team_id'],
+            'bulkCategoryId' => ['nullable', 'integer', 'exists:categories,id'],
         ]);
 
         try {
@@ -303,6 +385,7 @@ class Show extends Component
                 'scheme' => $validated['bulkScheme'],
                 'prefix' => $validated['bulkPrefix'] ?? '',
                 'default_internal_team_id' => $validated['bulkTeamId'] ?? null,
+                'category_id' => $validated['bulkCategoryId'] ?? null,
             ], (int) auth()->user()->tenant_id, (int) auth()->id());
 
             session()->flash('success', __('locations.bulk.created', ['count' => $result['created']]));
@@ -341,13 +424,65 @@ class Show extends Component
         $this->location->refresh();
     }
 
+    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory): void
+    {
+        $this->authorize('update', $this->location);
+        $tenantId = (int) auth()->user()->tenant_id;
+
+        $rules = $this->editingCategoryId === null
+            ? StoreCategoryRequest::ruleSet($tenantId)
+            : UpdateCategoryRequest::ruleSetFor($tenantId, $this->editingCategoryId);
+
+        $validated = $this->validate([
+            'categoryName' => $rules['name'],
+        ], [
+            'categoryName.required' => __('locations.categories.errors.name_required'),
+            'categoryName.unique' => __('locations.categories.errors.duplicate_name'),
+        ]);
+
+        if ($this->editingCategoryId === null) {
+            $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
+        } else {
+            $category = Category::query()->findOrFail($this->editingCategoryId);
+            $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
+        }
+
+        $this->resetCategoryForm();
+    }
+
+    public function deleteCategory(int $categoryId, DeleteCategoryAction $deleteCategory): void
+    {
+        $this->authorize('update', $this->location);
+        $category = Category::query()->findOrFail($categoryId);
+        $deleteCategory->handle($category, (int) auth()->id());
+        $this->unitCategoryFilter = $this->unitCategoryFilter === (string) $categoryId ? '' : $this->unitCategoryFilter;
+        $this->unitCategoryId = $this->unitCategoryId === $categoryId ? null : $this->unitCategoryId;
+        $this->editingCategoryId = $this->editingCategoryId === $categoryId ? null : $this->editingCategoryId;
+    }
+
     public function render()
     {
-        $this->location->loadMissing(['units' => fn ($q) => $q
-            ->with('defaultInternalTeam:id,name')
-            ->withCount('issues')
-            ->orderBy('name'),
+        $categoriesEnabled = Schema::hasTable('categories');
+
+        $this->location->loadMissing([
+            'units' => fn ($q) => $q->with('defaultInternalTeam:id,name')->withCount('issues'),
         ]);
+
+        $units = Unit::query()
+            ->where('location_id', $this->location->id)
+            ->with(['defaultInternalTeam:id,name'])
+            ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
+            ->withCount('issues')
+            ->when($categoriesEnabled && $this->unitCategoryFilter !== '', fn ($q) => $q->where('category_id', (int) $this->unitCategoryFilter))
+            ->when(trim($this->unitSearch) !== '', function ($q) {
+                $term = '%'.trim($this->unitSearch).'%';
+                $q->where(function ($unitQuery) use ($term) {
+                    $unitQuery->where('name', 'like', $term)
+                        ->orWhere('description', 'like', $term);
+                });
+            })
+            ->orderBy('name')
+            ->get();
 
         $bulkSummaries = UnitBulkBatchRegistry::recentBatchesForLocation($this->location)
             ->map(fn (UnitBulkBatch $batch) => array_merge(
@@ -361,12 +496,23 @@ class Show extends Component
             ->orderBy('name')
             ->get(['id', 'name']);
 
+        $categories = $categoriesEnabled
+            ? Category::query()->orderBy('name')->get(['id', 'name'])
+            : collect();
+
         return view('livewire.locations.show', [
-            'units' => $this->location->units,
+            'units' => $units,
             'bulkSummaries' => $bulkSummaries,
             'teams' => $teams,
+            'categories' => $categories,
             'nav' => EntityDetailNavigation::forLocation($this->location),
             'bulkPreview' => $this->bulkPreviewNames(),
         ]);
+    }
+
+    private function resetCategoryForm(): void
+    {
+        $this->editingCategoryId = null;
+        $this->categoryName = '';
     }
 }

@@ -1,37 +1,12 @@
 {{-- Eén taakkaart met worker-acties (start/afhandelen). Melder-inhoud blurt tot goedkeuring. --}}
 @php($issue = $task->issue)
 <div class="wp-card wp-card-pad wp-stack" wire:key="portal-task-{{ $task->id }}">
-    <div class="wp-cluster">
-        <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-    </div>
+    @include('partials.wp-portal-task-lines', ['task' => $task, 'issue' => $issue])
 
-    @if ($issue?->isApproved())
-        <p class="wp-text-body">{{ $issue->description }}</p>
-    @else
-        <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-            <p class="wp-text-body">{{ $issue?->description }}</p>
-        </div>
-    @endif
-
-    @if ($issue && $issue->photos->isNotEmpty())
-        @if ($issue->isApproved())
-            <div class="wp-photo-grid">
-                @foreach ($issue->photos as $photo)
-                    <div class="wp-photo-thumb" wire:key="tp-{{ $task->id }}-{{ $photo->id }}">
-                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($photo->path) }}" alt="">
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <div class="wp-pending-review" data-pending-label="{{ __('portal.pending_review') }}">
-                <div class="wp-photo-grid">
-                    @foreach ($issue->photos as $photo)
-                        <div class="wp-photo-thumb" wire:key="tp-{{ $task->id }}-{{ $photo->id }}"><span></span></div>
-                    @endforeach
-                </div>
-            </div>
-        @endif
-    @endif
+    @include('partials.wp-portal-issue-photos', [
+        'issue' => $issue,
+        'wireKeyPrefix' => 'tp-'.$task->id,
+    ])
 
     @if ($completingTaskId === $task->id)
         <form wire:submit="submitCompleteTask"
@@ -48,7 +23,7 @@
             </div>
             <div class="wp-field">
                 <label class="wp-label">{{ __('portal.worker.photos') }}</label>
-                @include('partials.wp-issue-photo-upload', ['model' => 'completingPhotos'])
+                @include('partials.wp-issue-photo-upload', ['model' => 'completingPhotos', 'preferCamera' => true])
                 @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-stack-tight">

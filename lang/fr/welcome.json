@@ -1,52 +1,156 @@
 {
-    "meta_title": "WinProx — signalements facility via QR",
+    "meta_title": "WinProx — transformer les signalements en tâches réalisées",
     "login": "Connexion",
     "register": "S'inscrire",
     "back_home": "Retour à l'accueil",
+    "nav": {
+        "how": "Fonctionnement",
+        "reporting": "Signaler facilement",
+        "execution": "Terrain",
+        "sectors": "Secteurs"
+    },
     "hero": {
-        "kicker": "Facility & gestion technique",
-        "title": "Des signalements du terrain vers votre équipe",
-        "lead": "WinProx relie les signalements QR aux tâches des équipes facility internes — sans tableurs dispersés ni chaînes d'e-mails.",
-        "cta_register": "Essai gratuit",
-        "cta_login": "Connexion"
-    },
-    "problem": {
-        "title": "Ça vous parle ?",
-        "cards": [
-            {"title": "Signalements perdus", "body": "Les problèmes arrivent par mail, téléphone ou papier — personne ne voit le statut complet."},
-            {"title": "Pas de responsable clair", "body": "Technique, nettoyage et facility travaillent en parallèle sans attribution claire."},
-            {"title": "Suivi lent", "body": "La gestion cherche dans des dossiers et chats au lieu d'une vue par site et équipe."}
+        "badge": "Transformer les signalements en tâches réalisées",
+        "tagline_before": "Enterprise software manages the data.",
+        "tagline_highlight": "WinProx manages the execution.",
+        "lead_intro": "Recevoir des signalements est simple. Les résoudre efficacement est le défi.",
+        "lead_body": "WinProx fait en sorte que les signalements arrivent aux bonnes personnes, soient traduits en missions claires et suivis jusqu'à la fin complète de la tâche.",
+        "cta_start": "Commencer gratuitement",
+        "flow_steps": [
+            {"step": "Étape 1", "title": "Signalement"},
+            {"step": "Étape 2", "title": "Tâche"},
+            {"step": "Étape 3", "title": "Exécution"},
+            {"step": "Étape 4", "title": "Clôture"}
         ]
     },
-    "solution": {
-        "title": "Une ligne du signalement à la tâche",
-        "lead": "Scannez un QR sur une unité, signalez le problème et assignez la bonne équipe interne. Les workers voient leurs tâches sur le portail — les managers gardent la vue sur desktop."
-    },
-    "features": {
-        "title": "Ce que vous obtenez",
-        "items": [
-            {"icon": "issues", "title": "Signalements & modération", "body": "Approuvez les QR ; les signalements manager créent une tâche directement."},
-            {"icon": "tasks", "title": "Tâches par équipe", "body": "Quatre statuts clairs, briefing et calendrier pour planifier."},
-            {"icon": "locations", "title": "Sites & unités", "body": "Gérez sites, unités, stickers QR et documents au même endroit."},
-            {"icon": "team", "title": "Équipes & workers", "body": "Équipes internes avec workers sur le terrain via QR — pas de login supplémentaire."},
-            {"icon": "calendar", "title": "Maintenance récurrente", "body": "Planifiez les cycles et voyez les échéances au calendrier."},
-            {"icon": "subscription", "title": "Essai & échelle", "body": "Commencez par un essai ; choisissez un plan adapté plus tard."}
+    "how": {
+        "eyebrow": "Comment WinProx fonctionne",
+        "title": "Chaque jour des missions claires via un briefing.",
+        "lead": "WinProx rassemble les signalements et les transforme automatiquement en missions claires pour vos équipes.",
+        "without": [
+            "Plus d'e-mails perdus",
+            "Plus d'appels téléphoniques",
+            "Plus de fichiers Excel",
+            "Plus de confusion"
+        ],
+        "panel_title": "Chaque collaborateur sait exactement :",
+        "checklist": [
+            "Ce qu'il faut faire",
+            "Où cela doit se passer",
+            "Quelle priorité cela a",
+            "Quelles photos ou informations sont disponibles",
+            "Quand cela doit être terminé"
         ]
     },
-    "flow": {
-        "title": "Comment ça marche",
+    "reporting": {
+        "eyebrow": "Signaler est simple",
+        "title": "Tout le monde peut faire un signalement.",
+        "who": ["Citoyens", "Clients", "Visiteurs", "Collaborateurs"],
+        "via_before": "Via un ",
+        "via_qr": "code QR",
+        "via_after": " ils peuvent signaler un problème immédiatement. Pas de comptes ni de téléchargements.",
+        "no_app": "Aucune application requise",
         "steps": [
-            {"title": "Scanner le QR", "body": "Quelqu'un scanne le code sur une unité et décrit le problème (photos optionnelles)."},
-            {"title": "Tâche à l'équipe", "body": "La gestion assigne une équipe interne ; l'équipe reçoit une tâche sur le portail."},
-            {"title": "Terminé", "body": "Le suivi et le statut restent visibles jusqu'à clôture du signalement."}
+            {"title": "Ajouter des photos", "body": "Visualisez la situation tout de suite."},
+            {"title": "Description", "body": "Saisissez les détails nécessaires."},
+            {"title": "Envoyer", "body": "Terminé ! Directement dans le système."}
         ]
     },
-    "cta_band": {
-        "title": "Prêt à commencer ?",
-        "body": "Créez un compte et configurez votre premier site en quelques minutes.",
-        "register": "Créer un compte",
-        "login": "J'ai déjà un compte"
+    "execution": {
+        "eyebrow": "Exécution sur le terrain",
+        "title": "Conçu pour ceux qui font le travail.",
+        "contrast_before": "La plupart des logiciels sont faits pour les managers. ",
+        "contrast_highlight": "WinProx est fait pour les équipes terrain.",
+        "team_portal_title": "Le Team Portal",
+        "team_portal_lead": "Via le portail, les collaborateurs reçoivent leurs missions. Sur place, ils peuvent :",
+        "actions": [
+            {"label": "Scanner des codes QR", "icon": "document"},
+            {"label": "Ouvrir des tâches", "icon": "tasks"},
+            {"label": "Ajouter des photos", "icon": "document"},
+            {"label": "Enregistrer des remarques", "icon": "chat-bubble"},
+            {"label": "Valider les travaux", "icon": "tasks"},
+            {"label": "Clôturer des tâches", "icon": "x-mark"}
+        ],
+        "auth_notes": ["Pas d'identifiant", "Pas de mot de passe", "Travailler tout simplement"]
     },
-    "qr_illustration_label": "QR sur unité → signalement → tâche",
-    "footer": {"contact": "Contact"}
+    "briefing": {
+        "eyebrow": "Briefing quotidien",
+        "title": "Votre planning de travail numérique.",
+        "intro": "Chaque matin, les équipes voient tout clairement sur un seul écran :",
+        "mock": [
+            {"label": "À exécuter aujourd'hui", "badge": "5 tâches"},
+            {"label": "Nouveaux signalements", "badge": "3 nouveaux"},
+            {"label": "Interventions planifiées", "badge": "2 planifiées"},
+            {"label": "Tâches prioritaires", "badge": "ÉLEVÉ", "priority": true},
+            {"label": "Missions en retard", "badge": "0"}
+        ]
+    },
+    "qr_history": {
+        "concept": "Concept unique",
+        "title": "Un code QR, historique complet",
+        "body": "Chaque lieu, pièce, machine ou installation reçoit un code QR unique. Réutiliser le même code QR crée automatiquement un historique transparent.",
+        "tags": ["Signalements", "Tâches", "Interventions", "Photos", "Solutions"],
+        "availability": ["Toujours disponible", "Toujours consultable"]
+    },
+    "video": {
+        "title": "Vidéo",
+        "placeholder": "Vidéo bientôt disponible."
+    },
+    "sectors": {
+        "eyebrow": "Flexibilité",
+        "title": "Fonctionne dans chaque organisation",
+        "lead": "Services publics, équipes facility ou environnements de production.",
+        "items": [
+            {"name": "Communes", "body": "Suivre les signalements citoyens.", "icon": "locations"},
+            {"name": "Hôpitaux", "body": "Traiter les signalements techniques.", "icon": "issues"},
+            {"name": "Hôtels", "body": "Résoudre les problèmes plus vite.", "icon": "calendar"},
+            {"name": "Immobilier", "body": "Gérer bâtiments et installations.", "icon": "units"},
+            {"name": "Entreprises industrielles", "body": "Suivre pannes et maintenance.", "icon": "tasks"},
+            {"name": "Équipes facility", "body": "Organiser le travail quotidien.", "icon": "team"}
+        ]
+    },
+    "integrations": {
+        "eyebrow": "Intégrations",
+        "title": "Fonctionne avec vos logiciels existants.",
+        "body_before": "WinProx ne remplace pas votre ERP, CRM ou GMAO. ",
+        "body_highlight": "WinProx les complète.",
+        "body_after": " Via API et webhooks, WinProx se connecte facilement aux systèmes existants.",
+        "compare_other_label": "Logiciel existant",
+        "compare_other_text": "Gère les données",
+        "compare_winprox_label": "WinProx",
+        "compare_winprox_text": "Gère l'exécution"
+    },
+    "practical": {
+        "eyebrow": "Fonctionnalités & options",
+        "title": "Pratique et flexible",
+        "subtitle": "Inclus par défaut sur notre plateforme.",
+        "items": [
+            "Codes QR avec logo d'entreprise",
+            "Différentes mises en page QR",
+            "Thèmes sombres pour smartphones",
+            "Support étiquettes Avery",
+            "Support étiquettes Herma",
+            "Modèles Word",
+            "Interface multilingue",
+            "Calendrier et planification",
+            "Équipes et rôles",
+            "API & webhooks"
+        ]
+    },
+    "screenshots": {
+        "title": "Captures d'écran",
+        "desktop": "Capture bureau à venir.",
+        "mobile": "Capture smartphone à venir."
+    },
+    "closing": {
+        "title_before": "Arrêtez de gérer les signalements.",
+        "title_highlight": "Commencez à résoudre les problèmes.",
+        "body": "WinProx réunit signalements, équipes et exécution dans une plateforme conviviale.",
+        "quote": "Enterprise software manages the data. WinProx manages the execution.",
+        "cta_start": "Commencer gratuitement"
+    },
+    "footer": {
+        "contact": "Contact",
+        "rights": "Tous droits réservés."
+    }
 }

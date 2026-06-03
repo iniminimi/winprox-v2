@@ -1,0 +1,44 @@
+{
+    "connect": {
+        "title": "QR-Code verknüpfen",
+        "subtitle": "Verknüpfen Sie diesen QR-Aufkleber mit einer Einheit",
+        "qr_info": "QR-Code-Informationen",
+        "sticker_number": "Aufklebernummer",
+        "status": "Status",
+        "select_unit": "Wählen Sie eine Einheit",
+        "search_units": "Einheiten durchsuchen",
+        "search_placeholder": "Zum Suchen tippen...",
+        "no_units": "Keine Einheiten gefunden",
+        "link_button": "QR-Code verknüpfen",
+        "success_title": "QR-Code verknüpft",
+        "success_message": "QR-Code :sticker wurde erfolgreich verknüpft.",
+        "go_to_unit": "Zur Einheit gehen"
+    },
+    "unassigned_guest": {
+        "title": "QR-Code nicht aktiviert",
+        "message": "Dieser QR-Code ist noch nicht mit einer Einheit verknüpft. Melden Sie sich an, um ihn zu verknüpfen.",
+        "sticker": "Aufklebernummer",
+        "login": "Anmelden"
+    },
+    "damaged": {
+        "title": "QR-Code beschädigt",
+        "message": "Dieser QR-Code ist als beschädigt markiert. Bitte wenden Sie sich an Ihren Administrator.",
+        "sticker": "Aufklebernummer"
+    },
+    "inactive": {
+        "title": "QR-Code inaktiv",
+        "message": "Dieser QR-Code ist deaktiviert und kann nicht verwendet werden.",
+        "sticker": "Aufklebernummer"
+    },
+    "unassigned_no_permission": {
+        "title": "Keine Berechtigung",
+        "message": "Sie haben keine Berechtigung, QR-Codes zu verknüpfen.",
+        "sticker": "Aufklebernummer",
+        "dashboard": "Zum Dashboard gehen"
+    },
+    "error": {
+        "title": "Fehler",
+        "message": "Beim Verarbeiten dieses QR-Codes ist ein Fehler aufgetreten.",
+        "sticker": "Aufklebernummer"
+    }
+}

@@ -2,7 +2,7 @@
     @if ($createStep === 1)
         <form x-data
               x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-              @submit.prevent="await window.wpAwaitPhotoUploads($el); await $wire.saveCreateStepOne()"
+              x-on:submit.prevent="(async () => { await window.wpAwaitPhotoUploads?.($el); await $wire.saveCreateStepOne(); })()"
               class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
             <div class="wp-modal-head">
                 <div class="wp-stack-tight">

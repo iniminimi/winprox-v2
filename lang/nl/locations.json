@@ -25,7 +25,6 @@
     "bulk_add": "Bulk units toevoegen",
     "location_qr": "QR-code locatie (algemeen)",
     "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",
-    "location_qr_scan_hint": "Scan de locatie-QR om een melding door te geven.",
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
     "qr_pack_download": "QR-stickerblad downloaden",
@@ -56,14 +55,25 @@
         "edit_title": "Unit bewerken",
         "open_issue": "Open melding",
         "meta_team": "Team :team",
+        "meta_category": "Categorie :category",
         "no_team": "Geen team (later per unit koppelen)",
+        "no_category": "Geen categorie",
         "fields": {
             "name": "Unitnaam",
-            "team": "Team"
+            "description": "Beschrijving",
+            "team": "Team",
+            "category": "Categorie"
+        },
+        "filters": {
+            "category": "Filter op categorie",
+            "all_categories": "Alle categorieën",
+            "search": "Zoeken",
+            "search_placeholder": "Zoek op unitnaam"
         },
         "errors": {
             "name_required": "Vul een unitnaam in.",
-            "duplicate_name": "Deze unitnaam bestaat al op deze locatie."
+            "duplicate_name": "Deze unitnaam bestaat al op deze locatie.",
+            "invalid_category": "Kies een geldige categorie van je tenant."
         },
         "flash": {
             "created": "Unit aangemaakt.",
@@ -102,15 +112,50 @@
             "too_many": "Te veel units in één bulk (max. 500)."
         }
     },
+    "categories": {
+        "manage": "Categorieën",
+        "title": "Categorieën beheren",
+        "subtitle": "Beheer categorieën en koppel ze aan units.",
+        "add": "Categorie toevoegen",
+        "empty": "Nog geen categorieën.",
+        "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",
+        "fields": {
+            "name": "Categorienaam"
+        },
+        "errors": {
+            "name_required": "Vul een categorienaam in.",
+            "duplicate_name": "Deze categorienaam bestaat al."
+        },
+        "flash": {
+            "created": "Categorie aangemaakt.",
+            "updated": "Categorie bijgewerkt.",
+            "deleted": "Categorie verwijderd."
+        }
+    },
     "errors": {
         "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",
         "country_code_invalid": "Geef een geldige ISO-landcode van 2 letters op.",
         "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen."
     },
     "qr_pack": {
-        "headline": "Melding doorgeven",
         "unavailable": "QR-export is niet beschikbaar op deze server.",
-        "no_units": "Er zijn nog geen units om een QR-stickerblad te maken."
+        "no_units": "Er zijn nog geen units om een QR-stickerblad te maken.",
+        "invalid_count": "Het aantal QR-codes moet tussen 1 en 100 liggen.",
+        "modal_title": "QR-stickerblad downloaden",
+        "modal_subtitle": "Kies het etiketformaat dat bij je stickerblad past.",
+        "generate_dynamic": "Genereer dynamische QR-codes (nog niet gekoppeld aan units)",
+        "dynamic_count_label": "Aantal QR-codes",
+        "dynamic_count_help": "Dynamische QR-codes kunnen later worden gekoppeld aan units via de QR-connect pagina. Maximaal 100.",
+        "formats": {
+            "avery_55x55_s": {
+                "title": "Avery 55×55-S",
+                "description": "15 etiketten per vel (55 × 55 mm) — Avery L7159 / 283."
+            },
+            "herma_70x50": {
+                "title": "HERMA 70×50",
+                "description": "15 etiketten per vel (70 × 50 mm) — HERMA 8."
+            }
+        }
     },
     "documents": {
         "title": "Documenten",
@@ -178,3 +223,6 @@
         }
     }
 }
+
+
+

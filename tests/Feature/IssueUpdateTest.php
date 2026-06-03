@@ -63,3 +63,36 @@ it('registreert een notitie met foto via de action', function () {
     expect($update)->not->toBeNull()
         ->and($update->photos)->toHaveCount(1);
 });
+
+it('toont een update-foto op meldingdetail na opslaan via livewire', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
+
+    Tenancy::actAs($tenant->id);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = UploadedFile::fake()->createWithContent('update.jpg', $jpeg, 'image/jpeg');
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['issue' => $issue])
+        ->set('updateBody', 'Zie bijlage')
+        ->set('updatePhotos', [$file])
+        ->call('saveUpdate')
+        ->assertHasNoErrors();
+
+    $photo = $issue->fresh()->photos->first();
+
+    expect($photo)->not->toBeNull()
+        ->and(Storage::disk('public')->exists($photo->path))->toBeTrue()
+        ->and($photo->publicUrl())->toBe('/storage/'.$photo->path);
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['issue' => $issue->fresh()])
+        ->assertSee('/storage/'.$photo->path, false);
+});

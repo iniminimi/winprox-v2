@@ -12,19 +12,23 @@
         : '';
     $datetime = optional($issue->created_at)->timezone(config('app.timezone'))->format('d/m/Y H:i');
     $teamsLabel = $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team');
-    $metaLine = match ($issue->source) {
-        IssueSource::Qr => __('issues.card.meta_via_team', [
+    $reporterName = $issue->reporter_name ?: __('issues.card.unknown_reporter');
+    $issueLine = match ($issue->source) {
+        IssueSource::Qr, IssueSource::QrLocation => __('issues.card.line_reported_by', ['name' => $reporterName]),
+        default => __('issues.card.line_created_by', ['name' => $reporterName]),
+    };
+    $contextMeta = match ($issue->source) {
+        IssueSource::Qr => __('issues.card.meta_via_context', [
             'source' => __('issues.card.report_source_qr'),
             'datetime' => $datetime,
             'teams' => $teamsLabel,
         ]),
-        IssueSource::QrLocation => __('issues.card.meta_via_team', [
+        IssueSource::QrLocation => __('issues.card.meta_via_context', [
             'source' => __('issues.card.report_source_qr_location'),
             'datetime' => $datetime,
             'teams' => $teamsLabel,
         ]),
-        default => __('issues.card.meta_by_team', [
-            'name' => $issue->reporter_name ?: __('issues.card.unknown_reporter'),
+        default => __('issues.card.meta_context', [
             'datetime' => $datetime,
             'teams' => $teamsLabel,
         ]),
@@ -40,11 +44,10 @@
         @if ($addressLine !== '')
             <p class="wp-issue-card-meta">{{ $addressLine }}</p>
         @endif
-        <p class="wp-issue-card-meta">{{ $metaLine }}</p>
+        <p class="wp-issue-card-meta">{{ $issueLine }}</p>
+        <p class="wp-issue-card-meta">{{ $contextMeta }}</p>
         @if ($issue->description)
-            <p class="wp-issue-card-desc">
-                <span class="wp-issue-card-desc-label">{{ __('issues.card.description_label') }}</span>{{ $issue->description }}
-            </p>
+            <p class="wp-issue-card-desc">{{ $issue->description }}</p>
         @endif
     </div>
     <div class="wp-issue-row-meta">

@@ -25,7 +25,6 @@
     "bulk_add": "Ajout en masse d'unités",
     "location_qr": "QR site (général)",
     "location_qr_subtitle": "QR général du site pour les signalements sans unité.",
-    "location_qr_scan_hint": "Scannez le QR du site pour signaler un problème.",
     "unit_qr": "QR unité",
     "unit_qr_subtitle": "Code QR de cette unité — lien vers le portail de signalement.",
     "qr_pack_download": "Télécharger la planche QR",
@@ -56,14 +55,25 @@
         "edit_title": "Modifier l'unité",
         "open_issue": "Signalement ouvert",
         "meta_team": "Équipe :team",
+        "meta_category": "Catégorie :category",
         "no_team": "Aucune équipe (à lier plus tard)",
+        "no_category": "Aucune catégorie",
         "fields": {
             "name": "Nom de l'unité",
-            "team": "Équipe"
+            "description": "Description",
+            "team": "Équipe",
+            "category": "Catégorie"
+        },
+        "filters": {
+            "category": "Filtrer par catégorie",
+            "all_categories": "Toutes les catégories",
+            "search": "Rechercher",
+            "search_placeholder": "Rechercher par nom d'unité"
         },
         "errors": {
             "name_required": "Indiquez un nom d'unité.",
-            "duplicate_name": "Ce nom d'unité existe déjà sur ce site."
+            "duplicate_name": "Ce nom d'unité existe déjà sur ce site.",
+            "invalid_category": "Choisissez une catégorie valide de votre tenant."
         },
         "flash": {
             "created": "Unité créée.",
@@ -102,15 +112,50 @@
             "too_many": "Trop d'unités en une fois (max. 500)."
         }
     },
+    "categories": {
+        "manage": "Catégories",
+        "title": "Gérer les catégories",
+        "subtitle": "Créez des catégories par tenant et liez-les aux unités.",
+        "add": "Ajouter une catégorie",
+        "empty": "Aucune catégorie pour le moment.",
+        "confirm_delete": "Supprimer cette catégorie ? Les unités liées perdront leur catégorie.",
+        "fields": {
+            "name": "Nom de la catégorie"
+        },
+        "errors": {
+            "name_required": "Indiquez un nom de catégorie.",
+            "duplicate_name": "Ce nom de catégorie existe déjà."
+        },
+        "flash": {
+            "created": "Catégorie créée.",
+            "updated": "Catégorie mise à jour.",
+            "deleted": "Catégorie supprimée."
+        }
+    },
     "errors": {
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",
         "country_code_invalid": "Saisissez un code pays ISO valide à 2 lettres.",
         "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter."
     },
     "qr_pack": {
-        "headline": "Signaler un problème",
         "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
-        "no_units": "Il n'y a pas encore d'unités pour créer une planche QR."
+        "no_units": "Il n'y a pas encore d'unités pour créer une planche QR.",
+        "invalid_count": "Le nombre de codes QR doit être entre 1 et 100.",
+        "modal_title": "Télécharger la planche QR",
+        "modal_subtitle": "Choisissez le format d'étiquette correspondant à votre planche.",
+        "generate_dynamic": "Générer des codes QR dynamiques (pas encore liés aux unités)",
+        "dynamic_count_label": "Nombre de codes QR",
+        "dynamic_count_help": "Les codes QR dynamiques peuvent être liés aux unités plus tard via la page QR-connect. Maximum 100.",
+        "formats": {
+            "avery_55x55_s": {
+                "title": "Avery 55×55-S",
+                "description": "15 étiquettes par feuille (55 × 55 mm) — Avery L7159 / 283."
+            },
+            "herma_70x50": {
+                "title": "HERMA 70×50",
+                "description": "15 étiquettes par feuille (70 × 50 mm) — HERMA 8."
+            }
+        }
     },
     "documents": {
         "title": "Documents",
@@ -178,3 +223,7 @@
         }
     }
 }
+
+
+
+

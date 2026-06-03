@@ -23,6 +23,12 @@
         "done": "Afgehandeld",
         "closed": "Gesloten"
     },
+    "qr_status": {
+        "unassigned": "Niet toegewezen",
+        "active": "Actief",
+        "damaged": "Beschadigd",
+        "inactive": "Gedeactiveerd"
+    },
     "detail_nav": {
         "first": "Eerste",
         "prev": "Vorige",
@@ -35,10 +41,14 @@
         "edit": "Bewerken",
         "delete": "Verwijderen",
         "print": "Afdrukken",
-        "logout": "Uitloggen"
+        "logout": "Uitloggen",
+        "clear": "Wissen"
     },
     "language": {
         "label": "Taal"
+    },
+    "style": {
+        "label": "Stijl"
     },
     "help": {
         "button": "Hulp",

@@ -23,7 +23,9 @@
     "card": {
         "kind_nr": "Tâche n° :nr",
         "description_label": "Description : ",
+        "line_team": "Tâche, équipe : :team",
         "meta_team": "Équipe :team",
+        "meta_context": "Signalement n° :issue_nr",
         "nr": "NR :nr",
         "issue_nr": "Signalement n° :nr",
         "no_team": "Aucune équipe",
@@ -45,6 +47,7 @@
         "team_select_placeholder": "Choisir une équipe",
         "team_save": "Enregistrer l'équipe",
         "task": "Détails de la tâche",
+        "task_line": "Tâche, équipe : :team",
         "due": "Échéance :date",
         "change_status": "Changer le statut",
         "reason": "Motif (obligatoire si clôture sans exécution)",

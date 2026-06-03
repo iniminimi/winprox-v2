@@ -21,7 +21,12 @@
         "placeholder_country": "Country (e.g. BE)",
         "name_label": "Organisation name",
         "logo_label": "Organisation logo",
-        "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB)."
+        "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB).",
+        "custom_theme_title": "Custom portal style",
+        "custom_theme_hint": "Choose custom colours for the QR portal.",
+        "custom_theme_active_label": "Use custom portal style",
+        "custom_theme_bg_label": "Background colour",
+        "custom_theme_btn_label": "Button colour"
     },
     "privacy": {
         "title": "Privacy & data export",
@@ -49,7 +54,8 @@
     "errors": {
         "organisation_name_required": "Enter an organisation name.",
         "organisation_email_invalid": "Enter a valid email address.",
-        "organisation_country_invalid": "Use a two-letter country code (e.g. BE) or leave empty."
+        "organisation_country_invalid": "Use a two-letter country code (e.g. BE) or leave empty.",
+        "custom_theme_hex_invalid": "Enter a valid colour (HEX code like #ff0000)."
     },
     "api": {
         "nav": "API & webhooks",

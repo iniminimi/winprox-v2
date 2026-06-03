@@ -24,12 +24,11 @@ it('blokkeert het unit-portaal bij verlopen abonnement', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->create([
+    Unit::factory()->withQrToken('expired-unit')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'expired-unit',
     ]);
 
     Livewire::test(UnitPortal::class, ['token' => 'expired-unit'])
@@ -43,12 +42,11 @@ it('toont goedgekeurde melding-inhoud zonder blur op het unit-portaal', function
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $unit = Unit::factory()->create([
+    $unit = Unit::factory()->withQrToken('approved-unit')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'approved-unit',
     ]);
 
     Issue::factory()->create([

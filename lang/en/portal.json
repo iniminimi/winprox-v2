@@ -11,7 +11,9 @@
         "subscription_inactive": "This portal is temporarily unavailable. Please contact your administrator."
     },
     "issue": {
-        "awaiting_review_hint": "Your report is being reviewed before details become visible to others."
+        "awaiting_review_hint": "Your report is being reviewed before details become visible to others.",
+        "list_line": "Report (nr :nr): :description",
+        "updates_title": "Updates"
     },
     "location": {
         "units_title": "Units at this location",
@@ -21,6 +23,7 @@
         "new": "New report",
         "new_sub": "Report a problem",
         "issues": "Reports",
+        "open_tasks": "Open tasks",
         "announcements": "Announcements",
         "documents": "Documents"
     },
@@ -28,6 +31,10 @@
         "title": "Create a report",
         "description": "What is the matter?",
         "description_placeholder": "Describe the problem as clearly as possible.",
+        "reporter_email": "Email address",
+        "reporter_first_name_ph": "First name (optional)",
+        "reporter_last_name_ph": "Last name (optional)",
+        "reporter_email_ph": "Email (optional)",
         "submit": "Send report",
         "sent": "Thank you, your report has been received and will be reviewed.",
         "photos": {
@@ -40,6 +47,7 @@
         "errors": {
             "description_required": "Please describe the report.",
             "description_max": "The description is too long.",
+            "reporter_email_invalid": "Please enter a valid email address.",
             "photos_max": "You can add up to 4 photos.",
             "photos_image": "Only images are allowed.",
             "photos_size": "A photo is too large."
@@ -61,6 +69,9 @@
         "signed_in_as": "Signed in as",
         "sign_out": "Sign out",
         "open_tasks": "Open tasks",
+        "task_heading": "Task (nr :nr)",
+        "issue_heading": "Report (nr :nr)",
+        "issue_meta": ":description, :datetime",
         "no_open_tasks": "No open tasks.",
         "start_task": "Start task",
         "complete_task": "Complete task",
@@ -133,5 +144,14 @@
         "leaf": "Leaf",
         "key": "Key",
         "anchor": "Anchor"
+    },
+    "unassigned_qr": {
+        "title": "Link QR code",
+        "subtitle": "Dynamic QR code - not yet linked to a unit",
+        "sticker_number": "Sticker number",
+        "description": "Log in to link this QR code to a unit. After linking, you can use this QR code to submit reports.",
+        "login_button": "Log in",
+        "no_permission": "You do not have permission to link QR codes."
     }
 }
+

@@ -16,6 +16,27 @@ it('past de gekozen locale toe via de middleware', function () {
         ->assertSee(__('auth.submit', [], 'fr'));
 });
 
+it('werkt voor ingelogde gebruikers via zijbalk en slaat locale op de gebruiker op', function () {
+    $user = \App\Models\User::factory()->create(['locale' => 'nl']);
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('dashboard.kpi.locations', [], 'nl'));
+
+    $this->actingAs($user)
+        ->get('/locale/en')
+        ->assertSessionHas('locale', 'en');
+
+    expect($user->fresh()->locale)->toBe('en');
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('dashboard.kpi.locations', [], 'en'))
+        ->assertDontSee(__('dashboard.kpi.locations', [], 'nl'));
+});
+
 it('valt terug op de standaardlocale (nl) zonder keuze', function () {
     $this->get(route('login'))
         ->assertOk()

@@ -4,7 +4,9 @@ use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\QrController;
 use App\Http\Controllers\Locations\LocationQrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
@@ -26,13 +28,18 @@ use App\Livewire\Pages\Legal;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
+use App\Livewire\Platform\Audit as PlatformAudit;
+use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
+use App\Livewire\Platform\QrConnect;
 use App\Livewire\Platform\Tenants as PlatformTenants;
+use App\Livewire\Platform\Users as PlatformUsers;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Support\Platform\SupportTenantContext;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Livewire\Public\LocationPortal;
 use App\Livewire\Public\TeamPortal;
+use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,7 +61,10 @@ Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
+Route::get('/q/{token}', QrController::class)->name('qr.scan');
+
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
+Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 
 Route::get('/melden/locatie/{token}', LocationPortal::class)->name('public.location-portal');
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
@@ -75,9 +85,20 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/ui-theme/{theme}', UiThemeController::class)->name('ui-theme.switch');
+
+    Route::get('/platform', PlatformDashboard::class)
+        ->middleware('superuser')
+        ->name('platform.dashboard');
     Route::get('/platform/tenants', PlatformTenants::class)
         ->middleware('superuser')
         ->name('platform.tenants');
+    Route::get('/platform/users', PlatformUsers::class)
+        ->middleware('superuser')
+        ->name('platform.users');
+    Route::get('/platform/audit', PlatformAudit::class)
+        ->middleware('superuser')
+        ->name('platform.audit');
     Route::get('/platform/help', PlatformHelp::class)
         ->middleware('superuser')
         ->name('platform.help');
@@ -107,6 +128,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');
         Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
         Route::get('/subscription', Subscription::class)->name('subscription.index');
+        Route::get('/qr/connect/{token}', QrConnect::class)->name('qr.connect');
     });
 
     Route::post('/logout', function () {

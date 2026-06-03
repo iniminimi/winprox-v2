@@ -15,6 +15,7 @@ class Announcement extends Model
         'tenant_id',
         'location_id',
         'unit_id',
+        'category_id',
         'title',
         'body',
         'is_active',
@@ -36,5 +37,10 @@ class Announcement extends Model
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

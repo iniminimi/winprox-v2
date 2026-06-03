@@ -1,0 +1,44 @@
+{
+    "connect": {
+        "title": "Link QR code",
+        "subtitle": "Link this QR sticker to a unit",
+        "qr_info": "QR code information",
+        "sticker_number": "Sticker number",
+        "status": "Status",
+        "select_unit": "Select a unit",
+        "search_units": "Search units",
+        "search_placeholder": "Type to search...",
+        "no_units": "No units found",
+        "link_button": "Link QR code",
+        "success_title": "QR code linked",
+        "success_message": "QR code :sticker has been successfully linked.",
+        "go_to_unit": "Go to unit"
+    },
+    "unassigned_guest": {
+        "title": "QR code not activated",
+        "message": "This QR code is not yet linked to a unit. Log in to link it.",
+        "sticker": "Sticker number",
+        "login": "Log in"
+    },
+    "damaged": {
+        "title": "QR code damaged",
+        "message": "This QR code is marked as damaged. Please contact your administrator.",
+        "sticker": "Sticker number"
+    },
+    "inactive": {
+        "title": "QR code inactive",
+        "message": "This QR code is deactivated and cannot be used.",
+        "sticker": "Sticker number"
+    },
+    "unassigned_no_permission": {
+        "title": "No permission",
+        "message": "You do not have permission to link QR codes.",
+        "sticker": "Sticker number",
+        "dashboard": "Go to dashboard"
+    },
+    "error": {
+        "title": "Error",
+        "message": "An error occurred while processing this QR code.",
+        "sticker": "Sticker number"
+    }
+}

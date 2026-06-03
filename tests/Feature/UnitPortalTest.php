@@ -3,10 +3,13 @@
 use App\Enums\TaskStatus;
 use App\Livewire\Public\UnitPortal;
 use App\Models\Announcement;
+use App\Models\Category;
 use App\Models\Document;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\IssuePhoto;
+use App\Models\IssueUpdate;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -29,12 +32,14 @@ function unitPortalScaffold(array $unitOverrides = []): array
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $unit = Unit::factory()->create(array_merge([
+    $qrToken = $unitOverrides['qr_token'] ?? 'unit-token';
+    unset($unitOverrides['qr_token']);
+
+    $unit = Unit::factory()->withQrToken($qrToken)->create(array_merge([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'default_internal_team_id' => $team->id,
         'is_active' => true,
-        'qr_token' => 'unit-token',
     ], $unitOverrides));
 
     return compact('tenant', 'location', 'team', 'unit');
@@ -45,6 +50,9 @@ it('creates an unapproved issue + auto task + photos via a valid unit token', fu
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('reporter_first_name', 'Jan')
+        ->set('reporter_last_name', 'Melder')
+        ->set('reporter_email', 'jan.melder@example.test')
         ->set('description', 'De kraan lekt al dagen in de keuken.')
         ->set('photos', [
             UploadedFile::fake()->create('foto1.jpg', 120, 'image/jpeg'),
@@ -52,7 +60,9 @@ it('creates an unapproved issue + auto task + photos via a valid unit token', fu
         ])
         ->call('submitReport')
         ->assertHasNoErrors()
-        ->assertSet('portalSection', 'issues');
+        ->assertSet('portalSection', 'issues')
+        ->assertSee(__('portal.pending_review'))
+        ->assertDontSee('De kraan lekt al dagen in de keuken.');
 
     $issue = Issue::first();
 
@@ -60,6 +70,8 @@ it('creates an unapproved issue + auto task + photos via a valid unit token', fu
         ->and($issue->tenant_id)->toBe($tenant->id)
         ->and($issue->unit_id)->toBe($unit->id)
         ->and($issue->location_id)->toBe($location->id)
+        ->and($issue->reporter_name)->toBe('Jan Melder')
+        ->and($issue->reporter_contact)->toBe('jan.melder@example.test')
         ->and($issue->isApproved())->toBeFalse()
         ->and($issue->photos()->count())->toBe(2);
 
@@ -77,11 +89,29 @@ it('requires a description of at least 3 characters', function () {
     unitPortalScaffold();
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('reporter_first_name', 'Jan')
+        ->set('reporter_last_name', 'Melder')
+        ->set('reporter_email', 'jan@example.test')
         ->set('description', 'ab')
         ->call('submitReport')
         ->assertHasErrors('description');
 
     expect(Issue::count())->toBe(0);
+});
+
+it('allows anonymous submit without reporter fields', function () {
+    ['unit' => $unit, 'tenant' => $tenant] = unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    $issue = Issue::first();
+    expect($issue)->not->toBeNull()
+        ->and($issue->unit_id)->toBe($unit->id)
+        ->and($issue->reporter_name)->toBeNull()
+        ->and($issue->reporter_contact)->toBeNull();
 });
 
 it('returns 404 for an unknown unit token', function () {
@@ -102,7 +132,8 @@ it('blurs unapproved issue content on the public portal', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('openSection', 'issues')
-        ->assertSee('Wacht op controle')
+        ->assertSee(__('portal.pending_review'))
+        ->assertDontSee('Gevoelige onbevestigde melding.')
         ->call('openIssueDetail', $issue->id)
         ->assertSet('portalSection', 'issues')
         ->assertSet('selectedIssueId', null);
@@ -144,12 +175,102 @@ it('lets a verified field worker start and complete a task (issue rolls up to do
         ->call('beginCompleteTask', $task->id)
         ->set('completingNote', 'Lekkage verholpen.')
         ->call('submitCompleteTask')
-        ->assertHasNoErrors();
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'task_done')
+        ->assertSee(__('portal.worker.task_completed'))
+        ->assertDontSee(__('portal.tiles.issues'));
 
     expect($task->fresh()->status)->toBe(TaskStatus::Done)
         ->and($task->fresh()->completed_at)->not->toBeNull()
         ->and($issue->fresh()->status)->toBe(TaskStatus::Done)
         ->and($issue->updates()->where('kind', 'worker_note')->count())->toBe(1);
+});
+
+it('shows task nr and issue line on the worker portal and hides photos missing on disk', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'description' => 'Lekkende kraan in de keuken.',
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'created_at' => now()->setTime(14, 30),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'note' => 'Kraan vervangen en afdichting controleren.',
+    ]);
+
+    $onDisk = IssuePhoto::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'path' => 'issue-photos/on-disk.jpg',
+    ]);
+    Storage::disk('public')->put($onDisk->path, 'jpeg');
+
+    IssuePhoto::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'path' => 'issue-photos/missing.jpg',
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.worker.task_heading', ['nr' => $task->id]))
+        ->assertSee($task->note)
+        ->assertSee(__('portal.worker.issue_heading', ['nr' => $issue->id]))
+        ->assertSee(__('portal.worker.issue_meta', [
+            'description' => $issue->description,
+            'datetime' => $issue->created_at->isoFormat('D MMM YYYY, HH:mm'),
+        ]))
+        ->assertSee('/storage/issue-photos/on-disk.jpg', false)
+        ->assertDontSee('/storage/issue-photos/missing.jpg', false);
+});
+
+it('hides open tasks for unapproved issues from the worker portal', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'description' => 'Lek in de gang.',
+        'status' => TaskStatus::New,
+        'approved_at' => null,
+    ]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'note' => 'Taak voor niet-goedgekeurde melding.',
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.worker.open_tasks'))
+        ->assertSee(__('portal.worker.no_open_tasks'))
+        ->assertDontSee('Lek in de gang.')
+        ->assertDontSee('Taak voor niet-goedgekeurde melding.');
 });
 
 it('hides worker UI from anonymous citizen visitors', function () {
@@ -164,12 +285,22 @@ it('hides worker UI from anonymous citizen visitors', function () {
         ->assertDontSee('Aanmelden als medewerker');
 });
 
-it('scopes documents to the current unit and location-wide entries', function () {
+it('scopes documents to unit, category and location-wide entries', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+    $category = Category::query()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Kranen',
+    ]);
+    $otherCategory = Category::query()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hotelkamers',
+    ]);
+    $unit->update(['category_id' => $category->id]);
 
     $otherUnit = \App\Models\Unit::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
+        'category_id' => $otherCategory->id,
         'name' => 'Andere machine',
     ]);
 
@@ -203,12 +334,36 @@ it('scopes documents to the current unit and location-wide entries', function ()
         'is_active' => true,
         'published_at' => now()->subDay(),
     ]);
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => null,
+        'category_id' => $category->id,
+        'title' => 'Handleiding categorie kranen',
+        'is_public' => true,
+        'requires_verification' => false,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
+    Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => null,
+        'category_id' => $otherCategory->id,
+        'title' => 'Handleiding categorie hotel',
+        'is_public' => true,
+        'requires_verification' => false,
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+    ]);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('openSection', 'documents')
         ->assertSee('Handleiding deze unit')
+        ->assertSee('Handleiding categorie kranen')
         ->assertSee('Algemeen gebouwreglement')
-        ->assertDontSee('Handleiding andere unit');
+        ->assertDontSee('Handleiding andere unit')
+        ->assertDontSee('Handleiding categorie hotel');
 });
 
 it('only allows downloading public documents that do not require verification', function () {
@@ -237,8 +392,8 @@ it('only allows downloading public documents that do not require verification', 
         ->call('openSection', 'documents')
         ->assertSee('Open huisregels')
         ->assertSee('Vertrouwelijk contract')
-        ->assertSee('aangemelde medewerkers')
-        ->assertSee('Downloaden');
+        ->assertSee(__('portal.documents.verification_required'))
+        ->assertSee(__('portal.documents.download'));
 });
 
 it('lets a verified worker download verification-required documents', function () {
@@ -263,7 +418,7 @@ it('lets a verified worker download verification-required documents', function (
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('openSection', 'documents')
         ->assertSee('Intern contract')
-        ->assertSee('Downloaden');
+        ->assertSee(__('portal.documents.download'));
 });
 
 it('shows active announcements but hides expired ones', function () {
@@ -297,5 +452,40 @@ it('shows an inactive notice when the unit is inactive', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertSet('inactiveReasonKey', 'portal.inactive.unit_inactive')
-        ->assertSee('Niet beschikbaar');
+        ->assertSee(__('portal.inactive.title'));
+});
+
+it('shows issue updates with photos on issue detail', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'description' => 'Lek in gang A.',
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+
+    $update = IssueUpdate::query()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'kind' => 'worker_note',
+        'body' => 'Nieuwe update met foto als bewijs.',
+    ]);
+
+    IssuePhoto::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'issue_update_id' => $update->id,
+        'path' => 'issue-photos/update-on-disk.jpg',
+    ]);
+    Storage::disk('public')->put('issue-photos/update-on-disk.jpg', 'jpeg');
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openIssueDetail', $issue->id)
+        ->assertSee(__('portal.issue.updates_title'))
+        ->assertSee('Nieuwe update met foto als bewijs.')
+        ->assertSee('/storage/issue-photos/update-on-disk.jpg', false);
 });

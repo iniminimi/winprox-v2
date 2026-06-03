@@ -5,7 +5,7 @@
 :root,
 [data-theme='simple'],
 [data-theme='standard'] {
-    --wp-bg: #f9fafb;
+    --wp-bg: #e7e8ec;
     --wp-surface: #ffffff;
     --wp-surface-2: #f9fafb;
     --wp-surface-hover: #f3f4f6;
