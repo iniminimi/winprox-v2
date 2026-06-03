@@ -82,6 +82,19 @@
                 "closed": "Meldung ist endgültig geschlossen."
             }
         },
+        "issues.create": {
+            "title": "Hilfe — Wiederkehrende Meldung",
+            "actions": [
+                {
+                    "label": "Intervall",
+                    "text": "Häufigkeit der Wiederkehr (z.B. alle 2 Wochen, jeden Monat, jedes Quartal, jedes Jahr)."
+                },
+                {
+                    "label": "Vorlauf (Tage)",
+                    "text": "Wie viele Tage vor dem Fälligkeitsdatum die Aufgabe erstellt wird (z.B. 7 Tage für monatliche Aufgaben)."
+                }
+            ]
+        },
         "tasks.list": {
             "title": "Hilfe — Aufgaben",
             "actions": [

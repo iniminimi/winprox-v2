@@ -82,6 +82,19 @@
                 "closed": "Signalement définitivement clôturé."
             }
         },
+        "issues.create": {
+            "title": "Aide — Signalement récurrent",
+            "actions": [
+                {
+                    "label": "Intervalle",
+                    "text": "Fréquence de récurrence (ex. toutes les 2 semaines, chaque mois, chaque trimestre, chaque année)."
+                },
+                {
+                    "label": "Anticipation (jours)",
+                    "text": "Nombre de jours avant l'échéance où la tâche est créée (ex. 7 jours pour les tâches mensuelles)."
+                }
+            ]
+        },
         "tasks.list": {
             "title": "Aide — Tâches",
             "actions": [

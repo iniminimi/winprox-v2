@@ -1,5 +1,11 @@
 {
     "briefing": "Briefing afdrukken",
+    "priority": {
+        "prio_1": "Prio 1",
+        "prio_2": "Prio 2",
+        "prio_3": "Prio 3",
+        "prio_4": "Prio 4"
+    },
     "list": {
         "title": "Taken",
         "subtitle": "Alle taken per team en status",
@@ -10,6 +16,8 @@
     "filter": {
         "status": "Filter op status",
         "status_all": "Alle statussen",
+        "priority": "Filter op prioriteit",
+        "priority_all": "Alle prioriteiten",
         "team": "Filter op team",
         "team_all": "Alle teams",
         "search": "Zoeken",
@@ -46,6 +54,9 @@
         "team_select_label": "Team kiezen",
         "team_select_placeholder": "Kies een team",
         "team_save": "Team opslaan",
+        "priority": "Prioriteit",
+        "priority_change": "Prioriteit wijzigen",
+        "priority_save": "Prioriteit opslaan",
         "task": "Taakgegevens",
         "task_line": "Taak, team : :team",
         "due": "Vervaldatum :date",

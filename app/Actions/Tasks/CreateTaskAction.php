@@ -2,6 +2,7 @@
 
 namespace App\Actions\Tasks;
 
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCreated;
 use App\Models\Issue;
@@ -17,6 +18,7 @@ class CreateTaskAction
         Issue $issue,
         ?int $internalTeamId = null,
         TaskStatus $status = TaskStatus::New,
+        TaskPriority $priority = TaskPriority::Prio3,
         ?string $note = null,
         ?CarbonInterface $startedAt = null,
         bool $recalculateIssue = true,
@@ -26,6 +28,7 @@ class CreateTaskAction
         $task = $issue->tasks()->create(array_merge([
             'internal_team_id' => $internalTeamId,
             'status' => $status,
+            'priority' => $priority,
             'note' => $note,
             'started_at' => $status === TaskStatus::InProgress ? ($startedAt ?? now()) : $startedAt,
         ], $extra));

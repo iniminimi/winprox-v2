@@ -82,6 +82,19 @@
                 "closed": "Melding is definitief afgesloten."
             }
         },
+        "issues.create": {
+            "title": "Hulp — Terugkerende melding",
+            "actions": [
+                {
+                    "label": "Interval",
+                    "text": "Hoe vaak de melding terugkomt (bijv. elke 2 weken, elke maand, elk kwartaal, elk jaar)."
+                },
+                {
+                    "label": "Lead (dagen)",
+                    "text": "Hoeveel dagen voor de vervaldatum de taak al wordt aangemaakt (bijv. 7 dagen voor maandelijkse taken)."
+                }
+            ]
+        },
         "tasks.list": {
             "title": "Hulp — Taken",
             "actions": [

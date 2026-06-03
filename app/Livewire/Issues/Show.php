@@ -6,6 +6,7 @@ use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
+use App\Enums\TaskPriority;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Support\EntityDetailNavigation;
@@ -31,6 +32,8 @@ class Show extends Component
     public string $taskNote = '';
 
     public ?string $taskScheduledFor = null;
+
+    public string $taskPriority = 'medium';
 
     public string $updateBody = '';
 
@@ -65,6 +68,7 @@ class Show extends Component
         $this->newTeamId = null;
         $this->taskNote = trim((string) $this->issue->description);
         $this->taskScheduledFor = $this->issue->recurrence_next_due_at?->format('Y-m-d');
+        $this->taskPriority = 'prio_3';
 
         $this->resetValidation();
         $this->showAddTaskModal = true;
@@ -85,6 +89,7 @@ class Show extends Component
             'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
             'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
             'taskScheduledFor' => ['nullable', 'date'],
+            'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ], [
             'newTeamId.required' => __('issues.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
@@ -99,12 +104,13 @@ class Show extends Component
         $createTask->handle(
             $this->issue,
             (int) $validated['newTeamId'],
+            TaskPriority::from($validated['taskPriority']),
             note: $validated['taskNote'],
             extra: $extra,
         );
 
         $this->closeAddTaskModal();
-        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor']);
+        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority']);
 
         $this->refreshIssue();
     }
@@ -191,6 +197,7 @@ class Show extends Component
         return view('livewire.issues.show', [
             'issue' => $issue,
             'teams' => InternalTeam::query()->orderBy('name')->get(),
+            'priorities' => TaskPriority::cases(),
             'headline' => $headline,
             'addressLine' => $addressLine,
             'nav' => EntityDetailNavigation::forIssue($issue),

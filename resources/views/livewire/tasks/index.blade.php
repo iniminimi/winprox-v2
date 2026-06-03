@@ -39,6 +39,16 @@
             </div>
 
             <div class="wp-filter-field">
+                <label class="wp-label" for="priorityFilter">{{ __('tasks.filter.priority') }}</label>
+                <select id="priorityFilter" class="wp-select" wire:model.defer="priorityFilter">
+                    <option value="">{{ __('tasks.filter.priority_all') }}</option>
+                    @foreach ($priorities as $priority)
+                        <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="wp-filter-field">
                 <label class="wp-label" for="search">{{ __('tasks.filter.search') }}</label>
                 <input type="search" id="search" class="wp-input" wire:model.defer="search"
                        placeholder="{{ __('tasks.filter.search_placeholder') }}">
@@ -114,6 +124,10 @@
                             @if ($task->is_recurring_cycle)
                                 <span class="wp-pill wp-pill--done">{{ __('tasks.card.recurring') }}</span>
                             @endif
+                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                {{ $task->priority->label() }}
+                            </span>
                             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                         </div>
                     </a>

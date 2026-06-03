@@ -1,5 +1,11 @@
 {
     "briefing": "Briefing drucken",
+    "priority": {
+        "prio_1": "Prio 1",
+        "prio_2": "Prio 2",
+        "prio_3": "Prio 3",
+        "prio_4": "Prio 4"
+    },
     "list": {
         "title": "Aufgaben",
         "subtitle": "Alle Aufgaben nach Team und Status",
@@ -10,6 +16,8 @@
     "filter": {
         "status": "Nach Status filtern",
         "status_all": "Alle Status",
+        "priority": "Nach Priorität filtern",
+        "priority_all": "Alle Prioritäten",
         "team": "Nach Team filtern",
         "team_all": "Alle Teams",
         "search": "Suchen",
@@ -46,6 +54,9 @@
         "team_select_label": "Team wählen",
         "team_select_placeholder": "Team wählen",
         "team_save": "Team speichern",
+        "priority": "Priorität",
+        "priority_change": "Priorität ändern",
+        "priority_save": "Priorität speichern",
         "task": "Aufgabendetails",
         "task_line": "Aufgabe, Team: :team",
         "due": "Fällig :date",

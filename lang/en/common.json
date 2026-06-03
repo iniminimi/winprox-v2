@@ -41,7 +41,8 @@
         "edit": "Edit",
         "delete": "Delete",
         "print": "Print",
-        "logout": "Log out"
+        "logout": "Log out",
+        "clear": "Clear"
     },
     "language": {
         "label": "Language"

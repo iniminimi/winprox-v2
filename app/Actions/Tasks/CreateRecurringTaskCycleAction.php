@@ -52,7 +52,13 @@ class CreateRecurringTaskCycleAction
 
         if ($latestCycle && $latestCycle->due_at && $latestCycle->due_at->lt($now)) {
             if (in_array($latestCycle->status, [TaskStatus::New, TaskStatus::InProgress], true)) {
-                $latestCycle->update(['status' => TaskStatus::Closed]);
+                $latestCycle->update([
+                    'status' => TaskStatus::Closed,
+                    'completed_at' => $now,
+                    'not_executed_at' => $now,
+                    'late_by_days' => (int) $latestCycle->due_at->diffInDays($now),
+                    'status_reason' => 'auto_expired_due_new_cycle',
+                ]);
             }
         }
 
@@ -70,6 +76,7 @@ class CreateRecurringTaskCycleAction
             'is_recurring_cycle' => true,
             'recurrence_issue_id' => $issue->id,
             'cycle_number' => $cycleNumber,
+            'carryover_from_task_id' => $latestCycle?->id,
         ]);
 
         event(new TaskCreated($task));

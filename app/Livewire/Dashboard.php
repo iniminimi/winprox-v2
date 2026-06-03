@@ -28,8 +28,15 @@ class Dashboard extends Component
         $recent = Issue::query()
             ->with(['location', 'unit', 'tasks.team'])
             ->latest()
+            ->take(10)
+            ->get()
+            ->sortBy(fn ($issue) => [
+                $issue->is_recurring ? 1 : 0,
+                $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99),
+                $issue->tasks->isNotEmpty() ? $issue->created_at->timestamp : 0,
+            ])
             ->take(5)
-            ->get();
+            ->values();
 
         $tenant = auth()->user()?->tenant;
         if ($tenant !== null) {

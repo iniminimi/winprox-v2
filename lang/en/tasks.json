@@ -1,5 +1,11 @@
 {
     "briefing": "Print briefing",
+    "priority": {
+        "prio_1": "Prio 1",
+        "prio_2": "Prio 2",
+        "prio_3": "Prio 3",
+        "prio_4": "Prio 4"
+    },
     "list": {
         "title": "Tasks",
         "subtitle": "All tasks by team and status",
@@ -10,6 +16,8 @@
     "filter": {
         "status": "Filter by status",
         "status_all": "All statuses",
+        "priority": "Filter by priority",
+        "priority_all": "All priorities",
         "team": "Filter by team",
         "team_all": "All teams",
         "search": "Search",
@@ -46,6 +54,9 @@
         "team_select_label": "Choose team",
         "team_select_placeholder": "Choose a team",
         "team_save": "Save team",
+        "priority": "Priority",
+        "priority_change": "Change priority",
+        "priority_save": "Save priority",
         "task": "Task details",
         "task_line": "Task, team: :team",
         "due": "Due :date",

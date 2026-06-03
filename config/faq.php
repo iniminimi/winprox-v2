@@ -18,5 +18,7 @@ return [
         'mobile',
         'install',
         'status_help',
+        'dynamic_qr_codes',
+        'stickers',
     ],
 ];

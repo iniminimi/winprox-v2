@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\Tenant;
@@ -19,6 +20,7 @@ class TaskFactory extends Factory
             'tenant_id' => Tenant::factory(),
             'issue_id' => Issue::factory(),
             'status' => TaskStatus::New,
+            'priority' => TaskPriority::Prio3,
         ];
     }
 }

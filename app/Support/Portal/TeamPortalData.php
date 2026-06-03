@@ -2,6 +2,7 @@
 
 namespace App\Support\Portal;
 
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Task;
@@ -24,6 +25,7 @@ final class TeamPortalData
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
             ->with(['issue', 'issue.location', 'issue.unit', 'issue.photos', 'issue.updates'])
+            ->orderByRaw('CASE priority WHEN "prio_1" THEN 1 WHEN "prio_2" THEN 2 WHEN "prio_3" THEN 3 WHEN "prio_4" THEN 4 ELSE 5 END')
             ->orderByDesc('created_at')
             ->limit(50)
             ->get();

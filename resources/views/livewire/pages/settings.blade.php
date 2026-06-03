@@ -99,38 +99,112 @@
     @if ($canManageOrganisation && $organisationTenant)
         <form wire:submit="saveOrganisationInline" class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.custom_theme_title') }}</h2>
-            <p class="wp-muted">{{ __('settings.org.custom_theme_hint') }}</p>
             
-            <div class="wp-stack-tight" style="margin-top: var(--wp-space-2);">
-                <label class="wp-checkbox-label">
-                    <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
-                    <span>{{ __('settings.org.custom_theme_active_label') }}</span>
-                </label>
-            </div>
-            
-            @if($customThemeActive)
-                <div class="wp-form-grid-2" style="margin-top: var(--wp-space-3);">
-                    <div class="wp-field">
-                        <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <input type="color" id="customThemeBgInline" wire:model="customThemeBg" class="wp-input" style="width: 3rem; padding: 0.25rem;">
-                            <input type="text" wire:model="customThemeBg" class="wp-input" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: var(--wp-space-2);">
+                <div class="wp-stack-tight">
+                    <label class="wp-checkbox-label">
+                        <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
+                        <span>{{ __('settings.org.custom_theme_active_label') }}</span>
+                    </label>
+                    
+                    @if($customThemeActive)
+                        <div class="wp-stack-tight" style="margin-top: var(--wp-space-3);">
+                            <div class="wp-field">
+                                <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <input type="color" id="customThemeBgInline" wire:model.live="customThemeBg" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                                    <input type="text" wire:model.live="customThemeBg" class="wp-input" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
+                                </div>
+                                @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                            <div class="wp-field">
+                                <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <input type="color" id="customThemeBtnInline" wire:model.live="customThemeBtn" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                                    <input type="text" wire:model.live="customThemeBtn" class="wp-input" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
+                                </div>
+                                @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
                         </div>
-                        @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
-                        <div style="display: flex; gap: 0.5rem; align-items: center;">
-                            <input type="color" id="customThemeBtnInline" wire:model="customThemeBtn" class="wp-input" style="width: 3rem; padding: 0.25rem;">
-                            <input type="text" wire:model="customThemeBtn" class="wp-input" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1;">
-                        </div>
-                        @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
+                    @endif
+
+                    <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
+                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
                     </div>
                 </div>
-            @endif
 
-            <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                <div class="wp-theme-preview" style="margin-top: 0;">
+                    <div 
+                        class="wp-theme-preview-card"
+                        x-data="{ 
+                            bg: @js($customThemeBg),
+                            btn: @js($customThemeBtn),
+                            active: @js($customThemeActive)
+                        }"
+                        x-on:custom-theme-updated.window="bg = $event.detail.bg; btn = $event.detail.btn; active = $event.detail.active"
+                        @if($customThemeActive)
+                            x-init="$watch('$wire.customThemeBg', (val) => { bg = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: val, btn: $wire.customThemeBtn, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeBtn', (val) => { btn = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: val, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeActive', (val) => { active = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: $wire.customThemeBtn, active: val } })); });"
+                        @endif
+                        :style="{
+                            backgroundColor: active ? bg : '#e7e8ec',
+                            border: '8px solid #1f2937',
+                            borderRadius: '24px',
+                            padding: '1rem',
+                            minHeight: '280px',
+                            maxWidth: '200px',
+                            margin: '0 auto',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                        }"
+                    >
+                        <div style="margin-bottom: 1rem; text-align: center;">
+                            <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; color: '#1f2937';">Portal</div>
+                            <div style="font-size: 0.625rem; opacity: 0.7; color: '#6b7280';">Na scan QR-code</div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <button 
+                                :style="{
+                                    backgroundColor: active ? btn : '#059669',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    padding: '0.75rem 1rem',
+                                    fontSize: '0.75rem',
+                                    cursor: 'pointer',
+                                    fontWeight: '500'
+                                }"
+                            >
+                                Melding maken
+                            </button>
+                            <button 
+                                :style="{
+                                    backgroundColor: active ? btn : '#059669',
+                                    color: 'white',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    padding: '0.75rem 1rem',
+                                    fontSize: '0.75rem',
+                                    cursor: 'pointer',
+                                    fontWeight: '500'
+                                }"
+                            >
+                                Open meldingen
+                            </button>
+                            <div 
+                                :style="{
+                                    backgroundColor: 'white',
+                                    borderRadius: '8px',
+                                    padding: '0.75rem',
+                                    marginTop: '0.5rem',
+                                    border: '1px solid #e5e7eb'
+                                }"
+                            >
+                                <div style="font-size: 0.625rem; color: '#6b7280'; margin-bottom: 0.25rem;">Voorbeeld melding</div>
+                                <div style="font-size: 0.75rem; color: '#1f2937'; font-weight: '500';">Lift defect</div>
+                                <div style="font-size: 0.625rem; color: '#6b7280'; margin-top: '0.25rem';">Lift 3 werkt niet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
     @endif

@@ -23,7 +23,6 @@
         "logo_label": "Organisationslogo",
         "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
         "custom_theme_title": "Eigener Portal-Stil",
-        "custom_theme_hint": "Wählen Sie eigene Farben für das QR-Portal.",
         "custom_theme_active_label": "Eigenen Portal-Stil verwenden",
         "custom_theme_bg_label": "Hintergrundfarbe",
         "custom_theme_btn_label": "Schaltflächenfarbe"

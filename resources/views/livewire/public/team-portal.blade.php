@@ -167,6 +167,10 @@
                 @forelse ($tasks as $task)
                     <div class="wp-card wp-card-pad wp-stack" wire:key="team-task-{{ $task->id }}">
                         <div class="wp-cluster">
+                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                {{ $task->priority->label() }}
+                            </span>
                             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                             @if ($task->issue?->location)
                                 <span class="wp-muted">{{ $task->issue->location->name }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->name }}@endif</span>

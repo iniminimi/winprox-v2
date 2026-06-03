@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Issues;
 
+use App\Enums\TaskPriority;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AssignIssueTeamTaskRequest extends FormRequest
@@ -27,6 +28,7 @@ class AssignIssueTeamTaskRequest extends FormRequest
         return [
             'internal_team_id' => ['required', 'integer', 'exists:internal_teams,id'],
             'task_note' => ['nullable', 'string', 'max:2000'],
+            'task_priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ];
     }
 

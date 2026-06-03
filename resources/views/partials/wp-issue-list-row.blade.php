@@ -33,6 +33,8 @@
             'teams' => $teamsLabel,
         ]),
     };
+    // Get highest priority task for this issue
+    $highestPriorityTask = $issue->tasks->sortBy(fn ($t) => $t->priority?->sortOrder() ?? 99)->first();
 @endphp
 <a href="{{ route('issues.show', $issue) }}"
    @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])
@@ -56,6 +58,12 @@
         @endunless
         @if ($issue->is_recurring)
             <span class="wp-pill wp-pill--done">{{ __('issues.card.recurring') }}</span>
+        @endif
+        @if ($highestPriorityTask && $highestPriorityTask->priority)
+            <span class="wp-badge {{ $highestPriorityTask->priority->badgeClass() }}">
+                <x-wp-icon :name="$highestPriorityTask->priority->icon()" class="wp-icon wp-icon--sm" />
+                {{ $highestPriorityTask->priority->label() }}
+            </span>
         @endif
         <span class="wp-pill wp-pill--{{ $issue->status->pillModifier() }}">{{ __($issue->status->labelKey()) }}</span>
     </div>

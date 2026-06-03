@@ -61,10 +61,13 @@
             </div>
 
             <div class="wp-field">
-                <label class="wp-check">
-                    <input type="checkbox" wire:model.live="is_recurring">
-                    {{ __('issues.create.recurring') }}
-                </label>
+                <div class="wp-cluster">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model.live="is_recurring">
+                        {{ __('issues.create.recurring') }}
+                    </label>
+                    <x-wp-page-help page="issues.create" />
+                </div>
             </div>
 
             @if ($is_recurring)
@@ -77,7 +80,7 @@
                         </div>
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_interval_unit">{{ __('issues.create.interval_unit') }}</label>
-                            <select id="create_recurrence_interval_unit" class="wp-select" wire:model="recurrence_interval_unit">
+                            <select id="create_recurrence_interval_unit" class="wp-select" wire:model.live="recurrence_interval_unit">
                                 <option value="week">{{ __('issues.create.unit_week') }}</option>
                                 <option value="month">{{ __('issues.create.unit_month') }}</option>
                                 <option value="quarter">{{ __('issues.create.unit_quarter') }}</option>
@@ -89,7 +92,7 @@
                     <div class="wp-filter-bar">
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_lead_days">{{ __('issues.create.lead_days') }}</label>
-                            <input type="number" id="create_recurrence_lead_days" class="wp-input" wire:model="recurrence_lead_days" min="1" max="365">
+                            <input type="number" id="create_recurrence_lead_days" class="wp-input" wire:model.live="recurrence_lead_days" min="1" max="365">
                             @error('recurrence_lead_days') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                         <div class="wp-field">
@@ -136,6 +139,16 @@
                     @endforeach
                 </select>
                 @error('internal_team_id') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+
+            <div class="wp-field">
+                <label class="wp-label" for="create_task_priority">{{ __('tasks.show.priority') }}</label>
+                <select id="create_task_priority" class="wp-select" wire:model="task_priority">
+                    @foreach ($priorities as $priority)
+                        <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                    @endforeach
+                </select>
+                @error('task_priority') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 
             <div class="wp-field">

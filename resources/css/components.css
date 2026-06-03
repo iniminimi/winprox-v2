@@ -64,6 +64,61 @@
 }
 
 /* ---------------------------------------------------------------------------
+ | Priority badge — voor taakprioriteiten met iconen.
+ * ------------------------------------------------------------------------- */
+.wp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--wp-radius-pill);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.wp-badge-info {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+}
+
+.wp-badge-secondary {
+    background-color: #dcfce7;
+    border: 1px solid #86efac;
+    color: #16a34a;
+}
+
+.wp-badge-warning {
+    background-color: #ffedd5;
+    border: 1px solid #fdba74;
+    color: #ea580c;
+}
+
+.wp-badge-danger {
+    background-color: #ffedd5;
+    border: 1px solid #fdba74;
+    color: #ea580c;
+}
+
+.wp-badge-critical {
+    background-color: #fee2e2;
+    border: 1px solid #dc2626;
+    color: #dc2626;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* ---------------------------------------------------------------------------
  | Moderatie — inhoud uit QR-inzendingen blijft geblurd tot een beheerder/
  | medewerker de melding goedkeurt. Voorkomt publicatie van compromitterende
  | foto's of tekst door een malafide gebruiker.

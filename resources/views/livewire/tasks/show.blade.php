@@ -36,6 +36,10 @@
             @if ($issue)
                 <a href="{{ route('issues.show', $issue) }}" class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $issue->id]) }}</a>
             @endif
+            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                {{ $task->priority->label() }}
+            </span>
             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
         </x-slot>
     </x-wp-entity-detail-head>
@@ -47,6 +51,27 @@
         @endif
         @if ($task->scheduled_for || $task->due_at)
             <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
+        @endif
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-section-title">{{ __('tasks.show.priority') }}</h2>
+
+        @if ($canUpdate)
+            <form wire:submit="savePriority" class="wp-stack-tight">
+                <div class="wp-field">
+                    <label class="wp-label" for="priority">{{ __('tasks.show.priority_change') }}</label>
+                    <select id="priority" class="wp-select" wire:model="priority">
+                        @foreach ($priorities as $prio)
+                            <option value="{{ $prio->value }}">{{ $prio->label() }}</option>
+                        @endforeach
+                    </select>
+                    @error('priority') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <button type="submit" class="btn btn--primary">{{ __('tasks.show.priority_save') }}</button>
+            </form>
+        @else
+            <p class="wp-text-body">{{ $task->priority->label() }}</p>
         @endif
     </div>
 

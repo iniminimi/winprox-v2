@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,6 +18,7 @@ class Task extends Model
         'issue_id',
         'internal_team_id',
         'status',
+        'priority',
         'started_at',
         'completed_at',
         'note',
@@ -25,15 +27,24 @@ class Task extends Model
         'is_recurring_cycle',
         'recurrence_issue_id',
         'cycle_number',
+        'carryover_from_task_id',
+        'not_executed_at',
+        'late_by_days',
+        'hold_started_at',
+        'hold_total_minutes',
+        'status_reason',
     ];
 
     protected $casts = [
         'status' => TaskStatus::class,
+        'priority' => TaskPriority::class,
         'started_at' => 'datetime',
         'completed_at' => 'datetime',
         'scheduled_for' => 'date',
         'due_at' => 'datetime',
         'is_recurring_cycle' => 'boolean',
+        'not_executed_at' => 'datetime',
+        'hold_started_at' => 'datetime',
     ];
 
     public function issue(): BelongsTo
@@ -49,6 +60,11 @@ class Task extends Model
     public function recurrenceIssue(): BelongsTo
     {
         return $this->belongsTo(Issue::class, 'recurrence_issue_id');
+    }
+
+    public function carryoverFromTask(): BelongsTo
+    {
+        return $this->belongsTo(Task::class, 'carryover_from_task_id');
     }
 
     /** Open op de werkvloer: nog Nieuw of In uitvoering. */

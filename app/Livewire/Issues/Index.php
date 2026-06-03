@@ -5,6 +5,7 @@ namespace App\Livewire\Issues;
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\AssignIssueTeamTaskAction;
 use App\Actions\Issues\CreateManagerIssueAction;
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Http\Requests\Issues\AssignIssueTeamTaskRequest;
 use App\Http\Requests\Issues\StoreManagerIssueStepOneRequest;
@@ -59,13 +60,15 @@ class Index extends Component
 
     public string $recurrence_interval_unit = 'month';
 
-    public int $recurrence_lead_days = 30;
+    public int $recurrence_lead_days = 7;
 
     public ?string $recurrence_first_due_date = null;
 
     public ?int $internal_team_id = null;
 
     public ?string $task_note = null;
+
+    public string $task_priority = 'prio_3';
 
     /** @var array<int, mixed> */
     public array $photos = [];
@@ -147,6 +150,32 @@ class Index extends Component
         }
     }
 
+    public function updatedIsRecurring(bool $value): void
+    {
+        if ($value) {
+            $this->recurrence_lead_days = $this->suggestRecurringLeadDays($this->recurrence_interval_unit);
+        }
+    }
+
+    public function updatedRecurrenceIntervalUnit(string $value): void
+    {
+        if (! $this->is_recurring) {
+            return;
+        }
+
+        $this->recurrence_lead_days = $this->suggestRecurringLeadDays($value);
+    }
+
+    private function suggestRecurringLeadDays(string $intervalUnit): int
+    {
+        return match ($intervalUnit) {
+            'week' => 2,
+            'month' => 7,
+            'quarter' => 14,
+            default => 30,
+        };
+    }
+
     private function prefillTeamFromUnit(): void
     {
         if ($this->internal_team_id !== null || $this->unit_id === null) {
@@ -201,6 +230,7 @@ class Index extends Component
             $issue,
             (int) $validated['internal_team_id'],
             $validated['task_note'] ?? null,
+            TaskPriority::from($validated['task_priority']),
         );
 
         $this->showCreateModal = false;
@@ -226,10 +256,11 @@ class Index extends Component
         $this->is_recurring = false;
         $this->recurrence_interval_value = 1;
         $this->recurrence_interval_unit = 'month';
-        $this->recurrence_lead_days = 30;
+        $this->recurrence_lead_days = 7;
         $this->recurrence_first_due_date = null;
         $this->internal_team_id = null;
         $this->task_note = null;
+        $this->task_priority = 'prio_3';
         $this->photos = [];
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');
@@ -266,7 +297,12 @@ class Index extends Component
 
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $issues->where('status', $status)->sortByDesc('created_at');
+            $bucket = $issues->where('status', $status)
+                ->sortBy(fn ($issue) => [
+                    $issue->is_recurring ? 1 : 0,
+                    $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99),
+                    $issue->created_at->timestamp,
+                ]);
             if ($bucket->isNotEmpty()) {
                 $groups[] = ['status' => $status, 'issues' => $bucket->values()];
             }
@@ -288,6 +324,7 @@ class Index extends Component
             'createTeams' => $this->showCreateModal
                 ? InternalTeam::query()->where('is_active', true)->orderBy('name')->get()
                 : collect(),
+            'priorities' => TaskPriority::cases(),
         ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Livewire\Tasks;
 
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Task;
@@ -22,6 +23,9 @@ class Index extends Component
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
 
+    #[Url(as: 'priority')]
+    public string $priorityFilter = '';
+
     #[Url(as: 'q')]
     public string $search = '';
 
@@ -33,6 +37,7 @@ class Index extends Component
         $this->redirect(route('tasks.index', array_filter([
             'status' => $this->statusFilter !== '' ? $this->statusFilter : null,
             'team' => $this->teamFilter ?: null,
+            'priority' => $this->priorityFilter !== '' ? $this->priorityFilter : null,
             'q' => trim($this->search) !== '' ? trim($this->search) : null,
             'recurring' => $this->recurring ? '1' : null,
         ])), navigate: true);
@@ -50,6 +55,7 @@ class Index extends Component
         $tasks = Task::query()
             ->with(['issue.location', 'issue.unit', 'team'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
+            ->when($this->priorityFilter !== '', fn ($q) => $q->where('priority', $this->priorityFilter))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring_cycle', true))
             ->when(trim($this->search) !== '', function ($q) {
@@ -75,7 +81,11 @@ class Index extends Component
 
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $tasks->where('status', $status)->sortByDesc('created_at');
+            $bucket = $tasks->where('status', $status)
+                ->sortBy(fn ($task) => [
+                    $task->priority?->sortOrder() ?? 99,
+                    $task->created_at->timestamp,
+                ]);
             if ($bucket->isNotEmpty()) {
                 $groups[] = ['status' => $status, 'tasks' => $bucket->values()];
             }
@@ -84,8 +94,9 @@ class Index extends Component
         return view('livewire.tasks.index', [
             'groups' => $groups,
             'statuses' => TaskStatus::cases(),
+            'priorities' => TaskPriority::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
-            'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
+            'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->priorityFilter !== '' || $this->search !== '' || $this->recurring,
         ]);
     }
 }

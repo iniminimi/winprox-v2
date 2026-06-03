@@ -99,6 +99,10 @@
                     <div class="wp-grow wp-stack-tight">
                         <div class="wp-cluster">
                             <x-wp-ref-nr type="task" :id="$task->id" />
+                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                {{ $task->priority->label() }}
+                            </span>
                             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                             <span class="wp-issue-card-title">{{ $teamName }}</span>
                         </div>
@@ -133,6 +137,15 @@
                         <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
                         <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
                         @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskPriority">{{ __('tasks.show.priority') }}</label>
+                        <select id="taskPriority" class="wp-select" wire:model="taskPriority">
+                            @foreach ($priorities as $priority)
+                                <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                            @endforeach
+                        </select>
+                        @error('taskPriority') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task_team_label') }}</label>

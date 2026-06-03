@@ -82,6 +82,19 @@
                 "closed": "Issue is definitively closed."
             }
         },
+        "issues.create": {
+            "title": "Help — Recurring issue",
+            "actions": [
+                {
+                    "label": "Interval",
+                    "text": "How often the issue recurs (e.g. every 2 weeks, every month, every quarter, every year)."
+                },
+                {
+                    "label": "Lead (days)",
+                    "text": "How many days before the due date the task is created (e.g. 7 days for monthly tasks)."
+                }
+            ]
+        },
         "tasks.list": {
             "title": "Help — Tasks",
             "actions": [

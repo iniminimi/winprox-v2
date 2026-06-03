@@ -3,8 +3,10 @@
 namespace App\Livewire\Tasks;
 
 use App\Actions\Tasks\PauseTaskAction;
+use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Actions\Tasks\UpdateTaskTeamAction;
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Task;
@@ -28,11 +30,14 @@ class Show extends Component
 
     public ?int $teamId = null;
 
+    public string $priority = '';
+
     public function mount(Task $task): void
     {
         $this->authorize('view', $task);
         $this->task = $task->load(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
         $this->teamId = $task->internal_team_id;
+        $this->priority = $task->priority instanceof TaskPriority ? $task->priority->value : (string) $task->priority;
     }
 
     public function saveTeam(UpdateTaskTeamAction $updateTeam): void
@@ -47,6 +52,23 @@ class Show extends Component
 
         $this->task = $updateTeam->handle($this->task, (int) $validated['teamId']);
         $this->teamId = $this->task->internal_team_id;
+    }
+
+    public function savePriority(UpdateTaskPriorityAction $updatePriority): void
+    {
+        $this->authorize('update', $this->task);
+
+        $validated = $this->validate([
+            'priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
+        ]);
+
+        $this->task = $updatePriority->handle(
+            $this->task,
+            TaskPriority::from($validated['priority']),
+            auth()->user()->tenant_id,
+            auth()->id(),
+        );
+        $this->priority = $this->task->priority->value;
     }
 
     public function selectStatus(string $status): void
@@ -104,6 +126,7 @@ class Show extends Component
     {
         $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
         $this->teamId = $this->task->internal_team_id;
+        $this->priority = $this->task->priority->value;
     }
 
     public function render()
@@ -133,6 +156,7 @@ class Show extends Component
                 ->orderBy('sort_order')
                 ->orderBy('name')
                 ->get(['id', 'name']),
+            'priorities' => TaskPriority::cases(),
             'transitions' => TaskStatusTransitions::nextOptions($current),
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),
             'nav' => EntityDetailNavigation::forTask($this->task),
