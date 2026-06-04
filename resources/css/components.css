@@ -968,7 +968,7 @@ a.wp-kpi:hover {
 
 .wp-calendar-head {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.25rem;
     margin-bottom: 0.25rem;
 }
@@ -983,7 +983,7 @@ a.wp-kpi:hover {
 
 .wp-calendar-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 0.25rem;
 }
 
