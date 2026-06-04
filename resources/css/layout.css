@@ -69,10 +69,9 @@
 }
 
 .wp-sidebar-header-logo {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
     background-color: var(--wp-surface);
