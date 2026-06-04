@@ -79,6 +79,7 @@
         "test": "Test",
         "webhook_tested": "Test webhook sent to:",
         "view_docs": "View API Documentation",
+        "download_docs": "Download All (ZIP)",
         "docs_title": "API Documentation",
         "docs_subtitle": "Complete API reference for integrations.",
         "docs_navigation": "Navigation",

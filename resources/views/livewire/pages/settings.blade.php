@@ -156,9 +156,9 @@
                             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                         }"
                     >
-                        <div style="margin-bottom: 1rem; text-align: center;">
-                            <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; color: '#1f2937';">Portal</div>
-                            <div style="font-size: 0.625rem; opacity: 0.7; color: '#6b7280';">Na scan QR-code</div>
+                        <div style="margin-bottom: 1rem; text-align: center; background-color: white; padding: 0.75rem; border-radius: 12px; margin: -1rem -1rem 1rem -1rem;">
+                            <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; color: #1f2937;">Portal</div>
+                            <div style="font-size: 0.625rem; opacity: 0.7; color: #6b7280;">Na scan QR-code</div>
                         </div>
                         <div style="display: flex; flex-direction: column; gap: 0.5rem;">
                             <button 
