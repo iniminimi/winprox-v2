@@ -69,6 +69,16 @@
     background-color: var(--wp-surface-2);
 }
 
+/* Surface — witte achtergrond voor contrast. */
+.btn--surface {
+    background-color: var(--wp-surface);
+    border-color: var(--wp-border);
+    color: var(--wp-text);
+}
+.btn--surface:hover {
+    background-color: var(--wp-surface-2);
+}
+
 /* Waarschuwing (amber) — flow/let-op acties. */
 .btn--warning {
     background-color: var(--wp-warning);

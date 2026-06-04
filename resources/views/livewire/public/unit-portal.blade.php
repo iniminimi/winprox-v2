@@ -80,10 +80,10 @@
                     @endif
                     <div class="wp-row">
                         <h2 id="portal-open-tasks" class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                        <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
                     </div>
                     @forelse ($allOpenUnitTasks as $task)
-                        @include('partials.wp-portal-task', ['task' => $task])
+                        @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
                     @empty
                         <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                     @endforelse
@@ -203,7 +203,7 @@
             @if ($canAct)
                 <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
                 @forelse ($openTasksForIssue as $task)
-                    @include('partials.wp-portal-task', ['task' => $task])
+                    @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                 @endforelse
