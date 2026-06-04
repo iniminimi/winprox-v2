@@ -73,7 +73,7 @@
                              wire:key="cal-{{ $dateKey }}">
                             <div class="wp-calendar-day-num">{{ $day->day }}</div>
                             <div class="wp-calendar-entries">
-                                @foreach ($entries->take(10) as $entry)
+                                @foreach ($entries->take(5) as $entry)
                                     @if ($entryType === 'issues')
                                         <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry">
                                             <x-wp-ref-nr :id="$entry->id" class="wp-calendar-entry-nr" />
@@ -88,9 +88,9 @@
                                         </a>
                                     @endif
                                 @endforeach
-                                @if ($entries->count() > 10)
+                                @if ($entries->count() > 5)
                                     <div class="wp-calendar-more">
-                                        +{{ $entries->count() - 10 }} {{ __('calendar.more') }}
+                                        +{{ $entries->count() - 5 }} {{ __('calendar.more') }}
                                     </div>
                                 @endif
                             </div>
@@ -105,10 +105,11 @@
                 @php
                     $dateKey = $day->toDateString();
                     $entries = $entriesByDate->get($dateKey, collect());
+                    $limit = $isDayView ? 50 : 20;
                 @endphp
                 <div class="wp-card wp-card-pad wp-stack-tight" wire:key="cal-day-{{ $dateKey }}">
                     <h3 class="wp-section-title">{{ $day->isoFormat('dddd D MMMM') }}</h3>
-                    @forelse ($entries as $entry)
+                    @forelse ($entries->take($limit) as $entry)
                         @if ($entryType === 'issues')
                             <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">
                                 <x-wp-ref-nr :id="$entry->id" />
@@ -125,6 +126,11 @@
                     @empty
                         <p class="wp-muted">{{ __('calendar.empty_day') }}</p>
                     @endforelse
+                    @if ($entries->count() > $limit)
+                        <div class="wp-calendar-more">
+                            +{{ $entries->count() - $limit }} {{ __('calendar.more') }}
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </div>
