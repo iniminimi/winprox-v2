@@ -47,7 +47,7 @@
             "type": "pricing",
             "title": "Was kostet WinProx?",
             "intro": "WinProx startet mit einer Testphase. Danach wählen Sie ein Paket nach der Anzahl der Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Aktivierung unter Abonnement.",
-            "summary": "Testphase, dan Micro-, Starter-, Pro-, Business- oder Enterprise-Pakete nach Units und Benutzern.",
+            "summary": "Testphase, dan Micro-, Starter-, Pro-, Business- oder Enterprise-Pakete nach Units und Benutzern. API-Zugriff ab Business.",
             "plans": {
                 "micro": {
                     "units": "Bis zu 10 Units/Räume",
@@ -67,12 +67,12 @@
                 "business": {
                     "units": "Bis zu 300 Units/Räume",
                     "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
-                    "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams."
+                    "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams. Inklusive API-Zugriff und Webhooks."
                 },
                 "enterprise": {
                     "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
                     "users": "",
-                    "description": ""
+                    "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen."
                 }
             }
         },
@@ -123,7 +123,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Wie funktionieren die Benutzerrollen?",
-            "summary": "Administrator: volle Kontrolle und Abonnement. Standardbenutzer: tägliche Nachverfolgung ohne Benutzerverwaltung.",
+            "summary": "Administrator: volle Kontrolle und Abonnement. Standardbenutzer: tägliche Nachverfolgung ohne Benutzerverwaltung. Ausführender: Aufgaben vor Ort per Team-QR ohne Login.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -132,6 +132,10 @@
                 {
                     "title": "Standardbenutzer",
                     "text": "Erledigt die tägliche Nachverfolgung: Standorte, Meldungen und Aufgaben. Kein Zugriff auf Kollegenkonten oder Abonnementeinstellungen."
+                },
+                {
+                    "title": "Ausführender (Team)",
+                    "text": "Nutzt die Team-QR, um Aufgaben vor Ort zu starten, Fotos hinzuzufügen und Aufgaben abzuschließen. Funktioniert ohne WinProx-Login — Registrierung erfolgt über die Team-QR."
                 }
             ]
         },

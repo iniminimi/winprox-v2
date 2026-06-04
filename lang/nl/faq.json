@@ -47,7 +47,7 @@
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
             "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement.",
-            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise op basis van units en gebruikers.",
+            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise op basis van units en gebruikers. API-toegang vanaf Business.",
             "plans": {
                 "micro": {
                     "units": "Tot 10 units/ruimtes",
@@ -67,12 +67,12 @@
                 "business": {
                     "units": "Tot 300 units/ruimtes",
                     "users": "Inclusief 1 beheerder en 15 medewerkers",
-                    "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
+                    "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks."
                 },
                 "enterprise": {
                     "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
                     "users": "",
-                    "description": ""
+                    "description": "Inclusief API-toegang, webhooks en maatwerk."
                 }
             }
         },
@@ -123,7 +123,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Hoe werken de verschillende gebruikers?",
-            "summary": "Beheerder: volledige controle en abonnement. Gewone gebruiker: dagelijkse opvolging zonder gebruikersbeheer.",
+            "summary": "Beheerder: volledige controle en abonnement. Gewone gebruiker: dagelijkse opvolging zonder gebruikersbeheer. Uitvoerder: taken op locatie via team-QR zonder login.",
             "roles": [
                 {
                     "title": "Beheerder",
@@ -132,6 +132,10 @@
                 {
                     "title": "Gewone gebruiker",
                     "text": "Kan de dagelijkse opvolging afhandelen: locaties, meldingen en taken. Geen toegang tot collega-accounts of abonnementsinstellingen."
+                },
+                {
+                    "title": "Uitvoerder (team)",
+                    "text": "Gebruikt de team-QR om taken op locatie te starten, foto's toe te voegen en taken af te ronden. Werkt zonder WinProx-login — registratie gebeurt via de team-QR."
                 }
             ]
         },

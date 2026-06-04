@@ -75,14 +75,16 @@
             "price": "€99 / maand",
             "units": "Tot 300 units/ruimtes",
             "users": "Inclusief 1 beheerder en 15 medewerkers",
-            "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams."
+            "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks.",
+            "features": ["API-toegang", "Webhooks"]
         },
         "enterprise": {
             "name": "Enterprise",
             "price": "Op maat",
             "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
             "users": "",
-            "description": ""
+            "description": "Inclusief API-toegang, webhooks en maatwerk.",
+            "features": ["API-toegang", "Webhooks", "Maatwerk"]
         }
     },
     "stripe": {

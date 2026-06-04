@@ -47,7 +47,7 @@
             "type": "pricing",
             "title": "How much does WinProx cost?",
             "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription.",
-            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise plans based on units and users.",
+            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise plans based on units and users. API access from Business.",
             "plans": {
                 "micro": {
                     "units": "Up to 10 units/spaces",
@@ -67,12 +67,12 @@
                 "business": {
                     "units": "Up to 300 units/spaces",
                     "users": "Includes 1 administrator and 15 staff members",
-                    "description": "For organisations with multiple sites, many units, and larger teams."
+                    "description": "For organisations with multiple sites, many units, and larger teams. Includes API access and webhooks."
                 },
                 "enterprise": {
                     "units": "For large site operators and complex portfolios. Contact us.",
                     "users": "",
-                    "description": ""
+                    "description": "Includes API access, webhooks, and custom solutions."
                 }
             }
         },
@@ -123,7 +123,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "How do user roles work?",
-            "summary": "Administrator: full control and subscription. Standard user: daily follow-up without user management.",
+            "summary": "Administrator: full control and subscription. Standard user: daily follow-up without user management. Worker: tasks on location via team-QR without login.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -132,6 +132,10 @@
                 {
                     "title": "Standard user",
                     "text": "Handles daily follow-up: sites, issues, and tasks. No access to colleague accounts or subscription settings."
+                },
+                {
+                    "title": "Worker (team)",
+                    "text": "Uses the team-QR to start tasks on location, add photos, and complete tasks. Works without WinProx login — registration happens via the team-QR."
                 }
             ]
         },

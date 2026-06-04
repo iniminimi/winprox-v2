@@ -9,6 +9,7 @@
     "empty": "Aucune organisation trouvée.",
     "status_active": "actif",
     "status_inactive": "inactif",
+    "trial_api": "Accès API",
     "open_support": "Ouvrir la vue support",
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",

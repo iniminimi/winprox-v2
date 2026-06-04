@@ -75,14 +75,16 @@
             "price": "€99 / mois",
             "units": "Jusqu'à 300 unités/espaces",
             "users": "Inclut 1 administrateur et 15 collaborateurs",
-            "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues."
+            "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues. Inclut l'accès API et les webhooks.",
+            "features": ["Accès API", "Webhooks"]
         },
         "enterprise": {
             "name": "Enterprise",
             "price": "Sur mesure",
             "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
             "users": "",
-            "description": ""
+            "description": "Inclut l'accès API, les webhooks et des solutions sur mesure.",
+            "features": ["Accès API", "Webhooks", "Solutions sur mesure"]
         }
     },
     "stripe": {

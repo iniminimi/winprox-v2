@@ -75,14 +75,16 @@
             "price": "€99 / Monat",
             "units": "Bis zu 300 Units/Räume",
             "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
-            "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams."
+            "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams. Inklusive API-Zugriff und Webhooks.",
+            "features": ["API-Zugriff", "Webhooks"]
         },
         "enterprise": {
             "name": "Enterprise",
             "price": "Individuell",
             "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
             "users": "",
-            "description": ""
+            "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen.",
+            "features": ["API-Zugriff", "Webhooks", "Maßgeschneiderte Lösungen"]
         }
     },
     "stripe": {

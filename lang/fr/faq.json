@@ -47,7 +47,7 @@
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
             "intro": "WinProx démarre avec une période d'essai. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces). Activation sous Abonnement.",
-            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise selon unités et utilisateurs.",
+            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise selon unités et utilisateurs. Accès API à partir de Business.",
             "plans": {
                 "micro": {
                     "units": "Jusqu'à 10 unités/espaces",
@@ -67,12 +67,12 @@
                 "business": {
                     "units": "Jusqu'à 300 unités/espaces",
                     "users": "Inclut 1 administrateur et 15 collaborateurs",
-                    "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues."
+                    "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues. Inclut l'accès API et les webhooks."
                 },
                 "enterprise": {
                     "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
                     "users": "",
-                    "description": ""
+                    "description": "Inclut l'accès API, les webhooks et des solutions sur mesure."
                 }
             }
         },
@@ -123,7 +123,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Comment fonctionnent les rôles ?",
-            "summary": "Administrateur : contrôle total et abonnement. Utilisateur standard : suivi quotidien sans gestion des comptes.",
+            "summary": "Administrateur : contrôle total et abonnement. Utilisateur standard : suivi quotidien sans gestion des comptes. Exécutant : tâches sur site via QR-équipe sans login.",
             "roles": [
                 {
                     "title": "Administrateur",
@@ -132,6 +132,10 @@
                 {
                     "title": "Utilisateur standard",
                     "text": "Gère le suivi quotidien : sites, signalements et tâches. Pas d'accès aux comptes collègues ni aux paramètres d'abonnement."
+                },
+                {
+                    "title": "Exécutant (équipe)",
+                    "text": "Utilise la QR-équipe pour démarrer les tâches sur site, ajouter des photos et terminer les tâches. Fonctionne sans login WinProx — l'enregistrement se fait via la QR-équipe."
                 }
             ]
         },
