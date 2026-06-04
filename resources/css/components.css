@@ -1054,6 +1054,14 @@ a.wp-kpi:hover {
     padding: 0.25rem;
 }
 
+.wp-calendar-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: var(--wp-space-2);
+}
+
 
 /* ---------------------------------------------------------------------------
  | Stub-pagina's + chips (beheers-stubs, locaties/teams).

@@ -106,10 +106,13 @@
                     $dateKey = $day->toDateString();
                     $entries = $entriesByDate->get($dateKey, collect());
                     $limit = $isDayView ? 50 : 20;
+                    $offset = ($dayPage - 1) * $limit;
+                    $paginatedEntries = $entries->slice($offset, $limit);
+                    $totalPages = $entries->count() > 0 ? ceil($entries->count() / $limit) : 1;
                 @endphp
                 <div class="wp-card wp-card-pad wp-stack-tight" wire:key="cal-day-{{ $dateKey }}">
                     <h3 class="wp-section-title">{{ $day->isoFormat('dddd D MMMM') }}</h3>
-                    @forelse ($entries->take($limit) as $entry)
+                    @forelse ($paginatedEntries as $entry)
                         @if ($entryType === 'issues')
                             <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">
                                 <x-wp-ref-nr :id="$entry->id" />
@@ -126,9 +129,15 @@
                     @empty
                         <p class="wp-muted">{{ __('calendar.empty_day') }}</p>
                     @endforelse
-                    @if ($entries->count() > $limit)
-                        <div class="wp-calendar-more">
-                            +{{ $entries->count() - $limit }} {{ __('calendar.more') }}
+                    @if ($isDayView && $entries->count() > $limit)
+                        <div class="wp-calendar-pagination">
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="previousPage" :disabled="{{ $dayPage === 1 }}">
+                                ‹
+                            </button>
+                            <span class="wp-text-sm">{{ $dayPage }} / {{ (int) $totalPages }}</span>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="nextPage" :disabled="{{ $dayPage >= $totalPages }}">
+                                ›
+                            </button>
                         </div>
                     @endif
                 </div>

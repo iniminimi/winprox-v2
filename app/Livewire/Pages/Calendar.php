@@ -28,6 +28,8 @@ class Calendar extends Component
     #[Url(as: 'location')]
     public ?int $locationFilter = null;
 
+    public int $dayPage = 1;
+
     public function mount(): void
     {
         if ($this->currentDate === '') {
@@ -50,6 +52,7 @@ class Calendar extends Component
         }
 
         $this->viewMode = $mode;
+        $this->dayPage = 1;
         $current = Carbon::parse($this->currentDate);
         $this->currentDate = match ($mode) {
             'week' => $current->startOfWeek(Carbon::MONDAY)->toDateString(),
@@ -93,6 +96,19 @@ class Calendar extends Component
             'day' => $today->toDateString(),
             default => $today->copy()->startOfMonth()->toDateString(),
         };
+        $this->dayPage = 1;
+    }
+
+    public function nextPage(): void
+    {
+        $this->dayPage++;
+    }
+
+    public function previousPage(): void
+    {
+        if ($this->dayPage > 1) {
+            $this->dayPage--;
+        }
     }
 
     public function render()
@@ -180,6 +196,7 @@ class Calendar extends Component
             'isMonthView' => $isMonthView,
             'isDayView' => $isDayView,
             'locations' => Location::query()->orderBy('name')->get(),
+            'dayPage' => $this->dayPage,
         ]);
     }
 }
