@@ -201,6 +201,13 @@
             "title": "Which stickers can I use?",
             "body": "For printing, we recommend labels from Avery or Herma due to their quality and compatibility with standard printers. The correct A4 sheet types are indicated.",
             "summary": "Avery and Herma labels recommended for printing. Correct A4 sheet types indicated."
+        },
+        "style": {
+            "slug": "style",
+            "type": "text",
+            "title": "What is WinProx style and Custom portal style?",
+            "body": "WinProx style determines how the app looks for administrators and staff (standard, dark, high res). Custom portal style is optional and adjusts background and button colors for the public portal that reporters and workers see after scanning a QR code. Configure both under Settings.",
+            "summary": "WinProx style for the app, Custom portal style for the public portal (background and button colors)."
         }
     }
 }

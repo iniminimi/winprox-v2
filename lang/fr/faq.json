@@ -201,6 +201,13 @@
             "title": "Quelles étiquettes puis-je utiliser ?",
             "body": "Pour l'impression, nous recommandons les étiquettes Avery ou Herma pour leur qualité et compatibilité avec les imprimantes standard. Les types de feuilles A4 corrects sont indiqués.",
             "summary": "Étiquettes Avery et Herma recommandées pour l'impression. Types de feuilles A4 corrects indiqués."
+        },
+        "style": {
+            "slug": "style",
+            "type": "text",
+            "title": "Qu'est-ce que le style WinProx et le style de portail personnalisé ?",
+            "body": "Le style WinProx détermine l'apparence de l'application pour les administrateurs et le personnel (standard, sombre, haute résolution). Le style de portail personnalisé est optionnel et ajuste les couleurs d'arrière-plan et de boutons pour le portail public que les signaleurs et exécutants voient après avoir scanné un code QR. Configurez les deux sous Paramètres.",
+            "summary": "Style WinProx pour l'application, style de portail personnalisé pour le portail public (couleurs d'arrière-plan et de boutons)."
         }
     }
 }

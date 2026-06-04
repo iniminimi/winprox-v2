@@ -201,6 +201,13 @@
             "title": "Welke stickers kan ik gebruiken?",
             "body": "Voor het printen adviseren we labels van Avery of Herma vanwege hun kwaliteit en compatibiliteit met standaard printers. De correcte types A4-vellen staan aangeduid.",
             "summary": "Avery en Herma labels aanbevolen voor printen. Correcte A4-vellen types aangeduid."
+        },
+        "style": {
+            "slug": "style",
+            "type": "text",
+            "title": "Wat is WinProx-stijl en Eigen portaal-stijl?",
+            "body": "WinProx-stijl bepaalt hoe de app eruitziet voor beheerders en medewerkers (standaard, donker, high res). Eigen portaal-stijl is optioneel en past de achtergrond- en knopkleuren aan voor het publieke portaal dat melders en uitvoerders zien na het scannen van een QR-code. Stel beide in onder Instellingen.",
+            "summary": "WinProx-stijl voor de app, Eigen portaal-stijl voor het publieke portaal (achtergrond- en knopkleuren)."
         }
     }
 }
