@@ -12,7 +12,7 @@
            target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('calendar.briefing') }}</a>
     </div>
 
-    <div class="wp-card wp-card-pad">
+    <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <div class="wp-chip-row">
                 @foreach (['month', 'week', 'day'] as $mode)
