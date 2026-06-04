@@ -12,7 +12,7 @@
            target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('calendar.briefing') }}</a>
     </div>
 
-    <div class="wp-card wp-card-pad wp-stack-tight">
+    <div class="wp-card wp-card-pad">
         <div class="wp-row">
             <div class="wp-chip-row">
                 @foreach (['month', 'week', 'day'] as $mode)
@@ -54,42 +54,44 @@
     </div>
 
     @if ($isMonthView)
-        <div class="wp-calendar">
-            <div class="wp-calendar-head">
-                @foreach ($weekDayLabels as $label)
-                    <div class="wp-calendar-head-cell">{{ $label }}</div>
-                @endforeach
-            </div>
-            <div class="wp-calendar-grid">
-                @foreach ($days as $day)
-                    @php
-                        $dateKey = $day->toDateString();
-                        $entries = $entriesByDate->get($dateKey, collect());
-                        $isToday = $day->isToday();
-                        $isOtherMonth = ! $day->isSameMonth($currentMonth);
-                    @endphp
-                    <div class="wp-calendar-cell {{ $isOtherMonth ? 'wp-calendar-cell--muted' : '' }} {{ $isToday ? 'wp-calendar-cell--today' : '' }}"
-                         wire:key="cal-{{ $dateKey }}">
-                        <div class="wp-calendar-day-num">{{ $day->day }}</div>
-                        <div class="wp-calendar-entries">
-                            @foreach ($entries as $entry)
-                                @if ($entryType === 'issues')
-                                    <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry">
-                                        <x-wp-ref-nr :id="$entry->id" class="wp-calendar-entry-nr" />
-                                        <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
-                                        <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->description, 40) }}</span>
-                                    </a>
-                                @else
-                                    <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry">
-                                        <x-wp-ref-nr type="task" :id="$entry->id" class="wp-calendar-entry-nr" />
-                                        <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
-                                        <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->issue?->description ?? $entry->note, 40) }}</span>
-                                    </a>
-                                @endif
-                            @endforeach
+        <div class="wp-calendar-shell">
+            <div class="wp-calendar">
+                <div class="wp-calendar-head">
+                    @foreach ($weekDayLabels as $label)
+                        <div class="wp-calendar-head-cell">{{ $label }}</div>
+                    @endforeach
+                </div>
+                <div class="wp-calendar-grid">
+                    @foreach ($days as $day)
+                        @php
+                            $dateKey = $day->toDateString();
+                            $entries = $entriesByDate->get($dateKey, collect());
+                            $isToday = $day->isToday();
+                            $isOtherMonth = ! $day->isSameMonth($currentMonth);
+                        @endphp
+                        <div class="wp-calendar-cell {{ $isOtherMonth ? 'wp-calendar-cell--muted' : '' }} {{ $isToday ? 'wp-calendar-cell--today' : '' }}"
+                             wire:key="cal-{{ $dateKey }}">
+                            <div class="wp-calendar-day-num">{{ $day->day }}</div>
+                            <div class="wp-calendar-entries">
+                                @foreach ($entries as $entry)
+                                    @if ($entryType === 'issues')
+                                        <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry">
+                                            <x-wp-ref-nr :id="$entry->id" class="wp-calendar-entry-nr" />
+                                            <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
+                                            <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->description, 40) }}</span>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry">
+                                            <x-wp-ref-nr type="task" :id="$entry->id" class="wp-calendar-entry-nr" />
+                                            <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
+                                            <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->issue?->description ?? $entry->note, 40) }}</span>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     @else
