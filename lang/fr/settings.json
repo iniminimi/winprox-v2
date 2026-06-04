@@ -75,6 +75,24 @@
         "deliveries_empty": "Aucune livraison.",
         "active": "Actif",
         "inactive": "Inactif",
-        "toggle": "Activer/désactiver"
+        "toggle": "Activer/désactiver",
+        "test": "Test",
+        "webhook_tested": "Test webhook envoyé à :",
+        "view_docs": "Voir la documentation API",
+        "docs_title": "Documentation API",
+        "docs_subtitle": "Référence API complète pour les intégrations.",
+        "docs_navigation": "Navigation",
+        "ability_issues_read": "Lire les signalements",
+        "ability_issues_create": "Créer des signalements",
+        "ability_issues_update": "Modifier les signalements",
+        "ability_tasks_read": "Lire les tâches",
+        "ability_tasks_create": "Créer des tâches",
+        "ability_tasks_update": "Modifier les tâches",
+        "ability_locations_read": "Lire les sites",
+        "ability_units_read": "Lire les unités",
+        "ability_teams_read": "Lire les équipes",
+        "ability_workers_read": "Lire les exécutants",
+        "ability_webhooks_manage": "Gérer les webhooks",
+        "ability_all": "Accès complet"
     }
 }

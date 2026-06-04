@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiDocumentationController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\LegalDocumentController;
@@ -21,6 +22,7 @@ use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
@@ -126,6 +128,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/team', Team::class)->name('team.index');
         Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');
+        Route::get('/settings/api/docs', ApiDocumentation::class)->name('settings.api.docs');
+        Route::get('/settings/api/docs/{file}', ApiDocumentation::class)->name('settings.api.docs.show');
         Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
         Route::get('/subscription', Subscription::class)->name('subscription.index');
         Route::get('/qr/connect/{token}', QrConnect::class)->name('qr.connect');

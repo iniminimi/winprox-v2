@@ -75,6 +75,24 @@
         "deliveries_empty": "Nog geen leveringen.",
         "active": "Actief",
         "inactive": "Inactief",
-        "toggle": "Actief/inactief"
+        "toggle": "Actief/inactief",
+        "test": "Test",
+        "webhook_tested": "Test webhook verzonden naar:",
+        "view_docs": "API Documentatie bekijken",
+        "docs_title": "API Documentatie",
+        "docs_subtitle": "Volledige API referentie voor integraties.",
+        "docs_navigation": "Navigatie",
+        "ability_issues_read": "Meldingen lezen",
+        "ability_issues_create": "Meldingen aanmaken",
+        "ability_issues_update": "Meldingen wijzigen",
+        "ability_tasks_read": "Taken lezen",
+        "ability_tasks_create": "Taken aanmaken",
+        "ability_tasks_update": "Taken wijzigen",
+        "ability_locations_read": "Locaties lezen",
+        "ability_units_read": "Units lezen",
+        "ability_teams_read": "Teams lezen",
+        "ability_workers_read": "Workers lezen",
+        "ability_webhooks_manage": "Webhooks beheren",
+        "ability_all": "Volledige toegang"
     }
 }

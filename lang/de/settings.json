@@ -75,6 +75,24 @@
         "deliveries_empty": "Noch keine Zustellungen.",
         "active": "Aktiv",
         "inactive": "Inaktiv",
-        "toggle": "Aktiv umschalten"
+        "toggle": "Aktiv umschalten",
+        "test": "Test",
+        "webhook_tested": "Test-Webhook gesendet an:",
+        "view_docs": "API-Dokumentation anzeigen",
+        "docs_title": "API-Dokumentation",
+        "docs_subtitle": "Vollständige API-Referenz für Integrationen.",
+        "docs_navigation": "Navigation",
+        "ability_issues_read": "Meldungen lesen",
+        "ability_issues_create": "Meldungen erstellen",
+        "ability_issues_update": "Meldungen bearbeiten",
+        "ability_tasks_read": "Aufgaben lesen",
+        "ability_tasks_create": "Aufgaben erstellen",
+        "ability_tasks_update": "Aufgaben bearbeiten",
+        "ability_locations_read": "Standorte lesen",
+        "ability_units_read": "Units lesen",
+        "ability_teams_read": "Teams lesen",
+        "ability_workers_read": "Mitarbeiter lesen",
+        "ability_webhooks_manage": "Webhooks verwalten",
+        "ability_all": "Vollzugriff"
     }
 }
