@@ -79,8 +79,9 @@
 }
 
 .wp-sidebar-header-logo img {
-    max-height: 100px;
+    height: 100px;
     width: auto;
+    max-width: 100%;
 }
 
 .wp-sidebar-menu {
