@@ -2140,7 +2140,7 @@ a.wp-kpi:hover {
     padding: 0.5rem 0.75rem;
     background-color: var(--wp-surface);
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-md);
+    border-radius: var(--wp-radius);
     transition: border-color var(--wp-transition);
 }
 
