@@ -73,7 +73,7 @@
                              wire:key="cal-{{ $dateKey }}">
                             <div class="wp-calendar-day-num">{{ $day->day }}</div>
                             <div class="wp-calendar-entries">
-                                @foreach ($entries as $entry)
+                                @foreach ($entries->take(10) as $entry)
                                     @if ($entryType === 'issues')
                                         <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry">
                                             <x-wp-ref-nr :id="$entry->id" class="wp-calendar-entry-nr" />
@@ -88,6 +88,11 @@
                                         </a>
                                     @endif
                                 @endforeach
+                                @if ($entries->count() > 10)
+                                    <div class="wp-calendar-more">
+                                        +{{ $entries->count() - 10 }} {{ __('calendar.more') }}
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach

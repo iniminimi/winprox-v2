@@ -1047,6 +1047,13 @@ a.wp-kpi:hover {
     white-space: nowrap;
 }
 
+.wp-calendar-more {
+    font-size: 0.6875rem;
+    color: var(--wp-text-muted);
+    text-align: center;
+    padding: 0.25rem;
+}
+
 
 /* ---------------------------------------------------------------------------
  | Stub-pagina's + chips (beheers-stubs, locaties/teams).

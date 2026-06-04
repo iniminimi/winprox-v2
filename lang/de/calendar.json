@@ -16,5 +16,6 @@
     },
     "period": {
         "week": "Woche :start – :end"
-    }
+    },
+    "more": "mehr"
 }

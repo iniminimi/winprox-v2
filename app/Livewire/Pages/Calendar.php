@@ -143,6 +143,7 @@ class Calendar extends Component
                             ->whereBetween('due_at', [$gridStart->copy()->startOfDay(), $gridEnd->copy()->endOfDay()]);
                     });
                 })
+                ->orderByRaw('FIELD(priority, "prio_1", "prio_2", "prio_3", "prio_4")')
                 ->orderBy('scheduled_for')
                 ->orderBy('due_at')
                 ->get();
