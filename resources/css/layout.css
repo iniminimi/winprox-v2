@@ -58,8 +58,29 @@
     min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1rem;
+    padding: 0;
     overscroll-behavior: contain;
+}
+
+.wp-sidebar-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--wp-border);
+    background-color: var(--wp-tenant-bg, var(--wp-surface));
+}
+
+.wp-sidebar-header-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+}
+
+.wp-sidebar-header-logo img {
+    max-height: 100px;
+    width: auto;
 }
 
 .wp-sidebar-menu {

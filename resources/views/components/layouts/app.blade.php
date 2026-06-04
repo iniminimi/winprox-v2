@@ -68,7 +68,19 @@
     @endphp
 
     <div class="wp-app" x-data="{ nav: false, help: false }">
-        <aside class="wp-sidebar" :class="{ 'is-open': nav }">
+        <aside class="wp-sidebar" :class="{ 'is-open': nav }"
+                @php
+                    $tenant = auth()->user()?->tenant;
+                    $tenantBg = $tenant?->custom_theme_active && $tenant?->custom_theme_bg ? $tenant->custom_theme_bg : null;
+                    $tenantLogo = $tenant?->logoPublicUrl();
+                    $fallbackLogo = asset('images/Winprox_logo_100.png');
+                @endphp
+                @if($tenantBg) style="--wp-tenant-bg: {{ $tenantBg }};" @endif>
+            <div class="wp-sidebar-header">
+                <div class="wp-sidebar-header-logo">
+                    <img src="{{ $tenantLogo ?? $fallbackLogo }}" alt="{{ $tenant?->name ?? 'WinProx' }}">
+                </div>
+            </div>
             <div class="wp-sidebar-body">
                 <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
                     @foreach ($primaryNav as $item)
