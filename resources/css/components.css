@@ -2172,6 +2172,7 @@ a.wp-kpi:hover {
     font-size: 0.875rem;
     color: var(--wp-text);
     outline: none;
+    border-radius: var(--wp-radius);
 }
 
 .wp-search-input::placeholder {
