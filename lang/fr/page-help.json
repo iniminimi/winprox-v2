@@ -235,6 +235,22 @@
                 {
                     "label": "Combien de temps les workers restent-ils connectés?",
                     "text": "Choisissez combien de temps un worker reste connecté après avoir scanné le QR d'équipe : Quotidien (14 heures), Hebdomadaire (144 heures, 6 jours ouvrés) ou Personnalisé (nombre d'heures personnalisé). La valeur par défaut est 14 heures."
+                },
+                {
+                    "label": "Réinitialiser l'icône",
+                    "text": "Supprimez l'icône choisie d'un worker pour qu'il puisse se reconnecter avec une autre icône. Utile si un worker veut changer d'icône ou si une icône a été sélectionnée par erreur."
+                },
+                {
+                    "label": "Désactiver l'équipe",
+                    "text": "Désactivez une équipe pour qu'elle ne soit plus visible dans les menus déroulants et listes. Les workers de cette équipe ne peuvent plus voir ou traiter les tâches. La réactivation est possible."
+                },
+                {
+                    "label": "Désactiver le worker",
+                    "text": "Désactivez un worker pour qu'il ne puisse plus se connecter via le QR d'équipe. Le worker reste dans le système et peut être réactivé plus tard."
+                },
+                {
+                    "label": "Supprimer le worker",
+                    "text": "Supprimez définitivement un worker du système. Tout l'historique et les tâches de ce worker sont conservés, mais le worker ne peut plus être utilisé."
                 }
             ]
         },

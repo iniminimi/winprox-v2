@@ -235,6 +235,22 @@
                 {
                     "label": "How long do workers stay logged in?",
                     "text": "Choose how long a worker stays logged in after scanning the team QR: Daily (14 hours), Weekly (144 hours, 6 working days) or Custom (custom number of hours). The default value is 14 hours."
+                },
+                {
+                    "label": "Reset icon",
+                    "text": "Remove the chosen icon from a worker so they can sign in again with a different icon. Useful if a worker wants to change icon or if an icon was selected by mistake."
+                },
+                {
+                    "label": "Deactivate team",
+                    "text": "Disable a team so it is no longer visible in dropdowns and lists. Workers from this team can no longer view or complete tasks. Reactivation is possible."
+                },
+                {
+                    "label": "Deactivate worker",
+                    "text": "Disable a worker so they can no longer sign in via team QR. The worker remains in the system and can be reactivated later."
+                },
+                {
+                    "label": "Delete worker",
+                    "text": "Permanently remove a worker from the system. All history and tasks for this worker are preserved, but the worker can no longer be used."
                 }
             ]
         },

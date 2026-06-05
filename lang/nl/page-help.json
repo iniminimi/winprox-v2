@@ -235,6 +235,22 @@
                 {
                     "label": "Hoe lang blijven uitvoerders aangemeld?",
                     "text": "Kies hoe lang een uitvoerder ingelogd blijft na het scannen van de team-QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
+                },
+                {
+                    "label": "Icoon resetten",
+                    "text": "Verwijder het gekozen icoon van een uitvoerder zodat deze zich opnieuw kan aanmelden met een ander icoon. Handig als een uitvoerder van icoon wil wisselen of als een icoon per ongeluk verkeerd is gekozen."
+                },
+                {
+                    "label": "Team deactiveren",
+                    "text": "Schakel een team uit zodat het niet meer zichtbaar is in dropdowns en lijsten. Uitvoerders van dit team kunnen geen taken meer bekijken of afhandelen. Reactiveren is mogelijk."
+                },
+                {
+                    "label": "Uitvoerder deactiveren",
+                    "text": "Schakel een uitvoerder uit zodat deze zich niet meer kan aanmelden via team-QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
+                },
+                {
+                    "label": "Uitvoerder verwijderen",
+                    "text": "Verwijder een uitvoerder definitief uit het systeem. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
                 }
             ]
         },
