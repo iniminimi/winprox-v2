@@ -233,7 +233,7 @@
                     "text": "Déterminez l'ordre dans lequel les équipes apparaissent dans les listes et menus déroulants. Les numéros inférieurs apparaissent en premier."
                 },
                 {
-                    "label": "Durée de session des workers",
+                    "label": "Combien de temps les workers restent-ils connectés?",
                     "text": "Choisissez combien de temps un worker reste connecté après avoir scanné le QR d'équipe : Quotidien (14 heures), Hebdomadaire (144 heures, 6 jours ouvrés) ou Personnalisé (nombre d'heures personnalisé). La valeur par défaut est 14 heures."
                 }
             ]

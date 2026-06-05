@@ -233,7 +233,7 @@
                     "text": "Determine the order in which teams appear in lists and dropdowns. Lower numbers appear first."
                 },
                 {
-                    "label": "Worker session duration",
+                    "label": "How long do workers stay logged in?",
                     "text": "Choose how long a worker stays logged in after scanning the team QR: Daily (14 hours), Weekly (144 hours, 6 working days) or Custom (custom number of hours). The default value is 14 hours."
                 }
             ]

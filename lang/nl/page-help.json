@@ -233,7 +233,7 @@
                     "text": "Bepaal de volgorde waarin teams verschijnen in lijsten en dropdowns. Lagere nummers verschijnen eerst."
                 },
                 {
-                    "label": "Sessieduur van uitvoerders",
+                    "label": "Hoe lang blijven uitvoerders aangemeld?",
                     "text": "Kies hoe lang een worker ingelogd blijft na het scannen van de team-QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
                 }
             ]
