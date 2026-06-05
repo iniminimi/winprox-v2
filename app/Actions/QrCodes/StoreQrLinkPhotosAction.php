@@ -8,7 +8,6 @@ use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class StoreQrLinkPhotosAction
 {
@@ -24,7 +23,6 @@ class StoreQrLinkPhotosAction
         Unit $unit,
         QrCode $qrCode,
         array $photos,
-        ?int $replacingPhotoId = null,
         ?int $actorUserId = null,
     ): int {
         $storedCount = 0;
@@ -32,40 +30,6 @@ class StoreQrLinkPhotosAction
         foreach ($photos as $photo) {
             if (! $photo instanceof UploadedFile) {
                 continue;
-            }
-
-            if ($replacingPhotoId !== null) {
-                $existing = QrLinkPhoto::where('id', $replacingPhotoId)
-                    ->where('unit_id', (int) $unit->id)
-                    ->first();
-
-                if ($existing !== null) {
-                    $oldPath = $existing->path;
-
-                    if ($existing->hasPublicFile()) {
-                        Storage::disk('public')->delete($existing->path);
-                    }
-
-                    $existing->update([
-                        'path' => $this->storage->storePrecompressedCopy($photo),
-                    ]);
-
-                    $this->audit->record(
-                        userId: $actorUserId,
-                        tenantId: (int) $unit->tenant_id,
-                        action: 'qr_link_photo.replaced',
-                        modelType: QrLinkPhoto::class,
-                        modelId: (int) $existing->id,
-                        payload: [
-                            'unit_id' => $unit->id,
-                            'qr_code_id' => $qrCode->id,
-                            'old_path' => $oldPath,
-                        ],
-                    );
-
-                    $storedCount++;
-                    continue;
-                }
             }
 
             QrLinkPhoto::create([
@@ -89,7 +53,6 @@ class StoreQrLinkPhotosAction
                     'unit_id' => $unit->id,
                     'qr_code_id' => $qrCode->id,
                     'photo_count' => $storedCount,
-                    'replaced' => $replacingPhotoId !== null,
                 ],
             );
         }

@@ -69,8 +69,6 @@ class UnitPortal extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $newPortalPhotos = [];
 
-    public ?int $replacingPhotoId = null;
-
     public string $flashMessage = '';
 
     public function mount(string $token): void
@@ -344,21 +342,21 @@ class UnitPortal extends Component
         }
     }
 
-    public function replacePhoto(int $photoId): void
+    public function removeUnitPhoto(int $photoId, \App\Actions\QrCodes\DeleteQrLinkPhotoAction $delete): void
     {
         if (! $this->workerBelongsToUnitTeam()) {
             return;
         }
 
-        $this->replacingPhotoId = $photoId;
-        $this->dispatch('wp-focus-replace-upload');
-    }
+        $photo = \App\Models\QrLinkPhoto::where('id', $photoId)
+            ->where('unit_id', (int) $this->unitId)
+            ->first();
 
-    public function cancelReplace(): void
-    {
-        $this->replacingPhotoId = null;
-        $this->reset('newPortalPhotos');
-        $this->dispatch('wp-clear-photo-previews');
+        if ($photo === null) {
+            return;
+        }
+
+        $delete->handle($photo, actorUserId: null);
     }
 
     public function updateUnitPhotos(StoreQrLinkPhotosAction $storePhotos): void
@@ -400,12 +398,10 @@ class UnitPortal extends Component
             unit: $unit,
             qrCode: $qrCode,
             photos: $this->newPortalPhotos,
-            replacingPhotoId: $this->replacingPhotoId,
             actorUserId: null,
         );
 
         $this->reset('newPortalPhotos');
-        $this->replacingPhotoId = null;
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.unit.photos_updated');
     }

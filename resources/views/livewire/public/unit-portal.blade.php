@@ -275,7 +275,6 @@
                 $portalTempCount = count($newPortalPhotos);
                 $portalTotalCount = $portalStoredCount + $portalTempCount;
                 $portalCanAddMore = $portalTotalCount < 4;
-                $isReplacing = $replacingPhotoId !== null;
             @endphp
 
             <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }" wire:key="qr-photos-accordion-{{ $portalTotalCount }}">
@@ -310,15 +309,14 @@
                                             <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy" x-on:error="$el.closest('.wp-photo-thumb')?.remove()">
                                         </button>
 
-                                        @if ($workerBelongsToUnitTeam && ! $isReplacing)
+                                        @if ($workerBelongsToUnitTeam)
                                             <button
                                                 type="button"
-                                                class="btn btn--surface btn--sm"
-                                                style="position:absolute;bottom:2px;right:2px;padding:2px 4px;font-size:9px;line-height:1;"
-                                                wire:click="replacePhoto({{ $photo->id }})"
-                                            >
-                                                {{ __('portal.unit.replace_photo') }}
-                                            </button>
+                                                class="btn btn--danger btn--sm"
+                                                style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                                wire:confirm="{{ __('portal.unit.delete_photo_confirm') }}"
+                                                wire:click="removeUnitPhoto({{ $photo->id }})"
+                                            >×</button>
                                         @endif
                                     </div>
                                 @endif
@@ -355,15 +353,7 @@
                             </div>
                         @endif
 
-                        @if ($isReplacing)
-                            <div class="wp-card wp-card-pad wp-surface-muted wp-stack">
-                                <p class="wp-text-body">{{ __('portal.unit.replacing_photo') }}</p>
-                                @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true, 'max' => 1])
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelReplace">
-                                    {{ __('portal.unit.cancel_replace') }}
-                                </button>
-                            </div>
-                        @elseif ($portalCanAddMore)
+                        @if ($portalCanAddMore)
                             @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true])
                             <p class="wp-hint">{{ __('portal.unit.update_photos_hint') }}</p>
                         @endif
