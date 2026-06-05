@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitReportAction;
+use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
@@ -25,9 +26,6 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\QrLinkPhoto;
-use App\Support\IssuePhotoStorage;
-use App\Support\Audit\AuditRecorder;
 
 #[Layout('components.layouts.public')]
 #[Title('WinProx')]
@@ -363,7 +361,7 @@ class UnitPortal extends Component
         $this->dispatch('wp-clear-photo-previews');
     }
 
-    public function updateUnitPhotos(IssuePhotoStorage $storage, AuditRecorder $audit): void
+    public function updateUnitPhotos(StoreQrLinkPhotosAction $storePhotos): void
     {
         if ($this->inactiveReasonKey !== null) {
             return;
@@ -398,58 +396,12 @@ class UnitPortal extends Component
             return;
         }
 
-        $storedCount = 0;
-        foreach ($this->newPortalPhotos as $photo) {
-            if ($this->replacingPhotoId !== null) {
-                $existing = QrLinkPhoto::where('id', $this->replacingPhotoId)
-                    ->where('unit_id', (int) $unit->id)
-                    ->first();
-
-                if ($existing !== null) {
-                    if ($existing->hasPublicFile()) {
-                        Storage::disk('public')->delete($existing->path);
-                    }
-
-                    $oldPath = $existing->path;
-                    $existing->update(['path' => $storage->storePrecompressedCopy($photo)]);
-
-                    $audit->record(
-                        userId: null,
-                        tenantId: (int) $unit->tenant_id,
-                        action: 'qr_link_photo.portal_replaced',
-                        modelType: QrLinkPhoto::class,
-                        modelId: (int) $existing->id,
-                        payload: [
-                            'unit_id' => $unit->id,
-                            'qr_code_id' => $qrCode->id,
-                            'old_path' => $oldPath,
-                        ],
-                    );
-                    $storedCount++;
-                    continue;
-                }
-            }
-
-            QrLinkPhoto::create([
-                'tenant_id' => (int) $unit->tenant_id,
-                'qr_code_id' => (int) $qrCode->id,
-                'unit_id' => (int) $unit->id,
-                'path' => $storage->storePrecompressedCopy($photo),
-            ]);
-            $storedCount++;
-        }
-
-        $audit->record(
-            userId: null,
-            tenantId: (int) $unit->tenant_id,
-            action: 'qr_link_photo.portal_added',
-            modelType: Unit::class,
-            modelId: (int) $unit->id,
-            payload: [
-                'unit_id' => $unit->id,
-                'qr_code_id' => $qrCode->id,
-                'photo_count' => $storedCount,
-            ],
+        $storePhotos->handle(
+            unit: $unit,
+            qrCode: $qrCode,
+            photos: $this->newPortalPhotos,
+            replacingPhotoId: $this->replacingPhotoId,
+            actorUserId: null,
         );
 
         $this->reset('newPortalPhotos');
