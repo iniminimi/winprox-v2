@@ -225,8 +225,8 @@
                     "text": "Drucken oder öffnen Sie das Feldportal-QR, damit Workers Aufgaben sehen und erledigen."
                 },
                 {
-                    "label": "Kollegen",
-                    "text": "Verwalten Sie Mitarbeiter mit Login (Admin oder User) und Teamleaders."
+                    "label": "Kollegenbenutzer",
+                    "text": "Verwalten Sie administrative Mitarbeiter. Sie müssen sich mit E-Mail und Passwort anmelden."
                 },
                 {
                     "label": "Sortierreihenfolge",

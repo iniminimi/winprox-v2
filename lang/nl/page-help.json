@@ -225,8 +225,8 @@
                     "text": "Print of open het veldportaal-QR zodat uitvoerders taken zien en afhandelen."
                 },
                 {
-                    "label": "Collega's",
-                    "text": "Beheer medewerkers met login (admin of user) en teamleaders."
+                    "label": "Collega-gebruikers",
+                    "text": "Beheer administratieve medewerkers. Deze moeten inloggen met e-mail en paswoord."
                 },
                 {
                     "label": "Sorteervolgorde",

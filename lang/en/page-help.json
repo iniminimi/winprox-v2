@@ -225,8 +225,8 @@
                     "text": "Print or open the field portal QR so workers can see and complete tasks."
                 },
                 {
-                    "label": "Colleagues",
-                    "text": "Manage staff with login (admin or user) and teamleaders."
+                    "label": "Colleague users",
+                    "text": "Manage administrative staff. They must log in with email and password."
                 },
                 {
                     "label": "Sort order",

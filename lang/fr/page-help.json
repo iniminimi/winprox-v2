@@ -225,8 +225,8 @@
                     "text": "Imprimez ou ouvrez le QR du portail terrain pour que les workers voient et traitent les tâches."
                 },
                 {
-                    "label": "Collègues",
-                    "text": "Gérez le personnel avec login (admin ou user) et les teamleaders d'équipe."
+                    "label": "Utilisateurs collègues",
+                    "text": "Gérez le personnel administratif. Ils doivent se connecter avec e-mail et mot de passe."
                 },
                 {
                     "label": "Ordre de tri",
