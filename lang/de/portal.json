@@ -93,7 +93,8 @@
             "blocked": "Sie sind nach zu vielen Versuchen gesperrt. Wenden Sie sich an Ihren Administrator.",
             "icon_required": "Wählen Sie Ihr persönliches Symbol.",
             "icon_wrong": "Das ist nicht das richtige Symbol.",
-            "note_max": "Die Notiz ist zu lang."
+            "note_max": "Die Notiz ist zu lang.",
+            "no_permission": "Sie haben keine Berechtigung, dies zu tun."
         }
     },
     "team": {
@@ -165,9 +166,10 @@
         }
     },
     "unit": {
-        "current_photos": "Aktuelle Aufkleberfotos",
+        "current_photos": "Aktuelle Aufkleberfotos / Aufkleberposition",
         "update_photos": "Fotos aktualisieren",
         "update_photos_hint": "Fügen Sie neue Fotos hinzu, um die aktuelle Situation zu dokumentieren.",
+        "view_only_hint": "Betrachten Sie die Aufkleberfotos zur Information.",
         "photos_submit": "Fotos speichern",
         "photos_submit_loading": "Speichern...",
         "photos_updated": "Fotos erfolgreich hinzugefügt!"

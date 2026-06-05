@@ -93,7 +93,8 @@
             "blocked": "Vous êtes bloqué après trop de tentatives. Contactez votre administrateur.",
             "icon_required": "Choisissez votre icône personnelle.",
             "icon_wrong": "Ce n'est pas la bonne icône.",
-            "note_max": "La note est trop longue."
+            "note_max": "La note est trop longue.",
+            "no_permission": "Vous n'avez pas la permission de faire cela."
         }
     },
     "team": {
@@ -165,9 +166,10 @@
         }
     },
     "unit": {
-        "current_photos": "Photos de l'autocollant actuelles",
+        "current_photos": "Photos de l'autocollant actuelles / Position de l'autocollant",
         "update_photos": "Mettre à jour les photos",
         "update_photos_hint": "Ajoutez de nouvelles photos pour documenter la situation actuelle.",
+        "view_only_hint": "Consultez les photos de l'autocollant à titre d'information.",
         "photos_submit": "Enregistrer les photos",
         "photos_submit_loading": "Enregistrement en cours...",
         "photos_updated": "Photos ajoutées avec succès !"

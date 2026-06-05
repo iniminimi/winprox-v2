@@ -93,7 +93,8 @@
             "blocked": "You are blocked after too many attempts. Contact your administrator.",
             "icon_required": "Choose your personal icon.",
             "icon_wrong": "That is not the correct icon.",
-            "note_max": "The note is too long."
+            "note_max": "The note is too long.",
+            "no_permission": "You do not have permission to do this."
         }
     },
     "team": {
@@ -165,9 +166,10 @@
         }
     },
     "unit": {
-        "current_photos": "Current sticker photos",
+        "current_photos": "Current sticker photos / Sticker position",
         "update_photos": "Update photos",
         "update_photos_hint": "Add new photos to document the current situation.",
+        "view_only_hint": "View sticker photos for reference.",
         "photos_submit": "Save photos",
         "photos_submit_loading": "Saving...",
         "photos_updated": "Photos added successfully!"

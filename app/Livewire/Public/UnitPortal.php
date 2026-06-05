@@ -335,6 +335,10 @@ class UnitPortal extends Component
 
     public function removeNewPortalPhoto(int $index): void
     {
+        if (! $this->workerBelongsToUnitTeam()) {
+            return;
+        }
+
         if (isset($this->newPortalPhotos[$index])) {
             array_splice($this->newPortalPhotos, $index, 1);
         }
@@ -343,6 +347,12 @@ class UnitPortal extends Component
     public function updateUnitPhotos(IssuePhotoStorage $storage, AuditRecorder $audit): void
     {
         if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        if (! $this->workerBelongsToUnitTeam()) {
+            $this->addError('newPortalPhotos', __('portal.worker.errors.no_permission'));
+
             return;
         }
 
@@ -515,6 +525,7 @@ class UnitPortal extends Component
             'openTaskCount' => $openTaskCount,
             'hasUnitTeam' => $team !== null,
             'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
+            'workerBelongsToUnitTeam' => $worker !== null && (int) $worker->internal_team_id === (int) $unit->default_internal_team_id,
         ]);
     }
 
@@ -562,6 +573,16 @@ class UnitPortal extends Component
         }
 
         return $worker;
+    }
+
+    private function workerBelongsToUnitTeam(): bool
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return false;
+        }
+
+        return (int) $worker->internal_team_id === (int) $this->unit()->default_internal_team_id;
     }
 
     private function findUnitTask(int $taskId): ?Task
