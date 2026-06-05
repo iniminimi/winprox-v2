@@ -214,7 +214,7 @@
             "actions": [
                 {
                     "label": "Operational teams",
-                    "text": "Create teams, assign managers and manage workers per team."
+                    "text": "Create teams, assign teamleaders and manage workers per team."
                 },
                 {
                     "label": "Workers",
@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Colleagues",
-                    "text": "Manage staff with login (admin or user) and team managers."
+                    "text": "Manage staff with login (admin or user) and teamleaders."
                 },
                 {
                     "label": "Sort order",

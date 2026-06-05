@@ -214,7 +214,7 @@
             "actions": [
                 {
                     "label": "Operative Teams",
-                    "text": "Erstellen Sie Teams, weisen Sie Manager zu und verwalten Sie Workers pro Team."
+                    "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team."
                 },
                 {
                     "label": "Workers",
@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Kollegen",
-                    "text": "Verwalten Sie Mitarbeiter mit Login (Admin oder User) und Team-Manager."
+                    "text": "Verwalten Sie Mitarbeiter mit Login (Admin oder User) und Teamleaders."
                 },
                 {
                     "label": "Sortierreihenfolge",

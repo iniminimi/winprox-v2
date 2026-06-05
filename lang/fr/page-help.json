@@ -214,7 +214,7 @@
             "actions": [
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Créez des équipes, assignez des managers et gérez les workers par équipe."
+                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe."
                 },
                 {
                     "label": "Workers",
@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Collègues",
-                    "text": "Gérez le personnel avec login (admin ou user) et les managers d'équipe."
+                    "text": "Gérez le personnel avec login (admin ou user) et les teamleaders d'équipe."
                 },
                 {
                     "label": "Ordre de tri",

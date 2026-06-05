@@ -214,19 +214,19 @@
             "actions": [
                 {
                     "label": "Operationele teams",
-                    "text": "Maak teams aan, wijs managers toe en beheer workers per team."
+                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team."
                 },
                 {
-                    "label": "Workers",
+                    "label": "Uitvoerders",
                     "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam en icoon."
                 },
                 {
                     "label": "Team-QR",
-                    "text": "Print of open het veldportaal-QR zodat workers taken zien en afhandelen."
+                    "text": "Print of open het veldportaal-QR zodat uitvoerders taken zien en afhandelen."
                 },
                 {
                     "label": "Collega's",
-                    "text": "Beheer medewerkers met login (admin of user) en team-managers."
+                    "text": "Beheer medewerkers met login (admin of user) en teamleaders."
                 },
                 {
                     "label": "Sorteervolgorde",
@@ -234,7 +234,7 @@
                 },
                 {
                     "label": "Hoe lang blijven uitvoerders aangemeld?",
-                    "text": "Kies hoe lang een worker ingelogd blijft na het scannen van de team-QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
+                    "text": "Kies hoe lang een uitvoerder ingelogd blijft na het scannen van de team-QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
                 }
             ]
         },
