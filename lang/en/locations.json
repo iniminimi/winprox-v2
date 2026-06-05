@@ -9,9 +9,11 @@
     "save": "Save location",
     "edit": "Edit location",
     "deactivate": "Deactivate",
+    "activate": "Activate",
     "confirm_deactivate": "Are you sure you want to deactivate this location?",
     "inactive": "Inactive",
-    "empty": "No locations yet.",
+    "empty": "No locations yet. Create one using the \"+ Add new location\" button.",
+    "empty_inactive": "There are no active locations. Check 'Show inactive locations too' to see deactivated locations.",
     "no_units": "No units at this location yet.",
     "search_placeholder": "Search by location, city, postal code or street",
     "search_hint": "Click a location to manage it.",
@@ -48,7 +50,8 @@
     "flash": {
         "created": "Location created.",
         "updated": "Location updated.",
-        "deactivated": "Location deactivated."
+        "deactivated": "Location deactivated.",
+        "activated": "Location activated."
     },
     "units": {
         "create_title": "Add unit",
@@ -89,6 +92,7 @@
         "title": "Bulk add units",
         "floors": "Number of series",
         "rooms_per_floor": "Units per series",
+        "rooms_per_floor_hint": "max 99",
         "scheme": "Numbering",
         "scheme_compact": "01, 11, 21… (two digits, max. 9 per series)",
         "scheme_block": "001, 101, 201… (three digits)",

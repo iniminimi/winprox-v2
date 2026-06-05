@@ -3,6 +3,7 @@
     "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits zählen Units (Maschinen, Anlagen, …); Details in der FAQ.",
     "plans_heading": "Verfügbare Formeln",
     "choose_plan": "Diese Formel wählen",
+    "choose_plan_loading": "Wird gewählt...",
     "activate_plan": "Diese Formel wählen",
     "current_plan": "Aktuelle Formel",
     "admin_required": "Nur ein Administrator kann ein Abonnement wählen. Wenden Sie sich an den Administrator Ihrer Organisation.",

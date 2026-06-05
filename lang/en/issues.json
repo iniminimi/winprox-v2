@@ -1,13 +1,19 @@
 {
     "pending_review": "Awaiting review",
     "approve": "Approve",
+    "close": "Close",
+    "close_modal_title": "Close issue",
+    "close_modal_subtitle": "Close this issue without approval. All tasks will also be closed.",
+    "close_reason_label": "Reason for closing",
+    "close_reason_placeholder": "Describe why this issue is being closed...",
+    "close_submit": "Close issue",
     "briefing": "Print briefing",
     "list": {
         "title": "Issues",
         "subtitle": "All problems reported by reporters",
         "add": "Add issue",
         "group_count": ":count issues",
-        "empty": "No issues yet.",
+        "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters."
     },
     "filter": {
@@ -78,6 +84,9 @@
         "success": "Issue and task have been created."
     },
     "errors": {
+        "cannot_close_approved": "An approved issue cannot be closed.",
+        "close_reason_required": "Enter a reason for closing.",
+        "close_reason_min": "The reason must be at least 2 characters.",
         "location_required": "Choose a location.",
         "unit_invalid": "The selected unit is invalid.",
         "description_required": "Please enter a description.",
@@ -104,6 +113,8 @@
         "tasks": "Tasks",
         "tasks_empty": "No tasks yet.",
         "no_team": "No team",
+        "status_section": "Change status",
+        "status_hint": "Choose an action for this issue.",
         "add_task": "Add task for a team",
         "add_task_button": "+ Add task",
         "add_task_modal_title": "Add task",
@@ -111,6 +122,9 @@
         "add_task_team_label": "Team",
         "add_task_placeholder": "Choose a team",
         "add_task_submit": "Save task",
+        "edit_task_modal_title": "Edit task",
+        "edit_task_modal_subtitle": "Modify task details.",
+        "edit_task_submit": "Update task",
         "task_note_label": "Description",
         "task_note_placeholder": "Describe what needs to be done…",
         "task_scheduled_label": "Scheduled for (optional)",
@@ -133,6 +147,7 @@
         "add_update_placeholder": "Describe the update…",
         "add_update_photos": "Photos (optional)",
         "add_update_submit": "Save update",
+        "add_update_submit_loading": "Saving...",
         "added_by": "Added by",
         "added_by_worker": "Field worker",
         "updates_photos": "Photos",

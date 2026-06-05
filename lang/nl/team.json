@@ -49,7 +49,12 @@
             "edit_title": "Team bewerken",
             "name": "Teamnaam",
             "sort_order": "Sorteervolgorde",
-            "active": "Team is actief"
+            "active": "Team is actief",
+            "session_lifespan_label": "Sessieduur van workers",
+            "session_lifespan_daily": "Dagelijks",
+            "session_lifespan_weekly": "Wekelijks",
+            "session_lifespan_custom": "Specifiek aantal uren",
+            "session_lifespan_custom_hours": "Aantal uren"
         }
     },
     "workers": {

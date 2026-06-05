@@ -9,9 +9,11 @@
     "save": "Enregistrer le site",
     "edit": "Modifier le site",
     "deactivate": "Désactiver",
+    "activate": "Activer",
     "confirm_deactivate": "Désactiver ce site ?",
     "inactive": "Inactif",
-    "empty": "Aucun site pour l'instant.",
+    "empty": "Aucun site pour l'instant. Créez-en un avec le bouton \"+ Ajouter un site\".",
+    "empty_inactive": "Il n'y a pas de sites actifs. Cochez 'Afficher aussi les sites inactifs' pour voir les sites désactivés.",
     "no_units": "Aucune unité sur ce site.",
     "search_placeholder": "Rechercher par site, ville, code postal ou rue",
     "search_hint": "Cliquez sur un site pour le gérer.",
@@ -48,7 +50,8 @@
     "flash": {
         "created": "Site créé.",
         "updated": "Site mis à jour.",
-        "deactivated": "Site désactivé."
+        "deactivated": "Site désactivé.",
+        "activated": "Site activé."
     },
     "units": {
         "create_title": "Ajouter une unité",
@@ -89,6 +92,7 @@
         "title": "Ajout en masse d'unités",
         "floors": "Nombre de séries",
         "rooms_per_floor": "Unités par série",
+        "rooms_per_floor_hint": "max 99",
         "scheme": "Numérotation",
         "scheme_compact": "01, 11, 21… (deux chiffres, max. 9 par série)",
         "scheme_block": "001, 101, 201… (trois chiffres)",

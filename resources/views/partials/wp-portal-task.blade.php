@@ -1,5 +1,7 @@
 {{-- Eén taakkaart met worker-acties (start/afhandelen). Melder-inhoud blurt tot goedkeuring. --}}
 @php($issue = $task->issue)
+@php($team = $team ?? null)
+@php($worker = $worker ?? null)
 <div class="wp-card wp-card-pad wp-stack" wire:key="portal-task-{{ $task->id }}">
     @include('partials.wp-portal-task-lines', ['task' => $task, 'issue' => $issue])
 
@@ -33,20 +35,44 @@
                 @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-stack-tight">
-                <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_complete') }}</button>
+                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                    <span wire:loading wire:target="submitCompleteTask" class="wp-mr-2">
+                        <x-wp-spinner size="sm"/>
+                    </span>
+                    <span wire:loading.remove wire:target="submitCompleteTask">{{ __('portal.worker.confirm_complete') }}</span>
+                    <span wire:loading wire:target="submitCompleteTask">{{ __('portal.worker.syncing') }}...</span>
+                </button>
                 <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelCompleteTask">{{ __('common.button.cancel') }}</button>
             </div>
         </form>
     @else
         <div class="wp-stack-tight">
             @if ($task->canStart())
-                <button type="button" class="btn btn--warning btn--block" wire:click="startTask({{ $task->id }})">
-                    {{ __('portal.worker.start_task') }}
+                <button type="button"
+                        class="btn btn--warning btn--block"
+                        wire:click="startTask({{ $task->id }})"
+                        wire:loading.attr="disabled"
+                        wire:target="startTask({{ $task->id }})"
+                        :disabled="!navigator.onLine">
+                    <span wire:loading wire:target="startTask({{ $task->id }})" class="wp-mr-2">
+                        <x-wp-spinner size="sm"/>
+                    </span>
+                    <span wire:loading.remove wire:target="startTask({{ $task->id }})">{{ __('portal.worker.start_task') }}</span>
+                    <span wire:loading wire:target="startTask({{ $task->id }})">{{ __('portal.worker.syncing') }}...</span>
                 </button>
             @endif
             @if ($task->canComplete())
-                <button type="button" class="btn btn--primary btn--block" wire:click="beginCompleteTask({{ $task->id }})">
-                    {{ __('portal.worker.complete_task') }}
+                <button type="button"
+                        class="btn btn--primary btn--block"
+                        wire:click="beginCompleteTask({{ $task->id }})"
+                        wire:loading.attr="disabled"
+                        wire:target="beginCompleteTask({{ $task->id }})"
+                        :disabled="!navigator.onLine">
+                    <span wire:loading wire:target="beginCompleteTask({{ $task->id }})" class="wp-mr-2">
+                        <x-wp-spinner size="sm"/>
+                    </span>
+                    <span wire:loading.remove wire:target="beginCompleteTask({{ $task->id }})">{{ __('portal.worker.complete_task') }}</span>
+                    <span wire:loading wire:target="beginCompleteTask({{ $task->id }})">{{ __('portal.worker.syncing') }}...</span>
                 </button>
             @endif
         </div>

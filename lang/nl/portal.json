@@ -1,5 +1,6 @@
 {
     "back": "Terug",
+    "offline_message": "Geen internetverbinding. Loop naar een plek met bereik om taken te starten of te stoppen.",
     "pending_review": "Wacht op controle",
     "issues_empty": "Er zijn nog geen meldingen.",
     "inactive": {
@@ -36,6 +37,7 @@
         "reporter_last_name_ph": "Achternaam (optioneel)",
         "reporter_email_ph": "E-mail (optioneel)",
         "submit": "Melding versturen",
+        "submit_loading": "Bezig met versturen...",
         "sent": "Bedankt, je melding is ontvangen en wordt gecontroleerd.",
         "photos": {
             "label": "Foto's (max. 4)",
@@ -72,6 +74,7 @@
         "task_heading": "Taak (nr :nr)",
         "issue_heading": "Melding (nr :nr)",
         "issue_meta": ":description, :datetime",
+        "photos_offline_not_supported": "Foto's worden niet ondersteund in offline modus.",
         "no_open_tasks": "Geen open taken.",
         "start_task": "Taak starten",
         "complete_task": "Taak afhandelen",
@@ -81,6 +84,8 @@
         "confirm_complete": "Afhandelen bevestigen",
         "task_started": "Taak gestart.",
         "task_completed": "Taak afgehandeld.",
+        "offline_notice": "Je bent offline. De statuswijziging wordt opgeslagen en verwerkt zodra je weer verbinding hebt.",
+        "syncing": "Synchroniseren",
         "errors": {
             "name_required": "Vul je voor- en achternaam in.",
             "identify_unknown": "We vonden geen medewerker met deze naam.",

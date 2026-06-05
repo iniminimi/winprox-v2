@@ -26,11 +26,13 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->validateCsrfTokens(except: [
             'stripe/webhook',
+            'unit-portal/tasks/sync-status',
         ]);
 
         $middleware->alias([
             'superuser' => EnsureSuperuser::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
+            'api.access' => CheckApiAccess::class,
         ]);
 
         // Locale-keuze (sessie) toepassen op elke web-request.

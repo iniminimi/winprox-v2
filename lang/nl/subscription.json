@@ -3,6 +3,7 @@
     "subtitle": "Na je gratis maand kies je een formule. Limieten tellen units (machines, installaties, …); details in de FAQ.",
     "plans_heading": "Beschikbare formules",
     "choose_plan": "Kies dit plan",
+    "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies dit plan",
     "current_plan": "Huidig plan",
     "admin_required": "Enkel een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",

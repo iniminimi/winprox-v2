@@ -1,5 +1,6 @@
 {
     "back": "Back",
+    "offline_message": "No internet connection. Move to a place with coverage to start or stop tasks.",
     "pending_review": "Awaiting review",
     "issues_empty": "There are no reports yet.",
     "inactive": {
@@ -36,6 +37,7 @@
         "reporter_last_name_ph": "Last name (optional)",
         "reporter_email_ph": "Email (optional)",
         "submit": "Send report",
+        "submit_loading": "Submitting...",
         "sent": "Thank you, your report has been received and will be reviewed.",
         "photos": {
             "label": "Photos (max. 4)",
@@ -72,6 +74,7 @@
         "task_heading": "Task (nr :nr)",
         "issue_heading": "Report (nr :nr)",
         "issue_meta": ":description, :datetime",
+        "photos_offline_not_supported": "Photos are not supported in offline mode.",
         "no_open_tasks": "No open tasks.",
         "start_task": "Start task",
         "complete_task": "Complete task",
@@ -81,6 +84,8 @@
         "confirm_complete": "Confirm completion",
         "task_started": "Task started.",
         "task_completed": "Task completed.",
+        "offline_notice": "You are offline. The status change will be saved and processed when you reconnect.",
+        "syncing": "Syncing",
         "errors": {
             "name_required": "Enter your first and last name.",
             "identify_unknown": "We could not find a worker with this name.",

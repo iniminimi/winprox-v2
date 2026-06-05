@@ -49,7 +49,12 @@
             "edit_title": "Team bearbeiten",
             "name": "Teamname",
             "sort_order": "Sortierreihenfolge",
-            "active": "Team ist aktiv"
+            "active": "Team ist aktiv",
+            "session_lifespan_label": "Mitarbeiter-Sitzungsdauer",
+            "session_lifespan_daily": "Täglich",
+            "session_lifespan_weekly": "Wöchentlich",
+            "session_lifespan_custom": "Benutzerdefinierte Stunden",
+            "session_lifespan_custom_hours": "Anzahl Stunden"
         }
     },
     "workers": {

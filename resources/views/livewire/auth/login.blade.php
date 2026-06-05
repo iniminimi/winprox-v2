@@ -53,7 +53,9 @@
         </div>
 
         <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled">
-            {{ __('auth.submit') }}
+            <x-wp-spinner wire:loading class="wp-mr-2" />
+            <span wire:loading.remove>{{ __('auth.submit') }}</span>
+            <span wire:loading>{{ __('auth.loading') }}</span>
         </button>
     </form>
 

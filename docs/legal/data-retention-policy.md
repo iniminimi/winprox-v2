@@ -1,0 +1,33 @@
+# Data Retention Policy (Draft)
+
+This policy is a draft and requires legal approval.
+
+**Jurisdiction:** Intended for deployments serving **Belgian** customers under **EU GDPR** and **Belgian data protection law** (implementation of the GDPR). Align retention with contractual needs, statute‑of‑limitations, and sector rules where applicable.
+
+## Principles
+
+- Keep only data needed for service delivery, legal duties, and security.
+- Prefer anonymization or deletion when retention expires.
+- Apply the same policy across backups where technically feasible.
+
+## Retention Table
+
+| Data category | Examples | Proposed retention | Action at end |
+|---|---|---|---|
+| User accounts | Name, email, role | While account is active + 24 months | Delete or anonymize |
+| Buildings/units | Address and structure data | Contract period + 24 months | Delete or export then delete |
+| Issues/tasks | Reports, statuses, notes | Contract period + 36 months | Archive or delete |
+| Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
+| Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
+| Activity logs | Security and audit events | 24 months | Delete or anonymize |
+| Uploaded media | Issue photos and updates | 24 months after related record closes | Delete |
+
+## Operational Requirements
+
+- **Automated cleanup**: Artisan-command `php artisan winprox:retention-prune --dry-run` toont wat verwijderd zou worden zonder te wijzigen. Zonder `--dry-run` worden records en bestanden daadwerkelijk verwijderd.
+- **Closed issue media**: Verwijdert foto's van gesloten meldingen volgens retentiebeleid.
+- **Inactive tenant facility data**: Verwijdert data van inactieve tenants (meldingen, foto's) volgens retentiebeleid.
+- Voer steeds **`--dry-run`** uit om te tellen zonder te wissen. Productie-aanzetten pas na legal / operations sign-off.
+- Admin export vóór verwijdering waar nodig: **TODO** (proces).
+- Document exceptions (litigation hold, legal claims). `TODO`
+- Bewaartermijnen voor **activity logs**, **sessions**, **password reset tokens**, en **failed jobs** zijn nog niet geautomatiseerd in WinProx V2 — apart te ontwerpen indien nodig.

@@ -160,6 +160,10 @@
             "title": "Hulp — Locatiedetail",
             "actions": [
                 {
+                    "label": "Categorieën",
+                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is."
+                },
+                {
                     "label": "Unit toevoegen",
                     "text": "Voeg een asset/ruimte toe met QR-token en standaard team."
                 },

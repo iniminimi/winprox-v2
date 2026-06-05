@@ -28,7 +28,7 @@ class DispatchWebhookEventAction
                 'tenant_id' => $tenantId,
                 'webhook_endpoint_id' => $endpoint->id,
                 'event' => $event,
-                'payload' => $payload,
+                'payload' => array_merge($payload, ['version' => '1.0']),
                 'status' => WebhookDelivery::STATUS_PENDING,
                 'attempts' => 0,
             ]);

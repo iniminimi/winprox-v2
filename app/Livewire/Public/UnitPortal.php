@@ -293,7 +293,7 @@ class UnitPortal extends Component
             return;
         }
 
-        $startTask->handle($task);
+        $startTask->handle($task, $worker);
         $this->cancelCompleteTask();
         $this->flashMessage = __('portal.worker.task_started');
     }

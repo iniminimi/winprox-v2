@@ -1,13 +1,19 @@
 {
     "pending_review": "Wacht op controle",
     "approve": "Goedkeuren",
+    "close": "Sluiten",
+    "close_modal_title": "Melding sluiten",
+    "close_modal_subtitle": "Sluit deze melding zonder goedkeuring. Alle taken worden ook gesloten.",
+    "close_reason_label": "Reden voor sluiten",
+    "close_reason_placeholder": "Beschrijf waarom deze melding wordt gesloten...",
+    "close_submit": "Melding sluiten",
     "briefing": "Briefing afdrukken",
     "list": {
         "title": "Meldingen",
         "subtitle": "Alle door melders gemelde problemen",
         "add": "Melding toevoegen",
         "group_count": ":count meldingen",
-        "empty": "Er zijn nog geen meldingen.",
+        "empty": "Er zijn nog geen meldingen. Maak er aan via de knop \"+ Melding toevoegen\".",
         "empty_filtered": "Geen meldingen gevonden voor deze filters."
     },
     "filter": {
@@ -78,6 +84,9 @@
         "success": "Melding en taak zijn aangemaakt."
     },
     "errors": {
+        "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",
+        "close_reason_required": "Geef een reden op voor het sluiten.",
+        "close_reason_min": "De reden moet minstens 2 tekens bevatten.",
         "location_required": "Kies een locatie.",
         "unit_invalid": "De gekozen unit is ongeldig.",
         "description_required": "Geef een omschrijving van de melding.",
@@ -104,6 +113,8 @@
         "tasks": "Taken",
         "tasks_empty": "Er zijn nog geen taken.",
         "no_team": "Geen team",
+        "status_section": "Status wijzigen",
+        "status_hint": "Kies een actie voor deze melding.",
         "add_task": "Taak toevoegen voor een team",
         "add_task_button": "+ Taak toevoegen",
         "add_task_modal_title": "Taak toevoegen",
@@ -111,6 +122,9 @@
         "add_task_team_label": "Team",
         "add_task_placeholder": "Kies een team",
         "add_task_submit": "Taak opslaan",
+        "edit_task_modal_title": "Taak bewerken",
+        "edit_task_modal_subtitle": "Wijzig de taakgegevens.",
+        "edit_task_submit": "Taak bijwerken",
         "task_note_label": "Omschrijving",
         "task_note_placeholder": "Beschrijf wat er moet gebeuren…",
         "task_scheduled_label": "Gepland op (optioneel)",
@@ -133,6 +147,7 @@
         "add_update_placeholder": "Beschrijf de update…",
         "add_update_photos": "Foto's (optioneel)",
         "add_update_submit": "Update opslaan",
+        "add_update_submit_loading": "Bezig met opslaan...",
         "added_by": "Toegevoegd door",
         "added_by_worker": "Uitvoerder",
         "updates_photos": "Foto's",

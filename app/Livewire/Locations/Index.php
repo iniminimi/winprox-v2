@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Locations;
 
+use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\UpdateLocationAction;
@@ -111,6 +112,14 @@ class Index extends Component
         session()->flash('success', __('locations.flash.deactivated'));
     }
 
+    public function activate(int $locationId, ActivateLocationAction $activateLocation): void
+    {
+        $location = Location::findOrFail($locationId);
+        $this->authorize('update', $location);
+        $activateLocation->handle($location, (int) auth()->id());
+        session()->flash('success', __('locations.flash.activated'));
+    }
+
     /**
      * @return array<string, string>
      */
@@ -158,8 +167,11 @@ class Index extends Component
             ->orderBy('name')
             ->get();
 
+        $hasInactiveLocations = Location::query()->where('is_active', false)->exists();
+
         return view('livewire.locations.index', [
             'locations' => $locations,
+            'hasInactiveLocations' => $hasInactiveLocations,
         ]);
     }
 }

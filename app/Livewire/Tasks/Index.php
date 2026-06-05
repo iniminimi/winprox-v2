@@ -7,6 +7,7 @@ use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
+use App\Models\Issue;
 use App\Models\Task;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -91,12 +92,18 @@ class Index extends Component
             }
         }
 
+        $tenant = auth()->user()->tenant;
+        $hasNoLocationsOrUnits = $tenant && $tenant->locations()->withCount('units')->get()->isEmpty();
+        $hasNoIssues = Issue::query()->count() === 0;
+
         return view('livewire.tasks.index', [
             'groups' => $groups,
             'statuses' => TaskStatus::cases(),
             'priorities' => TaskPriority::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->priorityFilter !== '' || $this->search !== '' || $this->recurring,
+            'hasNoLocationsOrUnits' => $hasNoLocationsOrUnits,
+            'hasNoIssues' => $hasNoIssues,
         ]);
     }
 }

@@ -167,7 +167,12 @@
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLocationModal">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveLocation">
+                        <span wire:loading wire:target="saveLocation" class="wp-mr-2">
+                            <x-wp-spinner size="sm" />
+                        </span>
+                        <span>{{ __('locations.save') }}</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -212,7 +217,12 @@
                 </label>
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="$set('showUnitModal', false)">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveUnit">
+                        <span wire:loading wire:target="saveUnit" class="wp-mr-2">
+                            <x-wp-spinner size="sm" />
+                        </span>
+                        <span>{{ __('common.button.save') }}</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -229,17 +239,17 @@
                 <div class="wp-form-grid-2">
                     <label class="wp-field">
                         <span class="wp-label">{{ __('locations.bulk.floors') }}</span>
-                        <input type="number" min="1" class="wp-input" wire:model.live="bulkFloors" />
+                        <input type="number" min="1" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
                     </label>
                     <label class="wp-field">
                         <span class="wp-label">{{ __('locations.bulk.rooms_per_floor') }}</span>
-                        <input type="number" min="1" class="wp-input" wire:model.live="bulkRoomsPerFloor" />
+                        <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.rooms_per_floor_hint') }}" />
                     </label>
                 </div>
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.bulk.scheme') }}</span>
-                    <select class="wp-input" wire:model.live="bulkScheme">
+                    <select class="wp-input" wire:model.live.debounce.300ms="bulkScheme">
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_COMPACT_2 }}">{{ __('locations.bulk.scheme_compact') }}</option>
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_BLOCK_3 }}">{{ __('locations.bulk.scheme_block') }}</option>
                     </select>
@@ -247,7 +257,7 @@
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
-                    <input type="text" class="wp-input" wire:model.live="bulkPrefix" />
+                    <input type="text" class="wp-input" wire:model.live.debounce.500ms="bulkPrefix" maxlength="30" />
                 </label>
 
                 <label class="wp-field">
@@ -281,7 +291,12 @@
 
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="$set('showBulkModal', false)">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('locations.bulk.submit') }}</button>
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="createBulk">
+                        <span wire:loading wire:target="createBulk" class="wp-mr-2">
+                            <x-wp-spinner size="sm" />
+                        </span>
+                        <span>{{ __('locations.bulk.submit') }}</span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -362,8 +377,11 @@
                         @if ($editingCategoryId !== null)
                             <button type="button" class="btn btn--ghost" wire:click="cancelEditCategory">{{ __('common.button.cancel') }}</button>
                         @endif
-                        <button type="submit" class="btn btn--primary">
-                            {{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}
+                        <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveCategory">
+                            <span wire:loading wire:target="saveCategory" class="wp-mr-2">
+                                <x-wp-spinner size="sm" />
+                            </span>
+                            <span>{{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}</span>
                         </button>
                     </div>
                 </form>

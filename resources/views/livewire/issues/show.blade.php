@@ -35,9 +35,6 @@
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ $reportHeading }}</h2>
-            @unless ($issue->isApproved())
-                <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
-            @endunless
         </div>
 
         @if ($issue->reporter_contact)
@@ -79,6 +76,17 @@
         @endif
     </div>
 
+    @unless ($issue->isApproved())
+        <div class="wp-card wp-card-pad wp-stack">
+            <h2 class="wp-section-title">{{ __('issues.show.status_section') }}</h2>
+            <p class="wp-muted">{{ __('issues.show.status_hint') }}</p>
+            <div class="wp-chip-row">
+                <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
+                <button type="button" class="btn btn--danger btn--sm" wire:click="openCloseModal">{{ __('issues.close') }}</button>
+            </div>
+        </div>
+    @endunless
+
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
@@ -93,9 +101,7 @@
                     $taskDescription = trim((string) ($task->note ?: $issue->description));
                     $teamName = $task->team?->name ?? __('issues.show.no_team');
                 @endphp
-                <a href="{{ route('tasks.show', $task) }}"
-                   class="wp-issue-row"
-                   wire:key="task-{{ $task->id }}">
+                <div class="wp-issue-row" wire:key="task-{{ $task->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <div class="wp-cluster">
                             <x-wp-ref-nr type="task" :id="$task->id" />
@@ -110,7 +116,15 @@
                             <p class="wp-issue-card-desc">{{ $taskDescription }}</p>
                         @endif
                     </div>
-                </a>
+                    <div class="wp-stack-tight">
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal({{ $task->id }})">
+                            {{ __('common.button.edit') }}
+                        </button>
+                        <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
+                            {{ __('common.button.view') }}
+                        </a>
+                    </div>
+                </div>
             @empty
                 <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>
             @endforelse
@@ -161,6 +175,82 @@
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeAddTaskModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('issues.show.add_task_submit') }}</button>
+                </div>
+            </form>
+        </div>
+        @endteleport
+    @endif
+
+    @if ($showEditTaskModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-edit-task-title">
+            <form wire:submit="editTask" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="issue-edit-task-title" class="wp-section-title">{{ __('issues.show.edit_task_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeEditTaskModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.show.edit_task_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
+                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
+                        <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
+                        @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskPriority">{{ __('tasks.show.priority') }}</label>
+                        <select id="taskPriority" class="wp-select" wire:model="taskPriority">
+                            @foreach ($priorities as $priority)
+                                <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                            @endforeach
+                        </select>
+                        @error('taskPriority') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="newTeamId">{{ __('issues.show.add_task_team_label') }}</label>
+                        <select id="newTeamId" class="wp-select" wire:model="newTeamId">
+                            <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeEditTaskModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('issues.show.edit_task_submit') }}</button>
+                </div>
+            </form>
+        </div>
+        @endteleport
+    @endif
+
+    @if ($showCloseModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-close-title">
+            <form wire:submit="closeIssue" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="issue-close-title" class="wp-section-title">{{ __('issues.close_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCloseModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.close_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="closeReason">{{ __('issues.close_reason_label') }}</label>
+                        <textarea id="closeReason" class="wp-textarea" wire:model="closeReason" rows="3"
+                                  placeholder="{{ __('issues.close_reason_placeholder') }}"></textarea>
+                        @error('closeReason') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeCloseModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--danger">{{ __('issues.close_submit') }}</button>
                 </div>
             </form>
         </div>

@@ -292,21 +292,25 @@ class Index extends Component
                         ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term));
                 });
             })
-            ->latest()
             ->get();
+
+        // Sort: pending approval first, then by priority, then by date
+        $issues = $issues->sortBy(fn ($issue) => [
+            $issue->approved_at ? 1 : 0, // Pending approval (null) first
+            $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99), // Priority
+            $issue->created_at->timestamp, // Date (newest first)
+        ])->values();
 
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $issues->where('status', $status)
-                ->sortBy(fn ($issue) => [
-                    $issue->is_recurring ? 1 : 0,
-                    $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99),
-                    $issue->created_at->timestamp,
-                ]);
+            $bucket = $issues->where('status', $status);
             if ($bucket->isNotEmpty()) {
                 $groups[] = ['status' => $status, 'issues' => $bucket->values()];
             }
         }
+
+        $tenant = auth()->user()->tenant;
+        $hasNoLocationsOrUnits = $tenant && $tenant->locations()->withCount('units')->get()->isEmpty();
 
         return view('livewire.issues.index', [
             'groups' => $groups,
@@ -315,6 +319,7 @@ class Index extends Component
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
             'highlightIssue' => $this->highlightIssue,
+            'hasNoLocationsOrUnits' => $hasNoLocationsOrUnits,
             'createLocations' => $this->showCreateModal
                 ? Location::query()->orderBy('name')->get()
                 : collect(),

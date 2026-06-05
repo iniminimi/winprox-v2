@@ -11,6 +11,8 @@
         "subtitle": "Alle taken per team en status",
         "group_count": "{0} geen taken|{1} :count taak|[2,*] :count taken",
         "empty": "Er zijn nog geen taken.",
+        "empty_no_issues": "Er zijn nog geen meldingen.",
+        "manage_issues": "Meldingen beheren",
         "empty_filtered": "Geen taken gevonden voor deze filters."
     },
     "filter": {

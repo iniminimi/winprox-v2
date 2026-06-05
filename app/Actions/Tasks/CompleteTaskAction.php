@@ -7,6 +7,7 @@ use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
 use App\Models\Task;
 use App\Models\Worker;
+use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
 use Illuminate\Http\UploadedFile;
 
@@ -17,12 +18,15 @@ use Illuminate\Http\UploadedFile;
  */
 class CompleteTaskAction
 {
-    public function __construct(private IssuePhotoStorage $storage) {}
+    public function __construct(
+        private IssuePhotoStorage $storage,
+        private AuditRecorder $audit,
+    ) {}
 
     /**
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Task $task, ?Worker $worker = null, ?string $note = null, array $photos = []): Task
+    public function handle(Task $task, ?Worker $worker = null, ?string $note = null, array $photos = [], ?\Carbon\Carbon $clientTimestamp = null): Task
     {
         if (! $task->canComplete()) {
             return $task;
@@ -58,9 +62,20 @@ class CompleteTaskAction
 
         $task->update([
             'status' => TaskStatus::Done,
-            'started_at' => $task->started_at ?? now(),
-            'completed_at' => now(),
+            'started_at' => $task->started_at ?? ($clientTimestamp ?? now()),
+            'completed_at' => $clientTimestamp ?? now(),
         ]);
+
+        $this->audit->record(
+            action: 'task_completed',
+            modelType: Task::class,
+            modelId: $task->id,
+            payload: [
+                'task_id' => $task->id,
+                'worker_id' => $worker?->id,
+                'client_timestamp' => $clientTimestamp?->toIso8601String(),
+            ],
+        );
 
         event(new TaskCompleted($task->fresh()));
 

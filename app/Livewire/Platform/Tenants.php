@@ -4,6 +4,7 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
+use App\Actions\Platform\ToggleTrialApiAction;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
 use Livewire\Attributes\Layout;
@@ -32,6 +33,12 @@ class Tenants extends Component
     public function stopSupport(StopSupportViewAction $stop): void
     {
         $stop->handle();
+    }
+
+    public function toggleTrialApi(int $tenantId, ToggleTrialApiAction $toggle): void
+    {
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $toggle->handle($tenant, (int) auth()->id());
     }
 
     public function render()

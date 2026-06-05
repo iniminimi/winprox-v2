@@ -3,6 +3,7 @@
     "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites comptent les unités (machines, installations, …) ; voir la FAQ pour les détails.",
     "plans_heading": "Formules disponibles",
     "choose_plan": "Choisir cette formule",
+    "choose_plan_loading": "Choix en cours...",
     "activate_plan": "Choisir cette formule",
     "current_plan": "Formule actuelle",
     "admin_required": "Seul un administrateur peut choisir un abonnement. Contactez l'administrateur de votre organisation.",

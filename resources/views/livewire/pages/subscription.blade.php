@@ -137,7 +137,9 @@
                                 wire:click="activatePlan('{{ $planKey }}')"
                                 wire:loading.attr="disabled"
                             >
-                                {{ __('subscription.choose_plan') }}
+                                <x-wp-spinner wire:loading class="wp-mr-2" />
+                                <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
+                                <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
                             </button>
                         @else
                             <button
@@ -146,7 +148,9 @@
                                 wire:click="activatePlan('{{ $planKey }}')"
                                 wire:loading.attr="disabled"
                             >
-                                {{ __('subscription.choose_plan') }}
+                                <x-wp-spinner wire:loading class="wp-mr-2" />
+                                <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
+                                <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
                             </button>
                         @endif
                     </div>

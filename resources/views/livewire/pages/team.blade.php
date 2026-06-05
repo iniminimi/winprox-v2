@@ -261,6 +261,21 @@
                     <input type="number" id="teamSortOrder" class="wp-input" wire:model="teamSortOrder" min="0">
                     @error('teamSortOrder') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
+                    <select id="teamSessionLifespanType" class="wp-input" wire:model.live="teamSessionLifespanType">
+                        <option value="daily">{{ __('team.teams.modal.session_lifespan_daily') }}</option>
+                        <option value="weekly">{{ __('team.teams.modal.session_lifespan_weekly') }}</option>
+                        <option value="custom">{{ __('team.teams.modal.session_lifespan_custom') }}</option>
+                    </select>
+                </div>
+                @if ($teamSessionLifespanType === 'custom')
+                    <div class="wp-field">
+                        <label class="wp-label" for="teamSessionLifespanCustomHours">{{ __('team.teams.modal.session_lifespan_custom_hours') }}</label>
+                        <input type="number" id="teamSessionLifespanCustomHours" class="wp-input" wire:model="teamSessionLifespanCustomHours" min="1">
+                        @error('teamSessionLifespanCustomHours') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
                 @if ($canManageTeams)
                     <label class="wp-check">
                         <input type="checkbox" wire:model="teamIsActive">

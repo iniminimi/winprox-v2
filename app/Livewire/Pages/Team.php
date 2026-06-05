@@ -56,6 +56,8 @@ class Team extends Component
     public string $teamName = '';
     public int $teamSortOrder = 0;
     public bool $teamIsActive = true;
+    public string $teamSessionLifespanType = 'daily';
+    public ?int $teamSessionLifespanCustomHours = null;
 
     // Worker toevoegen (inline per team)
     public ?int $addingWorkerTeamId = null;
@@ -293,6 +295,22 @@ class Team extends Component
         $this->teamName = $team->name;
         $this->teamSortOrder = $team->sort_order;
         $this->teamIsActive = $team->is_active;
+        
+        // Determine session lifespan type
+        if ($team->session_lifespan_hours === 14) {
+            $this->teamSessionLifespanType = 'daily';
+            $this->teamSessionLifespanCustomHours = null;
+        } elseif ($team->session_lifespan_hours === 144) {
+            $this->teamSessionLifespanType = 'weekly';
+            $this->teamSessionLifespanCustomHours = null;
+        } elseif ($team->session_lifespan_hours !== null) {
+            $this->teamSessionLifespanType = 'custom';
+            $this->teamSessionLifespanCustomHours = $team->session_lifespan_hours;
+        } else {
+            $this->teamSessionLifespanType = 'daily';
+            $this->teamSessionLifespanCustomHours = null;
+        }
+        
         $this->resetErrorBag();
         $this->showTeamModal = true;
     }
@@ -308,6 +326,16 @@ class Team extends Component
             ['teamName.required' => __('team.errors.team_name_required')],
         );
 
+        // Calculate session_lifespan_hours based on type
+        $sessionLifespanHours = null;
+        if ($this->teamSessionLifespanType === 'daily') {
+            $sessionLifespanHours = 14;
+        } elseif ($this->teamSessionLifespanType === 'weekly') {
+            $sessionLifespanHours = 144;
+        } elseif ($this->teamSessionLifespanType === 'custom' && $this->teamSessionLifespanCustomHours !== null) {
+            $sessionLifespanHours = $this->teamSessionLifespanCustomHours;
+        }
+
         if ($this->editingTeamId !== null) {
             $team = InternalTeam::findOrFail($this->editingTeamId);
             Gate::authorize('update', $team);
@@ -319,6 +347,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $active,
+                'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) auth()->id());
         } else {
             Gate::authorize('create', InternalTeam::class);
@@ -327,6 +356,7 @@ class Team extends Component
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
+                'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) Tenancy::id(), (int) auth()->id());
         }
 
@@ -367,8 +397,10 @@ class Team extends Component
 
     private function resetTeamForm(): void
     {
-        $this->reset(['teamName', 'teamSortOrder', 'teamIsActive', 'editingTeamId']);
+        $this->reset(['teamName', 'teamSortOrder', 'teamIsActive', 'teamSessionLifespanType', 'teamSessionLifespanCustomHours', 'editingTeamId']);
         $this->teamIsActive = true;
+        $this->teamSessionLifespanType = 'daily';
+        $this->teamSessionLifespanCustomHours = null;
         $this->resetErrorBag();
     }
 

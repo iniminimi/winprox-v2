@@ -9,9 +9,11 @@
     "save": "Standort speichern",
     "edit": "Standort bearbeiten",
     "deactivate": "Deaktivieren",
+    "activate": "Aktivieren",
     "confirm_deactivate": "Diesen Standort wirklich deaktivieren?",
     "inactive": "Inaktiv",
-    "empty": "Noch keine Standorte.",
+    "empty": "Noch keine Standorte. Erstellen Sie einen mit dem \"+ Neuen Standort hinzufügen\"-Button.",
+    "empty_inactive": "Es gibt keine aktiven Standorte. Aktivieren Sie 'Auch inaktive Standorte anzeigen', um deaktivierte Standorte zu sehen.",
     "no_units": "Noch keine Units an diesem Standort.",
     "search_placeholder": "Suche nach Standort, Ort, PLZ oder Straße",
     "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
@@ -48,7 +50,8 @@
     "flash": {
         "created": "Standort angelegt.",
         "updated": "Standort aktualisiert.",
-        "deactivated": "Standort deaktiviert."
+        "deactivated": "Standort deaktiviert.",
+        "activated": "Standort aktiviert."
     },
     "units": {
         "create_title": "Unit hinzufügen",
@@ -89,6 +92,7 @@
         "title": "Units massenhaft hinzufügen",
         "floors": "Anzahl Serien",
         "rooms_per_floor": "Units pro Serie",
+        "rooms_per_floor_hint": "max 99",
         "scheme": "Nummerierung",
         "scheme_compact": "01, 11, 21… (zwei Ziffern, max. 9 pro Serie)",
         "scheme_block": "001, 101, 201… (drei Ziffern)",

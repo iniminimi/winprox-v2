@@ -31,6 +31,7 @@ class Tenant extends Model
         'billing_active_until',
         'is_active',
         'stripe_customer_id',
+        'allow_trial_api',
     ];
 
     protected function casts(): array
@@ -40,6 +41,7 @@ class Tenant extends Model
             'trial_ends_at' => 'datetime',
             'billing_active_until' => 'datetime',
             'is_active' => 'boolean',
+            'allow_trial_api' => 'boolean',
         ];
     }
 
@@ -116,6 +118,30 @@ class Tenant extends Model
         return $this->isTrialActive()
             || $this->isPaidSubscriptionActive()
             || $this->isInPaidSubscriptionGrace();
+    }
+
+    public function hasApiAccess(): bool
+    {
+        if (! $this->is_active) {
+            return false;
+        }
+
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return true;
+        }
+
+        if ($this->isTrialActive() && $this->allow_trial_api) {
+            return true;
+        }
+
+        if (! $this->isPaidSubscriptionActive() && ! $this->isInPaidSubscriptionGrace()) {
+            return false;
+        }
+
+        // Only Business and Enterprise plans have API access
+        $apiAllowedPlans = ['business', 'enterprise'];
+        
+        return in_array($this->billing_plan, $apiAllowedPlans, true);
     }
 
     public function trialDaysRemaining(): int

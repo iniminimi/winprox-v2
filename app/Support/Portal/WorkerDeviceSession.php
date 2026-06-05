@@ -21,17 +21,26 @@ final class WorkerDeviceSession
 {
     public const DEVICE_TOKEN_COOKIE = 'winprox_device_token';
 
-    public static function persistDeviceToken(string $deviceToken): void
+    public static function persistDeviceToken(string $deviceToken, ?InternalTeam $team = null): void
     {
         $token = trim($deviceToken);
         if ($token === '') {
             return;
         }
 
+        // Calculate cookie duration based on team configuration
+        $durationMinutes = 60 * 24 * 365; // Default: 1 year
+        if ($team !== null && $team->session_lifespan_hours !== null) {
+            $durationMinutes = $team->session_lifespan_hours * 60;
+        } else {
+            // Fallback to 14 hours if no team configuration
+            $durationMinutes = 14 * 60;
+        }
+
         Cookie::queue(cookie(
             self::DEVICE_TOKEN_COOKIE,
             $token,
-            60 * 24 * 365,
+            $durationMinutes,
             '/',
             null,
             request()->isSecure(),
@@ -136,7 +145,7 @@ final class WorkerDeviceSession
             return null;
         }
 
-        self::restoreDeviceCookieForWorker($worker);
+        self::restoreDeviceCookieForWorker($worker, $team);
 
         return $worker;
     }
@@ -148,7 +157,7 @@ final class WorkerDeviceSession
         }
 
         session([self::rememberedWorkerSessionKey((int) $team->id) => (int) $worker->id]);
-        self::restoreDeviceCookieForWorker($worker);
+        self::restoreDeviceCookieForWorker($worker, $team);
     }
 
     public static function clearRememberedWorkerForTeam(int $teamId): void
@@ -237,7 +246,7 @@ final class WorkerDeviceSession
         if ($claimable !== null) {
             $claimable->forceFill(['field_icon_slug' => $iconSlug])->save();
 
-            return self::attachDeviceSession($claimable);
+            return self::attachDeviceSession($claimable, $team);
         }
 
         $worker = Worker::create([
@@ -248,7 +257,7 @@ final class WorkerDeviceSession
             'is_active' => true,
         ]);
 
-        return self::attachDeviceSession($worker);
+        return self::attachDeviceSession($worker, $team);
     }
 
     private static function findClaimableWorkerOnTeam(InternalTeam $team, string $firstName, string $lastName): ?Worker
@@ -269,7 +278,7 @@ final class WorkerDeviceSession
         return $matches->count() === 1 ? $matches->first() : null;
     }
 
-    private static function restoreDeviceCookieForWorker(Worker $worker): void
+    private static function restoreDeviceCookieForWorker(Worker $worker, ?InternalTeam $team = null): void
     {
         $existingToken = self::deviceTokenFromRequest();
 
@@ -280,17 +289,17 @@ final class WorkerDeviceSession
         $device = $worker->devices()->orderByDesc('last_seen_at')->first();
         if ($device === null) {
             // Create a new device session if none exists
-            self::attachDeviceSession($worker);
+            self::attachDeviceSession($worker, $team);
             return;
         }
 
-        self::persistDeviceToken($device->device_token);
+        self::persistDeviceToken($device->device_token, $team);
     }
 
     /**
      * @return array{worker: Worker, device_token: string}
      */
-    private static function attachDeviceSession(Worker $worker): array
+    private static function attachDeviceSession(Worker $worker, ?InternalTeam $team = null): array
     {
         $device = WorkerDevice::create([
             'tenant_id' => $worker->tenant_id,
@@ -299,7 +308,7 @@ final class WorkerDeviceSession
             'last_seen_at' => now(),
         ]);
 
-        self::persistDeviceToken($device->device_token);
+        self::persistDeviceToken($device->device_token, $team);
 
         return ['worker' => $worker, 'device_token' => $device->device_token];
     }

@@ -3,10 +3,14 @@
 namespace App\Livewire\Issues;
 
 use App\Actions\Issues\ApproveIssueAction;
+use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
+use App\Actions\Tasks\UpdateTaskPriorityAction;
+use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
+use App\Models\Task;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Support\EntityDetailNavigation;
@@ -25,7 +29,13 @@ class Show extends Component
 
     public bool $showAddTaskModal = false;
 
+    public bool $showEditTaskModal = false;
+
+    public bool $showCloseModal = false;
+
     public bool $showUpdateModal = false;
+
+    public ?int $editTaskId = null;
 
     public ?int $newTeamId = null;
 
@@ -36,6 +46,8 @@ class Show extends Component
     public string $taskPriority = 'medium';
 
     public string $updateBody = '';
+
+    public string $closeReason = '';
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $updatePhotos = [];
@@ -51,6 +63,40 @@ class Show extends Component
         $this->authorize('approve', $this->issue);
         $approveIssue->handle($this->issue, auth()->user());
 
+        $this->refreshIssue();
+    }
+
+    public function openCloseModal(): void
+    {
+        $this->authorize('update', $this->issue);
+        $this->closeReason = '';
+        $this->resetValidation();
+        $this->showCloseModal = true;
+    }
+
+    public function closeCloseModal(): void
+    {
+        $this->showCloseModal = false;
+        $this->closeReason = '';
+        $this->resetValidation();
+    }
+
+    public function closeIssue(CloseIssueAction $closeIssue): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $this->closeReason = trim($this->closeReason);
+
+        $validated = $this->validate([
+            'closeReason' => ['required', 'string', 'min:2', 'max:5000'],
+        ], [
+            'closeReason.required' => __('issues.errors.close_reason_required'),
+            'closeReason.min' => __('issues.errors.close_reason_min'),
+        ]);
+
+        $closeIssue->handle($this->issue, auth()->user(), $validated['closeReason']);
+
+        $this->closeCloseModal();
         $this->refreshIssue();
     }
 
@@ -79,6 +125,80 @@ class Show extends Component
         $this->showAddTaskModal = false;
     }
 
+    public function openEditTaskModal(int $taskId): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $task = $this->issue->tasks->find($taskId);
+        if (! $task) {
+            return;
+        }
+
+        $this->editTaskId = $taskId;
+        $this->newTeamId = $task->internal_team_id;
+        $this->taskNote = trim((string) ($task->note ?: $this->issue->description));
+        $this->taskPriority = $task->priority->value;
+        $this->taskScheduledFor = $task->scheduled_for?->format('Y-m-d');
+
+        $this->resetValidation();
+        $this->showEditTaskModal = true;
+    }
+
+    public function closeEditTaskModal(): void
+    {
+        $this->showEditTaskModal = false;
+        $this->editTaskId = null;
+    }
+
+    public function editTask(
+        UpdateTaskPriorityAction $updatePriority,
+        UpdateTaskTeamAction $updateTeam,
+    ): void {
+        $this->authorize('update', $this->issue);
+
+        $task = $this->issue->tasks->find($this->editTaskId);
+        if (! $task) {
+            return;
+        }
+
+        $this->taskNote = trim($this->taskNote);
+
+        $validated = $this->validate([
+            'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskScheduledFor' => ['nullable', 'date'],
+            'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
+        ], [
+            'newTeamId.required' => __('issues.show.errors.team_required'),
+            'taskNote.required' => __('issues.show.errors.task_note_required'),
+            'taskNote.min' => __('issues.show.errors.task_note_min'),
+        ]);
+
+        // Update priority
+        $updatePriority->handle(
+            $task,
+            TaskPriority::from($validated['taskPriority']),
+            $this->issue->tenant_id,
+            (int) auth()->id(),
+        );
+
+        // Update team if changed
+        if ($task->internal_team_id !== (int) $validated['newTeamId']) {
+            $updateTeam->handle($task, (int) $validated['newTeamId']);
+        }
+
+        // Update note and scheduled_for
+        $task->update([
+            'note' => $validated['taskNote'],
+            'scheduled_for' => ! empty($validated['taskScheduledFor']) ? $validated['taskScheduledFor'] : null,
+        ]);
+
+        $this->closeEditTaskModal();
+        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority']);
+
+        $this->refreshIssue();
+    }
+
     public function addTask(CreateTaskAction $createTask): void
     {
         $this->authorize('update', $this->issue);
@@ -104,7 +224,7 @@ class Show extends Component
         $createTask->handle(
             $this->issue,
             (int) $validated['newTeamId'],
-            TaskPriority::from($validated['taskPriority']),
+            priority: TaskPriority::from($validated['taskPriority']),
             note: $validated['taskNote'],
             extra: $extra,
         );

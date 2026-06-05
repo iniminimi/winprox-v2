@@ -33,10 +33,18 @@
                                 · {{ $tenant->is_active ? __('platform.status_active') : __('platform.status_inactive') }}
                             </p>
                         </div>
-                        <button type="button" class="btn btn--primary btn--sm"
-                                wire:click="startSupport({{ $tenant->id }})">
-                            {{ __('platform.open_support') }}
-                        </button>
+                        <div class="wp-cluster">
+                            @if ($tenant->isTrialActive())
+                                <label class="wp-chip wp-chip--sm">
+                                    <input type="checkbox" wire:click="toggleTrialApi({{ $tenant->id }})" {{ $tenant->allow_trial_api ? 'checked' : '' }}>
+                                    <span>{{ __('platform.trial_api') }}</span>
+                                </label>
+                            @endif
+                            <button type="button" class="btn btn--primary btn--sm"
+                                    wire:click="startSupport({{ $tenant->id }})">
+                                {{ __('platform.open_support') }}
+                            </button>
+                        </div>
                     </li>
                 @endforeach
             </ul>

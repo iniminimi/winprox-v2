@@ -1,4 +1,10 @@
 <div class="wp-stack">
+    @if ($inactiveReasonKey === null)
+        <div wire:offline class="wp-flash wp-flash--danger" style="position: sticky; top: 0; z-index: 50; text-align: center;">
+            {{ __('portal.offline_message') }}
+        </div>
+    @endif
+
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">
@@ -115,8 +121,10 @@
                     </div>
                 </div>
                 <div class="wp-portal-actions">
-                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled">
-                        {{ __('portal.report.submit') }}
+                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                        <x-wp-spinner wire:loading class="wp-mr-2" />
+                        <span wire:loading.remove>{{ __('portal.report.submit') }}</span>
+                        <span wire:loading>{{ __('portal.report.submit_loading') }}</span>
                     </button>
                 </div>
             </form>

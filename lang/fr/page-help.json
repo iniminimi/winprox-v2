@@ -160,6 +160,10 @@
             "title": "Aide — Détail du site",
             "actions": [
                 {
+                    "label": "Catégories",
+                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active."
+                },
+                {
                     "label": "Ajouter une unité",
                     "text": "Ajoutez un actif/espace avec jeton QR et équipe par défaut."
                 },

@@ -11,6 +11,8 @@
         "subtitle": "Toutes les tâches par équipe et statut",
         "group_count": "{0} aucune tâche|{1} :count tâche|[2,*] :count tâches",
         "empty": "Aucune tâche pour le moment.",
+        "empty_no_issues": "Aucun signalement pour l'instant.",
+        "manage_issues": "Gérer les signalements",
         "empty_filtered": "Aucune tâche ne correspond à ces filtres."
     },
     "filter": {

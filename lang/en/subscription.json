@@ -3,6 +3,7 @@
     "subtitle": "After your free month, choose a plan. Limits count units (machines, installations, …); see the FAQ for details.",
     "plans_heading": "Available plans",
     "choose_plan": "Choose this plan",
+    "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",
     "current_plan": "Current plan",
     "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",

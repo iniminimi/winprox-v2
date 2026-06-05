@@ -44,7 +44,9 @@
         <div class="wp-modal-foot">
             <button type="button" class="btn btn--ghost" wire:click="closeUpdateModal">{{ __('common.button.cancel') }}</button>
             <button type="submit" class="btn btn--primary" wire:loading.attr="disabled">
-                {{ __('issues.show.add_update_submit') }}
+                <x-wp-spinner wire:loading class="wp-mr-2" />
+                <span wire:loading.remove>{{ __('issues.show.add_update_submit') }}</span>
+                <span wire:loading>{{ __('issues.show.add_update_submit_loading') }}</span>
             </button>
         </div>
     </form>

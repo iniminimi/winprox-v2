@@ -1,5 +1,6 @@
 {
     "back": "Zurück",
+    "offline_message": "Keine Internetverbindung. Gehen Sie an einen Ort mit Empfang, um Aufgaben zu starten oder zu beenden.",
     "pending_review": "Wartet auf Prüfung",
     "issues_empty": "Es gibt noch keine Meldungen.",
     "inactive": {
@@ -36,6 +37,7 @@
         "reporter_last_name_ph": "Nachname (optional)",
         "reporter_email_ph": "E-Mail (optional)",
         "submit": "Meldung senden",
+        "submit_loading": "Wird gesendet...",
         "sent": "Danke, Ihre Meldung wurde empfangen und wird geprüft.",
         "photos": {
             "label": "Fotos (max. 4)",
@@ -72,6 +74,7 @@
         "task_heading": "Aufgabe (nr :nr)",
         "issue_heading": "Meldung (nr :nr)",
         "issue_meta": ":description, :datetime",
+        "photos_offline_not_supported": "Fotos werden im Offline-Modus nicht unterstützt.",
         "no_open_tasks": "Keine offenen Aufgaben.",
         "start_task": "Aufgabe starten",
         "complete_task": "Aufgabe abschließen",
@@ -81,6 +84,8 @@
         "confirm_complete": "Erledigung bestätigen",
         "task_started": "Aufgabe gestartet.",
         "task_completed": "Aufgabe abgeschlossen.",
+        "offline_notice": "Sie sind offline. Die Statusänderung wird gespeichert und verarbeitet, wenn Sie wieder verbunden sind.",
+        "syncing": "Synchronisierung",
         "errors": {
             "name_required": "Geben Sie Ihren Vor- und Nachnamen ein.",
             "identify_unknown": "Es wurde kein Mitarbeiter mit diesem Namen gefunden.",

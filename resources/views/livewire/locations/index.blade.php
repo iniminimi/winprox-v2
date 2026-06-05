@@ -8,7 +8,7 @@
                 :subtitle="__('locations.subtitle')"
             />
         </div>
-        <button type="button" class="btn btn--primary" wire:click="openCreate">
+        <button type="button" class="btn btn--primary @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCreate">
             {{ __('locations.add') }}
         </button>
     </div>
@@ -35,7 +35,7 @@
                         ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
                         : '';
                 @endphp
-                <div class="wp-issue-row" wire:key="loc-{{ $location->id }}">
+                <div class="wp-issue-row" wire:key="loc-{{ $location->id }}-{{ $location->is_active }}">
                     <a href="{{ route('locations.show', $location) }}" class="wp-issue-row-link wp-stack-tight">
                         <p class="wp-issue-card-title">{{ $location->name }}</p>
                         @if ($addressLine !== '')
@@ -53,10 +53,18 @@
                                 wire:confirm="{{ __('locations.confirm_deactivate') }}">
                             {{ __('locations.deactivate') }}
                         </button>
+                    @else
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="activate({{ $location->id }})">
+                            {{ __('locations.activate') }}
+                        </button>
                     @endif
                 </div>
             @empty
-                <p class="wp-muted">{{ __('locations.empty') }}</p>
+                @if ($hasInactiveLocations && !$showInactive)
+                    <p class="wp-muted">{{ __('locations.empty_inactive') }}</p>
+                @else
+                    <p class="wp-muted">{{ __('locations.empty') }}</p>
+                @endif
             @endforelse
         </div>
     </div>

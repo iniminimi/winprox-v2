@@ -30,6 +30,11 @@ class ApiSettings extends Component
 
     public string $newTokenName = 'api';
 
+    public int $testEndpointId = 0;
+
+    /** @var list<string> */
+    public array $tokenAbilities = [];
+
     public function mount(): void
     {
         $this->authorize('viewAny', WebhookEndpoint::class);
@@ -77,9 +82,10 @@ class ApiSettings extends Component
 
         $this->validate(['newTokenName' => ['required', 'string', 'max:80']]);
 
-        $plain = $createToken->handle(auth()->user(), $this->newTokenName, (int) auth()->id());
+        $plain = $createToken->handle(auth()->user(), $this->newTokenName, $this->tokenAbilities, (int) auth()->id());
         session()->flash('api_token_plain', $plain);
         $this->newTokenName = 'api';
+        $this->tokenAbilities = [];
     }
 
     public function revokeToken(int $tokenId, RevokeApiTokenAction $revokeToken): void
@@ -89,9 +95,38 @@ class ApiSettings extends Component
         $revokeToken->handle(auth()->user(), $tokenId, (int) auth()->id());
     }
 
+    public function testWebhook(int $id): void
+    {
+        $endpoint = WebhookEndpoint::query()->findOrFail($id);
+        $this->authorize('update', $endpoint);
+
+        $delivery = WebhookDelivery::query()->create([
+            'tenant_id' => (int) Tenancy::id(),
+            'webhook_endpoint_id' => $endpoint->id,
+            'event' => 'test',
+            'payload' => [
+                'version' => '1.0',
+                'event' => 'test',
+                'timestamp' => now()->toIso8601String(),
+                'message' => 'Test webhook from WinProx',
+            ],
+            'status' => WebhookDelivery::STATUS_PENDING,
+            'attempts' => 0,
+        ]);
+
+        \App\Jobs\SendWebhookDeliveryJob::dispatch($delivery->id);
+
+        session()->flash('webhook_tested', $endpoint->url);
+    }
+
     public function render()
     {
+        $tenantId = Tenancy::id();
+        $tenant = $tenantId ? \App\Models\Tenant::query()->find($tenantId) : null;
+        $hasApiAccess = $tenant ? $tenant->hasApiAccess() : false;
+
         return view('livewire.pages.api-settings', [
+            'hasApiAccess' => $hasApiAccess,
             'endpoints' => WebhookEndpoint::query()->orderByDesc('id')->get(),
             'deliveries' => WebhookDelivery::query()
                 ->with('endpoint')
@@ -100,6 +135,20 @@ class ApiSettings extends Component
                 ->get(),
             'tokens' => auth()->user()->tokens()->orderByDesc('id')->get(),
             'availableEvents' => WebhookEndpoint::AVAILABLE_EVENTS,
+            'availableAbilities' => [
+                'issues:read' => __('settings.api.ability_issues_read'),
+                'issues:create' => __('settings.api.ability_issues_create'),
+                'issues:update' => __('settings.api.ability_issues_update'),
+                'tasks:read' => __('settings.api.ability_tasks_read'),
+                'tasks:create' => __('settings.api.ability_tasks_create'),
+                'tasks:update' => __('settings.api.ability_tasks_update'),
+                'locations:read' => __('settings.api.ability_locations_read'),
+                'units:read' => __('settings.api.ability_units_read'),
+                'teams:read' => __('settings.api.ability_teams_read'),
+                'workers:read' => __('settings.api.ability_workers_read'),
+                'webhooks:manage' => __('settings.api.ability_webhooks_manage'),
+                '*' => __('settings.api.ability_all'),
+            ],
         ]);
     }
 }

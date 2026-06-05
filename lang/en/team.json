@@ -49,7 +49,12 @@
             "edit_title": "Edit team",
             "name": "Team name",
             "sort_order": "Sort order",
-            "active": "Team is active"
+            "active": "Team is active",
+            "session_lifespan_label": "Worker session duration",
+            "session_lifespan_daily": "Daily",
+            "session_lifespan_weekly": "Weekly",
+            "session_lifespan_custom": "Custom hours",
+            "session_lifespan_custom_hours": "Number of hours"
         }
     },
     "workers": {

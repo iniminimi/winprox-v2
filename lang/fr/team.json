@@ -49,7 +49,12 @@
             "edit_title": "Modifier l'équipe",
             "name": "Nom de l'équipe",
             "sort_order": "Ordre de tri",
-            "active": "L'équipe est active"
+            "active": "L'équipe est active",
+            "session_lifespan_label": "Durée de session des intervenants",
+            "session_lifespan_daily": "Quotidien",
+            "session_lifespan_weekly": "Hebdomadaire",
+            "session_lifespan_custom": "Heures personnalisées",
+            "session_lifespan_custom_hours": "Nombre d'heures"
         }
     },
     "workers": {

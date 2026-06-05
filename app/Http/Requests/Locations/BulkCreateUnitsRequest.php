@@ -21,10 +21,10 @@ class BulkCreateUnitsRequest extends FormRequest
     public static function ruleSet(): array
     {
         return [
-            'floors' => ['required', 'integer', 'min:1', 'max:50'],
+            'floors' => ['required', 'integer', 'min:1', 'max:10'],
             'rooms_per_floor' => ['required', 'integer', 'min:1', 'max:99'],
             'scheme' => ['required', Rule::in([UnitBulkNaming::SCHEME_BLOCK_3, UnitBulkNaming::SCHEME_COMPACT_2])],
-            'prefix' => ['nullable', 'string', 'max:32'],
+            'prefix' => ['nullable', 'string', 'max:30'],
             'default_internal_team_id' => ['nullable', 'integer', 'exists:internal_teams,id'],
         ];
     }

@@ -10,9 +10,12 @@ class CreateApiTokenAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
-    public function handle(User $user, string $name, ?int $actorUserId = null): string
+    /**
+     * @param  list<string>  $abilities
+     */
+    public function handle(User $user, string $name, array $abilities = [], ?int $actorUserId = null): string
     {
-        $plain = $user->createToken($name)->plainTextToken;
+        $plain = $user->createToken($name, $abilities)->plainTextToken;
 
         $token = $user->tokens()->orderByDesc('id')->first();
         if ($token instanceof PersonalAccessToken) {
@@ -22,7 +25,7 @@ class CreateApiTokenAction
                 action: 'api_token.created',
                 modelType: PersonalAccessToken::class,
                 modelId: (int) $token->id,
-                payload: ['id' => $token->id, 'name' => $name],
+                payload: ['id' => $token->id, 'name' => $name, 'abilities' => $abilities],
             );
         }
 

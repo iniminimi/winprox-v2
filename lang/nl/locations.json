@@ -9,9 +9,11 @@
     "save": "Locatie opslaan",
     "edit": "Locatie bewerken",
     "deactivate": "Deactiveren",
+    "activate": "Activeren",
     "confirm_deactivate": "Weet je zeker dat je deze locatie wilt deactiveren?",
     "inactive": "Inactief",
-    "empty": "Er zijn nog geen locaties.",
+    "empty": "Er zijn nog geen locaties. Maak er aan via de knop \"+ Nieuwe locatie toevoegen\".",
+    "empty_inactive": "Er zijn geen actieve locaties. Vink 'Toon ook inactieve locaties' aan om gedeactiveerde locaties te zien.",
     "no_units": "Nog geen units op deze locatie.",
     "search_placeholder": "Zoek op locatie, plaats, postcode of straat",
     "search_hint": "Klik op een locatie om te beheren.",
@@ -48,7 +50,8 @@
     "flash": {
         "created": "Locatie aangemaakt.",
         "updated": "Locatie bijgewerkt.",
-        "deactivated": "Locatie gedeactiveerd."
+        "deactivated": "Locatie gedeactiveerd.",
+        "activated": "Locatie geactiveerd."
     },
     "units": {
         "create_title": "Unit toevoegen",
@@ -89,6 +92,7 @@
         "title": "Bulk units toevoegen",
         "floors": "Aantal reeksen",
         "rooms_per_floor": "Units per reeks",
+        "rooms_per_floor_hint": "tot max 99",
         "scheme": "Nummering",
         "scheme_compact": "01, 11, 21… (twee cijfers, max. 9 per reeks)",
         "scheme_block": "001, 101, 201… (drie cijfers)",

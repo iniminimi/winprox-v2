@@ -2,8 +2,10 @@
 
 namespace App\Actions\Webhooks;
 
+use App\Models\Tenant;
 use App\Models\WebhookEndpoint;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Tenancy;
 
 class StoreWebhookEndpointAction
 {
@@ -14,6 +16,12 @@ class StoreWebhookEndpointAction
      */
     public function handle(array $data, int $tenantId, ?int $actorUserId = null): WebhookEndpoint
     {
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        
+        if (! $tenant->hasApiAccess()) {
+            throw new \Illuminate\Auth\Access\AuthorizationException('API-toegang en webhooks zijn niet beschikbaar tijdens de proefperiode.');
+        }
+
         $events = array_values(array_intersect(
             $data['events'] ?? [],
             WebhookEndpoint::AVAILABLE_EVENTS,

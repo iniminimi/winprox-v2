@@ -11,6 +11,8 @@
         "subtitle": "Alle Aufgaben nach Team und Status",
         "group_count": "{0} keine Aufgaben|{1} :count Aufgabe|[2,*] :count Aufgaben",
         "empty": "Noch keine Aufgaben.",
+        "empty_no_issues": "Noch keine Meldungen.",
+        "manage_issues": "Meldungen verwalten",
         "empty_filtered": "Keine Aufgaben für diese Filter."
     },
     "filter": {

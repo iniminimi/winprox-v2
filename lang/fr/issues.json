@@ -1,13 +1,19 @@
 {
     "pending_review": "En attente de validation",
     "approve": "Approuver",
+    "close": "Fermer",
+    "close_modal_title": "Fermer le signalement",
+    "close_modal_subtitle": "Fermer ce signalement sans approbation. Toutes les tâches seront également fermées.",
+    "close_reason_label": "Raison de la fermeture",
+    "close_reason_placeholder": "Décrivez pourquoi ce signalement est fermé...",
+    "close_submit": "Fermer le signalement",
     "briefing": "Imprimer le briefing",
     "list": {
         "title": "Signalements",
         "subtitle": "Tous les problèmes signalés par les rapporteurs",
         "add": "Ajouter un signalement",
         "group_count": ":count signalements",
-        "empty": "Aucun signalement pour le moment.",
+        "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres."
     },
     "filter": {
@@ -78,6 +84,9 @@
         "success": "Le signalement et la tâche ont été créés."
     },
     "errors": {
+        "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",
+        "close_reason_required": "Indiquez une raison pour la fermeture.",
+        "close_reason_min": "La raison doit comporter au moins 2 caractères.",
         "location_required": "Choisissez un site.",
         "unit_invalid": "L'unité sélectionnée est invalide.",
         "description_required": "Veuillez saisir une description.",
@@ -104,6 +113,8 @@
         "tasks": "Tâches",
         "tasks_empty": "Aucune tâche pour le moment.",
         "no_team": "Aucune équipe",
+        "status_section": "Modifier le statut",
+        "status_hint": "Choisissez une action pour ce signalement.",
         "add_task": "Ajouter une tâche pour une équipe",
         "add_task_button": "+ Ajouter une tâche",
         "add_task_modal_title": "Ajouter une tâche",
@@ -111,6 +122,9 @@
         "add_task_team_label": "Équipe",
         "add_task_placeholder": "Choisir une équipe",
         "add_task_submit": "Enregistrer la tâche",
+        "edit_task_modal_title": "Modifier la tâche",
+        "edit_task_modal_subtitle": "Modifier les détails de la tâche.",
+        "edit_task_submit": "Mettre à jour la tâche",
         "task_note_label": "Description",
         "task_note_placeholder": "Décrivez ce qui doit être fait…",
         "task_scheduled_label": "Prévu le (optionnel)",
@@ -133,6 +147,7 @@
         "add_update_placeholder": "Décrivez la mise à jour…",
         "add_update_photos": "Photos (optionnel)",
         "add_update_submit": "Enregistrer la mise à jour",
+        "add_update_submit_loading": "Enregistrement...",
         "added_by": "Ajouté par",
         "added_by_worker": "Exécutant",
         "updates_photos": "Photos",

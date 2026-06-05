@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Tenant;
 use App\Models\WebhookDelivery;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -29,6 +30,17 @@ class SendWebhookDeliveryJob implements ShouldQueue
             ->find($this->deliveryId);
 
         if ($delivery === null || $delivery->endpoint === null) {
+            return;
+        }
+
+        $tenant = Tenant::query()->find($delivery->tenant_id);
+        
+        if ($tenant === null || ! $tenant->hasApiAccess()) {
+            $delivery->forceFill([
+                'status' => WebhookDelivery::STATUS_FAILED,
+                'error' => 'API access revoked or not available',
+                'attempts' => $delivery->attempts + 1,
+            ])->save();
             return;
         }
 

@@ -11,6 +11,8 @@
         "subtitle": "All tasks by team and status",
         "group_count": "{0} no tasks|{1} :count task|[2,*] :count tasks",
         "empty": "No tasks yet.",
+        "empty_no_issues": "No issues yet.",
+        "manage_issues": "Manage issues",
         "empty_filtered": "No tasks match these filters."
     },
     "filter": {

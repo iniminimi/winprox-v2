@@ -12,7 +12,7 @@ class InternalTeam extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'name', 'sort_order', 'field_qr_token', 'is_active'];
+    protected $fillable = ['tenant_id', 'name', 'sort_order', 'field_qr_token', 'is_active', 'session_lifespan_hours'];
 
     protected $casts = [
         'sort_order' => 'integer',

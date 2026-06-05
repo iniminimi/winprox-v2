@@ -110,8 +110,17 @@
             <h2 class="wp-section-title">{{ __('tasks.show.change_status') }}</h2>
             <div class="wp-chip-row">
                 @foreach ($transitions as $status)
+                    @php
+                        $buttonClass = match($status->value) {
+                            'in_progress' => 'btn--primary',
+                            'done' => 'btn--success',
+                            'closed' => 'btn--danger',
+                            'new' => 'btn--warning',
+                            default => 'btn--ghost',
+                        };
+                    @endphp
                     <button type="button"
-                            class="btn btn--ghost btn--sm {{ $targetStatus === $status->value ? 'is-active' : '' }}"
+                            class="btn {{ $buttonClass }} btn--sm {{ $targetStatus === $status->value ? 'is-active' : '' }}"
                             wire:click="selectStatus('{{ $status->value }}')">
                         {{ __($status->labelKey()) }}
                     </button>

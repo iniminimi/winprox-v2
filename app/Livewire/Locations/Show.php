@@ -364,6 +364,11 @@ class Show extends Component
         return array_values(array_slice(array_diff($names, $existing), 0, 16));
     }
 
+    public function getBulkRoomsMaxProperty(): int
+    {
+        return $this->bulkScheme === UnitBulkNaming::SCHEME_COMPACT_2 ? 9 : 99;
+    }
+
     public function createBulk(BulkCreateUnitsAction $bulkCreate): void
     {
         $this->authorize('create', Unit::class);

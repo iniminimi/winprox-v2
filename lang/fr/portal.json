@@ -1,5 +1,6 @@
 {
     "back": "Retour",
+    "offline_message": "Pas de connexion internet. Allez vers un endroit avec couverture pour démarrer ou arrêter les tâches.",
     "pending_review": "En attente de contrôle",
     "issues_empty": "Il n'y a pas encore de signalements.",
     "inactive": {
@@ -36,6 +37,7 @@
         "reporter_last_name_ph": "Nom (facultatif)",
         "reporter_email_ph": "E-mail (facultatif)",
         "submit": "Envoyer le signalement",
+        "submit_loading": "Envoi en cours...",
         "sent": "Merci, votre signalement a été reçu et sera contrôlé.",
         "photos": {
             "label": "Photos (max. 4)",
@@ -72,6 +74,7 @@
         "task_heading": "Tâche (nr :nr)",
         "issue_heading": "Signalement (nr :nr)",
         "issue_meta": ":description, :datetime",
+        "photos_offline_not_supported": "Les photos ne sont pas prises en charge en mode hors ligne.",
         "no_open_tasks": "Aucune tâche ouverte.",
         "start_task": "Démarrer la tâche",
         "complete_task": "Terminer la tâche",
@@ -81,6 +84,8 @@
         "confirm_complete": "Confirmer la réalisation",
         "task_started": "Tâche démarrée.",
         "task_completed": "Tâche terminée.",
+        "offline_notice": "Vous êtes hors ligne. Le changement de statut sera enregistré et traité lorsque vous vous reconnecterez.",
+        "syncing": "Synchronisation",
         "errors": {
             "name_required": "Saisissez votre prénom et votre nom.",
             "identify_unknown": "Aucun employé trouvé avec ce nom.",

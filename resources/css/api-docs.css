@@ -1,0 +1,89 @@
+/* API Documentation Styles */
+
+.wp-doc-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-doc-nav-link {
+    font-size: 0.875rem;
+    color: var(--wp-link);
+    text-decoration: none;
+}
+
+.wp-doc-nav-link:hover {
+    text-decoration: underline;
+}
+
+.wp-doc-nav-link--active {
+    font-weight: 600;
+    color: var(--wp-text);
+}
+
+.wp-doc-body {
+    line-height: 1.6;
+}
+
+.wp-doc-body h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.wp-doc-body h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.wp-doc-body h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem;
+}
+
+.wp-doc-body pre {
+    background-color: var(--wp-surface-2);
+    padding: 1rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.wp-doc-body code {
+    background-color: var(--wp-surface-2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: monospace;
+}
+
+.wp-doc-body pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.wp-doc-body table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.wp-doc-body table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--wp-border);
+}
+
+.wp-doc-body a {
+    color: var(--wp-link);
+    text-decoration: none;
+}
+
+.wp-doc-body a:hover {
+    text-decoration: underline;
+}

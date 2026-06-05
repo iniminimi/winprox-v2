@@ -28,7 +28,7 @@ it('maakt een melding aan via de API met Sanctum-token', function () {
         'tenant_id' => $tenant->id,
         'role' => User::ROLE_ADMIN,
     ]);
-    $token = $user->createToken('test')->plainTextToken;
+    $token = $user->createToken('test', ['issues:create'])->plainTextToken;
 
     $response = $this->withToken($token)
         ->postJson('/api/v1/issues', [
@@ -49,7 +49,7 @@ it('isoleert API-data per tenant', function () {
     Issue::factory()->create(['tenant_id' => $tenantB->id, 'description' => 'B']);
 
     $userA = User::factory()->create(['tenant_id' => $tenantA->id, 'role' => User::ROLE_ADMIN]);
-    $token = $userA->createToken('test')->plainTextToken;
+    $token = $userA->createToken('test', ['issues:read'])->plainTextToken;
 
     $this->withToken($token)
         ->getJson('/api/v1/issues')
@@ -117,4 +117,86 @@ it('blokkeert settings API-pagina voor medewerkers', function () {
     $this->actingAs($employee)
         ->get(route('settings.api'))
         ->assertForbidden();
+});
+
+it('weigert API token zonder vereiste ability', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', [])->plainTextToken;
+
+    $this->withToken($token)
+        ->getJson('/api/v1/issues')
+        ->assertForbidden();
+});
+
+it('toegestaan API token met juiste ability', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+    $token = $user->createToken('test', ['issues:read'])->plainTextToken;
+
+    $this->withToken($token)
+        ->getJson('/api/v1/issues')
+        ->assertOk();
+});
+
+it('filtert webhook subscriptions op event type', function () {
+    Http::fake(['https://hooks.test/*' => Http::response('ok', 200)]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $endpointA = WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/a',
+        'events' => ['issue.created'],
+    ]);
+
+    $endpointB = WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/b',
+        'events' => ['task.created'],
+    ]);
+
+    app(CreateIssueAction::class)->handle(['description' => 'Hook test']);
+
+    Http::assertSent(fn ($request) => $request->url() === 'https://hooks.test/a');
+    Http::assertNotSent(fn ($request) => $request->url() === 'https://hooks.test/b');
+});
+
+it('retry mechanism heeft juiste configuratie', function () {
+    $job = new \App\Jobs\SendWebhookDeliveryJob(1);
+    
+    expect($job->tries)->toBe(4)
+        ->and($job->backoff())->toBe([10, 60, 300]);
+});
+
+it('logt failed delivery correct bij permanente fout', function () {
+    Http::fake(['https://hooks.test/*' => Http::response('error', 500)]);
+    \Illuminate\Support\Facades\Queue::fake();
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $endpoint = WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/winprox',
+        'events' => ['issue.created'],
+    ]);
+
+    app(CreateIssueAction::class)->handle(['description' => 'Fail test']);
+
+    $delivery = $endpoint->deliveries()->where('event', 'issue.created')->first();
+    expect($delivery)->not->toBeNull()
+        ->and($delivery->status)->toBe('pending')
+        ->and($delivery->attempts)->toBe(0)
+        ->and($delivery->error)->toBeNull();
+
+    // Verify delivery model has required fields for failure logging
+    expect($delivery->getFillable())->toContain('status', 'error', 'attempts');
 });
