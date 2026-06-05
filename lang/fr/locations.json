@@ -67,6 +67,11 @@
             "team": "Équipe",
             "category": "Catégorie"
         },
+        "edit": {
+            "photos_label": "Photos de la liaison QR",
+            "photos_hint": "Maximum 4 photos par unité.",
+            "delete_photo_confirm": "Supprimer cette photo ?"
+        },
         "filters": {
             "category": "Filtrer par catégorie",
             "all_categories": "Toutes les catégories",

@@ -67,6 +67,11 @@
             "team": "Team",
             "category": "Categorie"
         },
+        "edit": {
+            "photos_label": "Foto's van de QR-koppeling",
+            "photos_hint": "Maximaal 4 foto's per unit.",
+            "delete_photo_confirm": "Deze foto verwijderen?"
+        },
         "filters": {
             "category": "Filter op categorie",
             "all_categories": "Alle categorieën",

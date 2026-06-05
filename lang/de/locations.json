@@ -67,6 +67,11 @@
             "team": "Team",
             "category": "Kategorie"
         },
+        "edit": {
+            "photos_label": "Fotos der QR-Verknüpfung",
+            "photos_hint": "Maximal 4 Fotos pro Einheit.",
+            "delete_photo_confirm": "Dieses Foto löschen?"
+        },
         "filters": {
             "category": "Nach Kategorie filtern",
             "all_categories": "Alle Kategorien",

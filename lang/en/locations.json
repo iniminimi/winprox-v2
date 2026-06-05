@@ -67,6 +67,11 @@
             "team": "Team",
             "category": "Category"
         },
+        "edit": {
+            "photos_label": "Photos of the QR link",
+            "photos_hint": "Maximum 4 photos per unit.",
+            "delete_photo_confirm": "Delete this photo?"
+        },
         "filters": {
             "category": "Filter by category",
             "all_categories": "All categories",
