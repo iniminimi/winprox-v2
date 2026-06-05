@@ -227,6 +227,14 @@
                 {
                     "label": "Kollegen",
                     "text": "Verwalten Sie Mitarbeiter mit Login (Admin oder User) und Team-Manager."
+                },
+                {
+                    "label": "Sortierreihenfolge",
+                    "text": "Bestimmen Sie die Reihenfolge, in der Teams in Listen und Dropdowns erscheinen. Niedrigere Nummern erscheinen zuerst."
+                },
+                {
+                    "label": "Worker-Sitzungsdauer",
+                    "text": "Wählen Sie, wie lange ein Worker nach dem Scannen des Team-QR eingeloggt bleibt: Täglich (14 Stunden), Wöchentlich (144 Stunden, 6 Arbeitstage) oder Benutzerdefiniert (benutzerdefinierte Anzahl Stunden). Der Standardwert ist 14 Stunden."
                 }
             ]
         },
