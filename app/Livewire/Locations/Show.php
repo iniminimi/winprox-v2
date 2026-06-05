@@ -269,6 +269,13 @@ class Show extends Component
         $deletePhoto->handle($photo, (int) auth()->id());
     }
 
+    public function removeUnitTempPhoto(int $index): void
+    {
+        if (isset($this->unitPhotos[$index])) {
+            array_splice($this->unitPhotos, $index, 1);
+        }
+    }
+
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
     {
         $rules = $this->editingUnitId === null

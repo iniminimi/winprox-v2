@@ -222,17 +222,17 @@
                 </label>
 
                 @if ($editingUnitId)
-                    <div class="wp-field">
+                    @php
+                        $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
+                        $tempCount = count($unitPhotos);
+                        $totalCount = $storedCount + $tempCount;
+                        $canAddMore = $totalCount < 4;
+                    @endphp
+
+                    <div class="wp-field" wire:key="unit-photos-section-{{ $totalCount }}">
                         <label class="wp-label">{{ __('locations.units.edit.photos_label') }}</label>
 
-                        @php
-                            $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
-                            $tempCount = count($unitPhotos);
-                            $totalCount = $storedCount + $tempCount;
-                            $canAddMore = $totalCount < 4;
-                        @endphp
-
-                        @if ($storedCount > 0)
+                        @if ($totalCount > 0)
                             <div class="wp-photo-grid wp-photo-grid--gallery">
                                 @foreach ($this->editingUnit->qrLinkPhotos as $photo)
                                     @if ($photo->hasPublicFile())
@@ -247,6 +247,18 @@
                                             >×</button>
                                         </div>
                                     @endif
+                                @endforeach
+
+                                @foreach ($unitPhotos as $index => $photo)
+                                    <div class="wp-photo-thumb" style="position:relative;" wire:key="temp-photo-{{ $index }}">
+                                        <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                        <button
+                                            type="button"
+                                            class="btn btn--danger btn--sm"
+                                            style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                            wire:click="removeUnitTempPhoto({{ $index }})"
+                                        >×</button>
+                                    </div>
                                 @endforeach
                             </div>
                         @endif
