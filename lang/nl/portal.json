@@ -161,7 +161,6 @@
     "qr_binding": {
         "photos": {
             "label": "Foto's van de koppeling",
-            "hint": "Maximaal 4 foto's (bijv. apparaat + sticker)",
             "add": "Foto toevoegen"
         }
     }

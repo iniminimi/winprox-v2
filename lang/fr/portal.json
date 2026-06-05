@@ -161,7 +161,6 @@
     "qr_binding": {
         "photos": {
             "label": "Photos de la liaison",
-            "hint": "Max. 4 photos (p. ex. appareil + autocollant)",
             "add": "Ajouter une photo"
         }
     }

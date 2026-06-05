@@ -161,7 +161,6 @@
     "qr_binding": {
         "photos": {
             "label": "Fotos der Verknüpfung",
-            "hint": "Max. 4 Fotos (z. B. Gerät + Aufkleber)",
             "add": "Foto hinzufügen"
         }
     }

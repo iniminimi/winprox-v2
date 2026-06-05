@@ -163,7 +163,6 @@
                         @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true, 'photoAlt' => __('portal.qr_binding.photos.add')])
                         @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
-                        <p class="wp-hint">{{ __('portal.qr_binding.photos.hint') }}</p>
                     </div>
                 </div>
 

@@ -161,7 +161,6 @@
     "qr_binding": {
         "photos": {
             "label": "Photos of the link",
-            "hint": "Max 4 photos (e.g. device + sticker)",
             "add": "Add photo"
         }
     }
