@@ -221,32 +221,40 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                @if ($editingUnitId && $this->editingUnit && $this->editingUnit->qrLinkPhotos->isNotEmpty())
-                    <div class="wp-field">
-                        <span class="wp-label">{{ __('locations.units.edit.photos_label') }}</span>
-                        <div class="wp-photo-grid wp-photo-grid--gallery">
-                            @foreach ($this->editingUnit->qrLinkPhotos as $photo)
-                                @if ($photo->hasPublicFile())
-                                    <div class="wp-photo-thumb" style="position:relative;" wire:key="qr-photo-{{ $photo->id }}">
-                                        <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy">
-                                        <button
-                                            type="button"
-                                            class="btn btn--danger btn--sm"
-                                            style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
-                                            wire:click="removeUnitPhoto({{ $photo->id }})"
-                                            wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
-                                        >×</button>
-                                    </div>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
                 @if ($editingUnitId)
                     <div class="wp-field">
                         <label class="wp-label">{{ __('locations.units.edit.photos_label') }}</label>
-                        @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos'])
+
+                        @php
+                            $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
+                            $tempCount = count($unitPhotos);
+                            $totalCount = $storedCount + $tempCount;
+                            $canAddMore = $totalCount < 4;
+                        @endphp
+
+                        @if ($storedCount > 0)
+                            <div class="wp-photo-grid wp-photo-grid--gallery">
+                                @foreach ($this->editingUnit->qrLinkPhotos as $photo)
+                                    @if ($photo->hasPublicFile())
+                                        <div class="wp-photo-thumb" style="position:relative;" wire:key="qr-photo-{{ $photo->id }}">
+                                            <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                            <button
+                                                type="button"
+                                                class="btn btn--danger btn--sm"
+                                                style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                                wire:click="removeUnitPhoto({{ $photo->id }})"
+                                                wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
+                                            >×</button>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if ($canAddMore)
+                            @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos'])
+                        @endif
+
                         @error('unitPhotos') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('unitPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
                         <p class="wp-hint">{{ __('locations.units.edit.photos_hint') }}</p>
