@@ -102,64 +102,81 @@
             </div>
         @endif
 
-        <div class="wp-card wp-card-pad wp-stack">
-            <h1 class="wp-section-title">{{ __('portal.unassigned_qr.title') }}</h1>
+        <form
+            x-data
+            x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+            @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.link()"
+            class="wp-stack"
+            wire:key="qr-binding-form"
+        >
+            <div class="wp-card wp-card-pad wp-stack">
+                <h1 class="wp-section-title">{{ __('portal.unassigned_qr.title') }}</h1>
 
-            <div class="wp-card-section">
-                <p class="wp-muted">{{ __('portal.unassigned_qr.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
-            </div>
+                <div class="wp-card-section">
+                    <p class="wp-muted">{{ __('portal.unassigned_qr.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
+                </div>
 
-            <div class="wp-card-section">
-                <label class="wp-label" for="unit-search">{{ __('qr.connect.search_units') }}</label>
-                <input
-                    id="unit-search"
-                    type="search"
-                    class="wp-input"
-                    wire:model.live.debounce.300ms="search"
-                    placeholder="{{ __('qr.connect.search_placeholder') }}"
-                    autocomplete="off"
-                >
+                <div class="wp-card-section">
+                    <label class="wp-label" for="unit-search">{{ __('qr.connect.search_units') }}</label>
+                    <input
+                        id="unit-search"
+                        type="search"
+                        class="wp-input"
+                        wire:model.live.debounce.300ms="search"
+                        placeholder="{{ __('qr.connect.search_placeholder') }}"
+                        autocomplete="off"
+                    >
 
-                @error('selectedUnitId')
-                    <p class="wp-error">{{ $message }}</p>
-                @enderror
+                    @error('selectedUnitId')
+                        <p class="wp-error">{{ $message }}</p>
+                    @enderror
 
-                @if ($units->isEmpty())
-                    <p class="wp-muted">{{ __('qr.connect.no_units') }}</p>
-                @else
-                    <div class="wp-list-plain wp-stack-tight">
-                        @foreach ($units as $unit)
-                            <label class="wp-list-row wp-list-row--interactive">
-                                <input
-                                    type="radio"
-                                    name="unit"
-                                    value="{{ $unit->id }}"
-                                    wire:model="selectedUnitId"
-                                >
-                                <div class="wp-grow">
-                                    <strong>{{ $unit->name }}</strong>
-                                    @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                        <span class="wp-muted wp-text-sm"> ({{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }})</span>
-                                    @endif
-                                </div>
-                            </label>
-                        @endforeach
+                    @if ($units->isEmpty())
+                        <p class="wp-muted">{{ __('qr.connect.no_units') }}</p>
+                    @else
+                        <div class="wp-list-plain wp-stack-tight">
+                            @foreach ($units as $unit)
+                                <label class="wp-list-row wp-list-row--interactive" wire:key="unit-option-{{ $unit->id }}">
+                                    <input
+                                        type="radio"
+                                        name="unit"
+                                        value="{{ $unit->id }}"
+                                        wire:model="selectedUnitId"
+                                    >
+                                    <div class="wp-grow">
+                                        <strong>{{ $unit->name }}</strong>
+                                        @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                                            <span class="wp-muted wp-text-sm"> ({{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }})</span>
+                                        @endif
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+
+                        {{ $units->links() }}
+                    @endif
+                </div>
+
+                <div class="wp-card-section">
+                    <div class="wp-field">
+                        <label class="wp-label">{{ __('portal.qr_binding.photos.label') }}</label>
+                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true, 'photoAlt' => __('portal.qr_binding.photos.add')])
+                        @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
+                        <p class="wp-hint">{{ __('portal.qr_binding.photos.hint') }}</p>
                     </div>
+                </div>
 
-                    {{ $units->links() }}
-                @endif
+                <div class="wp-card-actions">
+                    <button
+                        type="submit"
+                        class="btn btn--primary"
+                        :disabled="$selectedUnitId === null"
+                    >
+                        {{ __('qr.connect.link_button') }}
+                    </button>
+                </div>
             </div>
-
-            <div class="wp-card-actions">
-                <button 
-                    type="button" 
-                    class="btn btn--primary" 
-                    wire:click="link"
-                    :disabled="$selectedUnitId === null"
-                >
-                    {{ __('qr.connect.link_button') }}
-                </button>
-            </div>
-        </div>
+        </form>
     @endif
 </div>

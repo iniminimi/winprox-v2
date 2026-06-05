@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
 #[Layout('components.layouts.public')]
@@ -21,6 +22,7 @@ use Livewire\WithPagination;
 class UnassignedQrPortal extends Component
 {
     use SwitchesPortalUiTheme;
+    use WithFileUploads;
     use WithPagination;
 
     public string $token;
@@ -37,6 +39,9 @@ class UnassignedQrPortal extends Component
 
     public ?Worker $worker = null;
     public ?InternalTeam $team = null;
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $photos = [];
 
     public function mount(string $token): void
     {
@@ -121,10 +126,23 @@ class UnassignedQrPortal extends Component
         $this->redirectRoute('public.unassigned-qr-portal', ['token' => $this->qrCode->token], navigate: true);
     }
 
+    public function removePhoto(int $index): void
+    {
+        if (isset($this->photos[$index])) {
+            array_splice($this->photos, $index, 1);
+        }
+    }
+
     public function link(): void
     {
         $this->validate([
             'selectedUnitId' => 'required|exists:units,id',
+            'photos' => ['nullable', 'array', 'max:4'],
+            'photos.*' => ['image', 'max:10240'],
+        ], [
+            'photos.max' => __('portal.report.errors.photos_max'),
+            'photos.*.image' => __('portal.report.errors.photos_image'),
+            'photos.*.max' => __('portal.report.errors.photos_size'),
         ]);
 
         $unit = Unit::withoutGlobalScopes()->findOrFail($this->selectedUnitId);
@@ -155,8 +173,12 @@ class UnassignedQrPortal extends Component
                 $this->qrCode,
                 $unit,
                 $this->tenantId,
-                $actorId
+                $actorId,
+                $this->photos,
             );
+
+            $this->reset('photos');
+            $this->dispatch('wp-clear-photo-previews');
 
             // Redirect to unit portal directly after successful linking
             $this->redirectRoute('public.unit-portal', ['token' => $unit->qr_token], navigate: true);
