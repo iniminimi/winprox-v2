@@ -13,6 +13,7 @@ use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
+use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -24,6 +25,7 @@ use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\EntityDetailNavigation;
+use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use Illuminate\Support\Facades\Schema;
@@ -35,11 +37,13 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Show extends Component
 {
+    use WithFileUploads;
     public Location $location;
 
     public bool $showLocationModal = false;
@@ -81,6 +85,9 @@ class Show extends Component
     public ?int $unitTeamId = null;
 
     public ?int $unitCategoryId = null;
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $unitPhotos = [];
 
     public string $unitCategoryFilter = '';
 
@@ -197,15 +204,19 @@ class Show extends Component
 
     public function openEditUnit(int $unitId): void
     {
-        $unit = Unit::where('location_id', $this->location->id)->findOrFail($unitId);
+        $unit = Unit::where('location_id', $this->location->id)
+            ->with(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
+            ->findOrFail($unitId);
         $this->authorize('update', $unit);
         $this->editingUnitId = $unit->id;
         $this->unitName = $unit->name;
         $this->unitDescription = $unit->description ?? '';
         $this->unitTeamId = $unit->default_internal_team_id;
         $this->unitCategoryId = $unit->category_id;
+        $this->unitPhotos = [];
         $this->resetErrorBag();
         $this->showUnitModal = true;
+        $this->dispatch('wp-prepare-photo-inputs');
     }
 
     public function openQrPackModal(): void
@@ -247,6 +258,17 @@ class Show extends Component
         $this->resetErrorBag();
     }
 
+    public function removeUnitPhoto(int $photoId, DeleteQrLinkPhotoAction $deletePhoto): void
+    {
+        $photo = QrLinkPhoto::find($photoId);
+        if ($photo === null) {
+            return;
+        }
+
+        $this->authorize('update', Unit::findOrFail($photo->unit_id));
+        $deletePhoto->handle($photo, (int) auth()->id());
+    }
+
     public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
     {
         $rules = $this->editingUnitId === null
@@ -258,10 +280,15 @@ class Show extends Component
             'unitDescription' => $rules['description'],
             'unitTeamId' => $rules['default_internal_team_id'],
             'unitCategoryId' => $rules['category_id'],
+            'unitPhotos' => ['nullable', 'array', 'max:4'],
+            'unitPhotos.*' => ['image', 'max:10240'],
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
             'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
+            'unitPhotos.max' => __('portal.report.errors.photos_max'),
+            'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
+            'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
         ]);
 
         $payload = [
@@ -288,10 +315,12 @@ class Show extends Component
         } else {
             $unit = Unit::findOrFail($this->editingUnitId);
             $this->authorize('update', $unit);
-            $updateUnit->handle($unit, $payload, (int) auth()->id());
+            $updateUnit->handle($unit, $payload, (int) auth()->id(), $this->unitPhotos);
             session()->flash('success', __('locations.units.flash.updated'));
         }
 
+        $this->reset('unitPhotos');
+        $this->dispatch('wp-clear-photo-previews');
         $this->showUnitModal = false;
         $this->unitCategoryId = null;
         $this->location->refresh();
@@ -367,6 +396,15 @@ class Show extends Component
     public function getBulkRoomsMaxProperty(): int
     {
         return $this->bulkScheme === UnitBulkNaming::SCHEME_COMPACT_2 ? 9 : 99;
+    }
+
+    public function getEditingUnitProperty(): ?Unit
+    {
+        if ($this->editingUnitId === null) {
+            return null;
+        }
+
+        return Unit::with('qrLinkPhotos')->find($this->editingUnitId);
     }
 
     public function createBulk(BulkCreateUnitsAction $bulkCreate): void

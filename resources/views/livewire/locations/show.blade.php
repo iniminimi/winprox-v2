@@ -180,7 +180,12 @@
 
     @if ($showUnitModal)
         <div class="wp-modal">
-            <form wire:submit="saveUnit" class="wp-card wp-card-pad wp-stack wp-modal-card">
+            <form
+                x-data
+                x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+                @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveUnit()"
+                class="wp-card wp-card-pad wp-stack wp-modal-card"
+            >
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ $editingUnitId ? __('locations.units.edit_title') : __('locations.units.create_title') }}</h2>
                     <x-wp-modal-close wire:click="$set('showUnitModal', false)" />
@@ -215,6 +220,39 @@
                     </select>
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
+
+                @if ($editingUnitId && $this->editingUnit && $this->editingUnit->qrLinkPhotos->isNotEmpty())
+                    <div class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.edit.photos_label') }}</span>
+                        <div class="wp-photo-grid wp-photo-grid--gallery">
+                            @foreach ($this->editingUnit->qrLinkPhotos as $photo)
+                                @if ($photo->hasPublicFile())
+                                    <div class="wp-photo-thumb" style="position:relative;" wire:key="qr-photo-{{ $photo->id }}">
+                                        <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                        <button
+                                            type="button"
+                                            class="btn btn--danger btn--sm"
+                                            style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                            wire:click="removeUnitPhoto({{ $photo->id }})"
+                                            wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
+                                        >×</button>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if ($editingUnitId)
+                    <div class="wp-field">
+                        <label class="wp-label">{{ __('locations.units.edit.photos_label') }}</label>
+                        @include('partials.wp-issue-photo-upload', ['model' => 'unitPhotos'])
+                        @error('unitPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('unitPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                        <p class="wp-hint">{{ __('locations.units.edit.photos_hint') }}</p>
+                    </div>
+                @endif
+
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="$set('showUnitModal', false)">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveUnit">
