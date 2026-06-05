@@ -170,6 +170,9 @@
         "update_photos": "Foto's updaten",
         "update_photos_hint": "Voeg nieuwe foto's toe om de situatie te documenteren.",
         "view_only_hint": "Bekijk de stickerfoto's ter informatie.",
+        "replace_photo": "Vervang",
+        "replacing_photo": "Selecteer een nieuwe foto om te vervangen.",
+        "cancel_replace": "Annuleer",
         "photos_submit": "Foto's opslaan",
         "photos_submit_loading": "Bezig met opslaan...",
         "photos_updated": "Foto's succesvol toegevoegd!"

@@ -170,6 +170,9 @@
         "update_photos": "Update photos",
         "update_photos_hint": "Add new photos to document the current situation.",
         "view_only_hint": "View sticker photos for reference.",
+        "replace_photo": "Replace",
+        "replacing_photo": "Select a new photo to replace.",
+        "cancel_replace": "Cancel",
         "photos_submit": "Save photos",
         "photos_submit_loading": "Saving...",
         "photos_updated": "Photos added successfully!"

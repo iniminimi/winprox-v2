@@ -275,6 +275,7 @@
                 $portalTempCount = count($newPortalPhotos);
                 $portalTotalCount = $portalStoredCount + $portalTempCount;
                 $portalCanAddMore = $portalTotalCount < 4;
+                $isReplacing = $replacingPhotoId !== null;
             @endphp
 
             <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }" wire:key="qr-photos-accordion-{{ $portalTotalCount }}">
@@ -295,15 +296,31 @@
                         <div class="wp-photo-grid wp-photo-grid--gallery" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
                             @foreach ($qrLinkPhotos as $photo)
                                 @if ($photo->hasPublicFile())
-                                    <button
-                                        type="button"
+                                    <div
                                         class="wp-photo-thumb"
+                                        style="position:relative;"
                                         wire:key="qr-photo-{{ $photo->id }}"
-                                        @click="lightboxSrc = @js($photo->publicUrl())"
-                                        aria-label="{{ __('issues.show.photo_enlarge') }}"
                                     >
-                                        <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy" x-on:error="$el.closest('.wp-photo-thumb')?.remove()">
-                                    </button>
+                                        <button
+                                            type="button"
+                                            style="background:none;border:none;padding:0;width:100%;height:100%;"
+                                            @click="lightboxSrc = @js($photo->publicUrl())"
+                                            aria-label="{{ __('issues.show.photo_enlarge') }}"
+                                        >
+                                            <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy" x-on:error="$el.closest('.wp-photo-thumb')?.remove()">
+                                        </button>
+
+                                        @if ($workerBelongsToUnitTeam && ! $isReplacing)
+                                            <button
+                                                type="button"
+                                                class="btn btn--surface btn--sm"
+                                                style="position:absolute;bottom:2px;right:2px;padding:2px 4px;font-size:9px;line-height:1;"
+                                                wire:click="replacePhoto({{ $photo->id }})"
+                                            >
+                                                {{ __('portal.unit.replace_photo') }}
+                                            </button>
+                                        @endif
+                                    </div>
                                 @endif
                             @endforeach
 
@@ -338,13 +355,21 @@
                             </div>
                         @endif
 
-                        @if ($portalCanAddMore)
+                        @if ($isReplacing)
+                            <div class="wp-card wp-card-pad wp-surface-muted wp-stack">
+                                <p class="wp-text-body">{{ __('portal.unit.replacing_photo') }}</p>
+                                @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true, 'max' => 1])
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelReplace">
+                                    {{ __('portal.unit.cancel_replace') }}
+                                </button>
+                            </div>
+                        @elseif ($portalCanAddMore)
                             @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true])
+                            <p class="wp-hint">{{ __('portal.unit.update_photos_hint') }}</p>
                         @endif
 
                         @error('newPortalPhotos') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('newPortalPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-                        <p class="wp-hint">{{ __('portal.unit.update_photos_hint') }}</p>
 
                         @if ($portalTempCount > 0)
                             <form

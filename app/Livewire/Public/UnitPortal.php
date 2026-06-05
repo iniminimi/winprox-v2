@@ -71,6 +71,8 @@ class UnitPortal extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $newPortalPhotos = [];
 
+    public ?int $replacingPhotoId = null;
+
     public string $flashMessage = '';
 
     public function mount(string $token): void
@@ -344,6 +346,23 @@ class UnitPortal extends Component
         }
     }
 
+    public function replacePhoto(int $photoId): void
+    {
+        if (! $this->workerBelongsToUnitTeam()) {
+            return;
+        }
+
+        $this->replacingPhotoId = $photoId;
+        $this->dispatch('wp-focus-replace-upload');
+    }
+
+    public function cancelReplace(): void
+    {
+        $this->replacingPhotoId = null;
+        $this->reset('newPortalPhotos');
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
     public function updateUnitPhotos(IssuePhotoStorage $storage, AuditRecorder $audit): void
     {
         if ($this->inactiveReasonKey !== null) {
@@ -381,6 +400,36 @@ class UnitPortal extends Component
 
         $storedCount = 0;
         foreach ($this->newPortalPhotos as $photo) {
+            if ($this->replacingPhotoId !== null) {
+                $existing = QrLinkPhoto::where('id', $this->replacingPhotoId)
+                    ->where('unit_id', (int) $unit->id)
+                    ->first();
+
+                if ($existing !== null) {
+                    if ($existing->hasPublicFile()) {
+                        Storage::disk('public')->delete($existing->path);
+                    }
+
+                    $oldPath = $existing->path;
+                    $existing->update(['path' => $storage->storePrecompressedCopy($photo)]);
+
+                    $audit->record(
+                        userId: null,
+                        tenantId: (int) $unit->tenant_id,
+                        action: 'qr_link_photo.portal_replaced',
+                        modelType: QrLinkPhoto::class,
+                        modelId: (int) $existing->id,
+                        payload: [
+                            'unit_id' => $unit->id,
+                            'qr_code_id' => $qrCode->id,
+                            'old_path' => $oldPath,
+                        ],
+                    );
+                    $storedCount++;
+                    continue;
+                }
+            }
+
             QrLinkPhoto::create([
                 'tenant_id' => (int) $unit->tenant_id,
                 'qr_code_id' => (int) $qrCode->id,
@@ -404,6 +453,7 @@ class UnitPortal extends Component
         );
 
         $this->reset('newPortalPhotos');
+        $this->replacingPhotoId = null;
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.unit.photos_updated');
     }

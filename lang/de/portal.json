@@ -170,6 +170,9 @@
         "update_photos": "Fotos aktualisieren",
         "update_photos_hint": "Fügen Sie neue Fotos hinzu, um die aktuelle Situation zu dokumentieren.",
         "view_only_hint": "Betrachten Sie die Aufkleberfotos zur Information.",
+        "replace_photo": "Ersetzen",
+        "replacing_photo": "Wählen Sie ein neues Foto zum Ersetzen aus.",
+        "cancel_replace": "Abbrechen",
         "photos_submit": "Fotos speichern",
         "photos_submit_loading": "Speichern...",
         "photos_updated": "Fotos erfolgreich hinzugefügt!"
