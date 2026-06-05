@@ -86,6 +86,11 @@ class QrCode extends Model
         return $this->hasMany(QrScan::class);
     }
 
+    public function qrLinkPhotos(): HasMany
+    {
+        return $this->hasMany(QrLinkPhoto::class);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('status', QrCodeStatus::Active);

@@ -85,6 +85,11 @@ class Unit extends Model
         return $this->hasMany(QrCode::class);
     }
 
+    public function qrLinkPhotos(): HasMany
+    {
+        return $this->hasMany(QrLinkPhoto::class);
+    }
+
     public function hasOpenIssues(): bool
     {
         return $this->issues()
