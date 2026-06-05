@@ -163,6 +163,14 @@
             "label": "Photos of the link",
             "add": "Add photo"
         }
+    },
+    "unit": {
+        "current_photos": "Current sticker photos",
+        "update_photos": "Update photos",
+        "update_photos_hint": "Add new photos to document the current situation.",
+        "photos_submit": "Save photos",
+        "photos_submit_loading": "Saving...",
+        "photos_updated": "Photos added successfully!"
     }
 }
 

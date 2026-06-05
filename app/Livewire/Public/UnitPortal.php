@@ -25,6 +25,9 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\QrLinkPhoto;
+use App\Support\IssuePhotoStorage;
+use App\Support\Audit\AuditRecorder;
 
 #[Layout('components.layouts.public')]
 #[Title('WinProx')]
@@ -65,12 +68,15 @@ class UnitPortal extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $completingPhotos = [];
 
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $newPortalPhotos = [];
+
     public string $flashMessage = '';
 
     public function mount(string $token): void
     {
         $unit = Unit::withoutGlobalScope('tenant')
-            ->with(['location', 'defaultInternalTeam'])
+            ->with(['location', 'defaultInternalTeam', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
             ->where('qr_token', $token)
             ->first();
 
@@ -327,6 +333,71 @@ class UnitPortal extends Component
         }
     }
 
+    public function removeNewPortalPhoto(int $index): void
+    {
+        if (isset($this->newPortalPhotos[$index])) {
+            array_splice($this->newPortalPhotos, $index, 1);
+        }
+    }
+
+    public function updateUnitPhotos(IssuePhotoStorage $storage, AuditRecorder $audit): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        $this->validate([
+            'newPortalPhotos' => ['nullable', 'array', 'max:4'],
+            'newPortalPhotos.*' => ['image', 'max:10240'],
+        ], [
+            'newPortalPhotos.max' => __('portal.report.errors.photos_max'),
+            'newPortalPhotos.*.image' => __('portal.report.errors.photos_image'),
+            'newPortalPhotos.*.max' => __('portal.report.errors.photos_size'),
+        ]);
+
+        if (empty($this->newPortalPhotos)) {
+            return;
+        }
+
+        $unit = $this->unit();
+        $unit->loadMissing(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)]);
+        $qrCode = $unit->qrCodes->first();
+
+        if ($qrCode === null) {
+            $this->addError('newPortalPhotos', __('portal.report.errors.photos_failed'));
+
+            return;
+        }
+
+        $storedCount = 0;
+        foreach ($this->newPortalPhotos as $photo) {
+            QrLinkPhoto::create([
+                'tenant_id' => (int) $unit->tenant_id,
+                'qr_code_id' => (int) $qrCode->id,
+                'unit_id' => (int) $unit->id,
+                'path' => $storage->storePrecompressedCopy($photo),
+            ]);
+            $storedCount++;
+        }
+
+        $audit->record(
+            userId: null,
+            tenantId: (int) $unit->tenant_id,
+            action: 'qr_link_photo.portal_added',
+            modelType: Unit::class,
+            modelId: (int) $unit->id,
+            payload: [
+                'unit_id' => $unit->id,
+                'qr_code_id' => $qrCode->id,
+                'photo_count' => $storedCount,
+            ],
+        );
+
+        $this->reset('newPortalPhotos');
+        $this->dispatch('wp-clear-photo-previews');
+        $this->flashMessage = __('portal.unit.photos_updated');
+    }
+
     public function submitCompleteTask(CompleteTaskAction $completeTask): void
     {
         $worker = $this->authorizedWorker();
@@ -443,12 +514,13 @@ class UnitPortal extends Component
             'allOpenUnitTasks' => $allOpenUnitTasks,
             'openTaskCount' => $openTaskCount,
             'hasUnitTeam' => $team !== null,
+            'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
         ]);
     }
 
     private function unit(): Unit
     {
-        return Unit::with(['location', 'defaultInternalTeam'])->findOrFail($this->unitId);
+        return Unit::with(['location', 'defaultInternalTeam', 'qrLinkPhotos'])->findOrFail($this->unitId);
     }
 
     private function activeTeam(): ?\App\Models\InternalTeam

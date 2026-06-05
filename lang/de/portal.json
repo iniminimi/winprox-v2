@@ -163,6 +163,14 @@
             "label": "Fotos der Verknüpfung",
             "add": "Foto hinzufügen"
         }
+    },
+    "unit": {
+        "current_photos": "Aktuelle Aufkleberfotos",
+        "update_photos": "Fotos aktualisieren",
+        "update_photos_hint": "Fügen Sie neue Fotos hinzu, um die aktuelle Situation zu dokumentieren.",
+        "photos_submit": "Fotos speichern",
+        "photos_submit_loading": "Speichern...",
+        "photos_updated": "Fotos erfolgreich hinzugefügt!"
     }
 }
 

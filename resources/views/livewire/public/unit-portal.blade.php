@@ -44,6 +44,45 @@
 
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
+            @php
+                $portalStoredCount = $qrLinkPhotos->count();
+                $portalTempCount = count($newPortalPhotos);
+                $portalTotalCount = $portalStoredCount + $portalTempCount;
+                $portalCanAddMore = $portalTotalCount < 4;
+            @endphp
+
+            @if ($qrLinkPhotos->isNotEmpty())
+                <div class="wp-card wp-card-pad wp-stack" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
+                    <h2 class="wp-section-title">{{ __('portal.unit.current_photos') }}</h2>
+                    <div class="wp-photo-grid wp-photo-grid--gallery">
+                        @foreach ($qrLinkPhotos as $photo)
+                            @if ($photo->hasPublicFile())
+                                <button
+                                    type="button"
+                                    class="wp-photo-thumb"
+                                    wire:key="qr-photo-{{ $photo->id }}"
+                                    @click="lightboxSrc = @js($photo->publicUrl())"
+                                    aria-label="{{ __('issues.show.photo_enlarge') }}"
+                                >
+                                    <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy" x-on:error="$el.closest('.wp-photo-thumb')?.remove()">
+                                </button>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div
+                        class="wp-photo-lightbox"
+                        x-show="lightboxSrc"
+                        x-cloak
+                        x-transition.opacity
+                        role="dialog"
+                        aria-modal="true"
+                        @click="lightboxSrc = null"
+                    >
+                        <img :src="lightboxSrc" alt="" @click.stop>
+                    </div>
+                </div>
+            @endif
+
             <div class="wp-tiles">
                 <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
                     <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
@@ -70,6 +109,52 @@
                     <span class="wp-tile-title">{{ __('portal.tiles.documents') }} : {{ $documents->count() }}</span>
                 </button>
             </div>
+
+            @if ($portalCanAddMore || $portalTempCount > 0)
+                <form
+                    x-data
+                    x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+                    @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.updateUnitPhotos()"
+                    class="wp-card wp-card-pad wp-stack"
+                    wire:key="portal-photo-upload-form"
+                >
+                    <h2 class="wp-section-title">{{ __('portal.unit.update_photos') }}</h2>
+
+                    @if ($portalTempCount > 0)
+                        <div class="wp-photo-grid wp-photo-grid--gallery">
+                            @foreach ($newPortalPhotos as $index => $photo)
+                                <div class="wp-photo-thumb" style="position:relative;" wire:key="portal-temp-photo-{{ $index }}">
+                                    <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                    <button
+                                        type="button"
+                                        class="btn btn--danger btn--sm"
+                                        style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                        wire:click="removeNewPortalPhoto({{ $index }})"
+                                    >×</button>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if ($portalCanAddMore)
+                        @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true])
+                    @endif
+
+                    @error('newPortalPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('newPortalPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                    <p class="wp-hint">{{ __('portal.unit.update_photos_hint') }}</p>
+
+                    @if ($portalTempCount > 0)
+                        <div class="wp-portal-actions">
+                            <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                                <x-wp-spinner wire:loading class="wp-mr-2" />
+                                <span wire:loading.remove>{{ __('portal.unit.photos_submit') }}</span>
+                                <span wire:loading>{{ __('portal.unit.photos_submit_loading') }}</span>
+                            </button>
+                        </div>
+                    @endif
+                </form>
+            @endif
 
             @if ($isFieldVisitor && $hasUnitTeam)
                 @if ($canAct)
