@@ -157,6 +157,9 @@
                     @endif
                 </div>
 
+            </div>
+
+            <div class="wp-card wp-card-pad wp-stack" wire:key="qr-binding-photos">
                 <div class="wp-card-section">
                     <div class="wp-field">
                         <label class="wp-label">{{ __('portal.qr_binding.photos.label') }}</label>
@@ -165,7 +168,9 @@
                         @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
+            </div>
 
+            <div class="wp-card wp-card-pad">
                 <div class="wp-card-actions">
                     <button
                         type="submit"
