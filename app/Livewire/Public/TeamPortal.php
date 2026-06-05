@@ -287,7 +287,9 @@ class TeamPortal extends Component
 
         $showRegisterForm = $this->showRegisterForm && ! $registerOnly;
 
-        $showIdentify = $team !== null && ! $canAct && $hasSignInWorkers
+        // Show identify form if team has workers (with or without icons) but no verified worker
+        $hasAnyWorkers = $team !== null && $team->workers()->where('is_active', true)->count() > 0;
+        $showIdentify = $team !== null && ! $canAct && $hasAnyWorkers
             && $deviceWorker === null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
         $showVerify = $team !== null && ! $canAct && $hasSignInWorkers
             && $deviceWorker !== null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
