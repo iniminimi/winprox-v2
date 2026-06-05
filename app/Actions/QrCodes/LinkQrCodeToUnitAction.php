@@ -4,15 +4,24 @@ namespace App\Actions\QrCodes;
 
 use App\Enums\QrCodeStatus;
 use App\Models\QrCode;
+use App\Models\QrLinkPhoto;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\IssuePhotoStorage;
+use Illuminate\Http\UploadedFile;
 
 class LinkQrCodeToUnitAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private IssuePhotoStorage $storage,
+    ) {}
 
-    public function handle(QrCode $qrCode, Unit $unit, int $tenantId, ?int $actorUserId = null): QrCode
+    /**
+     * @param  array<int, UploadedFile>  $photos
+     */
+    public function handle(QrCode $qrCode, Unit $unit, int $tenantId, ?int $actorUserId = null, array $photos = []): QrCode
     {
         // Verify tenant ownership
         if ($qrCode->tenant_id !== $tenantId || $unit->tenant_id !== $tenantId) {
@@ -36,6 +45,19 @@ class LinkQrCodeToUnitAction
             'linked_by' => $actorUserId,
         ]);
 
+        $storedPhotoCount = 0;
+        foreach ($photos as $photo) {
+            if ($photo instanceof UploadedFile) {
+                QrLinkPhoto::create([
+                    'tenant_id' => $tenantId,
+                    'qr_code_id' => $qrCode->id,
+                    'unit_id' => $unit->id,
+                    'path' => $this->storage->storePrecompressedCopy($photo),
+                ]);
+                $storedPhotoCount++;
+            }
+        }
+
         $this->audit->record(
             userId: $actorUserId,
             tenantId: $tenantId,
@@ -47,6 +69,7 @@ class LinkQrCodeToUnitAction
                 'sticker_number' => $qrCode->sticker_number,
                 'unit_id' => $unit->id,
                 'unit_name' => $unit->name,
+                'photo_count' => $storedPhotoCount,
             ],
         );
 

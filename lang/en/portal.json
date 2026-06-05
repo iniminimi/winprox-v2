@@ -157,6 +157,13 @@
         "description": "Log in to link this QR code to a unit. After linking, you can use this QR code to submit reports.",
         "login_button": "Log in",
         "no_permission": "You do not have permission to link QR codes."
+    },
+    "qr_binding": {
+        "photos": {
+            "label": "Photos of the link",
+            "hint": "Max 4 photos (e.g. device + sticker)",
+            "add": "Add photo"
+        }
     }
 }
 

@@ -157,6 +157,13 @@
         "description": "Melden Sie sich an, um diesen QR-Code mit einer Unit zu verknüpfen. Nach der Verknüpfung können Sie diesen QR-Code verwenden, um Meldungen zu senden.",
         "login_button": "Anmelden",
         "no_permission": "Sie haben keine Berechtigung, QR-Codes zu verknüpfen."
+    },
+    "qr_binding": {
+        "photos": {
+            "label": "Fotos der Verknüpfung",
+            "hint": "Max. 4 Fotos (z. B. Gerät + Aufkleber)",
+            "add": "Foto hinzufügen"
+        }
     }
 }
 

@@ -157,6 +157,13 @@
         "description": "Connectez-vous pour lier ce code QR à une unité. Après liaison, vous pourrez utiliser ce code QR pour soumettre des signalements.",
         "login_button": "Se connecter",
         "no_permission": "Vous n'avez pas la permission de lier des codes QR."
+    },
+    "qr_binding": {
+        "photos": {
+            "label": "Photos de la liaison",
+            "hint": "Max. 4 photos (p. ex. appareil + autocollant)",
+            "add": "Ajouter une photo"
+        }
     }
 }
 
