@@ -11,16 +11,17 @@ use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Location;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Index extends Component
 {
+    use WithFileUploads;
     #[Url(as: 'q')]
     public string $search = '';
 
@@ -44,7 +45,7 @@ class Index extends Component
 
     public string $locationFormNotes = '';
 
-    public ?TemporaryUploadedFile $importFile = null;
+    public $importFile = null;
 
     public array $importErrors = [];
 
