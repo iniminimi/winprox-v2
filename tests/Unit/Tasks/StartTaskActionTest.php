@@ -10,11 +10,11 @@ use App\Support\Tenancy;
 use Illuminate\Support\Carbon;
 
 beforeEach(function () {
-    Tenancy::setTenant(1);
+    Tenancy::actAs(1);
 });
 
 afterEach(function () {
-    Tenancy::forgetTenant();
+    Tenancy::forget();
 });
 
 it('starts a task with current timestamp when no client timestamp provided', function () {
