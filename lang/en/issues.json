@@ -124,6 +124,8 @@
         "no_team": "No team",
         "status_section": "Change status",
         "status_hint": "Choose an action for this issue.",
+        "reopen_section": "Reopen issue",
+        "reopen_hint": "This issue is closed. Only administrators can reopen it.",
         "add_task": "Add task for a team",
         "add_task_button": "+ Add task",
         "add_task_modal_title": "Add task",

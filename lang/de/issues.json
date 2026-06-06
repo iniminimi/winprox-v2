@@ -124,6 +124,8 @@
         "no_team": "Kein Team",
         "status_section": "Status ändern",
         "status_hint": "Wählen Sie eine Aktion für diese Meldung.",
+        "reopen_section": "Meldung wieder öffnen",
+        "reopen_hint": "Diese Meldung ist geschlossen. Nur Administratoren können sie wieder öffnen.",
         "add_task": "Aufgabe für ein Team hinzufügen",
         "add_task_button": "+ Aufgabe hinzufügen",
         "add_task_modal_title": "Aufgabe hinzufügen",

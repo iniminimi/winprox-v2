@@ -124,6 +124,8 @@
         "no_team": "Geen team",
         "status_section": "Status wijzigen",
         "status_hint": "Kies een actie voor deze melding.",
+        "reopen_section": "Melding heropenen",
+        "reopen_hint": "Deze melding is gesloten. Alleen beheerders kunnen deze heropenen.",
         "add_task": "Taak toevoegen voor een team",
         "add_task_button": "+ Taak toevoegen",
         "add_task_modal_title": "Taak toevoegen",

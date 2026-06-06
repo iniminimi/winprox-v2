@@ -124,6 +124,8 @@
         "no_team": "Aucune équipe",
         "status_section": "Modifier le statut",
         "status_hint": "Choisissez une action pour ce signalement.",
+        "reopen_section": "Rouvrir le signalement",
+        "reopen_hint": "Ce signalement est fermé. Seuls les administrateurs peuvent le rouvrir.",
         "add_task": "Ajouter une tâche pour une équipe",
         "add_task_button": "+ Ajouter une tâche",
         "add_task_modal_title": "Ajouter une tâche",
