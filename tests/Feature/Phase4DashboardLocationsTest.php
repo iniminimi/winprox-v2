@@ -3,6 +3,7 @@
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
 use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -214,11 +215,13 @@ it('manages categories from location popup', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Categorieen']);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     $component = Livewire::actingAs($user)
         ->test(LocationShow::class, ['location' => $location])
         ->call('openCategoriesModal')
         ->set('categoryName', 'Kranen')
+        ->set('selectedCategoryTeamIds', [$team->id])
         ->call('saveCategory')
         ->assertHasNoErrors()
         ->assertSee('Kranen');
@@ -229,6 +232,7 @@ it('manages categories from location popup', function () {
     $component
         ->call('openEditCategory', (int) $category->id)
         ->set('categoryName', 'Hotelkamers')
+        ->set('selectedCategoryTeamIds', [$team->id])
         ->call('saveCategory')
         ->assertHasNoErrors()
         ->assertSee('Hotelkamers');
