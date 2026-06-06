@@ -20,14 +20,14 @@ class BillingUserLimitTest extends TestCase
 
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         User::factory()->admin()->for($tenant)->create();
-        User::factory()->employee()->count(4)->for($tenant)->create();
+        User::factory()->employee()->count(5)->for($tenant)->create();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('user_limit_exceeded');
 
         app(CreateColleagueAction::class)->handle([
-            'name' => 'Zesde',
-            'email' => 'zes@example.test',
+            'name' => 'Zevende',
+            'email' => 'zeven@example.test',
             'locale' => 'nl',
             'role' => User::ROLE_EMPLOYEE,
             'password' => 'wachtwoord123',
@@ -41,7 +41,7 @@ class BillingUserLimitTest extends TestCase
 
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         User::factory()->admin()->for($tenant)->create();
-        User::factory()->count(3)->for($tenant)->create();
+        User::factory()->employee()->count(3)->for($tenant)->create();
 
         $user = app(CreateColleagueAction::class)->handle([
             'name' => 'Vijfde',
