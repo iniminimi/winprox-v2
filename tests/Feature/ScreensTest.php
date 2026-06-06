@@ -43,8 +43,13 @@ it('toont beheerschermen NOOIT geblurd, ook niet voor een niet-goedgekeurde meld
 
     Tenancy::actAs($tenant->id);
 
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'approved_at' => null,
         'description' => 'Niet-goedgekeurde inhoud, onverkort zichtbaar voor beheer',
     ]);
@@ -78,8 +83,13 @@ it('toont geen blur voor een goedgekeurde melding', function () {
 
     Tenancy::actAs($tenant->id);
 
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'approved_at' => now(),
         'approved_by' => $user->id,
         'description' => 'Goedgekeurde, zichtbare inhoud',
