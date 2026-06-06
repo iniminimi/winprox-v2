@@ -19,11 +19,11 @@ it('imports units successfully from valid CSV', function () {
 
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    // Create a valid CSV file
-    $csvContent = "location_name,unit_name,description,category_name\n";
-    $csvContent .= "Location A,Unit 1,Test description,Category A\n";
-    $csvContent .= "Location A,Unit 2,,Category B\n";
-    $csvContent .= "Location B,Unit 3,Another unit,Category A\n";
+    // Create a valid CSV file with address fields
+    $csvContent = "location_name,unit_name,description,category_name,street,house_number,postal_code,city,country_code,notes\n";
+    $csvContent .= "Location A,Unit 1,Test description,Category A,Main Street,123,1000,Brussels,BE,Headquarters\n";
+    $csvContent .= "Location A,Unit 2,,Category B,,,,,,\n";
+    $csvContent .= "Location B,Unit 3,Another unit,Category A,Second Avenue,45,2000,Antwerp,NL,Branch office\n";
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 
@@ -46,6 +46,23 @@ it('imports units successfully from valid CSV', function () {
 
     // Verify categories were auto-created
     expect(Category::where('tenant_id', $tenant->id)->count())->toBe(2);
+
+    // Verify address fields were imported correctly
+    $locationA = Location::where('tenant_id', $tenant->id)->where('name', 'Location A')->first();
+    expect($locationA->street)->toBe('Main Street');
+    expect($locationA->house_number)->toBe('123');
+    expect($locationA->postal_code)->toBe('1000');
+    expect($locationA->city)->toBe('Brussels');
+    expect($locationA->country_code)->toBe('BE');
+    expect($locationA->notes)->toBe('Headquarters');
+
+    $locationB = Location::where('tenant_id', $tenant->id)->where('name', 'Location B')->first();
+    expect($locationB->street)->toBe('Second Avenue');
+    expect($locationB->house_number)->toBe('45');
+    expect($locationB->postal_code)->toBe('2000');
+    expect($locationB->city)->toBe('Antwerp');
+    expect($locationB->country_code)->toBe('NL');
+    expect($locationB->notes)->toBe('Branch office');
 
     // Verify audit log was written
     expect(DB::table('audit_logs')->where('action', 'units.import')->exists())->toBeTrue();

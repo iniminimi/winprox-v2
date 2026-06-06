@@ -19,6 +19,12 @@ class ImportUnitsAction
     protected array $optionalHeaders = [
         'description',
         'category_name',
+        'street',
+        'house_number',
+        'postal_code',
+        'city',
+        'country_code',
+        'notes',
     ];
 
     /**
@@ -123,6 +129,12 @@ class ImportUnitsAction
                 'unit_name' => 'required|string|max:255',
                 'description' => 'nullable|string|max:1000',
                 'category_name' => 'required|string|max:255',
+                'street' => 'nullable|string|max:255',
+                'house_number' => 'nullable|string|max:50',
+                'postal_code' => 'nullable|string|max:20',
+                'city' => 'nullable|string|max:255',
+                'country_code' => 'nullable|string|max:2',
+                'notes' => 'nullable|string|max:2000',
             ]);
 
             if ($validator->fails()) {
@@ -155,7 +167,12 @@ class ImportUnitsAction
                         'name' => $row['location_name'],
                     ],
                     [
-                        'country_code' => 'BE',
+                        'country_code' => $row['country_code'] ?? 'BE',
+                        'street' => $row['street'] ?? null,
+                        'house_number' => $row['house_number'] ?? null,
+                        'postal_code' => $row['postal_code'] ?? null,
+                        'city' => $row['city'] ?? null,
+                        'notes' => $row['notes'] ?? null,
                         'is_active' => true,
                     ]
                 );

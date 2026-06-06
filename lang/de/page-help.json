@@ -156,7 +156,7 @@
                 },
                 {
                     "label": "CSV-Import",
-                    "text": "Importieren Sie Units massenhaft über eine CSV-Datei. Die Datei muss genau diese Header haben: location_name, unit_name, description (optional), category_name (erforderlich). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Standorte und Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
+                    "text": "Importieren Sie Units massenhaft über eine CSV-Datei. Die Datei muss genau diese Header haben: location_name, unit_name, description (optional), category_name (erforderlich), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Standorte und Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
                 }
             ]
         },
