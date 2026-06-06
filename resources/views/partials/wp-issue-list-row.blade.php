@@ -1,7 +1,11 @@
 @php
     use App\Enums\IssueSource;
+    use App\Enums\TaskStatus;
 
-    $teamNames = $issue->tasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values();
+    // Exclude closed tasks from display
+    $openTasks = $issue->tasks->filter(fn ($t) => $t->status !== TaskStatus::Closed);
+
+    $teamNames = $openTasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values();
     $cardTitle = collect([
         $issue->location?->name,
         $issue->unit?->name,
@@ -33,8 +37,8 @@
             'teams' => $teamsLabel,
         ]),
     };
-    // Get highest priority task for this issue
-    $highestPriorityTask = $issue->tasks->sortBy(fn ($t) => $t->priority?->sortOrder() ?? 99)->first();
+    // Get highest priority task for this issue (excluding closed tasks)
+    $highestPriorityTask = $openTasks->sortBy(fn ($t) => $t->priority?->sortOrder() ?? 99)->first();
 @endphp
 <a href="{{ route('issues.show', $issue) }}"
    @class(['wp-issue-row', 'wp-issue-row--highlight' => $highlight ?? false])

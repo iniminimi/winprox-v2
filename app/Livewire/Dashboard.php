@@ -26,6 +26,7 @@ class Dashboard extends Component
         ];
 
         $recent = Issue::query()
+            ->where('status', '!=', TaskStatus::Closed->value)
             ->with(['location', 'unit', 'tasks.team'])
             ->latest()
             ->take(10)
