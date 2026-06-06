@@ -77,7 +77,7 @@
     </div>
 
     @unless ($issue->isApproved())
-        @unless ($issue->status->isClosed())
+        @unless ($issue->status === \App\Enums\TaskStatus::Closed)
             <div class="wp-card wp-card-pad wp-stack">
                 <h2 class="wp-section-title">{{ __('issues.show.status_section') }}</h2>
                 <p class="wp-muted">{{ __('issues.show.status_hint') }}</p>
@@ -89,7 +89,7 @@
         @endunless
     @endunless
 
-    @if ($issue->status->isClosed() && auth()->user()->isAdmin())
+    @if ($issue->status === \App\Enums\TaskStatus::Closed && auth()->user()->isAdmin())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('issues.show.reopen_section') }}</h2>
             <p class="wp-muted">{{ __('issues.show.reopen_hint') }}</p>
