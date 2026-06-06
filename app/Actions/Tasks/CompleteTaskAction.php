@@ -67,7 +67,7 @@ class CompleteTaskAction
         ]);
 
         $this->audit->record(
-            userId: $worker?->id,
+            userId: null, // Workers are not users
             tenantId: $task->tenant_id,
             action: 'task_completed',
             modelType: Task::class,
