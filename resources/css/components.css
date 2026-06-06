@@ -1982,6 +1982,16 @@ a.wp-kpi:hover {
     color: #b91c1c;
 }
 
+.wp-flash--offline {
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--wp-radius);
+    background-color: #fee2e2;
+    border: 3px solid #dc2626;
+    color: #000;
+    font-size: 1.125rem;
+    font-weight: 800;
+}
+
 .wp-form-error-list {
     margin: 0;
     padding-left: 1.25rem;

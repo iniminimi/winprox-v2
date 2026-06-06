@@ -65,8 +65,11 @@
             "name": "Unit-Name",
             "description": "Beschreibung",
             "team": "Team",
-            "category": "Kategorie"
+            "category": "Kategorie",
+            "teams": "Teams"
         },
+        "teams_subtitle": "Wählen Sie die für diese Einheit verantwortlichen Teams aus.",
+        "teams_empty": "Keine Teams verfügbar.",
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",
             "photos_hint": "Maximal 4 Fotos pro Einheit.",
@@ -81,7 +84,8 @@
         "errors": {
             "name_required": "Bitte Unit-Namen eingeben.",
             "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort.",
-            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants."
+            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants.",
+            "teams_required": "Wählen Sie mindestens ein Team aus."
         },
         "flash": {
             "created": "Unit angelegt.",
@@ -131,10 +135,6 @@
         "fields": {
             "name": "Kategoriename"
         },
-        "teams_title": "Teams",
-        "teams_subtitle": "Wählen Sie die Teams, die für diese Kategorie verantwortlich sind.",
-        "teams_empty": "Keine Teams verfügbar.",
-        "primary_team": "Primär",
         "errors": {
             "name_required": "Bitte einen Kategorienamen eingeben.",
             "duplicate_name": "Dieser Kategoriename existiert bereits."

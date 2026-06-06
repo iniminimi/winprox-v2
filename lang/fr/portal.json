@@ -173,7 +173,8 @@
         "delete_photo_confirm": "Supprimer cette photo ?",
         "photos_submit": "Enregistrer les photos",
         "photos_submit_loading": "Enregistrement en cours...",
-        "photos_updated": "Photos ajoutées avec succès !"
+        "photos_updated": "Photos ajoutées avec succès !",
+        "upload_failed_offline": "Téléversement échoué. Vérifiez votre connexion internet et réessayez."
     }
 }
 

@@ -1,6 +1,6 @@
 <div class="wp-stack">
     @if ($inactiveReasonKey === null)
-        <div wire:offline class="wp-flash wp-flash--danger" style="position: sticky; top: 0; z-index: 50; text-align: center;">
+        <div wire:offline class="wp-flash wp-flash--offline" style="position: sticky; top: 0; z-index: 50; text-align: center;">
             {{ __('portal.offline_message') }}
         </div>
     @endif
@@ -101,15 +101,27 @@
         @if ($portalSection === 'new')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
             <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
-            <form x-data
-                  x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-                  @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
+            <form x-data="{ 
+                isOffline: !navigator.onLine,
+                description: $wire.description || sessionStorage.getItem('wp-portal-description') || ''
+            }"
+                  x-init="
+                queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
+                $watch('description', value => sessionStorage.setItem('wp-portal-description', value || ''));
+                window.addEventListener('offline', () => isOffline = true);
+                window.addEventListener('online', () => isOffline = false);
+            "
+                  @submit.prevent="
+                await window.wpAwaitPhotoUploads($el);
+                sessionStorage.removeItem('wp-portal-description');
+                $wire.submitReport()
+            "
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
                     @include('partials.wp-portal-report-reporter-fields')
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
-                        <textarea id="description" class="wp-textarea" wire:model="description" rows="5"
+                        <textarea id="description" class="wp-textarea" x-model="description" wire:model="description" rows="5"
                                   placeholder="{{ __('portal.report.description_placeholder') }}"></textarea>
                         @error('description') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
@@ -121,7 +133,7 @@
                     </div>
                 </div>
                 <div class="wp-portal-actions">
-                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
                         <x-wp-spinner wire:loading class="wp-mr-2" />
                         <span wire:loading.remove>{{ __('portal.report.submit') }}</span>
                         <span wire:loading>{{ __('portal.report.submit_loading') }}</span>
@@ -363,12 +375,16 @@
 
                         @if ($portalTempCount > 0)
                             <form
-                                x-data
+                                x-data="{ isOffline: !navigator.onLine }"
+                                x-init="
+                                    window.addEventListener('offline', () => isOffline = true);
+                                    window.addEventListener('online', () => isOffline = false);
+                                "
                                 @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.updateUnitPhotos()"
                                 wire:key="portal-photo-submit-form"
                             >
                                 <div class="wp-portal-actions">
-                                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
                                         <x-wp-spinner wire:loading class="wp-mr-2" />
                                         <span wire:loading.remove>{{ __('portal.unit.photos_submit') }}</span>
                                         <span wire:loading>{{ __('portal.unit.photos_submit_loading') }}</span>

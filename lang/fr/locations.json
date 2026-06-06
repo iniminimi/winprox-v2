@@ -65,8 +65,11 @@
             "name": "Nom de l'unité",
             "description": "Description",
             "team": "Équipe",
-            "category": "Catégorie"
+            "category": "Catégorie",
+            "teams": "Équipes"
         },
+        "teams_subtitle": "Sélectionnez les équipes responsables de cette unité.",
+        "teams_empty": "Aucune équipe disponible.",
         "edit": {
             "photos_label": "Photos de la liaison QR",
             "photos_hint": "Maximum 4 photos par unité.",
@@ -81,7 +84,8 @@
         "errors": {
             "name_required": "Indiquez un nom d'unité.",
             "duplicate_name": "Ce nom d'unité existe déjà sur ce site.",
-            "invalid_category": "Choisissez une catégorie valide de votre tenant."
+            "invalid_category": "Choisissez une catégorie valide de votre tenant.",
+            "teams_required": "Sélectionnez au moins une équipe."
         },
         "flash": {
             "created": "Unité créée.",

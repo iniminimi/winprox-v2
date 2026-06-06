@@ -46,5 +46,9 @@
     </main>
 
     @livewireScripts
+    <script>
+        window.__translations = window.__translations || {};
+        window.__translations['portal.unit.upload_failed_offline'] = @json(__('portal.unit.upload_failed_offline'));
+    </script>
 </body>
 </html>

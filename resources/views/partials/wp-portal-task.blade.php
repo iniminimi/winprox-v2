@@ -18,8 +18,12 @@
 
     @if ($completingTaskId === $task->id)
         <form wire:submit="submitCompleteTask"
-              x-data
-              x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
+              x-data="{ isOffline: !navigator.onLine }"
+              x-init="
+                queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
+                window.addEventListener('offline', () => isOffline = true);
+                window.addEventListener('online', () => isOffline = false);
+            "
               @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
               class="wp-stack">
             <div class="wp-field">
@@ -35,7 +39,7 @@
                 @error('completingPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-stack-tight">
-                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="!navigator.onLine">
+                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
                     <span wire:loading wire:target="submitCompleteTask" class="wp-mr-2">
                         <x-wp-spinner size="sm"/>
                     </span>
@@ -46,14 +50,17 @@
             </div>
         </form>
     @else
-        <div class="wp-stack-tight">
+        <div class="wp-stack-tight" x-data="{ isOffline: !navigator.onLine }" x-init="
+            window.addEventListener('offline', () => isOffline = true);
+            window.addEventListener('online', () => isOffline = false);
+        ">
             @if ($task->canStart())
                 <button type="button"
                         class="btn btn--warning btn--block"
                         wire:click="startTask({{ $task->id }})"
                         wire:loading.attr="disabled"
                         wire:target="startTask({{ $task->id }})"
-                        :disabled="!navigator.onLine">
+                        :disabled="isOffline">
                     <span wire:loading wire:target="startTask({{ $task->id }})" class="wp-mr-2">
                         <x-wp-spinner size="sm"/>
                     </span>
@@ -67,7 +74,7 @@
                         wire:click="beginCompleteTask({{ $task->id }})"
                         wire:loading.attr="disabled"
                         wire:target="beginCompleteTask({{ $task->id }})"
-                        :disabled="!navigator.onLine">
+                        :disabled="isOffline">
                     <span wire:loading wire:target="beginCompleteTask({{ $task->id }})" class="wp-mr-2">
                         <x-wp-spinner size="sm"/>
                     </span>

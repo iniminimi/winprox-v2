@@ -54,11 +54,7 @@
             "session_lifespan_daily": "Dagelijks",
             "session_lifespan_weekly": "Wekelijks",
             "session_lifespan_custom": "Specifiek aantal uren",
-            "session_lifespan_custom_hours": "Aantal uren",
-            "categories_title": "Productgroepen",
-            "categories_subtitle": "Selecteer voor welke productgroepen dit team verantwoordelijk is.",
-            "categories_empty": "Geen productgroepen beschikbaar.",
-            "primary_category": "Primair"
+            "session_lifespan_custom_hours": "Aantal uren"
         }
     },
     "workers": {

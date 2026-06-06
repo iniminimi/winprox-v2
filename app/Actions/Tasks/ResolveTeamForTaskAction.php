@@ -4,51 +4,32 @@ namespace App\Actions\Tasks;
 
 use App\Models\InternalTeam;
 use App\Models\Unit;
+use Illuminate\Support\Collection;
 
 readonly class ResolveTeamForTaskAction
 {
-    public function __construct(
-        private ResolveEligibleTeamsForUnitAction $resolveEligible,
-    ) {
-    }
-
     public function handle(
         Unit $unit,
         ?int $preferredTeamId = null,
     ): ?InternalTeam {
-        // If a preferred team is provided, return it if it's eligible
+        // If a preferred team is provided, return it if it's assigned to the unit
         if ($preferredTeamId !== null) {
-            $eligible = $this->resolveEligible->handle($unit);
-            $preferred = $eligible->first(fn ($item) => $item['team']->id === $preferredTeamId);
-
-            if ($preferred !== null) {
-                return $preferred['team'];
+            $team = $unit->teams()->where('internal_teams.id', $preferredTeamId)->first();
+            if ($team !== null) {
+                return $team;
             }
         }
 
-        // Get eligible teams for the unit
-        $eligible = $this->resolveEligible->handle($unit);
+        // Return first assigned team (claim-based: teams can claim the task)
+        return $unit->teams()->first();
+    }
 
-        // Try to find primary team
-        $primary = $eligible->first(fn ($item) => $item['is_primary'] === true);
-
-        if ($primary !== null) {
-            return $primary['team'];
-        }
-
-        // If no primary team, fallback to unit's default team
-        if ($unit->default_internal_team_id !== null) {
-            $defaultTeam = InternalTeam::find($unit->default_internal_team_id);
-            if ($defaultTeam !== null) {
-                return $defaultTeam;
-            }
-        }
-
-        // Fallback to first eligible team
-        if ($eligible->isNotEmpty()) {
-            return $eligible->first()['team'];
-        }
-
-        return null;
+    /**
+     * Get all teams that can work on this unit's tasks.
+     * Used for claim-based task assignment.
+     */
+    public function getEligibleTeams(Unit $unit): Collection
+    {
+        return $unit->teams()->get();
     }
 }

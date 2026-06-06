@@ -57,14 +57,26 @@
         @if ($portalSection === 'new')
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
             <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
-            <form x-data
-                  x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
-                  @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitReport()"
+            <form x-data="{ 
+                isOffline: !navigator.onLine,
+                description: $wire.description || sessionStorage.getItem('wp-location-description') || ''
+            }"
+                  x-init="
+                queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
+                $watch('description', value => sessionStorage.setItem('wp-location-description', value || ''));
+                window.addEventListener('offline', () => isOffline = true);
+                window.addEventListener('online', () => isOffline = false);
+            "
+                  @submit.prevent="
+                await window.wpAwaitPhotoUploads($el);
+                sessionStorage.removeItem('wp-location-description');
+                $wire.submitReport()
+            "
                   class="wp-card wp-card-pad wp-stack">
                 @include('partials.wp-portal-report-reporter-fields')
                 <div class="wp-field">
                     <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
-                    <textarea id="description" class="wp-input" rows="4" wire:model="description"
+                    <textarea id="description" class="wp-input" rows="4" x-model="description" wire:model="description"
                               placeholder="{{ __('portal.report.description_placeholder') }}"></textarea>
                     @error('description') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
@@ -74,8 +86,10 @@
                     @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="btn btn--primary btn--block">
-                    {{ __('portal.report.submit') }}
+                <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
+                    <x-wp-spinner wire:loading class="wp-mr-2" />
+                    <span wire:loading.remove>{{ __('portal.report.submit') }}</span>
+                    <span wire:loading>{{ __('portal.report.submit_loading') }}</span>
                 </button>
             </form>
         @endif

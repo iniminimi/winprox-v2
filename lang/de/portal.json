@@ -173,7 +173,8 @@
         "delete_photo_confirm": "Dieses Foto löschen?",
         "photos_submit": "Fotos speichern",
         "photos_submit_loading": "Speichern...",
-        "photos_updated": "Fotos erfolgreich hinzugefügt!"
+        "photos_updated": "Fotos erfolgreich hinzugefügt!",
+        "upload_failed_offline": "Upload fehlgeschlagen. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut."
     }
 }
 

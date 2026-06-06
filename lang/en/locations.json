@@ -65,8 +65,11 @@
             "name": "Unit name",
             "description": "Description",
             "team": "Team",
-            "category": "Category"
+            "category": "Category",
+            "teams": "Teams"
         },
+        "teams_subtitle": "Select the teams responsible for this unit.",
+        "teams_empty": "No teams available.",
         "edit": {
             "photos_label": "Photos of the QR link",
             "photos_hint": "Maximum 4 photos per unit.",
@@ -81,7 +84,8 @@
         "errors": {
             "name_required": "Enter a unit name.",
             "duplicate_name": "This unit name already exists at this location.",
-            "invalid_category": "Choose a valid category from your tenant."
+            "invalid_category": "Choose a valid category from your tenant.",
+            "teams_required": "Select at least one team."
         },
         "flash": {
             "created": "Unit created.",

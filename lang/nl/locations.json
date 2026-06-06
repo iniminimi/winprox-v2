@@ -65,8 +65,11 @@
             "name": "Unitnaam",
             "description": "Beschrijving",
             "team": "Team",
-            "category": "Categorie"
+            "category": "Categorie",
+            "teams": "Teams"
         },
+        "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze unit.",
+        "teams_empty": "Geen teams beschikbaar.",
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
             "photos_hint": "Maximaal 4 foto's per unit.",
@@ -81,7 +84,8 @@
         "errors": {
             "name_required": "Vul een unitnaam in.",
             "duplicate_name": "Deze unitnaam bestaat al op deze locatie.",
-            "invalid_category": "Kies een geldige categorie van je tenant."
+            "invalid_category": "Kies een geldige categorie van je tenant.",
+            "teams_required": "Selecteer minimaal één team."
         },
         "flash": {
             "created": "Unit aangemaakt.",
@@ -131,10 +135,6 @@
         "fields": {
             "name": "Categorienaam"
         },
-        "teams_title": "Teams",
-        "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
-        "teams_empty": "Geen teams beschikbaar.",
-        "primary_team": "Primair",
         "errors": {
             "name_required": "Vul een categorienaam in.",
             "duplicate_name": "Deze categorienaam bestaat al."

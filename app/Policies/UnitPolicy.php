@@ -39,4 +39,9 @@ class UnitPolicy
         return $this->view($user, $unit)
             && UnitDeletionGuard::canDelete($unit);
     }
+
+    public function syncTeams(User $user, Unit $unit): bool
+    {
+        return $this->view($user, $unit);
+    }
 }

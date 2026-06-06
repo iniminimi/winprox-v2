@@ -173,7 +173,8 @@
         "delete_photo_confirm": "Deze foto verwijderen?",
         "photos_submit": "Foto's opslaan",
         "photos_submit_loading": "Bezig met opslaan...",
-        "photos_updated": "Foto's succesvol toegevoegd!"
+        "photos_updated": "Foto's succesvol toegevoegd!",
+        "upload_failed_offline": "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw."
     }
 }
 

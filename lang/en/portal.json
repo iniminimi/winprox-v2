@@ -173,7 +173,8 @@
         "delete_photo_confirm": "Delete this photo?",
         "photos_submit": "Save photos",
         "photos_submit_loading": "Saving...",
-        "photos_updated": "Photos added successfully!"
+        "photos_updated": "Photos added successfully!",
+        "upload_failed_offline": "Upload failed. Check your internet connection and try again."
     }
 }
 

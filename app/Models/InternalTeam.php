@@ -44,10 +44,9 @@ class InternalTeam extends Model
         return $this->hasMany(Task::class);
     }
 
-    public function categories(): BelongsToMany
+    public function units(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_internal_team')
-            ->withPivot('is_primary')
+        return $this->belongsToMany(Unit::class, 'internal_team_unit', 'internal_team_id', 'unit_id')
             ->withTimestamps();
     }
 }

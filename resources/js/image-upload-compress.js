@@ -247,7 +247,7 @@ function wpLivewireUploadFiles(component, propertyName, files) {
                 propertyName,
                 files,
                 () => resolve(),
-                () => reject(new Error('upload failed')),
+                (error) => reject(error || new Error('upload failed')),
             );
         });
     }
@@ -255,7 +255,7 @@ function wpLivewireUploadFiles(component, propertyName, files) {
     return (async () => {
         for (const file of files) {
             await new Promise((resolve, reject) => {
-                component.upload(propertyName, file, () => resolve(), () => reject(new Error('upload failed')));
+                component.upload(propertyName, file, () => resolve(), (error) => reject(error || new Error('upload failed')));
             });
         }
     })();
@@ -272,6 +272,22 @@ function wpSchedulePhotoJob(area, job) {
     });
 
     return area._wpPhotoUploadChain;
+}
+
+/**
+ * Show a temporary flash message for upload errors
+ * @param {string} message
+ */
+function wpShowUploadError(message) {
+    const flash = document.createElement('div');
+    flash.className = 'wp-flash wp-flash--danger';
+    flash.style.cssText = 'position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999; text-align: center; max-width: 90%;';
+    flash.textContent = message;
+    document.body.appendChild(flash);
+
+    setTimeout(() => {
+        flash.remove();
+    }, 5000);
 }
 
 /**
@@ -313,7 +329,16 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
         });
         wpReindexPhotoPreviews(previewRoot);
         wpSyncPhotoPicker(area);
-        throw error;
+
+        // Show user-friendly error message
+        const localeKey = 'portal.unit.upload_failed_offline';
+        const errorMessage = window.__translations?.[localeKey] || localeKey;
+        wpShowUploadError(errorMessage);
+
+        // Reset the upload chain so subsequent uploads can work
+        area._wpPhotoUploadChain = Promise.resolve();
+
+        console.error('[wp-photo-compress] Upload failed:', error);
     }
 }
 
