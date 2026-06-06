@@ -18,7 +18,7 @@ final class PortalAccess
      */
     public static function unitPortalInactiveReasonKey(Unit $unit): ?string
     {
-        $unit->loadMissing(['location', 'defaultInternalTeam', 'tenant']);
+        $unit->loadMissing(['location', 'category.teams', 'tenant']);
 
         if ($reason = self::tenantInactiveReasonKey($unit->tenant)) {
             return $reason;
@@ -32,9 +32,11 @@ final class PortalAccess
             return 'portal.inactive.unit_inactive';
         }
 
-        $team = $unit->defaultInternalTeam;
-        if ($team !== null && ! $team->is_active) {
-            return 'portal.inactive.team_inactive';
+        if ($unit->category !== null) {
+            $team = $unit->category->teams()->first();
+            if ($team !== null && ! $team->is_active) {
+                return 'portal.inactive.team_inactive';
+            }
         }
 
         return null;
