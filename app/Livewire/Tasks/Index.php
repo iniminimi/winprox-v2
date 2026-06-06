@@ -56,6 +56,7 @@ class Index extends Component
         $tasks = Task::query()
             ->with(['issue.location', 'issue.unit', 'team'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
+            ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->priorityFilter !== '', fn ($q) => $q->where('priority', $this->priorityFilter))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring_cycle', true))
