@@ -74,7 +74,7 @@ class UnitPortal extends Component
     public function mount(string $token): void
     {
         $unit = Unit::withoutGlobalScope('tenant')
-            ->with(['location', 'defaultInternalTeam', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
+            ->with(['location', 'category', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
             ->where('qr_token', $token)
             ->first();
 
@@ -83,7 +83,14 @@ class UnitPortal extends Component
         $this->token = $token;
         $this->unitId = $unit->id;
         $this->tenantId = $unit->tenant_id;
-        $this->teamId = $unit->default_internal_team_id;
+
+        // Get team from category
+        $this->teamId = null;
+        if ($unit->category !== null) {
+            $firstTeam = $unit->category->teams()->first();
+            $this->teamId = $firstTeam?->id;
+        }
+
         $this->unitName = $unit->name;
         $this->locationName = $unit->location?->name ?? '';
         $this->unitDescription = $unit->description ?? '';
@@ -523,13 +530,13 @@ class UnitPortal extends Component
             'openTaskCount' => $openTaskCount,
             'hasUnitTeam' => $team !== null,
             'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
-            'workerBelongsToUnitTeam' => $worker !== null && (int) $worker->internal_team_id === (int) $unit->default_internal_team_id,
+            'workerBelongsToUnitTeam' => $worker !== null && $unit->category !== null && $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists(),
         ]);
     }
 
     private function unit(): Unit
     {
-        return Unit::with(['location', 'defaultInternalTeam', 'qrLinkPhotos'])->findOrFail($this->unitId);
+        return Unit::with(['location', 'category', 'qrLinkPhotos'])->findOrFail($this->unitId);
     }
 
     private function activeTeam(): ?\App\Models\InternalTeam
@@ -546,7 +553,12 @@ class UnitPortal extends Component
             }
         }
 
-        $team = $this->unit()->defaultInternalTeam;
+        $unit = $this->unit();
+        if ($unit->category === null) {
+            return null;
+        }
+
+        $team = $unit->category->teams()->first();
 
         return ($team !== null && $team->is_active) ? $team : null;
     }
@@ -580,7 +592,12 @@ class UnitPortal extends Component
             return false;
         }
 
-        return (int) $worker->internal_team_id === (int) $this->unit()->default_internal_team_id;
+        $unit = $this->unit();
+        if ($unit->category === null) {
+            return false;
+        }
+
+        return $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists();
     }
 
     private function findUnitTask(int $taskId): ?Task

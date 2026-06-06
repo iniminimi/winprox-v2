@@ -145,8 +145,11 @@ class Index extends Component
 
         $unit = Unit::query()->find($value);
 
-        if ($unit?->default_internal_team_id) {
-            $this->internal_team_id = (int) $unit->default_internal_team_id;
+        if ($unit?->category !== null) {
+            $firstTeam = $unit->category->teams()->first();
+            if ($firstTeam !== null) {
+                $this->internal_team_id = (int) $firstTeam->id;
+            }
         }
     }
 
@@ -184,8 +187,11 @@ class Index extends Component
 
         $unit = Unit::query()->find($this->unit_id);
 
-        if ($unit?->default_internal_team_id) {
-            $this->internal_team_id = (int) $unit->default_internal_team_id;
+        if ($unit?->category !== null) {
+            $firstTeam = $unit->category->teams()->first();
+            if ($firstTeam !== null) {
+                $this->internal_team_id = (int) $firstTeam->id;
+            }
         }
     }
 

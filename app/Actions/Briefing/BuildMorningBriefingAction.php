@@ -178,7 +178,7 @@ final class BuildMorningBriefingAction
     {
         $query->where(function (Builder $outer) use ($teamId) {
             $outer->whereHas('tasks', fn (Builder $taskQuery) => $taskQuery->where('internal_team_id', $teamId))
-                ->orWhereHas('unit', fn (Builder $unitQuery) => $unitQuery->where('default_internal_team_id', $teamId));
+                ->orWhereHas('unit', fn (Builder $unitQuery) => $unitQuery->whereHas('category', fn (Builder $categoryQuery) => $categoryQuery->whereHas('teams', fn (Builder $teamQuery) => $teamQuery->where('internal_teams.id', $teamId))));
         });
     }
 

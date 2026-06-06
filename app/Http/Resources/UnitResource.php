@@ -18,7 +18,6 @@ class UnitResource extends JsonResource
             'id' => $this->id,
             'location_id' => $this->location_id,
             'category_id' => $this->category_id,
-            'default_internal_team_id' => $this->default_internal_team_id,
             'name' => $this->name,
             'is_active' => (bool) $this->is_active,
         ];

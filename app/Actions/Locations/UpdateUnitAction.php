@@ -25,7 +25,6 @@ class UpdateUnitAction
         $payload = [
             'name' => trim((string) $data['name']),
             'description' => $data['description'] ?? null,
-            'default_internal_team_id' => $data['default_internal_team_id'] ?? null,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {

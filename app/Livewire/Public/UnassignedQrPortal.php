@@ -153,9 +153,15 @@ class UnassignedQrPortal extends Component
             return;
         }
 
-        // For team workers, verify unit belongs to their team
+        // For team workers, verify unit belongs to their team via category
         if ($this->worker && $this->team) {
-            if ($unit->default_internal_team_id !== $this->team->id) {
+            if ($unit->category === null) {
+                $this->addError('selectedUnitId', 'Unit has no category');
+                return;
+            }
+
+            $categoryTeamIds = $unit->category->teams()->pluck('internal_teams.id')->toArray();
+            if (!in_array($this->team->id, $categoryTeamIds, true)) {
                 $this->addError('selectedUnitId', 'Unit not assigned to your team');
                 return;
             }
@@ -200,17 +206,20 @@ class UnassignedQrPortal extends Component
             ->where('tenant_id', $this->tenantId)
             ->where('is_active', true);
 
-        // For team workers, filter by their team AND ensure units belong to correct tenant
+        // For team workers, filter by their team via category
         if ($this->worker && $this->team) {
-            $query->where('default_internal_team_id', $this->team->id)
-                  ->where('tenant_id', $this->tenantId);
+            $query->whereHas('category', function ($q) {
+                $q->whereHas('teams', function ($teamQuery) {
+                    $teamQuery->where('internal_teams.id', $this->team->id);
+                });
+            });
         }
 
         return $query
             ->when($this->search, function ($query) {
                 $query->where('name', 'like', '%'.$this->search.'%');
             })
-            ->with(['location', 'category', 'defaultInternalTeam', 'qrCodes' => function ($query) {
+            ->with(['location', 'category', 'qrCodes' => function ($query) {
                 $query->where('status', \App\Enums\QrCodeStatus::Active);
             }])
             ->orderBy('name')

@@ -58,10 +58,6 @@ class BulkCreateUnitsAction
 
         Tenant::query()->findOrFail($tenantId)->assertCanAddUnits($total);
 
-        $teamId = isset($data['default_internal_team_id']) && $data['default_internal_team_id'] !== ''
-            ? (int) $data['default_internal_team_id']
-            : null;
-
         $categoryId = isset($data['category_id']) && $data['category_id'] !== ''
             ? (int) $data['category_id']
             : null;
@@ -96,7 +92,6 @@ class BulkCreateUnitsAction
                     'location_id' => $location->id,
                     'bulk_batch_id' => $batch->id,
                     'name' => $name,
-                    'default_internal_team_id' => $teamId,
                     'category_id' => $categoryId,
                     'is_active' => true,
                 ]);

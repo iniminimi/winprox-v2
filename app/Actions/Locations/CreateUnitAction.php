@@ -24,7 +24,6 @@ class CreateUnitAction
             'location_id' => $location->id,
             'name' => trim((string) $data['name']),
             'description' => $data['description'] ?? null,
-            'default_internal_team_id' => $data['default_internal_team_id'] ?? null,
             'is_active' => true,
         ];
 

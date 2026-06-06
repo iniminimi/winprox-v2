@@ -91,11 +91,21 @@ class DatabaseSeeder extends Seeder
             'is_active' => true,
         ]);
 
+        // Create categories and link to teams
+        $categoryTechniek = Category::create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+        $categoryTechniek->teams()->sync([$teamTechniek->id]);
+
+        $categoryElektriciteit = Category::create(['tenant_id' => $tenant->id, 'name' => 'Elektriciteit']);
+        $categoryElektriciteit->teams()->sync([$teamElektriciteit->id]);
+
+        $categorySchoonmaak = Category::create(['tenant_id' => $tenant->id, 'name' => 'Schoonmaak']);
+        $categorySchoonmaak->teams()->sync([$teamSchoonmaak->id]);
+
         $units = [
-            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Lift A']),
-            Unit::create(['location_id' => $locationA->id, 'default_internal_team_id' => $teamTechniek->id, 'name' => 'Vergaderzaal 1.04']),
-            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamElektriciteit->id, 'name' => 'Laadkade 3']),
-            Unit::create(['location_id' => $locationB->id, 'default_internal_team_id' => $teamSchoonmaak->id, 'name' => 'Sanitair magazijn']),
+            Unit::create(['location_id' => $locationA->id, 'category_id' => $categoryTechniek->id, 'name' => 'Lift A']),
+            Unit::create(['location_id' => $locationA->id, 'category_id' => $categoryTechniek->id, 'name' => 'Vergaderzaal 1.04']),
+            Unit::create(['location_id' => $locationB->id, 'category_id' => $categoryElektriciteit->id, 'name' => 'Laadkade 3']),
+            Unit::create(['location_id' => $locationB->id, 'category_id' => $categorySchoonmaak->id, 'name' => 'Sanitair magazijn']),
         ];
 
         // Documenten: publiek downloadbaar + één dat verificatie vereist.
