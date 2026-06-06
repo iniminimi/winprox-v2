@@ -131,6 +131,10 @@
         "fields": {
             "name": "Categorienaam"
         },
+        "teams_title": "Teams",
+        "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
+        "teams_empty": "Geen teams beschikbaar.",
+        "primary_team": "Primair",
         "errors": {
             "name_required": "Vul een categorienaam in.",
             "duplicate_name": "Deze categorienaam bestaat al."

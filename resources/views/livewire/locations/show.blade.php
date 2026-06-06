@@ -431,6 +431,42 @@
                         @error('categoryName') <span class="wp-error">{{ $message }}</span> @enderror
                     </label>
 
+                    <div class="wp-field">
+                        <h3 class="wp-label">{{ __('locations.categories.teams_title') }}</h3>
+                        <p class="wp-hint">{{ __('locations.categories.teams_subtitle') }}</p>
+                    </div>
+
+                    @if ($teams->isNotEmpty())
+                        <div class="wp-grid wp-grid--2">
+                            @foreach ($teams as $team)
+                                @php
+                                    $isTeamSelected = in_array($team->id, $selectedTeamIds, true);
+                                    $isPrimary = $primaryTeamId === $team->id;
+                                @endphp
+                                <label class="wp-check wp-check--boxed wp-check--category">
+                                    <div class="wp-check-row">
+                                        <input type="checkbox"
+                                               wire:model.live="selectedTeamIds"
+                                               value="{{ $team->id }}"
+                                               @if ($isTeamSelected) checked @endif>
+                                        <span>{{ $team->name }}</span>
+                                    </div>
+                                    @if ($isTeamSelected)
+                                        <div class="wp-check-row wp-check-row--primary">
+                                            <input type="radio"
+                                                   name="primary_team"
+                                                   wire:click="$set('primaryTeamId', {{ $team->id }})"
+                                                   @if ($isPrimary) checked @endif>
+                                            <span class="wp-pill wp-pill--new">{{ __('locations.categories.primary_team') }}</span>
+                                        </div>
+                                    @endif
+                                </label>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="wp-muted">{{ __('locations.categories.teams_empty') }}</p>
+                    @endif
+
                     <div class="wp-row">
                         @if ($editingCategoryId !== null)
                             <button type="button" class="btn btn--ghost" wire:click="cancelEditCategory">{{ __('common.button.cancel') }}</button>

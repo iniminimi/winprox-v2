@@ -54,7 +54,11 @@
             "session_lifespan_daily": "Daily",
             "session_lifespan_weekly": "Weekly",
             "session_lifespan_custom": "Custom hours",
-            "session_lifespan_custom_hours": "Number of hours"
+            "session_lifespan_custom_hours": "Number of hours",
+            "categories_title": "Product categories",
+            "categories_subtitle": "Select which product categories this team is responsible for.",
+            "categories_empty": "No product categories available.",
+            "primary_category": "Primary"
         }
     },
     "workers": {

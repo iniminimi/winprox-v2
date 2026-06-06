@@ -11,11 +11,13 @@ use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
 use App\Actions\Team\SetWorkerTeamleaderAction;
+use App\Actions\Team\SyncTeamCategoriesAction;
 use App\Actions\Team\UpdateColleagueAction;
 use App\Actions\Team\UpdateTeamAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
+use App\Http\Requests\Team\SyncTeamCategoriesRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Models\InternalTeam;
 use App\Models\User;
@@ -58,6 +60,12 @@ class Team extends Component
     public bool $teamIsActive = true;
     public string $teamSessionLifespanType = 'daily';
     public ?int $teamSessionLifespanCustomHours = null;
+
+    /** @var array<int, int> */
+    public array $selectedCategoryIds = [];
+
+    /** @var int|null */
+    public ?int $primaryCategoryId = null;
 
     // Worker toevoegen (inline per team)
     public ?int $addingWorkerTeamId = null;
@@ -295,7 +303,7 @@ class Team extends Component
         $this->teamName = $team->name;
         $this->teamSortOrder = $team->sort_order;
         $this->teamIsActive = $team->is_active;
-        
+
         // Determine session lifespan type
         if ($team->session_lifespan_hours === 14) {
             $this->teamSessionLifespanType = 'daily';
@@ -310,12 +318,18 @@ class Team extends Component
             $this->teamSessionLifespanType = 'daily';
             $this->teamSessionLifespanCustomHours = null;
         }
-        
+
+        // Load categories
+        $categories = $team->categories()
+            ->get(['id', 'category_internal_team.is_primary as is_primary']);
+        $this->selectedCategoryIds = $categories->pluck('id')->toArray();
+        $this->primaryCategoryId = $categories->firstWhere('is_primary', true)?->id;
+
         $this->resetErrorBag();
         $this->showTeamModal = true;
     }
 
-    public function saveTeam(CreateTeamAction $createTeam, UpdateTeamAction $updateTeam): void
+    public function saveTeam(CreateTeamAction $createTeam, UpdateTeamAction $updateTeam, SyncTeamCategoriesAction $syncCategories): void
     {
         $request = new StoreTeamRequest;
         $validated = $this->validate(
@@ -349,15 +363,51 @@ class Team extends Component
                 'is_active' => $active,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) auth()->id());
+
+            // Sync categories
+            Gate::authorize('syncCategories', $team);
+            $syncRequest = new SyncTeamCategoriesRequest;
+            $this->validate(
+                ['selectedCategoryIds' => 'array'],
+                []
+            );
+
+            $categoriesData = collect($this->selectedCategoryIds)
+                ->map(fn ($id) => ['id' => $id, 'is_primary' => $id === $this->primaryCategoryId])
+                ->toArray();
+
+            $syncCategories->handle(
+                $team,
+                \App\Data\Teams\SyncTeamCategoriesData::fromRequest(['categories' => $categoriesData]),
+                auth()->user(),
+            );
         } else {
             Gate::authorize('create', InternalTeam::class);
 
-            $createTeam->handle([
+            $team = $createTeam->handle([
                 'name' => $validated['teamName'],
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) Tenancy::id(), (int) auth()->id());
+
+            // Sync categories for new team
+            Gate::authorize('syncCategories', $team);
+            $syncRequest = new SyncTeamCategoriesRequest;
+            $this->validate(
+                ['selectedCategoryIds' => 'array'],
+                []
+            );
+
+            $categoriesData = collect($this->selectedCategoryIds)
+                ->map(fn ($id) => ['id' => $id, 'is_primary' => $id === $this->primaryCategoryId])
+                ->toArray();
+
+            $syncCategories->handle(
+                $team,
+                \App\Data\Teams\SyncTeamCategoriesData::fromRequest(['categories' => $categoriesData]),
+                auth()->user(),
+            );
         }
 
         $this->showTeamModal = false;
@@ -397,10 +447,12 @@ class Team extends Component
 
     private function resetTeamForm(): void
     {
-        $this->reset(['teamName', 'teamSortOrder', 'teamIsActive', 'teamSessionLifespanType', 'teamSessionLifespanCustomHours', 'editingTeamId']);
+        $this->reset(['teamName', 'teamSortOrder', 'teamIsActive', 'teamSessionLifespanType', 'teamSessionLifespanCustomHours', 'editingTeamId', 'selectedCategoryIds', 'primaryCategoryId']);
         $this->teamIsActive = true;
         $this->teamSessionLifespanType = 'daily';
         $this->teamSessionLifespanCustomHours = null;
+        $this->selectedCategoryIds = [];
+        $this->primaryCategoryId = null;
         $this->resetErrorBag();
     }
 
@@ -519,6 +571,10 @@ class Team extends Component
             }
         }
 
+        $categories = \App\Models\Category::where('tenant_id', Tenancy::id())
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
         return view('livewire.pages.team', [
             'colleagues' => $colleagues,
             'teams' => $teams,
@@ -526,6 +582,7 @@ class Team extends Component
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'roles' => User::ROLES,
+            'categories' => $categories,
         ]);
     }
 }

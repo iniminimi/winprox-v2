@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Locations;
 
+use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\BulkCreateUnitsAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateUnitAction;
@@ -14,6 +15,7 @@ use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
+use App\Http\Requests\Categories\SyncCategoryTeamsRequest;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -107,6 +109,12 @@ class Show extends Component
     public ?int $bulkCategoryId = null;
 
     public string $categoryName = '';
+
+    /** @var array<int, int> */
+    public array $selectedTeamIds = [];
+
+    /** @var int|null */
+    public ?int $primaryTeamId = null;
 
     public function mount(Location $location): void
     {
@@ -249,6 +257,13 @@ class Show extends Component
         $category = Category::query()->findOrFail($categoryId);
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
+
+        // Load teams
+        $teams = $category->teams()
+            ->get(['id', 'category_internal_team.is_primary as is_primary']);
+        $this->selectedTeamIds = $teams->pluck('id')->toArray();
+        $this->primaryTeamId = $teams->firstWhere('is_primary', true)?->id;
+
         $this->resetErrorBag();
     }
 
@@ -474,7 +489,7 @@ class Show extends Component
         $this->location->refresh();
     }
 
-    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory): void
+    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
     {
         $this->authorize('update', $this->location);
         $tenantId = (int) auth()->user()->tenant_id;
@@ -491,10 +506,46 @@ class Show extends Component
         ]);
 
         if ($this->editingCategoryId === null) {
-            $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
+            $category = $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
+
+            // Sync teams for new category
+            $this->authorize('syncTeams', $category);
+            $syncRequest = new SyncCategoryTeamsRequest;
+            $this->validate(
+                ['selectedTeamIds' => 'array'],
+                []
+            );
+
+            $teamsData = collect($this->selectedTeamIds)
+                ->map(fn ($id) => ['id' => $id, 'is_primary' => $id === $this->primaryTeamId])
+                ->toArray();
+
+            $syncTeams->handle(
+                $category,
+                \App\Data\Categories\SyncCategoryTeamsData::fromRequest(['teams' => $teamsData]),
+                auth()->user(),
+            );
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
             $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
+
+            // Sync teams for existing category
+            $this->authorize('syncTeams', $category);
+            $syncRequest = new SyncCategoryTeamsRequest;
+            $this->validate(
+                ['selectedTeamIds' => 'array'],
+                []
+            );
+
+            $teamsData = collect($this->selectedTeamIds)
+                ->map(fn ($id) => ['id' => $id, 'is_primary' => $id === $this->primaryTeamId])
+                ->toArray();
+
+            $syncTeams->handle(
+                $category,
+                \App\Data\Categories\SyncCategoryTeamsData::fromRequest(['teams' => $teamsData]),
+                auth()->user(),
+            );
         }
 
         $this->resetCategoryForm();
@@ -566,5 +617,7 @@ class Show extends Component
     {
         $this->editingCategoryId = null;
         $this->categoryName = '';
+        $this->selectedTeamIds = [];
+        $this->primaryTeamId = null;
     }
 }

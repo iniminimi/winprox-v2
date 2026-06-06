@@ -131,6 +131,10 @@
         "fields": {
             "name": "Category name"
         },
+        "teams_title": "Teams",
+        "teams_subtitle": "Select the teams responsible for this category.",
+        "teams_empty": "No teams available.",
+        "primary_team": "Primary",
         "errors": {
             "name_required": "Enter a category name.",
             "duplicate_name": "This category name already exists."

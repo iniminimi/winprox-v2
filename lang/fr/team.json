@@ -54,7 +54,11 @@
             "session_lifespan_daily": "Quotidien",
             "session_lifespan_weekly": "Hebdomadaire",
             "session_lifespan_custom": "Heures personnalisées",
-            "session_lifespan_custom_hours": "Nombre d'heures"
+            "session_lifespan_custom_hours": "Nombre d'heures",
+            "categories_title": "Catégories de produits",
+            "categories_subtitle": "Sélectionnez les catégories de produits dont cette équipe est responsable.",
+            "categories_empty": "Aucune catégorie de produits disponible.",
+            "primary_category": "Primaire"
         }
     },
     "workers": {

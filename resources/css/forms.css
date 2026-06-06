@@ -56,3 +56,37 @@
     font-size: 0.8125rem;
     color: var(--wp-danger-text);
 }
+
+/* Checkbox styling for category/team selection */
+.wp-check--boxed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    cursor: pointer;
+    transition: border-color var(--wp-transition), background-color var(--wp-transition);
+}
+
+.wp-check--boxed:hover {
+    border-color: var(--wp-accent);
+}
+
+.wp-check--boxed input[type="checkbox"],
+.wp-check--boxed input[type="radio"] {
+    cursor: pointer;
+}
+
+.wp-check-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wp-check-row--primary {
+    margin-top: 0.25rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--wp-border);
+}

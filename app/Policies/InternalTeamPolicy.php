@@ -43,4 +43,13 @@ class InternalTeamPolicy
     {
         return $user->is_superuser || ($user->tenant_id !== null && ($user->isAdmin() || $user->isEmployee()));
     }
+
+    public function syncCategories(User $user, InternalTeam $team): bool
+    {
+        if ($user->tenant_id !== $team->tenant_id) {
+            return false;
+        }
+
+        return $user->isAdmin() || $user->isEmployee();
+    }
 }
