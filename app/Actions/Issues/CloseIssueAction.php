@@ -61,10 +61,11 @@ class CloseIssueAction
 
         // Audit logging
         $this->auditRecorder->record(
-            action: 'issue.closed',
-            model: $issue,
-            actorUserId: $actor?->id,
+            userId: $actor?->id,
             tenantId: $issue->tenant_id,
+            action: 'issue.closed',
+            modelType: 'Issue',
+            modelId: $issue->id,
             payload: [
                 'reason' => trim($reason),
                 'tasks_closed' => $issue->tasks->count(),
