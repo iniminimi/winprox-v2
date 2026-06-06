@@ -32,13 +32,16 @@ function unitPortalScaffold(array $unitOverrides = []): array
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category->teams()->sync([$team->id]);
+
     $qrToken = $unitOverrides['qr_token'] ?? 'unit-token';
     unset($unitOverrides['qr_token']);
 
     $unit = Unit::factory()->withQrToken($qrToken)->create(array_merge([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
+        'category_id' => $category->id,
         'is_active' => true,
     ], $unitOverrides));
 

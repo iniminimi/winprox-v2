@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Livewire\Public\UnitPortal;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -19,11 +20,13 @@ function portalThemeScaffold(): Unit
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category->teams()->sync([$team->id]);
 
     return Unit::factory()->withQrToken('unit-token')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
+        'category_id' => $category->id,
         'is_active' => true,
     ]);
 }

@@ -4,6 +4,7 @@ use App\Enums\TaskStatus;
 use App\Livewire\Issues\Show;
 use App\Livewire\Public\TeamPortal;
 use App\Livewire\Public\UnitPortal;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -24,10 +25,12 @@ it('blokkeert het unit-portaal bij verlopen abonnement', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category->teams()->sync([$team->id]);
     Unit::factory()->withQrToken('expired-unit')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
+        'category_id' => $category->id,
         'is_active' => true,
     ]);
 
@@ -42,10 +45,12 @@ it('toont goedgekeurde melding-inhoud zonder blur op het unit-portaal', function
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category->teams()->sync([$team->id]);
     $unit = Unit::factory()->withQrToken('approved-unit')->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
+        'category_id' => $category->id,
         'is_active' => true,
     ]);
 

@@ -7,6 +7,7 @@ use App\Actions\Issues\CreateIssueAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Enums\TaskStatus;
 use App\Models\Announcement;
+use App\Models\Category;
 use App\Models\Document;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -52,6 +53,7 @@ class DatabaseSeeder extends Seeder
 
     protected function seedTenantData(User $admin): void
     {
+        $tenant = $admin->tenant;
         $locationA = Location::create(['name' => 'Hoofdgebouw', 'address' => 'Stationsstraat 1, Antwerpen']);
         $locationB = Location::create(['name' => 'Magazijn Noord', 'address' => 'Havenlaan 22, Antwerpen']);
 
@@ -163,6 +165,7 @@ class DatabaseSeeder extends Seeder
             'unit_id' => $units[0]->id,
             'reporter_name' => 'Anonieme melder',
             'description' => 'De lift blijft steken tussen verdieping 2 en 3 en maakt een hard geluid.',
+            'source' => 'qr',
         ], [$teamTechniek->id]);
         IssuePhoto::create(['issue_id' => $pending->id, 'path' => 'issue-photos/demo-lift-1.jpg']);
         IssuePhoto::create(['issue_id' => $pending->id, 'path' => 'issue-photos/demo-lift-2.jpg']);
@@ -172,6 +175,7 @@ class DatabaseSeeder extends Seeder
             'location_id' => $locationB->id,
             'unit_id' => $units[2]->id,
             'description' => 'Laaddeur 3 sluit niet meer volledig, tocht en regen binnen.',
+            'source' => 'qr',
         ], [$teamElektriciteit->id]);
         IssuePhoto::create(['issue_id' => $pending2->id, 'path' => 'issue-photos/demo-laadkade-1.jpg']);
 
@@ -180,27 +184,28 @@ class DatabaseSeeder extends Seeder
             'location_id' => $locationA->id,
             'unit_id' => $units[1]->id,
             'description' => 'Verwarming in vergaderzaal 1.04 werkt niet.',
-        ], [$teamTechniek->id]);
+        ], []);
         $approveIssue->handle($new, $admin);
+        $new->tasks()->create(['internal_team_id' => $teamTechniek->id, 'status' => TaskStatus::New]);
 
         // 4. Goedgekeurde melding, één taak in uitvoering (status: In uitvoering).
         $inProgress = $createIssue->handle([
             'location_id' => $locationB->id,
             'unit_id' => $units[3]->id,
             'description' => 'Kraan in sanitair magazijn blijft lopen.',
-        ], [$teamSchoonmaak->id]);
-        $updateStatus->handle($inProgress->tasks()->first(), TaskStatus::InProgress);
+        ], []);
         $approveIssue->handle($inProgress, $admin);
+        $task = $inProgress->tasks()->create(['internal_team_id' => $teamSchoonmaak->id, 'status' => TaskStatus::New]);
+        $updateStatus->handle($task, TaskStatus::InProgress);
 
         // 5. Goedgekeurde melding, alle taken gesloten (status: Gesloten).
         $closed = $createIssue->handle([
             'location_id' => $locationB->id,
             'description' => 'Kapotte tl-lamp in het magazijn vervangen.',
-        ], [$teamElektriciteit->id]);
-        foreach ($closed->tasks as $task) {
-            $updateStatus->handle($task, TaskStatus::Closed, $admin, 'Demo: taak gesloten zonder uitvoering.');
-        }
+        ], []);
         $approveIssue->handle($closed, $admin);
+        $task = $closed->tasks()->create(['internal_team_id' => $teamElektriciteit->id, 'status' => TaskStatus::New]);
+        $updateStatus->handle($task, TaskStatus::Closed, $admin, 'Demo: taak gesloten zonder uitvoering.');
 
         // Demo-beheerder: naam "Beheerder" is geen rol — oude seeds hadden soms employee.
         User::query()

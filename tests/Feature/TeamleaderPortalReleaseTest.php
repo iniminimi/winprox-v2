@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Public\UnitPortal;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -13,18 +14,26 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
+function createUnitWithCategoryAndTeam(string $qrToken, Tenant $tenant, Location $location, InternalTeam $team): Unit
+{
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category->teams()->sync([$team->id]);
+
+    return Unit::factory()->withQrToken($qrToken)->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'is_active' => true,
+    ]);
+}
+
 it('laat een teamleader een geblokkeerde collega vrijgeven op het unit-portaal', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $unit = Unit::factory()->withQrToken('unit-tl-release')->create([
-        'tenant_id' => $tenant->id,
-        'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
-        'is_active' => true,
-    ]);
+    $unit = createUnitWithCategoryAndTeam('unit-tl-release', $tenant, $location, $team);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
         'tenant_id' => $tenant->id,
@@ -65,12 +74,7 @@ it('weigert vrijgave wanneer het teamleader-icoon niet klopt', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->withQrToken('unit-tl-wrong')->create([
-        'tenant_id' => $tenant->id,
-        'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
-        'is_active' => true,
-    ]);
+    createUnitWithCategoryAndTeam('unit-tl-wrong', $tenant, $location, $team);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
         'tenant_id' => $tenant->id,
@@ -100,12 +104,7 @@ it('toont geen vrijgeven-knop wanneer er geen geblokkeerde collegas zijn', funct
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->withQrToken('unit-tl-empty')->create([
-        'tenant_id' => $tenant->id,
-        'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
-        'is_active' => true,
-    ]);
+    createUnitWithCategoryAndTeam('unit-tl-empty', $tenant, $location, $team);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
         'tenant_id' => $tenant->id,
@@ -127,12 +126,7 @@ it('vereist selectie van een geblokkeerde collega bij vrijgave', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    Unit::factory()->withQrToken('unit-tl-select')->create([
-        'tenant_id' => $tenant->id,
-        'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
-        'is_active' => true,
-    ]);
+    createUnitWithCategoryAndTeam('unit-tl-select', $tenant, $location, $team);
 
     $teamleader = Worker::factory()->withIcon('crown')->create([
         'tenant_id' => $tenant->id,

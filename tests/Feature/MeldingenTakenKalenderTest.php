@@ -6,6 +6,7 @@ use App\Enums\TaskStatus;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Pages\Calendar;
 use App\Livewire\Tasks\Show as TaskShow;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -91,15 +92,17 @@ it('toont validatiefout bij stap 2 zonder team', function () {
         ->assertSet('createStep', 2);
 });
 
-it('vult standaardteam in bij unit met default_internal_team_id', function () {
+it('vult standaardteam in bij unit met category die teams heeft', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kranen']);
+    $category->teams()->sync([$team->id]);
     $unit = Unit::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'default_internal_team_id' => $team->id,
+        'category_id' => $category->id,
     ]);
 
     Tenancy::actAs($tenant->id);
