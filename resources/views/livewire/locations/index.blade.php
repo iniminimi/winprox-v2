@@ -8,9 +8,14 @@
                 :subtitle="__('locations.subtitle')"
             />
         </div>
-        <button type="button" class="btn btn--primary @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCreate">
-            {{ __('locations.add') }}
-        </button>
+        <div class="wp-cluster">
+            <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
+                {{ __('locations.import') }}
+            </button>
+            <button type="button" class="btn btn--primary @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCreate">
+                {{ __('locations.add') }}
+            </button>
+        </div>
     </div>
 
     @if (session('success'))
@@ -86,6 +91,42 @@
                     <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showImportModal)
+        <x-wp-modal closeMethod="closeImportModal" aria-labelledby="import-modal-title">
+            <div class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="import-modal-title" class="wp-section-title">{{ __('locations.import_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeImportModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('locations.import_hint') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="import-file">{{ __('locations.import_file_label') }}</label>
+                        <input type="file" id="import-file" class="wp-input" wire:model="importFile" accept=".csv" />
+                        @error('importFile') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    @if ($importErrors)
+                        <div class="wp-flash wp-flash--danger">
+                            <ul class="wp-form-error-list">
+                                @foreach ($importErrors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeImportModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="importUnits" wire:loading.attr="disabled">
+                        <x-wp-spinner wire:loading class="wp-mr-2" />
+                        <span wire:loading.remove>{{ __('locations.import_submit') }}</span>
+                        <span wire:loading>{{ __('locations.import_submit_loading') }}</span>
+                    </button>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 </div>

@@ -4,6 +4,12 @@
     "show_subtitle": "Aperçu du site et des unités.",
     "default_name": "Site",
     "add": "+ Ajouter un site",
+    "import": "Import CSV",
+    "import_title": "Importer des unités via CSV",
+    "import_hint": "Téléchargez un fichier CSV avec les colonnes : location_name, unit_name, description (optionnel), category_name (optionnel). Le fichier doit avoir exactement ces en-têtes.",
+    "import_file_label": "Fichier CSV",
+    "import_submit": "Importer",
+    "import_submit_loading": "Importation en cours...",
     "create_title": "Ajouter un site",
     "edit_title": "Modifier le site",
     "save": "Enregistrer le site",
@@ -51,7 +57,8 @@
         "created": "Site créé.",
         "updated": "Site mis à jour.",
         "deactivated": "Site désactivé.",
-        "activated": "Site activé."
+        "activated": "Site activé.",
+        "imported": ":count unités importées."
     },
     "units": {
         "create_title": "Ajouter une unité",

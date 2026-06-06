@@ -4,6 +4,12 @@
     "show_subtitle": "Übersicht über Standort und Units.",
     "default_name": "Standort",
     "add": "+ Neuen Standort hinzufügen",
+    "import": "CSV-Import",
+    "import_title": "Units per CSV importieren",
+    "import_hint": "Laden Sie eine CSV-Datei mit den Spalten hoch: location_name, unit_name, description (optional), category_name (optional). Die Datei muss genau diese Header haben.",
+    "import_file_label": "CSV-Datei",
+    "import_submit": "Importieren",
+    "import_submit_loading": "Importiere...",
     "create_title": "Neuen Standort hinzufügen",
     "edit_title": "Standort bearbeiten",
     "save": "Standort speichern",
@@ -51,7 +57,8 @@
         "created": "Standort angelegt.",
         "updated": "Standort aktualisiert.",
         "deactivated": "Standort deaktiviert.",
-        "activated": "Standort aktiviert."
+        "activated": "Standort aktiviert.",
+        "imported": ":count Units importiert."
     },
     "units": {
         "create_title": "Unit hinzufügen",

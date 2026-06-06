@@ -6,9 +6,12 @@ use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\UpdateLocationAction;
+use App\Actions\Units\ImportUnitsAction;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
+use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Location;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -40,6 +43,14 @@ class Index extends Component
     public string $locationFormCountryCode = 'BE';
 
     public string $locationFormNotes = '';
+
+    public ?TemporaryUploadedFile $importFile = null;
+
+    public array $importErrors = [];
+
+    public ?int $importedCount = null;
+
+    public bool $showImportModal = false;
 
     public function mount(): void
     {
@@ -118,6 +129,46 @@ class Index extends Component
         $this->authorize('update', $location);
         $activateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.activated'));
+    }
+
+    public function openImportModal(): void
+    {
+        $this->authorize('create', Location::class);
+        $this->importFile = null;
+        $this->importErrors = [];
+        $this->importedCount = null;
+        $this->showImportModal = true;
+    }
+
+    public function closeImportModal(): void
+    {
+        $this->showImportModal = false;
+        $this->importFile = null;
+        $this->importErrors = [];
+        $this->importedCount = null;
+    }
+
+    public function importUnits(ImportUnitsAction $importUnits): void
+    {
+        $this->authorize('create', Location::class);
+
+        if ($this->importFile === null) {
+            $this->importErrors = ['Er moet een bestand worden geüpload.'];
+            return;
+        }
+
+        $validated = ImportUnitsRequest::validate(['file' => $this->importFile]);
+
+        $result = $importUnits->handle($validated['file'], (int) auth()->id());
+
+        if ($result['success']) {
+            $this->importedCount = $result['count'];
+            $this->importErrors = [];
+            session()->flash('success', __('locations.flash.imported', ['count' => $result['count']]));
+            $this->closeImportModal();
+        } else {
+            $this->importErrors = $result['errors'];
+        }
     }
 
     /**

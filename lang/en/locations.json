@@ -4,6 +4,12 @@
     "show_subtitle": "Overview of location and units.",
     "default_name": "Location",
     "add": "+ Add new location",
+    "import": "CSV import",
+    "import_title": "Import units via CSV",
+    "import_hint": "Upload a CSV file with the columns: location_name, unit_name, description (optional), category_name (optional). The file must have exactly these headers.",
+    "import_file_label": "CSV file",
+    "import_submit": "Import",
+    "import_submit_loading": "Importing...",
     "create_title": "Add new location",
     "edit_title": "Edit location",
     "save": "Save location",
@@ -51,7 +57,8 @@
         "created": "Location created.",
         "updated": "Location updated.",
         "deactivated": "Location deactivated.",
-        "activated": "Location activated."
+        "activated": "Location activated.",
+        "imported": ":count units imported."
     },
     "units": {
         "create_title": "Add unit",
