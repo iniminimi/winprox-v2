@@ -30,7 +30,7 @@ final class UnitBulkBatchRegistry
             ->with([
                 'internalTeam:id,name',
                 'units' => fn ($query) => $query
-                    ->select('id', 'bulk_batch_id', 'name', 'default_internal_team_id')
+                    ->select('id', 'bulk_batch_id', 'name')
                     ->orderBy('name'),
             ])
             ->withCount('units')
