@@ -164,8 +164,13 @@ it('filtert terugkerende meldingen op de index', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'description' => 'Eenmalige melding',
         'is_recurring' => false,
         'approved_at' => now(),
@@ -173,6 +178,8 @@ it('filtert terugkerende meldingen op de index', function () {
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'description' => 'Terugkerend onderhoud',
         'is_recurring' => true,
         'approved_at' => now(),
@@ -258,8 +265,13 @@ it('toont een geplande taak op de kalender op de juiste dag', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     $issue = Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'description' => 'Kalender taak test',
         'approved_at' => now(),
     ]);
