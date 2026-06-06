@@ -3,7 +3,9 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Issues\Index;
 use App\Models\Issue;
+use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Support\Tenancy;
 use Livewire\Livewire;
