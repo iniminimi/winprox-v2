@@ -53,7 +53,7 @@ class ImportUnitsAction
         // Normalize headers (trim, lowercase)
         $headers = array_map(fn($h) => trim(strtolower($h)), $headers);
 
-        // 1. Fail-fast header validation
+        // 1. Fail-fast header validation - check for missing required headers
         $missingHeaders = array_diff($this->requiredHeaders, $headers);
         if (!empty($missingHeaders)) {
             return [
@@ -62,6 +62,21 @@ class ImportUnitsAction
                     sprintf(
                         'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Ontbrekende kolommen: %s',
                         implode(', ', $missingHeaders)
+                    ),
+                ],
+            ];
+        }
+
+        // Check for unexpected headers
+        $expectedHeaders = array_merge($this->requiredHeaders, $this->optionalHeaders);
+        $unexpectedHeaders = array_diff($headers, $expectedHeaders);
+        if (!empty($unexpectedHeaders)) {
+            return [
+                'success' => false,
+                'errors' => [
+                    sprintf(
+                        'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: %s',
+                        implode(', ', $unexpectedHeaders)
                     ),
                 ],
             ];
