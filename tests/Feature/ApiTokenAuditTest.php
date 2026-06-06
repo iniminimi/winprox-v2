@@ -11,7 +11,7 @@ it('schrijft audit bij API-token aanmaken en intrekken', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
-    $plain = app(CreateApiTokenAction::class)->handle($admin, 'test-token', $admin->id);
+    $plain = app(CreateApiTokenAction::class)->handle($admin, 'test-token', [], $admin->id);
     expect($plain)->not->toBeEmpty();
 
     $created = AuditLog::query()->where('action', 'api_token.created')->latest('id')->first();
