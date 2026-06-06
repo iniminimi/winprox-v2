@@ -84,8 +84,6 @@ class Show extends Component
 
     public string $unitDescription = '';
 
-    public ?int $unitTeamId = null;
-
     public ?int $unitCategoryId = null;
 
     /** @var array<int, int> */
@@ -106,8 +104,6 @@ class Show extends Component
     public string $bulkScheme = UnitBulkNaming::SCHEME_COMPACT_2;
 
     public string $bulkPrefix = '';
-
-    public ?int $bulkTeamId = null;
 
     public ?int $bulkCategoryId = null;
 
@@ -201,7 +197,6 @@ class Show extends Component
         $this->editingUnitId = null;
         $this->unitName = '';
         $this->unitDescription = '';
-        $this->unitTeamId = null;
         $this->unitCategoryId = null;
         $this->selectedTeamIds = [];
         $this->resetErrorBag();
@@ -217,7 +212,6 @@ class Show extends Component
         $this->editingUnitId = $unit->id;
         $this->unitName = $unit->name;
         $this->unitDescription = $unit->description ?? '';
-        $this->unitTeamId = $unit->default_internal_team_id;
         $this->unitCategoryId = $unit->category_id;
         $this->unitPhotos = [];
 
@@ -296,7 +290,6 @@ class Show extends Component
         $validated = $this->validate([
             'unitName' => $rules['name'],
             'unitDescription' => $rules['description'],
-            'unitTeamId' => $rules['default_internal_team_id'],
             'unitCategoryId' => $rules['category_id'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
@@ -316,7 +309,6 @@ class Show extends Component
         $payload = [
             'name' => $validated['unitName'],
             'description' => $validated['unitDescription'] ?? null,
-            'default_internal_team_id' => $validated['unitTeamId'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
         ];
 
@@ -397,7 +389,6 @@ class Show extends Component
         $this->bulkRoomsPerFloor = '1';
         $this->bulkScheme = UnitBulkNaming::SCHEME_COMPACT_2;
         $this->bulkPrefix = '';
-        $this->bulkTeamId = null;
         $this->bulkCategoryId = null;
         $this->showBulkModal = true;
     }
@@ -457,7 +448,6 @@ class Show extends Component
             'bulkRoomsPerFloor' => $bulkRules['rooms_per_floor'],
             'bulkScheme' => $bulkRules['scheme'],
             'bulkPrefix' => $bulkRules['prefix'],
-            'bulkTeamId' => $bulkRules['default_internal_team_id'],
             'bulkCategoryId' => ['nullable', 'integer', 'exists:categories,id'],
         ]);
 
@@ -467,7 +457,6 @@ class Show extends Component
                 'rooms_per_floor' => (int) $validated['bulkRoomsPerFloor'],
                 'scheme' => $validated['bulkScheme'],
                 'prefix' => $validated['bulkPrefix'] ?? '',
-                'default_internal_team_id' => $validated['bulkTeamId'] ?? null,
                 'category_id' => $validated['bulkCategoryId'] ?? null,
             ], (int) auth()->user()->tenant_id, (int) auth()->id());
 

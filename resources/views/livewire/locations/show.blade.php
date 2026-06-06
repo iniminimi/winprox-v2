@@ -201,16 +201,6 @@
                     @error('unitDescription') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
                 <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.team') }}</span>
-                    <select class="wp-input" wire:model="unitTeamId">
-                        <option value="">{{ __('locations.units.no_team') }}</option>
-                        @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('unitTeamId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
-                <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
                     <select class="wp-input" wire:model="unitCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
@@ -343,16 +333,6 @@
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
                     <input type="text" class="wp-input" wire:model.live.debounce.500ms="bulkPrefix" maxlength="30" />
-                </label>
-
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.team') }}</span>
-                    <select class="wp-input" wire:model="bulkTeamId">
-                        <option value="">{{ __('locations.units.no_team') }}</option>
-                        @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                        @endforeach
-                    </select>
                 </label>
 
                 <label class="wp-field">

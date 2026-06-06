@@ -18,7 +18,6 @@ class Unit extends Model
         'tenant_id',
         'location_id',
         'category_id',
-        'default_internal_team_id',
         'bulk_batch_id',
         'name',
         'description',
@@ -59,11 +58,6 @@ class Unit extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function defaultInternalTeam(): BelongsTo
-    {
-        return $this->belongsTo(InternalTeam::class, 'default_internal_team_id');
     }
 
     public function teams(): BelongsToMany

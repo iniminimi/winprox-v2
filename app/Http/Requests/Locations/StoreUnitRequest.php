@@ -38,7 +38,6 @@ class StoreUnitRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'description' => ['nullable', 'string', 'max:1000'],
-            'default_internal_team_id' => ['nullable', 'integer', 'exists:internal_teams,id'],
             'category_id' => $categoryRules,
         ];
     }
