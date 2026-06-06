@@ -27,6 +27,8 @@ class StartTaskAction
         ]);
 
         $this->audit->record(
+            userId: $worker?->id,
+            tenantId: $task->tenant_id,
             action: 'task_started',
             modelType: Task::class,
             modelId: $task->id,
