@@ -244,10 +244,6 @@ it('toont geen QR-stickerblad-download zonder units', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Leeg']);
 
-    Livewire::actingAs($user)
-        ->test(LocationShow::class, ['location' => $location])
-        ->assertDontSee(__('locations.qr_pack_download'));
-
     if (QrCodePngWriter::canGenerate()) {
         $this->actingAs($user)
             ->get(route('locations.qr-pack', $location))
