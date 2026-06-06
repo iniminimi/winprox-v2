@@ -81,6 +81,12 @@ class ImportUnitsAction
                 continue;
             }
 
+            // Skip rows with mismatched column count
+            if (count($row) !== count($headers)) {
+                $lineNumber++;
+                continue;
+            }
+
             $dataRow = array_combine($headers, $row);
             $dataRow['_line_number'] = $lineNumber;
             $rows[] = $dataRow;
