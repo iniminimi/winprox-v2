@@ -93,11 +93,11 @@
                             @if ($unit->category)
                                 {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}
                             @endif
-                            @if ($unit->defaultInternalTeam)
-                                {{ $unit->category ? ', ' : '' }}{{ __('locations.units.meta_team', ['team' => $unit->defaultInternalTeam->name]) }}
+                            @if ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())
+                                {{ $unit->category ? ', ' : '' }}{{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}
                             @endif
                             @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                {{ ($unit->category || $unit->defaultInternalTeam) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }}
+                                {{ ($unit->category || ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }}
                             @endif
                         </div>
                     </div>
