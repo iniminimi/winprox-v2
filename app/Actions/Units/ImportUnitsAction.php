@@ -31,7 +31,7 @@ class ImportUnitsAction
      */
     public function handle(UploadedFile $file, ?int $actorUserId = null): array
     {
-        $tenantId = Tenancy::current()->id;
+        $tenantId = Tenancy::id();
 
         // Open and parse CSV
         $handle = fopen($file->getPathname(), 'r');
