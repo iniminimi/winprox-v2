@@ -153,6 +153,10 @@
                 {
                     "label": "Afficher inactifs",
                     "text": "Affichez les sites désactivés pour les réactiver ou les consulter."
+                },
+                {
+                    "label": "Import CSV",
+                    "text": "Importez des unités en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : location_name, unit_name, description (optionnel), category_name (optionnel). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les sites sont créés automatiquement s'ils n'existent pas encore."
                 }
             ]
         },

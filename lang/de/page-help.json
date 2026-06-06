@@ -153,6 +153,10 @@
                 {
                     "label": "Inaktive anzeigen",
                     "text": "Zeigen Sie deaktivierte Standorte, um sie erneut zu aktivieren oder einzusehen."
+                },
+                {
+                    "label": "CSV-Import",
+                    "text": "Importieren Sie Units massenhaft über eine CSV-Datei. Die Datei muss genau diese Header haben: location_name, unit_name, description (optional), category_name (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Standorte werden automatisch erstellt, wenn sie noch nicht existieren."
                 }
             ]
         },

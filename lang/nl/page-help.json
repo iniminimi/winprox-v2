@@ -153,6 +153,10 @@
                 {
                     "label": "Inactieve tonen",
                     "text": "Toon gedeactiveerde locaties om ze opnieuw te activeren of te raadplegen."
+                },
+                {
+                    "label": "CSV import",
+                    "text": "Importeer units in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: location_name, unit_name, description (optioneel), category_name (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Locaties worden automatisch aangemaakt als ze nog niet bestaan."
                 }
             ]
         },
