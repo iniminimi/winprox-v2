@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ApplySupportTenantContext;
+use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
