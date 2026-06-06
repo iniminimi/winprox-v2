@@ -7,10 +7,12 @@ use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Units\ImportUnitsAction;
+use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Location;
+use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -158,17 +160,11 @@ class Index extends Component
             return;
         }
 
-        // Manual validation since Form Request::validate() doesn't work in Livewire
+        // Validate using reusable rules from Form Request
         $validator = \Illuminate\Support\Facades\Validator::make(
             ['file' => $this->importFile],
-            [
-                'file' => 'required|file|mimes:csv,txt|max:10240',
-            ],
-            [
-                'file.required' => 'Er moet een bestand worden geüpload.',
-                'file.mimes' => 'Het bestand moet een CSV-bestand zijn.',
-                'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
-            ]
+            ImportUnitsRequest::validationRules(),
+            ImportUnitsRequest::validationMessages()
         );
 
         if ($validator->fails()) {
@@ -176,7 +172,18 @@ class Index extends Component
             return;
         }
 
-        $result = $importUnits->handle($this->importFile, (int) auth()->id());
+        // Build DTO from validated file
+        $dto = new ImportUnitsData(
+            filePath: $this->importFile->getRealPath(),
+            originalName: $this->importFile->getClientOriginalName(),
+        );
+
+        // Call Action with explicit context
+        $result = $importUnits->handle(
+            $dto,
+            Tenancy::id(),
+            (int) auth()->id()
+        );
 
         if ($result['success']) {
             $this->importedCount = $result['count'];

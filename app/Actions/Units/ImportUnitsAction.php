@@ -2,11 +2,10 @@
 
 namespace App\Actions\Units;
 
+use App\Data\Units\ImportUnitsData;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
-use App\Support\Tenancy;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -25,16 +24,15 @@ class ImportUnitsAction
     /**
      * Import units from CSV file.
      *
-     * @param UploadedFile $file
+     * @param ImportUnitsData $data
+     * @param int $tenantId
      * @param int|null $actorUserId
      * @return array
      */
-    public function handle(UploadedFile $file, ?int $actorUserId = null): array
+    public function handle(ImportUnitsData $data, int $tenantId, ?int $actorUserId = null): array
     {
-        $tenantId = Tenancy::id();
-
         // Open and parse CSV
-        $handle = fopen($file->getPathname(), 'r');
+        $handle = fopen($data->filePath, 'r');
         if ($handle === false) {
             return [
                 'success' => false,
@@ -70,7 +68,7 @@ class ImportUnitsAction
         }
 
         // Parse all rows
-        $handle = fopen($file->getPathname(), 'r');
+        $handle = fopen($data->filePath, 'r');
         fgetcsv($handle); // Skip header row
 
         $rows = [];
@@ -83,9 +81,9 @@ class ImportUnitsAction
                 continue;
             }
 
-            $data = array_combine($headers, $row);
-            $data['_line_number'] = $lineNumber;
-            $rows[] = $data;
+            $dataRow = array_combine($headers, $row);
+            $dataRow['_line_number'] = $lineNumber;
+            $rows[] = $dataRow;
             $lineNumber++;
         }
 

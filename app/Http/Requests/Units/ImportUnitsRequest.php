@@ -35,4 +35,26 @@ class ImportUnitsRequest extends FormRequest
             'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
         ];
     }
+
+    /**
+     * Get reusable validation rules for non-HTTP contexts.
+     */
+    public static function validationRules(): array
+    {
+        return [
+            'file' => 'required|file|mimes:csv,txt|max:10240',
+        ];
+    }
+
+    /**
+     * Get reusable validation messages for non-HTTP contexts.
+     */
+    public static function validationMessages(): array
+    {
+        return [
+            'file.required' => 'Er moet een bestand worden geüpload.',
+            'file.mimes' => 'Het bestand moet een CSV-bestand zijn.',
+            'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
+        ];
+    }
 }
