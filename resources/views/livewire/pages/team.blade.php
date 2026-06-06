@@ -178,7 +178,7 @@
 
     {{-- Modal: collega-gebruiker --------------------------------------------}}
     @if ($canManageUsers && $showColleagueModal)
-        <div class="wp-modal" role="dialog" aria-modal="true">
+        <x-wp-modal closeMethod="cancelColleague">
             <form wire:submit="saveColleague" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <div class="wp-stack-tight">
@@ -240,12 +240,12 @@
                     <button type="submit" class="btn btn--primary">{{ __('team.colleagues.modal.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     {{-- Modal: team ---------------------------------------------------------}}
     @if ($canEditContent && $showTeamModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="cancelTeam">
             <form wire:submit="saveTeam" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
@@ -288,6 +288,6 @@
                     <button type="button" class="btn btn--ghost" wire:click="cancelTeam">{{ __('common.button.cancel') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 </div>

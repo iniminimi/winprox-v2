@@ -1,4 +1,4 @@
-<div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-update-title">
+<x-wp-modal closeMethod="closeUpdateModal" aria-labelledby="issue-update-title">
     <form
         x-data
         x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
@@ -50,4 +50,4 @@
             </button>
         </div>
     </form>
-</div>
+</x-wp-modal>

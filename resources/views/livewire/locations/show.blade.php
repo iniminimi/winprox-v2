@@ -156,7 +156,7 @@
     <livewire:locations.announcements :location="$location" />
 
     @if ($showLocationModal)
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-edit-title">
+        <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="location-edit-title">
             <form wire:submit="saveLocation" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="location-edit-title" class="wp-section-title">{{ __('locations.edit_title') }}</h2>
@@ -175,11 +175,11 @@
                     </button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showUnitModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeUnitModal">
             <form
                 x-data
                 x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
@@ -273,11 +273,11 @@
                     </button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showBulkModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeBulkModal">
             <form wire:submit="createBulk" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
@@ -337,11 +337,11 @@
                     </button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showQrPackModal)
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="qr-pack-modal-title">
+        <x-wp-modal closeMethod="closeQrPackModal" aria-labelledby="qr-pack-modal-title">
             <div class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 id="qr-pack-modal-title" class="wp-section-title">{{ __('locations.qr_pack.modal_title') }}</h2>
@@ -391,11 +391,11 @@
                     @endforeach
                 </div>
             </div>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showCategoriesModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeCategoriesModal">
             <div class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
@@ -468,6 +468,6 @@
                     @endforelse
                 </div>
             </div>
-        </div>
+        </x-wp-modal>
     @endif
 </div>

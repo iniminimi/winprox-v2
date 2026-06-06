@@ -219,7 +219,7 @@
 
     @if ($canManageOrganisation && $showOrgModal)
         @teleport('body')
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="org-edit-title">
+        <x-wp-modal closeMethod="closeOrgModal" aria-labelledby="org-edit-title">
             <form wire:submit="saveOrganisation" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <div class="wp-stack-tight">
@@ -296,7 +296,7 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
         @endteleport
     @endif
 </div>

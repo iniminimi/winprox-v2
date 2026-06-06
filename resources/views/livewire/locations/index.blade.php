@@ -70,7 +70,7 @@
     </div>
 
     @if ($showModal)
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="location-modal-title">
+        <x-wp-modal closeMethod="closeModal" aria-labelledby="location-modal-title">
             <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="location-modal-title" class="wp-section-title">
@@ -86,6 +86,6 @@
                     <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 </div>

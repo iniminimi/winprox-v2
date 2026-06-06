@@ -1,4 +1,4 @@
-<div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-create-title">
+<x-wp-modal closeMethod="closeCreateModal" aria-labelledby="issue-create-title">
     @if ($createStep === 1)
         <form x-data
               x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
@@ -163,4 +163,4 @@
             </div>
         </form>
     @endif
-</div>
+</x-wp-modal>
