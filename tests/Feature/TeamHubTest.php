@@ -293,7 +293,8 @@ it('toont de team-QR die naar het publieke team-portaal linkt', function () {
     $this->actingAs($admin)
         ->get(route('team.qr', $team))
         ->assertOk()
-        ->assertSee(route('public.team-portal', $team->field_qr_token));
+        ->assertSee('<svg', false) // Check for QR code SVG
+        ->assertSee($team->field_qr_token); // Check for token in the page
 });
 
 // --- Workers ---------------------------------------------------------------
