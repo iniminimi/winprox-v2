@@ -17,8 +17,13 @@ function seedFilterableIssues(Tenant $tenant): array
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Technische dienst']);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Schoonmaak']);
 
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     $open = Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'status' => TaskStatus::New,
         'approved_at' => now(),
         'description' => 'Kraan lekt in de keuken',
@@ -27,6 +32,8 @@ function seedFilterableIssues(Tenant $tenant): array
 
     $closed = Issue::factory()->create([
         'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'status' => TaskStatus::Closed,
         'approved_at' => now(),
         'description' => 'Lamp stuk in het magazijn',
