@@ -16,7 +16,15 @@ class CheckApiAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $tenant = Tenancy::current();
+        $tenantId = Tenancy::id();
+
+        if (! $tenantId) {
+            return response()->json([
+                'message' => 'API-toegang en webhooks zijn niet beschikbaar tijdens de proefperiode. Upgrade je abonnement voor volledige integratiemogelijkheden.',
+            ], 403);
+        }
+
+        $tenant = \App\Models\Tenant::find($tenantId);
 
         if (! $tenant || ! $tenant->hasApiAccess()) {
             return response()->json([
