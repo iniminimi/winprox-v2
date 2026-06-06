@@ -158,9 +158,25 @@ class Index extends Component
             return;
         }
 
-        $validated = ImportUnitsRequest::validate(['file' => $this->importFile]);
+        // Manual validation since Form Request::validate() doesn't work in Livewire
+        $validator = \Illuminate\Support\Facades\Validator::make(
+            ['file' => $this->importFile],
+            [
+                'file' => 'required|file|mimes:csv,txt|max:10240',
+            ],
+            [
+                'file.required' => 'Er moet een bestand worden geüpload.',
+                'file.mimes' => 'Het bestand moet een CSV-bestand zijn.',
+                'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
+            ]
+        );
 
-        $result = $importUnits->handle($validated['file'], (int) auth()->id());
+        if ($validator->fails()) {
+            $this->importErrors = $validator->errors()->all();
+            return;
+        }
+
+        $result = $importUnits->handle($this->importFile, (int) auth()->id());
 
         if ($result['success']) {
             $this->importedCount = $result['count'];
