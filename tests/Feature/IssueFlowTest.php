@@ -15,7 +15,7 @@ it('leidt de meldingstatus af uit de taken (rollup)', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = app(CreateIssueAction::class)->handle(['description' => 'Lekkende kraan']);
+    $issue = app(CreateIssueAction::class)->handle(['description' => 'Lekkende kraan', 'source' => 'qr']);
     expect($issue->status)->toBe(TaskStatus::New);
 
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
@@ -32,7 +32,7 @@ it('leidt de meldingstatus af uit de taken (rollup)', function () {
     app(UpdateTaskStatusAction::class)->handle($taskB, TaskStatus::Done);
     expect($issue->fresh()->status)->toBe(TaskStatus::Done);
 
-    $closedIssue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten flow'], [$teamA->id]);
+    $closedIssue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten flow', 'source' => 'qr'], [$teamA->id]);
     $closedTask = $closedIssue->tasks->first();
     app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::InProgress);
     app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::Closed, null, 'Niet uitgevoerd');
@@ -46,7 +46,7 @@ it('maakt één taak per team aan via CreateIssueAction', function () {
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
-    $issue = app(CreateIssueAction::class)->handle(['description' => 'Onderhoud'], [$teamA->id, $teamB->id]);
+    $issue = app(CreateIssueAction::class)->handle(['description' => 'Onderhoud', 'source' => 'qr'], [$teamA->id, $teamB->id]);
 
     expect($issue->tasks()->count())->toBe(2)
         ->and($issue->status)->toBe(TaskStatus::New);
