@@ -7,6 +7,14 @@
     "close_reason_label": "Raison de la fermeture",
     "close_reason_placeholder": "Décrivez pourquoi ce signalement est fermé...",
     "close_submit": "Fermer le signalement",
+    "reopen": "Rouvrir",
+    "reopen_section": "Rouvrir le signalement",
+    "reopen_hint": "Ce signalement est fermé. Seuls les administrateurs peuvent le rouvrir.",
+    "reopen_modal_title": "Rouvrir le signalement",
+    "reopen_modal_subtitle": "Rouvrez ce signalement fermé pour le traiter à nouveau.",
+    "reopen_reason_label": "Raison de la réouverture (optionnel)",
+    "reopen_reason_placeholder": "Décrivez pourquoi ce signalement est rouvert...",
+    "reopen_submit": "Rouvrir le signalement",
     "briefing": "Imprimer le briefing",
     "list": {
         "title": "Signalements",
@@ -85,6 +93,7 @@
     },
     "errors": {
         "cannot_close_approved": "Un signalement approuvé ne peut pas être fermé.",
+        "cannot_reopen_not_closed": "Seuls les signalements fermés peuvent être rouverts.",
         "close_reason_required": "Indiquez une raison pour la fermeture.",
         "close_reason_min": "La raison doit comporter au moins 2 caractères.",
         "location_required": "Choisissez un site.",

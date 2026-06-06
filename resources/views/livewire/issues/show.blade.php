@@ -77,15 +77,27 @@
     </div>
 
     @unless ($issue->isApproved())
+        @unless ($issue->status->isClosed())
+            <div class="wp-card wp-card-pad wp-stack">
+                <h2 class="wp-section-title">{{ __('issues.show.status_section') }}</h2>
+                <p class="wp-muted">{{ __('issues.show.status_hint') }}</p>
+                <div class="wp-chip-row">
+                    <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
+                    <button type="button" class="btn btn--danger btn--sm" wire:click="openCloseModal">{{ __('issues.close') }}</button>
+                </div>
+            </div>
+        @endunless
+    @endunless
+
+    @if ($issue->status->isClosed() && auth()->user()->isAdmin())
         <div class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">{{ __('issues.show.status_section') }}</h2>
-            <p class="wp-muted">{{ __('issues.show.status_hint') }}</p>
+            <h2 class="wp-section-title">{{ __('issues.show.reopen_section') }}</h2>
+            <p class="wp-muted">{{ __('issues.show.reopen_hint') }}</p>
             <div class="wp-chip-row">
-                <button type="button" class="btn btn--warning btn--sm" wire:click="approve">{{ __('issues.approve') }}</button>
-                <button type="button" class="btn btn--danger btn--sm" wire:click="openCloseModal">{{ __('issues.close') }}</button>
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openReopenModal">{{ __('issues.reopen') }}</button>
             </div>
         </div>
-    @endunless
+    @endif
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
@@ -251,6 +263,32 @@
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeCloseModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--danger">{{ __('issues.close_submit') }}</button>
+                </div>
+            </form>
+        </div>
+        @endteleport
+    @endif
+
+    @if ($showReopenModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-reopen-title">
+            <form wire:submit="reopenIssue" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="issue-reopen-title" class="wp-section-title">{{ __('issues.reopen_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeReopenModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.reopen_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="reopenReason">{{ __('issues.reopen_reason_label') }}</label>
+                        <textarea id="reopenReason" class="wp-textarea" wire:model="reopenReason" rows="3"
+                                  placeholder="{{ __('issues.reopen_reason_placeholder') }}"></textarea>
+                        @error('reopenReason') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeReopenModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('issues.reopen_submit') }}</button>
                 </div>
             </form>
         </div>

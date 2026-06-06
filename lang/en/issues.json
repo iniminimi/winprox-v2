@@ -7,6 +7,14 @@
     "close_reason_label": "Reason for closing",
     "close_reason_placeholder": "Describe why this issue is being closed...",
     "close_submit": "Close issue",
+    "reopen": "Reopen",
+    "reopen_section": "Reopen issue",
+    "reopen_hint": "This issue is closed. Only administrators can reopen it.",
+    "reopen_modal_title": "Reopen issue",
+    "reopen_modal_subtitle": "Reopen this closed issue to process it again.",
+    "reopen_reason_label": "Reason for reopening (optional)",
+    "reopen_reason_placeholder": "Describe why this issue is being reopened...",
+    "reopen_submit": "Reopen issue",
     "briefing": "Print briefing",
     "list": {
         "title": "Issues",
@@ -85,6 +93,7 @@
     },
     "errors": {
         "cannot_close_approved": "An approved issue cannot be closed.",
+        "cannot_reopen_not_closed": "Only closed issues can be reopened.",
         "close_reason_required": "Enter a reason for closing.",
         "close_reason_min": "The reason must be at least 2 characters.",
         "location_required": "Choose a location.",

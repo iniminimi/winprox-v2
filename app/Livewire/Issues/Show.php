@@ -5,6 +5,7 @@ namespace App\Livewire\Issues;
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
+use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
@@ -33,6 +34,8 @@ class Show extends Component
 
     public bool $showCloseModal = false;
 
+    public bool $showReopenModal = false;
+
     public bool $showUpdateModal = false;
 
     public ?int $editTaskId = null;
@@ -48,6 +51,8 @@ class Show extends Component
     public string $updateBody = '';
 
     public string $closeReason = '';
+
+    public string $reopenReason = '';
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $updatePhotos = [];
@@ -79,6 +84,33 @@ class Show extends Component
         $this->showCloseModal = false;
         $this->closeReason = '';
         $this->resetValidation();
+    }
+
+    public function openReopenModal(): void
+    {
+        $this->authorize('update', $this->issue);
+        $this->reopenReason = '';
+        $this->resetValidation();
+        $this->showReopenModal = true;
+    }
+
+    public function closeReopenModal(): void
+    {
+        $this->showReopenModal = false;
+        $this->reopenReason = '';
+        $this->resetValidation();
+    }
+
+    public function reopenIssue(ReopenIssueAction $reopenIssue): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $this->reopenReason = trim($this->reopenReason);
+
+        $reopenIssue->handle($this->issue, auth()->user(), $this->reopenReason ?: null);
+
+        $this->closeReopenModal();
+        $this->refreshIssue();
     }
 
     public function closeIssue(CloseIssueAction $closeIssue): void

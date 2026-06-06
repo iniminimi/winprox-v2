@@ -7,6 +7,14 @@
     "close_reason_label": "Reden voor sluiten",
     "close_reason_placeholder": "Beschrijf waarom deze melding wordt gesloten...",
     "close_submit": "Melding sluiten",
+    "reopen": "Heropenen",
+    "reopen_section": "Melding heropenen",
+    "reopen_hint": "Deze melding is gesloten. Alleen beheerders kunnen deze heropenen.",
+    "reopen_modal_title": "Melding heropenen",
+    "reopen_modal_subtitle": "Heropen deze gesloten melding om deze opnieuw te verwerken.",
+    "reopen_reason_label": "Reden voor heropenen (optioneel)",
+    "reopen_reason_placeholder": "Beschrijf waarom deze melding wordt heropend...",
+    "reopen_submit": "Melding heropenen",
     "briefing": "Briefing afdrukken",
     "list": {
         "title": "Meldingen",
@@ -85,6 +93,7 @@
     },
     "errors": {
         "cannot_close_approved": "Een goedgekeurde melding kan niet worden gesloten.",
+        "cannot_reopen_not_closed": "Alleen gesloten meldingen kunnen worden heropend.",
         "close_reason_required": "Geef een reden op voor het sluiten.",
         "close_reason_min": "De reden moet minstens 2 tekens bevatten.",
         "location_required": "Kies een locatie.",

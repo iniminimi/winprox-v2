@@ -7,6 +7,14 @@
     "close_reason_label": "Grund für das Schließen",
     "close_reason_placeholder": "Beschreiben Sie, warum diese Meldung geschlossen wird...",
     "close_submit": "Meldung schließen",
+    "reopen": "Wieder öffnen",
+    "reopen_section": "Meldung wieder öffnen",
+    "reopen_hint": "Diese Meldung ist geschlossen. Nur Administratoren können sie wieder öffnen.",
+    "reopen_modal_title": "Meldung wieder öffnen",
+    "reopen_modal_subtitle": "Öffnen Sie diese geschlossene Meldung erneut, um sie erneut zu bearbeiten.",
+    "reopen_reason_label": "Grund für das Wieder öffnen (optional)",
+    "reopen_reason_placeholder": "Beschreiben Sie, warum diese Meldung wieder geöffnet wird...",
+    "reopen_submit": "Meldung wieder öffnen",
     "briefing": "Briefing drucken",
     "list": {
         "title": "Meldungen",
@@ -85,6 +93,7 @@
     },
     "errors": {
         "cannot_close_approved": "Eine freigegebene Meldung kann nicht geschlossen werden.",
+        "cannot_reopen_not_closed": "Nur geschlossene Meldungen können wieder geöffnet werden.",
         "close_reason_required": "Geben Sie einen Grund für das Schließen ein.",
         "close_reason_min": "Der Grund muss mindestens 2 Zeichen haben.",
         "location_required": "Wählen Sie einen Standort.",

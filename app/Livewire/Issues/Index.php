@@ -278,6 +278,7 @@ class Index extends Component
 
         $issues = Issue::query()
             ->with(['location', 'unit', 'tasks.team'])
+            ->where('status', '!=', TaskStatus::Closed)
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring', true))
