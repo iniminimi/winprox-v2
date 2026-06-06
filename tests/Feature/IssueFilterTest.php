@@ -96,6 +96,7 @@ it('filtert meldingen op zoekterm', function () {
     Livewire::actingAs($user)
         ->test(Index::class)
         ->set('search', 'magazijn')
+        ->set('statusFilter', \App\Enums\TaskStatus::Closed->value)
         ->call('applyFilters')
         ->assertSee('Lamp stuk in het magazijn')
         ->assertDontSee('Kraan lekt in de keuken');
