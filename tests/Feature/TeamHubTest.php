@@ -114,6 +114,7 @@ it('verbergt de collega-sectie voor een medewerker op gebruikers', function () {
     Livewire::actingAs($employee)
         ->test(Team::class)
         ->assertDontSee(__('team.colleagues.title'))
+        ->assertDontSee(__('team.colleagues.add'))
         ->assertSee(__('team.teams.title'));
 });
 
