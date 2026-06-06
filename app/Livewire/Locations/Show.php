@@ -537,12 +537,12 @@ class Show extends Component
         $categoriesEnabled = Schema::hasTable('categories');
 
         $this->location->loadMissing([
-            'units' => fn ($q) => $q->with('defaultInternalTeam:id,name')->withCount('issues'),
+            'units' => fn ($q) => $q->withCount('issues'),
         ]);
 
         $units = Unit::query()
             ->where('location_id', $this->location->id)
-            ->with(['defaultInternalTeam:id,name', 'qrCodes' => function ($q) {
+            ->with(['qrCodes' => function ($q) {
                 $q->where('status', \App\Enums\QrCodeStatus::Active);
             }])
             ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
