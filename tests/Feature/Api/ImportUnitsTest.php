@@ -22,8 +22,8 @@ it('imports units successfully from valid CSV', function () {
     // Create a valid CSV file
     $csvContent = "location_name,unit_name,description,category_name\n";
     $csvContent .= "Location A,Unit 1,Test description,Category A\n";
-    $csvContent .= "Location A,Unit 2,,\n";
-    $csvContent .= "Location B,Unit 3,Another unit,\n";
+    $csvContent .= "Location A,Unit 2,,Category B\n";
+    $csvContent .= "Location B,Unit 3,Another unit,Category A\n";
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 
@@ -43,6 +43,9 @@ it('imports units successfully from valid CSV', function () {
 
     // Verify units were created
     expect(Unit::where('tenant_id', $tenant->id)->count())->toBe(3);
+
+    // Verify categories were auto-created
+    expect(Category::where('tenant_id', $tenant->id)->count())->toBe(2);
 
     // Verify audit log was written
     expect(DB::table('audit_logs')->where('action', 'units.import')->exists())->toBeTrue();
@@ -79,10 +82,10 @@ it('fails when required fields are missing in rows', function () {
 
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    // CSV with missing unit_name in row 2
-    $csvContent = "location_name,unit_name\n";
-    $csvContent .= "Location A,Unit 1\n";
-    $csvContent .= "Location B,\n"; // Missing unit_name
+    // CSV with missing category_name in row 2
+    $csvContent = "location_name,unit_name,description,category_name\n";
+    $csvContent .= "Location A,Unit 1,Test description,Category A\n";
+    $csvContent .= "Location B,Unit 2,Another description,\n"; // Missing category_name
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 
@@ -106,8 +109,8 @@ it('ensures tenant isolation - units are only created for the importing tenant',
     Tenancy::actAs($tenantA->id);
     $userA = User::factory()->create(['tenant_id' => $tenantA->id]);
 
-    $csvContent = "location_name,unit_name\n";
-    $csvContent .= "Location A,Unit 1\n";
+    $csvContent = "location_name,unit_name,description,category_name\n";
+    $csvContent .= "Location A,Unit 1,Test description,Category A\n";
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 
@@ -126,17 +129,18 @@ it('ensures tenant isolation - units are only created for the importing tenant',
     expect(Unit::where('tenant_id', $tenantB->id)->count())->toBe(0);
 });
 
-it('links units to existing categories when category_name is provided', function () {
+it('reuses existing categories and creates new ones when needed', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    // Create a category
-    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    // Create an existing category
+    $existingCategory = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Existing Category']);
 
-    $csvContent = "location_name,unit_name,category_name\n";
-    $csvContent .= "Location A,Unit 1,Test Category\n";
+    $csvContent = "location_name,unit_name,description,category_name\n";
+    $csvContent .= "Location A,Unit 1,Test description,Existing Category\n";
+    $csvContent .= "Location B,Unit 2,Another description,New Category\n";
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 
@@ -150,8 +154,16 @@ it('links units to existing categories when category_name is provided', function
 
     expect($result['success'])->toBeTrue();
 
-    $unit = Unit::where('tenant_id', $tenant->id)->first();
-    expect($unit->category_id)->toBe($category->id);
+    // Verify existing category was reused
+    $unit1 = Unit::where('tenant_id', $tenant->id)->where('name', 'Unit 1')->first();
+    expect($unit1->category_id)->toBe($existingCategory->id);
+
+    // Verify new category was created
+    $newCategory = Category::where('tenant_id', $tenant->id)->where('name', 'New Category')->first();
+    expect($newCategory)->not->toBeNull();
+
+    $unit2 = Unit::where('tenant_id', $tenant->id)->where('name', 'Unit 2')->first();
+    expect($unit2->category_id)->toBe($newCategory->id);
 });
 
 it('rolls back transaction on database error', function () {
@@ -160,8 +172,8 @@ it('rolls back transaction on database error', function () {
 
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    $csvContent = "location_name,unit_name\n";
-    $csvContent .= "Location A,Unit 1\n";
+    $csvContent = "location_name,unit_name,description,category_name\n";
+    $csvContent .= "Location A,Unit 1,Test description,Category A\n";
 
     $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
 

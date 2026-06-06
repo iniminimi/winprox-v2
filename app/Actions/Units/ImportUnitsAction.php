@@ -122,7 +122,7 @@ class ImportUnitsAction
                 'location_name' => 'required|string|max:255',
                 'unit_name' => 'required|string|max:255',
                 'description' => 'nullable|string|max:1000',
-                'category_name' => 'nullable|string|max:255',
+                'category_name' => 'required|string|max:255',
             ]);
 
             if ($validator->fails()) {
@@ -160,17 +160,17 @@ class ImportUnitsAction
                     ]
                 );
 
-                // Find category if provided
-                $categoryId = null;
-                if (!empty($row['category_name'])) {
-                    $category = Category::where('tenant_id', $tenantId)
-                        ->where('name', $row['category_name'])
-                        ->first();
-
-                    if ($category) {
-                        $categoryId = $category->id;
-                    }
-                }
+                // Find or create category
+                $category = Category::firstOrCreate(
+                    [
+                        'tenant_id' => $tenantId,
+                        'name' => trim($row['category_name']),
+                    ],
+                    [
+                        'is_active' => true,
+                    ]
+                );
+                $categoryId = $category->id;
 
                 // Create unit
                 Unit::create([
