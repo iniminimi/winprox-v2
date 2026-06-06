@@ -163,8 +163,8 @@ class Index extends Component
         // Validate using reusable rules from Form Request
         $validator = \Illuminate\Support\Facades\Validator::make(
             ['file' => $this->importFile],
-            ImportUnitsRequest::validationRules(),
-            ImportUnitsRequest::validationMessages()
+            ImportUnitsRequest::getReusableRules(),
+            ImportUnitsRequest::getReusableMessages()
         );
 
         if ($validator->fails()) {

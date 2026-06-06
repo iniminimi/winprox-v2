@@ -39,7 +39,7 @@ class ImportUnitsRequest extends FormRequest
     /**
      * Get reusable validation rules for non-HTTP contexts.
      */
-    public static function validationRules(): array
+    public static function getReusableRules(): array
     {
         return [
             'file' => 'required|file|mimes:csv,txt|max:10240',
@@ -49,7 +49,7 @@ class ImportUnitsRequest extends FormRequest
     /**
      * Get reusable validation messages for non-HTTP contexts.
      */
-    public static function validationMessages(): array
+    public static function getReusableMessages(): array
     {
         return [
             'file.required' => 'Er moet een bestand worden geüpload.',
