@@ -64,6 +64,9 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
 
     Tenancy::actAs($tenant->id);
 
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.trial_capsule.trial_short', ['days' => 18]))
@@ -79,6 +82,9 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
     Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
