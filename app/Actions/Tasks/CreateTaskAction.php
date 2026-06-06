@@ -25,6 +25,11 @@ class CreateTaskAction
         bool $dispatchCreated = true,
         array $extra = [],
     ): Task {
+        // Prevent task creation for closed issues
+        if ($issue->isClosed()) {
+            throw new \InvalidArgumentException('Cannot create task for closed issue');
+        }
+
         // Prevent task creation for unapproved issues (except QR source which is always unapproved)
         if (! $issue->isApproved() && $issue->source?->value !== 'qr') {
             throw new \InvalidArgumentException('Cannot create task for unapproved issue');

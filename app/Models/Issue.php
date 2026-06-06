@@ -100,6 +100,14 @@ class Issue extends Model
     }
 
     /**
+     * Een gesloten melding mag geen taken of updates meer ontvangen.
+     */
+    public function isClosed(): bool
+    {
+        return $this->status === TaskStatus::Closed;
+    }
+
+    /**
      * Leidt de meldingstatus af uit de onderliggende taken en slaat ze op.
      * Rollup-regels: zie WINPROX_RULES.md §4.2.
      */

@@ -13,6 +13,11 @@ class AddIssueUpdateAction
 {
     public function handle(Issue $issue, string $body, ?int $workerId = null, ?int $userId = null, ?string $kind = null): IssueUpdate
     {
+        // Prevent update creation for closed issues
+        if ($issue->isClosed()) {
+            throw new \InvalidArgumentException('Cannot add update to closed issue');
+        }
+
         return $issue->updates()->create([
             'body' => $body,
             'worker_id' => $workerId,

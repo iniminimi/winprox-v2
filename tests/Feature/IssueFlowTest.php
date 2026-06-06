@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Issues\AddIssueUpdateAction;
 use App\Actions\Issues\CreateIssueAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
@@ -69,4 +70,38 @@ it('scheidt data strikt per tenant (global scope)', function () {
     // Geen context (bv. platform-superuser): ziet alles.
     Tenancy::forget();
     expect(Issue::count())->toBe(3);
+});
+
+it('weigert taak aanmaken voor gesloten melding', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten melding', 'source' => 'qr'], [$team->id]);
+    $task = $issue->tasks->first();
+
+    app(UpdateTaskStatusAction::class)->handle($task, TaskStatus::Closed, null, 'Niet uitgevoerd');
+    $issue->refresh();
+    expect($issue->status)->toBe(TaskStatus::Closed);
+    expect($issue->isClosed())->toBeTrue();
+
+    expect(fn () => app(CreateTaskAction::class)->handle($issue, $team->id))
+        ->toThrow(\InvalidArgumentException::class, 'Cannot create task for closed issue');
+});
+
+it('weigert update toevoegen aan gesloten melding', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten melding', 'source' => 'qr'], [$team->id]);
+    $task = $issue->tasks->first();
+
+    app(UpdateTaskStatusAction::class)->handle($task, TaskStatus::Closed, null, 'Niet uitgevoerd');
+    $issue->refresh();
+    expect($issue->status)->toBe(TaskStatus::Closed);
+    expect($issue->isClosed())->toBeTrue();
+
+    expect(fn () => app(AddIssueUpdateAction::class)->handle($issue, 'Dit mag niet', null, null, 'note'))
+        ->toThrow(\InvalidArgumentException::class, 'Cannot add update to closed issue');
 });
