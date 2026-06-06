@@ -67,7 +67,7 @@ it('CreateTaskAction accepts priority parameter with default prio_3', function (
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'source' => 'qr']);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     // Default priority
