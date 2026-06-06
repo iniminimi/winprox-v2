@@ -34,11 +34,11 @@ function seedFilterableIssues(Tenant $tenant): array
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'unit_id' => $unit->id,
-        'status' => TaskStatus::Closed,
+        'status' => TaskStatus::Done,
         'approved_at' => now(),
         'description' => 'Lamp stuk in het magazijn',
     ]);
-    Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $closed->id, 'internal_team_id' => $teamB->id, 'status' => TaskStatus::Closed]);
+    Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $closed->id, 'internal_team_id' => $teamB->id, 'status' => TaskStatus::Done]);
 
     return [$teamA, $teamB];
 }
@@ -96,7 +96,6 @@ it('filtert meldingen op zoekterm', function () {
     Livewire::actingAs($user)
         ->test(Index::class)
         ->set('search', 'magazijn')
-        ->set('statusFilter', \App\Enums\TaskStatus::Closed->value)
         ->call('applyFilters')
         ->assertSee('Lamp stuk in het magazijn')
         ->assertDontSee('Kraan lekt in de keuken');
