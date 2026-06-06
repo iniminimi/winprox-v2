@@ -27,9 +27,14 @@ class SubmitReportAction
      */
     public function handle(Unit $unit, array $data, array $photos = []): Issue
     {
-        $unit->loadMissing('defaultInternalTeam');
-        $team = $unit->defaultInternalTeam;
-        $teamIds = ($team !== null && $team->is_active) ? [$team->id] : [];
+        $unit->loadMissing('category.teams');
+        $teamIds = [];
+        if ($unit->category !== null) {
+            $team = $unit->category->teams()->first();
+            if ($team !== null && $team->is_active) {
+                $teamIds = [$team->id];
+            }
+        }
 
         $issue = $this->createIssue->handle([
             'location_id' => $unit->location_id,
