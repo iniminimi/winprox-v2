@@ -71,7 +71,6 @@ class BulkCreateUnitsAction
             $scheme,
             $floorCount,
             $roomsPerFloor,
-            $teamId,
             $categoryId,
             $actorUserId,
         ): array {
@@ -82,7 +81,6 @@ class BulkCreateUnitsAction
                 'scheme' => $scheme,
                 'floors' => $floorCount,
                 'rooms_per_floor' => $roomsPerFloor,
-                'internal_team_id' => $teamId,
                 'units_count' => $total,
             ]);
 
