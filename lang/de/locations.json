@@ -64,12 +64,8 @@
         "fields": {
             "name": "Unit-Name",
             "description": "Beschreibung",
-            "team": "Team",
-            "category": "Kategorie",
-            "teams": "Teams"
+            "category": "Kategorie"
         },
-        "teams_subtitle": "Wählen Sie die für diese Einheit verantwortlichen Teams aus.",
-        "teams_empty": "Keine Teams verfügbar.",
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",
             "photos_hint": "Maximal 4 Fotos pro Einheit.",
@@ -84,8 +80,7 @@
         "errors": {
             "name_required": "Bitte Unit-Namen eingeben.",
             "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort.",
-            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants.",
-            "teams_required": "Wählen Sie mindestens ein Team aus."
+            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants."
         },
         "flash": {
             "created": "Unit angelegt.",
@@ -128,16 +123,20 @@
     "categories": {
         "manage": "Kategorien",
         "title": "Kategorien verwalten",
-        "subtitle": "Legen Sie tenant-spezifische Kategorien an und verknüpfen Sie sie mit Units.",
+        "subtitle": "Kategorien verwalten und mit Teams verknüpfen.",
         "add": "Kategorie hinzufügen",
         "empty": "Noch keine Kategorien.",
         "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",
         "fields": {
-            "name": "Kategoriename"
+            "name": "Kategoriename",
+            "teams": "Teams"
         },
+        "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
+        "teams_empty": "Keine Teams verfügbar.",
         "errors": {
             "name_required": "Bitte einen Kategorienamen eingeben.",
-            "duplicate_name": "Dieser Kategoriename existiert bereits."
+            "duplicate_name": "Dieser Kategoriename existiert bereits.",
+            "teams_required": "Wählen Sie mindestens ein Team aus."
         },
         "flash": {
             "created": "Kategorie erstellt.",

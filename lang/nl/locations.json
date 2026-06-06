@@ -64,12 +64,8 @@
         "fields": {
             "name": "Unitnaam",
             "description": "Beschrijving",
-            "team": "Team",
-            "category": "Categorie",
-            "teams": "Teams"
+            "category": "Categorie"
         },
-        "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze unit.",
-        "teams_empty": "Geen teams beschikbaar.",
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
             "photos_hint": "Maximaal 4 foto's per unit.",
@@ -84,8 +80,7 @@
         "errors": {
             "name_required": "Vul een unitnaam in.",
             "duplicate_name": "Deze unitnaam bestaat al op deze locatie.",
-            "invalid_category": "Kies een geldige categorie van je tenant.",
-            "teams_required": "Selecteer minimaal één team."
+            "invalid_category": "Kies een geldige categorie van je tenant."
         },
         "flash": {
             "created": "Unit aangemaakt.",
@@ -128,16 +123,20 @@
     "categories": {
         "manage": "Categorieën",
         "title": "Categorieën beheren",
-        "subtitle": "Beheer categorieën en koppel ze aan units.",
+        "subtitle": "Beheer categorieën en koppel ze aan teams.",
         "add": "Categorie toevoegen",
         "empty": "Nog geen categorieën.",
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",
         "fields": {
-            "name": "Categorienaam"
+            "name": "Categorienaam",
+            "teams": "Teams"
         },
+        "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
+        "teams_empty": "Geen teams beschikbaar.",
         "errors": {
             "name_required": "Vul een categorienaam in.",
-            "duplicate_name": "Deze categorienaam bestaat al."
+            "duplicate_name": "Deze categorienaam bestaat al.",
+            "teams_required": "Selecteer minimaal één team."
         },
         "flash": {
             "created": "Categorie aangemaakt.",

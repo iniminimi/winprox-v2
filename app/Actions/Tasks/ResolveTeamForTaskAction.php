@@ -12,16 +12,23 @@ readonly class ResolveTeamForTaskAction
         Unit $unit,
         ?int $preferredTeamId = null,
     ): ?InternalTeam {
-        // If a preferred team is provided, return it if it's assigned to the unit
+        // Get teams from the unit's category
+        if ($unit->category === null) {
+            return null;
+        }
+
+        $categoryTeams = $unit->category->teams();
+
+        // If a preferred team is provided, return it if it's assigned to the category
         if ($preferredTeamId !== null) {
-            $team = $unit->teams()->where('internal_teams.id', $preferredTeamId)->first();
+            $team = $categoryTeams->where('internal_teams.id', $preferredTeamId)->first();
             if ($team !== null) {
                 return $team;
             }
         }
 
-        // Return first assigned team (claim-based: teams can claim the task)
-        return $unit->teams()->first();
+        // Return first assigned team from category
+        return $categoryTeams->first();
     }
 
     /**
@@ -30,6 +37,10 @@ readonly class ResolveTeamForTaskAction
      */
     public function getEligibleTeams(Unit $unit): Collection
     {
-        return $unit->teams()->get();
+        if ($unit->category === null) {
+            return collect();
+        }
+
+        return $unit->category->teams()->get();
     }
 }

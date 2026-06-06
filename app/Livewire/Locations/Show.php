@@ -86,9 +86,6 @@ class Show extends Component
 
     public ?int $unitCategoryId = null;
 
-    /** @var array<int, int> */
-    public array $selectedTeamIds = [];
-
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
@@ -108,6 +105,9 @@ class Show extends Component
     public ?int $bulkCategoryId = null;
 
     public string $categoryName = '';
+
+    /** @var array<int, int> */
+    public array $selectedCategoryTeamIds = [];
 
     public function mount(Location $location): void
     {
@@ -198,7 +198,6 @@ class Show extends Component
         $this->unitName = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
-        $this->selectedTeamIds = [];
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -214,9 +213,6 @@ class Show extends Component
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
         $this->unitPhotos = [];
-
-        // Load teams
-        $this->selectedTeamIds = $unit->teams()->pluck('internal_teams.id')->toArray();
 
         $this->resetErrorBag();
         $this->showUnitModal = true;
@@ -254,6 +250,9 @@ class Show extends Component
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
 
+        // Load teams
+        $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
+
         $this->resetErrorBag();
     }
 
@@ -281,7 +280,7 @@ class Show extends Component
         }
     }
 
-    public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit, SyncUnitTeamsAction $syncTeams): void
+    public function saveUnit(CreateUnitAction $createUnit, UpdateUnitAction $updateUnit): void
     {
         $rules = $this->editingUnitId === null
             ? StoreUnitRequest::ruleSet($this->location->id, null, (int) auth()->user()->tenant_id)
@@ -293,8 +292,6 @@ class Show extends Component
             'unitCategoryId' => $rules['category_id'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
-            'selectedTeamIds' => 'required|array|min:1',
-            'selectedTeamIds.*' => 'exists:internal_teams,id',
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
@@ -302,8 +299,6 @@ class Show extends Component
             'unitPhotos.max' => __('portal.report.errors.photos_max'),
             'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
             'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
-            'selectedTeamIds.required' => __('locations.units.errors.teams_required'),
-            'selectedTeamIds.min' => __('locations.units.errors.teams_required'),
         ]);
 
         $payload = [
@@ -326,32 +321,16 @@ class Show extends Component
                 throw $e;
             }
 
-            // Sync teams for new unit
-            $this->authorize('syncTeams', $unit);
-            $syncTeams->handle(
-                $unit,
-                \App\Data\Units\SyncUnitTeamsData::fromRequest(['teams' => $validated['selectedTeamIds']]),
-                auth()->user(),
-            );
-
             session()->flash('success', __('locations.units.flash.created'));
         } else {
             $unit = Unit::findOrFail($this->editingUnitId);
             $this->authorize('update', $unit);
             $updateUnit->handle($unit, $payload, (int) auth()->id(), $this->unitPhotos);
 
-            // Sync teams for existing unit
-            $this->authorize('syncTeams', $unit);
-            $syncTeams->handle(
-                $unit,
-                \App\Data\Units\SyncUnitTeamsData::fromRequest(['teams' => $validated['selectedTeamIds']]),
-                auth()->user(),
-            );
-
             session()->flash('success', __('locations.units.flash.updated'));
         }
 
-        $this->reset('unitPhotos', 'selectedTeamIds');
+        $this->reset('unitPhotos');
         $this->dispatch('wp-clear-photo-previews');
         $this->showUnitModal = false;
         $this->unitCategoryId = null;
@@ -496,7 +475,7 @@ class Show extends Component
         $this->location->refresh();
     }
 
-    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory): void
+    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
     {
         $this->authorize('update', $this->location);
         $tenantId = (int) auth()->user()->tenant_id;
@@ -507,17 +486,29 @@ class Show extends Component
 
         $validated = $this->validate([
             'categoryName' => $rules['name'],
+            'selectedCategoryTeamIds' => 'required|array|min:1',
+            'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
             'categoryName.required' => __('locations.categories.errors.name_required'),
             'categoryName.unique' => __('locations.categories.errors.duplicate_name'),
+            'selectedCategoryTeamIds.required' => __('locations.categories.errors.teams_required'),
+            'selectedCategoryTeamIds.min' => __('locations.categories.errors.teams_required'),
         ]);
 
         if ($this->editingCategoryId === null) {
-            $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
+            $category = $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
             $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
         }
+
+        // Sync teams for category
+        $this->authorize('syncTeams', $category);
+        $syncTeams->handle(
+            $category,
+            \App\Data\Categories\SyncCategoryTeamsData::fromRequest(['teams' => $validated['selectedCategoryTeamIds']]),
+            auth()->user(),
+        );
 
         $this->resetCategoryForm();
     }
@@ -588,5 +579,6 @@ class Show extends Component
     {
         $this->editingCategoryId = null;
         $this->categoryName = '';
+        $this->selectedCategoryTeamIds = [];
     }
 }

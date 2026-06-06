@@ -34,4 +34,13 @@ class CategoryPolicy
 
         return $user->isAdmin();
     }
+
+    public function syncTeams(User $user, Category $category): bool
+    {
+        if ($user->tenant_id !== $category->tenant_id) {
+            return false;
+        }
+
+        return $user->isAdmin() || $user->isEmployee();
+    }
 }

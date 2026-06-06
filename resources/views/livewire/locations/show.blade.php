@@ -211,33 +211,6 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <div class="wp-field">
-                    <h3 class="wp-label">{{ __('locations.units.fields.teams') }}</h3>
-                    <p class="wp-hint">{{ __('locations.units.teams_subtitle') }}</p>
-                </div>
-
-                @if ($teams->isNotEmpty())
-                    <div class="wp-grid wp-grid--2">
-                        @foreach ($teams as $team)
-                            @php
-                                $isTeamSelected = in_array($team->id, $selectedTeamIds, true);
-                            @endphp
-                            <label class="wp-check wp-check--boxed">
-                                <div class="wp-check-row">
-                                    <input type="checkbox"
-                                           wire:model.live="selectedTeamIds"
-                                           value="{{ $team->id }}"
-                                           @if ($isTeamSelected) checked @endif>
-                                    <span>{{ $team->name }}</span>
-                                </div>
-                            </label>
-                        @endforeach
-                    </div>
-                @else
-                    <p class="wp-muted">{{ __('locations.units.teams_empty') }}</p>
-                @endif
-                @error('selectedTeamIds') <span class="wp-error">{{ $message }}</span> @enderror
-
                 @if ($editingUnitId)
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
@@ -437,6 +410,33 @@
                         <input type="text" class="wp-input" wire:model="categoryName" />
                         @error('categoryName') <span class="wp-error">{{ $message }}</span> @enderror
                     </label>
+
+                    <div class="wp-field">
+                        <h3 class="wp-label">{{ __('locations.categories.fields.teams') }}</h3>
+                        <p class="wp-hint">{{ __('locations.categories.teams_subtitle') }}</p>
+                    </div>
+
+                    @if ($teams->isNotEmpty())
+                        <div class="wp-grid wp-grid--2">
+                            @foreach ($teams as $team)
+                                @php
+                                    $isTeamSelected = in_array($team->id, $selectedCategoryTeamIds, true);
+                                @endphp
+                                <label class="wp-check wp-check--boxed">
+                                    <div class="wp-check-row">
+                                        <input type="checkbox"
+                                               wire:model.live="selectedCategoryTeamIds"
+                                               value="{{ $team->id }}"
+                                               @if ($isTeamSelected) checked @endif>
+                                        <span>{{ $team->name }}</span>
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="wp-muted">{{ __('locations.categories.teams_empty') }}</p>
+                    @endif
+                    @error('selectedCategoryTeamIds') <span class="wp-error">{{ $message }}</span> @enderror
 
                     <div class="wp-row">
                         @if ($editingCategoryId !== null)

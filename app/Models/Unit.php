@@ -6,7 +6,6 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
@@ -58,12 +57,6 @@ class Unit extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function teams(): BelongsToMany
-    {
-        return $this->belongsToMany(InternalTeam::class, 'internal_team_unit', 'unit_id', 'internal_team_id')
-            ->withTimestamps();
     }
 
     public function issues(): HasMany

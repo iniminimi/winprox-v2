@@ -64,12 +64,8 @@
         "fields": {
             "name": "Nom de l'unité",
             "description": "Description",
-            "team": "Équipe",
-            "category": "Catégorie",
-            "teams": "Équipes"
+            "category": "Catégorie"
         },
-        "teams_subtitle": "Sélectionnez les équipes responsables de cette unité.",
-        "teams_empty": "Aucune équipe disponible.",
         "edit": {
             "photos_label": "Photos de la liaison QR",
             "photos_hint": "Maximum 4 photos par unité.",
@@ -84,8 +80,7 @@
         "errors": {
             "name_required": "Indiquez un nom d'unité.",
             "duplicate_name": "Ce nom d'unité existe déjà sur ce site.",
-            "invalid_category": "Choisissez une catégorie valide de votre tenant.",
-            "teams_required": "Sélectionnez au moins une équipe."
+            "invalid_category": "Choisissez une catégorie valide de votre tenant."
         },
         "flash": {
             "created": "Unité créée.",
@@ -128,20 +123,20 @@
     "categories": {
         "manage": "Catégories",
         "title": "Gérer les catégories",
-        "subtitle": "Créez des catégories par tenant et liez-les aux unités.",
+        "subtitle": "Gérez les catégories et liez-les aux équipes.",
         "add": "Ajouter une catégorie",
         "empty": "Aucune catégorie pour le moment.",
         "confirm_delete": "Supprimer cette catégorie ? Les unités liées perdront leur catégorie.",
         "fields": {
-            "name": "Nom de la catégorie"
+            "name": "Nom de la catégorie",
+            "teams": "Équipes"
         },
-        "teams_title": "Équipes",
         "teams_subtitle": "Sélectionnez les équipes responsables de cette catégorie.",
         "teams_empty": "Aucune équipe disponible.",
-        "primary_team": "Primaire",
         "errors": {
             "name_required": "Indiquez un nom de catégorie.",
-            "duplicate_name": "Ce nom de catégorie existe déjà."
+            "duplicate_name": "Ce nom de catégorie existe déjà.",
+            "teams_required": "Sélectionnez au moins une équipe."
         },
         "flash": {
             "created": "Catégorie créée.",

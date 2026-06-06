@@ -64,12 +64,8 @@
         "fields": {
             "name": "Unit name",
             "description": "Description",
-            "team": "Team",
-            "category": "Category",
-            "teams": "Teams"
+            "category": "Category"
         },
-        "teams_subtitle": "Select the teams responsible for this unit.",
-        "teams_empty": "No teams available.",
         "edit": {
             "photos_label": "Photos of the QR link",
             "photos_hint": "Maximum 4 photos per unit.",
@@ -84,8 +80,7 @@
         "errors": {
             "name_required": "Enter a unit name.",
             "duplicate_name": "This unit name already exists at this location.",
-            "invalid_category": "Choose a valid category from your tenant.",
-            "teams_required": "Select at least one team."
+            "invalid_category": "Choose a valid category from your tenant."
         },
         "flash": {
             "created": "Unit created.",
@@ -128,20 +123,20 @@
     "categories": {
         "manage": "Categories",
         "title": "Manage categories",
-        "subtitle": "Manage categories and link them to units.",
+        "subtitle": "Manage categories and link them to teams.",
         "add": "Add category",
         "empty": "No categories yet.",
         "confirm_delete": "Delete this category? Linked units will lose their category.",
         "fields": {
-            "name": "Category name"
+            "name": "Category name",
+            "teams": "Teams"
         },
-        "teams_title": "Teams",
         "teams_subtitle": "Select the teams responsible for this category.",
         "teams_empty": "No teams available.",
-        "primary_team": "Primary",
         "errors": {
             "name_required": "Enter a category name.",
-            "duplicate_name": "This category name already exists."
+            "duplicate_name": "This category name already exists.",
+            "teams_required": "Select at least one team."
         },
         "flash": {
             "created": "Category created.",
