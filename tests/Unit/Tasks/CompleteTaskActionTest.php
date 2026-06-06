@@ -5,24 +5,27 @@ use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Support\Carbon;
 
 beforeEach(function () {
-    Tenancy::setTenant(1);
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
 });
 
 afterEach(function () {
-    Tenancy::forgetTenant();
+    Tenancy::forget();
 });
 
 it('completes a task with current timestamp when no client timestamp provided', function () {
-    $team = InternalTeam::factory()->create(['tenant_id' => 1]);
-    $worker = Worker::factory()->create(['tenant_id' => 1, 'internal_team_id' => $team->id]);
-    $issue = Issue::factory()->create(['tenant_id' => 1, 'approved_at' => now()]);
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
     $task = Task::factory()->create([
-        'tenant_id' => 1,
+        'tenant_id' => $tenantId,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::InProgress,
@@ -43,11 +46,12 @@ it('completes a task with current timestamp when no client timestamp provided', 
 });
 
 it('completes a task with client timestamp when provided', function () {
-    $team = InternalTeam::factory()->create(['tenant_id' => 1]);
-    $worker = Worker::factory()->create(['tenant_id' => 1, 'internal_team_id' => $team->id]);
-    $issue = Issue::factory()->create(['tenant_id' => 1, 'approved_at' => now()]);
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
     $task = Task::factory()->create([
-        'tenant_id' => 1,
+        'tenant_id' => $tenantId,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::InProgress,
@@ -70,11 +74,12 @@ it('completes a task with client timestamp when provided', function () {
 });
 
 it('uses client timestamp for started_at when task has no started_at', function () {
-    $team = InternalTeam::factory()->create(['tenant_id' => 1]);
-    $worker = Worker::factory()->create(['tenant_id' => 1, 'internal_team_id' => $team->id]);
-    $issue = Issue::factory()->create(['tenant_id' => 1, 'approved_at' => now()]);
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
     $task = Task::factory()->create([
-        'tenant_id' => 1,
+        'tenant_id' => $tenantId,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::InProgress,
@@ -97,12 +102,13 @@ it('uses client timestamp for started_at when task has no started_at', function 
 });
 
 it('preserves existing started_at when task already started', function () {
-    $team = InternalTeam::factory()->create(['tenant_id' => 1]);
-    $worker = Worker::factory()->create(['tenant_id' => 1, 'internal_team_id' => $team->id]);
-    $issue = Issue::factory()->create(['tenant_id' => 1, 'approved_at' => now()]);
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
     $existingStartedAt = Carbon::parse('2024-01-01 09:00:00');
     $task = Task::factory()->create([
-        'tenant_id' => 1,
+        'tenant_id' => $tenantId,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::InProgress,
@@ -125,11 +131,12 @@ it('preserves existing started_at when task already started', function () {
 });
 
 it('returns task unchanged when task cannot be completed', function () {
-    $team = InternalTeam::factory()->create(['tenant_id' => 1]);
-    $worker = Worker::factory()->create(['tenant_id' => 1, 'internal_team_id' => $team->id]);
-    $issue = Issue::factory()->create(['tenant_id' => 1, 'approved_at' => now()]);
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
     $task = Task::factory()->create([
-        'tenant_id' => 1,
+        'tenant_id' => $tenantId,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::New,
