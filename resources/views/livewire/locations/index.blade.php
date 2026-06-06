@@ -120,7 +120,7 @@
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeImportModal">{{ __('common.button.cancel') }}</button>
-                    <button type="button" class="btn btn--primary" wire:click="importUnits" wire:loading.attr="disabled">
+                    <button type="button" class="btn btn--primary" wire:click="importUnits" wire:loading.attr="disabled" :disabled="$importFile === null">
                         <x-wp-spinner wire:loading class="wp-mr-2" />
                         <span wire:loading.remove>{{ __('locations.import_submit') }}</span>
                         <span wire:loading>{{ __('locations.import_submit_loading') }}</span>
