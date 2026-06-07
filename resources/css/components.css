@@ -29,45 +29,6 @@
 }
 
 /* ---------------------------------------------------------------------------
- | Progress bar (voor GPS loading e.d.)
- * ------------------------------------------------------------------------- */
-.wp-progress-track {
-    height: 6px;
-    background-color: var(--wp-border);
-    border-radius: var(--wp-radius-pill);
-    overflow: hidden;
-}
-
-.wp-progress-fill {
-    height: 100%;
-    background-color: var(--wp-info);
-    border-radius: var(--wp-radius-pill);
-    transition: width 0.3s ease;
-}
-
-.wp-progress-fill--animated {
-    animation: wp-progress-shuttle 1s ease-in-out infinite;
-}
-
-@keyframes wp-progress-shuttle {
-    0% { width: 20%; margin-left: 0; }
-    50% { width: 60%; margin-left: 20%; }
-    100% { width: 20%; margin-left: 80%; }
-}
-
-/* ---------------------------------------------------------------------------
- | Animaties
- * ------------------------------------------------------------------------- */
-.wp-animate-pulse {
-    animation: wp-pulse 1.2s ease-in-out infinite;
-}
-
-@keyframes wp-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-}
-
-/* ---------------------------------------------------------------------------
  | Pil / statusbadge — ÉÉN definitie + varianten per status.
  |
  | De vier WinProx-statussen hebben elk exact één variant:
