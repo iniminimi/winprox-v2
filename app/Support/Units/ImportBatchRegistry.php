@@ -45,7 +45,7 @@ final class ImportBatchRegistry
 
                 return [
                     'batch_id' => $batchId,
-                    'created_at' => $log->created_at,
+                    'created_at' => \Carbon\Carbon::parse($log->created_at),
                     'unit_count' => $unitCount,
                     'file_name' => $payload['file_name'] ?? null,
                 ];
