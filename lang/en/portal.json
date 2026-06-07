@@ -176,8 +176,8 @@
         "photos_submit_loading": "Saving...",
         "photos_updated": "Photos added successfully!",
         "upload_failed_offline": "Upload failed. Check your internet connection and try again.",
-        "capture_gps": "📍 Capture GPS location",
-        "recapture_gps": "📍 (Re)capture GPS location",
+        "capture_gps": "Capture GPS location",
+        "recapture_gps": "(Re)capture GPS location",
         "capturing_gps": "Getting GPS...",
         "gps_updated": "GPS coordinates captured!"
     }
