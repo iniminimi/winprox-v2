@@ -5,6 +5,32 @@
         :subtitle="__('qr.connect.subtitle')"
     />
 
+    {{-- DEBUG: Always show state for troubleshooting --}}
+    @if ($showSuccess)
+        @php
+            $debugUnit = $linkedUnit ?? ($selectedUnitId ? \App\Models\Unit::find($selectedUnitId) : null);
+        @endphp
+        <div class="wp-card wp-card-pad" style="background: #f0f9ff; border: 2px dashed #3b82f6;">
+            <p style="font-family: monospace; font-size: 12px; margin: 0;">
+                <strong>DEBUG:</strong><br>
+                showSuccess: {{ $showSuccess ? 'true' : 'false' }}<br>
+                showGpsCapture: {{ $showGpsCapture ? 'true' : 'false' }}<br>
+                gpsCaptureSuccess: {{ $gpsCaptureSuccess ? 'true' : 'false' }}<br>
+                selectedUnitId: {{ $selectedUnitId ?? 'null' }}<br>
+                linkedUnit: {{ $linkedUnit ? 'set' : 'null' }}<br>
+                @if ($debugUnit)
+                    unit.id: {{ $debugUnit->id }}<br>
+                    unit.latitude: {{ $debugUnit->latitude ?? 'null' }}<br>
+                    unit.longitude: {{ $debugUnit->longitude ?? 'null' }}<br>
+                    unit.hasGps(): {{ $debugUnit->hasGps() ? 'true' : 'false' }}<br>
+                    <strong>Should show GPS:</strong> {{ !$debugUnit->hasGps() ? 'YES' : 'NO (already has GPS)' }}
+                @else
+                    No unit found for debug
+                @endif
+            </p>
+        </div>
+    @endif
+
     @if ($showSuccess && $gpsCaptureSuccess)
         <div class="wp-card wp-card-pad wp-card--success">
             <div class="wp-stack">
@@ -195,6 +221,19 @@
                 <button type="button" class="btn btn--primary" wire:click="redirectToUnit">
                     {{ __('qr.connect.go_to_unit') }}
                 </button>
+                {{-- DEBUG: Force GPS capture button --}}
+                @if ($selectedUnitId)
+                    @php
+                        $forceUnit = \App\Models\Unit::find($selectedUnitId);
+                    @endphp
+                    @if ($forceUnit && !$forceUnit->hasGps())
+                        <hr style="margin: 1rem 0; border: none; border-top: 1px dashed #ccc;">
+                        <p class="wp-muted" style="font-size: 12px;">Unit heeft geen GPS. Forceer GPS capture:</p>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('showGpsCapture', true)">
+                            📍 Force GPS Capture
+                        </button>
+                    @endif
+                @endif
             </div>
         </div>
     @else
