@@ -211,14 +211,13 @@ it('filters units on location show by category', function () {
         ->assertDontSee('Kamer B');
 });
 
-it('manages categories from location popup', function () {
+it('manages categories from locations index', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Categorieen']);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     $component = Livewire::actingAs($user)
-        ->test(LocationShow::class, ['location' => $location])
+        ->test(LocationIndex::class)
         ->call('openCategoriesModal')
         ->set('categoryName', 'Kranen')
         ->set('selectedCategoryTeamIds', [$team->id])

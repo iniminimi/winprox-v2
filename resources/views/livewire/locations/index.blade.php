@@ -12,6 +12,9 @@
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
                 {{ __('locations.import') }}
             </button>
+            <button type="button" class="btn btn--ghost btn--sm" wire:click="openCategoriesModal">
+                {{ __('locations.categories.manage') }}
+            </button>
             <button type="button" class="btn btn--primary @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCreate">
                 {{ __('locations.add') }}
             </button>
@@ -93,6 +96,83 @@
                     <button type="submit" class="btn btn--primary">{{ __('locations.save') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showCategoriesModal)
+        <x-wp-modal closeMethod="closeCategoriesModal">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCategoriesModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('locations.categories.subtitle') }}</p>
+
+                <form wire:submit="saveCategory" class="wp-stack">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.categories.fields.name') }}</span>
+                        <input type="text" class="wp-input" wire:model="categoryName" />
+                        @error('categoryName') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+
+                    <div class="wp-field">
+                        <h3 class="wp-label">{{ __('locations.categories.fields.teams') }}</h3>
+                        <p class="wp-hint">{{ __('locations.categories.teams_subtitle') }}</p>
+                    </div>
+
+                    @if ($teams->isNotEmpty())
+                        <div class="wp-grid wp-grid--2">
+                            @foreach ($teams as $team)
+                                @php
+                                    $isTeamSelected = in_array($team->id, $selectedCategoryTeamIds, true);
+                                @endphp
+                                <label class="wp-check wp-check--boxed">
+                                    <div class="wp-check-row">
+                                        <input type="checkbox"
+                                               wire:model.live="selectedCategoryTeamIds"
+                                               value="{{ $team->id }}"
+                                               @if ($isTeamSelected) checked @endif>
+                                        <span>{{ $team->name }}</span>
+                                    </div>
+                                </label>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="wp-muted">{{ __('locations.categories.teams_empty') }}</p>
+                    @endif
+                    @error('selectedCategoryTeamIds') <span class="wp-error">{{ $message }}</span> @enderror
+
+                    <div class="wp-row">
+                        @if ($editingCategoryId !== null)
+                            <button type="button" class="btn btn--ghost" wire:click="cancelEditCategory">{{ __('common.button.cancel') }}</button>
+                        @endif
+                        <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveCategory">
+                            <span wire:loading wire:target="saveCategory" class="wp-mr-2">
+                                <x-wp-spinner size="sm" />
+                            </span>
+                            <span>{{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="wp-list wp-list--entity-rows">
+                    @forelse ($categories as $category)
+                        <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ $category->name }}</p>
+                            </div>
+                            <div class="wp-cluster">
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
+                                        wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                            </div>
+                        </div>
+                    @empty
+                        <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
+                    @endforelse
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 

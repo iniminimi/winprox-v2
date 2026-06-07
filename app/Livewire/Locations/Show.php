@@ -2,25 +2,18 @@
 
 namespace App\Livewire\Locations;
 
-use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\BulkCreateUnitsAction;
-use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeactivateUnitAction;
-use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Locations\DeleteUnitBulkBatchAction;
-use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
-use App\Http\Requests\Categories\SyncCategoryTeamsRequest;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
-use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\StoreUnitRequest;
-use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Models\Category;
@@ -54,8 +47,6 @@ class Show extends Component
 
     public bool $showBulkModal = false;
 
-    public bool $showCategoriesModal = false;
-
     public bool $showQrPackModal = false;
 
     public bool $qrPackGenerateDynamic = false;
@@ -63,8 +54,6 @@ class Show extends Component
     public string $qrPackDynamicCount = '15';
 
     public ?int $editingUnitId = null;
-
-    public ?int $editingCategoryId = null;
 
     public string $locationFormName = '';
 
@@ -103,11 +92,6 @@ class Show extends Component
     public string $bulkPrefix = '';
 
     public ?int $bulkCategoryId = null;
-
-    public string $categoryName = '';
-
-    /** @var array<int, int> */
-    public array $selectedCategoryTeamIds = [];
 
     public function mount(Location $location): void
     {
@@ -227,39 +211,6 @@ class Show extends Component
     public function closeQrPackModal(): void
     {
         $this->showQrPackModal = false;
-    }
-
-    public function openCategoriesModal(): void
-    {
-        $this->authorize('update', $this->location);
-        $this->resetCategoryForm();
-        $this->showCategoriesModal = true;
-    }
-
-    public function closeCategoriesModal(): void
-    {
-        $this->showCategoriesModal = false;
-        $this->resetCategoryForm();
-        $this->resetErrorBag();
-    }
-
-    public function openEditCategory(int $categoryId): void
-    {
-        $this->authorize('update', $this->location);
-        $category = Category::query()->findOrFail($categoryId);
-        $this->editingCategoryId = (int) $category->id;
-        $this->categoryName = (string) $category->name;
-
-        // Load teams
-        $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
-
-        $this->resetErrorBag();
-    }
-
-    public function cancelEditCategory(): void
-    {
-        $this->resetCategoryForm();
-        $this->resetErrorBag();
     }
 
     public function removeUnitPhoto(int $photoId, DeleteQrLinkPhotoAction $deletePhoto): void
@@ -475,54 +426,6 @@ class Show extends Component
         $this->location->refresh();
     }
 
-    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
-    {
-        $this->authorize('update', $this->location);
-        $tenantId = (int) auth()->user()->tenant_id;
-
-        $rules = $this->editingCategoryId === null
-            ? StoreCategoryRequest::ruleSet($tenantId)
-            : UpdateCategoryRequest::ruleSetFor($tenantId, $this->editingCategoryId);
-
-        $validated = $this->validate([
-            'categoryName' => $rules['name'],
-            'selectedCategoryTeamIds' => 'required|array|min:1',
-            'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
-        ], [
-            'categoryName.required' => __('locations.categories.errors.name_required'),
-            'categoryName.unique' => __('locations.categories.errors.duplicate_name'),
-            'selectedCategoryTeamIds.required' => __('locations.categories.errors.teams_required'),
-            'selectedCategoryTeamIds.min' => __('locations.categories.errors.teams_required'),
-        ]);
-
-        if ($this->editingCategoryId === null) {
-            $category = $createCategory->handle($this->location, ['name' => $validated['categoryName']], (int) auth()->id());
-        } else {
-            $category = Category::query()->findOrFail($this->editingCategoryId);
-            $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
-        }
-
-        // Sync teams for category
-        $this->authorize('syncTeams', $category);
-        $syncTeams->handle(
-            $category,
-            \App\Data\Categories\SyncCategoryTeamsData::fromRequest(['teams' => $validated['selectedCategoryTeamIds']]),
-            auth()->user(),
-        );
-
-        $this->resetCategoryForm();
-    }
-
-    public function deleteCategory(int $categoryId, DeleteCategoryAction $deleteCategory): void
-    {
-        $this->authorize('update', $this->location);
-        $category = Category::query()->findOrFail($categoryId);
-        $deleteCategory->handle($category, (int) auth()->id());
-        $this->unitCategoryFilter = $this->unitCategoryFilter === (string) $categoryId ? '' : $this->unitCategoryFilter;
-        $this->unitCategoryId = $this->unitCategoryId === $categoryId ? null : $this->unitCategoryId;
-        $this->editingCategoryId = $this->editingCategoryId === $categoryId ? null : $this->editingCategoryId;
-    }
-
     public function render()
     {
         $categoriesEnabled = Schema::hasTable('categories');
@@ -575,10 +478,4 @@ class Show extends Component
         ]);
     }
 
-    private function resetCategoryForm(): void
-    {
-        $this->editingCategoryId = null;
-        $this->categoryName = '';
-        $this->selectedCategoryTeamIds = [];
-    }
 }

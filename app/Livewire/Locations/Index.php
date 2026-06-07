@@ -2,17 +2,26 @@
 
 namespace App\Livewire\Locations;
 
+use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Locations\ActivateLocationAction;
+use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
+use App\Actions\Locations\DeleteCategoryAction;
+use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\ImportUnitsData;
+use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
+use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
+use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -54,6 +63,15 @@ class Index extends Component
     public ?int $importedCount = null;
 
     public bool $showImportModal = false;
+
+    public bool $showCategoriesModal = false;
+
+    public ?int $editingCategoryId = null;
+
+    public string $categoryName = '';
+
+    /** @var array<int, int> */
+    public array $selectedCategoryTeamIds = [];
 
     public function mount(): void
     {
@@ -265,6 +283,88 @@ class Index extends Component
         $this->resetErrorBag();
     }
 
+    public function openCategoriesModal(): void
+    {
+        $this->authorize('create', Category::class);
+        $this->resetCategoryForm();
+        $this->showCategoriesModal = true;
+    }
+
+    public function closeCategoriesModal(): void
+    {
+        $this->showCategoriesModal = false;
+        $this->resetCategoryForm();
+        $this->resetErrorBag();
+    }
+
+    public function openEditCategory(int $categoryId): void
+    {
+        $category = Category::query()->findOrFail($categoryId);
+        $this->authorize('update', $category);
+        $this->editingCategoryId = (int) $category->id;
+        $this->categoryName = (string) $category->name;
+        $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
+        $this->resetErrorBag();
+    }
+
+    public function cancelEditCategory(): void
+    {
+        $this->resetCategoryForm();
+        $this->resetErrorBag();
+    }
+
+    public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
+    {
+        $tenantId = (int) auth()->user()->tenant_id;
+
+        $rules = $this->editingCategoryId === null
+            ? StoreCategoryRequest::ruleSet($tenantId)
+            : UpdateCategoryRequest::ruleSetFor($tenantId, $this->editingCategoryId);
+
+        $validated = $this->validate([
+            'categoryName' => $rules['name'],
+            'selectedCategoryTeamIds' => 'required|array|min:1',
+            'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
+        ], [
+            'categoryName.required' => __('locations.categories.errors.name_required'),
+            'categoryName.unique' => __('locations.categories.errors.duplicate_name'),
+            'selectedCategoryTeamIds.required' => __('locations.categories.errors.teams_required'),
+            'selectedCategoryTeamIds.min' => __('locations.categories.errors.teams_required'),
+        ]);
+
+        if ($this->editingCategoryId === null) {
+            $this->authorize('create', Category::class);
+            $category = $createCategory->handle($tenantId, ['name' => $validated['categoryName']], (int) auth()->id());
+        } else {
+            $category = Category::query()->findOrFail($this->editingCategoryId);
+            $this->authorize('update', $category);
+            $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
+        }
+
+        $this->authorize('syncTeams', $category);
+        $syncTeams->handle(
+            $category,
+            \App\Data\Categories\SyncCategoryTeamsData::fromRequest(['teams' => $validated['selectedCategoryTeamIds']]),
+            auth()->user(),
+        );
+
+        $this->resetCategoryForm();
+    }
+
+    public function deleteCategory(int $categoryId, DeleteCategoryAction $deleteCategory): void
+    {
+        $category = Category::query()->findOrFail($categoryId);
+        $this->authorize('delete', $category);
+        $deleteCategory->handle($category, (int) auth()->id());
+    }
+
+    private function resetCategoryForm(): void
+    {
+        $this->editingCategoryId = null;
+        $this->categoryName = '';
+        $this->selectedCategoryTeamIds = [];
+    }
+
     public function render()
     {
         $term = trim($this->search);
@@ -288,9 +388,23 @@ class Index extends Component
 
         $hasInactiveLocations = Location::query()->where('is_active', false)->exists();
 
+        $categoriesEnabled = Schema::hasTable('categories');
+
+        $teams = InternalTeam::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get(['id', 'name']);
+
+        $categories = $categoriesEnabled
+            ? Category::query()->orderBy('name')->get(['id', 'name'])
+            : collect();
+
         return view('livewire.locations.index', [
             'locations' => $locations,
             'hasInactiveLocations' => $hasInactiveLocations,
+            'teams' => $teams,
+            'categories' => $categories,
         ]);
     }
 }

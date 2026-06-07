@@ -3,7 +3,6 @@
 namespace App\Actions\Locations;
 
 use App\Models\Category;
-use App\Models\Location;
 use App\Support\Audit\AuditRecorder;
 
 class CreateCategoryAction
@@ -13,16 +12,16 @@ class CreateCategoryAction
     /**
      * @param  array{name: string}  $data
      */
-    public function handle(Location $location, array $data, ?int $actorUserId = null): Category
+    public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
         $category = Category::query()->create([
-            'tenant_id' => (int) $location->tenant_id,
+            'tenant_id' => $tenantId,
             'name' => trim($data['name']),
         ]);
 
         $this->audit->record(
             userId: $actorUserId,
-            tenantId: (int) $location->tenant_id,
+            tenantId: $tenantId,
             action: 'category.created',
             modelType: Category::class,
             modelId: (int) $category->id,
