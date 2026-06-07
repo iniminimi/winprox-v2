@@ -159,6 +159,10 @@
                     "text": "Importieren Sie Units massenhaft über eine CSV-Datei. Die Datei muss genau diese Header haben: location_name, unit_name, description (optional), category_name (erforderlich), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Standorte und Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
                 },
                 {
+                    "label": "Letzte CSV-Imports",
+                    "text": "Unter der Import-Schaltfläche erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Units. Klicken Sie auf 'Import rükgängig', um die Units dieses Stapels zu löschen. Nur Units ohne Meldung oder Aufgabe werden gelöscht — Units mit einer verknüpften Meldung oder Aufgabe bleiben und werden als 'blockiert' angezeigt. Die Schaltfläche verschwindet, sobald alle Units eines Stapels gelöscht wurden."
+                },
+                {
                     "label": "Kategorien",
                     "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Dies hängt von der Branche ab, in der das Unternehmen tätig ist. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können."
                 }
@@ -255,6 +259,10 @@
                 {
                     "label": "CSV-Import",
                     "text": "Importieren Sie Mitarbeiter in großer Menge über eine CSV-Datei. Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, external_id (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Mitarbeiter, die bereits mit einem Gerät verknüpft sind (worker_device), werden beim Rückgängigmachen eines Imports niemals gelöscht."
+                },
+                {
+                    "label": "Letzte CSV-Imports",
+                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Mitarbeiter. Klicken Sie auf 'Import rükgängig', um die Mitarbeiter dieses Stapels zu löschen. Nur Mitarbeiter ohne verknüpftes Gerät werden gelöscht — Mitarbeiter, die bereits über Team-QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und werden als 'hat Geräte' angezeigt. Die Schaltfläche verschwindet, sobald alle Mitarbeiter eines Stapels gelöscht wurden."
                 },
                 {
                     "label": "Worker löschen",

@@ -159,6 +159,10 @@
                     "text": "Import units in bulk via a CSV file. The file must have exactly these headers: location_name, unit_name, description (optional), category_name (required), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Locations and categories are automatically created if they don't exist yet."
                 },
                 {
+                    "label": "Recent CSV imports",
+                    "text": "Below the import button, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of units. Click 'Undo import' to remove the units of that batch. Only units without an issue or task are deleted — units linked to an issue or task remain and are marked as 'blocked'. The button disappears once all units in a batch have been deleted."
+                },
+                {
                     "label": "Categories",
                     "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team."
                 }
@@ -255,6 +259,10 @@
                 {
                     "label": "CSV import",
                     "text": "Import workers in bulk via a CSV file. The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, external_id (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they don't exist yet. Workers who are already linked to a device (worker_device) are never deleted when undoing an import."
+                },
+                {
+                    "label": "Recent CSV imports",
+                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click 'Undo import' to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via team QR (and thus have an active device) remain and are marked as 'has devices'. The button disappears once all workers in a batch have been deleted."
                 },
                 {
                     "label": "Delete worker",

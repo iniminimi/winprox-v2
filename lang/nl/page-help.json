@@ -159,6 +159,10 @@
                     "text": "Importeer units in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: location_name, unit_name, description (optioneel), category_name (verplicht), street (optioneel), house_number (optioneel), postal_code (optioneel), city (optioneel), country_code (optioneel), notes (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Locaties en categorieën worden automatisch aangemaakt als ze nog niet bestaan."
                 },
                 {
+                    "label": "Recente CSV-imports",
+                    "text": "Onder de importknop verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal units. Klik op 'Import terugdraaien' om de units van die batch te verwijderen. Alleen units zonder melding of taak worden verwijderd — units met een gekoppelde melding of taak blijven staan en worden als 'geblokkeerd' aangeduid. De knop verdwijnt zodra alle units van een batch verwijderd zijn."
+                },
+                {
                     "label": "Categorieën",
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team."
                 }
@@ -255,6 +259,10 @@
                 {
                     "label": "CSV import",
                     "text": "Importeer uitvoerders in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Uitvoerders die al gekoppeld zijn aan een toestel (worker_device) worden bij ongedaan maken nooit verwijderd."
+                },
+                {
+                    "label": "Recente CSV-imports",
+                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op 'Import terugdraaien' om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via team-QR (en dus een actief toestel hebben) blijven staan en worden als 'heeft toestellen' aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
                 },
                 {
                     "label": "Uitvoerder verwijderen",

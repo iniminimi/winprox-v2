@@ -159,6 +159,10 @@
                     "text": "Importez des unités en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : location_name, unit_name, description (optionnel), category_name (obligatoire), street (optionnel), house_number (optionnel), postal_code (optionnel), city (optionnel), country_code (optionnel), notes (optionnel). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les sites et catégories sont créés automatiquement s'ils n'existent pas encore."
                 },
                 {
+                    "label": "Imports CSV récents",
+                    "text": "Sous le bouton d'import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur 'Annuler l'import' pour supprimer les unités de ce lot. Seules les unités sans signalement ni tâche sont supprimées — les unités liées à un signalement ou une tâche restent et sont indiquées comme 'bloquées'. Le bouton disparaît lorsque toutes les unités d'un lot ont été supprimées."
+                },
+                {
                     "label": "Catégories",
                     "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte."
                 }
@@ -255,6 +259,10 @@
                 {
                     "label": "Import CSV",
                     "text": "Importez des intervenants en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, external_id (optionnels). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. Les intervenants déjà liés à un appareil (worker_device) ne sont jamais supprimés lors de l'annulation d'un import."
+                },
+                {
+                    "label": "Imports CSV récents",
+                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'intervenants. Cliquez sur 'Annuler l'import' pour supprimer les intervenants de ce lot. Seuls les intervenants sans appareil lié sont supprimés — les intervenants déjà connectés via le QR d'équipe (et donc avec un appareil actif) restent et sont indiqués comme 'a des appareils'. Le bouton disparaît lorsque tous les intervenants d'un lot ont été supprimés."
                 },
                 {
                     "label": "Supprimer le worker",
