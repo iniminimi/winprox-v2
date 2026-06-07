@@ -38,37 +38,35 @@
         </div>
     @elseif ($showSuccess && $showGpsCapture)
         {{-- GPS Capture UI --}}
-        <div class="wp-card wp-card-pad wp-card--accent wp-stack" x-data="gpsCapture()" x-init="init()">
-            <div class="wp-card-section">
-                <h2 style="margin-bottom: 0.5rem;">📍 {{ __('qr.connect.gps_title') }}</h2>
-                <p class="wp-text-body">{{ __('qr.connect.gps_hint') }}</p>
+        <div class="wp-card wp-card-pad wp-stack" style="border: 2px solid #3b82f6; background: #eff6ff;" x-data="gpsCapture()" x-init="init()">
+            <div class="wp-card-section" style="padding-bottom: 0.5rem;">
+                <h2 style="margin-bottom: 0.5rem; font-size: 1.1rem; font-weight: 600;">📍 {{ __('qr.connect.gps_title') }}</h2>
+                <p class="wp-muted" style="font-size: 0.9rem;">{{ __('qr.connect.gps_hint') }}</p>
             </div>
 
-            <div class="wp-card-section">
-                {{-- Loading state --}}
-                <div x-show="loading" class="wp-stack-tight" x-cloak>
-                    <p class="wp-text-body" style="text-align: center; padding: 1rem 0;">
-                        <span style="display: inline-block; animation: pulse 1.5s infinite;">📡</span><br>
-                        {{ __('qr.connect.gps_loading') }}
-                    </p>
-                    <div class="wp-progress-bar">
-                        <div class="wp-progress-bar__fill" style="width: 70%; animation: progressPulse 1s infinite;"></div>
+            <div class="wp-card-section" style="padding: 0.5rem 0;">
+                {{-- Loading state - NO x-cloak so it's visible immediately --}}
+                <div x-show="loading" style="text-align: center; padding: 1rem 0;">
+                    <div style="font-size: 2rem; animation: pulse 1.5s infinite; margin-bottom: 0.5rem;">📡</div>
+                    <p class="wp-muted" style="margin-bottom: 1rem;">{{ __('qr.connect.gps_loading') }}</p>
+                    <div style="height: 4px; background: #e5e7eb; border-radius: 2px; overflow: hidden;">
+                        <div style="height: 100%; width: 70%; background: #3b82f6; border-radius: 2px; animation: progressPulse 1s infinite;"></div>
                     </div>
                 </div>
 
                 {{-- Error state --}}
-                <div x-show="error" class="wp-card wp-card--warning wp-card-pad" style="margin-top: 0.5rem;" x-cloak>
-                    <p class="wp-error" style="margin-bottom: 0.5rem;">⚠️ <span x-text="error"></span></p>
+                <div x-show="error" x-cloak style="background: #fef3c7; border: 1px solid #f59e0b; border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.5rem;">
+                    <p style="color: #b45309; margin: 0 0 0.5rem 0; font-size: 0.9rem;">⚠️ <span x-text="error"></span></p>
                     <button type="button" class="btn btn--ghost btn--sm" @click="retry()">
                         {{ __('qr.connect.gps_retry') }}
                     </button>
                 </div>
 
                 {{-- Success state - position found --}}
-                <div x-show="hasPosition && !error" class="wp-card wp-card--success wp-card-pad" style="margin-top: 0.5rem;" x-cloak>
-                    <p class="wp-text-body" style="text-align: center;">
+                <div x-show="hasPosition && !error" x-cloak style="background: #d1fae5; border: 1px solid #10b981; border-radius: 0.5rem; padding: 0.75rem; margin-top: 0.5rem; text-align: center;">
+                    <p style="margin: 0; font-size: 0.9rem;">
                         ✅ <strong>{{ __('qr.connect.gps_found') }}</strong><br>
-                        <span class="wp-muted" style="font-family: monospace; font-size: 0.9em;">
+                        <span class="wp-muted" style="font-family: monospace; font-size: 0.85em;">
                             Lat: <span x-text="latitude ? latitude.toFixed(6) : '-'"></span><br>
                             Lng: <span x-text="longitude ? longitude.toFixed(6) : '-'"></span>
                         </span>
@@ -76,11 +74,11 @@
                 </div>
 
                 {{-- Manual entry fallback --}}
-                <div x-show="showManual" class="wp-stack-tight" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--wp-border);" x-cloak>
-                    <p class="wp-muted" style="text-align: center; margin-bottom: 0.5rem;">{{ __('qr.connect.gps_or_enter_manual') }}</p>
-                    <div class="wp-cluster" style="gap: 0.5rem;">
-                        <input type="number" step="any" x-model="manualLat" placeholder="Latitude" class="wp-input" style="flex: 1;">
-                        <input type="number" step="any" x-model="manualLng" placeholder="Longitude" class="wp-input" style="flex: 1;">
+                <div x-show="showManual" x-cloak style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #d1d5db;">
+                    <p class="wp-muted" style="text-align: center; margin-bottom: 0.5rem; font-size: 0.85rem;">{{ __('qr.connect.gps_or_enter_manual') }}</p>
+                    <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                        <input type="number" step="any" x-model="manualLat" placeholder="Latitude" style="flex: 1; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+                        <input type="number" step="any" x-model="manualLng" placeholder="Longitude" style="flex: 1; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
                     </div>
                     <button type="button" class="btn btn--surface btn--sm btn--block" @click="useManual()">
                         {{ __('qr.connect.gps_use_manual') }}
@@ -92,7 +90,7 @@
                 @enderror
             </div>
 
-            <div class="wp-card-actions" style="flex-direction: column; gap: 0.5rem;">
+            <div class="wp-card-actions" style="padding-top: 0.5rem;">
                 <button
                     type="button"
                     class="btn btn--primary btn--block"
@@ -102,7 +100,7 @@
                     <span x-show="!hasPosition" style="opacity: 0.7;">⏳ {{ __('qr.connect.gps_waiting') }}</span>
                     <span x-show="hasPosition">💾 {{ __('qr.connect.gps_save') }}</span>
                 </button>
-                <div class="wp-cluster" style="justify-content: space-between; width: 100%;">
+                <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
                     <button type="button" class="btn btn--ghost btn--sm" @click="toggleManual()">
                         <span x-show="!showManual">⌨️ {{ __('qr.connect.gps_manual_button') }}</span>
                         <span x-show="showManual">🔄 {{ __('qr.connect.gps_auto_button') }}</span>
@@ -115,6 +113,7 @@
         </div>
 
         <style>
+            [x-cloak] { display: none !important; }
             @keyframes pulse {
                 0%, 100% { opacity: 1; transform: scale(1); }
                 50% { opacity: 0.5; transform: scale(1.2); }

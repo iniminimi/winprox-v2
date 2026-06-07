@@ -242,8 +242,8 @@ class UnassignedQrPortal extends Component
             $actorId
         );
 
-        $this->gpsCaptureSuccess = true;
-        $this->showGpsCapture = false;
+        // Redirect to unit portal after saving GPS
+        $this->redirectRoute('public.unit-portal', ['token' => $this->linkedUnit->qr_token], navigate: true);
     }
 
     public function skipGps(): void
