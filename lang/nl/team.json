@@ -72,7 +72,24 @@
         "remove_teamleader": "Teamleader intrekken",
         "reset_icon": "Icoon resetten",
         "deactivate": "Deactiveren",
-        "activate": "Activeren"
+        "activate": "Activeren",
+        "import": "CSV import",
+        "import_title": "Uitvoerders importeren",
+        "import_hint": "Importeer uitvoerders in bulk via een CSV-bestand. Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, external_id. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
+        "import_download_sample": "Voorbeeldbestand downloaden",
+        "import_file_label": "CSV-bestand",
+        "import_submit": "Importeren",
+        "flash": {
+            "imported": ":count uitvoerder(s) succesvol geïmporteerd."
+        },
+        "import_sample": {
+            "team_name": "Onderhoudsteam",
+            "first_name": "Jan",
+            "last_name": "Janssen",
+            "email": "jan.janssen@bedrijf.be",
+            "phone": "+32 470 12 34 56",
+            "external_id": "EMP-001"
+        }
     },
     "qr": {
         "subtitle": "Scan deze code om het team-veldportaal te openen.",
@@ -90,6 +107,9 @@
         "password_confirm_required": "Bevestig het wachtwoord.",
         "team_name_required": "Geef een teamnaam op.",
         "worker_name_required": "Geef voor- en achternaam op.",
-        "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen."
+        "user_limit": "Het gebruikerslimiet van je abonnement is bereikt. Upgrade je abonnement om meer collega's toe te voegen.",
+        "import_file_required": "Selecteer een CSV-bestand om te importeren.",
+        "import_file_type": "Het bestand moet een CSV-bestand zijn.",
+        "import_file_max": "Het bestand mag maximaal 10MB groot zijn."
     }
 }

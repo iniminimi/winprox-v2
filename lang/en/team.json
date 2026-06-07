@@ -72,7 +72,24 @@
         "remove_teamleader": "Remove team leader",
         "reset_icon": "Reset icon",
         "deactivate": "Deactivate",
-        "activate": "Activate"
+        "activate": "Activate",
+        "import": "CSV import",
+        "import_title": "Import workers",
+        "import_hint": "Import workers in bulk via a CSV file. Required columns: team_name, first_name, last_name. Optional: email, phone, external_id. Teams are automatically created if they do not exist yet.",
+        "import_download_sample": "Download sample file",
+        "import_file_label": "CSV file",
+        "import_submit": "Import",
+        "flash": {
+            "imported": ":count worker(s) successfully imported."
+        },
+        "import_sample": {
+            "team_name": "Maintenance team",
+            "first_name": "John",
+            "last_name": "Smith",
+            "email": "john.smith@company.com",
+            "phone": "+44 7700 900123",
+            "external_id": "EMP-001"
+        }
     },
     "qr": {
         "subtitle": "Scan this code to open the team field portal.",
@@ -90,6 +107,9 @@
         "password_confirm_required": "Confirm the password.",
         "team_name_required": "Enter a team name.",
         "worker_name_required": "Enter a first and last name.",
-        "user_limit": "Your plan user limit has been reached. Upgrade your subscription to add more colleagues."
+        "user_limit": "Your plan user limit has been reached. Upgrade your subscription to add more colleagues.",
+        "import_file_required": "Please select a CSV file to import.",
+        "import_file_type": "The file must be a CSV file.",
+        "import_file_max": "The file may not be larger than 10MB."
     }
 }

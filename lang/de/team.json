@@ -72,7 +72,24 @@
         "remove_teamleader": "Teamleiter entfernen",
         "reset_icon": "Symbol zurücksetzen",
         "deactivate": "Deaktivieren",
-        "activate": "Aktivieren"
+        "activate": "Aktivieren",
+        "import": "CSV-Import",
+        "import_title": "Mitarbeiter importieren",
+        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über eine CSV-Datei. Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, external_id. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
+        "import_download_sample": "Beispieldatei herunterladen",
+        "import_file_label": "CSV-Datei",
+        "import_submit": "Importieren",
+        "flash": {
+            "imported": ":count Mitarbeiter erfolgreich importiert."
+        },
+        "import_sample": {
+            "team_name": "Wartungsteam",
+            "first_name": "Hans",
+            "last_name": "Müller",
+            "email": "hans.mueller@unternehmen.de",
+            "phone": "+49 170 1234567",
+            "external_id": "EMP-001"
+        }
     },
     "qr": {
         "subtitle": "Scannen Sie diesen Code, um das Team-Feldportal zu öffnen.",
@@ -90,6 +107,9 @@
         "password_confirm_required": "Bestätigen Sie das Passwort.",
         "team_name_required": "Geben Sie einen Teamnamen an.",
         "worker_name_required": "Geben Sie Vor- und Nachnamen an.",
-        "user_limit": "Das Benutzerlimit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Kollegen hinzuzufügen."
+        "user_limit": "Das Benutzerlimit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Kollegen hinzuzufügen.",
+        "import_file_required": "Bitte wählen Sie eine CSV-Datei zum Importieren aus.",
+        "import_file_type": "Die Datei muss eine CSV-Datei sein.",
+        "import_file_max": "Die Datei darf nicht größer als 10 MB sein."
     }
 }

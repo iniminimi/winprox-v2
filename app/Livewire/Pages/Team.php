@@ -2,6 +2,11 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Workers\DeleteWorkerImportBatchAction;
+use App\Actions\Workers\ImportWorkersAction;
+use App\Data\Workers\DeleteWorkerImportBatchData;
+use App\Data\Workers\ImportWorkersData;
+use App\Http\Requests\Workers\ImportWorkersRequest;
 use App\Actions\Team\CreateColleagueAction;
 use App\Actions\Team\CreateTeamAction;
 use App\Actions\Team\CreateWorkerAction;
@@ -30,6 +35,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 /**
  * Gebruikers-hub: collega-gebruikers (admin), operationele teams (+ team-QR) en workers.
@@ -39,7 +45,7 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Team extends Component
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, WithFileUploads;
 
     // Collega-gebruiker (modal)
     public bool $showColleagueModal = false;
@@ -78,6 +84,12 @@ class Team extends Component
 
     public string $workerFirstName = '';
     public string $workerLastName = '';
+
+    // Worker CSV import
+    public bool $showWorkerImportModal = false;
+    public $workerImportFile = null;
+    public array $workerImportErrors = [];
+    public ?int $workerImportedCount = null;
 
     public function mount(): void
     {
@@ -479,6 +491,98 @@ class Team extends Component
         if (! in_array($teamId, $this->expandedTeamIds, true)) {
             $this->expandedTeamIds[] = $teamId;
         }
+    }
+
+    // --- Worker CSV import ------------------------------------------------
+
+    public function downloadSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $this->authorize('create', InternalTeam::class);
+
+        $headers = ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'];
+
+        $sampleRow = [
+            __('team.workers.import_sample.team_name'),
+            __('team.workers.import_sample.first_name'),
+            __('team.workers.import_sample.last_name'),
+            __('team.workers.import_sample.email'),
+            __('team.workers.import_sample.phone'),
+            __('team.workers.import_sample.external_id'),
+        ];
+
+        return response()->streamDownload(function () use ($headers, $sampleRow) {
+            echo "\xEF\xBB\xBF";
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fputcsv($file, $sampleRow);
+            fclose($file);
+        }, 'winprox_workers_sample.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    public function openWorkerImportModal(): void
+    {
+        $this->authorize('create', InternalTeam::class);
+        $this->workerImportFile = null;
+        $this->workerImportErrors = [];
+        $this->workerImportedCount = null;
+        $this->showWorkerImportModal = true;
+    }
+
+    public function closeWorkerImportModal(): void
+    {
+        $this->showWorkerImportModal = false;
+        $this->workerImportFile = null;
+        $this->workerImportErrors = [];
+        $this->workerImportedCount = null;
+    }
+
+    public function importWorkers(ImportWorkersAction $importWorkers): void
+    {
+        $this->authorize('create', InternalTeam::class);
+
+        if ($this->workerImportFile === null) {
+            $this->workerImportErrors = [__('team.errors.import_file_required')];
+
+            return;
+        }
+
+        $validator = \Illuminate\Support\Facades\Validator::make(
+            ['file' => $this->workerImportFile],
+            ImportWorkersRequest::getReusableRules(),
+            ImportWorkersRequest::getReusableMessages()
+        );
+
+        if ($validator->fails()) {
+            $this->workerImportErrors = $validator->errors()->all();
+
+            return;
+        }
+
+        $dto = new ImportWorkersData(
+            filePath: $this->workerImportFile->getRealPath(),
+            originalName: $this->workerImportFile->getClientOriginalName(),
+        );
+
+        $result = $importWorkers->handle($dto, Tenancy::id(), (int) auth()->id());
+
+        if ($result['success']) {
+            $this->workerImportedCount = $result['count'];
+            $this->workerImportErrors = [];
+            session()->flash('success', __('team.workers.flash.imported', ['count' => $result['count']]));
+            $this->closeWorkerImportModal();
+        } else {
+            $this->workerImportErrors = $result['errors'];
+        }
+    }
+
+    public function deleteWorkerImportBatch(string $batchId, DeleteWorkerImportBatchAction $deleteBatch): void
+    {
+        $this->authorize('create', InternalTeam::class);
+
+        $dto = new DeleteWorkerImportBatchData(importBatchId: $batchId);
+        $deleteBatch->handle($dto, Tenancy::id(), (int) auth()->id());
     }
 
     public function render()

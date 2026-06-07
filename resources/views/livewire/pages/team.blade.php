@@ -53,10 +53,15 @@
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateTeam">
-                    <x-wp-icon name="plus" class="wp-icon" />
-                    <span>{{ __('team.teams.add') }}</span>
-                </button>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openWorkerImportModal">
+                        {{ __('team.workers.import') }}
+                    </button>
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateTeam">
+                        <x-wp-icon name="plus" class="wp-icon" />
+                        <span>{{ __('team.teams.add') }}</span>
+                    </button>
+                </div>
             @endif
         </div>
         <p class="wp-hint">{{ __('team.teams.hint') }}</p>
@@ -240,6 +245,49 @@
                     <button type="submit" class="btn btn--primary">{{ __('team.colleagues.modal.save') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    {{-- Modal: worker CSV import --------------------------------------------}}
+    @if ($showWorkerImportModal)
+        <x-wp-modal closeMethod="closeWorkerImportModal">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">{{ __('team.workers.import_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeWorkerImportModal" />
+                </div>
+                <p class="wp-muted">{{ __('team.workers.import_hint') }}</p>
+
+                <div class="wp-field">
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadSampleCsv">
+                        {{ __('team.workers.import_download_sample') }}
+                    </button>
+                </div>
+
+                <form wire:submit="importWorkers" class="wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="workerImportFile">{{ __('team.workers.import_file_label') }}</label>
+                        <input type="file" id="workerImportFile" class="wp-input" wire:model="workerImportFile" accept=".csv,.txt">
+                        @error('workerImportFile') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
+                    @if (!empty($workerImportErrors))
+                        <div class="wp-stack-tight">
+                            @foreach ($workerImportErrors as $error)
+                                <p class="wp-error">{{ $error }}</p>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    <div class="wp-cluster">
+                        <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importWorkers">
+                            <span wire:loading wire:target="importWorkers"><x-wp-spinner size="sm" /></span>
+                            <span>{{ __('team.workers.import_submit') }}</span>
+                        </button>
+                        <button type="button" class="btn btn--ghost" wire:click="closeWorkerImportModal">{{ __('common.button.cancel') }}</button>
+                    </div>
+                </form>
+            </div>
         </x-wp-modal>
     @endif
 

@@ -22,6 +22,10 @@ class Worker extends Model
         'field_icon_locked_at',
         'is_active',
         'is_teamleader',
+        'import_batch_id',
+        'email',
+        'phone',
+        'external_id',
     ];
 
     protected $casts = [

@@ -72,7 +72,24 @@
         "remove_teamleader": "Retirer le rôle de chef d'équipe",
         "reset_icon": "Réinitialiser l'icône",
         "deactivate": "Désactiver",
-        "activate": "Activer"
+        "activate": "Activer",
+        "import": "Import CSV",
+        "import_title": "Importer des intervenants",
+        "import_hint": "Importez des intervenants en masse via un fichier CSV. Colonnes obligatoires : team_name, first_name, last_name. Optionnel : email, phone, external_id. Les équipes sont créées automatiquement si elles n'existent pas encore.",
+        "import_download_sample": "Télécharger le fichier exemple",
+        "import_file_label": "Fichier CSV",
+        "import_submit": "Importer",
+        "flash": {
+            "imported": ":count intervenant(s) importé(s) avec succès."
+        },
+        "import_sample": {
+            "team_name": "Équipe maintenance",
+            "first_name": "Jean",
+            "last_name": "Dupont",
+            "email": "jean.dupont@entreprise.fr",
+            "phone": "+33 6 12 34 56 78",
+            "external_id": "EMP-001"
+        }
     },
     "qr": {
         "subtitle": "Scannez ce code pour ouvrir le portail de terrain de l'équipe.",
@@ -90,6 +107,9 @@
         "password_confirm_required": "Confirmez le mot de passe.",
         "team_name_required": "Indiquez un nom d'équipe.",
         "worker_name_required": "Indiquez un prénom et un nom.",
-        "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues."
+        "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues.",
+        "import_file_required": "Veuillez sélectionner un fichier CSV à importer.",
+        "import_file_type": "Le fichier doit être un fichier CSV.",
+        "import_file_max": "Le fichier ne peut pas dépasser 10 Mo."
     }
 }
