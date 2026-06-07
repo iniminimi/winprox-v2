@@ -42,10 +42,10 @@
             @if ($mapsUrl)
                 <div style="margin-top: 0.75rem;">
                     <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
-                        <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;vertical-align:middle;display:inline-block;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        {{ __('portal.worker.navigate_to_location') }}
+                        <span style="vertical-align:middle;display:inline-block;">{{ __('portal.worker.navigate_to_location') }}</span>
                     </a>
                 </div>
             @endif
@@ -64,10 +64,10 @@
                     }
                 ">
                     <span x-show="!capturing">
-                        <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;vertical-align:middle;display:inline-block;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                         </svg>
-                        {{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}
+                        <span style="vertical-align:middle;display:inline-block;">{{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}</span>
                     </span>
                     <span x-show="capturing" style="display:none;">
                         <x-wp-icon name="loader" class="wp-mr-2" />
