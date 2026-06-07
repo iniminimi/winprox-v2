@@ -28,7 +28,17 @@
         "gps_success_message": "Der GPS-Standort wurde erfolgreich erfasst.",
         "gps_validation_required": "GPS-Koordinaten sind erforderlich.",
         "gps_validation_numeric": "GPS-Koordinaten müssen numerisch sein.",
-        "gps_validation_between": "GPS-Koordinaten liegen außerhalb des gültigen Bereichs."
+        "gps_validation_between": "GPS-Koordinaten liegen außerhalb des gültigen Bereichs.",
+        "gps_waiting": "Warte auf GPS...",
+        "gps_manual_button": "Manuell eingeben",
+        "gps_auto_button": "Auto-Erkennung",
+        "gps_or_enter_manual": "Oder geben Sie die Koordinaten manuell ein:",
+        "gps_use_manual": "Diese Koordinaten verwenden",
+        "gps_denied": "GPS-Zugriff verweigert. Überprüfen Sie Ihre Browsereinstellungen.",
+        "gps_unavailable": "GPS-Standort nicht verfügbar.",
+        "gps_timeout": "GPS-Standort Zeitüberschreitung. Bitte versuchen Sie es erneut.",
+        "gps_invalid_coords": "Ungültige Koordinaten. Bitte geben Sie gültige Zahlen ein.",
+        "gps_out_of_range": "Koordinaten außerhalb des Bereichs. Breite: -90 bis 90, Länge: -180 bis 180."
     },
     "unassigned_guest": {
         "title": "(neu)verknüpfen einer Einheit",

@@ -28,7 +28,17 @@
         "gps_success_message": "De GPS-locatie is succesvol vastgelegd.",
         "gps_validation_required": "GPS-coördinaten zijn verplicht.",
         "gps_validation_numeric": "GPS-coördinaten moeten numeriek zijn.",
-        "gps_validation_between": "GPS-coördinaten liggen buiten het geldige bereik."
+        "gps_validation_between": "GPS-coördinaten liggen buiten het geldige bereik.",
+        "gps_waiting": "Wachten op GPS...",
+        "gps_manual_button": "Handmatig invoeren",
+        "gps_auto_button": "Automatisch ophalen",
+        "gps_or_enter_manual": "Of voer de coördinaten handmatig in:",
+        "gps_use_manual": "Gebruik deze coördinaten",
+        "gps_denied": "GPS-toegang geweigerd. Controleer je browserinstellingen.",
+        "gps_unavailable": "GPS-locatie niet beschikbaar.",
+        "gps_timeout": "GPS-locatie time-out. Probeer het opnieuw.",
+        "gps_invalid_coords": "Ongeldige coördinaten. Voer geldige getallen in.",
+        "gps_out_of_range": "Coördinaten buiten bereik. Latitude: -90 tot 90, Longitude: -180 tot 180."
     },
     "unassigned_guest": {
         "title": "(her)koppel een unit",

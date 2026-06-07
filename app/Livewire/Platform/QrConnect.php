@@ -62,7 +62,16 @@ class QrConnect extends Component
 
             // Check if GPS capture is needed
             $unit->refresh();
-            if (! $unit->hasGps()) {
+            $hasGps = $unit->hasGps();
+
+            \Illuminate\Support\Facades\Log::debug('QR Connect: Checking GPS status', [
+                'unit_id' => $unit->id,
+                'has_gps' => $hasGps,
+                'latitude' => $unit->latitude,
+                'longitude' => $unit->longitude,
+            ]);
+
+            if (! $hasGps) {
                 $this->linkedUnit = $unit;
                 $this->showGpsCapture = true;
             }

@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\ApplySupportTenantContext;
 use App\Http\Middleware\CheckApiAccess;
+use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
@@ -34,6 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'superuser' => EnsureSuperuser::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
             'api.access' => CheckApiAccess::class,
+            'idempotency' => EnsureRequestIdempotency::class,
         ]);
 
         // Locale-keuze (sessie) toepassen op elke web-request.

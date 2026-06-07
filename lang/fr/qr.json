@@ -28,7 +28,17 @@
         "gps_success_message": "La localisation GPS a été enregistrée avec succès.",
         "gps_validation_required": "Les coordonnées GPS sont obligatoires.",
         "gps_validation_numeric": "Les coordonnées GPS doivent être numériques.",
-        "gps_validation_between": "Les coordonnées GPS sont en dehors de la plage valide."
+        "gps_validation_between": "Les coordonnées GPS sont en dehors de la plage valide.",
+        "gps_waiting": "En attente du GPS...",
+        "gps_manual_button": "Saisie manuelle",
+        "gps_auto_button": "Détection auto",
+        "gps_or_enter_manual": "Ou saisissez les coordonnées manuellement :",
+        "gps_use_manual": "Utiliser ces coordonnées",
+        "gps_denied": "Accès GPS refusé. Vérifiez les paramètres de votre navigateur.",
+        "gps_unavailable": "Localisation GPS indisponible.",
+        "gps_timeout": "Délai de localisation GPS dépassé. Veuillez réessayer.",
+        "gps_invalid_coords": "Coordonnées invalides. Veuillez saisir des nombres valides.",
+        "gps_out_of_range": "Coordonnées hors plage. Latitude : -90 à 90, Longitude : -180 à 180."
     },
     "unassigned_guest": {
         "title": "(re)lier une unité",

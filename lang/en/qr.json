@@ -28,7 +28,17 @@
         "gps_success_message": "The GPS location has been successfully captured.",
         "gps_validation_required": "GPS coordinates are required.",
         "gps_validation_numeric": "GPS coordinates must be numeric.",
-        "gps_validation_between": "GPS coordinates are outside the valid range."
+        "gps_validation_between": "GPS coordinates are outside the valid range.",
+        "gps_waiting": "Waiting for GPS...",
+        "gps_manual_button": "Enter manually",
+        "gps_auto_button": "Auto-detect",
+        "gps_or_enter_manual": "Or enter coordinates manually:",
+        "gps_use_manual": "Use these coordinates",
+        "gps_denied": "GPS access denied. Check your browser settings.",
+        "gps_unavailable": "GPS location unavailable.",
+        "gps_timeout": "GPS location timed out. Please try again.",
+        "gps_invalid_coords": "Invalid coordinates. Please enter valid numbers.",
+        "gps_out_of_range": "Coordinates out of range. Latitude: -90 to 90, Longitude: -180 to 180."
     },
     "unassigned_guest": {
         "title": "(re)link a unit",

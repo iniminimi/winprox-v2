@@ -28,9 +28,23 @@ class Unit extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'latitude' => 'float',
-        'longitude' => 'float',
     ];
+
+    protected function latitude(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+            get: fn (?string $value) => $value === null ? null : (float) $value,
+            set: fn (null|float|string $value) => $value === null ? null : (float) $value,
+        );
+    }
+
+    protected function longitude(): \Illuminate\Database\Eloquent\Casts\Attribute
+    {
+        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
+            get: fn (?string $value) => $value === null ? null : (float) $value,
+            set: fn (null|float|string $value) => $value === null ? null : (float) $value,
+        );
+    }
 
     protected static function booted(): void
     {
