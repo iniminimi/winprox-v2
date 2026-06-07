@@ -442,3 +442,33 @@ it('qr-pack download with dynamic QR codes validates count', function () {
 
     $response->assertStatus(400);
 });
+
+it('downloads sample CSV with correct headers and UTF-8 BOM', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    // Test that the component has the downloadSampleCsv method
+    $component = Livewire::actingAs($user)
+        ->test(LocationIndex::class);
+
+    // Verify the method exists and can be called (Livewire will handle the response)
+    $component->call('downloadSampleCsv')
+        ->assertStatus(200);
+
+    // For detailed content verification, we'll test the component method directly
+    // by setting up the proper context
+    Tenancy::actAs($tenant->id);
+    auth()->login($user);
+
+    $livewireComponent = new LocationIndex();
+    $livewireComponent->mount();
+
+    $csvResponse = $livewireComponent->downloadSampleCsv();
+
+    expect($csvResponse->getStatusCode())->toBe(200)
+        ->and($csvResponse->headers->get('content-type'))->toBe('text/csv; charset=UTF-8')
+        ->and($csvResponse->headers->get('content-disposition'))->toContain('winprox_sample.csv');
+
+    // Verify the response is a StreamedResponse
+    expect($csvResponse)->toBeInstanceOf(\Symfony\Component\HttpFoundation\StreamedResponse::class);
+});

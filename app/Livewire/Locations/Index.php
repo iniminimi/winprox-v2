@@ -195,6 +195,50 @@ class Index extends Component
         }
     }
 
+    public function downloadSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $this->authorize('create', Location::class);
+
+        $headers = [
+            'location_name',
+            'street',
+            'house_number',
+            'postal_code',
+            'city',
+            'country_code',
+            'notes',
+            'unit_name',
+            'description',
+            'category_name',
+        ];
+
+        // Localized sample row
+        $sampleRow = [
+            __('locations.import.sample_location_name'),
+            __('locations.import.sample_street'),
+            __('locations.import.sample_house_number'),
+            __('locations.import.sample_postal_code'),
+            __('locations.import.sample_city'),
+            __('locations.import.sample_country_code'),
+            __('locations.import.sample_notes'),
+            __('locations.import.sample_unit_name'),
+            __('locations.import.sample_description'),
+            __('locations.import.sample_category_name'),
+        ];
+
+        return response()->streamDownload(function () use ($headers, $sampleRow) {
+            // UTF-8 BOM for Excel compatibility
+            echo "\xEF\xBB\xBF";
+
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fputcsv($file, $sampleRow);
+            fclose($file);
+        }, 'winprox_sample.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
     /**
      * @return array<string, string>
      */
