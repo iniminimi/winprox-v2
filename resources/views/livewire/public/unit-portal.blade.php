@@ -30,6 +30,20 @@
         @if ($unitDescription)
             <p class="wp-muted">{{ $unitDescription }}</p>
         @endif
+
+        {{-- Navigate to location button --}}
+        @php
+            $unitModel = \App\Models\Unit::find($unitId);
+            $mapsUrl = $unitModel?->googleMapsUrl();
+        @endphp
+        @if ($mapsUrl)
+            <div style="margin-top: 0.75rem;">
+                <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
+                    <x-wp-icon name="map-pin" class="wp-mr-2" />
+                    {{ __('portal.worker.navigate_to_location') }}
+                </a>
+            </div>
+        @endif
     </div>
 
     @if ($inactiveReasonKey !== null)
@@ -83,20 +97,6 @@
                     </div>
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
-                    @endif
-
-                    {{-- Navigate to location button --}}
-                    @php
-                        $unitModel = \App\Models\Unit::find($unitId);
-                        $mapsUrl = $unitModel?->googleMapsUrl();
-                    @endphp
-                    @if ($mapsUrl)
-                        <div class="wp-card wp-card-pad">
-                            <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block">
-                                <x-wp-icon name="map-pin" class="wp-mr-2" />
-                                {{ __('portal.worker.navigate_to_location') }}
-                            </a>
-                        </div>
                     @endif
 
                     <div class="wp-row">
