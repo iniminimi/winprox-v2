@@ -6,7 +6,7 @@
     "add": "+ Nieuwe locatie toevoegen",
     "import": "CSV import",
     "import_title": "Units importeren via CSV",
-    "import_hint": "Upload een CSV-bestand met de kolommen: location_name, unit_name, description (optioneel), category_name (optioneel). Het bestand moet exact deze headers hebben.",
+    "import_hint": "Upload een CSV-bestand met de kolommen: location_name, unit_name, description (optioneel), category_name (optioneel). Het bestand moet exact deze headers hebben. Download een voorbeeldbestand via de knop rechts.",
     "import_file_label": "CSV-bestand",
     "import_submit": "Importeren",
     "import_submit_loading": "Bezig met importeren...",

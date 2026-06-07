@@ -6,7 +6,7 @@
     "add": "+ Ajouter un site",
     "import": "Import CSV",
     "import_title": "Importer des unités via CSV",
-    "import_hint": "Téléchargez un fichier CSV avec les colonnes : location_name, unit_name, description (optionnel), category_name (optionnel). Le fichier doit avoir exactement ces en-têtes.",
+    "import_hint": "Téléchargez un fichier CSV avec les colonnes : location_name, unit_name, description (optionnel), category_name (optionnel). Le fichier doit avoir exactement ces en-têtes. Téléchargez un fichier exemple via le bouton à droite.",
     "import_file_label": "Fichier CSV",
     "import_submit": "Importer",
     "import_submit_loading": "Importation en cours...",
