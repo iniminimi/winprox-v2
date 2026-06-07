@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitReportAction;
+use App\Actions\Units\UpdateUnitGpsAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
@@ -70,6 +71,9 @@ class UnitPortal extends Component
     public array $newPortalPhotos = [];
 
     public string $flashMessage = '';
+
+    public ?float $gpsLatitude = null;
+    public ?float $gpsLongitude = null;
 
     public function mount(string $token): void
     {
@@ -411,6 +415,40 @@ class UnitPortal extends Component
         $this->reset('newPortalPhotos');
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.unit.photos_updated');
+    }
+
+    public function updateUnitGps(): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        if (! $this->workerBelongsToUnitTeam()) {
+            $this->addError('gpsLatitude', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        $this->validate([
+            'gpsLatitude' => ['required', 'numeric', 'between:-90,90'],
+            'gpsLongitude' => ['required', 'numeric', 'between:-180,180'],
+        ], [
+            'gpsLatitude.between' => __('qr.connect.gps_validation_between'),
+            'gpsLongitude.between' => __('qr.connect.gps_validation_between'),
+        ]);
+
+        $unit = $this->unit();
+
+        app(UpdateUnitGpsAction::class)->handle(
+            $unit,
+            (float) $this->gpsLatitude,
+            (float) $this->gpsLongitude,
+            $this->tenantId,
+            null
+        );
+
+        $this->reset('gpsLatitude', 'gpsLongitude');
+        $this->flashMessage = __('portal.unit.gps_updated');
     }
 
     public function submitCompleteTask(CompleteTaskAction $completeTask): void

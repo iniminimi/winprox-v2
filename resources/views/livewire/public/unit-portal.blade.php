@@ -48,6 +48,46 @@
                     </p>
                 </div>
             @endif
+
+            {{-- GPS Update Form for Workers --}}
+            <div class="wp-card wp-card-pad wp-stack" style="margin-top: 0.75rem;" x-data="{ open: false, lat: '', lng: '' }">
+                <button type="button" class="wp-row" style="width:100%;background:none;border:none;padding:0;cursor:pointer;" @click="open = !open">
+                    <span class="wp-section-title" style="margin:0;font-size:0.9rem;">📍 {{ $mapsUrl ? __('portal.unit.update_gps') : __('portal.unit.add_gps') }}</span>
+                    <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
+                    <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
+                </button>
+
+                <div x-show="open" class="wp-stack-tight" style="margin-top: 0.5rem;">
+                    <div class="wp-cluster" style="gap: 0.5rem;">
+                        <label class="wp-field" style="flex:1;">
+                            <span class="wp-label">{{ __('locations.units.fields.latitude') }}</span>
+                            <input type="number" step="any" class="wp-input" x-model="lat" wire:model="gpsLatitude" />
+                        </label>
+                        <label class="wp-field" style="flex:1;">
+                            <span class="wp-label">{{ __('locations.units.fields.longitude') }}</span>
+                            <input type="number" step="any" class="wp-input" x-model="lng" wire:model="gpsLongitude" />
+                        </label>
+                    </div>
+                    @error('gpsLatitude') <span class="wp-error">{{ $message }}</span> @enderror
+                    @error('gpsLongitude') <span class="wp-error">{{ $message }}</span> @enderror
+
+                    <button type="button" class="btn btn--ghost btn--sm" @click="
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                                (pos) => { lat = pos.coords.latitude; lng = pos.coords.longitude; $wire.gpsLatitude = pos.coords.latitude; $wire.gpsLongitude = pos.coords.longitude; },
+                                (err) => { alert('GPS fout: ' + err.message); }
+                            );
+                        }
+                    ">
+                        <x-wp-icon name="map-pin" class="wp-icon--sm" />
+                        {{ __('locations.units.gps_use_current') }}
+                    </button>
+
+                    <button type="button" class="btn btn--primary btn--block btn--sm" wire:click="updateUnitGps">
+                        {{ __('common.button.save') }}
+                    </button>
+                </div>
+            </div>
         @endif
     </div>
 

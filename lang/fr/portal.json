@@ -175,7 +175,10 @@
         "photos_submit": "Enregistrer les photos",
         "photos_submit_loading": "Enregistrement en cours...",
         "photos_updated": "Photos ajoutées avec succès !",
-        "upload_failed_offline": "Téléversement échoué. Vérifiez votre connexion internet et réessayez."
+        "upload_failed_offline": "Téléversement échoué. Vérifiez votre connexion internet et réessayez.",
+        "update_gps": "Modifier GPS",
+        "add_gps": "Ajouter GPS",
+        "gps_updated": "Coordonnées GPS mises à jour !"
     }
 }
 
