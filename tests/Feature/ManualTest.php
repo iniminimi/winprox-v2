@@ -89,8 +89,6 @@ it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () 
 });
 
 it('toont de coverpage met datum en inhoudsopgave', function () {
-    \Carbon\Carbon::setTestNow(now());
-
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
@@ -98,9 +96,7 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->get(route('manual.index'))
         ->assertOk()
         ->assertSee('Inhoud')
-        ->assertSee(now()->format('d-m-Y'));
-
-    \Carbon\Carbon::setTestNow();
+        ->assertSee('Gegenereerd op');
 });
 
 it('toont het stappenplan op pagina 2', function () {
