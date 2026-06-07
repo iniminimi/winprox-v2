@@ -120,6 +120,38 @@ it('validates gps coordinates in request', function () {
         ->and($rules['longitude'])->toContain('between:-180,180');
 });
 
+it('can overwrite existing gps coordinates', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'latitude' => 50.0,
+        'longitude' => 3.0,
+    ]);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $action = app(UpdateUnitGpsAction::class);
+    $result = $action->handle(
+        unit: $unit,
+        latitude: 51.98765432,
+        longitude: 4.56789012,
+        tenantId: $tenant->id,
+        actorUserId: $user->id
+    );
+
+    expect($result->latitude)->toBe(51.98765432)
+        ->and($result->longitude)->toBe(4.56789012);
+
+    $unit->refresh();
+    expect($unit->latitude)->toBe(51.98765432)
+        ->and($unit->longitude)->toBe(4.56789012)
+        ->and($unit->hasGps())->toBeTrue();
+});
+
 it('validates static rules match instance rules', function () {
     $instanceRules = (new \App\Http\Requests\Units\UpdateUnitGpsRequest())->rules();
     $staticRules = \App\Http\Requests\Units\UpdateUnitGpsRequest::staticRules();

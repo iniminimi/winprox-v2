@@ -211,6 +211,31 @@
                 </label>
 
                 @if ($editingUnitId)
+                    {{-- GPS Coordinates --}}
+                    <div class="wp-form-grid-2" x-data="{ lat: $wire.unitLatitude ?? '', lng: $wire.unitLongitude ?? '' }">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.units.fields.latitude') }}</span>
+                            <input type="number" step="any" class="wp-input" wire:model="unitLatitude" x-model="lat" />
+                            @error('unitLatitude') <span class="wp-error">{{ $message }}</span> @enderror
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.units.fields.longitude') }}</span>
+                            <input type="number" step="any" class="wp-input" wire:model="unitLongitude" x-model="lng" />
+                            @error('unitLongitude') <span class="wp-error">{{ $message }}</span> @enderror
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn--ghost btn--sm" @click="
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                                (pos) => { lat = pos.coords.latitude; lng = pos.coords.longitude; $wire.unitLatitude = pos.coords.latitude; $wire.unitLongitude = pos.coords.longitude; },
+                                (err) => { alert('GPS fout: ' + err.message); }
+                            );
+                        }
+                    ">
+                        <x-wp-icon name="map-pin" class="wp-icon--sm" />
+                        {{ __('locations.units.gps_use_current') }}
+                    </button>
+
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
                         $tempCount = count($unitPhotos);

@@ -1,0 +1,28 @@
+{
+    "cover": {
+        "title": "WinProx Benutzerhandbuch",
+        "subtitle": "Facility-Meldungs-App — Administratoren & Mitarbeiter",
+        "generated": "Erstellt am {date}",
+        "contents": "Inhalt",
+        "print": "Drucken / Als PDF speichern",
+        "back": "Zurück"
+    },
+    "getting_started": {
+        "label": "Erste Schritte",
+        "title": "In 5 Schritten einsatzbereit",
+        "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung von WinProx für Ihre Organisation."
+    },
+    "chapter": "Kapitel",
+    "statuses": "Status",
+    "footer": "WinProx — Facility-Meldungs-App — {date}",
+    "step_1_title": "Teams & Mitarbeiter anlegen",
+    "step_1_text": "Erstellen Sie operative Teams, weisen Sie einen Teamleiter zu und fügen Sie Mitarbeiter hinzu. Verknüpfen Sie Teams mit Kategorien, damit Aufgaben immer beim richtigen Team ankommen.",
+    "step_2_title": "Standorte & Einheiten einrichten",
+    "step_2_text": "Fügen Sie Standorte (Gebäude, Etagen) hinzu und erstellen Sie Einheiten pro Standort — das sind die Assets, Maschinen oder Räume, auf die Meldungen und Aufgaben registriert werden.",
+    "step_3_title": "QR-Codes drucken & aufhängen",
+    "step_3_text": "Drucken Sie QR-Codes von der Einheiten- oder Standortdetailseite und befestigen Sie sie sichtbar. Melder scannen den Einheiten-QR um eine Meldung zu erfassen; Mitarbeiter scannen den Team-QR um Aufgaben zu starten.",
+    "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
+    "step_4_text": "Meldungen kommen per QR-Scan oder manuell herein. Weisen Sie eine Aufgabe einem Team zu, setzen Sie eine Frist und verfolgen Sie den Fortschritt über das Dashboard und den Kalender.",
+    "step_5_title": "Nachverfolgen & abschließen",
+    "step_5_text": "Mitarbeiter erledigen Aufgaben vor Ort über den Team-QR. Sobald alle Aufgaben abgeschlossen sind, schließt der Administrator die Meldung. Alles ist im Audit-Trail nachvollziehbar."
+}

@@ -2,9 +2,9 @@
     {{-- Print-knop (verdwijnt bij afdrukken) --}}
     <div class="no-print" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; display: flex; gap: 0.75rem;">
         <button type="button" class="btn btn--primary" onclick="window.print()">
-            Afdrukken / Opslaan als PDF
+            {{ __('manual.cover.print') }}
         </button>
-        <a href="{{ route('dashboard') }}" class="btn btn--ghost">Terug</a>
+        <a href="{{ route('dashboard') }}" class="btn btn--ghost">{{ __('manual.cover.back') }}</a>
     </div>
 
     {{-- Taalkeuze (verdwijnt bij afdrukken) --}}
@@ -39,13 +39,13 @@
 
         <div style="margin-top: 2rem;">
             <h1 style="font-size: 2.75rem; font-weight: 700; letter-spacing: -0.04em; color: var(--wp-text); margin: 0 0 0.75rem;">
-                WinProx Handleiding
+                {{ __('manual.cover.title') }}
             </h1>
             <p style="font-size: 1.25rem; color: var(--wp-text-secondary); margin: 0 0 0.5rem;">
-                Facilitaire meldingsapp — beheerders &amp; medewerkers
+                {{ __('manual.cover.subtitle') }}
             </p>
             <p style="font-size: 0.9rem; color: var(--wp-text-muted); margin: 0;">
-                Gegenereerd op {{ $generatedAt }}
+                {{ __('manual.cover.generated', ['date' => $generatedAt]) }}
             </p>
         </div>
 
@@ -58,7 +58,7 @@
             max-width: 520px;
             text-align: left;
         ">
-            <p style="font-weight: 600; color: var(--wp-text); margin: 0 0 1rem;">Inhoud</p>
+            <p style="font-weight: 600; color: var(--wp-text); margin: 0 0 1rem;">{{ __('manual.cover.contents') }}</p>
             <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
                 @foreach ($chapters as $index => $chapter)
                     <li>{{ $chapter['title'] }}</li>
@@ -85,28 +85,23 @@
             letter-spacing: 0.12em;
             color: var(--wp-accent-text);
             margin: 0 0 1rem;
-        ">Aan de slag</p>
+        ">{{ __('manual.getting_started.label') }}</p>
         <h2 style="
             font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--wp-text);
             margin: 0 0 0.5rem;
-        ">In 5 stappen up-and-running</h2>
+        ">{{ __('manual.getting_started.title') }}</h2>
         <p style="
             color: var(--wp-text-body);
             font-size: 1rem;
             margin: 0 0 3rem;
-        ">Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie.</p>
+        ">{{ __('manual.getting_started.intro') }}</p>
 
         <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.25rem;">
-            @foreach ([
-                ['num' => '01', 'title' => 'Teams & uitvoerders aanmaken', 'text' => 'Maak operationele teams aan, wijs een teamleider toe en voeg uitvoerders toe. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen.'],
-                ['num' => '02', 'title' => 'Locaties & units inrichten', 'text' => 'Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd.'],
-                ['num' => '03', 'title' => 'QR-codes afdrukken & ophangen', 'text' => 'Druk de QR-codes af via de unit- of locatiedetailpagina en bevestig ze zichtbaar. Melders scannen de unit-QR om een melding te doen; uitvoerders scannen de team-QR om taken te starten.'],
-                ['num' => '04', 'title' => 'Meldingen ontvangen & taken aansturen', 'text' => 'Meldingen komen binnen via QR-scan of handmatig. Koppel een taak aan een team, stel een deadline in en volg de voortgang op via het dashboard en de kalender.'],
-                ['num' => '05', 'title' => 'Opvolgen & afsluiten', 'text' => 'Uitvoerders werken taken af op de werkvloer via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail.'],
-            ] as $step)
+            @foreach (range(1, 5) as $i)
+                @php $num = str_pad((string) $i, 2, '0', STR_PAD_LEFT); @endphp
                 <li style="
                     display: grid;
                     grid-template-columns: 3rem 1fr;
@@ -123,10 +118,10 @@
                         color: var(--wp-accent-text);
                         line-height: 1;
                         padding-top: 0.1rem;
-                    ">{{ $step['num'] }}</span>
+                    ">{{ $num }}</span>
                     <div>
-                        <p style="font-weight: 700; color: var(--wp-text); margin: 0 0 0.35rem; font-size: 1rem;">{{ $step['title'] }}</p>
-                        <p style="color: var(--wp-text-body); font-size: 0.9rem; line-height: 1.6; margin: 0;">{{ $step['text'] }}</p>
+                        <p style="font-weight: 700; color: var(--wp-text); margin: 0 0 0.35rem; font-size: 1rem;">{{ __('manual.step_' . $i . '_title') }}</p>
+                        <p style="color: var(--wp-text-body); font-size: 0.9rem; line-height: 1.6; margin: 0;">{{ __('manual.step_' . $i . '_text') }}</p>
                     </div>
                 </li>
             @endforeach
@@ -156,7 +151,7 @@
                     letter-spacing: 0.08em;
                     color: var(--wp-accent-text);
                     white-space: nowrap;
-                ">Hoofdstuk {{ $index + 1 }}</span>
+                ">{{ __('manual.chapter') }} {{ $index + 1 }}</span>
                 <h2 style="
                     font-size: 1.6rem;
                     font-weight: 700;
@@ -207,7 +202,7 @@
                         font-size: 0.9rem;
                         text-transform: uppercase;
                         letter-spacing: 0.06em;
-                    ">Statussen</p>
+                    ">{{ __('manual.statuses') }}</p>
 
                     @if ($chapter['status_note'])
                         <p style="
@@ -254,6 +249,6 @@
         max-width: 900px;
         margin: 0 auto;
     ">
-        WinProx &mdash; Facilitaire meldingsapp &mdash; {{ $generatedAt }}
+        {{ __('manual.footer', ['date' => $generatedAt]) }}
     </div>
 </div>

@@ -1,0 +1,28 @@
+{
+    "cover": {
+        "title": "Manuel d'utilisation WinProx",
+        "subtitle": "App de signalements facilitaires — administrateurs & collaborateurs",
+        "generated": "Généré le {date}",
+        "contents": "Table des matières",
+        "print": "Imprimer / Enregistrer en PDF",
+        "back": "Retour"
+    },
+    "getting_started": {
+        "label": "Commencer",
+        "title": "Opérationnel en 5 étapes",
+        "intro": "Suivez cet ordre lors de la première configuration de WinProx pour votre organisation."
+    },
+    "chapter": "Chapitre",
+    "statuses": "Statuts",
+    "footer": "WinProx — App de signalements facilitaires — {date}",
+    "step_1_title": "Créer des équipes & exécutants",
+    "step_1_text": "Créez des équipes opérationnelles, désignez un chef d'équipe et ajoutez des exécutants. Liez les équipes à des catégories pour que les tâches parviennent toujours à la bonne équipe.",
+    "step_2_title": "Configurer les sites & unités",
+    "step_2_text": "Ajoutez des sites (immeubles, étages) et créez des unités par site — ce sont les équipements, machines ou espaces sur lesquels les signalements et tâches sont enregistrés.",
+    "step_3_title": "Imprimer & accrocher les QR",
+    "step_3_text": "Imprimez les QR depuis la page détail de l'unité ou du site et fixez-les visiblement. Les signaleurs scannent le QR d'unité pour faire un signalement ; les exécutants scannent le QR d'équipe pour démarrer les tâches.",
+    "step_4_title": "Recevoir des signalements & assigner des tâches",
+    "step_4_text": "Les signalements arrivent par scan QR ou manuellement. Assignez une tâche à une équipe, fixez un délai et suivez l'avancement via le tableau de bord et le calendrier.",
+    "step_5_title": "Suivre & clôturer",
+    "step_5_text": "Les exécutants terminent les tâches sur le terrain via le QR d'équipe. Une fois toutes les tâches traitées, l'administrateur clôture le signalement. Tout est visible dans l'historique."
+}

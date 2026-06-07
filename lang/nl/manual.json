@@ -1,0 +1,28 @@
+{
+    "cover": {
+        "title": "WinProx Handleiding",
+        "subtitle": "Facilitaire meldingsapp — beheerders & medewerkers",
+        "generated": "Gegenereerd op {date}",
+        "contents": "Inhoud",
+        "print": "Afdrukken / Opslaan als PDF",
+        "back": "Terug"
+    },
+    "getting_started": {
+        "label": "Aan de slag",
+        "title": "In 5 stappen up-and-running",
+        "intro": "Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie."
+    },
+    "chapter": "Hoofdstuk",
+    "statuses": "Statussen",
+    "footer": "WinProx — Facilitaire meldingsapp — {date}",
+    "step_1_title": "Teams & uitvoerders aanmaken",
+    "step_1_text": "Maak operationele teams aan, wijs een teamleider toe en voeg uitvoerders toe. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen.",
+    "step_2_title": "Locaties & units inrichten",
+    "step_2_text": "Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd.",
+    "step_3_title": "QR-codes afdrukken & ophangen",
+    "step_3_text": "Druk de QR-codes af via de unit- of locatiedetailpagina en bevestig ze zichtbaar. Melders scannen de unit-QR om een melding te doen; uitvoerders scannen de team-QR om taken te starten.",
+    "step_4_title": "Meldingen ontvangen & taken aansturen",
+    "step_4_text": "Meldingen komen binnen via QR-scan of handmatig. Koppel een taak aan een team, stel een deadline in en volg de voortgang op via het dashboard en de kalender.",
+    "step_5_title": "Opvolgen & afsluiten",
+    "step_5_text": "Uitvoerders werken taken af op de werkvloer via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail."
+}

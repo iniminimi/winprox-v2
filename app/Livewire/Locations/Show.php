@@ -10,6 +10,7 @@ use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
+use App\Actions\Units\UpdateUnitGpsAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -74,6 +75,10 @@ class Show extends Component
     public string $unitDescription = '';
 
     public ?int $unitCategoryId = null;
+
+    public ?string $unitLatitude = null;
+
+    public ?string $unitLongitude = null;
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
@@ -196,6 +201,8 @@ class Show extends Component
         $this->unitName = $unit->name;
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
+        $this->unitLatitude = $unit->latitude !== null ? (string) $unit->latitude : null;
+        $this->unitLongitude = $unit->longitude !== null ? (string) $unit->longitude : null;
         $this->unitPhotos = [];
 
         $this->resetErrorBag();
@@ -243,6 +250,8 @@ class Show extends Component
             'unitCategoryId' => $rules['category_id'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
+            'unitLatitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'unitLongitude' => ['nullable', 'numeric', 'between:-180,180'],
         ], [
             'unitName.required' => __('locations.units.errors.name_required'),
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
@@ -250,6 +259,8 @@ class Show extends Component
             'unitPhotos.max' => __('portal.report.errors.photos_max'),
             'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
             'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
+            'unitLatitude.between' => __('qr.connect.gps_validation_between'),
+            'unitLongitude.between' => __('qr.connect.gps_validation_between'),
         ]);
 
         $payload = [
@@ -278,10 +289,21 @@ class Show extends Component
             $this->authorize('update', $unit);
             $updateUnit->handle($unit, $payload, (int) auth()->id(), $this->unitPhotos);
 
+            // Update GPS coordinates if provided
+            if ($this->unitLatitude !== null && $this->unitLatitude !== '' && $this->unitLongitude !== null && $this->unitLongitude !== '') {
+                app(UpdateUnitGpsAction::class)->handle(
+                    $unit,
+                    (float) $this->unitLatitude,
+                    (float) $this->unitLongitude,
+                    (int) auth()->user()->tenant_id,
+                    (int) auth()->id()
+                );
+            }
+
             session()->flash('success', __('locations.units.flash.updated'));
         }
 
-        $this->reset('unitPhotos');
+        $this->reset('unitPhotos', 'unitLatitude', 'unitLongitude');
         $this->dispatch('wp-clear-photo-previews');
         $this->showUnitModal = false;
         $this->unitCategoryId = null;
