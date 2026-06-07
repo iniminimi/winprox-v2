@@ -7,6 +7,19 @@
         <a href="{{ route('dashboard') }}" class="btn btn--ghost">Terug</a>
     </div>
 
+    {{-- Taalkeuze (verdwijnt bij afdrukken) --}}
+    <div class="no-print" style="position: fixed; top: 5.5rem; right: 1.5rem; z-index: 100; display: flex; gap: 0.4rem;">
+        @foreach ($this->availableLocales as $locale)
+            <button
+                type="button"
+                class="btn btn--sm {{ $locale === $lang ? 'btn--primary' : 'btn--ghost' }}"
+                wire:click="changeLocale('{{ $locale }}')"
+            >
+                {{ strtoupper($locale) }}
+            </button>
+        @endforeach
+    </div>
+
     {{-- Cover-pagina --}}
     <div class="wp-manual-chapter" style="
         display: flex;

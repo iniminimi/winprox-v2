@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Livewire\Pages;
 
 use App\Support\PageHelp;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('components.layouts.print')]
@@ -27,6 +29,29 @@ class ManualIndex extends Component
         'dashboard',
         'settings',
     ];
+
+    public array $availableLocales = ['nl', 'fr', 'en', 'de'];
+
+    #[Url(keep: true)]
+    public string $lang = '';
+
+    public function mount(): void
+    {
+        if ($this->lang !== '' && in_array($this->lang, $this->availableLocales, true)) {
+            App::setLocale($this->lang);
+        } else {
+            $this->lang = App::getLocale();
+        }
+    }
+
+    public function changeLocale(string $locale): void
+    {
+        if (! in_array($locale, $this->availableLocales, true)) {
+            return;
+        }
+
+        $this->redirect(route('manual.index', ['lang' => $locale]), navigate: false);
+    }
 
     public function render(): \Illuminate\View\View
     {

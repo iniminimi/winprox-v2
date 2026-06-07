@@ -175,6 +175,11 @@
                             @if ($task->issue?->location)
                                 <span class="wp-muted">{{ $task->issue->location->name }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->name }}@endif</span>
                             @endif
+                            @if ($task->issue?->unit && $task->issue->unit->hasGps())
+                                <a href="{{ $task->issue->unit->googleMapsUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" title="{{ __('portal.worker.navigate_to_location') }}">
+                                    <x-wp-icon name="map-pin" class="wp-icon--sm" />
+                                </a>
+                            @endif
                         </div>
                         @if ($task->issue?->isApproved())
                             <p class="wp-text-body">{{ $task->issue->description }}</p>
