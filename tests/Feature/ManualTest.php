@@ -113,3 +113,27 @@ it('rendert de handleiding via de print-layout (geen app-navigatie)', function (
         ->and($html)->toContain('no-print')
         ->and($html)->toContain('window.print()');
 });
+
+it('toont de handleiding nav-link in de app-layout voor een admin', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $manualUrl = route('manual.index');
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee($manualUrl, false);
+});
+
+it('toont de handleiding nav-link in de app-layout voor een medewerker', function () {
+    $tenant = Tenant::factory()->create();
+    $employee = User::factory()->employee()->for($tenant)->create();
+
+    $manualUrl = route('manual.index');
+
+    $this->actingAs($employee)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee($manualUrl, false);
+});
