@@ -160,7 +160,7 @@
                 },
                 {
                     "label": "Kategorien",
-                    "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Dies hängt von der Branche ab, in der das Unternehmen tätig ist."
+                    "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Dies hängt von der Branche ab, in der das Unternehmen tätig ist. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können."
                 }
             ]
         },

@@ -160,7 +160,7 @@
                 },
                 {
                     "label": "Categories",
-                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active."
+                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team."
                 }
             ]
         },

@@ -160,7 +160,7 @@
                 },
                 {
                     "label": "Catégories",
-                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active."
+                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte."
                 }
             ]
         },
