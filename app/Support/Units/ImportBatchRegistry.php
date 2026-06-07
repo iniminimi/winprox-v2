@@ -29,7 +29,7 @@ final class ImportBatchRegistry
             ->orderByDesc('id')
             ->limit(self::RECENT_BATCH_LIMIT)
             ->get()
-            ->map(function ($log) {
+            ->map(function ($log) use ($tenantId) {
                 $payload = json_decode($log->payload, true);
                 $batchId = $payload['batch_id'] ?? null;
 
