@@ -296,7 +296,8 @@
         @endif
 
         {{-- ==================== QR-LINK PHOTOS (BOTTOM) ==================== --}}
-        @if ($portalSection === 'home')
+        {{-- Show for workers (to add photos) OR for anyone if photos exist --}}
+        @if ($portalSection === 'home' && ($workerBelongsToUnitTeam || $qrLinkPhotos->isNotEmpty()))
             @php
                 $portalStoredCount = $qrLinkPhotos->count();
                 $portalTempCount = count($newPortalPhotos);
