@@ -62,7 +62,7 @@
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
             ] : []),
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],
-            ['route' => 'manual.index', 'active' => 'manual.*', 'icon' => 'document', 'label' => 'common.nav.manual'],
+            ['route' => 'manual.index', 'active' => 'manual.*', 'icon' => 'document', 'label' => 'common.nav.manual', 'target' => '_blank'],
             ['route' => 'legal.index', 'active' => 'legal.index', 'icon' => 'legal', 'label' => 'common.nav.legal', 'target' => '_blank'],
             ['route' => 'contact.index', 'active' => 'contact.*', 'icon' => 'contact', 'label' => 'common.nav.contact'],
         ];
