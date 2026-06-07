@@ -43,6 +43,9 @@
                         <x-wp-icon name="map-pin" class="wp-mr-2" />
                         {{ __('portal.worker.navigate_to_location') }}
                     </a>
+                    <p class="wp-muted" style="text-align: center; font-size: 0.75rem; margin-top: 0.25rem;">
+                        GPS: {{ $unitModel->latitude }}, {{ $unitModel->longitude }}
+                    </p>
                 </div>
             @endif
         @endif
