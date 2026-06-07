@@ -6,7 +6,7 @@
     "add": "+ Neuen Standort hinzufügen",
     "import": "CSV-Import",
     "import_title": "Units per CSV importieren",
-    "import_hint": "Laden Sie eine CSV-Datei mit den Spalten hoch: location_name, unit_name, description (optional), category_name (optional). Die Datei muss genau diese Header haben. Laden Sie eine Beispieldatei über den Button rechts herunter.",
+    "import_hint": "Laden Sie eine CSV-Datei hoch (siehe Beispiel unten). Die folgenden Spalten sind erforderlich: location_name, unit_name. Die Datei muss genau diese Header haben.",
     "import_file_label": "CSV-Datei",
     "import_submit": "Importieren",
     "import_submit_loading": "Importiere...",

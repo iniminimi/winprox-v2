@@ -6,7 +6,7 @@
     "add": "+ Add new location",
     "import": "CSV import",
     "import_title": "Import units via CSV",
-    "import_hint": "Upload a CSV file with the columns: location_name, unit_name, description (optional), category_name (optional). The file must have exactly these headers. Download a sample file using the button on the right.",
+    "import_hint": "Upload a CSV file (see sample below). The following columns are required: location_name, unit_name. The file must have exactly these headers.",
     "import_file_label": "CSV file",
     "import_submit": "Import",
     "import_submit_loading": "Importing...",
