@@ -37,6 +37,9 @@ class ImportUnitsAction
      */
     public function handle(ImportUnitsData $data, int $tenantId, ?int $actorUserId = null): array
     {
+        // Generate unique batch ID for this import
+        $batchId = (string) \Illuminate\Support\Str::uuid();
+
         // Open and parse CSV
         $handle = fopen($data->filePath, 'r');
         if ($handle === false) {
@@ -196,6 +199,7 @@ class ImportUnitsAction
                     'category_id' => $categoryId,
                     'name' => $row['unit_name'],
                     'description' => $row['description'] ?? null,
+                    'import_batch_id' => $batchId,
                     'is_active' => true,
                 ]);
 
@@ -210,6 +214,7 @@ class ImportUnitsAction
             return [
                 'success' => true,
                 'count' => $importedCount,
+                'batch_id' => $batchId,
             ];
         } catch (\Throwable $e) {
             DB::rollBack();

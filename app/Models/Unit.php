@@ -18,6 +18,7 @@ class Unit extends Model
         'location_id',
         'category_id',
         'bulk_batch_id',
+        'import_batch_id',
         'name',
         'description',
         'is_active',
