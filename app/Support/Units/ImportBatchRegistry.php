@@ -33,6 +33,11 @@ final class ImportBatchRegistry
                 $payload = json_decode($log->payload, true);
                 $batchId = $payload['batch_id'] ?? null;
 
+                // Skip logs without batch_id (old imports before this feature)
+                if ($batchId === null) {
+                    return null;
+                }
+
                 // Get actual unit count for this batch
                 $unitCount = Unit::where('tenant_id', $tenantId)
                     ->where('import_batch_id', $batchId)
@@ -45,6 +50,7 @@ final class ImportBatchRegistry
                     'file_name' => $payload['file_name'] ?? null,
                 ];
             })
+            ->filter()
             ->filter(fn ($batch) => $batch['unit_count'] > 0);
     }
 
