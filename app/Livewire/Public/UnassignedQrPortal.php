@@ -43,6 +43,13 @@ class UnassignedQrPortal extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $photos = [];
 
+    // GPS capture
+    public ?Unit $linkedUnit = null;
+    public ?float $latitude = null;
+    public ?float $longitude = null;
+    public bool $showGpsCapture = false;
+    public bool $gpsCaptureSuccess = false;
+
     public function mount(string $token): void
     {
         $this->token = $token;
@@ -186,10 +193,65 @@ class UnassignedQrPortal extends Component
             $this->reset('photos');
             $this->dispatch('wp-clear-photo-previews');
 
-            // Redirect to unit portal directly after successful linking
+            $this->showSuccess = true;
+
+            // Check if GPS capture is needed
+            $unit->refresh();
+            $hasGps = $unit->hasGps();
+
+            \Illuminate\Support\Facades\Log::debug('UnassignedQrPortal: Checking GPS status', [
+                'unit_id' => $unit->id,
+                'has_gps' => $hasGps,
+                'latitude' => $unit->latitude,
+                'longitude' => $unit->longitude,
+            ]);
+
+            if (! $hasGps) {
+                $this->linkedUnit = $unit;
+                $this->showGpsCapture = true;
+                // Don't redirect yet - show GPS capture first
+                return;
+            }
+
+            // Redirect to unit portal directly after successful linking (with GPS)
             $this->redirectRoute('public.unit-portal', ['token' => $unit->qr_token], navigate: true);
         } catch (\InvalidArgumentException $e) {
             $this->addError('selectedUnitId', $e->getMessage());
+        }
+    }
+
+    public function saveGps(): void
+    {
+        if ($this->latitude === null || $this->longitude === null) {
+            $this->addError('gps', __('qr.connect.gps_validation_required'));
+            return;
+        }
+
+        if (! $this->linkedUnit) {
+            return;
+        }
+
+        // Determine actor ID - workers don't have user IDs
+        $actorId = $this->worker ? null : Auth::id();
+
+        app(\App\Actions\Units\UpdateUnitGpsAction::class)->handle(
+            $this->linkedUnit,
+            $this->latitude,
+            $this->longitude,
+            $this->tenantId,
+            $actorId
+        );
+
+        $this->gpsCaptureSuccess = true;
+        $this->showGpsCapture = false;
+    }
+
+    public function skipGps(): void
+    {
+        $this->showGpsCapture = false;
+        // Redirect to unit portal without GPS
+        if ($this->linkedUnit) {
+            $this->redirectRoute('public.unit-portal', ['token' => $this->linkedUnit->qr_token], navigate: true);
         }
     }
 
