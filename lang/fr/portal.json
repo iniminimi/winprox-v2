@@ -167,7 +167,7 @@
         }
     },
     "unit": {
-        "current_photos": "Photos de l'autocollant actuelles / Position de l'autocollant",
+        "current_photos": "Photos de l'unité",
         "update_photos": "Mettre à jour les photos",
         "update_photos_hint": "Ajoutez de nouvelles photos pour documenter la situation actuelle.",
         "view_only_hint": "Consultez les photos de l'autocollant à titre d'information.",

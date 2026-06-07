@@ -167,7 +167,7 @@
         }
     },
     "unit": {
-        "current_photos": "Huidige stickerfoto's / Stickerpositie",
+        "current_photos": "Foto's unit",
         "update_photos": "Foto's updaten",
         "update_photos_hint": "Voeg nieuwe foto's toe om de situatie te documenteren.",
         "view_only_hint": "Bekijk de stickerfoto's ter informatie.",

@@ -167,7 +167,7 @@
         }
     },
     "unit": {
-        "current_photos": "Current sticker photos / Sticker position",
+        "current_photos": "Unit photos",
         "update_photos": "Update photos",
         "update_photos_hint": "Add new photos to document the current situation.",
         "view_only_hint": "View sticker photos for reference.",

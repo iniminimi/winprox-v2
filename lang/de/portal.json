@@ -167,7 +167,7 @@
         }
     },
     "unit": {
-        "current_photos": "Aktuelle Aufkleberfotos / Aufkleberposition",
+        "current_photos": "Einheit-Fotos",
         "update_photos": "Fotos aktualisieren",
         "update_photos_hint": "Fügen Sie neue Fotos hinzu, um die aktuelle Situation zu dokumentieren.",
         "view_only_hint": "Betrachten Sie die Aufkleberfotos zur Information.",
