@@ -177,6 +177,7 @@
         "photos_updated": "Photos ajoutées avec succès !",
         "upload_failed_offline": "Téléversement échoué. Vérifiez votre connexion internet et réessayez.",
         "capture_gps": "📍 Enregistrer la position GPS",
+        "recapture_gps": "📍 (Ré)enregistrer la position GPS",
         "capturing_gps": "Récupération GPS...",
         "gps_updated": "Coordonnées GPS enregistrées !"
     }

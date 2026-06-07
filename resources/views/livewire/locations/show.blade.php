@@ -216,6 +216,14 @@
                 </label>
 
                 @if ($editingUnitId)
+                    {{-- Google Maps link when GPS exists --}}
+                    @if ($this->editingUnit?->hasGps())
+                        <a href="{{ $this->editingUnit->googleMapsUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" style="justify-content:center;">
+                            <x-wp-icon name="map-pin" class="wp-mr-2" />
+                            {{ __('portal.worker.navigate_to_location') }}
+                        </a>
+                    @endif
+
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
                         $tempCount = count($unitPhotos);

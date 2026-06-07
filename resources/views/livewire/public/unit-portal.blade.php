@@ -31,12 +31,14 @@
             <p class="wp-muted">{{ $unitDescription }}</p>
         @endif
 
-        {{-- Navigate to location button - only for workers (citizens are already at location when they scan) --}}
+        {{-- GPS section - only for workers (citizens are already at location when they scan) --}}
         @if ($workerBelongsToUnitTeam)
             @php
                 $unitModel = \App\Models\Unit::find($unitId);
                 $mapsUrl = $unitModel?->googleMapsUrl();
             @endphp
+
+            {{-- Navigation button when GPS exists --}}
             @if ($mapsUrl)
                 <div style="margin-top: 0.75rem;">
                     <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
@@ -47,33 +49,33 @@
                         GPS: {{ $unitModel->latitude }}, {{ $unitModel->longitude }}
                     </p>
                 </div>
-            @else
-                {{-- GPS Capture button for workers when no coordinates exist --}}
-                <div style="margin-top: 0.75rem;" x-data="{ capturing: false }">
-                    <button type="button" class="btn btn--primary btn--block" x-bind:disabled="capturing" @click="
-                        capturing = true;
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(
-                                (pos) => { $wire.gpsLatitude = pos.coords.latitude; $wire.gpsLongitude = pos.coords.longitude; $wire.updateUnitGps(); capturing = false; },
-                                (err) => { alert('GPS fout: ' + err.message); capturing = false; }
-                            );
-                        } else {
-                            alert('Geolocation wordt niet ondersteund'); capturing = false;
-                        }
-                    ">
-                        <span x-show="!capturing">
-                            <x-wp-icon name="map-pin" class="wp-mr-2" />
-                            {{ __('portal.unit.capture_gps') }}
-                        </span>
-                        <span x-show="capturing" style="display:none;">
-                            <x-wp-icon name="loader" class="wp-mr-2" />
-                            {{ __('portal.unit.capturing_gps') }}
-                        </span>
-                    </button>
-                    @error('gpsLatitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
-                    @error('gpsLongitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
-                </div>
             @endif
+
+            {{-- GPS Capture button - ALWAYS visible for re-capturing location --}}
+            <div style="margin-top: 0.75rem;" x-data="{ capturing: false }">
+                <button type="button" class="btn btn--primary btn--block" x-bind:disabled="capturing" @click="
+                    capturing = true;
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(
+                            (pos) => { $wire.gpsLatitude = pos.coords.latitude; $wire.gpsLongitude = pos.coords.longitude; $wire.updateUnitGps(); capturing = false; },
+                            (err) => { alert('GPS fout: ' + err.message); capturing = false; }
+                        );
+                    } else {
+                        alert('Geolocation wordt niet ondersteund'); capturing = false;
+                    }
+                ">
+                    <span x-show="!capturing">
+                        <x-wp-icon name="map-pin" class="wp-mr-2" />
+                        {{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}
+                    </span>
+                    <span x-show="capturing" style="display:none;">
+                        <x-wp-icon name="loader" class="wp-mr-2" />
+                        {{ __('portal.unit.capturing_gps') }}
+                    </span>
+                </button>
+                @error('gpsLatitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
+                @error('gpsLongitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
+            </div>
         @endif
     </div>
 

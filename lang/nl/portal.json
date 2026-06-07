@@ -177,6 +177,7 @@
         "photos_updated": "Foto's succesvol toegevoegd!",
         "upload_failed_offline": "Upload mislukt. Controleer je internetverbinding en probeer het opnieuw.",
         "capture_gps": "📍 GPS-locatie vastleggen",
+        "recapture_gps": "📍 GPS-locatie (her)vastleggen",
         "capturing_gps": "GPS ophalen...",
         "gps_updated": "GPS coördinaten vastgelegd!"
     }
