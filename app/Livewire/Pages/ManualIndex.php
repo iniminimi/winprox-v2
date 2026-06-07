@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Pages;
 
 use App\Support\PageHelp;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -35,6 +36,7 @@ class ManualIndex extends Component
             $data = PageHelp::for($key);
 
             if ($data !== null) {
+                $data['title'] = Str::replaceFirst('Hulp — ', '', $data['title']);
                 $chapters[] = array_merge(['key' => $key], $data);
             }
         }

@@ -54,6 +54,72 @@
         </div>
     </div>
 
+    {{-- Pagina 2: Stappenplan --}}
+    <div class="wp-manual-chapter" style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 4rem 3rem;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%;
+    ">
+        <p style="
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--wp-accent-text);
+            margin: 0 0 1rem;
+        ">Aan de slag</p>
+        <h2 style="
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--wp-text);
+            margin: 0 0 0.5rem;
+        ">In 5 stappen up-and-running</h2>
+        <p style="
+            color: var(--wp-text-body);
+            font-size: 1rem;
+            margin: 0 0 3rem;
+        ">Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie.</p>
+
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.25rem;">
+            @foreach ([
+                ['num' => '01', 'title' => 'Teams & uitvoerders aanmaken', 'text' => 'Maak operationele teams aan, wijs een teamleider toe en voeg uitvoerders toe. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen.'],
+                ['num' => '02', 'title' => 'Locaties & units inrichten', 'text' => 'Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd.'],
+                ['num' => '03', 'title' => 'QR-codes afdrukken & ophangen', 'text' => 'Druk de QR-codes af via de unit- of locatiedetailpagina en bevestig ze zichtbaar. Melders scannen de unit-QR om een melding te doen; uitvoerders scannen de team-QR om taken te starten.'],
+                ['num' => '04', 'title' => 'Meldingen ontvangen & taken aansturen', 'text' => 'Meldingen komen binnen via QR-scan of handmatig. Koppel een taak aan een team, stel een deadline in en volg de voortgang op via het dashboard en de kalender.'],
+                ['num' => '05', 'title' => 'Opvolgen & afsluiten', 'text' => 'Uitvoerders werken taken af op de werkvloer via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail.'],
+            ] as $step)
+                <li style="
+                    display: grid;
+                    grid-template-columns: 3rem 1fr;
+                    gap: 1.25rem;
+                    align-items: start;
+                    padding: 1.25rem 1.5rem;
+                    background: var(--wp-surface);
+                    border: 1px solid var(--wp-border);
+                    border-radius: 12px;
+                ">
+                    <span style="
+                        font-size: 1.5rem;
+                        font-weight: 800;
+                        color: var(--wp-accent-text);
+                        line-height: 1;
+                        padding-top: 0.1rem;
+                    ">{{ $step['num'] }}</span>
+                    <div>
+                        <p style="font-weight: 700; color: var(--wp-text); margin: 0 0 0.35rem; font-size: 1rem;">{{ $step['title'] }}</p>
+                        <p style="color: var(--wp-text-body); font-size: 0.9rem; line-height: 1.6; margin: 0;">{{ $step['text'] }}</p>
+                    </div>
+                </li>
+            @endforeach
+        </ol>
+    </div>
+
     {{-- Hoofdstukken --}}
     @foreach ($chapters as $index => $chapter)
         @php $isLast = $loop->last; @endphp
@@ -110,6 +176,8 @@
                                 color: var(--wp-text-body);
                                 font-size: 0.9rem;
                                 line-height: 1.6;
+                                word-break: break-word;
+                                overflow-wrap: anywhere;
                             ">{{ $action['text'] }}</div>
                         </div>
                     @endforeach

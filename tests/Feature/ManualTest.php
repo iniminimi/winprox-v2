@@ -99,6 +99,31 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee(now()->format('d-m-Y'));
 });
 
+it('toont het stappenplan op pagina 2', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.index'))
+        ->assertOk()
+        ->assertSee('In 5 stappen up-and-running')
+        ->assertSee('Teams &amp; uitvoerders aanmaken', false)
+        ->assertSee('QR-codes afdrukken');
+});
+
+it('bevat geen ruwe "Hulp —" prefix in de hoofdstuktitels', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $html = $this->actingAs($admin)
+        ->get(route('manual.index'))
+        ->assertOk()
+        ->getContent();
+
+    expect($html)->not->toContain('Hulp &mdash;')
+        ->and($html)->not->toContain('Hulp — ');
+});
+
 it('rendert de handleiding via de print-layout (geen app-navigatie)', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
