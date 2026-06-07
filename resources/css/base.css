@@ -1,5 +1,8 @@
 /* Base: reset-aanvullingen, typografie en pagina-achtergrond op basis van tokens. */
 
+/* Alpine.js - verberg elementen voor initialisatie */
+[x-cloak] { display: none !important; }
+
 html {
     font-family: 'Inter', 'Segoe UI Variable', system-ui, sans-serif;
     -webkit-text-size-adjust: 100%;

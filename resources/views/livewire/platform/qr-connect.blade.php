@@ -23,52 +23,44 @@
             </div>
 
             {{-- Loading State --}}
-            <template x-if="loading">
-                <div class="wp-stack" style="text-align: center; padding: 1rem 0;">
-                    <div class="wp-animate-pulse" style="font-size: 2.5rem;">📡</div>
-                    <p class="wp-text-body" style="color: var(--wp-info-text);">{{ __('qr.connect.gps_loading') }}</p>
-                    <div class="wp-progress-track">
-                        <div class="wp-progress-fill wp-progress-fill--animated"></div>
-                    </div>
+            <div x-show="loading" x-cloak class="wp-stack" style="text-align: center; padding: 1rem 0;">
+                <div class="wp-animate-pulse" style="font-size: 2.5rem;">📡</div>
+                <p class="wp-text-body" style="color: var(--wp-info-text);">{{ __('qr.connect.gps_loading') }}</p>
+                <div class="wp-progress-track">
+                    <div class="wp-progress-fill wp-progress-fill--animated"></div>
                 </div>
-            </template>
+            </div>
 
             {{-- Error State --}}
-            <template x-if="error">
-                <div class="wp-card wp-card--warning wp-card-pad">
-                    <p class="wp-error">⚠️ <span x-text="error"></span></p>
-                    <button type="button" class="btn btn--ghost btn--sm" @click="retry()">
-                        {{ __('qr.connect.gps_retry') }}
-                    </button>
-                </div>
-            </template>
+            <div x-show="error" x-cloak class="wp-card wp-card--warning wp-card-pad">
+                <p class="wp-error">⚠️ <span x-text="error"></span></p>
+                <button type="button" class="btn btn--ghost btn--sm" @click="retry()">
+                    {{ __('qr.connect.gps_retry') }}
+                </button>
+            </div>
 
             {{-- Success State --}}
-            <template x-if="hasPosition && !error">
-                <div class="wp-card wp-card--success-accent wp-card-pad" style="text-align: center;">
-                    <p class="wp-text-body">
-                        ✅ <strong>{{ __('qr.connect.gps_found') }}</strong><br>
-                        <span class="wp-muted" style="font-family: monospace; font-size: 0.85em;">
-                            Lat: <span x-text="latitude.toFixed(6)"></span><br>
-                            Lng: <span x-text="longitude.toFixed(6)"></span>
-                        </span>
-                    </p>
-                </div>
-            </template>
+            <div x-show="hasPosition && !error" x-cloak class="wp-card wp-card--success-accent wp-card-pad" style="text-align: center;">
+                <p class="wp-text-body">
+                    ✅ <strong>{{ __('qr.connect.gps_found') }}</strong><br>
+                    <span class="wp-muted" style="font-family: monospace; font-size: 0.85em;">
+                        Lat: <span x-text="latitude.toFixed(6)"></span><br>
+                        Lng: <span x-text="longitude.toFixed(6)"></span>
+                    </span>
+                </p>
+            </div>
 
             {{-- Manual Entry --}}
-            <template x-if="showManual">
-                <div class="wp-stack-tight" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px dashed var(--wp-info-border);">
-                    <p class="wp-muted" style="text-align: center;">{{ __('qr.connect.gps_or_enter_manual') }}</p>
-                    <div class="wp-cluster" style="gap: 0.5rem;">
-                        <input type="number" step="any" x-model="manualLat" placeholder="Latitude" class="wp-input">
-                        <input type="number" step="any" x-model="manualLng" placeholder="Longitude" class="wp-input">
-                    </div>
-                    <button type="button" class="btn btn--surface btn--sm btn--block" @click="useManual()">
-                        {{ __('qr.connect.gps_use_manual') }}
-                    </button>
+            <div x-show="showManual" x-cloak class="wp-stack-tight" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 2px dashed var(--wp-info-border);">
+                <p class="wp-muted" style="text-align: center;">{{ __('qr.connect.gps_or_enter_manual') }}</p>
+                <div class="wp-cluster" style="gap: 0.5rem;">
+                    <input type="number" step="any" x-model="manualLat" placeholder="Latitude" class="wp-input">
+                    <input type="number" step="any" x-model="manualLng" placeholder="Longitude" class="wp-input">
                 </div>
-            </template>
+                <button type="button" class="btn btn--surface btn--sm btn--block" @click="useManual()">
+                    {{ __('qr.connect.gps_use_manual') }}
+                </button>
+            </div>
 
             @error('gps')
                 <p class="wp-error">{{ $message }}</p>
