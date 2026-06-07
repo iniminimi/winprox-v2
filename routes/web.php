@@ -27,6 +27,7 @@ use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\Legal;
+use App\Livewire\Pages\ManualIndex;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
@@ -107,6 +108,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');
+    Route::get('/manual', ManualIndex::class)->name('manual.index');
     Route::get('/account/data-export', UserDataExportController::class)->name('account.data-export');
 
     Route::middleware('support.tenant')->group(function () {

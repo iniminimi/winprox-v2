@@ -65,3 +65,13 @@ a:hover {
         animation: none !important;
     }
 }
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .wp-manual-chapter {
+        page-break-after: always;
+    }
+}
