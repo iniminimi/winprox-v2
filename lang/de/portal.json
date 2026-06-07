@@ -84,6 +84,7 @@
         "confirm_complete": "Erledigung bestätigen",
         "task_started": "Aufgabe gestartet.",
         "task_completed": "Aufgabe abgeschlossen.",
+        "navigate_to_location": "Zum Standort navigieren",
         "offline_notice": "Sie sind offline. Die Statusänderung wird gespeichert und verarbeitet, wenn Sie wieder verbunden sind.",
         "syncing": "Synchronisierung",
         "errors": {

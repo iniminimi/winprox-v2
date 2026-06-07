@@ -14,7 +14,21 @@
         "go_to_unit": "Go to unit",
         "linked_qr": "linked",
         "category": "Category",
-        "team": "Team"
+        "team": "Team",
+        "gps_title": "Capture location",
+        "gps_hint": "Capture the GPS location for this unit so workers can find it later via navigation.",
+        "gps_loading": "Determining location...",
+        "gps_found": "Location found!",
+        "gps_save": "Save location",
+        "gps_skip": "Skip",
+        "gps_retry": "Try again",
+        "gps_error": "Could not determine location. Check that your GPS is enabled.",
+        "gps_not_supported": "GPS is not supported on this device.",
+        "gps_success_title": "Location saved",
+        "gps_success_message": "The GPS location has been successfully captured.",
+        "gps_validation_required": "GPS coordinates are required.",
+        "gps_validation_numeric": "GPS coordinates must be numeric.",
+        "gps_validation_between": "GPS coordinates are outside the valid range."
     },
     "unassigned_guest": {
         "title": "(re)link a unit",

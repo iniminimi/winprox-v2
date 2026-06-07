@@ -84,6 +84,7 @@
         "confirm_complete": "Afhandelen bevestigen",
         "task_started": "Taak gestart.",
         "task_completed": "Taak afgehandeld.",
+        "navigate_to_location": "Navigeer naar locatie",
         "offline_notice": "Je bent offline. De statuswijziging wordt opgeslagen en verwerkt zodra je weer verbinding hebt.",
         "syncing": "Synchroniseren",
         "errors": {

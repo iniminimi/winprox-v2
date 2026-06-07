@@ -14,7 +14,21 @@
         "go_to_unit": "Ga naar unit",
         "linked_qr": "gekoppeld",
         "category": "Categorie",
-        "team": "Team"
+        "team": "Team",
+        "gps_title": "Locatie vastleggen",
+        "gps_hint": "Leg de GPS-locatie vast voor deze unit zodat medewerkers deze later kunnen vinden via navigatie.",
+        "gps_loading": "Locatie bepalen...",
+        "gps_found": "Locatie gevonden!",
+        "gps_save": "Locatie opslaan",
+        "gps_skip": "Overslaan",
+        "gps_retry": "Opnieuw proberen",
+        "gps_error": "Kon de locatie niet bepalen. Controleer of je GPS aan staat.",
+        "gps_not_supported": "GPS wordt niet ondersteund door dit apparaat.",
+        "gps_success_title": "Locatie opgeslagen",
+        "gps_success_message": "De GPS-locatie is succesvol vastgelegd.",
+        "gps_validation_required": "GPS-coördinaten zijn verplicht.",
+        "gps_validation_numeric": "GPS-coördinaten moeten numeriek zijn.",
+        "gps_validation_between": "GPS-coördinaten liggen buiten het geldige bereik."
     },
     "unassigned_guest": {
         "title": "(her)koppel een unit",

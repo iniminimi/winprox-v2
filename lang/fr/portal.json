@@ -84,6 +84,7 @@
         "confirm_complete": "Confirmer la réalisation",
         "task_started": "Tâche démarrée.",
         "task_completed": "Tâche terminée.",
+        "navigate_to_location": "Naviguer vers la localisation",
         "offline_notice": "Vous êtes hors ligne. Le changement de statut sera enregistré et traité lorsque vous vous reconnecterez.",
         "syncing": "Synchronisation",
         "errors": {

@@ -14,7 +14,21 @@
         "go_to_unit": "Aller à l'unité",
         "linked_qr": "lié",
         "category": "Catégorie",
-        "team": "Équipe"
+        "team": "Équipe",
+        "gps_title": "Enregistrer la localisation",
+        "gps_hint": "Enregistrez la localisation GPS de cette unité pour que les employés puissent la trouver plus tard via la navigation.",
+        "gps_loading": "Détermination de la localisation...",
+        "gps_found": "Localisation trouvée !",
+        "gps_save": "Enregistrer la localisation",
+        "gps_skip": "Passer",
+        "gps_retry": "Réessayer",
+        "gps_error": "Impossible de déterminer la localisation. Vérifiez que votre GPS est activé.",
+        "gps_not_supported": "Le GPS n'est pas pris en charge sur cet appareil.",
+        "gps_success_title": "Localisation enregistrée",
+        "gps_success_message": "La localisation GPS a été enregistrée avec succès.",
+        "gps_validation_required": "Les coordonnées GPS sont obligatoires.",
+        "gps_validation_numeric": "Les coordonnées GPS doivent être numériques.",
+        "gps_validation_between": "Les coordonnées GPS sont en dehors de la plage valide."
     },
     "unassigned_guest": {
         "title": "(re)lier une unité",

@@ -14,7 +14,21 @@
         "go_to_unit": "Zur Einheit gehen",
         "linked_qr": "verknüpft",
         "category": "Kategorie",
-        "team": "Team"
+        "team": "Team",
+        "gps_title": "Standort erfassen",
+        "gps_hint": "Erfassen Sie den GPS-Standort dieser Unit, damit Mitarbeiter sie später über die Navigation finden können.",
+        "gps_loading": "Standort wird bestimmt...",
+        "gps_found": "Standort gefunden!",
+        "gps_save": "Standort speichern",
+        "gps_skip": "Überspringen",
+        "gps_retry": "Wiederholen",
+        "gps_error": "Standort konnte nicht bestimmt werden. Überprüfen Sie, ob Ihr GPS aktiviert ist.",
+        "gps_not_supported": "GPS wird auf diesem Gerät nicht unterstützt.",
+        "gps_success_title": "Standort gespeichert",
+        "gps_success_message": "Der GPS-Standort wurde erfolgreich erfasst.",
+        "gps_validation_required": "GPS-Koordinaten sind erforderlich.",
+        "gps_validation_numeric": "GPS-Koordinaten müssen numerisch sein.",
+        "gps_validation_between": "GPS-Koordinaten liegen außerhalb des gültigen Bereichs."
     },
     "unassigned_guest": {
         "title": "(neu)verknüpfen einer Einheit",

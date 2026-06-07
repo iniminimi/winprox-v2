@@ -84,6 +84,21 @@
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
+
+                    {{-- Navigate to location button --}}
+                    @php
+                        $unitModel = \App\Models\Unit::find($unitId);
+                        $mapsUrl = $unitModel?->googleMapsUrl();
+                    @endphp
+                    @if ($mapsUrl)
+                        <div class="wp-card wp-card-pad">
+                            <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block">
+                                <x-wp-icon name="map-pin" class="wp-mr-2" />
+                                {{ __('portal.worker.navigate_to_location') }}
+                            </a>
+                        </div>
+                    @endif
+
                     <div class="wp-row">
                         <h2 id="portal-open-tasks" class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
                         <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>

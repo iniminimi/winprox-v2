@@ -22,10 +22,14 @@ class Unit extends Model
         'name',
         'description',
         'is_active',
+        'latitude',
+        'longitude',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'latitude' => 'float',
+        'longitude' => 'float',
     ];
 
     protected static function booted(): void
@@ -90,5 +94,19 @@ class Unit extends Model
         return $this->issues()
             ->whereIn('status', \App\Enums\TaskStatus::openValues())
             ->exists();
+    }
+
+    public function hasGps(): bool
+    {
+        return $this->latitude !== null && $this->longitude !== null;
+    }
+
+    public function googleMapsUrl(): ?string
+    {
+        if (! $this->hasGps()) {
+            return null;
+        }
+
+        return 'https://www.google.com/maps/search/?api=1&query=' . $this->latitude . ',' . $this->longitude;
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Livewire\Platform;
 
 use App\Actions\QrCodes\LinkQrCodeToUnitAction;
+use App\Actions\Units\UpdateUnitGpsAction;
 use App\Models\QrCode;
 use App\Models\Unit;
+use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -18,6 +20,13 @@ class QrConnect extends Component
     public ?int $selectedUnitId = null;
     public string $search = '';
     public bool $showSuccess = false;
+
+    // GPS capture
+    public ?Unit $linkedUnit = null;
+    public ?float $latitude = null;
+    public ?float $longitude = null;
+    public bool $showGpsCapture = false;
+    public bool $gpsCaptureSuccess = false;
 
     public function mount(string $token): void
     {
@@ -50,6 +59,13 @@ class QrConnect extends Component
             );
 
             $this->showSuccess = true;
+
+            // Check if GPS capture is needed
+            $unit->refresh();
+            if (! $unit->hasGps()) {
+                $this->linkedUnit = $unit;
+                $this->showGpsCapture = true;
+            }
         } catch (\InvalidArgumentException $e) {
             $this->addError('selectedUnitId', $e->getMessage());
         }
@@ -73,5 +89,34 @@ class QrConnect extends Component
         if ($this->qrCode->unit_id) {
             $this->redirectRoute('public.unit-portal', ['token' => $this->qrCode->unit->qr_token]);
         }
+    }
+
+    public function saveGps(UpdateUnitGpsAction $action): void
+    {
+        if (! $this->linkedUnit || $this->latitude === null || $this->longitude === null) {
+            $this->addError('gps', __('qr.connect.gps_error'));
+            return;
+        }
+
+        // Ensure tenant context
+        Tenancy::actAs($this->linkedUnit->tenant_id);
+
+        $this->authorize('updateGps', $this->linkedUnit);
+
+        $action->handle(
+            $this->linkedUnit,
+            $this->latitude,
+            $this->longitude,
+            $this->linkedUnit->tenant_id,
+            Auth::id()
+        );
+
+        $this->gpsCaptureSuccess = true;
+        $this->showGpsCapture = false;
+    }
+
+    public function skipGps(): void
+    {
+        $this->showGpsCapture = false;
     }
 }
