@@ -542,7 +542,7 @@ class Team extends Component
     {
         $this->authorize('create', InternalTeam::class);
 
-        if ($this->workerImportFile === null) {
+        if ($this->workerImportFile === null || ! ($this->workerImportFile instanceof \Livewire\Features\SupportFileUploads\TemporaryUploadedFile)) {
             $this->workerImportErrors = [__('team.errors.import_file_required')];
 
             return;

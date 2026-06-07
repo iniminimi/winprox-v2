@@ -264,10 +264,15 @@
                     </button>
                 </div>
 
-                <form wire:submit="importWorkers" class="wp-stack">
+                <form wire:submit="importWorkers" class="wp-stack" x-data="{ fileReady: false }">
                     <div class="wp-field">
                         <label class="wp-label" for="workerImportFile">{{ __('team.workers.import_file_label') }}</label>
-                        <input type="file" id="workerImportFile" class="wp-input" wire:model="workerImportFile" accept=".csv,.txt">
+                        <input type="file" id="workerImportFile" class="wp-input"
+                            wire:model="workerImportFile"
+                            x-on:change="fileReady = false"
+                            x-on:livewire-upload-finish="fileReady = true"
+                            x-on:livewire-upload-error="fileReady = false"
+                            accept=".csv,.txt">
                         @error('workerImportFile') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
@@ -280,9 +285,13 @@
                     @endif
 
                     <div class="wp-cluster">
-                        <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importWorkers">
-                            <span wire:loading wire:target="importWorkers"><x-wp-spinner size="sm" /></span>
-                            <span>{{ __('team.workers.import_submit') }}</span>
+                        <button type="submit" class="btn btn--primary"
+                            :disabled="!fileReady"
+                            wire:loading.attr="disabled"
+                            wire:target="importWorkers,workerImportFile">
+                            <span wire:loading wire:target="importWorkers,workerImportFile"><x-wp-spinner size="sm" /></span>
+                            <span wire:loading.remove wire:target="importWorkers,workerImportFile">{{ __('team.workers.import_submit') }}</span>
+                            <span wire:loading wire:target="importWorkers,workerImportFile">{{ __('team.workers.import_submit') }}</span>
                         </button>
                         <button type="button" class="btn btn--ghost" wire:click="closeWorkerImportModal">{{ __('common.button.cancel') }}</button>
                     </div>
