@@ -91,6 +91,20 @@
             "external_id": "EMP-001"
         }
     },
+    "import_history": {
+        "title": "Recent CSV imports",
+        "hint": "Undo only removes workers without a linked device.",
+        "unknown_file": "Unknown file",
+        "worker_count": ":count worker(s)",
+        "confirm_delete": "Delete :count worker(s) without a device?",
+        "delete_button": "Undo import (:count)",
+        "has_devices": "Has devices",
+        "deleted": "Deleted",
+        "nothing_deletable": "No workers in this import can be deleted.",
+        "partially_deleted": ":deleted worker(s) deleted. :preserved worker(s) with devices were kept.",
+        "fully_deleted": ":count worker(s) deleted.",
+        "delete_failed": "An error occurred while deleting."
+    },
     "qr": {
         "subtitle": "Scan this code to open the team field portal.",
         "print": "Print"

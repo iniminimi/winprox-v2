@@ -248,6 +248,8 @@
         </x-wp-modal>
     @endif
 
+    <livewire:pages.worker-import-history />
+
     {{-- Modal: worker CSV import --------------------------------------------}}
     @if ($showWorkerImportModal)
         <x-wp-modal closeMethod="closeWorkerImportModal">

@@ -91,6 +91,20 @@
             "external_id": "EMP-001"
         }
     },
+    "import_history": {
+        "title": "Letzte CSV-Imports",
+        "hint": "Rükgängig entfernt nur Mitarbeiter ohne verknüpftes Gerät.",
+        "unknown_file": "Unbekannte Datei",
+        "worker_count": ":count Mitarbeiter",
+        "confirm_delete": ":count Mitarbeiter ohne Gerät löschen?",
+        "delete_button": "Import rükgängig (:count)",
+        "has_devices": "Hat Geräte",
+        "deleted": "Gelöscht",
+        "nothing_deletable": "Keine Mitarbeiter in diesem Import können gelöscht werden.",
+        "partially_deleted": ":deleted Mitarbeiter gelöscht. :preserved Mitarbeiter mit Geräten blieben.",
+        "fully_deleted": ":count Mitarbeiter gelöscht.",
+        "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
+    },
     "qr": {
         "subtitle": "Scannen Sie diesen Code, um das Team-Feldportal zu öffnen.",
         "print": "Drucken"

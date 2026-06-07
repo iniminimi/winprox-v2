@@ -91,6 +91,20 @@
             "external_id": "EMP-001"
         }
     },
+    "import_history": {
+        "title": "Recente CSV-imports",
+        "hint": "Ongedaan maken verwijdert alleen uitvoerders zonder gekoppeld toestel.",
+        "unknown_file": "Onbekend bestand",
+        "worker_count": ":count uitvoerder(s)",
+        "confirm_delete": ":count uitvoerder(s) zonder toestel verwijderen?",
+        "delete_button": "Import terugdraaien (:count)",
+        "has_devices": "Heeft toestellen",
+        "deleted": "Verwijderd",
+        "nothing_deletable": "Geen uitvoerders in deze import kunnen worden verwijderd.",
+        "partially_deleted": ":deleted uitvoerder(s) verwijderd. :preserved uitvoerder(s) met toestellen bleven staan.",
+        "fully_deleted": ":count uitvoerder(s) verwijderd.",
+        "delete_failed": "Er is een fout opgetreden bij het verwijderen."
+    },
     "qr": {
         "subtitle": "Scan deze code om het team-veldportaal te openen.",
         "print": "Afdrukken"
