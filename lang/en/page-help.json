@@ -157,16 +157,16 @@
                 {
                     "label": "CSV import",
                     "text": "Import units in bulk via a CSV file. The file must have exactly these headers: location_name, unit_name, description (optional), category_name (required), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Locations and categories are automatically created if they don't exist yet."
+                },
+                {
+                    "label": "Categories",
+                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active."
                 }
             ]
         },
         "locations.show": {
             "title": "Help — Location detail",
             "actions": [
-                {
-                    "label": "Categories",
-                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active."
-                },
                 {
                     "label": "Add unit",
                     "text": "Add an asset/space with QR token and default team."

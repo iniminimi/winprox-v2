@@ -157,16 +157,16 @@
                 {
                     "label": "Import CSV",
                     "text": "Importez des unités en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : location_name, unit_name, description (optionnel), category_name (obligatoire), street (optionnel), house_number (optionnel), postal_code (optionnel), city (optionnel), country_code (optionnel), notes (optionnel). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les sites et catégories sont créés automatiquement s'ils n'existent pas encore."
+                },
+                {
+                    "label": "Catégories",
+                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active."
                 }
             ]
         },
         "locations.show": {
             "title": "Aide — Détail du site",
             "actions": [
-                {
-                    "label": "Catégories",
-                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active."
-                },
                 {
                     "label": "Ajouter une unité",
                     "text": "Ajoutez un actif/espace avec jeton QR et équipe par défaut."

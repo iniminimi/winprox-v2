@@ -157,16 +157,16 @@
                 {
                     "label": "CSV import",
                     "text": "Importeer units in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: location_name, unit_name, description (optioneel), category_name (verplicht), street (optioneel), house_number (optioneel), postal_code (optioneel), city (optioneel), country_code (optioneel), notes (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Locaties en categorieën worden automatisch aangemaakt als ze nog niet bestaan."
+                },
+                {
+                    "label": "Categorieën",
+                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is."
                 }
             ]
         },
         "locations.show": {
             "title": "Hulp — Locatiedetail",
             "actions": [
-                {
-                    "label": "Categorieën",
-                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is."
-                },
                 {
                     "label": "Unit toevoegen",
                     "text": "Voeg een asset/ruimte toe met QR-token en standaard team."
