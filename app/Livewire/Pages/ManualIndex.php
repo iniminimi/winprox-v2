@@ -61,7 +61,7 @@ class ManualIndex extends Component
             $data = PageHelp::for($key);
 
             if ($data !== null) {
-                $data['title'] = Str::replaceFirst('Hulp — ', '', $data['title']);
+                $data['title'] = preg_replace('/^[^\x{2014}]+\x{2014} /u', '', $data['title']);
                 $chapters[] = array_merge(['key' => $key], $data);
             }
         }

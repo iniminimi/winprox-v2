@@ -121,7 +121,22 @@ it('bevat geen ruwe "Hulp —" prefix in de hoofdstuktitels', function () {
         ->getContent();
 
     expect($html)->not->toContain('Hulp &mdash;')
-        ->and($html)->not->toContain('Hulp — ');
+        ->and($html)->not->toContain('Hulp — ')
+        ->and($html)->not->toContain('Help — ')
+        ->and($html)->not->toContain('Aide — ')
+        ->and($html)->not->toContain('Hilfe — ');
+});
+
+it('rendert Franse teksten wanneer ?lang=fr wordt meegegeven', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.index', ['lang' => 'fr']))
+        ->assertOk()
+        ->assertSee('Équipes', false)
+        ->assertSee('Signalements')
+        ->assertSee('Tâches', false);
 });
 
 it('rendert de handleiding via de print-layout (geen app-navigatie)', function () {
