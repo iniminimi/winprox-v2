@@ -203,6 +203,18 @@ class Show extends Component
         $this->dispatch('wp-prepare-photo-inputs');
     }
 
+    public function closeUnitModal(): void
+    {
+        $this->showUnitModal = false;
+        $this->editingUnitId = null;
+        $this->unitName = '';
+        $this->unitDescription = '';
+        $this->unitCategoryId = null;
+        $this->unitPhotos = [];
+        $this->resetErrorBag();
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
     public function openQrPackModal(): void
     {
         $this->showQrPackModal = true;
