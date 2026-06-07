@@ -2,7 +2,7 @@
     "cover": {
         "title": "WinProx Benutzerhandbuch",
         "subtitle": "Facility-Meldungs-App — Administratoren & Mitarbeiter",
-        "generated": "Erstellt am {date}",
+        "generated": "Erstellt am :date",
         "contents": "Inhalt",
         "print": "Drucken / Als PDF speichern",
         "back": "Zurück"
@@ -14,7 +14,7 @@
     },
     "chapter": "Kapitel",
     "statuses": "Status",
-    "footer": "WinProx — Facility-Meldungs-App — {date}",
+    "footer": "WinProx — Facility-Meldungs-App — :date",
     "step_1_title": "Teams & Mitarbeiter anlegen",
     "step_1_text": "Erstellen Sie operative Teams, weisen Sie einen Teamleiter zu und fügen Sie Mitarbeiter hinzu. Verknüpfen Sie Teams mit Kategorien, damit Aufgaben immer beim richtigen Team ankommen.",
     "step_2_title": "Standorte & Einheiten einrichten",

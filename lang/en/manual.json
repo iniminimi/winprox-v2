@@ -2,7 +2,7 @@
     "cover": {
         "title": "WinProx User Manual",
         "subtitle": "Facility reporting app — administrators & staff",
-        "generated": "Generated on {date}",
+        "generated": "Generated on :date",
         "contents": "Contents",
         "print": "Print / Save as PDF",
         "back": "Back"
@@ -14,7 +14,7 @@
     },
     "chapter": "Chapter",
     "statuses": "Statuses",
-    "footer": "WinProx — Facility reporting app — {date}",
+    "footer": "WinProx — Facility reporting app — :date",
     "step_1_title": "Create teams & workers",
     "step_1_text": "Create operational teams, assign a team lead and add workers. Link teams to categories so tasks always reach the right team.",
     "step_2_title": "Set up locations & units",

@@ -2,7 +2,7 @@
     "cover": {
         "title": "Manuel d'utilisation WinProx",
         "subtitle": "App de signalements facilitaires — administrateurs & collaborateurs",
-        "generated": "Généré le {date}",
+        "generated": "Généré le :date",
         "contents": "Table des matières",
         "print": "Imprimer / Enregistrer en PDF",
         "back": "Retour"
@@ -14,7 +14,7 @@
     },
     "chapter": "Chapitre",
     "statuses": "Statuts",
-    "footer": "WinProx — App de signalements facilitaires — {date}",
+    "footer": "WinProx — App de signalements facilitaires — :date",
     "step_1_title": "Créer des équipes & exécutants",
     "step_1_text": "Créez des équipes opérationnelles, désignez un chef d'équipe et ajoutez des exécutants. Liez les équipes à des catégories pour que les tâches parviennent toujours à la bonne équipe.",
     "step_2_title": "Configurer les sites & unités",
