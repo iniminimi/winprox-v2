@@ -31,18 +31,20 @@
             <p class="wp-muted">{{ $unitDescription }}</p>
         @endif
 
-        {{-- Navigate to location button --}}
-        @php
-            $unitModel = \App\Models\Unit::find($unitId);
-            $mapsUrl = $unitModel?->googleMapsUrl();
-        @endphp
-        @if ($mapsUrl)
-            <div style="margin-top: 0.75rem;">
-                <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
-                    <x-wp-icon name="map-pin" class="wp-mr-2" />
-                    {{ __('portal.worker.navigate_to_location') }}
-                </a>
-            </div>
+        {{-- Navigate to location button - only for workers (citizens are already at location when they scan) --}}
+        @if ($workerBelongsToUnitTeam)
+            @php
+                $unitModel = \App\Models\Unit::find($unitId);
+                $mapsUrl = $unitModel?->googleMapsUrl();
+            @endphp
+            @if ($mapsUrl)
+                <div style="margin-top: 0.75rem;">
+                    <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
+                        <x-wp-icon name="map-pin" class="wp-mr-2" />
+                        {{ __('portal.worker.navigate_to_location') }}
+                    </a>
+                </div>
+            @endif
         @endif
     </div>
 
