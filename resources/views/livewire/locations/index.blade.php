@@ -110,7 +110,7 @@
                         <div class="wp-cluster">
                             <input type="file" id="import-file" class="wp-input wp-grow" wire:model="importFile" accept=".csv" />
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadSampleCsv">
-                                {{ __('locations.import.download_sample_csv') }}
+                                {{ __('locations.import_sample.download_sample_csv') }}
                             </button>
                         </div>
                         @error('importFile') <p class="wp-error">{{ $message }}</p> @enderror

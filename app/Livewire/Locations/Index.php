@@ -214,16 +214,16 @@ class Index extends Component
 
         // Localized sample row
         $sampleRow = [
-            __('locations.import.sample_location_name'),
-            __('locations.import.sample_street'),
-            __('locations.import.sample_house_number'),
-            __('locations.import.sample_postal_code'),
-            __('locations.import.sample_city'),
-            __('locations.import.sample_country_code'),
-            __('locations.import.sample_notes'),
-            __('locations.import.sample_unit_name'),
-            __('locations.import.sample_description'),
-            __('locations.import.sample_category_name'),
+            __('locations.import_sample.sample_location_name'),
+            __('locations.import_sample.sample_street'),
+            __('locations.import_sample.sample_house_number'),
+            __('locations.import_sample.sample_postal_code'),
+            __('locations.import_sample.sample_city'),
+            __('locations.import_sample.sample_country_code'),
+            __('locations.import_sample.sample_notes'),
+            __('locations.import_sample.sample_unit_name'),
+            __('locations.import_sample.sample_description'),
+            __('locations.import_sample.sample_category_name'),
         ];
 
         return response()->streamDownload(function () use ($headers, $sampleRow) {
