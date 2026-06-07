@@ -84,11 +84,8 @@
         "fields": {
             "name": "Nom de l'unité",
             "description": "Description",
-            "category": "Catégorie",
-            "latitude": "Latitude",
-            "longitude": "Longitude"
+            "category": "Catégorie"
         },
-        "gps_use_current": "Utiliser la position actuelle",
         "edit": {
             "photos_label": "Photos de la liaison QR",
             "photos_hint": "Maximum 4 photos par unité.",

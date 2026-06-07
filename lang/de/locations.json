@@ -84,11 +84,8 @@
         "fields": {
             "name": "Unit-Name",
             "description": "Beschreibung",
-            "category": "Kategorie",
-            "latitude": "Breitengrad",
-            "longitude": "Längengrad"
+            "category": "Kategorie"
         },
-        "gps_use_current": "Aktuellen Standort verwenden",
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",
             "photos_hint": "Maximal 4 Fotos pro Einheit.",

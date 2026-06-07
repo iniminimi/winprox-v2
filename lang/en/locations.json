@@ -84,11 +84,8 @@
         "fields": {
             "name": "Unit name",
             "description": "Description",
-            "category": "Category",
-            "latitude": "Latitude",
-            "longitude": "Longitude"
+            "category": "Category"
         },
-        "gps_use_current": "Use current location",
         "edit": {
             "photos_label": "Photos of the QR link",
             "photos_hint": "Maximum 4 photos per unit.",

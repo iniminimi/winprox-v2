@@ -176,9 +176,9 @@
         "photos_submit_loading": "Speichern...",
         "photos_updated": "Fotos erfolgreich hinzugefügt!",
         "upload_failed_offline": "Upload fehlgeschlagen. Überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
-        "update_gps": "GPS ändern",
-        "add_gps": "GPS hinzufügen",
-        "gps_updated": "GPS-Koordinaten aktualisiert!"
+        "capture_gps": "📍 GPS-Standort erfassen",
+        "capturing_gps": "GPS wird abgerufen...",
+        "gps_updated": "GPS-Koordinaten erfasst!"
     }
 }
 

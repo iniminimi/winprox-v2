@@ -84,11 +84,8 @@
         "fields": {
             "name": "Unitnaam",
             "description": "Beschrijving",
-            "category": "Categorie",
-            "latitude": "Latitude",
-            "longitude": "Longitude"
+            "category": "Categorie"
         },
-        "gps_use_current": "Gebruik huidige locatie",
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
             "photos_hint": "Maximaal 4 foto's per unit.",
