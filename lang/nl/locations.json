@@ -127,6 +127,20 @@
             "too_many": "Te veel units in één bulk (max. 500)."
         }
     },
+    "import_history": {
+        "title": "Recente CSV-imports",
+        "hint": "Verwijder per import alleen units zonder melding of taak.",
+        "unknown_file": "Onbekend bestand",
+        "unit_count": ":count units",
+        "confirm_delete": ":count unit(s) zonder melding of taak verwijderen?",
+        "delete_button": "Import terugdraaien (:count)",
+        "has_issues": "Heeft meldingen",
+        "deleted": "Verwijderd",
+        "nothing_deletable": "Geen units in deze import kunnen worden verwijderd.",
+        "partially_deleted": ":deleted unit(s) verwijderd. :preserved unit(s) met meldingen bleven staan.",
+        "fully_deleted": ":count unit(s) verwijderd.",
+        "delete_failed": "Er is een fout opgetreden bij het verwijderen."
+    },
     "categories": {
         "manage": "Categorieën",
         "title": "Categorieën beheren",

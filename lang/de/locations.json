@@ -127,6 +127,20 @@
             "too_many": "Zu viele Units auf einmal (max. 500)."
         }
     },
+    "import_history": {
+        "title": "Letzte CSV-Imports",
+        "hint": "Import-Rückgängig entfernt nur Units ohne Meldung oder Aufgabe.",
+        "unknown_file": "Unbekannte Datei",
+        "unit_count": ":count Units",
+        "confirm_delete": ":count Unit(s) ohne Meldung oder Aufgabe löschen?",
+        "delete_button": "Import rückgängig (:count)",
+        "has_issues": "Hat Meldungen",
+        "deleted": "Gelöscht",
+        "nothing_deletable": "Keine Units in diesem Import können gelöscht werden.",
+        "partially_deleted": ":deleted Unit(s) gelöscht. :preserved Unit(s) mit Meldungen blieben.",
+        "fully_deleted": ":count Unit(s) gelöscht.",
+        "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
+    },
     "categories": {
         "manage": "Kategorien",
         "title": "Kategorien verwalten",

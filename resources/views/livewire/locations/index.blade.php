@@ -74,6 +74,8 @@
         </div>
     </div>
 
+    <livewire:locations.import-history />
+
     @if ($showModal)
         <x-wp-modal closeMethod="closeModal" aria-labelledby="location-modal-title">
             <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">

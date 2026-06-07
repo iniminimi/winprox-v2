@@ -127,6 +127,20 @@
             "too_many": "Trop d'unités en une fois (max. 500)."
         }
     },
+    "import_history": {
+        "title": "Imports CSV récents",
+        "hint": "L'annulation d'import ne retire que les unités sans signalement ni tâche.",
+        "unknown_file": "Fichier inconnu",
+        "unit_count": ":count unités",
+        "confirm_delete": "Supprimer :count unité(s) sans signalement ni tâche ?",
+        "delete_button": "Annuler l'import (:count)",
+        "has_issues": "A des signalements",
+        "deleted": "Supprimé",
+        "nothing_deletable": "Aucune unité de cet import ne peut être supprimée.",
+        "partially_deleted": ":deleted unité(s) supprimée(s). :preserved unité(s) avec signalements conservées.",
+        "fully_deleted": ":count unité(s) supprimée(s).",
+        "delete_failed": "Une erreur s'est produite lors de la suppression."
+    },
     "categories": {
         "manage": "Catégories",
         "title": "Gérer les catégories",

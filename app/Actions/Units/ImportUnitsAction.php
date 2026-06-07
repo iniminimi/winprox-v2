@@ -111,6 +111,9 @@ class ImportUnitsAction
                 continue;
             }
 
+            // Trim row to match header count (handle trailing empty columns)
+            $row = array_slice($row, 0, count($headers));
+
             $dataRow = array_combine($headers, $row);
             $dataRow['_line_number'] = $lineNumber;
             $rows[] = $dataRow;
@@ -207,7 +210,7 @@ class ImportUnitsAction
             }
 
             // Audit logging
-            $this->logAudit($tenantId, $actorUserId, $importedCount);
+            $this->logAudit($tenantId, $actorUserId, $importedCount, $batchId, $data->originalName);
 
             DB::commit();
 
@@ -228,7 +231,7 @@ class ImportUnitsAction
     /**
      * Log audit entry for the import.
      */
-    protected function logAudit(int $tenantId, ?int $actorUserId, int $count): void
+    protected function logAudit(int $tenantId, ?int $actorUserId, int $count, string $batchId, string $fileName): void
     {
         DB::table('audit_logs')->insert([
             'tenant_id' => $tenantId,
@@ -236,7 +239,11 @@ class ImportUnitsAction
             'action' => 'units.import',
             'model_type' => Unit::class,
             'model_id' => null,
-            'payload' => json_encode(['count' => $count]),
+            'payload' => json_encode([
+                'count' => $count,
+                'batch_id' => $batchId,
+                'file_name' => $fileName,
+            ]),
             'created_at' => now(),
         ]);
     }
