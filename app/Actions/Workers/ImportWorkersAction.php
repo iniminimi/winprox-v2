@@ -46,6 +46,7 @@ class ImportWorkersAction
         }
 
         $headers = array_map(fn ($h) => trim(strtolower($h)), $headers);
+        $headers[0] = ltrim($headers[0], "\xEF\xBB\xBF");
 
         $missingHeaders = array_diff($this->requiredHeaders, $headers);
         if (! empty($missingHeaders)) {
