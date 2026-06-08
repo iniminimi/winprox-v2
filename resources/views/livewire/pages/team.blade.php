@@ -14,6 +14,9 @@
                     {{ __('team.colleagues.add') }}
                 </button>
             </div>
+            @error('colleagueCreate')
+                <div class="wp-flash wp-flash--warning">{{ $message }}</div>
+            @enderror
             <p class="wp-hint">{{ __('team.colleagues.invite_hint') }}</p>
 
             <div class="wp-list">

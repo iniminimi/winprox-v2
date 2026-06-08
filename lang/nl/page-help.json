@@ -221,6 +221,10 @@
             "title": "Hulp — Teams & gebruikers",
             "actions": [
                 {
+                    "label": "Collega-gebruikers",
+                    "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. De beheerder kan andere beheerders en medewerkers toevoegen naargelang de keuze van abonnement."
+                },
+                {
                     "label": "Operationele teams",
                     "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team."
                 },
@@ -231,10 +235,6 @@
                 {
                     "label": "Team-QR",
                     "text": "Print of open het veldportaal-QR zodat uitvoerders taken zien en afhandelen."
-                },
-                {
-                    "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers. Deze moeten inloggen met e-mail en paswoord."
                 },
                 {
                     "label": "Sorteervolgorde",

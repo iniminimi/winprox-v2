@@ -110,6 +110,7 @@
         "print": "Drucken"
     },
     "errors": {
+        "not_authorized": "Sie sind nicht berechtigt, diese Aktion durchzuführen.",
         "name_required": "Geben Sie einen Namen an.",
         "email_required": "Geben Sie eine E-Mail-Adresse an.",
         "email_invalid": "Geben Sie eine gültige E-Mail-Adresse an.",

@@ -110,6 +110,7 @@
         "print": "Afdrukken"
     },
     "errors": {
+        "not_authorized": "Je hebt geen toestemming om dit te doen.",
         "name_required": "Geef een naam op.",
         "email_required": "Geef een e-mailadres op.",
         "email_invalid": "Geef een geldig e-mailadres op.",

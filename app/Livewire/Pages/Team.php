@@ -112,7 +112,19 @@ class Team extends Component
 
     public function openCreateColleague(): void
     {
-        $this->authorize('create', User::class);
+        try {
+            $this->authorize('create', User::class);
+        } catch (\Illuminate\Auth\Access\AuthorizationException $e) {
+            $this->addError('colleagueCreate', __('team.errors.not_authorized'));
+            return;
+        }
+
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        if (! $tenant->canAddUser()) {
+            $this->addError('colleagueCreate', __('team.errors.user_limit'));
+            return;
+        }
+
         $this->resetColleagueForm();
         $this->editingColleagueId = null;
         $this->showColleagueModal = true;

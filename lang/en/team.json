@@ -110,6 +110,7 @@
         "print": "Print"
     },
     "errors": {
+        "not_authorized": "You are not authorized to perform this action.",
         "name_required": "Enter a name.",
         "email_required": "Enter an email address.",
         "email_invalid": "Enter a valid email address.",
