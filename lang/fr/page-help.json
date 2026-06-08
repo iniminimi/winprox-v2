@@ -221,6 +221,10 @@
             "title": "Aide — Équipes & utilisateurs",
             "actions": [
                 {
+                    "label": "Utilisateurs collègues",
+                    "text": "Gérez le personnel administratif qui travaille principalement sur PC. Ils doivent se connecter avec e-mail et mot de passe. Un administrateur est l'utilisateur principal qui peut modifier les données de l'entreprise. L'administrateur peut ajouter d'autres administrateurs et collaborateurs selon l'abonnement choisi."
+                },
+                {
                     "label": "Équipes opérationnelles",
                     "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe."
                 },
@@ -231,10 +235,6 @@
                 {
                     "label": "QR d'équipe",
                     "text": "Imprimez ou ouvrez le QR du portail terrain pour que les workers voient et traitent les tâches."
-                },
-                {
-                    "label": "Utilisateurs collègues",
-                    "text": "Gérez le personnel administratif. Ils doivent se connecter avec e-mail et mot de passe."
                 },
                 {
                     "label": "Ordre de tri",

@@ -221,6 +221,10 @@
             "title": "Hilfe — Teams & Benutzer",
             "actions": [
                 {
+                    "label": "Kollegenbenutzer",
+                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie müssen sich mit E-Mail und Passwort anmelden. Ein Administrator ist der Hauptbenutzer, der die Unternehmensdaten anpassen kann. Der Administrator kann je nach gewähltem Abonnement weitere Administratoren und Mitarbeiter hinzufügen."
+                },
+                {
                     "label": "Operative Teams",
                     "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team."
                 },
@@ -231,10 +235,6 @@
                 {
                     "label": "Team-QR",
                     "text": "Drucken oder öffnen Sie das Feldportal-QR, damit Workers Aufgaben sehen und erledigen."
-                },
-                {
-                    "label": "Kollegenbenutzer",
-                    "text": "Verwalten Sie administrative Mitarbeiter. Sie müssen sich mit E-Mail und Passwort anmelden."
                 },
                 {
                     "label": "Sortierreihenfolge",
