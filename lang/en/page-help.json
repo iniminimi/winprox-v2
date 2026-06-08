@@ -221,6 +221,10 @@
             "title": "Help — Teams & users",
             "actions": [
                 {
+                    "label": "Colleague users",
+                    "text": "Manage administrative staff who primarily work on a PC. They must log in with email and password. An administrator is the main user who can update company details. The administrator can add other administrators and staff members depending on the chosen subscription."
+                },
+                {
                     "label": "Operational teams",
                     "text": "Create teams, assign teamleaders and manage workers per team."
                 },
@@ -231,10 +235,6 @@
                 {
                     "label": "Team QR",
                     "text": "Print or open the field portal QR so workers can see and complete tasks."
-                },
-                {
-                    "label": "Colleague users",
-                    "text": "Manage administrative staff. They must log in with email and password."
                 },
                 {
                     "label": "Sort order",
