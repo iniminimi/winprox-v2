@@ -161,7 +161,7 @@
                     color: var(--wp-text);
                     margin: 0;
                 ">{{ $chapter['title'] }}</h2>
-                <a href="#manual-toc" class="btn btn--ghost btn--sm print:hidden" title="Terug naar inhoudsopgave">
+                <a href="#manual-toc" class="btn btn--ghost btn--sm no-print" title="Terug naar inhoudsopgave">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
                 </a>
             </div>
