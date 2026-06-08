@@ -16,10 +16,6 @@
                 {
                     "label": "Briefing afdrukken",
                     "text": "Opent een afdrukbaar overzicht van open taken per team — handig voor de werkvloer."
-                },
-                {
-                    "label": "Setup-checklist",
-                    "text": "Zolang je tenant nog niet volledig is ingericht, zie je stappen: teams, locatie, units, workers en QR-pack."
                 }
             ],
             "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",

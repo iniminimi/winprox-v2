@@ -16,10 +16,6 @@
                 {
                     "label": "Print briefing",
                     "text": "Opens a printable overview of open tasks per team — useful on the shop floor."
-                },
-                {
-                    "label": "Setup checklist",
-                    "text": "Until your tenant is fully set up, you will see steps: teams, location, units, workers and QR pack."
                 }
             ],
             "status_note": "Issue status on the dashboard follows the status of linked tasks.",

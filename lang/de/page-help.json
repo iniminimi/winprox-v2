@@ -16,10 +16,6 @@
                 {
                     "label": "Briefing drucken",
                     "text": "Öffnet eine druckbare Übersicht offener Aufgaben pro Team — praktisch auf der Baustelle."
-                },
-                {
-                    "label": "Setup-Checkliste",
-                    "text": "Solange Ihr Tenant noch nicht vollständig eingerichtet ist, sehen Sie Schritte: Teams, Standort, Units, Workers und QR-Pack."
                 }
             ],
             "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",

@@ -16,10 +16,6 @@
                 {
                     "label": "Imprimer le briefing",
                     "text": "Ouvre un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain."
-                },
-                {
-                    "label": "Checklist de configuration",
-                    "text": "Tant que votre tenant n'est pas entièrement configuré, vous voyez les étapes : équipes, site, unités, workers et pack QR."
                 }
             ],
             "status_note": "Le statut du signalement sur le tableau de bord suit le statut des tâches liées.",
