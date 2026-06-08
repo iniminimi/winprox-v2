@@ -42,7 +42,6 @@
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditLocation">{{ __('locations.edit') }}</button>
             <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateLocation"
                     wire:confirm="{{ __('locations.confirm_deactivate') }}">{{ __('locations.deactivate') }}</button>
-            <a href="{{ route('locations.qr', $location) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.location_qr') }}</a>
         </div>
     </div>
 

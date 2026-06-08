@@ -16,6 +16,14 @@
                 {
                     "label": "Briefing drucken",
                     "text": "Öffnet eine druckbare Übersicht offener Aufgaben pro Team — praktisch auf der Baustelle."
+                },
+                {
+                    "label": "Testphase",
+                    "text": "Während der Testphase haben Sie erweiterte Limits. Das Dashboard zeigt verbleibende Tage."
+                },
+                {
+                    "label": "Meldung hinzufügen",
+                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
                 }
             ],
             "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",

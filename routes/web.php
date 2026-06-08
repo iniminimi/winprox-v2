@@ -8,7 +8,6 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\QrController;
-use App\Http\Controllers\Locations\LocationQrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
 use App\Http\Controllers\Team\TeamQrController;
@@ -40,7 +39,6 @@ use App\Livewire\Platform\Users as PlatformUsers;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Support\Platform\SupportTenantContext;
 use App\Livewire\Tasks\Show as TaskShow;
-use App\Livewire\Public\LocationPortal;
 use App\Livewire\Public\TeamPortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
@@ -69,7 +67,6 @@ Route::get('/q/{token}', QrController::class)->name('qr.scan');
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 
-Route::get('/melden/locatie/{token}', LocationPortal::class)->name('public.location-portal');
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
 
 Route::get('/contact', Contact::class)->name('contact.index');
@@ -121,7 +118,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/locations', LocationIndex::class)->name('locations.index');
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
-        Route::get('/locations/{location}/qr', LocationQrController::class)->name('locations.qr');
         Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
         Route::get('/briefing/print', BriefingPrintController::class)->name('briefing.print');
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');

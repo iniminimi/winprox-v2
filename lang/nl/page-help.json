@@ -16,6 +16,14 @@
                 {
                     "label": "Briefing afdrukken",
                     "text": "Opent een afdrukbaar overzicht van open taken per team — handig voor de werkvloer."
+                },
+                {
+                    "label": "Proefperiode",
+                    "text": "Tijdens de proef heb je uitgebreide limieten. Het dashboard toont resterende dagen."
+                },
+                {
+                    "label": "Melding toevoegen",
+                    "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
                 }
             ],
             "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",

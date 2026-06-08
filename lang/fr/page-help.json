@@ -16,6 +16,14 @@
                 {
                     "label": "Imprimer le briefing",
                     "text": "Ouvre un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain."
+                },
+                {
+                    "label": "Période d'essai",
+                    "text": "Pendant l'essai, vous disposez de limites étendues. Le tableau de bord affiche les jours restants."
+                },
+                {
+                    "label": "Ajouter un signalement",
+                    "text": "Créez un signalement en deux étapes : site/unité + description, puis une tâche pour la bonne équipe."
                 }
             ],
             "status_note": "Le statut du signalement sur le tableau de bord suit le statut des tâches liées.",

@@ -3,7 +3,6 @@
 namespace App\Support\Portal;
 
 use App\Models\InternalTeam;
-use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 
@@ -90,21 +89,4 @@ final class PortalAccess
         return self::teamPortalInactiveReasonKey($team) === null;
     }
 
-    /**
-     * @return null|string Vertaalsleutel onder portal.inactive.*
-     */
-    public static function locationPortalInactiveReasonKey(Location $location): ?string
-    {
-        $location->loadMissing('tenant');
-
-        if ($reason = self::tenantInactiveReasonKey($location->tenant)) {
-            return $reason;
-        }
-
-        if (! $location->is_active) {
-            return 'portal.inactive.location_inactive';
-        }
-
-        return null;
-    }
 }

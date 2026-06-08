@@ -16,6 +16,14 @@
                 {
                     "label": "Print briefing",
                     "text": "Opens a printable overview of open tasks per team — useful on the shop floor."
+                },
+                {
+                    "label": "Trial period",
+                    "text": "During the trial you have extended limits. The dashboard shows remaining days."
+                },
+                {
+                    "label": "Add issue",
+                    "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
                 }
             ],
             "status_note": "Issue status on the dashboard follows the status of linked tasks.",

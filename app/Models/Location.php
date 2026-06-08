@@ -6,7 +6,6 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Str;
 
 class Location extends Model
 {
@@ -22,7 +21,6 @@ class Location extends Model
         'city',
         'country_code',
         'notes',
-        'location_qr_token',
         'is_active',
     ];
 
@@ -33,9 +31,6 @@ class Location extends Model
     protected static function booted(): void
     {
         static::creating(function (Location $location) {
-            if (empty($location->location_qr_token)) {
-                $location->location_qr_token = Str::lower(Str::random(40));
-            }
             if (empty($location->country_code)) {
                 $location->country_code = 'BE';
             }
