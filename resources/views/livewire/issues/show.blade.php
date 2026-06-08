@@ -145,7 +145,7 @@
 
     @if ($showAddTaskModal)
         @teleport('body')
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-add-task-title">
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-add-task-title" x-on:keydown.escape.window="$wire.closeAddTaskModal()">
             <form wire:submit="addTask" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="issue-add-task-title" class="wp-section-title">{{ __('issues.show.add_task_modal_title') }}</h2>
@@ -195,7 +195,7 @@
 
     @if ($showEditTaskModal)
         @teleport('body')
-        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-edit-task-title">
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-edit-task-title" x-on:keydown.escape.window="$wire.closeEditTaskModal()">
             <form wire:submit="editTask" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="issue-edit-task-title" class="wp-section-title">{{ __('issues.show.edit_task_modal_title') }}</h2>
