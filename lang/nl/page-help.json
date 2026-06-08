@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Taak toevoegen",
-                    "text": "Maak een extra taak op deze melding en wijs die toe aan een operationeel team."
+                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie en kan de taak via hun team-QR starten."
                 },
                 {
                     "label": "Update plaatsen",

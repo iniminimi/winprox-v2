@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Ajouter une tâche",
-                    "text": "Créez une tâche supplémentaire sur ce signalement et assignez-la à une équipe opérationnelle."
+                    "text": "Ajoutez une tâche à un signalement existant ou modifiez une tâche existante. Donnez une description claire et concrète du problème ou de l'action à effectuer (par ex. \"L'imprimante imprime sale\"). Sélectionnez une date d'échéance spécifique via le calendrier. Laissez ce champ vide si la tâche doit être prise en charge directement ou de manière flexible. Déterminez l'urgence de la tâche (Prio 1 à 3). Ce champ est exclusif aux administrateurs pour éviter l'inflation des priorités sur le terrain. Attribuez la tâche à la bonne équipe opérationnelle. Cette équipe reçoit une notification directe et peut démarrer la tâche via son QR d'équipe."
                 },
                 {
                     "label": "Publier une mise à jour",

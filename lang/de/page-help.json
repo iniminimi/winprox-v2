@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Aufgabe hinzufügen",
-                    "text": "Erstellen Sie eine zusätzliche Aufgabe zu dieser Meldung und weisen Sie sie einem operativen Team zu."
+                    "text": "Fügen Sie einer bestehenden Meldung eine Aufgabe hinzu oder bearbeiten Sie eine bestehende Aufgabe. Geben Sie eine klare, konkrete Beschreibung des Problems oder der auszuführenden Handlung (z.B. \"Drucker druckt verschmutzt\"). Wählen Sie ein spezifisches Fälligkeitsdatum über den Kalender. Lassen Sie dies leer, wenn die Aufgabe direkt oder flexibel aufgegriffen werden soll. Bestimmen Sie die Dringlichkeit der Aufgabe (Prio 1 bis 3). Dieses Feld ist exklusiv für Administratoren, um Prioritätsinflation im Betrieb zu verhindern. Weisen Sie die Aufgabe dem richtigen operativen Team zu. Dieses Team erhält eine direkte Benachrichtigung und kann die Aufgabe über sein Team-QR starten."
                 },
                 {
                     "label": "Update posten",

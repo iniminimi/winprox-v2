@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Add task",
-                    "text": "Create an additional task on this issue and assign it to an operational team."
+                    "text": "Add a task to an existing issue or edit an existing task. Give a clear, concrete description of the problem or action to be performed (e.g., \"Printer prints dirty\"). Select a specific due date via the calendar. Leave this blank if the task should be picked up directly or flexibly. Determine the urgency of the task (Prio 1 to 3). This field is exclusive to administrators to prevent priority inflation on the shop floor. Assign the task to the right operational team. This team receives a direct notification and can start the task via their team QR."
                 },
                 {
                     "label": "Post update",
