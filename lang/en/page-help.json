@@ -39,7 +39,7 @@
             "actions": [
                 {
                     "label": "Add issue",
-                    "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
+                    "text": "Create an issue via the popup in the desktop version of Winprox or after scanning a QR code at a unit via the QR portal. A task is always automatically created which you can refine later on the Tasks page."
                 },
                 {
                     "label": "Print briefing",
@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Approve",
-                    "text": "QR issues wait for approval. Approve so content becomes visible on public pages."
+                    "text": "Issues created via the QR portal wait for approval. Approve so content becomes visible on public pages."
                 }
             ],
             "status_note": "Issue status is derived automatically from the tasks on that issue.",

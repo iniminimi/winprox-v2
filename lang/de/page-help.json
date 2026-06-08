@@ -39,7 +39,7 @@
             "actions": [
                 {
                     "label": "Meldung hinzufügen",
-                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
+                    "text": "Erstellen Sie eine Meldung über das Popup in der Desktop-Version von Winprox oder nach dem Scannen eines QR-Codes an einer Unit über das QR-Portal. Es wird immer automatisch auch eine Aufgabe erstellt, die Sie später auf der Seite Aufgaben verfeinern können."
                 },
                 {
                     "label": "Briefing drucken",
@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Freigeben",
-                    "text": "QR-Meldungen warten auf Freigabe. Geben Sie frei, damit Inhalte auf öffentlichen Seiten sichtbar werden."
+                    "text": "Meldungen, die über das QR-Portal erstellt wurden, warten auf Freigabe. Geben Sie frei, damit Inhalte auf öffentlichen Seiten sichtbar werden."
                 }
             ],
             "status_note": "Der Meldungsstatus wird automatisch aus den Aufgaben dieser Meldung abgeleitet.",

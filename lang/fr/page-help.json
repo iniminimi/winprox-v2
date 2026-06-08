@@ -39,7 +39,7 @@
             "actions": [
                 {
                     "label": "Ajouter un signalement",
-                    "text": "Créez un signalement en deux étapes : site/unité + description, puis une tâche pour la bonne équipe."
+                    "text": "Créez un signalement via la popup dans la version desktop de Winprox ou après avoir scanné un code QR à une unité via le portail QR. Une tâche est toujours automatiquement créée que vous pouvez affiner plus tard sur la page Tâches."
                 },
                 {
                     "label": "Imprimer le briefing",
@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Approuver",
-                    "text": "Les signalements via QR attendent une approbation. Approuvez pour rendre le contenu visible sur les pages publiques."
+                    "text": "Les signalements créés via le portail QR attendent une approbation. Approuvez pour rendre le contenu visible sur les pages publiques."
                 }
             ],
             "status_note": "Le statut du signalement est dérivé automatiquement des tâches associées.",

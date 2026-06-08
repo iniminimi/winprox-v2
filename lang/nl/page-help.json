@@ -39,7 +39,7 @@
             "actions": [
                 {
                     "label": "Melding toevoegen",
-                    "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
+                    "text": "Maak een melding via de popup in de desktop versie van Winprox of na het scannen van een qr-code bij een unit via het qr-portaal. Er wordt altijd automatisch ook een taak aangemaakt die je daarna kan verfijnen op de pagina Taken."
                 },
                 {
                     "label": "Briefing afdrukken",
@@ -51,7 +51,7 @@
                 },
                 {
                     "label": "Goedkeuren",
-                    "text": "Meldingen via QR wachten op goedkeuring. Keur goed zodat inhoud op publieke pagina's zichtbaar wordt."
+                    "text": "Meldingen gemaakt via het QR-portaal wachten op goedkeuring. Keur goed zodat inhoud op publieke pagina's zichtbaar wordt."
                 }
             ],
             "status_note": "De meldingstatus wordt automatisch afgeleid uit de taken op die melding.",
