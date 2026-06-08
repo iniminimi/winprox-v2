@@ -22,7 +22,7 @@ class Dashboard extends Component
             'locations' => Location::query()->count(),
             'units' => Unit::query()->count(),
             'new_issues' => Issue::query()->where('status', TaskStatus::New->value)->count(),
-            'open_tasks' => Task::query()->where('status', TaskStatus::InProgress->value)->count(),
+            'open_tasks' => Task::query()->whereIn('status', TaskStatus::openValues())->count(),
         ];
 
         $recent = Issue::query()

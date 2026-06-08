@@ -19,8 +19,7 @@
         "units": "Units",
         "new_issues": "Neue Meldungen",
         "open_tasks": "Offene Aufgaben",
-        "meta_total": "Gesamt",
-        "meta_in_progress": "In Bearbeitung"
+        "meta_total": "Gesamt"
     },
     "recent": {
         "title": "Aktuelle Meldungen",

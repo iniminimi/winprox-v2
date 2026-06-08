@@ -19,8 +19,7 @@
         "units": "Unités",
         "new_issues": "Nouveaux signalements",
         "open_tasks": "Tâches ouvertes",
-        "meta_total": "Total",
-        "meta_in_progress": "En cours"
+        "meta_total": "Total"
     },
     "recent": {
         "title": "Signalements récents",

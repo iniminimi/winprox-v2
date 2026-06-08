@@ -36,13 +36,13 @@
                 'locations' => route('locations.index'),
                 'units' => route('locations.index'),
                 'new_issues' => route('issues.index', ['status' => 'new']),
-                'open_tasks' => route('tasks.index', ['status' => 'in_progress']),
+                'open_tasks' => route('tasks.index'),
             ];
             $kpis = [
                 ['key' => 'locations', 'icon' => 'locations', 'label' => 'dashboard.kpi.locations', 'meta' => 'dashboard.kpi.meta_total'],
                 ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units', 'meta' => 'dashboard.kpi.meta_total'],
                 ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null],
-                ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => 'dashboard.kpi.meta_in_progress'],
+                ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null],
             ];
             $highlightCutoff = now()->subHours(3);
         @endphp

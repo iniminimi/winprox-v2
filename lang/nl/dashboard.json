@@ -19,8 +19,7 @@
         "units": "Units",
         "new_issues": "Nieuwe meldingen",
         "open_tasks": "Open taken",
-        "meta_total": "Totaal",
-        "meta_in_progress": "In uitvoering"
+        "meta_total": "Totaal"
     },
     "recent": {
         "title": "Recente meldingen",
