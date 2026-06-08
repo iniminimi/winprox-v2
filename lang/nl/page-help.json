@@ -275,11 +275,15 @@
             "actions": [
                 {
                     "label": "Organisatie",
-                    "text": "Werk naam, contactgegevens en logo van je tenant bij."
+                    "text": "Hier noteer je de naam, contactgegevens en logo van je bedrijf. Je kan hier ook je bedrijfslogo uploaden. Dit verschijnt dan op het portal en de qr-codes."
                 },
                 {
-                    "label": "Account",
-                    "text": "Pas je profiel, taal en wachtwoord aan."
+                    "label": "WinProx-stijl aanpassen",
+                    "text": "Kies de stijl die je het leukst vindt. Je kan ook je eigen portaal-stijl aanpassen. Deze kleuren zie je dan op het gs,-voorbeeld. De externe gebruikers zien die kleuren op het gebruikers portaal na scan van een QR-code."
+                },
+                {
+                    "label": "Privacy & export van gegevens",
+                    "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
                 }
             ]
         },
