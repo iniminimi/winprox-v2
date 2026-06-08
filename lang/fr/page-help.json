@@ -229,12 +229,12 @@
                     "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe."
                 },
                 {
-                    "label": "Workers",
-                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom et icône."
-                },
-                {
                     "label": "QR d'équipe",
                     "text": "Imprimez ou ouvrez le QR du portail terrain pour que les workers voient et traitent les tâches."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom et icône."
                 },
                 {
                     "label": "Ordre de tri",

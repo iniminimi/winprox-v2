@@ -229,12 +229,12 @@
                     "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team."
                 },
                 {
-                    "label": "Workers",
-                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name und Icon an."
-                },
-                {
                     "label": "Team-QR",
                     "text": "Drucken oder öffnen Sie das Feldportal-QR, damit Workers Aufgaben sehen und erledigen."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name und Icon an."
                 },
                 {
                     "label": "Sortierreihenfolge",

@@ -229,12 +229,12 @@
                     "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team."
                 },
                 {
-                    "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam en icoon."
-                },
-                {
                     "label": "Team-QR",
                     "text": "Print of open het veldportaal-QR zodat uitvoerders taken zien en afhandelen."
+                },
+                {
+                    "label": "Uitvoerders",
+                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam en icoon."
                 },
                 {
                     "label": "Sorteervolgorde",

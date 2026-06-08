@@ -229,12 +229,12 @@
                     "text": "Create teams, assign teamleaders and manage workers per team."
                 },
                 {
-                    "label": "Workers",
-                    "text": "Workers have no login; they sign in via team QR with name and icon."
-                },
-                {
                     "label": "Team QR",
                     "text": "Print or open the field portal QR so workers can see and complete tasks."
+                },
+                {
+                    "label": "Workers",
+                    "text": "Workers have no login; they sign in via team QR with name and icon."
                 },
                 {
                     "label": "Sort order",
