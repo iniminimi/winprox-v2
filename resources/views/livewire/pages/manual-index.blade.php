@@ -61,7 +61,8 @@
             <p style="font-weight: 600; color: var(--wp-text); margin: 0 0 1rem;">{{ __('manual.cover.contents') }}</p>
             <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
                 @foreach ($chapters as $index => $chapter)
-                    <li>{{ $chapter['title'] }}</li>
+                    @php $slug = str_replace('.', '-', $chapter['key']); @endphp
+                    <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
                 @endforeach
             </ol>
         </div>
@@ -130,8 +131,9 @@
 
     {{-- Hoofdstukken --}}
     @foreach ($chapters as $index => $chapter)
-        @php $isLast = $loop->last; @endphp
+        @php $isLast = $loop->last; $slug = str_replace('.', '-', $chapter['key']); @endphp
         <div
+            id="chapter-{{ $slug }}"
             class="{{ $isLast ? '' : 'wp-manual-chapter' }}"
             style="padding: 3rem 2.5rem; max-width: 900px; margin: 0 auto; width: 100%;"
         >
