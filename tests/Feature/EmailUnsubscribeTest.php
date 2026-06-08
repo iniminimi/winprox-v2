@@ -1,0 +1,284 @@
+<?php
+
+use App\Events\OutgoingMailBlockedByUnsubscribe;
+use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
+use App\Listeners\BlockUnsubscribedEmailRecipients;
+use App\Mail\WelcomeAccountMail;
+use App\Models\EmailUnsubscribe;
+use App\Models\Tenant;
+use App\Models\User;
+use Illuminate\Mail\Events\MessageSending;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Symfony\Component\Mime\Email;
+
+uses()->group('email');
+
+beforeEach(function () {
+    Event::fake([
+        OutgoingMailBlockedByUnsubscribe::class,
+    ]);
+});
+
+describe('EmailUnsubscribe model', function () {
+    it('normalizes email addresses to lowercase', function () {
+        expect(EmailUnsubscribe::normalizeEmail('Test@Example.COM'))->toBe('test@example.com');
+        expect(EmailUnsubscribe::normalizeEmail('  Test@Example.COM  '))->toBe('test@example.com');
+    });
+
+    it('can check if an email is unsubscribed', function () {
+        expect(EmailUnsubscribe::isUnsubscribed('test@example.com'))->toBeFalse();
+
+        EmailUnsubscribe::create([
+            'email' => 'test@example.com',
+            'unsubscribed_at' => now(),
+        ]);
+
+        expect(EmailUnsubscribe::isUnsubscribed('test@example.com'))->toBeTrue();
+        expect(EmailUnsubscribe::isUnsubscribed('TEST@EXAMPLE.COM'))->toBeTrue();
+        expect(EmailUnsubscribe::isUnsubscribed('other@example.com'))->toBeFalse();
+    });
+});
+
+describe('BlockUnsubscribedEmailRecipients listener', function () {
+    it('blocks emails to unsubscribed addresses', function () {
+        EmailUnsubscribe::create([
+            'email' => 'unsubscribed@example.com',
+            'unsubscribed_at' => now(),
+        ]);
+
+        $message = new Email();
+        $message->to('unsubscribed@example.com');
+        $message->subject('Test');
+
+        $event = new MessageSending($message);
+        $listener = new BlockUnsubscribedEmailRecipients();
+
+        $result = $listener->handle($event);
+
+        expect($result)->toBeFalse();
+        Event::assertDispatched(OutgoingMailBlockedByUnsubscribe::class, function ($event) {
+            return in_array('unsubscribed@example.com', $event->unsubscribedAddresses);
+        });
+    });
+
+    it('allows emails to subscribed addresses', function () {
+        $message = new Email();
+        $message->to('subscribed@example.com');
+        $message->subject('Test');
+
+        $event = new MessageSending($message);
+        $listener = new BlockUnsubscribedEmailRecipients();
+
+        $result = $listener->handle($event);
+
+        expect($result)->toBeNull();
+        Event::assertNotDispatched(OutgoingMailBlockedByUnsubscribe::class);
+    });
+
+    it('allows emails to exempt addresses even if in unsubscribe list', function () {
+        config()->set('winprox.email_unsubscribe_exempt_recipients', ['exempt@example.com']);
+
+        EmailUnsubscribe::create([
+            'email' => 'exempt@example.com',
+            'unsubscribed_at' => now(),
+        ]);
+
+        $message = new Email();
+        $message->to('exempt@example.com');
+        $message->subject('Test');
+
+        $event = new MessageSending($message);
+        $listener = new BlockUnsubscribedEmailRecipients();
+
+        $result = $listener->handle($event);
+
+        expect($result)->toBeNull();
+        Event::assertNotDispatched(OutgoingMailBlockedByUnsubscribe::class);
+    });
+});
+
+describe('AppendEmailUnsubscribeFooterToMessage listener', function () {
+    it('adds list-unsubscribe header to emails', function () {
+        $message = new Email();
+        $message->to('test@example.com');
+        $message->html('<body><p>Test</p></body>');
+
+        $event = new MessageSending($message);
+        $listener = new AppendEmailUnsubscribeFooterToMessage();
+
+        $listener->handle($event);
+
+        $headers = $message->getHeaders();
+        expect($headers->has('List-Unsubscribe'))->toBeTrue();
+    });
+
+    it('adds unsubscribe footer to html emails', function () {
+        $message = new Email();
+        $message->to('test@example.com');
+        $message->html('<body><p>Test</p></body>');
+
+        $event = new MessageSending($message);
+        $listener = new AppendEmailUnsubscribeFooterToMessage();
+
+        $listener->handle($event);
+
+        $html = $message->getHtmlBody();
+        expect($html)->toContain('unsubscribe');
+
+        // List-Unsubscribe is added as a header, not in the body
+        $headers = $message->getHeaders();
+        expect($headers->has('List-Unsubscribe'))->toBeTrue();
+    });
+
+    it('adds unsubscribe footer to text emails', function () {
+        $message = new Email();
+        $message->to('test@example.com');
+        $message->text('Test message');
+
+        $event = new MessageSending($message);
+        $listener = new AppendEmailUnsubscribeFooterToMessage();
+
+        $listener->handle($event);
+
+        $text = $message->getTextBody();
+        expect($text)->toContain('unsubscribe');
+    });
+
+    it('includes user settings hint for winprox users', function () {
+        $tenant = Tenant::factory()->create();
+        User::factory()->create([
+            'tenant_id' => $tenant->id,
+            'email' => 'user@example.com',
+        ]);
+
+        $message = new Email();
+        $message->to('user@example.com');
+        $message->html('<body><p>Test</p></body>');
+
+        $event = new MessageSending($message);
+        $listener = new AppendEmailUnsubscribeFooterToMessage();
+
+        $listener->handle($event);
+
+        $html = $message->getHtmlBody();
+        expect($html)->toContain('Settings');
+    });
+});
+
+describe('WelcomeAccountMail mailable', function () {
+    it('builds with correct envelope', function () {
+        $tenant = Tenant::factory()->create(['name' => 'Test Org']);
+        $admin = User::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Admin']);
+        $user = User::factory()->create([
+            'tenant_id' => $tenant->id,
+            'email' => 'newuser@example.com',
+            'name' => 'New User',
+            'role' => User::ROLE_EMPLOYEE,
+        ]);
+
+        $mail = new WelcomeAccountMail(
+            user: $user,
+            tenant: $tenant,
+            admin: $admin,
+            resetToken: 'test-token',
+        );
+
+        $envelope = $mail->envelope();
+
+        expect($envelope->subject)->toContain('Test Org');
+    });
+
+    it('includes reset url in content', function () {
+        $tenant = Tenant::factory()->create(['name' => 'Test Org']);
+        $admin = User::factory()->create(['tenant_id' => $tenant->id]);
+        $user = User::factory()->create([
+            'tenant_id' => $tenant->id,
+            'email' => 'newuser@example.com',
+            'name' => 'New User',
+            'role' => User::ROLE_EMPLOYEE,
+        ]);
+
+        $mail = new WelcomeAccountMail(
+            user: $user,
+            tenant: $tenant,
+            admin: $admin,
+            resetToken: 'test-token',
+        );
+
+        $content = $mail->content();
+
+        expect($content->with['resetUrl'])->toContain('test-token');
+        expect($content->with['resetUrl'])->toContain(urlencode('newuser@example.com'));
+    });
+
+    it('sends successfully via mail facade', function () {
+        Mail::fake();
+
+        $tenant = Tenant::factory()->create();
+        $admin = User::factory()->create(['tenant_id' => $tenant->id]);
+        $user = User::factory()->create([
+            'tenant_id' => $tenant->id,
+            'email' => 'newuser@example.com',
+        ]);
+
+        $mail = new WelcomeAccountMail(
+            user: $user,
+            tenant: $tenant,
+            admin: $admin,
+            resetToken: 'test-token',
+        );
+
+        Mail::to('newuser@example.com')->send($mail);
+
+        Mail::assertSent(WelcomeAccountMail::class, function ($mailable) {
+            return $mailable->hasTo('newuser@example.com');
+        });
+    });
+});
+
+describe('Email unsubscribe confirmation route', function () {
+    it('confirms unsubscribe with valid token', function () {
+        $email = 'test@example.com';
+        $token = Crypt::encryptString($email);
+
+        $url = URL::signedRoute('email.unsubscribe', ['t' => $token]);
+
+        expect(EmailUnsubscribe::isUnsubscribed($email))->toBeFalse();
+
+        $response = $this->get($url);
+
+        $response->assertOk();
+        $response->assertViewIs('email.unsubscribed');
+        $response->assertViewHas('email', 'test@example.com');
+        expect(EmailUnsubscribe::isUnsubscribed($email))->toBeTrue();
+    });
+
+    it('returns 403 for invalid token', function () {
+        $response = $this->get('/email/unsubscribe?t=invalid');
+        $response->assertForbidden();
+    });
+
+    it('returns 403 for missing token', function () {
+        $response = $this->get('/email/unsubscribe');
+        $response->assertForbidden();
+    });
+
+    it('detects if email belongs to existing user', function () {
+        $tenant = Tenant::factory()->create();
+        User::factory()->create([
+            'tenant_id' => $tenant->id,
+            'email' => 'user@example.com',
+        ]);
+
+        $token = Crypt::encryptString('user@example.com');
+        $url = URL::signedRoute('email.unsubscribe', ['t' => $token]);
+
+        $response = $this->get($url);
+
+        $response->assertOk();
+        $response->assertViewHas('hasUser', true);
+    });
+});

@@ -67,5 +67,17 @@
         "inactive": "Inaktiv",
         "kb_delete_confirm": "Diesen Eintrag löschen?",
         "patterns_required": "Mindestens ein Muster hinzufügen."
+    },
+    "email_unsubscribe": {
+        "title": "E-Mail-Abmeldungen",
+        "search_placeholder": "Nach E-Mail-Adresse suchen…",
+        "search": "Suchen",
+        "email": "E-Mail",
+        "user": "Benutzer",
+        "unsubscribed_at": "Abgemeldet am",
+        "actions": "Aktionen",
+        "restore": "Wiederherstellen",
+        "confirm_restore": "Sind Sie sicher, dass Sie diese E-Mail-Adresse wiederherstellen möchten?",
+        "restored": ":email wurde wiederhergestellt und erhält wieder E-Mails."
     }
 }

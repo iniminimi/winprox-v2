@@ -146,3 +146,16 @@ Route::middleware('auth')->group(function () {
         return redirect()->route('login');
     })->name('logout');
 });
+
+/*
+|--------------------------------------------------------------------------
+| SuperUser Email Unsubscribe Management (OPERATIONAL - Override approved)
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'superuser'])->group(function () {
+    Route::get('/admin/email-unsubscribes', [AdminEmailUnsubscribeController::class, 'index'])
+        ->name('admin.email-unsubscribes.index');
+    Route::delete('/admin/email-unsubscribes/{emailUnsubscribe}', [AdminEmailUnsubscribeController::class, 'destroy'])
+        ->name('admin.email-unsubscribes.destroy');
+});

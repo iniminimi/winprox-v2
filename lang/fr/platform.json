@@ -67,5 +67,17 @@
         "inactive": "Inactif",
         "kb_delete_confirm": "Supprimer cette entrée ?",
         "patterns_required": "Ajoutez au moins un motif."
+    },
+    "email_unsubscribe": {
+        "title": "Désabonnements e-mail",
+        "search_placeholder": "Rechercher par adresse e-mail…",
+        "search": "Rechercher",
+        "email": "E-mail",
+        "user": "Utilisateur",
+        "unsubscribed_at": "Désabonné le",
+        "actions": "Actions",
+        "restore": "Restaurer",
+        "confirm_restore": "Êtes-vous sûr de vouloir restaurer cette adresse e-mail ?",
+        "restored": ":email a été restauré et recevra à nouveau des e-mails."
     }
 }

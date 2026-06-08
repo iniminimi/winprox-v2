@@ -67,5 +67,17 @@
         "inactive": "Inactief",
         "kb_delete_confirm": "Dit kennisbank-item verwijderen?",
         "patterns_required": "Voeg minstens één patroon toe."
+    },
+    "email_unsubscribe": {
+        "title": "E-mail uitschrijvingen",
+        "search_placeholder": "Zoek op e-mailadres…",
+        "search": "Zoeken",
+        "email": "E-mail",
+        "user": "Gebruiker",
+        "unsubscribed_at": "Uitgeschreven op",
+        "actions": "Acties",
+        "restore": "Herstellen",
+        "confirm_restore": "Weet je zeker dat je dit e-mailadres wilt herstellen?",
+        "restored": ":email is hersteld en ontvangt weer e-mails."
     }
 }

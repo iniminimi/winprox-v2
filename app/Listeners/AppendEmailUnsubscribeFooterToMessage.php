@@ -30,7 +30,7 @@ class AppendEmailUnsubscribeFooterToMessage
             $recipientUser = User::query()
                 ->whereRaw('LOWER(email) = ?', [EmailUnsubscribe::normalizeEmail($primary)])
                 ->first();
-            $profileUrl = URL::route('settings', [], true);
+            $profileUrl = URL::route('settings.index', [], true);
             $profileUrlEsc = htmlspecialchars($profileUrl, ENT_QUOTES, 'UTF-8');
             $profileHintHtml = '<div style="text-align:center;margin-top:12px;font-size:12px;color:#6b7280;line-height:1.5;">'
                 .str_replace(':url', $profileUrlEsc, __('mail.unsubscribe.users_page_hint_html'))

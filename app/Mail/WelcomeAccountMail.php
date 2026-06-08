@@ -26,14 +26,6 @@ class WelcomeAccountMail extends Mailable
     {
         return new Envelope(
             subject: __('mail.welcome.subject', ['tenant' => $this->tenant->name]),
-            from: [
-                'address' => config('mail.from.address', 'hello@winprox.app'),
-                'name' => config('mail.from.name', 'WinProx'),
-            ],
-            replyTo: [
-                'address' => config('winprox.helpdesk_email', 'support@winprox.app'),
-                'name' => config('winprox.helpdesk_name', 'WinProx Support'),
-            ],
         );
     }
 

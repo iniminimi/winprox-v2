@@ -67,5 +67,17 @@
         "inactive": "Inactive",
         "kb_delete_confirm": "Delete this knowledge base entry?",
         "patterns_required": "Add at least one pattern."
+    },
+    "email_unsubscribe": {
+        "title": "Email Unsubscribes",
+        "search_placeholder": "Search by email address…",
+        "search": "Search",
+        "email": "Email",
+        "user": "User",
+        "unsubscribed_at": "Unsubscribed at",
+        "actions": "Actions",
+        "restore": "Restore",
+        "confirm_restore": "Are you sure you want to restore this email address?",
+        "restored": ":email has been restored and will receive emails again."
     }
 }

@@ -10,13 +10,9 @@ use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 /**
- * TODO: SuperUser Operationalization compliant met de core rules.
+ * SuperUser Email Unsubscribe Management Controller.
  *
- * Deze controller is voorbereid voor SuperUser-functionaliteit maar is nog niet
- * operationeel. Volgens winprox-core.mdc en legal memory is SuperUser-functionaliteit
- * niet operationeel in V2. Activeer deze pas wanneer expliciet toegestaan.
- *
- * Routes (uitgecommentarieerd in web.php):
+ * Routes (active):
  * - GET /admin/email-unsubscribes - Lijst van alle unsubscribes
  * - DELETE /admin/email-unsubscribes/{emailUnsubscribe} - Verwijder unsubscribe (herstel)
  */
@@ -24,7 +20,7 @@ class AdminEmailUnsubscribeController extends Controller
 {
     /**
      * Lijst van alle e-mail uitschrijvingen.
-     * Alleen beschikbaar voor SuperUser wanneer geactiveerd.
+     * Alleen beschikbaar voor SuperUser.
      */
     public function index(Request $request): View
     {
@@ -50,7 +46,7 @@ class AdminEmailUnsubscribeController extends Controller
 
     /**
      * Verwijder een unsubscribe record (herstel e-mail ontvangst).
-     * Alleen beschikbaar voor SuperUser wanneer geactiveerd.
+     * Alleen beschikbaar voor SuperUser.
      */
     public function destroy(Request $request, EmailUnsubscribe $emailUnsubscribe): RedirectResponse
     {

@@ -1,10 +1,3 @@
-{{--
-TODO: SuperUser Operationalization compliant met de core rules.
-
-Deze view is voorbereid voor SuperUser-functionaliteit maar is nog niet
-operationeel. Volgens winprox-core.mdc en legal memory is SuperUser-functionaliteit
-niet operationeel in V2. Activeer deze pas wanneer expliciet toegestaan.
---}}
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
