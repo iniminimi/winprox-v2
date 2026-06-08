@@ -177,11 +177,11 @@
             "actions": [
                 {
                     "label": "Unit toevoegen",
-                    "text": "Voeg een asset/ruimte toe met QR-token en standaard team."
+                    "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt."
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Maak meerdere units tegelijk (vloeren × kamers) en koppel ze aan een team."
+                    "text": "Maak snel tientallen units (zoals kamers, verdiepingen of opeenvolgende assets) tegelijkertijd aan binnen een logische nummeringsreeks. Aantal reeksen : geef aan hoeveel reeksen (bijv. verdiepingen of zones) je in één keer wilt genereren. Units per reeks : bepaal het aantal specifieke eenheden (bijv. kamers of apparaten) dat per reeks moet worden aangemaakt. Nummering : Kies de structuur van de nummering (bijv. stappen van 10 zoals 01, 11, 21 of doorlopend). Het dynamische voorbeeldvak onderaan toont direct hoe de units worden genoemd. Optionele prefix : Voeg een vaste tekst toe vóór het nummer (bijv. KAMER- of ZONE-), zodat units direct herkenbaar zijn (bijv. KAMER-01). Categorie : Koppel de nieuw gegenereerde reeks direct aan een specifieke categorie (bijv. Sanitair of Kantoor) om de units meteen juist te organiseren."
                 },
                 {
                     "label": "QR-stickerblad downloaden",
