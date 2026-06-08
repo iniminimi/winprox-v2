@@ -9,7 +9,7 @@
         "grace_short": "Nachlaufzeit: noch :days Tage voller Zugriff.",
         "grace_title": "Nachlaufzeit nach abgelaufenem Abonnement"
     },
-    "add_issue": "Meldung hinzufügen",
+    "add_issue": "+ Meldung hinzufügen",
     "briefing": "Briefing",
     "briefing_print": "Briefing drucken",
     "briefing_empty": "Keine Aufgaben für heute geplant.",

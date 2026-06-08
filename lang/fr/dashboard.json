@@ -9,7 +9,7 @@
         "grace_short": "Délai de grâce : encore :days jours d'accès complet.",
         "grace_title": "Délai de grâce après fin d'abonnement"
     },
-    "add_issue": "Ajouter un signalement",
+    "add_issue": "+ Ajouter un signalement",
     "briefing": "Briefing",
     "briefing_print": "Imprimer le briefing",
     "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",

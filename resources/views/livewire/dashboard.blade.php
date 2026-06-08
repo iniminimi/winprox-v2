@@ -24,8 +24,7 @@
                     <x-wp-trial-battery-capsule :state="$portalBatteryState" />
                 @endif
                 <a href="{{ route('issues.index', ['create' => 1]) }}" class="btn btn--primary btn--sm">
-                    <x-wp-icon name="plus" class="wp-icon" />
-                    <span>{{ __('dashboard.add_issue') }}</span>
+                    {{ __('dashboard.add_issue') }}
                 </a>
                 <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing_print') }}</a>
             </div>
