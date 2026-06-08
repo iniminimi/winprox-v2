@@ -49,7 +49,7 @@
             </p>
         </div>
 
-        <div style="
+        <div id="manual-toc" style="
             margin-top: 3rem;
             padding: 1.5rem 2.5rem;
             background: var(--wp-surface);
@@ -161,6 +161,9 @@
                     color: var(--wp-text);
                     margin: 0;
                 ">{{ $chapter['title'] }}</h2>
+                <a href="#manual-toc" class="print:hidden" style="margin-left: auto; color: var(--wp-text-muted); opacity: 0.6; line-height: 1; flex-shrink: 0;" title="Terug naar inhoudsopgave">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                </a>
             </div>
 
             {{-- Acties --}}
