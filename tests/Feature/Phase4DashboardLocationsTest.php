@@ -155,8 +155,7 @@ it('creates a location via Livewire', function () {
     $location = Location::where('name', 'Hal A')->first();
 
     expect($location)->not->toBeNull()
-        ->and($location->street)->toBe('Industrieweg')
-        ->and($location->location_qr_token)->not->toBeEmpty();
+        ->and($location->street)->toBe('Industrieweg');
 });
 
 it('bulk creates units on location show', function () {
@@ -378,29 +377,6 @@ it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () 
         ->assertOk()
         ->assertSee('wp-qr-code-center-logo', false)
         ->assertSee(QrCenterLogo::winproxPublicUrl(), false);
-});
-
-it('toont organisatielogo in locatie-QR wanneer geüpload', function () {
-    Storage::fake('public');
-    Storage::disk('public')->put('tenant-logos/org.png', 'png-bytes');
-
-    $tenant = Tenant::factory()->create([
-        'trial_ends_at' => now()->addDays(5),
-        'logo_path' => 'tenant-logos/org.png',
-    ]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create([
-        'tenant_id' => $tenant->id,
-        'location_qr_token' => 'loc-qr-logo-test',
-    ]);
-
-    $orgLogoUrl = QrCenterLogo::publicUrl($tenant);
-
-    $this->actingAs($user)
-        ->get(route('locations.qr', $location))
-        ->assertOk()
-        ->assertSee($orgLogoUrl, false)
-        ->assertSee('wp-qr-code-center-logo', false);
 });
 
 it('qr-pack download with dynamic QR codes generates unassigned codes', function () {

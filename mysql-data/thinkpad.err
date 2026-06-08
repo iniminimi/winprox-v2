@@ -70,3 +70,13 @@ Status: NOT_KILLED
 
 The manual page at http://dev.mysql.com/doc/mysql/en/crashing.html contains
 information that should help you find out what is causing the crash.
+2026-06-08T08:47:20.007275Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2026-06-08T08:47:20.162012Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe (mysqld 8.4.9) starting as process 27100
+2026-06-08T08:47:20.223013Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-06-08T08:47:21.384419Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-06-08T08:47:21.501675Z 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2026-06-08T08:47:21.505084Z 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2026-06-08T08:47:21.613621Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2026-06-08T08:47:21.613947Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2026-06-08T08:47:21.638841Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe: ready for connections. Version: '8.4.9'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2026-06-08T08:47:21.638845Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060

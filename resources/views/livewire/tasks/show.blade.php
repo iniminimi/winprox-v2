@@ -10,7 +10,7 @@
         && trim((string) $issue->description) !== trim((string) $task->note);
     $reporterName = $issue?->reporter_name ?: __('issues.card.unknown_reporter');
     $issueHeading = $issue ? match ($issue->source) {
-        IssueSource::Qr, IssueSource::QrLocation => __('issues.show.report_reported_by', ['name' => $reporterName]),
+        IssueSource::Qr => __('issues.show.report_reported_by', ['name' => $reporterName]),
         default => __('issues.show.report_created_by', ['name' => $reporterName]),
     } : null;
 @endphp

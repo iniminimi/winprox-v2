@@ -18,17 +18,12 @@
     $teamsLabel = $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team');
     $reporterName = $issue->reporter_name ?: __('issues.card.unknown_reporter');
     $issueLine = match ($issue->source) {
-        IssueSource::Qr, IssueSource::QrLocation => __('issues.card.line_reported_by', ['name' => $reporterName]),
+        IssueSource::Qr => __('issues.card.line_reported_by', ['name' => $reporterName]),
         default => __('issues.card.line_created_by', ['name' => $reporterName]),
     };
     $contextMeta = match ($issue->source) {
         IssueSource::Qr => __('issues.card.meta_via_context', [
             'source' => __('issues.card.report_source_qr'),
-            'datetime' => $datetime,
-            'teams' => $teamsLabel,
-        ]),
-        IssueSource::QrLocation => __('issues.card.meta_via_context', [
-            'source' => __('issues.card.report_source_qr_location'),
             'datetime' => $datetime,
             'teams' => $teamsLabel,
         ]),
