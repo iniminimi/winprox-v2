@@ -16,13 +16,13 @@
     "statuses": "Status",
     "footer": "WinProx — Facility-Meldungs-App — :date",
     "step_1_title": "Teams & Mitarbeiter anlegen",
-    "step_1_text": "Erstellen Sie operative Teams, weisen Sie einen Teamleiter zu und fügen Sie Mitarbeiter hinzu. Verknüpfen Sie Teams mit Kategorien, damit Aufgaben immer beim richtigen Team ankommen.",
+    "step_1_text": "Erstellen Sie operative Teams, fügen Sie Mitarbeiter hinzu und weisen Sie einen Teamleiter zu. Verknüpfen Sie Teams mit Kategorien, damit Aufgaben immer beim richtigen Team ankommen. Mitarbeiter melden sich mit ihrem Namen und einem gewählten Symbol an. Teams und Mitarbeiter können auch per Massenimport (CSV-Datei) hochgeladen werden.",
     "step_2_title": "Standorte & Einheiten einrichten",
-    "step_2_text": "Fügen Sie Standorte (Gebäude, Etagen) hinzu und erstellen Sie Einheiten pro Standort — das sind die Assets, Maschinen oder Räume, auf die Meldungen und Aufgaben registriert werden.",
+    "step_2_text": "Fügen Sie Kategorien hinzu, um Einheiten zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien erleichtern das Filtern und Organisieren der Einheiten je nach Branche des Unternehmens. Durch die Verknüpfung von Mitarbeiterteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie Standorte (Gebäude, Etagen) hinzu und erstellen Sie Einheiten pro Standort — das sind die Assets, Maschinen oder Räume, auf die Meldungen und Aufgaben registriert werden. Standorte und Einheiten können auch per Massenimport (CSV-Datei) hochgeladen werden.",
     "step_3_title": "QR-Codes drucken & aufhängen",
-    "step_3_text": "Drucken Sie QR-Codes von der Einheiten- oder Standortdetailseite und befestigen Sie sie sichtbar. Melder scannen den Einheiten-QR um eine Meldung zu erfassen; Mitarbeiter scannen den Team-QR um Aufgaben zu starten.",
+    "step_3_text": "Drucken Sie QR-Codes von der Standort- oder Einheitendetailseite und befestigen Sie sie sichtbar an den Einheiten (Maschinen, Drucker, Büro, Räume, …). Melder scannen den Einheiten-QR um das Portal zu öffnen: dort können sie eine Meldung erstellen, Dokumente einsehen und Mitteilungen lesen. Mitarbeiter scannen den Team-QR um dynamische QR-Codes zu verknüpfen/aktivieren, GPS-Koordinaten der Einheit zu erfassen und Fotos aufzunehmen. Sie können dort auch Aufgaben starten und abschließen.",
     "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
-    "step_4_text": "Meldungen kommen per QR-Scan oder manuell herein. Weisen Sie eine Aufgabe einem Team zu, setzen Sie eine Frist und verfolgen Sie den Fortschritt über das Dashboard und den Kalender.",
+    "step_4_text": "Meldungen kommen per QR-Scan oder manuell herein. Für jede Meldung wird automatisch eine Aufgabe erstellt, die dem Team der Einheit zugeordnet ist. Es können mehrere Aufgaben für dieselbe Meldung erstellt werden (z. B. für das Technik- und Reinigungsteam). Setzen Sie eine Frist und verfolgen Sie den Fortschritt über das Dashboard und den Kalender.",
     "step_5_title": "Nachverfolgen & abschließen",
-    "step_5_text": "Mitarbeiter erledigen Aufgaben vor Ort über den Team-QR. Sobald alle Aufgaben abgeschlossen sind, schließt der Administrator die Meldung. Alles ist im Audit-Trail nachvollziehbar."
+    "step_5_text": "Mitarbeiter erledigen Aufgaben vor Ort oder am Standort der Einheit über den Team-QR. Sobald alle Aufgaben abgeschlossen sind, schließt der Administrator die Meldung. Alles ist im Audit-Trail nachvollziehbar."
 }

@@ -16,13 +16,13 @@
     "statuses": "Statussen",
     "footer": "WinProx — Work in Proximity — :date",
     "step_1_title": "Teams & uitvoerders aanmaken",
-    "step_1_text": "Maak operationele teams aan, wijs een teamleider toe en voeg uitvoerders toe. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen.",
+    "step_1_text": "Maak operationele teams aan, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen. Uitvoerders melden zich aan met hun naam en een gekozen icoon. Teams en uitvoerders kunnen ook via bulk import (csv-bestand) geüpload worden.",
     "step_2_title": "Locaties & units inrichten",
-    "step_2_text": "Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd.",
+    "step_2_text": "Voeg categorieën toe om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units en zijn afhankelijk van de sector van het bedrijf. Door teams van uitvoerders te koppelen aan specifieke categorieën zorgt WinProx ervoor dat taken uitgevoerd worden door het correcte team. Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd. Locaties en units kunnen ook via bulk import (csv-bestand) geüpload worden.",
     "step_3_title": "QR-codes afdrukken & ophangen",
-    "step_3_text": "Druk de QR-codes af via de unit- of locatiedetailpagina en bevestig ze zichtbaar. Melders scannen de unit-QR om een melding te doen; uitvoerders scannen de team-QR om taken te starten.",
+    "step_3_text": "Druk de QR-codes af via de locatie- of unitdetailpagina en bevestig ze zichtbaar op de units (machines, printer, kantoor, kamers, …). Melders scannen de unit-QR om het portaal te openen: daar kan een melding gemaakt worden, documenten geraadpleegd worden en mededelingen bekeken worden. Uitvoerders scannen de team-QR om dynamische QR-codes te koppelen/activeren, GPS-coördinaten van de unit te registreren en foto's te nemen. Uitvoerders kunnen er ook taken starten en afhandelen met eventueel foto's.",
     "step_4_title": "Meldingen ontvangen & taken aansturen",
-    "step_4_text": "Meldingen komen binnen via QR-scan of handmatig. Koppel een taak aan een team, stel een deadline in en volg de voortgang op via het dashboard en de kalender.",
+    "step_4_text": "Meldingen komen binnen via QR-scan of handmatig. Voor elke melding wordt automatisch een taak aangemaakt gekoppeld aan het team van de unit. Er kunnen meerdere taken aangemaakt worden voor dezelfde melding (bijv. voor team techniek en schoonmaak). Stel een deadline in en volg de voortgang op via het dashboard en de kalender.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders werken taken af op de werkvloer via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail."
+    "step_5_text": "Uitvoerders werken taken af op de werkvloer of de plaats van de unit via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail."
 }
