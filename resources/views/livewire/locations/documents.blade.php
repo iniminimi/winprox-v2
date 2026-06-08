@@ -8,12 +8,15 @@
             <p class="wp-muted">{{ __('locations.documents.subtitle') }}</p>
         </div>
         <div class="wp-cluster">
-            <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-                   placeholder="{{ __('locations.documents.search_placeholder') }}">
             <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 {{ __('locations.documents.add') }}
             </button>
         </div>
+    </div>
+
+    <div class="wp-field">
+        <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+               placeholder="{{ __('locations.documents.search_placeholder') }}">
     </div>
 
     @if (session('warning'))
