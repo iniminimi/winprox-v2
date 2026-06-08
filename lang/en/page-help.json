@@ -188,10 +188,6 @@
                     "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
                 },
                 {
-                    "label": "Location QR",
-                    "text": "QR for issues without a specific unit (corridor, zone, common area)."
-                },
-                {
                     "label": "Documents & announcements",
                     "text": "Manage manuals and announcements that reporters see on the QR page."
                 }
@@ -445,15 +441,6 @@
                 "done": "Completed by you or a colleague.",
                 "closed": "Closed by management."
             }
-        },
-        "portal.location": {
-            "title": "Help — Location QR",
-            "actions": [
-                {
-                    "label": "Issue without unit",
-                    "text": "Use this QR for problems in corridors or shared zones without a specific unit."
-                }
-            ]
         },
         "platform.tenants": {
             "title": "Help — Platform",

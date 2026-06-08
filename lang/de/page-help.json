@@ -188,10 +188,6 @@
                     "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
                 },
                 {
-                    "label": "Standort-QR",
-                    "text": "QR für Meldungen ohne spezifische Unit (Flur, Zone, Gemeinschaftsbereich)."
-                },
-                {
                     "label": "Dokumente & Mitteilungen",
                     "text": "Verwalten Sie Handbücher und Mitteilungen, die Melder auf der QR-Seite sehen."
                 }
@@ -445,15 +441,6 @@
                 "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
                 "closed": "Von der Verwaltung geschlossen."
             }
-        },
-        "portal.location": {
-            "title": "Hilfe — Standort-QR",
-            "actions": [
-                {
-                    "label": "Meldung ohne Unit",
-                    "text": "Verwenden Sie diesen QR für Probleme in Fluren oder gemeinsamen Bereichen ohne spezifische Unit."
-                }
-            ]
         },
         "platform.tenants": {
             "title": "Hilfe — Plattform",

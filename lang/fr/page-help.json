@@ -188,10 +188,6 @@
                     "text": "Téléchargez un fichier Word (Avery 55×55 ou HERMA 70×50) avec des autocollants QR pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
                 },
                 {
-                    "label": "QR du site",
-                    "text": "QR pour les signalements sans unité spécifique (couloir, zone, espace commun)."
-                },
-                {
                     "label": "Documents & annonces",
                     "text": "Gérez les manuels et annonces visibles sur la page QR."
                 }
@@ -445,15 +441,6 @@
                 "done": "Terminé par vous ou un collègue.",
                 "closed": "Clôturé par la gestion."
             }
-        },
-        "portal.location": {
-            "title": "Aide — QR site",
-            "actions": [
-                {
-                    "label": "Signalement sans unité",
-                    "text": "Utilisez ce QR pour les problèmes dans les couloirs ou zones communes sans unité spécifique."
-                }
-            ]
         },
         "platform.tenants": {
             "title": "Aide — Plateforme",
