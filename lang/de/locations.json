@@ -206,7 +206,7 @@
     "documents": {
         "title": "Dokumente",
         "subtitle": "Dokumente für das Meldeportal an diesem Standort und den Units.",
-        "add": "Dokument hinzufügen",
+        "add": "+ Dokument hinzufügen",
         "edit": "Dokument bearbeiten",
         "empty": "Noch keine Dokumente.",
         "search_placeholder": "Dokumente suchen…",
@@ -244,7 +244,7 @@
     "announcements": {
         "title": "Mitteilungen",
         "subtitle": "Mitteilungen für das Meldeportal an diesem Standort und den Units.",
-        "add": "Mitteilung hinzufügen",
+        "add": "+ Mitteilung hinzufügen",
         "edit": "Mitteilung bearbeiten",
         "empty": "Noch keine Mitteilungen.",
         "modal_subtitle": "Nachricht schreiben und optional mit einer Unit verknüpfen.",

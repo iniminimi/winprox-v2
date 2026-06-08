@@ -206,7 +206,7 @@
     "documents": {
         "title": "Documents",
         "subtitle": "Documents pour le portail de signalement sur ce site et ses unités.",
-        "add": "Ajouter un document",
+        "add": "+ Ajouter un document",
         "edit": "Modifier le document",
         "empty": "Aucun document pour le moment.",
         "search_placeholder": "Rechercher des documents…",
@@ -244,7 +244,7 @@
     "announcements": {
         "title": "Annonces",
         "subtitle": "Annonces pour le portail de signalement sur ce site et ses unités.",
-        "add": "Ajouter une annonce",
+        "add": "+ Ajouter une annonce",
         "edit": "Modifier l'annonce",
         "empty": "Aucune annonce pour le moment.",
         "modal_subtitle": "Rédigez un message et liez-le éventuellement à une unité.",

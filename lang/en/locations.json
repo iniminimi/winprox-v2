@@ -206,7 +206,7 @@
     "documents": {
         "title": "Documents",
         "subtitle": "Documents for the reporting portal at this location and its units.",
-        "add": "Add document",
+        "add": "+ Add document",
         "edit": "Edit document",
         "empty": "No documents yet.",
         "search_placeholder": "Search documents…",
@@ -244,7 +244,7 @@
     "announcements": {
         "title": "Announcements",
         "subtitle": "Announcements for the reporting portal at this location and its units.",
-        "add": "Add announcement",
+        "add": "+ Add announcement",
         "edit": "Edit announcement",
         "empty": "No announcements yet.",
         "modal_subtitle": "Write a message and optionally link it to a unit.",

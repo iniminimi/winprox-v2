@@ -206,7 +206,7 @@
     "documents": {
         "title": "Documenten",
         "subtitle": "Documenten voor het meldportaal op deze locatie en units.",
-        "add": "Document toevoegen",
+        "add": "+ Document toevoegen",
         "edit": "Document bewerken",
         "empty": "Nog geen documenten.",
         "search_placeholder": "Documenten zoeken…",
@@ -244,7 +244,7 @@
     "announcements": {
         "title": "Mededelingen",
         "subtitle": "Mededelingen voor het meldportaal op deze locatie en units.",
-        "add": "Mededeling toevoegen",
+        "add": "+ Mededeling toevoegen",
         "edit": "Mededeling bewerken",
         "empty": "Nog geen mededelingen.",
         "modal_subtitle": "Schrijf een bericht en koppel het optioneel aan een unit.",
