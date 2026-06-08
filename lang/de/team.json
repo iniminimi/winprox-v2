@@ -3,7 +3,7 @@
     "subtitle": "Verwalten Sie Kollegenkonten, operative Teams und Mitarbeiter.",
     "colleagues": {
         "title": "Kollegenkonten",
-        "add": "Benutzer hinzufügen",
+        "add": "+ Benutzer hinzufügen",
         "invite_hint": "Neue Benutzer erhalten eine E-Mail, um ihr Passwort festzulegen.",
         "empty": "Es gibt noch keine Kollegenkonten.",
         "active": "Aktiv",
@@ -34,7 +34,7 @@
     },
     "teams": {
         "title": "Teams",
-        "add": "Team hinzufügen",
+        "add": "+ Team hinzufügen",
         "hint": "Klicken Sie auf ein Team, um Mitarbeiter zu verwalten.",
         "empty": "Es gibt noch keine Teams.",
         "active": "Aktiv",

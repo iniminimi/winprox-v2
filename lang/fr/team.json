@@ -3,7 +3,7 @@
     "subtitle": "Gérez les utilisateurs collègues, les équipes opérationnelles et les intervenants.",
     "colleagues": {
         "title": "Utilisateurs collègues",
-        "add": "Ajouter un utilisateur",
+        "add": "+ Ajouter un utilisateur",
         "invite_hint": "Les nouveaux utilisateurs reçoivent un e-mail pour définir leur mot de passe.",
         "empty": "Aucun utilisateur collègue pour le moment.",
         "active": "Actif",
@@ -34,7 +34,7 @@
     },
     "teams": {
         "title": "Équipes",
-        "add": "Ajouter une équipe",
+        "add": "+ Ajouter une équipe",
         "hint": "Cliquez sur une équipe pour gérer les intervenants.",
         "empty": "Aucune équipe pour le moment.",
         "active": "Active",

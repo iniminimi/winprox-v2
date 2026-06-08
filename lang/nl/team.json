@@ -3,7 +3,7 @@
     "subtitle": "Beheer collega-gebruikers, operationele teams en uitvoerders.",
     "colleagues": {
         "title": "Collega-gebruikers",
-        "add": "Gebruiker toevoegen",
+        "add": "+ Gebruiker toevoegen",
         "invite_hint": "Nieuwe gebruikers krijgen een e-mail om hun wachtwoord in te stellen.",
         "empty": "Er zijn nog geen collega-gebruikers.",
         "active": "Actief",
@@ -34,7 +34,7 @@
     },
     "teams": {
         "title": "Teams",
-        "add": "Team toevoegen",
+        "add": "+ Team toevoegen",
         "hint": "Klik op een team om uitvoerders te beheren.",
         "empty": "Er zijn nog geen teams.",
         "active": "Actief",

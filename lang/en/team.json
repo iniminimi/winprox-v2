@@ -3,7 +3,7 @@
     "subtitle": "Manage colleague users, operational teams and workers.",
     "colleagues": {
         "title": "Colleague users",
-        "add": "Add user",
+        "add": "+ Add user",
         "invite_hint": "New users receive an email to set their password.",
         "empty": "There are no colleague users yet.",
         "active": "Active",
@@ -34,7 +34,7 @@
     },
     "teams": {
         "title": "Teams",
-        "add": "Add team",
+        "add": "+ Add team",
         "hint": "Click a team to manage workers.",
         "empty": "There are no teams yet.",
         "active": "Active",

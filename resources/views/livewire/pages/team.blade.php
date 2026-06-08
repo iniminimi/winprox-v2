@@ -11,8 +11,7 @@
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('team.colleagues.title') }}</h2>
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateColleague">
-                    <x-wp-icon name="plus" class="wp-icon" />
-                    <span>{{ __('team.colleagues.add') }}</span>
+                    {{ __('team.colleagues.add') }}
                 </button>
             </div>
             <p class="wp-hint">{{ __('team.colleagues.invite_hint') }}</p>
@@ -58,8 +57,7 @@
                         {{ __('team.workers.import') }}
                     </button>
                     <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateTeam">
-                        <x-wp-icon name="plus" class="wp-icon" />
-                        <span>{{ __('team.teams.add') }}</span>
+                        {{ __('team.teams.add') }}
                     </button>
                 </div>
             @endif
