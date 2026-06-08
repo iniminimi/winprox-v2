@@ -19,7 +19,7 @@
     "list": {
         "title": "Issues",
         "subtitle": "All problems reported by reporters",
-        "add": "Add issue",
+        "add": "+ Add issue",
         "group_count": ":count issues",
         "empty": "No issues yet. Create one using the \"+ Add issue\" button.",
         "empty_filtered": "No issues match these filters."

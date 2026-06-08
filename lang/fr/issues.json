@@ -19,7 +19,7 @@
     "list": {
         "title": "Signalements",
         "subtitle": "Tous les problèmes signalés par les rapporteurs",
-        "add": "Ajouter un signalement",
+        "add": "+ Ajouter un signalement",
         "group_count": ":count signalements",
         "empty": "Aucun signalement pour l'instant. Créez-en un avec le bouton \"+ Ajouter un signalement\".",
         "empty_filtered": "Aucun signalement ne correspond à ces filtres."

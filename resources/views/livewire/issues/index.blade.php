@@ -21,8 +21,7 @@
             </div>
             <div class="wp-cluster wp-page-actions">
                 <button type="button" class="btn btn--primary btn--sm @if($total === 0) wp-badge-critical @endif" wire:click="openCreateModal">
-                    <x-wp-icon name="plus" class="wp-icon" />
-                    <span>{{ __('issues.list.add') }}</span>
+                    {{ __('issues.list.add') }}
                 </button>
                 <a href="{{ route('briefing.print') }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('issues.briefing') }}</a>
             </div>

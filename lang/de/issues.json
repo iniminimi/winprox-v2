@@ -19,7 +19,7 @@
     "list": {
         "title": "Meldungen",
         "subtitle": "Alle von Meldern gemeldeten Probleme",
-        "add": "Meldung hinzufügen",
+        "add": "+ Meldung hinzufügen",
         "group_count": ":count Meldungen",
         "empty": "Noch keine Meldungen. Erstellen Sie eine mit dem \"+ Meldung hinzufügen\"-Button.",
         "empty_filtered": "Keine Meldungen für diese Filter."
