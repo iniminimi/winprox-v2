@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "Create teams, assign teamleaders and manage workers per team."
+                    "text": "Create teams, assign teamleaders and manage workers per team. A unit must have a team linked so that a worker can handle tasks for this unit."
                 },
                 {
                     "label": "Team QR",
@@ -246,7 +246,7 @@
                 },
                 {
                     "label": "Reset icon",
-                    "text": "Remove the chosen icon from a worker so they can sign in again with a different icon. Useful if a worker wants to change icon or if an icon was selected by mistake."
+                    "text": "Remove the chosen icon from a worker so they can sign in again with a different icon. Useful if a worker wants to change icon or if an icon was selected by mistake. Team leaders can also remove icons from their team members in their portal."
                 },
                 {
                     "label": "Deactivate team",
@@ -257,16 +257,16 @@
                     "text": "Disable a worker so they can no longer sign in via team QR. The worker remains in the system and can be reactivated later."
                 },
                 {
+                    "label": "Delete worker",
+                    "text": "Permanently remove a worker from the system. All history and tasks for this worker are preserved, but the worker can no longer be used."
+                },
+                {
                     "label": "CSV import",
                     "text": "Import workers in bulk via a CSV file. The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, external_id (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they don't exist yet. Workers who are already linked to a device (worker_device) are never deleted when undoing an import."
                 },
                 {
                     "label": "Recent CSV imports",
                     "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click 'Undo import' to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via team QR (and thus have an active device) remain and are marked as 'has devices'. The button disappears once all workers in a batch have been deleted."
-                },
-                {
-                    "label": "Delete worker",
-                    "text": "Permanently remove a worker from the system. All history and tasks for this worker are preserved, but the worker can no longer be used."
                 }
             ]
         },

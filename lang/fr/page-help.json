@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe."
+                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe. Une unité doit avoir une équipe liée pour qu'un worker puisse traiter les tâches de cette unité."
                 },
                 {
                     "label": "QR d'équipe",
@@ -246,7 +246,7 @@
                 },
                 {
                     "label": "Réinitialiser l'icône",
-                    "text": "Supprimez l'icône choisie d'un worker pour qu'il puisse se reconnecter avec une autre icône. Utile si un worker veut changer d'icône ou si une icône a été sélectionnée par erreur."
+                    "text": "Supprimez l'icône choisie d'un worker pour qu'il puisse se reconnecter avec une autre icône. Utile si un worker veut changer d'icône ou si une icône a été sélectionnée par erreur. Les teamleaders peuvent également supprimer des icônes de leurs coéquipiers dans leur portail."
                 },
                 {
                     "label": "Désactiver l'équipe",
@@ -257,16 +257,16 @@
                     "text": "Désactivez un worker pour qu'il ne puisse plus se connecter via le QR d'équipe. Le worker reste dans le système et peut être réactivé plus tard."
                 },
                 {
+                    "label": "Supprimer le worker",
+                    "text": "Supprimez définitivement un worker du système. Tout l'historique et les tâches de ce worker sont conservés, mais le worker ne peut plus être utilisé."
+                },
+                {
                     "label": "Import CSV",
                     "text": "Importez des intervenants en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, external_id (optionnels). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. Les intervenants déjà liés à un appareil (worker_device) ne sont jamais supprimés lors de l'annulation d'un import."
                 },
                 {
                     "label": "Imports CSV récents",
                     "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'intervenants. Cliquez sur 'Annuler l'import' pour supprimer les intervenants de ce lot. Seuls les intervenants sans appareil lié sont supprimés — les intervenants déjà connectés via le QR d'équipe (et donc avec un appareil actif) restent et sont indiqués comme 'a des appareils'. Le bouton disparaît lorsque tous les intervenants d'un lot ont été supprimés."
-                },
-                {
-                    "label": "Supprimer le worker",
-                    "text": "Supprimez définitivement un worker du système. Tout l'historique et les tâches de ce worker sont conservés, mais le worker ne peut plus être utilisé."
                 }
             ]
         },

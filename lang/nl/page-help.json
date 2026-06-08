@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Operationele teams",
-                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team."
+                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit."
                 },
                 {
                     "label": "Team-QR",
@@ -246,7 +246,7 @@
                 },
                 {
                     "label": "Icoon resetten",
-                    "text": "Verwijder het gekozen icoon van een uitvoerder zodat deze zich opnieuw kan aanmelden met een ander icoon. Handig als een uitvoerder van icoon wil wisselen of als een icoon per ongeluk verkeerd is gekozen."
+                    "text": "Verwijder het gekozen icoon van een uitvoerder zodat deze zich opnieuw kan aanmelden met een ander icoon. Handig als een uitvoerder van icoon wil wisselen of als een icoon per ongeluk verkeerd is gekozen. Team leaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
                 },
                 {
                     "label": "Team deactiveren",
@@ -257,16 +257,16 @@
                     "text": "Schakel een uitvoerder uit zodat deze zich niet meer kan aanmelden via team-QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
                 },
                 {
+                    "label": "Uitvoerder verwijderen",
+                    "text": "Verwijder een uitvoerder definitief uit het systeem. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
+                },
+                {
                     "label": "CSV import",
                     "text": "Importeer uitvoerders in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Uitvoerders die al gekoppeld zijn aan een toestel (worker_device) worden bij ongedaan maken nooit verwijderd."
                 },
                 {
                     "label": "Recente CSV-imports",
                     "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op 'Import terugdraaien' om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via team-QR (en dus een actief toestel hebben) blijven staan en worden als 'heeft toestellen' aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
-                },
-                {
-                    "label": "Uitvoerder verwijderen",
-                    "text": "Verwijder een uitvoerder definitief uit het systeem. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
                 }
             ]
         },
