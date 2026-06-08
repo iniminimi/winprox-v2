@@ -25,6 +25,7 @@ use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\SyncTeamCategoriesRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
