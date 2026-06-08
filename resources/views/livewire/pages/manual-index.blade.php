@@ -171,9 +171,9 @@
                 <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                     @foreach ($chapter['actions'] as $action)
                         <div style="
-                            display: grid;
-                            grid-template-columns: 220px 1fr;
-                            gap: 1rem;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
                             padding: 1rem 1.25rem;
                             background: var(--wp-surface);
                             border: 1px solid var(--wp-border);
@@ -183,7 +183,6 @@
                                 font-weight: 700;
                                 color: var(--wp-text);
                                 font-size: 0.95rem;
-                                padding-top: 0.1rem;
                             ">{{ $action['label'] }}</div>
                             <div style="
                                 color: var(--wp-text-body);
