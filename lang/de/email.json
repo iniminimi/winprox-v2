@@ -1,0 +1,10 @@
+{
+    "unsubscribed": {
+        "title": "Abgemeldet",
+        "heading": "Erfolgreich abgemeldet",
+        "message": ":email ist jetzt von allen WinProx-E-Mails abgemeldet.",
+        "user_hint": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen später über deine Einstellungen anpassen.",
+        "settings_link": "Zu den Einstellungen",
+        "back_home": "Zurück zur Startseite"
+    }
+}

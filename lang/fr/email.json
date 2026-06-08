@@ -1,0 +1,10 @@
+{
+    "unsubscribed": {
+        "title": "Désabonné",
+        "heading": "Désabonnement réussi",
+        "message": ":email est maintenant désabonné de tous les e-mails WinProx.",
+        "user_hint": "En tant qu'utilisateur WinProx, vous pouvez ajuster vos préférences e-mail plus tard via vos paramètres.",
+        "settings_link": "Aller aux paramètres",
+        "back_home": "Retour à l'accueil"
+    }
+}

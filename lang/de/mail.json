@@ -1,0 +1,27 @@
+{
+    "welcome": {
+        "subject": "Willkommen bei :tenant - Passwort einrichten",
+        "html_title": "Willkommen bei WinProx",
+        "heading": "Willkommen bei WinProx!",
+        "greeting": "Hallo!",
+        "greeting_name": "Hallo :name!",
+        "intro": "Du wurdest eingeladen, :tenant innerhalb von WinProx beizutreten.",
+        "account_details": "Deine Kontodaten:\n- E-Mail: :email\n- Rolle: :role",
+        "admin_contact": "Kontaktiere :name (:email) bei Fragen.",
+        "reset_hint": "Richte dein Passwort innerhalb von :minutes Minuten über die Schaltfläche unten ein.",
+        "set_password": "Passwort einrichten",
+        "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopiere diesen Link:",
+        "open_platform": "Plattform öffnen",
+        "security_note": "Dieser Link läuft aus Sicherheitsgründen ab. Wenn der Link abgelaufen ist, kannst du über 'Passwort vergessen' eine neue Zurücksetzung anfordern.",
+        "powered_by": "Mit WinProx verwaltest du Gebäude, Standorte und Aufgaben an einem zentralen Ort.",
+        "role_admin": "Administrator",
+        "role_employee": "Mitarbeiter"
+    },
+    "unsubscribe": {
+        "html_intro": "Du erhältst diese E-Mail, weil du mit einem WinProx-Konto verknüpft bist. Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich",
+        "text_intro": "Du erhältst diese E-Mail, weil du mit einem WinProx-Konto verknüpft bist. Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich hier abmelden:",
+        "link_label": "hier abmelden",
+        "users_page_hint_html": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen auch über <a href=\":url\">Einstellungen</a> anpassen.",
+        "users_page_hint_text": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen auch über Einstellungen (:url) anpassen."
+    }
+}

@@ -2,9 +2,11 @@
 
 namespace App\Actions\Team;
 
+use App\Mail\WelcomeAccountMail;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
 
 /**
@@ -39,7 +41,19 @@ class CreateColleagueAction
         ]);
 
         if (! empty($data['send_account_email'])) {
-            Password::sendResetLink(['email' => $user->email]);
+            $token = Password::broker()->createToken($user);
+
+            /** @var User|null $admin */
+            $admin = $actorUserId !== null ? User::query()->find($actorUserId) : null;
+
+            if ($admin !== null) {
+                Mail::to($user->email)->send(new WelcomeAccountMail(
+                    user: $user,
+                    tenant: $tenant,
+                    admin: $admin,
+                    resetToken: $token,
+                ));
+            }
         }
 
         $this->audit->record(

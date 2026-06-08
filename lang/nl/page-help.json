@@ -144,7 +144,7 @@
             }
         },
         "locations.list": {
-            "title": "Hulp — Locaties",
+            "title": "Hulp — Locaties en units",
             "actions": [
                 {
                     "label": "Locatie toevoegen",
@@ -152,11 +152,15 @@
                 },
                 {
                     "label": "Locatie openen",
-                    "text": "Beheer units, documenten, mededelingen en QR-codes per locatie."
+                    "text": "Klik op een locatie om deze te beheren : wijzig units, documenten, mededelingen en QR-codes per locatie."
                 },
                 {
                     "label": "Inactieve tonen",
                     "text": "Toon gedeactiveerde locaties om ze opnieuw te activeren of te raadplegen."
+                },
+                {
+                    "label": "Categorieën",
+                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team."
                 },
                 {
                     "label": "CSV import",
@@ -165,10 +169,6 @@
                 {
                     "label": "Recente CSV-imports",
                     "text": "Onder de importknop verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal units. Klik op 'Import terugdraaien' om de units van die batch te verwijderen. Alleen units zonder melding of taak worden verwijderd — units met een gekoppelde melding of taak blijven staan en worden als 'geblokkeerd' aangeduid. De knop verdwijnt zodra alle units van een batch verwijderd zijn."
-                },
-                {
-                    "label": "Categorieën",
-                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team."
                 }
             ]
         },

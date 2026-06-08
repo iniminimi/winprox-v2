@@ -1,0 +1,27 @@
+{
+    "welcome": {
+        "subject": "Welkom bij :tenant - Stel je wachtwoord in",
+        "html_title": "Welkom bij WinProx",
+        "heading": "Welkom bij WinProx!",
+        "greeting": "Hallo!",
+        "greeting_name": "Hallo :name!",
+        "intro": "Je bent uitgenodigd om deel uit te maken van :tenant binnen WinProx.",
+        "account_details": "Je accountgegevens:\n- E-mail: :email\n- Rol: :role",
+        "admin_contact": "Neem bij vragen contact op met :name (:email).",
+        "reset_hint": "Stel je wachtwoord in binnen :minutes minuten via onderstaande knop.",
+        "set_password": "Wachtwoord instellen",
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
+        "open_platform": "Platform openen",
+        "security_note": "Deze link verloopt om beveiligingsredenen. Als de link verlopen is, kun je via 'Wachtwoord vergeten' opnieuw een reset aanvragen.",
+        "powered_by": "Met WinProx beheer je gebouwen, locaties en taken op één centrale plek.",
+        "role_admin": "Beheerder",
+        "role_employee": "Medewerker"
+    },
+    "unsubscribe": {
+        "html_intro": "Je ontvangt deze e-mail omdat je gekoppeld bent aan een WinProx-account. Als je geen e-mails meer wilt ontvangen, kun je je",
+        "text_intro": "Je ontvangt deze e-mail omdat je gekoppeld bent aan een WinProx-account. Als je geen e-mails meer wilt ontvangen, kun je je hier uitschrijven:",
+        "link_label": "hier uitschrijven",
+        "users_page_hint_html": "Als WinProx-gebruiker kun je ook via <a href=\":url\">Instellingen</a> je e-mailvoorkeuren aanpassen.",
+        "users_page_hint_text": "Als WinProx-gebruiker kun je ook via Instellingen (:url) je e-mailvoorkeuren aanpassen."
+    }
+}

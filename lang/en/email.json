@@ -1,0 +1,10 @@
+{
+    "unsubscribed": {
+        "title": "Unsubscribed",
+        "heading": "Successfully unsubscribed",
+        "message": ":email is now unsubscribed from all WinProx emails.",
+        "user_hint": "As a WinProx user, you can adjust your email preferences later via your settings.",
+        "settings_link": "Go to Settings",
+        "back_home": "Back to home"
+    }
+}

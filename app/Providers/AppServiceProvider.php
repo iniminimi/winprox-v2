@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Contracts\WebhookEvent;
+use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
+use App\Listeners\BlockUnsubscribedEmailRecipients;
 use App\Listeners\DispatchWebhooksForDomainEvent;
 use App\Listeners\RecordAuditLogForDomainEvent;
 use App\Support\JsonTranslationLoader;
+use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,5 +32,8 @@ class AppServiceProvider extends ServiceProvider
     {
         Event::listen(WebhookEvent::class, DispatchWebhooksForDomainEvent::class);
         Event::listen(WebhookEvent::class, RecordAuditLogForDomainEvent::class);
+
+        Event::listen(MessageSending::class, BlockUnsubscribedEmailRecipients::class);
+        Event::listen(MessageSending::class, AppendEmailUnsubscribeFooterToMessage::class);
     }
 }

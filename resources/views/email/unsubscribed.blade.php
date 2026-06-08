@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ __('email.unsubscribed.title') }}</title>
+    @vite(['resources/css/app.css'])
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8 text-center">
+        <div class="mb-6">
+            <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1 class="text-2xl font-bold text-gray-900 mb-4">
+            {{ __('email.unsubscribed.heading') }}
+        </h1>
+
+        <p class="text-gray-600 mb-6">
+            {{ __('email.unsubscribed.message', ['email' => $email]) }}
+        </p>
+
+        @if($hasUser)
+            <div class="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
+                <p class="text-sm text-blue-700">
+                    {{ __('email.unsubscribed.user_hint') }}
+                </p>
+                <a href="{{ route('settings.index') }}" class="mt-2 inline-block text-blue-600 hover:text-blue-800 font-medium">
+                    {{ __('email.unsubscribed.settings_link') }}
+                </a>
+            </div>
+        @endif
+
+        <a href="{{ route('welcome') }}" class="btn btn--primary">
+            {{ __('email.unsubscribed.back_home') }}
+        </a>
+    </div>
+</body>
+</html>

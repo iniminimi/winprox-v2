@@ -1,0 +1,27 @@
+{
+    "welcome": {
+        "subject": "Bienvenue chez :tenant - Définissez votre mot de passe",
+        "html_title": "Bienvenue sur WinProx",
+        "heading": "Bienvenue sur WinProx !",
+        "greeting": "Bonjour !",
+        "greeting_name": "Bonjour :name !",
+        "intro": "Vous êtes invité à rejoindre :tenant au sein de WinProx.",
+        "account_details": "Vos informations de compte :\n- E-mail : :email\n- Rôle : :role",
+        "admin_contact": "Contactez :name (:email) si vous avez des questions.",
+        "reset_hint": "Définissez votre mot de passe dans les :minutes minutes via le bouton ci-dessous.",
+        "set_password": "Définir le mot de passe",
+        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
+        "open_platform": "Ouvrir la plateforme",
+        "security_note": "Ce lien expire pour des raisons de sécurité. Si le lien a expiré, vous pouvez demander une nouvelle réinitialisation via 'Mot de passe oublié'.",
+        "powered_by": "Avec WinProx, vous gérez des bâtiments, des lieux et des tâches en un seul endroit central.",
+        "role_admin": "Administrateur",
+        "role_employee": "Employé"
+    },
+    "unsubscribe": {
+        "html_intro": "Vous recevez cet e-mail car vous êtes lié à un compte WinProx. Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous",
+        "text_intro": "Vous recevez cet e-mail car vous êtes lié à un compte WinProx. Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous désabonner ici :",
+        "link_label": "désabonner ici",
+        "users_page_hint_html": "En tant qu'utilisateur WinProx, vous pouvez également ajuster vos préférences e-mail via <a href=\":url\">Paramètres</a>.",
+        "users_page_hint_text": "En tant qu'utilisateur WinProx, vous pouvez également ajuster vos préférences e-mail via Paramètres (:url)."
+    }
+}

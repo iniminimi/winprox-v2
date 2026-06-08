@@ -1,0 +1,10 @@
+{
+    "unsubscribed": {
+        "title": "Uitgeschreven",
+        "heading": "Succesvol uitgeschreven",
+        "message": ":email is nu uitgeschreven van alle WinProx e-mails.",
+        "user_hint": "Als WinProx-gebruiker kun je je e-mailvoorkeuren later weer aanpassen via je instellingen.",
+        "settings_link": "Ga naar Instellingen",
+        "back_home": "Terug naar home"
+    }
+}

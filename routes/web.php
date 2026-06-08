@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiDocumentationController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
+use App\Http\Controllers\EmailUnsubscribeController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\UiThemeController;
@@ -68,6 +69,10 @@ Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 
 Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
+
+Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirm'])
+    ->middleware('signed')
+    ->name('email.unsubscribe');
 
 Route::get('/contact', Contact::class)->name('contact.index');
 

@@ -1,0 +1,27 @@
+{
+    "welcome": {
+        "subject": "Welcome to :tenant - Set your password",
+        "html_title": "Welcome to WinProx",
+        "heading": "Welcome to WinProx!",
+        "greeting": "Hello!",
+        "greeting_name": "Hello :name!",
+        "intro": "You've been invited to join :tenant within WinProx.",
+        "account_details": "Your account details:\n- Email: :email\n- Role: :role",
+        "admin_contact": "Contact :name (:email) if you have any questions.",
+        "reset_hint": "Set your password within :minutes minutes using the button below.",
+        "set_password": "Set password",
+        "link_fallback": "If the button doesn't work, copy this link:",
+        "open_platform": "Open platform",
+        "security_note": "This link expires for security reasons. If the link has expired, you can request a new reset via 'Forgot password'.",
+        "powered_by": "With WinProx you manage buildings, locations and tasks in one central place.",
+        "role_admin": "Administrator",
+        "role_employee": "Employee"
+    },
+    "unsubscribe": {
+        "html_intro": "You're receiving this email because you're linked to a WinProx account. If you no longer wish to receive emails, you can",
+        "text_intro": "You're receiving this email because you're linked to a WinProx account. If you no longer wish to receive emails, you can unsubscribe here:",
+        "link_label": "unsubscribe here",
+        "users_page_hint_html": "As a WinProx user, you can also adjust your email preferences via <a href=\":url\">Settings</a>.",
+        "users_page_hint_text": "As a WinProx user, you can also adjust your email preferences via Settings (:url)."
+    }
+}
