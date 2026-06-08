@@ -177,11 +177,11 @@
             "actions": [
                 {
                     "label": "Add unit",
-                    "text": "Add an asset/space with QR token and default team."
+                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in."
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Create multiple units at once (floors × rooms) and link them to a team."
+                    "text": "Quickly create dozens of units (such as rooms, floors or consecutive assets) at once within a logical numbering range. Number of ranges: specify how many ranges (e.g. floors or zones) you want to generate at once. Units per range: determine the number of specific units (e.g. rooms or devices) to be created per range. Numbering: Choose the numbering structure (e.g. steps of 10 such as 01, 11, 21 or continuous). The dynamic preview box at the bottom immediately shows how the units will be named. Optional prefix: Add fixed text before the number (e.g. ROOM- or ZONE-) so units are immediately recognizable (e.g. ROOM-01). Category: Link the newly generated range directly to a specific category (e.g. Sanitary or Office) to organize the units correctly right away."
                 },
                 {
                     "label": "Download QR sticker sheet",

@@ -177,11 +177,11 @@
             "actions": [
                 {
                     "label": "Unit hinzufügen",
-                    "text": "Fügen Sie ein Asset/Raum mit QR-Token und Standardteam hinzu."
+                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist."
                 },
                 {
                     "label": "Bulk-Units",
-                    "text": "Erstellen Sie mehrere Units gleichzeitig (Etagen × Räume) und verknüpfen Sie sie mit einem Team."
+                    "text": "Erstellen Sie schnell Dutzende Units (wie Zimmer, Etagen oder aufeinanderfolgende Assets) gleichzeitig innerhalb einer logischen Nummerierungsreihe. Anzahl Reihen: geben Sie an, wie viele Reihen (z.B. Etagen oder Zonen) Sie auf einmal generieren möchten. Units pro Reihe: bestimmen Sie die Anzahl spezifischer Einheiten (z.B. Zimmer oder Geräte), die pro Reihe erstellt werden sollen. Nummerierung: Wählen Sie die Struktur der Nummerierung (z.B. Schritte von 10 wie 01, 11, 21 oder fortlaufend). Das dynamische Vorschauvorschau unten zeigt sofort, wie die Units benannt werden. Optionales Präfix: Fügen Sie festen Text vor der Nummer hinzu (z.B. ZIMMER- oder ZONE-), damit Units sofort erkennbar sind (z.B. ZIMMER-01). Kategorie: Verknüpfen Sie die neu generierte Reihe direkt mit einer bestimmten Kategorie (z.B. Sanitär oder Büro), um die Units sofort richtig zu organisieren."
                 },
                 {
                     "label": "QR-Aufkleberblatt herunterladen",
