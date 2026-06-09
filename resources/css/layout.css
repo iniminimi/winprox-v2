@@ -919,31 +919,16 @@
 /* ---------------------------------------------------------------------------
  | Veld-/publieke schermen — MOBIEL-FIRST (§6.5).
  * ------------------------------------------------------------------------- */
-.wp-public-body {
-    background-image: var(--wp-portal-bg, none);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.wp-has-portal-bg .wp-portal-head,
-.wp-has-portal-bg .wp-card,
-.wp-has-portal-bg .wp-portal-actions {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-}
-
-.wp-has-portal-bg .wp-portal-actions {
-    backdrop-filter: none;
-}
-
 .wp-portal {
     width: 100%;
     max-width: 32rem;
     margin-inline: auto;
     padding: 1rem;
     padding-bottom: 6rem;
+    background-image: var(--wp-portal-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .wp-portal-head {
