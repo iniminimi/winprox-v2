@@ -187,32 +187,9 @@
                     </div>
 
                     <div class="wp-stack" style="--wp-stack-gap: 0.75rem;">
-                        @if(count($tenants) > 0)
-                            <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
-                                <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_tenant') }}</label>
-                                <select wire:model="newMessageTenantId" class="wp-input" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem; background-color: white;">
-                                    <option value="">{{ __('contact-messages.select_tenant') }}</option>
-                                    @foreach($tenants as $tenantOption)
-                                        <option value="{{ $tenantOption->id }}">{{ $tenantOption->name }}</option>
-                                    @endforeach
-                                </select>
-                                @if($errors->has('newMessageTenantId'))
-                                    <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newMessageTenantId') }}</span>
-                                @endif
-                            </div>
-                        @endif
-
                         <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
-                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_recipient_name') }}</label>
-                            <input type="text" wire:model="newName" class="wp-input" placeholder="{{ __('contact-messages.placeholder_name') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
-                            @if($errors->has('newName'))
-                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newName') }}</span>
-                            @endif
-                        </div>
-
-                        <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
-                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_recipient_email') }}</label>
-                            <input type="email" wire:model="newEmail" class="wp-input" placeholder="{{ __('contact-messages.placeholder_email') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_email') }}</label>
+                            <input type="email" wire:model="newEmail" class="wp-input" placeholder="naam@domein.com" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
                             @if($errors->has('newEmail'))
                                 <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newEmail') }}</span>
                             @endif
@@ -220,7 +197,7 @@
 
                         <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
                             <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_subject') }}</label>
-                            <input type="text" wire:model="newSubject" class="wp-input" placeholder="{{ __('contact-messages.placeholder_subject') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+                            <input type="text" wire:model="newSubject" class="wp-input" placeholder="Onderwerp van de e-mail" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
                             @if($errors->has('newSubject'))
                                 <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newSubject') }}</span>
                             @endif
@@ -228,7 +205,7 @@
 
                         <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
                             <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_message') }}</label>
-                            <textarea wire:model="newMessageBody" rows="8" class="wp-input" placeholder="{{ __('contact-messages.placeholder_message') }}" style="width: 100%; resize: vertical; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;"></textarea>
+                            <textarea wire:model="newMessageBody" rows="10" class="wp-input" placeholder="Typ hier uw bericht..." style="width: 100%; resize: vertical; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;"></textarea>
                             @if($errors->has('newMessageBody'))
                                 <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newMessageBody') }}</span>
                             @endif

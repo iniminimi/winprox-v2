@@ -37,16 +37,9 @@
     "bulk_deleted_success": ":count bericht(en) succesvol verwijderd.",
     "new_message_sent_success": "Bericht succesvol verzonden.",
     "compose_title": "Nieuw bericht opstellen",
-    "label_tenant": "Tenant",
-    "select_tenant": "Selecteer een tenant",
-    "label_recipient_name": "Naam ontvanger",
-    "label_recipient_email": "E-mailadres",
+    "label_email": "E-mailadres",
     "label_subject": "Onderwerp",
     "label_message": "Bericht",
-    "placeholder_name": "Naam van de ontvanger",
-    "placeholder_email": "email@voorbeeld.com",
-    "placeholder_subject": "Onderwerp van het bericht",
-    "placeholder_message": "Typ hier uw bericht...",
     "empty_title": "Geen bericht geselecteerde",
     "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden."
 }

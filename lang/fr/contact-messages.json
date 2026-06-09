@@ -37,16 +37,9 @@
     "bulk_deleted_success": ":count message(s) supprimé(s) avec succès.",
     "new_message_sent_success": "Message envoyé avec succès.",
     "compose_title": "Rédiger un nouveau message",
-    "label_tenant": "Tenant",
-    "select_tenant": "Sélectionnez un tenant",
-    "label_recipient_name": "Nom du destinataire",
-    "label_recipient_email": "Adresse e-mail",
+    "label_email": "Adresse e-mail",
     "label_subject": "Sujet",
     "label_message": "Message",
-    "placeholder_name": "Nom du destinataire",
-    "placeholder_email": "email@exemple.com",
-    "placeholder_subject": "Sujet du message",
-    "placeholder_message": "Tapez votre message ici...",
     "empty_title": "Aucun message sélectionné",
     "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement."
 }

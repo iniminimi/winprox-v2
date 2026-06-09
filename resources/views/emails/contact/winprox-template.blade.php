@@ -93,7 +93,9 @@
             </div>
             <div class="accent-line"></div>
             <div class="body">
-                <p>Beste {{ $recipientName }},</p>
+                @if($recipientName)
+                    <p>Beste {{ $recipientName }},</p>
+                @endif
                 {!! nl2br(e($bodyText)) !!}
             </div>
             <div class="footer">

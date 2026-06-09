@@ -7,7 +7,6 @@ use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Actions\Contact\SendNewOutboundMessageAction;
 use App\Models\ContactMessage;
-use App\Models\Tenant;
 use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -28,13 +27,11 @@ class ContactMessages extends Component
     public $unreadCount = 0;
     public $selectedMessageIds = [];
 
-    // Compose new message properties
+    // Compose new message properties (SuperUser email client)
     public $isComposing = false;
     public $newEmail = '';
-    public $newName = '';
     public $newSubject = '';
     public $newMessageBody = '';
-    public $newMessageTenantId = null;
 
     protected $paginationTheme = 'tailwind';
 
@@ -56,15 +53,8 @@ class ContactMessages extends Component
         
         $this->unreadCount = $action->getUnreadCount($tenantId);
 
-        // Load tenants for SuperUser compose form
-        $tenants = [];
-        if ($this->isComposing) {
-            $tenants = Tenant::orderBy('name')->get(['id', 'name']);
-        }
-
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-            'tenants' => $tenants,
         ]);
     }
 
@@ -156,12 +146,8 @@ class ContactMessages extends Component
         $this->isComposing = true;
         $this->selectedMessage = null;
         $this->newEmail = '';
-        $this->newName = '';
         $this->newSubject = '';
         $this->newMessageBody = '';
-
-        // SuperUsers need to select a tenant
-        $this->newMessageTenantId = null;
 
         $this->resetErrorBag();
     }
@@ -175,29 +161,22 @@ class ContactMessages extends Component
 
         $this->validate([
             'newEmail' => 'required|email',
-            'newName' => 'required|string|max:255',
-            'newSubject' => 'required|string|max:255',
-            'newMessageBody' => 'required|string|min:1',
-            'newMessageTenantId' => 'required|integer|exists:tenants,id',
+            'newSubject' => 'required|string|min:3',
+            'newMessageBody' => 'required|string|min:5',
         ]);
 
         try {
-            $tenantId = (int) $this->newMessageTenantId;
-
             $action = app(SendNewOutboundMessageAction::class);
             $action->handle(
                 recipientEmail: $this->newEmail,
-                recipientName: $this->newName,
                 subject: $this->newSubject,
                 body: $this->newMessageBody,
-                tenantId: $tenantId,
                 actorUserId: auth()->id(),
             );
 
             // Reset form and show success
             $this->isComposing = false;
             $this->newEmail = '';
-            $this->newName = '';
             $this->newSubject = '';
             $this->newMessageBody = '';
 
