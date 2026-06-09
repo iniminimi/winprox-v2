@@ -6,7 +6,7 @@ use App\Models\ContactMessage;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use App\Contracts\WebhookEvent;
+use App\Events\Contact\ContactReplySent;
 use Symfony\Component\Mime\Header\IdentificationHeader;
 
 class SendContactReplyAction
@@ -53,17 +53,7 @@ class SendContactReplyAction
         }
 
         // Dispatch webhook event
-        WebhookEvent::dispatch([
-            'event_type' => 'contact_reply_sent',
-            'data' => [
-                'original_message_id' => $originalMessage->id,
-                'reply_message_id' => $outboundMessage->id,
-                'recipient_email' => $originalMessage->email,
-                'tenant_id' => $tenantId,
-                'actor_user_id' => $actorUserId,
-            ],
-            'created_at' => now(),
-        ]);
+        ContactReplySent::dispatch($originalMessage, $outboundMessage, $actorUserId);
 
         return $outboundMessage;
     }
