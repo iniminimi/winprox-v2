@@ -4,6 +4,7 @@ namespace App\Actions\Contact;
 
 use App\Mail\Contact\NewOutboundMessageMail;
 use App\Models\ContactMessage;
+use App\Models\EmailUnsubscribe;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -21,6 +22,12 @@ class SendNewOutboundMessageAction
         ?int $actorUserId = null,
         string $recipientName = '',
     ): ContactMessage {
+        $normalizedEmail = EmailUnsubscribe::normalizeEmail($recipientEmail);
+
+        if (EmailUnsubscribe::isUnsubscribed($normalizedEmail)) {
+            throw new \RuntimeException(__('contact-messages.recipient_unsubscribed'));
+        }
+
         // Generate unique Message-ID
         $messageId = Str::uuid() . '@winprox.app';
 

@@ -37,6 +37,7 @@
     "confirm_delete": "Sind Sie sicher, dass Sie die ausgewählten Nachrichten löschen möchten?",
     "bulk_deleted_success": ":count Nachricht(en) erfolgreich gelöscht.",
     "new_message_sent_success": "Nachricht erfolgreich gesendet.",
+    "recipient_unsubscribed": "Dieser Benutzer hat sich von E-Mails abgemeldet.",
     "compose_title": "Neue Nachricht verfassen",
     "label_email": "E-Mail-Adresse",
     "label_subject": "Betreff",

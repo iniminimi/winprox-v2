@@ -37,6 +37,7 @@
     "confirm_delete": "Weet u zeker dat u de geselecteerde berichten wilt verwijderen?",
     "bulk_deleted_success": ":count bericht(en) succesvol verwijderd.",
     "new_message_sent_success": "Bericht succesvol verzonden.",
+    "recipient_unsubscribed": "Deze gebruiker heeft zich uitgeschreven van e-mails.",
     "compose_title": "Nieuw bericht opstellen",
     "label_email": "E-mailadres",
     "label_subject": "Onderwerp",

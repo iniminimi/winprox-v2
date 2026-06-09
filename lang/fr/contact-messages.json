@@ -37,6 +37,7 @@
     "confirm_delete": "Êtes-vous sûr de vouloir supprimer les messages sélectionnés ?",
     "bulk_deleted_success": ":count message(s) supprimé(s) avec succès.",
     "new_message_sent_success": "Message envoyé avec succès.",
+    "recipient_unsubscribed": "Cet utilisateur s'est désabonné des e-mails.",
     "compose_title": "Rédiger un nouveau message",
     "label_email": "Adresse e-mail",
     "label_subject": "Sujet",
