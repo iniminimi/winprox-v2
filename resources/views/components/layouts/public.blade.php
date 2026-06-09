@@ -20,7 +20,9 @@
 @endphp
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       data-theme="{{ $portalTheme }}"
-      @if ($applyTenantCustomTheme) style="{{ $tenantCustomThemeVars }}" @endif
+      @if ($applyTenantCustomTheme || $portalBgUrl)
+          style="{{ $tenantCustomThemeVars }}{{ $portalBgUrl ? ' --wp-portal-bg: url(\'' . $portalBgUrl . '?v=' . now()->timestamp . '\');' : '' }}"
+      @endif
       x-data="{ tenantCustomTheme: @js($tenantCustomThemeVars !== '' ? $tenantCustomThemeVars : null) }"
       x-on:ui-theme-changed.window="
         document.documentElement.dataset.theme = $event.detail.theme;
@@ -38,8 +40,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
-      @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}?v={{ now()->timestamp }}');" @endif>
+<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
     <main class="wp-portal">
         {{ $slot }}
         
