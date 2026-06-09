@@ -68,7 +68,7 @@ class SendContactReplyAction
         $mail = new ContactReplyMail(
             subjectText: 'Re: ' . $originalMessage->subject,
             bodyText: $reply,
-            recipientName: $originalMessage->name ?? '',
+            recipientName: '',
             tenant: null,
             messageId: $messageId,
             inReplyTo: $originalMessageId,
