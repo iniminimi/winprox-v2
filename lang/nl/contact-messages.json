@@ -17,6 +17,7 @@
     "reply_placeholder": "Typ hier uw professionele reactie...",
     "send_reply": "Antwoord Verzenden",
     "validation_required": "Dit veld is verplicht.",
+    "validation_min_string": "Dit veld moet minimaal :min tekens bevatten.",
     "failed_to_send": "Verzenden mislukt",
     "reply_sent_success": "Antwoord succesvol verstuurd.",
     "badge_new": "Nieuw",

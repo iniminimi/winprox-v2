@@ -17,6 +17,7 @@
     "reply_placeholder": "Geben Sie hier Ihre professionelle Antwort ein...",
     "send_reply": "Antwort senden",
     "validation_required": "Dieses Feld ist erforderlich.",
+    "validation_min_string": "Dieses Feld muss mindestens :min Zeichen enthalten.",
     "failed_to_send": "Senden fehlgeschlagen",
     "reply_sent_success": "Antwort erfolgreich gesendet.",
     "badge_new": "Neu",
