@@ -6,6 +6,7 @@ use App\Actions\Contact\GetContactMessagesAction;
 use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Models\ContactMessage;
+use App\Support\Tenancy;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -33,10 +34,10 @@ class ContactMessages extends Component
     public function render()
     {
         $action = new GetContactMessagesAction();
-        $messages = $action->handle($this->filter, 20, tenant()->id);
+        $messages = $action->handle($this->filter, 20, Tenancy::id());
         
         // Update unread count
-        $this->unreadCount = $action->getUnreadCount(tenant()->id);
+        $this->unreadCount = $action->getUnreadCount(Tenancy::id());
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
@@ -51,11 +52,11 @@ class ContactMessages extends Component
         // Mark as read if inbound and unread
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
             $action = new MarkContactMessageAsReadAction();
-            $action->handle($this->selectedMessage, tenant()->id);
+            $action->handle($this->selectedMessage, Tenancy::id());
             
             // Refresh unread count
             $getAction = new GetContactMessagesAction();
-            $this->unreadCount = $getAction->getUnreadCount(tenant()->id);
+            $this->unreadCount = $getAction->getUnreadCount(Tenancy::id());
         }
 
         $this->dispatch('message-selected');
@@ -90,7 +91,7 @@ class ContactMessages extends Component
             $action->handle(
                 $this->reply,
                 $this->selectedMessage,
-                tenant()->id,
+                Tenancy::id(),
                 auth()->id()
             );
 
