@@ -8,7 +8,9 @@ use App\Listeners\BlockUnsubscribedEmailRecipients;
 use App\Listeners\DispatchWebhooksForDomainEvent;
 use App\Listeners\RecordAuditLogForDomainEvent;
 use App\Models\ContactMessage;
+use App\Models\User;
 use App\Policies\ContactMessagePolicy;
+use App\Policies\UserPolicy;
 use App\Support\JsonTranslationLoader;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Support\Facades\Event;
@@ -34,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(ContactMessage::class, ContactMessagePolicy::class);
+        Gate::policy(User::class, UserPolicy::class);
 
         Event::listen(WebhookEvent::class, DispatchWebhooksForDomainEvent::class);
         Event::listen(WebhookEvent::class, RecordAuditLogForDomainEvent::class);

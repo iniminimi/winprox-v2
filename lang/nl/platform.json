@@ -82,5 +82,10 @@
         "restore": "Herstellen",
         "confirm_restore": "Weet je zeker dat je dit e-mailadres wilt herstellen?",
         "restored": ":email is hersteld en ontvangt weer e-mails."
+    },
+    "promo_qr": {
+        "title": "Promotionele QR-code",
+        "description": "Genereer een hoge-resolutie QR-code (3000×3000 px) voor bedrukking op voetbalshirts.",
+        "download": "Download promotie-QR"
     }
 }

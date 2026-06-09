@@ -8,6 +8,7 @@ use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\PromoQrDownloadController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
@@ -115,6 +116,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/contact-messages', ContactMessages::class)
         ->middleware('superuser')
         ->name('platform.contact-messages');
+
+    Route::get('/platform/promo-qr/download', PromoQrDownloadController::class)
+        ->middleware('superuser')
+        ->name('platform.promo-qr.download');
 
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');

@@ -82,5 +82,10 @@
         "restore": "Restaurer",
         "confirm_restore": "Êtes-vous sûr de vouloir restaurer cette adresse e-mail ?",
         "restored": ":email a été restauré et recevra à nouveau des e-mails."
+    },
+    "promo_qr": {
+        "title": "QR code promotionnel",
+        "description": "Générer un QR code haute résolution (3000×3000 px) pour impression sur maillots de football.",
+        "download": "Télécharger le QR promo"
     }
 }

@@ -82,5 +82,10 @@
         "restore": "Restore",
         "confirm_restore": "Are you sure you want to restore this email address?",
         "restored": ":email has been restored and will receive emails again."
+    },
+    "promo_qr": {
+        "title": "Promotional QR Code",
+        "description": "Generate a high-resolution QR code (3000×3000 px) for printing on football shirts.",
+        "download": "Download promo QR"
     }
 }

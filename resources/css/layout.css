@@ -925,6 +925,7 @@
     margin-inline: auto;
     padding: 1rem;
     padding-bottom: 6rem;
+    background-color: transparent;
     background-image: var(--wp-portal-bg, none);
     background-size: cover;
     background-position: center;

@@ -40,7 +40,7 @@
 </head>
 <body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
     <main class="wp-portal"
-          @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}');" @endif>
+          @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}?v={{ now()->timestamp }}');" @endif>
         {{ $slot }}
         
         <div class="wp-portal-footer">
