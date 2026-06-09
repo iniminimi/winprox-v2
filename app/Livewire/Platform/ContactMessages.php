@@ -111,4 +111,10 @@ class ContactMessages extends Component
     {
         return ContactMessage::inbound()->unread()->count();
     }
+
+    public function hydrate()
+    {
+        // Refresh unread count when component hydrates
+        $this->unreadCount;
+    }
 }
