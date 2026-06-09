@@ -1,7 +1,7 @@
-<div class="wp-stack" style="--wp-stack-gap: 1rem;">
+<div class="wp-stack" style="--wp-stack-gap: 1.25rem;">
     <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
         <div class="wp-stack" style="--wp-stack-gap: 0.125rem;">
-            <h1 class="wp-section-title" style="margin: 0; font-size: 1.5rem;">{{ __('contact-messages.title') }}</h1>
+            <h1 class="wp-section-title" style="margin: 0; font-size: 1.4rem;">{{ __('contact-messages.title') }}</h1>
             <p class="wp-text-sm wp-muted" style="margin: 0;">{{ __('contact-messages.subtitle') }}</p>
         </div>
 
@@ -24,29 +24,33 @@
         </div>
     </div>
 
-    <div class="wp-row" style="display: flex; flex-direction: row; gap: 0.75rem; align-items: start; width: 100%;">
+    <div class="wp-row" style="display: flex; flex-direction: row; gap: 1.25rem; align-items: start; width: 100%;">
         
-        <div style="flex: 0 0 38%; width: 38%; max-height: calc(100vh - 10rem); overflow-y: auto; padding-right: 0.25rem;">
+        <div class="wp-stack" style="flex: 0 0 38%; width: 38%; --wp-stack-gap: 0.25rem; max-h: calc(100vh - 12rem); overflow-y: auto; padding-right: 0.25rem; margin-top: 0;">
             @forelse($messages as $message)
                 <div wire:click="selectMessage({{ $message->id }})" 
                     class="wp-card wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
-                    style="cursor: pointer; display: block; padding: 0.6rem 0.75rem; border-radius: var(--wp-radius, 6px); transition: all 0.15s ease; border: 1px solid rgba(0,0,0,0.04); margin-bottom: 0.35rem; {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent);' : '' }}">
+                    style="cursor: pointer; display: block; padding: 0.4rem 0.6rem; border-radius: var(--wp-radius, 6px); transition: all 0.15s ease; border: 1px solid rgba(0,0,0,0.04); {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent); font-weight: 600;' : '' }}">
                     
-                    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
-                        @if($message->direction === 'inbound')
-                            <span class="wp-pill {{ !$message->read_at ? 'wp-pill--new' : 'wp-pill--progress' }}" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">In</span>
-                        @else
-                            <span class="wp-pill wp-pill--closed" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">Out</span>
-                        @endif
-                        <span class="wp-text-sm wp-muted" style="font-size: 0.75rem;">{{ $message->created_at->format('d-m H:i') }}</span>
-                    </div>
-                    
-                    <div class="wp-text-body" style="font-weight: {{ $message->direction === 'inbound' && !$message->read_at ? '600' : '500' }}; font-size: 0.875rem; line-height: 1.25; color: #1e293b; margin-bottom: 0.1rem;">
-                        {{ Str::limit($message->subject, 45) }}
-                    </div>
-                    
-                    <div class="wp-text-sm wp-muted truncate" style="font-size: 0.75rem; color: #64748b;">
-                        {{ $message->name ?? $message->user?->name }}
+                    <div class="wp-stack" style="--wp-stack-gap: 0.15rem;">
+                        <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
+                            <div style="display: flex; align-items: center;">
+                                @if($message->direction === 'inbound')
+                                    <span class="wp-pill {{ !$message->read_at ? 'wp-pill--new' : 'wp-pill--progress' }}" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">In</span>
+                                @else
+                                    <span class="wp-pill wp-pill--closed" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">Out</span>
+                                @endif
+                            </div>
+                            <span class="wp-text-sm wp-muted" style="font-size: 0.75rem;">{{ $message->created_at->format('d-m H:i') }}</span>
+                        </div>
+                        
+                        <div class="wp-text-body" style="font-weight: 600; font-size: 0.85rem; line-height: 1.25; color: #1e293b; margin: 0;">
+                            {{ Str::limit($message->subject, 45) }}
+                        </div>
+                        
+                        <div class="wp-text-sm wp-muted truncate" style="font-size: 0.75rem; color: #64748b; margin: 0;">
+                            {{ $message->name ?? $message->user?->name }}
+                        </div>
                     </div>
 
                 </div>
@@ -65,12 +69,12 @@
 
         <div style="flex: 0 0 62%; width: 62%;">
             @if($selectedMessage)
-                <div class="wp-card wp-card-pad wp-stack" style="--wp-stack-gap: 1.25rem; border-radius: var(--wp-radius, 12px); padding: 1.25rem;">
+                <div class="wp-card wp-card-pad wp-stack" style="--wp-stack-gap: 1rem; border-radius: var(--wp-radius, 12px); padding: 1.25rem;">
                     
-                    <div class="wp-stack" style="--wp-stack-gap: 0.5rem; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 1rem; width: 100%;">
+                    <div class="wp-stack" style="--wp-stack-gap: 0.375rem; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 0.75rem; width: 100%;">
                         <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: start; width: 100%;">
-                            <h2 class="wp-section-title" style="margin: 0; font-size: 1.25rem;">{{ $selectedMessage->subject }}</h2>
-                            <span class="wp-text-sm wp-muted" style="font-size: 0.8rem; background: rgba(0,0,0,0.03); padding: 0.15rem 0.4rem; border-radius: 4px;">{{ $selectedMessage->created_at->format('d-m-Y H:i') }}</span>
+                            <h2 class="wp-section-title" style="margin: 0; font-size: 1.2rem;">{{ $selectedMessage->subject }}</h2>
+                            <span class="wp-text-sm wp-muted" style="font-size: 0.75rem; background: rgba(0,0,0,0.03); padding: 0.15rem 0.4rem; border-radius: 4px;">{{ $selectedMessage->created_at->format('d-m-Y H:i') }}</span>
                         </div>
                         
                         <div class="wp-text-sm wp-muted" style="line-height: 1.4; font-size: 0.85rem;">
@@ -81,13 +85,13 @@
                         </div>
                     </div>
 
-                    <div class="wp-text-body" style="white-space: pre-wrap; line-height: 1.5; min-height: 12rem; font-size: 0.9rem; color: #334155;">
+                    <div class="wp-text-body" style="white-space: pre-wrap; line-height: 1.5; min-height: 12rem; font-size: 0.9rem; color: #334155; word-break: break-word; overflow-wrap: anywhere; width: 100%;">
                         {{ $selectedMessage->message }}
                     </div>
 
                     @if($selectedMessage->direction === 'inbound')
-                        <div class="wp-stack" style="--wp-stack-gap: 0.75rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1rem; width: 100%;">
-                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #475569;">
+                        <div class="wp-stack" style="--wp-stack-gap: 0.5rem; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 0.75rem; width: 100%;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; margin: 0;">
                                 {{ __('contact-messages.title_reply') }}
                             </label>
                             
