@@ -2,7 +2,6 @@
     "title": "Contact Messages",
     "subtitle": "Manage incoming questions and platform messages.",
     "unread_count": "unread messages",
-    "filter_all": "All",
     "filter_inbound": "Inbox",
     "filter_outbound": "Sent",
     "no_messages": "No messages found.",

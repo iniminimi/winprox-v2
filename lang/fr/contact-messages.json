@@ -2,7 +2,6 @@
     "title": "Messages de Contact",
     "subtitle": "Gérez les questions entrantes et les messages de la plateforme.",
     "unread_count": "messages non lus",
-    "filter_all": "Tous",
     "filter_inbound": "Boîte de réception",
     "filter_outbound": "Envoyés",
     "no_messages": "Aucun message trouvé.",
