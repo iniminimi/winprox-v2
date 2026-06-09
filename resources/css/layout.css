@@ -935,10 +935,6 @@
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
 
-.wp-portal .wp-card--info {
-    background-color: color-mix(in srgb, var(--wp-info-soft) 85%, transparent);
-}
-
 .wp-portal .wp-tile {
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
