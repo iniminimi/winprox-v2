@@ -33,30 +33,34 @@ class ContactMessages extends Component
 
     public function render()
     {
+        $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
+
         $action = new GetContactMessagesAction();
-        $messages = $action->handle($this->filter, 20, Tenancy::id());
+        $messages = $action->handle($this->filter, 20, $tenantId);
         
         // Update unread count
-        $this->unreadCount = $action->getUnreadCount(Tenancy::id());
+        $this->unreadCount = $action->getUnreadCount($tenantId);
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-        ]);
+        ]); 
     }
 
     public function selectMessage($messageId)
     {
         $this->selectedMessage = ContactMessage::findOrFail($messageId);
         $this->authorize('view', $this->selectedMessage);
+        
+        $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
 
         // Mark as read if inbound and unread
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
             $action = new MarkContactMessageAsReadAction();
-            $action->handle($this->selectedMessage, Tenancy::id());
+            $action->handle($this->selectedMessage, $tenantId);
             
             // Refresh unread count
             $getAction = new GetContactMessagesAction();
-            $this->unreadCount = $getAction->getUnreadCount(Tenancy::id());
+            $this->unreadCount = $getAction->getUnreadCount($tenantId);
         }
 
         $this->dispatch('message-selected');
@@ -87,11 +91,13 @@ class ContactMessages extends Component
         }
 
         try {
+            $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
+            
             $action = new SendContactReplyAction();
             $action->handle(
                 $this->reply,
                 $this->selectedMessage,
-                Tenancy::id(),
+                $tenantId,
                 auth()->id()
             );
 
