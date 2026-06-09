@@ -9,6 +9,7 @@ use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\TenantLogoStorage;
+use App\Support\TenantPortalBackgroundStorage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +50,9 @@ class Settings extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $orgLogo = null;
 
+    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    public $portalBackground = null;
+
     public string $uiTheme = '';
 
     public bool $canManageOrganisation = false;
@@ -88,6 +92,7 @@ class Settings extends Component
     {
         $this->showOrgModal = false;
         $this->reset('orgLogo');
+        $this->reset('portalBackground');
         $this->resetErrorBag();
     }
 
@@ -209,6 +214,44 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
+    public function saveOrganisationPortalBackground(UpdateOrganisationAction $updateOrganisation, TenantPortalBackgroundStorage $backgroundStorage): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            ['portalBackground' => $this->portalBackground],
+            ['portalBackground' => ['nullable', 'image', 'max:4096']],
+        )->validate();
+
+        $payload = [
+            'name' => $tenant->name,
+            'custom_theme_active' => $tenant->custom_theme_active,
+            'custom_theme_bg' => $tenant->custom_theme_bg,
+            'custom_theme_btn' => $tenant->custom_theme_btn,
+        ];
+
+        if ($this->portalBackground instanceof UploadedFile) {
+            $backgroundStorage->delete($tenant->portal_background_path);
+            $payload['portal_background_path'] = $backgroundStorage->store($this->portalBackground, (int) $tenant->id);
+            $this->reset('portalBackground');
+        }
+
+        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
     public function organisationLogoPreviewUrl(): ?string
     {
         if ($this->orgLogo !== null) {
@@ -216,6 +259,15 @@ class Settings extends Component
         }
 
         return $this->resolveTenant()?->fresh()?->logoPublicUrl();
+    }
+
+    public function portalBackgroundPreviewUrl(): ?string
+    {
+        if ($this->portalBackground !== null) {
+            return $this->portalBackground->temporaryUrl();
+        }
+
+        return $this->resolveTenant()?->fresh()?->portalBackgroundPublicUrl();
     }
 
     public function updatedUiTheme(string $value, UpdateUserUiThemeAction $updateUserUiTheme): void
@@ -238,6 +290,7 @@ class Settings extends Component
         return view('livewire.pages.settings', [
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
+            'portalBackgroundUrl' => $this->portalBackgroundPreviewUrl(),
             'organisationTenant' => $tenant instanceof Tenant ? $tenant->fresh() : null,
         ]);
     }

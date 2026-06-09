@@ -32,6 +32,10 @@ class UpdateOrganisationAction
             $updates['logo_path'] = $data['logo_path'];
         }
 
+        if (array_key_exists('portal_background_path', $data)) {
+            $updates['portal_background_path'] = $data['portal_background_path'];
+        }
+
         $tenant->update($updates);
 
         $this->audit->record(
@@ -47,6 +51,7 @@ class UpdateOrganisationAction
                 'city' => $tenant->city,
                 'country_code' => $tenant->country_code,
                 'logo_path' => $tenant->logo_path,
+                'portal_background_path' => $tenant->portal_background_path,
                 'custom_theme_active' => $tenant->custom_theme_active,
                 'custom_theme_bg' => $tenant->custom_theme_bg,
                 'custom_theme_btn' => $tenant->custom_theme_btn,

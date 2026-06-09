@@ -23,6 +23,7 @@ class Tenant extends Model
         'city',
         'country_code',
         'logo_path',
+        'portal_background_path',
         'custom_theme_active',
         'custom_theme_bg',
         'custom_theme_btn',
@@ -506,6 +507,21 @@ class Tenant extends Model
     public function logoPublicUrl(): ?string
     {
         return QrCenterLogo::tenantLogoPublicUrl($this);
+    }
+
+    /** Publieke URL van het portaal-achtergrond, of null. */
+    public function portalBackgroundPublicUrl(): ?string
+    {
+        $path = $this->portal_background_path;
+        if (! is_string($path) || $path === '') {
+            return null;
+        }
+
+        if (! Storage::disk('public')->exists($path)) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($path);
     }
 
     public function organisationAddressLine(): ?string

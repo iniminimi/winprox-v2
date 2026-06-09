@@ -89,6 +89,27 @@
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
             </div>
         </form>
+
+        <form wire:submit="saveOrganisationPortalBackground" class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('settings.org.portal_background_label') }}</h2>
+            <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
+            <div class="wp-field">
+                @if ($portalBackgroundUrl)
+                    <img
+                        src="{{ $portalBackgroundUrl }}"
+                        alt=""
+                        class="wp-portal-bg-preview"
+                        style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
+                        wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+                    >
+                @endif
+                <input type="file" id="portalBackgroundInline" class="wp-input" wire:model="portalBackground" accept="image/*">
+                @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-cluster">
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </div>
+        </form>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack-tight">
