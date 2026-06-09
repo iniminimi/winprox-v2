@@ -43,7 +43,7 @@
     <main class="wp-portal">
         {{ $slot }}
         
-        <div style="text-align: center; padding: 2rem 1rem 1rem;">
+        <div class="wp-portal-footer">
             <span class="wp-chip">Powered by WinProx.app</span>
         </div>
     </main>

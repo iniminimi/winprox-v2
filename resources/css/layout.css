@@ -960,3 +960,8 @@
     height: auto;
     padding-block: 0.75rem;
 }
+
+.wp-portal-footer {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+}
