@@ -25,6 +25,7 @@
     "title_reply": "Compose Reply",
     "placeholder_reply": "Type your professional response here...",
     "button_send": "Send",
+    "button_sending": "Sending...",
     "empty_title": "No message selected",
     "empty_body": "Select a message from the left column to view the full content and reply directly."
 }

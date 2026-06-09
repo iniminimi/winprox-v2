@@ -25,6 +25,7 @@
     "title_reply": "Antwoord opstellen",
     "placeholder_reply": "Typ hier uw professionele reactie...",
     "button_send": "Verzenden",
+    "button_sending": "Verzenden...",
     "empty_title": "Geen bericht geselecteerd",
     "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden."
 }

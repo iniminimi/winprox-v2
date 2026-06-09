@@ -25,6 +25,7 @@
     "title_reply": "Rédiger une réponse",
     "placeholder_reply": "Tapez votre réponse professionnelle ici...",
     "button_send": "Envoyer",
+    "button_sending": "Envoi en cours...",
     "empty_title": "Aucun message sélectionné",
     "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement."
 }

@@ -25,6 +25,7 @@
     "title_reply": "Antwort verfassen",
     "placeholder_reply": "Geben Sie hier Ihre professionelle Antwort ein...",
     "button_send": "Senden",
+    "button_sending": "Wird gesendet...",
     "empty_title": "Keine Nachricht ausgewählt",
     "empty_body": "Wählen Sie eine Nachricht aus der linken Spalte, um den vollständigen Inhalt anzuzeigen und direkt zu antworten."
 }
