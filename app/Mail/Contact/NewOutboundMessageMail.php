@@ -13,7 +13,7 @@ class NewOutboundMessageMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public string $locale;
+    public string $mailLocale;
 
     public function __construct(
         public string $subjectText,
@@ -21,7 +21,7 @@ class NewOutboundMessageMail extends Mailable
         public string $recipientName,
         public ?Tenant $tenant = null,
     ) {
-        $this->locale = $this->tenant?->locale ?? app()->getLocale();
+        $this->mailLocale = $this->tenant?->locale ?? app()->getLocale();
     }
 
     public function envelope(): Envelope
@@ -40,6 +40,6 @@ class NewOutboundMessageMail extends Mailable
                 'recipientName' => $this->recipientName,
                 'tenantName' => $this->tenant?->name ?? config('app.name'),
             ],
-        ))->locale($this->locale);
+        ))->locale($this->mailLocale);
     }
 }
