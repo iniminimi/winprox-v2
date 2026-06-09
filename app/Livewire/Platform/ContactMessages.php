@@ -106,12 +106,12 @@ class ContactMessages extends Component
                 auth()->id()
             );
 
+            // Clear state and show success
+            $this->reply = '';
+            $this->selectedMessage = null;
             $this->closeReplyModal();
             $this->dispatch('reply-sent');
             session()->flash('success', __('contact-messages.reply_sent_success'));
-            
-            // Ververs het geselecteerde bericht en herlaad de lijst
-            $this->selectedMessage = ContactMessage::findOrFail($this->selectedMessage->id);
             $this->resetPage();
 
         } catch (\Exception $e) {
