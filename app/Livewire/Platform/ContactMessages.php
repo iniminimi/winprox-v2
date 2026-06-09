@@ -21,7 +21,7 @@ class ContactMessages extends Component
 
     public $selectedMessage = null;
     public $reply = '';
-    public $filter = 'all'; // all, inbound, outbound
+    public $filter = 'inbound'; // inbound, outbound
     public $showReplyModal = false;
     public $unreadCount = 0;
 

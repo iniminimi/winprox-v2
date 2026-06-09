@@ -6,18 +6,14 @@
         </div>
 
         <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; gap: 0.375rem; align-items: center;">
-            <button wire:click="setFilter('all')" 
-                class="btn {{ $filter === 'all' ? 'btn--primary' : 'btn--ghost' }} btn--sm">
-                {{ __('contact-messages.filter_all') }}
-            </button>
-            <button wire:click="setFilter('inbound')" 
+            <button wire:click="setFilter('inbound')"
                 class="btn {{ $filter === 'inbound' ? 'btn--primary' : 'btn--ghost' }} btn--sm" style="display: flex; align-items: center; gap: 0.375rem;">
                 {{ __('contact-messages.filter_inbound') }}
                 @if($unreadCount > 0)
                     <span class="wp-pill wp-pill--new" style="margin: 0; padding: 0.05rem 0.3rem; font-size: 0.75rem;">{{ $unreadCount }}</span>
                 @endif
             </button>
-            <button wire:click="setFilter('outbound')" 
+            <button wire:click="setFilter('outbound')"
                 class="btn {{ $filter === 'outbound' ? 'btn--primary' : 'btn--ghost' }} btn--sm">
                 {{ __('contact-messages.filter_outbound') }}
             </button>
