@@ -34,9 +34,9 @@
         </div>
     @endif
 
-    <div class="wp-row" style="display: flex; flex-direction: row; gap: 1.25rem; align-items: start; width: 100%;">
+    <div class="wp-row wp-contact-layout" style="gap: 1.25rem; align-items: start; width: 100%;">
         
-        <div class="wp-stack" style="flex: 0 0 38%; width: 38%; --wp-stack-gap: 0.25rem; max-h: calc(100vh - 12rem); overflow-y: auto; padding-right: 0.25rem; margin-top: 0;">
+        <div class="wp-stack wp-contact-sidebar" style="--wp-stack-gap: 0.25rem; max-h: calc(100vh - 12rem); overflow-y: auto; padding-right: 0.25rem; margin-top: 0;">
 
             {{-- Bulk Selection Control Bar --}}
             <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: rgba(0,0,0,0.02); border-radius: var(--wp-radius, 6px); border: 1px solid rgba(0,0,0,0.04);">
@@ -127,7 +127,7 @@
             @endif
         </div>
 
-        <div style="flex: 0 0 62%; width: 62%;">
+        <div class="wp-contact-main">
             @if($selectedMessage)
                 <div class="wp-card wp-card-pad wp-stack" style="--wp-stack-gap: 1rem; border-radius: var(--wp-radius, 12px); padding: 1.25rem;">
                     
@@ -246,6 +246,14 @@
         @keyframes wp-spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        .wp-contact-layout { display: flex; flex-direction: column; }
+        .wp-contact-sidebar { width: 100%; }
+        .wp-contact-main { width: 100%; }
+        @media (min-width: 1024px) {
+            .wp-contact-layout { flex-direction: row; }
+            .wp-contact-sidebar { flex: 0 0 38%; width: 38%; }
+            .wp-contact-main { flex: 0 0 62%; width: 62%; }
         }
     </style>
 </div>
