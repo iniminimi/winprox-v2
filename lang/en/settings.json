@@ -32,13 +32,6 @@
         "hint": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",
         "download": "Download JSON export"
     },
-    "email": {
-        "title": "Email preferences",
-        "hint": "Manage your email settings for WinProx communication.",
-        "subscribed_status": "You are receiving all WinProx emails.",
-        "unsubscribed_status": "You are currently unsubscribed from WinProx emails.",
-        "resubscribe_button": "Resubscribe to emails"
-    },
     "style": {
         "title": "Customise WinProx style",
         "hint": "Choose how WinProx looks for you. Your choice applies on every device where you are signed in.",

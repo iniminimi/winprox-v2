@@ -32,13 +32,6 @@
         "hint": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig.",
         "download": "JSON-export downloaden"
     },
-    "email": {
-        "title": "E-mailvoorkeuren",
-        "hint": "Beheer je e-mailinstellingen voor WinProx communicatie.",
-        "subscribed_status": "Je ontvangt alle WinProx e-mails.",
-        "unsubscribed_status": "Je bent momenteel uitgeschreven van WinProx e-mails.",
-        "resubscribe_button": "Opnieuw inschrijven voor e-mails"
-    },
     "style": {
         "title": "WinProx-stijl aanpassen",
         "hint": "Kies hoe WinProx er voor jou uitziet. Je keuze geldt op al je apparaten waar je bent ingelogd.",

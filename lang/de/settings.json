@@ -32,13 +32,6 @@
         "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",
         "download": "JSON-Export herunterladen"
     },
-    "email": {
-        "title": "E-Mail-Einstellungen",
-        "hint": "Verwalten Sie Ihre E-Mail-Einstellungen für die WinProx-Kommunikation.",
-        "subscribed_status": "Sie erhalten alle WinProx-E-Mails.",
-        "unsubscribed_status": "Sie sind derzeit von WinProx-E-Mails abgemeldet.",
-        "resubscribe_button": "Für E-Mails wieder anmelden"
-    },
     "style": {
         "title": "WinProx-Stil anpassen",
         "hint": "Wählen Sie, wie WinProx für Sie aussieht. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind.",
