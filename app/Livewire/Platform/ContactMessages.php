@@ -96,8 +96,8 @@ class ContactMessages extends Component
 
         try {
             $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-            
-            $action = new SendContactReplyAction();
+
+            $action = app(SendContactReplyAction::class);
             $action->handle(
                 $this->reply,
                 $this->selectedMessage,

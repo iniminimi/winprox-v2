@@ -11,7 +11,9 @@ use Symfony\Component\Mime\Header\IdentificationHeader;
 
 class SendContactReplyAction
 {
-    public function handle(string $reply, ContactMessage $originalMessage, ?int $tenantId = null, int $actorUserId = null): ContactMessage
+    public function __construct(private \App\Support\Audit\AuditRecorder $auditRecorder) {}
+
+    public function handle(string $reply, ContactMessage $originalMessage, ?int $tenantId = null, ?int $actorUserId = null): ContactMessage
     {
         if ($tenantId !== null) {
             Tenancy::actAs($tenantId);
@@ -21,10 +23,13 @@ class SendContactReplyAction
         $messageId = $this->sendEmail($reply, $originalMessage);
 
         // Store outbound message in database
+        $fromName = config('mail.from.name', 'WinProx Support');
+        $fromEmail = config('mail.from.address', 'info@winprox.app');
+
         $outboundMessage = ContactMessage::create([
             'message_id' => $messageId,
-            'name' => 'WinProx Support',
-            'email' => 'info@winprox.app',
+            'name' => $fromName,
+            'email' => $fromEmail,
             'subject' => 'Re: ' . $originalMessage->subject,
             'message' => $reply,
             'direction' => 'outbound',
@@ -32,6 +37,20 @@ class SendContactReplyAction
         ]);
 
         // Log audit event
+        $this->auditRecorder->record(
+            userId: $actorUserId,
+            tenantId: $tenantId ?? 0,
+            action: 'contact.reply_sent',
+            modelType: 'ContactMessage',
+            modelId: $outboundMessage->id,
+            payload: [
+                'original_message_id' => $originalMessage->id,
+                'recipient_email' => $originalMessage->email,
+                'subject' => $outboundMessage->subject,
+            ],
+        );
+
+        // Dispatch webhook event
         WebhookEvent::dispatch([
             'event_type' => 'contact_reply_sent',
             'data' => [
@@ -57,7 +76,7 @@ class SendContactReplyAction
             $message
                 ->to($originalMessage->email, $originalMessage->name)
                 ->subject('Re: ' . $originalMessage->subject)
-                ->from('info@winprox.app', 'WinProx Support');
+                ->from(config('mail.from.address', 'info@winprox.app'), config('mail.from.name', 'WinProx Support'));
 
             $headers = $message->getHeaders();
 
