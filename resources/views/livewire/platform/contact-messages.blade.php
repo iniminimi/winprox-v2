@@ -29,10 +29,10 @@
         <div class="wp-stack" style="flex: 0 0 40%; width: 40%; --wp-stack-gap: 0.5rem; max-h: calc(100vh - 16rem); overflow-y: auto; padding-right: 0.5rem;">
             @forelse($messages as $message)
                 <div wire:click="selectMessage({{ $message->id }})" 
-                    class="wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
+                    class="wp-card wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
                     style="cursor: pointer; display: block; padding: 0.75rem; border-radius: var(--wp-radius, 8px); transition: all 0.2s ease; {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent);' : '' }}">
                     
-                    <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                    <div class="wp-stack" style="--wp-stack-gap: 0.125rem;">
                         <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
                             <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; gap: 0.5rem; align-items: center;">
                                 @if($message->direction === 'inbound' && !$message->read_at)
@@ -41,10 +41,9 @@
                                     <span class="wp-pill wp-pill--closed" style="font-size: 0.7rem; padding: 0.125rem 0.375rem;">{{ __('contact-messages.badge_sent') }}</span>
                                 @endif
                             </div>
-                            <span class="wp-text-sm wp-muted" style="font-size: 0.75rem;">{{ $message->created_at->format('d-m H:i') }}</span>
                         </div>
                         
-                        <div class="wp-text-body" style="font-weight: 600; font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.125rem;">
+                        <div class="wp-text-body" style="font-weight: 600; font-size: 0.9rem; line-height: 1.3;">
                             {{ Str::limit($message->subject, 50) }}
                         </div>
                         
