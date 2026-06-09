@@ -7,8 +7,13 @@ use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Models\ContactMessage;
 use App\Support\Tenancy;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
+
+#[Layout('components.layouts.app')]
+#[Title('WinProx')]
 
 class ContactMessages extends Component
 {
@@ -43,7 +48,7 @@ class ContactMessages extends Component
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-        ])->layout('layouts.components.app'); 
+        ]); 
     }
 
     public function selectMessage($messageId)
