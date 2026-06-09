@@ -17,7 +17,7 @@
     "reply_placeholder": "Type your professional response here...",
     "send_reply": "Send Reply",
     "validation_required": "This field is required.",
-    "validation_min_string": "This field must be at least :min characters.",
+    "validation.min.string": "This field must be at least :min characters.",
     "failed_to_send": "Failed to send",
     "reply_sent_success": "Reply sent successfully.",
     "badge_new": "New",
