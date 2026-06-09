@@ -9,9 +9,11 @@ use Illuminate\Support\Str;
 
 class SendContactReplyAction
 {
-    public function handle(string $reply, ContactMessage $originalMessage, int $tenantId, int $actorUserId): ContactMessage
+    public function handle(string $reply, ContactMessage $originalMessage, ?int $tenantId = null, int $actorUserId = null): ContactMessage
     {
-        Tenancy::actAs($tenantId);
+        if ($tenantId !== null) {
+            Tenancy::actAs($tenantId);
+        }
 
         // Send email via Laravel Mail facade
         $messageId = $this->sendEmail($reply, $originalMessage);
@@ -24,6 +26,7 @@ class SendContactReplyAction
             'subject' => 'Re: ' . $originalMessage->subject,
             'message' => $reply,
             'direction' => 'outbound',
+            'tenant_id' => $tenantId, // Can be null for SuperUser global replies
         ]);
 
         return $outboundMessage;

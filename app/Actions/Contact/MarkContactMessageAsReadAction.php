@@ -7,14 +7,19 @@ use App\Support\Tenancy;
 
 class MarkContactMessageAsReadAction
 {
-    public function handle(ContactMessage $contactMessage, int $tenantId): ContactMessage
+    public function handle(ContactMessage $message, ?int $tenantId = null): void
     {
-        Tenancy::actAs($tenantId);
-
-        if (!$contactMessage->isRead()) {
-            $contactMessage->update(['read_at' => now()]);
+        // Security check: only verify tenant_id if we have a specific tenant
+        if ($tenantId !== null && $message->tenant_id !== $tenantId) {
+            throw new \InvalidArgumentException('Message does not belong to the specified tenant');
         }
 
-        return $contactMessage;
+        if ($tenantId !== null) {
+            Tenancy::actAs($tenantId);
+        }
+
+        if (!$message->isRead()) {
+            $message->update(['read_at' => now()]);
+        }
     }
 }

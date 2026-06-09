@@ -8,11 +8,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class GetContactMessagesAction
 {
-    public function handle(string $filter = 'all', int $perPage = 20, int $tenantId): LengthAwarePaginator
+    public function handle(string $filter = 'all', int $perPage = 20, ?int $tenantId = null): LengthAwarePaginator
     {
-        Tenancy::actAs($tenantId);
+        if ($tenantId !== null) {
+            Tenancy::actAs($tenantId);
+        }
 
         $query = ContactMessage::query();
+
+        // Only filter by tenant_id if we have a specific tenant
+        if ($tenantId !== null) {
+            $query->where('tenant_id', $tenantId);
+        }
 
         if ($filter !== 'all') {
             $query->where('direction', $filter);
@@ -22,10 +29,19 @@ class GetContactMessagesAction
             ->paginate($perPage);
     }
 
-    public function getUnreadCount(int $tenantId): int
+    public function getUnreadCount(?int $tenantId = null): int
     {
-        Tenancy::actAs($tenantId);
+        if ($tenantId !== null) {
+            Tenancy::actAs($tenantId);
+        }
 
-        return ContactMessage::inbound()->unread()->count();
+        $query = ContactMessage::inbound()->unread();
+
+        // Only filter by tenant_id if we have a specific tenant
+        if ($tenantId !== null) {
+            $query->where('tenant_id', $tenantId);
+        }
+
+        return $query->count();
     }
 }

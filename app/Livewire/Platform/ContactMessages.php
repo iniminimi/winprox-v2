@@ -33,17 +33,11 @@ class ContactMessages extends Component
 
     public function render()
     {
-        // De SuperUser bekijkt de globale contacten, dus tenantId mag null zijn in de business logica.
-        // We vangen hier de Tenancy::id() op, maar zorgen dat er geen type-error kan ontstaan.
-        $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-
         $action = new GetContactMessagesAction();
-        
-        // LET OP: Windsurf moet in GetContactMessagesAction@handle het $tenantId argument nullable maken: ?int $tenantId
-        $messages = $action->handle($this->filter, 20, $tenantId);
+        $messages = $action->handle($this->filter, 20, Tenancy::id());
         
         // Update unread count
-        $this->unreadCount = $action->getUnreadCount($tenantId);
+        $this->unreadCount = $action->getUnreadCount(Tenancy::id());
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
@@ -54,18 +48,15 @@ class ContactMessages extends Component
     {
         $this->selectedMessage = ContactMessage::findOrFail($messageId);
         $this->authorize('view', $this->selectedMessage);
-        
-        $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
 
         // Mark as read if inbound and unread
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
             $action = new MarkContactMessageAsReadAction();
-            // Pas ook in MarkContactMessageAsReadAction@handle aan dat $tenantId nullable (?int) is
-            $action->handle($this->selectedMessage, $tenantId);
+            $action->handle($this->selectedMessage, Tenancy::id());
             
             // Refresh unread count
             $getAction = new GetContactMessagesAction();
-            $this->unreadCount = $getAction->getUnreadCount($tenantId);
+            $this->unreadCount = $getAction->getUnreadCount(Tenancy::id());
         }
 
         $this->dispatch('message-selected');
@@ -96,14 +87,11 @@ class ContactMessages extends Component
         }
 
         try {
-            $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-            
             $action = new SendContactReplyAction();
-            // Pas ook in SendContactReplyAction@handle aan dat $tenantId nullable (?int) is
             $action->handle(
                 $this->reply,
                 $this->selectedMessage,
-                $tenantId,
+                Tenancy::id(),
                 auth()->id()
             );
 
