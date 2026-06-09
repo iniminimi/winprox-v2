@@ -7,13 +7,8 @@ use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Models\ContactMessage;
 use App\Support\Tenancy;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-
-#[Layout('components.layouts.app')]
-#[Title('WinProx')]
 
 class ContactMessages extends Component
 {
@@ -38,6 +33,7 @@ class ContactMessages extends Component
 
     public function render()
     {
+        // Zorg voor een veilige null fallback voor de SuperUser-laag
         $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
 
         $action = new GetContactMessagesAction();
@@ -46,9 +42,10 @@ class ContactMessages extends Component
         // Update unread count
         $this->unreadCount = $action->getUnreadCount($tenantId);
 
+        // We binden hem hier direct aan de platform layout om verdere layout-fouten te voorkomen
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-        ]); 
+        ])->layout('layouts.platform');
     }
 
     public function selectMessage($messageId)
@@ -58,7 +55,7 @@ class ContactMessages extends Component
         
         $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
 
-        // Mark as read if inbound and unread
+        // Markeer als gelezen indien binnenkomend en ongelezen
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
             $action = new MarkContactMessageAsReadAction();
             $action->handle($this->selectedMessage, $tenantId);
@@ -109,7 +106,8 @@ class ContactMessages extends Component
             $this->closeReplyModal();
             $this->dispatch('reply-sent');
             
-            // Refresh the messages list
+            // Refresh de lijst en herstel selectie naar het bijgewerkte bericht
+            $this->selectedMessage = ContactMessage::findOrFail($this->selectedMessage->id);
             $this->resetPage();
 
         } catch (\Exception $e) {
