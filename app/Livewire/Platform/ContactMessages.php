@@ -148,10 +148,12 @@ class ContactMessages extends Component
     }
 
     /**
-     * Start composing a new outbound message
+     * Start composing a new outbound message (SuperUser only)
      */
     public function startCompose(): void
     {
+        abort_unless(auth()->user()?->is_superuser, 403);
+
         $this->isComposing = true;
         $this->selectedMessage = null;
         $this->newEmail = '';
@@ -167,10 +169,12 @@ class ContactMessages extends Component
     }
 
     /**
-     * Send new outbound message
+     * Send new outbound message (SuperUser only)
      */
     public function sendNewMessage(): void
     {
+        abort_unless(auth()->user()?->is_superuser, 403);
+
         $this->validate([
             'newEmail' => 'required|email',
             'newName' => 'required|string|max:255',
