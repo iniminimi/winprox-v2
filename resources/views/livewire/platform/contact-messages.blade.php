@@ -32,7 +32,7 @@
                     class="wp-card wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
                     style="cursor: pointer; display: block; padding: 0.75rem; border-radius: var(--wp-radius, 8px); transition: all 0.2s ease; {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent);' : '' }}">
                     
-                    <div class="wp-stack" style="--wp-stack-gap: 0.125rem;">
+                    <div class="wp-stack" style="--wp-stack-gap: 0rem;">
                         <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
                             <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; gap: 0.5rem; align-items: center;">
                                 @if($message->direction === 'inbound' && !$message->read_at)
