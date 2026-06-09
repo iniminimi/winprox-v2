@@ -121,6 +121,7 @@ Route::middleware('auth')->group(function () {
         ->middleware('superuser')
         ->name('platform.promo-qr.download');
 
+    Route::view('/promo', 'promo')->name('promo');
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');
     Route::get('/manual', ManualIndex::class)->name('manual.index');
