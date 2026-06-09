@@ -12,10 +12,10 @@
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
                 {{ __('locations.import') }}
             </button>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="openCategoriesModal">
+            <button type="button" class="btn btn--ghost btn--sm @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCategoriesModal">
                 {{ __('locations.categories.manage') }}
             </button>
-            <button type="button" class="btn btn--primary @if($locations->isEmpty()) wp-badge-critical @endif" wire:click="openCreate">
+            <button type="button" class="btn btn--primary" wire:click="openCreate">
                 {{ __('locations.add') }}
             </button>
         </div>
@@ -68,11 +68,14 @@
                     @endif
                 </div>
             @empty
-                @if ($hasInactiveLocations && !$showInactive)
-                    <p class="wp-muted">{{ __('locations.empty_inactive') }}</p>
-                @else
-                    <p class="wp-muted">{{ __('locations.empty') }}</p>
-                @endif
+                <div class="wp-card wp-card-pad wp-onboarding-card">
+                    <div class="wp-stack">
+                        <p class="wp-text-body"><strong>{{ __('locations.onboarding.title') }}</strong></p>
+                        <a href="{{ route('locations.index') }}" class="btn btn--primary btn--sm wp-badge-critical" wire:click.prevent="openCategoriesModal">
+                            {{ __('locations.onboarding.button') }}
+                        </a>
+                    </div>
+                </div>
             @endforelse
         </div>
     </div>

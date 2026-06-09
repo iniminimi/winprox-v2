@@ -37,6 +37,10 @@
     "search_placeholder": "Zoek op locatie, plaats, postcode of straat",
     "search_hint": "Klik op een locatie om te beheren.",
     "show_inactive": "Toon ook inactieve locaties",
+    "onboarding": {
+        "title": "Begin met het aanmaken van categorieën",
+        "button": "Categorieën beheren"
+    },
     "unit_count": ":count units",
     "units_total": ":count totaal",
     "details_title": "Gegevens van de locatie",

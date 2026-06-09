@@ -37,6 +37,10 @@
     "search_placeholder": "Search by location, city, postal code or street",
     "search_hint": "Click a location to manage it.",
     "show_inactive": "Show inactive locations too",
+    "onboarding": {
+        "title": "Start by creating categories",
+        "button": "Manage categories"
+    },
     "unit_count": ":count units",
     "units_total": ":count total",
     "details_title": "Location details",

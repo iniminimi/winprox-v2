@@ -37,6 +37,10 @@
     "search_placeholder": "Suche nach Standort, Ort, PLZ oder Straße",
     "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
     "show_inactive": "Auch inaktive Standorte anzeigen",
+    "onboarding": {
+        "title": "Beginnen Sie mit der Erstellung von Kategorien",
+        "button": "Kategorien verwalten"
+    },
     "unit_count": ":count Units",
     "units_total": ":count gesamt",
     "details_title": "Standortdaten",
