@@ -38,8 +38,7 @@
     "search_hint": "Cliquez sur un site pour le gérer.",
     "show_inactive": "Afficher aussi les sites inactifs",
     "onboarding": {
-        "title": "Commencez par créer des catégories",
-        "button": "Gérer les catégories"
+        "title": "Commencez par créer des catégories"
     },
     "unit_count": ":count unités",
     "units_total": ":count au total",

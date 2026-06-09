@@ -71,9 +71,6 @@
                 <div class="wp-card wp-card-pad wp-onboarding-card">
                     <div class="wp-stack">
                         <p class="wp-text-body"><strong>{{ __('locations.onboarding.title') }}</strong></p>
-                        <a href="{{ route('locations.index') }}" class="btn btn--primary btn--sm wp-badge-critical" wire:click.prevent="openCategoriesModal">
-                            {{ __('locations.onboarding.button') }}
-                        </a>
                     </div>
                 </div>
             @endforelse

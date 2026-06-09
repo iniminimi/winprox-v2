@@ -38,8 +38,7 @@
     "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
     "show_inactive": "Auch inaktive Standorte anzeigen",
     "onboarding": {
-        "title": "Beginnen Sie mit der Erstellung von Kategorien",
-        "button": "Kategorien verwalten"
+        "title": "Beginnen Sie mit der Erstellung von Kategorien"
     },
     "unit_count": ":count Units",
     "units_total": ":count gesamt",
