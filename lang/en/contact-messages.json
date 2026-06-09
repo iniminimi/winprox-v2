@@ -1,0 +1,21 @@
+{
+    "title": "Contact Messages",
+    "subtitle": "Manage incoming questions and platform messages.",
+    "unread_count": "unread messages",
+    "filter_all": "All",
+    "filter_inbox": "Inbox",
+    "filter_outbound": "Sent",
+    "no_messages": "No messages found.",
+    "no_message_selected": "No message selected",
+    "select_message_hint": "Select a message from the left column to view the full content and reply directly.",
+    "direction_in": "In",
+    "direction_out": "Out",
+    "direction_inbound": "Inbound",
+    "direction_outbound": "Outbound",
+    "from": "From",
+    "phone": "Tel",
+    "reply_section": "Compose Reply",
+    "reply_placeholder": "Type your professional response here...",
+    "send_reply": "Send Reply",
+    "failed_to_send": "Failed to send reply"
+}

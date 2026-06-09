@@ -1,0 +1,21 @@
+{
+    "title": "Kontaktnachrichten",
+    "subtitle": "Eingehende Fragen und Plattformnachrichten verwalten.",
+    "unread_count": "ungelesene Nachrichten",
+    "filter_all": "Alle",
+    "filter_inbox": "Posteingang",
+    "filter_outbound": "Gesendet",
+    "no_messages": "Keine Nachrichten gefunden.",
+    "no_message_selected": "Keine Nachricht ausgewählt",
+    "select_message_hint": "Wählen Sie eine Nachricht aus der linken Spalte, um den vollständigen Inhalt anzuzeigen und direkt zu antworten.",
+    "direction_in": "Ein",
+    "direction_out": "Aus",
+    "direction_inbound": "Eingehend",
+    "direction_outbound": "Ausgehend",
+    "from": "Von",
+    "phone": "Tel",
+    "reply_section": "Antwort verfassen",
+    "reply_placeholder": "Geben Sie hier Ihre professionelle Antwort ein...",
+    "send_reply": "Antwort senden",
+    "failed_to_send": "Fehler beim Senden der Antwort"
+}

@@ -113,7 +113,7 @@ class ContactMessages extends Component
             $this->resetPage();
 
         } catch (\Exception $e) {
-            $this->addError('reply', 'Failed to send reply: ' . $e->getMessage());
+            $this->addError('reply', __('contact-messages.failed_to_send') . ': ' . $e->getMessage());
         }
     }
 

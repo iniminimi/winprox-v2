@@ -1,0 +1,21 @@
+{
+    "title": "Contactberichten",
+    "subtitle": "Beheer binnenkomende vragen en platformberichten.",
+    "unread_count": "ongelezen berichten",
+    "filter_all": "Alle",
+    "filter_inbox": "Inbox",
+    "filter_outbound": "Verzonden",
+    "no_messages": "Geen berichten gevonden.",
+    "no_message_selected": "Geen bericht geselecteerd",
+    "select_message_hint": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden.",
+    "direction_in": "In",
+    "direction_out": "Uit",
+    "direction_inbound": "Inkomend",
+    "direction_outbound": "Uitgaand",
+    "from": "Van",
+    "phone": "Tel",
+    "reply_section": "Antwoord opstellen",
+    "reply_placeholder": "Typ hier uw professionele reactie...",
+    "send_reply": "Antwoord Verzenden",
+    "failed_to_send": "Failed to send reply"
+}
