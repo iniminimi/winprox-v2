@@ -101,9 +101,9 @@
                                 placeholder="{{ __('contact-messages.placeholder_reply') }}"
                                 style="width: 100%; resize: vertical; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;"></textarea>
                             
-                            @error('reply')
-                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $message }}</span>
-                            @enderror
+                            @if($errors->has('reply'))
+                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('reply') }}</span>
+                            @endif
 
                             <div class="wp-row" style="display: flex; flex-direction: row; justify-content: flex-end; width: 100%;">
                                 <button wire:click="sendReply" class="btn primary btn--sm">
