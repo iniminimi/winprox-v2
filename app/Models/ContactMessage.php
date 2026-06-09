@@ -17,6 +17,7 @@ class ContactMessage extends Model
         'message',
         'direction',
         'read_at',
+        'tenant_id',
     ];
 
     protected $casts = [
