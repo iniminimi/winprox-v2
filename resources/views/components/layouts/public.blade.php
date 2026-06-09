@@ -13,13 +13,10 @@
         $tenantCustomThemeVars = "--wp-bg: {$bg}; --wp-accent: {$btn}; --wp-accent-strong: {$btn};";
     }
 
-    $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
-    if ($portalBgUrl) {
-        $tenantCustomThemeVars .= " --wp-portal-bg: url('{$portalBgUrl}');";
-    }
-
-    $applyTenantCustomTheme = ($tenantCustomThemeVars !== '' || $portalBgUrl !== null)
+    $applyTenantCustomTheme = $tenantCustomThemeVars !== ''
         && UiTheme::tryFromString($portalTheme) === UiTheme::Simple;
+
+    $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
 @endphp
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       data-theme="{{ $portalTheme }}"
@@ -40,19 +37,9 @@
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
-    
-    {{-- Forceer dat de portal-achtergrond de variabele gebruikt en niet overschreven wordt op mobiel --}}
-    <style>
-        [data-theme="simple"] .wp-public-body {
-            background-image: var(--wp-portal-bg, none) !important;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-    </style>
 </head>
-<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
+<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
+      @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}');" @endif>
     <main class="wp-portal">
         {{ $slot }}
         
