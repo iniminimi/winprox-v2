@@ -16,13 +16,18 @@ final class AuditRecorder
      */
     public function record(
         ?int $userId,
-        int $tenantId,
+        ?int $tenantId,
         string $action,
         ?string $modelType = null,
         ?int $modelId = null,
         array $payload = [],
     ): void {
         if (! config('audit.enabled', true)) {
+            return;
+        }
+
+        // Skip audit logging for actions without valid tenant (e.g., SuperUser global actions)
+        if ($tenantId === null || $tenantId <= 0) {
             return;
         }
 
