@@ -26,6 +26,11 @@
     "placeholder_reply": "Typ hier uw professionele reactie...",
     "button_send": "Verzenden",
     "button_sending": "Verzenden...",
+    "button_delete": "Verwijderen",
+    "select_all": "Selecteer alles",
+    "selected": "geselecteerd",
+    "confirm_delete": "Weet u zeker dat u de geselecteerde berichten wilt verwijderen?",
+    "bulk_deleted_success": ":count bericht(en) succesvol verwijderd.",
     "empty_title": "Geen bericht geselecteerd",
     "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden."
 }

@@ -26,6 +26,11 @@
     "placeholder_reply": "Geben Sie hier Ihre professionelle Antwort ein...",
     "button_send": "Senden",
     "button_sending": "Wird gesendet...",
+    "button_delete": "Löschen",
+    "select_all": "Alle auswählen",
+    "selected": "ausgewählt",
+    "confirm_delete": "Sind Sie sicher, dass Sie die ausgewählten Nachrichten löschen möchten?",
+    "bulk_deleted_success": ":count Nachricht(en) erfolgreich gelöscht.",
     "empty_title": "Keine Nachricht ausgewählt",
     "empty_body": "Wählen Sie eine Nachricht aus der linken Spalte, um den vollständigen Inhalt anzuzeigen und direkt zu antworten."
 }

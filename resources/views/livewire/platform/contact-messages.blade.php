@@ -29,21 +29,71 @@
     <div class="wp-row" style="display: flex; flex-direction: row; gap: 1.25rem; align-items: start; width: 100%;">
         
         <div class="wp-stack" style="flex: 0 0 38%; width: 38%; --wp-stack-gap: 0.25rem; max-h: calc(100vh - 12rem); overflow-y: auto; padding-right: 0.25rem; margin-top: 0;">
+
+            {{-- Bulk Selection Control Bar --}}
+            <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0.4rem 0.6rem; background: rgba(0,0,0,0.02); border-radius: var(--wp-radius, 6px); border: 1px solid rgba(0,0,0,0.04);">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <input
+                        type="checkbox"
+                        wire:click="toggleSelectAll"
+                        :checked="{{ count(array_intersect($messages->pluck('id')->toArray(), $selectedMessageIds)) === $messages->count() && $messages->count() > 0 ? 'true' : 'false' }}"
+                        style="cursor: pointer; width: 1rem; height: 1rem;"
+                    >
+                    <span class="wp-text-sm" style="font-size: 0.75rem; color: #64748b;">
+                        @if(count($selectedMessageIds) > 0)
+                            {{ count($selectedMessageIds) }} {{ __('contact-messages.selected') }}
+                        @else
+                            {{ __('contact-messages.select_all') }}
+                        @endif
+                    </span>
+                </div>
+
+                @if(count($selectedMessageIds) > 0)
+                    <button
+                        wire:click="deleteSelected"
+                        wire:confirm="{{ __('contact-messages.confirm_delete') }}"
+                        wire:loading.attr="disabled"
+                        class="btn btn--danger btn--sm"
+                        style="display: flex; align-items: center; gap: 0.25rem;"
+                    >
+                        <svg wire:loading wire:target="deleteSelected" style="width: 0.75rem; height: 0.75rem; animation: wp-spin 1s linear infinite;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        <svg wire:loading.remove wire:target="deleteSelected" style="width: 0.875rem; height: 0.875rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        <span>{{ __('contact-messages.button_delete') }}</span>
+                    </button>
+                @endif
+            </div>
+
             @forelse($messages as $message)
-                <div wire:click="selectMessage({{ $message->id }})" 
+                <div wire:click="selectMessage({{ $message->id }})"
                     class="wp-card wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
-                    style="cursor: pointer; display: block; padding: 0.4rem 0.6rem; border-radius: var(--wp-radius, 6px); transition: all 0.15s ease; border: 1px solid rgba(0,0,0,0.04); {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent); font-weight: 600;' : '' }}">
-                    
-                    <div class="wp-stack" style="--wp-stack-gap: 0.15rem;">
+                    style="cursor: pointer; display: flex; flex-direction: row; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: var(--wp-radius, 6px); transition: all 0.15s ease; border: 1px solid rgba(0,0,0,0.04); {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }} {{ $message->direction === 'inbound' && !$message->read_at ? 'border-left: 3px solid var(--wp-accent);' : '' }}">
+
+                    {{-- Checkbox for bulk selection --}}
+                    <div style="display: flex; align-items: center; flex-shrink: 0;">
+                        <input
+                            type="checkbox"
+                            wire:model.live="selectedMessageIds"
+                            value="{{ $message->id }}"
+                            wire:click.stop
+                            style="cursor: pointer; width: 1rem; height: 1rem;"
+                        >
+                    </div>
+
+                    <div class="wp-stack" style="--wp-stack-gap: 0.15rem; flex: 1; min-width: 0;">
                         <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
-                            <div style="display: flex; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: 0.375rem;">
                                 @if($message->direction === 'inbound')
                                     <span class="wp-pill {{ !$message->read_at ? 'wp-pill--new' : 'wp-pill--progress' }}" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">In</span>
                                 @else
                                     <span class="wp-pill wp-pill--closed" style="font-size: 0.65rem; padding: 0.05rem 0.25rem;">Out</span>
                                 @endif
+                                <span class="wp-text-sm wp-muted" style="font-size: 0.75rem;">{{ $message->created_at->format('d-m H:i') }}</span>
                             </div>
-                            <span class="wp-text-sm wp-muted" style="font-size: 0.75rem;">{{ $message->created_at->format('d-m H:i') }}</span>
                         </div>
                         
                         <div class="wp-text-body" style="font-weight: 600; font-size: 0.85rem; line-height: 1.25; color: #1e293b; margin: 0;">

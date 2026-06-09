@@ -26,6 +26,11 @@
     "placeholder_reply": "Tapez votre réponse professionnelle ici...",
     "button_send": "Envoyer",
     "button_sending": "Envoi en cours...",
+    "button_delete": "Supprimer",
+    "select_all": "Tout sélectionner",
+    "selected": "sélectionné(s)",
+    "confirm_delete": "Êtes-vous sûr de vouloir supprimer les messages sélectionnés ?",
+    "bulk_deleted_success": ":count message(s) supprimé(s) avec succès.",
     "empty_title": "Aucun message sélectionné",
     "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement."
 }

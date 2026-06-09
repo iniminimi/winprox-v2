@@ -26,6 +26,11 @@
     "placeholder_reply": "Type your professional response here...",
     "button_send": "Send",
     "button_sending": "Sending...",
+    "button_delete": "Delete",
+    "select_all": "Select all",
+    "selected": "selected",
+    "confirm_delete": "Are you sure you want to delete the selected messages?",
+    "bulk_deleted_success": ":count message(s) successfully deleted.",
     "empty_title": "No message selected",
     "empty_body": "Select a message from the left column to view the full content and reply directly."
 }
