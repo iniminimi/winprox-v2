@@ -7,13 +7,8 @@ use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Models\ContactMessage;
 use App\Support\Tenancy;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-
-#[Layout('components.layouts.app')]
-#[Title('WinProx')]
 
 class ContactMessages extends Component
 {
@@ -38,7 +33,7 @@ class ContactMessages extends Component
 
     public function render()
     {
-        // Zorg voor een veilige null fallback voor de SuperUser-laag
+        // Forceer een int of null voor de SuperUser laag
         $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
 
         $action = new GetContactMessagesAction();
@@ -49,7 +44,7 @@ class ContactMessages extends Component
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-        ]);
+        ])->layout('layouts.platform');
     }
 
     public function selectMessage($messageId)
@@ -110,7 +105,7 @@ class ContactMessages extends Component
             $this->closeReplyModal();
             $this->dispatch('reply-sent');
             
-            // Refresh de lijst en herstel selectie naar het bijgewerkte bericht
+            // Ververs het geselecteerde bericht en herlaad de lijst
             $this->selectedMessage = ContactMessage::findOrFail($this->selectedMessage->id);
             $this->resetPage();
 

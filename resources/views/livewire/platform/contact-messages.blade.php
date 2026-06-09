@@ -1,274 +1,148 @@
-<div class="wp-stack">
-    <x-wp-page-head-title
-        icon="contact"
-        title="Contactberichten"
-        :subtitle="$this->unreadCount . ' ongelezen berichten'"
-    />
+<div class="space-y-6">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-3">
+                <span class="p-2 rounded-xl bg-teal-500/10 text-teal-600 dark:text-teal-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </span>
+                Contactberichten
+            </h1>
+            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                Beheer binnenkomende vragen en platformberichten.
+            </p>
+        </div>
 
-    <!-- Centralized Premium Tab-Bar -->
-    <div class="flex justify-center mb-6">
-        <div class="bg-slate-100/80 dark:bg-slate-800/50 p-1 rounded-xl flex gap-1 max-w-md backdrop-blur-sm border border-slate-200/30 dark:border-slate-700/30">
-            <button type="button" 
-                    class="px-4 py-2 text-sm rounded-lg transition-all duration-200 {{ $filter === 'all' ? 'bg-white dark:bg-slate-700 shadow-sm font-medium text-slate-900 dark:text-white' : 'hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400' }}"
-                    wire:click="setFilter('all')">
+        <div class="p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl flex items-center gap-1 shadow-inner">
+            <button wire:click="setFilter('all')" 
+                class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 {{ $filter === 'all' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200' }}">
                 Alle
             </button>
-            <button type="button" 
-                    class="px-4 py-2 text-sm rounded-lg transition-all duration-200 relative {{ $filter === 'inbound' ? 'bg-white dark:bg-slate-700 shadow-sm font-medium text-slate-900 dark:text-white' : 'hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400' }}"
-                    wire:click="setFilter('inbound')">
+            <button wire:click="setFilter('inbound')" 
+                class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 flex items-center gap-1.5 {{ $filter === 'inbound' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200' }}">
                 Inbox
-                @if ($this->unreadCount > 0)
-                    <span class="absolute -top-1 -right-1 h-5 w-5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs rounded-full flex items-center justify-center shadow-sm">
-                        {{ $this->unreadCount }}
-                    </span>
+                @if($unreadCount > 0)
+                    <span class="px-1.5 py-0.5 text-[10px] font-bold bg-teal-500 text-white rounded-full">{{ $unreadCount }}</span>
                 @endif
             </button>
-            <button type="button" 
-                    class="px-4 py-2 text-sm rounded-lg transition-all duration-200 {{ $filter === 'outbound' ? 'bg-white dark:bg-slate-700 shadow-sm font-medium text-slate-900 dark:text-white' : 'hover:text-slate-900 dark:hover:text-white text-slate-500 dark:text-slate-400' }}"
-                    wire:click="setFilter('outbound')">
+            <button wire:click="setFilter('outbound')" 
+                class="px-4 py-1.5 text-xs font-medium rounded-lg transition-all duration-200 {{ $filter === 'outbound' ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm' : 'text-slate-500 hover:text-slate-900 dark:hover:text-slate-200' }}">
                 Verzonden
             </button>
         </div>
     </div>
 
-    <!-- Premium Split-Screen Layout -->
-    <div class="flex gap-6 h-[calc(100vh-12rem)]">
-        <!-- Left Column - Premium Messages List -->
-        <div class="w-2/5 flex flex-col">
-            <div class="flex-1 space-y-3 overflow-y-auto pr-2">
-                @if ($messages->isEmpty())
-                    <div class="flex-1 flex items-center justify-center h-64">
-                        <div class="text-center">
-                            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-2xl flex items-center justify-center">
-                                <svg class="w-8 h-8 text-slate-400 dark:text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Geen berichten gevonden</p>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <div class="lg:col-span-5 space-y-3 max-h-[calc(100vh-14rem)] overflow-y-auto pr-2">
+            @forelse($messages as $message)
+                <div wire:click="selectMessage({{ $message->id }})"
+                    class="group relative p-4 rounded-xl transition-all duration-200 cursor-pointer border backdrop-blur-md 
+                    {{ $selectedMessage && $selectedMessage->id === $message->id 
+                        ? 'bg-teal-500/5 border-teal-500/40 shadow-sm ring-1 ring-teal-500/30' 
+                        : 'bg-white/70 dark:bg-slate-900/40 border-slate-200/80 dark:border-slate-800/60 hover:bg-white dark:hover:bg-slate-900 shadow-xs' }}">
+                    
+                    <div class="flex items-start justify-between gap-4 mb-1">
+                        <div class="flex items-center gap-2 min-w-0">
+                            @if($message->direction === 'inbound' && !$message->read_at)
+                                <span class="w-2 h-2 rounded-full bg-teal-500 shrink-0 shadow-[0_0_8px_rgba(20,184,166,0.6)]"></span>
+                            @endif
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">
+                                {{ $message->direction === 'inbound' ? 'In' : 'Uit' }}
+                            </span>
                         </div>
+                        <span class="text-[11px] text-slate-400 whitespace-nowrap">
+                            {{ $message->created_at->format('d-m H:i') }}
+                        </span>
                     </div>
-                @else
-                    @foreach ($messages as $message)
-                        <div class="bg-white/60 dark:bg-slate-900/40 backdrop-blur-md rounded-xl border border-slate-200/60 dark:border-slate-800/50 p-4 transition-all duration-200 hover:scale-[1.01] hover:shadow-lg cursor-pointer {{ $selectedMessage?->id === $message->id ? 'border-teal-500/50 bg-teal-50/10 dark:bg-teal-900/20 shadow-lg scale-[1.02]' : '' }}"
-                             wire:click="selectMessage({{ $message->id }})">
-                            <div class="flex items-start justify-between mb-3">
-                                <div class="flex items-center space-x-2 flex-1">
-                                    @if (!$message->isRead() && $message->direction === 'inbound')
-                                        <span class="w-2 h-2 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full inline-block mr-1 shadow-sm"></span>
+
+                    <h3 class="text-sm font-semibold text-slate-800 dark:text-slate-200 truncate group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                        {{ $message->subject }}
+                    </h3>
+                    
+                    <p class="text-xs text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                        {{ $message->name ?? $message->user?->name }}
+                    </p>
+                </div>
+            @empty
+                <div class="p-8 text-center bg-white/40 dark:bg-slate-900/20 rounded-xl border border-dashed border-slate-200 dark:border-slate-800">
+                    <p class="text-sm text-slate-500">Geen berichten gevonden.</p>
+                </div>
+            @endforelse
+
+            <div class="pt-2">
+                {{ $messages->links() }}
+            </div>
+        </div>
+
+        <div class="lg:col-span-7 h-full">
+            @if($selectedMessage)
+                <div class="bg-white/80 dark:bg-slate-900/60 backdrop-blur-lg rounded-2xl border border-slate-200/80 dark:border-slate-800/80 shadow-sm overflow-hidden flex flex-col">
+                    
+                    <div class="p-6 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/20">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <h2 class="text-lg font-bold text-slate-900 dark:text-white">{{ $selectedMessage->subject }}</h2>
+                                <div class="mt-2 flex flex-col gap-1 text-xs text-slate-500 dark:text-slate-400">
+                                    <p>
+                                        <span class="font-medium text-slate-700 dark:text-slate-300">Van:</span> 
+                                        {{ $selectedMessage->name }} &lt;{{ $selectedMessage->email }}&gt;
+                                    </p>
+                                    @if($selectedMessage->phone)
+                                        <p><span class="font-medium text-slate-700 dark:text-slate-300">Tel:</span> {{ $selectedMessage->phone }}</p>
                                     @endif
-                                    <span class="wp-pill wp-pill--{{ $message->direction === 'inbound' ? 'primary' : 'secondary' }} text-xs">
-                                        {{ $message->direction === 'inbound' ? 'In' : 'Out' }}
-                                    </span>
                                 </div>
-                                <span class="text-xs text-slate-400 dark:text-slate-500">
-                                    {{ $message->created_at->format('d-m H:i') }}
-                                </span>
                             </div>
-                            <div class="mb-2">
-                                <h4 class="text-sm font-semibold text-slate-800 dark:text-slate-200 leading-tight">
-                                    {{ $message->subject }}
-                                </h4>
-                            </div>
-                            <div class="text-xs text-slate-500 dark:text-slate-400">
-                                {{ $message->name }}
-                            </div>
+                            <span class="text-xs text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md font-medium">
+                                {{ $selectedMessage->created_at->format('d-m-Y H:i') }}
+                            </span>
                         </div>
-                    @endforeach
-
-                    <div class="pt-4 border-t border-slate-200/30 dark:border-slate-700/30">
-                        {{ $messages->links() }}
                     </div>
-                @endif
-            </div>
-        </div>
 
-        <!-- Right Column - Premium Detail View -->
-        <div class="w-3/5 flex flex-col">
-            <div class="bg-white/80 dark:bg-slate-900/60 backdrop-blur-lg rounded-2xl border border-slate-200/60 dark:border-slate-800/50 p-6 shadow-xl flex-1 flex flex-col">
-                @if ($selectedMessage)
-                    <div class="flex-1 flex flex-col">
-                        <!-- Message Header -->
-                        <div class="border-b border-slate-200/50 dark:border-slate-700/50 pb-4 mb-4">
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-3">
-                                    <span class="wp-pill wp-pill--{{ $selectedMessage->direction === 'inbound' ? 'primary' : 'secondary' }}">
-                                        {{ $selectedMessage->direction === 'inbound' ? 'Inkomend' : 'Uitgaand' }}
-                                    </span>
-                                    <span class="text-xs text-slate-400 dark:text-slate-500">
-                                        {{ $selectedMessage->created_at->format('d-m-Y H:i') }}
-                                    </span>
-                                </div>
-                            </div>
+                    <div class="p-6 text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-h-[24rem] overflow-y-auto whitespace-pre-wrap">
+                        {{ $selectedMessage->message }}
+                    </div>
 
-                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-3">
-                                {{ $selectedMessage->subject }}
-                            </h3>
-                            
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center shadow-sm">
-                                    <span class="text-sm font-medium text-white">
-                                        {{ strtoupper(substr($selectedMessage->name, 0, 1)) }}
-                                    </span>
-                                </div>
-                                <div>
-                                    <div class="font-medium text-slate-800 dark:text-slate-200">
-                                        {{ $selectedMessage->name }}
-                                    </div>
-                                    <div class="text-sm text-slate-500 dark:text-slate-400">
-                                        {{ $selectedMessage->email }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    @if($selectedMessage->direction === 'inbound')
+                        <div class="p-6 bg-slate-50/50 dark:bg-slate-900/40 border-t border-slate-100 dark:border-slate-800/80">
+                            <h4 class="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider mb-3">Antwoord opstellen</h4>
+                            <div class="space-y-3">
+                                <textarea wire:model="reply" rows="4" 
+                                    placeholder="Typ hier uw professionele reactie..."
+                                    class="w-full text-sm p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-white shadow-xs focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 focus:outline-hidden transition-all placeholder:text-slate-400"></textarea>
+                                
+                                @error('reply') 
+                                    <p class="text-xs font-medium text-red-500">{{ $message }}</p> 
+                                @enderror
 
-                        <!-- Message Content -->
-                        <div class="flex-1 overflow-y-auto mb-4">
-                            <div class="bg-slate-50/50 dark:bg-slate-800/30 rounded-xl p-4 border border-slate-200/30 dark:border-slate-700/30">
-                                <div class="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">
-                                    {{ $selectedMessage->message }}
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Integrated Reply Section -->
-                        @if ($selectedMessage->direction === 'inbound')
-                            <div class="border-t border-slate-200/50 dark:border-slate-700/50 pt-4">
-                                @if (!$showReplyModal)
-                                    <button type="button" 
-                                            class="btn btn--primary w-full"
-                                            wire:click="openReplyModal">
-                                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                                <div class="flex justify-end">
+                                    <button wire:click="sendReply" 
+                                        class="px-5 py-2 text-sm font-semibold text-white bg-teal-600 hover:bg-teal-500 rounded-xl shadow-xs transition-all duration-150 flex items-center gap-2">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                                         </svg>
-                                        Beantwoorden
+                                        Antwoord Verzenden
                                     </button>
-                                @else
-                                    <div class="space-y-3">
-                                        <div class="text-sm text-slate-600 dark:text-slate-400 bg-slate-50/50 dark:bg-slate-800/30 p-3 rounded-lg">
-                                            <div class="font-medium text-slate-700 dark:text-slate-300 mb-1">
-                                                Aan: {{ $selectedMessage->name }}
-                                            </div>
-                                            <div class="text-xs text-slate-500 dark:text-slate-400">
-                                                {{ $selectedMessage->email }}
-                                            </div>
-                                        </div>
-
-                                        <form wire:submit="sendReply" class="space-y-3">
-                                            <div>
-                                                <label class="wp-label" for="reply">Uw antwoord</label>
-                                                <textarea id="reply" 
-                                                          class="wp-input" 
-                                                          wire:model="reply"
-                                                          rows="4"
-                                                          placeholder="Typ uw antwoord..."></textarea>
-                                                @error('reply')
-                                                    <div class="wp-error">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="flex gap-2">
-                                                <button type="submit" class="btn btn--primary">
-                                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                                    </svg>
-                                                    Versturen
-                                                </button>
-                                                <button type="button" class="btn btn--ghost" wire:click="closeReplyModal">
-                                                    Annuleren
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                @endif
+                                </div>
                             </div>
-                        @endif
-                    </div>
-                @else
-                    <!-- Premium Empty State -->
-                    <div class="flex-1 flex items-center justify-center">
-                        <div class="text-center max-w-sm">
-                            <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-slate-100 via-slate-200 to-slate-300 dark:from-slate-700 dark:via-slate-600 dark:to-slate-500 rounded-3xl flex items-center justify-center shadow-lg">
-                                <svg class="w-10 h-10 text-slate-400 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-100 mb-3">
-                                Selecteer een bericht
-                            </h3>
-                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                                Kies een bericht uit de lijst om de details te bekijken en te beantwoorden
-                            </p>
                         </div>
+                    @endif
+                </div>
+            @else
+                <div class="h-full min-h-[30rem] bg-white/40 dark:bg-slate-900/10 backdrop-blur-md rounded-2xl border border-dashed border-slate-200 dark:border-slate-800/80 p-12 flex flex-col items-center justify-center text-center">
+                    <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xs text-slate-400 mb-4">
+                        <svg class="w-10 h-10 stroke-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0l-7.5-4.615a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                        </svg>
                     </div>
-                @endif
-            </div>
+                    <h3 class="text-base font-bold text-slate-800 dark:text-slate-200">Geen bericht geselecteerd</h3>
+                    <p class="mt-1 text-sm text-slate-500 max-w-xs">
+                        Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden.
+                    </p>
+                </div>
+            @endif
         </div>
+
     </div>
 </div>
-
-<style>
-.wp-message-content {
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    white-space: pre-wrap;
-    line-height: 1.6;
-    font-size: 0.95rem;
-}
-
-.dark .wp-message-content {
-    background: #1f2937;
-    border-color: #374151;
-    color: #f3f4f6;
-}
-
-.wp-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
-}
-
-.wp-modal-content {
-    min-width: 500px;
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-radius: 1rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Custom scrollbar for message list */
-.overflow-y-auto::-webkit-scrollbar {
-    width: 6px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 3px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-
-.dark .overflow-y-auto::-webkit-scrollbar-thumb {
-    background: #475569;
-}
-
-.dark .overflow-y-auto::-webkit-scrollbar-thumb:hover {
-    background: #64748b;
-}
-</style>
