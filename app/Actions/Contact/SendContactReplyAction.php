@@ -36,19 +36,21 @@ class SendContactReplyAction
             'tenant_id' => $tenantId, // Can be null for SuperUser global replies
         ]);
 
-        // Log audit event
-        $this->auditRecorder->record(
-            userId: $actorUserId,
-            tenantId: $tenantId ?? 0,
-            action: 'contact.reply_sent',
-            modelType: 'ContactMessage',
-            modelId: $outboundMessage->id,
-            payload: [
-                'original_message_id' => $originalMessage->id,
-                'recipient_email' => $originalMessage->email,
-                'subject' => $outboundMessage->subject,
-            ],
-        );
+        // Log audit event only if we have a valid tenant (skip for orphaned IMAP messages)
+        if ($tenantId !== null && $tenantId > 0) {
+            $this->auditRecorder->record(
+                userId: $actorUserId,
+                tenantId: $tenantId,
+                action: 'contact.reply_sent',
+                modelType: 'ContactMessage',
+                modelId: $outboundMessage->id,
+                payload: [
+                    'original_message_id' => $originalMessage->id,
+                    'recipient_email' => $originalMessage->email,
+                    'subject' => $outboundMessage->subject,
+                ],
+            );
+        }
 
         // Dispatch webhook event
         WebhookEvent::dispatch([
