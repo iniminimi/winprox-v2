@@ -114,7 +114,7 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveOrganisation(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
+    public function saveOrganisation(UpdateOrganisationAction $updateOrganisation): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -126,10 +126,6 @@ class Settings extends Component
         $this->orgCountryCode = strtoupper(trim($this->orgCountryCode));
 
         $request = new UpdateOrganisationRequest;
-        $rules = $request->rules();
-        if ($this->orgLogo !== null) {
-            $rules['orgLogo'] = ['nullable', 'image', 'max:2048'];
-        }
 
         $validated = Validator::make(
             [
@@ -144,9 +140,8 @@ class Settings extends Component
                 'custom_theme_active' => $this->customThemeActive,
                 'custom_theme_bg' => $this->customThemeBg,
                 'custom_theme_btn' => $this->customThemeBtn,
-                'orgLogo' => $this->orgLogo,
             ],
-            $rules,
+            $request->rules(),
             $request->messages(),
         )->validate();
 
@@ -164,6 +159,39 @@ class Settings extends Component
             'custom_theme_btn' => $validated['custom_theme_btn'] ?? null,
         ];
 
+        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->closeOrgModal();
+        $this->dispatch('saved');
+    }
+
+    public function saveOrganisationLogo(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            ['orgLogo' => $this->orgLogo],
+            ['orgLogo' => ['nullable', 'image', 'max:2048']],
+        )->validate();
+
+        $payload = [
+            'name' => $tenant->name,
+            'custom_theme_active' => $tenant->custom_theme_active,
+            'custom_theme_bg' => $tenant->custom_theme_bg,
+            'custom_theme_btn' => $tenant->custom_theme_btn,
+        ];
+
         if ($this->orgLogo instanceof UploadedFile) {
             $logoStorage->delete($tenant->logo_path);
             $payload['logo_path'] = $logoStorage->store($this->orgLogo, (int) $tenant->id);
@@ -178,7 +206,6 @@ class Settings extends Component
             $user->setRelation('tenant', $updated);
         }
 
-        $this->closeOrgModal();
         $this->dispatch('saved');
     }
 

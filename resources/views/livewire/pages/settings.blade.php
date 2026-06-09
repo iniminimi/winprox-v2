@@ -76,6 +76,30 @@
         </div>
     @endif
 
+    @if ($canManageOrganisation && $organisationTenant)
+        <form wire:submit="saveOrganisationLogo" class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('settings.org.logo_label') }}</h2>
+            <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
+            <div class="wp-field">
+                @if ($organisationLogoUrl)
+                    <img
+                        src="{{ $organisationLogoUrl }}"
+                        alt=""
+                        class="wp-org-logo-preview"
+                        width="120"
+                        height="120"
+                        wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
+                    >
+                @endif
+                <input type="file" id="orgLogoInline" class="wp-input" wire:model="orgLogo" accept="image/*">
+                @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-cluster">
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </div>
+        </form>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack-tight">
         <h2 class="wp-section-title">{{ __('settings.style.title') }}</h2>
         <p class="wp-muted">{{ __('settings.style.hint') }}</p>
@@ -272,22 +296,6 @@
                                maxlength="2" placeholder="{{ __('settings.org.placeholder_country') }}"
                                autocomplete="country">
                         @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="orgLogo">{{ __('settings.org.logo_label') }}</label>
-                        @if ($organisationLogoUrl)
-                            <img
-                                src="{{ $organisationLogoUrl }}"
-                                alt=""
-                                class="wp-org-logo-preview"
-                                width="120"
-                                height="120"
-                                wire:key="org-logo-modal-{{ md5($organisationLogoUrl) }}"
-                            >
-                        @endif
-                        <input type="file" id="orgLogo" class="wp-input" wire:model="orgLogo" accept="image/*">
-                        @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                        <p class="wp-hint">{{ __('settings.org.logo_hint') }}</p>
                     </div>
                 </div>
 
