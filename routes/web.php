@@ -32,6 +32,7 @@ use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
 use App\Livewire\Platform\Audit as PlatformAudit;
+use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
 use App\Livewire\Platform\QrConnect;
@@ -107,6 +108,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/help', PlatformHelp::class)
         ->middleware('superuser')
         ->name('platform.help');
+    Route::get('/platform/contact-messages', ContactMessages::class)
+        ->middleware('superuser')
+        ->name('platform.contact-messages');
 
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');

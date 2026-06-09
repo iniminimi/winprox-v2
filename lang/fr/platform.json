@@ -40,6 +40,9 @@
         "inactive": "Inactif",
         "no_tenant": "Aucune organisation"
     },
+    "contact_messages": {
+        "nav": "Messages Contact"
+    },
     "audit": {
         "nav": "Audit",
         "title": "Audit plateforme",

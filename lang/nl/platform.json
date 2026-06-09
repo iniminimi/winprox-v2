@@ -40,6 +40,9 @@
         "inactive": "Inactief",
         "no_tenant": "Geen organisatie"
     },
+    "contact_messages": {
+        "nav": "Contactberichten"
+    },
     "audit": {
         "nav": "Audit",
         "title": "Platformaudit",
