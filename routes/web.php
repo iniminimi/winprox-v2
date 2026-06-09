@@ -81,6 +81,7 @@ Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscrib
     ->name('email.resubscribe');
 
 Route::get('/contact', Contact::class)->name('contact.index');
+Route::view('/promo', 'promo')->name('promo');
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
     Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
@@ -121,7 +122,6 @@ Route::middleware('auth')->group(function () {
         ->middleware('superuser')
         ->name('platform.promo-qr.download');
 
-    Route::view('/promo', 'promo')->name('promo');
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');
     Route::get('/manual', ManualIndex::class)->name('manual.index');
