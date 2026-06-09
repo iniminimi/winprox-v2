@@ -7,18 +7,18 @@
 
         <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; gap: 0.5rem; align-items: center;">
             <button wire:click="setFilter('all')" 
-                class="btn {{ $filter === 'all' ? 'primary' : 'surface' }} btn--sm">
+                class="btn {{ $filter === 'all' ? 'btn--primary' : 'btn--ghost' }} btn--sm">
                 {{ __('contact-messages.filter_all') }}
             </button>
             <button wire:click="setFilter('inbound')" 
-                class="btn {{ $filter === 'inbound' ? 'primary' : 'surface' }} btn--sm" style="display: flex; align-items: center; gap: 0.5rem;">
+                class="btn {{ $filter === 'inbound' ? 'btn--primary' : 'btn--ghost' }} btn--sm" style="display: flex; align-items: center; gap: 0.5rem;">
                 {{ __('contact-messages.filter_inbound') }}
                 @if($unreadCount > 0)
                     <span class="wp-pill wp-pill--new" style="margin: 0;">{{ $unreadCount }}</span>
                 @endif
             </button>
             <button wire:click="setFilter('outbound')" 
-                class="btn {{ $filter === 'outbound' ? 'primary' : 'surface' }} btn--sm">
+                class="btn {{ $filter === 'outbound' ? 'btn--primary' : 'btn--ghost' }} btn--sm">
                 {{ __('contact-messages.filter_outbound') }}
             </button>
         </div>
@@ -30,7 +30,7 @@
             @forelse($messages as $message)
                 <div wire:click="selectMessage({{ $message->id }})" 
                     class="wp-card wp-card-pad wp-list-row {{ $selectedMessage && $selectedMessage->id === $message->id ? 'wp-list-row--active' : '' }}"
-                    style="cursor: pointer; display: block; border-radius: var(--wp-radius, 12px); transition: all 0.2s ease;">
+                    style="cursor: pointer; display: block; border-radius: var(--wp-radius, 12px); transition: all 0.2s ease; {{ $selectedMessage && $selectedMessage->id === $message->id ? 'border-color: var(--wp-accent); background-color: var(--wp-accent-soft);' : '' }}">
                     
                     <div class="wp-stack" style="--wp-stack-gap: 0.5rem;">
                         <div class="wp-row" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%;">
