@@ -43,7 +43,7 @@ class ContactMessages extends Component
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
-        ]); 
+        ])->layout('layouts.components.app'); 
     }
 
     public function selectMessage($messageId)
