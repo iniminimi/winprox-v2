@@ -25,16 +25,14 @@
             overflow: hidden;
         }
         .header {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
-            padding: 32px 24px;
+            background-color: #ffffff;
+            padding: 24px;
             text-align: center;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .header h1 {
-            margin: 0;
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: -0.5px;
+        .header img {
+            max-width: 100px;
+            height: auto;
         }
         .accent-line {
             height: 4px;
@@ -89,7 +87,7 @@
     <div class="container">
         <div class="email-wrapper">
             <div class="header">
-                <h1>WinProx</h1>
+                <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="WinProx">
             </div>
             <div class="accent-line"></div>
             <div class="body">
@@ -99,10 +97,8 @@
                 {!! nl2br(e($bodyText)) !!}
             </div>
             <div class="footer">
-                <p class="footer-text">{{ __('Verzonden via WinProx Facility Management') }}</p>
-                <p class="footer-brand">WinProx</p>
-                <p class="footer-text" style="margin-top: 12px; font-size: 11px; color: #94a3b8;">
-                    {{ __('Dit is een automatisch gegenereerd bericht. Gelieve niet te antwoorden op deze e-mail.') }}
+                <p class="footer-text">
+                    <a href="https://winprox.app" style="color: #059669; text-decoration: none;">{{ __('contact-messages.email_footer_sent_via') }}</a>
                 </p>
             </div>
         </div>

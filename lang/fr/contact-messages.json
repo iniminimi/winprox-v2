@@ -42,5 +42,6 @@
     "label_subject": "Sujet",
     "label_message": "Message",
     "empty_title": "Aucun message sélectionné",
-    "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement."
+    "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement.",
+    "email_footer_sent_via": "Envoyé via WinProx.app"
 }

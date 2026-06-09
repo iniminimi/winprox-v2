@@ -42,5 +42,6 @@
     "label_subject": "Onderwerp",
     "label_message": "Bericht",
     "empty_title": "Geen bericht geselecteerde",
-    "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden."
+    "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden.",
+    "email_footer_sent_via": "Verzonden via WinProx.app"
 }
