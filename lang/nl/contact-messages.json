@@ -17,6 +17,7 @@
     "reply_placeholder": "Typ hier uw professionele reactie...",
     "send_reply": "Antwoord Verzenden",
     "failed_to_send": "Failed to send reply",
+    "reply_sent_success": "Antwoord succesvol verstuurd.",
     "badge_new": "Nieuw",
     "badge_sent": "Verzonden",
     "label_from": "Van",

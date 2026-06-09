@@ -20,6 +20,12 @@
         </div>
     </div>
 
+    @if (session()->has('success'))
+        <div class="wp-pill wp-pill--done" style="padding: 0.5rem 0.75rem; width: fit-content;">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div class="wp-row" style="display: flex; flex-direction: row; gap: 1.25rem; align-items: start; width: 100%;">
         
         <div class="wp-stack" style="flex: 0 0 38%; width: 38%; --wp-stack-gap: 0.25rem; max-h: calc(100vh - 12rem); overflow-y: auto; padding-right: 0.25rem; margin-top: 0;">

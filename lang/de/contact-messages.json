@@ -17,6 +17,7 @@
     "reply_placeholder": "Geben Sie hier Ihre professionelle Antwort ein...",
     "send_reply": "Antwort senden",
     "failed_to_send": "Fehler beim Senden der Antwort",
+    "reply_sent_success": "Antwort erfolgreich gesendet.",
     "badge_new": "Neu",
     "badge_sent": "Gesendet",
     "label_from": "Von",

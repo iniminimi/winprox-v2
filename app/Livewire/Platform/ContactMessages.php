@@ -108,6 +108,7 @@ class ContactMessages extends Component
 
             $this->closeReplyModal();
             $this->dispatch('reply-sent');
+            session()->flash('success', __('contact-messages.reply_sent_success'));
             
             // Ververs het geselecteerde bericht en herlaad de lijst
             $this->selectedMessage = ContactMessage::findOrFail($this->selectedMessage->id);

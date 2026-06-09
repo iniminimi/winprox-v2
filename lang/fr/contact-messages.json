@@ -17,6 +17,7 @@
     "reply_placeholder": "Tapez votre réponse professionnelle ici...",
     "send_reply": "Envoyer la réponse",
     "failed_to_send": "Échec de l'envoi de la réponse",
+    "reply_sent_success": "Réponse envoyée avec succès.",
     "badge_new": "Nouveau",
     "badge_sent": "Envoyé",
     "label_from": "De",
