@@ -29,8 +29,8 @@
         "no_location": "Kein Standort"
     },
     "onboarding": {
-        "title": "Beginnen Sie mit der Erstellung von Standorten und Units",
-        "text": "Erstellen Sie Standorte und Units, um mit Meldungen und Aufgaben zu beginnen.",
+        "title": "Beginnen Sie mit der Erstellung von Kategorien",
+        "text": "Gehen Sie zu Standorten und Units und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrizität). Kategorien helfen beim Filtern und Organisieren von Units und hängen vom Sektor des Unternehmens ab. Indem Sie Ausführerteams mit bestimmten Kategorien verknüpfen, stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden. Fügen Sie Standorte hinzu (Gelände, Gebäude, Etagen) und erstellen Sie pro Standort Units — das sind die Vermögenswerte, Maschinen oder Räume, in denen Meldungen und Aufgaben registriert werden. Standorte und Units können auch per Massenimport (CSV-Datei) hochgeladen werden.",
         "button": "Standorte verwalten"
     }
 }
