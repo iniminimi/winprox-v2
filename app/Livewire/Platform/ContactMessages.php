@@ -15,6 +15,7 @@ class ContactMessages extends Component
     public $reply = '';
     public $filter = 'all'; // all, inbound, outbound
     public $showReplyModal = false;
+    public $unreadCount = 0;
 
     protected $paginationTheme = 'tailwind';
 

@@ -1,8 +1,8 @@
 <div class="wp-stack">
     <x-wp-page-head-title
-        icon="mail"
+        icon="contact"
         title="Contactberichten"
-        :subtitle="$unreadCount . ' ongelezen berichten'"
+        :subtitle="$this->unreadCount . ' ongelezen berichten'"
     />
 
     <!-- Filters -->
