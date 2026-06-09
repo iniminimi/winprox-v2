@@ -7,7 +7,11 @@
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8 text-center">
+    <div class="max-w-md w-full">
+        <div class="flex justify-end mb-4">
+            @include('partials.wp-lang-switch', ['variant' => 'inline'])
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-8 text-center">
         <div class="mb-6">
             <svg class="mx-auto h-16 w-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -25,6 +29,7 @@
         <a href="{{ route('welcome') }}" class="btn btn--primary">
             {{ __('email.resubscribed.back_home') }}
         </a>
+        </div>
     </div>
 </body>
 </html>
