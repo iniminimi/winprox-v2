@@ -18,10 +18,8 @@
         "role_employee": "Medewerker"
     },
     "unsubscribe": {
-        "html_intro": "Je ontvangt deze e-mail omdat je gekoppeld bent aan een WinProx-account. Als je geen e-mails meer wilt ontvangen, kun je je",
-        "text_intro": "Je ontvangt deze e-mail omdat je gekoppeld bent aan een WinProx-account. Als je geen e-mails meer wilt ontvangen, kun je je hier uitschrijven:",
-        "link_label": "hier uitschrijven",
-        "users_page_hint_html": "Als WinProx-gebruiker kun je ook via <a href=\":url\">Instellingen</a> je e-mailvoorkeuren aanpassen.",
-        "users_page_hint_text": "Als WinProx-gebruiker kun je ook via Instellingen (:url) je e-mailvoorkeuren aanpassen."
+        "html_intro": "Als je geen e-mails meer wilt ontvangen, kun je je",
+        "text_intro": "Als je geen e-mails meer wilt ontvangen, kun je je hier uitschrijven:",
+        "link_label": "hier uitschrijven"
     }
 }

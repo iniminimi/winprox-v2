@@ -18,10 +18,8 @@
         "role_employee": "Mitarbeiter"
     },
     "unsubscribe": {
-        "html_intro": "Du erhältst diese E-Mail, weil du mit einem WinProx-Konto verknüpft bist. Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich",
-        "text_intro": "Du erhältst diese E-Mail, weil du mit einem WinProx-Konto verknüpft bist. Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich hier abmelden:",
-        "link_label": "hier abmelden",
-        "users_page_hint_html": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen auch über <a href=\":url\">Einstellungen</a> anpassen.",
-        "users_page_hint_text": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen auch über Einstellungen (:url) anpassen."
+        "html_intro": "Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich",
+        "text_intro": "Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich hier abmelden:",
+        "link_label": "hier abmelden"
     }
 }

@@ -18,10 +18,8 @@
         "role_employee": "Employé"
     },
     "unsubscribe": {
-        "html_intro": "Vous recevez cet e-mail car vous êtes lié à un compte WinProx. Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous",
-        "text_intro": "Vous recevez cet e-mail car vous êtes lié à un compte WinProx. Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous désabonner ici :",
-        "link_label": "désabonner ici",
-        "users_page_hint_html": "En tant qu'utilisateur WinProx, vous pouvez également ajuster vos préférences e-mail via <a href=\":url\">Paramètres</a>.",
-        "users_page_hint_text": "En tant qu'utilisateur WinProx, vous pouvez également ajuster vos préférences e-mail via Paramètres (:url)."
+        "html_intro": "Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous",
+        "text_intro": "Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous désabonner ici :",
+        "link_label": "désabonner ici"
     }
 }

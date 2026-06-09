@@ -18,10 +18,8 @@
         "role_employee": "Employee"
     },
     "unsubscribe": {
-        "html_intro": "You're receiving this email because you're linked to a WinProx account. If you no longer wish to receive emails, you can",
-        "text_intro": "You're receiving this email because you're linked to a WinProx account. If you no longer wish to receive emails, you can unsubscribe here:",
-        "link_label": "unsubscribe here",
-        "users_page_hint_html": "As a WinProx user, you can also adjust your email preferences via <a href=\":url\">Settings</a>.",
-        "users_page_hint_text": "As a WinProx user, you can also adjust your email preferences via Settings (:url)."
+        "html_intro": "If you no longer wish to receive emails, you can",
+        "text_intro": "If you no longer wish to receive emails, you can unsubscribe here:",
+        "link_label": "unsubscribe here"
     }
 }

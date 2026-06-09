@@ -3,10 +3,8 @@
 namespace App\Listeners;
 
 use App\Models\EmailUnsubscribe;
-use App\Models\User;
 use App\Support\EmailUnsubscribeLink;
 use Illuminate\Mail\Events\MessageSending;
-use Illuminate\Support\Facades\URL;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 
@@ -24,31 +22,15 @@ class AppendEmailUnsubscribeFooterToMessage
         $url = EmailUnsubscribeLink::signedUrl($primary);
         $urlEsc = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
 
-        $profileHintHtml = '';
-        $profileHintText = '';
-        if ($this->recipientIsWinProxUser($primary)) {
-            $recipientUser = User::query()
-                ->whereRaw('LOWER(email) = ?', [EmailUnsubscribe::normalizeEmail($primary)])
-                ->first();
-            $profileUrl = URL::route('settings.index', [], true);
-            $profileUrlEsc = htmlspecialchars($profileUrl, ENT_QUOTES, 'UTF-8');
-            $profileHintHtml = '<div style="text-align:center;margin-top:12px;font-size:12px;color:#6b7280;line-height:1.5;">'
-                .str_replace(':url', $profileUrlEsc, __('mail.unsubscribe.users_page_hint_html'))
-                .'</div>';
-            $profileHintText = "\n".__('mail.unsubscribe.users_page_hint_text', ['url' => $profileUrl])."\n";
-        }
-
         $htmlFooter = '<div style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;font-size:12px;color:#6b7280;line-height:1.5;font-family:Arial,sans-serif;">'
             .'<div style="text-align:center;">'
             .htmlspecialchars(__('mail.unsubscribe.html_intro'), ENT_QUOTES, 'UTF-8')
             .' <a href="'.$urlEsc.'" style="color:#059669;font-weight:600;">'
             .htmlspecialchars(__('mail.unsubscribe.link_label'), ENT_QUOTES, 'UTF-8')
-            .'.</div>'
-            .$profileHintHtml
-            .'<br><br>'
+            .'</a>.</div>'
             .'</div>';
 
-        $textFooter = "\n\n---\n".__('mail.unsubscribe.text_intro').' '.$url."\n".$profileHintText;
+        $textFooter = "\n\n---\n".__('mail.unsubscribe.text_intro').' '.$url."\n";
 
         $html = $message->getHtmlBody();
         $text = $this->stringifyBody($message->getTextBody());
@@ -107,13 +89,6 @@ class AppendEmailUnsubscribeFooterToMessage
         }
 
         return null;
-    }
-
-    private function recipientIsWinProxUser(string $normalizedEmail): bool
-    {
-        $normalized = EmailUnsubscribe::normalizeEmail($normalizedEmail);
-
-        return User::query()->whereRaw('LOWER(email) = ?', [$normalized])->exists();
     }
 
     private function injectBeforeBodyClose(string $html, string $snippet): string
