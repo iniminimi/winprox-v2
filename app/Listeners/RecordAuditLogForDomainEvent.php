@@ -20,12 +20,19 @@ class RecordAuditLogForDomainEvent
             return;
         }
 
+        $tenantId = $event->webhookTenantId();
+
+        // Skip audit logging for orphaned events without valid tenant (e.g., IMAP messages)
+        if ($tenantId === null || $tenantId <= 0) {
+            return;
+        }
+
         $payload = $event->webhookPayload();
         [$modelType, $modelId] = $this->resolveModel($event->webhookEventName(), $payload);
 
         $this->logAudit->handle(
             userId: $this->resolveUserId($payload),
-            tenantId: $event->webhookTenantId(),
+            tenantId: $tenantId,
             action: $event->webhookEventName(),
             modelType: $modelType,
             modelId: $modelId,
