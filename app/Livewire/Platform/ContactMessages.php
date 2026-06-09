@@ -95,7 +95,8 @@ class ContactMessages extends Component
         }
 
         try {
-            $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
+            // Use the tenant_id from the selected message to ensure valid tenant for audit logging
+            $tenantId = $this->selectedMessage->tenant_id;
 
             $action = app(SendContactReplyAction::class);
             $action->handle(
