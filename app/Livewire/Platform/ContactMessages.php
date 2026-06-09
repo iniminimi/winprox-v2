@@ -8,7 +8,6 @@ use App\Actions\Contact\SendContactReplyAction;
 use App\Actions\Contact\SendNewOutboundMessageAction;
 use App\Models\ContactMessage;
 use App\Models\Tenant;
-use App\Models\User;
 use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -57,9 +56,9 @@ class ContactMessages extends Component
         
         $this->unreadCount = $action->getUnreadCount($tenantId);
 
-        // Load tenants for SuperUsers when composing
+        // Load tenants for SuperUser compose form
         $tenants = [];
-        if ($this->isComposing && auth()->user()?->is_superuser) {
+        if ($this->isComposing) {
             $tenants = Tenant::orderBy('name')->get(['id', 'name']);
         }
 
@@ -161,9 +160,8 @@ class ContactMessages extends Component
         $this->newSubject = '';
         $this->newMessageBody = '';
 
-        // Set default tenant for non-superusers
-        $currentTenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-        $this->newMessageTenantId = $currentTenantId;
+        // SuperUsers need to select a tenant
+        $this->newMessageTenantId = null;
 
         $this->resetErrorBag();
     }
