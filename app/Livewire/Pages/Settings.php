@@ -216,11 +216,8 @@ class Settings extends Component
 
     public function saveOrganisationPortalBackground(UpdateOrganisationAction $updateOrganisation, TenantPortalBackgroundStorage $backgroundStorage): void
     {
-        \Log::info('saveOrganisationPortalBackground called', ['portalBackground' => $this->portalBackground]);
-
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
-            \Log::error('No tenant found');
             return;
         }
 
@@ -246,8 +243,6 @@ class Settings extends Component
 
         $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
         $this->fillOrganisationFromTenant($updated);
-
-        \Log::info('Portal background saved', ['tenant_id' => $tenant->id, 'path' => $updated->portal_background_path]);
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
