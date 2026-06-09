@@ -15,7 +15,7 @@
 
     $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
     if ($portalBgUrl) {
-        $tenantCustomThemeVars .= " --wp-portal-bg: url({$portalBgUrl});";
+        $tenantCustomThemeVars .= " --wp-portal-bg: url('{$portalBgUrl}');";
     }
 
     $applyTenantCustomTheme = ($tenantCustomThemeVars !== '' || $portalBgUrl !== null)
@@ -40,6 +40,17 @@
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
+    
+    {{-- Forceer dat de portal-achtergrond de variabele gebruikt en niet overschreven wordt op mobiel --}}
+    <style>
+        [data-theme="simple"] .wp-public-body {
+            background-image: var(--wp-portal-bg, none) !important;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
     <main class="wp-portal">
