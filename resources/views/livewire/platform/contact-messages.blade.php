@@ -6,6 +6,14 @@
         </div>
 
         <div class="wp-row wp-cluster" style="display: flex; flex-direction: row; gap: 0.375rem; align-items: center;">
+            <button wire:click="startCompose"
+                class="btn btn--primary btn--sm"
+                style="display: flex; align-items: center; gap: 0.375rem;">
+                <svg style="width: 0.875rem; height: 0.875rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+                {{ __('contact-messages.button_compose') }}
+            </button>
             <button wire:click="setFilter('inbound')"
                 class="btn {{ $filter === 'inbound' ? 'btn--primary' : 'btn--ghost' }} btn--sm" style="display: flex; align-items: center; gap: 0.375rem;">
                 {{ __('contact-messages.filter_inbound') }}
@@ -168,6 +176,65 @@
                         </div>
                     @endif
 
+                </div>
+            @elseif($isComposing)
+                {{-- Compose New Message Form --}}
+                <div class="wp-card wp-card-pad wp-stack" style="--wp-stack-gap: 1rem; border-radius: var(--wp-radius, 12px); padding: 1.25rem;">
+                    <div style="border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 0.75rem;">
+                        <h2 class="wp-section-title" style="margin: 0; font-size: 1.2rem;">{{ __('contact-messages.compose_title') }}</h2>
+                    </div>
+
+                    <div class="wp-stack" style="--wp-stack-gap: 0.75rem;">
+                        <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_recipient_name') }}</label>
+                            <input type="text" wire:model="newName" class="wp-input" placeholder="{{ __('contact-messages.placeholder_name') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+                            @if($errors->has('newName'))
+                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newName') }}</span>
+                            @endif
+                        </div>
+
+                        <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_recipient_email') }}</label>
+                            <input type="email" wire:model="newEmail" class="wp-input" placeholder="{{ __('contact-messages.placeholder_email') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+                            @if($errors->has('newEmail'))
+                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newEmail') }}</span>
+                            @endif
+                        </div>
+
+                        <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_subject') }}</label>
+                            <input type="text" wire:model="newSubject" class="wp-input" placeholder="{{ __('contact-messages.placeholder_subject') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+                            @if($errors->has('newSubject'))
+                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newSubject') }}</span>
+                            @endif
+                        </div>
+
+                        <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                            <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_message') }}</label>
+                            <textarea wire:model="newMessageBody" rows="8" class="wp-input" placeholder="{{ __('contact-messages.placeholder_message') }}" style="width: 100%; resize: vertical; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;"></textarea>
+                            @if($errors->has('newMessageBody'))
+                                <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newMessageBody') }}</span>
+                            @endif
+                        </div>
+                    </div>
+
+                    @if($errors->has('newMessage'))
+                        <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newMessage') }}</span>
+                    @endif
+
+                    <div class="wp-row" style="display: flex; flex-direction: row; justify-content: flex-end; gap: 0.5rem; width: 100%; padding-top: 0.5rem; border-top: 1px solid rgba(0,0,0,0.06);">
+                        <button wire:click="$set('isComposing', false)" class="btn btn--ghost btn--sm">
+                            {{ __('contact-messages.button_cancel') }}
+                        </button>
+                        <button wire:click="sendNewMessage" wire:loading.attr="disabled" class="btn btn--primary btn--sm" style="display: flex; align-items: center; gap: 0.375rem;">
+                            <svg wire:loading wire:target="sendNewMessage" style="width: 0.875rem; height: 0.875rem; animation: wp-spin 1s linear infinite;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span wire:loading wire:target="sendNewMessage">{{ __('contact-messages.button_sending') }}</span>
+                            <span wire:loading.remove wire:target="sendNewMessage">{{ __('contact-messages.button_send_message') }}</span>
+                        </button>
+                    </div>
                 </div>
             @else
                 <div class="wp-card wp-card-pad" style="text-align: center; padding: 7rem 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: var(--wp-radius, 12px); min-height: 24rem;">

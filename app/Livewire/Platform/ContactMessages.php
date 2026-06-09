@@ -5,6 +5,7 @@ namespace App\Livewire\Platform;
 use App\Actions\Contact\GetContactMessagesAction;
 use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
+use App\Actions\Contact\SendNewOutboundMessageAction;
 use App\Models\ContactMessage;
 use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
@@ -25,6 +26,13 @@ class ContactMessages extends Component
     public $showReplyModal = false;
     public $unreadCount = 0;
     public $selectedMessageIds = [];
+
+    // Compose new message properties
+    public $isComposing = false;
+    public $newEmail = '';
+    public $newName = '';
+    public $newSubject = '';
+    public $newMessageBody = '';
 
     protected $paginationTheme = 'tailwind';
 
@@ -53,6 +61,7 @@ class ContactMessages extends Component
 
     public function selectMessage($messageId)
     {
+        $this->isComposing = false;
         $this->selectedMessage = ContactMessage::findOrFail($messageId);
         $this->authorize('view', $this->selectedMessage);
         
@@ -123,8 +132,67 @@ class ContactMessages extends Component
     public function setFilter($filter)
     {
         $this->filter = $filter;
+        $this->isComposing = false;
         $this->selectedMessageIds = [];
         $this->resetPage();
+    }
+
+    /**
+     * Start composing a new outbound message
+     */
+    public function startCompose(): void
+    {
+        $this->isComposing = true;
+        $this->selectedMessage = null;
+        $this->newEmail = '';
+        $this->newName = '';
+        $this->newSubject = '';
+        $this->newMessageBody = '';
+        $this->resetErrorBag();
+    }
+
+    /**
+     * Send new outbound message
+     */
+    public function sendNewMessage(): void
+    {
+        $this->validate([
+            'newEmail' => 'required|email',
+            'newName' => 'required|string|max:255',
+            'newSubject' => 'required|string|max:255',
+            'newMessageBody' => 'required|string|min:1',
+        ]);
+
+        try {
+            $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
+
+            if ($tenantId === null) {
+                throw new \Exception('No tenant context available');
+            }
+
+            $action = app(SendNewOutboundMessageAction::class);
+            $action->handle(
+                recipientEmail: $this->newEmail,
+                recipientName: $this->newName,
+                subject: $this->newSubject,
+                body: $this->newMessageBody,
+                tenantId: $tenantId,
+                actorUserId: auth()->id(),
+            );
+
+            // Reset form and show success
+            $this->isComposing = false;
+            $this->newEmail = '';
+            $this->newName = '';
+            $this->newSubject = '';
+            $this->newMessageBody = '';
+
+            session()->flash('success', __('contact-messages.new_message_sent_success'));
+            $this->resetPage();
+
+        } catch (\Exception $e) {
+            $this->addError('newMessage', __('contact-messages.failed_to_send') . ': ' . $e->getMessage());
+        }
     }
 
     /**
