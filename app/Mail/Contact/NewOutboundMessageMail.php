@@ -33,13 +33,13 @@ class NewOutboundMessageMail extends Mailable
 
     public function content(): Content
     {
-        return (new Content(
+        return new Content(
             html: 'emails.contact.winprox-template',
             with: [
                 'bodyText' => $this->bodyText,
                 'recipientName' => $this->recipientName,
                 'tenantName' => $this->tenant?->name ?? config('app.name'),
             ],
-        ))->locale($this->mailLocale);
+        );
     }
 }
