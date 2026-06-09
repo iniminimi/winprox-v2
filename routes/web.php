@@ -75,6 +75,10 @@ Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirm'])
     ->middleware('signed')
     ->name('email.unsubscribe');
 
+Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscribe'])
+    ->middleware('signed')
+    ->name('email.resubscribe');
+
 Route::get('/contact', Contact::class)->name('contact.index');
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {

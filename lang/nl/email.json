@@ -3,8 +3,13 @@
         "title": "Uitgeschreven",
         "heading": "Succesvol uitgeschreven",
         "message": ":email is nu uitgeschreven van alle WinProx e-mails.",
-        "user_hint": "Als WinProx-gebruiker kun je je e-mailvoorkeuren later weer aanpassen via je instellingen.",
-        "settings_link": "Ga naar Instellingen",
+        "resubscribe_link": "Opnieuw inschrijven",
+        "back_home": "Terug naar home"
+    },
+    "resubscribed": {
+        "title": "Ingeschreven",
+        "heading": "Succesvol ingeschreven",
+        "message": ":email ontvangt nu opnieuw WinProx e-mails.",
         "back_home": "Terug naar home"
     }
 }

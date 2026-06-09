@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ __('email.unsubscribed.title') }}</title>
+    <title>{{ __('email.resubscribed.title') }}</title>
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
@@ -15,21 +15,15 @@
         </div>
 
         <h1 class="text-2xl font-bold text-gray-900 mb-4">
-            {{ __('email.unsubscribed.heading') }}
+            {{ __('email.resubscribed.heading') }}
         </h1>
 
         <p class="text-gray-600 mb-6">
-            {{ __('email.unsubscribed.message', ['email' => $email]) }}
+            {{ __('email.resubscribed.message', ['email' => $email]) }}
         </p>
 
-        <div class="mb-6">
-            <a href="{{ URL::signedRoute('email.resubscribe', ['t' => request()->query('t')]) }}" class="btn btn--ghost btn--sm">
-                {{ __('email.unsubscribed.resubscribe_link') }}
-            </a>
-        </div>
-
         <a href="{{ route('welcome') }}" class="btn btn--primary">
-            {{ __('email.unsubscribed.back_home') }}
+            {{ __('email.resubscribed.back_home') }}
         </a>
     </div>
 </body>

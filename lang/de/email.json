@@ -3,8 +3,13 @@
         "title": "Abgemeldet",
         "heading": "Erfolgreich abgemeldet",
         "message": ":email ist jetzt von allen WinProx-E-Mails abgemeldet.",
-        "user_hint": "Als WinProx-Benutzer kannst du deine E-Mail-Einstellungen später über deine Einstellungen anpassen.",
-        "settings_link": "Zu den Einstellungen",
+        "resubscribe_link": "Wieder anmelden",
+        "back_home": "Zurück zur Startseite"
+    },
+    "resubscribed": {
+        "title": "Wieder angemeldet",
+        "heading": "Erfolgreich wieder angemeldet",
+        "message": ":email empfängt nun wieder WinProx-E-Mails.",
         "back_home": "Zurück zur Startseite"
     }
 }

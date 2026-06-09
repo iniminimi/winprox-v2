@@ -217,6 +217,21 @@
         </p>
     </div>
 
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <h2 class="wp-section-title">{{ __('settings.email.title') }}</h2>
+        <p class="wp-muted">{{ __('settings.email.hint') }}</p>
+        @if ($isEmailUnsubscribed)
+            <div class="wp-error" style="margin-bottom: 0.5rem;">
+                {{ __('settings.email.unsubscribed_status') }}
+            </div>
+            <button type="button" class="btn btn--primary btn--sm" wire:click="resubscribeEmail">
+                {{ __('settings.email.resubscribe_button') }}
+            </button>
+        @else
+            <p class="wp-text-sm wp-muted">{{ __('settings.email.subscribed_status') }}</p>
+        @endif
+    </div>
+
     @if ($canManageOrganisation && $showOrgModal)
         @teleport('body')
         <x-wp-modal closeMethod="closeOrgModal" aria-labelledby="org-edit-title">

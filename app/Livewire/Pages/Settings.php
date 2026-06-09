@@ -6,7 +6,9 @@ use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Enums\UiTheme;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
+use App\Models\EmailUnsubscribe;
 use App\Models\Tenant;
+use App\Support\EmailUnsubscribeLink;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\TenantLogoStorage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -55,6 +57,8 @@ class Settings extends Component
 
     public bool $showOrgModal = false;
 
+    public bool $isEmailUnsubscribed = false;
+
     public function mount(): void
     {
         $tenant = $this->resolveTenant();
@@ -63,6 +67,7 @@ class Settings extends Component
         $user = auth()->user();
         $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);
         $this->uiTheme = $user->uiThemeEnum()->value;
+        $this->isEmailUnsubscribed = EmailUnsubscribe::isUnsubscribed($user->email);
 
         if ($this->canManageOrganisation) {
             $this->fillOrganisationFromTenant($tenant);
@@ -202,6 +207,14 @@ class Settings extends Component
 
         $this->uiTheme = $theme->value;
         $this->dispatch('ui-theme-changed', theme: $theme->value);
+    }
+
+    public function resubscribeEmail(): void
+    {
+        $user = auth()->user();
+        EmailUnsubscribe::query()->where('email', EmailUnsubscribe::normalizeEmail($user->email))->delete();
+        $this->isEmailUnsubscribed = false;
+        $this->dispatch('saved');
     }
 
     public function render()

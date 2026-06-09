@@ -3,8 +3,13 @@
         "title": "Unsubscribed",
         "heading": "Successfully unsubscribed",
         "message": ":email is now unsubscribed from all WinProx emails.",
-        "user_hint": "As a WinProx user, you can adjust your email preferences later via your settings.",
-        "settings_link": "Go to Settings",
+        "resubscribe_link": "Resubscribe",
+        "back_home": "Back to home"
+    },
+    "resubscribed": {
+        "title": "Resubscribed",
+        "heading": "Successfully resubscribed",
+        "message": ":email is now receiving WinProx emails again.",
         "back_home": "Back to home"
     }
 }

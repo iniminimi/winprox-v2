@@ -3,8 +3,13 @@
         "title": "Désabonné",
         "heading": "Désabonnement réussi",
         "message": ":email est maintenant désabonné de tous les e-mails WinProx.",
-        "user_hint": "En tant qu'utilisateur WinProx, vous pouvez ajuster vos préférences e-mail plus tard via vos paramètres.",
-        "settings_link": "Aller aux paramètres",
+        "resubscribe_link": "Se réabonner",
+        "back_home": "Retour à l'accueil"
+    },
+    "resubscribed": {
+        "title": "Réabonné",
+        "heading": "Réabonnement réussi",
+        "message": ":email reçoit à nouveau les e-mails WinProx.",
         "back_home": "Retour à l'accueil"
     }
 }

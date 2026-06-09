@@ -29,11 +29,30 @@ class EmailUnsubscribeController extends Controller
         $row->unsubscribed_at = now();
         $row->save();
 
-        $matchedUser = User::query()->where('email', $email)->first();
-
         return view('email.unsubscribed', [
             'email' => $email,
-            'hasUser' => $matchedUser !== null,
+        ]);
+    }
+
+    public function resubscribe(Request $request): View
+    {
+        $token = $request->query('t');
+        abort_unless(is_string($token) && $token !== '', 404);
+
+        try {
+            $email = Crypt::decryptString($token);
+        } catch (\Throwable) {
+            abort(404);
+        }
+
+        $email = EmailUnsubscribe::normalizeEmail($email);
+
+        abort_unless(filter_var($email, FILTER_VALIDATE_EMAIL), 404);
+
+        EmailUnsubscribe::query()->where('email', $email)->delete();
+
+        return view('email.resubscribed', [
+            'email' => $email,
         ]);
     }
 }
