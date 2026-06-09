@@ -49,8 +49,8 @@ class SendContactReplyAction
 
     private function sendEmail(string $reply, ContactMessage $originalMessage): string
     {
-        // Generate unique Message-ID
-        $messageId = '<' . Str::uuid() . '@winprox.app>';
+        // Generate unique Message-ID (without angle brackets - IdentificationHeader adds them)
+        $messageId = Str::uuid() . '@winprox.app';
 
         // Build the email
         $email = Mail::raw($reply, function ($message) use ($originalMessage, $messageId) {
@@ -61,10 +61,13 @@ class SendContactReplyAction
 
             $headers = $message->getHeaders();
 
+            // Strip angle brackets if present (IMAP stores them with brackets, IdentificationHeader adds them)
+            $originalMessageId = trim($originalMessage->message_id, '<>');
+
             // Use IdentificationHeader for proper header type
             $headers->add(new IdentificationHeader('Message-ID', [$messageId]));
-            $headers->add(new IdentificationHeader('In-Reply-To', [$originalMessage->message_id]));
-            $headers->add(new IdentificationHeader('References', [$originalMessage->message_id]));
+            $headers->add(new IdentificationHeader('In-Reply-To', [$originalMessageId]));
+            $headers->add(new IdentificationHeader('References', [$originalMessageId]));
         });
 
         return $messageId;
