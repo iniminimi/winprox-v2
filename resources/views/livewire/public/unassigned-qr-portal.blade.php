@@ -1,13 +1,9 @@
-@php
-    $portalBgTenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
-    $portalBackgroundUrl = $portalBgTenant ? $portalBgTenant->portalBackgroundPublicUrl() : null;
-@endphp
-<div class="wp-stack" @if($portalBackgroundUrl) style="background-image: url('{{ $portalBackgroundUrl }}'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh;" @endif>
+<div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">
                 @php
-                    $tenant = $portalBgTenant;
+                    $tenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
                     $logoUrl = $tenant ? $tenant->logoPublicUrl() : null;
                 @endphp
                 @if($logoUrl)

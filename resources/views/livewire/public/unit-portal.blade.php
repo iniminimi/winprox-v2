@@ -1,8 +1,4 @@
-@php
-    $portalBgTenant = \App\Support\Tenancy::id() ? \App\Models\Tenant::find(\App\Support\Tenancy::id()) : null;
-    $portalBackgroundUrl = $portalBgTenant ? $portalBgTenant->portalBackgroundPublicUrl() : null;
-@endphp
-<div class="wp-stack" @if($portalBackgroundUrl) style="background-image: url('{{ $portalBackgroundUrl }}'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh;" @endif>
+<div class="wp-stack">
     @if ($inactiveReasonKey === null)
         <div wire:offline class="wp-flash wp-flash--offline" style="position: sticky; top: 0; z-index: 50; text-align: center;">
             {{ __('portal.offline_message') }}

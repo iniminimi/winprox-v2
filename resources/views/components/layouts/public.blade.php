@@ -13,7 +13,12 @@
         $tenantCustomThemeVars = "--wp-bg: {$bg}; --wp-accent: {$btn}; --wp-accent-strong: {$btn};";
     }
 
-    $applyTenantCustomTheme = $tenantCustomThemeVars !== ''
+    $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
+    if ($portalBgUrl) {
+        $tenantCustomThemeVars .= " --wp-portal-bg: url({$portalBgUrl});";
+    }
+
+    $applyTenantCustomTheme = ($tenantCustomThemeVars !== '' || $portalBgUrl !== null)
         && UiTheme::tryFromString($portalTheme) === UiTheme::Simple;
 @endphp
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"

@@ -7,6 +7,10 @@
 .wp-shell {
     min-height: 100vh;
     background-color: var(--wp-bg);
+    background-image: var(--wp-portal-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .wp-container {
