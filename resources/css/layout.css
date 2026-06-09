@@ -928,7 +928,15 @@
     background-image: var(--wp-portal-bg, none);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
+}
+
+.wp-portal .wp-card {
+    background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
+}
+
+.wp-portal .wp-card--info {
+    background-color: color-mix(in srgb, var(--wp-info-soft) 85%, transparent);
 }
 
 .wp-portal-head {
