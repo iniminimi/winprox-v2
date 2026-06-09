@@ -31,16 +31,6 @@
                     </p>
                 @endif
             </div>
-            @if ($organisationLogoUrl)
-                <img
-                    src="{{ $organisationLogoUrl }}"
-                    alt=""
-                    class="wp-org-logo-preview"
-                    width="120"
-                    height="120"
-                    wire:key="org-logo-card-{{ md5($organisationLogoUrl) }}"
-                >
-            @endif
             <div class="wp-cluster">
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
                     {{ __('settings.org.edit') }}
@@ -88,6 +78,7 @@
                         class="wp-org-logo-preview"
                         width="120"
                         height="120"
+                        style="margin-bottom: 0.75rem;"
                         wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
                     >
                 @endif
