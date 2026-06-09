@@ -7,6 +7,8 @@ use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Actions\Contact\SendNewOutboundMessageAction;
 use App\Models\ContactMessage;
+use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -33,6 +35,7 @@ class ContactMessages extends Component
     public $newName = '';
     public $newSubject = '';
     public $newMessageBody = '';
+    public $newMessageTenantId = null;
 
     protected $paginationTheme = 'tailwind';
 
@@ -54,8 +57,15 @@ class ContactMessages extends Component
         
         $this->unreadCount = $action->getUnreadCount($tenantId);
 
+        // Load tenants for SuperUsers when composing
+        $tenants = [];
+        if ($this->isComposing && auth()->user()?->is_superuser) {
+            $tenants = Tenant::orderBy('name')->get(['id', 'name']);
+        }
+
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
+            'tenants' => $tenants,
         ]);
     }
 
@@ -148,6 +158,11 @@ class ContactMessages extends Component
         $this->newName = '';
         $this->newSubject = '';
         $this->newMessageBody = '';
+
+        // Set default tenant for non-superusers
+        $currentTenantId = Tenancy::id() ? (int) Tenancy::id() : null;
+        $this->newMessageTenantId = $currentTenantId;
+
         $this->resetErrorBag();
     }
 
@@ -161,14 +176,11 @@ class ContactMessages extends Component
             'newName' => 'required|string|max:255',
             'newSubject' => 'required|string|max:255',
             'newMessageBody' => 'required|string|min:1',
+            'newMessageTenantId' => 'required|integer|exists:tenants,id',
         ]);
 
         try {
-            $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-
-            if ($tenantId === null) {
-                throw new \Exception('No tenant context available');
-            }
+            $tenantId = (int) $this->newMessageTenantId;
 
             $action = app(SendNewOutboundMessageAction::class);
             $action->handle(

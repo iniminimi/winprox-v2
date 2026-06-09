@@ -37,6 +37,8 @@
     "bulk_deleted_success": ":count bericht(en) succesvol verwijderd.",
     "new_message_sent_success": "Bericht succesvol verzonden.",
     "compose_title": "Nieuw bericht opstellen",
+    "label_tenant": "Tenant",
+    "select_tenant": "Selecteer een tenant",
     "label_recipient_name": "Naam ontvanger",
     "label_recipient_email": "E-mailadres",
     "label_subject": "Onderwerp",

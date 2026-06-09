@@ -37,6 +37,8 @@
     "bulk_deleted_success": ":count Nachricht(en) erfolgreich gelöscht.",
     "new_message_sent_success": "Nachricht erfolgreich gesendet.",
     "compose_title": "Neue Nachricht verfassen",
+    "label_tenant": "Tenant",
+    "select_tenant": "Wählen Sie einen Tenant",
     "label_recipient_name": "Empfängername",
     "label_recipient_email": "E-Mail-Adresse",
     "label_subject": "Betreff",

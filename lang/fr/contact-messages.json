@@ -37,6 +37,8 @@
     "bulk_deleted_success": ":count message(s) supprimé(s) avec succès.",
     "new_message_sent_success": "Message envoyé avec succès.",
     "compose_title": "Rédiger un nouveau message",
+    "label_tenant": "Tenant",
+    "select_tenant": "Sélectionnez un tenant",
     "label_recipient_name": "Nom du destinataire",
     "label_recipient_email": "Adresse e-mail",
     "label_subject": "Sujet",

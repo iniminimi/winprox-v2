@@ -185,6 +185,21 @@
                     </div>
 
                     <div class="wp-stack" style="--wp-stack-gap: 0.75rem;">
+                        @if(count($tenants) > 0)
+                            <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
+                                <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_tenant') }}</label>
+                                <select wire:model="newMessageTenantId" class="wp-input" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem; background-color: white;">
+                                    <option value="">{{ __('contact-messages.select_tenant') }}</option>
+                                    @foreach($tenants as $tenantOption)
+                                        <option value="{{ $tenantOption->id }}">{{ $tenantOption->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('newMessageTenantId'))
+                                    <span class="wp-error" style="display: block; font-size: 0.8rem;">{{ $errors->first('newMessageTenantId') }}</span>
+                                @endif
+                            </div>
+                        @endif
+
                         <div class="wp-stack" style="--wp-stack-gap: 0.25rem;">
                             <label class="wp-label" style="font-weight: 600; font-size: 0.8rem; color: #475569;">{{ __('contact-messages.label_recipient_name') }}</label>
                             <input type="text" wire:model="newName" class="wp-input" placeholder="{{ __('contact-messages.placeholder_name') }}" style="width: 100%; border-radius: 6px; padding: 0.5rem 0.75rem; font-size: 0.9rem;">
