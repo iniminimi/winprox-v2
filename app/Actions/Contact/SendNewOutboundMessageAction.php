@@ -48,10 +48,10 @@ class SendNewOutboundMessageAction
             'read_at' => now(),
         ]);
 
-        // Log audit event (no tenant for SuperUser global send)
+        // Log audit event (no tenant for SuperUser global send - null tenant_id for FK compatibility)
         $this->auditRecorder->record(
             userId: $actorUserId,
-            tenantId: 0,
+            tenantId: null,
             action: 'contact.new_outbound_sent',
             modelType: 'ContactMessage',
             modelId: $outboundMessage->id,
