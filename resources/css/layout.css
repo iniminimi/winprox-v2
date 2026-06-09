@@ -939,6 +939,12 @@
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
 
+.wp-portal .wp-tile--primary {
+    background-color: var(--wp-accent);
+    border-color: var(--wp-accent);
+    color: var(--wp-text-on-accent);
+}
+
 .wp-portal .wp-tile--static {
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
