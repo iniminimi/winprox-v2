@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Contact\GetContactMessagesAction;
+use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Models\ContactMessage;
 use Livewire\Component;
@@ -25,21 +27,16 @@ class ContactMessages extends Component
 
     public function mount()
     {
-        if (!auth()->user()->is_superuser) {
-            abort(403);
-        }
+        $this->authorize('viewAny', ContactMessage::class);
     }
 
     public function render()
     {
-        $query = ContactMessage::query();
-
-        if ($this->filter !== 'all') {
-            $query->where('direction', $this->filter);
-        }
-
-        $messages = $query->orderBy('created_at', 'desc')
-            ->paginate(20);
+        $action = new GetContactMessagesAction();
+        $messages = $action->handle($this->filter, 20, tenant()->id);
+        
+        // Update unread count
+        $this->unreadCount = $action->getUnreadCount(tenant()->id);
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
@@ -49,10 +46,16 @@ class ContactMessages extends Component
     public function selectMessage($messageId)
     {
         $this->selectedMessage = ContactMessage::findOrFail($messageId);
+        $this->authorize('view', $this->selectedMessage);
         
         // Mark as read if inbound and unread
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
-            $this->selectedMessage->markAsRead();
+            $action = new MarkContactMessageAsReadAction();
+            $action->handle($this->selectedMessage, tenant()->id);
+            
+            // Refresh unread count
+            $getAction = new GetContactMessagesAction();
+            $this->unreadCount = $getAction->getUnreadCount(tenant()->id);
         }
 
         $this->dispatch('message-selected');
@@ -106,16 +109,5 @@ class ContactMessages extends Component
     {
         $this->filter = $filter;
         $this->resetPage();
-    }
-
-    public function getUnreadCountProperty()
-    {
-        return ContactMessage::inbound()->unread()->count();
-    }
-
-    public function hydrate()
-    {
-        // Refresh unread count when component hydrates
-        $this->unreadCount;
     }
 }
