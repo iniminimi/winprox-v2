@@ -26,7 +26,7 @@
                 ['route' => 'platform.dashboard', 'active' => 'platform.dashboard', 'icon' => 'dashboard', 'label' => 'platform.dashboard.nav'],
                 ['route' => 'platform.tenants', 'active' => 'platform.tenants', 'icon' => 'subscription', 'label' => 'platform.tenants_nav'],
                 ['route' => 'platform.users', 'active' => 'platform.users', 'icon' => 'team', 'label' => 'platform.users.nav'],
-                ['route' => 'platform.contact-messages', 'active' => 'platform.contact-messages', 'icon' => 'mail', 'label' => 'platform.contact_messages.nav'],
+                ['route' => 'platform.contact-messages', 'active' => 'platform.contact-messages', 'icon' => 'envelope', 'label' => 'platform.contact_messages.nav'],
                 ['route' => 'platform.audit', 'active' => 'platform.audit', 'icon' => 'document', 'label' => 'platform.audit.nav'],
                 ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
             ] : [

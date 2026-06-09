@@ -24,7 +24,9 @@ class ContactMessages extends Component
 
     public function mount()
     {
-        $this->authorize('view-contact-messages');
+        if (!auth()->user()->is_superuser) {
+            abort(403);
+        }
     }
 
     public function render()
