@@ -7,6 +7,7 @@ use App\Support\Tenancy;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Contracts\WebhookEvent;
+use Symfony\Component\Mime\Header\IdentificationHeader;
 
 class SendContactReplyAction
 {
@@ -50,17 +51,20 @@ class SendContactReplyAction
     {
         // Generate unique Message-ID
         $messageId = '<' . Str::uuid() . '@winprox.app>';
-        
+
         // Build the email
         $email = Mail::raw($reply, function ($message) use ($originalMessage, $messageId) {
             $message
                 ->to($originalMessage->email, $originalMessage->name)
                 ->subject('Re: ' . $originalMessage->subject)
-                ->from('info@winprox.app', 'WinProx Support')
-                ->getHeaders()
-                ->addTextHeader('Message-ID', $messageId)
-                ->addTextHeader('In-Reply-To', $originalMessage->message_id)
-                ->addTextHeader('References', $originalMessage->message_id);
+                ->from('info@winprox.app', 'WinProx Support');
+
+            $headers = $message->getHeaders();
+
+            // Use IdentificationHeader for proper header type
+            $headers->add(new IdentificationHeader('Message-ID', [$messageId]));
+            $headers->add(new IdentificationHeader('In-Reply-To', [$originalMessage->message_id]));
+            $headers->add(new IdentificationHeader('References', [$originalMessage->message_id]));
         });
 
         return $messageId;
