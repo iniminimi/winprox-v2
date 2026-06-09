@@ -939,6 +939,22 @@
     background-color: color-mix(in srgb, var(--wp-info-soft) 85%, transparent);
 }
 
+.wp-portal .wp-tile {
+    background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
+}
+
+.wp-portal .wp-tile--static {
+    background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
+}
+
+.wp-portal .wp-flash {
+    background-color: color-mix(in srgb, var(--wp-accent-soft) 85%, transparent);
+}
+
+.wp-portal .wp-surface-muted {
+    background-color: color-mix(in srgb, var(--wp-surface-2) 85%, transparent);
+}
+
 .wp-portal-head {
     display: flex;
     flex-direction: column;
