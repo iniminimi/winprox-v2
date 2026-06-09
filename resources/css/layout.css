@@ -7,10 +7,6 @@
 .wp-shell {
     min-height: 100vh;
     background-color: var(--wp-bg);
-    background-image: var(--wp-portal-bg, none);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 }
 
 .wp-container {
@@ -923,6 +919,13 @@
 /* ---------------------------------------------------------------------------
  | Veld-/publieke schermen — MOBIEL-FIRST (§6.5).
  * ------------------------------------------------------------------------- */
+.wp-public-body {
+    background-image: var(--wp-portal-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 .wp-portal {
     width: 100%;
     max-width: 32rem;
