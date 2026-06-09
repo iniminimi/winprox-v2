@@ -3,7 +3,7 @@
     "subtitle": "Manage incoming questions and platform messages.",
     "unread_count": "unread messages",
     "filter_all": "All",
-    "filter_inbox": "Inbox",
+    "filter_inbound": "Inbox",
     "filter_outbound": "Sent",
     "no_messages": "No messages found.",
     "no_message_selected": "No message selected",
@@ -17,5 +17,14 @@
     "reply_section": "Compose Reply",
     "reply_placeholder": "Type your professional response here...",
     "send_reply": "Send Reply",
-    "failed_to_send": "Failed to send reply"
+    "failed_to_send": "Failed to send reply",
+    "badge_new": "New",
+    "badge_sent": "Sent",
+    "label_from": "From",
+    "label_phone": "Tel",
+    "title_reply": "Compose Reply",
+    "placeholder_reply": "Type your professional response here...",
+    "button_send": "Send",
+    "empty_title": "No message selected",
+    "empty_body": "Select a message from the left column to view the full content and reply directly."
 }

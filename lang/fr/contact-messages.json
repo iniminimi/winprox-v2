@@ -3,7 +3,7 @@
     "subtitle": "Gérez les questions entrantes et les messages de la plateforme.",
     "unread_count": "messages non lus",
     "filter_all": "Tous",
-    "filter_inbox": "Boîte de réception",
+    "filter_inbound": "Boîte de réception",
     "filter_outbound": "Envoyés",
     "no_messages": "Aucun message trouvé.",
     "no_message_selected": "Aucun message sélectionné",
@@ -17,5 +17,14 @@
     "reply_section": "Rédiger une réponse",
     "reply_placeholder": "Tapez votre réponse professionnelle ici...",
     "send_reply": "Envoyer la réponse",
-    "failed_to_send": "Échec de l'envoi de la réponse"
+    "failed_to_send": "Échec de l'envoi de la réponse",
+    "badge_new": "Nouveau",
+    "badge_sent": "Envoyé",
+    "label_from": "De",
+    "label_phone": "Tél",
+    "title_reply": "Rédiger une réponse",
+    "placeholder_reply": "Tapez votre réponse professionnelle ici...",
+    "button_send": "Envoyer",
+    "empty_title": "Aucun message sélectionné",
+    "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement."
 }

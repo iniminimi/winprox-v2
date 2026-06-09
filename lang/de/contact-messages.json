@@ -3,7 +3,7 @@
     "subtitle": "Eingehende Fragen und Plattformnachrichten verwalten.",
     "unread_count": "ungelesene Nachrichten",
     "filter_all": "Alle",
-    "filter_inbox": "Posteingang",
+    "filter_inbound": "Posteingang",
     "filter_outbound": "Gesendet",
     "no_messages": "Keine Nachrichten gefunden.",
     "no_message_selected": "Keine Nachricht ausgewählt",
@@ -17,5 +17,14 @@
     "reply_section": "Antwort verfassen",
     "reply_placeholder": "Geben Sie hier Ihre professionelle Antwort ein...",
     "send_reply": "Antwort senden",
-    "failed_to_send": "Fehler beim Senden der Antwort"
+    "failed_to_send": "Fehler beim Senden der Antwort",
+    "badge_new": "Neu",
+    "badge_sent": "Gesendet",
+    "label_from": "Von",
+    "label_phone": "Tel",
+    "title_reply": "Antwort verfassen",
+    "placeholder_reply": "Geben Sie hier Ihre professionelle Antwort ein...",
+    "button_send": "Senden",
+    "empty_title": "Keine Nachricht ausgewählt",
+    "empty_body": "Wählen Sie eine Nachricht aus der linken Spalte, um den vollständigen Inhalt anzuzeigen und direkt zu antworten."
 }
