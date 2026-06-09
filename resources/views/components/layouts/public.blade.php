@@ -38,9 +38,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
-    <main class="wp-portal"
-          @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}?v={{ now()->timestamp }}');" @endif>
+<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
+      @if ($portalBgUrl) style="--wp-portal-bg: url('{{ $portalBgUrl }}?v={{ now()->timestamp }}');" @endif>
+    <main class="wp-portal">
         {{ $slot }}
         
         <div class="wp-portal-footer">

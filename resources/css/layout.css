@@ -9,6 +9,13 @@
     background-color: var(--wp-bg);
 }
 
+.wp-public-body {
+    background-image: var(--wp-portal-bg, none);
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+}
+
 .wp-container {
     width: 100%;
     max-width: 72rem;
@@ -925,11 +932,6 @@
     margin-inline: auto;
     padding: 1rem;
     padding-bottom: 6rem;
-    background-color: transparent;
-    background-image: var(--wp-portal-bg, none);
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
 }
 
 .wp-portal .wp-card {
