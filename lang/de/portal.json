@@ -52,7 +52,8 @@
             "reporter_email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
             "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
             "photos_image": "Nur Bilder sind erlaubt.",
-            "photos_size": "Ein Foto ist zu groß."
+            "photos_size": "Ein Foto ist zu groß.",
+            "photos_failed": "Die Fotos konnten nicht gespeichert werden. Bitte versuchen Sie es erneut."
         }
     },
     "worker": {

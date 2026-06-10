@@ -52,7 +52,8 @@
             "reporter_email_invalid": "Geef een geldig e-mailadres op.",
             "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
             "photos_image": "Alleen afbeeldingen zijn toegestaan.",
-            "photos_size": "Een foto is te groot."
+            "photos_size": "Een foto is te groot.",
+            "photos_failed": "De foto's konden niet worden opgeslagen. Probeer het opnieuw."
         }
     },
     "worker": {

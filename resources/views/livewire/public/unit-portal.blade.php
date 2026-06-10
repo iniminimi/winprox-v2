@@ -413,7 +413,7 @@
                 $portalCanAddMore = $portalTotalCount < 4;
             @endphp
 
-            <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }" wire:key="qr-photos-accordion-{{ $portalTotalCount }}">
+            <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }">
                 <button
                     type="button"
                     class="wp-row"
