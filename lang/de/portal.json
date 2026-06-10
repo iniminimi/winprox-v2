@@ -121,11 +121,24 @@
         "no_blocked_colleagues": "In diesem Team gibt es keine gesperrten Kollegen.",
         "submit": "Kollege freigeben",
         "released_ok": ":name wurde freigegeben und kann erneut ein Icon wählen.",
+        "manage_workers_title": "Mitarbeiter verwalten",
+        "manage_workers_open": "Verwalten",
+        "manage_workers_hint": "Mitarbeiter zum Team hinzufügen oder entfernen.",
+        "worker_first_name": "Vorname",
+        "worker_last_name": "Nachname",
+        "add_worker": "Hinzufügen",
+        "delete": "Löschen",
+        "delete_confirm": ":name löschen?",
+        "worker_added": "Mitarbeiter hinzugefügt.",
+        "worker_deleted": ":name gelöscht.",
+        "no_workers": "Es gibt noch keine Mitarbeiter in diesem Team.",
+        "badge": "Teamleiter",
         "errors": {
             "icon_wrong": "Das ist nicht Ihr Icon.",
             "colleague_required": "Wählen Sie einen gesperrten Kollegen.",
             "colleague_not_found": "Dieser Kollege ist nicht gesperrt oder gehört nicht zu Ihrem Team.",
-            "cannot_release": "Dieser Kollege kann nicht freigegeben werden."
+            "cannot_release": "Dieser Kollege kann nicht freigegeben werden.",
+            "cannot_delete_self": "Sie können sich nicht selbst löschen."
         }
     },
     "documents": {

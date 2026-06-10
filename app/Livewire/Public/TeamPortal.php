@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Team\CreateWorkerAction;
+use App\Actions\Team\DeleteWorkerAction;
+use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\InternalTeam;
@@ -47,6 +50,10 @@ class TeamPortal extends Component
     public string $selected_icon_slug = '';
 
     public string $flashMessage = '';
+
+    public bool $showManageWorkers = false;
+    public string $newWorkerFirstName = '';
+    public string $newWorkerLastName = '';
 
     public function mount(string $token): void
     {
@@ -270,6 +277,79 @@ class TeamPortal extends Component
         $this->flashMessage = __('portal.team.onboarding_done');
     }
 
+    public function openManageWorkers(): void
+    {
+        $this->showManageWorkers = true;
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+    }
+
+    public function closeManageWorkers(): void
+    {
+        $this->showManageWorkers = false;
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+    }
+
+    public function addWorker(CreateWorkerAction $createWorker): void
+    {
+        $team = $this->activeTeam();
+        $teamleader = $this->portalTeamleaderWorker();
+        if ($team === null || $teamleader === null) {
+            return;
+        }
+
+        $request = new StoreWorkerRequest;
+        $validated = $this->validate(
+            ['newWorkerFirstName' => $request->rules()['first_name'], 'newWorkerLastName' => $request->rules()['last_name']],
+            ['newWorkerFirstName.required' => __('portal.worker.errors.name_required'), 'newWorkerLastName.required' => __('portal.worker.errors.name_required')],
+        );
+
+        try {
+            $createWorker->handle(
+                $team,
+                ['first_name' => $validated['newWorkerFirstName'], 'last_name' => $validated['newWorkerLastName']],
+                null,
+                $teamleader,
+            );
+        } catch (\InvalidArgumentException) {
+            return;
+        }
+
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->flashMessage = __('portal.teamleader.worker_added');
+    }
+
+    public function removeWorker(int $workerId, DeleteWorkerAction $deleteWorker): void
+    {
+        $team = $this->activeTeam();
+        $teamleader = $this->portalTeamleaderWorker();
+        if ($team === null || $teamleader === null) {
+            return;
+        }
+
+        $worker = Worker::query()
+            ->where('internal_team_id', $team->id)
+            ->whereKey($workerId)
+            ->first();
+
+        if ($worker === null) {
+            return;
+        }
+
+        try {
+            $deleteWorker->handle($worker, null, $teamleader);
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'cannot_delete_self') {
+                $this->flashMessage = __('portal.teamleader.errors.cannot_delete_self');
+            }
+
+            return;
+        }
+
+        $this->flashMessage = __('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
+    }
+
     public function render()
     {
         $team = $this->activeTeam();
@@ -296,6 +376,10 @@ class TeamPortal extends Component
 
         $tasks = $canAct && $team !== null ? TeamPortalData::openTasksForTeam($team) : collect();
 
+        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
+            ? Worker::query()->where('internal_team_id', $team->id)->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get()
+            : collect();
+
         return view('livewire.public.team-portal', [
             'team' => $team,
             'canAct' => $canAct,
@@ -310,6 +394,8 @@ class TeamPortal extends Component
             'deviceWorker' => $deviceWorker,
             'remainingAttempts' => $team !== null ? WorkerIconGuard::remainingAttempts($team) : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'tasks' => $tasks,
+            'teamWorkers' => $teamWorkers,
+            'isTeamPortal' => true,
         ]);
     }
 

@@ -68,4 +68,65 @@
             </form>
         @endif
     @endif
+
+    {{-- Worker management: ONLY on TeamPortal --}}
+    @if ($isTeamPortal ?? false)
+        <div class="wp-divider"></div>
+
+        <div class="wp-row">
+            <h2 class="wp-section-title">{{ __('portal.teamleader.manage_workers_title') }}</h2>
+            <button type="button" class="btn btn--ghost btn--sm" wire:click="{{ $showManageWorkers ? 'closeManageWorkers' : 'openManageWorkers' }}">
+                {{ $showManageWorkers ? __('common.button.close') : __('portal.teamleader.manage_workers_open') }}
+            </button>
+        </div>
+
+        @if (! $showManageWorkers)
+            <p class="wp-muted">{{ __('portal.teamleader.manage_workers_hint') }}</p>
+        @else
+            {{-- Current workers list --}}
+            @if ($teamWorkers->isEmpty())
+                <p class="wp-muted">{{ __('portal.teamleader.no_workers') }}</p>
+            @else
+                <div class="wp-list wp-list--entity-rows">
+                    @foreach ($teamWorkers as $tw)
+                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
+                            <span class="wp-cluster wp-cluster--tight">
+                                @if ($tw->field_icon_slug)
+                                    <x-wp-worker-icon :slug="$tw->field_icon_slug" class="wp-release-worker-row__icon" />
+                                @endif
+                                <span class="wp-release-worker-row__name">{{ $tw->displayName() }}</span>
+                                @if ($tw->is_teamleader)
+                                    <span class="wp-pill wp-pill--progress">{{ __('portal.teamleader.badge') }}</span>
+                                @endif
+                            </span>
+                            <button type="button"
+                                    class="btn btn--danger btn--sm"
+                                    wire:click="removeWorker({{ $tw->id }})"
+                                    wire:confirm="{{ __('portal.teamleader.delete_confirm', ['name' => $tw->displayName()]) }}"
+                                    @disabled($verifiedWorker && (int) $verifiedWorker->id === (int) $tw->id)>
+                                {{ __('portal.teamleader.delete') }}
+                            </button>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+
+            {{-- Add worker form --}}
+            <form wire:submit="addWorker" class="wp-stack">
+                <div class="wp-field">
+                    <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
+                    <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
+                    @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
+                    <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
+                    @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <button type="submit" class="btn btn--primary btn--block">
+                    {{ __('portal.teamleader.add_worker') }}
+                </button>
+            </form>
+        @endif
+    @endif
 </div>

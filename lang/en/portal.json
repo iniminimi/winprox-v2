@@ -121,11 +121,24 @@
         "no_blocked_colleagues": "There are no blocked colleagues on this team.",
         "submit": "Release colleague",
         "released_ok": ":name has been released and can choose an icon again.",
+        "manage_workers_title": "Manage workers",
+        "manage_workers_open": "Manage",
+        "manage_workers_hint": "Add or remove workers from the team.",
+        "worker_first_name": "First name",
+        "worker_last_name": "Last name",
+        "add_worker": "Add",
+        "delete": "Delete",
+        "delete_confirm": "Delete :name?",
+        "worker_added": "Worker added.",
+        "worker_deleted": ":name deleted.",
+        "no_workers": "There are no workers in this team yet.",
+        "badge": "Team leader",
         "errors": {
             "icon_wrong": "That is not your icon.",
             "colleague_required": "Choose a blocked colleague.",
             "colleague_not_found": "This colleague is not blocked or is not on your team.",
-            "cannot_release": "This colleague cannot be released."
+            "cannot_release": "This colleague cannot be released.",
+            "cannot_delete_self": "You cannot delete yourself."
         }
     },
     "documents": {

@@ -121,11 +121,24 @@
         "no_blocked_colleagues": "Er zijn geen geblokkeerde collega's op dit team.",
         "submit": "Collega vrijgeven",
         "released_ok": ":name is vrijgegeven en kan opnieuw een icoon kiezen.",
+        "manage_workers_title": "Workers beheren",
+        "manage_workers_open": "Beheren",
+        "manage_workers_hint": "Voeg workers toe of verwijder ze uit het team.",
+        "worker_first_name": "Voornaam",
+        "worker_last_name": "Achternaam",
+        "add_worker": "Toevoegen",
+        "delete": "Verwijderen",
+        "delete_confirm": ":name verwijderen?",
+        "worker_added": "Worker toegevoegd.",
+        "worker_deleted": ":name verwijderd.",
+        "no_workers": "Er zijn nog geen workers in dit team.",
+        "badge": "Teamleader",
         "errors": {
             "icon_wrong": "Dat is niet jouw icoon.",
             "colleague_required": "Kies een geblokkeerde collega.",
             "colleague_not_found": "Deze collega is niet geblokkeerd of hoort niet bij je team.",
-            "cannot_release": "Deze collega kan niet worden vrijgegeven."
+            "cannot_release": "Deze collega kan niet worden vrijgegeven.",
+            "cannot_delete_self": "Je kunt jezelf niet verwijderen."
         }
     },
     "documents": {

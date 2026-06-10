@@ -121,11 +121,24 @@
         "no_blocked_colleagues": "Il n'y a aucun collègue bloqué dans cette équipe.",
         "submit": "Libérer le collègue",
         "released_ok": ":name a été libéré et peut choisir à nouveau une icône.",
+        "manage_workers_title": "Gérer les travailleurs",
+        "manage_workers_open": "Gérer",
+        "manage_workers_hint": "Ajouter ou retirer des travailleurs de l'équipe.",
+        "worker_first_name": "Prénom",
+        "worker_last_name": "Nom",
+        "add_worker": "Ajouter",
+        "delete": "Supprimer",
+        "delete_confirm": "Supprimer :name ?",
+        "worker_added": "Travailleur ajouté.",
+        "worker_deleted": ":name supprimé.",
+        "no_workers": "Il n'y a pas encore de travailleurs dans cette équipe.",
+        "badge": "Chef d'équipe",
         "errors": {
             "icon_wrong": "Ce n'est pas votre icône.",
             "colleague_required": "Choisissez un collègue bloqué.",
             "colleague_not_found": "Ce collègue n'est pas bloqué ou n'appartient pas à votre équipe.",
-            "cannot_release": "Ce collègue ne peut pas être libéré."
+            "cannot_release": "Ce collègue ne peut pas être libéré.",
+            "cannot_delete_self": "Vous ne pouvez pas vous supprimer."
         }
     },
     "documents": {

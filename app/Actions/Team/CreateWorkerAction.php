@@ -17,8 +17,18 @@ class CreateWorkerAction
     /**
      * @param  array<string, mixed>  $data
      */
-    public function handle(InternalTeam $team, array $data, ?int $actorUserId = null): Worker
+    public function handle(InternalTeam $team, array $data, ?int $actorUserId = null, ?Worker $actorWorker = null): Worker
     {
+        if ($actorWorker !== null) {
+            if (! $actorWorker->is_teamleader || ! $actorWorker->is_active) {
+                throw new \InvalidArgumentException('not_teamleader');
+            }
+
+            if ((int) $actorWorker->internal_team_id !== (int) $team->id) {
+                throw new \InvalidArgumentException('wrong_team');
+            }
+        }
+
         $worker = Worker::create([
             'tenant_id' => $team->tenant_id,
             'internal_team_id' => $team->id,
@@ -33,7 +43,10 @@ class CreateWorkerAction
             action: 'worker.created',
             modelType: Worker::class,
             modelId: (int) $worker->id,
-            payload: ['id' => $worker->id, 'internal_team_id' => $worker->internal_team_id],
+            payload: array_merge(
+                ['id' => $worker->id, 'internal_team_id' => $worker->internal_team_id],
+                $actorWorker !== null ? ['actor_worker_id' => $actorWorker->id] : []
+            ),
         );
 
         return $worker;

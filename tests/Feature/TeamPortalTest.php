@@ -194,3 +194,128 @@ it('shows an inactive notice when the team is inactive', function () {
         ->assertSet('inactiveReasonKey', 'portal.inactive.team_inactive')
         ->assertSee(__('portal.inactive.title'));
 });
+
+it('allows a teamleader to add a new worker from the team portal', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    $teamleader = Worker::factory()->teamleader()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $teamleader);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->call('openManageWorkers')
+        ->set('newWorkerFirstName', 'Jeroen')
+        ->set('newWorkerLastName', 'Pieters')
+        ->call('addWorker')
+        ->assertHasNoErrors();
+
+    $newWorker = Worker::where('internal_team_id', $team->id)
+        ->where('first_name', 'Jeroen')
+        ->where('last_name', 'Pieters')
+        ->first();
+
+    expect($newWorker)->not->toBeNull()
+        ->and($newWorker->is_active)->toBeTrue();
+});
+
+it('allows a teamleader to delete a colleague worker from the team portal', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    $teamleader = Worker::factory()->teamleader()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $colleague = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $teamleader);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->call('removeWorker', $colleague->id)
+        ->assertHasNoErrors();
+
+    expect(Worker::find($colleague->id))->toBeNull();
+});
+
+it('prevents a teamleader from deleting themselves', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    $teamleader = Worker::factory()->teamleader()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $teamleader);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->call('removeWorker', $teamleader->id)
+        ->assertHasNoErrors()
+        ->assertSee(__('portal.teamleader.errors.cannot_delete_self'));
+
+    expect(Worker::find($teamleader->id))->not->toBeNull();
+});
+
+it('prevents a non-teamleader from adding workers', function () {
+    ['team' => $team, 'tenant' => $tenant] = teamPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->call('openManageWorkers')
+        ->set('newWorkerFirstName', 'Jeroen')
+        ->set('newWorkerLastName', 'Pieters')
+        ->call('addWorker')
+        ->assertHasNoErrors();
+
+    expect(Worker::where('first_name', 'Jeroen')->where('last_name', 'Pieters')->count())->toBe(0);
+});
+
+it('blocks a teamleader from adding workers to another team', function () {
+    ['team' => $teamA, 'tenant' => $tenant] = teamPortalScaffold();
+    $teamB = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'is_active' => true,
+        'field_qr_token' => 'team-b-token',
+    ]);
+
+    $teamleaderB = Worker::factory()->teamleader()->withIcon('heart')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $teamB->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($teamA, $teamleaderB);
+
+    Livewire::test(TeamPortal::class, ['token' => 'team-token'])
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->call('openManageWorkers')
+        ->set('newWorkerFirstName', 'Jeroen')
+        ->set('newWorkerLastName', 'Pieters')
+        ->call('addWorker')
+        ->assertHasNoErrors();
+
+    expect(Worker::where('first_name', 'Jeroen')->where('last_name', 'Pieters')->count())->toBe(0);
+});
