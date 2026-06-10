@@ -47,7 +47,7 @@
     --wp-sidebar-glass: rgba(255, 255, 255, 0.65);
 }
 
-[data-theme='highres'] body.wp-shell {
+[data-theme='highres'] body.wp-shell:not(.wp-public-body) {
     background: var(--wp-shell-gradient);
     background-color: var(--wp-bg);
 }

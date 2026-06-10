@@ -23,14 +23,20 @@
       @if ($applyTenantCustomTheme || $portalBgUrl)
           style="{{ $tenantCustomThemeVars }}{{ $portalBgUrl ? ' --wp-portal-bg: url(\'' . $portalBgUrl . '?v=' . now()->timestamp . '\');' : '' }}"
       @endif
-      x-data="{ tenantCustomTheme: @js($tenantCustomThemeVars !== '' ? $tenantCustomThemeVars : null) }"
+      x-data="{
+          tenantCustomTheme: @js($tenantCustomThemeVars !== '' ? $tenantCustomThemeVars : null),
+          portalBgStyle: @js($portalBgUrl ? '--wp-portal-bg: url(\'' . $portalBgUrl . '?v=' . now()->timestamp . '\');' : null)
+      }"
       x-on:ui-theme-changed.window="
-        document.documentElement.dataset.theme = $event.detail.theme;
-        if ($event.detail.theme === 'simple' && tenantCustomTheme) {
-            document.documentElement.style.cssText = tenantCustomTheme;
-        } else {
-            document.documentElement.style.cssText = '';
-        }
+          document.documentElement.dataset.theme = $event.detail.theme;
+          let styles = [];
+          if ($event.detail.theme === 'simple' && tenantCustomTheme) {
+              styles.push(tenantCustomTheme);
+          }
+          if ($event.detail.theme !== 'dark' && portalBgStyle) {
+              styles.push(portalBgStyle);
+          }
+          document.documentElement.style.cssText = styles.join(' ');
       ">
 <head>
     <meta charset="utf-8">
