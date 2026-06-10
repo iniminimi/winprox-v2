@@ -351,7 +351,7 @@
                 @if ($categories->isNotEmpty())
                     <div class="wp-grid wp-grid--2">
                         @foreach ($categories as $category)
-                            <label class="wp-check wp-check--boxed">
+                            <label class="wp-check">
                                 <input type="checkbox"
                                        wire:model.live="selectedCategoryIds"
                                        value="{{ $category->id }}">
