@@ -3,6 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Actions\Issues\AddIssueUpdateAction;
+use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCreated;
@@ -16,6 +17,8 @@ use Carbon\Carbon;
  */
 class CreateRecurringTaskCycleAction
 {
+    public function __construct(private RecalculateIssueStatusAction $recalculateIssueStatus) {}
+
     public function handle(Issue $issue, ?Carbon $now = null): ?Task
     {
         if (! $issue->is_recurring || ! $issue->recurrence_active || $issue->recurrence_paused_at !== null) {
@@ -96,7 +99,7 @@ class CreateRecurringTaskCycleAction
             'recurrence_last_task_created_at' => $now,
         ]);
 
-        $issue->recalculateStatus();
+        $this->recalculateIssueStatus->handle($issue);
 
         return $task->fresh();
     }

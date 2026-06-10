@@ -20,6 +20,8 @@
     "unsubscribe": {
         "html_intro": "Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich",
         "text_intro": "Wenn du keine E-Mails mehr erhalten möchtest, kannst du dich hier abmelden:",
-        "link_label": "hier abmelden"
+        "link_label": "hier abmelden",
+        "settings_hint_html": "Du kannst E-Mail-Einstellungen auch in den <a href=\":url\" style=\"color:#059669;font-weight:600;\">Einstellungen</a> verwalten.",
+        "settings_hint_text": "Du kannst E-Mail-Einstellungen auch in Einstellungen verwalten: :url"
     }
 }

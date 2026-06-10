@@ -2,6 +2,7 @@
 
 namespace App\Actions\Tasks;
 
+use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCreated;
@@ -11,6 +12,8 @@ use Carbon\CarbonInterface;
 
 class CreateTaskAction
 {
+    public function __construct(private RecalculateIssueStatusAction $recalculateIssueStatus) {}
+
     /**
      * Voegt een taak toe aan een melding, toegewezen aan één team.
      */
@@ -48,7 +51,7 @@ class CreateTaskAction
         }
 
         if ($recalculateIssue) {
-            $issue->recalculateStatus();
+            $this->recalculateIssueStatus->handle($issue);
         }
 
         return $task;

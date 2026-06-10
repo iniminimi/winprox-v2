@@ -6,7 +6,9 @@ use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
 use App\Actions\Platform\ToggleTrialApiAction;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Platform\SupportTenantContext;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,11 +17,13 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Tenants extends Component
 {
+    use AuthorizesRequests;
+
     public string $search = '';
 
     public function mount(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('accessPlatform', User::class);
     }
 
     public function startSupport(int $tenantId, StartSupportViewAction $start): void

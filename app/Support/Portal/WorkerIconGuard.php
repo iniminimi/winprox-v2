@@ -2,6 +2,8 @@
 
 namespace App\Support\Portal;
 
+use App\Actions\Portal\ClearWorkerIconLockoutAction;
+use App\Actions\Portal\RecordWorkerIconFailedAttemptAction;
 use App\Models\InternalTeam;
 use App\Models\Worker;
 
@@ -69,32 +71,19 @@ final class WorkerIconGuard
             return;
         }
 
-        $failed = (int) $worker->field_icon_failed_attempts + 1;
-        $worker->forceFill(['field_icon_failed_attempts' => $failed]);
-
-        if ($failed >= self::MAX_FAILED_ATTEMPTS) {
-            $worker->forceFill(['field_icon_locked_at' => now()]);
-        }
-
-        $worker->save();
+        app(RecordWorkerIconFailedAttemptAction::class)->handle($worker, self::MAX_FAILED_ATTEMPTS);
     }
 
     public static function clearAfterSuccessfulSignIn(InternalTeam $team, Worker $worker): void
     {
         self::clearSessionForTeam((int) $team->id);
 
-        $worker->forceFill([
-            'field_icon_failed_attempts' => 0,
-            'field_icon_locked_at' => null,
-        ])->save();
+        app(ClearWorkerIconLockoutAction::class)->handle($worker);
     }
 
     public static function unlockWorker(Worker $worker): void
     {
-        $worker->forceFill([
-            'field_icon_failed_attempts' => 0,
-            'field_icon_locked_at' => null,
-        ])->save();
+        app(ClearWorkerIconLockoutAction::class)->handle($worker);
 
         if ($worker->internal_team_id !== null) {
             self::clearSessionForTeam((int) $worker->internal_team_id);

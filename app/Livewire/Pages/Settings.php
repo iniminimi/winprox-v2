@@ -4,12 +4,12 @@ namespace App\Livewire\Pages;
 
 use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
+use App\Actions\Team\UpdateOrganisationLogoAction;
+use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
 use App\Enums\UiTheme;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
-use App\Support\TenantLogoStorage;
-use App\Support\TenantPortalBackgroundStorage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
@@ -176,7 +176,7 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveOrganisationLogo(UpdateOrganisationAction $updateOrganisation, TenantLogoStorage $logoStorage): void
+    public function saveOrganisationLogo(UpdateOrganisationLogoAction $updateLogo): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -185,25 +185,17 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
-        $validated = Validator::make(
+        Validator::make(
             ['orgLogo' => $this->orgLogo],
-            ['orgLogo' => ['nullable', 'image', 'max:2048']],
+            ['orgLogo' => ['required', 'image', 'max:2048']],
         )->validate();
 
-        $payload = [
-            'name' => $tenant->name,
-            'custom_theme_active' => $tenant->custom_theme_active,
-            'custom_theme_bg' => $tenant->custom_theme_bg,
-            'custom_theme_btn' => $tenant->custom_theme_btn,
-        ];
-
-        if ($this->orgLogo instanceof UploadedFile) {
-            $logoStorage->delete($tenant->logo_path);
-            $payload['logo_path'] = $logoStorage->store($this->orgLogo, (int) $tenant->id);
-            $this->reset('orgLogo');
+        if (! $this->orgLogo instanceof UploadedFile) {
+            return;
         }
 
-        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $updated = $updateLogo->handle($tenant, $this->orgLogo, (int) auth()->id());
+        $this->reset('orgLogo');
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
@@ -214,7 +206,7 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveOrganisationPortalBackground(UpdateOrganisationAction $updateOrganisation, TenantPortalBackgroundStorage $backgroundStorage): void
+    public function saveOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -223,25 +215,17 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
-        $validated = Validator::make(
+        Validator::make(
             ['portalBackground' => $this->portalBackground],
-            ['portalBackground' => ['nullable', 'image', 'max:4096']],
+            ['portalBackground' => ['required', 'image', 'max:4096']],
         )->validate();
 
-        $payload = [
-            'name' => $tenant->name,
-            'custom_theme_active' => $tenant->custom_theme_active,
-            'custom_theme_bg' => $tenant->custom_theme_bg,
-            'custom_theme_btn' => $tenant->custom_theme_btn,
-        ];
-
-        if ($this->portalBackground instanceof UploadedFile) {
-            $backgroundStorage->delete($tenant->portal_background_path);
-            $payload['portal_background_path'] = $backgroundStorage->store($this->portalBackground, (int) $tenant->id);
-            $this->reset('portalBackground');
+        if (! $this->portalBackground instanceof UploadedFile) {
+            return;
         }
 
-        $updated = $updateOrganisation->handle($tenant, $payload, (int) auth()->id());
+        $updated = $updateBackground->handle($tenant, $this->portalBackground, (int) auth()->id());
+        $this->reset('portalBackground');
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();

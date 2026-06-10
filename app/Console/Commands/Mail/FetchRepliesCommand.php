@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands\Mail;
 
+use App\Actions\Contact\ResolveContactReplyTenantAction;
+use App\Actions\Contact\StoreImapContactReplyAction;
 use App\Models\ContactMessage;
-use App\Support\Tenancy;
 use Illuminate\Console\Command;
 use Webklex\PHPIMAP\ClientManager;
 use Webklex\PHPIMAP\Message;
@@ -27,7 +28,7 @@ class FetchRepliesCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(StoreImapContactReplyAction $storeReply)
     {
         $this->info('Fetching email replies...');
 
@@ -52,7 +53,7 @@ class FetchRepliesCommand extends Command
             
             $processed = 0;
             foreach ($messages as $message) {
-                if ($this->processMessage($message)) {
+                if ($this->processMessage($message, $storeReply, app(ResolveContactReplyTenantAction::class))) {
                     $processed++;
                 }
                 
@@ -71,8 +72,11 @@ class FetchRepliesCommand extends Command
         }
     }
 
-    private function processMessage(Message $message): bool
-    {
+    private function processMessage(
+        Message $message,
+        StoreImapContactReplyAction $storeReply,
+        ResolveContactReplyTenantAction $resolveTenant,
+    ): bool {
         $messageId = $message->getMessageId();
         $inReplyTo = $message->getInReplyTo();
         $references = $message->getReferences();
@@ -92,19 +96,15 @@ class FetchRepliesCommand extends Command
             $originalMessage = ContactMessage::whereIn('message_id', explode(' ', trim($references)))->first();
         }
 
-        // Get tenant ID (default to first tenant for contact messages)
-        $tenantId = 1; // Adjust based on your tenant logic
+        $tenantId = $resolveTenant->handle($originalMessage);
 
-        Tenancy::actAs($tenantId);
-
-        ContactMessage::create([
+        $storeReply->handle([
             'message_id' => $messageId,
             'name' => $message->getFrom()[0]->personal ?? $message->getFrom()[0]->mail,
             'email' => $message->getFrom()[0]->mail,
             'subject' => $message->getSubject(),
             'message' => $message->getTextBody() ?? $message->getHTMLBody(),
-            'direction' => 'inbound',
-        ]);
+        ], $tenantId);
 
         return true;
     }

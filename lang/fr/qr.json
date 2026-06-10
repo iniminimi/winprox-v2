@@ -38,7 +38,9 @@
         "gps_unavailable": "Localisation GPS indisponible.",
         "gps_timeout": "Délai de localisation GPS dépassé. Veuillez réessayer.",
         "gps_invalid_coords": "Coordonnées invalides. Veuillez saisir des nombres valides.",
-        "gps_out_of_range": "Coordonnées hors plage. Latitude : -90 à 90, Longitude : -180 à 180."
+        "gps_out_of_range": "Coordonnées hors plage. Latitude : -90 à 90, Longitude : -180 à 180.",
+        "gps_latitude_placeholder": "Latitude",
+        "gps_longitude_placeholder": "Longitude"
     },
     "unassigned_guest": {
         "title": "(re)lier une unité",

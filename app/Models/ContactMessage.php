@@ -29,13 +29,6 @@ class ContactMessage extends Model
         return !is_null($this->read_at);
     }
 
-    public function markAsRead(): void
-    {
-        if (!$this->isRead()) {
-            $this->update(['read_at' => now()]);
-        }
-    }
-
     public function scopeInbound($query)
     {
         return $query->where('direction', 'inbound');

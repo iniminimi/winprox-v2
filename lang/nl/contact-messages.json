@@ -42,6 +42,9 @@
     "label_email": "E-mailadres",
     "label_subject": "Onderwerp",
     "label_message": "Bericht",
+    "placeholder_email": "naam@domein.com",
+    "placeholder_subject": "Onderwerp van de e-mail",
+    "placeholder_message": "Typ hier uw bericht...",
     "empty_title": "Geen bericht geselecteerde",
     "empty_body": "Kies een bericht uit de linkerkolom om de volledige inhoud te bekijken en direct te beantwoorden.",
     "email_footer_sent_via": "Verzonden via WinProx.app"

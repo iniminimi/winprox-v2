@@ -42,6 +42,9 @@
     "label_email": "Adresse e-mail",
     "label_subject": "Sujet",
     "label_message": "Message",
+    "placeholder_email": "nom@domaine.com",
+    "placeholder_subject": "Objet de l'e-mail",
+    "placeholder_message": "Tapez votre message ici...",
     "empty_title": "Aucun message sélectionné",
     "empty_body": "Sélectionnez un message dans la colonne de gauche pour voir le contenu complet et répondre directement.",
     "email_footer_sent_via": "Envoyé via WinProx.app"

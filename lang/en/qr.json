@@ -38,7 +38,9 @@
         "gps_unavailable": "GPS location unavailable.",
         "gps_timeout": "GPS location timed out. Please try again.",
         "gps_invalid_coords": "Invalid coordinates. Please enter valid numbers.",
-        "gps_out_of_range": "Coordinates out of range. Latitude: -90 to 90, Longitude: -180 to 180."
+        "gps_out_of_range": "Coordinates out of range. Latitude: -90 to 90, Longitude: -180 to 180.",
+        "gps_latitude_placeholder": "Latitude",
+        "gps_longitude_placeholder": "Longitude"
     },
     "unassigned_guest": {
         "title": "(re)link a unit",

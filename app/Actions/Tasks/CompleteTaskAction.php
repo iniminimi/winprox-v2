@@ -2,6 +2,7 @@
 
 namespace App\Actions\Tasks;
 
+use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
@@ -21,6 +22,7 @@ class CompleteTaskAction
     public function __construct(
         private IssuePhotoStorage $storage,
         private AuditRecorder $audit,
+        private RecalculateIssueStatusAction $recalculateIssueStatus,
     ) {}
 
     /**
@@ -81,7 +83,7 @@ class CompleteTaskAction
 
         event(new TaskCompleted($task->fresh()));
 
-        $issue->recalculateStatus();
+        $this->recalculateIssueStatus->handle($issue);
 
         return $task->fresh();
     }

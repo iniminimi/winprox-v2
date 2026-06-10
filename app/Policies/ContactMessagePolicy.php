@@ -10,36 +10,33 @@ class ContactMessagePolicy
 {
     public function viewAny(User $user): Response
     {
-        return $user->is_superuser
-            ? Response::allow()
-            : Response::deny('Only superusers can view contact messages.');
+        return $this->allowPlatformUser($user);
     }
 
     public function view(User $user, ContactMessage $contactMessage): Response
     {
-        return $user->is_superuser
-            ? Response::allow()
-            : Response::deny('Only superusers can view contact messages.');
+        return $this->allowPlatformUser($user);
     }
 
     public function create(User $user): Response
     {
-        return $user->is_superuser
-            ? Response::allow()
-            : Response::deny('Only superusers can create contact messages.');
+        return $this->allowPlatformUser($user);
     }
 
     public function update(User $user, ContactMessage $contactMessage): Response
     {
-        return $user->is_superuser
-            ? Response::allow()
-            : Response::deny('Only superusers can update contact messages.');
+        return $this->allowPlatformUser($user);
     }
 
     public function delete(User $user, ContactMessage $contactMessage): Response
     {
-        return $user->is_superuser
+        return $this->allowPlatformUser($user);
+    }
+
+    private function allowPlatformUser(User $user): Response
+    {
+        return (new UserPolicy)->accessPlatform($user)
             ? Response::allow()
-            : Response::deny('Only superusers can delete contact messages.');
+            : Response::deny('Only superusers can access contact messages.');
     }
 }

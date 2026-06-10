@@ -2,6 +2,7 @@
 
 namespace App\Actions\Tasks;
 
+use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskStarted;
 use App\Models\Task;
@@ -13,7 +14,10 @@ use App\Support\Audit\AuditRecorder;
  */
 class StartTaskAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private RecalculateIssueStatusAction $recalculateIssueStatus,
+    ) {}
 
     public function handle(Task $task, ?Worker $worker = null, ?\Carbon\Carbon $clientTimestamp = null): Task
     {
@@ -41,7 +45,7 @@ class StartTaskAction
 
         event(new TaskStarted($task->fresh()));
 
-        $task->issue->recalculateStatus();
+        $this->recalculateIssueStatus->handle($task->issue);
 
         return $task->fresh();
     }

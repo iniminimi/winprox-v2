@@ -7,7 +7,7 @@ use App\Actions\Api\RevokeApiTokenAction;
 use App\Actions\Webhooks\DeleteWebhookEndpointAction;
 use App\Actions\Webhooks\SetWebhookEndpointActiveAction;
 use App\Actions\Webhooks\StoreWebhookEndpointAction;
-use App\Models\WebhookDelivery;
+use App\Actions\Webhooks\TestWebhookEndpointAction;
 use App\Models\WebhookEndpoint;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -95,26 +95,12 @@ class ApiSettings extends Component
         $revokeToken->handle(auth()->user(), $tokenId, (int) auth()->id());
     }
 
-    public function testWebhook(int $id): void
+    public function testWebhook(int $id, TestWebhookEndpointAction $testWebhook): void
     {
         $endpoint = WebhookEndpoint::query()->findOrFail($id);
         $this->authorize('update', $endpoint);
 
-        $delivery = WebhookDelivery::query()->create([
-            'tenant_id' => (int) Tenancy::id(),
-            'webhook_endpoint_id' => $endpoint->id,
-            'event' => 'test',
-            'payload' => [
-                'version' => '1.0',
-                'event' => 'test',
-                'timestamp' => now()->toIso8601String(),
-                'message' => 'Test webhook from WinProx',
-            ],
-            'status' => WebhookDelivery::STATUS_PENDING,
-            'attempts' => 0,
-        ]);
-
-        \App\Jobs\SendWebhookDeliveryJob::dispatch($delivery->id);
+        $testWebhook->handle($endpoint, (int) Tenancy::id());
 
         session()->flash('webhook_tested', $endpoint->url);
     }

@@ -9,7 +9,6 @@ use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 final class UnitBulkBatchRegistry
 {
@@ -67,33 +66,6 @@ final class UnitBulkBatchRegistry
             'first_name' => is_string($firstName) ? $firstName : null,
             'last_name' => is_string($lastName) ? $lastName : null,
             'can_delete' => $deletable > 0,
-        ];
-    }
-
-    /**
-     * @return array{deleted: int, skipped: int}
-     */
-    public static function deleteDeletableUnitsInBatch(UnitBulkBatch $batch): array
-    {
-        $totalBefore = (int) $batch->units()->count();
-        $units = self::deletableUnitsQuery($batch)->orderBy('id')->get();
-
-        $deleted = 0;
-
-        DB::transaction(function () use ($units, &$deleted): void {
-            foreach ($units as $unit) {
-                if (UnitDeletionGuard::blockReason($unit) !== null) {
-                    continue;
-                }
-
-                $unit->delete();
-                $deleted++;
-            }
-        });
-
-        return [
-            'deleted' => $deleted,
-            'skipped' => max(0, $totalBefore - $deleted),
         ];
     }
 

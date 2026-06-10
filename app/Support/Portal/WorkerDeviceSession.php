@@ -2,6 +2,11 @@
 
 namespace App\Support\Portal;
 
+use App\Actions\Portal\AttachWorkerDeviceAction;
+use App\Actions\Portal\RegisterWorkerForPortalAction;
+use App\Actions\Portal\ResolveWorkerIdentityAction;
+use App\Actions\Portal\RevokeWorkerDeviceSessionAction;
+use App\Actions\Portal\TouchWorkerDeviceAction;
 use App\Models\InternalTeam;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -86,7 +91,7 @@ final class WorkerDeviceSession
             return null;
         }
 
-        $device->forceFill(['last_seen_at' => now()])->save();
+        app(TouchWorkerDeviceAction::class)->handle($device);
 
         if ($team !== null && (int) $worker->internal_team_id !== (int) $team->id) {
             return null;
@@ -172,35 +177,12 @@ final class WorkerDeviceSession
      */
     public static function resolveIdentityOnTeam(InternalTeam $team, string $firstName, string $lastName): array
     {
-        $first = mb_strtolower(trim($firstName));
-        $last = mb_strtolower(trim($lastName));
-        if ($first === '' || $last === '') {
-            return ['status' => 'not_found'];
-        }
+        $result = app(ResolveWorkerIdentityAction::class)->handle($team, $firstName, $lastName);
 
-        $matches = Worker::where('internal_team_id', $team->id)
-            ->where('is_active', true)
-            ->get()
-            ->filter(fn (Worker $worker) => mb_strtolower(trim((string) $worker->first_name)) === $first
-                && mb_strtolower(trim((string) $worker->last_name)) === $last)
-            ->values();
-
-        if ($matches->count() === 0) {
-            return ['status' => 'not_found'];
-        }
-
-        if ($matches->count() > 1) {
-            return ['status' => 'ambiguous'];
-        }
-
-        $worker = $matches->first();
-
-        $iconSlug = trim((string) $worker->field_icon_slug);
-        if ($iconSlug === '' || ! WorkerIcon::isValidSlug($iconSlug)) {
-            return ['status' => 'claimable', 'worker' => $worker];
-        }
-
-        return ['status' => 'found', 'worker' => $worker];
+        return array_filter([
+            'status' => $result['status']->value,
+            'worker' => $result['worker'] ?? null,
+        ], fn ($value) => $value !== null);
     }
 
     /**
@@ -209,9 +191,7 @@ final class WorkerDeviceSession
     public static function revokeDeviceSessionFromRequest(?InternalTeam $team = null): void
     {
         $token = self::deviceTokenFromRequest();
-        if ($token !== '') {
-            WorkerDevice::withoutGlobalScope('tenant')->where('device_token', $token)->delete();
-        }
+        app(RevokeWorkerDeviceSessionAction::class)->handle($token);
 
         self::clearDeviceTokenCookie();
 
@@ -237,45 +217,11 @@ final class WorkerDeviceSession
         string $lastName,
         string $iconSlug,
     ): array {
-        $iconSlug = trim($iconSlug);
-        if (! WorkerIcon::isValidSlug($iconSlug)) {
-            throw new \InvalidArgumentException('Invalid worker icon slug.');
-        }
+        $result = app(RegisterWorkerForPortalAction::class)->handle($team, $firstName, $lastName, $iconSlug);
 
-        $claimable = self::findClaimableWorkerOnTeam($team, $firstName, $lastName);
-        if ($claimable !== null) {
-            $claimable->forceFill(['field_icon_slug' => $iconSlug])->save();
+        self::persistDeviceToken($result['device_token'], $team);
 
-            return self::attachDeviceSession($claimable, $team);
-        }
-
-        $worker = Worker::create([
-            'internal_team_id' => $team->id,
-            'first_name' => trim($firstName),
-            'last_name' => trim($lastName),
-            'field_icon_slug' => $iconSlug,
-            'is_active' => true,
-        ]);
-
-        return self::attachDeviceSession($worker, $team);
-    }
-
-    private static function findClaimableWorkerOnTeam(InternalTeam $team, string $firstName, string $lastName): ?Worker
-    {
-        $first = mb_strtolower(trim($firstName));
-        $last = mb_strtolower(trim($lastName));
-        if ($first === '' || $last === '') {
-            return null;
-        }
-
-        $matches = Worker::where('internal_team_id', $team->id)
-            ->where('is_active', true)
-            ->where(fn ($query) => $query->whereNull('field_icon_slug')->orWhere('field_icon_slug', ''))
-            ->get()
-            ->filter(fn (Worker $worker) => mb_strtolower(trim((string) $worker->first_name)) === $first
-                && mb_strtolower(trim((string) $worker->last_name)) === $last);
-
-        return $matches->count() === 1 ? $matches->first() : null;
+        return $result;
     }
 
     private static function restoreDeviceCookieForWorker(Worker $worker, ?InternalTeam $team = null): void
@@ -288,28 +234,12 @@ final class WorkerDeviceSession
 
         $device = $worker->devices()->orderByDesc('last_seen_at')->first();
         if ($device === null) {
-            // Create a new device session if none exists
-            self::attachDeviceSession($worker, $team);
+            $result = app(AttachWorkerDeviceAction::class)->handle($worker);
+            self::persistDeviceToken($result['device_token'], $team);
+
             return;
         }
 
         self::persistDeviceToken($device->device_token, $team);
-    }
-
-    /**
-     * @return array{worker: Worker, device_token: string}
-     */
-    private static function attachDeviceSession(Worker $worker, ?InternalTeam $team = null): array
-    {
-        $device = WorkerDevice::create([
-            'tenant_id' => $worker->tenant_id,
-            'worker_id' => $worker->id,
-            'device_token' => WorkerDevice::generateToken(),
-            'last_seen_at' => now(),
-        ]);
-
-        self::persistDeviceToken($device->device_token, $team);
-
-        return ['worker' => $worker, 'device_token' => $device->device_token];
     }
 }

@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Contact\DeleteContactMessagesAction;
 use App\Actions\Contact\GetContactMessagesAction;
 use App\Actions\Contact\MarkContactMessageAsReadAction;
 use App\Actions\Contact\SendContactReplyAction;
 use App\Actions\Contact\SendNewOutboundMessageAction;
 use App\Models\ContactMessage;
+use App\Models\User;
 use App\Support\Tenancy;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -18,6 +21,7 @@ use Livewire\WithPagination;
 
 class ContactMessages extends Component
 {
+    use AuthorizesRequests;
     use WithPagination;
 
     public $selectedMessage = null;
@@ -47,11 +51,9 @@ class ContactMessages extends Component
     public function render()
     {
         $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-
-        $action = new GetContactMessagesAction();
-        $messages = $action->handle($this->filter, 20, $tenantId);
-        
-        $this->unreadCount = $action->getUnreadCount($tenantId);
+        $getMessages = app(GetContactMessagesAction::class);
+        $messages = $getMessages->handle($this->filter, 20, $tenantId);
+        $this->unreadCount = $getMessages->getUnreadCount($tenantId);
 
         return view('livewire.platform.contact-messages', [
             'messages' => $messages,
@@ -68,12 +70,12 @@ class ContactMessages extends Component
 
         // Markeer als gelezen indien binnenkomend en ongelezen
         if ($this->selectedMessage->direction === 'inbound' && !$this->selectedMessage->isRead()) {
-            $action = new MarkContactMessageAsReadAction();
-            $action->handle($this->selectedMessage, $tenantId);
-            
-            // Refresh unread count
-            $getAction = new GetContactMessagesAction();
-            $this->unreadCount = $getAction->getUnreadCount($tenantId);
+            app(MarkContactMessageAsReadAction::class)->handle(
+                $this->selectedMessage,
+                $this->selectedMessage->tenant_id,
+            );
+
+            $this->unreadCount = app(GetContactMessagesAction::class)->getUnreadCount($tenantId);
         }
 
         $this->dispatch('message-selected');
@@ -141,7 +143,7 @@ class ContactMessages extends Component
      */
     public function startCompose(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('accessPlatform', User::class);
 
         $this->isComposing = true;
         $this->selectedMessage = null;
@@ -157,7 +159,7 @@ class ContactMessages extends Component
      */
     public function sendNewMessage(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('accessPlatform', User::class);
 
         $this->validate([
             'newEmail' => 'required|email',
@@ -194,8 +196,7 @@ class ContactMessages extends Component
     public function getCurrentPageMessageIds(): array
     {
         $tenantId = Tenancy::id() ? (int) Tenancy::id() : null;
-        $action = new GetContactMessagesAction();
-        $messages = $action->handle($this->filter, 20, $tenantId);
+        $messages = app(GetContactMessagesAction::class)->handle($this->filter, 20, $tenantId);
 
         return $messages->pluck('id')->toArray();
     }
@@ -220,7 +221,7 @@ class ContactMessages extends Component
     /**
      * Delete all selected messages
      */
-    public function deleteSelected(): void
+    public function deleteSelected(DeleteContactMessagesAction $delete): void
     {
         if (empty($this->selectedMessageIds)) {
             return;
@@ -230,18 +231,18 @@ class ContactMessages extends Component
 
         foreach ($messages as $message) {
             $this->authorize('delete', $message);
-            $message->delete();
         }
 
-        // Check if selected message was deleted
-        if ($this->selectedMessage && in_array($this->selectedMessage->id, $this->selectedMessageIds)) {
+        $deletedIds = $this->selectedMessageIds;
+        $count = $delete->handle($deletedIds);
+
+        if ($this->selectedMessage && in_array($this->selectedMessage->id, $deletedIds, true)) {
             $this->selectedMessage = null;
         }
 
-        // Reset selection
         $this->selectedMessageIds = [];
 
-        session()->flash('success', __('contact-messages.bulk_deleted_success', ['count' => count($messages)]));
+        session()->flash('success', __('contact-messages.bulk_deleted_success', ['count' => $count]));
         $this->resetPage();
     }
 }

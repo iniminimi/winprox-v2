@@ -2,6 +2,7 @@
 
 namespace App\Actions\Workers;
 
+use App\Actions\Team\DeleteWorkerAction;
 use App\Data\Workers\DeleteWorkerImportBatchData;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
@@ -9,7 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class DeleteWorkerImportBatchAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private DeleteWorkerAction $deleteWorker,
+    ) {}
 
     /**
      * @return array{success: bool, deleted_count?: int, preserved_count?: int, total_count?: int, errors?: list<string>}
@@ -40,12 +44,14 @@ class DeleteWorkerImportBatchAction
                 ->whereDoesntHave('devices')
                 ->get();
 
-            $deletedCount = $workersToDelete->count();
-            $preservedCount = $totalCount - $deletedCount;
+            $deletedCount = 0;
 
             foreach ($workersToDelete as $worker) {
-                $worker->delete();
+                $this->deleteWorker->handle($worker, $actorUserId);
+                $deletedCount++;
             }
+
+            $preservedCount = $totalCount - $deletedCount;
 
             $this->audit->record(
                 userId: $actorUserId,

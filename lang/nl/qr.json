@@ -38,7 +38,9 @@
         "gps_unavailable": "GPS-locatie niet beschikbaar.",
         "gps_timeout": "GPS-locatie time-out. Probeer het opnieuw.",
         "gps_invalid_coords": "Ongeldige coördinaten. Voer geldige getallen in.",
-        "gps_out_of_range": "Coördinaten buiten bereik. Latitude: -90 tot 90, Longitude: -180 tot 180."
+        "gps_out_of_range": "Coördinaten buiten bereik. Latitude: -90 tot 90, Longitude: -180 tot 180.",
+        "gps_latitude_placeholder": "Breedtegraad",
+        "gps_longitude_placeholder": "Lengtegraad"
     },
     "unassigned_guest": {
         "title": "(her)koppel een unit",

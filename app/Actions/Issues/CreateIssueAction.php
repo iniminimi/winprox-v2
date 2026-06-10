@@ -10,7 +10,10 @@ use App\Support\Recurrence\RecurrenceSchedule;
 
 class CreateIssueAction
 {
-    public function __construct(private CreateTaskAction $createTask) {}
+    public function __construct(
+        private CreateTaskAction $createTask,
+        private RecalculateIssueStatusAction $recalculateIssueStatus,
+    ) {}
 
     /**
      * Maakt een melding aan en optioneel een taak per opgegeven team.
@@ -41,7 +44,7 @@ class CreateIssueAction
             $this->createTask->handle($issue, $teamId);
         }
 
-        $issue->recalculateStatus();
+        $this->recalculateIssueStatus->handle($issue);
 
         return $issue->fresh();
     }

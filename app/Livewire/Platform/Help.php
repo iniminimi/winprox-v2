@@ -2,9 +2,13 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\HelpChat\DeleteHelpChatKbEntryAction;
+use App\Actions\HelpChat\DismissHelpChatUnansweredQuestionAction;
+use App\Actions\HelpChat\SaveHelpChatKbEntryAction;
 use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\HelpChatUnansweredQuestion;
 use App\Models\Tenant;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -13,6 +17,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Help extends Component
 {
+    use AuthorizesRequests;
+
     public bool $showKbModal = false;
 
     public ?int $editingKbId = null;
@@ -29,7 +35,7 @@ class Help extends Component
 
     public function mount(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('viewAny', HelpChatKnowledgeBaseEntry::class);
     }
 
     public function openCreateKb(): void
@@ -58,8 +64,15 @@ class Help extends Component
         $this->resetKbForm();
     }
 
-    public function saveKb(): void
+    public function saveKb(SaveHelpChatKbEntryAction $save): void
     {
+        if ($this->editingKbId !== null) {
+            $entry = HelpChatKnowledgeBaseEntry::query()->findOrFail($this->editingKbId);
+            $this->authorize('update', $entry);
+        } else {
+            $this->authorize('create', HelpChatKnowledgeBaseEntry::class);
+        }
+
         $validated = $this->validate([
             'kbLocale' => ['required', 'string', 'max:10'],
             'kbMatchKey' => ['required', 'string', 'max:120'],
@@ -79,31 +92,38 @@ class Help extends Component
             return;
         }
 
-        $payload = [
-            'locale' => $validated['kbLocale'],
-            'match_key' => $validated['kbMatchKey'],
-            'patterns' => $patterns,
-            'answer' => $validated['kbAnswer'],
-            'is_active' => $validated['kbIsActive'],
-        ];
+        try {
+            $save->handle(
+                $this->editingKbId,
+                $validated['kbLocale'],
+                $validated['kbMatchKey'],
+                $patterns,
+                $validated['kbAnswer'],
+                $validated['kbIsActive'],
+            );
+        } catch (\InvalidArgumentException) {
+            $this->addError('kbPatterns', __('platform.help.patterns_required'));
 
-        if ($this->editingKbId !== null) {
-            HelpChatKnowledgeBaseEntry::query()->whereKey($this->editingKbId)->update($payload);
-        } else {
-            HelpChatKnowledgeBaseEntry::create($payload);
+            return;
         }
 
         $this->closeKbModal();
     }
 
-    public function deleteKb(int $id): void
+    public function deleteKb(int $id, DeleteHelpChatKbEntryAction $delete): void
     {
-        HelpChatKnowledgeBaseEntry::query()->whereKey($id)->delete();
+        $entry = HelpChatKnowledgeBaseEntry::query()->findOrFail($id);
+        $this->authorize('delete', $entry);
+
+        $delete->handle($id);
     }
 
-    public function dismissUnanswered(int $id): void
+    public function dismissUnanswered(int $id, DismissHelpChatUnansweredQuestionAction $dismiss): void
     {
-        HelpChatUnansweredQuestion::query()->whereKey($id)->delete();
+        $question = HelpChatUnansweredQuestion::query()->findOrFail($id);
+        $this->authorize('delete', $question);
+
+        $dismiss->handle($id);
     }
 
     private function resetKbForm(): void

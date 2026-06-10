@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Contact\SetEmailSubscriptionAction;
 use App\Models\EmailUnsubscribe;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -18,12 +20,16 @@ use Illuminate\View\View;
  */
 class AdminEmailUnsubscribeController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Lijst van alle e-mail uitschrijvingen.
      * Alleen beschikbaar voor SuperUser.
      */
     public function index(Request $request): View
     {
+        $this->authorize('viewAny', EmailUnsubscribe::class);
+
         $q = trim((string) $request->query('q', ''));
 
         $rowsQuery = EmailUnsubscribe::query()
@@ -48,10 +54,15 @@ class AdminEmailUnsubscribeController extends Controller
      * Verwijder een unsubscribe record (herstel e-mail ontvangst).
      * Alleen beschikbaar voor SuperUser.
      */
-    public function destroy(Request $request, EmailUnsubscribe $emailUnsubscribe): RedirectResponse
-    {
+    public function destroy(
+        Request $request,
+        EmailUnsubscribe $emailUnsubscribe,
+        SetEmailSubscriptionAction $setSubscription,
+    ): RedirectResponse {
+        $this->authorize('delete', $emailUnsubscribe);
+
         $email = $emailUnsubscribe->email;
-        $emailUnsubscribe->delete();
+        $setSubscription->handle($email, false);
 
         return redirect()
             ->route('admin.email-unsubscribes.index', $request->only(['q']))

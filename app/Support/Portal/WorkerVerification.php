@@ -2,6 +2,8 @@
 
 namespace App\Support\Portal;
 
+use App\Actions\Portal\ConfirmWorkerIconAction;
+use App\Actions\Portal\FindWorkerByIconOnTeamAction;
 use App\Models\InternalTeam;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -75,16 +77,7 @@ final class WorkerVerification
      */
     public static function confirmIcon(InternalTeam $team, string $iconSlug): ?Worker
     {
-        $iconSlug = trim($iconSlug);
-        if (! WorkerIcon::isValidSlug($iconSlug)) {
-            return null;
-        }
-
-        $worker = Worker::where('internal_team_id', $team->id)
-            ->where('field_icon_slug', $iconSlug)
-            ->where('is_active', true)
-            ->first();
-
+        $worker = app(FindWorkerByIconOnTeamAction::class)->handle($team, $iconSlug);
         if ($worker === null) {
             return null;
         }
@@ -98,21 +91,15 @@ final class WorkerVerification
      */
     public static function confirmIconForWorker(InternalTeam $team, Worker $worker, string $iconSlug): ?Worker
     {
-        $iconSlug = trim($iconSlug);
-        $expected = trim((string) $worker->field_icon_slug);
-
-        if (! WorkerIcon::isValidSlug($iconSlug) || $expected === '' || $iconSlug !== $expected) {
+        $confirmed = app(ConfirmWorkerIconAction::class)->handle($team, $worker, $iconSlug);
+        if ($confirmed === null) {
             return null;
         }
 
-        if (! self::workerBelongsToTeam($worker, $team)) {
-            return null;
-        }
+        self::markVerified($team, $confirmed);
+        WorkerIconGuard::clearAfterSuccessfulSignIn($team, $confirmed);
 
-        self::markVerified($team, $worker);
-        WorkerIconGuard::clearAfterSuccessfulSignIn($team, $worker);
-
-        return $worker;
+        return $confirmed;
     }
 
     /**
@@ -172,21 +159,6 @@ final class WorkerVerification
         self::markVerified($team, $deviceWorker);
 
         return $deviceWorker;
-    }
-
-    public static function resetWorkerIcon(Worker $worker): void
-    {
-        WorkerIconGuard::unlockWorker($worker);
-
-        $worker->forceFill(['field_icon_slug' => null])->save();
-        $worker->devices()->delete();
-
-        if ($worker->internal_team_id !== null) {
-            $teamId = (int) $worker->internal_team_id;
-            session()->forget(self::sessionKey($teamId));
-            self::clearUnitFieldTrustForTeam($teamId);
-            WorkerDeviceSession::clearRememberedWorkerForTeam($teamId);
-        }
     }
 
     private static function workerBelongsToTeam(Worker $worker, InternalTeam $team): bool

@@ -192,51 +192,23 @@
                             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
                         }"
                     >
-                        <div style="margin-bottom: 1rem; text-align: center; background-color: white; padding: 0.75rem; border-radius: 12px; margin: -1rem -1rem 1rem -1rem;">
-                            <div style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.25rem; color: #1f2937;">Portal</div>
-                            <div style="font-size: 0.625rem; opacity: 0.7; color: #6b7280;">Na scan QR-code</div>
+                        <div class="wp-theme-preview-header">
+                            <div class="wp-theme-preview-title">{{ __('settings.org.theme_preview_title') }}</div>
+                            <div class="wp-theme-preview-subtitle">{{ __('settings.org.theme_preview_subtitle') }}</div>
                         </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                            <button 
-                                :style="{
-                                    backgroundColor: active ? btn : '#059669',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '8px',
-                                    padding: '0.75rem 1rem',
-                                    fontSize: '0.75rem',
-                                    cursor: 'pointer',
-                                    fontWeight: '500'
-                                }"
-                            >
-                                Melding maken
+                        <div class="wp-theme-preview-actions">
+                            <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
+                                :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
+                                {{ __('settings.org.theme_preview_report') }}
                             </button>
-                            <button 
-                                :style="{
-                                    backgroundColor: active ? btn : '#059669',
-                                    color: 'white',
-                                    border: 'none',
-                                    borderRadius: '8px',
-                                    padding: '0.75rem 1rem',
-                                    fontSize: '0.75rem',
-                                    cursor: 'pointer',
-                                    fontWeight: '500'
-                                }"
-                            >
-                                Open meldingen
+                            <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
+                                :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
+                                {{ __('settings.org.theme_preview_issues') }}
                             </button>
-                            <div 
-                                :style="{
-                                    backgroundColor: 'white',
-                                    borderRadius: '8px',
-                                    padding: '0.75rem',
-                                    marginTop: '0.5rem',
-                                    border: '1px solid #e5e7eb'
-                                }"
-                            >
-                                <div style="font-size: 0.625rem; color: '#6b7280'; margin-bottom: 0.25rem;">Voorbeeld melding</div>
-                                <div style="font-size: 0.75rem; color: '#1f2937'; font-weight: '500';">Lift defect</div>
-                                <div style="font-size: 0.625rem; color: '#6b7280'; margin-top: '0.25rem';">Lift 3 werkt niet</div>
+                            <div class="wp-theme-preview-card">
+                                <div class="wp-theme-preview-card-label">{{ __('settings.org.theme_preview_issue_label') }}</div>
+                                <div class="wp-theme-preview-card-title">{{ __('settings.org.theme_preview_issue_title') }}</div>
+                                <div class="wp-theme-preview-card-desc">{{ __('settings.org.theme_preview_issue_desc') }}</div>
                             </div>
                         </div>
                     </div>

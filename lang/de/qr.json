@@ -38,7 +38,9 @@
         "gps_unavailable": "GPS-Standort nicht verfügbar.",
         "gps_timeout": "GPS-Standort Zeitüberschreitung. Bitte versuchen Sie es erneut.",
         "gps_invalid_coords": "Ungültige Koordinaten. Bitte geben Sie gültige Zahlen ein.",
-        "gps_out_of_range": "Koordinaten außerhalb des Bereichs. Breite: -90 bis 90, Länge: -180 bis 180."
+        "gps_out_of_range": "Koordinaten außerhalb des Bereichs. Breite: -90 bis 90, Länge: -180 bis 180.",
+        "gps_latitude_placeholder": "Breitengrad",
+        "gps_longitude_placeholder": "Längengrad"
     },
     "unassigned_guest": {
         "title": "(neu)verknüpfen einer Einheit",

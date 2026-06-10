@@ -3,6 +3,7 @@
 namespace App\Livewire\Platform;
 
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -11,11 +12,13 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Users extends Component
 {
+    use AuthorizesRequests;
+
     public string $search = '';
 
     public function mount(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('accessPlatform', User::class);
     }
 
     public function render()

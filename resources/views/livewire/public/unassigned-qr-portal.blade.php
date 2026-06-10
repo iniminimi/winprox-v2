@@ -91,8 +91,8 @@
             <div x-show="manual" class="wp-stack-tight" style="margin-top: 0.75rem;">
                 <p class="wp-muted" style="text-align: center;">{{ __('qr.connect.gps_or_enter_manual') }}</p>
                 <div class="wp-cluster" style="gap: 0.5rem;">
-                    <input type="number" step="any" x-model="manualLat" placeholder="Latitude" class="wp-input">
-                    <input type="number" step="any" x-model="manualLng" placeholder="Longitude" class="wp-input">
+                    <input type="number" step="any" x-model="manualLat" placeholder="{{ __('qr.connect.gps_latitude_placeholder') }}" class="wp-input">
+                    <input type="number" step="any" x-model="manualLng" placeholder="{{ __('qr.connect.gps_longitude_placeholder') }}" class="wp-input">
                 </div>
                 <button type="button" class="btn btn--surface btn--sm btn--block" 
                     @click="lat = parseFloat(manualLat); lng = parseFloat(manualLng); if (!isNaN(lat) && !isNaN(lng)) { found = true; manual = false; } else { error = '{{ __('qr.connect.gps_invalid_coords') }}'; }">
@@ -124,7 +124,6 @@
             </div>
         </div>
 
-        <style>@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }</style>
     @elseif ($showSuccess)
         {{-- Simple success without GPS --}}
         <div class="wp-card wp-card-pad wp-card--success">

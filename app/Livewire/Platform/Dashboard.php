@@ -8,6 +8,7 @@ use App\Models\Issue;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -16,9 +17,11 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Dashboard extends Component
 {
+    use AuthorizesRequests;
+
     public function mount(): void
     {
-        abort_unless(auth()->user()?->is_superuser, 403);
+        $this->authorize('accessPlatform', User::class);
     }
 
     public function render()

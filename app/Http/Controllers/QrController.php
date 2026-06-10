@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\QrCodes\RecordQrScanAction;
+use App\Enums\QrCodeStatus;
 use App\Models\QrCode;
-use App\Models\QrScan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class QrController extends Controller
 {
-    public function __invoke(Request $request, string $token)
+    public function __invoke(Request $request, string $token, RecordQrScanAction $recordScan)
     {
         $qrCode = QrCode::where('token', $token)->first();
 
@@ -17,53 +18,37 @@ class QrController extends Controller
             abort(404);
         }
 
-        // Log the scan
-        $this->logScan($qrCode, $request);
-
-        // Update last scanned timestamp
-        $qrCode->update(['last_scanned_at' => now()]);
+        $qrCode = $recordScan->handle(
+            $qrCode,
+            Auth::id(),
+            $request->ip(),
+            $request->userAgent(),
+        );
 
         return $this->handleQrCode($qrCode);
-    }
-
-    protected function logScan(QrCode $qrCode, Request $request): void
-    {
-        QrScan::create([
-            'qr_code_id' => $qrCode->id,
-            'tenant_id' => $qrCode->tenant_id,
-            'user_id' => Auth::id(),
-            'ip_address' => $request->ip(),
-            'user_agent' => $request->userAgent(),
-            'scanned_at' => now(),
-        ]);
     }
 
     protected function handleQrCode(QrCode $qrCode)
     {
         $status = $qrCode->status;
 
-        // Damaged QR code
-        if ($status->value === 'damaged') {
+        if ($status === QrCodeStatus::Damaged) {
             return response()->view('qr.damaged', [
                 'stickerNumber' => $qrCode->sticker_number,
             ], 403);
         }
 
-        // Inactive QR code
-        if ($status->value === 'inactive') {
+        if ($status === QrCodeStatus::Inactive) {
             return response()->view('qr.inactive', [
                 'stickerNumber' => $qrCode->sticker_number,
             ], 403);
         }
 
-        // Unassigned QR code
-        if ($status->value === 'unassigned') {
-            // Always redirect to unassigned portal (portal handles login + linking)
+        if ($status === QrCodeStatus::Unassigned) {
             return redirect()->route('public.unassigned-qr-portal', ['token' => $qrCode->token]);
         }
 
-        // Active QR code - should be linked to a unit
-        if ($status->value === 'active') {
+        if ($status === QrCodeStatus::Active) {
             if (!$qrCode->unit_id) {
                 // Active but not linked - this shouldn't happen but handle gracefully
                 return response()->view('qr.error', [

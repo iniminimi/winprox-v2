@@ -89,7 +89,8 @@
         @endunless
     @endunless
 
-    @if ($issue->status === \App\Enums\TaskStatus::Closed && auth()->user()->isAdmin())
+    @can('update', $issue)
+    @if ($issue->status === \App\Enums\TaskStatus::Closed)
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('issues.show.reopen_section') }}</h2>
             <p class="wp-muted">{{ __('issues.show.reopen_hint') }}</p>
@@ -98,6 +99,7 @@
             </div>
         </div>
     @endif
+    @endcan
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">

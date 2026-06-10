@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Actions\Units\EnsureUnitQrTokenAction;
 use App\Models\Unit;
 /**
  * Publieke unit-meldlink voor QR-stickers en print (één unieke URL per unit).
@@ -20,15 +21,6 @@ final class UnitPortalUrl
 
     public static function ensureQrToken(Unit $unit): string
     {
-        $token = is_string($unit->qr_token) ? trim($unit->qr_token) : '';
-
-        if ($token !== '') {
-            return $token;
-        }
-
-        $token = Unit::generateUniqueQrToken();
-        $unit->forceFill(['qr_token' => $token])->saveQuietly();
-
-        return $token;
+        return app(EnsureUnitQrTokenAction::class)->handle($unit);
     }
 }

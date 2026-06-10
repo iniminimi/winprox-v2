@@ -6,7 +6,6 @@ use App\Enums\IssueSource;
 use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
-use App\Support\Webhook\IssueStatusWebhook;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -51,7 +50,7 @@ class Issue extends Model
 
     /**
      * Beginstatus Nieuw zodat een nét aangemaakte melding geen valse
-     * "status_changed" afvuurt bij de eerste recalculateStatus() (zie events).
+     * "status_changed" afvuurt bij de eerste status-rollup (zie RecalculateIssueStatusAction).
      *
      * @var array<string, mixed>
      */
@@ -107,33 +106,4 @@ class Issue extends Model
         return $this->status === TaskStatus::Closed;
     }
 
-    /**
-     * Leidt de meldingstatus af uit de onderliggende taken en slaat ze op.
-     * Rollup-regels: zie WINPROX_RULES.md §4.2.
-     */
-    public function recalculateStatus(): TaskStatus
-    {
-        $statuses = $this->tasks()
-            ->pluck('status')
-            ->map(fn ($status) => $status instanceof TaskStatus ? $status->value : $status);
-
-        $derived = match (true) {
-            $statuses->isEmpty() => TaskStatus::New,
-            $statuses->every(fn ($s) => $s === TaskStatus::Closed->value) => TaskStatus::Closed,
-            $statuses->every(fn ($s) => in_array($s, [TaskStatus::Done->value, TaskStatus::Closed->value], true)) => TaskStatus::Done,
-            $statuses->contains(TaskStatus::InProgress->value) => TaskStatus::InProgress,
-            default => TaskStatus::New,
-        };
-
-        if ($this->status !== $derived) {
-            $before = $this->status instanceof TaskStatus
-                ? $this->status
-                : (TaskStatus::tryFrom((string) $this->status) ?? TaskStatus::New);
-            $this->status = $derived;
-            $this->save();
-            IssueStatusWebhook::dispatchIfChanged($this, $before);
-        }
-
-        return $derived;
-    }
 }

@@ -27,7 +27,14 @@
         "custom_theme_title": "Style de portail personnalisé",
         "custom_theme_active_label": "Utiliser un style de portail personnalisé",
         "custom_theme_bg_label": "Couleur d'arrière-plan",
-        "custom_theme_btn_label": "Couleur des boutons"
+        "custom_theme_btn_label": "Couleur des boutons",
+        "theme_preview_title": "Portail",
+        "theme_preview_subtitle": "Après scan du code QR",
+        "theme_preview_report": "Signaler",
+        "theme_preview_issues": "Signalements ouverts",
+        "theme_preview_issue_label": "Exemple de signalement",
+        "theme_preview_issue_title": "Ascenseur en panne",
+        "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas"
     },
     "privacy": {
         "title": "Confidentialité et export de données",

@@ -8,6 +8,7 @@ use App\Actions\Issues\CreateIssueUpdateAction;
 use App\Actions\Issues\ReopenIssueAction;
 use App\Actions\Issues\ToggleIssueRecurrencePauseAction;
 use App\Actions\Tasks\CreateTaskAction;
+use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskTeamAction;
 use App\Enums\TaskPriority;
@@ -185,6 +186,7 @@ class Show extends Component
     public function editTask(
         UpdateTaskPriorityAction $updatePriority,
         UpdateTaskTeamAction $updateTeam,
+        UpdateTaskDetailsAction $updateDetails,
     ): void {
         $this->authorize('update', $this->issue);
 
@@ -219,11 +221,12 @@ class Show extends Component
             $updateTeam->handle($task, (int) $validated['newTeamId']);
         }
 
-        // Update note and scheduled_for
-        $task->update([
-            'note' => $validated['taskNote'],
-            'scheduled_for' => ! empty($validated['taskScheduledFor']) ? $validated['taskScheduledFor'] : null,
-        ]);
+        $updateDetails->handle(
+            $task,
+            $validated['taskNote'],
+            $validated['taskScheduledFor'] ?? null,
+            $this->issue->tenant_id,
+        );
 
         $this->closeEditTaskModal();
         $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority']);

@@ -42,6 +42,9 @@
     "label_email": "E-Mail-Adresse",
     "label_subject": "Betreff",
     "label_message": "Nachricht",
+    "placeholder_email": "name@domain.de",
+    "placeholder_subject": "Betreff der E-Mail",
+    "placeholder_message": "Geben Sie hier Ihre Nachricht ein...",
     "empty_title": "Keine Nachricht ausgewählt",
     "empty_body": "Wählen Sie eine Nachricht aus der linken Spalte, um den vollständigen Inhalt anzuzeigen und direkt zu antworten.",
     "email_footer_sent_via": "Gesendet via WinProx.app"

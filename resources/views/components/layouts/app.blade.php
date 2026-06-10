@@ -38,8 +38,9 @@
             ]),
         ];
 
+        $activeTenant = $supportTenant ?? $authUser?->tenant;
         $showTenantAdminNav = $authUser && (
-            $authUser->isAdmin()
+            ($activeTenant instanceof Tenant && $authUser->can('manageSubscription', $activeTenant))
             || ($authUser->is_superuser && $supportTenant !== null)
         );
 

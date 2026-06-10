@@ -27,7 +27,14 @@
         "custom_theme_title": "Eigener Portal-Stil",
         "custom_theme_active_label": "Eigenen Portal-Stil verwenden",
         "custom_theme_bg_label": "Hintergrundfarbe",
-        "custom_theme_btn_label": "Schaltflächenfarbe"
+        "custom_theme_btn_label": "Schaltflächenfarbe",
+        "theme_preview_title": "Portal",
+        "theme_preview_subtitle": "Nach QR-Code-Scan",
+        "theme_preview_report": "Meldung erstellen",
+        "theme_preview_issues": "Offene Meldungen",
+        "theme_preview_issue_label": "Beispielmeldung",
+        "theme_preview_issue_title": "Aufzug defekt",
+        "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht"
     },
     "privacy": {
         "title": "Datenschutz & Datenexport",

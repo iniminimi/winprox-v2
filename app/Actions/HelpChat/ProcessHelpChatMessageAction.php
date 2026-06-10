@@ -2,7 +2,6 @@
 
 namespace App\Actions\HelpChat;
 
-use App\Models\HelpChatUnansweredQuestion;
 use App\Models\User;
 use App\Support\HelpChat\HelpChatFaqMatcher;
 use App\Support\HelpChat\HelpChatTenantInsight;
@@ -13,6 +12,7 @@ class ProcessHelpChatMessageAction
     public function __construct(
         private HelpChatFaqMatcher $matcher,
         private EscalateHelpChatAnswerAction $escalate,
+        private SaveHelpChatUnansweredQuestionAction $saveUnanswered,
     ) {}
 
     /**
@@ -65,14 +65,7 @@ class ProcessHelpChatMessageAction
             ];
         }
 
-        if ($tenant = $user->tenant) {
-            HelpChatUnansweredQuestion::create([
-                'tenant_id' => $tenant->id,
-                'user_id' => $user->id,
-                'locale' => $locale,
-                'question' => $trimmed,
-            ]);
-        }
+        $this->saveUnanswered->handle($user, $locale, $trimmed);
 
         $this->escalate->notifyHelpdesk($user, $trimmed);
 

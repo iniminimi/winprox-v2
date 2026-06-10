@@ -31,6 +31,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function accessPlatform(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     private function isTenantAdmin(User $user): bool
     {
         return $user->tenant_id !== null && $user->isAdmin();

@@ -27,7 +27,14 @@
         "custom_theme_title": "Eigen portaal-stijl",
         "custom_theme_active_label": "Eigen portaal-stijl gebruiken",
         "custom_theme_bg_label": "Achtergrondkleur",
-        "custom_theme_btn_label": "Knopkleur"
+        "custom_theme_btn_label": "Knopkleur",
+        "theme_preview_title": "Portaal",
+        "theme_preview_subtitle": "Na scan QR-code",
+        "theme_preview_report": "Melding maken",
+        "theme_preview_issues": "Open meldingen",
+        "theme_preview_issue_label": "Voorbeeld melding",
+        "theme_preview_issue_title": "Lift defect",
+        "theme_preview_issue_desc": "Lift 3 werkt niet"
     },
     "privacy": {
         "title": "Privacy & export van gegevens",

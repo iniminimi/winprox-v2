@@ -3,6 +3,7 @@
 namespace App\Actions\Tasks;
 
 use App\Actions\Issues\AddIssueUpdateAction;
+use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCompleted;
 use App\Events\Tasks\TaskStarted;
@@ -13,7 +14,10 @@ use Illuminate\Validation\ValidationException;
 
 class UpdateTaskStatusAction
 {
-    public function __construct(private AddIssueUpdateAction $addUpdate) {}
+    public function __construct(
+        private AddIssueUpdateAction $addUpdate,
+        private RecalculateIssueStatusAction $recalculateIssueStatus,
+    ) {}
 
     public function handle(
         Task $task,
@@ -79,7 +83,7 @@ class UpdateTaskStatusAction
             event(new TaskCompleted($fresh, $actorId));
         }
 
-        $fresh->issue->recalculateStatus();
+        $this->recalculateIssueStatus->handle($fresh->issue);
 
         return $fresh;
     }

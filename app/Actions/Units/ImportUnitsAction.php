@@ -6,11 +6,14 @@ use App\Data\Units\ImportUnitsData;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ImportUnitsAction
 {
+    public function __construct(private AuditRecorder $audit) {}
+
     protected array $requiredHeaders = [
         'location_name',
         'unit_name',
@@ -228,23 +231,19 @@ class ImportUnitsAction
         }
     }
 
-    /**
-     * Log audit entry for the import.
-     */
     protected function logAudit(int $tenantId, ?int $actorUserId, int $count, string $batchId, string $fileName): void
     {
-        DB::table('audit_logs')->insert([
-            'tenant_id' => $tenantId,
-            'user_id' => $actorUserId,
-            'action' => 'units.import',
-            'model_type' => Unit::class,
-            'model_id' => null,
-            'payload' => json_encode([
+        $this->audit->record(
+            userId: $actorUserId,
+            tenantId: $tenantId,
+            action: 'units.import',
+            modelType: Unit::class,
+            modelId: null,
+            payload: [
                 'count' => $count,
                 'batch_id' => $batchId,
                 'file_name' => $fileName,
-            ]),
-            'created_at' => now(),
-        ]);
+            ],
+        );
     }
 }
