@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@props(['portalBgUrl' => null])
+
 @php
     use App\Enums\UiTheme;
     use App\Support\Ui\UiThemeResolver;
@@ -16,8 +17,11 @@
     $applyTenantCustomTheme = $tenantCustomThemeVars !== ''
         && UiTheme::tryFromString($portalTheme) === UiTheme::Simple;
 
-    $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
+    if ($portalBgUrl === null) {
+        $portalBgUrl = $tenant ? $tenant->portalBackgroundPublicUrl() : null;
+    }
 @endphp
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       data-theme="{{ $portalTheme }}"
       @if ($applyTenantCustomTheme || $portalBgUrl)

@@ -196,7 +196,13 @@
         "capture_gps": "GPS-Standort erfassen",
         "recapture_gps": "GPS-Standort (neu) erfassen",
         "capturing_gps": "GPS wird abgerufen...",
-        "gps_updated": "GPS-Koordinaten erfasst!"
+        "gps_updated": "GPS-Koordinaten erfasst!",
+        "background_photo_title": "Umgebungsfoto",
+        "background_photo_add": "Umgebungsfoto hinzufügen",
+        "background_photo_hint": "Halten Sie Ihr Telefon vertikal für die besten Ergebnisse.",
+        "background_photo_save": "Speichern",
+        "background_photo_saving": "Speichern...",
+        "background_photo_updated": "Umgebungsfoto gespeichert."
     }
 }
 

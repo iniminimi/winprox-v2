@@ -196,7 +196,13 @@
         "capture_gps": "Enregistrer la position GPS",
         "recapture_gps": "(Ré)enregistrer la position GPS",
         "capturing_gps": "Récupération GPS...",
-        "gps_updated": "Coordonnées GPS enregistrées !"
+        "gps_updated": "Coordonnées GPS enregistrées !",
+        "background_photo_title": "Photo d'environnement",
+        "background_photo_add": "Ajouter une photo d'environnement",
+        "background_photo_hint": "Tenez votre téléphone verticalement pour les meilleurs résultats.",
+        "background_photo_save": "Enregistrer",
+        "background_photo_saving": "Enregistrement en cours...",
+        "background_photo_updated": "Photo d'environnement enregistrée."
     }
 }
 

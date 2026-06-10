@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class Unit extends Model
@@ -24,6 +25,7 @@ class Unit extends Model
         'is_active',
         'latitude',
         'longitude',
+        'background_photo_path',
     ];
 
     protected $casts = [
@@ -101,6 +103,20 @@ class Unit extends Model
     public function qrLinkPhotos(): HasMany
     {
         return $this->hasMany(QrLinkPhoto::class);
+    }
+
+    public function backgroundPhotoPublicUrl(): ?string
+    {
+        $path = $this->background_photo_path;
+        if (! is_string($path) || $path === '') {
+            return null;
+        }
+
+        if (! Storage::disk('public')->exists($path)) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($path);
     }
 
     public function hasOpenIssues(): bool

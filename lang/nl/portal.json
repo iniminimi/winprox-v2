@@ -196,7 +196,13 @@
         "capture_gps": "GPS-locatie vastleggen",
         "recapture_gps": "GPS-locatie (her)vastleggen",
         "capturing_gps": "GPS ophalen...",
-        "gps_updated": "GPS coördinaten vastgelegd!"
+        "gps_updated": "GPS coördinaten vastgelegd!",
+        "background_photo_title": "Omgevingsfoto",
+        "background_photo_add": "Omgevingsfoto toevoegen",
+        "background_photo_hint": "Houd je telefoon verticaal voor de beste resultaten.",
+        "background_photo_save": "Opslaan",
+        "background_photo_saving": "Bezig met opslaan...",
+        "background_photo_updated": "Omgevingsfoto opgeslagen."
     }
 }
 

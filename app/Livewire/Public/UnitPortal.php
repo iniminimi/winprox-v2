@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitReportAction;
+use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitGpsAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
@@ -69,6 +70,9 @@ class UnitPortal extends Component
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $newPortalPhotos = [];
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $backgroundPhoto = [];
 
     public string $flashMessage = '';
 
@@ -451,6 +455,45 @@ class UnitPortal extends Component
         $this->flashMessage = __('portal.unit.gps_updated');
     }
 
+    public function removeBackgroundPhoto(int $index): void
+    {
+        if (isset($this->backgroundPhoto[$index])) {
+            array_splice($this->backgroundPhoto, $index, 1);
+        }
+    }
+
+    public function uploadBackgroundPhoto(UpdateUnitBackgroundPhotoAction $action): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        if (! $this->workerBelongsToUnitTeam()) {
+            $this->addError('backgroundPhoto', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        $this->validate([
+            'backgroundPhoto' => ['required', 'array', 'max:1'],
+            'backgroundPhoto.0' => ['image', 'max:10240'],
+        ], [
+            'backgroundPhoto.max' => __('portal.report.errors.photos_max'),
+            'backgroundPhoto.0.image' => __('portal.report.errors.photos_image'),
+            'backgroundPhoto.0.max' => __('portal.report.errors.photos_size'),
+        ]);
+
+        if (empty($this->backgroundPhoto)) {
+            return;
+        }
+
+        $action->handle($this->unit(), $this->backgroundPhoto[0], null);
+
+        $this->reset('backgroundPhoto');
+        $this->dispatch('wp-clear-photo-previews');
+        $this->flashMessage = __('portal.unit.background_photo_updated');
+    }
+
     public function submitCompleteTask(CompleteTaskAction $completeTask): void
     {
         $worker = $this->authorizedWorker();
@@ -571,6 +614,10 @@ class UnitPortal extends Component
             'workerBelongsToUnitTeam' => $worker !== null && $unit->category !== null && $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists(),
             'isTeamPortal' => false,
             'manageWorkersMessage' => '',
+            'unitBackgroundUrl' => $unit->backgroundPhotoPublicUrl(),
+        ])->layout('components.layouts.public', [
+            'portalBgUrl' => $unit->backgroundPhotoPublicUrl(),
+            'title' => 'WinProx',
         ]);
     }
 

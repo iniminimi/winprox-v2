@@ -196,7 +196,13 @@
         "capture_gps": "Capture GPS location",
         "recapture_gps": "(Re)capture GPS location",
         "capturing_gps": "Getting GPS...",
-        "gps_updated": "GPS coordinates captured!"
+        "gps_updated": "GPS coordinates captured!",
+        "background_photo_title": "Environment photo",
+        "background_photo_add": "Add environment photo",
+        "background_photo_hint": "Hold your phone vertically for the best results.",
+        "background_photo_save": "Save",
+        "background_photo_saving": "Saving...",
+        "background_photo_updated": "Environment photo saved."
     }
 }
 

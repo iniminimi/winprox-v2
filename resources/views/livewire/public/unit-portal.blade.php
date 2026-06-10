@@ -334,6 +334,68 @@
             </div>
         @endif
 
+        {{-- ==================== UNIT BACKGROUND PHOTO ==================== --}}
+        @if ($portalSection === 'home' && $workerBelongsToUnitTeam)
+            @php
+                $bgTempCount = count($backgroundPhoto);
+            @endphp
+            <div class="wp-card wp-card-pad wp-stack" wire:key="unit-bg-photo-section">
+                <h2 class="wp-section-title">{{ __('portal.unit.background_photo_title') }}</h2>
+
+                @if ($unitBackgroundUrl)
+                    <div class="wp-photo-grid wp-photo-grid--gallery">
+                        <div class="wp-photo-thumb">
+                            <img src="{{ $unitBackgroundUrl }}" alt="" width="80" height="80" loading="lazy">
+                        </div>
+                    </div>
+                @endif
+
+                @if ($bgTempCount > 0)
+                    <div class="wp-photo-grid wp-photo-grid--gallery">
+                        @foreach ($backgroundPhoto as $index => $photo)
+                            <div class="wp-photo-thumb" style="position:relative;" wire:key="bg-temp-photo-{{ $index }}">
+                                <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                <button
+                                    type="button"
+                                    class="btn btn--danger btn--sm"
+                                    style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                    wire:click="removeBackgroundPhoto({{ $index }})"
+                                >×</button>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+
+                @if ($bgTempCount === 0 && count($backgroundPhoto) < 1)
+                    @include('partials.wp-issue-photo-upload', ['model' => 'backgroundPhoto', 'max' => 1, 'preferCamera' => true, 'removeMethod' => 'removeBackgroundPhoto', 'photoAlt' => __('portal.unit.background_photo_add')])
+                    <p class="wp-hint">{{ __('portal.unit.background_photo_hint') }}</p>
+                @endif
+
+                @error('backgroundPhoto') <p class="wp-error">{{ $message }}</p> @enderror
+                @error('backgroundPhoto.0') <p class="wp-error">{{ $message }}</p> @enderror
+
+                @if ($bgTempCount > 0)
+                    <form
+                        x-data="{ isOffline: !navigator.onLine }"
+                        x-init="
+                            window.addEventListener('offline', () => isOffline = true);
+                            window.addEventListener('online', () => isOffline = false);
+                        "
+                        @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.uploadBackgroundPhoto()"
+                        wire:key="bg-photo-submit-form"
+                    >
+                        <div class="wp-portal-actions">
+                            <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
+                                <x-wp-spinner wire:loading class="wp-mr-2" />
+                                <span wire:loading.remove>{{ __('portal.unit.background_photo_save') }}</span>
+                                <span wire:loading>{{ __('portal.unit.background_photo_saving') }}</span>
+                            </button>
+                        </div>
+                    </form>
+                @endif
+            </div>
+        @endif
+
         {{-- ==================== QR-LINK PHOTOS (BOTTOM) ==================== --}}
         {{-- Show for workers (to add photos) OR for anyone if photos exist --}}
         @if ($portalSection === 'home' && ($workerBelongsToUnitTeam || $qrLinkPhotos->isNotEmpty()))
