@@ -275,7 +275,7 @@
 }
 
 .wp-page-head--clickable:hover {
-    background-color: var(--wp-surface-alt);
+    background-color: var(--wp-surface-hover);
 }
 
 .wp-page-head-main {
