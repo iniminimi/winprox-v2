@@ -318,6 +318,7 @@ class TeamPortal extends Component
         $this->newWorkerLastName = '';
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
         $this->manageWorkersMessage = __('portal.teamleader.worker_added');
+        $this->dispatch('worker-added');
     }
 
     public function removeWorker(int $workerId, DeleteWorkerAction $deleteWorker): void

@@ -121,15 +121,18 @@
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
             {{-- Add worker form --}}
-            <form wire:key="tl-add-worker-form-stable" wire:submit.prevent="addWorker" class="wp-stack">
+            <form wire:key="tl-add-worker-form-stable"
+                  wire:submit.prevent="addWorker"
+                  x-on:worker-added.window="$el.reset()"
+                  class="wp-stack">
                 <div class="wp-field">
                     <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
-                    <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
+                    <input id="tl_new_first" type="text" class="wp-input" wire:model.blur="newWorkerFirstName" autocomplete="given-name">
                     @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
-                    <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
+                    <input id="tl_new_last" type="text" class="wp-input" wire:model.blur="newWorkerLastName" autocomplete="family-name">
                     @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <button type="submit" class="btn btn--primary btn--block">
