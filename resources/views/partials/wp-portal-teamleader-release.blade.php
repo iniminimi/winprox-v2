@@ -87,7 +87,7 @@
             @if ($teamWorkers->isEmpty())
                 <p class="wp-muted">{{ __('portal.teamleader.no_workers') }}</p>
             @else
-                <div class="wp-list wp-list--entity-rows">
+                <div class="wp-list wp-list--entity-rows" wire:key="tl-manage-workers-list-container">
                     @foreach ($teamWorkers as $tw)
                         @if ($verifiedWorker && (int) $tw->id === (int) $verifiedWorker->id)
                             @continue
@@ -115,27 +115,41 @@
             @endif
 
             @if ($manageWorkersMessage !== '')
-                <div class="wp-flash">{{ $manageWorkersMessage }}</div>
+                <div class="wp-flash" wire:key="tl-manage-workers-flash-msg">{{ $manageWorkersMessage }}</div>
             @endif
 
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
-            {{-- Add worker form: Harde stabiele wire:key voorkomt dat Livewire v3 desynchroniseert --}}
-            <form wire:key="tl-add-worker-stable-form" wire:submit="addWorker" class="wp-stack">
-                <div class="wp-field" wire:key="tl-add-worker-first-field">
+            {{-- Add worker container: Pure div stack zonder form submit-lock --}}
+            <div class="wp-stack" wire:key="tl-add-worker-isolated-box">
+                <div class="wp-field" wire:key="tl-add-worker-first-container">
                     <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
-                    <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
+                    <input id="tl_new_first" 
+                           type="text" 
+                           class="wp-input" 
+                           wire:model.live="newWorkerFirstName" 
+                           autocomplete="given-name">
                     @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-field" wire:key="tl-add-worker-last-field">
+                
+                <div class="wp-field" wire:key="tl-add-worker-last-container">
                     <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
-                    <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
+                    <input id="tl_new_last" 
+                           type="text" 
+                           class="wp-input" 
+                           wire:model.live="newWorkerLastName" 
+                           autocomplete="family-name">
                     @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="btn btn--primary btn--block" wire:key="tl-add-worker-submit-btn">
+                
+                <button type="button" 
+                        class="btn btn--primary btn--block" 
+                        wire:click="addWorker"
+                        wire:loading.attr="disabled"
+                        wire:key="tl-add-worker-execute-btn">
                     {{ __('portal.teamleader.add_worker') }}
                 </button>
-            </form>
+            </div>
         @endif
     @endif
 </div>

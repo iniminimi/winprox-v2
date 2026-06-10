@@ -268,14 +268,18 @@ class TeamPortal extends Component
     public function openManageWorkers(): void
     {
         $this->showManageWorkers = true;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
+        $this->newWorkerFirstName = '';
+        $this->newWorkerLastName = '';
+        $this->manageWorkersMessage = '';
         $this->resetErrorBag();
     }
 
     public function closeManageWorkers(): void
     {
         $this->showManageWorkers = false;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
+        $this->newWorkerFirstName = '';
+        $this->newWorkerLastName = '';
+        $this->manageWorkersMessage = '';
         $this->resetErrorBag();
     }
 
@@ -310,7 +314,7 @@ class TeamPortal extends Component
             return;
         }
 
-        // Expliciet de invoervelden resetten en error bag schoonmaken voor een schone state loop
+        // Harde reset van de input states om JavaScript opnieuw te triggeren
         $this->newWorkerFirstName = '';
         $this->newWorkerLastName = '';
         $this->resetErrorBag();
