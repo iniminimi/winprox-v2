@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Actions\QrCodes\GenerateQrStickerNumberAction;
 use App\Enums\QrCodeStatus;
 use App\Models\QrCode;
 use App\Models\Tenant;
@@ -18,6 +19,7 @@ class QrCodeFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'status' => QrCodeStatus::Unassigned,
+            'sticker_number' => fn () => app(GenerateQrStickerNumberAction::class)->handle(),
         ];
     }
 

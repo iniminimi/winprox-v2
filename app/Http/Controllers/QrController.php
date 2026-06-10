@@ -34,13 +34,13 @@ class QrController extends Controller
 
         if ($status === QrCodeStatus::Damaged) {
             return response()->view('qr.damaged', [
-                'stickerNumber' => $qrCode->sticker_number,
+                'stickerNumber' => $qrCode->display_sticker_number,
             ], 403);
         }
 
         if ($status === QrCodeStatus::Inactive) {
             return response()->view('qr.inactive', [
-                'stickerNumber' => $qrCode->sticker_number,
+                'stickerNumber' => $qrCode->display_sticker_number,
             ], 403);
         }
 
@@ -52,7 +52,7 @@ class QrController extends Controller
             if (!$qrCode->unit_id) {
                 // Active but not linked - this shouldn't happen but handle gracefully
                 return response()->view('qr.error', [
-                    'stickerNumber' => $qrCode->sticker_number,
+                    'stickerNumber' => $qrCode->display_sticker_number,
                 ], 500);
             }
 

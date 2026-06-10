@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Enums\QrCodeStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Qr\QrStickerNumber;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,9 +45,6 @@ class QrCode extends Model
             if (empty($qrCode->token)) {
                 $qrCode->token = self::generateUniqueToken();
             }
-            if (empty($qrCode->sticker_number)) {
-                $qrCode->sticker_number = self::generateStickerNumber();
-            }
         });
     }
 
@@ -58,17 +57,10 @@ class QrCode extends Model
         return $token;
     }
 
-    public static function generateStickerNumber(): string
+    /** @return Attribute<string, never> */
+    protected function displayStickerNumber(): Attribute
     {
-        // Human-readable format: QR-YYYY-XXXXX (e.g., QR-2026-00001)
-        $year = date('Y');
-        
-        do {
-            $random = str_pad(random_int(1, 99999), 5, '0', STR_PAD_LEFT);
-            $stickerNumber = "QR-{$year}-{$random}";
-        } while (static::withoutGlobalScopes()->where('sticker_number', $stickerNumber)->exists());
-
-        return $stickerNumber;
+        return Attribute::get(fn (): string => QrStickerNumber::display($this->sticker_number));
     }
 
     public function unit(): BelongsTo

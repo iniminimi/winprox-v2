@@ -107,7 +107,7 @@
         <div class="wp-card wp-card-pad wp-card--success">
             <div class="wp-stack">
                 <h2>{{ __('qr.connect.success_title') }}</h2>
-                <p>{{ __('qr.connect.success_message', ['sticker' => $qrCode->sticker_number]) }}</p>
+                <p>{{ __('qr.connect.success_message', ['sticker' => $qrCode->display_sticker_number]) }}</p>
                 <button type="button" class="btn btn--primary" wire:click="redirectToUnit">
                     {{ __('qr.connect.go_to_unit') }}
                 </button>
@@ -117,7 +117,7 @@
         <div class="wp-card wp-card-pad wp-stack">
             <div class="wp-card-section">
                 <h3>{{ __('qr.connect.qr_info') }}</h3>
-                <p class="wp-muted">{{ __('qr.connect.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
+                <p class="wp-muted">{{ __('qr.connect.sticker_number') }} : <code>{{ $qrCode->display_sticker_number }}</code></p>
                 <p class="wp-muted">{{ __('qr.connect.status') }} : {{ __($qrCode->status->labelKey()) }}</p>
             </div>
 

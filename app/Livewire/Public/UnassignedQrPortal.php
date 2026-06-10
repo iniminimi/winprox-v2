@@ -55,7 +55,7 @@ class UnassignedQrPortal extends Component
         $this->token = $token;
         $this->qrCode = QrCode::withoutGlobalScopes()->with('unit')->where('token', $token)->firstOrFail();
         $this->tenantId = $this->qrCode->tenant_id;
-        $this->stickerNumber = $this->qrCode->sticker_number;
+        $this->stickerNumber = $this->qrCode->display_sticker_number;
 
         Tenancy::actAs($this->tenantId);
 

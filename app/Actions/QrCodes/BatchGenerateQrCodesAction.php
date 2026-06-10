@@ -3,13 +3,15 @@
 namespace App\Actions\QrCodes;
 
 use App\Models\QrCode;
-use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Collection;
 
 class BatchGenerateQrCodesAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private GenerateQrStickerNumberAction $generateStickerNumber,
+    ) {}
 
     /**
      * @return Collection<int, QrCode>
@@ -20,28 +22,16 @@ class BatchGenerateQrCodesAction
             throw new \InvalidArgumentException('Count must be between 1 and 1000');
         }
 
-        // First, try to reuse existing unassigned QR codes for this tenant
-        $existingQrCodes = QrCode::withoutGlobalScopes()
-            ->where('tenant_id', $tenantId)
-            ->where('status', \App\Enums\QrCodeStatus::Unassigned)
-            ->whereNull('unit_id')
-            ->orderBy('id')
-            ->limit($count)
-            ->get();
+        $qrCodes = collect();
 
-        $needed = $count - $existingQrCodes->count();
-        $qrCodes = $existingQrCodes;
-
-        // Generate new QR codes only if we need more
-        if ($needed > 0) {
-            for ($i = 0; $i < $needed; $i++) {
-                $qrCodes->push(
-                    QrCode::create([
-                        'tenant_id' => $tenantId,
-                        'status' => \App\Enums\QrCodeStatus::Unassigned,
-                    ])
-                );
-            }
+        for ($i = 0; $i < $count; $i++) {
+            $qrCodes->push(
+                QrCode::create([
+                    'tenant_id' => $tenantId,
+                    'status' => \App\Enums\QrCodeStatus::Unassigned,
+                    'sticker_number' => $this->generateStickerNumber->handle(),
+                ])
+            );
         }
 
         $this->audit->record(
@@ -52,8 +42,8 @@ class BatchGenerateQrCodesAction
             modelId: null,
             payload: [
                 'count' => $count,
-                'reused' => $existingQrCodes->count(),
-                'generated' => $needed,
+                'reused' => 0,
+                'generated' => $count,
                 'qr_code_ids' => $qrCodes->pluck('id')->toArray(),
             ],
         );

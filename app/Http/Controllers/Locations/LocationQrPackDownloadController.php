@@ -45,7 +45,7 @@ final class LocationQrPackDownloadController
             $entries = [];
             foreach ($qrCodes as $qrCode) {
                 $entries[] = new QrStickerEntry(
-                    $qrCode->sticker_number,
+                    $qrCode->display_sticker_number,
                     route('qr.scan', ['token' => $qrCode->token]),
                 );
             }

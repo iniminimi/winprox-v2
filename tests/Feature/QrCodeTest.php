@@ -44,6 +44,19 @@ it('generates unique token and sticker number for QR codes', function () {
         ->and($qr1->uuid)->not->toBe($qr2->uuid);
 });
 
+it('assigns sequential yyMM canonical sticker numbers with Winprox display label', function () {
+    ['tenant' => $tenant] = qrCodeScaffold();
+    $prefix = date('ym');
+
+    $qr1 = QrCode::factory()->create(['tenant_id' => $tenant->id]);
+    $qr2 = QrCode::factory()->create(['tenant_id' => $tenant->id]);
+
+    expect($qr1->sticker_number)->toMatch('/^'.$prefix.'-\d{5}$/')
+        ->and($qr2->sticker_number)->toMatch('/^'.$prefix.'-\d{5}$/')
+        ->and((int) substr($qr2->sticker_number, -5))->toBe((int) substr($qr1->sticker_number, -5) + 1)
+        ->and($qr1->display_sticker_number)->toBe('Winprox-'.$qr1->sticker_number);
+});
+
 it('can link an unassigned QR code to a unit', function () {
     ['tenant' => $tenant, 'unit' => $unit] = qrCodeScaffold();
 
@@ -108,7 +121,21 @@ it('can batch generate QR codes', function () {
 
     expect($qrCodes)->toHaveCount(5)
         ->and($qrCodes->every(fn ($qr) => $qr->tenant_id === $tenant->id))->toBeTrue()
-        ->and($qrCodes->every(fn ($qr) => $qr->status === QrCodeStatus::Unassigned))->toBeTrue();
+        ->and($qrCodes->every(fn ($qr) => $qr->status === QrCodeStatus::Unassigned))->toBeTrue()
+        ->and($qrCodes->every(fn ($qr) => preg_match('/^\d{4}-\d{5}$/', (string) $qr->sticker_number) === 1))->toBeTrue();
+});
+
+it('creates fresh QR codes on each batch download instead of reusing recent unassigned codes', function () {
+    ['tenant' => $tenant] = qrCodeScaffold();
+
+    $firstBatch = app(BatchGenerateQrCodesAction::class)->handle(3, $tenant->id, null);
+    $secondBatch = app(BatchGenerateQrCodesAction::class)->handle(3, $tenant->id, null);
+
+    $firstIds = $firstBatch->pluck('id')->all();
+    $secondIds = $secondBatch->pluck('id')->all();
+
+    expect($secondIds)->not->toEqual($firstIds)
+        ->and(count(array_intersect($firstIds, $secondIds)))->toBe(0);
 });
 
 it('redirects active QR code scan to unit portal', function () {

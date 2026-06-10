@@ -95,7 +95,7 @@
                                 {{ $unit->category ? ', ' : '' }}{{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}
                             @endif
                             @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                {{ ($unit->category || ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }}
+                                {{ ($unit->category || ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->display_sticker_number }}
                             @endif
                             @if ($unit->hasGps())
                                 <a href="{{ $unit->googleMapsUrl() }}" target="_blank" rel="noopener" class="wp-muted" style="margin-left:0.5rem;vertical-align:middle;display:inline-flex;align-items:center;gap:0.25rem;">

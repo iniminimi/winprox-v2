@@ -129,7 +129,7 @@
         <div class="wp-card wp-card-pad wp-card--success">
             <div class="wp-stack">
                 <h2>{{ __('qr.connect.success_title') }}</h2>
-                <p>{{ __('qr.connect.success_message', ['sticker' => $qrCode->sticker_number]) }}</p>
+                <p>{{ __('qr.connect.success_message', ['sticker' => $qrCode->display_sticker_number]) }}</p>
                 <button type="button" class="btn btn--primary" wire:click="redirectToUnit">
                     {{ __('qr.connect.go_to_unit') }}
                 </button>
@@ -142,7 +142,7 @@
             <div class="wp-card-section">
                 <dl class="wp-key-value">
                     <dt>{{ __('portal.unassigned_qr.sticker_number') }}</dt>
-                    <dd><code>{{ $qrCode->sticker_number }}</code></dd>
+                    <dd><code>{{ $qrCode->display_sticker_number }}</code></dd>
                 </dl>
             </div>
 
@@ -213,7 +213,7 @@
                 <h1 class="wp-section-title">{{ __('portal.unassigned_qr.title') }}</h1>
 
                 <div class="wp-card-section">
-                    <p class="wp-muted">{{ __('portal.unassigned_qr.sticker_number') }} : <code>{{ $qrCode->sticker_number }}</code></p>
+                    <p class="wp-muted">{{ __('portal.unassigned_qr.sticker_number') }} : <code>{{ $qrCode->display_sticker_number }}</code></p>
                 </div>
 
                 <div class="wp-card-section">
@@ -246,7 +246,7 @@
                                     <div class="wp-grow">
                                         <strong>{{ $unit->name }}</strong>
                                         @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                            <span class="wp-muted wp-text-sm"> ({{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->sticker_number }})</span>
+                                            <span class="wp-muted wp-text-sm"> ({{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->display_sticker_number }})</span>
                                         @endif
                                     </div>
                                 </label>
