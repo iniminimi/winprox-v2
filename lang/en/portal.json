@@ -129,6 +129,8 @@
         "add_worker_title": "Add worker",
         "add_worker": "Add",
         "add_another_worker": "Add another worker",
+        "scan_to_login": "Scan to log in",
+        "qr_hint": "Let the new colleague scan this QR code to sign in.",
         "delete": "Delete",
         "delete_confirm": "Delete :name?",
         "worker_added": "Worker added.",

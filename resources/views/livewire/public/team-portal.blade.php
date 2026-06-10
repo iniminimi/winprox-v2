@@ -157,6 +157,24 @@
                 @include('partials.wp-portal-teamleader-release')
             @endif
 
+            @if ($showTeamQr)
+                <div class="wp-card wp-card-pad wp-stack">
+                    <h3 class="wp-section-title">{{ __('portal.teamleader.scan_to_login') }}</h3>
+                    <p class="wp-muted">{{ __('portal.teamleader.qr_hint') }}</p>
+                    <div class="wp-qr-frame">
+                        @php
+                            $teamQrUrl = route('public.team-portal', ['token' => $token]);
+                            $qrSvg = \App\Support\Qr\TeamQrCode::svg($teamQrUrl, 280);
+                            $centerLogoUrl = \App\Support\Qr\QrCenterLogo::publicUrl($tenant);
+                        @endphp
+                        @include('partials.qr-print-code', ['qrSvg' => $qrSvg, 'centerLogoUrl' => $centerLogoUrl])
+                    </div>
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="$set('showTeamQr', false)">
+                        {{ __('common.button.close') }}
+                    </button>
+                </div>
+            @endif
+
             <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
             <div class="wp-row">

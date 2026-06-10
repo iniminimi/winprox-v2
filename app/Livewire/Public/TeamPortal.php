@@ -56,6 +56,7 @@ class TeamPortal extends Component
     public string $newWorkerLastName = '';
     public string $manageWorkersMessage = '';
     public bool $showAddWorkerForm = false;
+    public bool $showTeamQr = false;
 
     public function mount(string $token): void
     {
@@ -270,6 +271,7 @@ class TeamPortal extends Component
     {
         $this->showManageWorkers = true;
         $this->showAddWorkerForm = true;
+        $this->showTeamQr = false;
         $this->newWorkerFirstName = '';
         $this->newWorkerLastName = '';
         $this->manageWorkersMessage = '';
@@ -280,6 +282,7 @@ class TeamPortal extends Component
     {
         $this->showManageWorkers = false;
         $this->showAddWorkerForm = false;
+        $this->showTeamQr = false;
         $this->newWorkerFirstName = '';
         $this->newWorkerLastName = '';
         $this->manageWorkersMessage = '';
@@ -317,7 +320,8 @@ class TeamPortal extends Component
             return;
         }
 
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'showAddWorkerForm']);
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'showAddWorkerForm', 'showManageWorkers']);
+        $this->showTeamQr = true;
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
         $this->flashMessage = __('portal.teamleader.worker_added');
     }
@@ -397,6 +401,7 @@ class TeamPortal extends Component
             'teamWorkers' => $teamWorkers,
             'isTeamPortal' => true,
             'manageWorkersMessage' => $this->manageWorkersMessage,
+            'showTeamQr' => $this->showTeamQr,
         ]);
     }
 

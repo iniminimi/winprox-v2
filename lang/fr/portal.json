@@ -129,6 +129,8 @@
         "add_worker_title": "Ajouter un travailleur",
         "add_worker": "Ajouter",
         "add_another_worker": "Ajouter un autre travailleur",
+        "scan_to_login": "Scanner pour se connecter",
+        "qr_hint": "Laissez le nouveau collègue scanner ce QR code pour s'inscrire.",
         "delete": "Supprimer",
         "delete_confirm": "Supprimer :name ?",
         "worker_added": "Travailleur ajouté.",

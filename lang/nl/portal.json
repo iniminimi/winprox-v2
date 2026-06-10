@@ -129,6 +129,8 @@
         "add_worker_title": "Uitvoerder toevoegen",
         "add_worker": "Toevoegen",
         "add_another_worker": "Nog een uitvoerder toevoegen",
+        "scan_to_login": "Scan om in te loggen",
+        "qr_hint": "Laat de nieuwe collega deze QR-code scannen om zich aan te melden.",
         "delete": "Verwijderen",
         "delete_confirm": ":name verwijderen?",
         "worker_added": "Worker toegevoegd.",
