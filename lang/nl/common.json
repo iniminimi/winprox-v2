@@ -45,9 +45,7 @@
         "print": "Afdrukken",
         "logout": "Uitloggen",
         "close": "Sluiten",
-        "clear": "Wissen",
-        "collapse": "Inklappen",
-        "expand": "Uitklappen"
+        "clear": "Wissen"
     },
     "language": {
         "label": "Taal"

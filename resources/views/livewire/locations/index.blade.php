@@ -23,11 +23,11 @@
     @endif
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-page-head">
-            <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="$toggle('showCategoriesSection')">
-                {{ $showCategoriesSection ? __('common.button.collapse') : __('common.button.expand') }}
-            </button>
+        <div class="wp-page-head wp-page-head--clickable" wire:click="$toggle('showCategoriesSection')">
+            <div class="wp-grow">
+                <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
+                <p class="wp-muted">{{ __('locations.categories.click_to_manage') }}</p>
+            </div>
         </div>
 
         @if ($showCategoriesSection)

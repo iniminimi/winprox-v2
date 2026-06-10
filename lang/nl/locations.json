@@ -162,6 +162,7 @@
         "title": "Categorieën",
         "edit_title": "Categorie bewerken",
         "add_title": "Categorie toevoegen",
+        "click_to_manage": "Klik hier om categorieën te beheren",
         "subtitle": "Beheer categorieën en koppel ze aan teams.",
         "add": "Categorie toevoegen",
         "empty": "Nog geen categorieën.",

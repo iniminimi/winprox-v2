@@ -45,9 +45,7 @@
         "print": "Drucken",
         "logout": "Abmelden",
         "close": "Schließen",
-        "clear": "Löschen",
-        "collapse": "Einklappen",
-        "expand": "Ausklappen"
+        "clear": "Löschen"
     },
     "language": {
         "label": "Sprache"

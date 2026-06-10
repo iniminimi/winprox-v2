@@ -162,6 +162,7 @@
         "title": "Categories",
         "edit_title": "Edit category",
         "add_title": "Add category",
+        "click_to_manage": "Click here to manage categories",
         "subtitle": "Manage categories and link them to teams.",
         "add": "Add category",
         "empty": "No categories yet.",

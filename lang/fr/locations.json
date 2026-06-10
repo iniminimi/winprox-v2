@@ -162,6 +162,7 @@
         "title": "Catégories",
         "edit_title": "Modifier la catégorie",
         "add_title": "Ajouter une catégorie",
+        "click_to_manage": "Cliquez ici pour gérer les catégories",
         "subtitle": "Gérez les catégories et liez-les aux équipes.",
         "add": "Ajouter une catégorie",
         "empty": "Aucune catégorie pour le moment.",

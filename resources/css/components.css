@@ -266,6 +266,18 @@
     flex-wrap: wrap;
 }
 
+.wp-page-head--clickable {
+    cursor: pointer;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: var(--wp-radius);
+    transition: background-color var(--wp-transition);
+}
+
+.wp-page-head--clickable:hover {
+    background-color: var(--wp-surface-alt);
+}
+
 .wp-page-head-main {
     align-items: flex-start;
 }
