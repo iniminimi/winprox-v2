@@ -1,0 +1,43 @@
+{
+    "error": {
+        "default": {
+            "code": "Fehler",
+            "title": "Etwas ist schiefgelaufen",
+            "message": "Bitte versuchen Sie es später erneut."
+        },
+        "401": {
+            "title": "Nicht angemeldet",
+            "message": "Sie müssen angemeldet sein, um dies anzuzeigen."
+        },
+        "403": {
+            "title": "Zugriff verweigert",
+            "message": "Sie haben keine Berechtigung, diese Seite anzuzeigen."
+        },
+        "404": {
+            "title": "Seite nicht gefunden",
+            "message": "Die gesuchte Seite existiert nicht."
+        },
+        "419": {
+            "title": "Seite abgelaufen",
+            "message": "Aktualisieren Sie die Seite und versuchen Sie es erneut."
+        },
+        "429": {
+            "title": "Zu viele Anfragen",
+            "message": "Sie haben zu viele Anfragen gesendet. Bitte warten Sie einen Moment und versuchen Sie es erneut."
+        },
+        "500": {
+            "title": "Etwas ist schiefgelaufen",
+            "message": "Ein interner Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        },
+        "503": {
+            "title": "Wartungsarbeiten",
+            "message": "WinProx ist vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut."
+        },
+        "action": {
+            "home": "Zum Dashboard",
+            "back": "Zurück",
+            "login": "Anmelden",
+            "retry": "Erneut versuchen"
+        }
+    }
+}

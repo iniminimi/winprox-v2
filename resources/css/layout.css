@@ -991,3 +991,81 @@
     text-align: center;
     padding: 2rem 1rem 1rem;
 }
+
+/* ---------------------------------------------------------------------------
+ | Foutpagina's (401, 403, 404, 419, 429, 500, 503) — standalone layout.
+ * ------------------------------------------------------------------------- */
+.wp-error-body {
+    background: var(--wp-bg);
+}
+
+.wp-error-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.wp-error-card {
+    width: 100%;
+    max-width: 30rem;
+    text-align: center;
+}
+
+.wp-error-image {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    border-radius: var(--wp-radius-lg, 1rem);
+}
+
+.wp-error-code {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--wp-accent-soft, #bbf7d0);
+    background: var(--wp-accent-soft, #ecfdf5);
+    color: var(--wp-accent-text, #047857);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.2rem 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.wp-error-title {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    line-height: 1.2;
+    margin: 1rem 0 0.5rem;
+    color: var(--wp-text);
+}
+
+.wp-error-message {
+    color: var(--wp-text-body);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.wp-error-actions {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+    .wp-error-image {
+        max-width: 100%;
+    }
+
+    .wp-error-actions {
+        flex-direction: column;
+    }
+
+    .wp-error-actions .btn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "error": {
+        "default": {
+            "code": "Error",
+            "title": "Something went wrong",
+            "message": "Please try again later."
+        },
+        "401": {
+            "title": "Not logged in",
+            "message": "You must be logged in to view this."
+        },
+        "403": {
+            "title": "Access denied",
+            "message": "You do not have permission to view this page."
+        },
+        "404": {
+            "title": "Page not found",
+            "message": "The page you are looking for does not exist."
+        },
+        "419": {
+            "title": "Page expired",
+            "message": "Refresh the page and try again."
+        },
+        "429": {
+            "title": "Too many requests",
+            "message": "You have made too many requests. Please wait a moment and try again."
+        },
+        "500": {
+            "title": "Something went wrong",
+            "message": "An internal error occurred. Please try again later."
+        },
+        "503": {
+            "title": "Under maintenance",
+            "message": "WinProx is temporarily unavailable. Please try again later."
+        },
+        "action": {
+            "home": "Go to dashboard",
+            "back": "Go back",
+            "login": "Log in",
+            "retry": "Try again"
+        }
+    }
+}

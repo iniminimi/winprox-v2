@@ -1,0 +1,43 @@
+{
+    "error": {
+        "default": {
+            "code": "Fout",
+            "title": "Er is iets misgegaan",
+            "message": "Probeer het later opnieuw."
+        },
+        "401": {
+            "title": "Niet ingelogd",
+            "message": "Je moet ingelogd zijn om dit te bekijken."
+        },
+        "403": {
+            "title": "Geen toegang",
+            "message": "Je hebt geen rechten om deze pagina te bekijken."
+        },
+        "404": {
+            "title": "Pagina niet gevonden",
+            "message": "De pagina die je zoekt bestaat niet."
+        },
+        "419": {
+            "title": "Pagina verlopen",
+            "message": "Vernieuw de pagina en probeer het opnieuw."
+        },
+        "429": {
+            "title": "Te veel verzoeken",
+            "message": "Je hebt te veel verzoeken gedaan. Wacht even en probeer het opnieuw."
+        },
+        "500": {
+            "title": "Er ging iets mis",
+            "message": "Er is een interne fout opgetreden. Probeer het later opnieuw."
+        },
+        "503": {
+            "title": "In onderhoud",
+            "message": "WinProx is tijdelijk niet beschikbaar. Probeer het later opnieuw."
+        },
+        "action": {
+            "home": "Naar dashboard",
+            "back": "Ga terug",
+            "login": "Inloggen",
+            "retry": "Opnieuw proberen"
+        }
+    }
+}
