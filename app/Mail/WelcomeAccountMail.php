@@ -15,8 +15,6 @@ class WelcomeAccountMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public string $locale;
-
     public function __construct(
         public User $user,
         public Tenant $tenant,
@@ -24,7 +22,7 @@ class WelcomeAccountMail extends Mailable
         public string $resetToken,
     ) {
         // Use the tenant's locale if available, otherwise use admin's locale, fallback to app locale
-        $this->locale = $this->tenant->locale ?? $this->admin->locale ?? app()->getLocale();
+        $this->locale($this->tenant->locale ?? $this->admin->locale ?? app()->getLocale());
     }
 
     public function envelope(): Envelope
@@ -57,7 +55,7 @@ class WelcomeAccountMail extends Mailable
                 'loginUrl' => URL::route('login', [], true),
                 'minutes' => $minutes,
             ],
-        ))->locale($this->locale);
+        ));
     }
 
     private function resetUrl(): string
