@@ -306,6 +306,7 @@ class Index extends Component
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
+        $this->showCategoriesModal = true;
         $this->resetErrorBag();
     }
 
