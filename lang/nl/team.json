@@ -54,7 +54,10 @@
             "session_lifespan_daily": "Dagelijks",
             "session_lifespan_weekly": "Wekelijks",
             "session_lifespan_custom": "Specifiek aantal uren",
-            "session_lifespan_custom_hours": "Aantal uren"
+            "session_lifespan_custom_hours": "Aantal uren",
+            "categories_title": "Categorieën",
+            "categories_subtitle": "Selecteer de categorieën waaraan dit team toegang heeft.",
+            "categories_empty": "Er zijn nog geen categorieën."
         }
     },
     "workers": {

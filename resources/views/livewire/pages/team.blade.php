@@ -343,6 +343,26 @@
                     </label>
                 @endif
 
+                <div class="wp-field">
+                    <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
+                    <p class="wp-hint">{{ __('team.teams.modal.categories_subtitle') }}</p>
+                </div>
+
+                @if ($categories->isNotEmpty())
+                    <div class="wp-grid wp-grid--2">
+                        @foreach ($categories as $category)
+                            <label class="wp-check wp-check--boxed">
+                                <input type="checkbox"
+                                       wire:model.live="selectedCategoryIds"
+                                       value="{{ $category->id }}">
+                                <span>{{ $category->name }}</span>
+                            </label>
+                        @endforeach
+                    </div>
+                @else
+                    <p class="wp-muted">{{ __('team.teams.modal.categories_empty') }}</p>
+                @endif
+
                 <div class="wp-cluster wp-cluster--tight">
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                     <button type="button" class="btn btn--ghost" wire:click="cancelTeam">{{ __('common.button.cancel') }}</button>

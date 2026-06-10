@@ -54,7 +54,10 @@
             "session_lifespan_daily": "Täglich",
             "session_lifespan_weekly": "Wöchentlich",
             "session_lifespan_custom": "Benutzerdefinierte Stunden",
-            "session_lifespan_custom_hours": "Anzahl Stunden"
+            "session_lifespan_custom_hours": "Anzahl Stunden",
+            "categories_title": "Kategorien",
+            "categories_subtitle": "Wählen Sie die Kategorien aus, auf die dieses Team Zugriff hat.",
+            "categories_empty": "Es gibt noch keine Kategorien."
         }
     },
     "workers": {
