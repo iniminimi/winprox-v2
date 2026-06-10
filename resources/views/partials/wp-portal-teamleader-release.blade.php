@@ -87,12 +87,12 @@
             @if ($teamWorkers->isEmpty())
                 <p class="wp-muted">{{ __('portal.teamleader.no_workers') }}</p>
             @else
-                <div class="wp-list wp-list--entity-rows" wire:key="tl-manage-workers-list-container">
+                <div class="wp-list wp-list--entity-rows">
                     @foreach ($teamWorkers as $tw)
                         @if ($verifiedWorker && (int) $tw->id === (int) $verifiedWorker->id)
                             @continue
                         @endif
-                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-node-{{ $tw->id }}">
+                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
                             <span class="wp-cluster wp-cluster--tight">
                                 @if ($tw->field_icon_slug)
                                     <x-wp-worker-icon :slug="$tw->field_icon_slug" class="wp-release-worker-row__icon" />
@@ -115,41 +115,27 @@
             @endif
 
             @if ($manageWorkersMessage !== '')
-                <div class="wp-flash" wire:key="tl-manage-workers-flash-msg">{{ $manageWorkersMessage }}</div>
+                <div class="wp-flash">{{ $manageWorkersMessage }}</div>
             @endif
 
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
-            {{-- Add worker container: Pure div stack zonder form submit-lock --}}
-            <div class="wp-stack" wire:key="tl-add-worker-isolated-box">
-                <div class="wp-field" wire:key="tl-add-worker-first-container">
+            {{-- Add worker form --}}
+            <form wire:key="tl-add-worker-form-stable" wire:submit.prevent="addWorker" class="wp-stack">
+                <div class="wp-field">
                     <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
-                    <input id="tl_new_first" 
-                           type="text" 
-                           class="wp-input" 
-                           wire:model.live="newWorkerFirstName" 
-                           autocomplete="given-name">
+                    <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
                     @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                
-                <div class="wp-field" wire:key="tl-add-worker-last-container">
+                <div class="wp-field">
                     <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
-                    <input id="tl_new_last" 
-                           type="text" 
-                           class="wp-input" 
-                           wire:model.live="newWorkerLastName" 
-                           autocomplete="family-name">
+                    <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
                     @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                
-                <button type="button" 
-                        class="btn btn--primary btn--block" 
-                        wire:click="addWorker"
-                        wire:loading.attr="disabled"
-                        wire:key="tl-add-worker-execute-btn">
+                <button type="submit" class="btn btn--primary btn--block">
                     {{ __('portal.teamleader.add_worker') }}
                 </button>
-            </div>
+            </form>
         @endif
     @endif
 </div>

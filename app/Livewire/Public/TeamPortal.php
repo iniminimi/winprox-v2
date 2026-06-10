@@ -314,11 +314,9 @@ class TeamPortal extends Component
             return;
         }
 
-        // Harde reset van de input states om JavaScript opnieuw te triggeren
         $this->newWorkerFirstName = '';
         $this->newWorkerLastName = '';
-        $this->resetErrorBag();
-        
+        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
         $this->manageWorkersMessage = __('portal.teamleader.worker_added');
     }
 
