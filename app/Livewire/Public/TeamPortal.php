@@ -54,6 +54,7 @@ class TeamPortal extends Component
     public bool $showManageWorkers = false;
     public string $newWorkerFirstName = '';
     public string $newWorkerLastName = '';
+    public string $manageWorkersMessage = '';
 
     public function mount(string $token): void
     {
@@ -280,14 +281,14 @@ class TeamPortal extends Component
     public function openManageWorkers(): void
     {
         $this->showManageWorkers = true;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
     }
 
     public function closeManageWorkers(): void
     {
         $this->showManageWorkers = false;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
     }
 
@@ -317,7 +318,8 @@ class TeamPortal extends Component
         }
 
         $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
-        $this->flashMessage = __('portal.teamleader.worker_added');
+        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->manageWorkersMessage = __('portal.teamleader.worker_added');
     }
 
     public function removeWorker(int $workerId, DeleteWorkerAction $deleteWorker): void
@@ -341,13 +343,13 @@ class TeamPortal extends Component
             $deleteWorker->handle($worker, null, $teamleader);
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'cannot_delete_self') {
-                $this->flashMessage = __('portal.teamleader.errors.cannot_delete_self');
+                $this->manageWorkersMessage = __('portal.teamleader.errors.cannot_delete_self');
             }
 
             return;
         }
 
-        $this->flashMessage = __('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
+        $this->manageWorkersMessage = __('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
     }
 
     public function render()
@@ -396,6 +398,7 @@ class TeamPortal extends Component
             'tasks' => $tasks,
             'teamWorkers' => $teamWorkers,
             'isTeamPortal' => true,
+            'manageWorkersMessage' => $this->manageWorkersMessage,
         ]);
     }
 

@@ -570,6 +570,7 @@ class UnitPortal extends Component
             'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
             'workerBelongsToUnitTeam' => $worker !== null && $unit->category !== null && $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists(),
             'isTeamPortal' => false,
+            'manageWorkersMessage' => '',
         ]);
     }
 

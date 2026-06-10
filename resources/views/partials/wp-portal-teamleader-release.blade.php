@@ -114,6 +114,10 @@
                 </div>
             @endif
 
+            @if ($manageWorkersMessage !== '')
+                <div class="wp-flash">{{ $manageWorkersMessage }}</div>
+            @endif
+
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
             {{-- Add worker form --}}

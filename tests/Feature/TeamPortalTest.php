@@ -262,6 +262,7 @@ it('prevents a teamleader from deleting themselves', function () {
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertHasNoErrors()
+        ->call('openManageWorkers')
         ->call('removeWorker', $teamleader->id)
         ->assertHasNoErrors()
         ->assertSee(__('portal.teamleader.errors.cannot_delete_self'));
