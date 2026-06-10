@@ -117,7 +117,7 @@
             @if ($showAddWorkerForm)
                 <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
-                <form wire:submit.prevent="addWorker" class="wp-stack">
+                <div class="wp-stack">
                     <div class="wp-field">
                         <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
                         <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
@@ -128,10 +128,10 @@
                         <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
                         @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <button type="submit" class="btn btn--primary btn--block">
+                    <button type="button" class="btn btn--primary btn--block" wire:click="addWorker">
                         {{ __('portal.teamleader.add_worker') }}
                     </button>
-                </form>
+                </div>
             @else
                 <button type="button" class="btn btn--ghost btn--block" wire:click="$set('showAddWorkerForm', true)">
                     {{ __('portal.teamleader.add_another_worker') }}
