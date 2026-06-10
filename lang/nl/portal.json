@@ -126,6 +126,7 @@
         "manage_workers_hint": "Voeg workers toe of verwijder ze uit het team.",
         "worker_first_name": "Voornaam",
         "worker_last_name": "Achternaam",
+        "add_worker_title": "Uitvoerder toevoegen",
         "add_worker": "Toevoegen",
         "delete": "Verwijderen",
         "delete_confirm": ":name verwijderen?",

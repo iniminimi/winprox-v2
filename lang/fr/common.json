@@ -44,6 +44,7 @@
         "view": "Voir",
         "print": "Imprimer",
         "logout": "Se déconnecter",
+        "close": "Fermer",
         "clear": "Effacer"
     },
     "language": {

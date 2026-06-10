@@ -126,6 +126,7 @@
         "manage_workers_hint": "Mitarbeiter zum Team hinzufügen oder entfernen.",
         "worker_first_name": "Vorname",
         "worker_last_name": "Nachname",
+        "add_worker_title": "Mitarbeiter hinzufügen",
         "add_worker": "Hinzufügen",
         "delete": "Löschen",
         "delete_confirm": ":name löschen?",

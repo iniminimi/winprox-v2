@@ -44,6 +44,7 @@
         "view": "Bekijken",
         "print": "Afdrukken",
         "logout": "Uitloggen",
+        "close": "Sluiten",
         "clear": "Wissen"
     },
     "language": {

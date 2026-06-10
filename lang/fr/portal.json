@@ -126,6 +126,7 @@
         "manage_workers_hint": "Ajouter ou retirer des travailleurs de l'équipe.",
         "worker_first_name": "Prénom",
         "worker_last_name": "Nom",
+        "add_worker_title": "Ajouter un travailleur",
         "add_worker": "Ajouter",
         "delete": "Supprimer",
         "delete_confirm": "Supprimer :name ?",

@@ -89,6 +89,9 @@
             @else
                 <div class="wp-list wp-list--entity-rows">
                     @foreach ($teamWorkers as $tw)
+                        @if ($verifiedWorker && (int) $tw->id === (int) $verifiedWorker->id)
+                            @continue
+                        @endif
                         <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
                             <span class="wp-cluster wp-cluster--tight">
                                 @if ($tw->field_icon_slug)
@@ -110,6 +113,8 @@
                     @endforeach
                 </div>
             @endif
+
+            <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
             {{-- Add worker form --}}
             <form wire:submit="addWorker" class="wp-stack">

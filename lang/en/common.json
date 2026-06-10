@@ -44,6 +44,7 @@
         "view": "View",
         "print": "Print",
         "logout": "Log out",
+        "close": "Close",
         "clear": "Clear"
     },
     "language": {
