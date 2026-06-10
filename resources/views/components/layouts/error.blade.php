@@ -12,7 +12,7 @@
 @endphp
 
 <main class="wp-error-layout">
-    <div class="wp-error-card wp-card wp-card-pad wp-stack" style="--wp-stack-gap: 1rem;">
+    <div class="wp-error-card wp-card wp-card-pad wp-stack wp-error-stack">
         <img
             src="{{ $randomImage }}"
             alt=""
@@ -20,7 +20,7 @@
             loading="lazy"
         >
 
-        <span class="wp-error-code">{{ $code ?? __('error.default.code') }}</span>
+        <span class="wp-pill">{{ $code ?? __('error.default.code') }}</span>
 
         <h1 class="wp-error-title">{{ $title ?? __('error.default.title') }}</h1>
         <p class="wp-error-message">{{ $message ?? __('error.default.message') }}</p>

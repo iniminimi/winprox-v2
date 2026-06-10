@@ -1,43 +1,41 @@
 {
-    "error": {
-        "default": {
-            "code": "Erreur",
-            "title": "Une erreur s'est produite",
-            "message": "Veuillez réessayer plus tard."
-        },
-        "401": {
-            "title": "Non connecté",
-            "message": "Vous devez être connecté pour voir ceci."
-        },
-        "403": {
-            "title": "Accès refusé",
-            "message": "Vous n'avez pas les droits pour voir cette page."
-        },
-        "404": {
-            "title": "Page non trouvée",
-            "message": "La page que vous recherchez n'existe pas."
-        },
-        "419": {
-            "title": "Page expirée",
-            "message": "Rafraîchissez la page et réessayez."
-        },
-        "429": {
-            "title": "Trop de requêtes",
-            "message": "Vous avez fait trop de requêtes. Veuillez patienter et réessayer."
-        },
-        "500": {
-            "title": "Une erreur s'est produite",
-            "message": "Une erreur interne s'est produite. Veuillez réessayer plus tard."
-        },
-        "503": {
-            "title": "En maintenance",
-            "message": "WinProx est temporairement indisponible. Veuillez réessayer plus tard."
-        },
-        "action": {
-            "home": "Aller au tableau de bord",
-            "back": "Retour",
-            "login": "Se connecter",
-            "retry": "Réessayer"
-        }
+    "default": {
+        "code": "Erreur",
+        "title": "Une erreur s'est produite",
+        "message": "Veuillez réessayer plus tard."
+    },
+    "401": {
+        "title": "Non connecté",
+        "message": "Vous devez être connecté pour voir ceci."
+    },
+    "403": {
+        "title": "Accès refusé",
+        "message": "Vous n'avez pas les droits pour voir cette page."
+    },
+    "404": {
+        "title": "Page non trouvée",
+        "message": "La page que vous recherchez n'existe pas."
+    },
+    "419": {
+        "title": "Page expirée",
+        "message": "Rafraîchissez la page et réessayez."
+    },
+    "429": {
+        "title": "Trop de requêtes",
+        "message": "Vous avez fait trop de requêtes. Veuillez patienter et réessayer."
+    },
+    "500": {
+        "title": "Une erreur s'est produite",
+        "message": "Une erreur interne s'est produite. Veuillez réessayer plus tard."
+    },
+    "503": {
+        "title": "En maintenance",
+        "message": "WinProx est temporairement indisponible. Veuillez réessayer plus tard."
+    },
+    "action": {
+        "home": "Aller au tableau de bord",
+        "back": "Retour",
+        "login": "Se connecter",
+        "retry": "Réessayer"
     }
 }

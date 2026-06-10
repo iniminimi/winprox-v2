@@ -1022,17 +1022,8 @@
     border-radius: var(--wp-radius-lg, 1rem);
 }
 
-.wp-error-code {
-    display: inline-flex;
-    align-items: center;
-    border-radius: 999px;
-    border: 1px solid var(--wp-accent-soft, #bbf7d0);
-    background: var(--wp-accent-soft, #ecfdf5);
-    color: var(--wp-accent-text, #047857);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.2rem 0.75rem;
-    letter-spacing: 0.01em;
+.wp-error-stack {
+    --wp-stack-gap: 1rem;
 }
 
 .wp-error-title {
