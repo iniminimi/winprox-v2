@@ -460,8 +460,7 @@
                                         @if ($workerBelongsToUnitTeam)
                                             <button
                                                 type="button"
-                                                class="btn btn--danger btn--sm"
-                                                style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                                style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
                                                 wire:confirm="{{ __('portal.unit.delete_photo_confirm') }}"
                                                 wire:click="removeUnitPhoto({{ $photo->id }})"
                                             >×</button>
