@@ -53,6 +53,7 @@
             "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
             "photos_image": "Nur Bilder sind erlaubt.",
             "photos_size": "Ein Foto ist zu groß.",
+            "photos_qr_missing": "Es ist kein aktiver QR-Code mit dieser Einheit verknüpft. Fotos können nicht gespeichert werden.",
             "photos_failed": "Die Fotos konnten nicht gespeichert werden. Bitte versuchen Sie es erneut."
         }
     },

@@ -405,17 +405,23 @@ class UnitPortal extends Component
         $qrCode = $unit->qrCodes->first();
 
         if ($qrCode === null) {
-            $this->addError('newPortalPhotos', __('portal.report.errors.photos_failed'));
+            $this->addError('newPortalPhotos', __('portal.report.errors.photos_qr_missing'));
 
             return;
         }
 
-        $storePhotos->handle(
-            unit: $unit,
-            qrCode: $qrCode,
-            photos: $this->newPortalPhotos,
-            actorUserId: null,
-        );
+        try {
+            $storePhotos->handle(
+                unit: $unit,
+                qrCode: $qrCode,
+                photos: $this->newPortalPhotos,
+                actorUserId: null,
+            );
+        } catch (\Throwable $e) {
+            $this->addError('newPortalPhotos', __('portal.report.errors.photos_failed'));
+
+            return;
+        }
 
         $this->reset('newPortalPhotos');
         $this->dispatch('wp-clear-photo-previews');
