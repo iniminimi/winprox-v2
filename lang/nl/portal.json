@@ -128,6 +128,7 @@
         "worker_last_name": "Achternaam",
         "add_worker_title": "Uitvoerder toevoegen",
         "add_worker": "Toevoegen",
+        "add_another_worker": "Nog een uitvoerder toevoegen",
         "delete": "Verwijderen",
         "delete_confirm": ":name verwijderen?",
         "worker_added": "Worker toegevoegd.",

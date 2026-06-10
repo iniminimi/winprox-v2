@@ -114,30 +114,31 @@
                 </div>
             @endif
 
-            @if ($manageWorkersMessage !== '')
-                <div class="wp-flash">{{ $manageWorkersMessage }}</div>
-            @endif
-
-            @if ($showAddWorkerForm)
-                <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
-
-                {{-- Add worker form --}}
-                <form wire:submit.prevent="addWorker" class="wp-stack">
-                    <div class="wp-field">
-                        <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
-                        <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
-                        @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+            <div x-data="{ showForm: true }" x-on:worker-added.window="showForm = false">
+                <template x-if="showForm">
+                    <div class="wp-stack">
+                        <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
+                        <div class="wp-field">
+                            <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
+                            <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
+                            @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
+                            <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
+                            @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <button type="button" class="btn btn--primary btn--block" wire:click="addWorker">
+                            {{ __('portal.teamleader.add_worker') }}
+                        </button>
                     </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
-                        <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
-                        @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--block">
-                        {{ __('portal.teamleader.add_worker') }}
+                </template>
+                <template x-if="! showForm">
+                    <button type="button" class="btn btn--ghost btn--block" x-on:click="showForm = true">
+                        {{ __('portal.teamleader.add_another_worker') }}
                     </button>
-                </form>
-            @endif
+                </template>
+            </div>
         @endif
     @endif
 </div>

@@ -128,6 +128,7 @@
         "worker_last_name": "Nachname",
         "add_worker_title": "Mitarbeiter hinzufügen",
         "add_worker": "Hinzufügen",
+        "add_another_worker": "Weiteren Mitarbeiter hinzufügen",
         "delete": "Löschen",
         "delete_confirm": ":name löschen?",
         "worker_added": "Mitarbeiter hinzugefügt.",
