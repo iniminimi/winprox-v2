@@ -158,12 +158,10 @@
         "delete_failed": "Er is een fout opgetreden bij het verwijderen."
     },
     "categories": {
-        "manage": "Categorieën",
         "title": "Categorieën",
         "edit_title": "Categorie bewerken",
         "add_title": "Categorie toevoegen",
         "click_to_manage": "Klik hier om categorieën te beheren",
-        "subtitle": "Beheer categorieën en koppel ze aan teams.",
         "add": "Categorie toevoegen",
         "empty": "Nog geen categorieën.",
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",

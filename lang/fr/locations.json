@@ -158,12 +158,10 @@
         "delete_failed": "Une erreur s'est produite lors de la suppression."
     },
     "categories": {
-        "manage": "Catégories",
         "title": "Catégories",
         "edit_title": "Modifier la catégorie",
         "add_title": "Ajouter une catégorie",
         "click_to_manage": "Cliquez ici pour gérer les catégories",
-        "subtitle": "Gérez les catégories et liez-les aux équipes.",
         "add": "Ajouter une catégorie",
         "empty": "Aucune catégorie pour le moment.",
         "confirm_delete": "Supprimer cette catégorie ? Les unités liées perdront leur catégorie.",
