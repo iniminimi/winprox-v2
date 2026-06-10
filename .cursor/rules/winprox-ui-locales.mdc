@@ -10,6 +10,8 @@ alwaysApply: false
 - Alleen via Vite-entry `resources/css/app.css` en gedeelde `wp-*` / tokens — **geen** `<style>` in Blade.
 - Knoppen: `.btn` + variant. Status: `.wp-pill` + variant. Kaarten: `.wp-card`.
 - Publieke QR: **mobiel-first**; beheer: desktop-first.
+- Legacy inline `style=` in QR/settings/manual: **alleen** opschonen als je dat bestand toch wijzigt.
+- E-mail (`resources/views/emails/**`, `mail/**`): inline styles zijn OK.
 
 ## Foto's (QR-meldingen)
 - Client-side compress; `wire:ignore` op upload-area; geen server-resize.

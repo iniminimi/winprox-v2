@@ -242,18 +242,23 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ---
 
-## 9. Tests
+## 9. Tests & compliance-checks
 
 - **Pest** + **factories** voor elk model.
 - **Elke Action heeft tests**; voorkeur voor **integratietests** op workflows. Mock alleen externe services.
 - Dek de kern-flow: melding aanmaken → taak/taken → statusovergangen → afgeleide meldingstatus → tenant-isolatie → superuser-impersonatie → **API + webhook-dispatch (HMAC)**.
-- CI-check (tests + locale-parity + build) groen vóór merge.
+- Vóór merge/PR groen:
+  - `php artisan test`
+  - `npm run check:locales:parity`
+  - `npm run check:architecture`
+  - `npm run build` (bij CSS/JS/views)
 
 ---
 
 ## 10. Git
 
-- Na elke afgeronde taak: **altijd** `git add` + `git commit` (+ `git push` zodra er een remote is). Niet vragen.
+- Commit/push **alleen op verzoek** of wanneer de taak expliciet “commit” vraagt.
+- Vóór commit: `php artisan test`, `npm run check:locales:parity`, `npm run check:architecture`.
 - Bij frontend-wijzigingen (`resources/css/**`, `resources/js/**`, views, Vite): **eerst** `npm run build`, gewijzigde `public/build/**` meecommitten.
 - Raakt het `lang/**`: alle vier talen + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
 
@@ -262,6 +267,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ## 11. AI-veiligheid
 
 - Lees bestaande code vóór je hem wijzigt. Minimale diffs; geen grote rewrites zonder vraag.
+- **Geen** repo-brede alignment- of “alles schoon”-runs (zie §13).
 - Verwijder geen vertalingen/routes/CSS-classes zonder gebruik te checken.
 - Bij twijfel: stop en vraag het exacte gewenste gedrag.
 - Houd het **simpel**. Lees deze regels regelmatig.
@@ -292,3 +298,38 @@ proactief tenzij de taak dat expliciet vraagt.
 
 Roadmap-principes (QR first, worker first, mobile first, simplicity wins) **informeren** keuzes; ze
 **overschrijven** geen pariteit- of magerheidsregels uit dit document.
+
+---
+
+## 13. Onderhoud na V2-alignment (hard voor AI & mensen)
+
+De brede architectuur-alignment is **afgerond**. **Geen** repo-brede “alles nalopen”-runs meer —
+die leveren kleine winst en grote diffs.
+
+### 13.1 Wanneer wél opschonen
+- **Nieuwe feature of bugfix** in een bestand → volg §3 meteen (Action, policy, test).
+- **Bestaand bestand dat je toch wijzigt** → fix **alleen** regelovertredingen in dat bestand
+  (geen refactor van buren).
+- **CI/`check:architecture` faalt** → fix de gerapporteerde plek.
+
+### 13.2 Bewuste uitzonderingen (geen “fix” nodig)
+- **`app/Support/Portal/*`** (`WorkerDeviceSession`, `WorkerVerification`, `WorkerIconGuard`):
+  cookie/sessie/request horen in de HTTP-laag; DB-mutaties via Actions.
+- **E-mailtemplates** (`resources/views/emails/**`, `resources/views/mail/**`): inline styles zijn normaal.
+- **Legacy inline `style=` in QR-portalen/settings/manual**: alleen wegwerken **als je dat scherm toch
+  aanpast** — verplaats naar `wp-*` in `components.css`.
+- **`is_superuser` in platform-blades** voor badges/labels: OK zolang autorisatie via **Policies**
+  + `authorize()`/`@can` loopt (geen `isAdmin()` in views).
+
+### 13.3 Definition of done (elke wijziging)
+1. Business logic in **één Action** (expliciete tenant + actor).
+2. Livewire/API **dun** → Form Request → `app(Action::class)->handle(...)`.
+3. Autorisatie via **Policy** — geen losse rolchecks in Blade.
+4. Waar zinvol: test + audit; 4 locales in pariteit bij `lang/**`-wijzigingen.
+5. `npm run check:architecture` groen.
+
+### 13.4 Automatische check
+`npm run check:architecture` faalt bij:
+- `Model::create/update/delete/save` of `DB::` in **Livewire**;
+- `DB::` buiten **`app/Actions`**;
+- `isAdmin()` in **Blade** (beheer-views; niet e-mail).
