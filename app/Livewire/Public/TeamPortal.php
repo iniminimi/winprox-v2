@@ -73,18 +73,14 @@ class TeamPortal extends Component
 
         $this->inactiveReasonKey = PortalAccess::teamPortalInactiveReasonKey($team);
 
-        // Try to restore verification from device cookie if worker was recently verified
-        // This allows workers to skip icon confirmation on subsequent team QR scans
         $deviceWorker = WorkerDeviceSession::workerFromDeviceCookie();
         if ($deviceWorker && (int) $deviceWorker->tenant_id === $this->tenantId) {
             $workerTeam = $deviceWorker->team;
             if ($workerTeam && (int) $workerTeam->id === $this->teamId) {
-                // Worker belongs to this team - try to restore verification
                 WorkerVerification::markVerified($workerTeam, $deviceWorker);
             }
         }
 
-        // Only clear verification if we couldn't restore it
         if (! WorkerVerification::verifiedWorker($team)) {
             WorkerVerification::clearForTeam($this->teamId);
         }
@@ -107,7 +103,7 @@ class TeamPortal extends Component
         session(['locale' => $locale]);
         Cookie::queue('locale', $locale, 60 * 24 * 365);
         $this->locale = $locale;
-        app()->setLocale($locale);
+        app()->setLocale($this->locale);
     }
 
     public function identifyWorker(): void
@@ -129,27 +125,23 @@ class TeamPortal extends Component
 
         if ($identity['status'] === 'ambiguous') {
             $this->addError('identify', __('portal.worker.errors.identify_ambiguous'));
-
             return;
         }
 
         if ($identity['status'] === 'not_found') {
             $this->addError('identify', __('portal.worker.errors.identify_unknown'));
-
             return;
         }
 
         if ($identity['status'] === 'claimable') {
             $this->showRegisterForm = true;
             $this->selected_icon_slug = '';
-
             return;
         }
 
         $worker = $identity['worker'] ?? null;
         if ($worker === null) {
             $this->addError('identify', __('portal.worker.errors.identify_unknown'));
-
             return;
         }
 
@@ -189,7 +181,6 @@ class TeamPortal extends Component
         if (WorkerIconGuard::isBlocked($team)) {
             $this->sign_in_icon_slug = '';
             $this->addError('sign_in_icon_slug', __('portal.worker.errors.blocked'));
-
             return;
         }
 
@@ -204,7 +195,6 @@ class TeamPortal extends Component
             WorkerIconGuard::recordFailedAttempt($team);
             $this->sign_in_icon_slug = '';
             $this->addFailedSignInError($team);
-
             return;
         }
 
@@ -250,11 +240,8 @@ class TeamPortal extends Component
             'selected_icon_slug.in' => __('portal.worker.errors.icon_required'),
         ]);
 
-        // Clear any previous errors when doing explicit registration
         $this->resetErrorBag();
 
-        // Buiten open registratie mag enkel een bestaande "claimable" worker zijn icoon claimen,
-        // tenzij de gebruiker expliciet het registratieformulier opende (nieuwe collega, dubbel icoon ok).
         if (! TeamPortalData::allowsOpenRegistration($team) && ! $this->showRegisterForm) {
             $identity = WorkerDeviceSession::resolveIdentityOnTeam($team, $validated['first_name'], $validated['last_name']);
             if ($identity['status'] !== 'claimable') {
@@ -282,14 +269,14 @@ class TeamPortal extends Component
     {
         $this->showManageWorkers = true;
         $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
-        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->resetErrorBag();
     }
 
     public function closeManageWorkers(): void
     {
         $this->showManageWorkers = false;
         $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
-        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+        $this->resetErrorBag();
     }
 
     public function addWorker(CreateWorkerAction $createWorker): void
@@ -302,8 +289,14 @@ class TeamPortal extends Component
 
         $request = new StoreWorkerRequest;
         $validated = $this->validate(
-            ['newWorkerFirstName' => $request->rules()['first_name'], 'newWorkerLastName' => $request->rules()['last_name']],
-            ['newWorkerFirstName.required' => __('portal.worker.errors.name_required'), 'newWorkerLastName.required' => __('portal.worker.errors.name_required')],
+            [
+                'newWorkerFirstName' => $request->rules()['first_name'],
+                'newWorkerLastName' => $request->rules()['last_name']
+            ],
+            [
+                'newWorkerFirstName.required' => __('portal.worker.errors.name_required'),
+                'newWorkerLastName.required' => __('portal.worker.errors.name_required')
+            ],
         );
 
         try {
@@ -317,8 +310,11 @@ class TeamPortal extends Component
             return;
         }
 
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
-        $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
+        // Expliciet de invoervelden resetten en error bag schoonmaken voor een schone state loop
+        $this->newWorkerFirstName = '';
+        $this->newWorkerLastName = '';
+        $this->resetErrorBag();
+        
         $this->manageWorkersMessage = __('portal.teamleader.worker_added');
     }
 
@@ -345,7 +341,6 @@ class TeamPortal extends Component
             if ($e->getMessage() === 'cannot_delete_self') {
                 $this->manageWorkersMessage = __('portal.teamleader.errors.cannot_delete_self');
             }
-
             return;
         }
 
@@ -369,7 +364,6 @@ class TeamPortal extends Component
 
         $showRegisterForm = $this->showRegisterForm && ! $registerOnly;
 
-        // Show identify form if team has workers (with or without icons) but no verified worker
         $hasAnyWorkers = $team !== null && $team->workers()->where('is_active', true)->count() > 0;
         $showIdentify = $team !== null && ! $canAct && $hasAnyWorkers
             && $deviceWorker === null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
@@ -407,7 +401,6 @@ class TeamPortal extends Component
         if ($this->inactiveReasonKey !== null) {
             return null;
         }
-
         return InternalTeam::find($this->teamId);
     }
 
@@ -415,10 +408,8 @@ class TeamPortal extends Component
     {
         if (WorkerIconGuard::isBlocked($team)) {
             $this->addError('sign_in_icon_slug', __('portal.worker.errors.blocked'));
-
             return;
         }
-
         $this->addError('sign_in_icon_slug', __('portal.worker.errors.icon_wrong'));
     }
 
@@ -443,9 +434,7 @@ class TeamPortal extends Component
         if ($team === null) {
             return null;
         }
-
         $worker = WorkerVerification::verifiedWorker($team);
-
         return ($worker !== null && $worker->is_teamleader) ? $worker : null;
     }
 

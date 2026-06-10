@@ -92,7 +92,7 @@
                         @if ($verifiedWorker && (int) $tw->id === (int) $verifiedWorker->id)
                             @continue
                         @endif
-                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
+                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-node-{{ $tw->id }}">
                             <span class="wp-cluster wp-cluster--tight">
                                 @if ($tw->field_icon_slug)
                                     <x-wp-worker-icon :slug="$tw->field_icon_slug" class="wp-release-worker-row__icon" />
@@ -120,19 +120,19 @@
 
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
-            {{-- Add worker form --}}
-            <form wire:submit="addWorker" class="wp-stack">
-                <div class="wp-field">
+            {{-- Add worker form: Harde stabiele wire:key voorkomt dat Livewire v3 desynchroniseert --}}
+            <form wire:key="tl-add-worker-stable-form" wire:submit="addWorker" class="wp-stack">
+                <div class="wp-field" wire:key="tl-add-worker-first-field">
                     <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
                     <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
                     @error('newWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-field">
+                <div class="wp-field" wire:key="tl-add-worker-last-field">
                     <label class="wp-label" for="tl_new_last">{{ __('portal.teamleader.worker_last_name') }}</label>
                     <input id="tl_new_last" type="text" class="wp-input" wire:model="newWorkerLastName" autocomplete="family-name">
                     @error('newWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <button type="submit" class="btn btn--primary btn--block">
+                <button type="submit" class="btn btn--primary btn--block" wire:key="tl-add-worker-submit-btn">
                     {{ __('portal.teamleader.add_worker') }}
                 </button>
             </form>
