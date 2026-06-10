@@ -425,7 +425,7 @@
                 $portalCanAddMore = $portalTotalCount < 4;
             @endphp
 
-            <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }">
+            <div class="wp-card wp-card-pad wp-stack" wire:key="qr-photos-card" x-data="{ open: true }">
                 <button
                     type="button"
                     class="wp-row"
