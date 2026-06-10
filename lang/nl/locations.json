@@ -159,7 +159,9 @@
     },
     "categories": {
         "manage": "Categorieën",
-        "title": "Categorieën beheren",
+        "title": "Categorieën",
+        "edit_title": "Categorie bewerken",
+        "add_title": "Categorie toevoegen",
         "subtitle": "Beheer categorieën en koppel ze aan teams.",
         "add": "Categorie toevoegen",
         "empty": "Nog geen categorieën.",

@@ -159,7 +159,9 @@
     },
     "categories": {
         "manage": "Categories",
-        "title": "Manage categories",
+        "title": "Categories",
+        "edit_title": "Edit category",
+        "add_title": "Add category",
         "subtitle": "Manage categories and link them to teams.",
         "add": "Add category",
         "empty": "No categories yet.",

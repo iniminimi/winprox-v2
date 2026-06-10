@@ -159,7 +159,9 @@
     },
     "categories": {
         "manage": "Catégories",
-        "title": "Gérer les catégories",
+        "title": "Catégories",
+        "edit_title": "Modifier la catégorie",
+        "add_title": "Ajouter une catégorie",
         "subtitle": "Gérez les catégories et liez-les aux équipes.",
         "add": "Ajouter une catégorie",
         "empty": "Aucune catégorie pour le moment.",

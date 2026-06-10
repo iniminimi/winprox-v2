@@ -45,7 +45,9 @@
         "print": "Print",
         "logout": "Log out",
         "close": "Close",
-        "clear": "Clear"
+        "clear": "Clear",
+        "collapse": "Collapse",
+        "expand": "Expand"
     },
     "language": {
         "label": "Language"

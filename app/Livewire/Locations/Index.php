@@ -66,6 +66,8 @@ class Index extends Component
 
     public bool $showCategoriesModal = false;
 
+    public bool $showCategoriesSection = false;
+
     public ?int $editingCategoryId = null;
 
     public string $categoryName = '';
