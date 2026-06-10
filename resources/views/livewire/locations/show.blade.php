@@ -246,7 +246,7 @@
                                             <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy">
                                             <button
                                                 type="button"
-                                                style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
+                                                class="wp-photo-remove"
                                                 wire:click="removeUnitPhoto({{ $photo->id }})"
                                                 wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
                                             >×</button>
@@ -259,7 +259,7 @@
                                         <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
                                         <button
                                             type="button"
-                                            style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
+                                            class="wp-photo-remove"
                                             wire:click="removeUnitTempPhoto({{ $index }})"
                                         >×</button>
                                     </div>

@@ -359,7 +359,7 @@
                                 <img src="{{ $unitBackgroundUrl }}" alt="" width="80" height="80" loading="lazy">
                                 <button
                                     type="button"
-                                    style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
+                                    class="wp-photo-remove"
                                     wire:confirm="{{ __('portal.unit.background_photo_delete_confirm') }}"
                                     wire:click="deleteUnitBackgroundPhoto()"
                                 >×</button>
@@ -374,7 +374,7 @@
                                     <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
                                     <button
                                         type="button"
-                                        style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
+                                        class="wp-photo-remove"
                                         wire:click="removeBackgroundPhoto({{ $index }})"
                                     >×</button>
                                 </div>
@@ -458,7 +458,7 @@
                                         @if ($workerBelongsToUnitTeam)
                                             <button
                                                 type="button"
-                                                style="position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;font-size:12px;"
+                                                class="wp-photo-remove"
                                                 wire:confirm="{{ __('portal.unit.delete_photo_confirm') }}"
                                                 wire:click="removeUnitPhoto({{ $photo->id }})"
                                             >×</button>

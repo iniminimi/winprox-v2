@@ -14,7 +14,6 @@ const WIRE_MODEL_ATTRS = ['wire:model', 'wire:model.live', 'wire:model.defer', '
 const PREVIEW_THUMB_STYLE = {
     wrap: 'width:96px;height:96px;position:relative;overflow:hidden;border-radius:8px;border:2px solid var(--wp-border, #d1fae5);',
     img: 'width:96px;height:96px;object-fit:cover;',
-    btn: 'position:absolute;top:4px;right:4px;background:#ef4444;color:white;border-radius:9999px;border:0;padding:3px 6px;line-height:1;cursor:pointer;',
 };
 
 /**
@@ -204,7 +203,7 @@ function wpAppendLocalPhotoPreview(area, previewRoot, objectUrl, component, remo
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.textContent = '\u2715';
-    btn.style.cssText = PREVIEW_THUMB_STYLE.btn;
+    btn.className = 'wp-photo-remove';
     btn.addEventListener('click', () => {
         const currentIndex = Number(wrap.dataset.wpPhotoIndex);
         const storedUrl = wrap.dataset.wpPhotoObjectUrl;
