@@ -55,7 +55,6 @@ class TeamPortal extends Component
     public string $newWorkerFirstName = '';
     public string $newWorkerLastName = '';
     public string $manageWorkersMessage = '';
-    public int $formKey = 0;
 
     public function mount(string $token): void
     {
@@ -282,14 +281,14 @@ class TeamPortal extends Component
     public function openManageWorkers(): void
     {
         $this->showManageWorkers = true;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage', 'formKey']);
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
     }
 
     public function closeManageWorkers(): void
     {
         $this->showManageWorkers = false;
-        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage', 'formKey']);
+        $this->reset(['newWorkerFirstName', 'newWorkerLastName', 'manageWorkersMessage']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
     }
 
@@ -321,7 +320,6 @@ class TeamPortal extends Component
         $this->reset(['newWorkerFirstName', 'newWorkerLastName']);
         $this->resetErrorBag(['newWorkerFirstName', 'newWorkerLastName']);
         $this->manageWorkersMessage = __('portal.teamleader.worker_added');
-        $this->formKey++;
     }
 
     public function removeWorker(int $workerId, DeleteWorkerAction $deleteWorker): void

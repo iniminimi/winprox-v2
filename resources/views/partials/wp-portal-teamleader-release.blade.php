@@ -121,7 +121,7 @@
             <h3 class="wp-section-title wp-section-title--sm">{{ __('portal.teamleader.add_worker_title') }}</h3>
 
             {{-- Add worker form --}}
-            <form wire:key="add-worker-form-{{ $formKey }}" wire:submit="addWorker" class="wp-stack">
+            <form wire:submit="addWorker" class="wp-stack">
                 <div class="wp-field">
                     <label class="wp-label" for="tl_new_first">{{ __('portal.teamleader.worker_first_name') }}</label>
                     <input id="tl_new_first" type="text" class="wp-input" wire:model="newWorkerFirstName" autocomplete="given-name">
