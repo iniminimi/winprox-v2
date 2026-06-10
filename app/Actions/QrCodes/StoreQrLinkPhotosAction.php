@@ -21,7 +21,7 @@ class StoreQrLinkPhotosAction
      */
     public function handle(
         Unit $unit,
-        QrCode $qrCode,
+        ?QrCode $qrCode,
         array $photos,
         ?int $actorUserId = null,
     ): int {
@@ -34,7 +34,7 @@ class StoreQrLinkPhotosAction
 
             QrLinkPhoto::create([
                 'tenant_id' => (int) $unit->tenant_id,
-                'qr_code_id' => (int) $qrCode->id,
+                'qr_code_id' => $qrCode?->id,
                 'unit_id' => (int) $unit->id,
                 'path' => $this->storage->storePrecompressedCopy($photo),
             ]);
@@ -51,7 +51,7 @@ class StoreQrLinkPhotosAction
                 modelId: (int) $unit->id,
                 payload: [
                     'unit_id' => $unit->id,
-                    'qr_code_id' => $qrCode->id,
+                    'qr_code_id' => $qrCode?->id,
                     'photo_count' => $storedCount,
                 ],
             );

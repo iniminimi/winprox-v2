@@ -438,7 +438,7 @@
                     <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
                 </button>
 
-                <div x-show="open" x-transition wire:key="qr-photos-content-{{ $portalTotalCount }}">
+                <div x-show="open" x-transition wire:key="qr-photos-content">
                     @if ($qrLinkPhotos->isNotEmpty())
                         <div class="wp-photo-grid wp-photo-grid--gallery" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
                             @foreach ($qrLinkPhotos as $photo)

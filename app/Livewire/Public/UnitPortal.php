@@ -404,12 +404,6 @@ class UnitPortal extends Component
         $unit->loadMissing(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)]);
         $qrCode = $unit->qrCodes->first();
 
-        if ($qrCode === null) {
-            $this->addError('newPortalPhotos', __('portal.report.errors.photos_qr_missing'));
-
-            return;
-        }
-
         try {
             $storePhotos->handle(
                 unit: $unit,
