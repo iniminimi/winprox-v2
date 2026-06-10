@@ -202,7 +202,9 @@
         "background_photo_hint": "Houd je telefoon verticaal voor de beste resultaten.",
         "background_photo_save": "Opslaan",
         "background_photo_saving": "Bezig met opslaan...",
-        "background_photo_updated": "Omgevingsfoto opgeslagen."
+        "background_photo_updated": "Omgevingsfoto opgeslagen.",
+        "background_photo_deleted": "Omgevingsfoto verwijderd.",
+        "background_photo_delete_confirm": "Deze omgevingsfoto verwijderen?"
     }
 }
 

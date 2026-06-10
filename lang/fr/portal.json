@@ -202,7 +202,9 @@
         "background_photo_hint": "Tenez votre téléphone verticalement pour les meilleurs résultats.",
         "background_photo_save": "Enregistrer",
         "background_photo_saving": "Enregistrement en cours...",
-        "background_photo_updated": "Photo d'environnement enregistrée."
+        "background_photo_updated": "Photo d'environnement enregistrée.",
+        "background_photo_deleted": "Photo d'environnement supprimée.",
+        "background_photo_delete_confirm": "Supprimer cette photo d'environnement ?"
     }
 }
 

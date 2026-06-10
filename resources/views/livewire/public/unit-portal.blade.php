@@ -342,10 +342,17 @@
             <div class="wp-card wp-card-pad wp-stack" wire:key="unit-bg-photo-section">
                 <h2 class="wp-section-title">{{ __('portal.unit.background_photo_title') }}</h2>
 
-                @if ($unitBackgroundUrl)
+                @if ($unitBackgroundUrl && $bgTempCount === 0)
                     <div class="wp-photo-grid wp-photo-grid--gallery">
-                        <div class="wp-photo-thumb">
+                        <div class="wp-photo-thumb" style="position:relative;">
                             <img src="{{ $unitBackgroundUrl }}" alt="" width="80" height="80" loading="lazy">
+                            <button
+                                type="button"
+                                class="btn btn--danger btn--sm"
+                                style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
+                                wire:confirm="{{ __('portal.unit.background_photo_delete_confirm') }}"
+                                wire:click="deleteUnitBackgroundPhoto()"
+                            >×</button>
                         </div>
                     </div>
                 @endif
@@ -366,7 +373,7 @@
                     </div>
                 @endif
 
-                @if ($bgTempCount === 0 && count($backgroundPhoto) < 1)
+                @if ($bgTempCount === 0 && ! $unitBackgroundUrl)
                     @include('partials.wp-issue-photo-upload', ['model' => 'backgroundPhoto', 'max' => 1, 'preferCamera' => true, 'removeMethod' => 'removeBackgroundPhoto', 'photoAlt' => __('portal.unit.background_photo_add')])
                     <p class="wp-hint">{{ __('portal.unit.background_photo_hint') }}</p>
                 @endif

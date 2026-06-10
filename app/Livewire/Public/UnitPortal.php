@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitReportAction;
+use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitGpsAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
@@ -492,6 +493,22 @@ class UnitPortal extends Component
         $this->reset('backgroundPhoto');
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.unit.background_photo_updated');
+    }
+
+    public function deleteUnitBackgroundPhoto(DeleteUnitBackgroundPhotoAction $action): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        if (! $this->workerBelongsToUnitTeam()) {
+            $this->addError('backgroundPhoto', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        $action->handle($this->unit(), null);
+        $this->flashMessage = __('portal.unit.background_photo_deleted');
     }
 
     public function submitCompleteTask(CompleteTaskAction $completeTask): void

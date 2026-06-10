@@ -202,7 +202,9 @@
         "background_photo_hint": "Halten Sie Ihr Telefon vertikal für die besten Ergebnisse.",
         "background_photo_save": "Speichern",
         "background_photo_saving": "Speichern...",
-        "background_photo_updated": "Umgebungsfoto gespeichert."
+        "background_photo_updated": "Umgebungsfoto gespeichert.",
+        "background_photo_deleted": "Umgebungsfoto entfernt.",
+        "background_photo_delete_confirm": "Dieses Umgebungsfoto löschen?"
     }
 }
 

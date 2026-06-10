@@ -202,7 +202,9 @@
         "background_photo_hint": "Hold your phone vertically for the best results.",
         "background_photo_save": "Save",
         "background_photo_saving": "Saving...",
-        "background_photo_updated": "Environment photo saved."
+        "background_photo_updated": "Environment photo saved.",
+        "background_photo_deleted": "Environment photo removed.",
+        "background_photo_delete_confirm": "Remove this environment photo?"
     }
 }
 
