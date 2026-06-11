@@ -1103,6 +1103,13 @@ a.wp-kpi:hover {
 
 
 /* ---------------------------------------------------------------------------
+ | Teams lijst — licht groene achtergrond wanneer een team is uitgevouwen.
+ * ------------------------------------------------------------------------- */
+.wp-team-list--has-expanded {
+    background-color: var(--wp-accent-soft);
+}
+
+/* ---------------------------------------------------------------------------
  | Stub-pagina's + chips (beheers-stubs, locaties/teams).
  * ------------------------------------------------------------------------- */
 .wp-stub {

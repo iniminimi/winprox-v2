@@ -51,7 +51,7 @@
     @endif
 
     {{-- Teams ---------------------------------------------------------------}}
-    <div class="wp-card wp-card-pad wp-stack-tight">
+    <div class="wp-card wp-card-pad wp-stack-tight {{ $expandedTeamIds ? 'wp-team-list--has-expanded' : '' }}">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
