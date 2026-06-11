@@ -10,7 +10,7 @@ use ImagickDraw;
 use ImagickPixel;
 
 /**
- * Renders unit / sticker label in the Avery 62×89-R header band (white on black artwork).
+ * Renders tenant / portal label in the Avery 62×89-R header band (contrast-aware).
  */
 final class BrandedQrStickerHeaderRenderer
 {
@@ -27,7 +27,13 @@ final class BrandedQrStickerHeaderRenderer
         $font = BrandedQrStickerFont::headerBoldAbsolutePath();
         $layout = self::layout($text, $font);
 
-        [$r, $g, $b] = Avery62x89StickerArtworkLayout::HEADER_COLOR_RGB;
+        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForGdRegion(
+            $canvas,
+            Avery62x89StickerArtworkLayout::HEADER_PADDING_LEFT_PX + (int) round(Avery62x89StickerArtworkLayout::headerMaxWidthPx() / 2),
+            BrandedQrStickerTextColor::headerSampleCenterY(),
+            Avery62x89StickerArtworkLayout::headerMaxWidthPx(),
+            Avery62x89StickerArtworkLayout::HEADER_MAX_HEIGHT_PX,
+        );
         $color = imagecolorallocate($canvas, $r, $g, $b);
         if ($color === false) {
             throw new \RuntimeException('Unable to allocate branded sticker header text color.');
@@ -68,10 +74,18 @@ final class BrandedQrStickerHeaderRenderer
         $font = BrandedQrStickerFont::headerBoldAbsolutePath();
         $layout = self::layout($text, $font);
 
+        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForImagickRegion(
+            $canvas,
+            Avery62x89StickerArtworkLayout::HEADER_PADDING_LEFT_PX + (int) round(Avery62x89StickerArtworkLayout::headerMaxWidthPx() / 2),
+            BrandedQrStickerTextColor::headerSampleCenterY(),
+            Avery62x89StickerArtworkLayout::headerMaxWidthPx(),
+            Avery62x89StickerArtworkLayout::HEADER_MAX_HEIGHT_PX,
+        );
+
         $draw = new ImagickDraw;
         $draw->setFont($font);
         $draw->setFontSize((float) $layout['font_size']);
-        $draw->setFillColor(new ImagickPixel('white'));
+        $draw->setFillColor(new ImagickPixel(sprintf('rgb(%d,%d,%d)', $r, $g, $b)));
         $draw->setTextAlignment(Imagick::ALIGN_LEFT);
 
         $x = (float) Avery62x89StickerArtworkLayout::HEADER_PADDING_LEFT_PX;

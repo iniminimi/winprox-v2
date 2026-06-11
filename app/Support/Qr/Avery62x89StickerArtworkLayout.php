@@ -24,7 +24,7 @@ final class Avery62x89StickerArtworkLayout
     /** Slightly above geometric centre — clears “Scan” / arrow artwork. */
     public const QR_CENTER_Y_PX = 512;
 
-    /** Upper black band — unit label left-aligned, clears Prox logo (top-right). */
+    /** Upper band — tenant / portal label left-aligned, clears Prox logo (top-right). */
     public const HEADER_PADDING_LEFT_PX = 36;
 
     public const HEADER_PADDING_RIGHT_PX = 200;
@@ -41,9 +41,6 @@ final class Avery62x89StickerArtworkLayout
 
     public const HEADER_MAX_LINES = 2;
 
-    /** @var array{0: int, 1: int, 2: int} */
-    public const HEADER_COLOR_RGB = [255, 255, 255];
-
     /** Below QR — sticker number (Winprox-YYMM-#####). */
     public const FOOTER_PADDING_SIDE_PX = 48;
 
@@ -52,9 +49,6 @@ final class Avery62x89StickerArtworkLayout
     public const FOOTER_MAX_FONT_SIZE_PX = 26;
 
     public const FOOTER_MIN_FONT_SIZE_PX = 16;
-
-    /** @var array{0: int, 1: int, 2: int} */
-    public const FOOTER_COLOR_RGB = [255, 255, 255];
 
     public static function headerMaxWidthPx(): int
     {

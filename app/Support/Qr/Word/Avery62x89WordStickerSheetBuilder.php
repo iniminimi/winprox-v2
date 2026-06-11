@@ -153,11 +153,23 @@ final class Avery62x89WordStickerSheetBuilder
             $pngPath,
             $centerLogoPath,
             BrandedQrStickerHeaderText::resolve($tenant, $entry->headerFallback),
-            $entry->stickerNumber,
+            self::footerLabel($entry),
         );
         $tempFiles[] = $pngPath;
 
         return $pngPath;
+    }
+
+    private static function footerLabel(QrStickerEntry $entry): ?string
+    {
+        $stickerNumber = trim((string) ($entry->stickerNumber ?? ''));
+        if ($stickerNumber !== '') {
+            return $stickerNumber;
+        }
+
+        $unitLabel = trim($entry->unitLabel);
+
+        return $unitLabel !== '' ? $unitLabel : null;
     }
 
     private static function mmToTwip(float $millimeters): int
