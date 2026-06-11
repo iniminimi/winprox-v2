@@ -278,35 +278,43 @@
                     "text": "Alleen de beheerder kan naam, e-mail, telefoon en adres aanpassen via 'Organisatiegegevens bewerken'. Deze gegevens verschijnen onder meer op afgedrukte QR-stickers en unitlabels."
                 },
                 {
-                    "label": "Organisatielogo en portaal-achtergrond",
-                    "text": "Upload een organisatielogo (PNG/JPG, max. 2 MB). Dat logo staat in het midden van elke QR-code op stickers en in het meldportaal. Optioneel: een portaal-achtergrond (PNG/JPG, max. 4 MB) — die zie je melders na het scannen van een QR-code. Dit is niet hetzelfde als de sticker-achtergrond hieronder."
+                    "label": "Organisatielogo",
+                    "text": "Upload een organisatielogo (PNG/JPG, max. 2 MB). Dat logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
-                    "label": "Eigen portaal-stijl",
-                    "text": "Schakel 'Eigen portaal-stijl gebruiken' in om achtergrond- en knopkleur van het meldportaal te kiezen. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
+                    "label": "Portaal-achtergrond",
+                    "text": "Optionele achtergrondafbeelding voor het meldportaal na het scannen van een QR-code (PNG/JPG, max. 4 MB). Dit is niet hetzelfde als de sticker-achtergrond bij QR-code stickervellen."
                 },
                 {
                     "label": "WinProx-stijl",
                     "text": "Kies hoe WinProx er voor jou uitziet in beheer: Standaard, Donker of High Res. Je keuze geldt op al je ingelogde apparaten."
                 },
                 {
+                    "label": "Eigen portaal-stijl",
+                    "text": "Schakel 'Eigen portaal-stijl gebruiken' in om achtergrond- en knopkleur van het meldportaal te kiezen. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
+                },
+                {
                     "label": "QR-code stickervellen",
-                    "text": "Branding voor gedrukte Avery 62×89-R stickers (9 etiketten per vel). Het stickervel download je per locatie via het QR-pack. Hier stel je in hoe elke sticker eruitziet: tekst, logo op de hoek, adres en achtergrond."
+                    "text": "Branding voor gedrukte Avery 62×89-R stickers (9 etiketten per vel). Het stickervel download je per locatie via het QR-pack."
                 },
                 {
-                    "label": "Sticker — Tekst",
-                    "text": "Open de rubriek 'Tekst'. Bovenaan de sticker staat je eigen tekst (max. 120 tekens). Laat je het leeg, dan gebruikt WinProx automatisch locatienaam · unit. Onder de QR-code staat altijd het stickernummer. Het voorbeeld rechts werkt live mee. Klik 'Opslaan' om tekst (en logo-instellingen) te bewaren."
+                    "label": "Tekst",
+                    "nested": true,
+                    "text": "Bovenaan de sticker staat je eigen tekst (max. 120 tekens). Laat je het leeg, dan gebruikt WinProx automatisch locatienaam · unit. Onder de QR-code staat altijd het stickernummer. Het voorbeeld rechts werkt live mee. Klik 'Opslaan' om tekst (en logo-instellingen) te bewaren."
                 },
                 {
-                    "label": "Sticker — Logo en adres",
-                    "text": "Open 'Logo en adres'. Kies waar je organisatielogo op de sticker komt (rechtsonder, linksonder, …) — alleen mogelijk als je een logo hebt geüpload. Vink 'Adres locatie op de sticker' aan om adresgegevens linksonder te tonen. Het logo in het midden van de QR-code is vast (jouw logo of WinProx) en kan hier niet verplaatst worden."
+                    "label": "Logo en adres",
+                    "nested": true,
+                    "text": "Kies waar je organisatielogo op de sticker komt (rechtsonder, linksonder, …) — alleen mogelijk als je een logo hebt geüpload. Vink 'Adres locatie op de sticker' aan om adresgegevens linksonder te tonen. Het logo in het midden van de QR-code is vast (jouw logo of WinProx) en kan hier niet verplaatst worden."
                 },
                 {
-                    "label": "Sticker — Achtergrond",
-                    "text": "Open 'Achtergrond'. Kies een eigen afbeelding (PNG/JPG, max. 4 MB); die wordt meteen opgeslagen. Zonder eigen achtergrond gebruikt WinProx het standaard stickerdesign. Met 'Eigen achtergrond verwijderen' keer je terug naar dat standaarddesign."
+                    "label": "Achtergrond",
+                    "nested": true,
+                    "text": "Kies een eigen afbeelding (PNG/JPG, max. 4 MB); die wordt meteen opgeslagen. Zonder eigen achtergrond gebruikt WinProx het standaard stickerdesign. Met 'Eigen achtergrond verwijderen' keer je terug naar dat standaarddesign."
                 },
                 {
-                    "label": "Sticker — Voorbeeld",
+                    "label": "Voorbeeld",
+                    "nested": true,
                     "text": "Rechts (op een breed scherm) zie je een live voorbeeld van één sticker met demo-QR en -nummer. Bij export op een locatie worden de echte unit-QR-codes en stickernummers van die locatie gebruikt."
                 },
                 {

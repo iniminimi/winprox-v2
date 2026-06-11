@@ -170,15 +170,16 @@
             @if (!empty($chapter['actions']))
                 <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                     @foreach ($chapter['actions'] as $action)
-                        <div style="
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.5rem;
-                            padding: 1rem 1.25rem;
-                            background: var(--wp-surface);
-                            border: 1px solid var(--wp-border);
-                            border-radius: 10px;
-                        ">
+                        <div @style([
+                            'display: flex',
+                            'flex-direction: column',
+                            'gap: 0.5rem',
+                            'padding: 1rem 1.25rem',
+                            'background: var(--wp-surface)',
+                            'border: 1px solid var(--wp-border)',
+                            'border-radius: 10px',
+                            'margin-inline-start: 1.25rem' => ! empty($action['nested']),
+                        ])>
                             <div style="
                                 font-weight: 700;
                                 color: var(--wp-text);

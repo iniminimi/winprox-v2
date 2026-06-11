@@ -278,35 +278,43 @@
                     "text": "Nur der Administrator kann Name, E-Mail, Telefon und Adresse über 'Organisationsdaten bearbeiten' ändern. Diese Angaben erscheinen u. a. auf gedruckten QR-Aufklebern und Unit-Etiketten."
                 },
                 {
-                    "label": "Organisationslogo und Portal-Hintergrund",
-                    "text": "Laden Sie ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Optional: ein Portal-Hintergrundbild (PNG/JPG, max. 4 MB), das Melder nach dem Scannen eines QR-Codes sehen. Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unten."
+                    "label": "Organisationslogo",
+                    "text": "Laden Sie ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
-                    "label": "Eigenes Portal-Design",
-                    "text": "Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
+                    "label": "Portal-Hintergrund",
+                    "text": "Optionales Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "WinProx-Stil",
                     "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard, Dunkel oder High Res. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind."
                 },
                 {
+                    "label": "Eigenes Portal-Design",
+                    "text": "Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
+                },
+                {
                     "label": "QR-Aufkleberbögen",
-                    "text": "Branding für gedruckte Avery 62×89-R-Aufkleber (9 Etiketten pro Bogen). Den Aufkleberbogen laden Sie pro Standort über das QR-Paket herunter. Hier legen Sie fest, wie jeder Aufkleber aussieht: Text, Logo in der Ecke, Adresse und Hintergrund."
+                    "text": "Branding für gedruckte Avery 62×89-R-Aufkleber (9 Etiketten pro Bogen). Den Aufkleberbogen laden Sie pro Standort über das QR-Paket herunter."
                 },
                 {
-                    "label": "Aufkleber — Text",
-                    "text": "Öffnen Sie den Bereich 'Text'. Ihr eigener Text steht oben auf dem Aufkleber (max. 120 Zeichen). Bleibt er leer, verwendet WinProx automatisch Standortname · Unit. Die Aufklebernummer steht immer unter dem QR-Code. Die Vorschau rechts aktualisiert sich live. Klicken Sie auf 'Speichern', um Text (und Logo-Einstellungen) zu sichern."
+                    "label": "Text",
+                    "nested": true,
+                    "text": "Ihr eigener Text steht oben auf dem Aufkleber (max. 120 Zeichen). Bleibt er leer, verwendet WinProx automatisch Standortname · Unit. Die Aufklebernummer steht immer unter dem QR-Code. Die Vorschau rechts aktualisiert sich live. Klicken Sie auf 'Speichern', um Text (und Logo-Einstellungen) zu sichern."
                 },
                 {
-                    "label": "Aufkleber — Logo und Adresse",
-                    "text": "Öffnen Sie 'Logo und Adresse'. Wählen Sie, wo Ihr Organisationslogo auf dem Aufkleber erscheint (unten rechts, unten links, …) — nur wenn ein Logo hochgeladen wurde. Aktivieren Sie die Adressoption für die Anzeige unten links. Das Logo in der Mitte des QR-Codes ist fest (Ihr Logo oder WinProx) und kann hier nicht verschoben werden."
+                    "label": "Logo und Adresse",
+                    "nested": true,
+                    "text": "Wählen Sie, wo Ihr Organisationslogo auf dem Aufkleber erscheint (unten rechts, unten links, …) — nur wenn ein Logo hochgeladen wurde. Aktivieren Sie die Adressoption für die Anzeige unten links. Das Logo in der Mitte des QR-Codes ist fest (Ihr Logo oder WinProx) und kann hier nicht verschoben werden."
                 },
                 {
-                    "label": "Aufkleber — Hintergrund",
-                    "text": "Öffnen Sie 'Hintergrund'. Wählen Sie ein eigenes Bild (PNG/JPG, max. 4 MB); es wird sofort gespeichert. Ohne eigenen Hintergrund nutzt WinProx das Standard-Aufkleberdesign. Mit 'Eigenen Hintergrund entfernen' kehren Sie zu diesem Standard zurück."
+                    "label": "Hintergrund",
+                    "nested": true,
+                    "text": "Wählen Sie ein eigenes Bild (PNG/JPG, max. 4 MB); es wird sofort gespeichert. Ohne eigenen Hintergrund nutzt WinProx das Standard-Aufkleberdesign. Mit 'Eigenen Hintergrund entfernen' kehren Sie zu diesem Standard zurück."
                 },
                 {
-                    "label": "Aufkleber — Vorschau",
+                    "label": "Vorschau",
+                    "nested": true,
                     "text": "Rechts (auf einem breiten Bildschirm) sehen Sie eine Live-Vorschau eines Aufklebers mit Demo-QR-Code und -Nummer. Beim Export an einem Standort werden die echten Unit-QR-Codes und Aufklebernummern dieses Standorts verwendet."
                 },
                 {

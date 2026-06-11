@@ -278,35 +278,43 @@
                     "text": "Only the administrator can change name, email, phone and address via 'Edit organisation details'. These details appear on printed QR stickers, unit labels and other reporter-facing material."
                 },
                 {
-                    "label": "Organisation logo and portal background",
-                    "text": "Upload an organisation logo (PNG/JPG, max. 2 MB). It appears in the centre of every QR code on stickers and in the reporting portal. Optionally set a portal background image (PNG/JPG, max. 4 MB) that reporters see after scanning a QR code. This is not the same as the sticker background below."
+                    "label": "Organisation logo",
+                    "text": "Upload an organisation logo (PNG/JPG, max. 2 MB). It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
                 },
                 {
-                    "label": "Custom portal style",
-                    "text": "Turn on 'Use custom portal style' to choose background and button colours for the reporting portal. The preview card shows how reporters see the portal after a scan. This does not affect the admin interface."
+                    "label": "Portal background",
+                    "text": "Optional background image for the reporting portal after scanning a QR code (PNG/JPG, max. 4 MB). This is not the same as the sticker background under QR sticker sheets."
                 },
                 {
                     "label": "WinProx style",
                     "text": "Choose how WinProx looks for you in admin: Standard, Dark or High Res. Your choice applies on all devices where you are signed in."
                 },
                 {
+                    "label": "Custom portal style",
+                    "text": "Turn on 'Use custom portal style' to choose background and button colours for the reporting portal. The preview card shows how reporters see the portal after a scan. This does not affect the admin interface."
+                },
+                {
                     "label": "QR sticker sheets",
-                    "text": "Branding for printed Avery 62×89-R stickers (9 labels per sheet). Download the sticker sheet per location from the QR pack. Here you configure how each sticker looks: text, corner logo, address and background."
+                    "text": "Branding for printed Avery 62×89-R stickers (9 labels per sheet). Download the sticker sheet per location from the QR pack."
                 },
                 {
-                    "label": "Sticker — Text",
-                    "text": "Open the 'Text' section. Your custom text appears at the top of the sticker (max. 120 characters). If left empty, WinProx uses location name · unit automatically. The sticker number always appears below the QR code. The preview on the right updates live. Click 'Save' to store text (and logo settings)."
+                    "label": "Text",
+                    "nested": true,
+                    "text": "Your custom text appears at the top of the sticker (max. 120 characters). If left empty, WinProx uses location name · unit automatically. The sticker number always appears below the QR code. The preview on the right updates live. Click 'Save' to store text (and logo settings)."
                 },
                 {
-                    "label": "Sticker — Logo and address",
-                    "text": "Open 'Logo and address'. Choose where your organisation logo appears on the sticker (bottom right, bottom left, …) — only if you have uploaded a logo. Tick 'Show location address on sticker' to print address details at the bottom left. The logo in the centre of the QR code is fixed (your logo or WinProx) and cannot be moved here."
+                    "label": "Logo and address",
+                    "nested": true,
+                    "text": "Choose where your organisation logo appears on the sticker (bottom right, bottom left, …) — only if you have uploaded a logo. Tick 'Show location address on sticker' to print address details at the bottom left. The logo in the centre of the QR code is fixed (your logo or WinProx) and cannot be moved here."
                 },
                 {
-                    "label": "Sticker — Background",
-                    "text": "Open 'Background'. Pick a custom image (PNG/JPG, max. 4 MB); it is saved immediately. Without a custom background WinProx uses the default sticker design. Use 'Remove custom background' to return to that default."
+                    "label": "Background",
+                    "nested": true,
+                    "text": "Pick a custom image (PNG/JPG, max. 4 MB); it is saved immediately. Without a custom background WinProx uses the default sticker design. Use 'Remove custom background' to return to that default."
                 },
                 {
-                    "label": "Sticker — Preview",
+                    "label": "Preview",
+                    "nested": true,
                     "text": "On the right (on a wide screen) you see a live preview of one sticker with a demo QR code and number. When exporting at a location, the real unit QR codes and sticker numbers for that location are used."
                 },
                 {

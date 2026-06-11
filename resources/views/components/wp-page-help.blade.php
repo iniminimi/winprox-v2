@@ -33,7 +33,7 @@
                             <h3 class="wp-page-help-section-title">{{ __('page-help.modal.actions_heading') }}</h3>
                             <ul class="wp-page-help-list">
                                 @foreach ($help['actions'] as $action)
-                                    <li class="wp-page-help-item">
+                                    <li @class(['wp-page-help-item', 'wp-page-help-item--nested' => ! empty($action['nested'])])>
                                         <p class="wp-page-help-item-label">{{ $action['label'] }}</p>
                                         <p class="wp-page-help-item-text">{{ $action['text'] }}</p>
                                     </li>

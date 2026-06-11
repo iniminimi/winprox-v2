@@ -15,7 +15,7 @@ final class PageHelp
     /**
      * @return array{
      *     title: string,
-     *     actions: list<array{label: string, text: string}>,
+     *     actions: list<array{label: string, text: string, nested: bool}>,
      *     statuses: list<array{key: string, label: string, text: string, pill: string}>,
      *     status_note: string|null,
      * }|null
@@ -49,6 +49,7 @@ final class PageHelp
                 $actions[] = [
                     'label' => (string) $item['label'],
                     'text' => (string) $item['text'],
+                    'nested' => ! empty($item['nested']),
                 ];
             }
         }
