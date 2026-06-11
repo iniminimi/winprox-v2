@@ -216,44 +216,113 @@
             </div>
         </form>
 
-        <form wire:submit="saveQrStickerAvery6289Settings" class="wp-card wp-card-pad wp-stack-tight">
+        <div class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.qr_stickers.title') }}</h2>
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
 
             <div class="wp-stack-tight">
                 <h3 class="wp-issue-card-title">{{ __('settings.qr_stickers.avery_62x89_r.title') }}</h3>
                 <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.hint') }}</p>
-                <div class="wp-field">
-                    <label class="wp-label" for="qrStickerAvery6289HeaderText">{{ __('settings.qr_stickers.avery_62x89_r.header_label') }}</label>
-                    <input
-                        type="text"
-                        id="qrStickerAvery6289HeaderText"
-                        class="wp-input"
-                        wire:model="qrStickerAvery6289HeaderText"
-                        maxlength="{{ \App\Support\Qr\Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS }}"
-                        placeholder="{{ __('settings.qr_stickers.avery_62x89_r.header_placeholder') }}"
-                    >
-                    @error('qrStickerAvery6289HeaderText') <p class="wp-error">{{ $message }}</p> @enderror
-                    <p class="wp-muted wp-text-sm">
-                        <span class="wp-text-body">{{ __('settings.qr_stickers.avery_62x89_r.current_text_label') }}:</span>
-                        @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text))
-                            {{ $organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)->header_text }}
-                        @else
-                            {{ __('settings.qr_stickers.avery_62x89_r.current_text_empty') }}
-                        @endif
-                    </p>
-                    <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.header_help') }}</p>
-                </div>
-                <div class="wp-field">
-                    <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.background_label') }}</p>
-                    <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_coming_soon') }}</p>
-                </div>
-            </div>
 
-            <div class="wp-cluster">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                <form wire:submit="saveQrStickerAvery6289Settings" class="wp-stack-tight">
+                    <div class="wp-field">
+                        <label class="wp-label" for="qrStickerAvery6289HeaderText">{{ __('settings.qr_stickers.avery_62x89_r.header_label') }}</label>
+                        <input
+                            type="text"
+                            id="qrStickerAvery6289HeaderText"
+                            class="wp-input"
+                            wire:model="qrStickerAvery6289HeaderText"
+                            maxlength="{{ \App\Support\Qr\Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS }}"
+                            placeholder="{{ __('settings.qr_stickers.avery_62x89_r.header_placeholder') }}"
+                        >
+                        @error('qrStickerAvery6289HeaderText') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('headerText') <p class="wp-error">{{ $message }}</p> @enderror
+                        <p class="wp-muted wp-text-sm">
+                            <span class="wp-text-body">{{ __('settings.qr_stickers.avery_62x89_r.current_text_label') }}:</span>
+                            @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text))
+                                {{ $organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)->header_text }}
+                            @else
+                                {{ __('settings.qr_stickers.avery_62x89_r.current_text_empty') }}
+                            @endif
+                        </p>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.header_help') }}</p>
+                    </div>
+
+                    <div class="wp-field wp-stack-tight">
+                        <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.layout_title') }}</p>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.layout_hint') }}</p>
+
+                        <fieldset class="wp-stack-tight">
+                            <legend class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.center_logo_label') }}</legend>
+                            @foreach ($qrStickerCenterLogoChoices as $choice)
+                                <label class="wp-checkbox-label">
+                                    <input
+                                        type="radio"
+                                        class="wp-checkbox"
+                                        wire:model="qrStickerAvery6289CenterLogo"
+                                        value="{{ $choice->value }}"
+                                    >
+                                    {{ __('settings.qr_stickers.avery_62x89_r.center_logo_'.$choice->value) }}
+                                </label>
+                            @endforeach
+                            @error('centerLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                        </fieldset>
+
+                        <label class="wp-checkbox-label">
+                            <input type="checkbox" wire:model="qrStickerAvery6289CornerTenantLogo" class="wp-checkbox">
+                            {{ __('settings.qr_stickers.avery_62x89_r.corner_logo_label') }}
+                        </label>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.corner_logo_help') }}</p>
+                        @error('cornerTenantLogo') <p class="wp-error">{{ $message }}</p> @enderror
+
+                        <label class="wp-checkbox-label">
+                            <input type="checkbox" wire:model="qrStickerAvery6289ShowTenantAddress" class="wp-checkbox">
+                            {{ __('settings.qr_stickers.avery_62x89_r.tenant_address_label') }}
+                        </label>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.tenant_address_help') }}</p>
+                        @error('showTenantAddress') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="wp-cluster">
+                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                    </div>
+                </form>
+
+                <form wire:submit="saveQrStickerAvery6289Background" class="wp-stack-tight">
+                    <div class="wp-field">
+                        <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.background_label') }}</p>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_hint') }}</p>
+                        @if ($qrStickerAvery6289BackgroundUrl)
+                            <img
+                                src="{{ $qrStickerAvery6289BackgroundUrl }}"
+                                alt="{{ __('settings.qr_stickers.avery_62x89_r.background_preview_alt') }}"
+                                class="wp-portal-bg-preview"
+                                style="max-height: 180px; width: auto; margin-bottom: 0.75rem;"
+                                wire:key="qr-sticker-bg-{{ md5($qrStickerAvery6289BackgroundUrl) }}"
+                            >
+                        @else
+                            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_default_label') }}</p>
+                        @endif
+                        <x-wp-file-input wireModel="qrStickerAvery6289Background" id="qrStickerAvery6289Background" accept="image/*" />
+                        @error('qrStickerAvery6289Background') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('background') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-cluster">
+                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                        @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->background_path))
+                            <button
+                                type="button"
+                                class="btn btn--ghost btn--sm"
+                                wire:click="removeQrStickerAvery6289Background"
+                                wire:confirm="{{ __('settings.qr_stickers.avery_62x89_r.background_remove_confirm') }}"
+                            >
+                                {{ __('settings.qr_stickers.avery_62x89_r.background_remove') }}
+                            </button>
+                        @endif
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack-tight">

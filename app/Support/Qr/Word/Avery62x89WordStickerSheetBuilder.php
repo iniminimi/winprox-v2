@@ -8,6 +8,7 @@ use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Qr\BrandedQrStickerCompositor;
 use App\Support\Qr\BrandedQrStickerHeaderText;
+use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\BrandedQrStickerTenantDetails;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrStickerBackground;
@@ -161,19 +162,28 @@ final class Avery62x89WordStickerSheetBuilder
         $pngPath = $path.'.png';
         @unlink($path);
 
-        $tenantDetailLines = BrandedQrStickerTenantDetails::lines($tenant);
-        $tenantCornerLogoPath = QrCenterLogo::tenantLogoAbsolutePath($tenant);
+        $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSettings);
+        $resolvedCenterLogoPath = $layout->includeCenterLogo()
+            ? ($layout->resolveCenterLogoPath($tenant) ?? $centerLogoPath)
+            : null;
+        $tenantDetailLines = $layout->showTenantAddress()
+            ? BrandedQrStickerTenantDetails::lines($tenant)
+            : [];
+        $tenantCornerLogoPath = $layout->showCornerTenantLogo()
+            ? QrCenterLogo::tenantLogoAbsolutePath($tenant)
+            : null;
 
         $this->compositor->writeFile(
             $backgroundPath,
             $entry->reportUrl,
             $pngPath,
-            $centerLogoPath,
+            $resolvedCenterLogoPath,
             BrandedQrStickerHeaderText::resolve($sheetSettings, $entry->headerFallback),
             BrandedQrStickerHeaderText::unitCaption($sheetSettings, $entry->headerFallback),
             self::footerLabel($entry),
             $tenantDetailLines !== [] ? $tenantDetailLines : null,
             $tenantCornerLogoPath,
+            $layout->includeCenterLogo(),
         );
         $tempFiles[] = $pngPath;
 

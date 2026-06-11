@@ -48,9 +48,23 @@
             "current_text_label": "Texte actuel",
             "current_text_empty": "— (aucun texte enregistré)",
             "header_placeholder": "ex. Signaler un problème ? Scannez ici",
-            "header_help": "Maximum 95 caractères (~3 lignes sur l’étiquette). Laisser vide = localisation · unité (comme sur le portail). Le numéro Winprox est toujours sous le code QR.",
+            "header_help": "Maximum 120 caractères (~3 lignes sur l’étiquette). Laisser vide = localisation · unité (comme sur le portail). Le numéro Winprox est toujours sous le code QR.",
+            "layout_title": "Logos et adresse sur l’étiquette",
+            "layout_hint": "Choisissez où le logo de l’organisation et l’adresse apparaissent. Sans logo d’organisation, les logos de coin et QR ne sont pas affichés.",
+            "center_logo_label": "Logo au centre du code QR",
+            "center_logo_tenant": "Logo de l’organisation (ou WinProx par défaut)",
+            "center_logo_winprox": "Logo WinProx",
+            "center_logo_none": "Aucun logo dans le code QR",
+            "corner_logo_label": "Logo de l’organisation en bas à droite",
+            "corner_logo_help": "Visible uniquement si un logo d’organisation a été téléversé.",
+            "tenant_address_label": "Coordonnées en bas à gauche",
+            "tenant_address_help": "Affiche le nom, la rue et le code postal/ville des données d’organisation.",
             "background_label": "Image de fond",
-            "background_coming_soon": "Le téléversement d’un fond personnalisé suivra dans une prochaine mise à jour. D’ici là, le design WinProx par défaut est utilisé."
+            "background_hint": "PNG ou JPG, max. 4 Mo. Redimensionnée automatiquement au format 62 × 89 mm. Sans téléversement, le design WinProx par défaut est utilisé.",
+            "background_preview_alt": "Aperçu du fond d’étiquette",
+            "background_default_label": "Fond WinProx par défaut actif.",
+            "background_remove": "Supprimer le fond personnalisé",
+            "background_remove_confirm": "Supprimer le fond personnalisé et revenir au design par défaut ?"
         }
     },
     "privacy": {

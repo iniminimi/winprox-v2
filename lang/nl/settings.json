@@ -48,9 +48,23 @@
             "current_text_label": "Huidige tekst",
             "current_text_empty": "— (geen tekst opgeslagen)",
             "header_placeholder": "bv. Melding? Scan hier",
-            "header_help": "Maximaal 95 tekens (~3 regels op de sticker). Leeg laten = locatie · unit (zoals op het meldportaal). Het Winprox-stickernummer staat altijd onder de QR-code.",
+            "header_help": "Maximaal 120 tekens (~3 regels op de sticker). Leeg laten = locatie · unit (zoals op het meldportaal). Het Winprox-stickernummer staat altijd onder de QR-code.",
+            "layout_title": "Logo’s en adres op de sticker",
+            "layout_hint": "Bepaal waar het organisatielogo en de adresgegevens verschijnen. Zonder organisatielogo worden hoek- en QR-logo’s niet getoond.",
+            "center_logo_label": "Logo in het midden van de QR-code",
+            "center_logo_tenant": "Organisatielogo (of WinProx als fallback)",
+            "center_logo_winprox": "WinProx-logo",
+            "center_logo_none": "Geen logo in de QR-code",
+            "corner_logo_label": "Organisatielogo rechtsonder op de sticker",
+            "corner_logo_help": "Alleen zichtbaar als er een organisatielogo is geüpload.",
+            "tenant_address_label": "Adresgegevens linksonder op de sticker",
+            "tenant_address_help": "Toont bedrijfsnaam, straat en postcode/stad uit de organisatiegegevens.",
             "background_label": "Achtergrondafbeelding",
-            "background_coming_soon": "Eigen achtergrond uploaden volgt in een latere update. Tot dan wordt het standaard WinProx-design gebruikt."
+            "background_hint": "PNG of JPG, max. 4 MB. Wordt automatisch op het stickerveld geschaald (62 × 89 mm). Zonder upload gebruiken we het standaard WinProx-design.",
+            "background_preview_alt": "Voorbeeld van de stickerachtergrond",
+            "background_default_label": "Standaard WinProx-achtergrond actief.",
+            "background_remove": "Eigen achtergrond verwijderen",
+            "background_remove_confirm": "Eigen achtergrond verwijderen en terug naar het standaarddesign?"
         }
     },
     "privacy": {

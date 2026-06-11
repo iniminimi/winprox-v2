@@ -45,4 +45,18 @@ class TenantQrStickerSheetSetting extends Model
 
         return Storage::disk('public')->path($path);
     }
+
+    public function backgroundPublicUrl(): ?string
+    {
+        $path = $this->background_path;
+        if (! is_string($path) || $path === '') {
+            return null;
+        }
+
+        if (! Storage::disk('public')->exists($path)) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($path);
+    }
 }

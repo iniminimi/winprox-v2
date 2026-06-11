@@ -7,10 +7,14 @@ use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Qr\BrandedQrStickerHeaderText;
+use App\Support\TenantQrStickerBackgroundStorage;
 
 class UpdateTenantQrStickerSheetSettingsAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private TenantQrStickerBackgroundStorage $backgroundStorage,
+    ) {}
 
     public function handle(
         Tenant $tenant,
@@ -24,6 +28,9 @@ class UpdateTenantQrStickerSheetSettingsAction
         $data = new UpdateTenantQrStickerSheetSettingsData(
             template: $data->template,
             headerText: $headerText === '' ? null : $headerText,
+            centerLogoMode: $data->centerLogoMode,
+            cornerTenantLogo: $data->cornerTenantLogo,
+            showTenantAddress: $data->showTenantAddress,
         );
 
         $existing = TenantQrStickerSheetSetting::query()
@@ -31,8 +38,12 @@ class UpdateTenantQrStickerSheetSettingsAction
             ->where('template', $data->template->value)
             ->first();
 
-        if ($data->isEmpty()) {
+        $backgroundPath = $existing?->background_path;
+
+        if ($data->isEmpty($backgroundPath)) {
             if ($existing !== null) {
+                $this->backgroundStorage->delete($existing->background_path);
+                $settingId = (int) $existing->id;
                 $existing->delete();
 
                 $this->audit->record(
@@ -40,7 +51,7 @@ class UpdateTenantQrStickerSheetSettingsAction
                     tenantId: (int) $tenant->id,
                     action: 'tenant.qr_sticker_sheet_settings_cleared',
                     modelType: TenantQrStickerSheetSetting::class,
-                    modelId: (int) $existing->id,
+                    modelId: $settingId,
                     payload: [
                         'template' => $data->template->value,
                     ],
@@ -50,6 +61,10 @@ class UpdateTenantQrStickerSheetSettingsAction
             return $tenant->fresh()->load('qrStickerSheetSettings');
         }
 
+        $layoutConfig = $data->layoutConfig()->usesDefaults()
+            ? null
+            : $data->layoutConfig()->toArray();
+
         $setting = TenantQrStickerSheetSetting::query()->updateOrCreate(
             [
                 'tenant_id' => $tenant->id,
@@ -57,6 +72,7 @@ class UpdateTenantQrStickerSheetSettingsAction
             ],
             [
                 'header_text' => $data->headerText,
+                'layout_config' => $layoutConfig,
             ],
         );
 
@@ -73,8 +89,6 @@ class UpdateTenantQrStickerSheetSettingsAction
                 'layout_config' => $setting->layout_config,
             ],
         );
-
-        $setting->refresh();
 
         return $tenant->fresh()->load('qrStickerSheetSettings');
     }

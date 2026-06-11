@@ -22,6 +22,7 @@ final class BrandedQrStickerCompositor
         ?string $footerText = null,
         ?array $tenantDetailLines = null,
         ?string $tenantCornerLogoPath = null,
+        bool $includeCenterLogo = true,
     ): void {
         $bytes = $this->compositeBytes(
             $backgroundPath,
@@ -32,6 +33,7 @@ final class BrandedQrStickerCompositor
             $footerText,
             $tenantDetailLines,
             $tenantCornerLogoPath,
+            $includeCenterLogo,
         );
 
         if (file_put_contents($absoluteOutputPath, $bytes) === false) {
@@ -48,17 +50,13 @@ final class BrandedQrStickerCompositor
         ?string $footerText = null,
         ?array $tenantDetailLines = null,
         ?string $tenantCornerLogoPath = null,
+        bool $includeCenterLogo = true,
     ): string {
         if (! is_file($backgroundPath)) {
             throw new RuntimeException('Branded sticker background file is missing.');
         }
 
-        $qrBytes = QrCodePngWriter::writeStringWithCenterLogo(
-            $reportUrl,
-            Avery62x89StickerArtworkLayout::qrRenderPixelSize(),
-            QrLogoLayout::STICKER_BOX_RATIO,
-            $centerLogoPath,
-        );
+        $qrBytes = $this->generateQrBytes($reportUrl, $includeCenterLogo, $centerLogoPath);
 
         if (extension_loaded('imagick')) {
             return $this->compositeWithImagick(
@@ -85,6 +83,22 @@ final class BrandedQrStickerCompositor
         }
 
         throw new RuntimeException('Branded QR sticker export requires the PHP gd or imagick extension.');
+    }
+
+    private function generateQrBytes(string $reportUrl, bool $includeCenterLogo, ?string $centerLogoPath): string
+    {
+        $pixelSize = Avery62x89StickerArtworkLayout::qrRenderPixelSize();
+
+        if (! $includeCenterLogo) {
+            return QrCodePngWriter::writeString($reportUrl, $pixelSize);
+        }
+
+        return QrCodePngWriter::writeStringWithCenterLogo(
+            $reportUrl,
+            $pixelSize,
+            QrLogoLayout::STICKER_BOX_RATIO,
+            $centerLogoPath,
+        );
     }
 
     private function compositeWithGd(

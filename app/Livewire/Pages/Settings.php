@@ -6,11 +6,16 @@ use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
+use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
+use App\Actions\Team\UploadTenantQrStickerSheetBackgroundAction;
 use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
-use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
-use App\Support\Qr\QrStickerSheetTemplate;
+use App\Enums\QrStickerCenterLogoMode;
 use App\Enums\UiTheme;
+use App\Http\Requests\Team\UploadTenantQrStickerSheetBackgroundRequest;
+use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
+use App\Support\Qr\BrandedQrStickerLayoutConfig;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
@@ -58,6 +63,15 @@ class Settings extends Component
     public $portalBackground = null;
 
     public string $qrStickerAvery6289HeaderText = '';
+
+    public string $qrStickerAvery6289CenterLogo = 'tenant';
+
+    public bool $qrStickerAvery6289CornerTenantLogo = true;
+
+    public bool $qrStickerAvery6289ShowTenantAddress = true;
+
+    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    public $qrStickerAvery6289Background = null;
 
     public string $uiTheme = '';
 
@@ -224,7 +238,12 @@ class Settings extends Component
         $template = QrStickerSheetTemplate::Avery62x89R;
 
         Validator::make(
-            ['headerText' => $this->qrStickerAvery6289HeaderText],
+            [
+                'headerText' => $this->qrStickerAvery6289HeaderText,
+                'centerLogo' => $this->qrStickerAvery6289CenterLogo,
+                'cornerTenantLogo' => $this->qrStickerAvery6289CornerTenantLogo,
+                'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
+            ],
             UpdateTenantQrStickerSheetSettingsRequest::rulesFor($template),
             UpdateTenantQrStickerSheetSettingsRequest::messagesFor($template),
         )->validate();
@@ -233,6 +252,9 @@ class Settings extends Component
             $tenant,
             UpdateTenantQrStickerSheetSettingsData::fromValidated($template, [
                 'headerText' => $this->qrStickerAvery6289HeaderText,
+                'centerLogo' => $this->qrStickerAvery6289CenterLogo,
+                'cornerTenantLogo' => $this->qrStickerAvery6289CornerTenantLogo,
+                'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
             ]),
             (int) auth()->id(),
         );
@@ -244,6 +266,77 @@ class Settings extends Component
         }
 
         $this->dispatch('saved');
+    }
+
+    public function saveQrStickerAvery6289Background(UploadTenantQrStickerSheetBackgroundAction $uploadBackground): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        Validator::make(
+            ['background' => $this->qrStickerAvery6289Background],
+            UploadTenantQrStickerSheetBackgroundRequest::rules(),
+        )->validate();
+
+        if (! $this->qrStickerAvery6289Background instanceof UploadedFile) {
+            return;
+        }
+
+        $updated = $uploadBackground->handle(
+            $tenant,
+            QrStickerSheetTemplate::Avery62x89R,
+            $this->qrStickerAvery6289Background,
+            (int) auth()->id(),
+        );
+        $this->reset('qrStickerAvery6289Background');
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
+    public function removeQrStickerAvery6289Background(RemoveTenantQrStickerSheetBackgroundAction $removeBackground): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $updated = $removeBackground->handle(
+            $tenant,
+            QrStickerSheetTemplate::Avery62x89R,
+            (int) auth()->id(),
+        );
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
+    public function qrStickerAvery6289BackgroundPreviewUrl(): ?string
+    {
+        if ($this->qrStickerAvery6289Background !== null) {
+            return $this->qrStickerAvery6289Background->temporaryUrl();
+        }
+
+        return $this->resolveTenant()
+            ?->fresh()
+            ?->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R)
+            ?->backgroundPublicUrl();
     }
 
     public function saveOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
@@ -318,6 +411,8 @@ class Settings extends Component
             'organisationTenant' => $tenant instanceof Tenant
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
+            'qrStickerCenterLogoChoices' => QrStickerCenterLogoMode::choices(),
+            'qrStickerAvery6289BackgroundUrl' => $this->qrStickerAvery6289BackgroundPreviewUrl(),
         ]);
     }
 
@@ -336,9 +431,14 @@ class Settings extends Component
         $this->customThemeActive = (bool) $tenant->custom_theme_active;
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
-        $this->qrStickerAvery6289HeaderText = (string) (
-            $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R)?->header_text ?? ''
-        );
+        $tenant->loadMissing('qrStickerSheetSettings');
+        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+        $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSetting);
+
+        $this->qrStickerAvery6289HeaderText = (string) ($sheetSetting?->header_text ?? '');
+        $this->qrStickerAvery6289CenterLogo = $layout->centerLogoMode()->value;
+        $this->qrStickerAvery6289CornerTenantLogo = $layout->showCornerTenantLogo();
+        $this->qrStickerAvery6289ShowTenantAddress = $layout->showTenantAddress();
     }
 
     private function resolveTenant(): ?Tenant

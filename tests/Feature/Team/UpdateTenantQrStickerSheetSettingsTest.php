@@ -7,6 +7,7 @@ use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Models\AuditLog;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
+use App\Enums\QrStickerCenterLogoMode;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 
@@ -37,6 +38,35 @@ it('stores Avery 62x89 sticker header text in tenant_qr_sticker_sheet_settings',
         ->exists())->toBeTrue();
 });
 
+it('stores Avery 62x89 sticker layout config', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    Tenancy::actAs($tenant->id);
+
+    app(UpdateTenantQrStickerSheetSettingsAction::class)->handle(
+        $tenant,
+        UpdateTenantQrStickerSheetSettingsData::fromValidated(
+            QrStickerSheetTemplate::Avery62x89R,
+            [
+                'headerText' => 'Scan hier',
+                'centerLogo' => QrStickerCenterLogoMode::Winprox->value,
+                'cornerTenantLogo' => false,
+                'showTenantAddress' => false,
+            ],
+        ),
+        null,
+    );
+
+    $setting = TenantQrStickerSheetSetting::query()
+        ->where('tenant_id', $tenant->id)
+        ->first();
+
+    expect($setting?->layout_config)->toBe([
+        'center_logo' => 'winprox',
+        'corner_tenant_logo' => false,
+        'tenant_address' => false,
+    ]);
+});
+
 it('clears Avery 62x89 sticker header text when saved empty', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     Tenancy::actAs($tenant->id);
@@ -51,7 +81,12 @@ it('clears Avery 62x89 sticker header text when saved empty', function () {
         $tenant,
         UpdateTenantQrStickerSheetSettingsData::fromValidated(
             QrStickerSheetTemplate::Avery62x89R,
-            ['headerText' => ''],
+            [
+                'headerText' => '',
+                'centerLogo' => QrStickerCenterLogoMode::Tenant->value,
+                'cornerTenantLogo' => true,
+                'showTenantAddress' => true,
+            ],
         ),
         null,
     );

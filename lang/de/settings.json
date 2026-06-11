@@ -48,9 +48,23 @@
             "current_text_label": "Aktueller Text",
             "current_text_empty": "— (kein Text gespeichert)",
             "header_placeholder": "z. B. Meldung? Hier scannen",
-            "header_help": "Maximal 95 Zeichen (~3 Zeilen auf dem Etikett). Leer lassen = Standort · Unit (wie im Meldeportal). Die Winprox-Etikettennummer steht immer unter dem QR-Code.",
+            "header_help": "Maximal 120 Zeichen (~3 Zeilen auf dem Etikett). Leer lassen = Standort · Unit (wie im Meldeportal). Die Winprox-Etikettennummer steht immer unter dem QR-Code.",
+            "layout_title": "Logos und Adresse auf dem Etikett",
+            "layout_hint": "Legen Sie fest, wo Organisationslogo und Adresse erscheinen. Ohne Organisationslogo werden Eck- und QR-Logos nicht angezeigt.",
+            "center_logo_label": "Logo in der Mitte des QR-Codes",
+            "center_logo_tenant": "Organisationslogo (oder WinProx als Fallback)",
+            "center_logo_winprox": "WinProx-Logo",
+            "center_logo_none": "Kein Logo im QR-Code",
+            "corner_logo_label": "Organisationslogo unten rechts",
+            "corner_logo_help": "Nur sichtbar, wenn ein Organisationslogo hochgeladen wurde.",
+            "tenant_address_label": "Adressdaten unten links",
+            "tenant_address_help": "Zeigt Firmenname, Straße und PLZ/Ort aus den Organisationsdaten.",
             "background_label": "Hintergrundbild",
-            "background_coming_soon": "Eigenes Hintergrundbild folgt in einem späteren Update. Bis dahin wird das Standard-WinProx-Design verwendet."
+            "background_hint": "PNG oder JPG, max. 4 MB. Wird automatisch auf 62 × 89 mm skaliert. Ohne Upload gilt das Standard-WinProx-Design.",
+            "background_preview_alt": "Vorschau des Etikettenhintergrunds",
+            "background_default_label": "Standard-WinProx-Hintergrund aktiv.",
+            "background_remove": "Eigenen Hintergrund entfernen",
+            "background_remove_confirm": "Eigenen Hintergrund entfernen und zum Standarddesign zurückkehren?"
         }
     },
     "privacy": {
