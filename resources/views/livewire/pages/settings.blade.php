@@ -158,7 +158,7 @@
                             </div>
                         @endif
 
-                        <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
+                        <div class="wp-cluster wp-settings-theme-save">
                             <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
                         </div>
                     </div>
