@@ -28,6 +28,7 @@
         "reporter_anon": "Anonyme",
         "no_location": "Aucun site"
     },
+    "welcome": "Bienvenue sur Winprox.app",
     "onboarding": {
         "title": "Commencez par créer des catégories",
         "text": "Allez dans Sites et Unités et ajoutez des catégories pour regrouper les unités (p. ex. perceuses, sanitaires, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités et dépendent du secteur de l'entreprise. En liant des équipes d'ouvriers à des catégories spécifiques, WinProx garantit que les tâches sont réalisées par l'équipe correcte. Ajoutez des sites (emplacements, bâtiments, étages) et créez des unités par site — ce sont les actifs, machines ou pièces où les signalements et tâches sont enregistrés. Les sites et unités peuvent aussi être importés en masse (fichier CSV).",

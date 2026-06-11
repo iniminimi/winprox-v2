@@ -10,6 +10,10 @@
             </div>
         </div>
 
+        <div class="wp-stack-loose">
+            <h1 class="wp-text-heading">{{ __('dashboard.welcome') }}</h1>
+        </div>
+
         <div class="wp-card wp-card-pad">
             <div class="wp-stack">
                 <h2 class="wp-section-title">{{ __('manual.getting_started.label') }}</h2>
