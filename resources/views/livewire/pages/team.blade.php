@@ -51,7 +51,7 @@
     @endif
 
     {{-- Teams ---------------------------------------------------------------}}
-    <div class="wp-card wp-card-pad wp-stack-tight {{ $expandedTeamIds ? 'wp-team-list--has-expanded' : '' }}">
+    <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
@@ -72,7 +72,7 @@
                 @php
                     $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
                 @endphp
-                <div class="wp-stack-tight" wire:key="team-{{ $team->id }}">
+                <div class="wp-stack-tight {{ $isTeamExpanded ? 'wp-team-row--expanded' : '' }}" wire:key="team-{{ $team->id }}">
                     <div class="wp-data-row">
                         <div class="wp-data-row-main">
                             <button type="button"

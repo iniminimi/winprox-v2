@@ -1103,10 +1103,12 @@ a.wp-kpi:hover {
 
 
 /* ---------------------------------------------------------------------------
- | Teams lijst — licht groene achtergrond wanneer een team is uitgevouwen.
+ | Teams rij — licht groene achtergrond wanneer een team is uitgevouwen.
  * ------------------------------------------------------------------------- */
-.wp-team-list--has-expanded {
+.wp-team-row--expanded {
     background-color: var(--wp-accent-soft);
+    border-radius: var(--wp-radius);
+    padding: 0.5rem;
 }
 
 /* ---------------------------------------------------------------------------
