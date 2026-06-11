@@ -996,7 +996,7 @@
     margin-bottom: 0.25rem;
 }
 
-/* Zelfde pulse als PRIO1 (.wp-badge-critical) — trekt aandacht bij open taken. */
+/* Zelfde pulse als PRIO1 (.wp-badge-critical) — alleen ingeklapt (Alpine verwijdert class bij uitklappen). */
 .wp-portal-open-tasks-card--attention {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     border-color: #dc2626;

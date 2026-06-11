@@ -328,7 +328,7 @@ it('hides open tasks for unapproved issues from the worker portal', function () 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertSee(__('portal.worker.open_tasks_with_count', ['count' => 0]))
         ->assertSee(__('portal.worker.no_open_tasks'))
-        ->assertDontSee('wp-portal-open-tasks-card--attention', false)
+        ->assertSee('hasOpenTasks: false', false)
         ->assertDontSee('Lek in de gang.')
         ->assertDontSee('Taak voor niet-goedgekeurde melding.');
 });
@@ -361,7 +361,8 @@ it('pulses the open tasks card when the worker has open tasks', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertSee(__('portal.worker.open_tasks_with_count', ['count' => 3]), false)
-        ->assertSee('wp-portal-open-tasks-card--attention', false);
+        ->assertSee('hasOpenTasks: true', false)
+        ->assertSee("'wp-portal-open-tasks-card--attention': hasOpenTasks && !open", false);
 });
 
 it('hides worker UI from anonymous citizen visitors', function () {

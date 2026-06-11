@@ -146,12 +146,10 @@
                     @endif
 
                     <div
-                        @class([
-                            'wp-card wp-card-pad wp-stack',
-                            'wp-portal-open-tasks-card--attention' => $allOpenUnitTasks->isNotEmpty(),
-                        ])
+                        class="wp-card wp-card-pad wp-stack"
                         wire:key="portal-open-tasks-card"
-                        x-data="{ open: false }"
+                        x-data="{ open: false, hasOpenTasks: @js($allOpenUnitTasks->isNotEmpty()) }"
+                        :class="{ 'wp-portal-open-tasks-card--attention': hasOpenTasks && !open }"
                     >
                         <button
                             type="button"
@@ -302,12 +300,10 @@
 
             @if ($canAct)
                 <div
-                    @class([
-                        'wp-card wp-card-pad wp-stack',
-                        'wp-portal-open-tasks-card--attention' => $openTasksForIssue->isNotEmpty(),
-                    ])
+                    class="wp-card wp-card-pad wp-stack"
                     wire:key="issue-open-tasks-card"
-                    x-data="{ open: false }"
+                    x-data="{ open: false, hasOpenTasks: @js($openTasksForIssue->isNotEmpty()) }"
+                    :class="{ 'wp-portal-open-tasks-card--attention': hasOpenTasks && !open }"
                 >
                     <button
                         type="button"
