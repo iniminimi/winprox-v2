@@ -73,7 +73,7 @@
                     $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
                 @endphp
                 <div class="wp-stack-tight {{ $isTeamExpanded ? 'wp-team-row--expanded' : '' }}" wire:key="team-{{ $team->id }}">
-                    <div class="wp-data-row">
+                    <div class="wp-data-row {{ $isTeamExpanded ? 'wp-team-header--expanded' : '' }}">
                         <div class="wp-data-row-main">
                             <button type="button"
                                     class="wp-team-row-toggle"

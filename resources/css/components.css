@@ -1111,6 +1111,11 @@ a.wp-kpi:hover {
     padding: 0.5rem;
 }
 
+.wp-team-header--expanded {
+    background-color: var(--wp-surface-2);
+    border-radius: var(--wp-radius);
+}
+
 /* ---------------------------------------------------------------------------
  | Stub-pagina's + chips (beheers-stubs, locaties/teams).
  * ------------------------------------------------------------------------- */
