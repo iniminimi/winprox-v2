@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Support\Qr\QrCenterLogo;
+use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -24,7 +25,6 @@ class Tenant extends Model
         'country_code',
         'logo_path',
         'portal_background_path',
-        'qr_sticker_avery_62x89_header_text',
         'custom_theme_active',
         'custom_theme_bg',
         'custom_theme_btn',
@@ -55,6 +55,23 @@ class Tenant extends Model
     public function locations(): HasMany
     {
         return $this->hasMany(Location::class);
+    }
+
+    public function qrStickerSheetSettings(): HasMany
+    {
+        return $this->hasMany(TenantQrStickerSheetSetting::class);
+    }
+
+    public function qrStickerSheetSetting(QrStickerSheetTemplate $template): ?TenantQrStickerSheetSetting
+    {
+        if ($this->relationLoaded('qrStickerSheetSettings')) {
+            return $this->qrStickerSheetSettings
+                ->firstWhere('template', $template->value);
+        }
+
+        return $this->qrStickerSheetSettings()
+            ->where('template', $template->value)
+            ->first();
     }
 
     public function categories(): HasMany

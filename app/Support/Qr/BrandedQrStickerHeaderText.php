@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
-use App\Models\Tenant;
+use App\Models\TenantQrStickerSheetSetting;
 
 final class BrandedQrStickerHeaderText
 {
-    public static function resolve(?Tenant $tenant, ?string $headerFallback): ?string
+    public static function resolve(?TenantQrStickerSheetSetting $sheetSettings, ?string $headerFallback): ?string
     {
-        $tenantText = self::tenantHeaderText($tenant);
+        $tenantText = self::tenantHeaderText($sheetSettings);
         if ($tenantText !== '') {
             return self::fitForSticker($tenantText);
         }
@@ -21,9 +21,9 @@ final class BrandedQrStickerHeaderText
     }
 
     /** Portal unit line below QR when tenant header text is configured. */
-    public static function unitCaption(?Tenant $tenant, ?string $headerFallback): ?string
+    public static function unitCaption(?TenantQrStickerSheetSetting $sheetSettings, ?string $headerFallback): ?string
     {
-        if (self::tenantHeaderText($tenant) === '') {
+        if (self::tenantHeaderText($sheetSettings) === '') {
             return null;
         }
 
@@ -39,9 +39,9 @@ final class BrandedQrStickerHeaderText
         return $line;
     }
 
-    private static function tenantHeaderText(?Tenant $tenant): string
+    private static function tenantHeaderText(?TenantQrStickerSheetSetting $sheetSettings): string
     {
-        return self::normalize((string) ($tenant?->qr_sticker_avery_62x89_header_text ?? ''));
+        return self::normalize((string) ($sheetSettings?->header_text ?? ''));
     }
 
     private static function portalCaptionLine(?string $headerFallback): string

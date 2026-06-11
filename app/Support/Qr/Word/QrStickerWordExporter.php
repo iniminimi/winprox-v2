@@ -39,11 +39,11 @@ final class QrStickerWordExporter
             );
         }
 
-        $location->loadMissing('tenant');
+        $location->loadMissing(['tenant.qrStickerSheetSettings']);
         $entries = LocationQrPackStickerEntries::forLocation($location);
         $centerLogoPath = QrCenterLogo::absolutePath($location->tenant);
 
-        return $this->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath);
+        return $this->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath, $location->tenant);
     }
 
     /**
@@ -66,10 +66,13 @@ final class QrStickerWordExporter
             $centerLogoPath = QrCenterLogo::absolutePath($tenant);
         }
 
+        $tenant?->loadMissing('qrStickerSheetSettings');
+        $sheetSettings = $tenant?->qrStickerSheetSetting($template);
+
         return match ($template) {
             QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $centerLogoPath),
             QrStickerSheetTemplate::Herma7050 => $this->herma7050Builder->build($entries, $centerLogoPath),
-            QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant),
+            QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant, $sheetSettings),
         };
     }
 }

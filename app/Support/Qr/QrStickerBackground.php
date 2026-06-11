@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
-use App\Models\Tenant;
+use App\Models\TenantQrStickerSheetSetting;
 use RuntimeException;
 
 /**
@@ -15,8 +15,15 @@ final class QrStickerBackground
 {
     public const DEFAULT_AVERY_62X89_RELATIVE = 'images/qr/svg/qr_background.png';
 
-    public static function absolutePathForTemplate(QrStickerSheetTemplate $template, ?Tenant $tenant = null): string
-    {
+    public static function absolutePathForTemplate(
+        QrStickerSheetTemplate $template,
+        ?TenantQrStickerSheetSetting $sheetSettings = null,
+    ): string {
+        $tenantPath = $sheetSettings?->backgroundAbsolutePath();
+        if ($tenantPath !== null) {
+            return $tenantPath;
+        }
+
         return match ($template) {
             QrStickerSheetTemplate::Avery62x89R => self::defaultAvery62x89AbsolutePath(),
             default => throw new RuntimeException('Sticker background is not configured for template '.$template->value.'.'),

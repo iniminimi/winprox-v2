@@ -6,10 +6,12 @@ use App\Actions\QrCodes\EnsureUnitStickerQrCodeAction;
 use App\Models\Location;
 use App\Models\QrCode;
 use App\Models\Tenant;
+use App\Models\TenantQrStickerSheetSetting;
 use App\Models\Unit;
 use App\Models\User;
 use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCodePngWriter;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 
 afterEach(fn () => Tenancy::forget());
@@ -34,7 +36,12 @@ it('static qr-pack stickers include winprox sticker number in branded footer', f
 
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
-        'qr_sticker_avery_62x89_header_text' => 'Scan deze QR-code',
+    ]);
+    Tenancy::actAs($tenant->id);
+    TenantQrStickerSheetSetting::factory()->create([
+        'tenant_id' => $tenant->id,
+        'template' => QrStickerSheetTemplate::Avery62x89R->value,
+        'header_text' => 'Scan deze QR-code',
     ]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);

@@ -236,8 +236,8 @@
                     @error('qrStickerAvery6289HeaderText') <p class="wp-error">{{ $message }}</p> @enderror
                     <p class="wp-muted wp-text-sm">
                         <span class="wp-text-body">{{ __('settings.qr_stickers.avery_62x89_r.current_text_label') }}:</span>
-                        @if (filled($organisationTenant->qr_sticker_avery_62x89_header_text))
-                            {{ $organisationTenant->qr_sticker_avery_62x89_header_text }}
+                        @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text))
+                            {{ $organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)->header_text }}
                         @else
                             {{ __('settings.qr_stickers.avery_62x89_r.current_text_empty') }}
                         @endif

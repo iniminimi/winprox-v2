@@ -68,7 +68,9 @@ final class LocationQrPackDownloadController
         $template = QrStickerSheetTemplate::tryFrom((string) $request->query('template', ''))
             ?? QrStickerSheetTemplate::Avery55x55S;
 
-        $tenant = Tenant::query()->findOrFail($location->tenant_id);
+        $tenant = Tenant::query()
+            ->with('qrStickerSheetSettings')
+            ->findOrFail($location->tenant_id);
         $centerLogoPath = \App\Support\Qr\QrCenterLogo::absolutePath($tenant);
 
         try {

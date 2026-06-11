@@ -6,13 +6,14 @@ use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
-use App\Actions\Team\UpdateTenantQrStickerAvery6289SettingsAction;
+use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
+use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
+use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Enums\UiTheme;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
-use App\Support\Qr\Avery62x89StickerArtworkLayout;
-use App\Support\Qr\BrandedQrStickerHeaderText;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
@@ -211,7 +212,7 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveQrStickerAvery6289Settings(UpdateTenantQrStickerAvery6289SettingsAction $updateSettings): void
+    public function saveQrStickerAvery6289Settings(UpdateTenantQrStickerSheetSettingsAction $updateSettings): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -220,19 +221,21 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
-        $this->qrStickerAvery6289HeaderText = BrandedQrStickerHeaderText::fitForSticker($this->qrStickerAvery6289HeaderText);
+        $template = QrStickerSheetTemplate::Avery62x89R;
 
         Validator::make(
-            ['qrStickerAvery6289HeaderText' => $this->qrStickerAvery6289HeaderText],
-            ['qrStickerAvery6289HeaderText' => ['nullable', 'string', 'max:'.Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS]],
-            [
-                'qrStickerAvery6289HeaderText.max' => __('settings.errors.qr_sticker_header_max', [
-                    'max' => Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS,
-                ]),
-            ],
+            ['headerText' => $this->qrStickerAvery6289HeaderText],
+            UpdateTenantQrStickerSheetSettingsRequest::rulesFor($template),
+            UpdateTenantQrStickerSheetSettingsRequest::messagesFor($template),
         )->validate();
 
-        $updated = $updateSettings->handle($tenant, $this->qrStickerAvery6289HeaderText, (int) auth()->id());
+        $updated = $updateSettings->handle(
+            $tenant,
+            UpdateTenantQrStickerSheetSettingsData::fromValidated($template, [
+                'headerText' => $this->qrStickerAvery6289HeaderText,
+            ]),
+            (int) auth()->id(),
+        );
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
@@ -312,7 +315,9 @@ class Settings extends Component
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
             'portalBackgroundUrl' => $this->portalBackgroundPreviewUrl(),
-            'organisationTenant' => $tenant instanceof Tenant ? $tenant->fresh() : null,
+            'organisationTenant' => $tenant instanceof Tenant
+                ? $tenant->fresh()->load('qrStickerSheetSettings')
+                : null,
         ]);
     }
 
@@ -331,7 +336,9 @@ class Settings extends Component
         $this->customThemeActive = (bool) $tenant->custom_theme_active;
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
-        $this->qrStickerAvery6289HeaderText = (string) ($tenant->qr_sticker_avery_62x89_header_text ?? '');
+        $this->qrStickerAvery6289HeaderText = (string) (
+            $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R)?->header_text ?? ''
+        );
     }
 
     private function resolveTenant(): ?Tenant

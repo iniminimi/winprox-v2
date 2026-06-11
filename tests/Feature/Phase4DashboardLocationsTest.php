@@ -349,7 +349,12 @@ it('qr-pack avery 62x89 branded stickers embed tenant header text in composite i
 
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
-        'qr_sticker_avery_62x89_header_text' => 'Meld hier',
+    ]);
+    \App\Support\Tenancy::actAs($tenant->id);
+    \App\Models\TenantQrStickerSheetSetting::factory()->create([
+        'tenant_id' => $tenant->id,
+        'template' => \App\Support\Qr\QrStickerSheetTemplate::Avery62x89R->value,
+        'header_text' => 'Meld hier',
     ]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create([
@@ -368,7 +373,9 @@ it('qr-pack avery 62x89 branded stickers embed tenant header text in composite i
         'template' => 'avery_62x89_r',
     ]))->streamedContent();
 
-    $tenant->update(['qr_sticker_avery_62x89_header_text' => null]);
+    \App\Models\TenantQrStickerSheetSetting::query()
+        ->where('tenant_id', $tenant->id)
+        ->delete();
     $withoutHeader = $this->actingAs($user)->get(route('locations.qr-pack', [
         'location' => $location,
         'template' => 'avery_62x89_r',
