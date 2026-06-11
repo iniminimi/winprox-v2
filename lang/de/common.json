@@ -36,6 +36,10 @@
         "next": "Nächste",
         "last": "Letzte"
     },
+    "file": {
+        "browse": "Durchsuchen…",
+        "none_selected": "Keine Datei ausgewählt"
+    },
     "button": {
         "save": "Speichern",
         "cancel": "Abbrechen",

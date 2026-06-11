@@ -36,6 +36,10 @@
         "next": "Volgende",
         "last": "Laatste"
     },
+    "file": {
+        "browse": "Bladeren…",
+        "none_selected": "Geen bestand geselecteerd"
+    },
     "button": {
         "save": "Opslaan",
         "cancel": "Annuleren",

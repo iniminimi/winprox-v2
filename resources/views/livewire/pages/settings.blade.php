@@ -74,7 +74,7 @@
                 @if ($organisationLogoUrl)
                     <img
                         src="{{ $organisationLogoUrl }}"
-                        alt=""
+                        alt="{{ __('settings.org.logo_preview_alt') }}"
                         class="wp-org-logo-preview"
                         width="120"
                         height="120"
@@ -82,7 +82,7 @@
                         wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
                     >
                 @endif
-                <input type="file" id="orgLogoInline" class="wp-input" wire:model="orgLogo" accept="image/*">
+                <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
                 @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-cluster">
@@ -97,13 +97,13 @@
                 @if ($portalBackgroundUrl)
                     <img
                         src="{{ $portalBackgroundUrl }}"
-                        alt=""
+                        alt="{{ __('settings.org.portal_background_preview_alt') }}"
                         class="wp-portal-bg-preview"
                         style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
                         wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
                     >
                 @endif
-                <input type="file" id="portalBackgroundInline" class="wp-input" wire:model="portalBackground" accept="image/*">
+                <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
                 @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-cluster">

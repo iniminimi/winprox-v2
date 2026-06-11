@@ -126,6 +126,15 @@ it('weigert dat een medewerker collega-gebruikers beheert', function () {
         ->assertForbidden();
 });
 
+it('toont gelokaliseerde bestandskiezer op instellingen', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee(__('common.file.browse'), false)
+        ->assertSee(__('common.file.none_selected'), false);
+});
+
 it('laat een admin bedrijfsgegevens aanpassen via instellingen', function () {
     [$tenant, $admin] = tenantWithAdmin();
 
