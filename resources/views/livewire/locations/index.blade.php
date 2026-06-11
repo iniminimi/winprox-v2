@@ -2,6 +2,11 @@
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
     @else
+    @php
+        $showLocationsOnboarding = ! $hasAnyLocation;
+        $pulseCategoriesCard = $showLocationsOnboarding && $categories->isEmpty() && ! $showCategoriesSection;
+        $pulseAddLocationButton = $showLocationsOnboarding && $categories->isNotEmpty();
+    @endphp
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
@@ -15,7 +20,7 @@
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
                 {{ __('locations.import') }}
             </button>
-            <button type="button" class="btn btn--primary" wire:click="openCreate">
+            <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
                 {{ __('locations.add') }}
             </button>
         </div>
@@ -27,7 +32,7 @@
 
     <div @class([
         'wp-card wp-card-pad wp-stack',
-        'wp-card--prio-pulse' => $categories->isEmpty() && ! $showCategoriesSection,
+        'wp-card--prio-pulse' => $pulseCategoriesCard,
     ])>
         <div class="wp-page-head wp-page-head--clickable" wire:click="$toggle('showCategoriesSection')">
             <div class="wp-grow">
@@ -107,11 +112,15 @@
                     @endif
                 </div>
             @empty
-                <div class="wp-card wp-card-pad wp-onboarding-card">
-                    <div class="wp-stack">
-                        <p class="wp-text-body"><strong>{{ __('locations.onboarding.title') }}</strong></p>
+                @if ($showLocationsOnboarding)
+                    <div class="wp-card wp-card-pad wp-onboarding-card">
+                        <div class="wp-stack">
+                            <p class="wp-text-body"><strong>{{ $categories->isEmpty() ? __('locations.onboarding.title_categories') : __('locations.onboarding.title_locations') }}</strong></p>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <p class="wp-muted">{{ ($hasInactiveLocations && ! $showInactive) ? __('locations.empty_inactive') : __('locations.empty') }}</p>
+                @endif
             @endforelse
         </div>
     </div>

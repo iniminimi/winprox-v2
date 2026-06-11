@@ -38,7 +38,8 @@
     "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
     "show_inactive": "Auch inaktive Standorte anzeigen",
     "onboarding": {
-        "title": "Beginnen Sie mit der Erstellung von Kategorien"
+        "title_categories": "Beginnen Sie mit der Erstellung von Kategorien",
+        "title_locations": "Beginnen Sie mit der Erstellung von Standorten und Units"
     },
     "unit_count": ":count Units",
     "units_total": ":count gesamt",

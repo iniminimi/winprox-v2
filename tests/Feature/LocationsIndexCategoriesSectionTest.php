@@ -39,6 +39,7 @@ it('pulst het categorieën-kader wanneer er nog geen categorieën zijn en de sec
     Livewire::actingAs($admin)
         ->test(Index::class)
         ->assertSet('showCategoriesSection', false)
+        ->assertSee(__('locations.onboarding.title_categories'), false)
         ->assertSeeHtml('wp-card--prio-pulse');
 });
 
@@ -48,6 +49,30 @@ it('pulst het categorieën-kader niet wanneer er categorieën zijn', function ()
 
     Livewire::actingAs($admin)
         ->test(Index::class)
+        ->assertDontSeeHtml('wp-card--prio-pulse');
+});
+
+it('toont locaties-onboarding en pulst de locatie-knop wanneer er categorieën zijn maar nog geen locaties', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertSee(__('locations.onboarding.title_locations'), false)
+        ->assertDontSee(__('locations.onboarding.title_categories'), false)
+        ->assertSeeHtml('wp-btn--prio-pulse');
+});
+
+it('verbergt onboarding en pulst niet wanneer er minstens één locatie is', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+    \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertDontSee(__('locations.onboarding.title_locations'), false)
+        ->assertDontSee(__('locations.onboarding.title_categories'), false)
+        ->assertDontSeeHtml('wp-btn--prio-pulse')
         ->assertDontSeeHtml('wp-card--prio-pulse');
 });
 

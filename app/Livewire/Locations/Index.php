@@ -392,6 +392,8 @@ class Index extends Component
 
         $hasInactiveLocations = Location::query()->where('is_active', false)->exists();
 
+        $hasAnyLocation = Location::query()->exists();
+
         $categoriesEnabled = Schema::hasTable('categories');
 
         $teams = InternalTeam::query()
@@ -406,6 +408,7 @@ class Index extends Component
 
         return view('livewire.locations.index', [
             'locations' => $locations,
+            'hasAnyLocation' => $hasAnyLocation,
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,

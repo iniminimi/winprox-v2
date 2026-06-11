@@ -38,7 +38,8 @@
     "search_hint": "Click a location to manage it.",
     "show_inactive": "Show inactive locations too",
     "onboarding": {
-        "title": "Start by creating categories"
+        "title_categories": "Start by creating categories",
+        "title_locations": "Start by creating locations and units"
     },
     "unit_count": ":count units",
     "units_total": ":count total",
