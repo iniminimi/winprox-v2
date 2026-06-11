@@ -1,12 +1,21 @@
 <div class="wp-qr-sticker-editor">
     <div class="wp-qr-sticker-editor-controls">
-        <form wire:submit="saveQrStickerAvery6289Settings" class="wp-stack-tight">
-            <details class="wp-disclosure" open>
-                <summary class="wp-disclosure-summary">
-                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" />
-                    {{ __('settings.qr_stickers.avery_62x89_r.section_text') }}
-                </summary>
-                <div class="wp-disclosure-panel wp-stack-tight">
+        <form
+            wire:submit="saveQrStickerAvery6289Settings"
+            class="wp-stack-tight"
+            x-data="{ openText: true, openLogo: false, openBackground: false }"
+        >
+            <div class="wp-disclosure-block">
+                <button
+                    type="button"
+                    class="wp-disclosure-block-toggle wp-team-row-toggle"
+                    @click="openText = !openText"
+                    :aria-expanded="openText"
+                >
+                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': openText }" />
+                    <span class="wp-data-row-title">{{ __('settings.qr_stickers.avery_62x89_r.section_text') }}</span>
+                </button>
+                <div class="wp-disclosure-panel wp-stack-tight" x-show="openText" x-cloak>
                     <div class="wp-field">
                         <label class="wp-label" for="qrStickerAvery6289HeaderText">{{ __('settings.qr_stickers.avery_62x89_r.header_label') }}</label>
                         <input
@@ -22,14 +31,19 @@
                         <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.header_hint') }}</p>
                     </div>
                 </div>
-            </details>
+            </div>
 
-            <details class="wp-disclosure">
-                <summary class="wp-disclosure-summary">
-                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" />
-                    {{ __('settings.qr_stickers.avery_62x89_r.section_logo') }}
-                </summary>
-                <div class="wp-disclosure-panel wp-stack-tight">
+            <div class="wp-disclosure-block">
+                <button
+                    type="button"
+                    class="wp-disclosure-block-toggle wp-team-row-toggle"
+                    @click="openLogo = !openLogo"
+                    :aria-expanded="openLogo"
+                >
+                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': openLogo }" />
+                    <span class="wp-data-row-title">{{ __('settings.qr_stickers.avery_62x89_r.section_logo') }}</span>
+                </button>
+                <div class="wp-disclosure-panel wp-stack-tight" x-show="openLogo" x-cloak>
                     <div class="wp-field">
                         <label class="wp-label" for="qrStickerAvery6289TenantLogo">{{ __('settings.qr_stickers.avery_62x89_r.tenant_logo_label') }}</label>
                         <select id="qrStickerAvery6289TenantLogo" class="wp-input" wire:model.live="qrStickerAvery6289TenantLogo">
@@ -46,14 +60,19 @@
                     </label>
                     @error('showTenantAddress') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-            </details>
+            </div>
 
-            <details class="wp-disclosure">
-                <summary class="wp-disclosure-summary">
-                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" />
-                    {{ __('settings.qr_stickers.avery_62x89_r.section_background') }}
-                </summary>
-                <div class="wp-disclosure-panel wp-stack-tight">
+            <div class="wp-disclosure-block">
+                <button
+                    type="button"
+                    class="wp-disclosure-block-toggle wp-team-row-toggle"
+                    @click="openBackground = !openBackground"
+                    :aria-expanded="openBackground"
+                >
+                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': openBackground }" />
+                    <span class="wp-data-row-title">{{ __('settings.qr_stickers.avery_62x89_r.section_background') }}</span>
+                </button>
+                <div class="wp-disclosure-panel wp-stack-tight" x-show="openBackground" x-cloak>
                     <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_hint') }}</p>
                     <p class="wp-muted wp-text-sm" wire:loading wire:target="qrStickerAvery6289Background">
                         {{ __('settings.qr_stickers.avery_62x89_r.background_uploading') }}
@@ -74,7 +93,7 @@
                         </div>
                     @endif
                 </div>
-            </details>
+            </div>
 
             <div class="wp-cluster">
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
@@ -92,6 +111,8 @@
                 src="{{ $qrStickerPreviewDataUrl }}"
                 alt="{{ __('settings.qr_stickers.avery_62x89_r.preview_alt') }}"
                 class="wp-qr-sticker-preview-img"
+                width="152"
+                height="218"
                 wire:loading.remove
                 wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289ShowTenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background, refreshQrStickerPreview"
             >
