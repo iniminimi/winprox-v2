@@ -50,7 +50,7 @@
             "header_label": "Textblock oben auf dem Etikett",
             "header_placeholder": "z. B. Hier scannen für Meldungen",
             "header_hint": "Max. 120 Zeichen. Leer = Standort · Unit auf dem Etikett.",
-            "tenant_logo_label": "Position des Firmenlogos auf dem Etikett",
+            "tenant_logo_label": "Position des Organisationslogos auf dem Etikett",
             "tenant_logo_bottom_right": "Unten rechts",
             "tenant_logo_bottom_left": "Unten links",
             "tenant_logo_top_right": "Oben rechts",

@@ -50,7 +50,7 @@
             "header_label": "Bloc de texte en haut de l'étiquette",
             "header_placeholder": "ex. Scannez ici pour signaler",
             "header_hint": "Max. 120 caractères. Vide = localisation · unité sur l'étiquette.",
-            "tenant_logo_label": "Emplacement du logo entreprise sur l'étiquette",
+            "tenant_logo_label": "Emplacement du logo de l'organisation sur l'étiquette",
             "tenant_logo_bottom_right": "En bas à droite",
             "tenant_logo_bottom_left": "En bas à gauche",
             "tenant_logo_top_right": "En haut à droite",

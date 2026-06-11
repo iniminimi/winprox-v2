@@ -107,15 +107,11 @@
 
                     @if ($isTeamExpanded)
                         <div id="team-panel-{{ $team->id }}" class="wp-team-workers-panel wp-stack-tight">
-                            <div class="wp-row">
-                                <span class="wp-label">{{ __('team.workers.title') }}</span>
-                                @if ($canEditContent)
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
-                                        <x-wp-icon name="plus" class="wp-icon" />
-                                        <span>{{ __('team.workers.add') }}</span>
-                                    </button>
-                                @endif
-                            </div>
+                            @if ($canEditContent)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
+                                    <x-wp-icon name="plus" class="wp-icon" />
+                                </button>
+                            @endif
 
                             <div class="wp-list">
                                 @forelse ($team->workers as $worker)

@@ -50,7 +50,7 @@
             "header_label": "Text block at the top of the sticker",
             "header_placeholder": "e.g. Scan here to report an issue",
             "header_hint": "Max. 120 characters. Empty = location · unit on the sticker.",
-            "tenant_logo_label": "Company logo position on the sticker",
+            "tenant_logo_label": "Organization logo position on the sticker",
             "tenant_logo_bottom_right": "Bottom right",
             "tenant_logo_bottom_left": "Bottom left",
             "tenant_logo_top_right": "Top right",

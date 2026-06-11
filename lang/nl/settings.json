@@ -50,7 +50,7 @@
             "header_label": "Tekstblok bovenaan de sticker",
             "header_placeholder": "bv. Scan hier voor meldingen",
             "header_hint": "Max. 120 tekens. Leeg = locatie · unit op de sticker.",
-            "tenant_logo_label": "Bedrijfslogo locatie op de sticker",
+            "tenant_logo_label": "Organisatielogo locatie op de sticker",
             "tenant_logo_bottom_right": "Rechtsonder",
             "tenant_logo_bottom_left": "Linksonder",
             "tenant_logo_top_right": "Rechtsboven",
