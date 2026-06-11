@@ -116,8 +116,8 @@
                 src="{{ $qrStickerPreviewDataUrl }}"
                 alt="{{ __('settings.qr_stickers.avery_62x89_r.preview_alt') }}"
                 class="wp-qr-sticker-preview-img"
-                width="152"
-                height="218"
+                width="182"
+                height="262"
                 wire:loading.remove
                 wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289TenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background"
             >

@@ -2866,14 +2866,22 @@ a.wp-kpi:hover {
 }
 
 /* QR-sticker editor (instellingen) */
+.wp-qr-sticker-editor.wp-settings-split {
+    align-items: center;
+}
+
 .wp-qr-sticker-editor-controls {
     min-width: 0;
+}
+
+.wp-qr-sticker-preview {
+    justify-content: center;
 }
 
 .wp-qr-sticker-preview-img {
     display: block;
     width: auto;
-    max-width: 9.5rem;
+    max-width: 11.4rem;
     height: auto;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-md);
