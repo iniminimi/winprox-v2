@@ -35,7 +35,7 @@
     "empty_inactive": "There are no active locations. Check 'Show inactive locations too' to see deactivated locations.",
     "no_units": "No units at this location yet.",
     "search_placeholder": "Search by location, city, postal code or street",
-    "search_hint": "Click a location to manage it.",
+    "search_hint": "Click a location to add units.",
     "show_inactive": "Show inactive locations too",
     "onboarding": {
         "title_categories": "Start by creating categories",

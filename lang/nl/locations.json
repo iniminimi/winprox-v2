@@ -35,7 +35,7 @@
     "empty_inactive": "Er zijn geen actieve locaties. Vink 'Toon ook inactieve locaties' aan om gedeactiveerde locaties te zien.",
     "no_units": "Nog geen units op deze locatie.",
     "search_placeholder": "Zoek op locatie, plaats, postcode of straat",
-    "search_hint": "Klik op een locatie om te beheren.",
+    "search_hint": "Klik op een locatie om units toe te voegen.",
     "show_inactive": "Toon ook inactieve locaties",
     "onboarding": {
         "title_categories": "Begin met het aanmaken van categorieën",

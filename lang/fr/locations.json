@@ -35,7 +35,7 @@
     "empty_inactive": "Il n'y a pas de sites actifs. Cochez 'Afficher aussi les sites inactifs' pour voir les sites désactivés.",
     "no_units": "Aucune unité sur ce site.",
     "search_placeholder": "Rechercher par site, ville, code postal ou rue",
-    "search_hint": "Cliquez sur un site pour le gérer.",
+    "search_hint": "Cliquez sur un site pour ajouter des unités.",
     "show_inactive": "Afficher aussi les sites inactifs",
     "onboarding": {
         "title_categories": "Commencez par créer des catégories",

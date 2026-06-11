@@ -35,7 +35,7 @@
     "empty_inactive": "Es gibt keine aktiven Standorte. Aktivieren Sie 'Auch inaktive Standorte anzeigen', um deaktivierte Standorte zu sehen.",
     "no_units": "Noch keine Units an diesem Standort.",
     "search_placeholder": "Suche nach Standort, Ort, PLZ oder Straße",
-    "search_hint": "Klicken Sie auf einen Standort zum Verwalten.",
+    "search_hint": "Klicken Sie auf einen Standort, um Units hinzuzufügen.",
     "show_inactive": "Auch inaktive Standorte anzeigen",
     "onboarding": {
         "title_categories": "Beginnen Sie mit der Erstellung von Kategorien",

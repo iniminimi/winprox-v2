@@ -70,6 +70,10 @@
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">
+        <div class="wp-grow">
+            <h2 class="wp-section-title">{{ __('locations.title') }}</h2>
+            <p class="wp-muted">{{ __('locations.search_hint') }}</p>
+        </div>
         <div class="wp-filter-row">
             <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
                    placeholder="{{ __('locations.search_placeholder') }}" />
@@ -78,7 +82,6 @@
                 <span>{{ __('locations.show_inactive') }}</span>
             </label>
         </div>
-        <p class="wp-muted">{{ __('locations.search_hint') }}</p>
 
         <div class="wp-list wp-list--entity-rows">
             @forelse ($locations as $location)
