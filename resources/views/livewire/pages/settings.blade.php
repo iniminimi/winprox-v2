@@ -276,28 +276,28 @@
                     </div>
                 </form>
 
-                <form wire:submit="saveQrStickerAvery6289Background" class="wp-stack-tight">
-                    <div class="wp-field">
-                        <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.background_label') }}</p>
-                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_hint') }}</p>
-                        @if ($qrStickerAvery6289BackgroundUrl)
-                            <img
-                                src="{{ $qrStickerAvery6289BackgroundUrl }}"
-                                alt="{{ __('settings.qr_stickers.avery_62x89_r.background_preview_alt') }}"
-                                class="wp-portal-bg-preview"
-                                style="max-height: 180px; width: auto; margin-bottom: 0.75rem;"
-                                wire:key="qr-sticker-bg-{{ md5($qrStickerAvery6289BackgroundUrl) }}"
-                            >
-                        @else
-                            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_default_label') }}</p>
-                        @endif
-                        <x-wp-file-input wireModel="qrStickerAvery6289Background" id="qrStickerAvery6289Background" accept="image/*" />
-                        @error('qrStickerAvery6289Background') <p class="wp-error">{{ $message }}</p> @enderror
-                        @error('background') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-cluster">
-                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-                        @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->background_path))
+                <div class="wp-field wp-stack-tight">
+                    <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.background_label') }}</p>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_hint') }}</p>
+                    @if ($qrStickerAvery6289BackgroundUrl)
+                        <img
+                            src="{{ $qrStickerAvery6289BackgroundUrl }}"
+                            alt="{{ __('settings.qr_stickers.avery_62x89_r.background_preview_alt') }}"
+                            class="wp-portal-bg-preview"
+                            style="max-height: 180px; width: auto; margin-bottom: 0.75rem;"
+                            wire:key="qr-sticker-bg-{{ md5($qrStickerAvery6289BackgroundUrl) }}"
+                        >
+                    @else
+                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_default_label') }}</p>
+                    @endif
+                    <p class="wp-muted wp-text-sm" wire:loading wire:target="qrStickerAvery6289Background">
+                        {{ __('settings.qr_stickers.avery_62x89_r.background_uploading') }}
+                    </p>
+                    <x-wp-file-input wireModel="qrStickerAvery6289Background" id="qrStickerAvery6289Background" accept="image/*" />
+                    @error('qrStickerAvery6289Background') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('background') <p class="wp-error">{{ $message }}</p> @enderror
+                    @if (filled($organisationTenant->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->background_path))
+                        <div class="wp-cluster">
                             <button
                                 type="button"
                                 class="btn btn--ghost btn--sm"
@@ -306,9 +306,9 @@
                             >
                                 {{ __('settings.qr_stickers.avery_62x89_r.background_remove') }}
                             </button>
-                        @endif
-                    </div>
-                </form>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     @endif

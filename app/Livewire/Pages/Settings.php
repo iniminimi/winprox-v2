@@ -255,16 +255,6 @@ class Settings extends Component
             (int) auth()->id(),
         );
 
-        if ($this->qrStickerAvery6289Background instanceof UploadedFile) {
-            $updated = app(UploadTenantQrStickerSheetBackgroundAction::class)->handle(
-                $updated,
-                $template,
-                $this->qrStickerAvery6289Background,
-                (int) auth()->id(),
-            );
-            $this->reset('qrStickerAvery6289Background');
-        }
-
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();
@@ -275,8 +265,16 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveQrStickerAvery6289Background(UploadTenantQrStickerSheetBackgroundAction $uploadBackground): void
+    public function updatedQrStickerAvery6289Background(): void
     {
+        $this->persistQrStickerAvery6289Background(
+            app(UploadTenantQrStickerSheetBackgroundAction::class),
+        );
+    }
+
+    private function persistQrStickerAvery6289Background(
+        UploadTenantQrStickerSheetBackgroundAction $uploadBackground,
+    ): void {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
             return;
@@ -284,14 +282,14 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
+        if (! $this->qrStickerAvery6289Background instanceof UploadedFile) {
+            return;
+        }
+
         Validator::make(
             ['background' => $this->qrStickerAvery6289Background],
             UploadTenantQrStickerSheetBackgroundRequest::rules(),
         )->validate();
-
-        if (! $this->qrStickerAvery6289Background instanceof UploadedFile) {
-            return;
-        }
 
         $updated = $uploadBackground->handle(
             $tenant,
@@ -336,10 +334,6 @@ class Settings extends Component
 
     public function qrStickerAvery6289BackgroundPreviewUrl(): ?string
     {
-        if ($this->qrStickerAvery6289Background !== null) {
-            return $this->qrStickerAvery6289Background->temporaryUrl();
-        }
-
         return $this->resolveTenant()
             ?->fresh()
             ?->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R)
