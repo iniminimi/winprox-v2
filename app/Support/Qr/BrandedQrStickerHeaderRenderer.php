@@ -125,13 +125,19 @@ final class BrandedQrStickerHeaderRenderer
                 return ['font_size' => $fontSize, 'lines' => [$text]];
             }
 
-            $lines = self::wrapWords($text, $fontPath, $fontSize, $maxWidth, $maxLines);
-            if ($lines !== [] && self::linesFit($lines, $fontPath, $fontSize, $maxWidth)) {
+            $lines = self::wrapWordsUnlimited($text, $fontPath, $fontSize, $maxWidth);
+            if ($lines !== []
+                && count($lines) <= $maxLines
+                && self::linesFit($lines, $fontPath, $fontSize, $maxWidth)) {
                 return ['font_size' => $fontSize, 'lines' => $lines];
             }
         }
 
         $fontSize = Avery62x89StickerArtworkLayout::HEADER_MIN_FONT_SIZE_PX;
+        $lines = self::wrapWords($text, $fontPath, $fontSize, $maxWidth, $maxLines);
+        if ($lines !== []) {
+            return ['font_size' => $fontSize, 'lines' => $lines];
+        }
 
         return [
             'font_size' => $fontSize,
@@ -185,7 +191,28 @@ final class BrandedQrStickerHeaderRenderer
      */
     private static function wrapWords(string $text, string $fontPath, int $fontSize, int $maxWidth, int $maxLines): array
     {
-        $words = preg_split('/\s+/u', $text) ?: [];
+        $lines = self::wrapWordsUnlimited($text, $fontPath, $fontSize, $maxWidth);
+        if ($lines === []) {
+            return [];
+        }
+
+        if (count($lines) <= $maxLines) {
+            return $lines;
+        }
+
+        $visible = array_slice($lines, 0, $maxLines - 1);
+        $overflow = implode(' ', array_slice($lines, $maxLines - 1));
+        $visible[] = self::truncateToWidth($overflow, $fontPath, $fontSize, $maxWidth);
+
+        return $visible;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function wrapWordsUnlimited(string $text, string $fontPath, int $fontSize, int $maxWidth): array
+    {
+        $words = preg_split('/\s+/u', trim($text)) ?: [];
         $lines = [];
         $current = '';
 
@@ -199,36 +226,20 @@ final class BrandedQrStickerHeaderRenderer
 
             if ($current !== '') {
                 $lines[] = $current;
-                if (count($lines) >= $maxLines) {
-                    return self::truncateWrappedLines($lines, $fontPath, $fontSize, $maxWidth, $maxLines);
-                }
+                $current = $word;
+
+                continue;
             }
 
-            $current = $word;
+            $lines[] = self::truncateToWidth($word, $fontPath, $fontSize, $maxWidth);
+            $current = '';
         }
 
         if ($current !== '') {
             $lines[] = $current;
         }
 
-        if (count($lines) > $maxLines) {
-            return self::truncateWrappedLines(array_slice($lines, 0, $maxLines - 1), $fontPath, $fontSize, $maxWidth, $maxLines)
-                ?: [self::truncateToWidth($text, $fontPath, $fontSize, $maxWidth)];
-        }
-
         return $lines;
-    }
-
-    /**
-     * @param  list<string>  $prefixLines
-     * @return list<string>
-     */
-    private static function truncateWrappedLines(array $prefixLines, string $fontPath, int $fontSize, int $maxWidth, int $maxLines): array
-    {
-        $lastLine = $prefixLines[count($prefixLines) - 1] ?? '';
-        $prefixLines[count($prefixLines) - 1] = self::truncateToWidth($lastLine, $fontPath, $fontSize, $maxWidth);
-
-        return array_slice($prefixLines, 0, $maxLines);
     }
 
     /**

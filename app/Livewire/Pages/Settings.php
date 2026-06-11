@@ -254,6 +254,17 @@ class Settings extends Component
             ]),
             (int) auth()->id(),
         );
+
+        if ($this->qrStickerAvery6289Background instanceof UploadedFile) {
+            $updated = app(UploadTenantQrStickerSheetBackgroundAction::class)->handle(
+                $updated,
+                $template,
+                $this->qrStickerAvery6289Background,
+                (int) auth()->id(),
+            );
+            $this->reset('qrStickerAvery6289Background');
+        }
+
         $this->fillOrganisationFromTenant($updated);
 
         $user = auth()->user();

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Team\Concerns\ResolvesTenantQrStickerSheetSetting;
 use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
@@ -12,6 +13,8 @@ use App\Support\TenantQrStickerBackgroundStorage;
 
 class RemoveTenantQrStickerSheetBackgroundAction
 {
+    use ResolvesTenantQrStickerSheetSetting;
+
     public function __construct(
         private TenantQrStickerBackgroundStorage $backgroundStorage,
         private AuditRecorder $audit,
@@ -22,10 +25,7 @@ class RemoveTenantQrStickerSheetBackgroundAction
         QrStickerSheetTemplate $template,
         ?int $actorUserId = null,
     ): Tenant {
-        $existing = TenantQrStickerSheetSetting::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('template', $template->value)
-            ->first();
+        $existing = $this->findTenantQrStickerSheetSetting((int) $tenant->id, $template);
 
         if ($existing === null || $existing->background_path === null) {
             return $tenant->fresh()->load('qrStickerSheetSettings');

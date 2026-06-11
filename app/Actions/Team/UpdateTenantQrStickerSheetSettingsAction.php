@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Team\Concerns\ResolvesTenantQrStickerSheetSetting;
 use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
@@ -11,6 +12,8 @@ use App\Support\TenantQrStickerBackgroundStorage;
 
 class UpdateTenantQrStickerSheetSettingsAction
 {
+    use ResolvesTenantQrStickerSheetSetting;
+
     public function __construct(
         private AuditRecorder $audit,
         private TenantQrStickerBackgroundStorage $backgroundStorage,
@@ -32,10 +35,7 @@ class UpdateTenantQrStickerSheetSettingsAction
             showTenantAddress: $data->showTenantAddress,
         );
 
-        $existing = TenantQrStickerSheetSetting::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('template', $data->template->value)
-            ->first();
+        $existing = $this->findTenantQrStickerSheetSetting((int) $tenant->id, $data->template);
 
         $backgroundPath = $existing?->background_path;
 
@@ -64,16 +64,24 @@ class UpdateTenantQrStickerSheetSettingsAction
             ? null
             : $data->layoutConfig()->toArray();
 
-        $setting = TenantQrStickerSheetSetting::query()->updateOrCreate(
-            [
-                'tenant_id' => $tenant->id,
-                'template' => $data->template->value,
-            ],
-            [
-                'header_text' => $data->headerText,
-                'layout_config' => $layoutConfig,
-            ],
-        );
+        $attributes = [
+            'header_text' => $data->headerText,
+            'layout_config' => $layoutConfig,
+        ];
+
+        if ($existing?->background_path !== null && $existing->background_path !== '') {
+            $attributes['background_path'] = $existing->background_path;
+        }
+
+        $setting = TenantQrStickerSheetSetting::query()
+            ->withoutGlobalScope('tenant')
+            ->updateOrCreate(
+                [
+                    'tenant_id' => $tenant->id,
+                    'template' => $data->template->value,
+                ],
+                $attributes,
+            );
 
         $this->audit->record(
             userId: $actorUserId,

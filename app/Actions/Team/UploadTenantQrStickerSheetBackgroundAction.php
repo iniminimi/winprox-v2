@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Team\Concerns\ResolvesTenantQrStickerSheetSetting;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Audit\AuditRecorder;
@@ -11,6 +12,8 @@ use Illuminate\Http\UploadedFile;
 
 class UploadTenantQrStickerSheetBackgroundAction
 {
+    use ResolvesTenantQrStickerSheetSetting;
+
     public function __construct(
         private TenantQrStickerBackgroundStorage $backgroundStorage,
         private AuditRecorder $audit,
@@ -22,24 +25,27 @@ class UploadTenantQrStickerSheetBackgroundAction
         UploadedFile $background,
         ?int $actorUserId = null,
     ): Tenant {
-        $existing = TenantQrStickerSheetSetting::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('template', $template->value)
-            ->first();
+        $existing = $this->findTenantQrStickerSheetSetting((int) $tenant->id, $template);
 
         $this->backgroundStorage->delete($existing?->background_path);
 
         $path = $this->backgroundStorage->store($background, (int) $tenant->id, $template);
 
-        $setting = TenantQrStickerSheetSetting::query()->updateOrCreate(
-            [
-                'tenant_id' => $tenant->id,
-                'template' => $template->value,
-            ],
-            [
-                'background_path' => $path,
-            ],
-        );
+        $attributes = ['background_path' => $path];
+        if ($existing !== null) {
+            $attributes['header_text'] = $existing->header_text;
+            $attributes['layout_config'] = $existing->layout_config;
+        }
+
+        $setting = TenantQrStickerSheetSetting::query()
+            ->withoutGlobalScope('tenant')
+            ->updateOrCreate(
+                [
+                    'tenant_id' => $tenant->id,
+                    'template' => $template->value,
+                ],
+                $attributes,
+            );
 
         $this->audit->record(
             userId: $actorUserId,
