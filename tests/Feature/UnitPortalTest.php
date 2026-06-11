@@ -239,7 +239,7 @@ it('shows task nr and issue line on the worker portal and hides photos missing o
 
     WorkerVerification::markVerified($team, $worker);
 
-    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertSee(__('portal.worker.task_heading', ['nr' => $task->id]))
         ->assertSee($task->note)
         ->assertSee(__('portal.worker.issue_heading', ['nr' => $issue->id]))
@@ -249,6 +249,53 @@ it('shows task nr and issue line on the worker portal and hides photos missing o
         ]))
         ->assertSee('/storage/issue-photos/on-disk.jpg', false)
         ->assertDontSee('/storage/issue-photos/missing.jpg', false);
+
+    $html = $component->html();
+    $taskHeading = __('portal.worker.task_heading', ['nr' => $task->id]);
+    $issueHeading = __('portal.worker.issue_heading', ['nr' => $issue->id]);
+    $taskBlockStart = strpos($html, $taskHeading);
+    $issueHeadingPos = strpos($html, $issueHeading, $taskBlockStart);
+    $betweenTaskAndIssue = substr($html, $taskBlockStart + strlen($taskHeading), $issueHeadingPos - $taskBlockStart - strlen($taskHeading));
+
+    expect($betweenTaskAndIssue)->toContain($task->note)
+        ->and($betweenTaskAndIssue)->not->toContain($issue->description);
+});
+
+it('does not fall back to issue description when task note is empty', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'description' => 'Lekkende kraan in de keuken.',
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'note' => null,
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token']);
+    $html = $component->html();
+    $taskHeading = __('portal.worker.task_heading', ['nr' => $task->id]);
+    $issueHeading = __('portal.worker.issue_heading', ['nr' => $issue->id]);
+    $taskBlockStart = strpos($html, $taskHeading);
+    $issueHeadingPos = strpos($html, $issueHeading, $taskBlockStart);
+    $betweenTaskAndIssue = substr($html, $taskBlockStart + strlen($taskHeading), $issueHeadingPos - $taskBlockStart - strlen($taskHeading));
+
+    expect($betweenTaskAndIssue)->not->toContain($issue->description);
 });
 
 it('hides open tasks for unapproved issues from the worker portal', function () {
