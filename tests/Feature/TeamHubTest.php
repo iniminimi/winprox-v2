@@ -423,7 +423,7 @@ it('toont de team-QR die naar het publieke team-portaal linkt', function () {
         ->assertSee(__('team.qr.email'), false);
 });
 
-it('laat een team-beheerder de team-QR per e-mail versturen via de superuser-mailtemplate', function () {
+it('laat een team-beheerder de team-QR per e-mail versturen via de winprox-mailtemplate', function () {
     Mail::fake();
 
     [$tenant, $admin] = tenantWithAdmin();
@@ -440,11 +440,11 @@ it('laat een team-beheerder de team-QR per e-mail versturen via de superuser-mai
         ->call('send')
         ->assertHasNoErrors();
 
-    Mail::assertSent(\App\Mail\Contact\NewOutboundMessageMail::class, function (\App\Mail\Contact\NewOutboundMessageMail $mail) use ($team, $portalUrl) {
+    Mail::assertSent(\App\Mail\Team\TeamQrMail::class, function (\App\Mail\Team\TeamQrMail $mail) use ($portalUrl) {
         return $mail->hasTo('uitvoerder@acme.test')
-            && str_contains((string) $mail->bodyHtml, $portalUrl)
-            && str_contains((string) $mail->bodyHtml, __('team.qr.open_link'))
-            && $mail->subjectText === __('team.qr.email_subject', ['team' => 'Onderhoud']);
+            && $mail->portalUrl === $portalUrl
+            && $mail->team->name === 'Onderhoud'
+            && $mail->recipientName === 'Jan';
     });
 });
 

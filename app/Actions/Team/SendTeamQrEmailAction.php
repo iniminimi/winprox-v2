@@ -2,7 +2,7 @@
 
 namespace App\Actions\Team;
 
-use App\Mail\Contact\NewOutboundMessageMail;
+use App\Mail\Team\TeamQrMail;
 use App\Models\InternalTeam;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Qr\QrCenterLogo;
@@ -19,6 +19,7 @@ class SendTeamQrEmailAction
         string $recipientEmail,
         ?int $actorUserId = null,
         string $recipientName = '',
+        ?string $locale = null,
     ): void {
         $team->loadMissing('tenant');
 
@@ -32,19 +33,12 @@ class SendTeamQrEmailAction
             $centerLogoPath,
         );
 
-        $bodyHtml = view('emails.team.qr-body', [
-            'intro' => __('team.qr.email_body', ['team' => $team->name]),
-            'qrImageDataUri' => 'data:image/png;base64,'.base64_encode($pngBytes),
-            'openUrl' => $portalUrl,
-            'openLinkLabel' => __('team.qr.open_link'),
-        ])->render();
-
-        Mail::to($recipientEmail, $recipientName !== '' ? $recipientName : null)->send(new NewOutboundMessageMail(
-            subjectText: __('team.qr.email_subject', ['team' => $team->name]),
-            bodyText: '',
+        Mail::to($recipientEmail, $recipientName !== '' ? $recipientName : null)->send(new TeamQrMail(
+            team: $team,
+            portalUrl: $portalUrl,
+            qrPngBytes: $pngBytes,
             recipientName: $recipientName,
-            tenant: $team->tenant,
-            bodyHtml: $bodyHtml,
+            locale: $locale,
         ));
 
         $this->audit->record(

@@ -1,4 +1,7 @@
 {
+    "outbound": {
+        "greeting_name": "Dear :name,"
+    },
     "welcome": {
         "subject": "Welcome to :tenant - Set your password",
         "html_title": "Welcome to WinProx",

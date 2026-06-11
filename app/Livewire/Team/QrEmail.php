@@ -63,6 +63,7 @@ class QrEmail extends Component
             $validated['recipientEmail'],
             (int) auth()->id(),
             trim((string) ($validated['recipientName'] ?? '')),
+            auth()->user()->locale ?? app()->getLocale(),
         );
 
         $this->reset(['recipientEmail', 'recipientName']);

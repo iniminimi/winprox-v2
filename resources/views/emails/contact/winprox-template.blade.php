@@ -92,7 +92,7 @@
             <div class="accent-line"></div>
             <div class="body">
                 @if($recipientName)
-                    <p>Beste {{ $recipientName }},</p>
+                    <p>{{ __('mail.outbound.greeting_name', ['name' => $recipientName]) }}</p>
                 @endif
                 @if (! empty($bodyHtml))
                     {!! $bodyHtml !!}
