@@ -3,7 +3,8 @@
     'description' => null,
     'image' => null,
     'imageWidth' => 1200,
-    'imageHeight' => 896,
+    'imageHeight' => 630,
+    'imageType' => 'image/jpeg',
     'url' => null,
     'type' => 'website',
 ])
@@ -11,17 +12,19 @@
 @php
     $socialTitle = $title ?? __('common.social.og_title');
     $socialDescription = $description ?? __('common.social.og_description');
-    $socialImage = $image ?? asset('images/promo/image_worker.png');
+    $socialImage = $image ?? asset('images/promo/image_worker_og.jpg');
     $socialUrl = $url ?? url()->current();
 @endphp
 
 <meta name="description" content="{{ $socialDescription }}">
 <meta property="og:title" content="{{ $socialTitle }}">
 <meta property="og:description" content="{{ $socialDescription }}">
+<meta property="og:site_name" content="WinProx">
 <meta property="og:image" content="{{ $socialImage }}">
 <meta property="og:image:width" content="{{ $imageWidth }}">
 <meta property="og:image:height" content="{{ $imageHeight }}">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image:type" content="{{ $imageType }}">
+<meta property="og:image:alt" content="{{ $socialTitle }}">
 @if (str_starts_with($socialImage, 'https://'))
     <meta property="og:image:secure_url" content="{{ $socialImage }}">
 @endif

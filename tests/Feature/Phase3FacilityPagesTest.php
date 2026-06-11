@@ -15,9 +15,9 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertOk()
         ->assertSee(__('welcome.hero.tagline_highlight'))
         ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
-        ->assertSee('property="og:image" content="'.asset('images/promo/image_worker.png').'"', false)
+        ->assertSee('property="og:image" content="'.asset('images/promo/image_worker_og.jpg').'"', false)
         ->assertSee('property="og:image:width" content="1200"', false)
-        ->assertSee('property="og:image:height" content="896"', false);
+        ->assertSee('property="og:image:height" content="630"', false);
 });
 
 it('zet open graph meta op de promo-pagina', function () {
