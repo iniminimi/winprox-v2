@@ -274,12 +274,44 @@
             "title": "Aide — Paramètres",
             "actions": [
                 {
-                    "label": "Organisation",
-                    "text": "Mettez à jour le nom, les coordonnées et le logo de votre tenant."
+                    "label": "Données de l'organisation",
+                    "text": "Seul l'administrateur peut modifier le nom, l'e-mail, le téléphone et l'adresse via 'Modifier les données de l'organisation'. Ces informations figurent notamment sur les autocollants QR imprimés et les étiquettes d'unités."
                 },
                 {
-                    "label": "Compte",
-                    "text": "Modifiez votre profil, langue et mot de passe."
+                    "label": "Logo et arrière-plan du portail",
+                    "text": "Téléversez un logo d'organisation (PNG/JPG, max. 2 Mo). Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. En option : une image d'arrière-plan du portail (PNG/JPG, max. 4 Mo) visible après le scan d'un QR code. Ce n'est pas l'arrière-plan de l'autocollant ci-dessous."
+                },
+                {
+                    "label": "Style de portail personnalisé",
+                    "text": "Activez 'Utiliser un style de portail personnalisé' pour choisir les couleurs d'arrière-plan et de bouton du portail de signalement. La carte d'aperçu montre ce que voient les signaleurs après un scan. Cela ne concerne pas l'interface d'administration."
+                },
+                {
+                    "label": "Style WinProx",
+                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard, Sombre ou High Res. Votre choix s'applique sur tous les appareils où vous êtes connecté."
+                },
+                {
+                    "label": "Feuilles d'autocollants QR",
+                    "text": "Image de marque pour les autocollants Avery 62×89-R imprimés (9 étiquettes par feuille). Téléchargez la feuille par emplacement via le pack QR. Ici vous configurez l'apparence de chaque autocollant : texte, logo en coin, adresse et arrière-plan."
+                },
+                {
+                    "label": "Autocollant — Texte",
+                    "text": "Ouvrez la rubrique 'Texte'. Votre texte personnalisé apparaît en haut de l'autocollant (max. 120 caractères). Si vide, WinProx utilise automatiquement nom de l'emplacement · unité. Le numéro d'autocollant apparaît toujours sous le QR code. L'aperçu à droite se met à jour en direct. Cliquez sur 'Enregistrer' pour sauvegarder le texte (et les réglages du logo)."
+                },
+                {
+                    "label": "Autocollant — Logo et adresse",
+                    "text": "Ouvrez 'Logo et adresse'. Choisissez où placer le logo de l'organisation sur l'autocollant (en bas à droite, en bas à gauche, …) — uniquement si un logo a été téléversé. Cochez l'option d'adresse pour l'afficher en bas à gauche. Le logo au centre du QR code est fixe (votre logo ou WinProx) et ne peut pas être déplacé ici."
+                },
+                {
+                    "label": "Autocollant — Arrière-plan",
+                    "text": "Ouvrez 'Arrière-plan'. Choisissez une image (PNG/JPG, max. 4 Mo) ; elle est enregistrée immédiatement. Sans arrière-plan personnalisé, WinProx utilise le design par défaut. 'Supprimer l'arrière-plan personnalisé' rétablit ce design."
+                },
+                {
+                    "label": "Autocollant — Aperçu",
+                    "text": "À droite (sur un écran large), un aperçu en direct d'un autocollant avec QR code et numéro de démonstration. Lors de l'export sur un emplacement, les vrais QR codes d'unités et numéros d'autocollants de cet emplacement sont utilisés."
+                },
+                {
+                    "label": "Confidentialité & export de données",
+                    "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
                 }
             ]
         },
