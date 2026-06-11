@@ -27,8 +27,8 @@ final class Avery62x89StickerArtworkLayout
     /** Upper band — tenant / portal label left-aligned, clears Prox logo (top-right). */
     public const HEADER_PADDING_LEFT_PX = 36;
 
-    /** Clears Prox logo top-right; text may extend closer than before. */
-    public const HEADER_PADDING_RIGHT_PX = 125;
+    /** Clears Prox icon top-right; header may extend close to the logo wordmark. */
+    public const HEADER_PADDING_RIGHT_PX = 88;
 
     public const HEADER_TOP_PX = 72;
 

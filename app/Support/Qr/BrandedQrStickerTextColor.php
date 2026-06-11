@@ -21,6 +21,16 @@ final class BrandedQrStickerTextColor
     private const LIGHT_BACKGROUND_LUMINANCE = 160.0;
 
     /**
+     * Fixed dark ink for labels on the light bottom band (tenant address block).
+     *
+     * @return array{0: int, 1: int, 2: int}
+     */
+    public static function darkLabelRgb(): array
+    {
+        return self::DARK_RGB;
+    }
+
+    /**
      * @return array{0: int, 1: int, 2: int}
      */
     public static function rgbForGdRegion(
@@ -121,12 +131,5 @@ final class BrandedQrStickerTextColor
     public static function unitCaptionSampleCenterY(): int
     {
         return Avery62x89StickerArtworkLayout::UNIT_CAPTION_TOP_PX + 14;
-    }
-
-    public static function tenantDetailsSampleCenterY(): int
-    {
-        return Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
-            - Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_BOTTOM_PX
-            - 36;
     }
 }

@@ -65,3 +65,41 @@ it('draws visible header text on the current light artwork background', function
 
     expect($hasDarkInk)->toBeTrue();
 });
+
+it('draws tenant details in fixed dark ink on the light bottom band', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $compositor = new BrandedQrStickerCompositor;
+    $bytes = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+        null,
+        null,
+        null,
+        ['Gemeente Knokke-Heist', 'Albertplein 1', '8300 Knokke-Heist'],
+    );
+
+    $image = imagecreatefromstring($bytes);
+    expect($image)->not->toBeFalse();
+
+    $hasDarkInk = false;
+    for ($y = 930; $y <= 990; $y += 3) {
+        for ($x = 36; $x <= 320; $x += 3) {
+            $rgb = imagecolorat($image, $x, $y);
+            $r = ($rgb >> 16) & 0xFF;
+            $g = ($rgb >> 8) & 0xFF;
+            $b = $rgb & 0xFF;
+            if ($r < 80 && $g < 80 && $b < 80) {
+                $hasDarkInk = true;
+                break 2;
+            }
+        }
+    }
+
+    imagedestroy($image);
+
+    expect($hasDarkInk)->toBeTrue();
+});

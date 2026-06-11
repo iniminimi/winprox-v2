@@ -27,13 +27,7 @@ final class BrandedQrStickerTenantDetailsRenderer
         $fontSize = self::fitFontSize($lines, $font, $maxWidth);
         $lineHeight = (int) round($fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO);
 
-        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForGdRegion(
-            $canvas,
-            Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_LEFT_PX + (int) round($maxWidth / 2),
-            BrandedQrStickerTextColor::tenantDetailsSampleCenterY(),
-            $maxWidth,
-            72,
-        );
+        [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
         $color = imagecolorallocate($canvas, $r, $g, $b);
         if ($color === false) {
             throw new \RuntimeException('Unable to allocate branded sticker tenant details color.');
@@ -72,13 +66,7 @@ final class BrandedQrStickerTenantDetailsRenderer
         $fontSize = self::fitFontSize($lines, $font, $maxWidth);
         $lineHeight = $fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO;
 
-        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForImagickRegion(
-            $canvas,
-            Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_LEFT_PX + (int) round($maxWidth / 2),
-            BrandedQrStickerTextColor::tenantDetailsSampleCenterY(),
-            $maxWidth,
-            72,
-        );
+        [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
 
         $draw = new ImagickDraw;
         $draw->setFont($font);
