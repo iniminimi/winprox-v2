@@ -142,15 +142,30 @@
                         @include('partials.wp-portal-teamleader-release')
                     @endif
 
-                    <div class="wp-row">
-                        <h2 id="portal-open-tasks" class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
-                        <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                    <div class="wp-card wp-card-pad wp-stack" wire:key="portal-open-tasks-card" x-data="{ open: false }">
+                        <div class="wp-row">
+                            <button
+                                type="button"
+                                class="wp-row"
+                                style="flex:1;width:100%;background:none;border:none;padding:0;cursor:pointer;"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                            >
+                                <h2 id="portal-open-tasks" class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
+                                <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
+                                <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
+                            </button>
+                            <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                        </div>
+
+                        <div x-show="open" x-transition wire:key="portal-open-tasks-content">
+                            @forelse ($allOpenUnitTasks as $task)
+                                @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
+                            @empty
+                                <p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p>
+                            @endforelse
+                        </div>
                     </div>
-                    @forelse ($allOpenUnitTasks as $task)
-                        @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
-                    @empty
-                        <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
-                    @endforelse
                 @endif
             @endif
         @endif
@@ -279,12 +294,27 @@
             </div>
 
             @if ($canAct)
-                <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
-                @forelse ($openTasksForIssue as $task)
-                    @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
-                @empty
-                    <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
-                @endforelse
+                <div class="wp-card wp-card-pad wp-stack" wire:key="issue-open-tasks-card" x-data="{ open: false }">
+                    <button
+                        type="button"
+                        class="wp-row"
+                        style="width:100%;background:none;border:none;padding:0;cursor:pointer;"
+                        @click="open = !open"
+                        :aria-expanded="open"
+                    >
+                        <h2 class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
+                        <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
+                        <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
+                    </button>
+
+                    <div x-show="open" x-transition wire:key="issue-open-tasks-content">
+                        @forelse ($openTasksForIssue as $task)
+                            @include('partials.wp-portal-task', ['task' => $task, 'team' => $team, 'worker' => $worker])
+                        @empty
+                            <p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p>
+                        @endforelse
+                    </div>
+                </div>
             @endif
         @endif
 
@@ -426,7 +456,7 @@
                 $portalCanAddMore = $portalTotalCount < 4;
             @endphp
 
-            <div class="wp-card wp-card-pad wp-stack" wire:key="qr-photos-card" x-data="{ open: true }">
+            <div class="wp-card wp-card-pad wp-stack" wire:key="qr-photos-card" x-data="{ open: false }">
                 <button
                     type="button"
                     class="wp-row"
