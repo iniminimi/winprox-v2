@@ -128,9 +128,7 @@ class Settings extends Component
 
         $this->authorize('updateTenantBranding', $tenant);
 
-        // Alleen de thema-velden updaten
         $payload = [
-            'name' => $tenant->name, // Action vereist name
             'custom_theme_active' => $this->customThemeActive,
             'custom_theme_bg' => $this->customThemeBg,
             'custom_theme_btn' => $this->customThemeBtn,

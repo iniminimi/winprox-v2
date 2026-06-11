@@ -13,6 +13,8 @@ use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -172,6 +174,54 @@ it('laat een admin bedrijfsgegevens aanpassen via instellingen', function () {
         ->and($fresh->postal_code)->toBe('8000')
         ->and($fresh->city)->toBe('Brugge')
         ->and($fresh->country_code)->toBe('BE');
+});
+
+it('behoudt het organisatielogo bij het opslaan van bedrijfsgegevens', function () {
+    Storage::fake('public');
+    [$tenant, $admin] = tenantWithAdmin();
+
+    $logoPath = UploadedFile::fake()->image('logo.png')->store("tenant-logos/{$tenant->id}", 'public');
+    $tenant->update(['logo_path' => $logoPath]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('orgName', 'Acme Holding')
+        ->set('orgEmail', 'info@acme.test')
+        ->call('saveOrganisation')
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+    expect($fresh->logo_path)->toBe($logoPath)
+        ->and($fresh->name)->toBe('Acme Holding')
+        ->and($fresh->email)->toBe('info@acme.test');
+});
+
+it('behoudt bedrijfsgegevens bij het opslaan van het organisatielogo', function () {
+    Storage::fake('public');
+    [$tenant, $admin] = tenantWithAdmin();
+
+    $tenant->update([
+        'email' => 'info@acme.test',
+        'phone' => '+32 50 00 00 00',
+        'street' => 'Bosrandstraat',
+        'house_number' => '10',
+        'postal_code' => '8000',
+        'city' => 'Brugge',
+        'country_code' => 'BE',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('orgLogo', UploadedFile::fake()->image('nieuw-logo.png'))
+        ->call('saveOrganisationLogo')
+        ->assertHasNoErrors();
+
+    $fresh = $tenant->fresh();
+    expect($fresh->logo_path)->not->toBeNull()
+        ->and($fresh->email)->toBe('info@acme.test')
+        ->and($fresh->phone)->toBe('+32 50 00 00 00')
+        ->and($fresh->street)->toBe('Bosrandstraat')
+        ->and($fresh->city)->toBe('Brugge');
 });
 
 it('laat een medewerker instellingen zien maar niet bedrijfsgegevens bewerken', function () {

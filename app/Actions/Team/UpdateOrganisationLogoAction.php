@@ -18,10 +18,6 @@ class UpdateOrganisationLogoAction
         $this->logoStorage->delete($tenant->logo_path);
 
         return $this->updateOrganisation->handle($tenant, [
-            'name' => $tenant->name,
-            'custom_theme_active' => $tenant->custom_theme_active,
-            'custom_theme_bg' => $tenant->custom_theme_bg,
-            'custom_theme_btn' => $tenant->custom_theme_btn,
             'logo_path' => $this->logoStorage->store($logo, (int) $tenant->id),
         ], $actorUserId);
     }

@@ -65,15 +65,14 @@
                                 class="wp-org-logo-preview"
                                 width="120"
                                 height="120"
-                                style="margin-bottom: 0.75rem;"
                                 wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
                             >
                         @endif
-                        <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
+                        <div class="wp-cluster wp-cluster--tight">
+                            <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
+                            <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                        </div>
                         @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-cluster">
-                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
                     </div>
                 </form>
             @else

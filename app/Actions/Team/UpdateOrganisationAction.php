@@ -14,29 +14,57 @@ class UpdateOrganisationAction
      */
     public function handle(Tenant $tenant, array $data, ?int $actorUserId = null): Tenant
     {
-        $updates = [
-            'name' => trim((string) $data['name']),
-            'email' => filled($data['email'] ?? null) ? $data['email'] : null,
-            'phone' => filled($data['phone'] ?? null) ? $data['phone'] : null,
-            'street' => filled($data['street'] ?? null) ? $data['street'] : null,
-            'house_number' => filled($data['house_number'] ?? null) ? $data['house_number'] : null,
-            'postal_code' => filled($data['postal_code'] ?? null) ? $data['postal_code'] : null,
-            'city' => filled($data['city'] ?? null) ? $data['city'] : null,
-            'country_code' => filled($data['country_code'] ?? null) ? strtoupper((string) $data['country_code']) : null,
-            'custom_theme_active' => (bool) ($data['custom_theme_active'] ?? false),
-            'custom_theme_bg' => filled($data['custom_theme_bg'] ?? null) ? strtolower($data['custom_theme_bg']) : null,
-            'custom_theme_btn' => filled($data['custom_theme_btn'] ?? null) ? strtolower($data['custom_theme_btn']) : null,
-        ];
+        $updates = [];
 
+        if (array_key_exists('name', $data)) {
+            $updates['name'] = trim((string) $data['name']);
+        }
+        if (array_key_exists('email', $data)) {
+            $updates['email'] = filled($data['email']) ? $data['email'] : null;
+        }
+        if (array_key_exists('phone', $data)) {
+            $updates['phone'] = filled($data['phone']) ? $data['phone'] : null;
+        }
+        if (array_key_exists('street', $data)) {
+            $updates['street'] = filled($data['street']) ? $data['street'] : null;
+        }
+        if (array_key_exists('house_number', $data)) {
+            $updates['house_number'] = filled($data['house_number']) ? $data['house_number'] : null;
+        }
+        if (array_key_exists('postal_code', $data)) {
+            $updates['postal_code'] = filled($data['postal_code']) ? $data['postal_code'] : null;
+        }
+        if (array_key_exists('city', $data)) {
+            $updates['city'] = filled($data['city']) ? $data['city'] : null;
+        }
+        if (array_key_exists('country_code', $data)) {
+            $updates['country_code'] = filled($data['country_code'])
+                ? strtoupper((string) $data['country_code'])
+                : null;
+        }
+        if (array_key_exists('custom_theme_active', $data)) {
+            $updates['custom_theme_active'] = (bool) $data['custom_theme_active'];
+        }
+        if (array_key_exists('custom_theme_bg', $data)) {
+            $updates['custom_theme_bg'] = filled($data['custom_theme_bg'])
+                ? strtolower((string) $data['custom_theme_bg'])
+                : null;
+        }
+        if (array_key_exists('custom_theme_btn', $data)) {
+            $updates['custom_theme_btn'] = filled($data['custom_theme_btn'])
+                ? strtolower((string) $data['custom_theme_btn'])
+                : null;
+        }
         if (array_key_exists('logo_path', $data)) {
             $updates['logo_path'] = $data['logo_path'];
         }
-
         if (array_key_exists('portal_background_path', $data)) {
             $updates['portal_background_path'] = $data['portal_background_path'];
         }
 
-        $tenant->update($updates);
+        if ($updates !== []) {
+            $tenant->update($updates);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

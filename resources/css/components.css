@@ -236,6 +236,7 @@
     height: 7.5rem;
     object-fit: contain;
     padding: 0.5rem;
+    margin-bottom: 0.75rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-md);
     background-color: var(--wp-surface-muted);
