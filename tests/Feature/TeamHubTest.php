@@ -12,6 +12,7 @@ use App\Support\Tenancy;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
@@ -418,7 +419,33 @@ it('toont de team-QR die naar het publieke team-portaal linkt', function () {
     $this->actingAs($admin)
         ->get(route('team.qr', $team))
         ->assertOk()
-        ->assertSee('<svg', false); // Check for QR code SVG
+        ->assertSee('<svg', false)
+        ->assertSee(__('team.qr.email'), false);
+});
+
+it('laat een team-beheerder de team-QR per e-mail versturen via de superuser-mailtemplate', function () {
+    Mail::fake();
+
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+    $portalUrl = route('public.team-portal', $team->field_qr_token);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Team\QrEmail::class, [
+            'team' => $team,
+            'portalUrl' => $portalUrl,
+        ])
+        ->set('recipientEmail', 'uitvoerder@acme.test')
+        ->set('recipientName', 'Jan')
+        ->call('send')
+        ->assertHasNoErrors();
+
+    Mail::assertSent(\App\Mail\Contact\NewOutboundMessageMail::class, function (\App\Mail\Contact\NewOutboundMessageMail $mail) use ($team, $portalUrl) {
+        return $mail->hasTo('uitvoerder@acme.test')
+            && str_contains((string) $mail->bodyHtml, $portalUrl)
+            && str_contains((string) $mail->bodyHtml, __('team.qr.open_link'))
+            && $mail->subjectText === __('team.qr.email_subject', ['team' => 'Onderhoud']);
+    });
 });
 
 // --- Workers ---------------------------------------------------------------

@@ -120,7 +120,18 @@
     },
     "qr": {
         "subtitle": "Scannen Sie diesen Code, um das Team-Feldportal zu öffnen.",
-        "print": "Drucken"
+        "print": "Drucken",
+        "email": "QR-Code per E-Mail senden",
+        "email_modal_title": "QR-Code per E-Mail senden",
+        "email_modal_hint": "Senden Sie den Team-QR per E-Mail. Der Empfänger sieht den QR-Code und einen Link zum Portal.",
+        "email_recipient_label": "E-Mail-Adresse des Empfängers",
+        "email_recipient_name_label": "Name des Empfängers (optional)",
+        "email_recipient_required": "Geben Sie eine E-Mail-Adresse ein.",
+        "email_send": "Senden",
+        "email_sent": "QR-Code gesendet an :email.",
+        "email_subject": "Team-QR: :team",
+        "email_body": "Hier ist der Team-QR für :team. Scannen Sie den Code, um das Team-Feldportal zu öffnen.",
+        "open_link": "Diesen QR-Code öffnen"
     },
     "errors": {
         "not_authorized": "Sie sind nicht berechtigt, diese Aktion durchzuführen.",

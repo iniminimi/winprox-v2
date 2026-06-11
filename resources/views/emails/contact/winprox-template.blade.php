@@ -94,7 +94,11 @@
                 @if($recipientName)
                     <p>Beste {{ $recipientName }},</p>
                 @endif
-                {!! nl2br(e($bodyText)) !!}
+                @if (! empty($bodyHtml))
+                    {!! $bodyHtml !!}
+                @else
+                    {!! nl2br(e($bodyText)) !!}
+                @endif
             </div>
             <div class="footer">
                 <p class="footer-text">

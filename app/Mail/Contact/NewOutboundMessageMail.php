@@ -20,6 +20,7 @@ class NewOutboundMessageMail extends Mailable
         public string $bodyText,
         public string $recipientName,
         public ?Tenant $tenant = null,
+        public ?string $bodyHtml = null,
     ) {
         $this->mailLocale = $this->tenant?->locale ?? app()->getLocale();
     }
@@ -37,6 +38,7 @@ class NewOutboundMessageMail extends Mailable
             html: 'emails.contact.winprox-template',
             with: [
                 'bodyText' => $this->bodyText,
+                'bodyHtml' => $this->bodyHtml,
                 'recipientName' => $this->recipientName,
                 'tenantName' => $this->tenant?->name ?? config('app.name'),
             ],

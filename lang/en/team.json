@@ -120,7 +120,18 @@
     },
     "qr": {
         "subtitle": "Scan this code to open the team field portal.",
-        "print": "Print"
+        "print": "Print",
+        "email": "Email QR code",
+        "email_modal_title": "Email QR code",
+        "email_modal_hint": "Send the team QR by email. The recipient will see the QR code and a link to open the portal.",
+        "email_recipient_label": "Recipient email address",
+        "email_recipient_name_label": "Recipient name (optional)",
+        "email_recipient_required": "Enter an email address.",
+        "email_send": "Send",
+        "email_sent": "QR code sent to :email.",
+        "email_subject": "Team QR: :team",
+        "email_body": "Here is the team QR for :team. Scan the code to open the team field portal.",
+        "open_link": "Open this QR code"
     },
     "errors": {
         "not_authorized": "You are not authorized to perform this action.",

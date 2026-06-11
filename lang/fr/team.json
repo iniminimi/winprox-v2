@@ -120,7 +120,18 @@
     },
     "qr": {
         "subtitle": "Scannez ce code pour ouvrir le portail de terrain de l'équipe.",
-        "print": "Imprimer"
+        "print": "Imprimer",
+        "email": "Envoyer le QR par e-mail",
+        "email_modal_title": "Envoyer le QR par e-mail",
+        "email_modal_hint": "Envoyez le QR de l'équipe par e-mail. Le destinataire verra le QR et un lien pour ouvrir le portail.",
+        "email_recipient_label": "Adresse e-mail du destinataire",
+        "email_recipient_name_label": "Nom du destinataire (optionnel)",
+        "email_recipient_required": "Indiquez une adresse e-mail.",
+        "email_send": "Envoyer",
+        "email_sent": "QR envoyé à :email.",
+        "email_subject": "QR équipe : :team",
+        "email_body": "Voici le QR de l'équipe :team. Scannez le code pour ouvrir le portail terrain.",
+        "open_link": "Ouvrir ce QR"
     },
     "errors": {
         "not_authorized": "Vous n'êtes pas autorisé à effectuer cette action.",

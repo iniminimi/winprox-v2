@@ -2192,6 +2192,8 @@ a.wp-kpi:hover {
 .wp-qr-actions {
     display: flex;
     justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 @media print {

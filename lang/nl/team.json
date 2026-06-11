@@ -120,7 +120,18 @@
     },
     "qr": {
         "subtitle": "Scan deze code om het team-veldportaal te openen.",
-        "print": "Afdrukken"
+        "print": "Afdrukken",
+        "email": "QR-code e-mailen",
+        "email_modal_title": "QR-code e-mailen",
+        "email_modal_hint": "Stuur de team-QR per e-mail. De ontvanger ziet de QR-code en een link om het portaal te openen.",
+        "email_recipient_label": "E-mailadres ontvanger",
+        "email_recipient_name_label": "Naam ontvanger (optioneel)",
+        "email_recipient_required": "Geef een e-mailadres op.",
+        "email_send": "Verzenden",
+        "email_sent": "QR-code verzonden naar :email.",
+        "email_subject": "Team-QR: :team",
+        "email_body": "Hierbij de team-QR voor :team. Scan de code om het team-veldportaal te openen.",
+        "open_link": "Deze QR-code openen"
     },
     "errors": {
         "not_authorized": "Je hebt geen toestemming om dit te doen.",
