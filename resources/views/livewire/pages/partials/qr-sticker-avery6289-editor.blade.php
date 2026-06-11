@@ -1,4 +1,4 @@
-<div class="wp-qr-sticker-editor">
+<div class="wp-settings-split wp-qr-sticker-editor">
     <div class="wp-qr-sticker-editor-controls">
         <form
             wire:submit="saveQrStickerAvery6289Settings"
@@ -101,7 +101,7 @@
         </form>
     </div>
 
-    <aside class="wp-qr-sticker-preview" aria-label="{{ __('settings.qr_stickers.avery_62x89_r.preview_label') }}">
+    <aside class="wp-settings-split-preview wp-qr-sticker-preview" aria-label="{{ __('settings.qr_stickers.avery_62x89_r.preview_label') }}">
         <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.preview_label') }}</p>
         <div wire:loading wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289ShowTenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background, refreshQrStickerPreview">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.preview_loading') }}</p>

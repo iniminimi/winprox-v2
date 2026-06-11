@@ -2862,20 +2862,7 @@ a.wp-kpi:hover {
 }
 
 /* QR-sticker editor (instellingen) */
-.wp-qr-sticker-editor {
-    display: grid;
-    gap: 1.25rem;
-}
-
 .wp-qr-sticker-editor-controls {
-    min-width: 0;
-}
-
-.wp-qr-sticker-preview {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
     min-width: 0;
 }
 
@@ -2887,20 +2874,6 @@ a.wp-kpi:hover {
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-md);
     background-color: var(--wp-surface);
-}
-
-@media (min-width: 40rem) {
-    .wp-qr-sticker-editor {
-        grid-template-columns: minmax(0, 1fr) 9.5rem;
-        align-items: start;
-        gap: 1.5rem;
-    }
-
-    .wp-qr-sticker-preview {
-        position: sticky;
-        top: 1rem;
-        align-items: center;
-    }
 }
 
 /* Inklapbare secties (zelfde chevron als Teams-pagina). */

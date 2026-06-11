@@ -948,6 +948,30 @@
     word-break: break-word;
 }
 
+/* Instellingen — form links, voorbeeld rechts (zelfde grid als eigen portaal-stijl). */
+.wp-settings-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: var(--wp-space-2);
+}
+
+.wp-settings-split-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    text-align: center;
+}
+
+@media (max-width: 39.99rem) {
+    .wp-settings-split {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ---------------------------------------------------------------------------
  | Veld-/publieke schermen — MOBIEL-FIRST (§6.5).
  * ------------------------------------------------------------------------- */

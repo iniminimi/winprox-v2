@@ -136,7 +136,7 @@
         <form wire:submit="saveOrganisationInline" class="wp-card wp-card-pad wp-stack-tight">
             <h2 class="wp-section-title">{{ __('settings.org.custom_theme_title') }}</h2>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: var(--wp-space-2);">
+            <div class="wp-settings-split">
                 <div class="wp-stack-tight">
                     <label class="wp-checkbox-label">
                         <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
@@ -169,7 +169,7 @@
                     </div>
                 </div>
 
-                <div class="wp-theme-preview" style="margin-top: 0;">
+                <div class="wp-settings-split-preview wp-theme-preview">
                     <div 
                         class="wp-theme-preview-card"
                         x-data="{ 
@@ -220,12 +220,12 @@
             <h2 class="wp-section-title">{{ __('settings.qr_stickers.title') }}</h2>
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
 
-            <div class="wp-stack-tight">
+            <div class="wp-stack-tight" style="margin-top: var(--wp-space-2);">
                 <h3 class="wp-issue-card-title">{{ __('settings.qr_stickers.avery_62x89_r.title') }}</h3>
                 <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.hint') }}</p>
-
-                @include('livewire.pages.partials.qr-sticker-avery6289-editor')
             </div>
+
+            @include('livewire.pages.partials.qr-sticker-avery6289-editor')
         </div>
     @endif
 
