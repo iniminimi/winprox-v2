@@ -33,6 +33,33 @@ it('toont de categorieën-sectie standaard ingeklapt', function () {
         ->assertDontSee('Onderhoud');
 });
 
+it('pulst het categorieën-kader wanneer er nog geen categorieën zijn en de sectie ingeklapt is', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertSet('showCategoriesSection', false)
+        ->assertSeeHtml('wp-card--prio-pulse');
+});
+
+it('pulst het categorieën-kader niet wanneer er categorieën zijn', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertDontSeeHtml('wp-card--prio-pulse');
+});
+
+it('pulst het categorieën-kader niet wanneer de sectie is uitgeklapt', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->set('showCategoriesSection', true)
+        ->assertDontSeeHtml('wp-card--prio-pulse');
+});
+
 it('toont categorieën met bewerken/verwijderen knoppen na uitklappen', function () {
     [$tenant, $admin] = setupTenantAdminForLocations();
     Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);

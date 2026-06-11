@@ -22,7 +22,10 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
+    <div @class([
+        'wp-card wp-card-pad wp-stack',
+        'wp-card--prio-pulse' => $categories->isEmpty() && ! $showCategoriesSection,
+    ])>
         <div class="wp-page-head wp-page-head--clickable" wire:click="$toggle('showCategoriesSection')">
             <div class="wp-grow">
                 <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>

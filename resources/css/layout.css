@@ -99,6 +99,12 @@
     border: 2px solid var(--wp-warning) !important;
 }
 
+/* Zelfde pulse als PRIO1 (.wp-badge-critical) — stopt zodra het kader opengeklapt is. */
+.wp-card--prio-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-color: #dc2626 !important;
+}
+
 .wp-sidebar-menu {
     display: flex;
     flex-direction: column;
