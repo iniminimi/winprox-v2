@@ -63,8 +63,7 @@ final class QrStickerWordExporter
         }
 
         if ($centerLogoPath === null) {
-            // For dynamic QR codes, use default WinProx logo
-            $centerLogoPath = QrCenterLogo::winproxAbsolutePath();
+            $centerLogoPath = QrCenterLogo::absolutePath($tenant);
         }
 
         return match ($template) {

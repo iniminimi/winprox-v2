@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Locations;
 
 use App\Actions\QrCodes\BatchGenerateQrCodesAction;
 use App\Models\Location;
-use App\Models\QrCode;
+use App\Models\Tenant;
 use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCodePngWriter;
@@ -51,9 +51,6 @@ final class LocationQrPackDownloadController
                 );
             }
 
-            // Get tenant logo for dynamic QR codes
-            $location->loadMissing('tenant');
-            $centerLogoPath = \App\Support\Qr\QrCenterLogo::absolutePath($location->tenant);
         } else {
             // Use existing location units
             $entries = LocationQrPackStickerEntries::forLocation($location);
@@ -61,17 +58,16 @@ final class LocationQrPackDownloadController
             if ($entries === []) {
                 abort(404, __('locations.qr_pack.no_units'));
             }
-
-            $centerLogoPath = null; // Will be loaded in exporter
         }
 
         $template = QrStickerSheetTemplate::tryFrom((string) $request->query('template', ''))
             ?? QrStickerSheetTemplate::Avery55x55S;
 
-        $location->loadMissing('tenant');
+        $tenant = Tenant::query()->findOrFail($location->tenant_id);
+        $centerLogoPath = \App\Support\Qr\QrCenterLogo::absolutePath($tenant);
 
         try {
-            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath, $location->tenant);
+            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath, $tenant);
             $filename = $exporter->downloadFilename($location, $template);
         } catch (InvalidArgumentException $exception) {
             abort(503, $exception->getMessage());
