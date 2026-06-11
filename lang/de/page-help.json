@@ -279,7 +279,7 @@
                 },
                 {
                     "label": "Organisationslogo",
-                    "text": "Laden Sie ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
+                    "text": "Der Administrator lädt ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "Portal-Hintergrund",
@@ -319,7 +319,7 @@
                 },
                 {
                     "label": "Datenschutz & Datenexport",
-                    "text": "Nur der Administrator kann eine maschinenlesbare Übersicht (JSON) des Kontos und relevanter Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren."
+                    "text": "Nur der Administrator kann eine maschinenlesbare Übersicht (JSON) des Kontos und relevanter Aktivität in Ihrer Umgebung herunterladen. Dieser Bereich erscheint in Einstellungen nur für den Administrator. Die Datei kann sensible Daten enthalten — sicher aufbewahren."
                 }
             ]
         },

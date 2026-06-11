@@ -279,7 +279,7 @@
                 },
                 {
                     "label": "Logo de l'organisation",
-                    "text": "Téléversez un logo d'organisation (PNG/JPG, max. 2 Mo). Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
+                    "text": "L'administrateur téléverse un logo d'organisation (PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez le logo actuel uniquement à titre informatif. Il apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
                 },
                 {
                     "label": "Arrière-plan du portail",
@@ -319,7 +319,7 @@
                 },
                 {
                     "label": "Confidentialité & export de données",
-                    "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
+                    "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Cette rubrique n'apparaît dans Paramètres que pour l'administrateur. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
                 }
             ]
         },

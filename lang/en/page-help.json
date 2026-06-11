@@ -279,7 +279,7 @@
                 },
                 {
                     "label": "Organisation logo",
-                    "text": "Upload an organisation logo (PNG/JPG, max. 2 MB). It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                    "text": "The administrator uploads an organisation logo (PNG/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
                 },
                 {
                     "label": "Portal background",
@@ -319,7 +319,7 @@
                 },
                 {
                     "label": "Privacy & data export",
-                    "text": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your environment. The file may contain sensitive data — keep it secure."
+                    "text": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your environment. This section appears on Settings for administrators only. The file may contain sensitive data — keep it secure."
                 }
             ]
         },

@@ -279,7 +279,7 @@
                 },
                 {
                     "label": "Organisatielogo",
-                    "text": "Upload een organisatielogo (PNG/JPG, max. 2 MB). Dat logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
+                    "text": "De beheerder uploadt een organisatielogo (PNG/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
                     "label": "Portaal-achtergrond",
@@ -319,7 +319,7 @@
                 },
                 {
                     "label": "Privacy & export van gegevens",
-                    "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
+                    "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Deze rubriek staat alleen op Instellingen voor de beheerder. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
                 }
             ]
         },
