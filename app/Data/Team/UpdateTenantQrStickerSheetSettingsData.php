@@ -12,14 +12,14 @@ readonly class UpdateTenantQrStickerSheetSettingsData
         public QrStickerSheetTemplate $template,
         public ?string $headerText,
         public QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::BottomRight,
-        public bool $showTenantAddress = true,
+        public QrStickerTenantLogoPlacement $tenantAddressPlacement = QrStickerTenantLogoPlacement::BottomLeft,
     ) {}
 
     /**
      * @param  array{
      *     headerText?: ?string,
      *     tenantLogo?: ?string,
-     *     showTenantAddress?: bool,
+     *     tenantAddress?: ?string,
      * }  $input
      */
     public static function fromValidated(QrStickerSheetTemplate $template, array $input): self
@@ -30,7 +30,7 @@ readonly class UpdateTenantQrStickerSheetSettingsData
             template: $template,
             headerText: $headerText === '' ? null : $headerText,
             tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
-            showTenantAddress: (bool) ($input['showTenantAddress'] ?? true),
+            tenantAddressPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantAddress'] ?? null),
         );
     }
 
@@ -38,7 +38,7 @@ readonly class UpdateTenantQrStickerSheetSettingsData
     {
         return new BrandedQrStickerLayoutConfig(
             tenantLogoPlacement: $this->tenantLogoPlacement,
-            showTenantAddress: $this->showTenantAddress,
+            tenantAddressPlacement: $this->tenantAddressPlacement,
         );
     }
 

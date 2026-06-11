@@ -51,7 +51,7 @@ it('stores Avery 62x89 sticker layout config', function () {
             [
                 'headerText' => 'Scan hier',
                 'tenantLogo' => QrStickerTenantLogoPlacement::TopRight->value,
-                'showTenantAddress' => false,
+                'tenantAddress' => QrStickerTenantLogoPlacement::None->value,
             ],
         ),
         null,
@@ -63,7 +63,7 @@ it('stores Avery 62x89 sticker layout config', function () {
 
     expect($setting?->layout_config)->toBe([
         'tenant_logo' => 'top_right',
-        'tenant_address' => false,
+        'tenant_address' => 'none',
     ]);
 });
 
@@ -91,7 +91,7 @@ it('preserves Avery 62x89 sticker background when saving layout settings', funct
             [
                 'headerText' => 'Scan deze QR-code en kom terecht in ons Portaal.',
                 'tenantLogo' => QrStickerTenantLogoPlacement::BottomRight->value,
-                'showTenantAddress' => true,
+                'tenantAddress' => QrStickerTenantLogoPlacement::BottomLeft->value,
             ],
         ),
         null,
@@ -123,7 +123,7 @@ it('clears Avery 62x89 sticker header text when saved empty', function () {
             [
                 'headerText' => '',
                 'tenantLogo' => QrStickerTenantLogoPlacement::BottomRight->value,
-                'showTenantAddress' => true,
+                'tenantAddress' => QrStickerTenantLogoPlacement::BottomLeft->value,
             ],
         ),
         null,
@@ -160,7 +160,7 @@ it('keeps Avery 62x89 sticker background when header text is cleared', function 
             [
                 'headerText' => '',
                 'tenantLogo' => QrStickerTenantLogoPlacement::BottomRight->value,
-                'showTenantAddress' => true,
+                'tenantAddress' => QrStickerTenantLogoPlacement::BottomLeft->value,
             ],
         ),
         null,

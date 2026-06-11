@@ -32,7 +32,7 @@ class UpdateTenantQrStickerSheetSettingsAction
             template: $data->template,
             headerText: $headerText === '' ? null : $headerText,
             tenantLogoPlacement: $data->tenantLogoPlacement,
-            showTenantAddress: $data->showTenantAddress,
+            tenantAddressPlacement: $data->tenantAddressPlacement,
         );
 
         $existing = $this->findTenantQrStickerSheetSetting((int) $tenant->id, $data->template);

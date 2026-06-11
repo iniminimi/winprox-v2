@@ -12,7 +12,7 @@ final class BrandedQrStickerLayoutConfig
 {
     public function __construct(
         private readonly QrStickerTenantLogoPlacement $tenantLogoPlacement,
-        private readonly bool $showTenantAddress,
+        private readonly QrStickerTenantLogoPlacement $tenantAddressPlacement,
     ) {}
 
     public static function fromSetting(?TenantQrStickerSheetSetting $setting): self
@@ -21,7 +21,7 @@ final class BrandedQrStickerLayoutConfig
 
         return new self(
             tenantLogoPlacement: self::resolveTenantLogoPlacement($config),
-            showTenantAddress: (bool) ($config['tenant_address'] ?? true),
+            tenantAddressPlacement: self::resolveTenantAddressPlacement($config),
         );
     }
 
@@ -44,20 +44,44 @@ final class BrandedQrStickerLayoutConfig
     }
 
     /**
-     * @return array{tenant_logo: string, tenant_address: bool}
+     * @param  array<string, mixed>  $config
+     */
+    private static function resolveTenantAddressPlacement(array $config): QrStickerTenantLogoPlacement
+    {
+        if (! array_key_exists('tenant_address', $config)) {
+            return QrStickerTenantLogoPlacement::BottomLeft;
+        }
+
+        $value = $config['tenant_address'];
+
+        if (is_bool($value)) {
+            return $value
+                ? QrStickerTenantLogoPlacement::BottomLeft
+                : QrStickerTenantLogoPlacement::None;
+        }
+
+        if (is_string($value)) {
+            return QrStickerTenantLogoPlacement::tryFromString($value);
+        }
+
+        return QrStickerTenantLogoPlacement::BottomLeft;
+    }
+
+    /**
+     * @return array{tenant_logo: string, tenant_address: string}
      */
     public function toArray(): array
     {
         return [
             'tenant_logo' => $this->tenantLogoPlacement->value,
-            'tenant_address' => $this->showTenantAddress,
+            'tenant_address' => $this->tenantAddressPlacement->value,
         ];
     }
 
     public function usesDefaults(): bool
     {
         return $this->tenantLogoPlacement === QrStickerTenantLogoPlacement::default()
-            && $this->showTenantAddress;
+            && $this->tenantAddressPlacement === QrStickerTenantLogoPlacement::BottomLeft;
     }
 
     public function tenantLogoPlacement(): QrStickerTenantLogoPlacement
@@ -65,13 +89,19 @@ final class BrandedQrStickerLayoutConfig
         return $this->tenantLogoPlacement;
     }
 
+    public function tenantAddressPlacement(): QrStickerTenantLogoPlacement
+    {
+        return $this->tenantAddressPlacement;
+    }
+
     public function showTenantLogoOnSticker(): bool
     {
         return $this->tenantLogoPlacement !== QrStickerTenantLogoPlacement::None;
     }
 
+    /** Address is rendered bottom-left when that placement is selected. */
     public function showTenantAddress(): bool
     {
-        return $this->showTenantAddress;
+        return $this->tenantAddressPlacement === QrStickerTenantLogoPlacement::BottomLeft;
     }
 }

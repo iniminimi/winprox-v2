@@ -38,7 +38,7 @@ class RemoveTenantQrStickerSheetBackgroundAction
             template: $template,
             headerText: $existing->header_text,
             tenantLogoPlacement: $layout->tenantLogoPlacement(),
-            showTenantAddress: $layout->showTenantAddress(),
+            tenantAddressPlacement: $layout->tenantAddressPlacement(),
         );
 
         if ($data->isEmpty(null)) {

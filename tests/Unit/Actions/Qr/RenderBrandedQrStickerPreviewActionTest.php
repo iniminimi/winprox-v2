@@ -26,7 +26,7 @@ it('renders a branded Avery 62x89 sticker preview as a data url', function () {
         new BrandedQrStickerPreviewData(
             headerText: 'Scan deze QR-code',
             tenantLogoPlacement: QrStickerTenantLogoPlacement::BottomRight,
-            showTenantAddress: true,
+            tenantAddressPlacement: QrStickerTenantLogoPlacement::BottomLeft,
         ),
     );
 

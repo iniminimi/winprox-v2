@@ -22,7 +22,7 @@ class UpdateTenantQrStickerSheetSettingsRequest extends FormRequest
     {
         $shared = [
             'tenantLogo' => ['required', 'string', Rule::enum(QrStickerTenantLogoPlacement::class)],
-            'showTenantAddress' => ['required', 'boolean'],
+            'tenantAddress' => ['required', 'string', Rule::enum(QrStickerTenantLogoPlacement::class)],
         ];
 
         return match ($template) {

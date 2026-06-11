@@ -68,7 +68,7 @@ class Settings extends Component
 
     public string $qrStickerAvery6289TenantLogo = 'bottom_right';
 
-    public bool $qrStickerAvery6289ShowTenantAddress = true;
+    public string $qrStickerAvery6289TenantAddress = 'bottom_left';
 
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $qrStickerAvery6289Background = null;
@@ -244,7 +244,7 @@ class Settings extends Component
             [
                 'headerText' => $this->qrStickerAvery6289HeaderText,
                 'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
-                'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
+                'tenantAddress' => $this->qrStickerAvery6289TenantAddress,
             ],
             UpdateTenantQrStickerSheetSettingsRequest::rulesFor($template),
             UpdateTenantQrStickerSheetSettingsRequest::messagesFor($template),
@@ -255,7 +255,7 @@ class Settings extends Component
             UpdateTenantQrStickerSheetSettingsData::fromValidated($template, [
                 'headerText' => $this->qrStickerAvery6289HeaderText,
                 'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
-                'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
+                'tenantAddress' => $this->qrStickerAvery6289TenantAddress,
             ]),
             (int) auth()->id(),
         );
@@ -281,7 +281,7 @@ class Settings extends Component
         $this->refreshQrStickerPreview();
     }
 
-    public function updatedQrStickerAvery6289ShowTenantAddress(): void
+    public function updatedQrStickerAvery6289TenantAddress(): void
     {
         $this->refreshQrStickerPreview();
     }
@@ -307,7 +307,7 @@ class Settings extends Component
             BrandedQrStickerPreviewData::fromLivewireForm(
                 $this->qrStickerAvery6289HeaderText,
                 $this->qrStickerAvery6289TenantLogo,
-                $this->qrStickerAvery6289ShowTenantAddress,
+                $this->qrStickerAvery6289TenantAddress,
             ),
             $sheetSetting,
         );
@@ -479,7 +479,7 @@ class Settings extends Component
 
         $this->qrStickerAvery6289HeaderText = (string) ($sheetSetting?->header_text ?? '');
         $this->qrStickerAvery6289TenantLogo = $layout->tenantLogoPlacement()->value;
-        $this->qrStickerAvery6289ShowTenantAddress = $layout->showTenantAddress();
+        $this->qrStickerAvery6289TenantAddress = $layout->tenantAddressPlacement()->value;
     }
 
     private function resolveTenant(): ?Tenant

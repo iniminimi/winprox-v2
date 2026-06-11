@@ -47,7 +47,7 @@ class RenderBrandedQrStickerPreviewAction
             ? QrCenterLogo::tenantLogoAbsolutePath($tenant)
             : null;
 
-        $tenantDetailLines = $data->showTenantAddress
+        $tenantDetailLines = $data->showTenantAddress()
             ? BrandedQrStickerTenantDetails::lines($tenant)
             : [];
 
