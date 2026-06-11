@@ -213,7 +213,6 @@ it('behoudt bedrijfsgegevens bij het opslaan van het organisatielogo', function 
     Livewire::actingAs($admin)
         ->test(Settings::class)
         ->set('orgLogo', UploadedFile::fake()->image('nieuw-logo.png'))
-        ->call('saveOrganisationLogo')
         ->assertHasNoErrors();
 
     $fresh = $tenant->fresh();

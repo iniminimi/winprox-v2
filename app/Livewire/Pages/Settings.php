@@ -197,7 +197,14 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveOrganisationLogo(UpdateOrganisationLogoAction $updateLogo): void
+    public function updatedOrgLogo(): void
+    {
+        $this->persistOrganisationLogo(
+            app(UpdateOrganisationLogoAction::class),
+        );
+    }
+
+    private function persistOrganisationLogo(UpdateOrganisationLogoAction $updateLogo): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -206,14 +213,14 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
+        if (! $this->orgLogo instanceof UploadedFile) {
+            return;
+        }
+
         Validator::make(
             ['orgLogo' => $this->orgLogo],
             ['orgLogo' => ['required', 'image', 'max:2048']],
         )->validate();
-
-        if (! $this->orgLogo instanceof UploadedFile) {
-            return;
-        }
 
         $updated = $updateLogo->handle($tenant, $this->orgLogo, (int) auth()->id());
         $this->reset('orgLogo');

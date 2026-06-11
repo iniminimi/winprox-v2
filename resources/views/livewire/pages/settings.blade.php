@@ -55,7 +55,7 @@
 
         <x-wp-settings-section :title="__('settings.org.logo_label')">
             @if ($canManageOrganisation)
-                <form wire:submit="saveOrganisationLogo" class="wp-stack-tight">
+                <div class="wp-stack-tight">
                     <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
                     <div class="wp-field">
                         @if ($organisationLogoUrl)
@@ -68,13 +68,10 @@
                                 wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
                             >
                         @endif
-                        <div class="wp-cluster wp-cluster--tight">
-                            <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
-                            <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-                        </div>
+                        <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
                         @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                </form>
+                </div>
             @else
                 @if ($organisationLogoUrl)
                     <img
