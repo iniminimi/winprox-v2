@@ -2877,17 +2877,19 @@ a.wp-kpi:hover {
     color: var(--wp-text-muted);
 }
 
-/* QR-sticker editor (instellingen) */
+/* QR-sticker editor (instellingen) — preview gecentreerd over volledige rubriekhoogte. */
 .wp-qr-sticker-editor.wp-settings-split {
-    align-items: center;
+    align-items: stretch;
+    margin-top: 0;
 }
 
 .wp-qr-sticker-editor-controls {
     min-width: 0;
 }
 
-.wp-qr-sticker-preview {
+.wp-qr-sticker-editor .wp-qr-sticker-preview {
     justify-content: center;
+    align-self: stretch;
 }
 
 .wp-qr-sticker-preview-img {

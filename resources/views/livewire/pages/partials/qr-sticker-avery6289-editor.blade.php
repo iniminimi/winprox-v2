@@ -1,5 +1,9 @@
 <div class="wp-settings-split wp-qr-sticker-editor">
-    <div class="wp-qr-sticker-editor-controls">
+    <div class="wp-qr-sticker-editor-controls wp-stack-tight">
+        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
+        <h3 class="wp-issue-card-title">{{ __('settings.qr_stickers.avery_62x89_r.title') }}</h3>
+        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.hint') }}</p>
+
         <form
             wire:submit="saveQrStickerAvery6289Settings"
             class="wp-stack-tight"

@@ -215,13 +215,6 @@
         </x-wp-settings-section>
 
         <x-wp-settings-section :title="__('settings.qr_stickers.title')">
-            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
-
-            <div class="wp-stack-tight" style="margin-top: var(--wp-space-2);">
-                <h3 class="wp-issue-card-title">{{ __('settings.qr_stickers.avery_62x89_r.title') }}</h3>
-                <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.hint') }}</p>
-            </div>
-
             @include('livewire.pages.partials.qr-sticker-avery6289-editor')
         </x-wp-settings-section>
     @endif
