@@ -72,7 +72,7 @@
 /* Surface — witte achtergrond voor contrast. */
 .btn--surface {
     background-color: var(--wp-surface);
-    border-color: var(--wp-border);
+    border-color: #6b7280;
     color: var(--wp-text);
 }
 .btn--surface:hover {
