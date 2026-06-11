@@ -43,6 +43,8 @@
             "title": "Avery 62×89-R",
             "hint": "9 étiquettes par feuille (62 × 89 mm) — Avery L7108REV.",
             "header_label": "Texte en haut de l’étiquette",
+            "current_text_label": "Texte actuel",
+            "current_text_empty": "— (aucun texte enregistré)",
             "header_placeholder": "ex. Signaler un problème ? Scannez ici",
             "header_help": "Blanc sur la bande noire en haut. Laisser vide = localisation · unité (comme sur le portail de signalement). Le numéro d’étiquette est toujours sous le code QR.",
             "background_label": "Image de fond",

@@ -43,6 +43,8 @@
             "title": "Avery 62×89-R",
             "hint": "9 labels per sheet (62 × 89 mm) — Avery L7108REV.",
             "header_label": "Text at the top of the sticker",
+            "current_text_label": "Current text",
+            "current_text_empty": "— (no text saved)",
             "header_placeholder": "e.g. Report an issue? Scan here",
             "header_help": "White on the black band at the top. Leave empty = location · unit (same as the report portal). The sticker number is always shown below the QR code.",
             "background_label": "Background image",

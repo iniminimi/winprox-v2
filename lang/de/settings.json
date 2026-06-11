@@ -43,6 +43,8 @@
             "title": "Avery 62×89-R",
             "hint": "9 Etiketten pro Bogen (62 × 89 mm) — Avery L7108REV.",
             "header_label": "Text oben auf dem Etikett",
+            "current_text_label": "Aktueller Text",
+            "current_text_empty": "— (kein Text gespeichert)",
             "header_placeholder": "z. B. Meldung? Hier scannen",
             "header_help": "Weiß auf dem schwarzen Streifen oben. Leer lassen = Standort · Unit (wie im Meldeportal). Die Etikettennummer steht immer unter dem QR-Code.",
             "background_label": "Hintergrundbild",
