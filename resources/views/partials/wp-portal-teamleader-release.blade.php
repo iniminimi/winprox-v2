@@ -1,19 +1,16 @@
 {{-- Teamleader: collega-icoon vrijgeven (eigen icoon eerst bevestigen). --}}
 @php($blockedColleagues = $this->blockedReleaseCandidates())
 
+@if ($blockedColleagues->isNotEmpty() || ($isTeamPortal ?? false))
 <div class="wp-card wp-card-pad wp-stack">
-    <div class="wp-row">
-        <h2 class="wp-section-title">{{ __('portal.teamleader.title') }}</h2>
-        @if ($blockedColleagues->isNotEmpty())
+    @if ($blockedColleagues->isNotEmpty())
+        <div class="wp-row">
+            <h2 class="wp-section-title">{{ __('portal.teamleader.title') }}</h2>
             <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleReleasePanel">
                 {{ $showReleasePanel ? __('common.button.cancel') : __('portal.teamleader.open') }}
             </button>
-        @endif
-    </div>
+        </div>
 
-    @if ($blockedColleagues->isEmpty())
-        <p class="wp-muted">{{ __('portal.teamleader.no_blocked_colleagues') }}</p>
-    @else
         <p class="wp-muted">{{ __('portal.teamleader.hint') }}</p>
 
         @if ($showReleasePanel)
@@ -71,7 +68,9 @@
 
     {{-- Worker management: ONLY on TeamPortal --}}
     @if ($isTeamPortal ?? false)
-        <div class="wp-divider"></div>
+        @if ($blockedColleagues->isNotEmpty())
+            <div class="wp-divider"></div>
+        @endif
 
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('portal.teamleader.manage_workers_title') }}</h2>
@@ -140,3 +139,4 @@
         @endif
     @endif
 </div>
+@endif

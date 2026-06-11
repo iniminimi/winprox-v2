@@ -991,6 +991,11 @@
     color: var(--wp-text);
 }
 
+.wp-portal-worker-actions {
+    justify-content: flex-end;
+    margin-bottom: 0.25rem;
+}
+
 .wp-portal-actions {
     position: sticky;
     bottom: 0;

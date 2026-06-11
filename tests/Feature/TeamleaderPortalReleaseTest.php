@@ -115,8 +115,8 @@ it('toont geen vrijgeven-knop wanneer er geen geblokkeerde collegas zijn', funct
     WorkerVerification::markVerified($team, $teamleader);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-tl-empty'])
-        ->assertSee(__('portal.teamleader.title'))
-        ->assertSee(__('portal.teamleader.no_blocked_colleagues'))
+        ->assertDontSee(__('portal.teamleader.title'))
+        ->assertDontSee(__('portal.teamleader.no_blocked_colleagues'))
         ->assertDontSeeHtml('wire:click="toggleReleasePanel"');
 });
 

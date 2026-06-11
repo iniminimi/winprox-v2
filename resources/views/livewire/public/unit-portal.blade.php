@@ -138,25 +138,25 @@
                         @endif
                         <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
                     </div>
+                    <div class="wp-row wp-portal-worker-actions">
+                        <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                    </div>
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
 
                     <div class="wp-card wp-card-pad wp-stack" wire:key="portal-open-tasks-card" x-data="{ open: false }">
-                        <div class="wp-row">
-                            <button
-                                type="button"
-                                class="wp-row"
-                                style="flex:1;width:100%;background:none;border:none;padding:0;cursor:pointer;"
-                                @click="open = !open"
-                                :aria-expanded="open"
-                            >
-                                <h2 id="portal-open-tasks" class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
-                                <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
-                                <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
-                            </button>
-                            <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
-                        </div>
+                        <button
+                            type="button"
+                            class="wp-row"
+                            style="width:100%;background:none;border:none;padding:0;cursor:pointer;"
+                            @click="open = !open"
+                            :aria-expanded="open"
+                        >
+                            <h2 id="portal-open-tasks" class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
+                            <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
+                            <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
+                        </button>
 
                         <div x-show="open" x-transition wire:key="portal-open-tasks-content">
                             @forelse ($allOpenUnitTasks as $task)
