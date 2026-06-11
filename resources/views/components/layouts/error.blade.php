@@ -8,25 +8,6 @@
 </head>
 <body class="wp-error-body">
 @php
-    $supported = config('locales.supported', []);
-    $default   = config('locales.default', config('app.locale'));
-    $sessionLocale = session('locale');
-    $userLocale    = auth()->user()?->locale;
-
-    if (is_string($sessionLocale) && in_array($sessionLocale, $supported, true)) {
-        $locale = $sessionLocale;
-    } elseif (is_string($userLocale) && in_array($userLocale, $supported, true)) {
-        $locale = $userLocale;
-    } else {
-        $locale = $default;
-    }
-
-    if (! in_array($locale, $supported, true)) {
-        $locale = $default;
-    }
-
-    app()->setLocale($locale);
-
     $randomImage = '/images/error/error_' . random_int(1, 10) . '.jpg';
 @endphp
 

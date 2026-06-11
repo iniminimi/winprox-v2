@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ApplySupportTenantContext;
+use App\Support\ResolveAppLocale;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
@@ -47,6 +48,15 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        // Foutpagina's renderen vóór web-middleware (bv. onbekende route → 404).
+        $exceptions->render(function (\Throwable $e, Request $request) {
+            if (! $request->is('api/*')) {
+                ResolveAppLocale::apply($request);
+            }
+
+            return null;
+        });
+
         $exceptions->render(function (ValidationException $e, Request $request) {
             if ($request->is('api/*')) {
                 return response()->json([
