@@ -2,17 +2,23 @@
     'title' => null,
     'description' => null,
     'image' => null,
-    'imageWidth' => 1200,
-    'imageHeight' => 630,
-    'imageType' => 'image/jpeg',
+    'imageWidth' => null,
+    'imageHeight' => null,
+    'imageType' => null,
     'url' => null,
     'type' => 'website',
 ])
 
 @php
+    use App\Support\Marketing\PromoOgImage;
+
     $socialTitle = $title ?? __('common.social.og_title');
     $socialDescription = $description ?? __('common.social.og_description');
-    $socialImage = $image ?? asset('images/promo/image_worker_og.jpg');
+    $promoOg = PromoOgImage::random();
+    $socialImage = $image ?? $promoOg['url'];
+    $socialImageWidth = $imageWidth ?? $promoOg['width'];
+    $socialImageHeight = $imageHeight ?? $promoOg['height'];
+    $socialImageType = $imageType ?? $promoOg['type'];
     $socialUrl = $url ?? url()->current();
 @endphp
 
@@ -21,9 +27,9 @@
 <meta property="og:description" content="{{ $socialDescription }}">
 <meta property="og:site_name" content="WinProx">
 <meta property="og:image" content="{{ $socialImage }}">
-<meta property="og:image:width" content="{{ $imageWidth }}">
-<meta property="og:image:height" content="{{ $imageHeight }}">
-<meta property="og:image:type" content="{{ $imageType }}">
+<meta property="og:image:width" content="{{ $socialImageWidth }}">
+<meta property="og:image:height" content="{{ $socialImageHeight }}">
+<meta property="og:image:type" content="{{ $socialImageType }}">
 <meta property="og:image:alt" content="{{ $socialTitle }}">
 @if (str_starts_with($socialImage, 'https://'))
     <meta property="og:image:secure_url" content="{{ $socialImage }}">
