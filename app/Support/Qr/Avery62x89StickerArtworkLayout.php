@@ -44,9 +44,26 @@ final class Avery62x89StickerArtworkLayout
     /** @var array{0: int, 1: int, 2: int} */
     public const HEADER_COLOR_RGB = [255, 255, 255];
 
+    /** Below QR — sticker number (Winprox-YYMM-#####). */
+    public const FOOTER_PADDING_SIDE_PX = 48;
+
+    public const FOOTER_TOP_PX = 780;
+
+    public const FOOTER_MAX_FONT_SIZE_PX = 26;
+
+    public const FOOTER_MIN_FONT_SIZE_PX = 16;
+
+    /** @var array{0: int, 1: int, 2: int} */
+    public const FOOTER_COLOR_RGB = [255, 255, 255];
+
     public static function headerMaxWidthPx(): int
     {
         return self::CANVAS_WIDTH_PX - self::HEADER_PADDING_LEFT_PX - self::HEADER_PADDING_RIGHT_PX;
+    }
+
+    public static function footerMaxWidthPx(): int
+    {
+        return self::CANVAS_WIDTH_PX - (self::FOOTER_PADDING_SIDE_PX * 2);
     }
 
     public static function qrLeftPx(): int

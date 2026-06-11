@@ -110,6 +110,37 @@
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
             </div>
         </form>
+
+        <form wire:submit="saveQrStickerAvery6289Settings" class="wp-card wp-card-pad wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('settings.qr_stickers.title') }}</h2>
+            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
+
+            <div class="wp-stack-tight">
+                <h3 class="wp-issue-card-title">{{ __('settings.qr_stickers.avery_62x89_r.title') }}</h3>
+                <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.hint') }}</p>
+                <div class="wp-field">
+                    <label class="wp-label" for="qrStickerAvery6289HeaderText">{{ __('settings.qr_stickers.avery_62x89_r.header_label') }}</label>
+                    <input
+                        type="text"
+                        id="qrStickerAvery6289HeaderText"
+                        class="wp-input"
+                        wire:model="qrStickerAvery6289HeaderText"
+                        maxlength="160"
+                        placeholder="{{ __('settings.qr_stickers.avery_62x89_r.header_placeholder') }}"
+                    >
+                    @error('qrStickerAvery6289HeaderText') <p class="wp-error">{{ $message }}</p> @enderror
+                    <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.header_help') }}</p>
+                </div>
+                <div class="wp-field">
+                    <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.background_label') }}</p>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.background_coming_soon') }}</p>
+                </div>
+            </div>
+
+            <div class="wp-cluster">
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </div>
+        </form>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack-tight">

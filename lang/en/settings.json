@@ -36,6 +36,19 @@
         "theme_preview_issue_title": "Lift out of order",
         "theme_preview_issue_desc": "Lift 3 is not working"
     },
+    "qr_stickers": {
+        "title": "QR sticker sheets",
+        "hint": "Branding for printed Avery 62×89-R QR stickers (sheet download on a location).",
+        "avery_62x89_r": {
+            "title": "Avery 62×89-R",
+            "hint": "9 labels per sheet (62 × 89 mm) — Avery L7108REV.",
+            "header_label": "Text at the top of the sticker",
+            "header_placeholder": "e.g. Report an issue? Scan here",
+            "header_help": "White on the black band at the top. Leave empty = location · unit (same as the report portal). The sticker number is always shown below the QR code.",
+            "background_label": "Background image",
+            "background_coming_soon": "Custom background upload will follow in a later update. Until then the default WinProx design is used."
+        }
+    },
     "privacy": {
         "title": "Privacy & data export",
         "hint": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",

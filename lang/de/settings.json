@@ -36,6 +36,19 @@
         "theme_preview_issue_title": "Aufzug defekt",
         "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht"
     },
+    "qr_stickers": {
+        "title": "QR-Etikettenbögen",
+        "hint": "Branding für gedruckte Avery 62×89-R QR-Etiketten (Bogen-Download auf einem Standort).",
+        "avery_62x89_r": {
+            "title": "Avery 62×89-R",
+            "hint": "9 Etiketten pro Bogen (62 × 89 mm) — Avery L7108REV.",
+            "header_label": "Text oben auf dem Etikett",
+            "header_placeholder": "z. B. Meldung? Hier scannen",
+            "header_help": "Weiß auf dem schwarzen Streifen oben. Leer lassen = Standort · Unit (wie im Meldeportal). Die Etikettennummer steht immer unter dem QR-Code.",
+            "background_label": "Hintergrundbild",
+            "background_coming_soon": "Eigenes Hintergrundbild folgt in einem späteren Update. Bis dahin wird das Standard-WinProx-Design verwendet."
+        }
+    },
     "privacy": {
         "title": "Datenschutz & Datenexport",
         "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",

@@ -45,8 +45,9 @@ final class LocationQrPackDownloadController
             $entries = [];
             foreach ($qrCodes as $qrCode) {
                 $entries[] = new QrStickerEntry(
-                    $qrCode->display_sticker_number,
-                    route('qr.scan', ['token' => $qrCode->token]),
+                    unitLabel: $qrCode->display_sticker_number,
+                    reportUrl: route('qr.scan', ['token' => $qrCode->token]),
+                    stickerNumber: $qrCode->display_sticker_number,
                 );
             }
 
@@ -67,8 +68,10 @@ final class LocationQrPackDownloadController
         $template = QrStickerSheetTemplate::tryFrom((string) $request->query('template', ''))
             ?? QrStickerSheetTemplate::Avery55x55S;
 
+        $location->loadMissing('tenant');
+
         try {
-            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath);
+            $binary = $exporter->buildDocxBinaryFromEntries($entries, $template, $centerLogoPath, $location->tenant);
             $filename = $exporter->downloadFilename($location, $template);
         } catch (InvalidArgumentException $exception) {
             abort(503, $exception->getMessage());

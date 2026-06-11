@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Support\Qr\Word;
 
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
@@ -48,7 +49,12 @@ final class QrStickerWordExporter
     /**
      * @param  list<QrStickerEntry>  $entries
      */
-    public function buildDocxBinaryFromEntries(array $entries, QrStickerSheetTemplate $template, ?string $centerLogoPath = null): string
+    public function buildDocxBinaryFromEntries(
+        array $entries,
+        QrStickerSheetTemplate $template,
+        ?string $centerLogoPath = null,
+        ?Tenant $tenant = null,
+    ): string
     {
         if (! QrCodePngWriter::canGenerate()) {
             throw new InvalidArgumentException(
@@ -64,7 +70,7 @@ final class QrStickerWordExporter
         return match ($template) {
             QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $centerLogoPath),
             QrStickerSheetTemplate::Herma7050 => $this->herma7050Builder->build($entries, $centerLogoPath),
-            QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath),
+            QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant),
         };
     }
 }

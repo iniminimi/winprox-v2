@@ -24,6 +24,7 @@ class Tenant extends Model
         'country_code',
         'logo_path',
         'portal_background_path',
+        'qr_sticker_avery_62x89_header_text',
         'custom_theme_active',
         'custom_theme_bg',
         'custom_theme_btn',

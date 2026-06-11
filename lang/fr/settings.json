@@ -36,6 +36,19 @@
         "theme_preview_issue_title": "Ascenseur en panne",
         "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas"
     },
+    "qr_stickers": {
+        "title": "Feuilles d’étiquettes QR",
+        "hint": "Image de marque pour les étiquettes QR Avery 62×89-R imprimées (téléchargement depuis une localisation).",
+        "avery_62x89_r": {
+            "title": "Avery 62×89-R",
+            "hint": "9 étiquettes par feuille (62 × 89 mm) — Avery L7108REV.",
+            "header_label": "Texte en haut de l’étiquette",
+            "header_placeholder": "ex. Signaler un problème ? Scannez ici",
+            "header_help": "Blanc sur la bande noire en haut. Laisser vide = localisation · unité (comme sur le portail de signalement). Le numéro d’étiquette est toujours sous le code QR.",
+            "background_label": "Image de fond",
+            "background_coming_soon": "Le téléversement d’un fond personnalisé suivra dans une prochaine mise à jour. D’ici là, le design WinProx par défaut est utilisé."
+        }
+    },
     "privacy": {
         "title": "Confidentialité et export de données",
         "hint": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr.",

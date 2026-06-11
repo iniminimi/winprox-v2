@@ -36,6 +36,12 @@ class UpdateOrganisationAction
             $updates['portal_background_path'] = $data['portal_background_path'];
         }
 
+        if (array_key_exists('qr_sticker_avery_62x89_header_text', $data)) {
+            $updates['qr_sticker_avery_62x89_header_text'] = filled($data['qr_sticker_avery_62x89_header_text'] ?? null)
+                ? (string) $data['qr_sticker_avery_62x89_header_text']
+                : null;
+        }
+
         $tenant->update($updates);
 
         $this->audit->record(
@@ -52,6 +58,7 @@ class UpdateOrganisationAction
                 'country_code' => $tenant->country_code,
                 'logo_path' => $tenant->logo_path,
                 'portal_background_path' => $tenant->portal_background_path,
+                'qr_sticker_avery_62x89_header_text' => $tenant->qr_sticker_avery_62x89_header_text,
                 'custom_theme_active' => $tenant->custom_theme_active,
                 'custom_theme_bg' => $tenant->custom_theme_bg,
                 'custom_theme_btn' => $tenant->custom_theme_btn,

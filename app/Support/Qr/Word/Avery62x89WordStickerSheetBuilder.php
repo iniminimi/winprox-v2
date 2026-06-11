@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Support\Qr\Word;
 
+use App\Models\Tenant;
 use App\Support\Qr\BrandedQrStickerCompositor;
+use App\Support\Qr\BrandedQrStickerHeaderText;
 use App\Support\Qr\QrStickerBackground;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerSheetTemplate;
@@ -27,7 +29,7 @@ final class Avery62x89WordStickerSheetBuilder
     /**
      * @param  list<QrStickerEntry>  $entries
      */
-    public function build(array $entries, ?string $centerLogoPath = null): string
+    public function build(array $entries, ?string $centerLogoPath = null, ?Tenant $tenant = null): string
     {
         $phpWord = new PhpWord;
         $phpWord->setDefaultFontName('Arial');
@@ -41,7 +43,7 @@ final class Avery62x89WordStickerSheetBuilder
         try {
             foreach ($pages as $pageIndex => $pageEntries) {
                 $section = $phpWord->addSection(self::sectionStyle($pageIndex > 0));
-                $this->addStickerTable($section, $pageEntries, $tempFiles, $backgroundPath, $centerLogoPath);
+                $this->addStickerTable($section, $pageEntries, $tempFiles, $backgroundPath, $centerLogoPath, $tenant);
             }
 
             return $this->saveToString($phpWord);
@@ -64,6 +66,7 @@ final class Avery62x89WordStickerSheetBuilder
         array &$tempFiles,
         string $backgroundPath,
         ?string $centerLogoPath = null,
+        ?Tenant $tenant = null,
     ): void {
         $table = $section->addTable([
             'alignment' => JcTable::START,
@@ -111,6 +114,7 @@ final class Avery62x89WordStickerSheetBuilder
                     $backgroundPath,
                     $tempFiles,
                     $centerLogoPath,
+                    $tenant,
                 );
 
                 $cell->addImage($pngPath, [
@@ -133,6 +137,7 @@ final class Avery62x89WordStickerSheetBuilder
         string $backgroundPath,
         array &$tempFiles,
         ?string $centerLogoPath = null,
+        ?Tenant $tenant = null,
     ): string {
         $path = tempnam(sys_get_temp_dir(), 'wp-branded-sticker-');
         if ($path === false) {
@@ -147,7 +152,8 @@ final class Avery62x89WordStickerSheetBuilder
             $entry->reportUrl,
             $pngPath,
             $centerLogoPath,
-            $entry->unitLabel,
+            BrandedQrStickerHeaderText::resolve($tenant, $entry->headerFallback),
+            $entry->stickerNumber,
         );
         $tempFiles[] = $pngPath;
 

@@ -25,44 +25,46 @@ it('composites branded sticker at full artwork canvas size', function () {
         ->and($info[1])->toBe(Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX);
 });
 
-it('renders branded sticker header text from unit label', function () {
+it('renders branded sticker header and footer text', function () {
     if (! QrCodePngWriter::canGenerate()) {
         test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
     }
 
     $compositor = new BrandedQrStickerCompositor;
-    $withoutHeader = $compositor->compositeBytes(
+    $plain = $compositor->compositeBytes(
         QrStickerBackground::defaultAvery62x89AbsolutePath(),
         'https://example.test/melden/demo-token',
         null,
     );
-    $withHeader = $compositor->compositeBytes(
+    $labeled = $compositor->compositeBytes(
         QrStickerBackground::defaultAvery62x89AbsolutePath(),
         'https://example.test/melden/demo-token',
         null,
-        'Lift 1',
+        'Hal C · Lift 9',
+        'Winprox-2606-12345',
     );
 
-    expect($withHeader)->not->toBe($withoutHeader);
+    expect($labeled)->not->toBe($plain);
 });
 
-it('ignores blank branded sticker header text', function () {
+it('ignores blank branded sticker header and footer text', function () {
     if (! QrCodePngWriter::canGenerate()) {
         test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
     }
 
     $compositor = new BrandedQrStickerCompositor;
-    $withoutHeader = $compositor->compositeBytes(
+    $plain = $compositor->compositeBytes(
         QrStickerBackground::defaultAvery62x89AbsolutePath(),
         'https://example.test/melden/demo-token',
         null,
     );
-    $withBlankHeader = $compositor->compositeBytes(
+    $blank = $compositor->compositeBytes(
         QrStickerBackground::defaultAvery62x89AbsolutePath(),
         'https://example.test/melden/demo-token',
         null,
         '   ',
+        '   ',
     );
 
-    expect($withBlankHeader)->toBe($withoutHeader);
+    expect($blank)->toBe($plain);
 });

@@ -94,6 +94,15 @@ final class BrandedQrStickerHeaderRenderer
         $maxWidth = Avery62x89StickerArtworkLayout::headerMaxWidthPx();
         $maxLines = Avery62x89StickerArtworkLayout::HEADER_MAX_LINES;
 
+        $explicitLines = self::explicitLines($text);
+        if (count($explicitLines) > 1) {
+            return self::layoutExplicitLines($explicitLines, $fontPath, $maxWidth, $maxLines);
+        }
+
+        if (count($explicitLines) === 1) {
+            $text = $explicitLines[0];
+        }
+
         for ($fontSize = Avery62x89StickerArtworkLayout::HEADER_MAX_FONT_SIZE_PX;
             $fontSize >= Avery62x89StickerArtworkLayout::HEADER_MIN_FONT_SIZE_PX;
             $fontSize--) {
@@ -114,6 +123,47 @@ final class BrandedQrStickerHeaderRenderer
             'font_size' => $fontSize,
             'lines' => [self::truncateToWidth($text, $fontPath, $fontSize, $maxWidth)],
         ];
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function explicitLines(string $text): array
+    {
+        $parts = preg_split('/\R/u', $text) ?: [];
+
+        return array_values(array_filter(array_map(static fn (string $line): string => trim($line), $parts), static fn (string $line): bool => $line !== ''));
+    }
+
+    /**
+     * @param  list<string>  $lines
+     * @return array{font_size: int, lines: list<string>}
+     */
+    private static function layoutExplicitLines(array $lines, string $fontPath, int $maxWidth, int $maxLines): array
+    {
+        $lines = array_slice($lines, 0, $maxLines);
+
+        for ($fontSize = Avery62x89StickerArtworkLayout::HEADER_MAX_FONT_SIZE_PX;
+            $fontSize >= Avery62x89StickerArtworkLayout::HEADER_MIN_FONT_SIZE_PX;
+            $fontSize--) {
+            $fits = true;
+            foreach ($lines as $line) {
+                if (self::textWidth($fontPath, $fontSize, $line) > $maxWidth) {
+                    $fits = false;
+                    break;
+                }
+            }
+
+            $lineHeight = $fontSize * Avery62x89StickerArtworkLayout::HEADER_LINE_HEIGHT_RATIO;
+            if ($fits && ($lineHeight * count($lines)) <= Avery62x89StickerArtworkLayout::HEADER_MAX_HEIGHT_PX) {
+                return ['font_size' => $fontSize, 'lines' => $lines];
+            }
+        }
+
+        $fontSize = Avery62x89StickerArtworkLayout::HEADER_MIN_FONT_SIZE_PX;
+        $lines[count($lines) - 1] = self::truncateToWidth($lines[count($lines) - 1], $fontPath, $fontSize, $maxWidth);
+
+        return ['font_size' => $fontSize, 'lines' => $lines];
     }
 
     /**

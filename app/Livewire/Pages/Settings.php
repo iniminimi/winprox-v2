@@ -6,6 +6,7 @@ use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
+use App\Actions\Team\UpdateTenantQrStickerAvery6289SettingsAction;
 use App\Enums\UiTheme;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
@@ -52,6 +53,8 @@ class Settings extends Component
 
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $portalBackground = null;
+
+    public string $qrStickerAvery6289HeaderText = '';
 
     public string $uiTheme = '';
 
@@ -206,6 +209,31 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
+    public function saveQrStickerAvery6289Settings(UpdateTenantQrStickerAvery6289SettingsAction $updateSettings): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        Validator::make(
+            ['qrStickerAvery6289HeaderText' => $this->qrStickerAvery6289HeaderText],
+            ['qrStickerAvery6289HeaderText' => ['nullable', 'string', 'max:160']],
+        )->validate();
+
+        $updated = $updateSettings->handle($tenant, $this->qrStickerAvery6289HeaderText, (int) auth()->id());
+        $this->fillOrganisationFromTenant($updated);
+
+        $user = auth()->user();
+        if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
+            $user->setRelation('tenant', $updated);
+        }
+
+        $this->dispatch('saved');
+    }
+
     public function saveOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
     {
         $tenant = $this->resolveTenant();
@@ -294,6 +322,7 @@ class Settings extends Component
         $this->customThemeActive = (bool) $tenant->custom_theme_active;
         $this->customThemeBg = $tenant->custom_theme_bg ?? '#e7e8ec';
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
+        $this->qrStickerAvery6289HeaderText = (string) ($tenant->qr_sticker_avery_62x89_header_text ?? '');
     }
 
     private function resolveTenant(): ?Tenant
