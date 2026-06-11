@@ -2,6 +2,8 @@
     'title' => null,
     'description' => null,
     'image' => null,
+    'imageWidth' => 1200,
+    'imageHeight' => 896,
     'url' => null,
     'type' => 'website',
 ])
@@ -17,6 +19,12 @@
 <meta property="og:title" content="{{ $socialTitle }}">
 <meta property="og:description" content="{{ $socialDescription }}">
 <meta property="og:image" content="{{ $socialImage }}">
+<meta property="og:image:width" content="{{ $imageWidth }}">
+<meta property="og:image:height" content="{{ $imageHeight }}">
+<meta property="og:image:type" content="image/png">
+@if (str_starts_with($socialImage, 'https://'))
+    <meta property="og:image:secure_url" content="{{ $socialImage }}">
+@endif
 <meta property="og:url" content="{{ $socialUrl }}">
 <meta property="og:type" content="{{ $type }}">
 <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
