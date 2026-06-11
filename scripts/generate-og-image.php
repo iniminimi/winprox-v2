@@ -9,10 +9,16 @@ declare(strict_types=1);
  *   php scripts/generate-og-image.php public/images/promo/mijn_foto.png
  *   php scripts/generate-og-image.php public/images/promo/mijn_foto.png og_3
  *
- * Output: public/images/promo/og_{naam}.jpg — wordt automatisch gekozen voor link-previews.
+ * Output: public/images/promo/og_{naam}.jpg
+ *   og_1.jpg = welcome/promo/site; og_2.jpg = QR-portaal (/melden, /team, …).
  */
 
-$sourcePath = $argv[1] ?? __DIR__.'/../public/images/promo/image_worker.png';
+$sourcePath = $argv[1] ?? null;
+
+if ($sourcePath === null || ! is_string($sourcePath)) {
+    fwrite(STDERR, "Gebruik: php scripts/generate-og-image.php <bron.png> [og_naam]\n");
+    exit(1);
+}
 $ogBasename = $argv[2] ?? null;
 
 if (! is_file($sourcePath)) {

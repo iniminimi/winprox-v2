@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Support\Marketing;
 
 /**
- * Willekeurige OG-afbeelding uit public/images/promo/og_*.jpg (Messenger-vriendelijk JPEG).
+ * OG-afbeeldingen uit public/images/promo/og_*.jpg (Messenger-vriendelijk JPEG).
+ * og_1 = site (welcome, promo, …); og_2 = QR-portaal.
  */
 final class PromoOgImage
 {
@@ -15,37 +16,38 @@ final class PromoOgImage
 
     private const MIME = 'image/jpeg';
 
+    private const SITE_FILE = 'og_1.jpg';
+
+    private const PORTAL_FILE = 'og_2.jpg';
+
     /**
      * @return array{url: string, width: int, height: int, type: string}
      */
-    public static function random(): array
+    public static function forSite(): array
     {
-        $files = self::discover();
-
-        if ($files === []) {
-            return self::fromPath(public_path('images/promo/og_1.jpg'));
-        }
-
-        $path = $files[random_int(0, count($files) - 1)];
-
-        return self::fromPath($path);
+        return self::fromNamedFile(self::SITE_FILE);
     }
 
     /**
-     * @return list<string>
+     * @return array{url: string, width: int, height: int, type: string}
      */
-    private static function discover(): array
+    public static function forPortal(): array
     {
-        $paths = glob(public_path('images/promo/og_*.jpg')) ?: [];
+        return self::fromNamedFile(self::PORTAL_FILE);
+    }
 
-        $files = array_values(array_filter(
-            $paths,
-            static fn (string $path): bool => is_file($path) && is_readable($path),
-        ));
+    /**
+     * @return array{url: string, width: int, height: int, type: string}
+     */
+    private static function fromNamedFile(string $filename): array
+    {
+        $path = public_path('images/promo/'.$filename);
 
-        sort($files);
+        if (! is_file($path)) {
+            $path = public_path('images/promo/'.self::SITE_FILE);
+        }
 
-        return $files;
+        return self::fromPath($path);
     }
 
     /**

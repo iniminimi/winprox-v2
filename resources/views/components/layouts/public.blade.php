@@ -4,6 +4,7 @@
     'socialDescription' => null,
     'socialUrl' => null,
     'socialImage' => null,
+    'ogContext' => 'portal',
 ])
 
 @php
@@ -57,6 +58,7 @@
         'description' => $socialDescription ?? __('portal.social.og_description'),
         'url' => $socialUrl,
         'image' => $socialImage,
+        'ogContext' => $ogContext,
     ])
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])

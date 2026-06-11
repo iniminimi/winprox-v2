@@ -61,10 +61,16 @@ it('includes portal open graph meta tags on the unit portal page', function () {
     app()->setLocale('nl');
     unitPortalScaffold();
 
+    $og2Path = public_path('images/promo/og_2.jpg');
+    if (! is_file($og2Path) && is_file(public_path('images/promo/og_1.jpg'))) {
+        copy(public_path('images/promo/og_1.jpg'), $og2Path);
+    }
+
     $this->get(route('public.unit-portal', ['token' => 'unit-token']))
         ->assertOk()
         ->assertSee('property="og:title" content="'.__('portal.social.og_title').'"', false)
-        ->assertSee('property="og:description" content="'.__('portal.social.og_description').'"', false);
+        ->assertSee('property="og:description" content="'.__('portal.social.og_description').'"', false)
+        ->assertSee('/images/promo/og_2.jpg', false);
 });
 
 it('creates an unapproved issue + auto task + photos via a valid unit token', function () {

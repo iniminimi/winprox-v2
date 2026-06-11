@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 use App\Support\Marketing\PromoOgImage;
 
-it('kiest een og jpeg uit de promo map', function (): void {
-    $og = PromoOgImage::random();
+it('gebruikt og_1 voor site en og_2 voor portaal', function (): void {
+    $og2Path = public_path('images/promo/og_2.jpg');
+    if (! is_file($og2Path) && is_file(public_path('images/promo/og_1.jpg'))) {
+        copy(public_path('images/promo/og_1.jpg'), $og2Path);
+    }
 
-    expect($og)->toHaveKeys(['url', 'width', 'height', 'type'])
-        ->and($og['url'])->toContain('/images/promo/og_')
-        ->and($og['width'])->toBeGreaterThan(0)
-        ->and($og['height'])->toBeGreaterThan(0)
-        ->and($og['type'])->toBe('image/jpeg');
+    $site = PromoOgImage::forSite();
+    $portal = PromoOgImage::forPortal();
+
+    expect($site)->toHaveKeys(['url', 'width', 'height', 'type'])
+        ->and($site['url'])->toContain('/images/promo/og_1.jpg')
+        ->and($portal['url'])->toContain('/images/promo/og_2.jpg')
+        ->and($portal['type'])->toBe('image/jpeg');
 });

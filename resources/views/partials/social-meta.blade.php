@@ -7,6 +7,7 @@
     'imageType' => null,
     'url' => null,
     'type' => 'website',
+    'ogContext' => 'site',
 ])
 
 @php
@@ -14,7 +15,7 @@
 
     $socialTitle = $title ?? __('common.social.og_title');
     $socialDescription = $description ?? __('common.social.og_description');
-    $promoOg = PromoOgImage::random();
+    $promoOg = $ogContext === 'portal' ? PromoOgImage::forPortal() : PromoOgImage::forSite();
     $socialImage = $image ?? $promoOg['url'];
     $socialImageWidth = $imageWidth ?? $promoOg['width'];
     $socialImageHeight = $imageHeight ?? $promoOg['height'];

@@ -3,6 +3,7 @@
     :social-title="__('promo.social.og_title')"
     :social-description="__('promo.social.og_description')"
     :social-url="route('promo')"
+    og-context="site"
 >
     <div class="wp-stack wp-promo">
         <h1 class="wp-page-title">{{ __('promo.title') }}</h1>
