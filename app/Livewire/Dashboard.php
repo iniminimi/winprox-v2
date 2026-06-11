@@ -8,6 +8,7 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Task;
 use App\Models\Unit;
+use App\Support\Onboarding\TenantOnboardingState;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -48,7 +49,7 @@ class Dashboard extends Component
             'stats' => $stats,
             'recent' => $recent,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
-            'hasNoCategories' => \App\Models\Category::query()->count() === 0,
+            'onboarding' => TenantOnboardingState::current(),
         ]);
     }
 }

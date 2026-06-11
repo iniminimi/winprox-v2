@@ -2,11 +2,14 @@
 
 use App\Enums\TaskStatus;
 use App\Livewire\Dashboard;
+use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Models\Worker;
 use App\Support\Tenancy;
 use Livewire\Livewire;
 
@@ -18,6 +21,9 @@ it('toont het dashboard met tenant-gescopete KPI-tellingen', function () {
 
     Tenancy::actAs($tenant->id);
 
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->count(3)->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 
@@ -64,6 +70,9 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
 
     Tenancy::actAs($tenant->id);
 
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 
@@ -83,6 +92,9 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
 
     Tenancy::actAs($tenant->id);
 
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 

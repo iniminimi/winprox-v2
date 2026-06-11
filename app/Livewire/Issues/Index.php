@@ -13,6 +13,7 @@ use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Onboarding\TenantOnboardingState;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -316,9 +317,6 @@ class Index extends Component
             }
         }
 
-        $tenant = auth()->user()->tenant;
-        $hasNoLocationsOrUnits = $tenant && $tenant->locations()->withCount('units')->get()->isEmpty();
-
         return view('livewire.issues.index', [
             'groups' => $groups,
             'total' => $issues->count(),
@@ -326,7 +324,7 @@ class Index extends Component
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
             'highlightIssue' => $this->highlightIssue,
-            'hasNoLocationsOrUnits' => $hasNoLocationsOrUnits,
+            'onboarding' => TenantOnboardingState::current(),
             'createLocations' => $this->showCreateModal
                 ? Location::query()->orderBy('name')->get()
                 : collect(),

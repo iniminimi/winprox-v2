@@ -6,6 +6,7 @@ use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Task;
+use App\Support\Onboarding\TenantOnboardingState;
 use Carbon\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -193,9 +194,6 @@ class Calendar extends Component
         $weekDayLabels = collect(range(0, 6))
             ->map(fn (int $offset) => $gridStart->copy()->startOfWeek(Carbon::MONDAY)->addDays($offset)->isoFormat('dd'));
 
-        $tenant = auth()->user()->tenant;
-        $hasNoLocationsOrUnits = $tenant && $tenant->locations()->withCount('units')->get()->isEmpty();
-
         return view('livewire.pages.calendar', [
             'days' => $days,
             'entriesByDate' => $entriesByDate,
@@ -206,7 +204,7 @@ class Calendar extends Component
             'isDayView' => $isDayView,
             'locations' => Location::query()->orderBy('name')->get(),
             'dayPage' => $this->dayPage,
-            'hasNoLocationsOrUnits' => $hasNoLocationsOrUnits,
+            'onboarding' => TenantOnboardingState::current(),
         ]);
     }
 }

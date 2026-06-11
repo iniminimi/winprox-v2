@@ -1,15 +1,11 @@
 <div class="wp-stack">
-    @if ($hasNoCategories)
-        <div class="wp-card wp-card-pad wp-onboarding-card">
-            <div class="wp-stack">
-                <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.title') }}</strong></p>
-                <p class="wp-muted">{{ __('dashboard.onboarding.text') }}</p>
-                <a href="{{ route('locations.index') }}" class="btn btn--primary btn--sm wp-badge-critical">
-                    {{ __('dashboard.onboarding.button') }}
-                </a>
-            </div>
-        </div>
+    @if ($onboarding->showTeamsBanner())
+        <x-wp-onboarding-banner stage="teams" />
+    @elseif ($onboarding->showCategoriesBanner())
+        <x-wp-onboarding-banner stage="categories" />
+    @endif
 
+    @if ($onboarding->showWelcomeGuide)
         <div class="wp-stack-loose">
             <h1 class="text-4xl font-bold text-gray-900">{{ __('dashboard.welcome') }}</h1>
         </div>
@@ -44,7 +40,9 @@
                 </div>
             </div>
         </div>
-    @else
+    @endif
+
+    @if (! $onboarding->blocksDashboardMain())
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title

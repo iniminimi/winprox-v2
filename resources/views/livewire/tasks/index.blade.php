@@ -1,14 +1,8 @@
 <div class="wp-stack wp-tasks-page">
-    @if ($hasNoLocationsOrUnits)
-        <div class="wp-card wp-card-pad wp-onboarding-card">
-            <div class="wp-stack">
-                <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.title') }}</strong></p>
-                <p class="wp-muted">{{ __('dashboard.onboarding.text') }}</p>
-                <a href="{{ route('locations.index') }}" class="btn btn--primary btn--sm wp-badge-critical">
-                    {{ __('dashboard.onboarding.button') }}
-                </a>
-            </div>
-        </div>
+    @if ($onboarding->showTeamsBanner())
+        <x-wp-onboarding-banner stage="teams" />
+    @elseif ($onboarding->showCategoriesOrLocationsBanner())
+        <x-wp-onboarding-banner stage="categories" />
     @else
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">

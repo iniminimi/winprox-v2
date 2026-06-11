@@ -9,6 +9,7 @@ use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
+use App\Support\Onboarding\TenantOnboardingState;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -93,8 +94,6 @@ class Index extends Component
             }
         }
 
-        $tenant = auth()->user()->tenant;
-        $hasNoLocationsOrUnits = $tenant && $tenant->locations()->withCount('units')->get()->isEmpty();
         $hasNoIssues = Issue::query()->count() === 0;
 
         return view('livewire.tasks.index', [
@@ -103,7 +102,7 @@ class Index extends Component
             'priorities' => TaskPriority::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->priorityFilter !== '' || $this->search !== '' || $this->recurring,
-            'hasNoLocationsOrUnits' => $hasNoLocationsOrUnits,
+            'onboarding' => TenantOnboardingState::current(),
             'hasNoIssues' => $hasNoIssues,
         ]);
     }

@@ -20,6 +20,7 @@ use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Schema;
 use Livewire\Attributes\Layout;
@@ -408,6 +409,7 @@ class Index extends Component
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
+            'onboarding' => TenantOnboardingState::current(),
         ]);
     }
 }
