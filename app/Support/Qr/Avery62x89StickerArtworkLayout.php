@@ -24,6 +24,31 @@ final class Avery62x89StickerArtworkLayout
     /** Slightly above geometric centre — clears “Scan” / arrow artwork. */
     public const QR_CENTER_Y_PX = 512;
 
+    /** Upper black band — unit label left-aligned, clears Prox logo (top-right). */
+    public const HEADER_PADDING_LEFT_PX = 36;
+
+    public const HEADER_PADDING_RIGHT_PX = 200;
+
+    public const HEADER_TOP_PX = 72;
+
+    public const HEADER_MAX_HEIGHT_PX = 140;
+
+    public const HEADER_MAX_FONT_SIZE_PX = 42;
+
+    public const HEADER_MIN_FONT_SIZE_PX = 22;
+
+    public const HEADER_LINE_HEIGHT_RATIO = 1.15;
+
+    public const HEADER_MAX_LINES = 2;
+
+    /** @var array{0: int, 1: int, 2: int} */
+    public const HEADER_COLOR_RGB = [255, 255, 255];
+
+    public static function headerMaxWidthPx(): int
+    {
+        return self::CANVAS_WIDTH_PX - self::HEADER_PADDING_LEFT_PX - self::HEADER_PADDING_RIGHT_PX;
+    }
+
     public static function qrLeftPx(): int
     {
         return self::QR_CENTER_X_PX - (int) round(self::QR_SIZE_PX / 2);

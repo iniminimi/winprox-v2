@@ -25,21 +25,44 @@ it('composites branded sticker at full artwork canvas size', function () {
         ->and($info[1])->toBe(Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX);
 });
 
-it('rejects header text until branded header support ships', function () {
+it('renders branded sticker header text from unit label', function () {
     if (! QrCodePngWriter::canGenerate()) {
         test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
     }
 
     $compositor = new BrandedQrStickerCompositor;
-    $path = tempnam(sys_get_temp_dir(), 'wp-branded-header-').'.png';
-
-    expect(fn () => $compositor->writeFile(
+    $withoutHeader = $compositor->compositeBytes(
         QrStickerBackground::defaultAvery62x89AbsolutePath(),
         'https://example.test/melden/demo-token',
-        $path,
+        null,
+    );
+    $withHeader = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
         null,
         'Lift 1',
-    ))->toThrow(RuntimeException::class);
+    );
 
-    @unlink($path);
+    expect($withHeader)->not->toBe($withoutHeader);
+});
+
+it('ignores blank branded sticker header text', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $compositor = new BrandedQrStickerCompositor;
+    $withoutHeader = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+    );
+    $withBlankHeader = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+        '   ',
+    );
+
+    expect($withBlankHeader)->toBe($withoutHeader);
 });

@@ -107,7 +107,7 @@ final class Avery62x89WordStickerSheetBuilder
                 }
 
                 $pngPath = $this->writeTempCompositePng(
-                    $entry->reportUrl,
+                    $entry,
                     $backgroundPath,
                     $tempFiles,
                     $centerLogoPath,
@@ -129,7 +129,7 @@ final class Avery62x89WordStickerSheetBuilder
      * @param  list<string>  $tempFiles
      */
     private function writeTempCompositePng(
-        string $reportUrl,
+        QrStickerEntry $entry,
         string $backgroundPath,
         array &$tempFiles,
         ?string $centerLogoPath = null,
@@ -142,7 +142,13 @@ final class Avery62x89WordStickerSheetBuilder
         $pngPath = $path.'.png';
         @unlink($path);
 
-        $this->compositor->writeFile($backgroundPath, $reportUrl, $pngPath, $centerLogoPath);
+        $this->compositor->writeFile(
+            $backgroundPath,
+            $entry->reportUrl,
+            $pngPath,
+            $centerLogoPath,
+            $entry->unitLabel,
+        );
         $tempFiles[] = $pngPath;
 
         return $pngPath;

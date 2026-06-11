@@ -19,11 +19,7 @@ final class BrandedQrStickerCompositor
         ?string $centerLogoPath = null,
         ?string $headerText = null,
     ): void {
-        if ($headerText !== null && trim($headerText) !== '') {
-            throw new RuntimeException('Branded sticker header text is not supported yet.');
-        }
-
-        $bytes = $this->compositeBytes($backgroundPath, $reportUrl, $centerLogoPath);
+        $bytes = $this->compositeBytes($backgroundPath, $reportUrl, $centerLogoPath, $headerText);
 
         if (file_put_contents($absoluteOutputPath, $bytes) === false) {
             throw new RuntimeException('Unable to write branded QR sticker PNG.');
@@ -34,6 +30,7 @@ final class BrandedQrStickerCompositor
         string $backgroundPath,
         string $reportUrl,
         ?string $centerLogoPath = null,
+        ?string $headerText = null,
     ): string {
         if (! is_file($backgroundPath)) {
             throw new RuntimeException('Branded sticker background file is missing.');
@@ -47,17 +44,17 @@ final class BrandedQrStickerCompositor
         );
 
         if (extension_loaded('imagick')) {
-            return $this->compositeWithImagick($backgroundPath, $qrBytes);
+            return $this->compositeWithImagick($backgroundPath, $qrBytes, $headerText);
         }
 
         if (extension_loaded('gd')) {
-            return $this->compositeWithGd($backgroundPath, $qrBytes);
+            return $this->compositeWithGd($backgroundPath, $qrBytes, $headerText);
         }
 
         throw new RuntimeException('Branded QR sticker export requires the PHP gd or imagick extension.');
     }
 
-    private function compositeWithGd(string $backgroundPath, string $qrBytes): string
+    private function compositeWithGd(string $backgroundPath, string $qrBytes, ?string $headerText): string
     {
         $loaded = @imagecreatefrompng($backgroundPath);
         if ($loaded === false) {
@@ -68,8 +65,13 @@ final class BrandedQrStickerCompositor
         }
 
         $canvas = $this->normalizeCanvasWithGd($loaded);
-        if ($canvas !== $loaded) {
-            imagedestroy($loaded);
+        imagedestroy($loaded);
+
+        imagealphablending($canvas, true);
+        imagesavealpha($canvas, false);
+
+        if ($headerText !== null && trim($headerText) !== '') {
+            BrandedQrStickerHeaderRenderer::drawOnGd($canvas, $headerText);
         }
 
         $qr = imagecreatefromstring($qrBytes);
@@ -112,17 +114,12 @@ final class BrandedQrStickerCompositor
     }
 
     /**
-     * @return \GdImage|resource
+     * @return \GdImage
      */
     private function normalizeCanvasWithGd(\GdImage $loaded): \GdImage
     {
         $width = imagesx($loaded);
         $height = imagesy($loaded);
-
-        if ($width === Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
-            && $height === Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX) {
-            return $loaded;
-        }
 
         $canvas = imagecreatetruecolor(
             Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX,
@@ -131,6 +128,9 @@ final class BrandedQrStickerCompositor
         if ($canvas === false) {
             throw new RuntimeException('Unable to allocate branded sticker canvas.');
         }
+
+        imagealphablending($canvas, true);
+        imagesavealpha($canvas, false);
 
         imagecopyresampled(
             $canvas,
@@ -148,7 +148,7 @@ final class BrandedQrStickerCompositor
         return $canvas;
     }
 
-    private function compositeWithImagick(string $backgroundPath, string $qrBytes): string
+    private function compositeWithImagick(string $backgroundPath, string $qrBytes, ?string $headerText): string
     {
         $canvas = new Imagick($backgroundPath);
         if ($canvas->getImageWidth() !== Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
@@ -159,6 +159,10 @@ final class BrandedQrStickerCompositor
                 Imagick::FILTER_LANCZOS,
                 1,
             );
+        }
+
+        if ($headerText !== null && trim($headerText) !== '') {
+            BrandedQrStickerHeaderRenderer::drawOnImagick($canvas, $headerText);
         }
 
         $qr = new Imagick;
