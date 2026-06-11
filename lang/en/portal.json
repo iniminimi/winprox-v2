@@ -188,7 +188,7 @@
     "unit": {
         "current_photos": "Unit photos",
         "update_photos": "Update photos",
-        "update_photos_hint": "Add new photos to document the current situation.",
+        "update_photos_hint": "Add up to 4 photos to document the unit's situation. Take a close-up photo of the QR code and a photo from further away.",
         "view_only_hint": "View sticker photos for reference.",
         "delete_photo_confirm": "Delete this photo?",
         "photos_submit": "Save photos",
@@ -201,7 +201,7 @@
         "gps_updated": "GPS coordinates captured!",
         "background_photo_title": "Environment photo",
         "background_photo_add": "Add environment photo",
-        "background_photo_hint": "Hold your phone vertically for the best results.",
+        "background_photo_hint": "Take a photo of the surroundings. This photo will be used as the background image for this unit (refresh).",
         "background_photo_save": "Save",
         "background_photo_saving": "Saving...",
         "background_photo_updated": "Environment photo saved.",

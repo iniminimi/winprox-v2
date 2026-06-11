@@ -5,6 +5,7 @@
     'photoAlt' => null,
     /** QR-portaal: camera voorrang op mobiel. Beheer: bestandskiezer (geen capture). */
     'preferCamera' => false,
+    'hint' => null,
 ])
 
 @php
@@ -53,5 +54,5 @@
         </div>
     </div>
 
-    <p class="wp-hint">{{ __('portal.report.photos.hint') }}</p>
+    <p class="wp-hint">{{ $hint ?? __('portal.report.photos.hint') }}</p>
 </div>

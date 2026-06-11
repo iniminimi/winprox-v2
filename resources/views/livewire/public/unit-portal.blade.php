@@ -383,8 +383,7 @@
                     @endif
 
                     @if ($bgTempCount === 0 && ! $unitBackgroundUrl)
-                        @include('partials.wp-issue-photo-upload', ['model' => 'backgroundPhoto', 'max' => 1, 'preferCamera' => true, 'removeMethod' => 'removeBackgroundPhoto', 'photoAlt' => __('portal.unit.background_photo_add')])
-                        <p class="wp-hint">{{ __('portal.unit.background_photo_hint') }}</p>
+                        @include('partials.wp-issue-photo-upload', ['model' => 'backgroundPhoto', 'max' => 1, 'preferCamera' => true, 'removeMethod' => 'removeBackgroundPhoto', 'photoAlt' => __('portal.unit.background_photo_add'), 'hint' => __('portal.unit.background_photo_hint')])
                     @endif
 
                     @error('backgroundPhoto') <p class="wp-error">{{ $message }}</p> @enderror
@@ -499,8 +498,7 @@
                         @endif
 
                         @if ($portalCanAddMore)
-                            @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true])
-                            <p class="wp-hint">{{ __('portal.unit.update_photos_hint') }}</p>
+                            @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true, 'hint' => __('portal.unit.update_photos_hint')])
                         @endif
 
                         @error('newPortalPhotos') <p class="wp-error">{{ $message }}</p> @enderror

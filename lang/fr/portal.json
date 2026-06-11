@@ -188,7 +188,7 @@
     "unit": {
         "current_photos": "Photos de l'unité",
         "update_photos": "Mettre à jour les photos",
-        "update_photos_hint": "Ajoutez de nouvelles photos pour documenter la situation actuelle.",
+        "update_photos_hint": "Ajoutez jusqu'à 4 photos pour documenter la situation de l'unité. Prenez une photo de près du code QR et une photo de plus loin.",
         "view_only_hint": "Consultez les photos de l'autocollant à titre d'information.",
         "delete_photo_confirm": "Supprimer cette photo ?",
         "photos_submit": "Enregistrer les photos",
@@ -201,7 +201,7 @@
         "gps_updated": "Coordonnées GPS enregistrées !",
         "background_photo_title": "Photo d'environnement",
         "background_photo_add": "Ajouter une photo d'environnement",
-        "background_photo_hint": "Tenez votre téléphone verticalement pour les meilleurs résultats.",
+        "background_photo_hint": "Prenez une photo de l'environnement. Cette photo sera utilisée comme image d'arrière-plan de cette unité (rafraîchissement).",
         "background_photo_save": "Enregistrer",
         "background_photo_saving": "Enregistrement en cours...",
         "background_photo_updated": "Photo d'environnement enregistrée.",

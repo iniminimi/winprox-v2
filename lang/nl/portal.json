@@ -188,7 +188,7 @@
     "unit": {
         "current_photos": "Foto's unit",
         "update_photos": "Foto's updaten",
-        "update_photos_hint": "Voeg nieuwe foto's toe om de situatie te documenteren.",
+        "update_photos_hint": "Voeg tot 4 foto's toe om de situatie van de unit te documenteren. Trek een foto van de QR-code van dichtbij en een foto van wat verderop.",
         "view_only_hint": "Bekijk de stickerfoto's ter informatie.",
         "delete_photo_confirm": "Deze foto verwijderen?",
         "photos_submit": "Foto's opslaan",
@@ -201,7 +201,7 @@
         "gps_updated": "GPS coördinaten vastgelegd!",
         "background_photo_title": "Omgevingsfoto",
         "background_photo_add": "Omgevingsfoto toevoegen",
-        "background_photo_hint": "Houd je telefoon verticaal voor de beste resultaten.",
+        "background_photo_hint": "Neem een foto van de omgeving, deze foto zal gebruikt worden als achtergrond foto van deze unit (refresh).",
         "background_photo_save": "Opslaan",
         "background_photo_saving": "Bezig met opslaan...",
         "background_photo_updated": "Omgevingsfoto opgeslagen.",
