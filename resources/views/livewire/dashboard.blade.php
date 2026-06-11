@@ -1,5 +1,5 @@
 <div class="wp-stack">
-    @if ($hasNoLocationsOrUnits)
+    @if ($hasNoCategories)
         <div class="wp-card wp-card-pad wp-onboarding-card">
             <div class="wp-stack">
                 <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.title') }}</strong></p>
