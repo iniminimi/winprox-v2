@@ -87,9 +87,9 @@
                         </div>
                         <div class="wp-cluster wp-cluster--tight">
                             <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
-                            <a href="{{ route('team.qr', $team) }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm">{{ __('team.teams.qr') }}</a>
+                            <a href="{{ route('team.qr', $team) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">{{ __('team.teams.qr') }}</a>
                             @if ($canEditContent)
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
+                                <button type="button" class="btn btn--surface btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
                             @endif
                             @if ($canManageTeams)
                                 @if ($team->workers->isEmpty())
