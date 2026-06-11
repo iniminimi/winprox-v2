@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx",
+        "og_description": "Slim facility management voor elke organisatie. Meldingen, taken, QR-codes en teams in één platform."
+    },
     "title": "WinProx",
     "tagline": "Slim facility management voor elke organisatie.",
     "bullet_1": "Meldingen en taken in één overzicht.",

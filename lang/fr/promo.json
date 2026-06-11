@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx",
+        "og_description": "Gestion d'installations intelligente pour chaque organisation. Signalements, tâches, QR et équipes en une plateforme."
+    },
     "title": "WinProx",
     "tagline": "Gestion d'installations intelligente pour chaque organisation.",
     "bullet_1": "Signalements et tâches dans un aperçu.",

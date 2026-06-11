@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx Meldeportal",
+        "og_description": "QR-Code scannen, Problem melden oder Aufgaben verfolgen — ohne Konto."
+    },
     "back": "Zurück",
     "welcome_title": "Willkommen im Portal von :tenant",
     "offline_message": "Keine Internetverbindung. Gehen Sie an einen Ort mit Empfang, um Aufgaben zu starten oder zu beenden.",

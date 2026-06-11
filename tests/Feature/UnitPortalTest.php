@@ -57,6 +57,16 @@ it('shows tenant welcome title and unit context above home tiles', function () {
         ->assertSee('Printer A', false);
 });
 
+it('includes portal open graph meta tags on the unit portal page', function () {
+    app()->setLocale('nl');
+    unitPortalScaffold();
+
+    $this->get(route('public.unit-portal', ['token' => 'unit-token']))
+        ->assertOk()
+        ->assertSee('property="og:title" content="'.__('portal.social.og_title').'"', false)
+        ->assertSee('property="og:description" content="'.__('portal.social.og_description').'"', false);
+});
+
 it('creates an unapproved issue + auto task + photos via a valid unit token', function () {
     Storage::fake('public');
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();

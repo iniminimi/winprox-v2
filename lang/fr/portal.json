@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "Portail de signalement WinProx",
+        "og_description": "Scannez le QR code pour signaler un problème ou suivre les tâches — sans compte."
+    },
     "back": "Retour",
     "welcome_title": "Bienvenue sur le portail de :tenant",
     "offline_message": "Pas de connexion internet. Allez vers un endroit avec couverture pour démarrer ou arrêter les tâches.",

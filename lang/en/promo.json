@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx",
+        "og_description": "Smart facility management for every organisation. Issues, tasks, QR codes and teams in one platform."
+    },
     "title": "WinProx",
     "tagline": "Smart facility management for every organisation.",
     "bullet_1": "Issues and tasks in one overview.",

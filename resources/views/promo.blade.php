@@ -1,4 +1,9 @@
-<x-layouts.public :title="__('promo.title')">
+<x-layouts.public
+    :title="__('promo.title')"
+    :social-title="__('promo.social.og_title')"
+    :social-description="__('promo.social.og_description')"
+    :social-url="route('promo')"
+>
     <div class="wp-stack wp-promo">
         <h1 class="wp-page-title">{{ __('promo.title') }}</h1>
         <p class="wp-text-body">{{ __('promo.tagline') }}</p>

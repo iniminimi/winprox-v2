@@ -1,5 +1,9 @@
 {
     "meta_title": "WinProx — turn reports into completed tasks",
+    "social": {
+        "og_title": "WinProx — turn reports into completed tasks",
+        "og_description": "Facility management for issues, tasks and field execution. From QR report to completed work."
+    },
     "login": "Log in",
     "register": "Sign up",
     "back_home": "Back to home",

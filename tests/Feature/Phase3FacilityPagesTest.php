@@ -14,7 +14,17 @@ it('toont de welcome-pagina voor gasten', function () {
     $this->get(route('welcome'))
         ->assertOk()
         ->assertSee(__('welcome.hero.tagline_highlight'))
+        ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
         ->assertSee('property="og:image" content="'.asset('images/promo/image_worker.png').'"', false);
+});
+
+it('zet open graph meta op de promo-pagina', function () {
+    app()->setLocale('en');
+
+    $this->get(route('promo'))
+        ->assertOk()
+        ->assertSee('property="og:title" content="'.__('promo.social.og_title').'"', false)
+        ->assertSee('property="og:description" content="'.__('promo.social.og_description').'"', false);
 });
 
 it('zet een proefperiode bij registratie', function () {

@@ -1,5 +1,9 @@
 {
     "meta_title": "WinProx — Meldungen in erledigte Aufgaben verwandeln",
+    "social": {
+        "og_title": "WinProx — Meldungen in erledigte Aufgaben verwandeln",
+        "og_description": "Facility-Management für Meldungen, Aufgaben und Ausführung vor Ort. Vom QR-Code bis zur erledigten Aufgabe."
+    },
     "login": "Anmelden",
     "register": "Registrieren",
     "back_home": "Zur Startseite",

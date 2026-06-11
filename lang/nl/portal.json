@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx meldportaal",
+        "og_description": "Scan de QR-code en meld een probleem of volg taken — zonder account."
+    },
     "back": "Terug",
     "welcome_title": "Welkom op het portaal van :tenant",
     "offline_message": "Geen internetverbinding. Loop naar een plek met bereik om taken te starten of te stoppen.",

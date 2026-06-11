@@ -1,5 +1,9 @@
 {
     "meta_title": "WinProx — meldingen omzetten in uitgevoerde taken",
+    "social": {
+        "og_title": "WinProx — meldingen omzetten in uitgevoerde taken",
+        "og_description": "Facility management voor meldingen, taken en uitvoering op de werkvloer. Van QR-melding tot afgewerkte taak."
+    },
     "login": "Inloggen",
     "register": "Registreren",
     "back_home": "Terug naar startpagina",

@@ -1,4 +1,8 @@
 {
+    "social": {
+        "og_title": "WinProx",
+        "og_description": "Intelligentes Facility-Management für jedes Unternehmen. Meldungen, Aufgaben, QR-Codes und Teams in einer Plattform."
+    },
     "title": "WinProx",
     "tagline": "Intelligentes Facility-Management für jedes Unternehmen.",
     "bullet_1": "Meldungen und Aufgaben in einer Übersicht.",
