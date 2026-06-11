@@ -77,6 +77,8 @@ class Settings extends Component
 
     public bool $canManageOrganisation = false;
 
+    public bool $canUpdateTenantBranding = false;
+
     public bool $showOrgModal = false;
 
     public function mount(): void
@@ -86,9 +88,10 @@ class Settings extends Component
 
         $user = auth()->user();
         $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);
+        $this->canUpdateTenantBranding = $user->can('updateTenantBranding', $tenant);
         $this->uiTheme = $user->uiThemeEnum()->value;
 
-        if ($this->canManageOrganisation) {
+        if ($this->canUpdateTenantBranding) {
             $this->fillOrganisationFromTenant($tenant);
         }
     }
@@ -123,7 +126,7 @@ class Settings extends Component
             return;
         }
 
-        $this->authorize('manageOrganisation', $tenant);
+        $this->authorize('updateTenantBranding', $tenant);
 
         // Alleen de thema-velden updaten
         $payload = [
@@ -233,7 +236,7 @@ class Settings extends Component
             return;
         }
 
-        $this->authorize('manageOrganisation', $tenant);
+        $this->authorize('updateTenantBranding', $tenant);
 
         $template = QrStickerSheetTemplate::Avery62x89R;
 
@@ -282,7 +285,7 @@ class Settings extends Component
             return;
         }
 
-        $this->authorize('manageOrganisation', $tenant);
+        $this->authorize('updateTenantBranding', $tenant);
 
         if (! $this->qrStickerAvery6289Background instanceof UploadedFile) {
             return;
@@ -317,7 +320,7 @@ class Settings extends Component
             return;
         }
 
-        $this->authorize('manageOrganisation', $tenant);
+        $this->authorize('updateTenantBranding', $tenant);
 
         $updated = $removeBackground->handle(
             $tenant,
@@ -341,7 +344,7 @@ class Settings extends Component
             return;
         }
 
-        $this->authorize('manageOrganisation', $tenant);
+        $this->authorize('updateTenantBranding', $tenant);
 
         Validator::make(
             ['portalBackground' => $this->portalBackground],
@@ -414,7 +417,7 @@ class Settings extends Component
     /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */
     private function resolveQrStickerPreviewDataUrl(): ?string
     {
-        if (! $this->canManageOrganisation) {
+        if (! $this->canUpdateTenantBranding) {
             return null;
         }
 

@@ -6,88 +6,92 @@
         :subtitle="__('settings.subtitle')"
     />
 
-    @if ($canManageOrganisation && $organisationTenant)
+    @if ($organisationTenant)
         <x-wp-settings-section :title="__('settings.org.title')">
-            <p class="wp-muted wp-text-sm">{{ __('settings.org.card_hint') }}</p>
-            <p class="wp-text-body"><strong>{{ $organisationTenant->name }}</strong></p>
-            <div class="wp-stack-tight wp-text-sm">
-                @if ($organisationTenant->email)
-                    <p class="wp-muted">
-                        <span class="wp-text-body">{{ __('settings.org.label_email') }}:</span>
-                        {{ $organisationTenant->email }}
-                    </p>
-                @endif
-                @if ($organisationTenant->phone)
-                    <p class="wp-muted">
-                        <span class="wp-text-body">{{ __('settings.org.label_phone') }}:</span>
-                        {{ $organisationTenant->phone }}
-                    </p>
-                @endif
-                @if ($organisationTenant->organisationAddressLine())
-                    <p class="wp-muted">
-                        <span class="wp-text-body">{{ __('settings.org.label_address') }}:</span>
-                        {{ $organisationTenant->organisationAddressLine() }}
-                    </p>
-                @endif
-            </div>
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
-                    {{ __('settings.org.edit') }}
-                </button>
-            </div>
+            @if ($canManageOrganisation)
+                <p class="wp-muted wp-text-sm">{{ __('settings.org.card_hint') }}</p>
+                <p class="wp-text-body"><strong>{{ $organisationTenant->name }}</strong></p>
+                <div class="wp-stack-tight wp-text-sm">
+                    @if ($organisationTenant->email)
+                        <p class="wp-muted">
+                            <span class="wp-text-body">{{ __('settings.org.label_email') }}:</span>
+                            {{ $organisationTenant->email }}
+                        </p>
+                    @endif
+                    @if ($organisationTenant->phone)
+                        <p class="wp-muted">
+                            <span class="wp-text-body">{{ __('settings.org.label_phone') }}:</span>
+                            {{ $organisationTenant->phone }}
+                        </p>
+                    @endif
+                    @if ($organisationTenant->organisationAddressLine())
+                        <p class="wp-muted">
+                            <span class="wp-text-body">{{ __('settings.org.label_address') }}:</span>
+                            {{ $organisationTenant->organisationAddressLine() }}
+                        </p>
+                    @endif
+                </div>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
+                        {{ __('settings.org.edit') }}
+                    </button>
+                </div>
+            @else
+                <p class="wp-muted">{{ __('settings.org.readonly_hint') }}</p>
+                <p class="wp-text-body"><strong>{{ $organisationTenant->name }}</strong></p>
+                <div class="wp-stack-tight wp-text-sm">
+                    @if ($organisationTenant->email)
+                        <p class="wp-muted">{{ __('settings.org.label_email') }}: {{ $organisationTenant->email }}</p>
+                    @endif
+                    @if ($organisationTenant->phone)
+                        <p class="wp-muted">{{ __('settings.org.label_phone') }}: {{ $organisationTenant->phone }}</p>
+                    @endif
+                    @if ($organisationTenant->organisationAddressLine())
+                        <p class="wp-muted">{{ __('settings.org.label_address') }}: {{ $organisationTenant->organisationAddressLine() }}</p>
+                    @endif
+                </div>
+            @endif
         </x-wp-settings-section>
-    @elseif ($canManageOrganisation)
-        <x-wp-settings-section :title="__('settings.org.title')">
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
-                    {{ __('settings.org.edit') }}
-                </button>
-            </div>
-        </x-wp-settings-section>
-    @else
-        <x-wp-settings-section :title="__('settings.org.title')">
-            <p class="wp-muted">{{ __('settings.org.readonly_hint') }}</p>
-            @php $readonlyTenant = auth()->user()->tenant; @endphp
-            @if ($readonlyTenant?->name)
-                <p><strong>{{ $readonlyTenant->name }}</strong></p>
-                @if ($readonlyTenant->email)
-                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_email') }}: {{ $readonlyTenant->email }}</p>
-                @endif
-                @if ($readonlyTenant->phone)
-                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_phone') }}: {{ $readonlyTenant->phone }}</p>
-                @endif
-                @if ($readonlyTenant->organisationAddressLine())
-                    <p class="wp-muted wp-text-sm">{{ __('settings.org.label_address') }}: {{ $readonlyTenant->organisationAddressLine() }}</p>
+
+        <x-wp-settings-section :title="__('settings.org.logo_label')">
+            @if ($canManageOrganisation)
+                <form wire:submit="saveOrganisationLogo" class="wp-stack-tight">
+                    <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
+                    <div class="wp-field">
+                        @if ($organisationLogoUrl)
+                            <img
+                                src="{{ $organisationLogoUrl }}"
+                                alt="{{ __('settings.org.logo_preview_alt') }}"
+                                class="wp-org-logo-preview"
+                                width="120"
+                                height="120"
+                                style="margin-bottom: 0.75rem;"
+                                wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
+                            >
+                        @endif
+                        <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
+                        @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-cluster">
+                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                    </div>
+                </form>
+            @else
+                @if ($organisationLogoUrl)
+                    <img
+                        src="{{ $organisationLogoUrl }}"
+                        alt="{{ __('settings.org.logo_preview_alt') }}"
+                        class="wp-org-logo-preview"
+                        width="120"
+                        height="120"
+                        wire:key="org-logo-readonly-{{ md5($organisationLogoUrl) }}"
+                    >
                 @endif
             @endif
         </x-wp-settings-section>
     @endif
 
-    @if ($canManageOrganisation && $organisationTenant)
-        <x-wp-settings-section :title="__('settings.org.logo_label')">
-            <form wire:submit="saveOrganisationLogo" class="wp-stack-tight">
-                <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
-                <div class="wp-field">
-                    @if ($organisationLogoUrl)
-                        <img
-                            src="{{ $organisationLogoUrl }}"
-                            alt="{{ __('settings.org.logo_preview_alt') }}"
-                            class="wp-org-logo-preview"
-                            width="120"
-                            height="120"
-                            style="margin-bottom: 0.75rem;"
-                            wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
-                        >
-                    @endif
-                    <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
-                    @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-cluster">
-                    <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-                </div>
-            </form>
-        </x-wp-settings-section>
-
+    @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.portal_background_label')">
             <form wire:submit="saveOrganisationPortalBackground" class="wp-stack-tight">
                 <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
@@ -130,7 +134,7 @@
         </div>
     </x-wp-settings-section>
 
-    @if ($canManageOrganisation && $organisationTenant)
+    @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
             <form wire:submit="saveOrganisationInline" class="wp-stack-tight">
                 <div class="wp-settings-split">
@@ -219,12 +223,14 @@
         </x-wp-settings-section>
     @endif
 
-    <x-wp-settings-section :title="__('settings.privacy.title')">
-        <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>
-        <p>
-            <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('settings.privacy.download') }}</a>
-        </p>
-    </x-wp-settings-section>
+    @if ($canManageOrganisation)
+        <x-wp-settings-section :title="__('settings.privacy.title')">
+            <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>
+            <p>
+                <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('settings.privacy.download') }}</a>
+            </p>
+        </x-wp-settings-section>
+    @endif
 
     @if ($canManageOrganisation && $showOrgModal)
         @teleport('body')

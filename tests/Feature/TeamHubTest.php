@@ -204,6 +204,32 @@ it('laat een medewerker de WinProx-stijl aanpassen', function () {
     expect($employee->fresh()->ui_theme)->toBe('dark');
 });
 
+it('laat een medewerker branding-instellingen zien en aanpassen maar niet privacy-export', function () {
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($employee)
+        ->get(route('settings.index'))
+        ->assertOk()
+        ->assertSee(__('settings.org.logo_label'), false)
+        ->assertSee(__('settings.org.portal_background_label'), false)
+        ->assertSee(__('settings.qr_stickers.title'), false)
+        ->assertDontSee(__('settings.privacy.title'), false);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('qrStickerAvery6289HeaderText', 'Scan voor meldingen')
+        ->call('saveQrStickerAvery6289Settings')
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->qrStickerSheetSetting(\App\Support\Qr\QrStickerSheetTemplate::Avery62x89R)?->header_text)
+        ->toBe('Scan voor meldingen');
+
+    $this->actingAs($employee)
+        ->get(route('account.data-export'))
+        ->assertForbidden();
+});
+
 // --- Login-afdwinging ------------------------------------------------------
 
 it('weigert login voor een gedeactiveerde gebruiker', function () {
