@@ -66,5 +66,9 @@
     "brand": {
         "tagline": "Work In Proximity"
     },
+    "social": {
+        "og_title": "WinProx | Facility Management Software",
+        "og_description": "Gestion efficace des services facility et coordination de la maintenance."
+    },
     "welcome": "Bienvenue"
 }

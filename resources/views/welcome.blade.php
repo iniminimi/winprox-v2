@@ -7,6 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ __('welcome.meta_title') }}</title>
+    @include('partials.social-meta', [
+        'title' => __('welcome.meta_title'),
+        'description' => __('common.social.og_description'),
+        'url' => route('welcome'),
+    ])
     @include('partials.favicon')
     @vite(['resources/css/app.css'])
 </head>

@@ -13,7 +13,8 @@ afterEach(fn () => Tenancy::forget());
 it('toont de welcome-pagina voor gasten', function () {
     $this->get(route('welcome'))
         ->assertOk()
-        ->assertSee(__('welcome.hero.tagline_highlight'));
+        ->assertSee(__('welcome.hero.tagline_highlight'))
+        ->assertSee('property="og:image" content="'.asset('images/promo/image_worker.png').'"', false);
 });
 
 it('zet een proefperiode bij registratie', function () {
