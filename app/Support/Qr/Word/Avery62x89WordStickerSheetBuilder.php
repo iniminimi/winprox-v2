@@ -163,13 +163,10 @@ final class Avery62x89WordStickerSheetBuilder
         @unlink($path);
 
         $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSettings);
-        $resolvedCenterLogoPath = $layout->includeCenterLogo()
-            ? ($layout->resolveCenterLogoPath($tenant) ?? $centerLogoPath)
-            : null;
         $tenantDetailLines = $layout->showTenantAddress()
             ? BrandedQrStickerTenantDetails::lines($tenant)
             : [];
-        $tenantCornerLogoPath = $layout->showCornerTenantLogo()
+        $tenantStickerLogoPath = $layout->showTenantLogoOnSticker()
             ? QrCenterLogo::tenantLogoAbsolutePath($tenant)
             : null;
 
@@ -177,13 +174,13 @@ final class Avery62x89WordStickerSheetBuilder
             $backgroundPath,
             $entry->reportUrl,
             $pngPath,
-            $resolvedCenterLogoPath,
+            $centerLogoPath,
             BrandedQrStickerHeaderText::resolve($sheetSettings, $entry->headerFallback),
             BrandedQrStickerHeaderText::unitCaption($sheetSettings, $entry->headerFallback),
             self::footerLabel($entry),
             $tenantDetailLines !== [] ? $tenantDetailLines : null,
-            $tenantCornerLogoPath,
-            $layout->includeCenterLogo(),
+            $tenantStickerLogoPath,
+            $layout->tenantLogoPlacement(),
         );
         $tempFiles[] = $pngPath;
 

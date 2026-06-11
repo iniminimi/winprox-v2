@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Enums\QrStickerTenantLogoPlacement;
+
 /**
  * QR placement on Avery 62×89-R branded artwork (@ 300 dpi, 732×1051 px = 62×89 mm).
  * Tune via proefprint; coordinates are pixel-centre + square size on the artwork file.
@@ -82,6 +84,10 @@ final class Avery62x89StickerArtworkLayout
 
     public const TENANT_LOGO_PADDING_RIGHT_PX = 36;
 
+    public const TENANT_LOGO_PADDING_LEFT_PX = 36;
+
+    public const TENANT_LOGO_PADDING_TOP_PX = 72;
+
     public const TENANT_LOGO_PADDING_BOTTOM_PX = 58;
 
     public static function headerMaxWidthPx(): int
@@ -94,14 +100,18 @@ final class Avery62x89StickerArtworkLayout
         return self::CANVAS_WIDTH_PX - (self::FOOTER_PADDING_SIDE_PX * 2);
     }
 
-    public static function tenantDetailsMaxWidthPx(bool $hasCornerLogo): int
+    public static function tenantDetailsMaxWidthPx(QrStickerTenantLogoPlacement $logoPlacement): int
     {
-        if ($hasCornerLogo) {
+        if ($logoPlacement === QrStickerTenantLogoPlacement::BottomRight) {
             return self::CANVAS_WIDTH_PX
                 - self::TENANT_DETAILS_PADDING_LEFT_PX
                 - self::TENANT_LOGO_MAX_WIDTH_PX
                 - self::TENANT_LOGO_PADDING_RIGHT_PX
                 - self::TENANT_DETAILS_LOGO_GAP_PX;
+        }
+
+        if ($logoPlacement === QrStickerTenantLogoPlacement::BottomLeft) {
+            return (int) round(self::CANVAS_WIDTH_PX * 0.55);
         }
 
         return (int) round(self::CANVAS_WIDTH_PX * 0.62);

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Team;
 
-use App\Enums\QrStickerCenterLogoMode;
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Support\Qr\Avery62x89StickerArtworkLayout;
 use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Foundation\Http\FormRequest;
@@ -21,8 +21,7 @@ class UpdateTenantQrStickerSheetSettingsRequest extends FormRequest
     public static function rulesFor(QrStickerSheetTemplate $template): array
     {
         $shared = [
-            'centerLogo' => ['required', 'string', Rule::enum(QrStickerCenterLogoMode::class)],
-            'cornerTenantLogo' => ['required', 'boolean'],
+            'tenantLogo' => ['required', 'string', Rule::enum(QrStickerTenantLogoPlacement::class)],
             'showTenantAddress' => ['required', 'boolean'],
         ];
 

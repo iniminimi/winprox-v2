@@ -28,8 +28,7 @@ class UpdateTenantQrStickerSheetSettingsAction
         $data = new UpdateTenantQrStickerSheetSettingsData(
             template: $data->template,
             headerText: $headerText === '' ? null : $headerText,
-            centerLogoMode: $data->centerLogoMode,
-            cornerTenantLogo: $data->cornerTenantLogo,
+            tenantLogoPlacement: $data->tenantLogoPlacement,
             showTenantAddress: $data->showTenantAddress,
         );
 

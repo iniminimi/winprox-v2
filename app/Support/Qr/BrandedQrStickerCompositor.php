@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Enums\QrStickerTenantLogoPlacement;
 use Imagick;
 use RuntimeException;
 
@@ -21,8 +22,8 @@ final class BrandedQrStickerCompositor
         ?string $unitCaptionText = null,
         ?string $footerText = null,
         ?array $tenantDetailLines = null,
-        ?string $tenantCornerLogoPath = null,
-        bool $includeCenterLogo = true,
+        ?string $tenantStickerLogoPath = null,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::None,
     ): void {
         $bytes = $this->compositeBytes(
             $backgroundPath,
@@ -32,8 +33,8 @@ final class BrandedQrStickerCompositor
             $unitCaptionText,
             $footerText,
             $tenantDetailLines,
-            $tenantCornerLogoPath,
-            $includeCenterLogo,
+            $tenantStickerLogoPath,
+            $tenantLogoPlacement,
         );
 
         if (file_put_contents($absoluteOutputPath, $bytes) === false) {
@@ -49,14 +50,19 @@ final class BrandedQrStickerCompositor
         ?string $unitCaptionText = null,
         ?string $footerText = null,
         ?array $tenantDetailLines = null,
-        ?string $tenantCornerLogoPath = null,
-        bool $includeCenterLogo = true,
+        ?string $tenantStickerLogoPath = null,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::None,
     ): string {
         if (! is_file($backgroundPath)) {
             throw new RuntimeException('Branded sticker background file is missing.');
         }
 
-        $qrBytes = $this->generateQrBytes($reportUrl, $includeCenterLogo, $centerLogoPath);
+        $qrBytes = QrCodePngWriter::writeStringWithCenterLogo(
+            $reportUrl,
+            Avery62x89StickerArtworkLayout::qrRenderPixelSize(),
+            QrLogoLayout::STICKER_BOX_RATIO,
+            $centerLogoPath,
+        );
 
         if (extension_loaded('imagick')) {
             return $this->compositeWithImagick(
@@ -66,7 +72,8 @@ final class BrandedQrStickerCompositor
                 $unitCaptionText,
                 $footerText,
                 $tenantDetailLines,
-                $tenantCornerLogoPath,
+                $tenantStickerLogoPath,
+                $tenantLogoPlacement,
             );
         }
 
@@ -78,27 +85,12 @@ final class BrandedQrStickerCompositor
                 $unitCaptionText,
                 $footerText,
                 $tenantDetailLines,
-                $tenantCornerLogoPath,
+                $tenantStickerLogoPath,
+                $tenantLogoPlacement,
             );
         }
 
         throw new RuntimeException('Branded QR sticker export requires the PHP gd or imagick extension.');
-    }
-
-    private function generateQrBytes(string $reportUrl, bool $includeCenterLogo, ?string $centerLogoPath): string
-    {
-        $pixelSize = Avery62x89StickerArtworkLayout::qrRenderPixelSize();
-
-        if (! $includeCenterLogo) {
-            return QrCodePngWriter::writeString($reportUrl, $pixelSize);
-        }
-
-        return QrCodePngWriter::writeStringWithCenterLogo(
-            $reportUrl,
-            $pixelSize,
-            QrLogoLayout::STICKER_BOX_RATIO,
-            $centerLogoPath,
-        );
     }
 
     private function compositeWithGd(
@@ -108,7 +100,8 @@ final class BrandedQrStickerCompositor
         ?string $unitCaptionText,
         ?string $footerText,
         ?array $tenantDetailLines,
-        ?string $tenantCornerLogoPath,
+        ?string $tenantStickerLogoPath,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement,
     ): string
     {
         $loaded = @imagecreatefrompng($backgroundPath);
@@ -164,13 +157,15 @@ final class BrandedQrStickerCompositor
             BrandedQrStickerFooterRenderer::drawOnGd($canvas, $footerText);
         }
 
-        $hasCornerLogo = $tenantCornerLogoPath !== null && $tenantCornerLogoPath !== '' && is_file($tenantCornerLogoPath);
         if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
-            BrandedQrStickerTenantDetailsRenderer::drawOnGd($canvas, $tenantDetailLines, $hasCornerLogo);
+            BrandedQrStickerTenantDetailsRenderer::drawOnGd($canvas, $tenantDetailLines, $tenantLogoPlacement);
         }
 
-        if ($hasCornerLogo) {
-            BrandedQrStickerTenantLogoRenderer::drawOnGd($canvas, $tenantCornerLogoPath);
+        if ($tenantLogoPlacement !== QrStickerTenantLogoPlacement::None
+            && $tenantStickerLogoPath !== null
+            && $tenantStickerLogoPath !== ''
+            && is_file($tenantStickerLogoPath)) {
+            BrandedQrStickerTenantLogoRenderer::drawOnGd($canvas, $tenantStickerLogoPath, $tenantLogoPlacement);
         }
 
         ob_start();
@@ -227,7 +222,8 @@ final class BrandedQrStickerCompositor
         ?string $unitCaptionText,
         ?string $footerText,
         ?array $tenantDetailLines,
-        ?string $tenantCornerLogoPath,
+        ?string $tenantStickerLogoPath,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement,
     ): string
     {
         $canvas = new Imagick($backgroundPath);
@@ -269,13 +265,15 @@ final class BrandedQrStickerCompositor
             BrandedQrStickerFooterRenderer::drawOnImagick($canvas, $footerText);
         }
 
-        $hasCornerLogo = $tenantCornerLogoPath !== null && $tenantCornerLogoPath !== '' && is_file($tenantCornerLogoPath);
         if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
-            BrandedQrStickerTenantDetailsRenderer::drawOnImagick($canvas, $tenantDetailLines, $hasCornerLogo);
+            BrandedQrStickerTenantDetailsRenderer::drawOnImagick($canvas, $tenantDetailLines, $tenantLogoPlacement);
         }
 
-        if ($hasCornerLogo) {
-            BrandedQrStickerTenantLogoRenderer::drawOnImagick($canvas, $tenantCornerLogoPath);
+        if ($tenantLogoPlacement !== QrStickerTenantLogoPlacement::None
+            && $tenantStickerLogoPath !== null
+            && $tenantStickerLogoPath !== ''
+            && is_file($tenantStickerLogoPath)) {
+            BrandedQrStickerTenantLogoRenderer::drawOnImagick($canvas, $tenantStickerLogoPath, $tenantLogoPlacement);
         }
 
         $canvas->setImageFormat('png');

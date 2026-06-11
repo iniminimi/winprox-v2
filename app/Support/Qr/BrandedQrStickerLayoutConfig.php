@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
-use App\Enums\QrStickerCenterLogoMode;
-use App\Models\Tenant;
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Models\TenantQrStickerSheetSetting;
 
 /** Parsed layout_config for branded QR sticker export. */
 final class BrandedQrStickerLayoutConfig
 {
     public function __construct(
-        private readonly QrStickerCenterLogoMode $centerLogoMode,
-        private readonly bool $cornerTenantLogo,
+        private readonly QrStickerTenantLogoPlacement $tenantLogoPlacement,
         private readonly bool $showTenantAddress,
     ) {}
 
@@ -22,57 +20,58 @@ final class BrandedQrStickerLayoutConfig
         $config = is_array($setting?->layout_config) ? $setting->layout_config : [];
 
         return new self(
-            centerLogoMode: QrStickerCenterLogoMode::tryFromString($config['center_logo'] ?? null),
-            cornerTenantLogo: (bool) ($config['corner_tenant_logo'] ?? true),
+            tenantLogoPlacement: self::resolveTenantLogoPlacement($config),
             showTenantAddress: (bool) ($config['tenant_address'] ?? true),
         );
     }
 
     /**
-     * @return array{center_logo: string, corner_tenant_logo: bool, tenant_address: bool}
+     * @param  array<string, mixed>  $config
+     */
+    private static function resolveTenantLogoPlacement(array $config): QrStickerTenantLogoPlacement
+    {
+        if (array_key_exists('tenant_logo', $config)) {
+            return QrStickerTenantLogoPlacement::tryFromString(
+                is_string($config['tenant_logo'] ?? null) ? $config['tenant_logo'] : null,
+            );
+        }
+
+        if (array_key_exists('corner_tenant_logo', $config) && $config['corner_tenant_logo'] === false) {
+            return QrStickerTenantLogoPlacement::None;
+        }
+
+        return QrStickerTenantLogoPlacement::default();
+    }
+
+    /**
+     * @return array{tenant_logo: string, tenant_address: bool}
      */
     public function toArray(): array
     {
         return [
-            'center_logo' => $this->centerLogoMode->value,
-            'corner_tenant_logo' => $this->cornerTenantLogo,
+            'tenant_logo' => $this->tenantLogoPlacement->value,
             'tenant_address' => $this->showTenantAddress,
         ];
     }
 
     public function usesDefaults(): bool
     {
-        return $this->centerLogoMode === QrStickerCenterLogoMode::default()
-            && $this->cornerTenantLogo
+        return $this->tenantLogoPlacement === QrStickerTenantLogoPlacement::default()
             && $this->showTenantAddress;
     }
 
-    public function centerLogoMode(): QrStickerCenterLogoMode
+    public function tenantLogoPlacement(): QrStickerTenantLogoPlacement
     {
-        return $this->centerLogoMode;
+        return $this->tenantLogoPlacement;
     }
 
-    public function showCornerTenantLogo(): bool
+    public function showTenantLogoOnSticker(): bool
     {
-        return $this->cornerTenantLogo;
+        return $this->tenantLogoPlacement !== QrStickerTenantLogoPlacement::None;
     }
 
     public function showTenantAddress(): bool
     {
         return $this->showTenantAddress;
-    }
-
-    public function includeCenterLogo(): bool
-    {
-        return $this->centerLogoMode !== QrStickerCenterLogoMode::None;
-    }
-
-    public function resolveCenterLogoPath(?Tenant $tenant): ?string
-    {
-        return match ($this->centerLogoMode) {
-            QrStickerCenterLogoMode::None => null,
-            QrStickerCenterLogoMode::Winprox => QrCenterLogo::winproxAbsolutePath(),
-            QrStickerCenterLogoMode::Tenant => QrCenterLogo::absolutePath($tenant),
-        };
     }
 }

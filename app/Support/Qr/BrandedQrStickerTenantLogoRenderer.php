@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Enums\QrStickerTenantLogoPlacement;
 use GdImage;
 use Imagick;
 
-/** Tenant logo bottom-right on Avery 62×89-R branded artwork (no WinProx fallback). */
+/** Tenant organisation logo on the sticker artwork (never inside the QR code). */
 final class BrandedQrStickerTenantLogoRenderer
 {
     /**
      * @param  GdImage|resource  $canvas
      */
-    public static function drawOnGd($canvas, string $logoPath): void
+    public static function drawOnGd($canvas, string $logoPath, QrStickerTenantLogoPlacement $placement): void
     {
-        if (! is_file($logoPath)) {
+        if ($placement === QrStickerTenantLogoPlacement::None || ! is_file($logoPath)) {
             return;
         }
 
@@ -42,12 +43,7 @@ final class BrandedQrStickerTenantLogoRenderer
         imagecopyresampled($resized, $logo, 0, 0, 0, 0, $targetW, $targetH, imagesx($logo), imagesy($logo));
         imagedestroy($logo);
 
-        $destX = Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
-            - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
-            - $targetW;
-        $destY = Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
-            - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
-            - $targetH;
+        [$destX, $destY] = self::destination($placement, $targetW, $targetH);
 
         imagealphablending($canvas, true);
         imagesavealpha($canvas, false);
@@ -55,9 +51,9 @@ final class BrandedQrStickerTenantLogoRenderer
         imagedestroy($resized);
     }
 
-    public static function drawOnImagick(Imagick $canvas, string $logoPath): void
+    public static function drawOnImagick(Imagick $canvas, string $logoPath, QrStickerTenantLogoPlacement $placement): void
     {
-        if (! is_file($logoPath)) {
+        if ($placement === QrStickerTenantLogoPlacement::None || ! is_file($logoPath)) {
             return;
         }
 
@@ -82,15 +78,48 @@ final class BrandedQrStickerTenantLogoRenderer
             true,
         );
 
-        $destX = Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
-            - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
-            - $logo->getImageWidth();
-        $destY = Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
-            - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
-            - $logo->getImageHeight();
+        [$destX, $destY] = self::destination(
+            $placement,
+            $logo->getImageWidth(),
+            $logo->getImageHeight(),
+        );
 
         $canvas->compositeImage($logo, Imagick::COMPOSITE_OVER, $destX, $destY);
         $logo->clear();
+    }
+
+    /**
+     * @return array{0: int, 1: int}
+     */
+    private static function destination(QrStickerTenantLogoPlacement $placement, int $width, int $height): array
+    {
+        return match ($placement) {
+            QrStickerTenantLogoPlacement::TopLeft => [
+                Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_LEFT_PX,
+                Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_TOP_PX,
+            ],
+            QrStickerTenantLogoPlacement::TopRight => [
+                Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
+                    - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
+                    - $width,
+                Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_TOP_PX,
+            ],
+            QrStickerTenantLogoPlacement::BottomLeft => [
+                Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_LEFT_PX,
+                Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
+                    - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
+                    - $height,
+            ],
+            QrStickerTenantLogoPlacement::BottomRight => [
+                Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
+                    - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
+                    - $width,
+                Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
+                    - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
+                    - $height,
+            ],
+            QrStickerTenantLogoPlacement::None => [0, 0],
+        };
     }
 
     /**

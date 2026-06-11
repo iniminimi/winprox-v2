@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Enums\QrStickerTenantLogoPlacement;
 use Imagick;
 use ImagickDraw;
 use ImagickPixel;
@@ -15,7 +16,7 @@ final class BrandedQrStickerTenantDetailsRenderer
      * @param  list<string>  $lines
      * @param  \GdImage|resource  $canvas
      */
-    public static function drawOnGd($canvas, array $lines, bool $hasCornerLogo): void
+    public static function drawOnGd($canvas, array $lines, QrStickerTenantLogoPlacement $logoPlacement): void
     {
         $lines = self::normalizedLines($lines);
         if ($lines === []) {
@@ -23,7 +24,7 @@ final class BrandedQrStickerTenantDetailsRenderer
         }
 
         $font = BrandedQrStickerFont::headerBoldAbsolutePath();
-        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($hasCornerLogo);
+        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($logoPlacement);
         $fontSize = self::fitFontSize($lines, $font, $maxWidth);
         $lineHeight = (int) round($fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO);
 
@@ -54,7 +55,7 @@ final class BrandedQrStickerTenantDetailsRenderer
     /**
      * @param  list<string>  $lines
      */
-    public static function drawOnImagick(Imagick $canvas, array $lines, bool $hasCornerLogo): void
+    public static function drawOnImagick(Imagick $canvas, array $lines, QrStickerTenantLogoPlacement $logoPlacement): void
     {
         $lines = self::normalizedLines($lines);
         if ($lines === []) {
@@ -62,7 +63,7 @@ final class BrandedQrStickerTenantDetailsRenderer
         }
 
         $font = BrandedQrStickerFont::headerBoldAbsolutePath();
-        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($hasCornerLogo);
+        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($logoPlacement);
         $fontSize = self::fitFontSize($lines, $font, $maxWidth);
         $lineHeight = $fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO;
 

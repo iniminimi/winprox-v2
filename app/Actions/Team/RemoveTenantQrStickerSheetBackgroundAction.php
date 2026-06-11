@@ -37,8 +37,7 @@ class RemoveTenantQrStickerSheetBackgroundAction
         $data = new UpdateTenantQrStickerSheetSettingsData(
             template: $template,
             headerText: $existing->header_text,
-            centerLogoMode: $layout->centerLogoMode(),
-            cornerTenantLogo: $layout->showCornerTenantLogo(),
+            tenantLogoPlacement: $layout->tenantLogoPlacement(),
             showTenantAddress: $layout->showTenantAddress(),
         );
 

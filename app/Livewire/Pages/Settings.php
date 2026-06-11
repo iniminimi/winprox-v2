@@ -10,7 +10,7 @@ use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
 use App\Actions\Team\UploadTenantQrStickerSheetBackgroundAction;
 use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
-use App\Enums\QrStickerCenterLogoMode;
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Enums\UiTheme;
 use App\Http\Requests\Team\UploadTenantQrStickerSheetBackgroundRequest;
 use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
@@ -64,9 +64,7 @@ class Settings extends Component
 
     public string $qrStickerAvery6289HeaderText = '';
 
-    public string $qrStickerAvery6289CenterLogo = 'tenant';
-
-    public bool $qrStickerAvery6289CornerTenantLogo = true;
+    public string $qrStickerAvery6289TenantLogo = 'bottom_right';
 
     public bool $qrStickerAvery6289ShowTenantAddress = true;
 
@@ -240,8 +238,7 @@ class Settings extends Component
         Validator::make(
             [
                 'headerText' => $this->qrStickerAvery6289HeaderText,
-                'centerLogo' => $this->qrStickerAvery6289CenterLogo,
-                'cornerTenantLogo' => $this->qrStickerAvery6289CornerTenantLogo,
+                'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
                 'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
             ],
             UpdateTenantQrStickerSheetSettingsRequest::rulesFor($template),
@@ -252,8 +249,7 @@ class Settings extends Component
             $tenant,
             UpdateTenantQrStickerSheetSettingsData::fromValidated($template, [
                 'headerText' => $this->qrStickerAvery6289HeaderText,
-                'centerLogo' => $this->qrStickerAvery6289CenterLogo,
-                'cornerTenantLogo' => $this->qrStickerAvery6289CornerTenantLogo,
+                'tenantLogo' => $this->qrStickerAvery6289TenantLogo,
                 'showTenantAddress' => $this->qrStickerAvery6289ShowTenantAddress,
             ]),
             (int) auth()->id(),
@@ -411,7 +407,7 @@ class Settings extends Component
             'organisationTenant' => $tenant instanceof Tenant
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
-            'qrStickerCenterLogoChoices' => QrStickerCenterLogoMode::choices(),
+            'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
             'qrStickerAvery6289BackgroundUrl' => $this->qrStickerAvery6289BackgroundPreviewUrl(),
         ]);
     }
@@ -436,8 +432,7 @@ class Settings extends Component
         $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSetting);
 
         $this->qrStickerAvery6289HeaderText = (string) ($sheetSetting?->header_text ?? '');
-        $this->qrStickerAvery6289CenterLogo = $layout->centerLogoMode()->value;
-        $this->qrStickerAvery6289CornerTenantLogo = $layout->showCornerTenantLogo();
+        $this->qrStickerAvery6289TenantLogo = $layout->tenantLogoPlacement()->value;
         $this->qrStickerAvery6289ShowTenantAddress = $layout->showTenantAddress();
     }
 

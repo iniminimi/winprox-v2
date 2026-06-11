@@ -2,7 +2,7 @@
 
 namespace App\Data\Team;
 
-use App\Enums\QrStickerCenterLogoMode;
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\QrStickerSheetTemplate;
 
@@ -11,16 +11,14 @@ readonly class UpdateTenantQrStickerSheetSettingsData
     public function __construct(
         public QrStickerSheetTemplate $template,
         public ?string $headerText,
-        public QrStickerCenterLogoMode $centerLogoMode = QrStickerCenterLogoMode::Tenant,
-        public bool $cornerTenantLogo = true,
+        public QrStickerTenantLogoPlacement $tenantLogoPlacement = QrStickerTenantLogoPlacement::BottomRight,
         public bool $showTenantAddress = true,
     ) {}
 
     /**
      * @param  array{
      *     headerText?: ?string,
-     *     centerLogo?: ?string,
-     *     cornerTenantLogo?: bool,
+     *     tenantLogo?: ?string,
      *     showTenantAddress?: bool,
      * }  $input
      */
@@ -31,8 +29,7 @@ readonly class UpdateTenantQrStickerSheetSettingsData
         return new self(
             template: $template,
             headerText: $headerText === '' ? null : $headerText,
-            centerLogoMode: QrStickerCenterLogoMode::tryFromString($input['centerLogo'] ?? null),
-            cornerTenantLogo: (bool) ($input['cornerTenantLogo'] ?? true),
+            tenantLogoPlacement: QrStickerTenantLogoPlacement::tryFromString($input['tenantLogo'] ?? null),
             showTenantAddress: (bool) ($input['showTenantAddress'] ?? true),
         );
     }
@@ -40,8 +37,7 @@ readonly class UpdateTenantQrStickerSheetSettingsData
     public function layoutConfig(): BrandedQrStickerLayoutConfig
     {
         return new BrandedQrStickerLayoutConfig(
-            centerLogoMode: $this->centerLogoMode,
-            cornerTenantLogo: $this->cornerTenantLogo,
+            tenantLogoPlacement: $this->tenantLogoPlacement,
             showTenantAddress: $this->showTenantAddress,
         );
     }

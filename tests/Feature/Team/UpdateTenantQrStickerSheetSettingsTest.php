@@ -7,7 +7,7 @@ use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Models\AuditLog;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
-use App\Enums\QrStickerCenterLogoMode;
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 
@@ -48,8 +48,7 @@ it('stores Avery 62x89 sticker layout config', function () {
             QrStickerSheetTemplate::Avery62x89R,
             [
                 'headerText' => 'Scan hier',
-                'centerLogo' => QrStickerCenterLogoMode::Winprox->value,
-                'cornerTenantLogo' => false,
+                'tenantLogo' => QrStickerTenantLogoPlacement::TopRight->value,
                 'showTenantAddress' => false,
             ],
         ),
@@ -61,8 +60,7 @@ it('stores Avery 62x89 sticker layout config', function () {
         ->first();
 
     expect($setting?->layout_config)->toBe([
-        'center_logo' => 'winprox',
-        'corner_tenant_logo' => false,
+        'tenant_logo' => 'top_right',
         'tenant_address' => false,
     ]);
 });
@@ -83,8 +81,7 @@ it('clears Avery 62x89 sticker header text when saved empty', function () {
             QrStickerSheetTemplate::Avery62x89R,
             [
                 'headerText' => '',
-                'centerLogo' => QrStickerCenterLogoMode::Tenant->value,
-                'cornerTenantLogo' => true,
+                'tenantLogo' => QrStickerTenantLogoPlacement::BottomRight->value,
                 'showTenantAddress' => true,
             ],
         ),

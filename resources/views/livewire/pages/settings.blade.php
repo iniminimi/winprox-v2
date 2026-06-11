@@ -252,28 +252,16 @@
                         <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.layout_title') }}</p>
                         <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.layout_hint') }}</p>
 
-                        <fieldset class="wp-stack-tight">
-                            <legend class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.center_logo_label') }}</legend>
-                            @foreach ($qrStickerCenterLogoChoices as $choice)
-                                <label class="wp-checkbox-label">
-                                    <input
-                                        type="radio"
-                                        class="wp-checkbox"
-                                        wire:model="qrStickerAvery6289CenterLogo"
-                                        value="{{ $choice->value }}"
-                                    >
-                                    {{ __('settings.qr_stickers.avery_62x89_r.center_logo_'.$choice->value) }}
-                                </label>
-                            @endforeach
-                            @error('centerLogo') <p class="wp-error">{{ $message }}</p> @enderror
-                        </fieldset>
-
-                        <label class="wp-checkbox-label">
-                            <input type="checkbox" wire:model="qrStickerAvery6289CornerTenantLogo" class="wp-checkbox">
-                            {{ __('settings.qr_stickers.avery_62x89_r.corner_logo_label') }}
-                        </label>
-                        <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.corner_logo_help') }}</p>
-                        @error('cornerTenantLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                        <div class="wp-field">
+                            <label class="wp-label" for="qrStickerAvery6289TenantLogo">{{ __('settings.qr_stickers.avery_62x89_r.tenant_logo_label') }}</label>
+                            <select id="qrStickerAvery6289TenantLogo" class="wp-input" wire:model="qrStickerAvery6289TenantLogo">
+                                @foreach ($qrStickerTenantLogoChoices as $choice)
+                                    <option value="{{ $choice->value }}">{{ __('settings.qr_stickers.avery_62x89_r.tenant_logo_'.$choice->value) }}</option>
+                                @endforeach
+                            </select>
+                            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.tenant_logo_help') }}</p>
+                            @error('tenantLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
 
                         <label class="wp-checkbox-label">
                             <input type="checkbox" wire:model="qrStickerAvery6289ShowTenantAddress" class="wp-checkbox">
