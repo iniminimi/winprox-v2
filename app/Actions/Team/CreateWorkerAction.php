@@ -34,6 +34,8 @@ class CreateWorkerAction
             'internal_team_id' => $team->id,
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
+            'email' => $data['email'] ?? null,
+            'phone' => $data['phone'] ?? null,
             'is_active' => true,
         ]);
 

@@ -131,6 +131,18 @@
                                             @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                                         </div>
                                     </div>
+                                    <div class="wp-filter-bar">
+                                        <div class="wp-field wp-grow">
+                                            <label class="wp-label" for="workerEmail-{{ $team->id }}">{{ __('team.workers.email') }}</label>
+                                            <input type="email" id="workerEmail-{{ $team->id }}" class="wp-input" wire:model="workerEmail">
+                                            @error('workerEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                                        </div>
+                                        <div class="wp-field wp-grow">
+                                            <label class="wp-label" for="workerPhone-{{ $team->id }}">{{ __('team.workers.phone') }}</label>
+                                            <input type="tel" id="workerPhone-{{ $team->id }}" class="wp-input" wire:model="workerPhone">
+                                            @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
+                                        </div>
+                                    </div>
                                     <div class="wp-cluster wp-cluster--tight">
                                         <button type="submit" class="btn btn--primary btn--sm">{{ __('team.workers.add_submit') }}</button>
                                         <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelWorker">{{ __('common.button.cancel') }}</button>

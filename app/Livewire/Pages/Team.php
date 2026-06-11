@@ -88,6 +88,8 @@ class Team extends Component
 
     public string $workerFirstName = '';
     public string $workerLastName = '';
+    public string $workerEmail = '';
+    public string $workerPhone = '';
 
     // Worker CSV import
     public bool $showWorkerImportModal = false;
@@ -465,8 +467,8 @@ class Team extends Component
         Gate::authorize('update', $team);
 
         $this->expandTeam($teamId);
-        $this->reset(['workerFirstName', 'workerLastName']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
         $this->addingWorkerTeamId = $teamId;
     }
 
@@ -477,20 +479,36 @@ class Team extends Component
 
         $request = new StoreWorkerRequest;
         $validated = $this->validate(
-            ['workerFirstName' => $request->rules()['first_name'], 'workerLastName' => $request->rules()['last_name']],
-            ['workerFirstName.required' => __('team.errors.worker_name_required'), 'workerLastName.required' => __('team.errors.worker_name_required')],
+            [
+                'workerFirstName' => $request->rules()['first_name'],
+                'workerLastName' => $request->rules()['last_name'],
+                'workerEmail' => $request->rules()['email'],
+                'workerPhone' => $request->rules()['phone'],
+            ],
+            [
+                'workerFirstName.required' => __('team.errors.worker_name_required'),
+                'workerLastName.required' => __('team.errors.worker_name_required'),
+                'workerEmail.email' => __('team.errors.worker_email_invalid'),
+                'workerEmail.max' => __('team.errors.worker_email_max'),
+                'workerPhone.max' => __('team.errors.worker_phone_max'),
+            ],
         );
 
-        $createWorker->handle($team, ['first_name' => $validated['workerFirstName'], 'last_name' => $validated['workerLastName']], (int) auth()->id());
+        $createWorker->handle($team, [
+            'first_name' => $validated['workerFirstName'],
+            'last_name' => $validated['workerLastName'],
+            'email' => $validated['workerEmail'] ?? null,
+            'phone' => $validated['workerPhone'] ?? null,
+        ], (int) auth()->id());
 
-        $this->reset(['workerFirstName', 'workerLastName', 'addingWorkerTeamId']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'addingWorkerTeamId']);
         $this->dispatch('saved');
     }
 
     public function cancelWorker(): void
     {
-        $this->reset(['workerFirstName', 'workerLastName', 'addingWorkerTeamId']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'addingWorkerTeamId']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void
