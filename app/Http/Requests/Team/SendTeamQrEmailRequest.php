@@ -14,7 +14,7 @@ class SendTeamQrEmailRequest extends FormRequest
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function rules(): array
+    public static function rulesFor(): array
     {
         return [
             'recipientEmail' => ['required', 'string', 'email', 'max:255'],
@@ -25,11 +25,19 @@ class SendTeamQrEmailRequest extends FormRequest
     /**
      * @return array<string, string>
      */
-    public static function messages(): array
+    public static function messagesFor(): array
     {
         return [
             'recipientEmail.required' => __('team.qr.email_recipient_required'),
             'recipientEmail.email' => __('team.errors.worker_email_invalid'),
         ];
+    }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public function rules(): array
+    {
+        return self::rulesFor();
     }
 }

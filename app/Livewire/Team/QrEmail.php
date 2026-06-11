@@ -53,8 +53,8 @@ class QrEmail extends Component
                 'recipientEmail' => $this->recipientEmail,
                 'recipientName' => $this->recipientName,
             ],
-            SendTeamQrEmailRequest::rules(),
-            SendTeamQrEmailRequest::messages(),
+            SendTeamQrEmailRequest::rulesFor(),
+            SendTeamQrEmailRequest::messagesFor(),
         )->validate();
 
         $sendTeamQrEmail->handle(
