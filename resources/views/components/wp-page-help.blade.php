@@ -2,6 +2,24 @@
 
 @php
     $help = $page !== '' ? \App\Support\PageHelp::for($page) : null;
+
+    $helpActionGroups = [];
+
+    if ($help !== null) {
+        foreach ($help['actions'] as $action) {
+            if (! empty($action['nested'])) {
+                $lastIndex = count($helpActionGroups) - 1;
+
+                if ($lastIndex < 0 || $helpActionGroups[$lastIndex]['type'] !== 'nested') {
+                    $helpActionGroups[] = ['type' => 'nested', 'items' => []];
+                }
+
+                $helpActionGroups[count($helpActionGroups) - 1]['items'][] = $action;
+            } else {
+                $helpActionGroups[] = ['type' => 'item', 'item' => $action];
+            }
+        }
+    }
 @endphp
 
 @if ($help && ($help['actions'] !== [] || $help['statuses'] !== []))
@@ -32,11 +50,24 @@
                         <section class="wp-page-help-section">
                             <h3 class="wp-page-help-section-title">{{ __('page-help.modal.actions_heading') }}</h3>
                             <ul class="wp-page-help-list">
-                                @foreach ($help['actions'] as $action)
-                                    <li @class(['wp-page-help-item', 'wp-page-help-item--nested' => ! empty($action['nested'])])>
-                                        <p class="wp-page-help-item-label">{{ $action['label'] }}</p>
-                                        <p class="wp-page-help-item-text">{{ $action['text'] }}</p>
-                                    </li>
+                                @foreach ($helpActionGroups as $group)
+                                    @if ($group['type'] === 'item')
+                                        <li class="wp-page-help-item">
+                                            <p class="wp-page-help-item-label">{{ $group['item']['label'] }}</p>
+                                            <p class="wp-page-help-item-text">{{ $group['item']['text'] }}</p>
+                                        </li>
+                                    @else
+                                        <li class="wp-page-help-sublist-wrap">
+                                            <ul class="wp-page-help-sublist">
+                                                @foreach ($group['items'] as $action)
+                                                    <li class="wp-page-help-item">
+                                                        <p class="wp-page-help-item-label">{{ $action['label'] }}</p>
+                                                        <p class="wp-page-help-item-text">{{ $action['text'] }}</p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         </section>

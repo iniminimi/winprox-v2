@@ -456,8 +456,20 @@
     background-color: var(--wp-surface-muted);
 }
 
-.wp-page-help-item--nested {
-    margin-inline-start: 1.25rem;
+.wp-page-help-sublist-wrap {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wp-page-help-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-inline-start: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
 }
 
 .wp-page-help-item-label {

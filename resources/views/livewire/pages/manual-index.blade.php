@@ -178,7 +178,7 @@
                             'background: var(--wp-surface)',
                             'border: 1px solid var(--wp-border)',
                             'border-radius: 10px',
-                            'margin-inline-start: 1.25rem' => ! empty($action['nested']),
+                            'margin-inline-start: 1.75rem' => ! empty($action['nested']),
                         ])>
                             <div style="
                                 font-weight: 700;
