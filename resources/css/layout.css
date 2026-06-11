@@ -996,6 +996,12 @@
     margin-bottom: 0.25rem;
 }
 
+/* Zelfde pulse als PRIO1 (.wp-badge-critical) — trekt aandacht bij open taken. */
+.wp-portal-open-tasks-card--attention {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-color: #dc2626;
+}
+
 .wp-portal-actions {
     position: sticky;
     bottom: 0;

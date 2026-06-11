@@ -326,10 +326,42 @@ it('hides open tasks for unapproved issues from the worker portal', function () 
     WorkerVerification::markVerified($team, $worker);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertSee(__('portal.worker.open_tasks'))
+        ->assertSee(__('portal.worker.open_tasks_with_count', ['count' => 0]))
         ->assertSee(__('portal.worker.no_open_tasks'))
+        ->assertDontSee('wp-portal-open-tasks-card--attention', false)
         ->assertDontSee('Lek in de gang.')
         ->assertDontSee('Taak voor niet-goedgekeurde melding.');
+});
+
+it('pulses the open tasks card when the worker has open tasks', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+    ]);
+
+    Task::factory()->count(3)->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'note' => 'Controleer de leiding.',
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.worker.open_tasks_with_count', ['count' => 3]), false)
+        ->assertSee('wp-portal-open-tasks-card--attention', false);
 });
 
 it('hides worker UI from anonymous citizen visitors', function () {

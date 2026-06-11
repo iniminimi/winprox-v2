@@ -145,7 +145,14 @@
                         @include('partials.wp-portal-teamleader-release')
                     @endif
 
-                    <div class="wp-card wp-card-pad wp-stack" wire:key="portal-open-tasks-card" x-data="{ open: false }">
+                    <div
+                        @class([
+                            'wp-card wp-card-pad wp-stack',
+                            'wp-portal-open-tasks-card--attention' => $allOpenUnitTasks->isNotEmpty(),
+                        ])
+                        wire:key="portal-open-tasks-card"
+                        x-data="{ open: false }"
+                    >
                         <button
                             type="button"
                             class="wp-row"
@@ -153,7 +160,7 @@
                             @click="open = !open"
                             :aria-expanded="open"
                         >
-                            <h2 id="portal-open-tasks" class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
+                            <h2 id="portal-open-tasks" class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks_with_count', ['count' => $allOpenUnitTasks->count()]) }}</h2>
                             <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
                             <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
                         </button>
@@ -294,7 +301,14 @@
             </div>
 
             @if ($canAct)
-                <div class="wp-card wp-card-pad wp-stack" wire:key="issue-open-tasks-card" x-data="{ open: false }">
+                <div
+                    @class([
+                        'wp-card wp-card-pad wp-stack',
+                        'wp-portal-open-tasks-card--attention' => $openTasksForIssue->isNotEmpty(),
+                    ])
+                    wire:key="issue-open-tasks-card"
+                    x-data="{ open: false }"
+                >
                     <button
                         type="button"
                         class="wp-row"
@@ -302,7 +316,7 @@
                         @click="open = !open"
                         :aria-expanded="open"
                     >
-                        <h2 class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks') }}</h2>
+                        <h2 class="wp-section-title" style="margin:0;">{{ __('portal.worker.open_tasks_with_count', ['count' => $openTasksForIssue->count()]) }}</h2>
                         <x-wp-icon name="chevron-down" class="wp-icon" x-show="!open" />
                         <x-wp-icon name="chevron-up" class="wp-icon" x-show="open" x-cloak />
                     </button>

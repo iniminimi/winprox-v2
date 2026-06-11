@@ -74,6 +74,7 @@
         "signed_in_as": "Angemeldet als",
         "sign_out": "Abmelden",
         "open_tasks": "Offene Aufgaben",
+        "open_tasks_with_count": "Offene Aufgaben: :count",
         "task_heading": "Aufgabe (nr :nr)",
         "issue_heading": "Meldung (nr :nr)",
         "issue_meta": ":description, :datetime",

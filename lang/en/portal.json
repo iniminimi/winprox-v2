@@ -74,6 +74,7 @@
         "signed_in_as": "Signed in as",
         "sign_out": "Sign out",
         "open_tasks": "Open tasks",
+        "open_tasks_with_count": "Open tasks: :count",
         "task_heading": "Task (nr :nr)",
         "issue_heading": "Report (nr :nr)",
         "issue_meta": ":description, :datetime",

@@ -74,6 +74,7 @@
         "signed_in_as": "Aangemeld als",
         "sign_out": "Afmelden",
         "open_tasks": "Open taken",
+        "open_tasks_with_count": "Open taken: :count",
         "task_heading": "Taak (nr :nr)",
         "issue_heading": "Melding (nr :nr)",
         "issue_meta": ":description, :datetime",

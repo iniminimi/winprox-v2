@@ -74,6 +74,7 @@
         "signed_in_as": "Connecté en tant que",
         "sign_out": "Se déconnecter",
         "open_tasks": "Tâches ouvertes",
+        "open_tasks_with_count": "Tâches ouvertes : :count",
         "task_heading": "Tâche (nr :nr)",
         "issue_heading": "Signalement (nr :nr)",
         "issue_meta": ":description, :datetime",
