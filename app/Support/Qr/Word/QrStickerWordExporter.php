@@ -11,7 +11,6 @@ use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 
 final class QrStickerWordExporter
@@ -24,11 +23,8 @@ final class QrStickerWordExporter
 
     public function downloadFilename(Location $location, QrStickerSheetTemplate $template): string
     {
-        $siteSlug = Str::slug($location->name) ?: 'location';
-
         return sprintf(
-            'winprox-qr-%s-%s-%s.docx',
-            $siteSlug,
+            'winprox-qr-%s-%s.docx',
             $template->fileSlug(),
             Carbon::now()->timezone(config('app.timezone'))->format('Y-m-d-His'),
         );
