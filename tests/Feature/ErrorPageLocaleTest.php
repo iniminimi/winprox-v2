@@ -14,6 +14,7 @@ it('renders 404 in Dutch by default', function () {
     $response->assertNotFound();
     $response->assertSee('Pagina niet gevonden', false);
     $response->assertDontSee('Page not found', false);
+    $response->assertSee('Powered by Winprox.app', false);
 });
 
 it('renders 404 in English when user locale is en', function () {

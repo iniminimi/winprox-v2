@@ -19,6 +19,7 @@
             class="wp-error-image"
             loading="lazy"
         >
+        <p class="wp-error-powered">Powered by Winprox.app</p>
 
         <span class="wp-pill">{{ $code ?? __('error.default.code') }}</span>
 
