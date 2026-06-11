@@ -204,6 +204,10 @@
             "herma_70x50": {
                 "title": "HERMA 70×50",
                 "description": "15 etiketten per vel (70 × 50 mm) — HERMA 8."
+            },
+            "avery_62x89_r": {
+                "title": "Avery 62×89-R",
+                "description": "9 etiketten per vel (62 × 89 mm) — branded design."
             }
         }
     },

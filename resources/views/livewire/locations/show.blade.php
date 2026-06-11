@@ -393,7 +393,7 @@
                 </div>
 
                 <div class="wp-list wp-list--entity-rows">
-                    @foreach (\App\Support\Qr\QrStickerSheetTemplate::cases() as $template)
+                    @foreach ($qrPackTemplates as $template)
                         <a href="{{ route('locations.qr-pack', ['location' => $location, 'template' => $template->value, 'dynamic' => $qrPackGenerateDynamic ? '1' : null, 'count' => $qrPackGenerateDynamic ? $qrPackDynamicCount : null]) }}"
                            class="wp-issue-row"
                            wire:key="qr-pack-format-{{ $template->value }}">

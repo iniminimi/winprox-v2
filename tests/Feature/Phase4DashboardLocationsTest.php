@@ -342,6 +342,67 @@ it('qr-pack download returns herma docx layout when GD available', function () {
         ->and($documentXml)->toContain('w:left="0"');
 });
 
+it('qr-pack download returns avery 62x89 branded docx layout when GD available', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hal C',
+    ]);
+    Unit::factory()->withQrToken('qr-facility-branded')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Lift 9',
+        'is_active' => true,
+    ]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'avery_62x89_r',
+    ]));
+
+    $response->assertOk();
+
+    $zip = new \ZipArchive;
+    $tmp = tempnam(sys_get_temp_dir(), 'wp-docx-avery6289-');
+    file_put_contents($tmp, $response->streamedContent());
+    expect($zip->open($tmp))->toBeTrue();
+    $documentXml = $zip->getFromName('word/document.xml');
+    $zip->close();
+    @unlink($tmp);
+
+    expect($documentXml)->toBeString()
+        ->and($documentXml)->not->toContain('Lift 9')
+        ->and($documentXml)->toContain('<w:gridCol w:w="3514"/>')
+        ->and($documentXml)->toContain('<w:gridCol w:w="283"/>')
+        ->and($documentXml)->toContain('w:left="522"');
+});
+
+it('qr-pack dynamic download works for avery 62x89 branded template', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'avery_62x89_r',
+        'dynamic' => '1',
+        'count' => '3',
+    ]));
+
+    $response->assertOk();
+
+    expect(\App\Models\QrCode::where('tenant_id', $tenant->id)->count())->toBe(3);
+});
+
 it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -358,7 +419,8 @@ it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function ()
         ->call('openQrPackModal')
         ->assertSet('showQrPackModal', true)
         ->assertSee(__('locations.qr_pack.formats.avery_55x55_s.title'))
-        ->assertSee(__('locations.qr_pack.formats.herma_70x50.title'));
+        ->assertSee(__('locations.qr_pack.formats.herma_70x50.title'))
+        ->assertSee(__('locations.qr_pack.formats.avery_62x89_r.title'));
 });
 
 it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () {

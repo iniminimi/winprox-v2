@@ -20,6 +20,7 @@ use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\EntityDetailNavigation;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
@@ -487,6 +488,7 @@ class Show extends Component
             'categories' => $categories,
             'nav' => EntityDetailNavigation::forLocation($this->location),
             'bulkPreview' => $this->bulkPreviewNames(),
+            'qrPackTemplates' => QrStickerSheetTemplate::cases(),
         ]);
     }
 
