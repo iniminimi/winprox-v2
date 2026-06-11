@@ -21,7 +21,7 @@
         "placeholder_country": "Land (bv. BE)",
         "name_label": "Organisatienaam",
         "logo_label": "Organisatielogo",
-        "logo_hint": "Wordt in het midden van QR-stickers getoond (PNG/JPG, max. 2 MB).",
+        "logo_hint": "Dit logo wordt onder andere getoond op het portaal en de QR-codes. (PNG/JPG, max. 2 MB).",
         "logo_preview_alt": "Huidig organisatielogo",
         "portal_background_label": "Portaal-achtergrond",
         "portal_background_preview_alt": "Huidige portaal-achtergrond",

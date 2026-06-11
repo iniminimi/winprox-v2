@@ -21,7 +21,7 @@
         "placeholder_country": "Land (z. B. BE)",
         "name_label": "Name der Organisation",
         "logo_label": "Organisationslogo",
-        "logo_hint": "Wird in der Mitte der QR-Aufkleber angezeigt (PNG/JPG, max. 2 MB).",
+        "logo_hint": "Dieses Logo wird unter anderem im Portal und auf den QR-Codes angezeigt. (PNG/JPG, max. 2 MB).",
         "logo_preview_alt": "Aktuelles Organisationslogo",
         "portal_background_label": "Portal-Hintergrund",
         "portal_background_preview_alt": "Aktueller Portal-Hintergrund",

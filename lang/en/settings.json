@@ -21,7 +21,7 @@
         "placeholder_country": "Country (e.g. BE)",
         "name_label": "Organisation name",
         "logo_label": "Organisation logo",
-        "logo_hint": "Shown in the centre of QR stickers (PNG/JPG, max. 2 MB).",
+        "logo_hint": "This logo is shown on the portal, QR codes, and elsewhere. (PNG/JPG, max. 2 MB).",
         "logo_preview_alt": "Current organisation logo",
         "portal_background_label": "Portal background",
         "portal_background_preview_alt": "Current portal background",

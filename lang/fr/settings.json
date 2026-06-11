@@ -21,7 +21,7 @@
         "placeholder_country": "Pays (ex. BE)",
         "name_label": "Nom de l'organisation",
         "logo_label": "Logo de l'organisation",
-        "logo_hint": "Affiché au centre des étiquettes QR (PNG/JPG, max. 2 Mo).",
+        "logo_hint": "Ce logo est notamment affiché sur le portail et les codes QR. (PNG/JPG, max. 2 Mo).",
         "logo_preview_alt": "Logo actuel de l'organisation",
         "portal_background_label": "Arrière-plan du portail",
         "portal_background_preview_alt": "Arrière-plan actuel du portail",
