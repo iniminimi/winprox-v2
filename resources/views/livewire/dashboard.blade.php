@@ -9,6 +9,37 @@
                 </a>
             </div>
         </div>
+
+        <div class="wp-card wp-card-pad">
+            <div class="wp-stack">
+                <h2 class="wp-section-title">{{ __('manual.getting_started.label') }}</h2>
+                <p class="wp-text-body"><strong>{{ __('manual.getting_started.title') }}</strong></p>
+                <p class="wp-muted">{{ __('manual.getting_started.intro') }}</p>
+
+                <div class="wp-stack-tight">
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('manual.step_1_title') }}</strong></p>
+                        <p class="wp-muted">{{ __('manual.step_1_text') }}</p>
+                    </div>
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('manual.step_2_title') }}</strong></p>
+                        <p class="wp-muted">{{ __('manual.step_2_text') }}</p>
+                    </div>
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('manual.step_3_title') }}</strong></p>
+                        <p class="wp-muted">{{ __('manual.step_3_text') }}</p>
+                    </div>
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('manual.step_4_title') }}</strong></p>
+                        <p class="wp-muted">{{ __('manual.step_4_text') }}</p>
+                    </div>
+                    <div class="wp-stack-tight">
+                        <p class="wp-text-body"><strong>{{ __('manual.step_5_title') }}</strong></p>
+                        <p class="wp-muted">{{ __('manual.step_5_text') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     @else
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
