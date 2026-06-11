@@ -38,7 +38,7 @@ class SendTeamQrEmailAction
             portalUrl: $portalUrl,
             qrPngBytes: $pngBytes,
             recipientName: $recipientName,
-            locale: $locale,
+            senderLocale: $locale,
         ));
 
         $this->audit->record(

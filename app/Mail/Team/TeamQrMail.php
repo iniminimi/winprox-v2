@@ -18,9 +18,9 @@ class TeamQrMail extends Mailable
         public string $portalUrl,
         public string $qrPngBytes,
         public string $recipientName = '',
-        public ?string $locale = null,
+        ?string $senderLocale = null,
     ) {
-        $this->locale($locale ?? app()->getLocale());
+        $this->locale($senderLocale ?? app()->getLocale());
     }
 
     public function envelope(): Envelope
