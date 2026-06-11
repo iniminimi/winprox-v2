@@ -342,7 +342,14 @@ class Settings extends Component
         $this->dispatch('saved');
     }
 
-    public function saveOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
+    public function updatedPortalBackground(): void
+    {
+        $this->persistOrganisationPortalBackground(
+            app(UpdateOrganisationPortalBackgroundAction::class),
+        );
+    }
+
+    private function persistOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
     {
         $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
@@ -351,14 +358,14 @@ class Settings extends Component
 
         $this->authorize('updateTenantBranding', $tenant);
 
+        if (! $this->portalBackground instanceof UploadedFile) {
+            return;
+        }
+
         Validator::make(
             ['portalBackground' => $this->portalBackground],
             ['portalBackground' => ['required', 'image', 'max:4096']],
         )->validate();
-
-        if (! $this->portalBackground instanceof UploadedFile) {
-            return;
-        }
 
         $updated = $updateBackground->handle($tenant, $this->portalBackground, (int) auth()->id());
         $this->reset('portalBackground');

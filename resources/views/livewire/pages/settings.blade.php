@@ -89,7 +89,7 @@
 
     @if ($canUpdateTenantBranding && $organisationTenant)
         <x-wp-settings-section :title="__('settings.org.portal_background_label')">
-            <form wire:submit="saveOrganisationPortalBackground" class="wp-stack-tight">
+            <div class="wp-stack-tight">
                 <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
                 <div class="wp-field">
                     @if ($portalBackgroundUrl)
@@ -104,10 +104,7 @@
                     <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
                     @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-cluster">
-                    <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-                </div>
-            </form>
+            </div>
         </x-wp-settings-section>
     @endif
 
