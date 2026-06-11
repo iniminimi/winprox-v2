@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\Tenant;
+use App\Support\Qr\BrandedQrStickerHeaderText;
 
 class UpdateTenantQrStickerAvery6289SettingsAction
 {
@@ -12,7 +13,7 @@ class UpdateTenantQrStickerAvery6289SettingsAction
 
     public function handle(Tenant $tenant, ?string $headerText, ?int $actorUserId = null): Tenant
     {
-        $normalized = $headerText === null ? null : trim($headerText);
+        $normalized = $headerText === null ? null : BrandedQrStickerHeaderText::fitForSticker($headerText);
 
         return $this->updateOrganisation->handle($tenant, [
             'name' => $tenant->name,

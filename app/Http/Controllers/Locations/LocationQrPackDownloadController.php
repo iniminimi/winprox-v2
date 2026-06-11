@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Locations;
 
 use App\Actions\QrCodes\BatchGenerateQrCodesAction;
+use App\Actions\QrCodes\EnsureUnitStickerQrCodeAction;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Platform\SuperuserTenantAccess;
@@ -53,7 +54,11 @@ final class LocationQrPackDownloadController
 
         } else {
             // Use existing location units
-            $entries = LocationQrPackStickerEntries::forLocation($location);
+            $entries = LocationQrPackStickerEntries::forLocation(
+                $location,
+                app(EnsureUnitStickerQrCodeAction::class),
+                (int) auth()->id(),
+            );
 
             if ($entries === []) {
                 abort(404, __('locations.qr_pack.no_units'));

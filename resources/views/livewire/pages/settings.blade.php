@@ -125,7 +125,7 @@
                         id="qrStickerAvery6289HeaderText"
                         class="wp-input"
                         wire:model="qrStickerAvery6289HeaderText"
-                        maxlength="160"
+                        maxlength="{{ \App\Support\Qr\Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS }}"
                         placeholder="{{ __('settings.qr_stickers.avery_62x89_r.header_placeholder') }}"
                     >
                     @error('qrStickerAvery6289HeaderText') <p class="wp-error">{{ $message }}</p> @enderror

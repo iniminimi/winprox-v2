@@ -31,15 +31,18 @@ final class Avery62x89StickerArtworkLayout
 
     public const HEADER_TOP_PX = 72;
 
-    public const HEADER_MAX_HEIGHT_PX = 140;
+    public const HEADER_MAX_HEIGHT_PX = 168;
 
-    public const HEADER_MAX_FONT_SIZE_PX = 42;
+    public const HEADER_MAX_FONT_SIZE_PX = 36;
 
-    public const HEADER_MIN_FONT_SIZE_PX = 22;
+    public const HEADER_MIN_FONT_SIZE_PX = 20;
 
-    public const HEADER_LINE_HEIGHT_RATIO = 1.15;
+    public const HEADER_LINE_HEIGHT_RATIO = 1.12;
 
-    public const HEADER_MAX_LINES = 2;
+    public const HEADER_MAX_LINES = 3;
+
+    /** Matches settings validation — ~3 lines on the header band. */
+    public const HEADER_TEXT_MAX_CHARS = 95;
 
     /** Below QR — sticker number (Winprox-YYMM-#####). */
     public const FOOTER_PADDING_SIDE_PX = 48;

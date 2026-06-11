@@ -163,13 +163,8 @@ final class Avery62x89WordStickerSheetBuilder
     private static function footerLabel(QrStickerEntry $entry): ?string
     {
         $stickerNumber = trim((string) ($entry->stickerNumber ?? ''));
-        if ($stickerNumber !== '') {
-            return $stickerNumber;
-        }
 
-        $unitLabel = trim($entry->unitLabel);
-
-        return $unitLabel !== '' ? $unitLabel : null;
+        return $stickerNumber !== '' ? $stickerNumber : null;
     }
 
     private static function mmToTwip(float $millimeters): int

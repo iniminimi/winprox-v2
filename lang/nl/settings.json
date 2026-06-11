@@ -46,7 +46,7 @@
             "current_text_label": "Huidige tekst",
             "current_text_empty": "— (geen tekst opgeslagen)",
             "header_placeholder": "bv. Melding? Scan hier",
-            "header_help": "Wit op het zwarte vlak bovenaan. Leeg laten = locatie · unit (zoals op het meldportaal). Het stickernummer staat altijd onder de QR-code.",
+            "header_help": "Maximaal 95 tekens (~3 regels op de sticker). Leeg laten = locatie · unit (zoals op het meldportaal). Het Winprox-stickernummer staat altijd onder de QR-code.",
             "background_label": "Achtergrondafbeelding",
             "background_coming_soon": "Eigen achtergrond uploaden volgt in een latere update. Tot dan wordt het standaard WinProx-design gebruikt."
         }

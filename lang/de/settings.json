@@ -46,7 +46,7 @@
             "current_text_label": "Aktueller Text",
             "current_text_empty": "— (kein Text gespeichert)",
             "header_placeholder": "z. B. Meldung? Hier scannen",
-            "header_help": "Weiß auf dem schwarzen Streifen oben. Leer lassen = Standort · Unit (wie im Meldeportal). Die Etikettennummer steht immer unter dem QR-Code.",
+            "header_help": "Maximal 95 Zeichen (~3 Zeilen auf dem Etikett). Leer lassen = Standort · Unit (wie im Meldeportal). Die Winprox-Etikettennummer steht immer unter dem QR-Code.",
             "background_label": "Hintergrundbild",
             "background_coming_soon": "Eigenes Hintergrundbild folgt in einem späteren Update. Bis dahin wird das Standard-WinProx-Design verwendet."
         }

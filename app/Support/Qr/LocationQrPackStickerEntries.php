@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Qr;
 
+use App\Actions\QrCodes\EnsureUnitStickerQrCodeAction;
 use App\Models\Location;
 use App\Models\QrCode;
 use App\Models\Unit;
@@ -13,8 +14,11 @@ final class LocationQrPackStickerEntries
     /**
      * @return list<QrStickerEntry>
      */
-    public static function forLocation(Location $location): array
-    {
+    public static function forLocation(
+        Location $location,
+        ?EnsureUnitStickerQrCodeAction $ensureStickerQr = null,
+        ?int $actorUserId = null,
+    ): array {
         $location->loadMissing([
             'units' => fn ($q) => $q->where('is_active', true)->orderBy('name')->with('qrCodes'),
         ]);
@@ -29,13 +33,20 @@ final class LocationQrPackStickerEntries
                 continue;
             }
 
-            $stickerNumber = self::stickerNumberForUnit($unit);
+            if ($ensureStickerQr !== null) {
+                $qrCode = $ensureStickerQr->handle($unit, (int) $location->tenant_id, $actorUserId);
+                $stickerNumber = trim($qrCode->display_sticker_number);
+                $reportUrl = route('qr.scan', ['token' => $qrCode->token]);
+            } else {
+                $stickerNumber = self::stickerNumberForUnit($unit);
+                $reportUrl = UnitPortalUrl::forUnit($unit);
+            }
 
             $entries[] = new QrStickerEntry(
-                unitLabel: $stickerNumber ?? self::stickerLabel($unit),
-                reportUrl: UnitPortalUrl::forUnit($unit),
+                unitLabel: $stickerNumber !== '' ? $stickerNumber : self::stickerLabel($unit),
+                reportUrl: $reportUrl,
                 headerFallback: self::portalHeaderFallback($unit, $location),
-                stickerNumber: $stickerNumber,
+                stickerNumber: $stickerNumber !== '' ? $stickerNumber : null,
             );
         }
 

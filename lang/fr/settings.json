@@ -46,7 +46,7 @@
             "current_text_label": "Texte actuel",
             "current_text_empty": "— (aucun texte enregistré)",
             "header_placeholder": "ex. Signaler un problème ? Scannez ici",
-            "header_help": "Blanc sur la bande noire en haut. Laisser vide = localisation · unité (comme sur le portail de signalement). Le numéro d’étiquette est toujours sous le code QR.",
+            "header_help": "Maximum 95 caractères (~3 lignes sur l’étiquette). Laisser vide = localisation · unité (comme sur le portail). Le numéro Winprox est toujours sous le code QR.",
             "background_label": "Image de fond",
             "background_coming_soon": "Le téléversement d’un fond personnalisé suivra dans une prochaine mise à jour. D’ici là, le design WinProx par défaut est utilisé."
         }
