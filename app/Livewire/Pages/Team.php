@@ -20,10 +20,12 @@ use App\Actions\Team\SetWorkerTeamleaderAction;
 use App\Actions\Team\SyncTeamCategoriesAction;
 use App\Actions\Team\UpdateColleagueAction;
 use App\Actions\Team\UpdateTeamAction;
+use App\Actions\Team\UpdateWorkerAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
+use App\Http\Requests\Team\UpdateWorkerRequest;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\User;
@@ -90,6 +92,14 @@ class Team extends Component
     public string $workerLastName = '';
     public string $workerEmail = '';
     public string $workerPhone = '';
+
+    // Worker bewerken (modal)
+    public bool $showWorkerModal = false;
+    public ?int $editingWorkerId = null;
+    public string $editWorkerFirstName = '';
+    public string $editWorkerLastName = '';
+    public string $editWorkerEmail = '';
+    public string $editWorkerPhone = '';
 
     // Worker CSV import
     public bool $showWorkerImportModal = false;
@@ -509,6 +519,55 @@ class Team extends Component
     {
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'addingWorkerTeamId']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
+    }
+
+    public function openEditWorker(int $workerId): void
+    {
+        $worker = $this->authorizedWorker($workerId);
+        $this->editingWorkerId = $workerId;
+        $this->editWorkerFirstName = $worker->first_name;
+        $this->editWorkerLastName = $worker->last_name;
+        $this->editWorkerEmail = $worker->email ?? '';
+        $this->editWorkerPhone = $worker->phone ?? '';
+        $this->showWorkerModal = true;
+    }
+
+    public function saveWorkerEdit(UpdateWorkerAction $updateWorker): void
+    {
+        $worker = $this->authorizedWorker((int) $this->editingWorkerId);
+
+        $request = new UpdateWorkerRequest;
+        $validated = $this->validate(
+            [
+                'editWorkerFirstName' => $request->rules()['first_name'],
+                'editWorkerLastName' => $request->rules()['last_name'],
+                'editWorkerEmail' => $request->rules()['email'],
+                'editWorkerPhone' => $request->rules()['phone'],
+            ],
+            [
+                'editWorkerFirstName.required' => __('team.errors.worker_name_required'),
+                'editWorkerLastName.required' => __('team.errors.worker_name_required'),
+                'editWorkerEmail.email' => __('team.errors.worker_email_invalid'),
+                'editWorkerEmail.max' => __('team.errors.worker_email_max'),
+                'editWorkerPhone.max' => __('team.errors.worker_phone_max'),
+            ],
+        );
+
+        $updateWorker->handle($worker, [
+            'first_name' => $validated['editWorkerFirstName'],
+            'last_name' => $validated['editWorkerLastName'],
+            'email' => $validated['editWorkerEmail'] ?? null,
+            'phone' => $validated['editWorkerPhone'] ?? null,
+        ], (int) auth()->id());
+
+        $this->cancelWorkerEdit();
+        $this->dispatch('saved');
+    }
+
+    public function cancelWorkerEdit(): void
+    {
+        $this->reset(['showWorkerModal', 'editingWorkerId', 'editWorkerFirstName', 'editWorkerLastName', 'editWorkerEmail', 'editWorkerPhone']);
+        $this->resetErrorBag(['editWorkerFirstName', 'editWorkerLastName', 'editWorkerEmail', 'editWorkerPhone']);
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void

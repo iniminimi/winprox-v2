@@ -170,6 +170,7 @@
                                                 <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
                                             @endunless
                                             @if ($canEditContent)
+                                                <button type="button" class="btn btn--surface btn--sm" wire:click="openEditWorker({{ $worker->id }})">{{ __('common.button.edit') }}</button>
                                                 @if ($worker->is_teamleader)
                                                     <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerTeamleader({{ $worker->id }}, false)">{{ __('team.workers.remove_teamleader') }}</button>
                                                 @else
@@ -260,6 +261,49 @@
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="cancelColleague">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('team.colleagues.modal.save') }}</button>
+                </div>
+            </form>
+        </x-wp-modal>
+    @endif
+
+    {{-- Modal: worker bewerken --------------------------------------------}}
+    @if ($showWorkerModal)
+        <x-wp-modal closeMethod="cancelWorkerEdit">
+            <form wire:submit="saveWorkerEdit" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <div class="wp-stack-tight">
+                        <h2 class="wp-section-title">{{ __('team.workers.modal.edit_title') }}</h2>
+                        <p class="wp-muted wp-text-sm">{{ __('team.workers.modal.edit_subtitle') }}</p>
+                    </div>
+                    <x-wp-modal-close wire:click="cancelWorkerEdit" />
+                </div>
+
+                <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="editWorkerFirstName">{{ __('team.workers.first_name') }}</label>
+                        <input type="text" id="editWorkerFirstName" class="wp-input" wire:model="editWorkerFirstName">
+                        @error('editWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="editWorkerLastName">{{ __('team.workers.last_name') }}</label>
+                        <input type="text" id="editWorkerLastName" class="wp-input" wire:model="editWorkerLastName">
+                        @error('editWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="editWorkerEmail">{{ __('team.workers.email') }}</label>
+                        <input type="email" id="editWorkerEmail" class="wp-input" wire:model="editWorkerEmail">
+                        @error('editWorkerEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="editWorkerPhone">{{ __('team.workers.phone') }}</label>
+                        <input type="tel" id="editWorkerPhone" class="wp-input" wire:model="editWorkerPhone">
+                        @error('editWorkerPhone') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                </div>
+
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="cancelWorkerEdit">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('team.workers.modal.save') }}</button>
                 </div>
             </form>
         </x-wp-modal>

@@ -95,6 +95,11 @@
             "email": "hans.mueller@unternehmen.de",
             "phone": "+49 170 1234567",
             "external_id": "EMP-001"
+        },
+        "modal": {
+            "edit_title": "Mitarbeiter bearbeiten",
+            "edit_subtitle": "Aktualisieren Sie die Daten dieses Mitarbeiters.",
+            "save": "Mitarbeiter speichern"
         }
     },
     "import_history": {

@@ -95,6 +95,11 @@
             "email": "jean.dupont@entreprise.fr",
             "phone": "+33 6 12 34 56 78",
             "external_id": "EMP-001"
+        },
+        "modal": {
+            "edit_title": "Modifier l'intervenant",
+            "edit_subtitle": "Modifiez les données de cet intervenant.",
+            "save": "Enregistrer l'intervenant"
         }
     },
     "import_history": {

@@ -95,6 +95,11 @@
             "email": "john.smith@company.com",
             "phone": "+44 7700 900123",
             "external_id": "EMP-001"
+        },
+        "modal": {
+            "edit_title": "Edit worker",
+            "edit_subtitle": "Update this worker's details.",
+            "save": "Save worker"
         }
     },
     "import_history": {

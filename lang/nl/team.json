@@ -95,6 +95,11 @@
             "email": "jan.janssen@bedrijf.be",
             "phone": "+32 470 12 34 56",
             "external_id": "EMP-001"
+        },
+        "modal": {
+            "edit_title": "Uitvoerder bewerken",
+            "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
+            "save": "Uitvoerder opslaan"
         }
     },
     "import_history": {
