@@ -2861,3 +2861,77 @@ a.wp-kpi:hover {
     color: var(--wp-text-muted);
 }
 
+/* QR-sticker editor (instellingen) */
+.wp-qr-sticker-editor {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+    .wp-qr-sticker-editor {
+        grid-template-columns: minmax(0, 1fr) minmax(11rem, 13.75rem);
+        align-items: start;
+    }
+}
+
+.wp-qr-sticker-editor-controls {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.wp-qr-sticker-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+    .wp-qr-sticker-preview {
+        position: sticky;
+        top: 1rem;
+    }
+}
+
+.wp-qr-sticker-preview-img {
+    width: 100%;
+    max-width: 13.75rem;
+    height: auto;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    background-color: var(--wp-surface);
+}
+
+.wp-disclosure {
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    background-color: var(--wp-surface);
+}
+
+.wp-disclosure + .wp-disclosure {
+    margin-top: 0;
+}
+
+.wp-disclosure-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--wp-text-heading);
+    list-style: none;
+}
+
+.wp-disclosure-summary::-webkit-details-marker {
+    display: none;
+}
+
+.wp-disclosure[open] .wp-disclosure-chevron {
+    transform: rotate(180deg);
+}
+
+.wp-disclosure-panel {
+    padding: 0 1rem 1rem;
+}
+

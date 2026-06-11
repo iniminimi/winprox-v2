@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
+use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
@@ -71,6 +73,8 @@ class Settings extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $qrStickerAvery6289Background = null;
 
+    public ?string $qrStickerPreviewDataUrl = null;
+
     public string $uiTheme = '';
 
     public bool $canManageOrganisation = false;
@@ -88,6 +92,7 @@ class Settings extends Component
 
         if ($this->canManageOrganisation) {
             $this->fillOrganisationFromTenant($tenant);
+            $this->refreshQrStickerPreview();
         }
     }
 
@@ -256,6 +261,7 @@ class Settings extends Component
         );
 
         $this->fillOrganisationFromTenant($updated);
+        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -263,6 +269,48 @@ class Settings extends Component
         }
 
         $this->dispatch('saved');
+    }
+
+    public function updatedQrStickerAvery6289HeaderText(): void
+    {
+        $this->refreshQrStickerPreview();
+    }
+
+    public function updatedQrStickerAvery6289TenantLogo(): void
+    {
+        $this->refreshQrStickerPreview();
+    }
+
+    public function updatedQrStickerAvery6289ShowTenantAddress(): void
+    {
+        $this->refreshQrStickerPreview();
+    }
+
+    public function refreshQrStickerPreview(?RenderBrandedQrStickerPreviewAction $renderPreview = null): void
+    {
+        $renderPreview ??= app(RenderBrandedQrStickerPreviewAction::class);
+
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            $this->qrStickerPreviewDataUrl = null;
+
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
+        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+
+        $this->qrStickerPreviewDataUrl = $renderPreview->handle(
+            $tenant,
+            BrandedQrStickerPreviewData::fromLivewireForm(
+                $this->qrStickerAvery6289HeaderText,
+                $this->qrStickerAvery6289TenantLogo,
+                $this->qrStickerAvery6289ShowTenantAddress,
+            ),
+            $sheetSetting,
+        );
     }
 
     public function updatedQrStickerAvery6289Background(): void
@@ -299,6 +347,7 @@ class Settings extends Component
         );
         $this->reset('qrStickerAvery6289Background');
         $this->fillOrganisationFromTenant($updated);
+        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -323,6 +372,7 @@ class Settings extends Component
             (int) auth()->id(),
         );
         $this->fillOrganisationFromTenant($updated);
+        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -330,14 +380,6 @@ class Settings extends Component
         }
 
         $this->dispatch('saved');
-    }
-
-    public function qrStickerAvery6289BackgroundPreviewUrl(): ?string
-    {
-        return $this->resolveTenant()
-            ?->fresh()
-            ?->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R)
-            ?->backgroundPublicUrl();
     }
 
     public function saveOrganisationPortalBackground(UpdateOrganisationPortalBackgroundAction $updateBackground): void
@@ -413,7 +455,6 @@ class Settings extends Component
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
-            'qrStickerAvery6289BackgroundUrl' => $this->qrStickerAvery6289BackgroundPreviewUrl(),
         ]);
     }
 
