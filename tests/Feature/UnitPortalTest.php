@@ -288,6 +288,28 @@ it('hides worker UI from anonymous citizen visitors', function () {
         ->assertDontSee('Aanmelden als medewerker');
 });
 
+it('shows worker photo hints in the active portal locale', function () {
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    $genericEnHint = trans('portal.report.photos.hint', [], 'en');
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('switchLocale', 'en')
+        ->assertSee('Take a photo of the surroundings. This photo will be used as the background image for this unit (refresh).', false)
+        ->assertSee('Take a close-up photo of the QR code and a photo from further away.', false)
+        ->assertDontSee($genericEnHint, false)
+        ->call('switchLocale', 'fr')
+        ->assertSee('rafraîchissement', false)
+        ->assertSee('code QR et une photo de plus loin', false)
+        ->assertDontSee('Take a photo of the surroundings.', false);
+});
+
 it('scopes documents to unit, category and location-wide entries', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
     $category = Category::query()->create([
