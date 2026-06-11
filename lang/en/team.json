@@ -44,6 +44,7 @@
         "edit": "Edit",
         "deactivate": "Deactivate",
         "activate": "Activate",
+        "confirm_delete": "Delete this team?",
         "modal": {
             "create_title": "Add team",
             "edit_title": "Edit team",

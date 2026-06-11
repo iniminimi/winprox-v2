@@ -10,6 +10,7 @@ use App\Http\Requests\Workers\ImportWorkersRequest;
 use App\Actions\Team\CreateColleagueAction;
 use App\Actions\Team\CreateTeamAction;
 use App\Actions\Team\CreateWorkerAction;
+use App\Actions\Team\DeleteTeamAction;
 use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Team\ResetWorkerIconAction;
 use App\Actions\Team\SetColleagueActiveAction;
@@ -408,6 +409,20 @@ class Team extends Component
         Gate::authorize('deactivate', $team);
 
         $setActive->handle($team, $active, (int) auth()->id());
+    }
+
+    public function deleteTeam(int $id, DeleteTeamAction $deleteTeam): void
+    {
+        $team = InternalTeam::findOrFail($id);
+        Gate::authorize('delete', $team);
+
+        $deleteTeam->handle($team, (int) auth()->id());
+
+        $this->expandedTeamIds = array_values(array_diff($this->expandedTeamIds, [$id]));
+
+        if ($this->addingWorkerTeamId === $id) {
+            $this->cancelWorker();
+        }
     }
 
     public function toggleTeam(int $teamId): void

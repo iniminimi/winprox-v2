@@ -92,6 +92,10 @@
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
                             @endif
                             @if ($canManageTeams)
+                                @if ($team->workers->isEmpty())
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteTeam({{ $team->id }})"
+                                            wire:confirm="{{ __('team.teams.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                                @endif
                                 @if ($team->is_active)
                                     <button type="button" class="btn btn--warning btn--sm" wire:click="setTeamActive({{ $team->id }}, false)">{{ __('team.teams.deactivate') }}</button>
                                 @else

@@ -38,6 +38,11 @@ class InternalTeamPolicy
         return $user->tenant_id === $team->tenant_id && $user->isAdmin();
     }
 
+    public function delete(User $user, InternalTeam $team): bool
+    {
+        return $user->tenant_id === $team->tenant_id && $user->isAdmin();
+    }
+
     public function syncCategories(User $user, InternalTeam $team): bool
     {
         return $user->tenant_id === $team->tenant_id && ($user->isAdmin() || $user->isEmployee());

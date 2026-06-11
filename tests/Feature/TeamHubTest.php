@@ -276,9 +276,11 @@ it('staat teambeheer-rollen correct toe (admin alles, medewerker enkel inhoud)',
 
     expect(Gate::forUser($admin)->allows('create', InternalTeam::class))->toBeTrue()
         ->and(Gate::forUser($admin)->allows('deactivate', $team))->toBeTrue()
+        ->and(Gate::forUser($admin)->allows('delete', $team))->toBeTrue()
         ->and(Gate::forUser($admin)->allows('update', $team))->toBeTrue()
         ->and(Gate::forUser($employee)->allows('create', InternalTeam::class))->toBeFalse()
         ->and(Gate::forUser($employee)->allows('deactivate', $team))->toBeFalse()
+        ->and(Gate::forUser($employee)->allows('delete', $team))->toBeFalse()
         ->and(Gate::forUser($employee)->allows('update', $team))->toBeTrue();
 });
 
@@ -305,6 +307,29 @@ it('laat een admin een team aanmaken en deactiveren', function () {
     expect($team->fresh()->is_active)->toBeFalse();
 });
 
+it('laat een admin een leeg team verwijderen', function () {
+    [, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => Tenancy::id(), 'name' => 'Per ongeluk']);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertSee(__('common.button.delete'))
+        ->call('deleteTeam', $team->id)
+        ->assertHasNoErrors();
+
+    expect(InternalTeam::find($team->id))->toBeNull();
+});
+
+it('toont geen verwijderknop voor een team met uitvoerders', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertDontSeeHtml('wire:click="deleteTeam('.$team->id.')"');
+});
+
 it('laat een medewerker teaminhoud bewerken maar niet aanmaken/deactiveren', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
@@ -327,6 +352,11 @@ it('laat een medewerker teaminhoud bewerken maar niet aanmaken/deactiveren', fun
     Livewire::actingAs($employee)
         ->test(Team::class)
         ->call('setTeamActive', $team->id, false)
+        ->assertForbidden();
+
+    Livewire::actingAs($employee)
+        ->test(Team::class)
+        ->call('deleteTeam', $team->id)
         ->assertForbidden();
 
     expect($team->fresh()->is_active)->toBeTrue();
