@@ -63,7 +63,7 @@
     },
     "workers": {
         "title": "Uitvoerders",
-        "add": "Uitvoerder toevoegen",
+        "add": "+ Uitvoerder toevoegen",
         "add_submit": "Toevoegen",
         "empty": "Nog geen uitvoerders in dit team.",
         "first_name": "Voornaam",

@@ -63,7 +63,7 @@
     },
     "workers": {
         "title": "Mitarbeiter",
-        "add": "Mitarbeiter hinzufügen",
+        "add": "+ Mitarbeiter hinzufügen",
         "add_submit": "Hinzufügen",
         "empty": "Noch keine Mitarbeiter in diesem Team.",
         "first_name": "Vorname",

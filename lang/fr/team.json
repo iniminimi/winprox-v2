@@ -63,7 +63,7 @@
     },
     "workers": {
         "title": "Intervenants",
-        "add": "Ajouter un intervenant",
+        "add": "+ Ajouter un intervenant",
         "add_submit": "Ajouter",
         "empty": "Aucun intervenant dans cette équipe.",
         "first_name": "Prénom",

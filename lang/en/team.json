@@ -63,7 +63,7 @@
     },
     "workers": {
         "title": "Workers",
-        "add": "Add worker",
+        "add": "+ Add worker",
         "add_submit": "Add",
         "empty": "No workers in this team yet.",
         "first_name": "First name",
