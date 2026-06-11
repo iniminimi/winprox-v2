@@ -73,8 +73,6 @@ class Settings extends Component
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $qrStickerAvery6289Background = null;
 
-    public ?string $qrStickerPreviewDataUrl = null;
-
     public string $uiTheme = '';
 
     public bool $canManageOrganisation = false;
@@ -92,7 +90,6 @@ class Settings extends Component
 
         if ($this->canManageOrganisation) {
             $this->fillOrganisationFromTenant($tenant);
-            $this->refreshQrStickerPreview();
         }
     }
 
@@ -261,7 +258,6 @@ class Settings extends Component
         );
 
         $this->fillOrganisationFromTenant($updated);
-        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -269,48 +265,6 @@ class Settings extends Component
         }
 
         $this->dispatch('saved');
-    }
-
-    public function updatedQrStickerAvery6289HeaderText(): void
-    {
-        $this->refreshQrStickerPreview();
-    }
-
-    public function updatedQrStickerAvery6289TenantLogo(): void
-    {
-        $this->refreshQrStickerPreview();
-    }
-
-    public function updatedQrStickerAvery6289TenantAddress(): void
-    {
-        $this->refreshQrStickerPreview();
-    }
-
-    public function refreshQrStickerPreview(?RenderBrandedQrStickerPreviewAction $renderPreview = null): void
-    {
-        $renderPreview ??= app(RenderBrandedQrStickerPreviewAction::class);
-
-        $tenant = $this->resolveTenant();
-        if (! $tenant instanceof Tenant) {
-            $this->qrStickerPreviewDataUrl = null;
-
-            return;
-        }
-
-        $this->authorize('manageOrganisation', $tenant);
-
-        $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
-        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
-
-        $this->qrStickerPreviewDataUrl = $renderPreview->handle(
-            $tenant,
-            BrandedQrStickerPreviewData::fromLivewireForm(
-                $this->qrStickerAvery6289HeaderText,
-                $this->qrStickerAvery6289TenantLogo,
-                $this->qrStickerAvery6289TenantAddress,
-            ),
-            $sheetSetting,
-        );
     }
 
     public function updatedQrStickerAvery6289Background(): void
@@ -347,7 +301,6 @@ class Settings extends Component
         );
         $this->reset('qrStickerAvery6289Background');
         $this->fillOrganisationFromTenant($updated);
-        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -372,7 +325,6 @@ class Settings extends Component
             (int) auth()->id(),
         );
         $this->fillOrganisationFromTenant($updated);
-        $this->refreshQrStickerPreview();
 
         $user = auth()->user();
         if ($user !== null && (int) $user->tenant_id === (int) $updated->id) {
@@ -455,7 +407,34 @@ class Settings extends Component
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
+            'qrStickerPreviewDataUrl' => $this->resolveQrStickerPreviewDataUrl(),
         ]);
+    }
+
+    /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */
+    private function resolveQrStickerPreviewDataUrl(): ?string
+    {
+        if (! $this->canManageOrganisation) {
+            return null;
+        }
+
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return null;
+        }
+
+        $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
+        $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
+
+        return app(RenderBrandedQrStickerPreviewAction::class)->handle(
+            $tenant,
+            BrandedQrStickerPreviewData::fromLivewireForm(
+                $this->qrStickerAvery6289HeaderText,
+                $this->qrStickerAvery6289TenantLogo,
+                $this->qrStickerAvery6289TenantAddress,
+            ),
+            $sheetSetting,
+        );
     }
 
     private function fillOrganisationFromTenant(Tenant $tenant): void

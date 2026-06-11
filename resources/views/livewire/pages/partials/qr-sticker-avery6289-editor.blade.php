@@ -108,7 +108,7 @@
 
     <aside class="wp-settings-split-preview wp-qr-sticker-preview" aria-label="{{ __('settings.qr_stickers.avery_62x89_r.preview_label') }}">
         <p class="wp-label">{{ __('settings.qr_stickers.avery_62x89_r.preview_label') }}</p>
-        <div wire:loading wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289TenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background, refreshQrStickerPreview">
+        <div wire:loading wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289TenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.preview_loading') }}</p>
         </div>
         @if ($qrStickerPreviewDataUrl)
@@ -119,7 +119,7 @@
                 width="152"
                 height="218"
                 wire:loading.remove
-                wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289TenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background, refreshQrStickerPreview"
+                wire:target="qrStickerAvery6289HeaderText, qrStickerAvery6289TenantLogo, qrStickerAvery6289TenantAddress, qrStickerAvery6289Background, saveQrStickerAvery6289Settings, removeQrStickerAvery6289Background"
             >
         @else
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.avery_62x89_r.preview_unavailable') }}</p>

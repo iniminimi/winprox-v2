@@ -137,6 +137,16 @@ it('toont gelokaliseerde bestandskiezer op instellingen', function () {
         ->assertSee(':aria-expanded="open"', false);
 });
 
+it('opent het organisatie-modal zonder qr-sticker preview in livewire state', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->call('openOrgModal')
+        ->assertSet('showOrgModal', true)
+        ->assertSet('qrStickerPreviewDataUrl', null);
+});
+
 it('laat een admin bedrijfsgegevens aanpassen via instellingen', function () {
     [$tenant, $admin] = tenantWithAdmin();
 
