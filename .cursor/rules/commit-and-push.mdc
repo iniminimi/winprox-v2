@@ -1,0 +1,14 @@
+---
+description: Na elke afgeronde codewijziging altijd committen en pushen naar origin.
+alwaysApply: true
+---
+
+# Commit en push (verplicht)
+
+Na **elke afgeronde taak** met codewijzigingen:
+
+1. `git status` + relevante tests/checks draaien.
+2. **Commit** met duidelijke boodschap (geen test-artefacten zoals `tests/Avery_*.zip` of `_extract/`).
+3. **`git push`** naar `origin` (tenzij de gebruiker expliciet vraagt om niet te pushen).
+
+Niet afsluiten zonder commit + push wanneer er uncommitted werk is.

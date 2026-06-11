@@ -20,8 +20,19 @@ final class BrandedQrStickerCompositor
         ?string $headerText = null,
         ?string $unitCaptionText = null,
         ?string $footerText = null,
+        ?array $tenantDetailLines = null,
+        ?string $tenantCornerLogoPath = null,
     ): void {
-        $bytes = $this->compositeBytes($backgroundPath, $reportUrl, $centerLogoPath, $headerText, $unitCaptionText, $footerText);
+        $bytes = $this->compositeBytes(
+            $backgroundPath,
+            $reportUrl,
+            $centerLogoPath,
+            $headerText,
+            $unitCaptionText,
+            $footerText,
+            $tenantDetailLines,
+            $tenantCornerLogoPath,
+        );
 
         if (file_put_contents($absoluteOutputPath, $bytes) === false) {
             throw new RuntimeException('Unable to write branded QR sticker PNG.');
@@ -35,6 +46,8 @@ final class BrandedQrStickerCompositor
         ?string $headerText = null,
         ?string $unitCaptionText = null,
         ?string $footerText = null,
+        ?array $tenantDetailLines = null,
+        ?string $tenantCornerLogoPath = null,
     ): string {
         if (! is_file($backgroundPath)) {
             throw new RuntimeException('Branded sticker background file is missing.');
@@ -48,17 +61,41 @@ final class BrandedQrStickerCompositor
         );
 
         if (extension_loaded('imagick')) {
-            return $this->compositeWithImagick($backgroundPath, $qrBytes, $headerText, $unitCaptionText, $footerText);
+            return $this->compositeWithImagick(
+                $backgroundPath,
+                $qrBytes,
+                $headerText,
+                $unitCaptionText,
+                $footerText,
+                $tenantDetailLines,
+                $tenantCornerLogoPath,
+            );
         }
 
         if (extension_loaded('gd')) {
-            return $this->compositeWithGd($backgroundPath, $qrBytes, $headerText, $unitCaptionText, $footerText);
+            return $this->compositeWithGd(
+                $backgroundPath,
+                $qrBytes,
+                $headerText,
+                $unitCaptionText,
+                $footerText,
+                $tenantDetailLines,
+                $tenantCornerLogoPath,
+            );
         }
 
         throw new RuntimeException('Branded QR sticker export requires the PHP gd or imagick extension.');
     }
 
-    private function compositeWithGd(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $unitCaptionText, ?string $footerText): string
+    private function compositeWithGd(
+        string $backgroundPath,
+        string $qrBytes,
+        ?string $headerText,
+        ?string $unitCaptionText,
+        ?string $footerText,
+        ?array $tenantDetailLines,
+        ?string $tenantCornerLogoPath,
+    ): string
     {
         $loaded = @imagecreatefrompng($backgroundPath);
         if ($loaded === false) {
@@ -113,6 +150,15 @@ final class BrandedQrStickerCompositor
             BrandedQrStickerFooterRenderer::drawOnGd($canvas, $footerText);
         }
 
+        $hasCornerLogo = $tenantCornerLogoPath !== null && $tenantCornerLogoPath !== '' && is_file($tenantCornerLogoPath);
+        if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
+            BrandedQrStickerTenantDetailsRenderer::drawOnGd($canvas, $tenantDetailLines, $hasCornerLogo);
+        }
+
+        if ($hasCornerLogo) {
+            BrandedQrStickerTenantLogoRenderer::drawOnGd($canvas, $tenantCornerLogoPath);
+        }
+
         ob_start();
         imagepng($canvas);
         $bytes = ob_get_clean();
@@ -160,7 +206,15 @@ final class BrandedQrStickerCompositor
         return $canvas;
     }
 
-    private function compositeWithImagick(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $unitCaptionText, ?string $footerText): string
+    private function compositeWithImagick(
+        string $backgroundPath,
+        string $qrBytes,
+        ?string $headerText,
+        ?string $unitCaptionText,
+        ?string $footerText,
+        ?array $tenantDetailLines,
+        ?string $tenantCornerLogoPath,
+    ): string
     {
         $canvas = new Imagick($backgroundPath);
         if ($canvas->getImageWidth() !== Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
@@ -199,6 +253,15 @@ final class BrandedQrStickerCompositor
 
         if ($footerText !== null && trim($footerText) !== '') {
             BrandedQrStickerFooterRenderer::drawOnImagick($canvas, $footerText);
+        }
+
+        $hasCornerLogo = $tenantCornerLogoPath !== null && $tenantCornerLogoPath !== '' && is_file($tenantCornerLogoPath);
+        if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
+            BrandedQrStickerTenantDetailsRenderer::drawOnImagick($canvas, $tenantDetailLines, $hasCornerLogo);
+        }
+
+        if ($hasCornerLogo) {
+            BrandedQrStickerTenantLogoRenderer::drawOnImagick($canvas, $tenantCornerLogoPath);
         }
 
         $canvas->setImageFormat('png');

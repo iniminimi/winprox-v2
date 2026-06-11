@@ -7,6 +7,8 @@ namespace App\Support\Qr\Word;
 use App\Models\Tenant;
 use App\Support\Qr\BrandedQrStickerCompositor;
 use App\Support\Qr\BrandedQrStickerHeaderText;
+use App\Support\Qr\BrandedQrStickerTenantDetails;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrStickerBackground;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerSheetTemplate;
@@ -147,6 +149,9 @@ final class Avery62x89WordStickerSheetBuilder
         $pngPath = $path.'.png';
         @unlink($path);
 
+        $tenantDetailLines = BrandedQrStickerTenantDetails::lines($tenant);
+        $tenantCornerLogoPath = QrCenterLogo::tenantLogoAbsolutePath($tenant);
+
         $this->compositor->writeFile(
             $backgroundPath,
             $entry->reportUrl,
@@ -155,6 +160,8 @@ final class Avery62x89WordStickerSheetBuilder
             BrandedQrStickerHeaderText::resolve($tenant, $entry->headerFallback),
             BrandedQrStickerHeaderText::unitCaption($tenant, $entry->headerFallback),
             self::footerLabel($entry),
+            $tenantDetailLines !== [] ? $tenantDetailLines : null,
+            $tenantCornerLogoPath,
         );
         $tempFiles[] = $pngPath;
 

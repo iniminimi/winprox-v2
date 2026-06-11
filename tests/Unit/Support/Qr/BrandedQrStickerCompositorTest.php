@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Support\Qr\Avery62x89StickerArtworkLayout;
 use App\Support\Qr\BrandedQrStickerCompositor;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerBackground;
 
@@ -42,6 +43,31 @@ it('renders branded sticker header and footer text', function () {
         null,
         'Hal C · Lift 9',
         'Winprox-2606-12345',
+    );
+
+    expect($labeled)->not->toBe($plain);
+});
+
+it('renders tenant details and corner logo in the bottom band', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $compositor = new BrandedQrStickerCompositor;
+    $plain = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+    );
+    $labeled = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+        null,
+        null,
+        null,
+        ['Acme NV', 'Kerkstraat 12', '9000 Gent'],
+        QrCenterLogo::winproxAbsolutePath(),
     );
 
     expect($labeled)->not->toBe($plain);

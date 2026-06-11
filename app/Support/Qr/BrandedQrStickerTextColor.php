@@ -122,4 +122,11 @@ final class BrandedQrStickerTextColor
     {
         return Avery62x89StickerArtworkLayout::UNIT_CAPTION_TOP_PX + 14;
     }
+
+    public static function tenantDetailsSampleCenterY(): int
+    {
+        return Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
+            - Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_BOTTOM_PX
+            - 36;
+    }
 }

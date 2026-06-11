@@ -79,16 +79,26 @@ final class QrCenterLogo
     /** Absoluut pad voor PNG-stickerexport (organisatie of WinProx-fallback). */
     public static function absolutePath(?Tenant $tenant): string
     {
-        if ($tenant !== null) {
-            $path = $tenant->logo_path;
-            if (is_string($path) && $path !== '') {
-                $absolute = Storage::disk('public')->path($path);
-                if (is_file($absolute)) {
-                    return $absolute;
-                }
-            }
+        return self::tenantLogoAbsolutePath($tenant) ?? self::winproxAbsolutePath();
+    }
+
+    /** Alleen organisatielogo op schijf — geen WinProx-fallback. */
+    public static function tenantLogoAbsolutePath(?Tenant $tenant): ?string
+    {
+        if ($tenant === null) {
+            return null;
         }
 
-        return self::winproxAbsolutePath();
+        $path = $tenant->logo_path;
+        if (! is_string($path) || $path === '') {
+            return null;
+        }
+
+        $absolute = Storage::disk('public')->path($path);
+        if (! is_file($absolute)) {
+            return null;
+        }
+
+        return $absolute;
     }
 }

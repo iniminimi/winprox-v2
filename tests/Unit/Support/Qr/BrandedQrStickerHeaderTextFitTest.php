@@ -6,7 +6,7 @@ use App\Support\Qr\Avery62x89StickerArtworkLayout;
 use App\Support\Qr\BrandedQrStickerHeaderText;
 
 it('limits Avery 62x89 header text to the sticker character budget', function () {
-    $long = str_repeat('A', 120);
+    $long = str_repeat('A', Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS + 10);
 
     $fitted = BrandedQrStickerHeaderText::fitForSticker($long);
 

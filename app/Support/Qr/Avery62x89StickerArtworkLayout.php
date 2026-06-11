@@ -27,7 +27,8 @@ final class Avery62x89StickerArtworkLayout
     /** Upper band — tenant / portal label left-aligned, clears Prox logo (top-right). */
     public const HEADER_PADDING_LEFT_PX = 36;
 
-    public const HEADER_PADDING_RIGHT_PX = 200;
+    /** Clears Prox logo top-right; text may extend closer than before. */
+    public const HEADER_PADDING_RIGHT_PX = 125;
 
     public const HEADER_TOP_PX = 72;
 
@@ -41,8 +42,8 @@ final class Avery62x89StickerArtworkLayout
 
     public const HEADER_MAX_LINES = 3;
 
-    /** Matches settings validation — ~3 lines on the header band. */
-    public const HEADER_TEXT_MAX_CHARS = 95;
+    /** Matches settings validation — ~3 lines on the widened header band. */
+    public const HEADER_TEXT_MAX_CHARS = 120;
 
     /** Directly below QR — locatie · unit when tenant header text is set. */
     public const UNIT_CAPTION_TOP_PX = 732;
@@ -60,6 +61,29 @@ final class Avery62x89StickerArtworkLayout
 
     public const FOOTER_MIN_FONT_SIZE_PX = 15;
 
+    /** Bottom black band — tenant address block (left) and logo (right). */
+    public const TENANT_DETAILS_PADDING_LEFT_PX = 36;
+
+    public const TENANT_DETAILS_PADDING_BOTTOM_PX = 58;
+
+    public const TENANT_DETAILS_LOGO_GAP_PX = 16;
+
+    public const TENANT_DETAILS_MAX_FONT_SIZE_PX = 17;
+
+    public const TENANT_DETAILS_MIN_FONT_SIZE_PX = 12;
+
+    public const TENANT_DETAILS_LINE_HEIGHT_RATIO = 1.12;
+
+    public const TENANT_DETAILS_MAX_LINES = 3;
+
+    public const TENANT_LOGO_MAX_WIDTH_PX = 88;
+
+    public const TENANT_LOGO_MAX_HEIGHT_PX = 64;
+
+    public const TENANT_LOGO_PADDING_RIGHT_PX = 36;
+
+    public const TENANT_LOGO_PADDING_BOTTOM_PX = 58;
+
     public static function headerMaxWidthPx(): int
     {
         return self::CANVAS_WIDTH_PX - self::HEADER_PADDING_LEFT_PX - self::HEADER_PADDING_RIGHT_PX;
@@ -68,6 +92,19 @@ final class Avery62x89StickerArtworkLayout
     public static function footerMaxWidthPx(): int
     {
         return self::CANVAS_WIDTH_PX - (self::FOOTER_PADDING_SIDE_PX * 2);
+    }
+
+    public static function tenantDetailsMaxWidthPx(bool $hasCornerLogo): int
+    {
+        if ($hasCornerLogo) {
+            return self::CANVAS_WIDTH_PX
+                - self::TENANT_DETAILS_PADDING_LEFT_PX
+                - self::TENANT_LOGO_MAX_WIDTH_PX
+                - self::TENANT_LOGO_PADDING_RIGHT_PX
+                - self::TENANT_DETAILS_LOGO_GAP_PX;
+        }
+
+        return (int) round(self::CANVAS_WIDTH_PX * 0.62);
     }
 
     public static function qrLeftPx(): int
