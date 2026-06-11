@@ -66,6 +66,17 @@ it('toont teams-onboarding op locaties, taken en kalender zonder teams', functio
         ->assertDontSee(__('calendar.title'));
 });
 
+it('toont op locaties de beheerpagina zodra er een team is zodat categorieën aangemaakt kunnen worden', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->assertSee(__('locations.add'))
+        ->assertSee(__('locations.categories.title'))
+        ->assertDontSee(__('dashboard.onboarding.categories.title'));
+});
+
 it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties en units bestaan', function () {
     [$tenant, $admin] = setupOnboardingAdmin();
 

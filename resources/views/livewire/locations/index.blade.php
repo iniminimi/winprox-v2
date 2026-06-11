@@ -1,8 +1,6 @@
 <div class="wp-stack">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
-    @elseif ($onboarding->showCategoriesBanner())
-        <x-wp-onboarding-banner stage="categories" />
     @else
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
