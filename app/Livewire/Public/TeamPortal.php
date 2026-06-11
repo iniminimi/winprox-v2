@@ -15,6 +15,7 @@ use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
+use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
@@ -103,7 +104,7 @@ class TeamPortal extends Component
         }
 
         session(['locale' => $locale]);
-        Cookie::queue('locale', $locale, 60 * 24 * 365);
+        Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
         $this->locale = $locale;
         app()->setLocale($this->locale);
     }
@@ -429,9 +430,10 @@ class TeamPortal extends Component
 
         if (is_string($lang) && in_array($lang, $supported, true)) {
             session(['locale' => $lang]);
+            Cookie::queue(ResolveAppLocale::COOKIE_NAME, $lang, ResolveAppLocale::COOKIE_MINUTES);
             $this->locale = $lang;
         } else {
-            $this->locale = app()->getLocale();
+            $this->locale = ResolveAppLocale::resolve(request());
         }
 
         app()->setLocale($this->locale);

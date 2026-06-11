@@ -2,13 +2,14 @@
     $model = $model ?? 'photos';
     $removeMethod = $removeMethod ?? null;
     $max = $max ?? 4;
-    $photoAlt = $photoAlt ?? null;
+    $photoAltKey = $photoAltKey ?? 'portal.report.photos.add';
     $preferCamera = $preferCamera ?? false;
     $hintKey = $hintKey ?? null;
+    $uploadLocale = app()->getLocale();
 
     $uploadProperty = $model;
     $removeMethod ??= $uploadProperty === 'completingPhotos' ? 'removeCompletingPhoto' : 'removePhoto';
-    $photoAlt ??= __('portal.report.photos.add');
+    $photoAltLabel = __($photoAltKey);
 @endphp
 
 {{--
@@ -20,21 +21,21 @@
     <div
         class="wp-photo-upload-area"
         wire:ignore
-        wire:key="photo-area-{{ $uploadProperty }}"
+        wire:key="photo-area-{{ $uploadProperty }}-{{ $uploadLocale }}"
         data-wp-photo-remove-method="{{ $removeMethod }}"
         data-wp-photo-max="{{ $max }}"
         x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
     >
         <div class="wp-photo-grid wp-photo-grid--gallery">
-            <div wire:ignore data-wp-photo-preview-root style="display:contents;"></div>
+            <div wire:ignore class="wp-photo-preview-root" data-wp-photo-preview-root></div>
 
             <div data-wp-photo-picker>
-                <label class="wp-photo-add" style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;flex-direction:column;border:2px dashed var(--wp-border, #d1d5db);border-radius:10px;background:var(--wp-surface-muted, #f9fafb);margin:0;">
+                <label class="wp-photo-add">
                     <input
                         type="file"
                         data-wp-photo-compress
                         data-wp-photo-upload-prop="{{ $uploadProperty }}"
-                        aria-label="{{ $photoAlt }}"
+                        aria-label="{{ $photoAltLabel }}"
                         multiple
                         accept="image/*"
                         @if ($preferCamera) capture="environment" @endif
@@ -45,9 +46,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                     </svg>
 
-                    <span class="wp-hint" style="font-size:9px;font-weight:700;margin-top:3px;margin-bottom:0;">
-                        {{ $photoAlt }}
-                    </span>
+                    <span class="wp-hint wp-photo-add-label">{{ $photoAltLabel }}</span>
                 </label>
             </div>
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Support\ResolveAppLocale;
 use Illuminate\Support\Facades\Route;
 
 beforeEach(function () {
@@ -19,6 +20,17 @@ it('renders 404 in English when user locale is en', function () {
     $user = User::factory()->create(['locale' => 'en']);
 
     $response = $this->actingAs($user)->get('/_test-error-locale-404');
+
+    $response->assertNotFound();
+    $response->assertSee('Page not found', false);
+    $response->assertDontSee('Pagina niet gevonden', false);
+});
+
+it('renders 404 in English when locale cookie is en', function () {
+    Route::get('/_test-error-locale-cookie-404', fn () => abort(404));
+
+    $response = $this->withUnencryptedCookie(ResolveAppLocale::COOKIE_NAME, 'en')
+        ->get('/_test-error-locale-cookie-404');
 
     $response->assertNotFound();
     $response->assertSee('Page not found', false);

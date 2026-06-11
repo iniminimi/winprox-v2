@@ -54,7 +54,7 @@
                 <label class="wp-label">{{ __('issues.create.photos_label') }}</label>
                 @include('partials.wp-issue-photo-upload', [
                     'model' => 'photos',
-                    'photoAlt' => __('issues.create.photos_add'),
+                    'photoAltKey' => 'issues.create.photos_add',
                 ])
                 @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                 @error('photos') <p class="wp-error">{{ $message }}</p> @enderror

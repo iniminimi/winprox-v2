@@ -263,7 +263,7 @@
                 <div class="wp-card-section">
                     <div class="wp-field">
                         <label class="wp-label">{{ __('portal.qr_binding.photos.label') }}</label>
-                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true, 'photoAlt' => __('portal.qr_binding.photos.add')])
+                        @include('partials.wp-issue-photo-upload', ['model' => 'photos', 'preferCamera' => true, 'photoAltKey' => 'portal.qr_binding.photos.add'])
                         @error('photos.*') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('photos') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>

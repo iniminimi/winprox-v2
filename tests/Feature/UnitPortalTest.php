@@ -303,11 +303,14 @@ it('shows worker photo hints in the active portal locale', function () {
         ->call('switchLocale', 'en')
         ->assertSee('Take a photo of the surroundings. This photo will be used as the background image for this unit (refresh).', false)
         ->assertSee('Take a close-up photo of the QR code and a photo from further away.', false)
+        ->assertSee('Add environment photo', false)
         ->assertDontSee($genericEnHint, false)
         ->call('switchLocale', 'fr')
         ->assertSee('rafraîchissement', false)
         ->assertSee('code QR et une photo de plus loin', false)
-        ->assertDontSee('Take a photo of the surroundings.', false);
+        ->assertSee('Ajouter une photo', false)
+        ->assertDontSee('Take a photo of the surroundings.', false)
+        ->assertDontSee('Add environment photo', false);
 });
 
 it('scopes documents to unit, category and location-wide entries', function () {

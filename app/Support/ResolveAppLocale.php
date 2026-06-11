@@ -5,11 +5,15 @@ namespace App\Support;
 use Illuminate\Http\Request;
 
 /**
- * Bepaalt de app-locale (sessie → gebruiker → config/locales.default).
- * Gedeeld door SetLocale-middleware en de exception handler (foutpagina's).
+ * Bepaalt de app-locale (sessie → gebruiker → cookie → config/locales.default).
+ * Gedeeld door SetLocale-middleware, exception handler en publieke portalen.
  */
 final class ResolveAppLocale
 {
+    public const COOKIE_NAME = 'locale';
+
+    public const COOKIE_MINUTES = 60 * 24 * 365;
+
     public static function apply(Request $request): string
     {
         $locale = self::resolve($request);
@@ -25,11 +29,15 @@ final class ResolveAppLocale
 
         $sessionLocale = $request->hasSession() ? $request->session()->get('locale') : null;
         $userLocale = $request->user()?->locale;
+        $cookieLocale = $request->cookie(self::COOKIE_NAME)
+            ?? $request->cookies->get(self::COOKIE_NAME);
 
         if (is_string($sessionLocale) && in_array($sessionLocale, $supported, true)) {
             $locale = $sessionLocale;
         } elseif (is_string($userLocale) && in_array($userLocale, $supported, true)) {
             $locale = $userLocale;
+        } elseif (is_string($cookieLocale) && in_array($cookieLocale, $supported, true)) {
+            $locale = $cookieLocale;
         } else {
             $locale = $default;
         }

@@ -1679,8 +1679,29 @@ a.wp-kpi:hover {
     cursor: default;
 }
 
+.wp-photo-preview-root {
+    display: contents;
+}
+
 .wp-photo-add {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    border: 2px dashed var(--wp-border);
+    border-radius: 10px;
+    background-color: var(--wp-surface-2);
     cursor: pointer;
+}
+
+.wp-photo-add-label {
+    font-size: 9px;
+    font-weight: 700;
+    margin-top: 3px;
+    margin-bottom: 0;
 }
 
 .wp-photo-status {
