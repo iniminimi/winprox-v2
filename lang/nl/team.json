@@ -97,6 +97,8 @@
             "external_id": "EMP-001"
         },
         "modal": {
+            "create_title": "Uitvoerder toevoegen",
+            "create_subtitle": "Voeg een nieuwe uitvoerder toe aan dit team.",
             "edit_title": "Uitvoerder bewerken",
             "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
             "save": "Uitvoerder opslaan"

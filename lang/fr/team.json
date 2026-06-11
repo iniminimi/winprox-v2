@@ -97,6 +97,8 @@
             "external_id": "EMP-001"
         },
         "modal": {
+            "create_title": "Ajouter un intervenant",
+            "create_subtitle": "Ajoutez un nouvel intervenant à cette équipe.",
             "edit_title": "Modifier l'intervenant",
             "edit_subtitle": "Modifiez les données de cet intervenant.",
             "save": "Enregistrer l'intervenant"

@@ -97,6 +97,8 @@
             "external_id": "EMP-001"
         },
         "modal": {
+            "create_title": "Add worker",
+            "create_subtitle": "Add a new worker to this team.",
             "edit_title": "Edit worker",
             "edit_subtitle": "Update this worker's details.",
             "save": "Save worker"

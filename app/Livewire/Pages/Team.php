@@ -93,13 +93,9 @@ class Team extends Component
     public string $workerEmail = '';
     public string $workerPhone = '';
 
-    // Worker bewerken (modal)
+    // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
     public ?int $editingWorkerId = null;
-    public string $editWorkerFirstName = '';
-    public string $editWorkerLastName = '';
-    public string $editWorkerEmail = '';
-    public string $editWorkerPhone = '';
 
     // Worker CSV import
     public bool $showWorkerImportModal = false;
@@ -477,97 +473,91 @@ class Team extends Component
         Gate::authorize('update', $team);
 
         $this->expandTeam($teamId);
+        $this->addingWorkerTeamId = $teamId;
+        $this->editingWorkerId = null;
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
-        $this->addingWorkerTeamId = $teamId;
+        $this->showWorkerModal = true;
     }
 
-    public function saveWorker(CreateWorkerAction $createWorker): void
+    public function saveWorker(CreateWorkerAction $createWorker, UpdateWorkerAction $updateWorker): void
     {
-        $team = InternalTeam::findOrFail((int) $this->addingWorkerTeamId);
-        Gate::authorize('update', $team);
+        if ($this->editingWorkerId) {
+            // Edit mode
+            $worker = $this->authorizedWorker((int) $this->editingWorkerId);
 
-        $request = new StoreWorkerRequest;
-        $validated = $this->validate(
-            [
-                'workerFirstName' => $request->rules()['first_name'],
-                'workerLastName' => $request->rules()['last_name'],
-                'workerEmail' => $request->rules()['email'],
-                'workerPhone' => $request->rules()['phone'],
-            ],
-            [
-                'workerFirstName.required' => __('team.errors.worker_name_required'),
-                'workerLastName.required' => __('team.errors.worker_name_required'),
-                'workerEmail.email' => __('team.errors.worker_email_invalid'),
-                'workerEmail.max' => __('team.errors.worker_email_max'),
-                'workerPhone.max' => __('team.errors.worker_phone_max'),
-            ],
-        );
+            $request = new UpdateWorkerRequest;
+            $validated = $this->validate(
+                [
+                    'workerFirstName' => $request->rules()['first_name'],
+                    'workerLastName' => $request->rules()['last_name'],
+                    'workerEmail' => $request->rules()['email'],
+                    'workerPhone' => $request->rules()['phone'],
+                ],
+                [
+                    'workerFirstName.required' => __('team.errors.worker_name_required'),
+                    'workerLastName.required' => __('team.errors.worker_name_required'),
+                    'workerEmail.email' => __('team.errors.worker_email_invalid'),
+                    'workerEmail.max' => __('team.errors.worker_email_max'),
+                    'workerPhone.max' => __('team.errors.worker_phone_max'),
+                ],
+            );
 
-        $createWorker->handle($team, [
-            'first_name' => $validated['workerFirstName'],
-            'last_name' => $validated['workerLastName'],
-            'email' => $validated['workerEmail'] ?? null,
-            'phone' => $validated['workerPhone'] ?? null,
-        ], (int) auth()->id());
+            $updateWorker->handle($worker, [
+                'first_name' => $validated['workerFirstName'],
+                'last_name' => $validated['workerLastName'],
+                'email' => $validated['workerEmail'] ?? null,
+                'phone' => $validated['workerPhone'] ?? null,
+            ], (int) auth()->id());
+        } else {
+            // Create mode
+            $team = InternalTeam::findOrFail((int) $this->addingWorkerTeamId);
+            Gate::authorize('update', $team);
 
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'addingWorkerTeamId']);
+            $request = new StoreWorkerRequest;
+            $validated = $this->validate(
+                [
+                    'workerFirstName' => $request->rules()['first_name'],
+                    'workerLastName' => $request->rules()['last_name'],
+                    'workerEmail' => $request->rules()['email'],
+                    'workerPhone' => $request->rules()['phone'],
+                ],
+                [
+                    'workerFirstName.required' => __('team.errors.worker_name_required'),
+                    'workerLastName.required' => __('team.errors.worker_name_required'),
+                    'workerEmail.email' => __('team.errors.worker_email_invalid'),
+                    'workerEmail.max' => __('team.errors.worker_email_max'),
+                    'workerPhone.max' => __('team.errors.worker_phone_max'),
+                ],
+            );
+
+            $createWorker->handle($team, [
+                'first_name' => $validated['workerFirstName'],
+                'last_name' => $validated['workerLastName'],
+                'email' => $validated['workerEmail'] ?? null,
+                'phone' => $validated['workerPhone'] ?? null,
+            ], (int) auth()->id());
+        }
+
+        $this->cancelWorkerModal();
         $this->dispatch('saved');
-    }
-
-    public function cancelWorker(): void
-    {
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'addingWorkerTeamId']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
     }
 
     public function openEditWorker(int $workerId): void
     {
         $worker = $this->authorizedWorker($workerId);
         $this->editingWorkerId = $workerId;
-        $this->editWorkerFirstName = $worker->first_name;
-        $this->editWorkerLastName = $worker->last_name;
-        $this->editWorkerEmail = $worker->email ?? '';
-        $this->editWorkerPhone = $worker->phone ?? '';
+        $this->workerFirstName = $worker->first_name;
+        $this->workerLastName = $worker->last_name;
+        $this->workerEmail = $worker->email ?? '';
+        $this->workerPhone = $worker->phone ?? '';
         $this->showWorkerModal = true;
     }
 
-    public function saveWorkerEdit(UpdateWorkerAction $updateWorker): void
+    public function cancelWorkerModal(): void
     {
-        $worker = $this->authorizedWorker((int) $this->editingWorkerId);
-
-        $request = new UpdateWorkerRequest;
-        $validated = $this->validate(
-            [
-                'editWorkerFirstName' => $request->rules()['first_name'],
-                'editWorkerLastName' => $request->rules()['last_name'],
-                'editWorkerEmail' => $request->rules()['email'],
-                'editWorkerPhone' => $request->rules()['phone'],
-            ],
-            [
-                'editWorkerFirstName.required' => __('team.errors.worker_name_required'),
-                'editWorkerLastName.required' => __('team.errors.worker_name_required'),
-                'editWorkerEmail.email' => __('team.errors.worker_email_invalid'),
-                'editWorkerEmail.max' => __('team.errors.worker_email_max'),
-                'editWorkerPhone.max' => __('team.errors.worker_phone_max'),
-            ],
-        );
-
-        $updateWorker->handle($worker, [
-            'first_name' => $validated['editWorkerFirstName'],
-            'last_name' => $validated['editWorkerLastName'],
-            'email' => $validated['editWorkerEmail'] ?? null,
-            'phone' => $validated['editWorkerPhone'] ?? null,
-        ], (int) auth()->id());
-
-        $this->cancelWorkerEdit();
-        $this->dispatch('saved');
-    }
-
-    public function cancelWorkerEdit(): void
-    {
-        $this->reset(['showWorkerModal', 'editingWorkerId', 'editWorkerFirstName', 'editWorkerLastName', 'editWorkerEmail', 'editWorkerPhone']);
-        $this->resetErrorBag(['editWorkerFirstName', 'editWorkerLastName', 'editWorkerEmail', 'editWorkerPhone']);
+        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void

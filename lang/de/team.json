@@ -97,6 +97,8 @@
             "external_id": "EMP-001"
         },
         "modal": {
+            "create_title": "Mitarbeiter hinzufügen",
+            "create_subtitle": "Fügen Sie einen neuen Mitarbeiter zu diesem Team hinzu.",
             "edit_title": "Mitarbeiter bearbeiten",
             "edit_subtitle": "Aktualisieren Sie die Daten dieses Mitarbeiters.",
             "save": "Mitarbeiter speichern"

@@ -117,39 +117,6 @@
                                 @endif
                             </div>
 
-                            @if ($canEditContent && $addingWorkerTeamId === $team->id)
-                                <form wire:submit="saveWorker" class="wp-card wp-card-pad wp-stack-tight">
-                                    <div class="wp-filter-bar">
-                                        <div class="wp-field wp-grow">
-                                            <label class="wp-label" for="workerFirstName-{{ $team->id }}">{{ __('team.workers.first_name') }}</label>
-                                            <input type="text" id="workerFirstName-{{ $team->id }}" class="wp-input" wire:model="workerFirstName">
-                                            @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
-                                        </div>
-                                        <div class="wp-field wp-grow">
-                                            <label class="wp-label" for="workerLastName-{{ $team->id }}">{{ __('team.workers.last_name') }}</label>
-                                            <input type="text" id="workerLastName-{{ $team->id }}" class="wp-input" wire:model="workerLastName">
-                                            @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="wp-filter-bar">
-                                        <div class="wp-field wp-grow">
-                                            <label class="wp-label" for="workerEmail-{{ $team->id }}">{{ __('team.workers.email') }}</label>
-                                            <input type="email" id="workerEmail-{{ $team->id }}" class="wp-input" wire:model="workerEmail">
-                                            @error('workerEmail') <p class="wp-error">{{ $message }}</p> @enderror
-                                        </div>
-                                        <div class="wp-field wp-grow">
-                                            <label class="wp-label" for="workerPhone-{{ $team->id }}">{{ __('team.workers.phone') }}</label>
-                                            <input type="tel" id="workerPhone-{{ $team->id }}" class="wp-input" wire:model="workerPhone">
-                                            @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
-                                        </div>
-                                    </div>
-                                    <div class="wp-cluster wp-cluster--tight">
-                                        <button type="submit" class="btn btn--primary btn--sm">{{ __('team.workers.add_submit') }}</button>
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="cancelWorker">{{ __('common.button.cancel') }}</button>
-                                    </div>
-                                </form>
-                            @endif
-
                             <div class="wp-list">
                                 @forelse ($team->workers as $worker)
                                     <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
@@ -266,43 +233,43 @@
         </x-wp-modal>
     @endif
 
-    {{-- Modal: worker bewerken --------------------------------------------}}
+    {{-- Modal: worker bewerken/aanmaken --------------------------------------------}}
     @if ($showWorkerModal)
-        <x-wp-modal closeMethod="cancelWorkerEdit">
-            <form wire:submit="saveWorkerEdit" class="wp-card wp-modal-card wp-modal-card--form">
+        <x-wp-modal closeMethod="cancelWorkerModal">
+            <form wire:submit="saveWorker" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <div class="wp-stack-tight">
-                        <h2 class="wp-section-title">{{ __('team.workers.modal.edit_title') }}</h2>
-                        <p class="wp-muted wp-text-sm">{{ __('team.workers.modal.edit_subtitle') }}</p>
+                        <h2 class="wp-section-title">{{ $editingWorkerId ? __('team.workers.modal.edit_title') : __('team.workers.modal.create_title') }}</h2>
+                        <p class="wp-muted wp-text-sm">{{ $editingWorkerId ? __('team.workers.modal.edit_subtitle') : __('team.workers.modal.create_subtitle') }}</p>
                     </div>
-                    <x-wp-modal-close wire:click="cancelWorkerEdit" />
+                    <x-wp-modal-close wire:click="cancelWorkerModal" />
                 </div>
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
-                        <label class="wp-label" for="editWorkerFirstName">{{ __('team.workers.first_name') }}</label>
-                        <input type="text" id="editWorkerFirstName" class="wp-input" wire:model="editWorkerFirstName">
-                        @error('editWorkerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                        <label class="wp-label" for="workerFirstName">{{ __('team.workers.first_name') }}</label>
+                        <input type="text" id="workerFirstName" class="wp-input" wire:model="workerFirstName">
+                        @error('workerFirstName') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="editWorkerLastName">{{ __('team.workers.last_name') }}</label>
-                        <input type="text" id="editWorkerLastName" class="wp-input" wire:model="editWorkerLastName">
-                        @error('editWorkerLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                        <label class="wp-label" for="workerLastName">{{ __('team.workers.last_name') }}</label>
+                        <input type="text" id="workerLastName" class="wp-input" wire:model="workerLastName">
+                        @error('workerLastName') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="editWorkerEmail">{{ __('team.workers.email') }}</label>
-                        <input type="email" id="editWorkerEmail" class="wp-input" wire:model="editWorkerEmail">
-                        @error('editWorkerEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                        <label class="wp-label" for="workerEmail">{{ __('team.workers.email') }}</label>
+                        <input type="email" id="workerEmail" class="wp-input" wire:model="workerEmail">
+                        @error('workerEmail') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
-                        <label class="wp-label" for="editWorkerPhone">{{ __('team.workers.phone') }}</label>
-                        <input type="tel" id="editWorkerPhone" class="wp-input" wire:model="editWorkerPhone">
-                        @error('editWorkerPhone') <p class="wp-error">{{ $message }}</p> @enderror
+                        <label class="wp-label" for="workerPhone">{{ __('team.workers.phone') }}</label>
+                        <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone">
+                        @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
 
                 <div class="wp-modal-foot">
-                    <button type="button" class="btn btn--ghost" wire:click="cancelWorkerEdit">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--ghost" wire:click="cancelWorkerModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('team.workers.modal.save') }}</button>
                 </div>
             </form>
