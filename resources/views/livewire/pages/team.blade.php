@@ -109,7 +109,7 @@
                         <div id="team-panel-{{ $team->id }}" class="wp-team-workers-panel wp-stack-tight">
                             @if ($canEditContent)
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
-                                    <x-wp-icon name="plus" class="wp-icon" />
+                                    {{ __('team.workers.add') }}
                                 </button>
                             @endif
 
