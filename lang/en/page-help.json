@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "Create teams, assign teamleaders and manage workers per team. A unit must have a team linked so that a worker can handle tasks for this unit."
+                    "text": "Create teams, assign teamleaders and manage workers per team. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
                     "label": "Team QR",
@@ -234,7 +234,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no login; they sign in via team QR with name and icon."
+                    "text": "Workers have no login; they sign in via team QR with name, first name and icon. You can also add their email address and phone number."
                 },
                 {
                     "label": "Sort order",

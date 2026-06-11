@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Operationele teams",
-                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit."
+                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
                 },
                 {
                     "label": "Team-QR",
@@ -234,7 +234,7 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam en icoon."
+                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam, voornaam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
                 },
                 {
                     "label": "Sorteervolgorde",

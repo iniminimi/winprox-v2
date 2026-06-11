@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Operative Teams",
-                    "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team. Eine Unit muss mit einem Team verknüpft sein, damit ein Worker Aufgaben für diese Unit bearbeiten kann."
+                    "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team. Eine Unit muss mit einem Team verknüpft sein, damit ein Worker Aufgaben für diese Unit bearbeiten kann. Solange keine Workers im Team sind, können Sie das Team noch löschen."
                 },
                 {
                     "label": "Team-QR",
@@ -234,7 +234,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name und Icon an."
+                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name, Vorname und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
                 },
                 {
                     "label": "Sortierreihenfolge",

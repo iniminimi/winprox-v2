@@ -226,7 +226,7 @@
                 },
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe. Une unité doit avoir une équipe liée pour qu'un worker puisse traiter les tâches de cette unité."
+                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe. Une unité doit avoir une équipe liée pour qu'un worker puisse traiter les tâches de cette unité. Tant qu'il n'y a pas de workers dans l'équipe, vous pouvez encore supprimer l'équipe."
                 },
                 {
                     "label": "QR d'équipe",
@@ -234,7 +234,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom et icône."
+                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom, prénom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
                 },
                 {
                     "label": "Ordre de tri",
