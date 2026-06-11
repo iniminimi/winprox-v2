@@ -22,7 +22,7 @@
     },
     "tiles": {
         "new": "Nouveau signalement",
-        "new_sub": "Signaler un problème",
+        "new_sub": "Cliquez ici et signalez un problème",
         "issues": "Signalements",
         "open_tasks": "Tâches ouvertes",
         "announcements": "Annonces",

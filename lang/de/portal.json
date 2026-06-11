@@ -22,7 +22,7 @@
     },
     "tiles": {
         "new": "Meldung erstellen",
-        "new_sub": "Ein Problem melden",
+        "new_sub": "Hier klicken und ein Problem melden",
         "issues": "Meldungen",
         "open_tasks": "Offene Aufgaben",
         "announcements": "Mitteilungen",

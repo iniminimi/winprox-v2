@@ -22,7 +22,7 @@
     },
     "tiles": {
         "new": "New report",
-        "new_sub": "Report a problem",
+        "new_sub": "Click here and report a problem",
         "issues": "Reports",
         "open_tasks": "Open tasks",
         "announcements": "Announcements",
