@@ -2895,7 +2895,7 @@ a.wp-kpi:hover {
 .wp-qr-sticker-preview-img {
     display: block;
     width: auto;
-    max-width: 11.4rem;
+    max-width: 13.75rem;
     height: auto;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-md);
