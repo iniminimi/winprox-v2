@@ -25,3 +25,13 @@ it('returns null when tenant and fallback header text are empty', function () {
     expect(BrandedQrStickerHeaderText::resolve(null, null))->toBeNull()
         ->and(BrandedQrStickerHeaderText::resolve(Tenant::factory()->make(), '   '))->toBeNull();
 });
+
+it('shows portal unit caption below QR when tenant header text is set', function () {
+    $tenant = Tenant::factory()->make([
+        'qr_sticker_avery_62x89_header_text' => 'Scan hier',
+    ]);
+
+    expect(BrandedQrStickerHeaderText::unitCaption($tenant, "Hal C · Lift 9\nVerdieping 0"))
+        ->toBe('Hal C · Lift 9')
+        ->and(BrandedQrStickerHeaderText::unitCaption(Tenant::factory()->make(), 'Hal C · Lift 9'))->toBeNull();
+});

@@ -78,7 +78,8 @@
         "organisation_name_required": "Enter an organisation name.",
         "organisation_email_invalid": "Enter a valid email address.",
         "organisation_country_invalid": "Use a two-letter country code (e.g. BE) or leave empty.",
-        "custom_theme_hex_invalid": "Enter a valid colour (HEX code like #ff0000)."
+        "custom_theme_hex_invalid": "Enter a valid colour (HEX code like #ff0000).",
+        "qr_sticker_header_max": "Maximum :max characters — the sticker fits about three short lines."
     },
     "api": {
         "nav": "API & webhooks",

@@ -12,6 +12,7 @@ use App\Http\Requests\Team\UpdateOrganisationRequest;
 use App\Models\Tenant;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Qr\Avery62x89StickerArtworkLayout;
+use App\Support\Qr\BrandedQrStickerHeaderText;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Validator;
@@ -219,9 +220,16 @@ class Settings extends Component
 
         $this->authorize('manageOrganisation', $tenant);
 
+        $this->qrStickerAvery6289HeaderText = BrandedQrStickerHeaderText::fitForSticker($this->qrStickerAvery6289HeaderText);
+
         Validator::make(
             ['qrStickerAvery6289HeaderText' => $this->qrStickerAvery6289HeaderText],
             ['qrStickerAvery6289HeaderText' => ['nullable', 'string', 'max:'.Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS]],
+            [
+                'qrStickerAvery6289HeaderText.max' => __('settings.errors.qr_sticker_header_max', [
+                    'max' => Avery62x89StickerArtworkLayout::HEADER_TEXT_MAX_CHARS,
+                ]),
+            ],
         )->validate();
 
         $updated = $updateSettings->handle($tenant, $this->qrStickerAvery6289HeaderText, (int) auth()->id());

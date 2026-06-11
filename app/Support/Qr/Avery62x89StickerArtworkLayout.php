@@ -44,14 +44,21 @@ final class Avery62x89StickerArtworkLayout
     /** Matches settings validation — ~3 lines on the header band. */
     public const HEADER_TEXT_MAX_CHARS = 95;
 
-    /** Below QR — sticker number (Winprox-YYMM-#####). */
+    /** Directly below QR — locatie · unit when tenant header text is set. */
+    public const UNIT_CAPTION_TOP_PX = 732;
+
+    public const UNIT_CAPTION_MAX_FONT_SIZE_PX = 22;
+
+    public const UNIT_CAPTION_MIN_FONT_SIZE_PX = 16;
+
+    /** Sticker number (Winprox-YYMM-#####), just under unit caption. */
     public const FOOTER_PADDING_SIDE_PX = 48;
 
-    public const FOOTER_TOP_PX = 780;
+    public const FOOTER_TOP_PX = 756;
 
-    public const FOOTER_MAX_FONT_SIZE_PX = 26;
+    public const FOOTER_MAX_FONT_SIZE_PX = 24;
 
-    public const FOOTER_MIN_FONT_SIZE_PX = 16;
+    public const FOOTER_MIN_FONT_SIZE_PX = 15;
 
     public static function headerMaxWidthPx(): int
     {

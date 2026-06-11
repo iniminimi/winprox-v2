@@ -78,7 +78,8 @@
         "organisation_name_required": "Indiquez un nom d'organisation.",
         "organisation_email_invalid": "Indiquez une adresse e-mail valide.",
         "organisation_country_invalid": "Utilisez un code pays à deux lettres (ex. BE) ou laissez vide.",
-        "custom_theme_hex_invalid": "Choisissez une couleur valide (code HEX tel que #ff0000)."
+        "custom_theme_hex_invalid": "Choisissez une couleur valide (code HEX tel que #ff0000).",
+        "qr_sticker_header_max": "Maximum :max caractères — l’étiquette permet environ trois lignes courtes."
     },
     "api": {
         "nav": "API & webhooks",

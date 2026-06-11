@@ -153,6 +153,7 @@ final class Avery62x89WordStickerSheetBuilder
             $pngPath,
             $centerLogoPath,
             BrandedQrStickerHeaderText::resolve($tenant, $entry->headerFallback),
+            BrandedQrStickerHeaderText::unitCaption($tenant, $entry->headerFallback),
             self::footerLabel($entry),
         );
         $tempFiles[] = $pngPath;

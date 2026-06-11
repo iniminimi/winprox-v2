@@ -78,7 +78,8 @@
         "organisation_name_required": "Geben Sie einen Organisationsnamen an.",
         "organisation_email_invalid": "Geben Sie eine gültige E-Mail-Adresse an.",
         "organisation_country_invalid": "Verwenden Sie einen zweistelligen Ländercode (z. B. BE) oder lassen Sie das Feld leer.",
-        "custom_theme_hex_invalid": "Wählen Sie eine gültige Farbe (HEX-Code wie #ff0000)."
+        "custom_theme_hex_invalid": "Wählen Sie eine gültige Farbe (HEX-Code wie #ff0000).",
+        "qr_sticker_header_max": "Maximal :max Zeichen — das Etikett bietet Platz für etwa drei kurze Zeilen."
     },
     "api": {
         "nav": "API & Webhooks",

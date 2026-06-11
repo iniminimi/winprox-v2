@@ -78,7 +78,8 @@
         "organisation_name_required": "Geef een organisatienaam op.",
         "organisation_email_invalid": "Geef een geldig e-mailadres op.",
         "organisation_country_invalid": "Gebruik een landcode van twee letters (bv. BE) of laat leeg.",
-        "custom_theme_hex_invalid": "Kies een geldige kleur (HEX code zoals #ff0000)."
+        "custom_theme_hex_invalid": "Kies een geldige kleur (HEX code zoals #ff0000).",
+        "qr_sticker_header_max": "Maximaal :max tekens — de sticker heeft ruimte voor ongeveer drie korte regels."
     },
     "api": {
         "nav": "API & webhooks",

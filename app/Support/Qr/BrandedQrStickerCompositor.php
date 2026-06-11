@@ -18,9 +18,10 @@ final class BrandedQrStickerCompositor
         string $absoluteOutputPath,
         ?string $centerLogoPath = null,
         ?string $headerText = null,
+        ?string $unitCaptionText = null,
         ?string $footerText = null,
     ): void {
-        $bytes = $this->compositeBytes($backgroundPath, $reportUrl, $centerLogoPath, $headerText, $footerText);
+        $bytes = $this->compositeBytes($backgroundPath, $reportUrl, $centerLogoPath, $headerText, $unitCaptionText, $footerText);
 
         if (file_put_contents($absoluteOutputPath, $bytes) === false) {
             throw new RuntimeException('Unable to write branded QR sticker PNG.');
@@ -32,6 +33,7 @@ final class BrandedQrStickerCompositor
         string $reportUrl,
         ?string $centerLogoPath = null,
         ?string $headerText = null,
+        ?string $unitCaptionText = null,
         ?string $footerText = null,
     ): string {
         if (! is_file($backgroundPath)) {
@@ -46,17 +48,17 @@ final class BrandedQrStickerCompositor
         );
 
         if (extension_loaded('imagick')) {
-            return $this->compositeWithImagick($backgroundPath, $qrBytes, $headerText, $footerText);
+            return $this->compositeWithImagick($backgroundPath, $qrBytes, $headerText, $unitCaptionText, $footerText);
         }
 
         if (extension_loaded('gd')) {
-            return $this->compositeWithGd($backgroundPath, $qrBytes, $headerText, $footerText);
+            return $this->compositeWithGd($backgroundPath, $qrBytes, $headerText, $unitCaptionText, $footerText);
         }
 
         throw new RuntimeException('Branded QR sticker export requires the PHP gd or imagick extension.');
     }
 
-    private function compositeWithGd(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $footerText): string
+    private function compositeWithGd(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $unitCaptionText, ?string $footerText): string
     {
         $loaded = @imagecreatefrompng($backgroundPath);
         if ($loaded === false) {
@@ -102,6 +104,10 @@ final class BrandedQrStickerCompositor
         );
 
         imagedestroy($qr);
+
+        if ($unitCaptionText !== null && trim($unitCaptionText) !== '') {
+            BrandedQrStickerUnitCaptionRenderer::drawOnGd($canvas, $unitCaptionText);
+        }
 
         if ($footerText !== null && trim($footerText) !== '') {
             BrandedQrStickerFooterRenderer::drawOnGd($canvas, $footerText);
@@ -154,7 +160,7 @@ final class BrandedQrStickerCompositor
         return $canvas;
     }
 
-    private function compositeWithImagick(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $footerText): string
+    private function compositeWithImagick(string $backgroundPath, string $qrBytes, ?string $headerText, ?string $unitCaptionText, ?string $footerText): string
     {
         $canvas = new Imagick($backgroundPath);
         if ($canvas->getImageWidth() !== Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
@@ -186,6 +192,10 @@ final class BrandedQrStickerCompositor
             Avery62x89StickerArtworkLayout::qrLeftPx(),
             Avery62x89StickerArtworkLayout::qrTopPx(),
         );
+
+        if ($unitCaptionText !== null && trim($unitCaptionText) !== '') {
+            BrandedQrStickerUnitCaptionRenderer::drawOnImagick($canvas, $unitCaptionText);
+        }
 
         if ($footerText !== null && trim($footerText) !== '') {
             BrandedQrStickerFooterRenderer::drawOnImagick($canvas, $footerText);
