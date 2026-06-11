@@ -11,7 +11,7 @@
         </div>
 
         <div class="wp-stack-loose">
-            <h1 class="wp-text-heading">{{ __('dashboard.welcome') }}</h1>
+            <h1 class="text-4xl font-bold text-gray-900">{{ __('dashboard.welcome') }}</h1>
         </div>
 
         <div class="wp-card wp-card-pad">
