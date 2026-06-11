@@ -43,6 +43,7 @@ class UnitPortal extends Component
     public int $unitId;
     public int $tenantId;
     public ?int $teamId = null;
+    public string $tenantName = '';
     public string $locationName = '';
     public string $unitName = '';
     public string $unitDescription = '';
@@ -84,7 +85,7 @@ class UnitPortal extends Component
     public function mount(string $token): void
     {
         $unit = Unit::withoutGlobalScope('tenant')
-            ->with(['location', 'category', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
+            ->with(['location', 'category', 'tenant', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
             ->where('qr_token', $token)
             ->first();
 
@@ -101,6 +102,7 @@ class UnitPortal extends Component
             $this->teamId = $firstTeam?->id;
         }
 
+        $this->tenantName = $unit->tenant?->name ?? '';
         $this->unitName = $unit->name;
         $this->locationName = $unit->location?->name ?? '';
         $this->unitDescription = $unit->description ?? '';

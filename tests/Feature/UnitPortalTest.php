@@ -48,6 +48,15 @@ function unitPortalScaffold(array $unitOverrides = []): array
     return compact('tenant', 'location', 'team', 'unit');
 }
 
+it('shows tenant welcome title and unit context above home tiles', function () {
+    ['unit' => $unit, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold(['name' => 'Printer A']);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.welcome_title', ['tenant' => $tenant->name]), false)
+        ->assertSee($location->name, false)
+        ->assertSee('Printer A', false);
+});
+
 it('creates an unapproved issue + auto task + photos via a valid unit token', function () {
     Storage::fake('public');
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();

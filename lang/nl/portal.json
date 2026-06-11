@@ -1,5 +1,6 @@
 {
     "back": "Terug",
+    "welcome_title": "Welkom op het portaal van :tenant",
     "offline_message": "Geen internetverbinding. Loop naar een plek met bereik om taken te starten of te stoppen.",
     "pending_review": "Wacht op controle",
     "issues_empty": "Er zijn nog geen meldingen.",

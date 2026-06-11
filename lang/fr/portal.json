@@ -1,5 +1,6 @@
 {
     "back": "Retour",
+    "welcome_title": "Bienvenue sur le portail de :tenant",
     "offline_message": "Pas de connexion internet. Allez vers un endroit avec couverture pour démarrer ou arrêter les tâches.",
     "pending_review": "En attente de contrôle",
     "issues_empty": "Il n'y a pas encore de signalements.",

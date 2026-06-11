@@ -1,5 +1,6 @@
 {
     "back": "Back",
+    "welcome_title": "Welcome to the :tenant portal",
     "offline_message": "No internet connection. Move to a place with coverage to start or stop tasks.",
     "pending_review": "Awaiting review",
     "issues_empty": "There are no reports yet.",

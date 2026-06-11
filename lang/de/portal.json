@@ -1,5 +1,6 @@
 {
     "back": "Zurück",
+    "welcome_title": "Willkommen im Portal von :tenant",
     "offline_message": "Keine Internetverbindung. Gehen Sie an einen Ort mit Empfang, um Aufgaben zu starten oder zu beenden.",
     "pending_review": "Wartet auf Prüfung",
     "issues_empty": "Es gibt noch keine Meldungen.",

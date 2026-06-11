@@ -24,12 +24,7 @@
                 @include('partials.wp-portal-lang')
             </div>
         </div>
-        <p class="wp-muted">
-            @if ($locationName){{ $locationName }} &middot; @endif{{ $unitName }}
-        </p>
-        @if ($unitDescription)
-            <p class="wp-muted">{{ $unitDescription }}</p>
-        @endif
+        <h1 class="wp-portal-welcome-title">{{ __('portal.welcome_title', ['tenant' => $tenantName]) }}</h1>
 
         {{-- GPS section - only for workers (citizens are already at location when they scan) --}}
         @if ($workerBelongsToUnitTeam)
@@ -97,6 +92,15 @@
 
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
+            <div class="wp-card wp-card-pad wp-portal-unit-context">
+                <p class="wp-portal-unit-name">
+                    @if ($locationName)<span>{{ $locationName }}</span> &middot; @endif<span>{{ $unitName }}</span>
+                </p>
+                @if ($unitDescription)
+                    <p class="wp-muted">{{ $unitDescription }}</p>
+                @endif
+            </div>
+
             <div class="wp-tiles">
                 <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
                     <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>

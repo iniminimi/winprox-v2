@@ -970,6 +970,27 @@
     border-bottom: 1px solid var(--wp-border);
 }
 
+.wp-portal-welcome-title {
+    margin: 0.75rem 0 0;
+    font-size: clamp(1.125rem, 2.5vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    color: var(--wp-text);
+}
+
+.wp-portal-unit-context {
+    margin-bottom: 1rem;
+}
+
+.wp-portal-unit-name {
+    margin: 0;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--wp-text);
+}
+
 .wp-portal-actions {
     position: sticky;
     bottom: 0;
