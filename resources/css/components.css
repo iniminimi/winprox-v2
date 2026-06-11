@@ -2876,6 +2876,32 @@ a.wp-kpi:hover {
     background-color: var(--wp-surface);
 }
 
+/* Instellingen — inklapbare rubrieken. */
+.wp-settings-section-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.wp-settings-section-toggle .wp-section-title {
+    margin: 0;
+}
+
+.wp-settings-section-toggle:hover .wp-section-title {
+    color: var(--wp-accent-text);
+}
+
+.wp-settings-section .wp-disclosure-panel {
+    padding: 0;
+    padding-top: var(--wp-space-2);
+}
+
 /* Inklapbare secties (zelfde chevron als Teams-pagina). */
 .wp-disclosure-block {
     border: 1px solid var(--wp-border);

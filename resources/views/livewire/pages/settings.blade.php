@@ -7,8 +7,7 @@
     />
 
     @if ($canManageOrganisation && $organisationTenant)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
+        <x-wp-settings-section :title="__('settings.org.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.org.card_hint') }}</p>
             <p class="wp-text-body"><strong>{{ $organisationTenant->name }}</strong></p>
             <div class="wp-stack-tight wp-text-sm">
@@ -36,19 +35,17 @@
                     {{ __('settings.org.edit') }}
                 </button>
             </div>
-        </div>
+        </x-wp-settings-section>
     @elseif ($canManageOrganisation)
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
+        <x-wp-settings-section :title="__('settings.org.title')">
             <div class="wp-cluster">
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
                     {{ __('settings.org.edit') }}
                 </button>
             </div>
-        </div>
+        </x-wp-settings-section>
     @else
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.title') }}</h2>
+        <x-wp-settings-section :title="__('settings.org.title')">
             <p class="wp-muted">{{ __('settings.org.readonly_hint') }}</p>
             @php $readonlyTenant = auth()->user()->tenant; @endphp
             @if ($readonlyTenant?->name)
@@ -63,57 +60,58 @@
                     <p class="wp-muted wp-text-sm">{{ __('settings.org.label_address') }}: {{ $readonlyTenant->organisationAddressLine() }}</p>
                 @endif
             @endif
-        </div>
+        </x-wp-settings-section>
     @endif
 
     @if ($canManageOrganisation && $organisationTenant)
-        <form wire:submit="saveOrganisationLogo" class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.logo_label') }}</h2>
-            <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
-            <div class="wp-field">
-                @if ($organisationLogoUrl)
-                    <img
-                        src="{{ $organisationLogoUrl }}"
-                        alt="{{ __('settings.org.logo_preview_alt') }}"
-                        class="wp-org-logo-preview"
-                        width="120"
-                        height="120"
-                        style="margin-bottom: 0.75rem;"
-                        wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
-                    >
-                @endif
-                <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
-                @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <div class="wp-cluster">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-            </div>
-        </form>
+        <x-wp-settings-section :title="__('settings.org.logo_label')">
+            <form wire:submit="saveOrganisationLogo" class="wp-stack-tight">
+                <p class="wp-muted wp-text-sm">{{ __('settings.org.logo_hint') }}</p>
+                <div class="wp-field">
+                    @if ($organisationLogoUrl)
+                        <img
+                            src="{{ $organisationLogoUrl }}"
+                            alt="{{ __('settings.org.logo_preview_alt') }}"
+                            class="wp-org-logo-preview"
+                            width="120"
+                            height="120"
+                            style="margin-bottom: 0.75rem;"
+                            wire:key="org-logo-inline-{{ md5($organisationLogoUrl) }}"
+                        >
+                    @endif
+                    <x-wp-file-input wireModel="orgLogo" id="orgLogoInline" accept="image/*" />
+                    @error('orgLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-cluster">
+                    <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                </div>
+            </form>
+        </x-wp-settings-section>
 
-        <form wire:submit="saveOrganisationPortalBackground" class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.portal_background_label') }}</h2>
-            <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
-            <div class="wp-field">
-                @if ($portalBackgroundUrl)
-                    <img
-                        src="{{ $portalBackgroundUrl }}"
-                        alt="{{ __('settings.org.portal_background_preview_alt') }}"
-                        class="wp-portal-bg-preview"
-                        style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
-                        wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
-                    >
-                @endif
-                <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
-                @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-            <div class="wp-cluster">
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-            </div>
-        </form>
+        <x-wp-settings-section :title="__('settings.org.portal_background_label')">
+            <form wire:submit="saveOrganisationPortalBackground" class="wp-stack-tight">
+                <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
+                <div class="wp-field">
+                    @if ($portalBackgroundUrl)
+                        <img
+                            src="{{ $portalBackgroundUrl }}"
+                            alt="{{ __('settings.org.portal_background_preview_alt') }}"
+                            class="wp-portal-bg-preview"
+                            style="max-height: 150px; width: auto; margin-bottom: 0.75rem;"
+                            wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+                        >
+                    @endif
+                    <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
+                    @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-cluster">
+                    <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+                </div>
+            </form>
+        </x-wp-settings-section>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <h2 class="wp-section-title">{{ __('settings.style.title') }}</h2>
+    <x-wp-settings-section :title="__('settings.style.title')">
         <p class="wp-muted">{{ __('settings.style.hint') }}</p>
         <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">
             @foreach ($themeChoices as $choice)
@@ -130,94 +128,93 @@
                 </label>
             @endforeach
         </div>
-    </div>
+    </x-wp-settings-section>
 
     @if ($canManageOrganisation && $organisationTenant)
-        <form wire:submit="saveOrganisationInline" class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.org.custom_theme_title') }}</h2>
-            
-            <div class="wp-settings-split">
-                <div class="wp-stack-tight">
-                    <label class="wp-checkbox-label">
-                        <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
-                        <span>{{ __('settings.org.custom_theme_active_label') }}</span>
-                    </label>
-                    
-                    @if($customThemeActive)
-                        <div class="wp-stack-tight" style="margin-top: var(--wp-space-3);">
-                            <div class="wp-field">
-                                <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
-                                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                    <input type="color" id="customThemeBgInline" wire:model.live="customThemeBg" class="wp-input" style="width: 3rem; padding: 0.25rem;">
-                                    <input type="text" wire:model.live="customThemeBg" class="wp-input" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
-                                </div>
-                                @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
-                            </div>
-                            <div class="wp-field">
-                                <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
-                                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                    <input type="color" id="customThemeBtnInline" wire:model.live="customThemeBtn" class="wp-input" style="width: 3rem; padding: 0.25rem;">
-                                    <input type="text" wire:model.live="customThemeBtn" class="wp-input" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
-                                </div>
-                                @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
-                            </div>
-                        </div>
-                    @endif
+        <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
+            <form wire:submit="saveOrganisationInline" class="wp-stack-tight">
+                <div class="wp-settings-split">
+                    <div class="wp-stack-tight">
+                        <label class="wp-checkbox-label">
+                            <input type="checkbox" wire:model.live="customThemeActive" class="wp-checkbox">
+                            <span>{{ __('settings.org.custom_theme_active_label') }}</span>
+                        </label>
 
-                    <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
-                        <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-                    </div>
-                </div>
-
-                <div class="wp-settings-split-preview wp-theme-preview">
-                    <div 
-                        class="wp-theme-preview-card"
-                        x-data="{ 
-                            bg: @js($customThemeBg),
-                            btn: @js($customThemeBtn),
-                            active: @js($customThemeActive)
-                        }"
-                        x-on:custom-theme-updated.window="bg = $event.detail.bg; btn = $event.detail.btn; active = $event.detail.active"
                         @if($customThemeActive)
-                            x-init="$watch('$wire.customThemeBg', (val) => { bg = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: val, btn: $wire.customThemeBtn, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeBtn', (val) => { btn = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: val, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeActive', (val) => { active = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: $wire.customThemeBtn, active: val } })); });"
+                            <div class="wp-stack-tight" style="margin-top: var(--wp-space-3);">
+                                <div class="wp-field">
+                                    <label class="wp-label" for="customThemeBgInline">{{ __('settings.org.custom_theme_bg_label') }}</label>
+                                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        <input type="color" id="customThemeBgInline" wire:model.live="customThemeBg" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                                        <input type="text" wire:model.live="customThemeBg" class="wp-input" placeholder="#e7e8ec" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
+                                    </div>
+                                    @error('customThemeBg') <p class="wp-error">{{ $message }}</p> @enderror
+                                </div>
+                                <div class="wp-field">
+                                    <label class="wp-label" for="customThemeBtnInline">{{ __('settings.org.custom_theme_btn_label') }}</label>
+                                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                        <input type="color" id="customThemeBtnInline" wire:model.live="customThemeBtn" class="wp-input" style="width: 3rem; padding: 0.25rem;">
+                                        <input type="text" wire:model.live="customThemeBtn" class="wp-input" placeholder="#059669" pattern="^#[a-fA-F0-9]{6}$" style="flex: 1; max-width: 150px;">
+                                    </div>
+                                    @error('customThemeBtn') <p class="wp-error">{{ $message }}</p> @enderror
+                                </div>
+                            </div>
                         @endif
-                        :style="{
-                            backgroundColor: active ? bg : '#e7e8ec',
-                            border: '8px solid #1f2937',
-                            borderRadius: '24px',
-                            padding: '1rem',
-                            minHeight: '280px',
-                            maxWidth: '200px',
-                            margin: '0 auto',
-                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-                        }"
-                    >
-                        <div class="wp-theme-preview-header">
-                            <div class="wp-theme-preview-title">{{ __('settings.org.theme_preview_title') }}</div>
-                            <div class="wp-theme-preview-subtitle">{{ __('settings.org.theme_preview_subtitle') }}</div>
+
+                        <div class="wp-cluster" style="margin-top: var(--wp-space-3);">
+                            <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
                         </div>
-                        <div class="wp-theme-preview-actions">
-                            <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
-                                :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
-                                {{ __('settings.org.theme_preview_report') }}
-                            </button>
-                            <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
-                                :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
-                                {{ __('settings.org.theme_preview_issues') }}
-                            </button>
-                            <div class="wp-theme-preview-card">
-                                <div class="wp-theme-preview-card-label">{{ __('settings.org.theme_preview_issue_label') }}</div>
-                                <div class="wp-theme-preview-card-title">{{ __('settings.org.theme_preview_issue_title') }}</div>
-                                <div class="wp-theme-preview-card-desc">{{ __('settings.org.theme_preview_issue_desc') }}</div>
+                    </div>
+
+                    <div class="wp-settings-split-preview wp-theme-preview">
+                        <div
+                            class="wp-theme-preview-card"
+                            x-data="{
+                                bg: @js($customThemeBg),
+                                btn: @js($customThemeBtn),
+                                active: @js($customThemeActive)
+                            }"
+                            x-on:custom-theme-updated.window="bg = $event.detail.bg; btn = $event.detail.btn; active = $event.detail.active"
+                            @if($customThemeActive)
+                                x-init="$watch('$wire.customThemeBg', (val) => { bg = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: val, btn: $wire.customThemeBtn, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeBtn', (val) => { btn = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: val, active: $wire.customThemeActive } })); }); $watch('$wire.customThemeActive', (val) => { active = val; window.dispatchEvent(new CustomEvent('custom-theme-updated', { detail: { bg: $wire.customThemeBg, btn: $wire.customThemeBtn, active: val } })); });"
+                            @endif
+                            :style="{
+                                backgroundColor: active ? bg : '#e7e8ec',
+                                border: '8px solid #1f2937',
+                                borderRadius: '24px',
+                                padding: '1rem',
+                                minHeight: '280px',
+                                maxWidth: '200px',
+                                margin: '0 auto',
+                                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                            }"
+                        >
+                            <div class="wp-theme-preview-header">
+                                <div class="wp-theme-preview-title">{{ __('settings.org.theme_preview_title') }}</div>
+                                <div class="wp-theme-preview-subtitle">{{ __('settings.org.theme_preview_subtitle') }}</div>
+                            </div>
+                            <div class="wp-theme-preview-actions">
+                                <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
+                                    :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
+                                    {{ __('settings.org.theme_preview_report') }}
+                                </button>
+                                <button type="button" class="btn btn--primary btn--sm btn--block wp-theme-preview-btn"
+                                    :style="active ? { backgroundColor: btn, borderColor: btn } : {}">
+                                    {{ __('settings.org.theme_preview_issues') }}
+                                </button>
+                                <div class="wp-theme-preview-card">
+                                    <div class="wp-theme-preview-card-label">{{ __('settings.org.theme_preview_issue_label') }}</div>
+                                    <div class="wp-theme-preview-card-title">{{ __('settings.org.theme_preview_issue_title') }}</div>
+                                    <div class="wp-theme-preview-card-desc">{{ __('settings.org.theme_preview_issue_desc') }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </x-wp-settings-section>
 
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <h2 class="wp-section-title">{{ __('settings.qr_stickers.title') }}</h2>
+        <x-wp-settings-section :title="__('settings.qr_stickers.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
 
             <div class="wp-stack-tight" style="margin-top: var(--wp-space-2);">
@@ -226,16 +223,15 @@
             </div>
 
             @include('livewire.pages.partials.qr-sticker-avery6289-editor')
-        </div>
+        </x-wp-settings-section>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <h2 class="wp-section-title">{{ __('settings.privacy.title') }}</h2>
+    <x-wp-settings-section :title="__('settings.privacy.title')">
         <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>
         <p>
             <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('settings.privacy.download') }}</a>
         </p>
-    </div>
+    </x-wp-settings-section>
 
     @if ($canManageOrganisation && $showOrgModal)
         @teleport('body')

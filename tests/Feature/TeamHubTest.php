@@ -132,7 +132,9 @@ it('toont gelokaliseerde bestandskiezer op instellingen', function () {
     Livewire::actingAs($admin)
         ->test(Settings::class)
         ->assertSee(__('common.file.browse'), false)
-        ->assertSee(__('common.file.none_selected'), false);
+        ->assertSee(__('common.file.none_selected'), false)
+        ->assertSee('wp-settings-section', false)
+        ->assertSee(':aria-expanded="open"', false);
 });
 
 it('laat een admin bedrijfsgegevens aanpassen via instellingen', function () {
