@@ -379,6 +379,13 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background-color: #ffffff;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.wp-portal .wp-page-help-dialog {
+    background-color: #ffffff;
 }
 
 .wp-page-help-dialog-head {
