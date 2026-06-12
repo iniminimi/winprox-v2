@@ -54,7 +54,7 @@
                                     @if ($group['type'] === 'item')
                                         <li class="wp-page-help-item">
                                             <p class="wp-page-help-item-label">{{ $group['item']['label'] }}</p>
-                                            <p class="wp-page-help-item-text">{{ $group['item']['text'] }}</p>
+                                            <p class="wp-page-help-item-text">{!! $group['item']['text'] !!}</p>
                                         </li>
                                     @else
                                         <li class="wp-page-help-sublist-wrap">
@@ -62,7 +62,7 @@
                                                 @foreach ($group['items'] as $action)
                                                     <li class="wp-page-help-item">
                                                         <p class="wp-page-help-item-label">{{ $action['label'] }}</p>
-                                                        <p class="wp-page-help-item-text">{{ $action['text'] }}</p>
+                                                        <p class="wp-page-help-item-text">{!! $action['text'] !!}</p>
                                                     </li>
                                                 @endforeach
                                             </ul>
