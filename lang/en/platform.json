@@ -87,5 +87,24 @@
         "title": "Promotional QR Code",
         "description": "Generate a high-resolution QR code (3000×3000 px) for printing on football shirts.",
         "download": "Download promo QR"
+    },
+    "manual_screenshots": {
+        "nav": "Screenshots",
+        "title": "Manual screenshots",
+        "subtitle": "Generate static PNGs for the manual (Playwright on the server).",
+        "intro": "The capture user is configured in .env. After a UI change: run build, then update screenshots and commit to git.",
+        "update": "Update manual screenshots",
+        "queued": "Screenshot run queued.",
+        "not_configured": "MANUAL_CAPTURE_EMAIL and MANUAL_CAPTURE_PASSWORD are missing in .env.",
+        "configured_as": "Capture account: :email",
+        "already_running": "A screenshot run is already in progress.",
+        "failed": "Screenshot run failed. See status below.",
+        "status_title": "Last run",
+        "status_at": "Updated: :datetime",
+        "status_queued": "Queued",
+        "status_running": "Running",
+        "status_completed": "Completed",
+        "status_failed": "Failed",
+        "status_unknown": "Unknown"
     }
 }

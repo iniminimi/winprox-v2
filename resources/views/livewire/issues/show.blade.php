@@ -7,7 +7,7 @@
         default => __('issues.show.report_created_by', ['name' => $reporterName]),
     };
 @endphp
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="issues-show">
     <x-wp-entity-detail-head
         icon="issues"
         :title="__('issues.show.overview_title')"

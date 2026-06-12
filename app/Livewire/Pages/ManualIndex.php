@@ -8,6 +8,7 @@ use App\Livewire\Pages\Concerns\HasManualLocale;
 use App\Support\Manual\ManualChapterIcons;
 use App\Support\Manual\ManualChapters;
 use App\Support\Manual\ManualPortalStatuses;
+use App\Support\Manual\ManualScreenshotAssets;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -59,10 +60,27 @@ class ManualIndex extends Component
         $this->changeManualLocale($locale, 'manual.general');
     }
 
+    /**
+     * @param  list<array<string, mixed>>  $chapters
+     * @return list<array<string, mixed>>
+     */
+    private function chaptersWithScreenshotUrls(array $chapters): array
+    {
+        return array_map(
+            fn (array $chapter): array => [
+                ...$chapter,
+                'manualScreenshotUrl' => ManualScreenshotAssets::publicUrl($chapter['key'], $this->lang),
+            ],
+            $chapters,
+        );
+    }
+
     public function render(): \Illuminate\View\View
     {
-        $chapters = ManualChapterIcons::applyToChapters(
-            ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true),
+        $chapters = $this->chaptersWithScreenshotUrls(
+            ManualChapterIcons::applyToChapters(
+                ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true),
+            ),
         );
         $splitAt = count(self::ADMIN_CHAPTER_KEYS);
 

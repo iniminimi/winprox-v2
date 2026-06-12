@@ -80,7 +80,7 @@
 
         {{-- ========================= IDENTIFICATIE ========================= --}}
         @elseif ($showIdentify)
-            <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-card wp-card-pad wp-stack" data-manual-capture="portal-team-identify">
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
                 <p class="wp-muted">{{ __('portal.worker.identify_hint') }}</p>
                 <form wire:submit="identifyWorker" class="wp-stack">
@@ -144,6 +144,7 @@
 
         {{-- ===================== READ-ONLY TAKENOVERZICHT ===================== --}}
         @if ($canAct)
+            <div data-manual-capture="portal-team-signed-in">
             <div class="wp-card wp-card-pad wp-cluster">
                 @if ($verifiedWorker?->field_icon_slug)
                     <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
@@ -207,6 +208,7 @@
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.worker.no_open_tasks') }}</p></div>
                 @endforelse
+            </div>
             </div>
         @endif
     @endif

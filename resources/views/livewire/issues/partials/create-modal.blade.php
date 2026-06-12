@@ -1,4 +1,4 @@
-<x-wp-modal closeMethod="closeCreateModal" aria-labelledby="issue-create-title">
+<x-wp-modal closeMethod="closeCreateModal" aria-labelledby="issue-create-title" data-manual-capture="issues-create">
     @if ($createStep === 1)
         <form x-data
               x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"

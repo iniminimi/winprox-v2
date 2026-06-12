@@ -7,7 +7,8 @@
         "fix:locales": "node scripts/locales.mjs fix",
         "check:locales": "node scripts/locales.mjs check",
         "check:locales:parity": "node scripts/locales.mjs parity",
-        "check:architecture": "node scripts/check-architecture.mjs"
+        "check:architecture": "node scripts/check-architecture.mjs",
+        "capture:manual": "npm install --prefix scripts/capture-pkg && node scripts/capture-manual-screenshots.mjs"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

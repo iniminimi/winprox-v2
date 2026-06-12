@@ -1,5 +1,7 @@
 /.phpunit.cache
 /node_modules
+/scripts/capture-pkg/node_modules
+/storage/playwright-browsers
 #/public/build
 /public/hot
 /public/storage

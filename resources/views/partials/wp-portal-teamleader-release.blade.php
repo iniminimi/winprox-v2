@@ -6,7 +6,7 @@
     @if ($blockedColleagues->isNotEmpty())
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('portal.teamleader.title') }}</h2>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleReleasePanel">
+            <button type="button" class="btn btn--ghost btn--sm" data-manual-capture-trigger="teamleader-release" wire:click="toggleReleasePanel">
                 {{ $showReleasePanel ? __('common.button.cancel') : __('portal.teamleader.open') }}
             </button>
         </div>
@@ -14,7 +14,7 @@
         <p class="wp-muted">{{ __('portal.teamleader.hint') }}</p>
 
         @if ($showReleasePanel)
-            <form wire:submit="releaseColleagueIcon" class="wp-stack">
+            <form wire:submit="releaseColleagueIcon" class="wp-stack" data-manual-capture="portal-teamleader-release">
                 <div class="wp-field">
                     <label class="wp-label">{{ __('portal.teamleader.confirm_own_icon') }}</label>
                     <div class="wp-icon-grid">
@@ -74,7 +74,7 @@
 
         <div class="wp-row">
             <h2 class="wp-section-title">{{ __('portal.teamleader.manage_workers_title') }}</h2>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="{{ $showManageWorkers ? 'closeManageWorkers' : 'openManageWorkers' }}">
+            <button type="button" class="btn btn--ghost btn--sm" data-manual-capture-trigger="teamleader-workers" wire:click="{{ $showManageWorkers ? 'closeManageWorkers' : 'openManageWorkers' }}">
                 {{ $showManageWorkers ? __('common.button.close') : __('portal.teamleader.manage_workers_open') }}
             </button>
         </div>
@@ -82,6 +82,7 @@
         @if (! $showManageWorkers)
             <p class="wp-muted">{{ __('portal.teamleader.manage_workers_hint') }}</p>
         @else
+            <div data-manual-capture="portal-teamleader-workers">
             {{-- Current workers list --}}
             @if ($teamWorkers->isEmpty())
                 <p class="wp-muted">{{ __('portal.teamleader.no_workers') }}</p>
@@ -136,6 +137,7 @@
                     {{ __('portal.teamleader.add_another_worker') }}
                 </button>
             @endif
+            </div>
         @endif
     @endif
 </div>

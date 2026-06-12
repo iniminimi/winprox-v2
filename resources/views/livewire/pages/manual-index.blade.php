@@ -199,7 +199,7 @@
           'index' => $index,
           'slug' => $slug,
           'isLast' => $isLast,
-          'manualScreenshotUrl' => \App\Support\Manual\ManualScreenshotAssets::publicUrl($chapter['key'], $lang),
+          'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
         ])
       @endforeach
 
@@ -221,7 +221,7 @@
         'index' => $index,
         'slug' => $slug,
         'isLast' => $isLast,
-        'manualScreenshotUrl' => \App\Support\Manual\ManualScreenshotAssets::publicUrl($chapter['key'], $lang),
+        'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
       ])
     @endforeach
   @endif

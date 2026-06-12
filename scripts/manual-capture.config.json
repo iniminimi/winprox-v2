@@ -1,0 +1,154 @@
+{
+    "targets": [
+        {
+            "id": "team",
+            "path": "/team",
+            "selector": "[data-manual-capture=\"team\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "locations-list",
+            "path": "/locations",
+            "selector": "[data-manual-capture=\"locations-list\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "locations-show",
+            "path": "/locations/{location_id}",
+            "selector": "[data-manual-capture=\"locations-show\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "issues-list",
+            "path": "/issues",
+            "selector": "[data-manual-capture=\"issues-list\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "issues-show",
+            "path": "/issues/{issue_id}",
+            "selector": "[data-manual-capture=\"issues-show\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "issues-create",
+            "path": "/issues?create=1",
+            "selector": "[data-manual-capture=\"issues-create\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "tasks-list",
+            "path": "/tasks",
+            "selector": "[data-manual-capture=\"tasks-list\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "tasks-show",
+            "path": "/tasks/{task_id}",
+            "selector": "[data-manual-capture=\"tasks-show\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "calendar",
+            "path": "/calendar",
+            "selector": "[data-manual-capture=\"calendar\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "dashboard",
+            "path": "/dashboard",
+            "selector": "[data-manual-capture=\"dashboard\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "settings",
+            "path": "/settings",
+            "selector": "[data-manual-capture=\"settings\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "portal-worker-qr",
+            "path": "/melden/{unit_token}",
+            "selector": "[data-manual-capture=\"portal-unit-home\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false
+        },
+        {
+            "id": "portal-unit",
+            "path": "/melden/{unit_token}",
+            "selector": "[data-manual-capture=\"portal-unit-home\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false
+        },
+        {
+            "id": "portal-unit-new",
+            "path": "/melden/{unit_token}",
+            "selector": "[data-manual-capture=\"portal-unit-new\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "prepareClick": "button.wp-tile--primary"
+        },
+        {
+            "id": "portal-team",
+            "path": "/team/{team_token}",
+            "selector": "[data-manual-capture=\"portal-team-identify\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false
+        },
+        {
+            "id": "portal-worker-photos",
+            "path": "/melden/{unit_token}",
+            "selector": "[data-manual-capture=\"portal-unit-new\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "prepareClick": "button.wp-tile--primary"
+        },
+        {
+            "id": "portal-teamleader-role",
+            "path": "/team/{team_token}",
+            "selector": "[data-manual-capture=\"portal-team-signed-in\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "workerSignIn": true
+        },
+        {
+            "id": "portal-teamleader-release",
+            "path": "/team/{team_token}",
+            "selector": "[data-manual-capture=\"portal-teamleader-release\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "workerSignIn": true,
+            "prepareClick": "[data-manual-capture-trigger=\"teamleader-release\"]"
+        },
+        {
+            "id": "portal-teamleader-workers",
+            "path": "/team/{team_token}",
+            "selector": "[data-manual-capture=\"portal-teamleader-workers\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "workerSignIn": true,
+            "prepareClick": "[data-manual-capture-trigger=\"teamleader-workers\"]"
+        },
+        {
+            "id": "portal-teamleader-tasks",
+            "path": "/melden/{unit_token}",
+            "workerSignInPath": "/team/{team_token}",
+            "selector": "[data-manual-capture=\"portal-unit-worker-tasks\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "workerSignIn": true,
+            "prepareClick": "[data-manual-capture-trigger=\"unit-open-tasks\"]"
+        }
+    ]
+}

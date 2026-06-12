@@ -87,5 +87,24 @@
         "title": "Promo-QR-Code",
         "description": "Hochauflösender QR-Code (3000×3000 px) zum Drucken auf Fußballtrikots generieren.",
         "download": "Promo-QR herunterladen"
+    },
+    "manual_screenshots": {
+        "nav": "Screenshots",
+        "title": "Handbuch-Screenshots",
+        "subtitle": "Statische PNGs für das Handbuch erzeugen (Playwright auf dem Server).",
+        "intro": "Der Capture-Benutzer steht in .env. Nach einer UI-Änderung: Build ausführen, Screenshots aktualisieren und in git committen.",
+        "update": "Handbuch-Screenshots aktualisieren",
+        "queued": "Screenshot-Lauf in Warteschlange.",
+        "not_configured": "MANUAL_CAPTURE_EMAIL und MANUAL_CAPTURE_PASSWORD fehlen in .env.",
+        "configured_as": "Capture-Konto: :email",
+        "already_running": "Ein Screenshot-Lauf läuft bereits.",
+        "failed": "Screenshot-Lauf fehlgeschlagen. Siehe Status unten.",
+        "status_title": "Letzter Lauf",
+        "status_at": "Aktualisiert: :datetime",
+        "status_queued": "In Warteschlange",
+        "status_running": "Läuft",
+        "status_completed": "Abgeschlossen",
+        "status_failed": "Fehlgeschlagen",
+        "status_unknown": "Unbekannt"
     }
 }

@@ -39,6 +39,7 @@ use App\Livewire\Platform\Audit as PlatformAudit;
 use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
+use App\Livewire\Platform\ManualScreenshots as PlatformManualScreenshots;
 use App\Livewire\Platform\QrConnect;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Livewire\Platform\Users as PlatformUsers;
@@ -120,6 +121,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/contact-messages', ContactMessages::class)
         ->middleware('superuser')
         ->name('platform.contact-messages');
+    Route::get('/platform/screenshots', PlatformManualScreenshots::class)
+        ->middleware('superuser')
+        ->name('platform.screenshots');
 
     Route::get('/platform/promo-qr/download', PromoQrDownloadController::class)
         ->middleware('superuser')

@@ -92,6 +92,7 @@
 
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
+            <div data-manual-capture="portal-unit-home">
             <div class="wp-card wp-card-pad wp-portal-unit-context">
                 <p class="wp-portal-unit-name">
                     @if ($locationName)<span>{{ $locationName }}</span> &middot; @endif<span>{{ $unitName }}</span>
@@ -148,12 +149,14 @@
                     <div
                         class="wp-card wp-card-pad wp-stack"
                         wire:key="portal-open-tasks-card"
+                        data-manual-capture="portal-unit-worker-tasks"
                         x-data="{ open: false, hasOpenTasks: @js($allOpenUnitTasks->isNotEmpty()) }"
                         :class="{ 'wp-portal-open-tasks-card--attention': hasOpenTasks && !open }"
                     >
                         <button
                             type="button"
                             class="wp-row"
+                            data-manual-capture-trigger="unit-open-tasks"
                             style="width:100%;background:none;border:none;padding:0;cursor:pointer;"
                             @click="open = !open"
                             :aria-expanded="open"
@@ -173,10 +176,12 @@
                     </div>
                 @endif
             @endif
+            </div>
         @endif
 
         {{-- ============================ NEW ============================ --}}
         @if ($portalSection === 'new')
+            <div data-manual-capture="portal-unit-new">
             <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
             <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
             <form x-data="{ 
@@ -218,6 +223,7 @@
                     </button>
                 </div>
             </form>
+            </div>
         @endif
 
         {{-- ======================= TAAK AFGEHANDELD ======================= --}}

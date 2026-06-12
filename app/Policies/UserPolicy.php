@@ -31,6 +31,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function captureManualScreenshots(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function accessPlatform(User $user): bool
     {
         return $user->is_superuser;

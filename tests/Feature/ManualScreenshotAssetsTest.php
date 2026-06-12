@@ -1,0 +1,29 @@
+<?php
+
+use App\Support\Manual\ManualScreenshotAssets;
+
+it('mapt een hoofdstuksleutel naar een bestandsnaam', function () {
+    expect(ManualScreenshotAssets::filenameForChapter('issues.list'))
+        ->toBe('issues-list.png');
+});
+
+it('geeft een public url wanneer het screenshot-bestand bestaat', function () {
+    $dir = public_path('images/manual/nl');
+    if (! is_dir($dir)) {
+        mkdir($dir, 0777, true);
+    }
+
+    $file = $dir.'/dashboard.png';
+    file_put_contents($file, 'png');
+
+    $url = ManualScreenshotAssets::publicUrl('dashboard', 'nl');
+
+    expect($url)->not->toBeNull()
+        ->and($url)->toContain('images/manual/nl/dashboard.png');
+
+    unlink($file);
+});
+
+it('geeft null wanneer het screenshot-bestand ontbreekt', function () {
+    expect(ManualScreenshotAssets::publicUrl('calendar', 'nl'))->toBeNull();
+});

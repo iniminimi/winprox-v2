@@ -87,5 +87,24 @@
         "title": "Promotionele QR-code",
         "description": "Genereer een hoge-resolutie QR-code (3000×3000 px) voor bedrukking op voetbalshirts.",
         "download": "Download promotie-QR"
+    },
+    "manual_screenshots": {
+        "nav": "Screenshots",
+        "title": "Handleiding-screenshots",
+        "subtitle": "Genereer statische PNG's voor de handleiding (Playwright op de server).",
+        "intro": "Log in als de handleiding-gebruiker via .env. Na een UI-wijziging: build uitvoeren, daarna screenshots bijwerken en committen naar git.",
+        "update": "Handleiding-screenshots bijwerken",
+        "queued": "Screenshot-run staat in de wachtrij.",
+        "not_configured": "MANUAL_CAPTURE_EMAIL en MANUAL_CAPTURE_PASSWORD ontbreken in .env.",
+        "configured_as": "Capture-account: :email",
+        "already_running": "Er loopt al een screenshot-run.",
+        "failed": "Screenshot-run mislukt. Zie status hieronder.",
+        "status_title": "Laatste run",
+        "status_at": "Bijgewerkt: :datetime",
+        "status_queued": "In wachtrij",
+        "status_running": "Bezig",
+        "status_completed": "Voltooid",
+        "status_failed": "Mislukt",
+        "status_unknown": "Onbekend"
     }
 }

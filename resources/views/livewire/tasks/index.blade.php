@@ -1,4 +1,4 @@
-<div class="wp-stack wp-tasks-page">
+<div class="wp-stack wp-tasks-page" data-manual-capture="tasks-list">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
     @elseif ($onboarding->showCategoriesOrLocationsBanner())

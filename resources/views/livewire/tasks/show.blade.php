@@ -15,7 +15,7 @@
     } : null;
 @endphp
 
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="tasks-show">
     <x-wp-entity-detail-head
         icon="tasks"
         :title="__('tasks.show.overview_title')"

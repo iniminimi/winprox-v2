@@ -30,6 +30,17 @@
         </a>
     </div>
 
+    @if (! empty($manualScreenshotUrl))
+        <figure class="wp-manual-screenshot">
+            <img
+                class="wp-manual-screenshot__img"
+                src="{{ $manualScreenshotUrl }}"
+                alt="{{ __('manual.screenshot_alt', ['title' => $chapter['title']]) }}"
+                loading="lazy"
+            >
+        </figure>
+    @endif
+
     {{-- Acties --}}
     @if (!empty($chapter['actions']))
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">

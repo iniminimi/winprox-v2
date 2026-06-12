@@ -87,5 +87,24 @@
         "title": "QR code promotionnel",
         "description": "Générer un QR code haute résolution (3000×3000 px) pour impression sur maillots de football.",
         "download": "Télécharger le QR promo"
+    },
+    "manual_screenshots": {
+        "nav": "Captures",
+        "title": "Captures du manuel",
+        "subtitle": "Générer des PNG statiques pour le manuel (Playwright sur le serveur).",
+        "intro": "L'utilisateur de capture est configuré dans .env. Après une modification UI : build, puis mettre à jour les captures et committer dans git.",
+        "update": "Mettre à jour les captures du manuel",
+        "queued": "Capture mise en file d'attente.",
+        "not_configured": "MANUAL_CAPTURE_EMAIL et MANUAL_CAPTURE_PASSWORD manquent dans .env.",
+        "configured_as": "Compte de capture : :email",
+        "already_running": "Une capture est déjà en cours.",
+        "failed": "Échec de la capture. Voir le statut ci-dessous.",
+        "status_title": "Dernière exécution",
+        "status_at": "Mis à jour : :datetime",
+        "status_queued": "En file d'attente",
+        "status_running": "En cours",
+        "status_completed": "Terminé",
+        "status_failed": "Échoué",
+        "status_unknown": "Inconnu"
     }
 }

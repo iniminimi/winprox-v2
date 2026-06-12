@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="locations-show">
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title

@@ -1,4 +1,4 @@
-<div class="wp-stack" x-data x-on:ui-theme-changed.window="document.documentElement.dataset.theme = $event.detail.theme">
+<div class="wp-stack" data-manual-capture="settings" x-data x-on:ui-theme-changed.window="document.documentElement.dataset.theme = $event.detail.theme">
     <x-wp-page-head-title
         icon="settings"
         :title="__('settings.title')"

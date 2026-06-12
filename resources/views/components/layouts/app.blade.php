@@ -29,6 +29,7 @@
                 ['route' => 'platform.contact-messages', 'active' => 'platform.contact-messages', 'icon' => 'contact', 'label' => 'platform.contact_messages.nav'],
                 ['route' => 'platform.audit', 'active' => 'platform.audit', 'icon' => 'document', 'label' => 'platform.audit.nav'],
                 ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
+                ['route' => 'platform.screenshots', 'active' => 'platform.screenshots', 'icon' => 'document', 'label' => 'platform.manual_screenshots.nav'],
             ] : [
                 ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
                 ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],

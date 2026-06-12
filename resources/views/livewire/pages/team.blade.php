@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="team">
     <x-wp-page-head-title
         icon="team"
         :title="__('team.title')"
