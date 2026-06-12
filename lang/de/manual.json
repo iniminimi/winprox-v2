@@ -21,12 +21,10 @@
     },
     "sections": {
         "admin_portal": {
-            "title": "Teams und Benutzer bis Einstellungen",
-            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Dashboard und Einstellungen."
+            "title": "Administratives Portal"
         },
         "internet_portal": {
-            "title": "Zwei QR-Codes und das Feldportal",
-            "intro": "Hilfe zum Unit-QR- und Team-QR-Portal vor Ort: Anmeldung, Meldungen, Aufgaben, Fotos und Teamleiter-Funktionen."
+            "title": "Internet-Portal"
         }
     },
     "statuses": "Status",

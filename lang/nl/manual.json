@@ -21,12 +21,10 @@
     },
     "sections": {
         "admin_portal": {
-            "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard en instellingen."
+            "title": "Administratief portaal"
         },
         "internet_portal": {
-            "title": "Twee QR-codes en het veldportaal",
-            "intro": "Hulp bij het unit-QR- en team-QR-portaal op locatie: aanmelden, meldingen, taken, foto's en teamleader-functies."
+            "title": "Internet portaal"
         }
     },
     "statuses": "Statussen",

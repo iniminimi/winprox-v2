@@ -21,12 +21,10 @@
     },
     "sections": {
         "admin_portal": {
-            "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard and settings."
+            "title": "Administrative portal"
         },
         "internet_portal": {
-            "title": "Two QR codes and the field portal",
-            "intro": "Help for the unit QR and team QR portals on site: sign-in, issues, tasks, photos and team leader features."
+            "title": "Internet portal"
         }
     },
     "statuses": "Statuses",
