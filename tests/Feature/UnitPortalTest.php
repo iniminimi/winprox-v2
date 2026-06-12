@@ -207,7 +207,7 @@ it('lets a verified field worker start and complete a task (issue rolls up to do
         ->assertHasNoErrors()
         ->assertSet('portalSection', 'task_done')
         ->assertSee(__('portal.worker.task_completed'))
-        ->assertDontSee(__('portal.tiles.issues'));
+        ->assertDontSee('wire:click="openSection(\'issues\')"');
 
     expect($task->fresh()->status)->toBe(TaskStatus::Done)
         ->and($task->fresh()->completed_at)->not->toBeNull()
