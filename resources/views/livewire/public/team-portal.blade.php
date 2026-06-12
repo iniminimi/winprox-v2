@@ -153,6 +153,10 @@
                 <strong class="wp-text-body">{{ __('common.welcome') }} {{ $verifiedWorker?->displayName() }}</strong>
             </div>
 
+            <div class="wp-portal-worker-actions">
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+            </div>
+
             @if ($verifiedWorker?->is_teamleader)
                 @include('partials.wp-portal-teamleader-release')
             @endif
@@ -177,10 +181,7 @@
 
             <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
-            <div class="wp-row">
-                <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
-            </div>
+            <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
             <div class="wp-list">
                 @forelse ($tasks as $task)
                     <div class="wp-card wp-card-pad wp-stack" wire:key="team-task-{{ $task->id }}">
