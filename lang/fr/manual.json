@@ -24,5 +24,15 @@
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent par scan QR ou manuellement. Une tâche est automatiquement créée pour chaque signalement, liée à l'équipe de l'unité. Plusieurs tâches peuvent être créées pour le même signalement (p. ex. pour l'équipe technique et le nettoyage). Fixez un délai et suivez l'avancement via le tableau de bord et le calendrier.",
     "step_5_title": "Suivre & clôturer",
-    "step_5_text": "Les exécutants terminent les tâches sur le terrain ou à l'emplacement de l'unité via le QR d'équipe. Une fois toutes les tâches traitées, l'administrateur clôture le signalement. Tout est visible dans l'historique."
+    "step_5_text": "Les exécutants terminent les tâches sur le terrain ou à l'emplacement de l'unité via le QR d'équipe. Une fois toutes les tâches traitées, l'administrateur clôture le signalement. Tout est visible dans l'historique.",
+    "hub": {
+        "title": "Manuels",
+        "subtitle": "Choisissez le manuel adapté à votre rôle",
+        "general": "Manuel général",
+        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs — imprimer ou enregistrer en PDF.",
+        "workers": "Manuel exécutants",
+        "workers_desc": "QR équipe et QR unité sur le terrain — connexion, tâches et photos.",
+        "teamleaders": "Manuel chefs d'équipe",
+        "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail équipe."
+    }
 }

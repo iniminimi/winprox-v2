@@ -3,33 +3,57 @@
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
-use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
-it('laat een admin de handleiding zien (200)', function () {
+it('laat een admin de handleidingen-hub zien (200)', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.hub'))
         ->assertOk()
-        ->assertSee('WinProx Handleiding');
+        ->assertSee('Handleidingen');
 });
 
-it('laat een medewerker de handleiding zien (200)', function () {
+it('laat een medewerker de handleidingen-hub zien (200)', function () {
     $tenant = Tenant::factory()->create();
     $employee = User::factory()->employee()->for($tenant)->create();
 
     $this->actingAs($employee)
-        ->get(route('manual.index'))
+        ->get(route('manual.hub'))
         ->assertOk()
-        ->assertSee('WinProx Handleiding');
+        ->assertSee('Handleidingen');
+});
+
+it('toont drie handleiding-knoppen op de hub', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.hub'))
+        ->assertOk()
+        ->assertSee(__('manual.hub.general'))
+        ->assertSee(__('manual.hub.workers'))
+        ->assertSee(__('manual.hub.teamleaders'))
+        ->assertSee(route('manual.general'), false)
+        ->assertSee(route('manual.workers'), false)
+        ->assertSee(route('manual.teamleaders'), false);
 });
 
 it('wijst een niet-geauthenticeerde bezoeker af met redirect naar login', function () {
-    $this->get(route('manual.index'))
+    $this->get(route('manual.hub'))
         ->assertRedirect(route('login'));
+});
+
+it('laat een admin de algemene handleiding zien (200)', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee('WinProx Handleiding');
 });
 
 it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () {
@@ -37,7 +61,7 @@ it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () 
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $response = $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.general'))
         ->assertOk();
 
     $html = $response->getContent();
@@ -93,7 +117,7 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.general'))
         ->assertOk()
         ->assertSee('Inhoud')
         ->assertSee('Gegenereerd op');
@@ -104,7 +128,7 @@ it('toont het stappenplan op pagina 2', function () {
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.general'))
         ->assertOk()
         ->assertSee('In 5 stappen up-and-running')
         ->assertSee('Teams &amp; uitvoerders aanmaken', false)
@@ -116,7 +140,7 @@ it('bevat geen ruwe "Hulp —" prefix in de hoofdstuktitels', function () {
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $html = $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.general'))
         ->assertOk()
         ->getContent();
 
@@ -132,7 +156,7 @@ it('rendert Franse teksten wanneer ?lang=fr wordt meegegeven', function () {
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $this->actingAs($admin)
-        ->get(route('manual.index', ['lang' => 'fr']))
+        ->get(route('manual.general', ['lang' => 'fr']))
         ->assertOk()
         ->assertSee('Équipes', false)
         ->assertSee('Signalements')
@@ -144,7 +168,7 @@ it('rendert de handleiding via de print-layout (geen app-navigatie)', function (
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $response = $this->actingAs($admin)
-        ->get(route('manual.index'))
+        ->get(route('manual.general'))
         ->assertOk();
 
     $html = $response->getContent();
@@ -154,11 +178,33 @@ it('rendert de handleiding via de print-layout (geen app-navigatie)', function (
         ->and($html)->toContain('window.print()');
 });
 
+it('toont de uitvoerdershandleiding voor een admin', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.workers'))
+        ->assertOk()
+        ->assertSee('Handleiding uitvoerders')
+        ->assertSee('Twee QR-codes');
+});
+
+it('toont de teamleader-handleiding voor een medewerker', function () {
+    $tenant = Tenant::factory()->create();
+    $employee = User::factory()->employee()->for($tenant)->create();
+
+    $this->actingAs($employee)
+        ->get(route('manual.teamleaders'))
+        ->assertOk()
+        ->assertSee('Handleiding teamleaders')
+        ->assertSee('Icoon collega vrijgeven');
+});
+
 it('toont de handleiding nav-link in de app-layout voor een admin', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
-    $manualUrl = route('manual.index');
+    $manualUrl = route('manual.hub');
 
     $this->actingAs($admin)
         ->get(route('dashboard'))
@@ -170,7 +216,7 @@ it('toont de handleiding nav-link in de app-layout voor een medewerker', functio
     $tenant = Tenant::factory()->create();
     $employee = User::factory()->employee()->for($tenant)->create();
 
-    $manualUrl = route('manual.index');
+    $manualUrl = route('manual.hub');
 
     $this->actingAs($employee)
         ->get(route('dashboard'))

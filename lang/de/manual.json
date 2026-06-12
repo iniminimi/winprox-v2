@@ -24,5 +24,15 @@
     "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
     "step_4_text": "Meldungen kommen per QR-Scan oder manuell herein. Für jede Meldung wird automatisch eine Aufgabe erstellt, die dem Team der Einheit zugeordnet ist. Es können mehrere Aufgaben für dieselbe Meldung erstellt werden (z. B. für das Technik- und Reinigungsteam). Setzen Sie eine Frist und verfolgen Sie den Fortschritt über das Dashboard und den Kalender.",
     "step_5_title": "Nachverfolgen & abschließen",
-    "step_5_text": "Mitarbeiter erledigen Aufgaben vor Ort oder am Standort der Einheit über den Team-QR. Sobald alle Aufgaben abgeschlossen sind, schließt der Administrator die Meldung. Alles ist im Audit-Trail nachvollziehbar."
+    "step_5_text": "Mitarbeiter erledigen Aufgaben vor Ort oder am Standort der Einheit über den Team-QR. Sobald alle Aufgaben abgeschlossen sind, schließt der Administrator die Meldung. Alles ist im Audit-Trail nachvollziehbar.",
+    "hub": {
+        "title": "Handbücher",
+        "subtitle": "Wählen Sie das Handbuch für Ihre Rolle",
+        "general": "Allgemeines Handbuch",
+        "general_desc": "Vollständige WinProx-App für Administratoren und Mitarbeiter — drucken oder als PDF speichern.",
+        "workers": "Mitarbeiter-Handbuch",
+        "workers_desc": "Team-QR und Einheiten-QR vor Ort — Anmeldung, Aufgaben und Fotos.",
+        "teamleaders": "Teamleiter-Handbuch",
+        "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Teamportal koordinieren."
+    }
 }

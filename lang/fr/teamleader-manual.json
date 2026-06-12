@@ -1,0 +1,90 @@
+{
+    "cover": {
+        "title": "Manuel chefs d'équipe",
+        "subtitle": "Portail équipe — coordonner collègues et tâches"
+    },
+    "footer": "WinProx — Manuel chefs d'équipe — :date",
+    "chapters": [
+        {
+            "key": "role",
+            "title": "Qu'est-ce qu'un chef d'équipe ?",
+            "actions": [
+                {
+                    "label": "Rôle",
+                    "text": "Un chef d'équipe est un exécutant avec des droits supplémentaires sur le portail équipe. Vous traitez les tâches vous-même et aidez les collègues."
+                },
+                {
+                    "label": "Désignation",
+                    "text": "Un administrateur désigne les chefs d'équipe dans WinProx sur l'équipe. Vous voyez le badge «Chef d'équipe» après connexion."
+                }
+            ]
+        },
+        {
+            "key": "sign_in",
+            "title": "Connexion en tant que chef d'équipe",
+            "actions": [
+                {
+                    "label": "QR équipe",
+                    "text": "Scannez le QR équipe et connectez-vous avec votre nom et icône — comme tout exécutant."
+                },
+                {
+                    "label": "Panneaux supplémentaires",
+                    "text": "Après connexion, vous voyez des sections supplémentaires : libérer l'icône d'un collègue et gérer les exécutants."
+                }
+            ]
+        },
+        {
+            "key": "release_icon",
+            "title": "Libérer l'icône d'un collègue",
+            "actions": [
+                {
+                    "label": "Quand c'est nécessaire",
+                    "text": "Si un collègue a choisi trop souvent une mauvaise icône, il est bloqué. Vous pouvez libérer l'icône pour qu'il puisse choisir à nouveau."
+                },
+                {
+                    "label": "Étapes",
+                    "text": "Ouvrez «Libérer», confirmez d'abord votre propre icône, choisissez le collègue bloqué et confirmez. Le collègue peut ensuite se reconnecter."
+                }
+            ]
+        },
+        {
+            "key": "manage_workers",
+            "title": "Gérer les exécutants",
+            "actions": [
+                {
+                    "label": "Vue d'ensemble",
+                    "text": "Ouvrez «Gérer» pour voir tous les exécutants de votre équipe, y compris le badge chef d'équipe."
+                },
+                {
+                    "label": "Ajouter",
+                    "text": "Ajoutez un nouvel exécutant avec prénom et nom. Laissez ensuite le collègue scanner le QR équipe pour s'inscrire et choisir une icône."
+                },
+                {
+                    "label": "Supprimer",
+                    "text": "Supprimez les exécutants qui ne font plus partie de l'équipe. Vous ne pouvez pas vous supprimer vous-même."
+                }
+            ]
+        },
+        {
+            "key": "tasks",
+            "title": "Traiter les tâches",
+            "actions": [
+                {
+                    "label": "Comme un exécutant",
+                    "text": "Démarrez les tâches ouvertes, ajoutez des notes, des photos et terminez — identique au manuel exécutants."
+                },
+                {
+                    "label": "Coordination",
+                    "text": "Gardez une vue d'ensemble des tâches ouvertes et coordonnez avec l'équipe qui prend quelle tâche."
+                }
+            ],
+            "status_note": "Les statuts des tâches sont les mêmes que pour tous les exécutants.",
+            "statuses": {
+                "new": "Pas encore démarrée.",
+                "in_progress": "En cours sur le terrain.",
+                "done": "Terminée par vous ou un collègue.",
+                "closed": "Clôturée par l'administration."
+            }
+        }
+    ]
+}

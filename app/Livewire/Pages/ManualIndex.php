@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Livewire\Pages;
 
+use App\Livewire\Pages\Concerns\HasManualLocale;
 use App\Support\PageHelp;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('components.layouts.print')]
 #[Title('WinProx Handleiding')]
 class ManualIndex extends Component
 {
+    use HasManualLocale;
+
     private const CHAPTER_KEYS = [
         'team',
         'locations.list',
@@ -30,27 +30,14 @@ class ManualIndex extends Component
         'settings',
     ];
 
-    public array $availableLocales = ['nl', 'fr', 'en', 'de'];
-
-    #[Url(keep: true)]
-    public string $lang = '';
-
     public function mount(): void
     {
-        if ($this->lang !== '' && in_array($this->lang, $this->availableLocales, true)) {
-            App::setLocale($this->lang);
-        } else {
-            $this->lang = App::getLocale();
-        }
+        $this->mountManualLocale();
     }
 
     public function changeLocale(string $locale): void
     {
-        if (! in_array($locale, $this->availableLocales, true)) {
-            return;
-        }
-
-        $this->redirect(route('manual.index', ['lang' => $locale]), navigate: false);
+        $this->changeManualLocale($locale, 'manual.general');
     }
 
     public function render(): \Illuminate\View\View
@@ -69,6 +56,9 @@ class ManualIndex extends Component
         return view('livewire.pages.manual-index', [
             'chapters' => $chapters,
             'generatedAt' => now()->format('d-m-Y'),
+            'coverPrefix' => 'manual.cover',
+            'footerKey' => 'manual.footer',
+            'showGettingStarted' => true,
         ]);
     }
 }

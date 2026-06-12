@@ -1,0 +1,102 @@
+{
+    "cover": {
+        "title": "Manuel exécutants",
+        "subtitle": "QR équipe et QR unité — tâches sur le terrain"
+    },
+    "footer": "WinProx — Manuel exécutants — :date",
+    "chapters": [
+        {
+            "key": "qr_codes",
+            "title": "Deux codes QR",
+            "actions": [
+                {
+                    "label": "QR unité",
+                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous en mode exécutant pour démarrer ou terminer les tâches ouvertes sur cette unité."
+                },
+                {
+                    "label": "QR équipe",
+                    "text": "Placé avec l'équipe (entrepôt, atelier, …). Connectez-vous ici pour voir et traiter toutes les tâches ouvertes de votre équipe, quelle que soit l'unité concernée."
+                }
+            ]
+        },
+        {
+            "key": "sign_in",
+            "title": "Connexion et déconnexion",
+            "actions": [
+                {
+                    "label": "Nom et icône",
+                    "text": "Scannez le QR, saisissez votre nom et choisissez votre icône personnelle. L'équipe voit ainsi qui a pris quelle tâche."
+                },
+                {
+                    "label": "Première fois",
+                    "text": "Nouveau dans l'équipe ? Inscrivez-vous via «Nouveau collaborateur» sur le portail équipe, puis choisissez votre icône."
+                },
+                {
+                    "label": "Déconnexion",
+                    "text": "Déconnectez-vous une fois terminé pour qu'un collègue puisse utiliser la même icône sur un autre appareil."
+                }
+            ]
+        },
+        {
+            "key": "team_tasks",
+            "title": "Tâches via QR équipe",
+            "actions": [
+                {
+                    "label": "Tâches ouvertes",
+                    "text": "Après connexion, vous voyez toutes les tâches ouvertes de votre équipe. Touchez une tâche pour voir les détails."
+                },
+                {
+                    "label": "Démarrer",
+                    "text": "Passez une tâche en «En cours» quand vous commencez. Les autres membres voient que vous y travaillez."
+                },
+                {
+                    "label": "Terminer",
+                    "text": "Clôturez avec une courte note et des photos éventuelles. La tâche passe au statut «Terminé»."
+                }
+            ]
+        },
+        {
+            "key": "unit_tasks",
+            "title": "Tâches via QR unité (mode exécutant)",
+            "actions": [
+                {
+                    "label": "Mode exécutant",
+                    "text": "Sur la page unité, passez en mode exécutant, connectez-vous et ne voyez que les tâches de cette unité."
+                },
+                {
+                    "label": "QR dynamique",
+                    "text": "Via le portail équipe, vous pouvez lier un QR mobile à une unité et enregistrer les coordonnées GPS — utile pour les équipements mobiles."
+                },
+                {
+                    "label": "Signalements",
+                    "text": "Les citoyens peuvent soumettre un signalement sur le même QR unité ; vous traitez la tâche associée."
+                }
+            ]
+        },
+        {
+            "key": "photos",
+            "title": "Photos sur les tâches",
+            "actions": [
+                {
+                    "label": "Ajouter des photos",
+                    "text": "Lors du démarrage ou de la clôture d'une tâche, ajoutez des photos comme preuve ou explication. Les photos sont automatiquement compressées pour un envoi rapide."
+                },
+                {
+                    "label": "Attendre l'envoi",
+                    "text": "Attendez la fin de l'envoi avant de confirmer — sinon les photos manqueront dans la tâche."
+                }
+            ]
+        },
+        {
+            "key": "statuses",
+            "title": "Statuts des tâches",
+            "status_note": "Chaque tâche passe par les statuts ci-dessous.",
+            "statuses": {
+                "new": "Pas encore démarrée — en attente d'un exécutant.",
+                "in_progress": "Quelqu'un y travaille sur le terrain.",
+                "done": "Travail terminé par un exécutant.",
+                "closed": "Clôturée par l'administration — le signalement peut être fermé."
+            }
+        }
+    ]
+}

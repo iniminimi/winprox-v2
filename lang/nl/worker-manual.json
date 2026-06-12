@@ -1,0 +1,102 @@
+{
+    "cover": {
+        "title": "Handleiding uitvoerders",
+        "subtitle": "Team-QR en unit-QR — taken op locatie"
+    },
+    "footer": "WinProx — Handleiding uitvoerders — :date",
+    "chapters": [
+        {
+            "key": "qr_codes",
+            "title": "Twee QR-codes",
+            "actions": [
+                {
+                    "label": "Unit-QR",
+                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je aan in worker-modus om open taken op die unit te starten of af te ronden."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Hangt bij het team (magazijn, werkplaats, …). Hier meld je je aan om alle open taken van je team te zien en af te handelen, ongeacht op welke unit ze staan."
+                }
+            ]
+        },
+        {
+            "key": "sign_in",
+            "title": "Aanmelden en afmelden",
+            "actions": [
+                {
+                    "label": "Naam en icoon",
+                    "text": "Scan de QR, vul je naam in en kies je persoonlijke icoon. Zo herkent het team wie welke taak heeft opgepakt."
+                },
+                {
+                    "label": "Eerste keer",
+                    "text": "Nieuw op het team? Registreer jezelf via «Nieuwe medewerker» op het teamportaal en kies daarna je icoon."
+                },
+                {
+                    "label": "Afmelden",
+                    "text": "Meld je af wanneer je klaar bent, zodat een collega hetzelfde icoon kan gebruiken op een ander toestel."
+                }
+            ]
+        },
+        {
+            "key": "team_tasks",
+            "title": "Taken via team-QR",
+            "actions": [
+                {
+                    "label": "Open taken",
+                    "text": "Na aanmelden zie je alle open taken van je team. Tik op een taak om details te bekijken."
+                },
+                {
+                    "label": "Starten",
+                    "text": "Zet een taak op «Bezig» wanneer je ermee start. Andere teamleden zien dan dat jij ermee bezig bent."
+                },
+                {
+                    "label": "Afronden",
+                    "text": "Rond af met een korte notitie en eventueel foto's. De taak krijgt status «Afgerond»."
+                }
+            ]
+        },
+        {
+            "key": "unit_tasks",
+            "title": "Taken via unit-QR (worker-modus)",
+            "actions": [
+                {
+                    "label": "Worker-modus",
+                    "text": "Op de unit-pagina schakel je naar worker-modus, meld je aan en zie je alleen taken voor die unit."
+                },
+                {
+                    "label": "Dynamische QR",
+                    "text": "Via het teamportaal kun je een losse QR koppelen aan een unit en GPS-coördinaten registreren — handig voor mobiele assets."
+                },
+                {
+                    "label": "Meldingen",
+                    "text": "Burgers kunnen op dezelfde unit-QR een melding indienen; jij handelt de bijbehorende taak af."
+                }
+            ]
+        },
+        {
+            "key": "photos",
+            "title": "Foto's bij taken",
+            "actions": [
+                {
+                    "label": "Toevoegen",
+                    "text": "Voeg bij het starten of afronden van een taak foto's toe als bewijs of toelichting. Foto's worden automatisch verkleind voor snelle upload."
+                },
+                {
+                    "label": "Wachten op upload",
+                    "text": "Wacht tot de upload klaar is voordat je bevestigt — anders ontbreken foto's in de taak."
+                }
+            ]
+        },
+        {
+            "key": "statuses",
+            "title": "Taakstatussen",
+            "status_note": "Elke taak doorloopt onderstaande statussen.",
+            "statuses": {
+                "new": "Nog niet gestart — wacht op een uitvoerder.",
+                "in_progress": "Iemand werkt eraan op locatie.",
+                "done": "Werk is afgerond door een uitvoerder.",
+                "closed": "Afgesloten door beheer — melding kan worden gesloten."
+            }
+        }
+    ]
+}

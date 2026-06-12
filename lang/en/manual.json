@@ -24,5 +24,15 @@
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via QR scan or manually. A task is automatically created for each issue, linked to the team of the unit. Multiple tasks can be created for the same issue (e.g. for the technical and cleaning team). Set a deadline and track progress via the dashboard and calendar.",
     "step_5_title": "Follow up & close",
-    "step_5_text": "Workers complete tasks on the floor or at the unit location via the team QR. Once all tasks are handled, the administrator closes the issue. Everything is visible in the audit trail."
+    "step_5_text": "Workers complete tasks on the floor or at the unit location via the team QR. Once all tasks are handled, the administrator closes the issue. Everything is visible in the audit trail.",
+    "hub": {
+        "title": "Manuals",
+        "subtitle": "Choose the manual that fits your role",
+        "general": "General manual",
+        "general_desc": "Full WinProx app for administrators and staff — print or save as PDF.",
+        "workers": "Workers manual",
+        "workers_desc": "Team QR and unit QR on site — sign in, tasks and photos.",
+        "teamleaders": "Team leader manual",
+        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the team portal."
+    }
 }

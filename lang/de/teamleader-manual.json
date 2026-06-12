@@ -1,0 +1,90 @@
+{
+    "cover": {
+        "title": "Teamleiter-Handbuch",
+        "subtitle": "Teamportal — Kollegen und Aufgaben koordinieren"
+    },
+    "footer": "WinProx — Teamleiter-Handbuch — :date",
+    "chapters": [
+        {
+            "key": "role",
+            "title": "Was ist ein Teamleiter?",
+            "actions": [
+                {
+                    "label": "Rolle",
+                    "text": "Ein Teamleiter ist ein Mitarbeiter mit zusätzlichen Rechten im Teamportal. Sie bearbeiten Aufgaben selbst und helfen Kollegen beim Einstieg."
+                },
+                {
+                    "label": "Zuweisung",
+                    "text": "Ein Administrator weist Teamleiter in WinProx beim Team zu. Nach der Anmeldung sehen Sie das Badge «Teamleiter»."
+                }
+            ]
+        },
+        {
+            "key": "sign_in",
+            "title": "Als Teamleiter anmelden",
+            "actions": [
+                {
+                    "label": "Team-QR",
+                    "text": "Scannen Sie den Team-QR und melden Sie sich mit Name und Symbol an — wie jeder Mitarbeiter."
+                },
+                {
+                    "label": "Zusätzliche Bereiche",
+                    "text": "Nach der Anmeldung sehen Sie zusätzliche Bereiche: Kollegen-Symbol freigeben und Mitarbeiter verwalten."
+                }
+            ]
+        },
+        {
+            "key": "release_icon",
+            "title": "Kollegen-Symbol freigeben",
+            "actions": [
+                {
+                    "label": "Wann nötig",
+                    "text": "Wenn ein Kollege zu oft das falsche Symbol gewählt hat, wird er gesperrt. Sie können das Symbol freigeben, damit er erneut wählen kann."
+                },
+                {
+                    "label": "Schritte",
+                    "text": "Öffnen Sie «Freigeben», bestätigen Sie zuerst Ihr eigenes Symbol, wählen Sie den gesperrten Kollegen und bestätigen Sie. Der Kollege kann sich danach erneut anmelden."
+                }
+            ]
+        },
+        {
+            "key": "manage_workers",
+            "title": "Mitarbeiter verwalten",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Öffnen Sie «Verwalten», um alle Mitarbeiter Ihres Teams zu sehen, einschließlich Teamleiter-Badge."
+                },
+                {
+                    "label": "Hinzufügen",
+                    "text": "Fügen Sie einen neuen Mitarbeiter mit Vor- und Nachname hinzu. Lassen Sie den Kollegen danach den Team-QR scannen, um sich zu registrieren und ein Symbol zu wählen."
+                },
+                {
+                    "label": "Entfernen",
+                    "text": "Entfernen Sie Mitarbeiter, die nicht mehr zum Team gehören. Sie können sich nicht selbst entfernen."
+                }
+            ]
+        },
+        {
+            "key": "tasks",
+            "title": "Aufgaben bearbeiten",
+            "actions": [
+                {
+                    "label": "Wie ein Mitarbeiter",
+                    "text": "Offene Aufgaben starten, Notizen hinzufügen, Fotos anhängen und abschließen — identisch zum Mitarbeiter-Handbuch."
+                },
+                {
+                    "label": "Koordination",
+                    "text": "Behalten Sie den Überblick über offene Aufgaben und koordinieren Sie mit dem Team, wer welche Aufgabe übernimmt."
+                }
+            ],
+            "status_note": "Aufgabenstatus sind für alle Mitarbeiter gleich.",
+            "statuses": {
+                "new": "Noch nicht gestartet.",
+                "in_progress": "In Bearbeitung vor Ort.",
+                "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
+                "closed": "Vom Administrator geschlossen."
+            }
+        }
+    ]
+}

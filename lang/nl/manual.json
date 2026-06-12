@@ -24,5 +24,15 @@
     "step_4_title": "Meldingen ontvangen & taken aansturen",
     "step_4_text": "Meldingen komen binnen via QR-scan of handmatig. Voor elke melding wordt automatisch een taak aangemaakt gekoppeld aan het team van de unit. Er kunnen meerdere taken aangemaakt worden voor dezelfde melding (bijv. voor team techniek en schoonmaak). Stel een deadline in en volg de voortgang op via het dashboard en de kalender.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders werken taken af op de werkvloer of de plaats van de unit via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail."
+    "step_5_text": "Uitvoerders werken taken af op de werkvloer of de plaats van de unit via de team-QR. Zodra alle taken afgehandeld zijn, sluit de beheerder de melding. Alles is zichtbaar in de audittrail.",
+    "hub": {
+        "title": "Handleidingen",
+        "subtitle": "Kies de handleiding die past bij jouw rol",
+        "general": "Algemene handleiding",
+        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers — afdrukken of opslaan als PDF.",
+        "workers": "Handleiding uitvoerders",
+        "workers_desc": "Team-QR en unit-QR op de werkvloer — aanmelden, taken en foto's.",
+        "teamleaders": "Handleiding teamleaders",
+        "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het teamportaal."
+    }
 }

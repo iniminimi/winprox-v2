@@ -4,7 +4,7 @@
         <button type="button" class="btn btn--primary" onclick="window.print()">
             {{ __('manual.cover.print') }}
         </button>
-        <a href="{{ route('dashboard') }}" class="btn btn--ghost">{{ __('manual.cover.back') }}</a>
+        <a href="{{ route('manual.hub') }}" class="btn btn--ghost">{{ __('manual.cover.back') }}</a>
     </div>
 
     {{-- Taalkeuze (verdwijnt bij afdrukken) --}}
@@ -39,10 +39,10 @@
 
         <div style="margin-top: 2rem;">
             <h1 style="font-size: 2.75rem; font-weight: 700; letter-spacing: -0.04em; color: var(--wp-text); margin: 0 0 0.75rem;">
-                {{ __('manual.cover.title') }}
+                {{ __($coverPrefix.'.title') }}
             </h1>
             <p style="font-size: 1.25rem; color: var(--wp-text-secondary); margin: 0 0 0.5rem;">
-                {{ __('manual.cover.subtitle') }}
+                {{ __($coverPrefix.'.subtitle') }}
             </p>
             <p style="font-size: 0.9rem; color: var(--wp-text-muted); margin: 0;">
                 {{ __('manual.cover.generated', ['date' => $generatedAt]) }}
@@ -68,6 +68,7 @@
         </div>
     </div>
 
+    @if ($showGettingStarted)
     {{-- Pagina 2: Stappenplan --}}
     <div class="wp-manual-chapter" style="
         display: flex;
@@ -128,6 +129,7 @@
             @endforeach
         </ol>
     </div>
+    @endif
 
     {{-- Hoofdstukken --}}
     @foreach ($chapters as $index => $chapter)
@@ -254,6 +256,6 @@
         max-width: 900px;
         margin: 0 auto;
     ">
-        {{ __('manual.footer', ['date' => $generatedAt]) }}
+        {{ __($footerKey, ['date' => $generatedAt]) }}
     </div>
 </div>

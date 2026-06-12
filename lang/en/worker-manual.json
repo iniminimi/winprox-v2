@@ -1,0 +1,102 @@
+{
+    "cover": {
+        "title": "Workers manual",
+        "subtitle": "Team QR and unit QR — tasks on site"
+    },
+    "footer": "WinProx — Workers manual — :date",
+    "chapters": [
+        {
+            "key": "qr_codes",
+            "title": "Two QR codes",
+            "actions": [
+                {
+                    "label": "Unit QR",
+                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in via worker mode to start or complete open tasks on that unit."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Placed with the team (warehouse, workshop, …). Sign in here to see and handle all open tasks for your team, regardless of which unit they belong to."
+                }
+            ]
+        },
+        {
+            "key": "sign_in",
+            "title": "Sign in and sign out",
+            "actions": [
+                {
+                    "label": "Name and icon",
+                    "text": "Scan the QR, enter your name and choose your personal icon. This helps the team see who picked up which task."
+                },
+                {
+                    "label": "First time",
+                    "text": "New to the team? Register via «New worker» on the team portal, then choose your icon."
+                },
+                {
+                    "label": "Sign out",
+                    "text": "Sign out when finished so a colleague can use the same icon on another device."
+                }
+            ]
+        },
+        {
+            "key": "team_tasks",
+            "title": "Tasks via team QR",
+            "actions": [
+                {
+                    "label": "Open tasks",
+                    "text": "After signing in you see all open tasks for your team. Tap a task to view details."
+                },
+                {
+                    "label": "Start",
+                    "text": "Set a task to «In progress» when you start. Other team members will see you are working on it."
+                },
+                {
+                    "label": "Complete",
+                    "text": "Finish with a short note and optional photos. The task status becomes «Done»."
+                }
+            ]
+        },
+        {
+            "key": "unit_tasks",
+            "title": "Tasks via unit QR (worker mode)",
+            "actions": [
+                {
+                    "label": "Worker mode",
+                    "text": "On the unit page, switch to worker mode, sign in and see only tasks for that unit."
+                },
+                {
+                    "label": "Dynamic QR",
+                    "text": "Via the team portal you can link a loose QR to a unit and register GPS coordinates — useful for mobile assets."
+                },
+                {
+                    "label": "Issues",
+                    "text": "Citizens can submit an issue on the same unit QR; you handle the related task."
+                }
+            ]
+        },
+        {
+            "key": "photos",
+            "title": "Photos on tasks",
+            "actions": [
+                {
+                    "label": "Add photos",
+                    "text": "When starting or completing a task, add photos as proof or explanation. Photos are automatically compressed for fast upload."
+                },
+                {
+                    "label": "Wait for upload",
+                    "text": "Wait until the upload finishes before confirming — otherwise photos will be missing from the task."
+                }
+            ]
+        },
+        {
+            "key": "statuses",
+            "title": "Task statuses",
+            "status_note": "Each task goes through the statuses below.",
+            "statuses": {
+                "new": "Not started yet — waiting for a worker.",
+                "in_progress": "Someone is working on it on site.",
+                "done": "Work completed by a worker.",
+                "closed": "Closed by admin — issue can be closed."
+            }
+        }
+    ]
+}
