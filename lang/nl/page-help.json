@@ -502,35 +502,35 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Nadat de Team QR-code hebt gescant moet je je naam en voornaam invullen. Je kiest je persoonlijke icoon. Onthoud dit icoon want de volgende keer moet je hetzelfde icoon ingeven. Je krijgt 2 kansen om je aan te melden met het correcte icoon, daarna is je account geblokkeerd. Een teamleader of beheerder kan je account terug vrijgeven."
+                    "text": "Nadat je de team-QR-code hebt gescand, vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
                 },
                 {
                     "label": "Eerste keer",
-                    "text": "Nieuw op het team? Vraag aan je teamleader of beheerder om een account aan te maken voor je. Daarna kan je jezelf aanmelden met je naam, voornaam en kan je je eigen icoon kiezen."
+                    "text": "Nieuw in het team? Vraag je teamleider of beheerder om een account voor je aan te maken. Daarna kun je jezelf aanmelden met je voor- en achternaam en je eigen icoon kiezen."
                 },
                 {
                     "label": "Afmelden",
-                    "text": "Meld je af wanneer je klaar bent. Op geregelde tijdstippen (ingesteld door de beheerder) word je automatisch afgemeld."
+                    "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na aanmelden zie je alle open taken van je team. Tik op een taak om details te bekijken."
+                    "text": "Na het aanmelden zie je alle openstaande taken van je team. Tik op een taak om de details te bekijken."
                 },
                 {
                     "label": "Starten",
-                    "text": "Klik op \"Open taken\" en klik op \"Taak starten\". Andere teamleden zien dan dat jij ermee bezig bent, status \"Inuitvoering\". Wanneer je klaar bent klik je op \"Taak afhandelen\"."
+                    "text": "Ga naar \"Open taken\" en klik op \"Taak starten\". Andere teamleden zien vervolgens dat jij met deze taak bezig bent en de status verandert naar \"In uitvoering\". Zodra je klaar bent, klik je op \"Taak afhandelen\"."
                 },
                 {
                     "label": "Afronden",
-                    "text": "Nadat je de taak gestart hebt, rond je af door op \"Taak afhandelen\" te klikken. Hier kan je een korte notitie maken en eventueel foto's. toevoegen. De taak krijgt status \"Afgehandeld\"."
+                    "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. De taak krijgt daarna de status \"Afgehandeld\"."
                 }
             ],
-            "status_note": "Elke taak doorloopt onderstaande statussen.",
+            "status_note": "Elke taak doorloopt de onderstaande statussen:",
             "statuses": {
-                "new": "Nog niet gestart — wacht op een uitvoerder.",
-                "in_progress": "Iemand werkt eraan op locatie.",
-                "done": "Werk is afgerond door een uitvoerder.",
-                "closed": "Afgesloten door beheer — melding kan worden gesloten."
+                "new": "Nieuw (Open): De taak is nog niet gestart en wacht op een uitvoerder.",
+                "in_progress": "In uitvoering: Iemand werkt momenteel op locatie aan de taak.",
+                "done": "Afgehandeld: Het werk is door een uitvoerder afgerond.",
+                "closed": "Gesloten: De melding is door de beheerder gecontroleerd en definitief afgesloten."
             }
         },
         "portal.teamleader.role": {

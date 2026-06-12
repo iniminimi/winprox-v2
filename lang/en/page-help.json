@@ -502,35 +502,35 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "After scanning the Team QR code you must enter your first name and last name. Choose your personal icon. Remember this icon because next time you must enter the same icon. You get 2 chances to sign in with the correct icon, after that your account is blocked. A team leader or administrator can unblock your account."
+                    "text": "After scanning the team QR code, enter your first and last name and choose a personal icon. Remember this icon well, because next time you must select it again. You get two attempts to sign in with the correct icon; after that your account is blocked. A team leader or administrator can unblock your account in that case."
                 },
                 {
                     "label": "First time",
-                    "text": "New to the team? Ask your team leader or administrator to create an account for you. After that you can sign in with your name, first name and choose your own icon."
+                    "text": "New to the team? Ask your team leader or administrator to create an account for you. After that you can sign in with your first and last name and choose your own icon."
                 },
                 {
                     "label": "Sign out",
-                    "text": "Sign out when you are finished. At regular intervals (set by the administrator) you are automatically signed out."
+                    "text": "Sign out when you are finished. At times set by the administrator you are also automatically signed out."
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see all open tasks for your team. Tap a task to view details."
+                    "text": "After signing in you see all open tasks of your team. Tap a task to view the details."
                 },
                 {
                     "label": "Start",
-                    "text": "Click on \"Open tasks\" and click on \"Start task\". Other team members will see that you are working on it, status \"In progress\". When you are finished click on \"Complete task\"."
+                    "text": "Go to \"Open tasks\" and click on \"Start task\". Other team members will then see that you are working on this task and the status changes to \"In progress\". Once you are finished, click on \"Complete task\"."
                 },
                 {
                     "label": "Complete",
-                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can make a short note and optionally add photos. The task gets status \"Completed\"."
+                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. The task then gets status \"Completed\"."
                 }
             ],
-            "status_note": "Each task goes through the statuses below.",
+            "status_note": "Each task goes through the statuses below:",
             "statuses": {
-                "new": "Not started yet — waiting for a worker.",
-                "in_progress": "Someone is working on it on site.",
-                "done": "Work completed by a worker.",
-                "closed": "Closed by admin — issue can be closed."
+                "new": "New (Open): The task is not yet started and waiting for a worker.",
+                "in_progress": "In progress: Someone is currently working on the task on site.",
+                "done": "Completed: The work has been completed by a worker.",
+                "closed": "Closed: The issue has been checked by the administrator and definitively closed."
             }
         },
         "portal.teamleader.role": {

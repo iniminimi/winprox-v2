@@ -502,35 +502,35 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Nachdem Sie den Team-QR-Code gescannt haben, müssen Sie Ihren Vor- und Nachnamen eingeben. Wählen Sie Ihr persönliches Symbol. Merken Sie sich dieses Symbol, denn beim nächsten Mal müssen Sie dasselbe Symbol eingeben. Sie haben 2 Chancen, sich mit dem richtigen Symbol anzumelden, danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto wieder freigeben."
+                    "text": "Nachdem Sie den Team-QR-Code gescannt haben, geben Sie Ihren Vor- und Nachnamen ein und wählen Sie ein persönliches Symbol. Merken Sie sich dieses Symbol gut, denn beim nächsten Mal müssen Sie es erneut auswählen. Sie haben zwei Versuche, sich mit dem richtigen Symbol anzumelden; danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto in diesem Fall wieder freigeben."
                 },
                 {
                     "label": "Erstes Mal",
-                    "text": "Neu im Team? Bitten Sie Ihren Teamleiter oder Administrator, ein Konto für Sie zu erstellen. Danach können Sie sich mit Ihrem Namen, Vornamen anmelden und Ihr eigenes Symbol wählen."
+                    "text": "Neu im Team? Bitten Sie Ihren Teamleiter oder Administrator, ein Konto für Sie zu erstellen. Danach können Sie sich mit Ihrem Vor- und Nachnamen anmelden und Ihr eigenes Symbol wählen."
                 },
                 {
                     "label": "Abmelden",
-                    "text": "Melden Sie sich ab, wenn Sie fertig sind. In regelmäßigen Abständen (vom Administrator festgelegt) werden Sie automatisch abgemeldet."
+                    "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie alle offenen Aufgaben Ihres Teams. Tippen Sie auf eine Aufgabe für Details."
+                    "text": "Nach der Anmeldung sehen Sie alle offenen Aufgaben Ihres Teams. Tippen Sie auf eine Aufgabe, um die Details anzuzeigen."
                 },
                 {
                     "label": "Starten",
-                    "text": "Klicken Sie auf \"Offene Aufgaben\" und klicken Sie auf \"Aufgabe starten\". Andere Teammitglieder sehen, dass Sie daran arbeiten, Status \"In Bearbeitung\". Wenn Sie fertig sind, klicken Sie auf \"Aufgabe erledigen\"."
+                    "text": "Gehen Sie zu \"Offene Aufgaben\" und klicken Sie auf \"Aufgabe starten\". Andere Teammitglieder sehen anschließend, dass Sie an dieser Aufgabe arbeiten, und der Status ändert sich zu \"In Bearbeitung\". Sobald Sie fertig sind, klicken Sie auf \"Aufgabe erledigen\"."
                 },
                 {
                     "label": "Abschließen",
-                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz machen und optional Fotos hinzufügen. Die Aufgabe erhält den Status \"Erledigt\"."
+                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
                 }
             ],
-            "status_note": "Jede Aufgabe durchläuft die folgenden Status.",
+            "status_note": "Jede Aufgabe durchläuft die folgenden Status:",
             "statuses": {
-                "new": "Noch nicht gestartet — wartet auf einen Mitarbeiter.",
-                "in_progress": "Jemand arbeitet vor Ort daran.",
-                "done": "Arbeit von einem Mitarbeiter abgeschlossen.",
-                "closed": "Vom Administrator geschlossen — Meldung kann abgeschlossen werden."
+                "new": "Neu (Offen): Die Aufgabe ist noch nicht gestartet und wartet auf einen Mitarbeiter.",
+                "in_progress": "In Bearbeitung: Jemand arbeitet derzeit vor Ort an der Aufgabe.",
+                "done": "Erledigt: Die Arbeit wurde von einem Mitarbeiter abgeschlossen.",
+                "closed": "Geschlossen: Die Meldung wurde vom Administrator überprüft und endgültig geschlossen."
             }
         },
         "portal.teamleader.role": {

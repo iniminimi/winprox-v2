@@ -502,35 +502,35 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Après avoir scanné le QR d'équipe vous devez entrer votre nom et prénom. Choisissez votre icône personnelle. Mémorisez cette icône car la prochaine fois vous devez entrer la même icône. Vous avez 2 chances de vous connecter avec la bonne icône, après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte."
+                    "text": "Après avoir scanné le QR d'équipe, entrez votre nom et prénom et choisissez une icône personnelle. Mémorisez bien cette icône, car la prochaine fois vous devez la sélectionner à nouveau. Vous avez deux tentatives pour vous connecter avec la bonne icône; après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte dans ce cas."
                 },
                 {
                     "label": "Première fois",
-                    "text": "Nouveau dans l'équipe ? Demandez à votre chef d'équipe ou administrateur de créer un compte pour vous. Ensuite vous pouvez vous connecter avec votre nom, prénom et choisir votre propre icône."
+                    "text": "Nouveau dans l'équipe ? Demandez à votre chef d'équipe ou administrateur de créer un compte pour vous. Ensuite vous pouvez vous connecter avec votre nom et prénom et choisir votre propre icône."
                 },
                 {
                     "label": "Déconnexion",
-                    "text": "Déconnectez-vous lorsque vous avez terminé. À intervalles réguliers (définis par l'administrateur) vous êtes automatiquement déconnecté."
+                    "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur vous êtes également automatiquement déconnecté."
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion, vous voyez toutes les tâches ouvertes de votre équipe. Touchez une tâche pour voir les détails."
+                    "text": "Après connexion vous voyez toutes les tâches ouvertes de votre équipe. Touchez une tâche pour voir les détails."
                 },
                 {
                     "label": "Démarrer",
-                    "text": "Cliquez sur \"Tâches ouvertes\" et cliquez sur \"Démarrer la tâche\". Les autres membres voient que vous y travaillez, statut \"En cours\". Lorsque vous avez terminé cliquez sur \"Traiter la tâche\"."
+                    "text": "Allez vers \"Tâches ouvertes\" et cliquez sur \"Démarrer la tâche\". Les autres membres verront ensuite que vous travaillez sur cette tâche et le statut change en \"En cours\". Une fois terminé, cliquez sur \"Traiter la tâche\"."
                 },
                 {
                     "label": "Terminer",
-                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez faire une courte note et ajouter éventuellement des photos. La tâche obtient le statut \"Traité\"."
+                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. La tâche obtient ensuite le statut \"Traité\"."
                 }
             ],
-            "status_note": "Chaque tâche passe par les statuts ci-dessous.",
+            "status_note": "Chaque tâche passe par les statuts ci-dessous:",
             "statuses": {
-                "new": "Pas encore démarrée — en attente d'un exécutant.",
-                "in_progress": "Quelqu'un y travaille sur le terrain.",
-                "done": "Travail terminé par un exécutant.",
-                "closed": "Clôturée par l'administration — le signalement peut être fermé."
+                "new": "Nouveau (Ouvert): La tâche n'est pas encore démarrée et attend un exécutant.",
+                "in_progress": "En cours: Quelqu'un travaille actuellement sur la tâche sur le terrain.",
+                "done": "Traité: Le travail a été terminé par un exécutant.",
+                "closed": "Fermé: Le signalement a été vérifié par l'administrateur et définitivement fermé."
             }
         },
         "portal.teamleader.role": {
