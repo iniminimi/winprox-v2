@@ -16,15 +16,17 @@
     "chapter": "Chapitre",
     "print_footer": ":title — :tenant",
     "toc": {
-        "admin_portal": "Portail administratif",
-        "internet_portal": "Portail internet"
+        "admin_portal": "",
+        "internet_portal": ""
     },
     "sections": {
         "admin_portal": {
-            "title": "Portail administratif"
+            "title": "Portail administratif",
+            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord et paramètres."
         },
         "internet_portal": {
-            "title": "Portail internet"
+            "title": "Portail internet",
+            "intro": "Aide pour les portails QR unité et QR équipe sur site : connexion, signalements, tâches, photos et fonctions chef d'équipe."
         }
     },
     "statuses": "Statuts",

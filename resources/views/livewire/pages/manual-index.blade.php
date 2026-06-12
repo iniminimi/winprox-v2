@@ -183,6 +183,11 @@
           color: var(--wp-text);
           margin: 0 0 0.5rem;
         ">{{ $section['title'] }}</h2>
+        <p style="
+          color: var(--wp-text-body);
+          font-size: 1rem;
+          margin: 0;
+        ">{{ $section['intro'] }}</p>
       </div>
 
       @foreach ($section['chapters'] as $chapter)

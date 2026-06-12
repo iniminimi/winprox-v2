@@ -16,15 +16,17 @@
     "chapter": "Kapitel",
     "print_footer": ":title — :tenant",
     "toc": {
-        "admin_portal": "Administratives Portal",
-        "internet_portal": "Internet-Portal"
+        "admin_portal": "",
+        "internet_portal": ""
     },
     "sections": {
         "admin_portal": {
-            "title": "Administratives Portal"
+            "title": "Administratives Portal",
+            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Dashboard und Einstellungen."
         },
         "internet_portal": {
-            "title": "Internet-Portal"
+            "title": "Internet-Portal",
+            "intro": "Hilfe zum Unit-QR- und Team-QR-Portal vor Ort: Anmeldung, Meldungen, Aufgaben, Fotos und Teamleiter-Funktionen."
         }
     },
     "statuses": "Status",
