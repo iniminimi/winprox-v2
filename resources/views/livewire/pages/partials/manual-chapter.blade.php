@@ -57,7 +57,7 @@
                         line-height: 1.6;
                         word-break: break-word;
                         overflow-wrap: anywhere;
-                    ">{{ $action['text'] }}</div>
+                    ">{!! $action['text'] !!}</div>
                 </div>
             @endforeach
         </div>

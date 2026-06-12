@@ -84,7 +84,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'Dashboard',
         'Instellingen',
         'Twee QR-codes',
-        'Unit QR',
+        'Publiek portaal',
         'Team QR',
         "Foto's bij taken",
         'Teamleader',
@@ -167,6 +167,19 @@ it('toont het stappenplan op pagina 2', function () {
         ->assertSee('In 5 stappen up-and-running')
         ->assertSee('Teams &amp; uitvoerders aanmaken', false)
         ->assertSee('QR-codes afdrukken');
+});
+
+it('rendert html in actieteksten zoals de winprox.app-link bij Welkom', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $html = $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->getContent();
+
+    expect($html)->toContain('href="https://winprox.app"')
+        ->and($html)->not->toContain('&lt;a href=&quot;https://winprox.app&quot;');
 });
 
 it('bevat geen ruwe "Hulp —" prefix in de hoofdstuktitels', function () {
