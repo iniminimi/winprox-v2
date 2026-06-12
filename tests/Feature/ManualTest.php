@@ -56,7 +56,7 @@ it('laat een admin de algemene handleiding zien (200)', function () {
         ->assertSee('WinProx Handleiding');
 });
 
-it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () {
+it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-portaalhulp', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
@@ -66,19 +66,10 @@ it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () 
 
     $html = $response->getContent();
 
-    $expectedAnchors = [
-        'Hoofdstuk 1',
-        'Hoofdstuk 2',
-        'Hoofdstuk 3',
-        'Hoofdstuk 4',
-        'Hoofdstuk 5',
-        'Hoofdstuk 6',
-        'Hoofdstuk 7',
-        'Hoofdstuk 8',
-        'Hoofdstuk 9',
-        'Hoofdstuk 10',
-        'Hoofdstuk 11',
-    ];
+    $expectedAnchors = array_map(
+        fn (int $n) => 'Hoofdstuk '.$n,
+        range(1, 19),
+    );
 
     $expectedTitlesInOrder = [
         'Teams',
@@ -92,6 +83,14 @@ it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () 
         'Kalender',
         'Dashboard',
         'Instellingen',
+        'Twee QR-codes',
+        'Unit QR',
+        'Team QR',
+        "Foto's bij taken",
+        'Teamleader',
+        'Icoon collega vrijgeven',
+        'Workers beheren',
+        'Taken afhandelen',
     ];
 
     foreach ($expectedAnchors as $anchor) {
@@ -101,7 +100,8 @@ it('bevat alle 11 hoofdstukken in de correcte onboarding-volgorde', function () 
     $positions = [];
 
     foreach ($expectedTitlesInOrder as $title) {
-        $pos = mb_strpos($html, $title);
+        $needle = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+        $pos = mb_strpos($html, $needle);
         expect($pos)->not->toBeFalse("Titel '{$title}' niet gevonden in de handleiding.");
         $positions[] = $pos;
     }

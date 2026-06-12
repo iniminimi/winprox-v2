@@ -28,6 +28,14 @@ class ManualIndex extends Component
         'calendar',
         'dashboard',
         'settings',
+        'portal.worker.qr',
+        'portal.unit',
+        'portal.team',
+        'portal.worker.photos',
+        'portal.teamleader.role',
+        'portal.teamleader.release',
+        'portal.teamleader.workers',
+        'portal.teamleader.tasks',
     ];
 
     public function mount(): void
