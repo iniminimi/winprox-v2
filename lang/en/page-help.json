@@ -449,7 +449,7 @@
             "actions": [
                 {
                     "label": "Welcome",
-                    "text": "Welcome to the public portal of [tenant name]. Read below for more information. Interested in your own company portal? Click on [link]Winprox.app[/link]."
+                    "text": "Welcome to the public portal of :tenant. Read below for more information. Interested in your own company portal? Click on <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Report issue",

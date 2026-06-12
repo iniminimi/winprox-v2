@@ -449,7 +449,7 @@
             "actions": [
                 {
                     "label": "Welkom",
-                    "text": "Welkom op het publieke portaal van [naam van de tenant]. Lees hieronder verder voor meer informatie. Heb je interesse in een eigen bedrijfsportaal? Klik dan op [link]Winprox.app[/link]."
+                    "text": "Welkom op het publieke portaal van :tenant. Lees hieronder verder voor meer informatie. Heb je interesse in een eigen bedrijfsportaal? Klik dan op <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Melding doen",

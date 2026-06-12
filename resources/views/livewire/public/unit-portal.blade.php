@@ -19,7 +19,7 @@
                 @endif
             </span>
             <div class="wp-cluster wp-cluster--tight">
-                <x-wp-page-help page="portal.unit" />
+                <x-wp-page-help page="portal.unit" :replace="['tenant' => $tenantName]" />
                 @include('partials.wp-portal-theme')
                 @include('partials.wp-portal-lang')
             </div>

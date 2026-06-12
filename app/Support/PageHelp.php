@@ -20,7 +20,7 @@ final class PageHelp
      *     status_note: string|null,
      * }|null
      */
-    public static function for(string $page): ?array
+    public static function for(string $page, array $replace = []): ?array
     {
         /** @var mixed $pages */
         $pages = __('page-help.pages');
@@ -46,9 +46,14 @@ final class PageHelp
                     continue;
                 }
 
+                $text = (string) $item['text'];
+                foreach ($replace as $key => $value) {
+                    $text = str_replace(':'.$key, (string) $value, $text);
+                }
+
                 $actions[] = [
                     'label' => (string) $item['label'],
-                    'text' => (string) $item['text'],
+                    'text' => $text,
                     'nested' => ! empty($item['nested']),
                 ];
             }

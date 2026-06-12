@@ -1,7 +1,7 @@
-@props(['page' => ''])
+@props(['page' => '', 'replace' => []])
 
 @php
-    $help = $page !== '' ? \App\Support\PageHelp::for($page) : null;
+    $help = $page !== '' ? \App\Support\PageHelp::for($page, $replace) : null;
 
     $helpActionGroups = [];
 

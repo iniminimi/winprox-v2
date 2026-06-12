@@ -449,7 +449,7 @@
             "actions": [
                 {
                     "label": "Bienvenue",
-                    "text": "Bienvenue sur le portail public de [nom du locataire]. Lisez ci-dessous pour plus d'informations. Intéressé par votre propre portail d'entreprise ? Cliquez sur [link]Winprox.app[/link]."
+                    "text": "Bienvenue sur le portail public de :tenant. Lisez ci-dessous pour plus d'informations. Intéressé par votre propre portail d'entreprise ? Cliquez sur <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Signaler un problème",

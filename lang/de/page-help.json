@@ -449,7 +449,7 @@
             "actions": [
                 {
                     "label": "Willkommen",
-                    "text": "Willkommen auf dem öffentlichen Portal von [Mandantenname]. Lesen Sie unten für weitere Informationen. Interessiert an einem eigenen Unternehmensportal? Klicken Sie auf [link]Winprox.app[/link]."
+                    "text": "Willkommen auf dem öffentlichen Portal von :tenant. Lesen Sie unten für weitere Informationen. Interessiert an einem eigenen Unternehmensportal? Klicken Sie auf <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Meldung erstellen",
