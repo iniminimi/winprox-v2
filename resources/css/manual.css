@@ -1,11 +1,5 @@
 /* Handleiding — scherm + print */
 
-.wp-manual-root {
-    --wp-manual-footer-title: 'WinProx Handleiding';
-    --wp-manual-footer-pg: 'pg';
-    --wp-manual-footer-tenant: '';
-}
-
 .wp-manual-cover {
     display: flex;
     flex-direction: column;
@@ -44,8 +38,12 @@
 .wp-manual-toc {
     margin-top: 2rem;
     width: 100%;
-    max-width: 900px;
+    max-width: 100%;
     text-align: left;
+}
+
+.wp-manual-cover .wp-manual-toc {
+    max-width: 900px;
 }
 
 .wp-manual-toc-heading {
@@ -181,6 +179,6 @@
     }
 
     .wp-manual-print-footer::after {
-        content: var(--wp-manual-footer-title) ' ' var(--wp-manual-footer-pg) ' ' counter(page) '/' counter(pages) ' - ' var(--wp-manual-footer-tenant);
+        content: attr(data-footer-title) ' ' attr(data-footer-pg) ' ' counter(page) '/' counter(pages) ' - ' attr(data-footer-tenant);
     }
 }

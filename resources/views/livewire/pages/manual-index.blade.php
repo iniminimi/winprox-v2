@@ -1,7 +1,4 @@
-<div
-    class="wp-manual-root"
-    style="--wp-manual-footer-title: {{ \Illuminate\Support\Js::from(__($coverPrefix.'.title')) }}; --wp-manual-footer-pg: {{ \Illuminate\Support\Js::from(__('manual.print_page_label')) }}; --wp-manual-footer-tenant: {{ \Illuminate\Support\Js::from($tenantName) }};"
->
+<div class="wp-manual-root">
     {{-- Print-knop (verdwijnt bij afdrukken) --}}
     <div class="no-print" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; display: flex; gap: 0.75rem;">
         <button type="button" class="btn btn--primary" onclick="window.print()">
@@ -23,7 +20,13 @@
         @endforeach
     </div>
 
-    <div class="wp-manual-print-footer" aria-hidden="true"></div>
+    <div
+        class="wp-manual-print-footer"
+        data-footer-title="{{ e(__($coverPrefix.'.title')) }}"
+        data-footer-pg="{{ e(__('manual.print_page_label')) }}"
+        data-footer-tenant="{{ e($tenantName) }}"
+        aria-hidden="true"
+    ></div>
 
     {{-- Cover-pagina --}}
     <div class="wp-manual-cover wp-manual-chapter">
