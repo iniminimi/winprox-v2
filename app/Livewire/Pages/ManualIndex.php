@@ -91,7 +91,6 @@ class ManualIndex extends Component
             'tenantLogoUrl' => $this->manualTenantLogoUrl(),
             'showTenantNameOnCover' => true,
             'coverPrefix' => 'manual.cover',
-            'footerKey' => 'manual.footer',
             'showGettingStarted' => true,
         ]);
     }

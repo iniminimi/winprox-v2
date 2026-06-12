@@ -42,7 +42,6 @@ class TeamleaderManualIndex extends Component
             'tenantLogoUrl' => $this->manualTenantLogoUrl(),
             'showTenantNameOnCover' => false,
             'coverPrefix' => 'manual.teamleaders.cover',
-            'footerKey' => 'manual.teamleaders.footer',
             'showGettingStarted' => false,
         ]);
     }

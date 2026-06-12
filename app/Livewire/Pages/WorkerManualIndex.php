@@ -42,7 +42,6 @@ class WorkerManualIndex extends Component
             'tenantLogoUrl' => $this->manualTenantLogoUrl(),
             'showTenantNameOnCover' => false,
             'coverPrefix' => 'manual.workers.cover',
-            'footerKey' => 'manual.workers.footer',
             'showGettingStarted' => false,
         ]);
     }

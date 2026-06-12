@@ -14,7 +14,6 @@
         "intro": "Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie."
     },
     "chapter": "Hoofdstuk",
-    "print_footer": ":title — :tenant",
     "toc": {
         "admin_portal": "Administratief portaal",
         "internet_portal": "Internet portaal"
@@ -30,6 +29,7 @@
         }
     },
     "statuses": "Statussen",
+    "screenshot_alt": "Schermafbeelding: :title",
     "portal_statuses": {
         "admin_portal": {
             "title": "Statussen Administratief portaal",
@@ -48,7 +48,6 @@
             "closed": "De taak is door de beheerder gecontroleerd en definitief afgesloten."
         }
     },
-    "footer": "WinProx — Work in Proximity — :date",
     "step_1_title": "Teams & uitvoerders aanmaken",
     "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV-bestand).",
     "step_2_title": "Locaties & units inrichten",
@@ -73,14 +72,12 @@
         "cover": {
             "title": "Handleiding uitvoerders",
             "subtitle": "Team-QR en unit-QR — taken op locatie"
-        },
-        "footer": "WinProx — Handleiding uitvoerders — :date"
+        }
     },
     "teamleaders": {
         "cover": {
             "title": "Handleiding teamleaders",
             "subtitle": "Teamportaal — collega's en taken coördineren"
-        },
-        "footer": "WinProx — Handleiding teamleaders — :date"
+        }
     }
 }

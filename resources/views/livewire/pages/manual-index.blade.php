@@ -1,9 +1,3 @@
-@push('manual-print-footer')
-<div class="wp-manual-print-footer" aria-hidden="true">
-    {{ __('manual.print_footer', ['title' => __($coverPrefix.'.title'), 'tenant' => $tenantName]) }}
-</div>
-@endpush
-
 <div class="wp-manual-root">
   {{-- Print-knop (verdwijnt bij afdrukken) --}}
   <div class="no-print wp-manual-print-toolbar">
@@ -205,6 +199,7 @@
           'index' => $index,
           'slug' => $slug,
           'isLast' => $isLast,
+          'manualScreenshotUrl' => \App\Support\Manual\ManualScreenshotAssets::publicUrl($chapter['key'], $lang),
         ])
       @endforeach
 
@@ -226,20 +221,8 @@
         'index' => $index,
         'slug' => $slug,
         'isLast' => $isLast,
+        'manualScreenshotUrl' => \App\Support\Manual\ManualScreenshotAssets::publicUrl($chapter['key'], $lang),
       ])
     @endforeach
   @endif
-
-  {{-- Footer --}}
-  <div style="
-    text-align: center;
-    padding: 2rem;
-    border-top: 1px solid var(--wp-border);
-    color: var(--wp-text-muted);
-    font-size: 0.8rem;
-    max-width: 900px;
-    margin: 0 auto;
-  ">
-    {{ __($footerKey, ['date' => $generatedAt]) }}
-  </div>
 </div>

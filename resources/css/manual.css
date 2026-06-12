@@ -24,7 +24,7 @@ body.wp-shell:has(.wp-manual-root) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 2.4rem;
 }
 
 .wp-manual-cover__logo {
@@ -238,10 +238,6 @@ body.wp-shell:has(.wp-manual-root) {
     line-height: 1.5;
 }
 
-.wp-manual-print-footer {
-    display: none;
-}
-
 @media print {
     @page {
         size: A4 portrait;
@@ -322,15 +318,17 @@ body.wp-shell:has(.wp-manual-root) {
         line-height: 1.3;
         padding-left: 0.9rem;
     }
+}
 
-    .wp-manual-print-footer {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 8pt;
-        color: #666;
-    }
+.wp-manual-screenshot {
+    margin: 0 0 1.75rem;
+}
+
+.wp-manual-screenshot__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--wp-border);
+    border-radius: 12px;
+    box-shadow: var(--wp-shadow-card);
 }

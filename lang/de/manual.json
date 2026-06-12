@@ -14,7 +14,6 @@
         "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung von WinProx für Ihre Organisation."
     },
     "chapter": "Kapitel",
-    "print_footer": ":title — :tenant",
     "toc": {
         "admin_portal": "Administratives Portal",
         "internet_portal": "Internet-Portal"
@@ -30,6 +29,7 @@
         }
     },
     "statuses": "Status",
+    "screenshot_alt": "Screenshot: :title",
     "portal_statuses": {
         "admin_portal": {
             "title": "Status — administratives Portal",
@@ -48,7 +48,6 @@
             "closed": "Die Aufgabe wurde vom Administrator geprüft und endgültig geschlossen."
         }
     },
-    "footer": "WinProx — Facility-Meldungs-App — :date",
     "step_1_title": "Teams & Mitarbeiter anlegen",
     "step_1_text": "Stellen Sie operative Teams zusammen, fügen Sie Mitarbeiter hinzu und weisen Sie einen Teamleiter zu. Verknüpfen Sie Teams mit spezifischen Kategorien, damit Aufgaben immer bei den richtigen Fachleuten ankommen. Mitarbeiter melden sich einfach mit ihrem Namen und einem persönlichen Symbol an. Sie können Teams und Mitarbeiter auch auf einmal über einen Massenimport (CSV-Datei) hinzufügen.",
     "step_2_title": "Standorte & Einheiten einrichten",
@@ -73,14 +72,12 @@
         "cover": {
             "title": "Mitarbeiter-Handbuch",
             "subtitle": "Team-QR und Einheiten-QR — Aufgaben vor Ort"
-        },
-        "footer": "WinProx — Mitarbeiter-Handbuch — :date"
+        }
     },
     "teamleaders": {
         "cover": {
             "title": "Teamleiter-Handbuch",
             "subtitle": "Teamportal — Kollegen und Aufgaben koordinieren"
-        },
-        "footer": "WinProx — Teamleiter-Handbuch — :date"
+        }
     }
 }
