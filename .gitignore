@@ -1,6 +1,7 @@
 /.phpunit.cache
 /node_modules
-/scripts/capture-pkg/node_modules
+# capture-pkg/node_modules wél in git (minimale Playwright voor server zonder npm ci)
+!/scripts/capture-pkg/node_modules/
 /storage/playwright-browsers
 #/public/build
 /public/hot
