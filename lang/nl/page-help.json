@@ -502,15 +502,15 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Scan de QR, vul je naam in en kies je persoonlijke icoon. Zo herkent het team wie welke taak heeft opgepakt."
+                    "text": "Nadat de Team QR-code hebt gescant moet je je naam en voornaam invullen. Je kiest je persoonlijke icoon. Onthoud dit icoon want de volgende keer moet je hetzelfde icoon ingeven. Je krijgt 2 kansen om je aan te melden met het correcte icoon, daarna is je account geblokkeerd. Een teamleader of beheerder kan je account terug vrijgeven."
                 },
                 {
                     "label": "Eerste keer",
-                    "text": "Nieuw op het team? Registreer jezelf via «Nieuwe medewerker» op het teamportaal en kies daarna je icoon."
+                    "text": "Nieuw op het team? Vraag aan je teamleader of beheerder om een account aan te maken voor je. Daarna kan je jezelf aanmelden met je naam, voornaam en kan je je eigen icoon kiezen."
                 },
                 {
                     "label": "Afmelden",
-                    "text": "Meld je af wanneer je klaar bent, zodat een collega hetzelfde icoon kan gebruiken op een ander toestel."
+                    "text": "Meld je af wanneer je klaar bent. Op geregelde tijdstippen (ingesteld door de beheerder) word je automatisch afgemeld."
                 },
                 {
                     "label": "Open taken",
@@ -518,11 +518,11 @@
                 },
                 {
                     "label": "Starten",
-                    "text": "Zet een taak op «Bezig» wanneer je ermee start. Andere teamleden zien dan dat jij ermee bezig bent."
+                    "text": "Klik op \"Open taken\" en klik op \"Taak starten\". Andere teamleden zien dan dat jij ermee bezig bent, status \"Inuitvoering\". Wanneer je klaar bent klik je op \"Taak afhandelen\"."
                 },
                 {
                     "label": "Afronden",
-                    "text": "Rond af met een korte notitie en eventueel foto's. De taak krijgt status «Afgerond»."
+                    "text": "Nadat je de taak gestart hebt, rond je af door op \"Taak afhandelen\" te klikken. Hier kan je een korte notitie maken en eventueel foto's. toevoegen. De taak krijgt status \"Afgehandeld\"."
                 }
             ],
             "status_note": "Elke taak doorloopt onderstaande statussen.",

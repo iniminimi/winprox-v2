@@ -502,15 +502,15 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "Scan the QR, enter your name and choose your personal icon. This helps the team see who picked up which task."
+                    "text": "After scanning the Team QR code you must enter your first name and last name. Choose your personal icon. Remember this icon because next time you must enter the same icon. You get 2 chances to sign in with the correct icon, after that your account is blocked. A team leader or administrator can unblock your account."
                 },
                 {
                     "label": "First time",
-                    "text": "New to the team? Register via «New worker» on the team portal, then choose your icon."
+                    "text": "New to the team? Ask your team leader or administrator to create an account for you. After that you can sign in with your name, first name and choose your own icon."
                 },
                 {
                     "label": "Sign out",
-                    "text": "Sign out when finished so a colleague can use the same icon on another device."
+                    "text": "Sign out when you are finished. At regular intervals (set by the administrator) you are automatically signed out."
                 },
                 {
                     "label": "Open tasks",
@@ -518,11 +518,11 @@
                 },
                 {
                     "label": "Start",
-                    "text": "Set a task to «In progress» when you start. Other team members will see you are working on it."
+                    "text": "Click on \"Open tasks\" and click on \"Start task\". Other team members will see that you are working on it, status \"In progress\". When you are finished click on \"Complete task\"."
                 },
                 {
                     "label": "Complete",
-                    "text": "Finish with a short note and optional photos. The task status becomes «Done»."
+                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can make a short note and optionally add photos. The task gets status \"Completed\"."
                 }
             ],
             "status_note": "Each task goes through the statuses below.",

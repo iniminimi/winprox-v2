@@ -502,15 +502,15 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Scannen Sie den QR, geben Sie Ihren Namen ein und wählen Sie Ihr persönliches Symbol. So sieht das Team, wer welche Aufgabe übernommen hat."
+                    "text": "Nachdem Sie den Team-QR-Code gescannt haben, müssen Sie Ihren Vor- und Nachnamen eingeben. Wählen Sie Ihr persönliches Symbol. Merken Sie sich dieses Symbol, denn beim nächsten Mal müssen Sie dasselbe Symbol eingeben. Sie haben 2 Chancen, sich mit dem richtigen Symbol anzumelden, danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto wieder freigeben."
                 },
                 {
                     "label": "Erstes Mal",
-                    "text": "Neu im Team? Registrieren Sie sich über «Neuer Mitarbeiter» im Teamportal und wählen Sie dann Ihr Symbol."
+                    "text": "Neu im Team? Bitten Sie Ihren Teamleiter oder Administrator, ein Konto für Sie zu erstellen. Danach können Sie sich mit Ihrem Namen, Vornamen anmelden und Ihr eigenes Symbol wählen."
                 },
                 {
                     "label": "Abmelden",
-                    "text": "Melden Sie sich ab, wenn Sie fertig sind, damit ein Kollege dasselbe Symbol auf einem anderen Gerät nutzen kann."
+                    "text": "Melden Sie sich ab, wenn Sie fertig sind. In regelmäßigen Abständen (vom Administrator festgelegt) werden Sie automatisch abgemeldet."
                 },
                 {
                     "label": "Offene Aufgaben",
@@ -518,11 +518,11 @@
                 },
                 {
                     "label": "Starten",
-                    "text": "Setzen Sie eine Aufgabe auf «In Bearbeitung», wenn Sie beginnen. Andere Teammitglieder sehen, dass Sie daran arbeiten."
+                    "text": "Klicken Sie auf \"Offene Aufgaben\" und klicken Sie auf \"Aufgabe starten\". Andere Teammitglieder sehen, dass Sie daran arbeiten, Status \"In Bearbeitung\". Wenn Sie fertig sind, klicken Sie auf \"Aufgabe erledigen\"."
                 },
                 {
                     "label": "Abschließen",
-                    "text": "Schließen Sie mit einer kurzen Notiz und optionalen Fotos ab. Die Aufgabe erhält den Status «Erledigt»."
+                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz machen und optional Fotos hinzufügen. Die Aufgabe erhält den Status \"Erledigt\"."
                 }
             ],
             "status_note": "Jede Aufgabe durchläuft die folgenden Status.",

@@ -502,15 +502,15 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Scannez le QR, saisissez votre nom et choisissez votre icône personnelle. L'équipe voit ainsi qui a pris quelle tâche."
+                    "text": "Après avoir scanné le QR d'équipe vous devez entrer votre nom et prénom. Choisissez votre icône personnelle. Mémorisez cette icône car la prochaine fois vous devez entrer la même icône. Vous avez 2 chances de vous connecter avec la bonne icône, après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte."
                 },
                 {
                     "label": "Première fois",
-                    "text": "Nouveau dans l'équipe ? Inscrivez-vous via «Nouveau collaborateur» sur le portail équipe, puis choisissez votre icône."
+                    "text": "Nouveau dans l'équipe ? Demandez à votre chef d'équipe ou administrateur de créer un compte pour vous. Ensuite vous pouvez vous connecter avec votre nom, prénom et choisir votre propre icône."
                 },
                 {
                     "label": "Déconnexion",
-                    "text": "Déconnectez-vous une fois terminé pour qu'un collègue puisse utiliser la même icône sur un autre appareil."
+                    "text": "Déconnectez-vous lorsque vous avez terminé. À intervalles réguliers (définis par l'administrateur) vous êtes automatiquement déconnecté."
                 },
                 {
                     "label": "Tâches ouvertes",
@@ -518,11 +518,11 @@
                 },
                 {
                     "label": "Démarrer",
-                    "text": "Passez une tâche en «En cours» quand vous commencez. Les autres membres voient que vous y travaillez."
+                    "text": "Cliquez sur \"Tâches ouvertes\" et cliquez sur \"Démarrer la tâche\". Les autres membres voient que vous y travaillez, statut \"En cours\". Lorsque vous avez terminé cliquez sur \"Traiter la tâche\"."
                 },
                 {
                     "label": "Terminer",
-                    "text": "Clôturez avec une courte note et des photos éventuelles. La tâche passe au statut «Terminé»."
+                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez faire une courte note et ajouter éventuellement des photos. La tâche obtient le statut \"Traité\"."
                 }
             ],
             "status_note": "Chaque tâche passe par les statuts ci-dessous.",
