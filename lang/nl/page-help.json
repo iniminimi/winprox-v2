@@ -226,11 +226,11 @@
                 },
                 {
                     "label": "Operationele teams",
-                    "text": "Maak teams aan, wijs teamleaders toe en beheer uitvoerders per team. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
+                    "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
                 },
                 {
                     "label": "Team-QR",
-                    "text": "Print of open het veldportaal-QR zodat uitvoerders taken zien en afhandelen."
+                    "text": "Print de Team QR-code of e-mail de link naar een collega. Via deze QR-code kan een uitvoerder het veldportaal openen om zo ter plaatse taken af te handelen na het scannen van de unit QR-code."
                 },
                 {
                     "label": "Uitvoerders",

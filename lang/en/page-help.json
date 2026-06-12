@@ -226,11 +226,11 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "Create teams, assign teamleaders and manage workers per team. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
+                    "text": "Create teams and workers, assign teamleaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
                     "label": "Team QR",
-                    "text": "Print or open the field portal QR so workers can see and complete tasks."
+                    "text": "Print the Team QR code or email the link to a colleague. Via this QR code a worker can open the field portal to handle tasks on site after scanning the unit QR code."
                 },
                 {
                     "label": "Workers",

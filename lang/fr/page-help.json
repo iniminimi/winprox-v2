@@ -226,11 +226,11 @@
                 },
                 {
                     "label": "Équipes opérationnelles",
-                    "text": "Créez des équipes, assignez des teamleaders et gérez les workers par équipe. Une unité doit avoir une équipe liée pour qu'un worker puisse traiter les tâches de cette unité. Tant qu'il n'y a pas de workers dans l'équipe, vous pouvez encore supprimer l'équipe."
+                    "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
                 },
                 {
                     "label": "QR d'équipe",
-                    "text": "Imprimez ou ouvrez le QR du portail terrain pour que les workers voient et traitent les tâches."
+                    "text": "Imprimez le QR d'équipe ou envoyez le lien par e-mail à un collègue. Via ce QR un exécutant peut ouvrir le portail terrain pour traiter les tâches sur place après avoir scanné le QR unité."
                 },
                 {
                     "label": "Workers",

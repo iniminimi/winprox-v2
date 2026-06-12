@@ -226,11 +226,11 @@
                 },
                 {
                     "label": "Operative Teams",
-                    "text": "Erstellen Sie Teams, weisen Sie Teamleaders zu und verwalten Sie Workers pro Team. Eine Unit muss mit einem Team verknüpft sein, damit ein Worker Aufgaben für diese Unit bearbeiten kann. Solange keine Workers im Team sind, können Sie das Team noch löschen."
+                    "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleaders zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
                 },
                 {
                     "label": "Team-QR",
-                    "text": "Drucken oder öffnen Sie das Feldportal-QR, damit Workers Aufgaben sehen und erledigen."
+                    "text": "Drucken Sie den Team-QR-Code oder senden Sie den Link per E-Mail an einen Kollegen. Über diesen QR-Code kann ein Mitarbeiter das Feldportal öffnen, um vor Ort Aufgaben abzuwickeln, nachdem er den Unit-QR-Code gescannt hat."
                 },
                 {
                     "label": "Workers",
