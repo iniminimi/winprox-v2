@@ -1,5 +1,14 @@
 /* Handleiding — scherm + print */
 
+body.wp-shell:has(.wp-manual-root) {
+    background-color: #fff;
+}
+
+.wp-manual-root {
+    background-color: #fff;
+    min-height: 100vh;
+}
+
 .wp-manual-cover {
     display: flex;
     flex-direction: column;
@@ -33,6 +42,37 @@
     font-size: 0.9rem;
     color: var(--wp-text-muted);
     margin: 0;
+}
+
+.wp-manual-print-toolbar {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    max-width: min(20rem, calc(100vw - 2rem));
+}
+
+.wp-manual-print-toolbar__actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.wp-manual-print-toolbar__locales {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.wp-manual-print-hint {
+    margin: 0;
+    font-size: 0.72rem;
+    line-height: 1.45;
+    color: var(--wp-text-muted);
+    text-align: right;
+    max-width: 18rem;
 }
 
 .wp-manual-toc {
@@ -98,12 +138,33 @@
 }
 
 .wp-manual-print-footer {
-    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8pt;
+    color: var(--wp-text-muted);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.wp-manual-print-footer__page::after {
+    content: counter(page) '/' attr(data-total-pages);
 }
 
 @media print {
     @page {
-        margin: 1.1cm 1.1cm 2.1cm;
+        size: A4 portrait;
+        margin: 1.1cm 1.1cm 2.4cm;
+    }
+
+    body.wp-shell {
+        background: #fff !important;
+    }
+
+    .wp-manual-root {
+        background: #fff;
     }
 
     .wp-manual-cover {
@@ -154,6 +215,7 @@
     .wp-manual-toc-panel {
         padding: 0.45rem 0.55rem;
         border-radius: 8px;
+        background: #fff;
     }
 
     .wp-manual-toc-panel__title {
@@ -168,17 +230,8 @@
     }
 
     .wp-manual-print-footer {
+        visibility: visible;
         display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 8pt;
-        color: var(--wp-text-muted);
-    }
-
-    .wp-manual-print-footer::after {
-        content: attr(data-footer-title) ' ' attr(data-footer-pg) ' ' counter(page) '/' counter(pages) ' - ' attr(data-footer-tenant);
+        z-index: 9999;
     }
 }

@@ -5,6 +5,7 @@
         "generated": "Généré le :date",
         "contents": "Table des matières",
         "print": "Imprimer / Enregistrer en PDF",
+        "print_hint": "Choisissez le format A4 et désactivez « En-têtes et pieds de page » dans la boîte d'impression.",
         "back": "Retour"
     },
     "getting_started": {

@@ -5,6 +5,7 @@
         "generated": "Gegenereerd op :date",
         "contents": "Inhoud",
         "print": "Afdrukken / Opslaan als PDF",
+        "print_hint": "Kies papierformaat A4 en zet in het afdrukdialoog „Kopteksten en voetteksten” uit.",
         "back": "Terug"
     },
     "getting_started": {

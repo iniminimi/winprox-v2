@@ -134,8 +134,9 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('wp-manual-toc-columns', false)
         ->assertSee('wp-manual-toc-panel', false)
         ->assertSee('wp-manual-print-footer', false)
-        ->assertSee('data-footer-tenant="Facility Demo BV"', false)
-        ->assertSee('data-footer-title="WinProx Handleiding"', false);
+        ->assertSee('wp-manual-print-footer__page', false)
+        ->assertSee('Facility Demo BV', false)
+        ->assertSee(__('manual.cover.print_hint'));
 });
 
 it('toont sectie-introducties in de body in dezelfde stijl als het stappenplan', function () {

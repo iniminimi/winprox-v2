@@ -5,6 +5,7 @@
         "generated": "Erstellt am :date",
         "contents": "Inhalt",
         "print": "Drucken / Als PDF speichern",
+        "print_hint": "Wählen Sie A4 und deaktivieren Sie „Kopf- und Fußzeilen“ im Druckdialog.",
         "back": "Zurück"
     },
     "getting_started": {

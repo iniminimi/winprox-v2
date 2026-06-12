@@ -5,6 +5,7 @@
         "generated": "Generated on :date",
         "contents": "Contents",
         "print": "Print / Save as PDF",
+        "print_hint": "Choose A4 paper and turn off \"Headers and footers\" in the print dialog.",
         "back": "Back"
     },
     "getting_started": {
