@@ -4,14 +4,12 @@
     style="padding: 3rem 2.5rem; max-width: 900px; margin: 0 auto; width: 100%;"
 >
     {{-- Hoofdstuknummer + titel --}}
-    <div style="
-        border-bottom: 2px solid var(--wp-accent);
-        padding-bottom: 0.75rem;
-        margin-bottom: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    ">
+    <div class="wp-manual-chapter__heading">
+        @if (!empty($chapter['icon']))
+            <span class="wp-manual-chapter__icon" aria-hidden="true">
+                <x-wp-icon :name="$chapter['icon']" />
+            </span>
+        @endif
         <span style="
             font-size: 0.8rem;
             font-weight: 700;
@@ -27,7 +25,7 @@
             color: var(--wp-text);
             margin: 0;
         ">{{ $chapter['title'] }}</h2>
-        <a href="#manual-toc" class="btn btn--ghost btn--sm no-print" title="Terug naar inhoudsopgave">
+        <a href="#manual-toc" class="btn btn--ghost btn--sm no-print wp-manual-chapter__toc-link" title="Terug naar inhoudsopgave">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
         </a>
     </div>

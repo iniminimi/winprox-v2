@@ -71,22 +71,10 @@
               <ol class="wp-manual-toc-panel__list">
                 @foreach ($section['chapters'] as $chapter)
                   @php $slug = str_replace('.', '-', $chapter['key']); @endphp
-                  <li class="wp-manual-toc-panel__item">
-                    @if (!empty($chapter['icon']))
-                      <span class="wp-manual-toc-panel__icon" aria-hidden="true">
-                        <x-wp-icon :name="$chapter['icon']" />
-                      </span>
-                    @endif
-                    <a href="#chapter-{{ $slug }}">{{ $chapter['title'] }}</a>
-                  </li>
+                  <li><a href="#chapter-{{ $slug }}">{{ $chapter['title'] }}</a></li>
                 @endforeach
                 @if (!empty($section['statusBlock']))
-                  <li class="wp-manual-toc-panel__item">
-                    <span class="wp-manual-toc-panel__icon" aria-hidden="true">
-                      <x-wp-icon name="information-circle" />
-                    </span>
-                    <a href="#section-{{ $section['id'] }}-statuses">{{ $section['statusBlock']['title'] }}</a>
-                  </li>
+                  <li><a href="#section-{{ $section['id'] }}-statuses">{{ $section['statusBlock']['title'] }}</a></li>
                 @endif
               </ol>
             </div>
