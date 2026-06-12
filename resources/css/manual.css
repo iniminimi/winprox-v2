@@ -206,6 +206,7 @@ body.wp-shell:has(.wp-manual-root) {
     border-radius: 0.5rem;
     background-color: var(--wp-surface-2);
     color: var(--wp-text-muted);
+    border: 1px solid var(--wp-text-muted);
     box-sizing: border-box;
 }
 

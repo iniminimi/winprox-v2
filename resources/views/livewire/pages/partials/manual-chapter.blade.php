@@ -5,11 +5,6 @@
 >
     {{-- Hoofdstuknummer + titel --}}
     <div class="wp-manual-chapter__heading">
-        @if (!empty($chapter['icon']))
-            <span class="wp-manual-chapter__icon" aria-hidden="true">
-                <x-wp-icon :name="$chapter['icon']" />
-            </span>
-        @endif
         <span style="
             font-size: 0.8rem;
             font-weight: 700;
@@ -18,6 +13,11 @@
             color: var(--wp-accent-text);
             white-space: nowrap;
         ">{{ __('manual.chapter') }} {{ $index + 1 }}</span>
+        @if (!empty($chapter['icon']))
+            <span class="wp-manual-chapter__icon" aria-hidden="true">
+                <x-wp-icon :name="$chapter['icon']" />
+            </span>
+        @endif
         <h2 style="
             font-size: 1.6rem;
             font-weight: 700;
