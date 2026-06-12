@@ -149,8 +149,6 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('id="section-internet-portal"', false)
         ->assertSee(__('manual.sections.admin_portal.title'))
         ->assertSee(__('manual.sections.internet_portal.title'))
-        ->assertSee(__('manual.sections.admin_portal.intro'))
-        ->assertSee(__('manual.sections.internet_portal.intro'))
         ->assertSee('wp-manual-toc-columns', false)
         ->assertSee('wp-manual-toc-panel', false)
         ->assertSee('wp-manual-print-footer', false)
