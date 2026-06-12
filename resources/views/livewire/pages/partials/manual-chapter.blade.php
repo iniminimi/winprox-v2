@@ -31,7 +31,10 @@
     </div>
 
     @if (! empty($manualScreenshotUrl))
-        <figure class="wp-manual-screenshot">
+        <figure @class([
+            'wp-manual-screenshot',
+            'wp-manual-screenshot--portal' => ! empty($manualScreenshotPortal),
+        ])>
             <img
                 class="wp-manual-screenshot__img"
                 src="{{ $manualScreenshotUrl }}"

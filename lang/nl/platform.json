@@ -91,8 +91,15 @@
     "manual_screenshots": {
         "nav": "Screenshots",
         "title": "Handleiding-screenshots",
-        "subtitle": "Genereer statische PNG's voor de handleiding (Playwright op de server).",
-        "intro": "Log in als de handleiding-gebruiker via .env. Na een UI-wijziging: build uitvoeren, daarna screenshots bijwerken en committen naar git.",
+        "subtitle": "Statische PNG's voor de handleiding — gegenereerd met Playwright (normaal lokaal op Windows).",
+        "intro": "Na een UI-wijziging: npm run build, capture draaien, PNG's committen. Zie docs/MANUAL_SCREENSHOTS.md voor het volledige runbook.",
+        "workflow_title": "Werkwijze (kort)",
+        "workflow_steps": [
+            "Vul MANUAL_CAPTURE_* in .env (zelfde URL als APP_URL, stabiele tenant-IDs/tokens).",
+            "Lokaal: .\\scripts\\capture-manual-local.ps1 (wist, capture, commit, push).",
+            "Productie: git pull — geen Chromium op shared hosting nodig."
+        ],
+        "workflow_doc": "Volledige runbook voor developers en Cursor-agents:",
         "update": "Handleiding-screenshots bijwerken",
         "queued": "Screenshot-run staat in de wachtrij.",
         "not_configured": "MANUAL_CAPTURE_EMAIL en MANUAL_CAPTURE_PASSWORD ontbreken in .env.",

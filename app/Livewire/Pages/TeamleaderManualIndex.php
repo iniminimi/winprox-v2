@@ -6,6 +6,7 @@ namespace App\Livewire\Pages;
 
 use App\Livewire\Pages\Concerns\HasManualLocale;
 use App\Support\Manual\ManualChapters;
+use App\Support\Manual\ManualScreenshotAssets;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -36,7 +37,10 @@ class TeamleaderManualIndex extends Component
     public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.manual-index', [
-            'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
+            'chapters' => array_map(
+                fn (array $chapter): array => ManualScreenshotAssets::enrichChapter($chapter, $this->lang),
+                ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
+            ),
             'generatedAt' => now()->format('d-m-Y'),
             'tenantName' => $this->manualTenantName(),
             'tenantLogoUrl' => $this->manualTenantLogoUrl(),

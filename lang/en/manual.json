@@ -6,7 +6,9 @@
         "contents": "Contents",
         "print": "Print / Save as PDF",
         "print_hint": "Choose A4 paper and turn off \"Headers and footers\" in the print dialog.",
-        "back": "Back"
+        "back": "Back",
+        "without_screenshots": "Without screenshots",
+        "with_screenshots": "With screenshots"
     },
     "getting_started": {
         "label": "Getting started",

@@ -11,7 +11,6 @@
 </head>
 <body class="wp-shell">
     {{ $slot }}
-    @stack('manual-print-footer')
     @livewireScripts
 </body>
 </html>

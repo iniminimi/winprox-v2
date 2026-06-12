@@ -6,7 +6,9 @@
         "contents": "Table des matières",
         "print": "Imprimer / Enregistrer en PDF",
         "print_hint": "Choisissez le format A4 et désactivez « En-têtes et pieds de page » dans la boîte d'impression.",
-        "back": "Retour"
+        "back": "Retour",
+        "without_screenshots": "Sans captures d'écran",
+        "with_screenshots": "Avec captures d'écran"
     },
     "getting_started": {
         "label": "Commencer",

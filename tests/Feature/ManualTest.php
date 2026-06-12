@@ -57,6 +57,28 @@ it('laat een admin de algemene handleiding zien (200)', function () {
         ->assertSee('WinProx Handleiding');
 });
 
+it('toont standaard handleiding-screenshots met knop om ze te verbergen', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee(__('manual.cover.without_screenshots'))
+        ->assertDontSee('wp-manual-root--no-screenshots');
+});
+
+it('verbergt handleiding-screenshots wanneer screenshots=0 in de url staat', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general', ['screenshots' => '0']))
+        ->assertOk()
+        ->assertSee(__('manual.cover.with_screenshots'))
+        ->assertSee('wp-manual-root--no-screenshots', false);
+});
+
 it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-portaalhulp', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
@@ -189,8 +211,6 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('wp-manual-toc-panel', false)
         ->assertSee('wp-manual-chapter__icon', false)
         ->assertDontSee('wp-manual-toc-panel__icon', false)
-        ->assertSee('wp-manual-print-footer', false)
-        ->assertSee(__('manual.print_footer', ['title' => 'WinProx Handleiding', 'tenant' => 'Facility Demo BV']))
         ->assertSee(__('manual.cover.print_hint'));
 });
 

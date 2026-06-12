@@ -287,6 +287,9 @@ proactief tenzij de taak dat expliciet vraagt.
 
 **Onthoud:**
 - **Nu:** Facility-pariteit (`docs/FEATURES.md` + `WINPROX_FEATURES.md`).
+- **Handleiding-screenshots:** runbook `docs/MANUAL_SCREENSHOTS.md` — golden path =
+  `.\scripts\capture-manual-local.ps1` (lokaal Windows), PNG's committen; server-capture op Plesk
+  shared meestal niet haalbaar.
 - **Fundament al in deze regels:** Actions, Events, API v1, webhooks, Policies, audit — dat *is* de
   voorbereiding op integraties; geen aparte “integration rewrite” later als je je aan §3 houdt.
 - **Later (roadmap):** offline PWA, PLG-marketingtools, AI, Zapier/SAP/… — elk als **laag boven**

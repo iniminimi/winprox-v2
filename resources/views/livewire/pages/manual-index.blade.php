@@ -1,4 +1,4 @@
-<div class="wp-manual-root">
+<div @class(['wp-manual-root', 'wp-manual-root--no-screenshots' => ! $showScreenshots])>
   {{-- Print-knop (verdwijnt bij afdrukken) --}}
   <div class="no-print wp-manual-print-toolbar">
     <div class="wp-manual-print-toolbar__actions">
@@ -51,6 +51,17 @@
       <p class="wp-manual-cover__meta">
         {{ __('manual.cover.generated', ['date' => $generatedAt]) }}
       </p>
+      <div class="no-print wp-manual-cover__screenshot-toggle">
+        @if ($showScreenshots)
+          <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleManualScreenshots">
+            {{ __('manual.cover.without_screenshots') }}
+          </button>
+        @else
+          <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleManualScreenshots">
+            {{ __('manual.cover.with_screenshots') }}
+          </button>
+        @endif
+      </div>
     </div>
 
     <div id="manual-toc" class="wp-manual-toc">
@@ -200,6 +211,7 @@
           'slug' => $slug,
           'isLast' => $isLast,
           'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
+          'manualScreenshotPortal' => $chapter['manualScreenshotPortal'] ?? false,
         ])
       @endforeach
 
@@ -222,6 +234,7 @@
         'slug' => $slug,
         'isLast' => $isLast,
         'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
+        'manualScreenshotPortal' => $chapter['manualScreenshotPortal'] ?? false,
       ])
     @endforeach
   @endif

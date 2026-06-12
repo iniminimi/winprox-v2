@@ -25,7 +25,7 @@
         "logo_preview_alt": "Aktuelles Organisationslogo",
         "portal_background_label": "Portal-Hintergrund",
         "portal_background_preview_alt": "Aktueller Portal-Hintergrund",
-        "portal_background_hint": "Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 4 MB, mindestens 1080 px Breite empfohlen).",
+        "portal_background_hint": "Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 2 MB, mindestens 1080 px Breite empfohlen).",
         "custom_theme_title": "Eigener Portal-Stil",
         "custom_theme_active_label": "Eigenen Portal-Stil verwenden",
         "custom_theme_bg_label": "Hintergrundfarbe",
@@ -97,7 +97,15 @@
         "organisation_email_invalid": "Geben Sie eine gültige E-Mail-Adresse an.",
         "organisation_country_invalid": "Verwenden Sie einen zweistelligen Ländercode (z. B. BE) oder lassen Sie das Feld leer.",
         "custom_theme_hex_invalid": "Wählen Sie eine gültige Farbe (HEX-Code wie #ff0000).",
-        "qr_sticker_header_max": "Maximal :max Zeichen — das Etikett bietet Platz für etwa drei kurze Zeilen."
+        "qr_sticker_header_max": "Maximal :max Zeichen — das Etikett bietet Platz für etwa drei kurze Zeilen.",
+        "portal_background_required": "Wählen Sie ein Bild für den Portal-Hintergrund.",
+        "portal_background_upload_failed": "Upload fehlgeschlagen. Verwenden Sie ein PNG- oder JPG-Bild mit höchstens :max MB.",
+        "portal_background_image": "Wählen Sie ein PNG- oder JPG-Bild.",
+        "portal_background_max": "Das Bild ist zu groß (max. :max MB).",
+        "org_logo_required": "Wählen Sie ein Logo-Bild.",
+        "org_logo_upload_failed": "Upload fehlgeschlagen. Verwenden Sie ein PNG- oder JPG-Bild mit höchstens :max MB.",
+        "org_logo_image": "Wählen Sie ein PNG- oder JPG-Bild.",
+        "org_logo_max": "Das Logo ist zu groß (max. :max MB)."
     },
     "api": {
         "nav": "API & Webhooks",

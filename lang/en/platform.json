@@ -91,8 +91,15 @@
     "manual_screenshots": {
         "nav": "Screenshots",
         "title": "Manual screenshots",
-        "subtitle": "Generate static PNGs for the manual (Playwright on the server).",
-        "intro": "The capture user is configured in .env. After a UI change: run build, then update screenshots and commit to git.",
+        "subtitle": "Static PNGs for the manual — generated with Playwright (usually locally on Windows).",
+        "intro": "After a UI change: npm run build, run capture, commit PNGs. See docs/MANUAL_SCREENSHOTS.md for the full runbook.",
+        "workflow_title": "Workflow (short)",
+        "workflow_steps": [
+            "Set MANUAL_CAPTURE_* in .env (same URL as APP_URL, stable tenant IDs/tokens).",
+            "Locally: .\\scripts\\capture-manual-local.ps1 (clear, capture, commit, push).",
+            "Production: git pull — no Chromium needed on shared hosting."
+        ],
+        "workflow_doc": "Full runbook for developers and Cursor agents:",
         "update": "Update manual screenshots",
         "queued": "Screenshot run queued.",
         "not_configured": "MANUAL_CAPTURE_EMAIL and MANUAL_CAPTURE_PASSWORD are missing in .env.",

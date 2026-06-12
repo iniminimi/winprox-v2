@@ -25,5 +25,10 @@ it('geeft een public url wanneer het screenshot-bestand bestaat', function () {
 });
 
 it('geeft null wanneer het screenshot-bestand ontbreekt', function () {
-    expect(ManualScreenshotAssets::publicUrl('calendar', 'nl'))->toBeNull();
+    expect(ManualScreenshotAssets::publicUrl('missing.screenshot.test', 'nl'))->toBeNull();
+});
+
+it('herkent internetportaal-hoofdstukken', function () {
+    expect(ManualScreenshotAssets::isPortalChapter('portal.unit'))->toBeTrue()
+        ->and(ManualScreenshotAssets::isPortalChapter('dashboard'))->toBeFalse();
 });

@@ -14,6 +14,16 @@
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-muted">{{ __('platform.manual_screenshots.intro') }}</p>
 
+        <div class="wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('platform.manual_screenshots.workflow_title') }}</h2>
+            <ol class="wp-muted" style="margin: 0; padding-left: 1.25rem;">
+                @foreach (__('platform.manual_screenshots.workflow_steps') as $step)
+                    <li style="margin-bottom: 0.35rem;">{{ $step }}</li>
+                @endforeach
+            </ol>
+            <p class="wp-muted">{{ __('platform.manual_screenshots.workflow_doc') }} <code>docs/MANUAL_SCREENSHOTS.md</code></p>
+        </div>
+
         @if (! $isConfigured)
             <p class="wp-text-body">{{ __('platform.manual_screenshots.not_configured') }}</p>
         @else

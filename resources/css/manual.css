@@ -71,6 +71,10 @@ body.wp-shell:has(.wp-manual-root) {
     margin: 0;
 }
 
+.wp-manual-cover__screenshot-toggle {
+    margin-top: 0.75rem;
+}
+
 .wp-manual-print-toolbar {
     position: fixed;
     top: 1.5rem;
@@ -327,8 +331,19 @@ body.wp-shell:has(.wp-manual-root) {
 .wp-manual-screenshot__img {
     display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
     border: 1px solid var(--wp-border);
     border-radius: 12px;
     box-shadow: var(--wp-shadow-card);
+}
+
+/* Internetportaal: element-screenshot op telefoonbreedte, niet uitrekken */
+.wp-manual-screenshot--portal .wp-manual-screenshot__img {
+    width: auto;
+    max-width: min(390px, 100%);
+}
+
+.wp-manual-root--no-screenshots .wp-manual-screenshot {
+    display: none !important;
 }

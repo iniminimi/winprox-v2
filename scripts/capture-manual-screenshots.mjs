@@ -24,7 +24,6 @@ const password = process.env.MANUAL_CAPTURE_PASSWORD ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
 const locales = ['nl', 'en', 'fr', 'de'];
-const localeCookieName = 'locale';
 
 const pathVars = {
     location_id: process.env.MANUAL_CAPTURE_LOCATION_ID ?? '',
@@ -57,6 +56,8 @@ try {
     let skipped = 0;
 
     for (const locale of locales) {
+        await switchAuthenticatedLocale(adminPage, locale);
+
         for (const target of config.targets) {
             const resolvedPath = resolvePath(target.path);
             if (resolvedPath === null) {
@@ -69,13 +70,25 @@ try {
             const page = useAuth ? adminPage : publicPage;
             const context = useAuth ? adminContext : publicContext;
 
-            await context.addCookies([
-                { name: localeCookieName, value: locale, url: baseUrl },
-            ]);
+            if (! useAuth) {
+                // Unit-portaal zet winprox_device_token; team-identify vereist schone browserstaat.
+                await resetPublicPortalSession(context);
+            }
 
             const viewport = target.viewport ?? { width: 1280, height: 800 };
             await page.setViewportSize(viewport);
-            await page.goto(`${baseUrl}${resolvedPath}`, { waitUntil: 'networkidle' });
+
+            let navigationPath = resolvedPath;
+            if (target.workerSignIn) {
+                const signInPathPreview = target.workerSignInPath
+                    ? resolvePath(target.workerSignInPath)
+                    : resolvedPath;
+                if (signInPathPreview !== null && signInPathPreview !== resolvedPath) {
+                    navigationPath = signInPathPreview;
+                }
+            }
+
+            await page.goto(captureUrl(navigationPath, locale, useAuth), { waitUntil: 'networkidle' });
 
             if (target.workerSignIn) {
                 const signInPath = target.workerSignInPath
@@ -89,18 +102,18 @@ try {
                 }
 
                 if (signInPath !== resolvedPath) {
-                    await page.goto(`${baseUrl}${signInPath}`, { waitUntil: 'networkidle' });
+                    await page.goto(captureUrl(signInPath, locale, useAuth), { waitUntil: 'networkidle' });
                 }
 
                 const signedIn = await workerSignIn(page);
                 if (!signedIn) {
-                    console.warn(`Skip ${target.id}: worker sign-in env not set or failed`);
+                    console.warn(`Skip ${target.id}: worker sign-in failed (check MANUAL_CAPTURE_WORKER_* and team token)`);
                     skipped++;
                     continue;
                 }
 
                 if (signInPath !== resolvedPath) {
-                    await page.goto(`${baseUrl}${resolvedPath}`, { waitUntil: 'networkidle' });
+                    await page.goto(captureUrl(resolvedPath, locale, useAuth), { waitUntil: 'networkidle' });
                 }
 
                 await page.waitForLoadState('networkidle');
@@ -108,9 +121,18 @@ try {
 
             if (target.prepareClick) {
                 const trigger = page.locator(target.prepareClick).first();
-                await trigger.waitFor({ state: 'visible', timeout: 15_000 });
-                await trigger.click();
-                await page.waitForLoadState('networkidle');
+                try {
+                    await trigger.waitFor({ state: 'visible', timeout: 15_000 });
+                    await trigger.click();
+                    await page.waitForLoadState('networkidle');
+                } catch {
+                    console.warn(
+                        `Skip ${target.id}: prepareClick not visible (${target.prepareClick}). `
+                        + 'Zie docs/MANUAL_SCREENSHOTS.md — teamleader-release vereist een geblokkeerde collega.',
+                    );
+                    skipped++;
+                    continue;
+                }
             }
 
             const locator = page.locator(target.selector).first();
@@ -221,11 +243,60 @@ function resolvePath(template) {
 }
 
 /**
+ * @param {import('playwright').BrowserContext} context
+ */
+async function resetPublicPortalSession(context) {
+    await context.clearCookies();
+}
+
+/**
+ * Beheer: sessie-locale via /locale/{locale} (cookie alleen is niet genoeg).
+ *
+ * @param {import('playwright').Page} page
+ * @param {string} locale
+ */
+async function switchAuthenticatedLocale(page, locale) {
+    await page.goto(`${baseUrl}/dashboard`, { waitUntil: 'domcontentloaded' });
+    await page.goto(`${baseUrl}/locale/${locale}`, { waitUntil: 'networkidle' });
+}
+
+/**
+ * QR-portaal: ?lang= zet locale in syncLocaleFromRequest (betrouwbaarder dan cookie).
+ *
+ * @param {string} path
+ * @param {string} locale
+ * @param {boolean} useAuth
+ */
+function captureUrl(path, locale, useAuth) {
+    if (useAuth) {
+        return `${baseUrl}${path}`;
+    }
+
+    const queryIndex = path.indexOf('?');
+    const pathname = queryIndex === -1 ? path : path.slice(0, queryIndex);
+    const params = new URLSearchParams(queryIndex === -1 ? '' : path.slice(queryIndex + 1));
+    params.set('lang', locale);
+
+    return `${baseUrl}${pathname}?${params.toString()}`;
+}
+
+/**
  * @param {import('playwright').Page} page
  */
 async function login(page) {
-    await page.goto(`${baseUrl}/login`, { waitUntil: 'networkidle' });
-    await page.locator('#email').fill(email);
+    const loginUrl = `${baseUrl}/login`;
+    await page.goto(loginUrl, { waitUntil: 'networkidle' });
+
+    const emailInput = page.locator('#email');
+    if (! await emailInput.isVisible().catch(() => false)) {
+        console.error(
+            `Loginpagina heeft geen #email op ${loginUrl}. `
+            + 'Controleer MANUAL_CAPTURE_BASE_URL (moet exact je browser-URL zijn, zonder /public als Apache dat al afhandelt).',
+        );
+        process.exit(1);
+    }
+
+    await emailInput.fill(email);
     await page.locator('#password').fill(password);
     await page.locator('form.wp-auth-form button[type="submit"]').click();
     await page.waitForURL((url) => !url.pathname.endsWith('/login'), { timeout: 30_000 });
@@ -244,24 +315,47 @@ async function workerSignIn(page) {
         return false;
     }
 
+    const signedInMarker = page.locator(
+        '[data-manual-capture="portal-team-signed-in"], [data-manual-capture="portal-unit-worker-tasks"]',
+    ).first();
+
+    if (await signedInMarker.isVisible().catch(() => false)) {
+        return true;
+    }
+
     const firstInput = page.locator('#first_name');
     if (await firstInput.isVisible().catch(() => false)) {
         await firstInput.fill(first);
         await page.locator('#last_name').fill(last);
-        await page.locator('button[type="submit"]').filter({ hasText: /.+/ }).first().click();
-        await page.waitForLoadState('networkidle');
+
+        const submit = page.locator('[data-manual-capture="portal-team-identify"] button[type="submit"]')
+            .or(page.locator('form[wire\\:submit="identifyWorker"] button[type="submit"]'));
+        await submit.first().click();
+        await page.locator(`button.wp-icon-tile[wire\\:click*="sign_in_icon_slug"][wire\\:click*="'${icon}'"]`)
+            .first()
+            .waitFor({ state: 'visible', timeout: 15_000 });
     }
 
-    const iconButton = page.locator(`button[wire\\:click*="'${icon}'"]`).first();
+    const iconButton = page.locator(
+        `button.wp-icon-tile[wire\\:click*="sign_in_icon_slug"][wire\\:click*="'${icon}'"]`,
+    ).first();
+
     if (await iconButton.isVisible().catch(() => false)) {
         await iconButton.click();
+        await page.locator('button[wire\\:click="signInWithIcon"]:not([disabled])')
+            .waitFor({ state: 'visible', timeout: 10_000 });
     }
 
-    const confirm = page.locator('button[wire\\:click="signInWithIcon"]');
+    const confirm = page.locator('button[wire\\:click="signInWithIcon"]:not([disabled])');
     if (await confirm.isVisible().catch(() => false)) {
         await confirm.click();
-        await page.waitForLoadState('networkidle');
     }
 
-    return !(await firstInput.isVisible().catch(() => false));
+    try {
+        await signedInMarker.waitFor({ state: 'visible', timeout: 20_000 });
+
+        return true;
+    } catch {
+        return false;
+    }
 }

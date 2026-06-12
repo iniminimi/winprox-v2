@@ -28,4 +28,24 @@ final class ManualScreenshotAssets
 
         return asset($relative);
     }
+
+    public static function isPortalChapter(string $chapterKey): bool
+    {
+        return str_starts_with($chapterKey, 'portal.');
+    }
+
+    /**
+     * @param  array<string, mixed>  $chapter
+     * @return array<string, mixed>
+     */
+    public static function enrichChapter(array $chapter, string $locale): array
+    {
+        $key = (string) ($chapter['key'] ?? '');
+
+        return [
+            ...$chapter,
+            'manualScreenshotUrl' => self::publicUrl($key, $locale),
+            'manualScreenshotPortal' => self::isPortalChapter($key),
+        ];
+    }
 }

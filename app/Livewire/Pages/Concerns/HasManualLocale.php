@@ -15,6 +15,9 @@ trait HasManualLocale
     #[Url(keep: true)]
     public string $lang = '';
 
+    #[Url(as: 'screenshots', except: true, keep: true)]
+    public bool $showScreenshots = true;
+
     protected function mountManualLocale(): void
     {
         if ($this->lang !== '' && in_array($this->lang, $this->availableLocales, true)) {
@@ -30,7 +33,17 @@ trait HasManualLocale
             return;
         }
 
-        $this->redirect(route($routeName, ['lang' => $locale]), navigate: false);
+        $params = ['lang' => $locale];
+        if (! $this->showScreenshots) {
+            $params['screenshots'] = '0';
+        }
+
+        $this->redirect(route($routeName, $params), navigate: false);
+    }
+
+    public function toggleManualScreenshots(): void
+    {
+        $this->showScreenshots = ! $this->showScreenshots;
     }
 
     protected function manualTenant(): ?Tenant

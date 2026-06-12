@@ -1,0 +1,30 @@
+---
+description: Handleiding-screenshots regenereren (Playwright). Lees vóór wijzigingen aan capture of manual PNG's.
+globs:
+  - scripts/capture-manual-screenshots.mjs
+  - scripts/capture-manual-local.ps1
+  - scripts/manual-capture.config.json
+  - config/manual_capture.php
+  - app/Actions/Manual/**
+  - public/images/manual/**
+  - resources/views/**/manual*.blade.php
+  - resources/css/manual.css
+---
+
+# Handleiding-screenshots
+
+**Runbook:** `docs/MANUAL_SCREENSHOTS.md`
+
+## Golden path
+
+1. Lokaal Windows: Apache + MySQL + `MANUAL_CAPTURE_*` in `.env` (`APP_URL` = `MANUAL_CAPTURE_BASE_URL`).
+2. **`.\scripts\capture-manual-local.ps1`** — wist PNG's, capture, commit, push.
+3. Productie: `git pull`.
+
+**Niet** capture op Plesk shared hosting (Chromium/thread-limieten).
+
+## Kernbestanden
+
+- Targets: `scripts/manual-capture.config.json`
+- Selectors: `data-manual-capture` op Blade
+- Embed: `ManualScreenshotAssets` + `wp-manual-screenshot--portal` (smalle QR-shots)

@@ -25,7 +25,7 @@
         "logo_preview_alt": "Current organisation logo",
         "portal_background_label": "Portal background",
         "portal_background_preview_alt": "Current portal background",
-        "portal_background_hint": "Background image for the report portal after scanning a QR code (PNG/JPG, max. 4 MB, minimum 1080 px wide recommended).",
+        "portal_background_hint": "Background image for the report portal after scanning a QR code (PNG/JPG, max. 2 MB, minimum 1080 px wide recommended).",
         "custom_theme_title": "Custom portal style",
         "custom_theme_active_label": "Use custom portal style",
         "custom_theme_bg_label": "Background colour",
@@ -97,7 +97,15 @@
         "organisation_email_invalid": "Enter a valid email address.",
         "organisation_country_invalid": "Use a two-letter country code (e.g. BE) or leave empty.",
         "custom_theme_hex_invalid": "Enter a valid colour (HEX code like #ff0000).",
-        "qr_sticker_header_max": "Maximum :max characters — the sticker fits about three short lines."
+        "qr_sticker_header_max": "Maximum :max characters — the sticker fits about three short lines.",
+        "portal_background_required": "Choose an image for the portal background.",
+        "portal_background_upload_failed": "Upload failed. Use a PNG or JPG image up to :max MB.",
+        "portal_background_image": "Choose a PNG or JPG image.",
+        "portal_background_max": "The image is too large (max. :max MB).",
+        "org_logo_required": "Choose a logo image.",
+        "org_logo_upload_failed": "Upload failed. Use a PNG or JPG image up to :max MB.",
+        "org_logo_image": "Choose a PNG or JPG image.",
+        "org_logo_max": "The logo is too large (max. :max MB)."
     },
     "api": {
         "nav": "API & webhooks",

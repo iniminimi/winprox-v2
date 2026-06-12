@@ -1,5 +1,5 @@
 <div class="wp-stack">
-    <div class="wp-faq-wrap">
+    <div class="wp-faq-wrap wp-stack">
         <x-wp-page-head-title
             icon="document"
             :title="__('manual.hub.title')"

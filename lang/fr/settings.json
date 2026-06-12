@@ -25,7 +25,7 @@
         "logo_preview_alt": "Logo actuel de l'organisation",
         "portal_background_label": "Arrière-plan du portail",
         "portal_background_preview_alt": "Arrière-plan actuel du portail",
-        "portal_background_hint": "Image d'arrière-plan pour le portail de signalement après scan d'un code QR (PNG/JPG, max. 4 Mo, minimum 1080 px de large recommandé).",
+        "portal_background_hint": "Image d'arrière-plan pour le portail de signalement après scan d'un code QR (PNG/JPG, max. 2 Mo, minimum 1080 px de large recommandé).",
         "custom_theme_title": "Style de portail personnalisé",
         "custom_theme_active_label": "Utiliser un style de portail personnalisé",
         "custom_theme_bg_label": "Couleur d'arrière-plan",
@@ -97,7 +97,15 @@
         "organisation_email_invalid": "Indiquez une adresse e-mail valide.",
         "organisation_country_invalid": "Utilisez un code pays à deux lettres (ex. BE) ou laissez vide.",
         "custom_theme_hex_invalid": "Choisissez une couleur valide (code HEX tel que #ff0000).",
-        "qr_sticker_header_max": "Maximum :max caractères — l’étiquette permet environ trois lignes courtes."
+        "qr_sticker_header_max": "Maximum :max caractères — l’étiquette permet environ trois lignes courtes.",
+        "portal_background_required": "Choisissez une image pour l’arrière-plan du portail.",
+        "portal_background_upload_failed": "Échec de l’envoi. Utilisez une image PNG ou JPG de :max Mo maximum.",
+        "portal_background_image": "Choisissez une image PNG ou JPG.",
+        "portal_background_max": "L’image est trop volumineuse (max. :max Mo).",
+        "org_logo_required": "Choisissez une image de logo.",
+        "org_logo_upload_failed": "Échec de l’envoi. Utilisez une image PNG ou JPG de :max Mo maximum.",
+        "org_logo_image": "Choisissez une image PNG ou JPG.",
+        "org_logo_max": "Le logo est trop volumineux (max. :max Mo)."
     },
     "api": {
         "nav": "API & webhooks",

@@ -67,10 +67,7 @@ class ManualIndex extends Component
     private function chaptersWithScreenshotUrls(array $chapters): array
     {
         return array_map(
-            fn (array $chapter): array => [
-                ...$chapter,
-                'manualScreenshotUrl' => ManualScreenshotAssets::publicUrl($chapter['key'], $this->lang),
-            ],
+            fn (array $chapter): array => ManualScreenshotAssets::enrichChapter($chapter, $this->lang),
             $chapters,
         );
     }

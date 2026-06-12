@@ -224,6 +224,19 @@ it('behoudt bedrijfsgegevens bij het opslaan van het organisatielogo', function 
         ->and($fresh->city)->toBe('Brugge');
 });
 
+it('laat een medewerker een portaal-achtergrond uploaden', function () {
+    Storage::fake('public');
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('portalBackground', UploadedFile::fake()->image('portal-bg.jpg'))
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->portal_background_path)->not->toBeNull();
+});
+
 it('laat een medewerker instellingen zien maar niet bedrijfsgegevens bewerken', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);

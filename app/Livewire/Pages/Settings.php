@@ -14,6 +14,8 @@ use App\Actions\Team\UploadTenantQrStickerSheetBackgroundAction;
 use App\Data\Team\UpdateTenantQrStickerSheetSettingsData;
 use App\Enums\QrStickerTenantLogoPlacement;
 use App\Enums\UiTheme;
+use App\Http\Requests\Team\UploadOrganisationLogoRequest;
+use App\Http\Requests\Team\UploadOrganisationPortalBackgroundRequest;
 use App\Http\Requests\Team\UploadTenantQrStickerSheetBackgroundRequest;
 use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
@@ -219,7 +221,8 @@ class Settings extends Component
 
         Validator::make(
             ['orgLogo' => $this->orgLogo],
-            ['orgLogo' => ['required', 'image', 'max:2048']],
+            UploadOrganisationLogoRequest::rules(),
+            UploadOrganisationLogoRequest::messagesFor(),
         )->validate();
 
         $updated = $updateLogo->handle($tenant, $this->orgLogo, (int) auth()->id());
@@ -364,7 +367,8 @@ class Settings extends Component
 
         Validator::make(
             ['portalBackground' => $this->portalBackground],
-            ['portalBackground' => ['required', 'image', 'max:4096']],
+            UploadOrganisationPortalBackgroundRequest::rules(),
+            UploadOrganisationPortalBackgroundRequest::messagesFor(),
         )->validate();
 
         $updated = $updateBackground->handle($tenant, $this->portalBackground, (int) auth()->id());

@@ -1911,9 +1911,11 @@ a.wp-kpi:hover {
     color: var(--wp-accent-text);
 }
 
-.wp-icon-tile svg {
+.wp-icon-tile svg,
+.wp-worker-icon-svg {
     width: 1.75rem;
     height: 1.75rem;
+    flex-shrink: 0;
 }
 
 .wp-icon-tile.is-disabled {
@@ -1947,9 +1949,11 @@ a.wp-kpi:hover {
     box-shadow: 0 0 0 1px var(--wp-accent-border);
 }
 
+svg.wp-release-worker-row__icon,
 .wp-release-worker-row__icon svg {
     width: 1.75rem;
     height: 1.75rem;
+    flex-shrink: 0;
 }
 
 .wp-release-worker-row__name {
