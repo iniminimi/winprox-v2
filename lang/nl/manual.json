@@ -16,16 +16,16 @@
     "chapter": "Hoofdstuk",
     "print_footer": ":title — :tenant",
     "toc": {
-        "admin_portal": "",
-        "internet_portal": ""
+        "admin_portal": "Administratief portaal",
+        "internet_portal": "Internet portaal"
     },
     "sections": {
         "admin_portal": {
-            "title": "Administratief portaal",
+            "title": "Teams & gebruikers tot instellingen",
             "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard en instellingen."
         },
         "internet_portal": {
-            "title": "Internet portaal",
+            "title": "Twee QR-codes en het veldportaal",
             "intro": "Hulp bij het unit-QR- en team-QR-portaal op locatie: aanmelden, meldingen, taken, foto's en teamleader-functies."
         }
     },
