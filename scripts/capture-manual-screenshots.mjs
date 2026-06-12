@@ -133,37 +133,67 @@ try {
 /**
  * Playwright 1.49+ zoekt standaard chromium_headless_shell; op shared hosting
  * installeren we vaak alleen het volledige chromium-* pakket (handmatig).
+ * headless_shell gebruikt minder threads dan volledige chrome — vereist op Plesk.
  *
  * @returns {import('playwright').LaunchOptions}
  */
 function resolveChromiumLaunchOptions() {
     const browsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH ?? '';
-    const chromeArgs = ['--headless=new', '--no-sandbox', '--disable-setuid-sandbox'];
+    const lowResource = process.env.MANUAL_CAPTURE_CHROME_LOW_RESOURCE === '1';
+    const chromeArgs = buildChromeArgs(lowResource);
 
     if (browsersPath !== '' && existsSync(browsersPath)) {
+        let fullChrome = null;
+
         for (const dir of readdirSync(browsersPath)) {
             if (dir.startsWith('chromium_headless_shell-')) {
                 const headlessShell = join(browsersPath, dir, 'chrome-linux/headless_shell');
                 if (existsSync(headlessShell)) {
-                    return { headless: true, args: chromeArgs };
+                    return { headless: true, executablePath: headlessShell, args: chromeArgs };
                 }
                 continue;
             }
 
-            if (! dir.startsWith('chromium-')) {
+            if (! dir.startsWith('chromium-') || dir.includes('headless_shell')) {
                 continue;
             }
 
             const chrome = join(browsersPath, dir, 'chrome-linux/chrome');
             if (existsSync(chrome)) {
-                // headless: true zou Playwright 1.49+ naar chromium_headless_shell sturen;
-                // met eigen chrome-binary: headless via chrome-args.
-                return { headless: false, executablePath: chrome, args: chromeArgs };
+                fullChrome = chrome;
             }
+        }
+
+        if (fullChrome !== null) {
+            // headless: true zou Playwright 1.49+ naar chromium_headless_shell sturen;
+            // met eigen chrome-binary: headless via chrome-args.
+            return { headless: false, executablePath: fullChrome, args: chromeArgs };
         }
     }
 
     return { headless: true, args: chromeArgs };
+}
+
+/**
+ * @param {boolean} lowResource
+ * @returns {string[]}
+ */
+function buildChromeArgs(lowResource) {
+    const args = [
+        '--headless=new',
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--renderer-process-limit=1',
+        '--no-zygote',
+    ];
+
+    if (lowResource) {
+        args.push('--single-process');
+    }
+
+    return args;
 }
 
 /**

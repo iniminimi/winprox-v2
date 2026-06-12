@@ -25,4 +25,5 @@ return [
     'worker_first_name' => env('MANUAL_CAPTURE_WORKER_FIRST_NAME'),
     'worker_last_name' => env('MANUAL_CAPTURE_WORKER_LAST_NAME'),
     'worker_icon' => env('MANUAL_CAPTURE_WORKER_ICON'),
+    'chrome_low_resource' => filter_var(env('MANUAL_CAPTURE_CHROME_LOW_RESOURCE', false), FILTER_VALIDATE_BOOL),
 ];

@@ -94,6 +94,7 @@ class ExecuteManualScreenshotCaptureAction
             'MANUAL_CAPTURE_WORKER_FIRST_NAME' => (string) config('manual_capture.worker_first_name'),
             'MANUAL_CAPTURE_WORKER_LAST_NAME' => (string) config('manual_capture.worker_last_name'),
             'MANUAL_CAPTURE_WORKER_ICON' => (string) config('manual_capture.worker_icon'),
+            'MANUAL_CAPTURE_CHROME_LOW_RESOURCE' => config('manual_capture.chrome_low_resource') ? '1' : '',
         ], fn (string $value) => $value !== '');
     }
 
