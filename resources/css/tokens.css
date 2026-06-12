@@ -27,4 +27,9 @@
 
     /* Transitie */
     --wp-transition: 0.15s ease;
+
+    /* Foto-thumbnails (QR-portaal: 4 naast elkaar op smal scherm) */
+    --wp-photo-thumb-columns: 4;
+    --wp-photo-thumb-gap: 0.375rem;
+    --wp-photo-add-border-width: 4px;
 }

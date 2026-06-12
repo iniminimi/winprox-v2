@@ -1645,9 +1645,9 @@ a.wp-kpi:hover {
 }
 
 .wp-photo-grid--gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(var(--wp-photo-thumb-columns), minmax(0, 1fr));
+    gap: var(--wp-photo-thumb-gap);
 }
 
 .wp-photo-thumb {
@@ -1655,15 +1655,13 @@ a.wp-kpi:hover {
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius);
+    border-radius: var(--wp-radius-sm);
     background-color: var(--wp-surface-2);
 }
 
 .wp-photo-grid--gallery .wp-photo-thumb {
-    flex: none;
-    width: 5rem;
-    height: 5rem;
-    aspect-ratio: auto;
+    width: 100%;
+    height: auto;
     padding: 0;
     cursor: pointer;
     font: inherit;
@@ -1711,19 +1709,20 @@ a.wp-kpi:hover {
     cursor: default;
 }
 
-.wp-photo-preview-root {
+.wp-photo-preview-root,
+[data-wp-photo-picker] {
     display: contents;
 }
 
 .wp-photo-add {
-    width: 6rem;
-    height: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     margin: 0;
-    border: 2px dashed var(--wp-border);
-    border-radius: 10px;
+    border: var(--wp-photo-add-border-width) dashed #000;
+    border-radius: var(--wp-radius-sm);
     background-color: var(--wp-surface-2);
     color: var(--wp-text-muted);
     cursor: pointer;
@@ -1742,16 +1741,16 @@ a.wp-kpi:hover {
 /* Verwijder-knop op foto-thumbnail — één stijl, overal hergebruikt. */
 .wp-photo-remove {
     position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
+    top: 0.125rem;
+    right: 0.125rem;
     background: var(--wp-danger);
     color: var(--wp-text-on-accent);
     border-radius: 9999px;
     border: 0;
-    padding: 0.1875rem 0.375rem;
+    padding: 0.125rem 0.3125rem;
     line-height: 1;
     cursor: pointer;
-    font-size: 0.75rem;
+    font-size: 0.625rem;
 }
 
 .wp-photo-remove:hover {

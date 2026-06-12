@@ -11,11 +11,6 @@ const DEFAULT_MIME = 'image/jpeg';
 
 const WIRE_MODEL_ATTRS = ['wire:model', 'wire:model.live', 'wire:model.defer', 'wire:model.blur'];
 
-const PREVIEW_THUMB_STYLE = {
-    wrap: 'width:96px;height:96px;position:relative;overflow:hidden;border-radius:8px;border:2px solid var(--wp-border, #d1fae5);',
-    img: 'width:96px;height:96px;object-fit:cover;',
-};
-
 /**
  * @param {File} file
  * @param {{ maxDimension?: number, quality?: number }} [options]
@@ -192,13 +187,12 @@ function wpAppendLocalPhotoPreview(area, previewRoot, objectUrl, component, remo
     const alt = area.querySelector('input[type="file"]')?.getAttribute('aria-label') || 'Photo';
 
     const wrap = document.createElement('div');
+    wrap.className = 'wp-photo-thumb';
     wrap.dataset.wpPhotoIndex = String(index);
-    wrap.style.cssText = PREVIEW_THUMB_STYLE.wrap;
 
     const img = document.createElement('img');
     img.src = objectUrl;
     img.alt = alt;
-    img.style.cssText = PREVIEW_THUMB_STYLE.img;
 
     const btn = document.createElement('button');
     btn.type = 'button';
