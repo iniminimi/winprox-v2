@@ -138,19 +138,7 @@ body.wp-shell:has(.wp-manual-root) {
 }
 
 .wp-manual-print-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 8pt;
-    color: var(--wp-text-muted);
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.wp-manual-print-footer__page::after {
-    content: counter(page) '/' attr(data-total-pages);
+    display: none;
 }
 
 @media print {
@@ -230,8 +218,13 @@ body.wp-shell:has(.wp-manual-root) {
     }
 
     .wp-manual-print-footer {
-        visibility: visible;
         display: block;
-        z-index: 9999;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8pt;
+        color: #666;
     }
 }

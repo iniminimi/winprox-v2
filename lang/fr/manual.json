@@ -14,7 +14,7 @@
         "intro": "Suivez cet ordre lors de la première configuration de WinProx pour votre organisation."
     },
     "chapter": "Chapitre",
-    "print_page_label": "p.",
+    "print_footer": ":title — :tenant",
     "toc": {
         "admin_portal": "Portail administratif",
         "internet_portal": "Portail internet"

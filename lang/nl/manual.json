@@ -14,7 +14,7 @@
         "intro": "Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie."
     },
     "chapter": "Hoofdstuk",
-    "print_page_label": "pg",
+    "print_footer": ":title — :tenant",
     "toc": {
         "admin_portal": "Administratief portaal",
         "internet_portal": "Internet portaal"

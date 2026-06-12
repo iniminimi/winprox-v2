@@ -8,7 +8,6 @@
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
-    @stack('manual-print-styles')
 </head>
 <body class="wp-shell">
     {{ $slot }}

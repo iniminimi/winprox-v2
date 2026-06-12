@@ -1,8 +1,6 @@
 @push('manual-print-footer')
 <div class="wp-manual-print-footer" aria-hidden="true">
-    {{ __($coverPrefix.'.title') }} {{ __('manual.print_page_label') }}
-    <span class="wp-manual-print-footer__page" data-total-pages="1"></span>
-    - {{ $tenantName }}
+    {{ __('manual.print_footer', ['title' => __($coverPrefix.'.title'), 'tenant' => $tenantName]) }}
 </div>
 @endpush
 
