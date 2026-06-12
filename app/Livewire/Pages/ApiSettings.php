@@ -8,6 +8,7 @@ use App\Actions\Webhooks\DeleteWebhookEndpointAction;
 use App\Actions\Webhooks\SetWebhookEndpointActiveAction;
 use App\Actions\Webhooks\StoreWebhookEndpointAction;
 use App\Actions\Webhooks\TestWebhookEndpointAction;
+use App\Models\WebhookDelivery;
 use App\Models\WebhookEndpoint;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
