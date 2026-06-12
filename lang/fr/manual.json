@@ -13,6 +13,10 @@
         "intro": "Suivez cet ordre lors de la première configuration de WinProx pour votre organisation."
     },
     "chapter": "Chapitre",
+    "toc": {
+        "admin_portal": "Portail administratif",
+        "internet_portal": "Portail internet"
+    },
     "statuses": "Statuts",
     "footer": "WinProx — App de signalements facilitaires — :date",
     "step_1_title": "Créer des équipes & exécutants",

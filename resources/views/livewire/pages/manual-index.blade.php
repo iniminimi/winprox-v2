@@ -59,12 +59,28 @@
             text-align: left;
         ">
             <p style="font-weight: 600; color: var(--wp-text); margin: 0 0 1rem;">{{ __('manual.cover.contents') }}</p>
-            <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
-                @foreach ($chapters as $index => $chapter)
-                    @php $slug = str_replace('.', '-', $chapter['key']); @endphp
-                    <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
-                @endforeach
-            </ol>
+            @if (!empty($tocSections))
+                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                    @foreach ($tocSections as $section)
+                        <div>
+                            <p style="font-weight: 700; color: var(--wp-text-heading); margin: 0 0 0.5rem; font-size: 0.9rem;">{{ $section['label'] }}</p>
+                            <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
+                                @foreach ($section['chapters'] as $chapter)
+                                    @php $slug = str_replace('.', '-', $chapter['key']); @endphp
+                                    <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
+                                @endforeach
+                            </ol>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
+                    @foreach ($chapters as $chapter)
+                        @php $slug = str_replace('.', '-', $chapter['key']); @endphp
+                        <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
+                    @endforeach
+                </ol>
+            @endif
         </div>
     </div>
 

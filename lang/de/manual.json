@@ -13,6 +13,10 @@
         "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung von WinProx für Ihre Organisation."
     },
     "chapter": "Kapitel",
+    "toc": {
+        "admin_portal": "Administratives Portal",
+        "internet_portal": "Internet-Portal"
+    },
     "statuses": "Status",
     "footer": "WinProx — Facility-Meldungs-App — :date",
     "step_1_title": "Teams & Mitarbeiter anlegen",

@@ -13,6 +13,10 @@
         "intro": "Volg deze volgorde bij de eerste inrichting van WinProx voor jouw organisatie."
     },
     "chapter": "Hoofdstuk",
+    "toc": {
+        "admin_portal": "Administratief portaal",
+        "internet_portal": "Internet portaal"
+    },
     "statuses": "Statussen",
     "footer": "WinProx — Work in Proximity — :date",
     "step_1_title": "Teams & uitvoerders aanmaken",

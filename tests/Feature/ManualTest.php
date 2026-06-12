@@ -120,7 +120,11 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->get(route('manual.general'))
         ->assertOk()
         ->assertSee('Inhoud')
-        ->assertSee('Gegenereerd op');
+        ->assertSee('Gegenereerd op')
+        ->assertSee(__('manual.toc.admin_portal'))
+        ->assertSee(__('manual.toc.internet_portal'))
+        ->assertSee('Teams &amp; gebruikers', false)
+        ->assertSee('Twee QR-codes', false);
 });
 
 it('toont het stappenplan op pagina 2', function () {

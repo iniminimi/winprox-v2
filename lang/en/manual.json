@@ -13,6 +13,10 @@
         "intro": "Follow this order when first setting up WinProx for your organisation."
     },
     "chapter": "Chapter",
+    "toc": {
+        "admin_portal": "Administrative portal",
+        "internet_portal": "Internet portal"
+    },
     "statuses": "Statuses",
     "footer": "WinProx — Facility reporting app — :date",
     "step_1_title": "Create teams & workers",

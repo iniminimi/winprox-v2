@@ -16,7 +16,7 @@ class ManualIndex extends Component
 {
     use HasManualLocale;
 
-    private const CHAPTER_KEYS = [
+    private const ADMIN_CHAPTER_KEYS = [
         'team',
         'locations.list',
         'locations.show',
@@ -28,6 +28,9 @@ class ManualIndex extends Component
         'calendar',
         'dashboard',
         'settings',
+    ];
+
+    private const INTERNET_PORTAL_CHAPTER_KEYS = [
         'portal.worker.qr',
         'portal.unit',
         'portal.team',
@@ -36,6 +39,12 @@ class ManualIndex extends Component
         'portal.teamleader.release',
         'portal.teamleader.workers',
         'portal.teamleader.tasks',
+    ];
+
+    /** @var list<string> */
+    private const CHAPTER_KEYS = [
+        ...self::ADMIN_CHAPTER_KEYS,
+        ...self::INTERNET_PORTAL_CHAPTER_KEYS,
     ];
 
     public function mount(): void
@@ -50,8 +59,21 @@ class ManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
+        $chapters = ManualChapters::fromPageHelp(self::CHAPTER_KEYS);
+        $splitAt = count(self::ADMIN_CHAPTER_KEYS);
+
         return view('livewire.pages.manual-index', [
-            'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
+            'chapters' => $chapters,
+            'tocSections' => [
+                [
+                    'label' => __('manual.toc.admin_portal'),
+                    'chapters' => array_slice($chapters, 0, $splitAt),
+                ],
+                [
+                    'label' => __('manual.toc.internet_portal'),
+                    'chapters' => array_slice($chapters, $splitAt),
+                ],
+            ],
             'generatedAt' => now()->format('d-m-Y'),
             'coverPrefix' => 'manual.cover',
             'footerKey' => 'manual.footer',
