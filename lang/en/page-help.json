@@ -527,10 +527,10 @@
             ],
             "status_note": "Each task goes through the statuses below:",
             "statuses": {
-                "new": "New (Open): The task is not yet started and waiting for a worker.",
-                "in_progress": "In progress: Someone is currently working on the task on site.",
-                "done": "Completed: The work has been completed by a worker.",
-                "closed": "Closed: The issue has been checked by the administrator and definitively closed."
+                "new": "The task is not yet started and waiting for a worker.",
+                "in_progress": "Someone is currently working on the task on site.",
+                "done": "The work has been completed by a worker.",
+                "closed": "The issue has been checked by the administrator and definitively closed."
             }
         },
         "portal.teamleader.role": {

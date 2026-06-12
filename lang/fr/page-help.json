@@ -527,10 +527,10 @@
             ],
             "status_note": "Chaque tâche passe par les statuts ci-dessous:",
             "statuses": {
-                "new": "Nouveau (Ouvert): La tâche n'est pas encore démarrée et attend un exécutant.",
-                "in_progress": "En cours: Quelqu'un travaille actuellement sur la tâche sur le terrain.",
-                "done": "Traité: Le travail a été terminé par un exécutant.",
-                "closed": "Fermé: Le signalement a été vérifié par l'administrateur et définitivement fermé."
+                "new": "La tâche n'est pas encore démarrée et attend un exécutant.",
+                "in_progress": "Quelqu'un travaille actuellement sur la tâche sur le terrain.",
+                "done": "Le travail a été terminé par un exécutant.",
+                "closed": "Le signalement a été vérifié par l'administrateur et définitivement fermé."
             }
         },
         "portal.teamleader.role": {

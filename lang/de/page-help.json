@@ -527,10 +527,10 @@
             ],
             "status_note": "Jede Aufgabe durchläuft die folgenden Status:",
             "statuses": {
-                "new": "Neu (Offen): Die Aufgabe ist noch nicht gestartet und wartet auf einen Mitarbeiter.",
-                "in_progress": "In Bearbeitung: Jemand arbeitet derzeit vor Ort an der Aufgabe.",
-                "done": "Erledigt: Die Arbeit wurde von einem Mitarbeiter abgeschlossen.",
-                "closed": "Geschlossen: Die Meldung wurde vom Administrator überprüft und endgültig geschlossen."
+                "new": "Die Aufgabe ist noch nicht gestartet und wartet auf einen Mitarbeiter.",
+                "in_progress": "Jemand arbeitet derzeit vor Ort an der Aufgabe.",
+                "done": "Die Arbeit wurde von einem Mitarbeiter abgeschlossen.",
+                "closed": "Die Meldung wurde vom Administrator überprüft und endgültig geschlossen."
             }
         },
         "portal.teamleader.role": {

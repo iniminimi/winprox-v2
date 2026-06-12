@@ -527,10 +527,10 @@
             ],
             "status_note": "Elke taak doorloopt de onderstaande statussen:",
             "statuses": {
-                "new": "Nieuw (Open): De taak is nog niet gestart en wacht op een uitvoerder.",
-                "in_progress": "In uitvoering: Iemand werkt momenteel op locatie aan de taak.",
-                "done": "Afgehandeld: Het werk is door een uitvoerder afgerond.",
-                "closed": "Gesloten: De melding is door de beheerder gecontroleerd en definitief afgesloten."
+                "new": "De taak is nog niet gestart en wacht op een uitvoerder.",
+                "in_progress": "Iemand werkt momenteel op locatie aan de taak.",
+                "done": "Het werk is door een uitvoerder afgerond.",
+                "closed": "De melding is door de beheerder gecontroleerd en definitief afgesloten."
             }
         },
         "portal.teamleader.role": {
