@@ -84,24 +84,11 @@
                 ">{{ $chapter['status_note'] }}</p>
             @endif
 
-            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+            <div class="wp-manual-status-list">
                 @foreach ($chapter['statuses'] as $status)
-                    <div style="
-                        display: grid;
-                        grid-template-columns: 160px 1fr;
-                        gap: 0.75rem;
-                        align-items: start;
-                        padding: 0.6rem 1rem;
-                        background: var(--wp-bg);
-                        border-radius: 8px;
-                        border: 1px solid var(--wp-border);
-                    ">
-                        <span class="wp-pill wp-pill--{{ $status['pill'] }}" style="justify-self: start;">
-                            {{ $status['label'] }}
-                        </span>
-                        <span style="color: var(--wp-text-body); font-size: 0.875rem; line-height: 1.5;">
-                            {{ $status['text'] }}
-                        </span>
+                    <div class="wp-manual-status-list__row">
+                        <span class="wp-pill wp-pill--{{ $status['pill'] }}">{{ $status['label'] }}</span>
+                        <span class="wp-manual-status-list__text">{{ $status['text'] }}</span>
                     </div>
                 @endforeach
             </div>

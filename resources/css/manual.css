@@ -164,6 +164,51 @@ body.wp-shell:has(.wp-manual-root) {
     text-decoration: none;
 }
 
+.wp-manual-section-statuses {
+    padding: 2rem 2.5rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-manual-section-statuses__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    margin: 0 0 0.5rem;
+}
+
+.wp-manual-section-statuses__intro {
+    color: var(--wp-text-body);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+}
+
+.wp-manual-status-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.wp-manual-status-list__row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.6rem 1rem;
+    background: var(--wp-bg);
+    border-radius: 8px;
+    border: 1px solid var(--wp-border);
+}
+
+.wp-manual-status-list__text {
+    color: var(--wp-text-body);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
 .wp-manual-print-footer {
     display: none;
 }

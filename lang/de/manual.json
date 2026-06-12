@@ -30,6 +30,24 @@
         }
     },
     "statuses": "Status",
+    "portal_statuses": {
+        "admin_portal": {
+            "title": "Status — administratives Portal",
+            "intro": "Diese Status werden von Administratoren verwendet, um den gesamten Workflow zu überwachen und zu steuern.",
+            "new": "Die Meldung wurde erstellt; mindestens eine Aufgabe wartet auf den Start durch das Team.",
+            "in_progress": "An der Meldung wird aktiv gearbeitet; mindestens eine Aufgabe ist in Ausführung.",
+            "done": "Alle Aufgaben für diese Meldung wurden vom Team abgeschlossen; der Administrator kann jetzt freigeben und schließen.",
+            "closed": "Der Administrator hat die Bearbeitung bestätigt; die Meldung ist endgültig geschlossen."
+        },
+        "internet_portal": {
+            "title": "Status — Internet-Portal",
+            "intro": "Diese Status richten sich an die Werker vor Ort und Bürger (Melder), um den direkten Status einer bestimmten Aufgabe anzuzeigen.",
+            "new": "Die Aufgabe wurde erstellt und wartet auf den Start durch das Team.",
+            "in_progress": "Das Team ist derzeit vor Ort mit der Ausführung beschäftigt.",
+            "done": "Die Arbeit wurde vom Ausführenden abgeschlossen und als fertig gemeldet.",
+            "closed": "Die Aufgabe wurde vom Administrator geprüft und endgültig geschlossen."
+        }
+    },
     "footer": "WinProx — Facility-Meldungs-App — :date",
     "step_1_title": "Teams & Mitarbeiter anlegen",
     "step_1_text": "Stellen Sie operative Teams zusammen, fügen Sie Mitarbeiter hinzu und weisen Sie einen Teamleiter zu. Verknüpfen Sie Teams mit spezifischen Kategorien, damit Aufgaben immer bei den richtigen Fachleuten ankommen. Mitarbeiter melden sich einfach mit ihrem Namen und einem persönlichen Symbol an. Sie können Teams und Mitarbeiter auch auf einmal über einen Massenimport (CSV-Datei) hinzufügen.",

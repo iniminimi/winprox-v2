@@ -113,6 +113,36 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
     expect($positions)->toBe($sorted, 'De volgorde van de hoofdstukken klopt niet met de verwachte onboarding-flow.');
 });
 
+it('toont gecentraliseerde portaal-statussen met pillen en geen statussen per hoofdstuk', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $html = $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee(__('manual.portal_statuses.admin_portal.title'))
+        ->assertSee(__('manual.portal_statuses.internet_portal.title'))
+        ->assertSee(__('manual.portal_statuses.admin_portal.intro'))
+        ->assertSee(__('manual.portal_statuses.internet_portal.intro'))
+        ->assertSee('wp-pill wp-pill--new', false)
+        ->assertSee('wp-pill wp-pill--progress', false)
+        ->assertDontSee('Meldingstatus op het dashboard volgt de status van de gekoppelde taken.')
+        ->getContent();
+
+    $adminPos = mb_strpos($html, __('manual.portal_statuses.admin_portal.title'));
+    $internetPos = mb_strpos($html, __('manual.portal_statuses.internet_portal.title'));
+    $settingsPos = mb_strpos($html, 'id="chapter-settings"');
+    $qrPos = mb_strpos($html, 'id="chapter-portal-worker-qr"');
+
+    expect($adminPos)->not->toBeFalse()
+        ->and($internetPos)->not->toBeFalse()
+        ->and($settingsPos)->not->toBeFalse()
+        ->and($qrPos)->not->toBeFalse()
+        ->and($settingsPos)->toBeLessThan($adminPos)
+        ->and($adminPos)->toBeLessThan($qrPos)
+        ->and($qrPos)->toBeLessThan($internetPos);
+});
+
 it('toont tenant logo en naam op de algemene handleiding cover', function () {
     Storage::fake('public');
 

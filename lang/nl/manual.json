@@ -30,6 +30,24 @@
         }
     },
     "statuses": "Statussen",
+    "portal_statuses": {
+        "admin_portal": {
+            "title": "Statussen Administratief portaal",
+            "intro": "Deze statussen worden gebruikt door beheerders om de volledige workflow te monitoren en te controleren.",
+            "new": "De melding is aangemaakt; minstens één taak wacht op start door het team.",
+            "in_progress": "Er wordt actief aan de melding gewerkt; minstens één taak is in uitvoering.",
+            "done": "Alle taken voor deze melding zijn door het team afgerond; de beheerder kan nu goedkeuren en sluiten.",
+            "closed": "De beheerder heeft de afhandeling bevestigd; de melding is definitief afgesloten."
+        },
+        "internet_portal": {
+            "title": "Statussen Internet portaal",
+            "intro": "Deze statussen zijn gericht op de werkvloer (uitvoerders) en burgers (melders) om de directe status van een specifieke taak weer te geven.",
+            "new": "De taak is aangemaakt en wacht op de start door het team.",
+            "in_progress": "Het team is momenteel op locatie bezig met de uitvoering.",
+            "done": "Het werk is door de uitvoerder afgerond en gemeld als klaar.",
+            "closed": "De taak is door de beheerder gecontroleerd en definitief afgesloten."
+        }
+    },
     "footer": "WinProx — Work in Proximity — :date",
     "step_1_title": "Teams & uitvoerders aanmaken",
     "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV-bestand).",

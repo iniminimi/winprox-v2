@@ -204,6 +204,12 @@
           'isLast' => $isLast,
         ])
       @endforeach
+
+      @if (!empty($section['statusBlock']))
+        @include('livewire.pages.partials.manual-section-statuses', [
+          'block' => $section['statusBlock'],
+        ])
+      @endif
     @endforeach
   @else
     @foreach ($chapters as $index => $chapter)

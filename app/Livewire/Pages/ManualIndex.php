@@ -6,6 +6,7 @@ namespace App\Livewire\Pages;
 
 use App\Livewire\Pages\Concerns\HasManualLocale;
 use App\Support\Manual\ManualChapters;
+use App\Support\Manual\ManualPortalStatuses;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -59,7 +60,7 @@ class ManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
-        $chapters = ManualChapters::fromPageHelp(self::CHAPTER_KEYS);
+        $chapters = ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true);
         $splitAt = count(self::ADMIN_CHAPTER_KEYS);
 
         return view('livewire.pages.manual-index', [
@@ -71,6 +72,7 @@ class ManualIndex extends Component
                     'title' => __('manual.sections.admin_portal.title'),
                     'intro' => __('manual.sections.admin_portal.intro'),
                     'chapters' => array_slice($chapters, 0, $splitAt),
+                    'statusBlock' => ManualPortalStatuses::block('admin_portal'),
                 ],
                 [
                     'id' => 'internet-portal',
@@ -78,6 +80,7 @@ class ManualIndex extends Component
                     'title' => __('manual.sections.internet_portal.title'),
                     'intro' => __('manual.sections.internet_portal.intro'),
                     'chapters' => array_slice($chapters, $splitAt),
+                    'statusBlock' => ManualPortalStatuses::block('internet_portal'),
                 ],
             ],
             'generatedAt' => now()->format('d-m-Y'),

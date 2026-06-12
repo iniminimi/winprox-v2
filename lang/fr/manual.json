@@ -30,6 +30,24 @@
         }
     },
     "statuses": "Statuts",
+    "portal_statuses": {
+        "admin_portal": {
+            "title": "Statuts — portail administratif",
+            "intro": "Ces statuts sont utilisés par les gestionnaires pour suivre et contrôler l'ensemble du workflow.",
+            "new": "Le signalement est créé ; au moins une tâche attend le démarrage par l'équipe.",
+            "in_progress": "Le signalement est en cours de traitement ; au moins une tâche est en cours d'exécution.",
+            "done": "Toutes les tâches de ce signalement sont terminées par l'équipe ; le gestionnaire peut maintenant approuver et clôturer.",
+            "closed": "Le gestionnaire a confirmé le traitement ; le signalement est définitivement clôturé."
+        },
+        "internet_portal": {
+            "title": "Statuts — portail internet",
+            "intro": "Ces statuts s'adressent au terrain (exécutants) et aux citoyens (déclarants) pour afficher le statut direct d'une tâche.",
+            "new": "La tâche est créée et attend le démarrage par l'équipe.",
+            "in_progress": "L'équipe est actuellement sur site pour l'exécution.",
+            "done": "Le travail est terminé par l'exécutant et signalé comme achevé.",
+            "closed": "La tâche a été contrôlée par le gestionnaire et définitivement clôturée."
+        }
+    },
     "footer": "WinProx — App de signalements facilitaires — :date",
     "step_1_title": "Créer des équipes & exécutants",
     "step_1_text": "Composez des équipes opérationnelles, ajoutez des exécutants et désignez un chef d'équipe. Liez les équipes à des catégories spécifiques pour que les tâches parviennent toujours aux bons professionnels. Les exécutants se connectent facilement avec leur nom et une icône personnelle. Vous pouvez également ajouter des équipes et des exécutants en une seule fois via un import en masse (fichier CSV).",
