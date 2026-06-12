@@ -17,6 +17,16 @@
         "admin_portal": "Portail administratif",
         "internet_portal": "Portail internet"
     },
+    "sections": {
+        "admin_portal": {
+            "title": "Équipes et utilisateurs jusqu'aux paramètres",
+            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord et paramètres."
+        },
+        "internet_portal": {
+            "title": "Deux QR codes et le portail terrain",
+            "intro": "Aide pour les portails QR unité et QR équipe sur site : connexion, signalements, tâches, photos et fonctions chef d'équipe."
+        }
+    },
     "statuses": "Statuts",
     "footer": "WinProx — App de signalements facilitaires — :date",
     "step_1_title": "Créer des équipes & exécutants",

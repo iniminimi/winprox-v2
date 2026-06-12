@@ -123,8 +123,38 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('Gegenereerd op')
         ->assertSee(__('manual.toc.admin_portal'))
         ->assertSee(__('manual.toc.internet_portal'))
-        ->assertSee('Teams &amp; gebruikers', false)
-        ->assertSee('Twee QR-codes', false);
+        ->assertSee(__('manual.sections.admin_portal.title'))
+        ->assertSee(__('manual.sections.internet_portal.title'))
+        ->assertSee(__('manual.sections.admin_portal.intro'))
+        ->assertSee(__('manual.sections.internet_portal.intro'));
+});
+
+it('toont sectie-introducties in de body in dezelfde stijl als het stappenplan', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $html = $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->getContent();
+
+    $esc = fn (string $text) => htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+
+    $gettingStartedPos = mb_strpos($html, $esc(__('manual.getting_started.title')));
+    $adminSectionPos = mb_strpos($html, $esc(__('manual.sections.admin_portal.title')));
+    $teamsChapterPos = mb_strpos($html, 'id="chapter-team"');
+    $internetSectionPos = mb_strpos($html, $esc(__('manual.sections.internet_portal.title')));
+    $qrChapterPos = mb_strpos($html, 'id="chapter-portal-worker-qr"');
+
+    expect($gettingStartedPos)->not->toBeFalse()
+        ->and($adminSectionPos)->not->toBeFalse()
+        ->and($teamsChapterPos)->not->toBeFalse()
+        ->and($internetSectionPos)->not->toBeFalse()
+        ->and($qrChapterPos)->not->toBeFalse()
+        ->and($gettingStartedPos)->toBeLessThan($adminSectionPos)
+        ->and($adminSectionPos)->toBeLessThan($teamsChapterPos)
+        ->and($teamsChapterPos)->toBeLessThan($internetSectionPos)
+        ->and($internetSectionPos)->toBeLessThan($qrChapterPos);
 });
 
 it('toont het stappenplan op pagina 2', function () {

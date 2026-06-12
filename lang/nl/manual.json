@@ -17,6 +17,16 @@
         "admin_portal": "Administratief portaal",
         "internet_portal": "Internet portaal"
     },
+    "sections": {
+        "admin_portal": {
+            "title": "Teams & gebruikers tot instellingen",
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard en instellingen."
+        },
+        "internet_portal": {
+            "title": "Twee QR-codes en het veldportaal",
+            "intro": "Hulp bij het unit-QR- en team-QR-portaal op locatie: aanmelden, meldingen, taken, foto's en teamleader-functies."
+        }
+    },
     "statuses": "Statussen",
     "footer": "WinProx — Work in Proximity — :date",
     "step_1_title": "Teams & uitvoerders aanmaken",

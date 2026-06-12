@@ -17,6 +17,16 @@
         "admin_portal": "Administrative portal",
         "internet_portal": "Internet portal"
     },
+    "sections": {
+        "admin_portal": {
+            "title": "Teams & users through settings",
+            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard and settings."
+        },
+        "internet_portal": {
+            "title": "Two QR codes and the field portal",
+            "intro": "Help for the unit QR and team QR portals on site: sign-in, issues, tasks, photos and team leader features."
+        }
+    },
     "statuses": "Statuses",
     "footer": "WinProx — Facility reporting app — :date",
     "step_1_title": "Create teams & workers",

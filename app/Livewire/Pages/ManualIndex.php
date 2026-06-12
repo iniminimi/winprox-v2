@@ -67,10 +67,14 @@ class ManualIndex extends Component
             'tocSections' => [
                 [
                     'label' => __('manual.toc.admin_portal'),
+                    'title' => __('manual.sections.admin_portal.title'),
+                    'intro' => __('manual.sections.admin_portal.intro'),
                     'chapters' => array_slice($chapters, 0, $splitAt),
                 ],
                 [
                     'label' => __('manual.toc.internet_portal'),
+                    'title' => __('manual.sections.internet_portal.title'),
+                    'intro' => __('manual.sections.internet_portal.intro'),
                     'chapters' => array_slice($chapters, $splitAt),
                 ],
             ],
