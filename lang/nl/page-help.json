@@ -332,7 +332,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen. Deze pagina is bedoeld voor beheerders of IT-partners die een koppeling willen bouwen."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden locaties of gebruikers importeren? Gebruik dan de CSV-import die je per module (Teams, Locaties, Units) vindt. Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",

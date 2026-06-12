@@ -332,7 +332,7 @@
                 },
                 {
                     "label": "Do I need this?",
-                    "text": "Usually not. If you only use WinProx via the website and QR codes, you can leave this page empty. It is meant for administrators or IT partners who want to build an integration."
+                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of locations or users at once? Use the CSV import available in each module (Teams, Locations, Units). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
                 },
                 {
                     "label": "API — what is it?",

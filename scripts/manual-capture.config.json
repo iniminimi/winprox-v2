@@ -78,6 +78,13 @@
             "auth": true
         },
         {
+            "id": "settings-api",
+            "path": "/settings/api",
+            "selector": "[data-manual-capture=\"settings-api\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "portal-worker-qr",
             "path": "/melden/{unit_token}",
             "selector": "[data-manual-capture=\"portal-unit-home\"]",

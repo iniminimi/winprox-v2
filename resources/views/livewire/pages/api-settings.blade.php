@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="settings-api">
     <x-wp-page-head-title
         icon="api"
         :title="__('settings.api.title')"

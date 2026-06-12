@@ -332,7 +332,7 @@
                 },
                 {
                     "label": "Brauche ich das?",
-                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, können Sie diese Seite leer lassen. Sie richtet sich an Administratoren oder IT-Partner, die eine Anbindung bauen."
+                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Standorte oder Benutzer auf einmal importieren? Nutzen Sie den CSV-Import in jedem Modul (Teams, Standorte, Units). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
                 },
                 {
                     "label": "API — was ist das?",

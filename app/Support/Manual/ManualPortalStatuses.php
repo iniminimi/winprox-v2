@@ -58,4 +58,32 @@ final class ManualPortalStatuses
             'statuses' => $statuses,
         ];
     }
+
+    /**
+     * @return array{
+     *     key: string,
+     *     title: string,
+     *     intro: string,
+     *     actions: list<empty>,
+     *     statuses: list<array{key: string, label: string, text: string, pill: string}>,
+     *     status_note: null,
+     * }|null
+     */
+    public static function asChapter(string $section): ?array
+    {
+        $block = self::block($section);
+
+        if ($block === null) {
+            return null;
+        }
+
+        return [
+            'key' => 'statuses.'.str_replace('_', '-', $section),
+            'title' => $block['title'],
+            'intro' => $block['intro'],
+            'actions' => [],
+            'statuses' => $block['statuses'],
+            'status_note' => null,
+        ];
+    }
 }

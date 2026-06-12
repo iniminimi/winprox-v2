@@ -91,7 +91,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 
     $expectedAnchors = array_map(
         fn (int $n) => 'Hoofdstuk '.$n,
-        range(1, 19),
+        range(1, 22),
     );
 
     $expectedChapterIds = [
@@ -106,6 +106,8 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-calendar',
         'chapter-dashboard',
         'chapter-settings',
+        'chapter-settings-api',
+        'chapter-statuses-admin-portal',
         'chapter-portal-worker-qr',
         'chapter-portal-unit',
         'chapter-portal-team',
@@ -114,11 +116,14 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-portal-teamleader-release',
         'chapter-portal-teamleader-workers',
         'chapter-portal-teamleader-tasks',
+        'chapter-statuses-internet-portal',
     ];
 
     foreach ($expectedAnchors as $anchor) {
         expect($html)->toContain($anchor);
     }
+
+    expect($html)->toContain('API &amp; webhooks');
 
     $positions = [];
 
@@ -135,7 +140,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
     expect($positions)->toBe($sorted, 'De volgorde van de hoofdstukken klopt niet met de verwachte onboarding-flow.');
 });
 
-it('toont gecentraliseerde portaal-statussen met pillen en geen statussen per hoofdstuk', function () {
+it('toont portaal-statussen als hoofdstukken met pillen en geen statussen per pagina-hoofdstuk', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
@@ -151,18 +156,21 @@ it('toont gecentraliseerde portaal-statussen met pillen en geen statussen per ho
         ->assertDontSee('Meldingstatus op het dashboard volgt de status van de gekoppelde taken.')
         ->getContent();
 
-    $adminStatusPos = mb_strpos($html, 'id="section-admin-portal-statuses"');
-    $internetStatusPos = mb_strpos($html, 'id="section-internet-portal-statuses"');
-    $settingsPos = mb_strpos($html, 'id="chapter-settings"');
+    $adminStatusPos = mb_strpos($html, 'id="chapter-statuses-admin-portal"');
+    $internetStatusPos = mb_strpos($html, 'id="chapter-statuses-internet-portal"');
+    $settingsApiPos = mb_strpos($html, 'id="chapter-settings-api"');
     $qrPos = mb_strpos($html, 'id="chapter-portal-worker-qr"');
+    $lastPortalPos = mb_strpos($html, 'id="chapter-portal-teamleader-tasks"');
 
     expect($adminStatusPos)->not->toBeFalse()
         ->and($internetStatusPos)->not->toBeFalse()
-        ->and($settingsPos)->not->toBeFalse()
+        ->and($settingsApiPos)->not->toBeFalse()
         ->and($qrPos)->not->toBeFalse()
-        ->and($settingsPos)->toBeLessThan($adminStatusPos)
+        ->and($lastPortalPos)->not->toBeFalse()
+        ->and($settingsApiPos)->toBeLessThan($adminStatusPos)
         ->and($adminStatusPos)->toBeLessThan($qrPos)
-        ->and($qrPos)->toBeLessThan($internetStatusPos);
+        ->and($qrPos)->toBeLessThan($internetStatusPos)
+        ->and($lastPortalPos)->toBeLessThan($internetStatusPos);
 });
 
 it('toont tenant logo en naam op de algemene handleiding cover', function () {
@@ -195,8 +203,8 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('Gegenereerd op')
         ->assertSee(__('manual.toc.admin_portal'))
         ->assertSee(__('manual.toc.internet_portal'))
-        ->assertSee('href="#section-admin-portal-statuses"', false)
-        ->assertSee('href="#section-internet-portal-statuses"', false)
+        ->assertSee('href="#chapter-statuses-admin-portal"', false)
+        ->assertSee('href="#chapter-statuses-internet-portal"', false)
         ->assertSee(__('manual.portal_statuses.admin_portal.title'))
         ->assertSee(__('manual.portal_statuses.internet_portal.title'))
         ->assertSee('href="#section-admin-portal"', false)

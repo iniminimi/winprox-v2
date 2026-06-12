@@ -332,7 +332,7 @@
                 },
                 {
                     "label": "En ai-je besoin ?",
-                    "text": "En général non. Si vous utilisez WinProx uniquement via le site et les QR, laissez cette page vide. Elle est destinée aux administrateurs ou partenaires IT qui souhaitent une intégration."
+                    "text": "En général non. Si vous utilisez WinProx uniquement via le site web et les QR codes, vous n'avez rien à configurer ici.<br><br>Pour une mise en place ponctuelle : vous souhaitez importer des milliers de sites ou d'utilisateurs en une fois ? Utilisez l'import CSV disponible dans chaque module (Équipes, Sites, Unités). C'est souvent plus rapide et plus simple pour une première migration.<br><br>Pour l'automatisation continue : cette page API s'adresse aux administrateurs ou partenaires IT qui souhaitent construire une connexion en direct pour que les systèmes communiquent automatiquement (p. ex. couplage ERP en temps réel ou tableaux de bord personnalisés)."
                 },
                 {
                     "label": "API — c'est quoi ?",

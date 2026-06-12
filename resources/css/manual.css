@@ -168,28 +168,6 @@ body.wp-shell:has(.wp-manual-root) {
     text-decoration: none;
 }
 
-.wp-manual-section-statuses {
-    padding: 2rem 2.5rem 2.5rem;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-    border-top: 1px solid var(--wp-border);
-}
-
-.wp-manual-section-statuses__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--wp-text);
-    margin: 0 0 0.5rem;
-}
-
-.wp-manual-section-statuses__intro {
-    color: var(--wp-text-body);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin: 0 0 1.25rem;
-}
-
 .wp-manual-chapter__heading {
     display: flex;
     align-items: center;

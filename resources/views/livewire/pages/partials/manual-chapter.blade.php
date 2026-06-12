@@ -44,6 +44,15 @@
         </figure>
     @endif
 
+    @if (!empty($chapter['intro']))
+        <p style="
+            color: var(--wp-text-body);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 1.5rem;
+        ">{{ $chapter['intro'] }}</p>
+    @endif
+
     {{-- Acties --}}
     @if (!empty($chapter['actions']))
         <div style="display: flex; flex-direction: column; gap: 1.25rem;">
@@ -77,7 +86,8 @@
 
     {{-- Statussen --}}
     @if (!empty($chapter['statuses']))
-        <div style="margin-top: 2rem;">
+        <div style="margin-top: {{ ! empty($chapter['actions']) ? '2rem' : '0' }};">
+            @if (!empty($chapter['actions']))
             <p style="
                 font-weight: 600;
                 color: var(--wp-text);
@@ -86,6 +96,7 @@
                 text-transform: uppercase;
                 letter-spacing: 0.06em;
             ">{{ __('manual.statuses') }}</p>
+            @endif
 
             @if ($chapter['status_note'])
                 <p style="

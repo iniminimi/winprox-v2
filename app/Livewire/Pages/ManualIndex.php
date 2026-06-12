@@ -31,6 +31,7 @@ class ManualIndex extends Component
         'calendar',
         'dashboard',
         'settings',
+        'settings.api',
     ];
 
     private const INTERNET_PORTAL_CHAPTER_KEYS = [
@@ -72,14 +73,38 @@ class ManualIndex extends Component
         );
     }
 
+    /**
+     * @param  array<string, mixed>  $chapter
+     * @return array<string, mixed>
+     */
+    private function enrichStatusChapter(array $chapter): array
+    {
+        $enriched = ManualChapterIcons::applyToChapters([$chapter])[0];
+
+        return ManualScreenshotAssets::enrichChapter($enriched, $this->lang);
+    }
+
     public function render(): \Illuminate\View\View
     {
-        $chapters = $this->chaptersWithScreenshotUrls(
+        $helpChapters = $this->chaptersWithScreenshotUrls(
             ManualChapterIcons::applyToChapters(
                 ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true),
             ),
         );
         $splitAt = count(self::ADMIN_CHAPTER_KEYS);
+
+        $adminChapters = array_slice($helpChapters, 0, $splitAt);
+        $internetChapters = array_slice($helpChapters, $splitAt);
+
+        if ($adminStatusChapter = ManualPortalStatuses::asChapter('admin_portal')) {
+            $adminChapters[] = $this->enrichStatusChapter($adminStatusChapter);
+        }
+
+        if ($internetStatusChapter = ManualPortalStatuses::asChapter('internet_portal')) {
+            $internetChapters[] = $this->enrichStatusChapter($internetStatusChapter);
+        }
+
+        $chapters = [...$adminChapters, ...$internetChapters];
 
         return view('livewire.pages.manual-index', [
             'chapters' => $chapters,
@@ -89,16 +114,14 @@ class ManualIndex extends Component
                     'label' => __('manual.toc.admin_portal'),
                     'title' => __('manual.sections.admin_portal.title'),
                     'intro' => __('manual.sections.admin_portal.intro'),
-                    'chapters' => array_slice($chapters, 0, $splitAt),
-                    'statusBlock' => ManualPortalStatuses::block('admin_portal'),
+                    'chapters' => $adminChapters,
                 ],
                 [
                     'id' => 'internet-portal',
                     'label' => __('manual.toc.internet_portal'),
                     'title' => __('manual.sections.internet_portal.title'),
                     'intro' => __('manual.sections.internet_portal.intro'),
-                    'chapters' => array_slice($chapters, $splitAt),
-                    'statusBlock' => ManualPortalStatuses::block('internet_portal'),
+                    'chapters' => $internetChapters,
                 ],
             ],
             'generatedAt' => now()->format('d-m-Y'),
