@@ -45,8 +45,6 @@
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/>
                     </svg>
-
-                    <span class="wp-hint wp-photo-add-label">{{ $photoAltLabel }}</span>
                 </label>
             </div>
         </div>

@@ -1721,19 +1721,12 @@ a.wp-kpi:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     margin: 0;
     border: 2px dashed var(--wp-border);
     border-radius: 10px;
     background-color: var(--wp-surface-2);
+    color: var(--wp-text-muted);
     cursor: pointer;
-}
-
-.wp-photo-add-label {
-    font-size: 9px;
-    font-weight: 700;
-    margin-top: 3px;
-    margin-bottom: 0;
 }
 
 .wp-photo-status {
