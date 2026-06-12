@@ -71,26 +71,26 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         range(1, 19),
     );
 
-    $expectedTitlesInOrder = [
-        'Teams',
-        'Locaties',
-        'Locatiedetail',
-        'Meldingen',
-        'Meldingdetail',
-        'Terugkerende melding',
-        'Taken',
-        'Taakdetail',
-        'Kalender',
-        'Dashboard',
-        'Instellingen',
-        'Twee QR-codes',
-        'Publiek portaal',
-        'Team QR',
-        "Foto's bij taken",
-        'Teamleader',
-        'Icoon collega vrijgeven',
-        'Workers beheren',
-        'Taken afhandelen',
+    $expectedChapterIds = [
+        'chapter-team',
+        'chapter-locations-list',
+        'chapter-locations-show',
+        'chapter-issues-list',
+        'chapter-issues-show',
+        'chapter-issues-create',
+        'chapter-tasks-list',
+        'chapter-tasks-show',
+        'chapter-calendar',
+        'chapter-dashboard',
+        'chapter-settings',
+        'chapter-portal-worker-qr',
+        'chapter-portal-unit',
+        'chapter-portal-team',
+        'chapter-portal-worker-photos',
+        'chapter-portal-teamleader-role',
+        'chapter-portal-teamleader-release',
+        'chapter-portal-teamleader-workers',
+        'chapter-portal-teamleader-tasks',
     ];
 
     foreach ($expectedAnchors as $anchor) {
@@ -99,10 +99,10 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 
     $positions = [];
 
-    foreach ($expectedTitlesInOrder as $title) {
-        $needle = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+    foreach ($expectedChapterIds as $chapterId) {
+        $needle = 'id="'.$chapterId.'"';
         $pos = mb_strpos($html, $needle);
-        expect($pos)->not->toBeFalse("Titel '{$title}' niet gevonden in de handleiding.");
+        expect($pos)->not->toBeFalse("Hoofdstuk-anchor '{$chapterId}' niet gevonden in de handleiding.");
         $positions[] = $pos;
     }
 
@@ -123,6 +123,10 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('Gegenereerd op')
         ->assertSee(__('manual.toc.admin_portal'))
         ->assertSee(__('manual.toc.internet_portal'))
+        ->assertSee('href="#section-admin-portal"', false)
+        ->assertSee('href="#section-internet-portal"', false)
+        ->assertSee('id="section-admin-portal"', false)
+        ->assertSee('id="section-internet-portal"', false)
         ->assertSee(__('manual.sections.admin_portal.title'))
         ->assertSee(__('manual.sections.internet_portal.title'))
         ->assertSee(__('manual.sections.admin_portal.intro'))

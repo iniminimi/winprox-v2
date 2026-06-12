@@ -63,7 +63,9 @@
                 <div style="display: flex; flex-direction: column; gap: 1.25rem;">
                     @foreach ($tocSections as $section)
                         <div>
-                            <p style="font-weight: 700; color: var(--wp-text-heading); margin: 0 0 0.5rem; font-size: 0.9rem;">{{ $section['label'] }}</p>
+                            <p style="font-weight: 700; color: var(--wp-text-heading); margin: 0 0 0.5rem; font-size: 0.9rem;">
+                                <a href="#section-{{ $section['id'] }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $section['label'] }}</a>
+                            </p>
                             <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
                                 @foreach ($section['chapters'] as $chapter)
                                     @php $slug = str_replace('.', '-', $chapter['key']); @endphp
@@ -151,7 +153,9 @@
     @php $chapterOffset = 0; @endphp
     @if (!empty($tocSections))
         @foreach ($tocSections as $section)
-            <div style="
+            <div
+                id="section-{{ $section['id'] }}"
+                style="
                 padding: 2.5rem 2.5rem 1rem;
                 max-width: 900px;
                 margin: 0 auto;
