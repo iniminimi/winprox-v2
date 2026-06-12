@@ -1,4 +1,4 @@
-<div class="wp-manual-section-statuses">
+<div id="section-{{ $sectionId }}-statuses" class="wp-manual-section-statuses">
     <h3 class="wp-manual-section-statuses__title">{{ $block['title'] }}</h3>
     <p class="wp-manual-section-statuses__intro">{{ $block['intro'] }}</p>
 

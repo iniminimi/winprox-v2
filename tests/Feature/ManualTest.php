@@ -129,18 +129,18 @@ it('toont gecentraliseerde portaal-statussen met pillen en geen statussen per ho
         ->assertDontSee('Meldingstatus op het dashboard volgt de status van de gekoppelde taken.')
         ->getContent();
 
-    $adminPos = mb_strpos($html, __('manual.portal_statuses.admin_portal.title'));
-    $internetPos = mb_strpos($html, __('manual.portal_statuses.internet_portal.title'));
+    $adminStatusPos = mb_strpos($html, 'id="section-admin-portal-statuses"');
+    $internetStatusPos = mb_strpos($html, 'id="section-internet-portal-statuses"');
     $settingsPos = mb_strpos($html, 'id="chapter-settings"');
     $qrPos = mb_strpos($html, 'id="chapter-portal-worker-qr"');
 
-    expect($adminPos)->not->toBeFalse()
-        ->and($internetPos)->not->toBeFalse()
+    expect($adminStatusPos)->not->toBeFalse()
+        ->and($internetStatusPos)->not->toBeFalse()
         ->and($settingsPos)->not->toBeFalse()
         ->and($qrPos)->not->toBeFalse()
-        ->and($settingsPos)->toBeLessThan($adminPos)
-        ->and($adminPos)->toBeLessThan($qrPos)
-        ->and($qrPos)->toBeLessThan($internetPos);
+        ->and($settingsPos)->toBeLessThan($adminStatusPos)
+        ->and($adminStatusPos)->toBeLessThan($qrPos)
+        ->and($qrPos)->toBeLessThan($internetStatusPos);
 });
 
 it('toont tenant logo en naam op de algemene handleiding cover', function () {
@@ -173,6 +173,10 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee('Gegenereerd op')
         ->assertSee(__('manual.toc.admin_portal'))
         ->assertSee(__('manual.toc.internet_portal'))
+        ->assertSee('href="#section-admin-portal-statuses"', false)
+        ->assertSee('href="#section-internet-portal-statuses"', false)
+        ->assertSee(__('manual.portal_statuses.admin_portal.title'))
+        ->assertSee(__('manual.portal_statuses.internet_portal.title'))
         ->assertSee('href="#section-admin-portal"', false)
         ->assertSee('href="#section-internet-portal"', false)
         ->assertSee('id="section-admin-portal"', false)

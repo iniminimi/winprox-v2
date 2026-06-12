@@ -73,6 +73,9 @@
                   @php $slug = str_replace('.', '-', $chapter['key']); @endphp
                   <li><a href="#chapter-{{ $slug }}">{{ $chapter['title'] }}</a></li>
                 @endforeach
+                @if (!empty($section['statusBlock']))
+                  <li><a href="#section-{{ $section['id'] }}-statuses">{{ $section['statusBlock']['title'] }}</a></li>
+                @endif
               </ol>
             </div>
           @endforeach
@@ -208,6 +211,7 @@
       @if (!empty($section['statusBlock']))
         @include('livewire.pages.partials.manual-section-statuses', [
           'block' => $section['statusBlock'],
+          'sectionId' => $section['id'],
         ])
       @endif
     @endforeach
