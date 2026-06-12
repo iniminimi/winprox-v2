@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Pages;
 
 use App\Livewire\Pages\Concerns\HasManualLocale;
+use App\Support\Manual\ManualChapterIcons;
 use App\Support\Manual\ManualChapters;
 use App\Support\Manual\ManualPortalStatuses;
 use Livewire\Attributes\Layout;
@@ -60,7 +61,9 @@ class ManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
-        $chapters = ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true);
+        $chapters = ManualChapterIcons::applyToChapters(
+            ManualChapters::fromPageHelp(self::CHAPTER_KEYS, withoutStatuses: true),
+        );
         $splitAt = count(self::ADMIN_CHAPTER_KEYS);
 
         return view('livewire.pages.manual-index', [

@@ -187,6 +187,7 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee(__('manual.sections.internet_portal.intro'))
         ->assertSee('wp-manual-toc-columns', false)
         ->assertSee('wp-manual-toc-panel', false)
+        ->assertSee('wp-manual-toc-panel__icon', false)
         ->assertSee('wp-manual-print-footer', false)
         ->assertSee(__('manual.print_footer', ['title' => 'WinProx Handleiding', 'tenant' => 'Facility Demo BV']))
         ->assertSee(__('manual.cover.print_hint'));
