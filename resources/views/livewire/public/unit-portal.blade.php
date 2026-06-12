@@ -461,9 +461,8 @@
         @if ($portalSection === 'home' && ($workerBelongsToUnitTeam || $qrLinkPhotos->isNotEmpty()))
             @php
                 $portalStoredCount = $qrLinkPhotos->count();
-                $portalTempCount = count($newPortalPhotos);
-                $portalTotalCount = $portalStoredCount + $portalTempCount;
-                $portalCanAddMore = $portalTotalCount < 4;
+                $portalSlotsLeft = max(0, 4 - $portalStoredCount);
+                $portalCanAddMore = $portalSlotsLeft > 0;
             @endphp
 
             <div class="wp-card wp-card-pad wp-stack" wire:key="qr-photos-card" x-data="{ open: false }">
@@ -525,39 +524,29 @@
                     @endif
 
                     @if ($workerBelongsToUnitTeam)
-                        @if ($portalTempCount > 0)
-                            <div class="wp-photo-grid wp-photo-grid--gallery">
-                                @foreach ($newPortalPhotos as $index => $photo)
-                                    <div class="wp-photo-thumb" style="position:relative;" wire:key="portal-temp-photo-{{ $index }}">
-                                        <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
-                                        <button
-                                            type="button"
-                                            class="btn btn--danger btn--sm"
-                                            style="position:absolute;top:2px;right:2px;padding:2px 6px;font-size:10px;"
-                                            wire:click="removeNewPortalPhoto({{ $index }})"
-                                        >×</button>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
-
                         @if ($portalCanAddMore)
-                            @include('partials.wp-issue-photo-upload', ['model' => 'newPortalPhotos', 'preferCamera' => true, 'hintKey' => 'portal.unit.update_photos_hint'])
-                        @endif
-
-                        @error('newPortalPhotos') <p class="wp-error">{{ $message }}</p> @enderror
-                        @error('newPortalPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-
-                        @if ($portalTempCount > 0)
                             <form
                                 x-data="{ isOffline: !navigator.onLine }"
                                 x-init="
+                                    queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
                                     window.addEventListener('offline', () => isOffline = true);
                                     window.addEventListener('online', () => isOffline = false);
                                 "
                                 @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.updateUnitPhotos()"
-                                wire:key="portal-photo-submit-form"
+                                wire:key="portal-photo-form-{{ $portalStoredCount }}"
+                                class="wp-stack"
                             >
+                                @include('partials.wp-issue-photo-upload', [
+                                    'model' => 'newPortalPhotos',
+                                    'max' => $portalSlotsLeft,
+                                    'removeMethod' => 'removeNewPortalPhoto',
+                                    'preferCamera' => true,
+                                    'hintKey' => 'portal.unit.update_photos_hint',
+                                ])
+
+                                @error('newPortalPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                                @error('newPortalPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+
                                 <div class="wp-portal-actions">
                                     <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
                                         <x-wp-spinner wire:loading class="wp-mr-2" />

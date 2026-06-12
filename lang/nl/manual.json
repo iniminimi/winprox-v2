@@ -34,5 +34,19 @@
         "workers_desc": "Team-QR en unit-QR op de werkvloer — aanmelden, taken en foto's.",
         "teamleaders": "Handleiding teamleaders",
         "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het teamportaal."
+    },
+    "workers": {
+        "cover": {
+            "title": "Handleiding uitvoerders",
+            "subtitle": "Team-QR en unit-QR — taken op locatie"
+        },
+        "footer": "WinProx — Handleiding uitvoerders — :date"
+    },
+    "teamleaders": {
+        "cover": {
+            "title": "Handleiding teamleaders",
+            "subtitle": "Teamportaal — collega's en taken coördineren"
+        },
+        "footer": "WinProx — Handleiding teamleaders — :date"
     }
 }

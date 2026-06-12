@@ -431,6 +431,19 @@
                 }
             ]
         },
+        "portal.worker.qr": {
+            "title": "Help — Two QR codes",
+            "actions": [
+                {
+                    "label": "Unit QR",
+                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in via worker mode to start or complete open tasks on that unit."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Placed with the team (warehouse, workshop, …). Sign in here to see and handle all open tasks for your team, regardless of which unit they belong to."
+                }
+            ]
+        },
         "portal.unit": {
             "title": "Help — Unit QR",
             "actions": [
@@ -440,7 +453,15 @@
                 },
                 {
                     "label": "Worker mode",
-                    "text": "Known workers sign in with name and icon to start or complete open tasks."
+                    "text": "On the unit page, switch to worker mode, sign in with name and icon and see only tasks for that unit."
+                },
+                {
+                    "label": "Dynamic QR",
+                    "text": "Via the team portal you can link a loose QR to a unit and register GPS coordinates — useful for mobile assets."
+                },
+                {
+                    "label": "Handle issues",
+                    "text": "Citizens can submit an issue on the same unit QR; you handle the related task."
                 },
                 {
                     "label": "Documents & announcements",
@@ -463,23 +484,124 @@
                 "closed": "Task is closed."
             }
         },
+        "portal.worker.photos": {
+            "title": "Help — Photos on tasks",
+            "actions": [
+                {
+                    "label": "Add photos",
+                    "text": "When starting or completing a task, add photos as proof or explanation. Photos are automatically compressed for fast upload."
+                },
+                {
+                    "label": "Wait for upload",
+                    "text": "Wait until the upload finishes before confirming — otherwise photos will be missing from the task."
+                }
+            ]
+        },
         "portal.team": {
             "title": "Help — Team QR",
             "actions": [
                 {
-                    "label": "Sign in",
-                    "text": "Enter your name and choose your icon to identify yourself as a worker."
+                    "label": "Name and icon",
+                    "text": "Scan the QR, enter your name and choose your personal icon. This helps the team see who picked up which task."
                 },
                 {
-                    "label": "Complete tasks",
-                    "text": "Start tasks, add notes and complete with photos if needed."
+                    "label": "First time",
+                    "text": "New to the team? Register via «New worker» on the team portal, then choose your icon."
+                },
+                {
+                    "label": "Sign out",
+                    "text": "Sign out when finished so a colleague can use the same icon on another device."
+                },
+                {
+                    "label": "Open tasks",
+                    "text": "After signing in you see all open tasks for your team. Tap a task to view details."
+                },
+                {
+                    "label": "Start",
+                    "text": "Set a task to «In progress» when you start. Other team members will see you are working on it."
+                },
+                {
+                    "label": "Complete",
+                    "text": "Finish with a short note and optional photos. The task status becomes «Done»."
                 }
             ],
+            "status_note": "Each task goes through the statuses below.",
             "statuses": {
-                "new": "Not yet started.",
+                "new": "Not started yet — waiting for a worker.",
+                "in_progress": "Someone is working on it on site.",
+                "done": "Work completed by a worker.",
+                "closed": "Closed by admin — issue can be closed."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Help — Team leader",
+            "actions": [
+                {
+                    "label": "Role",
+                    "text": "A team leader is a worker with extra rights on the team portal. You handle tasks yourself and help colleagues get started."
+                },
+                {
+                    "label": "Assignment",
+                    "text": "An administrator assigns team leaders in WinProx on the team. You see the «Team leader» badge after signing in."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Scan the team QR and sign in with your name and icon — the same as any worker."
+                },
+                {
+                    "label": "Extra panels",
+                    "text": "After signing in you see extra sections: release colleague icon and manage workers."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Help — Release colleague icon",
+            "actions": [
+                {
+                    "label": "When needed",
+                    "text": "If a colleague picked the wrong icon too often, they are blocked. You can release the icon so they can choose again."
+                },
+                {
+                    "label": "Steps",
+                    "text": "Open «Release», confirm your own icon first, select the blocked colleague and confirm. The colleague can then sign in again."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Help — Manage workers",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "Open «Manage» to see all workers on your team, including the team leader badge."
+                },
+                {
+                    "label": "Add",
+                    "text": "Add a new worker with first and last name. Then let the colleague scan the team QR to register and choose an icon."
+                },
+                {
+                    "label": "Remove",
+                    "text": "Remove workers who no longer belong to the team. You cannot remove yourself."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Help — Handle tasks",
+            "actions": [
+                {
+                    "label": "Same as worker",
+                    "text": "Start open tasks, add notes, attach photos and complete — identical to the workers manual."
+                },
+                {
+                    "label": "Coordination",
+                    "text": "Keep overview of open tasks and coordinate who picks up which task with your team."
+                }
+            ],
+            "status_note": "Task statuses are the same as for all workers.",
+            "statuses": {
+                "new": "Not started yet.",
                 "in_progress": "In progress on site.",
                 "done": "Completed by you or a colleague.",
-                "closed": "Closed by management."
+                "closed": "Closed by admin."
             }
         },
         "platform.tenants": {

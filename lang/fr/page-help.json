@@ -431,6 +431,19 @@
                 }
             ]
         },
+        "portal.worker.qr": {
+            "title": "Aide — Deux codes QR",
+            "actions": [
+                {
+                    "label": "QR unité",
+                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous en mode exécutant pour démarrer ou terminer les tâches ouvertes sur cette unité."
+                },
+                {
+                    "label": "QR équipe",
+                    "text": "Placé avec l'équipe (entrepôt, atelier, …). Connectez-vous ici pour voir et traiter toutes les tâches ouvertes de votre équipe, quelle que soit l'unité concernée."
+                }
+            ]
+        },
         "portal.unit": {
             "title": "Aide — QR unité",
             "actions": [
@@ -439,8 +452,16 @@
                     "text": "Scannez le QR, décrivez le problème et ajoutez éventuellement des photos. Une tâche est créée pour l'équipe."
                 },
                 {
-                    "label": "Mode worker",
-                    "text": "Les exécutants reconnus s'identifient avec nom et icône pour démarrer ou terminer les tâches ouvertes."
+                    "label": "Mode exécutant",
+                    "text": "Sur la page unité, passez en mode exécutant, connectez-vous avec nom et icône et ne voyez que les tâches de cette unité."
+                },
+                {
+                    "label": "QR dynamique",
+                    "text": "Via le portail équipe, vous pouvez lier un QR mobile à une unité et enregistrer les coordonnées GPS — utile pour les équipements mobiles."
+                },
+                {
+                    "label": "Traiter les signalements",
+                    "text": "Les citoyens peuvent soumettre un signalement sur le même QR unité ; vous traitez la tâche associée."
                 },
                 {
                     "label": "Documents & annonces",
@@ -463,23 +484,124 @@
                 "closed": "Tâche clôturée."
             }
         },
+        "portal.worker.photos": {
+            "title": "Aide — Photos sur les tâches",
+            "actions": [
+                {
+                    "label": "Ajouter des photos",
+                    "text": "Lors du démarrage ou de la clôture d'une tâche, ajoutez des photos comme preuve ou explication. Les photos sont automatiquement compressées pour un envoi rapide."
+                },
+                {
+                    "label": "Attendre l'envoi",
+                    "text": "Attendez la fin de l'envoi avant de confirmer — sinon les photos manqueront dans la tâche."
+                }
+            ]
+        },
         "portal.team": {
             "title": "Aide — QR équipe",
             "actions": [
                 {
-                    "label": "S'identifier",
-                    "text": "Entrez votre nom et choisissez votre icône pour vous identifier comme exécutant."
+                    "label": "Nom et icône",
+                    "text": "Scannez le QR, saisissez votre nom et choisissez votre icône personnelle. L'équipe voit ainsi qui a pris quelle tâche."
                 },
                 {
-                    "label": "Traiter les tâches",
-                    "text": "Démarrez les tâches, ajoutez des notes et terminez avec des photos si nécessaire."
+                    "label": "Première fois",
+                    "text": "Nouveau dans l'équipe ? Inscrivez-vous via «Nouveau collaborateur» sur le portail équipe, puis choisissez votre icône."
+                },
+                {
+                    "label": "Déconnexion",
+                    "text": "Déconnectez-vous une fois terminé pour qu'un collègue puisse utiliser la même icône sur un autre appareil."
+                },
+                {
+                    "label": "Tâches ouvertes",
+                    "text": "Après connexion, vous voyez toutes les tâches ouvertes de votre équipe. Touchez une tâche pour voir les détails."
+                },
+                {
+                    "label": "Démarrer",
+                    "text": "Passez une tâche en «En cours» quand vous commencez. Les autres membres voient que vous y travaillez."
+                },
+                {
+                    "label": "Terminer",
+                    "text": "Clôturez avec une courte note et des photos éventuelles. La tâche passe au statut «Terminé»."
                 }
             ],
+            "status_note": "Chaque tâche passe par les statuts ci-dessous.",
             "statuses": {
-                "new": "Pas encore démarré.",
-                "in_progress": "En cours sur site.",
-                "done": "Terminé par vous ou un collègue.",
-                "closed": "Clôturé par la gestion."
+                "new": "Pas encore démarrée — en attente d'un exécutant.",
+                "in_progress": "Quelqu'un y travaille sur le terrain.",
+                "done": "Travail terminé par un exécutant.",
+                "closed": "Clôturée par l'administration — le signalement peut être fermé."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Aide — Chef d'équipe",
+            "actions": [
+                {
+                    "label": "Rôle",
+                    "text": "Un chef d'équipe est un exécutant avec des droits supplémentaires sur le portail équipe. Vous traitez les tâches vous-même et aidez les collègues."
+                },
+                {
+                    "label": "Désignation",
+                    "text": "Un administrateur désigne les chefs d'équipe dans WinProx sur l'équipe. Vous voyez le badge «Chef d'équipe» après connexion."
+                },
+                {
+                    "label": "QR équipe",
+                    "text": "Scannez le QR équipe et connectez-vous avec votre nom et icône — comme tout exécutant."
+                },
+                {
+                    "label": "Panneaux supplémentaires",
+                    "text": "Après connexion, vous voyez des sections supplémentaires : libérer l'icône d'un collègue et gérer les exécutants."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Aide — Libérer l'icône d'un collègue",
+            "actions": [
+                {
+                    "label": "Quand c'est nécessaire",
+                    "text": "Si un collègue a choisi trop souvent une mauvaise icône, il est bloqué. Vous pouvez libérer l'icône pour qu'il puisse choisir à nouveau."
+                },
+                {
+                    "label": "Étapes",
+                    "text": "Ouvrez «Libérer», confirmez d'abord votre propre icône, choisissez le collègue bloqué et confirmez. Le collègue peut ensuite se reconnecter."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Aide — Gérer les exécutants",
+            "actions": [
+                {
+                    "label": "Vue d'ensemble",
+                    "text": "Ouvrez «Gérer» pour voir tous les exécutants de votre équipe, y compris le badge chef d'équipe."
+                },
+                {
+                    "label": "Ajouter",
+                    "text": "Ajoutez un nouvel exécutant avec prénom et nom. Laissez ensuite le collègue scanner le QR équipe pour s'inscrire et choisir une icône."
+                },
+                {
+                    "label": "Supprimer",
+                    "text": "Supprimez les exécutants qui ne font plus partie de l'équipe. Vous ne pouvez pas vous supprimer vous-même."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Aide — Traiter les tâches",
+            "actions": [
+                {
+                    "label": "Comme un exécutant",
+                    "text": "Démarrez les tâches ouvertes, ajoutez des notes, des photos et terminez — identique au manuel exécutants."
+                },
+                {
+                    "label": "Coordination",
+                    "text": "Gardez une vue d'ensemble des tâches ouvertes et coordonnez avec l'équipe qui prend quelle tâche."
+                }
+            ],
+            "status_note": "Les statuts des tâches sont les mêmes que pour tous les exécutants.",
+            "statuses": {
+                "new": "Pas encore démarrée.",
+                "in_progress": "En cours sur le terrain.",
+                "done": "Terminée par vous ou un collègue.",
+                "closed": "Clôturée par l'administration."
             }
         },
         "platform.tenants": {

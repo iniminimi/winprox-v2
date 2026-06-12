@@ -390,8 +390,11 @@ class UnitPortal extends Component
             return;
         }
 
+        $unit = $this->unit();
+        $slotsLeft = max(0, 4 - $unit->qrLinkPhotos()->count());
+
         $this->validate([
-            'newPortalPhotos' => ['nullable', 'array', 'max:4'],
+            'newPortalPhotos' => ['nullable', 'array', 'max:'.$slotsLeft],
             'newPortalPhotos.*' => ['image', 'max:10240'],
         ], [
             'newPortalPhotos.max' => __('portal.report.errors.photos_max'),
@@ -402,8 +405,6 @@ class UnitPortal extends Component
         if (empty($this->newPortalPhotos)) {
             return;
         }
-
-        $unit = $this->unit();
         $unit->loadMissing(['qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)]);
         $qrCode = $unit->qrCodes->first();
 

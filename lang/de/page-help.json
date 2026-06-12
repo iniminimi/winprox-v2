@@ -431,6 +431,19 @@
                 }
             ]
         },
+        "portal.worker.qr": {
+            "title": "Hilfe — Zwei QR-Codes",
+            "actions": [
+                {
+                    "label": "Einheiten-QR",
+                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Mitarbeiter melden Sie sich im Mitarbeiter-Modus an, um offene Aufgaben an dieser Einheit zu starten oder abzuschließen."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Beim Team platziert (Lager, Werkstatt, …). Melden Sie sich hier an, um alle offenen Aufgaben Ihres Teams zu sehen und zu bearbeiten — unabhängig von der Einheit."
+                }
+            ]
+        },
         "portal.unit": {
             "title": "Hilfe — Unit-QR",
             "actions": [
@@ -439,8 +452,16 @@
                     "text": "Scannen Sie den QR, beschreiben Sie das Problem und fügen Sie optional Fotos hinzu. Es wird eine Aufgabe für das Team erstellt."
                 },
                 {
-                    "label": "Worker-Modus",
-                    "text": "Bekannte Ausführende melden sich mit Name und Icon an, um offene Aufgaben zu starten oder abzuschließen."
+                    "label": "Mitarbeiter-Modus",
+                    "text": "Wechseln Sie auf der Einheitenseite in den Mitarbeiter-Modus, melden Sie sich mit Name und Symbol an und sehen Sie nur Aufgaben für diese Einheit."
+                },
+                {
+                    "label": "Dynamischer QR",
+                    "text": "Über das Teamportal können Sie einen losen QR mit einer Einheit verknüpfen und GPS-Koordinaten erfassen — nützlich für mobile Anlagen."
+                },
+                {
+                    "label": "Meldungen bearbeiten",
+                    "text": "Bürger können über denselben Einheiten-QR eine Meldung einreichen; Sie bearbeiten die zugehörige Aufgabe."
                 },
                 {
                     "label": "Dokumente & Mitteilungen",
@@ -463,23 +484,124 @@
                 "closed": "Aufgabe ist geschlossen."
             }
         },
+        "portal.worker.photos": {
+            "title": "Hilfe — Fotos bei Aufgaben",
+            "actions": [
+                {
+                    "label": "Fotos hinzufügen",
+                    "text": "Fügen Sie beim Starten oder Abschließen einer Aufgabe Fotos als Nachweis oder Erläuterung hinzu. Fotos werden automatisch komprimiert für schnellen Upload."
+                },
+                {
+                    "label": "Auf Upload warten",
+                    "text": "Warten Sie, bis der Upload abgeschlossen ist, bevor Sie bestätigen — sonst fehlen Fotos in der Aufgabe."
+                }
+            ]
+        },
         "portal.team": {
             "title": "Hilfe — Team-QR",
             "actions": [
                 {
-                    "label": "Anmelden",
-                    "text": "Geben Sie Ihren Namen ein und wählen Sie Ihr Icon, um sich als Ausführender zu identifizieren."
+                    "label": "Name und Symbol",
+                    "text": "Scannen Sie den QR, geben Sie Ihren Namen ein und wählen Sie Ihr persönliches Symbol. So sieht das Team, wer welche Aufgabe übernommen hat."
                 },
                 {
-                    "label": "Aufgaben erledigen",
-                    "text": "Starten Sie Aufgaben, fügen Sie Notizen hinzu und schließen Sie bei Bedarf mit Fotos ab."
+                    "label": "Erstes Mal",
+                    "text": "Neu im Team? Registrieren Sie sich über «Neuer Mitarbeiter» im Teamportal und wählen Sie dann Ihr Symbol."
+                },
+                {
+                    "label": "Abmelden",
+                    "text": "Melden Sie sich ab, wenn Sie fertig sind, damit ein Kollege dasselbe Symbol auf einem anderen Gerät nutzen kann."
+                },
+                {
+                    "label": "Offene Aufgaben",
+                    "text": "Nach der Anmeldung sehen Sie alle offenen Aufgaben Ihres Teams. Tippen Sie auf eine Aufgabe für Details."
+                },
+                {
+                    "label": "Starten",
+                    "text": "Setzen Sie eine Aufgabe auf «In Bearbeitung», wenn Sie beginnen. Andere Teammitglieder sehen, dass Sie daran arbeiten."
+                },
+                {
+                    "label": "Abschließen",
+                    "text": "Schließen Sie mit einer kurzen Notiz und optionalen Fotos ab. Die Aufgabe erhält den Status «Erledigt»."
                 }
             ],
+            "status_note": "Jede Aufgabe durchläuft die folgenden Status.",
+            "statuses": {
+                "new": "Noch nicht gestartet — wartet auf einen Mitarbeiter.",
+                "in_progress": "Jemand arbeitet vor Ort daran.",
+                "done": "Arbeit von einem Mitarbeiter abgeschlossen.",
+                "closed": "Vom Administrator geschlossen — Meldung kann abgeschlossen werden."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Hilfe — Teamleiter",
+            "actions": [
+                {
+                    "label": "Rolle",
+                    "text": "Ein Teamleiter ist ein Mitarbeiter mit zusätzlichen Rechten im Teamportal. Sie bearbeiten Aufgaben selbst und helfen Kollegen beim Einstieg."
+                },
+                {
+                    "label": "Zuweisung",
+                    "text": "Ein Administrator weist Teamleiter in WinProx beim Team zu. Nach der Anmeldung sehen Sie das Badge «Teamleiter»."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Scannen Sie den Team-QR und melden Sie sich mit Name und Symbol an — wie jeder Mitarbeiter."
+                },
+                {
+                    "label": "Zusätzliche Bereiche",
+                    "text": "Nach der Anmeldung sehen Sie zusätzliche Bereiche: Kollegen-Symbol freigeben und Mitarbeiter verwalten."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Hilfe — Kollegen-Symbol freigeben",
+            "actions": [
+                {
+                    "label": "Wann nötig",
+                    "text": "Wenn ein Kollege zu oft das falsche Symbol gewählt hat, wird er gesperrt. Sie können das Symbol freigeben, damit er erneut wählen kann."
+                },
+                {
+                    "label": "Schritte",
+                    "text": "Öffnen Sie «Freigeben», bestätigen Sie zuerst Ihr eigenes Symbol, wählen Sie den gesperrten Kollegen und bestätigen Sie. Der Kollege kann sich danach erneut anmelden."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Hilfe — Mitarbeiter verwalten",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Öffnen Sie «Verwalten», um alle Mitarbeiter Ihres Teams zu sehen, einschließlich Teamleiter-Badge."
+                },
+                {
+                    "label": "Hinzufügen",
+                    "text": "Fügen Sie einen neuen Mitarbeiter mit Vor- und Nachname hinzu. Lassen Sie den Kollegen danach den Team-QR scannen, um sich zu registrieren und ein Symbol zu wählen."
+                },
+                {
+                    "label": "Entfernen",
+                    "text": "Entfernen Sie Mitarbeiter, die nicht mehr zum Team gehören. Sie können sich nicht selbst entfernen."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Hilfe — Aufgaben bearbeiten",
+            "actions": [
+                {
+                    "label": "Wie ein Mitarbeiter",
+                    "text": "Offene Aufgaben starten, Notizen hinzufügen, Fotos anhängen und abschließen — identisch zum Mitarbeiter-Handbuch."
+                },
+                {
+                    "label": "Koordination",
+                    "text": "Behalten Sie den Überblick über offene Aufgaben und koordinieren Sie mit dem Team, wer welche Aufgabe übernimmt."
+                }
+            ],
+            "status_note": "Aufgabenstatus sind für alle Mitarbeiter gleich.",
             "statuses": {
                 "new": "Noch nicht gestartet.",
-                "in_progress": "Vor Ort in Bearbeitung.",
+                "in_progress": "In Bearbeitung vor Ort.",
                 "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
-                "closed": "Von der Verwaltung geschlossen."
+                "closed": "Vom Administrator geschlossen."
             }
         },
         "platform.tenants": {

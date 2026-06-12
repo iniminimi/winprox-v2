@@ -34,5 +34,19 @@
         "workers_desc": "QR équipe et QR unité sur le terrain — connexion, tâches et photos.",
         "teamleaders": "Manuel chefs d'équipe",
         "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail équipe."
+    },
+    "workers": {
+        "cover": {
+            "title": "Manuel exécutants",
+            "subtitle": "QR équipe et QR unité — tâches sur le terrain"
+        },
+        "footer": "WinProx — Manuel exécutants — :date"
+    },
+    "teamleaders": {
+        "cover": {
+            "title": "Manuel chefs d'équipe",
+            "subtitle": "Portail équipe — coordonner collègues et tâches"
+        },
+        "footer": "WinProx — Manuel chefs d'équipe — :date"
     }
 }

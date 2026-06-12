@@ -34,5 +34,19 @@
         "workers_desc": "Team-QR und Einheiten-QR vor Ort — Anmeldung, Aufgaben und Fotos.",
         "teamleaders": "Teamleiter-Handbuch",
         "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Teamportal koordinieren."
+    },
+    "workers": {
+        "cover": {
+            "title": "Mitarbeiter-Handbuch",
+            "subtitle": "Team-QR und Einheiten-QR — Aufgaben vor Ort"
+        },
+        "footer": "WinProx — Mitarbeiter-Handbuch — :date"
+    },
+    "teamleaders": {
+        "cover": {
+            "title": "Teamleiter-Handbuch",
+            "subtitle": "Teamportal — Kollegen und Aufgaben koordinieren"
+        },
+        "footer": "WinProx — Teamleiter-Handbuch — :date"
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\IssuePhoto;
 use App\Models\IssueUpdate;
+use App\Models\QrLinkPhoto;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -621,4 +622,60 @@ it('shows issue updates with photos on issue detail', function () {
         ->assertSee(__('portal.issue.updates_title'))
         ->assertSee('Nieuwe update met foto als bewijs.')
         ->assertSee('/storage/issue-photos/update-on-disk.jpg', false);
+});
+
+it('lets a verified worker store unit photos up to the remaining slots', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    QrLinkPhoto::factory()->count(2)->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'qr_code_id' => null,
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('newPortalPhotos', [
+            UploadedFile::fake()->create('unit-a.jpg', 120, 'image/jpeg'),
+            UploadedFile::fake()->create('unit-b.jpg', 120, 'image/jpeg'),
+        ])
+        ->call('updateUnitPhotos')
+        ->assertHasNoErrors()
+        ->assertSet('newPortalPhotos', [])
+        ->assertSee(__('portal.unit.photos_updated'));
+
+    expect($unit->fresh()->qrLinkPhotos()->count())->toBe(4);
+});
+
+it('rejects unit photo uploads that exceed the four-photo limit', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    QrLinkPhoto::factory()->count(3)->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'qr_code_id' => null,
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('newPortalPhotos', [
+            UploadedFile::fake()->create('unit-a.jpg', 120, 'image/jpeg'),
+            UploadedFile::fake()->create('unit-b.jpg', 120, 'image/jpeg'),
+        ])
+        ->call('updateUnitPhotos')
+        ->assertHasErrors(['newPortalPhotos']);
+
+    expect($unit->fresh()->qrLinkPhotos()->count())->toBe(3);
 });

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Pages;
 
 use App\Livewire\Pages\Concerns\HasManualLocale;
-use App\Support\PageHelp;
+use App\Support\Manual\ManualChapters;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -42,19 +42,8 @@ class ManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
-        $chapters = [];
-
-        foreach (self::CHAPTER_KEYS as $key) {
-            $data = PageHelp::for($key);
-
-            if ($data !== null) {
-                $data['title'] = preg_replace('/^[^\x{2014}]+\x{2014} /u', '', $data['title']);
-                $chapters[] = array_merge(['key' => $key], $data);
-            }
-        }
-
         return view('livewire.pages.manual-index', [
-            'chapters' => $chapters,
+            'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
             'generatedAt' => now()->format('d-m-Y'),
             'coverPrefix' => 'manual.cover',
             'footerKey' => 'manual.footer',

@@ -34,5 +34,19 @@
         "workers_desc": "Team QR and unit QR on site — sign in, tasks and photos.",
         "teamleaders": "Team leader manual",
         "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the team portal."
+    },
+    "workers": {
+        "cover": {
+            "title": "Workers manual",
+            "subtitle": "Team QR and unit QR — tasks on site"
+        },
+        "footer": "WinProx — Workers manual — :date"
+    },
+    "teamleaders": {
+        "cover": {
+            "title": "Team leader manual",
+            "subtitle": "Team portal — coordinate colleagues and tasks"
+        },
+        "footer": "WinProx — Team leader manual — :date"
     }
 }

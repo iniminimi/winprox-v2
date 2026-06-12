@@ -431,6 +431,19 @@
                 }
             ]
         },
+        "portal.worker.qr": {
+            "title": "Hulp — Twee QR-codes",
+            "actions": [
+                {
+                    "label": "Unit-QR",
+                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je aan in worker-modus om open taken op die unit te starten of af te ronden."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Hangt bij het team (magazijn, werkplaats, …). Hier meld je je aan om alle open taken van je team te zien en af te handelen, ongeacht op welke unit ze staan."
+                }
+            ]
+        },
         "portal.unit": {
             "title": "Hulp — Unit QR",
             "actions": [
@@ -440,7 +453,15 @@
                 },
                 {
                     "label": "Worker-modus",
-                    "text": "Herkenbare uitvoerders melden zich aan met naam en icoon om open taken te starten of af te ronden."
+                    "text": "Op de unit-pagina schakel je naar worker-modus, meld je aan met naam en icoon en zie je alleen taken voor die unit."
+                },
+                {
+                    "label": "Dynamische QR",
+                    "text": "Via het teamportaal kun je een losse QR koppelen aan een unit en GPS-coördinaten registreren — handig voor mobiele assets."
+                },
+                {
+                    "label": "Meldingen afhandelen",
+                    "text": "Burgers kunnen op dezelfde unit-QR een melding indienen; jij handelt de bijbehorende taak af."
                 },
                 {
                     "label": "Documenten & mededelingen",
@@ -463,18 +484,119 @@
                 "closed": "Taak is afgesloten."
             }
         },
+        "portal.worker.photos": {
+            "title": "Hulp — Foto's bij taken",
+            "actions": [
+                {
+                    "label": "Toevoegen",
+                    "text": "Voeg bij het starten of afronden van een taak foto's toe als bewijs of toelichting. Foto's worden automatisch verkleind voor snelle upload."
+                },
+                {
+                    "label": "Wachten op upload",
+                    "text": "Wacht tot de upload klaar is voordat je bevestigt — anders ontbreken foto's in de taak."
+                }
+            ]
+        },
         "portal.team": {
             "title": "Hulp — Team QR",
             "actions": [
                 {
-                    "label": "Aanmelden",
-                    "text": "Geef je naam op en kies je icoon om je te identificeren als uitvoerder."
+                    "label": "Naam en icoon",
+                    "text": "Scan de QR, vul je naam in en kies je persoonlijke icoon. Zo herkent het team wie welke taak heeft opgepakt."
                 },
                 {
-                    "label": "Taken afhandelen",
-                    "text": "Start taken, voeg notities toe en rond af met foto's indien nodig."
+                    "label": "Eerste keer",
+                    "text": "Nieuw op het team? Registreer jezelf via «Nieuwe medewerker» op het teamportaal en kies daarna je icoon."
+                },
+                {
+                    "label": "Afmelden",
+                    "text": "Meld je af wanneer je klaar bent, zodat een collega hetzelfde icoon kan gebruiken op een ander toestel."
+                },
+                {
+                    "label": "Open taken",
+                    "text": "Na aanmelden zie je alle open taken van je team. Tik op een taak om details te bekijken."
+                },
+                {
+                    "label": "Starten",
+                    "text": "Zet een taak op «Bezig» wanneer je ermee start. Andere teamleden zien dan dat jij ermee bezig bent."
+                },
+                {
+                    "label": "Afronden",
+                    "text": "Rond af met een korte notitie en eventueel foto's. De taak krijgt status «Afgerond»."
                 }
             ],
+            "status_note": "Elke taak doorloopt onderstaande statussen.",
+            "statuses": {
+                "new": "Nog niet gestart — wacht op een uitvoerder.",
+                "in_progress": "Iemand werkt eraan op locatie.",
+                "done": "Werk is afgerond door een uitvoerder.",
+                "closed": "Afgesloten door beheer — melding kan worden gesloten."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Hulp — Teamleader",
+            "actions": [
+                {
+                    "label": "Rol",
+                    "text": "Een teamleader is een uitvoerder met extra rechten op het teamportaal. Je handelt zelf taken af én helpt collega's op weg."
+                },
+                {
+                    "label": "Aanwijzen",
+                    "text": "De beheerder wijst teamleaders toe in WinProx bij het team. Je ziet het badge «Teamleader» na aanmelden."
+                },
+                {
+                    "label": "Team-QR",
+                    "text": "Scan de team-QR en meld je aan met je naam en icoon — hetzelfde als elke uitvoerder."
+                },
+                {
+                    "label": "Extra panelen",
+                    "text": "Na aanmelden zie je extra secties: icoon collega vrijgeven en workers beheren."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Hulp — Icoon collega vrijgeven",
+            "actions": [
+                {
+                    "label": "Wanneer nodig",
+                    "text": "Als een collega te vaak een verkeerd icoon koos, wordt hij geblokkeerd. Jij kunt het icoon vrijgeven zodat hij opnieuw kan kiezen."
+                },
+                {
+                    "label": "Stappen",
+                    "text": "Open «Vrijgeven», bevestig eerst je eigen icoon, kies de geblokkeerde collega en bevestig. De collega kan daarna opnieuw inloggen."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Hulp — Workers beheren",
+            "actions": [
+                {
+                    "label": "Overzicht",
+                    "text": "Open «Beheren» om alle workers van je team te zien, inclusief teamleader-badge."
+                },
+                {
+                    "label": "Toevoegen",
+                    "text": "Voeg een nieuwe uitvoerder toe met voornaam en achternaam. Laat de collega daarna de team-QR scannen om zich te registreren en een icoon te kiezen."
+                },
+                {
+                    "label": "Verwijderen",
+                    "text": "Verwijder workers die niet meer bij het team horen. Je kunt jezelf niet verwijderen."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Hulp — Taken afhandelen",
+            "actions": [
+                {
+                    "label": "Zelfde als uitvoerder",
+                    "text": "Open taken starten, notities toevoegen, foto's bijvoegen en afronden — identiek aan de uitvoerdershandleiding."
+                },
+                {
+                    "label": "Coördinatie",
+                    "text": "Houd het overzicht op open taken en wijs collega's aan door te communiceren wie welke taak oppakt."
+                }
+            ],
+            "status_note": "Taakstatussen zijn hetzelfde als voor alle uitvoerders.",
             "statuses": {
                 "new": "Nog niet gestart.",
                 "in_progress": "Bezig op locatie.",

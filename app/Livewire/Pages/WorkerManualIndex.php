@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Pages;
 
 use App\Livewire\Pages\Concerns\HasManualLocale;
-use App\Support\Manual\StructuredManual;
+use App\Support\Manual\ManualChapters;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -15,6 +15,13 @@ use Livewire\Component;
 class WorkerManualIndex extends Component
 {
     use HasManualLocale;
+
+    private const CHAPTER_KEYS = [
+        'portal.worker.qr',
+        'portal.team',
+        'portal.unit',
+        'portal.worker.photos',
+    ];
 
     public function mount(): void
     {
@@ -29,10 +36,10 @@ class WorkerManualIndex extends Component
     public function render(): \Illuminate\View\View
     {
         return view('livewire.pages.manual-index', [
-            'chapters' => StructuredManual::chapters('worker-manual'),
+            'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
             'generatedAt' => now()->format('d-m-Y'),
-            'coverPrefix' => 'worker-manual.cover',
-            'footerKey' => 'worker-manual.footer',
+            'coverPrefix' => 'manual.workers.cover',
+            'footerKey' => 'manual.workers.footer',
             'showGettingStarted' => false,
         ]);
     }
