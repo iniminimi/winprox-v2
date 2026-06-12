@@ -3,6 +3,7 @@
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\Storage;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -110,6 +111,25 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
     sort($sorted);
 
     expect($positions)->toBe($sorted, 'De volgorde van de hoofdstukken klopt niet met de verwachte onboarding-flow.');
+});
+
+it('toont tenant logo en naam op de algemene handleiding cover', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['name' => 'Facility Demo BV']);
+    $logoPath = 'tenant-logos/demo.png';
+    Storage::disk('public')->put($logoPath, 'logo');
+    $tenant->update(['logo_path' => $logoPath]);
+
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee('Work in Proximity — alle medewerkers')
+        ->assertSee('Facility Demo BV')
+        ->assertSee('wp-manual-cover__tenant-logo', false)
+        ->assertSee(Storage::disk('public')->url($logoPath), false);
 });
 
 it('toont de coverpage met datum en inhoudsopgave', function () {

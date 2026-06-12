@@ -20,6 +20,26 @@ body.wp-shell:has(.wp-manual-root) {
     gap: 2rem;
 }
 
+.wp-manual-cover__logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wp-manual-cover__logo {
+    max-width: 220px;
+    height: auto;
+}
+
+.wp-manual-cover__tenant-logo {
+    max-width: 140px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
 .wp-manual-cover__brand {
     margin-top: 2rem;
 }
@@ -35,6 +55,13 @@ body.wp-shell:has(.wp-manual-root) {
 .wp-manual-cover__subtitle {
     font-size: 1.25rem;
     color: var(--wp-text-secondary);
+    margin: 0 0 0.5rem;
+}
+
+.wp-manual-cover__tenant {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--wp-text);
     margin: 0 0 0.5rem;
 }
 
@@ -164,8 +191,13 @@ body.wp-shell:has(.wp-manual-root) {
     }
 
     .wp-manual-cover__logo {
-        max-width: 110px !important;
+        max-width: 110px;
         height: auto;
+    }
+
+    .wp-manual-cover__tenant-logo {
+        max-width: 90px;
+        max-height: 52px;
     }
 
     .wp-manual-cover__brand {

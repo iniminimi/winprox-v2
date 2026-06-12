@@ -29,12 +29,20 @@
 
   {{-- Cover-pagina --}}
   <div class="wp-manual-cover wp-manual-chapter">
-    <img
-      class="wp-manual-cover__logo"
-      src="{{ asset('images/Winprox_logo_300.png') }}"
-      alt="WinProx"
-      style="max-width: 220px; height: auto;"
-    >
+    <div class="wp-manual-cover__logos">
+      <img
+        class="wp-manual-cover__logo"
+        src="{{ asset('images/Winprox_logo_300.png') }}"
+        alt="WinProx"
+      >
+      @if (!empty($tenantLogoUrl))
+        <img
+          class="wp-manual-cover__tenant-logo"
+          src="{{ $tenantLogoUrl }}"
+          alt="{{ $tenantName }}"
+        >
+      @endif
+    </div>
 
     <div class="wp-manual-cover__brand">
       <h1 class="wp-manual-cover__title">
@@ -43,6 +51,9 @@
       <p class="wp-manual-cover__subtitle">
         {{ __($coverPrefix.'.subtitle') }}
       </p>
+      @if (!empty($showTenantNameOnCover) && $tenantName !== '')
+        <p class="wp-manual-cover__tenant">{{ $tenantName }}</p>
+      @endif
       <p class="wp-manual-cover__meta">
         {{ __('manual.cover.generated', ['date' => $generatedAt]) }}
       </p>

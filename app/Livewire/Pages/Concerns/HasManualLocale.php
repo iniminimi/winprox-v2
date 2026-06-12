@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Pages\Concerns;
 
+use App\Models\Tenant;
 use Illuminate\Support\Facades\App;
 use Livewire\Attributes\Url;
 
@@ -32,16 +33,26 @@ trait HasManualLocale
         $this->redirect(route($routeName, ['lang' => $locale]), navigate: false);
     }
 
-    protected function manualTenantName(): string
+    protected function manualTenant(): ?Tenant
     {
         $user = auth()->user();
 
         if ($user === null) {
-            return '';
+            return null;
         }
 
         $user->loadMissing('tenant');
 
-        return (string) ($user->tenant?->name ?? '');
+        return $user->tenant;
+    }
+
+    protected function manualTenantName(): string
+    {
+        return (string) ($this->manualTenant()?->name ?? '');
+    }
+
+    protected function manualTenantLogoUrl(): ?string
+    {
+        return $this->manualTenant()?->logoPublicUrl();
     }
 }

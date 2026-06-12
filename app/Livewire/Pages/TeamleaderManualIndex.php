@@ -39,6 +39,8 @@ class TeamleaderManualIndex extends Component
             'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
             'generatedAt' => now()->format('d-m-Y'),
             'tenantName' => $this->manualTenantName(),
+            'tenantLogoUrl' => $this->manualTenantLogoUrl(),
+            'showTenantNameOnCover' => false,
             'coverPrefix' => 'manual.teamleaders.cover',
             'footerKey' => 'manual.teamleaders.footer',
             'showGettingStarted' => false,
