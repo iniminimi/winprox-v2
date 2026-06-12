@@ -1,0 +1,186 @@
+/* Handleiding — scherm + print */
+
+.wp-manual-root {
+    --wp-manual-footer-title: 'WinProx Handleiding';
+    --wp-manual-footer-pg: 'pg';
+    --wp-manual-footer-tenant: '';
+}
+
+.wp-manual-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 4rem 2rem;
+    gap: 2rem;
+}
+
+.wp-manual-cover__brand {
+    margin-top: 2rem;
+}
+
+.wp-manual-cover__title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    color: var(--wp-text);
+    margin: 0 0 0.75rem;
+}
+
+.wp-manual-cover__subtitle {
+    font-size: 1.25rem;
+    color: var(--wp-text-secondary);
+    margin: 0 0 0.5rem;
+}
+
+.wp-manual-cover__meta {
+    font-size: 0.9rem;
+    color: var(--wp-text-muted);
+    margin: 0;
+}
+
+.wp-manual-toc {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+}
+
+.wp-manual-toc-heading {
+    font-weight: 600;
+    color: var(--wp-text);
+    margin: 0 0 0.75rem;
+    text-align: center;
+}
+
+.wp-manual-toc-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.wp-manual-toc-columns--single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 520px;
+    margin-inline: auto;
+}
+
+.wp-manual-toc-panel {
+    padding: 1rem 1.15rem;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: 12px;
+}
+
+.wp-manual-toc-panel__title {
+    font-weight: 700;
+    color: var(--wp-text-heading);
+    margin: 0 0 0.4rem;
+    font-size: 0.9rem;
+}
+
+.wp-manual-toc-panel__title a {
+    color: var(--wp-accent-text);
+    text-decoration: none;
+}
+
+.wp-manual-toc-panel__list {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+    line-height: 1.65;
+    color: var(--wp-text-body);
+    font-size: 0.82rem;
+}
+
+.wp-manual-toc-panel__list a {
+    color: var(--wp-accent-text);
+    text-decoration: none;
+}
+
+.wp-manual-print-footer {
+    display: none;
+}
+
+@media print {
+    @page {
+        margin: 1.1cm 1.1cm 2.1cm;
+    }
+
+    .wp-manual-cover {
+        min-height: 0;
+        justify-content: flex-start;
+        padding: 0.35rem 0 0.5rem;
+        gap: 0.5rem;
+        page-break-after: always;
+    }
+
+    .wp-manual-cover__logo {
+        max-width: 110px !important;
+        height: auto;
+    }
+
+    .wp-manual-cover__brand {
+        margin-top: 0.35rem;
+    }
+
+    .wp-manual-cover__title {
+        font-size: 1.35rem;
+        margin: 0 0 0.25rem;
+    }
+
+    .wp-manual-cover__subtitle {
+        font-size: 0.85rem;
+        margin: 0 0 0.15rem;
+    }
+
+    .wp-manual-cover__meta {
+        font-size: 0.72rem;
+    }
+
+    .wp-manual-toc {
+        margin-top: 0.35rem;
+        max-width: 100%;
+    }
+
+    .wp-manual-toc-heading {
+        margin: 0 0 0.35rem;
+        font-size: 0.85rem;
+    }
+
+    .wp-manual-toc-columns {
+        gap: 0.5rem;
+    }
+
+    .wp-manual-toc-panel {
+        padding: 0.45rem 0.55rem;
+        border-radius: 8px;
+    }
+
+    .wp-manual-toc-panel__title {
+        font-size: 0.72rem;
+        margin: 0 0 0.2rem;
+    }
+
+    .wp-manual-toc-panel__list {
+        font-size: 0.62rem;
+        line-height: 1.3;
+        padding-left: 0.9rem;
+    }
+
+    .wp-manual-print-footer {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 8pt;
+        color: var(--wp-text-muted);
+    }
+
+    .wp-manual-print-footer::after {
+        content: var(--wp-manual-footer-title) ' ' var(--wp-manual-footer-pg) ' ' counter(page) '/' counter(pages) ' - ' var(--wp-manual-footer-tenant);
+    }
+}

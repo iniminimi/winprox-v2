@@ -38,6 +38,7 @@ class TeamleaderManualIndex extends Component
         return view('livewire.pages.manual-index', [
             'chapters' => ManualChapters::fromPageHelp(self::CHAPTER_KEYS),
             'generatedAt' => now()->format('d-m-Y'),
+            'tenantName' => $this->manualTenantName(),
             'coverPrefix' => 'manual.teamleaders.cover',
             'footerKey' => 'manual.teamleaders.footer',
             'showGettingStarted' => false,

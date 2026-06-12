@@ -31,4 +31,17 @@ trait HasManualLocale
 
         $this->redirect(route($routeName, ['lang' => $locale]), navigate: false);
     }
+
+    protected function manualTenantName(): string
+    {
+        $user = auth()->user();
+
+        if ($user === null) {
+            return '';
+        }
+
+        $user->loadMissing('tenant');
+
+        return (string) ($user->tenant?->name ?? '');
+    }
 }

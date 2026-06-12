@@ -13,6 +13,7 @@
         "intro": "Follow this order when first setting up WinProx for your organisation."
     },
     "chapter": "Chapter",
+    "print_page_label": "pg",
     "toc": {
         "admin_portal": "Administrative portal",
         "internet_portal": "Internet portal"

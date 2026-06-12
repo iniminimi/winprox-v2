@@ -1,4 +1,7 @@
-<div>
+<div
+    class="wp-manual-root"
+    style="--wp-manual-footer-title: {{ \Illuminate\Support\Js::from(__($coverPrefix.'.title')) }}; --wp-manual-footer-pg: {{ \Illuminate\Support\Js::from(__('manual.print_page_label')) }}; --wp-manual-footer-tenant: {{ \Illuminate\Support\Js::from($tenantName) }};"
+>
     {{-- Print-knop (verdwijnt bij afdrukken) --}}
     <div class="no-print" style="position: fixed; top: 1.5rem; right: 1.5rem; z-index: 100; display: flex; gap: 0.75rem;">
         <button type="button" class="btn btn--primary" onclick="window.print()">
@@ -20,68 +23,58 @@
         @endforeach
     </div>
 
+    <div class="wp-manual-print-footer" aria-hidden="true"></div>
+
     {{-- Cover-pagina --}}
-    <div class="wp-manual-chapter" style="
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        text-align: center;
-        padding: 4rem 2rem;
-        gap: 2rem;
-    ">
+    <div class="wp-manual-cover wp-manual-chapter">
         <img
+            class="wp-manual-cover__logo"
             src="{{ asset('images/Winprox_logo_300.png') }}"
             alt="WinProx"
             style="max-width: 220px; height: auto;"
         >
 
-        <div style="margin-top: 2rem;">
-            <h1 style="font-size: 2.75rem; font-weight: 700; letter-spacing: -0.04em; color: var(--wp-text); margin: 0 0 0.75rem;">
+        <div class="wp-manual-cover__brand">
+            <h1 class="wp-manual-cover__title">
                 {{ __($coverPrefix.'.title') }}
             </h1>
-            <p style="font-size: 1.25rem; color: var(--wp-text-secondary); margin: 0 0 0.5rem;">
+            <p class="wp-manual-cover__subtitle">
                 {{ __($coverPrefix.'.subtitle') }}
             </p>
-            <p style="font-size: 0.9rem; color: var(--wp-text-muted); margin: 0;">
+            <p class="wp-manual-cover__meta">
                 {{ __('manual.cover.generated', ['date' => $generatedAt]) }}
             </p>
         </div>
 
-        <div id="manual-toc" style="
-            margin-top: 3rem;
-            padding: 1.5rem 2.5rem;
-            background: var(--wp-surface);
-            border: 1px solid var(--wp-border);
-            border-radius: 12px;
-            max-width: 520px;
-            text-align: left;
-        ">
-            <p style="font-weight: 600; color: var(--wp-text); margin: 0 0 1rem;">{{ __('manual.cover.contents') }}</p>
+        <div id="manual-toc" class="wp-manual-toc">
+            <p class="wp-manual-toc-heading">{{ __('manual.cover.contents') }}</p>
             @if (!empty($tocSections))
-                <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div class="wp-manual-toc-columns">
                     @foreach ($tocSections as $section)
-                        <div>
-                            <p style="font-weight: 700; color: var(--wp-text-heading); margin: 0 0 0.5rem; font-size: 0.9rem;">
-                                <a href="#section-{{ $section['id'] }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $section['label'] }}</a>
+                        <div class="wp-manual-toc-panel">
+                            <p class="wp-manual-toc-panel__title">
+                                <a href="#section-{{ $section['id'] }}">{{ $section['label'] }}</a>
                             </p>
-                            <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
+                            <ol class="wp-manual-toc-panel__list">
                                 @foreach ($section['chapters'] as $chapter)
                                     @php $slug = str_replace('.', '-', $chapter['key']); @endphp
-                                    <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
+                                    <li><a href="#chapter-{{ $slug }}">{{ $chapter['title'] }}</a></li>
                                 @endforeach
                             </ol>
                         </div>
                     @endforeach
                 </div>
             @else
-                <ol style="margin: 0; padding: 0 0 0 1.25rem; line-height: 2; color: var(--wp-text-body);">
-                    @foreach ($chapters as $chapter)
-                        @php $slug = str_replace('.', '-', $chapter['key']); @endphp
-                        <li><a href="#chapter-{{ $slug }}" style="color: var(--wp-accent-text); text-decoration: none;">{{ $chapter['title'] }}</a></li>
-                    @endforeach
-                </ol>
+                <div class="wp-manual-toc-columns wp-manual-toc-columns--single">
+                    <div class="wp-manual-toc-panel">
+                        <ol class="wp-manual-toc-panel__list">
+                            @foreach ($chapters as $chapter)
+                                @php $slug = str_replace('.', '-', $chapter['key']); @endphp
+                                <li><a href="#chapter-{{ $slug }}">{{ $chapter['title'] }}</a></li>
+                            @endforeach
+                        </ol>
+                    </div>
+                </div>
             @endif
         </div>
     </div>

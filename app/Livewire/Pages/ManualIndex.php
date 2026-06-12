@@ -81,6 +81,7 @@ class ManualIndex extends Component
                 ],
             ],
             'generatedAt' => now()->format('d-m-Y'),
+            'tenantName' => $this->manualTenantName(),
             'coverPrefix' => 'manual.cover',
             'footerKey' => 'manual.footer',
             'showGettingStarted' => true,

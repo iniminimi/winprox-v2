@@ -113,7 +113,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 });
 
 it('toont de coverpage met datum en inhoudsopgave', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::factory()->create(['name' => 'Facility Demo BV']);
     $admin = User::factory()->admin()->for($tenant)->create();
 
     $this->actingAs($admin)
@@ -130,7 +130,11 @@ it('toont de coverpage met datum en inhoudsopgave', function () {
         ->assertSee(__('manual.sections.admin_portal.title'))
         ->assertSee(__('manual.sections.internet_portal.title'))
         ->assertSee(__('manual.sections.admin_portal.intro'))
-        ->assertSee(__('manual.sections.internet_portal.intro'));
+        ->assertSee(__('manual.sections.internet_portal.intro'))
+        ->assertSee('wp-manual-toc-columns', false)
+        ->assertSee('wp-manual-toc-panel', false)
+        ->assertSee('wp-manual-print-footer', false)
+        ->assertSee('Facility Demo BV', false);
 });
 
 it('toont sectie-introducties in de body in dezelfde stijl als het stappenplan', function () {
