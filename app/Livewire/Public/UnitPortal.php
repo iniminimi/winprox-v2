@@ -12,6 +12,8 @@ use App\Actions\Tasks\StartTaskAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\ReportIssueRequest;
+use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
+use App\Http\Requests\Public\UploadUnitBackgroundPhotoRequest;
 use App\Models\Task;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -393,14 +395,10 @@ class UnitPortal extends Component
         $unit = $this->unit();
         $slotsLeft = max(0, 4 - $unit->qrLinkPhotos()->count());
 
-        $this->validate([
-            'newPortalPhotos' => ['nullable', 'array', 'max:'.$slotsLeft],
-            'newPortalPhotos.*' => ['image', 'max:10240'],
-        ], [
-            'newPortalPhotos.max' => __('portal.report.errors.photos_max'),
-            'newPortalPhotos.*.image' => __('portal.report.errors.photos_image'),
-            'newPortalPhotos.*.max' => __('portal.report.errors.photos_size'),
-        ]);
+        $this->validate(
+            UpdateUnitPortalPhotosRequest::ruleSet($slotsLeft),
+            UpdateUnitPortalPhotosRequest::validationMessages(),
+        );
 
         if (empty($this->newPortalPhotos)) {
             return;
@@ -462,6 +460,10 @@ class UnitPortal extends Component
 
     public function removeBackgroundPhoto(int $index): void
     {
+        if (! $this->workerBelongsToUnitTeam()) {
+            return;
+        }
+
         if (isset($this->backgroundPhoto[$index])) {
             array_splice($this->backgroundPhoto, $index, 1);
         }
@@ -479,14 +481,10 @@ class UnitPortal extends Component
             return;
         }
 
-        $this->validate([
-            'backgroundPhoto' => ['required', 'array', 'max:1'],
-            'backgroundPhoto.0' => ['image', 'max:10240'],
-        ], [
-            'backgroundPhoto.max' => __('portal.report.errors.photos_max'),
-            'backgroundPhoto.0.image' => __('portal.report.errors.photos_image'),
-            'backgroundPhoto.0.max' => __('portal.report.errors.photos_size'),
-        ]);
+        $this->validate(
+            UploadUnitBackgroundPhotoRequest::ruleSet(),
+            UploadUnitBackgroundPhotoRequest::validationMessages(),
+        );
 
         if (empty($this->backgroundPhoto)) {
             return;

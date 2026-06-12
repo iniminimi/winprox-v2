@@ -380,9 +380,6 @@
 
         {{-- ==================== UNIT BACKGROUND PHOTO ==================== --}}
         @if ($portalSection === 'home' && $workerBelongsToUnitTeam)
-            @php
-                $bgTempCount = count($backgroundPhoto);
-            @endphp
             <div class="wp-card wp-card-pad wp-stack" x-data="{ open: false }">
                 <button
                     type="button"
@@ -397,7 +394,7 @@
                 </button>
 
                 <div x-show="open" x-transition wire:key="unit-bg-photo-content">
-                    @if ($unitBackgroundUrl && $bgTempCount === 0)
+                    @if ($unitBackgroundUrl)
                         <div class="wp-photo-grid wp-photo-grid--gallery">
                             <div class="wp-photo-thumb" style="position:relative;">
                                 <img src="{{ $unitBackgroundUrl }}" alt="" width="80" height="80" loading="lazy">
@@ -409,40 +406,30 @@
                                 >×</button>
                             </div>
                         </div>
-                    @endif
-
-                    @if ($bgTempCount > 0)
-                        <div class="wp-photo-grid wp-photo-grid--gallery">
-                            @foreach ($backgroundPhoto as $index => $photo)
-                                <div class="wp-photo-thumb" style="position:relative;" wire:key="bg-temp-photo-{{ $index }}">
-                                    <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
-                                    <button
-                                        type="button"
-                                        class="wp-photo-remove"
-                                        wire:click="removeBackgroundPhoto({{ $index }})"
-                                    >×</button>
-                                </div>
-                            @endforeach
-                        </div>
-                    @endif
-
-                    @if ($bgTempCount === 0 && ! $unitBackgroundUrl)
-                        @include('partials.wp-issue-photo-upload', ['model' => 'backgroundPhoto', 'max' => 1, 'preferCamera' => true, 'removeMethod' => 'removeBackgroundPhoto', 'photoAltKey' => 'portal.unit.background_photo_add', 'hintKey' => 'portal.unit.background_photo_hint'])
-                    @endif
-
-                    @error('backgroundPhoto') <p class="wp-error">{{ $message }}</p> @enderror
-                    @error('backgroundPhoto.0') <p class="wp-error">{{ $message }}</p> @enderror
-
-                    @if ($bgTempCount > 0)
+                    @else
                         <form
                             x-data="{ isOffline: !navigator.onLine }"
                             x-init="
+                                queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
                                 window.addEventListener('offline', () => isOffline = true);
                                 window.addEventListener('online', () => isOffline = false);
                             "
                             @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.uploadBackgroundPhoto()"
-                            wire:key="bg-photo-submit-form"
+                            wire:key="portal-bg-photo-form"
+                            class="wp-stack"
                         >
+                            @include('partials.wp-issue-photo-upload', [
+                                'model' => 'backgroundPhoto',
+                                'max' => 1,
+                                'preferCamera' => true,
+                                'removeMethod' => 'removeBackgroundPhoto',
+                                'photoAltKey' => 'portal.unit.background_photo_add',
+                                'hintKey' => 'portal.unit.background_photo_hint',
+                            ])
+
+                            @error('backgroundPhoto') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('backgroundPhoto.0') <p class="wp-error">{{ $message }}</p> @enderror
+
                             <div class="wp-portal-actions">
                                 <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" :disabled="isOffline">
                                     <x-wp-spinner wire:loading class="wp-mr-2" />

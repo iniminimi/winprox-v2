@@ -653,6 +653,30 @@ it('lets a verified worker store unit photos up to the remaining slots', functio
     expect($unit->fresh()->qrLinkPhotos()->count())->toBe(4);
 });
 
+it('lets a verified worker upload a unit background photo', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('backgroundPhoto', [
+            UploadedFile::fake()->create('background.jpg', 120, 'image/jpeg'),
+        ])
+        ->call('uploadBackgroundPhoto')
+        ->assertHasNoErrors()
+        ->assertSet('backgroundPhoto', [])
+        ->assertSee(__('portal.unit.background_photo_updated'));
+
+    $unit->refresh();
+    expect($unit->background_photo_path)->not->toBeNull()
+        ->and(Storage::disk('public')->exists((string) $unit->background_photo_path))->toBeTrue();
+});
+
 it('rejects unit photo uploads that exceed the four-photo limit', function () {
     Storage::fake('public');
     ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
