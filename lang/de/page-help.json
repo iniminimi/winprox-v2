@@ -494,7 +494,7 @@
             ]
         },
         "portal.team": {
-            "title": "Hilfe — Team-QR",
+            "title": "Hilfe — Mitarbeiterportal",
             "actions": [
                 {
                     "label": "Name und Symbol",

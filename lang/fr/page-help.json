@@ -494,7 +494,7 @@
             ]
         },
         "portal.team": {
-            "title": "Aide — QR équipe",
+            "title": "Aide — Portail exécutant",
             "actions": [
                 {
                     "label": "Nom et icône",

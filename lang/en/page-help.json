@@ -494,7 +494,7 @@
             ]
         },
         "portal.team": {
-            "title": "Help — Team QR",
+            "title": "Help — Worker portal",
             "actions": [
                 {
                     "label": "Name and icon",
