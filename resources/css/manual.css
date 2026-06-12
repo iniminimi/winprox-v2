@@ -175,6 +175,7 @@ body.wp-shell:has(.wp-manual-root) {
     border-bottom: 2px solid var(--wp-accent);
     padding-bottom: 0.75rem;
     margin-bottom: 2rem;
+    scroll-margin-top: 1.5rem;
 }
 
 .wp-manual-chapter__icon {
@@ -311,6 +312,7 @@ body.wp-shell:has(.wp-manual-root) {
     width: 100%;
     max-width: 100%;
     height: auto;
+    aspect-ratio: 1280 / 800;
     border: 1px solid var(--wp-border);
     border-radius: 12px;
     box-shadow: var(--wp-shadow-card);
@@ -320,6 +322,7 @@ body.wp-shell:has(.wp-manual-root) {
 .wp-manual-screenshot--portal .wp-manual-screenshot__img {
     width: auto;
     max-width: min(390px, 100%);
+    aspect-ratio: 390 / 844;
 }
 
 .wp-manual-root--no-screenshots .wp-manual-screenshot {

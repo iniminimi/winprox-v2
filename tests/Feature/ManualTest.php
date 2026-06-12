@@ -79,6 +79,35 @@ it('verbergt handleiding-screenshots wanneer screenshots=0 in de url staat', fun
         ->assertSee('wp-manual-root--no-screenshots', false);
 });
 
+it('koppelt inhoudsopgave-links aan het juiste hoofdstuk ook met screenshots zichtbaar', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $html = $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee('wp-manual-screenshot', false)
+        ->assertDontSee('wp-manual-root--no-screenshots')
+        ->getContent();
+
+    preg_match_all('/href="#(chapter-[^"]+)">([^<]+)</u', $html, $tocMatches, PREG_SET_ORDER);
+
+    expect($tocMatches)->not->toBeEmpty();
+
+    foreach ($tocMatches as [, $chapterId, $tocTitle]) {
+        $needle = 'id="'.$chapterId.'"';
+        expect(mb_strpos($html, $needle))->not->toBeFalse("Anker '{$chapterId}' ontbreekt in de handleiding.");
+
+        $decodedTitle = html_entity_decode($tocTitle, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $chapterPos = mb_strpos($html, 'id="'.$chapterId.'"');
+        $chapterHtml = mb_substr($html, $chapterPos, 4000);
+        preg_match('/<h2[^>]*>(.*?)<\/h2>/u', $chapterHtml, $headingMatch);
+        $headingTitle = html_entity_decode($headingMatch[1] ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+        expect($headingTitle)->toBe($decodedTitle, "Inhoudsopgave-link '{$decodedTitle}' wijst niet naar hetzelfde hoofdstuk.");
+    }
+});
+
 it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-portaalhulp', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();

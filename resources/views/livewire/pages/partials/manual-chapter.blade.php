@@ -1,10 +1,9 @@
 <div
-    id="chapter-{{ $slug }}"
     class="{{ $isLast ? '' : 'wp-manual-chapter' }}"
     style="padding: 3rem 2.5rem; max-width: 900px; margin: 0 auto; width: 100%;"
 >
     {{-- Hoofdstuknummer + titel --}}
-    <div class="wp-manual-chapter__heading">
+    <div id="chapter-{{ $slug }}" class="wp-manual-chapter__heading">
         <span style="
             font-size: 0.8rem;
             font-weight: 700;
@@ -39,7 +38,7 @@
                 class="wp-manual-screenshot__img"
                 src="{{ $manualScreenshotUrl }}"
                 alt="{{ __('manual.screenshot_alt', ['title' => $chapter['title']]) }}"
-                loading="lazy"
+                decoding="async"
             >
         </figure>
     @endif
