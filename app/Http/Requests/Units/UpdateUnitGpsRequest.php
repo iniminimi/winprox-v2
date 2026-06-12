@@ -51,4 +51,30 @@ class UpdateUnitGpsRequest extends FormRequest
             'longitude' => ['required', 'numeric', 'between:-180,180'],
         ];
     }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public static function portalRuleSet(): array
+    {
+        return [
+            'gpsLatitude' => ['required', 'numeric', 'between:-90,90'],
+            'gpsLongitude' => ['required', 'numeric', 'between:-180,180'],
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function portalValidationMessages(): array
+    {
+        return [
+            'gpsLatitude.required' => __('qr.connect.gps_validation_required'),
+            'gpsLatitude.numeric' => __('qr.connect.gps_validation_numeric'),
+            'gpsLatitude.between' => __('qr.connect.gps_validation_between'),
+            'gpsLongitude.required' => __('qr.connect.gps_validation_required'),
+            'gpsLongitude.numeric' => __('qr.connect.gps_validation_numeric'),
+            'gpsLongitude.between' => __('qr.connect.gps_validation_between'),
+        ];
+    }
 }

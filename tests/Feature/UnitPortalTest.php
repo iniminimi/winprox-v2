@@ -653,6 +653,59 @@ it('lets a verified worker store unit photos up to the remaining slots', functio
     expect($unit->fresh()->qrLinkPhotos()->count())->toBe(4);
 });
 
+it('lets a verified worker update unit gps coordinates', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('gpsLatitude', 51.05)
+        ->set('gpsLongitude', 3.72)
+        ->call('updateUnitGps')
+        ->assertHasNoErrors()
+        ->assertSee(__('portal.unit.gps_updated'));
+
+    $unit->refresh();
+    expect($unit->latitude)->toBe(51.05)
+        ->and($unit->longitude)->toBe(3.72);
+});
+
+it('rejects an overly long worker completion note', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('beginCompleteTask', $task->id)
+        ->set('completingNote', str_repeat('a', 2001))
+        ->call('submitCompleteTask')
+        ->assertHasErrors(['completingNote']);
+
+    expect($task->fresh()->status)->toBe(TaskStatus::InProgress);
+});
+
 it('lets a verified worker upload a unit background photo', function () {
     Storage::fake('public');
     ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();

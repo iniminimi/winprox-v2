@@ -11,9 +11,11 @@ use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
+use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
 use App\Http\Requests\Public\UploadUnitBackgroundPhotoRequest;
+use App\Http\Requests\Units\UpdateUnitGpsRequest;
 use App\Models\Task;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -436,13 +438,10 @@ class UnitPortal extends Component
             return;
         }
 
-        $this->validate([
-            'gpsLatitude' => ['required', 'numeric', 'between:-90,90'],
-            'gpsLongitude' => ['required', 'numeric', 'between:-180,180'],
-        ], [
-            'gpsLatitude.between' => __('qr.connect.gps_validation_between'),
-            'gpsLongitude.between' => __('qr.connect.gps_validation_between'),
-        ]);
+        $this->validate(
+            UpdateUnitGpsRequest::portalRuleSet(),
+            UpdateUnitGpsRequest::portalValidationMessages(),
+        );
 
         $unit = $this->unit();
 
@@ -520,16 +519,10 @@ class UnitPortal extends Component
             return;
         }
 
-        $this->validate([
-            'completingNote' => ['nullable', 'string', 'max:2000'],
-            'completingPhotos' => ['nullable', 'array', 'max:4'],
-            'completingPhotos.*' => ['image', 'max:10240'],
-        ], [
-            'completingNote.max' => __('portal.worker.errors.note_max'),
-            'completingPhotos.max' => __('portal.report.errors.photos_max'),
-            'completingPhotos.*.image' => __('portal.report.errors.photos_image'),
-            'completingPhotos.*.max' => __('portal.report.errors.photos_size'),
-        ]);
+        $this->validate(
+            CompletePortalTaskRequest::ruleSet(),
+            CompletePortalTaskRequest::validationMessages(),
+        );
 
         $task = $this->findUnitTask($this->completingTaskId);
         if ($task === null) {
