@@ -151,15 +151,12 @@
     @php $chapterOffset = 0; @endphp
     @if (!empty($tocSections))
         @foreach ($tocSections as $section)
-            <div class="wp-manual-chapter" style="
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                min-height: 100vh;
-                padding: 4rem 3rem;
+            <div style="
+                padding: 2.5rem 2.5rem 1rem;
                 max-width: 900px;
                 margin: 0 auto;
                 width: 100%;
+                border-top: 2px solid var(--wp-accent);
             ">
                 <p style="
                     font-size: 0.75rem;
