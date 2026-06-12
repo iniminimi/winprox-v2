@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -42,7 +42,7 @@ if (!email || !password) {
 /** @type {{ targets: Array<{ id: string, path: string, selector: string, viewport?: { width: number, height: number }, auth?: boolean, prepareClick?: string, workerSignIn?: boolean }> }} */
 const config = JSON.parse(readFileSync(configPath, 'utf8'));
 
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch(resolveChromiumLaunchOptions());
 const contextOptions = hostHeader !== '' ? { extraHTTPHeaders: { Host: hostHeader } } : {};
 
 try {
@@ -128,6 +128,42 @@ try {
     console.log(`Done. ${captured} screenshot(s), ${skipped} skipped. Output: ${outputDir}`);
 } finally {
     await browser.close();
+}
+
+/**
+ * Playwright 1.49+ zoekt standaard chromium_headless_shell; op shared hosting
+ * installeren we vaak alleen het volledige chromium-* pakket (handmatig).
+ *
+ * @returns {import('playwright').LaunchOptions}
+ */
+function resolveChromiumLaunchOptions() {
+    const browsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH ?? '';
+    const chromeArgs = ['--headless=new', '--no-sandbox', '--disable-setuid-sandbox'];
+
+    if (browsersPath !== '' && existsSync(browsersPath)) {
+        for (const dir of readdirSync(browsersPath)) {
+            if (dir.startsWith('chromium_headless_shell-')) {
+                const headlessShell = join(browsersPath, dir, 'chrome-linux/headless_shell');
+                if (existsSync(headlessShell)) {
+                    return { headless: true, args: chromeArgs };
+                }
+                continue;
+            }
+
+            if (! dir.startsWith('chromium-')) {
+                continue;
+            }
+
+            const chrome = join(browsersPath, dir, 'chrome-linux/chrome');
+            if (existsSync(chrome)) {
+                // headless: true zou Playwright 1.49+ naar chromium_headless_shell sturen;
+                // met eigen chrome-binary: headless via chrome-args.
+                return { headless: false, executablePath: chrome, args: chromeArgs };
+            }
+        }
+    }
+
+    return { headless: true, args: chromeArgs };
 }
 
 /**
