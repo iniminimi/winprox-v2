@@ -448,32 +448,28 @@
             "title": "Aide — QR unité",
             "actions": [
                 {
+                    "label": "Bienvenue",
+                    "text": "Bienvenue sur le portail public de [nom du locataire]. Lisez ci-dessous pour plus d'informations. Intéressé par votre propre portail d'entreprise ? Cliquez sur [link]Winprox.app[/link]."
+                },
+                {
                     "label": "Signaler un problème",
-                    "text": "Scannez le QR, décrivez le problème et ajoutez éventuellement des photos. Une tâche est créée pour l'équipe."
+                    "text": "Cliquez sur \"Créer un signalement\", décrivez le problème et ajoutez éventuellement jusqu'à quatre photos. Une tâche est ensuite créée pour l'équipe. Notez que le signalement doit d'abord être approuvé avant d'être visible sur le portail."
                 },
                 {
-                    "label": "Mode exécutant",
-                    "text": "Sur la page unité, passez en mode exécutant, connectez-vous avec nom et icône et ne voyez que les tâches de cette unité."
+                    "label": "Documents",
+                    "text": "Consultez ici les manuels et autres documents disponibles pour cette unité."
                 },
                 {
-                    "label": "QR dynamique",
-                    "text": "Via le portail équipe, vous pouvez lier un QR mobile à une unité et enregistrer les coordonnées GPS — utile pour les équipements mobiles."
-                },
-                {
-                    "label": "Traiter les signalements",
-                    "text": "Les citoyens peuvent soumettre un signalement sur le même QR unité ; vous traitez la tâche associée."
-                },
-                {
-                    "label": "Documents & annonces",
-                    "text": "Consultez les manuels et annonces pour cette unité."
+                    "label": "Annonces",
+                    "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité."
                 },
                 {
                     "label": "Langue",
-                    "text": "Choisissez votre langue en haut à droite (NL, EN, DE, FR). Les textes du portail sont mis à jour immédiatement."
+                    "text": "Choisissez votre langue souhaitée en haut à droite (NL, EN, DE, FR). Les textes du portail sont immédiatement mis à jour vers la langue choisie."
                 },
                 {
                     "label": "Thème",
-                    "text": "Changez de thème (simple, sombre, high-res) en haut à droite pour une vue personnalisée."
+                    "text": "Changez entre les différents thèmes (simple, sombre, high-res) en haut à droite pour une vue qui correspond à vos préférences."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",

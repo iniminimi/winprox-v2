@@ -448,32 +448,28 @@
             "title": "Hilfe — Unit-QR",
             "actions": [
                 {
+                    "label": "Willkommen",
+                    "text": "Willkommen auf dem öffentlichen Portal von [Mandantenname]. Lesen Sie unten für weitere Informationen. Interessiert an einem eigenen Unternehmensportal? Klicken Sie auf [link]Winprox.app[/link]."
+                },
+                {
                     "label": "Meldung erstellen",
-                    "text": "Scannen Sie den QR, beschreiben Sie das Problem und fügen Sie optional Fotos hinzu. Es wird eine Aufgabe für das Team erstellt."
+                    "text": "Klicken Sie auf \"Meldung erstellen\", beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Es wird dann eine Aufgabe für das Team erstellt. Beachten Sie, dass die Meldung zuerst genehmigt werden muss, bevor sie auf dem Portal sichtbar wird."
                 },
                 {
-                    "label": "Mitarbeiter-Modus",
-                    "text": "Wechseln Sie auf der Einheitenseite in den Mitarbeiter-Modus, melden Sie sich mit Name und Symbol an und sehen Sie nur Aufgaben für diese Einheit."
+                    "label": "Dokumente",
+                    "text": "Sehen Sie hier die Handbücher und anderen Dokumente, die für diese Unit verfügbar sind, ein."
                 },
                 {
-                    "label": "Dynamischer QR",
-                    "text": "Über das Teamportal können Sie einen losen QR mit einer Einheit verknüpfen und GPS-Koordinaten erfassen — nützlich für mobile Anlagen."
-                },
-                {
-                    "label": "Meldungen bearbeiten",
-                    "text": "Bürger können über denselben Einheiten-QR eine Meldung einreichen; Sie bearbeiten die zugehörige Aufgabe."
-                },
-                {
-                    "label": "Dokumente & Mitteilungen",
-                    "text": "Sehen Sie Handbücher und Mitteilungen für diese Unit ein."
+                    "label": "Mitteilungen",
+                    "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten, ein."
                 },
                 {
                     "label": "Sprachwahl",
-                    "text": "Wählen Sie Ihre Sprache oben rechts (NL, EN, DE, FR). Die Portaltexte werden sofort aktualisiert."
+                    "text": "Wählen Sie Ihre gewünschte Sprache oben rechts (NL, EN, DE, FR). Die Texte auf dem Portal werden sofort zur gewählten Sprache aktualisiert."
                 },
                 {
                     "label": "Thema",
-                    "text": "Wechseln Sie oben rechts zwischen Themen (einfach, dunkel, high-res) für eine angepasste Ansicht."
+                    "text": "Wechseln Sie oben rechts zwischen den verschiedenen Themen (einfach, dunkel, high-res) für eine Ansicht, die Ihren Vorlieben entspricht."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",

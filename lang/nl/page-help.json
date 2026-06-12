@@ -448,32 +448,28 @@
             "title": "Hulp — Unit QR",
             "actions": [
                 {
+                    "label": "Welkom",
+                    "text": "Welkom op het publieke portaal van [naam van de tenant]. Lees hieronder verder voor meer informatie. Heb je interesse in een eigen bedrijfsportaal? Klik dan op [link]Winprox.app[/link]."
+                },
+                {
                     "label": "Melding doen",
-                    "text": "Scan de QR, beschrijf het probleem en voeg optioneel foto's toe. Er wordt een taak voor het team aangemaakt."
+                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Er wordt vervolgens een taak aangemaakt voor het team. Houd er rekening mee dat de melding eerst moet worden goedgekeurd voordat deze zichtbaar wordt op het portaal."
                 },
                 {
-                    "label": "Worker-modus",
-                    "text": "Op de unit-pagina schakel je naar worker-modus, meld je aan met naam en icoon en zie je alleen taken voor die unit."
+                    "label": "Documenten",
+                    "text": "Raadpleeg hier de handleidingen en overige documenten die voor deze unit beschikbaar zijn."
                 },
                 {
-                    "label": "Dynamische QR",
-                    "text": "Via het teamportaal kun je een losse QR koppelen aan een unit en GPS-coördinaten registreren — handig voor mobiele assets."
-                },
-                {
-                    "label": "Meldingen afhandelen",
-                    "text": "Burgers kunnen op dezelfde unit-QR een melding indienen; jij handelt de bijbehorende taak af."
-                },
-                {
-                    "label": "Documenten & mededelingen",
-                    "text": "Raadpleeg handleidingen en mededelingen voor deze unit."
+                    "label": "Mededelingen",
+                    "text": "Raadpleeg hier de mededelingen die specifiek voor deze unit gelden."
                 },
                 {
                     "label": "Taalkeuze",
-                    "text": "Kies uw taal rechtsboven (NL, EN, DE, FR). De teksten in het portaal worden direct aangepast."
+                    "text": "Kies rechtsboven uw gewenste taal (NL, EN, DE, FR). De teksten op het portaal worden direct bijgewerkt naar de gekozen taal."
                 },
                 {
                     "label": "Thema",
-                    "text": "Wissel tussen thema's (simpel, donker, high-res) rechtsboven voor een aangepaste weergave."
+                    "text": "Wissel rechtsboven tussen de verschillende thema's (simpel, donker, high-res) voor een weergave die aansluit bij uw voorkeur."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",

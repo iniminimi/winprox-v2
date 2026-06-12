@@ -448,32 +448,28 @@
             "title": "Help — Unit QR",
             "actions": [
                 {
+                    "label": "Welcome",
+                    "text": "Welcome to the public portal of [tenant name]. Read below for more information. Interested in your own company portal? Click on [link]Winprox.app[/link]."
+                },
+                {
                     "label": "Report issue",
-                    "text": "Scan the QR, describe the problem and optionally add photos. A task is created for the team."
+                    "text": "Click on \"Create issue\", describe the problem and optionally add up to four photos. A task is then created for the team. Please note that the issue must first be approved before it becomes visible on the portal."
                 },
                 {
-                    "label": "Worker mode",
-                    "text": "On the unit page, switch to worker mode, sign in with name and icon and see only tasks for that unit."
+                    "label": "Documents",
+                    "text": "View the manuals and other documents available for this unit here."
                 },
                 {
-                    "label": "Dynamic QR",
-                    "text": "Via the team portal you can link a loose QR to a unit and register GPS coordinates — useful for mobile assets."
-                },
-                {
-                    "label": "Handle issues",
-                    "text": "Citizens can submit an issue on the same unit QR; you handle the related task."
-                },
-                {
-                    "label": "Documents & announcements",
-                    "text": "View manuals and announcements for this unit."
+                    "label": "Announcements",
+                    "text": "View the announcements that apply specifically to this unit here."
                 },
                 {
                     "label": "Language",
-                    "text": "Choose your language in the top right (NL, EN, DE, FR). The portal texts update immediately."
+                    "text": "Choose your desired language in the top right (NL, EN, DE, FR). The texts on the portal are immediately updated to the chosen language."
                 },
                 {
                     "label": "Theme",
-                    "text": "Switch themes (simple, dark, high-res) in the top right for a customized view."
+                    "text": "Switch between the different themes (simple, dark, high-res) in the top right for a view that matches your preference."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",
