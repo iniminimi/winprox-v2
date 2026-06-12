@@ -143,6 +143,11 @@ function resolveChromiumLaunchOptions() {
     const chromeArgs = buildChromeArgs(lowResource);
 
     if (browsersPath !== '' && existsSync(browsersPath)) {
+        const flatHeadlessShell = join(browsersPath, 'chrome-linux/headless_shell');
+        if (existsSync(flatHeadlessShell)) {
+            return { headless: true, executablePath: flatHeadlessShell, args: chromeArgs };
+        }
+
         let fullChrome = null;
 
         for (const dir of readdirSync(browsersPath)) {
