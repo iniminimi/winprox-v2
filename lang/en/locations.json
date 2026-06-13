@@ -83,6 +83,7 @@
         "open_issue": "Open issue",
         "meta_team": "Team :team",
         "meta_category": "Category :category",
+        "meta_qr_linked": "QR linked : :sticker",
         "no_team": "No team (assign per unit later)",
         "no_category": "No category",
         "fields": {

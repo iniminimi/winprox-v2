@@ -83,6 +83,7 @@
         "open_issue": "Signalement ouvert",
         "meta_team": "Équipe :team",
         "meta_category": "Catégorie :category",
+        "meta_qr_linked": "QR lié : :sticker",
         "no_team": "Aucune équipe (à lier plus tard)",
         "no_category": "Aucune catégorie",
         "fields": {

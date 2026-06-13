@@ -83,6 +83,7 @@
         "open_issue": "Open melding",
         "meta_team": "Team :team",
         "meta_category": "Categorie :category",
+        "meta_qr_linked": "QR gekoppeld : :sticker",
         "no_team": "Geen team (later per unit koppelen)",
         "no_category": "Geen categorie",
         "fields": {

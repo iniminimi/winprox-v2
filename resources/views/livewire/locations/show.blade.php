@@ -87,16 +87,22 @@
                 <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">{{ $unit->name }}</p>
-                        <div class="wp-issue-card-meta">
-                            @if ($unit->category)
-                                {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}
-                            @endif
-                            @if ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())
-                                {{ $unit->category ? ', ' : '' }}{{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}
-                            @endif
-                            @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                {{ ($unit->category || ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->display_sticker_number }}
-                            @endif
+                        @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
+                            <p class="wp-issue-card-meta">
+                                @if ($unit->category)
+                                    {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}
+                                @endif
+                                @if ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())
+                                    , {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}
+                                @endif
+                            </p>
+                        @endif
+                        @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                            <p class="wp-issue-card-meta">
+                                {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
+                            </p>
+                        @endif
+                        <div class="wp-cluster wp-cluster--tight">
                             @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit])
                         </div>
                     </div>

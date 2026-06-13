@@ -83,6 +83,7 @@
         "open_issue": "Offene Meldung",
         "meta_team": "Team :team",
         "meta_category": "Kategorie :category",
+        "meta_qr_linked": "QR verknüpft : :sticker",
         "no_team": "Kein Team (später pro Unit zuweisen)",
         "no_category": "Keine Kategorie",
         "fields": {
