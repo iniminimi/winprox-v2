@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -23,30 +24,12 @@ class Unit extends Model
         'name',
         'description',
         'is_active',
-        'latitude',
-        'longitude',
         'background_photo_path',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
     ];
-
-    protected function latitude(): \Illuminate\Database\Eloquent\Casts\Attribute
-    {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
-            get: fn (?string $value) => $value === null ? null : (float) $value,
-            set: fn (null|float|string $value) => $value === null ? null : (float) $value,
-        );
-    }
-
-    protected function longitude(): \Illuminate\Database\Eloquent\Casts\Attribute
-    {
-        return \Illuminate\Database\Eloquent\Casts\Attribute::make(
-            get: fn (?string $value) => $value === null ? null : (float) $value,
-            set: fn (null|float|string $value) => $value === null ? null : (float) $value,
-        );
-    }
 
     protected static function booted(): void
     {
@@ -105,6 +88,16 @@ class Unit extends Model
         return $this->hasMany(QrLinkPhoto::class);
     }
 
+    public function gpsReports(): HasMany
+    {
+        return $this->hasMany(UnitGpsReport::class);
+    }
+
+    public function latestGpsReport(): HasOne
+    {
+        return $this->hasOne(UnitGpsReport::class)->latestOfMany('reported_at');
+    }
+
     public function backgroundPhotoPublicUrl(): ?string
     {
         $path = $this->background_photo_path;
@@ -128,15 +121,23 @@ class Unit extends Model
 
     public function hasGps(): bool
     {
-        return $this->latitude !== null && $this->longitude !== null;
+        if ($this->relationLoaded('latestGpsReport')) {
+            return $this->latestGpsReport !== null;
+        }
+
+        if (isset($this->gps_reports_exists)) {
+            return (bool) $this->gps_reports_exists;
+        }
+
+        return $this->gpsReports()->exists();
     }
 
     public function googleMapsUrl(): ?string
     {
-        if (! $this->hasGps()) {
-            return null;
-        }
+        $report = $this->relationLoaded('latestGpsReport')
+            ? $this->latestGpsReport
+            : $this->latestGpsReport()->first();
 
-        return 'https://www.google.com/maps/search/?api=1&query=' . $this->latitude . ',' . $this->longitude;
+        return $report?->googleMapsUrl();
     }
 }

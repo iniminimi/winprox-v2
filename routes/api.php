@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\TaskController;
 use App\Http\Controllers\Api\V1\TeamController;
 use App\Http\Controllers\Api\V1\UnitController;
+use App\Http\Controllers\Api\V1\UnitGpsReportController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Middleware\CheckTokenAbilities;
 use App\Http\Middleware\SetTenantFromToken;
@@ -70,6 +71,9 @@ Route::prefix('v1')->group(function () {
             Route::post('units/import', [UnitController::class, 'import'])
                 ->middleware([CheckTokenAbilities::class.':units:create'])
                 ->name('api.v1.units.import');
+            Route::post('units/{unit}/gps-reports', [UnitGpsReportController::class, 'store'])
+                ->middleware([CheckTokenAbilities::class.':units:update'])
+                ->name('api.v1.units.gps-reports.store');
         });
     });
 });

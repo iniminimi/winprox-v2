@@ -3,7 +3,9 @@
 namespace App\Livewire\Platform;
 
 use App\Actions\QrCodes\LinkQrCodeToUnitAction;
-use App\Actions\Units\UpdateUnitGpsAction;
+use App\Actions\Units\RecordUnitGpsReportAction;
+use App\Data\Units\RecordUnitGpsReportData;
+use App\Http\Requests\Units\RecordUnitGpsReportRequest;
 use App\Models\QrCode;
 use App\Models\Unit;
 use App\Support\Tenancy;
@@ -25,6 +27,7 @@ class QrConnect extends Component
     public ?Unit $linkedUnit = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
+    public ?string $reportedAt = null;
     public bool $showGpsCapture = false;
     public bool $gpsCaptureSuccess = false;
 
@@ -62,16 +65,8 @@ class QrConnect extends Component
 
             // Check if GPS capture is needed
             $unit->refresh();
-            $hasGps = $unit->hasGps();
 
-            \Illuminate\Support\Facades\Log::debug('QR Connect: Checking GPS status', [
-                'unit_id' => $unit->id,
-                'has_gps' => $hasGps,
-                'latitude' => $unit->latitude,
-                'longitude' => $unit->longitude,
-            ]);
-
-            if (! $hasGps) {
+            if (! $unit->hasGps()) {
                 $this->linkedUnit = $unit;
                 $this->showGpsCapture = true;
             }
@@ -100,24 +95,26 @@ class QrConnect extends Component
         }
     }
 
-    public function saveGps(UpdateUnitGpsAction $action): void
+    public function saveGps(RecordUnitGpsReportAction $action): void
     {
-        if (! $this->linkedUnit || $this->latitude === null || $this->longitude === null) {
+        if (! $this->linkedUnit || $this->latitude === null || $this->longitude === null || $this->reportedAt === null) {
             $this->addError('gps', __('qr.connect.gps_error'));
             return;
         }
 
-        // Ensure tenant context
         Tenancy::actAs($this->linkedUnit->tenant_id);
 
         $this->authorize('updateGps', $this->linkedUnit);
 
         $action->handle(
             $this->linkedUnit,
-            $this->latitude,
-            $this->longitude,
+            new RecordUnitGpsReportData(
+                latitude: (float) $this->latitude,
+                longitude: (float) $this->longitude,
+                reportedAt: \Carbon\CarbonImmutable::parse($this->reportedAt),
+            ),
             $this->linkedUnit->tenant_id,
-            Auth::id()
+            Auth::id(),
         );
 
         $this->gpsCaptureSuccess = true;

@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Public;
 
-use App\Actions\QrCodes\LinkQrCodeToUnitAction;
+use App\Actions\Units\RecordUnitGpsReportAction;
+use App\Data\Units\RecordUnitGpsReportData;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\InternalTeam;
 use App\Models\QrCode;
@@ -47,6 +48,7 @@ class UnassignedQrPortal extends Component
     public ?Unit $linkedUnit = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
+    public ?string $reportedAt = null;
     public bool $showGpsCapture = false;
     public bool $gpsCaptureSuccess = false;
 
@@ -199,13 +201,6 @@ class UnassignedQrPortal extends Component
             $unit->refresh();
             $hasGps = $unit->hasGps();
 
-            \Illuminate\Support\Facades\Log::debug('UnassignedQrPortal: Checking GPS status', [
-                'unit_id' => $unit->id,
-                'has_gps' => $hasGps,
-                'latitude' => $unit->latitude,
-                'longitude' => $unit->longitude,
-            ]);
-
             if (! $hasGps) {
                 $this->linkedUnit = $unit;
                 $this->showGpsCapture = true;
@@ -222,7 +217,7 @@ class UnassignedQrPortal extends Component
 
     public function saveGps(): void
     {
-        if ($this->latitude === null || $this->longitude === null) {
+        if ($this->latitude === null || $this->longitude === null || $this->reportedAt === null) {
             $this->addError('gps', __('qr.connect.gps_validation_required'));
             return;
         }
@@ -231,15 +226,19 @@ class UnassignedQrPortal extends Component
             return;
         }
 
-        // Determine actor ID - workers don't have user IDs
         $actorId = $this->worker ? null : Auth::id();
+        $workerId = $this->worker?->id;
 
-        app(\App\Actions\Units\UpdateUnitGpsAction::class)->handle(
+        app(RecordUnitGpsReportAction::class)->handle(
             $this->linkedUnit,
-            $this->latitude,
-            $this->longitude,
+            new RecordUnitGpsReportData(
+                latitude: (float) $this->latitude,
+                longitude: (float) $this->longitude,
+                reportedAt: \Carbon\CarbonImmutable::parse($this->reportedAt),
+            ),
             $this->tenantId,
-            $actorId
+            $actorId,
+            $workerId,
         );
 
         // Redirect to unit portal after saving GPS

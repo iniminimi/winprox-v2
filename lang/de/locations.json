@@ -95,6 +95,14 @@
             "photos_hint": "Maximal 4 Fotos pro Einheit.",
             "delete_photo_confirm": "Dieses Foto löschen?"
         },
+        "gps_history": {
+            "open": "GPS-Verlauf öffnen",
+            "title": "GPS-Verlauf — :unit",
+            "reported_at": "Gemeldet am :datetime",
+            "worker": "Durch :name",
+            "open_maps": "In Maps öffnen",
+            "empty": "Noch keine GPS-Standorte erfasst."
+        },
         "filters": {
             "category": "Nach Kategorie filtern",
             "all_categories": "Alle Kategorien",
@@ -168,8 +176,10 @@
         "confirm_delete": "Diese Kategorie löschen? Verknüpfte Units verlieren ihre Kategorie.",
         "fields": {
             "name": "Kategoriename",
-            "teams": "Teams"
+            "teams": "Teams",
+            "allow_gps_location": "GPS-Standort erlauben"
         },
+        "allow_gps_location_hint": "Erlaubt, den GPS-Standort von Units in dieser Kategorie über das Portal zu übermitteln.",
         "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
         "teams_empty": "Keine Teams verfügbar.",
         "errors": {

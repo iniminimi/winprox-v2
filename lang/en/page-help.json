@@ -168,7 +168,7 @@
                 },
                 {
                     "label": "Categories",
-                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. This depends on the sector in which the company is active. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team."
+                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."
                 }
             ]
         },
@@ -186,6 +186,10 @@
                 {
                     "label": "Download QR sticker sheet",
                     "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
+                },
+                {
+                    "label": "GPS history",
+                    "text": "Click the GPS icon next to a unit to view the full history of recorded coordinates. Each entry shows date/time (browser), optional worker and a link to Google Maps."
                 },
                 {
                     "label": "Documents & announcements",
@@ -381,6 +385,10 @@
                 {
                     "label": "Event: task.completed",
                     "text": "A task was completed by the team. Useful to update external systems or reports."
+                },
+                {
+                    "label": "Event: unit.gps_reported",
+                    "text": "A GPS location was recorded for a unit via the portal (reporter, worker or admin during QR linking)."
                 },
                 {
                     "label": "Endpoint active or inactive",

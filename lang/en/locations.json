@@ -95,6 +95,14 @@
             "photos_hint": "Maximum 4 photos per unit.",
             "delete_photo_confirm": "Delete this photo?"
         },
+        "gps_history": {
+            "open": "Open GPS history",
+            "title": "GPS history — :unit",
+            "reported_at": "Reported on :datetime",
+            "worker": "By :name",
+            "open_maps": "Open in Maps",
+            "empty": "No GPS locations recorded yet."
+        },
         "filters": {
             "category": "Filter by category",
             "all_categories": "All categories",
@@ -168,8 +176,10 @@
         "confirm_delete": "Delete this category? Linked units will lose their category.",
         "fields": {
             "name": "Category name",
-            "teams": "Teams"
+            "teams": "Teams",
+            "allow_gps_location": "Allow GPS location"
         },
+        "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
         "teams_empty": "No teams available.",
         "errors": {

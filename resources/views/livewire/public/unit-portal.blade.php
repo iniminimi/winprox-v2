@@ -26,56 +26,61 @@
         </div>
         <h1 class="wp-portal-welcome-title">{{ __('portal.welcome_title', ['tenant' => $tenantName]) }}</h1>
 
-        {{-- GPS section - only for workers (citizens are already at location when they scan) --}}
-        @if ($workerBelongsToUnitTeam)
-            @php
-                $unitModel = \App\Models\Unit::find($unitId);
-                $mapsUrl = $unitModel?->googleMapsUrl();
-            @endphp
-
-            <div x-data="{ capturing: false }">
-                {{-- Navigation button when GPS exists (hidden during capture) --}}
+        @if ($canCaptureUnitGps || $mapsUrl)
+            <div x-data="{ capturing: false }" class="wp-portal-gps">
                 @if ($mapsUrl)
-                    <div style="margin-top: 0.75rem;" x-show="!capturing">
-                        <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block" style="justify-content: center;">
-                            <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;vertical-align:middle;display:inline-block;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <div class="wp-portal-gps__nav" x-show="!capturing">
+                        <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block wp-portal-gps__nav-link">
+                            <svg class="wp-portal-gps__icon wp-mr-2" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                             </svg>
-                            <span style="vertical-align:middle;display:inline-block;">{{ __('portal.worker.navigate_to_location') }}</span>
+                            <span>{{ __('portal.worker.navigate_to_location') }}</span>
                         </a>
                     </div>
                 @endif
 
-                {{-- GPS Capture button - ALWAYS visible for re-capturing location --}}
-                <div style="margin-top: 0.75rem;">
-                    <button type="button" class="btn btn--primary btn--block" x-bind:disabled="capturing" @click="
-                        capturing = true;
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(
-                                (pos) => { $wire.gpsLatitude = pos.coords.latitude; $wire.gpsLongitude = pos.coords.longitude; $wire.updateUnitGps(); capturing = false; },
-                                (err) => { alert('GPS fout: ' + err.message); capturing = false; }
-                            );
-                        } else {
-                            alert('Geolocation wordt niet ondersteund'); capturing = false;
-                        }
-                    ">
-                        <span x-show="!capturing">
-                            <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;vertical-align:middle;display:inline-block;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                            </svg>
-                            <span style="vertical-align:middle;display:inline-block;">{{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}</span>
-                        </span>
-                        <span x-show="capturing">
-                            <svg class="wp-mr-2" style="width:1.25rem;height:1.25rem;vertical-align:middle;display:inline-block;animation:wp-spin 1s linear infinite;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="12" cy="12" r="10" stroke-width="4" stroke-linecap="round" stroke-dasharray="31.42 31.42" transform="rotate(-90 12 12)"></circle>
-                            </svg>
-                            <span style="vertical-align:middle;display:inline-block;">{{ __('portal.unit.capturing_gps') }}</span>
-                        </span>
-                    </button>
-                </div>
+                @if ($canCaptureUnitGps)
+                    <div class="wp-portal-gps__capture">
+                        <button type="button" class="btn btn--primary btn--block" x-bind:disabled="capturing" @click="
+                            capturing = true;
+                            if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(
+                                    (pos) => {
+                                        const d = new Date();
+                                        const pad = (n) => String(n).padStart(2, '0');
+                                        const tz = -d.getTimezoneOffset();
+                                        const sign = tz >= 0 ? '+' : '-';
+                                        const tzH = pad(Math.floor(Math.abs(tz) / 60));
+                                        const tzM = pad(Math.abs(tz) % 60);
+                                        $wire.gpsLatitude = pos.coords.latitude;
+                                        $wire.gpsLongitude = pos.coords.longitude;
+                                        $wire.gpsReportedAt = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${tzH}:${tzM}`;
+                                        $wire.updateUnitGps();
+                                        capturing = false;
+                                    },
+                                    () => { alert(@js(__('qr.connect.gps_error'))); capturing = false; }
+                                );
+                            } else {
+                                alert(@js(__('qr.connect.gps_not_supported'))); capturing = false;
+                            }
+                        ">
+                            <span x-show="!capturing">
+                                <svg class="wp-portal-gps__icon wp-mr-2" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                                <span>{{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}</span>
+                            </span>
+                            <span x-show="capturing" class="wp-cluster wp-cluster--tight" style="justify-content:center;">
+                                <x-wp-spinner size="sm" />
+                                <span>{{ __('portal.unit.capturing_gps') }}</span>
+                            </span>
+                        </button>
+                    </div>
+                @endif
 
-                @error('gpsLatitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
-                @error('gpsLongitude') <span class="wp-error" style="text-align:center;display:block;">{{ $message }}</span> @enderror
+                @error('gpsLatitude') <span class="wp-error wp-portal-gps__error">{{ $message }}</span> @enderror
+                @error('gpsLongitude') <span class="wp-error wp-portal-gps__error">{{ $message }}</span> @enderror
+                @error('gpsReportedAt') <span class="wp-error wp-portal-gps__error">{{ $message }}</span> @enderror
             </div>
         @endif
     </div>

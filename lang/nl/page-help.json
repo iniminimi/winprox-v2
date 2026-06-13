@@ -160,7 +160,7 @@
                 },
                 {
                     "label": "Categorieën",
-                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Dit is afhankelijk in welke sector het bedrijf actief is. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team."
+                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
                 },
                 {
                     "label": "CSV import",
@@ -186,6 +186,10 @@
                 {
                     "label": "QR-stickerblad downloaden",
                     "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
+                },
+                {
+                    "label": "GPS-geschiedenis",
+                    "text": "Klik op het GPS-icoon naast een unit om de volledige geschiedenis van vastgelegde coördinaten te bekijken. Elke melding toont datum/tijd (browser), optioneel de worker en een link naar Google Maps."
                 },
                 {
                     "label": "Documenten & mededelingen",
@@ -381,6 +385,10 @@
                 {
                     "label": "Gebeurtenis: task.completed",
                     "text": "Een taak is afgehandeld door het team. Handig om externe systemen of rapportages bij te werken."
+                },
+                {
+                    "label": "Gebeurtenis: unit.gps_reported",
+                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, worker of beheerder bij QR-koppeling)."
                 },
                 {
                     "label": "Endpoint actief of inactief",

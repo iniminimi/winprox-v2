@@ -95,6 +95,14 @@
             "photos_hint": "Maximaal 4 foto's per unit.",
             "delete_photo_confirm": "Deze foto verwijderen?"
         },
+        "gps_history": {
+            "open": "GPS-geschiedenis openen",
+            "title": "GPS-geschiedenis — :unit",
+            "reported_at": "Gemeld op :datetime",
+            "worker": "Door :name",
+            "open_maps": "Open in Maps",
+            "empty": "Nog geen GPS-locaties vastgelegd."
+        },
         "filters": {
             "category": "Filter op categorie",
             "all_categories": "Alle categorieën",
@@ -168,8 +176,10 @@
         "confirm_delete": "Deze categorie verwijderen? Gekoppelde units verliezen hun categorie.",
         "fields": {
             "name": "Categorienaam",
-            "teams": "Teams"
+            "teams": "Teams",
+            "allow_gps_location": "GPS-locatie toestaan"
         },
+        "allow_gps_location_hint": "Sta toe dat de GPS-locatie van units in deze categorie via het portaal wordt doorgegeven.",
         "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
         "teams_empty": "Geen teams beschikbaar.",
         "errors": {

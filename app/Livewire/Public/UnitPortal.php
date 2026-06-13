@@ -5,7 +5,7 @@ namespace App\Livewire\Public;
 use App\Actions\Public\SubmitReportAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
-use App\Actions\Units\UpdateUnitGpsAction;
+use App\Actions\Units\RecordUnitGpsReportAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
@@ -15,7 +15,8 @@ use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
 use App\Http\Requests\Public\UploadUnitBackgroundPhotoRequest;
-use App\Http\Requests\Units\UpdateUnitGpsRequest;
+use App\Data\Units\RecordUnitGpsReportData;
+use App\Http\Requests\Units\RecordUnitGpsReportRequest;
 use App\Models\Task;
 use App\Models\Unit;
 use App\Models\Worker;
@@ -85,6 +86,7 @@ class UnitPortal extends Component
 
     public ?float $gpsLatitude = null;
     public ?float $gpsLongitude = null;
+    public ?string $gpsReportedAt = null;
 
     public function mount(string $token): void
     {
@@ -432,28 +434,48 @@ class UnitPortal extends Component
             return;
         }
 
-        if (! $this->workerBelongsToUnitTeam()) {
+        if (! $this->canCaptureUnitGps()) {
             $this->addError('gpsLatitude', __('portal.worker.errors.no_permission'));
 
             return;
         }
 
         $this->validate(
-            UpdateUnitGpsRequest::portalRuleSet(),
-            UpdateUnitGpsRequest::portalValidationMessages(),
+            RecordUnitGpsReportRequest::portalRuleSet(),
+            RecordUnitGpsReportRequest::portalValidationMessages(),
         );
+
+        $reportedAtValidator = \Illuminate\Support\Facades\Validator::make(
+            ['gpsReportedAt' => $this->gpsReportedAt],
+            ['gpsReportedAt' => ['required', 'date']],
+        );
+        RecordUnitGpsReportRequest::assertPortalReportedAt((string) $this->gpsReportedAt, $reportedAtValidator);
+        if ($reportedAtValidator->fails()) {
+            foreach ($reportedAtValidator->errors()->getMessages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($field, $message);
+                }
+            }
+
+            return;
+        }
 
         $unit = $this->unit();
+        $worker = $this->authorizedWorker();
 
-        app(UpdateUnitGpsAction::class)->handle(
+        app(RecordUnitGpsReportAction::class)->handle(
             $unit,
-            (float) $this->gpsLatitude,
-            (float) $this->gpsLongitude,
+            new RecordUnitGpsReportData(
+                latitude: (float) $this->gpsLatitude,
+                longitude: (float) $this->gpsLongitude,
+                reportedAt: \Carbon\CarbonImmutable::parse((string) $this->gpsReportedAt),
+            ),
             $this->tenantId,
-            null
+            null,
+            $worker?->id,
         );
 
-        $this->reset('gpsLatitude', 'gpsLongitude');
+        $this->reset('gpsLatitude', 'gpsLongitude', 'gpsReportedAt');
         $this->flashMessage = __('portal.unit.gps_updated');
     }
 
@@ -624,6 +646,8 @@ class UnitPortal extends Component
             'hasUnitTeam' => $team !== null,
             'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
             'workerBelongsToUnitTeam' => $worker !== null && $unit->category !== null && $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists(),
+            'canCaptureUnitGps' => $worker !== null || ($unit->category?->allow_gps_location ?? false),
+            'mapsUrl' => $unit->googleMapsUrl(),
             'isTeamPortal' => false,
             'manageWorkersMessage' => '',
             'unitBackgroundUrl' => $unit->backgroundPhotoPublicUrl(),
@@ -635,7 +659,7 @@ class UnitPortal extends Component
 
     private function unit(): Unit
     {
-        return Unit::with(['location', 'category', 'qrLinkPhotos'])->findOrFail($this->unitId);
+        return Unit::with(['location', 'category', 'qrLinkPhotos', 'latestGpsReport'])->findOrFail($this->unitId);
     }
 
     private function activeTeam(): ?\App\Models\InternalTeam
@@ -682,6 +706,17 @@ class UnitPortal extends Component
         }
 
         return $worker;
+    }
+
+    private function canCaptureUnitGps(): bool
+    {
+        if ($this->authorizedWorker() !== null) {
+            return true;
+        }
+
+        $unit = $this->unit();
+
+        return (bool) ($unit->category?->allow_gps_location ?? false);
     }
 
     private function workerBelongsToUnitTeam(): bool

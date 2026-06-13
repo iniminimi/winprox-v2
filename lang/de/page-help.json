@@ -168,7 +168,7 @@
                 },
                 {
                     "label": "Kategorien",
-                    "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Dies hängt von der Branche ab, in der das Unternehmen tätig ist. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können."
+                    "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."
                 }
             ]
         },
@@ -186,6 +186,10 @@
                 {
                     "label": "QR-Aufkleberblatt herunterladen",
                     "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
+                },
+                {
+                    "label": "GPS-Verlauf",
+                    "text": "Klicken Sie auf das GPS-Symbol neben einer Unit, um den vollständigen Verlauf erfasster Koordinaten zu sehen. Jeder Eintrag zeigt Datum/Uhrzeit (Browser), optional den Mitarbeiter und einen Link zu Google Maps."
                 },
                 {
                     "label": "Dokumente & Mitteilungen",
@@ -381,6 +385,10 @@
                 {
                     "label": "Ereignis: task.completed",
                     "text": "Eine Aufgabe wurde vom Team abgeschlossen. Nützlich für externe Systeme oder Berichte."
+                },
+                {
+                    "label": "Ereignis: unit.gps_reported",
+                    "text": "Ein GPS-Standort wurde für eine Unit über das Portal erfasst (Melder, Mitarbeiter oder Admin bei QR-Verknüpfung)."
                 },
                 {
                     "label": "Endpoint aktiv oder inaktiv",

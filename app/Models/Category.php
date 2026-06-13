@@ -16,6 +16,11 @@ class Category extends Model
     protected $fillable = [
         'tenant_id',
         'name',
+        'allow_gps_location',
+    ];
+
+    protected $casts = [
+        'allow_gps_location' => 'boolean',
     ];
 
     public function tenant(): BelongsTo

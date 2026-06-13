@@ -653,7 +653,7 @@ it('lets a verified worker store unit photos up to the remaining slots', functio
     expect($unit->fresh()->qrLinkPhotos()->count())->toBe(4);
 });
 
-it('lets a verified worker update unit gps coordinates', function () {
+it('lets a verified worker record unit gps coordinates', function () {
     ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
 
     $worker = Worker::factory()->withIcon('star')->create([
@@ -665,13 +665,40 @@ it('lets a verified worker update unit gps coordinates', function () {
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->set('gpsLatitude', 51.05)
         ->set('gpsLongitude', 3.72)
+        ->set('gpsReportedAt', '2026-06-13T14:30:00+02:00')
         ->call('updateUnitGps')
         ->assertHasNoErrors()
         ->assertSee(__('portal.unit.gps_updated'));
 
-    $unit->refresh();
-    expect($unit->latitude)->toBe(51.05)
-        ->and($unit->longitude)->toBe(3.72);
+    $unit->refresh()->load('latestGpsReport');
+    expect($unit->latestGpsReport?->latitude)->toBe(51.05)
+        ->and($unit->latestGpsReport?->longitude)->toBe(3.72)
+        ->and($unit->latestGpsReport?->worker_id)->toBe($worker->id);
+});
+
+it('lets a reporter record gps when the category allows it', function () {
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['allow_gps_location' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('gpsLatitude', 51.11)
+        ->set('gpsLongitude', 3.81)
+        ->set('gpsReportedAt', '2026-06-13T14:35:00+02:00')
+        ->call('updateUnitGps')
+        ->assertHasNoErrors();
+
+    expect($unit->fresh()->latestGpsReport)->not->toBeNull();
+});
+
+it('rejects gps capture for reporters when the category does not allow it', function () {
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('gpsLatitude', 51.11)
+        ->set('gpsLongitude', 3.81)
+        ->set('gpsReportedAt', '2026-06-13T14:35:00+02:00')
+        ->call('updateUnitGps')
+        ->assertHasErrors(['gpsLatitude']);
 });
 
 it('rejects an overly long worker completion note', function () {

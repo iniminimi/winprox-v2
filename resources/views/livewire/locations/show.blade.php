@@ -97,14 +97,7 @@
                             @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
                                 {{ ($unit->category || ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())) ? ', ' : '' }}{{ __('qr.connect.linked_qr') }} : {{ $unit->qrCodes->first()->display_sticker_number }}
                             @endif
-                            @if ($unit->hasGps())
-                                <a href="{{ $unit->googleMapsUrl() }}" target="_blank" rel="noopener" class="wp-muted" style="margin-left:0.5rem;vertical-align:middle;display:inline-flex;align-items:center;gap:0.25rem;">
-                                    <svg style="width:0.875rem;height:0.875rem;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                    </svg>
-                                    <span>GPS</span>
-                                </a>
-                            @endif
+                            @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit])
                         </div>
                     </div>
                     <div class="wp-issue-row-meta">
@@ -160,6 +153,7 @@
 
     <livewire:locations.documents :location="$location" />
     <livewire:locations.announcements :location="$location" />
+    <livewire:locations.unit-gps-history-modal />
 
     @if ($showLocationModal)
         <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="location-edit-title">
@@ -217,16 +211,8 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                @if ($editingUnitId)
-                    {{-- Google Maps link when GPS exists --}}
-                    @if ($this->editingUnit?->hasGps())
-                        <a href="{{ $this->editingUnit->googleMapsUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" style="justify-content:center;align-items:center;gap:0.5rem;">
-                            <svg style="width:1rem;height:1rem;" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                            </svg>
-                            {{ __('portal.worker.navigate_to_location') }}
-                        </a>
-                    @endif
+                @if ($editingUnitId && $this->editingUnit)
+                    @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $this->editingUnit])
 
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;

@@ -45,7 +45,16 @@
             error: null, 
             manual: false,
             manualLat: '',
-            manualLng: ''
+            manualLng: '',
+            browserLocalIso() {
+                const d = new Date();
+                const pad = (n) => String(n).padStart(2, '0');
+                const tz = -d.getTimezoneOffset();
+                const sign = tz >= 0 ? '+' : '-';
+                const tzH = pad(Math.floor(Math.abs(tz) / 60));
+                const tzM = pad(Math.abs(tz) % 60);
+                return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${tzH}:${tzM}`;
+            }
         }" x-init="
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -107,7 +116,7 @@
             {{-- Actions --}}
             <div class="wp-stack-tight" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--wp-info-border);">
                 <button type="button" class="btn btn--primary btn--block" :disabled="!found"
-                    @click="$wire.latitude = lat; $wire.longitude = lng; $wire.saveGps()">
+                    @click="$wire.latitude = lat; $wire.longitude = lng; $wire.reportedAt = browserLocalIso(); $wire.saveGps()">
                     <span x-show="!found">⏳ {{ __('qr.connect.gps_waiting') }}</span>
                     <span x-show="found">💾 {{ __('qr.connect.gps_save') }}</span>
                 </button>

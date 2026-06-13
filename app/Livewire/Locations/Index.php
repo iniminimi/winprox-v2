@@ -73,6 +73,8 @@ class Index extends Component
 
     public string $categoryName = '';
 
+    public bool $categoryAllowGpsLocation = false;
+
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
 
@@ -306,6 +308,7 @@ class Index extends Component
         $this->authorize('update', $category);
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
+        $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
         $this->showCategoriesModal = true;
         $this->resetErrorBag();
@@ -327,6 +330,7 @@ class Index extends Component
 
         $validated = $this->validate([
             'categoryName' => $rules['name'],
+            'categoryAllowGpsLocation' => $rules['allow_gps_location'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
             'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
@@ -338,11 +342,17 @@ class Index extends Component
 
         if ($this->editingCategoryId === null) {
             $this->authorize('create', Category::class);
-            $category = $createCategory->handle($tenantId, ['name' => $validated['categoryName']], (int) auth()->id());
+            $category = $createCategory->handle($tenantId, [
+                'name' => $validated['categoryName'],
+                'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
+            ], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
             $this->authorize('update', $category);
-            $updateCategory->handle($category, ['name' => $validated['categoryName']], (int) auth()->id());
+            $updateCategory->handle($category, [
+                'name' => $validated['categoryName'],
+                'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
+            ], (int) auth()->id());
         }
 
         $this->authorize('syncTeams', $category);
@@ -366,6 +376,7 @@ class Index extends Component
     {
         $this->editingCategoryId = null;
         $this->categoryName = '';
+        $this->categoryAllowGpsLocation = false;
         $this->selectedCategoryTeamIds = [];
     }
 

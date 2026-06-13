@@ -731,6 +731,47 @@ a.wp-kpi:hover {
     gap: 0.5rem;
 }
 
+.wp-unit-gps-trigger {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.wp-unit-gps-trigger__icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.wp-portal-gps {
+    margin-top: 0.75rem;
+}
+
+.wp-portal-gps__nav + .wp-portal-gps__capture {
+    margin-top: 0.75rem;
+}
+
+.wp-portal-gps__nav-link {
+    justify-content: center;
+}
+
+.wp-portal-gps__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.wp-portal-gps__error {
+    text-align: center;
+    display: block;
+}
+
 /* ---------------------------------------------------------------------------
  | Filterbalk (meldingenlijst — V1: 2×2-grid, compact paneel).
  * ------------------------------------------------------------------------- */

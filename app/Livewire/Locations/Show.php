@@ -378,7 +378,7 @@ class Show extends Component
             return null;
         }
 
-        return Unit::with('qrLinkPhotos')->find($this->editingUnitId);
+        return Unit::with(['qrLinkPhotos', 'latestGpsReport'])->find($this->editingUnitId);
     }
 
     public function createBulk(BulkCreateUnitsAction $bulkCreate): void
@@ -453,6 +453,7 @@ class Show extends Component
                 $q->where('status', \App\Enums\QrCodeStatus::Active);
             }])
             ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
+            ->withExists('gpsReports')
             ->withCount('issues')
             ->when($categoriesEnabled && $this->unitCategoryFilter !== '', fn ($q) => $q->where('category_id', (int) $this->unitCategoryFilter))
             ->when(trim($this->unitSearch) !== '', function ($q) {

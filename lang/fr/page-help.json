@@ -168,7 +168,7 @@
                 },
                 {
                     "label": "Catégories",
-                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. Cela dépend du secteur dans lequel l'entreprise est active. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte."
+                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."
                 }
             ]
         },
@@ -186,6 +186,10 @@
                 {
                     "label": "Télécharger la feuille d'autocollants QR",
                     "text": "Téléchargez un fichier Word (Avery 55×55 ou HERMA 70×50) avec des autocollants QR pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
+                },
+                {
+                    "label": "Historique GPS",
+                    "text": "Cliquez sur l'icône GPS à côté d'une unité pour voir l'historique complet des coordonnées enregistrées. Chaque entrée affiche la date/heure (navigateur), l'exécutant éventuel et un lien vers Google Maps."
                 },
                 {
                     "label": "Documents & annonces",
@@ -381,6 +385,10 @@
                 {
                     "label": "Événement : task.completed",
                     "text": "Une tâche a été terminée par l'équipe. Utile pour mettre à jour des systèmes ou rapports externes."
+                },
+                {
+                    "label": "Événement : unit.gps_reported",
+                    "text": "Une localisation GPS a été enregistrée pour une unité via le portail (signaleur, exécutant ou administrateur lors de la liaison QR)."
                 },
                 {
                     "label": "Endpoint actif ou inactif",
