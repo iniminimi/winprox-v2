@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Issues\AddIssueUpdateAction;
+use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
@@ -8,6 +9,7 @@ use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Support\Tenancy;
 
 afterEach(fn () => Tenancy::forget());
@@ -104,4 +106,23 @@ it('weigert update toevoegen aan gesloten melding', function () {
 
     expect(fn () => app(AddIssueUpdateAction::class)->handle($issue, 'Dit mag niet', null, null, 'note'))
         ->toThrow(\InvalidArgumentException::class, 'Cannot add update to closed issue');
+});
+
+it('sluit een ongekeurde melding met sluitreden in de tijdlijn', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = app(CreateIssueAction::class)->handle(['description' => 'Malafide melding', 'source' => 'qr'], [$team->id]);
+
+    expect($issue->isApproved())->toBeFalse();
+
+    app(CloseIssueAction::class)->handle($issue, $user, 'Geen geldige melding');
+
+    $issue->refresh();
+
+    expect($issue->status)->toBe(TaskStatus::Closed)
+        ->and($issue->updates()->where('kind', 'close_reason')->count())->toBe(1)
+        ->and($issue->updates()->first()->body)->toBe('Geen geldige melding');
 });

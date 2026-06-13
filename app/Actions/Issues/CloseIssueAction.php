@@ -38,6 +38,13 @@ class CloseIssueAction
             ]);
         }
 
+        $this->addUpdate->handle(
+            issue: $issue,
+            body: trim($reason),
+            userId: $actor?->id,
+            kind: 'close_reason',
+        );
+
         // Sluit alle taken
         foreach ($issue->tasks as $task) {
             if ($task->status !== TaskStatus::Closed) {
@@ -48,16 +55,7 @@ class CloseIssueAction
             }
         }
 
-        // Sluit de issue
         $issue->update(['status' => TaskStatus::Closed]);
-
-        // Voeg update toe met reden
-        $this->addUpdate->handle(
-            issue: $issue,
-            body: trim($reason),
-            userId: $actor?->id,
-            kind: 'close_reason',
-        );
 
         // Audit logging
         $this->auditRecorder->record(
