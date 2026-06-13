@@ -188,8 +188,8 @@
                     "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
                 {
-                    "label": "GPS-geschiedenis",
-                    "text": "Klik op het GPS-icoon naast een unit om de volledige geschiedenis van vastgelegde coördinaten te bekijken. Elke melding toont datum/tijd (browser), optioneel de worker en een link naar Google Maps."
+                    "label": "GPS",
+                    "text": "Bekijk de locatiegeschiedenis van een unit via de pop-up zodra er GPS-coördinaten beschikbaar zijn. Klik op 'Open in Maps' om de locatie direct in Google Maps te openen."
                 },
                 {
                     "label": "Documenten & mededelingen",

@@ -188,8 +188,8 @@
                     "text": "Téléchargez un fichier Word (Avery 55×55 ou HERMA 70×50) avec des autocollants QR pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
                 },
                 {
-                    "label": "Historique GPS",
-                    "text": "Cliquez sur l'icône GPS à côté d'une unité pour voir l'historique complet des coordonnées enregistrées. Chaque entrée affiche la date/heure (navigateur), l'exécutant éventuel et un lien vers Google Maps."
+                    "label": "GPS",
+                    "text": "Consultez l'historique de localisation d'une unité via la fenêtre contextuelle dès que des coordonnées GPS sont disponibles. Cliquez sur « Ouvrir dans Maps » pour ouvrir l'emplacement directement dans Google Maps."
                 },
                 {
                     "label": "Documents & annonces",

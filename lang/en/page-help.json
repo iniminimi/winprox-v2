@@ -188,8 +188,8 @@
                     "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
                 },
                 {
-                    "label": "GPS history",
-                    "text": "Click the GPS icon next to a unit to view the full history of recorded coordinates. Each entry shows date/time (browser), optional worker and a link to Google Maps."
+                    "label": "GPS",
+                    "text": "View a unit's location history via the pop-up once GPS coordinates are available. Click 'Open in Maps' to open the location directly in Google Maps."
                 },
                 {
                     "label": "Documents & announcements",
