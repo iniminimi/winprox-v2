@@ -291,6 +291,16 @@ it('toont het stappenplan op pagina 2', function () {
         ->assertSee('QR-codes afdrukken');
 });
 
+it('toont gps-geschiedenis-screenshot bij locatiedetail in de algemene handleiding', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee('images/manual/nl/locations-gps-history.png', false);
+});
+
 it('rendert html in actieteksten zoals de winprox.app-link bij Welkom', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();

@@ -26,7 +26,7 @@ it('geeft een public url wanneer het screenshot-bestand bestaat', function () {
 
 it('geeft null wanneer het screenshot-bestand ontbreekt', function () {
     expect(ManualScreenshotAssets::publicUrl('missing.screenshot.test', 'nl'))->toBeNull()
-        ->and(ManualScreenshotAssets::publicUrlForCaptureId('locations-gps-history', 'nl'))->toBeNull();
+        ->and(ManualScreenshotAssets::publicUrlForCaptureId('missing-capture-id', 'nl'))->toBeNull();
 });
 
 it('geeft een public url voor een capture-id wanneer het bestand bestaat', function () {
@@ -35,13 +35,13 @@ it('geeft een public url voor een capture-id wanneer het bestand bestaat', funct
         mkdir($dir, 0777, true);
     }
 
-    $file = $dir.'/locations-gps-history.png';
+    $file = $dir.'/test-capture-id.png';
     file_put_contents($file, 'png');
 
-    $url = ManualScreenshotAssets::publicUrlForCaptureId('locations-gps-history', 'nl');
+    $url = ManualScreenshotAssets::publicUrlForCaptureId('test-capture-id', 'nl');
 
     expect($url)->not->toBeNull()
-        ->and($url)->toContain('images/manual/nl/locations-gps-history.png');
+        ->and($url)->toContain('images/manual/nl/test-capture-id.png');
 
     unlink($file);
 });

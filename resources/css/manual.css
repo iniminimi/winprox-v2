@@ -312,7 +312,9 @@ body.wp-shell:has(.wp-manual-root) {
     width: 100%;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 1280 / 800;
+    object-fit: contain;
+    object-position: top center;
+    background-color: var(--wp-surface);
     border: 1px solid var(--wp-border);
     border-radius: 12px;
     box-shadow: var(--wp-shadow-card);
@@ -323,6 +325,12 @@ body.wp-shell:has(.wp-manual-root) {
     width: auto;
     max-width: min(390px, 100%);
     aspect-ratio: 390 / 844;
+}
+
+/* Actie-screenshots (modals, detailfragmenten) — natuurlijke verhouding, niet 16:10 forceren */
+.wp-manual-screenshot--inline .wp-manual-screenshot__img {
+    width: auto;
+    max-width: min(100%, 640px);
 }
 
 .wp-manual-root--no-screenshots .wp-manual-screenshot {

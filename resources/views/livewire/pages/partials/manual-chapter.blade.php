@@ -94,7 +94,7 @@
                             );
                         @endphp
                         @if ($actionScreenshotUrl)
-                            <figure class="wp-manual-screenshot" style="margin-top: 0.75rem;">
+                            <figure class="wp-manual-screenshot wp-manual-screenshot--inline" style="margin-top: 0.75rem;">
                                 <img
                                     class="wp-manual-screenshot__img"
                                     src="{{ $actionScreenshotUrl }}"
