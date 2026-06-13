@@ -26,22 +26,11 @@ final class BrandedQrStickerTenantLogoRenderer
         }
 
         [$targetW, $targetH] = self::fitSize(imagesx($logo), imagesy($logo));
-        $resized = imagecreatetruecolor($targetW, $targetH);
+        $resized = self::resizeLogoOntoWhiteGd($logo, $targetW, $targetH);
+        imagedestroy($logo);
         if ($resized === false) {
-            imagedestroy($logo);
-
             return;
         }
-
-        imagealphablending($resized, false);
-        imagesavealpha($resized, true);
-        $transparent = imagecolorallocatealpha($resized, 0, 0, 0, 127);
-        if ($transparent !== false) {
-            imagefill($resized, 0, 0, $transparent);
-        }
-
-        imagecopyresampled($resized, $logo, 0, 0, 0, 0, $targetW, $targetH, imagesx($logo), imagesy($logo));
-        imagedestroy($logo);
 
         $frame = self::frameLayout($placement, $targetW, $targetH);
 
@@ -95,6 +84,7 @@ final class BrandedQrStickerTenantLogoRenderer
             1,
             true,
         );
+        self::flattenLogoOntoWhiteImagick($logo);
 
         $frame = self::frameLayout(
             $placement,
@@ -190,5 +180,47 @@ final class BrandedQrStickerTenantLogoRenderer
             max(1, (int) round($width * $scale)),
             max(1, (int) round($height * $scale)),
         ];
+    }
+
+    private static function resizeLogoOntoWhiteGd(GdImage $logo, int $targetW, int $targetH): GdImage|false
+    {
+        $resized = imagecreatetruecolor($targetW, $targetH);
+        if ($resized === false) {
+            return false;
+        }
+
+        $white = imagecolorallocate($resized, 255, 255, 255);
+        if ($white === false) {
+            imagedestroy($resized);
+
+            return false;
+        }
+
+        imagefill($resized, 0, 0, $white);
+        imagealphablending($resized, true);
+        imagesavealpha($resized, false);
+        imagecopyresampled(
+            $resized,
+            $logo,
+            0,
+            0,
+            0,
+            0,
+            $targetW,
+            $targetH,
+            imagesx($logo),
+            imagesy($logo),
+        );
+
+        return $resized;
+    }
+
+    private static function flattenLogoOntoWhiteImagick(Imagick $logo): void
+    {
+        $logo->setImageBackgroundColor(new \ImagickPixel('white'));
+
+        if ($logo->getImageAlphaChannel()) {
+            $logo->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+        }
     }
 }
