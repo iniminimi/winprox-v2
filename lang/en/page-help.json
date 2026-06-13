@@ -533,6 +533,10 @@
                 {
                     "label": "Complete",
                     "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. The task then gets status \"Completed\"."
+                },
+                {
+                    "label": "Capture GPS location",
+                    "text": "When enabled, your GPS coordinates are shared with the administration. This helps a technician find you easily."
                 }
             ],
             "status_note": "Each task goes through the statuses below:",

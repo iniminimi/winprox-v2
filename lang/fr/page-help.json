@@ -533,6 +533,10 @@
                 {
                     "label": "Terminer",
                     "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. La tâche obtient ensuite le statut \"Traité\"."
+                },
+                {
+                    "label": "Enregistrer la position GPS",
+                    "text": "Lorsque cette option est activée, vos coordonnées GPS sont partagées avec l'administration. Ainsi, un technicien peut vous retrouver facilement."
                 }
             ],
             "status_note": "Chaque tâche passe par les statuts ci-dessous:",

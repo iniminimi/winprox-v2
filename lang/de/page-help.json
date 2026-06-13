@@ -533,6 +533,10 @@
                 {
                     "label": "Abschließen",
                     "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
+                },
+                {
+                    "label": "GPS-Standort (neu) erfassen",
+                    "text": "Wenn aktiviert, werden Ihre GPS-Koordinaten an die Verwaltung weitergegeben. So kann ein Techniker Sie leicht finden."
                 }
             ],
             "status_note": "Jede Aufgabe durchläuft die folgenden Status:",

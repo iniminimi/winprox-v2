@@ -533,6 +533,10 @@
                 {
                     "label": "Afronden",
                     "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. De taak krijgt daarna de status \"Afgehandeld\"."
+                },
+                {
+                    "label": "GPS-locatie (her)vastleggen",
+                    "text": "Wanneer geactiveerd, worden je gps-coördinaten gedeeld met de administratie. Op die manier kan een technieker je gemakkelijk terugvinden."
                 }
             ],
             "status_note": "Elke taak doorloopt de onderstaande statussen:",
