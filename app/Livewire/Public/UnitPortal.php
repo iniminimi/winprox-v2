@@ -755,7 +755,11 @@ class UnitPortal extends Component
 
         WorkerVerification::restoreFromUnitFieldTrust($team, $unit);
 
-        $worker = WorkerDeviceSession::workerOnTeamFromDeviceCookie($team);
+        if (WorkerVerification::verifiedWorker($team) !== null) {
+            return;
+        }
+
+        $worker = WorkerDeviceSession::rememberedWorkerOnTeam($team);
         if ($worker !== null) {
             WorkerVerification::markVerified($team, $worker);
         }

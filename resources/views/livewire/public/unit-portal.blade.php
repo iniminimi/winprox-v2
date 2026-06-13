@@ -19,7 +19,13 @@
                 @endif
             </span>
             <div class="wp-cluster wp-cluster--tight">
-                <x-wp-page-help :page="$canAct ? 'portal.team' : 'portal.unit'" :replace="['tenant' => $tenantName]" />
+                <div wire:key="unit-portal-page-help-{{ $canAct ? 'worker' : 'public' }}">
+                    @if ($canAct)
+                        <x-wp-page-help page="portal.team" :replace="['tenant' => $tenantName]" />
+                    @else
+                        <x-wp-page-help page="portal.unit" :replace="['tenant' => $tenantName]" />
+                    @endif
+                </div>
                 @include('partials.wp-portal-theme')
                 @include('partials.wp-portal-lang')
             </div>

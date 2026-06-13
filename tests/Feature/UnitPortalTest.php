@@ -16,6 +16,8 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitGpsReport;
 use App\Models\Worker;
+use App\Support\PageHelp;
+use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
@@ -146,6 +148,55 @@ it('allows anonymous submit without reporter fields', function () {
 
 it('returns 404 for an unknown unit token', function () {
     $this->get('/melden/bestaat-niet')->assertNotFound();
+});
+
+it('shows public page help before worker sign-in on the unit portal', function () {
+    app()->setLocale('nl');
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(PageHelp::for('portal.unit')['title'], false)
+        ->assertDontSee(PageHelp::for('portal.team')['title'], false);
+});
+
+it('shows worker page help after icon sign-in on the unit portal', function () {
+    app()->setLocale('nl');
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(PageHelp::for('portal.unit')['title'], false)
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->assertSee(PageHelp::for('portal.unit')['title'], false)
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertHasNoErrors()
+        ->assertSee(PageHelp::for('portal.team')['title'], false)
+        ->assertDontSee(PageHelp::for('portal.unit')['title'], false);
+});
+
+it('shows worker page help when a remembered device is verified on load', function () {
+    app()->setLocale('nl');
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(PageHelp::for('portal.team')['title'], false)
+        ->assertDontSee(PageHelp::for('portal.unit')['title'], false);
 });
 
 it('blurs unapproved issue content on the public portal', function () {
