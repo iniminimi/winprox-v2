@@ -474,6 +474,10 @@
                     "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité."
                 },
                 {
+                    "label": "Enregistrer la position GPS",
+                    "text": "Lorsque cette option est activée, vos coordonnées GPS sont partagées avec l'administration. Ainsi, un technicien peut vous retrouver facilement."
+                },
+                {
                     "label": "Langue",
                     "text": "Choisissez votre langue souhaitée en haut à droite (NL, EN, DE, FR). Les textes du portail sont immédiatement mis à jour vers la langue choisie."
                 },

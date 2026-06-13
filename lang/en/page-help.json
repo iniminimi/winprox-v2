@@ -474,6 +474,10 @@
                     "text": "View the announcements that apply specifically to this unit here."
                 },
                 {
+                    "label": "Capture GPS location",
+                    "text": "When enabled, your GPS coordinates are shared with the administration. This helps a technician find you easily."
+                },
+                {
                     "label": "Language",
                     "text": "Choose your desired language in the top right (NL, EN, DE, FR). The texts on the portal are immediately updated to the chosen language."
                 },

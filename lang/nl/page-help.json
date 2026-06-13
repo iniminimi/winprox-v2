@@ -474,6 +474,10 @@
                     "text": "Raadpleeg hier de mededelingen die specifiek voor deze unit gelden."
                 },
                 {
+                    "label": "GPS-locatie (her)vastleggen",
+                    "text": "Wanneer geactiveerd, worden je gps-coördinaten gedeeld met de administratie. Op die manier kan een technieker je gemakkelijk terugvinden."
+                },
+                {
                     "label": "Taalkeuze",
                     "text": "Kies rechtsboven uw gewenste taal (NL, EN, DE, FR). De teksten op het portaal worden direct bijgewerkt naar de gekozen taal."
                 },

@@ -474,6 +474,10 @@
                     "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten, ein."
                 },
                 {
+                    "label": "GPS-Standort (neu) erfassen",
+                    "text": "Wenn aktiviert, werden Ihre GPS-Koordinaten an die Verwaltung weitergegeben. So kann ein Techniker Sie leicht finden."
+                },
+                {
                     "label": "Sprachwahl",
                     "text": "Wählen Sie Ihre gewünschte Sprache oben rechts (NL, EN, DE, FR). Die Texte auf dem Portal werden sofort zur gewählten Sprache aktualisiert."
                 },
