@@ -1,4 +1,4 @@
-@props(['size' => 'md'])
+@props(['size' => 'md', 'visible' => false])
 
 @php
 $sizeClasses = match($size) {
@@ -8,4 +8,4 @@ $sizeClasses = match($size) {
 };
 @endphp
 
-<span class="wp-spinner {{ $sizeClasses }}"></span>
+<span @class(['wp-spinner', $sizeClasses, 'is-visible' => $visible])></span>

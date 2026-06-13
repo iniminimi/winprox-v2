@@ -207,6 +207,8 @@
         "invalid_count": "Die Anzahl der QR-Codes muss zwischen 1 und 100 liegen.",
         "modal_title": "QR-Etikettenbogen herunterladen",
         "modal_subtitle": "Wählen Sie das Etikettenformat, das zu Ihrem Bogen passt.",
+        "generating": "Etikettenbogen wird erstellt…",
+        "download_failed": "QR-Etikettenbogen konnte nicht erstellt werden.",
         "generate_dynamic": "Dynamische QR-Codes generieren (noch nicht mit Units verknüpft)",
         "dynamic_count_label": "Anzahl QR-Codes",
         "dynamic_count_help": "Dynamische QR-Codes können später über die QR-connect-Seite mit Units verknüpft werden. Maximum 100.",

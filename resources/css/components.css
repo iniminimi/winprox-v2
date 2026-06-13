@@ -1366,6 +1366,10 @@ a.wp-kpi:hover {
     display: inline-block;
 }
 
+.wp-spinner.is-visible {
+    display: inline-block;
+}
+
 .wp-spinner--sm {
     width: 1rem;
     height: 1rem;

@@ -460,6 +460,7 @@ it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function ()
         ->assertSee(__('locations.qr_pack_download'))
         ->call('openQrPackModal')
         ->assertSet('showQrPackModal', true)
+        ->assertSee(__('locations.qr_pack.generating'))
         ->assertSee(__('locations.qr_pack.formats.avery_55x55_s.title'))
         ->assertSee(__('locations.qr_pack.formats.herma_70x50.title'))
         ->assertSee(__('locations.qr_pack.formats.avery_62x89_r.title'));

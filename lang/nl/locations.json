@@ -207,6 +207,8 @@
         "invalid_count": "Het aantal QR-codes moet tussen 1 en 100 liggen.",
         "modal_title": "QR-stickerblad downloaden",
         "modal_subtitle": "Kies het etiketformaat dat bij je stickerblad past.",
+        "generating": "Stickervellen worden aangemaakt…",
+        "download_failed": "QR-stickerblad kon niet worden aangemaakt.",
         "generate_dynamic": "Genereer dynamische QR-codes (nog niet gekoppeld aan units)",
         "dynamic_count_label": "Aantal QR-codes",
         "dynamic_count_help": "Dynamische QR-codes kunnen later worden gekoppeld aan units via de QR-connect pagina. Maximaal 100.",

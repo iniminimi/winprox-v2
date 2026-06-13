@@ -207,6 +207,8 @@
         "invalid_count": "Le nombre de codes QR doit être entre 1 et 100.",
         "modal_title": "Télécharger la planche QR",
         "modal_subtitle": "Choisissez le format d'étiquette correspondant à votre planche.",
+        "generating": "Création de la planche d'étiquettes…",
+        "download_failed": "Impossible de créer la planche d'étiquettes QR.",
         "generate_dynamic": "Générer des codes QR dynamiques (pas encore liés aux unités)",
         "dynamic_count_label": "Nombre de codes QR",
         "dynamic_count_help": "Les codes QR dynamiques peuvent être liés aux unités plus tard via la page QR-connect. Maximum 100.",

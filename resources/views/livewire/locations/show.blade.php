@@ -379,17 +379,58 @@
                     @endif
                 </div>
 
-                <div class="wp-list wp-list--entity-rows">
+                <div
+                    class="wp-list wp-list--entity-rows"
+                    x-data="{
+                        downloading: null,
+                        error: null,
+                        async download(url, key) {
+                            if (this.downloading) {
+                                return;
+                            }
+
+                            this.downloading = key;
+                            this.error = null;
+
+                            try {
+                                await window.wpDownloadQrPackUrl(url);
+                            } catch (exception) {
+                                this.error = exception?.message || @js(__('locations.qr_pack.download_failed'));
+                            } finally {
+                                this.downloading = null;
+                            }
+                        },
+                    }"
+                >
                     @foreach ($qrPackTemplates as $template)
-                        <a href="{{ route('locations.qr-pack', ['location' => $location, 'template' => $template->value, 'dynamic' => $qrPackGenerateDynamic ? '1' : null, 'count' => $qrPackGenerateDynamic ? $qrPackDynamicCount : null]) }}"
-                           class="wp-issue-row"
-                           wire:key="qr-pack-format-{{ $template->value }}">
+                        @php
+                            $qrPackDownloadUrl = route('locations.qr-pack', [
+                                'location' => $location,
+                                'template' => $template->value,
+                                'dynamic' => $qrPackGenerateDynamic ? '1' : null,
+                                'count' => $qrPackGenerateDynamic ? $qrPackDynamicCount : null,
+                            ]);
+                        @endphp
+                        <button
+                            type="button"
+                            class="wp-issue-row"
+                            wire:key="qr-pack-format-{{ $template->value }}"
+                            @click="download(@js($qrPackDownloadUrl), @js($template->value))"
+                            :disabled="downloading !== null"
+                            :aria-busy="downloading === @js($template->value)"
+                        >
                             <div class="wp-grow wp-stack-tight">
                                 <p class="wp-issue-card-title">{{ __('locations.qr_pack.formats.'.$template->value.'.title') }}</p>
-                                <p class="wp-muted">{{ __('locations.qr_pack.formats.'.$template->value.'.description') }}</p>
+                                <p class="wp-muted" x-show="downloading !== @js($template->value)">{{ __('locations.qr_pack.formats.'.$template->value.'.description') }}</p>
+                                <p class="wp-muted wp-cluster" x-show="downloading === @js($template->value)" x-cloak>
+                                    <x-wp-spinner size="sm" :visible="true" />
+                                    <span>{{ __('locations.qr_pack.generating') }}</span>
+                                </p>
                             </div>
-                        </a>
+                        </button>
                     @endforeach
+
+                    <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
                 </div>
             </div>
         </x-wp-modal>

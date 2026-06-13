@@ -207,6 +207,8 @@
         "invalid_count": "The number of QR codes must be between 1 and 100.",
         "modal_title": "Download QR sticker sheet",
         "modal_subtitle": "Choose the label format that matches your sticker sheet.",
+        "generating": "Generating sticker sheet…",
+        "download_failed": "Could not generate the QR sticker sheet.",
         "generate_dynamic": "Generate dynamic QR codes (not yet linked to units)",
         "dynamic_count_label": "Number of QR codes",
         "dynamic_count_help": "Dynamic QR codes can be linked to units later via the QR-connect page. Maximum 100.",
