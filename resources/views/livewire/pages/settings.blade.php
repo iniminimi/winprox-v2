@@ -10,24 +10,18 @@
         <x-wp-settings-section :title="__('settings.org.title')">
             @if ($canManageOrganisation)
                 <p class="wp-muted wp-text-sm">{{ __('settings.org.card_hint') }}</p>
-                <p class="wp-org-identity-name">{{ $organisationTenant->name }}</p>
-                <div class="wp-stack-tight wp-text-sm">
+                <div class="wp-org-identity">
+                    <p class="wp-org-identity-name">{{ $organisationTenant->name }}</p>
                     @if ($organisationTenant->email)
-                        <p class="wp-muted">
-                            <span class="wp-text-body">{{ __('settings.org.label_email') }}:</span>
-                            {{ $organisationTenant->email }}
-                        </p>
+                        <p>{{ __('settings.org.label_email') }}: {{ $organisationTenant->email }}</p>
                     @endif
                     @if ($organisationTenant->phone)
-                        <p class="wp-muted">
-                            <span class="wp-text-body">{{ __('settings.org.label_phone') }}:</span>
-                            {{ $organisationTenant->phone }}
-                        </p>
+                        <p>{{ __('settings.org.label_phone') }}: {{ $organisationTenant->phone }}</p>
+                    @endif
+                    @if ($organisationTenant->organisationAddressLine())
+                        <p>{{ $organisationTenant->organisationAddressLine() }}</p>
                     @endif
                 </div>
-                @if ($organisationTenant->organisationAddressLine())
-                    <p class="wp-org-identity-address">{{ $organisationTenant->organisationAddressLine() }}</p>
-                @endif
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--primary btn--sm" wire:click="openOrgModal">
                         {{ __('settings.org.edit') }}
@@ -35,18 +29,18 @@
                 </div>
             @else
                 <p class="wp-muted">{{ __('settings.org.readonly_hint') }}</p>
-                <p class="wp-org-identity-name">{{ $organisationTenant->name }}</p>
-                <div class="wp-stack-tight wp-text-sm">
+                <div class="wp-org-identity">
+                    <p class="wp-org-identity-name">{{ $organisationTenant->name }}</p>
                     @if ($organisationTenant->email)
-                        <p class="wp-muted">{{ __('settings.org.label_email') }}: {{ $organisationTenant->email }}</p>
+                        <p>{{ __('settings.org.label_email') }}: {{ $organisationTenant->email }}</p>
                     @endif
                     @if ($organisationTenant->phone)
-                        <p class="wp-muted">{{ __('settings.org.label_phone') }}: {{ $organisationTenant->phone }}</p>
+                        <p>{{ __('settings.org.label_phone') }}: {{ $organisationTenant->phone }}</p>
+                    @endif
+                    @if ($organisationTenant->organisationAddressLine())
+                        <p>{{ $organisationTenant->organisationAddressLine() }}</p>
                     @endif
                 </div>
-                @if ($organisationTenant->organisationAddressLine())
-                    <p class="wp-org-identity-address">{{ $organisationTenant->organisationAddressLine() }}</p>
-                @endif
             @endif
         </x-wp-settings-section>
 

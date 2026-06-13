@@ -242,19 +242,24 @@
     background-color: var(--wp-surface-muted);
 }
 
-.wp-org-identity-name {
-    margin: 0 0 0.5rem;
+.wp-org-identity {
     font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--wp-text);
+    line-height: 1.3;
+    color: var(--wp-text-body);
+    margin-bottom: 1rem;
 }
 
-.wp-org-identity-address {
-    margin: 0 0 1rem;
-    font-size: 1.75rem;
-    line-height: 1.35;
-    color: var(--wp-text-body);
+.wp-org-identity p {
+    margin: 0 0 0.5rem;
+}
+
+.wp-org-identity p:last-child {
+    margin-bottom: 0;
+}
+
+.wp-org-identity-name {
+    font-weight: 700;
+    color: var(--wp-text);
 }
 
 .wp-check {
