@@ -293,7 +293,6 @@
         @if ($portalSection === 'new')
             <div data-manual-capture="portal-unit-new">
             <x-wp-portal-back wire:click="openSection('home')" />
-            <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
             <form x-data="{ 
                 isOffline: !navigator.onLine,
                 description: $wire.description || sessionStorage.getItem('wp-portal-description') || ''
@@ -311,6 +310,7 @@
             "
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
+                    <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
                     @include('partials.wp-portal-report-reporter-fields')
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
