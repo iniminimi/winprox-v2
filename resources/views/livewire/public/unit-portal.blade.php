@@ -292,7 +292,7 @@
         {{-- ============================ NEW ============================ --}}
         @if ($portalSection === 'new')
             <div data-manual-capture="portal-unit-new">
-            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
             <form x-data="{ 
                 isOffline: !navigator.onLine,
@@ -339,12 +339,12 @@
         {{-- ======================= TAAK AFGEHANDELD ======================= --}}
         @if ($portalSection === 'task_done')
             <p class="wp-section-title">{{ __('portal.worker.task_completed') }}</p>
-            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('home')" />
         @endif
 
         {{-- ============================ ISSUES ============================ --}}
         @if ($portalSection === 'issues')
-            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title icon="issues" :title="__('portal.tiles.issues')" />
             <div class="wp-list">
                 @forelse ($issues as $issue)
@@ -375,7 +375,7 @@
 
         {{-- ========================= ISSUE DETAIL ========================= --}}
         @if ($portalSection === 'issue_detail' && $selectedIssue)
-            <button type="button" class="wp-back" wire:click="openSection('issues')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('issues')" />
             <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-cluster">
                     <span class="wp-pill wp-pill--{{ $selectedIssue->status->pillModifier() }}">{{ __($selectedIssue->status->labelKey()) }}</span>
@@ -446,7 +446,7 @@
 
         {{-- ========================== DOCUMENTS ========================== --}}
         @if ($portalSection === 'documents')
-            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title icon="document" :title="__('portal.tiles.documents')" />
             <div class="wp-list">
                 @forelse ($documents as $document)
@@ -479,7 +479,7 @@
 
         {{-- ======================== ANNOUNCEMENTS ======================== --}}
         @if ($portalSection === 'announcements')
-            <button type="button" class="wp-back" wire:click="openSection('home')">&larr; {{ __('portal.back') }}</button>
+            <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title icon="document" :title="__('portal.tiles.announcements')" />
             <div class="wp-list">
                 @forelse ($announcements as $announcement)

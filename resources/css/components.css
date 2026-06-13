@@ -2036,17 +2036,7 @@ a.wp-kpi:hover {
 
 .wp-back {
     align-self: flex-start;
-    padding: 0.25rem 0;
-    background: none;
-    border: none;
-    color: var(--wp-text-muted);
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.wp-back:hover {
-    color: var(--wp-text);
+    margin-bottom: 0.75rem;
 }
 
 .wp-doc-title {
