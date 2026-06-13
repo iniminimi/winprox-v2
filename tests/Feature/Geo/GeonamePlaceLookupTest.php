@@ -7,15 +7,24 @@ use App\Actions\Geo\ResolveNearestGeonamePlaceAction;
 use App\Models\GeonamePlace;
 
 it('imports europe and north america rows from a geonames extract', function () {
-    $path = base_path('tests/all_countries_small.txt');
+    $path = storage_path('framework/testing/geonames-import-sample.txt');
+    if (! is_dir(dirname($path))) {
+        mkdir(dirname($path), 0777, true);
+    }
+
+    file_put_contents($path, implode("\n", [
+        "3038813\tEstany de les Abelletes\tEstany de les Abelletes\t\t42.52915\t1.73362\tH\tLK\tAD\t\t\t\t\t\t0\t\t2260\tEurope/Andorra\t2014-11-05",
+        "3038816\tXixerella\tXixerella\t\t42.55327\t1.48736\tP\tPPL\tAD\t\t\t\t\t\t0\t\t1417\tEurope/Andorra\t2009-04-24",
+        "9990001\tRoute One\tRoute One\t\t40.0\t-74.0\tR\tRD\tUS\t\t\t\t\t\t0\t\t0\tAmerica/New_York\t2020-01-01",
+        "9990002\tTokyo Tower\tTokyo Tower\t\t35.6586\t139.7454\tS\tTOW\tJP\t\t\t\t\t\t0\t\t0\tAsia/Tokyo\t2020-01-01",
+    ]));
 
     $result = app(ImportGeonamePlacesAction::class)->handle($path, truncate: true);
 
-    expect($result['imported'])->toBe(10)
-        ->and($result['skipped'])->toBe(0)
-        ->and(GeonamePlace::query()->count())->toBe(10);
-
-    expect(GeonamePlace::query()->where('country_code', 'AD')->count())->toBe(10);
+    expect($result['imported'])->toBe(2)
+        ->and($result['skipped'])->toBe(2)
+        ->and(GeonamePlace::query()->count())->toBe(2)
+        ->and(GeonamePlace::query()->where('country_code', 'AD')->count())->toBe(2);
 });
 
 it('resolves a lake name before a nearby mountain within priority radius', function () {
