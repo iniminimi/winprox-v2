@@ -1,14 +1,28 @@
 ---
-description: Na elke afgeronde codewijziging altijd committen en pushen naar origin.
+description: Lokaal ontwikkelen en testen; na bevestiging commit + push naar origin (server).
 alwaysApply: true
 ---
 
-# Commit en push (verplicht)
+# Lokaal werken → commit → push (verplicht)
 
-Na **elke afgeronde taak** met codewijzigingen:
+We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server** (Linux) en wordt bijgewerkt via **git push** naar `origin`.
 
-1. `git status` + relevante tests/checks draaien.
-2. **Commit** met duidelijke boodschap (geen test-artefacten zoals `tests/Avery_*.zip` of `_extract/`).
-3. **`git push`** naar `origin` (tenzij de gebruiker expliciet vraagt om niet te pushen).
+## Werkwijze
 
-Niet afsluiten zonder commit + push wanneer er uncommitted werk is.
+1. **Lokaal bouwen en testen** — wijziging afmaken tot het lokaal werkt (visueel + functioneel).
+2. **Checks vóór commit:**
+   - `php artisan test` (relevante tests)
+   - `npm run check:locales:parity`
+   - `npm run check:architecture`
+   - Bij CSS/JS/views: **`npm run build`** en `public/build/**` meecommitten
+3. **`git status`** — geen test-artefacten (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
+4. **Commit** met duidelijke boodschap.
+5. **`git push`** naar `origin` — zodat de server de wijziging kan deployen.
+
+Niet afsluiten met uncommitted werk dat klaar is. Tenzij de gebruiker expliciet vraagt om **niet** te pushen.
+
+## Lokaal vs. server
+
+- **Code** (PHP, Blade, locales): lokaal testen volstaat; na push pakt de server het op.
+- **Frontend-assets:** lokaal altijd `npm run build` committen — anders wijkt lokale styling af van productie.
+- **GPS / geolocation:** test op **HTTPS** (productie) of `localhost`; HTTP via LAN-IP (`192.168.x.x`) wordt door browsers geblokkeerd — geen productie-bug.

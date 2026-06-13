@@ -257,10 +257,21 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ## 10. Git
 
-- Commit/push **alleen op verzoek** of wanneer de taak expliciet “commit” vraagt.
-- Vóór commit: `php artisan test`, `npm run check:locales:parity`, `npm run check:architecture`.
+### Werkwijze (hard)
+- We werken **lokaal** (Windows); productie staat op de **server** (Linux).
+- Een taak is pas af wanneer het **lokaal werkt** én de wijziging **gecommit en gepusht** is naar `origin` (server deployt vanuit git).
+- Niet afsluiten met klaar, uncommitted werk.
+
+### Vóór commit
+- `php artisan test` (relevante tests)
+- `npm run check:locales:parity`
+- `npm run check:architecture`
 - Bij frontend-wijzigingen (`resources/css/**`, `resources/js/**`, views, Vite): **eerst** `npm run build`, gewijzigde `public/build/**` meecommitten.
 - Raakt het `lang/**`: alle vier talen + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
+- Geen test-artefacten committen (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
+
+### Push
+- Na commit: **`git push`** naar `origin`, tenzij de gebruiker expliciet vraagt om niet te pushen.
 
 ---
 
