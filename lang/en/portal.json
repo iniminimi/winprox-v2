@@ -205,6 +205,7 @@
         "recapture_gps": "(Re)capture GPS location",
         "capturing_gps": "Getting GPS...",
         "gps_updated": "GPS coordinates captured!",
+        "gps_denied_hint": "Allow location for this website in your browser (lock icon in the address bar → Location → Allow) and refresh the page. Or enter coordinates manually below.",
         "background_photo_title": "Environment photo",
         "background_photo_add": "Add environment photo",
         "background_photo_hint": "Take a photo of the surroundings. This photo will be used as the background image for this unit (refresh).",

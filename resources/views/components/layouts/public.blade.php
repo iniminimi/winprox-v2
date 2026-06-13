@@ -52,6 +52,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self)">
     <title>{{ $title ?? 'WinProx' }}</title>
     @include('partials.social-meta', [
         'title' => $socialTitle ?? __('portal.social.og_title'),

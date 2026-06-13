@@ -806,6 +806,11 @@ a.wp-kpi:hover {
     display: block;
 }
 
+.wp-portal-gps__fail,
+.wp-portal-gps__manual {
+    margin-top: 0.75rem;
+}
+
 /* ---------------------------------------------------------------------------
  | Filterbalk (meldingenlijst — V1: 2×2-grid, compact paneel).
  * ------------------------------------------------------------------------- */

@@ -30,12 +30,19 @@
             <div
                 x-data="{
                     capturing: false,
+                    gpsError: null,
+                    manualOpen: false,
+                    manualLat: '',
+                    manualLng: '',
+                    gpsDeniedHint: @js(__('portal.unit.gps_denied_hint')),
                     gpsMsgs: {
                         denied: @js(__('qr.connect.gps_denied')),
                         unavailable: @js(__('qr.connect.gps_unavailable')),
                         timeout: @js(__('qr.connect.gps_timeout')),
                         error: @js(__('qr.connect.gps_error')),
                         notSupported: @js(__('qr.connect.gps_not_supported')),
+                        invalidCoords: @js(__('qr.connect.gps_invalid_coords')),
+                        outOfRange: @js(__('qr.connect.gps_out_of_range')),
                     },
                     browserLocalIso() {
                         const d = new Date();
@@ -52,25 +59,52 @@
                         if (err?.code === 3) return this.gpsMsgs.timeout;
                         return this.gpsMsgs.error;
                     },
+                    gpsShowError(err, openManual = true) {
+                        this.gpsError = typeof err === 'string' ? err : this.gpsFail(err);
+                        this.capturing = false;
+                        if (openManual) {
+                            this.manualOpen = true;
+                        }
+                    },
                     gpsSave(pos) {
                         $wire.gpsLatitude = pos.coords.latitude;
                         $wire.gpsLongitude = pos.coords.longitude;
                         $wire.gpsReportedAt = this.browserLocalIso();
                         $wire.updateUnitGps();
                         this.capturing = false;
+                        this.gpsError = null;
+                        this.manualOpen = false;
+                    },
+                    submitManualGps() {
+                        const lat = parseFloat(this.manualLat);
+                        const lng = parseFloat(this.manualLng);
+                        if (Number.isNaN(lat) || Number.isNaN(lng)) {
+                            this.gpsShowError(this.gpsMsgs.invalidCoords, false);
+                            return;
+                        }
+                        if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+                            this.gpsShowError(this.gpsMsgs.outOfRange, false);
+                            return;
+                        }
+                        this.gpsSave({ coords: { latitude: lat, longitude: lng } });
+                    },
+                    retryGps() {
+                        this.gpsError = null;
+                        this.manualOpen = false;
+                        this.captureGps();
                     },
                     captureGps() {
                         this.capturing = true;
+                        this.gpsError = null;
                         if (!navigator.geolocation) {
-                            alert(this.gpsMsgs.notSupported);
-                            this.capturing = false;
+                            this.gpsShowError(this.gpsMsgs.notSupported);
                             return;
                         }
                         const self = this;
                         const retryLowAccuracy = () => {
                             navigator.geolocation.getCurrentPosition(
                                 (pos) => self.gpsSave(pos),
-                                (err) => { alert(self.gpsFail(err)); self.capturing = false; },
+                                (err) => self.gpsShowError(err),
                                 { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 },
                             );
                         };
@@ -81,8 +115,7 @@
                                     retryLowAccuracy();
                                     return;
                                 }
-                                alert(self.gpsFail(err));
-                                this.capturing = false;
+                                self.gpsShowError(err);
                             },
                             { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 },
                         );
@@ -116,6 +149,30 @@
                             </span>
                         </button>
                     </div>
+
+                    <div x-show="gpsError" x-cloak class="wp-card wp-card--warning wp-card-pad wp-stack-tight wp-portal-gps__fail">
+                        <p class="wp-error" x-text="gpsError"></p>
+                        <p class="wp-muted" x-show="manualOpen" x-text="gpsDeniedHint"></p>
+                        <div class="wp-cluster wp-cluster--tight">
+                            <button type="button" class="btn btn--ghost btn--sm" @click="retryGps()">
+                                {{ __('qr.connect.gps_retry') }}
+                            </button>
+                            <button type="button" class="btn btn--ghost btn--sm" x-show="!manualOpen" @click="manualOpen = true">
+                                {{ __('qr.connect.gps_manual_button') }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div x-show="manualOpen" x-cloak class="wp-stack-tight wp-portal-gps__manual">
+                        <p class="wp-muted">{{ __('qr.connect.gps_or_enter_manual') }}</p>
+                        <div class="wp-cluster">
+                            <input type="number" step="any" x-model="manualLat" placeholder="{{ __('qr.connect.gps_latitude_placeholder') }}" class="wp-input">
+                            <input type="number" step="any" x-model="manualLng" placeholder="{{ __('qr.connect.gps_longitude_placeholder') }}" class="wp-input">
+                        </div>
+                        <button type="button" class="btn btn--surface btn--sm btn--block" @click="submitManualGps()">
+                            {{ __('qr.connect.gps_use_manual') }}
+                        </button>
+                    </div>
                 @endif
 
                 @error('gpsLatitude') <span class="wp-error wp-portal-gps__error">{{ $message }}</span> @enderror
@@ -137,7 +194,7 @@
 
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
-            <div data-manual-capture="portal-unit-home">
+            <div data-manual-capture="portal-unit-home" class="wp-stack">
             <div class="wp-card wp-card-pad wp-portal-unit-context">
                 <p class="wp-portal-unit-name">
                     @if ($locationName)<span>{{ $locationName }}</span> &middot; @endif<span>{{ $unitName }}</span>
@@ -176,16 +233,18 @@
 
             @if ($isFieldVisitor && $hasUnitTeam)
                 @if ($canAct)
-                    <div class="wp-card wp-card-pad wp-cluster">
-                        @if ($worker?->field_icon_slug)
-                            <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
-                                <x-wp-worker-icon :slug="$worker->field_icon_slug" />
-                            </div>
-                        @endif
-                        <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
-                    </div>
-                    <div class="wp-portal-worker-actions">
-                        <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                    <div class="wp-portal-worker-bar">
+                        <div class="wp-card wp-card-pad wp-cluster">
+                            @if ($worker?->field_icon_slug)
+                                <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
+                                    <x-wp-worker-icon :slug="$worker->field_icon_slug" />
+                                </div>
+                            @endif
+                            <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
+                        </div>
+                        <div class="wp-portal-worker-actions">
+                            <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                        </div>
                     </div>
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')

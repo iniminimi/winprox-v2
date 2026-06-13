@@ -205,6 +205,7 @@
         "recapture_gps": "GPS-locatie (her)vastleggen",
         "capturing_gps": "GPS ophalen...",
         "gps_updated": "GPS coördinaten vastgelegd!",
+        "gps_denied_hint": "Sta locatie toe voor deze website in je browser (slotje in de adresbalk → Locatie → Toestaan) en vernieuw de pagina. Of voer hieronder coördinaten handmatig in.",
         "background_photo_title": "Omgevingsfoto",
         "background_photo_add": "Omgevingsfoto toevoegen",
         "background_photo_hint": "Neem een foto van de omgeving, deze foto zal gebruikt worden als achtergrond foto van deze unit (refresh).",

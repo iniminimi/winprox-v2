@@ -1045,7 +1045,7 @@
 }
 
 .wp-portal-unit-context {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .wp-portal-unit-name {
@@ -1056,10 +1056,16 @@
     color: var(--wp-text);
 }
 
+.wp-portal-worker-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .wp-portal-worker-actions {
     display: flex;
     justify-content: center;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0;
 }
 
 /* Zelfde pulse als PRIO1 (.wp-badge-critical) — alleen ingeklapt (Alpine verwijdert class bij uitklappen). */

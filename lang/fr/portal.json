@@ -205,6 +205,7 @@
         "recapture_gps": "(Ré)enregistrer la position GPS",
         "capturing_gps": "Récupération GPS...",
         "gps_updated": "Coordonnées GPS enregistrées !",
+        "gps_denied_hint": "Autorisez la localisation pour ce site dans votre navigateur (cadenas dans la barre d'adresse → Localisation → Autoriser) et actualisez la page. Ou saisissez les coordonnées manuellement ci-dessous.",
         "background_photo_title": "Photo d'environnement",
         "background_photo_add": "Ajouter une photo d'environnement",
         "background_photo_hint": "Prenez une photo de l'environnement. Cette photo sera utilisée comme image d'arrière-plan de cette unité (rafraîchissement).",

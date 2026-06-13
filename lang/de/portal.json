@@ -205,6 +205,7 @@
         "recapture_gps": "GPS-Standort (neu) erfassen",
         "capturing_gps": "GPS wird abgerufen...",
         "gps_updated": "GPS-Koordinaten erfasst!",
+        "gps_denied_hint": "Erlauben Sie den Standortzugriff für diese Website in Ihrem Browser (Schloss in der Adressleiste → Standort → Zulassen) und laden Sie die Seite neu. Oder geben Sie die Koordinaten unten manuell ein.",
         "background_photo_title": "Umgebungsfoto",
         "background_photo_add": "Umgebungsfoto hinzufügen",
         "background_photo_hint": "Machen Sie ein Foto der Umgebung. Dieses Foto wird als Hintergrundbild für diese Unit verwendet (Aktualisierung).",
