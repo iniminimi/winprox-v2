@@ -39,7 +39,12 @@ final class ResolveAppLocale
         } elseif (is_string($cookieLocale) && in_array($cookieLocale, $supported, true)) {
             $locale = $cookieLocale;
         } else {
-            $locale = $default;
+            $browserLocale = $request->getPreferredLanguage($supported);
+            if (is_string($browserLocale) && in_array($browserLocale, $supported, true)) {
+                $locale = $browserLocale;
+            } else {
+                $locale = $default;
+            }
         }
 
         if (! in_array($locale, $supported, true)) {

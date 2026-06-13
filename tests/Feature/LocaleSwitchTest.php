@@ -38,7 +38,30 @@ it('werkt voor ingelogde gebruikers via zijbalk en slaat locale op de gebruiker 
 });
 
 it('valt terug op de standaardlocale (nl) zonder keuze', function () {
-    $this->get(route('login'))
+    $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get(route('login'))
         ->assertOk()
         ->assertSee(__('auth.submit', [], 'nl'));
+});
+
+it('gebruikt browser taalkeuze als geen sessie/cookie/gebruiker locale', function () {
+    $this->withHeader('Accept-Language', 'fr-BE,fr;q=0.9,en;q=0.8')
+        ->get(route('login'))
+        ->assertOk()
+        ->assertSee(__('auth.submit', [], 'fr'));
+});
+
+it('valt terug op default als browser taal niet supported is', function () {
+    $this->withHeader('Accept-Language', 'es-ES,es;q=0.9')
+        ->get(route('login'))
+        ->assertOk()
+        ->assertSee(__('auth.submit', [], 'nl'));
+});
+
+it('cookie prevaleert boven browser taalkeuze', function () {
+    $this->withCookie('locale', 'de')
+        ->withHeader('Accept-Language', 'fr-BE,fr;q=0.9')
+        ->get(route('login'))
+        ->assertOk()
+        ->assertSee(__('auth.submit', [], 'de'));
 });
