@@ -212,8 +212,6 @@
                 </label>
 
                 @if ($editingUnitId && $this->editingUnit)
-                    @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $this->editingUnit])
-
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;
                         $tempCount = count($unitPhotos);
