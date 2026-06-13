@@ -16,11 +16,21 @@ final class ManualScreenshotAssets
 
     public static function publicUrl(string $chapterKey, string $locale): ?string
     {
+        return self::publicUrlForFilename(self::filenameForChapter($chapterKey), $locale);
+    }
+
+    public static function publicUrlForCaptureId(string $captureId, string $locale): ?string
+    {
+        return self::publicUrlForFilename($captureId.'.png', $locale);
+    }
+
+    private static function publicUrlForFilename(string $filename, string $locale): ?string
+    {
         if (! in_array($locale, config('manual_capture.locales', []), true)) {
             return null;
         }
 
-        $relative = 'images/manual/'.$locale.'/'.self::filenameForChapter($chapterKey);
+        $relative = 'images/manual/'.$locale.'/'.$filename;
 
         if (! is_file(public_path($relative))) {
             return null;

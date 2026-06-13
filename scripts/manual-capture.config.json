@@ -22,6 +22,14 @@
             "auth": true
         },
         {
+            "id": "locations-gps-history",
+            "path": "/locations/{location_id}",
+            "selector": "[data-manual-capture=\"locations-gps-history\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "prepareClick": "[data-manual-capture-trigger=\"unit-gps-open\"]"
+        },
+        {
             "id": "issues-list",
             "path": "/issues",
             "selector": "[data-manual-capture=\"issues-list\"]",

@@ -57,3 +57,23 @@ it('opens gps history modal with reports newest first', function () {
         ->assertSee('50.1, 3.1')
         ->assertSee(__('locations.units.gps_history.open_maps'));
 });
+
+it('closes gps history modal via close action', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $this->actingAs($user);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => Location::factory()->create(['tenant_id' => $tenant->id])->id,
+    ]);
+
+    Livewire::test(UnitGpsHistoryModal::class)
+        ->dispatch('open-unit-gps-history', unitId: $unit->id)
+        ->assertSet('show', true)
+        ->call('close')
+        ->assertSet('show', false)
+        ->assertSet('unitId', null);
+});

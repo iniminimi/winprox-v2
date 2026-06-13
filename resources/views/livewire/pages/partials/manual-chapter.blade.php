@@ -67,10 +67,18 @@
                     'margin-inline-start: 1.75rem' => ! empty($action['nested']),
                 ])>
                     <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.35rem;
                         font-weight: 700;
                         color: var(--wp-text);
                         font-size: 0.95rem;
-                    ">{{ $action['label'] }}</div>
+                    ">
+                        @if (($action['label_icon'] ?? null) === 'gps')
+                            @include('partials.wp-gps-pin-icon')
+                        @endif
+                        <span>{{ $action['label'] }}</span>
+                    </div>
                     <div style="
                         color: var(--wp-text-body);
                         font-size: 0.9rem;
@@ -78,6 +86,24 @@
                         word-break: break-word;
                         overflow-wrap: anywhere;
                     ">{!! $action['text'] !!}</div>
+                    @if (! empty($action['manual_screenshot_id']))
+                        @php
+                            $actionScreenshotUrl = \App\Support\Manual\ManualScreenshotAssets::publicUrlForCaptureId(
+                                $action['manual_screenshot_id'],
+                                $manualLocale ?? app()->getLocale(),
+                            );
+                        @endphp
+                        @if ($actionScreenshotUrl)
+                            <figure class="wp-manual-screenshot" style="margin-top: 0.75rem;">
+                                <img
+                                    class="wp-manual-screenshot__img"
+                                    src="{{ $actionScreenshotUrl }}"
+                                    alt="{{ __('manual.screenshot_alt', ['title' => $action['label']]) }}"
+                                    decoding="async"
+                                >
+                            </figure>
+                        @endif
+                    @endif
                 </div>
             @endforeach
         </div>

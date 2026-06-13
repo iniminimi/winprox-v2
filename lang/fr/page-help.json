@@ -190,6 +190,7 @@
                 {
                     "label": "GPS",
                     "label_icon": "gps",
+                    "manual_screenshot_id": "locations-gps-history",
                     "text": "Consultez l'historique de localisation d'une unité via la fenêtre contextuelle dès que des coordonnées GPS sont disponibles. Cliquez sur « Ouvrir dans Maps » pour ouvrir l'emplacement directement dans Google Maps."
                 },
                 {

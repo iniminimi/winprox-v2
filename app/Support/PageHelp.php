@@ -15,7 +15,7 @@ final class PageHelp
     /**
      * @return array{
      *     title: string,
-     *     actions: list<array{label: string, text: string, nested: bool, label_icon: string|null}>,
+     *     actions: list<array{label: string, text: string, nested: bool, label_icon: string|null, manual_screenshot_id: string|null}>,
      *     statuses: list<array{key: string, label: string, text: string, pill: string}>,
      *     status_note: string|null,
      * }|null
@@ -52,12 +52,14 @@ final class PageHelp
                 }
 
                 $labelIcon = $item['label_icon'] ?? null;
+                $manualScreenshotId = $item['manual_screenshot_id'] ?? null;
 
                 $actions[] = [
                     'label' => (string) $item['label'],
                     'text' => $text,
                     'nested' => ! empty($item['nested']),
                     'label_icon' => is_string($labelIcon) && $labelIcon !== '' ? $labelIcon : null,
+                    'manual_screenshot_id' => is_string($manualScreenshotId) && $manualScreenshotId !== '' ? $manualScreenshotId : null,
                 ];
             }
         }

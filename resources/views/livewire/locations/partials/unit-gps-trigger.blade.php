@@ -6,6 +6,7 @@
         <button
             type="button"
             class="wp-muted wp-unit-gps-trigger"
+            data-manual-capture-trigger="unit-gps-open"
             wire:click="$dispatch('open-unit-gps-history', { unitId: {{ $unit->id }} })"
             aria-label="{{ __('locations.units.gps_history.open') }}"
         >

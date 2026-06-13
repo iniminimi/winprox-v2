@@ -209,6 +209,7 @@
           'isLast' => $isLast,
           'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
           'manualScreenshotPortal' => $chapter['manualScreenshotPortal'] ?? false,
+          'manualLocale' => $this->lang,
         ])
       @endforeach
     @endforeach
@@ -225,6 +226,7 @@
         'isLast' => $isLast,
         'manualScreenshotUrl' => $chapter['manualScreenshotUrl'] ?? null,
         'manualScreenshotPortal' => $chapter['manualScreenshotPortal'] ?? false,
+        'manualLocale' => $this->lang,
       ])
     @endforeach
   @endif

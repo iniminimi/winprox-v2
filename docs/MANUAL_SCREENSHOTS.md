@@ -77,7 +77,7 @@ Bij mislukte capture: geen commit/push.
 ### 3. Output controleren
 
 - Pad: `public/images/manual/{nl,en,fr,de}/*.png`
-- ~19 bestanden per taal (76 totaal)
+- ~20 bestanden per taal (80 totaal)
 - Internetportaal-PNG's zijn smal (~390px); handleiding toont ze op ware grootte
   (`wp-manual-screenshot--portal` in `manual.css`)
 
@@ -138,7 +138,7 @@ Viewport-richtlijn:
 | Alles Nederlands in en/fr/de | Oude scriptversie zonder `/locale/` + `?lang=` — pull + opnieuw |
 | `portal-team-identify` timeout | Verkeerd team-token (leeg team) of device-cookie — script reset portaal-cookies |
 | Teamleader skips | Worker naam/icoon/team-token kloppen niet — of Livewire sign-in (update script) |
-| `portal-teamleader-release` skip | Geen geblokkeerde collega op het team — zie teamleader-data hierboven |
+| `locations-gps-history` skip | Geen unit met GPS op de capture-locatie — minstens één `unit_gps_reports`-rij nodig |
 | Server `pthread_create` | Shared hosting — capture lokaal |
 | “Klaar” maar 0 PNG's | PowerShell toont nu een error; check script-output |
 

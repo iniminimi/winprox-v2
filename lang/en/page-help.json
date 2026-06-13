@@ -190,6 +190,7 @@
                 {
                     "label": "GPS",
                     "label_icon": "gps",
+                    "manual_screenshot_id": "locations-gps-history",
                     "text": "View a unit's location history via the pop-up once GPS coordinates are available. Click 'Open in Maps' to open the location directly in Google Maps."
                 },
                 {
