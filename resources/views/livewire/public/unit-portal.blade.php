@@ -26,9 +26,9 @@
         </div>
         <h1 class="wp-portal-welcome-title">{{ __('portal.welcome_title', ['tenant' => $tenantName]) }}</h1>
 
-        @if ($canCaptureUnitGps || $mapsUrl)
+        @if ($canCaptureUnitGps || ($mapsUrl && $canAct))
             <div x-data="{ capturing: false }" class="wp-portal-gps">
-                @if ($mapsUrl)
+                @if ($mapsUrl && $canAct)
                     <div class="wp-portal-gps__nav" x-show="!capturing">
                         <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block wp-portal-gps__nav-link">
                             <svg class="wp-portal-gps__icon wp-mr-2" fill="#EA4335" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

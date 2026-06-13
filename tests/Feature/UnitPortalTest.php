@@ -14,6 +14,7 @@ use App\Models\QrLinkPhoto;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitGpsReport;
 use App\Models\Worker;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
@@ -699,6 +700,44 @@ it('rejects gps capture for reporters when the category does not allow it', func
         ->set('gpsReportedAt', '2026-06-13T14:35:00+02:00')
         ->call('updateUnitGps')
         ->assertHasErrors(['gpsLatitude']);
+});
+
+it('hides navigate to location from reporters even when gps history exists', function () {
+    ['unit' => $unit, 'tenant' => $tenant] = unitPortalScaffold();
+    $unit->category->update(['allow_gps_location' => true]);
+
+    UnitGpsReport::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'latitude' => 51.05,
+        'longitude' => 3.72,
+        'reported_at' => now(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.worker.navigate_to_location'))
+        ->assertSee(__('portal.unit.recapture_gps'));
+});
+
+it('shows navigate to location for a verified worker when gps history exists', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    UnitGpsReport::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'latitude' => 51.05,
+        'longitude' => 3.72,
+        'reported_at' => now(),
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.worker.navigate_to_location'));
 });
 
 it('rejects an overly long worker completion note', function () {
