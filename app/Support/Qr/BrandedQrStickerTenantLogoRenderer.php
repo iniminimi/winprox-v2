@@ -20,7 +20,7 @@ final class BrandedQrStickerTenantLogoRenderer
             return;
         }
 
-        $logo = self::loadGdImageFromFile($logoPath);
+        $logo = QrStickerRasterCache::gdSource($logoPath);
         if ($logo === false) {
             return;
         }
@@ -43,11 +43,30 @@ final class BrandedQrStickerTenantLogoRenderer
         imagecopyresampled($resized, $logo, 0, 0, 0, 0, $targetW, $targetH, imagesx($logo), imagesy($logo));
         imagedestroy($logo);
 
-        [$destX, $destY] = self::destination($placement, $targetW, $targetH);
+        $frame = self::frameLayout($placement, $targetW, $targetH);
+
+        BrandedQrStickerSurfaceFrame::drawOnGd(
+            $canvas,
+            $frame['box_x'],
+            $frame['box_y'],
+            $frame['box_width'],
+            $frame['box_height'],
+        );
 
         imagealphablending($canvas, true);
         imagesavealpha($canvas, false);
-        imagecopyresampled($canvas, $resized, $destX, $destY, 0, 0, $targetW, $targetH, $targetW, $targetH);
+        imagecopyresampled(
+            $canvas,
+            $resized,
+            $frame['logo_x'],
+            $frame['logo_y'],
+            0,
+            0,
+            $targetW,
+            $targetH,
+            $targetW,
+            $targetH,
+        );
         imagedestroy($resized);
     }
 
@@ -57,41 +76,75 @@ final class BrandedQrStickerTenantLogoRenderer
             return;
         }
 
-        $logo = new Imagick;
-        if (str_ends_with(strtolower($logoPath), '.svg')) {
-            $logo->setBackgroundColor(new \ImagickPixel('transparent'));
-        }
-
-        try {
-            $logo->readImage($logoPath);
-        } catch (\Throwable) {
-            $logo->clear();
-
+        $cachedLogo = QrStickerRasterCache::imagickSource($logoPath);
+        if ($cachedLogo === null) {
             return;
         }
 
+        $logo = clone $cachedLogo;
+
+        $maxLogoW = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_WIDTH_PX
+            - BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $maxLogoH = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_HEIGHT_PX
+            - BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+
         $logo->resizeImage(
-            Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_WIDTH_PX,
-            Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_HEIGHT_PX,
+            max(1, $maxLogoW),
+            max(1, $maxLogoH),
             Imagick::FILTER_LANCZOS,
             1,
             true,
         );
 
-        [$destX, $destY] = self::destination(
+        $frame = self::frameLayout(
             $placement,
             $logo->getImageWidth(),
             $logo->getImageHeight(),
         );
 
-        $canvas->compositeImage($logo, Imagick::COMPOSITE_OVER, $destX, $destY);
+        BrandedQrStickerSurfaceFrame::drawOnImagick(
+            $canvas,
+            $frame['box_x'],
+            $frame['box_y'],
+            $frame['box_width'],
+            $frame['box_height'],
+        );
+
+        $canvas->compositeImage($logo, Imagick::COMPOSITE_OVER, $frame['logo_x'], $frame['logo_y']);
         $logo->clear();
+    }
+
+    /**
+     * @return array{
+     *     box_x: int,
+     *     box_y: int,
+     *     box_width: int,
+     *     box_height: int,
+     *     logo_x: int,
+     *     logo_y: int
+     * }
+     */
+    private static function frameLayout(QrStickerTenantLogoPlacement $placement, int $logoWidth, int $logoHeight): array
+    {
+        $boxWidth = $logoWidth + BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $boxHeight = $logoHeight + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+        [$boxX, $boxY] = self::boxOrigin($placement, $boxWidth, $boxHeight);
+        $inset = BrandedQrStickerSurfaceFrame::contentInsetPx();
+
+        return [
+            'box_x' => $boxX,
+            'box_y' => $boxY,
+            'box_width' => $boxWidth,
+            'box_height' => $boxHeight,
+            'logo_x' => $boxX + $inset,
+            'logo_y' => $boxY + $inset,
+        ];
     }
 
     /**
      * @return array{0: int, 1: int}
      */
-    private static function destination(QrStickerTenantLogoPlacement $placement, int $width, int $height): array
+    private static function boxOrigin(QrStickerTenantLogoPlacement $placement, int $boxWidth, int $boxHeight): array
     {
         return match ($placement) {
             QrStickerTenantLogoPlacement::TopLeft => [
@@ -101,22 +154,22 @@ final class BrandedQrStickerTenantLogoRenderer
             QrStickerTenantLogoPlacement::TopRight => [
                 Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
                     - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
-                    - $width,
+                    - $boxWidth,
                 Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_TOP_PX,
             ],
             QrStickerTenantLogoPlacement::BottomLeft => [
                 Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_LEFT_PX,
                 Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
                     - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
-                    - $height,
+                    - $boxHeight,
             ],
             QrStickerTenantLogoPlacement::BottomRight => [
                 Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
                     - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_RIGHT_PX
-                    - $width,
+                    - $boxWidth,
                 Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
                     - Avery62x89StickerArtworkLayout::TENANT_LOGO_PADDING_BOTTOM_PX
-                    - $height,
+                    - $boxHeight,
             ],
             QrStickerTenantLogoPlacement::None => [0, 0],
         };
@@ -127,47 +180,15 @@ final class BrandedQrStickerTenantLogoRenderer
      */
     private static function fitSize(int $width, int $height): array
     {
-        $maxW = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_WIDTH_PX;
-        $maxH = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_HEIGHT_PX;
+        $maxW = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_WIDTH_PX
+            - BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $maxH = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_HEIGHT_PX
+            - BrandedQrStickerSurfaceFrame::verticalOverheadPx();
         $scale = min($maxW / max(1, $width), $maxH / max(1, $height));
 
         return [
             max(1, (int) round($width * $scale)),
             max(1, (int) round($height * $scale)),
         ];
-    }
-
-    private static function loadGdImageFromFile(string $absolutePath): GdImage|false
-    {
-        if (str_ends_with(strtolower($absolutePath), '.svg')) {
-            return self::rasterizeSvgWithGd($absolutePath);
-        }
-
-        $binary = file_get_contents($absolutePath);
-        if ($binary === false || $binary === '') {
-            return false;
-        }
-
-        return @imagecreatefromstring($binary);
-    }
-
-    private static function rasterizeSvgWithGd(string $svgPath): GdImage|false
-    {
-        if (! class_exists(Imagick::class)) {
-            return false;
-        }
-
-        try {
-            $imagick = new Imagick;
-            $imagick->setBackgroundColor(new \ImagickPixel('transparent'));
-            $imagick->readImage($svgPath);
-            $imagick->setImageFormat('png');
-            $image = @imagecreatefromstring($imagick->getImageBlob());
-            $imagick->clear();
-
-            return $image;
-        } catch (\Throwable) {
-            return false;
-        }
     }
 }

@@ -136,7 +136,7 @@ final class QrCodePngWriter
         }
 
         $logoPath = self::resolveCenterLogoPath($centerLogoPath);
-        $logo = self::loadGdImageFromFile($logoPath);
+        $logo = QrStickerRasterCache::gdSource($logoPath);
         if ($logo === false) {
             imagedestroy($qr);
 
@@ -169,8 +169,6 @@ final class QrCodePngWriter
             imagesx($logo),
             imagesy($logo),
         );
-
-        imagedestroy($logo);
 
         ob_start();
         imagepng($qr);
@@ -211,7 +209,12 @@ final class QrCodePngWriter
         $background->drawImage($draw);
 
         $logo = new Imagick;
-        self::readLogoIntoImagick($logo, $logoPath);
+        $cachedLogo = QrStickerRasterCache::imagickSource($logoPath);
+        if ($cachedLogo !== null) {
+            $logo = clone $cachedLogo;
+        } else {
+            self::readLogoIntoImagick($logo, $logoPath);
+        }
         $logo->resizeImage($targetW, $targetH, Imagick::FILTER_LANCZOS, 1, true);
 
         $background->compositeImage(
@@ -280,47 +283,6 @@ final class QrCodePngWriter
         }
 
         return self::winproxLogoPath();
-    }
-
-    /**
-     * GD/libpng may emit benign iCCP warnings on some PNG assets; suppress so production
-     * error handlers do not turn them into 500 responses when the image still decodes.
-     */
-    private static function loadGdImageFromFile(string $absolutePath): \GdImage|false
-    {
-        if (! is_file($absolutePath)) {
-            return false;
-        }
-
-        if (str_ends_with(strtolower($absolutePath), '.svg')) {
-            return self::rasterizeSvgWithGd($absolutePath);
-        }
-
-        $binary = file_get_contents($absolutePath);
-
-        if ($binary === false || $binary === '') {
-            return false;
-        }
-
-        return self::loadGdImageFromBinary($binary);
-    }
-
-    private static function rasterizeSvgWithGd(string $svgPath): \GdImage|false
-    {
-        if (! class_exists(Imagick::class)) {
-            return false;
-        }
-
-        try {
-            $imagick = new Imagick;
-            $imagick->setBackgroundColor(new \ImagickPixel('transparent'));
-            $imagick->readImage($svgPath);
-            $imagick->setImageFormat('png');
-
-            return self::loadGdImageFromBinary($imagick->getImageBlob());
-        } catch (\Throwable) {
-            return false;
-        }
     }
 
     private static function loadGdImageFromBinary(string $binary): \GdImage|false

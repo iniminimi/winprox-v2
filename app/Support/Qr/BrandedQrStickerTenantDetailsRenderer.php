@@ -18,15 +18,18 @@ final class BrandedQrStickerTenantDetailsRenderer
      */
     public static function drawOnGd($canvas, array $lines, QrStickerTenantLogoPlacement $logoPlacement): void
     {
-        $lines = self::normalizedLines($lines);
-        if ($lines === []) {
+        $layout = self::layout($lines, $logoPlacement);
+        if ($layout === null) {
             return;
         }
 
-        $font = BrandedQrStickerFont::headerBoldAbsolutePath();
-        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($logoPlacement);
-        $fontSize = self::fitFontSize($lines, $font, $maxWidth);
-        $lineHeight = (int) round($fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO);
+        BrandedQrStickerSurfaceFrame::drawOnGd(
+            $canvas,
+            $layout['box_x'],
+            $layout['box_y'],
+            $layout['box_width'],
+            $layout['box_height'],
+        );
 
         [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
         $color = imagecolorallocate($canvas, $r, $g, $b);
@@ -34,21 +37,18 @@ final class BrandedQrStickerTenantDetailsRenderer
             throw new \RuntimeException('Unable to allocate branded sticker tenant details color.');
         }
 
-        $x = Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_LEFT_PX;
-        $blockBottom = Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
-            - Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_BOTTOM_PX;
-        $blockTop = $blockBottom - ($lineHeight * count($lines));
-        $y = $blockTop;
+        $x = $layout['text_x'];
+        $y = $layout['text_y'];
 
-        foreach ($lines as $line) {
-            $bbox = imagettfbbox($fontSize, 0, $font, $line);
+        foreach ($layout['lines'] as $line) {
+            $bbox = imagettfbbox($layout['font_size'], 0, $layout['font'], $line);
             if (! is_array($bbox)) {
                 throw new \RuntimeException('Unable to measure branded sticker tenant details.');
             }
 
             $ascent = abs($bbox[7]);
-            imagettftext($canvas, $fontSize, 0, $x, $y + $ascent, $color, $font, $line);
-            $y += $lineHeight;
+            imagettftext($canvas, $layout['font_size'], 0, $x, $y + $ascent, $color, $layout['font'], $line);
+            $y += $layout['line_height'];
         }
     }
 
@@ -57,36 +57,87 @@ final class BrandedQrStickerTenantDetailsRenderer
      */
     public static function drawOnImagick(Imagick $canvas, array $lines, QrStickerTenantLogoPlacement $logoPlacement): void
     {
-        $lines = self::normalizedLines($lines);
-        if ($lines === []) {
+        $layout = self::layout($lines, $logoPlacement);
+        if ($layout === null) {
             return;
         }
 
-        $font = BrandedQrStickerFont::headerBoldAbsolutePath();
-        $maxWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($logoPlacement);
-        $fontSize = self::fitFontSize($lines, $font, $maxWidth);
-        $lineHeight = $fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO;
+        BrandedQrStickerSurfaceFrame::drawOnImagick(
+            $canvas,
+            $layout['box_x'],
+            $layout['box_y'],
+            $layout['box_width'],
+            $layout['box_height'],
+        );
 
         [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
 
         $draw = new ImagickDraw;
-        $draw->setFont($font);
-        $draw->setFontSize((float) $fontSize);
+        $draw->setFont($layout['font']);
+        $draw->setFontSize((float) $layout['font_size']);
         $draw->setFillColor(new ImagickPixel(sprintf('rgb(%d,%d,%d)', $r, $g, $b)));
         $draw->setTextAlignment(Imagick::ALIGN_LEFT);
 
-        $x = (float) Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_LEFT_PX;
-        $blockBottom = (float) Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
-            - Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_BOTTOM_PX;
-        $blockTop = $blockBottom - ($lineHeight * count($lines));
-        $y = $blockTop;
+        $x = (float) $layout['text_x'];
+        $y = (float) $layout['text_y'];
 
-        foreach ($lines as $line) {
+        foreach ($layout['lines'] as $line) {
             $metrics = $canvas->queryFontMetrics($draw, $line);
-            $ascent = is_array($metrics) ? (float) ($metrics['ascender'] ?? $fontSize) : (float) $fontSize;
+            $ascent = is_array($metrics) ? (float) ($metrics['ascender'] ?? $layout['font_size']) : (float) $layout['font_size'];
             $canvas->annotateImage($draw, $x, $y + $ascent, 0, $line);
-            $y += $lineHeight;
+            $y += $layout['line_height'];
         }
+    }
+
+    /**
+     * @param  list<string>  $lines
+     * @return array{
+     *     lines: list<string>,
+     *     font: string,
+     *     font_size: int,
+     *     line_height: int,
+     *     text_x: int,
+     *     text_y: int,
+     *     box_x: int,
+     *     box_y: int,
+     *     box_width: int,
+     *     box_height: int
+     * }|null
+     */
+    private static function layout(array $lines, QrStickerTenantLogoPlacement $logoPlacement): ?array
+    {
+        $lines = self::normalizedLines($lines);
+        if ($lines === []) {
+            return null;
+        }
+
+        $font = BrandedQrStickerFont::headerBoldAbsolutePath();
+        $maxTextWidth = Avery62x89StickerArtworkLayout::tenantDetailsMaxWidthPx($logoPlacement)
+            - BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $fontSize = self::fitFontSize($lines, $font, max(1, $maxTextWidth));
+        $lineHeight = (int) round($fontSize * Avery62x89StickerArtworkLayout::TENANT_DETAILS_LINE_HEIGHT_RATIO);
+        $textWidth = self::maxLineWidth($lines, $font, $fontSize);
+        $textHeight = $lineHeight * count($lines);
+
+        $boxWidth = $textWidth + BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $boxHeight = $textHeight + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+        $boxX = Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_LEFT_PX;
+        $boxY = Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX
+            - Avery62x89StickerArtworkLayout::TENANT_DETAILS_PADDING_BOTTOM_PX
+            - $boxHeight;
+
+        return [
+            'lines' => $lines,
+            'font' => $font,
+            'font_size' => $fontSize,
+            'line_height' => $lineHeight,
+            'text_x' => $boxX + BrandedQrStickerSurfaceFrame::contentInsetPx(),
+            'text_y' => $boxY + BrandedQrStickerSurfaceFrame::contentInsetPx(),
+            'box_x' => $boxX,
+            'box_y' => $boxY,
+            'box_width' => $boxWidth,
+            'box_height' => $boxHeight,
+        ];
     }
 
     /**
@@ -129,6 +180,19 @@ final class BrandedQrStickerTenantDetailsRenderer
         }
 
         return Avery62x89StickerArtworkLayout::TENANT_DETAILS_MIN_FONT_SIZE_PX;
+    }
+
+    /**
+     * @param  list<string>  $lines
+     */
+    private static function maxLineWidth(array $lines, string $fontPath, int $fontSize): int
+    {
+        $max = 0;
+        foreach ($lines as $line) {
+            $max = max($max, self::textWidth($fontPath, $fontSize, $line));
+        }
+
+        return $max;
     }
 
     private static function textWidth(string $fontPath, int $fontSize, string $text): int

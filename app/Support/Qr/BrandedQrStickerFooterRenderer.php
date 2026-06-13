@@ -25,13 +25,7 @@ final class BrandedQrStickerFooterRenderer
         $fontSize = self::fitFontSize($text, $font);
         $textWidth = self::textWidth($font, $fontSize, $text);
 
-        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForGdRegion(
-            $canvas,
-            Avery62x89StickerArtworkLayout::QR_CENTER_X_PX,
-            BrandedQrStickerTextColor::footerSampleCenterY(),
-            Avery62x89StickerArtworkLayout::footerMaxWidthPx(),
-            48,
-        );
+        [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
         $color = imagecolorallocate($canvas, $r, $g, $b);
         if ($color === false) {
             throw new \RuntimeException('Unable to allocate branded sticker footer text color.');
@@ -59,13 +53,7 @@ final class BrandedQrStickerFooterRenderer
         $font = BrandedQrStickerFont::headerBoldAbsolutePath();
         $fontSize = self::fitFontSize($text, $font);
 
-        [$r, $g, $b] = BrandedQrStickerTextColor::rgbForImagickRegion(
-            $canvas,
-            Avery62x89StickerArtworkLayout::QR_CENTER_X_PX,
-            BrandedQrStickerTextColor::footerSampleCenterY(),
-            Avery62x89StickerArtworkLayout::footerMaxWidthPx(),
-            48,
-        );
+        [$r, $g, $b] = BrandedQrStickerTextColor::darkLabelRgb();
 
         $draw = new ImagickDraw;
         $draw->setFont($font);

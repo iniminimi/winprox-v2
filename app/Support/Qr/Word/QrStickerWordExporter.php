@@ -10,6 +10,7 @@ use App\Support\Qr\LocationQrPackStickerEntries;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrStickerEntry;
+use App\Support\Qr\QrStickerRasterCache;
 use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Support\Carbon;
 use InvalidArgumentException;
@@ -69,10 +70,14 @@ final class QrStickerWordExporter
         $tenant?->loadMissing('qrStickerSheetSettings');
         $sheetSettings = $tenant?->qrStickerSheetSetting($template);
 
-        return match ($template) {
-            QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $centerLogoPath),
-            QrStickerSheetTemplate::Herma7050 => $this->herma7050Builder->build($entries, $centerLogoPath),
-            QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant, $sheetSettings),
-        };
+        try {
+            return match ($template) {
+                QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $centerLogoPath),
+                QrStickerSheetTemplate::Herma7050 => $this->herma7050Builder->build($entries, $centerLogoPath),
+                QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant, $sheetSettings),
+            };
+        } finally {
+            QrStickerRasterCache::clear();
+        }
     }
 }

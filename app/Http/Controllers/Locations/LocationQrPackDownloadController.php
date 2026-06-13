@@ -30,6 +30,8 @@ final class LocationQrPackDownloadController
             abort(503, __('locations.qr_pack.unavailable'));
         }
 
+        @set_time_limit(120);
+
         $isDynamic = $request->query('dynamic') === '1';
         $dynamicCount = (int) ($request->query('count') ?? 15);
 

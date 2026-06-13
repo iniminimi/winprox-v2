@@ -47,17 +47,17 @@ final class Avery62x89StickerArtworkLayout
     /** Matches settings validation — ~3 lines on the widened header band. */
     public const HEADER_TEXT_MAX_CHARS = 120;
 
-    /** Directly below QR — locatie · unit when tenant header text is set. */
-    public const UNIT_CAPTION_TOP_PX = 732;
+    /** Directly below QR — unit name (second line when tenant header text is set). */
+    public const UNIT_CAPTION_TOP_PX = 778;
 
     public const UNIT_CAPTION_MAX_FONT_SIZE_PX = 22;
 
     public const UNIT_CAPTION_MIN_FONT_SIZE_PX = 16;
 
-    /** Sticker number (Winprox-YYMM-#####), just under unit caption. */
+    /** Sticker number (Winprox-YYMM-#####) — first line below QR. */
     public const FOOTER_PADDING_SIDE_PX = 48;
 
-    public const FOOTER_TOP_PX = 756;
+    public const FOOTER_TOP_PX = 732;
 
     public const FOOTER_MAX_FONT_SIZE_PX = 24;
 
@@ -74,13 +74,13 @@ final class Avery62x89StickerArtworkLayout
 
     public const TENANT_DETAILS_MIN_FONT_SIZE_PX = 12;
 
-    public const TENANT_DETAILS_LINE_HEIGHT_RATIO = 1.12;
+    public const TENANT_DETAILS_LINE_HEIGHT_RATIO = 1.38;
 
     public const TENANT_DETAILS_MAX_LINES = 3;
 
-    public const TENANT_LOGO_MAX_WIDTH_PX = 88;
+    public const TENANT_LOGO_MAX_WIDTH_PX = 176;
 
-    public const TENANT_LOGO_MAX_HEIGHT_PX = 64;
+    public const TENANT_LOGO_MAX_HEIGHT_PX = 128;
 
     public const TENANT_LOGO_PADDING_RIGHT_PX = 36;
 
@@ -89,6 +89,13 @@ final class Avery62x89StickerArtworkLayout
     public const TENANT_LOGO_PADDING_TOP_PX = 72;
 
     public const TENANT_LOGO_PADDING_BOTTOM_PX = 58;
+
+    /** White surface frame around tenant text/logo (sidebar-logo style @ 300 dpi). */
+    public const TENANT_SURFACE_BORDER_PX = 2;
+
+    public const TENANT_SURFACE_RADIUS_PX = 10;
+
+    public const TENANT_SURFACE_PADDING_PX = 8;
 
     public static function headerMaxWidthPx(): int
     {
