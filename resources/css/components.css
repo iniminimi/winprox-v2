@@ -750,6 +750,22 @@ a.wp-kpi:hover {
     gap: 0.5rem;
 }
 
+.wp-unit-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.wp-unit-title-row__sep {
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-unit-title-row .wp-unit-gps-trigger {
+    margin-left: 0;
+}
+
 .wp-unit-gps-trigger {
     margin-left: 0.5rem;
     vertical-align: middle;

@@ -1,4 +1,7 @@
 @if ($unit->hasGps())
+    @if (! empty($inline))
+        <span class="wp-unit-title-row__sep" aria-hidden="true"> - </span>
+    @endif
     <button
         type="button"
         class="wp-muted wp-unit-gps-trigger"

@@ -86,7 +86,10 @@
                 @endphp
                 <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
-                        <p class="wp-issue-card-title">{{ $unit->name }}</p>
+                        <p class="wp-issue-card-title wp-unit-title-row">
+                            <span>{{ $unit->name }}</span>
+                            @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
+                        </p>
                         @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
                             <p class="wp-issue-card-meta">
                                 @if ($unit->category)
@@ -102,9 +105,6 @@
                                 {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
                             </p>
                         @endif
-                        <div class="wp-cluster wp-cluster--tight">
-                            @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit])
-                        </div>
                     </div>
                     <div class="wp-issue-row-meta">
                         @if ($unit->hasOpenIssues())
