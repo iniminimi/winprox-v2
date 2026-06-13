@@ -775,15 +775,30 @@ a.wp-kpi:hover {
     margin-top: 0.75rem;
 }
 
+.wp-portal-gps__nav-link,
+.wp-portal-gps__capture-btn {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: normal;
+}
+
 .wp-portal-gps__nav-link {
     justify-content: center;
 }
 
-.wp-portal-gps__action-inner {
-    display: inline-flex;
-    align-items: center;
+.wp-portal-gps__action-label {
+    text-align: left;
+}
+
+.wp-portal-gps__capturing {
     justify-content: center;
-    gap: 0.5rem;
+}
+
+.wp-portal-gps .btn--primary .wp-icon-frame,
+.wp-portal-gps .btn--ghost .wp-icon-frame {
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    color: var(--wp-text-muted);
 }
 
 .wp-portal-gps__error {

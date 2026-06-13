@@ -31,19 +31,17 @@
                 @if ($mapsUrl && $canAct)
                     <div class="wp-portal-gps__nav" x-show="!capturing">
                         <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block wp-portal-gps__nav-link">
-                            <span class="wp-portal-gps__action-inner">
-                                <span class="wp-icon-frame" aria-hidden="true">
-                                    <x-wp-icon name="map-pin" />
-                                </span>
-                                <span>{{ __('portal.worker.navigate_to_location') }}</span>
+                            <span class="wp-icon-frame" aria-hidden="true">
+                                <x-wp-icon name="map-pin" />
                             </span>
+                            <span class="wp-portal-gps__action-label">{{ __('portal.worker.navigate_to_location') }}</span>
                         </a>
                     </div>
                 @endif
 
                 @if ($canCaptureUnitGps)
                     <div class="wp-portal-gps__capture">
-                        <button type="button" class="btn btn--primary btn--block" x-bind:disabled="capturing" @click="
+                        <button type="button" class="btn btn--primary btn--block wp-portal-gps__capture-btn" x-bind:disabled="capturing" @click="
                             capturing = true;
                             if (navigator.geolocation) {
                                 navigator.geolocation.getCurrentPosition(
@@ -66,13 +64,13 @@
                                 alert(@js(__('qr.connect.gps_not_supported'))); capturing = false;
                             }
                         ">
-                            <span x-show="!capturing" class="wp-portal-gps__action-inner">
-                                <span class="wp-icon-frame" aria-hidden="true">
-                                    <x-wp-icon name="map-pin" />
-                                </span>
-                                <span>{{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}</span>
+                            <span class="wp-icon-frame" x-show="!capturing" aria-hidden="true">
+                                <x-wp-icon name="map-pin" />
                             </span>
-                            <span x-show="capturing" class="wp-cluster wp-cluster--tight" style="justify-content:center;">
+                            <span class="wp-portal-gps__action-label" x-show="!capturing">
+                                {{ $mapsUrl ? __('portal.unit.recapture_gps') : __('portal.unit.capture_gps') }}
+                            </span>
+                            <span x-show="capturing" class="wp-cluster wp-cluster--tight wp-portal-gps__capturing">
                                 <x-wp-spinner size="sm" />
                                 <span>{{ __('portal.unit.capturing_gps') }}</span>
                             </span>
