@@ -15,7 +15,7 @@ final class PageHelp
     /**
      * @return array{
      *     title: string,
-     *     actions: list<array{label: string, text: string, nested: bool}>,
+     *     actions: list<array{label: string, text: string, nested: bool, label_icon: string|null}>,
      *     statuses: list<array{key: string, label: string, text: string, pill: string}>,
      *     status_note: string|null,
      * }|null
@@ -51,10 +51,13 @@ final class PageHelp
                     $text = str_replace(':'.$key, (string) $value, $text);
                 }
 
+                $labelIcon = $item['label_icon'] ?? null;
+
                 $actions[] = [
                     'label' => (string) $item['label'],
                     'text' => $text,
                     'nested' => ! empty($item['nested']),
+                    'label_icon' => is_string($labelIcon) && $labelIcon !== '' ? $labelIcon : null,
                 ];
             }
         }

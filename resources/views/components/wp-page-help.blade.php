@@ -53,7 +53,10 @@
                                 @foreach ($helpActionGroups as $group)
                                     @if ($group['type'] === 'item')
                                         <li class="wp-page-help-item">
-                                            <p class="wp-page-help-item-label">{{ $group['item']['label'] }}</p>
+                                            @include('partials.wp-page-help-action-label', [
+                                                'label' => $group['item']['label'],
+                                                'labelIcon' => $group['item']['label_icon'] ?? null,
+                                            ])
                                             <p class="wp-page-help-item-text">{!! $group['item']['text'] !!}</p>
                                         </li>
                                     @else
@@ -61,7 +64,10 @@
                                             <ul class="wp-page-help-sublist">
                                                 @foreach ($group['items'] as $action)
                                                     <li class="wp-page-help-item">
-                                                        <p class="wp-page-help-item-label">{{ $action['label'] }}</p>
+                                                        @include('partials.wp-page-help-action-label', [
+                                                            'label' => $action['label'],
+                                                            'labelIcon' => $action['label_icon'] ?? null,
+                                                        ])
                                                         <p class="wp-page-help-item-text">{!! $action['text'] !!}</p>
                                                     </li>
                                                 @endforeach

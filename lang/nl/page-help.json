@@ -189,6 +189,7 @@
                 },
                 {
                     "label": "GPS",
+                    "label_icon": "gps",
                     "text": "Bekijk de locatiegeschiedenis van een unit via de pop-up zodra er GPS-coördinaten beschikbaar zijn. Klik op 'Open in Maps' om de locatie direct in Google Maps te openen."
                 },
                 {
