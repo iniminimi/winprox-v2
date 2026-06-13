@@ -112,6 +112,7 @@
 
                 <div class="wp-sidebar-bottom">
                     @include('partials.wp-lang-switch', ['variant' => 'sidebar'])
+                    @include('partials.wp-theme-switch', ['variant' => 'sidebar'])
 
                     @auth
                         <div class="wp-sidebar-user">
@@ -133,8 +134,6 @@
         </aside>
 
         <div class="wp-sidebar-scrim" :class="{ 'is-open': nav }" @click="nav = false" aria-hidden="true"></div>
-
-        @include('partials.wp-mobile-prefs')
 
         <button type="button" class="wp-nav-toggle-fixed btn btn--ghost btn--sm" @click="nav = !nav" aria-label="{{ __('common.nav.label') }}">
             <x-wp-icon name="menu" class="wp-icon" />

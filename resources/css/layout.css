@@ -226,44 +226,16 @@
     min-width: 0;
 }
 
-/* Taal + stijl bovenaan — alleen gsm/tablet smal. */
-.wp-mobile-prefs {
-    display: none;
-}
-
-.wp-mobile-prefs-inner {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-}
-
-.wp-mobile-prefs .wp-lang--mobile,
-.wp-mobile-prefs .wp-theme--mobile {
-    flex: 0 0 auto;
-}
-
-.wp-lang-select--mobile .wp-lang-select-trigger {
-    min-height: 2.125rem;
-    padding-inline: 0.625rem;
-    font-size: 0.75rem;
-    max-width: none;
-}
-
-.wp-mobile-prefs .wp-lang-select-icon {
-    width: 1rem;
-    height: 1rem;
-}
-
-.wp-sidebar-bottom .wp-lang--sidebar {
+.wp-sidebar-bottom .wp-lang--sidebar,
+.wp-sidebar-bottom .wp-theme--sidebar {
     width: 95%;
     margin-inline: auto;
 }
 
-@media (max-width: 59.99rem) {
-    .wp-sidebar-bottom .wp-lang--sidebar {
-        display: none;
-    }
+.wp-theme--sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .wp-sidebar-user {
@@ -655,35 +627,13 @@
         display: inline-flex;
     }
 
-    .wp-mobile-prefs {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 38;
-        align-items: center;
-        justify-content: center;
-        min-height: 3.25rem;
-        padding-top: max(0.5rem, env(safe-area-inset-top));
-        padding-inline: max(3.25rem, calc(0.75rem + env(safe-area-inset-left))) max(3.25rem, calc(0.75rem + env(safe-area-inset-right)));
-        pointer-events: none;
-    }
-
-    .wp-mobile-prefs-inner {
-        pointer-events: auto;
-    }
-
-    .wp-lang-select--mobile .wp-lang-select-menu {
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
+    .wp-header-search {
+        padding-left: 3.5rem;
+        padding-top: max(3.25rem, calc(0.75rem + env(safe-area-inset-top)));
     }
 
     .wp-main {
         padding: 1.25rem;
-        padding-top: 5.25rem;
-        padding-right: 1.25rem;
     }
 }
 

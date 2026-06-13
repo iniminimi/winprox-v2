@@ -1,6 +1,6 @@
 {{--
-  Stijlkeuze (beheer) — ingelogd; op gsm naast taal bovenaan.
-  $variant: sidebar | mobile
+  Stijlkeuze (beheer) — ingelogd; in zijbalk onder taal.
+  $variant: sidebar
 --}}
 @php
     $variant = $variant ?? 'sidebar';
