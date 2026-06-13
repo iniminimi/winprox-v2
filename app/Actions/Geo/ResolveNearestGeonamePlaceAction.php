@@ -15,12 +15,6 @@ class ResolveNearestGeonamePlaceAction
     private const SEARCH_RADII_KM = [2.0, 5.0, 15.0, 50.0];
 
     /** @var list<string> */
-    private const SIGNIFICANT_WATER_FEATURE_CODES = ['LK', 'BAY', 'PND', 'LKN', 'WTRC'];
-
-    /** @var list<string> */
-    private const MINOR_HYDRO_FEATURE_CODES = ['STM', 'DTCH', 'CNL', 'DRG', 'SHOL', 'FISH', 'COVE', 'INLT'];
-
-    /** @var list<string> */
     private const LOW_VALUE_SPOT_FEATURE_CODES = ['HTL', 'BLDG', 'MALL', 'RET', 'RST'];
 
     public function handle(float $latitude, float $longitude): ResolvedGeonamePlaceData
@@ -88,12 +82,8 @@ class ResolveNearestGeonamePlaceAction
     {
         $distanceKm += $this->distancePenaltyKm($place);
 
-        if ($this->isSignificantWater($place)) {
-            return $distanceKm;
-        }
-
         if ($place->feature_class === 'P') {
-            return $distanceKm + 0.25;
+            return $distanceKm;
         }
 
         if (in_array($place->feature_class, ['V', 'L'], true)) {
@@ -104,31 +94,20 @@ class ResolveNearestGeonamePlaceAction
             return $distanceKm + 0.75;
         }
 
+        if ($place->feature_class === 'H') {
+            return $distanceKm + 2.0;
+        }
+
         return $distanceKm + 1.0;
     }
 
     private function distancePenaltyKm(GeonamePlace $place): float
     {
-        if ($place->feature_class === 'H' && $this->isMinorHydro($place->feature_code)) {
-            return 2.0;
-        }
-
         if ($place->feature_class === 'S' && in_array($place->feature_code, self::LOW_VALUE_SPOT_FEATURE_CODES, true)) {
             return 1.5;
         }
 
         return 0.0;
-    }
-
-    private function isSignificantWater(GeonamePlace $place): bool
-    {
-        return $place->feature_class === 'H'
-            && in_array($place->feature_code, self::SIGNIFICANT_WATER_FEATURE_CODES, true);
-    }
-
-    private function isMinorHydro(string $featureCode): bool
-    {
-        return in_array($featureCode, self::MINOR_HYDRO_FEATURE_CODES, true);
     }
 
     private function haversineDistanceKm(float $lat1, float $lng1, float $lat2, float $lng2): float

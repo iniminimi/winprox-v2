@@ -27,7 +27,7 @@ it('imports europe and north america rows from a geonames extract', function () 
         ->and(GeonamePlace::query()->where('country_code', 'AD')->count())->toBe(2);
 });
 
-it('resolves a lake name before a nearby mountain within priority radius', function () {
+it('prefers land features over a nearby lake', function () {
     GeonamePlace::query()->insert([
         [
             'id' => 3017833,
@@ -47,6 +47,23 @@ it('resolves a lake name before a nearby mountain within priority radius', funct
             'feature_class' => 'T',
             'feature_code' => 'PK',
         ],
+    ]);
+
+    $resolved = app(ResolveNearestGeonamePlaceAction::class)->handle(42.5291, 1.7336);
+
+    expect($resolved->locationName)->toBe('Pic de les Abelletes')
+        ->and($resolved->countryCode)->toBe('AD');
+});
+
+it('uses a lake name only when no better land feature exists nearby', function () {
+    GeonamePlace::query()->create([
+        'id' => 3017833,
+        'name' => 'Estany de les Abelletes',
+        'latitude' => 42.52915,
+        'longitude' => 1.73362,
+        'country_code' => 'AD',
+        'feature_class' => 'H',
+        'feature_code' => 'LK',
     ]);
 
     $resolved = app(ResolveNearestGeonamePlaceAction::class)->handle(42.5291, 1.7336);
