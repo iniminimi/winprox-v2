@@ -55,6 +55,43 @@ it('resolves a lake name before a nearby mountain within priority radius', funct
         ->and($resolved->countryCode)->toBe('AD');
 });
 
+it('prefers a nearby populated place over a canal or hotel', function () {
+    GeonamePlace::query()->insert([
+        [
+            'id' => 1001,
+            'name' => 'Heist',
+            'latitude' => 51.34080,
+            'longitude' => 3.25500,
+            'country_code' => 'BE',
+            'feature_class' => 'P',
+            'feature_code' => 'PPL',
+        ],
+        [
+            'id' => 1002,
+            'name' => 'Isabellavaart',
+            'latitude' => 51.34500,
+            'longitude' => 3.26000,
+            'country_code' => 'BE',
+            'feature_class' => 'H',
+            'feature_code' => 'DTCH',
+        ],
+        [
+            'id' => 1003,
+            'name' => 'Hotel Monterey',
+            'latitude' => 51.33900,
+            'longitude' => 3.24800,
+            'country_code' => 'BE',
+            'feature_class' => 'S',
+            'feature_code' => 'HTL',
+        ],
+    ]);
+
+    $resolved = app(ResolveNearestGeonamePlaceAction::class)->handle(51.3374839, 3.2501345);
+
+    expect($resolved->locationName)->toBe('Heist')
+        ->and($resolved->countryCode)->toBe('BE');
+});
+
 it('returns null location name for generic open sea features but keeps country code', function () {
     GeonamePlace::query()->create([
         'id' => 9000001,
