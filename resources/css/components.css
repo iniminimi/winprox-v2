@@ -664,6 +664,25 @@ a.wp-kpi:hover {
     height: 1.25rem;
 }
 
+/* Icoon in wit kader met grijze rand (portaal, KPI's, …). */
+.wp-icon-frame {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    color: var(--wp-text-muted);
+}
+
+.wp-icon-frame .wp-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
 /* ---------------------------------------------------------------------------
  | Meldingsrijen (dashboard "recente meldingen").
  * ------------------------------------------------------------------------- */
@@ -760,11 +779,11 @@ a.wp-kpi:hover {
     justify-content: center;
 }
 
-.wp-portal-gps__icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    vertical-align: middle;
-    display: inline-block;
+.wp-portal-gps__action-inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .wp-portal-gps__error {
