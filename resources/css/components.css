@@ -242,6 +242,21 @@
     background-color: var(--wp-surface-muted);
 }
 
+.wp-org-identity-name {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--wp-text);
+}
+
+.wp-org-identity-address {
+    margin: 0 0 1rem;
+    font-size: 1.75rem;
+    line-height: 1.35;
+    color: var(--wp-text-body);
+}
+
 .wp-check {
     display: flex;
     align-items: center;
