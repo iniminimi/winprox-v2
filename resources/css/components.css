@@ -750,6 +750,64 @@ a.wp-kpi:hover {
     gap: 0.5rem;
 }
 
+.wp-tooltip {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.wp-tooltip__bubble {
+    position: absolute;
+    bottom: calc(100% + 0.45rem);
+    left: 50%;
+    z-index: 20;
+    padding: 0.4rem 0.65rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-sm);
+    background-color: var(--wp-surface);
+    box-shadow: var(--wp-shadow);
+    color: var(--wp-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(0.2rem);
+    transition:
+        opacity var(--wp-transition),
+        transform var(--wp-transition),
+        visibility var(--wp-transition);
+}
+
+.wp-tooltip__bubble::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.35rem solid transparent;
+    border-top-color: var(--wp-border);
+}
+
+.wp-tooltip__bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0.3rem solid transparent;
+    border-top-color: var(--wp-surface);
+}
+
+.wp-tooltip:hover .wp-tooltip__bubble,
+.wp-tooltip:focus-within .wp-tooltip__bubble {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
 .wp-unit-title-row {
     display: flex;
     align-items: center;
@@ -777,6 +835,12 @@ a.wp-kpi:hover {
     background: transparent;
     padding: 0;
     cursor: pointer;
+    transition: color var(--wp-transition);
+}
+
+.wp-unit-gps-trigger:hover,
+.wp-unit-gps-trigger:focus-visible {
+    color: var(--wp-accent);
 }
 
 .wp-unit-gps-trigger__icon {
