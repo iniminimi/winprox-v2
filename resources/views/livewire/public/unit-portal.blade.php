@@ -27,7 +27,69 @@
         <h1 class="wp-portal-welcome-title">{{ __('portal.welcome_title', ['tenant' => $tenantName]) }}</h1>
 
         @if ($canCaptureUnitGps || ($mapsUrl && $canAct))
-            <div x-data="{ capturing: false }" class="wp-portal-gps">
+            <div
+                x-data="{
+                    capturing: false,
+                    gpsMsgs: {
+                        denied: @js(__('qr.connect.gps_denied')),
+                        unavailable: @js(__('qr.connect.gps_unavailable')),
+                        timeout: @js(__('qr.connect.gps_timeout')),
+                        error: @js(__('qr.connect.gps_error')),
+                        notSupported: @js(__('qr.connect.gps_not_supported')),
+                    },
+                    browserLocalIso() {
+                        const d = new Date();
+                        const pad = (n) => String(n).padStart(2, '0');
+                        const tz = -d.getTimezoneOffset();
+                        const sign = tz >= 0 ? '+' : '-';
+                        const tzH = pad(Math.floor(Math.abs(tz) / 60));
+                        const tzM = pad(Math.abs(tz) % 60);
+                        return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${tzH}:${tzM}`;
+                    },
+                    gpsFail(err) {
+                        if (err?.code === 1) return this.gpsMsgs.denied;
+                        if (err?.code === 2) return this.gpsMsgs.unavailable;
+                        if (err?.code === 3) return this.gpsMsgs.timeout;
+                        return this.gpsMsgs.error;
+                    },
+                    gpsSave(pos) {
+                        $wire.gpsLatitude = pos.coords.latitude;
+                        $wire.gpsLongitude = pos.coords.longitude;
+                        $wire.gpsReportedAt = this.browserLocalIso();
+                        $wire.updateUnitGps();
+                        this.capturing = false;
+                    },
+                    captureGps() {
+                        this.capturing = true;
+                        if (!navigator.geolocation) {
+                            alert(this.gpsMsgs.notSupported);
+                            this.capturing = false;
+                            return;
+                        }
+                        const self = this;
+                        const retryLowAccuracy = () => {
+                            navigator.geolocation.getCurrentPosition(
+                                (pos) => self.gpsSave(pos),
+                                (err) => { alert(self.gpsFail(err)); self.capturing = false; },
+                                { enableHighAccuracy: false, timeout: 15000, maximumAge: 60000 },
+                            );
+                        };
+                        navigator.geolocation.getCurrentPosition(
+                            (pos) => self.gpsSave(pos),
+                            (err) => {
+                                if (err?.code === 3 || err?.code === 2) {
+                                    retryLowAccuracy();
+                                    return;
+                                }
+                                alert(self.gpsFail(err));
+                                this.capturing = false;
+                            },
+                            { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 },
+                        );
+                    },
+                }"
+                class="wp-portal-gps"
+            >
                 @if ($mapsUrl && $canAct)
                     <div class="wp-portal-gps__nav" x-show="!capturing">
                         <a href="{{ $mapsUrl }}" target="_blank" rel="noopener" class="btn btn--ghost btn--block wp-portal-gps__nav-link">
@@ -41,29 +103,7 @@
 
                 @if ($canCaptureUnitGps)
                     <div class="wp-portal-gps__capture">
-                        <button type="button" class="btn btn--primary btn--block wp-portal-gps__capture-btn" x-bind:disabled="capturing" @click="
-                            capturing = true;
-                            if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(
-                                    (pos) => {
-                                        const d = new Date();
-                                        const pad = (n) => String(n).padStart(2, '0');
-                                        const tz = -d.getTimezoneOffset();
-                                        const sign = tz >= 0 ? '+' : '-';
-                                        const tzH = pad(Math.floor(Math.abs(tz) / 60));
-                                        const tzM = pad(Math.abs(tz) % 60);
-                                        $wire.gpsLatitude = pos.coords.latitude;
-                                        $wire.gpsLongitude = pos.coords.longitude;
-                                        $wire.gpsReportedAt = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${tzH}:${tzM}`;
-                                        $wire.updateUnitGps();
-                                        capturing = false;
-                                    },
-                                    () => { alert(@js(__('qr.connect.gps_error'))); capturing = false; }
-                                );
-                            } else {
-                                alert(@js(__('qr.connect.gps_not_supported'))); capturing = false;
-                            }
-                        ">
+                        <button type="button" class="btn btn--primary btn--block wp-portal-gps__capture-btn" x-bind:disabled="capturing" @click="captureGps()">
                             <span class="wp-icon-frame" x-show="!capturing" aria-hidden="true">
                                 <x-wp-icon name="map-pin" />
                             </span>
