@@ -758,6 +758,7 @@ a.wp-kpi:hover {
 }
 
 .wp-unit-title-row__sep {
+    margin-inline: 0.25rem;
     font-weight: 700;
     color: var(--wp-text);
 }

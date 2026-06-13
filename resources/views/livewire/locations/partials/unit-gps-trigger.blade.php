@@ -1,6 +1,6 @@
 @if ($unit->hasGps())
     @if (! empty($inline))
-        <span class="wp-unit-title-row__sep" aria-hidden="true"> - </span>
+        <span class="wp-unit-title-row__sep" aria-hidden="true">-</span>
     @endif
     <button
         type="button"

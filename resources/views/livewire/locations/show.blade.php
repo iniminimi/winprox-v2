@@ -93,10 +93,7 @@
                         @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
                             <p class="wp-issue-card-meta">
                                 @if ($unit->category)
-                                    {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}
-                                @endif
-                                @if ($unit->category && $unit->category->teams && $unit->category->teams->isNotEmpty())
-                                    , {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}
+                                    {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}@endif
                                 @endif
                             </p>
                         @endif
