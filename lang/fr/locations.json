@@ -101,7 +101,9 @@
             "reported_at": "Signalé le :datetime",
             "worker": "Par :name",
             "open_maps": "Ouvrir dans Maps",
-            "empty": "Aucune localisation GPS enregistrée."
+            "empty": "Aucune localisation GPS enregistrée.",
+            "location_named": ":name (:country)",
+            "location_country_only": ":country"
         },
         "filters": {
             "category": "Filtrer par catégorie",

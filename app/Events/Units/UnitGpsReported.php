@@ -29,6 +29,8 @@ class UnitGpsReported implements WebhookEvent
             'unit_id' => $this->report->unit_id,
             'latitude' => $this->report->latitude,
             'longitude' => $this->report->longitude,
+            'location_name' => $this->report->location_name,
+            'country_code' => $this->report->country_code,
             'reported_at' => $this->report->reported_at->toIso8601String(),
             'worker_id' => $this->report->worker_id,
         ];

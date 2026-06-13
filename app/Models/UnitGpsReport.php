@@ -18,6 +18,8 @@ class UnitGpsReport extends Model
         'unit_id',
         'latitude',
         'longitude',
+        'location_name',
+        'country_code',
         'reported_at',
         'worker_id',
     ];

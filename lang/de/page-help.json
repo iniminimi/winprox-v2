@@ -388,7 +388,7 @@
                 },
                 {
                     "label": "Ereignis: unit.gps_reported",
-                    "text": "Ein GPS-Standort wurde für eine Unit über das Portal erfasst (Melder, Mitarbeiter oder Admin bei QR-Verknüpfung)."
+                    "text": "Ein GPS-Standort wurde für eine Unit über das Portal erfasst (Melder, Mitarbeiter oder Admin bei QR-Verknüpfung). Payload enthält Koordinaten sowie optional location_name und country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint aktiv oder inaktiv",

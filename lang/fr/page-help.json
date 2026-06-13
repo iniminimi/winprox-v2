@@ -388,7 +388,7 @@
                 },
                 {
                     "label": "Événement : unit.gps_reported",
-                    "text": "Une localisation GPS a été enregistrée pour une unité via le portail (signaleur, exécutant ou administrateur lors de la liaison QR)."
+                    "text": "Une localisation GPS a été enregistrée pour une unité via le portail (signaleur, exécutant ou administrateur lors de la liaison QR). La charge utile contient les coordonnées et éventuellement location_name et country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint actif ou inactif",

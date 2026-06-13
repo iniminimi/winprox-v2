@@ -19,6 +19,8 @@ class UnitGpsReportResource extends JsonResource
             'unit_id' => $this->unit_id,
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
+            'location_name' => $this->location_name,
+            'country_code' => $this->country_code,
             'reported_at' => $this->reported_at->toIso8601String(),
             'worker_id' => $this->worker_id,
             'google_maps_url' => $this->googleMapsUrl(),

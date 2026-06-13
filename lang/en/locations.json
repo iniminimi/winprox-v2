@@ -101,7 +101,9 @@
             "reported_at": "Reported on :datetime",
             "worker": "By :name",
             "open_maps": "Open in Maps",
-            "empty": "No GPS locations recorded yet."
+            "empty": "No GPS locations recorded yet.",
+            "location_named": ":name (:country)",
+            "location_country_only": ":country"
         },
         "filters": {
             "category": "Filter by category",

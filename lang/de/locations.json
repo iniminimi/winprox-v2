@@ -101,7 +101,9 @@
             "reported_at": "Gemeldet am :datetime",
             "worker": "Durch :name",
             "open_maps": "In Maps öffnen",
-            "empty": "Noch keine GPS-Standorte erfasst."
+            "empty": "Noch keine GPS-Standorte erfasst.",
+            "location_named": ":name (:country)",
+            "location_country_only": ":country"
         },
         "filters": {
             "category": "Nach Kategorie filtern",

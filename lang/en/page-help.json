@@ -388,7 +388,7 @@
                 },
                 {
                     "label": "Event: unit.gps_reported",
-                    "text": "A GPS location was recorded for a unit via the portal (reporter, worker or admin during QR linking)."
+                    "text": "A GPS location was recorded for a unit via the portal (reporter, worker or admin during QR linking). Payload includes coordinates and optionally location_name and country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint active or inactive",

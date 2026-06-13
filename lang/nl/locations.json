@@ -101,7 +101,9 @@
             "reported_at": "Gemeld op :datetime",
             "worker": "Door :name",
             "open_maps": "Open in Maps",
-            "empty": "Nog geen GPS-locaties vastgelegd."
+            "empty": "Nog geen GPS-locaties vastgelegd.",
+            "location_named": ":name (:country)",
+            "location_country_only": ":country"
         },
         "filters": {
             "category": "Filter op categorie",

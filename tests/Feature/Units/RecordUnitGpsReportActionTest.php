@@ -23,6 +23,16 @@ afterEach(fn () => Tenancy::forget());
 it('records a gps report for a unit', function () {
     Event::fake([UnitGpsReported::class]);
 
+    \App\Models\GeonamePlace::query()->create([
+        'id' => 2803138,
+        'name' => 'Brugge',
+        'latitude' => 51.12340,
+        'longitude' => 4.56780,
+        'country_code' => 'BE',
+        'feature_class' => 'P',
+        'feature_code' => 'PPL',
+    ]);
+
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -49,6 +59,8 @@ it('records a gps report for a unit', function () {
     expect($report)->toBeInstanceOf(UnitGpsReport::class)
         ->and($report->latitude)->toBe(51.12345678)
         ->and($report->longitude)->toBe(4.56789012)
+        ->and($report->location_name)->toBe('Brugge')
+        ->and($report->country_code)->toBe('BE')
         ->and($report->reported_at->toIso8601String())->toBe($reportedAt->toIso8601String());
 
     $unit->refresh();

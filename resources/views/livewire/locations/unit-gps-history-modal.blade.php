@@ -14,6 +14,11 @@
                                 <div class="wp-grow">
                                     <p class="wp-issue-card-title">
                                         {{ $report->latitude }}, {{ $report->longitude }}
+                                        @if ($report->location_name && $report->country_code)
+                                            · {{ __('locations.units.gps_history.location_named', ['name' => $report->location_name, 'country' => $report->country_code]) }}
+                                        @elseif ($report->country_code)
+                                            · {{ __('locations.units.gps_history.location_country_only', ['country' => $report->country_code]) }}
+                                        @endif
                                     </p>
                                     <p class="wp-muted">
                                         {{ __('locations.units.gps_history.reported_at', ['datetime' => $report->reported_at->format('d/m/Y H:i')]) }}

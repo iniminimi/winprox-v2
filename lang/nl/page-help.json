@@ -388,7 +388,7 @@
                 },
                 {
                     "label": "Gebeurtenis: unit.gps_reported",
-                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, worker of beheerder bij QR-koppeling)."
+                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, worker of beheerder bij QR-koppeling). Payload bevat coördinaten, optioneel location_name en country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint actief of inactief",

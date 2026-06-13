@@ -23,4 +23,4 @@ yarn-error.log
 /.idea
 /.nova
 /.vscode
-/.zed
+/tests/allCountries.txt

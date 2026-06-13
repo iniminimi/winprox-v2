@@ -44,6 +44,8 @@ it('opens gps history modal with reports newest first', function () {
         'unit_id' => $unit->id,
         'latitude' => 51.2,
         'longitude' => 4.2,
+        'location_name' => 'Gent',
+        'country_code' => 'BE',
         'reported_at' => '2026-06-13 15:00:00',
     ]);
 
@@ -51,6 +53,7 @@ it('opens gps history modal with reports newest first', function () {
         ->dispatch('open-unit-gps-history', unitId: $unit->id)
         ->assertSet('show', true)
         ->assertSee('51.2, 4.2')
+        ->assertSee('Gent (BE)')
         ->assertSee('50.1, 3.1')
         ->assertSee(__('locations.units.gps_history.open_maps'));
 });

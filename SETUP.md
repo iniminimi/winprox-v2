@@ -52,6 +52,14 @@ Optioneel testdata:
 php artisan db:seed
 ```
 
+Optioneel GeoNames-referentie (Europa + Noord-Amerika, voor GPS-plaatsnamen op rapporten):
+
+```powershell
+php artisan geonames:import C:\pad\naar\allCountries.txt --truncate
+```
+
+Bron: [GeoNames](https://www.geonames.org/) (`allCountries.txt`, CC BY 4.0). Bestand niet in git (~1,7 GB).
+
 ### Frontend
 
 ```powershell
