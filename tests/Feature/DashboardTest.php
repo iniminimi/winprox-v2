@@ -1,11 +1,13 @@
 <?php
 
+use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Livewire\Dashboard;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
@@ -58,6 +60,59 @@ it('toont meldingen van een andere tenant niet op het dashboard', function () {
     Livewire::actingAs($user)
         ->test(Dashboard::class)
         ->assertDontSee('Melding van een andere tenant');
+});
+
+it('sorteert recente meldingen op status en prioriteit', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    $makeIssue = function (TaskStatus $status, TaskPriority $priority, string $description) use ($tenant) {
+        $issue = Issue::factory()->create([
+            'tenant_id' => $tenant->id,
+            'status' => $status,
+            'approved_at' => now(),
+            'description' => $description,
+        ]);
+
+        Task::factory()->create([
+            'tenant_id' => $tenant->id,
+            'issue_id' => $issue->id,
+            'status' => $status,
+            'priority' => $priority,
+        ]);
+
+        return $issue;
+    };
+
+    $makeIssue(TaskStatus::Done, TaskPriority::Prio1, 'Afgehandeld prio 1');
+    $makeIssue(TaskStatus::InProgress, TaskPriority::Prio2, 'In uitvoering prio 2');
+    $makeIssue(TaskStatus::New, TaskPriority::Prio3, 'Nieuw prio 3');
+    $makeIssue(TaskStatus::New, TaskPriority::Prio1, 'Nieuw prio 1');
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::Closed,
+        'approved_at' => now(),
+        'description' => 'Gesloten verborgen',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertDontSee('Gesloten verborgen')
+        ->assertSeeInOrder([
+            'Nieuw prio 1',
+            'Nieuw prio 3',
+            'In uitvoering prio 2',
+            'Afgehandeld prio 1',
+        ]);
 });
 
 it('toont de proefperiode-batterijcapsule op het dashboard', function () {

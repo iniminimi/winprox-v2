@@ -29,13 +29,11 @@ class Dashboard extends Component
         $recent = Issue::query()
             ->where('status', '!=', TaskStatus::Closed->value)
             ->with(['location', 'unit', 'tasks.team'])
-            ->latest()
-            ->take(10)
             ->get()
             ->sortBy(fn ($issue) => [
-                $issue->is_recurring ? 1 : 0,
+                $issue->status->sortOrder(),
                 $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99),
-                $issue->tasks->isNotEmpty() ? $issue->created_at->timestamp : 0,
+                $issue->created_at->timestamp,
             ])
             ->take(5)
             ->values();

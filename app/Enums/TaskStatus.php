@@ -39,4 +39,15 @@ enum TaskStatus: string
             self::Closed => 'closed',
         };
     }
+
+    /** Volgorde in lijsten (1 = bovenaan). */
+    public function sortOrder(): int
+    {
+        return match ($this) {
+            self::New => 1,
+            self::InProgress => 2,
+            self::Done => 3,
+            self::Closed => 4,
+        };
+    }
 }
