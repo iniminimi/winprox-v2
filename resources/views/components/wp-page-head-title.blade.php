@@ -8,7 +8,7 @@
 
 <div @class([
     'wp-cluster wp-page-head-main',
-    'wp-portal-section-head' => $variant === 'portal',
+    'wp-card wp-card-pad' => $variant === 'portal',
 ])>
     @if ($icon)
         <span @class($variant === 'portal' ? 'wp-icon-frame' : 'wp-page-icon') aria-hidden="true">
