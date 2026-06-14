@@ -949,12 +949,6 @@
     padding-bottom: 6rem;
 }
 
-.wp-portal .wp-page-icon {
-    background-color: var(--wp-surface);
-    border: 1px solid var(--wp-border);
-    color: var(--wp-text-muted);
-}
-
 .wp-portal .wp-card {
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }

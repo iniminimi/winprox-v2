@@ -343,6 +343,13 @@
     height: 1.125rem;
 }
 
+/* Portaal: titeliconen in wit kader (zelfde als wp-icon-frame). */
+body.wp-public-body .wp-page-icon {
+    background: #fff;
+    border: 1px solid var(--wp-border);
+    color: var(--wp-text-muted);
+}
+
 /* Paginahulp (?-knop + modal) — V1 Actiehulp + Statushulp unified */
 .wp-page-help {
     position: relative;
