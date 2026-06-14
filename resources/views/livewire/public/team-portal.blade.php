@@ -155,7 +155,7 @@
             </div>
 
             <div class="wp-portal-worker-actions">
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                @include('partials.wp-portal-sign-out')
             </div>
 
             @if ($verifiedWorker?->is_teamleader)

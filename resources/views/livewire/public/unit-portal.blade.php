@@ -249,7 +249,7 @@
                             <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
                         </div>
                         <div class="wp-portal-worker-actions">
-                            <button type="button" class="btn btn--surface btn--sm" wire:click="signInAsDifferentWorker">{{ __('portal.worker.sign_out') }}</button>
+                            @include('partials.wp-portal-sign-out')
                         </div>
                     </div>
                     @if ($worker?->is_teamleader)
