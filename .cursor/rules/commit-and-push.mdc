@@ -1,11 +1,13 @@
 ---
-description: Lokaal ontwikkelen en testen; na bevestiging commit + push naar origin (server).
+description: Lokaal ontwikkelen en testen; na elke afgeronde taak commit + push naar origin (server).
 alwaysApply: true
 ---
 
 # Lokaal werken → commit → push (verplicht)
 
 We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server** (Linux) en wordt bijgewerkt via **git push** naar `origin`.
+
+**Gebruiker wil altijd commit + push** zodra een taak klaar is — niet wachten op expliciete bevestiging.
 
 ## Werkwijze
 
@@ -16,11 +18,11 @@ We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server**
    - `npm run check:locales:parity`
    - `npm run check:architecture`
    - Bij CSS/JS/views: **`public/build/**` moet al gecommit klaarstaan** (build stap 2)
-3. **`git status`** — geen test-artefacten (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
-4. **Commit** met duidelijke boodschap.
-5. **`git push`** naar `origin` — zodat de server de wijziging kan deployen.
+4. **`git status`** — geen test-artefacten (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
+5. **Commit** met duidelijke boodschap.
+6. **`git push`** naar `origin` — zodat de server de wijziging kan deployen.
 
-Niet afsluiten met uncommitted werk dat klaar is. Tenzij de gebruiker expliciet vraagt om **niet** te pushen.
+Niet afsluiten met uncommitted werk dat klaar is. Tenzij de gebruiker expliciet vraagt om **niet** te committen of te pushen.
 
 ## Lokaal vs. server
 

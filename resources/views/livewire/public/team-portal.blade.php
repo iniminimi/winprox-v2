@@ -144,7 +144,7 @@
 
         {{-- ===================== READ-ONLY TAKENOVERZICHT ===================== --}}
         @if ($canAct)
-            <div data-manual-capture="portal-team-signed-in">
+            <div data-manual-capture="portal-team-signed-in" class="wp-stack">
             <div class="wp-card wp-card-pad wp-cluster">
                 @if ($verifiedWorker?->field_icon_slug)
                     <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
@@ -182,7 +182,7 @@
 
             <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 
-            <h2 class="wp-section-title">{{ __('portal.worker.open_tasks') }}</h2>
+            <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.worker.open_tasks')" />
             <div class="wp-list">
                 @forelse ($tasks as $task)
                     <div class="wp-card wp-card-pad wp-stack" wire:key="team-task-{{ $task->id }}">
