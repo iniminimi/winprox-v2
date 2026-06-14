@@ -3,11 +3,17 @@
     'title',
     'helpPage' => null,
     'subtitle' => null,
+    'variant' => 'app',
 ])
 
-<div class="wp-cluster wp-page-head-main">
+<div @class([
+    'wp-cluster wp-page-head-main',
+    'wp-portal-section-head' => $variant === 'portal',
+])>
     @if ($icon)
-        <span class="wp-page-icon" aria-hidden="true"><x-wp-icon :name="$icon" /></span>
+        <span @class($variant === 'portal' ? 'wp-icon-frame' : 'wp-page-icon') aria-hidden="true">
+            <x-wp-icon :name="$icon" />
+        </span>
     @endif
     <div class="wp-stack-tight wp-grow">
         @if (isset($toolbar))

@@ -18,7 +18,7 @@
                 @include('partials.wp-portal-lang')
             </div>
         </div>
-        <x-wp-page-head-title icon="team" :title="__('portal.team.title')">
+        <x-wp-page-head-title variant="portal" icon="team" :title="__('portal.team.title')">
             <p class="wp-muted">{{ $teamName }}</p>
         </x-wp-page-head-title>
     </div>

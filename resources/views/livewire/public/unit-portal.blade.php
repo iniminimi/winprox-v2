@@ -310,7 +310,7 @@
             "
                   class="wp-stack">
                 <div class="wp-card wp-card-pad wp-stack">
-                    <x-wp-page-head-title icon="issues" :title="__('portal.report.title')" />
+                    <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.report.title')" />
                     @include('partials.wp-portal-report-reporter-fields')
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
@@ -345,7 +345,7 @@
         {{-- ============================ ISSUES ============================ --}}
         @if ($portalSection === 'issues')
             <x-wp-portal-back wire:click="openSection('home')" />
-            <x-wp-page-head-title icon="issues" :title="__('portal.tiles.issues')" />
+            <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.tiles.issues')" />
             <div class="wp-list">
                 @forelse ($issues as $issue)
                     @if ($issue->isApproved())
@@ -447,7 +447,7 @@
         {{-- ========================== DOCUMENTS ========================== --}}
         @if ($portalSection === 'documents')
             <x-wp-portal-back wire:click="openSection('home')" />
-            <x-wp-page-head-title icon="document" :title="__('portal.tiles.documents')" />
+            <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.tiles.documents')" />
             <div class="wp-list">
                 @forelse ($documents as $document)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="doc-{{ $document->id }}">
@@ -480,7 +480,7 @@
         {{-- ======================== ANNOUNCEMENTS ======================== --}}
         @if ($portalSection === 'announcements')
             <x-wp-portal-back wire:click="openSection('home')" />
-            <x-wp-page-head-title icon="document" :title="__('portal.tiles.announcements')" />
+            <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.tiles.announcements')" />
             <div class="wp-list">
                 @forelse ($announcements as $announcement)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ann-{{ $announcement->id }}">
