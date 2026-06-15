@@ -37,6 +37,12 @@ it('toont beschikbare promo-video per locale', function () {
         ->assertSee('issue_nl_01.mp4', false);
 });
 
+it('toont taalkeuze bovenaan de promo-pagina', function () {
+    $this->get(route('promo'))
+        ->assertOk()
+        ->assertSee(__('common.language.label'), false);
+});
+
 it('zet een proefperiode bij registratie', function () {
     Livewire::test(Register::class)
         ->set(array_replace(RegisterFormData::valid(), [

@@ -3178,6 +3178,12 @@ svg.wp-release-worker-row__icon,
     max-height: min(80vh, 42rem);
 }
 
+.wp-promo-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 0.5rem;
+}
+
 .wp-promo-video {
     margin-top: 0.5rem;
 }

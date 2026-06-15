@@ -13,6 +13,10 @@
     :social-url="route('promo')"
     og-context="site"
 >
+    <div class="wp-promo-top">
+        @include('partials.wp-lang-switch', ['variant' => 'inline'])
+    </div>
+
     <div class="wp-stack wp-promo">
         <h1 class="wp-page-title">{{ __('promo.title') }}</h1>
         <p class="wp-text-body">{{ __('promo.tagline') }}</p>
