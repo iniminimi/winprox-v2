@@ -3210,51 +3210,66 @@ svg.wp-release-worker-row__icon,
 
 .wp-promo-body .wp-promo {
     padding: clamp(1.25rem, 4vw, 2.5rem);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 1.5rem;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(1.2);
-    -webkit-backdrop-filter: blur(20px) saturate(1.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        0 0 40px rgba(5, 150, 105, 0.08);
 }
 
 .wp-promo-body .wp-page-title,
 .wp-promo-body .wp-section-title,
 .wp-promo-body .wp-promo-video-card-title {
     color: #fff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
 }
 
 .wp-promo-body .wp-text-body,
 .wp-promo-body .wp-promo-video-lead,
 .wp-promo-body .wp-muted,
 .wp-promo-body .wp-list {
-    color: rgba(255, 255, 255, 0.88);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wp-promo-body .wp-list--bullets li::marker {
+    color: color-mix(in srgb, var(--wp-accent) 65%, #fff 35%);
 }
 
 .wp-promo-body .wp-promo-top .wp-lang-select-trigger {
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px) saturate(1.15);
-    -webkit-backdrop-filter: blur(12px) saturate(1.15);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 6px 20px rgba(0, 0, 0, 0.22);
 }
 
 .wp-promo-body .wp-promo-video-card.wp-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px) saturate(1.15);
-    -webkit-backdrop-filter: blur(10px) saturate(1.15);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.38);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 10px 28px rgba(0, 0, 0, 0.28);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .wp-promo-body .wp-promo-video-card.wp-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
+    background: rgba(15, 23, 42, 0.48);
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 14px 36px rgba(0, 0, 0, 0.34),
+        0 0 24px rgba(5, 150, 105, 0.12);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3268,8 +3283,16 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-promo-body .wp-video {
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.625rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    background: #000;
+}
+
+.wp-promo-body .wp-promo .btn--primary {
+    box-shadow:
+        0 8px 24px rgba(5, 150, 105, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .wp-promo-body .wp-portal-footer .wp-chip {
@@ -3280,6 +3303,12 @@ svg.wp-release-worker-row__icon,
     -webkit-backdrop-filter: blur(10px) saturate(1.15);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.wp-promo-body .wp-promo-video {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .wp-promo-video {
@@ -3341,3 +3370,18 @@ svg.wp-release-worker-row__icon,
     margin-top: auto;
 }
 
+.wp-promo-body .wp-promo-video-card-media {
+    margin: 0 0.875rem 0.875rem;
+    padding: 0.625rem;
+    border-radius: 0.75rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px) saturate(1.1);
+    -webkit-backdrop-filter: blur(8px) saturate(1.1);
+}
+
+.wp-promo-body .wp-promo-video-card-media .wp-video {
+    margin-inline: auto;
+    border: none;
+    box-shadow: none;
+}
