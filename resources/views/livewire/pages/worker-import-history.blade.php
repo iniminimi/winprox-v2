@@ -19,7 +19,7 @@
                         <div class="wp-issue-row-meta">
                             @if ($batch['can_delete'])
                                 <button type="button" class="btn btn--ghost btn--sm"
-                                    wire:click="deleteBatch('{{ $batch['batch_id'] }}')"
+                                    wire:click="deleteWorkerImportBatch('{{ $batch['batch_id'] }}')"
                                     wire:confirm="{{ __('team.import_history.confirm_delete', ['count' => $batch['deletable']]) }}">
                                     {{ __('team.import_history.delete_button', ['count' => $batch['deletable']]) }}
                                 </button>

@@ -280,7 +280,7 @@
         </x-wp-modal>
     @endif
 
-    <livewire:pages.worker-import-history />
+    @include('livewire.pages.worker-import-history', ['batches' => $workerImportBatches])
 
     {{-- Modal: worker CSV import --------------------------------------------}}
     @if ($showWorkerImportModal)

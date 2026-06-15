@@ -31,11 +31,11 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use App\Support\Workers\WorkerImportBatchRegistry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -682,19 +682,9 @@ class Team extends Component
             $this->workerImportErrors = [];
             $this->workersImportNotice = __('team.workers.flash.imported', ['count' => $result['count']]);
             $this->workersImportNoticeType = 'success';
-            $this->dispatch('workers-import-changed');
             $this->closeWorkerImportModal();
         } else {
             $this->workerImportErrors = $result['errors'];
-        }
-    }
-
-    #[On('workers-import-changed')]
-    public function onWorkersImportChanged(?string $notice = null, ?string $noticeType = null): void
-    {
-        if ($notice !== null && $notice !== '') {
-            $this->workersImportNotice = $notice;
-            $this->workersImportNoticeType = $noticeType ?? 'success';
         }
     }
 
@@ -702,8 +692,49 @@ class Team extends Component
     {
         $this->authorize('create', InternalTeam::class);
 
+        $tenantId = Tenancy::id();
+        $summary = WorkerImportBatchRegistry::summary($tenantId, $batchId);
+
+        if (! $summary['can_delete']) {
+            $this->workersImportNotice = __('team.import_history.nothing_deletable');
+            $this->workersImportNoticeType = 'error';
+
+            return;
+        }
+
         $dto = new DeleteWorkerImportBatchData(importBatchId: $batchId);
-        $deleteBatch->handle($dto, Tenancy::id(), (int) auth()->id());
+        $result = $deleteBatch->handle($dto, $tenantId, (int) auth()->id());
+
+        if ($result['success']) {
+            $teamsDeleted = (int) ($result['deleted_team_count'] ?? 0);
+
+            if ($result['preserved_count'] > 0) {
+                $this->workersImportNotice = $teamsDeleted > 0
+                    ? __('team.import_history.partially_deleted_with_teams', [
+                        'deleted'   => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                        'teams'     => $teamsDeleted,
+                    ])
+                    : __('team.import_history.partially_deleted', [
+                        'deleted'   => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                    ]);
+            } else {
+                $this->workersImportNotice = $teamsDeleted > 0
+                    ? __('team.import_history.fully_deleted_with_teams', [
+                        'count' => $result['deleted_count'],
+                        'teams' => $teamsDeleted,
+                    ])
+                    : __('team.import_history.fully_deleted', [
+                        'count' => $result['deleted_count'],
+                    ]);
+            }
+
+            $this->workersImportNoticeType = 'success';
+        } else {
+            $this->workersImportNotice = $result['errors'][0] ?? __('team.import_history.delete_failed');
+            $this->workersImportNoticeType = 'error';
+        }
     }
 
     public function render()
@@ -750,9 +781,17 @@ class Team extends Component
             ->orderBy('name')
             ->get(['id', 'name']);
 
+        $tenantId = Tenancy::id();
+        $workerImportBatches = WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
+            ->map(fn (array $batch) => array_merge(
+                $batch,
+                WorkerImportBatchRegistry::summary($tenantId, $batch['batch_id']),
+            ));
+
         return view('livewire.pages.team', [
             'colleagues' => $colleagues,
             'teams' => $teams,
+            'workerImportBatches' => $workerImportBatches,
             'canManageUsers' => $canManageUsers,
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),

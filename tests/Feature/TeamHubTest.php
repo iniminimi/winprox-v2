@@ -527,6 +527,33 @@ it('wisselt de actief-vlag van een worker en verwijdert een worker', function ()
     expect(Worker::find($worker->id))->toBeNull();
 });
 
+it('ververst de teamlijst direct na terugdraaien van een worker CSV-import', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+
+    $csvPath = tempnam(sys_get_temp_dir(), 'workers_team_test_') . '.csv';
+    $handle = fopen($csvPath, 'w');
+    fputcsv($handle, ['team_name', 'first_name', 'last_name']);
+    fputcsv($handle, ['Import Team', 'Jan', 'Janssen']);
+    fputcsv($handle, ['Import Team', 'Piet', 'Pieters']);
+    fclose($handle);
+
+    $importDto = new \App\Data\Workers\ImportWorkersData(filePath: $csvPath, originalName: 'workers.csv');
+    $importResult = app(\App\Actions\Workers\ImportWorkersAction::class)->handle($importDto, $tenant->id, $admin->id);
+
+    expect($importResult['success'])->toBeTrue();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertSee('Import Team')
+        ->call('deleteWorkerImportBatch', $importResult['batch_id'])
+        ->assertDontSee('Import Team')
+        ->assertSet('workersImportNoticeType', 'success');
+
+    expect(InternalTeam::where('tenant_id', $tenant->id)->where('name', 'Import Team')->exists())->toBeFalse();
+
+    unlink($csvPath);
+});
+
 // --- Tenant-isolatie -------------------------------------------------------
 
 it('toont geen teams of gebruikers van een andere tenant', function () {
