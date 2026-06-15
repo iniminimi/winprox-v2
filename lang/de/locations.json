@@ -257,7 +257,10 @@
         "current_file_hint": "Leer lassen, um die aktuelle Datei zu behalten.",
         "confirm_delete": "Dieses Dokument endgültig löschen?",
         "errors": {
-            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort."
+            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
+            "file_required": "Wählen Sie eine Datei zum Hochladen.",
+            "file_mimes": "Wählen Sie einen erlaubten Dateityp: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG oder PNG.",
+            "file_max": "Die Datei ist zu groß (max. 10 MB)."
         },
         "flash": {
             "created": "Dokument gespeichert.",

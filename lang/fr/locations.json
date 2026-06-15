@@ -257,7 +257,10 @@
         "current_file_hint": "Laisser vide pour conserver le fichier actuel.",
         "confirm_delete": "Supprimer définitivement ce document ?",
         "errors": {
-            "invalid_unit": "Choisissez une unité valide sur ce site."
+            "invalid_unit": "Choisissez une unité valide sur ce site.",
+            "file_required": "Sélectionnez un fichier à téléverser.",
+            "file_mimes": "Choisissez un type de fichier autorisé : PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG ou PNG.",
+            "file_max": "Le fichier est trop volumineux (max. 10 Mo)."
         },
         "flash": {
             "created": "Document enregistré.",

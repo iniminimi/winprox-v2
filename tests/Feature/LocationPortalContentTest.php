@@ -53,6 +53,23 @@ it('creates a location document via Livewire', function () {
         ->and(Storage::disk('public')->exists($document->file_path))->toBeTrue();
 });
 
+it('toont een Nederlandse foutmelding bij een niet-toegestaan documenttype', function () {
+    app()->setLocale('nl');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'nl']);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Documents::class, ['location' => $location])
+        ->call('openCreateModal')
+        ->set('description', 'Ongeldig bestand')
+        ->set('documentFile', UploadedFile::fake()->create('script.exe', 10, 'application/x-msdownload'))
+        ->call('createDocument')
+        ->assertHasErrors('documentFile')
+        ->assertSee(__('locations.documents.errors.file_mimes'));
+});
+
 it('creates a location announcement via Livewire', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

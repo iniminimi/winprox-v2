@@ -4,6 +4,7 @@ return [
     'required' => 'Ce champ est obligatoire.',
     'uploaded' => 'Le fichier n’a pas pu être envoyé. Vérifiez le format et la taille.',
     'image' => 'Choisissez une image valide (PNG ou JPG).',
+    'mimes' => 'Choisissez un fichier de type : :values.',
     'max' => [
         'file' => 'Le fichier est trop volumineux (max. :max Ko).',
     ],

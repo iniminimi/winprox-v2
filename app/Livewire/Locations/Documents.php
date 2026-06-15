@@ -62,6 +62,22 @@ class Documents extends Component
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
+    protected function messages(): array
+    {
+        return [
+            'description.required' => __('validation.required'),
+            'description.min' => __('validation.min.string', ['min' => 3]),
+            'documentFile.required' => __('locations.documents.errors.file_required'),
+            'documentFile.mimes' => __('locations.documents.errors.file_mimes'),
+            'documentFile.max' => __('locations.documents.errors.file_max'),
+            'editDocumentFile.mimes' => __('locations.documents.errors.file_mimes'),
+            'editDocumentFile.max' => __('locations.documents.errors.file_max'),
+        ];
+    }
+
     public function openCreateModal(): void
     {
         $this->authorize('create', [Document::class, $this->location]);
@@ -165,7 +181,7 @@ class Documents extends Component
             'requiresVerification' => ['boolean'],
             'isActive' => ['boolean'],
             'editDocumentFile' => ['nullable', 'file', 'mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png', 'max:10240'],
-        ]);
+        ], $this->messages());
 
         $tenantId = (int) auth()->user()->tenant_id;
         if (! $this->isValidUnitId($tenantId, $validated['unitId'] ?? '')) {
