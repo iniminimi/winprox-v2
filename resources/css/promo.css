@@ -63,6 +63,14 @@
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
 }
 
+.wp-promo-body .wp-list--bullets {
+    list-style-type: disc;
+}
+
+.wp-promo-body .wp-list--bullets li {
+    padding-left: 0.25rem;
+}
+
 .wp-promo-body .wp-list--bullets li::marker {
     color: color-mix(in srgb, var(--wp-accent) 65%, #fff 35%);
 }

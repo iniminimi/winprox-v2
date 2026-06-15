@@ -226,6 +226,17 @@
     gap: 0.75rem;
 }
 
+.wp-list--bullets {
+    display: block;
+    list-style: disc;
+    padding-left: 1.35rem;
+    margin: 0;
+}
+
+.wp-list--bullets > li + li {
+    margin-top: 0.75rem;
+}
+
 .wp-field + .wp-field {
     margin-top: 1rem;
 }
