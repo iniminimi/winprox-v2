@@ -1,0 +1,235 @@
+/* Promo landingspagina (/promo) — glassmorphism op achtergrondfoto. */
+
+.wp-promo-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.wp-promo-body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.18) 0%,
+        rgba(15, 23, 42, 0.42) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wp-promo-body .wp-portal {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 48rem) {
+    .wp-promo-body .wp-portal {
+        max-width: 42rem;
+    }
+}
+
+.wp-promo-body .wp-promo {
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 1.5rem;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.12) 100%
+    );
+    backdrop-filter: blur(40px) saturate(1.45);
+    -webkit-backdrop-filter: blur(40px) saturate(1.45);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        0 24px 60px rgba(0, 0, 0, 0.38),
+        0 0 48px rgba(5, 150, 105, 0.14);
+}
+
+.wp-promo-body .wp-page-title,
+.wp-promo-body .wp-section-title,
+.wp-promo-body .wp-promo-video-card-title {
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.wp-promo-body .wp-text-body,
+.wp-promo-body .wp-promo-video-lead,
+.wp-promo-body .wp-muted,
+.wp-promo-body .wp-list {
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.55);
+}
+
+.wp-promo-body .wp-list--bullets li::marker {
+    color: color-mix(in srgb, var(--wp-accent) 65%, #fff 35%);
+}
+
+.wp-promo-body .wp-promo-top .wp-lang-select-trigger {
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px) saturate(1.25);
+    -webkit-backdrop-filter: blur(16px) saturate(1.25);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.wp-promo-body .wp-portal .wp-promo-video-card.wp-card {
+    background-color: transparent;
+    background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(24px) saturate(1.35);
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 12px 32px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wp-promo-body .wp-portal .wp-promo-video-card.wp-card:hover {
+    background: linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 16px 40px rgba(0, 0, 0, 0.36),
+        0 0 28px rgba(5, 150, 105, 0.16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wp-promo-body .wp-portal .wp-promo-video-card.wp-card {
+        transition: none;
+    }
+
+    .wp-promo-body .wp-portal .wp-promo-video-card.wp-card:hover {
+        transform: none;
+    }
+}
+
+.wp-promo-body .wp-video {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.625rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    background: #000;
+}
+
+.wp-promo-body .wp-promo .btn--primary {
+    box-shadow:
+        0 8px 24px rgba(5, 150, 105, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.wp-promo-body .wp-portal-footer .wp-chip {
+    color: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 6px 20px rgba(0, 0, 0, 0.22);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.wp-promo-body .wp-promo-video {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.wp-promo-video {
+    margin-top: 0.5rem;
+}
+
+.wp-promo-video-eyebrow {
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--wp-accent-text);
+}
+
+.wp-promo-body .wp-promo-video-eyebrow {
+    color: color-mix(in srgb, var(--wp-accent) 50%, #fff 50%);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wp-promo-video-lead {
+    margin: 0.375rem 0 0;
+}
+
+.wp-promo-video-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 40rem) {
+    .wp-promo-video-grid {
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    }
+}
+
+.wp-promo-video-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.wp-promo-video-card-title {
+    margin: 0 0 0.375rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--wp-text);
+}
+
+.wp-promo-body .wp-promo-video-card-title {
+    color: #fff;
+}
+
+.wp-promo-video-card-media {
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem 1rem;
+    margin-top: auto;
+}
+
+.wp-promo-body .wp-promo-video-card-media {
+    margin: 0 0.875rem 0.875rem;
+    padding: 0.625rem;
+    border-radius: 0.75rem;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px) saturate(1.15);
+    -webkit-backdrop-filter: blur(10px) saturate(1.15);
+}
+
+.wp-promo-body .wp-promo-video-card-media .wp-video {
+    margin-inline: auto;
+    border: none;
+    box-shadow: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .wp-promo-body .wp-promo {
+        background: rgba(30, 41, 59, 0.88);
+    }
+
+    .wp-promo-body .wp-portal .wp-promo-video-card.wp-card {
+        background: rgba(30, 41, 59, 0.75);
+    }
+}

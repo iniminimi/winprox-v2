@@ -16,11 +16,11 @@
     body-class="wp-public-body wp-promo-body"
     og-context="site"
 >
-    <div class="wp-promo-top">
-        @include('partials.wp-lang-switch', ['variant' => 'inline'])
-    </div>
-
     <div class="wp-stack wp-promo">
+        <div class="wp-promo-top">
+            @include('partials.wp-lang-switch', ['variant' => 'inline'])
+        </div>
+
         <h1 class="wp-page-title">{{ __('promo.title') }}</h1>
         <p class="wp-text-body">{{ __('promo.tagline') }}</p>
 

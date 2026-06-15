@@ -1,5 +1,6 @@
 @props([
     'portalBgUrl' => null,
+    'bodyClass' => null,
     'socialTitle' => null,
     'socialDescription' => null,
     'socialUrl' => null,
