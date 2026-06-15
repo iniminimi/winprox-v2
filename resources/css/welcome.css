@@ -835,23 +835,8 @@
     margin-inline: auto;
 }
 
-[data-theme='standard'] .wp-welcome-video {
+[data-theme='standard'] .wp-welcome-section-inner > .wp-video {
     margin-top: 1.5rem;
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-    border: 1px solid var(--wp-border-strong);
-    border-radius: var(--wp-radius-lg);
-    overflow: hidden;
-    line-height: 0;
-}
-
-[data-theme='standard'] .wp-welcome-video-player {
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: min(80vh, 42rem);
 }
 
 [data-theme='standard'] .wp-welcome-screenshots {

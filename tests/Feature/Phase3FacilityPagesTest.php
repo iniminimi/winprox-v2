@@ -28,6 +28,15 @@ it('zet open graph meta op de promo-pagina', function () {
         ->assertSee('/images/promo/og_1.jpg', false);
 });
 
+it('toont beschikbare promo-video per locale', function () {
+    $this->withSession(['locale' => 'nl'])
+        ->get(route('promo'))
+        ->assertOk()
+        ->assertSee(__('promo.video.title', [], 'nl'))
+        ->assertSee(__('promo.video.items.0.title', [], 'nl'))
+        ->assertSee('issue_nl_01.mp4', false);
+});
+
 it('zet een proefperiode bij registratie', function () {
     Livewire::test(Register::class)
         ->set(array_replace(RegisterFormData::valid(), [

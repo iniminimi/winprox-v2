@@ -8,5 +8,17 @@
     "bullet_1": "Meldungen und Aufgaben in einer Übersicht.",
     "bullet_2": "QR-Codes für direkte Meldungen aus dem Feld.",
     "bullet_3": "Teams und Mitarbeiter ohne zusätzliche Logins.",
-    "cta": "winprox.app besuchen"
+    "cta": "winprox.app besuchen",
+    "video": {
+        "eyebrow": "Video",
+        "title": "WinProx in Aktion",
+        "lead": "Kurze Clips zum täglichen Gebrauch der Plattform.",
+        "items": [
+            {
+                "basename": "issue",
+                "title": "Eine Meldung erstellen",
+                "description": "So geben Sie vor Ort per QR-Code eine Meldung auf."
+            }
+        ]
+    }
 }

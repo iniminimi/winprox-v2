@@ -68,17 +68,10 @@
                     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
                 @endphp
                 @if ($welcomeVideoAvailable)
-                    <div class="wp-welcome-video">
-                        <video
-                            class="wp-welcome-video-player"
-                            controls
-                            preload="metadata"
-                            playsinline
-                            aria-label="{{ __('welcome.video.title') }}"
-                        >
-                            <source src="{{ asset($welcomeVideoRel) }}" type="video/mp4">
-                        </video>
-                    </div>
+                    @include('partials.wp-locale-video', [
+                        'basename' => 'issue',
+                        'title' => __('welcome.video.title'),
+                    ])
                 @else
                     <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.video.placeholder') }}">
                         <p>{{ __('welcome.video.placeholder') }}</p>

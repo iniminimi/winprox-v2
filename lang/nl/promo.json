@@ -8,5 +8,17 @@
     "bullet_1": "Meldingen en taken in één overzicht.",
     "bullet_2": "QR-codes voor directe rapportage vanuit het veld.",
     "bullet_3": "Teams en workers zonder extra logins.",
-    "cta": "Bekijk winprox.app"
+    "cta": "Bekijk winprox.app",
+    "video": {
+        "eyebrow": "Video",
+        "title": "Ontdek WinProx in actie",
+        "lead": "Korte filmpjes over het dagelijks gebruik van het platform.",
+        "items": [
+            {
+                "basename": "issue",
+                "title": "Een melding maken",
+                "description": "Zo geef je via de QR-code een melding door op locatie."
+            }
+        ]
+    }
 }

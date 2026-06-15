@@ -8,5 +8,17 @@
     "bullet_1": "Issues and tasks in one overview.",
     "bullet_2": "QR codes for direct reporting from the field.",
     "bullet_3": "Teams and workers without extra logins.",
-    "cta": "Visit winprox.app"
+    "cta": "Visit winprox.app",
+    "video": {
+        "eyebrow": "Video",
+        "title": "See WinProx in action",
+        "lead": "Short clips about everyday use of the platform.",
+        "items": [
+            {
+                "basename": "issue",
+                "title": "Creating a report",
+                "description": "How to submit a report on site via the QR code."
+            }
+        ]
+    }
 }
