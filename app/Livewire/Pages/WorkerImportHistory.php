@@ -7,6 +7,7 @@ use App\Data\Workers\DeleteWorkerImportBatchData;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use App\Support\Workers\WorkerImportBatchRegistry;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class WorkerImportHistory extends Component
@@ -14,6 +15,11 @@ class WorkerImportHistory extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', Worker::class);
+    }
+
+    #[On('workers-import-changed')]
+    public function refreshImportHistory(): void
+    {
     }
 
     public function deleteBatch(string $batchId, DeleteWorkerImportBatchAction $deleteBatch): void
@@ -24,7 +30,11 @@ class WorkerImportHistory extends Component
         $summary = WorkerImportBatchRegistry::summary($tenantId, $batchId);
 
         if (! $summary['can_delete']) {
-            session()->flash('error', __('team.import_history.nothing_deletable'));
+            $this->dispatch(
+                'workers-import-changed',
+                notice: __('team.import_history.nothing_deletable'),
+                noticeType: 'error',
+            );
 
             return;
         }
@@ -36,7 +46,7 @@ class WorkerImportHistory extends Component
             $teamsDeleted = (int) ($result['deleted_team_count'] ?? 0);
 
             if ($result['preserved_count'] > 0) {
-                session()->flash('success', $teamsDeleted > 0
+                $notice = $teamsDeleted > 0
                     ? __('team.import_history.partially_deleted_with_teams', [
                         'deleted'   => $result['deleted_count'],
                         'preserved' => $result['preserved_count'],
@@ -45,19 +55,25 @@ class WorkerImportHistory extends Component
                     : __('team.import_history.partially_deleted', [
                         'deleted'   => $result['deleted_count'],
                         'preserved' => $result['preserved_count'],
-                    ]));
+                    ]);
             } else {
-                session()->flash('success', $teamsDeleted > 0
+                $notice = $teamsDeleted > 0
                     ? __('team.import_history.fully_deleted_with_teams', [
                         'count' => $result['deleted_count'],
                         'teams' => $teamsDeleted,
                     ])
                     : __('team.import_history.fully_deleted', [
                         'count' => $result['deleted_count'],
-                    ]));
+                    ]);
             }
+
+            $this->dispatch('workers-import-changed', notice: $notice, noticeType: 'success');
         } else {
-            session()->flash('error', $result['errors'][0] ?? __('team.import_history.delete_failed'));
+            $this->dispatch(
+                'workers-import-changed',
+                notice: $result['errors'][0] ?? __('team.import_history.delete_failed'),
+                noticeType: 'error',
+            );
         }
     }
 

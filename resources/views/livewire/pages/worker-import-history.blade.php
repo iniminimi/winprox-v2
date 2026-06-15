@@ -1,11 +1,4 @@
 <div>
-    @if (session('success'))
-        <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
-    @endif
-    @if (session('error'))
-        <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
-    @endif
-
     @if ($batches->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('team.import_history.title') }}</h2>

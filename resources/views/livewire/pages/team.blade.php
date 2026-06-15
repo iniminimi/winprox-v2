@@ -6,6 +6,14 @@
         :subtitle="__('team.subtitle')"
     />
 
+    @if ($workersImportNotice)
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $workersImportNoticeType !== 'error',
+            'wp-flash--danger' => $workersImportNoticeType === 'error',
+        ])>{{ $workersImportNotice }}</div>
+    @endif
+
     @if ($canManageUsers)
         <div class="wp-card wp-card-pad wp-stack-tight">
             <div class="wp-row">

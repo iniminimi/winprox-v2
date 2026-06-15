@@ -35,6 +35,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -102,6 +103,8 @@ class Team extends Component
     public $workerImportFile = null;
     public array $workerImportErrors = [];
     public ?int $workerImportedCount = null;
+    public ?string $workersImportNotice = null;
+    public string $workersImportNoticeType = 'success';
 
     public function mount(): void
     {
@@ -633,6 +636,7 @@ class Team extends Component
         $this->workerImportFile = null;
         $this->workerImportErrors = [];
         $this->workerImportedCount = null;
+        $this->workersImportNotice = null;
         $this->showWorkerImportModal = true;
     }
 
@@ -676,10 +680,21 @@ class Team extends Component
         if ($result['success']) {
             $this->workerImportedCount = $result['count'];
             $this->workerImportErrors = [];
-            session()->flash('success', __('team.workers.flash.imported', ['count' => $result['count']]));
+            $this->workersImportNotice = __('team.workers.flash.imported', ['count' => $result['count']]);
+            $this->workersImportNoticeType = 'success';
+            $this->dispatch('workers-import-changed');
             $this->closeWorkerImportModal();
         } else {
             $this->workerImportErrors = $result['errors'];
+        }
+    }
+
+    #[On('workers-import-changed')]
+    public function onWorkersImportChanged(?string $notice = null, ?string $noticeType = null): void
+    {
+        if ($notice !== null && $notice !== '') {
+            $this->workersImportNotice = $notice;
+            $this->workersImportNoticeType = $noticeType ?? 'success';
         }
     }
 
