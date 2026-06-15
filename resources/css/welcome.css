@@ -837,20 +837,21 @@
 
 [data-theme='standard'] .wp-welcome-video {
     margin-top: 1.5rem;
-    max-width: 56rem;
+    width: fit-content;
+    max-width: 100%;
     margin-inline: auto;
     border: 1px solid var(--wp-border-strong);
     border-radius: var(--wp-radius-lg);
     overflow: hidden;
-    background: #000;
+    line-height: 0;
 }
 
 [data-theme='standard'] .wp-welcome-video-player {
     display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    vertical-align: middle;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: min(80vh, 42rem);
 }
 
 [data-theme='standard'] .wp-welcome-screenshots {
