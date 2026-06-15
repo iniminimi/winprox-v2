@@ -226,31 +226,63 @@
                         <label class="wp-label">{{ __('locations.units.edit.photos_label') }}</label>
 
                         @if ($totalCount > 0)
-                            <div class="wp-photo-grid wp-photo-grid--gallery">
-                                @foreach ($this->editingUnit->qrLinkPhotos as $photo)
-                                    @if ($photo->hasPublicFile())
-                                        <div class="wp-photo-thumb" style="position:relative;" wire:key="qr-photo-{{ $photo->id }}">
-                                            <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy">
+                            <div
+                                class="wp-photo-gallery"
+                                x-data="{ lightboxSrc: null }"
+                                @keydown.escape.window="lightboxSrc = null"
+                            >
+                                <div class="wp-photo-grid wp-photo-grid--gallery">
+                                    @foreach ($this->editingUnit->qrLinkPhotos as $photo)
+                                        @if ($photo->hasPublicFile())
+                                            <div class="wp-photo-thumb" wire:key="qr-photo-{{ $photo->id }}">
+                                                <button
+                                                    type="button"
+                                                    style="background:none;border:none;padding:0;width:100%;height:100%;"
+                                                    @click="lightboxSrc = @js($photo->publicUrl())"
+                                                    aria-label="{{ __('issues.show.photo_enlarge') }}"
+                                                >
+                                                    <img src="{{ $photo->publicUrl() }}" alt="" width="80" height="80" loading="lazy" x-on:error="$el.closest('.wp-photo-thumb')?.remove()">
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    class="wp-photo-remove"
+                                                    wire:click="removeUnitPhoto({{ $photo->id }})"
+                                                    wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
+                                                >×</button>
+                                            </div>
+                                        @endif
+                                    @endforeach
+
+                                    @foreach ($unitPhotos as $index => $photo)
+                                        <div class="wp-photo-thumb" wire:key="temp-photo-{{ $index }}">
+                                            <button
+                                                type="button"
+                                                style="background:none;border:none;padding:0;width:100%;height:100%;"
+                                                @click="lightboxSrc = @js($photo->temporaryUrl())"
+                                                aria-label="{{ __('issues.show.photo_enlarge') }}"
+                                            >
+                                                <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
+                                            </button>
                                             <button
                                                 type="button"
                                                 class="wp-photo-remove"
-                                                wire:click="removeUnitPhoto({{ $photo->id }})"
-                                                wire:confirm="{{ __('locations.units.edit.delete_photo_confirm') }}"
+                                                wire:click="removeUnitTempPhoto({{ $index }})"
                                             >×</button>
                                         </div>
-                                    @endif
-                                @endforeach
+                                    @endforeach
+                                </div>
 
-                                @foreach ($unitPhotos as $index => $photo)
-                                    <div class="wp-photo-thumb" style="position:relative;" wire:key="temp-photo-{{ $index }}">
-                                        <img src="{{ $photo->temporaryUrl() }}" alt="" width="80" height="80" loading="lazy">
-                                        <button
-                                            type="button"
-                                            class="wp-photo-remove"
-                                            wire:click="removeUnitTempPhoto({{ $index }})"
-                                        >×</button>
-                                    </div>
-                                @endforeach
+                                <div
+                                    class="wp-photo-lightbox"
+                                    x-show="lightboxSrc"
+                                    x-cloak
+                                    x-transition.opacity
+                                    role="dialog"
+                                    aria-modal="true"
+                                    @click="lightboxSrc = null"
+                                >
+                                    <img :src="lightboxSrc" alt="" @click.stop>
+                                </div>
                             </div>
                         @endif
 
