@@ -30,15 +30,12 @@
                 @endif
             </div>
             <div class="wp-cluster wp-cluster--tight wp-page-actions">
-                @if ($organisationLogoUrl)
+                <div class="wp-sidebar-header-logo">
                     <img
-                        src="{{ $organisationLogoUrl }}"
-                        alt=""
-                        class="wp-org-logo-preview"
-                        width="120"
-                        height="120"
+                        src="{{ $organisationLogoUrl ?? asset('images/Winprox_logo_100.png') }}"
+                        alt="{{ $tenant->name }}"
                     >
-                @endif
+                </div>
                 <p class="wp-muted">
                     <strong class="wp-text-body">{{ $tenant->name }}</strong>
                     @if ($tenant->email)
