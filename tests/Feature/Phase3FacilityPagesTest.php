@@ -34,7 +34,9 @@ it('toont beschikbare promo-video per locale', function () {
         ->assertOk()
         ->assertSee(__('promo.video.title', [], 'nl'))
         ->assertSee(__('promo.video.items.0.title', [], 'nl'))
-        ->assertSee('issue_nl_01.mp4', false);
+        ->assertSee(__('promo.video.items.1.title', [], 'nl'))
+        ->assertSee('issue_nl_01.mp4', false)
+        ->assertSee('task_nl.mp4', false);
 });
 
 it('toont taalkeuze bovenaan de promo-pagina', function () {

@@ -1,7 +1,8 @@
 @php
     $locale = app()->getLocale();
     $promoVideos = collect(__('promo.video.items'))->filter(function (array $item) use ($locale): bool {
-        $rel = "video/{$locale}/{$item['basename']}_{$locale}_01.mp4";
+        $suffix = $item['suffix'] ?? '_01';
+        $rel = "video/{$locale}/{$item['basename']}_{$locale}{$suffix}.mp4";
 
         return is_file(public_path($rel));
     });
@@ -43,6 +44,7 @@
                             <div class="wp-promo-video-card-media">
                                 @include('partials.wp-locale-video', [
                                     'basename' => $item['basename'],
+                                    'suffix' => $item['suffix'] ?? '_01',
                                     'title' => $item['title'],
                                 ])
                             </div>

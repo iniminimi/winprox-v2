@@ -18,6 +18,12 @@
                 "basename": "issue",
                 "title": "Eine Meldung erstellen",
                 "description": "So geben Sie vor Ort per QR-Code eine Meldung auf."
+            },
+            {
+                "basename": "task",
+                "suffix": "",
+                "title": "Eine Aufgabe abschließen",
+                "description": "So schließen Sie eine zugewiesene Aufgabe vor Ort ab."
             }
         ]
     }

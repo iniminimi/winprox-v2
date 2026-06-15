@@ -18,6 +18,12 @@
                 "basename": "issue",
                 "title": "Creating a report",
                 "description": "How to submit a report on site via the QR code."
+            },
+            {
+                "basename": "task",
+                "suffix": "",
+                "title": "Completing a task",
+                "description": "How to finish an assigned task in the field."
             }
         ]
     }

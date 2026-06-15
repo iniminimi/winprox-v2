@@ -18,6 +18,12 @@
                 "basename": "issue",
                 "title": "Een melding maken",
                 "description": "Zo geef je via de QR-code een melding door op locatie."
+            },
+            {
+                "basename": "task",
+                "suffix": "",
+                "title": "Een taak afhandelen",
+                "description": "Zo werk je een toegewezen taak af in het veld."
             }
         ]
     }

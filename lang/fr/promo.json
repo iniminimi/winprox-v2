@@ -18,6 +18,12 @@
                 "basename": "issue",
                 "title": "Faire un signalement",
                 "description": "Comment transmettre un signalement sur site via le code QR."
+            },
+            {
+                "basename": "task",
+                "suffix": "",
+                "title": "Traiter une tâche",
+                "description": "Comment finaliser une tâche assignée sur le terrain."
             }
         ]
     }
