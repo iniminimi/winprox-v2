@@ -3184,6 +3184,73 @@ svg.wp-release-worker-row__icon,
     margin-bottom: 0.5rem;
 }
 
+.wp-promo-body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--wp-text) 12%, transparent) 0%,
+        color-mix(in srgb, var(--wp-text) 28%, transparent) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.wp-promo-body .wp-portal {
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 48rem) {
+    .wp-promo-body .wp-portal {
+        max-width: 42rem;
+    }
+}
+
+.wp-promo-body .wp-promo {
+    padding: 1.25rem;
+    border: 1px solid color-mix(in srgb, #fff 55%, var(--wp-border));
+    border-radius: var(--wp-radius-lg);
+    background: color-mix(in srgb, var(--wp-surface) 72%, transparent);
+    backdrop-filter: blur(16px) saturate(1.25);
+    -webkit-backdrop-filter: blur(16px) saturate(1.25);
+    box-shadow:
+        var(--wp-shadow-lg),
+        0 0 0 1px color-mix(in srgb, #fff 40%, transparent) inset;
+}
+
+.wp-promo-body .wp-promo-top .wp-lang-select-trigger {
+    border: 1px solid color-mix(in srgb, #fff 50%, var(--wp-border));
+    background: color-mix(in srgb, var(--wp-surface) 78%, transparent);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-promo-body .wp-promo-video-card.wp-card {
+    background: color-mix(in srgb, var(--wp-surface) 58%, transparent);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+    border-color: color-mix(in srgb, #fff 45%, var(--wp-border));
+    box-shadow:
+        var(--wp-shadow-md),
+        0 0 0 1px color-mix(in srgb, #fff 35%, transparent) inset;
+}
+
+.wp-promo-body .wp-video {
+    border-color: color-mix(in srgb, #fff 40%, var(--wp-border-strong));
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-promo-body .wp-portal-footer .wp-chip {
+    border-color: color-mix(in srgb, #fff 45%, var(--wp-border));
+    background: color-mix(in srgb, var(--wp-surface) 70%, transparent);
+    backdrop-filter: blur(10px) saturate(1.15);
+    -webkit-backdrop-filter: blur(10px) saturate(1.15);
+    box-shadow: var(--wp-shadow-sm);
+}
+
 .wp-promo-video {
     margin-top: 0.5rem;
 }

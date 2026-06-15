@@ -42,7 +42,9 @@ it('toont beschikbare promo-video per locale', function () {
 it('toont taalkeuze bovenaan de promo-pagina', function () {
     $this->get(route('promo'))
         ->assertOk()
-        ->assertSee(__('common.language.label'), false);
+        ->assertSee(__('common.language.label'), false)
+        ->assertSee('images/promo/background.jpg', false)
+        ->assertSee('wp-promo-body', false);
 });
 
 it('zet een proefperiode bij registratie', function () {

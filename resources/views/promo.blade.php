@@ -12,6 +12,8 @@
     :social-title="__('promo.social.og_title')"
     :social-description="__('promo.social.og_description')"
     :social-url="route('promo')"
+    :portal-bg-url="asset('images/promo/background.jpg')"
+    body-class="wp-public-body wp-promo-body"
     og-context="site"
 >
     <div class="wp-promo-top">
