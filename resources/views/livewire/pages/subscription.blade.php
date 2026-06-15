@@ -81,8 +81,12 @@
                 $limitShowUsers = $limitMaxUsers !== null
                     && ! $tenant->canAddUser()
                     && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
+                $limitMaxDocuments = $tenant->maxDocumentsOrgLimit();
+                $limitShowDocuments = $limitMaxDocuments !== null
+                    && $tenant->isAtDocumentsOrgLimit()
+                    && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
             @endphp
-            @if ($limitShowUnits || $limitShowUsers)
+            @if ($limitShowUnits || $limitShowUsers || $limitShowDocuments)
                 <div class="wp-flash wp-flash--muted">
                     <p class="wp-section-title">{{ __('subscription.page_limits_title') }}</p>
                     <ul class="wp-billing-status-list">
@@ -91,6 +95,9 @@
                         @endif
                         @if ($limitShowUsers)
                             <li>{{ __('subscription.page_limits_users_body', ['max' => $limitMaxUsers, 'current' => $tenant->currentUsersCount()]) }}</li>
+                        @endif
+                        @if ($limitShowDocuments)
+                            <li>{{ __('subscription.page_limits_documents_body', ['max' => $limitMaxDocuments, 'current' => $tenant->currentDocumentsCount()]) }}</li>
                         @endif
                     </ul>
                 </div>
@@ -118,6 +125,12 @@
                     <ul class="wp-billing-plan-card-meta">
                         <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
                         <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
+                        @if (__("subscription.plans.{$planKey}.announcements") !== "subscription.plans.{$planKey}.announcements")
+                            <li>{{ __("subscription.plans.{$planKey}.announcements") }}</li>
+                        @endif
+                        @if (__("subscription.plans.{$planKey}.documents") !== "subscription.plans.{$planKey}.documents")
+                            <li>{{ __("subscription.plans.{$planKey}.documents") }}</li>
+                        @endif
                     </ul>
                     <p class="wp-billing-plan-card-desc">{{ __("subscription.plans.{$planKey}.description") }}</p>
                 </div>

@@ -46,32 +46,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "WinProx startet mit einer Testphase. Danach wählen Sie ein Paket nach der Anzahl der Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Aktivierung unter Abonnement.",
-            "summary": "Testphase, dan Micro-, Starter-, Pro-, Business- oder Enterprise-Pakete nach Units und Benutzern. API-Zugriff ab Business.",
+            "intro": "WinProx startet mit einer Testphase. Danach wählen Sie ein Paket nach der Anzahl der Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Aktivierung unter Abonnement. Limits für Units, Dokumente und Mitteilungen gelten für Ihre gesamte Organisation.",
+            "summary": "Testphase, danach Micro-, Starter-, Pro-, Business- oder Enterprise-Pakete. Dokumente und Mitteilungen: Limits pro Unit und pro Organisation.",
+            "content_note": "Mitteilungen: nur aktive, nicht abgelaufene Nachrichten zählen (pro verknüpfte Unit). Dokumente: jede gespeicherte Datei zählt für Ihre Organisation, auch deaktivierte — löschen Sie, um Platz freizugeben. In der Testphase: maximal 10 Dokumente für Ihre Organisation.",
             "plans": {
                 "micro": {
                     "units": "Bis zu 10 Units/Räume",
                     "users": "Inklusive 1 Administrator und 1 Mitarbeitende",
+                    "announcements": "Bis zu 2 Mitteilungen pro Unit",
+                    "documents": "Bis zu 2 Dokumente pro Unit · max. 10 für Ihre Organisation",
                     "description": "Ideal für kleine Unternehmen und kompakte Immobilienverwalter."
                 },
                 "starter": {
                     "units": "Bis zu 25 Units/Räume",
                     "users": "Inklusive 1 Administrator und 2 Mitarbeitende",
+                    "announcements": "Bis zu 4 Mitteilungen pro Unit",
+                    "documents": "Bis zu 4 Dokumente pro Unit · max. 20 für Ihre Organisation",
                     "description": "Ideal für einen einzelnen Standort oder Pilot mit kompaktem Koordinationsteam."
                 },
                 "pro": {
                     "units": "Bis zu 100 Units/Räume",
                     "users": "Inklusive 1 Administrator und 5 Mitarbeitende",
+                    "announcements": "Bis zu 10 Mitteilungen pro Unit",
+                    "documents": "Bis zu 6 Dokumente pro Unit · max. 40 für Ihre Organisation",
                     "description": "Geeignet für wachsende Facility-Organisationen mit mehr Units und internen Teams."
                 },
                 "business": {
                     "units": "Bis zu 300 Units/Räume",
                     "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
+                    "announcements": "Bis zu 20 Mitteilungen pro Unit",
+                    "documents": "Bis zu 8 Dokumente pro Unit · max. 80 für Ihre Organisation",
                     "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams. Inklusive API-Zugriff und Webhooks."
                 },
                 "enterprise": {
                     "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
                     "users": "",
+                    "announcements": "Unbegrenzt Mitteilungen pro Unit",
+                    "documents": "Unbegrenzt Dokumente für Ihre Organisation",
                     "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen."
                 }
             }

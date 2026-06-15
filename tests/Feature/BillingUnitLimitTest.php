@@ -21,7 +21,7 @@ class BillingUnitLimitTest extends TestCase
         $user = User::factory()->for($tenant)->create();
         $location = Location::factory()->for($tenant)->create();
 
-        Unit::factory()->count(100)->for($location)->for($tenant)->create();
+        Unit::factory()->count(25)->for($location)->for($tenant)->create();
 
         $this->actingAs($user);
 
@@ -29,7 +29,7 @@ class BillingUnitLimitTest extends TestCase
         $this->expectExceptionMessage('unit_limit_exceeded');
 
         app(CreateUnitAction::class)->handle($location, [
-            'name' => 'Unit 101',
+            'name' => 'Unit 26',
             'type' => 'other',
         ], $tenant->id);
     }
@@ -40,16 +40,16 @@ class BillingUnitLimitTest extends TestCase
         $user = User::factory()->for($tenant)->create();
         $location = Location::factory()->for($tenant)->create();
 
-        Unit::factory()->count(99)->for($location)->for($tenant)->create();
+        Unit::factory()->count(24)->for($location)->for($tenant)->create();
 
         $this->actingAs($user);
 
         $unit = app(CreateUnitAction::class)->handle($location, [
-            'name' => 'Unit 100',
+            'name' => 'Unit 25',
             'type' => 'other',
         ], $tenant->id);
 
-        $this->assertSame('Unit 100', $unit->name);
-        $this->assertSame(100, Unit::query()->where('tenant_id', $tenant->id)->count());
+        $this->assertSame('Unit 25', $unit->name);
+        $this->assertSame(25, Unit::query()->where('tenant_id', $tenant->id)->count());
     }
 }

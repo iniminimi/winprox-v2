@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Models\Document;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Locations\StoredUploadMeta;
@@ -33,6 +34,8 @@ class CreateLocationDocumentAction
                 ->whereKey($unitId)
                 ->firstOrFail();
         }
+
+        Tenant::query()->findOrFail($tenantId)->assertCanAddDocument($unitId);
 
         $filePath = $file->store("location-documents/{$tenantId}/{$location->id}", 'public');
         $fileMeta = StoredUploadMeta::fromUpload($file, $filePath);

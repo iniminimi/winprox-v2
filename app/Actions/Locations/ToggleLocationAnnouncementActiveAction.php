@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Models\Announcement;
+use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 
 class ToggleLocationAnnouncementActiveAction
@@ -12,6 +13,14 @@ class ToggleLocationAnnouncementActiveAction
     public function handle(Announcement $announcement, ?int $actorUserId = null): void
     {
         $newStatus = ! (bool) $announcement->is_active;
+
+        if ($newStatus) {
+            Tenant::query()->findOrFail((int) $announcement->tenant_id)->assertCanActivateAnnouncement(
+                $announcement->unit_id !== null ? (int) $announcement->unit_id : null,
+                (int) $announcement->id,
+            );
+        }
+
         $announcement->is_active = $newStatus;
         if ($newStatus && $announcement->published_at === null) {
             $announcement->published_at = now();

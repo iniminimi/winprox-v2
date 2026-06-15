@@ -9,6 +9,7 @@ use App\Actions\Locations\UpdateLocationAnnouncementAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Unit;
+use InvalidArgumentException;
 use Livewire\Component;
 
 class Announcements extends Component
@@ -95,12 +96,20 @@ class Announcements extends Component
             return;
         }
 
-        $create->handle($this->location, [
-            'body' => trim((string) $validated['body']),
-            'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
-            'is_active' => (bool) $validated['isActive'],
-            'expires_at' => $validated['expiresAt'] ?: null,
-        ], $tenantId, (int) auth()->id());
+        try {
+            $create->handle($this->location, [
+                'body' => trim((string) $validated['body']),
+                'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
+                'is_active' => (bool) $validated['isActive'],
+                'expires_at' => $validated['expiresAt'] ?: null,
+            ], $tenantId, (int) auth()->id());
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'announcement_unit_limit_exceeded') {
+                $this->addError('unitId', __('locations.announcements.errors.unit_limit'));
+            }
+
+            return;
+        }
 
         $this->closeCreateModal();
         session()->flash('success', __('locations.announcements.flash.created'));
@@ -123,12 +132,20 @@ class Announcements extends Component
             return;
         }
 
-        $update->handle($this->location, $announcement, [
-            'body' => trim((string) $validated['body']),
-            'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
-            'is_active' => (bool) $validated['isActive'],
-            'expires_at' => $validated['expiresAt'] ?: null,
-        ], $tenantId, (int) auth()->id());
+        try {
+            $update->handle($this->location, $announcement, [
+                'body' => trim((string) $validated['body']),
+                'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
+                'is_active' => (bool) $validated['isActive'],
+                'expires_at' => $validated['expiresAt'] ?: null,
+            ], $tenantId, (int) auth()->id());
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'announcement_unit_limit_exceeded') {
+                $this->addError('unitId', __('locations.announcements.errors.unit_limit'));
+            }
+
+            return;
+        }
 
         $this->closeEditModal();
         session()->flash('success', __('locations.announcements.flash.updated'));
@@ -146,7 +163,17 @@ class Announcements extends Component
     {
         $announcement = $this->findAnnouncement($announcementId);
         $this->authorize('update', $announcement);
-        $toggle->handle($announcement, (int) auth()->id());
+
+        try {
+            $toggle->handle($announcement, (int) auth()->id());
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'announcement_unit_limit_exceeded') {
+                session()->flash('error', __('locations.announcements.errors.unit_limit'));
+            }
+
+            return;
+        }
+
         session()->flash('success', __('locations.announcements.flash.updated'));
     }
 

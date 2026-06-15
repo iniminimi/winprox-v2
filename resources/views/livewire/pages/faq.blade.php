@@ -70,12 +70,21 @@
                                                     <ul class="wp-plan-limits">
                                                         <li>{{ $plan['units'] ?? '' }}</li>
                                                         <li>{{ $plan['users'] ?? '' }}</li>
+                                                        @if (! empty($plan['announcements']))
+                                                            <li>{{ $plan['announcements'] }}</li>
+                                                        @endif
+                                                        @if (! empty($plan['documents']))
+                                                            <li>{{ $plan['documents'] }}</li>
+                                                        @endif
                                                     </ul>
                                                     <p class="wp-muted">{{ $plan['description'] ?? '' }}</p>
                                                 </article>
                                             @endif
                                         @endforeach
                                     </div>
+                                    @if (! empty($item['content_note']))
+                                        <p class="wp-muted">{{ $item['content_note'] }}</p>
+                                    @endif
                                     @break
 
                                 @case('roles')

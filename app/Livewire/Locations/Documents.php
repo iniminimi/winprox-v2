@@ -12,6 +12,7 @@ use App\Models\Unit;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
+use InvalidArgumentException;
 use Throwable;
 
 class Documents extends Component
@@ -150,6 +151,10 @@ class Documents extends Component
                 $tenantId,
                 (int) auth()->id(),
             );
+        } catch (InvalidArgumentException $e) {
+            $this->addError('documentFile', __($this->documentLimitMessageKey($e->getMessage())));
+
+            return;
         } catch (Throwable $e) {
             report($e);
             session()->flash('error', __('locations.documents.flash.upload_failed'));
@@ -205,6 +210,10 @@ class Documents extends Component
                 $tenantId,
                 (int) auth()->id(),
             );
+        } catch (InvalidArgumentException $e) {
+            $this->addError('unitId', __($this->documentLimitMessageKey($e->getMessage())));
+
+            return;
         } catch (Throwable $e) {
             report($e);
             session()->flash('error', __('locations.documents.flash.upload_failed'));
@@ -294,5 +303,14 @@ class Documents extends Component
     private function parsedUnitId(string $unitId): ?int
     {
         return $unitId !== '' ? (int) $unitId : null;
+    }
+
+    private function documentLimitMessageKey(string $code): string
+    {
+        return match ($code) {
+            'document_org_limit_exceeded' => 'locations.documents.errors.org_limit',
+            'document_unit_limit_exceeded' => 'locations.documents.errors.unit_limit',
+            default => 'locations.documents.flash.upload_failed',
+        };
     }
 }

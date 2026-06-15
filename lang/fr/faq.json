@@ -46,32 +46,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "WinProx démarre avec une période d'essai. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces). Activation sous Abonnement.",
-            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise selon unités et utilisateurs. Accès API à partir de Business.",
+            "intro": "WinProx démarre avec une période d'essai. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces). Activation sous Abonnement. Les limites d'unités, documents et annonces s'appliquent à toute votre organisation.",
+            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise. Documents et annonces : limites par unité et par organisation.",
+            "content_note": "Annonces : seuls les messages actifs et non expirés comptent (par unité liée). Documents : chaque fichier enregistré compte pour votre organisation, y compris les documents désactivés — supprimez pour libérer de l'espace. Pendant l'essai : maximum 10 documents pour votre organisation.",
             "plans": {
                 "micro": {
                     "units": "Jusqu'à 10 unités/espaces",
                     "users": "Inclut 1 administrateur et 1 collaborateur",
+                    "announcements": "Jusqu'à 2 annonces par unité",
+                    "documents": "Jusqu'à 2 documents par unité · max. 10 pour votre organisation",
                     "description": "Idéal pour les petites entreprises et les gestionnaires immobiliers compacts."
                 },
                 "starter": {
                     "units": "Jusqu'à 25 unités/espaces",
                     "users": "Inclut 1 administrateur et 2 collaborateurs",
+                    "announcements": "Jusqu'à 4 annonces par unité",
+                    "documents": "Jusqu'à 4 documents par unité · max. 20 pour votre organisation",
                     "description": "Idéal pour un site unique ou un pilote avec une petite équipe de coordination."
                 },
                 "pro": {
                     "units": "Jusqu'à 100 unités/espaces",
                     "users": "Inclut 1 administrateur et 5 collaborateurs",
+                    "announcements": "Jusqu'à 10 annonces par unité",
+                    "documents": "Jusqu'à 6 documents par unité · max. 40 pour votre organisation",
                     "description": "Adapté aux organisations facility en croissance avec plus d'unités et d'équipes internes."
                 },
                 "business": {
                     "units": "Jusqu'à 300 unités/espaces",
                     "users": "Inclut 1 administrateur et 15 collaborateurs",
+                    "announcements": "Jusqu'à 20 annonces par unité",
+                    "documents": "Jusqu'à 8 documents par unité · max. 80 pour votre organisation",
                     "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues. Inclut l'accès API et les webhooks."
                 },
                 "enterprise": {
                     "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
                     "users": "",
+                    "announcements": "Annonces illimitées par unité",
+                    "documents": "Documents illimités pour votre organisation",
                     "description": "Inclut l'accès API, les webhooks et des solutions sur mesure."
                 }
             }

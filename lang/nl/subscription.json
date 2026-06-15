@@ -1,6 +1,6 @@
 {
     "title": "Abonnement, limieten & betaling",
-    "subtitle": "Na je gratis maand kies je een formule. Limieten tellen units (machines, installaties, …); details in de FAQ.",
+    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten en gebruikers; details in de FAQ.",
     "plans_heading": "Beschikbare formules",
     "choose_plan": "Kies dit plan",
     "choose_plan_loading": "Bezig met kiezen...",
@@ -22,6 +22,7 @@
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
     "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Nieuwe locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
     "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule (1 beheerder plus maximaal :max medewerkers). \"Medewerker toevoegen\" is uitgeschakeld tot je upgradet.",
+    "page_limits_documents_body": "Uw organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade uw plan om meer te uploaden.",
     "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
     "legal_footer_intro": "Op je account zijn onder meer van toepassing:",
     "legal_terms": "Algemene voorwaarden",
@@ -50,11 +51,16 @@
         "cta": "Bekijk abonnement"
     },
     "plans": {
+        "trial": {
+            "name": "Proefperiode"
+        },
         "micro": {
             "name": "Micro",
             "price": "€99 / jaar",
             "units": "Tot 10 units/ruimtes",
             "users": "Inclusief 1 beheerder en 1 medewerker",
+            "announcements": "Tot 2 mededelingen per unit",
+            "documents": "Tot 2 documenten per unit · max. 10 voor uw organisatie",
             "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
         },
         "starter": {
@@ -62,6 +68,8 @@
             "price": "€29 / maand",
             "units": "Tot 25 units/ruimtes",
             "users": "Inclusief 1 beheerder en 2 medewerkers",
+            "announcements": "Tot 4 mededelingen per unit",
+            "documents": "Tot 4 documenten per unit · max. 20 voor uw organisatie",
             "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
         },
         "pro": {
@@ -69,6 +77,8 @@
             "price": "€59 / maand",
             "units": "Tot 100 units/ruimtes",
             "users": "Inclusief 1 beheerder en 5 medewerkers",
+            "announcements": "Tot 10 mededelingen per unit",
+            "documents": "Tot 6 documenten per unit · max. 40 voor uw organisatie",
             "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
         },
         "business": {
@@ -76,6 +86,8 @@
             "price": "€99 / maand",
             "units": "Tot 300 units/ruimtes",
             "users": "Inclusief 1 beheerder en 15 medewerkers",
+            "announcements": "Tot 20 mededelingen per unit",
+            "documents": "Tot 8 documenten per unit · max. 80 voor uw organisatie",
             "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks.",
             "features": ["API-toegang", "Webhooks"]
         },
@@ -84,6 +96,8 @@
             "price": "Op maat",
             "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
             "users": "",
+            "announcements": "Onbeperkt mededelingen per unit",
+            "documents": "Onbeperkt documenten voor uw organisatie",
             "description": "Inclusief API-toegang, webhooks en maatwerk.",
             "features": ["API-toegang", "Webhooks", "Maatwerk"]
         }

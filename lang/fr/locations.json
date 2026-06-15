@@ -260,7 +260,9 @@
             "invalid_unit": "Choisissez une unité valide sur ce site.",
             "file_required": "Sélectionnez un fichier à téléverser.",
             "file_mimes": "Choisissez un type de fichier autorisé : PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG ou PNG.",
-            "file_max": "Le fichier est trop volumineux (max. 10 Mo)."
+            "file_max": "Le fichier est trop volumineux (max. 10 Mo).",
+            "org_limit": "Votre organisation a atteint le nombre maximum de documents. Supprimez un document ou passez à une formule supérieure.",
+            "unit_limit": "Cette unité a déjà le nombre maximum de documents. Choisissez une autre unité ou supprimez d'abord un document."
         },
         "flash": {
             "created": "Document enregistré.",
@@ -289,7 +291,8 @@
         "default_title": "Annonce",
         "confirm_delete": "Supprimer définitivement cette annonce ?",
         "errors": {
-            "invalid_unit": "Choisissez une unité valide sur ce site."
+            "invalid_unit": "Choisissez une unité valide sur ce site.",
+            "unit_limit": "Cette unité a déjà le nombre maximum d'annonces actives. Désactivez ou supprimez-en une, ou choisissez une autre unité."
         },
         "flash": {
             "created": "Annonce enregistrée.",

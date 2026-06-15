@@ -1,6 +1,6 @@
 {
     "title": "Abonnement, Limits & Abrechnung",
-    "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits zählen Units (Maschinen, Anlagen, …); Details in der FAQ.",
+    "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits gelten pro Organisation für Units, Dokumente und Benutzer; Details in der FAQ.",
     "plans_heading": "Verfügbare Formeln",
     "choose_plan": "Diese Formel wählen",
     "choose_plan_loading": "Wird gewählt...",
@@ -22,6 +22,7 @@
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
     "page_limits_units_body": "Sie nutzen :current von :max Units. „Unit hinzufügen“ und „Neuen Standort hinzufügen“ bleiben deaktiviert, bis Sie upgraden.",
     "page_limits_users_body": "Sie nutzen :current von :max Team-Plätzen (1 Administrator plus max. :max Mitarbeitende). „Mitarbeiter hinzufügen“ ist deaktiviert, bis Sie upgraden.",
+    "page_limits_documents_body": "Ihre Organisation nutzt :current von :max Dokumenten. Löschen Sie ein Dokument oder upgraden Sie Ihre Formel, um weitere hochzuladen.",
     "manage_in_stripe": "Abonnement verwalten (Rechnung, Zahlungsmethode)",
     "legal_footer_intro": "Für Ihr Konto gelten unter anderem:",
     "legal_terms": "Allgemeine Geschäftsbedingungen",
@@ -50,11 +51,16 @@
         "cta": "Abonnement ansehen"
     },
     "plans": {
+        "trial": {
+            "name": "Testphase"
+        },
         "micro": {
             "name": "Micro",
             "price": "€99 / Jahr",
             "units": "Bis zu 10 Units/Räume",
             "users": "Inklusive 1 Administrator und 1 Mitarbeitende",
+            "announcements": "Bis zu 2 Mitteilungen pro Unit",
+            "documents": "Bis zu 2 Dokumente pro Unit · max. 10 für Ihre Organisation",
             "description": "Ideal für kleine Unternehmen und kompakte Immobilienverwalter."
         },
         "starter": {
@@ -62,6 +68,8 @@
             "price": "€29 / Monat",
             "units": "Bis zu 25 Units/Räume",
             "users": "Inklusive 1 Administrator und 2 Mitarbeitende",
+            "announcements": "Bis zu 4 Mitteilungen pro Unit",
+            "documents": "Bis zu 4 Dokumente pro Unit · max. 20 für Ihre Organisation",
             "description": "Ideal für einen einzelnen Standort oder Pilot mit kompaktem Koordinationsteam."
         },
         "pro": {
@@ -69,6 +77,8 @@
             "price": "€59 / Monat",
             "units": "Bis zu 100 Units/Räume",
             "users": "Inklusive 1 Administrator und 5 Mitarbeitende",
+            "announcements": "Bis zu 10 Mitteilungen pro Unit",
+            "documents": "Bis zu 6 Dokumente pro Unit · max. 40 für Ihre Organisation",
             "description": "Geeignet für wachsende Facility-Organisationen mit mehr Units und internen Teams."
         },
         "business": {
@@ -76,6 +86,8 @@
             "price": "€99 / Monat",
             "units": "Bis zu 300 Units/Räume",
             "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
+            "announcements": "Bis zu 20 Mitteilungen pro Unit",
+            "documents": "Bis zu 8 Dokumente pro Unit · max. 80 für Ihre Organisation",
             "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams. Inklusive API-Zugriff und Webhooks.",
             "features": ["API-Zugriff", "Webhooks"]
         },
@@ -84,6 +96,8 @@
             "price": "Individuell",
             "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
             "users": "",
+            "announcements": "Unbegrenzt Mitteilungen pro Unit",
+            "documents": "Unbegrenzt Dokumente für Ihre Organisation",
             "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen.",
             "features": ["API-Zugriff", "Webhooks", "Maßgeschneiderte Lösungen"]
         }

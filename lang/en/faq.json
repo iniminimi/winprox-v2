@@ -46,32 +46,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription.",
-            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise plans based on units and users. API access from Business.",
+            "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription. Limits for units, documents, and announcements apply to your whole organisation.",
+            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise. Documents and announcements have per-unit and per-organisation limits.",
+            "content_note": "Announcements: only active, non-expired messages count (per linked unit). Documents: every stored file counts for your organisation, including deactivated ones — delete to free space. During the trial, your organisation may upload up to 10 documents.",
             "plans": {
                 "micro": {
                     "units": "Up to 10 units/spaces",
                     "users": "Includes 1 administrator and 1 staff member",
+                    "announcements": "Up to 2 announcements per unit",
+                    "documents": "Up to 2 documents per unit · max. 10 for your organisation",
                     "description": "Ideal for small businesses and compact property managers."
                 },
                 "starter": {
                     "units": "Up to 25 units/spaces",
                     "users": "Includes 1 administrator and 2 staff members",
+                    "announcements": "Up to 4 announcements per unit",
+                    "documents": "Up to 4 documents per unit · max. 20 for your organisation",
                     "description": "Ideal for a single site or pilot with a compact coordination team."
                 },
                 "pro": {
                     "units": "Up to 100 units/spaces",
                     "users": "Includes 1 administrator and 5 staff members",
+                    "announcements": "Up to 10 announcements per unit",
+                    "documents": "Up to 6 documents per unit · max. 40 for your organisation",
                     "description": "Suited for growing facility organisations with more units and internal teams."
                 },
                 "business": {
                     "units": "Up to 300 units/spaces",
                     "users": "Includes 1 administrator and 15 staff members",
+                    "announcements": "Up to 20 announcements per unit",
+                    "documents": "Up to 8 documents per unit · max. 80 for your organisation",
                     "description": "For organisations with multiple sites, many units, and larger teams. Includes API access and webhooks."
                 },
                 "enterprise": {
                     "units": "For large site operators and complex portfolios. Contact us.",
                     "users": "",
+                    "announcements": "Unlimited announcements per unit",
+                    "documents": "Unlimited documents for your organisation",
                     "description": "Includes API access, webhooks, and custom solutions."
                 }
             }

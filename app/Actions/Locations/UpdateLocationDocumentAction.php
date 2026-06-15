@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Models\Document;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Locations\StoredUploadMeta;
@@ -33,6 +34,11 @@ class UpdateLocationDocumentAction
                 ->where('location_id', $location->id)
                 ->whereKey($unitId)
                 ->firstOrFail();
+        }
+
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        if ($unitId !== null && (int) $document->unit_id !== (int) $unitId) {
+            $tenant->assertCanAssignDocumentToUnit($unitId, (int) $document->id);
         }
 
         $isActive = (bool) ($data['is_active'] ?? true);

@@ -260,7 +260,9 @@
             "invalid_unit": "Choose a valid unit at this location.",
             "file_required": "Select a file to upload.",
             "file_mimes": "Choose an allowed file type: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG or PNG.",
-            "file_max": "The file is too large (max. 10 MB)."
+            "file_max": "The file is too large (max. 10 MB).",
+            "org_limit": "Your organisation has reached the maximum number of documents. Delete a document or upgrade your plan.",
+            "unit_limit": "This unit already has the maximum number of documents. Choose another unit or delete an existing document first."
         },
         "flash": {
             "created": "Document saved.",
@@ -289,7 +291,8 @@
         "default_title": "Announcement",
         "confirm_delete": "Permanently delete this announcement?",
         "errors": {
-            "invalid_unit": "Choose a valid unit at this location."
+            "invalid_unit": "Choose a valid unit at this location.",
+            "unit_limit": "This unit already has the maximum number of active announcements. Deactivate or delete one first, or choose another unit."
         },
         "flash": {
             "created": "Announcement saved.",

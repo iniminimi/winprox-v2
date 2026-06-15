@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Models\Announcement;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Str;
@@ -29,6 +30,10 @@ class CreateLocationAnnouncementAction
         $body = trim((string) $data['body']);
         $isActive = (bool) ($data['is_active'] ?? true);
         $expiresAt = ! empty($data['expires_at']) ? $data['expires_at'] : null;
+
+        if ($isActive) {
+            Tenant::query()->findOrFail($tenantId)->assertCanActivateAnnouncement($unitId);
+        }
 
         $announcement = Announcement::create([
             'tenant_id' => $tenantId,

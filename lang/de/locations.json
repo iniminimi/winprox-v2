@@ -260,7 +260,9 @@
             "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
             "file_required": "Wählen Sie eine Datei zum Hochladen.",
             "file_mimes": "Wählen Sie einen erlaubten Dateityp: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG oder PNG.",
-            "file_max": "Die Datei ist zu groß (max. 10 MB)."
+            "file_max": "Die Datei ist zu groß (max. 10 MB).",
+            "org_limit": "Ihre Organisation hat die maximale Anzahl Dokumente erreicht. Löschen Sie ein Dokument oder upgraden Sie Ihre Formel.",
+            "unit_limit": "Diese Unit hat bereits die maximale Anzahl Dokumente. Wählen Sie eine andere Unit oder löschen Sie zuerst ein Dokument."
         },
         "flash": {
             "created": "Dokument gespeichert.",
@@ -289,7 +291,8 @@
         "default_title": "Mitteilung",
         "confirm_delete": "Diese Mitteilung endgültig löschen?",
         "errors": {
-            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort."
+            "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
+            "unit_limit": "Diese Unit hat bereits die maximale Anzahl aktiver Mitteilungen. Deaktivieren oder löschen Sie eine Mitteilung, oder wählen Sie eine andere Unit."
         },
         "flash": {
             "created": "Mitteilung gespeichert.",

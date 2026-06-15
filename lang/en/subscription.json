@@ -1,6 +1,6 @@
 {
     "title": "Subscription, limits & billing",
-    "subtitle": "After your free month, choose a plan. Limits count units (machines, installations, …); see the FAQ for details.",
+    "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents and users; see the FAQ for details.",
     "plans_heading": "Available plans",
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
@@ -22,6 +22,7 @@
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" and \"Add location\" stay disabled until you upgrade.",
     "page_limits_users_body": "You are using :current of :max team seats on your plan (1 administrator plus up to :max staff). \"Add user\" is disabled until you upgrade.",
+    "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
     "manage_in_stripe": "Manage subscription (invoice, payment method)",
     "legal_footer_intro": "Your account is subject to, among others:",
     "legal_terms": "Terms of service",
@@ -50,11 +51,16 @@
         "cta": "View subscription"
     },
     "plans": {
+        "trial": {
+            "name": "Trial"
+        },
         "micro": {
             "name": "Micro",
             "price": "€99 / year",
             "units": "Up to 10 units/spaces",
             "users": "Includes 1 administrator and 1 staff member",
+            "announcements": "Up to 2 announcements per unit",
+            "documents": "Up to 2 documents per unit · max. 10 for your organisation",
             "description": "Ideal for small businesses and compact property managers."
         },
         "starter": {
@@ -62,6 +68,8 @@
             "price": "€29 / month",
             "units": "Up to 25 units/spaces",
             "users": "Includes 1 administrator and 2 staff members",
+            "announcements": "Up to 4 announcements per unit",
+            "documents": "Up to 4 documents per unit · max. 20 for your organisation",
             "description": "Ideal for a single site or pilot with a compact coordination team."
         },
         "pro": {
@@ -69,6 +77,8 @@
             "price": "€59 / month",
             "units": "Up to 100 units/spaces",
             "users": "Includes 1 administrator and 5 staff members",
+            "announcements": "Up to 10 announcements per unit",
+            "documents": "Up to 6 documents per unit · max. 40 for your organisation",
             "description": "Suited for growing facility organisations with more units and internal teams."
         },
         "business": {
@@ -76,6 +86,8 @@
             "price": "€99 / month",
             "units": "Up to 300 units/spaces",
             "users": "Includes 1 administrator and 15 staff members",
+            "announcements": "Up to 20 announcements per unit",
+            "documents": "Up to 8 documents per unit · max. 80 for your organisation",
             "description": "For organisations with multiple sites, many units, and larger teams. Includes API access and webhooks.",
             "features": ["API access", "Webhooks"]
         },
@@ -84,6 +96,8 @@
             "price": "Custom",
             "units": "For large site operators and complex portfolios. Contact us.",
             "users": "",
+            "announcements": "Unlimited announcements per unit",
+            "documents": "Unlimited documents for your organisation",
             "description": "Includes API access, webhooks, and custom solutions.",
             "features": ["API access", "Webhooks", "Custom solutions"]
         }

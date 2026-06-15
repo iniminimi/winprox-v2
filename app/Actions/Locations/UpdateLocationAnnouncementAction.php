@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Models\Announcement;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 
@@ -32,6 +33,13 @@ class UpdateLocationAnnouncementAction
 
         $body = trim((string) $data['body']);
         $isActive = (bool) ($data['is_active'] ?? true);
+
+        if ($isActive) {
+            Tenant::query()->findOrFail($tenantId)->assertCanActivateAnnouncement(
+                $unitId,
+                (int) $announcement->id,
+            );
+        }
 
         $announcement->update([
             'title' => CreateLocationAnnouncementAction::titleFromBody($body),

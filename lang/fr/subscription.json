@@ -1,6 +1,6 @@
 {
     "title": "Abonnement, limites et paiement",
-    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites comptent les unités (machines, installations, …) ; voir la FAQ pour les détails.",
+    "subtitle": "Après votre mois gratuit, choisissez une formule. Les limites s'appliquent par organisation pour les unités, documents et utilisateurs ; voir la FAQ.",
     "plans_heading": "Formules disponibles",
     "choose_plan": "Choisir cette formule",
     "choose_plan_loading": "Choix en cours...",
@@ -22,6 +22,7 @@
     "page_limits_title": "Pourquoi certaines actions ne sont pas disponibles",
     "page_limits_units_body": "Vous utilisez :current unités sur :max. « Ajouter une unité » et « Ajouter un site » restent désactivés jusqu'à la mise à niveau.",
     "page_limits_users_body": "Vous utilisez :current places d'équipe sur :max (1 administrateur plus max. :max collaborateurs). « Ajouter un utilisateur » est désactivé jusqu'à la mise à niveau.",
+    "page_limits_documents_body": "Votre organisation utilise :current documents sur :max. Supprimez un document ou passez à une formule supérieure pour en téléverser davantage.",
     "manage_in_stripe": "Gérer l'abonnement (facture, moyen de paiement)",
     "legal_footer_intro": "Votre compte est notamment soumis à :",
     "legal_terms": "Conditions générales",
@@ -50,11 +51,16 @@
         "cta": "Voir l'abonnement"
     },
     "plans": {
+        "trial": {
+            "name": "Essai"
+        },
         "micro": {
             "name": "Micro",
             "price": "€99 / an",
             "units": "Jusqu'à 10 unités/espaces",
             "users": "Inclut 1 administrateur et 1 collaborateur",
+            "announcements": "Jusqu'à 2 annonces par unité",
+            "documents": "Jusqu'à 2 documents par unité · max. 10 pour votre organisation",
             "description": "Idéal pour les petites entreprises et les gestionnaires immobiliers compacts."
         },
         "starter": {
@@ -62,6 +68,8 @@
             "price": "€29 / mois",
             "units": "Jusqu'à 25 unités/espaces",
             "users": "Inclut 1 administrateur et 2 collaborateurs",
+            "announcements": "Jusqu'à 4 annonces par unité",
+            "documents": "Jusqu'à 4 documents par unité · max. 20 pour votre organisation",
             "description": "Idéal pour un site unique ou un pilote avec une petite équipe de coordination."
         },
         "pro": {
@@ -69,6 +77,8 @@
             "price": "€59 / mois",
             "units": "Jusqu'à 100 unités/espaces",
             "users": "Inclut 1 administrateur et 5 collaborateurs",
+            "announcements": "Jusqu'à 10 annonces par unité",
+            "documents": "Jusqu'à 6 documents par unité · max. 40 pour votre organisation",
             "description": "Adapté aux organisations facility en croissance avec plus d'unités et d'équipes internes."
         },
         "business": {
@@ -76,6 +86,8 @@
             "price": "€99 / mois",
             "units": "Jusqu'à 300 unités/espaces",
             "users": "Inclut 1 administrateur et 15 collaborateurs",
+            "announcements": "Jusqu'à 20 annonces par unité",
+            "documents": "Jusqu'à 8 documents par unité · max. 80 pour votre organisation",
             "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues. Inclut l'accès API et les webhooks.",
             "features": ["Accès API", "Webhooks"]
         },
@@ -84,6 +96,8 @@
             "price": "Sur mesure",
             "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
             "users": "",
+            "announcements": "Annonces illimitées par unité",
+            "documents": "Documents illimités pour votre organisation",
             "description": "Inclut l'accès API, les webhooks et des solutions sur mesure.",
             "features": ["Accès API", "Webhooks", "Solutions sur mesure"]
         }

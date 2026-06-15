@@ -46,32 +46,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement.",
-            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise op basis van units en gebruikers. API-toegang vanaf Business.",
+            "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement. Limieten voor units, documenten en mededelingen gelden voor uw hele organisatie.",
+            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise. Documenten en mededelingen hebben limieten per unit en per organisatie.",
+            "content_note": "Mededelingen: alleen actieve, niet-verlopen berichten tellen mee (per gekoppelde unit). Documenten: alle opgeslagen bestanden tellen mee voor uw organisatie, ook gedeactiveerde — verwijder om ruimte vrij te maken. Tijdens de proefperiode geldt een maximum van 10 documenten voor uw organisatie.",
             "plans": {
                 "micro": {
                     "units": "Tot 10 units/ruimtes",
                     "users": "Inclusief 1 beheerder en 1 medewerker",
+                    "announcements": "Tot 2 mededelingen per unit",
+                    "documents": "Tot 2 documenten per unit · max. 10 voor uw organisatie",
                     "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
                 },
                 "starter": {
                     "units": "Tot 25 units/ruimtes",
                     "users": "Inclusief 1 beheerder en 2 medewerkers",
+                    "announcements": "Tot 4 mededelingen per unit",
+                    "documents": "Tot 4 documenten per unit · max. 20 voor uw organisatie",
                     "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
                 },
                 "pro": {
                     "units": "Tot 100 units/ruimtes",
                     "users": "Inclusief 1 beheerder en 5 medewerkers",
+                    "announcements": "Tot 10 mededelingen per unit",
+                    "documents": "Tot 6 documenten per unit · max. 40 voor uw organisatie",
                     "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
                 },
                 "business": {
                     "units": "Tot 300 units/ruimtes",
                     "users": "Inclusief 1 beheerder en 15 medewerkers",
+                    "announcements": "Tot 20 mededelingen per unit",
+                    "documents": "Tot 8 documenten per unit · max. 80 voor uw organisatie",
                     "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks."
                 },
                 "enterprise": {
                     "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
                     "users": "",
+                    "announcements": "Onbeperkt mededelingen per unit",
+                    "documents": "Onbeperkt documenten voor uw organisatie",
                     "description": "Inclusief API-toegang, webhooks en maatwerk."
                 }
             }

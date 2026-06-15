@@ -389,18 +389,7 @@ class Tenant extends Model
     /** null = onbeperkt (legacy of enterprise). */
     public function maxUnitsLimit(): ?int
     {
-        if ($this->isLegacyWithoutBillingTracking()) {
-            return null;
-        }
-
-        $planKey = $this->effectivePlanKey();
-        if ($planKey === null) {
-            return null;
-        }
-
-        $max = config("billing.plans.{$planKey}.units_limit");
-
-        return is_int($max) ? $max : (is_numeric($max) ? (int) $max : null);
+        return $this->billingLimitValue('units_limit');
     }
 
     public function remainingUnitSlots(): ?int
@@ -428,16 +417,145 @@ class Tenant extends Model
     /** null = onbeperkt (legacy of enterprise). */
     public function maxUsersLimit(): ?int
     {
+        return $this->billingLimitValue('users_limit');
+    }
+
+    /** null = onbeperkt (legacy of enterprise). */
+    public function maxAnnouncementsPerUnitLimit(): ?int
+    {
+        return $this->billingLimitValue('announcements_per_unit');
+    }
+
+    /** null = onbeperkt (legacy of enterprise). */
+    public function maxDocumentsPerUnitLimit(): ?int
+    {
+        return $this->billingLimitValue('documents_per_unit');
+    }
+
+    /** null = onbeperkt (legacy of enterprise). */
+    public function maxDocumentsOrgLimit(): ?int
+    {
+        return $this->billingLimitValue('documents_org_limit');
+    }
+
+    public function currentDocumentsCount(): int
+    {
+        return Document::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
+    }
+
+    public function currentDocumentsCountForUnit(int $unitId, ?int $excludeDocumentId = null): int
+    {
+        $query = Document::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $this->id)
+            ->where('unit_id', $unitId);
+
+        if ($excludeDocumentId !== null) {
+            $query->whereKeyNot($excludeDocumentId);
+        }
+
+        return $query->count();
+    }
+
+    public function currentActiveAnnouncementsCountForUnit(int $unitId, ?int $excludeAnnouncementId = null): int
+    {
+        $query = Announcement::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $this->id)
+            ->where('unit_id', $unitId)
+            ->where('is_active', true)
+            ->where(fn ($q) => $q->whereNull('expires_at')->orWhere('expires_at', '>=', now()))
+            ->where(fn ($q) => $q->whereNull('published_at')->orWhere('published_at', '<=', now()));
+
+        if ($excludeAnnouncementId !== null) {
+            $query->whereKeyNot($excludeAnnouncementId);
+        }
+
+        return $query->count();
+    }
+
+    public function remainingDocumentOrgSlots(): ?int
+    {
+        $max = $this->maxDocumentsOrgLimit();
+        if ($max === null) {
+            return null;
+        }
+
+        return max(0, $max - $this->currentDocumentsCount());
+    }
+
+    public function isAtDocumentsOrgLimit(): bool
+    {
+        $remaining = $this->remainingDocumentOrgSlots();
+
+        return $remaining !== null && $remaining === 0;
+    }
+
+    public function assertCanAddDocument(?int $unitId): void
+    {
+        $orgMax = $this->maxDocumentsOrgLimit();
+        if ($orgMax !== null && $this->currentDocumentsCount() >= $orgMax) {
+            throw new \InvalidArgumentException('document_org_limit_exceeded');
+        }
+
+        if ($unitId === null) {
+            return;
+        }
+
+        $unitMax = $this->maxDocumentsPerUnitLimit();
+        if ($unitMax === null) {
+            return;
+        }
+
+        if ($this->currentDocumentsCountForUnit($unitId) >= $unitMax) {
+            throw new \InvalidArgumentException('document_unit_limit_exceeded');
+        }
+    }
+
+    public function assertCanAssignDocumentToUnit(int $unitId, ?int $excludeDocumentId = null): void
+    {
+        $unitMax = $this->maxDocumentsPerUnitLimit();
+        if ($unitMax === null) {
+            return;
+        }
+
+        if ($this->currentDocumentsCountForUnit($unitId, $excludeDocumentId) >= $unitMax) {
+            throw new \InvalidArgumentException('document_unit_limit_exceeded');
+        }
+    }
+
+    public function assertCanActivateAnnouncement(?int $unitId, ?int $excludeAnnouncementId = null): void
+    {
+        if ($unitId === null) {
+            return;
+        }
+
+        $unitMax = $this->maxAnnouncementsPerUnitLimit();
+        if ($unitMax === null) {
+            return;
+        }
+
+        if ($this->currentActiveAnnouncementsCountForUnit($unitId, $excludeAnnouncementId) >= $unitMax) {
+            throw new \InvalidArgumentException('announcement_unit_limit_exceeded');
+        }
+    }
+
+    private function billingLimitValue(string $field): ?int
+    {
         if ($this->isLegacyWithoutBillingTracking()) {
             return null;
         }
 
         $planKey = $this->effectivePlanKey();
-        if ($planKey === null) {
+        if ($planKey === null || $planKey === 'enterprise') {
             return null;
         }
 
-        $max = config("billing.plans.{$planKey}.users_limit");
+        $configKey = $planKey === config('billing.trial_plan_facility')
+            ? "billing.trial.{$field}"
+            : "billing.plans.{$planKey}.{$field}";
+
+        $max = config($configKey);
 
         return is_int($max) ? $max : (is_numeric($max) ? (int) $max : null);
     }
