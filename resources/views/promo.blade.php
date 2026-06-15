@@ -21,14 +21,18 @@
             @include('partials.wp-lang-switch', ['variant' => 'inline'])
         </div>
 
-        <h1 class="wp-page-title">{{ __('promo.title') }}</h1>
-        <p class="wp-text-body">{{ __('promo.tagline') }}</p>
+        <div class="wp-promo-panel-dark">
+            <h1 class="wp-promo-panel-title">{{ __('promo.title') }}</h1>
+            <p class="wp-promo-panel-lead">{{ __('promo.tagline') }}</p>
 
-        <ul class="wp-list wp-list--bullets">
-            <li>{{ __('promo.bullet_1') }}</li>
-            <li>{{ __('promo.bullet_2') }}</li>
-            <li>{{ __('promo.bullet_3') }}</li>
-        </ul>
+            <ul class="wp-promo-checklist">
+                <li>{{ __('promo.bullet_1') }}</li>
+                <li>{{ __('promo.bullet_2') }}</li>
+                <li>{{ __('promo.bullet_3') }}</li>
+            </ul>
+
+            <div class="wp-promo-panel-glow" aria-hidden="true"></div>
+        </div>
 
         @if ($promoVideos->isNotEmpty())
             <section class="wp-promo-video" aria-labelledby="promo-video-title">
