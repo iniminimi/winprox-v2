@@ -164,7 +164,7 @@
                 },
                 {
                     "label": "Recent CSV imports",
-                    "text": "Below the import button, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of units. Click 'Undo import' to remove the units of that batch. Only units without an issue or task are deleted — units linked to an issue or task remain and are marked as 'blocked'. The button disappears once all units in a batch have been deleted."
+                    "text": "Below the import button, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of units. Click 'Undo import' to roll back the import. Units without issues or tasks are removed; empty locations and categories created by the import are cleaned up too. Units linked to an issue or task remain."
                 },
                 {
                     "label": "Categories",

@@ -1,9 +1,13 @@
 <?php
 
 use App\Actions\Units\DeleteImportBatchAction;
+use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\DeleteImportBatchData;
+use App\Data\Units\ImportUnitsData;
+use App\Livewire\Locations\Index;
 use App\Models\Category;
 use App\Models\Issue;
+use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
@@ -12,6 +16,7 @@ use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Livewire\Livewire;
 
 beforeEach(fn () => Tenancy::forget());
 
@@ -281,4 +286,133 @@ it('preserves units with both issues and tasks', function () {
 
     // Verify unit without was deleted
     expect(Unit::where('id', $unitWithout->id)->exists())->toBeFalse();
+});
+
+it('deletes empty locations and categories created during import on batch undo', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvPath = tempnam(sys_get_temp_dir(), 'units_undo_test_') . '.csv';
+    $handle = fopen($csvPath, 'w');
+    fputcsv($handle, ['location_name', 'unit_name', 'description', 'category_name', 'street', 'house_number', 'postal_code', 'city', 'country_code', 'notes']);
+    fputcsv($handle, ['Depot A', 'Unit A1', 'Test', 'Grondverzet', 'Industrielaan', '1', '9800', 'Deinze', 'BE', 'Poort A']);
+    fputcsv($handle, ['Depot A', 'Unit A2', 'Test', 'Heftrucks', 'Industrielaan', '1', '9800', 'Deinze', 'BE', 'Poort A']);
+    fputcsv($handle, ['Depot B', 'Unit B1', 'Test', 'Compressoren', 'Fabriekstraat', '2', '9000', 'Gent', 'BE', 'Zone B']);
+    fclose($handle);
+
+    $importDto = new \App\Data\Units\ImportUnitsData(filePath: $csvPath, originalName: 'units.csv');
+    $importResult = app(\App\Actions\Units\ImportUnitsAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    expect($importResult['success'])->toBeTrue();
+    expect(Location::where('tenant_id', $tenant->id)->count())->toBe(2);
+    expect(Category::where('tenant_id', $tenant->id)->count())->toBe(3);
+
+    $deleteDto = new DeleteImportBatchData(importBatchId: $importResult['batch_id']);
+    $deleteResult = app(DeleteImportBatchAction::class)->handle($deleteDto, $tenant->id, $user->id);
+
+    expect($deleteResult['success'])->toBeTrue();
+    expect($deleteResult['deleted_count'])->toBe(3);
+    expect($deleteResult['deleted_location_count'])->toBe(2);
+    expect($deleteResult['deleted_category_count'])->toBe(3);
+    expect(Unit::where('tenant_id', $tenant->id)->count())->toBe(0);
+    expect(Location::where('tenant_id', $tenant->id)->count())->toBe(0);
+    expect(Category::where('tenant_id', $tenant->id)->count())->toBe(0);
+
+    unlink($csvPath);
+});
+
+it('keeps existing location and category with other units on batch undo', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $existingLocation = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Bestaand Depot']);
+    $existingCategory = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Grondverzet']);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $existingLocation->id,
+        'category_id' => $existingCategory->id,
+        'import_batch_id' => null,
+    ]);
+
+    $csvPath = tempnam(sys_get_temp_dir(), 'units_reuse_test_') . '.csv';
+    $handle = fopen($csvPath, 'w');
+    fputcsv($handle, ['location_name', 'unit_name', 'category_name']);
+    fputcsv($handle, ['Bestaand Depot', 'Import Unit', 'Grondverzet']);
+    fclose($handle);
+
+    $importDto = new \App\Data\Units\ImportUnitsData(filePath: $csvPath, originalName: 'reuse.csv');
+    $importResult = app(\App\Actions\Units\ImportUnitsAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    $deleteDto = new DeleteImportBatchData(importBatchId: $importResult['batch_id']);
+    $deleteResult = app(DeleteImportBatchAction::class)->handle($deleteDto, $tenant->id, $user->id);
+
+    expect($deleteResult['success'])->toBeTrue();
+    expect($deleteResult['deleted_count'])->toBe(1);
+    expect($deleteResult['deleted_location_count'])->toBe(0);
+    expect($deleteResult['deleted_category_count'])->toBe(0);
+    expect(Location::where('tenant_id', $tenant->id)->where('name', 'Bestaand Depot')->exists())->toBeTrue();
+    expect(Category::where('tenant_id', $tenant->id)->where('name', 'Grondverzet')->exists())->toBeTrue();
+    expect(Unit::where('tenant_id', $tenant->id)->count())->toBe(1);
+
+    unlink($csvPath);
+});
+
+it('fully rolls back the huurland units import fixture', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvPath = base_path('tests/fixtures/units_import_huurland_1200.csv');
+    expect(file_exists($csvPath))->toBeTrue();
+
+    $importDto = new \App\Data\Units\ImportUnitsData(filePath: $csvPath, originalName: 'units_import_huurland_1200.csv');
+    $importResult = app(\App\Actions\Units\ImportUnitsAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    expect($importResult['success'])->toBeTrue();
+    expect($importResult['count'])->toBe(1200);
+    expect(Location::where('tenant_id', $tenant->id)->count())->toBe(40);
+    expect(Category::where('tenant_id', $tenant->id)->count())->toBe(20);
+
+    $deleteDto = new DeleteImportBatchData(importBatchId: $importResult['batch_id']);
+    $deleteResult = app(DeleteImportBatchAction::class)->handle($deleteDto, $tenant->id, $user->id);
+
+    expect($deleteResult['success'])->toBeTrue();
+    expect($deleteResult['deleted_count'])->toBe(1200);
+    expect($deleteResult['deleted_location_count'])->toBe(40);
+    expect($deleteResult['deleted_category_count'])->toBe(20);
+    expect(Unit::where('tenant_id', $tenant->id)->count())->toBe(0);
+    expect(Location::where('tenant_id', $tenant->id)->count())->toBe(0);
+    expect(Category::where('tenant_id', $tenant->id)->count())->toBe(0);
+});
+
+it('ververst de locatielijst direct na terugdraaien van een units CSV-import', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvPath = tempnam(sys_get_temp_dir(), 'units_index_test_') . '.csv';
+    $handle = fopen($csvPath, 'w');
+    fputcsv($handle, ['location_name', 'unit_name', 'category_name']);
+    fputcsv($handle, ['Import Depot', 'Unit 1', 'Grondverzet']);
+    fputcsv($handle, ['Import Depot', 'Unit 2', 'Heftrucks']);
+    fclose($handle);
+
+    $importDto = new ImportUnitsData(filePath: $csvPath, originalName: 'units.csv');
+    $importResult = app(ImportUnitsAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    expect($importResult['success'])->toBeTrue();
+
+    Livewire::actingAs($user)
+        ->test(Index::class)
+        ->assertSee('Import Depot')
+        ->call('deleteImportBatch', $importResult['batch_id'])
+        ->assertDontSee('Import Depot')
+        ->assertSet('unitsImportNoticeType', 'success');
+
+    expect(Location::where('tenant_id', $tenant->id)->where('name', 'Import Depot')->exists())->toBeFalse();
+
+    unlink($csvPath);
 });

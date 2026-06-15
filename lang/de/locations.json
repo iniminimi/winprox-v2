@@ -157,7 +157,7 @@
     },
     "import_history": {
         "title": "Letzte CSV-Imports",
-        "hint": "Import-Rückgängig entfernt nur Units ohne Meldung oder Aufgabe.",
+        "hint": "Rückgängig entfernt Units ohne Meldung oder Aufgabe und räumt leere Standorte und Kategorien auf, die durch den Import erstellt wurden.",
         "unknown_file": "Unbekannte Datei",
         "unit_count": ":count Units",
         "confirm_delete": ":count Unit(s) ohne Meldung oder Aufgabe löschen?",
@@ -167,6 +167,8 @@
         "nothing_deletable": "Keine Units in diesem Import können gelöscht werden.",
         "partially_deleted": ":deleted Unit(s) gelöscht. :preserved Unit(s) mit Meldungen blieben.",
         "fully_deleted": ":count Unit(s) gelöscht.",
+        "fully_deleted_with_cleanup": ":count Unit(s), :locations Standort(e) und :categories Kategorie(n) gelöscht.",
+        "partially_deleted_with_cleanup": ":deleted Unit(s) gelöscht. :preserved Unit(s) mit Meldungen blieben. :locations Standort(e) und :categories Kategorie(n) aufgeräumt.",
         "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
     },
     "categories": {

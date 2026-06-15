@@ -168,7 +168,7 @@
                 },
                 {
                     "label": "Recente CSV-imports",
-                    "text": "Onder de importknop verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal units. Klik op 'Import terugdraaien' om de units van die batch te verwijderen. Alleen units zonder melding of taak worden verwijderd — units met een gekoppelde melding of taak blijven staan en worden als 'geblokkeerd' aangeduid. De knop verdwijnt zodra alle units van een batch verwijderd zijn."
+                    "text": "Onder de importknop verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal units. Klik op 'Import terugdraaien' om de import ongedaan te maken. Units zonder melding of taak worden verwijderd; lege locaties en categorieën die door de import zijn aangemaakt worden ook opgeruimd. Units met een gekoppelde melding of taak blijven staan."
                 }
             ]
         },

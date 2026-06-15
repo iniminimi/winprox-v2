@@ -164,7 +164,7 @@
                 },
                 {
                     "label": "Imports CSV récents",
-                    "text": "Sous le bouton d'import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur 'Annuler l'import' pour supprimer les unités de ce lot. Seules les unités sans signalement ni tâche sont supprimées — les unités liées à un signalement ou une tâche restent et sont indiquées comme 'bloquées'. Le bouton disparaît lorsque toutes les unités d'un lot ont été supprimées."
+                    "text": "Sous le bouton d'import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur 'Annuler l'import' pour annuler l'import. Les unités sans signalement ni tâche sont supprimées ; les sites et catégories vides créés par l'import sont aussi nettoyés. Les unités liées à un signalement ou une tâche restent."
                 },
                 {
                     "label": "Catégories",

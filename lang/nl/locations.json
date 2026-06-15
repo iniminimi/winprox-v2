@@ -157,7 +157,7 @@
     },
     "import_history": {
         "title": "Recente CSV-imports",
-        "hint": "Verwijder per import alleen units zonder melding of taak.",
+        "hint": "Ongedaan maken verwijdert units zonder melding of taak en ruimt lege locaties en categorieën op die door de import zijn aangemaakt.",
         "unknown_file": "Onbekend bestand",
         "unit_count": ":count units",
         "confirm_delete": ":count unit(s) zonder melding of taak verwijderen?",
@@ -167,6 +167,8 @@
         "nothing_deletable": "Geen units in deze import kunnen worden verwijderd.",
         "partially_deleted": ":deleted unit(s) verwijderd. :preserved unit(s) met meldingen bleven staan.",
         "fully_deleted": ":count unit(s) verwijderd.",
+        "fully_deleted_with_cleanup": ":count unit(s), :locations locatie(s) en :categories categorie(ën) verwijderd.",
+        "partially_deleted_with_cleanup": ":deleted unit(s) verwijderd. :preserved unit(s) met meldingen bleven staan. :locations locatie(s) en :categories categorie(ën) opgeruimd.",
         "delete_failed": "Er is een fout opgetreden bij het verwijderen."
     },
     "categories": {

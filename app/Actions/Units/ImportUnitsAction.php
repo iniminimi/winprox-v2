@@ -167,6 +167,8 @@ class ImportUnitsAction
         DB::beginTransaction();
         try {
             $importedCount = 0;
+            $createdLocationIds = [];
+            $createdCategoryIds = [];
 
             foreach ($validatedRows as $row) {
                 // Find or create location
@@ -186,6 +188,10 @@ class ImportUnitsAction
                     ]
                 );
 
+                if ($location->wasRecentlyCreated) {
+                    $createdLocationIds[$location->id] = $location->id;
+                }
+
                 // Find or create category
                 $category = Category::firstOrCreate(
                     [
@@ -196,6 +202,10 @@ class ImportUnitsAction
                         'is_active' => true,
                     ]
                 );
+
+                if ($category->wasRecentlyCreated) {
+                    $createdCategoryIds[$category->id] = $category->id;
+                }
                 $categoryId = $category->id;
 
                 // Create unit
@@ -213,7 +223,15 @@ class ImportUnitsAction
             }
 
             // Audit logging
-            $this->logAudit($tenantId, $actorUserId, $importedCount, $batchId, $data->originalName);
+            $this->logAudit(
+                $tenantId,
+                $actorUserId,
+                $importedCount,
+                $batchId,
+                $data->originalName,
+                array_values($createdLocationIds),
+                array_values($createdCategoryIds),
+            );
 
             DB::commit();
 
@@ -231,7 +249,7 @@ class ImportUnitsAction
         }
     }
 
-    protected function logAudit(int $tenantId, ?int $actorUserId, int $count, string $batchId, string $fileName): void
+    protected function logAudit(int $tenantId, ?int $actorUserId, int $count, string $batchId, string $fileName, array $createdLocationIds = [], array $createdCategoryIds = []): void
     {
         $this->audit->record(
             userId: $actorUserId,
@@ -243,6 +261,8 @@ class ImportUnitsAction
                 'count' => $count,
                 'batch_id' => $batchId,
                 'file_name' => $fileName,
+                'created_location_ids' => $createdLocationIds,
+                'created_category_ids' => $createdCategoryIds,
             ],
         );
     }

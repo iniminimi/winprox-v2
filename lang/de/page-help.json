@@ -164,7 +164,7 @@
                 },
                 {
                     "label": "Letzte CSV-Imports",
-                    "text": "Unter der Import-Schaltfläche erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Units. Klicken Sie auf 'Import rükgängig', um die Units dieses Stapels zu löschen. Nur Units ohne Meldung oder Aufgabe werden gelöscht — Units mit einer verknüpften Meldung oder Aufgabe bleiben und werden als 'blockiert' angezeigt. Die Schaltfläche verschwindet, sobald alle Units eines Stapels gelöscht wurden."
+                    "text": "Unter der Import-Schaltfläche erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Units. Klicken Sie auf 'Import rükgängig', um den Import rückgängig zu machen. Units ohne Meldung oder Aufgabe werden entfernt; leere Standorte und Kategorien aus dem Import werden ebenfalls aufgeräumt. Units mit verknüpfter Meldung oder Aufgabe bleiben erhalten."
                 },
                 {
                     "label": "Kategorien",

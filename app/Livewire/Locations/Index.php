@@ -10,7 +10,9 @@ use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
+use App\Actions\Units\DeleteImportBatchAction;
 use App\Actions\Units\ImportUnitsAction;
+use App\Data\Units\DeleteImportBatchData;
 use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -20,8 +22,10 @@ use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Unit;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Tenancy;
+use App\Support\Units\ImportBatchRegistry;
 use Illuminate\Support\Facades\Schema;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -62,6 +66,10 @@ class Index extends Component
     public array $importErrors = [];
 
     public ?int $importedCount = null;
+
+    public ?string $unitsImportNotice = null;
+
+    public string $unitsImportNoticeType = 'success';
 
     public bool $showImportModal = false;
 
@@ -163,6 +171,7 @@ class Index extends Component
         $this->importFile = null;
         $this->importErrors = [];
         $this->importedCount = null;
+        $this->unitsImportNotice = null;
         $this->showImportModal = true;
     }
 
@@ -211,10 +220,64 @@ class Index extends Component
         if ($result['success']) {
             $this->importedCount = $result['count'];
             $this->importErrors = [];
-            session()->flash('success', __('locations.flash.imported', ['count' => $result['count']]));
+            $this->unitsImportNotice = __('locations.flash.imported', ['count' => $result['count']]);
+            $this->unitsImportNoticeType = 'success';
             $this->closeImportModal();
         } else {
             $this->importErrors = $result['errors'];
+        }
+    }
+
+    public function deleteImportBatch(string $batchId, DeleteImportBatchAction $deleteBatch): void
+    {
+        $this->authorize('create', Unit::class);
+
+        $tenantId = Tenancy::id();
+        $summary = ImportBatchRegistry::summary($tenantId, $batchId);
+
+        if (! $summary['can_delete']) {
+            $this->unitsImportNotice = __('locations.import_history.nothing_deletable');
+            $this->unitsImportNoticeType = 'error';
+
+            return;
+        }
+
+        $dto = new DeleteImportBatchData(importBatchId: $batchId);
+        $result = $deleteBatch->handle($dto, $tenantId, (int) auth()->id());
+
+        if ($result['success']) {
+            $locationsDeleted = (int) ($result['deleted_location_count'] ?? 0);
+            $categoriesDeleted = (int) ($result['deleted_category_count'] ?? 0);
+            $extrasDeleted = $locationsDeleted + $categoriesDeleted;
+
+            if ($result['preserved_count'] > 0) {
+                $this->unitsImportNotice = $extrasDeleted > 0
+                    ? __('locations.import_history.partially_deleted_with_cleanup', [
+                        'deleted' => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                        'locations' => $locationsDeleted,
+                        'categories' => $categoriesDeleted,
+                    ])
+                    : __('locations.import_history.partially_deleted', [
+                        'deleted' => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                    ]);
+            } else {
+                $this->unitsImportNotice = $extrasDeleted > 0
+                    ? __('locations.import_history.fully_deleted_with_cleanup', [
+                        'count' => $result['deleted_count'],
+                        'locations' => $locationsDeleted,
+                        'categories' => $categoriesDeleted,
+                    ])
+                    : __('locations.import_history.fully_deleted', [
+                        'count' => $result['deleted_count'],
+                    ]);
+            }
+
+            $this->unitsImportNoticeType = 'success';
+        } else {
+            $this->unitsImportNotice = $result['errors'][0] ?? __('locations.import_history.delete_failed');
+            $this->unitsImportNoticeType = 'error';
         }
     }
 
@@ -417,12 +480,20 @@ class Index extends Component
             ? Category::query()->orderBy('name')->get(['id', 'name'])
             : collect();
 
+        $tenantId = Tenancy::id();
+        $unitImportBatches = ImportBatchRegistry::recentBatchesForTenant($tenantId)
+            ->map(fn (array $batch) => array_merge(
+                $batch,
+                ImportBatchRegistry::summary($tenantId, $batch['batch_id']),
+            ));
+
         return view('livewire.locations.index', [
             'locations' => $locations,
             'hasAnyLocation' => $hasAnyLocation,
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
+            'unitImportBatches' => $unitImportBatches,
             'onboarding' => TenantOnboardingState::current(),
         ]);
     }

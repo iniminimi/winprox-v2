@@ -26,7 +26,13 @@
         </div>
     </div>
 
-    @if (session('success'))
+    @if ($unitsImportNotice)
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $unitsImportNoticeType !== 'error',
+            'wp-flash--danger' => $unitsImportNoticeType === 'error',
+        ])>{{ $unitsImportNotice }}</div>
+    @elseif (session('success'))
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
@@ -128,7 +134,7 @@
         </div>
     </div>
 
-    <livewire:locations.import-history />
+    @include('livewire.locations.import-history', ['batches' => $unitImportBatches])
 
     @if ($showModal)
         <x-wp-modal closeMethod="closeModal" aria-labelledby="location-modal-title">

@@ -157,7 +157,7 @@
     },
     "import_history": {
         "title": "Imports CSV récents",
-        "hint": "L'annulation d'import ne retire que les unités sans signalement ni tâche.",
+        "hint": "L'annulation supprime les unités sans signalement ni tâche et nettoie les sites et catégories vides créés par l'import.",
         "unknown_file": "Fichier inconnu",
         "unit_count": ":count unités",
         "confirm_delete": "Supprimer :count unité(s) sans signalement ni tâche ?",
@@ -167,6 +167,8 @@
         "nothing_deletable": "Aucune unité de cet import ne peut être supprimée.",
         "partially_deleted": ":deleted unité(s) supprimée(s). :preserved unité(s) avec signalements conservées.",
         "fully_deleted": ":count unité(s) supprimée(s).",
+        "fully_deleted_with_cleanup": ":count unité(s), :locations site(s) et :categories catégorie(s) supprimé(s).",
+        "partially_deleted_with_cleanup": ":deleted unité(s) supprimée(s). :preserved unité(s) avec signalements conservées. :locations site(s) et :categories catégorie(s) nettoyé(s).",
         "delete_failed": "Une erreur s'est produite lors de la suppression."
     },
     "categories": {
