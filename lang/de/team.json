@@ -106,7 +106,7 @@
     },
     "import_history": {
         "title": "Letzte CSV-Imports",
-        "hint": "Rükgängig entfernt nur Mitarbeiter ohne verknüpftes Gerät.",
+        "hint": "Rükgängig entfernt Mitarbeiter ohne verknüpftes Gerät und leere Teams, die durch den Import erstellt wurden.",
         "unknown_file": "Unbekannte Datei",
         "worker_count": ":count Mitarbeiter",
         "confirm_delete": ":count Mitarbeiter ohne Gerät löschen?",
@@ -116,6 +116,8 @@
         "nothing_deletable": "Keine Mitarbeiter in diesem Import können gelöscht werden.",
         "partially_deleted": ":deleted Mitarbeiter gelöscht. :preserved Mitarbeiter mit Geräten blieben.",
         "fully_deleted": ":count Mitarbeiter gelöscht.",
+        "fully_deleted_with_teams": ":count Mitarbeiter und :teams leeres Team gelöscht.",
+        "partially_deleted_with_teams": ":deleted Mitarbeiter gelöscht. :preserved Mitarbeiter mit Geräten blieben. :teams leeres Team gelöscht.",
         "delete_failed": "Beim Löschen ist ein Fehler aufgetreten."
     },
     "qr": {

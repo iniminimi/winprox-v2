@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "CSV import",
-                    "text": "Importeer uitvoerders in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Uitvoerders die al gekoppeld zijn aan een toestel (worker_device) worden bij ongedaan maken nooit verwijderd."
+                    "text": "Importeer uitvoerders in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
                 },
                 {
                     "label": "Recente CSV-imports",

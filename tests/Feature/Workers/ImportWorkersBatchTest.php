@@ -135,6 +135,66 @@ it('reuses existing team when team_name already exists for tenant', function () 
     unlink($csvPath);
 });
 
+it('deletes empty teams created during import on batch undo', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvPath = makeCsvFile([
+        ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'],
+        ['Nieuw Team A', 'Jan', 'Janssen', 'jan@bedrijf.be', '+32470123456', 'EMP-001'],
+        ['Nieuw Team B', 'Piet', 'Pieters', 'piet@bedrijf.be', '+32470654321', 'EMP-002'],
+    ]);
+
+    $importDto = new ImportWorkersData(filePath: $csvPath, originalName: 'teams.csv');
+    $importResult = app(ImportWorkersAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    expect($importResult['success'])->toBeTrue();
+    expect(InternalTeam::where('tenant_id', $tenant->id)->whereIn('name', ['Nieuw Team A', 'Nieuw Team B'])->count())->toBe(2);
+
+    $deleteDto = new DeleteWorkerImportBatchData(importBatchId: $importResult['batch_id']);
+    $deleteResult = app(DeleteWorkerImportBatchAction::class)->handle($deleteDto, $tenant->id, $user->id);
+
+    expect($deleteResult['success'])->toBeTrue();
+    expect($deleteResult['deleted_count'])->toBe(2);
+    expect($deleteResult['deleted_team_count'])->toBe(2);
+    expect(InternalTeam::where('tenant_id', $tenant->id)->whereIn('name', ['Nieuw Team A', 'Nieuw Team B'])->count())->toBe(0);
+
+    unlink($csvPath);
+});
+
+it('keeps existing team with other workers on batch undo', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $existingTeam = InternalTeam::create(['tenant_id' => $tenant->id, 'name' => 'Bestaand Team', 'is_active' => true]);
+    Worker::factory()->create([
+        'tenant_id'        => $tenant->id,
+        'internal_team_id' => $existingTeam->id,
+        'import_batch_id'  => null,
+    ]);
+
+    $csvPath = makeCsvFile([
+        ['team_name', 'first_name', 'last_name'],
+        ['Bestaand Team', 'Anna', 'Vermeersch'],
+    ]);
+
+    $importDto = new ImportWorkersData(filePath: $csvPath, originalName: 'reuse.csv');
+    $importResult = app(ImportWorkersAction::class)->handle($importDto, $tenant->id, $user->id);
+
+    $deleteDto = new DeleteWorkerImportBatchData(importBatchId: $importResult['batch_id']);
+    $deleteResult = app(DeleteWorkerImportBatchAction::class)->handle($deleteDto, $tenant->id, $user->id);
+
+    expect($deleteResult['success'])->toBeTrue();
+    expect($deleteResult['deleted_count'])->toBe(1);
+    expect($deleteResult['deleted_team_count'])->toBe(0);
+    expect(InternalTeam::where('tenant_id', $tenant->id)->where('name', 'Bestaand Team')->exists())->toBeTrue();
+    expect(Worker::where('tenant_id', $tenant->id)->where('internal_team_id', $existingTeam->id)->count())->toBe(1);
+
+    unlink($csvPath);
+});
+
 // ---------------------------------------------------------------------------
 // Scenario 4: Undo — workers zonder devices worden verwijderd
 // ---------------------------------------------------------------------------

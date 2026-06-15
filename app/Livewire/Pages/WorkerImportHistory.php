@@ -33,15 +33,28 @@ class WorkerImportHistory extends Component
         $result = $deleteBatch->handle($dto, $tenantId, (int) auth()->id());
 
         if ($result['success']) {
+            $teamsDeleted = (int) ($result['deleted_team_count'] ?? 0);
+
             if ($result['preserved_count'] > 0) {
-                session()->flash('success', __('team.import_history.partially_deleted', [
-                    'deleted'   => $result['deleted_count'],
-                    'preserved' => $result['preserved_count'],
-                ]));
+                session()->flash('success', $teamsDeleted > 0
+                    ? __('team.import_history.partially_deleted_with_teams', [
+                        'deleted'   => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                        'teams'     => $teamsDeleted,
+                    ])
+                    : __('team.import_history.partially_deleted', [
+                        'deleted'   => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                    ]));
             } else {
-                session()->flash('success', __('team.import_history.fully_deleted', [
-                    'count' => $result['deleted_count'],
-                ]));
+                session()->flash('success', $teamsDeleted > 0
+                    ? __('team.import_history.fully_deleted_with_teams', [
+                        'count' => $result['deleted_count'],
+                        'teams' => $teamsDeleted,
+                    ])
+                    : __('team.import_history.fully_deleted', [
+                        'count' => $result['deleted_count'],
+                    ]));
             }
         } else {
             session()->flash('error', $result['errors'][0] ?? __('team.import_history.delete_failed'));

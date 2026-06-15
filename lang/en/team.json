@@ -106,7 +106,7 @@
     },
     "import_history": {
         "title": "Recent CSV imports",
-        "hint": "Undo only removes workers without a linked device.",
+        "hint": "Undo removes workers without a linked device and empty teams created by the import.",
         "unknown_file": "Unknown file",
         "worker_count": ":count worker(s)",
         "confirm_delete": "Delete :count worker(s) without a device?",
@@ -116,6 +116,8 @@
         "nothing_deletable": "No workers in this import can be deleted.",
         "partially_deleted": ":deleted worker(s) deleted. :preserved worker(s) with devices were kept.",
         "fully_deleted": ":count worker(s) deleted.",
+        "fully_deleted_with_teams": ":count worker(s) and :teams empty team deleted.",
+        "partially_deleted_with_teams": ":deleted worker(s) deleted. :preserved worker(s) with devices were kept. :teams empty team deleted.",
         "delete_failed": "An error occurred while deleting."
     },
     "qr": {

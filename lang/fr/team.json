@@ -106,7 +106,7 @@
     },
     "import_history": {
         "title": "Imports CSV récents",
-        "hint": "L'annulation ne supprime que les intervenants sans appareil lié.",
+        "hint": "L'annulation supprime les intervenants sans appareil lié et les équipes vides créées par l'import.",
         "unknown_file": "Fichier inconnu",
         "worker_count": ":count intervenant(s)",
         "confirm_delete": "Supprimer :count intervenant(s) sans appareil ?",
@@ -116,6 +116,8 @@
         "nothing_deletable": "Aucun intervenant de cet import ne peut être supprimé.",
         "partially_deleted": ":deleted intervenant(s) supprimé(s). :preserved intervenant(s) avec appareils conservés.",
         "fully_deleted": ":count intervenant(s) supprimé(s).",
+        "fully_deleted_with_teams": ":count intervenant(s) et :teams équipe vide supprimée(s).",
+        "partially_deleted_with_teams": ":deleted intervenant(s) supprimé(s). :preserved intervenant(s) avec appareils conservés. :teams équipe vide supprimée(s).",
         "delete_failed": "Une erreur s'est produite lors de la suppression."
     },
     "qr": {

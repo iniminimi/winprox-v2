@@ -129,12 +129,17 @@ class ImportWorkersAction
         DB::beginTransaction();
         try {
             $importedCount = 0;
+            $createdTeamIds = [];
 
             foreach ($validatedRows as $row) {
                 $team = InternalTeam::firstOrCreate(
                     ['tenant_id' => $tenantId, 'name' => trim($row['team_name'])],
                     ['is_active' => true]
                 );
+
+                if ($team->wasRecentlyCreated) {
+                    $createdTeamIds[$team->id] = $team->id;
+                }
 
                 Worker::create([
                     'tenant_id'       => $tenantId,
@@ -159,9 +164,10 @@ class ImportWorkersAction
                 modelType: Worker::class,
                 modelId: null,
                 payload: [
-                    'count'     => $importedCount,
-                    'batch_id'  => $batchId,
-                    'file_name' => $data->originalName,
+                    'count'            => $importedCount,
+                    'batch_id'         => $batchId,
+                    'file_name'        => $data->originalName,
+                    'created_team_ids' => array_values($createdTeamIds),
                 ],
             );
 
