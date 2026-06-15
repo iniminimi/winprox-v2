@@ -1,13 +1,13 @@
 {
     "social": {
-        "og_title": "WinProx",
-        "og_description": "Smart facility management for every organisation. Issues, tasks, QR codes and teams in one platform."
+        "og_title": "WinProx: Smart Facility Management",
+        "og_description": "Manage reports and tasks in one overview. QR reporting, teams and workers without complex logins."
     },
-    "title": "WinProx",
-    "tagline": "Smart facility management for every organisation.",
-    "bullet_1": "Issues and tasks in one overview.",
-    "bullet_2": "QR codes for direct reporting from the field.",
-    "bullet_3": "Teams and workers without extra logins.",
+    "title": "WinProx: Smart Facility Management",
+    "tagline": "Manage all your reports and tasks effortlessly in one intuitive overview.",
+    "bullet_1": "Report instantly: Scan a QR code and report incidents directly from the location.",
+    "bullet_2": "Seamless collaboration: Give teams and workers access without complex logins.",
+    "bullet_3": "Get started now: See how WinProx speeds up your workflow.",
     "cta": "Visit winprox.app",
     "video": {
         "eyebrow": "Video",

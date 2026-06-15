@@ -1,13 +1,13 @@
 {
     "social": {
-        "og_title": "WinProx",
-        "og_description": "Intelligentes Facility-Management für jedes Unternehmen. Meldungen, Aufgaben, QR-Codes und Teams in einer Plattform."
+        "og_title": "WinProx: Intelligentes Facility Management",
+        "og_description": "Meldungen und Aufgaben in einer Übersicht. QR-Meldungen, Teams und Mitarbeiter ohne komplexe Logins."
     },
-    "title": "WinProx",
-    "tagline": "Intelligentes Facility-Management für jedes Unternehmen.",
-    "bullet_1": "Meldungen und Aufgaben in einer Übersicht.",
-    "bullet_2": "QR-Codes für direkte Meldungen aus dem Feld.",
-    "bullet_3": "Teams und Mitarbeiter ohne zusätzliche Logins.",
+    "title": "WinProx: Intelligentes Facility Management",
+    "tagline": "Verwalten Sie alle Meldungen und Aufgaben mühelos in einer intuitiven Übersicht.",
+    "bullet_1": "Direkt melden: QR-Code scannen und Vorfälle direkt vor Ort melden.",
+    "bullet_2": "Nahtlose Zusammenarbeit: Teams und Mitarbeitern Zugang ohne komplexe Logins geben.",
+    "bullet_3": "Sofort loslegen: Sehen Sie, wie WinProx Ihren Workflow beschleunigt.",
     "cta": "winprox.app besuchen",
     "video": {
         "eyebrow": "Video",

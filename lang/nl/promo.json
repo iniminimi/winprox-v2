@@ -1,13 +1,13 @@
 {
     "social": {
-        "og_title": "WinProx",
-        "og_description": "Slim facility management voor elke organisatie. Meldingen, taken, QR-codes en teams in één platform."
+        "og_title": "WinProx: Slim Facility Management",
+        "og_description": "Beheer meldingen en taken in één overzicht. QR-rapportage, teams en workers zonder complexe logins."
     },
-    "title": "WinProx",
-    "tagline": "Slim facility management voor elke organisatie.",
-    "bullet_1": "Meldingen en taken in één overzicht.",
-    "bullet_2": "QR-codes voor directe rapportage vanuit het veld.",
-    "bullet_3": "Teams en workers zonder extra logins.",
+    "title": "WinProx: Slim Facility Management",
+    "tagline": "Beheer al je meldingen en taken moeiteloos in één intuïtief overzicht.",
+    "bullet_1": "Direct rapporteren: Scan een QR-code en meld incidenten direct vanaf de locatie.",
+    "bullet_2": "Naadloze samenwerking: Geef teams en medewerkers toegang zonder complexe logins.",
+    "bullet_3": "Direct aan de slag: Bekijk hoe WinProx jouw workflow versnelt.",
     "cta": "Bekijk winprox.app",
     "video": {
         "eyebrow": "Video",

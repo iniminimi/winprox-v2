@@ -1,13 +1,13 @@
 {
     "social": {
-        "og_title": "WinProx",
-        "og_description": "Gestion d'installations intelligente pour chaque organisation. Signalements, tâches, QR et équipes en une plateforme."
+        "og_title": "WinProx : Gestion d'installations intelligente",
+        "og_description": "Signalements et tâches dans un aperçu. QR, équipes et travailleurs sans connexions complexes."
     },
-    "title": "WinProx",
-    "tagline": "Gestion d'installations intelligente pour chaque organisation.",
-    "bullet_1": "Signalements et tâches dans un aperçu.",
-    "bullet_2": "Codes QR pour le signalement direct sur le terrain.",
-    "bullet_3": "Équipes et travailleurs sans connexions supplémentaires.",
+    "title": "WinProx : Gestion d'installations intelligente",
+    "tagline": "Gérez tous vos signalements et tâches sans effort dans un aperçu intuitif unique.",
+    "bullet_1": "Signalement direct : Scannez un code QR et signalez les incidents directement sur site.",
+    "bullet_2": "Collaboration fluide : Donnez aux équipes et aux travailleurs un accès sans connexions complexes.",
+    "bullet_3": "Démarrez tout de suite : Découvrez comment WinProx accélère votre workflow.",
     "cta": "Voir winprox.app",
     "video": {
         "eyebrow": "Vidéo",
