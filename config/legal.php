@@ -14,7 +14,7 @@ return [
             'trim',
             explode("\n", (string) env('LEGAL_OPERATOR_ADDRESS', "Pannenstraat 223\n8301 Knokke-Heist\nBelgië"))
         ))),
-        'vat_label' => env('LEGAL_OPERATOR_VAT_LABEL', 'in aanvraag'),
+        'vat_label' => env('LEGAL_OPERATOR_VAT_LABEL', 'BE 0743 862 316'),
         'enterprise_number' => env('LEGAL_OPERATOR_ENTERPRISE_NUMBER'),
         'email' => env('LEGAL_OPERATOR_EMAIL', 'info@winprox.app'),
     ],
