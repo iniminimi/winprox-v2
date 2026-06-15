@@ -63,9 +63,27 @@
             <div class="wp-welcome-section-inner">
                 <span class="wp-welcome-eyebrow">{{ __('welcome.video.title') }}</span>
                 <h2 id="welcome-video-title" class="wp-welcome-h2">{{ __('welcome.video.title') }}</h2>
-                <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.video.placeholder') }}">
-                    <p>{{ __('welcome.video.placeholder') }}</p>
-                </div>
+                @php
+                    $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
+                    $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
+                @endphp
+                @if ($welcomeVideoAvailable)
+                    <div class="wp-welcome-video">
+                        <video
+                            class="wp-welcome-video-player"
+                            controls
+                            preload="metadata"
+                            playsinline
+                            aria-label="{{ __('welcome.video.title') }}"
+                        >
+                            <source src="{{ asset($welcomeVideoRel) }}" type="video/mp4">
+                        </video>
+                    </div>
+                @else
+                    <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.video.placeholder') }}">
+                        <p>{{ __('welcome.video.placeholder') }}</p>
+                    </div>
+                @endif
             </div>
         </section>
 
