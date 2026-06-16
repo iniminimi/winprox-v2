@@ -90,7 +90,7 @@
             "name": "Unit-Name",
             "description": "Beschreibung",
             "category": "Kategorie",
-            "public_reports_enabled": "Meldungen über das QR-Portal"
+            "public_reports_enabled": "Besucher können über das QR-Portal eine Meldung erstellen"
         },
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",

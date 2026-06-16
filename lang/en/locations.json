@@ -90,7 +90,7 @@
             "name": "Unit name",
             "description": "Description",
             "category": "Category",
-            "public_reports_enabled": "Allow reports via QR portal"
+            "public_reports_enabled": "Visitors can submit a report via the QR portal"
         },
         "edit": {
             "photos_label": "Photos of the QR link",

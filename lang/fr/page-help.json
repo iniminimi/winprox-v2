@@ -177,7 +177,7 @@
             "actions": [
                 {
                     "label": "Ajouter une unité",
-                    "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue."
+                    "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue. Autorisez ou non les signalements par unité."
                 },
                 {
                     "label": "Unités en masse",

@@ -177,7 +177,7 @@
             "actions": [
                 {
                     "label": "Add unit",
-                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in."
+                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
                 },
                 {
                     "label": "Bulk units",

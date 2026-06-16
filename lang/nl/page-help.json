@@ -177,7 +177,7 @@
             "actions": [
                 {
                     "label": "Unit toevoegen",
-                    "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt."
+                    "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
                 },
                 {
                     "label": "Bulk units",

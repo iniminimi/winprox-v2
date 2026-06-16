@@ -90,7 +90,7 @@
             "name": "Nom de l'unité",
             "description": "Description",
             "category": "Catégorie",
-            "public_reports_enabled": "Signalement via le portail QR"
+            "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR"
         },
         "edit": {
             "photos_label": "Photos de la liaison QR",

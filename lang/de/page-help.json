@@ -177,7 +177,7 @@
             "actions": [
                 {
                     "label": "Unit hinzufügen",
-                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist."
+                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
                 },
                 {
                     "label": "Bulk-Units",
