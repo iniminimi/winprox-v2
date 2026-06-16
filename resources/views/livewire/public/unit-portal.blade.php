@@ -485,7 +485,9 @@
                 @forelse ($announcements as $announcement)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ann-{{ $announcement->id }}">
                         <p class="wp-doc-title">{{ $announcement->title }}</p>
-                        <p class="wp-text-body">{{ $announcement->body }}</p>
+                        @if ($announcement->body !== $announcement->title)
+                            <p class="wp-text-body">{{ $announcement->body }}</p>
+                        @endif
                         <p class="wp-muted">{{ $announcement->published_at?->isoFormat('D MMM YYYY') }}</p>
                     </div>
                 @empty
