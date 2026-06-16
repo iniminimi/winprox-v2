@@ -19,6 +19,7 @@ class UnitFactory extends Factory
             'location_id' => Location::factory(),
             'name' => fake()->bothify('Asset ##??'),
             'is_active' => true,
+            'public_reports_enabled' => true,
         ];
     }
 

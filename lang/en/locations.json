@@ -89,7 +89,8 @@
         "fields": {
             "name": "Unit name",
             "description": "Description",
-            "category": "Category"
+            "category": "Category",
+            "public_reports_enabled": "Allow reports via QR portal"
         },
         "edit": {
             "photos_label": "Photos of the QR link",

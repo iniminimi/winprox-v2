@@ -214,6 +214,11 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
+                <label class="wp-check wp-check--boxed">
+                    <input type="checkbox" wire:model="unitPublicReportsEnabled">
+                    <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
+                </label>
+
                 @if ($editingUnitId && $this->editingUnit)
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;

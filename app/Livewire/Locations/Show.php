@@ -76,6 +76,8 @@ class Show extends Component
 
     public ?int $unitCategoryId = null;
 
+    public bool $unitPublicReportsEnabled = true;
+
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
@@ -183,6 +185,7 @@ class Show extends Component
         $this->unitName = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
+        $this->unitPublicReportsEnabled = true;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -197,6 +200,7 @@ class Show extends Component
         $this->unitName = $unit->name;
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
+        $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitPhotos = [];
 
         $this->resetErrorBag();
@@ -211,6 +215,7 @@ class Show extends Component
         $this->unitName = '';
         $this->unitDescription = '';
         $this->unitCategoryId = null;
+        $this->unitPublicReportsEnabled = true;
         $this->unitPhotos = [];
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');
@@ -254,6 +259,7 @@ class Show extends Component
             'unitName' => $rules['name'],
             'unitDescription' => $rules['description'],
             'unitCategoryId' => $rules['category_id'],
+            'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
         ], [
@@ -269,6 +275,7 @@ class Show extends Component
             'name' => $validated['unitName'],
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
+            'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
         ];
 
         if ($this->editingUnitId === null) {

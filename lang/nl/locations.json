@@ -89,7 +89,8 @@
         "fields": {
             "name": "Unitnaam",
             "description": "Beschrijving",
-            "category": "Categorie"
+            "category": "Categorie",
+            "public_reports_enabled": "Melding maken via QR-portaal"
         },
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",

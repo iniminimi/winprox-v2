@@ -27,6 +27,10 @@ class UpdateUnitAction
             'description' => $data['description'] ?? null,
         ];
 
+        if (array_key_exists('public_reports_enabled', $data)) {
+            $payload['public_reports_enabled'] = (bool) $data['public_reports_enabled'];
+        }
+
         if (Schema::hasColumn('units', 'category_id')) {
             $payload['category_id'] = $data['category_id'] ?? null;
         }

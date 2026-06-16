@@ -25,6 +25,9 @@ class CreateUnitAction
             'name' => trim((string) $data['name']),
             'description' => $data['description'] ?? null,
             'is_active' => true,
+            'public_reports_enabled' => array_key_exists('public_reports_enabled', $data)
+                ? (bool) $data['public_reports_enabled']
+                : true,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {

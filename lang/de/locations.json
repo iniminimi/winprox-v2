@@ -89,7 +89,8 @@
         "fields": {
             "name": "Unit-Name",
             "description": "Beschreibung",
-            "category": "Kategorie"
+            "category": "Kategorie",
+            "public_reports_enabled": "Meldungen über das QR-Portal"
         },
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",

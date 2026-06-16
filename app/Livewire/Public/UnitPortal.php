@@ -144,6 +144,10 @@ class UnitPortal extends Component
             return;
         }
 
+        if ($section === 'new' && ! $this->showNewReportSection()) {
+            return;
+        }
+
         if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements'], true)) {
             return;
         }
@@ -191,6 +195,10 @@ class UnitPortal extends Component
             return;
         }
 
+        if (! $this->showNewReportSection()) {
+            return;
+        }
+
         $this->description = trim($this->description);
         $this->reporter_first_name = trim($this->reporter_first_name);
         $this->reporter_last_name = trim($this->reporter_last_name);
@@ -207,6 +215,7 @@ class UnitPortal extends Component
                 'reporter_email' => $this->reporter_email,
             ]),
             $this->photos,
+            $this->authorizedWorker(),
         );
 
         $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
@@ -629,6 +638,7 @@ class UnitPortal extends Component
 
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
+            'showNewReportSection' => $this->showNewReportSection(),
             'worker' => $worker,
             'team' => $team,
             'phase' => $phase,
@@ -706,6 +716,17 @@ class UnitPortal extends Component
         }
 
         return $worker;
+    }
+
+    private function showNewReportSection(): bool
+    {
+        $unit = $this->unit();
+
+        if ($unit->public_reports_enabled) {
+            return true;
+        }
+
+        return $this->authorizedWorker() !== null;
     }
 
     private function canCaptureUnitGps(): bool

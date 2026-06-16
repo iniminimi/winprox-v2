@@ -873,3 +873,35 @@ it('rejects unit photo uploads that exceed the four-photo limit', function () {
 
     expect($unit->fresh()->qrLinkPhotos()->count())->toBe(3);
 });
+
+it('hides the new report tile from public visitors when unit reports are disabled', function () {
+    unitPortalScaffold(['public_reports_enabled' => false]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.new'))
+        ->call('openSection', 'new')
+        ->assertSet('portalSection', 'home')
+        ->set('description', 'Verborgen melding')
+        ->call('submitReport');
+
+    expect(Issue::count())->toBe(0);
+});
+
+it('lets a signed-in worker create a report when public reports are disabled for visitors', function () {
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold(['public_reports_enabled' => false]);
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee(__('portal.tiles.new'))
+        ->set('description', 'Worker melding op info-only unit.')
+        ->call('submitReport')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'issues');
+
+    expect(Issue::count())->toBe(1);
+});

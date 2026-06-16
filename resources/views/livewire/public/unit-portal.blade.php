@@ -211,10 +211,12 @@
             </div>
 
             <div class="wp-tiles">
-                <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
-                    <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
-                    <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
-                </button>
+                @if ($showNewReportSection)
+                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
+                        <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
+                    </button>
+                @endif
                 <button type="button" class="wp-tile" wire:click="openSection('issues')">
                     <span class="wp-tile-title">{{ __('portal.tiles.issues') }} : {{ $issues->count() }}</span>
                 </button>
@@ -290,7 +292,7 @@
         @endif
 
         {{-- ============================ NEW ============================ --}}
-        @if ($portalSection === 'new')
+        @if ($portalSection === 'new' && $showNewReportSection)
             <div data-manual-capture="portal-unit-new" class="wp-stack">
             <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title variant="portal" icon="issues" :title="__('portal.report.title')" />

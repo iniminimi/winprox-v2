@@ -24,11 +24,13 @@ class Unit extends Model
         'name',
         'description',
         'is_active',
+        'public_reports_enabled',
         'background_photo_path',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'public_reports_enabled' => 'boolean',
     ];
 
     protected static function booted(): void

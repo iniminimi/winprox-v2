@@ -39,6 +39,7 @@ class StoreUnitRequest extends FormRequest
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'description' => ['nullable', 'string', 'max:1000'],
             'category_id' => $categoryRules,
+            'public_reports_enabled' => ['boolean'],
         ];
     }
 

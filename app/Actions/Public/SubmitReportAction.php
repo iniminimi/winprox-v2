@@ -5,6 +5,7 @@ namespace App\Actions\Public;
 use App\Actions\Issues\CreateIssueAction;
 use App\Models\Issue;
 use App\Models\Unit;
+use App\Models\Worker;
 use App\Support\IssuePhotoStorage;
 use Illuminate\Http\UploadedFile;
 
@@ -25,8 +26,12 @@ class SubmitReportAction
      * @param  array<string, mixed>  $data
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Unit $unit, array $data, array $photos = []): Issue
+    public function handle(Unit $unit, array $data, array $photos = [], ?Worker $fieldWorker = null): Issue
     {
+        if (! $unit->public_reports_enabled && $fieldWorker === null) {
+            throw new \InvalidArgumentException('public_reports_disabled');
+        }
+
         $unit->loadMissing('category.teams');
         $teamIds = [];
         if ($unit->category !== null) {
