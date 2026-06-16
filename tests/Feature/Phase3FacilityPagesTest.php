@@ -35,8 +35,13 @@ it('toont beschikbare promo-video per locale', function () {
         ->assertSee(__('promo.video.title', [], 'nl'))
         ->assertSee(__('promo.video.items.0.title', [], 'nl'))
         ->assertSee(__('promo.video.items.1.title', [], 'nl'))
+        ->assertSee(__('promo.video.management.title', [], 'nl'))
+        ->assertSee(__('promo.video.management.items.0.title', [], 'nl'))
         ->assertSee('issue_nl_01.mp4', false)
-        ->assertSee('task_nl.mp4', false);
+        ->assertSee('task_nl.mp4', false)
+        ->assertSee('users_edit_qr_nl.mp4', false)
+        ->assertSee('issue_approve_briefing_nl.mp4', false)
+        ->assertSee('unit_categorie_gps_allow_issue_print_qr_nl.mp4', false);
 });
 
 it('toont taalkeuze bovenaan de promo-pagina', function () {

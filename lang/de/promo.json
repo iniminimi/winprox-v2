@@ -25,6 +25,29 @@
                 "title": "Eine Aufgabe abschließen",
                 "description": "So schließen Sie eine zugewiesene Aufgabe vor Ort ab."
             }
-        ]
+        ],
+        "management": {
+            "title": "Verwaltungsportal",
+            "items": [
+                {
+                    "basename": "users_edit_qr",
+                    "suffix": "",
+                    "title": "QR-Portal",
+                    "description": "Benutzer über das QR-Portal aktualisieren."
+                },
+                {
+                    "basename": "issue_approve_briefing",
+                    "suffix": "",
+                    "title": "QR-Portal",
+                    "description": "Freigabe, Briefing und Abschluss über das QR-Portal."
+                },
+                {
+                    "basename": "unit_categorie_gps_allow_issue_print_qr",
+                    "suffix": "",
+                    "title": "Einheitenverwaltung",
+                    "description": "Einheitenkategorien und GPS-Einstellungen verwalten und den QR-Aufkleber drucken."
+                }
+            ]
+        }
     }
 }
