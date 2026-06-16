@@ -28,6 +28,8 @@
             "placeholder_password": "Password",
             "placeholder_password_confirm": "Confirm password",
             "send_account_email": "Send account email immediately with password link",
+            "notify_on_new_issue_email": "Receive an email for every new report",
+            "notify_on_new_issue_email_hint": "Only for reports submitted via the QR portal.",
             "edit_password_hint": "Leave password fields empty to keep the current password.",
             "save": "Save user"
         }

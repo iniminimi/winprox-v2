@@ -34,6 +34,7 @@ class StoreColleagueRequest extends FormRequest
             'password' => ['required', 'string', 'min:8'],
             'password_confirmation' => ['required', 'same:password'],
             'send_account_email' => ['boolean'],
+            'notify_on_new_issue_email' => ['boolean'],
         ];
     }
 

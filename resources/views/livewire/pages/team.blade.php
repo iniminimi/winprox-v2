@@ -227,6 +227,14 @@
                     @else
                         <p class="wp-hint">{{ __('team.colleagues.modal.edit_password_hint') }}</p>
                     @endif
+
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="colleagueNotifyOnNewIssueEmail">
+                        <span>
+                            {{ __('team.colleagues.modal.notify_on_new_issue_email') }}
+                            <br><span class="wp-hint">{{ __('team.colleagues.modal.notify_on_new_issue_email_hint') }}</span>
+                        </span>
+                    </label>
                 </div>
 
                 <div class="wp-modal-foot">

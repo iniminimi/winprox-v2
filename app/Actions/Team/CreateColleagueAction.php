@@ -36,6 +36,9 @@ class CreateColleagueAction
             'locale' => $data['locale'],
             'role' => $data['role'] ?? User::ROLE_EMPLOYEE,
             'password' => $data['password'],
+            'notify_on_new_issue_email' => array_key_exists('notify_on_new_issue_email', $data)
+                ? (bool) $data['notify_on_new_issue_email']
+                : true,
             'is_superuser' => false,
             'is_active' => true,
         ]);
@@ -62,7 +65,7 @@ class CreateColleagueAction
             action: 'user.colleague_created',
             modelType: User::class,
             modelId: (int) $user->id,
-            payload: ['id' => $user->id, 'email' => $user->email, 'role' => $user->role, 'locale' => $user->locale],
+            payload: ['id' => $user->id, 'email' => $user->email, 'role' => $user->role, 'locale' => $user->locale, 'notify_on_new_issue_email' => $user->notify_on_new_issue_email],
         );
 
         return $user;

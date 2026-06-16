@@ -26,5 +26,18 @@
         "link_label": "désabonner ici",
         "settings_hint_html": "Vous pouvez aussi gérer vos préférences e-mail dans vos <a href=\":url\" style=\"color:#059669;font-weight:600;\">Paramètres</a>.",
         "settings_hint_text": "Vous pouvez aussi gérer vos préférences e-mail dans Paramètres : :url"
+    },
+    "new_qr_issue": {
+        "subject": ":tenant — nouveau signalement QR",
+        "html_title": "Nouveau signalement",
+        "heading": "Nouveau signalement QR",
+        "greeting": "Bonjour,",
+        "greeting_name": "Bonjour :name,",
+        "intro": "Un nouveau signalement a été envoyé via le portail QR de :tenant.",
+        "field_location": "Lieu / unité",
+        "field_reporter": "Signalé par",
+        "field_description": "Description",
+        "open_issue": "Voir le signalement",
+        "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
     }
 }

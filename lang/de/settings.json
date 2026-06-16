@@ -69,6 +69,12 @@
             "preview_portal_fallback": "Demo-Standort · Maschine 12"
         }
     },
+    "notifications": {
+        "title": "E-Mail-Benachrichtigungen",
+        "hint": "Persönliche Einstellungen für E-Mails von WinProx.",
+        "new_qr_issue_label": "E-Mail bei jeder neuen Meldung erhalten",
+        "new_qr_issue_hint": "Nur für Meldungen über das QR-Portal."
+    },
     "privacy": {
         "title": "Datenschutz & Datenexport",
         "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",

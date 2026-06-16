@@ -69,6 +69,12 @@
             "preview_portal_fallback": "Demo locatie · Machine 12"
         }
     },
+    "notifications": {
+        "title": "E-mailmeldingen",
+        "hint": "Persoonlijke voorkeuren voor e-mails van WinProx.",
+        "new_qr_issue_label": "Ontvang een e-mail bij elke nieuwe melding",
+        "new_qr_issue_hint": "Alleen voor meldingen via het QR-portaal."
+    },
     "privacy": {
         "title": "Privacy & export van gegevens",
         "hint": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig.",

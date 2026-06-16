@@ -28,6 +28,8 @@
             "placeholder_password": "Passwort",
             "placeholder_password_confirm": "Passwort bestätigen",
             "send_account_email": "Account-E-Mail sofort mit Passwort-Link senden",
+            "notify_on_new_issue_email": "E-Mail bei jeder neuen Meldung erhalten",
+            "notify_on_new_issue_email_hint": "Nur für Meldungen über das QR-Portal.",
             "edit_password_hint": "Passwortfelder leer lassen, um das aktuelle Passwort zu behalten.",
             "save": "Benutzer speichern"
         }

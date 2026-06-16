@@ -99,6 +99,17 @@
         </x-wp-settings-section>
     @endif
 
+    <x-wp-settings-section :title="__('settings.notifications.title')">
+        <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
+        <label class="wp-check wp-check--boxed">
+            <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
+            <span>
+                {{ __('settings.notifications.new_qr_issue_label') }}
+                <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
+            </span>
+        </label>
+    </x-wp-settings-section>
+
     <x-wp-settings-section :title="__('settings.style.title')">
         <p class="wp-muted">{{ __('settings.style.hint') }}</p>
         <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">

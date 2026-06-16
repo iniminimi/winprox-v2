@@ -32,6 +32,7 @@ class User extends Authenticatable
         'name',
         'email',
         'locale',
+        'notify_on_new_issue_email',
         'ui_theme',
         'password',
         'is_superuser',
@@ -78,6 +79,7 @@ class User extends Authenticatable
             'password' => 'hashed',
             'is_superuser' => 'boolean',
             'is_active' => 'boolean',
+            'notify_on_new_issue_email' => 'boolean',
             'role' => 'string',
             'ui_theme' => 'string',
         ];

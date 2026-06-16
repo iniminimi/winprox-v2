@@ -35,6 +35,7 @@ class UpdateColleagueRequest extends FormRequest
             'role' => ['required', Rule::in(User::ROLES)],
             'password' => ['nullable', 'string', 'min:8'],
             'password_confirmation' => ['nullable', 'same:password'],
+            'notify_on_new_issue_email' => ['boolean'],
         ];
     }
 

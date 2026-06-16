@@ -62,6 +62,8 @@ class Team extends Component
     public string $colleaguePasswordConfirmation = '';
     public bool $colleagueSendAccountEmail = true;
 
+    public bool $colleagueNotifyOnNewIssueEmail = true;
+
     // Team (modal)
     public bool $showTeamModal = false;
     public ?int $editingTeamId = null;
@@ -158,6 +160,7 @@ class Team extends Component
         $this->colleaguePassword = '';
         $this->colleaguePasswordConfirmation = '';
         $this->colleagueSendAccountEmail = false;
+        $this->colleagueNotifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
         $this->resetErrorBag();
         $this->showColleagueModal = true;
     }
@@ -211,6 +214,7 @@ class Team extends Component
                 'colleaguePassword' => $rules['password'],
                 'colleaguePasswordConfirmation' => ['required', 'same:colleaguePassword'],
                 'colleagueSendAccountEmail' => $rules['send_account_email'],
+                'colleagueNotifyOnNewIssueEmail' => $rules['notify_on_new_issue_email'],
             ],
             $this->colleagueValidationMessages($messages),
         );
@@ -222,6 +226,7 @@ class Team extends Component
             'role' => $validated['colleagueRole'],
             'password' => $validated['colleaguePassword'],
             'send_account_email' => (bool) $validated['colleagueSendAccountEmail'],
+            'notify_on_new_issue_email' => (bool) $validated['colleagueNotifyOnNewIssueEmail'],
         ];
     }
 
@@ -241,6 +246,7 @@ class Team extends Component
                 'colleagueRole' => $rules['role'],
                 'colleaguePassword' => $rules['password'],
                 'colleaguePasswordConfirmation' => ['nullable', 'required_with:colleaguePassword', 'same:colleaguePassword'],
+                'colleagueNotifyOnNewIssueEmail' => $rules['notify_on_new_issue_email'],
             ],
             $this->colleagueValidationMessages($messages),
         );
@@ -250,6 +256,7 @@ class Team extends Component
             'email' => $validated['colleagueEmail'],
             'locale' => $validated['colleagueLocale'],
             'role' => $validated['colleagueRole'],
+            'notify_on_new_issue_email' => (bool) $validated['colleagueNotifyOnNewIssueEmail'],
         ];
 
         if ($validated['colleaguePassword'] !== '') {
@@ -308,11 +315,13 @@ class Team extends Component
             'colleaguePassword',
             'colleaguePasswordConfirmation',
             'colleagueSendAccountEmail',
+            'colleagueNotifyOnNewIssueEmail',
             'editingColleagueId',
         ]);
         $this->colleagueLocale = (string) (auth()->user()?->locale ?: config('locales.default', 'nl'));
         $this->colleagueRole = User::ROLE_EMPLOYEE;
         $this->colleagueSendAccountEmail = true;
+        $this->colleagueNotifyOnNewIssueEmail = true;
         $this->resetErrorBag();
     }
 

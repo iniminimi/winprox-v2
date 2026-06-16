@@ -26,5 +26,18 @@
         "link_label": "unsubscribe here",
         "settings_hint_html": "You can also manage email preferences in your <a href=\":url\" style=\"color:#059669;font-weight:600;\">Settings</a>.",
         "settings_hint_text": "You can also manage email preferences in Settings: :url"
+    },
+    "new_qr_issue": {
+        "subject": ":tenant — new QR report",
+        "html_title": "New report",
+        "heading": "New QR report",
+        "greeting": "Hello,",
+        "greeting_name": "Hello :name,",
+        "intro": "A new report was submitted via the QR portal of :tenant.",
+        "field_location": "Location / unit",
+        "field_reporter": "Reported by",
+        "field_description": "Description",
+        "open_issue": "View report",
+        "link_fallback": "If the button does not work, copy this link:"
     }
 }

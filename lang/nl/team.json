@@ -28,6 +28,8 @@
             "placeholder_password": "Wachtwoord",
             "placeholder_password_confirm": "Bevestig wachtwoord",
             "send_account_email": "Stuur meteen accountmail met wachtwoordlink",
+            "notify_on_new_issue_email": "Ontvang een e-mail bij elke nieuwe melding",
+            "notify_on_new_issue_email_hint": "Alleen voor meldingen via het QR-portaal.",
             "edit_password_hint": "Laat wachtwoordvelden leeg om het huidige wachtwoord te behouden.",
             "save": "Gebruiker opslaan"
         }

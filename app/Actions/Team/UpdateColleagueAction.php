@@ -21,6 +21,10 @@ class UpdateColleagueAction
             'role' => $data['role'] ?? $user->role,
         ];
 
+        if (array_key_exists('notify_on_new_issue_email', $data)) {
+            $attributes['notify_on_new_issue_email'] = (bool) $data['notify_on_new_issue_email'];
+        }
+
         if (! empty($data['password'])) {
             $attributes['password'] = $data['password'];
         }
@@ -35,7 +39,7 @@ class UpdateColleagueAction
             action: 'user.colleague_updated',
             modelType: User::class,
             modelId: (int) $fresh->id,
-            payload: ['id' => $fresh->id, 'email' => $fresh->email, 'role' => $fresh->role],
+            payload: ['id' => $fresh->id, 'email' => $fresh->email, 'role' => $fresh->role, 'notify_on_new_issue_email' => $fresh->notify_on_new_issue_email],
         );
 
         return $fresh;

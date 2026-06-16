@@ -26,5 +26,18 @@
         "link_label": "hier uitschrijven",
         "settings_hint_html": "Je kunt e-mailvoorkeuren ook beheren in je <a href=\":url\" style=\"color:#059669;font-weight:600;\">Instellingen</a>.",
         "settings_hint_text": "Je kunt e-mailvoorkeuren ook beheren in je Instellingen: :url"
+    },
+    "new_qr_issue": {
+        "subject": ":tenant — nieuwe QR-melding",
+        "html_title": "Nieuwe melding",
+        "heading": "Nieuwe QR-melding",
+        "greeting": "Hallo,",
+        "greeting_name": "Hallo :name,",
+        "intro": "Er is een nieuwe melding binnengekomen via het QR-portaal van :tenant.",
+        "field_location": "Locatie / unit",
+        "field_reporter": "Gemeld door",
+        "field_description": "Omschrijving",
+        "open_issue": "Melding bekijken",
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
     }
 }

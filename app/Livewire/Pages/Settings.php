@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
+use App\Actions\Settings\UpdateUserNotifyOnNewIssueEmailAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
 use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
@@ -77,6 +78,8 @@ class Settings extends Component
 
     public string $uiTheme = '';
 
+    public bool $notifyOnNewIssueEmail = true;
+
     public bool $canManageOrganisation = false;
 
     public bool $canUpdateTenantBranding = false;
@@ -92,6 +95,7 @@ class Settings extends Component
         $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);
         $this->canUpdateTenantBranding = $user->can('updateTenantBranding', $tenant);
         $this->uiTheme = $user->uiThemeEnum()->value;
+        $this->notifyOnNewIssueEmail = (bool) $user->notify_on_new_issue_email;
 
         if ($this->canUpdateTenantBranding) {
             $this->fillOrganisationFromTenant($tenant);
@@ -412,6 +416,15 @@ class Settings extends Component
 
         $this->uiTheme = $theme->value;
         $this->dispatch('ui-theme-changed', theme: $theme->value);
+    }
+
+    public function updatedNotifyOnNewIssueEmail(bool $value, UpdateUserNotifyOnNewIssueEmailAction $updatePreference): void
+    {
+        abort_unless($this->resolveTenant() instanceof Tenant, 403);
+
+        $user = auth()->user();
+        $updated = $updatePreference->handle($user, $value, (int) $user->id);
+        $this->notifyOnNewIssueEmail = (bool) $updated->notify_on_new_issue_email;
     }
 
     public function render()

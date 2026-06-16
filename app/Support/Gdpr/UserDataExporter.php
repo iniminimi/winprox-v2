@@ -44,6 +44,7 @@ final class UserDataExporter
             'name' => $user->name,
             'email' => $user->email,
             'role' => $user->role,
+            'notify_on_new_issue_email' => $user->notify_on_new_issue_email,
             'is_active' => $user->is_active,
             'is_superuser' => $user->is_superuser,
             'email_verified_at' => $user->email_verified_at?->toIso8601String(),

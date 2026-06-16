@@ -69,6 +69,12 @@
             "preview_portal_fallback": "Localisation démo · Machine 12"
         }
     },
+    "notifications": {
+        "title": "Notifications par e-mail",
+        "hint": "Préférences personnelles pour les e-mails WinProx.",
+        "new_qr_issue_label": "Recevoir un e-mail pour chaque nouveau signalement",
+        "new_qr_issue_hint": "Uniquement pour les signalements via le portail QR."
+    },
     "privacy": {
         "title": "Confidentialité et export de données",
         "hint": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr.",

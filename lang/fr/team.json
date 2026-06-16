@@ -28,6 +28,8 @@
             "placeholder_password": "Mot de passe",
             "placeholder_password_confirm": "Confirmer le mot de passe",
             "send_account_email": "Envoyer immédiatement l'e-mail du compte avec lien de mot de passe",
+            "notify_on_new_issue_email": "Recevoir un e-mail pour chaque nouveau signalement",
+            "notify_on_new_issue_email_hint": "Uniquement pour les signalements via le portail QR.",
             "edit_password_hint": "Laissez les champs mot de passe vides pour conserver le mot de passe actuel.",
             "save": "Enregistrer l'utilisateur"
         }

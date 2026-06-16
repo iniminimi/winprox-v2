@@ -69,6 +69,12 @@
             "preview_portal_fallback": "Demo location · Machine 12"
         }
     },
+    "notifications": {
+        "title": "Email notifications",
+        "hint": "Personal preferences for emails from WinProx.",
+        "new_qr_issue_label": "Receive an email for every new report",
+        "new_qr_issue_hint": "Only for reports submitted via the QR portal."
+    },
     "privacy": {
         "title": "Privacy & data export",
         "hint": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",
