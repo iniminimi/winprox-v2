@@ -107,13 +107,30 @@ it('laat een admin een categorie bewerken via de sectie', function () {
         ->set('showCategoriesSection', true)
         ->call('openEditCategory', $category->id)
         ->assertSet('editingCategoryId', $category->id)
+        ->assertSet('showCategoriesModal', true)
         ->assertSet('categoryName', 'Oud')
         ->set('categoryName', 'Nieuw')
         ->set('selectedCategoryTeamIds', [$team->id])
         ->call('saveCategory')
-        ->assertHasNoErrors();
+        ->assertHasNoErrors()
+        ->assertSet('showCategoriesModal', false)
+        ->assertSet('editingCategoryId', null);
 
     expect($category->fresh()->name)->toBe('Nieuw');
+});
+
+it('sluit de categorie-modal na annuleren tijdens bewerken', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Oud']);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->set('showCategoriesSection', true)
+        ->call('openEditCategory', $category->id)
+        ->assertSet('showCategoriesModal', true)
+        ->call('cancelEditCategory')
+        ->assertSet('showCategoriesModal', false)
+        ->assertSet('editingCategoryId', null);
 });
 
 it('laat een admin een categorie verwijderen vanuit de sectie', function () {

@@ -379,8 +379,7 @@ class Index extends Component
 
     public function cancelEditCategory(): void
     {
-        $this->resetCategoryForm();
-        $this->resetErrorBag();
+        $this->closeCategoriesModal();
     }
 
     public function saveCategory(CreateCategoryAction $createCategory, UpdateCategoryAction $updateCategory, SyncCategoryTeamsAction $syncTeams): void
@@ -425,7 +424,7 @@ class Index extends Component
             auth()->user(),
         );
 
-        $this->resetCategoryForm();
+        $this->closeCategoriesModal();
     }
 
     public function deleteCategory(int $categoryId, DeleteCategoryAction $deleteCategory): void
