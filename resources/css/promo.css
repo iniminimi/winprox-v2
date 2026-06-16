@@ -244,6 +244,10 @@
     }
 }
 
+.wp-promo-video-grid--stacked {
+    grid-template-columns: 1fr;
+}
+
 .wp-promo-video-card {
     display: flex;
     flex-direction: column;
@@ -283,6 +287,11 @@
     margin-inline: auto;
     border: none;
     box-shadow: none;
+}
+
+.wp-promo-body .wp-promo-video-grid--stacked .wp-promo-video-card-media .wp-video,
+.wp-promo-body .wp-promo-video-grid--stacked .wp-promo-video-card-media .wp-video-player {
+    width: 100%;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {

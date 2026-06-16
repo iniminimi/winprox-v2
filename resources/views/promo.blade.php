@@ -82,7 +82,7 @@
                                 {{ __('promo.video.beheerportaal.title') }}
                             </h2>
 
-                            <div class="wp-promo-video-grid">
+                            <div class="wp-promo-video-grid wp-promo-video-grid--stacked">
                                 @foreach ($beheerportaalVideos as $item)
                                     <article class="wp-promo-video-card wp-card">
                                         <div class="wp-card-pad">
