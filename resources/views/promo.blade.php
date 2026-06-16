@@ -1,18 +1,18 @@
 @php
     $locale = app()->getLocale();
-    $promoVideos = collect(__('promo.video.items'))->filter(function (array $item) use ($locale): bool {
-        $suffix = $item['suffix'] ?? '_01';
-        $rel = "video/{$locale}/{$item['basename']}_{$locale}{$suffix}.mp4";
 
-        return is_file(public_path($rel));
-    });
+    $promoVideosFor = function (array $items) use ($locale) {
+        return collect($items)->filter(function (array $item) use ($locale): bool {
+            $suffix = $item['suffix'] ?? '_01';
+            $rel = "video/{$locale}/{$item['basename']}_{$locale}{$suffix}.mp4";
 
-    $managementVideos = collect(__('promo.video.management.items'))->filter(function (array $item) use ($locale): bool {
-        $suffix = $item['suffix'] ?? '_01';
-        $rel = "video/{$locale}/{$item['basename']}_{$locale}{$suffix}.mp4";
+            return is_file(public_path($rel));
+        });
+    };
 
-        return is_file(public_path($rel));
-    });
+    $qrPortalVideos = $promoVideosFor(__('promo.video.qr_portal.items'));
+    $beheerportaalVideos = $promoVideosFor(__('promo.video.beheerportaal.items'));
+    $hasPromoVideos = $qrPortalVideos->isNotEmpty() || $beheerportaalVideos->isNotEmpty();
 @endphp
 <x-layouts.public
     :title="__('promo.title')"
@@ -41,88 +41,62 @@
             <div class="wp-promo-panel-glow" aria-hidden="true"></div>
         </div>
 
-        @if ($promoVideos->isNotEmpty())
+        @if ($hasPromoVideos)
             <div class="wp-promo-panel-glass">
                 <div class="wp-stack">
                     <section class="wp-promo-video" aria-labelledby="promo-video-title">
                         <p class="wp-promo-video-eyebrow">{{ __('promo.video.eyebrow') }}</p>
                         <h2 id="promo-video-title" class="wp-section-title">{{ __('promo.video.title') }}</h2>
                         <p class="wp-promo-video-lead wp-muted">{{ __('promo.video.lead') }}</p>
-
-                        <div class="wp-promo-video-grid">
-                            @foreach ($promoVideos as $item)
-                                <article class="wp-promo-video-card wp-card">
-                                    <div class="wp-card-pad">
-                                        <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
-                                        <p class="wp-muted">{{ $item['description'] }}</p>
-                                    </div>
-                                    <div class="wp-promo-video-card-media">
-                                        @include('partials.wp-locale-video', [
-                                            'basename' => $item['basename'],
-                                            'suffix' => $item['suffix'] ?? '_01',
-                                            'title' => $item['title'],
-                                        ])
-                                    </div>
-                                </article>
-                            @endforeach
-                        </div>
                     </section>
 
-                    @if ($managementVideos->isNotEmpty())
-                        <section class="wp-promo-video" aria-labelledby="promo-management-video-title">
-                            <h2 id="promo-management-video-title" class="wp-section-title">
-                                {{ __('promo.video.management.title') }}
+                    @if ($qrPortalVideos->isNotEmpty())
+                        <section class="wp-promo-video" aria-labelledby="promo-qr-portal-title">
+                            <h2 id="promo-qr-portal-title" class="wp-section-title">
+                                {{ __('promo.video.qr_portal.title') }}
                             </h2>
 
-                            @php
-                                $managementItems = $managementVideos->values();
-                                $qrPortalItems = $managementItems->slice(0, 2);
-                                $beheerPortalItems = $managementItems->slice(2);
-                                $qrPortalLabel = $qrPortalItems->first()['title'] ?? 'QR-portaal';
-                            @endphp
+                            <div class="wp-promo-video-grid">
+                                @foreach ($qrPortalVideos as $item)
+                                    <article class="wp-promo-video-card wp-card">
+                                        <div class="wp-card-pad">
+                                            <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
+                                            <p class="wp-muted">{{ $item['description'] }}</p>
+                                        </div>
+                                        <div class="wp-promo-video-card-media">
+                                            @include('partials.wp-locale-video', [
+                                                'basename' => $item['basename'],
+                                                'suffix' => $item['suffix'] ?? '_01',
+                                                'title' => $item['title'],
+                                            ])
+                                        </div>
+                                    </article>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
 
-                            <div class="wp-stack">
-                                @if ($qrPortalItems->isNotEmpty())
-                                    <p class="wp-promo-video-eyebrow">{{ $qrPortalLabel }}</p>
+                    @if ($beheerportaalVideos->isNotEmpty())
+                        <section class="wp-promo-video" aria-labelledby="promo-beheerportaal-title">
+                            <h2 id="promo-beheerportaal-title" class="wp-section-title">
+                                {{ __('promo.video.beheerportaal.title') }}
+                            </h2>
 
-                                    <div class="wp-promo-video-grid">
-                                        @foreach ($qrPortalItems as $item)
-                                            <article class="wp-promo-video-card wp-card">
-                                                <div class="wp-card-pad">
-                                                    <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
-                                                    <p class="wp-muted">{{ $item['description'] }}</p>
-                                                </div>
-                                                <div class="wp-promo-video-card-media">
-                                                    @include('partials.wp-locale-video', [
-                                                        'basename' => $item['basename'],
-                                                        'suffix' => $item['suffix'] ?? '_01',
-                                                        'title' => $item['title'],
-                                                    ])
-                                                </div>
-                                            </article>
-                                        @endforeach
-                                    </div>
-                                @endif
-
-                                @if ($beheerPortalItems->isNotEmpty())
-                                    <div class="wp-promo-video-grid">
-                                        @foreach ($beheerPortalItems as $item)
-                                            <article class="wp-promo-video-card wp-card">
-                                                <div class="wp-card-pad">
-                                                    <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
-                                                    <p class="wp-muted">{{ $item['description'] }}</p>
-                                                </div>
-                                                <div class="wp-promo-video-card-media">
-                                                    @include('partials.wp-locale-video', [
-                                                        'basename' => $item['basename'],
-                                                        'suffix' => $item['suffix'] ?? '_01',
-                                                        'title' => $item['title'],
-                                                    ])
-                                                </div>
-                                            </article>
-                                        @endforeach
-                                    </div>
-                                @endif
+                            <div class="wp-promo-video-grid">
+                                @foreach ($beheerportaalVideos as $item)
+                                    <article class="wp-promo-video-card wp-card">
+                                        <div class="wp-card-pad">
+                                            <p class="wp-promo-video-card-title">{{ $item['description'] }}</p>
+                                        </div>
+                                        <div class="wp-promo-video-card-media">
+                                            @include('partials.wp-locale-video', [
+                                                'basename' => $item['basename'],
+                                                'suffix' => $item['suffix'] ?? '_01',
+                                                'title' => $item['description'],
+                                            ])
+                                        </div>
+                                    </article>
+                                @endforeach
                             </div>
                         </section>
                     @endif

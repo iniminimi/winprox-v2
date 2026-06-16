@@ -13,38 +13,38 @@
         "eyebrow": "Video",
         "title": "Ontdek WinProx in actie",
         "lead": "Korte filmpjes over het dagelijks gebruik van het platform.",
-        "items": [
-            {
-                "basename": "issue",
-                "title": "Een melding maken",
-                "description": "Zo geef je via de QR-code een melding door op locatie."
-            },
-            {
-                "basename": "task",
-                "suffix": "",
-                "title": "Een taak afhandelen",
-                "description": "Zo werk je een toegewezen taak af in het veld."
-            }
-        ],
-        "management": {
+        "qr_portal": {
+            "title": "QR-portaal",
+            "items": [
+                {
+                    "basename": "issue",
+                    "title": "Een melding maken",
+                    "description": "Zo geef je via de QR-code een melding door op locatie."
+                },
+                {
+                    "basename": "task",
+                    "suffix": "",
+                    "title": "Een taak afhandelen",
+                    "description": "Zo werk je een toegewezen taak af in het veld."
+                }
+            ]
+        },
+        "beheerportaal": {
             "title": "Beheerportaal",
             "items": [
                 {
                     "basename": "users_edit_qr",
                     "suffix": "",
-                    "title": "QR-portaal",
                     "description": "Beheer gebruikers in het beheerportaal."
                 },
                 {
                     "basename": "issue_approve_briefing",
                     "suffix": "",
-                    "title": "QR-portaal",
                     "description": "Meldingen goedkeuren."
                 },
                 {
                     "basename": "unit_categorie_gps_allow_issue_print_qr",
                     "suffix": "",
-                    "title": "Beheerportaal",
                     "description": "Categorieen en units beheren."
                 }
             ]

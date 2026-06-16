@@ -13,39 +13,39 @@
         "eyebrow": "Vidéo",
         "title": "Découvrez WinProx en action",
         "lead": "Courtes vidéos sur l'utilisation quotidienne de la plateforme.",
-        "items": [
-            {
-                "basename": "issue",
-                "title": "Faire un signalement",
-                "description": "Comment transmettre un signalement sur site via le code QR."
-            },
-            {
-                "basename": "task",
-                "suffix": "",
-                "title": "Traiter une tâche",
-                "description": "Comment finaliser une tâche assignée sur le terrain."
-            }
-        ],
-        "management": {
+        "qr_portal": {
+            "title": "Portail QR",
+            "items": [
+                {
+                    "basename": "issue",
+                    "title": "Faire un signalement",
+                    "description": "Comment transmettre un signalement sur site via le code QR."
+                },
+                {
+                    "basename": "task",
+                    "suffix": "",
+                    "title": "Traiter une tâche",
+                    "description": "Comment finaliser une tâche assignée sur le terrain."
+                }
+            ]
+        },
+        "beheerportaal": {
             "title": "Portail de gestion",
             "items": [
                 {
                     "basename": "users_edit_qr",
                     "suffix": "",
-                    "title": "Portail QR",
-                    "description": "Mettez à jour les utilisateurs via le portail QR."
+                    "description": "Gérez les utilisateurs dans le portail de gestion."
                 },
                 {
                     "basename": "issue_approve_briefing",
                     "suffix": "",
-                    "title": "Portail QR",
-                    "description": "Validez, brief et clôturez via le portail QR."
+                    "description": "Valider les signalements."
                 },
                 {
                     "basename": "unit_categorie_gps_allow_issue_print_qr",
                     "suffix": "",
-                    "title": "Gestion des unités",
-                    "description": "Gérez les catégories d’unités et les réglages GPS, puis imprimez l’étiquette QR."
+                    "description": "Gérer les catégories et les unités."
                 }
             ]
         }
