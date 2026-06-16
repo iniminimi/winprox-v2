@@ -74,22 +74,55 @@
                                 {{ __('promo.video.management.title') }}
                             </h2>
 
-                            <div class="wp-promo-video-grid">
-                                @foreach ($managementVideos as $item)
-                                    <article class="wp-promo-video-card wp-card">
-                                        <div class="wp-card-pad">
-                                            <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
-                                            <p class="wp-muted">{{ $item['description'] }}</p>
-                                        </div>
-                                        <div class="wp-promo-video-card-media">
-                                            @include('partials.wp-locale-video', [
-                                                'basename' => $item['basename'],
-                                                'suffix' => $item['suffix'] ?? '_01',
-                                                'title' => $item['title'],
-                                            ])
-                                        </div>
-                                    </article>
-                                @endforeach
+                            @php
+                                $managementItems = $managementVideos->values();
+                                $qrPortalItems = $managementItems->slice(0, 2);
+                                $beheerPortalItems = $managementItems->slice(2);
+                                $qrPortalLabel = $qrPortalItems->first()['title'] ?? 'QR-portaal';
+                            @endphp
+
+                            <div class="wp-stack">
+                                @if ($qrPortalItems->isNotEmpty())
+                                    <p class="wp-promo-video-eyebrow">{{ $qrPortalLabel }}</p>
+
+                                    <div class="wp-promo-video-grid">
+                                        @foreach ($qrPortalItems as $item)
+                                            <article class="wp-promo-video-card wp-card">
+                                                <div class="wp-card-pad">
+                                                    <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
+                                                    <p class="wp-muted">{{ $item['description'] }}</p>
+                                                </div>
+                                                <div class="wp-promo-video-card-media">
+                                                    @include('partials.wp-locale-video', [
+                                                        'basename' => $item['basename'],
+                                                        'suffix' => $item['suffix'] ?? '_01',
+                                                        'title' => $item['title'],
+                                                    ])
+                                                </div>
+                                            </article>
+                                        @endforeach
+                                    </div>
+                                @endif
+
+                                @if ($beheerPortalItems->isNotEmpty())
+                                    <div class="wp-promo-video-grid">
+                                        @foreach ($beheerPortalItems as $item)
+                                            <article class="wp-promo-video-card wp-card">
+                                                <div class="wp-card-pad">
+                                                    <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
+                                                    <p class="wp-muted">{{ $item['description'] }}</p>
+                                                </div>
+                                                <div class="wp-promo-video-card-media">
+                                                    @include('partials.wp-locale-video', [
+                                                        'basename' => $item['basename'],
+                                                        'suffix' => $item['suffix'] ?? '_01',
+                                                        'title' => $item['title'],
+                                                    ])
+                                                </div>
+                                            </article>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                         </section>
                     @endif

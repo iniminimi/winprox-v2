@@ -33,19 +33,19 @@
                     "basename": "users_edit_qr",
                     "suffix": "",
                     "title": "QR-portaal",
-                    "description": "Pas gebruikers aan via het QR-portaal."
+                    "description": "Beheer gebruikers in het beheerportaal."
                 },
                 {
                     "basename": "issue_approve_briefing",
                     "suffix": "",
                     "title": "QR-portaal",
-                    "description": "Goedkeur, briefing en afhandeling via het QR-portaal."
+                    "description": "Meldingen goedkeuren."
                 },
                 {
                     "basename": "unit_categorie_gps_allow_issue_print_qr",
                     "suffix": "",
-                    "title": "Unitbeheer",
-                    "description": "Beheer categorieën en GPS-instellingen, en print de QR-sticker."
+                    "title": "Beheerportaal",
+                    "description": "Categorieen en units beheren."
                 }
             ]
         }
