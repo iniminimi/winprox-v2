@@ -97,6 +97,7 @@ final class UnitPortalData
         if (! Schema::hasColumn('announcements', 'category_id')) {
             return $query
                 ->where(fn ($q) => $q->where('unit_id', $unit->id)->orWhereNull('unit_id'))
+                ->distinct()
                 ->get();
         }
 
@@ -114,6 +115,7 @@ final class UnitPortalData
                             });
                     });
             })
+            ->distinct()
             ->get();
     }
 
