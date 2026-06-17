@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Public\AssertPublicReportRateLimitAction;
+use App\Actions\Public\RecordPublicReportRateLimitAction;
 use App\Enums\TaskStatus;
 use App\Livewire\Public\UnitPortal;
 use App\Models\Announcement;
@@ -904,4 +906,122 @@ it('lets a signed-in worker create a report when public reports are disabled for
         ->assertSet('portalSection', 'issues');
 
     expect(Issue::count())->toBe(1);
+});
+
+it('blokkeert anonieme burgers na het bereiken van de rate limit per unit', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 2,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 900,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
+    ]);
+
+    unitPortalScaffold();
+
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token']);
+
+    foreach (['Eerste melding met tekst.', 'Tweede melding met tekst.'] as $description) {
+        $component
+            ->call('openSection', 'new')
+            ->set('description', $description)
+            ->call('submitReport')
+            ->assertHasNoErrors();
+    }
+
+    $component
+        ->call('openSection', 'new')
+        ->set('description', 'Derde melding met tekst.')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    expect(Issue::count())->toBe(2);
+});
+
+it('past geen rate limit toe op veldworkers', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 1,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 900,
+    ]);
+
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token']);
+
+    foreach (['Worker melding een.', 'Worker melding twee.'] as $description) {
+        $component
+            ->call('openSection', 'new')
+            ->set('description', $description)
+            ->call('submitReport')
+            ->assertHasNoErrors();
+    }
+
+    expect(Issue::count())->toBe(2);
+});
+
+it('telt alleen succesvolle meldingen mee voor de rate limit', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 1,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 900,
+    ]);
+
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'ab')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Geldige eerste melding.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    expect(Issue::count())->toBe(1);
+});
+
+it('blokkeert via de tenant-brede rate limit', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 50,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 1,
+        'portal.public_report_rate_limit.per_tenant.decay_seconds' => 3600,
+    ]);
+
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Eerste melding met tekst.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Tweede melding met tekst.')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    expect(Issue::count())->toBe(1);
+});
+
+it('assert public report rate limit action gooit bij te veel pogingen', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 1,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 60,
+    ]);
+
+    $assert = app(AssertPublicReportRateLimitAction::class);
+    $record = app(RecordPublicReportRateLimitAction::class);
+
+    $record->handle(1, 1, '127.0.0.1');
+
+    expect(fn () => $assert->handle(1, 1, '127.0.0.1'))
+        ->toThrow(\App\Exceptions\Public\PublicReportRateLimitExceededException::class);
 });

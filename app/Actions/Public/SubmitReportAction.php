@@ -20,16 +20,29 @@ class SubmitReportAction
     public function __construct(
         private CreateIssueAction $createIssue,
         private IssuePhotoStorage $storage,
+        private AssertPublicReportRateLimitAction $assertRateLimit,
+        private RecordPublicReportRateLimitAction $recordRateLimit,
     ) {}
 
     /**
      * @param  array<string, mixed>  $data
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Unit $unit, array $data, array $photos = [], ?Worker $fieldWorker = null): Issue
-    {
+    public function handle(
+        Unit $unit,
+        array $data,
+        array $photos = [],
+        ?Worker $fieldWorker = null,
+        ?string $clientIp = null,
+    ): Issue {
         if (! $unit->public_reports_enabled && $fieldWorker === null) {
             throw new \InvalidArgumentException('public_reports_disabled');
+        }
+
+        $applyRateLimit = $fieldWorker === null && $clientIp !== null && trim($clientIp) !== '';
+
+        if ($applyRateLimit) {
+            $this->assertRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
         }
 
         $unit->loadMissing('category.teams');
@@ -56,6 +69,10 @@ class SubmitReportAction
                     'path' => $this->storage->storePrecompressedCopy($photo),
                 ]);
             }
+        }
+
+        if ($applyRateLimit) {
+            $this->recordRateLimit->handle((int) $unit->tenant_id, (int) $unit->id, $clientIp);
         }
 
         return $issue;

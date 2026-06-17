@@ -3,6 +3,7 @@
 namespace App\Livewire\Public;
 
 use App\Actions\Public\SubmitReportAction;
+use App\Exceptions\Public\PublicReportRateLimitExceededException;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
@@ -206,17 +207,25 @@ class UnitPortal extends Component
 
         $this->validate(ReportIssueRequest::portalRules(), ReportIssueRequest::validationMessages());
 
-        $submitReport->handle(
-            $this->unit(),
-            ReportIssueRequest::issueDataFromInput([
-                'description' => $this->description,
-                'reporter_first_name' => $this->reporter_first_name,
-                'reporter_last_name' => $this->reporter_last_name,
-                'reporter_email' => $this->reporter_email,
-            ]),
-            $this->photos,
-            $this->authorizedWorker(),
-        );
+        try {
+            $submitReport->handle(
+                $this->unit(),
+                ReportIssueRequest::issueDataFromInput([
+                    'description' => $this->description,
+                    'reporter_first_name' => $this->reporter_first_name,
+                    'reporter_last_name' => $this->reporter_last_name,
+                    'reporter_email' => $this->reporter_email,
+                ]),
+                $this->photos,
+                $this->authorizedWorker(),
+                request()->ip(),
+            );
+        } catch (PublicReportRateLimitExceededException $exception) {
+            $minutes = max(1, (int) ceil($exception->retryAfterSeconds / 60));
+            $this->addError('description', __('portal.report.errors.rate_limited', ['minutes' => $minutes]));
+
+            return;
+        }
 
         $this->reset(['description', 'photos', 'reporter_first_name', 'reporter_last_name', 'reporter_email']);
         $this->dispatch('wp-clear-photo-previews');

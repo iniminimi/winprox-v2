@@ -59,7 +59,8 @@
             "photos_image": "Alleen afbeeldingen zijn toegestaan.",
             "photos_size": "Een foto is te groot.",
             "photos_qr_missing": "Er is geen actieve QR-code gekoppeld aan deze unit. De foto's kunnen niet worden opgeslagen.",
-            "photos_failed": "De foto's konden niet worden opgeslagen. Probeer het opnieuw."
+            "photos_failed": "De foto's konden niet worden opgeslagen. Probeer het opnieuw.",
+            "rate_limited": "Je hebt te veel meldingen verstuurd. Probeer het over :minutes minuten opnieuw."
         }
     },
     "worker": {
