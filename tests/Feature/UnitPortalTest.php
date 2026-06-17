@@ -911,6 +911,7 @@ it('lets a signed-in worker create a report when public reports are disabled for
 it('blokkeert anonieme burgers na het bereiken van de rate limit per unit', function () {
     cache()->flush();
     config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 0,
         'portal.public_report_rate_limit.per_unit.max_attempts' => 2,
         'portal.public_report_rate_limit.per_unit.decay_seconds' => 900,
         'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
@@ -990,6 +991,7 @@ it('telt alleen succesvolle meldingen mee voor de rate limit', function () {
 it('blokkeert via de tenant-brede rate limit', function () {
     cache()->flush();
     config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 0,
         'portal.public_report_rate_limit.per_unit.max_attempts' => 50,
         'portal.public_report_rate_limit.per_tenant.max_attempts' => 1,
         'portal.public_report_rate_limit.per_tenant.decay_seconds' => 3600,
@@ -1013,6 +1015,7 @@ it('blokkeert via de tenant-brede rate limit', function () {
 it('assert public report rate limit action gooit bij te veel pogingen', function () {
     cache()->flush();
     config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 0,
         'portal.public_report_rate_limit.per_unit.max_attempts' => 1,
         'portal.public_report_rate_limit.per_unit.decay_seconds' => 60,
     ]);
@@ -1024,4 +1027,86 @@ it('assert public report rate limit action gooit bij te veel pogingen', function
 
     expect(fn () => $assert->handle(1, 1, '127.0.0.1'))
         ->toThrow(\App\Exceptions\Public\PublicReportRateLimitExceededException::class);
+});
+
+it('blokkeert een tweede melding binnen de cooldown maar laat na de cooldown weer toe', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 180,
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 5,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 1800,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
+    ]);
+
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Eerste melding met tekst.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Tweede melding binnen de cooldown.')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    expect(Issue::count())->toBe(1);
+
+    $this->travel(181)->seconds();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Derde melding na de cooldown.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    expect(Issue::count())->toBe(2);
+});
+
+it('toont de cooldown-uitleg in de actieve locale', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 180,
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 5,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
+    ]);
+
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Eerste melding met tekst.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Tweede melding binnen de cooldown.')
+        ->call('submitReport')
+        ->assertHasErrors('description')
+        ->assertSee(__('portal.report.errors.cooldown', ['seconds' => 180, 'minutes' => 3]), false);
+});
+
+it('telt cooldown-geblokkeerde meldingen niet mee voor het venster', function () {
+    cache()->flush();
+    config([
+        'portal.public_report_rate_limit.cooldown.decay_seconds' => 180,
+        'portal.public_report_rate_limit.per_unit.max_attempts' => 5,
+        'portal.public_report_rate_limit.per_unit.decay_seconds' => 1800,
+        'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
+    ]);
+
+    ['unit' => $unit] = unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Eerste melding met tekst.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Geblokkeerd door cooldown.')
+        ->call('submitReport')
+        ->assertHasErrors('description');
+
+    $unitKey = app(AssertPublicReportRateLimitAction::class)
+        ->unitKey($unit->tenant_id, $unit->id, '127.0.0.1');
+
+    expect(\Illuminate\Support\Facades\RateLimiter::attempts($unitKey))->toBe(1);
 });

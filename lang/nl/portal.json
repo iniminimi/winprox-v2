@@ -60,7 +60,8 @@
             "photos_size": "Een foto is te groot.",
             "photos_qr_missing": "Er is geen actieve QR-code gekoppeld aan deze unit. De foto's kunnen niet worden opgeslagen.",
             "photos_failed": "De foto's konden niet worden opgeslagen. Probeer het opnieuw.",
-            "rate_limited": "Je hebt te veel meldingen verstuurd. Probeer het over :minutes minuten opnieuw."
+            "cooldown": "Je verstuurde net een melding. Om spam te voorkomen kun je pas over :seconds seconden opnieuw een melding voor deze unit maken.",
+            "rate_limited": "Je hebt het maximum van :max meldingen voor deze unit bereikt. Probeer het over :minutes minuten opnieuw."
         }
     },
     "worker": {

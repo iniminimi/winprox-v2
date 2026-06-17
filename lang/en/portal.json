@@ -60,7 +60,8 @@
             "photos_size": "A photo is too large.",
             "photos_qr_missing": "There is no active QR code linked to this unit. Photos cannot be saved.",
             "photos_failed": "The photos could not be saved. Please try again.",
-            "rate_limited": "You have submitted too many reports. Please try again in :minutes minutes."
+            "cooldown": "You just submitted a report. To prevent spam, you can submit a new report for this unit again in :seconds seconds.",
+            "rate_limited": "You have reached the maximum of :max reports for this unit. Please try again in :minutes minutes."
         }
     },
     "worker": {

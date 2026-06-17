@@ -18,19 +18,43 @@ class AssertPublicReportRateLimitAction
             return;
         }
 
+        $cooldownDecay = (int) config('portal.public_report_rate_limit.cooldown.decay_seconds', 180);
+        if ($cooldownDecay > 0) {
+            $cooldownKey = $this->cooldownKey($tenantId, $unitId, $clientIp);
+            if (RateLimiter::tooManyAttempts($cooldownKey, 1)) {
+                throw new PublicReportRateLimitExceededException(
+                    RateLimiter::availableIn($cooldownKey),
+                    PublicReportRateLimitExceededException::REASON_COOLDOWN,
+                );
+            }
+        }
+
         $unitKey = $this->unitKey($tenantId, $unitId, $clientIp);
-        $unitLimit = config('portal.public_report_rate_limit.per_unit.max_attempts', 5);
+        $unitLimit = (int) config('portal.public_report_rate_limit.per_unit.max_attempts', 5);
 
         if (RateLimiter::tooManyAttempts($unitKey, $unitLimit)) {
-            throw new PublicReportRateLimitExceededException(RateLimiter::availableIn($unitKey));
+            throw new PublicReportRateLimitExceededException(
+                RateLimiter::availableIn($unitKey),
+                PublicReportRateLimitExceededException::REASON_LIMIT,
+                $unitLimit,
+            );
         }
 
         $tenantKey = $this->tenantKey($tenantId, $clientIp);
-        $tenantLimit = config('portal.public_report_rate_limit.per_tenant.max_attempts', 20);
+        $tenantLimit = (int) config('portal.public_report_rate_limit.per_tenant.max_attempts', 20);
 
         if (RateLimiter::tooManyAttempts($tenantKey, $tenantLimit)) {
-            throw new PublicReportRateLimitExceededException(RateLimiter::availableIn($tenantKey));
+            throw new PublicReportRateLimitExceededException(
+                RateLimiter::availableIn($tenantKey),
+                PublicReportRateLimitExceededException::REASON_LIMIT,
+                $tenantLimit,
+            );
         }
+    }
+
+    public function cooldownKey(int $tenantId, int $unitId, string $clientIp): string
+    {
+        return 'public-report:cooldown:'.$tenantId.':'.$unitId.':'.$clientIp;
     }
 
     public function unitKey(int $tenantId, int $unitId, string $clientIp): string

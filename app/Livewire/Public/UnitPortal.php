@@ -221,8 +221,7 @@ class UnitPortal extends Component
                 request()->ip(),
             );
         } catch (PublicReportRateLimitExceededException $exception) {
-            $minutes = max(1, (int) ceil($exception->retryAfterSeconds / 60));
-            $this->addError('description', __('portal.report.errors.rate_limited', ['minutes' => $minutes]));
+            $this->addError('description', $this->rateLimitMessage($exception));
 
             return;
         }
@@ -231,6 +230,18 @@ class UnitPortal extends Component
         $this->dispatch('wp-clear-photo-previews');
         $this->flashMessage = __('portal.report.sent');
         $this->portalSection = 'issues';
+    }
+
+    private function rateLimitMessage(PublicReportRateLimitExceededException $exception): string
+    {
+        $seconds = max(1, $exception->retryAfterSeconds);
+        $minutes = max(1, (int) ceil($seconds / 60));
+
+        if ($exception->reason === PublicReportRateLimitExceededException::REASON_COOLDOWN) {
+            return __('portal.report.errors.cooldown', ['seconds' => $seconds, 'minutes' => $minutes]);
+        }
+
+        return __('portal.report.errors.rate_limited', ['minutes' => $minutes, 'max' => $exception->maxAttempts]);
     }
 
     public function identifyWorker(): void

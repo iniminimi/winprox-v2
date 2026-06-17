@@ -60,7 +60,8 @@
             "photos_size": "Ein Foto ist zu groß.",
             "photos_qr_missing": "Es ist kein aktiver QR-Code mit dieser Einheit verknüpft. Fotos können nicht gespeichert werden.",
             "photos_failed": "Die Fotos konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
-            "rate_limited": "Sie haben zu viele Meldungen gesendet. Bitte versuchen Sie es in :minutes Minuten erneut."
+            "cooldown": "Sie haben gerade eine Meldung gesendet. Um Spam zu vermeiden, können Sie in :seconds Sekunden erneut eine Meldung für diese Einheit senden.",
+            "rate_limited": "Sie haben das Maximum von :max Meldungen für diese Einheit erreicht. Bitte versuchen Sie es in :minutes Minuten erneut."
         }
     },
     "worker": {

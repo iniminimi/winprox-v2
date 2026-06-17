@@ -60,7 +60,8 @@
             "photos_size": "Une photo est trop volumineuse.",
             "photos_qr_missing": "Aucun QR code actif n'est lié à cette unité. Les photos ne peuvent pas être enregistrées.",
             "photos_failed": "Les photos n'ont pas pu être enregistrées. Veuillez réessayer.",
-            "rate_limited": "Vous avez envoyé trop de signalements. Réessayez dans :minutes minutes."
+            "cooldown": "Vous venez d'envoyer un signalement. Pour éviter le spam, vous pourrez en envoyer un nouveau pour cette unité dans :seconds secondes.",
+            "rate_limited": "Vous avez atteint le maximum de :max signalements pour cette unité. Réessayez dans :minutes minutes."
         }
     },
     "worker": {

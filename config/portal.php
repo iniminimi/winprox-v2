@@ -7,10 +7,16 @@ return [
     'public_report_rate_limit' => [
         'enabled' => (bool) env('PORTAL_REPORT_RATE_LIMIT_ENABLED', true),
 
-        // Per unit + IP (burger via dezelfde QR).
+        // Korte cooldown tussen twee meldingen (per unit + IP): max 1 melding per interval.
+        // 0 = uit. Stopt direct twee meldingen vlak na elkaar.
+        'cooldown' => [
+            'decay_seconds' => (int) env('PORTAL_REPORT_RATE_LIMIT_COOLDOWN', 180),
+        ],
+
+        // Venster per unit + IP (burger via dezelfde QR).
         'per_unit' => [
             'max_attempts' => (int) env('PORTAL_REPORT_RATE_LIMIT_PER_UNIT', 5),
-            'decay_seconds' => (int) env('PORTAL_REPORT_RATE_LIMIT_PER_UNIT_DECAY', 900),
+            'decay_seconds' => (int) env('PORTAL_REPORT_RATE_LIMIT_PER_UNIT_DECAY', 1800),
         ],
 
         // Per tenant + IP (zelfde IP over meerdere units).
