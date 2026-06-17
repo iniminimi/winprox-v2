@@ -463,7 +463,7 @@
                 },
                 {
                     "label": "Melding doen",
-                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Er wordt vervolgens een taak aangemaakt voor het team. Houd er rekening mee dat de melding eerst moet worden goedgekeurd voordat deze zichtbaar wordt op het portaal."
+                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Er wordt vervolgens een taak aangemaakt voor het team. Houd er rekening mee dat de melding eerst moet worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Ter voorkoming van spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
                 },
                 {
                     "label": "Documenten",

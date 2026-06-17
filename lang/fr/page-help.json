@@ -463,7 +463,7 @@
                 },
                 {
                     "label": "Signaler un problème",
-                    "text": "Cliquez sur \"Créer un signalement\", décrivez le problème et ajoutez éventuellement jusqu'à quatre photos. Une tâche est ensuite créée pour l'équipe. Notez que le signalement doit d'abord être approuvé avant d'être visible sur le portail."
+                    "text": "Cliquez sur \"Créer un signalement\", décrivez le problème et ajoutez éventuellement jusqu'à quatre photos. Une tâche est ensuite créée pour l'équipe. Notez que le signalement doit d'abord être approuvé avant d'être visible sur le portail. Pour éviter le spam, des limites s'appliquent : au maximum un signalement toutes les 3 minutes et au maximum cinq signalements par 30 minutes pour cette unité (par appareil)."
                 },
                 {
                     "label": "Documents",

@@ -463,7 +463,7 @@
                 },
                 {
                     "label": "Meldung erstellen",
-                    "text": "Klicken Sie auf \"Meldung erstellen\", beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Es wird dann eine Aufgabe für das Team erstellt. Beachten Sie, dass die Meldung zuerst genehmigt werden muss, bevor sie auf dem Portal sichtbar wird."
+                    "text": "Klicken Sie auf \"Meldung erstellen\", beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Es wird dann eine Aufgabe für das Team erstellt. Beachten Sie, dass die Meldung zuerst genehmigt werden muss, bevor sie auf dem Portal sichtbar wird. Um Spam zu vermeiden, gelten Limits: höchstens eine Meldung alle 3 Minuten und höchstens fünf Meldungen pro 30 Minuten für diese Unit (pro Gerät)."
                 },
                 {
                     "label": "Dokumente",

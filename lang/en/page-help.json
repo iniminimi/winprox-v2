@@ -463,7 +463,7 @@
                 },
                 {
                     "label": "Report issue",
-                    "text": "Click on \"Create issue\", describe the problem and optionally add up to four photos. A task is then created for the team. Please note that the issue must first be approved before it becomes visible on the portal."
+                    "text": "Click on \"Create issue\", describe the problem and optionally add up to four photos. A task is then created for the team. Please note that the issue must first be approved before it becomes visible on the portal. To prevent spam, limits apply: at most one report every 3 minutes and a maximum of five reports per 30 minutes for this unit (per device)."
                 },
                 {
                     "label": "Documents",
