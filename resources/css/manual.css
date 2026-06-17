@@ -320,11 +320,16 @@ body.wp-shell:has(.wp-manual-root) {
     box-shadow: var(--wp-shadow-card);
 }
 
-/* Internetportaal: element-screenshot op telefoonbreedte, niet uitrekken */
+/* Internetportaal: element-screenshot op telefoonbreedte, ware hoogte (geen geforceerde 390×844) */
+.wp-manual-screenshot--portal {
+    width: fit-content;
+    max-width: 100%;
+}
+
 .wp-manual-screenshot--portal .wp-manual-screenshot__img {
     width: auto;
     max-width: min(390px, 100%);
-    aspect-ratio: 390 / 844;
+    height: auto;
 }
 
 /* Actie-screenshots (modals, detailfragmenten) — natuurlijke verhouding, niet 16:10 forceren */

@@ -78,8 +78,8 @@ Bij mislukte capture: geen commit/push.
 
 - Pad: `public/images/manual/{nl,en,fr,de}/*.png`
 - ~20 bestanden per taal (80 totaal)
-- Internetportaal-PNG's zijn smal (~390px); handleiding toont ze op ware grootte
-  (`wp-manual-screenshot--portal` in `manual.css`)
+- Internetportaal-PNG's zijn smal (~390px breed); handleiding toont ze op ware grootte
+  (natuurlijke hoogte uit het bestand, geen geforceerde telefoon-verhouding)
 
 ### 4. Deploy
 
