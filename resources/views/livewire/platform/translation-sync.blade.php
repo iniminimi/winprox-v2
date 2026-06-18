@@ -14,6 +14,19 @@
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-muted">{{ __('platform.translation_sync.intro') }}</p>
 
+        <div class="wp-stack-tight">
+            <h2 class="wp-section-title">{{ __('platform.translation_sync.workflow_title') }}</h2>
+            <ol class="wp-muted" style="margin: 0; padding-left: 1.25rem;">
+                <li style="margin-bottom: 0.75rem;">
+                    {{ __('platform.translation_sync.workflow_step_1') }}
+                    <pre class="wp-muted" style="margin: 0.5rem 0 0; padding: 0.75rem; background: var(--wp-surface-2); border-radius: var(--wp-radius); overflow-x: auto;"><code>cd {{ base_path() }}
+php artisan queue:work</code></pre>
+                    <span style="display: block; margin-top: 0.35rem;">{{ __('platform.translation_sync.workflow_step_1_note') }}</span>
+                </li>
+                <li>{{ __('platform.translation_sync.workflow_step_2') }}</li>
+            </ol>
+        </div>
+
         @if (! $isConfigured)
             <p class="wp-text-body">{{ __('platform.translation_sync.not_enabled') }}</p>
             <p class="wp-muted">{{ __('platform.translation_sync.setup_hint') }}</p>
