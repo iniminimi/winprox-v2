@@ -6,6 +6,8 @@
         :subtitle="__('platform.subtitle')"
     />
 
+    <x-wp-translation-sync-reminder />
+
     @if ($activeTenant)
         <div class="wp-card wp-card-pad wp-support-banner">
             <p>{{ __('platform.active', ['name' => $activeTenant->name]) }}</p>

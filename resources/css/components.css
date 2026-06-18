@@ -1524,6 +1524,10 @@ a.wp-kpi:hover {
     animation: wp-progress-indeterminate 1.4s ease-in-out infinite;
 }
 
+.wp-translation-reminder {
+    border-color: color-mix(in srgb, var(--wp-accent) 40%, var(--wp-border));
+}
+
 @keyframes wp-progress-indeterminate {
     0% {
         transform: translateX(-120%);

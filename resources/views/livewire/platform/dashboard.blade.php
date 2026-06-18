@@ -6,6 +6,8 @@
         :subtitle="__('platform.dashboard.subtitle')"
     />
 
+    <x-wp-translation-sync-reminder />
+
     @php
         $kpiLinks = [
             'tenants' => route('platform.tenants'),

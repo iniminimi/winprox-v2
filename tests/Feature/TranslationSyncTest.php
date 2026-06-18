@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\RunTranslationSyncPipelineAction;
 use App\Actions\Communication\StartTranslationSyncAction;
 use App\Actions\Communication\TranslateExportItemsAction;
@@ -7,6 +8,7 @@ use App\Contracts\TranslationSyncRemoteClient;
 use App\Enums\TranslationSyncPhase;
 use App\Jobs\RunTranslationSyncJob;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
+use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\User;
 use App\Models\Issue;
 use App\Models\IssueTranslation;
@@ -111,4 +113,30 @@ it('vult vertaal-slots voor bestaande goedgekeurde meldingen', function () {
     expect($result['issues'])->toBeGreaterThanOrEqual(1)
         ->and($result['slots_created'])->toBe(3)
         ->and(IssueTranslation::query()->where('issue_id', $issue->id)->count())->toBe(3);
+});
+
+it('telt pending vertalingen voor goedgekeurde meldingen', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+        'original_language' => 'nl',
+    ]);
+
+    expect(app(CountPendingIssueTranslationsAction::class)->handle())->toBe(0);
+
+    app(\App\Actions\Communication\BackfillIssueTranslationSlotsAction::class)->handle();
+
+    expect(app(CountPendingIssueTranslationsAction::class)->handle())->toBe(3);
+});
+
+it('toont vertaal-herinnering op platform organisaties voor superuser', function () {
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+
+    Livewire::actingAs($user)
+        ->test(PlatformTenants::class)
+        ->assertSee(__('platform.translation_sync.reminder_title'));
 });
