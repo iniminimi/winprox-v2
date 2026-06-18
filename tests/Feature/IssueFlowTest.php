@@ -135,5 +135,5 @@ it('sluit een ongekeurde melding met sluitreden in de tijdlijn', function () {
 
     expect($issue->status)->toBe(TaskStatus::Closed)
         ->and($issue->updates()->where('kind', 'close_reason')->count())->toBe(1)
-        ->and($issue->updates()->first()->body)->toBe('Geen geldige melding');
+        ->and($issue->updates()->first()->description)->toBe('Geen geldige melding');
 });

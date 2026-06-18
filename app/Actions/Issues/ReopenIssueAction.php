@@ -39,7 +39,7 @@ class ReopenIssueAction
         if ($reason !== null && trim($reason) !== '') {
             $this->addUpdate->handle(
                 issue: $issue,
-                body: trim($reason),
+                description: trim($reason),
                 userId: $actor->id,
                 kind: 'reopen_reason',
             );

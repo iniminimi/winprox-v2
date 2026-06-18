@@ -44,7 +44,7 @@ class CompleteTaskAction
             $issue->updates()->create([
                 'worker_id' => $worker->id,
                 'kind' => 'worker_note',
-                'body' => $note,
+                'description' => $note,
             ]);
         }
 
@@ -54,7 +54,7 @@ class CompleteTaskAction
             $update = $issue->updates()->create([
                 'worker_id' => $worker->id,
                 'kind' => 'worker_photos',
-                'body' => null,
+                'description' => null,
             ]);
 
             foreach ($files as $photo) {

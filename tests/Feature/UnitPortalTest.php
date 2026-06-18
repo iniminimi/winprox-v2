@@ -292,7 +292,7 @@ it('shows task nr and issue line on the worker portal and hides photos missing o
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::New,
-        'note' => 'Kraan vervangen en afdichting controleren.',
+        'description' => 'Kraan vervangen en afdichting controleren.',
     ]);
 
     $onDisk = IssuePhoto::factory()->create([
@@ -312,7 +312,7 @@ it('shows task nr and issue line on the worker portal and hides photos missing o
 
     $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertSee(__('portal.worker.task_heading', ['nr' => $task->id]))
-        ->assertSee($task->note)
+        ->assertSee($task->description)
         ->assertSee(__('portal.worker.issue_heading', ['nr' => $issue->id]))
         ->assertSee(__('portal.worker.issue_meta', [
             'description' => $issue->description,
@@ -328,7 +328,7 @@ it('shows task nr and issue line on the worker portal and hides photos missing o
     $issueHeadingPos = strpos($html, $issueHeading, $taskBlockStart);
     $betweenTaskAndIssue = substr($html, $taskBlockStart + strlen($taskHeading), $issueHeadingPos - $taskBlockStart - strlen($taskHeading));
 
-    expect($betweenTaskAndIssue)->toContain($task->note)
+    expect($betweenTaskAndIssue)->toContain($task->description)
         ->and($betweenTaskAndIssue)->not->toContain($issue->description);
 });
 
@@ -353,7 +353,7 @@ it('does not fall back to issue description when task note is empty', function (
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::New,
-        'note' => null,
+        'description' => null,
     ]);
 
     WorkerVerification::markVerified($team, $worker);
@@ -391,7 +391,7 @@ it('hides open tasks for unapproved issues from the worker portal', function () 
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::New,
-        'note' => 'Taak voor niet-goedgekeurde melding.',
+        'description' => 'Taak voor niet-goedgekeurde melding.',
     ]);
 
     WorkerVerification::markVerified($team, $worker);
@@ -425,7 +425,7 @@ it('pulses the open tasks card when the worker has open tasks', function () {
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'status' => TaskStatus::New,
-        'note' => 'Controleer de leiding.',
+        'description' => 'Controleer de leiding.',
     ]);
 
     WorkerVerification::markVerified($team, $worker);
@@ -615,7 +615,7 @@ it('shows active announcements but hides expired ones', function () {
     Announcement::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'title' => 'Actuele mededeling',
+        'description' => 'Actuele mededeling',
         'is_active' => true,
         'published_at' => now()->subDay(),
         'expires_at' => now()->addWeek(),
@@ -623,7 +623,7 @@ it('shows active announcements but hides expired ones', function () {
     Announcement::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
-        'title' => 'Verlopen mededeling',
+        'description' => 'Verlopen mededeling',
         'is_active' => true,
         'published_at' => now()->subWeeks(2),
         'expires_at' => now()->subWeek(),
@@ -660,7 +660,7 @@ it('shows issue updates with photos on issue detail', function () {
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
         'kind' => 'worker_note',
-        'body' => 'Nieuwe update met foto als bewijs.',
+        'description' => 'Nieuwe update met foto als bewijs.',
     ]);
 
     IssuePhoto::factory()->create([

@@ -22,7 +22,7 @@ it('voegt een notitie toe op meldingdetail via livewire', function () {
 
     Livewire::actingAs($user)
         ->test(Show::class, ['issue' => $issue])
-        ->set('updateBody', 'Extra info voor het team')
+        ->set('updateDescription', 'Extra info voor het team')
         ->call('saveUpdate')
         ->assertHasNoErrors();
 
@@ -30,7 +30,7 @@ it('voegt een notitie toe op meldingdetail via livewire', function () {
     $update = $issue->updates()->first();
 
     expect($update)->not->toBeNull()
-        ->and($update->body)->toBe('Extra info voor het team')
+        ->and($update->description)->toBe('Extra info voor het team')
         ->and($update->user_id)->toBe($user->id);
 
     expect(AuditLog::query()->where('action', 'issue.update_added')->exists())->toBeTrue();
@@ -81,7 +81,7 @@ it('toont een update-foto op meldingdetail na opslaan via livewire', function ()
 
     Livewire::actingAs($user)
         ->test(Show::class, ['issue' => $issue])
-        ->set('updateBody', 'Zie bijlage')
+        ->set('updateDescription', 'Zie bijlage')
         ->set('updatePhotos', [$file])
         ->call('saveUpdate')
         ->assertHasNoErrors();

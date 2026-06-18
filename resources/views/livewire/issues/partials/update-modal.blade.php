@@ -20,14 +20,14 @@
 
             <div class="wp-field">
                 <textarea
-                    id="updateBody"
+                    id="updateDescription"
                     class="wp-textarea"
-                    wire:model="updateBody"
+                    wire:model="updateDescription"
                     rows="4"
                     placeholder="{{ __('issues.show.add_update_placeholder') }}"
                     required
                 ></textarea>
-                @error('updateBody') <p class="wp-error">{{ $message }}</p> @enderror
+                @error('updateDescription') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 
             <div class="wp-field">

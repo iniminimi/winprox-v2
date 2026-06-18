@@ -74,9 +74,9 @@ class BillingPortalContentLimitTest extends TestCase
 
         $create = app(CreateLocationAnnouncementAction::class);
 
-        foreach (['Eerste', 'Tweede'] as $body) {
+        foreach (['Eerste', 'Tweede'] as $description) {
             $create->handle($location, [
-                'body' => $body,
+                'description' => $description,
                 'unit_id' => $unit->id,
                 'is_active' => true,
                 'expires_at' => null,
@@ -87,7 +87,7 @@ class BillingPortalContentLimitTest extends TestCase
         $this->expectExceptionMessage('announcement_unit_limit_exceeded');
 
         $create->handle($location, [
-            'body' => 'Derde',
+            'description' => 'Derde',
             'unit_id' => $unit->id,
             'is_active' => true,
             'expires_at' => null,
@@ -113,7 +113,7 @@ class BillingPortalContentLimitTest extends TestCase
         ]);
 
         $announcement = app(CreateLocationAnnouncementAction::class)->handle($location, [
-            'body' => 'Nog actief',
+            'description' => 'Nog actief',
             'unit_id' => $unit->id,
             'is_active' => true,
             'expires_at' => null,

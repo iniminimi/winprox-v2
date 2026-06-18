@@ -26,7 +26,7 @@ class PauseTaskAction
 
         $this->addUpdate->handle(
             issue: $task->issue,
-            body: trim($note),
+            description: trim($note),
             userId: $actor?->id,
             kind: 'pause',
         );

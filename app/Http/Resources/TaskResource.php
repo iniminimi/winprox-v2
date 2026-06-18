@@ -19,7 +19,7 @@ class TaskResource extends JsonResource
             'issue_id' => $this->issue_id,
             'internal_team_id' => $this->internal_team_id,
             'status' => $this->status->value,
-            'note' => $this->note,
+            'description' => $this->description,
             'scheduled_for' => $this->scheduled_for?->format('Y-m-d'),
             'due_at' => optional($this->due_at)->toIso8601String(),
             'is_recurring_cycle' => (bool) $this->is_recurring_cycle,

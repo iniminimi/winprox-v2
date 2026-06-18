@@ -11,7 +11,7 @@ class TranslateExportItemsAction
 
     /**
      * @param  list<array<string, mixed>>  $items
-     * @return list<array{issue_id: int, locale: string, text: string}>
+     * @return list<array{issue_id: int, locale: string, description: string}>
      */
     public function handle(array $items, ?callable $onProgress = null): array
     {
@@ -36,7 +36,7 @@ class TranslateExportItemsAction
             $translated[] = [
                 'issue_id' => $issueId,
                 'locale' => $locale,
-                'text' => $text,
+                'description' => $text,
             ];
 
             if ($onProgress !== null) {

@@ -70,7 +70,7 @@ it('vertaalt een melding via de provider en slaat op', function () {
     $row = app(TranslateIssueAction::class)->handle($issue, 'nl', $user->id);
 
     expect($row->status)->toBe(IssueTranslationStatus::Completed)
-        ->and($row->text)->toBe('[nl] Broken window')
+        ->and($row->description)->toBe('[nl] Broken window')
         ->and($issue->fresh()->localizedDescription('nl'))->toBe('[nl] Broken window');
 });
 
@@ -110,7 +110,7 @@ it('exporteert en importeert pending vertalingen', function () {
         [
             'issue_id' => $issue->id,
             'locale' => 'en',
-            'text' => 'Broken lamp',
+            'description' => 'Broken lamp',
         ],
     ]);
 
@@ -135,7 +135,7 @@ it('toont taalkiezer op meldingdetail met placeholder bij ontbrekende vertaling'
         'issue_id' => $issue->id,
         'locale' => 'nl',
         'status' => IssueTranslationStatus::Pending,
-        'text' => null,
+        'description' => null,
     ]);
 
     Livewire::actingAs($user)
@@ -162,7 +162,7 @@ it('toont vertaalde omschrijving op meldingdetail bij gekozen taal', function ()
         'issue_id' => $issue->id,
         'locale' => 'nl',
         'status' => IssueTranslationStatus::Completed,
-        'text' => 'Kapot raam',
+        'description' => 'Kapot raam',
     ]);
 
     Livewire::actingAs($user)

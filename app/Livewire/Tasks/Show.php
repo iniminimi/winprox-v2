@@ -171,7 +171,7 @@ class Show extends Component
         $this->priority = $this->task->priority instanceof TaskPriority
             ? $this->task->priority->value
             : (string) $this->task->priority;
-        $this->taskNote = trim((string) ($this->task->note ?: $this->task->issue?->description));
+        $this->taskNote = trim((string) ($this->task->description ?: $this->task->issue?->description));
         $this->taskScheduledFor = $this->task->scheduled_for?->format('Y-m-d');
     }
 

@@ -280,7 +280,7 @@
         "edit": "Modifier l'annonce",
         "empty": "Aucune annonce pour le moment.",
         "modal_subtitle": "Rédigez un message et liez-le éventuellement à une unité.",
-        "body": "Message",
+        "description": "Message",
         "link_unit": "Lier à une unité (optionnel)",
         "for_location": "Site entier",
         "unit_label": "Unité",

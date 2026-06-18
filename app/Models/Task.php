@@ -22,7 +22,7 @@ class Task extends Model
         'priority',
         'started_at',
         'completed_at',
-        'note',
+        'description',
         'scheduled_for',
         'due_at',
         'is_recurring_cycle',

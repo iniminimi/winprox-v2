@@ -26,9 +26,9 @@ class ImportIssueTranslationsAction
         foreach ($items as $index => $item) {
             $issueId = (int) ($item['issue_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
-            $text = trim((string) ($item['text'] ?? ''));
+            $description = trim((string) ($item['description'] ?? $item['text'] ?? ''));
 
-            if ($issueId <= 0 || $locale === '' || $text === '') {
+            if ($issueId <= 0 || $locale === '' || $description === '') {
                 throw ValidationException::withMessages([
                     "items.{$index}" => [__('issues.errors.translation_import_invalid')],
                 ]);
@@ -54,7 +54,7 @@ class ImportIssueTranslationsAction
                 ->firstOrFail();
 
             $row->fill([
-                'text' => $text,
+                'description' => $description,
                 'status' => IssueTranslationStatus::Completed,
             ])->save();
 

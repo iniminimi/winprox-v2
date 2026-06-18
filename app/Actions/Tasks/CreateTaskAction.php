@@ -24,7 +24,7 @@ class CreateTaskAction
         ?int $internalTeamId = null,
         TaskStatus $status = TaskStatus::New,
         TaskPriority $priority = TaskPriority::Prio3,
-        ?string $note = null,
+        ?string $description = null,
         ?CarbonInterface $startedAt = null,
         bool $recalculateIssue = true,
         bool $dispatchCreated = true,
@@ -46,7 +46,7 @@ class CreateTaskAction
             'internal_team_id' => $internalTeamId,
             'status' => $status,
             'priority' => $priority,
-            'note' => $note,
+            'description' => $description,
             'started_at' => $status === TaskStatus::InProgress ? ($startedAt ?? now()) : $startedAt,
         ], $extra));
 

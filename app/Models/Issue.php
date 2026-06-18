@@ -111,16 +111,16 @@ class Issue extends Model
             ? $this->translations->first(
                 fn (IssueTranslation $translation) => $translation->locale === $locale
                     && $translation->status === IssueTranslationStatus::Completed
-                    && filled($translation->text),
+                    && filled($translation->description),
             )
             : $this->translations()
                 ->where('locale', $locale)
                 ->where('status', IssueTranslationStatus::Completed)
-                ->whereNotNull('text')
+                ->whereNotNull('description')
                 ->first();
 
-        if ($row instanceof IssueTranslation && filled($row->text)) {
-            return (string) $row->text;
+        if ($row instanceof IssueTranslation && filled($row->description)) {
+            return (string) $row->description;
         }
 
         return $description;
@@ -136,7 +136,7 @@ class Issue extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        return $row instanceof IssueTranslation && filled($row->text);
+        return $row instanceof IssueTranslation && filled($row->description);
     }
 
     public function descriptionMissingForDisplayLocale(string $locale): bool
@@ -157,8 +157,8 @@ class Issue extends Model
 
         $row = $this->findCompletedTranslation($locale);
 
-        if ($row instanceof IssueTranslation && filled($row->text)) {
-            return (string) $row->text;
+        if ($row instanceof IssueTranslation && filled($row->description)) {
+            return (string) $row->description;
         }
 
         return __('issues.show.description_not_translated', [], $locale);
@@ -172,7 +172,7 @@ class Issue extends Model
             $row = $this->translations->first(
                 fn (IssueTranslation $translation) => $translation->locale === $locale
                     && $translation->status === IssueTranslationStatus::Completed
-                    && filled($translation->text),
+                    && filled($translation->description),
             );
 
             return $row instanceof IssueTranslation ? $row : null;
@@ -181,7 +181,7 @@ class Issue extends Model
         return $this->translations()
             ->where('locale', $locale)
             ->where('status', IssueTranslationStatus::Completed)
-            ->whereNotNull('text')
+            ->whereNotNull('description')
             ->first();
     }
 
@@ -196,8 +196,8 @@ class Issue extends Model
 
         $map = [];
         foreach ($rows as $row) {
-            if ($row->status === IssueTranslationStatus::Completed && filled($row->text)) {
-                $map[$row->locale] = (string) $row->text;
+            if ($row->status === IssueTranslationStatus::Completed && filled($row->description)) {
+                $map[$row->locale] = (string) $row->description;
             }
         }
 

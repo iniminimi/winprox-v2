@@ -280,7 +280,7 @@
         "edit": "Mitteilung bearbeiten",
         "empty": "Noch keine Mitteilungen.",
         "modal_subtitle": "Nachricht schreiben und optional mit einer Unit verknüpfen.",
-        "body": "Nachricht",
+        "description": "Nachricht",
         "link_unit": "Mit Unit verknüpfen (optional)",
         "for_location": "Gesamter Standort",
         "unit_label": "Unit",

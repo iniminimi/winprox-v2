@@ -280,7 +280,7 @@
         "edit": "Mededeling bewerken",
         "empty": "Nog geen mededelingen.",
         "modal_subtitle": "Schrijf een bericht en koppel het optioneel aan een unit.",
-        "body": "Bericht",
+        "description": "Bericht",
         "link_unit": "Koppelen aan unit (optioneel)",
         "for_location": "Hele locatie",
         "unit_label": "Unit",

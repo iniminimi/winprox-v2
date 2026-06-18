@@ -11,7 +11,7 @@ use App\Models\IssueUpdate;
  */
 class AddIssueUpdateAction
 {
-    public function handle(Issue $issue, string $body, ?int $workerId = null, ?int $userId = null, ?string $kind = null): IssueUpdate
+    public function handle(Issue $issue, string $description, ?int $workerId = null, ?int $userId = null, ?string $kind = null): IssueUpdate
     {
         // Prevent update creation for closed issues
         if ($issue->isClosed()) {
@@ -19,7 +19,7 @@ class AddIssueUpdateAction
         }
 
         return $issue->updates()->create([
-            'body' => $body,
+            'description' => $description,
             'worker_id' => $workerId,
             'user_id' => $userId,
             'kind' => $kind,

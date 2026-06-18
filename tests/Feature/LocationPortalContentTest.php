@@ -78,13 +78,13 @@ it('creates a location announcement via Livewire', function () {
     Livewire::actingAs($user)
         ->test(Announcements::class, ['location' => $location])
         ->call('openCreateModal')
-        ->set('body', 'Morgen onderhoud in hal A')
+        ->set('description', 'Morgen onderhoud in hal A')
         ->call('createAnnouncement')
         ->assertHasNoErrors();
 
     $announcement = Announcement::where('location_id', $location->id)->first();
 
     expect($announcement)->not->toBeNull()
-        ->and($announcement->body)->toBe('Morgen onderhoud in hal A')
+        ->and($announcement->description)->toBe('Morgen onderhoud in hal A')
         ->and($announcement->is_active)->toBeTrue();
 });

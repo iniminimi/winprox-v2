@@ -7,14 +7,13 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
-use Illuminate\Support\Str;
 
 class CreateLocationAnnouncementAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{body: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
+     * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
      */
     public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): Announcement
     {
@@ -27,7 +26,7 @@ class CreateLocationAnnouncementAction
                 ->firstOrFail();
         }
 
-        $body = trim((string) $data['body']);
+        $description = trim((string) $data['description']);
         $isActive = (bool) ($data['is_active'] ?? true);
         $expiresAt = ! empty($data['expires_at']) ? $data['expires_at'] : null;
 
@@ -39,8 +38,7 @@ class CreateLocationAnnouncementAction
             'tenant_id' => $tenantId,
             'location_id' => $location->id,
             'unit_id' => $unitId,
-            'title' => self::titleFromBody($body),
-            'body' => $body,
+            'description' => $description,
             'is_active' => $isActive,
             'published_at' => $isActive ? now() : null,
             'expires_at' => $expiresAt,
@@ -56,15 +54,5 @@ class CreateLocationAnnouncementAction
         );
 
         return $announcement;
-    }
-
-    public static function titleFromBody(string $body): string
-    {
-        $line = Str::of($body)->before("\n")->trim()->toString();
-        if ($line === '') {
-            return __('locations.announcements.default_title');
-        }
-
-        return Str::limit($line, 120, '');
     }
 }

@@ -400,8 +400,8 @@
                         @foreach ($selectedIssue->updates as $update)
                             <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted" wire:key="issue-update-{{ $update->id }}">
                                 <p class="wp-muted">{{ $update->created_at?->isoFormat('D MMM YYYY, HH:mm') }}</p>
-                                @if (filled($update->body))
-                                    <p class="wp-text-body">{{ $update->body }}</p>
+                                @if (filled($update->description))
+                                    <p class="wp-text-body">{{ $update->description }}</p>
                                 @elseif ($update->kind && $update->kind !== 'note')
                                     <p class="wp-text-body">{{ __('issues.updates.kind.'.$update->kind) }}</p>
                                 @endif
@@ -486,10 +486,7 @@
             <div class="wp-list">
                 @forelse ($announcements as $announcement)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ann-{{ $announcement->id }}">
-                        <p class="wp-doc-title">{{ $announcement->title }}</p>
-                        @if ($announcement->body !== $announcement->title)
-                            <p class="wp-text-body">{{ $announcement->body }}</p>
-                        @endif
+                        <p class="wp-text-body">{{ $announcement->description }}</p>
                         <p class="wp-muted">{{ $announcement->published_at?->isoFormat('D MMM YYYY') }}</p>
                     </div>
                 @empty

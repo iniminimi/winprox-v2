@@ -154,6 +154,12 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - DB wordt vers opgebouwd (greenfield). Maak nette migraties; geen productie-migraties achteraf wijzigen.
 - Foreign keys expliciet benoemen. Indexen bewust op `tenant_id`, `status`, `created_at` en veelgebruikte relaties.
 
+### 4.3a Tekstkolommen (hard)
+- Vrije, door gebruikers ingevulde **leestekst** op tenant-modellen heet **`description`** (`text`, `nullable` indien optioneel).
+- **Vertalingstabellen:** `{model}_translations.description` — dezelfde naam als het brontekstveld.
+- **Uitzonderingen (niet hernoemen naar `description`):** `title` (korte label/titel, bv. documentnaam), `notes` (interne admin-notities, meervoud), `message` (contactformulier), systeemvelden (`error`, `user_agent`, …).
+- **Geen** nieuwe varianten (`body`, `note`, `text`, `content`) op domain-modellen voor leesbare inhoud.
+
 ### 4.4 Multi-tenancy
 - Gedeelde DB met `tenant_id` per rij.
 - Gebruik een **global scope via trait** (bv. `BelongsToTenant`) zodat elke query automatisch op de tenant filtert. Nooit handmatig vergeten.

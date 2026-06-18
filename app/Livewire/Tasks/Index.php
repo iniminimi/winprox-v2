@@ -80,7 +80,7 @@ class Index extends Component
             ->when(trim($this->search) !== '', function ($q) {
                 $term = '%'.trim($this->search).'%';
                 $q->where(function ($query) use ($term) {
-                    $query->where('note', 'like', $term)
+                    $query->where('description', 'like', $term)
                         ->orWhereHas('issue', fn ($issue) => $issue
                             ->where('description', 'like', $term)
                             ->orWhere('reporter_name', 'like', $term)

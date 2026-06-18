@@ -73,7 +73,7 @@ class CreateRecurringTaskCycleAction
         $task = $issue->tasks()->create([
             'internal_team_id' => $teamId,
             'status' => TaskStatus::New,
-            'note' => $issue->description,
+            'description' => $issue->description,
             'scheduled_for' => $nextDueAt->toDateString(),
             'due_at' => $nextDueAt,
             'is_recurring_cycle' => true,

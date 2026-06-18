@@ -38,7 +38,7 @@ it('briefing filtert op datum en team', function () {
         'internal_team_id' => $team->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
-        'note' => 'Alleen team A',
+        'description' => 'Alleen team A',
     ]);
 
     Task::factory()->create([
@@ -47,7 +47,7 @@ it('briefing filtert op datum en team', function () {
         'internal_team_id' => $otherTeam->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
-        'note' => 'Alleen team B',
+        'description' => 'Alleen team B',
     ]);
 
     $this->actingAs($user)

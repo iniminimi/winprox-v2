@@ -13,7 +13,7 @@ class UpdateLocationAnnouncementAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{body: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
+     * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
      */
     public function handle(
         Location $location,
@@ -31,7 +31,7 @@ class UpdateLocationAnnouncementAction
                 ->firstOrFail();
         }
 
-        $body = trim((string) $data['body']);
+        $description = trim((string) $data['description']);
         $isActive = (bool) ($data['is_active'] ?? true);
 
         if ($isActive) {
@@ -42,8 +42,7 @@ class UpdateLocationAnnouncementAction
         }
 
         $announcement->update([
-            'title' => CreateLocationAnnouncementAction::titleFromBody($body),
-            'body' => $body,
+            'description' => $description,
             'unit_id' => $unitId,
             'is_active' => $isActive,
             'published_at' => $isActive ? ($announcement->published_at ?? now()) : $announcement->published_at,

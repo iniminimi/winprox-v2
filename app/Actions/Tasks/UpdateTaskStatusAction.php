@@ -47,7 +47,7 @@ class UpdateTaskStatusAction
 
             $this->addUpdate->handle(
                 issue: $task->issue,
-                body: trim($reason),
+                description: trim($reason),
                 userId: $actor?->id,
                 kind: 'status_reason',
             );

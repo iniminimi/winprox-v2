@@ -321,7 +321,7 @@ final class SearchTenantGlobalAction
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             $termQuery->where(static function (Builder $taskQuery) use ($term): void {
-                GlobalSearchQuery::applyColumnLike($taskQuery, $term, ['note']);
+                GlobalSearchQuery::applyColumnLike($taskQuery, $term, ['description']);
 
                 if (ctype_digit($term)) {
                     $taskQuery->orWhere('id', (int) $term);
@@ -349,7 +349,7 @@ final class SearchTenantGlobalAction
             ->map(static fn (Task $task): array => [
                 'id' => $task->id,
                 'type' => 'task',
-                'title' => '#'.$task->id.($task->note ? ' - '.mb_strimwidth((string) $task->note, 0, 40, '...') : ''),
+                'title' => '#'.$task->id.($task->description ? ' - '.mb_strimwidth((string) $task->description, 0, 40, '...') : ''),
                 'subtitle' => trim((string) ($task->team?->name ?? '').($task->issue?->location?->name ? ' · '.$task->issue->location->name : '')),
                 'url' => route('tasks.show', ['task' => $task->id]),
             ]);

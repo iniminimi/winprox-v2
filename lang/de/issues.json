@@ -182,8 +182,8 @@
             "worker_photos": "Fotos Ausführender"
         },
         "errors": {
-            "body_required": "Geben Sie eine Notiz ein.",
-            "body_min": "Die Notiz muss mindestens 2 Zeichen haben.",
+            "description_required": "Geben Sie eine Notiz ein.",
+            "description_min": "Die Notiz muss mindestens 2 Zeichen haben.",
             "photos_max": "Maximal 4 Fotos pro Notiz.",
             "photos_image": "Nur Bilder sind erlaubt."
         }

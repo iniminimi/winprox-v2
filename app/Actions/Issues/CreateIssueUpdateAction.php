@@ -22,14 +22,14 @@ class CreateIssueUpdateAction
     /**
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Issue $issue, User $user, string $body, array $photos = []): IssueUpdate
+    public function handle(Issue $issue, User $user, string $description, array $photos = []): IssueUpdate
     {
-        $body = trim($body);
+        $description = trim($description);
 
         $update = $issue->updates()->create([
             'user_id' => $user->id,
             'kind' => 'note',
-            'body' => $body,
+            'description' => $description,
         ]);
 
         foreach (array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile)) as $photo) {

@@ -26,8 +26,8 @@
                 </p>
             @endif
 
-            @if (filled($update->body))
-                <p class="wp-text-body">{{ $update->body }}</p>
+            @if (filled($update->description))
+                <p class="wp-text-body">{{ $update->description }}</p>
             @elseif ($update->kind && $update->kind !== 'note')
                 <p class="wp-text-body">{{ __('issues.updates.kind.'.$update->kind) }}</p>
             @endif

@@ -15,14 +15,14 @@ class AssignIssueTeamTaskAction
 {
     public function __construct(private CreateTaskAction $createTask) {}
 
-    public function handle(Issue $issue, int $internalTeamId, ?string $note = null, TaskPriority $priority = TaskPriority::Prio3): Task
+    public function handle(Issue $issue, int $internalTeamId, ?string $description = null, TaskPriority $priority = TaskPriority::Prio3): Task
     {
         return $this->createTask->handle(
             issue: $issue,
             internalTeamId: $internalTeamId,
             status: TaskStatus::InProgress,
             priority: $priority,
-            note: $note,
+            description: $description,
             startedAt: now(),
         );
     }

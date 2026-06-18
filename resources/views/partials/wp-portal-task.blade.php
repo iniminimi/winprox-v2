@@ -12,7 +12,7 @@
 
     @if ($issue && $issue->updates && $issue->updates->isNotEmpty())
         @foreach ($issue->updates as $update)
-            <p class="wp-text-sm wp-muted">Update : {{ $update->body }}</p>
+            <p class="wp-text-sm wp-muted">Update : {{ $update->description }}</p>
         @endforeach
     @endif
 

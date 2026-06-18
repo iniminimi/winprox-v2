@@ -254,9 +254,9 @@ final class BuildMorningBriefingAction
 
     private function plainSummaryForTask(Task $task): string
     {
-        $note = trim((string) ($task->note ?? ''));
-        if ($note !== '') {
-            return Str::limit($note, 120);
+        $description = trim((string) ($task->description ?? ''));
+        if ($description !== '') {
+            return Str::limit($description, 120);
         }
 
         $issueDescription = trim($task->issue?->localizedDescription() ?? '');

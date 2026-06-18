@@ -16,7 +16,7 @@
         @forelse ($announcements as $announcement)
             <div class="wp-issue-row" wire:key="ann-{{ $announcement->id }}">
                 <div class="wp-grow wp-stack-tight">
-                    <p class="wp-issue-desc">{{ $announcement->body }}</p>
+                    <p class="wp-issue-desc">{{ $announcement->description }}</p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('locations.announcements.unit_label') }}:
                         {{ $announcement->unit?->name ?? __('locations.announcements.for_location') }}
@@ -56,9 +56,9 @@
                 <p class="wp-muted">{{ __('locations.announcements.modal_subtitle') }}</p>
 
                 <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.announcements.body') }}</span>
-                    <textarea class="wp-input" rows="4" wire:model="body"></textarea>
-                    @error('body') <span class="wp-error">{{ $message }}</span> @enderror
+                    <span class="wp-label">{{ __('locations.announcements.description') }}</span>
+                    <textarea class="wp-input" rows="4" wire:model="description"></textarea>
+                    @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
                 <label class="wp-field">
@@ -97,9 +97,9 @@
                 </div>
 
                 <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.announcements.body') }}</span>
-                    <textarea class="wp-input" rows="4" wire:model="body"></textarea>
-                    @error('body') <span class="wp-error">{{ $message }}</span> @enderror
+                    <span class="wp-label">{{ __('locations.announcements.description') }}</span>
+                    <textarea class="wp-input" rows="4" wire:model="description"></textarea>
+                    @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
                 <label class="wp-field">

@@ -182,8 +182,8 @@
             "worker_photos": "Field worker photos"
         },
         "errors": {
-            "body_required": "Enter a note.",
-            "body_min": "The note must be at least 2 characters.",
+            "description_required": "Enter a note.",
+            "description_min": "The note must be at least 2 characters.",
             "photos_max": "Maximum 4 photos per note.",
             "photos_image": "Only images are allowed."
         }

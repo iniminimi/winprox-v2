@@ -50,7 +50,7 @@ class Show extends Component
 
     public string $taskPriority = 'medium';
 
-    public string $updateBody = '';
+    public string $updateDescription = '';
 
     public string $closeReason = '';
 
@@ -181,7 +181,7 @@ class Show extends Component
 
         $this->editTaskId = $taskId;
         $this->newTeamId = $task->internal_team_id;
-        $this->taskNote = trim((string) ($task->note ?: $this->issue->description));
+        $this->taskNote = trim((string) ($task->description ?: $this->issue->description));
         $this->taskPriority = $task->priority->value;
         $this->taskScheduledFor = $task->scheduled_for?->format('Y-m-d');
 
@@ -280,7 +280,7 @@ class Show extends Component
             $this->issue,
             (int) $validated['newTeamId'],
             priority: TaskPriority::from($validated['taskPriority']),
-            note: $validated['taskNote'],
+            description: $validated['taskNote'],
             extra: $extra,
         );
 
@@ -298,7 +298,7 @@ class Show extends Component
             return;
         }
 
-        $this->reset(['updateBody', 'updatePhotos']);
+        $this->reset(['updateDescription', 'updatePhotos']);
         $this->resetValidation();
         $this->showUpdateModal = true;
         $this->dispatch('wp-prepare-photo-inputs');
@@ -307,7 +307,7 @@ class Show extends Component
     public function closeUpdateModal(): void
     {
         $this->showUpdateModal = false;
-        $this->reset(['updateBody', 'updatePhotos']);
+        $this->reset(['updateDescription', 'updatePhotos']);
         $this->resetValidation();
         $this->dispatch('wp-clear-photo-previews');
     }
@@ -321,12 +321,12 @@ class Show extends Component
         }
 
         $validated = $this->validate([
-            'updateBody' => ['required', 'string', 'min:2', 'max:5000'],
+            'updateDescription' => ['required', 'string', 'min:2', 'max:5000'],
             'updatePhotos' => ['nullable', 'array', 'max:4'],
             'updatePhotos.*' => ['image', 'max:10240'],
         ], [
-            'updateBody.required' => __('issues.updates.errors.body_required'),
-            'updateBody.min' => __('issues.updates.errors.body_min'),
+            'updateDescription.required' => __('issues.updates.errors.description_required'),
+            'updateDescription.min' => __('issues.updates.errors.description_min'),
             'updatePhotos.max' => __('issues.updates.errors.photos_max'),
             'updatePhotos.*.image' => __('issues.updates.errors.photos_image'),
         ]);
@@ -334,7 +334,7 @@ class Show extends Component
         $createUpdate->handle(
             $this->issue,
             auth()->user(),
-            $validated['updateBody'],
+            $validated['updateDescription'],
             $this->updatePhotos,
         );
 

@@ -140,16 +140,14 @@ class DatabaseSeeder extends Seeder
         // Mededelingen: één actieve, één verlopen (mag niet meer verschijnen).
         Announcement::create([
             'location_id' => $locationA->id,
-            'title' => 'Gepland groot onderhoud',
-            'body' => 'Volgende week dinsdag voeren we groot onderhoud uit aan Lift A tussen 8u en 12u.',
+            'description' => 'Volgende week dinsdag voeren we groot onderhoud uit aan Lift A tussen 8u en 12u.',
             'is_active' => true,
             'published_at' => now()->subDay(),
             'expires_at' => now()->addWeek(),
         ]);
         Announcement::create([
             'location_id' => $locationA->id,
-            'title' => 'Oude mededeling (verlopen)',
-            'body' => 'Deze mededeling is verlopen en hoort niet meer zichtbaar te zijn.',
+            'description' => 'Deze mededeling is verlopen en hoort niet meer zichtbaar te zijn.',
             'is_active' => true,
             'published_at' => now()->subWeeks(3),
             'expires_at' => now()->subWeek(),

@@ -182,8 +182,8 @@
             "worker_photos": "Photos exécutant"
         },
         "errors": {
-            "body_required": "Saisissez une note.",
-            "body_min": "La note doit comporter au moins 2 caractères.",
+            "description_required": "Saisissez une note.",
+            "description_min": "La note doit comporter au moins 2 caractères.",
             "photos_max": "Maximum 4 photos par note.",
             "photos_image": "Seules les images sont autorisées."
         }

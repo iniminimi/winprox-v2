@@ -116,13 +116,13 @@ final class UserDataExporter
             ->withoutGlobalScopes()
             ->where('user_id', $user->id)
             ->orderBy('id')
-            ->get(['id', 'tenant_id', 'issue_id', 'kind', 'body', 'created_at', 'updated_at'])
+            ->get(['id', 'tenant_id', 'issue_id', 'kind', 'description', 'created_at', 'updated_at'])
             ->map(fn (IssueUpdate $update) => [
                 'id' => $update->id,
                 'tenant_id' => $update->tenant_id,
                 'issue_id' => $update->issue_id,
                 'kind' => $update->kind,
-                'body' => $update->body,
+                'description' => $update->description,
                 'created_at' => $update->created_at?->toIso8601String(),
                 'updated_at' => $update->updated_at?->toIso8601String(),
             ])

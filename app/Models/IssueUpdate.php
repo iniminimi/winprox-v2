@@ -11,7 +11,7 @@ class IssueUpdate extends Model
 {
     use BelongsToTenant;
 
-    protected $fillable = ['tenant_id', 'issue_id', 'user_id', 'worker_id', 'kind', 'body'];
+    protected $fillable = ['tenant_id', 'issue_id', 'user_id', 'worker_id', 'kind', 'description'];
 
     public function issue(): BelongsTo
     {

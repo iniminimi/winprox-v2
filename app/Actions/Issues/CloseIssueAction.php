@@ -40,7 +40,7 @@ class CloseIssueAction
 
         $this->addUpdate->handle(
             issue: $issue,
-            body: trim($reason),
+            description: trim($reason),
             userId: $actor?->id,
             kind: 'close_reason',
         );

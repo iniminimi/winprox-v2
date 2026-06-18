@@ -182,8 +182,8 @@
             "worker_photos": "Foto's uitvoerder"
         },
         "errors": {
-            "body_required": "Geef een notitie.",
-            "body_min": "De notitie moet minstens 2 tekens bevatten.",
+            "description_required": "Geef een notitie.",
+            "description_min": "De notitie moet minstens 2 tekens bevatten.",
             "photos_max": "Maximaal 4 foto's per notitie.",
             "photos_image": "Alleen afbeeldingen zijn toegestaan."
         }

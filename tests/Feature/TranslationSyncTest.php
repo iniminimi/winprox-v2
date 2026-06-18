@@ -44,7 +44,7 @@ it('vertaalt export-items via de provider', function () {
     ]);
 
     expect($items)->toBe([
-        ['issue_id' => 12, 'locale' => 'nl', 'text' => '[nl] Broken window'],
+        ['issue_id' => 12, 'locale' => 'nl', 'description' => '[nl] Broken window'],
     ]);
 });
 

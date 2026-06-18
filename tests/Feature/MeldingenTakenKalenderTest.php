@@ -54,7 +54,7 @@ it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () 
         ->and($issue->tasks)->toHaveCount(1)
         ->and($issue->tasks->first()->status)->toBe(TaskStatus::InProgress)
         ->and($issue->tasks->first()->internal_team_id)->toBe($team->id)
-        ->and($issue->tasks->first()->note)->toBe('Direct aanpakken');
+        ->and($issue->tasks->first()->description)->toBe('Direct aanpakken');
 });
 
 it('toont validatiefouten bij lege stap 1 van aanmaak-modal', function () {
@@ -345,7 +345,7 @@ it('wijzigt het team op taakdetail', function () {
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
         'internal_team_id' => $teamA->id,
-        'note' => 'Kolombor schilderen',
+        'description' => 'Kolombor schilderen',
     ]);
 
     Livewire::actingAs($user)
@@ -376,7 +376,7 @@ it('wijzigt notitie en geplande datum op taakdetail', function () {
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
-        'note' => 'Oorspronkelijke melding',
+        'description' => 'Oorspronkelijke melding',
     ]);
 
     Livewire::actingAs($user)
@@ -388,7 +388,7 @@ it('wijzigt notitie en geplande datum op taakdetail', function () {
 
     $task->refresh();
 
-    expect($task->note)->toBe('Aangepaste taaknotitie')
+    expect($task->description)->toBe('Aangepaste taaknotitie')
         ->and($task->scheduled_for?->format('Y-m-d'))->toBe('2026-07-15');
 });
 

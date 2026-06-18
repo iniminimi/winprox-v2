@@ -9,7 +9,7 @@ class UpdateTaskDetailsAction
 {
     public function handle(
         Task $task,
-        string $note,
+        string $description,
         ?string $scheduledFor,
         int $tenantId,
     ): Task {
@@ -20,7 +20,7 @@ class UpdateTaskDetailsAction
         }
 
         $task->update([
-            'note' => $note,
+            'description' => $description,
             'scheduled_for' => $scheduledFor !== null && $scheduledFor !== '' ? $scheduledFor : null,
         ]);
 

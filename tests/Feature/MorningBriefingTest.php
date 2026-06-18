@@ -27,7 +27,7 @@ it('build morning briefing action levert taken voor team en datum', function () 
         'internal_team_id' => $team->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
-        'note' => 'Testtaak briefing',
+        'description' => 'Testtaak briefing',
     ]);
 
     $briefing = app(BuildMorningBriefingAction::class)->handle(
@@ -71,7 +71,7 @@ it('toont briefing filter en taken na team en datum', function () {
         'internal_team_id' => $team->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
-        'note' => 'Lift storing oplossen',
+        'description' => 'Lift storing oplossen',
     ]);
 
     Tenancy::actAs($tenant->id);

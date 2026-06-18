@@ -22,7 +22,7 @@ class Announcements extends Component
 
     public ?int $editingAnnouncementId = null;
 
-    public string $body = '';
+    public string $description = '';
 
     public string $unitId = '';
 
@@ -39,7 +39,7 @@ class Announcements extends Component
     protected function rules(): array
     {
         return [
-            'body' => ['required', 'string', 'max:5000'],
+            'description' => ['required', 'string', 'max:5000'],
             'unitId' => ['nullable', 'string'],
             'isActive' => ['boolean'],
             'expiresAt' => ['nullable', 'date'],
@@ -50,7 +50,7 @@ class Announcements extends Component
     {
         $this->authorize('create', [Announcement::class, $this->location]);
         $this->resetValidation();
-        $this->body = '';
+        $this->description = '';
         $this->unitId = '';
         $this->isActive = true;
         $this->expiresAt = '';
@@ -70,7 +70,7 @@ class Announcements extends Component
 
         $this->resetValidation();
         $this->editingAnnouncementId = $announcement->id;
-        $this->body = (string) $announcement->body;
+        $this->description = (string) $announcement->description;
         $this->unitId = $announcement->unit_id ? (string) $announcement->unit_id : '';
         $this->isActive = (bool) $announcement->is_active;
         $this->expiresAt = $announcement->expires_at?->format('Y-m-d') ?? '';
@@ -98,7 +98,7 @@ class Announcements extends Component
 
         try {
             $create->handle($this->location, [
-                'body' => trim((string) $validated['body']),
+                'description' => trim((string) $validated['description']),
                 'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
                 'is_active' => (bool) $validated['isActive'],
                 'expires_at' => $validated['expiresAt'] ?: null,
@@ -134,7 +134,7 @@ class Announcements extends Component
 
         try {
             $update->handle($this->location, $announcement, [
-                'body' => trim((string) $validated['body']),
+                'description' => trim((string) $validated['description']),
                 'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
                 'is_active' => (bool) $validated['isActive'],
                 'expires_at' => $validated['expiresAt'] ?: null,

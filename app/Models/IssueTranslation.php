@@ -11,7 +11,7 @@ class IssueTranslation extends Model
     protected $fillable = [
         'issue_id',
         'locale',
-        'text',
+        'description',
         'status',
     ];
 

@@ -41,7 +41,7 @@ class TranslateIssueAction
             ->where('locale', $targetLocale)
             ->firstOrFail();
 
-        if ($row->status === IssueTranslationStatus::Completed && filled($row->text)) {
+        if ($row->status === IssueTranslationStatus::Completed && filled($row->description)) {
             return $row;
         }
 
@@ -52,7 +52,7 @@ class TranslateIssueAction
             : IssueTranslationStatus::Failed;
 
         $row->fill([
-            'text' => $translated !== '' ? $translated : $sourceText,
+            'description' => $translated !== '' ? $translated : $sourceText,
             'status' => $status,
         ])->save();
 
