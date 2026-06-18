@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Vertaling omschrijving",
-                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond."
+                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald via Platform → Vertalingen. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen volgen hetzelfde principe op de locatiepagina."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",
@@ -199,7 +199,7 @@
                 },
                 {
                     "label": "Documenten & mededelingen",
-                    "text": "Beheer handleidingen en mededelingen die melders op de QR-pagina zien."
+                    "text": "Beheer handleidingen (documenten uploadt de tenant zelf per taal) en mededelingen op de QR-pagina. Actieve mededelingen worden automatisch vertaald via Platform → Vertalingen; in het bewerkformulier ziet u een vertaal-preview per taal."
                 }
             ]
         },
@@ -475,7 +475,7 @@
                 },
                 {
                     "label": "Mededelingen",
-                    "text": "Raadpleeg hier de mededelingen die specifiek voor deze unit gelden."
+                    "text": "Raadpleeg hier de mededelingen die specifiek voor deze unit gelden. Kies bovenaan een taal — de tekst wordt automatisch vertaald zodra dat klaar is."
                 },
                 {
                     "label": "GPS-locatie (her)vastleggen",
@@ -621,6 +621,27 @@
                 "done": "Afgerond door jou of een collega.",
                 "closed": "Afgesloten door beheer."
             }
+        },
+        "platform.translations": {
+            "title": "Hulp — Vertalingen",
+            "actions": [
+                {
+                    "label": "Wat wordt vertaald?",
+                    "text": "Goedgekeurde QR-meldingen en actieve mededelingen krijgen automatisch vertaalslots (NL, EN, FR, DE). Documenten worden niet automatisch vertaald — de tenant uploadt per taal zelf."
+                },
+                {
+                    "label": "Lokaal via Ollama",
+                    "text": "Als superuser op uw laptop: start <code>php artisan queue:work</code>, klik op « Vertalingen starten ». Pending meldingen én mededelingen worden geëxporteerd, lokaal vertaald en terug geïmporteerd op de server."
+                },
+                {
+                    "label": "Serverstatus",
+                    "text": "Op de productieserver ziet u hoeveel vertalingen nog wachten. De teller telt goedgekeurde meldingen en actieve mededelingen samen."
+                },
+                {
+                    "label": "Tekst gewijzigd",
+                    "text": "Wijzigt iemand de brontekst van een mededeling, dan worden bestaande vertalingen ongeldig en opnieuw pending. Voer daarna opnieuw een vertaal-run uit."
+                }
+            ]
         },
         "platform.tenants": {
             "title": "Hulp — Platform",

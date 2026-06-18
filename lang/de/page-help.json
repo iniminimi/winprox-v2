@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Übersetzung der Beschreibung",
-                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt."
+                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Mitteilungen funktionieren gleich auf der Standortseite."
                 }
             ],
             "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",
@@ -199,7 +199,7 @@
                 },
                 {
                     "label": "Dokumente & Mitteilungen",
-                    "text": "Verwalten Sie Handbücher und Mitteilungen, die Melder auf der QR-Seite sehen."
+                    "text": "Verwalten Sie Handbücher (der Tenant lädt Dokumente selbst pro Sprache hoch) und Mitteilungen auf der QR-Seite. Aktive Mitteilungen werden automatisch über Plattform → Übersetzungen übersetzt; im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache."
                 }
             ]
         },
@@ -475,7 +475,7 @@
                 },
                 {
                     "label": "Mitteilungen",
-                    "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten, ein."
+                    "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten. Wählen Sie oben eine Sprache — der Text wird automatisch übersetzt, sobald er bereit ist."
                 },
                 {
                     "label": "GPS-Standort (neu) erfassen",
@@ -621,6 +621,27 @@
                 "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
                 "closed": "Vom Administrator geschlossen."
             }
+        },
+        "platform.translations": {
+            "title": "Hilfe — Übersetzungen",
+            "actions": [
+                {
+                    "label": "Was wird übersetzt?",
+                    "text": "Freigegebene QR-Meldungen und aktive Mitteilungen erhalten automatisch Übersetzungsslots (NL, EN, FR, DE). Dokumente werden nicht automatisch übersetzt — der Tenant lädt pro Sprache selbst hoch."
+                },
+                {
+                    "label": "Lokal via Ollama",
+                    "text": "Als Superuser auf Ihrem Laptop: <code>php artisan queue:work</code> starten, auf « Übersetzungen starten » klicken. Ausstehende Meldungen und Mitteilungen werden exportiert, lokal übersetzt und auf dem Server importiert."
+                },
+                {
+                    "label": "Serverstatus",
+                    "text": "In Produktion sehen Sie, wie viele Übersetzungen noch warten. Die Zählung umfasst freigegebene Meldungen und aktive Mitteilungen."
+                },
+                {
+                    "label": "Quelltext geändert",
+                    "text": "Ändert jemand den Quelltext einer Mitteilung, werden bestehende Übersetzungen ungültig und wieder pending. Führen Sie danach erneut einen Übersetzungslauf aus."
+                }
+            ]
         },
         "platform.tenants": {
             "title": "Hilfe — Plattform",

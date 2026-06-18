@@ -82,6 +82,7 @@ class RunTranslationSyncPipelineAction
                         'total' => $itemTotal,
                         'completed' => $completed,
                         'current_issue_id' => $current['issue_id'] ?? null,
+                        'current_announcement_id' => $current['announcement_id'] ?? null,
                         'current_locale' => $current['locale'] ?? null,
                     ]);
                 },

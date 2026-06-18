@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Traduction de la description",
-                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant."
+                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces suivent le même principe sur la page du site."
                 }
             ],
             "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",
@@ -199,7 +199,7 @@
                 },
                 {
                     "label": "Documents & annonces",
-                    "text": "Gérez les manuels et annonces visibles sur la page QR."
+                    "text": "Gérez les manuels (le tenant téléverse lui-même les documents par langue) et les annonces sur la page QR. Les annonces actives sont traduites automatiquement via Plateforme → Traductions ; le formulaire d'édition affiche un aperçu par langue."
                 }
             ]
         },
@@ -475,7 +475,7 @@
                 },
                 {
                     "label": "Annonces",
-                    "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité."
+                    "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité. Choisissez une langue en haut — le texte est traduit automatiquement dès qu'il est prêt."
                 },
                 {
                     "label": "Enregistrer la position GPS",
@@ -621,6 +621,27 @@
                 "done": "Terminée par vous ou un collègue.",
                 "closed": "Clôturée par l'administration."
             }
+        },
+        "platform.translations": {
+            "title": "Aide — Traductions",
+            "actions": [
+                {
+                    "label": "Qu'est-ce qui est traduit ?",
+                    "text": "Les signalements QR validés et les annonces actives reçoivent automatiquement des emplacements de traduction (NL, EN, FR, DE). Les documents ne sont pas traduits automatiquement — le tenant téléverse par langue."
+                },
+                {
+                    "label": "Local via Ollama",
+                    "text": "En tant que superuser sur votre ordinateur portable : lancez <code>php artisan queue:work</code>, cliquez sur « Démarrer les traductions ». Signalements et annonces en attente sont exportés, traduits localement et réimportés sur le serveur."
+                },
+                {
+                    "label": "État serveur",
+                    "text": "En production, vous voyez combien de traductions attendent encore. Le compteur inclut signalements validés et annonces actives."
+                },
+                {
+                    "label": "Texte source modifié",
+                    "text": "Si quelqu'un modifie le texte source d'une annonce, les traductions existantes sont invalidées et repassent en attente. Relancez ensuite une synchronisation."
+                }
+            ]
         },
         "platform.tenants": {
             "title": "Aide — Plateforme",

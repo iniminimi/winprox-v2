@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Description translation",
-                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then."
+                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval via Platform → Translations. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Announcements follow the same pattern on the location page."
                 }
             ],
             "status_note": "Change issue status by updating the tasks.",
@@ -199,7 +199,7 @@
                 },
                 {
                     "label": "Documents & announcements",
-                    "text": "Manage manuals and announcements that reporters see on the QR page."
+                    "text": "Manage manuals (tenants upload documents per language themselves) and announcements on the QR page. Active announcements are translated automatically via Platform → Translations; the edit form shows a translation preview per language."
                 }
             ]
         },
@@ -475,7 +475,7 @@
                 },
                 {
                     "label": "Announcements",
-                    "text": "View the announcements that apply specifically to this unit here."
+                    "text": "View the announcements that apply specifically to this unit here. Pick a language at the top — the text is translated automatically once ready."
                 },
                 {
                     "label": "Capture GPS location",
@@ -621,6 +621,27 @@
                 "done": "Completed by you or a colleague.",
                 "closed": "Closed by admin."
             }
+        },
+        "platform.translations": {
+            "title": "Help — Translations",
+            "actions": [
+                {
+                    "label": "What gets translated?",
+                    "text": "Approved QR issues and active announcements automatically get translation slots (NL, EN, FR, DE). Documents are not translated automatically — tenants upload per language themselves."
+                },
+                {
+                    "label": "Local via Ollama",
+                    "text": "As superuser on your laptop: start <code>php artisan queue:work</code>, click « Start translations ». Pending issues and announcements are exported, translated locally, and imported back on the server."
+                },
+                {
+                    "label": "Server status",
+                    "text": "On production you see how many translations are still waiting. The count includes approved issues and active announcements."
+                },
+                {
+                    "label": "Source text changed",
+                    "text": "If someone edits an announcement's source text, existing translations are invalidated and set to pending again. Run a new translation sync afterwards."
+                }
+            ]
         },
         "platform.tenants": {
             "title": "Help — Platform",

@@ -3,6 +3,7 @@
         icon="issues"
         :title="__('platform.translation_sync.title')"
         :subtitle="$isLocalOperator ? __('platform.translation_sync.subtitle') : __('platform.translation_sync.server_subtitle')"
+        help-page="platform.translations"
     />
 
     @if ($isLocalOperator)
@@ -90,8 +91,15 @@ php artisan queue:work</code></pre>
                         </p>
                         @if (! empty($status['current_issue_id']))
                             <p class="wp-muted">
-                                {{ __('platform.translation_sync.current_item', [
-                                    'issue' => $status['current_issue_id'],
+                                {{ __('platform.translation_sync.current_item_issue', [
+                                    'id' => $status['current_issue_id'],
+                                    'locale' => strtoupper((string) ($status['current_locale'] ?? '')),
+                                ]) }}
+                            </p>
+                        @elseif (! empty($status['current_announcement_id']))
+                            <p class="wp-muted">
+                                {{ __('platform.translation_sync.current_item_announcement', [
+                                    'id' => $status['current_announcement_id'],
                                     'locale' => strtoupper((string) ($status['current_locale'] ?? '')),
                                 ]) }}
                             </p>
