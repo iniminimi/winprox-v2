@@ -127,6 +127,7 @@
         "workflow_step_2": "Auf « Übersetzungen starten » klicken.",
         "reminder_title": "Meldungsübersetzungen nicht vergessen",
         "reminder_body": "Ausstehende Übersetzungen müssen auf Ihrem Laptop laufen über Plattform → Übersetzungen (Ollama). Der Server übersetzt nicht automatisch.",
+        "reminder_local": "Starten Sie Meldungsübersetzungen über Plattform → Übersetzungen (Ollama) — z. B. nach neu freigegebenen Meldungen auf dem Server.",
         "reminder_pending": ":count Übersetzung(en) warten noch auf Ihrem Laptop.",
         "reminder_none": "Keine ausstehenden Übersetzungen auf dem Server.",
         "server_subtitle": "Serverstatus — Übersetzung läuft lokal.",

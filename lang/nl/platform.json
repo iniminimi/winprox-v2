@@ -127,6 +127,7 @@
         "workflow_step_2": "Klik op « Vertalingen starten ».",
         "reminder_title": "Vergeet de meldingvertalingen niet",
         "reminder_body": "Openstaande vertalingen moeten op je laptop lopen via Platform → Vertalingen (Ollama). De server vertaalt niet automatisch.",
+        "reminder_local": "Laat meldingvertalingen lopen via Platform → Vertalingen (Ollama) — bijvoorbeeld na nieuwe goedgekeurde meldingen op de server.",
         "reminder_pending": ":count vertalingen wachten nog op je laptop.",
         "reminder_none": "Geen openstaande vertalingen op de server.",
         "server_subtitle": "Status op de server — vertalen gebeurt lokaal.",

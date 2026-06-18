@@ -127,6 +127,7 @@
         "workflow_step_2": "Click « Start translations ».",
         "reminder_title": "Don't forget issue translations",
         "reminder_body": "Pending translations must run on your laptop via Platform → Translations (Ollama). The server does not translate automatically.",
+        "reminder_local": "Run issue translations via Platform → Translations (Ollama) — for example after new approved issues on the server.",
         "reminder_pending": ":count translation(s) still waiting on your laptop.",
         "reminder_none": "No pending translations on the server.",
         "server_subtitle": "Server status — translation runs locally.",

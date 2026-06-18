@@ -127,6 +127,7 @@
         "workflow_step_2": "Cliquez sur « Démarrer les traductions ».",
         "reminder_title": "N'oubliez pas les traductions",
         "reminder_body": "Les traductions en attente doivent tourner sur votre ordinateur portable via Plateforme → Traductions (Ollama). Le serveur ne traduit pas automatiquement.",
+        "reminder_local": "Lancez les traductions via Plateforme → Traductions (Ollama) — par exemple après de nouveaux signalements approuvés sur le serveur.",
         "reminder_pending": ":count traduction(s) attendent encore sur votre ordinateur portable.",
         "reminder_none": "Aucune traduction en attente sur le serveur.",
         "server_subtitle": "État sur le serveur — la traduction se fait en local.",

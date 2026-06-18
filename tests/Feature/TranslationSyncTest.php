@@ -140,17 +140,20 @@ it('toont vertaal-herinnering op platform organisaties voor superuser op product
 
     Livewire::actingAs($user)
         ->test(PlatformTenants::class)
-        ->assertSee(__('platform.translation_sync.reminder_title'));
+        ->assertSee(__('platform.translation_sync.reminder_title'))
+        ->assertSee(__('platform.translation_sync.reminder_body'));
 });
 
-it('toont geen vertaal-herinnering in lokale omgeving', function () {
+it('toont lokale vertaal-herinnering zonder server-telling', function () {
     $this->app->detectEnvironment(fn () => 'local');
 
     $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
 
     Livewire::actingAs($user)
         ->test(PlatformTenants::class)
-        ->assertDontSee(__('platform.translation_sync.reminder_title'));
+        ->assertSee(__('platform.translation_sync.reminder_title'))
+        ->assertSee(__('platform.translation_sync.reminder_local'))
+        ->assertDontSee(__('platform.translation_sync.reminder_body'));
 });
 
 it('toont servermelding op vertaalpagina zonder lokale sync-config', function () {

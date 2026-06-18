@@ -11,6 +11,8 @@ class WpTranslationSyncReminder extends Component
 {
     public bool $visible = false;
 
+    public bool $showServerPendingCount = false;
+
     public int $pendingCount = 0;
 
     public function __construct(CountPendingIssueTranslationsAction $countPending)
@@ -21,10 +23,10 @@ class WpTranslationSyncReminder extends Component
             $user?->is_superuser
             && $user->tenant_id === null
             && ! SupportTenantContext::isActive()
-            && ! app()->environment('local')
         ) {
             $this->visible = true;
-            $this->pendingCount = $countPending->handle();
+            $this->showServerPendingCount = ! app()->environment('local');
+            $this->pendingCount = $this->showServerPendingCount ? $countPending->handle() : 0;
         }
     }
 
