@@ -74,5 +74,15 @@
     "list": {
         "filters_title": "Filters",
         "per_status_limit": "Aantal per status"
+    },
+    "pagination": {
+        "nav_label": "Paginanavigatie",
+        "previous": "Vorige",
+        "next": "Volgende",
+        "showing": "Toont",
+        "to": "t/m",
+        "of": "van",
+        "results": "resultaten",
+        "go_to_page": "Ga naar pagina :page"
     }
 }

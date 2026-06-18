@@ -16,8 +16,10 @@ use App\Services\Translation\OllamaProvider;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\JsonTranslationLoader;
 use Illuminate\Mail\Events\MessageSending;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -49,5 +51,10 @@ class AppServiceProvider extends ServiceProvider
 
         Event::listen(MessageSending::class, BlockUnsubscribedEmailRecipients::class);
         Event::listen(MessageSending::class, AppendEmailUnsubscribeFooterToMessage::class);
+
+        View::prependNamespace('livewire', resource_path('views/vendor/livewire'));
+
+        Paginator::defaultView('vendor.pagination.tailwind');
+        Paginator::defaultSimpleView('vendor.pagination.tailwind');
     }
 }

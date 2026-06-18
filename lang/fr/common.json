@@ -74,5 +74,15 @@
     "list": {
         "filters_title": "Filtres",
         "per_status_limit": "Nombre par statut"
+    },
+    "pagination": {
+        "nav_label": "Navigation par pages",
+        "previous": "Précédent",
+        "next": "Suivant",
+        "showing": "Affichage de",
+        "to": "à",
+        "of": "sur",
+        "results": "résultats",
+        "go_to_page": "Aller à la page :page"
     }
 }

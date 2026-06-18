@@ -212,7 +212,7 @@ it('filters units on location show by category', function () {
 
 it('paginates units on location show', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'nl']);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Pages']);
 
     foreach (range(1, 21) as $index) {
@@ -223,6 +223,8 @@ it('paginates units on location show', function () {
         ]);
     }
 
+    app()->setLocale('nl');
+
     Livewire::actingAs($user)
         ->test(LocationShow::class, ['location' => $location])
         ->assertSee('Unit 01')
@@ -230,7 +232,10 @@ it('paginates units on location show', function () {
         ->assertDontSee('Unit 21')
         ->call('gotoPage', 2)
         ->assertSee('Unit 21')
-        ->assertDontSee('Unit 01');
+        ->assertDontSee('Unit 01')
+        ->assertSee('Toont')
+        ->assertSee('van')
+        ->assertSee('resultaten');
 });
 
 it('manages categories from locations index', function () {
