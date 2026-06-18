@@ -130,6 +130,7 @@
         "status_title": "Voortgang",
         "status_at": "Bijgewerkt: :datetime",
         "progress": ":completed van :total vertaald",
+        "progress_percent": ":completed van :total (:percent%)",
         "current_item": "Melding #:issue — :locale",
         "completed_summary": ":imported van :total vertalingen geïmporteerd op de server.",
         "nothing_pending": "Geen pending vertalingen op de server.",

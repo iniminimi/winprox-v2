@@ -130,6 +130,7 @@
         "status_title": "Progress",
         "status_at": "Updated: :datetime",
         "progress": ":completed of :total translated",
+        "progress_percent": ":completed of :total (:percent%)",
         "current_item": "Issue #:issue — :locale",
         "completed_summary": ":imported of :total translations imported on the server.",
         "nothing_pending": "No pending translations on the server.",
