@@ -129,6 +129,8 @@
         "reminder_body": "Ausstehende Übersetzungen müssen auf Ihrem Laptop laufen über Plattform → Übersetzungen (Ollama). Der Server übersetzt nicht automatisch.",
         "reminder_pending": ":count Übersetzung(en) warten noch auf Ihrem Laptop.",
         "reminder_none": "Keine ausstehenden Übersetzungen auf dem Server.",
+        "server_subtitle": "Serverstatus — Übersetzung läuft lokal.",
+        "server_only_message": "Übersetzungen laufen über den lokalen Computer, nicht über den Internetserver.",
         "start": "Übersetzungen starten",
         "queued": "Übersetzungslauf in Warteschlange.",
         "not_enabled": "TRANSLATION_SYNC_ENABLED ist aus oder SSH-Einstellungen fehlen.",

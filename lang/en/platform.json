@@ -129,6 +129,8 @@
         "reminder_body": "Pending translations must run on your laptop via Platform → Translations (Ollama). The server does not translate automatically.",
         "reminder_pending": ":count translation(s) still waiting on your laptop.",
         "reminder_none": "No pending translations on the server.",
+        "server_subtitle": "Server status — translation runs locally.",
+        "server_only_message": "Translations run on the local computer, not on the internet server.",
         "start": "Start translations",
         "queued": "Translation run queued.",
         "not_enabled": "TRANSLATION_SYNC_ENABLED is off or SSH settings are missing.",

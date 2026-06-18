@@ -129,6 +129,8 @@
         "reminder_body": "Openstaande vertalingen moeten op je laptop lopen via Platform → Vertalingen (Ollama). De server vertaalt niet automatisch.",
         "reminder_pending": ":count vertalingen wachten nog op je laptop.",
         "reminder_none": "Geen openstaande vertalingen op de server.",
+        "server_subtitle": "Status op de server — vertalen gebeurt lokaal.",
+        "server_only_message": "Vertalingen lopen via de lokale computer, niet via de internetserver.",
         "start": "Vertalingen starten",
         "queued": "Vertaal-run staat in de wachtrij.",
         "not_enabled": "TRANSLATION_SYNC_ENABLED staat uit of SSH-gegevens ontbreken.",

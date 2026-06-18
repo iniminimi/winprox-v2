@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
 use App\Actions\Communication\StartTranslationSyncAction;
 use App\Models\User;
@@ -49,16 +50,19 @@ class TranslationSync extends Component
         }
     }
 
-    public function render(ReadTranslationSyncStatusAction $readStatus)
+    public function render(ReadTranslationSyncStatusAction $readStatus, CountPendingIssueTranslationsAction $countPending)
     {
+        $isLocalOperator = $this->isLocalOperator();
+
         return view('livewire.platform.translation-sync', [
-            'status' => $readStatus->handle(),
-            'isConfigured' => $this->isConfigured(),
+            'status' => $isLocalOperator ? $readStatus->handle() : null,
+            'isLocalOperator' => $isLocalOperator,
             'useSyncQueue' => config('queue.default') === 'sync',
+            'pendingCount' => $countPending->handle(),
         ]);
     }
 
-    private function isConfigured(): bool
+    private function isLocalOperator(): bool
     {
         if (! config('translation_sync.enabled', false)) {
             return false;
@@ -71,6 +75,11 @@ class TranslationSync extends Component
         }
 
         return true;
+    }
+
+    private function isConfigured(): bool
+    {
+        return $this->isLocalOperator();
     }
 
     private function notConfiguredMessage(): string

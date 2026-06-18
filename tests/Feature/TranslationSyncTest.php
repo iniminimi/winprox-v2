@@ -133,10 +133,33 @@ it('telt pending vertalingen voor goedgekeurde meldingen', function () {
     expect(app(CountPendingIssueTranslationsAction::class)->handle())->toBe(3);
 });
 
-it('toont vertaal-herinnering op platform organisaties voor superuser', function () {
+it('toont vertaal-herinnering op platform organisaties voor superuser op productie', function () {
+    $this->app->detectEnvironment(fn () => 'production');
+
     $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
 
     Livewire::actingAs($user)
         ->test(PlatformTenants::class)
         ->assertSee(__('platform.translation_sync.reminder_title'));
+});
+
+it('toont geen vertaal-herinnering in lokale omgeving', function () {
+    $this->app->detectEnvironment(fn () => 'local');
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+
+    Livewire::actingAs($user)
+        ->test(PlatformTenants::class)
+        ->assertDontSee(__('platform.translation_sync.reminder_title'));
+});
+
+it('toont servermelding op vertaalpagina zonder lokale sync-config', function () {
+    config(['translation_sync.enabled' => false]);
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+
+    Livewire::actingAs($user)
+        ->test(PlatformTranslationSync::class)
+        ->assertSee(__('platform.translation_sync.server_only_message'))
+        ->assertDontSee(__('platform.translation_sync.workflow_title'));
 });

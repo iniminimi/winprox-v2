@@ -129,6 +129,8 @@
         "reminder_body": "Les traductions en attente doivent tourner sur votre ordinateur portable via Plateforme → Traductions (Ollama). Le serveur ne traduit pas automatiquement.",
         "reminder_pending": ":count traduction(s) attendent encore sur votre ordinateur portable.",
         "reminder_none": "Aucune traduction en attente sur le serveur.",
+        "server_subtitle": "État sur le serveur — la traduction se fait en local.",
+        "server_only_message": "Les traductions passent par l'ordinateur local, pas par le serveur internet.",
         "start": "Démarrer les traductions",
         "queued": "Traduction mise en file d'attente.",
         "not_enabled": "TRANSLATION_SYNC_ENABLED est désactivé ou les paramètres SSH manquent.",

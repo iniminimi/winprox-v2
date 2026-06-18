@@ -21,6 +21,7 @@ class WpTranslationSyncReminder extends Component
             $user?->is_superuser
             && $user->tenant_id === null
             && ! SupportTenantContext::isActive()
+            && ! app()->environment('local')
         ) {
             $this->visible = true;
             $this->pendingCount = $countPending->handle();
