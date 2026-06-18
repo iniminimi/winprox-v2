@@ -62,7 +62,23 @@
             </div>
         @endif
 
-        <p class="wp-text-body">{{ $issue->localizedDescription() }}</p>
+        @if ($issue->isApproved())
+            <div class="wp-cluster wp-issue-description-row">
+                <select
+                    id="descriptionLocale"
+                    class="wp-select"
+                    wire:model.live="descriptionLocale"
+                    aria-label="{{ __('issues.show.description_language') }}"
+                >
+                    @foreach ($descriptionLocales as $code => $label)
+                        <option value="{{ $code }}">{{ $label }}</option>
+                    @endforeach
+                </select>
+                <span @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $descriptionMissing])>{{ $descriptionText }}</span>
+            </div>
+        @else
+            <p class="wp-text-body">{{ $issue->description }}</p>
+        @endif
 
         @php
             $issuePhotos = $issue->photos->whereNull('issue_update_id');

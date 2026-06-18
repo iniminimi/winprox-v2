@@ -76,6 +76,10 @@
                 {
                     "label": "Approve",
                     "text": "Approve QR issues before description and photos become publicly visible."
+                },
+                {
+                    "label": "Description translation",
+                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then."
                 }
             ],
             "status_note": "Change issue status by updating the tasks.",

@@ -130,6 +130,8 @@
         "tasks": "Tâches",
         "tasks_empty": "Aucune tâche pour le moment.",
         "tasks_hidden_until_approved": "Les tâches deviennent visibles après validation du signalement.",
+        "description_language": "Langue de la description",
+        "description_not_translated": "Pas encore traduit",
         "no_team": "Aucune équipe",
         "status_section": "Modifier le statut",
         "status_hint": "Choisissez une action pour ce signalement.",

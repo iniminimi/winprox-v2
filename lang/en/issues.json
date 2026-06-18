@@ -130,6 +130,8 @@
         "tasks": "Tasks",
         "tasks_empty": "No tasks yet.",
         "tasks_hidden_until_approved": "Tasks become visible after this issue is approved.",
+        "description_language": "Description language",
+        "description_not_translated": "Not translated yet",
         "no_team": "No team",
         "status_section": "Change status",
         "status_hint": "Choose an action for this issue.",

@@ -76,6 +76,10 @@
                 {
                     "label": "Freigeben",
                     "text": "Geben Sie QR-Meldungen frei, bevor Beschreibung und Fotos öffentlich sichtbar werden."
+                },
+                {
+                    "label": "Übersetzung der Beschreibung",
+                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt."
                 }
             ],
             "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",

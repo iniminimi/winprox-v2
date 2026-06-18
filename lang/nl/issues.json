@@ -130,6 +130,8 @@
         "tasks": "Taken",
         "tasks_empty": "Er zijn nog geen taken.",
         "tasks_hidden_until_approved": "Taken worden zichtbaar nadat deze melding is goedgekeurd.",
+        "description_language": "Taal omschrijving",
+        "description_not_translated": "Nog niet vertaald",
         "no_team": "Geen team",
         "status_section": "Status wijzigen",
         "status_hint": "Kies een actie voor deze melding.",

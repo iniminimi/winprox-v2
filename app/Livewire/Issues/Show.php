@@ -16,6 +16,7 @@ use App\Models\Task;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Support\EntityDetailNavigation;
+use App\Support\Translation\LocaleSupport;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -58,10 +59,13 @@ class Show extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $updatePhotos = [];
 
+    public string $descriptionLocale = '';
+
     public function mount(Issue $issue): void
     {
         $this->authorize('view', $issue);
         $this->issue = $issue;
+        $this->descriptionLocale = LocaleSupport::normalize(app()->getLocale());
     }
 
     public function approve(ApproveIssueAction $approveIssue): void
@@ -375,6 +379,13 @@ class Show extends Component
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';
 
+        $displayLocale = LocaleSupport::normalize($this->descriptionLocale);
+        $descriptionText = $issue->isApproved()
+            ? $issue->descriptionForDisplayLocale($displayLocale)
+            : (string) $issue->description;
+        $descriptionMissing = $issue->isApproved()
+            && $issue->descriptionMissingForDisplayLocale($displayLocale);
+
         return view('livewire.issues.show', [
             'issue' => $issue,
             'teams' => InternalTeam::query()->orderBy('name')->get(),
@@ -382,6 +393,9 @@ class Show extends Component
             'headline' => $headline,
             'addressLine' => $addressLine,
             'nav' => EntityDetailNavigation::forIssue($issue),
+            'descriptionText' => $descriptionText,
+            'descriptionMissing' => $descriptionMissing,
+            'descriptionLocales' => config('locales.labels', []),
         ]);
     }
 }

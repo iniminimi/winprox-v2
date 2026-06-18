@@ -76,6 +76,10 @@
                 {
                     "label": "Goedkeuren",
                     "text": "Keur QR-meldingen goed voordat omschrijving en foto's publiek zichtbaar zijn."
+                },
+                {
+                    "label": "Vertaling omschrijving",
+                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",

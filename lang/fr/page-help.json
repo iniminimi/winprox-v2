@@ -76,6 +76,10 @@
                 {
                     "label": "Approuver",
                     "text": "Approuvez les signalements QR avant que la description et les photos ne deviennent publiques."
+                },
+                {
+                    "label": "Traduction de la description",
+                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant."
                 }
             ],
             "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",

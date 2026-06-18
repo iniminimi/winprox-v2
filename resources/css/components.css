@@ -287,6 +287,12 @@
     max-width: 14rem;
 }
 
+.wp-issue-description-row {
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
+
 /* ---------------------------------------------------------------------------
  | Paginakop (titel + acties) en compacte stack.
  * ------------------------------------------------------------------------- */

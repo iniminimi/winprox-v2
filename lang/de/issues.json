@@ -130,6 +130,8 @@
         "tasks": "Aufgaben",
         "tasks_empty": "Noch keine Aufgaben.",
         "tasks_hidden_until_approved": "Aufgaben werden sichtbar, sobald diese Meldung freigegeben ist.",
+        "description_language": "Sprache der Beschreibung",
+        "description_not_translated": "Noch nicht übersetzt",
         "no_team": "Kein Team",
         "status_section": "Status ändern",
         "status_hint": "Wählen Sie eine Aktion für diese Meldung.",
