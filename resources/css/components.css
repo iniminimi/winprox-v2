@@ -1813,6 +1813,8 @@ a.wp-kpi:hover {
     color: var(--wp-text-body);
     font-size: 0.875rem;
     text-decoration: none;
+    transition: transform var(--wp-transition), box-shadow var(--wp-transition),
+        background-color var(--wp-transition), border-color var(--wp-transition), color var(--wp-transition);
 }
 
 .wp-pagination__page.is-active {
@@ -1822,7 +1824,8 @@ a.wp-kpi:hover {
 }
 
 .wp-pagination__control[aria-disabled="true"],
-.wp-pagination__page.is-active {
+.wp-pagination__page.is-active,
+.wp-pagination__ellipsis {
     cursor: default;
 }
 
@@ -1832,11 +1835,21 @@ button.wp-pagination__page {
 }
 
 button.wp-pagination__control:hover,
-button.wp-pagination__page:hover,
+button.wp-pagination__page:hover:not(.is-active),
 a.wp-pagination__control:hover,
-a.wp-pagination__page:hover {
+a.wp-pagination__page:hover:not(.is-active) {
+    transform: translateY(-2px);
+    box-shadow: var(--wp-shadow);
     background-color: var(--wp-surface-2);
     text-decoration: none;
+}
+
+button.wp-pagination__control:active,
+button.wp-pagination__page:active:not(.is-active),
+a.wp-pagination__control:active,
+a.wp-pagination__page:active:not(.is-active) {
+    transform: translateY(0);
+    box-shadow: var(--wp-shadow-sm);
 }
 
 .wp-detail-nav {
