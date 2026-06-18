@@ -210,6 +210,29 @@ it('filters units on location show by category', function () {
         ->assertDontSee('Kamer B');
 });
 
+it('paginates units on location show', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Pages']);
+
+    foreach (range(1, 21) as $index) {
+        Unit::factory()->create([
+            'tenant_id' => $tenant->id,
+            'location_id' => $location->id,
+            'name' => sprintf('Unit %02d', $index),
+        ]);
+    }
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->assertSee('Unit 01')
+        ->assertSee('Unit 20')
+        ->assertDontSee('Unit 21')
+        ->call('gotoPage', 2)
+        ->assertSee('Unit 21')
+        ->assertDontSee('Unit 01');
+});
+
 it('manages categories from locations index', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

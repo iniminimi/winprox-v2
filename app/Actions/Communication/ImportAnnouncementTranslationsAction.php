@@ -3,6 +3,7 @@
 namespace App\Actions\Communication;
 
 use App\Enums\AnnouncementTranslationStatus;
+use App\Events\Communication\AnnouncementTranslationImported;
 use App\Models\Announcement;
 use App\Models\AnnouncementTranslation;
 use App\Support\Audit\AuditRecorder;
@@ -76,6 +77,8 @@ class ImportAnnouncementTranslationsAction
                     'locale' => $locale,
                 ],
             );
+
+            AnnouncementTranslationImported::dispatch($row, $actorUserId);
 
             $imported++;
         }

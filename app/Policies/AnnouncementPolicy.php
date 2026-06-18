@@ -13,6 +13,12 @@ class AnnouncementPolicy
         return (new LocationPolicy)->viewAny($user);
     }
 
+    public function view(User $user, Announcement $announcement): bool
+    {
+        return $user->is_superuser
+            || (int) $user->tenant_id === (int) $announcement->tenant_id;
+    }
+
     public function create(User $user, Location $location): bool
     {
         return (new LocationPolicy)->update($user, $location);

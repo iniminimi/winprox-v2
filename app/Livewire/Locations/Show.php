@@ -34,12 +34,17 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Show extends Component
 {
     use WithFileUploads;
+    use WithPagination;
+
+    protected string $paginationTheme = 'tailwind';
+
     public Location $location;
 
     public bool $showLocationModal = false;
@@ -85,6 +90,16 @@ class Show extends Component
 
     #[Url(as: 'unit')]
     public string $unitSearch = '';
+
+    public function updatedUnitCategoryFilter(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedUnitSearch(): void
+    {
+        $this->resetPage();
+    }
 
     public string $bulkFloors = '1';
 
@@ -450,10 +465,6 @@ class Show extends Component
     {
         $categoriesEnabled = Schema::hasTable('categories');
 
-        $this->location->loadMissing([
-            'units' => fn ($q) => $q->withCount('issues'),
-        ]);
-
         $units = Unit::query()
             ->where('location_id', $this->location->id)
             ->with(['qrCodes' => function ($q) {
@@ -471,7 +482,7 @@ class Show extends Component
                 });
             })
             ->orderBy('name')
-            ->get();
+            ->paginate(20);
 
         $bulkSummaries = UnitBulkBatchRegistry::recentBatchesForLocation($this->location)
             ->map(fn (UnitBulkBatch $batch) => array_merge(

@@ -3,6 +3,7 @@
 namespace App\Actions\Communication;
 
 use App\Enums\IssueTranslationStatus;
+use App\Events\Issues\IssueTranslationImported;
 use App\Models\Issue;
 use App\Models\IssueTranslation;
 use App\Support\Audit\AuditRecorder;
@@ -76,6 +77,8 @@ class ImportIssueTranslationsAction
                     'locale' => $locale,
                 ],
             );
+
+            IssueTranslationImported::dispatch($row, $actorUserId);
 
             $imported++;
         }

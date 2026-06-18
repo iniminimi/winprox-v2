@@ -27,6 +27,16 @@ abstract class Controller extends BaseController
     }
 
     /**
+     * Eenvoudige data-response zonder resource-wrapper.
+     *
+     * @param  array<string, mixed>  $data
+     */
+    protected function success(array $data, int $status = 200): JsonResponse
+    {
+        return response()->json(['data' => $data], $status);
+    }
+
+    /**
      * Een gepagineerde lijst teruggeven met paginatie-meta.
      */
     protected function paginated(ResourceCollection $collection): JsonResponse

@@ -49,10 +49,10 @@
         <div class="wp-row">
             <div class="wp-cluster">
                 <h2 class="wp-section-title">{{ __('locations.units_title') }}</h2>
-                <span class="wp-pill wp-pill--closed">{{ __('locations.units_total', ['count' => $units->count()]) }}</span>
+                <span class="wp-pill wp-pill--closed">{{ __('locations.units_total', ['count' => $units->total()]) }}</span>
             </div>
             <div class="wp-cluster">
-                @if ($units->isNotEmpty())
+                @if ($units->total() > 0)
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal">{{ __('locations.qr_pack_download') }}</button>
                 @endif
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
@@ -125,6 +125,10 @@
                 <p class="wp-muted">{{ __('locations.no_units') }}</p>
             @endforelse
         </div>
+
+        @if ($units->hasPages())
+            {{ $units->links() }}
+        @endif
     </div>
 
     @if ($bulkSummaries->isNotEmpty())

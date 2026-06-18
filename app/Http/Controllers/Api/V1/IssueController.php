@@ -38,7 +38,7 @@ class IssueController extends Controller
     {
         $this->authorize('view', $issue);
 
-        $issue->load('tasks');
+        $issue->load(['tasks', 'translations']);
 
         return $this->item(new IssueResource($issue));
     }

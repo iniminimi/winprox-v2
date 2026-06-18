@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AnnouncementController;
 use App\Http\Controllers\Api\V1\HookController;
 use App\Http\Controllers\Api\V1\IssueController;
 use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\TaskController;
 use App\Http\Controllers\Api\V1\TeamController;
+use App\Http\Controllers\Api\V1\TranslationController;
 use App\Http\Controllers\Api\V1\UnitController;
 use App\Http\Controllers\Api\V1\UnitGpsReportController;
 use App\Http\Controllers\Api\V1\WorkerController;
@@ -45,6 +47,12 @@ Route::prefix('v1')->group(function () {
         Route::get('workers', [WorkerController::class, 'index'])
             ->middleware([CheckTokenAbilities::class.':workers:read'])
             ->name('api.v1.workers.index');
+        Route::get('announcements', [AnnouncementController::class, 'index'])
+            ->middleware([CheckTokenAbilities::class.':locations:read'])
+            ->name('api.v1.announcements.index');
+        Route::get('announcements/{announcement}', [AnnouncementController::class, 'show'])
+            ->middleware([CheckTokenAbilities::class.':locations:read'])
+            ->name('api.v1.announcements.show');
 
         // Write endpoints (idempotency middleware)
         Route::middleware('idempotency')->group(function () {
@@ -75,5 +83,14 @@ Route::prefix('v1')->group(function () {
                 ->middleware([CheckTokenAbilities::class.':units:update'])
                 ->name('api.v1.units.gps-reports.store');
         });
+
+        // Translation sync endpoints (superuser-only, authorized via UserPolicy::runTranslationSync)
+        Route::get('translations/export', [TranslationController::class, 'export'])
+            ->name('api.v1.translations.export');
+        Route::post('translations/import', [TranslationController::class, 'import'])
+            ->middleware('idempotency')
+            ->name('api.v1.translations.import');
+        Route::get('translations/status', [TranslationController::class, 'status'])
+            ->name('api.v1.translations.status');
     });
 });
