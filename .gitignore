@@ -24,3 +24,8 @@ yarn-error.log
 /.nova
 /.vscode
 /tests/allCountries.txt
+# Lokale eenmalige scripts (niet committen)
+/scripts/enrich-tenant-volume.php
+/scripts/localize-issue-descriptions.php
+/scripts/seed-tenant-volume.php
+/scripts/verify-tenant-volume.php
