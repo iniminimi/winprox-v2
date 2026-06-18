@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -136,7 +137,7 @@ class ImportUnitsAction
             $validator = Validator::make($row, [
                 'location_name' => 'required|string|max:255',
                 'unit_name' => 'required|string|max:255',
-                'description' => 'nullable|string|max:1000',
+                'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
                 'category_name' => 'required|string|max:255',
                 'street' => 'nullable|string|max:255',
                 'house_number' => 'nullable|string|max:50',

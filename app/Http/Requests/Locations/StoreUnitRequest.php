@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Locations;
 
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Schema;
@@ -37,7 +38,7 @@ class StoreUnitRequest extends FormRequest
 
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
-            'description' => ['nullable', 'string', 'max:1000'],
+            'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'category_id' => $categoryRules,
             'public_reports_enabled' => ['boolean'],
         ];

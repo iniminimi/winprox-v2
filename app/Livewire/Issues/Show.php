@@ -17,6 +17,7 @@ use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Support\EntityDetailNavigation;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Validation\TextDescriptionLimits;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -112,7 +113,13 @@ class Show extends Component
 
         $this->reopenReason = trim($this->reopenReason);
 
-        $reopenIssue->handle($this->issue, auth()->user(), $this->reopenReason ?: null);
+        $validated = $this->validate([
+            'reopenReason' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
+        ], [
+            'reopenReason.max' => __('issues.errors.text_max'),
+        ]);
+
+        $reopenIssue->handle($this->issue, auth()->user(), $validated['reopenReason'] ?: null);
 
         $this->closeReopenModal();
         $this->refreshIssue();
@@ -125,10 +132,11 @@ class Show extends Component
         $this->closeReason = trim($this->closeReason);
 
         $validated = $this->validate([
-            'closeReason' => ['required', 'string', 'min:2', 'max:5000'],
+            'closeReason' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
         ], [
             'closeReason.required' => __('issues.errors.close_reason_required'),
             'closeReason.min' => __('issues.errors.close_reason_min'),
+            'closeReason.max' => __('issues.errors.text_max'),
         ]);
 
         $closeIssue->handle($this->issue, auth()->user(), $validated['closeReason']);
@@ -215,13 +223,14 @@ class Show extends Component
 
         $validated = $this->validate([
             'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
-            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ], [
             'newTeamId.required' => __('issues.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
+            'taskNote.max' => __('issues.errors.text_max'),
         ]);
 
         // Update priority
@@ -262,13 +271,14 @@ class Show extends Component
 
         $validated = $this->validate([
             'newTeamId' => ['required', 'integer', 'exists:internal_teams,id'],
-            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'taskPriority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ], [
             'newTeamId.required' => __('issues.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
+            'taskNote.max' => __('issues.errors.text_max'),
         ]);
 
         $extra = [];
@@ -321,12 +331,13 @@ class Show extends Component
         }
 
         $validated = $this->validate([
-            'updateDescription' => ['required', 'string', 'min:2', 'max:5000'],
+            'updateDescription' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'updatePhotos' => ['nullable', 'array', 'max:4'],
             'updatePhotos.*' => ['image', 'max:10240'],
         ], [
             'updateDescription.required' => __('issues.updates.errors.description_required'),
             'updateDescription.min' => __('issues.updates.errors.description_min'),
+            'updateDescription.max' => __('issues.errors.text_max'),
             'updatePhotos.max' => __('issues.updates.errors.photos_max'),
             'updatePhotos.*.image' => __('issues.updates.errors.photos_image'),
         ]);

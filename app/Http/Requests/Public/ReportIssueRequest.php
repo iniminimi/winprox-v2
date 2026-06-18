@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Public;
 
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReportIssueRequest extends FormRequest
@@ -15,7 +16,7 @@ class ReportIssueRequest extends FormRequest
     public static function portalRules(): array
     {
         return [
-            'description' => ['required', 'string', 'min:3', 'max:2000'],
+            'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'reporter_first_name' => ['nullable', 'string', 'max:120'],
             'reporter_last_name' => ['nullable', 'string', 'max:120'],
             'reporter_email' => ['nullable', 'email', 'max:255'],

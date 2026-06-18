@@ -156,6 +156,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 4.3a Tekstkolommen (hard)
 - Vrije, door gebruikers ingevulde **leestekst** op tenant-modellen heet **`description`** (`text`, `nullable` indien optioneel).
+- **Maximum 500 tekens** voor meldingen, taken, tijdlijn-updates, mededelingen, afhandelingsnotities, redenen (sluiten/heropenen/pauze) en overige portaal-/beheer-omschrijvingen (document, unit). Gebruik `TextDescriptionLimits::MAX` in validatie.
 - **Vertalingstabellen:** `{model}_translations.description` — dezelfde naam als het brontekstveld.
 - **Uitzonderingen (niet hernoemen naar `description`):** `title` (korte label/titel, bv. documentnaam), `notes` (interne admin-notities, meervoud), `message` (contactformulier), systeemvelden (`error`, `user_agent`, …).
 - **Geen** nieuwe varianten (`body`, `note`, `text`, `content`) op domain-modellen voor leesbare inhoud.

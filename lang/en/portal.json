@@ -53,7 +53,7 @@
         },
         "errors": {
             "description_required": "Please describe the report.",
-            "description_max": "The description is too long.",
+            "description_max": "The description is too long (max. 500 characters).",
             "reporter_email_invalid": "Please enter a valid email address.",
             "photos_max": "You can add up to 4 photos.",
             "photos_image": "Only images are allowed.",
@@ -104,7 +104,7 @@
             "blocked": "You are blocked after too many attempts. Contact your administrator.",
             "icon_required": "Choose your personal icon.",
             "icon_wrong": "That is not the correct icon.",
-            "note_max": "The note is too long.",
+            "note_max": "The note is too long (max. 500 characters).",
             "no_permission": "You do not have permission to do this."
         }
     },

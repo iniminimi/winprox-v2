@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Public;
 
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompletePortalTaskRequest extends FormRequest
@@ -15,7 +16,7 @@ class CompletePortalTaskRequest extends FormRequest
     public static function ruleSet(): array
     {
         return [
-            'completingNote' => ['nullable', 'string', 'max:2000'],
+            'completingNote' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'completingPhotos' => ['nullable', 'array', 'max:4'],
             'completingPhotos.*' => ['image', 'max:10240'],
         ];

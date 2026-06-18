@@ -53,7 +53,7 @@
         },
         "errors": {
             "description_required": "Bitte beschreiben Sie die Meldung.",
-            "description_max": "Die Beschreibung ist zu lang.",
+            "description_max": "Die Beschreibung ist zu lang (max. 500 Zeichen).",
             "reporter_email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
             "photos_max": "Sie können bis zu 4 Fotos hinzufügen.",
             "photos_image": "Nur Bilder sind erlaubt.",
@@ -104,7 +104,7 @@
             "blocked": "Sie sind nach zu vielen Versuchen gesperrt. Wenden Sie sich an Ihren Administrator.",
             "icon_required": "Wählen Sie Ihr persönliches Symbol.",
             "icon_wrong": "Das ist nicht das richtige Symbol.",
-            "note_max": "Die Notiz ist zu lang.",
+            "note_max": "Die Notiz ist zu lang (max. 500 Zeichen).",
             "no_permission": "Sie haben keine Berechtigung, dies zu tun."
         }
     },

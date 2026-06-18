@@ -13,6 +13,7 @@ use App\Models\InternalTeam;
 use App\Models\Task;
 use App\Support\EntityDetailNavigation;
 use App\Support\Tasks\TaskStatusTransitions;
+use App\Support\Validation\TextDescriptionLimits;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -77,13 +78,14 @@ class Show extends Component
 
         $validated = $this->validate([
             'teamId' => ['required', 'integer', 'exists:internal_teams,id'],
-            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:'.TextDescriptionLimits::MAX],
             'taskScheduledFor' => ['nullable', 'date'],
             'priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ], [
             'teamId.required' => __('tasks.show.errors.team_required'),
             'taskNote.required' => __('issues.show.errors.task_note_required'),
             'taskNote.min' => __('issues.show.errors.task_note_min'),
+            'taskNote.max' => __('issues.errors.text_max'),
         ]);
 
         $updatePriority->handle(
@@ -128,11 +130,12 @@ class Show extends Component
         ];
 
         if (TaskStatusTransitions::requiresReason($from, $to)) {
-            $rules['reason'] = ['required', 'string', 'max:2000'];
+            $rules['reason'] = ['required', 'string', 'max:'.TextDescriptionLimits::MAX];
         }
 
         $validated = $this->validate($rules, [
             'reason.required' => __('tasks.errors.reason_required'),
+            'reason.max' => __('issues.errors.text_max'),
         ]);
 
         $updateStatus->handle(
@@ -151,7 +154,9 @@ class Show extends Component
         $this->authorize('update', $this->task);
 
         $this->validate([
-            'pauseNote' => ['required', 'string', 'max:2000'],
+            'pauseNote' => ['required', 'string', 'max:'.TextDescriptionLimits::MAX],
+        ], [
+            'pauseNote.max' => __('issues.errors.text_max'),
         ]);
 
         $pause->handle($this->task, $this->pauseNote, auth()->user());

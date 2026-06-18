@@ -9,6 +9,7 @@ use App\Actions\Locations\UpdateLocationDocumentAction;
 use App\Models\Document;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Validation\TextDescriptionLimits;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
@@ -54,7 +55,7 @@ class Documents extends Component
     protected function rules(): array
     {
         return [
-            'description' => ['required', 'string', 'min:3', 'max:2000'],
+            'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'unitId' => ['nullable', 'string'],
             'isPublic' => ['boolean'],
             'requiresVerification' => ['boolean'],
@@ -71,6 +72,7 @@ class Documents extends Component
         return [
             'description.required' => __('validation.required'),
             'description.min' => __('validation.min.string', ['min' => 3]),
+            'description.max' => __('issues.errors.text_max'),
             'documentFile.required' => __('locations.documents.errors.file_required'),
             'documentFile.mimes' => __('locations.documents.errors.file_mimes'),
             'documentFile.max' => __('locations.documents.errors.file_max'),
@@ -180,7 +182,7 @@ class Documents extends Component
 
         $this->description = trim($this->description);
         $validated = $this->validate([
-            'description' => ['required', 'string', 'min:3', 'max:2000'],
+            'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'unitId' => ['nullable', 'string'],
             'isPublic' => ['boolean'],
             'requiresVerification' => ['boolean'],

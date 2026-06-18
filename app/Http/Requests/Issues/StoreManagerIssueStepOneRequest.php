@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Issues;
 
+use App\Support\Validation\TextDescriptionLimits;
 use App\Enums\RecurrenceIntervalUnit;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -29,7 +30,7 @@ class StoreManagerIssueStepOneRequest extends FormRequest
         return [
             'location_id' => ['required', 'integer', 'exists:locations,id'],
             'unit_id' => ['nullable', 'integer', 'exists:units,id'],
-            'description' => ['required', 'string', 'min:3', 'max:2000'],
+            'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'is_recurring' => ['sometimes', 'boolean'],
             'recurrence_interval_value' => ['nullable', 'required_if:is_recurring,true', 'integer', 'min:1', 'max:24'],
             'recurrence_interval_unit' => ['nullable', 'required_if:is_recurring,true', Rule::enum(RecurrenceIntervalUnit::class)],

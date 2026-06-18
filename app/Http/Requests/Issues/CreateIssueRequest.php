@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Issues;
 
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateIssueRequest extends FormRequest
@@ -21,7 +22,7 @@ class CreateIssueRequest extends FormRequest
             'unit_id' => ['nullable', 'integer', 'exists:units,id'],
             'reporter_name' => ['nullable', 'string', 'max:255'],
             'reporter_contact' => ['nullable', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:2000'],
+            'description' => ['required', 'string', 'max:'.TextDescriptionLimits::MAX],
             'team_ids' => ['array'],
             'team_ids.*' => ['integer', 'exists:internal_teams,id'],
         ];

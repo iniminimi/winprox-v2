@@ -53,7 +53,7 @@
         },
         "errors": {
             "description_required": "Veuillez décrire le signalement.",
-            "description_max": "La description est trop longue.",
+            "description_max": "La description est trop longue (max. 500 caractères).",
             "reporter_email_invalid": "Veuillez indiquer une adresse e-mail valide.",
             "photos_max": "Vous pouvez ajouter jusqu'à 4 photos.",
             "photos_image": "Seules les images sont autorisées.",
@@ -104,7 +104,7 @@
             "blocked": "Vous êtes bloqué après trop de tentatives. Contactez votre administrateur.",
             "icon_required": "Choisissez votre icône personnelle.",
             "icon_wrong": "Ce n'est pas la bonne icône.",
-            "note_max": "La note est trop longue.",
+            "note_max": "La note est trop longue (max. 500 caractères).",
             "no_permission": "Vous n'avez pas la permission de faire cela."
         }
     },

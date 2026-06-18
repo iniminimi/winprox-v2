@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Tasks;
 
+use App\Support\Validation\TextDescriptionLimits;
 use App\Enums\TaskStatus;
 use App\Support\Tasks\TaskStatusTransitions;
 use Illuminate\Foundation\Http\FormRequest;
@@ -32,7 +33,7 @@ class UpdateTaskStatusRequest extends FormRequest
     {
         return [
             'status' => ['required', Rule::enum(TaskStatus::class)],
-            'reason' => ['nullable', 'string', 'max:2000'],
+            'reason' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
         ];
     }
 

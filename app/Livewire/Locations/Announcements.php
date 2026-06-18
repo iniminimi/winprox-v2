@@ -9,6 +9,7 @@ use App\Actions\Locations\UpdateLocationAnnouncementAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Validation\TextDescriptionLimits;
 use InvalidArgumentException;
 use Livewire\Component;
 
@@ -39,10 +40,20 @@ class Announcements extends Component
     protected function rules(): array
     {
         return [
-            'description' => ['required', 'string', 'max:5000'],
+            'description' => ['required', 'string', 'max:'.TextDescriptionLimits::MAX],
             'unitId' => ['nullable', 'string'],
             'isActive' => ['boolean'],
             'expiresAt' => ['nullable', 'date'],
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    protected function messages(): array
+    {
+        return [
+            'description.max' => __('issues.errors.text_max'),
         ];
     }
 

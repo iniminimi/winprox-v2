@@ -53,7 +53,7 @@
         },
         "errors": {
             "description_required": "Geef een omschrijving van de melding.",
-            "description_max": "De omschrijving is te lang.",
+            "description_max": "De omschrijving is te lang (max. 500 tekens).",
             "reporter_email_invalid": "Geef een geldig e-mailadres op.",
             "photos_max": "Je kunt maximaal 4 foto's toevoegen.",
             "photos_image": "Alleen afbeeldingen zijn toegestaan.",
@@ -104,7 +104,7 @@
             "blocked": "Je bent geblokkeerd na te veel pogingen. Neem contact op met je beheerder.",
             "icon_required": "Kies je persoonlijke icoon.",
             "icon_wrong": "Dat is niet het juiste icoon.",
-            "note_max": "De notitie is te lang.",
+            "note_max": "De notitie is te lang (max. 500 tekens).",
             "no_permission": "Je hebt geen rechten om dit te doen."
         }
     },

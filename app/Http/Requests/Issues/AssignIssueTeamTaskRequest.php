@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Issues;
 
+use App\Support\Validation\TextDescriptionLimits;
 use App\Enums\TaskPriority;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,7 +28,7 @@ class AssignIssueTeamTaskRequest extends FormRequest
     {
         return [
             'internal_team_id' => ['required', 'integer', 'exists:internal_teams,id'],
-            'task_note' => ['nullable', 'string', 'max:2000'],
+            'task_note' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'task_priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ];
     }
@@ -41,6 +42,7 @@ class AssignIssueTeamTaskRequest extends FormRequest
             'internal_team_id.required' => __('issues.errors.team_required'),
             'internal_team_id.integer' => __('issues.errors.team_required'),
             'internal_team_id.exists' => __('issues.errors.team_required'),
+            'task_note.max' => __('issues.errors.text_max'),
         ];
     }
 }

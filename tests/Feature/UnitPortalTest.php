@@ -818,7 +818,7 @@ it('rejects an overly long worker completion note', function () {
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('beginCompleteTask', $task->id)
-        ->set('completingNote', str_repeat('a', 2001))
+        ->set('completingNote', str_repeat('a', 501))
         ->call('submitCompleteTask')
         ->assertHasErrors(['completingNote']);
 
