@@ -1,5 +1,11 @@
 @if ($visible)
-    <div class="wp-card wp-card-pad wp-stack-tight wp-translation-reminder" role="status">
+    <div @class([
+        'wp-card',
+        'wp-card-pad',
+        'wp-stack-tight',
+        'wp-translation-reminder',
+        'wp-card--prio-pulse' => ! $showServerPendingCount,
+    ]) role="status">
         <p class="wp-text-body"><strong>{{ __('platform.translation_sync.reminder_title') }}</strong></p>
         @if ($showServerPendingCount)
             <p class="wp-muted">{{ __('platform.translation_sync.reminder_body') }}</p>
