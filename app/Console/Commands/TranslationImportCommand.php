@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -11,10 +12,12 @@ class TranslationImportCommand extends Command
 {
     protected $signature = 'translation:import';
 
-    protected $description = 'Import translated issue texts from storage/app/imports/translated.json';
+    protected $description = 'Import translated issue and announcement texts from storage/app/imports/translated.json';
 
-    public function handle(ImportIssueTranslationsAction $import): int
-    {
+    public function handle(
+        ImportIssueTranslationsAction $importIssues,
+        ImportAnnouncementTranslationsAction $importAnnouncements,
+    ): int {
         $path = storage_path('app/imports/translated.json');
 
         File::ensureDirectoryExists(dirname($path));
@@ -41,8 +44,24 @@ class TranslationImportCommand extends Command
             return self::FAILURE;
         }
 
+        $issueItems = [];
+        $announcementItems = [];
+
+        foreach ($items as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+
+            if (isset($item['announcement_id'])) {
+                $announcementItems[] = $item;
+            } else {
+                $issueItems[] = $item;
+            }
+        }
+
         try {
-            $count = $import->handle($items);
+            $count = $importIssues->handle($issueItems)
+                + $importAnnouncements->handle($announcementItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 

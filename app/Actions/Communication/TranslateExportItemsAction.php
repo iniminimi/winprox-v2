@@ -11,7 +11,7 @@ class TranslateExportItemsAction
 
     /**
      * @param  list<array<string, mixed>>  $items
-     * @return list<array{issue_id: int, locale: string, description: string}>
+     * @return list<array<string, mixed>>
      */
     public function handle(array $items, ?callable $onProgress = null): array
     {
@@ -20,10 +20,11 @@ class TranslateExportItemsAction
 
         foreach ($items as $index => $item) {
             $issueId = (int) ($item['issue_id'] ?? 0);
+            $announcementId = (int) ($item['announcement_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
 
-            if ($issueId <= 0 || $locale === '' || $sourceText === '') {
+            if (($issueId <= 0 && $announcementId <= 0) || $locale === '' || $sourceText === '') {
                 continue;
             }
 
@@ -33,15 +34,22 @@ class TranslateExportItemsAction
                 $text = $sourceText;
             }
 
-            $translated[] = [
-                'issue_id' => $issueId,
-                'locale' => $locale,
-                'description' => $text,
-            ];
+            $row = ['locale' => $locale, 'description' => $text];
+
+            if ($issueId > 0) {
+                $row = ['issue_id' => $issueId] + $row;
+            }
+
+            if ($announcementId > 0) {
+                $row = ['announcement_id' => $announcementId] + $row;
+            }
+
+            $translated[] = $row;
 
             if ($onProgress !== null) {
                 $onProgress($index + 1, $total, [
-                    'issue_id' => $issueId,
+                    'issue_id' => $issueId > 0 ? $issueId : null,
+                    'announcement_id' => $announcementId > 0 ? $announcementId : null,
                     'locale' => $locale,
                 ]);
             }

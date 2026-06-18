@@ -48,6 +48,20 @@ it('vertaalt export-items via de provider', function () {
     ]);
 });
 
+it('vertaalt mededeling export-items via de provider', function () {
+    $items = app(TranslateExportItemsAction::class)->handle([
+        [
+            'announcement_id' => 7,
+            'locale' => 'fr',
+            'source_text' => 'Travaux demain',
+        ],
+    ]);
+
+    expect($items)->toBe([
+        ['announcement_id' => 7, 'locale' => 'fr', 'description' => '[fr] Travaux demain'],
+    ]);
+});
+
 it('doorloopt de vertaal-sync pipeline met remote fake', function () {
     $fake = new FakeTranslationSyncRemoteClient;
     $fake->exportItems = [

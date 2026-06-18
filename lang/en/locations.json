@@ -294,7 +294,8 @@
         "errors": {
             "invalid_unit": "Choose a valid unit at this location.",
             "unit_limit": "This unit already has the maximum number of active announcements. Deactivate or delete one first, or choose another unit.",
-            "translation_requires_active": "Translations are only available for active announcements."
+            "translation_requires_active": "Translations are only available for active announcements.",
+            "translation_import_missing": "Announcement not found or not active."
         },
         "flash": {
             "created": "Announcement saved.",

@@ -294,7 +294,8 @@
         "errors": {
             "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
             "unit_limit": "Diese Unit hat bereits die maximale Anzahl aktiver Mitteilungen. Deaktivieren oder löschen Sie eine Mitteilung, oder wählen Sie eine andere Unit.",
-            "translation_requires_active": "Übersetzungen sind nur für aktive Mitteilungen möglich."
+            "translation_requires_active": "Übersetzungen sind nur für aktive Mitteilungen möglich.",
+            "translation_import_missing": "Mitteilung nicht gefunden oder nicht aktiv."
         },
         "flash": {
             "created": "Mitteilung gespeichert.",

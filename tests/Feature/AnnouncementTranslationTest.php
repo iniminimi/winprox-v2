@@ -132,3 +132,58 @@ it('slaat brontaal op bij aanmaken via Livewire', function () {
         ->and($announcement->original_language)->toBe('fr')
         ->and(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->count())->toBe(3);
 });
+
+it('exporteert en importeert pending mededelingvertalingen', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $announcement = app(CreateLocationAnnouncementAction::class)->handle($location, [
+        'description' => 'Morgen onderhoud',
+        'unit_id' => null,
+        'is_active' => true,
+        'expires_at' => null,
+        'original_language' => 'nl',
+    ], $tenant->id);
+
+    $exportItems = array_merge(
+        app(\App\Actions\Communication\ExportPendingIssueTranslationsAction::class)->handle()['items'],
+        app(\App\Actions\Communication\ExportPendingAnnouncementTranslationsAction::class)->handle(),
+    );
+
+    expect($exportItems)->toHaveCount(3)
+        ->and(collect($exportItems)->every(fn ($item) => isset($item['announcement_id'])))->toBeTrue();
+
+    $imported = app(\App\Actions\Communication\ImportAnnouncementTranslationsAction::class)->handle([
+        [
+            'announcement_id' => $announcement->id,
+            'locale' => 'en',
+            'description' => 'Maintenance tomorrow',
+        ],
+    ]);
+
+    expect($imported)->toBe(1)
+        ->and($announcement->fresh()->localizedDescription('en'))->toBe('Maintenance tomorrow');
+});
+
+it('weigert import van te lange mededelingvertalingen', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    Tenancy::actAs($tenant->id);
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kort',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+
+    expect(fn () => app(\App\Actions\Communication\ImportAnnouncementTranslationsAction::class)->handle([
+        [
+            'announcement_id' => $announcement->id,
+            'locale' => 'en',
+            'description' => str_repeat('x', 1501),
+        ],
+    ]))->toThrow(ValidationException::class);
+});
