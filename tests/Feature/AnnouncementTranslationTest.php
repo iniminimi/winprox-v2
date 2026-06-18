@@ -246,3 +246,47 @@ it('toont vertaal-preview in bewerk-modal', function () {
         ->set('previewLocale', 'en')
         ->assertSee('[en] Morgen onderhoud');
 });
+
+it('toont vertaalde mededeling in beheerlijst volgens gebruikerstaal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Morgen onderhoud',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+    app(TranslateAnnouncementAction::class)->handle($announcement, 'en', $user->id);
+
+    Livewire::actingAs($user)
+        ->test(Announcements::class, ['location' => $location])
+        ->assertSee('[en] Morgen onderhoud');
+});
+
+it('opent bewerk-modal met vertaling in gebruikerstaal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Morgen onderhoud',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+    app(TranslateAnnouncementAction::class)->handle($announcement, 'en', $user->id);
+
+    Livewire::actingAs($user)
+        ->test(Announcements::class, ['location' => $location])
+        ->call('openEditModal', $announcement->id)
+        ->assertSet('previewLocale', 'en')
+        ->assertSee('[en] Morgen onderhoud');
+});

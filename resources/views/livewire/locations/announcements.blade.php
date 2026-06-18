@@ -16,7 +16,7 @@
         @forelse ($announcements as $announcement)
             <div class="wp-issue-row" wire:key="ann-{{ $announcement->id }}">
                 <div class="wp-grow wp-stack-tight">
-                    <p class="wp-issue-desc">{{ $announcement->description }}</p>
+                    <p class="wp-issue-desc">{{ $announcement->localizedDescription() }}</p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('locations.announcements.unit_label') }}:
                         {{ $announcement->unit?->name ?? __('locations.announcements.for_location') }}
@@ -134,7 +134,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <p @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
+                        <p wire:key="announcement-preview-{{ $previewLocale }}" @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
                     </div>
                 @endif
 

@@ -89,7 +89,7 @@ class Announcements extends Component
         $this->unitId = $announcement->unit_id ? (string) $announcement->unit_id : '';
         $this->isActive = (bool) $announcement->is_active;
         $this->expiresAt = $announcement->expires_at?->format('Y-m-d') ?? '';
-        $this->previewLocale = $announcement->normalizedOriginalLanguage();
+        $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
         $this->showEditModal = true;
     }
 
@@ -201,7 +201,7 @@ class Announcements extends Component
         $announcements = Announcement::query()
             ->where('tenant_id', $tenantId)
             ->where('location_id', $this->location->id)
-            ->with('unit:id,name')
+            ->with(['unit:id,name', 'translations'])
             ->latest()
             ->get();
 
