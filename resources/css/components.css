@@ -1528,6 +1528,11 @@ a.wp-kpi:hover {
     border-color: color-mix(in srgb, var(--wp-accent) 40%, var(--wp-border));
 }
 
+.wp-translation-reminder.wp-card--prio-pulse {
+    background-color: var(--wp-danger-soft);
+    color: var(--wp-danger-text);
+}
+
 @keyframes wp-progress-indeterminate {
     0% {
         transform: translateX(-120%);
