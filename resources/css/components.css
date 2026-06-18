@@ -1839,6 +1839,10 @@ a.wp-pagination__page:hover {
     text-decoration: none;
 }
 
+.wp-detail-nav {
+    flex-shrink: 0;
+}
+
 .wp-contact-panel {
     --wp-stack-gap: 1rem;
     border-radius: var(--wp-radius, 12px);

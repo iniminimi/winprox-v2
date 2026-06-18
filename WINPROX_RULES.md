@@ -215,6 +215,9 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Workers ronden een flow af in **zo weinig mogelijk taps** (veld/portaal, mobiel-first).
 - **Modals:** altijd `<x-wp-modal closeMethod="...">` — **Esc** sluit de popup (niet handmatig
   `<div class="wp-modal">` zonder listener). Sluit-methode = dezelfde als Annuleren/X.
+- **Paginering / bladerknoppen:** één stijl via `.wp-pagination__control` en `.wp-pagination__page`
+  (views `vendor/livewire/tailwind`, `vendor/pagination/tailwind`, component `x-wp-detail-nav`).
+  Geen losse `.btn`-varianten voor vorige/volgende/paginanummers.
 
 ### 6.6 Na UI-wijziging
 - Altijd `npm run build`; vraag bij visuele controle om harde refresh (`Ctrl+F5`).
