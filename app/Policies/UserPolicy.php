@@ -36,6 +36,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function runTranslationSync(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function accessPlatform(User $user): bool
     {
         return $user->is_superuser;

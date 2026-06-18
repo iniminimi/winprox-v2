@@ -30,6 +30,7 @@
                 ['route' => 'platform.audit', 'active' => 'platform.audit', 'icon' => 'document', 'label' => 'platform.audit.nav'],
                 ['route' => 'platform.help', 'active' => 'platform.help', 'icon' => 'faq', 'label' => 'platform.help_nav'],
                 ['route' => 'platform.screenshots', 'active' => 'platform.screenshots', 'icon' => 'document', 'label' => 'platform.manual_screenshots.nav'],
+                ['route' => 'platform.translations', 'active' => 'platform.translations', 'icon' => 'issues', 'label' => 'platform.translation_sync.nav'],
             ] : [
                 ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
                 ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],

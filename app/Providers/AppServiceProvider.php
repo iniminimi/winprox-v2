@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Contracts\TranslationSyncRemoteClient;
 use App\Contracts\WebhookEvent;
 use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
 use App\Listeners\BlockUnsubscribedEmailRecipients;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(TranslationProviderInterface::class, OllamaProvider::class);
+        $this->app->singleton(TranslationSyncRemoteClient::class, \App\Support\Translation\TranslationSyncRemoteGateway::class);
     }
 
     /**
