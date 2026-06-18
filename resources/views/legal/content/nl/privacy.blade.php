@@ -77,7 +77,7 @@
     <li>deze functie is optioneel en kan te allen tijde worden uitgeschakeld</li>
 </ul>
 
-<h2>6. Doeleinden van verwerking</h2>
+<h2>5. Doeleinden van verwerking</h2>
 <p>Gegevens worden verwerkt voor:</p>
 <ul>
     <li>het functioneren van het platform</li>
@@ -90,7 +90,7 @@
     <li>meertalige ondersteuning via AI-vertalingen (indien geactiveerd)</li>
 </ul>
 
-<h2>5. QR-meldingen en team-toegang</h2>
+<h2>6. QR-meldingen en team-toegang</h2>
 <p>
     Via QR-codes kunnen melders meldingen indienen zonder account. De klant / beheerder bepaalt welke locaties en units
     beschikbaar zijn en welke gegevens worden gevraagd.
