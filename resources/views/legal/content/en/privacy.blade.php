@@ -71,22 +71,23 @@
 <h2>4. AI Translations (optional)</h2>
 <p>If enabled by the administrator, the platform may use AI translations:</p>
 <ul>
-    <li>automatic translation of issue texts to other languages</li>
-    <li>using local Ollama instance (no external services)</li>
-    <li>translations are stored and retained according to retention policy</li>
-    <li>this feature is optional and can be disabled at any time</li>
+    <li>automatic translation of issue texts to other languages.</li>
+    <li>using a local Ollama instance (no external services).</li>
+    <li>translations are stored and retained according to the retention policy.</li>
+    <li>this feature is optional and can be disabled at any time.</li>
 </ul>
 
 <h2>5. Processing purposes</h2>
 <p>Data is processed for:</p>
 <ul>
-    <li>operating the platform</li>
-    <li>registering and following up issues and tasks</li>
-    <li>assigning work to internal teams and workers</li>
-    <li>QR reporting and communication between users within your organisation</li>
-    <li>sending email notifications on the customer’s instructions</li>
-    <li>product improvement through superuser onboarding statistics (aggregated where possible)</li>
-    <li>security and logging</li>
+    <li>operating the platform.</li>
+    <li>registering and following up issues and tasks.</li>
+    <li>assigning work to internal teams and workers.</li>
+    <li>QR reporting and communication between users within your organisation.</li>
+    <li>sending email notifications on the customer’s instructions.</li>
+    <li>product improvement through superuser onboarding statistics (aggregated where possible).</li>
+    <li>security and logging.</li>
+    <li>multilingual support via AI translations (if enabled).</li>
 </ul>
 
 <h2>6. QR reporting and team access</h2>
@@ -104,9 +105,9 @@
     For technical support, WinProx may in exceptional cases access data via a support mode for superuser or support staff:
 </p>
 <ul>
-    <li>solely for technical support and troubleshooting</li>
-    <li>read-only by default</li>
-    <li>without actively changing customer data, except when you explicitly request otherwise</li>
+    <li>solely for technical support and troubleshooting.</li>
+    <li>read-only access by default.</li>
+    <li>without actively changing customer data, unless you explicitly request otherwise.</li>
 </ul>
 
 <h2>8. Retention periods</h2>
@@ -122,10 +123,10 @@
 <h2>9. Sharing of data</h2>
 <p>Personal data is not sold or shared with third parties, except:</p>
 <ul>
-    <li>on the customer’s instructions</li>
-    <li>for hosting and technical infrastructure</li>
-    <li>for payment processing, if you choose to use it (via a recognised payment partner)</li>
-    <li>where legally required</li>
+    <li>on the customer’s instructions.</li>
+    <li>for hosting and technical infrastructure.</li>
+    <li>for payment processing, if you choose to use it (via a recognised payment partner).</li>
+    <li>where legally required.</li>
 </ul>
 <p>
     An overview of subprocessor categories is available on the
@@ -146,10 +147,10 @@
 <h2>11. Data subject rights</h2>
 <p>Data subjects have the right to:</p>
 <ul>
-    <li>access their data</li>
-    <li>rectify their data</li>
-    <li>request erasure of their data</li>
-    <li>object to processing</li>
+    <li>access their data.</li>
+    <li>rectify their data.</li>
+    <li>request erasure of their data.</li>
+    <li>object to processing.</li>
 </ul>
 
 <p>Requests may be sent to:</p>

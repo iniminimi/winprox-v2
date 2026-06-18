@@ -1,4 +1,4 @@
-<h2>1. Généralités</h2>
+﻿<h2>1. Généralités</h2>
 <p>
     Les présentes conditions d’utilisation régissent l’usage de la plateforme WinProx.
 </p>
@@ -20,9 +20,9 @@
     WinProx fournit une plateforme numérique permettant aux clients / administrateurs de :
 </p>
 <ul>
-    <li>enregistrer des issues, notamment via des portails QR</li>
-    <li>gérer et suivre des tâches</li>
-    <li>affecter le travail aux équipes internes et aux exécutants</li>
+    <li>enregistrer des issues, notamment via des portails QR.</li>
+    <li>gérer et suivre des tâches.</li>
+    <li>affecter le travail aux équipes internes et aux exécutants.</li>
 </ul>
 <p>
     WinProx est uniquement une plateforme technique et n’exécute pas lui-même de travaux sur site.
@@ -31,9 +31,9 @@
 <h2>4. Absence d’exécution de travaux</h2>
 <p>WinProx :</p>
 <ul>
-    <li>n’exécute pas de travaux techniques ou opérationnels sur site</li>
-    <li>n’agit pas en tant qu’entrepreneur, intermédiaire ou partie contractante pour des travaux sur site</li>
-    <li>ne garantit ni le résultat ni la qualité des travaux réalisés par votre organisation</li>
+    <li>n’exécute pas de travaux techniques ou opérationnels sur site.</li>
+    <li>n’agit pas en tant qu’entrepreneur, intermédiaire ou partie contractante pour des travaux sur site.</li>
+    <li>ne garantit ni le résultat ni la qualité des travaux réalisés par votre organisation.</li>
 </ul>
 <p>
     Toutes les décisions opérationnelles et l’exécution restent de la responsabilité du client / administrateur et de ses équipes internes.
@@ -42,10 +42,10 @@
 <h2>5. Responsabilité du client</h2>
 <p>Le client / administrateur est responsable de :</p>
 <ul>
-    <li>l’exactitude des données saisies</li>
-    <li>l’utilisation de la plateforme au sein de l’organisation</li>
-    <li>l’affectation et le suivi des tâches pour les équipes internes et les exécutants</li>
-    <li>le respect de la législation applicable</li>
+    <li>l’exactitude des données saisies.</li>
+    <li>l’utilisation de la plateforme au sein de l’organisation.</li>
+    <li>l’affectation et le suivi des tâches pour les équipes internes et les exécutants.</li>
+    <li>le respect de la législation applicable.</li>
 </ul>
 
 <p>
@@ -55,9 +55,9 @@
 <h2>6. Utilisation de la plateforme</h2>
 <p>Il est interdit de :</p>
 <ul>
-    <li>utiliser la plateforme à des fins illégales</li>
-    <li>saisir des informations fausses ou trompeuses</li>
-    <li>abuser des fonctionnalités de communication ou de notification</li>
+    <li>utiliser la plateforme à des fins illégales.</li>
+    <li>saisir des informations fausses ou trompeuses.</li>
+    <li>abuser des fonctionnalités de communication ou de notification.</li>
 </ul>
 
 <p>
@@ -100,9 +100,9 @@
 <h2>9. Responsabilité</h2>
 <p>WinProx n’est pas responsable de :</p>
 <ul>
-    <li>dommages résultant de travaux exécutés par le client ou ses équipes internes</li>
-    <li>erreurs dans les décisions opérationnelles ou l’exécution sur site</li>
-    <li>dommages indirects, y compris perte de profit, dommages consécutifs ou atteinte à la réputation</li>
+    <li>dommages résultant de travaux exécutés par le client ou ses équipes internes.</li>
+    <li>erreurs dans les décisions opérationnelles ou l’exécution sur site.</li>
+    <li>dommages indirects, y compris perte de profit, dommages consécutifs ou atteinte à la réputation.</li>
 </ul>
 
 <p>
@@ -124,8 +124,8 @@
 </p>
 <p>Il est interdit de :</p>
 <ul>
-    <li>copier le logiciel</li>
-    <li>réutiliser des parties de la plateforme sans accord écrit préalable</li>
+    <li>copier le logiciel.</li>
+    <li>réutiliser des parties de la plateforme sans accord écrit préalable.</li>
 </ul>
 
 <h2>12. Résiliation</h2>
@@ -133,8 +133,8 @@
     WinProx peut mettre fin ou suspendre l’utilisation de la plateforme :
 </p>
 <ul>
-    <li>en cas de violation des présentes conditions</li>
-    <li>en cas d’abus de la plateforme</li>
+    <li>en cas de violation des présentes conditions.</li>
+    <li>en cas d’abus de la plateforme.</li>
 </ul>
 
 <p>

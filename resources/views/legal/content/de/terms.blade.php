@@ -1,4 +1,4 @@
-<h2>1. Allgemeines</h2>
+﻿<h2>1. Allgemeines</h2>
 <p>
     Diese Nutzungsbedingungen regeln die Nutzung der WinProx-Plattform.
 </p>
@@ -20,9 +20,9 @@
     WinProx bietet eine digitale Plattform, mit der Kunden / Administratoren:
 </p>
 <ul>
-    <li>Issues registrieren können, auch über QR-Portale</li>
-    <li>Aufgaben verwalten und nachverfolgen können</li>
-    <li>Arbeit internen Teams und Ausführenden zuweisen können</li>
+    <li>Issues registrieren können, auch über QR-Portale.</li>
+    <li>Aufgaben verwalten und nachverfolgen können.</li>
+    <li>Arbeit internen Teams und Ausführenden zuweisen können.</li>
 </ul>
 <p>
     WinProx ist ausschließlich eine technische Plattform und führt selbst keine Arbeiten vor Ort aus.
@@ -31,9 +31,9 @@
 <h2>4. Keine Ausführung von Arbeiten</h2>
 <p>WinProx:</p>
 <ul>
-    <li>führt keine technischen oder operativen Arbeiten vor Ort aus</li>
-    <li>tritt nicht als Auftragnehmer, Vermittler oder Vertragspartei für Arbeiten vor Ort auf</li>
-    <li>garantiert kein Ergebnis oder keine Qualität von Arbeiten, die Ihre Organisation ausführt</li>
+    <li>führt keine technischen oder operativen Arbeiten vor Ort aus.</li>
+    <li>tritt nicht als Auftragnehmer, Vermittler oder Vertragspartei für Arbeiten vor Ort auf.</li>
+    <li>garantiert kein Ergebnis oder keine Qualität von Arbeiten, die Ihre Organisation ausführt.</li>
 </ul>
 <p>
     Alle operativen Entscheidungen und die Ausführung bleiben in der Verantwortung des Kunden / Administrators und seiner internen Teams.
@@ -42,10 +42,10 @@
 <h2>5. Verantwortung des Kunden</h2>
 <p>Der Kunde / Administrator ist verantwortlich für:</p>
 <ul>
-    <li>die Richtigkeit eingegebener Daten</li>
-    <li>die Nutzung der Plattform innerhalb der Organisation</li>
-    <li>Zuweisung und Nachverfolgung von Aufgaben an interne Teams und Ausführende</li>
-    <li>die Einhaltung geltenden Rechts</li>
+    <li>die Richtigkeit eingegebener Daten.</li>
+    <li>die Nutzung der Plattform innerhalb der Organisation.</li>
+    <li>Zuweisung und Nachverfolgung von Aufgaben an interne Teams und Ausführende.</li>
+    <li>die Einhaltung geltenden Rechts.</li>
 </ul>
 
 <p>
@@ -55,9 +55,9 @@
 <h2>6. Nutzung der Plattform</h2>
 <p>Es ist nicht gestattet:</p>
 <ul>
-    <li>die Plattform für illegale Aktivitäten zu nutzen</li>
-    <li>falsche oder irreführende Informationen einzugeben</li>
-    <li>Kommunikations- oder Benachrichtigungsfunktionen zu missbrauchen</li>
+    <li>die Plattform für illegale Aktivitäten zu nutzen.</li>
+    <li>falsche oder irreführende Informationen einzugeben.</li>
+    <li>Kommunikations- oder Benachrichtigungsfunktionen zu missbrauchen.</li>
 </ul>
 
 <p>
@@ -100,9 +100,9 @@
 <h2>9. Haftung</h2>
 <p>WinProx haftet nicht für:</p>
 <ul>
-    <li>Schäden aus Arbeiten, die vom Kunden oder seinen internen Teams ausgeführt werden</li>
-    <li>Fehler in operativen Entscheidungen oder der Ausführung vor Ort</li>
-    <li>indirekte Schäden, einschließlich entgangenem Gewinn, Folgeschäden oder Reputationsschäden</li>
+    <li>Schäden aus Arbeiten, die vom Kunden oder seinen internen Teams ausgeführt werden.</li>
+    <li>Fehler in operativen Entscheidungen oder der Ausführung vor Ort.</li>
+    <li>indirekte Schäden, einschließlich entgangenem Gewinn, Folgeschäden oder Reputationsschäden.</li>
 </ul>
 
 <p>
@@ -124,8 +124,8 @@
 </p>
 <p>Es ist nicht gestattet:</p>
 <ul>
-    <li>die Software zu kopieren</li>
-    <li>Teile der Plattform ohne vorherige schriftliche Zustimmung wiederzuverwenden</li>
+    <li>die Software zu kopieren.</li>
+    <li>Teile der Plattform ohne vorherige schriftliche Zustimmung wiederzuverwenden.</li>
 </ul>
 
 <h2>12. Beendigung</h2>
@@ -133,8 +133,8 @@
     WinProx kann die Nutzung der Plattform beenden oder aussetzen:
 </p>
 <ul>
-    <li>bei Verstoß gegen diese Bedingungen</li>
-    <li>bei Missbrauch der Plattform</li>
+    <li>bei Verstoß gegen diese Bedingungen.</li>
+    <li>bei Missbrauch der Plattform.</li>
 </ul>
 
 <p>

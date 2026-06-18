@@ -1,4 +1,4 @@
-<h2>1. Que sont les cookies</h2>
+﻿<h2>1. Que sont les cookies</h2>
 <p>
     Les cookies sont de petits fichiers texte enregistrés sur votre appareil lorsque vous visitez un site web.
 </p>
@@ -7,9 +7,9 @@
 
 <p><strong>Cookies essentiels</strong></p>
 <ul>
-    <li>gestion de session (notamment cookie de session Laravel)</li>
-    <li>sécurité (notamment jeton CSRF ou XSRF)</li>
-    <li>préférence de langue et fonctionnalité de connexion</li>
+    <li>gestion de session (notamment cookie de session Laravel).</li>
+    <li>sécurité (notamment jeton CSRF ou XSRF).</li>
+    <li>préférence de langue et fonctionnalité de connexion.</li>
 </ul>
 
 <p>

@@ -7,9 +7,9 @@
 
 <p><strong>Noodzakelijke cookies</strong></p>
 <ul>
-    <li>sessiebeheer (o.a. Laravel-sessiecookie)</li>
-    <li>beveiliging (o.a. CSRF- of XSRF-token)</li>
-    <li>taalvoorkeur en loginfunctionaliteit</li>
+    <li>sessiebeheer (o.a. Laravel-sessiecookie).</li>
+    <li>beveiliging (o.a. CSRF- of XSRF-token).</li>
+    <li>taalvoorkeur en aanmeldfunctionaliteit.</li>
 </ul>
 
 <p>

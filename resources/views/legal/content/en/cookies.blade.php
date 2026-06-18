@@ -7,9 +7,9 @@
 
 <p><strong>Essential cookies</strong></p>
 <ul>
-    <li>session management (including the Laravel session cookie)</li>
-    <li>security (including CSRF or XSRF token)</li>
-    <li>language preference and login functionality</li>
+    <li>session management (including the Laravel session cookie).</li>
+    <li>security (including CSRF or XSRF token).</li>
+    <li>language preference and login functionality.</li>
 </ul>
 
 <p>

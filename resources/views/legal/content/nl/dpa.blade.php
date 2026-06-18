@@ -1,4 +1,4 @@
-<h2>1. Partijen</h2>
+﻿<h2>1. Partijen</h2>
 
 <p>Deze verwerkersovereenkomst wordt gesloten tussen:</p>
 
@@ -27,23 +27,23 @@
 <p>De verwerking omvat:</p>
 
 <ul>
-    <li>beheer van meldingen (issues) en taken</li>
-    <li>beheer van gebruikers en interne teams</li>
-    <li>beheer van uitvoerders (zonder login) en toewijzing aan taken</li>
-    <li>beheer van locaties en units</li>
-    <li>verzenden van e-mailnotificaties in opdracht van de klant</li>
-    <li>logging en beveiliging</li>
+    <li>beheer van meldingen (issues) en taken.</li>
+    <li>beheer van gebruikers en interne teams.</li>
+    <li>beheer van uitvoerders (zonder login) en toewijzing aan taken.</li>
+    <li>beheer van locaties en units.</li>
+    <li>verzenden van e-mailnotificaties in opdracht van de klant.</li>
+    <li>logging en beveiliging.</li>
 </ul>
 
 <h2>4. Type gegevens</h2>
 
 <ul>
-    <li>identificatiegegevens (naam, e-mailadres, telefoonnummer waar ingevoerd)</li>
-    <li>locatie- en unitgegevens (adressen, locatiedetails)</li>
-    <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen)</li>
-    <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld</li>
-    <li>toegangs- en sessiegegevens</li>
-    <li>abonnements- en toegangsmetadata</li>
+    <li>identificatiegegevens (naam, e-mailadres, telefoonnummer indien ingevoerd).</li>
+    <li>locatie- en unitgegevens (adressen, locatiedetails).</li>
+    <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen).</li>
+    <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld.</li>
+    <li>toegangs- en sessiegegevens.</li>
+    <li>abonnements- en toegangsmetadata.</li>
 </ul>
 
 <h2>5. Verplichtingen van WinProx</h2>
@@ -51,10 +51,10 @@
 <p>WinProx zal:</p>
 
 <ul>
-    <li>gegevens enkel verwerken op instructie van de klant</li>
-    <li>passende beveiligingsmaatregelen nemen</li>
-    <li>toegang beperken tot bevoegde personen</li>
-    <li>vertrouwelijkheid garanderen</li>
+    <li>gegevens enkel verwerken op instructie van de klant.</li>
+    <li>passende beveiligingsmaatregelen nemen.</li>
+    <li>toegang beperken tot bevoegde personen.</li>
+    <li>vertrouwelijkheid garanderen.</li>
 </ul>
 
 <h2>6. Beveiliging</h2>
@@ -62,9 +62,9 @@
 <p>WinProx voorziet onder meer:</p>
 
 <ul>
-    <li>tenant-isolatie</li>
-    <li>toegangscontrole</li>
-    <li>logging</li>
+    <li>tenant-isolatie.</li>
+    <li>toegangscontrole.</li>
+    <li>logging.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -97,10 +97,10 @@
     <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>, waaronder:
 </p>
 <ul>
-    <li>gebruikersaccounts: actief + 24 maanden</li>
-    <li>meldingen en taken: contractperiode + 36 maanden</li>
-    <li>logs: 6 maanden</li>
-    <li>foto’s: 24 maanden na afsluiten</li>
+    <li>gebruikersaccounts: actief + 24 maanden.</li>
+    <li>meldingen en taken: contractperiode + 36 maanden.</li>
+    <li>logs: 6 maanden.</li>
+    <li>foto’s: 24 maanden na afsluiten.</li>
 </ul>
 
 <h2>11. Einde overeenkomst</h2>
@@ -110,8 +110,8 @@
 </p>
 
 <ul>
-    <li>kan de klant gegevens exporteren</li>
-    <li>worden gegevens verwijderd volgens het bewaarbeleid</li>
+    <li>kan de klant gegevens exporteren.</li>
+    <li>worden gegevens verwijderd conform het bewaarbeleid.</li>
 </ul>
 
 <h2>12. Aansprakelijkheid</h2>

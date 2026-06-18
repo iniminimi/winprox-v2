@@ -1,4 +1,4 @@
-<h2>1. Was sind Cookies</h2>
+﻿<h2>1. Was sind Cookies</h2>
 <p>
     Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen.
 </p>
@@ -7,9 +7,9 @@
 
 <p><strong>Erforderliche Cookies</strong></p>
 <ul>
-    <li>Sitzungsverwaltung (u. a. Laravel-Sitzungscookie)</li>
-    <li>Sicherheit (u. a. CSRF- oder XSRF-Token)</li>
-    <li>Spracheinstellung und Anmeldefunktion</li>
+    <li>Sitzungsverwaltung (u. a. Laravel-Sitzungscookie).</li>
+    <li>Sicherheit (u. a. CSRF- oder XSRF-Token).</li>
+    <li>Spracheinstellung und Anmeldefunktion.</li>
 </ul>
 
 <p>

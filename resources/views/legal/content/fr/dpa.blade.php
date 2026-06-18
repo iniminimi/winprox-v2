@@ -1,4 +1,4 @@
-<h2>1. Parties</h2>
+﻿<h2>1. Parties</h2>
 
 <p>Le présent accord de sous-traitance est conclu entre :</p>
 
@@ -27,23 +27,23 @@
 <p>Le traitement comprend :</p>
 
 <ul>
-    <li>gestion des issues et tâches</li>
-    <li>gestion des utilisateurs et équipes internes</li>
-    <li>gestion des exécutants (sans connexion) et affectation aux tâches</li>
-    <li>gestion des sites et unités</li>
-    <li>envoi de notifications par e-mail sur instruction du client</li>
-    <li>journalisation et sécurité</li>
+    <li>gestion des issues et tâches.</li>
+    <li>gestion des utilisateurs et équipes internes.</li>
+    <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
+    <li>gestion des sites et unités.</li>
+    <li>envoi de notifications par e-mail sur instruction du client.</li>
+    <li>journalisation et sécurité.</li>
 </ul>
 
 <h2>4. Types de données</h2>
 
 <ul>
-    <li>données d’identification (nom, adresse e-mail, numéro de téléphone le cas échéant)</li>
-    <li>données de site et d’unité (adresses, détails de localisation)</li>
-    <li>données d’issues et de tâches (y compris photos et descriptions)</li>
-    <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client</li>
-    <li>données d’accès et de session</li>
-    <li>métadonnées d’abonnement et d’accès</li>
+    <li>données d’identification (nom, adresse e-mail, numéro de téléphone le cas échéant).</li>
+    <li>données de site et d’unité (adresses, détails de localisation).</li>
+    <li>données d’issues et de tâches (y compris photos et descriptions).</li>
+    <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client.</li>
+    <li>données d’accès et de session.</li>
+    <li>métadonnées d’abonnement et d’accès.</li>
 </ul>
 
 <h2>5. Obligations de WinProx</h2>
@@ -51,10 +51,10 @@
 <p>WinProx s’engage à :</p>
 
 <ul>
-    <li>traiter les données uniquement sur instruction du client</li>
-    <li>mettre en œuvre des mesures de sécurité appropriées</li>
-    <li>restreindre l’accès aux personnes autorisées</li>
-    <li>garantir la confidentialité</li>
+    <li>traiter les données uniquement sur instruction du client.</li>
+    <li>mettre en œuvre des mesures de sécurité appropriées.</li>
+    <li>restreindre l’accès aux personnes autorisées.</li>
+    <li>garantir la confidentialité.</li>
 </ul>
 
 <h2>6. Sécurité</h2>
@@ -62,9 +62,9 @@
 <p>WinProx met notamment en place :</p>
 
 <ul>
-    <li>isolation des tenants</li>
-    <li>contrôle d’accès</li>
-    <li>journalisation</li>
+    <li>isolation des tenants.</li>
+    <li>contrôle d’accès.</li>
+    <li>journalisation.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -97,10 +97,10 @@
     <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>, notamment :
 </p>
 <ul>
-    <li>comptes utilisateurs : actif + 24 mois</li>
-    <li>issues et tâches : durée du contrat + 36 mois</li>
-    <li>journaux : 6 mois</li>
-    <li>photos : 24 mois après clôture</li>
+    <li>comptes utilisateurs : actif + 24 mois.</li>
+    <li>issues et tâches : durée du contrat + 36 mois.</li>
+    <li>journaux : 6 mois.</li>
+    <li>photos : 24 mois après clôture.</li>
 </ul>
 
 <h2>11. Fin de l’accord</h2>
@@ -110,8 +110,8 @@
 </p>
 
 <ul>
-    <li>le client peut exporter les données</li>
-    <li>les données seront supprimées conformément à la politique de conservation</li>
+    <li>le client peut exporter les données.</li>
+    <li>les données seront supprimées conformément à la politique de conservation.</li>
 </ul>
 
 <h2>12. Responsabilité</h2>

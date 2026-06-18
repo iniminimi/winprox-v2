@@ -1,4 +1,4 @@
-<h2>1. Wer wir sind</h2>
+﻿<h2>1. Wer wir sind</h2>
 <p>
     WinProx („Work in Proximity“) ist eine SaaS-Plattform für technisches und operatives Standortmanagement:
     QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams.
@@ -25,38 +25,38 @@
 
 <p><strong>Benutzer</strong></p>
 <ul>
-    <li>Name</li>
-    <li>E-Mail-Adresse</li>
-    <li>Rolle innerhalb der Organisation</li>
-    <li>Spracheinstellung, soweit zutreffend</li>
+    <li>Name.</li>
+    <li>E-Mail-Adresse.</li>
+    <li>Rolle innerhalb der Organisation.</li>
+    <li>Spracheinstellung, soweit zutreffend.</li>
 </ul>
 
 <p><strong>Abonnement und Abrechnung</strong></p>
 <ul>
-    <li>gewähltes Abonnement (soweit zutreffend)</li>
-    <li>Enddatum der Testphase und des bezahlten Abonnements</li>
-    <li>Abrechnungs- und Zahlungsdaten, die Sie oder Ihre Organisation eingeben oder die über einen Zahlungsanbieter verarbeitet werden</li>
+    <li>gewähltes Abonnement (soweit zutreffend).</li>
+    <li>Enddatum der Testphase und des bezahlten Abonnements.</li>
+    <li>Abrechnungs- und Zahlungsdaten, die Sie oder Ihre Organisation eingeben oder die über einen Zahlungsanbieter verarbeitet werden.</li>
 </ul>
 
 <p><strong>Standorte und Units</strong></p>
 <ul>
-    <li>Standorte (Sites) und Units innerhalb Ihrer Organisation</li>
-    <li>Adressen und Standortdaten, die Sie eingeben</li>
+    <li>Standorte (Sites) und Units innerhalb Ihrer Organisation.</li>
+    <li>Adressen und Standortdaten, die Sie eingeben.</li>
 </ul>
 
 <p><strong>Meldungen und Aufgaben</strong></p>
 <ul>
-    <li>Issues und Aufgaben</li>
-    <li>Beschreibungen, Status und Nachverfolgung</li>
-    <li>Kommunikation und Verlauf innerhalb der Plattform</li>
-    <li>Fotos und Anhänge zu Meldungen oder Aufgaben</li>
+    <li>Issues und Aufgaben.</li>
+    <li>Beschreibungen, Status und Nachverfolgung.</li>
+    <li>Kommunikation und Verlauf innerhalb der Plattform.</li>
+    <li>Fotos und Anhänge zu Meldungen oder Aufgaben.</li>
 </ul>
 
 <p><strong>Ausführende (ohne Login)</strong></p>
 <ul>
-    <li>Name oder Anzeigename</li>
-    <li>Kontaktdaten (z. B. E-Mail-Adresse), soweit vom Kunden eingegeben</li>
-    <li>Zuweisung zu Aufgaben innerhalb interner Teams</li>
+    <li>Name oder Anzeigename.</li>
+    <li>Kontaktdaten (z. B. E-Mail-Adresse), soweit vom Kunden eingegeben.</li>
+    <li>Zuweisung zu Aufgaben innerhalb interner Teams.</li>
 </ul>
 <p>
     Diese Daten werden vom Kunden / Administrator verwaltet. WinProx hat keine inhaltliche Kontrolle über die Eingaben des Kunden.
@@ -64,29 +64,30 @@
 
 <p><strong>QR-Meldungen</strong></p>
 <ul>
-    <li>Daten, die eine meldende Person freiwillig über ein öffentliches QR-Portal eingibt (z. B. Name, E-Mail-Adresse oder Beschreibung)</li>
-    <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind</li>
+    <li>Daten, die eine meldende Person freiwillig über ein öffentliches QR-Portal eingibt (z. B. Name, E-Mail-Adresse oder Beschreibung).</li>
+    <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind.</li>
 </ul>
 
 <h2>4. KI-Übersetzungen (optional)</h2>
 <p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
 <ul>
-    <li>automatische Übersetzung von Issue-Texten in andere Sprachen</li>
-    <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste)</li>
-    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt</li>
-    <li>diese Funktion ist optional und kann jederzeit deaktiviert werden</li>
+    <li>automatische Übersetzung von Issue-Texten in andere Sprachen.</li>
+    <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste).</li>
+    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt.</li>
+    <li>diese Funktion ist optional und kann jederzeit deaktiviert werden.</li>
 </ul>
 
 <h2>5. Zwecke der Verarbeitung</h2>
 <p>Daten werden verarbeitet für:</p>
 <ul>
-    <li>den Betrieb der Plattform</li>
-    <li>Registrierung und Nachverfolgung von Issues und Aufgaben</li>
-    <li>Zuweisung an interne Teams und Ausführende</li>
-    <li>QR-Meldungen und Kommunikation zwischen Benutzern innerhalb Ihrer Organisation</li>
-    <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden</li>
-    <li>Produktverbesserung durch Onboarding-Statistiken für Superuser (soweit möglich aggregiert)</li>
-    <li>Sicherheit und Protokollierung</li>
+    <li>den Betrieb der Plattform.</li>
+    <li>Registrierung und Nachverfolgung von Issues und Aufgaben.</li>
+    <li>Zuweisung an interne Teams und Ausführende.</li>
+    <li>QR-Meldungen und Kommunikation zwischen Benutzern innerhalb Ihrer Organisation.</li>
+    <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
+    <li>Produktverbesserung durch Onboarding-Statistiken (soweit möglich aggregiert).</li>
+    <li>Sicherheit und Protokollierung.</li>
+    <li>mehrsprachige Unterstützung durch KI-Übersetzungen (falls aktiviert).</li>
 </ul>
 
 <h2>6. QR-Meldungen und Teamzugang</h2>
@@ -105,28 +106,28 @@
     Zugriff auf Daten erhalten:
 </p>
 <ul>
-    <li>ausschließlich für technischen Support und Fehlerbehebung</li>
-    <li>standardmäßig schreibgeschützt (nur lesen)</li>
-    <li>ohne aktive Änderungen an Kundendaten, es sei denn, Sie bitten ausdrücklich darum</li>
+    <li>ausschließlich für technischen Support und Fehlerbehebung.</li>
+    <li>standardmäßig schreibgeschützt (nur lesen).</li>
+    <li>ohne aktive Änderungen an Kundendaten, es sei denn, Sie bitten ausdrücklich darum.</li>
 </ul>
 
 <h2>8. Aufbewahrungsfristen</h2>
 <p>WinProx wendet folgende Aufbewahrungsfristen an:</p>
 <ul>
-    <li>Benutzerkonten: aktiv + 24 Monate</li>
-    <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate</li>
-    <li>Protokolle: 6 Monate</li>
-    <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden</li>
-    <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe</li>
+    <li>Benutzerkonten: aktiv + 24 Monate.</li>
+    <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
+    <li>Protokolle: 6 Monate.</li>
+    <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
+    <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
 </ul>
 
 <h2>9. Weitergabe von Daten</h2>
 <p>Personenbezogene Daten werden nicht verkauft oder an Dritte weitergegeben, außer:</p>
 <ul>
-    <li>im Auftrag des Kunden</li>
-    <li>für Hosting und technische Infrastruktur</li>
-    <li>für Zahlungsabwicklung, sofern Sie diese nutzen (über einen anerkannten Zahlungspartner)</li>
-    <li>wenn gesetzlich vorgeschrieben</li>
+    <li>im Auftrag des Kunden.</li>
+    <li>für Hosting und technische Infrastruktur.</li>
+    <li>für Zahlungsabwicklung, sofern Sie diese nutzen (über einen anerkannten Zahlungspartner).</li>
+    <li>wenn gesetzlich vorgeschrieben.</li>
 </ul>
 <p>
     Eine Übersicht der Subunternehmer-Kategorien finden Sie auf der Seite
@@ -147,10 +148,10 @@
 <h2>11. Rechte der betroffenen Personen</h2>
 <p>Betroffene Personen haben das Recht:</p>
 <ul>
-    <li>ihre Daten einzusehen</li>
-    <li>ihre Daten zu berichtigen</li>
-    <li>die Löschung ihrer Daten zu verlangen</li>
-    <li>der Verarbeitung zu widersprechen</li>
+    <li>ihre Daten einzusehen.</li>
+    <li>ihre Daten zu berichtigen.</li>
+    <li>die Löschung ihrer Daten zu verlangen.</li>
+    <li>der Verarbeitung zu widersprechen.</li>
 </ul>
 
 <p>Anfragen können gerichtet werden an:</p>
@@ -163,9 +164,9 @@
 <h2>12. Sicherheit</h2>
 <p>WinProx trifft angemessene technische und organisatorische Maßnahmen, darunter:</p>
 <ul>
-    <li>Mandantenisolierung</li>
-    <li>Zugangskontrolle</li>
-    <li>Protokollierung</li>
+    <li>Mandantenisolierung.</li>
+    <li>Zugangskontrolle.</li>
+    <li>Protokollierung.</li>
 </ul>
 <p>
     Siehe auch die <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> für Informationen zu

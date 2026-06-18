@@ -1,4 +1,4 @@
-<h2>1. Parteien</h2>
+﻿<h2>1. Parteien</h2>
 
 <p>Diese Auftragsverarbeitungsvereinbarung wird geschlossen zwischen:</p>
 
@@ -27,23 +27,23 @@
 <p>Die Verarbeitung umfasst:</p>
 
 <ul>
-    <li>Verwaltung von Issues und Aufgaben</li>
-    <li>Verwaltung von Benutzern und internen Teams</li>
-    <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben</li>
-    <li>Verwaltung von Standorten und Units</li>
-    <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden</li>
-    <li>Protokollierung und Sicherheit</li>
+    <li>Verwaltung von Issues und Aufgaben.</li>
+    <li>Verwaltung von Benutzern und internen Teams.</li>
+    <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben.</li>
+    <li>Verwaltung von Standorten und Units.</li>
+    <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
+    <li>Protokollierung und Sicherheit.</li>
 </ul>
 
 <h2>4. Art der Daten</h2>
 
 <ul>
-    <li>Identifikationsdaten (Name, E-Mail-Adresse, Telefonnummer, soweit eingegeben)</li>
-    <li>Standort- und Unit-Daten (Adressen, Standortdetails)</li>
-    <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen)</li>
-    <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben</li>
-    <li>Zugangs- und Sitzungsdaten</li>
-    <li>Abonnement- und Zugriffsmetadaten</li>
+    <li>Identifikationsdaten (Name, E-Mail-Adresse, Telefonnummer, soweit eingegeben).</li>
+    <li>Standort- und Unit-Daten (Adressen, Standortdetails).</li>
+    <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen).</li>
+    <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben.</li>
+    <li>Zugangs- und Sitzungsdaten.</li>
+    <li>Abonnement- und Zugriffsmetadaten.</li>
 </ul>
 
 <h2>5. Pflichten von WinProx</h2>
@@ -51,10 +51,10 @@
 <p>WinProx wird:</p>
 
 <ul>
-    <li>Daten nur auf Anweisung des Kunden verarbeiten</li>
-    <li>angemessene Sicherheitsmaßnahmen treffen</li>
-    <li>den Zugang auf befugte Personen beschränken</li>
-    <li>Vertraulichkeit gewährleisten</li>
+    <li>Daten nur auf Anweisung des Kunden verarbeiten.</li>
+    <li>angemessene Sicherheitsmaßnahmen treffen.</li>
+    <li>den Zugang auf befugte Personen beschränken.</li>
+    <li>Vertraulichkeit gewährleisten.</li>
 </ul>
 
 <h2>6. Sicherheit</h2>
@@ -62,9 +62,9 @@
 <p>WinProx stellt unter anderem bereit:</p>
 
 <ul>
-    <li>Mandantenisolierung</li>
-    <li>Zugangskontrolle</li>
-    <li>Protokollierung</li>
+    <li>Mandantenisolierung.</li>
+    <li>Zugangskontrolle.</li>
+    <li>Protokollierung.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -97,10 +97,10 @@
     <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a> aufbewahrt, einschließlich:
 </p>
 <ul>
-    <li>Benutzerkonten: aktiv + 24 Monate</li>
-    <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate</li>
-    <li>Protokolle: 6 Monate</li>
-    <li>Fotos: 24 Monate nach Abschluss</li>
+    <li>Benutzerkonten: aktiv + 24 Monate.</li>
+    <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
+    <li>Protokolle: 6 Monate.</li>
+    <li>Fotos: 24 Monate nach Abschluss.</li>
 </ul>
 
 <h2>11. Ende der Vereinbarung</h2>
@@ -110,8 +110,8 @@
 </p>
 
 <ul>
-    <li>kann der Kunde Daten exportieren</li>
-    <li>werden Daten gemäß der Aufbewahrungsrichtlinie gelöscht</li>
+    <li>kann der Kunde Daten exportieren.</li>
+    <li>werden Daten gemäß der Aufbewahrungsrichtlinie gelöscht.</li>
 </ul>
 
 <h2>12. Haftung</h2>

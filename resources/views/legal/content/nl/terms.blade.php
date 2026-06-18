@@ -20,9 +20,9 @@
     WinProx biedt een digitaal platform aan waarmee klanten / beheerders:
 </p>
 <ul>
-    <li>meldingen (issues) kunnen registreren, onder meer via QR-portalen</li>
-    <li>taken kunnen beheren en opvolgen</li>
-    <li>werk kunnen toewijzen aan interne teams en uitvoerders</li>
+    <li>meldingen (issues) kunnen registreren, onder meer via QR-portalen.</li>
+    <li>taken kunnen beheren en opvolgen.</li>
+    <li>werk kunnen toewijzen aan interne teams en uitvoerders.</li>
 </ul>
 <p>
     WinProx is uitsluitend een technisch platform en voert zelf geen werken uit op locatie.
@@ -31,9 +31,9 @@
 <h2>4. Geen uitvoering van werken</h2>
 <p>WinProx:</p>
 <ul>
-    <li>voert geen technische of operationele werken uit</li>
-    <li>treedt niet op als opdrachtnemer, bemiddelaar of contractpartij voor werkzaamheden op locatie</li>
-    <li>garandeert geen resultaat of kwaliteit van werkzaamheden die door uw organisatie worden uitgevoerd</li>
+    <li>voert geen technische of operationele werken uit.</li>
+    <li>treedt niet op als opdrachtnemer, bemiddelaar of contractpartij voor werkzaamheden op locatie.</li>
+    <li>garandeert geen resultaat of kwaliteit van werkzaamheden die door uw organisatie worden uitgevoerd.</li>
 </ul>
 <p>
     Alle operationele beslissingen en uitvoering blijven de verantwoordelijkheid van de klant / beheerder en diens interne teams.
@@ -42,10 +42,10 @@
 <h2>5. Verantwoordelijkheid van de klant</h2>
 <p>De klant / beheerder is verantwoordelijk voor:</p>
 <ul>
-    <li>de juistheid van ingevoerde gegevens</li>
-    <li>het gebruik van het platform binnen de organisatie</li>
-    <li>toewijzing en opvolging van taken aan interne teams en uitvoerders</li>
-    <li>naleving van toepasselijke wetgeving</li>
+    <li>de juistheid van ingevoerde gegevens.</li>
+    <li>het gebruik van het platform binnen de organisatie.</li>
+    <li>de toewijzing en opvolging van taken aan interne teams en uitvoerders.</li>
+    <li>de naleving van de toepasselijke wetgeving.</li>
 </ul>
 
 <p>
@@ -55,9 +55,9 @@
 <h2>6. Gebruik van het platform</h2>
 <p>Het is niet toegestaan om:</p>
 <ul>
-    <li>het platform te gebruiken voor illegale activiteiten</li>
-    <li>foutieve of misleidende informatie in te voeren</li>
-    <li>misbruik te maken van communicatie- of notificatiefunctionaliteiten</li>
+    <li>het platform te gebruiken voor illegale activiteiten.</li>
+    <li>foutieve of misleidende informatie in te voeren.</li>
+    <li>misbruik te maken van communicatie- of notificatiefunctionaliteiten.</li>
 </ul>
 
 <p>
@@ -100,9 +100,9 @@
 <h2>9. Aansprakelijkheid</h2>
 <p>WinProx is niet aansprakelijk voor:</p>
 <ul>
-    <li>schade voortvloeiend uit werkzaamheden die door de klant of diens interne teams worden uitgevoerd</li>
-    <li>fouten in operationele beslissingen of uitvoering op locatie</li>
-    <li>indirecte schade, waaronder winstverlies, gevolgschade of reputatieschade</li>
+    <li>schade die voortvloeit uit werkzaamheden uitgevoerd door de klant of diens interne teams.</li>
+    <li>fouten in operationele beslissingen of uitvoering op locatie.</li>
+    <li>indirecte schade, waaronder winstverlies, gevolgschade of reputatieschade.</li>
 </ul>
 
 <p>
@@ -124,8 +124,8 @@
 </p>
 <p>Het is niet toegestaan om:</p>
 <ul>
-    <li>software te kopiëren</li>
-    <li>delen van het platform te hergebruiken zonder voorafgaande schriftelijke toestemming</li>
+    <li>software te kopiëren.</li>
+    <li>delen van het platform te hergebruiken zonder voorafgaande schriftelijke toestemming.</li>
 </ul>
 
 <h2>12. Beëindiging</h2>
@@ -133,8 +133,8 @@
     WinProx kan het gebruik van het platform beëindigen of opschorten:
 </p>
 <ul>
-    <li>bij overtreding van deze voorwaarden</li>
-    <li>bij misbruik van het platform</li>
+    <li>bij overtreding van deze voorwaarden.</li>
+    <li>bij misbruik van het platform.</li>
 </ul>
 
 <p>

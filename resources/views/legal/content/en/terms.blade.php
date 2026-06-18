@@ -20,9 +20,9 @@
     WinProx provides a digital platform through which customers / administrators can:
 </p>
 <ul>
-    <li>register issues, including via QR portals</li>
-    <li>manage and follow up tasks</li>
-    <li>assign work to internal teams and workers</li>
+    <li>register issues, including via QR portals.</li>
+    <li>manage and follow up tasks.</li>
+    <li>assign work to internal teams and workers.</li>
 </ul>
 <p>
     WinProx is a technical platform only and does not perform on-site work itself.
@@ -31,9 +31,9 @@
 <h2>4. No performance of work</h2>
 <p>WinProx:</p>
 <ul>
-    <li>does not perform technical or operational work on site</li>
-    <li>does not act as on-site service provider, intermediary or contracting party for operational work</li>
-    <li>does not guarantee outcomes or quality of work performed by your organisation</li>
+    <li>does not perform technical or operational work on site.</li>
+    <li>does not act as on-site service provider, intermediary or contracting party for operational work.</li>
+    <li>does not guarantee outcomes or quality of work performed by your organisation.</li>
 </ul>
 <p>
     All operational decisions and execution remain the responsibility of the customer / administrator and its internal teams.
@@ -42,10 +42,10 @@
 <h2>5. Customer responsibility</h2>
 <p>The customer / administrator is responsible for:</p>
 <ul>
-    <li>the accuracy of entered data</li>
-    <li>use of the platform within the organisation</li>
-    <li>assigning and following up tasks for internal teams and workers</li>
-    <li>compliance with applicable law</li>
+    <li>the accuracy of entered data.</li>
+    <li>use of the platform within the organisation.</li>
+    <li>assigning and following up tasks for internal teams and workers.</li>
+    <li>compliance with applicable law.</li>
 </ul>
 
 <p>
@@ -55,9 +55,9 @@
 <h2>6. Use of the platform</h2>
 <p>It is not permitted to:</p>
 <ul>
-    <li>use the platform for illegal activities</li>
-    <li>enter false or misleading information</li>
-    <li>misuse communication or notification features</li>
+    <li>use the platform for illegal activities.</li>
+    <li>enter false or misleading information.</li>
+    <li>misuse communication or notification features.</li>
 </ul>
 
 <p>
@@ -100,9 +100,9 @@
 <h2>9. Liability</h2>
 <p>WinProx is not liable for:</p>
 <ul>
-    <li>damage arising from work performed by the customer or its internal teams</li>
-    <li>errors in operational decisions or on-site execution</li>
-    <li>indirect damage, including loss of profit, consequential damage or reputational damage</li>
+    <li>damage arising from work performed by the customer or its internal teams.</li>
+    <li>errors in operational decisions or on-site execution.</li>
+    <li>indirect damage, including loss of profit, consequential damage or reputational damage.</li>
 </ul>
 
 <p>
@@ -124,8 +124,8 @@
 </p>
 <p>It is not permitted to:</p>
 <ul>
-    <li>copy the software</li>
-    <li>reuse parts of the platform without prior written consent</li>
+    <li>copy the software.</li>
+    <li>reuse parts of the platform without prior written consent.</li>
 </ul>
 
 <h2>12. Termination</h2>
@@ -133,8 +133,8 @@
     WinProx may terminate or suspend use of the platform:
 </p>
 <ul>
-    <li>in case of breach of these terms</li>
-    <li>in case of abuse of the platform</li>
+    <li>in case of breach of these terms.</li>
+    <li>in case of abuse of the platform.</li>
 </ul>
 
 <p>

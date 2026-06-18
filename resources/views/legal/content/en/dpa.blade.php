@@ -1,4 +1,4 @@
-<h2>1. Parties</h2>
+﻿<h2>1. Parties</h2>
 
 <p>This data processing agreement is entered into between:</p>
 
@@ -27,23 +27,23 @@
 <p>Processing includes:</p>
 
 <ul>
-    <li>management of issues and tasks</li>
-    <li>management of users and internal teams</li>
-    <li>management of workers (without login) and assignment to tasks</li>
-    <li>management of locations and units</li>
-    <li>sending email notifications on the customer’s instructions</li>
-    <li>logging and security</li>
+    <li>management of issues and tasks.</li>
+    <li>management of users and internal teams.</li>
+    <li>management of workers (without login) and assignment to tasks.</li>
+    <li>management of locations and units.</li>
+    <li>sending email notifications on the customer’s instructions.</li>
+    <li>logging and security.</li>
 </ul>
 
 <h2>4. Types of data</h2>
 
 <ul>
-    <li>identification data (name, email address, phone number where entered)</li>
-    <li>location and unit data (addresses, location details)</li>
-    <li>issue and task data (including photos and descriptions)</li>
-    <li>data of workers and QR reporters, to the extent collected by the customer</li>
-    <li>access and session data</li>
-    <li>subscription and access metadata</li>
+    <li>identification data (name, email address, phone number where entered).</li>
+    <li>location and unit data (addresses, location details).</li>
+    <li>issue and task data (including photos and descriptions).</li>
+    <li>data of workers and QR reporters, to the extent collected by the customer.</li>
+    <li>access and session data.</li>
+    <li>subscription and access metadata.</li>
 </ul>
 
 <h2>5. WinProx obligations</h2>
@@ -51,10 +51,10 @@
 <p>WinProx shall:</p>
 
 <ul>
-    <li>process data only on the customer’s instructions</li>
-    <li>implement appropriate security measures</li>
-    <li>restrict access to authorised persons</li>
-    <li>ensure confidentiality</li>
+    <li>process data only on the customer’s instructions.</li>
+    <li>implement appropriate security measures.</li>
+    <li>restrict access to authorised persons.</li>
+    <li>ensure confidentiality.</li>
 </ul>
 
 <h2>6. Security</h2>
@@ -62,9 +62,9 @@
 <p>WinProx provides, among other things:</p>
 
 <ul>
-    <li>tenant isolation</li>
-    <li>access control</li>
-    <li>logging</li>
+    <li>tenant isolation.</li>
+    <li>access control.</li>
+    <li>logging.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -97,10 +97,10 @@
     <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>, including:
 </p>
 <ul>
-    <li>user accounts: active + 24 months</li>
-    <li>issues and tasks: contract period + 36 months</li>
-    <li>logs: 6 months</li>
-    <li>photos: 24 months after closing</li>
+    <li>user accounts: active + 24 months.</li>
+    <li>issues and tasks: contract period + 36 months.</li>
+    <li>logs: 6 months.</li>
+    <li>photos: 24 months after closing.</li>
 </ul>
 
 <h2>11. End of agreement</h2>
@@ -110,8 +110,8 @@
 </p>
 
 <ul>
-    <li>the customer may export data</li>
-    <li>data will be deleted according to the retention policy</li>
+    <li>the customer may export data.</li>
+    <li>data will be deleted according to the retention policy.</li>
 </ul>
 
 <h2>12. Liability</h2>
