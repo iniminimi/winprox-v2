@@ -8,7 +8,9 @@ use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCreated;
 use App\Models\Issue;
 use App\Models\Task;
+use App\Support\Tasks\TaskIssueApproval;
 use Carbon\CarbonInterface;
+use Illuminate\Validation\ValidationException;
 
 class CreateTaskAction
 {
@@ -27,15 +29,17 @@ class CreateTaskAction
         bool $recalculateIssue = true,
         bool $dispatchCreated = true,
         array $extra = [],
+        bool $duringIssueIntake = false,
     ): Task {
         // Prevent task creation for closed issues
         if ($issue->isClosed()) {
             throw new \InvalidArgumentException('Cannot create task for closed issue');
         }
 
-        // Prevent task creation for unapproved issues (except QR source which is always unapproved)
-        if (! $issue->isApproved() && $issue->source?->value !== 'qr') {
-            throw new \InvalidArgumentException('Cannot create task for unapproved issue');
+        if (! $issue->isApproved() && ! $duringIssueIntake) {
+            throw ValidationException::withMessages([
+                'issue' => [__('tasks.errors.issue_not_approved')],
+            ]);
         }
 
         $task = $issue->tasks()->create(array_merge([

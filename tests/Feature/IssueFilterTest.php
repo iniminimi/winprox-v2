@@ -2,6 +2,7 @@
 
 use App\Enums\TaskStatus;
 use App\Livewire\Issues\Index;
+use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
@@ -16,6 +17,7 @@ function seedFilterableIssues(Tenant $tenant): array
 {
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Technische dienst']);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Schoonmaak']);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
 
     $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = \App\Models\Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
@@ -106,14 +108,22 @@ it('zoekt meldingen op locatiestraat', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+
     $location = \App\Models\Location::factory()->create([
         'tenant_id' => $tenant->id,
         'street' => 'Industrieweg',
         'house_number' => '99',
     ]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
+        'unit_id' => $unit->id,
         'status' => TaskStatus::New,
         'approved_at' => now(),
         'description' => 'Melding op industrieweg',

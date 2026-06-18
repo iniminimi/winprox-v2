@@ -3,6 +3,7 @@
 namespace App\Livewire\Tasks;
 
 use App\Actions\Tasks\PauseTaskAction;
+use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Actions\Tasks\UpdateTaskTeamAction;
@@ -32,43 +33,72 @@ class Show extends Component
 
     public string $priority = '';
 
+    public string $taskNote = '';
+
+    public ?string $taskScheduledFor = null;
+
+    public bool $showEditTaskModal = false;
+
     public function mount(Task $task): void
     {
         $this->authorize('view', $task);
         $this->task = $task->load(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
-        $this->teamId = $task->internal_team_id;
-        $this->priority = $task->priority instanceof TaskPriority ? $task->priority->value : (string) $task->priority;
+        $this->syncFormFromTask();
     }
 
-    public function saveTeam(UpdateTaskTeamAction $updateTeam): void
+    public function openEditTaskModal(): void
     {
         $this->authorize('update', $this->task);
+        $this->syncFormFromTask();
+        $this->resetValidation();
+        $this->showEditTaskModal = true;
+    }
+
+    public function closeEditTaskModal(): void
+    {
+        $this->showEditTaskModal = false;
+    }
+
+    public function saveDetails(
+        UpdateTaskPriorityAction $updatePriority,
+        UpdateTaskTeamAction $updateTeam,
+        UpdateTaskDetailsAction $updateDetails,
+    ): void {
+        $this->authorize('update', $this->task);
+
+        $this->taskNote = trim($this->taskNote);
 
         $validated = $this->validate([
             'teamId' => ['required', 'integer', 'exists:internal_teams,id'],
+            'taskNote' => ['required', 'string', 'min:2', 'max:5000'],
+            'taskScheduledFor' => ['nullable', 'date'],
+            'priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
         ], [
             'teamId.required' => __('tasks.show.errors.team_required'),
+            'taskNote.required' => __('issues.show.errors.task_note_required'),
+            'taskNote.min' => __('issues.show.errors.task_note_min'),
         ]);
 
-        $this->task = $updateTeam->handle($this->task, (int) $validated['teamId']);
-        $this->teamId = $this->task->internal_team_id;
-    }
-
-    public function savePriority(UpdateTaskPriorityAction $updatePriority): void
-    {
-        $this->authorize('update', $this->task);
-
-        $validated = $this->validate([
-            'priority' => ['required', 'string', 'in:'.implode(',', array_column(TaskPriority::cases(), 'value'))],
-        ]);
-
-        $this->task = $updatePriority->handle(
+        $updatePriority->handle(
             $this->task,
             TaskPriority::from($validated['priority']),
             auth()->user()->tenant_id,
             auth()->id(),
         );
-        $this->priority = $this->task->priority->value;
+
+        if ($this->task->internal_team_id !== (int) $validated['teamId']) {
+            $updateTeam->handle($this->task, (int) $validated['teamId']);
+        }
+
+        $updateDetails->handle(
+            $this->task,
+            $validated['taskNote'],
+            $validated['taskScheduledFor'] ?? null,
+            auth()->user()->tenant_id,
+        );
+
+        $this->closeEditTaskModal();
+        $this->refreshTask();
     }
 
     public function selectStatus(string $status): void
@@ -125,8 +155,17 @@ class Show extends Component
     protected function refreshTask(): void
     {
         $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
+        $this->syncFormFromTask();
+    }
+
+    protected function syncFormFromTask(): void
+    {
         $this->teamId = $this->task->internal_team_id;
-        $this->priority = $this->task->priority->value;
+        $this->priority = $this->task->priority instanceof TaskPriority
+            ? $this->task->priority->value
+            : (string) $this->task->priority;
+        $this->taskNote = trim((string) ($this->task->note ?: $this->task->issue?->description));
+        $this->taskScheduledFor = $this->task->scheduled_for?->format('Y-m-d');
     }
 
     public function render()

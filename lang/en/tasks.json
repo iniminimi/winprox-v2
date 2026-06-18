@@ -17,10 +17,13 @@
     },
     "filter": {
         "status": "Filter by status",
+        "status_label": "Status",
         "status_all": "All statuses",
         "priority": "Filter by priority",
+        "priority_label": "Priority",
         "priority_all": "All priorities",
         "team": "Filter by team",
+        "team_label": "Team",
         "team_all": "All teams",
         "search": "Search",
         "search_placeholder": "Search by note, issue, location, address, postcode, city or unit",
@@ -28,7 +31,7 @@
         "recurring_only": "Recurring cycles only",
         "apply": "GO!",
         "reset": "Clear filters",
-        "hint": "Click a task to view details."
+        "hint": "Click a task to view and edit details."
     },
     "card": {
         "kind_nr": "Task no. :nr",
@@ -69,7 +72,8 @@
         "pause_submit": "Save pause note",
         "updates": "Issue updates",
         "errors": {
-            "team_required": "Choose a team."
+            "team_required": "Choose a team.",
+            "issue_not_approved": "The issue must be approved before tasks can be edited."
         }
     },
     "errors": {

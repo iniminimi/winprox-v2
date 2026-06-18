@@ -949,6 +949,69 @@ a.wp-kpi:hover {
     font-size: 0.8125rem;
 }
 
+.wp-filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+}
+
+.wp-filter-form__title {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--wp-text-muted);
+}
+
+.wp-filter-form__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.75rem 2rem;
+    align-items: center;
+}
+
+.wp-filter-form__row--search {
+    align-items: center;
+}
+
+.wp-filter-cell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    min-width: 0;
+}
+
+.wp-filter-cell--search {
+    min-width: 0;
+}
+
+.wp-filter-cell--search .wp-input {
+    flex: 1 1 12rem;
+    min-width: 0;
+    width: auto;
+}
+
+.wp-filter-cell--recurring {
+    justify-content: flex-start;
+}
+
+.wp-filter-inline-label {
+    margin: 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--wp-text);
+    white-space: nowrap;
+}
+
+.wp-filter-form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
 .wp-filter-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -977,8 +1040,17 @@ a.wp-kpi:hover {
 }
 
 .wp-filter-status-row .wp-select {
-    flex: 1 1 auto;
+    flex: 0 1 auto;
+    width: auto;
+    max-width: 100%;
     min-width: 0;
+}
+
+.wp-filter-panel .wp-filter-field .wp-select,
+.wp-filter-panel .wp-filter-cell .wp-select {
+    width: auto;
+    max-width: 100%;
+    field-sizing: content;
 }
 
 .wp-filter-go-btn {
@@ -1145,6 +1217,12 @@ a.wp-kpi:hover {
 @media (min-width: 768px) {
     .wp-filter-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .wp-filter-form__row {
+        grid-template-columns: 1fr;
     }
 }
 

@@ -17,10 +17,13 @@
     },
     "filter": {
         "status": "Filter op status",
+        "status_label": "Status",
         "status_all": "Alle statussen",
         "priority": "Filter op prioriteit",
+        "priority_label": "Prioriteit",
         "priority_all": "Alle prioriteiten",
         "team": "Filter op team",
+        "team_label": "Team",
         "team_all": "Alle teams",
         "search": "Zoeken",
         "search_placeholder": "Zoek op notitie, melding, locatie, adres, postcode, plaats of unit",
@@ -28,7 +31,7 @@
         "recurring_only": "Alleen terugkerende cycli",
         "apply": "GO!",
         "reset": "Filters wissen",
-        "hint": "Klik op de taak om details te bekijken."
+        "hint": "Klik op de taak om details te bekijken en te bewerken."
     },
     "card": {
         "kind_nr": "Taak nr :nr",
@@ -69,7 +72,8 @@
         "pause_submit": "Pauzenotitie opslaan",
         "updates": "Melding-updates",
         "errors": {
-            "team_required": "Kies een team."
+            "team_required": "Kies een team.",
+            "issue_not_approved": "De melding moet eerst goedgekeurd zijn voordat taken bewerkt kunnen worden."
         }
     },
     "errors": {

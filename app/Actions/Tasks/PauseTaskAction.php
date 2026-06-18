@@ -6,6 +6,7 @@ use App\Actions\Issues\AddIssueUpdateAction;
 use App\Enums\TaskStatus;
 use App\Models\Task;
 use App\Models\User;
+use App\Support\Tasks\TaskIssueApproval;
 use App\Support\Tasks\TaskStatusTransitions;
 use Illuminate\Validation\ValidationException;
 
@@ -15,6 +16,8 @@ class PauseTaskAction
 
     public function handle(Task $task, string $note, ?User $actor = null): Task
     {
+        TaskIssueApproval::assertTaskMutable($task);
+
         if ($task->status !== TaskStatus::InProgress) {
             throw ValidationException::withMessages([
                 'status' => [__('tasks.errors.pause_only_in_progress')],

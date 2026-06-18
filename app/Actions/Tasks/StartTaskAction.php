@@ -8,6 +8,7 @@ use App\Events\Tasks\TaskStarted;
 use App\Models\Task;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Tasks\TaskIssueApproval;
 
 /**
  * Worker start een taak vanaf het veld: status → In uitvoering (+ started_at).
@@ -21,6 +22,8 @@ class StartTaskAction
 
     public function handle(Task $task, ?Worker $worker = null, ?\Carbon\Carbon $clientTimestamp = null): Task
     {
+        TaskIssueApproval::assertTaskMutable($task);
+
         if (! $task->canStart()) {
             return $task;
         }

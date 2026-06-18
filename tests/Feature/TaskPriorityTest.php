@@ -38,7 +38,7 @@ it('new tasks get default priority prio_3 from database', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $task = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
@@ -51,7 +51,7 @@ it('model casts priority to TaskPriority enum', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $task = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
@@ -67,7 +67,7 @@ it('CreateTaskAction accepts priority parameter with default prio_3', function (
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'source' => 'qr']);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'source' => 'qr', 'approved_at' => now()]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     // Default priority
@@ -83,7 +83,7 @@ it('UpdateTaskPriorityAction changes priority correctly', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $task = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
@@ -115,7 +115,7 @@ it('UpdateTaskPriorityAction cannot change task from another tenant', function (
     // De taak zou niet gewijzigd moeten zijn (of een exception moeten gooien)
     // Omdat we tenantId meegeven aan de Action, zou deze moeten checken
     expect($updated->priority)->toBe(TaskPriority::Prio4);
-})->throws(\Exception::class);
+})->throws(\InvalidArgumentException::class);
 
 it('unauthorized user cannot change priority via policy', function () {
     $tenant = Tenant::factory()->create();
@@ -124,7 +124,7 @@ it('unauthorized user cannot change priority via policy', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id, 'role' => 'worker']); // Worker heeft geen rechten
     $this->actingAs($user);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $task = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
@@ -141,7 +141,7 @@ it('authorized admin can change priority via policy', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id, 'role' => 'admin']);
     $this->actingAs($user);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $task = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
@@ -155,7 +155,7 @@ it('tasks sort by priority then created_at returns correct order', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
 
     // Create tasks with different priorities and timestamps
     $task1 = Task::factory()->create([

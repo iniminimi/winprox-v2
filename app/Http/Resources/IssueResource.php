@@ -29,7 +29,9 @@ class IssueResource extends JsonResource
             'is_recurring' => (bool) $this->is_recurring,
             'recurrence_next_due_at' => optional($this->recurrence_next_due_at)->toIso8601String(),
             'created_at' => optional($this->created_at)->toIso8601String(),
-            'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+            'tasks' => $this->isApproved()
+                ? TaskResource::collection($this->whenLoaded('tasks'))
+                : [],
         ];
     }
 }

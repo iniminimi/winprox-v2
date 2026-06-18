@@ -16,7 +16,7 @@ it('build morning briefing action levert taken voor team en datum', function () 
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
     $date = now()->addDay()->toDateString();
 
     Tenancy::actAs($tenant->id);
@@ -60,6 +60,7 @@ it('toont briefing filter en taken na team en datum', function () {
         'location_id' => $location->id,
         'unit_id' => $unit->id,
         'description' => 'Schoonmaken aub.',
+        'approved_at' => now(),
     ]);
 
     $date = now()->addDay()->toDateString();

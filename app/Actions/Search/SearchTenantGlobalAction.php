@@ -315,6 +315,7 @@ final class SearchTenantGlobalAction
     private function searchTasks(int $tenantId, array $terms): Collection
     {
         $query = Task::query()
+            ->forApprovedIssue()
             ->where('tenant_id', $tenantId)
             ->with(['issue.location', 'issue.unit', 'team:id,name']);
 

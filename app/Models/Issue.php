@@ -6,6 +6,7 @@ use App\Enums\IssueSource;
 use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -104,6 +105,14 @@ class Issue extends Model
     public function isClosed(): bool
     {
         return $this->status === TaskStatus::Closed;
+    }
+
+    /** QR-meldingen die nog wachten op goedkeuring (niet afgewezen/gesloten). */
+    public function scopePendingReview(Builder $query): Builder
+    {
+        return $query
+            ->whereNull('approved_at')
+            ->where('status', '!=', TaskStatus::Closed);
     }
 
 }

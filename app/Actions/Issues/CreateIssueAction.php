@@ -41,7 +41,7 @@ class CreateIssueAction
         event(new IssueCreated($issue, $actorUserId));
 
         foreach ($teamIds as $teamId) {
-            $this->createTask->handle($issue, $teamId);
+            $this->createTask->handle($issue, $teamId, duringIssueIntake: true);
         }
 
         $this->recalculateIssueStatus->handle($issue);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Issues\AddIssueUpdateAction;
+use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueAction;
 use App\Actions\Tasks\CreateTaskAction;
@@ -18,15 +19,20 @@ it('leidt de meldingstatus af uit de taken (rollup)', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
-    $issue = app(CreateIssueAction::class)->handle(['description' => 'Lekkende kraan', 'source' => 'qr']);
-    expect($issue->status)->toBe(TaskStatus::New);
-
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
-    $taskA = app(CreateTaskAction::class)->handle($issue, $teamA->id);
-    $taskB = app(CreateTaskAction::class)->handle($issue, $teamB->id);
+    $issue = app(CreateIssueAction::class)->handle(
+        ['description' => 'Lekkende kraan', 'source' => 'qr'],
+        [$teamA->id, $teamB->id],
+    );
+    app(ApproveIssueAction::class)->handle($issue, $user);
+
     expect($issue->fresh()->status)->toBe(TaskStatus::New);
+
+    $taskA = $issue->tasks->firstWhere('internal_team_id', $teamA->id);
+    $taskB = $issue->tasks->firstWhere('internal_team_id', $teamB->id);
 
     app(UpdateTaskStatusAction::class)->handle($taskA, TaskStatus::InProgress);
     expect($issue->fresh()->status)->toBe(TaskStatus::InProgress);
@@ -36,6 +42,7 @@ it('leidt de meldingstatus af uit de taken (rollup)', function () {
     expect($issue->fresh()->status)->toBe(TaskStatus::Done);
 
     $closedIssue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten flow', 'source' => 'qr'], [$teamA->id]);
+    app(ApproveIssueAction::class)->handle($closedIssue, $user);
     $closedTask = $closedIssue->tasks->first();
     app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::InProgress);
     app(UpdateTaskStatusAction::class)->handle($closedTask, TaskStatus::Closed, null, 'Niet uitgevoerd');
@@ -80,6 +87,8 @@ it('weigert taak aanmaken voor gesloten melding', function () {
 
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $issue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten melding', 'source' => 'qr'], [$team->id]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    app(ApproveIssueAction::class)->handle($issue, $user);
     $task = $issue->tasks->first();
 
     app(UpdateTaskStatusAction::class)->handle($task, TaskStatus::Closed, null, 'Niet uitgevoerd');
@@ -97,6 +106,8 @@ it('weigert update toevoegen aan gesloten melding', function () {
 
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $issue = app(CreateIssueAction::class)->handle(['description' => 'Gesloten melding', 'source' => 'qr'], [$team->id]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    app(ApproveIssueAction::class)->handle($issue, $user);
     $task = $issue->tasks->first();
 
     app(UpdateTaskStatusAction::class)->handle($task, TaskStatus::Closed, null, 'Niet uitgevoerd');

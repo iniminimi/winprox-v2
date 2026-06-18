@@ -70,5 +70,9 @@
         "og_title": "WinProx | Facility Management Software",
         "og_description": "Efficiënt beheer van facilitaire diensten en onderhoudscoördinatie."
     },
-    "welcome": "Welkom"
+    "welcome": "Welkom",
+    "list": {
+        "filters_title": "Filters",
+        "per_status_limit": "Aantal per status"
+    }
 }

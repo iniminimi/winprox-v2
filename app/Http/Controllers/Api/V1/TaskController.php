@@ -20,7 +20,7 @@ class TaskController extends Controller
     {
         $this->authorize('viewAny', Task::class);
 
-        $query = Task::query()->with('issue')->latest();
+        $query = Task::query()->forApprovedIssue()->with('issue')->latest();
 
         if ($request->filled('status')) {
             $status = TaskStatus::tryFrom((string) $request->query('status'));

@@ -102,50 +102,55 @@
     @endcan
 
     <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-row">
-            <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddTaskModal">
-                {{ __('issues.show.add_task_button') }}
-            </button>
-        </div>
+        @if ($issue->isApproved())
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddTaskModal">
+                    {{ __('issues.show.add_task_button') }}
+                </button>
+            </div>
 
-        <div class="wp-list wp-list--entity-rows">
-            @forelse ($issue->tasks as $task)
-                @php
-                    $taskDescription = trim((string) ($task->note ?: $issue->description));
-                    $teamName = $task->team?->name ?? __('issues.show.no_team');
-                @endphp
-                <div class="wp-issue-row" wire:key="task-{{ $task->id }}">
-                    <div class="wp-grow wp-stack-tight">
-                        <div class="wp-cluster">
-                            <x-wp-ref-nr type="task" :id="$task->id" />
-                            <span class="wp-badge {{ $task->priority->badgeClass() }}">
-                                <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
-                                {{ $task->priority->label() }}
-                            </span>
-                            <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
-                            <span class="wp-issue-card-title">{{ $teamName }}</span>
+            <div class="wp-list wp-list--entity-rows">
+                @forelse ($issue->tasks as $task)
+                    @php
+                        $taskDescription = trim((string) ($task->note ?: $issue->description));
+                        $teamName = $task->team?->name ?? __('issues.show.no_team');
+                    @endphp
+                    <div class="wp-issue-row" wire:key="task-{{ $task->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <div class="wp-cluster">
+                                <x-wp-ref-nr type="task" :id="$task->id" />
+                                <span class="wp-badge {{ $task->priority->badgeClass() }}">
+                                    <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
+                                    {{ $task->priority->label() }}
+                                </span>
+                                <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                                <span class="wp-issue-card-title">{{ $teamName }}</span>
+                            </div>
+                            @if ($taskDescription !== '')
+                                <p class="wp-issue-card-desc">{{ $taskDescription }}</p>
+                            @endif
                         </div>
-                        @if ($taskDescription !== '')
-                            <p class="wp-issue-card-desc">{{ $taskDescription }}</p>
-                        @endif
+                        <div class="wp-stack-tight">
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal({{ $task->id }})">
+                                {{ __('common.button.edit') }}
+                            </button>
+                            <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
+                                {{ __('common.button.view') }}
+                            </a>
+                        </div>
                     </div>
-                    <div class="wp-stack-tight">
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal({{ $task->id }})">
-                            {{ __('common.button.edit') }}
-                        </button>
-                        <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
-                            {{ __('common.button.view') }}
-                        </a>
-                    </div>
-                </div>
-            @empty
-                <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>
-            @endforelse
-        </div>
+                @empty
+                    <p class="wp-muted">{{ __('issues.show.tasks_empty') }}</p>
+                @endforelse
+            </div>
+        @else
+            <h2 class="wp-section-title">{{ __('issues.show.tasks') }}</h2>
+            <p class="wp-muted">{{ __('issues.show.tasks_hidden_until_approved') }}</p>
+        @endif
     </div>
 
-    @if ($showAddTaskModal)
+    @if ($showAddTaskModal && $issue->isApproved())
         @teleport('body')
         <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-add-task-title" x-on:keydown.escape.window="$wire.closeAddTaskModal()">
             <form wire:submit="addTask" class="wp-card wp-modal-card wp-modal-card--form">
@@ -195,7 +200,7 @@
         @endteleport
     @endif
 
-    @if ($showEditTaskModal)
+    @if ($showEditTaskModal && $issue->isApproved())
         @teleport('body')
         <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="issue-edit-task-title" x-on:keydown.escape.window="$wire.closeEditTaskModal()">
             <form wire:submit="editTask" class="wp-card wp-modal-card wp-modal-card--form">
@@ -297,7 +302,9 @@
         @endteleport
     @endif
 
-    @include('livewire.issues.partials.updates-section')
+    @if ($issue->isApproved())
+        @include('livewire.issues.partials.updates-section')
+    @endif
 
     @if ($showUpdateModal)
         @include('livewire.issues.partials.update-modal')

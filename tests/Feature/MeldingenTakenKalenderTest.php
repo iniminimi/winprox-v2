@@ -5,6 +5,7 @@ use App\Enums\IssueSource;
 use App\Enums\TaskStatus;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Pages\Calendar;
+use App\Livewire\Tasks\Index as TaskIndex;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Models\Category;
 use App\Models\InternalTeam;
@@ -162,6 +163,8 @@ it('opent de aanmaak-modal via create-query en oude route', function () {
 it('filtert terugkerende meldingen op de index', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -263,6 +266,8 @@ it('opent een terugkerende cyclus via het artisan commando', function () {
 it('toont een geplande taak op de kalender op de juiste dag', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -340,14 +345,182 @@ it('wijzigt het team op taakdetail', function () {
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
         'internal_team_id' => $teamA->id,
+        'note' => 'Kolombor schilderen',
     ]);
 
     Livewire::actingAs($user)
         ->test(TaskShow::class, ['task' => $task])
         ->assertSee('Elektriciteit')
+        ->call('openEditTaskModal')
+        ->assertSet('showEditTaskModal', true)
         ->set('teamId', $teamB->id)
-        ->call('saveTeam')
+        ->call('saveDetails')
+        ->assertSet('showEditTaskModal', false)
         ->assertHasNoErrors();
 
     expect($task->fresh()->internal_team_id)->toBe($teamB->id);
+});
+
+it('wijzigt notitie en geplande datum op taakdetail', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Oorspronkelijke melding',
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'note' => 'Oorspronkelijke melding',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(TaskShow::class, ['task' => $task])
+        ->set('taskNote', 'Aangepaste taaknotitie')
+        ->set('taskScheduledFor', '2026-07-15')
+        ->call('saveDetails')
+        ->assertHasNoErrors();
+
+    $task->refresh();
+
+    expect($task->note)->toBe('Aangepaste taaknotitie')
+        ->and($task->scheduled_for?->format('Y-m-d'))->toBe('2026-07-15');
+});
+
+it('beperkt meldingen per statusgroep met teller shown/total', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    Tenancy::actAs($tenant->id);
+
+    Issue::factory()->count(15)->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->assertSet('perStatusLimit', 10)
+        ->assertViewHas('groups', function (array $groups) {
+            $group = collect($groups)->firstWhere('status', TaskStatus::InProgress);
+
+            return $group !== null
+                && $group['shown'] === 10
+                && $group['total'] === 15
+                && $group['issues']->count() === 10;
+        })
+        ->assertSee('10/15', false);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->set('perStatusLimit', 50)
+        ->assertViewHas('groups', function (array $groups) {
+            $group = collect($groups)->firstWhere('status', TaskStatus::InProgress);
+
+            return $group !== null
+                && $group['shown'] === 15
+                && $group['total'] === 15;
+        });
+});
+
+it('beperkt taken per statusgroep met teller shown/total', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'approved_at' => now(),
+    ]);
+    Tenancy::actAs($tenant->id);
+
+    Task::factory()->count(12)->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'status' => TaskStatus::New,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(TaskIndex::class)
+        ->assertSet('perStatusLimit', 10)
+        ->assertViewHas('groups', function (array $groups) {
+            $group = collect($groups)->firstWhere('status', TaskStatus::New);
+
+            return $group !== null
+                && $group['shown'] === 10
+                && $group['total'] === 12
+                && $group['tasks']->count() === 10;
+        })
+        ->assertSee('10/12', false);
+});
+
+it('sorteert meldingen en taken binnen status op id aflopend', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    Tenancy::actAs($tenant->id);
+
+    $olderIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+    $newerIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(IssueIndex::class)
+        ->assertViewHas('groups', function (array $groups) use ($newerIssue, $olderIssue) {
+            $group = collect($groups)->firstWhere('status', TaskStatus::InProgress);
+
+            return $group !== null
+                && $group['issues']->pluck('id')->all() === [$newerIssue->id, $olderIssue->id];
+        });
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'approved_at' => now(),
+    ]);
+
+    $olderTask = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'status' => TaskStatus::New,
+    ]);
+    $newerTask = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'status' => TaskStatus::New,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(TaskIndex::class)
+        ->assertViewHas('groups', function (array $groups) use ($newerTask, $olderTask) {
+            $group = collect($groups)->firstWhere('status', TaskStatus::New);
+
+            return $group !== null
+                && $group['tasks']->pluck('id')->all() === [$newerTask->id, $olderTask->id];
+        });
 });

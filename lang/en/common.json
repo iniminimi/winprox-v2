@@ -70,5 +70,9 @@
         "og_title": "WinProx | Facility Management Software",
         "og_description": "Efficient facility services management and maintenance coordination."
     },
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+    "list": {
+        "filters_title": "Filters",
+        "per_status_limit": "Items per status"
+    }
 }

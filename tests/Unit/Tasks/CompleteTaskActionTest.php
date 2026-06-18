@@ -35,10 +35,7 @@ it('completes a task with current timestamp when no client timestamp provided', 
 
     Carbon::setTestNow('2024-01-01 12:00:00');
 
-    $action = new CompleteTaskAction(
-        app(App\Support\IssuePhotoStorage::class),
-        app(App\Support\Audit\AuditRecorder::class),
-    );
+    $action = app(CompleteTaskAction::class);
     $result = $action->handle($task, $worker);
 
     expect($result->status)->toBe(TaskStatus::Done);
@@ -62,10 +59,7 @@ it('completes a task with client timestamp when provided', function () {
     Carbon::setTestNow('2024-01-01 12:00:00');
     $clientTimestamp = Carbon::parse('2024-01-01 11:30:00');
 
-    $action = new CompleteTaskAction(
-        app(App\Support\IssuePhotoStorage::class),
-        app(App\Support\Audit\AuditRecorder::class),
-    );
+    $action = app(CompleteTaskAction::class);
     $result = $action->handle($task, $worker, null, [], $clientTimestamp);
 
     expect($result->status)->toBe(TaskStatus::Done);
@@ -90,10 +84,7 @@ it('uses client timestamp for started_at when task has no started_at', function 
     Carbon::setTestNow('2024-01-01 12:00:00');
     $clientTimestamp = Carbon::parse('2024-01-01 11:00:00');
 
-    $action = new CompleteTaskAction(
-        app(App\Support\IssuePhotoStorage::class),
-        app(App\Support\Audit\AuditRecorder::class),
-    );
+    $action = app(CompleteTaskAction::class);
     $result = $action->handle($task, $worker, null, [], $clientTimestamp);
 
     expect($result->status)->toBe(TaskStatus::Done);
@@ -119,10 +110,7 @@ it('preserves existing started_at when task already started', function () {
     Carbon::setTestNow('2024-01-01 12:00:00');
     $clientTimestamp = Carbon::parse('2024-01-01 11:30:00');
 
-    $action = new CompleteTaskAction(
-        app(App\Support\IssuePhotoStorage::class),
-        app(App\Support\Audit\AuditRecorder::class),
-    );
+    $action = app(CompleteTaskAction::class);
     $result = $action->handle($task, $worker, null, [], $clientTimestamp);
 
     expect($result->status)->toBe(TaskStatus::Done);
@@ -147,10 +135,7 @@ it('returns task unchanged when task cannot be completed', function () {
     $originalStatus = $task->status;
     $originalCompletedAt = $task->completed_at;
 
-    $action = new CompleteTaskAction(
-        app(App\Support\IssuePhotoStorage::class),
-        app(App\Support\Audit\AuditRecorder::class),
-    );
+    $action = app(CompleteTaskAction::class);
     $result = $action->handle($task, $worker);
 
     expect($result->status)->toBe($originalStatus);

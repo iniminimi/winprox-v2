@@ -4,6 +4,7 @@ namespace App\Actions\Tasks;
 
 use App\Enums\TaskPriority;
 use App\Models\Task;
+use App\Support\Tasks\TaskIssueApproval;
 
 class UpdateTaskPriorityAction
 {
@@ -19,10 +20,11 @@ class UpdateTaskPriorityAction
         int $tenantId,
         ?int $actorUserId = null,
     ): Task {
-        // Tenant scoping wordt expliciet afgedwongen
         if ((int) $task->tenant_id !== $tenantId) {
             throw new \InvalidArgumentException('Cannot update task from another tenant');
         }
+
+        TaskIssueApproval::assertTaskMutable($task);
 
         $task->update(['priority' => $priority]);
 

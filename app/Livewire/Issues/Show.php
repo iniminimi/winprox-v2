@@ -144,6 +144,10 @@ class Show extends Component
     {
         $this->authorize('update', $this->issue);
 
+        if (! $this->issue->isApproved()) {
+            return;
+        }
+
         $this->newTeamId = null;
         $this->taskNote = trim((string) $this->issue->description);
         $this->taskScheduledFor = $this->issue->recurrence_next_due_at?->format('Y-m-d');
@@ -161,6 +165,10 @@ class Show extends Component
     public function openEditTaskModal(int $taskId): void
     {
         $this->authorize('update', $this->issue);
+
+        if (! $this->issue->isApproved()) {
+            return;
+        }
 
         $task = $this->issue->tasks->find($taskId);
         if (! $task) {
@@ -189,6 +197,10 @@ class Show extends Component
         UpdateTaskDetailsAction $updateDetails,
     ): void {
         $this->authorize('update', $this->issue);
+
+        if (! $this->issue->isApproved()) {
+            return;
+        }
 
         $task = $this->issue->tasks->find($this->editTaskId);
         if (! $task) {
@@ -238,6 +250,10 @@ class Show extends Component
     {
         $this->authorize('update', $this->issue);
 
+        if (! $this->issue->isApproved()) {
+            return;
+        }
+
         $this->taskNote = trim($this->taskNote);
 
         $validated = $this->validate([
@@ -274,6 +290,10 @@ class Show extends Component
     {
         $this->authorize('update', $this->issue);
 
+        if (! $this->issue->isApproved()) {
+            return;
+        }
+
         $this->reset(['updateBody', 'updatePhotos']);
         $this->resetValidation();
         $this->showUpdateModal = true;
@@ -291,6 +311,10 @@ class Show extends Component
     public function saveUpdate(CreateIssueUpdateAction $createUpdate): void
     {
         $this->authorize('update', $this->issue);
+
+        if (! $this->issue->isApproved()) {
+            return;
+        }
 
         $validated = $this->validate([
             'updateBody' => ['required', 'string', 'min:2', 'max:5000'],

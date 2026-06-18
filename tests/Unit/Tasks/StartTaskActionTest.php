@@ -33,7 +33,7 @@ it('starts a task with current timestamp when no client timestamp provided', fun
 
     Carbon::setTestNow('2024-01-01 12:00:00');
 
-    $action = new StartTaskAction(app(App\Support\Audit\AuditRecorder::class));
+    $action = app(StartTaskAction::class);
     $result = $action->handle($task);
 
     expect($result->status)->toBe(TaskStatus::InProgress);
@@ -55,7 +55,7 @@ it('starts a task with client timestamp when provided', function () {
     Carbon::setTestNow('2024-01-01 12:00:00');
     $clientTimestamp = Carbon::parse('2024-01-01 10:30:00');
 
-    $action = new StartTaskAction(app(App\Support\Audit\AuditRecorder::class));
+    $action = app(StartTaskAction::class);
     $result = $action->handle($task, null, $clientTimestamp);
 
     expect($result->status)->toBe(TaskStatus::InProgress);
@@ -79,7 +79,7 @@ it('does not override existing started_at when task already started', function (
     Carbon::setTestNow('2024-01-01 12:00:00');
     $clientTimestamp = Carbon::parse('2024-01-01 10:30:00');
 
-    $action = new StartTaskAction(app(App\Support\Audit\AuditRecorder::class));
+    $action = app(StartTaskAction::class);
     $result = $action->handle($task, null, $clientTimestamp);
 
     expect($result->status)->toBe(TaskStatus::InProgress);
@@ -101,7 +101,7 @@ it('accepts worker parameter for audit purposes', function () {
 
     Event::fake();
 
-    $action = new StartTaskAction(app(App\Support\Audit\AuditRecorder::class));
+    $action = app(StartTaskAction::class);
     $result = $action->handle($task, $worker);
 
     Event::assertDispatched(\App\Events\Tasks\TaskStarted::class);
@@ -122,7 +122,7 @@ it('returns task unchanged when task cannot be started', function () {
     $originalStatus = $task->status;
     $originalStartedAt = $task->started_at;
 
-    $action = new StartTaskAction(app(App\Support\Audit\AuditRecorder::class));
+    $action = app(StartTaskAction::class);
     $result = $action->handle($task);
 
     expect($result->status)->toBe($originalStatus);

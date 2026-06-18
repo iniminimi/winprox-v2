@@ -17,10 +17,13 @@
     },
     "filter": {
         "status": "Filtrer par statut",
+        "status_label": "Statut",
         "status_all": "Tous les statuts",
         "priority": "Filtrer par priorité",
+        "priority_label": "Priorité",
         "priority_all": "Toutes les priorités",
         "team": "Filtrer par équipe",
+        "team_label": "Équipe",
         "team_all": "Toutes les équipes",
         "search": "Rechercher",
         "search_placeholder": "Recherche par note, signalement, site, adresse, code postal, ville ou unité",
@@ -28,7 +31,7 @@
         "recurring_only": "Cycles récurrents uniquement",
         "apply": "GO!",
         "reset": "Effacer les filtres",
-        "hint": "Cliquez sur une tâche pour voir les détails."
+        "hint": "Cliquez sur une tâche pour voir et modifier les détails."
     },
     "card": {
         "kind_nr": "Tâche n° :nr",
@@ -69,7 +72,8 @@
         "pause_submit": "Enregistrer la pause",
         "updates": "Mises à jour du signalement",
         "errors": {
-            "team_required": "Choisissez une équipe."
+            "team_required": "Choisissez une équipe.",
+            "issue_not_approved": "Le signalement doit d'abord être validé avant de modifier les tâches."
         }
     },
     "errors": {

@@ -116,6 +116,7 @@ final class BuildMorningBriefingAction
     private function tasksQuery(InternalTeam $team, Carbon $dayStart, Carbon $dayEnd, bool $openTasksOnly): Builder
     {
         $query = Task::query()
+            ->forApprovedIssue()
             ->with(['issue.location', 'issue.unit', 'team'])
             ->where('tenant_id', $team->tenant_id)
             ->where('internal_team_id', $team->id)

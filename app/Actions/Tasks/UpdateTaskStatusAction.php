@@ -9,6 +9,7 @@ use App\Events\Tasks\TaskCompleted;
 use App\Events\Tasks\TaskStarted;
 use App\Models\Task;
 use App\Models\User;
+use App\Support\Tasks\TaskIssueApproval;
 use App\Support\Tasks\TaskStatusTransitions;
 use Illuminate\Validation\ValidationException;
 
@@ -25,6 +26,8 @@ class UpdateTaskStatusAction
         ?User $actor = null,
         ?string $reason = null,
     ): Task {
+        TaskIssueApproval::assertTaskMutable($task);
+
         $from = $task->status instanceof TaskStatus
             ? $task->status
             : (TaskStatus::tryFrom((string) $task->status) ?? TaskStatus::New);

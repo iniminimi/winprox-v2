@@ -14,6 +14,7 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\PerStatusListLimit;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -42,6 +43,9 @@ class Index extends Component
 
     #[Url(as: 'create')]
     public bool $openCreate = false;
+
+    #[Url(as: 'limit')]
+    public int $perStatusLimit = PerStatusListLimit::DEFAULT;
 
     public bool $showCreateModal = false;
 
@@ -76,6 +80,8 @@ class Index extends Component
 
     public function mount(): void
     {
+        $this->perStatusLimit = PerStatusListLimit::normalize($this->perStatusLimit);
+
         if ($this->highlightIssue === null && session()->has('highlight_issue')) {
             $this->highlightIssue = (int) session()->pull('highlight_issue');
         }
@@ -84,6 +90,11 @@ class Index extends Component
             $this->openCreate = false;
             $this->openCreateModal();
         }
+    }
+
+    public function updatedPerStatusLimit(): void
+    {
+        $this->perStatusLimit = PerStatusListLimit::normalize($this->perStatusLimit);
     }
 
     public function approve(int $issue, ApproveIssueAction $approveIssue): void
@@ -102,6 +113,7 @@ class Index extends Component
             'q' => trim($this->search) !== '' ? trim($this->search) : null,
             'recurring' => $this->recurring ? '1' : null,
             'highlight' => $this->highlightIssue ?: null,
+            'limit' => $this->perStatusLimit !== PerStatusListLimit::DEFAULT ? $this->perStatusLimit : null,
         ])), navigate: true);
     }
 
@@ -300,26 +312,49 @@ class Index extends Component
                         ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term));
                 });
             })
+            ->orderByDesc('id')
             ->get();
 
-        // Sort: pending approval first, then by priority, then by date
-        $issues = $issues->sortBy(fn ($issue) => [
-            $issue->approved_at ? 1 : 0, // Pending approval (null) first
-            $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99), // Priority
-            $issue->created_at->timestamp, // Date (newest first)
-        ])->values();
+        $pendingIssues = $issues->filter(
+            fn ($issue) => ! $issue->isApproved() && $issue->status !== TaskStatus::Closed
+        )->values();
+        $groupableIssues = $issues->filter(
+            fn ($issue) => $issue->isApproved() || $issue->status === TaskStatus::Closed
+        );
 
         $groups = [];
+        if ($pendingIssues->isNotEmpty()) {
+            $limited = $pendingIssues->take($this->perStatusLimit)->values();
+            $groups[] = [
+                'kind' => 'pending',
+                'title' => __('issues.pending_review'),
+                'headModifier' => 'progress',
+                'issues' => $limited,
+                'shown' => $limited->count(),
+                'total' => $pendingIssues->count(),
+            ];
+        }
+
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $issues->where('status', $status);
+            $bucket = $groupableIssues->where('status', $status)->values();
             if ($bucket->isNotEmpty()) {
-                $groups[] = ['status' => $status, 'issues' => $bucket->values()];
+                $limited = $bucket->take($this->perStatusLimit)->values();
+                $groups[] = [
+                    'kind' => 'status',
+                    'status' => $status,
+                    'title' => __($status->labelKey()),
+                    'headModifier' => $status->pillModifier(),
+                    'issues' => $limited,
+                    'shown' => $limited->count(),
+                    'total' => $bucket->count(),
+                ];
             }
         }
 
         return view('livewire.issues.index', [
             'groups' => $groups,
             'total' => $issues->count(),
+            'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,

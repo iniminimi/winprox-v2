@@ -2,6 +2,8 @@
 
 use App\Livewire\Auth\Login;
 use App\Livewire\Issues\Index;
+use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -45,6 +47,9 @@ it('toont beheerschermen NOOIT geblurd, ook niet voor een niet-goedgekeurde meld
 
     Tenancy::actAs($tenant->id);
 
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 
@@ -68,7 +73,16 @@ it('keurt een melding goed vanuit de lijst', function () {
 
     Tenancy::actAs($tenant->id);
 
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => null]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'approved_at' => null,
+    ]);
 
     Livewire::actingAs($user)
         ->test(Index::class)
@@ -84,6 +98,9 @@ it('toont geen blur voor een goedgekeurde melding', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
     Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);

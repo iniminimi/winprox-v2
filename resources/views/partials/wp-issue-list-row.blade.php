@@ -5,7 +5,9 @@
     // Exclude closed tasks from display
     $openTasks = $issue->tasks->filter(fn ($t) => $t->status !== TaskStatus::Closed);
 
-    $teamNames = $openTasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values();
+    $teamNames = $issue->isApproved()
+        ? $openTasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values()
+        : collect();
     $cardTitle = collect([
         $issue->location?->name,
         $issue->unit?->name,
@@ -15,21 +17,27 @@
         ? trim(($issue->location->country_code ?: 'BE').' '.$issue->location->formattedAddress())
         : '';
     $datetime = optional($issue->created_at)->timezone(config('app.timezone'))->format('d/m/Y H:i');
-    $teamsLabel = $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team');
     $reporterName = $issue->reporter_name ?: __('issues.card.unknown_reporter');
     $issueLine = match ($issue->source) {
         IssueSource::Qr => __('issues.card.line_reported_by', ['name' => $reporterName]),
         default => __('issues.card.line_created_by', ['name' => $reporterName]),
     };
-    $contextMeta = match ($issue->source) {
-        IssueSource::Qr => __('issues.card.meta_via_context', [
+    $contextMeta = match (true) {
+        $issue->source === IssueSource::Qr && ! $issue->isApproved() => __('issues.card.meta_via_context_no_team', [
             'source' => __('issues.card.report_source_qr'),
             'datetime' => $datetime,
-            'teams' => $teamsLabel,
+        ]),
+        $issue->source === IssueSource::Qr => __('issues.card.meta_via_context', [
+            'source' => __('issues.card.report_source_qr'),
+            'datetime' => $datetime,
+            'teams' => $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team'),
+        ]),
+        ! $issue->isApproved() => __('issues.card.meta_context_no_team', [
+            'datetime' => $datetime,
         ]),
         default => __('issues.card.meta_context', [
             'datetime' => $datetime,
-            'teams' => $teamsLabel,
+            'teams' => $teamNames->isNotEmpty() ? $teamNames->join(', ') : __('issues.card.no_team'),
         ]),
     };
     // Get highest priority task for this issue (excluding closed tasks)
@@ -58,7 +66,7 @@
         @if ($issue->is_recurring)
             <span class="wp-pill wp-pill--done">{{ __('issues.card.recurring') }}</span>
         @endif
-        @if ($highestPriorityTask && $highestPriorityTask->priority)
+        @if ($highestPriorityTask && $highestPriorityTask->priority && $issue->isApproved())
             <span class="wp-badge {{ $highestPriorityTask->priority->badgeClass() }}">
                 <x-wp-icon :name="$highestPriorityTask->priority->icon()" class="wp-icon wp-icon--sm" />
                 {{ $highestPriorityTask->priority->label() }}

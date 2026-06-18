@@ -45,65 +45,72 @@
     </x-wp-entity-detail-head>
 
     <div class="wp-card wp-card-pad wp-stack-tight">
-        <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>
+        <div class="wp-row">
+            <h2 class="wp-section-title">{{ __('tasks.show.task_line', ['team' => $teamName]) }}</h2>
+            @if ($canUpdate)
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditTaskModal">
+                    {{ __('issues.show.edit_task_modal_title') }}
+                </button>
+            @endif
+        </div>
         @if ($taskDescription !== '')
             <p class="wp-text-body">{{ $taskDescription }}</p>
         @endif
         @if ($task->scheduled_for || $task->due_at)
             <p class="wp-muted">{{ __('tasks.show.due', ['date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y')]) }}</p>
         @endif
+        <p class="wp-text-body">{{ $task->priority->label() }}</p>
     </div>
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('tasks.show.priority') }}</h2>
-
-        @if ($canUpdate)
-            <form wire:submit="savePriority" class="wp-stack-tight">
-                <div class="wp-field">
-                    <label class="wp-label" for="priority">{{ __('tasks.show.priority_change') }}</label>
-                    <select id="priority" class="wp-select" wire:model="priority">
-                        @foreach ($priorities as $prio)
-                            <option value="{{ $prio->value }}">{{ $prio->label() }}</option>
-                        @endforeach
-                    </select>
-                    @error('priority') <p class="wp-error">{{ $message }}</p> @enderror
+    @if ($showEditTaskModal)
+        @teleport('body')
+        <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="task-edit-title" x-on:keydown.escape.window="$wire.closeEditTaskModal()">
+            <form wire:submit="saveDetails" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="task-edit-title" class="wp-section-title">{{ __('issues.show.edit_task_modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeEditTaskModal" />
                 </div>
-                <button type="submit" class="btn btn--primary">{{ __('tasks.show.priority_save') }}</button>
-            </form>
-        @else
-            <p class="wp-text-body">{{ $task->priority->label() }}</p>
-        @endif
-    </div>
-
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('tasks.show.team_section') }}</h2>
-        <p class="wp-muted">{{ __('tasks.show.team_hint') }}</p>
-
-        @if ($task->team)
-            <p class="wp-text-body">
-                {{ __('tasks.show.team_current', ['name' => $task->team->name]) }}
-            </p>
-        @else
-            <p class="wp-muted">{{ __('tasks.card.no_team') }}</p>
-        @endif
-
-        @if ($canUpdate)
-            <form wire:submit="saveTeam" class="wp-stack-tight">
-                <div class="wp-field">
-                    <label class="wp-label" for="teamId">{{ __('tasks.show.team_select_label') }}</label>
-                    <select id="teamId" class="wp-select" wire:model="teamId">
-                        <option value="">{{ __('tasks.show.team_select_placeholder') }}</option>
-                        @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('teamId') <p class="wp-error">{{ $message }}</p> @enderror
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('issues.show.edit_task_modal_subtitle') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
+                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
+                        <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
+                        @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="priority">{{ __('tasks.show.priority') }}</label>
+                        <select id="priority" class="wp-select" wire:model="priority">
+                            @foreach ($priorities as $prio)
+                                <option value="{{ $prio->value }}">{{ $prio->label() }}</option>
+                            @endforeach
+                        </select>
+                        @error('priority') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="teamId">{{ __('issues.show.add_task_team_label') }}</label>
+                        <select id="teamId" class="wp-select" wire:model="teamId">
+                            <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('teamId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
                 </div>
-                <button type="submit" class="btn btn--primary">{{ __('tasks.show.team_save') }}</button>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeEditTaskModal">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('issues.show.edit_task_submit') }}</button>
+                </div>
             </form>
-        @endif
-
-    </div>
+        </div>
+        @endteleport
+    @endif
 
     @if ($transitions !== [])
         <div class="wp-card wp-card-pad wp-stack">

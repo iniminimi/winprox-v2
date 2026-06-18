@@ -20,57 +20,69 @@
 
         @if (!$hasNoIssues)
             <div class="wp-card wp-filter-panel">
-                <div class="wp-filter-grid">
-                    <div class="wp-filter-field">
-                        <label class="wp-label" for="statusFilter">{{ __('tasks.filter.status') }}</label>
-                        <div class="wp-filter-status-row">
+                <div class="wp-filter-form">
+                    <p class="wp-filter-form__title">{{ __('common.list.filters_title') }}</p>
+
+                    <div class="wp-filter-form__row">
+                        <div class="wp-filter-cell">
+                            <label class="wp-filter-inline-label" for="statusFilter">{{ __('tasks.filter.status_label') }}</label>
                             <select id="statusFilter" class="wp-select" wire:model.defer="statusFilter">
                                 <option value="">{{ __('tasks.filter.status_all') }}</option>
                                 @foreach ($statuses as $status)
                                     <option value="{{ $status->value }}">{{ __($status->labelKey()) }}</option>
                                 @endforeach
                             </select>
-                            <button type="button" class="btn btn--primary btn--sm wp-filter-go-btn" wire:click="applyFilters">{{ __('tasks.filter.apply') }}</button>
+                        </div>
+                        <div class="wp-filter-cell">
+                            <label class="wp-filter-inline-label" for="teamFilter">{{ __('tasks.filter.team_label') }}</label>
+                            <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
+                                <option value="">{{ __('tasks.filter.team_all') }}</option>
+                                @foreach ($teams as $team)
+                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
-                    <div class="wp-filter-field">
-                        <label class="wp-label" for="teamFilter">{{ __('tasks.filter.team') }}</label>
-                        <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
-                            <option value="">{{ __('tasks.filter.team_all') }}</option>
-                            @foreach ($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="wp-filter-form__row">
+                        <div class="wp-filter-cell">
+                            <label class="wp-filter-inline-label" for="priorityFilter">{{ __('tasks.filter.priority_label') }}</label>
+                            <select id="priorityFilter" class="wp-select" wire:model.defer="priorityFilter">
+                                <option value="">{{ __('tasks.filter.priority_all') }}</option>
+                                @foreach ($priorities as $priority)
+                                    <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="wp-filter-cell">
+                            <label class="wp-filter-inline-label" for="perStatusLimit">{{ __('common.list.per_status_limit') }}</label>
+                            <select id="perStatusLimit" class="wp-select" wire:model.live="perStatusLimit">
+                                @foreach ($perStatusLimits as $limit)
+                                    <option value="{{ $limit }}">{{ $limit }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="wp-filter-field">
-                        <label class="wp-label" for="priorityFilter">{{ __('tasks.filter.priority') }}</label>
-                        <select id="priorityFilter" class="wp-select" wire:model.defer="priorityFilter">
-                            <option value="">{{ __('tasks.filter.priority_all') }}</option>
-                            @foreach ($priorities as $priority)
-                                <option value="{{ $priority->value }}">{{ $priority->label() }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="wp-filter-field">
-                        <label class="wp-label" for="search">{{ __('tasks.filter.search') }}</label>
-                        <input type="search" id="search" class="wp-input" wire:model.defer="search"
-                               placeholder="{{ __('tasks.filter.search_placeholder') }}">
-                    </div>
-
-                    <div class="wp-filter-field wp-filter-field--recurring">
-                        <span class="wp-label" id="recurringFilterLabel">{{ __('tasks.filter.recurring') }}</span>
-                        <div class="wp-filter-recurring-row">
-                            <label class="wp-check" aria-labelledby="recurringFilterLabel">
+                    <div class="wp-filter-form__row wp-filter-form__row--search">
+                        <div class="wp-filter-cell wp-filter-cell--search">
+                            <label class="wp-filter-inline-label" for="search">{{ __('tasks.filter.search') }}</label>
+                            <input type="search" id="search" class="wp-input" wire:model.defer="search"
+                                   placeholder="{{ __('tasks.filter.search_placeholder') }}">
+                        </div>
+                        <div class="wp-filter-cell wp-filter-cell--recurring">
+                            <label class="wp-check">
                                 <input type="checkbox" wire:model.defer="recurring">
                                 {{ __('tasks.filter.recurring_only') }}
                             </label>
-                            @if ($hasFilters)
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('tasks.filter.reset') }}</button>
-                            @endif
                         </div>
+                    </div>
+
+                    <div class="wp-filter-form__actions">
+                        <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('tasks.filter.apply') }}</button>
+                        @if ($hasFilters)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">{{ __('tasks.filter.reset') }}</button>
+                        @endif
                     </div>
                 </div>
                 <p class="wp-hint wp-filter-panel-hint">{{ __('tasks.filter.hint') }}</p>
@@ -81,7 +93,7 @@
             <section class="wp-status-block" wire:key="task-group-{{ $group['status']->value }}">
                 <div class="wp-group-head wp-group-head--{{ $group['status']->pillModifier() }}">
                     <h2 class="wp-group-title">{{ __($group['status']->labelKey()) }}</h2>
-                    <span class="wp-group-count">{{ trans_choice('tasks.list.group_count', $group['tasks']->count()) }}</span>
+                    <span class="wp-group-count">{{ $group['shown'] }}/{{ $group['total'] }}</span>
                 </div>
 
                 <div class="wp-status-block__list">

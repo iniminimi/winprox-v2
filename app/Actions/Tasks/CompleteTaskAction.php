@@ -10,6 +10,7 @@ use App\Models\Task;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
+use App\Support\Tasks\TaskIssueApproval;
 use Illuminate\Http\UploadedFile;
 
 /**
@@ -30,6 +31,8 @@ class CompleteTaskAction
      */
     public function handle(Task $task, ?Worker $worker = null, ?string $note = null, array $photos = [], ?\Carbon\Carbon $clientTimestamp = null): Task
     {
+        TaskIssueApproval::assertTaskMutable($task);
+
         if (! $task->canComplete()) {
             return $task;
         }

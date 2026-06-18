@@ -39,6 +39,7 @@ class EntityDetailNavigation
     public static function forTask(Task $task): array
     {
         $ids = Task::query()
+            ->forApprovedIssue()
             ->orderByDesc('created_at')
             ->orderByDesc('id')
             ->pluck('id')

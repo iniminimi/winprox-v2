@@ -16,7 +16,7 @@ afterEach(fn () => Tenancy::forget());
 it('voegt een notitie toe op meldingdetail via livewire', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $issue = Issue::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
 
     Tenancy::actAs($tenant->id);
 

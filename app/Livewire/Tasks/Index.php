@@ -10,6 +10,7 @@ use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\PerStatusListLimit;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -34,6 +35,19 @@ class Index extends Component
     #[Url(as: 'recurring')]
     public bool $recurring = false;
 
+    #[Url(as: 'limit')]
+    public int $perStatusLimit = PerStatusListLimit::DEFAULT;
+
+    public function mount(): void
+    {
+        $this->perStatusLimit = PerStatusListLimit::normalize($this->perStatusLimit);
+    }
+
+    public function updatedPerStatusLimit(): void
+    {
+        $this->perStatusLimit = PerStatusListLimit::normalize($this->perStatusLimit);
+    }
+
     public function applyFilters(): void
     {
         $this->redirect(route('tasks.index', array_filter([
@@ -42,6 +56,7 @@ class Index extends Component
             'priority' => $this->priorityFilter !== '' ? $this->priorityFilter : null,
             'q' => trim($this->search) !== '' ? trim($this->search) : null,
             'recurring' => $this->recurring ? '1' : null,
+            'limit' => $this->perStatusLimit !== PerStatusListLimit::DEFAULT ? $this->perStatusLimit : null,
         ])), navigate: true);
     }
 
@@ -55,6 +70,7 @@ class Index extends Component
         $this->authorize('viewAny', Task::class);
 
         $tasks = Task::query()
+            ->forApprovedIssue()
             ->with(['issue.location', 'issue.unit', 'team'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
@@ -79,18 +95,21 @@ class Index extends Component
                             ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term)));
                 });
             })
-            ->latest()
+            ->orderByDesc('id')
             ->get();
 
         $groups = [];
         foreach (TaskStatus::cases() as $status) {
-            $bucket = $tasks->where('status', $status)
-                ->sortBy(fn ($task) => [
-                    $task->priority?->sortOrder() ?? 99,
-                    $task->created_at->timestamp,
-                ]);
+            $bucket = $tasks->where('status', $status)->values();
             if ($bucket->isNotEmpty()) {
-                $groups[] = ['status' => $status, 'tasks' => $bucket->values()];
+                $bucket = $bucket->values();
+                $limited = $bucket->take($this->perStatusLimit)->values();
+                $groups[] = [
+                    'status' => $status,
+                    'tasks' => $limited,
+                    'shown' => $limited->count(),
+                    'total' => $bucket->count(),
+                ];
             }
         }
 
@@ -98,6 +117,7 @@ class Index extends Component
 
         return view('livewire.tasks.index', [
             'groups' => $groups,
+            'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
             'priorities' => TaskPriority::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),

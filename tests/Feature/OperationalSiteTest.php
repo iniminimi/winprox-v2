@@ -4,6 +4,7 @@ use App\Livewire\Platform\Help as PlatformHelp;
 use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\HelpChatUnansweredQuestion;
 use App\Models\InternalTeam;
+use App\Models\Issue;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
@@ -29,9 +30,11 @@ it('briefing filtert op datum en team', function () {
     Tenancy::actAs($tenant->id);
 
     $date = now()->addDays(2)->toDateString();
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
 
     Task::factory()->create([
         'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,
@@ -40,6 +43,7 @@ it('briefing filtert op datum en team', function () {
 
     Task::factory()->create([
         'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
         'internal_team_id' => $otherTeam->id,
         'scheduled_for' => $date,
         'status' => \App\Enums\TaskStatus::New,

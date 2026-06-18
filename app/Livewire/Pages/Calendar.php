@@ -149,6 +149,7 @@ class Calendar extends Component
             $entriesByDate = $issues->groupBy(fn (Issue $issue) => $issue->created_at?->toDateString());
         } else {
             $tasks = Task::query()
+                ->forApprovedIssue()
                 ->with(['issue.location', 'issue.unit', 'team'])
                 ->when($this->locationFilter, fn ($q) => $q->whereHas('issue', fn ($iq) => $iq->where('location_id', $this->locationFilter)))
                 ->where(function ($q) use ($gridStart, $gridEnd) {

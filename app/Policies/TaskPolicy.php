@@ -15,7 +15,13 @@ class TaskPolicy
 
     public function view(User $user, Task $task): bool
     {
-        return $this->sameTenant($user, (int) $task->tenant_id);
+        if (! $this->sameTenant($user, (int) $task->tenant_id)) {
+            return false;
+        }
+
+        $task->loadMissing('issue');
+
+        return $task->issue?->isApproved() ?? false;
     }
 
     public function create(User $user): bool
@@ -25,8 +31,14 @@ class TaskPolicy
 
     public function update(User $user, Task $task): bool
     {
-        return $this->sameTenant($user, (int) $task->tenant_id)
-            && ($user->isAdmin() || $user->isEmployee());
+        if (! $this->sameTenant($user, (int) $task->tenant_id)
+            || ! ($user->isAdmin() || $user->isEmployee())) {
+            return false;
+        }
+
+        $task->loadMissing('issue');
+
+        return $task->issue?->isApproved() ?? false;
     }
 
     private function sameTenant(User $user, int $tenantId): bool

@@ -17,10 +17,13 @@
     },
     "filter": {
         "status": "Nach Status filtern",
+        "status_label": "Status",
         "status_all": "Alle Status",
         "priority": "Nach Priorität filtern",
+        "priority_label": "Priorität",
         "priority_all": "Alle Prioritäten",
         "team": "Nach Team filtern",
+        "team_label": "Team",
         "team_all": "Alle Teams",
         "search": "Suchen",
         "search_placeholder": "Suche nach Notiz, Meldung, Standort, Adresse, PLZ, Ort oder Unit",
@@ -28,7 +31,7 @@
         "recurring_only": "Nur wiederkehrende Zyklen",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
-        "hint": "Klicken Sie auf eine Aufgabe, um Details anzuzeigen."
+        "hint": "Klicken Sie auf eine Aufgabe, um Details anzuzeigen und zu bearbeiten."
     },
     "card": {
         "kind_nr": "Aufgabe Nr. :nr",
@@ -69,7 +72,8 @@
         "pause_submit": "Pausennotiz speichern",
         "updates": "Meldungs-Updates",
         "errors": {
-            "team_required": "Wählen Sie ein Team."
+            "team_required": "Wählen Sie ein Team.",
+            "issue_not_approved": "Die Meldung muss zuerst freigegeben werden, bevor Aufgaben bearbeitet werden können."
         }
     },
     "errors": {
