@@ -59,15 +59,31 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
 
     private function runRemoteArtisan(string $command): void
     {
-        $remotePath = escapeshellarg((string) config('translation_sync.remote_path'));
-        $remoteCommand = "cd {$remotePath} && php artisan {$command}";
+        $remotePath = (string) config('translation_sync.remote_path');
+        $php = (string) config('translation_sync.remote_php', 'php');
+        $remoteCommand = sprintf(
+            'cd %s && %s artisan %s',
+            $this->quoteRemotePath($remotePath),
+            $php,
+            $command,
+        );
 
         $result = Process::timeout((int) config('translation_sync.timeout_seconds', 7200))
             ->run($this->sshCommand($remoteCommand));
 
         if (! $result->successful()) {
-            throw new RuntimeException('translation_sync_remote_command_failed:'.trim($result->errorOutput() ?: $result->output()));
+            $detail = trim($result->errorOutput()."\n".$result->output());
+            if ($detail === '') {
+                $detail = 'exit '.$result->exitCode().' (controleer SSH-sleutel en TRANSLATION_SYNC_REMOTE_PHP)';
+            }
+
+            throw new RuntimeException('translation_sync_remote_command_failed:'.$detail);
         }
+    }
+
+    private function quoteRemotePath(string $path): string
+    {
+        return "'".str_replace("'", "'\\''", $path)."'";
     }
 
     private function runScp(string $from, string $to, bool $download): void

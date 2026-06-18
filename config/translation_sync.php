@@ -10,6 +10,8 @@ return [
 
     'remote_path' => rtrim((string) env('TRANSLATION_SYNC_REMOTE_PATH', ''), '/'),
 
+    'remote_php' => (string) env('TRANSLATION_SYNC_REMOTE_PHP', 'php'),
+
     'work_dir' => storage_path('app/translation-sync'),
     'export_filename' => 'translations.json',
     'import_filename' => 'translated.json',
