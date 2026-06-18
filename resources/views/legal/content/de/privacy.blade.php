@@ -68,7 +68,16 @@
     <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind</li>
 </ul>
 
-<h2>4. Zwecke der Verarbeitung</h2>
+<h2>4. KI-Übersetzungen (optional)</h2>
+<p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
+<ul>
+    <li>automatische Übersetzung von Issue-Texten in andere Sprachen</li>
+    <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste)</li>
+    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt</li>
+    <li>diese Funktion ist optional und kann jederzeit deaktiviert werden</li>
+</ul>
+
+<h2>5. Zwecke der Verarbeitung</h2>
 <p>Daten werden verarbeitet für:</p>
 <ul>
     <li>den Betrieb der Plattform</li>
@@ -80,7 +89,7 @@
     <li>Sicherheit und Protokollierung</li>
 </ul>
 
-<h2>5. QR-Meldungen und Teamzugang</h2>
+<h2>6. QR-Meldungen und Teamzugang</h2>
 <p>
     Über QR-Codes können Meldungen ohne Konto eingereicht werden. Der Kunde / Administrator bestimmt, welche Standorte
     und Units verfügbar sind und welche Daten abgefragt werden.
@@ -90,7 +99,7 @@
     personenbezogene Daten in diesem Zusammenhang ausschließlich als technischer Auftragsverarbeiter auf Anweisung des Kunden.
 </p>
 
-<h2>6. Support und Zugriff</h2>
+<h2>7. Support und Zugriff</h2>
 <p>
     Für technischen Support kann WinProx in Ausnahmefällen über einen Supportmodus für Superuser- oder Supportmitarbeiter
     Zugriff auf Daten erhalten:
@@ -101,7 +110,7 @@
     <li>ohne aktive Änderungen an Kundendaten, es sei denn, Sie bitten ausdrücklich darum</li>
 </ul>
 
-<h2>7. Aufbewahrungsfristen</h2>
+<h2>8. Aufbewahrungsfristen</h2>
 <p>WinProx wendet folgende Aufbewahrungsfristen an:</p>
 <ul>
     <li>Benutzerkonten: aktiv + 24 Monate</li>
@@ -111,7 +120,7 @@
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe</li>
 </ul>
 
-<h2>8. Weitergabe von Daten</h2>
+<h2>9. Weitergabe von Daten</h2>
 <p>Personenbezogene Daten werden nicht verkauft oder an Dritte weitergegeben, außer:</p>
 <ul>
     <li>im Auftrag des Kunden</li>
@@ -124,7 +133,7 @@
     <a href="{{ route('legal.subprocessors') }}">{{ __('legal.documents.subprocessors') }}</a>.
 </p>
 
-<h2>9. Internationale Verfügbarkeit</h2>
+<h2>10. Internationale Verfügbarkeit</h2>
 <p>
     WinProx ist eine internationale Plattform und kann in mehreren Ländern genutzt werden.
 </p>
@@ -135,7 +144,7 @@
     Unabhängig von der Sprachversion gilt diese Datenschutzerklärung für die Verarbeitung personenbezogener Daten.
 </p>
 
-<h2>10. Rechte der betroffenen Personen</h2>
+<h2>11. Rechte der betroffenen Personen</h2>
 <p>Betroffene Personen haben das Recht:</p>
 <ul>
     <li>ihre Daten einzusehen</li>
@@ -151,7 +160,7 @@
     Werden die Daten im Auftrag eines Kunden verarbeitet, kann es erforderlich sein, die Anfrage über diesen Kunden zu bearbeiten.
 </p>
 
-<h2>11. Sicherheit</h2>
+<h2>12. Sicherheit</h2>
 <p>WinProx trifft angemessene technische und organisatorische Maßnahmen, darunter:</p>
 <ul>
     <li>Mandantenisolierung</li>
@@ -163,7 +172,7 @@
     unbedingt erforderlichen Cookies.
 </p>
 
-<h2>12. Internationale Übermittlungen</h2>
+<h2>13. Internationale Übermittlungen</h2>
 <p>
     Daten werden grundsätzlich innerhalb der Europäischen Union verarbeitet.
 </p>
@@ -171,13 +180,13 @@
     Werden externe Dienstleister eingesetzt, werden angemessene Garantien vorgesehen.
 </p>
 
-<h2>13. Aufsichtsbehörde</h2>
+<h2>14. Aufsichtsbehörde</h2>
 <p>
     Sie haben das Recht, Beschwerde bei einer Aufsichtsbehörde einzureichen. In Belgien ist dies die Datenschutzbehörde
     (<a href="https://www.gegevensbeschermingsautoriteit.be" rel="noopener noreferrer" target="_blank">www.gegevensbeschermingsautoriteit.be</a>).
 </p>
 
-<h2>14. Änderungen</h2>
+<h2>15. Änderungen</h2>
 <p>
     Diese Datenschutzerklärung kann angepasst werden.
 </p>

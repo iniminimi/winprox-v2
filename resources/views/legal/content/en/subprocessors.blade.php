@@ -24,6 +24,11 @@
             <td>EU</td>
         </tr>
         <tr>
+            <td>Ollama (optional)</td>
+            <td>AI translations (if enabled)</td>
+            <td>Local/On-premise</td>
+        </tr>
+        <tr>
             <td>Stripe</td>
             <td>Payment processing (where enabled)</td>
             <td>EU/US</td>

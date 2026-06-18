@@ -24,6 +24,11 @@
             <td>EU</td>
         </tr>
         <tr>
+            <td>Ollama (optioneel)</td>
+            <td>AI vertalingen (indien geactiveerd)</td>
+            <td>Lokaal/On-premise</td>
+        </tr>
+        <tr>
             <td>Stripe</td>
             <td>Betalingsverwerking (indien geactiveerd)</td>
             <td>EU/US</td>

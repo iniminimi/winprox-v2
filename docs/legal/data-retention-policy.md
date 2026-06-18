@@ -17,6 +17,7 @@ This policy is a draft and requires legal approval.
 | User accounts | Name, email, role | While account is active + 24 months | Delete or anonymize |
 | Buildings/units | Address and structure data | Contract period + 24 months | Delete or export then delete |
 | Issues/tasks | Reports, statuses, notes | Contract period + 36 months | Archive or delete |
+| Issue translations | AI-generated translations of issue descriptions | Contract period + 36 months | Delete with parent issue |
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
 | Activity logs | Security and audit events | 24 months | Delete or anonymize |

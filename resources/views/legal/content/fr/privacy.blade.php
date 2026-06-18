@@ -68,7 +68,16 @@
     <li>métadonnées techniques nécessaires à la sécurité et à la prévention des abus</li>
 </ul>
 
-<h2>4. Finalités du traitement</h2>
+<h2>4. Traductions IA (optionnel)</h2>
+<p>Si activé par l'administrateur, la plateforme peut utiliser des traductions IA :</p>
+<ul>
+    <li>traduction automatique des textes d'issues vers d'autres langues</li>
+    <li>utilisation d'une instance Ollama locale (pas de services externes)</li>
+    <li>les traductions sont stockées et conservées selon la politique de rétention</li>
+    <li>cette fonctionnalité est optionnelle et peut être désactivée à tout moment</li>
+</ul>
+
+<h2>5. Finalités du traitement</h2>
 <p>Les données sont traitées pour :</p>
 <ul>
     <li>le fonctionnement de la plateforme</li>
@@ -80,7 +89,7 @@
     <li>la sécurité et la journalisation</li>
 </ul>
 
-<h2>5. Signalements QR et accès des équipes</h2>
+<h2>6. Signalements QR et accès des équipes</h2>
 <p>
     Les codes QR permettent de soumettre des signalements sans compte. Le client / administrateur détermine quels sites
     et unités sont disponibles et quelles données sont demandées.
@@ -90,7 +99,7 @@
     les données personnelles dans ce cadre uniquement en tant qu’exécutant technique sur instruction du client.
 </p>
 
-<h2>6. Support et accès</h2>
+<h2>7. Support et accès</h2>
 <p>
     Pour le support technique, WinProx peut, dans des cas exceptionnels, accéder aux données via un mode support pour superuser ou personnel de support :
 </p>
@@ -100,7 +109,7 @@
     <li>sans modification active des données client, sauf demande expresse de votre part</li>
 </ul>
 
-<h2>7. Durées de conservation</h2>
+<h2>8. Durées de conservation</h2>
 <p>WinProx applique les durées de conservation suivantes :</p>
 <ul>
     <li>comptes utilisateurs : actif + 24 mois</li>
@@ -110,7 +119,7 @@
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e)</li>
 </ul>
 
-<h2>8. Partage des données</h2>
+<h2>9. Partage des données</h2>
 <p>Les données personnelles ne sont ni vendues ni partagées avec des tiers, sauf :</p>
 <ul>
     <li>sur instruction du client</li>
@@ -123,7 +132,7 @@
     <a href="{{ route('legal.subprocessors') }}">{{ __('legal.documents.subprocessors') }}</a>.
 </p>
 
-<h2>9. Disponibilité internationale</h2>
+<h2>10. Disponibilité internationale</h2>
 <p>
     WinProx est une plateforme internationale utilisable dans plusieurs pays.
 </p>
@@ -134,7 +143,7 @@
     Quelle que soit la version linguistique, la présente politique de confidentialité s’applique au traitement des données personnelles.
 </p>
 
-<h2>10. Droits des personnes concernées</h2>
+<h2>11. Droits des personnes concernées</h2>
 <p>Les personnes concernées ont le droit de :</p>
 <ul>
     <li>consulter leurs données</li>
@@ -150,7 +159,7 @@
     Lorsque les données sont traitées sur instruction d’un client, il peut être nécessaire de traiter la demande via ce client.
 </p>
 
-<h2>11. Sécurité</h2>
+<h2>12. Sécurité</h2>
 <p>WinProx met en œuvre des mesures techniques et organisationnelles appropriées, notamment :</p>
 <ul>
     <li>isolation des tenants</li>
@@ -161,7 +170,7 @@
     Voir aussi la <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> pour les cookies strictement nécessaires.
 </p>
 
-<h2>12. Transferts internationaux</h2>
+<h2>13. Transferts internationaux</h2>
 <p>
     Les données sont en principe traitées au sein de l’Union européenne.
 </p>
@@ -169,13 +178,13 @@
     Lorsque des prestataires externes sont utilisés, des garanties appropriées sont mises en place.
 </p>
 
-<h2>13. Autorité de contrôle</h2>
+<h2>14. Autorité de contrôle</h2>
 <p>
     Vous avez le droit d’introduire une réclamation auprès d’une autorité de contrôle. En Belgique, il s’agit de l’Autorité de protection des données
     (<a href="https://www.gegevensbeschermingsautoriteit.be" rel="noopener noreferrer" target="_blank">www.gegevensbeschermingsautoriteit.be</a>).
 </p>
 
-<h2>14. Modifications</h2>
+<h2>15. Modifications</h2>
 <p>
     La présente politique de confidentialité peut être modifiée.
 </p>

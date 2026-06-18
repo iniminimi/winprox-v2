@@ -68,7 +68,16 @@
     <li>technische metadata die nodig is voor beveiliging en misbruikpreventie</li>
 </ul>
 
-<h2>4. Doeleinden van verwerking</h2>
+<h2>4. AI Vertalingen (optioneel)</h2>
+<p>Indien geactiveerd door de beheerder, kan het platform gebruikmaken van AI-vertalingen:</p>
+<ul>
+    <li>automatische vertaling van meldingsteksten naar andere talen</li>
+    <li>gebruik van lokale Ollama instance (geen externe diensten)</li>
+    <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid</li>
+    <li>deze functie is optioneel en kan te allen tijde worden uitgeschakeld</li>
+</ul>
+
+<h2>6. Doeleinden van verwerking</h2>
 <p>Gegevens worden verwerkt voor:</p>
 <ul>
     <li>het functioneren van het platform</li>
@@ -78,6 +87,7 @@
     <li>het verzenden van e-mailnotificaties in opdracht van de klant</li>
     <li>productverbetering via onboarding-statistieken voor superuser (geaggregeerd waar mogelijk)</li>
     <li>beveiliging en logging</li>
+    <li>meertalige ondersteuning via AI-vertalingen (indien geactiveerd)</li>
 </ul>
 
 <h2>5. QR-meldingen en team-toegang</h2>
@@ -90,7 +100,7 @@
     persoonsgegevens in dat kader uitsluitend als technische uitvoerder van de instructies van de klant.
 </p>
 
-<h2>6. Support en toegang</h2>
+<h2>7. Support en toegang</h2>
 <p>
     Voor technische ondersteuning kan WinProx in uitzonderlijke gevallen toegang krijgen tot gegevens via een
     supportmodus voor superuser- of supportmedewerkers:
@@ -101,7 +111,7 @@
     <li>zonder actieve wijzigingen aan klantgegevens, behalve wanneer u daar uitdrukkelijk om vraagt</li>
 </ul>
 
-<h2>7. Bewaartermijnen</h2>
+<h2>8. Bewaartermijnen</h2>
 <p>WinProx hanteert de volgende bewaartermijnen:</p>
 <ul>
     <li>gebruikersaccounts: actief + 24 maanden</li>
@@ -111,7 +121,7 @@
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak</li>
 </ul>
 
-<h2>8. Delen van gegevens</h2>
+<h2>9. Delen van gegevens</h2>
 <p>Persoonsgegevens worden niet verkocht of gedeeld met derden, behalve:</p>
 <ul>
     <li>in opdracht van de klant</li>
@@ -124,7 +134,7 @@
     <a href="{{ route('legal.subprocessors') }}">{{ __('legal.documents.subprocessors') }}</a>.
 </p>
 
-<h2>9. Internationale beschikbaarheid</h2>
+<h2>10. Internationale beschikbaarheid</h2>
 <p>
     WinProx is een internationaal platform en kan in meerdere landen worden gebruikt.
 </p>
@@ -135,7 +145,7 @@
     Ongeacht de taalversie blijft deze privacyverklaring van toepassing op de verwerking van persoonsgegevens.
 </p>
 
-<h2>10. Rechten van betrokkenen</h2>
+<h2>11. Rechten van betrokkenen</h2>
 <p>Betrokkenen hebben het recht om:</p>
 <ul>
     <li>hun gegevens in te zien</li>
@@ -151,7 +161,7 @@
     Indien de gegevens verwerkt worden in opdracht van een klant, kan het nodig zijn om het verzoek via deze klant te behandelen.
 </p>
 
-<h2>11. Beveiliging</h2>
+<h2>12. Beveiliging</h2>
 <p>WinProx neemt passende technische en organisatorische maatregelen, waaronder:</p>
 <ul>
     <li>tenant-isolatie</li>
@@ -163,7 +173,7 @@
     strikt noodzakelijke cookies.
 </p>
 
-<h2>12. Internationale doorgifte</h2>
+<h2>13. Internationale doorgifte</h2>
 <p>
     Gegevens worden in principe binnen de Europese Unie verwerkt.
 </p>
@@ -171,13 +181,13 @@
     Indien externe dienstverleners worden gebruikt, worden passende waarborgen voorzien.
 </p>
 
-<h2>13. Toezichthoudende autoriteit</h2>
+<h2>14. Toezichthoudende autoriteit</h2>
 <p>
     U hebt het recht een klacht in te dienen bij een toezichthoudende autoriteit. In België is dat de Gegevensbeschermingsautoriteit
     (<a href="https://www.gegevensbeschermingsautoriteit.be" rel="noopener noreferrer" target="_blank">www.gegevensbeschermingsautoriteit.be</a>).
 </p>
 
-<h2>14. Wijzigingen</h2>
+<h2>15. Wijzigingen</h2>
 <p>
     Deze privacyverklaring kan worden aangepast.
 </p>

@@ -24,6 +24,11 @@
             <td>EU</td>
         </tr>
         <tr>
+            <td>Ollama (optional)</td>
+            <td>KI-Übersetzungen (falls aktiviert)</td>
+            <td>Lokal/On-premise</td>
+        </tr>
+        <tr>
             <td>Stripe</td>
             <td>Zahlungsabwicklung (sofern aktiviert)</td>
             <td>EU/US</td>

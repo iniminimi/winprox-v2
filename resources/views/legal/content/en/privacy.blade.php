@@ -68,7 +68,16 @@
     <li>technical metadata required for security and abuse prevention</li>
 </ul>
 
-<h2>4. Processing purposes</h2>
+<h2>4. AI Translations (optional)</h2>
+<p>If enabled by the administrator, the platform may use AI translations:</p>
+<ul>
+    <li>automatic translation of issue texts to other languages</li>
+    <li>using local Ollama instance (no external services)</li>
+    <li>translations are stored and retained according to retention policy</li>
+    <li>this feature is optional and can be disabled at any time</li>
+</ul>
+
+<h2>5. Processing purposes</h2>
 <p>Data is processed for:</p>
 <ul>
     <li>operating the platform</li>
@@ -80,7 +89,7 @@
     <li>security and logging</li>
 </ul>
 
-<h2>5. QR reporting and team access</h2>
+<h2>6. QR reporting and team access</h2>
 <p>
     QR codes allow reporters to submit issues without an account. The customer / administrator decides which locations
     and units are available and which data is requested.
@@ -90,7 +99,7 @@
     personal data in this context solely as a technical processor acting on the customer’s instructions.
 </p>
 
-<h2>6. Support and access</h2>
+<h2>7. Support and access</h2>
 <p>
     For technical support, WinProx may in exceptional cases access data via a support mode for superuser or support staff:
 </p>
@@ -100,7 +109,7 @@
     <li>without actively changing customer data, except when you explicitly request otherwise</li>
 </ul>
 
-<h2>7. Retention periods</h2>
+<h2>8. Retention periods</h2>
 <p>WinProx applies the following retention periods:</p>
 <ul>
     <li>user accounts: active + 24 months</li>
@@ -110,7 +119,7 @@
     <li>media (photos): 24 months after closing the relevant issue or task</li>
 </ul>
 
-<h2>8. Sharing of data</h2>
+<h2>9. Sharing of data</h2>
 <p>Personal data is not sold or shared with third parties, except:</p>
 <ul>
     <li>on the customer’s instructions</li>
@@ -123,7 +132,7 @@
     <a href="{{ route('legal.subprocessors') }}">{{ __('legal.documents.subprocessors') }}</a> page.
 </p>
 
-<h2>9. International availability</h2>
+<h2>10. International availability</h2>
 <p>
     WinProx is an international platform and may be used in multiple countries.
 </p>
@@ -134,7 +143,7 @@
     Regardless of the language version, this privacy policy applies to the processing of personal data.
 </p>
 
-<h2>10. Data subject rights</h2>
+<h2>11. Data subject rights</h2>
 <p>Data subjects have the right to:</p>
 <ul>
     <li>access their data</li>
@@ -150,7 +159,7 @@
     Where data is processed on a customer’s instructions, it may be necessary to handle the request via that customer.
 </p>
 
-<h2>11. Security</h2>
+<h2>12. Security</h2>
 <p>WinProx implements appropriate technical and organisational measures, including:</p>
 <ul>
     <li>tenant isolation</li>
@@ -162,7 +171,7 @@
     strictly necessary cookies.
 </p>
 
-<h2>12. International transfers</h2>
+<h2>13. International transfers</h2>
 <p>
     Data is generally processed within the European Union.
 </p>
@@ -170,13 +179,13 @@
     Where external service providers are used, appropriate safeguards are put in place.
 </p>
 
-<h2>13. Supervisory authority</h2>
+<h2>14. Supervisory authority</h2>
 <p>
     You have the right to lodge a complaint with a supervisory authority. In Belgium, this is the Data Protection Authority
     (<a href="https://www.gegevensbeschermingsautoriteit.be" rel="noopener noreferrer" target="_blank">www.gegevensbeschermingsautoriteit.be</a>).
 </p>
 
-<h2>14. Changes</h2>
+<h2>15. Changes</h2>
 <p>
     This privacy policy may be updated.
 </p>

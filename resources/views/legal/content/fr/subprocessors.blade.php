@@ -24,6 +24,11 @@
             <td>UE</td>
         </tr>
         <tr>
+            <td>Ollama (optionnel)</td>
+            <td>Traductions IA (si activé)</td>
+            <td>Local/On-premise</td>
+        </tr>
+        <tr>
             <td>Stripe</td>
             <td>Traitement des paiements (si activé)</td>
             <td>UE/US</td>
