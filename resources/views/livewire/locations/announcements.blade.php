@@ -79,7 +79,7 @@
                     @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <label class="wp-field">
+                <label class="wp-field wp-border-top">
                     <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
                     <input type="date" class="wp-input" wire:model="expiresAt">
                     @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
@@ -120,21 +120,23 @@
 
                 @if ($editingAnnouncement?->is_active)
                     <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
-                        <span class="wp-label">{{ __('locations.announcements.translation_preview') }}</span>
-                        <select
-                            class="wp-select wp-select--inline"
-                            wire:model.live="previewLocale"
-                            aria-label="{{ __('issues.show.description_language') }}"
-                        >
-                            @foreach ($descriptionLocales as $code => $label)
-                                <option value="{{ $code }}">{{ $label }}</option>
-                            @endforeach
-                        </select>
+                        <div class="wp-cluster wp-issue-description-row">
+                            <span class="wp-label">{{ __('locations.announcements.translation_preview') }}</span>
+                            <select
+                                class="wp-select"
+                                wire:model.live="previewLocale"
+                                aria-label="{{ __('issues.show.description_language') }}"
+                            >
+                                @foreach ($descriptionLocales as $code => $label)
+                                    <option value="{{ $code }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <p @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
                     </div>
                 @endif
 
-                <label class="wp-field">
+                <label @class(['wp-field', 'wp-border-top' => $editingAnnouncement?->is_active])>
                     <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
                     <select class="wp-select" wire:model="unitId">
                         <option value="">{{ __('locations.announcements.for_location') }}</option>
@@ -145,7 +147,7 @@
                     @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <label class="wp-field">
+                <label class="wp-field wp-border-top">
                     <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
                     <input type="date" class="wp-input" wire:model="expiresAt">
                     @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror

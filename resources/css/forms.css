@@ -110,7 +110,11 @@
     border-top: 1px solid var(--wp-border);
 }
 
-/* Meldingdetail: compacte taalkiezer + omschrijving op één regel. */
+/* Meldingdetail / mededeling-preview: label + compacte taalkiezer op één regel. */
+.wp-issue-description-row .wp-label {
+    margin-bottom: 0;
+}
+
 .wp-issue-description-row .wp-select {
     width: auto;
     min-width: 3rem;
