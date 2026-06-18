@@ -45,11 +45,10 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
             throw new RuntimeException('translation_sync_import_file_missing');
         }
 
-        $this->runScp(
-            $localPath,
-            $this->remoteStoragePath('imports', (string) config('translation_sync.import_filename')),
-            download: false,
-        );
+        $remoteFile = $this->remoteStoragePath('imports', (string) config('translation_sync.import_filename'));
+        $this->ensureRemoteDirectory(dirname($remoteFile));
+
+        $this->runScp($localPath, $remoteFile, download: false);
     }
 
     public function runImportOnRemote(): void
@@ -84,6 +83,18 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
     private function quoteRemotePath(string $path): string
     {
         return "'".str_replace("'", "'\\''", $path)."'";
+    }
+
+    private function ensureRemoteDirectory(string $remoteDirectory): void
+    {
+        $remoteCommand = 'mkdir -p '.$this->quoteRemotePath($remoteDirectory);
+
+        $result = Process::timeout(60)
+            ->run($this->sshCommand($remoteCommand));
+
+        if (! $result->successful()) {
+            throw new RuntimeException('translation_sync_remote_mkdir_failed:'.trim($result->errorOutput() ?: $result->output()));
+        }
     }
 
     private function runScp(string $from, string $to, bool $download): void

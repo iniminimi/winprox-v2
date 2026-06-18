@@ -17,6 +17,8 @@ class TranslationImportCommand extends Command
     {
         $path = storage_path('app/imports/translated.json');
 
+        File::ensureDirectoryExists(dirname($path));
+
         if (! File::exists($path)) {
             $this->error("File not found: {$path}");
 
