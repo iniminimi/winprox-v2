@@ -7,6 +7,7 @@ use App\Models\Issue;
 use App\Models\IssueTranslation;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
 class ImportIssueTranslationsAction
@@ -31,6 +32,12 @@ class ImportIssueTranslationsAction
             if ($issueId <= 0 || $locale === '' || $description === '') {
                 throw ValidationException::withMessages([
                     "items.{$index}" => [__('issues.errors.translation_import_invalid')],
+                ]);
+            }
+
+            if (mb_strlen($description) > TextDescriptionLimits::TRANSLATION_MAX) {
+                throw ValidationException::withMessages([
+                    "items.{$index}.description" => [__('issues.errors.translation_import_too_long')],
                 ]);
             }
 

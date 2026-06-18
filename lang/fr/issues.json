@@ -117,6 +117,7 @@
         "translation_requires_approval": "Les traductions ne sont possibles qu'après validation du signalement.",
         "translation_same_as_source": "La langue cible est identique à la langue source.",
         "translation_import_invalid": "Élément d'import invalide.",
+        "translation_import_too_long": "Traduction trop longue (max. 1500 caractères).",
         "translation_import_issue_missing": "Signalement introuvable ou non validé."
     },
     "show": {

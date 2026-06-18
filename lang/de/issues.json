@@ -117,6 +117,7 @@
         "translation_requires_approval": "Übersetzungen sind erst nach Freigabe der Meldung möglich.",
         "translation_same_as_source": "Die Zielsprache entspricht der Ausgangssprache.",
         "translation_import_invalid": "Ungültiger Importeintrag.",
+        "translation_import_too_long": "Übersetzung ist zu lang (max. 1500 Zeichen).",
         "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben."
     },
     "show": {

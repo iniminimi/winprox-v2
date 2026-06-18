@@ -8,6 +8,7 @@ use App\Models\IssueTranslation;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Validation\ValidationException;
 
 class TranslateIssueAction
@@ -46,13 +47,38 @@ class TranslateIssueAction
         }
 
         $sourceText = trim((string) $issue->description);
-        $translated = $this->translator->translate($sourceText, $targetLocale);
+        $translated = trim($this->translator->translate($sourceText, $targetLocale));
+        $stored = $translated !== '' ? $translated : $sourceText;
+
+        if (mb_strlen($stored) > TextDescriptionLimits::TRANSLATION_MAX) {
+            $row->fill([
+                'description' => null,
+                'status' => IssueTranslationStatus::Failed,
+            ])->save();
+
+            $this->audit->record(
+                $actorUserId,
+                (int) $issue->tenant_id,
+                'issue.translation_stored',
+                IssueTranslation::class,
+                (int) $row->id,
+                [
+                    'issue_id' => $issue->id,
+                    'locale' => $targetLocale,
+                    'status' => IssueTranslationStatus::Failed->value,
+                    'reason' => 'translation_too_long',
+                ],
+            );
+
+            return $row->fresh();
+        }
+
         $status = ($translated !== '' && $translated !== $sourceText)
             ? IssueTranslationStatus::Completed
             : IssueTranslationStatus::Failed;
 
         $row->fill([
-            'description' => $translated !== '' ? $translated : $sourceText,
+            'description' => $stored,
             'status' => $status,
         ])->save();
 

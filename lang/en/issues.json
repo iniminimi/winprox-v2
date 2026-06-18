@@ -117,6 +117,7 @@
         "translation_requires_approval": "Translations are only available after the issue is approved.",
         "translation_same_as_source": "The target language matches the source language.",
         "translation_import_invalid": "Invalid import item.",
+        "translation_import_too_long": "Translation is too long (max. 1500 characters).",
         "translation_import_issue_missing": "Issue not found or not approved."
     },
     "show": {

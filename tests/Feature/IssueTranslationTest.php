@@ -118,6 +118,30 @@ it('exporteert en importeert pending vertalingen', function () {
         ->and($issue->fresh()->localizedDescription('en'))->toBe('Broken lamp');
 });
 
+it('weigert import van te lange vertalingen', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Kort',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    app(ApproveIssueAction::class)->handle($issue, $user);
+
+    expect(fn () => app(ImportIssueTranslationsAction::class)->handle([
+        [
+            'issue_id' => $issue->id,
+            'locale' => 'en',
+            'description' => str_repeat('x', 1501),
+        ],
+    ]))->toThrow(ValidationException::class);
+});
+
 it('toont taalkiezer op meldingdetail met placeholder bij ontbrekende vertaling', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

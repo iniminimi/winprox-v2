@@ -117,6 +117,7 @@
         "translation_requires_approval": "Vertalingen zijn alleen mogelijk na goedkeuring van de melding.",
         "translation_same_as_source": "De doeltaal is gelijk aan de brontaal.",
         "translation_import_invalid": "Ongeldig import-item.",
+        "translation_import_too_long": "Vertaling is te lang (max. 1500 tekens).",
         "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd."
     },
     "show": {
