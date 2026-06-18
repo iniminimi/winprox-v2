@@ -68,22 +68,24 @@
                     </div>
                 </div>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
-                    <select class="wp-select" wire:model="unitId">
-                        <option value="">{{ __('locations.announcements.for_location') }}</option>
-                        @foreach ($units as $unit)
-                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                <div class="wp-modal-section">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
+                        <select class="wp-select" wire:model="unitId">
+                            <option value="">{{ __('locations.announcements.for_location') }}</option>
+                            @foreach ($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
 
-                <label class="wp-field wp-border-top">
-                    <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
-                    <input type="date" class="wp-input" wire:model="expiresAt">
-                    @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
+                        <input type="date" class="wp-input" wire:model="expiresAt">
+                        @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </div>
 
                 <div class="wp-stack-tight">
                     <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>
@@ -136,22 +138,24 @@
                     </div>
                 @endif
 
-                <label @class(['wp-field', 'wp-border-top' => $editingAnnouncement?->is_active])>
-                    <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
-                    <select class="wp-select" wire:model="unitId">
-                        <option value="">{{ __('locations.announcements.for_location') }}</option>
-                        @foreach ($units as $unit)
-                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                <div class="wp-modal-section">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
+                        <select class="wp-select" wire:model="unitId">
+                            <option value="">{{ __('locations.announcements.for_location') }}</option>
+                            @foreach ($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
 
-                <label class="wp-field wp-border-top">
-                    <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
-                    <input type="date" class="wp-input" wire:model="expiresAt">
-                    @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.announcements.expires_at') }}</span>
+                        <input type="date" class="wp-input" wire:model="expiresAt">
+                        @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </div>
 
                 <div class="wp-stack-tight">
                     <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>

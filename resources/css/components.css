@@ -2400,6 +2400,19 @@ svg.wp-release-worker-row__icon,
     gap: 1rem;
 }
 
+/* Sectie in modal-formulier: padding + gap i.p.v. margin (geen collapse met .wp-stack). */
+.wp-modal-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-stack > .wp-modal-section {
+    margin-top: 2rem;
+}
+
 .wp-modal-card--form {
     display: flex;
     flex-direction: column;
