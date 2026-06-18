@@ -83,13 +83,13 @@
                                             <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry">
                                                 <x-wp-ref-nr :id="$entry->id" class="wp-calendar-entry-nr" />
                                                 <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
-                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->description, 40) }}</span>
+                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->localizedDescription(), 40) }}</span>
                                             </a>
                                         @else
                                             <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry">
                                                 <x-wp-ref-nr type="task" :id="$entry->id" class="wp-calendar-entry-nr" />
                                                 <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
-                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->issue?->description ?? $entry->note, 40) }}</span>
+                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->issue?->localizedDescription() ?? $entry->note, 40) }}</span>
                                             </a>
                                         @endif
                                     @endforeach
@@ -122,13 +122,13 @@
                                 <a href="{{ route('issues.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">
                                     <x-wp-ref-nr :id="$entry->id" />
                                     <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }}">{{ __($entry->status->labelKey()) }}</span>
-                                    <span>{{ $entry->description }}</span>
+                                    <span>{{ $entry->localizedDescription() }}</span>
                                 </a>
                             @else
                                 <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">
                                     <x-wp-ref-nr type="task" :id="$entry->id" />
                                     <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }}">{{ __($entry->status->labelKey()) }}</span>
-                                    <span>{{ $entry->issue?->description ?? $entry->note }}</span>
+                                    <span>{{ $entry->issue?->localizedDescription() ?? $entry->note }}</span>
                                 </a>
                             @endif
                         @empty

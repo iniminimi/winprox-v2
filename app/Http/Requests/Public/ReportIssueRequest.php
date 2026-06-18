@@ -50,7 +50,7 @@ class ReportIssueRequest extends FormRequest
 
     /**
      * @param  array<string, mixed>  $input
-     * @return array{description: string, reporter_name: ?string, reporter_contact: ?string}
+     * @return array{description: string, reporter_name: ?string, reporter_contact: ?string, original_language?: ?string}
      */
     public static function issueDataFromInput(array $input): array
     {
@@ -59,10 +59,16 @@ class ReportIssueRequest extends FormRequest
         $name = trim($first.' '.$last);
         $email = trim((string) ($input['reporter_email'] ?? ''));
 
-        return [
+        $data = [
             'description' => trim((string) ($input['description'] ?? '')),
             'reporter_name' => $name !== '' ? $name : null,
             'reporter_contact' => $email !== '' ? $email : null,
         ];
+
+        if (array_key_exists('original_language', $input)) {
+            $data['original_language'] = $input['original_language'];
+        }
+
+        return $data;
     }
 }

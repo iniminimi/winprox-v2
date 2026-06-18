@@ -11,6 +11,8 @@ use App\Models\ContactMessage;
 use App\Models\User;
 use App\Policies\ContactMessagePolicy;
 use App\Policies\UserPolicy;
+use App\Services\Translation\OllamaProvider;
+use App\Services\Translation\TranslationProviderInterface;
 use App\Support\JsonTranslationLoader;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Support\Facades\Event;
@@ -28,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->extend('translation.loader', function ($loader, $app) {
             return new JsonTranslationLoader($app['files'], $app['path.lang']);
         });
+
+        $this->app->singleton(TranslationProviderInterface::class, OllamaProvider::class);
     }
 
     /**

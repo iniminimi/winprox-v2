@@ -8,7 +8,7 @@
     @php
         $textClass = $secondary ? 'wp-muted' : 'wp-text-body';
         $issueMeta = __('portal.worker.issue_meta', [
-            'description' => $issue->description,
+            'description' => $issue->localizedDescription(),
             'datetime' => $issue->created_at?->isoFormat('D MMM YYYY, HH:mm') ?? '',
         ]);
     @endphp

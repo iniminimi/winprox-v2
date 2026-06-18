@@ -112,7 +112,11 @@
         "recurrence_due_required": "Choose a first due date.",
         "recurrence_due_future": "The first due date must be today or later.",
         "photos_max": "Maximum 4 photos per issue.",
-        "photos_image": "Only images are allowed."
+        "photos_image": "Only images are allowed.",
+        "translation_requires_approval": "Translations are only available after the issue is approved.",
+        "translation_same_as_source": "The target language matches the source language.",
+        "translation_import_invalid": "Invalid import item.",
+        "translation_import_issue_missing": "Issue not found or not approved."
     },
     "show": {
         "title": "Issue",

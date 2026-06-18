@@ -350,6 +350,7 @@ class Show extends Component
     {
         $this->issue = $this->issue->fresh([
             'tasks.team',
+            'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit',
@@ -361,6 +362,7 @@ class Show extends Component
     {
         $issue = $this->issue->load([
             'tasks.team',
+            'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit',

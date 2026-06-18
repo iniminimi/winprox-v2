@@ -42,7 +42,14 @@ class Show extends Component
     public function mount(Task $task): void
     {
         $this->authorize('view', $task);
-        $this->task = $task->load(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
+        $this->task = $task->load([
+            'issue.location',
+            'issue.unit',
+            'issue.translations',
+            'issue.updates.user',
+            'issue.updates.worker',
+            'team',
+        ]);
         $this->syncFormFromTask();
     }
 
@@ -180,7 +187,7 @@ class Show extends Component
         $location = $issue?->location;
         $headline = collect([$location?->name, $issue?->unit?->name])->filter()->join(' · ');
         if ($headline === '' && $issue) {
-            $headline = \Illuminate\Support\Str::limit($issue->description, 80);
+            $headline = \Illuminate\Support\Str::limit($issue->localizedDescription(), 80);
         }
         $addressLine = $location
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Enums\IssueSource;
+use App\Enums\IssueTranslationStatus;
 use App\Enums\RecurrenceIntervalUnit;
 use App\Enums\TaskStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,6 +25,7 @@ class Issue extends Model
         'reporter_name',
         'reporter_contact',
         'description',
+        'original_language',
         'source',
         'is_recurring',
         'recurrence_interval_value',
@@ -83,6 +86,63 @@ class Issue extends Model
     public function photos(): HasMany
     {
         return $this->hasMany(IssuePhoto::class);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(IssueTranslation::class);
+    }
+
+    public function normalizedOriginalLanguage(): string
+    {
+        return LocaleSupport::normalize($this->original_language);
+    }
+
+    public function localizedDescription(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $description = (string) $this->description;
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $description;
+        }
+
+        $row = $this->relationLoaded('translations')
+            ? $this->translations->first(
+                fn (IssueTranslation $translation) => $translation->locale === $locale
+                    && $translation->status === IssueTranslationStatus::Completed
+                    && filled($translation->text),
+            )
+            : $this->translations()
+                ->where('locale', $locale)
+                ->where('status', IssueTranslationStatus::Completed)
+                ->whereNotNull('text')
+                ->first();
+
+        if ($row instanceof IssueTranslation && filled($row->text)) {
+            return (string) $row->text;
+        }
+
+        return $description;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function completedTranslationMap(): array
+    {
+        $rows = $this->relationLoaded('translations')
+            ? $this->translations
+            : $this->translations()->where('status', IssueTranslationStatus::Completed)->get();
+
+        $map = [];
+        foreach ($rows as $row) {
+            if ($row->status === IssueTranslationStatus::Completed && filled($row->text)) {
+                $map[$row->locale] = (string) $row->text;
+            }
+        }
+
+        return $map;
     }
 
     public function approvedBy(): BelongsTo

@@ -7,6 +7,7 @@ use App\Enums\IssueSource;
 use App\Events\Issues\IssueCreated;
 use App\Models\Issue;
 use App\Support\Recurrence\RecurrenceSchedule;
+use App\Support\Translation\LocaleSupport;
 
 class CreateIssueAction
 {
@@ -34,6 +35,7 @@ class CreateIssueAction
             'reporter_name' => $data['reporter_name'] ?? null,
             'reporter_contact' => $data['reporter_contact'] ?? null,
             'description' => $data['description'],
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'source' => $source,
             ...$recurring,
         ]);

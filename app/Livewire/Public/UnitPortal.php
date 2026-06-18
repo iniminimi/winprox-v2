@@ -215,6 +215,7 @@ class UnitPortal extends Component
                     'reporter_first_name' => $this->reporter_first_name,
                     'reporter_last_name' => $this->reporter_last_name,
                     'reporter_email' => $this->reporter_email,
+                    'original_language' => $this->locale,
                 ]),
                 $this->photos,
                 $this->authorizedWorker(),

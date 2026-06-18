@@ -117,7 +117,7 @@ final class BuildMorningBriefingAction
     {
         $query = Task::query()
             ->forApprovedIssue()
-            ->with(['issue.location', 'issue.unit', 'team'])
+            ->with(['issue.location', 'issue.unit', 'issue.translations', 'team'])
             ->where('tenant_id', $team->tenant_id)
             ->where('internal_team_id', $team->id)
             ->whereIn('status', TaskStatus::openValues());
@@ -148,7 +148,7 @@ final class BuildMorningBriefingAction
     private function recurringIssuesQuery(InternalTeam $team, Carbon $dayStart, Carbon $dayEnd, bool $openTasksOnly): Builder
     {
         $query = Issue::query()
-            ->with(['unit', 'location'])
+            ->with(['unit', 'location', 'translations'])
             ->where('tenant_id', $team->tenant_id)
             ->where('is_recurring', true)
             ->where('recurrence_active', true)
@@ -239,7 +239,7 @@ final class BuildMorningBriefingAction
 
     private function summaryForRecurringIssue(Issue $issue): string
     {
-        $description = trim((string) ($issue->description ?? ''));
+        $description = trim($issue->localizedDescription());
         $summary = $description !== ''
             ? Str::limit($description, 120)
             : __('briefing.no_description');
@@ -259,7 +259,7 @@ final class BuildMorningBriefingAction
             return Str::limit($note, 120);
         }
 
-        $issueDescription = trim((string) ($task->issue?->description ?? ''));
+        $issueDescription = trim($task->issue?->localizedDescription() ?? '');
         if ($issueDescription !== '') {
             return Str::limit($issueDescription, 120);
         }

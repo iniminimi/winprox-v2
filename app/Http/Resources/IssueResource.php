@@ -18,7 +18,12 @@ class IssueResource extends JsonResource
         return [
             'id' => $this->id,
             'status' => $this->status->value,
-            'description' => $this->description,
+            'description' => $this->localizedDescription(),
+            'original_language' => $this->normalizedOriginalLanguage(),
+            'translations' => $this->whenLoaded(
+                'translations',
+                fn () => $this->completedTranslationMap(),
+            ),
             'location_id' => $this->location_id,
             'unit_id' => $this->unit_id,
             'reporter_name' => $this->reporter_name,

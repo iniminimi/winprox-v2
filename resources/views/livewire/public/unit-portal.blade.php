@@ -357,7 +357,7 @@
                             </div>
                             <p class="wp-text-body">{{ __('portal.issue.list_line', [
                                 'nr' => $issue->id,
-                                'description' => \Illuminate\Support\Str::limit($issue->description, 100),
+                                'description' => \Illuminate\Support\Str::limit($issue->localizedDescription(), 100),
                             ]) }}</p>
                         </button>
                     @else

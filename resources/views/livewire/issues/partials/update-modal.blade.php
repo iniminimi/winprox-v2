@@ -13,8 +13,8 @@
         <div class="wp-modal-body wp-stack">
             <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
                 <p class="wp-label">{{ __('issues.show.add_update_modal_original') }}</p>
-                @if ($issue->description)
-                    <p class="wp-muted">{{ $issue->description }}</p>
+                @if ($issue->localizedDescription())
+                    <p class="wp-muted">{{ $issue->localizedDescription() }}</p>
                 @endif
             </div>
 

@@ -2,12 +2,15 @@
 
 namespace App\Actions\Issues;
 
+use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Events\Issues\IssueApproved;
 use App\Models\Issue;
 use App\Models\User;
 
 class ApproveIssueAction
 {
+    public function __construct(private EnsureIssueTranslationSlotsAction $ensureTranslationSlots) {}
+
     /**
      * Keurt een melding goed: beschrijving + foto's worden zichtbaar (niet langer geblurd).
      * Tot dat moment toont de UI ze geblurd (moderatie van QR-inzendingen).
@@ -21,6 +24,9 @@ class ApproveIssueAction
 
         event(new IssueApproved($issue->fresh()));
 
-        return $issue->fresh();
+        $approved = $issue->fresh();
+        $this->ensureTranslationSlots->handle($approved);
+
+        return $approved;
     }
 }

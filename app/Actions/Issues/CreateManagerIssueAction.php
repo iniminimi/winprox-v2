@@ -2,12 +2,14 @@
 
 namespace App\Actions\Issues;
 
+use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Enums\IssueSource;
 use App\Events\Issues\IssueCreated;
 use App\Models\Issue;
 use App\Models\User;
 use App\Support\IssuePhotoStorage;
 use App\Support\Recurrence\RecurrenceSchedule;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Http\UploadedFile;
 
 /**
@@ -15,7 +17,10 @@ use Illuminate\Http\UploadedFile;
  */
 class CreateManagerIssueAction
 {
-    public function __construct(private IssuePhotoStorage $storage) {}
+    public function __construct(
+        private IssuePhotoStorage $storage,
+        private EnsureIssueTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -29,6 +34,9 @@ class CreateManagerIssueAction
             'location_id' => $data['location_id'] ?? null,
             'unit_id' => $data['unit_id'] ?? null,
             'description' => $data['description'],
+            'original_language' => LocaleSupport::normalize(
+                $data['original_language'] ?? $actor->locale ?? null,
+            ),
             'source' => IssueSource::Manager,
             'reporter_name' => $actor->name,
             'approved_at' => now(),
@@ -44,6 +52,9 @@ class CreateManagerIssueAction
             ]);
         }
 
-        return $issue->fresh();
+        $issue = $issue->fresh();
+        $this->ensureTranslationSlots->handle($issue);
+
+        return $issue;
     }
 }

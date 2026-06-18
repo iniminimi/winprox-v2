@@ -112,7 +112,11 @@
         "recurrence_due_required": "Kies een eerste vervaldatum.",
         "recurrence_due_future": "De eerste vervaldatum moet vandaag of later zijn.",
         "photos_max": "Maximaal 4 foto's per melding.",
-        "photos_image": "Alleen afbeeldingen zijn toegestaan."
+        "photos_image": "Alleen afbeeldingen zijn toegestaan.",
+        "translation_requires_approval": "Vertalingen zijn alleen mogelijk na goedkeuring van de melding.",
+        "translation_same_as_source": "De doeltaal is gelijk aan de brontaal.",
+        "translation_import_invalid": "Ongeldig import-item.",
+        "translation_import_issue_missing": "Melding niet gevonden of niet goedgekeurd."
     },
     "show": {
         "title": "Melding",

@@ -140,7 +140,7 @@ class Calendar extends Component
 
         if ($this->entryType === 'issues') {
             $issues = Issue::query()
-                ->with(['location', 'unit'])
+                ->with(['location', 'unit', 'translations'])
                 ->whereBetween('created_at', [$gridStart->copy()->startOfDay(), $gridEnd->copy()->endOfDay()])
                 ->when($this->locationFilter, fn ($q) => $q->where('location_id', $this->locationFilter))
                 ->orderBy('created_at')
@@ -150,7 +150,7 @@ class Calendar extends Component
         } else {
             $tasks = Task::query()
                 ->forApprovedIssue()
-                ->with(['issue.location', 'issue.unit', 'team'])
+                ->with(['issue.location', 'issue.unit', 'issue.translations', 'team'])
                 ->when($this->locationFilter, fn ($q) => $q->whereHas('issue', fn ($iq) => $iq->where('location_id', $this->locationFilter)))
                 ->where(function ($q) use ($gridStart, $gridEnd) {
                     $q->where(function ($sub) use ($gridStart, $gridEnd) {

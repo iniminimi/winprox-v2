@@ -4,10 +4,10 @@
     $issue = $task->issue;
     $canUpdate = auth()->user()?->can('update', $task) ?? false;
     $teamName = $task->team?->name ?: __('tasks.card.no_team');
-    $taskDescription = trim((string) ($task->note ?: $issue?->description));
+    $taskDescription = trim((string) ($task->note ?: $issue?->localizedDescription()));
     $issueDescriptionDiffers = $issue
-        && filled($issue->description)
-        && trim((string) $issue->description) !== trim((string) $task->note);
+        && filled($issue->localizedDescription())
+        && trim((string) $issue->localizedDescription()) !== trim((string) $task->note);
     $reporterName = $issue?->reporter_name ?: __('issues.card.unknown_reporter');
     $issueHeading = $issue ? match ($issue->source) {
         IssueSource::Qr => __('issues.show.report_reported_by', ['name' => $reporterName]),
@@ -166,7 +166,7 @@
                 <p class="wp-muted">{{ $issue->reporter_contact }}</p>
             @endif
             @if ($issueDescriptionDiffers)
-                <p class="wp-text-body">{{ $issue->description }}</p>
+                <p class="wp-text-body">{{ $issue->localizedDescription() }}</p>
             @endif
         </div>
     @endif

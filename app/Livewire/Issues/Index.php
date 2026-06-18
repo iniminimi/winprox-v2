@@ -226,6 +226,8 @@ class Index extends Component
             StoreManagerIssueStepOneRequest::messageSet(),
         );
 
+        $validated['original_language'] = app()->getLocale();
+
         $issue = $createIssue->handle($validated, auth()->user(), $this->photos);
 
         $this->draftIssueId = $issue->id;
@@ -290,7 +292,7 @@ class Index extends Component
         $this->authorize('viewAny', Issue::class);
 
         $issues = Issue::query()
-            ->with(['location', 'unit', 'tasks.team'])
+            ->with(['location', 'unit', 'tasks.team', 'translations'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))

@@ -17,7 +17,7 @@ class IssueController extends Controller
     {
         $this->authorize('viewAny', Issue::class);
 
-        $query = Issue::query()->with(['tasks'])->latest();
+        $query = Issue::query()->with(['tasks', 'translations'])->latest();
 
         if ($request->filled('status')) {
             $status = TaskStatus::tryFrom((string) $request->query('status'));

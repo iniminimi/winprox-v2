@@ -112,7 +112,11 @@
         "recurrence_due_required": "Wählen Sie ein erstes Fälligkeitsdatum.",
         "recurrence_due_future": "Das erste Fälligkeitsdatum muss heute oder später sein.",
         "photos_max": "Maximal 4 Fotos pro Meldung.",
-        "photos_image": "Nur Bilder sind erlaubt."
+        "photos_image": "Nur Bilder sind erlaubt.",
+        "translation_requires_approval": "Übersetzungen sind erst nach Freigabe der Meldung möglich.",
+        "translation_same_as_source": "Die Zielsprache entspricht der Ausgangssprache.",
+        "translation_import_invalid": "Ungültiger Importeintrag.",
+        "translation_import_issue_missing": "Meldung nicht gefunden oder nicht freigegeben."
     },
     "show": {
         "title": "Meldung",

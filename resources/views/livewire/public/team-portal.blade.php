@@ -202,7 +202,7 @@
                             @endif
                         </div>
                         @if ($task->issue?->isApproved())
-                            <p class="wp-text-body">{{ $task->issue->description }}</p>
+                            <p class="wp-text-body">{{ $task->issue->localizedDescription() }}</p>
                         @endif
                     </div>
                 @empty

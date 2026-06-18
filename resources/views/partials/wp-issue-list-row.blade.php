@@ -55,8 +55,8 @@
         @endif
         <p class="wp-issue-card-meta">{{ $issueLine }}</p>
         <p class="wp-issue-card-meta">{{ $contextMeta }}</p>
-        @if ($issue->description)
-            <p class="wp-issue-card-desc">{{ $issue->description }}</p>
+        @if ($issue->localizedDescription())
+            <p class="wp-issue-card-desc">{{ $issue->localizedDescription() }}</p>
         @endif
     </div>
     <div class="wp-issue-row-meta">

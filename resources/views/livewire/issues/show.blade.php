@@ -62,7 +62,7 @@
             </div>
         @endif
 
-        <p class="wp-text-body">{{ $issue->description }}</p>
+        <p class="wp-text-body">{{ $issue->localizedDescription() }}</p>
 
         @php
             $issuePhotos = $issue->photos->whereNull('issue_update_id');
@@ -113,7 +113,7 @@
             <div class="wp-list wp-list--entity-rows">
                 @forelse ($issue->tasks as $task)
                     @php
-                        $taskDescription = trim((string) ($task->note ?: $issue->description));
+                        $taskDescription = trim((string) ($task->note ?: $issue->localizedDescription()));
                         $teamName = $task->team?->name ?? __('issues.show.no_team');
                     @endphp
                     <div class="wp-issue-row" wire:key="task-{{ $task->id }}">

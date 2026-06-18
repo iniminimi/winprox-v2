@@ -266,7 +266,7 @@ final class SearchTenantGlobalAction
     {
         $query = Issue::query()
             ->where('tenant_id', $tenantId)
-            ->with(['location:id,name', 'unit:id,name']);
+            ->with(['location:id,name', 'unit:id,name', 'translations']);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             $termQuery->where(static function (Builder $issueQuery) use ($term): void {
@@ -302,7 +302,7 @@ final class SearchTenantGlobalAction
             ->map(static fn (Issue $issue): array => [
                 'id' => $issue->id,
                 'type' => 'issue',
-                'title' => '#'.$issue->id.' - '.mb_strimwidth((string) $issue->description, 0, 50, '...'),
+                'title' => '#'.$issue->id.' - '.mb_strimwidth($issue->localizedDescription(), 0, 50, '...'),
                 'subtitle' => trim((string) ($issue->location?->name ?? '').($issue->unit ? ' · '.$issue->unit->name : '')),
                 'url' => route('issues.show', ['issue' => $issue->id]),
             ]);

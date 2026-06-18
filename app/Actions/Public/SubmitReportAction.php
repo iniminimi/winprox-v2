@@ -61,6 +61,7 @@ class SubmitReportAction
             'reporter_contact' => $data['reporter_contact'] ?? null,
             'description' => $data['description'],
             'source' => 'qr',
+            'original_language' => $data['original_language'] ?? null,
         ], $teamIds);
 
         foreach ($photos as $photo) {

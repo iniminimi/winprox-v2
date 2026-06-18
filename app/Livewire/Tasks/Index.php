@@ -71,7 +71,7 @@ class Index extends Component
 
         $tasks = Task::query()
             ->forApprovedIssue()
-            ->with(['issue.location', 'issue.unit', 'team'])
+            ->with(['issue.location', 'issue.unit', 'issue.translations', 'team'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->priorityFilter !== '', fn ($q) => $q->where('priority', $this->priorityFilter))

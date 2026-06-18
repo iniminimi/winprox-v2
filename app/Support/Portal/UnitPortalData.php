@@ -25,7 +25,7 @@ final class UnitPortalData
     {
         return Issue::where('unit_id', $unit->id)
             ->where('status', '!=', TaskStatus::Closed->value)
-            ->with('photos')
+            ->with(['photos', 'translations'])
             ->latest()
             ->limit(20)
             ->get();
@@ -37,6 +37,7 @@ final class UnitPortalData
             ->where('status', '!=', TaskStatus::Closed->value)
             ->with([
                 'photos',
+                'translations',
                 'updates' => fn ($q) => $q->latest(),
                 'updates.photos',
                 'updates.user:id,name',
