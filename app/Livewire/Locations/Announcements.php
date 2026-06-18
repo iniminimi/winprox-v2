@@ -113,6 +113,7 @@ class Announcements extends Component
                 'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
                 'is_active' => (bool) $validated['isActive'],
                 'expires_at' => $validated['expiresAt'] ?: null,
+                'original_language' => auth()->user()?->locale,
             ], $tenantId, (int) auth()->id());
         } catch (InvalidArgumentException $e) {
             if ($e->getMessage() === 'announcement_unit_limit_exceeded') {

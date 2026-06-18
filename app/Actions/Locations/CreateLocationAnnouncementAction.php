@@ -2,18 +2,23 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 
 class CreateLocationAnnouncementAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureAnnouncementTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
-     * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
+     * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string, original_language?: ?string}  $data
      */
     public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): Announcement
     {
@@ -39,6 +44,7 @@ class CreateLocationAnnouncementAction
             'location_id' => $location->id,
             'unit_id' => $unitId,
             'description' => $description,
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'is_active' => $isActive,
             'published_at' => $isActive ? now() : null,
             'expires_at' => $expiresAt,
@@ -52,6 +58,9 @@ class CreateLocationAnnouncementAction
             modelId: (int) $announcement->id,
             payload: ['id' => $announcement->id, 'location_id' => $location->id],
         );
+
+        $announcement = $announcement->fresh();
+        $this->ensureTranslationSlots->handle($announcement);
 
         return $announcement;
     }

@@ -2,13 +2,17 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction;
 use App\Models\Announcement;
 use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 
 class ToggleLocationAnnouncementActiveAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureAnnouncementTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(Announcement $announcement, ?int $actorUserId = null): void
     {
@@ -35,5 +39,9 @@ class ToggleLocationAnnouncementActiveAction
             modelId: (int) $announcement->id,
             payload: ['id' => $announcement->id, 'is_active' => $newStatus],
         );
+
+        if ($newStatus) {
+            $this->ensureTranslationSlots->handle($announcement->fresh());
+        }
     }
 }

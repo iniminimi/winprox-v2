@@ -486,7 +486,7 @@
             <div class="wp-list">
                 @forelse ($announcements as $announcement)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="ann-{{ $announcement->id }}">
-                        <p class="wp-text-body">{{ $announcement->description }}</p>
+                        <p class="wp-text-body">{{ $announcement->localizedDescription() }}</p>
                         <p class="wp-muted">{{ $announcement->published_at?->isoFormat('D MMM YYYY') }}</p>
                     </div>
                 @empty

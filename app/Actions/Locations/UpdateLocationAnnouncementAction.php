@@ -2,6 +2,7 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -10,7 +11,10 @@ use App\Support\Audit\AuditRecorder;
 
 class UpdateLocationAnnouncementAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureAnnouncementTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array{description: string, unit_id: ?int, is_active: bool, expires_at: ?string}  $data
@@ -57,6 +61,9 @@ class UpdateLocationAnnouncementAction
             modelId: (int) $announcement->id,
             payload: ['id' => $announcement->id, 'location_id' => $location->id],
         );
+
+        $announcement = $announcement->fresh();
+        $this->ensureTranslationSlots->handle($announcement);
 
         return $announcement;
     }

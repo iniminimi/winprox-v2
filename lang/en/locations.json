@@ -293,7 +293,8 @@
         "confirm_delete": "Permanently delete this announcement?",
         "errors": {
             "invalid_unit": "Choose a valid unit at this location.",
-            "unit_limit": "This unit already has the maximum number of active announcements. Deactivate or delete one first, or choose another unit."
+            "unit_limit": "This unit already has the maximum number of active announcements. Deactivate or delete one first, or choose another unit.",
+            "translation_requires_active": "Translations are only available for active announcements."
         },
         "flash": {
             "created": "Announcement saved.",

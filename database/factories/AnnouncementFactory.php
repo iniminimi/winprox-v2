@@ -19,6 +19,7 @@ class AnnouncementFactory extends Factory
             'location_id' => Location::factory(),
             'unit_id' => null,
             'description' => fake()->paragraph(),
+            'original_language' => 'nl',
             'is_active' => true,
             'published_at' => now()->subDay(),
             'expires_at' => now()->addWeek(),

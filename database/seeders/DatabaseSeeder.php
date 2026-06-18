@@ -141,6 +141,7 @@ class DatabaseSeeder extends Seeder
         Announcement::create([
             'location_id' => $locationA->id,
             'description' => 'Volgende week dinsdag voeren we groot onderhoud uit aan Lift A tussen 8u en 12u.',
+            'original_language' => 'nl',
             'is_active' => true,
             'published_at' => now()->subDay(),
             'expires_at' => now()->addWeek(),
@@ -148,6 +149,7 @@ class DatabaseSeeder extends Seeder
         Announcement::create([
             'location_id' => $locationA->id,
             'description' => 'Deze mededeling is verlopen en hoort niet meer zichtbaar te zijn.',
+            'original_language' => 'nl',
             'is_active' => true,
             'published_at' => now()->subWeeks(3),
             'expires_at' => now()->subWeek(),

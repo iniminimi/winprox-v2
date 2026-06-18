@@ -616,6 +616,7 @@ it('shows active announcements but hides expired ones', function () {
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'description' => 'Actuele mededeling',
+        'original_language' => 'nl',
         'is_active' => true,
         'published_at' => now()->subDay(),
         'expires_at' => now()->addWeek(),
@@ -624,6 +625,7 @@ it('shows active announcements but hides expired ones', function () {
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'description' => 'Verlopen mededeling',
+        'original_language' => 'nl',
         'is_active' => true,
         'published_at' => now()->subWeeks(2),
         'expires_at' => now()->subWeek(),
@@ -633,6 +635,30 @@ it('shows active announcements but hides expired ones', function () {
         ->call('openSection', 'announcements')
         ->assertSee('Actuele mededeling')
         ->assertDontSee('Verlopen mededeling');
+});
+
+it('shows translated announcement text when portal locale differs from source', function () {
+    app()->instance(\App\Services\Translation\TranslationProviderInterface::class, new \Tests\Support\FakeTranslationProvider);
+
+    ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Morgen onderhoud',
+        'original_language' => 'nl',
+        'is_active' => true,
+        'published_at' => now()->subDay(),
+        'expires_at' => now()->addWeek(),
+    ]);
+
+    app(\App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+    app(\App\Actions\Communication\TranslateAnnouncementAction::class)->handle($announcement, 'en');
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('switchLocale', 'en')
+        ->call('openSection', 'announcements')
+        ->assertSee('[en] Morgen onderhoud');
 });
 
 it('shows an inactive notice when the unit is inactive', function () {

@@ -23,7 +23,15 @@ final class LocaleSupport
      */
     public static function targetLocalesFor(Issue $issue): array
     {
-        $source = self::normalize($issue->original_language);
+        return self::targetLocalesForSource($issue->original_language);
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function targetLocalesForSource(?string $sourceLocale): array
+    {
+        $source = self::normalize($sourceLocale);
 
         return array_values(array_filter(
             config('locales.supported', []),

@@ -293,7 +293,8 @@
         "confirm_delete": "Deze mededeling definitief verwijderen?",
         "errors": {
             "invalid_unit": "Kies een geldige unit op deze locatie.",
-            "unit_limit": "Deze unit heeft al het maximum aantal actieve mededelingen. Deactiveer of verwijder eerst een mededeling, of kies een andere unit."
+            "unit_limit": "Deze unit heeft al het maximum aantal actieve mededelingen. Deactiveer of verwijder eerst een mededeling, of kies een andere unit.",
+            "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve mededelingen."
         },
         "flash": {
             "created": "Mededeling opgeslagen.",

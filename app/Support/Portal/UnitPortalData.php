@@ -91,6 +91,7 @@ final class UnitPortalData
             ->where('is_active', true)
             ->where(fn ($q) => $q->whereNull('published_at')->orWhere('published_at', '<=', now()))
             ->where(fn ($q) => $q->whereNull('expires_at')->orWhere('expires_at', '>=', now()))
+            ->with('translations')
             ->orderByDesc('published_at')
             ->orderByDesc('id')
             ->limit(20);
