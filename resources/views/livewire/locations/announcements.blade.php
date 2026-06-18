@@ -47,10 +47,10 @@
     </div>
 
     @if ($showCreateModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="announcement-create-title">
             <form wire:submit="createAnnouncement" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ __('locations.announcements.add') }}</h2>
+                    <h2 id="announcement-create-title" class="wp-section-title">{{ __('locations.announcements.add') }}</h2>
                     <x-wp-modal-close wire:click="closeCreateModal" />
                 </div>
                 <p class="wp-muted">{{ __('locations.announcements.modal_subtitle') }}</p>
@@ -96,14 +96,14 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showEditModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeEditModal" aria-labelledby="announcement-edit-title">
             <form wire:submit="updateAnnouncement" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ __('locations.announcements.edit') }}</h2>
+                    <h2 id="announcement-edit-title" class="wp-section-title">{{ __('locations.announcements.edit') }}</h2>
                     <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
@@ -166,6 +166,6 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 </div>

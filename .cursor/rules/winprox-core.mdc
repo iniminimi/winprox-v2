@@ -19,6 +19,7 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).
 - **Geen** ongebruikte locale-keys; 4 talen altijd in pariteit (`npm run check:locales:parity`).
 - **Geen** nieuwe UI-varianten: hergebruik `.btn`, `.wp-pill`, `.wp-card`, `wp-*` tokens.
+- **Modals:** altijd `<x-wp-modal closeMethod="...">` — Esc sluit (zelfde methode als Annuleren/X).
 
 ## Definition of done (elke wijziging)
 1. Business logic in **één Action** (`handle` met expliciete tenant + actor).

@@ -213,6 +213,8 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ### 6.5a UI-filosofie
 - Voorkeur voor **modals/inline-interacties** boven losse pagina's; minimale navigatiediepte.
 - Workers ronden een flow af in **zo weinig mogelijk taps** (veld/portaal, mobiel-first).
+- **Modals:** altijd `<x-wp-modal closeMethod="...">` — **Esc** sluit de popup (niet handmatig
+  `<div class="wp-modal">` zonder listener). Sluit-methode = dezelfde als Annuleren/X.
 
 ### 6.6 Na UI-wijziging
 - Altijd `npm run build`; vraag bij visuele controle om harde refresh (`Ctrl+F5`).
