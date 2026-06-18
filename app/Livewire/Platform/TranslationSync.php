@@ -54,6 +54,7 @@ class TranslationSync extends Component
         return view('livewire.platform.translation-sync', [
             'status' => $readStatus->handle(),
             'isConfigured' => $this->isConfigured(),
+            'useSyncQueue' => config('queue.default') === 'sync',
         ]);
     }
 

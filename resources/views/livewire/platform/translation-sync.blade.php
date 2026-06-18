@@ -22,6 +22,9 @@
                 'host' => config('translation_sync.ssh_host'),
                 'path' => config('translation_sync.remote_path'),
             ]) }}</p>
+            @if ($useSyncQueue)
+                <p class="wp-text-body wp-text-danger">{{ __('platform.translation_sync.sync_queue_warning') }}</p>
+            @endif
             <button
                 type="button"
                 class="btn btn--primary"

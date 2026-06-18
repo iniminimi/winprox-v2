@@ -72,7 +72,9 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
 
         if (! $result->successful()) {
             $detail = trim($result->errorOutput()."\n".$result->output());
-            if ($detail === '') {
+            if ($detail === '' && $result->exitCode() === 255) {
+                $detail = 'SSH exit 255 — kan de private key niet gebruiken? Draai via php artisan queue:work (QUEUE_CONNECTION=database), niet sync via Apache.';
+            } elseif ($detail === '') {
                 $detail = 'exit '.$result->exitCode().' (controleer SSH-sleutel en TRANSLATION_SYNC_REMOTE_PHP)';
             }
 
