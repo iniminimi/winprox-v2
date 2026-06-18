@@ -8,6 +8,9 @@ use App\Enums\TranslationSyncPhase;
 use App\Jobs\RunTranslationSyncJob;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
 use App\Models\User;
+use App\Models\Issue;
+use App\Models\IssueTranslation;
+use App\Models\Tenant;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Translation\TranslationSyncStatusStore;
 use Illuminate\Support\Facades\Queue;
@@ -87,4 +90,25 @@ it('toont de vertaal-sync pagina voor superuser', function () {
     Livewire::actingAs($user)
         ->test(PlatformTranslationSync::class)
         ->assertSee(__('platform.translation_sync.start'));
+});
+
+it('vult vertaal-slots voor bestaande goedgekeurde meldingen', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'description' => 'Oude melding',
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    expect(IssueTranslation::query()->where('issue_id', $issue->id)->count())->toBe(0);
+
+    $result = app(\App\Actions\Communication\BackfillIssueTranslationSlotsAction::class)->handle();
+
+    expect($result['issues'])->toBeGreaterThanOrEqual(1)
+        ->and($result['slots_created'])->toBe(3)
+        ->and(IssueTranslation::query()->where('issue_id', $issue->id)->count())->toBe(3);
 });
