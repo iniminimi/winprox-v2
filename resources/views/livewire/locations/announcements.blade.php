@@ -57,13 +57,15 @@
 
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
-                    <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
-                        <textarea class="wp-input" rows="4" wire:model="description"
-                                  maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
-                                  x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
-                        <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                    <div class="wp-stack-tight">
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea class="wp-input" rows="4" wire:model="description"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
+                        @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                     </div>
-                    @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
 
                 <label class="wp-field">
@@ -83,7 +85,9 @@
                     @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>
+                <div class="wp-stack-tight">
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>
+                </div>
 
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
@@ -103,30 +107,30 @@
 
                 <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
-                    <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
-                        <textarea class="wp-input" rows="4" wire:model="description"
-                                  maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
-                                  x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
-                        <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                    <div class="wp-stack-tight">
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea class="wp-input" rows="4" wire:model="description"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
+                        @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                     </div>
-                    @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
 
                 @if ($editingAnnouncement?->is_active)
-                    <div class="wp-field">
+                    <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
                         <span class="wp-label">{{ __('locations.announcements.translation_preview') }}</span>
-                        <div class="wp-cluster wp-issue-description-row">
-                            <select
-                                class="wp-select"
-                                wire:model.live="previewLocale"
-                                aria-label="{{ __('issues.show.description_language') }}"
-                            >
-                                @foreach ($descriptionLocales as $code => $label)
-                                    <option value="{{ $code }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
-                            <span @class(['wp-text-body', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</span>
-                        </div>
+                        <select
+                            class="wp-select wp-select--inline"
+                            wire:model.live="previewLocale"
+                            aria-label="{{ __('issues.show.description_language') }}"
+                        >
+                            @foreach ($descriptionLocales as $code => $label)
+                                <option value="{{ $code }}">{{ $label }}</option>
+                            @endforeach
+                        </select>
+                        <p @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
                     </div>
                 @endif
 
@@ -147,7 +151,9 @@
                     @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>
+                <div class="wp-stack-tight">
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.announcements.active') }}</label>
+                </div>
 
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="closeEditModal">{{ __('common.button.cancel') }}</button>
