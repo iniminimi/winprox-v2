@@ -316,8 +316,13 @@
                     @include('partials.wp-portal-report-reporter-fields')
                     <div class="wp-field">
                         <label class="wp-label" for="description">{{ __('portal.report.description') }}</label>
-                        <textarea id="description" class="wp-textarea" x-model="description" wire:model="description" rows="5"
-                                  placeholder="{{ __('portal.report.description_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="description" class="wp-textarea" x-model="description" wire:model="description" rows="5"
+                                      placeholder="{{ __('portal.report.description_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('description') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">

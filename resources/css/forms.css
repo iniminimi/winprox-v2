@@ -57,6 +57,22 @@
     color: var(--wp-danger-text);
 }
 
+.wp-char-counter {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--wp-text-muted);
+    text-align: right;
+}
+
+.wp-char-counter--near {
+    color: var(--wp-warning-text);
+}
+
+.wp-char-counter--full {
+    color: var(--wp-danger-text);
+    font-weight: 600;
+}
+
 /* Checkbox styling for category/team selection */
 .wp-check--boxed {
     display: flex;

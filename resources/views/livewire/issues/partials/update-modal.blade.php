@@ -19,14 +19,19 @@
             </div>
 
             <div class="wp-field">
-                <textarea
-                    id="updateDescription"
-                    class="wp-textarea"
-                    wire:model="updateDescription"
-                    rows="4"
-                    placeholder="{{ __('issues.show.add_update_placeholder') }}"
-                    required
-                ></textarea>
+                <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                    <textarea
+                        id="updateDescription"
+                        class="wp-textarea"
+                        wire:model="updateDescription"
+                        rows="4"
+                        placeholder="{{ __('issues.show.add_update_placeholder') }}"
+                        required
+                        maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                        x-init="n = $el.value.length" x-on:input="n = $el.value.length"
+                    ></textarea>
+                    <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                </div>
                 @error('updateDescription') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 

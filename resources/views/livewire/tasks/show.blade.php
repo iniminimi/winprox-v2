@@ -74,8 +74,13 @@
                     <p class="wp-muted">{{ __('issues.show.edit_task_modal_subtitle') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
-                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
-                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                      placeholder="{{ __('issues.show.task_note_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
@@ -138,7 +143,12 @@
                 @if ($requiresReason)
                     <div class="wp-field">
                         <label class="wp-label" for="reason">{{ __('tasks.show.reason') }}</label>
-                        <textarea id="reason" class="wp-textarea" wire:model="reason" rows="3"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="reason" class="wp-textarea" wire:model="reason" rows="3"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('reason') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 @endif
@@ -148,7 +158,12 @@
             @if ($task->status === \App\Enums\TaskStatus::InProgress)
                 <div class="wp-field wp-stack-tight wp-border-top">
                     <label class="wp-label" for="pauseNote">{{ __('tasks.show.pause') }}</label>
-                    <textarea id="pauseNote" class="wp-textarea" wire:model="pauseNote" rows="2"></textarea>
+                    <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                        <textarea id="pauseNote" class="wp-textarea" wire:model="pauseNote" rows="2"
+                                  maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                  x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                        <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                    </div>
                     @error('pauseNote') <p class="wp-error">{{ $message }}</p> @enderror
                     <button type="button" class="btn btn--ghost" wire:click="pause">{{ __('tasks.show.pause_submit') }}</button>
                 </div>

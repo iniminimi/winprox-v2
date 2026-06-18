@@ -46,7 +46,12 @@
 
             <div class="wp-field">
                 <label class="wp-label" for="create_description">{{ __('issues.create.description') }}</label>
-                <textarea id="create_description" class="wp-textarea" wire:model="description" rows="4"></textarea>
+                <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                    <textarea id="create_description" class="wp-textarea" wire:model="description" rows="4"
+                              maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                              x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                    <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                </div>
                 @error('description') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 
@@ -153,7 +158,12 @@
 
             <div class="wp-field">
                 <label class="wp-label" for="create_task_note">{{ __('issues.create.task_note') }}</label>
-                <textarea id="create_task_note" class="wp-textarea" wire:model="task_note" rows="3"></textarea>
+                <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                    <textarea id="create_task_note" class="wp-textarea" wire:model="task_note" rows="3"
+                              maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                              x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                    <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                </div>
                 @error('task_note') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
 

@@ -55,11 +55,16 @@
                 </div>
                 <p class="wp-muted">{{ __('locations.announcements.modal_subtitle') }}</p>
 
-                <label class="wp-field">
+                <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
-                    <textarea class="wp-input" rows="4" wire:model="description"></textarea>
+                    <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                        <textarea class="wp-input" rows="4" wire:model="description"
+                                  maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                  x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                        <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                    </div>
                     @error('description') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                </div>
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
@@ -96,11 +101,16 @@
                     <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
-                <label class="wp-field">
+                <div class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.description') }}</span>
-                    <textarea class="wp-input" rows="4" wire:model="description"></textarea>
+                    <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                        <textarea class="wp-input" rows="4" wire:model="description"
+                                  maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                  x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                        <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                    </div>
                     @error('description') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                </div>
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>

@@ -178,8 +178,13 @@
                     <p class="wp-muted">{{ __('issues.show.add_task_modal_subtitle') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
-                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
-                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                      placeholder="{{ __('issues.show.task_note_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
@@ -228,8 +233,13 @@
                     <p class="wp-muted">{{ __('issues.show.edit_task_modal_subtitle') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
-                        <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
-                                  placeholder="{{ __('issues.show.task_note_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="taskNote" class="wp-textarea" wire:model="taskNote" rows="3"
+                                      placeholder="{{ __('issues.show.task_note_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
@@ -278,8 +288,13 @@
                     <p class="wp-muted">{{ __('issues.close_modal_subtitle') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="closeReason">{{ __('issues.close_reason_label') }}</label>
-                        <textarea id="closeReason" class="wp-textarea" wire:model="closeReason" rows="3"
-                                  placeholder="{{ __('issues.close_reason_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="closeReason" class="wp-textarea" wire:model="closeReason" rows="3"
+                                      placeholder="{{ __('issues.close_reason_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('closeReason') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -304,8 +319,13 @@
                     <p class="wp-muted">{{ __('issues.reopen_modal_subtitle') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="reopenReason">{{ __('issues.reopen_reason_label') }}</label>
-                        <textarea id="reopenReason" class="wp-textarea" wire:model="reopenReason" rows="3"
-                                  placeholder="{{ __('issues.reopen_reason_placeholder') }}"></textarea>
+                        <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
+                            <textarea id="reopenReason" class="wp-textarea" wire:model="reopenReason" rows="3"
+                                      placeholder="{{ __('issues.reopen_reason_placeholder') }}"
+                                      maxlength="{{ \App\Support\Validation\TextDescriptionLimits::MAX }}"
+                                      x-init="n = $el.value.length" x-on:input="n = $el.value.length"></textarea>
+                            <p class="wp-char-counter" :class="{ 'wp-char-counter--near': n >= max - 50, 'wp-char-counter--full': n >= max }"><span x-text="n"></span>/<span x-text="max"></span></p>
+                        </div>
                         @error('reopenReason') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
