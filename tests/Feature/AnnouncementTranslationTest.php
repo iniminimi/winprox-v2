@@ -187,3 +187,62 @@ it('weigert import van te lange mededelingvertalingen', function () {
         ],
     ]))->toThrow(ValidationException::class);
 });
+
+it('zet vertalingen terug naar pending bij wijziging van de brontekst', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Oude tekst',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+    app(TranslateAnnouncementAction::class)->handle($announcement, 'en', $user->id);
+
+    expect(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->where('locale', 'en')->first())
+        ->status->toBe(AnnouncementTranslationStatus::Completed);
+
+    app(\App\Actions\Locations\UpdateLocationAnnouncementAction::class)->handle($location, $announcement, [
+        'description' => 'Nieuwe tekst',
+        'unit_id' => null,
+        'is_active' => true,
+        'expires_at' => null,
+    ], $tenant->id, $user->id);
+
+    $english = AnnouncementTranslation::query()
+        ->where('announcement_id', $announcement->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($english->status)->toBe(AnnouncementTranslationStatus::Pending)
+        ->and($english->description)->toBeNull();
+});
+
+it('toont vertaal-preview in bewerk-modal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'nl']);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $announcement = Announcement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Morgen onderhoud',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureAnnouncementTranslationSlotsAction::class)->handle($announcement);
+    app(TranslateAnnouncementAction::class)->handle($announcement, 'en', $user->id);
+
+    Livewire::actingAs($user)
+        ->test(Announcements::class, ['location' => $location])
+        ->call('openEditModal', $announcement->id)
+        ->set('previewLocale', 'en')
+        ->assertSee('[en] Morgen onderhoud');
+});

@@ -291,6 +291,7 @@
         "deactivate": "Deactivate",
         "default_title": "Announcement",
         "confirm_delete": "Permanently delete this announcement?",
+        "translation_preview": "Translation (portal)",
         "errors": {
             "invalid_unit": "Choose a valid unit at this location.",
             "unit_limit": "This unit already has the maximum number of active announcements. Deactivate or delete one first, or choose another unit.",

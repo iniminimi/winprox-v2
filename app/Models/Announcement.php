@@ -66,22 +66,71 @@ class Announcement extends Model
             return $description;
         }
 
-        $row = $this->relationLoaded('translations')
-            ? $this->translations->first(
-                fn (AnnouncementTranslation $translation) => $translation->locale === $locale
-                    && $translation->status === AnnouncementTranslationStatus::Completed
-                    && filled($translation->description),
-            )
-            : $this->translations()
-                ->where('locale', $locale)
-                ->where('status', AnnouncementTranslationStatus::Completed)
-                ->whereNotNull('description')
-                ->first();
+        $row = $this->findCompletedTranslation($locale);
 
         if ($row instanceof AnnouncementTranslation && filled($row->description)) {
             return (string) $row->description;
         }
 
         return $description;
+    }
+
+    public function descriptionMissingForDisplayLocale(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        return $locale !== $this->normalizedOriginalLanguage()
+            && ! $this->hasCompletedTranslationFor($locale);
+    }
+
+    public function descriptionForDisplayLocale(string $locale): string
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return (string) $this->description;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof AnnouncementTranslation && filled($row->description)) {
+            return (string) $row->description;
+        }
+
+        return __('issues.show.description_not_translated', [], $locale);
+    }
+
+    public function hasCompletedTranslationFor(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return true;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        return $row instanceof AnnouncementTranslation && filled($row->description);
+    }
+
+    private function findCompletedTranslation(string $locale): ?AnnouncementTranslation
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($this->relationLoaded('translations')) {
+            $row = $this->translations->first(
+                fn (AnnouncementTranslation $translation) => $translation->locale === $locale
+                    && $translation->status === AnnouncementTranslationStatus::Completed
+                    && filled($translation->description),
+            );
+
+            return $row instanceof AnnouncementTranslation ? $row : null;
+        }
+
+        return $this->translations()
+            ->where('locale', $locale)
+            ->where('status', AnnouncementTranslationStatus::Completed)
+            ->whereNotNull('description')
+            ->first();
     }
 }

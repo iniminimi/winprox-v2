@@ -291,6 +291,7 @@
         "deactivate": "Désactiver",
         "default_title": "Annonce",
         "confirm_delete": "Supprimer définitivement cette annonce ?",
+        "translation_preview": "Traduction (portail)",
         "errors": {
             "invalid_unit": "Choisissez une unité valide sur ce site.",
             "unit_limit": "Cette unité a déjà le nombre maximum d'annonces actives. Désactivez ou supprimez-en une, ou choisissez une autre unité.",

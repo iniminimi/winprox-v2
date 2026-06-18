@@ -112,6 +112,24 @@
                     @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
 
+                @if ($editingAnnouncement?->is_active)
+                    <div class="wp-field">
+                        <span class="wp-label">{{ __('locations.announcements.translation_preview') }}</span>
+                        <div class="wp-cluster wp-issue-description-row">
+                            <select
+                                class="wp-select"
+                                wire:model.live="previewLocale"
+                                aria-label="{{ __('issues.show.description_language') }}"
+                            >
+                                @foreach ($descriptionLocales as $code => $label)
+                                    <option value="{{ $code }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                            <span @class(['wp-text-body', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</span>
+                        </div>
+                    </div>
+                @endif
+
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.announcements.link_unit') }}</span>
                     <select class="wp-select" wire:model="unitId">

@@ -291,6 +291,7 @@
         "deactivate": "Deactiveren",
         "default_title": "Mededeling",
         "confirm_delete": "Deze mededeling definitief verwijderen?",
+        "translation_preview": "Vertaling (portaal)",
         "errors": {
             "invalid_unit": "Kies een geldige unit op deze locatie.",
             "unit_limit": "Deze unit heeft al het maximum aantal actieve mededelingen. Deactiveer of verwijder eerst een mededeling, of kies een andere unit.",

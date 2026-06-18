@@ -291,6 +291,7 @@
         "deactivate": "Deaktivieren",
         "default_title": "Mitteilung",
         "confirm_delete": "Diese Mitteilung endgültig löschen?",
+        "translation_preview": "Übersetzung (Portal)",
         "errors": {
             "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
             "unit_limit": "Diese Unit hat bereits die maximale Anzahl aktiver Mitteilungen. Deaktivieren oder löschen Sie eine Mitteilung, oder wählen Sie eine andere Unit.",

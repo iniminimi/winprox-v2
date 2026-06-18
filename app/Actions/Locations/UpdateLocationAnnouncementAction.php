@@ -3,6 +3,7 @@
 namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction;
+use App\Actions\Communication\InvalidateAnnouncementTranslationsOnSourceChangeAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -13,6 +14,7 @@ class UpdateLocationAnnouncementAction
 {
     public function __construct(
         private AuditRecorder $audit,
+        private InvalidateAnnouncementTranslationsOnSourceChangeAction $invalidateTranslations,
         private EnsureAnnouncementTranslationSlotsAction $ensureTranslationSlots,
     ) {}
 
@@ -37,6 +39,7 @@ class UpdateLocationAnnouncementAction
 
         $description = trim((string) $data['description']);
         $isActive = (bool) ($data['is_active'] ?? true);
+        $previousDescription = (string) $announcement->description;
 
         if ($isActive) {
             Tenant::query()->findOrFail($tenantId)->assertCanActivateAnnouncement(
@@ -63,6 +66,7 @@ class UpdateLocationAnnouncementAction
         );
 
         $announcement = $announcement->fresh();
+        $this->invalidateTranslations->handle($announcement, $previousDescription, $actorUserId);
         $this->ensureTranslationSlots->handle($announcement);
 
         return $announcement;

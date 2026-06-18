@@ -9,6 +9,7 @@ use App\Actions\Locations\UpdateLocationAnnouncementAction;
 use App\Models\Announcement;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use InvalidArgumentException;
 use Livewire\Component;
@@ -31,10 +32,13 @@ class Announcements extends Component
 
     public string $expiresAt = '';
 
+    public string $previewLocale = '';
+
     public function mount(Location $location): void
     {
         $this->authorize('view', $location);
         $this->location = $location;
+        $this->previewLocale = LocaleSupport::normalize(app()->getLocale());
     }
 
     protected function rules(): array
@@ -85,6 +89,7 @@ class Announcements extends Component
         $this->unitId = $announcement->unit_id ? (string) $announcement->unit_id : '';
         $this->isActive = (bool) $announcement->is_active;
         $this->expiresAt = $announcement->expires_at?->format('Y-m-d') ?? '';
+        $this->previewLocale = $announcement->normalizedOriginalLanguage();
         $this->showEditModal = true;
     }
 
@@ -207,9 +212,31 @@ class Announcements extends Component
             ->orderBy('name')
             ->get(['id', 'name']);
 
+        $editingAnnouncement = null;
+        $previewDescription = '';
+        $previewDescriptionMissing = false;
+
+        if ($this->showEditModal && $this->editingAnnouncementId !== null) {
+            $editingAnnouncement = Announcement::query()
+                ->where('tenant_id', $tenantId)
+                ->where('location_id', $this->location->id)
+                ->with('translations')
+                ->find($this->editingAnnouncementId);
+
+            if ($editingAnnouncement !== null && $editingAnnouncement->is_active) {
+                $displayLocale = LocaleSupport::normalize($this->previewLocale);
+                $previewDescription = $editingAnnouncement->descriptionForDisplayLocale($displayLocale);
+                $previewDescriptionMissing = $editingAnnouncement->descriptionMissingForDisplayLocale($displayLocale);
+            }
+        }
+
         return view('livewire.locations.announcements', [
             'announcements' => $announcements,
             'units' => $units,
+            'editingAnnouncement' => $editingAnnouncement,
+            'previewDescription' => $previewDescription,
+            'previewDescriptionMissing' => $previewDescriptionMissing,
+            'descriptionLocales' => config('locales.labels', []),
         ]);
     }
 
