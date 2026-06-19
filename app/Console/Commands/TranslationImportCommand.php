@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
+use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
+use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -13,12 +15,14 @@ class TranslationImportCommand extends Command
 {
     protected $signature = 'translation:import';
 
-    protected $description = 'Import translated issue, announcement and unit texts from storage/app/imports/translated.json';
+    protected $description = 'Import translated texts from storage/app/imports/translated.json';
 
     public function handle(
         ImportIssueTranslationsAction $importIssues,
         ImportAnnouncementTranslationsAction $importAnnouncements,
         ImportUnitTranslationsAction $importUnits,
+        ImportTaskTranslationsAction $importTasks,
+        ImportDocumentTranslationsAction $importDocuments,
     ): int {
         $path = storage_path('app/imports/translated.json');
 
@@ -49,13 +53,19 @@ class TranslationImportCommand extends Command
         $issueItems = [];
         $announcementItems = [];
         $unitItems = [];
+        $taskItems = [];
+        $documentItems = [];
 
         foreach ($items as $item) {
             if (! is_array($item)) {
                 continue;
             }
 
-            if (isset($item['unit_id'])) {
+            if (isset($item['document_id'])) {
+                $documentItems[] = $item;
+            } elseif (isset($item['task_id'])) {
+                $taskItems[] = $item;
+            } elseif (isset($item['unit_id'])) {
                 $unitItems[] = $item;
             } elseif (isset($item['announcement_id'])) {
                 $announcementItems[] = $item;
@@ -67,7 +77,9 @@ class TranslationImportCommand extends Command
         try {
             $count = $importIssues->handle($issueItems)
                 + $importAnnouncements->handle($announcementItems)
-                + $importUnits->handle($unitItems);
+                + $importUnits->handle($unitItems)
+                + $importTasks->handle($taskItems)
+                + $importDocuments->handle($documentItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 
