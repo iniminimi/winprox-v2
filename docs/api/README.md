@@ -101,6 +101,8 @@ The API follows RESTful conventions with some specific action endpoints:
 - [Issues](./issues.md)
 - [Tasks](./tasks.md)
 - [Locations](./locations.md)
+- [Announcements](./announcements.md)
+- [Translations](./translations.md)
 - [Units](./units.md)
 - [Teams](./teams.md)
 - [Workers](./workers.md)

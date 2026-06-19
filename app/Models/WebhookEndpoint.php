@@ -17,6 +17,8 @@ class WebhookEndpoint extends Model
         'issue.created',
         'issue.approved',
         'issue.status_changed',
+        'issue.translation_imported',
+        'announcement.translation_imported',
         'task.created',
         'task.started',
         'task.completed',

@@ -25,12 +25,15 @@ Issues represent maintenance requests or problems reported in properties.
     {
       "id": 1,
       "description": "Leaking faucet in bathroom",
+      "original_language": "nl",
+      "translations": {
+        "en": "Leaking faucet in bathroom",
+        "fr": "Robinet qui fuit dans la salle de bain"
+      },
       "status": "new",
-      "priority": "prio_2",
       "location_id": 5,
       "unit_id": 12,
-      "created_at": "2026-06-04T10:00:00Z",
-      "updated_at": "2026-06-04T10:00:00Z"
+      "created_at": "2026-06-04T10:00:00Z"
     }
   ],
   "meta": {
@@ -54,14 +57,16 @@ Issues represent maintenance requests or problems reported in properties.
   "data": {
     "id": 1,
     "description": "Leaking faucet in bathroom",
+    "original_language": "nl",
+    "translations": {
+      "en": "Leaking faucet in bathroom"
+    },
     "status": "new",
-    "priority": "prio_2",
     "location_id": 5,
     "unit_id": 12,
     "approved_at": null,
     "is_recurring": false,
     "created_at": "2026-06-04T10:00:00Z",
-    "updated_at": "2026-06-04T10:00:00Z",
     "tasks": [
       {
         "id": 1,
@@ -146,6 +151,16 @@ Issues represent maintenance requests or problems reported in properties.
 - `in_progress` - Issue approved and being worked on
 - `completed` - All tasks completed
 - `closed` - Issue resolved and closed
+
+## Translations
+
+Issues support automatic multi-language descriptions:
+
+- `description` — localized text for the API consumer's app locale (falls back to source text when no translation exists).
+- `original_language` — source locale (`nl`, `en`, `fr`, `de`).
+- `translations` — map of completed translations by locale (only present when the `translations` relation is loaded).
+
+Pending or failed translations are omitted from the API response. Use the [Translations API](./translations.md) to export pending items and import completed translations.
 
 ## Examples
 

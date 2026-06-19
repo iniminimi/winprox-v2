@@ -68,6 +68,8 @@ class ApiDocumentation extends Component
             'issues' => 'Issues',
             'tasks' => 'Tasks',
             'locations' => 'Locations',
+            'announcements' => 'Announcements',
+            'translations' => 'Translations',
             'units' => 'Units',
             'teams' => 'Teams',
             'workers' => 'Workers',

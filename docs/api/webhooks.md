@@ -17,12 +17,35 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 
 | Event | Description | Payload |
 |-------|-------------|---------|
-| `issue.created` | A new issue was created | Issue data |
-| `issue.approved` | An issue was approved | Issue data |
-| `issue.status_changed` | An issue status changed | Issue data |
+| `issue.created` | A new issue was created | Issue metadata |
+| `issue.approved` | An issue was approved | Issue metadata |
+| `issue.status_changed` | An issue status changed | Issue metadata |
+| `issue.translation_imported` | A completed issue translation was imported | Translation metadata |
+| `announcement.translation_imported` | A completed announcement translation was imported | Translation metadata |
 | `task.created` | A new task was created | Task data |
 | `task.started` | A task was started | Task data |
 | `task.completed` | A task was completed | Task data |
+| `unit.gps_reported` | A GPS report was recorded for a unit | GPS report metadata |
+
+### Translation webhook payloads
+
+`issue.translation_imported` and `announcement.translation_imported` fire when a translation is stored via the translation import API or sync pipeline (not when Ollama translates in-app).
+
+```json
+{
+  "version": "1.0",
+  "event": "announcement.translation_imported",
+  "payload": {
+    "announcement_id": 42,
+    "locale": "en",
+    "status": "completed",
+    "actor_user_id": 7
+  },
+  "delivery_id": 123
+}
+```
+
+For issues, replace `announcement_id` with `issue_id` and use event `issue.translation_imported`.
 
 ## Webhook Payload
 
