@@ -125,6 +125,7 @@ php artisan translation:import
 php artisan winprox:translate-issues
 php artisan winprox:translate-announcements
 php artisan winprox:translate-units
+php artisan winprox:translate-tasks
 ```
 
 ## Webhooks
@@ -136,6 +137,7 @@ Translation import triggers domain webhooks (not in-app Ollama translation):
 | `issue.translation_imported` | After a completed issue translation is imported |
 | `announcement.translation_imported` | After a completed announcement translation is imported |
 | `unit.translation_imported` | After a completed unit translation is imported |
+| `task.translation_imported` | After a completed task translation is imported |
 
 See [Webhooks](./webhooks.md) for payload format and signature verification.
 

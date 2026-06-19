@@ -349,7 +349,7 @@ final class SearchTenantGlobalAction
             ->map(static fn (Task $task): array => [
                 'id' => $task->id,
                 'type' => 'task',
-                'title' => '#'.$task->id.($task->description ? ' - '.mb_strimwidth((string) $task->description, 0, 40, '...') : ''),
+                'title' => '#'.$task->id.($task->displayDescription() !== '' ? ' - '.mb_strimwidth($task->displayDescription(), 0, 40, '...') : ''),
                 'subtitle' => trim((string) ($task->team?->name ?? '').($task->issue?->location?->name ? ' · '.$task->issue->location->name : '')),
                 'url' => route('tasks.show', ['task' => $task->id]),
             ]);

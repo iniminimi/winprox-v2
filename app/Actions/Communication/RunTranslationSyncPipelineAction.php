@@ -84,6 +84,7 @@ class RunTranslationSyncPipelineAction
                         'current_issue_id' => $current['issue_id'] ?? null,
                         'current_announcement_id' => $current['announcement_id'] ?? null,
                         'current_unit_id' => $current['unit_id'] ?? null,
+                        'current_task_id' => $current['task_id'] ?? null,
                         'current_locale' => $current['locale'] ?? null,
                     ]);
                 },

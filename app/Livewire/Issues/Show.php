@@ -251,6 +251,7 @@ class Show extends Component
             $validated['taskNote'],
             $validated['taskScheduledFor'] ?? null,
             $this->issue->tenant_id,
+            (int) auth()->id(),
         );
 
         $this->closeEditTaskModal();
@@ -365,6 +366,7 @@ class Show extends Component
     {
         $this->issue = $this->issue->fresh([
             'tasks.team',
+            'tasks.translations',
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
@@ -377,6 +379,7 @@ class Show extends Component
     {
         $issue = $this->issue->load([
             'tasks.team',
+            'tasks.translations',
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',

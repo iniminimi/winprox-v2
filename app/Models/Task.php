@@ -4,11 +4,14 @@ namespace App\Models;
 
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
+use App\Enums\TaskTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Task extends Model
 {
@@ -23,6 +26,7 @@ class Task extends Model
         'started_at',
         'completed_at',
         'description',
+        'original_language',
         'scheduled_for',
         'due_at',
         'is_recurring_cycle',
@@ -72,6 +76,119 @@ class Task extends Model
     public function carryoverFromTask(): BelongsTo
     {
         return $this->belongsTo(Task::class, 'carryover_from_task_id');
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(TaskTranslation::class);
+    }
+
+    public function normalizedOriginalLanguage(): string
+    {
+        return LocaleSupport::normalize($this->original_language);
+    }
+
+    public function localizedDescription(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $description = (string) ($this->description ?? '');
+
+        if ($description === '') {
+            return '';
+        }
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $description;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof TaskTranslation && filled($row->description)) {
+            return (string) $row->description;
+        }
+
+        return $description;
+    }
+
+    public function displayDescription(?string $locale = null): string
+    {
+        if (filled(trim((string) ($this->description ?? '')))) {
+            return $this->localizedDescription($locale);
+        }
+
+        return $this->issue?->localizedDescription($locale) ?? '';
+    }
+
+    public function hasCompletedTranslationFor(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return true;
+        }
+
+        if (! filled(trim((string) ($this->description ?? '')))) {
+            return true;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        return $row instanceof TaskTranslation && filled($row->description);
+    }
+
+    public function descriptionMissingForDisplayLocale(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if (! filled(trim((string) ($this->description ?? '')))) {
+            return false;
+        }
+
+        return $locale !== $this->normalizedOriginalLanguage()
+            && ! $this->hasCompletedTranslationFor($locale);
+    }
+
+    public function descriptionForDisplayLocale(string $locale): string
+    {
+        $locale = LocaleSupport::normalize($locale);
+        $description = (string) ($this->description ?? '');
+
+        if ($description === '') {
+            return '';
+        }
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $description;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof TaskTranslation && filled($row->description)) {
+            return (string) $row->description;
+        }
+
+        return __('issues.show.description_not_translated', [], $locale);
+    }
+
+    private function findCompletedTranslation(string $locale): ?TaskTranslation
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($this->relationLoaded('translations')) {
+            $row = $this->translations->first(
+                fn (TaskTranslation $translation) => $translation->locale === $locale
+                    && $translation->status === TaskTranslationStatus::Completed
+                    && filled($translation->description),
+            );
+
+            return $row instanceof TaskTranslation ? $row : null;
+        }
+
+        return $this->translations()
+            ->where('locale', $locale)
+            ->where('status', TaskTranslationStatus::Completed)
+            ->whereNotNull('description')
+            ->first();
     }
 
     /** Open op de werkvloer: nog Nieuw of In uitvoering. */

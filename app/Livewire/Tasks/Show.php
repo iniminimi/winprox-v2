@@ -49,6 +49,7 @@ class Show extends Component
             'issue.translations',
             'issue.updates.user',
             'issue.updates.worker',
+            'translations',
             'team',
         ]);
         $this->syncFormFromTask();
@@ -104,6 +105,7 @@ class Show extends Component
             $validated['taskNote'],
             $validated['taskScheduledFor'] ?? null,
             auth()->user()->tenant_id,
+            auth()->id(),
         );
 
         $this->closeEditTaskModal();

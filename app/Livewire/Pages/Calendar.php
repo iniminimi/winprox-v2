@@ -150,7 +150,7 @@ class Calendar extends Component
         } else {
             $tasks = Task::query()
                 ->forApprovedIssue()
-                ->with(['issue.location', 'issue.unit.translations', 'issue.translations', 'team'])
+                ->with(['issue.location', 'issue.unit.translations', 'issue.translations', 'translations', 'team'])
                 ->when($this->locationFilter, fn ($q) => $q->whereHas('issue', fn ($iq) => $iq->where('location_id', $this->locationFilter)))
                 ->where(function ($q) use ($gridStart, $gridEnd) {
                     $q->where(function ($sub) use ($gridStart, $gridEnd) {

@@ -7,6 +7,7 @@ use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Models\Announcement;
+use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Unit;
@@ -261,6 +262,7 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
             'issue.translation_imported',
             'announcement.translation_imported',
             'unit.translation_imported',
+            'task.translation_imported',
             'invalid.event',
         ],
     ], $tenant->id);
@@ -269,6 +271,7 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
         'issue.translation_imported',
         'announcement.translation_imported',
         'unit.translation_imported',
+        'task.translation_imported',
     ]);
 });
 
@@ -306,10 +309,44 @@ it('stuurt unit.translation_imported webhook', function () {
     Http::assertSent(fn (\Illuminate\Http\Client\Request $request) => ($request->header('X-WinProx-Event')[0] ?? '') === 'unit.translation_imported');
 });
 
+it('stuurt task.translation_imported webhook', function () {
+    Http::fake(['https://hooks.test/*' => Http::response('ok', 200)]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'original_language' => 'nl',
+        'approved_at' => now(),
+    ]);
+
+    $task = app(\App\Actions\Tasks\CreateTaskAction::class)->handle($issue, $team->id, description: 'Vervang pakking');
+
+    WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/tasks',
+        'events' => ['task.translation_imported'],
+        'is_active' => true,
+    ]);
+
+    app(\App\Actions\Communication\ImportTaskTranslationsAction::class)->handle([
+        [
+            'task_id' => $task->id,
+            'locale' => 'en',
+            'description' => 'Replace gasket',
+        ],
+    ]);
+
+    Http::assertSent(fn (\Illuminate\Http\Client\Request $request) => ($request->header('X-WinProx-Event')[0] ?? '') === 'task.translation_imported');
+});
+
 it('bevat vertaling-webhook-events in AVAILABLE_EVENTS', function () {
     expect(\App\Models\WebhookEndpoint::AVAILABLE_EVENTS)->toContain(
         'issue.translation_imported',
         'announcement.translation_imported',
         'unit.translation_imported',
+        'task.translation_imported',
     );
 });

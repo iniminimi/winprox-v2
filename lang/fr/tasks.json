@@ -79,6 +79,8 @@
     "errors": {
         "invalid_transition": "Ce changement de statut n'est pas autorisé.",
         "reason_required": "Un motif est obligatoire pour clôturer sans exécution.",
-        "pause_only_in_progress": "La pause n'est possible qu'en cours d'exécution."
+        "pause_only_in_progress": "La pause n'est possible qu'en cours d'exécution.",
+        "translation_requires_description": "Les traductions ne sont disponibles que si la tâche a une description.",
+        "translation_import_missing": "Tâche introuvable ou sans description."
     }
 }

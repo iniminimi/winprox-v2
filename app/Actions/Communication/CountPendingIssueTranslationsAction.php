@@ -4,9 +4,11 @@ namespace App\Actions\Communication;
 
 use App\Enums\AnnouncementTranslationStatus;
 use App\Enums\IssueTranslationStatus;
+use App\Enums\TaskTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
 use App\Models\IssueTranslation;
+use App\Models\TaskTranslation;
 use App\Models\UnitTranslation;
 
 class CountPendingIssueTranslationsAction
@@ -28,6 +30,11 @@ class CountPendingIssueTranslationsAction
             ->whereHas('unit', fn ($query) => $query->where('is_active', true))
             ->count();
 
-        return $issues + $announcements + $units;
+        $tasks = TaskTranslation::query()
+            ->where('status', TaskTranslationStatus::Pending)
+            ->whereHas('task', fn ($query) => $query->whereNotNull('description')->where('description', '!=', ''))
+            ->count();
+
+        return $issues + $announcements + $units + $tasks;
     }
 }

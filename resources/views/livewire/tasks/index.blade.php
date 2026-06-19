@@ -119,7 +119,7 @@
                                     'date' => ($task->scheduled_for ?? $task->due_at)?->format('d/m/Y'),
                                 ]));
                             }
-                            $description = trim((string) ($task->description ?: $issue?->localizedDescription()));
+                            $description = trim($task->displayDescription());
                         @endphp
                         <a href="{{ route('tasks.show', $task) }}"
                            class="wp-issue-row"

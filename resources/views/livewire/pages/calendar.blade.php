@@ -89,7 +89,7 @@
                                             <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry">
                                                 <x-wp-ref-nr type="task" :id="$entry->id" class="wp-calendar-entry-nr" />
                                                 <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
-                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->issue?->localizedDescription() ?? $entry->description, 40) }}</span>
+                                                <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->displayDescription(), 40) }}</span>
                                             </a>
                                         @endif
                                     @endforeach
@@ -128,7 +128,7 @@
                                 <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">
                                     <x-wp-ref-nr type="task" :id="$entry->id" />
                                     <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }}">{{ __($entry->status->labelKey()) }}</span>
-                                    <span>{{ $entry->issue?->localizedDescription() ?? $entry->description }}</span>
+                                    <span>{{ $entry->displayDescription() }}</span>
                                 </a>
                             @endif
                         @empty

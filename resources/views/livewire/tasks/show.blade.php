@@ -4,9 +4,10 @@
     $issue = $task->issue;
     $canUpdate = auth()->user()?->can('update', $task) ?? false;
     $teamName = $task->team?->name ?: __('tasks.card.no_team');
-    $taskDescription = trim((string) ($task->description ?: $issue?->localizedDescription()));
+    $taskDescription = trim($task->displayDescription());
     $issueDescriptionDiffers = $issue
         && filled($issue->localizedDescription())
+        && filled(trim((string) ($task->description ?? '')))
         && trim((string) $issue->localizedDescription()) !== trim((string) $task->description);
     $reporterName = $issue?->reporter_name ?: __('issues.card.unknown_reporter');
     $issueHeading = $issue ? match ($issue->source) {

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Tasks;
 
+use App\Actions\Communication\EnsureTaskTranslationSlotsAction;
 use App\Actions\Issues\AddIssueUpdateAction;
 use App\Actions\Issues\RecalculateIssueStatusAction;
 use App\Enums\RecurrenceIntervalUnit;
@@ -10,6 +11,7 @@ use App\Events\Tasks\TaskCreated;
 use App\Models\Issue;
 use App\Models\Task;
 use App\Support\Recurrence\RecurrenceSchedule;
+use App\Support\Translation\LocaleSupport;
 use Carbon\Carbon;
 
 /**
@@ -17,7 +19,10 @@ use Carbon\Carbon;
  */
 class CreateRecurringTaskCycleAction
 {
-    public function __construct(private RecalculateIssueStatusAction $recalculateIssueStatus) {}
+    public function __construct(
+        private RecalculateIssueStatusAction $recalculateIssueStatus,
+        private EnsureTaskTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(Issue $issue, ?Carbon $now = null): ?Task
     {
@@ -74,6 +79,7 @@ class CreateRecurringTaskCycleAction
             'internal_team_id' => $teamId,
             'status' => TaskStatus::New,
             'description' => $issue->description,
+            'original_language' => LocaleSupport::normalize($issue->original_language),
             'scheduled_for' => $nextDueAt->toDateString(),
             'due_at' => $nextDueAt,
             'is_recurring_cycle' => true,
@@ -81,6 +87,8 @@ class CreateRecurringTaskCycleAction
             'cycle_number' => $cycleNumber,
             'carryover_from_task_id' => $latestCycle?->id,
         ]);
+
+        $this->ensureTranslationSlots->handle($task->fresh());
 
         event(new TaskCreated($task));
 

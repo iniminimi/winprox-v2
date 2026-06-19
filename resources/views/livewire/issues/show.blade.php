@@ -129,7 +129,7 @@
             <div class="wp-list wp-list--entity-rows">
                 @forelse ($issue->tasks as $task)
                     @php
-                        $taskDescription = trim((string) ($task->description ?: $issue->localizedDescription()));
+                        $taskDescription = trim($task->displayDescription());
                         $teamName = $task->team?->name ?? __('issues.show.no_team');
                     @endphp
                     <div class="wp-issue-row" wire:key="task-{{ $task->id }}">

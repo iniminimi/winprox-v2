@@ -79,6 +79,8 @@
     "errors": {
         "invalid_transition": "This status change is not allowed.",
         "reason_required": "A reason is required when closing without execution.",
-        "pause_only_in_progress": "Pause notes are only allowed while in progress."
+        "pause_only_in_progress": "Pause notes are only allowed while in progress.",
+        "translation_requires_description": "Translations are only available when the task has a description.",
+        "translation_import_missing": "Task not found or has no description."
     }
 }
