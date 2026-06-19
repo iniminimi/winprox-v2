@@ -8,6 +8,18 @@
 
     <x-wp-translation-sync-reminder />
 
+    @can('downloadPromoQr', auth()->user())
+    <section class="wp-card wp-card-pad wp-stack">
+        <div class="wp-row">
+            <h2 class="wp-section-title">{{ __('platform.promo_qr.title') }}</h2>
+        </div>
+        <p class="wp-muted">{{ __('platform.promo_qr.description') }}</p>
+        <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--primary">
+            {{ __('platform.promo_qr.download') }}
+        </a>
+    </section>
+    @endcan
+
     @php
         $kpiLinks = [
             'tenants' => route('platform.tenants'),
@@ -130,16 +142,4 @@
             </div>
         @endif
     </section>
-
-    @can('downloadPromoQr', auth()->user())
-    <section class="wp-card wp-card-pad wp-stack">
-        <div class="wp-row">
-            <h2 class="wp-section-title">{{ __('platform.promo_qr.title') }}</h2>
-        </div>
-        <p class="wp-muted">{{ __('platform.promo_qr.description') }}</p>
-        <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--primary">
-            {{ __('platform.promo_qr.download') }}
-        </a>
-    </section>
-    @endcan
 </div>
