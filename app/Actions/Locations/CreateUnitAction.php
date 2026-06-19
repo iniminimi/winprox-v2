@@ -2,15 +2,20 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUnitAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -24,6 +29,7 @@ class CreateUnitAction
             'location_id' => $location->id,
             'name' => trim((string) $data['name']),
             'description' => $data['description'] ?? null,
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'is_active' => true,
             'public_reports_enabled' => array_key_exists('public_reports_enabled', $data)
                 ? (bool) $data['public_reports_enabled']
@@ -44,6 +50,9 @@ class CreateUnitAction
             modelId: (int) $unit->id,
             payload: ['id' => $unit->id, 'name' => $unit->name, 'location_id' => $unit->location_id],
         );
+
+        $unit = $unit->fresh();
+        $this->ensureTranslationSlots->handle($unit);
 
         return $unit;
     }

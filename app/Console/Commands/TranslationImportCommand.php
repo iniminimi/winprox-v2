@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
+use App\Actions\Communication\ImportUnitTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\ValidationException;
@@ -12,11 +13,12 @@ class TranslationImportCommand extends Command
 {
     protected $signature = 'translation:import';
 
-    protected $description = 'Import translated issue and announcement texts from storage/app/imports/translated.json';
+    protected $description = 'Import translated issue, announcement and unit texts from storage/app/imports/translated.json';
 
     public function handle(
         ImportIssueTranslationsAction $importIssues,
         ImportAnnouncementTranslationsAction $importAnnouncements,
+        ImportUnitTranslationsAction $importUnits,
     ): int {
         $path = storage_path('app/imports/translated.json');
 
@@ -46,13 +48,16 @@ class TranslationImportCommand extends Command
 
         $issueItems = [];
         $announcementItems = [];
+        $unitItems = [];
 
         foreach ($items as $item) {
             if (! is_array($item)) {
                 continue;
             }
 
-            if (isset($item['announcement_id'])) {
+            if (isset($item['unit_id'])) {
+                $unitItems[] = $item;
+            } elseif (isset($item['announcement_id'])) {
                 $announcementItems[] = $item;
             } else {
                 $issueItems[] = $item;
@@ -61,7 +66,8 @@ class TranslationImportCommand extends Command
 
         try {
             $count = $importIssues->handle($issueItems)
-                + $importAnnouncements->handle($announcementItems);
+                + $importAnnouncements->handle($announcementItems)
+                + $importUnits->handle($unitItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 

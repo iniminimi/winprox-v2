@@ -116,7 +116,10 @@
         "errors": {
             "name_required": "Bitte Unit-Namen eingeben.",
             "duplicate_name": "Dieser Unit-Name existiert bereits an diesem Standort.",
-            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants."
+            "invalid_category": "Wählen Sie eine gültige Kategorie Ihres Tenants.",
+            "translation_requires_active": "Übersetzungen sind nur für aktive Units möglich.",
+            "translation_import_missing": "Unit nicht gefunden oder nicht aktiv.",
+            "translation_import_name_too_long": "Der übersetzte Unit-Name ist zu lang."
         },
         "flash": {
             "created": "Unit angelegt.",

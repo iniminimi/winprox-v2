@@ -1,12 +1,15 @@
 <?php
 
 use App\Actions\Communication\EnsureAnnouncementTranslationSlotsAction;
+use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
+use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Models\Announcement;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\Unit;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
@@ -257,6 +260,7 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
         'events' => [
             'issue.translation_imported',
             'announcement.translation_imported',
+            'unit.translation_imported',
             'invalid.event',
         ],
     ], $tenant->id);
@@ -264,12 +268,48 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
     expect($endpoint->events)->toBe([
         'issue.translation_imported',
         'announcement.translation_imported',
+        'unit.translation_imported',
     ]);
+});
+
+it('stuurt unit.translation_imported webhook', function () {
+    Http::fake(['https://hooks.test/*' => Http::response('ok', 200)]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Lift A',
+        'description' => 'Verdieping 2',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+
+    WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/units',
+        'events' => ['unit.translation_imported'],
+    ]);
+
+    app(ImportUnitTranslationsAction::class)->handle([
+        [
+            'unit_id' => $unit->id,
+            'locale' => 'en',
+            'name' => 'Elevator A',
+            'description' => 'Floor 2',
+        ],
+    ]);
+
+    Http::assertSent(fn (\Illuminate\Http\Client\Request $request) => ($request->header('X-WinProx-Event')[0] ?? '') === 'unit.translation_imported');
 });
 
 it('bevat vertaling-webhook-events in AVAILABLE_EVENTS', function () {
     expect(\App\Models\WebhookEndpoint::AVAILABLE_EVENTS)->toContain(
         'issue.translation_imported',
         'announcement.translation_imported',
+        'unit.translation_imported',
     );
 });

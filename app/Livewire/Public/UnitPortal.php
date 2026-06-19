@@ -110,9 +110,9 @@ class UnitPortal extends Component
         }
 
         $this->tenantName = $unit->tenant?->name ?? '';
-        $this->unitName = $unit->name;
         $this->locationName = $unit->location?->name ?? '';
-        $this->unitDescription = $unit->description ?? '';
+        $unit->load('translations');
+        $this->refreshUnitDisplayTexts($unit);
 
         Tenancy::actAs($this->tenantId);
 
@@ -137,6 +137,17 @@ class UnitPortal extends Component
         Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
         $this->locale = $locale;
         app()->setLocale($locale);
+
+        $unit = Unit::query()->with('translations')->find($this->unitId);
+        if ($unit instanceof Unit) {
+            $this->refreshUnitDisplayTexts($unit);
+        }
+    }
+
+    private function refreshUnitDisplayTexts(Unit $unit): void
+    {
+        $this->unitName = $unit->localizedName($this->locale);
+        $this->unitDescription = $unit->localizedDescription($this->locale);
     }
 
     public function openSection(string $section): void

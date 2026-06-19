@@ -22,6 +22,7 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 | `issue.status_changed` | An issue status changed | Issue metadata |
 | `issue.translation_imported` | A completed issue translation was imported | Translation metadata |
 | `announcement.translation_imported` | A completed announcement translation was imported | Translation metadata |
+| `unit.translation_imported` | A completed unit translation was imported | Translation metadata |
 | `task.created` | A new task was created | Task data |
 | `task.started` | A task was started | Task data |
 | `task.completed` | A task was completed | Task data |
@@ -29,7 +30,7 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 
 ### Translation webhook payloads
 
-`issue.translation_imported` and `announcement.translation_imported` fire when a translation is stored via the translation import API or sync pipeline (not when Ollama translates in-app).
+`issue.translation_imported`, `announcement.translation_imported`, and `unit.translation_imported` fire when a translation is stored via the translation import API or sync pipeline (not when Ollama translates in-app).
 
 ```json
 {

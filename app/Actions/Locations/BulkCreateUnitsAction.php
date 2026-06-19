@@ -2,11 +2,13 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Units\UnitBulkNaming;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
@@ -15,7 +17,10 @@ class BulkCreateUnitsAction
 {
     private const MAX_UNITS = 500;
 
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -85,14 +90,17 @@ class BulkCreateUnitsAction
             ]);
 
             foreach ($names as $name) {
-                Unit::create([
+                $unit = Unit::create([
                     'tenant_id' => $tenantId,
                     'location_id' => $location->id,
                     'bulk_batch_id' => $batch->id,
                     'name' => $name,
                     'category_id' => $categoryId,
+                    'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
                     'is_active' => true,
                 ]);
+
+                $this->ensureTranslationSlots->handle($unit);
             }
 
             $this->audit->record(

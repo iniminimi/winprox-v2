@@ -12,7 +12,7 @@ The translation sync API exports pending issue and announcement translations and
 
 `GET /translations/export`
 
-Returns all pending translation jobs for **approved issues** and **active announcements** across tenants (superuser scope).
+Returns all pending translation jobs for **approved issues**, **active announcements**, and **active units** across tenants (superuser scope).
 
 **Response:**
 ```json
@@ -36,13 +36,22 @@ Returns all pending translation jobs for **approved issues** and **active announ
         "source_text": "Morgen onderhoud",
         "locale": "fr",
         "status": "pending"
+      },
+      {
+        "unit_id": 7,
+        "tenant_id": 1,
+        "source_locale": "nl",
+        "source_name": "Graafmachine TB210R",
+        "source_description": "Magazijn zone B",
+        "locale": "en",
+        "status": "pending"
       }
     ]
   }
 }
 ```
 
-Each item contains either `issue_id` or `announcement_id` (never both).
+Each item contains either `issue_id`, `announcement_id`, or `unit_id` (never more than one).
 
 ### Import completed translations
 
@@ -69,9 +78,11 @@ Each item contains either `issue_id` or `announcement_id` (never both).
 ```
 
 **Fields per item:**
-- `issue_id` **or** `announcement_id` (required) — Target record
+- `issue_id`, `announcement_id`, or `unit_id` (required) — Target record
 - `locale` (required) — Target locale (`nl`, `en`, `fr`, `de`)
-- `description` (required) — Completed translation (max 1500 characters)
+- `description` (required for issues/announcements) — Completed translation (max 1500 characters)
+- `name` (optional, units) — Translated unit name (max 255 characters)
+- `description` (optional, units) — Translated unit description (max 1500 characters)
 
 **Response:**
 ```json
@@ -82,7 +93,7 @@ Each item contains either `issue_id` or `announcement_id` (never both).
 }
 ```
 
-Importing dispatches webhooks when endpoints subscribe to `issue.translation_imported` or `announcement.translation_imported`.
+Importing dispatches webhooks when endpoints subscribe to `issue.translation_imported`, `announcement.translation_imported`, or `unit.translation_imported`.
 
 ### Translation sync status
 
@@ -113,6 +124,7 @@ php artisan translation:export
 php artisan translation:import
 php artisan winprox:translate-issues
 php artisan winprox:translate-announcements
+php artisan winprox:translate-units
 ```
 
 ## Webhooks
@@ -123,6 +135,7 @@ Translation import triggers domain webhooks (not in-app Ollama translation):
 |-------|------|
 | `issue.translation_imported` | After a completed issue translation is imported |
 | `announcement.translation_imported` | After a completed announcement translation is imported |
+| `unit.translation_imported` | After a completed unit translation is imported |
 
 See [Webhooks](./webhooks.md) for payload format and signature verification.
 

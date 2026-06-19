@@ -2,18 +2,23 @@
 
 namespace App\Actions\Units;
 
+use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Data\Units\ImportUnitsData;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class ImportUnitsAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     protected array $requiredHeaders = [
         'location_name',
@@ -210,15 +215,18 @@ class ImportUnitsAction
                 $categoryId = $category->id;
 
                 // Create unit
-                Unit::create([
+                $unit = Unit::create([
                     'tenant_id' => $tenantId,
                     'location_id' => $location->id,
                     'category_id' => $categoryId,
                     'name' => $row['unit_name'],
                     'description' => $row['description'] ?? null,
+                    'original_language' => LocaleSupport::normalize(null),
                     'import_batch_id' => $batchId,
                     'is_active' => true,
                 ]);
+
+                $this->ensureTranslationSlots->handle($unit);
 
                 $importedCount++;
             }

@@ -2,6 +2,8 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
+use App\Actions\Communication\InvalidateUnitTranslationsOnSourceChangeAction;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
@@ -14,6 +16,8 @@ class UpdateUnitAction
     public function __construct(
         private AuditRecorder $audit,
         private IssuePhotoStorage $storage,
+        private InvalidateUnitTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
     ) {}
 
     /**
@@ -22,6 +26,9 @@ class UpdateUnitAction
      */
     public function handle(Unit $unit, array $data, ?int $actorUserId = null, array $photos = []): Unit
     {
+        $previousName = (string) $unit->name;
+        $previousDescription = $unit->description;
+
         $payload = [
             'name' => trim((string) $data['name']),
             'description' => $data['description'] ?? null,
@@ -38,6 +45,9 @@ class UpdateUnitAction
         $unit->update($payload);
 
         $fresh = $unit->fresh();
+
+        $this->invalidateTranslations->handle($fresh, $previousName, $previousDescription, $actorUserId);
+        $this->ensureTranslationSlots->handle($fresh);
 
         $storedPhotoCount = 0;
         if (! empty($photos)) {

@@ -18,7 +18,13 @@ class UnitResource extends JsonResource
             'id' => $this->id,
             'location_id' => $this->location_id,
             'category_id' => $this->category_id,
-            'name' => $this->name,
+            'name' => $this->localizedName(),
+            'description' => $this->localizedDescription(),
+            'original_language' => $this->normalizedOriginalLanguage(),
+            'translations' => $this->whenLoaded(
+                'translations',
+                fn () => $this->completedTranslationMap(),
+            ),
             'is_active' => (bool) $this->is_active,
         ];
     }

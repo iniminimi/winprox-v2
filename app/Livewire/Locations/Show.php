@@ -291,6 +291,7 @@ class Show extends Component
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
+            'original_language' => auth()->user()->locale ?? null,
         ];
 
         if ($this->editingUnitId === null) {

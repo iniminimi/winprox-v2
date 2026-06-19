@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
+use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
@@ -11,15 +12,17 @@ class TranslationExportCommand extends Command
 {
     protected $signature = 'translation:export';
 
-    protected $description = 'Export pending issue and announcement translations to storage/app/exports/translations.json';
+    protected $description = 'Export pending issue, announcement and unit translations to storage/app/exports/translations.json';
 
     public function handle(
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
+        ExportPendingUnitTranslationsAction $exportUnits,
     ): int {
         $items = array_merge(
             $exportIssues->handle()['items'],
             $exportAnnouncements->handle(),
+            $exportUnits->handle(),
         );
 
         $payload = [

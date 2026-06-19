@@ -48,6 +48,26 @@ it('vertaalt export-items via de provider', function () {
     ]);
 });
 
+it('vertaalt unit export-items via de provider', function () {
+    $items = app(\App\Actions\Communication\TranslateExportItemsAction::class)->handle([
+        [
+            'unit_id' => 9,
+            'locale' => 'fr',
+            'source_name' => 'Graafmachine',
+            'source_description' => 'Zone B',
+        ],
+    ]);
+
+    expect($items)->toBe([
+        [
+            'locale' => 'fr',
+            'unit_id' => 9,
+            'name' => '[fr] Graafmachine',
+            'description' => '[fr] Zone B',
+        ],
+    ]);
+});
+
 it('vertaalt mededeling export-items via de provider', function () {
     $items = app(TranslateExportItemsAction::class)->handle([
         [

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\UnitTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,6 +25,7 @@ class Unit extends Model
         'import_batch_id',
         'name',
         'description',
+        'original_language',
         'is_active',
         'public_reports_enabled',
         'background_photo_path',
@@ -93,6 +96,106 @@ class Unit extends Model
     public function gpsReports(): HasMany
     {
         return $this->hasMany(UnitGpsReport::class);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(UnitTranslation::class);
+    }
+
+    public function normalizedOriginalLanguage(): string
+    {
+        return LocaleSupport::normalize($this->original_language);
+    }
+
+    public function localizedName(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $name = (string) $this->name;
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $name;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof UnitTranslation && filled($row->name)) {
+            return (string) $row->name;
+        }
+
+        return $name;
+    }
+
+    public function localizedDescription(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $description = (string) ($this->description ?? '');
+
+        if ($description === '') {
+            return '';
+        }
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $description;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof UnitTranslation && filled($row->description)) {
+            return (string) $row->description;
+        }
+
+        return $description;
+    }
+
+    /**
+     * @return array<string, array{name: string, description: ?string}>
+     */
+    public function completedTranslationMap(): array
+    {
+        $rows = $this->relationLoaded('translations')
+            ? $this->translations
+            : $this->translations()->where('status', UnitTranslationStatus::Completed)->get();
+
+        $map = [];
+        foreach ($rows as $row) {
+            if ($row->status !== UnitTranslationStatus::Completed) {
+                continue;
+            }
+
+            $entry = [];
+            if (filled($row->name)) {
+                $entry['name'] = (string) $row->name;
+            }
+            if (filled($row->description)) {
+                $entry['description'] = (string) $row->description;
+            }
+
+            if ($entry !== []) {
+                $map[$row->locale] = $entry;
+            }
+        }
+
+        return $map;
+    }
+
+    private function findCompletedTranslation(string $locale): ?UnitTranslation
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($this->relationLoaded('translations')) {
+            $row = $this->translations->first(
+                fn (UnitTranslation $translation) => $translation->locale === $locale
+                    && $translation->status === UnitTranslationStatus::Completed,
+            );
+
+            return $row instanceof UnitTranslation ? $row : null;
+        }
+
+        return $this->translations()
+            ->where('locale', $locale)
+            ->where('status', UnitTranslationStatus::Completed)
+            ->first();
     }
 
     public function latestGpsReport(): HasOne

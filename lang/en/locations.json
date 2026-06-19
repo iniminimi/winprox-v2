@@ -116,7 +116,10 @@
         "errors": {
             "name_required": "Enter a unit name.",
             "duplicate_name": "This unit name already exists at this location.",
-            "invalid_category": "Choose a valid category from your tenant."
+            "invalid_category": "Choose a valid category from your tenant.",
+            "translation_requires_active": "Translations are only available for active units.",
+            "translation_import_missing": "Unit not found or not active.",
+            "translation_import_name_too_long": "The translated unit name is too long."
         },
         "flash": {
             "created": "Unit created.",

@@ -18,7 +18,7 @@ class UnitController extends Controller
 
         return $this->paginated(
             UnitResource::collection(
-                Unit::query()->with('location')->orderBy('name')->paginate(50)
+                Unit::query()->with(['location', 'translations'])->orderBy('name')->paginate(50)
             )
         );
     }

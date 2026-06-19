@@ -21,8 +21,44 @@ class TranslateExportItemsAction
         foreach ($items as $index => $item) {
             $issueId = (int) ($item['issue_id'] ?? 0);
             $announcementId = (int) ($item['announcement_id'] ?? 0);
+            $unitId = (int) ($item['unit_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
+            $sourceName = trim((string) ($item['source_name'] ?? ''));
+            $sourceDescription = trim((string) ($item['source_description'] ?? ''));
+
+            if ($unitId > 0) {
+                if ($locale === '') {
+                    continue;
+                }
+
+                $row = ['locale' => $locale, 'unit_id' => $unitId];
+
+                if ($sourceName !== '') {
+                    $translatedName = trim($this->translator->translate($sourceName, $locale));
+                    $row['name'] = $translatedName !== '' ? $translatedName : $sourceName;
+                }
+
+                if ($sourceDescription !== '') {
+                    $translatedDescription = trim($this->translator->translate($sourceDescription, $locale));
+                    $row['description'] = $translatedDescription !== '' ? $translatedDescription : $sourceDescription;
+                }
+
+                if (! isset($row['name']) && ! isset($row['description'])) {
+                    continue;
+                }
+
+                $translated[] = $row;
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'unit_id' => $unitId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
 
             if (($issueId <= 0 && $announcementId <= 0) || $locale === '' || $sourceText === '') {
                 continue;

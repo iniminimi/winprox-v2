@@ -18,6 +18,8 @@ class UnitFactory extends Factory
             'tenant_id' => Tenant::factory(),
             'location_id' => Location::factory(),
             'name' => fake()->bothify('Asset ##??'),
+            'description' => fake()->optional()->sentence(),
+            'original_language' => 'nl',
             'is_active' => true,
             'public_reports_enabled' => true,
         ];

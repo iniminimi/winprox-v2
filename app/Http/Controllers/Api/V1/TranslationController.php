@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
+use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
+use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -16,12 +18,14 @@ class TranslationController extends Controller
     public function export(
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
+        ExportPendingUnitTranslationsAction $exportUnits,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
         $items = array_merge(
             $exportIssues->handle()['items'],
             $exportAnnouncements->handle(),
+            $exportUnits->handle(),
         );
 
         return $this->success([
@@ -35,13 +39,15 @@ class TranslationController extends Controller
         Request $request,
         ImportIssueTranslationsAction $importIssues,
         ImportAnnouncementTranslationsAction $importAnnouncements,
+        ImportUnitTranslationsAction $importUnits,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
         $validated = $request->validate([
             'items' => ['required', 'array', 'min:1'],
             'items.*.locale' => ['required', 'string'],
-            'items.*.description' => ['required', 'string'],
+            'items.*.description' => ['nullable', 'string'],
+            'items.*.name' => ['nullable', 'string'],
         ]);
 
         $items = $validated['items'];
@@ -49,9 +55,12 @@ class TranslationController extends Controller
 
         $issueItems = [];
         $announcementItems = [];
+        $unitItems = [];
 
         foreach ($items as $item) {
-            if (isset($item['announcement_id'])) {
+            if (isset($item['unit_id'])) {
+                $unitItems[] = $item;
+            } elseif (isset($item['announcement_id'])) {
                 $announcementItems[] = $item;
             } else {
                 $issueItems[] = $item;
@@ -59,7 +68,8 @@ class TranslationController extends Controller
         }
 
         $imported = $importIssues->handle($issueItems, $actorUserId)
-            + $importAnnouncements->handle($announcementItems, $actorUserId);
+            + $importAnnouncements->handle($announcementItems, $actorUserId)
+            + $importUnits->handle($unitItems, $actorUserId);
 
         return $this->success(['imported' => $imported]);
     }
