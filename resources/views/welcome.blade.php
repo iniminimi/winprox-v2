@@ -59,11 +59,12 @@
     </div>
 
     <main>
-        <section id="talen" class="wp-welcome-section" aria-labelledby="welcome-languages-title">
-            <div class="wp-welcome-main wp-welcome-section-inner--wide">
-                <div class="wp-welcome-banner">
-                    <h2 id="welcome-languages-title">{{ __('welcome.languages.title') }}</h2>
-                    <p>{{ __('welcome.languages.body') }}</p>
+        <section id="talen" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-languages-title">
+            <div class="wp-welcome-section-inner">
+                <div class="wp-welcome-languages-card">
+                    <h2 id="welcome-languages-title" class="wp-welcome-h2">{{ __('welcome.languages.title') }}</h2>
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.languages.body') }}</p>
+                    <div class="wp-welcome-languages-glow" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
