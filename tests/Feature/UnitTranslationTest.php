@@ -5,6 +5,7 @@ use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\TranslateUnitAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Enums\UnitTranslationStatus;
+use App\Livewire\Locations\Show;
 use App\Livewire\Public\UnitPortal;
 use App\Models\Category;
 use App\Models\InternalTeam;
@@ -186,6 +187,56 @@ it('toont vertaalde unitnaam in locatie-beheer volgens gebruikerstaal', function
     Livewire::actingAs($user)
         ->test(\App\Livewire\Locations\Show::class, ['location' => $location])
         ->assertSee('Excavator');
+});
+
+it('toont vertaal-preview in unit-bewerk-modal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'description' => 'Magazijn zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+    app(TranslateUnitAction::class)->handle($unit, 'en');
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertSet('previewLocale', 'en')
+        ->assertSee('[en] Graafmachine')
+        ->assertSee('[en] Magazijn zone B');
+});
+
+it('toont nog niet vertaald in unit-bewerk-modal wanneer vertaling ontbreekt', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'description' => 'Magazijn zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertSet('previewLocale', 'en')
+        ->assertSee('Not translated yet');
 });
 
 it('toont vertaalde unitnaam in portaal bij taalwissel', function () {

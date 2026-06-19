@@ -92,6 +92,7 @@
             "category": "Catégorie",
             "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR"
         },
+        "translation_preview": "Traduction (portail)",
         "edit": {
             "photos_label": "Photos de la liaison QR",
             "photos_hint": "Maximum 4 photos par unité.",

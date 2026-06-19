@@ -21,6 +21,7 @@ use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\EntityDetailNavigation;
 use App\Support\Qr\QrStickerSheetTemplate;
+use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
@@ -91,6 +92,8 @@ class Show extends Component
     #[Url(as: 'unit')]
     public string $unitSearch = '';
 
+    public string $previewLocale = '';
+
     public function updatedUnitCategoryFilter(): void
     {
         $this->resetPage();
@@ -115,6 +118,7 @@ class Show extends Component
     {
         $this->authorize('view', $location);
         $this->location = $location;
+        $this->previewLocale = LocaleSupport::normalize(app()->getLocale());
     }
 
     public function openEditLocation(): void
@@ -217,6 +221,7 @@ class Show extends Component
         $this->unitCategoryId = $unit->category_id;
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitPhotos = [];
+        $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
 
         $this->resetErrorBag();
         $this->showUnitModal = true;
@@ -401,7 +406,7 @@ class Show extends Component
             return null;
         }
 
-        return Unit::with(['qrLinkPhotos', 'latestGpsReport'])->find($this->editingUnitId);
+        return Unit::with(['qrLinkPhotos', 'latestGpsReport', 'translations'])->find($this->editingUnitId);
     }
 
     public function createBulk(BulkCreateUnitsAction $bulkCreate): void
@@ -502,6 +507,27 @@ class Show extends Component
             ? Category::query()->orderBy('name')->get(['id', 'name'])
             : collect();
 
+        $previewName = '';
+        $previewNameMissing = false;
+        $previewDescription = '';
+        $previewDescriptionMissing = false;
+        $previewUnit = null;
+
+        if ($this->showUnitModal && $this->editingUnitId !== null) {
+            $previewUnit = Unit::query()
+                ->where('location_id', $this->location->id)
+                ->with('translations')
+                ->find($this->editingUnitId);
+
+            if ($previewUnit !== null && $previewUnit->is_active) {
+                $displayLocale = LocaleSupport::normalize($this->previewLocale);
+                $previewName = $previewUnit->nameForDisplayLocale($displayLocale);
+                $previewNameMissing = $previewUnit->nameMissingForDisplayLocale($displayLocale);
+                $previewDescription = $previewUnit->descriptionForDisplayLocale($displayLocale);
+                $previewDescriptionMissing = $previewUnit->descriptionMissingForDisplayLocale($displayLocale);
+            }
+        }
+
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
@@ -510,6 +536,12 @@ class Show extends Component
             'nav' => EntityDetailNavigation::forLocation($this->location),
             'bulkPreview' => $this->bulkPreviewNames(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
+            'previewUnit' => $previewUnit,
+            'previewName' => $previewName,
+            'previewNameMissing' => $previewNameMissing,
+            'previewDescription' => $previewDescription,
+            'previewDescriptionMissing' => $previewDescriptionMissing,
+            'descriptionLocales' => config('locales.labels', []),
         ]);
     }
 

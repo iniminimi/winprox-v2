@@ -92,6 +92,7 @@
             "category": "Kategorie",
             "public_reports_enabled": "Besucher können über das QR-Portal eine Meldung erstellen"
         },
+        "translation_preview": "Übersetzung (Portal)",
         "edit": {
             "photos_label": "Fotos der QR-Verknüpfung",
             "photos_hint": "Maximal 4 Fotos pro Einheit.",

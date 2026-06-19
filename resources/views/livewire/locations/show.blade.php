@@ -207,6 +207,28 @@
                     <textarea class="wp-input" wire:model="unitDescription" rows="1"></textarea>
                     @error('unitDescription') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
+
+                @if ($editingUnitId && $previewUnit?->is_active)
+                    <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
+                        <div class="wp-cluster wp-issue-description-row">
+                            <span class="wp-label">{{ __('locations.units.translation_preview') }}</span>
+                            <select
+                                class="wp-select"
+                                wire:model.live="previewLocale"
+                                aria-label="{{ __('issues.show.description_language') }}"
+                            >
+                                @foreach ($descriptionLocales as $code => $label)
+                                    <option value="{{ $code }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p wire:key="unit-preview-name-{{ $previewLocale }}" @class(['wp-text-body', 'wp-muted' => $previewNameMissing])>{{ $previewName }}</p>
+                        @if (filled($previewUnit->description))
+                            <p wire:key="unit-preview-desc-{{ $previewLocale }}" @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
+                        @endif
+                    </div>
+                @endif
+
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
                     <select class="wp-input" wire:model="unitCategoryId">

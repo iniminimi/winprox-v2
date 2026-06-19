@@ -148,6 +148,95 @@ class Unit extends Model
         return $description;
     }
 
+    public function nameMissingForDisplayLocale(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        return $locale !== $this->normalizedOriginalLanguage()
+            && ! $this->hasCompletedNameFor($locale);
+    }
+
+    public function descriptionMissingForDisplayLocale(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if (! filled($this->description)) {
+            return false;
+        }
+
+        return $locale !== $this->normalizedOriginalLanguage()
+            && ! $this->hasCompletedDescriptionFor($locale);
+    }
+
+    public function nameForDisplayLocale(string $locale): string
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return (string) $this->name;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof UnitTranslation && filled($row->name)) {
+            return (string) $row->name;
+        }
+
+        return __('issues.show.description_not_translated', [], $locale);
+    }
+
+    public function descriptionForDisplayLocale(string $locale): string
+    {
+        $locale = LocaleSupport::normalize($locale);
+        $description = (string) ($this->description ?? '');
+
+        if ($description === '') {
+            return '';
+        }
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $description;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof UnitTranslation && filled($row->description)) {
+            return (string) $row->description;
+        }
+
+        return __('issues.show.description_not_translated', [], $locale);
+    }
+
+    public function hasCompletedNameFor(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return true;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        return $row instanceof UnitTranslation && filled($row->name);
+    }
+
+    public function hasCompletedDescriptionFor(string $locale): bool
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return true;
+        }
+
+        if (! filled($this->description)) {
+            return true;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        return $row instanceof UnitTranslation && filled($row->description);
+    }
+
     /**
      * @return array<string, array{name: string, description: ?string}>
      */

@@ -92,6 +92,7 @@
             "category": "Category",
             "public_reports_enabled": "Visitors can submit a report via the QR portal"
         },
+        "translation_preview": "Translation (portal)",
         "edit": {
             "photos_label": "Photos of the QR link",
             "photos_hint": "Maximum 4 photos per unit.",

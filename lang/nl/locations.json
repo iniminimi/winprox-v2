@@ -92,6 +92,7 @@
             "category": "Categorie",
             "public_reports_enabled": "Bezoekers kunnen een melding maken via QR-portaal"
         },
+        "translation_preview": "Vertaling (portaal)",
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
             "photos_hint": "Maximaal 4 foto's per unit.",
