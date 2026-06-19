@@ -10,7 +10,7 @@
         : collect();
     $cardTitle = collect([
         $issue->location?->name,
-        $issue->unit?->name,
+        $issue->unit?->localizedName(),
         __('issues.card.kind_nr', ['nr' => $issue->id]),
     ])->filter()->join(', ');
     $addressLine = $issue->location

@@ -111,13 +111,15 @@ class UnitPortal extends Component
 
         $this->tenantName = $unit->tenant?->name ?? '';
         $this->locationName = $unit->location?->name ?? '';
-        $unit->load('translations');
-        $this->refreshUnitDisplayTexts($unit);
 
         Tenancy::actAs($this->tenantId);
 
         $this->inactiveReasonKey = PortalAccess::unitPortalInactiveReasonKey($unit);
         $this->syncLocaleFromRequest();
+
+        $unit->load('translations');
+        $this->refreshUnitDisplayTexts($unit);
+
         $this->bootstrapFieldWorker($unit);
     }
 

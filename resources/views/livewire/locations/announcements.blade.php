@@ -19,7 +19,7 @@
                     <p class="wp-issue-desc">{{ $announcement->localizedDescription() }}</p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('locations.announcements.unit_label') }}:
-                        {{ $announcement->unit?->name ?? __('locations.announcements.for_location') }}
+                        {{ $announcement->unit?->localizedName() ?? __('locations.announcements.for_location') }}
                         @if ($announcement->expires_at)
                             · {{ __('locations.announcements.expires_on', ['date' => $announcement->expires_at->format('d-m-Y')]) }}
                         @endif

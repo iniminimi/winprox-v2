@@ -3,7 +3,7 @@
         <x-wp-modal closeMethod="close">
         <div class="wp-card wp-card-pad wp-stack wp-modal-card" data-manual-capture="locations-gps-history">
             <div class="wp-modal-head">
-                <h2 class="wp-section-title">{{ __('locations.units.gps_history.title', ['unit' => $unit->name]) }}</h2>
+                <h2 class="wp-section-title">{{ __('locations.units.gps_history.title', ['unit' => $unit->localizedName()]) }}</h2>
                 <x-wp-modal-close wire:click="close" />
             </div>
 

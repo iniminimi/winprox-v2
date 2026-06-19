@@ -201,7 +201,7 @@ class Announcements extends Component
         $announcements = Announcement::query()
             ->where('tenant_id', $tenantId)
             ->where('location_id', $this->location->id)
-            ->with(['unit:id,name', 'translations'])
+            ->with(['unit.translations', 'translations'])
             ->latest()
             ->get();
 

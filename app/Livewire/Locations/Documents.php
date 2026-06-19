@@ -260,7 +260,7 @@ class Documents extends Component
                         ->orWhere('description', 'like', $search);
                 });
             })
-            ->with('unit:id,name')
+            ->with(['unit.translations'])
             ->latest()
             ->get();
 

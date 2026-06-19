@@ -30,7 +30,7 @@
                     <p class="wp-issue-desc">{{ $document->description ?: __('locations.documents.no_description') }}</p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('locations.documents.unit_label') }}:
-                        {{ $document->unit?->name ?? __('locations.documents.for_location') }}
+                        {{ $document->unit?->localizedName() ?? __('locations.documents.for_location') }}
                         · {{ $document->title }}
                         @if (! $document->is_active)
                             · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>

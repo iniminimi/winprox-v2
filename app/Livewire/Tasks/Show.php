@@ -45,7 +45,7 @@ class Show extends Component
         $this->authorize('view', $task);
         $this->task = $task->load([
             'issue.location',
-            'issue.unit',
+            'issue.unit.translations',
             'issue.translations',
             'issue.updates.user',
             'issue.updates.worker',
@@ -190,7 +190,7 @@ class Show extends Component
 
         $issue = $this->task->issue;
         $location = $issue?->location;
-        $headline = collect([$location?->name, $issue?->unit?->name])->filter()->join(' · ');
+        $headline = collect([$location?->name, $issue?->unit?->localizedName()])->filter()->join(' · ');
         if ($headline === '' && $issue) {
             $headline = \Illuminate\Support\Str::limit($issue->localizedDescription(), 80);
         }

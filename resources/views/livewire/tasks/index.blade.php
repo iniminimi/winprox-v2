@@ -102,7 +102,7 @@
                             $issue = $task->issue;
                             $cardTitle = collect([
                                 $issue?->location?->name,
-                                $issue?->unit?->name,
+                                $issue?->unit?->localizedName(),
                                 __('tasks.card.kind_nr', ['nr' => $task->id]),
                             ])->filter()->join(', ');
                             $addressLine = $issue?->location

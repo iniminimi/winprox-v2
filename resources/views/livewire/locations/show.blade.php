@@ -87,7 +87,7 @@
                 <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title wp-unit-title-row">
-                            <span>{{ $unit->name }}</span>
+                            <span>{{ $unit->localizedName() }}</span>
                             @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
                         </p>
                         @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))

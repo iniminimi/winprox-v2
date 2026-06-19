@@ -368,7 +368,7 @@ class Show extends Component
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
-            'unit',
+            'unit.translations',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
     }
@@ -380,12 +380,12 @@ class Show extends Component
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
-            'unit',
+            'unit.translations',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
 
         $location = $issue->location;
-        $headline = collect([$location?->name, $issue->unit?->name])->filter()->join(' · ');
+        $headline = collect([$location?->name, $issue->unit?->localizedName()])->filter()->join(' · ');
         $addressLine = $location
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';

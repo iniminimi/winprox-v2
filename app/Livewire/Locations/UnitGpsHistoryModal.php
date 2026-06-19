@@ -35,7 +35,7 @@ class UnitGpsHistoryModal extends Component
         $reports = collect();
 
         if ($this->unitId !== null) {
-            $unit = Unit::query()->find($this->unitId);
+            $unit = Unit::query()->with('translations')->find($this->unitId);
             if ($unit !== null) {
                 $this->authorize('view', $unit);
                 $reports = UnitGpsReport::query()

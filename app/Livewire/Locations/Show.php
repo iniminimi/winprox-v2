@@ -472,6 +472,7 @@ class Show extends Component
                 $q->where('status', \App\Enums\QrCodeStatus::Active);
             }])
             ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
+            ->with('translations')
             ->withExists('gpsReports')
             ->withCount('issues')
             ->when($categoriesEnabled && $this->unitCategoryFilter !== '', fn ($q) => $q->where('category_id', (int) $this->unitCategoryFilter))

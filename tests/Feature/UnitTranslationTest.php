@@ -125,7 +125,70 @@ it('weigert import van te lange unitnaam', function () {
     ]))->toThrow(ValidationException::class);
 });
 
-it('toont vertaalde unitnaam in portaal bij andere locale', function () {
+it('toont vertaalde unitnaam bij eerste portaal-load met locale cookie', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id]);
+    $category->teams()->sync([$team->id]);
+
+    $unit = Unit::factory()->withQrToken('unit-token')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'name' => 'Graafmachine',
+        'description' => 'Magazijn zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+    app(ImportUnitTranslationsAction::class)->handle([
+        [
+            'unit_id' => $unit->id,
+            'locale' => 'en',
+            'name' => 'Excavator',
+            'description' => 'Warehouse zone B',
+        ],
+    ]);
+
+    Livewire::withCookies([\App\Support\ResolveAppLocale::COOKIE_NAME => 'en'])
+        ->test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSet('locale', 'en')
+        ->assertSee('Excavator')
+        ->assertSee('Warehouse zone B');
+});
+
+it('toont vertaalde unitnaam in locatie-beheer volgens gebruikerstaal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+    app(ImportUnitTranslationsAction::class)->handle([
+        [
+            'unit_id' => $unit->id,
+            'locale' => 'en',
+            'name' => 'Excavator',
+        ],
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Locations\Show::class, ['location' => $location])
+        ->assertSee('Excavator');
+});
+
+it('toont vertaalde unitnaam in portaal bij taalwissel', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
