@@ -61,11 +61,13 @@ final class UnitPortalData
 
         if (! Schema::hasColumn('documents', 'category_id')) {
             return $query
+                ->with('translations')
                 ->where(fn ($q) => $q->where('unit_id', $unit->id)->orWhereNull('unit_id'))
                 ->get();
         }
 
         return $query
+            ->with('translations')
             ->where(function ($q) use ($unit) {
                 $q->where('unit_id', $unit->id)
                     ->orWhere(function ($scoped) use ($unit) {

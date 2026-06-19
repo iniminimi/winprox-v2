@@ -27,7 +27,7 @@
         @forelse ($documents as $document)
             <div class="wp-issue-row" wire:key="doc-{{ $document->id }}">
                 <div class="wp-grow wp-stack-tight">
-                    <p class="wp-issue-desc">{{ $document->description ?: __('locations.documents.no_description') }}</p>
+                    <p class="wp-issue-desc">{{ $document->localizedDescription() ?: __('locations.documents.no_description') }}</p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('locations.documents.unit_label') }}:
                         {{ $document->unit?->localizedName() ?? __('locations.documents.for_location') }}
@@ -135,6 +135,24 @@
                     </div>
                     @error('description') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
+
+                @if ($editingDocument?->is_active)
+                    <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
+                        <div class="wp-cluster wp-issue-description-row">
+                            <span class="wp-label">{{ __('locations.documents.translation_preview') }}</span>
+                            <select
+                                class="wp-select"
+                                wire:model.live="previewLocale"
+                                aria-label="{{ __('issues.show.description_language') }}"
+                            >
+                                @foreach ($descriptionLocales as $code => $label)
+                                    <option value="{{ $code }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <p wire:key="document-preview-{{ $previewLocale }}" @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
+                    </div>
+                @endif
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.documents.link_unit') }}</span>

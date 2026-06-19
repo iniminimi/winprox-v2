@@ -23,6 +23,7 @@ class TranslateExportItemsAction
             $announcementId = (int) ($item['announcement_id'] ?? 0);
             $unitId = (int) ($item['unit_id'] ?? 0);
             $taskId = (int) ($item['task_id'] ?? 0);
+            $documentId = (int) ($item['document_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
             $sourceName = trim((string) ($item['source_name'] ?? ''));
@@ -81,6 +82,33 @@ class TranslateExportItemsAction
                 if ($onProgress !== null) {
                     $onProgress($index + 1, $total, [
                         'task_id' => $taskId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
+            if ($documentId > 0) {
+                if ($locale === '' || $sourceText === '') {
+                    continue;
+                }
+
+                $text = trim($this->translator->translate($sourceText, $locale));
+
+                if ($text === '') {
+                    $text = $sourceText;
+                }
+
+                $translated[] = [
+                    'document_id' => $documentId,
+                    'locale' => $locale,
+                    'description' => $text,
+                ];
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'document_id' => $documentId,
                         'locale' => $locale,
                     ]);
                 }

@@ -21,6 +21,7 @@ class WebhookEndpoint extends Model
         'announcement.translation_imported',
         'unit.translation_imported',
         'task.translation_imported',
+        'document.translation_imported',
         'task.created',
         'task.started',
         'task.completed',

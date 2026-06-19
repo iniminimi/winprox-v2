@@ -2,6 +2,8 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureDocumentTranslationSlotsAction;
+use App\Actions\Communication\InvalidateDocumentTranslationsOnSourceChangeAction;
 use App\Models\Document;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -13,7 +15,11 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UpdateLocationDocumentAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private InvalidateDocumentTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureDocumentTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array{description: string, unit_id: ?int, is_public: bool, requires_verification: bool, is_active: bool}  $data
@@ -42,6 +48,7 @@ class UpdateLocationDocumentAction
         }
 
         $isActive = (bool) ($data['is_active'] ?? true);
+        $previousDescription = (string) $document->description;
         $updatePayload = [
             'description' => trim((string) $data['description']),
             'unit_id' => $unitId,
@@ -77,6 +84,10 @@ class UpdateLocationDocumentAction
             modelId: (int) $document->id,
             payload: ['id' => $document->id, 'location_id' => $location->id],
         );
+
+        $document = $document->fresh();
+        $this->invalidateTranslations->handle($document, $previousDescription, $actorUserId);
+        $this->ensureTranslationSlots->handle($document);
 
         return ['metadata_partial' => $metadataPartial];
     }

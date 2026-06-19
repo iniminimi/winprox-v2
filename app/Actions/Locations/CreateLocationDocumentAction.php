@@ -2,21 +2,26 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureDocumentTranslationSlotsAction;
 use App\Models\Document;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Locations\StoredUploadMeta;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class CreateLocationDocumentAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureDocumentTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
-     * @param  array{description: string, unit_id: ?int, is_public: bool, requires_verification: bool, is_active: bool}  $data
+     * @param  array{description: string, unit_id: ?int, is_public: bool, requires_verification: bool, is_active: bool, original_language?: ?string}  $data
      * @return array{document: Document, metadata_partial: bool}
      */
     public function handle(
@@ -52,6 +57,7 @@ class CreateLocationDocumentAction
             'unit_id' => $unitId,
             'title' => $generatedTitle,
             'description' => trim((string) $data['description']),
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'file_path' => $filePath,
             'mime_type' => $fileMeta['mime_type'],
             'file_size_bytes' => $fileMeta['file_size_bytes'],
@@ -69,6 +75,9 @@ class CreateLocationDocumentAction
             modelId: (int) $document->id,
             payload: ['id' => $document->id, 'location_id' => $location->id],
         );
+
+        $document = $document->fresh();
+        $this->ensureTranslationSlots->handle($document);
 
         return ['document' => $document, 'metadata_partial' => $metadataPartial];
     }

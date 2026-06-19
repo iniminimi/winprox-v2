@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
+use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
@@ -22,6 +24,7 @@ class TranslationController extends Controller
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingUnitTranslationsAction $exportUnits,
         ExportPendingTaskTranslationsAction $exportTasks,
+        ExportPendingDocumentTranslationsAction $exportDocuments,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
@@ -30,6 +33,7 @@ class TranslationController extends Controller
             $exportAnnouncements->handle(),
             $exportUnits->handle(),
             $exportTasks->handle(),
+            $exportDocuments->handle(),
         );
 
         return $this->success([
@@ -45,6 +49,7 @@ class TranslationController extends Controller
         ImportAnnouncementTranslationsAction $importAnnouncements,
         ImportUnitTranslationsAction $importUnits,
         ImportTaskTranslationsAction $importTasks,
+        ImportDocumentTranslationsAction $importDocuments,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
@@ -62,9 +67,12 @@ class TranslationController extends Controller
         $announcementItems = [];
         $unitItems = [];
         $taskItems = [];
+        $documentItems = [];
 
         foreach ($items as $item) {
-            if (isset($item['task_id'])) {
+            if (isset($item['document_id'])) {
+                $documentItems[] = $item;
+            } elseif (isset($item['task_id'])) {
                 $taskItems[] = $item;
             } elseif (isset($item['unit_id'])) {
                 $unitItems[] = $item;
@@ -78,7 +86,8 @@ class TranslationController extends Controller
         $imported = $importIssues->handle($issueItems, $actorUserId)
             + $importAnnouncements->handle($announcementItems, $actorUserId)
             + $importUnits->handle($unitItems, $actorUserId)
-            + $importTasks->handle($taskItems, $actorUserId);
+            + $importTasks->handle($taskItems, $actorUserId)
+            + $importDocuments->handle($documentItems, $actorUserId);
 
         return $this->success(['imported' => $imported]);
     }

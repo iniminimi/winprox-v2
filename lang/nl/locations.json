@@ -261,13 +261,16 @@
         "current_file": "Huidig bestand: :name",
         "current_file_hint": "Laat leeg om het huidige bestand te behouden.",
         "confirm_delete": "Dit document definitief verwijderen?",
+        "translation_preview": "Vertaling (portaal)",
         "errors": {
             "invalid_unit": "Kies een geldige unit op deze locatie.",
             "file_required": "Selecteer een bestand om te uploaden.",
             "file_mimes": "Kies een toegestaan bestandstype: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG of PNG.",
             "file_max": "Het bestand is te groot (max. 10 MB).",
             "org_limit": "Uw organisatie heeft het maximum aantal documenten bereikt. Verwijder een document of upgrade uw plan.",
-            "unit_limit": "Deze unit heeft al het maximum aantal documenten. Kies een andere unit of verwijder eerst een document."
+            "unit_limit": "Deze unit heeft al het maximum aantal documenten. Kies een andere unit of verwijder eerst een document.",
+            "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve documenten.",
+            "translation_import_missing": "Document niet gevonden of niet actief."
         },
         "flash": {
             "created": "Document opgeslagen.",

@@ -261,13 +261,16 @@
         "current_file": "Aktuelle Datei: :name",
         "current_file_hint": "Leer lassen, um die aktuelle Datei zu behalten.",
         "confirm_delete": "Dieses Dokument endgültig löschen?",
+        "translation_preview": "Übersetzung (Portal)",
         "errors": {
             "invalid_unit": "Wählen Sie eine gültige Unit an diesem Standort.",
             "file_required": "Wählen Sie eine Datei zum Hochladen.",
             "file_mimes": "Wählen Sie einen erlaubten Dateityp: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG oder PNG.",
             "file_max": "Die Datei ist zu groß (max. 10 MB).",
             "org_limit": "Ihre Organisation hat die maximale Anzahl Dokumente erreicht. Löschen Sie ein Dokument oder upgraden Sie Ihre Formel.",
-            "unit_limit": "Diese Unit hat bereits die maximale Anzahl Dokumente. Wählen Sie eine andere Unit oder löschen Sie zuerst ein Dokument."
+            "unit_limit": "Diese Unit hat bereits die maximale Anzahl Dokumente. Wählen Sie eine andere Unit oder löschen Sie zuerst ein Dokument.",
+            "translation_requires_active": "Übersetzungen sind nur für aktive Dokumente möglich.",
+            "translation_import_missing": "Dokument nicht gefunden oder nicht aktiv."
         },
         "flash": {
             "created": "Dokument gespeichert.",

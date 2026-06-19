@@ -7,6 +7,7 @@ use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Models\Announcement;
+use App\Models\Document;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -263,6 +264,7 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
             'announcement.translation_imported',
             'unit.translation_imported',
             'task.translation_imported',
+            'document.translation_imported',
             'invalid.event',
         ],
     ], $tenant->id);
@@ -272,6 +274,7 @@ it('staat vertaling-webhook-events toe bij endpoint opslaan', function () {
         'announcement.translation_imported',
         'unit.translation_imported',
         'task.translation_imported',
+        'document.translation_imported',
     ]);
 });
 
@@ -342,11 +345,47 @@ it('stuurt task.translation_imported webhook', function () {
     Http::assertSent(fn (\Illuminate\Http\Client\Request $request) => ($request->header('X-WinProx-Event')[0] ?? '') === 'task.translation_imported');
 });
 
+it('stuurt document.translation_imported webhook', function () {
+    Http::fake(['https://hooks.test/*' => Http::response('ok', 200)]);
+
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $document = Document::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'description' => 'Veiligheidsblad',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(\App\Actions\Communication\EnsureDocumentTranslationSlotsAction::class)->handle($document);
+
+    WebhookEndpoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'url' => 'https://hooks.test/documents',
+        'events' => ['document.translation_imported'],
+        'is_active' => true,
+    ]);
+
+    app(\App\Actions\Communication\ImportDocumentTranslationsAction::class)->handle([
+        [
+            'document_id' => $document->id,
+            'locale' => 'en',
+            'description' => 'Safety sheet',
+        ],
+    ]);
+
+    Http::assertSent(fn (\Illuminate\Http\Client\Request $request) => ($request->header('X-WinProx-Event')[0] ?? '') === 'document.translation_imported');
+});
+
 it('bevat vertaling-webhook-events in AVAILABLE_EVENTS', function () {
     expect(\App\Models\WebhookEndpoint::AVAILABLE_EVENTS)->toContain(
         'issue.translation_imported',
         'announcement.translation_imported',
         'unit.translation_imported',
         'task.translation_imported',
+        'document.translation_imported',
     );
 });

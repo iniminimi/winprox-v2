@@ -9,6 +9,7 @@ use App\Actions\Locations\UpdateLocationDocumentAction;
 use App\Models\Document;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -46,10 +47,13 @@ class Documents extends Component
 
     public string $currentFileName = '';
 
+    public string $previewLocale = '';
+
     public function mount(Location $location): void
     {
         $this->authorize('view', $location);
         $this->location = $location;
+        $this->previewLocale = LocaleSupport::normalize(app()->getLocale());
     }
 
     protected function rules(): array
@@ -114,6 +118,7 @@ class Documents extends Component
         $this->isActive = (bool) $document->is_active;
         $this->editDocumentFile = null;
         $this->currentFileName = basename((string) $document->file_path);
+        $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
         $this->showEditModal = true;
     }
 
@@ -149,6 +154,7 @@ class Documents extends Component
                     'is_public' => (bool) $validated['isPublic'],
                     'requires_verification' => (bool) $validated['requiresVerification'],
                     'is_active' => (bool) $validated['isActive'],
+                    'original_language' => auth()->user()?->locale,
                 ],
                 $tenantId,
                 (int) auth()->id(),
@@ -260,7 +266,7 @@ class Documents extends Component
                         ->orWhere('description', 'like', $search);
                 });
             })
-            ->with(['unit.translations'])
+            ->with(['unit.translations', 'translations'])
             ->latest()
             ->get();
 
@@ -271,9 +277,31 @@ class Documents extends Component
             ->orderBy('name')
             ->get(['id', 'name']);
 
+        $editingDocument = null;
+        $previewDescription = '';
+        $previewDescriptionMissing = false;
+
+        if ($this->showEditModal && $this->editingDocumentId !== null) {
+            $editingDocument = Document::query()
+                ->where('tenant_id', $tenantId)
+                ->where('location_id', $this->location->id)
+                ->with('translations')
+                ->find($this->editingDocumentId);
+
+            if ($editingDocument !== null && $editingDocument->is_active) {
+                $displayLocale = LocaleSupport::normalize($this->previewLocale);
+                $previewDescription = $editingDocument->descriptionForDisplayLocale($displayLocale);
+                $previewDescriptionMissing = $editingDocument->descriptionMissingForDisplayLocale($displayLocale);
+            }
+        }
+
         return view('livewire.locations.documents', [
             'documents' => $documents,
             'units' => $units,
+            'editingDocument' => $editingDocument,
+            'previewDescription' => $previewDescription,
+            'previewDescriptionMissing' => $previewDescriptionMissing,
+            'descriptionLocales' => config('locales.labels', []),
         ]);
     }
 

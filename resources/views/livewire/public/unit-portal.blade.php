@@ -459,7 +459,7 @@
                 @forelse ($documents as $document)
                     <div class="wp-card wp-card-pad wp-stack-tight" wire:key="doc-{{ $document->id }}">
                         <p class="wp-doc-title">{{ $document->title }}</p>
-                        @if ($document->description)<p class="wp-muted">{{ $document->description }}</p>@endif
+                        @if ($document->description)<p class="wp-muted">{{ $document->localizedDescription($locale) }}</p>@endif
                         @if ($document->published_at)
                             <p class="wp-muted">{{ __('portal.documents.published', ['date' => $document->published_at->isoFormat('D MMM YYYY')]) }}</p>
                         @endif

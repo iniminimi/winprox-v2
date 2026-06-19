@@ -261,13 +261,16 @@
         "current_file": "Fichier actuel : :name",
         "current_file_hint": "Laisser vide pour conserver le fichier actuel.",
         "confirm_delete": "Supprimer définitivement ce document ?",
+        "translation_preview": "Traduction (portail)",
         "errors": {
             "invalid_unit": "Choisissez une unité valide sur ce site.",
             "file_required": "Sélectionnez un fichier à téléverser.",
             "file_mimes": "Choisissez un type de fichier autorisé : PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG ou PNG.",
             "file_max": "Le fichier est trop volumineux (max. 10 Mo).",
             "org_limit": "Votre organisation a atteint le nombre maximum de documents. Supprimez un document ou passez à une formule supérieure.",
-            "unit_limit": "Cette unité a déjà le nombre maximum de documents. Choisissez une autre unité ou supprimez d'abord un document."
+            "unit_limit": "Cette unité a déjà le nombre maximum de documents. Choisissez une autre unité ou supprimez d'abord un document.",
+            "translation_requires_active": "Les traductions ne sont disponibles que pour les documents actifs.",
+            "translation_import_missing": "Document introuvable ou inactif."
         },
         "flash": {
             "created": "Document enregistré.",

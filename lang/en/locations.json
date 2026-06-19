@@ -261,13 +261,16 @@
         "current_file": "Current file: :name",
         "current_file_hint": "Leave empty to keep the current file.",
         "confirm_delete": "Permanently delete this document?",
+        "translation_preview": "Translation (portal)",
         "errors": {
             "invalid_unit": "Choose a valid unit at this location.",
             "file_required": "Select a file to upload.",
             "file_mimes": "Choose an allowed file type: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG or PNG.",
             "file_max": "The file is too large (max. 10 MB).",
             "org_limit": "Your organisation has reached the maximum number of documents. Delete a document or upgrade your plan.",
-            "unit_limit": "This unit already has the maximum number of documents. Choose another unit or delete an existing document first."
+            "unit_limit": "This unit already has the maximum number of documents. Choose another unit or delete an existing document first.",
+            "translation_requires_active": "Translations are only available for active documents.",
+            "translation_import_missing": "Document not found or not active."
         },
         "flash": {
             "created": "Document saved.",

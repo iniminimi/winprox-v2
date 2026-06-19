@@ -2,12 +2,16 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureDocumentTranslationSlotsAction;
 use App\Models\Document;
 use App\Support\Audit\AuditRecorder;
 
 class ToggleLocationDocumentActiveAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureDocumentTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(Document $document, ?int $actorUserId = null): void
     {
@@ -26,5 +30,9 @@ class ToggleLocationDocumentActiveAction
             modelId: (int) $document->id,
             payload: ['id' => $document->id, 'is_active' => $newStatus],
         );
+
+        if ($newStatus) {
+            $this->ensureTranslationSlots->handle($document->fresh());
+        }
     }
 }
