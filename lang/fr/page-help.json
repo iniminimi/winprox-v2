@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Traduction de la description",
-                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces suivent le même principe sur la page du site."
+                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces et documents actifs suivent le même principe sur la page du site. Les tâches avec une description propre affichent le texte traduit dans les listes et le portail dès qu'il est prêt."
                 }
             ],
             "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",
@@ -133,6 +133,10 @@
                 {
                     "label": "Changer le statut",
                     "text": "Passez la tâche à En cours, Terminé ou Clôturé selon l'avancement."
+                },
+                {
+                    "label": "Traduction de la description",
+                    "text": "Si la tâche a une description propre (pas seulement celle du signalement), elle est traduite automatiquement via Plateforme → Traductions. Dans le portail et les listes, le visiteur voit la traduction dès qu'elle est prête ; sinon le texte source. Sans description propre, la tâche suit la traduction du signalement lié."
                 },
                 {
                     "label": "Ouvrir le signalement",
@@ -199,7 +203,7 @@
                 },
                 {
                     "label": "Documents & annonces",
-                    "text": "Gérez les manuels (le tenant téléverse lui-même les documents par langue) et les annonces sur la page QR. Les annonces actives sont traduites automatiquement via Plateforme → Traductions ; le formulaire d'édition affiche un aperçu par langue."
+                    "text": "Gérez les documents et annonces sur la page QR. Les documents et annonces actifs sont traduits automatiquement via Plateforme → Traductions (description) ; le formulaire d'édition affiche un aperçu par langue. Le titre du document reste dans la langue source."
                 }
             ]
         },
@@ -471,7 +475,7 @@
                 },
                 {
                     "label": "Documents",
-                    "text": "Consultez ici les manuels et autres documents disponibles pour cette unité."
+                    "text": "Consultez ici les manuels et autres documents disponibles pour cette unité. Choisissez une langue en haut — la description est traduite automatiquement dès qu'elle est prête."
                 },
                 {
                     "label": "Annonces",
@@ -627,19 +631,19 @@
             "actions": [
                 {
                     "label": "Qu'est-ce qui est traduit ?",
-                    "text": "Les signalements QR validés et les annonces actives reçoivent automatiquement des emplacements de traduction (NL, EN, FR, DE). Les documents ne sont pas traduits automatiquement — le tenant téléverse par langue."
+                    "text": "Emplacements de traduction automatiques (NL, EN, FR, DE) pour : signalements QR validés (description) ; annonces actives (description) ; unités actives (nom et description) ; tâches avec description propre ; documents actifs (description — le titre reste en langue source). Les tâches sans description propre affichent la traduction du signalement lié."
                 },
                 {
                     "label": "Local via Ollama",
-                    "text": "En tant que superuser sur votre ordinateur portable : lancez <code>php artisan queue:work</code>, cliquez sur « Démarrer les traductions ». Signalements et annonces en attente sont exportés, traduits localement et réimportés sur le serveur."
+                    "text": "En tant que superuser sur votre ordinateur portable : lancez <code>php artisan queue:work</code>, cliquez sur « Démarrer les traductions ». Signalements, annonces, unités, tâches et documents en attente sont exportés, traduits localement et réimportés sur le serveur."
                 },
                 {
                     "label": "État serveur",
-                    "text": "En production, vous voyez combien de traductions attendent encore. Le compteur inclut signalements validés et annonces actives."
+                    "text": "En production, vous voyez combien de traductions attendent encore. Le compteur inclut tous ces types."
                 },
                 {
                     "label": "Texte source modifié",
-                    "text": "Si quelqu'un modifie le texte source d'une annonce, les traductions existantes sont invalidées et repassent en attente. Relancez ensuite une synchronisation."
+                    "text": "Si quelqu'un modifie le texte source d'une annonce, d'une unité, d'une tâche ou d'un document, les traductions existantes sont invalidées et repassent en attente. Relancez ensuite une synchronisation."
                 }
             ]
         },

@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Vertaling omschrijving",
-                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald via Platform → Vertalingen. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen volgen hetzelfde principe op de locatiepagina."
+                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald via Platform → Vertalingen. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen en actieve documenten volgen hetzelfde principe op de locatiepagina. Taken met een eigen omschrijving tonen de vertaalde tekst in lijsten en portaal zodra die klaar is."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",
@@ -133,6 +133,10 @@
                 {
                     "label": "Status wijzigen",
                     "text": "Zet de taak op In uitvoering, Afgehandeld of Gesloten naargelang de voortgang."
+                },
+                {
+                    "label": "Vertaling omschrijving",
+                    "text": "Heeft de taak een eigen omschrijving (niet alleen die van de melding), dan wordt die automatisch vertaald via Platform → Vertalingen. In het portaal en in overzichten ziet de bezoeker de vertaling zodra die klaar is; anders de brontekst. Zonder eigen omschrijving volgt de taak de vertaling van de gekoppelde melding."
                 },
                 {
                     "label": "Melding openen",
@@ -199,7 +203,7 @@
                 },
                 {
                     "label": "Documenten & mededelingen",
-                    "text": "Beheer handleidingen (documenten uploadt de tenant zelf per taal) en mededelingen op de QR-pagina. Actieve mededelingen worden automatisch vertaald via Platform → Vertalingen; in het bewerkformulier ziet u een vertaal-preview per taal."
+                    "text": "Beheer documenten en mededelingen op de QR-pagina. Actieve documenten en mededelingen worden automatisch vertaald via Platform → Vertalingen (omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel van een document blijft in de brontaal."
                 }
             ]
         },
@@ -471,7 +475,7 @@
                 },
                 {
                     "label": "Documenten",
-                    "text": "Raadpleeg hier de handleidingen en overige documenten die voor deze unit beschikbaar zijn."
+                    "text": "Raadpleeg hier de handleidingen en overige documenten die voor deze unit beschikbaar zijn. Kies bovenaan een taal — de omschrijving wordt automatisch vertaald zodra dat klaar is."
                 },
                 {
                     "label": "Mededelingen",
@@ -627,19 +631,19 @@
             "actions": [
                 {
                     "label": "Wat wordt vertaald?",
-                    "text": "Goedgekeurde QR-meldingen en actieve mededelingen krijgen automatisch vertaalslots (NL, EN, FR, DE). Documenten worden niet automatisch vertaald — de tenant uploadt per taal zelf."
+                    "text": "Automatische vertaalslots (NL, EN, FR, DE) voor: goedgekeurde QR-meldingen (omschrijving); actieve mededelingen (omschrijving); actieve units (naam en omschrijving); taken met een eigen omschrijving; actieve documenten (omschrijving — titel blijft brontaal). Taken zonder eigen omschrijving tonen de vertaling van de gekoppelde melding."
                 },
                 {
                     "label": "Lokaal via Ollama",
-                    "text": "Als superuser op uw laptop: start <code>php artisan queue:work</code>, klik op « Vertalingen starten ». Pending meldingen én mededelingen worden geëxporteerd, lokaal vertaald en terug geïmporteerd op de server."
+                    "text": "Als superuser op uw laptop: start <code>php artisan queue:work</code>, klik op « Vertalingen starten ». Pending meldingen, mededelingen, units, taken en documenten worden geëxporteerd, lokaal vertaald en terug geïmporteerd op de server."
                 },
                 {
                     "label": "Serverstatus",
-                    "text": "Op de productieserver ziet u hoeveel vertalingen nog wachten. De teller telt goedgekeurde meldingen en actieve mededelingen samen."
+                    "text": "Op de productieserver ziet u hoeveel vertalingen nog wachten. De teller telt al deze typen samen."
                 },
                 {
                     "label": "Tekst gewijzigd",
-                    "text": "Wijzigt iemand de brontekst van een mededeling, dan worden bestaande vertalingen ongeldig en opnieuw pending. Voer daarna opnieuw een vertaal-run uit."
+                    "text": "Wijzigt iemand de brontekst van een mededeling, unit, taak of document, dan worden bestaande vertalingen ongeldig en opnieuw pending. Voer daarna opnieuw een vertaal-run uit."
                 }
             ]
         },

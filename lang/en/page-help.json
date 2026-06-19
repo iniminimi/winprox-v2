@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Description translation",
-                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval via Platform → Translations. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Announcements follow the same pattern on the location page."
+                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval via Platform → Translations. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Active announcements and documents follow the same pattern on the location page. Tasks with their own description show the translated text in lists and the portal once ready."
                 }
             ],
             "status_note": "Change issue status by updating the tasks.",
@@ -133,6 +133,10 @@
                 {
                     "label": "Change status",
                     "text": "Set the task to In progress, Completed or Closed depending on progress."
+                },
+                {
+                    "label": "Description translation",
+                    "text": "If the task has its own description (not only the issue text), it is translated automatically via Platform → Translations. In the portal and lists, visitors see the translation once ready; otherwise the source text. Without its own description, the task follows the linked issue translation."
                 },
                 {
                     "label": "Open issue",
@@ -199,7 +203,7 @@
                 },
                 {
                     "label": "Documents & announcements",
-                    "text": "Manage manuals (tenants upload documents per language themselves) and announcements on the QR page. Active announcements are translated automatically via Platform → Translations; the edit form shows a translation preview per language."
+                    "text": "Manage documents and announcements on the QR page. Active documents and announcements are translated automatically via Platform → Translations (description); the edit form shows a translation preview per language. A document title stays in the source language."
                 }
             ]
         },
@@ -471,7 +475,7 @@
                 },
                 {
                     "label": "Documents",
-                    "text": "View the manuals and other documents available for this unit here."
+                    "text": "View the manuals and other documents available for this unit here. Pick a language at the top — the description is translated automatically once ready."
                 },
                 {
                     "label": "Announcements",
@@ -627,19 +631,19 @@
             "actions": [
                 {
                     "label": "What gets translated?",
-                    "text": "Approved QR issues and active announcements automatically get translation slots (NL, EN, FR, DE). Documents are not translated automatically — tenants upload per language themselves."
+                    "text": "Automatic translation slots (NL, EN, FR, DE) for: approved QR issues (description); active announcements (description); active units (name and description); tasks with their own description; active documents (description — title stays in source language). Tasks without their own description show the linked issue translation."
                 },
                 {
                     "label": "Local via Ollama",
-                    "text": "As superuser on your laptop: start <code>php artisan queue:work</code>, click « Start translations ». Pending issues and announcements are exported, translated locally, and imported back on the server."
+                    "text": "As superuser on your laptop: start <code>php artisan queue:work</code>, click « Start translations ». Pending issues, announcements, units, tasks and documents are exported, translated locally, and imported back on the server."
                 },
                 {
                     "label": "Server status",
-                    "text": "On production you see how many translations are still waiting. The count includes approved issues and active announcements."
+                    "text": "On production you see how many translations are still waiting. The count includes all of these types."
                 },
                 {
                     "label": "Source text changed",
-                    "text": "If someone edits an announcement's source text, existing translations are invalidated and set to pending again. Run a new translation sync afterwards."
+                    "text": "If someone edits the source text of an announcement, unit, task or document, existing translations are invalidated and set to pending again. Run a new translation sync afterwards."
                 }
             ]
         },

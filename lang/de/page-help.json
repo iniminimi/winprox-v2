@@ -79,7 +79,7 @@
                 },
                 {
                     "label": "Übersetzung der Beschreibung",
-                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Mitteilungen funktionieren gleich auf der Standortseite."
+                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Aktive Mitteilungen und Dokumente funktionieren gleich auf der Standortseite. Aufgaben mit eigener Beschreibung zeigen den übersetzten Text in Listen und im Portal, sobald er fertig ist."
                 }
             ],
             "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",
@@ -133,6 +133,10 @@
                 {
                     "label": "Status ändern",
                     "text": "Setzen Sie die Aufgabe je nach Fortschritt auf In Bearbeitung, Erledigt oder Geschlossen."
+                },
+                {
+                    "label": "Übersetzung Beschreibung",
+                    "text": "Hat die Aufgabe eine eigene Beschreibung (nicht nur die der Meldung), wird sie automatisch über Plattform → Übersetzungen übersetzt. Im Portal und in Übersichten sieht der Besucher die Übersetzung, sobald sie fertig ist; sonst den Ausgangstext. Ohne eigene Beschreibung folgt die Aufgabe der Übersetzung der verknüpften Meldung."
                 },
                 {
                     "label": "Meldung öffnen",
@@ -199,7 +203,7 @@
                 },
                 {
                     "label": "Dokumente & Mitteilungen",
-                    "text": "Verwalten Sie Handbücher (der Tenant lädt Dokumente selbst pro Sprache hoch) und Mitteilungen auf der QR-Seite. Aktive Mitteilungen werden automatisch über Plattform → Übersetzungen übersetzt; im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache."
+                    "text": "Verwalten Sie Dokumente und Mitteilungen auf der QR-Seite. Aktive Dokumente und Mitteilungen werden automatisch über Plattform → Übersetzungen übersetzt (Beschreibung); im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache. Der Dokumenttitel bleibt in der Ausgangssprache."
                 }
             ]
         },
@@ -471,7 +475,7 @@
                 },
                 {
                     "label": "Dokumente",
-                    "text": "Sehen Sie hier die Handbücher und anderen Dokumente, die für diese Unit verfügbar sind, ein."
+                    "text": "Sehen Sie hier die Handbücher und anderen Dokumente, die für diese Unit verfügbar sind. Wählen Sie oben eine Sprache — die Beschreibung wird automatisch übersetzt, sobald sie fertig ist."
                 },
                 {
                     "label": "Mitteilungen",
@@ -627,19 +631,19 @@
             "actions": [
                 {
                     "label": "Was wird übersetzt?",
-                    "text": "Freigegebene QR-Meldungen und aktive Mitteilungen erhalten automatisch Übersetzungsslots (NL, EN, FR, DE). Dokumente werden nicht automatisch übersetzt — der Tenant lädt pro Sprache selbst hoch."
+                    "text": "Automatische Übersetzungsslots (NL, EN, FR, DE) für: freigegebene QR-Meldungen (Beschreibung); aktive Mitteilungen (Beschreibung); aktive Units (Name und Beschreibung); Aufgaben mit eigener Beschreibung; aktive Dokumente (Beschreibung — Titel bleibt Ausgangssprache). Aufgaben ohne eigene Beschreibung zeigen die Übersetzung der verknüpften Meldung."
                 },
                 {
                     "label": "Lokal via Ollama",
-                    "text": "Als Superuser auf Ihrem Laptop: <code>php artisan queue:work</code> starten, auf « Übersetzungen starten » klicken. Ausstehende Meldungen und Mitteilungen werden exportiert, lokal übersetzt und auf dem Server importiert."
+                    "text": "Als Superuser auf Ihrem Laptop: <code>php artisan queue:work</code> starten, auf « Übersetzungen starten » klicken. Ausstehende Meldungen, Mitteilungen, Units, Aufgaben und Dokumente werden exportiert, lokal übersetzt und auf dem Server importiert."
                 },
                 {
                     "label": "Serverstatus",
-                    "text": "In Produktion sehen Sie, wie viele Übersetzungen noch warten. Die Zählung umfasst freigegebene Meldungen und aktive Mitteilungen."
+                    "text": "In Produktion sehen Sie, wie viele Übersetzungen noch warten. Die Zählung umfasst alle diese Typen."
                 },
                 {
                     "label": "Quelltext geändert",
-                    "text": "Ändert jemand den Quelltext einer Mitteilung, werden bestehende Übersetzungen ungültig und wieder pending. Führen Sie danach erneut einen Übersetzungslauf aus."
+                    "text": "Ändert jemand den Quelltext einer Mitteilung, Unit, Aufgabe oder eines Dokuments, werden bestehende Übersetzungen ungültig und wieder pending. Führen Sie danach erneut einen Übersetzungslauf aus."
                 }
             ]
         },
