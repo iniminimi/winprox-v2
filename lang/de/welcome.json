@@ -96,6 +96,10 @@
         "tags": ["Meldungen", "Aufgaben", "Einsätze", "Fotos", "Lösungen"],
         "availability": ["Immer verfügbar", "Immer einsehbar"]
     },
+    "languages": {
+        "title": "WinProx spricht Ihre Sprache",
+        "body": "Um allen ein nahtloses Erlebnis zu bieten, übersetzt WinProx Meldungen, Aufgaben, Mitteilungen und Kommunikation automatisch mit KI in vier Sprachen. So erreicht wichtige Information Besucher, Mitarbeitende und Ausführende in einer Sprache, die sie verstehen."
+    },
     "video": {
         "title": "Video",
         "placeholder": "Video folgt in Kürze."

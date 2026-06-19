@@ -96,6 +96,10 @@
         "tags": ["Reports", "Tasks", "Interventions", "Photos", "Solutions"],
         "availability": ["Always available", "Always accessible"]
     },
+    "languages": {
+        "title": "WinProx speaks your language",
+        "body": "To give everyone a seamless experience, WinProx automatically translates issues, tasks, announcements and communication with AI into four languages. This way, important information reaches visitors, staff and field teams in a language they understand."
+    },
     "video": {
         "title": "Video",
         "placeholder": "Video coming soon."

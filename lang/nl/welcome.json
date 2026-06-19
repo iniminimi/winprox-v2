@@ -96,6 +96,10 @@
         "tags": ["Meldingen", "Taken", "Interventies", "Foto's", "Oplossingen"],
         "availability": ["Altijd beschikbaar", "Altijd raadpleegbaar"]
     },
+    "languages": {
+        "title": "WinProx spreekt jouw taal",
+        "body": "Om iedereen een naadloze ervaring te bieden, vertaalt WinProx meldingen, taken, mededelingen en communicatie automatisch met AI naar vier talen. Zo bereikt belangrijke informatie bezoekers, medewerkers en uitvoerders in een taal die zij begrijpen."
+    },
     "video": {
         "title": "Video",
         "placeholder": "Video volgt binnenkort."

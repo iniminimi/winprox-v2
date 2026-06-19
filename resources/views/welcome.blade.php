@@ -59,6 +59,15 @@
     </div>
 
     <main>
+        <section id="talen" class="wp-welcome-section" aria-labelledby="welcome-languages-title">
+            <div class="wp-welcome-main wp-welcome-section-inner--wide">
+                <div class="wp-welcome-banner">
+                    <h2 id="welcome-languages-title">{{ __('welcome.languages.title') }}</h2>
+                    <p>{{ __('welcome.languages.body') }}</p>
+                </div>
+            </div>
+        </section>
+
         <section id="video" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-video-title">
             <div class="wp-welcome-section-inner">
                 <span class="wp-welcome-eyebrow">{{ __('welcome.video.title') }}</span>
