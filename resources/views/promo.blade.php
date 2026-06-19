@@ -22,6 +22,7 @@
     :portal-bg-url="asset('images/promo/background.jpg')"
     body-class="wp-public-body wp-promo-body"
     og-context="site"
+    :promo-tracking-token="$promoTrackingToken ?? null"
 >
     <div class="wp-stack wp-promo">
         <div class="wp-promo-top">
@@ -63,7 +64,7 @@
                                             <h3 class="wp-promo-video-card-title">{{ $item['title'] }}</h3>
                                             <p class="wp-muted">{{ $item['description'] }}</p>
                                         </div>
-                                        <div class="wp-promo-video-card-media">
+                                        <div class="wp-promo-video-card-media" @if (! empty($promoTrackingToken)) data-promo-video-key="{{ $item['basename'] }}" @endif>
                                             @include('partials.wp-locale-video', [
                                                 'basename' => $item['basename'],
                                                 'suffix' => $item['suffix'] ?? '_01',
@@ -88,7 +89,7 @@
                                         <div class="wp-card-pad">
                                             <p class="wp-promo-video-card-title">{{ $item['description'] }}</p>
                                         </div>
-                                        <div class="wp-promo-video-card-media">
+                                        <div class="wp-promo-video-card-media" @if (! empty($promoTrackingToken)) data-promo-video-key="{{ $item['basename'] }}" @endif>
                                             @include('partials.wp-locale-video', [
                                                 'basename' => $item['basename'],
                                                 'suffix' => $item['suffix'] ?? '_01',

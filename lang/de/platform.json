@@ -84,9 +84,33 @@
         "restored": ":email wurde wiederhergestellt und erhält wieder E-Mails."
     },
     "promo_qr": {
-        "title": "Promo-QR-Code",
-        "description": "Hochauflösender QR-Code (3000×3000 px) zum Drucken auf Fußballtrikots generieren.",
+        "title": "Promo-QR",
+        "description": "Allgemeinen QR zur Promo-Seite herunterladen. Besuche ohne Bestimmungs-link werden als anonyme Besucher geloggt.",
         "download": "Promo-QR herunterladen"
+    },
+    "promo_recipients": {
+        "nav": "Promo-Bestimmungen",
+        "title": "Promo-Bestimmungen",
+        "subtitle": "Pro Empfänger einen QR-Code erstellen und Promo-Besuche sowie Videos verfolgen.",
+        "anonymous_title": "Anonyme Besucher",
+        "anonymous_lead": "Alle auf /promo ohne persönlichen Link (QR, Lesezeichen, Suche, …).",
+        "anonymous_count": ":count Besuche geloggt",
+        "anonymous_url": "Promo-URL:",
+        "anonymous_empty": "Noch keine anonymen Besuche.",
+        "create_title": "Neuer Empfänger",
+        "create_lead": "Nach dem Speichern wird der QR-Code sofort heruntergeladen.",
+        "label": "Empfänger",
+        "note": "Notiz (optional)",
+        "create_submit": "Speichern und QR herunterladen",
+        "list_title": "Empfänger",
+        "list_empty": "Noch keine Empfänger.",
+        "visit_count": ":count Besuche",
+        "video_count": ":count Videos",
+        "videos_played": "Angesehene Videos",
+        "show_visits": "Besuche",
+        "hide_visits": "Ausblenden",
+        "visits_empty": "Noch keine Besuche.",
+        "download_qr": "QR herunterladen"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

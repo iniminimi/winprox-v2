@@ -8,7 +8,10 @@ use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoQrDownloadController;
+use App\Http\Controllers\PromoRecipientQrDownloadController;
+use App\Http\Controllers\PromoVideoTrackController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
@@ -40,6 +43,7 @@ use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
 use App\Livewire\Platform\ManualScreenshots as PlatformManualScreenshots;
+use App\Livewire\Platform\PromoRecipients as PlatformPromoRecipients;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
 use App\Livewire\Platform\QrConnect;
 use App\Livewire\Platform\Tenants as PlatformTenants;
@@ -86,7 +90,10 @@ Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscrib
     ->name('email.resubscribe');
 
 Route::get('/contact', Contact::class)->name('contact.index');
-Route::view('/promo', 'promo')->name('promo');
+Route::get('/promo', [PromoController::class, 'show'])->name('promo');
+Route::post('/promo/track/video', PromoVideoTrackController::class)
+    ->middleware('throttle:60,1')
+    ->name('promo.track.video');
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
     Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
@@ -132,6 +139,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/promo-qr/download', PromoQrDownloadController::class)
         ->middleware('superuser')
         ->name('platform.promo-qr.download');
+
+    Route::get('/platform/promo-recipients', PlatformPromoRecipients::class)
+        ->middleware('superuser')
+        ->name('platform.promo-recipients');
+
+    Route::get('/platform/promo-recipients/{promoRecipient}/qr', PromoRecipientQrDownloadController::class)
+        ->middleware('superuser')
+        ->name('platform.promo-recipients.qr');
 
     Route::get('/faq', Faq::class)->name('faq.index');
     Route::get('/legal', Legal::class)->name('legal.index');

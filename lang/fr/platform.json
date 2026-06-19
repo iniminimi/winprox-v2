@@ -84,9 +84,33 @@
         "restored": ":email a été restauré et recevra à nouveau des e-mails."
     },
     "promo_qr": {
-        "title": "QR code promotionnel",
-        "description": "Générer un QR code haute résolution (3000×3000 px) pour impression sur maillots de football.",
+        "title": "QR promo",
+        "description": "Télécharger un QR général vers la page promo. Les visites sans lien personnalisé sont enregistrées comme visiteurs anonymes.",
         "download": "Télécharger le QR promo"
+    },
+    "promo_recipients": {
+        "nav": "Destinataires promo",
+        "title": "Destinataires promo",
+        "subtitle": "Créer un QR par destinataire et suivre les visites promo et les vidéos.",
+        "anonymous_title": "Visiteurs anonymes",
+        "anonymous_lead": "Toute personne sur /promo sans lien personnel (QR, favori, moteur de recherche, …).",
+        "anonymous_count": ":count visites enregistrées",
+        "anonymous_url": "URL promo :",
+        "anonymous_empty": "Aucune visite anonyme pour l'instant.",
+        "create_title": "Nouveau destinataire",
+        "create_lead": "Après l'enregistrement, le QR se télécharge immédiatement.",
+        "label": "Destinataire",
+        "note": "Note (optionnel)",
+        "create_submit": "Enregistrer et télécharger le QR",
+        "list_title": "Destinataires",
+        "list_empty": "Aucun destinataire pour l'instant.",
+        "visit_count": ":count visites",
+        "video_count": ":count vidéos",
+        "videos_played": "Vidéos regardées",
+        "show_visits": "Visites",
+        "hide_visits": "Masquer",
+        "visits_empty": "Aucune visite pour l'instant.",
+        "download_qr": "Télécharger le QR"
     },
     "manual_screenshots": {
         "nav": "Captures",

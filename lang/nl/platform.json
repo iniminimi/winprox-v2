@@ -84,9 +84,33 @@
         "restored": ":email is hersteld en ontvangt weer e-mails."
     },
     "promo_qr": {
-        "title": "Promotionele QR-code",
-        "description": "Genereer een hoge-resolutie QR-code (3000×3000 px) voor bedrukking op voetbalshirts.",
+        "title": "Promotie-QR",
+        "description": "Download een algemene QR naar de promo-pagina. Bezoeken zonder bestemmeling worden gelogd als anonieme bezoeker.",
         "download": "Download promotie-QR"
+    },
+    "promo_recipients": {
+        "nav": "Promo-bestemmelingen",
+        "title": "Promo-bestemmelingen",
+        "subtitle": "Maak per ontvanger een QR-code en volg promo-bezoeken en video's.",
+        "anonymous_title": "Anonieme bezoekers",
+        "anonymous_lead": "Iedereen op /promo zonder persoonlijke link (QR, bookmark, zoekmachine, …).",
+        "anonymous_count": ":count bezoeken gelogd",
+        "anonymous_url": "Promo-URL:",
+        "anonymous_empty": "Nog geen anonieme bezoeken.",
+        "create_title": "Nieuwe bestemmeling",
+        "create_lead": "Na opslaan wordt direct de QR-code gedownload.",
+        "label": "Bestemmeling",
+        "note": "Notitie (optioneel)",
+        "create_submit": "Opslaan en QR downloaden",
+        "list_title": "Bestemmelingen",
+        "list_empty": "Nog geen bestemmelingen.",
+        "visit_count": ":count bezoeken",
+        "video_count": ":count video's",
+        "videos_played": "Video's bekeken",
+        "show_visits": "Bezoeken",
+        "hide_visits": "Verberg",
+        "visits_empty": "Nog geen bezoeken.",
+        "download_qr": "QR downloaden"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Marketing\GeneratePromoQrCodeAction;
+use App\Support\Marketing\PromoLandingUrl;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,12 +18,12 @@ class PromoQrDownloadController extends Controller
 
         $pngData = $action->handle(
             size: 3000,
-            targetUrl: 'https://winprox.app/promo',
+            targetUrl: PromoLandingUrl::anonymous(),
             actorUserId: (int) $request->user()->id,
         );
 
         return response($pngData)
             ->header('Content-Type', 'image/png')
-            ->header('Content-Disposition', 'attachment; filename="winprox-voetbal-promo-qr.png"');
+            ->header('Content-Disposition', 'attachment; filename="winprox-promo.png"');
     }
 }

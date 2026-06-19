@@ -84,9 +84,33 @@
         "restored": ":email has been restored and will receive emails again."
     },
     "promo_qr": {
-        "title": "Promotional QR Code",
-        "description": "Generate a high-resolution QR code (3000×3000 px) for printing on football shirts.",
+        "title": "Promo QR",
+        "description": "Download a general QR code to the promo page. Visits without a recipient link are logged as anonymous visitors.",
         "download": "Download promo QR"
+    },
+    "promo_recipients": {
+        "nav": "Promo recipients",
+        "title": "Promo recipients",
+        "subtitle": "Create a QR code per recipient and track promo visits and videos.",
+        "anonymous_title": "Anonymous visitors",
+        "anonymous_lead": "Anyone on /promo without a personal link (QR, bookmark, search engine, …).",
+        "anonymous_count": ":count visits logged",
+        "anonymous_url": "Promo URL:",
+        "anonymous_empty": "No anonymous visits yet.",
+        "create_title": "New recipient",
+        "create_lead": "After saving, the QR code downloads immediately.",
+        "label": "Recipient",
+        "note": "Note (optional)",
+        "create_submit": "Save and download QR",
+        "list_title": "Recipients",
+        "list_empty": "No recipients yet.",
+        "visit_count": ":count visits",
+        "video_count": ":count videos",
+        "videos_played": "Videos watched",
+        "show_visits": "Visits",
+        "hide_visits": "Hide",
+        "visits_empty": "No visits yet.",
+        "download_qr": "Download QR"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

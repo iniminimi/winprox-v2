@@ -6,6 +6,7 @@
     'socialUrl' => null,
     'socialImage' => null,
     'ogContext' => 'portal',
+    'promoTrackingToken' => null,
 ])
 
 @php
@@ -63,10 +64,12 @@
         'ogContext' => $ogContext,
     ])
     @include('partials.favicon')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}">
+<body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
+      @if ($promoTrackingToken) data-promo-tracking="1" data-promo-track-url="{{ route('promo.track.video') }}" @endif>
     <main class="wp-portal">
         {{ $slot }}
         

@@ -14,9 +14,14 @@
             <h2 class="wp-section-title">{{ __('platform.promo_qr.title') }}</h2>
         </div>
         <p class="wp-muted">{{ __('platform.promo_qr.description') }}</p>
-        <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--primary">
-            {{ __('platform.promo_qr.download') }}
-        </a>
+        <div class="wp-row wp-gap-sm">
+            <a href="{{ route('platform.promo-qr.download') }}" class="btn btn--primary">
+                {{ __('platform.promo_qr.download') }}
+            </a>
+            <a href="{{ route('platform.promo-recipients') }}" class="btn btn--ghost">
+                {{ __('platform.promo_recipients.nav') }}
+            </a>
+        </div>
     </section>
     @endcan
 
