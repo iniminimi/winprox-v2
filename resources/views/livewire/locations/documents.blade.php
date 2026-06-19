@@ -66,10 +66,10 @@
     </div>
 
     @if ($showCreateModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="document-create-title">
             <form wire:submit="createDocument" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ __('locations.documents.add') }}</h2>
+                    <h2 id="document-create-title" class="wp-section-title">{{ __('locations.documents.add') }}</h2>
                     <x-wp-modal-close wire:click="closeCreateModal" />
                 </div>
                 <p class="wp-muted">{{ __('locations.documents.modal_subtitle') }}</p>
@@ -114,14 +114,14 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 
     @if ($showEditModal)
-        <div class="wp-modal">
+        <x-wp-modal closeMethod="closeEditModal" aria-labelledby="document-edit-title">
             <form wire:submit="updateDocument" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ __('locations.documents.edit') }}</h2>
+                    <h2 id="document-edit-title" class="wp-section-title">{{ __('locations.documents.edit') }}</h2>
                     <x-wp-modal-close wire:click="closeEditModal" />
                 </div>
 
@@ -154,24 +154,29 @@
                     </div>
                 @endif
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.documents.link_unit') }}</span>
-                    <select class="wp-select" wire:model="unitId">
-                        <option value="">{{ __('locations.documents.for_location') }}</option>
-                        @foreach ($units as $unit)
-                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
-                        @endforeach
-                    </select>
-                    @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                <div class="wp-modal-section">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.documents.link_unit') }}</span>
+                        <select class="wp-select" wire:model="unitId">
+                            <option value="">{{ __('locations.documents.for_location') }}</option>
+                            @foreach ($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('unitId') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </div>
 
                 <p class="wp-muted">{{ __('locations.documents.current_file', ['name' => $currentFileName]) }}</p>
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.documents.replace_file') }}</span>
-                    <input type="file" class="wp-input" wire:model="editDocumentFile">
-                    <p class="wp-hint">{{ __('locations.documents.current_file_hint') }}</p>
-                    @error('editDocumentFile') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+
+                <div class="wp-modal-section">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.documents.replace_file') }}</span>
+                        <input type="file" class="wp-input" wire:model="editDocumentFile">
+                        <p class="wp-hint">{{ __('locations.documents.current_file_hint') }}</p>
+                        @error('editDocumentFile') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </div>
 
                 <div class="wp-stack-tight">
                     <label class="wp-check"><input type="checkbox" wire:model="isPublic"> {{ __('locations.documents.public') }}</label>
@@ -184,6 +189,6 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
-        </div>
+        </x-wp-modal>
     @endif
 </div>
