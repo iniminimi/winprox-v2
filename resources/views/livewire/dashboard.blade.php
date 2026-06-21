@@ -125,28 +125,58 @@
                 </a>
             @endif
 
-            <div class="wp-dashboard-widget wp-traffic-widget wp-card wp-card-pad" wire:key="traffic-widget">
-                <div class="wp-stack-tight">
-                    <p class="wp-kpi-kicker">{{ __('dashboard.traffic.kicker') }}</p>
-                    <p class="wp-dashboard-widget__title">{{ __('dashboard.traffic.title') }}</p>
-                    <p class="wp-muted">{{ __('dashboard.traffic.subtitle') }}</p>
-                </div>
+            @php
+                $trafficScanTotal = collect($topScannedUnits)->sum(static fn ($row) => $row->scanCount);
+            @endphp
+
+            <div
+                class="wp-dashboard-widget wp-traffic-widget wp-card wp-card-pad"
+                wire:key="traffic-widget"
+                @if ($topScannedUnits !== []) x-data="{ open: false }" @endif
+            >
                 @if ($topScannedUnits !== [])
-                    <div class="wp-list wp-list--entity-rows wp-traffic-widget__list">
-                        @foreach ($topScannedUnits as $row)
-                            <a href="{{ $row->detailUrl }}" class="wp-traffic-row" wire:key="traffic-unit-{{ $row->unitId }}">
-                                <div class="wp-grow wp-stack-tight">
-                                    <p class="wp-issue-card-title">{{ $row->unitName }}</p>
-                                    <p class="wp-issue-card-meta">{{ $row->locationName }}</p>
-                                </div>
-                                <div class="wp-cluster">
-                                    <span class="wp-pill wp-pill--closed wp-tabular">{{ trans_choice('dashboard.traffic.scans', $row->scanCount, ['count' => $row->scanCount]) }}</span>
-                                    <x-wp-icon name="arrow-right" class="wp-traffic-row__chevron" />
-                                </div>
-                            </a>
-                        @endforeach
+                    <button
+                        type="button"
+                        class="wp-traffic-widget-toggle"
+                        @click="open = !open"
+                        :aria-expanded="open ? 'true' : 'false'"
+                        aria-controls="wp-traffic-widget-panel"
+                    >
+                        <div class="wp-grow wp-stack-tight">
+                            <p class="wp-kpi-kicker">{{ __('dashboard.traffic.kicker') }}</p>
+                            <p class="wp-dashboard-widget__title">{{ __('dashboard.traffic.title') }}</p>
+                            <p class="wp-muted" x-show="!open">
+                                {{ __('dashboard.traffic.collapsed_summary', [
+                                    'units' => count($topScannedUnits),
+                                    'scans' => $trafficScanTotal,
+                                ]) }}
+                            </p>
+                            <p class="wp-muted" x-show="open" x-cloak>{{ __('dashboard.traffic.subtitle') }}</p>
+                        </div>
+                        <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                    </button>
+                    <div id="wp-traffic-widget-panel" class="wp-disclosure-panel" x-show="open" x-cloak>
+                        <div class="wp-list wp-list--entity-rows wp-traffic-widget__list">
+                            @foreach ($topScannedUnits as $row)
+                                <a href="{{ $row->detailUrl }}" class="wp-traffic-row" wire:key="traffic-unit-{{ $row->unitId }}">
+                                    <div class="wp-grow wp-stack-tight">
+                                        <p class="wp-issue-card-title">{{ $row->unitName }}</p>
+                                        <p class="wp-issue-card-meta">{{ $row->locationName }}</p>
+                                    </div>
+                                    <div class="wp-cluster">
+                                        <span class="wp-pill wp-pill--closed wp-tabular">{{ trans_choice('dashboard.traffic.scans', $row->scanCount, ['count' => $row->scanCount]) }}</span>
+                                        <x-wp-icon name="arrow-right" class="wp-traffic-row__chevron" />
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
                     </div>
                 @else
+                    <div class="wp-stack-tight">
+                        <p class="wp-kpi-kicker">{{ __('dashboard.traffic.kicker') }}</p>
+                        <p class="wp-dashboard-widget__title">{{ __('dashboard.traffic.title') }}</p>
+                        <p class="wp-muted">{{ __('dashboard.traffic.subtitle') }}</p>
+                    </div>
                     <p class="wp-muted wp-traffic-widget__empty">{{ __('dashboard.traffic.empty') }}</p>
                 @endif
             </div>

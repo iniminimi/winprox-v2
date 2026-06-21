@@ -34,7 +34,8 @@
         "subtitle": "Top 5 meest gescand in de afgelopen 7 dagen.",
         "scans": "{1} :count scan|[2,*] :count scans",
         "no_location": "Geen locatie",
-        "empty": "Nog geen QR-scans in de afgelopen 7 dagen."
+        "empty": "Nog geen QR-scans in de afgelopen 7 dagen.",
+        "collapsed_summary": ":units assets · :scans scans deze week"
     },
     "welcome": "Welkom op Winprox.app",
     "onboarding": {

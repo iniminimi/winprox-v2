@@ -123,6 +123,7 @@ it('toont de traffic-widget naast de health-widget op het dashboard', function (
         ->assertSeeHtml('wp-dashboard-widgets')
         ->assertSeeHtml('wp-health-widget')
         ->assertSeeHtml('wp-traffic-widget')
+        ->assertSeeHtml('wp-traffic-widget-toggle')
         ->assertSee(__('dashboard.traffic.title'));
 });
 
