@@ -7,12 +7,13 @@
 return [
     'default' => 'nl',
 
-    'supported' => ['nl', 'en', 'fr', 'de'],
+    'supported' => ['nl', 'en', 'fr', 'de', 'es'],
 
     'labels' => [
         'nl' => 'NL',
         'en' => 'EN',
         'fr' => 'FR',
         'de' => 'DE',
+        'es' => 'ES',
     ],
 ];

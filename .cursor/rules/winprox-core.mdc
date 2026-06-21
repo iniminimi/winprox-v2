@@ -17,7 +17,7 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 - **Minimale diff**: alleen wat de taak vraagt; geen refactor “erbij”.
 - **Geen repo-brede alignment-runs** — brede cleanup is klaar (zie `WINPROX_RULES.md` §13).
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).
-- **Geen** ongebruikte locale-keys; 4 talen altijd in pariteit (`npm run check:locales:parity`).
+- **Geen** ongebruikte locale-keys; alle talen altijd in pariteit (`npm run check:locales:parity`).
 - **Geen** nieuwe UI-varianten: hergebruik `.btn`, `.wp-pill`, `.wp-card`, `wp-*` tokens.
 - **Modals:** altijd `<x-wp-modal closeMethod="...">` — Esc sluit (zelfde methode als Annuleren/X).
 - **Paginering / bladerknoppen:** `.wp-pagination__control` / `.wp-pagination__page` — ook

@@ -23,7 +23,7 @@ const email = process.env.MANUAL_CAPTURE_EMAIL ?? '';
 const password = process.env.MANUAL_CAPTURE_PASSWORD ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
-const locales = ['nl', 'en', 'fr', 'de'];
+const locales = ['nl', 'en', 'fr', 'de', 'es'];
 
 const pathVars = {
     location_id: process.env.MANUAL_CAPTURE_LOCATION_ID ?? '',

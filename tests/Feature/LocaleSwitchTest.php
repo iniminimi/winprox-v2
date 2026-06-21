@@ -52,10 +52,17 @@ it('gebruikt browser taalkeuze als geen sessie/cookie/gebruiker locale', functio
 });
 
 it('valt terug op default als browser taal niet supported is', function () {
-    $this->withHeader('Accept-Language', 'es-ES,es;q=0.9')
+    $this->withHeader('Accept-Language', 'pt-PT,pt;q=0.9')
         ->get(route('login'))
         ->assertOk()
         ->assertSee(__('auth.submit', [], 'nl'));
+});
+
+it('gebruikt browser Spaans wanneer es wordt aangeboden', function () {
+    $this->withHeader('Accept-Language', 'es-ES,es;q=0.9')
+        ->get(route('login'))
+        ->assertOk()
+        ->assertSee(__('auth.submit', [], 'es'));
 });
 
 it('cookie prevaleert boven browser taalkeuze', function () {

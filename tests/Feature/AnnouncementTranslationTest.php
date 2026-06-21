@@ -38,9 +38,10 @@ it('seed pending vertaalrijen na aanmaken actieve mededeling', function () {
     ], $tenant->id, $user->id);
 
     $rows = AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->get();
+    $expectedLocales = collect(expectedTargetLocales('nl'))->sort()->values()->all();
 
-    expect($rows)->toHaveCount(3)
-        ->and($rows->pluck('locale')->sort()->values()->all())->toBe(['de', 'en', 'fr'])
+    expect($rows)->toHaveCount(count($expectedLocales))
+        ->and($rows->pluck('locale')->sort()->values()->all())->toBe($expectedLocales)
         ->and($rows->every(fn ($row) => $row->status === AnnouncementTranslationStatus::Pending))->toBeTrue();
 });
 
@@ -76,7 +77,7 @@ it('seed vertaalrijen bij activeren', function () {
 
     app(ToggleLocationAnnouncementActiveAction::class)->handle($announcement);
 
-    expect(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->count())->toBe(3);
+    expect(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->count())->toBe(count(expectedTargetLocales('nl')));
 });
 
 it('vertaalt een mededeling via de provider en slaat op', function () {
@@ -130,7 +131,7 @@ it('slaat brontaal op bij aanmaken via Livewire', function () {
 
     expect($announcement)->not->toBeNull()
         ->and($announcement->original_language)->toBe('fr')
-        ->and(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->count())->toBe(3);
+        ->and(AnnouncementTranslation::query()->where('announcement_id', $announcement->id)->count())->toBe(count(expectedTargetLocales('fr')));
 });
 
 it('exporteert en importeert pending mededelingvertalingen', function () {
@@ -151,7 +152,7 @@ it('exporteert en importeert pending mededelingvertalingen', function () {
         app(\App\Actions\Communication\ExportPendingAnnouncementTranslationsAction::class)->handle(),
     );
 
-    expect($exportItems)->toHaveCount(3)
+    expect($exportItems)->toHaveCount(count(expectedTargetLocales('nl')))
         ->and(collect($exportItems)->every(fn ($item) => isset($item['announcement_id'])))->toBeTrue();
 
     $imported = app(\App\Actions\Communication\ImportAnnouncementTranslationsAction::class)->handle([

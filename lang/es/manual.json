@@ -1,0 +1,85 @@
+{
+    "cover": {
+        "title": "Manual de usuario WinProx",
+        "subtitle": "Work in Proximity — todo el personal",
+        "generated": "Generado el :date",
+        "contents": "Contenido",
+        "print": "Imprimir / Guardar como PDF",
+        "print_hint": "Elija papel A4 y desactive «Encabezados y pies de página» en el diálogo de impresión.",
+        "back": "Volver",
+        "without_screenshots": "Sin capturas de pantalla",
+        "with_screenshots": "Con capturas de pantalla"
+    },
+    "getting_started": {
+        "label": "Primeros pasos",
+        "title": "En funcionamiento en 5 pasos",
+        "intro": "Siga este orden al configurar WinProx por primera vez para su organización."
+    },
+    "chapter": "Capítulo",
+    "toc": {
+        "admin_portal": "Portal administrativo",
+        "internet_portal": "Portal de internet"
+    },
+    "sections": {
+        "admin_portal": {
+            "title": "Equipos y usuarios a través de la configuración",
+            "intro": "Capítulos sobre el portal de administración con sesión iniciada: equipos, ubicaciones, incidencias, tareas, calendario, panel de control y configuración."
+        },
+        "internet_portal": {
+            "title": "Dos códigos QR y el portal de campo",
+            "intro": "Ayuda para los portales QR de unidad y de equipo en el lugar: inicio de sesión, incidencias, tareas, fotos y funciones de jefe de equipo."
+        }
+    },
+    "statuses": "Estados",
+    "screenshot_alt": "Captura de pantalla: :title",
+    "portal_statuses": {
+        "admin_portal": {
+            "title": "Estados — portal administrativo",
+            "intro": "Estos estados los utilizan los administradores para supervisar y controlar el flujo de trabajo completo.",
+            "new": "La incidencia se ha creado; al menos una tarea espera a que el equipo la inicie.",
+            "in_progress": "El trabajo en la incidencia está en curso; al menos una tarea se está ejecutando.",
+            "done": "Todas las tareas de esta incidencia han sido completadas por el equipo; el administrador puede aprobar y cerrar.",
+            "closed": "El administrador ha confirmado la finalización; la incidencia está cerrada definitivamente."
+        },
+        "internet_portal": {
+            "title": "Estados — portal de internet",
+            "intro": "Estos estados están orientados a trabajadores de campo y ciudadanos (reportadores) para mostrar el estado directo de una tarea específica.",
+            "new": "La tarea se ha creado y espera a que el equipo la inicie.",
+            "in_progress": "El equipo está actualmente en el lugar realizando el trabajo.",
+            "done": "El trabajo ha sido completado por el trabajador y reportado como finalizado.",
+            "closed": "La tarea ha sido revisada por el administrador y cerrada definitivamente."
+        }
+    },
+    "step_1_title": "Crear equipos y trabajadores",
+    "step_1_text": "Forme equipos operativos, añada trabajadores y asigne un jefe de equipo. Vincule equipos a categorías específicas para que las tareas lleguen siempre a los profesionales correctos. Los trabajadores inician sesión fácilmente con su nombre y un icono personal. También puede añadir equipos y trabajadores de una vez mediante importación masiva (archivo CSV).",
+    "step_2_title": "Configurar ubicaciones y unidades",
+    "step_2_text": "Agrupe unidades en categorías (por ejemplo: taladros, sanitario, equipos de fitness, oficina o electricidad). Estas categorías ayudan a filtrar y organizar sus activos y se adaptan completamente a su sector. Al vincular equipos a categorías específicas, WinProx garantiza que las tareas las recoja siempre el equipo correcto. Además, añada ubicaciones (como sitios, edificios o plantas) y cree sus unidades por ubicación: son las máquinas, espacios u objetos físicos para los que se registran incidencias y tareas. Las ubicaciones y unidades también se pueden cargar mediante importación masiva (archivo CSV).",
+    "step_3_title": "Imprimir y colocar códigos QR",
+    "step_3_text": "Imprima los códigos QR desde la página de detalle de la ubicación o unidad y colóquelos en un lugar claramente visible (por ejemplo en máquinas, impresoras, mobiliario de oficina o en salas). Los usuarios escanean el QR de la unidad para abrir directamente el portal, donde pueden enviar incidencias y consultar documentos o anuncios. Los trabajadores escanean el QR del equipo para vincular o activar tokens dinámicos, registrar la ubicación GPS de la unidad y tomar fotos. Además, pueden iniciar y completar tareas por esta vía, incluyendo la adición de fotos.",
+    "step_4_title": "Recibir incidencias y asignar tareas",
+    "step_4_text": "Las incidencias llegan mediante un escaneo QR o entrada manual. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia (por ejemplo para el equipo técnico y el de limpieza). Establezca simplemente una fecha límite y siga el progreso de cerca mediante el panel de control y el calendario.",
+    "step_5_title": "Seguimiento y cierre",
+    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar escaneando el QR del equipo. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Todas las acciones permanecen claramente visibles en el registro de auditoría.",
+    "hub": {
+        "title": "Manuales",
+        "subtitle": "Elija el manual que se ajuste a su rol",
+        "general": "Manual general",
+        "general_desc": "Aplicación WinProx completa para administradores y personal, incluida la ayuda del portal QR — imprimir o guardar como PDF.",
+        "workers": "Manual de trabajadores",
+        "workers_desc": "QR de equipo y QR de unidad en el lugar — inicio de sesión, tareas y fotos.",
+        "teamleaders": "Manual de jefe de equipo",
+        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal de equipo."
+    },
+    "workers": {
+        "cover": {
+            "title": "Manual de trabajadores",
+            "subtitle": "QR de equipo y QR de unidad — tareas en el lugar"
+        }
+    },
+    "teamleaders": {
+        "cover": {
+            "title": "Manual de jefe de equipo",
+            "subtitle": "Portal de equipo — coordinar colegas y tareas"
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "title": "Panel de control",
+    "subtitle": "Resumen de sus ubicaciones, unidades, incidencias y tareas.",
+    "trial_capsule": {
+        "trial_short": "Periodo de prueba: quedan :days días.",
+        "trial_title": "Periodo de prueba",
+        "paid_short": "Suscripción: quedan :days días.",
+        "paid_title": "Suscripción",
+        "grace_short": "Periodo de gracia: quedan :days días de acceso completo.",
+        "grace_title": "Periodo de gracia tras finalizar la suscripción"
+    },
+    "add_issue": "+ Añadir incidencia",
+    "briefing": "Briefing",
+    "briefing_print": "Imprimir briefing",
+    "briefing_empty": "No hay tareas programadas para hoy.",
+    "briefing_no_team": "Sin equipo",
+    "kpi": {
+        "locations": "Ubicaciones",
+        "units": "Unidades",
+        "new_issues": "Nuevas incidencias",
+        "open_tasks": "Tareas abiertas",
+        "meta_total": "Total"
+    },
+    "recent": {
+        "title": "Incidencias recientes",
+        "open_issues": "Incidencias abiertas",
+        "empty": "Aún no hay incidencias.",
+        "reporter_anon": "Anónimo",
+        "no_location": "Sin ubicación"
+    },
+    "traffic": {
+        "kicker": "Escaneos QR",
+        "title": "Activos populares",
+        "subtitle": "Top 5 más escaneados en los últimos 7 días.",
+        "scans": "{1} :count escaneo|[2,*] :count escaneos",
+        "no_location": "Sin ubicación",
+        "empty": "Aún no hay escaneos QR en los últimos 7 días.",
+        "collapsed_summary": ":units activos · :scans escaneos esta semana"
+    },
+    "welcome": "Bienvenido a Winprox.app",
+    "onboarding": {
+        "teams": {
+            "title": "Empiece creando equipos y trabajadores",
+            "text": "Cree equipos operativos, añada trabajadores y asigne un jefe de equipo. Vincule equipos a categorías para que las tareas lleguen siempre al equipo correcto. Los trabajadores inician sesión con su nombre y un icono elegido. Los equipos y trabajadores también se pueden cargar mediante importación masiva (archivo CSV).",
+            "button": "Añadir equipos"
+        },
+        "categories": {
+            "title": "Empiece creando categorías",
+            "text": "Vaya a ubicaciones y unidades y añada categorías para agrupar unidades (p. ej. taladros, sanitario, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades y dependen del sector de la empresa. Al vincular equipos de trabajadores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Añada ubicaciones (sitios, edificios, plantas) y cree unidades por ubicación: son los activos, máquinas o salas donde se registran incidencias y tareas. Las ubicaciones y unidades también se pueden cargar mediante importación masiva (archivo CSV).",
+            "button": "Gestionar ubicaciones"
+        }
+    }
+}

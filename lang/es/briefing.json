@@ -1,0 +1,23 @@
+{
+    "document_title": "Briefing matutino",
+    "screen_brand": "Briefing",
+    "apply_filters": "Aplicar",
+    "select_team": "Elija un equipo para este briefing",
+    "team_choose": "Elija su equipo:",
+    "select_date": "Fecha",
+    "title": "Briefing matutino",
+    "empty_team": "No hay tareas abiertas para hoy en este equipo.",
+    "empty_team_open": "No hay tareas abiertas para este equipo.",
+    "section_units": "Unidades",
+    "section_general": "Zonas generales",
+    "lines_count": ":count líneas",
+    "print": "Imprimir",
+    "open_tasks_button": "Tareas abiertas",
+    "view_by_day": "Briefing por día",
+    "scope_open_tasks": "Tareas abiertas",
+    "powered_by": "Powered by WinProx.app",
+    "recurring_badge": "(recurrente)",
+    "general_area_fallback": "Zona general",
+    "unit_fallback": "Unidad",
+    "no_description": "Sin descripción"
+}

@@ -1,0 +1,88 @@
+{
+    "app": {
+        "platform": "Plataforma",
+        "workspace": "Espacio de trabajo"
+    },
+    "nav": {
+        "label": "Navegación principal",
+        "dashboard": "Panel de control",
+        "locations": "Ubicaciones y unidades",
+        "issues": "Incidencias",
+        "tasks": "Tareas",
+        "calendar": "Calendario",
+        "users": "Usuarios",
+        "settings": "Configuración",
+        "subscription": "Suscripción",
+        "faq": "FAQ y base de conocimiento",
+        "manual": "Manual de usuario",
+        "legal": "Documentos legales",
+        "contact": "Contacto"
+    },
+    "status": {
+        "new": "Nueva (Abierta)",
+        "in_progress": "En curso",
+        "done": "Gestionada",
+        "closed": "Cerrada"
+    },
+    "qr_status": {
+        "unassigned": "Sin asignar",
+        "active": "Activo",
+        "damaged": "Dañado",
+        "inactive": "Inactivo"
+    },
+    "detail_nav": {
+        "first": "Primera",
+        "prev": "Anterior",
+        "next": "Siguiente",
+        "last": "Última"
+    },
+    "file": {
+        "browse": "Examinar…",
+        "none_selected": "Ningún archivo seleccionado"
+    },
+    "button": {
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "view": "Ver",
+        "print": "Imprimir",
+        "logout": "Cerrar sesión",
+        "close": "Cerrar",
+        "clear": "Borrar"
+    },
+    "language": {
+        "label": "Idioma"
+    },
+    "style": {
+        "label": "Estilo"
+    },
+    "help": {
+        "button": "Ayuda",
+        "title": "¿Necesita ayuda?",
+        "text": "Consulte la base de conocimiento o contacte con soporte.",
+        "contact": "Contactar"
+    },
+    "brand": {
+        "tagline": "Work In Proximity"
+    },
+    "social": {
+        "og_title": "WinProx | Software de gestión de instalaciones",
+        "og_description": "Gestión eficiente de servicios de instalaciones y coordinación de mantenimiento."
+    },
+    "welcome": "Bienvenido",
+    "list": {
+        "filters_title": "Filtros",
+        "per_status_limit": "Elementos por estado"
+    },
+    "pagination": {
+        "nav_label": "Navegación de paginación",
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "showing": "Mostrando",
+        "to": "a",
+        "of": "de",
+        "results": "resultados",
+        "go_to_page": "Ir a la página :page"
+    }
+}

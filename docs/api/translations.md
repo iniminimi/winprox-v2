@@ -79,7 +79,7 @@ Each item contains either `issue_id`, `announcement_id`, or `unit_id` (never mor
 
 **Fields per item:**
 - `issue_id`, `announcement_id`, or `unit_id` (required) — Target record
-- `locale` (required) — Target locale (`nl`, `en`, `fr`, `de`)
+- `locale` (required) — Target locale (`nl`, `en`, `fr`, `de`, `es`)
 - `description` (required for issues/announcements) — Completed translation (max 1500 characters)
 - `name` (optional, units) — Translated unit name (max 255 characters)
 - `description` (optional, units) — Translated unit description (max 1500 characters)

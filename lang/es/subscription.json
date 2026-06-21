@@ -1,0 +1,120 @@
+{
+    "title": "Suscripción, límites y facturación",
+    "subtitle": "Tras su mes gratuito, elija un plan. Los límites se aplican por organización para unidades, documentos y usuarios; consulte la FAQ para más detalles.",
+    "plans_heading": "Planes disponibles",
+    "choose_plan": "Elegir este plan",
+    "choose_plan_loading": "Eligiendo...",
+    "activate_plan": "Elegir este plan",
+    "current_plan": "Plan actual",
+    "admin_required": "Solo un administrador puede elegir una suscripción. Contacte con el administrador de su organización.",
+    "activated": "Ha elegido :plan. Su suscripción está activa durante el periodo configurado.",
+    "enterprise_hint": "Soporte completo para grandes operadores de sitios y carteras complejas. Contáctenos para un presupuesto personalizado.",
+    "enterprise_cta": "Contáctenos",
+    "enterprise_mail_subject": "WinProx Enterprise - solicitud de presupuesto",
+    "enterprise_contact": "Contáctenos en :email para un presupuesto personalizado.",
+    "status_heading": "Estado actual",
+    "status_legacy": "Su organización aún no utiliza el seguimiento de prueba (cuenta heredada). Todas las funciones siguen disponibles.",
+    "status_trial": "Prueba con :plan activa hasta :date.",
+    "status_active": "Suscripción activa: :plan, válida hasta :date.",
+    "status_grace": "La suscripción :plan finalizó el :ended. Periodo de gracia hasta :grace_end — quedan :days días de acceso completo. Renueve a tiempo para evitar interrupciones.",
+    "status_expired": "Su periodo de prueba ha finalizado. Elija un plan a continuación para continuar.",
+    "pricing_intro": "WinProx incluye un mes de prueba gratuito. Después, elija un plan según el número de unidades en sus sitios (máquinas, zonas o áreas).",
+    "page_limits_title": "Por qué ciertas acciones no están disponibles",
+    "page_limits_units_body": "Está usando :current de :max unidades. «Añadir unidad» y «Añadir ubicación» permanecen desactivados hasta que actualice su plan.",
+    "page_limits_users_body": "Está usando :current de :max plazas de equipo en su plan (1 administrador más hasta :max empleados). «Añadir usuario» está desactivado hasta que actualice su plan.",
+    "page_limits_documents_body": "Su organización está usando :current de :max documentos. Elimine un documento o actualice su plan para subir más.",
+    "manage_in_stripe": "Gestionar suscripción (factura, método de pago)",
+    "legal_footer_intro": "Su cuenta está sujeta, entre otros, a:",
+    "legal_terms": "Términos del servicio",
+    "legal_privacy": "Privacidad",
+    "legal_dpa": "DPA",
+    "status": {
+        "title": "Estado",
+        "access": "Acceso a la aplicación",
+        "access_ok": "Activo",
+        "access_blocked": "Bloqueado",
+        "trial": "Periodo de prueba",
+        "trial_days": "Quedan :days días",
+        "plan": "Plan",
+        "active_until": "Válido hasta",
+        "usage": "Uso",
+        "usage_counts": ":units unidades · :users usuarios"
+    },
+    "limits": {
+        "units": ":count unidades",
+        "users": ":count usuarios",
+        "unlimited": "ilimitado",
+        "warning_units": "Le quedan :remaining plazas de unidad en su plan.",
+        "critical_units": "Ha alcanzado el límite de unidades. Actualice su plan para añadir más unidades.",
+        "warning_users": "Le quedan :remaining plazas de usuario en su plan.",
+        "critical_users": "Ha alcanzado el límite de usuarios. Actualice su plan para invitar a más colegas.",
+        "cta": "Ver suscripción"
+    },
+    "plans": {
+        "trial": {
+            "name": "Prueba"
+        },
+        "micro": {
+            "name": "Micro",
+            "price": "99 € / año",
+            "units": "Hasta 10 unidades/espacios",
+            "users": "Incluye 1 administrador y 1 empleado",
+            "announcements": "Hasta 2 anuncios por unidad",
+            "documents": "Hasta 2 documentos por unidad · máx. 10 para su organización",
+            "description": "Ideal para pequeñas empresas y gestores inmobiliarios compactos."
+        },
+        "starter": {
+            "name": "Starter",
+            "price": "29 € / mes",
+            "units": "Hasta 25 unidades/espacios",
+            "users": "Incluye 1 administrador y 2 empleados",
+            "announcements": "Hasta 4 anuncios por unidad",
+            "documents": "Hasta 4 documentos por unidad · máx. 20 para su organización",
+            "description": "Ideal para un solo sitio o piloto con un equipo de coordinación compacto."
+        },
+        "pro": {
+            "name": "Pro",
+            "price": "59 € / mes",
+            "units": "Hasta 100 unidades/espacios",
+            "users": "Incluye 1 administrador y 5 empleados",
+            "announcements": "Hasta 10 anuncios por unidad",
+            "documents": "Hasta 6 documentos por unidad · máx. 40 para su organización",
+            "description": "Adecuado para organizaciones de instalaciones en crecimiento con más unidades y equipos internos."
+        },
+        "business": {
+            "name": "Business",
+            "price": "99 € / mes",
+            "units": "Hasta 300 unidades/espacios",
+            "users": "Incluye 1 administrador y 15 empleados",
+            "announcements": "Hasta 20 anuncios por unidad",
+            "documents": "Hasta 8 documentos por unidad · máx. 80 para su organización",
+            "description": "Para organizaciones con varios sitios, muchas unidades y equipos más grandes. Incluye acceso API y webhooks.",
+            "features": ["Acceso API", "Webhooks"]
+        },
+        "enterprise": {
+            "name": "Enterprise",
+            "price": "Personalizado",
+            "units": "Para grandes operadores de sitios y carteras complejas. Contáctenos.",
+            "users": "",
+            "announcements": "Anuncios ilimitados por unidad",
+            "documents": "Documentos ilimitados para su organización",
+            "description": "Incluye acceso API, webhooks y soluciones personalizadas.",
+            "features": ["Acceso API", "Webhooks", "Soluciones personalizadas"]
+        }
+    },
+    "stripe": {
+        "activated": "¡Gracias! Su pago se ha recibido; su suscripción estará activa en breve (actualice si es necesario).",
+        "not_configured": "El pago en línea aún no está configurado. Contacte con WinProx o inténtelo más tarde.",
+        "simulated_hint": "Stripe no está completamente configurado: su elección activa el periodo de suscripción según lo establecido aquí (sin pago real).",
+        "checkout_cancelled": "Pago cancelado. Puede elegir un plan de nuevo más tarde.",
+        "return_unconfirmed": "No hemos podido confirmar el resultado del pago aquí. Si acaba de pagar, su estado se actualizará en breve — actualice la página."
+    },
+    "stripe_notice_live": "El pago y la renovación se gestionan a través de Stripe. Enterprise sigue siendo mediante contacto personal.",
+    "stripe_notice_simulated": "Stripe no está completamente configurado: su elección activa el periodo de suscripción según lo establecido aquí (sin pago real). Enterprise siempre requiere contacto personal.",
+    "errors": {
+        "plan_required": "Elija un plan.",
+        "plan_invalid": "Este plan no está disponible.",
+        "admin_only": "Solo un administrador puede elegir una suscripción.",
+        "activation_disabled": "La autoactivación está desactivada. Contacte con WinProx."
+    }
+}

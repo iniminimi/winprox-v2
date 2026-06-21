@@ -20,7 +20,9 @@ it('falls back to locale cookie when session is empty', function () {
 });
 
 it('falls back to configured default for unsupported cookie values', function () {
-    $request = Request::create('/');
+    $request = Request::create('/', 'GET', [], [], [], [
+        'HTTP_ACCEPT_LANGUAGE' => 'xx-XX,xx;q=0.9',
+    ]);
     $request->cookies->set(ResolveAppLocale::COOKIE_NAME, 'xx');
 
     expect(ResolveAppLocale::resolve($request))->toBe(config('locales.default'));

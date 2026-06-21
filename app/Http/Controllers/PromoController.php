@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Models\PromoRecipient;
 use App\Support\Marketing\PromoRecipientSession;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -23,10 +24,7 @@ class PromoController extends Controller
             }
         }
 
-        $locale = app()->getLocale();
-        if (! in_array($locale, ['nl', 'en', 'fr', 'de'], true)) {
-            $locale = 'nl';
-        }
+        $locale = LocaleSupport::normalize(app()->getLocale());
 
         $recordVisit->handle(
             promoRecipientId: $recipient?->id,

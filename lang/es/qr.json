@@ -1,0 +1,72 @@
+{
+    "connect": {
+        "title": "Vincular código QR",
+        "subtitle": "Vincule esta pegatina QR a una unidad",
+        "qr_info": "Información del código QR",
+        "sticker_number": "Número de pegatina",
+        "status": "Estado",
+        "search_units": "Buscar unidades",
+        "search_placeholder": "Escriba para buscar...",
+        "no_units": "No se han encontrado unidades",
+        "link_button": "Vincular código QR",
+        "success_title": "Código QR vinculado",
+        "success_message": "El código QR :sticker se ha vinculado correctamente.",
+        "go_to_unit": "Ir a la unidad",
+        "linked_qr": "vinculado",
+        "category": "Categoría",
+        "team": "Equipo",
+        "gps_title": "Capturar ubicación",
+        "gps_hint": "Capture la ubicación GPS de esta unidad para que los trabajadores puedan encontrarla más tarde mediante navegación.",
+        "gps_loading": "Determinando ubicación...",
+        "gps_found": "¡Ubicación encontrada!",
+        "gps_save": "Guardar ubicación",
+        "gps_skip": "Omitir",
+        "gps_retry": "Reintentar",
+        "gps_error": "No se ha podido determinar la ubicación. Compruebe que el GPS está activado.",
+        "gps_not_supported": "El GPS no es compatible con este dispositivo.",
+        "gps_success_title": "Ubicación guardada",
+        "gps_success_message": "La ubicación GPS se ha capturado correctamente.",
+        "gps_validation_required": "Las coordenadas GPS son obligatorias.",
+        "gps_validation_numeric": "Las coordenadas GPS deben ser numéricas.",
+        "gps_validation_between": "Las coordenadas GPS están fuera del rango válido.",
+        "gps_waiting": "Esperando GPS...",
+        "gps_manual_button": "Introducir manualmente",
+        "gps_auto_button": "Detección automática",
+        "gps_or_enter_manual": "O introduzca las coordenadas manualmente:",
+        "gps_use_manual": "Usar estas coordenadas",
+        "gps_denied": "Acceso al GPS denegado. Compruebe la configuración de su navegador.",
+        "gps_unavailable": "Ubicación GPS no disponible.",
+        "gps_timeout": "Tiempo de espera del GPS agotado. Inténtelo de nuevo.",
+        "gps_invalid_coords": "Coordenadas no válidas. Introduzca números válidos.",
+        "gps_out_of_range": "Coordenadas fuera de rango. Latitud: -90 a 90, Longitud: -180 a 180.",
+        "gps_latitude_placeholder": "Latitud",
+        "gps_longitude_placeholder": "Longitud"
+    },
+    "unassigned_guest": {
+        "title": "(re)vincular una unidad",
+        "message": "Este código QR aún no está vinculado a una unidad. Inicie sesión para vincularlo.",
+        "sticker": "Número de pegatina",
+        "login": "Iniciar sesión"
+    },
+    "damaged": {
+        "title": "Código QR dañado",
+        "message": "Este código QR está marcado como dañado. Contacte con su administrador.",
+        "sticker": "Número de pegatina"
+    },
+    "inactive": {
+        "title": "Código QR inactivo",
+        "message": "Este código QR está desactivado y no se puede usar.",
+        "sticker": "Número de pegatina"
+    },
+    "unassigned_no_permission": {
+        "title": "Sin permiso",
+        "message": "No tiene permiso para vincular códigos QR.",
+        "sticker": "Número de pegatina",
+        "dashboard": "Ir al panel de control"
+    },
+    "error": {
+        "title": "Error",
+        "message": "Se ha producido un error al procesar este código QR.",
+        "sticker": "Número de pegatina"
+    }
+}

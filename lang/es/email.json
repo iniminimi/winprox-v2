@@ -1,0 +1,15 @@
+{
+    "unsubscribed": {
+        "title": "Baja de suscripción",
+        "heading": "Baja realizada correctamente",
+        "message": ":email ya no recibe correos de WinProx.",
+        "resubscribe_link": "Volver a suscribirse",
+        "back_home": "Volver al inicio"
+    },
+    "resubscribed": {
+        "title": "Suscripción restaurada",
+        "heading": "Suscripción restaurada correctamente",
+        "message": ":email vuelve a recibir correos de WinProx.",
+        "back_home": "Volver al inicio"
+    }
+}

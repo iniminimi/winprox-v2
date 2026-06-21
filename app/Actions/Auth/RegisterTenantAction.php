@@ -5,6 +5,7 @@ namespace App\Actions\Auth;
 use App\Actions\Billing\StartTenantTrialAction;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -19,9 +20,7 @@ class RegisterTenantAction
      */
     public function handle(array $data): User
     {
-        $locale = in_array($data['locale'] ?? '', ['nl', 'en', 'fr', 'de'], true)
-            ? $data['locale']
-            : 'nl';
+        $locale = LocaleSupport::normalize($data['locale'] ?? null);
 
         $countryCode = filled($data['country_code'] ?? null)
             ? strtoupper((string) $data['country_code'])

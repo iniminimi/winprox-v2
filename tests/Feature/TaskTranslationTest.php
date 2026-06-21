@@ -44,9 +44,10 @@ it('seed pending vertaalrijen na aanmaken taak met omschrijving', function () {
     $task = app(CreateTaskAction::class)->handle($issue, $team->id, description: 'Vervang pakking');
 
     $rows = TaskTranslation::query()->where('task_id', $task->id)->get();
+    $expectedLocales = collect(expectedTargetLocales('nl'))->sort()->values()->all();
 
-    expect($rows)->toHaveCount(3)
-        ->and($rows->pluck('locale')->sort()->values()->all())->toBe(['de', 'en', 'fr'])
+    expect($rows)->toHaveCount(count($expectedLocales))
+        ->and($rows->pluck('locale')->sort()->values()->all())->toBe($expectedLocales)
         ->and($rows->every(fn ($row) => $row->status === TaskTranslationStatus::Pending))->toBeTrue();
 });
 
@@ -100,7 +101,7 @@ it('exporteert en importeert pending taakvertalingen', function () {
 
     $exportItems = app(ExportPendingTaskTranslationsAction::class)->handle();
 
-    expect($exportItems)->toHaveCount(3)
+    expect($exportItems)->toHaveCount(count(expectedTargetLocales('nl')))
         ->and($exportItems[0])->toHaveKeys(['task_id', 'source_text', 'locale']);
 
     $imported = app(ImportTaskTranslationsAction::class)->handle([

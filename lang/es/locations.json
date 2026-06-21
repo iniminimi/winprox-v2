@@ -1,0 +1,314 @@
+{
+    "title": "Ubicaciones y unidades",
+    "subtitle": "Gestione sus ubicaciones y unidades (máquinas, instalaciones, zonas).",
+    "show_subtitle": "Resumen de la ubicación y sus unidades.",
+    "default_name": "Ubicación",
+    "add": "+ Añadir nueva ubicación",
+    "import": "Importación CSV",
+    "import_title": "Importar unidades vía CSV",
+    "import_hint": "Suba un archivo CSV (véase el ejemplo abajo). Las siguientes columnas son obligatorias: location_name, unit_name. El archivo debe tener exactamente estos encabezados.",
+    "import_file_label": "Archivo CSV",
+    "import_submit": "Importar",
+    "import_submit_loading": "Importando...",
+    "import_sample": {
+        "download_sample_csv": "Descargar CSV de ejemplo",
+        "sample_location_name": "Depósito principal Deinze",
+        "sample_street": "Industrielaan",
+        "sample_house_number": "12",
+        "sample_postal_code": "9800",
+        "sample_city": "Deinze",
+        "sample_country_code": "BE",
+        "sample_notes": "Entrada por la puerta B",
+        "sample_unit_name": "Excavadora Takeuchi TB210R",
+        "sample_description": "Comprobar contador horario en la incidencia",
+        "sample_category_name": "Movimiento de tierras"
+    },
+    "create_title": "Añadir nueva ubicación",
+    "edit_title": "Editar ubicación",
+    "save": "Guardar ubicación",
+    "edit": "Editar ubicación",
+    "deactivate": "Desactivar",
+    "activate": "Activar",
+    "confirm_deactivate": "¿Está seguro de que desea desactivar esta ubicación?",
+    "inactive": "Inactiva",
+    "empty": "Aún no hay ubicaciones. Cree una con el botón «+ Añadir nueva ubicación».",
+    "empty_inactive": "No hay ubicaciones activas. Marque «Mostrar también ubicaciones inactivas» para ver las desactivadas.",
+    "no_units": "Aún no hay unidades en esta ubicación.",
+    "search_placeholder": "Buscar por ubicación, ciudad, código postal o calle",
+    "search_hint": "Haga clic en una ubicación para añadir unidades.",
+    "show_inactive": "Mostrar también ubicaciones inactivas",
+    "onboarding": {
+        "title_categories": "Empiece creando categorías",
+        "title_locations": "Empiece creando ubicaciones y unidades"
+    },
+    "unit_count": ":count unidades",
+    "units_total": ":count en total",
+    "details_title": "Detalles de la ubicación",
+    "units_title": "Unidades",
+    "units_subtitle": "Gestione las unidades vinculadas a esta ubicación.",
+    "units_add": "+ Añadir unidad",
+    "bulk_add": "Añadir unidades en bloque",
+    "location_qr": "QR de ubicación (general)",
+    "location_qr_subtitle": "QR general de la ubicación para informes sin unidad.",
+    "unit_qr": "QR de unidad",
+    "unit_qr_subtitle": "Código QR de esta unidad — enlaza al portal de informes.",
+    "qr_pack_download": "Descargar hoja de pegatinas QR",
+    "nav_label": "Navegación de ubicaciones",
+    "prev": "Ubicación anterior",
+    "next": "Ubicación siguiente",
+    "form": {
+        "identity_hint": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad."
+    },
+    "fields": {
+        "name": "Nombre de la ubicación",
+        "name_optional": "opcional",
+        "name_placeholder": "p. ej. Almacén sur",
+        "street": "Calle",
+        "house_number": "Número",
+        "postal_code": "Código postal",
+        "city": "Ciudad",
+        "country_code": "Código de país ISO",
+        "notes": "Notas internas"
+    },
+    "flash": {
+        "created": "Ubicación creada.",
+        "updated": "Ubicación actualizada.",
+        "deactivated": "Ubicación desactivada.",
+        "activated": "Ubicación activada.",
+        "imported": ":count unidades importadas."
+    },
+    "units": {
+        "create_title": "Añadir unidad",
+        "edit_title": "Editar unidad",
+        "open_issue": "Incidencia abierta",
+        "meta_team": "Equipo :team",
+        "meta_category": "Categoría :category",
+        "meta_qr_linked": "QR vinculado : :sticker",
+        "no_team": "Sin equipo (asignar por unidad más tarde)",
+        "no_category": "Sin categoría",
+        "fields": {
+            "name": "Nombre de la unidad",
+            "description": "Descripción",
+            "category": "Categoría",
+            "public_reports_enabled": "Los visitantes pueden enviar un informe mediante el portal QR"
+        },
+        "translation_preview": "Traducción (portal)",
+        "edit": {
+            "photos_label": "Fotos de la vinculación QR",
+            "photos_hint": "Máximo 4 fotos por unidad.",
+            "delete_photo_confirm": "¿Eliminar esta foto?"
+        },
+        "gps_history": {
+            "open": "Abrir historial GPS",
+            "title": "Historial GPS — :unit",
+            "reported_at": "Registrado el :datetime",
+            "worker": "Por :name",
+            "open_maps": "Abrir en Maps",
+            "empty": "Aún no se han registrado ubicaciones GPS.",
+            "location_named": ":name (:country)",
+            "location_country_only": ":country"
+        },
+        "filters": {
+            "category": "Filtrar por categoría",
+            "all_categories": "Todas las categorías",
+            "search": "Buscar",
+            "search_placeholder": "Buscar por nombre de unidad"
+        },
+        "errors": {
+            "name_required": "Introduzca un nombre de unidad.",
+            "duplicate_name": "Este nombre de unidad ya existe en esta ubicación.",
+            "invalid_category": "Elija una categoría válida de su inquilino.",
+            "translation_requires_active": "Las traducciones solo están disponibles para unidades activas.",
+            "translation_import_missing": "Unidad no encontrada o no activa.",
+            "translation_import_name_too_long": "El nombre traducido de la unidad es demasiado largo."
+        },
+        "flash": {
+            "created": "Unidad creada.",
+            "updated": "Unidad actualizada.",
+            "deactivated": "Unidad desactivada.",
+            "deleted": "Unidad eliminada."
+        },
+        "delete_blocked_issues": "Esta unidad tiene incidencias y no se puede eliminar.",
+        "delete_blocked_tasks": "Esta unidad tiene tareas y no se puede eliminar.",
+        "delete_blocked": "Esta unidad no se puede eliminar."
+    },
+    "bulk": {
+        "title": "Añadir unidades en bloque",
+        "floors": "Número de series",
+        "rooms_per_floor": "Unidades por serie",
+        "rooms_per_floor_hint": "máx. 99",
+        "scheme": "Numeración",
+        "scheme_compact": "01, 11, 21… (dos dígitos, máx. 9 por serie)",
+        "scheme_block": "001, 101, 201… (tres dígitos)",
+        "prefix": "Prefijo opcional",
+        "preview": "Vista previa",
+        "submit": "Crear todas las unidades",
+        "created": ":count unidades creadas.",
+        "recent_title": "Creación en bloque reciente",
+        "recent_hint": "La eliminación en bloque solo quita unidades sin incidencias ni tareas.",
+        "batch_count": ":count unidades",
+        "delete_batch": "Eliminar bloque (:count)",
+        "confirm_delete": "¿Eliminar :count unidad(es) sin incidencias ni tareas?",
+        "batch_deleted": ":deleted unidad(es) eliminada(s). :skipped unidad(es) con incidencias o tareas se han conservado.",
+        "batch_nothing_deletable": "Ninguna unidad de este bloque se puede eliminar.",
+        "errors": {
+            "invalid": "Configuración de bloque no válida.",
+            "scheme_rooms": "Máximo 9 unidades por serie con este esquema de numeración.",
+            "scheme_floors": "Máximo 10 series con este esquema de numeración.",
+            "scheme_range": "La numeración supera el rango permitido.",
+            "names_exist": "Todos los nombres generados ya existen en esta ubicación.",
+            "too_many": "Demasiadas unidades en un solo bloque (máx. 500)."
+        }
+    },
+    "import_history": {
+        "title": "Importaciones CSV recientes",
+        "hint": "Deshacer importación elimina unidades sin incidencias ni tareas y limpia ubicaciones y categorías vacías creadas por la importación.",
+        "unknown_file": "Archivo desconocido",
+        "unit_count": ":count unidades",
+        "confirm_delete": "¿Eliminar :count unidad(es) sin incidencias ni tareas?",
+        "delete_button": "Deshacer importación (:count)",
+        "has_issues": "Tiene incidencias",
+        "deleted": "Eliminada",
+        "nothing_deletable": "Ninguna unidad de esta importación se puede eliminar.",
+        "partially_deleted": ":deleted unidad(es) eliminada(s). :preserved unidad(es) con incidencias se han conservado.",
+        "fully_deleted": ":count unidad(es) eliminada(s).",
+        "fully_deleted_with_cleanup": ":count unidad(es), :locations ubicación(es) y :categories categoría(s) eliminada(s).",
+        "partially_deleted_with_cleanup": ":deleted unidad(es) eliminada(s). :preserved unidad(es) con incidencias se han conservado. :locations ubicación(es) y :categories categoría(s) limpiadas.",
+        "delete_failed": "Se ha producido un error al eliminar."
+    },
+    "categories": {
+        "title": "Categorías",
+        "edit_title": "Editar categoría",
+        "add_title": "Añadir categoría",
+        "click_to_manage": "Haga clic aquí para gestionar categorías",
+        "add": "Añadir categoría",
+        "empty": "Aún no hay categorías.",
+        "confirm_delete": "¿Eliminar esta categoría? Las unidades vinculadas perderán su categoría.",
+        "fields": {
+            "name": "Nombre de la categoría",
+            "teams": "Equipos",
+            "allow_gps_location": "Permitir ubicación GPS"
+        },
+        "allow_gps_location_hint": "Permitir que la ubicación GPS de las unidades de esta categoría se envíe mediante el portal.",
+        "teams_subtitle": "Seleccione los equipos responsables de esta categoría.",
+        "teams_empty": "No hay equipos disponibles.",
+        "errors": {
+            "name_required": "Introduzca un nombre de categoría.",
+            "duplicate_name": "Este nombre de categoría ya existe.",
+            "teams_required": "Seleccione al menos un equipo."
+        },
+        "flash": {
+            "created": "Categoría creada.",
+            "updated": "Categoría actualizada.",
+            "deleted": "Categoría eliminada."
+        }
+    },
+    "errors": {
+        "name_or_address_required": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad.",
+        "country_code_invalid": "Introduzca un código de país ISO válido de 2 letras.",
+        "unit_limit": "Ha alcanzado el límite de unidades de su plan. Actualice su suscripción para añadir más unidades."
+    },
+    "qr_pack": {
+        "unavailable": "La exportación QR no está disponible en este servidor.",
+        "no_units": "Aún no hay unidades para generar una hoja de pegatinas QR.",
+        "invalid_count": "El número de códigos QR debe estar entre 1 y 100.",
+        "modal_title": "Descargar hoja de pegatinas QR",
+        "modal_subtitle": "Elija el formato de etiqueta que coincida con su hoja de pegatinas.",
+        "generating": "Generando hoja de pegatinas…",
+        "download_failed": "No se ha podido generar la hoja de pegatinas QR.",
+        "generate_dynamic": "Generar códigos QR dinámicos (aún no vinculados a unidades)",
+        "dynamic_count_label": "Número de códigos QR",
+        "dynamic_count_help": "Los códigos QR dinámicos se pueden vincular a unidades más tarde mediante la página de vinculación QR. Máximo 100.",
+        "formats": {
+            "avery_55x55_s": {
+                "title": "Avery 55×55-S",
+                "description": "15 etiquetas por hoja (55 × 55 mm) — Avery L7159 / 283."
+            },
+            "herma_70x50": {
+                "title": "HERMA 70×50",
+                "description": "15 etiquetas por hoja (70 × 50 mm) — HERMA 8."
+            },
+            "avery_62x89_r": {
+                "title": "Avery 62×89-R",
+                "description": "9 etiquetas por hoja (62 × 89 mm) — Avery L7108REV."
+            }
+        }
+    },
+    "documents": {
+        "title": "Documentos",
+        "subtitle": "Documentos para el portal de informes en esta ubicación y sus unidades.",
+        "add": "+ Añadir documento",
+        "edit": "Editar documento",
+        "empty": "Aún no hay documentos.",
+        "search_placeholder": "Buscar documentos…",
+        "modal_subtitle": "Suba un archivo y opcionalmente vincúlelo a una unidad.",
+        "description": "Descripción",
+        "file": "Archivo",
+        "link_unit": "Vincular a unidad (opcional)",
+        "for_location": "Toda la ubicación",
+        "unit_label": "Unidad",
+        "open": "Abrir",
+        "public": "Visible en el portal",
+        "private": "No visible",
+        "requires_verification": "Verificación requerida",
+        "active": "Activo",
+        "activate": "Activar",
+        "deactivate": "Desactivar",
+        "no_description": "Sin descripción",
+        "default_title": "Documento",
+        "allowed_types_hint": "Permitidos: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG, PNG (máx. 10 MB)",
+        "replace_file": "Reemplazar archivo (opcional)",
+        "current_file": "Archivo actual: :name",
+        "current_file_hint": "Déjelo vacío para mantener el archivo actual.",
+        "confirm_delete": "¿Eliminar permanentemente este documento?",
+        "translation_preview": "Traducción (portal)",
+        "errors": {
+            "invalid_unit": "Elija una unidad válida en esta ubicación.",
+            "file_required": "Seleccione un archivo para subir.",
+            "file_mimes": "Elija un tipo de archivo permitido: PDF, DOC, DOCX, XLS, XLSX, JPG, JPEG o PNG.",
+            "file_max": "El archivo es demasiado grande (máx. 10 MB).",
+            "org_limit": "Su organización ha alcanzado el número máximo de documentos. Elimine un documento o actualice su plan.",
+            "unit_limit": "Esta unidad ya tiene el número máximo de documentos. Elija otra unidad o elimine un documento existente primero.",
+            "translation_requires_active": "Las traducciones solo están disponibles para documentos activos.",
+            "translation_import_missing": "Documento no encontrado o no activo."
+        },
+        "flash": {
+            "created": "Documento guardado.",
+            "updated": "Documento actualizado.",
+            "deleted": "Documento eliminado.",
+            "upload_failed": "No se ha podido guardar el archivo.",
+            "metadata_partial": "Documento guardado; los metadatos del archivo estaban incompletos."
+        }
+    },
+    "announcements": {
+        "title": "Anuncios",
+        "subtitle": "Anuncios para el portal de informes en esta ubicación y sus unidades.",
+        "add": "+ Añadir anuncio",
+        "edit": "Editar anuncio",
+        "empty": "Aún no hay anuncios.",
+        "modal_subtitle": "Escriba un mensaje y opcionalmente vincúlelo a una unidad.",
+        "description": "Mensaje",
+        "link_unit": "Vincular a unidad (opcional)",
+        "for_location": "Toda la ubicación",
+        "unit_label": "Unidad",
+        "expires_at": "Caduca el (opcional)",
+        "expires_on": "Caduca :date",
+        "active": "Activo",
+        "activate": "Activar",
+        "deactivate": "Desactivar",
+        "default_title": "Anuncio",
+        "confirm_delete": "¿Eliminar permanentemente este anuncio?",
+        "translation_preview": "Traducción (portal)",
+        "errors": {
+            "invalid_unit": "Elija una unidad válida en esta ubicación.",
+            "unit_limit": "Esta unidad ya tiene el número máximo de anuncios activos. Desactive o elimine uno primero, o elija otra unidad.",
+            "translation_requires_active": "Las traducciones solo están disponibles para anuncios activos.",
+            "translation_import_missing": "Anuncio no encontrado o no activo."
+        },
+        "flash": {
+            "created": "Anuncio guardado.",
+            "updated": "Anuncio actualizado.",
+            "deleted": "Anuncio eliminado."
+        }
+    }
+}

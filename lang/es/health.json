@@ -1,0 +1,34 @@
+{
+    "title": "Estado de la configuración",
+    "subtitle": "Resumen de ubicaciones, unidades y categorías incompletas.",
+    "widget": {
+        "kicker": "Configuración",
+        "title": "Comprobación de estado",
+        "issues": "{0} Sin acciones pendientes|{1} :count acción pendiente|[2,*] :count acciones pendientes"
+    },
+    "donut_aria": "Configuración :percent por ciento completa",
+    "summary": {
+        "title": "Completitud",
+        "complete": ":complete de :total registros correctamente configurados",
+        "all_ok": "Todas las ubicaciones, unidades y categorías activas están correctamente configuradas.",
+        "issues": "{0} Sin acciones pendientes|{1} :count acción pendiente|[2,*] :count acciones pendientes"
+    },
+    "list": {
+        "title": "Acciones pendientes",
+        "empty_filter": "No hay acciones pendientes para este filtro."
+    },
+    "filter": {
+        "label": "Filtrar por tipo",
+        "all": "Todos los tipos"
+    },
+    "fix": "Corregir",
+    "no_location": "Sin ubicación",
+    "unnamed_location": "Ubicación sin nombre",
+    "issue": {
+        "unit_photo": "Unidad sin foto",
+        "category_team": "Categoría sin equipo",
+        "location_address": "Ubicación sin dirección",
+        "category_team_hint": "Vincule al menos un equipo",
+        "location_address_hint": "Introduzca calle, código postal y ciudad"
+    }
+}

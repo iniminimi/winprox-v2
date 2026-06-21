@@ -9,7 +9,8 @@ beforeEach(function () {
 });
 
 it('renders 404 in Dutch by default', function () {
-    $response = $this->get('/wp-nonexistent-route-for-locale-test');
+    $response = $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get('/wp-nonexistent-route-for-locale-test');
 
     $response->assertNotFound();
     $response->assertSee('Pagina niet gevonden', false);

@@ -1,0 +1,86 @@
+{
+    "briefing": "Imprimir briefing",
+    "priority": {
+        "prio_1": "Prio 1",
+        "prio_2": "Prio 2",
+        "prio_3": "Prio 3",
+        "prio_4": "Prio 4"
+    },
+    "list": {
+        "title": "Tareas",
+        "subtitle": "Todas las tareas por equipo y estado",
+        "group_count": "{0} sin tareas|{1} :count tarea|[2,*] :count tareas",
+        "empty": "Aún no hay tareas.",
+        "empty_no_issues": "Aún no hay incidencias.",
+        "manage_issues": "Gestionar incidencias",
+        "empty_filtered": "Ninguna tarea coincide con estos filtros."
+    },
+    "filter": {
+        "status": "Filtrar por estado",
+        "status_label": "Estado",
+        "status_all": "Todos los estados",
+        "priority": "Filtrar por prioridad",
+        "priority_label": "Prioridad",
+        "priority_all": "Todas las prioridades",
+        "team": "Filtrar por equipo",
+        "team_label": "Equipo",
+        "team_all": "Todos los equipos",
+        "search": "Buscar",
+        "search_placeholder": "Buscar por nota, incidencia, ubicación, dirección, código postal, ciudad o unidad",
+        "recurring": "Tarea recurrente",
+        "recurring_only": "Solo ciclos recurrentes",
+        "apply": "¡IR!",
+        "reset": "Borrar filtros",
+        "hint": "Haga clic en una tarea para ver y editar los detalles."
+    },
+    "card": {
+        "kind_nr": "Tarea n.º :nr",
+        "description_label": "Descripción: ",
+        "line_team": "Tarea, equipo: :team",
+        "meta_team": "Equipo :team",
+        "meta_context": "Incidencia n.º :issue_nr",
+        "nr": "N.º :nr",
+        "issue_nr": "Incidencia n.º :nr",
+        "no_team": "Sin equipo",
+        "scheduled": "Programada :date",
+        "recurring": "Recurrente"
+    },
+    "show": {
+        "title": "Tarea",
+        "overview_title": "Resumen de la tarea",
+        "nr": "N.º :nr",
+        "back": "Volver a tareas",
+        "nav_label": "Navegación de tareas",
+        "issue_context": "Incidencia",
+        "view_issue": "Incidencia completa",
+        "team_section": "Equipo",
+        "team_hint": "Asigne esta tarea a un equipo operativo o cambie el equipo.",
+        "team_current": "Equipo actual: :name",
+        "team_select_label": "Elegir equipo",
+        "team_select_placeholder": "Elija un equipo",
+        "team_save": "Guardar equipo",
+        "priority": "Prioridad",
+        "priority_change": "Cambiar prioridad",
+        "priority_save": "Guardar prioridad",
+        "task": "Detalles de la tarea",
+        "task_line": "Tarea, equipo: :team",
+        "due": "Vence :date",
+        "change_status": "Cambiar estado",
+        "reason": "Motivo (obligatorio al cerrar sin ejecución)",
+        "confirm_status": "Aplicar estado",
+        "pause": "Nota de pausa",
+        "pause_submit": "Guardar nota de pausa",
+        "updates": "Actualizaciones de la incidencia",
+        "errors": {
+            "team_required": "Elija un equipo.",
+            "issue_not_approved": "La incidencia debe estar aprobada antes de poder editar las tareas."
+        }
+    },
+    "errors": {
+        "invalid_transition": "Este cambio de estado no está permitido.",
+        "reason_required": "Se requiere un motivo al cerrar sin ejecución.",
+        "pause_only_in_progress": "Las notas de pausa solo están permitidas mientras está en curso.",
+        "translation_requires_description": "Las traducciones solo están disponibles cuando la tarea tiene una descripción.",
+        "translation_import_missing": "Tarea no encontrada o sin descripción."
+    }
+}

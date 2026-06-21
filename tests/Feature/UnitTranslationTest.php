@@ -39,9 +39,10 @@ it('seed pending vertaalrijen na aanmaken actieve unit', function () {
     ], $tenant->id, $user->id);
 
     $rows = UnitTranslation::query()->where('unit_id', $unit->id)->get();
+    $expectedLocales = collect(expectedTargetLocales('nl'))->sort()->values()->all();
 
-    expect($rows)->toHaveCount(3)
-        ->and($rows->pluck('locale')->sort()->values()->all())->toBe(['de', 'en', 'fr'])
+    expect($rows)->toHaveCount(count($expectedLocales))
+        ->and($rows->pluck('locale')->sort()->values()->all())->toBe($expectedLocales)
         ->and($rows->every(fn ($row) => $row->status === UnitTranslationStatus::Pending))->toBeTrue();
 });
 
@@ -63,7 +64,7 @@ it('exporteert en importeert pending unitvertalingen', function () {
 
     $exportItems = app(\App\Actions\Communication\ExportPendingUnitTranslationsAction::class)->handle();
 
-    expect($exportItems)->toHaveCount(3)
+    expect($exportItems)->toHaveCount(count(expectedTargetLocales('nl')))
         ->and($exportItems[0])->toHaveKeys(['unit_id', 'source_name', 'source_description', 'locale']);
 
     $imported = app(ImportUnitTranslationsAction::class)->handle([

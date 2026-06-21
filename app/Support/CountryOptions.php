@@ -39,6 +39,6 @@ final class CountryOptions
 
     private static function normalizeLocale(string $locale): string
     {
-        return in_array($locale, ['nl', 'en', 'fr', 'de'], true) ? $locale : 'en';
+        return in_array($locale, config('locales.supported', []), true) ? $locale : 'en';
     }
 }

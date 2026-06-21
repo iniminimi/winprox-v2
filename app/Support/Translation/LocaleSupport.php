@@ -46,6 +46,7 @@ final class LocaleSupport
             'en' => 'English',
             'fr' => 'French',
             'de' => 'German',
+            'es' => 'Spanish',
             default => $locale,
         };
     }

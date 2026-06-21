@@ -1,0 +1,39 @@
+{
+    "locations": {
+        "title": "Ubicaciones y unidades",
+        "subtitle": "Sus ubicaciones y las unidades (activos/espacios) que contienen.",
+        "empty": "Aún no hay ubicaciones.",
+        "no_units": "Aún no hay unidades en esta ubicación.",
+        "unit_count": ":count unidades"
+    },
+    "tasks": {
+        "title": "Tareas",
+        "subtitle": "Resumen de todas las tareas por equipo.",
+        "soon": "Esta sección estará disponible próximamente."
+    },
+    "calendar": {
+        "title": "Calendario",
+        "subtitle": "Planifique tareas y mantenimiento a lo largo del tiempo.",
+        "soon": "Esta sección estará disponible próximamente."
+    },
+    "subscription": {
+        "title": "Suscripción",
+        "subtitle": "Gestione su suscripción y periodo de prueba.",
+        "soon": "Esta sección estará disponible próximamente."
+    },
+    "faq": {
+        "title": "FAQ y base de conocimiento",
+        "subtitle": "Respuestas a preguntas frecuentes y guías.",
+        "soon": "Esta sección estará disponible próximamente."
+    },
+    "legal": {
+        "title": "Documentos legales",
+        "subtitle": "Términos, privacidad y otros documentos.",
+        "soon": "Esta sección estará disponible próximamente."
+    },
+    "contact": {
+        "title": "Contacto",
+        "subtitle": "Póngase en contacto con el equipo de WinProx.",
+        "soon": "Esta sección estará disponible próximamente."
+    }
+}

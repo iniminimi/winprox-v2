@@ -117,7 +117,7 @@ npm run check:locales
 npm run check:locales:parity
 ```
 
-Alle vier talen (`nl`, `en`, `fr`, `de`) moeten dezelfde sleutels hebben.
+Alle talen (`nl`, `en`, `fr`, `de`, `es`) moeten dezelfde sleutels hebben.
 
 ## V1 vs V2
 

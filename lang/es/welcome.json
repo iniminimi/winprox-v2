@@ -1,0 +1,169 @@
+{
+    "meta_title": "WinProx — convierta informes en tareas completadas",
+    "social": {
+        "og_title": "WinProx — convierta informes en tareas completadas",
+        "og_description": "Gestión de instalaciones para incidencias, tareas y ejecución en campo. Del informe QR al trabajo completado."
+    },
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "back_home": "Volver al inicio",
+    "nav": {
+        "how": "Cómo funciona",
+        "reporting": "Informes sencillos",
+        "execution": "Trabajo de campo",
+        "sectors": "Sectores"
+    },
+    "hero": {
+        "badge": "Convierta informes en tareas completadas",
+        "tagline_before": "El software empresarial gestiona los datos.",
+        "tagline_highlight": "WinProx gestiona la ejecución.",
+        "lead_intro": "Recibir informes es fácil. Resolverlos eficazmente es el reto.",
+        "lead_body": "WinProx garantiza que los informes lleguen a las personas adecuadas, se conviertan en asignaciones claras y se sigan hasta que la tarea esté completamente finalizada.",
+        "cta_start": "Empezar gratis",
+        "flow_steps": [
+            {"step": "Paso 1", "title": "Informe"},
+            {"step": "Paso 2", "title": "Tarea"},
+            {"step": "Paso 3", "title": "Ejecución"},
+            {"step": "Paso 4", "title": "Finalización"}
+        ]
+    },
+    "how": {
+        "eyebrow": "Cómo funciona WinProx",
+        "title": "Asignaciones claras cada día mediante un briefing.",
+        "lead": "WinProx recopila informes y los convierte automáticamente en asignaciones claras para sus equipos.",
+        "without": [
+            "Sin correos perdidos",
+            "Sin llamadas telefónicas",
+            "Sin archivos Excel",
+            "Sin confusiones"
+        ],
+        "panel_title": "Cada empleado sabe exactamente:",
+        "checklist": [
+            "Qué hay que hacer",
+            "Dónde debe hacerse",
+            "Qué prioridad tiene",
+            "Qué fotos o información hay disponibles",
+            "Cuándo debe estar terminado"
+        ]
+    },
+    "reporting": {
+        "eyebrow": "Informar es sencillo",
+        "title": "Cualquiera puede enviar un informe.",
+        "who": ["Ciudadanos", "Clientes", "Visitantes", "Empleados"],
+        "via_before": "Con un ",
+        "via_qr": "código QR",
+        "via_after": " pueden informar de un problema al instante. Sin cuentas ni descargas.",
+        "no_app": "No se requiere aplicación",
+        "steps": [
+            {"title": "Añadir fotos", "body": "Muestre la situación de inmediato."},
+            {"title": "Descripción", "body": "Introduzca los detalles necesarios."},
+            {"title": "Enviar", "body": "¡Listo! Directamente al sistema."}
+        ]
+    },
+    "execution": {
+        "eyebrow": "Ejecución en el campo",
+        "title": "Diseñado para quienes hacen el trabajo.",
+        "contrast_before": "La mayoría del software está hecho para gestores. ",
+        "contrast_highlight": "WinProx está hecho para equipos de campo.",
+        "team_portal_title": "El portal de equipo",
+        "team_portal_lead": "A través del portal, el personal recibe sus asignaciones. En el lugar pueden:",
+        "actions": [
+            {"label": "Escanear códigos QR", "icon": "document"},
+            {"label": "Abrir tareas", "icon": "tasks"},
+            {"label": "Añadir fotos", "icon": "document"},
+            {"label": "Registrar comentarios", "icon": "chat-bubble"},
+            {"label": "Firmar el trabajo", "icon": "tasks"},
+            {"label": "Cerrar tareas", "icon": "x-mark"}
+        ],
+        "auth_notes": ["Sin nombre de usuario", "Sin contraseña", "Simplemente a trabajar"]
+    },
+    "briefing": {
+        "eyebrow": "Briefing diario",
+        "title": "Su plan de trabajo digital.",
+        "intro": "Cada mañana, los equipos ven todo claramente en una pantalla:",
+        "mock": [
+            {"label": "Vence hoy", "badge": "5 tareas"},
+            {"label": "Nuevos informes", "badge": "3 nuevos"},
+            {"label": "Intervenciones programadas", "badge": "2 planificadas"},
+            {"label": "Tareas prioritarias", "badge": "ALTA", "priority": true},
+            {"label": "Asignaciones vencidas", "badge": "0"}
+        ]
+    },
+    "qr_history": {
+        "concept": "Concepto único",
+        "title": "Un código QR, historial completo",
+        "body": "Cada ubicación, sala, máquina o instalación recibe un código QR único. Reutilizar el mismo código QR construye automáticamente un historial transparente.",
+        "tags": ["Informes", "Tareas", "Intervenciones", "Fotos", "Soluciones"],
+        "availability": ["Siempre disponible", "Siempre accesible"]
+    },
+    "languages": {
+        "title": "WinProx habla su idioma",
+        "body": "Para ofrecer a todos una experiencia fluida, WinProx traduce automáticamente con IA incidencias, tareas, anuncios y comunicación a cuatro idiomas. Así, la información importante llega a visitantes, personal y equipos de campo en un idioma que entienden."
+    },
+    "video": {
+        "title": "Vídeo",
+        "placeholder": "Vídeo próximamente.",
+        "widget": {
+            "title": "¿Comparar WinProx?",
+            "body": "Vea de un vistazo cómo se compara WinProx con una plataforma tradicional.",
+            "link": "Ver la comparación"
+        }
+    },
+    "sectors": {
+        "eyebrow": "Flexibilidad",
+        "title": "Funciona en cualquier organización",
+        "lead": "Ya sean servicios públicos, equipos de instalaciones o entornos de producción.",
+        "items": [
+            {"name": "Municipios", "body": "Seguimiento de informes ciudadanos.", "icon": "locations"},
+            {"name": "Hospitales", "body": "Procesamiento de informes técnicos.", "icon": "issues"},
+            {"name": "Hoteles", "body": "Resolución más rápida de incidencias.", "icon": "calendar"},
+            {"name": "Inmobiliaria", "body": "Gestión de edificios e instalaciones.", "icon": "units"},
+            {"name": "Fabricación", "body": "Seguimiento de averías y mantenimiento.", "icon": "tasks"},
+            {"name": "Equipos de instalaciones", "body": "Organización de las operaciones diarias.", "icon": "team"}
+        ]
+    },
+    "integrations": {
+        "eyebrow": "Integraciones",
+        "title": "Funciona con su software existente.",
+        "body_before": "WinProx no sustituye su ERP, CRM o CAFM. ",
+        "body_highlight": "WinProx los complementa.",
+        "body_after": " Mediante APIs y webhooks, WinProx se conecta fácilmente a sistemas existentes.",
+        "compare_other_label": "Software existente",
+        "compare_other_text": "Gestiona los datos",
+        "compare_winprox_label": "WinProx",
+        "compare_winprox_text": "Gestiona la ejecución"
+    },
+    "practical": {
+        "eyebrow": "Funciones y opciones",
+        "title": "Práctico y flexible",
+        "subtitle": "Incluido por defecto en nuestra potente plataforma.",
+        "items": [
+            "Códigos QR con logotipo de empresa",
+            "Varios diseños de QR",
+            "Diseños oscuros para smartphones",
+            "Compatibilidad con etiquetas Avery",
+            "Compatibilidad con etiquetas Herma",
+            "Plantillas Word",
+            "Interfaz multilingüe",
+            "Calendario y planificación",
+            "Equipos y roles",
+            "API y webhooks"
+        ]
+    },
+    "screenshots": {
+        "title": "Capturas de pantalla",
+        "desktop": "Captura de escritorio próximamente.",
+        "mobile": "Captura móvil próximamente."
+    },
+    "closing": {
+        "title_before": "Deje de gestionar informes.",
+        "title_highlight": "Empiece a resolver problemas.",
+        "body": "WinProx reúne informes, equipos y ejecución en una plataforma fácil de usar.",
+        "quote": "El software empresarial gestiona los datos. WinProx gestiona la ejecución.",
+        "cta_start": "Empezar gratis"
+    },
+    "footer": {
+        "contact": "Contacto",
+        "rights": "Todos los derechos reservados."
+    }
+}

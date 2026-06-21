@@ -1,0 +1,21 @@
+{
+    "title": "Calendario",
+    "subtitle": "Tareas e incidencias programadas a lo largo del tiempo.",
+    "briefing": "Imprimir briefing",
+    "today": "Hoy",
+    "all_locations": "Todas las ubicaciones",
+    "empty_day": "Nada programado.",
+    "view": {
+        "month": "Mes",
+        "week": "Semana",
+        "day": "Día"
+    },
+    "type": {
+        "tasks": "Tareas",
+        "issues": "Incidencias"
+    },
+    "period": {
+        "week": "Semana :start – :end"
+    },
+    "more": "más"
+}

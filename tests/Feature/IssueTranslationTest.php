@@ -49,8 +49,9 @@ it('seed pending vertaalrijen na goedkeuring', function () {
     app(ApproveIssueAction::class)->handle($issue, $user);
 
     $rows = IssueTranslation::query()->where('issue_id', $issue->id)->get();
-    expect($rows)->toHaveCount(3)
-        ->and($rows->pluck('locale')->sort()->values()->all())->toBe(['de', 'en', 'fr'])
+    $expectedLocales = collect(expectedTargetLocales('nl'))->sort()->values()->all();
+    expect($rows)->toHaveCount(count($expectedLocales))
+        ->and($rows->pluck('locale')->sort()->values()->all())->toBe($expectedLocales)
         ->and($rows->every(fn ($row) => $row->status === IssueTranslationStatus::Pending))->toBeTrue();
 });
 
@@ -104,7 +105,7 @@ it('exporteert en importeert pending vertalingen', function () {
     app(ApproveIssueAction::class)->handle($issue, $user);
 
     $export = app(ExportPendingIssueTranslationsAction::class)->handle();
-    expect($export['items'])->toHaveCount(3);
+    expect($export['items'])->toHaveCount(count(expectedTargetLocales('nl')));
 
     $imported = app(ImportIssueTranslationsAction::class)->handle([
         [

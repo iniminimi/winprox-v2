@@ -41,9 +41,10 @@ it('seed pending vertaalrijen na aanmaken actief document', function () {
     app(EnsureDocumentTranslationSlotsAction::class)->handle($document);
 
     $rows = DocumentTranslation::query()->where('document_id', $document->id)->get();
+    $expectedLocales = collect(expectedTargetLocales('nl'))->sort()->values()->all();
 
-    expect($rows)->toHaveCount(3)
-        ->and($rows->pluck('locale')->sort()->values()->all())->toBe(['de', 'en', 'fr'])
+    expect($rows)->toHaveCount(count($expectedLocales))
+        ->and($rows->pluck('locale')->sort()->values()->all())->toBe($expectedLocales)
         ->and($rows->every(fn ($row) => $row->status === DocumentTranslationStatus::Pending))->toBeTrue();
 });
 
@@ -81,7 +82,7 @@ it('seed vertaalrijen bij activeren', function () {
 
     app(ToggleLocationDocumentActiveAction::class)->handle($document);
 
-    expect(DocumentTranslation::query()->where('document_id', $document->id)->count())->toBe(3);
+    expect(DocumentTranslation::query()->where('document_id', $document->id)->count())->toBe(count(expectedTargetLocales('nl')));
 });
 
 it('vertaalt document via de provider', function () {
@@ -124,7 +125,7 @@ it('exporteert en importeert pending documentvertalingen', function () {
 
     $exportItems = app(ExportPendingDocumentTranslationsAction::class)->handle();
 
-    expect($exportItems)->toHaveCount(3)
+    expect($exportItems)->toHaveCount(count(expectedTargetLocales('nl')))
         ->and($exportItems[0])->toHaveKeys(['document_id', 'source_text', 'locale']);
 
     $imported = app(ImportDocumentTranslationsAction::class)->handle([

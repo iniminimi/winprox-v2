@@ -139,7 +139,7 @@
     WinProx is een internationaal platform en kan in meerdere landen worden gebruikt.
 </p>
 <p>
-    Het platform kan in verschillende talen beschikbaar zijn, waaronder Nederlands, Engels, Frans en Duits.
+    Het platform kan in verschillende talen beschikbaar zijn, waaronder Nederlands, Engels, Frans, Duits en Spaans.
 </p>
 <p>
     Ongeacht de taalversie blijft deze privacyverklaring van toepassing op de verwerking van persoonsgegevens.

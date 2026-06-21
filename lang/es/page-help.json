@@ -1,0 +1,687 @@
+{
+    "button_label": "Ayuda de página",
+    "modal": {
+        "close": "Cerrar",
+        "actions_heading": "Acciones",
+        "statuses_heading": "Estados"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Ayuda — Panel de control",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "El panel de control muestra recuentos de ubicaciones, unidades, incidencias abiertas y tareas abiertas. Haga clic en una tarjeta para ir a la pantalla relacionada."
+                },
+                {
+                    "label": "Imprimir briefing",
+                    "text": "Abre un resumen imprimible de tareas abiertas por equipo — útil en el taller."
+                },
+                {
+                    "label": "Periodo de prueba",
+                    "text": "Durante la prueba tiene límites ampliados. El panel de control muestra los días restantes."
+                },
+                {
+                    "label": "Añadir incidencia",
+                    "text": "Cree una incidencia en dos pasos: ubicación/unidad + descripción, luego una tarea para el equipo correcto."
+                }
+            ],
+            "status_note": "El estado de la incidencia en el panel de control sigue el estado de las tareas vinculadas.",
+            "statuses": {
+                "new": "Al menos una tarea aún no se ha iniciado.",
+                "in_progress": "Al menos una tarea está en curso.",
+                "done": "Todas las tareas están completadas; un administrador puede cerrar la incidencia.",
+                "closed": "Todas las tareas están cerradas — la incidencia está finalizada."
+            }
+        },
+        "issues.list": {
+            "title": "Ayuda — Incidencias",
+            "actions": [
+                {
+                    "label": "Añadir incidencia",
+                    "text": "Cree una incidencia mediante la ventana emergente en la versión de escritorio de Winprox o tras escanear un código QR en una unidad mediante el portal QR. Siempre se crea automáticamente una tarea que puede refinar más tarde en la página Tareas."
+                },
+                {
+                    "label": "Imprimir briefing",
+                    "text": "Imprima un resumen de tareas abiertas por equipo."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Combine estado, equipo, término de búsqueda y recurrente para refinar la lista. Pulse ¡IR! para aplicar."
+                },
+                {
+                    "label": "Aprobar",
+                    "text": "Las incidencias creadas mediante el portal QR esperan aprobación. Apruebe para que el contenido sea visible en las páginas públicas."
+                }
+            ],
+            "status_note": "El estado de la incidencia se deriva automáticamente de las tareas de esa incidencia.",
+            "statuses": {
+                "new": "Nueva incidencia; al menos una tarea aún no se ha iniciado.",
+                "in_progress": "El seguimiento está en curso — una tarea se ha iniciado o está en curso.",
+                "done": "Todas las tareas han sido completadas por el equipo.",
+                "closed": "Un administrador ha confirmado y cerrado todo."
+            }
+        },
+        "issues.show": {
+            "title": "Ayuda — Detalle de incidencia",
+            "actions": [
+                {
+                    "label": "Añadir tarea",
+                    "text": "Añada una tarea a una incidencia existente o edite una tarea existente. Proporcione una descripción clara y concreta del problema o la acción a realizar (p. ej., «La impresora imprime sucio»). Seleccione una fecha de vencimiento específica mediante el calendario. Déjelo en blanco si la tarea debe recogerse directamente o de forma flexible. Determine la urgencia de la tarea (Prio 1 a 3). Este campo es exclusivo de administradores para evitar la inflación de prioridades en el taller. Asigne la tarea al equipo operativo correcto. Este equipo recibe una notificación directa y puede iniciar la tarea mediante su QR de equipo."
+                },
+                {
+                    "label": "Publicar actualización",
+                    "text": "Añada una nota o foto a la incidencia; se mostrará en el portal."
+                },
+                {
+                    "label": "Aprobar",
+                    "text": "Apruebe las incidencias QR antes de que la descripción y las fotos sean públicamente visibles."
+                },
+                {
+                    "label": "Traducción de la descripción",
+                    "text": "En incidencias aprobadas, elija un idioma (NL, EN, FR, DE) junto a la descripción. El texto se traduce automáticamente tras la aprobación vía Plataforma → Traducciones. Si una traducción aún no está lista, verá «Aún no traducida». Las listas y la búsqueda muestran el texto de origen hasta entonces. Los anuncios y documentos activos siguen el mismo patrón en la página de ubicación. Las tareas con su propia descripción muestran el texto traducido en listas y portal una vez lista."
+                }
+            ],
+            "status_note": "Cambie el estado de la incidencia actualizando las tareas.",
+            "statuses": {
+                "new": "Esperando a que al menos una tarea se inicie.",
+                "in_progress": "Al menos una tarea se está trabajando activamente.",
+                "done": "Todas las tareas están completadas; cierre la incidencia cuando todo esté confirmado.",
+                "closed": "La incidencia está cerrada definitivamente."
+            }
+        },
+        "issues.create": {
+            "title": "Ayuda — Incidencia recurrente",
+            "actions": [
+                {
+                    "label": "Intervalo",
+                    "text": "Con qué frecuencia se repite la incidencia (p. ej. cada 2 semanas, cada mes, cada trimestre, cada año)."
+                },
+                {
+                    "label": "Antelación (días)",
+                    "text": "Cuántos días antes de la fecha de vencimiento se crea la tarea (p. ej. 7 días para tareas mensuales)."
+                }
+            ]
+        },
+        "tasks.list": {
+            "title": "Ayuda — Tareas",
+            "actions": [
+                {
+                    "label": "Filtrar por equipo",
+                    "text": "Muestre solo las tareas de un equipo operativo. Los jefes de equipo ven solo sus equipos por defecto."
+                },
+                {
+                    "label": "Abrir tarea",
+                    "text": "Haga clic en una tarea para ver el detalle, cambios de estado y el enlace a la incidencia."
+                }
+            ],
+            "status_note": "Los estados se actualizan a menudo automáticamente mediante el portal de campo QR del equipo. También puede ajustarlos manualmente.",
+            "statuses": {
+                "new": "La tarea se ha creado y espera a que el equipo la inicie.",
+                "in_progress": "El equipo está trabajando en ella.",
+                "done": "El trabajo está terminado por el trabajador; un administrador puede cerrarla.",
+                "closed": "Tarea confirmada y cerrada."
+            }
+        },
+        "tasks.show": {
+            "title": "Ayuda — Detalle de tarea",
+            "actions": [
+                {
+                    "label": "Asignar equipo",
+                    "text": "Elija un equipo operativo y guarde. También puede cambiar una asignación existente."
+                },
+                {
+                    "label": "Cambiar estado",
+                    "text": "Establezca la tarea en En curso, Completada o Cerrada según el progreso."
+                },
+                {
+                    "label": "Traducción de la descripción",
+                    "text": "Si la tarea tiene su propia descripción (no solo el texto de la incidencia), se traduce automáticamente vía Plataforma → Traducciones. En el portal y las listas, los visitantes ven la traducción una vez lista; de lo contrario el texto de origen. Sin descripción propia, la tarea sigue la traducción de la incidencia vinculada."
+                },
+                {
+                    "label": "Abrir incidencia",
+                    "text": "Vaya a la incidencia vinculada para contexto, fotos y tareas adicionales."
+                }
+            ],
+            "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR del equipo.",
+            "statuses": {
+                "new": "Aún no iniciada en el lugar.",
+                "in_progress": "El equipo está trabajando en ella.",
+                "done": "El trabajador reporta el trabajo como completado.",
+                "closed": "El administrador confirma y cierra."
+            }
+        },
+        "locations.list": {
+            "title": "Ayuda — Ubicaciones",
+            "actions": [
+                {
+                    "label": "Añadir ubicación",
+                    "text": "Cree una nueva ubicación con dirección y datos básicos."
+                },
+                {
+                    "label": "Abrir ubicación",
+                    "text": "Gestione unidades, documentos, anuncios y códigos QR por ubicación."
+                },
+                {
+                    "label": "Mostrar inactivas",
+                    "text": "Muestre ubicaciones desactivadas para reactivarlas o revisarlas."
+                },
+                {
+                    "label": "Importación CSV",
+                    "text": "Importe unidades en bloque mediante un archivo CSV. El archivo debe tener exactamente estos encabezados: location_name, unit_name, description (opcional), category_name (obligatorio), street (opcional), house_number (opcional), postal_code (opcional), city (opcional), country_code (opcional), notes (opcional). Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Las ubicaciones y categorías se crean automáticamente si aún no existen."
+                },
+                {
+                    "label": "Importaciones CSV recientes",
+                    "text": "Debajo del botón de importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de unidades. Haga clic en «Deshacer importación» para revertir la importación. Se eliminan unidades sin incidencias ni tareas; también se limpian ubicaciones y categorías vacías creadas por la importación. Las unidades vinculadas a una incidencia o tarea permanecen."
+                },
+                {
+                    "label": "Categorías",
+                    "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Ayuda — Detalle de ubicación",
+            "actions": [
+                {
+                    "label": "Añadir unidad",
+                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
+                },
+                {
+                    "label": "Unidades en bloque",
+                    "text": "Cree rápidamente decenas de unidades (como habitaciones, plantas o activos consecutivos) de una vez dentro de un rango de numeración lógico. Número de series: indique cuántas series (p. ej. plantas o zonas) desea generar a la vez. Unidades por serie: determine el número de unidades específicas (p. ej. habitaciones o dispositivos) a crear por serie. Numeración: elija la estructura de numeración (p. ej. pasos de 10 como 01, 11, 21 o continua). El cuadro de vista previa dinámica en la parte inferior muestra inmediatamente cómo se nombrarán las unidades. Prefijo opcional: añada texto fijo antes del número (p. ej. HAB- o ZONA-) para que las unidades sean inmediatamente reconocibles (p. ej. HAB-01). Categoría: vincule la nueva serie generada directamente a una categoría específica (p. ej. Sanitario u Oficina) para organizar las unidades correctamente desde el principio."
+                },
+                {
+                    "label": "Descargar hoja de pegatinas QR",
+                    "text": "Descargue un archivo Word (Avery 55×55 o HERMA 70×50) con pegatinas QR para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
+                },
+                {
+                    "label": "GPS",
+                    "label_icon": "gps",
+                    "manual_screenshot_id": "locations-gps-history",
+                    "text": "Consulte el historial de ubicación de una unidad mediante la ventana emergente una vez que haya coordenadas GPS disponibles. Haga clic en «Abrir en Maps» para abrir la ubicación directamente en Google Maps."
+                },
+                {
+                    "label": "Documentos y anuncios",
+                    "text": "Gestione documentos y anuncios en la página QR. Los documentos y anuncios activos se traducen automáticamente vía Plataforma → Traducciones (descripción); el formulario de edición muestra una vista previa de traducción por idioma. El título del documento permanece en el idioma de origen."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Ayuda — Calendario",
+            "actions": [
+                {
+                    "label": "Navegación",
+                    "text": "Use anterior, hoy y siguiente para recorrer el periodo."
+                },
+                {
+                    "label": "Vista",
+                    "text": "Cambie entre vista de mes, semana y día."
+                },
+                {
+                    "label": "Filtro",
+                    "text": "Filtre por ubicación, equipo y tipo (tareas o incidencias)."
+                }
+            ],
+            "status_note": "El color y el estado en el calendario siguen el estado de la tarea o incidencia.",
+            "statuses": {
+                "new": "Programada pero aún no iniciada.",
+                "in_progress": "Trabajo en curso.",
+                "done": "Completada, esperando cierre.",
+                "closed": "Completamente cerrada."
+            }
+        },
+        "team": {
+            "title": "Ayuda — Equipos y usuarios",
+            "actions": [
+                {
+                    "label": "Usuarios colegas",
+                    "text": "Gestione el personal administrativo que trabaja principalmente en PC. Deben iniciar sesión con correo y contraseña. Un administrador es el usuario principal que puede actualizar los datos de la empresa. El administrador puede añadir otros administradores y empleados según la suscripción elegida."
+                },
+                {
+                    "label": "Equipos operativos",
+                    "text": "Cree equipos y trabajadores, asigne jefes de equipo. Una unidad debe tener un equipo vinculado para que un trabajador pueda gestionar las tareas de esa unidad. Mientras no haya trabajadores en el equipo, aún puede eliminar el equipo."
+                },
+                {
+                    "label": "QR de equipo",
+                    "text": "Imprima el código QR del equipo o envíe el enlace por correo a un colega. Mediante este QR un trabajador puede abrir el portal de campo para gestionar tareas en el lugar tras escanear el QR de la unidad."
+                },
+                {
+                    "label": "Trabajadores",
+                    "text": "Los trabajadores no tienen inicio de sesión; se identifican mediante el QR del equipo con nombre, apellidos e icono. También puede añadir su correo electrónico y número de teléfono."
+                },
+                {
+                    "label": "Orden",
+                    "text": "Determine el orden en que aparecen los equipos en listas y menús desplegables. Los números más bajos aparecen primero."
+                },
+                {
+                    "label": "¿Cuánto tiempo permanecen conectados los trabajadores?",
+                    "text": "Elija cuánto tiempo permanece conectado un trabajador tras escanear el QR del equipo: Diario (14 horas), Semanal (144 horas, 6 días laborables) o Personalizado (número de horas personalizado). El valor predeterminado es 14 horas."
+                },
+                {
+                    "label": "Restablecer icono",
+                    "text": "Elimine el icono elegido de un trabajador para que pueda iniciar sesión de nuevo con un icono diferente. Útil si un trabajador quiere cambiar de icono o si se seleccionó un icono por error. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                },
+                {
+                    "label": "Desactivar equipo",
+                    "text": "Desactive un equipo para que ya no sea visible en menús desplegables y listas. Los trabajadores de este equipo ya no pueden ver ni completar tareas. La reactivación es posible."
+                },
+                {
+                    "label": "Desactivar trabajador",
+                    "text": "Desactive un trabajador para que ya no pueda iniciar sesión mediante el QR del equipo. El trabajador permanece en el sistema y puede reactivarse más tarde."
+                },
+                {
+                    "label": "Eliminar trabajador",
+                    "text": "Elimine permanentemente un trabajador del sistema. Todo el historial y las tareas de este trabajador se conservan, pero el trabajador ya no puede usarse."
+                },
+                {
+                    "label": "Importación CSV",
+                    "text": "Importe trabajadores en bloque mediante un archivo CSV. El archivo debe tener exactamente estos encabezados: team_name, first_name, last_name (obligatorios), email, phone, external_id (opcionales). Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Los equipos se crean automáticamente si aún no existen. Deshacer elimina trabajadores sin dispositivo vinculado y limpia equipos vacíos creados por la importación. Los trabajadores vinculados a un dispositivo (worker_device) siempre se conservan."
+                },
+                {
+                    "label": "Importaciones CSV recientes",
+                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Haga clic en «Deshacer importación» para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los trabajadores que ya han iniciado sesión mediante el QR del equipo (y por tanto tienen un dispositivo activo) permanecen y se marcan como «tiene dispositivos». El botón desaparece una vez eliminados todos los trabajadores de un lote."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Ayuda — Configuración",
+            "actions": [
+                {
+                    "label": "Datos de la organización",
+                    "text": "Solo el administrador puede cambiar nombre, correo, teléfono y dirección mediante «Editar datos de la organización». Estos datos aparecen en pegatinas QR impresas, etiquetas de unidad y otros materiales para reportadores."
+                },
+                {
+                    "label": "Logotipo de la organización",
+                    "text": "El administrador sube un logotipo de la organización (PNG/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                },
+                {
+                    "label": "Fondo del portal",
+                    "text": "Imagen de fondo opcional para el portal de informes tras escanear un código QR (PNG/JPG, máx. 4 MB). No es lo mismo que el fondo de la pegatina bajo Hojas de pegatinas QR."
+                },
+                {
+                    "label": "Estilo WinProx",
+                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar, Oscuro o Alta resolución. Su elección se aplica en todos los dispositivos donde haya iniciado sesión."
+                },
+                {
+                    "label": "Estilo personalizado del portal",
+                    "text": "Active «Usar estilo personalizado del portal» para elegir colores de fondo y botones del portal de informes. La tarjeta de vista previa muestra cómo ven el portal los reportadores tras un escaneo. No afecta a la interfaz de administración."
+                },
+                {
+                    "label": "Hojas de pegatinas QR",
+                    "text": "Marca para pegatinas Avery 62×89-R impresas (9 etiquetas por hoja). Descargue la hoja de pegatinas por ubicación desde el paquete QR."
+                },
+                {
+                    "label": "Texto",
+                    "nested": true,
+                    "text": "Su texto personalizado aparece en la parte superior de la pegatina (máx. 120 caracteres). Si se deja vacío, WinProx usa automáticamente nombre de ubicación · unidad. El número de pegatina siempre aparece debajo del código QR. La vista previa a la derecha se actualiza en directo. Haga clic en «Guardar» para almacenar el texto (y la configuración del logotipo)."
+                },
+                {
+                    "label": "Logotipo y dirección",
+                    "nested": true,
+                    "text": "Elija dónde aparece el logotipo de su organización en la pegatina (abajo a la derecha, abajo a la izquierda, …) — solo si ha subido un logotipo. Marque «Mostrar dirección de la ubicación en la pegatina» para imprimir los datos de dirección abajo a la izquierda. El logotipo en el centro del código QR es fijo (su logotipo o WinProx) y no se puede mover aquí."
+                },
+                {
+                    "label": "Fondo",
+                    "nested": true,
+                    "text": "Elija una imagen personalizada (PNG/JPG, máx. 4 MB); se guarda inmediatamente. Sin fondo personalizado, WinProx usa el diseño predeterminado de la pegatina. Use «Eliminar fondo personalizado» para volver a ese diseño."
+                },
+                {
+                    "label": "Vista previa",
+                    "nested": true,
+                    "text": "A la derecha (en pantalla ancha) ve una vista previa en directo de una pegatina con un código QR de demostración y número. Al exportar en una ubicación, se usan los códigos QR de unidad y números de pegatina reales de esa ubicación."
+                },
+                {
+                    "label": "Privacidad y exportación de datos",
+                    "text": "Solo el administrador puede descargar un resumen legible por máquina (JSON) de la cuenta y la actividad relevante dentro de su entorno. Esta sección aparece en Configuración solo para administradores. El archivo puede contener datos sensibles — guárdelo de forma segura."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Ayuda — API y webhooks",
+            "actions": [
+                {
+                    "label": "¿Qué es esta página?",
+                    "text": "Aquí conecta WinProx con otro software — por ejemplo su ERP, una herramienta de planificación o un panel personalizado. WinProx se comunica entonces con ese sistema digitalmente, sin tener que volver a escribir incidencias manualmente."
+                },
+                {
+                    "label": "¿Lo necesito?",
+                    "text": "Normalmente no. Si solo usa WinProx mediante el sitio web y códigos QR, no necesita configurar nada aquí.<br><br>Para configuración puntual: ¿quiere importar miles de ubicaciones o usuarios de una vez? Use la importación CSV disponible en cada módulo (Equipos, Ubicaciones, Unidades). Suele ser más rápido y sencillo para una migración inicial.<br><br>Para automatización continua: esta página API está destinada a administradores o socios de TI que quieran construir una integración en directo para que los sistemas se comuniquen automáticamente (p. ej. conexiones ERP en tiempo real o paneles personalizados)."
+                },
+                {
+                    "label": "API — ¿qué es?",
+                    "text": "Una API permite que otros programas lean datos de WinProx o realicen acciones (p. ej. listar incidencias y tareas). Funciona de forma segura con un token API — como una contraseña usada por el software, no por personas."
+                },
+                {
+                    "label": "Crear un token API",
+                    "text": "Asigne al token un nombre claro (p. ej. «Integración ERP»). Tras la creación ve el código una sola vez: cópielo y guárdelo inmediatamente. WinProx no lo mostrará de nuevo. Si lo pierde, cree un nuevo token y revoque el anterior."
+                },
+                {
+                    "label": "Revocar un token",
+                    "text": "¿Ya no usa una integración o le preocupa que un token se haya expuesto? Haga clic en Revocar. Esa integración deja de funcionar. Los demás tokens permanecen activos."
+                },
+                {
+                    "label": "¿Qué puede hacer la API?",
+                    "text": "Con un token válido, el software puede entre otras cosas leer incidencias y tareas, listar ubicaciones/unidades/equipos/trabajadores, crear o aprobar incidencias, e iniciar o completar tareas. Para documentación técnica, consulte a su socio de TI o al soporte de WinProx."
+                },
+                {
+                    "label": "Webhooks — ¿qué son?",
+                    "text": "Un webhook es lo contrario de la API: WinProx envía un mensaje a su sistema cuando ocurre algo (p. ej. nueva incidencia o tarea completada). Proporciona una URL donde WinProx puede publicar datos."
+                },
+                {
+                    "label": "Añadir un endpoint de webhook",
+                    "text": "Introduzca una URL completa que comience por https:// (conexión segura). Marque los eventos que desea recibir. Opcionalmente añada una descripción (p. ej. «ERP producción»). Guarde — WinProx almacena la dirección y envía datos automáticamente para esos eventos."
+                },
+                {
+                    "label": "Event: issue.created",
+                    "text": "Se ha recibido una nueva incidencia (vía QR, manualmente o mediante la API). Útil para crear un ticket en un sistema externo de inmediato."
+                },
+                {
+                    "label": "Event: issue.approved",
+                    "text": "Un administrador aprobó una incidencia (a menudo desde QR). Solo entonces el contenido también es visible en las páginas QR públicas."
+                },
+                {
+                    "label": "Event: issue.status_changed",
+                    "text": "El estado de una incidencia cambió (p. ej. de abierta a en curso), generalmente porque se iniciaron o completaron tareas."
+                },
+                {
+                    "label": "Event: task.created",
+                    "text": "Se creó una nueva tarea para un equipo, vinculada a una incidencia."
+                },
+                {
+                    "label": "Event: task.started",
+                    "text": "Un trabajador inició una tarea mediante el portal de campo (QR de unidad)."
+                },
+                {
+                    "label": "Event: task.completed",
+                    "text": "Un equipo completó una tarea. Útil para actualizar sistemas externos o informes."
+                },
+                {
+                    "label": "Event: unit.gps_reported",
+                    "text": "Se registró una ubicación GPS para una unidad mediante el portal (reportador, trabajador o administrador durante la vinculación QR). La carga útil incluye coordenadas y opcionalmente location_name y country_code (GeoNames)."
+                },
+                {
+                    "label": "Endpoint activo o inactivo",
+                    "text": "Desactive temporalmente un endpoint sin eliminarlo (p. ej. durante mantenimiento del servidor). Los endpoints inactivos no reciben mensajes."
+                },
+                {
+                    "label": "Entregas recientes",
+                    "text": "Registro de los últimos intentos de webhook. «success» significa que su sistema recibió el mensaje. «failed» significa que algo falló (URL incorrecta, servidor sin conexión, …). Muestra solo el estado de entrega — no el contenido de la incidencia."
+                },
+                {
+                    "label": "Seguridad",
+                    "text": "Trate los tokens API como contraseñas: no los comparta por correo o chat. Los webhooks están firmados criptográficamente para que su servidor pueda verificar que el mensaje proviene realmente de WinProx — su socio de TI puede implementar esta comprobación."
+                },
+                {
+                    "label": "Ayuda con la integración",
+                    "text": "¿No está seguro de si algo funciona? Pida a su socio de TI que compruebe la URL, los eventos y las entregas recientes. Para WinProx en sí, use Contacto o la FAQ si no tiene un desarrollador."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Ayuda — Suscripción",
+            "actions": [
+                {
+                    "label": "Periodo de prueba",
+                    "text": "Durante la prueba tiene límites ampliados. El panel de control muestra los días restantes."
+                },
+                {
+                    "label": "Elegir plan",
+                    "text": "Seleccione un plan que se ajuste al número de unidades que gestiona."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Ayuda — FAQ",
+            "actions": [
+                {
+                    "label": "Base de conocimiento",
+                    "text": "Respuestas a preguntas frecuentes sobre WinProx, QR, equipos y suscripción."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Ayuda — Contacto",
+            "actions": [
+                {
+                    "label": "Soporte",
+                    "text": "Contacte con WinProx si necesita ayuda más allá de esta ayuda de página y la FAQ."
+                }
+            ]
+        },
+        "portal.worker.qr": {
+            "title": "Ayuda — Dos códigos QR",
+            "actions": [
+                {
+                    "label": "QR de unidad",
+                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión en modo trabajador para iniciar o completar tareas abiertas en esa unidad."
+                },
+                {
+                    "label": "QR de equipo",
+                    "text": "Colocado con el equipo (almacén, taller, …). Inicie sesión aquí para ver y gestionar todas las tareas abiertas de su equipo, independientemente de a qué unidad pertenezcan."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Ayuda — Portal público",
+            "actions": [
+                {
+                    "label": "Bienvenida",
+                    "text": "Bienvenido al portal público de :tenant. Lea a continuación para más información. ¿Interesado en su propio portal empresarial? Haga clic en <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                },
+                {
+                    "label": "Informar incidencia",
+                    "text": "Haga clic en «Crear informe», describa el problema y opcionalmente añada hasta cuatro fotos. Se crea entonces una tarea para el equipo. Tenga en cuenta que la incidencia debe aprobarse primero antes de ser visible en el portal. Para evitar spam, se aplican límites: como máximo un informe cada 3 minutos y un máximo de cinco informes por 30 minutos para esta unidad (por dispositivo)."
+                },
+                {
+                    "label": "Documentos",
+                    "text": "Consulte aquí los manuales y otros documentos disponibles para esta unidad. Elija un idioma arriba — la descripción se traduce automáticamente una vez lista."
+                },
+                {
+                    "label": "Anuncios",
+                    "text": "Consulte aquí los anuncios que se aplican específicamente a esta unidad. Elija un idioma arriba — el texto se traduce automáticamente una vez listo."
+                },
+                {
+                    "label": "Capturar ubicación GPS",
+                    "text": "Cuando está activado, sus coordenadas GPS se comparten con la administración. Esto ayuda a un técnico a encontrarle fácilmente."
+                },
+                {
+                    "label": "Idioma",
+                    "text": "Elija su idioma deseado arriba a la derecha (NL, EN, DE, FR). Los textos del portal se actualizan inmediatamente al idioma elegido."
+                },
+                {
+                    "label": "Tema",
+                    "text": "Cambie entre los diferentes temas (simple, oscuro, alta resolución) arriba a la derecha para una vista que se ajuste a su preferencia."
+                }
+            ],
+            "status_note": "Las tareas abiertas en esta página siguen los estados indicados a continuación.",
+            "statuses": {
+                "new": "Tarea esperando inicio.",
+                "in_progress": "El equipo está trabajando en ella.",
+                "done": "Trabajo completado.",
+                "closed": "Tarea cerrada."
+            }
+        },
+        "portal.worker.photos": {
+            "title": "Ayuda — Fotos en tareas",
+            "actions": [
+                {
+                    "label": "Añadir fotos",
+                    "text": "Al iniciar o completar una tarea, añada fotos como prueba o explicación. Las fotos se comprimen automáticamente para una subida rápida."
+                },
+                {
+                    "label": "Esperar la subida",
+                    "text": "Espere a que termine la subida antes de confirmar — de lo contrario faltarán fotos en la tarea."
+                }
+            ]
+        },
+        "portal.team": {
+            "title": "Ayuda — Portal de trabajador",
+            "actions": [
+                {
+                    "label": "Nombre e icono",
+                    "text": "Tras escanear el código QR del equipo, introduzca su nombre y apellidos y elija un icono personal. Recuerde bien este icono, porque la próxima vez debe seleccionarlo de nuevo. Tiene dos intentos para iniciar sesión con el icono correcto; después su cuenta queda bloqueada. Un jefe de equipo o administrador puede desbloquear su cuenta en ese caso."
+                },
+                {
+                    "label": "Primera vez",
+                    "text": "¿Nuevo en el equipo? Pida a su jefe de equipo o administrador que cree una cuenta para usted. Después puede iniciar sesión con su nombre y apellidos y elegir su propio icono."
+                },
+                {
+                    "label": "Cerrar sesión",
+                    "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
+                },
+                {
+                    "label": "Tareas abiertas",
+                    "text": "Tras iniciar sesión ve todas las tareas abiertas de su equipo. Pulse una tarea para ver los detalles."
+                },
+                {
+                    "label": "Iniciar",
+                    "text": "Vaya a «Tareas abiertas» y haga clic en «Iniciar tarea». Los demás miembros del equipo verán entonces que está trabajando en esta tarea y el estado cambia a «En curso». Una vez terminado, haga clic en «Completar tarea»."
+                },
+                {
+                    "label": "Completar",
+                    "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. La tarea obtiene entonces el estado «Completada»."
+                },
+                {
+                    "label": "Capturar ubicación GPS",
+                    "text": "Cuando está activado, sus coordenadas GPS se comparten con la administración. Esto ayuda a un técnico a encontrarle fácilmente."
+                }
+            ],
+            "status_note": "Cada tarea pasa por los estados indicados a continuación:",
+            "statuses": {
+                "new": "La tarea aún no se ha iniciado y espera a un trabajador.",
+                "in_progress": "Alguien está trabajando actualmente en la tarea en el lugar.",
+                "done": "El trabajo ha sido completado por un trabajador.",
+                "closed": "La incidencia ha sido revisada por el administrador y cerrada definitivamente."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Ayuda — Jefe de equipo",
+            "actions": [
+                {
+                    "label": "Rol",
+                    "text": "Un jefe de equipo es un trabajador con derechos adicionales en el portal de equipo. Gestiona tareas usted mismo y ayuda a los colegas a empezar."
+                },
+                {
+                    "label": "Asignación",
+                    "text": "Un administrador asigna jefes de equipo en WinProx en el equipo. Ve la insignia «Jefe de equipo» tras iniciar sesión."
+                },
+                {
+                    "label": "QR de equipo",
+                    "text": "Escanee el QR del equipo e inicie sesión con su nombre e icono — igual que cualquier trabajador."
+                },
+                {
+                    "label": "Paneles adicionales",
+                    "text": "Tras iniciar sesión ve secciones adicionales: liberar icono de colega y gestionar trabajadores."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Ayuda — Liberar icono de colega",
+            "actions": [
+                {
+                    "label": "Cuándo es necesario",
+                    "text": "Si un colega eligió el icono incorrecto demasiadas veces, queda bloqueado. Puede liberar el icono para que pueda elegir de nuevo."
+                },
+                {
+                    "label": "Pasos",
+                    "text": "Abra «Liberar», confirme primero su propio icono, seleccione al colega bloqueado y confirme. El colega puede entonces iniciar sesión de nuevo."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Ayuda — Gestionar trabajadores",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "Abra «Gestionar» para ver todos los trabajadores de su equipo, incluida la insignia de jefe de equipo."
+                },
+                {
+                    "label": "Añadir",
+                    "text": "Añada un nuevo trabajador con nombre y apellidos. Luego deje que el colega escanee el QR del equipo para registrarse y elegir un icono."
+                },
+                {
+                    "label": "Eliminar",
+                    "text": "Elimine trabajadores que ya no pertenezcan al equipo. No puede eliminarse a sí mismo."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Ayuda — Gestionar tareas",
+            "actions": [
+                {
+                    "label": "Igual que trabajador",
+                    "text": "Inicie tareas abiertas, añada notas, adjunte fotos y complete — idéntico al manual de trabajadores."
+                },
+                {
+                    "label": "Coordinación",
+                    "text": "Mantenga una visión general de las tareas abiertas y coordine con su equipo quién recoge cada tarea."
+                }
+            ],
+            "status_note": "Los estados de las tareas son los mismos que para todos los trabajadores.",
+            "statuses": {
+                "new": "Aún no iniciada.",
+                "in_progress": "En curso en el lugar.",
+                "done": "Completada por usted o un colega.",
+                "closed": "Cerrada por el administrador."
+            }
+        },
+        "platform.translations": {
+            "title": "Ayuda — Traducciones",
+            "actions": [
+                {
+                    "label": "¿Qué se traduce?",
+                    "text": "Slots de traducción automática (NL, EN, FR, DE) para: incidencias QR aprobadas (descripción); anuncios activos (descripción); unidades activas (nombre y descripción); tareas con su propia descripción; documentos activos (descripción — el título permanece en el idioma de origen). Las tareas sin descripción propia muestran la traducción de la incidencia vinculada."
+                },
+                {
+                    "label": "Local vía Ollama",
+                    "text": "Como superusuario en su portátil: ejecute <code>php artisan queue:work</code>, haga clic en « Iniciar traducciones ». Las incidencias, anuncios, unidades, tareas y documentos pendientes se exportan, traducen en local y se importan de nuevo en el servidor."
+                },
+                {
+                    "label": "Estado del servidor",
+                    "text": "En producción ve cuántas traducciones siguen en espera. El recuento incluye todos estos tipos."
+                },
+                {
+                    "label": "Texto de origen modificado",
+                    "text": "Si alguien edita el texto de origen de un anuncio, unidad, tarea o documento, las traducciones existentes se invalidan y vuelven a estar pendientes. Ejecute después una nueva sincronización de traducciones."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Ayuda — Plataforma",
+            "actions": [
+                {
+                    "label": "Gestionar inquilinos",
+                    "text": "Resumen de todas las organizaciones. Abra un inquilino para trabajar en su entorno como soporte."
+                },
+                {
+                    "label": "Modo soporte",
+                    "text": "Inicie el soporte para usar la aplicación en nombre de un inquilino. Finalice el soporte para volver al resumen de la plataforma."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Ayuda — Base de conocimiento de la plataforma",
+            "actions": [
+                {
+                    "label": "Preguntas sin responder",
+                    "text": "Preguntas del chat de ayuda sin coincidencia en la FAQ. Respóndalas o añádalas a la base de conocimiento."
+                },
+                {
+                    "label": "Base de conocimiento",
+                    "text": "Gestione artículos FAQ y respuestas de ayuda para todos los inquilinos."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Ayuda — Documentos legales",
+            "actions": [
+                {
+                    "label": "Documentos",
+                    "text": "Política de privacidad, términos del servicio y otros textos legales de WinProx."
+                }
+            ]
+        }
+    }
+}
+

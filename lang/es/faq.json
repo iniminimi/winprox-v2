@@ -1,0 +1,224 @@
+{
+    "title": "Preguntas frecuentes",
+    "subtitle": "Guía rápida para coordinadores, jefes de equipo y equipos de campo.",
+    "items": {
+        "how_it_works": {
+            "slug": "how_it_works",
+            "type": "steps",
+            "title": "Cómo funciona WinProx",
+            "intro": "Un flujo de trabajo sencillo para gestionar sitios, incidencias y equipos internos.",
+            "summary": "Flujo: sitios y unidades, incidencias QR, tareas para equipos internos, seguimiento mediante panel de control, briefing y calendario.",
+            "steps": [
+                {
+                    "title": "Crear un sitio",
+                    "text": "Empiece creando un sitio. Añada unidades (máquinas, zonas o áreas) con una breve descripción o indicación de ubicación para que incidencias y tareas se vinculen correctamente."
+                },
+                {
+                    "title": "Crear una incidencia",
+                    "text": "Cree una incidencia usted mismo o deje que los reportadores envíen informes mediante código QR, opcionalmente con fotos. Todo permanece en un solo lugar."
+                },
+                {
+                    "title": "Añadir actualizaciones",
+                    "text": "Añada información adicional o fotos para que coordinadores y equipos vean la misma situación."
+                },
+                {
+                    "title": "Actualizar el estado",
+                    "text": "Muestre qué ocurre con la incidencia: nueva, en curso, gestionada o cerrada."
+                },
+                {
+                    "title": "Tarea para un equipo interno",
+                    "text": "Para una incidencia de unidad, se crea automáticamente una tarea para el equipo vinculado. También puede asignar tareas manualmente o programar mantenimiento recurrente (por ejemplo mensual) mediante el calendario."
+                },
+                {
+                    "title": "Registro de trabajadores de campo vía QR de equipo",
+                    "text": "Los trabajadores de campo escanean el QR del equipo e inician o completan tareas en el lugar.",
+                    "highlight": "Los trabajadores de campo usan el QR del equipo sin inicio de sesión WinProx."
+                },
+                {
+                    "title": "Seguimiento y cierre",
+                    "text": "Los coordinadores siguen las tareas en el panel de control, el briefing y el calendario. Marque como completada cuando el trabajo esté terminado."
+                }
+            ],
+            "box_title": "Equipos internos",
+            "box_body": "Organice equipos de mantenimiento por equipo. Vincule equipos a unidades para que las incidencias lleguen automáticamente a la lista correcta. Mediante el QR del equipo, los trabajadores de campo registran actualizaciones y fotos en el lugar."
+        },
+        "pricing": {
+            "slug": "pricing",
+            "type": "pricing",
+            "title": "¿Cuánto cuesta WinProx?",
+            "intro": "WinProx comienza con un periodo de prueba. Después, elija un plan según el número de unidades en sus sitios (máquinas, zonas o áreas). Actívelo en Suscripción. Los límites de unidades, documentos y anuncios se aplican a toda su organización.",
+            "summary": "Periodo de prueba, luego Micro, Starter, Pro, Business o Enterprise. Documentos y anuncios tienen límites por unidad y por organización.",
+            "content_note": "Anuncios: solo cuentan los mensajes activos y no caducados (por unidad vinculada). Documentos: cada archivo almacenado cuenta para su organización, incluidos los desactivados — elimínelos para liberar espacio. Durante la prueba, su organización puede subir hasta 10 documentos.",
+            "plans": {
+                "micro": {
+                    "units": "Hasta 10 unidades/espacios",
+                    "users": "Incluye 1 administrador y 1 empleado",
+                    "announcements": "Hasta 2 anuncios por unidad",
+                    "documents": "Hasta 2 documentos por unidad · máx. 10 para su organización",
+                    "description": "Ideal para pequeñas empresas y gestores inmobiliarios compactos."
+                },
+                "starter": {
+                    "units": "Hasta 25 unidades/espacios",
+                    "users": "Incluye 1 administrador y 2 empleados",
+                    "announcements": "Hasta 4 anuncios por unidad",
+                    "documents": "Hasta 4 documentos por unidad · máx. 20 para su organización",
+                    "description": "Ideal para un solo sitio o piloto con un equipo de coordinación compacto."
+                },
+                "pro": {
+                    "units": "Hasta 100 unidades/espacios",
+                    "users": "Incluye 1 administrador y 5 empleados",
+                    "announcements": "Hasta 10 anuncios por unidad",
+                    "documents": "Hasta 6 documentos por unidad · máx. 40 para su organización",
+                    "description": "Adecuado para organizaciones de instalaciones en crecimiento con más unidades y equipos internos."
+                },
+                "business": {
+                    "units": "Hasta 300 unidades/espacios",
+                    "users": "Incluye 1 administrador y 15 empleados",
+                    "announcements": "Hasta 20 anuncios por unidad",
+                    "documents": "Hasta 8 documentos por unidad · máx. 80 para su organización",
+                    "description": "Para organizaciones con varios sitios, muchas unidades y equipos más grandes. Incluye acceso API y webhooks."
+                },
+                "enterprise": {
+                    "units": "Para grandes operadores de sitios y carteras complejas. Contáctenos.",
+                    "users": "",
+                    "announcements": "Anuncios ilimitados por unidad",
+                    "documents": "Documentos ilimitados para su organización",
+                    "description": "Incluye acceso API, webhooks y soluciones personalizadas."
+                }
+            }
+        },
+        "qr_code": {
+            "slug": "qr_code",
+            "type": "text",
+            "title": "¿Cómo funcionan los códigos QR?",
+            "body": "Hay dos códigos QR: el QR de unidad para reportadores (nueva incidencia, incidencias abiertas, documentos y anuncios opcionales) y el QR de equipo para trabajadores de campo (iniciar tareas, fotos y estado en el lugar). Imprima ambos de forma visible. Al escanear se abre el portal correcto en el navegador — sin instalar aplicación.",
+            "summary": "QR de unidad para reportadores y QR de equipo para trabajadores de campo; ambos funcionan en el navegador sin aplicación."
+        },
+        "reporter_portal": {
+            "slug": "reporter_portal",
+            "type": "portal",
+            "title": "¿Cómo funciona el portal de reportadores?",
+            "intro": "Tras escanear el QR de la unidad, se abre una página web sencilla para esa unidad. Los reportadores envían problemas; los trabajadores de campo vinculados al equipo también pueden completar allí las tareas abiertas de esa unidad.",
+            "summary": "Tras escanear el QR de la unidad: informar incidencias, incidencias abiertas, documentos, anuncios y tareas opcionales en el lugar.",
+            "sections": [
+                {
+                    "title": "Nueva incidencia",
+                    "text": "Informe de un problema rápidamente con categoría, descripción y fotos opcionales. La incidencia se vincula a la unidad correcta."
+                },
+                {
+                    "title": "Incidencias abiertas",
+                    "text": "Resumen de incidencias activas para esta unidad, con detalle y estado."
+                },
+                {
+                    "title": "Documentos",
+                    "text": "Consulte los documentos que su organización ha compartido para el sitio o la unidad, cuando estén disponibles."
+                },
+                {
+                    "title": "Anuncios",
+                    "text": "Lea los anuncios destinados a reportadores o equipos en este sitio."
+                },
+                {
+                    "title": "Tareas en el lugar (trabajadores de campo)",
+                    "text": "Los trabajadores de campo que abren el QR de la unidad y pertenecen al equipo vinculado ven las tareas abiertas de esa unidad. Pueden iniciar tareas, añadir fotos y completarlas — el mismo flujo que mediante el QR del equipo."
+                }
+            ]
+        },
+        "for_who": {
+            "slug": "for_who",
+            "type": "text",
+            "title": "¿Para quién es WinProx?",
+            "body": "WinProx ayuda a fábricas, hospitales, municipios y grandes operadores de sitios a centralizar incidencias, equipos internos y seguimiento de campo.",
+            "summary": "Para organizaciones de instalaciones que centralizan incidencias, equipos y trabajo de campo."
+        },
+        "user_roles": {
+            "slug": "user_roles",
+            "type": "roles",
+            "title": "¿Cómo funcionan los roles de usuario?",
+            "summary": "Administrador: control total y suscripción. Usuario estándar: seguimiento diario sin gestión de usuarios. Trabajador: tareas en el lugar vía QR de equipo sin inicio de sesión.",
+            "roles": [
+                {
+                    "title": "Administrador",
+                    "text": "Tiene control total sobre WinProx y es el único rol que puede añadir o eliminar usuarios. También gestiona la suscripción y la configuración de usuarios."
+                },
+                {
+                    "title": "Usuario estándar",
+                    "text": "Gestiona el seguimiento diario: sitios, incidencias y tareas. Sin acceso a cuentas de colegas ni configuración de suscripción."
+                },
+                {
+                    "title": "Trabajador (equipo)",
+                    "text": "Usa el QR del equipo para iniciar tareas en el lugar, añadir fotos y completar tareas. Funciona sin inicio de sesión WinProx — el registro se realiza mediante el QR del equipo."
+                }
+            ]
+        },
+        "data_export": {
+            "slug": "data_export",
+            "type": "text",
+            "title": "¿Puedo exportar mis datos?",
+            "body": "Sí. En la parte inferior de la página Usuarios, un administrador puede descargar una exportación JSON con datos de cuenta y actividad en su entorno (sitios, incidencias, tareas). Mantenga el archivo seguro y no lo comparta innecesariamente.",
+            "summary": "Los administradores pueden descargar una exportación JSON de datos de cuenta y actividad en Usuarios."
+        },
+        "internal_teams": {
+            "slug": "internal_teams",
+            "type": "text",
+            "title": "¿Cómo configuro equipos internos?",
+            "body": "Cree equipos mediante el menú Equipo. Vincule equipos a unidades para que incidencias y tareas se dirijan automáticamente al grupo correcto.",
+            "summary": "Cree equipos mediante Equipo y vincúlelos a unidades."
+        },
+        "team_follow_up": {
+            "slug": "team_follow_up",
+            "type": "text",
+            "title": "¿Cómo hacen seguimiento los equipos internos de las tareas?",
+            "body": "Las tareas aparecen en el QR del equipo y en el panel de control. Los trabajadores gestionan las tareas en el lugar, añaden una descripción y toman fotos cuando es necesario. Los coordinadores siguen el progreso mediante el briefing matutino y el calendario.",
+            "summary": "Tareas vía QR del equipo y panel de control; seguimiento mediante briefing y calendario."
+        },
+        "multiple_locations": {
+            "slug": "multiple_locations",
+            "type": "text",
+            "title": "¿Puedo gestionar varios sitios?",
+            "body": "Sí. Puede seguir varios sitios y unidades en un solo lugar y mantener el resumen por sitio, incidencia y tarea.",
+            "summary": "Varios sitios y unidades se pueden gestionar de forma centralizada."
+        },
+        "mobile": {
+            "slug": "mobile",
+            "type": "text",
+            "title": "¿Funciona WinProx en smartphones?",
+            "body": "Sí. WinProx funciona completamente en el navegador en teléfono, tableta y escritorio. Los trabajadores de campo usan el QR del equipo en su teléfono.",
+            "summary": "WinProx funciona en el navegador en teléfono, tableta y escritorio."
+        },
+        "install": {
+            "slug": "install",
+            "type": "text",
+            "title": "¿Necesito instalar software?",
+            "body": "No. WinProx es una aplicación web. Coordinadores y equipos de campo empiezan inmediatamente en el navegador sin instalación aparte.",
+            "summary": "No se necesita instalación — todo funciona en el navegador."
+        },
+        "status_help": {
+            "slug": "status_help",
+            "type": "text",
+            "title": "¿Dónde encuentro ayuda sobre los estados?",
+            "body": "En móvil, use el botón «Ayuda de estados» para leer qué significa cada estado. En escritorio, ve una descripción al pasar el cursor sobre el estado.",
+            "summary": "La ayuda de estados en incidencias y tareas explica cada estado y el siguiente paso recomendado."
+        },
+        "dynamic_qr_codes": {
+            "slug": "dynamic_qr_codes",
+            "type": "text",
+            "title": "Códigos QR dinámicos",
+            "body": "WinProx admite dos tipos de pegatinas QR: códigos QR dinámicos y códigos QR estáticos. Los códigos QR dinámicos se pueden vincular a una unidad diferente en cualquier momento (revinculables). Los códigos QR estáticos están fijos a una unidad específica. Imprima pegatinas dinámicas en bloque. Vaya al lugar, pegue una pegatina y escanéela con su teléfono. Debe haber iniciado sesión, tras lo cual puede asignar una unidad a esa pegatina QR.",
+            "summary": "Los códigos QR dinámicos son revinculables, los estáticos están fijos. Imprima pegatinas dinámicas en bloque y asigne una unidad en el lugar."
+        },
+        "stickers": {
+            "slug": "stickers",
+            "type": "text",
+            "title": "¿Qué pegatinas puedo usar?",
+            "body": "Para imprimir, recomendamos etiquetas de Avery o Herma por su calidad y compatibilidad con impresoras estándar. Se indican los tipos de hoja A4 correctos.",
+            "summary": "Etiquetas Avery y Herma recomendadas para imprimir. Tipos de hoja A4 correctos indicados."
+        },
+        "style": {
+            "slug": "style",
+            "type": "text",
+            "title": "¿Qué es el estilo WinProx y el estilo personalizado del portal?",
+            "body": "El estilo WinProx determina cómo se ve la aplicación para administradores y personal (estándar, oscuro, alta resolución). El estilo personalizado del portal es opcional y ajusta los colores de fondo y botones del portal público que ven reportadores y trabajadores tras escanear un código QR. Configure ambos en Configuración.",
+            "summary": "Estilo WinProx para la aplicación, estilo personalizado del portal para el portal público (colores de fondo y botones)."
+        }
+    }
+}

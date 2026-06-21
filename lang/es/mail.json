@@ -1,0 +1,43 @@
+{
+    "outbound": {
+        "greeting_name": "Estimado/a :name,"
+    },
+    "welcome": {
+        "subject": "Bienvenido/a a :tenant - Establezca su contraseña",
+        "html_title": "Bienvenido/a a WinProx",
+        "heading": "¡Bienvenido/a a WinProx!",
+        "greeting": "¡Hola!",
+        "greeting_name": "¡Hola :name!",
+        "intro": "Ha sido invitado/a a unirse a :tenant en WinProx.",
+        "account_details": "Datos de su cuenta:\n- Correo: :email\n- Rol: :role",
+        "admin_contact": "Contacte con :name (:email) si tiene alguna pregunta.",
+        "reset_hint": "Establezca su contraseña en :minutes minutos usando el botón de abajo.",
+        "set_password": "Establecer contraseña",
+        "link_fallback": "Si el botón no funciona, copie este enlace:",
+        "open_platform": "Abrir plataforma",
+        "security_note": "Este enlace caduca por motivos de seguridad. Si ha caducado, puede solicitar un nuevo restablecimiento mediante «Contraseña olvidada».",
+        "powered_by": "Con WinProx gestiona edificios, ubicaciones y tareas en un solo lugar central.",
+        "role_admin": "Administrador",
+        "role_employee": "Empleado"
+    },
+    "unsubscribe": {
+        "html_intro": "Si ya no desea recibir correos electrónicos, puede",
+        "text_intro": "Si ya no desea recibir correos electrónicos, puede darse de baja aquí:",
+        "link_label": "darse de baja aquí",
+        "settings_hint_html": "También puede gestionar las preferencias de correo en su <a href=\":url\" style=\"color:#059669;font-weight:600;\">Configuración</a>.",
+        "settings_hint_text": "También puede gestionar las preferencias de correo en Configuración: :url"
+    },
+    "new_qr_issue": {
+        "subject": ":tenant — nuevo informe QR",
+        "html_title": "Nuevo informe",
+        "heading": "Nuevo informe QR",
+        "greeting": "Hola,",
+        "greeting_name": "Hola :name,",
+        "intro": "Se ha enviado un nuevo informe a través del portal QR de :tenant.",
+        "field_location": "Ubicación / unidad",
+        "field_reporter": "Informado por",
+        "field_description": "Descripción",
+        "open_issue": "Ver informe",
+        "link_fallback": "Si el botón no funciona, copie este enlace:"
+    }
+}

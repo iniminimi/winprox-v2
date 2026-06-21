@@ -1,0 +1,24 @@
+{
+    "panel_title": "Asistente WinProx",
+    "open_fab": "Abrir asistente",
+    "close_fab": "Cerrar asistente",
+    "welcome": "Pregunte sobre incidencias, tareas o su organización. Escriba «resumen» para ver los recuentos.",
+    "input_label": "Su pregunta",
+    "input_placeholder": "p. ej. ¿Cómo asigno una tarea a un equipo?",
+    "send": "Enviar",
+    "escalate": "Reenviar al servicio de ayuda",
+    "escalated": "Su pregunta se ha reenviado al servicio de ayuda.",
+    "empty_message": "Escriba una pregunta para empezar.",
+    "no_match": "No he encontrado una respuesta coincidente. Su pregunta se ha guardado; puede reenviarla al servicio de ayuda.",
+    "rate_limited": "Espere un momento — inténtelo de nuevo en un minuto.",
+    "no_tenant": "No hay ninguna organización vinculada a su cuenta.",
+    "insight": {
+        "summary": "Resumen: :locations ubicaciones, :units unidades, :issues incidencias, :tasks tareas."
+    },
+    "mail": {
+        "unanswered_subject": "WinProx: pregunta de ayuda sin responder",
+        "unanswered_body": "Usuario: :user (:email)\nOrganización: :tenant\n\nPregunta:\n:question",
+        "escalation_subject": "WinProx: escalación del chat de ayuda",
+        "escalation_body": "Usuario: :user (:email)\nOrganización: :tenant\n\nPregunta:\n:question\n\nÚltima respuesta:\n:reply"
+    }
+}

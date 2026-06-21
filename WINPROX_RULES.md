@@ -171,11 +171,11 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ## 5. Lokalisatie (4 talen, klein & per pagina)
 
 - Structuur: **`lang/[locale]/[page].json`** (één bestand per pagina/module). Plus `common.json` voor gedeelde labels (knoppen, statussen).
-- Talen **altijd samen**: `nl`, `en`, `fr`, `de`. Uitbreidbaar (es, it, …) — talenlijst is data-gedreven.
+- Talen **altijd samen**: `nl`, `en`, `fr`, `de`, `es`. Uitbreidbaar (it, …) — talenlijst is data-gedreven.
 - Bestanden **minimaal houden (hard)**: **alleen** sleutels die op het scherm écht gebruikt worden. Geen ongebruikte/legacy keys, geen duplicaten, geen "voor het geval dat". Volledig herschreven vanaf nul; geen oude rommel meeslepen. Bij twijfel: key verwijderen i.p.v. behouden.
 - **Eén sleutel-conventie:** lowercase, punt-genest, betekenisvol: `[page].[sectie].[element]` (bv. `issues.list.empty_title`, `common.button.save`).
 - **Nooit hardcoden** in Blade/PHP. Strikte JSON (geen comments/trailing comma's), UTF-8 **zonder BOM**.
-- Na elke edit: `npm run fix:locales` → `npm run check:locales` → `npm run check:locales:parity`. Vier talen moeten identieke sleutels hebben.
+- Na elke edit: `npm run fix:locales` → `npm run check:locales` → `npm run check:locales:parity`. Alle talen moeten identieke sleutels hebben.
 
 ---
 
