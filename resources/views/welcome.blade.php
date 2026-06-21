@@ -2,7 +2,7 @@
     $locale = app()->getLocale();
 @endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', $locale) }}" data-theme="standard">
+<html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

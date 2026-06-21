@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Users\SetUserLocaleAction;
+use App\Support\ResolveAppLocale;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class LocaleController extends Controller
 {
@@ -16,6 +18,7 @@ class LocaleController extends Controller
     {
         if (in_array($locale, config('locales.supported', []), true)) {
             $request->session()->put('locale', $locale);
+            Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
 
             $user = $request->user();
             if ($user !== null) {

@@ -72,6 +72,23 @@ it('gebruikt browser Italiaans wanneer it wordt aangeboden', function () {
         ->assertSee(__('auth.submit', [], 'it'));
 });
 
+it('schakelt naar Italiaans via /locale/it en toont Italiaanse UI', function () {
+    $user = \App\Models\User::factory()->create(['locale' => 'nl']);
+
+    $this->actingAs($user)
+        ->get('/locale/it')
+        ->assertSessionHas('locale', 'it');
+
+    expect($user->fresh()->locale)->toBe('it');
+
+    $this->actingAs($user)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee(__('common.welcome', [], 'it'))
+        ->assertSee(__('common.button.logout', [], 'it'))
+        ->assertSee('translate="no"', false);
+});
+
 it('cookie prevaleert boven browser taalkeuze', function () {
     $this->withCookie('locale', 'de')
         ->withHeader('Accept-Language', 'fr-BE,fr;q=0.9')

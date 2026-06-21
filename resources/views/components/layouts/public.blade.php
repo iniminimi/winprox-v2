@@ -31,7 +31,7 @@
     }
 @endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" translate="no"
       data-theme="{{ $portalTheme }}"
       @if ($applyTenantCustomTheme || $portalBgUrl)
           style="{{ $tenantCustomThemeVars }}{{ $portalBgUrl ? ' --wp-portal-bg: url(\'' . $portalBgUrl . '?v=' . now()->timestamp . '\');' : '' }}"
