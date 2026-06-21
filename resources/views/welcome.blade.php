@@ -92,6 +92,7 @@
                     <h3>{{ __('welcome.video.widget.title') }}</h3>
                     <p>{{ __('welcome.video.widget.body') }}</p>
                     <a href="{{ route('comparison') }}" class="btn btn--primary">{{ __('welcome.video.widget.link') }}</a>
+                    <div class="wp-welcome-video-widget-glow" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
