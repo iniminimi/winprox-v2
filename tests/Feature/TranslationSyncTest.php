@@ -2,6 +2,8 @@
 
 use App\Actions\Communication\CancelTranslationSyncAction;
 use App\Actions\Communication\CountPendingIssueTranslationsAction;
+use App\Actions\Communication\ReadTranslationSyncStatusAction;
+use App\Actions\Communication\ResetTranslationSyncStatusAction;
 use App\Actions\Communication\RunTranslationSyncPipelineAction;
 use App\Actions\Communication\StartTranslationSyncAction;
 use App\Actions\Communication\TranslateExportItemsAction;
@@ -303,4 +305,47 @@ it('weigert stoppen wanneer er geen actieve run is', function () {
 
     expect(fn () => app(CancelTranslationSyncAction::class)->handle((int) $user->id))
         ->toThrow(RuntimeException::class, 'translation_sync_nothing_to_cancel');
+});
+
+it('zet cancelling na timeout om naar cancelled', function () {
+    config(['translation_sync.cancelling_after_seconds' => 60]);
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    $store->write(TranslationSyncPhase::Cancelling, (int) $user->id, [
+        'total' => 4,
+        'completed' => 4,
+        'message' => 'cancel_requested',
+    ]);
+
+    $status = $store->read();
+    $status['updated_at'] = now()->subMinutes(2)->toIso8601String();
+    \Illuminate\Support\Facades\Storage::disk('local')->put(
+        (string) config('translation_sync.status_path'),
+        json_encode($status, JSON_THROW_ON_ERROR),
+    );
+
+    TranslationSyncCancellation::request();
+
+    $read = app(ReadTranslationSyncStatusAction::class)->handle();
+
+    expect($read['phase'] ?? null)->toBe(TranslationSyncPhase::Cancelled->value)
+        ->and(TranslationSyncCancellation::requested())->toBeFalse();
+});
+
+it('behoudt cancel-flag bij reset tijdens actieve run', function () {
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    $store->write(TranslationSyncPhase::Uploading, (int) $user->id, [
+        'total' => 2,
+        'completed' => 2,
+    ]);
+    TranslationSyncCancellation::request();
+
+    app(ResetTranslationSyncStatusAction::class)->handle();
+
+    expect($store->read())->toBeNull()
+        ->and(TranslationSyncCancellation::requested())->toBeTrue();
 });

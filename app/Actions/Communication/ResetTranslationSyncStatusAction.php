@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Enums\TranslationSyncPhase;
 use App\Support\Translation\TranslationSyncCancellation;
 use App\Support\Translation\TranslationSyncStatusStore;
 
@@ -11,7 +12,14 @@ class ResetTranslationSyncStatusAction
 
     public function handle(): void
     {
-        TranslationSyncCancellation::clear();
+        $current = $this->statusStore->read();
+        $phase = TranslationSyncPhase::tryFrom((string) ($current['phase'] ?? ''));
+        $keepCancelFlag = ($phase?->isActive() ?? false) || TranslationSyncCancellation::requested();
+
         $this->statusStore->clear();
+
+        if (! $keepCancelFlag) {
+            TranslationSyncCancellation::clear();
+        }
     }
 }

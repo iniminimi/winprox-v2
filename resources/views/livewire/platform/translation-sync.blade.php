@@ -1,4 +1,4 @@
-<div class="wp-stack" @if ($isLocalOperator) wire:poll.3s @endif>
+<div class="wp-stack" @if ($shouldPoll ?? false) wire:poll.5s.visible @endif>
     <x-wp-page-head-title
         icon="issues"
         :title="__('platform.translation_sync.title')"
@@ -41,6 +41,7 @@ php artisan queue:work</code></pre>
                     class="btn btn--primary"
                     wire:click="start"
                     wire:loading.attr="disabled"
+                    wire:target="start"
                     @if ($status && in_array($status['phase'] ?? '', ['queued', 'exporting_remote', 'downloading', 'translating', 'uploading', 'importing_remote', 'cancelling'], true) && ! ($isStuck ?? false)) disabled @endif
                 >
                     <x-wp-spinner wire:loading wire:target="start" class="wp-mr-2" />
@@ -53,6 +54,8 @@ php artisan queue:work</code></pre>
                 $phase = (string) ($status['phase'] ?? '');
                 $activePhases = ['queued', 'exporting_remote', 'downloading', 'translating', 'uploading', 'importing_remote', 'cancelling'];
                 $isRunning = in_array($phase, $activePhases, true);
+                $isCancelling = $phase === 'cancelling';
+                $showProgress = $isRunning && ! $isCancelling;
                 $total = (int) ($status['total'] ?? 0);
                 $completed = (int) ($status['completed'] ?? 0);
                 $percent = $total > 0 ? min(100, (int) round(($completed / $total) * 100)) : 0;
@@ -60,7 +63,7 @@ php artisan queue:work</code></pre>
 
             <div class="wp-card wp-card-pad wp-stack-tight" role="status" aria-live="polite">
                 <div class="wp-cluster">
-                    @if ($isRunning)
+                    @if ($showProgress)
                         <x-wp-spinner size="lg" :visible="true" />
                     @endif
                     <h2 class="wp-section-title">{{ __('platform.translation_sync.status_title') }}</h2>
@@ -70,7 +73,18 @@ php artisan queue:work</code></pre>
                     {{ __('platform.translation_sync.phase_' . ($phase ?: 'unknown')) }}
                 </p>
 
-                @if ($isRunning)
+                @if ($isCancelling)
+                    <p class="wp-muted">{{ __('platform.translation_sync.cancelling_hint') }}</p>
+                    <button
+                        type="button"
+                        class="btn btn--warning btn--sm"
+                        wire:click="resetStuck"
+                        wire:loading.attr="disabled"
+                        wire:target="resetStuck"
+                    >
+                        {{ __('platform.translation_sync.reset_stuck') }}
+                    </button>
+                @elseif ($showProgress)
                     @if ($phase === 'translating' && $total > 0)
                         <div
                             class="wp-progress"
@@ -109,27 +123,25 @@ php artisan queue:work</code></pre>
                             <div class="wp-progress__bar"></div>
                         </div>
                     @endif
+
+                    <button
+                        type="button"
+                        class="btn btn--warning btn--sm"
+                        wire:click="stop"
+                        wire:loading.attr="disabled"
+                        wire:target="stop"
+                    >
+                        {{ __('platform.translation_sync.stop') }}
+                    </button>
                 @endif
 
                 @if (! empty($status['updated_at']))
                     <p class="wp-muted">{{ __('platform.translation_sync.status_at', ['datetime' => $status['updated_at']]) }}</p>
                 @endif
 
-                @if ($isRunning && $phase !== 'cancelling')
-                    <button
-                        type="button"
-                        class="btn btn--warning btn--sm"
-                        wire:click="stop"
-                        wire:confirm="{{ __('platform.translation_sync.stop_confirm') }}"
-                        wire:loading.attr="disabled"
-                    >
-                        {{ __('platform.translation_sync.stop') }}
-                    </button>
-                @endif
-
                 @if ($isStuck ?? false)
                     <p class="wp-text-body wp-text-danger">{{ __('platform.translation_sync.stalled') }}</p>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetStuck">
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetStuck" wire:target="resetStuck">
                         {{ __('platform.translation_sync.reset_stuck') }}
                     </button>
                 @endif

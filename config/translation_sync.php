@@ -21,4 +21,7 @@ return [
 
     /** Geen status-update langer dan dit → vastgelopen (SSH/SCP of queue-worker gestopt). */
     'stale_after_seconds' => (int) env('TRANSLATION_SYNC_STALE_AFTER', 1200),
+
+    /** Na stoppen: geen worker-reactie binnen dit aantal seconden → status op Gestopt. */
+    'cancelling_after_seconds' => (int) env('TRANSLATION_SYNC_CANCELLING_AFTER', 90),
 ];

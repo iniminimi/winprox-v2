@@ -58,15 +58,37 @@ final class TranslationSyncStatusStore
             return false;
         }
 
+        if ($phase === TranslationSyncPhase::Cancelling) {
+            return false;
+        }
+
+        return $this->isUpdatedBeforeThreshold($status, (int) config('translation_sync.stale_after_seconds', 1200));
+    }
+
+    public function isCancellingTimedOut(?array $status): bool
+    {
+        if ($status === null) {
+            return false;
+        }
+
+        $phase = TranslationSyncPhase::tryFrom((string) ($status['phase'] ?? ''));
+
+        if ($phase !== TranslationSyncPhase::Cancelling) {
+            return false;
+        }
+
+        return $this->isUpdatedBeforeThreshold($status, (int) config('translation_sync.cancelling_after_seconds', 90));
+    }
+
+    private function isUpdatedBeforeThreshold(array $status, int $thresholdSeconds): bool
+    {
         $updatedAt = $status['updated_at'] ?? null;
         if (! is_string($updatedAt) || $updatedAt === '') {
             return true;
         }
 
-        $threshold = (int) config('translation_sync.stale_after_seconds', 1200);
-
         return CarbonImmutable::parse($updatedAt)
-            ->addSeconds($threshold)
+            ->addSeconds($thresholdSeconds)
             ->isPast();
     }
 }

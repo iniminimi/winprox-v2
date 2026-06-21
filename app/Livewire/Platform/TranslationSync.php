@@ -7,6 +7,7 @@ use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
 use App\Actions\Communication\ResetTranslationSyncStatusAction;
 use App\Actions\Communication\StartTranslationSyncAction;
+use App\Enums\TranslationSyncPhase;
 use App\Support\Translation\TranslationSyncStatusStore;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -54,9 +55,15 @@ class TranslationSync extends Component
     {
         $this->authorize('runTranslationSync', User::class);
 
+        $status = app(TranslationSyncStatusStore::class)->read();
+        $wasCancelling = ($status['phase'] ?? '') === TranslationSyncPhase::Cancelling->value;
+
         $reset->handle();
+
         $this->flashType = 'success';
-        $this->flashMessage = __('platform.translation_sync.reset_stuck_done');
+        $this->flashMessage = $wasCancelling
+            ? __('platform.translation_sync.reset_stuck_cancelling')
+            : __('platform.translation_sync.reset_stuck_done');
     }
 
     public function start(StartTranslationSyncAction $start): void
@@ -89,10 +96,13 @@ class TranslationSync extends Component
 
         $status = $isLocalOperator ? $readStatus->handle() : null;
         $statusStore = app(TranslationSyncStatusStore::class);
+        $phase = TranslationSyncPhase::tryFrom((string) ($status['phase'] ?? ''));
 
         return view('livewire.platform.translation-sync', [
             'status' => $status,
+            'phase' => $phase?->value,
             'isStuck' => $status !== null && $statusStore->isStale($status),
+            'shouldPoll' => $isLocalOperator && $phase !== null && $phase->isActive(),
             'isLocalOperator' => $isLocalOperator,
             'useSyncQueue' => config('queue.default') === 'sync',
             'pendingCount' => $countPending->handle(),
