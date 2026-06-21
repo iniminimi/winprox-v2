@@ -94,7 +94,21 @@ body.wp-shell:has(.wp-manual-root) {
 
 .wp-manual-print-toolbar__locales {
     display: flex;
-    gap: 0.4rem;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.wp-manual-print-toolbar__locales .wp-lang-select {
+    width: 100%;
+}
+
+.wp-manual-print-toolbar__locales .wp-lang-select--inline .wp-lang-select-trigger {
+    width: 100%;
+    justify-content: center;
+}
+
+.wp-manual-print-toolbar__locales .wp-lang-select-menu {
+    z-index: 110;
 }
 
 .wp-manual-print-hint {

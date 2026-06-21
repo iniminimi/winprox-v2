@@ -5,6 +5,7 @@
 @php
     $variant = $variant ?? 'inline';
     $driver = $driver ?? 'route';
+    $livewireMethod = $livewireMethod ?? 'switchLocale';
     $current = app()->getLocale();
     $labels = config('locales.labels', []);
     $currentLabel = $labels[$current] ?? strtoupper($current);
@@ -30,7 +31,7 @@
                 <button type="button"
                         role="listitem"
                         wire:key="lang-{{ $code }}"
-                        wire:click="switchLocale('{{ $code }}')"
+                        wire:click="{{ $livewireMethod }}('{{ $code }}')"
                         @class(['wp-lang-select-option', 'is-active' => $current === $code])
                         @if ($current === $code) aria-current="true" @endif>
                     <span class="notranslate" translate="no">{{ $label }}</span>

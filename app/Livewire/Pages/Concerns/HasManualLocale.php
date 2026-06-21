@@ -10,8 +10,6 @@ use Livewire\Attributes\Url;
 
 trait HasManualLocale
 {
-    public array $availableLocales = ['nl', 'fr', 'en', 'de'];
-
     #[Url(keep: true)]
     public string $lang = '';
 
@@ -20,16 +18,23 @@ trait HasManualLocale
 
     protected function mountManualLocale(): void
     {
-        if ($this->lang !== '' && in_array($this->lang, $this->availableLocales, true)) {
+        $supported = config('locales.supported', []);
+
+        if ($this->lang !== '' && in_array($this->lang, $supported, true)) {
             App::setLocale($this->lang);
         } else {
             $this->lang = App::getLocale();
+
+            if (! in_array($this->lang, $supported, true)) {
+                $this->lang = (string) config('locales.default', 'nl');
+                App::setLocale($this->lang);
+            }
         }
     }
 
     protected function changeManualLocale(string $locale, string $routeName): void
     {
-        if (! in_array($locale, $this->availableLocales, true)) {
+        if (! in_array($locale, config('locales.supported', []), true)) {
             return;
         }
 

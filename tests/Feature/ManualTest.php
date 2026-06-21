@@ -342,6 +342,30 @@ it('rendert Franse teksten wanneer ?lang=fr wordt meegegeven', function () {
         ->assertSee('Tâches', false);
 });
 
+it('toont taal-dropdown met alle supported locales op de handleiding', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $response = $this->actingAs($admin)
+        ->get(route('manual.general'))
+        ->assertOk()
+        ->assertSee('wp-lang-select', false);
+
+    foreach (config('locales.labels', []) as $label) {
+        $response->assertSee($label, false);
+    }
+});
+
+it('rendert Italiaanse teksten wanneer ?lang=it wordt meegegeven', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get(route('manual.general', ['lang' => 'it']))
+        ->assertOk()
+        ->assertSee('Segnalazioni', false);
+});
+
 it('rendert de handleiding via de print-layout (geen app-navigatie)', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();

@@ -9,15 +9,13 @@
     </div>
     <p class="wp-manual-print-hint">{{ __('manual.cover.print_hint') }}</p>
     <div class="wp-manual-print-toolbar__locales">
-      @foreach ($this->availableLocales as $locale)
-        <button
-          type="button"
-          class="btn btn--sm {{ $locale === $lang ? 'btn--primary' : 'btn--ghost' }}"
-          wire:click="changeLocale('{{ $locale }}')"
-        >
-          {{ strtoupper($locale) }}
-        </button>
-      @endforeach
+      <div class="wp-lang wp-lang--inline">
+        @include('partials.wp-lang-select', [
+            'variant' => 'inline',
+            'driver' => 'livewire',
+            'livewireMethod' => 'changeLocale',
+        ])
+      </div>
     </div>
   </div>
 
