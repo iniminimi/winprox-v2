@@ -182,6 +182,13 @@
         "phase_unknown": "Onbekend",
         "stalled": "De vertaal-run lijkt vastgelopen (geen update meer). Controleer of php artisan queue:work nog draait in PowerShell. SSH/SCP kan hangen na het vertalen.",
         "reset_stuck": "Status wissen en opnieuw proberen",
-        "reset_stuck_done": "Status gewist. Start opnieuw als queue:work nog draait."
+        "reset_stuck_done": "Status gewist. Start opnieuw als queue:work nog draait.",
+        "stop": "Vertaling stoppen",
+        "stop_confirm": "Weet u zeker dat u de lopende vertaal-run wilt stoppen?",
+        "stop_requested": "Stoppen aangevraagd — wacht tot de huidige stap klaar is.",
+        "nothing_to_cancel": "Er loopt geen vertaal-run om te stoppen.",
+        "cancelled_note": "De vertaal-run is gestopt. Niets is geïmporteerd op de server.",
+        "phase_cancelling": "Stoppen…",
+        "phase_cancelled": "Gestopt"
     }
 }

@@ -6,6 +6,7 @@ use App\Contracts\TranslationSyncRemoteClient;
 use App\Enums\TranslationSyncPhase;
 use App\Jobs\RunTranslationSyncJob;
 use App\Support\Translation\TranslationSyncRemoteGateway;
+use App\Support\Translation\TranslationSyncCancellation;
 use App\Support\Translation\TranslationSyncStatusStore;
 use Illuminate\Support\Facades\Cache;
 use InvalidArgumentException;
@@ -38,6 +39,8 @@ class StartTranslationSyncAction
                     throw new RuntimeException('translation_sync_already_running');
                 }
             }
+
+            TranslationSyncCancellation::clear();
 
             $this->statusStore->write(TranslationSyncPhase::Queued, $actorUserId, [
                 'started_at' => now()->toIso8601String(),

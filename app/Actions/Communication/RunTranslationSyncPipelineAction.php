@@ -5,6 +5,8 @@ namespace App\Actions\Communication;
 use App\Contracts\TranslationSyncRemoteClient;
 use App\Enums\TranslationSyncPhase;
 use App\Support\Translation\TranslationSyncRemoteGateway;
+use App\Support\Translation\TranslationSyncCancelledException;
+use App\Support\Translation\TranslationSyncCancellation;
 use App\Support\Translation\TranslationSyncStatusStore;
 use Illuminate\Support\Facades\File;
 use InvalidArgumentException;
@@ -33,6 +35,8 @@ class RunTranslationSyncPipelineAction
         File::ensureDirectoryExists($workDir);
 
         try {
+            $this->assertNotCancelled();
+
             $this->statusStore->write(TranslationSyncPhase::ExportingRemote, $actorUserId, [
                 'started_at' => now()->toIso8601String(),
                 'message' => null,
@@ -40,9 +44,13 @@ class RunTranslationSyncPipelineAction
 
             $this->remote->runExportOnRemote();
 
+            $this->assertNotCancelled();
+
             $this->statusStore->write(TranslationSyncPhase::Downloading, $actorUserId);
 
             $this->remote->downloadExport($exportPath);
+
+            $this->assertNotCancelled();
 
             $payload = json_decode(File::get($exportPath), true);
             if (! is_array($payload)) {
@@ -78,6 +86,8 @@ class RunTranslationSyncPipelineAction
             $translatedItems = $this->translateExportItems->handle(
                 $items,
                 function (int $completed, int $itemTotal, array $current) use ($actorUserId, $total): void {
+                    $this->assertNotCancelled();
+
                     $this->statusStore->write(TranslationSyncPhase::Translating, $actorUserId, [
                         'total' => $itemTotal,
                         'completed' => $completed,
@@ -89,7 +99,10 @@ class RunTranslationSyncPipelineAction
                         'current_locale' => $current['locale'] ?? null,
                     ]);
                 },
+                fn (): bool => TranslationSyncCancellation::requested(),
             );
+
+            $this->assertNotCancelled();
 
             File::put($importPath, json_encode([
                 'exported_at' => $payload['exported_at'] ?? now()->toIso8601String(),
@@ -102,6 +115,8 @@ class RunTranslationSyncPipelineAction
             ]);
 
             $this->remote->uploadImport($importPath);
+
+            $this->assertNotCancelled();
 
             $this->statusStore->write(TranslationSyncPhase::ImportingRemote, $actorUserId, [
                 'total' => $total,
@@ -123,6 +138,18 @@ class RunTranslationSyncPipelineAction
                 'total' => $total,
                 'imported' => $imported,
             ];
+        } catch (TranslationSyncCancelledException) {
+            $this->statusStore->write(TranslationSyncPhase::Cancelled, $actorUserId, [
+                'finished_at' => now()->toIso8601String(),
+                'message' => 'cancelled',
+            ]);
+            TranslationSyncCancellation::clear();
+
+            return [
+                'total' => 0,
+                'imported' => 0,
+                'cancelled' => true,
+            ];
         } catch (\Throwable $exception) {
             $this->statusStore->write(TranslationSyncPhase::Failed, $actorUserId, [
                 'finished_at' => now()->toIso8601String(),
@@ -130,6 +157,13 @@ class RunTranslationSyncPipelineAction
             ]);
 
             throw $exception;
+        }
+    }
+
+    private function assertNotCancelled(): void
+    {
+        if (TranslationSyncCancellation::requested()) {
+            throw new TranslationSyncCancelledException('translation_sync_cancelled');
         }
     }
 }

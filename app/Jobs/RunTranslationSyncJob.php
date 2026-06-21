@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Actions\Communication\RunTranslationSyncPipelineAction;
 use App\Enums\TranslationSyncPhase;
+use App\Support\Translation\TranslationSyncCancelledException;
 use App\Support\Translation\TranslationSyncStatusStore;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -27,8 +28,16 @@ class RunTranslationSyncJob implements ShouldQueue
 
     public function failed(?Throwable $exception): void
     {
+        if ($exception instanceof TranslationSyncCancelledException) {
+            return;
+        }
+
         $status = app(TranslationSyncStatusStore::class)->read();
         $phase = TranslationSyncPhase::tryFrom((string) ($status['phase'] ?? ''));
+
+        if (in_array($phase, [TranslationSyncPhase::Cancelled, TranslationSyncPhase::Cancelling], true)) {
+            return;
+        }
 
         if ($phase?->isActive()) {
             app(TranslationSyncStatusStore::class)->write(TranslationSyncPhase::Failed, $this->actorUserId, [

@@ -182,6 +182,13 @@
         "phase_unknown": "Unknown",
         "stalled": "The translation run appears stuck (no recent updates). Check that php artisan queue:work is still running in PowerShell. SSH/SCP may hang after translating.",
         "reset_stuck": "Clear status and try again",
-        "reset_stuck_done": "Status cleared. Start again if queue:work is still running."
+        "reset_stuck_done": "Status cleared. Start again if queue:work is still running.",
+        "stop": "Stop translation",
+        "stop_confirm": "Are you sure you want to stop the running translation sync?",
+        "stop_requested": "Stop requested — waiting for the current step to finish.",
+        "nothing_to_cancel": "No translation run is in progress to stop.",
+        "cancelled_note": "The translation run was stopped. Nothing was imported on the server.",
+        "phase_cancelling": "Stopping…",
+        "phase_cancelled": "Stopped"
     }
 }

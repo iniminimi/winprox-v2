@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Communication\CancelTranslationSyncAction;
 use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
 use App\Actions\Communication\ResetTranslationSyncStatusAction;
@@ -26,6 +27,27 @@ class TranslationSync extends Component
     public function mount(): void
     {
         $this->authorize('runTranslationSync', User::class);
+    }
+
+    public function stop(CancelTranslationSyncAction $cancel): void
+    {
+        $this->authorize('runTranslationSync', User::class);
+
+        $user = auth()->user();
+        if ($user === null) {
+            return;
+        }
+
+        try {
+            $cancel->handle((int) $user->id);
+            $this->flashType = 'success';
+            $this->flashMessage = __('platform.translation_sync.stop_requested');
+        } catch (\RuntimeException $e) {
+            if ($e->getMessage() === 'translation_sync_nothing_to_cancel') {
+                $this->flashType = 'error';
+                $this->flashMessage = __('platform.translation_sync.nothing_to_cancel');
+            }
+        }
     }
 
     public function resetStuck(ResetTranslationSyncStatusAction $reset): void

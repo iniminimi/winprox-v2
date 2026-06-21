@@ -4,6 +4,7 @@ namespace App\Actions\Communication;
 
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Translation\LocaleSupport;
+use App\Support\Translation\TranslationSyncCancelledException;
 
 class TranslateExportItemsAction
 {
@@ -13,12 +14,16 @@ class TranslateExportItemsAction
      * @param  list<array<string, mixed>>  $items
      * @return list<array<string, mixed>>
      */
-    public function handle(array $items, ?callable $onProgress = null): array
+    public function handle(array $items, ?callable $onProgress = null, ?callable $shouldAbort = null): array
     {
         $total = count($items);
         $translated = [];
 
         foreach ($items as $index => $item) {
+            if ($shouldAbort !== null && $shouldAbort()) {
+                throw new TranslationSyncCancelledException('translation_sync_cancelled');
+            }
+
             $issueId = (int) ($item['issue_id'] ?? 0);
             $announcementId = (int) ($item['announcement_id'] ?? 0);
             $unitId = (int) ($item['unit_id'] ?? 0);

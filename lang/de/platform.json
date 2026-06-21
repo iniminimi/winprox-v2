@@ -182,6 +182,13 @@
         "phase_unknown": "Unbekannt",
         "stalled": "Der Übersetzungslauf scheint hängen zu bleiben (keine Aktualisierung mehr). Prüfen Sie, ob php artisan queue:work in PowerShell noch läuft. SSH/SCP kann nach dem Übersetzen hängen.",
         "reset_stuck": "Status löschen und erneut versuchen",
-        "reset_stuck_done": "Status gelöscht. Starten Sie erneut, wenn queue:work noch läuft."
+        "reset_stuck_done": "Status gelöscht. Starten Sie erneut, wenn queue:work noch läuft.",
+        "stop": "Übersetzung stoppen",
+        "stop_confirm": "Möchten Sie den laufenden Übersetzungslauf wirklich stoppen?",
+        "stop_requested": "Stopp angefordert — warten auf Abschluss des aktuellen Schritts.",
+        "nothing_to_cancel": "Kein Übersetzungslauf läuft, der gestoppt werden könnte.",
+        "cancelled_note": "Der Übersetzungslauf wurde gestoppt. Nichts wurde auf dem Server importiert.",
+        "phase_cancelling": "Wird gestoppt…",
+        "phase_cancelled": "Gestoppt"
     }
 }

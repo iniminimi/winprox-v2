@@ -182,6 +182,13 @@
         "phase_unknown": "Sconosciuto",
         "stalled": "La sincronizzazione sembra bloccata (nessun aggiornamento recente). Verifichi che php artisan queue:work sia ancora in esecuzione in PowerShell. SSH/SCP può bloccarsi dopo la traduzione.",
         "reset_stuck": "Cancella stato e riprova",
-        "reset_stuck_done": "Stato cancellato. Riavvii se queue:work è ancora in esecuzione."
+        "reset_stuck_done": "Stato cancellato. Riavvii se queue:work è ancora in esecuzione.",
+        "stop": "Interrompi traduzione",
+        "stop_confirm": "Vuole davvero interrompere la sincronizzazione in corso?",
+        "stop_requested": "Interruzione richiesta — in attesa del completamento del passaggio corrente.",
+        "nothing_to_cancel": "Nessuna sincronizzazione in corso da interrompere.",
+        "cancelled_note": "La sincronizzazione è stata interrotta. Nulla è stato importato sul server.",
+        "phase_cancelling": "Interruzione…",
+        "phase_cancelled": "Interrotta"
     }
 }

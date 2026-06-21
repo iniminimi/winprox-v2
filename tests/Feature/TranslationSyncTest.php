@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Communication\CancelTranslationSyncAction;
 use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\RunTranslationSyncPipelineAction;
 use App\Actions\Communication\StartTranslationSyncAction;
@@ -14,6 +15,7 @@ use App\Models\Issue;
 use App\Models\IssueTranslation;
 use App\Models\Tenant;
 use App\Services\Translation\TranslationProviderInterface;
+use App\Support\Translation\TranslationSyncCancellation;
 use App\Support\Translation\TranslationSyncStatusStore;
 use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
@@ -251,4 +253,54 @@ it('staat opnieuw starten toe wanneer status vastgelopen is', function () {
 
     Queue::assertPushed(RunTranslationSyncJob::class);
     expect($store->read()['phase'] ?? null)->toBe(TranslationSyncPhase::Queued->value);
+});
+
+it('kan een lopende vertaal-run stoppen tijdens het vertalen', function () {
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        ['issue_id' => 1, 'locale' => 'en', 'source_text' => 'One'],
+        ['issue_id' => 2, 'locale' => 'en', 'source_text' => 'Two'],
+        ['issue_id' => 3, 'locale' => 'en', 'source_text' => 'Three'],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    TranslationSyncCancellation::request();
+
+    $result = app(RunTranslationSyncPipelineAction::class)->handle((int) $user->id);
+
+    expect($result)->toMatchArray(['cancelled' => true, 'imported' => 0])
+        ->and($fake->importRuns)->toBe(0);
+
+    $status = $store->read();
+    expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Cancelled->value);
+    expect(TranslationSyncCancellation::requested())->toBeFalse();
+});
+
+it('toont stop-knop en vraagt annulering aan via livewire', function () {
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    $store->write(TranslationSyncPhase::Translating, (int) $user->id, [
+        'total' => 10,
+        'completed' => 3,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(PlatformTranslationSync::class)
+        ->assertSee(__('platform.translation_sync.stop'))
+        ->call('stop')
+        ->assertSee(__('platform.translation_sync.stop_requested'));
+
+    expect($store->read()['phase'] ?? null)->toBe(TranslationSyncPhase::Cancelling->value)
+        ->and(TranslationSyncCancellation::requested())->toBeTrue();
+});
+
+it('weigert stoppen wanneer er geen actieve run is', function () {
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+
+    expect(fn () => app(CancelTranslationSyncAction::class)->handle((int) $user->id))
+        ->toThrow(RuntimeException::class, 'translation_sync_nothing_to_cancel');
 });

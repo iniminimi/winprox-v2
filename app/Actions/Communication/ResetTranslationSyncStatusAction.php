@@ -2,6 +2,7 @@
 
 namespace App\Actions\Communication;
 
+use App\Support\Translation\TranslationSyncCancellation;
 use App\Support\Translation\TranslationSyncStatusStore;
 
 class ResetTranslationSyncStatusAction
@@ -10,6 +11,7 @@ class ResetTranslationSyncStatusAction
 
     public function handle(): void
     {
+        TranslationSyncCancellation::clear();
         $this->statusStore->clear();
     }
 }
