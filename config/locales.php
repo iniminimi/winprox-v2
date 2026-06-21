@@ -7,7 +7,7 @@
 return [
     'default' => 'nl',
 
-    'supported' => ['nl', 'en', 'fr', 'de', 'es'],
+    'supported' => ['nl', 'en', 'fr', 'de', 'es', 'it'],
 
     'labels' => [
         'nl' => 'NL',
@@ -15,5 +15,6 @@ return [
         'fr' => 'FR',
         'de' => 'DE',
         'es' => 'ES',
+        'it' => 'IT',
     ],
 ];

@@ -1,0 +1,220 @@
+{
+    "social": {
+        "og_title": "Portale segnalazioni WinProx",
+        "og_description": "Scansioni il codice QR per segnalare un problema o seguire le attività — nessun account richiesto."
+    },
+    "back": "Indietro",
+    "welcome_title": "Benvenuto nel portale :tenant",
+    "offline_message": "Nessuna connessione internet. Si sposti in un luogo con copertura per avviare o terminare attività.",
+    "pending_review": "In attesa di revisione",
+    "issues_empty": "Non ci sono ancora segnalazioni.",
+    "inactive": {
+        "title": "Non disponibile",
+        "location_inactive": "Questo portale non è attualmente disponibile.",
+        "unit_inactive": "Questo portale non è attualmente disponibile.",
+        "team_inactive": "Questo portale team non è attualmente disponibile.",
+        "tenant_inactive": "Questo portale non è attualmente disponibile per questa organizzazione.",
+        "subscription_inactive": "Questo portale è temporaneamente non disponibile. Contatti il Suo amministratore."
+    },
+    "issue": {
+        "awaiting_review_hint": "La Sua segnalazione è in revisione prima che i dettagli diventino visibili ad altri.",
+        "list_line": "Segnalazione (nr :nr): :description",
+        "updates_title": "Aggiornamenti"
+    },
+    "location": {
+        "units_title": "Unità in questa sede",
+        "units_hint": "Scelga un'unità per una segnalazione specifica, oppure invii una segnalazione generale senza unità qui sotto."
+    },
+    "tiles": {
+        "new": "Nuova segnalazione",
+        "new_sub": "Clicchi qui e segnali un problema",
+        "issues": "Segnalazioni",
+        "open_tasks": "Attività aperte",
+        "announcements": "Annunci",
+        "documents": "Documenti"
+    },
+    "report": {
+        "title": "Crea una segnalazione",
+        "description": "Qual è il problema?",
+        "description_placeholder": "Descriva il problema nel modo più chiaro possibile.",
+        "reporter_email": "Indirizzo e-mail",
+        "reporter_first_name_ph": "Nome (facoltativo)",
+        "reporter_last_name_ph": "Cognome (facoltativo)",
+        "reporter_email_ph": "E-mail (facoltativo)",
+        "submit": "Invia segnalazione",
+        "submit_loading": "Invio in corso...",
+        "sent": "Grazie, la Sua segnalazione è stata ricevuta e sarà revisionata.",
+        "photos": {
+            "label": "Foto (max. 4)",
+            "add": "Aggiungi foto",
+            "hint": "Fino a 4 foto. Vengono ridimensionate automaticamente prima dell'invio.",
+            "uploading": "Caricamento foto…",
+            "ready": "Foto pronte."
+        },
+        "errors": {
+            "description_required": "Descriva la segnalazione.",
+            "description_max": "La descrizione è troppo lunga (max. 500 caratteri).",
+            "reporter_email_invalid": "Inserisca un indirizzo e-mail valido.",
+            "photos_max": "Può aggiungere fino a 4 foto.",
+            "photos_image": "Sono consentite solo immagini.",
+            "photos_size": "Una foto è troppo grande.",
+            "photos_qr_missing": "Non c'è un codice QR attivo collegato a questa unità. Le foto non possono essere salvate.",
+            "photos_failed": "Le foto non sono state salvate. Riprovi.",
+            "cooldown": "Ha appena inviato una segnalazione. Per prevenire spam, può inviare una nuova segnalazione per questa unità tra :seconds secondi.",
+            "rate_limited": "Ha raggiunto il massimo di :max segnalazioni per questa unità. Riprovi tra :minutes minuti."
+        }
+    },
+    "worker": {
+        "title": "Accedi come lavoratore",
+        "identify_hint": "Inserisca il Suo nome per vedere le Sue attività.",
+        "first_name": "Nome",
+        "last_name": "Cognome",
+        "continue": "Continua",
+        "verify_hint": "Confermi la Sua icona personale",
+        "attempts_left": ":count tentativo/i rimanente/i.",
+        "confirm_icon": "Conferma",
+        "different_worker": "Accedi come altro lavoratore",
+        "no_workers": "Non ci sono ancora lavoratori per questo team. L'onboarding avviene tramite il team QR.",
+        "wrong_team": "Questo dispositivo appartiene a un altro team.",
+        "signed_in": "È connesso.",
+        "signed_in_as": "Connesso come",
+        "sign_out": "Esci",
+        "open_tasks": "Attività aperte",
+        "open_tasks_with_count": "Attività aperte: :count",
+        "task_heading": "Attività (nr :nr)",
+        "issue_heading": "Segnalazione (nr :nr)",
+        "issue_meta": ":description, :datetime",
+        "photos_offline_not_supported": "Le foto non sono supportate in modalità offline.",
+        "no_open_tasks": "Nessuna attività aperta.",
+        "start_task": "Avvia attività",
+        "complete_task": "Completa attività",
+        "note": "Nota",
+        "note_placeholder": "Nota facoltativa sul completamento.",
+        "photos": "Foto (max. 4)",
+        "confirm_complete": "Conferma completamento",
+        "task_started": "Attività avviata.",
+        "task_completed": "Attività completata.",
+        "navigate_to_location": "Naviga verso la sede",
+        "offline_notice": "È offline. Il cambio di stato verrà salvato ed elaborato alla riconnessione.",
+        "syncing": "Sincronizzazione",
+        "errors": {
+            "name_required": "Inserisca nome e cognome.",
+            "identify_unknown": "Non abbiamo trovato un lavoratore con questo nome.",
+            "identify_ambiguous": "Ci sono diversi lavoratori con questo nome. Contatti il Suo amministratore.",
+            "blocked": "È bloccato dopo troppi tentativi. Contatti il Suo amministratore.",
+            "icon_required": "Scelga la Sua icona personale.",
+            "icon_wrong": "Non è l'icona corretta.",
+            "note_max": "La nota è troppo lunga (max. 500 caratteri).",
+            "no_permission": "Non ha l'autorizzazione per farlo."
+        }
+    },
+    "team": {
+        "title": "Panoramica team",
+        "read_only_hint": "Questa è una panoramica. Il completamento delle attività è possibile solo tramite il QR unità sul posto.",
+        "onboarding_done": "È registrato e connesso.",
+        "icon_taken": "Questa icona è già in uso. Ne scelga un'altra.",
+        "register": {
+            "title": "Nuovo lavoratore",
+            "hint": "Inserisca il Suo nome e scelga un'icona personale.",
+            "empty_team_hint": "Non ci sono ancora lavoratori per questo team. Si registri per iniziare.",
+            "choose_icon": "Scelga la Sua icona personale",
+            "submit": "Registrati",
+            "cta": "Registra un nuovo lavoratore"
+        }
+    },
+    "teamleader": {
+        "title": "Rilascia icona collega",
+        "open": "Rilascia",
+        "hint": "Solo capisquadra: scelga un collega bloccato e rilasci la sua icona dopo il blocco.",
+        "confirm_own_icon": "Confermi prima la Sua icona",
+        "choose_blocked_colleague": "Scelga un collega bloccato",
+        "no_blocked_colleagues": "Non ci sono colleghi bloccati in questo team.",
+        "submit": "Rilascia collega",
+        "released_ok": ":name è stato rilasciato e può scegliere di nuovo un'icona.",
+        "manage_workers_title": "Gestisci lavoratori",
+        "manage_workers_open": "Gestisci",
+        "manage_workers_hint": "Aggiunga o rimuova lavoratori dal team.",
+        "worker_first_name": "Nome",
+        "worker_last_name": "Cognome",
+        "add_worker_title": "Aggiungi lavoratore",
+        "add_worker": "Aggiungi",
+        "add_another_worker": "Aggiungi un altro lavoratore",
+        "scan_to_login": "Scansiona per accedere",
+        "qr_hint": "Faccia scansionare questo codice QR al nuovo collega per accedere.",
+        "delete": "Elimina",
+        "delete_confirm": "Eliminare :name?",
+        "worker_added": "Lavoratore aggiunto.",
+        "worker_deleted": ":name eliminato.",
+        "no_workers": "Non ci sono ancora lavoratori in questo team.",
+        "badge": "Caposquadra",
+        "errors": {
+            "icon_wrong": "Non è la Sua icona.",
+            "colleague_required": "Scelga un collega bloccato.",
+            "colleague_not_found": "Questo collega non è bloccato o non è nel Suo team.",
+            "cannot_release": "Questo collega non può essere rilasciato.",
+            "cannot_delete_self": "Non può eliminare se stesso."
+        }
+    },
+    "documents": {
+        "download": "Scarica",
+        "verification_required": "Solo lavoratori sul campo connessi",
+        "staff_only": "Non disponibile pubblicamente",
+        "published": "Pubblicato il :date",
+        "empty": "Non ci sono documenti."
+    },
+    "announcements": {
+        "empty": "Non ci sono annunci."
+    },
+    "worker_icon": {
+        "heart": "Heart",
+        "plane": "Plane",
+        "car": "Car",
+        "star": "Star",
+        "zap": "Lightning",
+        "gem": "Gem",
+        "crown": "Crown",
+        "moon": "Moon",
+        "bell": "Bell",
+        "leaf": "Leaf",
+        "key": "Key",
+        "anchor": "Anchor"
+    },
+    "unassigned_qr": {
+        "title": "(ri)collega un'unità",
+        "subtitle": "Codice QR dinamico - (ri)collega a un'unità",
+        "sticker_number": "Numero adesivo",
+        "description": "Effettui l'accesso per collegare questo codice QR a un'unità. Dopo il collegamento, può usare questo codice QR per inviare segnalazioni.",
+        "login_button": "Accedi",
+        "no_permission": "Non ha l'autorizzazione per collegare codici QR."
+    },
+    "qr_binding": {
+        "photos": {
+            "label": "Foto del collegamento",
+            "add": "Aggiungi foto"
+        }
+    },
+    "unit": {
+        "current_photos": "Foto unità",
+        "update_photos": "Aggiorna foto",
+        "update_photos_hint": "Aggiunga fino a 4 foto per documentare la situazione dell'unità. Scatti una foto ravvicinata del codice QR e una da più lontano.",
+        "view_only_hint": "Visualizzi le foto dell'adesivo come riferimento.",
+        "delete_photo_confirm": "Eliminare questa foto?",
+        "photos_submit": "Salva foto",
+        "photos_submit_loading": "Salvataggio...",
+        "photos_updated": "Foto aggiunte con successo!",
+        "upload_failed_offline": "Caricamento non riuscito. Verifichi la connessione internet e riprovi.",
+        "capture_gps": "Registra posizione GPS",
+        "recapture_gps": "(Ri)registra posizione GPS",
+        "capturing_gps": "Acquisizione GPS...",
+        "gps_updated": "Coordinate GPS registrate!",
+        "gps_denied_hint": "Consentire la posizione per questo sito nel browser (icona lucchetto nella barra indirizzi → Posizione → Consenti) e aggiorni la pagina. Oppure inserisca le coordinate manualmente qui sotto.",
+        "background_photo_title": "Foto ambiente",
+        "background_photo_add": "Aggiungi foto ambiente",
+        "background_photo_hint": "Scatti una foto dell'ambiente circostante. Questa foto sarà usata come immagine di sfondo per questa unità (refresh).",
+        "background_photo_save": "Salva",
+        "background_photo_saving": "Salvataggio...",
+        "background_photo_updated": "Foto ambiente salvata.",
+        "background_photo_deleted": "Foto ambiente rimossa.",
+        "background_photo_delete_confirm": "Rimuovere questa foto ambiente?"
+    }
+}

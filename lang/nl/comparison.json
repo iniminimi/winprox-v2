@@ -22,7 +22,7 @@
             {"label": "Onderhoudskosten", "other": "Duur, afgestemd op lange termijn", "winprox": "QR-codes zonder kosten; onderhoud via team + team-QR."},
             {"label": "Veiligheid", "other": "Omvangrijke veldwerkers trainen", "winprox": "Werknemers verifiëren via naam + persoonlijk icoon via team-QR."},
             {"label": "Prijzen", "other": "Enterprise licenties, maandelijkse cijfers, vaak per module", "winprox": "Transparant abonnement, schaalbaar per gebruik of team."},
-            {"label": "Talen", "other": "Vaak enkel Nederlands", "winprox": "Nederlands, Frans, Engels, Duits, Spaans — volledig ingebouwd."}
+            {"label": "Talen", "other": "Vaak enkel Nederlands", "winprox": "Alle ondersteunde talen — volledig ingebouwd."}
         ]
     },
     "cta": {

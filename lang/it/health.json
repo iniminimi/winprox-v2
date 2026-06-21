@@ -1,0 +1,34 @@
+{
+    "title": "Controllo integrità configurazione",
+    "subtitle": "Panoramica di sedi, unità e categorie incomplete.",
+    "widget": {
+        "kicker": "Configurazione",
+        "title": "Health check",
+        "issues": "{0} Nessuna azione richiesta|{1} :count azione richiesta|[2,*] :count azioni richieste"
+    },
+    "donut_aria": "Configurazione :percent percento completa",
+    "summary": {
+        "title": "Completezza",
+        "complete": ":complete di :total record configurati correttamente",
+        "all_ok": "Tutte le sedi, unità e categorie attive sono configurate correttamente.",
+        "issues": "{0} Nessuna azione aperta|{1} :count azione aperta|[2,*] :count azioni aperte"
+    },
+    "list": {
+        "title": "Azioni richieste",
+        "empty_filter": "Nessuna azione per questo filtro."
+    },
+    "filter": {
+        "label": "Filtra per tipo",
+        "all": "Tutti i tipi"
+    },
+    "fix": "Correggi",
+    "no_location": "Nessuna sede",
+    "unnamed_location": "Sede senza nome",
+    "issue": {
+        "unit_photo": "Unità senza foto",
+        "category_team": "Categoria senza team",
+        "location_address": "Sede senza indirizzo",
+        "category_team_hint": "Colleghi almeno un team",
+        "location_address_hint": "Inserisca via, CAP e città"
+    }
+}

@@ -22,7 +22,7 @@
             {"label": "Wartungskosten", "other": "Teuer, langfristig ausgerichtet", "winprox": "QR-Codes ohne Kosten; Wartung via Team + Team-QR."},
             {"label": "Sicherheit", "other": "Umfangreiche Schulung von Außendienstmitarbeitern", "winprox": "Mitarbeiter verifizieren sich per Name + persönlichem Icon via Team-QR."},
             {"label": "Preise", "other": "Enterprise-Lizenzen, monatliche Zahlen, oft pro Modul", "winprox": "Transparentes Abonnement, skalierbar pro Benutzer oder Team."},
-            {"label": "Sprachen", "other": "Oft nur Niederländisch", "winprox": "Niederländisch, Französisch, Englisch, Deutsch, Spanisch — vollständig eingebaut."}
+            {"label": "Sprachen", "other": "Oft nur Niederländisch", "winprox": "Alle unterstützten Sprachen — vollständig eingebaut."}
         ]
     },
     "cta": {

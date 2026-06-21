@@ -65,6 +65,13 @@ it('gebruikt browser Spaans wanneer es wordt aangeboden', function () {
         ->assertSee(__('auth.submit', [], 'es'));
 });
 
+it('gebruikt browser Italiaans wanneer it wordt aangeboden', function () {
+    $this->withHeader('Accept-Language', 'it-IT,it;q=0.9')
+        ->get(route('login'))
+        ->assertOk()
+        ->assertSee(__('auth.submit', [], 'it'));
+});
+
 it('cookie prevaleert boven browser taalkeuze', function () {
     $this->withCookie('locale', 'de')
         ->withHeader('Accept-Language', 'fr-BE,fr;q=0.9')

@@ -1,0 +1,39 @@
+{
+    "locations": {
+        "title": "Sedi e unità",
+        "subtitle": "Le Sue sedi e le unità (asset/spazi) al loro interno.",
+        "empty": "Non ci sono ancora sedi.",
+        "no_units": "Nessuna unità in questa sede.",
+        "unit_count": ":count unità"
+    },
+    "tasks": {
+        "title": "Attività",
+        "subtitle": "Panoramica di tutte le attività per team.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    },
+    "calendar": {
+        "title": "Calendario",
+        "subtitle": "Pianifichi attività e manutenzione nel tempo.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    },
+    "subscription": {
+        "title": "Abbonamento",
+        "subtitle": "Gestisca il Suo abbonamento e il periodo di prova.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    },
+    "faq": {
+        "title": "FAQ e knowledge base",
+        "subtitle": "Risposte alle domande frequenti e guide.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    },
+    "legal": {
+        "title": "Documenti legali",
+        "subtitle": "Termini, privacy e altri documenti.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    },
+    "contact": {
+        "title": "Contatto",
+        "subtitle": "Contatti il team WinProx.",
+        "soon": "Questa sezione sarà disponibile a breve."
+    }
+}

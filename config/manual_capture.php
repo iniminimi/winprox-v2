@@ -10,7 +10,7 @@ return [
     'host_header' => env('MANUAL_CAPTURE_HOST'),
     'email' => env('MANUAL_CAPTURE_EMAIL'),
     'password' => env('MANUAL_CAPTURE_PASSWORD'),
-    'locales' => ['nl', 'en', 'fr', 'de', 'es'],
+    'locales' => (require __DIR__.'/locales.php')['supported'],
     'output_dir' => public_path('images/manual'),
     'config_path' => base_path('scripts/manual-capture.config.json'),
     'script_path' => base_path('scripts/capture-manual-screenshots.mjs'),

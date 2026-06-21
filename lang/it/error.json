@@ -1,0 +1,41 @@
+{
+    "default": {
+        "code": "Errore",
+        "title": "Si è verificato un errore",
+        "message": "Riprovi più tardi."
+    },
+    "401": {
+        "title": "Non connesso",
+        "message": "Deve effettuare l'accesso per visualizzare questo contenuto."
+    },
+    "403": {
+        "title": "Accesso negato",
+        "message": "Non ha l'autorizzazione per visualizzare questa pagina."
+    },
+    "404": {
+        "title": "Pagina non trovata",
+        "message": "La pagina che sta cercando non esiste."
+    },
+    "419": {
+        "title": "Pagina scaduta",
+        "message": "Aggiorni la pagina e riprovi."
+    },
+    "429": {
+        "title": "Troppe richieste",
+        "message": "Ha effettuato troppe richieste. Attenda un momento e riprovi."
+    },
+    "500": {
+        "title": "Si è verificato un errore",
+        "message": "Si è verificato un errore interno. Riprovi più tardi."
+    },
+    "503": {
+        "title": "In manutenzione",
+        "message": "WinProx è temporaneamente non disponibile. Riprovi più tardi."
+    },
+    "action": {
+        "home": "Vai alla dashboard",
+        "back": "Indietro",
+        "login": "Accedi",
+        "retry": "Riprova"
+    }
+}

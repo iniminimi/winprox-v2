@@ -1,0 +1,21 @@
+{
+    "title": "Calendario",
+    "subtitle": "Attività e segnalazioni programmate nel tempo.",
+    "briefing": "Stampa briefing",
+    "today": "Oggi",
+    "all_locations": "Tutte le sedi",
+    "empty_day": "Nessuna attività programmata.",
+    "view": {
+        "month": "Mese",
+        "week": "Settimana",
+        "day": "Giorno"
+    },
+    "type": {
+        "tasks": "Attività",
+        "issues": "Segnalazioni"
+    },
+    "period": {
+        "week": "Settimana :start – :end"
+    },
+    "more": "altre"
+}

@@ -1,0 +1,43 @@
+{
+    "outbound": {
+        "greeting_name": "Gentile :name,"
+    },
+    "welcome": {
+        "subject": "Benvenuto su :tenant - Imposta la Sua password",
+        "html_title": "Benvenuto su WinProx",
+        "heading": "Benvenuto su WinProx!",
+        "greeting": "Buongiorno!",
+        "greeting_name": "Buongiorno :name!",
+        "intro": "È stato invitato a unirsi a :tenant su WinProx.",
+        "account_details": "Dettagli del Suo account:\n- E-mail: :email\n- Ruolo: :role",
+        "admin_contact": "Contatti :name (:email) per qualsiasi domanda.",
+        "reset_hint": "Imposti la Sua password entro :minutes minuti utilizzando il pulsante qui sotto.",
+        "set_password": "Imposta password",
+        "link_fallback": "Se il pulsante non funziona, copi questo link:",
+        "open_platform": "Apri piattaforma",
+        "security_note": "Questo link scade per motivi di sicurezza. Se il link è scaduto, può richiedere una nuova reimpostazione tramite «Password dimenticata».",
+        "powered_by": "Con WinProx gestisce edifici, sedi e attività in un unico punto centrale.",
+        "role_admin": "Amministratore",
+        "role_employee": "Dipendente"
+    },
+    "unsubscribe": {
+        "html_intro": "Se non desidera più ricevere e-mail, può",
+        "text_intro": "Se non desidera più ricevere e-mail, può disiscriversi qui:",
+        "link_label": "disiscriversi qui",
+        "settings_hint_html": "Può anche gestire le preferenze e-mail nelle Sue <a href=\":url\" style=\"color:#059669;font-weight:600;\">Impostazioni</a>.",
+        "settings_hint_text": "Può anche gestire le preferenze e-mail nelle Impostazioni: :url"
+    },
+    "new_qr_issue": {
+        "subject": ":tenant — nuova segnalazione QR",
+        "html_title": "Nuova segnalazione",
+        "heading": "Nuova segnalazione QR",
+        "greeting": "Buongiorno,",
+        "greeting_name": "Buongiorno :name,",
+        "intro": "È stata inviata una nuova segnalazione tramite il portale QR di :tenant.",
+        "field_location": "Sede / unità",
+        "field_reporter": "Segnalato da",
+        "field_description": "Descrizione",
+        "open_issue": "Visualizza segnalazione",
+        "link_fallback": "Se il pulsante non funziona, copi questo link:"
+    }
+}

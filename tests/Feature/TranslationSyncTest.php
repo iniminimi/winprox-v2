@@ -145,8 +145,8 @@ it('vult vertaal-slots voor bestaande goedgekeurde meldingen', function () {
     $result = app(\App\Actions\Communication\BackfillIssueTranslationSlotsAction::class)->handle();
 
     expect($result['issues'])->toBeGreaterThanOrEqual(1)
-        ->and($result['slots_created'])->toBe(3)
-        ->and(IssueTranslation::query()->where('issue_id', $issue->id)->count())->toBe(3);
+        ->and($result['slots_created'])->toBe(count(expectedTargetLocales('nl')))
+        ->and(IssueTranslation::query()->where('issue_id', $issue->id)->count())->toBe(count(expectedTargetLocales('nl')));
 });
 
 it('telt pending vertalingen voor goedgekeurde meldingen', function () {
@@ -164,7 +164,7 @@ it('telt pending vertalingen voor goedgekeurde meldingen', function () {
 
     app(\App\Actions\Communication\BackfillIssueTranslationSlotsAction::class)->handle();
 
-    expect(app(CountPendingIssueTranslationsAction::class)->handle())->toBe(3);
+    expect(app(CountPendingIssueTranslationsAction::class)->handle())->toBe(count(expectedTargetLocales('nl')));
 });
 
 it('toont vertaal-herinnering op platform organisaties voor superuser op productie', function () {

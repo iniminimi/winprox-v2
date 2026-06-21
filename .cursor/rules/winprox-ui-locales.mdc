@@ -18,7 +18,7 @@ alwaysApply: false
 - Server: `IssuePhotoStorage` — geen Imagick/GD resize.
 
 ## Locales
-- `lang/{nl,en,fr,de,es}/[page].json` — alleen keys die op het scherm staan.
+- `lang/{nl,en,fr,de,es,it}/[page].json` — alleen keys die op het scherm staan.
 - Na wijziging: `node scripts/locales.mjs parity` (of npm scripts uit package.json).
 - Nooit hardcoded user-facing tekst in PHP/Blade.
 

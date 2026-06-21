@@ -157,7 +157,7 @@ Issues represent maintenance requests or problems reported in properties.
 Issues support automatic multi-language descriptions:
 
 - `description` — localized text for the API consumer's app locale (falls back to source text when no translation exists).
-- `original_language` — source locale (`nl`, `en`, `fr`, `de`, `es`).
+- `original_language` — source locale (`nl`, `en`, `fr`, `de`, `es`, `it`).
 - `translations` — map of completed translations by locale (only present when the `translations` relation is loaded).
 
 Pending or failed translations are omitted from the API response. Use the [Translations API](./translations.md) to export pending items and import completed translations.

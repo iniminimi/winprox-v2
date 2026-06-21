@@ -67,7 +67,7 @@ php artisan config:clear
 
 Het script doet **altijd** alles:
 
-1. Verwijdert bestaande `*.png` in `public/images/manual/{nl,en,fr,de,es}/`
+1. Verwijdert bestaande `*.png` in `public/images/manual/{locale}/` (locales uit `config/locales.php`)
 2. Installeert/controleert Playwright Chromium
 3. Draait `scripts/capture-manual-screenshots.mjs`
 4. `git commit` + `git push` (alleen manual-mappen)
@@ -76,7 +76,7 @@ Bij mislukte capture: geen commit/push.
 
 ### 3. Output controleren
 
-- Pad: `public/images/manual/{nl,en,fr,de,es}/*.png`
+- Pad: `public/images/manual/{locale}/*.png` (één map per entry in `config/locales.supported`)
 - ~20 bestanden per taal (80 totaal)
 - Internetportaal-PNG's zijn smal (~390px breed); handleiding toont ze op ware grootte
   (natuurlijke hoogte uit het bestand, geen geforceerde telefoon-verhouding)

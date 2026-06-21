@@ -171,7 +171,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ## 5. Lokalisatie (4 talen, klein & per pagina)
 
 - Structuur: **`lang/[locale]/[page].json`** (één bestand per pagina/module). Plus `common.json` voor gedeelde labels (knoppen, statussen).
-- Talen **altijd samen**: `nl`, `en`, `fr`, `de`, `es`. Uitbreidbaar (it, …) — talenlijst is data-gedreven.
+- Talen **altijd samen**: `nl`, `en`, `fr`, `de`, `es`, `it`. Uitbreidbaar (pt, pl, …) — talenlijst is data-gedreven (`config/locales.php`).
 - Bestanden **minimaal houden (hard)**: **alleen** sleutels die op het scherm écht gebruikt worden. Geen ongebruikte/legacy keys, geen duplicaten, geen "voor het geval dat". Volledig herschreven vanaf nul; geen oude rommel meeslepen. Bij twijfel: key verwijderen i.p.v. behouden.
 - **Eén sleutel-conventie:** lowercase, punt-genest, betekenisvol: `[page].[sectie].[element]` (bv. `issues.list.empty_title`, `common.button.save`).
 - **Nooit hardcoden** in Blade/PHP. Strikte JSON (geen comments/trailing comma's), UTF-8 **zonder BOM**.
@@ -279,7 +279,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - `npm run check:locales:parity`
 - `npm run check:architecture`
 - Bij frontend-wijzigingen (`resources/css/**`, `resources/js/**`, views, Vite): **eerst** `npm run build`, gewijzigde `public/build/**` meecommitten.
-- Raakt het `lang/**`: alle vier talen + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
+- Raakt het `lang/**`: alle talen in pariteit + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
 - Geen test-artefacten committen (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
 
 ### Push

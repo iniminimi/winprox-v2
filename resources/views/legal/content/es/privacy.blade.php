@@ -138,7 +138,7 @@
     WinProx es una plataforma internacional y puede utilizarse en varios países.
 </p>
 <p>
-    La plataforma puede estar disponible en varios idiomas, entre ellos neerlandés, inglés, francés, alemán y español.
+    La plataforma puede estar disponible en varios idiomas, entre ellos neerlandés, inglés, francés, alemán, español e italiano.
 </p>
 <p>
     Independientemente de la versión lingüística, esta política de privacidad se aplica al tratamiento de datos personales.

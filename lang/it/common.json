@@ -1,0 +1,88 @@
+{
+    "app": {
+        "platform": "Piattaforma",
+        "workspace": "Workspace"
+    },
+    "nav": {
+        "label": "Navigazione principale",
+        "dashboard": "Dashboard",
+        "locations": "Sedi e unità",
+        "issues": "Segnalazioni",
+        "tasks": "Attività",
+        "calendar": "Calendario",
+        "users": "Utenti",
+        "settings": "Impostazioni",
+        "subscription": "Abbonamento",
+        "faq": "FAQ e knowledge base",
+        "manual": "Manuale utente",
+        "legal": "Documenti legali",
+        "contact": "Contatto"
+    },
+    "status": {
+        "new": "Nuova (Aperta)",
+        "in_progress": "In corso",
+        "done": "Gestita",
+        "closed": "Chiusa"
+    },
+    "qr_status": {
+        "unassigned": "Non assegnato",
+        "active": "Attivo",
+        "damaged": "Danneggiato",
+        "inactive": "Inattivo"
+    },
+    "detail_nav": {
+        "first": "Prima",
+        "prev": "Precedente",
+        "next": "Successiva",
+        "last": "Ultima"
+    },
+    "file": {
+        "browse": "Sfoglia…",
+        "none_selected": "Nessun file selezionato"
+    },
+    "button": {
+        "save": "Salva",
+        "cancel": "Annulla",
+        "edit": "Modifica",
+        "delete": "Elimina",
+        "view": "Visualizza",
+        "print": "Stampa",
+        "logout": "Esci",
+        "close": "Chiudi",
+        "clear": "Cancella"
+    },
+    "language": {
+        "label": "Lingua"
+    },
+    "style": {
+        "label": "Stile"
+    },
+    "help": {
+        "button": "Aiuto",
+        "title": "Ha bisogno di aiuto?",
+        "text": "Consulti la knowledge base o contatti l'assistenza.",
+        "contact": "Contattaci"
+    },
+    "brand": {
+        "tagline": "Work In Proximity"
+    },
+    "social": {
+        "og_title": "WinProx | Software di facility management",
+        "og_description": "Gestione efficiente dei servizi facility e coordinamento della manutenzione."
+    },
+    "welcome": "Benvenuto",
+    "list": {
+        "filters_title": "Filtri",
+        "per_status_limit": "Elementi per stato"
+    },
+    "pagination": {
+        "nav_label": "Navigazione paginazione",
+        "previous": "Precedente",
+        "next": "Successiva",
+        "showing": "Visualizzazione da",
+        "to": "a",
+        "of": "di",
+        "results": "risultati",
+        "go_to_page": "Vai alla pagina :page"
+    }
+}

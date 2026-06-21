@@ -1,0 +1,72 @@
+{
+    "connect": {
+        "title": "Collega codice QR",
+        "subtitle": "Colleghi questo adesivo QR a un'unità",
+        "qr_info": "Informazioni codice QR",
+        "sticker_number": "Numero adesivo",
+        "status": "Stato",
+        "search_units": "Cerca unità",
+        "search_placeholder": "Digiti per cercare...",
+        "no_units": "Nessuna unità trovata",
+        "link_button": "Collega codice QR",
+        "success_title": "Codice QR collegato",
+        "success_message": "Il codice QR :sticker è stato collegato con successo.",
+        "go_to_unit": "Vai all'unità",
+        "linked_qr": "collegato",
+        "category": "Categoria",
+        "team": "Team",
+        "gps_title": "Registra posizione",
+        "gps_hint": "Registri la posizione GPS di questa unità in modo che i lavoratori possano trovarla in seguito tramite navigazione.",
+        "gps_loading": "Determinazione posizione...",
+        "gps_found": "Posizione trovata!",
+        "gps_save": "Salva posizione",
+        "gps_skip": "Salta",
+        "gps_retry": "Riprova",
+        "gps_error": "Impossibile determinare la posizione. Verifichi che il GPS sia attivo.",
+        "gps_not_supported": "Il GPS non è supportato su questo dispositivo.",
+        "gps_success_title": "Posizione salvata",
+        "gps_success_message": "La posizione GPS è stata registrata con successo.",
+        "gps_validation_required": "Le coordinate GPS sono obbligatorie.",
+        "gps_validation_numeric": "Le coordinate GPS devono essere numeriche.",
+        "gps_validation_between": "Le coordinate GPS sono fuori dall'intervallo valido.",
+        "gps_waiting": "In attesa del GPS...",
+        "gps_manual_button": "Inserisci manualmente",
+        "gps_auto_button": "Rilevamento automatico",
+        "gps_or_enter_manual": "Oppure inserisca le coordinate manualmente:",
+        "gps_use_manual": "Usa queste coordinate",
+        "gps_denied": "Accesso GPS negato. Verifichi le impostazioni del browser.",
+        "gps_unavailable": "Posizione GPS non disponibile.",
+        "gps_timeout": "Timeout posizione GPS. Riprovi.",
+        "gps_invalid_coords": "Coordinate non valide. Inserisca numeri validi.",
+        "gps_out_of_range": "Coordinate fuori intervallo. Latitudine: -90 a 90, longitudine: -180 a 180.",
+        "gps_latitude_placeholder": "Latitudine",
+        "gps_longitude_placeholder": "Longitudine"
+    },
+    "unassigned_guest": {
+        "title": "(ri)collega un'unità",
+        "message": "Questo codice QR non è ancora collegato a un'unità. Effettui l'accesso per collegarlo.",
+        "sticker": "Numero adesivo",
+        "login": "Accedi"
+    },
+    "damaged": {
+        "title": "Codice QR danneggiato",
+        "message": "Questo codice QR è contrassegnato come danneggiato. Contatti il Suo amministratore.",
+        "sticker": "Numero adesivo"
+    },
+    "inactive": {
+        "title": "Codice QR inattivo",
+        "message": "Questo codice QR è disattivato e non può essere utilizzato.",
+        "sticker": "Numero adesivo"
+    },
+    "unassigned_no_permission": {
+        "title": "Nessuna autorizzazione",
+        "message": "Non ha l'autorizzazione per collegare codici QR.",
+        "sticker": "Numero adesivo",
+        "dashboard": "Vai alla dashboard"
+    },
+    "error": {
+        "title": "Errore",
+        "message": "Si è verificato un errore durante l'elaborazione di questo codice QR.",
+        "sticker": "Numero adesivo"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "panel_title": "Assistente WinProx",
+    "open_fab": "Apri assistente",
+    "close_fab": "Chiudi assistente",
+    "welcome": "Chieda informazioni su segnalazioni, attività o la Sua organizzazione. Digiti \"overview\" per i conteggi.",
+    "input_label": "La Sua domanda",
+    "input_placeholder": "es. Come assegno un'attività a un team?",
+    "send": "Invia",
+    "escalate": "Inoltra all'helpdesk",
+    "escalated": "La Sua domanda è stata inoltrata all'helpdesk.",
+    "empty_message": "Digiti una domanda per iniziare.",
+    "no_match": "Non ho trovato una risposta corrispondente. La Sua domanda è stata salvata; può inoltrarla all'helpdesk.",
+    "rate_limited": "Attenda — riprovi tra un minuto.",
+    "no_tenant": "Nessuna organizzazione collegata al Suo account.",
+    "insight": {
+        "summary": "Panoramica: :locations sedi, :units unità, :issues segnalazioni, :tasks attività."
+    },
+    "mail": {
+        "unanswered_subject": "WinProx: domanda di aiuto senza risposta",
+        "unanswered_body": "Utente: :user (:email)\nOrganizzazione: :tenant\n\nDomanda:\n:question",
+        "escalation_subject": "WinProx: escalation chat di aiuto",
+        "escalation_body": "Utente: :user (:email)\nOrganizzazione: :tenant\n\nDomanda:\n:question\n\nUltima risposta:\n:reply"
+    }
+}

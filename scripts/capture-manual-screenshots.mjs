@@ -23,7 +23,9 @@ const email = process.env.MANUAL_CAPTURE_EMAIL ?? '';
 const password = process.env.MANUAL_CAPTURE_PASSWORD ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
-const locales = ['nl', 'en', 'fr', 'de', 'es'];
+const locales = process.env.MANUAL_CAPTURE_LOCALES
+    ? process.env.MANUAL_CAPTURE_LOCALES.split(',').map((l) => l.trim()).filter(Boolean)
+    : readdirSync(join(process.cwd(), 'lang')).filter((e) => statSync(join(process.cwd(), 'lang', e)).isDirectory()).sort();
 
 const pathVars = {
     location_id: process.env.MANUAL_CAPTURE_LOCATION_ID ?? '',

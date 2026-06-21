@@ -22,7 +22,7 @@
             {"label": "Costes de mantenimiento", "other": "Caros, alineados a largo plazo", "winprox": "Códigos QR sin coste; mantenimiento vía equipo + QR de equipo."},
             {"label": "Seguridad", "other": "Formación extensa de trabajadores de campo", "winprox": "Los trabajadores se verifican con nombre + icono personal vía QR de equipo."},
             {"label": "Precios", "other": "Licencias enterprise, cifras mensuales, a menudo por módulo", "winprox": "Suscripción transparente, escalable por usuario o equipo."},
-            {"label": "Idiomas", "other": "A menudo solo neerlandés", "winprox": "Neerlandés, francés, inglés, alemán y español — totalmente integrado."}
+            {"label": "Idiomas", "other": "A menudo solo neerlandés", "winprox": "Todos los idiomas admitidos — totalmente integrado."}
         ]
     },
     "cta": {

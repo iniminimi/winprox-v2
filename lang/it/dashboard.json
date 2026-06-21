@@ -1,0 +1,53 @@
+{
+    "title": "Dashboard",
+    "subtitle": "Panoramica delle Sue sedi, unità, segnalazioni e attività.",
+    "trial_capsule": {
+        "trial_short": "Periodo di prova: :days giorni rimanenti.",
+        "trial_title": "Periodo di prova",
+        "paid_short": "Abbonamento: :days giorni rimanenti.",
+        "paid_title": "Abbonamento",
+        "grace_short": "Periodo di grazia: :days giorni di accesso completo rimanenti.",
+        "grace_title": "Periodo di grazia dopo la scadenza dell'abbonamento"
+    },
+    "add_issue": "+ Aggiungi segnalazione",
+    "briefing": "Briefing",
+    "briefing_print": "Stampa briefing",
+    "briefing_empty": "Nessuna attività programmata per oggi.",
+    "briefing_no_team": "Nessun team",
+    "kpi": {
+        "locations": "Sedi",
+        "units": "Unità",
+        "new_issues": "Nuove segnalazioni",
+        "open_tasks": "Attività aperte",
+        "meta_total": "Totale"
+    },
+    "recent": {
+        "title": "Segnalazioni recenti",
+        "open_issues": "Segnalazioni aperte",
+        "empty": "Nessuna segnalazione ancora.",
+        "reporter_anon": "Anonimo",
+        "no_location": "Nessuna sede"
+    },
+    "traffic": {
+        "kicker": "Scansioni QR",
+        "title": "Asset più scansionati",
+        "subtitle": "Top 5 più scansionati negli ultimi 7 giorni.",
+        "scans": "{1} :count scansione|[2,*] :count scansioni",
+        "no_location": "Nessuna sede",
+        "empty": "Nessuna scansione QR negli ultimi 7 giorni.",
+        "collapsed_summary": ":units asset · :scans scansioni questa settimana"
+    },
+    "welcome": "Benvenuto su Winprox.app",
+    "onboarding": {
+        "teams": {
+            "title": "Inizi creando team e lavoratori",
+            "text": "Crei team operativi, aggiunga lavoratori e assegni un caposquadra. Colleghi i team alle categorie in modo che le attività raggiungano sempre il team giusto. I lavoratori accedono con il nome e un'icona scelta. Team e lavoratori possono anche essere caricati tramite importazione massiva (file CSV).",
+            "button": "Aggiungi team"
+        },
+        "categories": {
+            "title": "Inizi creando le categorie",
+            "text": "Vada a sedi e unità e aggiunga categorie per raggruppare le unità (es. trapani, sanitari, attrezzature fitness, ufficio, elettricità). Le categorie aiutano a filtrare e organizzare le unità e dipendono dal settore dell'azienda. Collegando i team di lavoratori a categorie specifiche, WinProx garantisce che le attività siano eseguite dal team corretto. Aggiunga sedi (siti, edifici, piani) e crei unità per sede — questi sono gli asset, le macchine o le stanze in cui vengono registrate segnalazioni e attività. Sedi e unità possono anche essere caricate tramite importazione massiva (file CSV).",
+            "button": "Gestisci sedi"
+        }
+    }
+}

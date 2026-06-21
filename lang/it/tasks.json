@@ -1,0 +1,86 @@
+{
+    "briefing": "Stampa briefing",
+    "priority": {
+        "prio_1": "Prio 1",
+        "prio_2": "Prio 2",
+        "prio_3": "Prio 3",
+        "prio_4": "Prio 4"
+    },
+    "list": {
+        "title": "Attività",
+        "subtitle": "Tutte le attività per team e stato",
+        "group_count": "{0} nessuna attività|{1} :count attività|[2,*] :count attività",
+        "empty": "Nessuna attività ancora.",
+        "empty_no_issues": "Nessuna segnalazione ancora.",
+        "manage_issues": "Gestisci segnalazioni",
+        "empty_filtered": "Nessuna attività corrisponde a questi filtri."
+    },
+    "filter": {
+        "status": "Filtra per stato",
+        "status_label": "Stato",
+        "status_all": "Tutti gli stati",
+        "priority": "Filtra per priorità",
+        "priority_label": "Priorità",
+        "priority_all": "Tutte le priorità",
+        "team": "Filtra per team",
+        "team_label": "Team",
+        "team_all": "Tutti i team",
+        "search": "Cerca",
+        "search_placeholder": "Cerca per nota, segnalazione, sede, indirizzo, CAP, città o unità",
+        "recurring": "Attività ricorrente",
+        "recurring_only": "Solo cicli ricorrenti",
+        "apply": "VAI!",
+        "reset": "Cancella filtri",
+        "hint": "Clicchi su un'attività per visualizzare e modificare i dettagli."
+    },
+    "card": {
+        "kind_nr": "Attività n. :nr",
+        "description_label": "Descrizione: ",
+        "line_team": "Attività, team: :team",
+        "meta_team": "Team :team",
+        "meta_context": "Segnalazione n. :issue_nr",
+        "nr": "NR :nr",
+        "issue_nr": "Segnalazione n. :nr",
+        "no_team": "Nessun team",
+        "scheduled": "Programmata :date",
+        "recurring": "Ricorrente"
+    },
+    "show": {
+        "title": "Attività",
+        "overview_title": "Panoramica attività",
+        "nr": "NR :nr",
+        "back": "Torna alle attività",
+        "nav_label": "Navigazione attività",
+        "issue_context": "Segnalazione",
+        "view_issue": "Segnalazione completa",
+        "team_section": "Team",
+        "team_hint": "Assegni questa attività a un team operativo o cambi il team.",
+        "team_current": "Team attuale: :name",
+        "team_select_label": "Scelga team",
+        "team_select_placeholder": "Scelga un team",
+        "team_save": "Salva team",
+        "priority": "Priorità",
+        "priority_change": "Cambia priorità",
+        "priority_save": "Salva priorità",
+        "task": "Dettagli attività",
+        "task_line": "Attività, team: :team",
+        "due": "Scadenza :date",
+        "change_status": "Cambia stato",
+        "reason": "Motivo (obbligatorio in chiusura senza esecuzione)",
+        "confirm_status": "Applica stato",
+        "pause": "Nota di pausa",
+        "pause_submit": "Salva nota di pausa",
+        "updates": "Aggiornamenti segnalazione",
+        "errors": {
+            "team_required": "Scelga un team.",
+            "issue_not_approved": "La segnalazione deve essere approvata prima di poter modificare le attività."
+        }
+    },
+    "errors": {
+        "invalid_transition": "Questo cambio di stato non è consentito.",
+        "reason_required": "È richiesto un motivo in chiusura senza esecuzione.",
+        "pause_only_in_progress": "Le note di pausa sono consentite solo in corso.",
+        "translation_requires_description": "Le traduzioni sono disponibili solo quando l'attività ha una descrizione.",
+        "translation_import_missing": "Attività non trovata o senza descrizione."
+    }
+}

@@ -9,6 +9,7 @@ return array (
     'name_fr' => 'Belgique',
     'name_de' => 'Belgien',
     'name_es' => 'Bélgica',
+    'name_it' => 'Belgio',
     'sort_order' => 10,
   ),
   1 => 
@@ -19,6 +20,7 @@ return array (
     'name_fr' => 'Pays-Bas',
     'name_de' => 'Niederlande',
     'name_es' => 'Países Bajos',
+    'name_it' => 'Paesi Bassi',
     'sort_order' => 20,
   ),
   2 => 
@@ -29,6 +31,7 @@ return array (
     'name_fr' => 'France',
     'name_de' => 'Frankreich',
     'name_es' => 'Francia',
+    'name_it' => 'Francia',
     'sort_order' => 30,
   ),
   3 => 
@@ -39,6 +42,7 @@ return array (
     'name_fr' => 'Allemagne',
     'name_de' => 'Deutschland',
     'name_es' => 'Alemania',
+    'name_it' => 'Germania',
     'sort_order' => 40,
   ),
   4 => 
@@ -49,6 +53,7 @@ return array (
     'name_fr' => 'Luxembourg',
     'name_de' => 'Luxemburg',
     'name_es' => 'Luxemburgo',
+    'name_it' => 'Lussemburgo',
     'sort_order' => 50,
   ),
   5 => 
@@ -59,6 +64,7 @@ return array (
     'name_fr' => 'Royaume-Uni',
     'name_de' => 'Vereinigtes Königreich',
     'name_es' => 'Reino Unido',
+    'name_it' => 'Regno Unito',
     'sort_order' => 60,
   ),
   6 => 
@@ -69,6 +75,7 @@ return array (
     'name_fr' => 'Irlande',
     'name_de' => 'Irland',
     'name_es' => 'Irlanda',
+    'name_it' => 'Irlanda',
     'sort_order' => 70,
   ),
   7 => 
@@ -79,6 +86,7 @@ return array (
     'name_fr' => 'Espagne',
     'name_de' => 'Spanien',
     'name_es' => 'España',
+    'name_it' => 'Spagna',
     'sort_order' => 80,
   ),
   8 => 
@@ -89,6 +97,7 @@ return array (
     'name_fr' => 'Italie',
     'name_de' => 'Italien',
     'name_es' => 'Italia',
+    'name_it' => 'Italia',
     'sort_order' => 90,
   ),
   9 => 
@@ -99,6 +108,7 @@ return array (
     'name_fr' => 'Portugal',
     'name_de' => 'Portugal',
     'name_es' => 'Portugal',
+    'name_it' => 'Portogallo',
     'sort_order' => 100,
   ),
   10 => 
@@ -109,6 +119,7 @@ return array (
     'name_fr' => 'Suisse',
     'name_de' => 'Schweiz',
     'name_es' => 'Suiza',
+    'name_it' => 'Svizzera',
     'sort_order' => 110,
   ),
   11 => 
@@ -119,6 +130,7 @@ return array (
     'name_fr' => 'Autriche',
     'name_de' => 'Österreich',
     'name_es' => 'Austria',
+    'name_it' => 'Austria',
     'sort_order' => 120,
   ),
   12 => 
@@ -129,6 +141,7 @@ return array (
     'name_fr' => 'Pologne',
     'name_de' => 'Polen',
     'name_es' => 'Polonia',
+    'name_it' => 'Polonia',
     'sort_order' => 130,
   ),
   13 => 
@@ -139,6 +152,7 @@ return array (
     'name_fr' => 'République tchèque',
     'name_de' => 'Tschechien',
     'name_es' => 'República Checa',
+    'name_it' => 'Repubblica Ceca',
     'sort_order' => 140,
   ),
   14 => 
@@ -149,6 +163,7 @@ return array (
     'name_fr' => 'Slovaquie',
     'name_de' => 'Slowakei',
     'name_es' => 'Eslovaquia',
+    'name_it' => 'Slovacchia',
     'sort_order' => 150,
   ),
   15 => 
@@ -159,6 +174,7 @@ return array (
     'name_fr' => 'Hongrie',
     'name_de' => 'Ungarn',
     'name_es' => 'Hungría',
+    'name_it' => 'Ungheria',
     'sort_order' => 160,
   ),
   16 => 
@@ -169,6 +185,7 @@ return array (
     'name_fr' => 'Roumanie',
     'name_de' => 'Rumänien',
     'name_es' => 'Rumanía',
+    'name_it' => 'Romania',
     'sort_order' => 170,
   ),
   17 => 
@@ -179,6 +196,7 @@ return array (
     'name_fr' => 'Bulgarie',
     'name_de' => 'Bulgarien',
     'name_es' => 'Bulgaria',
+    'name_it' => 'Bulgaria',
     'sort_order' => 180,
   ),
   18 => 
@@ -189,6 +207,7 @@ return array (
     'name_fr' => 'Croatie',
     'name_de' => 'Kroatien',
     'name_es' => 'Croacia',
+    'name_it' => 'Croazia',
     'sort_order' => 190,
   ),
   19 => 
@@ -199,6 +218,7 @@ return array (
     'name_fr' => 'Slovénie',
     'name_de' => 'Slowenien',
     'name_es' => 'Eslovenia',
+    'name_it' => 'Slovenia',
     'sort_order' => 200,
   ),
   20 => 
@@ -209,6 +229,7 @@ return array (
     'name_fr' => 'États-Unis',
     'name_de' => 'Vereinigte Staaten',
     'name_es' => 'Estados Unidos',
+    'name_it' => 'Stati Uniti',
     'sort_order' => 210,
   ),
   21 => 
@@ -219,6 +240,7 @@ return array (
     'name_fr' => 'Canada',
     'name_de' => 'Kanada',
     'name_es' => 'Canadá',
+    'name_it' => 'Canada',
     'sort_order' => 220,
   ),
   22 => 
@@ -229,6 +251,7 @@ return array (
     'name_fr' => 'Maroc',
     'name_de' => 'Marokko',
     'name_es' => 'Marruecos',
+    'name_it' => 'Marocco',
     'sort_order' => 230,
   ),
   23 => 
@@ -239,6 +262,7 @@ return array (
     'name_fr' => 'Turquie',
     'name_de' => 'Türkei',
     'name_es' => 'Turquía',
+    'name_it' => 'Turchia',
     'sort_order' => 240,
   ),
   24 => 
@@ -249,6 +273,7 @@ return array (
     'name_fr' => 'Ukraine',
     'name_de' => 'Ukraine',
     'name_es' => 'Ucrania',
+    'name_it' => 'Ucraina',
     'sort_order' => 250,
   ),
   25 => 
@@ -259,6 +284,7 @@ return array (
     'name_fr' => 'Serbie',
     'name_de' => 'Serbien',
     'name_es' => 'Serbia',
+    'name_it' => 'Serbia',
     'sort_order' => 260,
   ),
   26 => 
@@ -269,6 +295,7 @@ return array (
     'name_fr' => 'Bosnie-Herzégovine',
     'name_de' => 'Bosnien und Herzegowina',
     'name_es' => 'Bosnia y Herzegovina',
+    'name_it' => 'Bosnia ed Erzegovina',
     'sort_order' => 270,
   ),
   27 => 
@@ -279,6 +306,7 @@ return array (
     'name_fr' => 'Monténégro',
     'name_de' => 'Montenegro',
     'name_es' => 'Montenegro',
+    'name_it' => 'Montenegro',
     'sort_order' => 280,
   ),
   28 => 
@@ -289,6 +317,7 @@ return array (
     'name_fr' => 'Macédoine du Nord',
     'name_de' => 'Nordmazedonien',
     'name_es' => 'Macedonia del Norte',
+    'name_it' => 'Macedonia del Nord',
     'sort_order' => 290,
   ),
   29 => 
@@ -299,6 +328,7 @@ return array (
     'name_fr' => 'Albanie',
     'name_de' => 'Albanien',
     'name_es' => 'Albania',
+    'name_it' => 'Albania',
     'sort_order' => 300,
   ),
 );

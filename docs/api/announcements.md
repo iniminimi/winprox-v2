@@ -59,7 +59,7 @@ Announcements are location- or unit-scoped messages shown on QR portals (mededel
 | Field | Description |
 |-------|-------------|
 | `description` | Localized text (app locale; see [Translations](./translations.md)) |
-| `original_language` | Source locale (`nl`, `en`, `fr`, `de`, `es`) |
+| `original_language` | Source locale (`nl`, `en`, `fr`, `de`, `es`, `it`) |
 | `translations` | Completed translations by locale |
 | `is_active` | Whether the announcement is active in beheer |
 | `published_at` | When the announcement was published |

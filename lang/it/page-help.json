@@ -1,0 +1,686 @@
+{
+    "button_label": "Aiuto pagina",
+    "modal": {
+        "close": "Chiudi",
+        "actions_heading": "Azioni",
+        "statuses_heading": "Stati"
+    },
+    "pages": {
+        "dashboard": {
+            "title": "Aiuto — Dashboard",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "La dashboard mostra i conteggi di sedi, unità, segnalazioni aperte e attività aperte. Clicchi su una scheda per andare alla schermata correlata."
+                },
+                {
+                    "label": "Stampa briefing",
+                    "text": "Apre una panoramica stampabile delle attività aperte per team — utile in produzione."
+                },
+                {
+                    "label": "Periodo di prova",
+                    "text": "Durante la prova ha limiti estesi. La dashboard mostra i giorni rimanenti."
+                },
+                {
+                    "label": "Aggiungi segnalazione",
+                    "text": "Crei una segnalazione in due passi: sede/unità + descrizione, poi un'attività per il team giusto."
+                }
+            ],
+            "status_note": "Lo stato segnalazione sulla dashboard segue lo stato delle attività collegate.",
+            "statuses": {
+                "new": "Almeno un'attività non è ancora stata avviata.",
+                "in_progress": "Almeno un'attività è in corso.",
+                "done": "Tutte le attività sono completate; un amministratore può chiudere la segnalazione.",
+                "closed": "Tutte le attività sono chiuse — la segnalazione è terminata."
+            }
+        },
+        "issues.list": {
+            "title": "Aiuto — Segnalazioni",
+            "actions": [
+                {
+                    "label": "Aggiungi segnalazione",
+                    "text": "Crei una segnalazione tramite il popup nella versione desktop di Winprox o dopo la scansione di un codice QR su un'unità tramite il portale QR. Viene sempre creata automaticamente un'attività che può perfezionare in seguito nella pagina Attività."
+                },
+                {
+                    "label": "Stampa briefing",
+                    "text": "Stampi una panoramica delle attività aperte per team."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Combini stato, team, termine di ricerca e ricorrente per affinare l'elenco. Premi VAI! per applicare."
+                },
+                {
+                    "label": "Approva",
+                    "text": "Le segnalazioni create tramite il portale QR attendono l'approvazione. Approvi in modo che il contenuto diventi visibile sulle pagine pubbliche."
+                }
+            ],
+            "status_note": "Lo stato segnalazione è derivato automaticamente dalle attività su quella segnalazione.",
+            "statuses": {
+                "new": "Nuova segnalazione; almeno un'attività non è ancora stata avviata.",
+                "in_progress": "Il follow-up è in corso — un'attività è stata avviata o è in corso.",
+                "done": "Tutte le attività sono state completate dal team.",
+                "closed": "Un amministratore ha confermato e chiuso tutto."
+            }
+        },
+        "issues.show": {
+            "title": "Aiuto — Dettaglio segnalazione",
+            "actions": [
+                {
+                    "label": "Aggiungi attività",
+                    "text": "Aggiunga un'attività a una segnalazione esistente o modifichi un'attività esistente. Dia una descrizione chiara e concreta del problema o dell'azione da eseguire (es. «La stampante stampa sporco»). Selezioni una data di scadenza specifica tramite il calendario. Lasci vuoto se l'attività deve essere presa in carico subito o in modo flessibile. Determini l'urgenza dell'attività (Prio 1 a 3). Questo campo è esclusivo per gli amministratori per prevenire l'inflazione delle priorità in produzione. Assegni l'attività al team operativo giusto. Questo team riceve una notifica diretta e può avviare l'attività tramite il proprio team QR."
+                },
+                {
+                    "label": "Pubblica aggiornamento",
+                    "text": "Aggiunga una nota o una foto alla segnalazione; sarà mostrata sul portale."
+                },
+                {
+                    "label": "Approva",
+                    "text": "Approvi le segnalazioni QR prima che descrizione e foto diventino pubblicamente visibili."
+                },
+                {
+                    "label": "Traduzione descrizione",
+                    "text": "Su segnalazioni approvate, scelga una lingua (NL, EN, FR, DE) accanto alla descrizione. Il testo viene tradotto automaticamente dopo l'approvazione tramite Piattaforma → Traduzioni. Se una traduzione non è ancora pronta, vedrà «Non ancora tradotta». Elenchi e ricerca mostrano il testo di origine fino ad allora. Annunci e documenti attivi seguono lo stesso schema nella pagina sede. Le attività con descrizione propria mostrano il testo tradotto negli elenchi e nel portale una volta pronto."
+                }
+            ],
+            "status_note": "Cambi lo stato segnalazione aggiornando le attività.",
+            "statuses": {
+                "new": "In attesa che almeno un'attività venga avviata.",
+                "in_progress": "Almeno un'attività è attivamente in lavorazione.",
+                "done": "Tutte le attività sono completate; chiuda la segnalazione quando tutto è confermato.",
+                "closed": "Segnalazione definitivamente chiusa."
+            }
+        },
+        "issues.create": {
+            "title": "Aiuto — Segnalazione ricorrente",
+            "actions": [
+                {
+                    "label": "Intervallo",
+                    "text": "Con quale frequenza si ripete la segnalazione (es. ogni 2 settimane, ogni mese, ogni trimestre, ogni anno)."
+                },
+                {
+                    "label": "Anticipo (giorni)",
+                    "text": "Quanti giorni prima della scadenza viene creata l'attività (es. 7 giorni per attività mensili)."
+                }
+            ]
+        },
+        "tasks.list": {
+            "title": "Aiuto — Attività",
+            "actions": [
+                {
+                    "label": "Filtra per team",
+                    "text": "Mostri solo le attività di un team operativo. I responsabili team vedono solo i propri team per impostazione predefinita."
+                },
+                {
+                    "label": "Apri attività",
+                    "text": "Clicchi su un'attività per dettaglio, cambi di stato e il link alla segnalazione."
+                }
+            ],
+            "status_note": "Gli stati vengono spesso aggiornati automaticamente tramite il portale sul campo team QR. Può anche modificarli manualmente.",
+            "statuses": {
+                "new": "L'attività è stata creata e attende l'avvio del team.",
+                "in_progress": "Il team sta lavorando.",
+                "done": "Il lavoro è terminato dal lavoratore; un amministratore può chiuderla.",
+                "closed": "L'attività è stata confermata e chiusa."
+            }
+        },
+        "tasks.show": {
+            "title": "Aiuto — Dettaglio attività",
+            "actions": [
+                {
+                    "label": "Assegna team",
+                    "text": "Scelga un team operativo e salvi. Può anche cambiare un'assegnazione esistente."
+                },
+                {
+                    "label": "Cambia stato",
+                    "text": "Imposti l'attività su In corso, Completata o Chiusa in base all'avanzamento."
+                },
+                {
+                    "label": "Traduzione descrizione",
+                    "text": "Se l'attività ha una descrizione propria (non solo il testo della segnalazione), viene tradotta automaticamente tramite Piattaforma → Traduzioni. Nel portale e negli elenchi, i visitatori vedono la traduzione una volta pronta; altrimenti il testo di origine. Senza descrizione propria, l'attività segue la traduzione della segnalazione collegata."
+                },
+                {
+                    "label": "Apri segnalazione",
+                    "text": "Vada alla segnalazione collegata per contesto, foto e attività aggiuntive."
+                }
+            ],
+            "status_note": "In produzione, i lavoratori avviano e completano attività tramite il portale team QR.",
+            "statuses": {
+                "new": "Non ancora avviata sul posto.",
+                "in_progress": "Il team sta lavorando.",
+                "done": "Il lavoratore segnala il lavoro come completato.",
+                "closed": "L'amministratore conferma e chiude."
+            }
+        },
+        "locations.list": {
+            "title": "Aiuto — Sedi",
+            "actions": [
+                {
+                    "label": "Aggiungi sede",
+                    "text": "Crei una nuova sede con indirizzo e dati di base."
+                },
+                {
+                    "label": "Apri sede",
+                    "text": "Gestisca unità, documenti, annunci e codici QR per sede."
+                },
+                {
+                    "label": "Mostra inattive",
+                    "text": "Mostri le sedi disattivate per riattivarle o revisionarle."
+                },
+                {
+                    "label": "Importazione CSV",
+                    "text": "Importi unità in massa tramite file CSV. Il file deve avere esattamente queste intestazioni: location_name, unit_name, description (optional), category_name (required), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. Sedi e categorie vengono create automaticamente se non esistono ancora."
+                },
+                {
+                    "label": "Importazioni CSV recenti",
+                    "text": "Sotto il pulsante importazione, compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di unità. Clicchi «Annulla importazione» per annullare l'importazione. Le unità senza segnalazioni o attività vengono rimosse; anche sedi e categorie vuote create dall'importazione vengono pulite. Le unità collegate a una segnalazione o attività restano."
+                },
+                {
+                    "label": "Categorie",
+                    "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
+                }
+            ]
+        },
+        "locations.show": {
+            "title": "Aiuto — Dettaglio sede",
+            "actions": [
+                {
+                    "label": "Aggiungi unità",
+                    "text": "Aggiunga un oggetto/macchina/asset/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
+                },
+                {
+                    "label": "Unità in massa",
+                    "text": "Crei rapidamente decine di unità (come stanze, piani o asset consecutivi) in un'unica operazione entro un intervallo di numerazione logico. Numero di serie: specifichi quante serie (es. piani o zone) generare in una volta. Unità per serie: determini il numero di unità specifiche (es. stanze o dispositivi) da creare per serie. Numerazione: scelga la struttura di numerazione (es. passi di 10 come 01, 11, 21 o continua). La casella anteprima dinamica in basso mostra subito come saranno nominate le unità. Prefisso facoltativo: aggiunga testo fisso prima del numero (es. STANZA- o ZONA-) per rendere le unità immediatamente riconoscibili (es. STANZA-01). Categoria: colleghi direttamente la nuova serie a una categoria specifica (es. Sanitari o Ufficio) per organizzare subito correttamente le unità."
+                },
+                {
+                    "label": "Scarica foglio adesivi QR",
+                    "text": "Scarichi un file Word (Avery 55×55 o HERMA 70×50) con adesivi QR per tutte le unità in questa sede. Può anche generare codici QR dinamici liberi non ancora collegati a un'unità. Questi possono prima essere appiccicati a un'unità e poi assegnati a un'unità tramite lo stesso codice QR. Amministratori/dipendenti possono collegare tutte le unità a questi codici QR dinamici. I lavoratori del team possono collegare solo unità collegate al proprio team."
+                },
+                {
+                    "label": "GPS",
+                    "label_icon": "gps",
+                    "manual_screenshot_id": "locations-gps-history",
+                    "text": "Visualizzi la cronologia posizione di un'unità tramite il pop-up una volta disponibili le coordinate GPS. Clicchi «Apri in Maps» per aprire la posizione direttamente in Google Maps."
+                },
+                {
+                    "label": "Documenti e annunci",
+                    "text": "Gestisca documenti e annunci sulla pagina QR. Documenti e annunci attivi vengono tradotti automaticamente tramite Piattaforma → Traduzioni (descrizione); il modulo di modifica mostra un'anteprima traduzione per lingua. Il titolo di un documento resta nella lingua di origine."
+                }
+            ]
+        },
+        "calendar": {
+            "title": "Aiuto — Calendario",
+            "actions": [
+                {
+                    "label": "Navigazione",
+                    "text": "Usi precedente, oggi e successivo per scorrere il periodo."
+                },
+                {
+                    "label": "Vista",
+                    "text": "Passi tra vista mese, settimana e giorno."
+                },
+                {
+                    "label": "Filtro",
+                    "text": "Filtri per sede, team e tipo (attività o segnalazioni)."
+                }
+            ],
+            "status_note": "Colore e stato sul calendario seguono lo stato attività o segnalazione.",
+            "statuses": {
+                "new": "Pianificata ma non ancora avviata.",
+                "in_progress": "Lavoro in corso.",
+                "done": "Completata, in attesa di chiusura.",
+                "closed": "Completamente chiusa."
+            }
+        },
+        "team": {
+            "title": "Aiuto — Team e utenti",
+            "actions": [
+                {
+                    "label": "Utenti colleghi",
+                    "text": "Gestisca il personale amministrativo che lavora principalmente su PC. Devono accedere con e-mail e password. Un amministratore è l'utente principale che può aggiornare i dati aziendali. L'amministratore può aggiungere altri amministratori e collaboratori in base all'abbonamento scelto."
+                },
+                {
+                    "label": "Team operativi",
+                    "text": "Crei team e lavoratori, assegni capisquadra. Un'unità deve avere un team collegato affinché un lavoratore possa gestire attività per quell'unità. Finché non ci sono lavoratori nel team, può ancora eliminare il team."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Stampi il codice Team QR o invii il link via e-mail a un collega. Tramite questo codice QR un lavoratore può aprire il portale sul campo per gestire attività sul posto dopo la scansione del codice QR unità."
+                },
+                {
+                    "label": "Lavoratori",
+                    "text": "I lavoratori non hanno accesso; accedono tramite team QR con nome, cognome e icona. Può anche aggiungere indirizzo e-mail e numero di telefono."
+                },
+                {
+                    "label": "Ordine di visualizzazione",
+                    "text": "Determini l'ordine in cui i team compaiono negli elenchi e nei menu a tendina. I numeri più bassi compaiono per primi."
+                },
+                {
+                    "label": "Quanto tempo restano connessi i lavoratori?",
+                    "text": "Scelga per quanto tempo un lavoratore resta connesso dopo la scansione del team QR: Giornaliera (14 ore), Settimanale (144 ore, 6 giorni lavorativi) o Personalizzata (numero di ore personalizzato). Il valore predefinito è 14 ore."
+                },
+                {
+                    "label": "Reimposta icona",
+                    "text": "Rimuova l'icona scelta da un lavoratore in modo che possa accedere di nuovo con un'icona diversa. Utile se un lavoratore vuole cambiare icona o se un'icona è stata selezionata per errore. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
+                },
+                {
+                    "label": "Disattiva team",
+                    "text": "Disattivi un team in modo che non sia più visibile nei menu a tendina e negli elenchi. I lavoratori di questo team non possono più visualizzare o completare attività. La riattivazione è possibile."
+                },
+                {
+                    "label": "Disattiva lavoratore",
+                    "text": "Disattivi un lavoratore in modo che non possa più accedere tramite team QR. Il lavoratore resta nel sistema e può essere riattivato in seguito."
+                },
+                {
+                    "label": "Elimina lavoratore",
+                    "text": "Rimuova definitivamente un lavoratore dal sistema. Tutta la cronologia e le attività per questo lavoratore sono conservate, ma il lavoratore non può più essere utilizzato."
+                },
+                {
+                    "label": "Importazione CSV",
+                    "text": "Importi lavoratori in massa tramite file CSV. Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (required), email, phone, external_id (optional). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. Annulla rimuove lavoratori senza dispositivo collegato e pulisce team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) sono sempre conservati."
+                },
+                {
+                    "label": "Importazioni CSV recenti",
+                    "text": "Dopo un'importazione, compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di lavoratori. Clicchi «Annulla importazione» per rimuovere i lavoratori di quel batch. Solo i lavoratori senza dispositivo collegato vengono eliminati — i lavoratori già connessi tramite team QR (e quindi con dispositivo attivo) restano e sono contrassegnati come «ha dispositivi». Il pulsante scompare quando tutti i lavoratori in un batch sono stati eliminati."
+                }
+            ]
+        },
+        "settings": {
+            "title": "Aiuto — Impostazioni",
+            "actions": [
+                {
+                    "label": "Dati organizzazione",
+                    "text": "Solo l'amministratore può modificare nome, e-mail, telefono e indirizzo tramite «Modifica dati organizzazione». Questi dati compaiono su adesivi QR stampati, etichette unità e altro materiale rivolto ai reporter."
+                },
+                {
+                    "label": "Logo organizzazione",
+                    "text": "L'amministratore carica un logo organizzazione (PNG/JPG, max. 2 MB). Come dipendente vede solo il logo attuale come riferimento. Compare al centro di ogni codice QR sugli adesivi e nel portale segnalazioni. Per il posizionamento nell'angolo sugli adesivi, veda la sezione Logo e indirizzo sotto Fogli adesivi QR."
+                },
+                {
+                    "label": "Sfondo portale",
+                    "text": "Immagine di sfondo facoltativa per il portale segnalazioni dopo la scansione di un codice QR (PNG/JPG, max. 4 MB). Non è lo stesso dello sfondo adesivo sotto Fogli adesivi QR."
+                },
+                {
+                    "label": "Stile WinProx",
+                    "text": "Scelga come WinProx appare per Lei nell'admin: Standard, Scuro o High Res. La Sua scelta si applica su tutti i dispositivi in cui è connesso."
+                },
+                {
+                    "label": "Stile portale personalizzato",
+                    "text": "Attivi «Usa stile portale personalizzato» per scegliere colori di sfondo e pulsanti per il portale segnalazioni. La scheda anteprima mostra come i reporter vedono il portale dopo una scansione. Non influisce sull'interfaccia admin."
+                },
+                {
+                    "label": "Fogli adesivi QR",
+                    "text": "Branding per adesivi Avery 62×89-R stampati (9 etichette per foglio). Scarichi il foglio adesivi per sede dal pacchetto QR."
+                },
+                {
+                    "label": "Testo",
+                    "nested": true,
+                    "text": "Il Suo testo personalizzato compare in alto sull'adesivo (max. 120 caratteri). Se lasciato vuoto, WinProx usa automaticamente nome sede · unità. Il numero adesivo compare sempre sotto il codice QR. L'anteprima a destra si aggiorna in tempo reale. Clicchi «Salva» per memorizzare testo (e impostazioni logo)."
+                },
+                {
+                    "label": "Logo e indirizzo",
+                    "nested": true,
+                    "text": "Scelga dove compare il logo della Sua organizzazione sull'adesivo (in basso a destra, in basso a sinistra, …) — solo se ha caricato un logo. Selezioni «Mostra indirizzo sede sull'adesivo» per stampare i dati indirizzo in basso a sinistra. Il logo al centro del codice QR è fisso (il Suo logo o WinProx) e non può essere spostato qui."
+                },
+                {
+                    "label": "Sfondo",
+                    "nested": true,
+                    "text": "Scelga un'immagine personalizzata (PNG/JPG, max. 4 MB); viene salvata immediatamente. Senza sfondo personalizzato WinProx usa il design adesivo predefinito. Usi «Rimuovi sfondo personalizzato» per tornare a quel predefinito."
+                },
+                {
+                    "label": "Anteprima",
+                    "nested": true,
+                    "text": "A destra (su schermo largo) vede un'anteprima live di un adesivo con codice QR demo e numero. All'esportazione in una sede, vengono usati i codici QR unità reali e i numeri adesivo per quella sede."
+                },
+                {
+                    "label": "Privacy ed esportazione dati",
+                    "text": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON) dell'account e dell'attività rilevante nel Suo ambiente. Questa sezione compare in Impostazioni solo per gli amministratori. Il file può contenere dati sensibili — conservilo in modo sicuro."
+                }
+            ]
+        },
+        "settings.api": {
+            "title": "Aiuto — API e webhooks",
+            "actions": [
+                {
+                    "label": "Cos'è questa pagina?",
+                    "text": "Qui collega WinProx ad altro software — ad esempio il Suo ERP, uno strumento di pianificazione o una dashboard personalizzata. WinProx comunica digitalmente con quel sistema, così non deve reinserire manualmente le segnalazioni."
+                },
+                {
+                    "label": "Ne ho bisogno?",
+                    "text": "Di solito no. Se usa WinProx solo tramite sito web e codici QR, non deve configurare nulla qui.<br><br>Per setup una tantum: Vuole importare migliaia di sedi o utenti in una volta? Usi l'importazione CSV disponibile in ogni modulo (Team, Sedi, Unità). È spesso più rapido e semplice per una migrazione iniziale.<br><br>Per automazione continua: Questa pagina API è pensata per amministratori o partner IT che vogliono costruire un'integrazione live affinché i sistemi comunichino automaticamente (es. connessioni ERP in tempo reale o dashboard personalizzate)."
+                },
+                {
+                    "label": "API — cos'è?",
+                    "text": "Un'API permette ad altri programmi di leggere dati WinProx o eseguire azioni (es. elencare segnalazioni e attività). Funziona in modo sicuro con un token API — come una password usata dal software, non dalle persone."
+                },
+                {
+                    "label": "Creare un token API",
+                    "text": "Dia al token un nome chiaro (es. «Integrazione ERP»). Dopo la creazione vede il codice una volta: lo copi e conservi subito. WinProx non lo mostrerà di nuovo. Se lo perde, crei un nuovo token e revochi il vecchio."
+                },
+                {
+                    "label": "Revocare un token",
+                    "text": "Non usa più un'integrazione, o teme che un token sia stato esposto? Clicchi Revoca. Quell'integrazione smette di funzionare. Gli altri token restano attivi."
+                },
+                {
+                    "label": "Cosa può fare l'API?",
+                    "text": "Con un token valido, il software può tra l'altro leggere segnalazioni e attività, elencare sedi/unità/team/lavoratori, creare o approvare segnalazioni e avviare o completare attività. Per documentazione tecnica, chieda al Suo partner IT o al supporto WinProx."
+                },
+                {
+                    "label": "Webhooks — cosa sono?",
+                    "text": "Un webhook è l'opposto dell'API: WinProx invia un messaggio al Suo sistema quando accade qualcosa (es. nuova segnalazione o attività completata). Fornisce un URL dove WinProx può inviare dati."
+                },
+                {
+                    "label": "Aggiungere un endpoint webhook",
+                    "text": "Inserisca un URL completo che inizia con https:// (connessione sicura). Selezioni gli eventi che vuole ricevere. Aggiunga facoltativamente una descrizione (es. «ERP produzione»). Salvi — WinProx memorizza l'indirizzo e invia automaticamente dati per quegli eventi."
+                },
+                {
+                    "label": "Event: issue.created",
+                    "text": "È stata ricevuta una nuova segnalazione (via QR, manualmente o tramite API). Utile per creare subito un ticket in un sistema esterno."
+                },
+                {
+                    "label": "Event: issue.approved",
+                    "text": "Un amministratore ha approvato una segnalazione (spesso da QR). Solo allora il contenuto è visibile anche sulle pagine QR pubbliche."
+                },
+                {
+                    "label": "Event: issue.status_changed",
+                    "text": "Lo stato di una segnalazione è cambiato (es. da aperta a in corso), di solito perché attività sono state avviate o completate."
+                },
+                {
+                    "label": "Event: task.created",
+                    "text": "È stata creata una nuova attività per un team, collegata a una segnalazione."
+                },
+                {
+                    "label": "Event: task.started",
+                    "text": "Un lavoratore ha avviato un'attività tramite il portale sul campo (QR unità)."
+                },
+                {
+                    "label": "Event: task.completed",
+                    "text": "Un'attività è stata completata dal team. Utile per aggiornare sistemi esterni o report."
+                },
+                {
+                    "label": "Event: unit.gps_reported",
+                    "text": "È stata registrata una posizione GPS per un'unità tramite il portale (reporter, lavoratore o admin durante collegamento QR). Il payload include coordinate e facoltativamente location_name e country_code (GeoNames)."
+                },
+                {
+                    "label": "Endpoint attivo o inattivo",
+                    "text": "Disattivi temporaneamente un endpoint senza eliminarlo (es. durante manutenzione server). Gli endpoint inattivi non ricevono messaggi."
+                },
+                {
+                    "label": "Consegne recenti",
+                    "text": "Registro dei tentativi webhook più recenti. «success» significa che il Suo sistema ha ricevuto il messaggio. «failed» significa che qualcosa è andato storto (URL errato, server offline, …). Mostra solo lo stato di consegna — non il contenuto della segnalazione."
+                },
+                {
+                    "label": "Sicurezza",
+                    "text": "Tratti i token API come password: non li condivida via e-mail o chat. I webhooks sono firmati crittograficamente così il Suo server può verificare che il messaggio provenga davvero da WinProx — il Suo partner IT può implementare questo controllo."
+                },
+                {
+                    "label": "Aiuto con l'integrazione",
+                    "text": "Non è sicuro se qualcosa funziona? Chieda al Suo partner IT di verificare URL, eventi e consegne recenti. Per WinProx stesso, usi Contatto o la FAQ se non ha uno sviluppatore."
+                }
+            ]
+        },
+        "subscription": {
+            "title": "Aiuto — Abbonamento",
+            "actions": [
+                {
+                    "label": "Periodo di prova",
+                    "text": "Durante la prova ha limiti estesi. La dashboard mostra i giorni rimanenti."
+                },
+                {
+                    "label": "Scelga piano",
+                    "text": "Selezioni un piano adatto al numero di unità che gestisce."
+                }
+            ]
+        },
+        "faq": {
+            "title": "Aiuto — FAQ",
+            "actions": [
+                {
+                    "label": "Knowledge base",
+                    "text": "Risposte alle domande frequenti su WinProx, QR, team e abbonamento."
+                }
+            ]
+        },
+        "contact": {
+            "title": "Aiuto — Contatto",
+            "actions": [
+                {
+                    "label": "Supporto",
+                    "text": "Contatti WinProx se ha bisogno di aiuto oltre a questo aiuto pagina e alla FAQ."
+                }
+            ]
+        },
+        "portal.worker.qr": {
+            "title": "Aiuto — Due codici QR",
+            "actions": [
+                {
+                    "label": "QR unità",
+                    "text": "Appiccicato a una macchina, stanza o asset. I cittadini possono segnalare problemi qui. Come lavoratore, acceda in modalità lavoratore per avviare o completare attività aperte su quell'unità."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Posizionato con il team (magazzino, officina, …). Acceda qui per vedere e gestire tutte le attività aperte del Suo team, indipendentemente dall'unità a cui appartengono."
+                }
+            ]
+        },
+        "portal.unit": {
+            "title": "Aiuto — Portale pubblico",
+            "actions": [
+                {
+                    "label": "Benvenuto",
+                    "text": "Benvenuto nel portale pubblico di :tenant. Legga qui sotto per maggiori informazioni. Interessato al portale aziendale? Clicchi su <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                },
+                {
+                    "label": "Segnala problema",
+                    "text": "Clicchi su «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Viene poi creata un'attività per il team. Noti che la segnalazione deve prima essere approvata prima di diventare visibile sul portale. Per prevenire spam, si applicano limiti: al massimo una segnalazione ogni 3 minuti e un massimo di cinque segnalazioni per 30 minuti per questa unità (per dispositivo)."
+                },
+                {
+                    "label": "Documenti",
+                    "text": "Visualizzi qui i manuali e altri documenti disponibili per questa unità. Scelga una lingua in alto — la descrizione viene tradotta automaticamente una volta pronta."
+                },
+                {
+                    "label": "Annunci",
+                    "text": "Visualizzi qui gli annunci che si applicano specificamente a questa unità. Scelga una lingua in alto — il testo viene tradotto automaticamente una volta pronto."
+                },
+                {
+                    "label": "Registra posizione GPS",
+                    "text": "Quando attivato, le Sue coordinate GPS sono condivise con l'amministrazione. Questo aiuta un tecnico a trovarLa facilmente."
+                },
+                {
+                    "label": "Lingua",
+                    "text": "Scelga la lingua desiderata in alto a destra (NL, EN, DE, FR). I testi sul portale vengono aggiornati immediatamente alla lingua scelta."
+                },
+                {
+                    "label": "Tema",
+                    "text": "Passi tra i diversi temi (simple, dark, high-res) in alto a destra per una vista adatta alle Sue preferenze."
+                }
+            ],
+            "status_note": "Le attività aperte su questa pagina seguono gli stati qui sotto.",
+            "statuses": {
+                "new": "Attività in attesa di avvio.",
+                "in_progress": "Il team sta lavorando.",
+                "done": "Il lavoro è completato.",
+                "closed": "L'attività è chiusa."
+            }
+        },
+        "portal.worker.photos": {
+            "title": "Aiuto — Foto sulle attività",
+            "actions": [
+                {
+                    "label": "Aggiungi foto",
+                    "text": "All'avvio o al completamento di un'attività, aggiunga foto come prova o spiegazione. Le foto vengono compresse automaticamente per un caricamento rapido."
+                },
+                {
+                    "label": "Attenda il caricamento",
+                    "text": "Attenda che il caricamento termini prima di confermare — altrimenti le foto mancheranno dall'attività."
+                }
+            ]
+        },
+        "portal.team": {
+            "title": "Aiuto — Portale lavoratore",
+            "actions": [
+                {
+                    "label": "Nome e icona",
+                    "text": "Dopo la scansione del codice team QR, inserisca nome e cognome e scelga un'icona personale. La ricordi bene, perché la prossima volta dovrà selezionarla di nuovo. Ha due tentativi per accedere con l'icona corretta; dopo il Suo account viene bloccato. Un caposquadra o amministratore può sbloccare il Suo account in quel caso."
+                },
+                {
+                    "label": "Prima volta",
+                    "text": "Nuovo nel team? Chieda al caposquadra o all'amministratore di creare un account per Lei. Dopodiché può accedere con nome e cognome e scegliere la Sua icona."
+                },
+                {
+                    "label": "Esci",
+                    "text": "Esca quando ha finito. A orari impostati dall'amministratore viene disconnesso automaticamente."
+                },
+                {
+                    "label": "Attività aperte",
+                    "text": "Dopo l'accesso vede tutte le attività aperte del Suo team. Tocchi un'attività per visualizzare i dettagli."
+                },
+                {
+                    "label": "Avvia",
+                    "text": "Vada su «Attività aperte» e clicchi su «Avvia attività». Gli altri membri del team vedranno che sta lavorando su questa attività e lo stato cambia in «In corso». Una volta terminato, clicchi su «Completa attività»."
+                },
+                {
+                    "label": "Completa",
+                    "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. L'attività ottiene poi lo stato «Completata»."
+                },
+                {
+                    "label": "Registra posizione GPS",
+                    "text": "Quando attivato, le Sue coordinate GPS sono condivise con l'amministrazione. Questo aiuta un tecnico a trovarLa facilmente."
+                }
+            ],
+            "status_note": "Ogni attività passa attraverso gli stati qui sotto:",
+            "statuses": {
+                "new": "L'attività non è ancora avviata e attende un lavoratore.",
+                "in_progress": "Qualcuno sta attualmente lavorando sull'attività sul posto.",
+                "done": "Il lavoro è stato completato da un lavoratore.",
+                "closed": "La segnalazione è stata verificata dall'amministratore e definitivamente chiusa."
+            }
+        },
+        "portal.teamleader.role": {
+            "title": "Aiuto — Caposquadra",
+            "actions": [
+                {
+                    "label": "Ruolo",
+                    "text": "Un caposquadra è un lavoratore con diritti extra sul portale team. Gestisce attività e aiuta i colleghi ad avviarsi."
+                },
+                {
+                    "label": "Assegnazione",
+                    "text": "Un amministratore assegna i capisquadra in WinProx sul team. Vede il badge «Caposquadra» dopo l'accesso."
+                },
+                {
+                    "label": "Team QR",
+                    "text": "Scansioni il team QR e acceda con nome e icona — come qualsiasi lavoratore."
+                },
+                {
+                    "label": "Pannelli extra",
+                    "text": "Dopo l'accesso vede sezioni extra: rilascia icona collega e gestisci lavoratori."
+                }
+            ]
+        },
+        "portal.teamleader.release": {
+            "title": "Aiuto — Rilascia icona collega",
+            "actions": [
+                {
+                    "label": "Quando necessario",
+                    "text": "Se un collega ha scelto l'icona sbagliata troppe volte, è bloccato. Può rilasciare l'icona in modo che possa sceglierne un'altra."
+                },
+                {
+                    "label": "Passi",
+                    "text": "Apri «Rilascia», confermi prima la Sua icona, selezioni il collega bloccato e confermi. Il collega può poi accedere di nuovo."
+                }
+            ]
+        },
+        "portal.teamleader.workers": {
+            "title": "Aiuto — Gestisci lavoratori",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "Apri «Gestisci» per vedere tutti i lavoratori del Suo team, incluso il badge caposquadra."
+                },
+                {
+                    "label": "Aggiungi",
+                    "text": "Aggiunga un nuovo lavoratore con nome e cognome. Poi faccia scansionare al collega il team QR per registrarsi e scegliere un'icona."
+                },
+                {
+                    "label": "Rimuovi",
+                    "text": "Rimuova lavoratori che non appartengono più al team. Non può rimuovere se stesso."
+                }
+            ]
+        },
+        "portal.teamleader.tasks": {
+            "title": "Aiuto — Gestisci attività",
+            "actions": [
+                {
+                    "label": "Come lavoratore",
+                    "text": "Avvii attività aperte, aggiunga note, alleghi foto e completi — identico al manuale lavoratori."
+                },
+                {
+                    "label": "Coordinamento",
+                    "text": "Mantenga la panoramica delle attività aperte e coordini chi prende in carico quale attività con il Suo team."
+                }
+            ],
+            "status_note": "Gli stati attività sono gli stessi di tutti i lavoratori.",
+            "statuses": {
+                "new": "Non ancora avviata.",
+                "in_progress": "In corso sul posto.",
+                "done": "Completata da Lei o da un collega.",
+                "closed": "Chiusa dall'admin."
+            }
+        },
+        "platform.translations": {
+            "title": "Aiuto — Traduzioni",
+            "actions": [
+                {
+                    "label": "Cosa viene tradotto?",
+                    "text": "Slot di traduzione automatica (NL, EN, FR, DE) per: segnalazioni QR approvate (descrizione); annunci attivi (descrizione); unità attive (nome e descrizione); attività con descrizione propria; documenti attivi (descrizione — il titolo resta nella lingua di origine). Le attività senza descrizione propria mostrano la traduzione della segnalazione collegata."
+                },
+                {
+                    "label": "Locale via Ollama",
+                    "text": "Come superuser sul Suo laptop: avvii <code>php artisan queue:work</code>, clicchi « Avvia traduzioni ». Segnalazioni, annunci, unità, attività e documenti in sospeso vengono esportati, tradotti in locale e reimportati sul server."
+                },
+                {
+                    "label": "Stato server",
+                    "text": "In produzione vede quante traduzioni sono ancora in attesa. Il conteggio include tutti questi tipi."
+                },
+                {
+                    "label": "Testo di origine modificato",
+                    "text": "Se qualcuno modifica il testo di origine di un annuncio, unità, attività o documento, le traduzioni esistenti vengono invalidate e rimesse in sospeso. Esegua poi una nuova sincronizzazione traduzioni."
+                }
+            ]
+        },
+        "platform.tenants": {
+            "title": "Aiuto — Piattaforma",
+            "actions": [
+                {
+                    "label": "Gestisci tenant",
+                    "text": "Panoramica di tutte le organizzazioni. Apra un tenant per lavorare nel suo ambiente come supporto."
+                },
+                {
+                    "label": "Modalità supporto",
+                    "text": "Avvii il supporto per usare l'app per conto di un tenant. Termini il supporto per tornare alla panoramica piattaforma."
+                }
+            ]
+        },
+        "platform.help": {
+            "title": "Aiuto — Knowledge base piattaforma",
+            "actions": [
+                {
+                    "label": "Domande senza risposta",
+                    "text": "Domande dalla chat di aiuto senza corrispondenza FAQ. Le risponda o le aggiunga alla knowledge base."
+                },
+                {
+                    "label": "Knowledge base",
+                    "text": "Gestisca articoli FAQ e risposte di aiuto per tutti i tenant."
+                }
+            ]
+        },
+        "legal": {
+            "title": "Aiuto — Documenti legali",
+            "actions": [
+                {
+                    "label": "Documenti",
+                    "text": "Informativa privacy, termini di servizio e altri testi legali da WinProx."
+                }
+            ]
+        }
+    }
+}
