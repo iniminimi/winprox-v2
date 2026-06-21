@@ -81,6 +81,22 @@ it('rangschikt top gescande units op portalbezoeken en qr-scans', function () {
         ->and($rows[1]->scanCount)->toBe(1);
 });
 
+it('toont de traffic-widget altijd met lege staat zonder scan-data', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('wp-traffic-widget')
+        ->assertSee(__('dashboard.traffic.empty'));
+});
+
 it('toont de traffic-widget naast de health-widget op het dashboard', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

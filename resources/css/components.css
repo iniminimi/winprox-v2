@@ -788,6 +788,10 @@ a.wp-kpi:hover {
     margin-top: 0.75rem;
 }
 
+.wp-traffic-widget__empty {
+    margin-top: 0.75rem;
+}
+
 .wp-traffic-row {
     display: flex;
     align-items: center;

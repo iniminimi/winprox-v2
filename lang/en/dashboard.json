@@ -33,7 +33,8 @@
         "title": "Popular assets",
         "subtitle": "Top 5 most scanned in the past 7 days.",
         "scans": "{1} :count scan|[2,*] :count scans",
-        "no_location": "No location"
+        "no_location": "No location",
+        "empty": "No QR scans in the past 7 days yet."
     },
     "welcome": "Welcome to Winprox.app",
     "onboarding": {

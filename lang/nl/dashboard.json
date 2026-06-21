@@ -33,7 +33,8 @@
         "title": "Populaire assets",
         "subtitle": "Top 5 meest gescand in de afgelopen 7 dagen.",
         "scans": "{1} :count scan|[2,*] :count scans",
-        "no_location": "Geen locatie"
+        "no_location": "Geen locatie",
+        "empty": "Nog geen QR-scans in de afgelopen 7 dagen."
     },
     "welcome": "Welkom op Winprox.app",
     "onboarding": {

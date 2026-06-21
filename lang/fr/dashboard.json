@@ -33,7 +33,8 @@
         "title": "Assets populaires",
         "subtitle": "Top 5 des unités les plus scannées sur 7 jours.",
         "scans": "{1} :count scan|[2,*] :count scans",
-        "no_location": "Aucun site"
+        "no_location": "Aucun site",
+        "empty": "Aucun scan QR au cours des 7 derniers jours."
     },
     "welcome": "Bienvenue sur Winprox.app",
     "onboarding": {
