@@ -2,27 +2,27 @@
     "meta_title": "WinProx vs plataforma tradicional | WinProx",
     "social": {
         "og_title": "WinProx vs plataforma tradicional",
-        "og_description": "Compare WinProx con una plataforma de facility clásica. Descubra las diferencias en público objetivo, implementación, costes y facilidad de uso."
+        "og_description": "Compare WinProx con una plataforma clásica de gestión de instalaciones. Descubra las diferencias en público objetivo, implementación, costes y facilidad de uso."
     },
     "hero": {
         "eyebrow": "Comparar",
         "title_before": "Grandes plataformas para grandes empresas.",
         "title_highlight": "WinProx para el resto.",
-        "lead": "Encuentre una plataforma adaptada a su organización. WinProx está pensado para facility managers que quieren ver resultados."
+        "lead": "Encuentre una plataforma adaptada a su organización. WinProx está pensado para gestores de instalaciones que quieren ver resultados."
     },
     "table": {
         "title": "Principales diferencias",
         "other_label": "Plataforma tradicional",
         "winprox_label": "WinProx",
         "rows": [
-            {"label": "Funcionalidad", "other": "Espacio IT genérico, activos, administración...", "winprox": "Informe → tarea → ejecución. Enfocado en resultados."},
-            {"label": "Público objetivo", "other": "Grandes empresas, inmobiliaria, industria...", "winprox": "PYME, municipios, organizaciones de facility, escuelas — sin departamento de IT."},
+            {"label": "Funcionalidad", "other": "Espacio IT genérico, activos, administración...", "winprox": "Incidencia → tarea → ejecución. Enfocado en resultados."},
+            {"label": "Público objetivo", "other": "Grandes empresas, inmobiliaria, industria...", "winprox": "PYME, municipios, organizaciones de gestión de instalaciones, escuelas — sin departamento de IT."},
             {"label": "Implementación", "other": "Semanas o meses, consultores necesarios", "winprox": "Servicio SaaS, operativo en un día. Prueba gratuita."},
-            {"label": "Su promesa", "other": "Por fin pagar al personal interno por tarea", "winprox": "Todos — residentes, clientes, pacientes — informan vía QR, escaneo, sin app ni cuenta."},
-            {"label": "Costes de mantenimiento", "other": "Caros, alineados a largo plazo", "winprox": "Códigos QR sin coste; mantenimiento vía equipo + team-QR."},
-            {"label": "Seguridad", "other": "Formación extensa de trabajadores de campo", "winprox": "Los trabajadores verifican con nombre + icono personal vía team-QR."},
+            {"label": "Su promesa", "other": "Por fin pagar al personal interno por tarea", "winprox": "Todos — residentes, clientes, pacientes — reportan vía QR, sin app ni cuenta."},
+            {"label": "Costes de mantenimiento", "other": "Caros, alineados a largo plazo", "winprox": "Códigos QR sin coste; mantenimiento vía equipo + QR de equipo."},
+            {"label": "Seguridad", "other": "Formación extensa de trabajadores de campo", "winprox": "Los trabajadores se verifican con nombre + icono personal vía QR de equipo."},
             {"label": "Precios", "other": "Licencias enterprise, cifras mensuales, a menudo por módulo", "winprox": "Suscripción transparente, escalable por usuario o equipo."},
-            {"label": "Idiomas", "other": "A menudo solo neerlandés", "winprox": "Neerlandés, francés, inglés, alemán, español — totalmente integrado."}
+            {"label": "Idiomas", "other": "A menudo solo neerlandés", "winprox": "Neerlandés, francés, inglés, alemán y español — totalmente integrado."}
         ]
     },
     "cta": {
@@ -34,7 +34,7 @@
         "title": "Así de simple funciona",
         "steps": [
             "Escanear QR",
-            "Informe + foto",
+            "Incidencia + foto",
             "Tarea creada",
             "Equipo in situ",
             "Resuelto"
@@ -44,10 +44,10 @@
         "eyebrow": "Por qué WinProx",
         "title": "Diseñado para el trabajo de campo",
         "cards": [
-            {"title": "QR incluido, no QR como extra", "body": "No necesita departamento de IT para sus propios códigos QR. En un día sus ubicaciones, unidades y personal trabajan con QR."},
-            {"title": "Operativo en un día", "body": "Configuración, ubicación, activos, pegatinas QR — todo listo antes de que empiece su equipo."},
-            {"title": "Sin app que instalar", "body": "Informar y completar tareas funciona en el navegador. Sin app store, sin cuenta, sin contraseñas."},
-            {"title": "Briefing matinal por equipo", "body": "Cada mañana una visión clara por equipo operativo — tareas abiertas, ubicación, listo para empezar."}
+            {"title": "QR incluido, no QR como extra", "body": "No necesita departamento de IT para sus propios códigos QR. En un día sus ubicaciones, unidades y trabajadores operan con QR."},
+            {"title": "Operativo en un día", "body": "Configuración, ubicaciones, unidades, pegatinas QR — todo listo antes de que empiece su equipo."},
+            {"title": "Sin app que instalar", "body": "Enviar incidencias y completar tareas funciona en el navegador. Sin app store, sin cuenta, sin contraseñas."},
+            {"title": "Briefing matutino por equipo", "body": "Cada mañana una visión clara por equipo operativo — tareas abiertas, ubicación, listo para empezar."}
         ]
     },
     "closing": {

@@ -7,7 +7,7 @@ alwaysApply: true
 
 We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server** (Linux) en wordt bijgewerkt via **git push** naar `origin`.
 
-**Gebruiker wil altijd commit + push** zodra een taak klaar is — niet wachten op expliciete bevestiging.
+**Gebruiker wil altijd direct commit + push** zodra een taak klaar is — **niet vragen**, niet wachten op expliciete bevestiging. Dit geldt ook voor kleine follow-ups (locale-fixes, één bestand).
 
 ## Werkwijze
 
