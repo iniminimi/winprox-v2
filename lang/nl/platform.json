@@ -179,6 +179,9 @@
         "phase_importing_remote": "Import op server uitvoeren",
         "phase_completed": "Voltooid",
         "phase_failed": "Mislukt",
-        "phase_unknown": "Onbekend"
+        "phase_unknown": "Onbekend",
+        "stalled": "De vertaal-run lijkt vastgelopen (geen update meer). Controleer of php artisan queue:work nog draait in PowerShell. SSH/SCP kan hangen na het vertalen.",
+        "reset_stuck": "Status wissen en opnieuw proberen",
+        "reset_stuck_done": "Status gewist. Start opnieuw als queue:work nog draait."
     }
 }

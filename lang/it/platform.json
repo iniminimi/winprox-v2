@@ -179,6 +179,9 @@
         "phase_importing_remote": "Esecuzione importazione sul server",
         "phase_completed": "Completata",
         "phase_failed": "Non riuscita",
-        "phase_unknown": "Sconosciuto"
+        "phase_unknown": "Sconosciuto",
+        "stalled": "La sincronizzazione sembra bloccata (nessun aggiornamento recente). Verifichi che php artisan queue:work sia ancora in esecuzione in PowerShell. SSH/SCP può bloccarsi dopo la traduzione.",
+        "reset_stuck": "Cancella stato e riprova",
+        "reset_stuck_done": "Stato cancellato. Riavvii se queue:work è ancora in esecuzione."
     }
 }

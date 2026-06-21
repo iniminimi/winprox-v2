@@ -18,4 +18,7 @@ return [
     'status_path' => 'translation-sync/status.json',
 
     'timeout_seconds' => (int) env('TRANSLATION_SYNC_TIMEOUT', 7200),
+
+    /** Geen status-update langer dan dit → vastgelopen (SSH/SCP of queue-worker gestopt). */
+    'stale_after_seconds' => (int) env('TRANSLATION_SYNC_STALE_AFTER', 1200),
 ];

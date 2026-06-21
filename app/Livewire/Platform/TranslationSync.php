@@ -4,7 +4,9 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Communication\CountPendingIssueTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
+use App\Actions\Communication\ResetTranslationSyncStatusAction;
 use App\Actions\Communication\StartTranslationSyncAction;
+use App\Support\Translation\TranslationSyncStatusStore;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
@@ -24,6 +26,15 @@ class TranslationSync extends Component
     public function mount(): void
     {
         $this->authorize('runTranslationSync', User::class);
+    }
+
+    public function resetStuck(ResetTranslationSyncStatusAction $reset): void
+    {
+        $this->authorize('runTranslationSync', User::class);
+
+        $reset->handle();
+        $this->flashType = 'success';
+        $this->flashMessage = __('platform.translation_sync.reset_stuck_done');
     }
 
     public function start(StartTranslationSyncAction $start): void
@@ -54,8 +65,12 @@ class TranslationSync extends Component
     {
         $isLocalOperator = $this->isLocalOperator();
 
+        $status = $isLocalOperator ? $readStatus->handle() : null;
+        $statusStore = app(TranslationSyncStatusStore::class);
+
         return view('livewire.platform.translation-sync', [
-            'status' => $isLocalOperator ? $readStatus->handle() : null,
+            'status' => $status,
+            'isStuck' => $status !== null && $statusStore->isStale($status),
             'isLocalOperator' => $isLocalOperator,
             'useSyncQueue' => config('queue.default') === 'sync',
             'pendingCount' => $countPending->handle(),

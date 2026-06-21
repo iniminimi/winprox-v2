@@ -200,3 +200,55 @@ it('toont servermelding op vertaalpagina zonder lokale sync-config', function ()
         ->assertSee(__('platform.translation_sync.server_only_message'))
         ->assertDontSee(__('platform.translation_sync.workflow_title'));
 });
+
+it('detecteert vastgelopen status en kan resetten', function () {
+    config(['translation_sync.stale_after_seconds' => 60]);
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    $store->write(TranslationSyncPhase::Uploading, (int) $user->id, [
+        'total' => 5,
+        'completed' => 5,
+    ]);
+
+    $status = $store->read();
+    $status['updated_at'] = now()->subMinutes(5)->toIso8601String();
+    \Illuminate\Support\Facades\Storage::disk('local')->put(
+        (string) config('translation_sync.status_path'),
+        json_encode($status, JSON_THROW_ON_ERROR),
+    );
+
+    Livewire::actingAs($user)
+        ->test(PlatformTranslationSync::class)
+        ->assertSee(__('platform.translation_sync.stalled'))
+        ->call('resetStuck')
+        ->assertSee(__('platform.translation_sync.reset_stuck_done'));
+
+    expect($store->read())->toBeNull();
+});
+
+it('staat opnieuw starten toe wanneer status vastgelopen is', function () {
+    Queue::fake();
+    config(['translation_sync.stale_after_seconds' => 60]);
+
+    $user = User::factory()->create(['is_superuser' => true, 'tenant_id' => null]);
+    $store = app(TranslationSyncStatusStore::class);
+
+    $store->write(TranslationSyncPhase::Uploading, (int) $user->id, [
+        'total' => 2,
+        'completed' => 2,
+    ]);
+
+    $status = $store->read();
+    $status['updated_at'] = now()->subMinutes(5)->toIso8601String();
+    \Illuminate\Support\Facades\Storage::disk('local')->put(
+        (string) config('translation_sync.status_path'),
+        json_encode($status, JSON_THROW_ON_ERROR),
+    );
+
+    app(StartTranslationSyncAction::class)->handle((int) $user->id);
+
+    Queue::assertPushed(RunTranslationSyncJob::class);
+    expect($store->read()['phase'] ?? null)->toBe(TranslationSyncPhase::Queued->value);
+});

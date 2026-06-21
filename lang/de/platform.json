@@ -179,6 +179,9 @@
         "phase_importing_remote": "Import auf dem Server ausführen",
         "phase_completed": "Abgeschlossen",
         "phase_failed": "Fehlgeschlagen",
-        "phase_unknown": "Unbekannt"
+        "phase_unknown": "Unbekannt",
+        "stalled": "Der Übersetzungslauf scheint hängen zu bleiben (keine Aktualisierung mehr). Prüfen Sie, ob php artisan queue:work in PowerShell noch läuft. SSH/SCP kann nach dem Übersetzen hängen.",
+        "reset_stuck": "Status löschen und erneut versuchen",
+        "reset_stuck_done": "Status gelöscht. Starten Sie erneut, wenn queue:work noch läuft."
     }
 }

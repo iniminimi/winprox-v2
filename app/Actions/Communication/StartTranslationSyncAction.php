@@ -32,7 +32,11 @@ class StartTranslationSyncAction
             $current = $this->statusStore->read();
             $phase = TranslationSyncPhase::tryFrom((string) ($current['phase'] ?? ''));
             if ($phase?->isActive()) {
-                throw new RuntimeException('translation_sync_already_running');
+                if ($this->statusStore->isStale($current)) {
+                    $this->statusStore->clear();
+                } else {
+                    throw new RuntimeException('translation_sync_already_running');
+                }
             }
 
             $this->statusStore->write(TranslationSyncPhase::Queued, $actorUserId, [

@@ -179,6 +179,9 @@
         "phase_importing_remote": "Running import on server",
         "phase_completed": "Completed",
         "phase_failed": "Failed",
-        "phase_unknown": "Unknown"
+        "phase_unknown": "Unknown",
+        "stalled": "The translation run appears stuck (no recent updates). Check that php artisan queue:work is still running in PowerShell. SSH/SCP may hang after translating.",
+        "reset_stuck": "Clear status and try again",
+        "reset_stuck_done": "Status cleared. Start again if queue:work is still running."
     }
 }

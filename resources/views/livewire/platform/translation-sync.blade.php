@@ -41,7 +41,7 @@ php artisan queue:work</code></pre>
                     class="btn btn--primary"
                     wire:click="start"
                     wire:loading.attr="disabled"
-                    @if ($status && in_array($status['phase'] ?? '', ['queued', 'exporting_remote', 'downloading', 'translating', 'uploading', 'importing_remote'], true)) disabled @endif
+                    @if ($status && in_array($status['phase'] ?? '', ['queued', 'exporting_remote', 'downloading', 'translating', 'uploading', 'importing_remote'], true) && ! ($isStuck ?? false)) disabled @endif
                 >
                     <x-wp-spinner wire:loading wire:target="start" class="wp-mr-2" />
                     {{ __('platform.translation_sync.start') }}
@@ -113,6 +113,13 @@ php artisan queue:work</code></pre>
 
                 @if (! empty($status['updated_at']))
                     <p class="wp-muted">{{ __('platform.translation_sync.status_at', ['datetime' => $status['updated_at']]) }}</p>
+                @endif
+
+                @if ($isStuck ?? false)
+                    <p class="wp-text-body wp-text-danger">{{ __('platform.translation_sync.stalled') }}</p>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetStuck">
+                        {{ __('platform.translation_sync.reset_stuck') }}
+                    </button>
                 @endif
 
                 @if ($phase === 'completed')
