@@ -84,7 +84,7 @@
                 @php
                     $canDelete = \App\Support\Units\UnitDeletionGuard::canDelete($unit);
                 @endphp
-                <div class="wp-issue-row" wire:key="unit-{{ $unit->id }}">
+                <div @class(['wp-issue-row', 'wp-issue-row--focus' => $focusUnitId === $unit->id]) id="unit-row-{{ $unit->id }}" wire:key="unit-{{ $unit->id }}">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title wp-unit-title-row">
                             <span>{{ $unit->localizedName() }}</span>
@@ -128,6 +128,15 @@
 
         @if ($units->hasPages())
             {{ $units->links() }}
+        @endif
+
+        @if ($focusUnitId)
+            <div
+                hidden
+                x-data
+                x-init="$nextTick(() => document.getElementById('unit-row-{{ $focusUnitId }}')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))"
+                aria-hidden="true"
+            ></div>
         @endif
     </div>
 

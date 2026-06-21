@@ -28,6 +28,13 @@
         "reporter_anon": "Anonym",
         "no_location": "Kein Standort"
     },
+    "traffic": {
+        "kicker": "QR-Scans",
+        "title": "Beliebte Assets",
+        "subtitle": "Top 5 der meist gescannten Units in 7 Tagen.",
+        "scans": "{1} :count Scan|[2,*] :count Scans",
+        "no_location": "Kein Standort"
+    },
     "welcome": "Willkommen auf Winprox.app",
     "onboarding": {
         "teams": {

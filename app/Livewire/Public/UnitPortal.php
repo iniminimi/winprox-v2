@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Public\RecordUnitPortalVisitAction;
 use App\Actions\Public\SubmitReportAction;
 use App\Exceptions\Public\PublicReportRateLimitExceededException;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
@@ -89,7 +90,7 @@ class UnitPortal extends Component
     public ?float $gpsLongitude = null;
     public ?string $gpsReportedAt = null;
 
-    public function mount(string $token): void
+    public function mount(string $token, RecordUnitPortalVisitAction $recordVisit): void
     {
         $unit = Unit::withoutGlobalScope('tenant')
             ->with(['location', 'category', 'tenant', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
@@ -97,6 +98,8 @@ class UnitPortal extends Component
             ->first();
 
         abort_unless($unit, 404);
+
+        $recordVisit->handle($unit, request()->ip());
 
         $this->token = $token;
         $this->unitId = $unit->id;

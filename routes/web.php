@@ -30,6 +30,7 @@ use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
+use App\Livewire\Pages\Health;
 use App\Livewire\Pages\Legal;
 use App\Livewire\Pages\ManualHub;
 use App\Livewire\Pages\ManualIndex;
@@ -158,6 +159,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('support.tenant')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
+        Route::get('/health', Health::class)->name('health.index');
 
         Route::get('/issues', IssueIndex::class)->name('issues.index');
         Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');

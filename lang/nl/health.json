@@ -1,0 +1,34 @@
+{
+    "title": "Configuratiegezondheid",
+    "subtitle": "Overzicht van onvolledige locaties, units en categorieën.",
+    "widget": {
+        "kicker": "Configuratie",
+        "title": "Gezondheidscontrole",
+        "issues": "{0} Geen actiepunten|{1} :count actiepunt|[2,*] :count actiepunten"
+    },
+    "donut_aria": "Configuratie :percent procent compleet",
+    "summary": {
+        "title": "Volledigheid",
+        "complete": ":complete van :total records correct geconfigureerd",
+        "all_ok": "Alle actieve locaties, units en categorieën zijn correct geconfigureerd.",
+        "issues": "{0} Geen openstaande actiepunten|{1} :count openstaand actiepunt|[2,*] :count openstaande actiepunten"
+    },
+    "list": {
+        "title": "Actiepunten",
+        "empty_filter": "Geen actiepunten voor dit filter."
+    },
+    "filter": {
+        "label": "Filter op type",
+        "all": "Alle types"
+    },
+    "fix": "Oplossen",
+    "no_location": "Geen locatie",
+    "unnamed_location": "Naamloze locatie",
+    "issue": {
+        "unit_photo": "Unit zonder foto",
+        "category_team": "Categorie zonder team",
+        "location_address": "Locatie zonder adres",
+        "category_team_hint": "Koppel minstens één team",
+        "location_address_hint": "Vul straat, postcode en plaats in"
+    }
+}

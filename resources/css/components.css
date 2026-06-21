@@ -710,6 +710,152 @@ a.wp-kpi:hover {
     height: 1.25rem;
 }
 
+/* ---------------------------------------------------------------------------
+ | Configuratiegezondheid — donut + dashboard-widget.
+ * ------------------------------------------------------------------------- */
+.wp-health-donut {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.wp-health-donut__svg {
+    display: block;
+}
+
+.wp-health-donut__track {
+    stroke: var(--wp-border);
+}
+
+.wp-health-donut__segment--complete {
+    stroke: var(--wp-accent);
+}
+
+.wp-health-donut__segment--incomplete {
+    stroke: var(--wp-warning);
+}
+
+.wp-health-donut__label {
+    position: absolute;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    line-height: 1;
+}
+
+.wp-health-donut--lg .wp-health-donut__label {
+    font-size: 1.125rem;
+}
+
+.wp-health-donut--sm .wp-health-donut__label {
+    font-size: 0.75rem;
+}
+
+.wp-dashboard-widgets {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+}
+
+@media (min-width: 75rem) {
+    .wp-dashboard-widgets {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wp-dashboard-widgets--single {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wp-dashboard-widgets--single > :only-child {
+        grid-column: span 1;
+    }
+}
+
+.wp-dashboard-widget {
+    min-width: 0;
+}
+
+.wp-dashboard-widget__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--wp-text);
+    margin: 0;
+}
+
+.wp-traffic-widget__list {
+    margin-top: 0.75rem;
+}
+
+.wp-traffic-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+    border-top: 1px solid var(--wp-border);
+    text-decoration: none;
+    color: inherit;
+    transition: background-color var(--wp-transition);
+}
+
+.wp-traffic-row:first-child {
+    border-top: none;
+}
+
+.wp-traffic-row:hover {
+    text-decoration: none;
+    background-color: var(--wp-surface-hover);
+}
+
+.wp-traffic-row__chevron {
+    width: 1rem;
+    height: 1rem;
+    color: var(--wp-text-muted);
+    flex-shrink: 0;
+}
+
+.wp-issue-row--focus {
+    border-color: var(--wp-accent-border);
+    background-color: var(--wp-accent-soft);
+}
+
+.wp-health-widget {
+    display: block;
+    text-decoration: none;
+    transition:
+        transform var(--wp-transition),
+        box-shadow var(--wp-transition),
+        border-color var(--wp-transition);
+}
+
+.wp-health-widget:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--wp-shadow);
+    border-color: var(--wp-border-strong);
+    text-decoration: none;
+}
+
+.wp-health-widget__body {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.wp-health-widget__chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--wp-text-muted);
+    flex-shrink: 0;
+}
+
+.wp-health-summary {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
 /* Icoon in wit kader met grijze rand (portaal, KPI's, …). */
 .wp-icon-frame {
     display: inline-flex;

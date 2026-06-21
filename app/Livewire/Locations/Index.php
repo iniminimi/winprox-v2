@@ -89,6 +89,12 @@ class Index extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', Location::class);
+
+        $categoryId = (int) request()->query('edit_category', 0);
+        if ($categoryId > 0) {
+            $this->showCategoriesSection = true;
+            $this->openEditCategory($categoryId);
+        }
     }
 
     public function updatedSearch(): void

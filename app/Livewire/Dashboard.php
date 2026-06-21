@@ -8,6 +8,8 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Task;
 use App\Models\Unit;
+use App\Support\Admin\AdminHealthService;
+use App\Support\Dashboard\TopScannedUnitsService;
 use App\Support\Onboarding\TenantOnboardingState;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -17,8 +19,11 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Dashboard extends Component
 {
-    public function render(RealignSubscriptionPeriodAction $realign)
-    {
+    public function render(
+        RealignSubscriptionPeriodAction $realign,
+        AdminHealthService $healthService,
+        TopScannedUnitsService $topScannedUnits,
+    ) {
         $stats = [
             'locations' => Location::query()->count(),
             'units' => Unit::query()->count(),
@@ -48,6 +53,8 @@ class Dashboard extends Component
             'recent' => $recent,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => TenantOnboardingState::current(),
+            'health' => $healthService->report(),
+            'topScannedUnits' => $topScannedUnits->topForCurrentTenant(),
         ]);
     }
 }

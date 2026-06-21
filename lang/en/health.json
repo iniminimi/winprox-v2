@@ -1,0 +1,34 @@
+{
+    "title": "Configuration health",
+    "subtitle": "Overview of incomplete locations, units and categories.",
+    "widget": {
+        "kicker": "Configuration",
+        "title": "Health check",
+        "issues": "{0} No action items|{1} :count action item|[2,*] :count action items"
+    },
+    "donut_aria": "Configuration :percent percent complete",
+    "summary": {
+        "title": "Completeness",
+        "complete": ":complete of :total records correctly configured",
+        "all_ok": "All active locations, units and categories are correctly configured.",
+        "issues": "{0} No open action items|{1} :count open action item|[2,*] :count open action items"
+    },
+    "list": {
+        "title": "Action items",
+        "empty_filter": "No action items for this filter."
+    },
+    "filter": {
+        "label": "Filter by type",
+        "all": "All types"
+    },
+    "fix": "Fix",
+    "no_location": "No location",
+    "unnamed_location": "Unnamed location",
+    "issue": {
+        "unit_photo": "Unit without photo",
+        "category_team": "Category without team",
+        "location_address": "Location without address",
+        "category_team_hint": "Link at least one team",
+        "location_address_hint": "Enter street, postal code and city"
+    }
+}

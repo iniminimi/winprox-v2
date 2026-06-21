@@ -1,0 +1,34 @@
+{
+    "title": "Santé de la configuration",
+    "subtitle": "Aperçu des sites, unités et catégories incomplets.",
+    "widget": {
+        "kicker": "Configuration",
+        "title": "Contrôle de santé",
+        "issues": "{0} Aucun point d'action|{1} :count point d'action|[2,*] :count points d'action"
+    },
+    "donut_aria": "Configuration :percent pour cent complète",
+    "summary": {
+        "title": "Complétude",
+        "complete": ":complete sur :total enregistrements correctement configurés",
+        "all_ok": "Tous les sites, unités et catégories actifs sont correctement configurés.",
+        "issues": "{0} Aucun point d'action ouvert|{1} :count point d'action ouvert|[2,*] :count points d'action ouverts"
+    },
+    "list": {
+        "title": "Points d'action",
+        "empty_filter": "Aucun point d'action pour ce filtre."
+    },
+    "filter": {
+        "label": "Filtrer par type",
+        "all": "Tous les types"
+    },
+    "fix": "Corriger",
+    "no_location": "Aucun site",
+    "unnamed_location": "Site sans nom",
+    "issue": {
+        "unit_photo": "Unité sans photo",
+        "category_team": "Catégorie sans équipe",
+        "location_address": "Site sans adresse",
+        "category_team_hint": "Associez au moins une équipe",
+        "location_address_hint": "Renseignez rue, code postal et ville"
+    }
+}

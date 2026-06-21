@@ -87,6 +87,8 @@ class Show extends Component
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
+    public ?int $focusUnitId = null;
+
     public string $unitCategoryFilter = '';
 
     #[Url(as: 'unit')]
@@ -119,6 +121,26 @@ class Show extends Component
         $this->authorize('view', $location);
         $this->location = $location;
         $this->previewLocale = LocaleSupport::normalize(app()->getLocale());
+
+        if (request()->query('edit') === 'location') {
+            $this->openEditLocation();
+        }
+
+        $editUnitId = (int) request()->query('edit_unit', 0);
+        if ($editUnitId > 0) {
+            $this->openEditUnit($editUnitId);
+        }
+
+        $focusUnitId = (int) request()->query('unit_id', 0);
+        if ($focusUnitId > 0) {
+            $this->focusUnitId = $focusUnitId;
+            $focusUnit = Unit::query()
+                ->where('location_id', $location->id)
+                ->find($focusUnitId);
+            if ($focusUnit !== null) {
+                $this->unitSearch = $focusUnit->localizedName();
+            }
+        }
     }
 
     public function openEditLocation(): void

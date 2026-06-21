@@ -1,0 +1,34 @@
+{
+    "title": "Konfigurationszustand",
+    "subtitle": "Übersicht unvollständiger Standorte, Units und Kategorien.",
+    "widget": {
+        "kicker": "Konfiguration",
+        "title": "Gesundheitscheck",
+        "issues": "{0} Keine Maßnahmen|{1} :count Maßnahme|[2,*] :count Maßnahmen"
+    },
+    "donut_aria": "Konfiguration :percent Prozent vollständig",
+    "summary": {
+        "title": "Vollständigkeit",
+        "complete": ":complete von :total Datensätzen korrekt konfiguriert",
+        "all_ok": "Alle aktiven Standorte, Units und Kategorien sind korrekt konfiguriert.",
+        "issues": "{0} Keine offenen Maßnahmen|{1} :count offene Maßnahme|[2,*] :count offene Maßnahmen"
+    },
+    "list": {
+        "title": "Maßnahmen",
+        "empty_filter": "Keine Maßnahmen für diesen Filter."
+    },
+    "filter": {
+        "label": "Nach Typ filtern",
+        "all": "Alle Typen"
+    },
+    "fix": "Beheben",
+    "no_location": "Kein Standort",
+    "unnamed_location": "Unbenannter Standort",
+    "issue": {
+        "unit_photo": "Unit ohne Foto",
+        "category_team": "Kategorie ohne Team",
+        "location_address": "Standort ohne Adresse",
+        "category_team_hint": "Mindestens ein Team zuweisen",
+        "location_address_hint": "Straße, PLZ und Ort eingeben"
+    }
+}

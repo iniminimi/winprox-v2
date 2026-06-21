@@ -51,6 +51,11 @@ class Location extends Model
         return (string) ($this->address ?? '');
     }
 
+    public function hasCompleteAddress(): bool
+    {
+        return trim($this->formattedAddress()) !== '';
+    }
+
     public function units(): HasMany
     {
         return $this->hasMany(Unit::class);

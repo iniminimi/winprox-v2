@@ -41,6 +41,9 @@ class Index extends Component
     #[Url(as: 'highlight')]
     public ?int $highlightIssue = null;
 
+    #[Url(as: 'unit_id')]
+    public ?int $unitFilter = null;
+
     #[Url(as: 'create')]
     public bool $openCreate = false;
 
@@ -297,6 +300,7 @@ class Index extends Component
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
             ->when($this->recurring, fn ($q) => $q->where('is_recurring', true))
+            ->when($this->unitFilter, fn ($q) => $q->where('unit_id', $this->unitFilter))
             ->when(trim($this->search) !== '', function ($q) {
                 $term = '%'.trim($this->search).'%';
                 $q->where(function ($query) use ($term) {
@@ -359,7 +363,7 @@ class Index extends Component
             'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
             'teams' => InternalTeam::query()->orderBy('name')->get(),
-            'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring,
+            'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring || $this->unitFilter,
             'highlightIssue' => $this->highlightIssue,
             'onboarding' => TenantOnboardingState::current(),
             'createLocations' => $this->showCreateModal
