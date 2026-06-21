@@ -1084,7 +1084,7 @@
 
 [data-theme='standard'] .wp-welcome-video-widget {
     position: relative;
-    margin: 2rem auto 0;
+    margin: 3.5rem auto 0;
     max-width: 38rem;
     padding: 2rem 2.25rem;
     border-radius: 1.5rem;
@@ -1106,6 +1106,7 @@
 
 @media (min-width: 48rem) {
     [data-theme='standard'] .wp-welcome-video-widget {
+        margin-top: 4rem;
         padding: 2.25rem 2.75rem;
     }
 }
