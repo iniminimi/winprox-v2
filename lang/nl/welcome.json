@@ -102,7 +102,12 @@
     },
     "video": {
         "title": "Video",
-        "placeholder": "Video volgt binnenkort."
+        "placeholder": "Video volgt binnenkort.",
+        "widget": {
+            "title": "WinProx vergelijken?",
+            "body": "Zie op een rij hoe WinProx zich verhoudt tot een klassiek platform.",
+            "link": "Bekijk de vergelijking"
+        }
     },
     "sectors": {
         "eyebrow": "Flexibiliteit",

@@ -102,7 +102,12 @@
     },
     "video": {
         "title": "Video",
-        "placeholder": "Video folgt in Kürze."
+        "placeholder": "Video folgt in Kürze.",
+        "widget": {
+            "title": "WinProx vergleichen?",
+            "body": "Sehen Sie auf einen Blick, wie sich WinProx von einer traditionellen Plattform unterscheidet.",
+            "link": "Vergleich ansehen"
+        }
     },
     "sectors": {
         "eyebrow": "Flexibilität",

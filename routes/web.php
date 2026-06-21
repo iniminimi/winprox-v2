@@ -71,6 +71,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+Route::get('/comparison', function () {
+    return view('comparison');
+})->name('comparison');
+
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');

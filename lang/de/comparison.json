@@ -1,0 +1,58 @@
+{
+    "meta_title": "WinProx vs traditionelle Plattform | WinProx",
+    "social": {
+        "og_title": "WinProx vs traditionelle Plattform",
+        "og_description": "Vergleichen Sie WinProx mit einer klassischen Facility-Plattform. Entdecken Sie die Unterschiede in Zielgruppe, Implementierung, Kosten und Benutzerfreundlichkeit."
+    },
+    "hero": {
+        "eyebrow": "Vergleich",
+        "title_before": "Große Plattformen für große Unternehmen.",
+        "title_highlight": "WinProx für den Rest.",
+        "lead": "Finden Sie eine Plattform, die zu Ihrer Organisation passt. WinProx ist für Facility Manager gebaut, die Ergebnisse sehen wollen."
+    },
+    "table": {
+        "title": "Hauptunterschiede",
+        "other_label": "Traditionelle Plattform",
+        "winprox_label": "WinProx",
+        "rows": [
+            {"label": "Funktionalität", "other": "Allgemeiner IT-Raum, Assets, Verwaltung...", "winprox": "Meldung → Aufgabe → Ausführung. Ergebnisorientiert."},
+            {"label": "Zielgruppe", "other": "Große Unternehmen, Immobilien, Industrie...", "winprox": "KMU, Gemeinden, Facility-Organisationen, Schulen — ohne IT-Abteilung."},
+            {"label": "Implementierung", "other": "Wochen bis Monate, Berater nötig", "winprox": "SaaS-Service, live an einem Tag. Kostenlose Testphase."},
+            {"label": "Ihr Versprechen", "other": "Endlich interne Mitarbeiter pro Aufgabe bezahlen", "winprox": "Jeder — Bewohner, Kunden, Patienten — meldet per QR, Scan, ohne App oder Account."},
+            {"label": "Wartungskosten", "other": "Teuer, langfristig ausgerichtet", "winprox": "QR-Codes ohne Kosten; Wartung via Team + Team-QR."},
+            {"label": "Sicherheit", "other": "Umfangreiche Schulung von Außendienstmitarbeitern", "winprox": "Mitarbeiter verifizieren sich per Name + persönlichem Icon via Team-QR."},
+            {"label": "Preise", "other": "Enterprise-Lizenzen, monatliche Zahlen, oft pro Modul", "winprox": "Transparentes Abonnement, skalierbar pro Benutzer oder Team."},
+            {"label": "Sprachen", "other": "Oft nur Niederländisch", "winprox": "Niederländisch, Französisch, Englisch, Deutsch, Spanisch — vollständig eingebaut."}
+        ]
+    },
+    "cta": {
+        "more_info": "Mehr Infos",
+        "trial": "Kostenlos testen"
+    },
+    "flow": {
+        "eyebrow": "Der WinProx-Flow",
+        "title": "So einfach funktioniert es",
+        "steps": [
+            "QR scannen",
+            "Meldung + Foto",
+            "Aufgabe erstellt",
+            "Team vor Ort",
+            "Gelöst"
+        ]
+    },
+    "why": {
+        "eyebrow": "Warum WinProx",
+        "title": "Für die Arbeitswelt gebaut",
+        "cards": [
+            {"title": "QR inklusive, nicht QR als Extra", "body": "Keine IT-Abteilung nötig für eigene QR-Codes. Innerhalb eines Tages arbeiten Ihre Standorte, Einheiten und Mitarbeiter mit QR."},
+            {"title": "Live an einem Tag", "body": "Setup, Standort, Assets, QR-Sticker — alles bereit, bevor Ihr Team startet."},
+            {"title": "Keine App zu installieren", "body": "Meldungen und Aufgaben erledigen funktioniert im Browser. Kein App Store, kein Account, keine Passwörter."},
+            {"title": "Morgenbriefing pro Team", "body": "Jeden Morgen eine klare Übersicht pro operatives Team — offene Aufgaben, Standort, bereit zum Start."}
+        ]
+    },
+    "closing": {
+        "title": "Bereit, WinProx auszuprobieren?",
+        "body": "Kostenlos starten. Keine Kreditkarte, keine Verpflichtungen, kein Ärger.",
+        "cta": "Kostenlos starten"
+    }
+}

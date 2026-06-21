@@ -102,7 +102,12 @@
     },
     "video": {
         "title": "Vidéo",
-        "placeholder": "Vidéo bientôt disponible."
+        "placeholder": "Vidéo bientôt disponible.",
+        "widget": {
+            "title": "Comparer WinProx ?",
+            "body": "Découvrez en un coup d'œil comment WinProx se compare à une plateforme traditionnelle.",
+            "link": "Voir la comparaison"
+        }
     },
     "sectors": {
         "eyebrow": "Flexibilité",

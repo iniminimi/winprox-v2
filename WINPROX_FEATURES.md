@@ -4,7 +4,7 @@ Referentie voor **WinProx V1 Facility** op basis van `c:\winprox_old`. Dit docum
 
 In V1 heet de sector `facility` in de code. Locaties heten daar nog **Properties** (gebouwen/locaties); assets heten **Units**.
 
-WinProx V2 (`c:\winprox`) mikke op **dezelfde functionaliteit** (Facility-pariteit), maar volledig schoon herschreven volgens `WINPROX_RULES.md`.
+WinProx V2 (`c:\winprox`) mikt op **dezelfde functionaliteit** (Facility-pariteit), maar volledig schoon herschreven volgens `WINPROX_RULES.md`.
 
 ---
 

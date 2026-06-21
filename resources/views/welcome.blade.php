@@ -87,6 +87,12 @@
                         <p>{{ __('welcome.video.placeholder') }}</p>
                     </div>
                 @endif
+
+                <div class="wp-welcome-video-widget">
+                    <h3>{{ __('welcome.video.widget.title') }}</h3>
+                    <p>{{ __('welcome.video.widget.body') }}</p>
+                    <a href="{{ route('comparison') }}" class="btn btn--primary">{{ __('welcome.video.widget.link') }}</a>
+                </div>
             </div>
         </section>
 

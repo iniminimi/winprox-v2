@@ -102,7 +102,12 @@
     },
     "video": {
         "title": "Video",
-        "placeholder": "Video coming soon."
+        "placeholder": "Video coming soon.",
+        "widget": {
+            "title": "Compare WinProx?",
+            "body": "See how WinProx compares to a traditional platform at a glance.",
+            "link": "View the comparison"
+        }
     },
     "sectors": {
         "eyebrow": "Flexibility",
