@@ -50,6 +50,35 @@
     <livewire:locations.documents :location="$location" />
     <livewire:locations.announcements :location="$location" />
 
+    @if ($bulkSummaries->isNotEmpty())
+        <x-wp-disclosure-card
+            :title="__('locations.bulk.recent_title')"
+            :subtitle="__('locations.bulk.recent_hint')"
+            :count="$bulkSummaries->count()"
+        >
+            @foreach ($bulkSummaries as $summary)
+                @php $batch = $summary['batch']; @endphp
+                <div class="wp-row" wire:key="batch-{{ $batch->id }}">
+                    <div class="wp-grow">
+                        <p>
+                            {{ $batch->created_at?->format('d-m-Y H:i') }}
+                            &middot; {{ __('locations.bulk.batch_count', ['count' => $summary['total']]) }}
+                            @if ($summary['first_name'] && $summary['last_name'])
+                                &middot; {{ $summary['first_name'] }} – {{ $summary['last_name'] }}
+                            @endif
+                        </p>
+                    </div>
+                    @if ($summary['can_delete'])
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteBulkBatch({{ $batch->id }})"
+                                wire:confirm="{{ __('locations.bulk.confirm_delete', ['count' => $summary['deletable']]) }}">
+                            {{ __('locations.bulk.delete_batch', ['count' => $summary['deletable']]) }}
+                        </button>
+                    @endif
+                </div>
+            @endforeach
+        </x-wp-disclosure-card>
+    @endif
+
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <div class="wp-cluster">
@@ -144,33 +173,6 @@
             ></div>
         @endif
     </div>
-
-    @if ($bulkSummaries->isNotEmpty())
-        <div class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">{{ __('locations.bulk.recent_title') }}</h2>
-            <p class="wp-muted">{{ __('locations.bulk.recent_hint') }}</p>
-            @foreach ($bulkSummaries as $summary)
-                @php $batch = $summary['batch']; @endphp
-                <div class="wp-row" wire:key="batch-{{ $batch->id }}">
-                    <div class="wp-grow">
-                        <p>
-                            {{ $batch->created_at?->format('d-m-Y H:i') }}
-                            &middot; {{ __('locations.bulk.batch_count', ['count' => $summary['total']]) }}
-                            @if ($summary['first_name'] && $summary['last_name'])
-                                &middot; {{ $summary['first_name'] }} – {{ $summary['last_name'] }}
-                            @endif
-                        </p>
-                    </div>
-                    @if ($summary['can_delete'])
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteBulkBatch({{ $batch->id }})"
-                                wire:confirm="{{ __('locations.bulk.confirm_delete', ['count' => $summary['deletable']]) }}">
-                            {{ __('locations.bulk.delete_batch', ['count' => $summary['deletable']]) }}
-                        </button>
-                    @endif
-                </div>
-            @endforeach
-        </div>
-    @endif
 
     <livewire:locations.unit-gps-history-modal />
 
