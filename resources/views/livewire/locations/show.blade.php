@@ -45,6 +45,9 @@
         </div>
     </div>
 
+    <livewire:locations.documents :location="$location" />
+    <livewire:locations.announcements :location="$location" />
+
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">
             <div class="wp-cluster">
@@ -167,8 +170,6 @@
         </div>
     @endif
 
-    <livewire:locations.documents :location="$location" />
-    <livewire:locations.announcements :location="$location" />
     <livewire:locations.unit-gps-history-modal />
 
     @if ($showLocationModal)

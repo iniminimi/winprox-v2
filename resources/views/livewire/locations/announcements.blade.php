@@ -1,50 +1,49 @@
-<div class="wp-card wp-card-pad wp-stack" wire:key="location-announcements-{{ $location->id }}">
-    <div class="wp-row">
-        <div class="wp-grow wp-stack-tight">
-            <div class="wp-cluster">
-                <h2 class="wp-section-title">{{ __('locations.announcements.title') }}</h2>
-                <span class="wp-pill wp-pill--closed">{{ $announcements->count() }}</span>
-            </div>
-            <p class="wp-muted">{{ __('locations.announcements.subtitle') }}</p>
-        </div>
-        <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
-            {{ __('locations.announcements.add') }}
-        </button>
-    </div>
+<div wire:key="location-announcements-{{ $location->id }}">
+    <x-wp-disclosure-card
+        :title="__('locations.announcements.title')"
+        :subtitle="__('locations.announcements.subtitle')"
+        :count="$announcements->count()"
+    >
+        <x-slot:toolbar>
+            <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
+                {{ __('locations.announcements.add') }}
+            </button>
+        </x-slot:toolbar>
 
-    <div class="wp-list">
-        @forelse ($announcements as $announcement)
-            <div class="wp-issue-row" wire:key="ann-{{ $announcement->id }}">
-                <div class="wp-grow wp-stack-tight">
-                    <p class="wp-issue-desc">{{ $announcement->localizedDescription() }}</p>
-                    <p class="wp-muted wp-text-sm">
-                        {{ __('locations.announcements.unit_label') }}:
-                        {{ $announcement->unit?->localizedName() ?? __('locations.announcements.for_location') }}
-                        @if ($announcement->expires_at)
-                            · {{ __('locations.announcements.expires_on', ['date' => $announcement->expires_at->format('d-m-Y')]) }}
-                        @endif
-                        @if (! $announcement->is_active)
-                            · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                        @endif
-                    </p>
+        <div class="wp-list">
+            @forelse ($announcements as $announcement)
+                <div class="wp-issue-row" wire:key="ann-{{ $announcement->id }}">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-issue-desc">{{ $announcement->localizedDescription() }}</p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ __('locations.announcements.unit_label') }}:
+                            {{ $announcement->unit?->localizedName() ?? __('locations.announcements.for_location') }}
+                            @if ($announcement->expires_at)
+                                · {{ __('locations.announcements.expires_on', ['date' => $announcement->expires_at->format('d-m-Y')]) }}
+                            @endif
+                            @if (! $announcement->is_active)
+                                · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                            @endif
+                        </p>
+                    </div>
+                    <div class="wp-cluster">
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditModal({{ $announcement->id }})">
+                            {{ __('common.button.edit') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleAnnouncementActive({{ $announcement->id }})">
+                            {{ $announcement->is_active ? __('locations.announcements.deactivate') : __('locations.announcements.activate') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteAnnouncement({{ $announcement->id }})"
+                                wire:confirm="{{ __('locations.announcements.confirm_delete') }}">
+                            {{ __('common.button.delete') }}
+                        </button>
+                    </div>
                 </div>
-                <div class="wp-cluster">
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditModal({{ $announcement->id }})">
-                        {{ __('common.button.edit') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleAnnouncementActive({{ $announcement->id }})">
-                        {{ $announcement->is_active ? __('locations.announcements.deactivate') : __('locations.announcements.activate') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteAnnouncement({{ $announcement->id }})"
-                            wire:confirm="{{ __('locations.announcements.confirm_delete') }}">
-                        {{ __('common.button.delete') }}
-                    </button>
-                </div>
-            </div>
-        @empty
-            <p class="wp-muted">{{ __('locations.announcements.empty') }}</p>
-        @endforelse
-    </div>
+            @empty
+                <p class="wp-muted">{{ __('locations.announcements.empty') }}</p>
+            @endforelse
+        </div>
+    </x-wp-disclosure-card>
 
     @if ($showCreateModal)
         <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="announcement-create-title">

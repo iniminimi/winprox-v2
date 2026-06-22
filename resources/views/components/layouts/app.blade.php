@@ -114,7 +114,6 @@
 
                 <div class="wp-sidebar-bottom">
                     @include('partials.wp-lang-switch', ['variant' => 'sidebar'])
-                    @include('partials.wp-theme-switch', ['variant' => 'sidebar'])
 
                     @auth
                         <div class="wp-sidebar-user">

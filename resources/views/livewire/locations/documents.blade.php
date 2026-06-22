@@ -1,65 +1,62 @@
-<div class="wp-card wp-card-pad wp-stack" wire:key="location-documents-{{ $location->id }}">
-    <div class="wp-row">
-        <div class="wp-grow wp-stack-tight">
-            <div class="wp-cluster">
-                <h2 class="wp-section-title">{{ __('locations.documents.title') }}</h2>
-                <span class="wp-pill wp-pill--closed">{{ $documents->count() }}</span>
-            </div>
-            <p class="wp-muted">{{ __('locations.documents.subtitle') }}</p>
-        </div>
-        <div class="wp-cluster">
+<div wire:key="location-documents-{{ $location->id }}">
+    <x-wp-disclosure-card
+        :title="__('locations.documents.title')"
+        :subtitle="__('locations.documents.subtitle')"
+        :count="$documents->count()"
+    >
+        <x-slot:toolbar>
             <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 {{ __('locations.documents.add') }}
             </button>
+        </x-slot:toolbar>
+
+        <div class="wp-field">
+            <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+                   placeholder="{{ __('locations.documents.search_placeholder') }}">
         </div>
-    </div>
 
-    <div class="wp-field">
-        <input type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-               placeholder="{{ __('locations.documents.search_placeholder') }}">
-    </div>
+        @if (session('warning'))
+            <div class="wp-flash wp-flash--warning">{{ session('warning') }}</div>
+        @endif
 
-    @if (session('warning'))
-        <div class="wp-flash wp-flash--warning">{{ session('warning') }}</div>
-    @endif
-
-    <div class="wp-list">
-        @forelse ($documents as $document)
-            <div class="wp-issue-row" wire:key="doc-{{ $document->id }}">
-                <div class="wp-grow wp-stack-tight">
-                    <p class="wp-issue-desc">{{ $document->localizedDescription() ?: __('locations.documents.no_description') }}</p>
-                    <p class="wp-muted wp-text-sm">
-                        {{ __('locations.documents.unit_label') }}:
-                        {{ $document->unit?->localizedName() ?? __('locations.documents.for_location') }}
-                        · {{ $document->title }}
-                        @if (! $document->is_active)
-                            · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                        @elseif ($document->requires_verification)
-                            · {{ __('locations.documents.access_workers_only') }}
-                        @else
-                            · {{ __('locations.documents.access_public') }}
-                        @endif
-                    </p>
+        <div class="wp-list">
+            @forelse ($documents as $document)
+                <div class="wp-issue-row" wire:key="doc-{{ $document->id }}">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-issue-desc">{{ $document->localizedDescription() ?: __('locations.documents.no_description') }}</p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ __('locations.documents.unit_label') }}:
+                            {{ $document->unit?->localizedName() ?? __('locations.documents.for_location') }}
+                            · {{ $document->title }}
+                            @if (! $document->is_active)
+                                · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                            @elseif ($document->requires_verification)
+                                · {{ __('locations.documents.access_workers_only') }}
+                            @else
+                                · {{ __('locations.documents.access_public') }}
+                            @endif
+                        </p>
+                    </div>
+                    <div class="wp-cluster">
+                        <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener noreferrer"
+                           class="btn btn--ghost btn--sm">{{ __('locations.documents.open') }}</a>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditModal({{ $document->id }})">
+                            {{ __('common.button.edit') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleDocumentActive({{ $document->id }})">
+                            {{ $document->is_active ? __('locations.documents.deactivate') : __('locations.documents.activate') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteDocument({{ $document->id }})"
+                                wire:confirm="{{ __('locations.documents.confirm_delete') }}">
+                            {{ __('common.button.delete') }}
+                        </button>
+                    </div>
                 </div>
-                <div class="wp-cluster">
-                    <a href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener noreferrer"
-                       class="btn btn--ghost btn--sm">{{ __('locations.documents.open') }}</a>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditModal({{ $document->id }})">
-                        {{ __('common.button.edit') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleDocumentActive({{ $document->id }})">
-                        {{ $document->is_active ? __('locations.documents.deactivate') : __('locations.documents.activate') }}
-                    </button>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteDocument({{ $document->id }})"
-                            wire:confirm="{{ __('locations.documents.confirm_delete') }}">
-                        {{ __('common.button.delete') }}
-                    </button>
-                </div>
-            </div>
-        @empty
-            <p class="wp-muted">{{ __('locations.documents.empty') }}</p>
-        @endforelse
-    </div>
+            @empty
+                <p class="wp-muted">{{ __('locations.documents.empty') }}</p>
+            @endforelse
+        </div>
+    </x-wp-disclosure-card>
 
     @if ($showCreateModal)
         <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="document-create-title">

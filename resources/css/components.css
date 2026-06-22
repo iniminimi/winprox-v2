@@ -3558,6 +3558,14 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-accent-text);
 }
 
+.wp-settings-section-toggle--stacked {
+    align-items: flex-start;
+}
+
+.wp-settings-section-toggle--stacked .wp-disclosure-chevron {
+    margin-top: 0.125rem;
+}
+
 .wp-settings-section .wp-disclosure-panel {
     padding: 0;
     padding-top: var(--wp-space-2);
