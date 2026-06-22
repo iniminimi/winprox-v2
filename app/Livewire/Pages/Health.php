@@ -27,14 +27,30 @@ class Health extends Component
         $this->authorize('viewAny', Location::class);
     }
 
+    public function setFilter(string $type): void
+    {
+        $this->filter = $type;
+    }
+
     public function render(AdminHealthService $healthService): mixed
     {
-        $report = $healthService->report();
+        $configSummary = $healthService->summary();
+        $report = $configSummary->report;
         $issues = $this->filteredIssues($report);
 
+        $issueCounts = [];
+        foreach (AdminHealthIssueType::cases() as $option) {
+            $issueCounts[$option->value] = count(array_filter(
+                $report->issues,
+                static fn (AdminHealthIssue $issue): bool => $issue->type === $option,
+            ));
+        }
+
         return view('livewire.pages.health', [
+            'configSummary' => $configSummary,
             'report' => $report,
             'issues' => $issues,
+            'issueCounts' => $issueCounts,
             'filterOptions' => AdminHealthIssueType::cases(),
         ]);
     }

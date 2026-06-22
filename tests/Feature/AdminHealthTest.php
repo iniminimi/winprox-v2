@@ -259,3 +259,21 @@ it('toont configuratie-overzicht op instellingen na uitklappen', function () {
         ->assertSee(__('health.summary.title'))
         ->assertSee(__('settings.config_overview.open_full'));
 });
+
+it('toont kpi-kaders en filterkaarten op de health-pagina', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Sanitair']);
+
+    Livewire::actingAs($user)
+        ->test(Health::class)
+        ->assertSee(__('settings.config_overview.kpi.inactive_locations'))
+        ->assertSee(__('health.filter.all'))
+        ->assertSeeHtml('wp-config-overview-kpi--filter')
+        ->assertSee(__('health.issue.category_team'))
+        ->call('setFilter', AdminHealthIssueType::CategoryMissingTeam->value)
+        ->assertSet('filter', AdminHealthIssueType::CategoryMissingTeam->value)
+        ->assertSee('Sanitair');
+});

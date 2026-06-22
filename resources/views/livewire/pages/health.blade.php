@@ -33,24 +33,37 @@
                 @endif
             </div>
         </div>
+
+        <x-wp-config-overview-kpis :summary="$configSummary" />
     </div>
 
-    @if (! $report->isHealthy())
+    @if ($report->issueCount > 0)
         <div class="wp-card wp-card-pad wp-stack">
-            <div class="wp-row">
-                <h2 class="wp-section-title">{{ __('health.list.title') }}</h2>
-            </div>
+            <h2 class="wp-section-title">{{ __('health.list.title') }}</h2>
 
-            <div class="wp-filter-row">
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('health.filter.label') }}</span>
-                    <select class="wp-input" wire:model.live="filter">
-                        <option value="">{{ __('health.filter.all') }}</option>
-                        @foreach ($filterOptions as $option)
-                            <option value="{{ $option->value }}">{{ __($option->labelKey()) }}</option>
-                        @endforeach
-                    </select>
-                </label>
+            <div class="wp-config-overview-kpis wp-config-overview-kpis--filters">
+                <button
+                    type="button"
+                    @class(['wp-config-overview-kpi', 'wp-config-overview-kpi--filter', 'is-active' => $filter === ''])
+                    wire:click="setFilter('')"
+                >
+                    <p class="wp-config-overview-kpi__label">{{ __('health.filter.all') }}</p>
+                    <p class="wp-config-overview-kpi__value wp-tabular">{{ $report->issueCount }}</p>
+                </button>
+                @foreach ($filterOptions as $option)
+                    @php($typeCount = $issueCounts[$option->value] ?? 0)
+                    @if ($typeCount > 0)
+                        <button
+                            type="button"
+                            @class(['wp-config-overview-kpi', 'wp-config-overview-kpi--filter', 'is-active' => $filter === $option->value])
+                            wire:click="setFilter('{{ $option->value }}')"
+                            wire:key="health-filter-{{ $option->value }}"
+                        >
+                            <p class="wp-config-overview-kpi__label">{{ __($option->labelKey()) }}</p>
+                            <p class="wp-config-overview-kpi__value wp-tabular">{{ $typeCount }}</p>
+                        </button>
+                    @endif
+                @endforeach
             </div>
 
             <div class="wp-list wp-list--entity-rows">

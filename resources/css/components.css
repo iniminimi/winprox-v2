@@ -894,23 +894,67 @@ a.wp-kpi:hover {
 }
 
 .wp-config-overview-kpi {
-    padding: 0.75rem 0.875rem;
+    padding: 0.875rem 1rem;
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-md);
-    background: var(--wp-surface-muted, #f9fafb);
+    border-radius: var(--wp-radius-lg);
+    background-color: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
 }
 
 .wp-config-overview-kpi__label {
     margin: 0;
     font-size: 0.8125rem;
+    line-height: 1.35;
     color: var(--wp-text-muted);
 }
 
 .wp-config-overview-kpi__value {
-    margin: 0.25rem 0 0;
+    margin: 0.35rem 0 0;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--wp-text-heading);
+}
+
+button.wp-config-overview-kpi--filter {
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        transform var(--wp-transition),
+        box-shadow var(--wp-transition),
+        border-color var(--wp-transition);
+}
+
+button.wp-config-overview-kpi--filter:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--wp-shadow);
+    border-color: var(--wp-border-strong, var(--wp-border));
+}
+
+button.wp-config-overview-kpi--filter.is-active {
+    border-color: var(--wp-accent);
+    background-color: var(--wp-accent-soft);
+    box-shadow: var(--wp-shadow);
+}
+
+button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
+    color: var(--wp-accent);
+}
+
+.wp-config-overview-kpis--filters {
+    gap: 0.625rem;
+}
+
+@media (min-width: 48rem) {
+    .wp-config-overview-kpis--filters {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 64rem) {
+    .wp-config-overview-kpis--filters {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
 
 /* Icoon in wit kader met grijze rand (portaal, KPI's, …). */
