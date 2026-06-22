@@ -288,6 +288,10 @@
             "title": "Ayuda — Configuración",
             "actions": [
                 {
+                    "label": "Resumen de configuración",
+                    "text": "En la parte superior hay un resumen plegable del estado de configuración de su entorno. Despliéguelo para ver el indicador de completitud, ocho recuentos (ubicaciones, unidades, equipos y trabajadores inactivos; categorías con o sin GPS; documentos activos e inactivos) y las acciones principales con un enlace directo <strong>Corregir</strong>. Si el panel muestra una insignia, hay acciones pendientes. Mediante <strong>Abrir resumen completo</strong> accede a la página de configuración dedicada con todas las acciones y tarjetas de filtro por tipo."
+                },
+                {
                     "label": "Datos de la organización",
                     "text": "Solo el administrador puede cambiar nombre, correo, teléfono y dirección mediante «Editar datos de la organización». Estos datos aparecen en pegatinas QR impresas, etiquetas de unidad y otros materiales para reportadores."
                 },

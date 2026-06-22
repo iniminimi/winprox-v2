@@ -288,6 +288,10 @@
             "title": "Hilfe — Einstellungen",
             "actions": [
                 {
+                    "label": "Konfigurationsübersicht",
+                    "text": "Ganz oben finden Sie eine aufklappbare Übersicht des Konfigurationsstatus Ihrer Umgebung. Klappen Sie sie auf, um die Vollständigkeitsanzeige, acht Zähler (inaktive Standorte, Units, Teams und Mitarbeiter; Kategorien mit oder ohne GPS; aktive und inaktive Dokumente) und die wichtigsten Maßnahmen mit direktem Link <strong>Beheben</strong> zu sehen. Zeigt das Feld ein Badge, liegen offene Maßnahmen vor. Über <strong>Vollständige Übersicht öffnen</strong> gelangen Sie zur eigenen Konfigurationsseite mit allen Maßnahmen und Filterkarten pro Typ."
+                },
+                {
                     "label": "Organisationsdaten",
                     "text": "Nur der Administrator kann Name, E-Mail, Telefon und Adresse über 'Organisationsdaten bearbeiten' ändern. Diese Angaben erscheinen u. a. auf gedruckten QR-Aufklebern und Unit-Etiketten."
                 },

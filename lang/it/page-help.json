@@ -288,6 +288,10 @@
             "title": "Aiuto — Impostazioni",
             "actions": [
                 {
+                    "label": "Panoramica configurazione",
+                    "text": "In cima alla pagina trova una panoramica comprimibile dello stato di configurazione del vostro ambiente. Apra il pannello per vedere l'indicatore di completezza, otto conteggi (sedi, unità, team e lavoratori inattivi; categorie con o senza GPS; documenti attivi e inattivi) e le azioni principali con un link diretto <strong>Correggi</strong>. Se il pannello mostra un badge, ci sono azioni aperte. Tramite <strong>Apri panoramica completa</strong> accede alla pagina di configurazione dedicata con tutte le azioni e le schede filtro per tipo."
+                },
+                {
                     "label": "Dati organizzazione",
                     "text": "Solo l'amministratore può modificare nome, e-mail, telefono e indirizzo tramite «Modifica dati organizzazione». Questi dati compaiono su adesivi QR stampati, etichette unità e altro materiale rivolto ai reporter."
                 },

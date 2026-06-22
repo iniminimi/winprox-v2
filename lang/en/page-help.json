@@ -288,6 +288,10 @@
             "title": "Help — Settings",
             "actions": [
                 {
+                    "label": "Configuration overview",
+                    "text": "At the very top you will find a collapsible overview of your environment's configuration status. Expand it to see the completeness meter, eight counts (inactive locations, units, teams and workers; categories with or without GPS; active and inactive documents) and the most important action items with a direct <strong>Fix</strong> link. If the panel shows a badge, there are open action items. Use <strong>Open full overview</strong> to go to the dedicated configuration page with all action items and filter cards per type."
+                },
+                {
                     "label": "Organisation details",
                     "text": "Only the administrator can change name, email, phone and address via 'Edit organisation details'. These details appear on printed QR stickers, unit labels and other reporter-facing material."
                 },

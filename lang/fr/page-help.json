@@ -288,6 +288,10 @@
             "title": "Aide — Paramètres",
             "actions": [
                 {
+                    "label": "Aperçu de la configuration",
+                    "text": "Tout en haut se trouve un aperçu repliable de l'état de configuration de votre environnement. Dépliez-le pour voir le indicateur de complétude, huit compteurs (sites, unités, équipes et exécutants inactifs ; catégories avec ou sans GPS ; documents actifs et inactifs) et les principaux points d'action avec un lien <strong>Corriger</strong> direct. Si le panneau affiche un badge, des points d'action sont ouverts. Via <strong>Ouvrir l'aperçu complet</strong>, vous accédez à la page de configuration dédiée avec tous les points d'action et des cartes de filtre par type."
+                },
+                {
                     "label": "Données de l'organisation",
                     "text": "Seul l'administrateur peut modifier le nom, l'e-mail, le téléphone et l'adresse via 'Modifier les données de l'organisation'. Ces informations figurent notamment sur les autocollants QR imprimés et les étiquettes d'unités."
                 },

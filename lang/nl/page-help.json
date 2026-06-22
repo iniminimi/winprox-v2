@@ -288,6 +288,10 @@
             "title": "Hulp — Instellingen",
             "actions": [
                 {
+                    "label": "Configuratie-overzicht",
+                    "text": "Helemaal bovenaan staat een inklapbaar overzicht van de configuratiestatus van jullie omgeving. Klap het open om de volledigheidsmeter te zien, acht tellingen (inactieve locaties, units, teams en uitvoerders; categorieën met of zonder GPS; actieve en inactieve documenten) en de belangrijkste actiepunten met een directe <strong>Oplossen</strong>-link. Staat er een badge op het kader, dan zijn er openstaande actiepunten. Via <strong>Volledig overzicht openen</strong> ga je naar de aparte configuratiepagina met alle actiepunten en filterkaarten per type."
+                },
+                {
                     "label": "Organisatiegegevens",
                     "text": "Alleen de beheerder kan naam, e-mail, telefoon en adres aanpassen via 'Organisatiegegevens bewerken'. Deze gegevens verschijnen onder meer op afgedrukte QR-stickers en unitlabels."
                 },
