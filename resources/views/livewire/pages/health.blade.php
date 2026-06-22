@@ -19,7 +19,7 @@
             />
             <div class="wp-stack-tight wp-grow">
                 <p class="wp-section-title">{{ __('health.summary.title') }}</p>
-                <p class="wp-kpi-value wp-tabular">{{ $report->percentComplete() }}%</p>
+                <p class="wp-health-summary__value wp-tabular">{{ $report->percentComplete() }}%</p>
                 <p class="wp-muted">
                     {{ trans_choice('health.summary.complete', $report->completeChecks, [
                         'complete' => $report->completeChecks,
