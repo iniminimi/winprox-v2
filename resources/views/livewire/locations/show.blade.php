@@ -30,8 +30,10 @@
         <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('locations.details_title') }}</h2>
+    <x-wp-disclosure-card
+        :title="__('locations.details_title')"
+        :subtitle="$location->formattedAddress() ?: $location->notes"
+    >
         @if ($location->formattedAddress())
             <p>{{ $location->formattedAddress() }}</p>
         @endif
@@ -43,7 +45,7 @@
             <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateLocation"
                     wire:confirm="{{ __('locations.confirm_deactivate') }}">{{ __('locations.deactivate') }}</button>
         </div>
-    </div>
+    </x-wp-disclosure-card>
 
     <livewire:locations.documents :location="$location" />
     <livewire:locations.announcements :location="$location" />
