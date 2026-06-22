@@ -251,7 +251,7 @@
         "access_public": "Öffentlich im Portal",
         "access_workers_only": "Nur Ausführende",
         "requires_verification": "Nur Ausführende",
-        "requires_verification_hint": "Nur sichtbar und herunterladbar für Ausführende, die sich im Unit-QR-Portal angemeldet haben (Name + persönliches Icon). Administratoren öffnen Dokumente über diesen Bildschirm.",
+        "requires_verification_hint": "Nur sichtbar und herunterladbar für Ausführende, die sich im Unit-QR-Portal angemeldet haben (Name + persönliches Icon).",
         "active": "Aktiv",
         "active_hint": "Das Dokument erscheint im Unit-QR-Portal. Ohne «Nur Ausführende» kann jeder Besucher es ansehen und herunterladen.",
         "activate": "Aktivieren",

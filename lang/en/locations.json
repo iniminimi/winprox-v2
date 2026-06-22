@@ -251,7 +251,7 @@
         "access_public": "Public in portal",
         "access_workers_only": "Field workers only",
         "requires_verification": "Field workers only",
-        "requires_verification_hint": "Only visible and downloadable to field workers signed in to the unit QR portal (name + personal icon). Administrators open documents from this screen.",
+        "requires_verification_hint": "Only visible and downloadable to field workers signed in to the unit QR portal (name + personal icon).",
         "active": "Active",
         "active_hint": "The document appears in the unit QR portal. Without «Field workers only», any visitor can view and download it.",
         "activate": "Activate",

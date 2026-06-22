@@ -251,7 +251,7 @@
         "access_public": "Publiek in portaal",
         "access_workers_only": "Alleen uitvoerders",
         "requires_verification": "Alleen voor uitvoerders",
-        "requires_verification_hint": "Alleen zichtbaar en downloadbaar voor uitvoerders die zich in het unit-QR-portaal hebben aangemeld (naam + persoonlijk icoon). Beheerders openen documenten via dit scherm.",
+        "requires_verification_hint": "Alleen zichtbaar en downloadbaar voor uitvoerders die zich in het unit-QR-portaal hebben aangemeld (naam + persoonlijk icoon).",
         "active": "Actief",
         "active_hint": "Document verschijnt in het unit-QR-portaal. Zonder «Alleen voor uitvoerders» kan elke bezoeker het bekijken en downloaden.",
         "activate": "Activeren",

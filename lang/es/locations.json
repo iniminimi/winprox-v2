@@ -251,7 +251,7 @@
         "access_public": "Público en el portal",
         "access_workers_only": "Solo ejecutores",
         "requires_verification": "Solo ejecutores",
-        "requires_verification_hint": "Solo visible y descargable para ejecutores que hayan iniciado sesión en el portal QR de la unidad (nombre + icono personal). Los administradores abren documentos desde esta pantalla.",
+        "requires_verification_hint": "Solo visible y descargable para ejecutores que hayan iniciado sesión en el portal QR de la unidad (nombre + icono personal).",
         "active": "Activo",
         "active_hint": "El documento aparece en el portal QR de la unidad. Sin «Solo ejecutores», cualquier visitante puede verlo y descargarlo.",
         "activate": "Activar",
