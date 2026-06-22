@@ -22,7 +22,7 @@ class UpdateLocationDocumentAction
     ) {}
 
     /**
-     * @param  array{description: string, unit_id: ?int, is_public: bool, requires_verification: bool, is_active: bool}  $data
+     * @param  array{description: string, unit_id: ?int, requires_verification: bool, is_active: bool}  $data
      * @return array{metadata_partial: bool}
      */
     public function handle(
@@ -52,7 +52,7 @@ class UpdateLocationDocumentAction
         $updatePayload = [
             'description' => trim((string) $data['description']),
             'unit_id' => $unitId,
-            'is_public' => (bool) ($data['is_public'] ?? true),
+            'is_public' => true,
             'requires_verification' => (bool) ($data['requires_verification'] ?? false),
             'is_active' => $isActive,
             'published_at' => $isActive ? ($document->published_at ?? now()) : $document->published_at,

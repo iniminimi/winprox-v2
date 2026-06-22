@@ -157,8 +157,6 @@
     },
     "documents": {
         "download": "Télécharger",
-        "verification_required": "Réservé aux exécutants connectés",
-        "staff_only": "Non disponible au public",
         "published": "Publié le :date",
         "empty": "Il n'y a aucun document."
     },

@@ -163,7 +163,6 @@ it('invalideert vertalingen bij wijziging documentomschrijving', function () {
         [
             'description' => 'Nieuw veiligheidsblad',
             'unit_id' => null,
-            'is_public' => true,
             'requires_verification' => false,
             'is_active' => true,
         ],

@@ -554,14 +554,13 @@ it('scopes documents to unit, category and location-wide entries', function () {
         ->assertDontSee('Handleiding categorie hotel');
 });
 
-it('only allows downloading public documents that do not require verification', function () {
+it('hides verification-required documents from anonymous portal visitors', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
 
     Document::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'title' => 'Open huisregels',
-        'is_public' => true,
         'requires_verification' => false,
         'is_active' => true,
         'published_at' => now()->subDay(),
@@ -570,7 +569,6 @@ it('only allows downloading public documents that do not require verification', 
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'title' => 'Vertrouwelijk contract',
-        'is_public' => true,
         'requires_verification' => true,
         'is_active' => true,
         'published_at' => now()->subDay(),
@@ -579,12 +577,11 @@ it('only allows downloading public documents that do not require verification', 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('openSection', 'documents')
         ->assertSee('Open huisregels')
-        ->assertSee('Vertrouwelijk contract')
-        ->assertSee(__('portal.documents.verification_required'))
+        ->assertDontSee('Vertrouwelijk contract')
         ->assertSee(__('portal.documents.download'));
 });
 
-it('lets a verified worker download verification-required documents', function () {
+it('lets a verified worker see and download verification-required documents', function () {
     ['unit' => $unit, 'team' => $team, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
 
     $worker = Worker::factory()->withIcon('key')->create([
@@ -597,7 +594,6 @@ it('lets a verified worker download verification-required documents', function (
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'title' => 'Intern contract',
-        'is_public' => true,
         'requires_verification' => true,
         'is_active' => true,
         'published_at' => now()->subDay(),

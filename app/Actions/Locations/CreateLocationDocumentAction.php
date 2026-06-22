@@ -21,7 +21,7 @@ class CreateLocationDocumentAction
     ) {}
 
     /**
-     * @param  array{description: string, unit_id: ?int, is_public: bool, requires_verification: bool, is_active: bool, original_language?: ?string}  $data
+     * @param  array{description: string, unit_id: ?int, requires_verification: bool, is_active: bool, original_language?: ?string}  $data
      * @return array{document: Document, metadata_partial: bool}
      */
     public function handle(
@@ -61,7 +61,7 @@ class CreateLocationDocumentAction
             'file_path' => $filePath,
             'mime_type' => $fileMeta['mime_type'],
             'file_size_bytes' => $fileMeta['file_size_bytes'],
-            'is_public' => (bool) ($data['is_public'] ?? true),
+            'is_public' => true,
             'requires_verification' => (bool) ($data['requires_verification'] ?? false),
             'is_active' => $isActive,
             'published_at' => $isActive ? now() : null,

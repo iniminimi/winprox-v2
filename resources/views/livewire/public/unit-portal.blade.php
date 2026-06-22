@@ -463,20 +463,9 @@
                         @if ($document->published_at)
                             <p class="wp-muted">{{ __('portal.documents.published', ['date' => $document->published_at->isoFormat('D MMM YYYY')]) }}</p>
                         @endif
-                        @if ($document->isPubliclyDownloadable())
-                            <a class="btn btn--ghost btn--sm" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener">
-                                {{ __('portal.documents.download') }}
-                            </a>
-                        @elseif ($document->requires_verification)
-                            <span class="wp-chip">{{ __('portal.documents.verification_required') }}</span>
-                            @if ($canAct)
-                                <a class="btn btn--ghost btn--sm" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener">
-                                    {{ __('portal.documents.download') }}
-                                </a>
-                            @endif
-                        @else
-                            <span class="wp-chip">{{ __('portal.documents.staff_only') }}</span>
-                        @endif
+                        <a class="btn btn--ghost btn--sm" href="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($document->file_path) }}" target="_blank" rel="noopener">
+                            {{ __('portal.documents.download') }}
+                        </a>
                     </div>
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.documents.empty') }}</p></div>

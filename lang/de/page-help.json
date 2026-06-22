@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Dokumente & Mitteilungen",
-                    "text": "Verwalten Sie Dokumente und Mitteilungen auf der QR-Seite. Aktive Dokumente und Mitteilungen werden automatisch über Plattform → Übersetzungen übersetzt (Beschreibung); im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache. Der Dokumenttitel bleibt in der Ausgangssprache."
+                    "text": "Verwalten Sie Dokumente und Mitteilungen für das Unit-QR-Portal. Dokumente: «Aktiv» einschalten, um im Portal zu veröffentlichen. Ohne «Nur Ausführende» kann jeder Besucher die Datei ansehen und herunterladen. Mit «Nur Ausführende» sieht und lädt nur ein Ausführender, der sich im Portal angemeldet hat (Name + Icon), herunter — nicht über den Verwaltungsbildschirm mit E-Mail-Anmeldung. Inaktive Dokumente bleiben nur hier sichtbar. Aktive Dokumente werden automatisch über Plattform → Übersetzungen übersetzt (Beschreibung); im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache. Der Titel bleibt in der Ausgangssprache."
                 }
             ]
         },

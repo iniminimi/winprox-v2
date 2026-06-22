@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Documentos y anuncios",
-                    "text": "Gestione documentos y anuncios en la página QR. Los documentos y anuncios activos se traducen automáticamente vía Plataforma → Traducciones (descripción); el formulario de edición muestra una vista previa de traducción por idioma. El título del documento permanece en el idioma de origen."
+                    "text": "Gestione documentos y anuncios para el portal QR de la unidad. Documentos: active «Activo» para publicar en el portal. Sin «Solo ejecutores», cualquier visitante puede ver y descargar el archivo. Con «Solo ejecutores», solo un ejecutor conectado al portal (nombre + icono) puede verlo y descargarlo — no mediante la pantalla de administración con inicio de sesión por correo. Los documentos inactivos solo son visibles aquí. Los documentos activos se traducen automáticamente vía Plataforma → Traducciones (descripción); el formulario de edición muestra una vista previa por idioma. El título permanece en el idioma de origen."
                 }
             ]
         },

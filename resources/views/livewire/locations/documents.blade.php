@@ -34,14 +34,10 @@
                         · {{ $document->title }}
                         @if (! $document->is_active)
                             · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                        @endif
-                        @if ($document->is_public)
-                            · {{ __('locations.documents.public') }}
+                        @elseif ($document->requires_verification)
+                            · {{ __('locations.documents.access_workers_only') }}
                         @else
-                            · {{ __('locations.documents.private') }}
-                        @endif
-                        @if ($document->requires_verification)
-                            · {{ __('locations.documents.requires_verification') }}
+                            · {{ __('locations.documents.access_public') }}
                         @endif
                     </p>
                 </div>
@@ -104,9 +100,14 @@
                 </label>
 
                 <div class="wp-stack-tight">
-                    <label class="wp-check"><input type="checkbox" wire:model="isPublic"> {{ __('locations.documents.public') }}</label>
-                    <label class="wp-check"><input type="checkbox" wire:model="requiresVerification"> {{ __('locations.documents.requires_verification') }}</label>
-                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.documents.active') }}</label>
+                    <div>
+                        <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.documents.active') }}</label>
+                        <p class="wp-hint">{{ __('locations.documents.active_hint') }}</p>
+                    </div>
+                    <div>
+                        <label class="wp-check"><input type="checkbox" wire:model="requiresVerification"> {{ __('locations.documents.requires_verification') }}</label>
+                        <p class="wp-hint">{{ __('locations.documents.requires_verification_hint') }}</p>
+                    </div>
                 </div>
 
                 <div class="wp-row">
@@ -179,9 +180,14 @@
                 </div>
 
                 <div class="wp-stack-tight">
-                    <label class="wp-check"><input type="checkbox" wire:model="isPublic"> {{ __('locations.documents.public') }}</label>
-                    <label class="wp-check"><input type="checkbox" wire:model="requiresVerification"> {{ __('locations.documents.requires_verification') }}</label>
-                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.documents.active') }}</label>
+                    <div>
+                        <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('locations.documents.active') }}</label>
+                        <p class="wp-hint">{{ __('locations.documents.active_hint') }}</p>
+                    </div>
+                    <div>
+                        <label class="wp-check"><input type="checkbox" wire:model="requiresVerification"> {{ __('locations.documents.requires_verification') }}</label>
+                        <p class="wp-hint">{{ __('locations.documents.requires_verification_hint') }}</p>
+                    </div>
                 </div>
 
                 <div class="wp-row">

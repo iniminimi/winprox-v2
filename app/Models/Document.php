@@ -140,12 +140,4 @@ class Document extends Model
             ->whereNotNull('description')
             ->first();
     }
-
-    /**
-     * Publiek downloadbaar: openbaar én geen extra verificatie nodig.
-     */
-    public function isPubliclyDownloadable(): bool
-    {
-        return $this->is_public && ! $this->requires_verification;
-    }
 }

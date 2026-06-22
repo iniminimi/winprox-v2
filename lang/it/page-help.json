@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Documenti e annunci",
-                    "text": "Gestisca documenti e annunci sulla pagina QR. Documenti e annunci attivi vengono tradotti automaticamente tramite Piattaforma → Traduzioni (descrizione); il modulo di modifica mostra un'anteprima traduzione per lingua. Il titolo di un documento resta nella lingua di origine."
+                    "text": "Gestisca documenti e annunci per il portale QR unità. Documenti: attivi «Attivo» per pubblicare nel portale. Senza «Solo esecutori», ogni visitatore può visualizzare e scaricare il file. Con «Solo esecutori», solo un esecutore connesso al portale (nome + icona) può vederlo e scaricarlo — non tramite la schermata di amministrazione con accesso e-mail. I documenti inattivi restano visibili solo qui. I documenti attivi vengono tradotti automaticamente tramite Piattaforma → Traduzioni (descrizione); il modulo di modifica mostra un'anteprima per lingua. Il titolo resta nella lingua di origine."
                 }
             ]
         },

@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Documents & annonces",
-                    "text": "Gérez les documents et annonces sur la page QR. Les documents et annonces actifs sont traduits automatiquement via Plateforme → Traductions (description) ; le formulaire d'édition affiche un aperçu par langue. Le titre du document reste dans la langue source."
+                    "text": "Gérez les documents et annonces pour le portail QR unité. Documents : activez « Actif » pour publier dans le portail. Sans « Exécutants uniquement », tout visiteur peut consulter et télécharger le fichier. Avec « Exécutants uniquement », seul un exécutant connecté au portail (nom + icône) peut le voir et le télécharger — pas via l'écran d'administration avec connexion e-mail. Les documents inactifs restent visibles uniquement ici. Les documents actifs sont traduits automatiquement via Plateforme → Traductions (description) ; le formulaire d'édition affiche un aperçu par langue. Le titre reste dans la langue source."
                 }
             ]
         },

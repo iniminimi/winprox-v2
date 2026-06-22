@@ -33,8 +33,6 @@ class Documents extends Component
 
     public string $unitId = '';
 
-    public bool $isPublic = true;
-
     public bool $requiresVerification = false;
 
     public bool $isActive = true;
@@ -61,7 +59,6 @@ class Documents extends Component
         return [
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'unitId' => ['nullable', 'string'],
-            'isPublic' => ['boolean'],
             'requiresVerification' => ['boolean'],
             'isActive' => ['boolean'],
             'documentFile' => ['required', 'file', 'mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png', 'max:10240'],
@@ -91,7 +88,6 @@ class Documents extends Component
         $this->resetValidation();
         $this->description = '';
         $this->unitId = '';
-        $this->isPublic = true;
         $this->requiresVerification = false;
         $this->isActive = true;
         $this->documentFile = null;
@@ -113,7 +109,6 @@ class Documents extends Component
         $this->editingDocumentId = $document->id;
         $this->description = (string) ($document->description ?? '');
         $this->unitId = $document->unit_id ? (string) $document->unit_id : '';
-        $this->isPublic = (bool) $document->is_public;
         $this->requiresVerification = (bool) $document->requires_verification;
         $this->isActive = (bool) $document->is_active;
         $this->editDocumentFile = null;
@@ -151,7 +146,6 @@ class Documents extends Component
                 [
                     'description' => $validated['description'],
                     'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
-                    'is_public' => (bool) $validated['isPublic'],
                     'requires_verification' => (bool) $validated['requiresVerification'],
                     'is_active' => (bool) $validated['isActive'],
                     'original_language' => auth()->user()?->locale,
@@ -190,7 +184,6 @@ class Documents extends Component
         $validated = $this->validate([
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
             'unitId' => ['nullable', 'string'],
-            'isPublic' => ['boolean'],
             'requiresVerification' => ['boolean'],
             'isActive' => ['boolean'],
             'editDocumentFile' => ['nullable', 'file', 'mimes:pdf,doc,docx,xls,xlsx,jpg,jpeg,png', 'max:10240'],
@@ -210,7 +203,6 @@ class Documents extends Component
                 [
                     'description' => $validated['description'],
                     'unit_id' => $this->parsedUnitId($validated['unitId'] ?? ''),
-                    'is_public' => (bool) $validated['isPublic'],
                     'requires_verification' => (bool) $validated['requiresVerification'],
                     'is_active' => (bool) $validated['isActive'],
                 ],

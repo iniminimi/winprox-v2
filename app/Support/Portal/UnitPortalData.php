@@ -50,7 +50,7 @@ final class UnitPortalData
     /**
      * @return Collection<int, Document>
      */
-    public static function activeDocumentsForUnit(Unit $unit): Collection
+    public static function activeDocumentsForUnit(Unit $unit, bool $includeWorkerOnly = false): Collection
     {
         $query = Document::where('location_id', $unit->location_id)
             ->where('is_active', true)
@@ -60,28 +60,36 @@ final class UnitPortalData
             ->limit(20);
 
         if (! Schema::hasColumn('documents', 'category_id')) {
-            return $query
+            $documents = $query
                 ->with('translations')
                 ->where(fn ($q) => $q->where('unit_id', $unit->id)->orWhereNull('unit_id'))
                 ->get();
+        } else {
+            $documents = $query
+                ->with('translations')
+                ->where(function ($q) use ($unit) {
+                    $q->where('unit_id', $unit->id)
+                        ->orWhere(function ($scoped) use ($unit) {
+                            $scoped->whereNull('unit_id')
+                                ->where(function ($categoryScope) use ($unit) {
+                                    $categoryScope->whereNull('category_id');
+
+                                    if ($unit->category_id !== null) {
+                                        $categoryScope->orWhere('category_id', $unit->category_id);
+                                    }
+                                });
+                        });
+                })
+                ->get();
         }
 
-        return $query
-            ->with('translations')
-            ->where(function ($q) use ($unit) {
-                $q->where('unit_id', $unit->id)
-                    ->orWhere(function ($scoped) use ($unit) {
-                        $scoped->whereNull('unit_id')
-                            ->where(function ($categoryScope) use ($unit) {
-                                $categoryScope->whereNull('category_id');
+        if (! $includeWorkerOnly) {
+            $documents = $documents->reject(
+                fn (Document $document) => $document->requires_verification,
+            )->values();
+        }
 
-                                if ($unit->category_id !== null) {
-                                    $categoryScope->orWhere('category_id', $unit->category_id);
-                                }
-                            });
-                    });
-            })
-            ->get();
+        return $documents;
     }
 
     /**

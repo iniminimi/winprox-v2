@@ -644,7 +644,7 @@ class UnitPortal extends Component
                 $issues = UnitPortalData::activeIssuesForUnit($unit);
             }
             if (in_array($this->portalSection, ['home', 'documents'], true)) {
-                $documents = UnitPortalData::activeDocumentsForUnit($unit);
+                $documents = UnitPortalData::activeDocumentsForUnit($unit, $canAct);
             }
             if (in_array($this->portalSection, ['home', 'announcements'], true)) {
                 $announcements = UnitPortalData::activeAnnouncementsForUnit($unit);

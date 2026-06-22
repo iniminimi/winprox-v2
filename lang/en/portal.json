@@ -157,8 +157,6 @@
     },
     "documents": {
         "download": "Download",
-        "verification_required": "Signed-in field workers only",
-        "staff_only": "Not publicly available",
         "published": "Published on :date",
         "empty": "There are no documents."
     },

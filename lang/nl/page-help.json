@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Documenten & mededelingen",
-                    "text": "Beheer documenten en mededelingen op de QR-pagina. Actieve documenten en mededelingen worden automatisch vertaald via Platform → Vertalingen (omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel van een document blijft in de brontaal."
+                    "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald via Platform → Vertalingen (omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
                 }
             ]
         },

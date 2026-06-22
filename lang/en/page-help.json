@@ -203,7 +203,7 @@
                 },
                 {
                     "label": "Documents & announcements",
-                    "text": "Manage documents and announcements on the QR page. Active documents and announcements are translated automatically via Platform → Translations (description); the edit form shows a translation preview per language. A document title stays in the source language."
+                    "text": "Manage documents and announcements for the unit QR portal. Documents: turn on «Active» to publish in the portal. Without «Field workers only», any visitor can view and download the file. With «Field workers only», only a field worker signed in to the portal (name + icon) can see and download it — not via the admin screen with email login. Inactive documents remain visible only here. Active documents are translated automatically via Platform → Translations (description); the edit form shows a translation preview per language. The title stays in the source language."
                 }
             ]
         },

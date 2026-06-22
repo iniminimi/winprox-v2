@@ -157,8 +157,6 @@
     },
     "documents": {
         "download": "Descargar",
-        "verification_required": "Solo trabajadores de campo con sesión iniciada",
-        "staff_only": "No disponible públicamente",
         "published": "Publicado el :date",
         "empty": "No hay documentos."
     },
