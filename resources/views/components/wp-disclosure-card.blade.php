@@ -2,9 +2,17 @@
     'title',
     'subtitle' => null,
     'count' => null,
+    'entangle' => null,
 ])
 
-<div {{ $attributes->merge(['class' => 'wp-card wp-card-pad wp-stack-tight wp-settings-section']) }} x-data="{ open: false }">
+<div
+    {{ $attributes->merge(['class' => 'wp-card wp-card-pad wp-stack-tight wp-settings-section']) }}
+    @if ($entangle)
+        x-data="{ open: @entangle($entangle) }"
+    @else
+        x-data="{ open: false }"
+    @endif
+>
     <button
         type="button"
         class="wp-settings-section-toggle wp-settings-section-toggle--stacked"

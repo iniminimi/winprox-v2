@@ -36,44 +36,38 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
-    <div @class([
-        'wp-card wp-card-pad wp-stack',
-        'wp-card--prio-pulse' => $pulseCategoriesCard,
-    ])>
-        <div class="wp-page-head wp-page-head--clickable" wire:click="$toggle('showCategoriesSection')">
-            <div class="wp-grow">
-                <h2 class="wp-section-title">{{ __('locations.categories.title') }}</h2>
-                <p class="wp-muted">{{ __('locations.categories.click_to_manage') }}</p>
-            </div>
-        </div>
+    <x-wp-disclosure-card
+        :title="__('locations.categories.title')"
+        :subtitle="__('locations.categories.click_to_manage')"
+        :count="$categories->count()"
+        entangle="showCategoriesSection"
+        @class(['wp-card--prio-pulse' => $pulseCategoriesCard])
+    >
+        <x-slot:toolbar>
+            <button type="button" class="btn btn--primary btn--sm" wire:click="openCategoriesModal">
+                {{ __('locations.categories.add') }}
+            </button>
+        </x-slot:toolbar>
 
-        @if ($showCategoriesSection)
-            <div class="wp-cluster wp-cluster--right">
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCategoriesModal">
-                    {{ __('locations.categories.add') }}
-                </button>
-            </div>
-
-            @if ($categories->isNotEmpty())
-                <div class="wp-list wp-list--entity-rows">
-                    @foreach ($categories as $category)
-                        <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
-                            <div class="wp-grow wp-stack-tight">
-                                <p class="wp-issue-card-title">{{ $category->name }}</p>
-                            </div>
-                            <div class="wp-cluster">
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
-                                        wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
-                            </div>
+        @if ($categories->isNotEmpty())
+            <div class="wp-list wp-list--entity-rows">
+                @foreach ($categories as $category)
+                    <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <p class="wp-issue-card-title">{{ $category->name }}</p>
                         </div>
-                    @endforeach
-                </div>
-            @else
-                <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
-            @endif
+                        <div class="wp-cluster">
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCategory({{ $category->id }})"
+                                    wire:confirm="{{ __('locations.categories.confirm_delete') }}">{{ __('common.button.delete') }}</button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="wp-muted">{{ __('locations.categories.empty') }}</p>
         @endif
-    </div>
+    </x-wp-disclosure-card>
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-grow">
