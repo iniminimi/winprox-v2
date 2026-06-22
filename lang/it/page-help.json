@@ -323,7 +323,7 @@
                 {
                     "label": "Logo e indirizzo",
                     "nested": true,
-                    "text": "Scelga dove compare il logo della Sua organizzazione sull'adesivo (in basso a destra, in basso a sinistra, …) — solo se ha caricato un logo. Selezioni «Mostra indirizzo sede sull'adesivo» per stampare i dati indirizzo in basso a sinistra. Il logo al centro del codice QR è fisso (il Suo logo o WinProx) e non può essere spostato qui."
+                    "text": "Scelga dove compare il logo della Sua organizzazione sull'adesivo (in basso a destra, in basso a sinistra, …) — solo se ha caricato un logo. Selezioni «Mostra indirizzo sede sull'adesivo» per stampare i dati indirizzo in basso a sinistra. Indirizzo e logo in basso condividono un'unica fascia bianca a tutta larghezza; in alto ogni elemento resta separato. Il logo al centro del codice QR è fisso (il Suo logo o WinProx) e non può essere spostato qui."
                 },
                 {
                     "label": "Sfondo",

@@ -323,7 +323,7 @@
                 {
                     "label": "Logo et adresse",
                     "nested": true,
-                    "text": "Choisissez où placer le logo de l'organisation sur l'autocollant (en bas à droite, en bas à gauche, …) — uniquement si un logo a été téléversé. Cochez l'option d'adresse pour l'afficher en bas à gauche. Le logo au centre du QR code est fixe (votre logo ou WinProx) et ne peut pas être déplacé ici."
+                    "text": "Choisissez où placer le logo de l'organisation sur l'autocollant (en bas à droite, en bas à gauche, …) — uniquement si un logo a été téléversé. Cochez l'option d'adresse pour l'afficher en bas à gauche. L'adresse et le logo en bas partagent un seul bandeau blanc sur toute la largeur ; en haut, chaque élément reste séparé. Le logo au centre du QR code est fixe (votre logo ou WinProx) et ne peut pas être déplacé ici."
                 },
                 {
                     "label": "Arrière-plan",

@@ -323,7 +323,7 @@
                 {
                     "label": "Logo en adres",
                     "nested": true,
-                    "text": "Kies waar je organisatielogo op de sticker komt (rechtsonder, linksonder, …) — alleen mogelijk als je een logo hebt geüpload. Vink 'Adres locatie op de sticker' aan om adresgegevens linksonder te tonen. Het logo in het midden van de QR-code is vast (jouw logo of WinProx) en kan hier niet verplaatst worden."
+                    "text": "Kies waar je organisatielogo op de sticker komt (rechtsonder, linksonder, …) — alleen mogelijk als je een logo hebt geüpload. Vink 'Adres locatie op de sticker' aan om het organisatieadres linksonder te tonen. Adres en logo onderaan delen één wit vak over de volle breedte van de sticker; bovenaan blijft elk element los. Het logo in het midden van de QR-code is vast (jouw logo of WinProx) en kan hier niet verplaatst worden."
                 },
                 {
                     "label": "Achtergrond",

@@ -323,7 +323,7 @@
                 {
                     "label": "Logotipo y dirección",
                     "nested": true,
-                    "text": "Elija dónde aparece el logotipo de su organización en la pegatina (abajo a la derecha, abajo a la izquierda, …) — solo si ha subido un logotipo. Marque «Mostrar dirección de la ubicación en la pegatina» para imprimir los datos de dirección abajo a la izquierda. El logotipo en el centro del código QR es fijo (su logotipo o WinProx) y no se puede mover aquí."
+                    "text": "Elija dónde aparece el logotipo de su organización en la pegatina (abajo a la derecha, abajo a la izquierda, …) — solo si ha subido un logotipo. Marque «Mostrar dirección de la ubicación en la pegatina» para imprimir los datos de dirección abajo a la izquierda. La dirección y el logotipo inferior comparten una franja blanca a todo el ancho; arriba cada elemento sigue separado. El logotipo en el centro del código QR es fijo (su logotipo o WinProx) y no se puede mover aquí."
                 },
                 {
                     "label": "Fondo",

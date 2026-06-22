@@ -323,7 +323,7 @@
                 {
                     "label": "Logo und Adresse",
                     "nested": true,
-                    "text": "Wählen Sie, wo Ihr Organisationslogo auf dem Aufkleber erscheint (unten rechts, unten links, …) — nur wenn ein Logo hochgeladen wurde. Aktivieren Sie die Adressoption für die Anzeige unten links. Das Logo in der Mitte des QR-Codes ist fest (Ihr Logo oder WinProx) und kann hier nicht verschoben werden."
+                    "text": "Wählen Sie, wo Ihr Organisationslogo auf dem Aufkleber erscheint (unten rechts, unten links, …) — nur wenn ein Logo hochgeladen wurde. Aktivieren Sie die Adressoption für die Anzeige unten links. Adresse und Logo unten teilen sich ein weißes Band über die volle Breite; oben bleibt jedes Element separat. Das Logo in der Mitte des QR-Codes ist fest (Ihr Logo oder WinProx) und kann hier nicht verschoben werden."
                 },
                 {
                     "label": "Hintergrund",

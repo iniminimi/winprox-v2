@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Enums\QrStickerTenantLogoPlacement;
 use App\Support\Qr\Avery62x89StickerArtworkLayout;
 use App\Support\Qr\BrandedQrStickerCompositor;
 use App\Support\Qr\QrCenterLogo;
@@ -71,6 +72,41 @@ it('renders tenant details and corner logo in the bottom band', function () {
     );
 
     expect($labeled)->not->toBe($plain);
+});
+
+it('uses one full-width white bottom band for tenant address and bottom logo', function () {
+    if (! extension_loaded('gd') || ! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $compositor = new BrandedQrStickerCompositor;
+    $bytes = $compositor->compositeBytes(
+        QrStickerBackground::defaultAvery62x89AbsolutePath(),
+        'https://example.test/melden/demo-token',
+        null,
+        null,
+        null,
+        null,
+        ['Westtoer', 'Koning Albert I-laan 120', '8200 Brugge'],
+        QrCenterLogo::winproxAbsolutePath(),
+        QrStickerTenantLogoPlacement::BottomRight,
+    );
+
+    $image = imagecreatefromstring($bytes);
+    expect($image)->not->toBeFalse();
+
+    $centerX = (int) round(Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX / 2);
+    $sampleY = Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX - 90;
+    $color = imagecolorat($image, $centerX, $sampleY);
+    imagedestroy($image);
+
+    $red = ($color >> 16) & 0xFF;
+    $green = ($color >> 8) & 0xFF;
+    $blue = $color & 0xFF;
+
+    expect($red)->toBeGreaterThan(240)
+        ->and($green)->toBeGreaterThan(240)
+        ->and($blue)->toBeGreaterThan(240);
 });
 
 it('ignores blank branded sticker header and footer text', function () {

@@ -323,7 +323,7 @@
                 {
                     "label": "Logo and address",
                     "nested": true,
-                    "text": "Choose where your organisation logo appears on the sticker (bottom right, bottom left, …) — only if you have uploaded a logo. Tick 'Show location address on sticker' to print address details at the bottom left. The logo in the centre of the QR code is fixed (your logo or WinProx) and cannot be moved here."
+                    "text": "Choose where your organisation logo appears on the sticker (bottom right, bottom left, …) — only if you have uploaded a logo. Tick 'Show location address on sticker' to print address details at the bottom left. Address and bottom logo share one full-width white band at the bottom of the sticker; at the top each element stays separate. The logo in the centre of the QR code is fixed (your logo or WinProx) and cannot be moved here."
                 },
                 {
                     "label": "Background",

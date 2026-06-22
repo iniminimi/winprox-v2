@@ -157,14 +157,14 @@ final class BrandedQrStickerCompositor
             BrandedQrStickerFooterRenderer::drawOnGd($canvas, $footerText);
         }
 
-        if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
-            BrandedQrStickerTenantDetailsRenderer::drawOnGd($canvas, $tenantDetailLines, $tenantLogoPlacement);
-        }
+        self::drawTenantBottomBandOnGd(
+            $canvas,
+            $tenantDetailLines,
+            $tenantStickerLogoPath,
+            $tenantLogoPlacement,
+        );
 
-        if ($tenantLogoPlacement !== QrStickerTenantLogoPlacement::None
-            && $tenantStickerLogoPath !== null
-            && $tenantStickerLogoPath !== ''
-            && is_file($tenantStickerLogoPath)) {
+        if (self::usesTopTenantLogo($tenantStickerLogoPath, $tenantLogoPlacement)) {
             BrandedQrStickerTenantLogoRenderer::drawOnGd($canvas, $tenantStickerLogoPath, $tenantLogoPlacement);
         }
 
@@ -265,14 +265,14 @@ final class BrandedQrStickerCompositor
             BrandedQrStickerFooterRenderer::drawOnImagick($canvas, $footerText);
         }
 
-        if ($tenantDetailLines !== null && $tenantDetailLines !== []) {
-            BrandedQrStickerTenantDetailsRenderer::drawOnImagick($canvas, $tenantDetailLines, $tenantLogoPlacement);
-        }
+        self::drawTenantBottomBandOnImagick(
+            $canvas,
+            $tenantDetailLines,
+            $tenantStickerLogoPath,
+            $tenantLogoPlacement,
+        );
 
-        if ($tenantLogoPlacement !== QrStickerTenantLogoPlacement::None
-            && $tenantStickerLogoPath !== null
-            && $tenantStickerLogoPath !== ''
-            && is_file($tenantStickerLogoPath)) {
+        if (self::usesTopTenantLogo($tenantStickerLogoPath, $tenantLogoPlacement)) {
             BrandedQrStickerTenantLogoRenderer::drawOnImagick($canvas, $tenantStickerLogoPath, $tenantLogoPlacement);
         }
 
@@ -283,5 +283,56 @@ final class BrandedQrStickerCompositor
         $canvas->clear();
 
         return $bytes;
+    }
+
+    /**
+     * @param  ?list<string>  $tenantDetailLines
+     * @param  \GdImage|resource  $canvas
+     */
+    private static function drawTenantBottomBandOnGd(
+        $canvas,
+        ?array $tenantDetailLines,
+        ?string $tenantStickerLogoPath,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement,
+    ): void {
+        $lines = $tenantDetailLines ?? [];
+
+        BrandedQrStickerBottomBandRenderer::drawOnGd(
+            $canvas,
+            $lines,
+            $tenantStickerLogoPath,
+            $tenantLogoPlacement,
+        );
+    }
+
+    /**
+     * @param  ?list<string>  $tenantDetailLines
+     */
+    private static function drawTenantBottomBandOnImagick(
+        Imagick $canvas,
+        ?array $tenantDetailLines,
+        ?string $tenantStickerLogoPath,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement,
+    ): void {
+        $lines = $tenantDetailLines ?? [];
+
+        BrandedQrStickerBottomBandRenderer::drawOnImagick(
+            $canvas,
+            $lines,
+            $tenantStickerLogoPath,
+            $tenantLogoPlacement,
+        );
+    }
+
+    private static function usesTopTenantLogo(
+        ?string $tenantStickerLogoPath,
+        QrStickerTenantLogoPlacement $tenantLogoPlacement,
+    ): bool {
+        if ($tenantStickerLogoPath === null || $tenantStickerLogoPath === '' || ! is_file($tenantStickerLogoPath)) {
+            return false;
+        }
+
+        return $tenantLogoPlacement === QrStickerTenantLogoPlacement::TopLeft
+            || $tenantLogoPlacement === QrStickerTenantLogoPlacement::TopRight;
     }
 }
