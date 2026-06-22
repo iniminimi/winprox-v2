@@ -25,15 +25,22 @@ it('laat ingelogde gebruiker een zip gdpr-export downloaden met json', function 
         ->assertDownload()
         ->assertHeader('content-type', 'application/zip');
 
+    /** @var \Symfony\Component\HttpFoundation\BinaryFileResponse $baseResponse */
+    $baseResponse = $response->baseResponse;
+    $zipPath = $baseResponse->getFile()->getPathname();
+
     $zip = new \ZipArchive;
-    $tmp = tempnam(sys_get_temp_dir(), 'wp-gdpr-export-');
-    file_put_contents($tmp, $response->streamedContent());
-    expect($zip->open($tmp))->toBeTrue();
+    expect($zip->open($zipPath))->toBeTrue();
 
     $jsonName = sprintf('winprox-data-export-%d-%s.json', $user->id, now()->format('Y-m-d'));
-    $json = $zip->getFromName($jsonName);
+
+    expect($zip->numFiles)->toBe(1);
+
+    $entryName = $zip->getNameIndex(0);
+    expect($entryName)->toBe($jsonName);
+
+    $json = $zip->getFromIndex(0);
     $zip->close();
-    @unlink($tmp);
 
     expect($json)->toBeString();
 
