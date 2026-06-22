@@ -1,6 +1,6 @@
 {
     "title": "Configuration health",
-    "subtitle": "Overview of incomplete locations, units and categories.",
+    "subtitle": "Overview of GPS, reporting, documents, locations, units and categories.",
     "widget": {
         "kicker": "Configuration",
         "title": "Health check",
@@ -28,7 +28,13 @@
         "unit_photo": "Unit without photo",
         "category_team": "Category without team",
         "location_address": "Location without address",
+        "unit_missing_gps": "Unit without GPS",
+        "unit_public_reports_disabled": "QR reporting disabled",
+        "inactive_document": "Inactive document",
         "category_team_hint": "Link at least one team",
-        "location_address_hint": "Enter street, postal code and city"
+        "location_address_hint": "Enter street, postal code and city",
+        "unit_missing_gps_hint": "Capture GPS via the portal or edit the unit",
+        "unit_public_reports_disabled_hint": "Visitors cannot submit a report via the QR link",
+        "inactive_document_hint": "Document is inactive on an active location"
     }
 }

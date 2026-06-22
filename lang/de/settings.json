@@ -155,5 +155,23 @@
         "ability_workers_read": "Mitarbeiter lesen",
         "ability_webhooks_manage": "Webhooks verwalten",
         "ability_all": "Vollzugriff"
+    },
+    "config_overview": {
+        "title": "Konfigurationsübersicht",
+        "subtitle_collapsed": "GPS, Meldungen, Dokumente und deaktivierte Elemente.",
+        "loading": "Übersicht wird geladen…",
+        "preview_title": "Wichtigste Maßnahmen",
+        "more_issues": ":count weitere Maßnahmen in der vollständigen Übersicht.",
+        "open_full": "Vollständige Übersicht öffnen",
+        "kpi": {
+            "inactive_locations": "Inaktive Standorte",
+            "inactive_units": "Inaktive Units",
+            "inactive_teams": "Inaktive Teams",
+            "inactive_workers": "Inaktive Mitarbeiter",
+            "category_gps_on": "Kategorien mit GPS",
+            "category_gps_off": "Kategorien ohne GPS",
+            "documents_active": "Aktive Dokumente",
+            "documents_inactive": "Inaktive Dokumente"
+        }
     }
 }

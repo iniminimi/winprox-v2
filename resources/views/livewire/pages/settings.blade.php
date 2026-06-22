@@ -6,6 +6,37 @@
         :subtitle="__('settings.subtitle')"
     />
 
+    <div
+        class="wp-card wp-card-pad wp-stack-tight wp-settings-section"
+        x-data="{ open: false }"
+        wire:key="settings-config-overview"
+    >
+        <button
+            type="button"
+            class="wp-settings-section-toggle wp-settings-section-toggle--stacked"
+            @click="open = !open; if (open) $wire.loadConfigOverview()"
+            :aria-expanded="open"
+        >
+            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+            <span class="wp-grow wp-stack-tight">
+                <span class="wp-cluster">
+                    <h2 class="wp-section-title">{{ __('settings.config_overview.title') }}</h2>
+                    @if ($configIssueCount > 0)
+                        <span class="wp-pill wp-pill--closed">{{ trans_choice('health.widget.issues', $configIssueCount, ['count' => $configIssueCount]) }}</span>
+                    @endif
+                </span>
+                <span class="wp-muted" x-show="!open">{{ __('settings.config_overview.subtitle_collapsed') }}</span>
+            </span>
+        </button>
+        <div class="wp-disclosure-panel wp-stack" x-show="open" x-cloak>
+            @if ($configOverviewLoaded && $configSummary instanceof \App\Support\Admin\AdminConfigSummary)
+                @include('livewire.pages.partials.settings-config-overview', ['configSummary' => $configSummary])
+            @else
+                <p class="wp-muted">{{ __('settings.config_overview.loading') }}</p>
+            @endif
+        </div>
+    </div>
+
     @if ($organisationTenant)
         <x-wp-settings-section :title="__('settings.org.title')">
             @if ($canManageOrganisation)

@@ -1,6 +1,6 @@
 {
     "title": "Controllo integrità configurazione",
-    "subtitle": "Panoramica di sedi, unità e categorie incomplete.",
+    "subtitle": "Panoramica di GPS, segnalazioni, documenti, sedi, unità e categorie.",
     "widget": {
         "kicker": "Configurazione",
         "title": "Health check",
@@ -28,7 +28,13 @@
         "unit_photo": "Unità senza foto",
         "category_team": "Categoria senza team",
         "location_address": "Sede senza indirizzo",
+        "unit_missing_gps": "Unità senza GPS",
+        "unit_public_reports_disabled": "Segnalazione QR disattivata",
+        "inactive_document": "Documento inattivo",
         "category_team_hint": "Colleghi almeno un team",
-        "location_address_hint": "Inserisca via, CAP e città"
+        "location_address_hint": "Inserisca via, CAP e città",
+        "unit_missing_gps_hint": "Registri il GPS tramite il portale o modifichi l'unità",
+        "unit_public_reports_disabled_hint": "I visitatori non possono segnalare tramite il link QR",
+        "inactive_document_hint": "Documento inattivo su una sede attiva"
     }
 }

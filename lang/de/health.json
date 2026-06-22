@@ -1,6 +1,6 @@
 {
     "title": "Konfigurationszustand",
-    "subtitle": "Übersicht unvollständiger Standorte, Units und Kategorien.",
+    "subtitle": "Übersicht zu GPS, Meldungen, Dokumenten, Standorten, Units und Kategorien.",
     "widget": {
         "kicker": "Konfiguration",
         "title": "Gesundheitscheck",
@@ -28,7 +28,13 @@
         "unit_photo": "Unit ohne Foto",
         "category_team": "Kategorie ohne Team",
         "location_address": "Standort ohne Adresse",
+        "unit_missing_gps": "Unit ohne GPS",
+        "unit_public_reports_disabled": "QR-Meldung deaktiviert",
+        "inactive_document": "Inaktives Dokument",
         "category_team_hint": "Mindestens ein Team zuweisen",
-        "location_address_hint": "Straße, PLZ und Ort eingeben"
+        "location_address_hint": "Straße, PLZ und Ort eingeben",
+        "unit_missing_gps_hint": "GPS über das Portal erfassen oder Unit bearbeiten",
+        "unit_public_reports_disabled_hint": "Besucher können über den QR-Link keine Meldung erstellen",
+        "inactive_document_hint": "Dokument ist an einem aktiven Standort inaktiv"
     }
 }

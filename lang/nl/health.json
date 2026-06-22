@@ -1,6 +1,6 @@
 {
     "title": "Configuratiegezondheid",
-    "subtitle": "Overzicht van onvolledige locaties, units en categorieën.",
+    "subtitle": "Overzicht van GPS, melden, documenten, locaties, units en categorieën.",
     "widget": {
         "kicker": "Configuratie",
         "title": "Gezondheidscontrole",
@@ -28,7 +28,13 @@
         "unit_photo": "Unit zonder foto",
         "category_team": "Categorie zonder team",
         "location_address": "Locatie zonder adres",
+        "unit_missing_gps": "Unit zonder GPS",
+        "unit_public_reports_disabled": "Melden via QR uitgeschakeld",
+        "inactive_document": "Document inactief",
         "category_team_hint": "Koppel minstens één team",
-        "location_address_hint": "Vul straat, postcode en plaats in"
+        "location_address_hint": "Vul straat, postcode en plaats in",
+        "unit_missing_gps_hint": "Leg GPS-locatie vast via het portaal of unit bewerken",
+        "unit_public_reports_disabled_hint": "Bezoekers kunnen geen melding maken via de QR-link",
+        "inactive_document_hint": "Document is gedeactiveerd op een actieve locatie"
     }
 }

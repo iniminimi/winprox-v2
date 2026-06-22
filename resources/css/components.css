@@ -881,6 +881,38 @@ a.wp-kpi:hover {
     flex-wrap: wrap;
 }
 
+.wp-config-overview-kpis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+    .wp-config-overview-kpis {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+.wp-config-overview-kpi {
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-md);
+    background: var(--wp-surface-muted, #f9fafb);
+}
+
+.wp-config-overview-kpi__label {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-config-overview-kpi__value {
+    margin: 0.25rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--wp-text-heading);
+}
+
 /* Icoon in wit kader met grijze rand (portaal, KPI's, …). */
 .wp-icon-frame {
     display: inline-flex;

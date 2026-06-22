@@ -5,6 +5,7 @@ use App\Livewire\Dashboard;
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Pages\Health;
+use App\Livewire\Pages\Settings;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -202,4 +203,59 @@ it('opent unit- en locatie-edit modals via query parameters', function () {
         ->test(LocationShow::class, ['location' => $location])
         ->assertSet('showUnitModal', true)
         ->assertSet('editingUnitId', $unit->id);
+});
+
+it('detecteert units zonder gps en melden uitgeschakeld', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_gps_location' => true,
+    ]);
+    $category->teams()->attach($team->id);
+
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'street' => 'Straat',
+        'house_number' => '1',
+        'postal_code' => '1000',
+        'city' => 'Stad',
+        'is_active' => true,
+    ]);
+
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+        'name' => 'Zonder GPS',
+        'public_reports_enabled' => false,
+        'is_active' => true,
+    ]);
+
+    $report = app(AdminHealthService::class)->report();
+
+    expect(collect($report->issues)->map(fn ($issue) => $issue->type)->all())->toEqualCanonicalizing([
+        AdminHealthIssueType::UnitMissingPhoto,
+        AdminHealthIssueType::UnitMissingGps,
+        AdminHealthIssueType::UnitPublicReportsDisabled,
+    ]);
+});
+
+it('toont configuratie-overzicht op instellingen na uitklappen', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Los']);
+
+    Livewire::actingAs($user)
+        ->test(Settings::class)
+        ->assertSee(__('settings.config_overview.title'))
+        ->assertDontSee(__('health.summary.title'))
+        ->call('loadConfigOverview')
+        ->assertSet('configOverviewLoaded', true)
+        ->assertSee(__('health.summary.title'))
+        ->assertSee(__('settings.config_overview.open_full'));
 });

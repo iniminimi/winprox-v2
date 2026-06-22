@@ -155,5 +155,23 @@
         "ability_workers_read": "Leggi lavoratori",
         "ability_webhooks_manage": "Gestisci webhooks",
         "ability_all": "Accesso completo"
+    },
+    "config_overview": {
+        "title": "Panoramica configurazione",
+        "subtitle_collapsed": "GPS, segnalazioni, documenti ed elementi disattivati.",
+        "loading": "Caricamento panoramica…",
+        "preview_title": "Azioni principali",
+        "more_issues": ":count altre azioni nella panoramica completa.",
+        "open_full": "Apri panoramica completa",
+        "kpi": {
+            "inactive_locations": "Sedi inattive",
+            "inactive_units": "Unità inattive",
+            "inactive_teams": "Team inattivi",
+            "inactive_workers": "Lavoratori inattivi",
+            "category_gps_on": "Categorie con GPS",
+            "category_gps_off": "Categorie senza GPS",
+            "documents_active": "Documenti attivi",
+            "documents_inactive": "Documenti inattivi"
+        }
     }
 }

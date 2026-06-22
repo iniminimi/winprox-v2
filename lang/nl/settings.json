@@ -155,5 +155,23 @@
         "ability_workers_read": "Workers lezen",
         "ability_webhooks_manage": "Webhooks beheren",
         "ability_all": "Volledige toegang"
+    },
+    "config_overview": {
+        "title": "Configuratie-overzicht",
+        "subtitle_collapsed": "GPS, melden, documenten en gedeactiveerde items.",
+        "loading": "Overzicht laden…",
+        "preview_title": "Belangrijkste actiepunten",
+        "more_issues": "Nog :count extra actiepunten in het volledige overzicht.",
+        "open_full": "Volledig overzicht openen",
+        "kpi": {
+            "inactive_locations": "Inactieve locaties",
+            "inactive_units": "Inactieve units",
+            "inactive_teams": "Inactieve teams",
+            "inactive_workers": "Inactieve uitvoerders",
+            "category_gps_on": "Categorieën met GPS",
+            "category_gps_off": "Categorieën zonder GPS",
+            "documents_active": "Actieve documenten",
+            "documents_inactive": "Inactieve documenten"
+        }
     }
 }

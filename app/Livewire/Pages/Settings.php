@@ -22,7 +22,9 @@ use App\Http\Requests\Team\UpdateTenantQrStickerSheetSettingsRequest;
 use App\Support\Qr\BrandedQrStickerLayoutConfig;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Http\Requests\Team\UpdateOrganisationRequest;
+use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Admin\AdminHealthService;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\UploadedFile;
@@ -86,10 +88,17 @@ class Settings extends Component
 
     public bool $showOrgModal = false;
 
-    public function mount(): void
+    public bool $configOverviewLoaded = false;
+
+    public int $configIssueCount = 0;
+
+    public function mount(AdminHealthService $healthService): void
     {
         $tenant = $this->resolveTenant();
         abort_unless($tenant instanceof Tenant, 403);
+
+        $this->authorize('viewAny', Location::class);
+        $this->configIssueCount = $healthService->issueCount();
 
         $user = auth()->user();
         $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);
@@ -427,11 +436,30 @@ class Settings extends Component
         $this->notifyOnNewIssueEmail = (bool) $updated->notify_on_new_issue_email;
     }
 
-    public function render()
+    public function loadConfigOverview(AdminHealthService $healthService): void
+    {
+        abort_unless($this->resolveTenant() instanceof Tenant, 403);
+
+        $this->authorize('viewAny', Location::class);
+
+        if ($this->configOverviewLoaded) {
+            return;
+        }
+
+        $this->configOverviewLoaded = true;
+        $this->configIssueCount = $healthService->issueCount();
+    }
+
+    public function render(AdminHealthService $healthService)
     {
         $tenant = $this->resolveTenant();
 
+        $configSummary = $this->configOverviewLoaded
+            ? $healthService->summary()
+            : null;
+
         return view('livewire.pages.settings', [
+            'configSummary' => $configSummary,
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
             'portalBackgroundUrl' => $this->portalBackgroundPreviewUrl(),

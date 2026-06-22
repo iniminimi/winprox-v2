@@ -1,6 +1,6 @@
 {
     "title": "Estado de la configuración",
-    "subtitle": "Resumen de ubicaciones, unidades y categorías incompletas.",
+    "subtitle": "Resumen de GPS, informes, documentos, ubicaciones, unidades y categorías.",
     "widget": {
         "kicker": "Configuración",
         "title": "Comprobación de estado",
@@ -28,7 +28,13 @@
         "unit_photo": "Unidad sin foto",
         "category_team": "Categoría sin equipo",
         "location_address": "Ubicación sin dirección",
+        "unit_missing_gps": "Unidad sin GPS",
+        "unit_public_reports_disabled": "Informe QR desactivado",
+        "inactive_document": "Documento inactivo",
         "category_team_hint": "Vincule al menos un equipo",
-        "location_address_hint": "Introduzca calle, código postal y ciudad"
+        "location_address_hint": "Introduzca calle, código postal y ciudad",
+        "unit_missing_gps_hint": "Registre el GPS mediante el portal o edite la unidad",
+        "unit_public_reports_disabled_hint": "Los visitantes no pueden informar mediante el enlace QR",
+        "inactive_document_hint": "Documento inactivo en una ubicación activa"
     }
 }

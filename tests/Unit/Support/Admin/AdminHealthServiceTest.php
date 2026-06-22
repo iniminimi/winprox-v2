@@ -57,7 +57,7 @@ it('telt alleen actieve locaties en units mee', function () {
 
     $report = app(AdminHealthService::class)->report();
 
-    expect($report->totalChecks)->toBe(3)
+    expect($report->totalChecks)->toBe(4)
         ->and($report->issueCount)->toBe(1)
         ->and($report->issues[0]->type)->toBe(AdminHealthIssueType::CategoryMissingTeam);
 });

@@ -155,5 +155,23 @@
         "ability_workers_read": "Lire les exécutants",
         "ability_webhooks_manage": "Gérer les webhooks",
         "ability_all": "Accès complet"
+    },
+    "config_overview": {
+        "title": "Aperçu de la configuration",
+        "subtitle_collapsed": "GPS, signalements, documents et éléments désactivés.",
+        "loading": "Chargement de l'aperçu…",
+        "preview_title": "Principaux points d'action",
+        "more_issues": ":count points d'action supplémentaires dans l'aperçu complet.",
+        "open_full": "Ouvrir l'aperçu complet",
+        "kpi": {
+            "inactive_locations": "Sites inactifs",
+            "inactive_units": "Unités inactives",
+            "inactive_teams": "Équipes inactives",
+            "inactive_workers": "Exécutants inactifs",
+            "category_gps_on": "Catégories avec GPS",
+            "category_gps_off": "Catégories sans GPS",
+            "documents_active": "Documents actifs",
+            "documents_inactive": "Documents inactifs"
+        }
     }
 }

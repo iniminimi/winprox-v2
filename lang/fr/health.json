@@ -1,6 +1,6 @@
 {
     "title": "Santé de la configuration",
-    "subtitle": "Aperçu des sites, unités et catégories incomplets.",
+    "subtitle": "Aperçu du GPS, des signalements, documents, sites, unités et catégories.",
     "widget": {
         "kicker": "Configuration",
         "title": "Contrôle de santé",
@@ -28,7 +28,13 @@
         "unit_photo": "Unité sans photo",
         "category_team": "Catégorie sans équipe",
         "location_address": "Site sans adresse",
+        "unit_missing_gps": "Unité sans GPS",
+        "unit_public_reports_disabled": "Signalement QR désactivé",
+        "inactive_document": "Document inactif",
         "category_team_hint": "Associez au moins une équipe",
-        "location_address_hint": "Renseignez rue, code postal et ville"
+        "location_address_hint": "Renseignez rue, code postal et ville",
+        "unit_missing_gps_hint": "Enregistrez le GPS via le portail ou modifiez l'unité",
+        "unit_public_reports_disabled_hint": "Les visiteurs ne peuvent pas signaler via le lien QR",
+        "inactive_document_hint": "Document inactif sur un site actif"
     }
 }
