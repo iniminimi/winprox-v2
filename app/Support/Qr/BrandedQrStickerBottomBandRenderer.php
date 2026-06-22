@@ -229,7 +229,7 @@ final class BrandedQrStickerBottomBandRenderer
             return;
         }
 
-        $resized = self::resizeLogoOntoWhiteGd($source, $logo['width'], $logo['height']);
+        $resized = self::resizeLogoPreservingAlphaGd($source, $logo['width'], $logo['height']);
         imagedestroy($source);
         if ($resized === false) {
             return;
@@ -237,15 +237,13 @@ final class BrandedQrStickerBottomBandRenderer
 
         imagealphablending($canvas, true);
         imagesavealpha($canvas, false);
-        imagecopyresampled(
+        imagecopy(
             $canvas,
             $resized,
             $logo['x'],
             $logo['y'],
             0,
             0,
-            $logo['width'],
-            $logo['height'],
             $logo['width'],
             $logo['height'],
         );
@@ -293,7 +291,7 @@ final class BrandedQrStickerBottomBandRenderer
             Imagick::FILTER_LANCZOS,
             1,
         );
-        self::flattenLogoOntoWhiteImagick($image);
+        $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_ACTIVATE);
         $canvas->compositeImage($image, Imagick::COMPOSITE_OVER, $logo['x'], $logo['y']);
         $image->clear();
     }
@@ -404,23 +402,27 @@ final class BrandedQrStickerBottomBandRenderer
         return (int) abs($bbox[2] - $bbox[0]);
     }
 
-    private static function resizeLogoOntoWhiteGd(GdImage $logo, int $targetW, int $targetH): GdImage|false
+    private static function resizeLogoPreservingAlphaGd(GdImage $logo, int $targetW, int $targetH): GdImage|false
     {
         $resized = imagecreatetruecolor($targetW, $targetH);
         if ($resized === false) {
             return false;
         }
 
-        $white = imagecolorallocate($resized, 255, 255, 255);
-        if ($white === false) {
+        imagealphablending($resized, false);
+        imagesavealpha($resized, true);
+        $transparent = imagecolorallocatealpha($resized, 0, 0, 0, 127);
+        if ($transparent === false) {
             imagedestroy($resized);
 
             return false;
         }
 
-        imagefill($resized, 0, 0, $white);
+        imagefill($resized, 0, 0, $transparent);
         imagealphablending($resized, true);
-        imagesavealpha($resized, false);
+        imagesavealpha($resized, true);
+        imagealphablending($logo, true);
+        imagesavealpha($logo, true);
         imagecopyresampled(
             $resized,
             $logo,
@@ -435,14 +437,5 @@ final class BrandedQrStickerBottomBandRenderer
         );
 
         return $resized;
-    }
-
-    private static function flattenLogoOntoWhiteImagick(Imagick $logo): void
-    {
-        $logo->setImageBackgroundColor(new ImagickPixel('white'));
-
-        if ($logo->getImageAlphaChannel()) {
-            $logo->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
-        }
     }
 }

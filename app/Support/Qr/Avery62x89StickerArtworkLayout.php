@@ -70,9 +70,9 @@ final class Avery62x89StickerArtworkLayout
 
     public const TENANT_DETAILS_LOGO_GAP_PX = 16;
 
-    public const TENANT_DETAILS_MAX_FONT_SIZE_PX = 17;
+    public const TENANT_DETAILS_MAX_FONT_SIZE_PX = 28;
 
-    public const TENANT_DETAILS_MIN_FONT_SIZE_PX = 12;
+    public const TENANT_DETAILS_MIN_FONT_SIZE_PX = 18;
 
     public const TENANT_DETAILS_LINE_HEIGHT_RATIO = 1.38;
 

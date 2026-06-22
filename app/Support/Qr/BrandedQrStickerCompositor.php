@@ -104,16 +104,7 @@ final class BrandedQrStickerCompositor
         QrStickerTenantLogoPlacement $tenantLogoPlacement,
     ): string
     {
-        $loaded = @imagecreatefrompng($backgroundPath);
-        if ($loaded === false) {
-            $loaded = @imagecreatefromjpeg($backgroundPath);
-        }
-        if ($loaded === false) {
-            throw new RuntimeException('Unable to load branded sticker background image.');
-        }
-
-        $canvas = $this->normalizeCanvasWithGd($loaded);
-        imagedestroy($loaded);
+        $canvas = $this->createBackgroundCanvasWithGd($backgroundPath);
 
         imagealphablending($canvas, true);
         imagesavealpha($canvas, false);
@@ -183,6 +174,69 @@ final class BrandedQrStickerCompositor
     /**
      * @return \GdImage
      */
+    private function createBackgroundCanvasWithGd(string $backgroundPath): \GdImage
+    {
+        $default = $this->decodeGdImage(QrStickerBackground::defaultAvery62x89AbsolutePath());
+        if ($default === false) {
+            throw new RuntimeException('Unable to load branded sticker background image.');
+        }
+
+        $canvas = $this->normalizeCanvasWithGd($default);
+        imagedestroy($default);
+
+        if ($this->isDefaultBackgroundPath($backgroundPath)) {
+            return $canvas;
+        }
+
+        $overlay = $this->decodeGdImage($backgroundPath);
+        if ($overlay === false) {
+            return $canvas;
+        }
+
+        imagealphablending($canvas, true);
+        imagesavealpha($canvas, false);
+        imagealphablending($overlay, true);
+        imagesavealpha($overlay, true);
+        imagecopyresampled(
+            $canvas,
+            $overlay,
+            0,
+            0,
+            0,
+            0,
+            Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX,
+            Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX,
+            imagesx($overlay),
+            imagesy($overlay),
+        );
+        imagedestroy($overlay);
+
+        return $canvas;
+    }
+
+    private function decodeGdImage(string $path): \GdImage|false
+    {
+        $loaded = @imagecreatefrompng($path);
+        if ($loaded !== false) {
+            return $loaded;
+        }
+
+        return @imagecreatefromjpeg($path);
+    }
+
+    private function isDefaultBackgroundPath(string $backgroundPath): bool
+    {
+        $resolvedBackground = realpath($backgroundPath);
+        $resolvedDefault = realpath(QrStickerBackground::defaultAvery62x89AbsolutePath());
+
+        return $resolvedBackground !== false
+            && $resolvedDefault !== false
+            && $resolvedBackground === $resolvedDefault;
+    }
+
+    /**
+     * @return \GdImage
+     */
     private function normalizeCanvasWithGd(\GdImage $loaded): \GdImage
     {
         $width = imagesx($loaded);
@@ -226,16 +280,7 @@ final class BrandedQrStickerCompositor
         QrStickerTenantLogoPlacement $tenantLogoPlacement,
     ): string
     {
-        $canvas = new Imagick($backgroundPath);
-        if ($canvas->getImageWidth() !== Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
-            || $canvas->getImageHeight() !== Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX) {
-            $canvas->resizeImage(
-                Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX,
-                Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX,
-                Imagick::FILTER_LANCZOS,
-                1,
-            );
-        }
+        $canvas = $this->createBackgroundCanvasWithImagick($backgroundPath);
 
         if ($headerText !== null && trim($headerText) !== '') {
             BrandedQrStickerHeaderRenderer::drawOnImagick($canvas, $headerText);
@@ -283,6 +328,35 @@ final class BrandedQrStickerCompositor
         $canvas->clear();
 
         return $bytes;
+    }
+
+    private function createBackgroundCanvasWithImagick(string $backgroundPath): Imagick
+    {
+        $canvas = new Imagick(QrStickerBackground::defaultAvery62x89AbsolutePath());
+        $this->resizeImagickToCanvas($canvas);
+
+        if (! $this->isDefaultBackgroundPath($backgroundPath)) {
+            $overlay = new Imagick($backgroundPath);
+            $this->resizeImagickToCanvas($overlay);
+            $overlay->setImageAlphaChannel(Imagick::ALPHACHANNEL_ACTIVATE);
+            $canvas->compositeImage($overlay, Imagick::COMPOSITE_OVER, 0, 0);
+            $overlay->clear();
+        }
+
+        return $canvas;
+    }
+
+    private function resizeImagickToCanvas(Imagick $image): void
+    {
+        if ($image->getImageWidth() !== Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX
+            || $image->getImageHeight() !== Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX) {
+            $image->resizeImage(
+                Avery62x89StickerArtworkLayout::CANVAS_WIDTH_PX,
+                Avery62x89StickerArtworkLayout::CANVAS_HEIGHT_PX,
+                Imagick::FILTER_LANCZOS,
+                1,
+            );
+        }
     }
 
     /**
