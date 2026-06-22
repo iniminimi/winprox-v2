@@ -77,8 +77,10 @@
     },
     "privacy": {
         "title": "Privacy & data export",
-        "hint": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",
-        "download": "Download JSON export"
+        "hint": "Only the administrator can download a machine-readable overview (JSON in a ZIP file) of the account and relevant activity within your tenant. The file may contain sensitive data — store it securely.",
+        "download": "Download data export",
+        "preparing": "Preparing export…",
+        "download_failed": "Download failed. Please try again."
     },
     "style": {
         "title": "Customise WinProx style",

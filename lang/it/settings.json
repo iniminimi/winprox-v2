@@ -77,8 +77,10 @@
     },
     "privacy": {
         "title": "Privacy ed esportazione dati",
-        "hint": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON) dell'account e dell'attività rilevante nel Suo tenant. Il file può contenere dati sensibili — conservilo in modo sicuro.",
-        "download": "Scarica esportazione JSON"
+        "hint": "Solo l'amministratore può scaricare una panoramica leggibile da macchina (JSON in un file ZIP) dell'account e dell'attività rilevante nel Suo tenant. Il file può contenere dati sensibili — conservilo in modo sicuro.",
+        "download": "Scarica esportazione dati",
+        "preparing": "Preparazione esportazione…",
+        "download_failed": "Download non riuscito. Riprovi."
     },
     "style": {
         "title": "Personalizza stile WinProx",

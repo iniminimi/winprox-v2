@@ -77,8 +77,10 @@
     },
     "privacy": {
         "title": "Datenschutz & Datenexport",
-        "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",
-        "download": "JSON-Export herunterladen"
+        "hint": "Nur der Administrator kann einen maschinenlesbaren Überblick (JSON in einer ZIP-Datei) über das Konto und relevante Aktivität in Ihrer Umgebung herunterladen. Die Datei kann sensible Daten enthalten — sicher aufbewahren.",
+        "download": "Datenexport herunterladen",
+        "preparing": "Export wird vorbereitet…",
+        "download_failed": "Download fehlgeschlagen. Bitte erneut versuchen."
     },
     "style": {
         "title": "WinProx-Stil anpassen",

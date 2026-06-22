@@ -77,8 +77,10 @@
     },
     "privacy": {
         "title": "Privacidad y exportación de datos",
-        "hint": "Solo el administrador puede descargar un resumen legible por máquina (JSON) de la cuenta y la actividad relevante dentro de su entorno. El archivo puede contener datos sensibles — guárdelo de forma segura.",
-        "download": "Descargar exportación JSON"
+        "hint": "Solo el administrador puede descargar un resumen legible por máquina (JSON en un archivo ZIP) de la cuenta y la actividad relevante dentro de su entorno. El archivo puede contener datos sensibles — guárdelo de forma segura.",
+        "download": "Descargar exportación de datos",
+        "preparing": "Preparando exportación…",
+        "download_failed": "Error en la descarga. Inténtelo de nuevo."
     },
     "style": {
         "title": "Personalizar el estilo WinProx",

@@ -77,8 +77,10 @@
     },
     "privacy": {
         "title": "Privacy & export van gegevens",
-        "hint": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig.",
-        "download": "JSON-export downloaden"
+        "hint": "Alleen de beheerder kan een machineleesbaar overzicht (JSON in een ZIP-bestand) van het account en relevante activiteit binnen jullie omgeving downloaden. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig.",
+        "download": "Gegevensexport downloaden",
+        "preparing": "Export wordt voorbereid…",
+        "download_failed": "Download mislukt. Probeer het opnieuw."
     },
     "style": {
         "title": "WinProx-stijl aanpassen",

@@ -21,11 +21,11 @@ function parseContentDispositionFilename(header) {
     return null;
 }
 
-export async function wpDownloadQrPackUrl(url) {
+export async function wpDownloadAuthenticatedFile(url, accept = '*/*') {
     const response = await fetch(url, {
         credentials: 'same-origin',
         headers: {
-            Accept: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document,*/*',
+            Accept: accept,
         },
     });
 
@@ -43,7 +43,7 @@ export async function wpDownloadQrPackUrl(url) {
 
     const blob = await response.blob();
     const filename = parseContentDispositionFilename(response.headers.get('Content-Disposition'))
-        ?? 'winprox-qr-stickers.docx';
+        ?? 'download';
     const objectUrl = URL.createObjectURL(blob);
     const link = document.createElement('a');
 
@@ -56,4 +56,12 @@ export async function wpDownloadQrPackUrl(url) {
     URL.revokeObjectURL(objectUrl);
 }
 
+export async function wpDownloadQrPackUrl(url) {
+    await wpDownloadAuthenticatedFile(
+        url,
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document,*/*',
+    );
+}
+
+window.wpDownloadAuthenticatedFile = wpDownloadAuthenticatedFile;
 window.wpDownloadQrPackUrl = wpDownloadQrPackUrl;

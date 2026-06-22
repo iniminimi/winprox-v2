@@ -40,6 +40,7 @@
         'sliders' => '<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 0 0-3 0M2.25 12h18M2.25 12a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 0 0-3 0M10.5 18h9.75m-9.75 0a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 0 0-3 0" />',
         'x-mark' => '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />',
         'information-circle' => '<path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />',
+        'hourglass' => '<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 3.75h13.5m-13.5 0a.75.75 0 0 1-.75.75v.75c0 2.9 1.71 5.4 4.2 6.6v.69a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-1.5a.75.75 0 0 1-.75-.75v-.69c2.49-1.2 4.2-3.7 4.2-6.6v-.75a.75.75 0 0 1-.75-.75h-13.5Z" />',
     ];
     $path = $paths[$name] ?? '<path stroke-linecap="round" stroke-linejoin="round" d="M12 12h.008v.008H12V12Z" />';
 @endphp

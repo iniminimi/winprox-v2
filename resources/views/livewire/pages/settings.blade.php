@@ -252,9 +252,46 @@
     @if ($canManageOrganisation)
         <x-wp-settings-section :title="__('settings.privacy.title')">
             <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>
-            <p>
-                <a href="{{ route('account.data-export') }}" class="btn btn--ghost btn--sm">{{ __('settings.privacy.download') }}</a>
-            </p>
+            <div
+                x-data="{
+                    downloading: false,
+                    error: null,
+                    async downloadExport() {
+                        if (this.downloading) {
+                            return;
+                        }
+
+                        this.downloading = true;
+                        this.error = null;
+
+                        try {
+                            await window.wpDownloadAuthenticatedFile(
+                                @js(route('account.data-export')),
+                                'application/zip,*/*',
+                            );
+                        } catch (exception) {
+                            this.error = exception?.message || @js(__('settings.privacy.download_failed'));
+                        } finally {
+                            this.downloading = false;
+                        }
+                    },
+                }"
+            >
+                <button
+                    type="button"
+                    class="btn btn--ghost btn--sm"
+                    @click="downloadExport()"
+                    :disabled="downloading"
+                    :aria-busy="downloading"
+                >
+                    <span class="wp-cluster" x-show="downloading" x-cloak>
+                        <x-wp-hourglass size="sm" :visible="true" />
+                        <span>{{ __('settings.privacy.preparing') }}</span>
+                    </span>
+                    <span x-show="!downloading">{{ __('settings.privacy.download') }}</span>
+                </button>
+                <p class="wp-error wp-text-sm" x-show="error" x-text="error" x-cloak></p>
+            </div>
         </x-wp-settings-section>
     @endif
 
