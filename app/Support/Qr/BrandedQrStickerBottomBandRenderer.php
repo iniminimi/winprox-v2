@@ -224,30 +224,14 @@ final class BrandedQrStickerBottomBandRenderer
      */
     private static function drawLogoOnGd($canvas, array $logo): void
     {
-        $source = QrStickerRasterCache::gdSource($logo['path']);
-        if ($source === false) {
-            return;
-        }
-
-        $resized = self::resizeLogoPreservingAlphaGd($source, $logo['width'], $logo['height']);
-        imagedestroy($source);
-        if ($resized === false) {
-            return;
-        }
-
-        imagealphablending($canvas, true);
-        imagesavealpha($canvas, false);
-        imagecopy(
+        BrandedQrStickerLogoRaster::compositeOnGd(
             $canvas,
-            $resized,
+            $logo['path'],
             $logo['x'],
             $logo['y'],
-            0,
-            0,
             $logo['width'],
             $logo['height'],
         );
-        imagedestroy($resized);
     }
 
     /**
@@ -279,21 +263,14 @@ final class BrandedQrStickerBottomBandRenderer
      */
     private static function drawLogoOnImagick(Imagick $canvas, array $logo): void
     {
-        $cachedLogo = QrStickerRasterCache::imagickSource($logo['path']);
-        if ($cachedLogo === null) {
-            return;
-        }
-
-        $image = clone $cachedLogo;
-        $image->resizeImage(
+        BrandedQrStickerLogoRaster::compositeOnImagick(
+            $canvas,
+            $logo['path'],
+            $logo['x'],
+            $logo['y'],
             $logo['width'],
             $logo['height'],
-            Imagick::FILTER_LANCZOS,
-            1,
         );
-        $image->setImageAlphaChannel(Imagick::ALPHACHANNEL_ACTIVATE);
-        $canvas->compositeImage($image, Imagick::COMPOSITE_OVER, $logo['x'], $logo['y']);
-        $image->clear();
     }
 
     private static function usesBottomLogo(?string $logoPath, QrStickerTenantLogoPlacement $logoPlacement): bool
@@ -400,42 +377,5 @@ final class BrandedQrStickerBottomBandRenderer
         }
 
         return (int) abs($bbox[2] - $bbox[0]);
-    }
-
-    private static function resizeLogoPreservingAlphaGd(GdImage $logo, int $targetW, int $targetH): GdImage|false
-    {
-        $resized = imagecreatetruecolor($targetW, $targetH);
-        if ($resized === false) {
-            return false;
-        }
-
-        imagealphablending($resized, false);
-        imagesavealpha($resized, true);
-        $transparent = imagecolorallocatealpha($resized, 0, 0, 0, 127);
-        if ($transparent === false) {
-            imagedestroy($resized);
-
-            return false;
-        }
-
-        imagefill($resized, 0, 0, $transparent);
-        imagealphablending($resized, true);
-        imagesavealpha($resized, true);
-        imagealphablending($logo, true);
-        imagesavealpha($logo, true);
-        imagecopyresampled(
-            $resized,
-            $logo,
-            0,
-            0,
-            0,
-            0,
-            $targetW,
-            $targetH,
-            imagesx($logo),
-            imagesy($logo),
-        );
-
-        return $resized;
     }
 }

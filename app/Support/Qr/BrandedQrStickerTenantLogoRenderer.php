@@ -26,12 +26,6 @@ final class BrandedQrStickerTenantLogoRenderer
         }
 
         [$targetW, $targetH] = self::fitSize(imagesx($logo), imagesy($logo));
-        $resized = self::resizeLogoPreservingAlphaGd($logo, $targetW, $targetH);
-        imagedestroy($logo);
-        if ($resized === false) {
-            return;
-        }
-
         $frame = self::frameLayout($placement, $targetW, $targetH);
 
         BrandedQrStickerSurfaceFrame::drawOnGd(
@@ -42,19 +36,14 @@ final class BrandedQrStickerTenantLogoRenderer
             $frame['box_height'],
         );
 
-        imagealphablending($canvas, true);
-        imagesavealpha($canvas, false);
-        imagecopy(
+        BrandedQrStickerLogoRaster::compositeOnGd(
             $canvas,
-            $resized,
+            $logoPath,
             $frame['logo_x'],
             $frame['logo_y'],
-            0,
-            0,
             $targetW,
             $targetH,
         );
-        imagedestroy($resized);
     }
 
     public static function drawOnImagick(Imagick $canvas, string $logoPath, QrStickerTenantLogoPlacement $placement): void
@@ -63,32 +52,21 @@ final class BrandedQrStickerTenantLogoRenderer
             return;
         }
 
-        $cachedLogo = QrStickerRasterCache::imagickSource($logoPath);
-        if ($cachedLogo === null) {
-            return;
+        $logo = QrStickerRasterCache::gdSource($logoPath);
+        if ($logo === false) {
+            $cachedLogo = QrStickerRasterCache::imagickSource($logoPath);
+            if ($cachedLogo === null) {
+                return;
+            }
+
+            $targetW = max(1, $cachedLogo->getImageWidth());
+            $targetH = max(1, $cachedLogo->getImageHeight());
+            [$targetW, $targetH] = self::fitSize($targetW, $targetH);
+        } else {
+            [$targetW, $targetH] = self::fitSize(imagesx($logo), imagesy($logo));
         }
 
-        $logo = clone $cachedLogo;
-
-        $maxLogoW = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_WIDTH_PX
-            - BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
-        $maxLogoH = Avery62x89StickerArtworkLayout::TENANT_LOGO_MAX_HEIGHT_PX
-            - BrandedQrStickerSurfaceFrame::verticalOverheadPx();
-
-        $logo->resizeImage(
-            max(1, $maxLogoW),
-            max(1, $maxLogoH),
-            Imagick::FILTER_LANCZOS,
-            1,
-            true,
-        );
-        $logo->setImageAlphaChannel(Imagick::ALPHACHANNEL_ACTIVATE);
-
-        $frame = self::frameLayout(
-            $placement,
-            $logo->getImageWidth(),
-            $logo->getImageHeight(),
-        );
+        $frame = self::frameLayout($placement, $targetW, $targetH);
 
         BrandedQrStickerSurfaceFrame::drawOnImagick(
             $canvas,
@@ -98,8 +76,14 @@ final class BrandedQrStickerTenantLogoRenderer
             $frame['box_height'],
         );
 
-        $canvas->compositeImage($logo, Imagick::COMPOSITE_OVER, $frame['logo_x'], $frame['logo_y']);
-        $logo->clear();
+        BrandedQrStickerLogoRaster::compositeOnImagick(
+            $canvas,
+            $logoPath,
+            $frame['logo_x'],
+            $frame['logo_y'],
+            $targetW,
+            $targetH,
+        );
     }
 
     /**
@@ -178,42 +162,5 @@ final class BrandedQrStickerTenantLogoRenderer
             max(1, (int) round($width * $scale)),
             max(1, (int) round($height * $scale)),
         ];
-    }
-
-    private static function resizeLogoPreservingAlphaGd(GdImage $logo, int $targetW, int $targetH): GdImage|false
-    {
-        $resized = imagecreatetruecolor($targetW, $targetH);
-        if ($resized === false) {
-            return false;
-        }
-
-        imagealphablending($resized, false);
-        imagesavealpha($resized, true);
-        $transparent = imagecolorallocatealpha($resized, 0, 0, 0, 127);
-        if ($transparent === false) {
-            imagedestroy($resized);
-
-            return false;
-        }
-
-        imagefill($resized, 0, 0, $transparent);
-        imagealphablending($resized, true);
-        imagesavealpha($resized, true);
-        imagealphablending($logo, true);
-        imagesavealpha($logo, true);
-        imagecopyresampled(
-            $resized,
-            $logo,
-            0,
-            0,
-            0,
-            0,
-            $targetW,
-            $targetH,
-            imagesx($logo),
-            imagesy($logo),
-        );
-
-        return $resized;
     }
 }
