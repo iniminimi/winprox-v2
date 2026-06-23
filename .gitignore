@@ -8,6 +8,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
+/storage/app/municipal-promo-letters
 /vendor
 .env
 .env.backup
