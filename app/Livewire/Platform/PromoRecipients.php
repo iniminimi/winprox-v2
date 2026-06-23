@@ -50,7 +50,10 @@ class PromoRecipients extends Component
         $this->reset(['label', 'note']);
         $this->expandedRecipientId = (int) $recipient->id;
 
-        $this->redirect(route('platform.promo-recipients.qr', $recipient), navigate: true);
+        $this->dispatch(
+            'promo-recipient-qr-download',
+            url: route('platform.promo-recipients.qr', $recipient),
+        );
     }
 
     public function toggleRecipient(int $recipientId): void

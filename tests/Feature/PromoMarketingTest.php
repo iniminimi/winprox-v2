@@ -88,6 +88,22 @@ it('blokkeert promo-bestemmelingen voor normale gebruikers', function () {
         ->assertForbidden();
 });
 
+it('downloadt promo-bestemmeling QR als PNG', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_1122334455667788',
+        'label' => 'Club QR',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->actingAs($superuser)
+        ->get(route('platform.promo-recipients.qr', $recipient))
+        ->assertOk()
+        ->assertHeader('Content-Type', 'image/png')
+        ->assertHeader('Content-Disposition', 'attachment; filename="winprox-promo-club-qr.png"');
+});
+
 it('maakt bestemmeling aan via action met audit', function () {
     $superuser = User::factory()->superuser()->create();
 

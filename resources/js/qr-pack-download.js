@@ -63,5 +63,22 @@ export async function wpDownloadQrPackUrl(url) {
     );
 }
 
+export async function wpDownloadPromoQrUrl(url) {
+    await wpDownloadAuthenticatedFile(url, 'image/png,*/*');
+}
+
+function wpHandlePromoRecipientQrDownload({ url }) {
+    if (! url) {
+        return;
+    }
+
+    void wpDownloadPromoQrUrl(url);
+}
+
+document.addEventListener('livewire:init', () => {
+    Livewire.on('promo-recipient-qr-download', wpHandlePromoRecipientQrDownload);
+}, { once: true });
+
 window.wpDownloadAuthenticatedFile = wpDownloadAuthenticatedFile;
 window.wpDownloadQrPackUrl = wpDownloadQrPackUrl;
+window.wpDownloadPromoQrUrl = wpDownloadPromoQrUrl;
