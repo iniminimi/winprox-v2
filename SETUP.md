@@ -140,6 +140,8 @@ npm run dev
 
 ### Gemeente-promobrieven (productie)
 
+Volledige werkwijze: **`docs/gemeente-promo.md`**.
+
 Genereer brieven **op de productieserver** zodat promo-QR’s naar `APP_URL` wijzen en `promo_recipients` in de productie-database komen.
 
 1. `git pull` op de server (na deploy)
