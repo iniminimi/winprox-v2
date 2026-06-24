@@ -103,6 +103,7 @@
         "note": "Note (optional)",
         "create_submit": "Save and download QR",
         "list_title": "Recipients",
+        "list_count": ":count recipients",
         "list_empty": "No recipients yet.",
         "visit_count": ":count visits",
         "video_count": ":count videos",

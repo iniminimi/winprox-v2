@@ -103,6 +103,7 @@
         "note": "Nota (facoltativa)",
         "create_submit": "Salva e scarica QR",
         "list_title": "Destinatari",
+        "list_count": ":count destinatari",
         "list_empty": "Nessun destinatario ancora.",
         "visit_count": ":count visite",
         "video_count": ":count video",

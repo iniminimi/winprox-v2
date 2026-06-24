@@ -25,6 +25,12 @@ class PromoRecipients extends Component
 
     public ?int $expandedRecipientId = null;
 
+    public bool $anonymousOpen = false;
+
+    public bool $createOpen = false;
+
+    public bool $listOpen = false;
+
     public function mount(): void
     {
         $this->authorize('managePromoRecipients', User::class);
@@ -48,6 +54,7 @@ class PromoRecipients extends Component
         );
 
         $this->reset(['label', 'note']);
+        $this->listOpen = true;
         $this->expandedRecipientId = (int) $recipient->id;
 
         $this->dispatch(
@@ -59,6 +66,16 @@ class PromoRecipients extends Component
     public function toggleRecipient(int $recipientId): void
     {
         $this->expandedRecipientId = $this->expandedRecipientId === $recipientId ? null : $recipientId;
+    }
+
+    public function toggleSection(string $section): void
+    {
+        match ($section) {
+            'anonymous' => $this->anonymousOpen = ! $this->anonymousOpen,
+            'create' => $this->createOpen = ! $this->createOpen,
+            'list' => $this->listOpen = ! $this->listOpen,
+            default => null,
+        };
     }
 
     public function render()

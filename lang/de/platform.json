@@ -103,6 +103,7 @@
         "note": "Notiz (optional)",
         "create_submit": "Speichern und QR herunterladen",
         "list_title": "Empfänger",
+        "list_count": ":count Empfänger",
         "list_empty": "Noch keine Empfänger.",
         "visit_count": ":count Besuche",
         "video_count": ":count Videos",
