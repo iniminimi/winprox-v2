@@ -10,6 +10,27 @@ it('logt anonieme promo-bezoeken', function () {
         ->assertOk();
 
     expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(1);
+
+    $this->get(route('promo'))
+        ->assertOk();
+
+    expect(PromoVisit::query()->whereNull('promo_recipient_id')->count())->toBe(1);
+});
+
+it('logt één promo-bezoek per scan-burst voor bestemmeling', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_aaaaaaaaaaaaaaaa',
+        'label' => 'Burst Test',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
+    $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
+    $this->get(route('promo'))->assertOk();
+
+    expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1);
 });
 
 it('logt promo-bezoeken per bestemmeling via ref', function () {
@@ -23,6 +44,8 @@ it('logt promo-bezoeken per bestemmeling via ref', function () {
 
     $this->get(route('promo', ['ref' => $recipient->token]))
         ->assertOk();
+
+    $this->travel(3)->minutes();
 
     $this->get(route('promo'))
         ->assertOk();
@@ -41,6 +64,9 @@ it('onthoudt ref in sessie na taalwissel op promo', function () {
     ]);
 
     $this->get(route('promo', ['ref' => $recipient->token]))->assertOk();
+
+    $this->travel(3)->minutes();
+
     $this->get(route('promo'))->assertOk();
 
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(2);
