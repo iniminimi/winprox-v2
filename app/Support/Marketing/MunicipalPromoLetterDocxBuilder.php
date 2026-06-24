@@ -21,6 +21,10 @@ final class MunicipalPromoLetterDocxBuilder
 
     private const QR_IMAGE_HEIGHT_CM = 3.0;
 
+    private const CLOSING_TABLE_WIDTH_CM = 16.0;
+
+    private const CLOSING_TABLE_COLUMN_CM = 8.0;
+
     private const BULLET_LIST_STYLE = 'municipalPromoLetterBullets';
 
     public function build(
@@ -156,16 +160,16 @@ final class MunicipalPromoLetterDocxBuilder
             'borderSize' => 0,
             'borderColor' => 'FFFFFF',
             'cellMargin' => 0,
-            'width' => Converter::cmToTwip(16),
+            'width' => Converter::cmToTwip(self::CLOSING_TABLE_WIDTH_CM),
             'unit' => 'dxa',
         ]);
 
         $table->addRow();
-        $textCell = $table->addCell(Converter::cmToTwip(12.5), [
+        $textCell = $table->addCell(Converter::cmToTwip(self::CLOSING_TABLE_COLUMN_CM), [
             'valign' => 'top',
             'borderSize' => 0,
         ]);
-        $qrCell = $table->addCell(Converter::cmToTwip(3.5), [
+        $qrCell = $table->addCell(Converter::cmToTwip(self::CLOSING_TABLE_COLUMN_CM), [
             'valign' => 'center',
             'borderSize' => 0,
         ]);
