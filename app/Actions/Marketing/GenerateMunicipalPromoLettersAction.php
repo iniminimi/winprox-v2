@@ -8,6 +8,7 @@ use App\Data\Marketing\MunicipalPromoLetterData;
 use App\Models\PromoRecipient;
 use App\Support\Marketing\FlemishMunicipalitiesSpreadsheetReader;
 use App\Support\Marketing\MunicipalPromoLetterDocxBuilder;
+use App\Support\Marketing\PromoBaseUrl;
 use App\Support\Marketing\PromoLandingUrl;
 use RuntimeException;
 
@@ -32,12 +33,14 @@ class GenerateMunicipalPromoLettersAction
         string $outputDirectory,
         string $flowImagePath,
         int $actorUserId,
+        string $promoBaseUrl,
         ?int $limit = null,
         bool $overwriteExisting = false,
     ): array {
         $spreadsheetPath = $this->resolvePath($spreadsheetPath);
         $outputDirectory = $this->resolvePath($outputDirectory);
         $flowImagePath = $this->resolvePath($flowImagePath);
+        $promoBaseUrl = PromoBaseUrl::resolve($promoBaseUrl);
 
         if (! is_dir($outputDirectory) && ! mkdir($outputDirectory, 0777, true) && ! is_dir($outputDirectory)) {
             throw new RuntimeException("Unable to create output directory: {$outputDirectory}");
@@ -64,7 +67,10 @@ class GenerateMunicipalPromoLettersAction
                 $recipientsCreated++;
             }
 
-            $promoUrl = PromoLandingUrl::forRecipientToken($recipient['recipient']->token);
+            $promoUrl = PromoLandingUrl::forRecipientTokenOnBaseUrl(
+                $recipient['recipient']->token,
+                $promoBaseUrl,
+            );
 
             $this->letterBuilder->build(
                 municipality: $municipality,

@@ -9,6 +9,7 @@
 /storage/*.key
 /storage/pail
 /storage/app/municipal-promo-letters
+/storage/app/municipal-promo-letters.zip
 /vendor
 .env
 .env.backup

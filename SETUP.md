@@ -138,6 +138,29 @@ npm run build
 npm run dev
 ```
 
+### Gemeente-promobrieven (productie)
+
+Genereer brieven **op de productieserver** zodat promo-QR’s naar `APP_URL` wijzen en `promo_recipients` in de productie-database komen.
+
+1. `git pull` op de server (na deploy)
+2. Upload `Vlaanderen_lokale_besturen.xlsx` tijdelijk naar de server (niet in git)
+3. Test eerst:
+
+```bash
+php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_besturen.xlsx --limit=2 --force --zip
+```
+
+4. Volledige run:
+
+```bash
+php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_besturen.xlsx --force --zip
+```
+
+5. Download `storage/app/municipal-promo-letters.zip` naar je pc (SFTP/SCP)
+6. Verwijder spreadsheet en zip op de server als je klaar bent
+
+Lokaal draaien met localhost-QR wordt standaard geweigerd. Alleen voor tests: `--allow-localhost-promo-url`.
+
 ## Problemen?
 
 - **Tests falen met “could not find driver (sqlite)”** — PHPUnit gebruikt vaak SQLite in memory; installeer `pdo_sqlite` of pas de test-DB-config aan.

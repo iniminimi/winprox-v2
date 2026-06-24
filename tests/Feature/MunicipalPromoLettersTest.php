@@ -43,6 +43,7 @@ it('genereert een lokale gemeentebrief met unieke promo-bestemmeling', function 
         outputDirectory: $outputDirectory,
         flowImagePath: base_path('public/images/promo/flow.jpg'),
         actorUserId: (int) $superuser->id,
+        promoBaseUrl: 'https://winprox.test',
         limit: 1,
         overwriteExisting: true,
     );
@@ -57,4 +58,18 @@ it('genereert een lokale gemeentebrief met unieke promo-bestemmeling', function 
 
     array_map(static fn (string $file): bool => unlink($file), $files);
     @rmdir($outputDirectory);
+});
+
+it('weigert gemeentebrief-generatie met localhost promo-url', function () {
+    $path = municipalSpreadsheetFixturePath();
+    if (! is_file($path)) {
+        $this->markTestSkipped('Spreadsheet fixture ontbreekt lokaal.');
+    }
+
+    $this->artisan('marketing:generate-municipal-letters', [
+        'spreadsheet' => $path,
+        '--promo-base-url' => 'http://localhost',
+        '--limit' => 1,
+        '--force' => true,
+    ])->assertFailed();
 });
