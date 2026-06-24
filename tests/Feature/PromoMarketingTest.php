@@ -1,9 +1,11 @@
 <?php
 
+use App\Livewire\Platform\PromoRecipients;
 use App\Models\PromoRecipient;
 use App\Models\PromoVideoPlay;
 use App\Models\PromoVisit;
 use App\Models\User;
+use Livewire\Livewire;
 
 it('logt anonieme promo-bezoeken', function () {
     $this->get(route('promo'))
@@ -109,6 +111,58 @@ it('logt video-play maximaal een keer per bestemmeling', function () {
 it('weigert video-tracking zonder bestemmeling-sessie', function () {
     $this->postJson(route('promo.track.video'), ['video_key' => 'issue'])
         ->assertNotFound();
+});
+
+it('toont statistieken bestemmelingen gesorteerd op bezoeken', function () {
+    $superuser = User::factory()->superuser()->create();
+    $low = PromoRecipient::query()->create([
+        'token' => 'prm_cccccccccccccccc',
+        'label' => 'Laag',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+    $high = PromoRecipient::query()->create([
+        'token' => 'prm_dddddddddddddddd',
+        'label' => 'Hoog',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+    PromoRecipient::query()->create([
+        'token' => 'prm_eeeeeeeeeeeeeeee',
+        'label' => 'Geen bezoeken',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    PromoVisit::query()->create([
+        'promo_recipient_id' => $low->id,
+        'locale' => 'nl',
+        'visited_at' => now(),
+    ]);
+    PromoVisit::query()->create([
+        'promo_recipient_id' => $high->id,
+        'locale' => 'nl',
+        'visited_at' => now(),
+    ]);
+    PromoVisit::query()->create([
+        'promo_recipient_id' => $high->id,
+        'locale' => 'en',
+        'visited_at' => now(),
+    ]);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoRecipients::class)
+        ->set('statsOpen', true)
+        ->assertSee('Hoog')
+        ->assertSee('Laag')
+        ->assertDontSee('Geen bezoeken');
+
+    $html = Livewire::actingAs($superuser)
+        ->test(PromoRecipients::class)
+        ->set('statsOpen', true)
+        ->html();
+
+    expect(mb_strpos($html, 'Hoog'))->toBeLessThan(mb_strpos($html, 'Laag'));
 });
 
 it('laat superuser promo-bestemmelingen beheren', function () {

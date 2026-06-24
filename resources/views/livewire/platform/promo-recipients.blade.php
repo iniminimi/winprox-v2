@@ -53,6 +53,49 @@
         @endif
     </div>
 
+    <div class="wp-card wp-faq-item {{ $statsOpen ? 'is-open' : '' }}">
+        <button
+            type="button"
+            class="wp-faq-trigger"
+            wire:click="toggleSection('stats')"
+            aria-expanded="{{ $statsOpen ? 'true' : 'false' }}"
+        >
+            <div class="wp-grow wp-stack-tight">
+                <p class="wp-subhead">{{ __('platform.promo_recipients.stats_title') }}</p>
+                @unless ($statsOpen)
+                    <p class="wp-muted">
+                        @if ($recipientStats->isEmpty())
+                            {{ __('platform.promo_recipients.stats_empty') }}
+                        @else
+                            {{ __('platform.promo_recipients.stats_summary', ['count' => $recipientStats->count()]) }}
+                        @endif
+                    </p>
+                @endunless
+            </div>
+            <span class="wp-faq-icon" aria-hidden="true">{{ $statsOpen ? '−' : '+' }}</span>
+        </button>
+
+        @if ($statsOpen)
+            <div class="wp-faq-panel wp-card-pad wp-stack">
+                @if ($recipientStats->isEmpty())
+                    <p class="wp-muted">{{ __('platform.promo_recipients.stats_empty') }}</p>
+                @else
+                    <div class="wp-list wp-list--entity-rows">
+                        @foreach ($recipientStats as $recipient)
+                            <div class="wp-list-row" wire:key="stats-{{ $recipient->id }}">
+                                <p class="wp-text-body">
+                                    {{ $recipient->label }},
+                                    {{ __('platform.promo_recipients.visit_count', ['count' => $recipient->visits_count]) }},
+                                    {{ __('platform.promo_recipients.video_count', ['count' => $recipient->video_plays_count]) }}
+                                </p>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        @endif
+    </div>
+
     <div class="wp-card wp-faq-item {{ $createOpen ? 'is-open' : '' }}">
         <button
             type="button"

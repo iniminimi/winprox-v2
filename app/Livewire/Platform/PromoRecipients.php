@@ -27,6 +27,8 @@ class PromoRecipients extends Component
 
     public bool $anonymousOpen = false;
 
+    public bool $statsOpen = false;
+
     public bool $createOpen = false;
 
     public bool $listOpen = false;
@@ -72,6 +74,7 @@ class PromoRecipients extends Component
     {
         match ($section) {
             'anonymous' => $this->anonymousOpen = ! $this->anonymousOpen,
+            'stats' => $this->statsOpen = ! $this->statsOpen,
             'create' => $this->createOpen = ! $this->createOpen,
             'list' => $this->listOpen = ! $this->listOpen,
             default => null,
@@ -96,6 +99,13 @@ class PromoRecipients extends Component
             ->whereNull('promo_recipient_id')
             ->count();
 
+        $recipientStats = PromoRecipient::query()
+            ->withCount(['visits', 'videoPlays'])
+            ->whereHas('visits')
+            ->orderByDesc('visits_count')
+            ->orderBy('label')
+            ->get();
+
         $expandedVisits = collect();
         if ($this->expandedRecipientId !== null) {
             $expandedVisits = PromoVisit::query()
@@ -109,6 +119,7 @@ class PromoRecipients extends Component
             'recipients' => $recipients,
             'anonymousVisitCount' => $anonymousVisitCount,
             'anonymousVisits' => $anonymousVisits,
+            'recipientStats' => $recipientStats,
             'expandedVisits' => $expandedVisits,
             'anonymousPromoUrl' => PromoLandingUrl::anonymous(),
         ]);
