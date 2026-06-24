@@ -114,7 +114,11 @@
         "show_visits": "Statistics",
         "hide_visits": "Hide",
         "visits_empty": "No visits yet.",
-        "download_qr": "Download QR"
+        "download_qr": "Download QR",
+        "email_sent": "Email sent (:campaign) on :date",
+        "email_failed": "Email failed (:campaign)",
+        "email_pending": "Email queued (:campaign)",
+        "email_not_sent": "No email sent"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

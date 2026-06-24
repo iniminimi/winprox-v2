@@ -114,7 +114,11 @@
         "show_visits": "Estadísticas",
         "hide_visits": "Ocultar",
         "visits_empty": "Aún no hay visitas.",
-        "download_qr": "Descargar QR"
+        "download_qr": "Descargar QR",
+        "email_sent": "Correo enviado (:campaign) el :date",
+        "email_failed": "Correo fallido (:campaign)",
+        "email_pending": "Correo en cola (:campaign)",
+        "email_not_sent": "Sin correo enviado"
     },
     "manual_screenshots": {
         "nav": "Capturas de pantalla",

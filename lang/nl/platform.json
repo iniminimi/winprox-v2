@@ -114,7 +114,11 @@
         "show_visits": "Statistieken",
         "hide_visits": "Verberg",
         "visits_empty": "Nog geen bezoeken.",
-        "download_qr": "QR downloaden"
+        "download_qr": "QR downloaden",
+        "email_sent": "E-mail verstuurd (:campaign) op :date",
+        "email_failed": "E-mail mislukt (:campaign)",
+        "email_pending": "E-mail in wachtrij (:campaign)",
+        "email_not_sent": "Geen e-mail verstuurd"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

@@ -85,7 +85,7 @@ class PromoRecipients extends Component
     {
         $recipients = PromoRecipient::query()
             ->withCount(['visits', 'videoPlays'])
-            ->with(['videoPlays'])
+            ->with(['videoPlays', 'latestSentEmailSend', 'latestEmailSendAttempt'])
             ->latest('id')
             ->get();
 

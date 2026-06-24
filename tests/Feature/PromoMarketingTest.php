@@ -1,6 +1,8 @@
 <?php
 
+use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Livewire\Platform\PromoRecipients;
+use App\Models\MunicipalPromoEmailSend;
 use App\Models\PromoRecipient;
 use App\Models\PromoVideoPlay;
 use App\Models\PromoVisit;
@@ -172,6 +174,35 @@ it('laat superuser promo-bestemmelingen beheren', function () {
         ->get(route('platform.promo-recipients'))
         ->assertOk()
         ->assertSee(__('platform.promo_recipients.title'));
+});
+
+it('toont e-mailstatus per bestemmeling', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_bbbbbbbbbbbbbbbb',
+        'label' => 'Aalter',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    MunicipalPromoEmailSend::query()->create([
+        'campaign' => 'wave-1',
+        'promo_recipient_id' => $recipient->id,
+        'municipality_name' => 'Aalter',
+        'recipient_email' => 'gemeente@aalter.be',
+        'docx_filename' => '9880_aalter.docx',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now()->setDate(2026, 6, 24)->setTime(14, 30),
+        'created_by' => $superuser->id,
+    ]);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoRecipients::class)
+        ->set('listOpen', true)
+        ->assertSee(__('platform.promo_recipients.email_sent', [
+            'campaign' => 'wave-1',
+            'date' => '24-06-2026 14:30',
+        ]));
 });
 
 it('blokkeert promo-bestemmelingen voor normale gebruikers', function () {

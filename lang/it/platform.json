@@ -114,7 +114,11 @@
         "show_visits": "Statistiche",
         "hide_visits": "Nascondi",
         "visits_empty": "Nessuna visita ancora.",
-        "download_qr": "Scarica QR"
+        "download_qr": "Scarica QR",
+        "email_sent": "Email inviata (:campaign) il :date",
+        "email_failed": "Email non riuscita (:campaign)",
+        "email_pending": "Email in coda (:campaign)",
+        "email_not_sent": "Nessuna email inviata"
     },
     "manual_screenshots": {
         "nav": "Screenshot",

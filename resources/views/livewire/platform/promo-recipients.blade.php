@@ -191,6 +191,24 @@
                                             ·
                                             {{ __('platform.promo_recipients.video_count', ['count' => $recipient->video_plays_count]) }}
                                         </p>
+                                        <p class="wp-muted wp-text-sm">
+                                            @if ($recipient->latestSentEmailSend)
+                                                {{ __('platform.promo_recipients.email_sent', [
+                                                    'campaign' => $recipient->latestSentEmailSend->campaign,
+                                                    'date' => $recipient->latestSentEmailSend->sent_at?->format('d-m-Y H:i'),
+                                                ]) }}
+                                            @elseif ($recipient->latestEmailSendAttempt?->status?->value === 'failed')
+                                                {{ __('platform.promo_recipients.email_failed', [
+                                                    'campaign' => $recipient->latestEmailSendAttempt->campaign,
+                                                ]) }}
+                                            @elseif ($recipient->latestEmailSendAttempt?->status?->value === 'pending')
+                                                {{ __('platform.promo_recipients.email_pending', [
+                                                    'campaign' => $recipient->latestEmailSendAttempt->campaign,
+                                                ]) }}
+                                            @else
+                                                {{ __('platform.promo_recipients.email_not_sent') }}
+                                            @endif
+                                        </p>
                                         @if ($recipient->videoPlays->isNotEmpty())
                                             <p class="wp-muted wp-text-sm">
                                                 {{ __('platform.promo_recipients.videos_played') }}:
