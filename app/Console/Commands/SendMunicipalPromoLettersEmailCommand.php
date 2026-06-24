@@ -74,7 +74,7 @@ class SendMunicipalPromoLettersEmailCommand extends Command
         );
 
         if ($this->option('audit')) {
-            $this->renderAudit($candidates);
+            $this->renderAudit($candidates, $spreadsheet);
 
             return self::SUCCESS;
         }
@@ -179,12 +179,19 @@ class SendMunicipalPromoLettersEmailCommand extends Command
     /**
      * @param  list<MunicipalPromoEmailCandidateData>  $candidates
      */
-    private function renderAudit(array $candidates): void
-    {
+    private function renderAudit(
+        array $candidates,
+        string $spreadsheetPath,
+    ): void {
         $counts = [];
         $ready = 0;
+        $withEmailInSheet = 0;
 
         foreach ($candidates as $candidate) {
+            if ($candidate->recipientEmail !== '') {
+                $withEmailInSheet++;
+            }
+
             if ($candidate->isReady()) {
                 $ready++;
                 continue;
@@ -194,9 +201,22 @@ class SendMunicipalPromoLettersEmailCommand extends Command
             $counts[$reason] = ($counts[$reason] ?? 0) + 1;
         }
 
+        $reader = app(\App\Support\Marketing\FlemishMunicipalitiesSpreadsheetReader::class);
+        $headers = $reader->detectedHeaderKeys(
+            str_starts_with($spreadsheetPath, DIRECTORY_SEPARATOR) || preg_match('/^[A-Za-z]:[\\\\\\/]/', $spreadsheetPath) === 1
+                ? $spreadsheetPath
+                : base_path($spreadsheetPath),
+        );
+
         $this->info('Audit gemeente-promomails');
+        $this->line('Spreadsheet-kolommen: '.implode(', ', $headers));
         $this->line('Totaal in selectie: '.count($candidates));
+        $this->line('Met e-mail in spreadsheet: '.$withEmailInSheet);
         $this->line('Verzendbaar: '.$ready);
+
+        if ($withEmailInSheet === 0 && count($candidates) > 0) {
+            $this->warn('Geen e-mails uit Excel gelezen. Controleer: git pull (fix e_mail-kolom) en kolom "e-mail" in rij 1.');
+        }
 
         foreach ($counts as $reason => $count) {
             $this->line($this->blockReasonLabel($reason).': '.$count);

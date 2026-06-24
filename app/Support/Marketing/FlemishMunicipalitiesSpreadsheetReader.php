@@ -174,8 +174,72 @@ final class FlemishMunicipalitiesSpreadsheetReader
             municipality: $values['gemeente'] ?? $name,
             province: $values['provincie'] ?? '',
             phone: $this->nullable($values['telefoon'] ?? null),
-            email: $this->nullable($values['e_mail'] ?? $values['e-mail'] ?? ($values['email'] ?? null)),
+            email: $this->resolveEmail($values),
         );
+    }
+
+    /**
+     * @param  array<string, string>  $values
+     */
+    public function resolveEmail(array $values): ?string
+    {
+        foreach (['e_mail', 'e-mail', 'email', 'e_mailadres', 'mail', 'emailadres'] as $key) {
+            $candidate = $this->nullable($values[$key] ?? null);
+            if ($candidate !== null) {
+                return $candidate;
+            }
+        }
+
+        foreach ($values as $key => $value) {
+            if (! str_contains($key, 'mail')) {
+                continue;
+            }
+
+            $candidate = $this->nullable($value);
+            if ($candidate !== null && filter_var($candidate, FILTER_VALIDATE_EMAIL) !== false) {
+                return $candidate;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function detectedHeaderKeys(string $absolutePath): array
+    {
+        if (! is_file($absolutePath)) {
+            throw new RuntimeException("Spreadsheet not found: {$absolutePath}");
+        }
+
+        $zip = new ZipArchive();
+        if ($zip->open($absolutePath) !== true) {
+            throw new RuntimeException("Unable to open spreadsheet: {$absolutePath}");
+        }
+
+        try {
+            $sharedStrings = $this->readSharedStrings($zip);
+            $sheetXml = $zip->getFromName('xl/worksheets/sheet1.xml');
+            if ($sheetXml === false) {
+                throw new RuntimeException('Worksheet sheet1.xml not found in spreadsheet.');
+            }
+
+            $sheet = new SimpleXMLElement($sheetXml);
+            $sheet->registerXPathNamespace('m', 'http://schemas.openxmlformats.org/spreadsheetml/2006/main');
+            $rows = $sheet->xpath('//m:sheetData/m:row') ?: [];
+            if ($rows === []) {
+                return [];
+            }
+
+            $rows[0]->registerXPathNamespace('m', 'http://schemas.openxmlformats.org/spreadsheetml/2006/main');
+            $cells = $this->readRowCells($rows[0], $sharedStrings);
+            $headerMap = $this->buildHeaderMap($cells);
+
+            return array_values(array_unique(array_filter($headerMap)));
+        } finally {
+            $zip->close();
+        }
     }
 
     private function normalizeHeader(string $header): string
