@@ -108,6 +108,8 @@ Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen me
 
 **Afzender:** `dominique.schaepdrijver@winprox.app` (configureerbaar via `WINPROX_MUNICIPAL_PROMO_EMAIL_FROM`).
 
+Gemeente-mails gebruiken een **eigen SMTP-mailer** (`municipal_promo`): inlog als Dominique, zelfde `MAIL_PASSWORD` als `info@`. Alle andere app-mails blijven via `MAIL_USERNAME=info@winprox.app`.
+
 ### Werkwijze (veilig)
 
 ```bash
