@@ -9,8 +9,6 @@ use App\Models\PromoRecipient;
 use App\Support\Marketing\FlemishMunicipalitiesSpreadsheetReader;
 use App\Support\Marketing\MunicipalPromoLetterDocxBuilder;
 use App\Support\Marketing\PromoLandingUrl;
-use Carbon\CarbonInterface;
-use Illuminate\Support\Carbon;
 use RuntimeException;
 
 class GenerateMunicipalPromoLettersAction
@@ -36,12 +34,10 @@ class GenerateMunicipalPromoLettersAction
         int $actorUserId,
         ?int $limit = null,
         bool $overwriteExisting = false,
-        ?CarbonInterface $letterDate = null,
     ): array {
         $spreadsheetPath = $this->resolvePath($spreadsheetPath);
         $outputDirectory = $this->resolvePath($outputDirectory);
         $flowImagePath = $this->resolvePath($flowImagePath);
-        $letterDate ??= Carbon::now();
 
         if (! is_dir($outputDirectory) && ! mkdir($outputDirectory, 0777, true) && ! is_dir($outputDirectory)) {
             throw new RuntimeException("Unable to create output directory: {$outputDirectory}");
@@ -74,7 +70,6 @@ class GenerateMunicipalPromoLettersAction
                 municipality: $municipality,
                 promoUrl: $promoUrl,
                 flowImagePath: $flowImagePath,
-                letterDate: $letterDate,
                 outputPath: $outputPath,
             );
 

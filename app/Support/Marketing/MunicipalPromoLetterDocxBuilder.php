@@ -6,7 +6,6 @@ namespace App\Support\Marketing;
 
 use App\Data\Marketing\MunicipalPromoLetterData;
 use App\Support\Qr\QrCodePngWriter;
-use Carbon\CarbonInterface;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\SimpleType\Jc;
@@ -14,17 +13,18 @@ use RuntimeException;
 
 final class MunicipalPromoLetterDocxBuilder
 {
-    private const BODY_FONT_PT = 8.5;
+    private const BODY_FONT_PT = 11;
 
-    private const FLOW_IMAGE_WIDTH_CM = 15.5;
+    private const FLOW_IMAGE_WIDTH_CM = 14.0;
 
-    private const QR_IMAGE_WIDTH_CM = 3.2;
+    private const QR_IMAGE_WIDTH_CM = 3.5;
+
+    private const BULLET_LIST_STYLE = 'municipalPromoLetterBullets';
 
     public function build(
         MunicipalPromoLetterData $municipality,
         string $promoUrl,
         string $flowImagePath,
-        CarbonInterface $letterDate,
         string $outputPath,
     ): void {
         if (! is_file($flowImagePath)) {
@@ -50,16 +50,26 @@ final class MunicipalPromoLetterDocxBuilder
         $phpWord = new PhpWord;
         $phpWord->setDefaultFontName('Arial');
         $phpWord->setDefaultFontSize(self::BODY_FONT_PT);
+        $phpWord->addNumberingStyle(self::BULLET_LIST_STYLE, [
+            'type' => 'hybridMultilevel',
+            'levels' => [
+                [
+                    'format' => 'bullet',
+                    'text' => '•',
+                    'left' => Converter::cmToTwip(0.5),
+                    'hanging' => Converter::cmToTwip(0.35),
+                    'tabPos' => Converter::cmToTwip(0.85),
+                    'start' => 1,
+                    'alignment' => 'left',
+                ],
+            ],
+        ]);
 
         $section = $phpWord->addSection([
             'marginTop' => Converter::cmToTwip(1.0),
             'marginBottom' => Converter::cmToTwip(0.8),
             'marginLeft' => Converter::cmToTwip(2.0),
             'marginRight' => Converter::cmToTwip(2.0),
-        ]);
-
-        $this->addParagraph($section, 'Datum: '.$this->formatDutchDate($letterDate), [
-            'spaceAfter' => 80,
         ]);
 
         foreach ($municipality->addressLines() as $line) {
@@ -99,32 +109,17 @@ final class MunicipalPromoLetterDocxBuilder
             'spaceBefore' => 40,
         ]);
 
-        foreach ($this->advantageLines() as $line) {
-            $this->addParagraph($section, $line, [
-                'spaceAfter' => 20,
-            ]);
+        foreach ($this->advantageLines() as [$label, $body]) {
+            $this->addBulletItem($section, $label, $body);
         }
 
         $this->addParagraph(
             $section,
-            'Ik kom dit systeem graag in 15 minuten aan u demonstreren. Via de onderstaande QR-code kunt u alvast korte demonstratievideo\'s bekijken die de werking in de praktijk tonen.',
-            ['spaceAfter' => 60],
+            'Ik kom dit systeem graag in 15 minuten aan u demonstreren. Via de QR-code hiernaast kunt u alvast korte demonstratievideo\'s bekijken die de werking in de praktijk tonen.',
+            ['spaceAfter' => 60, 'spaceBefore' => 40],
         );
 
-        $section->addImage($qrPngPath, [
-            'width' => Converter::cmToPixel(self::QR_IMAGE_WIDTH_CM),
-            'alignment' => Jc::CENTER,
-        ]);
-
-        $this->addParagraph($section, 'Met vriendelijke groet,', [
-            'spaceBefore' => 80,
-            'spaceAfter' => 40,
-        ]);
-        $this->addParagraph($section, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
-        $this->addParagraph($section, 'Oprichter / Architect WinProx', ['spaceAfter' => 0]);
-        $this->addParagraph($section, 'gsm: 0494/840854', ['spaceAfter' => 0]);
-        $this->addParagraph($section, 'info@winprox.app', ['spaceAfter' => 0]);
-        $this->addParagraph($section, 'www.winprox.app', ['spaceAfter' => 0]);
+        $this->addClosingWithQr($section, $qrPngPath);
 
         try {
             $this->saveToPath($phpWord, $outputPath);
@@ -135,6 +130,53 @@ final class MunicipalPromoLetterDocxBuilder
                 }
             }
         }
+    }
+
+    private function addClosingWithQr(\PhpOffice\PhpWord\Element\Section $section, string $qrPngPath): void
+    {
+        $table = $section->addTable([
+            'borderSize' => 0,
+            'borderColor' => 'FFFFFF',
+            'cellMargin' => 0,
+            'width' => Converter::cmToTwip(17),
+            'unit' => 'dxa',
+        ]);
+
+        $table->addRow();
+        $textCell = $table->addCell(Converter::cmToTwip(11.5), [
+            'valign' => 'top',
+            'borderSize' => 0,
+        ]);
+        $qrCell = $table->addCell(Converter::cmToTwip(5.5), [
+            'valign' => 'center',
+            'borderSize' => 0,
+        ]);
+
+        $this->addCellParagraph($textCell, 'Met vriendelijke groet,', ['spaceAfter' => 60]);
+        $this->addCellParagraph($textCell, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
+        $this->addCellParagraph($textCell, 'Oprichter / Architect WinProx', ['spaceAfter' => 0]);
+        $this->addCellParagraph($textCell, 'gsm: 0494/840854', ['spaceAfter' => 0]);
+        $this->addCellParagraph($textCell, 'info@winprox.app', ['spaceAfter' => 0]);
+        $this->addCellParagraph($textCell, 'www.winprox.app', ['spaceAfter' => 0]);
+
+        $qrCell->addImage($qrPngPath, [
+            'width' => Converter::cmToPixel(self::QR_IMAGE_WIDTH_CM),
+            'alignment' => Jc::END,
+        ]);
+    }
+
+    private function addBulletItem(\PhpOffice\PhpWord\Element\Section $section, string $label, string $body): void
+    {
+        $item = $section->addListItemRun(0, self::BULLET_LIST_STYLE);
+        $item->addText($label.': ', [
+            'name' => 'Arial',
+            'size' => self::BODY_FONT_PT,
+            'bold' => true,
+        ]);
+        $item->addText($body, [
+            'name' => 'Arial',
+            'size' => self::BODY_FONT_PT,
+        ]);
     }
 
     /**
@@ -153,29 +195,31 @@ final class MunicipalPromoLetterDocxBuilder
     }
 
     /**
-     * @return list<string>
+     * @param  array{bold?: bool, spaceAfter?: int, spaceBefore?: int}  $style
+     */
+    private function addCellParagraph(\PhpOffice\PhpWord\Element\Cell $cell, string $text, array $style = []): void
+    {
+        $cell->addText($text, [
+            'name' => 'Arial',
+            'size' => self::BODY_FONT_PT,
+            'bold' => (bool) ($style['bold'] ?? false),
+        ], [
+            'spaceAfter' => $style['spaceAfter'] ?? 40,
+            'spaceBefore' => $style['spaceBefore'] ?? 0,
+        ]);
+    }
+
+    /**
+     * @return list<array{0: string, 1: string}>
      */
     private function advantageLines(): array
     {
         return [
-            'Centraal beheer: alle meldingen en uitgevoerde werken komen samen in één overzichtelijk systeem.',
-            'Efficiënter onderhoud: onderhoudsploegen scannen dezelfde QR-codes om taken af te handelen. Foto\'s en GPS-locaties worden automatisch geregistreerd. Navigatie naar de exacte locatie via Google Maps is geïntegreerd, ook in bos- en natuurgebieden.',
-            'Inclusieve communicatie: het platform ondersteunt automatische AI-vertaling van meldingen, taken en mededelingen naar zes talen.',
-            'Naadloze integratie: bestaande gegevens kunnen eenvoudig worden geïmporteerd via CSV of gekoppeld via API\'s en webhooks. Dynamische QR-codes kunnen worden afgedrukt in de huisstijl van de gemeente.',
+            ['Centraal beheer', 'alle meldingen en uitgevoerde werken komen samen in één overzichtelijk systeem.'],
+            ['Efficiënter onderhoud', 'onderhoudsploegen scannen dezelfde QR-codes om taken af te handelen. Foto\'s en GPS-locaties worden automatisch geregistreerd. Navigatie naar de exacte locatie via Google Maps is geïntegreerd, ook in bos- en natuurgebieden.'],
+            ['Inclusieve communicatie', 'het platform ondersteunt automatische AI-vertaling van meldingen, taken en mededelingen naar zes talen.'],
+            ['Naadloze integratie', 'bestaande gegevens kunnen eenvoudig worden geïmporteerd via CSV of gekoppeld via API\'s en webhooks. Dynamische QR-codes kunnen worden afgedrukt in de huisstijl van de gemeente.'],
         ];
-    }
-
-    private function formatDutchDate(CarbonInterface $date): string
-    {
-        $months = [
-            1 => 'januari', 2 => 'februari', 3 => 'maart', 4 => 'april',
-            5 => 'mei', 6 => 'juni', 7 => 'juli', 8 => 'augustus',
-            9 => 'september', 10 => 'oktober', 11 => 'november', 12 => 'december',
-        ];
-
-        $month = $months[(int) $date->format('n')] ?? $date->format('F');
-
-        return sprintf('%s %s %s', $date->format('j'), $month, $date->format('Y'));
     }
 
     private function saveToPath(PhpWord $phpWord, string $outputPath): void
