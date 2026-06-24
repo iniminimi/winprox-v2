@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Models\PromoRecipient;
 use App\Support\Marketing\PromoRecipientSession;
+use App\Support\Marketing\PromoVisitScannerDetector;
 use App\Support\Marketing\PromoVisitSession;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Contracts\View\View;
@@ -48,6 +49,10 @@ class PromoController extends Controller
         }
 
         if (in_array($request->headers->get('Sec-Purpose'), ['prefetch', 'prerender'], true)) {
+            return false;
+        }
+
+        if (PromoVisitScannerDetector::isAutomatedFetch($request->userAgent())) {
             return false;
         }
 

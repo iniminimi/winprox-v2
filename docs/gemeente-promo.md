@@ -74,8 +74,9 @@ php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_b
 1. QR opent `/promo?ref=prm_…`
 2. `ref` wordt in de sessie bewaard (ook na taalwissel).
 3. **Eén bezoek** per scan (dedupe binnen 2 minuten tegen dubbele requests).
-4. Promo-pagina toont welkomst met gemeentenaam + video's.
-5. Afspelen van video's kan apart getrackt worden per bestemmeling.
+4. **Mailscanners** (Safe Links, Proofpoint, …) en bekende HTTP-bots worden **niet** geteld (`PromoVisitScannerDetector`).
+5. Promo-pagina toont welkomst met gemeentenaam + video's.
+6. Afspelen van video's kan apart getrackt worden per bestemmeling.
 
 ### 5. Resultaten bekijken
 
@@ -97,6 +98,7 @@ Als superuser: **Platform → Promo-bestemmelingen**
 | Adresregels / bestandsnaam | `app/Data/Marketing/MunicipalPromoLetterData.php` |
 | Promo-pagina + welkomstkader | `resources/views/promo.blade.php` |
 | Bezoek-logging | `app/Http/Controllers/PromoController.php` |
+| Mailscanner-filter | `app/Support/Marketing/PromoVisitScannerDetector.php` |
 | Dedupe bij scan | `app/Actions/Marketing/RecordPromoVisitAction.php` |
 | E-mail verzenden | `app/Console/Commands/SendMunicipalPromoLettersEmailCommand.php` |
 

@@ -51,6 +51,22 @@ it('toont gemeentenaam in welkomstkader bij promo via ref', function () {
         ->assertSee(__('promo.recipient_welcome', ['municipality' => 'Aalter']), false);
 });
 
+it('logt geen promo-bezoek bij bekende mailscanner user-agent', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_scanner0000001',
+        'label' => 'Scanner Test',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->withHeader('User-Agent', 'Proofpoint URL Defense')
+        ->get(route('promo', ['ref' => $recipient->token]))
+        ->assertOk();
+
+    expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(0);
+});
+
 it('logt promo-bezoeken per bestemmeling via ref', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([
