@@ -13,9 +13,9 @@ use RuntimeException;
 
 final class MunicipalPromoLetterDocxBuilder
 {
-    private const BODY_FONT_PT = 12;
+    private const BODY_FONT_PT = 11;
 
-    private const FLOW_IMAGE_WIDTH_CM = 14.0;
+    private const FLOW_IMAGE_WIDTH_CM = 9.8;
 
     private const QR_IMAGE_WIDTH_CM = 3.5;
 
@@ -66,9 +66,9 @@ final class MunicipalPromoLetterDocxBuilder
         ]);
 
         $section = $phpWord->addSection([
-            'marginTop' => Converter::cmToTwip(1.0),
+            'marginTop' => Converter::cmToTwip(2.0),
             'marginBottom' => Converter::cmToTwip(0.8),
-            'marginLeft' => Converter::cmToTwip(2.0),
+            'marginLeft' => Converter::cmToTwip(3.0),
             'marginRight' => Converter::cmToTwip(2.0),
         ]);
 
@@ -154,12 +154,12 @@ final class MunicipalPromoLetterDocxBuilder
             'borderSize' => 0,
             'borderColor' => 'FFFFFF',
             'cellMargin' => 0,
-            'width' => Converter::cmToTwip(17),
+            'width' => Converter::cmToTwip(16),
             'unit' => 'dxa',
         ]);
 
         $table->addRow();
-        $textCell = $table->addCell(Converter::cmToTwip(11.5), [
+        $textCell = $table->addCell(Converter::cmToTwip(10.5), [
             'valign' => 'top',
             'borderSize' => 0,
         ]);
@@ -260,5 +260,30 @@ final class MunicipalPromoLetterDocxBuilder
 
         $writer = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
         $writer->save($outputPath);
+        $this->stripTableBorders($outputPath);
+    }
+
+    private function stripTableBorders(string $outputPath): void
+    {
+        $zip = new \ZipArchive();
+        if ($zip->open($outputPath) !== true) {
+            throw new RuntimeException('Unable to open generated DOCX for border sanitizing.');
+        }
+
+        try {
+            $documentXml = $zip->getFromName('word/document.xml');
+            if ($documentXml === false) {
+                throw new RuntimeException('Generated DOCX is missing word/document.xml.');
+            }
+
+            $documentXml = preg_replace('/<w:tblBorders>.*?<\/w:tblBorders>/s', '', $documentXml) ?? $documentXml;
+            $documentXml = preg_replace('/<w:tcBorders>.*?<\/w:tcBorders>/s', '', $documentXml) ?? $documentXml;
+
+            if ($zip->addFromString('word/document.xml', $documentXml) === false) {
+                throw new RuntimeException('Unable to patch word/document.xml in generated DOCX.');
+            }
+        } finally {
+            $zip->close();
+        }
     }
 }
