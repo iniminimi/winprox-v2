@@ -30,8 +30,7 @@ final class MunicipalPromoLetterData
     public function addressLines(): array
     {
         return array_values(array_filter([
-            $this->name,
-            'T.a.v. het college',
+            'T.a.v. het college '.$this->name,
             $this->streetAddress,
             trim($this->postalCode.' '.$this->municipality),
         ], static fn (string $line): bool => $line !== ''));

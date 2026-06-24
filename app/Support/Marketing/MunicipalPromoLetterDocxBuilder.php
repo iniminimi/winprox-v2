@@ -72,6 +72,9 @@ final class MunicipalPromoLetterDocxBuilder
             'marginRight' => Converter::cmToTwip(2.0),
         ]);
 
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
+
         foreach ($municipality->addressLines() as $line) {
             $this->addParagraph($section, $line, ['spaceAfter' => 0]);
         }
@@ -86,12 +89,23 @@ final class MunicipalPromoLetterDocxBuilder
         $this->addBlankLine($section);
         $this->addBlankLine($section);
 
-        $this->addParagraph($section, 'Geacht college van '.$municipality->name.',', [
+        $this->addParagraph($section, 'Geachte,', [
             'spaceAfter' => 0,
         ]);
 
         $this->addBlankLine($section);
         $this->addBlankLine($section);
+
+        $this->addParagraph(
+            $section,
+            'Het beheer van publieke infrastructuur kan uitdagend zijn, maar het kan ook eenvoudig en efficiënt.   Graag stel ik u WinProx voor, een platform dat beheer digitaliseert via slimme QR-technologie.',
+            ['spaceAfter' => 120],
+        );
+        $this->addParagraph(
+            $section,
+            'De essentie is heel simpel :',
+            ['spaceAfter' => 0],
+        );
 
         $section->addImage($flowImagePath, [
             'width' => Converter::cmToPixel(self::FLOW_IMAGE_WIDTH_CM),
@@ -100,18 +114,8 @@ final class MunicipalPromoLetterDocxBuilder
 
         $this->addParagraph(
             $section,
-            'Het beheer van publieke infrastructuur kan uitdagend zijn, maar het kan ook eenvoudig en efficiënt.   Graag stel ik u WinProx voor, een platform dat beheer digitaliseert via slimme QR-technologie.',
-            ['spaceAfter' => 120, 'spaceBefore' => 80],
-        );
-        $this->addParagraph(
-            $section,
-            'De essentie is heel simpel :',
-            ['spaceAfter' => 0],
-        );
-        $this->addParagraph(
-            $section,
             'Zonder app-installatie kunnen burgers of medewerkers een object of locatie scannen en direct een melding maken met foto’s.   Op het geopende portaal kunnen documenten en mededelingen geraadpleegd worden.',
-            ['spaceAfter' => 120],
+            ['spaceAfter' => 120, 'spaceBefore' => 80],
         );
 
         $this->addParagraph($section, 'De voordelen voor de gemeente:', [
