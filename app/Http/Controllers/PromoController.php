@@ -37,6 +37,7 @@ class PromoController extends Controller
 
         return view('promo', [
             'promoTrackingToken' => $recipient?->token,
+            'promoRecipientLabel' => $recipient?->label,
         ]);
     }
 

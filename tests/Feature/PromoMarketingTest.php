@@ -33,6 +33,20 @@ it('logt één promo-bezoek per scan-burst voor bestemmeling', function () {
     expect(PromoVisit::query()->where('promo_recipient_id', $recipient->id)->count())->toBe(1);
 });
 
+it('toont gemeentenaam in welkomstkader bij promo via ref', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = PromoRecipient::query()->create([
+        'token' => 'prm_bbbbbbbbbbbbbbbb',
+        'label' => 'Aalter',
+        'note' => null,
+        'created_by' => $superuser->id,
+    ]);
+
+    $this->get(route('promo', ['ref' => $recipient->token]))
+        ->assertOk()
+        ->assertSee(__('promo.recipient_welcome', ['municipality' => 'Aalter']), false);
+});
+
 it('logt promo-bezoeken per bestemmeling via ref', function () {
     $superuser = User::factory()->superuser()->create();
     $recipient = PromoRecipient::query()->create([

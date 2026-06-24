@@ -29,6 +29,14 @@
             @include('partials.wp-lang-switch', ['variant' => 'inline'])
         </div>
 
+        @if (! empty($promoRecipientLabel))
+            <div class="wp-promo-recipient-welcome" role="status">
+                <p class="wp-promo-recipient-welcome__text">
+                    {{ __('promo.recipient_welcome', ['municipality' => $promoRecipientLabel]) }}
+                </p>
+            </div>
+        @endif
+
         <div class="wp-promo-panel-dark">
             <h1 class="wp-promo-panel-title">{{ __('promo.title') }}</h1>
             <p class="wp-promo-panel-lead">{{ __('promo.tagline') }}</p>
