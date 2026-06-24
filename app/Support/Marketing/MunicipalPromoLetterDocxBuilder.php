@@ -13,7 +13,7 @@ use RuntimeException;
 
 final class MunicipalPromoLetterDocxBuilder
 {
-    private const BODY_FONT_PT = 11;
+    private const BODY_FONT_PT = 12;
 
     private const FLOW_IMAGE_WIDTH_CM = 14.0;
 
@@ -73,51 +73,67 @@ final class MunicipalPromoLetterDocxBuilder
         ]);
 
         foreach ($municipality->addressLines() as $line) {
-            $this->addParagraph($section, $line, [
-                'spaceAfter' => 0,
-            ]);
+            $this->addParagraph($section, $line, ['spaceAfter' => 0]);
         }
 
-        $this->addParagraph($section, '', ['spaceAfter' => 120]);
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
+
         $this->addParagraph($section, 'Betreft: Efficiënter beheer van de publieke ruimte.', [
-            'bold' => true,
-            'spaceAfter' => 120,
-        ]);
-        $this->addParagraph($section, 'Geacht college van '.$municipality->name.',', [
-            'spaceAfter' => 80,
+            'spaceAfter' => 0,
         ]);
 
-        $this->addParagraph(
-            $section,
-            'Het beheer van publieke infrastructuur kan uitdagend zijn, maar het kan ook eenvoudig en efficiënt. Graag stel ik u WinProx voor, een platform dat beheer digitaliseert via slimme QR-technologie.',
-            ['spaceAfter' => 60],
-        );
-        $this->addParagraph(
-            $section,
-            'De essentie is heel simpel: zonder app-installatie kunnen burgers of medewerkers een object of locatie scannen en direct een melding maken met foto\'s. Op het geopende portaal kunnen documenten en mededelingen geraadpleegd worden.',
-            ['spaceAfter' => 60],
-        );
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
+
+        $this->addParagraph($section, 'Geacht college van '.$municipality->name.',', [
+            'spaceAfter' => 0,
+        ]);
+
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
 
         $section->addImage($flowImagePath, [
             'width' => Converter::cmToPixel(self::FLOW_IMAGE_WIDTH_CM),
             'alignment' => Jc::CENTER,
         ]);
 
+        $this->addParagraph(
+            $section,
+            'Het beheer van publieke infrastructuur kan uitdagend zijn, maar het kan ook eenvoudig en efficiënt.   Graag stel ik u WinProx voor, een platform dat beheer digitaliseert via slimme QR-technologie.',
+            ['spaceAfter' => 120, 'spaceBefore' => 80],
+        );
+        $this->addParagraph(
+            $section,
+            'De essentie is heel simpel :',
+            ['spaceAfter' => 0],
+        );
+        $this->addParagraph(
+            $section,
+            'Zonder app-installatie kunnen burgers of medewerkers een object of locatie scannen en direct een melding maken met foto’s.   Op het geopende portaal kunnen documenten en mededelingen geraadpleegd worden.',
+            ['spaceAfter' => 120],
+        );
+
         $this->addParagraph($section, 'De voordelen voor de gemeente:', [
             'bold' => true,
-            'spaceAfter' => 40,
-            'spaceBefore' => 40,
+            'spaceAfter' => 60,
         ]);
 
         foreach ($this->advantageLines() as [$label, $body]) {
             $this->addBulletItem($section, $label, $body);
         }
 
+        $this->addBlankLine($section);
+
         $this->addParagraph(
             $section,
-            'Ik kom dit systeem graag in 15 minuten aan u demonstreren. Via de QR-code hiernaast kunt u alvast korte demonstratievideo\'s bekijken die de werking in de praktijk tonen.',
-            ['spaceAfter' => 60, 'spaceBefore' => 40],
+            'Ik kom dit systeem graag in 15 minuten aan u demonstreren. Via de onderstaande QR-code kunt u alvast korte demonstratievideo’s bekijken die de werking in de praktijk tonen.',
+            ['spaceAfter' => 0],
         );
+
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
+        $this->addBlankLine($section);
 
         $this->addClosingWithQr($section, $qrPngPath);
 
@@ -152,10 +168,12 @@ final class MunicipalPromoLetterDocxBuilder
             'borderSize' => 0,
         ]);
 
-        $this->addCellParagraph($textCell, 'Met vriendelijke groet,', ['spaceAfter' => 60]);
+        $this->addCellParagraph($textCell, 'Met vriendelijke groet,', ['spaceAfter' => 0]);
+        $this->addCellBlankLine($textCell);
+        $this->addCellBlankLine($textCell);
         $this->addCellParagraph($textCell, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'Oprichter / Architect WinProx', ['spaceAfter' => 0]);
-        $this->addCellParagraph($textCell, 'gsm: 0494/840854', ['spaceAfter' => 0]);
+        $this->addCellParagraph($textCell, 'gsm : 0494/840854', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'info@winprox.app', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'www.winprox.app', ['spaceAfter' => 0]);
 
@@ -168,15 +186,26 @@ final class MunicipalPromoLetterDocxBuilder
     private function addBulletItem(\PhpOffice\PhpWord\Element\Section $section, string $label, string $body): void
     {
         $item = $section->addListItemRun(0, self::BULLET_LIST_STYLE);
-        $item->addText($label.': ', [
+        $item->addText($label.':', [
             'name' => 'Arial',
             'size' => self::BODY_FONT_PT,
             'bold' => true,
         ]);
+        $item->addTextBreak();
         $item->addText($body, [
             'name' => 'Arial',
             'size' => self::BODY_FONT_PT,
         ]);
+    }
+
+    private function addBlankLine(\PhpOffice\PhpWord\Element\Section $section): void
+    {
+        $this->addParagraph($section, '', ['spaceAfter' => 0]);
+    }
+
+    private function addCellBlankLine(\PhpOffice\PhpWord\Element\Cell $cell): void
+    {
+        $this->addCellParagraph($cell, '', ['spaceAfter' => 0]);
     }
 
     /**
@@ -215,10 +244,10 @@ final class MunicipalPromoLetterDocxBuilder
     private function advantageLines(): array
     {
         return [
-            ['Centraal beheer', 'alle meldingen en uitgevoerde werken komen samen in één overzichtelijk systeem.'],
-            ['Efficiënter onderhoud', 'onderhoudsploegen scannen dezelfde QR-codes om taken af te handelen. Foto\'s en GPS-locaties worden automatisch geregistreerd. Navigatie naar de exacte locatie via Google Maps is geïntegreerd, ook in bos- en natuurgebieden.'],
-            ['Inclusieve communicatie', 'het platform ondersteunt automatische AI-vertaling van meldingen, taken en mededelingen naar zes talen.'],
-            ['Naadloze integratie', 'bestaande gegevens kunnen eenvoudig worden geïmporteerd via CSV of gekoppeld via API\'s en webhooks. Dynamische QR-codes kunnen worden afgedrukt in de huisstijl van de gemeente.'],
+            ['Centraal beheer', 'Alle meldingen en uitgevoerde werken komen samen in één overzichtelijk systeem.'],
+            ['Efficiënter onderhoud', 'Onderhoudsploegen scannen dezelfde QR-codes om taken af te handelen. Foto’s en GPS-locaties worden automatisch geregistreerd. Navigatie naar de exacte locatie via Google Maps is geïntegreerd, ook in bos- en natuurgebieden.'],
+            ['Inclusieve communicatie', 'Het platform ondersteunt automatische AI-vertaling van meldingen, taken en mededelingen naar zes talen, zodat informatie toegankelijk blijft voor zowel bezoekers als anderstalige medewerkers en uitvoerders.'],
+            ['Naadloze integratie', 'Bestaande gegevens kunnen eenvoudig worden geïmporteerd via CSV of gekoppeld via API’s en webhooks. Dynamische QR-codes kunnen worden afgedrukt in de huisstijl van de gemeente.'],
         ];
     }
 
