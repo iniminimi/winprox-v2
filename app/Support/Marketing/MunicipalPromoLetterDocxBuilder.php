@@ -17,7 +17,9 @@ final class MunicipalPromoLetterDocxBuilder
 
     private const FLOW_IMAGE_WIDTH_CM = 9.8;
 
-    private const QR_IMAGE_WIDTH_CM = 3.5;
+    private const QR_IMAGE_WIDTH_CM = 3.0;
+
+    private const QR_IMAGE_HEIGHT_CM = 3.0;
 
     private const BULLET_LIST_STYLE = 'municipalPromoLetterBullets';
 
@@ -72,14 +74,10 @@ final class MunicipalPromoLetterDocxBuilder
             'marginRight' => Converter::cmToTwip(2.0),
         ]);
 
-        $this->addBlankLine($section);
-        $this->addBlankLine($section);
-
         foreach ($municipality->addressLines() as $line) {
             $this->addParagraph($section, $line, ['spaceAfter' => 0]);
         }
 
-        $this->addBlankLine($section);
         $this->addBlankLine($section);
 
         $this->addParagraph($section, 'Betreft: Efficiënter beheer van de publieke ruimte.', [
@@ -120,7 +118,7 @@ final class MunicipalPromoLetterDocxBuilder
 
         $this->addParagraph($section, 'De voordelen voor de gemeente:', [
             'bold' => true,
-            'spaceAfter' => 60,
+            'spaceAfter' => 40,
         ]);
 
         foreach ($this->advantageLines() as [$label, $body]) {
@@ -163,11 +161,11 @@ final class MunicipalPromoLetterDocxBuilder
         ]);
 
         $table->addRow();
-        $textCell = $table->addCell(Converter::cmToTwip(10.5), [
+        $textCell = $table->addCell(Converter::cmToTwip(12.5), [
             'valign' => 'top',
             'borderSize' => 0,
         ]);
-        $qrCell = $table->addCell(Converter::cmToTwip(5.5), [
+        $qrCell = $table->addCell(Converter::cmToTwip(3.5), [
             'valign' => 'center',
             'borderSize' => 0,
         ]);
@@ -183,13 +181,17 @@ final class MunicipalPromoLetterDocxBuilder
 
         $qrCell->addImage($qrPngPath, [
             'width' => Converter::cmToPixel(self::QR_IMAGE_WIDTH_CM),
-            'alignment' => Jc::END,
+            'height' => Converter::cmToPixel(self::QR_IMAGE_HEIGHT_CM),
+            'alignment' => Jc::START,
         ]);
     }
 
     private function addBulletItem(\PhpOffice\PhpWord\Element\Section $section, string $label, string $body): void
     {
-        $item = $section->addListItemRun(0, self::BULLET_LIST_STYLE);
+        $item = $section->addListItemRun(0, self::BULLET_LIST_STYLE, [
+            'spaceAfter' => 24,
+            'spaceBefore' => 0,
+        ]);
         $item->addText($label.':', [
             'name' => 'Arial',
             'size' => self::BODY_FONT_PT,
