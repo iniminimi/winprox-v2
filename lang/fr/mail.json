@@ -39,5 +39,20 @@
         "field_description": "Description",
         "open_issue": "Voir le signalement",
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
+    },
+    "municipal_promo_letter": {
+        "subject": "Slimmer beheer van publieke ruimte in :municipality",
+        "greeting": "Geachte,",
+        "intro": "Hoe kunnen we het beheer van de publieke ruimte en interne infrastructuur in :municipality nog efficiënter maken?",
+        "body_1": "Met WinProx digitaliseren we dit proces via slimme QR-technologie. De essentie is eenvoudig: burgers en medewerkers scannen een object, melden direct een defect (inclusief foto's) en de onderhoudsploeg kan meteen aan de slag. Zonder dat daar een app-installatie voor nodig is.",
+        "body_2": "In de bijgevoegde brief vindt u meer informatie over hoe wij gemeentebesturen helpen om onderhoudstaken sneller en foutloos af te handelen.",
+        "body_3": "Graag kom ik dit in een korte demo van 15 minuten toelichten.",
+        "body_4_html": "<a href=\":url\" style=\"color:#059669;font-weight:600;\">Klik hier</a> om alvast enkele video's te bekijken.",
+        "body_4_text": "Klik hier om alvast enkele video's te bekijken: :url",
+        "closing": "Met vriendelijke groet,",
+        "signer_name": "Dominique Schaepdrijver",
+        "signer_title": "Oprichter / Architect WinProx",
+        "phone": "0494/840854",
+        "footer": "WinProx — slim facility management"
     }
 }

@@ -163,6 +163,8 @@ php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_b
 
 Lokaal draaien met localhost-QR wordt standaard geweigerd. Alleen voor tests: `--allow-localhost-promo-url`.
 
+E-mail na brieven: zie **`docs/gemeente-promo.md`** (sectie *E-mail naar gemeentebesturen*). Eerst `--audit` en `--dry-run`.
+
 ## Problemen?
 
 - **Tests falen met “could not find driver (sqlite)”** — PHPUnit gebruikt vaak SQLite in memory; installeer `pdo_sqlite` of pas de test-DB-config aan.

@@ -98,6 +98,48 @@ Als superuser: **Platform → Promo-bestemmelingen**
 | Promo-pagina + welkomstkader | `resources/views/promo.blade.php` |
 | Bezoek-logging | `app/Http/Controllers/PromoController.php` |
 | Dedupe bij scan | `app/Actions/Marketing/RecordPromoVisitAction.php` |
+| E-mail verzenden | `app/Console/Commands/SendMunicipalPromoLettersEmailCommand.php` |
+
+---
+
+## E-mail naar gemeentebesturen
+
+Na het genereren van de DOCX-brieven kun je per gemeente een e-mail versturen met **dezelfde brief als bijlage** en een **unieke promo-link** in de mailtekst (`Klik hier` → `/promo?ref=…`).
+
+**Afzender:** `dominique.schaepdrijver@winprox.app` (configureerbaar via `WINPROX_MUNICIPAL_PROMO_EMAIL_FROM`).
+
+### Werkwijze (veilig)
+
+```bash
+# 1. Audit — hoeveel verzendbaar, wat ontbreekt?
+php artisan marketing:send-municipal-promo-emails storage/app/Vlaanderen_lokale_besturen.xlsx --audit
+
+# 2. Dry-run — lijst gemeente, e-mail, DOCX, promo-URL
+php artisan marketing:send-municipal-promo-emails storage/app/Vlaanderen_lokale_besturen.xlsx --dry-run --limit=10
+
+# 3. Test naar jezelf (sync, 1 gemeente)
+php artisan marketing:send-municipal-promo-emails storage/app/Vlaanderen_lokale_besturen.xlsx \
+  --send --sync --confirm --limit=1 --override-to=jouw@adres.be --municipality=Aalter
+
+# 4. Gedoseerde verzending via queue (productie)
+php artisan marketing:send-municipal-promo-emails storage/app/Vlaanderen_lokale_besturen.xlsx \
+  --send --confirm --delay-seconds=90
+```
+
+Zorg dat **`php artisan queue:work`** draait bij queue-verzending (standaard, zonder `--sync`).
+
+Verzonden mails worden gelogd in `municipal_promo_email_sends` (campagne `wave-1` standaard). Reeds verzonden gemeenten worden overgeslagen tenzij `--force`.
+
+| Optie | Gebruik |
+|-------|---------|
+| `--audit` | Alleen statistieken |
+| `--dry-run` | Tabel zonder verzenden |
+| `--send --confirm` | Echt versturen |
+| `--sync` | Direct versturen (kleine tests) |
+| `--override-to=` | Alle mails naar testadres |
+| `--delay-seconds=90` | Pauze tussen queue-jobs |
+| `--campaign=wave-1` | Campagne-id in log |
+| `--force` | Opnieuw versturen |
 
 ---
 
