@@ -38,6 +38,9 @@ it('leest Vlaamse gemeenten uit de spreadsheet', function () {
         ->and($rows[0]->name)->not->toBe('')
         ->and($rows[0]->streetAddress)->not->toBe('')
         ->and($rows[0]->postalCode)->not->toBe('');
+
+    $withEmail = collect($rows)->filter(static fn ($row): bool => $row->email !== null && $row->email !== '')->count();
+    expect($withEmail)->toBeGreaterThan(0, 'Geen e-mailadressen gelezen — controleer kolom e-mail in spreadsheet.');
 });
 
 it('genereert een lokale gemeentebrief met unieke promo-bestemmeling', function () {

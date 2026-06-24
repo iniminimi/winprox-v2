@@ -174,7 +174,7 @@ final class FlemishMunicipalitiesSpreadsheetReader
             municipality: $values['gemeente'] ?? $name,
             province: $values['provincie'] ?? '',
             phone: $this->nullable($values['telefoon'] ?? null),
-            email: $this->nullable($values['e-mail'] ?? ($values['email'] ?? null)),
+            email: $this->nullable($values['e_mail'] ?? $values['e-mail'] ?? ($values['email'] ?? null)),
         );
     }
 
