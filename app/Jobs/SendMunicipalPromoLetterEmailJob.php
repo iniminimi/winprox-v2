@@ -43,6 +43,7 @@ class SendMunicipalPromoLetterEmailJob implements ShouldQueue
             campaign: $this->campaign,
             municipalityFilter: $this->municipalityName,
             forceResend: $this->forceResend,
+            overrideRecipientEmail: $this->overrideRecipientEmail,
         );
 
         $candidate = $candidates[0] ?? null;

@@ -33,12 +33,17 @@ class ListMunicipalPromoEmailCandidatesAction
         ?int $limit = null,
         ?string $municipalityFilter = null,
         bool $forceResend = false,
+        ?string $overrideRecipientEmail = null,
     ): array {
         $spreadsheetPath = $this->resolvePath($spreadsheetPath);
         $lettersDirectory = $this->resolvePath($lettersDirectory);
         $promoBaseUrl = PromoBaseUrl::resolve($promoBaseUrl);
         $campaign = trim($campaign);
         $municipalityFilter = $municipalityFilter !== null ? trim($municipalityFilter) : null;
+        $overrideRecipientEmail = $overrideRecipientEmail !== null ? trim($overrideRecipientEmail) : null;
+        if ($overrideRecipientEmail === '') {
+            $overrideRecipientEmail = null;
+        }
 
         if ($campaign === '') {
             throw new RuntimeException('Campaign is required.');
@@ -69,9 +74,9 @@ class ListMunicipalPromoEmailCandidatesAction
                 municipality: $municipality,
                 lettersDirectory: $lettersDirectory,
                 promoBaseUrl: $promoBaseUrl,
-                campaign: $campaign,
                 sentMunicipalities: $sentMunicipalities,
                 forceResend: $forceResend,
+                overrideRecipientEmail: $overrideRecipientEmail,
             );
         }
 
@@ -85,9 +90,9 @@ class ListMunicipalPromoEmailCandidatesAction
         MunicipalPromoLetterData $municipality,
         string $lettersDirectory,
         string $promoBaseUrl,
-        string $campaign,
         array $sentMunicipalities,
         bool $forceResend,
+        ?string $overrideRecipientEmail = null,
     ): MunicipalPromoEmailCandidateData {
         $email = trim((string) ($municipality->email ?? ''));
         $docxPath = $lettersDirectory.DIRECTORY_SEPARATOR.$municipality->slug().'.docx';
@@ -104,6 +109,7 @@ class ListMunicipalPromoEmailCandidatesAction
             municipalityName: $municipality->name,
             sentMunicipalities: $sentMunicipalities,
             forceResend: $forceResend,
+            overrideRecipientEmail: $overrideRecipientEmail,
         );
 
         return new MunicipalPromoEmailCandidateData(
@@ -127,12 +133,19 @@ class ListMunicipalPromoEmailCandidatesAction
         string $municipalityName,
         array $sentMunicipalities,
         bool $forceResend,
+        ?string $overrideRecipientEmail = null,
     ): ?string {
-        if ($email === '') {
-            return MunicipalPromoEmailBlockReason::MISSING_EMAIL;
-        }
+        $deliveryEmail = $overrideRecipientEmail ?? $email;
 
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        if ($overrideRecipientEmail === null) {
+            if ($email === '') {
+                return MunicipalPromoEmailBlockReason::MISSING_EMAIL;
+            }
+
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                return MunicipalPromoEmailBlockReason::INVALID_EMAIL;
+            }
+        } elseif (filter_var($overrideRecipientEmail, FILTER_VALIDATE_EMAIL) === false) {
             return MunicipalPromoEmailBlockReason::INVALID_EMAIL;
         }
 
@@ -148,7 +161,7 @@ class ListMunicipalPromoEmailCandidatesAction
             return MunicipalPromoEmailBlockReason::ALREADY_SENT;
         }
 
-        if (EmailUnsubscribe::isUnsubscribed($email)) {
+        if (EmailUnsubscribe::isUnsubscribed($deliveryEmail)) {
             return MunicipalPromoEmailBlockReason::UNSUBSCRIBED;
         }
 

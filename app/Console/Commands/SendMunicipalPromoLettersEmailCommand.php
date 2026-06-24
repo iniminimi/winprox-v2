@@ -70,6 +70,7 @@ class SendMunicipalPromoLettersEmailCommand extends Command
             limit: $parsedLimit,
             municipalityFilter: $municipality !== '' ? $municipality : null,
             forceResend: $force,
+            overrideRecipientEmail: $overrideTo,
         );
 
         if ($this->option('audit')) {
@@ -102,9 +103,21 @@ class SendMunicipalPromoLettersEmailCommand extends Command
         ));
 
         if ($ready === []) {
-            $this->warn('Geen verzendbare gemeenten.');
+            if ($candidates === [] && $municipality !== '') {
+                $this->warn('Gemeente "'.$municipality.'" niet gevonden in spreadsheet.');
+            } else {
+                $this->warn('Geen verzendbare gemeenten.');
+                foreach ($candidates as $candidate) {
+                    $this->line(sprintf(
+                        '  - %s: %s',
+                        $candidate->municipality->name,
+                        $candidate->blockReason ?? 'onbekend',
+                    ));
+                }
+                $this->line('Tip: draai --dry-run voor details (DOCX-pad, promo-URL).');
+            }
 
-            return self::SUCCESS;
+            return self::FAILURE;
         }
 
         $fromAddress = (string) config('winprox.municipal_promo_email_from.address');
