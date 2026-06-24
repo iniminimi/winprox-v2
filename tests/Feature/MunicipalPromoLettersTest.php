@@ -11,6 +11,21 @@ function municipalSpreadsheetFixturePath(): string
     return base_path('tests/Vlaanderen_lokale_besturen.xlsx');
 }
 
+it('maakt bestandsnaam met postcode vooraan', function () {
+    $data = new \App\Data\Marketing\MunicipalPromoLetterData(
+        name: 'Aalter',
+        municipalityType: 'Stad',
+        streetAddress: 'Gemeentehuisstraat 1',
+        postalCode: '9880',
+        municipality: 'Aalter',
+        province: 'Oost-Vlaanderen',
+        phone: null,
+        email: null,
+    );
+
+    expect($data->slug())->toBe('9880_aalter');
+});
+
 it('leest Vlaamse gemeenten uit de spreadsheet', function () {
     $path = municipalSpreadsheetFixturePath();
     if (! is_file($path)) {

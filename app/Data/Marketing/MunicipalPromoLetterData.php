@@ -19,9 +19,15 @@ final class MunicipalPromoLetterData
 
     public function slug(): string
     {
-        $slug = preg_replace('/[^a-z0-9]+/i', '-', strtolower($this->name)) ?: 'gemeente';
+        $nameSlug = preg_replace('/[^a-z0-9]+/i', '-', strtolower($this->name)) ?: 'gemeente';
+        $nameSlug = str_replace('-', '_', trim($nameSlug, '-'));
 
-        return trim($slug, '-');
+        $postalCode = preg_replace('/\D/', '', $this->postalCode);
+        if ($postalCode === '') {
+            return $nameSlug;
+        }
+
+        return $postalCode.'_'.$nameSlug;
     }
 
     /**

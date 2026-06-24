@@ -58,7 +58,7 @@ php artisan marketing:generate-municipal-letters storage/app/Vlaanderen_lokale_b
 | Leest Excel | Naam, adres, provincie, type, … |
 | Zoekt of maakt `promo_recipient` | `label` = gemeentenaam (bv. *Aalter*) |
 | Bouwt promo-URL | `https://winprox.app/promo?ref=prm_…` |
-| Genereert DOCX | `storage/app/municipal-promo-letters/aalter.docx` |
+| Genereert DOCX | `storage/app/municipal-promo-letters/9880_aalter.docx` |
 | Optioneel ZIP | `storage/app/municipal-promo-letters.zip` |
 
 **Bestaande bestemmelingen** met dezelfde `label` worden **hergebruikt** (zelfde QR/token). Alleen nieuwe gemeenten krijgen een nieuw token.
