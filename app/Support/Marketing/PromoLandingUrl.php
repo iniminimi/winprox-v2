@@ -15,4 +15,11 @@ final class PromoLandingUrl
     {
         return route('promo', ['ref' => $token], absolute: true);
     }
+
+    public static function forRecipientTokenOnBaseUrl(string $token, string $baseUrl): string
+    {
+        $baseUrl = rtrim($baseUrl, '/');
+
+        return $baseUrl.'/promo?ref='.rawurlencode($token);
+    }
 }
