@@ -6,9 +6,11 @@
     />
 
     @if ($flashMessage)
-        <div class="wp-alert wp-alert--{{ $flashType === 'error' ? 'error' : 'success' }}">
-            {{ $flashMessage }}
-        </div>
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $flashType !== 'error',
+            'wp-flash--danger' => $flashType === 'error',
+        ])>{{ $flashMessage }}</div>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack">

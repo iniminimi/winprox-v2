@@ -12,9 +12,11 @@
     </p>
 
     @if ($flashMessage)
-        <div class="wp-alert wp-alert--{{ $flashType === 'error' ? 'error' : 'success' }}">
-            {{ $flashMessage }}
-        </div>
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $flashType !== 'error',
+            'wp-flash--danger' => $flashType === 'error',
+        ])>{{ $flashMessage }}</div>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack-tight">
@@ -91,6 +93,25 @@
         <p class="wp-subhead">{{ __('platform.promo_campaigns.import_title') }}</p>
         <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.import_lead') }}</p>
 
+        @if ($importNotice)
+            <div
+                id="import-feedback"
+                @class([
+                    'wp-flash',
+                    'wp-flash--success' => $importNoticeType !== 'error',
+                    'wp-flash--danger' => $importNoticeType === 'error',
+                ])
+            >{{ $importNotice }}</div>
+        @elseif ($latestImport)
+            <div class="wp-flash wp-flash--muted">
+                {{ __('platform.promo_campaigns.last_import', [
+                    'count' => $latestImport->row_count,
+                    'filename' => $latestImport->original_filename,
+                    'datetime' => $latestImport->imported_at?->format('d-m-Y H:i'),
+                ]) }}
+            </div>
+        @endif
+
         <form wire:submit="importSpreadsheet" class="wp-stack-tight">
             <div>
                 <label class="wp-label" for="spreadsheet">{{ __('platform.promo_campaigns.spreadsheet') }}</label>
@@ -111,7 +132,7 @@
                             <option value="{{ $header }}">{{ $header }}</option>
                         @endforeach
                     </select>
-                    @error('columnMapping.name') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('mapName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label class="wp-label">{{ __('platform.promo_campaigns.map_email') }}</label>
@@ -151,8 +172,10 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn--primary" wire:loading.attr="disabled">
-                {{ __('platform.promo_campaigns.import_submit') }}
+            <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="importSpreadsheet,spreadsheet">
+                <x-wp-spinner wire:loading wire:target="importSpreadsheet,spreadsheet" class="wp-mr-2" />
+                <span wire:loading.remove wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_submit') }}</span>
+                <span wire:loading wire:target="importSpreadsheet">{{ __('platform.promo_campaigns.import_loading') }}</span>
             </button>
         </form>
     </div>

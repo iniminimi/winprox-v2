@@ -68,6 +68,10 @@ class PromoCampaignEdit extends Component
 
     public string $flashType = 'success';
 
+    public ?string $importNotice = null;
+
+    public string $importNoticeType = 'success';
+
     public function mount(PromoCampaign $promoCampaign): void
     {
         $this->authorize('managePromoCampaigns', User::class);
@@ -77,6 +81,7 @@ class PromoCampaignEdit extends Component
 
     public function updatedSpreadsheet(): void
     {
+        $this->importNotice = null;
         $this->detectedHeaders = [];
         if ($this->spreadsheet === null) {
             return;
@@ -123,6 +128,8 @@ class PromoCampaignEdit extends Component
             return;
         }
 
+        $originalFilename = (string) $this->spreadsheet->getClientOriginalName();
+
         $storedPath = $this->spreadsheet->storeAs(
             'promo-campaigns/'.$this->campaign->slug.'/imports',
             now()->format('Ymd_His').'.xlsx',
@@ -134,17 +141,36 @@ class PromoCampaignEdit extends Component
         $result = $import->handle(
             campaign: $this->campaign,
             spreadsheetPath: $absolutePath,
-            originalFilename: (string) $this->spreadsheet->getClientOriginalName(),
+            originalFilename: $originalFilename,
             columnMapping: $this->columnMappingArray(),
             actorUserId: (int) $user->id,
         );
 
+        $targetCount = $result['target_count'];
+
         $this->spreadsheet = null;
+        $this->detectedHeaders = [];
         $this->campaign->refresh();
         $this->fillFromCampaign();
 
-        $this->flashType = 'success';
-        $this->flashMessage = __('platform.promo_campaigns.imported', ['count' => $result['target_count']]);
+        if ($targetCount > 0) {
+            $this->importNoticeType = 'success';
+            $this->importNotice = __('platform.promo_campaigns.imported_detail', [
+                'count' => $targetCount,
+                'filename' => $originalFilename,
+            ]);
+            $this->flashType = 'success';
+            $this->flashMessage = __('platform.promo_campaigns.imported', ['count' => $targetCount]);
+        } else {
+            $this->importNoticeType = 'error';
+            $this->importNotice = __('platform.promo_campaigns.imported_empty', [
+                'filename' => $originalFilename,
+            ]);
+            $this->flashType = 'error';
+            $this->flashMessage = $this->importNotice;
+        }
+
+        $this->dispatch('promo-campaign-import-done');
     }
 
     public function generateLetters(
@@ -267,6 +293,7 @@ class PromoCampaignEdit extends Component
             'flowImages' => $flowImages,
             'targets' => $targets,
             'stats' => $stats,
+            'latestImport' => $this->campaign->imports()->latest('id')->first(),
             'placeholders' => '{{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}',
         ]);
     }

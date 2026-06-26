@@ -5,6 +5,7 @@ use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
+use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignTarget;
@@ -12,6 +13,7 @@ use App\Models\User;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use App\Support\Qr\QrCodePngWriter;
+use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 
 function promoCampaignFixturePath(): string
@@ -71,6 +73,42 @@ it('importeert ontvangers in campagne', function () {
     expect($result['target_count'])->toBeGreaterThan(0)
         ->and(PromoCampaignTarget::query()->where('promo_campaign_id', $campaign->id)->count())
         ->toBe($result['target_count']);
+});
+
+it('toont importbevestiging na excel-upload in livewire', function () {
+    $path = promoCampaignFixturePath();
+    if (! is_file($path)) {
+        $this->markTestSkipped('Promo campaign fixture ontbreekt.');
+    }
+
+    $superuser = User::factory()->superuser()->create();
+
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-import-ui',
+        name: 'Import UI test',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $file = UploadedFile::fake()->createWithContent(
+        'sample.xlsx',
+        (string) file_get_contents($path),
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    );
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('spreadsheet', $file)
+        ->set('mapName', 'naam')
+        ->set('mapEmail', 'e-mail')
+        ->set('mapStreetAddress', 'adres')
+        ->set('mapPostalCode', 'postcode')
+        ->call('importSpreadsheet')
+        ->assertSet('importNoticeType', 'success')
+        ->assertSee(__('platform.promo_campaigns.imported_detail', [
+            'count' => PromoCampaignTarget::query()->where('promo_campaign_id', $campaign->id)->count(),
+            'filename' => 'sample.xlsx',
+        ]));
 });
 
 it('genereert docx voor campagne-ontvanger', function () {
