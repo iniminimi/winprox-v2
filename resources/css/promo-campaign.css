@@ -1,0 +1,23 @@
+.wp-promo-quill .ql-toolbar {
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-color: var(--wp-border, #e2e8f0);
+    background: #fff;
+}
+
+.wp-promo-quill .ql-container {
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-color: var(--wp-border, #e2e8f0);
+    background: #fff;
+    min-height: 12rem;
+    font-family: Arial, sans-serif;
+    font-size: 0.9375rem;
+}
+
+.wp-promo-quill .ql-editor {
+    min-height: 12rem;
+}
+
+.wp-promo-quill--tall .ql-container,
+.wp-promo-quill--tall .ql-editor {
+    min-height: 18rem;
+}

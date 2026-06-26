@@ -21,6 +21,7 @@
 @import './api-docs.css';
 @import './manual.css';
 @import './promo.css';
+@import './promo-campaign.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';

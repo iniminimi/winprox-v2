@@ -36,6 +36,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function managePromoCampaigns(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function captureManualScreenshots(User $user): bool
     {
         return $user->is_superuser;

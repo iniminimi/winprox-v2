@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests\Marketing;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+class CreatePromoCampaignRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function rules(): array
+    {
+        return self::ruleSet();
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function ruleSet(): array
+    {
+        return [
+            'slug' => ['required', 'string', 'max:64', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', Rule::unique('promo_campaigns', 'slug')],
+            'name' => ['required', 'string', 'max:255'],
+            'locale' => ['required', 'string', 'max:5'],
+        ];
+    }
+}

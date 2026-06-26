@@ -44,6 +44,8 @@ use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
 use App\Livewire\Platform\ManualScreenshots as PlatformManualScreenshots;
+use App\Livewire\Platform\PromoCampaignEdit;
+use App\Livewire\Platform\PromoCampaigns;
 use App\Livewire\Platform\PromoRecipients as PlatformPromoRecipients;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
 use App\Livewire\Platform\QrConnect;
@@ -144,6 +146,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/promo-qr/download', PromoQrDownloadController::class)
         ->middleware('superuser')
         ->name('platform.promo-qr.download');
+
+    Route::get('/platform/promo-campaigns', PromoCampaigns::class)
+        ->middleware('superuser')
+        ->name('platform.promo-campaigns');
+
+    Route::get('/platform/promo-campaigns/{promoCampaign}', PromoCampaignEdit::class)
+        ->middleware('superuser')
+        ->name('platform.promo-campaigns.edit');
 
     Route::get('/platform/promo-recipients', PlatformPromoRecipients::class)
         ->middleware('superuser')

@@ -147,7 +147,16 @@ Verzonden mails worden gelogd in `municipal_promo_email_sends` (campagne `wave-1
 
 ---
 
-## Opvolgbrief (later)
+## Promo-campagnes (platform)
+
+Superuser: **Platform → Promo-campagnes**
+
+Herbruikbare campagnes met Quill-editor, Excel-import (ontvangers in DB), DOCX-generatie en e-mailqueue.
+
+Tabellen: `promo_campaigns`, `promo_campaign_imports`, `promo_campaign_targets`, `promo_campaign_email_sends`.
+
+De bestaande artisan-flow voor Vlaanderen blijft beschikbaar.
+
 
 De **infrastructuur blijft hetzelfde**: zelfde `promo_recipients`, zelfde QR per gemeente, doorlopende statistieken.
 
