@@ -11,4 +11,11 @@ return [
         'issue_approve_briefing',
         'unit_categorie_gps_allow_issue_print_qr',
     ],
+
+    /*
+    | Tijdelijk verborgen promo-video's per locale (basename). Leegmaken na vervanging.
+    */
+    'promo_hidden_videos' => [
+        'nl' => ['issue', 'task'],
+    ],
 ];

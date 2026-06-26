@@ -2,7 +2,13 @@
     $locale = app()->getLocale();
 
     $promoVideosFor = function (array $items) use ($locale) {
-        return collect($items)->filter(function (array $item) use ($locale): bool {
+        $hidden = config('marketing.promo_hidden_videos.'.$locale, []);
+
+        return collect($items)->filter(function (array $item) use ($locale, $hidden): bool {
+            if (in_array($item['basename'], $hidden, true)) {
+                return false;
+            }
+
             $suffix = $item['suffix'] ?? '_01';
             $rel = "video/{$locale}/{$item['basename']}_{$locale}{$suffix}.mp4";
 
