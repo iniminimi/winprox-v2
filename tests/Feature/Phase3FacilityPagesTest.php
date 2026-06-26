@@ -42,6 +42,16 @@ it('toont beschikbare promo-video per locale', function () {
         ->assertSee('unit_categorie_gps_allow_issue_print_qr_nl.mp4', false);
 });
 
+it('toont beschikbare promo-video voor franse locale', function () {
+    $this->withSession(['locale' => 'fr'])
+        ->get(route('promo'))
+        ->assertOk()
+        ->assertSee(__('promo.video.qr_portal.title', [], 'fr'))
+        ->assertSee(__('promo.video.qr_portal.items.0.title', [], 'fr'))
+        ->assertSee('issue_fr_01.mp4', false)
+        ->assertSee('task_fr_01.mp4', false);
+});
+
 it('toont taalkeuze bovenaan de promo-pagina', function () {
     $this->get(route('promo'))
         ->assertOk()

@@ -24,7 +24,6 @@
                 },
                 {
                     "basename": "task",
-                    "suffix": "",
                     "title": "Traiter une tâche",
                     "description": "Comment finaliser une tâche assignée sur le terrain."
                 }
