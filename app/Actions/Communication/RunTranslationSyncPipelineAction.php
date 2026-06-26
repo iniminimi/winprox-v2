@@ -103,6 +103,19 @@ class RunTranslationSyncPipelineAction
                 fn (): bool => TranslationSyncCancellation::requested(),
             );
 
+            $translatedCount = count($translatedItems);
+
+            if ($translatedCount === 0) {
+                throw new RuntimeException(__('platform.translation_sync.error_nothing_translated'));
+            }
+
+            if ($translatedCount < $total) {
+                throw new RuntimeException(__('platform.translation_sync.error_partial_translated', [
+                    'translated' => $translatedCount,
+                    'total' => $total,
+                ]));
+            }
+
             $this->assertNotCancelled();
 
             File::put($importPath, json_encode([
@@ -124,9 +137,18 @@ class RunTranslationSyncPipelineAction
                 'completed' => $total,
             ]);
 
-            $this->remote->runImportOnRemote();
+            $imported = $this->remote->runImportOnRemote();
 
-            $imported = count($translatedItems);
+            if ($imported === 0) {
+                throw new RuntimeException(__('platform.translation_sync.error_remote_import_zero'));
+            }
+
+            if ($imported < $translatedCount) {
+                throw new RuntimeException(__('platform.translation_sync.error_remote_import_partial', [
+                    'imported' => $imported,
+                    'total' => $translatedCount,
+                ]));
+            }
 
             $this->statusStore->write(TranslationSyncPhase::Completed, $actorUserId, [
                 'finished_at' => now()->toIso8601String(),

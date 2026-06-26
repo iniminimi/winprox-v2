@@ -37,8 +37,17 @@ class FakeTranslationSyncRemoteClient implements TranslationSyncRemoteClient
         $this->uploadedImportPath = $localPath;
     }
 
-    public function runImportOnRemote(): void
+    public function runImportOnRemote(): int
     {
         $this->importRuns++;
+
+        if ($this->uploadedImportPath === null || ! is_file($this->uploadedImportPath)) {
+            return 0;
+        }
+
+        $decoded = json_decode(File::get($this->uploadedImportPath), true);
+        $items = is_array($decoded) ? ($decoded['items'] ?? []) : [];
+
+        return is_array($items) ? count($items) : 0;
     }
 }

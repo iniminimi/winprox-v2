@@ -86,6 +86,38 @@ it('vertaalt mededeling export-items via de provider', function () {
     ]);
 });
 
+it('vertaalt locatie export-items via de provider', function () {
+    $items = app(TranslateExportItemsAction::class)->handle([
+        [
+            'location_id' => 4,
+            'locale' => 'en',
+            'source_name' => 'Hoofddepot',
+        ],
+    ]);
+
+    expect($items)->toBe([
+        ['locale' => 'en', 'location_id' => 4, 'name' => '[en] Hoofddepot'],
+    ]);
+});
+
+it('faalt wanneer geen exportregels vertaald werden', function () {
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        [
+            'issue_id' => 1,
+            'locale' => 'en',
+            'source_text' => '',
+        ],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+
+    expect(fn () => app(RunTranslationSyncPipelineAction::class)->handle(1))
+        ->toThrow(RuntimeException::class, __('platform.translation_sync.error_nothing_translated'));
+
+    $status = app(TranslationSyncStatusStore::class)->read();
+    expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Failed->value);
+});
+
 it('doorloopt de vertaal-sync pipeline met remote fake', function () {
     $fake = new FakeTranslationSyncRemoteClient;
     $fake->exportItems = [

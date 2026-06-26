@@ -11,7 +11,7 @@ class EnsureAnnouncementTranslationSlotsAction
 {
     public function handle(Announcement $announcement): void
     {
-        if (! $announcement->is_active) {
+        if (! $announcement->is_active || trim((string) $announcement->description) === '') {
             return;
         }
 

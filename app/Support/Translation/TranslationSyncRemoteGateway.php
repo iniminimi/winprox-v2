@@ -51,12 +51,18 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
         $this->runScp($localPath, $remoteFile, download: false);
     }
 
-    public function runImportOnRemote(): void
+    public function runImportOnRemote(): int
     {
-        $this->runRemoteArtisan('translation:import');
+        $output = $this->runRemoteArtisan('translation:import');
+
+        if (preg_match('/Imported (\d+) translation\(s\)\./', $output, $matches) === 1) {
+            return (int) $matches[1];
+        }
+
+        return 0;
     }
 
-    private function runRemoteArtisan(string $command): void
+    private function runRemoteArtisan(string $command): string
     {
         $remotePath = (string) config('translation_sync.remote_path');
         $php = (string) config('translation_sync.remote_php', 'php');
@@ -80,6 +86,8 @@ class TranslationSyncRemoteGateway implements TranslationSyncRemoteClient
 
             throw new RuntimeException('translation_sync_remote_command_failed:'.$detail);
         }
+
+        return trim($result->output()."\n".$result->errorOutput());
     }
 
     private function quoteRemotePath(string $path): string

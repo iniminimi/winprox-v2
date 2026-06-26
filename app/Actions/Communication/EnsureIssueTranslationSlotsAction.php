@@ -11,7 +11,7 @@ class EnsureIssueTranslationSlotsAction
 {
     public function handle(Issue $issue): void
     {
-        if (! $issue->isApproved()) {
+        if (! $issue->isApproved() || trim((string) $issue->description) === '') {
             return;
         }
 

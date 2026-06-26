@@ -14,7 +14,9 @@ class ExportPendingAnnouncementTranslationsAction
     {
         return AnnouncementTranslation::query()
             ->where('status', AnnouncementTranslationStatus::Pending)
-            ->whereHas('announcement', fn ($query) => $query->where('is_active', true))
+            ->whereHas('announcement', fn ($query) => $query
+                ->where('is_active', true)
+                ->where('description', '!=', ''))
             ->with('announcement')
             ->orderBy('announcement_id')
             ->orderBy('locale')

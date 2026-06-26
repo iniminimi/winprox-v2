@@ -12,5 +12,5 @@ interface TranslationSyncRemoteClient
 
     public function uploadImport(string $localPath): void;
 
-    public function runImportOnRemote(): void;
+    public function runImportOnRemote(): int;
 }
