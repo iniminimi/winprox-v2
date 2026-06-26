@@ -2,18 +2,24 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureLocationTranslationSlotsAction;
 use App\Models\Location;
 use App\Support\Audit\AuditRecorder;
 
 class ActivateLocationAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureLocationTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(Location $location, ?int $actorUserId = null): Location
     {
         $location->update(['is_active' => true]);
 
         $fresh = $location->fresh();
+
+        $this->ensureTranslationSlots->handle($fresh);
 
         $this->audit->record(
             userId: $actorUserId,

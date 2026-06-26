@@ -125,7 +125,7 @@ final class SearchTenantGlobalAction
             ->map(static fn (Location $location): array => [
                 'id' => $location->id,
                 'type' => 'location',
-                'title' => (string) $location->name,
+                'title' => $location->localizedName(),
                 'subtitle' => $location->formattedAddress(),
                 'url' => route('locations.show', ['location' => $location->id]),
             ]);
@@ -151,7 +151,7 @@ final class SearchTenantGlobalAction
             ->limit(self::RESULT_LIMIT)
             ->get()
             ->map(static function (Unit $unit) use ($rawQuery): array {
-                $subtitle = (string) ($unit->location?->name ?? '');
+                $subtitle = (string) ($unit->location?->localizedName() ?? '');
                 if (trim((string) $unit->description) !== '') {
                     $subtitle = $subtitle !== ''
                         ? $subtitle.' · '.$unit->description
@@ -303,7 +303,7 @@ final class SearchTenantGlobalAction
                 'id' => $issue->id,
                 'type' => 'issue',
                 'title' => '#'.$issue->id.' - '.mb_strimwidth($issue->localizedDescription(), 0, 50, '...'),
-                'subtitle' => trim((string) ($issue->location?->name ?? '').($issue->unit ? ' · '.$issue->unit->name : '')),
+                'subtitle' => trim((string) ($issue->location?->localizedName() ?? '').($issue->unit ? ' · '.$issue->unit->localizedName() : '')),
                 'url' => route('issues.show', ['issue' => $issue->id]),
             ]);
     }
@@ -350,7 +350,7 @@ final class SearchTenantGlobalAction
                 'id' => $task->id,
                 'type' => 'task',
                 'title' => '#'.$task->id.($task->displayDescription() !== '' ? ' - '.mb_strimwidth($task->displayDescription(), 0, 40, '...') : ''),
-                'subtitle' => trim((string) ($task->team?->name ?? '').($task->issue?->location?->name ? ' · '.$task->issue->location->name : '')),
+                'subtitle' => trim((string) ($task->team?->name ?? '').($task->issue?->location?->localizedName() ? ' · '.$task->issue->location->localizedName() : '')),
                 'url' => route('tasks.show', ['task' => $task->id]),
             ]);
     }

@@ -3,7 +3,7 @@
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
                 icon="locations"
-                :title="$location->name"
+                :title="$location->localizedName()"
                 help-page="locations.show"
                 :subtitle="__('locations.show_subtitle')"
             >

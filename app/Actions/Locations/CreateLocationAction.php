@@ -2,13 +2,18 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureLocationTranslationSlotsAction;
 use App\Models\Location;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Str;
 
 class CreateLocationAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureLocationTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -23,6 +28,7 @@ class CreateLocationAction
         $location = Location::create([
             'tenant_id' => $tenantId,
             'name' => $name,
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'street' => $this->nullableString($data['street'] ?? null),
             'house_number' => $this->nullableString($data['house_number'] ?? null),
             'postal_code' => $this->nullableString($data['postal_code'] ?? null),
@@ -42,6 +48,9 @@ class CreateLocationAction
             modelId: (int) $location->id,
             payload: ['id' => $location->id, 'name' => $location->name],
         );
+
+        $location = $location->fresh();
+        $this->ensureTranslationSlots->handle($location);
 
         return $location;
     }

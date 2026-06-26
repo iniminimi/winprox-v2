@@ -2,18 +2,26 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureLocationTranslationSlotsAction;
+use App\Actions\Communication\InvalidateLocationTranslationsOnSourceChangeAction;
 use App\Models\Location;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateLocationAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private InvalidateLocationTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureLocationTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
      */
     public function handle(Location $location, array $data, ?int $actorUserId = null): Location
     {
+        $previousName = (string) $location->name;
+
         $street = $this->nullableString($data['street'] ?? null);
         $houseNumber = $this->nullableString($data['house_number'] ?? null);
         $postalCode = $this->nullableString($data['postal_code'] ?? null);
@@ -40,6 +48,9 @@ class UpdateLocationAction
         ]);
 
         $fresh = $location->fresh();
+
+        $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
+        $this->ensureTranslationSlots->handle($fresh);
 
         $this->audit->record(
             userId: $actorUserId,

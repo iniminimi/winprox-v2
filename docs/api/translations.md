@@ -12,7 +12,7 @@ The translation sync API exports pending issue and announcement translations and
 
 `GET /translations/export`
 
-Returns all pending translation jobs for **approved issues**, **active announcements**, and **active units** across tenants (superuser scope).
+Returns all pending translation jobs for **approved issues**, **active announcements**, **active locations**, **active units** across tenants (superuser scope).
 
 **Response:**
 ```json
@@ -45,13 +45,21 @@ Returns all pending translation jobs for **approved issues**, **active announcem
         "source_description": "Magazijn zone B",
         "locale": "en",
         "status": "pending"
+      },
+      {
+        "location_id": 3,
+        "tenant_id": 1,
+        "source_locale": "nl",
+        "source_name": "Hoofddepot Deinze",
+        "locale": "en",
+        "status": "pending"
       }
     ]
   }
 }
 ```
 
-Each item contains either `issue_id`, `announcement_id`, or `unit_id` (never more than one).
+Each item contains either `issue_id`, `announcement_id`, `location_id`, or `unit_id` (never more than one).
 
 ### Import completed translations
 
@@ -78,7 +86,7 @@ Each item contains either `issue_id`, `announcement_id`, or `unit_id` (never mor
 ```
 
 **Fields per item:**
-- `issue_id`, `announcement_id`, or `unit_id` (required) — Target record
+- `issue_id`, `announcement_id`, `location_id`, or `unit_id` (required) — Target record
 - `locale` (required) — Target locale (`nl`, `en`, `fr`, `de`, `es`, `it`)
 - `description` (required for issues/announcements) — Completed translation (max 1500 characters)
 - `name` (optional, units) — Translated unit name (max 255 characters)
@@ -93,7 +101,7 @@ Each item contains either `issue_id`, `announcement_id`, or `unit_id` (never mor
 }
 ```
 
-Importing dispatches webhooks when endpoints subscribe to `issue.translation_imported`, `announcement.translation_imported`, or `unit.translation_imported`.
+Importing dispatches webhooks when endpoints subscribe to `issue.translation_imported`, `announcement.translation_imported`, `location.translation_imported`, or `unit.translation_imported`.
 
 ### Translation sync status
 
@@ -137,6 +145,7 @@ Translation import triggers domain webhooks (not in-app Ollama translation):
 |-------|------|
 | `issue.translation_imported` | After a completed issue translation is imported |
 | `announcement.translation_imported` | After a completed announcement translation is imported |
+| `location.translation_imported` | After a completed location translation is imported |
 | `unit.translation_imported` | After a completed unit translation is imported |
 | `task.translation_imported` | After a completed task translation is imported |
 | `document.translation_imported` | After a completed document translation is imported |

@@ -73,7 +73,7 @@ final class TopScannedUnitsService
             $rows[] = new TopScannedUnit(
                 unitId: (int) $unit->id,
                 unitName: $unit->localizedName(),
-                locationName: (string) ($unit->location?->name ?? __('dashboard.traffic.no_location')),
+                locationName: (string) ($unit->location?->localizedName() ?? __('dashboard.traffic.no_location')),
                 scanCount: (int) $counts[$unitId],
                 detailUrl: route('locations.show', [
                     'location' => $unit->location_id,

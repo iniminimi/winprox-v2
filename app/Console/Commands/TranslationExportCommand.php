@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
+use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use Illuminate\Console\Command;
@@ -19,6 +20,7 @@ class TranslationExportCommand extends Command
     public function handle(
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
+        ExportPendingLocationTranslationsAction $exportLocations,
         ExportPendingUnitTranslationsAction $exportUnits,
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
@@ -26,6 +28,7 @@ class TranslationExportCommand extends Command
         $items = array_merge(
             $exportIssues->handle()['items'],
             $exportAnnouncements->handle(),
+            $exportLocations->handle(),
             $exportUnits->handle(),
             $exportTasks->handle(),
             $exportDocuments->handle(),

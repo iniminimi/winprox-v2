@@ -19,6 +19,7 @@ class WebhookEndpoint extends Model
         'issue.status_changed',
         'issue.translation_imported',
         'announcement.translation_imported',
+        'location.translation_imported',
         'unit.translation_imported',
         'task.translation_imported',
         'document.translation_imported',

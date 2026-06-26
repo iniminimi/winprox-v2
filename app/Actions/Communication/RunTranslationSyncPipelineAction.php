@@ -93,6 +93,7 @@ class RunTranslationSyncPipelineAction
                         'completed' => $completed,
                         'current_issue_id' => $current['issue_id'] ?? null,
                         'current_announcement_id' => $current['announcement_id'] ?? null,
+                        'current_location_id' => $current['location_id'] ?? null,
                         'current_unit_id' => $current['unit_id'] ?? null,
                         'current_task_id' => $current['task_id'] ?? null,
                         'current_document_id' => $current['document_id'] ?? null,

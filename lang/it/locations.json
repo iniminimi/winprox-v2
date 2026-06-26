@@ -206,7 +206,9 @@
     "errors": {
         "name_or_address_required": "Inserisca un nome sede, oppure compili via, CAP e città.",
         "country_code_invalid": "Inserisca un codice paese ISO a 2 lettere valido.",
-        "unit_limit": "Ha raggiunto il limite unità del Suo piano. Aggiorni l'abbonamento per aggiungere altre unità."
+        "unit_limit": "Ha raggiunto il limite unità del Suo piano. Aggiorni l'abbonamento per aggiungere altre unità.",
+        "translation_import_missing": "Sede non trovata o non attiva.",
+        "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo."
     },
     "qr_pack": {
         "unavailable": "Esportazione QR non disponibile su questo server.",

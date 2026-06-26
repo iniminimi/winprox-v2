@@ -92,7 +92,7 @@
                 @endphp
                 <div class="wp-issue-row" wire:key="loc-{{ $location->id }}-{{ $location->is_active }}">
                     <a href="{{ route('locations.show', $location) }}" class="wp-issue-row-link wp-stack-tight">
-                        <p class="wp-issue-card-title">{{ $location->name }}</p>
+                        <p class="wp-issue-card-title">{{ $location->localizedName() }}</p>
                         @if ($addressLine !== '')
                             <p class="wp-issue-card-meta">{{ $addressLine }}</p>
                         @endif

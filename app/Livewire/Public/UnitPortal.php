@@ -113,14 +113,13 @@ class UnitPortal extends Component
         }
 
         $this->tenantName = $unit->tenant?->name ?? '';
-        $this->locationName = $unit->location?->name ?? '';
 
         Tenancy::actAs($this->tenantId);
 
         $this->inactiveReasonKey = PortalAccess::unitPortalInactiveReasonKey($unit);
         $this->syncLocaleFromRequest();
 
-        $unit->load('translations');
+        $unit->load(['translations', 'location.translations']);
         $this->refreshUnitDisplayTexts($unit);
 
         $this->bootstrapFieldWorker($unit);
@@ -143,7 +142,7 @@ class UnitPortal extends Component
         $this->locale = $locale;
         app()->setLocale($locale);
 
-        $unit = Unit::query()->with('translations')->find($this->unitId);
+        $unit = Unit::query()->with(['translations', 'location.translations'])->find($this->unitId);
         if ($unit instanceof Unit) {
             $this->refreshUnitDisplayTexts($unit);
         }
@@ -153,6 +152,7 @@ class UnitPortal extends Component
     {
         $this->unitName = $unit->localizedName($this->locale);
         $this->unitDescription = $unit->localizedDescription($this->locale);
+        $this->locationName = $unit->location?->localizedName($this->locale) ?? '';
     }
 
     public function openSection(string $section): void

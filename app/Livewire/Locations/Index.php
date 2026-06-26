@@ -142,6 +142,7 @@ class Index extends Component
         if ($this->editingLocationId === null) {
             $this->authorize('create', Location::class);
             $validated = StoreLocationRequest::validatePayload($payload);
+            $validated['original_language'] = auth()->user()?->locale;
             $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
             session()->flash('success', __('locations.flash.created'));
         } else {

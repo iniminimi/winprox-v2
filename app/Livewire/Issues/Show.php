@@ -388,7 +388,7 @@ class Show extends Component
         ]);
 
         $location = $issue->location;
-        $headline = collect([$location?->name, $issue->unit?->localizedName()])->filter()->join(' · ');
+        $headline = collect([$location?->localizedName(), $issue->unit?->localizedName()])->filter()->join(' · ');
         $addressLine = $location
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';

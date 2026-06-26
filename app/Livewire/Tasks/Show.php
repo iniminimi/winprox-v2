@@ -192,7 +192,7 @@ class Show extends Component
 
         $issue = $this->task->issue;
         $location = $issue?->location;
-        $headline = collect([$location?->name, $issue?->unit?->localizedName()])->filter()->join(' · ');
+        $headline = collect([$location?->localizedName(), $issue?->unit?->localizedName()])->filter()->join(' · ');
         if ($headline === '' && $issue) {
             $headline = \Illuminate\Support\Str::limit($issue->localizedDescription(), 80);
         }

@@ -186,7 +186,7 @@ final class BuildMorningBriefingAction
     private function lineFromTask(Task $task): BriefingLineData
     {
         $unit = $task->issue?->unit;
-        $locationName = trim((string) ($task->issue?->location?->name ?? ''));
+        $locationName = trim((string) ($task->issue?->location?->localizedName() ?? ''));
 
         return new BriefingLineData(
             locationLabel: $this->locationLabelForUnit($unit),
@@ -202,7 +202,7 @@ final class BuildMorningBriefingAction
             locationLabel: $this->locationLabelForUnit($issue->unit),
             summary: $this->summaryForRecurringIssue($issue),
             sortKey: $issue->unit instanceof Unit ? $this->unitSortKey($issue->unit->name) : PHP_INT_MAX,
-            locationHint: trim((string) ($issue->location?->name ?? '')) ?: null,
+            locationHint: trim((string) ($issue->location?->localizedName() ?? '')) ?: null,
         );
     }
 

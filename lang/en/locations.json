@@ -206,7 +206,9 @@
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",
         "country_code_invalid": "Enter a valid 2-letter ISO country code.",
-        "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units."
+        "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units.",
+        "translation_import_missing": "Location not found or not active.",
+        "translation_import_name_too_long": "The translated location name is too long."
     },
     "qr_pack": {
         "unavailable": "QR export is unavailable on this server.",

@@ -193,7 +193,7 @@
                             </span>
                             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
                             @if ($task->issue?->location)
-                                <span class="wp-muted">{{ $task->issue->location->name }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
+                                <span class="wp-muted">{{ $task->issue->location->localizedName() }}@if ($task->issue->unit) &middot; {{ $task->issue->unit->localizedName() }}@endif</span>
                             @endif
                             @if ($task->issue?->unit && $task->issue->unit->hasGps())
                                 <a href="{{ $task->issue->unit->googleMapsUrl() }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm" title="{{ __('portal.worker.navigate_to_location') }}">

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
+use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use Illuminate\Console\Command;
@@ -20,6 +21,7 @@ class TranslationImportCommand extends Command
     public function handle(
         ImportIssueTranslationsAction $importIssues,
         ImportAnnouncementTranslationsAction $importAnnouncements,
+        ImportLocationTranslationsAction $importLocations,
         ImportUnitTranslationsAction $importUnits,
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
@@ -52,6 +54,7 @@ class TranslationImportCommand extends Command
 
         $issueItems = [];
         $announcementItems = [];
+        $locationItems = [];
         $unitItems = [];
         $taskItems = [];
         $documentItems = [];
@@ -65,6 +68,8 @@ class TranslationImportCommand extends Command
                 $documentItems[] = $item;
             } elseif (isset($item['task_id'])) {
                 $taskItems[] = $item;
+            } elseif (isset($item['location_id'])) {
+                $locationItems[] = $item;
             } elseif (isset($item['unit_id'])) {
                 $unitItems[] = $item;
             } elseif (isset($item['announcement_id'])) {
@@ -77,6 +82,7 @@ class TranslationImportCommand extends Command
         try {
             $count = $importIssues->handle($issueItems)
                 + $importAnnouncements->handle($announcementItems)
+                + $importLocations->handle($locationItems)
                 + $importUnits->handle($unitItems)
                 + $importTasks->handle($taskItems)
                 + $importDocuments->handle($documentItems);

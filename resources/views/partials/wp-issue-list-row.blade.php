@@ -9,7 +9,7 @@
         ? $openTasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values()
         : collect();
     $cardTitle = collect([
-        $issue->location?->name,
+        $issue->location?->localizedName(),
         $issue->unit?->localizedName(),
         __('issues.card.kind_nr', ['nr' => $issue->id]),
     ])->filter()->join(', ');

@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
+use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
+use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
@@ -22,6 +24,7 @@ class TranslationController extends Controller
     public function export(
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
+        ExportPendingLocationTranslationsAction $exportLocations,
         ExportPendingUnitTranslationsAction $exportUnits,
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
@@ -31,6 +34,7 @@ class TranslationController extends Controller
         $items = array_merge(
             $exportIssues->handle()['items'],
             $exportAnnouncements->handle(),
+            $exportLocations->handle(),
             $exportUnits->handle(),
             $exportTasks->handle(),
             $exportDocuments->handle(),
@@ -47,6 +51,7 @@ class TranslationController extends Controller
         Request $request,
         ImportIssueTranslationsAction $importIssues,
         ImportAnnouncementTranslationsAction $importAnnouncements,
+        ImportLocationTranslationsAction $importLocations,
         ImportUnitTranslationsAction $importUnits,
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
@@ -65,6 +70,7 @@ class TranslationController extends Controller
 
         $issueItems = [];
         $announcementItems = [];
+        $locationItems = [];
         $unitItems = [];
         $taskItems = [];
         $documentItems = [];
@@ -74,6 +80,8 @@ class TranslationController extends Controller
                 $documentItems[] = $item;
             } elseif (isset($item['task_id'])) {
                 $taskItems[] = $item;
+            } elseif (isset($item['location_id'])) {
+                $locationItems[] = $item;
             } elseif (isset($item['unit_id'])) {
                 $unitItems[] = $item;
             } elseif (isset($item['announcement_id'])) {
@@ -85,6 +93,7 @@ class TranslationController extends Controller
 
         $imported = $importIssues->handle($issueItems, $actorUserId)
             + $importAnnouncements->handle($announcementItems, $actorUserId)
+            + $importLocations->handle($locationItems, $actorUserId)
             + $importUnits->handle($unitItems, $actorUserId)
             + $importTasks->handle($taskItems, $actorUserId)
             + $importDocuments->handle($documentItems, $actorUserId);

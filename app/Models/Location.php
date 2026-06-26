@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\LocationTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,6 +16,7 @@ class Location extends Model
     protected $fillable = [
         'tenant_id',
         'name',
+        'original_language',
         'address',
         'street',
         'house_number',
@@ -79,5 +82,52 @@ class Location extends Model
     public function announcements(): HasMany
     {
         return $this->hasMany(Announcement::class);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(LocationTranslation::class);
+    }
+
+    public function normalizedOriginalLanguage(): string
+    {
+        return LocaleSupport::normalize($this->original_language);
+    }
+
+    public function localizedName(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $name = (string) $this->name;
+
+        if ($name === '' || $locale === $this->normalizedOriginalLanguage()) {
+            return $name;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof LocationTranslation && filled($row->name)) {
+            return (string) $row->name;
+        }
+
+        return $name;
+    }
+
+    private function findCompletedTranslation(string $locale): ?LocationTranslation
+    {
+        $locale = LocaleSupport::normalize($locale);
+
+        if ($this->relationLoaded('translations')) {
+            $row = $this->translations->first(
+                fn (LocationTranslation $translation) => $translation->locale === $locale
+                    && $translation->status === LocationTranslationStatus::Completed,
+            );
+
+            return $row instanceof LocationTranslation ? $row : null;
+        }
+
+        return $this->translations()
+            ->where('locale', $locale)
+            ->where('status', LocationTranslationStatus::Completed)
+            ->first();
     }
 }

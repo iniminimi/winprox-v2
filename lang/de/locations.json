@@ -206,7 +206,9 @@
     "errors": {
         "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",
         "country_code_invalid": "Geben Sie einen gültigen ISO-Ländercode mit 2 Buchstaben ein.",
-        "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen."
+        "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen.",
+        "translation_import_missing": "Standort nicht gefunden oder nicht aktiv.",
+        "translation_import_name_too_long": "Der übersetzte Standortname ist zu lang."
     },
     "qr_pack": {
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",

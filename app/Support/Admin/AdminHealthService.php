@@ -104,7 +104,7 @@ final class AdminHealthService
                 type: AdminHealthIssueType::UnitMissingPhoto,
                 id: (int) $unit->id,
                 title: $unit->localizedName(),
-                subtitle: $unit->location?->name ?? __('health.no_location'),
+                subtitle: $unit->location?->localizedName() ?? __('health.no_location'),
                 fixUrl: route('locations.show', [
                     'location' => $unit->location_id,
                     'edit_unit' => $unit->id,
@@ -135,7 +135,7 @@ final class AdminHealthService
                 type: AdminHealthIssueType::UnitMissingGps,
                 id: (int) $unit->id,
                 title: $unit->localizedName(),
-                subtitle: $unit->location?->name ?? __('health.no_location'),
+                subtitle: $unit->location?->localizedName() ?? __('health.no_location'),
                 fixUrl: route('locations.show', [
                     'location' => $unit->location_id,
                     'edit_unit' => $unit->id,
@@ -165,7 +165,7 @@ final class AdminHealthService
                 type: AdminHealthIssueType::UnitPublicReportsDisabled,
                 id: (int) $unit->id,
                 title: $unit->localizedName(),
-                subtitle: $unit->location?->name ?? __('health.no_location'),
+                subtitle: $unit->location?->localizedName() ?? __('health.no_location'),
                 fixUrl: route('locations.show', [
                     'location' => $unit->location_id,
                     'edit_unit' => $unit->id,
@@ -197,7 +197,7 @@ final class AdminHealthService
                 type: AdminHealthIssueType::InactiveDocument,
                 id: (int) $document->id,
                 title: $document->localizedDescription() ?: $document->title,
-                subtitle: trim(($document->location?->name ?? '').' · '.$unitLabel, ' ·'),
+                subtitle: trim(($document->location?->localizedName() ?? '').' · '.$unitLabel, ' ·'),
                 fixUrl: route('locations.show', ['location' => $document->location_id]),
             );
         }
@@ -247,7 +247,7 @@ final class AdminHealthService
             $issues[] = new AdminHealthIssue(
                 type: AdminHealthIssueType::LocationMissingAddress,
                 id: (int) $location->id,
-                title: (string) ($location->name ?: __('health.unnamed_location')),
+                title: (string) ($location->localizedName() ?: __('health.unnamed_location')),
                 subtitle: __('health.issue.location_address_hint'),
                 fixUrl: route('locations.show', [
                     'location' => $location->id,

@@ -26,12 +26,38 @@ class TranslateExportItemsAction
 
             $issueId = (int) ($item['issue_id'] ?? 0);
             $announcementId = (int) ($item['announcement_id'] ?? 0);
+            $locationId = (int) ($item['location_id'] ?? 0);
             $unitId = (int) ($item['unit_id'] ?? 0);
             $taskId = (int) ($item['task_id'] ?? 0);
             $documentId = (int) ($item['document_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
             $sourceName = trim((string) ($item['source_name'] ?? ''));
+
+            if ($locationId > 0) {
+                if ($locale === '' || $sourceName === '') {
+                    continue;
+                }
+
+                $translatedName = trim($this->translator->translate($sourceName, $locale));
+                $row = [
+                    'locale' => $locale,
+                    'location_id' => $locationId,
+                    'name' => $translatedName !== '' ? $translatedName : $sourceName,
+                ];
+
+                $translated[] = $row;
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'location_id' => $locationId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
             $sourceDescription = trim((string) ($item['source_description'] ?? ''));
 
             if ($unitId > 0) {
