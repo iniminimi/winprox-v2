@@ -15,7 +15,5 @@ return [
     /*
     | Tijdelijk verborgen promo-video's per locale (basename). Leegmaken na vervanging.
     */
-    'promo_hidden_videos' => [
-        'nl' => ['issue', 'task'],
-    ],
+    'promo_hidden_videos' => [],
 ];

@@ -24,7 +24,6 @@
                 },
                 {
                     "basename": "task",
-                    "suffix": "",
                     "title": "Een taak afhandelen",
                     "description": "Zo werk je een toegewezen taak af in het veld."
                 }

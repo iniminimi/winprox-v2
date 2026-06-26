@@ -35,8 +35,8 @@ it('toont beschikbare promo-video per locale', function () {
         ->assertSee(__('promo.video.title', [], 'nl'))
         ->assertSee(__('promo.video.beheerportaal.title', [], 'nl'))
         ->assertSee(__('promo.video.beheerportaal.items.0.description', [], 'nl'))
-        ->assertDontSee('issue_nl_01.mp4', false)
-        ->assertDontSee('task_nl.mp4', false)
+        ->assertSee('issue_nl_01.mp4', false)
+        ->assertSee('task_nl_01.mp4', false)
         ->assertSee('users_edit_qr_nl.mp4', false)
         ->assertSee('issue_approve_briefing_nl.mp4', false)
         ->assertSee('unit_categorie_gps_allow_issue_print_qr_nl.mp4', false);
