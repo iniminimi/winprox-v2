@@ -155,13 +155,26 @@ it('laat superuser promo-campagnes beheren', function () {
 
     Livewire::actingAs($superuser)
         ->test(PromoCampaigns::class)
-        ->set('slug', 'livewire-test')
+        ->set('slug', 'Wallonie-Wave-1')
         ->set('name', 'Livewire campagne')
         ->set('locale', 'fr')
         ->call('createCampaign')
         ->assertHasNoErrors();
 
-    expect(PromoCampaign::query()->where('slug', 'livewire-test')->exists())->toBeTrue();
+    expect(PromoCampaign::query()->where('slug', 'wallonie-wave-1')->exists())->toBeTrue();
+});
+
+it('toont duidelijke fout bij ongeldige campagne-slug', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->set('slug', 'ongeldige slug')
+        ->set('name', 'Test')
+        ->set('locale', 'fr')
+        ->call('createCampaign')
+        ->assertHasErrors(['slug'])
+        ->assertSee(__('platform.promo_campaigns.slug_invalid'));
 });
 
 it('blokkeert promo-campagnes voor normale gebruikers', function () {

@@ -17,7 +17,8 @@
             <div class="wp-row wp-gap-md wp-wrap">
                 <div class="wp-grow">
                     <label class="wp-label" for="campaign-slug">{{ __('platform.promo_campaigns.slug') }}</label>
-                    <input id="campaign-slug" type="text" class="wp-input" wire:model="slug" placeholder="wallonie-wave-1">
+                    <input id="campaign-slug" type="text" class="wp-input" wire:model.live="slug" placeholder="wallonie-wave-1">
+                    <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.slug_hint') }}</p>
                     @error('slug') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-grow">

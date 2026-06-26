@@ -23,6 +23,17 @@ class CreatePromoCampaignRequest extends FormRequest
     }
 
     /**
+     * @return array<string, string>
+     */
+    public static function validationMessages(): array
+    {
+        return [
+            'slug.regex' => __('platform.promo_campaigns.slug_invalid'),
+            'slug.unique' => __('platform.promo_campaigns.slug_taken'),
+        ];
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public static function ruleSet(): array

@@ -36,7 +36,13 @@ class PromoCampaigns extends Component
     {
         $this->authorize('managePromoCampaigns', User::class);
 
-        $validated = $this->validate(CreatePromoCampaignRequest::ruleSet());
+        $this->slug = strtolower(trim($this->slug));
+        $this->locale = strtolower(trim($this->locale));
+
+        $validated = $this->validate(
+            CreatePromoCampaignRequest::ruleSet(),
+            CreatePromoCampaignRequest::validationMessages(),
+        );
         $user = auth()->user();
         if ($user === null) {
             return;
