@@ -23,7 +23,6 @@
         <p class="wp-muted wp-text-sm">
             {{ __('platform.promo_campaigns.stats', $stats) }}
         </p>
-        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.placeholders') }}: <code>{{ $placeholders }}</code></p>
     </div>
 
     <form wire:submit="save" class="wp-stack">

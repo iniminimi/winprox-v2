@@ -56,13 +56,9 @@ class ImportPromoCampaignSpreadsheetAction
             ]);
 
             foreach ($rows as $row) {
-                $raw = $row['_raw'] ?? [];
-                unset($row['_raw']);
-
                 PromoCampaignTarget::query()->create([
                     'promo_campaign_id' => $campaign->id,
                     'promo_campaign_import_id' => $import->id,
-                    'raw_row' => $raw,
                     'name' => $row['name'],
                     'email' => $this->nullable($row['email'] ?? null),
                     'street_address' => $this->nullable($row['street_address'] ?? null),

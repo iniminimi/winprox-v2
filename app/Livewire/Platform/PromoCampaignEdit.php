@@ -294,7 +294,6 @@ class PromoCampaignEdit extends Component
             'targets' => $targets,
             'stats' => $stats,
             'latestImport' => $this->campaign->imports()->latest('id')->first(),
-            'placeholders' => '{{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}',
         ]);
     }
 

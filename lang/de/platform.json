@@ -176,7 +176,6 @@
         "test_email_no_letter": "Generieren Sie zuerst mindestens einen Brief.",
         "test_email_sent": "Testmail gesendet an :email.",
         "stats": ":targets Empfänger · :generated Briefe · :sent Mails gesendet",
-        "placeholders": "Platzhalter",
         "save": "Speichern",
         "targets_title": "Empfänger (erste 50)",
         "letter_ready": "Brief fertig",

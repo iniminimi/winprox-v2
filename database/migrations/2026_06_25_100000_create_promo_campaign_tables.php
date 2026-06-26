@@ -37,7 +37,6 @@ return new class extends Migration
             $table->foreignId('promo_campaign_id')->constrained('promo_campaigns')->cascadeOnDelete();
             $table->foreignId('promo_campaign_import_id')->constrained('promo_campaign_imports')->cascadeOnDelete();
             $table->foreignId('promo_recipient_id')->nullable()->constrained('promo_recipients')->nullOnDelete();
-            $table->json('raw_row');
             $table->string('name', 255);
             $table->string('email', 255)->nullable();
             $table->string('street_address', 500)->nullable();

@@ -176,7 +176,6 @@
         "test_email_no_letter": "Genere al menos una carta primero.",
         "test_email_sent": "Correo de prueba enviado a :email.",
         "stats": ":targets destinatarios · :generated cartas · :sent correos enviados",
-        "placeholders": "Marcadores",
         "save": "Guardar",
         "targets_title": "Destinatarios (primeros 50)",
         "letter_ready": "carta lista",

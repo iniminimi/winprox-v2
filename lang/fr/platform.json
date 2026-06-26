@@ -176,7 +176,6 @@
         "test_email_no_letter": "Générez d'abord au moins une lettre.",
         "test_email_sent": "E-mail test envoyé à :email.",
         "stats": ":targets destinataires · :generated lettres · :sent e-mails envoyés",
-        "placeholders": "Placeholders",
         "save": "Enregistrer",
         "targets_title": "Destinataires (50 premiers)",
         "letter_ready": "lettre prête",

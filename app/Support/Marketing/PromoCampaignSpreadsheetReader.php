@@ -88,12 +88,6 @@ final class PromoCampaignSpreadsheetReader
                     continue;
                 }
 
-                $raw = [];
-                foreach ($headerMap as $column => $label) {
-                    $raw[$label] = trim((string) ($cells[$column] ?? ''));
-                }
-
-                $mapped['_raw'] = $raw;
                 $rows[] = $mapped;
             }
 

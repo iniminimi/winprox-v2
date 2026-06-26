@@ -12,7 +12,6 @@ class PromoCampaignTarget extends Model
         'promo_campaign_id',
         'promo_campaign_import_id',
         'promo_recipient_id',
-        'raw_row',
         'name',
         'email',
         'street_address',
@@ -25,7 +24,6 @@ class PromoCampaignTarget extends Model
     protected function casts(): array
     {
         return [
-            'raw_row' => 'array',
             'generated_at' => 'datetime',
         ];
     }

@@ -176,7 +176,6 @@
         "test_email_no_letter": "Genereer eerst minstens één brief.",
         "test_email_sent": "Testmail verstuurd naar :email.",
         "stats": ":targets ontvangers · :generated brieven · :sent mails verstuurd",
-        "placeholders": "Placeholders",
         "save": "Opslaan",
         "targets_title": "Ontvangers (eerste 50)",
         "letter_ready": "brief klaar",
