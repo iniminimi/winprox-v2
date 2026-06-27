@@ -163,7 +163,8 @@
 
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.actions_title') }}</p>
-        <div class="wp-row wp-gap-sm wp-wrap">
+
+        <div class="wp-row wp-gap-sm wp-wrap wp-items-center">
             <label class="wp-row wp-gap-xs wp-text-sm">
                 <input type="checkbox" wire:model="forceGenerate">
                 {{ __('platform.promo_campaigns.force_generate') }}
@@ -175,22 +176,31 @@
             </button>
         </div>
 
-        <div class="wp-stack-tight wp-mt-4">
-            <div class="wp-row wp-gap-md wp-wrap">
-                <div>
+        <div class="wp-border-top wp-stack-tight">
+            <p class="wp-subhead">{{ __('platform.promo_campaigns.test_email_section') }}</p>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.test_email_lead') }}</p>
+            <div class="wp-row wp-gap-md wp-wrap wp-items-end">
+                <div class="wp-promo-actions__field">
                     <label class="wp-label" for="override-to">{{ __('platform.promo_campaigns.override_to') }}</label>
-                    <input id="override-to" type="email" class="wp-input" wire:model="overrideTo">
+                    <input id="override-to" type="email" class="wp-input" wire:model="overrideTo" autocomplete="email">
+                    <p class="wp-muted wp-text-sm wp-mt-1">{{ __('platform.promo_campaigns.override_to_hint') }}</p>
                 </div>
-                <div>
-                    <label class="wp-label" for="delay-seconds">{{ __('platform.promo_campaigns.delay_seconds') }}</label>
-                    <input id="delay-seconds" type="number" min="0" class="wp-input" wire:model="delaySeconds">
-                </div>
-            </div>
-            <div class="wp-row wp-gap-sm wp-wrap">
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="sendTestEmail">
                     {{ __('platform.promo_campaigns.test_email') }}
                 </button>
-                <label class="wp-row wp-gap-xs wp-text-sm">
+            </div>
+        </div>
+
+        <div class="wp-border-top wp-stack-tight">
+            <p class="wp-subhead">{{ __('platform.promo_campaigns.queue_section') }}</p>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_lead') }}</p>
+            <div class="wp-row wp-gap-md wp-wrap wp-items-end">
+                <div>
+                    <label class="wp-label" for="delay-seconds">{{ __('platform.promo_campaigns.delay_seconds') }}</label>
+                    <input id="delay-seconds" type="number" min="0" class="wp-input wp-promo-actions__delay-input" wire:model="delaySeconds">
+                    <p class="wp-muted wp-text-sm wp-mt-1">{{ __('platform.promo_campaigns.delay_seconds_hint') }}</p>
+                </div>
+                <label class="wp-row wp-gap-xs wp-text-sm wp-promo-actions__checkbox">
                     <input type="checkbox" wire:model="forceSend">
                     {{ __('platform.promo_campaigns.force_send') }}
                 </label>
@@ -199,7 +209,6 @@
                 </button>
             </div>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_hint') }}</p>
-            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_cron_note') }}</p>
         </div>
     </div>
 

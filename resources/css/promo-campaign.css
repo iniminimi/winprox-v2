@@ -21,3 +21,17 @@
 .wp-promo-quill--tall .ql-editor {
     min-height: 18rem;
 }
+
+.wp-promo-actions__field {
+    flex: 1 1 16rem;
+    max-width: 24rem;
+}
+
+.wp-promo-actions__delay-input {
+    max-width: 6rem;
+}
+
+.wp-promo-actions__checkbox {
+    align-self: center;
+    padding-bottom: 0.125rem;
+}
