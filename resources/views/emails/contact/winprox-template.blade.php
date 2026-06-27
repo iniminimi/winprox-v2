@@ -50,6 +50,16 @@
         .body p:last-child {
             margin-bottom: 0;
         }
+        .body a {
+            color: #059669;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .body ul,
+        .body ol {
+            margin: 0 0 16px 0;
+            padding-left: 1.25rem;
+        }
         .footer {
             background-color: #f1f5f9;
             padding: 24px 28px;

@@ -339,5 +339,7 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
 
     expect($html)
         ->toContain('Madame, Monsieur')
-        ->toContain('La gestion des infrastructures');
+        ->toContain('La gestion des infrastructures')
+        ->toContain('email-wrapper')
+        ->toContain('Winprox_logo_100.png');
 });

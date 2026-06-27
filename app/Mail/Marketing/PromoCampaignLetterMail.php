@@ -38,7 +38,13 @@ class PromoCampaignLetterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            htmlString: $this->wrapEmailBody($this->emailBodyHtml),
+            html: 'emails.contact.winprox-template',
+            with: [
+                'bodyHtml' => $this->emailBodyHtml,
+                'bodyText' => '',
+                'recipientName' => '',
+                'subject' => $this->emailSubject,
+            ],
         );
     }
 
@@ -52,12 +58,5 @@ class PromoCampaignLetterMail extends Mailable
                 ->as(basename($this->docxPath))
                 ->withMime('application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
         ];
-    }
-
-    private function wrapEmailBody(string $bodyHtml): string
-    {
-        return '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="font-family:Arial,sans-serif;line-height:1.6;color:#334155;">'
-            .$bodyHtml
-            .'</body></html>';
     }
 }
