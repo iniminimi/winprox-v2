@@ -43,7 +43,7 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         $letterBodyHtml = PromoCampaignPlaceholderRenderer::render($letterBodyHtml, $placeholders);
-        $letterBodyHtml = PromoCampaignHtmlSanitizer::clean($letterBodyHtml) ?? '';
+        $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($letterBodyHtml);
 
         $tempFiles = [];
         $qrPath = tempnam(sys_get_temp_dir(), 'wp-promo-campaign-qr-');

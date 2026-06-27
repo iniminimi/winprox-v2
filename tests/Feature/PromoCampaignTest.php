@@ -12,6 +12,7 @@ use App\Models\PromoCampaignTarget;
 use App\Models\User;
 use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
+use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Http\UploadedFile;
@@ -133,7 +134,7 @@ it('genereert docx voor campagne-ontvanger', function () {
         data: new UpdatePromoCampaignData(
             name: 'Generate test',
             locale: 'fr',
-            letterBodyHtml: '<p>Bonjour {{name}}</p>',
+            letterBodyHtml: '<p>Bonjour {{name}}</p><p><br></p><p>Suite du texte</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
             flowImagePath: 'public/images/promo/flow_fr.jpg',
@@ -169,6 +170,14 @@ it('genereert docx voor campagne-ontvanger', function () {
     $docxPath = $campaign->fresh()->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
     expect(is_file($docxPath))->toBeTrue();
 
+    $zip = new ZipArchive();
+    expect($zip->open($docxPath))->toBeTrue();
+    $documentXml = $zip->getFromName('word/document.xml');
+    $zip->close();
+    expect($documentXml)->toBeString()
+        ->and($documentXml)->toContain('Bonjour')
+        ->and($documentXml)->not->toContain('<p>Bonjour');
+
     @unlink($docxPath);
 });
 
@@ -192,6 +201,13 @@ it('herstelt dubbel ge-escaped editor html', function () {
 
     expect(PromoCampaignHtmlSanitizer::forEditor($encoded))
         ->toBe('<p>Dit is een test brief</p><p>{{name}}</p>');
+});
+
+it('normaliseert quill html voor docx en mail', function () {
+    $html = '<p>Dit is een test</p><p><br></p><ol><li data-list="bullet">1</li><li data-list="bullet">2</li></ol>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::normalize($html))
+        ->toBe('<p>Dit is een test</p><p><br/></p><ul><li>1</li><li>2</li></ul>');
 });
 
 it('laat superuser promo-campagnes beheren', function () {

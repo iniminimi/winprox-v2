@@ -7,7 +7,7 @@ namespace App\Actions\Marketing;
 use App\Actions\Audit\LogAuditAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Models\PromoCampaign;
-use App\Support\Marketing\PromoCampaignHtmlSanitizer;
+use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use RuntimeException;
 
 class UpdatePromoCampaignAction
@@ -33,12 +33,15 @@ class UpdatePromoCampaignAction
             }
         }
 
+        $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->letterBodyHtml);
+        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->emailBodyHtml);
+
         $campaign->update([
             'name' => $name,
             'locale' => $locale,
-            'letter_body_html' => PromoCampaignHtmlSanitizer::clean($data->letterBodyHtml),
+            'letter_body_html' => $letterBodyHtml !== '' ? $letterBodyHtml : null,
             'email_subject' => $data->emailSubject !== null ? trim($data->emailSubject) : null,
-            'email_body_html' => PromoCampaignHtmlSanitizer::clean($data->emailBodyHtml),
+            'email_body_html' => $emailBodyHtml !== '' ? $emailBodyHtml : null,
             'flow_image_path' => $data->flowImagePath !== null && trim($data->flowImagePath) !== ''
                 ? trim($data->flowImagePath)
                 : null,

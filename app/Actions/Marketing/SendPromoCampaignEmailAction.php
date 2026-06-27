@@ -66,7 +66,9 @@ class SendPromoCampaignEmailAction
         );
 
         $emailSubject = PromoCampaignPlaceholderRenderer::render($emailSubject, $placeholders);
-        $emailBodyHtml = PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders);
+        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize(
+            PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
+        );
 
         $send = PromoCampaignEmailSend::query()->firstOrNew([
             'promo_campaign_id' => $campaign->id,
