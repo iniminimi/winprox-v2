@@ -169,7 +169,7 @@
         "test_email": "Testmail versturen",
         "force_send": "Opnieuw versturen",
         "queue_emails": "Mails in wachtrij",
-        "queue_hint": "Zorg dat queue:work draait op de server.",
+        "queue_hint": "Draai op de server (bijv. in screen of via supervisor):",
         "queued": ":queued mail(s) gepland, :skipped overgeslagen.",
         "generated": ":generated brieven gegenereerd, :skipped overgeslagen.",
         "localhost_blocked": "Genereer brieven op productie (geen localhost QR).",

@@ -169,7 +169,7 @@
         "test_email": "Envoyer e-mail test",
         "force_send": "Renvoyer",
         "queue_emails": "Mettre en file",
-        "queue_hint": "Assurez-vous que queue:work tourne sur le serveur.",
+        "queue_hint": "À lancer sur le serveur (screen ou supervisor) :",
         "queued": ":queued e-mail(s) en file, :skipped ignoré(s).",
         "generated": ":generated lettres générées, :skipped ignorée(s).",
         "localhost_blocked": "Générez les lettres en production (pas de QR localhost).",

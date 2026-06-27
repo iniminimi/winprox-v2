@@ -86,6 +86,17 @@
             <textarea id="email-body-html" class="sr-only" wire:model="emailBodyHtml"></textarea>
         </div>
 
+        @if ($saveNotice)
+            <div
+                id="save-feedback"
+                @class([
+                    'wp-flash',
+                    'wp-flash--success' => $saveNoticeType !== 'error',
+                    'wp-flash--danger' => $saveNoticeType === 'error',
+                ])
+            >{{ $saveNotice }}</div>
+        @endif
+
         <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.save') }}</button>
     </form>
 
@@ -216,6 +227,8 @@
                 </button>
             </div>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_hint') }}</p>
+            <pre class="wp-muted wp-text-sm" style="margin: 0; padding: 0.75rem; background: var(--wp-surface-2); border-radius: var(--wp-radius); overflow-x: auto;"><code>cd {{ base_path() }}
+php artisan queue:work database --sleep=3 --tries=3</code></pre>
         </div>
     </div>
 

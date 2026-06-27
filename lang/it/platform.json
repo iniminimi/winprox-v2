@@ -169,7 +169,7 @@
         "test_email": "Invia email di test",
         "force_send": "Reinvia",
         "queue_emails": "Metti in coda",
-        "queue_hint": "Assicurati che queue:work sia attivo sul server.",
+        "queue_hint": "Eseguire sul server (es. screen o supervisor):",
         "queued": ":queued email in coda, :skipped saltate.",
         "generated": ":generated lettere generate, :skipped saltate.",
         "localhost_blocked": "Genera lettere in produzione (niente QR localhost).",

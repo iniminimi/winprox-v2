@@ -169,7 +169,7 @@
         "test_email": "Send test email",
         "force_send": "Resend",
         "queue_emails": "Queue emails",
-        "queue_hint": "Ensure queue:work is running on the server.",
+        "queue_hint": "Run on the server (e.g. in screen or via supervisor):",
         "queued": ":queued email(s) queued, :skipped skipped.",
         "generated": ":generated letters generated, :skipped skipped.",
         "localhost_blocked": "Generate letters on production (no localhost QR).",

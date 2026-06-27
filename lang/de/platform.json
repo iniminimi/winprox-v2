@@ -170,7 +170,7 @@
         "test_email": "Testmail senden",
         "force_send": "Erneut senden",
         "queue_emails": "Mails einreihen",
-        "queue_hint": "Stellen Sie sicher, dass queue:work auf dem Server läuft.",
+        "queue_hint": "Auf dem Server ausführen (z. B. screen oder Supervisor):",
         "queued": ":queued Mail(s) eingeplant, :skipped übersprungen.",
         "generated": ":generated Briefe generiert, :skipped übersprungen.",
         "localhost_blocked": "Briefe auf Produktion generieren (kein localhost-QR).",

@@ -169,7 +169,7 @@
         "test_email": "Enviar correo de prueba",
         "force_send": "Reenviar",
         "queue_emails": "Encolar correos",
-        "queue_hint": "Asegúrese de que queue:work esté en ejecución.",
+        "queue_hint": "Ejecute en el servidor (p. ej. screen o supervisor):",
         "queued": ":queued correo(s) en cola, :skipped omitidos.",
         "generated": ":generated cartas generadas, :skipped omitidas.",
         "localhost_blocked": "Genere cartas en producción (sin QR localhost).",

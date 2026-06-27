@@ -226,7 +226,8 @@ it('slaat promo-campagne op via edit-pagina', function () {
         ->set('mapEmail', 'email_general')
         ->call('save')
         ->assertHasNoErrors()
-        ->assertSet('flashMessage', __('platform.promo_campaigns.saved'));
+        ->assertSet('saveNotice', __('platform.promo_campaigns.saved'))
+        ->assertSee(__('platform.promo_campaigns.saved'));
 
     expect($campaign->fresh())
         ->name->toBe('Save test bijgewerkt')
