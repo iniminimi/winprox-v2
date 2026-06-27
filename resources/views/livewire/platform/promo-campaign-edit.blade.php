@@ -52,7 +52,6 @@
                 class="wp-promo-quill wp-promo-quill--tall"
                 data-wp-promo-quill
                 data-textarea-id="letter-body-html"
-                data-initial-html="{{ e($letterBodyHtml) }}"
             >
                 <div class="wp-promo-quill-editor"></div>
             </div>
@@ -71,7 +70,6 @@
                 class="wp-promo-quill"
                 data-wp-promo-quill
                 data-textarea-id="email-body-html"
-                data-initial-html="{{ e($emailBodyHtml) }}"
             >
                 <div class="wp-promo-quill-editor"></div>
             </div>

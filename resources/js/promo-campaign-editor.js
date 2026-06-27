@@ -49,7 +49,8 @@ function mountEditors() {
     document.querySelectorAll('[data-wp-promo-quill]').forEach((wrapper) => {
         const editorEl = wrapper.querySelector('.wp-promo-quill-editor');
         const textareaId = wrapper.getAttribute('data-textarea-id');
-        const initialHtml = wrapper.getAttribute('data-initial-html') || '';
+        const textarea = textareaId ? document.getElementById(textareaId) : null;
+        const initialHtml = textarea?.value || '';
 
         if (!editorEl || !textareaId || editors.has(editorEl)) {
             return;

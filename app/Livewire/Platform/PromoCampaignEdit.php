@@ -296,9 +296,9 @@ class PromoCampaignEdit extends Component
 
         $this->name = $this->campaign->name;
         $this->locale = $this->campaign->locale;
-        $this->letterBodyHtml = (string) (PromoCampaignHtmlSanitizer::clean($this->campaign->letter_body_html) ?? '');
+        $this->letterBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->letter_body_html);
         $this->emailSubject = (string) ($this->campaign->email_subject ?? '');
-        $this->emailBodyHtml = (string) (PromoCampaignHtmlSanitizer::clean($this->campaign->email_body_html) ?? '');
+        $this->emailBodyHtml = PromoCampaignHtmlSanitizer::forEditor($this->campaign->email_body_html);
         $this->flowImagePath = (string) ($this->campaign->flow_image_path ?? '');
         $this->mapName = (string) ($mapping['name'] ?? '');
         $this->mapEmail = (string) ($mapping['email'] ?? '');
@@ -330,9 +330,9 @@ class PromoCampaignEdit extends Component
             data: new UpdatePromoCampaignData(
                 name: $this->name,
                 locale: $this->locale,
-                letterBodyHtml: $this->letterBodyHtml !== '' ? $this->letterBodyHtml : null,
+                letterBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->letterBodyHtml) ?: null,
                 emailSubject: $this->emailSubject !== '' ? $this->emailSubject : null,
-                emailBodyHtml: $this->emailBodyHtml !== '' ? $this->emailBodyHtml : null,
+                emailBodyHtml: PromoCampaignHtmlSanitizer::forEditor($this->emailBodyHtml) ?: null,
                 flowImagePath: $this->flowImagePath !== '' ? $this->flowImagePath : null,
                 columnMapping: $this->columnMappingArray(),
             ),

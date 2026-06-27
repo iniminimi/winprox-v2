@@ -28,6 +28,19 @@ final class PromoCampaignHtmlSanitizer
         return $html;
     }
 
+    public static function forEditor(?string $html): string
+    {
+        if ($html === null || trim($html) === '') {
+            return '';
+        }
+
+        if (str_contains($html, '&lt;') || str_contains($html, '&gt;') || str_contains($html, '&amp;')) {
+            $html = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        }
+
+        return (string) (self::clean($html) ?? '');
+    }
+
     public static function isBlank(?string $html): bool
     {
         if ($html === null) {

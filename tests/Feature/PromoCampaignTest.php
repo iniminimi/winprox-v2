@@ -187,6 +187,13 @@ it('behandelt lege quill-html als leeg', function () {
         ->and(PromoCampaignHtmlSanitizer::clean('<p>Hallo</p>'))->toBe('<p>Hallo</p>');
 });
 
+it('herstelt dubbel ge-escaped editor html', function () {
+    $encoded = '&lt;p&gt;Dit is een test brief&lt;/p&gt;&lt;p&gt;{{name}}&lt;/p&gt;';
+
+    expect(PromoCampaignHtmlSanitizer::forEditor($encoded))
+        ->toBe('<p>Dit is een test brief</p><p>{{name}}</p>');
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 
