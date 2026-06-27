@@ -33,12 +33,11 @@ class UpdatePromoCampaignRequest extends FormRequest
             'emailSubject' => ['nullable', 'string', 'max:255'],
             'emailBodyHtml' => ['nullable', 'string'],
             'flowImagePath' => ['nullable', 'string', 'max:500'],
-            'columnMapping' => ['nullable', 'array'],
-            'columnMapping.name' => ['nullable', 'string', 'max:255'],
-            'columnMapping.email' => ['nullable', 'string', 'max:255'],
-            'columnMapping.street_address' => ['nullable', 'string', 'max:255'],
-            'columnMapping.postal_code' => ['nullable', 'string', 'max:255'],
-            'columnMapping.city' => ['nullable', 'string', 'max:255'],
+            'mapName' => ['nullable', 'string', 'max:255'],
+            'mapEmail' => ['nullable', 'string', 'max:255'],
+            'mapStreetAddress' => ['nullable', 'string', 'max:255'],
+            'mapPostalCode' => ['nullable', 'string', 'max:255'],
+            'mapCity' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

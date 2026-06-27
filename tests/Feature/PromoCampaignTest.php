@@ -202,6 +202,33 @@ it('laat superuser promo-campagnes beheren', function () {
     expect(PromoCampaign::query()->where('slug', 'wallonie-wave-1')->exists())->toBeTrue();
 });
 
+it('slaat promo-campagne op via edit-pagina', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-save',
+        name: 'Save test',
+        locale: 'fr',
+        actorUserId: (int) $superuser->id,
+    );
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('name', 'Save test bijgewerkt')
+        ->set('mapName', 'nom')
+        ->set('mapEmail', 'email_general')
+        ->call('save')
+        ->assertHasNoErrors()
+        ->assertSet('flashMessage', __('platform.promo_campaigns.saved'));
+
+    expect($campaign->fresh())
+        ->name->toBe('Save test bijgewerkt')
+        ->column_mapping->toMatchArray([
+            'name' => 'nom',
+            'email' => 'email_general',
+        ]);
+});
+
 it('toont duidelijke fout bij ongeldige campagne-slug', function () {
     $superuser = User::factory()->superuser()->create();
 
