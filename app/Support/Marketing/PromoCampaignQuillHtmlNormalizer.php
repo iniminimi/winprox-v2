@@ -30,6 +30,19 @@ final class PromoCampaignQuillHtmlNormalizer
     }
 
     /**
+     * E-mail body: lege Quill-paragrafen weg (voorkomt dubbele witruimte in mail-template).
+     */
+    public static function forMail(?string $html): string
+    {
+        $html = self::normalize($html);
+        if ($html === '') {
+            return '';
+        }
+
+        return self::collapseEmptyParagraphs($html);
+    }
+
+    /**
      * Brief-middenstuk voor DOCX: lege Quill-paragrafen weg, lijsten naar bullets, compacte spacing.
      */
     public static function forDocx(?string $html, string $locale): string

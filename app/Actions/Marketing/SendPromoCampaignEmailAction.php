@@ -67,7 +67,7 @@ class SendPromoCampaignEmailAction
         );
 
         $emailSubject = PromoCampaignPlaceholderRenderer::render($emailSubject, $placeholders);
-        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize(
+        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::forMail(
             PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
         );
 

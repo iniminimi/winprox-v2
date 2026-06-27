@@ -214,6 +214,15 @@ it('normaliseert quill html voor docx en mail', function () {
         ->toBe('<p>Dit is een test</p><p><br/></p><ul><li>1</li><li>2</li></ul>');
 });
 
+it('verwijdert lege quill-paragrafen uit e-mail body', function () {
+    $html = '<p>Madame, Monsieur,</p><p><br></p>'
+        .'<p>La gestion des infrastructures.</p><p><br/></p>'
+        .'<p>Sans installation d\'application.</p>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
+        ->toBe('<p>Madame, Monsieur,</p><p>La gestion des infrastructures.</p><p>Sans installation d\'application.</p>');
+});
+
 it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function () {
     $html = '<p>Wavre</p><p>place de l\'Hôtel de Ville</p><p>1300 Wavre</p><p><br></p>'
         .'<p>Madame, Monsieur,</p><p><br></p>'
