@@ -30,7 +30,7 @@ final class PromoCampaignQuillHtmlNormalizer
     }
 
     /**
-     * E-mail body: lege Quill-paragrafen weg (voorkomt dubbele witruimte in mail-template).
+     * E-mail body: lege Quill-paragrafen weg, blokken met inline marges (e-mailclients negeren vaak <style>).
      */
     public static function forMail(?string $html): string
     {
@@ -39,7 +39,15 @@ final class PromoCampaignQuillHtmlNormalizer
             return '';
         }
 
-        return self::collapseEmptyParagraphs($html);
+        $html = self::collapseEmptyParagraphs($html);
+
+        if (self::lacksBlockStructure($html)) {
+            $html = self::plainTextToParagraphHtml($html);
+        }
+
+        $html = self::splitSingleParagraphOnBreaks($html);
+
+        return self::applyMailBodyParagraphSpacing($html);
     }
 
     /**
@@ -148,6 +156,116 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = preg_replace('/<ol(\s[^>]*)?>/i', '<ul>', $html) ?? $html;
 
         return preg_replace('/<\/ol>/i', '</ul>', $html) ?? $html;
+    }
+
+    private static function lacksBlockStructure(string $html): bool
+    {
+        return ! preg_match('/<(p|ul|ol|li|h[1-6]|div|table|blockquote)\b/i', $html);
+    }
+
+    private static function plainTextToParagraphHtml(string $text): string
+    {
+        $text = trim(str_replace(["\r\n", "\r"], "\n", $text));
+        if ($text === '') {
+            return '';
+        }
+
+        $blocks = preg_split('/\n\s*\n/', $text) ?: [];
+        if (count($blocks) === 1) {
+            $lines = array_values(array_filter(
+                array_map('trim', explode("\n", $text)),
+                static fn (string $line): bool => $line !== '',
+            ));
+
+            if ($lines === []) {
+                return '';
+            }
+
+            return implode('', array_map(
+                static fn (string $line): string => '<p>'.htmlspecialchars($line, ENT_QUOTES | ENT_HTML5, 'UTF-8').'</p>',
+                $lines,
+            ));
+        }
+
+        return implode('', array_map(
+            static function (string $block): string {
+                $block = trim($block);
+                if ($block === '') {
+                    return '';
+                }
+
+                return '<p>'.nl2br(htmlspecialchars($block, ENT_QUOTES | ENT_HTML5, 'UTF-8'), false).'</p>';
+            },
+            $blocks,
+        ));
+    }
+
+    private static function splitSingleParagraphOnBreaks(string $html): string
+    {
+        $trimmed = trim($html);
+        if (! preg_match('/^<p[^>]*>(.*)<\/p>$/is', $trimmed, $matches)) {
+            return $html;
+        }
+
+        $inner = $matches[1];
+        if (! preg_match('/<br\s*\/?>/i', $inner)) {
+            return $html;
+        }
+
+        $parts = preg_split('/<br\s*\/?>/i', $inner) ?: [];
+        $paragraphs = [];
+        foreach ($parts as $part) {
+            $part = trim($part);
+            if ($part === '' || PromoCampaignHtmlSanitizer::isBlank($part)) {
+                continue;
+            }
+
+            $paragraphs[] = '<p>'.$part.'</p>';
+        }
+
+        return $paragraphs === [] ? $html : implode('', $paragraphs);
+    }
+
+    private static function applyMailBodyParagraphSpacing(string $html): string
+    {
+        $html = preg_replace_callback(
+            '/<p(\s[^>]*)?>/i',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                if (str_contains($attrs, 'margin')) {
+                    return $matches[0];
+                }
+
+                return '<p style="margin:0 0 16px 0"'.$attrs.'>';
+            },
+            $html,
+        ) ?? $html;
+
+        $html = preg_replace_callback(
+            '/<ul(\s[^>]*)?>/i',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                if (str_contains($attrs, 'margin')) {
+                    return $matches[0];
+                }
+
+                return '<ul style="margin:0 0 16px 0;padding-left:1.25rem"'.$attrs.'>';
+            },
+            $html,
+        ) ?? $html;
+
+        return preg_replace_callback(
+            '/<ol(\s[^>]*)?>/i',
+            static function (array $matches): string {
+                $attrs = $matches[1] ?? '';
+                if (str_contains($attrs, 'margin')) {
+                    return $matches[0];
+                }
+
+                return '<ol style="margin:0 0 16px 0;padding-left:1.25rem"'.$attrs.'>';
+            },
+            $html,
+        ) ?? $html;
     }
 
     private static function applyDocxBodyParagraphSpacing(string $html): string

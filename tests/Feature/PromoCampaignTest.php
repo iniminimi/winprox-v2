@@ -222,7 +222,36 @@ it('verwijdert lege quill-paragrafen uit e-mail body', function () {
         .'<p>Sans installation d\'application.</p>';
 
     expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
-        ->toBe('<p>Madame, Monsieur,</p><p>La gestion des infrastructures.</p><p>Sans installation d\'application.</p>');
+        ->toBe(
+            '<p style="margin:0 0 16px 0">Madame, Monsieur,</p>'
+            .'<p style="margin:0 0 16px 0">La gestion des infrastructures.</p>'
+            .'<p style="margin:0 0 16px 0">Sans installation d\'application.</p>',
+        );
+});
+
+it('zet platte tekst om naar gescheiden e-mail paragrafen', function () {
+    $text = "Madame, Monsieur,\n"
+        ."Veuillez trouver ci-joint une présentation de WinProx.\n"
+        ."Sans installation d'application, les citoyens peuvent signaler un problème.\n"
+        ."Cordialement,";
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forMail($text);
+
+    expect($prepared)
+        ->toContain('<p style="margin:0 0 16px 0">Madame, Monsieur,</p>')
+        ->toContain('<p style="margin:0 0 16px 0">Veuillez trouver ci-joint une présentation de WinProx.</p>')
+        ->toContain('<p style="margin:0 0 16px 0">Cordialement,</p>');
+});
+
+it('splitst enkele quill-paragraaf met br-tags voor e-mail', function () {
+    $html = '<p>Madame, Monsieur,<br>Veuillez trouver ci-joint.<br>Sans installation.</p>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forMail($html))
+        ->toBe(
+            '<p style="margin:0 0 16px 0">Madame, Monsieur,</p>'
+            .'<p style="margin:0 0 16px 0">Veuillez trouver ci-joint.</p>'
+            .'<p style="margin:0 0 16px 0">Sans installation.</p>',
+        );
 });
 
 it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function () {
@@ -350,9 +379,13 @@ it('blokkeert promo-campagnes voor normale gebruikers', function () {
 });
 
 it('rendert promo-campagne e-mail als html zonder view-fout', function () {
+    $bodyHtml = PromoCampaignQuillHtmlNormalizer::forMail(
+        '<p>Madame, Monsieur,</p><p>La gestion des infrastructures.</p>',
+    );
+
     $html = (new PromoCampaignLetterMail(
         emailSubject: 'WinProx pour Wavre',
-        emailBodyHtml: '<p>Madame, Monsieur,</p><p>La gestion des infrastructures.</p>',
+        emailBodyHtml: $bodyHtml,
         docxPath: __FILE__,
         mailLocale: 'fr',
     ))->render();
@@ -361,7 +394,8 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
         ->toContain('Madame, Monsieur')
         ->toContain('La gestion des infrastructures')
         ->toContain('email-wrapper')
-        ->toContain('Winprox_logo_100.png');
+        ->toContain('Winprox_logo_100.png')
+        ->toContain('margin:0 0 16px 0');
 });
 
 it('voegt campagne-locale toe aan promo-landing-url', function () {
