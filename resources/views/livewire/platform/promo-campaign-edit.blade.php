@@ -11,14 +11,6 @@
         </a>
     </p>
 
-    @if ($flashMessage)
-        <div @class([
-            'wp-flash',
-            'wp-flash--success' => $flashType !== 'error',
-            'wp-flash--danger' => $flashType === 'error',
-        ])>{{ $flashMessage }}</div>
-    @endif
-
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-muted wp-text-sm">
             {{ __('platform.promo_campaigns.stats', $stats) }}
@@ -86,17 +78,6 @@
             <textarea id="email-body-html" class="sr-only" wire:model="emailBodyHtml"></textarea>
         </div>
 
-        @if ($saveNotice)
-            <div
-                id="save-feedback"
-                @class([
-                    'wp-flash',
-                    'wp-flash--success' => $saveNoticeType !== 'error',
-                    'wp-flash--danger' => $saveNoticeType === 'error',
-                ])
-            >{{ $saveNotice }}</div>
-        @endif
-
         <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.save') }}</button>
     </form>
 
@@ -104,16 +85,7 @@
         <p class="wp-subhead">{{ __('platform.promo_campaigns.import_title') }}</p>
         <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.import_lead') }}</p>
 
-        @if ($importNotice)
-            <div
-                id="import-feedback"
-                @class([
-                    'wp-flash',
-                    'wp-flash--success' => $importNoticeType !== 'error',
-                    'wp-flash--danger' => $importNoticeType === 'error',
-                ])
-            >{{ $importNotice }}</div>
-        @elseif ($latestImport)
+        @if ($latestImport)
             <div class="wp-flash wp-flash--muted">
                 {{ __('platform.promo_campaigns.last_import', [
                     'count' => $latestImport->row_count,
@@ -264,5 +236,25 @@
                 <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.targets_truncated', ['shown' => $targets->count(), 'total' => $stats['targets']]) }}</p>
             @endif
         </div>
+    @endif
+
+    @if ($noticeMessage)
+        <x-wp-modal closeMethod="dismissNotice">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-notice-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-campaign-notice-title" class="wp-section-title">{{ __('platform.promo_campaigns.notice_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissNotice" />
+                </div>
+                <div class="wp-modal-body">
+                    <p @class([
+                        'wp-text-body',
+                        'wp-text-danger' => $noticeType === 'error',
+                    ])>{{ $noticeMessage }}</p>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--primary" wire:click="dismissNotice">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 </div>

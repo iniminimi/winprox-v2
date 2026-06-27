@@ -64,10 +64,6 @@ document.addEventListener('livewire:navigated', mountEditors);
 
 if (typeof Livewire !== 'undefined') {
     document.addEventListener('livewire:init', () => {
-        Livewire.on('promo-campaign-import-done', () => {
-            document.getElementById('import-feedback')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-
         Livewire.hook('morph.updated', () => {
             mountEditors();
         });

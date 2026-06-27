@@ -65,17 +65,14 @@ class PromoCampaignEdit extends Component
 
     public bool $forceSend = false;
 
-    public ?string $flashMessage = null;
+    public ?string $noticeMessage = null;
 
-    public string $flashType = 'success';
+    public string $noticeType = 'success';
 
-    public ?string $importNotice = null;
-
-    public string $importNoticeType = 'success';
-
-    public ?string $saveNotice = null;
-
-    public string $saveNoticeType = 'success';
+    public function dismissNotice(): void
+    {
+        $this->noticeMessage = null;
+    }
 
     public function mount(PromoCampaign $promoCampaign): void
     {
@@ -86,7 +83,7 @@ class PromoCampaignEdit extends Component
 
     public function updatedSpreadsheet(): void
     {
-        $this->importNotice = null;
+        $this->noticeMessage = null;
         $this->detectedHeaders = [];
         if ($this->spreadsheet === null) {
             return;
@@ -115,9 +112,7 @@ class PromoCampaignEdit extends Component
 
         $this->persistCampaign($update, (int) $user->id);
 
-        $this->saveNoticeType = 'success';
-        $this->saveNotice = __('platform.promo_campaigns.saved');
-        $this->flashMessage = null;
+        $this->showNotice(__('platform.promo_campaigns.saved'));
     }
 
     public function importSpreadsheet(ImportPromoCampaignSpreadsheetAction $import): void
@@ -160,25 +155,15 @@ class PromoCampaignEdit extends Component
         $this->fillFromCampaign();
 
         if ($targetCount > 0) {
-            $this->saveNotice = null;
-            $this->importNoticeType = 'success';
-            $this->importNotice = __('platform.promo_campaigns.imported_detail', [
+            $this->showNotice(__('platform.promo_campaigns.imported_detail', [
                 'count' => $targetCount,
                 'filename' => $originalFilename,
-            ]);
-            $this->flashType = 'success';
-            $this->flashMessage = __('platform.promo_campaigns.imported', ['count' => $targetCount]);
+            ]));
         } else {
-            $this->saveNotice = null;
-            $this->importNoticeType = 'error';
-            $this->importNotice = __('platform.promo_campaigns.imported_empty', [
+            $this->showNotice(__('platform.promo_campaigns.imported_empty', [
                 'filename' => $originalFilename,
-            ]);
-            $this->flashType = 'error';
-            $this->flashMessage = $this->importNotice;
+            ]), 'error');
         }
-
-        $this->dispatch('promo-campaign-import-done');
     }
 
     public function generateLetters(
@@ -193,9 +178,7 @@ class PromoCampaignEdit extends Component
         }
 
         if (PromoBaseUrl::isLocalhost(PromoBaseUrl::resolve(null)) && ! app()->environment('testing')) {
-            $this->saveNotice = null;
-            $this->flashType = 'error';
-            $this->flashMessage = __('platform.promo_campaigns.localhost_blocked');
+            $this->showNotice(__('platform.promo_campaigns.localhost_blocked'), 'error');
 
             return;
         }
@@ -209,12 +192,10 @@ class PromoCampaignEdit extends Component
             overwriteExisting: $this->forceGenerate,
         );
 
-        $this->saveNotice = null;
-        $this->flashType = 'success';
-        $this->flashMessage = __('platform.promo_campaigns.generated', [
+        $this->showNotice(__('platform.promo_campaigns.generated', [
             'generated' => $result['generated'],
             'skipped' => $result['skipped'],
-        ]);
+        ]));
     }
 
     public function queueEmails(QueuePromoCampaignEmailsAction $queue): void
@@ -236,12 +217,10 @@ class PromoCampaignEdit extends Component
             forceResend: $this->forceSend,
         );
 
-        $this->saveNotice = null;
-        $this->flashType = 'success';
-        $this->flashMessage = __('platform.promo_campaigns.queued', [
+        $this->showNotice(__('platform.promo_campaigns.queued', [
             'queued' => $result['queued'],
             'skipped' => $result['skipped'],
-        ]);
+        ]));
     }
 
     public function sendTestEmail(SendPromoCampaignEmailAction $send): void
@@ -250,9 +229,7 @@ class PromoCampaignEdit extends Component
 
         $override = trim($this->overrideTo);
         if ($override === '' || filter_var($override, FILTER_VALIDATE_EMAIL) === false) {
-            $this->saveNotice = null;
-            $this->flashType = 'error';
-            $this->flashMessage = __('platform.promo_campaigns.test_email_invalid');
+            $this->showNotice(__('platform.promo_campaigns.test_email_invalid'), 'error');
 
             return;
         }
@@ -264,9 +241,7 @@ class PromoCampaignEdit extends Component
 
         $target = $this->campaign->targets()->whereNotNull('generated_at')->orderBy('id')->first();
         if ($target === null) {
-            $this->saveNotice = null;
-            $this->flashType = 'error';
-            $this->flashMessage = __('platform.promo_campaigns.test_email_no_letter');
+            $this->showNotice(__('platform.promo_campaigns.test_email_no_letter'), 'error');
 
             return;
         }
@@ -278,9 +253,13 @@ class PromoCampaignEdit extends Component
             overrideRecipientEmail: $override,
         );
 
-        $this->saveNotice = null;
-        $this->flashType = 'success';
-        $this->flashMessage = __('platform.promo_campaigns.test_email_sent', ['email' => $override]);
+        $this->showNotice(__('platform.promo_campaigns.test_email_sent', ['email' => $override]));
+    }
+
+    private function showNotice(string $message, string $type = 'success'): void
+    {
+        $this->noticeMessage = $message;
+        $this->noticeType = $type;
     }
 
     public function render()

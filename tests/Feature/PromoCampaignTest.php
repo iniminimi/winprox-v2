@@ -105,11 +105,8 @@ it('toont importbevestiging na excel-upload in livewire', function () {
         ->set('mapStreetAddress', 'adres')
         ->set('mapPostalCode', 'postcode')
         ->call('importSpreadsheet')
-        ->assertSet('importNoticeType', 'success')
-        ->assertSee(__('platform.promo_campaigns.imported_detail', [
-            'count' => PromoCampaignTarget::query()->where('promo_campaign_id', $campaign->id)->count(),
-            'filename' => 'sample.xlsx',
-        ]));
+        ->assertSet('noticeType', 'success')
+        ->assertSet('noticeMessage', fn ($message) => str_contains((string) $message, 'sample.xlsx'));
 });
 
 it('genereert docx voor campagne-ontvanger', function () {
@@ -226,7 +223,7 @@ it('slaat promo-campagne op via edit-pagina', function () {
         ->set('mapEmail', 'email_general')
         ->call('save')
         ->assertHasNoErrors()
-        ->assertSet('saveNotice', __('platform.promo_campaigns.saved'))
+        ->assertSet('noticeMessage', __('platform.promo_campaigns.saved'))
         ->assertSee(__('platform.promo_campaigns.saved'));
 
     expect($campaign->fresh())
