@@ -26,13 +26,15 @@
         }
         .header {
             background-color: #ffffff;
-            padding: 24px;
+            padding: 12px 24px 20px;
             text-align: center;
             border-bottom: 1px solid #e2e8f0;
         }
         .header img {
+            display: block;
             max-width: 100px;
             height: auto;
+            margin: 0 auto;
         }
         .accent-line {
             height: 4px;
@@ -85,7 +87,7 @@
                 padding: 24px 20px;
             }
             .header {
-                padding: 24px 20px;
+                padding: 12px 20px 18px;
             }
             .header h1 {
                 font-size: 20px;
