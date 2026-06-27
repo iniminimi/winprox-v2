@@ -135,7 +135,7 @@ it('genereert docx voor campagne-ontvanger', function () {
         data: new UpdatePromoCampaignData(
             name: 'Generate test',
             locale: 'fr',
-            letterBodyHtml: '<p>Wavre</p><p>place test</p><p>1300 Wavre</p><p><br></p><p>Madame, Monsieur,</p><p><br></p><p>Bonjour {{name}}</p><p><br></p><p>Suite du texte</p><p>Dans l\'attente de votre retour, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.</p><p>Dominique Schaepdrijver</p>',
+            letterBodyHtml: '<p>Intro {{name}}</p><p>Les avantages :</p><ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol><p>Afsluiting.</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
             flowImagePath: 'public/images/promo/flow_fr.jpg',
@@ -176,13 +176,11 @@ it('genereert docx voor campagne-ontvanger', function () {
     $documentXml = $zip->getFromName('word/document.xml');
     $zip->close();
     expect($documentXml)->toBeString()
-        ->and($documentXml)->toContain('Bonjour')
-        ->and($documentXml)->not->toContain('<p>Bonjour')
-        ->and($documentXml)->not->toContain('Dans l&#039;attente')
-        ->and(strpos($documentXml, 'Dans l') !== false && strpos($documentXml, '<w:tbl') !== false
-            ? strpos($documentXml, 'Dans l') < strpos($documentXml, '<w:tbl')
-            : true)
-        ->and(substr_count($documentXml, '<w:p '))->toBeLessThan(30);
+        ->and($documentXml)->toContain('Intro')
+        ->and($documentXml)->toContain('Punt één')
+        ->and($documentXml)->toContain('<w:numPr>')
+        ->and($documentXml)->toContain('w:after="120"')
+        ->and(substr_count($documentXml, '<w:p '))->toBeLessThan(35);
 
     @unlink($docxPath);
 });
@@ -235,7 +233,7 @@ it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function
         ->not->toContain('1300 Wavre');
 });
 
-it('zet quill-lijsten om naar bullet-paragrafen voor docx', function () {
+it('behoudt quill-lijsten voor docx met ul-li structuur', function () {
     $html = '<p>Les avantages pour votre commune :</p>'
         .'<ol><li data-list="bullet"><span class="ql-ui"></span><strong>Gestion centralisée</strong> : Tous les signalements.</li>'
         .'<li data-list="bullet"><span class="ql-ui"></span>Entretien optimisé : Les équipes.</li></ol>'
@@ -244,10 +242,9 @@ it('zet quill-lijsten om naar bullet-paragrafen voor docx', function () {
     $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr');
 
     expect($prepared)
-        ->toContain('• <strong>Gestion centralisée</strong> : Tous les signalements.')
-        ->toContain('• Entretien optimisé : Les équipes.')
-        ->not->toContain('<ul>')
-        ->not->toContain('<li>');
+        ->toContain('<ul><li>')
+        ->toContain('margin-bottom:6pt')
+        ->not->toContain('<p>•');
 });
 
 it('wist brief-middenstuk niet weg bij aanhef diep in de tekst', function () {

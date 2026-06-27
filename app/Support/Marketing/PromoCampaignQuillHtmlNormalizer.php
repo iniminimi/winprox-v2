@@ -42,8 +42,7 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = self::collapseEmptyParagraphs($html);
         $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
-        $html = self::convertListsToBulletParagraphs($html);
-        $html = self::compactDocxParagraphSpacing($html);
+        $html = self::applyDocxBodyParagraphSpacing($html);
 
         return self::collapseEmptyParagraphs($html);
     }
@@ -123,49 +122,20 @@ final class PromoCampaignQuillHtmlNormalizer
         return trim(substr($html, 0, $cutAt));
     }
 
-    private static function convertListsToBulletParagraphs(string $html): string
+    private static function applyDocxBodyParagraphSpacing(string $html): string
     {
-        if (! str_contains($html, '<li')) {
-            return $html;
-        }
-
         return preg_replace_callback(
-            '/<(?:ol|ul)[^>]*>(.*?)<\/(?:ol|ul)>/is',
+            '/<p(\s[^>]*)?>/i',
             static function (array $matches): string {
-                if (! preg_match_all('/<li[^>]*>(.*?)<\/li>/is', $matches[1], $items, PREG_SET_ORDER)) {
-                    return '';
+                $attrs = $matches[1] ?? '';
+                if (str_contains($attrs, 'margin-bottom')) {
+                    return $matches[0];
                 }
 
-                $paragraphs = [];
-                foreach ($items as $item) {
-                    $inner = preg_replace(
-                        '/<span[^>]*class="[^"]*ql-ui[^"]*"[^>]*>.*?<\/span>/is',
-                        '',
-                        $item[1],
-                    ) ?? $item[1];
-                    $inner = trim($inner);
-                    if ($inner === '' || PromoCampaignHtmlSanitizer::isBlank('<p>'.$inner.'</p>')) {
-                        continue;
-                    }
-
-                    $paragraphs[] = '<p>• '.$inner.'</p>';
-                }
-
-                return implode('', $paragraphs);
+                return '<p style="margin-bottom:6pt"'.$attrs.'>';
             },
             $html,
         ) ?? $html;
-    }
-
-    private static function compactDocxParagraphSpacing(string $html): string
-    {
-        $html = preg_replace(
-            '/<p(\s[^>]*)?>/i',
-            '<p style="margin-top:0;margin-bottom:0"$1>',
-            $html,
-        ) ?? $html;
-
-        return $html;
     }
 
     private static function greetingForLocale(string $locale): string

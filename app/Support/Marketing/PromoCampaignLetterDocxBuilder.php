@@ -187,6 +187,12 @@ final class PromoCampaignLetterDocxBuilder
         $canInsertFlow = $flowImagePath !== null && $flowImagePath !== '' && is_file($flowImagePath);
 
         if ($canInsertFlow && str_contains($letterBodyHtml, $placeholder)) {
+            $letterBodyHtml = preg_replace(
+                '/<p[^>]*>\s*'.preg_quote($placeholder, '/').'\s*<\/p>/iu',
+                $placeholder,
+                $letterBodyHtml,
+            ) ?? $letterBodyHtml;
+
             $parts = explode($placeholder, $letterBodyHtml, 2);
             $before = PromoCampaignQuillHtmlNormalizer::forDocx($parts[0], $locale);
             $after = PromoCampaignQuillHtmlNormalizer::forDocx($parts[1] ?? '', $locale);
@@ -201,6 +207,12 @@ final class PromoCampaignLetterDocxBuilder
             ]);
 
             if ($after !== '') {
+                $after = preg_replace(
+                    '/<p style="margin-bottom:6pt"/',
+                    '<p style="margin-top:6pt;margin-bottom:6pt"',
+                    $after,
+                    1,
+                ) ?? $after;
                 Html::addHtml($section, $after, false, false);
             }
 
