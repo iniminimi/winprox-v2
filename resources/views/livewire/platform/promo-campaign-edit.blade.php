@@ -227,8 +227,7 @@
                 </button>
             </div>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_hint') }}</p>
-            <pre class="wp-muted wp-text-sm" style="margin: 0; padding: 0.75rem; background: var(--wp-surface-2); border-radius: var(--wp-radius); overflow-x: auto;"><code>cd {{ base_path() }}
-php artisan queue:work database --sleep=3 --tries=3</code></pre>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_cron_note') }}</p>
         </div>
     </div>
 
