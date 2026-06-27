@@ -45,6 +45,16 @@ function initEditor(container, textareaId, initialHtml) {
     return quill;
 }
 
+function syncAllPromoEditors() {
+    editors.forEach((quill, editorEl) => {
+        const wrapper = editorEl.closest('[data-wp-promo-quill]');
+        const textareaId = wrapper?.getAttribute('data-textarea-id');
+        if (textareaId) {
+            syncQuillToTextarea(quill, textareaId);
+        }
+    });
+}
+
 function mountEditors() {
     document.querySelectorAll('[data-wp-promo-quill]').forEach((wrapper) => {
         const editorEl = wrapper.querySelector('.wp-promo-quill-editor');
@@ -62,9 +72,20 @@ function mountEditors() {
 
 document.addEventListener('DOMContentLoaded', mountEditors);
 document.addEventListener('livewire:navigated', mountEditors);
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('[wire\\:click], button[type="submit"]')) {
+        return;
+    }
+
+    syncAllPromoEditors();
+}, true);
 
 if (typeof Livewire !== 'undefined') {
     document.addEventListener('livewire:init', () => {
+        Livewire.hook('commit', () => {
+            syncAllPromoEditors();
+        });
+
         Livewire.hook('morph.updated', () => {
             mountEditors();
         });

@@ -6,6 +6,8 @@ namespace App\Support\Marketing;
 
 final class PromoCampaignQuillHtmlNormalizer
 {
+    public const FLOW_IMAGE_PLACEHOLDER = '{{flow_image}}';
+
     public static function normalize(?string $html): string
     {
         if ($html === null || trim($html) === '') {
@@ -28,8 +30,7 @@ final class PromoCampaignQuillHtmlNormalizer
     }
 
     /**
-     * Brief-middenstuk voor DOCX: lege Quill-paragrafen weg, dubbele aanhef/sluiting strippen
-     * (adresblok, onderwerp, aanhef en QR-sluiting zitten al in de builder).
+     * Brief-middenstuk voor DOCX: lege Quill-paragrafen weg, lijsten naar bullets, compacte spacing.
      */
     public static function forDocx(?string $html, string $locale): string
     {
@@ -41,6 +42,8 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = self::collapseEmptyParagraphs($html);
         $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
+        $html = self::convertListsToBulletParagraphs($html);
+        $html = self::compactDocxParagraphSpacing($html);
 
         return self::collapseEmptyParagraphs($html);
     }
@@ -63,13 +66,29 @@ final class PromoCampaignQuillHtmlNormalizer
     private static function stripDuplicateEnvelope(string $html, string $locale): string
     {
         $greeting = self::greetingForLocale($locale);
-        $pos = stripos($html, $greeting);
+        $head = substr($html, 0, 1200);
+        $pos = stripos($head, $greeting);
         if ($pos === false) {
+            return $html;
+        }
+
+        $paragraphStart = strrpos(substr($html, 0, $pos), '<p');
+        if ($paragraphStart === false) {
             return $html;
         }
 
         $closeParagraph = stripos($html, '</p>', $pos + strlen($greeting));
         if ($closeParagraph === false) {
+            return $html;
+        }
+
+        $paragraphHtml = substr($html, $paragraphStart, $closeParagraph - $paragraphStart + 4);
+        $paragraphText = trim(preg_replace('/\s+/u', ' ', strip_tags($paragraphHtml)) ?? '');
+        if ($paragraphText === '' || mb_strlen($paragraphText) > 80) {
+            return $html;
+        }
+
+        if (! str_starts_with(mb_strtolower($paragraphText), mb_strtolower(substr($greeting, 0, 12)))) {
             return $html;
         }
 
@@ -102,6 +121,51 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         return trim(substr($html, 0, $cutAt));
+    }
+
+    private static function convertListsToBulletParagraphs(string $html): string
+    {
+        if (! str_contains($html, '<li')) {
+            return $html;
+        }
+
+        return preg_replace_callback(
+            '/<(?:ol|ul)[^>]*>(.*?)<\/(?:ol|ul)>/is',
+            static function (array $matches): string {
+                if (! preg_match_all('/<li[^>]*>(.*?)<\/li>/is', $matches[1], $items, PREG_SET_ORDER)) {
+                    return '';
+                }
+
+                $paragraphs = [];
+                foreach ($items as $item) {
+                    $inner = preg_replace(
+                        '/<span[^>]*class="[^"]*ql-ui[^"]*"[^>]*>.*?<\/span>/is',
+                        '',
+                        $item[1],
+                    ) ?? $item[1];
+                    $inner = trim($inner);
+                    if ($inner === '' || PromoCampaignHtmlSanitizer::isBlank('<p>'.$inner.'</p>')) {
+                        continue;
+                    }
+
+                    $paragraphs[] = '<p>• '.$inner.'</p>';
+                }
+
+                return implode('', $paragraphs);
+            },
+            $html,
+        ) ?? $html;
+    }
+
+    private static function compactDocxParagraphSpacing(string $html): string
+    {
+        $html = preg_replace(
+            '/<p(\s[^>]*)?>/i',
+            '<p style="margin-top:0;margin-bottom:0"$1>',
+            $html,
+        ) ?? $html;
+
+        return $html;
     }
 
     private static function greetingForLocale(string $locale): string

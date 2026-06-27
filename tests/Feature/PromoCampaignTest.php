@@ -232,6 +232,34 @@ it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function
         ->not->toContain('1300 Wavre');
 });
 
+it('zet quill-lijsten om naar bullet-paragrafen voor docx', function () {
+    $html = '<p>Les avantages pour votre commune :</p>'
+        .'<ol><li data-list="bullet"><span class="ql-ui"></span><strong>Gestion centralisée</strong> : Tous les signalements.</li>'
+        .'<li data-list="bullet"><span class="ql-ui"></span>Entretien optimisé : Les équipes.</li></ol>'
+        .'<p>Je serais ravi.</p>';
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr');
+
+    expect($prepared)
+        ->toContain('• <strong>Gestion centralisée</strong> : Tous les signalements.')
+        ->toContain('• Entretien optimisé : Les équipes.')
+        ->not->toContain('<ul>')
+        ->not->toContain('<li>');
+});
+
+it('wist brief-middenstuk niet weg bij aanhef diep in de tekst', function () {
+    $html = '<p>Intro.</p><p>Les avantages :</p>'
+        .'<ol><li data-list="bullet">Punt één</li></ol>'
+        .'<p>Je vous prie d\'agréer, Madame, Monsieur, mes salutations.</p>';
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr');
+
+    expect($prepared)
+        ->toContain('Intro.')
+        ->toContain('Punt één')
+        ->toContain('Je vous prie');
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 

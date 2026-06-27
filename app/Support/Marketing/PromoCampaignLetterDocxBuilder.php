@@ -43,7 +43,6 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         $letterBodyHtml = PromoCampaignPlaceholderRenderer::render($letterBodyHtml, $placeholders);
-        $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::forDocx($letterBodyHtml, $locale);
 
         $tempFiles = [];
         $qrPath = tempnam(sys_get_temp_dir(), 'wp-promo-campaign-qr-');
@@ -79,10 +78,8 @@ final class PromoCampaignLetterDocxBuilder
         $this->addBlankLine($section);
 
         if ($letterBodyHtml !== '') {
-            Html::addHtml($section, $letterBodyHtml, false, false);
-        }
-
-        if ($flowImagePath !== null && $flowImagePath !== '' && is_file($flowImagePath)) {
+            $this->addLetterBodyHtml($section, $letterBodyHtml, $locale, $flowImagePath);
+        } elseif ($flowImagePath !== null && $flowImagePath !== '' && is_file($flowImagePath)) {
             $section->addImage($flowImagePath, [
                 'width' => Converter::cmToPixel(self::FLOW_IMAGE_WIDTH_CM),
                 'alignment' => Jc::CENTER,
@@ -182,6 +179,47 @@ final class PromoCampaignLetterDocxBuilder
             'height' => Converter::cmToPixel(self::QR_IMAGE_HEIGHT_CM),
             'alignment' => Jc::START,
         ]);
+    }
+
+    private function addLetterBodyHtml(Section $section, string $letterBodyHtml, string $locale, ?string $flowImagePath): void
+    {
+        $placeholder = PromoCampaignQuillHtmlNormalizer::FLOW_IMAGE_PLACEHOLDER;
+        $canInsertFlow = $flowImagePath !== null && $flowImagePath !== '' && is_file($flowImagePath);
+
+        if ($canInsertFlow && str_contains($letterBodyHtml, $placeholder)) {
+            $parts = explode($placeholder, $letterBodyHtml, 2);
+            $before = PromoCampaignQuillHtmlNormalizer::forDocx($parts[0], $locale);
+            $after = PromoCampaignQuillHtmlNormalizer::forDocx($parts[1] ?? '', $locale);
+
+            if ($before !== '') {
+                Html::addHtml($section, $before, false, false);
+            }
+
+            $section->addImage($flowImagePath, [
+                'width' => Converter::cmToPixel(self::FLOW_IMAGE_WIDTH_CM),
+                'alignment' => Jc::CENTER,
+            ]);
+
+            if ($after !== '') {
+                Html::addHtml($section, $after, false, false);
+            }
+
+            return;
+        }
+
+        $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($letterBodyHtml, $locale);
+        if ($prepared === '') {
+            return;
+        }
+
+        Html::addHtml($section, $prepared, false, false);
+
+        if ($canInsertFlow) {
+            $section->addImage($flowImagePath, [
+                'width' => Converter::cmToPixel(self::FLOW_IMAGE_WIDTH_CM),
+                'alignment' => Jc::CENTER,
+            ]);
+        }
     }
 
     private function addBlankLine(Section $section): void
