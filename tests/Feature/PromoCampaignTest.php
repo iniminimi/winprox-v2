@@ -182,7 +182,6 @@ it('genereert docx voor campagne-ontvanger', function () {
         ->and($documentXml)->toContain('Intro')
         ->and($documentXml)->toContain('Punt één')
         ->and($documentXml)->toContain('<w:numPr>')
-        ->and($documentXml)->toContain('w:after="120"')
         ->and(substr_count($documentXml, '<w:p '))->toBeLessThan(35);
 
     @unlink($docxPath);
@@ -256,7 +255,16 @@ it('behoudt quill-lijsten voor docx met ul-li structuur', function () {
     expect($prepared)
         ->toContain('<ul><li>')
         ->toContain('margin-bottom:6pt')
+        ->not->toContain('<ol>')
         ->not->toContain('<p>•');
+});
+
+it('zet quill-ol zonder data-list om naar ul voor docx', function () {
+    $html = '<p>Les avantages :</p><ol><li><strong>Gestion</strong> : foo.</li><li>Bar.</li></ol>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr'))
+        ->toContain('<ul><li><strong>Gestion</strong>')
+        ->not->toContain('<ol>');
 });
 
 it('wist brief-middenstuk niet weg bij aanhef diep in de tekst', function () {

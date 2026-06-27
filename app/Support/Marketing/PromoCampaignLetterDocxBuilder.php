@@ -12,6 +12,9 @@ use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\Shared\Html;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use RuntimeException;
+use DOMDocument;
+use DOMElement;
+use DOMNode;
 
 final class PromoCampaignLetterDocxBuilder
 {
@@ -26,6 +29,10 @@ final class PromoCampaignLetterDocxBuilder
     private const CLOSING_TABLE_WIDTH_CM = 16.0;
 
     private const CLOSING_TABLE_COLUMN_CM = 8.0;
+
+    private const BULLET_LIST_STYLE = 'promoCampaignLetterBullets';
+
+    private const ORDERED_LIST_STYLE = 'promoCampaignLetterOrdered';
 
     /**
      * @param  array<string, string>  $placeholders
@@ -59,6 +66,7 @@ final class PromoCampaignLetterDocxBuilder
         $phpWord = new PhpWord;
         $phpWord->setDefaultFontName('Arial');
         $phpWord->setDefaultFontSize(self::BODY_FONT_PT);
+        $this->registerListStyles($phpWord);
 
         $section = $phpWord->addSection([
             'marginTop' => Converter::cmToTwip(2.0),
@@ -198,7 +206,7 @@ final class PromoCampaignLetterDocxBuilder
             $after = PromoCampaignQuillHtmlNormalizer::forDocx($parts[1] ?? '', $locale);
 
             if ($before !== '') {
-                Html::addHtml($section, $before, false, false);
+                $this->renderHtmlBlocks($section, $before);
             }
 
             $section->addImage($flowImagePath, [
@@ -213,7 +221,7 @@ final class PromoCampaignLetterDocxBuilder
                     $after,
                     1,
                 ) ?? $after;
-                Html::addHtml($section, $after, false, false);
+                $this->renderHtmlBlocks($section, $after);
             }
 
             return;
@@ -224,7 +232,7 @@ final class PromoCampaignLetterDocxBuilder
             return;
         }
 
-        Html::addHtml($section, $prepared, false, false);
+        $this->renderHtmlBlocks($section, $prepared);
 
         if ($canInsertFlow) {
             $section->addImage($flowImagePath, [
@@ -232,6 +240,127 @@ final class PromoCampaignLetterDocxBuilder
                 'alignment' => Jc::CENTER,
             ]);
         }
+    }
+
+    private function registerListStyles(PhpWord $phpWord): void
+    {
+        $phpWord->addNumberingStyle(self::BULLET_LIST_STYLE, [
+            'type' => 'hybridMultilevel',
+            'levels' => [
+                [
+                    'format' => 'bullet',
+                    'text' => '•',
+                    'left' => Converter::cmToTwip(0.5),
+                    'hanging' => Converter::cmToTwip(0.35),
+                    'tabPos' => Converter::cmToTwip(0.85),
+                    'start' => 1,
+                    'alignment' => 'left',
+                ],
+            ],
+        ]);
+
+        $phpWord->addNumberingStyle(self::ORDERED_LIST_STYLE, [
+            'type' => 'multilevel',
+            'levels' => [
+                [
+                    'format' => 'decimal',
+                    'text' => '%1.',
+                    'left' => Converter::cmToTwip(0.5),
+                    'hanging' => Converter::cmToTwip(0.35),
+                    'tabPos' => Converter::cmToTwip(0.85),
+                    'start' => 1,
+                    'alignment' => 'left',
+                ],
+            ],
+        ]);
+    }
+
+    private function renderHtmlBlocks(Section $section, string $html): void
+    {
+        if (trim($html) === '') {
+            return;
+        }
+
+        $document = new DOMDocument();
+        $previous = libxml_use_internal_errors(true);
+        $document->loadHTML(
+            '<?xml encoding="UTF-8"><div>'.$html.'</div>',
+            LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD,
+        );
+        libxml_clear_errors();
+        libxml_use_internal_errors($previous);
+
+        $container = $document->getElementsByTagName('div')->item(0);
+        if ($container === null) {
+            Html::addHtml($section, $html, false, false);
+
+            return;
+        }
+
+        foreach ($container->childNodes as $node) {
+            $this->renderBodyNode($section, $node);
+        }
+    }
+
+    private function renderBodyNode(Section $section, DOMNode $node): void
+    {
+        if ($node->nodeType === XML_TEXT_NODE) {
+            $text = trim($node->textContent ?? '');
+            if ($text !== '') {
+                $this->addParagraph($section, $text, ['spaceAfter' => 120]);
+            }
+
+            return;
+        }
+
+        if ($node->nodeType !== XML_ELEMENT_NODE) {
+            return;
+        }
+
+        $tag = strtolower($node->nodeName);
+        if ($tag === 'p') {
+            $inner = $this->nodeInnerHtml($node);
+            if (PromoCampaignHtmlSanitizer::isBlank($inner)) {
+                return;
+            }
+
+            Html::addHtml($section, '<p>'.$inner.'</p>', false, false);
+
+            return;
+        }
+
+        if ($tag === 'ul' || $tag === 'ol') {
+            $listStyle = $tag === 'ol' ? self::ORDERED_LIST_STYLE : self::BULLET_LIST_STYLE;
+            foreach ($node->childNodes as $child) {
+                if ($child->nodeType === XML_ELEMENT_NODE && strtolower($child->nodeName) === 'li') {
+                    $this->renderListItem($section, $child, $listStyle);
+                }
+            }
+        }
+    }
+
+    private function renderListItem(Section $section, DOMElement $li, string $listStyle): void
+    {
+        $inner = $this->nodeInnerHtml($li);
+        if (PromoCampaignHtmlSanitizer::isBlank($inner)) {
+            return;
+        }
+
+        $item = $section->addListItemRun(0, $listStyle, [
+            'spaceAfter' => 24,
+            'spaceBefore' => 0,
+        ]);
+        Html::addHtml($item, $inner, false, false);
+    }
+
+    private function nodeInnerHtml(DOMNode $node): string
+    {
+        $html = '';
+        foreach ($node->childNodes as $child) {
+            $html .= $node->ownerDocument?->saveHTML($child) ?? '';
+        }
+
+        return trim($html);
     }
 
     private function addBlankLine(Section $section): void

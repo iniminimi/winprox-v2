@@ -3,6 +3,15 @@ import 'quill/dist/quill.snow.css';
 
 const editors = new Map();
 
+function loadHtmlIntoQuill(quill, html) {
+    if (!html) {
+        return;
+    }
+
+    const delta = quill.clipboard.convert({ html });
+    quill.setContents(delta, 'silent');
+}
+
 function syncQuillToTextarea(quill, textareaId) {
     const textarea = document.getElementById(textareaId);
     if (!textarea) {
@@ -32,7 +41,7 @@ function initEditor(container, textareaId, initialHtml) {
     });
 
     if (initialHtml) {
-        quill.root.innerHTML = initialHtml;
+        loadHtmlIntoQuill(quill, initialHtml);
     }
 
     quill.on('text-change', () => {

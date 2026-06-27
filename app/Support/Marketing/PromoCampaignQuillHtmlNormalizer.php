@@ -18,9 +18,9 @@ final class PromoCampaignQuillHtmlNormalizer
             $html = html_entity_decode($html, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         }
 
-        if (str_contains($html, 'data-list="bullet"')) {
-            $html = preg_replace('/<ol(\s[^>]*)?>/', '<ul>', $html) ?? $html;
-            $html = preg_replace('/<\/ol>/', '</ul>', $html) ?? $html;
+        if (str_contains($html, 'data-list="bullet"') || str_contains($html, 'data-list=\'bullet\'')) {
+            $html = preg_replace('/<ol(\s[^>]*)?>/i', '<ul>', $html) ?? $html;
+            $html = preg_replace('/<\/ol>/i', '</ul>', $html) ?? $html;
         }
 
         $html = preg_replace('/\s+data-list="[^"]*"/', '', $html) ?? $html;
@@ -55,6 +55,7 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = self::collapseEmptyParagraphs($html);
         $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
+        $html = self::promoteOrderedListsToBulletLists($html);
         $html = self::applyDocxBodyParagraphSpacing($html);
 
         return self::collapseEmptyParagraphs($html);
@@ -133,6 +134,20 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         return trim(substr($html, 0, $cutAt));
+    }
+
+    /**
+     * Quill 2 bewaart bullets als <ol>; na opschonen geen data-list meer — voor DOCX altijd <ul>.
+     */
+    private static function promoteOrderedListsToBulletLists(string $html): string
+    {
+        if (! str_contains($html, '<ol')) {
+            return $html;
+        }
+
+        $html = preg_replace('/<ol(\s[^>]*)?>/i', '<ul>', $html) ?? $html;
+
+        return preg_replace('/<\/ol>/i', '</ul>', $html) ?? $html;
     }
 
     private static function applyDocxBodyParagraphSpacing(string $html): string
