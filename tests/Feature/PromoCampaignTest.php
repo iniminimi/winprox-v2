@@ -7,6 +7,7 @@ use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
+use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignTarget;
 use App\Models\User;
@@ -277,4 +278,17 @@ it('blokkeert promo-campagnes voor normale gebruikers', function () {
     $this->actingAs($user)
         ->get(route('platform.promo-campaigns'))
         ->assertForbidden();
+});
+
+it('rendert promo-campagne e-mail als html zonder view-fout', function () {
+    $html = (new PromoCampaignLetterMail(
+        emailSubject: 'WinProx pour Wavre',
+        emailBodyHtml: '<p>Madame, Monsieur,</p><p>La gestion des infrastructures.</p>',
+        docxPath: __FILE__,
+        mailLocale: 'fr',
+    ))->render();
+
+    expect($html)
+        ->toContain('Madame, Monsieur')
+        ->toContain('La gestion des infrastructures');
 });

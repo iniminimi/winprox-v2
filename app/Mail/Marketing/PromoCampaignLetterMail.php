@@ -37,20 +37,8 @@ class PromoCampaignLetterMail extends Mailable
 
     public function content(): Content
     {
-        $plain = trim(preg_replace(
-            '/\n{3,}/',
-            "\n\n",
-            (string) preg_replace(
-                '/\r\n|\r/',
-                "\n",
-                (string) preg_replace('/<br\s*\/?>/i', "\n", $this->emailBodyHtml),
-            ),
-        ));
-        $plain = trim(html_entity_decode(strip_tags($plain), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
-
         return new Content(
             htmlString: $this->wrapEmailBody($this->emailBodyHtml),
-            text: $plain !== '' ? $plain : ' ',
         );
     }
 
