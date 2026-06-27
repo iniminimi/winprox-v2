@@ -164,6 +164,7 @@
         "actions_title": "Generate and send",
         "force_generate": "Overwrite existing DOCX",
         "generate": "Generate letters",
+        "generate_loading": "Generating letters…",
         "override_to": "Test address (optional)",
         "delay_seconds": "Delay between emails (sec)",
         "test_email": "Send test email",

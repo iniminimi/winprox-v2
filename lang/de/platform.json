@@ -165,6 +165,7 @@
         "actions_title": "Generieren und senden",
         "force_generate": "Vorhandene DOCX überschreiben",
         "generate": "Briefe generieren",
+        "generate_loading": "Briefe werden generiert…",
         "override_to": "Testadresse (optional)",
         "delay_seconds": "Verzögerung zwischen Mails (Sek)",
         "test_email": "Testmail senden",

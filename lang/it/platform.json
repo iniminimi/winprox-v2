@@ -164,6 +164,7 @@
         "actions_title": "Genera e invia",
         "force_generate": "Sovrascrivi DOCX esistenti",
         "generate": "Genera lettere",
+        "generate_loading": "Generazione in corso…",
         "override_to": "Indirizzo test (opzionale)",
         "delay_seconds": "Ritardo tra email (sec)",
         "test_email": "Invia email di test",

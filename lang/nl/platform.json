@@ -164,6 +164,7 @@
         "actions_title": "Genereren en versturen",
         "force_generate": "Bestaande DOCX overschrijven",
         "generate": "Brieven genereren",
+        "generate_loading": "Bezig met genereren…",
         "override_to": "Testadres (optioneel)",
         "delay_seconds": "Vertraging tussen mails (sec)",
         "test_email": "Testmail versturen",

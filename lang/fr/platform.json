@@ -164,6 +164,7 @@
         "actions_title": "Générer et envoyer",
         "force_generate": "Écraser les DOCX existants",
         "generate": "Générer les lettres",
+        "generate_loading": "Génération en cours…",
         "override_to": "Adresse test (optionnel)",
         "delay_seconds": "Délai entre e-mails (sec)",
         "test_email": "Envoyer e-mail test",

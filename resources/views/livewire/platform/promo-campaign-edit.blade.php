@@ -168,8 +168,10 @@
                 <input type="checkbox" wire:model="forceGenerate">
                 {{ __('platform.promo_campaigns.force_generate') }}
             </label>
-            <button type="button" class="btn btn--primary btn--sm" wire:click="generateLetters">
-                {{ __('platform.promo_campaigns.generate') }}
+            <button type="button" class="btn btn--primary btn--sm" wire:click="generateLetters" wire:loading.attr="disabled" wire:target="generateLetters">
+                <x-wp-hourglass wire:loading wire:target="generateLetters" size="sm" class="wp-mr-2" />
+                <span wire:loading.remove wire:target="generateLetters">{{ __('platform.promo_campaigns.generate') }}</span>
+                <span wire:loading wire:target="generateLetters">{{ __('platform.promo_campaigns.generate_loading') }}</span>
             </button>
         </div>
 

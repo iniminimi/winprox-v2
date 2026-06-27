@@ -164,6 +164,7 @@
         "actions_title": "Generar y enviar",
         "force_generate": "Sobrescribir DOCX existentes",
         "generate": "Generar cartas",
+        "generate_loading": "Generando cartas…",
         "override_to": "Dirección de prueba (opcional)",
         "delay_seconds": "Retraso entre correos (seg)",
         "test_email": "Enviar correo de prueba",

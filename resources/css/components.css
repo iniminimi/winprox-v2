@@ -1774,6 +1774,11 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
     display: inline-flex;
 }
 
+[wire\:loading].wp-hourglass,
+[wire\:loading] .wp-hourglass {
+    display: inline-flex;
+}
+
 .wp-hourglass .wp-icon {
     animation: wp-hourglass-flip 1.1s ease-in-out infinite;
 }
