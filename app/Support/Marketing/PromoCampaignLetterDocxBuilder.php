@@ -139,6 +139,14 @@ final class PromoCampaignLetterDocxBuilder
 
     private function addClosingWithQr(Section $section, string $qrPngPath, string $locale): void
     {
+        $closing = match (strtolower(substr($locale, 0, 2))) {
+            'fr' => 'Dans l\'attente de votre retour, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.',
+            default => 'Met vriendelijke groet,',
+        };
+
+        $this->addParagraph($section, $closing, ['spaceAfter' => 0]);
+        $this->addBlankLine($section);
+
         $table = $section->addTable([
             'borderSize' => 0,
             'borderColor' => 'FFFFFF',
@@ -157,14 +165,6 @@ final class PromoCampaignLetterDocxBuilder
             'borderSize' => 0,
         ]);
 
-        $closing = match (strtolower(substr($locale, 0, 2))) {
-            'fr' => 'Dans l\'attente de votre retour, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.',
-            default => 'Met vriendelijke groet,',
-        };
-
-        $this->addCellParagraph($textCell, $closing, ['spaceAfter' => 0]);
-        $this->addCellBlankLine($textCell);
-        $this->addCellBlankLine($textCell);
         $this->addCellParagraph($textCell, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, match (strtolower(substr($locale, 0, 2))) {
             'fr' => 'Fondateur / Architecte WinProx',

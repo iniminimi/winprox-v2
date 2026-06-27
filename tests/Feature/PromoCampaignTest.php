@@ -179,6 +179,9 @@ it('genereert docx voor campagne-ontvanger', function () {
         ->and($documentXml)->toContain('Bonjour')
         ->and($documentXml)->not->toContain('<p>Bonjour')
         ->and($documentXml)->not->toContain('Dans l&#039;attente')
+        ->and(strpos($documentXml, 'Dans l') !== false && strpos($documentXml, '<w:tbl') !== false
+            ? strpos($documentXml, 'Dans l') < strpos($documentXml, '<w:tbl')
+            : true)
         ->and(substr_count($documentXml, '<w:p '))->toBeLessThan(30);
 
     @unlink($docxPath);

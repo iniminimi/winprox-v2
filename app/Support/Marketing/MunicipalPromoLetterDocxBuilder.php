@@ -156,6 +156,9 @@ final class MunicipalPromoLetterDocxBuilder
 
     private function addClosingWithQr(\PhpOffice\PhpWord\Element\Section $section, string $qrPngPath): void
     {
+        $this->addParagraph($section, 'Met vriendelijke groet,', ['spaceAfter' => 0]);
+        $this->addBlankLine($section);
+
         $table = $section->addTable([
             'borderSize' => 0,
             'borderColor' => 'FFFFFF',
@@ -174,9 +177,6 @@ final class MunicipalPromoLetterDocxBuilder
             'borderSize' => 0,
         ]);
 
-        $this->addCellParagraph($textCell, 'Met vriendelijke groet,', ['spaceAfter' => 0]);
-        $this->addCellBlankLine($textCell);
-        $this->addCellBlankLine($textCell);
         $this->addCellParagraph($textCell, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'Oprichter / Architect WinProx', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'gsm : 0494/840854', ['spaceAfter' => 0]);
