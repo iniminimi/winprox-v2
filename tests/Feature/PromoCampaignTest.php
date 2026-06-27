@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
@@ -9,12 +10,14 @@ use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\PromoCampaign;
+use App\Models\PromoCampaignImport;
 use App\Models\PromoCampaignTarget;
 use App\Models\User;
 use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
+use App\Support\Marketing\PromoLandingUrl;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
@@ -351,4 +354,44 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
         ->toContain('La gestion des infrastructures')
         ->toContain('email-wrapper')
         ->toContain('Winprox_logo_100.png');
+});
+
+it('voegt campagne-locale toe aan promo-landing-url', function () {
+    expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
+        ->toBe('https://winprox.app/promo?ref=prm_4cfe5ddb16702059&lang=fr');
+});
+
+it('opent promo-pagina in campagne-locale via ref-link', function () {
+    $superuser = User::factory()->superuser()->create();
+    $recipient = app(CreatePromoRecipientAction::class)->handle('Wavre', null, (int) $superuser->id);
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'wavre-fr',
+        name: 'Wavre',
+        locale: 'fr',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'wavre.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
+    PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $recipient->id,
+        'name' => 'Wavre',
+        'email' => 'test@example.com',
+        'street_address' => 'Place de l\'Hôtel de Ville',
+        'postal_code' => '1300',
+        'city' => 'Wavre',
+        'generated_at' => now(),
+    ]);
+
+    $this->get(route('promo', ['ref' => $recipient->token]))
+        ->assertOk()
+        ->assertSee(__('promo.video.qr_portal.title', [], 'fr'), false);
 });

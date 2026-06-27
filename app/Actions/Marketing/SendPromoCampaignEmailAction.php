@@ -54,7 +54,10 @@ class SendPromoCampaignEmailAction
 
         $promoUrl = '';
         if ($target->promoRecipient !== null) {
-            $promoUrl = \App\Support\Marketing\PromoLandingUrl::forRecipientToken($target->promoRecipient->token);
+            $promoUrl = \App\Support\Marketing\PromoLandingUrl::forRecipientToken(
+                $target->promoRecipient->token,
+                $campaign->locale,
+            );
         }
 
         $placeholders = PromoCampaignPlaceholderRenderer::forTarget(
