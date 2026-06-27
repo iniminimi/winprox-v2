@@ -11,6 +11,7 @@ use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
+use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use Illuminate\Support\Facades\Mail;
 use RuntimeException;
 use Throwable;
