@@ -135,7 +135,7 @@ it('genereert docx voor campagne-ontvanger', function () {
         data: new UpdatePromoCampaignData(
             name: 'Generate test',
             locale: 'fr',
-            letterBodyHtml: '<p>Bonjour {{name}}</p><p><br></p><p>Suite du texte</p>',
+            letterBodyHtml: '<p>Wavre</p><p>place test</p><p>1300 Wavre</p><p><br></p><p>Madame, Monsieur,</p><p><br></p><p>Bonjour {{name}}</p><p><br></p><p>Suite du texte</p><p>Dans l\'attente de votre retour, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.</p><p>Dominique Schaepdrijver</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
             flowImagePath: 'public/images/promo/flow_fr.jpg',
@@ -177,7 +177,9 @@ it('genereert docx voor campagne-ontvanger', function () {
     $zip->close();
     expect($documentXml)->toBeString()
         ->and($documentXml)->toContain('Bonjour')
-        ->and($documentXml)->not->toContain('<p>Bonjour');
+        ->and($documentXml)->not->toContain('<p>Bonjour')
+        ->and($documentXml)->not->toContain('Dans l&#039;attente')
+        ->and(substr_count($documentXml, '<w:p '))->toBeLessThan(30);
 
     @unlink($docxPath);
 });
@@ -209,6 +211,25 @@ it('normaliseert quill html voor docx en mail', function () {
 
     expect(PromoCampaignQuillHtmlNormalizer::normalize($html))
         ->toBe('<p>Dit is een test</p><p><br/></p><ul><li>1</li><li>2</li></ul>');
+});
+
+it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function () {
+    $html = '<p>Wavre</p><p>place de l\'Hôtel de Ville</p><p>1300 Wavre</p><p><br></p>'
+        .'<p>Madame, Monsieur,</p><p><br></p>'
+        .'<p>La gestion des infrastructures publiques.</p><p><br></p>'
+        .'<p>Le principe est très simple :</p>'
+        .'<p>Dans l\'attente de votre retour, je vous prie d\'agréer, Madame, Monsieur, l\'expression de mes salutations distinguées.</p>'
+        .'<p>Dominique Schaepdrijver</p>';
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr');
+
+    expect($prepared)
+        ->toContain('La gestion des infrastructures publiques')
+        ->toContain('Le principe est très simple')
+        ->not->toContain('Madame, Monsieur')
+        ->not->toContain('Dans l\'attente')
+        ->not->toContain('Dominique Schaepdrijver')
+        ->not->toContain('1300 Wavre');
 });
 
 it('laat superuser promo-campagnes beheren', function () {

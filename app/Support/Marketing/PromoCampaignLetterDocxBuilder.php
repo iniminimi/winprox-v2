@@ -43,7 +43,7 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         $letterBodyHtml = PromoCampaignPlaceholderRenderer::render($letterBodyHtml, $placeholders);
-        $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($letterBodyHtml);
+        $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::forDocx($letterBodyHtml, $locale);
 
         $tempFiles = [];
         $qrPath = tempnam(sys_get_temp_dir(), 'wp-promo-campaign-qr-');
@@ -75,9 +75,7 @@ final class PromoCampaignLetterDocxBuilder
         $this->addBlankLine($section);
         $this->addParagraph($section, $this->subjectLine($locale), ['spaceAfter' => 0]);
         $this->addBlankLine($section);
-        $this->addBlankLine($section);
         $this->addParagraph($section, $this->greetingLine($locale), ['spaceAfter' => 0]);
-        $this->addBlankLine($section);
         $this->addBlankLine($section);
 
         if ($letterBodyHtml !== '') {
@@ -91,7 +89,6 @@ final class PromoCampaignLetterDocxBuilder
             ]);
         }
 
-        $this->addBlankLine($section);
         $this->addBlankLine($section);
         $this->addClosingWithQr($section, $qrPngPath, $locale);
 
