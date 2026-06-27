@@ -142,6 +142,7 @@
         "flow_none": "Geen afbeelding",
         "letter_title": "Brief (middenstuk)",
         "letter_lead": "Adresblok, onderwerp, aanhef en QR blijven vast per taal. Gebruik placeholders.",
+        "placeholders_hint": "Beschikbare placeholders: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "E-mail (los van bijlage)",
         "email_subject": "Onderwerp",
         "import_title": "Excel-import",

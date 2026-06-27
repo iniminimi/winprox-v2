@@ -9,7 +9,8 @@ function syncQuillToTextarea(quill, textareaId) {
         return;
     }
 
-    textarea.value = quill.root.innerHTML;
+    const html = quill.getText().trim() === '' ? '' : quill.root.innerHTML;
+    textarea.value = html;
     textarea.dispatchEvent(new Event('input', { bubbles: true }));
 }
 

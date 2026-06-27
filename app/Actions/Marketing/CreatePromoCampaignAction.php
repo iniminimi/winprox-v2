@@ -6,7 +6,6 @@ namespace App\Actions\Marketing;
 
 use App\Actions\Audit\LogAuditAction;
 use App\Models\PromoCampaign;
-use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use Illuminate\Support\Facades\DB;
 use RuntimeException;
 
@@ -29,9 +28,9 @@ class CreatePromoCampaignAction
                 'slug' => $slug,
                 'name' => $name,
                 'locale' => $locale,
-                'letter_body_html' => PromoCampaignHtmlSanitizer::clean('<p></p>'),
+                'letter_body_html' => null,
                 'email_subject' => null,
-                'email_body_html' => PromoCampaignHtmlSanitizer::clean('<p></p>'),
+                'email_body_html' => null,
                 'flow_image_path' => null,
                 'column_mapping' => null,
                 'created_by' => $actorUserId,

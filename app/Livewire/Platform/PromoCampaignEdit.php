@@ -12,6 +12,7 @@ use App\Http\Requests\Marketing\UpdatePromoCampaignRequest;
 use App\Models\PromoCampaign;
 use App\Models\User;
 use App\Support\Marketing\PromoBaseUrl;
+use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
@@ -303,9 +304,9 @@ class PromoCampaignEdit extends Component
 
         $this->name = $this->campaign->name;
         $this->locale = $this->campaign->locale;
-        $this->letterBodyHtml = (string) ($this->campaign->letter_body_html ?? '');
+        $this->letterBodyHtml = (string) (PromoCampaignHtmlSanitizer::clean($this->campaign->letter_body_html) ?? '');
         $this->emailSubject = (string) ($this->campaign->email_subject ?? '');
-        $this->emailBodyHtml = (string) ($this->campaign->email_body_html ?? '');
+        $this->emailBodyHtml = (string) (PromoCampaignHtmlSanitizer::clean($this->campaign->email_body_html) ?? '');
         $this->flowImagePath = (string) ($this->campaign->flow_image_path ?? '');
         $this->mapName = (string) ($mapping['name'] ?? '');
         $this->mapEmail = (string) ($mapping['email'] ?? '');

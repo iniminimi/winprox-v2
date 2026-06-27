@@ -142,6 +142,7 @@
         "flow_none": "No image",
         "letter_title": "Letter (body)",
         "letter_lead": "Address block, subject, greeting and QR stay fixed per language. Use placeholders.",
+        "placeholders_hint": "Available placeholders: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "Email (separate from attachment)",
         "email_subject": "Subject",
         "import_title": "Excel import",

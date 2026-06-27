@@ -10,6 +10,7 @@ use App\Livewire\Platform\PromoCampaigns;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignTarget;
 use App\Models\User;
+use App\Support\Marketing\PromoCampaignHtmlSanitizer;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use App\Support\Qr\QrCodePngWriter;
@@ -183,6 +184,12 @@ it('vervangt placeholders', function () {
     expect($html)->toBe('Bonjour Amay à Amay');
 });
 
+it('behandelt lege quill-html als leeg', function () {
+    expect(PromoCampaignHtmlSanitizer::clean('<p></p>'))->toBeNull()
+        ->and(PromoCampaignHtmlSanitizer::clean('<p><br></p>'))->toBeNull()
+        ->and(PromoCampaignHtmlSanitizer::clean('<p>Hallo</p>'))->toBe('<p>Hallo</p>');
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 
@@ -223,6 +230,7 @@ it('slaat promo-campagne op via edit-pagina', function () {
 
     expect($campaign->fresh())
         ->name->toBe('Save test bijgewerkt')
+        ->letter_body_html->toBeNull()
         ->column_mapping->toMatchArray([
             'name' => 'nom',
             'email' => 'email_general',

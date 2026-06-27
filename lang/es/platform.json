@@ -142,6 +142,7 @@
         "flow_none": "Sin imagen",
         "letter_title": "Carta (cuerpo)",
         "letter_lead": "Bloque de dirección, asunto, saludo y QR fijos por idioma. Use marcadores.",
+        "placeholders_hint": "Marcadores disponibles: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "Correo (separado del adjunto)",
         "email_subject": "Asunto",
         "import_title": "Importación Excel",

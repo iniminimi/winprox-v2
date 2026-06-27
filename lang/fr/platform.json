@@ -142,6 +142,7 @@
         "flow_none": "Aucune image",
         "letter_title": "Lettre (corps)",
         "letter_lead": "Bloc adresse, objet, formule et QR restent fixes par langue. Utilisez des placeholders.",
+        "placeholders_hint": "Placeholders disponibles : {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "E-mail (séparé de la pièce jointe)",
         "email_subject": "Objet",
         "import_title": "Import Excel",

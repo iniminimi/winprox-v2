@@ -142,6 +142,8 @@
         "flow_none": "Kein Bild",
         "letter_title": "Brief (Haupttext)",
         "letter_lead": "Adressblock, Betreff, Anrede und QR bleiben pro Sprache fest. Platzhalter verwenden.",
+        "placeholders_hint": "Verfügbare Platzhalter: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
+        "placeholders_hint": "Verfügbare Platzhalter: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "E-Mail (getrennt vom Anhang)",
         "email_subject": "Betreff",
         "import_title": "Excel-Import",

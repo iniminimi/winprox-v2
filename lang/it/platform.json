@@ -142,6 +142,7 @@
         "flow_none": "Nessuna immagine",
         "letter_title": "Lettera (corpo)",
         "letter_lead": "Blocco indirizzo, oggetto, saluto e QR fissi per lingua. Usa segnaposto.",
+        "placeholders_hint": "Segnaposto disponibili: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}",
         "email_title": "Email (separata dall'allegato)",
         "email_subject": "Oggetto",
         "import_title": "Import Excel",

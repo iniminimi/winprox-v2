@@ -20,6 +20,22 @@ final class PromoCampaignHtmlSanitizer
             return null;
         }
 
-        return strip_tags($html, self::ALLOWED_TAGS);
+        $html = strip_tags($html, self::ALLOWED_TAGS);
+        if (self::isBlank($html)) {
+            return null;
+        }
+
+        return $html;
+    }
+
+    public static function isBlank(?string $html): bool
+    {
+        if ($html === null) {
+            return true;
+        }
+
+        $text = trim(preg_replace('/\s+/u', '', strip_tags($html)) ?? '');
+
+        return $text === '';
     }
 }

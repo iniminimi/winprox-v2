@@ -54,6 +54,7 @@
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.letter_title') }}</p>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.letter_lead') }}</p>
+            <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.placeholders_hint')</p>
             <div
                 wire:ignore
                 class="wp-promo-quill wp-promo-quill--tall"
