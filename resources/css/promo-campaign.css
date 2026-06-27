@@ -35,3 +35,25 @@
     align-self: center;
     padding-bottom: 0.125rem;
 }
+
+.wp-promo-form-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 42rem;
+}
+
+.wp-promo-form-grid__pair {
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (min-width: 36rem) {
+    .wp-promo-form-grid__pair {
+        grid-template-columns: 1fr minmax(5.5rem, 7rem);
+    }
+}
+
+.wp-promo-form-grid__locale .wp-select {
+    min-width: 0;
+}

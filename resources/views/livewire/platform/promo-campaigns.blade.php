@@ -15,26 +15,32 @@
 
     <div class="wp-card wp-card-pad wp-stack">
         <p class="wp-subhead">{{ __('platform.promo_campaigns.create_title') }}</p>
-        <form wire:submit="createCampaign" class="wp-stack-tight">
-            <div class="wp-row wp-gap-md wp-wrap">
-                <div class="wp-grow">
-                    <label class="wp-label" for="campaign-slug">{{ __('platform.promo_campaigns.slug') }}</label>
-                    <input id="campaign-slug" type="text" class="wp-input" wire:model.live="slug" placeholder="wallonie-wave-1">
-                    <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.slug_hint') }}</p>
-                    @error('slug') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-grow">
+        <form wire:submit="createCampaign" class="wp-promo-form-grid">
+            <div>
+                <label class="wp-label" for="campaign-slug">{{ __('platform.promo_campaigns.slug') }}</label>
+                <input id="campaign-slug" type="text" class="wp-input" wire:model.live="slug" placeholder="wallonie-wave-1">
+                <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.slug_hint') }}</p>
+                @error('slug') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-promo-form-grid__pair">
+                <div>
                     <label class="wp-label" for="campaign-name">{{ __('platform.promo_campaigns.name') }}</label>
                     <input id="campaign-name" type="text" class="wp-input" wire:model="name">
                     @error('name') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div>
+                <div class="wp-promo-form-grid__locale">
                     <label class="wp-label" for="campaign-locale">{{ __('platform.promo_campaigns.locale') }}</label>
-                    <input id="campaign-locale" type="text" class="wp-input" wire:model="locale" maxlength="5">
+                    <select id="campaign-locale" class="wp-select" wire:model="locale">
+                        @foreach (config('locales.supported', []) as $localeCode)
+                            <option value="{{ $localeCode }}">{{ config('locales.labels.'.$localeCode, strtoupper($localeCode)) }}</option>
+                        @endforeach
+                    </select>
                     @error('locale') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
             </div>
-            <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.create_submit') }}</button>
+            <div>
+                <button type="submit" class="btn btn--primary">{{ __('platform.promo_campaigns.create_submit') }}</button>
+            </div>
         </form>
     </div>
 

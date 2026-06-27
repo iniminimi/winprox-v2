@@ -20,18 +20,24 @@
     <form wire:submit="save" class="wp-stack">
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.settings_title') }}</p>
-            <div class="wp-row wp-gap-md wp-wrap">
-                <div class="wp-grow">
-                    <label class="wp-label" for="edit-name">{{ __('platform.promo_campaigns.name') }}</label>
-                    <input id="edit-name" type="text" class="wp-input" wire:model="name">
-                    @error('name') <p class="wp-error">{{ $message }}</p> @enderror
+            <div class="wp-promo-form-grid">
+                <div class="wp-promo-form-grid__pair">
+                    <div>
+                        <label class="wp-label" for="edit-name">{{ __('platform.promo_campaigns.name') }}</label>
+                        <input id="edit-name" type="text" class="wp-input" wire:model="name">
+                        @error('name') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-promo-form-grid__locale">
+                        <label class="wp-label" for="edit-locale">{{ __('platform.promo_campaigns.locale') }}</label>
+                        <select id="edit-locale" class="wp-select" wire:model="locale">
+                            @foreach (config('locales.supported', []) as $localeCode)
+                                <option value="{{ $localeCode }}">{{ config('locales.labels.'.$localeCode, strtoupper($localeCode)) }}</option>
+                            @endforeach
+                        </select>
+                        @error('locale') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
                 </div>
                 <div>
-                    <label class="wp-label" for="edit-locale">{{ __('platform.promo_campaigns.locale') }}</label>
-                    <input id="edit-locale" type="text" class="wp-input" wire:model="locale" maxlength="5">
-                    @error('locale') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-grow">
                     <label class="wp-label" for="edit-flow">{{ __('platform.promo_campaigns.flow_image') }}</label>
                     <select id="edit-flow" class="wp-input" wire:model="flowImagePath">
                         <option value="">{{ __('platform.promo_campaigns.flow_none') }}</option>
