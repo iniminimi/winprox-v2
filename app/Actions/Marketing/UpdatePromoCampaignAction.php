@@ -34,7 +34,7 @@ class UpdatePromoCampaignAction
         }
 
         $letterBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->letterBodyHtml);
-        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::forMail($data->emailBodyHtml);
+        $emailBodyHtml = PromoCampaignQuillHtmlNormalizer::normalize($data->emailBodyHtml);
 
         $campaign->update([
             'name' => $name,

@@ -332,6 +332,39 @@ it('laat superuser promo-campagnes beheren', function () {
     expect(PromoCampaign::query()->where('slug', 'wallonie-wave-1')->exists())->toBeTrue();
 });
 
+it('bewaart lege regels in e-mailtekst bij opslaan campagne', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-email-blanks',
+        name: 'Email blanks',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    $emailHtml = '<p>Eerste alinea</p><p><br></p><p>Tweede alinea</p>';
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $campaign,
+        data: new UpdatePromoCampaignData(
+            name: 'Email blanks',
+            locale: 'nl',
+            letterBodyHtml: null,
+            emailSubject: 'Onderwerp',
+            emailBodyHtml: $emailHtml,
+            flowImagePath: null,
+            columnMapping: null,
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    expect($campaign->fresh()->email_body_html)
+        ->toContain('<p><br')
+        ->toContain('Eerste alinea')
+        ->toContain('Tweede alinea')
+        ->not->toContain('margin:0 0 16px');
+});
+
 it('slaat promo-campagne op via edit-pagina', function () {
     $superuser = User::factory()->superuser()->create();
 
