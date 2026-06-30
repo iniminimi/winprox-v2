@@ -30,6 +30,10 @@ final class PromoCampaignLetterDocxBuilder
 
     private const CLOSING_TABLE_COLUMN_CM = 8.0;
 
+    private const BODY_PARAGRAPH_SPACE_AFTER_TWIP = 240;
+
+    private const LIST_ITEM_SPACE_AFTER_TWIP = 80;
+
     private const BULLET_LIST_STYLE = 'promoCampaignLetterBullets';
 
     private const ORDERED_LIST_STYLE = 'promoCampaignLetterOrdered';
@@ -207,12 +211,6 @@ final class PromoCampaignLetterDocxBuilder
             ]);
 
             if ($after !== '') {
-                $after = preg_replace(
-                    '/<p style="margin-bottom:6pt"/',
-                    '<p style="margin-top:6pt;margin-bottom:6pt"',
-                    $after,
-                    1,
-                ) ?? $after;
                 $this->renderHtmlBlocks($section, $after);
             }
 
@@ -313,10 +311,15 @@ final class PromoCampaignLetterDocxBuilder
         if ($tag === 'p') {
             $inner = $this->nodeInnerHtml($node);
             if (PromoCampaignHtmlSanitizer::isBlank($inner)) {
+                $this->addBlankLine($section);
+
                 return;
             }
 
-            Html::addHtml($section, '<p>'.$inner.'</p>', false, false);
+            $textRun = $section->addTextRun([
+                'spaceAfter' => self::BODY_PARAGRAPH_SPACE_AFTER_TWIP,
+            ]);
+            Html::addHtml($textRun, $inner, false, false);
 
             return;
         }
@@ -339,7 +342,7 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         $item = $section->addListItemRun(0, $listStyle, [
-            'spaceAfter' => 24,
+            'spaceAfter' => self::LIST_ITEM_SPACE_AFTER_TWIP,
             'spaceBefore' => 0,
         ]);
         Html::addHtml($item, $inner, false, false);

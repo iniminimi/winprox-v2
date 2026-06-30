@@ -60,13 +60,11 @@ final class PromoCampaignQuillHtmlNormalizer
             return '';
         }
 
-        $html = self::collapseEmptyParagraphs($html);
         $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
         $html = self::promoteOrderedListsToBulletLists($html);
-        $html = self::applyDocxBodyParagraphSpacing($html);
 
-        return self::collapseEmptyParagraphs($html);
+        return trim($html);
     }
 
     private static function collapseEmptyParagraphs(string $html): string
@@ -263,22 +261,6 @@ final class PromoCampaignQuillHtmlNormalizer
                 }
 
                 return '<ol style="margin:0 0 16px 0;padding-left:1.25rem"'.$attrs.'>';
-            },
-            $html,
-        ) ?? $html;
-    }
-
-    private static function applyDocxBodyParagraphSpacing(string $html): string
-    {
-        return preg_replace_callback(
-            '/<p(\s[^>]*)?>/i',
-            static function (array $matches): string {
-                $attrs = $matches[1] ?? '';
-                if (str_contains($attrs, 'margin-bottom')) {
-                    return $matches[0];
-                }
-
-                return '<p style="margin-bottom:6pt"'.$attrs.'>';
             },
             $html,
         ) ?? $html;

@@ -118,6 +118,85 @@ it('toont importbevestiging na excel-upload in livewire', function () {
         ->assertSet('noticeMessage', fn ($message) => str_contains((string) $message, 'sample.xlsx'));
 });
 
+it('genereert docx met paragraaf-spacing in het middenstuk', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        $this->markTestSkipped('QR generation unavailable.');
+    }
+
+    $superuser = User::factory()->superuser()->create();
+
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'test-docx-spacing',
+        name: 'DOCX spacing',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $campaign,
+        data: new UpdatePromoCampaignData(
+            name: 'DOCX spacing',
+            locale: 'nl',
+            letterBodyHtml: '<p><strong>WinProx</strong>: intro.</p><p><br></p><p>Tweede alinea.</p>'
+                .'<ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol>',
+            emailSubject: null,
+            emailBodyHtml: null,
+            flowImagePath: null,
+            columnMapping: null,
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'one.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
+    $recipient = app(CreatePromoRecipientAction::class)->handle('Spacingstad', null, (int) $superuser->id);
+
+    PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $recipient->id,
+        'name' => 'Spacingstad',
+        'email' => 'test@example.com',
+        'street_address' => 'Straat 1',
+        'postal_code' => '1000',
+        'city' => 'Spacingstad',
+    ]);
+
+    app(GeneratePromoCampaignLettersAction::class)->handle(
+        campaign: $campaign->fresh(),
+        actorUserId: (int) $superuser->id,
+        promoBaseUrl: 'https://winprox.test',
+        overwriteExisting: true,
+        limit: 1,
+    );
+
+    $target = PromoCampaignTarget::query()
+        ->where('promo_campaign_id', $campaign->id)
+        ->whereNotNull('generated_at')
+        ->first();
+
+    $docxPath = $campaign->fresh()->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
+    $zip = new ZipArchive();
+    expect($zip->open($docxPath))->toBeTrue();
+    $documentXml = (string) $zip->getFromName('word/document.xml');
+    $zip->close();
+
+    expect($documentXml)
+        ->toContain('WinProx')
+        ->toContain('Tweede alinea')
+        ->toContain('Punt één')
+        ->toContain('w:after="240"')
+        ->toContain('w:after="80"');
+
+    @unlink($docxPath);
+});
+
 it('genereert docx voor campagne-ontvanger', function () {
     if (! QrCodePngWriter::canGenerate()) {
         $this->markTestSkipped('QR generation unavailable.');
@@ -287,9 +366,17 @@ it('behoudt quill-lijsten voor docx met ul-li structuur', function () {
 
     expect($prepared)
         ->toContain('<ul><li>')
-        ->toContain('margin-bottom:6pt')
         ->not->toContain('<ol>')
         ->not->toContain('<p>•');
+});
+
+it('bewaart lege regels in brief-middenstuk voor docx', function () {
+    $html = '<p>Eerste blok</p><p><br></p><p>Tweede blok</p>';
+
+    expect(PromoCampaignQuillHtmlNormalizer::forDocx($html, 'nl'))
+        ->toContain('<p><br')
+        ->toContain('Eerste blok')
+        ->toContain('Tweede blok');
 });
 
 it('zet quill-ol zonder data-list om naar ul voor docx', function () {
