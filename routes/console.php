@@ -13,6 +13,6 @@ Schedule::command('winprox:retention-prune')->dailyAt('03:30');
 Schedule::command('translation:backfill-slots')->dailyAt('01:55');
 Schedule::command('translation:export')->dailyAt('02:00');
 Schedule::command('translation:import')->hourly();
-Schedule::command('queue:work database --stop-when-empty --max-time=50 --sleep=3 --tries=3')
+Schedule::command('queue:work database --max-time=55 --sleep=1 --tries=3')
     ->everyMinute()
     ->withoutOverlapping();

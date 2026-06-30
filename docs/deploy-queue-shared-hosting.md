@@ -22,10 +22,14 @@ Op gedeelde hosting draait **geen** permanente `queue:work`-daemon.
 
 4. **Code** — `routes/console.php` plant elke minuut:
    ```php
-   Schedule::command('queue:work database --stop-when-empty --max-time=50 --sleep=3 --tries=3')
+   Schedule::command('queue:work database --max-time=55 --sleep=1 --tries=3')
        ->everyMinute()
        ->withoutOverlapping();
    ```
+
+   Geen `--stop-when-empty`: anders stopt de worker na de eerste job terwijl de rest nog
+   een `delay` heeft, en worden bij de volgende cron-tick meerdere mails in een korte burst
+   verstuurd (±3 s tussen jobs i.p.v. de ingestelde vertraging).
 
 Na `git pull` op de server: `php artisan config:clear`.
 
@@ -44,9 +48,13 @@ php artisan schedule:run -v
 
 ## Promo-mails
 
-Jobs met vertraging (`delay-seconds`) worden verwerkt zodra de cron-worker draait.
-Op shared hosting is de timing grover dan op een VPS (± per minuut), maar betrouwbaar
-zonder handmatige worker.
+Jobs met vertraging (`delay-seconds`, standaard 16) worden verwerkt terwijl de cron-worker
+pollt (max. ~55 s per minuut). Verwacht ~1 mail per ingestelde vertraging, niet bursts van
+meerdere mails per seconde.
+
+Op shared hosting kan er tussen twee worker-runs een korte pauze zitten (cron elke minuut).
+Dat is normaler dan het oude patroon: één mail, dan een minuut wachten, dan 3–4 mails in
+een paar seconden.
 
 ## Niet doen op shared hosting
 
