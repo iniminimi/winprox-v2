@@ -84,6 +84,7 @@ final class PromoCampaignLetterDocxBuilder
         $this->addBlankLine($section);
         $this->addParagraph($section, $this->greetingLine($locale), ['spaceAfter' => 0]);
         $this->addBlankLine($section);
+        $this->addBlankLine($section);
 
         if ($letterBodyHtml !== '') {
             $this->addLetterBodyHtml($section, $letterBodyHtml, $locale, $flowImagePath);
@@ -153,6 +154,7 @@ final class PromoCampaignLetterDocxBuilder
         };
 
         $this->addParagraph($section, $closing, ['spaceAfter' => 0]);
+        $this->addBlankLine($section);
         $this->addBlankLine($section);
 
         $table = $section->addTable([
