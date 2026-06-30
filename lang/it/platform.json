@@ -141,7 +141,7 @@
         "flow_image": "Immagine flow nella lettera",
         "flow_none": "Nessuna immagine",
         "letter_title": "Lettera (corpo)",
-        "letter_lead": "Blocco indirizzo, oggetto, saluto e QR fissi per lingua. Usa segnaposto; metti {{flow_image}} dove deve comparire l'immagine flow.",
+        "letter_lead": "Blocco indirizzo, saluto e QR fissi per lingua. Usa segnaposto; metti {{flow_image}} dove deve comparire l'immagine flow.",
         "placeholders_hint": "Segnaposto disponibili: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}, {{flow_image}}",
         "email_title": "Email (separata dall'allegato)",
         "email_subject": "Oggetto",

@@ -80,8 +80,6 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         $this->addBlankLine($section);
-        $this->addParagraph($section, $this->subjectLine($locale), ['spaceAfter' => 0]);
-        $this->addBlankLine($section);
         $this->addParagraph($section, $this->greetingLine($locale), ['spaceAfter' => 0]);
         $this->addBlankLine($section);
         $this->addBlankLine($section);
@@ -117,8 +115,8 @@ final class PromoCampaignLetterDocxBuilder
     {
         $name = $placeholders['name'] ?? '';
         $attention = match (strtolower(substr($locale, 0, 2))) {
-            'fr' => "À l'attention du collège communal de {$name}",
-            default => 'T.a.v. het college '.$name,
+            'fr' => "À l'attention de {$name}",
+            default => 'T.a.v. '.$name,
         };
 
         $postalLine = trim(($placeholders['postal_code'] ?? '').' '.($placeholders['city'] ?? ''));
@@ -128,14 +126,6 @@ final class PromoCampaignLetterDocxBuilder
             $placeholders['street_address'] ?? '',
             $postalLine,
         ], static fn (string $line): bool => trim($line) !== ''));
-    }
-
-    private function subjectLine(string $locale): string
-    {
-        return match (strtolower(substr($locale, 0, 2))) {
-            'fr' => "Objet : Gestion plus efficace de l'espace public.",
-            default => 'Betreft: Efficiënter beheer van de publieke ruimte.',
-        };
     }
 
     private function greetingLine(string $locale): string

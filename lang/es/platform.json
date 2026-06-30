@@ -141,7 +141,7 @@
         "flow_image": "Imagen flow en la carta",
         "flow_none": "Sin imagen",
         "letter_title": "Carta (cuerpo)",
-        "letter_lead": "Bloque de dirección, asunto, saludo y QR fijos por idioma. Use marcadores; coloque {{flow_image}} donde debe ir la imagen flow.",
+        "letter_lead": "Bloque de dirección, saludo y QR fijos por idioma. Use marcadores; coloque {{flow_image}} donde debe ir la imagen flow.",
         "placeholders_hint": "Marcadores disponibles: {{name}}, {{street_address}}, {{postal_code}}, {{city}}, {{email}}, {{promo_url}}, {{flow_image}}",
         "email_title": "Correo (separado del adjunto)",
         "email_subject": "Asunto",
