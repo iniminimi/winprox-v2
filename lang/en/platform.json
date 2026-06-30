@@ -149,7 +149,7 @@
         "import_lead": "Upload a .xlsx file. A new import replaces all recipients for this campaign.",
         "spreadsheet": "Spreadsheet",
         "detected_headers": "Detected columns",
-        "map_name": "Municipality name column",
+        "map_name": "Recipient column",
         "map_email": "Email column",
         "map_street": "Address column",
         "map_postal": "Postal code column",

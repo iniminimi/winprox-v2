@@ -149,7 +149,7 @@
         "import_lead": "Suba un .xlsx. Una nueva importación reemplaza todos los destinatarios.",
         "spreadsheet": "Hoja de cálculo",
         "detected_headers": "Columnas detectadas",
-        "map_name": "Columna nombre municipio",
+        "map_name": "Columna destinatario",
         "map_email": "Columna correo",
         "map_street": "Columna dirección",
         "map_postal": "Columna código postal",

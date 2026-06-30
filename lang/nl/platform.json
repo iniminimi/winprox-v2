@@ -149,7 +149,7 @@
         "import_lead": "Upload een .xlsx. Een nieuwe import vervangt alle ontvangers van deze campagne.",
         "spreadsheet": "Spreadsheet",
         "detected_headers": "Gevonden kolommen",
-        "map_name": "Kolom gemeentenaam",
+        "map_name": "Kolom ontvanger",
         "map_email": "Kolom e-mail",
         "map_street": "Kolom adres",
         "map_postal": "Kolom postcode",

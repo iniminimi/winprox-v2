@@ -149,7 +149,7 @@
         "import_lead": "Laden Sie eine .xlsx hoch. Ein neuer Import ersetzt alle Empfänger.",
         "spreadsheet": "Tabelle",
         "detected_headers": "Erkannte Spalten",
-        "map_name": "Spalte Gemeindename",
+        "map_name": "Spalte Empfänger",
         "map_email": "Spalte E-Mail",
         "map_street": "Spalte Adresse",
         "map_postal": "Spalte PLZ",

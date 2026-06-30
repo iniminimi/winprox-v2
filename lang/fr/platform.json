@@ -149,7 +149,7 @@
         "import_lead": "Téléversez un .xlsx. Un nouvel import remplace tous les destinataires.",
         "spreadsheet": "Feuille de calcul",
         "detected_headers": "Colonnes détectées",
-        "map_name": "Colonne nom commune",
+        "map_name": "Colonne destinataire",
         "map_email": "Colonne e-mail",
         "map_street": "Colonne adresse",
         "map_postal": "Colonne code postal",
