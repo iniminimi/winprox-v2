@@ -32,11 +32,15 @@ final class PromoCampaignLetterDocxBuilder
 
     private const BODY_PARAGRAPH_SPACE_AFTER_TWIP = 240;
 
-    private const LIST_ITEM_SPACE_AFTER_TWIP = 80;
+    private const LIST_ITEM_SPACE_AFTER_TWIP = 24;
 
     private const BULLET_LIST_STYLE = 'promoCampaignLetterBullets';
 
     private const ORDERED_LIST_STYLE = 'promoCampaignLetterOrdered';
+
+    private int $listInstanceCounter = 0;
+
+    private ?PhpWord $phpWord = null;
 
     /**
      * @param  array<string, string>  $placeholders
@@ -68,9 +72,10 @@ final class PromoCampaignLetterDocxBuilder
         QrCodePngWriter::writeFileWithWinproxLogo($promoUrl, $qrPngPath, 900);
 
         $phpWord = new PhpWord;
+        $this->phpWord = $phpWord;
+        $this->listInstanceCounter = 0;
         $phpWord->setDefaultFontName('Arial');
         $phpWord->setDefaultFontSize(self::BODY_FONT_PT);
-        $this->registerListStyles($phpWord);
 
         $section = $phpWord->addSection([
             'marginTop' => Converter::cmToTwip(2.0),
@@ -232,39 +237,6 @@ final class PromoCampaignLetterDocxBuilder
         }
     }
 
-    private function registerListStyles(PhpWord $phpWord): void
-    {
-        $phpWord->addNumberingStyle(self::BULLET_LIST_STYLE, [
-            'type' => 'hybridMultilevel',
-            'levels' => [
-                [
-                    'format' => 'bullet',
-                    'text' => '•',
-                    'left' => Converter::cmToTwip(0.5),
-                    'hanging' => Converter::cmToTwip(0.35),
-                    'tabPos' => Converter::cmToTwip(0.85),
-                    'start' => 1,
-                    'alignment' => 'left',
-                ],
-            ],
-        ]);
-
-        $phpWord->addNumberingStyle(self::ORDERED_LIST_STYLE, [
-            'type' => 'multilevel',
-            'levels' => [
-                [
-                    'format' => 'decimal',
-                    'text' => '%1.',
-                    'left' => Converter::cmToTwip(0.5),
-                    'hanging' => Converter::cmToTwip(0.35),
-                    'tabPos' => Converter::cmToTwip(0.85),
-                    'start' => 1,
-                    'alignment' => 'left',
-                ],
-            ],
-        ]);
-    }
-
     private function renderHtmlBlocks(Section $section, string $html): void
     {
         if (trim($html) === '') {
@@ -325,7 +297,9 @@ final class PromoCampaignLetterDocxBuilder
         }
 
         if ($tag === 'ul' || $tag === 'ol') {
-            $listStyle = $tag === 'ol' ? self::ORDERED_LIST_STYLE : self::BULLET_LIST_STYLE;
+            $listStyle = $tag === 'ol'
+                ? $this->registerOrderedListStyle()
+                : $this->registerBulletListStyle();
             foreach ($node->childNodes as $child) {
                 if ($child->nodeType === XML_ELEMENT_NODE && strtolower($child->nodeName) === 'li') {
                     $this->renderListItem($section, $child, $listStyle);
@@ -336,7 +310,7 @@ final class PromoCampaignLetterDocxBuilder
 
     private function renderListItem(Section $section, DOMElement $li, string $listStyle): void
     {
-        $inner = $this->nodeInnerHtml($li);
+        $inner = $this->normalizeListItemInnerHtml($this->nodeInnerHtml($li));
         if (PromoCampaignHtmlSanitizer::isBlank($inner)) {
             return;
         }
@@ -346,6 +320,70 @@ final class PromoCampaignLetterDocxBuilder
             'spaceBefore' => 0,
         ]);
         Html::addHtml($item, $inner, false, false);
+    }
+
+    private function normalizeListItemInnerHtml(string $inner): string
+    {
+        $inner = preg_replace('/<span[^>]*\bql-ui\b[^>]*>.*?<\/span>/is', '', $inner) ?? $inner;
+        $inner = trim($inner);
+
+        if (preg_match('/^<p[^>]*>(.*)<\/p>$/is', $inner, $matches)) {
+            return trim($matches[1]);
+        }
+
+        return $inner;
+    }
+
+    private function registerBulletListStyle(): string
+    {
+        if ($this->phpWord === null) {
+            throw new RuntimeException('PhpWord is not initialized.');
+        }
+
+        $this->listInstanceCounter++;
+        $name = self::BULLET_LIST_STYLE.'_'.$this->listInstanceCounter;
+        $this->phpWord->addNumberingStyle($name, [
+            'type' => 'hybridMultilevel',
+            'levels' => [
+                [
+                    'format' => 'bullet',
+                    'text' => '•',
+                    'left' => Converter::cmToTwip(0.5),
+                    'hanging' => Converter::cmToTwip(0.35),
+                    'tabPos' => Converter::cmToTwip(0.85),
+                    'start' => 1,
+                    'alignment' => 'left',
+                ],
+            ],
+        ]);
+
+        return $name;
+    }
+
+    private function registerOrderedListStyle(): string
+    {
+        if ($this->phpWord === null) {
+            throw new RuntimeException('PhpWord is not initialized.');
+        }
+
+        $this->listInstanceCounter++;
+        $name = self::ORDERED_LIST_STYLE.'_'.$this->listInstanceCounter;
+        $this->phpWord->addNumberingStyle($name, [
+            'type' => 'multilevel',
+            'levels' => [
+                [
+                    'format' => 'decimal',
+                    'text' => '%1.',
+                    'left' => Converter::cmToTwip(0.5),
+                    'hanging' => Converter::cmToTwip(0.35),
+                    'tabPos' => Converter::cmToTwip(0.85),
+                    'start' => 1,
+                    'alignment' => 'left',
+                ],
+            ],
+        ]);
+
+        return $name;
     }
 
     private function nodeInnerHtml(DOMNode $node): string

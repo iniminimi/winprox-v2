@@ -16,6 +16,7 @@ use App\Models\PromoCampaignImport;
 use App\Models\PromoCampaignTarget;
 use App\Models\User;
 use App\Support\Marketing\PromoCampaignHtmlSanitizer;
+use App\Support\Marketing\PromoCampaignLetterDocxBuilder;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use App\Support\Marketing\PromoCampaignSpreadsheetReader;
@@ -192,9 +193,41 @@ it('genereert docx met paragraaf-spacing in het middenstuk', function () {
         ->toContain('Tweede alinea')
         ->toContain('Punt één')
         ->toContain('w:after="240"')
-        ->toContain('w:after="80"');
+        ->toContain('w:after="24"');
 
     @unlink($docxPath);
+});
+
+it('start elke bullet-lijst opnieuw na tussenliggende alinea', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        $this->markTestSkipped('QR generation unavailable.');
+    }
+
+    $html = PromoCampaignQuillHtmlNormalizer::forDocx(
+        '<p>Eerste lijst:</p><ul><li>Punt A</li><li>Punt B</li></ul><p><br></p><p>Tussenkop</p>'
+        .'<ul><li>Punt C</li><li>Punt D</li></ul>',
+        'nl',
+    );
+
+    $path = storage_path('framework/testing/bullet-restart.docx');
+    app(PromoCampaignLetterDocxBuilder::class)->build(
+        'nl',
+        ['name' => 'T', 'street_address' => 'S', 'postal_code' => '1', 'city' => 'B', 'email' => '', 'promo_url' => 'https://x.test'],
+        $html,
+        null,
+        'https://x.test',
+        $path,
+    );
+
+    $zip = new ZipArchive();
+    expect($zip->open($path))->toBeTrue();
+    $documentXml = (string) $zip->getFromName('word/document.xml');
+    $zip->close();
+
+    preg_match_all('/<w:numPr><w:ilvl w:val="0"\/><w:numId w:val="(\d+)"\/><\/w:numPr>/', $documentXml, $matches);
+    expect(array_values(array_unique($matches[1] ?? [])))->toHaveCount(2);
+
+    @unlink($path);
 });
 
 it('genereert docx voor campagne-ontvanger', function () {

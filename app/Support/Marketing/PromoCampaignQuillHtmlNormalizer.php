@@ -24,6 +24,7 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         $html = preg_replace('/\s+data-list="[^"]*"/', '', $html) ?? $html;
+        $html = preg_replace('/<span[^>]*\bql-ui\b[^>]*>.*?<\/span>/is', '', $html) ?? $html;
         $html = preg_replace('/<br\s*>/', '<br/>', $html) ?? $html;
 
         return (string) (PromoCampaignHtmlSanitizer::clean($html) ?? '');
@@ -63,8 +64,24 @@ final class PromoCampaignQuillHtmlNormalizer
         $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
         $html = self::promoteOrderedListsToBulletLists($html);
+        $html = self::unwrapListItemParagraphs($html);
 
         return trim($html);
+    }
+
+    private static function unwrapListItemParagraphs(string $html): string
+    {
+        $previous = null;
+        while ($previous !== $html) {
+            $previous = $html;
+            $html = preg_replace(
+                '/<li([^>]*)>\s*<p[^>]*>(.*?)<\/p>\s*<\/li>/is',
+                '<li$1>$2</li>',
+                $html,
+            ) ?? $html;
+        }
+
+        return $html;
     }
 
     private static function collapseEmptyParagraphs(string $html): string
