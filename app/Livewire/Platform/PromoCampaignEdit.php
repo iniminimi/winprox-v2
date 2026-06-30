@@ -59,11 +59,17 @@ class PromoCampaignEdit extends Component
 
     public int $delaySeconds = 16;
 
-    public string $overrideTo = '';
+    public string $testEmailTo = '';
 
     public bool $forceGenerate = false;
 
     public bool $forceSend = false;
+
+    public bool $showQueueConfirm = false;
+
+    public int $queueConfirmQueued = 0;
+
+    public int $queueConfirmSkipped = 0;
 
     public ?string $noticeMessage = null;
 
@@ -72,6 +78,52 @@ class PromoCampaignEdit extends Component
     public function dismissNotice(): void
     {
         $this->noticeMessage = null;
+    }
+
+    public function dismissQueueConfirm(): void
+    {
+        $this->showQueueConfirm = false;
+    }
+
+    public function openQueueConfirm(QueuePromoCampaignEmailsAction $queue): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $preview = $queue->preview($this->campaign, $this->forceSend);
+
+        if ($preview['queued'] === 0) {
+            $this->showNotice(__('platform.promo_campaigns.queue_none'), 'error');
+
+            return;
+        }
+
+        $this->queueConfirmQueued = $preview['queued'];
+        $this->queueConfirmSkipped = $preview['skipped'];
+        $this->showQueueConfirm = true;
+    }
+
+    public function confirmQueueEmails(QueuePromoCampaignEmailsAction $queue): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        $user = auth()->user();
+        if ($user === null) {
+            return;
+        }
+
+        $this->showQueueConfirm = false;
+
+        $result = $queue->handle(
+            campaign: $this->campaign,
+            actorUserId: (int) $user->id,
+            delaySeconds: $this->delaySeconds,
+            forceResend: $this->forceSend,
+        );
+
+        $this->showNotice(__('platform.promo_campaigns.queued', [
+            'queued' => $result['queued'],
+            'skipped' => $result['skipped'],
+        ]));
     }
 
     public function mount(PromoCampaign $promoCampaign): void
@@ -198,37 +250,12 @@ class PromoCampaignEdit extends Component
         ]));
     }
 
-    public function queueEmails(QueuePromoCampaignEmailsAction $queue): void
-    {
-        $this->authorize('managePromoCampaigns', User::class);
-
-        $user = auth()->user();
-        if ($user === null) {
-            return;
-        }
-
-        $override = trim($this->overrideTo);
-
-        $result = $queue->handle(
-            campaign: $this->campaign,
-            actorUserId: (int) $user->id,
-            delaySeconds: $this->delaySeconds,
-            overrideRecipientEmail: $override !== '' ? $override : null,
-            forceResend: $this->forceSend,
-        );
-
-        $this->showNotice(__('platform.promo_campaigns.queued', [
-            'queued' => $result['queued'],
-            'skipped' => $result['skipped'],
-        ]));
-    }
-
     public function sendTestEmail(SendPromoCampaignEmailAction $send): void
     {
         $this->authorize('managePromoCampaigns', User::class);
 
-        $override = trim($this->overrideTo);
-        if ($override === '' || filter_var($override, FILTER_VALIDATE_EMAIL) === false) {
+        $testEmail = trim($this->testEmailTo);
+        if ($testEmail === '' || filter_var($testEmail, FILTER_VALIDATE_EMAIL) === false) {
             $this->showNotice(__('platform.promo_campaigns.test_email_invalid'), 'error');
 
             return;
@@ -250,10 +277,10 @@ class PromoCampaignEdit extends Component
             campaign: $this->campaign,
             target: $target->load('promoRecipient'),
             actorUserId: (int) $user->id,
-            overrideRecipientEmail: $override,
+            overrideRecipientEmail: $testEmail,
         );
 
-        $this->showNotice(__('platform.promo_campaigns.test_email_sent', ['email' => $override]));
+        $this->showNotice(__('platform.promo_campaigns.test_email_sent', ['email' => $testEmail]));
     }
 
     private function showNotice(string $message, string $type = 'success'): void

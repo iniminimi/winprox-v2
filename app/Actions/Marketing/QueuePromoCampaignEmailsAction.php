@@ -7,9 +7,18 @@ namespace App\Actions\Marketing;
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Models\PromoCampaign;
+use App\Models\PromoCampaignTarget;
 
 class QueuePromoCampaignEmailsAction
 {
+    /**
+     * @return array{queued: int, skipped: int}
+     */
+    public function preview(PromoCampaign $campaign, bool $forceResend = false): array
+    {
+        return $this->resolveTargets($campaign, $forceResend);
+    }
+
     /**
      * @return array{queued: int, skipped: int}
      */
@@ -17,13 +26,38 @@ class QueuePromoCampaignEmailsAction
         PromoCampaign $campaign,
         int $actorUserId,
         int $delaySeconds,
-        ?string $overrideRecipientEmail = null,
         bool $forceResend = false,
     ): array {
         $delaySeconds = max(0, $delaySeconds);
+        $resolved = $this->resolveTargets($campaign, $forceResend);
+        $queueIndex = 0;
+
+        foreach ($resolved['targets'] as $target) {
+            SendPromoCampaignEmailJob::dispatch(
+                promoCampaignId: (int) $campaign->id,
+                promoCampaignTargetId: (int) $target->id,
+                actorUserId: $actorUserId,
+                overrideRecipientEmail: null,
+            )->delay(now()->addSeconds($queueIndex * $delaySeconds));
+
+            $queueIndex++;
+        }
+
+        return [
+            'queued' => $resolved['queued'],
+            'skipped' => $resolved['skipped'],
+        ];
+    }
+
+    /**
+     * @return array{queued: int, skipped: int, targets: list<PromoCampaignTarget>}
+     */
+    private function resolveTargets(PromoCampaign $campaign, bool $forceResend): array
+    {
         $queued = 0;
         $skipped = 0;
-        $queueIndex = 0;
+        /** @var list<PromoCampaignTarget> $targets */
+        $targets = [];
 
         $sentTargetIds = [];
         if (! $forceResend) {
@@ -46,26 +80,20 @@ class QueuePromoCampaignEmailsAction
                 continue;
             }
 
-            if ($overrideRecipientEmail === null && ($target->email === null || $target->email === '')) {
+            if ($target->email === null || trim((string) $target->email) === '') {
                 $skipped++;
 
                 continue;
             }
 
-            SendPromoCampaignEmailJob::dispatch(
-                promoCampaignId: (int) $campaign->id,
-                promoCampaignTargetId: (int) $target->id,
-                actorUserId: $actorUserId,
-                overrideRecipientEmail: $overrideRecipientEmail,
-            )->delay(now()->addSeconds($queueIndex * $delaySeconds));
-
-            $queueIndex++;
+            $targets[] = $target;
             $queued++;
         }
 
         return [
             'queued' => $queued,
             'skipped' => $skipped,
+            'targets' => $targets,
         ];
     }
 }

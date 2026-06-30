@@ -187,9 +187,9 @@
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.test_email_lead') }}</p>
             <div class="wp-row wp-gap-md wp-wrap wp-items-end">
                 <div class="wp-promo-actions__field">
-                    <label class="wp-label" for="override-to">{{ __('platform.promo_campaigns.override_to') }}</label>
-                    <input id="override-to" type="email" class="wp-input" wire:model="overrideTo" autocomplete="email">
-                    <p class="wp-muted wp-text-sm wp-mt-1">{{ __('platform.promo_campaigns.override_to_hint') }}</p>
+                    <label class="wp-label" for="test-email-to">{{ __('platform.promo_campaigns.test_email_to') }}</label>
+                    <input id="test-email-to" type="email" class="wp-input" wire:model="testEmailTo" autocomplete="email">
+                    <p class="wp-muted wp-text-sm wp-mt-1">{{ __('platform.promo_campaigns.test_email_to_hint') }}</p>
                 </div>
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="sendTestEmail">
                     {{ __('platform.promo_campaigns.test_email') }}
@@ -210,7 +210,7 @@
                     <input type="checkbox" wire:model="forceSend">
                     {{ __('platform.promo_campaigns.force_send') }}
                 </label>
-                <button type="button" class="btn btn--primary btn--sm" wire:click="queueEmails">
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openQueueConfirm">
                     {{ __('platform.promo_campaigns.queue_emails') }}
                 </button>
             </div>
@@ -236,7 +236,18 @@
                                 @endif
                                 ·
                                 @if ($target->latestSentEmailSend)
-                                    {{ __('platform.promo_campaigns.email_sent', ['date' => $target->latestSentEmailSend->sent_at?->format('d-m-Y H:i')]) }}
+                                    @php
+                                        $sentTo = trim((string) ($target->latestSentEmailSend->recipient_email ?? ''));
+                                        $excelEmail = trim((string) ($target->email ?? ''));
+                                    @endphp
+                                    @if ($sentTo !== '' && strcasecmp($sentTo, $excelEmail) !== 0)
+                                        {{ __('platform.promo_campaigns.email_sent_to', [
+                                            'date' => $target->latestSentEmailSend->sent_at?->format('d-m-Y H:i'),
+                                            'email' => $sentTo,
+                                        ]) }}
+                                    @else
+                                        {{ __('platform.promo_campaigns.email_sent', ['date' => $target->latestSentEmailSend->sent_at?->format('d-m-Y H:i')]) }}
+                                    @endif
                                 @elseif ($target->latestEmailSend?->status?->value === 'failed')
                                     {{ __('platform.promo_campaigns.email_failed') }}
                                 @else
@@ -251,6 +262,27 @@
                 <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.targets_truncated', ['shown' => $targets->count(), 'total' => $stats['targets']]) }}</p>
             @endif
         </div>
+    @endif
+
+    @if ($showQueueConfirm)
+        <x-wp-modal closeMethod="dismissQueueConfirm">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="promo-campaign-queue-confirm-title">
+                <div class="wp-modal-head">
+                    <h2 id="promo-campaign-queue-confirm-title" class="wp-section-title">{{ __('platform.promo_campaigns.queue_confirm_title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissQueueConfirm" />
+                </div>
+                <div class="wp-modal-body wp-stack-tight">
+                    <p class="wp-text-body">{{ __('platform.promo_campaigns.queue_confirm_body', ['count' => $queueConfirmQueued]) }}</p>
+                    @if ($queueConfirmSkipped > 0)
+                        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.queue_confirm_skipped', ['skipped' => $queueConfirmSkipped]) }}</p>
+                    @endif
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissQueueConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="confirmQueueEmails">{{ __('platform.promo_campaigns.queue_confirm_submit') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 
     @if ($noticeMessage)

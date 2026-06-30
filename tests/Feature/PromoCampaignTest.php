@@ -4,8 +4,10 @@ use App\Actions\Marketing\CreatePromoCampaignAction;
 use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
+use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
+use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Mail\Marketing\PromoCampaignLetterMail;
@@ -20,6 +22,8 @@ use App\Support\Marketing\PromoCampaignSpreadsheetReader;
 use App\Support\Marketing\PromoLandingUrl;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
 
 function promoCampaignFixturePath(): string
@@ -436,4 +440,127 @@ it('opent promo-pagina in campagne-locale via ref-link', function () {
     $this->get(route('promo', ['ref' => $recipient->token]))
         ->assertOk()
         ->assertSee(__('promo.video.qr_portal.title', [], 'fr'), false);
+});
+
+/**
+ * @return array{0: PromoCampaign, 1: PromoCampaignTarget}
+ */
+function promoCampaignReadyForEmail(User $superuser, string $excelEmail = 'gemeente@example.com'): array
+{
+    $recipient = app(CreatePromoRecipientAction::class)->handle('Testgemeente', null, (int) $superuser->id);
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'queue-test',
+        name: 'Queue test',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $campaign,
+        data: new UpdatePromoCampaignData(
+            name: 'Queue test',
+            locale: 'nl',
+            letterBodyHtml: '<p>Brief {{name}}</p>',
+            emailSubject: 'Test {{name}}',
+            emailBodyHtml: '<p>Email {{name}}</p>',
+            flowImagePath: null,
+            columnMapping: null,
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'test.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
+    $docxFilename = 'test-brief.docx';
+    $lettersDir = $campaign->fresh()->lettersDirectory();
+    if (! is_dir($lettersDir)) {
+        mkdir($lettersDir, 0755, true);
+    }
+    file_put_contents($lettersDir.DIRECTORY_SEPARATOR.$docxFilename, 'docx');
+
+    $target = PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $recipient->id,
+        'name' => 'Testgemeente',
+        'email' => $excelEmail,
+        'street_address' => 'Straat 1',
+        'postal_code' => '1000',
+        'city' => 'Brussel',
+        'docx_filename' => $docxFilename,
+        'generated_at' => now(),
+    ]);
+
+    return [$campaign->fresh(), $target];
+}
+
+it('zet bulk-mails in wachtrij naar excel-adressen zonder testadres', function () {
+    Queue::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'gemeente@example.com');
+
+    app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign,
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+    );
+
+    Queue::assertPushed(SendPromoCampaignEmailJob::class, function (SendPromoCampaignEmailJob $job): bool {
+        return $job->overrideRecipientEmail === null;
+    });
+});
+
+it('toont bevestigingspopup met aantal mails voor bulk verzenden', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('openQueueConfirm')
+        ->assertSet('showQueueConfirm', true)
+        ->assertSet('queueConfirmQueued', 1)
+        ->assertSee(__('platform.promo_campaigns.queue_confirm_body', ['count' => 1]));
+});
+
+it('bevestigt bulk verzenden zonder testadres mee te nemen', function () {
+    Queue::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'gemeente@example.com');
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('openQueueConfirm')
+        ->call('confirmQueueEmails')
+        ->assertSet('showQueueConfirm', false);
+
+    Queue::assertPushed(SendPromoCampaignEmailJob::class, function (SendPromoCampaignEmailJob $job): bool {
+        return $job->overrideRecipientEmail === null;
+    });
+});
+
+it('stuurt testmail alleen naar ingevuld testadres', function () {
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'gemeente@example.com');
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('sendTestEmail')
+        ->assertSet('noticeType', 'success');
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('test@winprox.app');
+    });
 });
