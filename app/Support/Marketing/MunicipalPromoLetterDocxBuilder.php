@@ -179,7 +179,6 @@ final class MunicipalPromoLetterDocxBuilder
 
         $this->addCellParagraph($textCell, 'Dominique Schaepdrijver', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'Oprichter / Architect WinProx', ['spaceAfter' => 0]);
-        $this->addCellParagraph($textCell, 'gsm : 0494/840854', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'info@winprox.app', ['spaceAfter' => 0]);
         $this->addCellParagraph($textCell, 'www.winprox.app', ['spaceAfter' => 0]);
 
