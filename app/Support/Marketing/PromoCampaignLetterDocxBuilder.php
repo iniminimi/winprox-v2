@@ -84,15 +84,6 @@ final class PromoCampaignLetterDocxBuilder
             'marginRight' => Converter::cmToTwip(2.0),
         ]);
 
-        foreach ($this->addressLines($locale, $placeholders) as $line) {
-            $this->addParagraph($section, $line, ['spaceAfter' => 0]);
-        }
-
-        $this->addBlankLine($section);
-        $this->addParagraph($section, $this->greetingLine($locale), ['spaceAfter' => 0]);
-        $this->addBlankLine($section);
-        $this->addBlankLine($section);
-
         if ($letterBodyHtml !== '') {
             $this->addLetterBodyHtml($section, $letterBodyHtml, $locale, $flowImagePath);
         } elseif ($flowImagePath !== null && $flowImagePath !== '' && is_file($flowImagePath)) {
@@ -114,35 +105,6 @@ final class PromoCampaignLetterDocxBuilder
                 }
             }
         }
-    }
-
-    /**
-     * @param  array<string, string>  $placeholders
-     * @return list<string>
-     */
-    private function addressLines(string $locale, array $placeholders): array
-    {
-        $name = $placeholders['name'] ?? '';
-        $attention = match (strtolower(substr($locale, 0, 2))) {
-            'fr' => "À l'attention de {$name}",
-            default => 'T.a.v. '.$name,
-        };
-
-        $postalLine = trim(($placeholders['postal_code'] ?? '').' '.($placeholders['city'] ?? ''));
-
-        return array_values(array_filter([
-            $attention,
-            $placeholders['street_address'] ?? '',
-            $postalLine,
-        ], static fn (string $line): bool => trim($line) !== ''));
-    }
-
-    private function greetingLine(string $locale): string
-    {
-        return match (strtolower(substr($locale, 0, 2))) {
-            'fr' => 'Madame, Monsieur,',
-            default => 'Geachte,',
-        };
     }
 
     private function addClosingWithQr(Section $section, string $qrPngPath, string $locale): void

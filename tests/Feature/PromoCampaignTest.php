@@ -371,7 +371,7 @@ it('splitst enkele quill-paragraaf met br-tags voor e-mail', function () {
         );
 });
 
-it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function () {
+it('verwijdert alleen vast handtekeningblok uit brief voor docx', function () {
     $html = '<p>Wavre</p><p>place de l\'Hôtel de Ville</p><p>1300 Wavre</p><p><br></p>'
         .'<p>Madame, Monsieur,</p><p><br></p>'
         .'<p>La gestion des infrastructures publiques.</p><p><br></p>'
@@ -382,12 +382,12 @@ it('bereidt volledige quill-brief voor op docx zonder dubbele blokken', function
     $prepared = PromoCampaignQuillHtmlNormalizer::forDocx($html, 'fr');
 
     expect($prepared)
+        ->toContain('1300 Wavre')
+        ->toContain('Madame, Monsieur')
         ->toContain('La gestion des infrastructures publiques')
         ->toContain('Le principe est très simple')
-        ->not->toContain('Madame, Monsieur')
         ->not->toContain('Dans l\'attente')
-        ->not->toContain('Dominique Schaepdrijver')
-        ->not->toContain('1300 Wavre');
+        ->not->toContain('Dominique Schaepdrijver');
 });
 
 it('behoudt quill-lijsten voor docx met ul-li structuur', function () {
@@ -421,7 +421,7 @@ it('zet quill-ol zonder data-list om naar ul voor docx', function () {
         ->not->toContain('<ol>');
 });
 
-it('wist brief-middenstuk niet weg bij aanhef diep in de tekst', function () {
+it('wist aanhef in brief-middenstuk niet weg wanneer diep in de tekst', function () {
     $html = '<p>Intro.</p><p>Les avantages :</p>'
         .'<ol><li data-list="bullet">Punt één</li></ol>'
         .'<p>Je vous prie d\'agréer, Madame, Monsieur, mes salutations.</p>';

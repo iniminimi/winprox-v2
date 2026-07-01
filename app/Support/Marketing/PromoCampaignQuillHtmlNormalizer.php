@@ -52,7 +52,7 @@ final class PromoCampaignQuillHtmlNormalizer
     }
 
     /**
-     * Brief-middenstuk voor DOCX: lege Quill-paragrafen weg, lijsten naar bullets, compacte spacing.
+     * Brief voor DOCX: lijsten naar bullets; handtekeningblok onderaan blijft vast.
      */
     public static function forDocx(?string $html, string $locale): string
     {
@@ -61,7 +61,6 @@ final class PromoCampaignQuillHtmlNormalizer
             return '';
         }
 
-        $html = self::stripDuplicateEnvelope($html, $locale);
         $html = self::stripDuplicateClosing($html, $locale);
         $html = self::promoteOrderedListsToBulletLists($html);
         $html = self::unwrapListItemParagraphs($html);
@@ -97,38 +96,6 @@ final class PromoCampaignQuillHtmlNormalizer
         }
 
         return trim($html);
-    }
-
-    private static function stripDuplicateEnvelope(string $html, string $locale): string
-    {
-        $greeting = self::greetingForLocale($locale);
-        $head = substr($html, 0, 1200);
-        $pos = stripos($head, $greeting);
-        if ($pos === false) {
-            return $html;
-        }
-
-        $paragraphStart = strrpos(substr($html, 0, $pos), '<p');
-        if ($paragraphStart === false) {
-            return $html;
-        }
-
-        $closeParagraph = stripos($html, '</p>', $pos + strlen($greeting));
-        if ($closeParagraph === false) {
-            return $html;
-        }
-
-        $paragraphHtml = substr($html, $paragraphStart, $closeParagraph - $paragraphStart + 4);
-        $paragraphText = trim(preg_replace('/\s+/u', ' ', strip_tags($paragraphHtml)) ?? '');
-        if ($paragraphText === '' || mb_strlen($paragraphText) > 80) {
-            return $html;
-        }
-
-        if (! str_starts_with(mb_strtolower($paragraphText), mb_strtolower(substr($greeting, 0, 12)))) {
-            return $html;
-        }
-
-        return trim(substr($html, $closeParagraph + 4));
     }
 
     private static function stripDuplicateClosing(string $html, string $locale): string
@@ -281,14 +248,6 @@ final class PromoCampaignQuillHtmlNormalizer
             },
             $html,
         ) ?? $html;
-    }
-
-    private static function greetingForLocale(string $locale): string
-    {
-        return match (strtolower(substr($locale, 0, 2))) {
-            'fr' => 'Madame, Monsieur,',
-            default => 'Geachte,',
-        };
     }
 
     /**
