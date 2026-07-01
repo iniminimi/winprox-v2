@@ -12,6 +12,7 @@ use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\PromoCampaign;
+use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignImport;
 use App\Models\PromoCampaignTarget;
 use App\Models\User;
@@ -716,4 +717,9 @@ it('stuurt testmail alleen naar ingevuld testadres', function () {
     Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
         return $mail->hasTo('test@winprox.app');
     });
+
+    expect(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
+
+    $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh());
+    expect($preview['queued'])->toBe(1);
 });

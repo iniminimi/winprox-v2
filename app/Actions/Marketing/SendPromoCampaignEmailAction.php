@@ -25,7 +25,7 @@ class SendPromoCampaignEmailAction
         PromoCampaignTarget $target,
         int $actorUserId,
         ?string $overrideRecipientEmail = null,
-    ): PromoCampaignEmailSend {
+    ): ?PromoCampaignEmailSend {
         if ((int) $target->promo_campaign_id !== (int) $campaign->id) {
             throw new RuntimeException('Target does not belong to campaign.');
         }
@@ -74,27 +74,28 @@ class SendPromoCampaignEmailAction
             PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
         );
 
-        $send = PromoCampaignEmailSend::query()->firstOrNew([
-            'promo_campaign_id' => $campaign->id,
-            'promo_campaign_target_id' => $target->id,
-        ]);
+        $isTestSend = $overrideRecipientEmail !== null;
+        $send = null;
 
-        if (
-            $send->exists
-            && $send->status === MunicipalPromoEmailSendStatus::Sent
-            && $overrideRecipientEmail === null
-        ) {
-            throw new RuntimeException('Email already sent for this target.');
+        if (! $isTestSend) {
+            $send = PromoCampaignEmailSend::query()->firstOrNew([
+                'promo_campaign_id' => $campaign->id,
+                'promo_campaign_target_id' => $target->id,
+            ]);
+
+            if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Sent) {
+                throw new RuntimeException('Email already sent for this target.');
+            }
+
+            $send->fill([
+                'recipient_email' => $recipientEmail,
+                'status' => MunicipalPromoEmailSendStatus::Pending,
+                'error_message' => null,
+                'sent_at' => null,
+                'created_by' => $actorUserId,
+            ]);
+            $send->save();
         }
-
-        $send->fill([
-            'recipient_email' => $recipientEmail,
-            'status' => MunicipalPromoEmailSendStatus::Pending,
-            'error_message' => null,
-            'sent_at' => null,
-            'created_by' => $actorUserId,
-        ]);
-        $send->save();
 
         try {
             Mail::to($recipientEmail)->send(new PromoCampaignLetterMail(
@@ -104,17 +105,38 @@ class SendPromoCampaignEmailAction
                 mailLocale: $campaign->locale,
             ));
 
-            $send->update([
-                'status' => MunicipalPromoEmailSendStatus::Sent,
-                'sent_at' => now(),
-            ]);
+            if ($send !== null) {
+                $send->update([
+                    'status' => MunicipalPromoEmailSendStatus::Sent,
+                    'sent_at' => now(),
+                ]);
+            }
         } catch (Throwable $exception) {
-            $send->update([
-                'status' => MunicipalPromoEmailSendStatus::Failed,
-                'error_message' => mb_substr($exception->getMessage(), 0, 1000),
-            ]);
+            if ($send !== null) {
+                $send->update([
+                    'status' => MunicipalPromoEmailSendStatus::Failed,
+                    'error_message' => mb_substr($exception->getMessage(), 0, 1000),
+                ]);
+            }
 
             throw $exception;
+        }
+
+        if ($isTestSend) {
+            $this->logAudit->handle(
+                userId: $actorUserId,
+                tenantId: null,
+                action: 'marketing.promo_campaign_test_email_sent',
+                modelType: 'PromoCampaignTarget',
+                modelId: $target->id,
+                payload: [
+                    'promo_campaign_id' => $campaign->id,
+                    'promo_campaign_target_id' => $target->id,
+                    'recipient_email' => $recipientEmail,
+                ],
+            );
+
+            return null;
         }
 
         $this->logAudit->handle(
@@ -127,7 +149,7 @@ class SendPromoCampaignEmailAction
                 'promo_campaign_id' => $campaign->id,
                 'promo_campaign_target_id' => $target->id,
                 'recipient_email' => $recipientEmail,
-                'override_recipient' => $overrideRecipientEmail !== null,
+                'override_recipient' => false,
             ],
         );
 
