@@ -434,6 +434,74 @@ it('wist aanhef in brief-middenstuk niet weg wanneer diep in de tekst', function
         ->toContain('Je vous prie');
 });
 
+it('kopieert promo-campagne naar nieuwe campagne', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $source = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'source-wave',
+        name: 'Broncampagne',
+        locale: 'fr',
+        actorUserId: (int) $superuser->id,
+    );
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $source,
+        data: new UpdatePromoCampaignData(
+            name: 'Broncampagne',
+            locale: 'fr',
+            letterBodyHtml: '<p>Brief {{name}}</p>',
+            emailSubject: 'Onderwerp {{name}}',
+            emailBodyHtml: '<p>Email {{name}}</p>',
+            flowImagePath: 'public/images/promo/flow_fr.jpg',
+            columnMapping: [
+                'name' => 'nom',
+                'email' => 'email_general',
+            ],
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $source->id,
+        'original_filename' => 'bron.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
+    PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $source->id,
+        'promo_campaign_import_id' => $import->id,
+        'name' => 'Wavre',
+        'email' => 'test@example.com',
+    ]);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->call('openCopyModal', $source->id)
+        ->assertSet('showCopyModal', true)
+        ->assertSet('copyLocale', 'fr')
+        ->set('copySlug', 'copy-wave')
+        ->set('copyName', 'Kopie campagne')
+        ->call('copyCampaign')
+        ->assertHasNoErrors()
+        ->assertRedirect(route('platform.promo-campaigns.edit', PromoCampaign::query()->where('slug', 'copy-wave')->first()));
+
+    $copy = PromoCampaign::query()->where('slug', 'copy-wave')->first();
+    $source = $source->fresh();
+
+    expect($copy)
+        ->name->toBe('Kopie campagne')
+        ->locale->toBe('fr')
+        ->letter_body_html->toBe($source->letter_body_html)
+        ->email_subject->toBe($source->email_subject)
+        ->email_body_html->toBe($source->email_body_html)
+        ->flow_image_path->toBe($source->flow_image_path)
+        ->column_mapping->toMatchArray($source->column_mapping);
+
+    expect(PromoCampaignTarget::query()->where('promo_campaign_id', $copy->id)->count())->toBe(0);
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 
