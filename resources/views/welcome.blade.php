@@ -272,13 +272,48 @@
             <div class="wp-welcome-section-inner--wide wp-welcome-main">
                 <span class="wp-welcome-eyebrow">{{ __('welcome.screenshots.title') }}</span>
                 <h2 id="welcome-screenshots-title" class="wp-welcome-h2">{{ __('welcome.screenshots.title') }}</h2>
+                @php
+                    $welcomeScreenshotLocale = app()->getLocale();
+                    $welcomeDesktopScreenshotRel = "images/welcome/screenshot_{$welcomeScreenshotLocale}.jpg";
+                    $welcomeDesktopScreenshotAvailable = is_file(public_path($welcomeDesktopScreenshotRel));
+                    $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$welcomeScreenshotLocale}_mobile.jpg";
+                    $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
+                @endphp
                 <div class="wp-welcome-screenshots">
-                    <div class="wp-welcome-media-placeholder" role="img" aria-label="{{ __('welcome.screenshots.desktop') }}">
-                        <p>{{ __('welcome.screenshots.desktop') }}</p>
-                    </div>
-                    <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--phone" role="img" aria-label="{{ __('welcome.screenshots.mobile') }}">
-                        <p>{{ __('welcome.screenshots.mobile') }}</p>
-                    </div>
+                    @if ($welcomeDesktopScreenshotAvailable)
+                        <figure class="wp-welcome-screenshot">
+                            <img
+                                src="{{ asset($welcomeDesktopScreenshotRel) }}"
+                                alt="{{ __('welcome.screenshots.desktop') }}"
+                                class="wp-welcome-screenshot__img"
+                                width="1200"
+                                height="675"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </figure>
+                    @else
+                        <div class="wp-welcome-media-placeholder" role="img" aria-label="{{ __('welcome.screenshots.desktop') }}">
+                            <p>{{ __('welcome.screenshots.desktop') }}</p>
+                        </div>
+                    @endif
+                    @if ($welcomeMobileScreenshotAvailable)
+                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--phone">
+                            <img
+                                src="{{ asset($welcomeMobileScreenshotRel) }}"
+                                alt="{{ __('welcome.screenshots.mobile') }}"
+                                class="wp-welcome-screenshot__img"
+                                width="390"
+                                height="844"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </figure>
+                    @else
+                        <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--phone" role="img" aria-label="{{ __('welcome.screenshots.mobile') }}">
+                            <p>{{ __('welcome.screenshots.mobile') }}</p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

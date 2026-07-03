@@ -900,6 +900,24 @@
     margin-top: 1.5rem;
 }
 
+[data-theme='standard'] .wp-welcome-screenshot {
+    margin: 0;
+}
+
+[data-theme='standard'] .wp-welcome-screenshot__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    background: var(--wp-surface);
+}
+
+[data-theme='standard'] .wp-welcome-screenshot--phone {
+    max-width: 16rem;
+    margin-inline: auto;
+}
+
 @media (min-width: 48rem) {
     [data-theme='standard'] .wp-welcome-screenshots {
         grid-template-columns: 1fr auto;
