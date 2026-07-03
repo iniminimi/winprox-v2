@@ -27,6 +27,10 @@
         "settings_hint_html": "You can also manage email preferences in your <a href=\":url\" style=\"color:#059669;font-weight:600;\">Settings</a>.",
         "settings_hint_text": "You can also manage email preferences in Settings: :url"
     },
+    "new_tenant": {
+        "subject": "WinProx: new organization registered — :tenant",
+        "body": "A new organization has been registered.\n\nOrganization: :tenant\nAdministrator: :admin (:email)\nPhone: :phone\nAddress: :address\nCountry: :country\nTenant ID: :tenant_id"
+    },
     "new_qr_issue": {
         "subject": ":tenant — new QR report",
         "html_title": "New report",

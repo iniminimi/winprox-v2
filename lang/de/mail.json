@@ -27,6 +27,10 @@
         "settings_hint_html": "Du kannst E-Mail-Einstellungen auch in den <a href=\":url\" style=\"color:#059669;font-weight:600;\">Einstellungen</a> verwalten.",
         "settings_hint_text": "Du kannst E-Mail-Einstellungen auch in Einstellungen verwalten: :url"
     },
+    "new_tenant": {
+        "subject": "WinProx: neue Organisation registriert — :tenant",
+        "body": "Eine neue Organisation wurde registriert.\n\nOrganisation: :tenant\nAdministrator: :admin (:email)\nTelefon: :phone\nAdresse: :address\nLand: :country\nTenant-ID: :tenant_id"
+    },
     "new_qr_issue": {
         "subject": ":tenant — neue QR-Meldung",
         "html_title": "Neue Meldung",

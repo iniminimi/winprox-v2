@@ -3,11 +3,13 @@
 namespace App\Actions\Auth;
 
 use App\Actions\Billing\StartTenantTrialAction;
+use App\Mail\NewTenantRegisteredMail;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterTenantAction
 {
@@ -26,7 +28,7 @@ class RegisterTenantAction
             ? strtoupper((string) $data['country_code'])
             : null;
 
-        return DB::transaction(function () use ($data, $locale, $countryCode) {
+        [$tenant, $user] = DB::transaction(function () use ($data, $locale, $countryCode) {
             $tenant = Tenant::create([
                 'name' => trim((string) $data['organization']),
                 'email' => $data['email'],
@@ -40,7 +42,7 @@ class RegisterTenantAction
 
             $this->startTrial->handle($tenant);
 
-            return User::create([
+            $user = User::create([
                 'tenant_id' => $tenant->id,
                 'name' => $data['name'],
                 'email' => $data['email'],
@@ -49,6 +51,16 @@ class RegisterTenantAction
                 'is_superuser' => false,
                 'role' => User::ROLE_ADMIN,
             ]);
+
+            return [$tenant, $user];
         });
+
+        $to = config('winprox.new_tenant_notification_email');
+
+        if ($to) {
+            Mail::to($to)->send(new NewTenantRegisteredMail($tenant, $user));
+        }
+
+        return $user;
     }
 }

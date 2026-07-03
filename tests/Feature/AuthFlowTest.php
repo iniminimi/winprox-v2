@@ -3,11 +3,13 @@
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
+use App\Mail\NewTenantRegisteredMail;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Password;
 use Livewire\Livewire;
@@ -16,6 +18,8 @@ use Tests\Support\RegisterFormData;
 afterEach(fn () => Tenancy::forget());
 
 it('registreert een nieuwe tenant met beheerder en logt in', function () {
+    Mail::fake();
+
     Livewire::test(Register::class)
         ->set(RegisterFormData::valid())
         ->call('register')
@@ -35,6 +39,12 @@ it('registreert een nieuwe tenant met beheerder en logt in', function () {
 
     expect(auth()->check())->toBeTrue()
         ->and(auth()->id())->toBe($user->id);
+
+    Mail::assertSent(NewTenantRegisteredMail::class, function (NewTenantRegisteredMail $mail) use ($tenant, $user) {
+        return $mail->hasTo(config('winprox.new_tenant_notification_email'))
+            && $mail->tenant->is($tenant)
+            && $mail->admin->is($user);
+    });
 });
 
 it('valideert de registratievelden', function () {
