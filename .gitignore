@@ -30,4 +30,5 @@ yarn-error.log
 /scripts/enrich-tenant-volume.php
 /scripts/localize-issue-descriptions.php
 /scripts/seed-tenant-volume.php
+/scripts/seed-hospital-demo.php
 /scripts/verify-tenant-volume.php
