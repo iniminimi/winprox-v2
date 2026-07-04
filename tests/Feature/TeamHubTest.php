@@ -237,6 +237,10 @@ it('laat een medewerker een portaal-achtergrond uploaden', function () {
     expect($tenant->fresh()->portal_background_path)->not->toBeNull();
 });
 
+it('staat avif toe als livewire preview-mime voor portaal-achtergrond', function () {
+    expect(config('livewire.temporary_file_upload.preview_mimes'))->toContain('avif');
+});
+
 it('laat een medewerker instellingen zien maar niet bedrijfsgegevens bewerken', function () {
     [$tenant] = tenantWithAdmin();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);

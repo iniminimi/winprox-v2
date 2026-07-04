@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Validator;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.app')]
@@ -399,7 +400,7 @@ class Settings extends Component
     public function organisationLogoPreviewUrl(): ?string
     {
         if ($this->orgLogo !== null) {
-            return $this->orgLogo->temporaryUrl();
+            return $this->livewireUploadPreviewUrl($this->orgLogo);
         }
 
         return $this->resolveTenant()?->fresh()?->logoPublicUrl();
@@ -408,10 +409,19 @@ class Settings extends Component
     public function portalBackgroundPreviewUrl(): ?string
     {
         if ($this->portalBackground !== null) {
-            return $this->portalBackground->temporaryUrl();
+            return $this->livewireUploadPreviewUrl($this->portalBackground);
         }
 
         return $this->resolveTenant()?->fresh()?->portalBackgroundPublicUrl();
+    }
+
+    private function livewireUploadPreviewUrl(UploadedFile $file): ?string
+    {
+        if (! $file instanceof TemporaryUploadedFile || ! $file->isPreviewable()) {
+            return null;
+        }
+
+        return $file->temporaryUrl();
     }
 
     public function updatedUiTheme(string $value, UpdateUserUiThemeAction $updateUserUiTheme): void
