@@ -1,216 +1,205 @@
-# WinProx V1 Facility — featureoverzicht
+# WinProx — featureoverzicht
 
-Referentie voor **WinProx V1 Facility** op basis van `c:\winprox_old`. Dit document beschrijft wat de Facility-sector doet, **zonder** Real Estate- en Hospitality-specifieke features.
-
-In V1 heet de sector `facility` in de code. Locaties heten daar nog **Properties** (gebouwen/locaties); assets heten **Units**.
-
-WinProx V2 (`c:\winprox`) mikt op **dezelfde functionaliteit** (Facility-pariteit), maar volledig schoon herschreven volgens `WINPROX_RULES.md`.
+Hoog-niveau overzicht van **WinProx V2** (Facility-app). Gebruik dit document om snel te zien *wat*
+het product doet; voor scherm-voor-scherm bouwspecificatie en backlog, zie **`docs/FEATURES.md`**.
 
 ---
 
-## Wat Facility expliciet níet heeft
+## Documentatie-landschap
 
-Ten opzichte van Real Estate / Hospitality:
+| Document | Rol |
+|----------|-----|
+| **`WINPROX_RULES.md`** | Harde bouwregels (Actions, policies, locales, architectuur) — **altijd eerst lezen** |
+| **`docs/FEATURES.md`** | Levende V2-specificatie per scherm (menu top-down, backlog, QR-portaal detail) |
+| **`WINPROX_FEATURES.md`** (dit bestand) | Compact overzicht: wat WinProx Facility **is** en welke modules bestaan |
+| **`WINPROX_DIRECTION.md`** | Roadmap & toekomst (achtergrond — niet proactief bouwen) |
+| **`docs/MANUAL_SCREENSHOTS.md`** | Runbook handleiding-screenshots |
+| **`docs/gemeente-promo.md`** | Runbook gemeente-promobrieven (marketing) |
 
-- Geen **eigenaars/owners**-module
-- Geen **contractors**-module (geen uitnodigen, offertes, KBO-auto-add)
-- Geen **eigenaar informeren** bij meldingen
-- Geen Hospitality-leads, hotel-KBO-flows of hospitality-specifieke teams met categorieën
-
----
-
-## 1. Account & organisatie
-
-- Registratie, login, wachtwoord reset
-- Multi-tenant: elke organisatie is een aparte tenant
-- Gebruikersbeheer (admin + medewerkers)
-- Organisatieprofiel (naam, contact, adres, logo)
-- Rollen: admin vs. gewone user
-- **Team managers**: een user kan manager zijn van één of meer operationele teams (ziet dan alleen “zijn” teams)
-- Taalkeuze: **NL, FR, EN, DE**
-- Eerste-login onboarding + **Facility setup-checklist** op dashboard (teams → locatie → assets → workers → QR-pack)
+**Prioriteit bij conflict:** `WINPROX_RULES.md` > `docs/FEATURES.md` > `WINPROX_DIRECTION.md` > V1-code (`winprox_old`).
 
 ---
 
-## 2. Locaties & assets (Properties / Units)
+## Product (hard)
 
-- **Locaties** (properties): aanmaken, bewerken, actief/inactief, zoeken
-- **Assets/units** per locatie: CRUD, actief/inactief, verwijderen
-- **Bulk aanmaken** van units (vloeren × kamers, batch-beheer, batch verwijderen)
-- **Standaard operationeel team** per unit koppelen
-- Per unit een uniek **QR-token**
-- **QR-pack download** als Word-bestand (Avery 55×55 stickers) per locatie
-- **Gemeenschappelijke ruimtes QR** (property-level QR naast unit-QR’s)
-- **Documenten** per locatie/unit (handleidingen, bestanden)
-- **Mededelingen/announcements** per locatie/unit (bv. “groot onderhoud”)
-
----
-
-## 3. Operationele teams & workers
-
-- **Internal teams** (operationele teams): label, sorteer volgorde, actief/inactief
-- Team **managers** toewijzen (users die het team mogen beheren)
-- **Workers** (uitvoerders **zonder login**): voornaam, achternaam, gekoppeld aan team(s)
-- **Worker-icoon** per uitvoerder (visuele identificatie op de werkvloer)
-- **Team-QR** (`field_qr_token`) per team → veldportaal
-- Team-QR pagina tonen/printen vanuit beheer
-
----
-
-## 4. Meldingen (Issues)
-
-- Meldingenlijst met **filters** (status, locatie, team, terugkerende meldingen, …)
-- Melding aanmaken via **2-staps “easy flow”** (geen aparte uitgebreide modal):
-  1. Locatie + unit + omschrijving (+ optioneel **terugkerende melding**)
-  2. Taak + toewijzing aan **intern team**
-- Meldingdetail: status, omschrijving, foto’s, tijdlijn
-- **Meerdere taken** per melding
-- **Notities/updates** op melding (met optioneel foto’s)
-- Handmatige statuswijziging melding
-- **Geen** contractor-toewijzing of eigenaar-notificatie
-
----
-
-## 5. Taken (Tasks)
-
-- Takenlijst gegroepeerd per **Facility-status**:
-  - Toegewezen (`assigned`)
-  - In uitvoering (`in_progress`)
-  - On hold (`on_hold`)
-  - Afgehandeld (`completed`)
-  - Niet uitgevoerd (`not_executed`)
-- Filters op status + **operationeel team**
-- Team managers zien alleen taken van **hun** teams
-- Taakdetail: status wijzigen, notities, audit bij on hold/niet uitgevoerd
-- Taak toevoegen vanuit meldingdetail (team + geplande datum)
-- **Geen** contractor-invites, offertes of `invited`/`quoting`-flow (geblokkeerd voor Facility)
-
----
-
-## 6. Kalender
-
-- Kalenderweergave van meldingen/taken
-- Facility-specifiek: filter op locatie + team
-- Integratie met **ochtendbriefing**-data per team
-
----
-
-## 7. Ochtendbriefing (Morning Briefing)
-
-- **Afdrukbaar overzicht** per operationeel team
-- Open taken gegroepeerd (per unit/kamer + algemene taken)
-- Filter op datum en team
-- Link vanaf dashboard en kalender
-
----
-
-## 8. Publieke QR-schermen (mobiel-first)
-
-### Unit-QR (`/facility/report/{token}`)
-
-- Publieke meldpagina: omschrijving + **tot 4 foto’s**
-- Automatisch **taak aanmaken** naar het default team van de unit
-- Secties: home, nieuwe melding, open meldingen, **documenten**, **mededelingen**
-- **Worker-modus** op dezelfde pagina (alleen voor herkende veldwerkers):
-  - Aanmelden via naam + **icoon-bevestiging**
-  - Open taken starten/afhandelen
-  - Foto’s + notitie bij afronding
-  - Device-cookie onthoudt worker
-
-### Team-QR (`/facility/team/{token}`)
-
-- Veldportaal voor heel team
-- Worker **registreren** (naam + icoon) of **heridentificeren**
-- Overzicht open taken van het team
-- Taak starten / afhandelen met foto’s + notitie
-- Taaknotitie toevoegen
-
----
-
-## 9. Dashboard
-
-- Tellingen: locaties, units, open meldingen, open taken
-- Recente meldingen (team-scope voor managers)
-- **Setup-checklist** tot alles ingericht is
-- **Proefperiode/abonnement-batterij** (resterende dagen)
-- Link naar ochtendbriefing
-
----
-
-## 10. Abonnement & billing
-
-- **Proefperiode** (facility krijgt standaard “pro”-limieten tijdens trial)
-- Abonnementsplannen met **unit-limieten**
-- Stripe checkout + klantportaal (indien geconfigureerd)
-- Grace period na verlopen abonnement
-- Waarschuwing bij bijna bereikte unit-limiet
-
----
-
-## 11. Ondersteuning & juridisch
-
-- **FAQ / kennisbank** (facility-variant: vragen over interne teams i.p.v. contractors)
-- **Juridische documenten** (privacy, voorwaarden, DPA, subprocessors) — 4 talen
-- **Contactpagina**
-- **Hulp-chat** in de app (FAQ-matching + escalatie naar helpdesk bij onbeantwoorde vragen)
-- **Data-export** (GDPR) voor ingelogde users
-
----
-
-## 12. Platform & infra (deels gedeeld)
-
-- Superuser kan tenants/users bekijken en **support view** (impersonatie)
-- Activity logging
-- E-mailnotificaties (account, taken, … — geen contractor-mails)
-- **Data retention** voor facility (oude meldingen/taken/media opruimen via cron)
-- Demo-flow op `/demo` voor facility
-- Marketingpagina `/facility`
+- **Eén Facility-app:** melding → taken → afhandeling. Geen hospitality, contractors, owners, demo-sector.
+- **Blur** alleen op **publieke QR-portalen** (niet-goedgekeurde meldingen). Beheer toont alles onverkort.
+- **Talen:** `nl`, `en`, `fr`, `de`, `es`, `it` (`config/locales.php`, pariteit via `npm run check:locales:parity`).
+- **Thema:** minimale `standard`-stijl (emerald accent, wit/lichtgrijs, `wp-*`-tokens).
 
 ---
 
 ## Kernflow
 
 ```
-QR-scan (unit) → Melding → Taak → intern team → worker op werkvloer → statusupdates → briefing/kalender
+QR-scan (unit) → Melding → Taak(en) → intern team → worker op werkvloer → statusupdates → briefing/kalender
 ```
 
-**Melding → taak(taken) → intern team → worker op werkvloer → statusupdates → briefing/kalender**
+---
+
+## Tenant-app (ingelogd, per organisatie)
+
+Middleware: geldige tenant + trial/abonnement (`support.tenant`). Rollen: **admin** (alles) vs **employee** (operationeel, geen accounts/abonnement).
+
+### Dashboard
+- KPI-tegels: locaties, units, nieuwe meldingen, open taken (klikbaar).
+- Recente meldingen; proefperiode-capsule.
+- Link naar briefing afdrukken; WinProx-assistent (help-chat).
+
+### Locaties & units
+- Locaties CRUD, zoeken, (de)activeren; adresvelden + landcode.
+- **Categorieën** koppelen units aan **teams** (QR-routing).
+- Units per locatie: CRUD, bulk-aanmaak met patroon, batch verwijderen (veiligheidsregels).
+- **QR-stickerblad** (.docx, Avery 55×55) per locatie; unit-QR en locatie-QR.
+- **Documenten** en **mededelingen** per locatie/unit (publiek op QR-portaal).
+- Optioneel **GPS-rapport** per unit (veldportaal).
+
+### Meldingen
+- Lijst met filters (status, team, zoek, terugkerend); groepering per status.
+- **4 statussen:** Nieuw · In uitvoering · Afgehandeld · Gesloten (afgeleid van taken).
+- Aanmaak-flow (2 stappen): melding + taak/team; foto-upload (client-side compressie).
+- **QR-moderatie:** nieuwe QR-meldingen wachten op goedkeuring (`ApproveIssueAction`).
+- **Terugkerende meldingen** met kalendercycli.
+- Notities/updates op melding (incl. foto's).
+
+### Taken
+- Lijst/detail; **4 statussen** + **prioriteit** (prio 1–4).
+- Toewijzing aan **één intern team** per taak.
+- Statuswijziging met verplichte reden bij sluiten/pauzeren (notitie als `IssueUpdate`).
+- Terugkerende taakcycli gekoppeld aan kalender.
+
+### Kalender
+- Maand/week/dag; filter op locatie; toggle taken vs meldingen.
+- Geplande taken (`scheduled_for`) en recurring-cycli.
+
+### Team
+- **Collega's** (admin): users met rol admin/employee.
+- **Interne teams** + **workers** (zonder login): icoon, teamleader-vlag, team-QR.
+- Worker-icoon reset / lockout-beheer.
+
+### Overige tenant-schermen
+- **Instellingen** — organisatieprofiel, logo, thema.
+- **Abonnement** — trial, plannen, unit/user-limieten; Stripe (indien geconfigureerd).
+- **FAQ & kennisbank** + help-chat.
+- **Juridische documenten** (privacy, voorwaarden, cookies, DPA, subverwerkers).
+- **Contact** — mailto + verwijzing assistent.
+- **Handleiding** — algemeen, workers, teamleaders (meertalig).
+- **Health** — tenant-gezondheidsoverzicht (admin).
+- **API-instellingen** — tokens, webhook-endpoints, documentatie (`/api/v1`).
 
 ---
 
-## V1 → V2 mapping (terminologie)
+## Publieke schermen
 
-| V1 (winprox_old) | V2 (winprox) |
-|------------------|--------------|
-| Property         | Location     |
-| Unit             | Unit         |
-| InternalTeam     | InternalTeam |
-| Worker           | Worker       |
-| Issue            | Issue        |
-| Task             | Task         |
-| sector `facility`| geen sector meer (één app) |
+| Route | Doel |
+|-------|------|
+| `/` | Welcome / landingspagina (marketing) |
+| `/comparison` | Vergelijking / positioning |
+| `/login`, `/register`, … | Auth |
+| `/melden/{token}` | **Unit-QR-portaal** (melden, documenten, mededelingen, worker-modus) |
+| `/team/{token}` | **Team-QR-portaal** (worker-overzicht; afhandeling via unit-QR) |
+| `/q/{token}` | QR-scan redirect (koppelen / doorverwijzen) |
+| `/melden/onbekend/{token}` | Niet-toegewezen QR |
+| `/promo` | Promo-landingspagina (ref-tracking gemeente/campagne) |
+| `/legal/*`, `/contact` | Juridisch & contact (gast) |
 
-### Belangrijke V2-wijzigingen t.o.v. V1 Facility
-
-- **4 taakstatussen** i.p.v. 7 (`on_hold` / `not_executed` vervallen; rollup naar 4 meldingstatussen)
-- **Moderatie** op QR-meldingen (blur tot goedkeuring) — nieuw in V2
-- **Actions-architectuur** (business logic uit Livewire)
-- Geen contractors, owners of sector-splitsing meer
+**Unit-portaal:** mobiel-first; tot 4 foto's; auto-taak naar team van unit-categorie; blur tot goedkeuring.
+**Worker:** naam + icoon (12 iconen), device-cookie, lockout na 2 foute pogingen, taak start/afhandelen.
 
 ---
 
-## Bronnen in V1-codebase
+## Platform (superuser)
 
-| Onderdeel | Pad |
-|-----------|-----|
-| Sector-capabilities | `config/sectors.php` → `facility` |
-| Facility teams UI | `app/Livewire/FacilityTeams.php` |
+Alleen voor platformbeheerders (`is_superuser`), routes onder `/platform`:
+
+- Dashboard, tenants, users, auditlog
+- Help-chat (onbeantwoorde vragen, kennisbank)
+- Contactberichten
+- Vertaling-sync (export/import vertaalslots)
+- **Promo-campagnes** — Excel-import, DOCX-brieven, e-mailqueue, kolommapping, campagne kopiëren
+- **Promo-ontvangers** — tokens, QR-download, bezoekstatistieken
+- Handleiding-screenshots (platform-tool)
+
+Support: tenant **impersoneren** (`support.tenant`) voor hulp zonder tenant-login.
+
+---
+
+## API & integraties (V2-fundament)
+
+- **REST API** `/api/v1` — Sanctum-tokens, tenant-scoped, JSON-envelope.
+- **Uitgaande webhooks** — domein-events, HMAC, retries, delivery-log.
+- **Inkoming** — geverifieerde hooks onder `/api/v1/hooks/…`.
+- Business logic **altijd** in Actions; API/Livewire/CLI zijn dunne ingangen.
+
+---
+
+## Billing & limieten
+
+- Proefperiode + grace; plannen met **unit-** en **user-limieten**.
+- Stripe checkout / customer portal (optioneel via `.env`).
+- Rate limiting per plan (API).
+
+---
+
+## Infra & onderhoud
+
+- **Audit logging** op schrijfacties.
+- **Data retention** — cron opruiming oude media/data (`RetentionPruneCommand`).
+- **Vertaling** — `original_language` + vertaalslots; artisan sync/export/import.
+- **E-mail** — account, notificaties, promo; unsubscribe/resubscribe.
+- **GDPR** — data-export ingelogde user.
+
+---
+
+## Wat Facility expliciet níet heeft (V1-cruft)
+
+- Geen **owners** / **contractors** / offertes / uitnodigingen.
+- Geen hospitality- of real-estate-sector.
+- Geen 7 taakstatussen (`on_hold`, `not_executed` als aparte status — wel als reden-notitie).
+- Geen sector-query-params (`?sector=`) of demo-marketingflows op welcome.
+
+---
+
+## Terminologie V1 → V2
+
+| V1 (`winprox_old`) | V2 (`winprox`) |
+|--------------------|----------------|
+| Property | **Location** |
+| Unit | **Unit** |
+| InternalTeam | **InternalTeam** |
+| Worker | **Worker** |
+| Issue | **Issue** |
+| Task | **Task** |
+| sector `facility` | geen sector (één app) |
+| `/facility/report/{token}` | `/melden/{token}` |
+| `/facility/team/{token}` | `/team/{token}` |
+| Standaard team per unit | **Category → team(s)** routing |
+| Geen moderatie | **QR-goedkeuring + blur** publiek |
+| 4 talen | **6 talen** (+ es, it) |
+| 7 taakstatussen | **4 statussen** |
+
+---
+
+## V1-referentie (alleen bij porten)
+
+Broncode oude app: `c:\winprox_old`. Relevante V1-paden:
+
+| Onderdeel | V1-pad |
+|-----------|--------|
+| Teams UI | `app/Livewire/FacilityTeams.php` |
 | Unit QR-portaal | `app/Livewire/FacilityUnitPortal.php` |
 | Team QR-portaal | `app/Livewire/FacilityTeamFieldPortal.php` |
-| QR-pack export | `app/Http/Controllers/FacilityQrPackDownloadController.php` |
-| Taakstatussen Facility | `app/Support/FacilityTaskStatus.php` |
+| QR-pack | `app/Http/Controllers/FacilityQrPackDownloadController.php` |
 | Ochtendbriefing | `app/Support/FacilityMorningBriefing.php` |
-| Setup-checklist | `app/Support/FacilitySetupProgress.php` |
-| Team-toegang / scope | `app/Support/FacilityTeamAccess.php` |
-| QR-intake (auto-taak) | `app/Support/FacilityQrIntake.php` |
+| QR-intake | `app/Support/FacilityQrIntake.php` |
 | Worker-sessie | `app/Support/FacilityWorkerSession.php` |
+
+Bij porten: altijd **`docs/FEATURES.md`** + **`WINPROX_RULES.md`** volgen; gedrag overnemen waar goed, architectuur V2 afdwingen.
+
+---
+
+## Status t.o.v. pariteit
+
+- **Kern facility-flow** (locaties, units, meldingen, taken, kalender, team, QR-portaal, billing-basis): grotendeels **gebouwd** in V2.
+- **Detail/backlog** per scherm (assistent-escalatie, exacte briefing-UX, …): zie **`docs/FEATURES.md`** secties “Nieuw t.o.v. huidige bouw” / “NIET overnemen”.
+- **Platform/marketing** (promo-campagnes, gemeente-brieven): **aparte** superuser/marketing-laag, geen tenant-facility-feature.
