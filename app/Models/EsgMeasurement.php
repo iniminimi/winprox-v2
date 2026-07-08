@@ -27,6 +27,7 @@ class EsgMeasurement extends Model
         'value_json',
         'corrects_measurement_id',
         'recorded_at',
+        'created_at',
     ];
 
     protected $casts = [

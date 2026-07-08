@@ -37,6 +37,18 @@
         "name_required": "Geben Sie einen Namen ein.",
         "duplicate_name": "Ein Indikator mit diesem Namen existiert bereits.",
         "type_required": "Wählen Sie einen Typ.",
-        "threshold_max_lt_min": "Maximum muss größer oder gleich dem Minimum sein."
+        "threshold_max_lt_min": "Maximum muss größer oder gleich dem Minimum sein.",
+        "module_disabled": "ESG-Modul ist für diese Organisation nicht aktiviert.",
+        "measurement_value_required": "Geben Sie einen Messwert ein.",
+        "measurement_value_multiple": "Geben Sie genau einen Messwert ein.",
+        "measurement_value_wrong_type": "Der Messwert passt nicht zum Indikatortyp.",
+        "measurement_task_invalid": "Aufgabe nicht gefunden.",
+        "measurement_task_unit_required": "Diese Aufgabe hat keine verknüpfte Unit.",
+        "measurement_issue_indicator_required": "Die Meldung hat keinen ESG-Indikator.",
+        "measurement_indicator_mismatch": "Indikator stimmt nicht mit der Meldung überein.",
+        "measurement_indicator_invalid": "Indikator nicht gefunden oder inaktiv.",
+        "measurement_worker_invalid": "Mitarbeiter nicht gefunden.",
+        "measurement_correction_invalid": "Zu korrigierende Messung nicht gefunden.",
+        "measurement_correction_mismatch": "Korrektur gehört nicht zu dieser Aufgabe oder diesem Indikator."
     }
 }

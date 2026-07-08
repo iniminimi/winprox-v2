@@ -37,6 +37,18 @@
         "name_required": "Vul een naam in.",
         "duplicate_name": "Er bestaat al een indicator met deze naam.",
         "type_required": "Kies een type.",
-        "threshold_max_lt_min": "Maximum moet groter of gelijk zijn aan minimum."
+        "threshold_max_lt_min": "Maximum moet groter of gelijk zijn aan minimum.",
+        "module_disabled": "ESG-module is niet ingeschakeld voor deze organisatie.",
+        "measurement_value_required": "Vul een meetwaarde in.",
+        "measurement_value_multiple": "Vul precies één meetwaarde in.",
+        "measurement_value_wrong_type": "De meetwaarde past niet bij het indicatortype.",
+        "measurement_task_invalid": "Taak niet gevonden.",
+        "measurement_task_unit_required": "Deze taak heeft geen gekoppelde unit.",
+        "measurement_issue_indicator_required": "De melding heeft geen ESG-indicator.",
+        "measurement_indicator_mismatch": "Indicator komt niet overeen met de melding.",
+        "measurement_indicator_invalid": "Indicator niet gevonden of niet actief.",
+        "measurement_worker_invalid": "Medewerker niet gevonden.",
+        "measurement_correction_invalid": "Te corrigeren meting niet gevonden.",
+        "measurement_correction_mismatch": "Correctie hoort niet bij deze taak of indicator."
     }
 }

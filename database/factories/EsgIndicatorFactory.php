@@ -39,4 +39,20 @@ class EsgIndicatorFactory extends Factory
             'unit_of_measure' => null,
         ]);
     }
+
+    public function string(): static
+    {
+        return $this->state(fn () => [
+            'type' => EsgIndicatorType::String,
+            'unit_of_measure' => null,
+        ]);
+    }
+
+    public function json(): static
+    {
+        return $this->state(fn () => [
+            'type' => EsgIndicatorType::Json,
+            'unit_of_measure' => null,
+        ]);
+    }
 }

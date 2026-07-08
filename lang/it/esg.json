@@ -37,6 +37,18 @@
         "name_required": "Inserisca un nome.",
         "duplicate_name": "Esiste già un indicatore con questo nome.",
         "type_required": "Scelga un tipo.",
-        "threshold_max_lt_min": "Il massimo deve essere maggiore o uguale al minimo."
+        "threshold_max_lt_min": "Il massimo deve essere maggiore o uguale al minimo.",
+        "module_disabled": "Il modulo ESG non è abilitato per questa organizzazione.",
+        "measurement_value_required": "Inserisca un valore di misurazione.",
+        "measurement_value_multiple": "Inserisca esattamente un valore di misurazione.",
+        "measurement_value_wrong_type": "Il valore di misurazione non corrisponde al tipo di indicatore.",
+        "measurement_task_invalid": "Attività non trovata.",
+        "measurement_task_unit_required": "Questa attività non ha un'unità collegata.",
+        "measurement_issue_indicator_required": "La segnalazione non ha un indicatore ESG.",
+        "measurement_indicator_mismatch": "L'indicatore non corrisponde alla segnalazione.",
+        "measurement_indicator_invalid": "Indicatore non trovato o inattivo.",
+        "measurement_worker_invalid": "Operatore non trovato.",
+        "measurement_correction_invalid": "Misurazione da correggere non trovata.",
+        "measurement_correction_mismatch": "La correzione non appartiene a questa attività o indicatore."
     }
 }

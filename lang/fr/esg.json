@@ -37,6 +37,18 @@
         "name_required": "Saisissez un nom.",
         "duplicate_name": "Un indicateur avec ce nom existe déjà.",
         "type_required": "Choisissez un type.",
-        "threshold_max_lt_min": "Le maximum doit être supérieur ou égal au minimum."
+        "threshold_max_lt_min": "Le maximum doit être supérieur ou égal au minimum.",
+        "module_disabled": "Le module ESG n'est pas activé pour cette organisation.",
+        "measurement_value_required": "Saisissez une valeur de mesure.",
+        "measurement_value_multiple": "Saisissez exactement une valeur de mesure.",
+        "measurement_value_wrong_type": "La valeur de mesure ne correspond pas au type d'indicateur.",
+        "measurement_task_invalid": "Tâche introuvable.",
+        "measurement_task_unit_required": "Cette tâche n'a pas d'unité liée.",
+        "measurement_issue_indicator_required": "Le signalement n'a pas d'indicateur ESG.",
+        "measurement_indicator_mismatch": "L'indicateur ne correspond pas au signalement.",
+        "measurement_indicator_invalid": "Indicateur introuvable ou inactif.",
+        "measurement_worker_invalid": "Collaborateur introuvable.",
+        "measurement_correction_invalid": "Mesure à corriger introuvable.",
+        "measurement_correction_mismatch": "La correction n'appartient pas à cette tâche ou cet indicateur."
     }
 }

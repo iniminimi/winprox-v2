@@ -37,6 +37,18 @@
         "name_required": "Enter a name.",
         "duplicate_name": "An indicator with this name already exists.",
         "type_required": "Choose a type.",
-        "threshold_max_lt_min": "Maximum must be greater than or equal to minimum."
+        "threshold_max_lt_min": "Maximum must be greater than or equal to minimum.",
+        "module_disabled": "ESG module is not enabled for this organization.",
+        "measurement_value_required": "Enter a measurement value.",
+        "measurement_value_multiple": "Enter exactly one measurement value.",
+        "measurement_value_wrong_type": "The measurement value does not match the indicator type.",
+        "measurement_task_invalid": "Task not found.",
+        "measurement_task_unit_required": "This task has no linked unit.",
+        "measurement_issue_indicator_required": "The issue has no ESG indicator.",
+        "measurement_indicator_mismatch": "Indicator does not match the issue.",
+        "measurement_indicator_invalid": "Indicator not found or inactive.",
+        "measurement_worker_invalid": "Worker not found.",
+        "measurement_correction_invalid": "Measurement to correct not found.",
+        "measurement_correction_mismatch": "Correction does not belong to this task or indicator."
     }
 }
