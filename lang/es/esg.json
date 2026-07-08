@@ -1,0 +1,42 @@
+{
+    "title": "ESG y cumplimiento",
+    "subtitle": "Gestione definiciones de medición para inspecciones de sostenibilidad y cumplimiento.",
+    "list_title": "Indicadores",
+    "add": "+ Añadir indicador",
+    "empty": "Aún no hay indicadores. Cree una definición de medición para vincular inspecciones recurrentes.",
+    "create_title": "Nuevo indicador",
+    "edit_title": "Editar indicador",
+    "fields": {
+        "name": "Nombre",
+        "type": "Tipo",
+        "unit_of_measure": "Unidad",
+        "threshold_min": "Mínimo",
+        "threshold_max": "Máximo"
+    },
+    "types": {
+        "numeric": "Número",
+        "boolean": "Sí/no",
+        "string": "Texto",
+        "json": "JSON"
+    },
+    "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+    },
+    "actions": {
+        "deactivate": "Desactivar",
+        "activate": "Activar"
+    },
+    "flash": {
+        "created": "Indicador creado.",
+        "updated": "Indicador actualizado.",
+        "deactivated": "Indicador desactivado.",
+        "activated": "Indicador activado."
+    },
+    "errors": {
+        "name_required": "Introduzca un nombre.",
+        "duplicate_name": "Ya existe un indicador con este nombre.",
+        "type_required": "Elija un tipo.",
+        "threshold_max_lt_min": "El máximo debe ser mayor o igual que el mínimo."
+    }
+}

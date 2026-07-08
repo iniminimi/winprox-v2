@@ -21,6 +21,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Dashboard;
+use App\Livewire\Esg\IndicatorsIndex as EsgIndicatorsIndex;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
@@ -187,6 +188,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
+        Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/team', Team::class)->name('team.index');
         Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');

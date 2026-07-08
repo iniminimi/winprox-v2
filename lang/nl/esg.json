@@ -1,0 +1,42 @@
+{
+    "title": "ESG & Compliance",
+    "subtitle": "Beheer meetdefinities voor duurzaamheids- en compliance-inspecties.",
+    "list_title": "Indicatoren",
+    "add": "+ Indicator toevoegen",
+    "empty": "Nog geen indicatoren. Maak een meetdefinitie aan om terugkerende inspecties te koppelen.",
+    "create_title": "Nieuwe indicator",
+    "edit_title": "Indicator bewerken",
+    "fields": {
+        "name": "Naam",
+        "type": "Type",
+        "unit_of_measure": "Eenheid",
+        "threshold_min": "Minimum",
+        "threshold_max": "Maximum"
+    },
+    "types": {
+        "numeric": "Getal",
+        "boolean": "Ja/nee",
+        "string": "Tekst",
+        "json": "JSON"
+    },
+    "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+    },
+    "actions": {
+        "deactivate": "Deactiveren",
+        "activate": "Activeren"
+    },
+    "flash": {
+        "created": "Indicator aangemaakt.",
+        "updated": "Indicator bijgewerkt.",
+        "deactivated": "Indicator gedeactiveerd.",
+        "activated": "Indicator geactiveerd."
+    },
+    "errors": {
+        "name_required": "Vul een naam in.",
+        "duplicate_name": "Er bestaat al een indicator met deze naam.",
+        "type_required": "Kies een type.",
+        "threshold_max_lt_min": "Maximum moet groter of gelijk zijn aan minimum."
+    }
+}

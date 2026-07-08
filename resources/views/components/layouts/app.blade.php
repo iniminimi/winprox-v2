@@ -21,6 +21,9 @@
         $authUser = auth()->user();
         $isPlatformOnlySuperuser = $authUser?->is_superuser && $supportTenant === null;
 
+        $activeTenant = $supportTenant ?? $authUser?->tenant;
+        $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
+
         $primaryNav = [
             ...($isPlatformOnlySuperuser ? [
                 ['route' => 'platform.dashboard', 'active' => 'platform.dashboard', 'icon' => 'dashboard', 'label' => 'platform.dashboard.nav'],
@@ -39,10 +42,12 @@
                 ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
                 ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
                 ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
+                ...($showEsgNav ? [
+                    ['route' => 'esg.indicators.index', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
+                ] : []),
             ]),
         ];
 
-        $activeTenant = $supportTenant ?? $authUser?->tenant;
         $showTenantAdminNav = $authUser && (
             ($activeTenant instanceof Tenant && $authUser->can('manageSubscription', $activeTenant))
             || ($authUser->is_superuser && $supportTenant !== null)

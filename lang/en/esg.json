@@ -1,0 +1,42 @@
+{
+    "title": "ESG & Compliance",
+    "subtitle": "Manage measurement definitions for sustainability and compliance inspections.",
+    "list_title": "Indicators",
+    "add": "+ Add indicator",
+    "empty": "No indicators yet. Create a measurement definition to link recurring inspections.",
+    "create_title": "New indicator",
+    "edit_title": "Edit indicator",
+    "fields": {
+        "name": "Name",
+        "type": "Type",
+        "unit_of_measure": "Unit",
+        "threshold_min": "Minimum",
+        "threshold_max": "Maximum"
+    },
+    "types": {
+        "numeric": "Number",
+        "boolean": "Yes/no",
+        "string": "Text",
+        "json": "JSON"
+    },
+    "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+    },
+    "actions": {
+        "deactivate": "Deactivate",
+        "activate": "Activate"
+    },
+    "flash": {
+        "created": "Indicator created.",
+        "updated": "Indicator updated.",
+        "deactivated": "Indicator deactivated.",
+        "activated": "Indicator activated."
+    },
+    "errors": {
+        "name_required": "Enter a name.",
+        "duplicate_name": "An indicator with this name already exists.",
+        "type_required": "Choose a type.",
+        "threshold_max_lt_min": "Maximum must be greater than or equal to minimum."
+    }
+}

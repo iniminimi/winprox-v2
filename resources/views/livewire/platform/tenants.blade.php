@@ -42,6 +42,10 @@
                                     <span>{{ __('platform.trial_api') }}</span>
                                 </label>
                             @endif
+                            <label class="wp-chip wp-chip--sm">
+                                <input type="checkbox" wire:click="toggleEsgModule({{ $tenant->id }})" {{ $tenant->has_esg_module ? 'checked' : '' }}>
+                                <span>{{ __('platform.esg_module') }}</span>
+                            </label>
                             <button type="button" class="btn btn--primary btn--sm"
                                     wire:click="startSupport({{ $tenant->id }})">
                                 {{ __('platform.open_support') }}

@@ -1,0 +1,42 @@
+{
+    "title": "ESG & Compliance",
+    "subtitle": "Messdefinitionen für Nachhaltigkeits- und Compliance-Inspektionen verwalten.",
+    "list_title": "Indikatoren",
+    "add": "+ Indikator hinzufügen",
+    "empty": "Noch keine Indikatoren. Legen Sie eine Messdefinition an, um wiederkehrende Inspektionen zu verknüpfen.",
+    "create_title": "Neuer Indikator",
+    "edit_title": "Indikator bearbeiten",
+    "fields": {
+        "name": "Name",
+        "type": "Typ",
+        "unit_of_measure": "Einheit",
+        "threshold_min": "Minimum",
+        "threshold_max": "Maximum"
+    },
+    "types": {
+        "numeric": "Zahl",
+        "boolean": "Ja/Nein",
+        "string": "Text",
+        "json": "JSON"
+    },
+    "status": {
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
+    },
+    "actions": {
+        "deactivate": "Deaktivieren",
+        "activate": "Aktivieren"
+    },
+    "flash": {
+        "created": "Indikator angelegt.",
+        "updated": "Indikator aktualisiert.",
+        "deactivated": "Indikator deaktiviert.",
+        "activated": "Indikator aktiviert."
+    },
+    "errors": {
+        "name_required": "Geben Sie einen Namen ein.",
+        "duplicate_name": "Ein Indikator mit diesem Namen existiert bereits.",
+        "type_required": "Wählen Sie einen Typ.",
+        "threshold_max_lt_min": "Maximum muss größer oder gleich dem Minimum sein."
+    }
+}

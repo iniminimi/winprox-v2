@@ -10,6 +10,7 @@
     "status_active": "actif",
     "status_inactive": "inactif",
     "trial_api": "Accès API",
+    "esg_module": "Module ESG",
     "open_support": "Ouvrir la vue support",
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",

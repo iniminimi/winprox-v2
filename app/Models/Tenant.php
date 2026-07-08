@@ -165,6 +165,11 @@ class Tenant extends Model
         return in_array($this->billing_plan, $apiAllowedPlans, true);
     }
 
+    public function hasEsgModule(): bool
+    {
+        return (bool) $this->has_esg_module;
+    }
+
     public function trialDaysRemaining(): int
     {
         if (! $this->isTrialActive()) {

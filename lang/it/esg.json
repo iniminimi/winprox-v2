@@ -1,0 +1,42 @@
+{
+    "title": "ESG e conformità",
+    "subtitle": "Gestisca le definizioni di misura per ispezioni di sostenibilità e conformità.",
+    "list_title": "Indicatori",
+    "add": "+ Aggiungi indicatore",
+    "empty": "Nessun indicatore ancora. Crei una definizione di misura per collegare ispezioni ricorrenti.",
+    "create_title": "Nuovo indicatore",
+    "edit_title": "Modifica indicatore",
+    "fields": {
+        "name": "Nome",
+        "type": "Tipo",
+        "unit_of_measure": "Unità",
+        "threshold_min": "Minimo",
+        "threshold_max": "Massimo"
+    },
+    "types": {
+        "numeric": "Numero",
+        "boolean": "Sì/no",
+        "string": "Testo",
+        "json": "JSON"
+    },
+    "status": {
+        "active": "Attivo",
+        "inactive": "Inattivo"
+    },
+    "actions": {
+        "deactivate": "Disattiva",
+        "activate": "Attiva"
+    },
+    "flash": {
+        "created": "Indicatore creato.",
+        "updated": "Indicatore aggiornato.",
+        "deactivated": "Indicatore disattivato.",
+        "activated": "Indicatore attivato."
+    },
+    "errors": {
+        "name_required": "Inserisca un nome.",
+        "duplicate_name": "Esiste già un indicatore con questo nome.",
+        "type_required": "Scelga un tipo.",
+        "threshold_max_lt_min": "Il massimo deve essere maggiore o uguale al minimo."
+    }
+}
