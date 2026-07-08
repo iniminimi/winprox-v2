@@ -32,6 +32,7 @@ class IssueResource extends JsonResource
             'approved_at' => optional($this->approved_at)->toIso8601String(),
             'source' => $this->source?->value ?? IssueSource::Manager->value,
             'is_recurring' => (bool) $this->is_recurring,
+            'esg_indicator_id' => $this->esg_indicator_id,
             'recurrence_next_due_at' => optional($this->recurrence_next_due_at)->toIso8601String(),
             'created_at' => optional($this->created_at)->toIso8601String(),
             'tasks' => $this->isApproved()

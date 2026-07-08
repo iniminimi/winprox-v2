@@ -33,6 +33,7 @@ class CreateManagerIssueAction
         $issue = Issue::create([
             'location_id' => $data['location_id'] ?? null,
             'unit_id' => $data['unit_id'] ?? null,
+            'esg_indicator_id' => self::resolveEsgIndicatorId($data),
             'description' => $data['description'],
             'original_language' => LocaleSupport::normalize(
                 $data['original_language'] ?? $actor->locale ?? null,
@@ -56,5 +57,19 @@ class CreateManagerIssueAction
         $this->ensureTranslationSlots->handle($issue);
 
         return $issue;
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    private static function resolveEsgIndicatorId(array $data): ?int
+    {
+        if (! ($data['is_recurring'] ?? false)) {
+            return null;
+        }
+
+        $indicatorId = $data['esg_indicator_id'] ?? null;
+
+        return $indicatorId !== null && $indicatorId !== '' ? (int) $indicatorId : null;
     }
 }

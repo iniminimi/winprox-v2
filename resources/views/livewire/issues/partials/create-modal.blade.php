@@ -106,6 +106,25 @@
                             @error('recurrence_first_due_date') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     </div>
+
+                    @if ($hasEsgModule)
+                        <div class="wp-field">
+                            <label class="wp-label" for="create_esg_indicator_id">{{ __('issues.create.esg_indicator') }}</label>
+                            <select id="create_esg_indicator_id" class="wp-select" wire:model="esg_indicator_id">
+                                <option value="">{{ __('issues.create.esg_indicator_none') }}</option>
+                                @foreach ($createEsgIndicators as $indicator)
+                                    <option value="{{ $indicator->id }}">
+                                        {{ $indicator->name }}
+                                        @if ($indicator->unit_of_measure)
+                                            ({{ $indicator->unit_of_measure }})
+                                        @endif
+                                    </option>
+                                @endforeach
+                            </select>
+                            <p class="wp-muted wp-text-sm">{{ __('issues.create.esg_indicator_hint') }}</p>
+                            @error('esg_indicator_id') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                 </div>
             @endif
 

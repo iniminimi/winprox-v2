@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issues;
 
-use App\Support\Validation\TextDescriptionLimits;
 use App\Enums\RecurrenceIntervalUnit;
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -19,15 +19,20 @@ class StoreManagerIssueStepOneRequest extends FormRequest
      */
     public function rules(): array
     {
-        return self::ruleSet();
+        $tenantId = auth()->user()?->tenant_id;
+
+        return self::ruleSet(
+            $tenantId ? (int) $tenantId : null,
+            $tenantId ? (bool) auth()->user()?->tenant?->hasEsgModule() : false,
+        );
     }
 
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(): array
+    public static function ruleSet(?int $tenantId = null, bool $esgModuleEnabled = false): array
     {
-        return [
+        $rules = [
             'location_id' => ['required', 'integer', 'exists:locations,id'],
             'unit_id' => ['nullable', 'integer', 'exists:units,id'],
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
@@ -39,6 +44,22 @@ class StoreManagerIssueStepOneRequest extends FormRequest
             'photos' => ['nullable', 'array', 'max:4'],
             'photos.*' => ['image', 'max:10240'],
         ];
+
+        if (! $esgModuleEnabled || $tenantId === null) {
+            $rules['esg_indicator_id'] = ['prohibited'];
+        } else {
+            $rules['esg_indicator_id'] = [
+                'nullable',
+                'prohibited_unless:is_recurring,true',
+                'integer',
+                Rule::exists('esg_indicators', 'id')->where(
+                    fn ($query) => $query->where('tenant_id', $tenantId)->where('is_active', true),
+                ),
+            ];
+            $rules['unit_id'][] = 'required_with:esg_indicator_id';
+        }
+
+        return $rules;
     }
 
     /**
@@ -51,6 +72,7 @@ class StoreManagerIssueStepOneRequest extends FormRequest
             'location_id.integer' => __('issues.errors.location_required'),
             'location_id.exists' => __('issues.errors.location_required'),
             'unit_id.exists' => __('issues.errors.unit_invalid'),
+            'unit_id.required_with' => __('issues.errors.esg_indicator_requires_unit'),
             'description.required' => __('issues.errors.description_required'),
             'description.min' => __('issues.errors.description_min'),
             'description.max' => __('issues.errors.description_max'),
@@ -63,6 +85,8 @@ class StoreManagerIssueStepOneRequest extends FormRequest
             'recurrence_lead_days.max' => __('issues.errors.recurrence_lead_required'),
             'recurrence_first_due_date.required_if' => __('issues.errors.recurrence_due_required'),
             'recurrence_first_due_date.after_or_equal' => __('issues.errors.recurrence_due_future'),
+            'esg_indicator_id.exists' => __('issues.errors.esg_indicator_invalid'),
+            'esg_indicator_id.prohibited_unless' => __('issues.errors.esg_indicator_recurring_only'),
             'photos.max' => __('issues.errors.photos_max'),
             'photos.*.image' => __('issues.errors.photos_image'),
         ];

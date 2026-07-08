@@ -9,12 +9,15 @@ use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Http\Requests\Issues\AssignIssueTeamTaskRequest;
 use App\Http\Requests\Issues\StoreManagerIssueStepOneRequest;
+use App\Models\EsgIndicator;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Esg\EsgModuleAccess;
 use App\Support\PerStatusListLimit;
+use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -71,6 +74,8 @@ class Index extends Component
     public int $recurrence_lead_days = 7;
 
     public ?string $recurrence_first_due_date = null;
+
+    public ?int $esg_indicator_id = null;
 
     public ?int $internal_team_id = null;
 
@@ -173,6 +178,8 @@ class Index extends Component
     {
         if ($value) {
             $this->recurrence_lead_days = $this->suggestRecurringLeadDays($this->recurrence_interval_unit);
+        } else {
+            $this->esg_indicator_id = null;
         }
     }
 
@@ -223,9 +230,13 @@ class Index extends Component
         if (blank($this->location_id)) {
             $this->location_id = null;
         }
+        if (blank($this->esg_indicator_id)) {
+            $this->esg_indicator_id = null;
+        }
 
+        $tenantId = (int) Tenancy::id();
         $validated = $this->validate(
-            StoreManagerIssueStepOneRequest::ruleSet(),
+            StoreManagerIssueStepOneRequest::ruleSet($tenantId, EsgModuleAccess::activeTenantHasModule()),
             StoreManagerIssueStepOneRequest::messageSet(),
         );
 
@@ -282,6 +293,7 @@ class Index extends Component
         $this->recurrence_interval_unit = 'month';
         $this->recurrence_lead_days = 7;
         $this->recurrence_first_due_date = null;
+        $this->esg_indicator_id = null;
         $this->internal_team_id = null;
         $this->task_note = null;
         $this->task_priority = 'prio_3';
@@ -374,6 +386,10 @@ class Index extends Component
                 : collect(),
             'createTeams' => $this->showCreateModal
                 ? InternalTeam::query()->where('is_active', true)->orderBy('name')->get()
+                : collect(),
+            'hasEsgModule' => EsgModuleAccess::activeTenantHasModule(),
+            'createEsgIndicators' => $this->showCreateModal && EsgModuleAccess::activeTenantHasModule()
+                ? EsgIndicator::query()->where('is_active', true)->orderBy('name')->get()
                 : collect(),
             'priorities' => TaskPriority::cases(),
         ]);
