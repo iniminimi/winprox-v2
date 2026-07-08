@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AnnouncementController;
+use App\Http\Controllers\Api\V1\EsgMeasurementController;
 use App\Http\Controllers\Api\V1\HookController;
 use App\Http\Controllers\Api\V1\IssueController;
 use App\Http\Controllers\Api\V1\LocationController;
@@ -82,6 +83,9 @@ Route::prefix('v1')->group(function () {
             Route::post('units/{unit}/gps-reports', [UnitGpsReportController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':units:update'])
                 ->name('api.v1.units.gps-reports.store');
+            Route::post('esg/measurements', [EsgMeasurementController::class, 'store'])
+                ->middleware([CheckTokenAbilities::class.':esg:create'])
+                ->name('api.v1.esg.measurements.store');
         });
 
         // Translation sync endpoints (superuser-only, authorized via UserPolicy::runTranslationSync)

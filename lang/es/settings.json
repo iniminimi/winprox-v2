@@ -151,6 +151,7 @@
         "ability_tasks_read": "Leer tareas",
         "ability_tasks_create": "Crear tareas",
         "ability_tasks_update": "Actualizar tareas",
+        "ability_esg_create": "Registrar mediciones ESG",
         "ability_locations_read": "Leer ubicaciones",
         "ability_units_read": "Leer unidades",
         "ability_teams_read": "Leer equipos",

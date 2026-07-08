@@ -151,6 +151,7 @@
         "ability_tasks_read": "Taken lezen",
         "ability_tasks_create": "Taken aanmaken",
         "ability_tasks_update": "Taken wijzigen",
+        "ability_esg_create": "ESG-metingen registreren",
         "ability_locations_read": "Locaties lezen",
         "ability_units_read": "Units lezen",
         "ability_teams_read": "Teams lezen",

@@ -129,6 +129,7 @@ class ApiSettings extends Component
                 'tasks:read' => __('settings.api.ability_tasks_read'),
                 'tasks:create' => __('settings.api.ability_tasks_create'),
                 'tasks:update' => __('settings.api.ability_tasks_update'),
+                'esg:create' => __('settings.api.ability_esg_create'),
                 'locations:read' => __('settings.api.ability_locations_read'),
                 'units:read' => __('settings.api.ability_units_read'),
                 'teams:read' => __('settings.api.ability_teams_read'),

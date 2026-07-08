@@ -69,7 +69,7 @@ it('slaat een numerieke ESG-meting append-only op', function () {
         $fixture['tenant']->id,
     );
 
-    expect($measurement->wasRecentlyCreated)->toBeTrue()
+    expect(EsgMeasurement::query()->whereKey($measurement->id)->exists())->toBeTrue()
         ->and($measurement->tenant_id)->toBe($fixture['tenant']->id)
         ->and($measurement->unit_id)->toBe($fixture['unit']->id)
         ->and($measurement->location_id)->toBe($fixture['location']->id)

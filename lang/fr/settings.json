@@ -151,6 +151,7 @@
         "ability_tasks_read": "Lire les tâches",
         "ability_tasks_create": "Créer des tâches",
         "ability_tasks_update": "Modifier les tâches",
+        "ability_esg_create": "Enregistrer des mesures ESG",
         "ability_locations_read": "Lire les sites",
         "ability_units_read": "Lire les unités",
         "ability_teams_read": "Lire les équipes",

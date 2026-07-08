@@ -151,6 +151,7 @@
         "ability_tasks_read": "Leggi attività",
         "ability_tasks_create": "Crea attività",
         "ability_tasks_update": "Aggiorna attività",
+        "ability_esg_create": "Registra misurazioni ESG",
         "ability_locations_read": "Leggi sedi",
         "ability_units_read": "Leggi unità",
         "ability_teams_read": "Leggi team",

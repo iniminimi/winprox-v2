@@ -7,6 +7,7 @@ namespace App\Http\Requests\Esg;
 use App\Data\Esg\RecordEsgMeasurementData;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
+use App\Models\EsgMeasurement;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
@@ -16,7 +17,9 @@ class RecordEsgMeasurementRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        $user = $this->user();
+
+        return $user !== null && $user->can('create', EsgMeasurement::class);
     }
 
     /**
@@ -64,6 +67,11 @@ class RecordEsgMeasurementRequest extends FormRequest
                 'nullable',
                 'integer',
                 Rule::exists('esg_measurements', 'id')->where($tenantScope),
+            ],
+            'worker_id' => [
+                'nullable',
+                'integer',
+                Rule::exists('workers', 'id')->where($tenantScope),
             ],
         ];
     }

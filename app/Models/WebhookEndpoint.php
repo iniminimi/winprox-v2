@@ -27,6 +27,7 @@ class WebhookEndpoint extends Model
         'task.started',
         'task.completed',
         'unit.gps_reported',
+        'esg.measurement.recorded',
     ];
 
     protected $fillable = [

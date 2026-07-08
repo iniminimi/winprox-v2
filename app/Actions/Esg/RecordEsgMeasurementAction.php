@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Esg;
 
 use App\Data\Esg\RecordEsgMeasurementData;
+use App\Events\Esg\EsgMeasurementRecorded;
 use App\Models\EsgIndicator;
 use App\Models\EsgMeasurement;
 use App\Models\Task;
@@ -135,6 +136,10 @@ class RecordEsgMeasurementAction
                 'value' => $data->valueForType($indicator->type),
             ],
         );
+
+        $measurement = $measurement->fresh(['indicator', 'unit', 'location', 'worker']);
+
+        event(new EsgMeasurementRecorded($measurement, $actorUserId));
 
         return $measurement;
     }
