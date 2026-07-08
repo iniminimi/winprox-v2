@@ -64,6 +64,7 @@ final class PruneInactiveTenantFacilityDataAction
     {
         return Tenant::query()
             ->where('is_active', false)
+            ->where('has_esg_module', false)
             ->where(function ($query) use ($cutoff): void {
                 $query->where(function ($q) use ($cutoff): void {
                     $q->whereNotNull('billing_active_until')

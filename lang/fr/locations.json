@@ -30,6 +30,7 @@
     "deactivate": "Désactiver",
     "activate": "Activer",
     "confirm_deactivate": "Désactiver ce site ?",
+    "delete_blocked_esg_measurements": "Ce site a des mesures ESG et ne peut pas être supprimé.",
     "inactive": "Inactif",
     "empty": "Aucun site pour l'instant. Créez-en un avec le bouton \"+ Ajouter un site\".",
     "empty_inactive": "Il n'y a pas de sites actifs. Cochez 'Afficher aussi les sites inactifs' pour voir les sites désactivés.",
@@ -130,6 +131,7 @@
         },
         "delete_blocked_issues": "Cette unité a des signalements et ne peut pas être supprimée.",
         "delete_blocked_tasks": "Cette unité a des tâches et ne peut pas être supprimée.",
+        "delete_blocked_esg_measurements": "Cette unité a des mesures ESG et ne peut pas être supprimée.",
         "delete_blocked": "Cette unité ne peut pas être supprimée."
     },
     "bulk": {

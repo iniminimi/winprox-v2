@@ -22,6 +22,7 @@ class Issue extends Model
         'tenant_id',
         'location_id',
         'unit_id',
+        'esg_indicator_id',
         'reporter_name',
         'reporter_contact',
         'description',
@@ -71,6 +72,11 @@ class Issue extends Model
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function esgIndicator(): BelongsTo
+    {
+        return $this->belongsTo(EsgIndicator::class);
     }
 
     public function tasks(): HasMany

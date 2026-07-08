@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support\Units;
 
+use App\Models\EsgMeasurement;
 use App\Models\Unit;
 
 final class UnitDeletionGuard
@@ -12,6 +13,8 @@ final class UnitDeletionGuard
 
     public const BLOCK_HAS_TASKS = 'has_tasks';
 
+    public const BLOCK_HAS_ESG_MEASUREMENTS = 'has_esg_measurements';
+
     public static function canDelete(Unit $unit): bool
     {
         return self::blockReason($unit) === null;
@@ -19,6 +22,10 @@ final class UnitDeletionGuard
 
     public static function blockReason(Unit $unit): ?string
     {
+        if (EsgMeasurement::query()->where('unit_id', $unit->id)->exists()) {
+            return self::BLOCK_HAS_ESG_MEASUREMENTS;
+        }
+
         if ($unit->issues()->exists()) {
             return self::BLOCK_HAS_ISSUES;
         }
@@ -35,6 +42,7 @@ final class UnitDeletionGuard
         return match ($blockReason) {
             self::BLOCK_HAS_ISSUES => 'locations.units.delete_blocked_issues',
             self::BLOCK_HAS_TASKS => 'locations.units.delete_blocked_tasks',
+            self::BLOCK_HAS_ESG_MEASUREMENTS => 'locations.units.delete_blocked_esg_measurements',
             default => 'locations.units.delete_blocked',
         };
     }

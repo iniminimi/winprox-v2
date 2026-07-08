@@ -30,6 +30,7 @@
     "deactivate": "Deactiveren",
     "activate": "Activeren",
     "confirm_deactivate": "Weet je zeker dat je deze locatie wilt deactiveren?",
+    "delete_blocked_esg_measurements": "Deze locatie heeft ESG-metingen en kan niet worden verwijderd.",
     "inactive": "Inactief",
     "empty": "Er zijn nog geen locaties. Maak er aan via de knop \"+ Nieuwe locatie toevoegen\".",
     "empty_inactive": "Er zijn geen actieve locaties. Vink 'Toon ook inactieve locaties' aan om gedeactiveerde locaties te zien.",
@@ -130,6 +131,7 @@
         },
         "delete_blocked_issues": "Deze unit heeft meldingen en kan niet worden verwijderd.",
         "delete_blocked_tasks": "Deze unit heeft taken en kan niet worden verwijderd.",
+        "delete_blocked_esg_measurements": "Deze unit heeft ESG-metingen en kan niet worden verwijderd.",
         "delete_blocked": "Deze unit kan niet worden verwijderd."
     },
     "bulk": {

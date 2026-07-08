@@ -30,6 +30,7 @@
     "deactivate": "Disattiva",
     "activate": "Attiva",
     "confirm_deactivate": "È sicuro di voler disattivare questa sede?",
+    "delete_blocked_esg_measurements": "Questa sede ha misurazioni ESG e non può essere eliminata.",
     "inactive": "Inattiva",
     "empty": "Nessuna sede ancora. Ne crei una con il pulsante «+ Aggiungi nuova sede».",
     "empty_inactive": "Non ci sono sedi attive. Selezioni «Mostra anche sedi inattive» per vedere le sedi disattivate.",
@@ -130,6 +131,7 @@
         },
         "delete_blocked_issues": "Questa unità ha segnalazioni e non può essere eliminata.",
         "delete_blocked_tasks": "Questa unità ha attività e non può essere eliminata.",
+        "delete_blocked_esg_measurements": "Questa unità ha misurazioni ESG e non può essere eliminata.",
         "delete_blocked": "Questa unità non può essere eliminata."
     },
     "bulk": {

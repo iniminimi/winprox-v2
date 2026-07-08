@@ -30,6 +30,7 @@
     "deactivate": "Desactivar",
     "activate": "Activar",
     "confirm_deactivate": "¿Está seguro de que desea desactivar esta ubicación?",
+    "delete_blocked_esg_measurements": "Esta ubicación tiene mediciones ESG y no se puede eliminar.",
     "inactive": "Inactiva",
     "empty": "Aún no hay ubicaciones. Cree una con el botón «+ Añadir nueva ubicación».",
     "empty_inactive": "No hay ubicaciones activas. Marque «Mostrar también ubicaciones inactivas» para ver las desactivadas.",
@@ -130,6 +131,7 @@
         },
         "delete_blocked_issues": "Esta unidad tiene incidencias y no se puede eliminar.",
         "delete_blocked_tasks": "Esta unidad tiene tareas y no se puede eliminar.",
+        "delete_blocked_esg_measurements": "Esta unidad tiene mediciones ESG y no se puede eliminar.",
         "delete_blocked": "Esta unidad no se puede eliminar."
     },
     "bulk": {

@@ -34,6 +34,7 @@ class Tenant extends Model
         'is_active',
         'stripe_customer_id',
         'allow_trial_api',
+        'has_esg_module',
     ];
 
     protected function casts(): array
@@ -44,6 +45,7 @@ class Tenant extends Model
             'billing_active_until' => 'datetime',
             'is_active' => 'boolean',
             'allow_trial_api' => 'boolean',
+            'has_esg_module' => 'boolean',
         ];
     }
 

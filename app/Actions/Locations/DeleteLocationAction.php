@@ -2,6 +2,7 @@
 
 namespace App\Actions\Locations;
 
+use App\Models\EsgMeasurement;
 use App\Models\Location;
 use App\Support\Audit\AuditRecorder;
 use InvalidArgumentException;
@@ -22,6 +23,10 @@ class DeleteLocationAction
 
         if ($location->documents()->exists() || $location->announcements()->exists() || $location->bulkBatches()->exists()) {
             throw new InvalidArgumentException('location_has_content');
+        }
+
+        if (EsgMeasurement::query()->where('location_id', $location->id)->exists()) {
+            throw new InvalidArgumentException('location_has_esg_measurements');
         }
 
         $tenantId = (int) $location->tenant_id;
