@@ -2,7 +2,9 @@
 
 namespace App\Actions\Tasks;
 
+use App\Actions\Esg\RecordEsgMeasurementAction;
 use App\Actions\Issues\RecalculateIssueStatusAction;
+use App\Data\Esg\RecordEsgMeasurementData;
 use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
@@ -12,6 +14,7 @@ use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
 use App\Support\Tasks\TaskIssueApproval;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Worker handelt een taak af: optionele notitie + tot 4 foto's worden vastgelegd
@@ -29,8 +32,14 @@ class CompleteTaskAction
     /**
      * @param  array<int, UploadedFile>  $photos
      */
-    public function handle(Task $task, ?Worker $worker = null, ?string $note = null, array $photos = [], ?\Carbon\Carbon $clientTimestamp = null): Task
-    {
+    public function handle(
+        Task $task,
+        ?Worker $worker = null,
+        ?string $note = null,
+        array $photos = [],
+        ?\Carbon\Carbon $clientTimestamp = null,
+        ?RecordEsgMeasurementData $esgMeasurement = null,
+    ): Task {
         TaskIssueApproval::assertTaskMutable($task);
 
         if (! $task->canComplete()) {
@@ -38,6 +47,7 @@ class CompleteTaskAction
         }
 
         $issue = $task->issue;
+        $this->recordRequiredEsgMeasurement($task, $esgMeasurement, $worker);
         $note = $note !== null && trim($note) !== '' ? trim($note) : null;
 
         if ($note !== null && $worker !== null) {
@@ -89,5 +99,34 @@ class CompleteTaskAction
         $this->recalculateIssueStatus->handle($issue);
 
         return $task->fresh();
+    }
+
+    private function recordRequiredEsgMeasurement(
+        Task $task,
+        ?RecordEsgMeasurementData $esgMeasurement,
+        ?Worker $worker,
+    ): void {
+        $issue = $task->issue;
+        if ($issue === null || $issue->esg_indicator_id === null) {
+            return;
+        }
+
+        if ($esgMeasurement === null) {
+            throw ValidationException::withMessages([
+                'esg_indicator_id' => [__('esg.errors.measurement_value_required')],
+            ]);
+        }
+
+        if ($esgMeasurement->taskId !== (int) $task->id) {
+            throw ValidationException::withMessages([
+                'task_id' => [__('esg.errors.measurement_task_invalid')],
+            ]);
+        }
+
+        app(RecordEsgMeasurementAction::class)->handle(
+            $esgMeasurement,
+            (int) $task->tenant_id,
+            $worker?->id,
+        );
     }
 }

@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indicateur introuvable ou inactif.",
         "measurement_worker_invalid": "Collaborateur introuvable.",
         "measurement_correction_invalid": "Mesure à corriger introuvable.",
-        "measurement_correction_mismatch": "La correction n'appartient pas à cette tâche ou cet indicateur."
+        "measurement_correction_mismatch": "La correction n'appartient pas à cette tâche ou cet indicateur.",
+        "measurement_recorded_at_required": "L'horodatage de la mesure est manquant ou invalide."
+    },
+    "portal": {
+        "measurement_label": "Mesure : :name",
+        "numeric_placeholder": "Valeur",
+        "boolean_choose": "Choisir…",
+        "boolean_yes": "Oui",
+        "boolean_no": "Non",
+        "string_placeholder": "Valeur",
+        "json_placeholder": "{\"clé\": \"valeur\"}"
     }
 }

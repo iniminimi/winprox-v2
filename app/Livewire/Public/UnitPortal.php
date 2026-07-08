@@ -17,6 +17,7 @@ use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
 use App\Http\Requests\Public\UploadUnitBackgroundPhotoRequest;
+use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Data\Units\RecordUnitGpsReportData;
 use App\Http\Requests\Units\RecordUnitGpsReportRequest;
 use App\Models\Task;
@@ -77,6 +78,11 @@ class UnitPortal extends Component
     public string $completingNote = '';
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $completingPhotos = [];
+    public ?string $completingEsgValueNumeric = null;
+    public ?bool $completingEsgValueBoolean = null;
+    public string $completingEsgValueString = '';
+    public string $completingEsgValueJson = '';
+    public ?string $completingRecordedAt = null;
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $newPortalPhotos = [];
@@ -384,6 +390,7 @@ class UnitPortal extends Component
         $this->completingTaskId = $task->id;
         $this->completingNote = '';
         $this->completingPhotos = [];
+        $this->resetEsgCompletionFields();
         $this->dispatch('wp-prepare-photo-inputs');
     }
 
@@ -392,7 +399,17 @@ class UnitPortal extends Component
         $this->completingTaskId = null;
         $this->completingNote = '';
         $this->completingPhotos = [];
+        $this->resetEsgCompletionFields();
         $this->dispatch('wp-clear-photo-previews');
+    }
+
+    private function resetEsgCompletionFields(): void
+    {
+        $this->completingEsgValueNumeric = null;
+        $this->completingEsgValueBoolean = null;
+        $this->completingEsgValueString = '';
+        $this->completingEsgValueJson = '';
+        $this->completingRecordedAt = null;
     }
 
     public function removeCompletingPhoto(int $index): void
@@ -597,7 +614,57 @@ class UnitPortal extends Component
             return;
         }
 
-        $completeTask->handle($task, $worker, $this->completingNote, $this->completingPhotos);
+        $task->loadMissing(['issue.esgIndicator']);
+        $esgIndicator = $task->issue?->esgIndicator;
+        $esgType = $esgIndicator?->type;
+
+        $this->validate(
+            CompletePortalTaskRequest::ruleSet($esgType),
+            CompletePortalTaskRequest::validationMessages($esgType),
+        );
+
+        if ($esgType !== null) {
+            $recordedAtValidator = \Illuminate\Support\Facades\Validator::make(
+                ['completingRecordedAt' => $this->completingRecordedAt],
+                ['completingRecordedAt' => ['required', 'date']],
+            );
+            RecordEsgMeasurementRequest::assertPortalRecordedAt((string) $this->completingRecordedAt, $recordedAtValidator);
+            if ($recordedAtValidator->fails()) {
+                foreach ($recordedAtValidator->errors()->getMessages() as $field => $messages) {
+                    foreach ($messages as $message) {
+                        $this->addError($field, $message);
+                    }
+                }
+
+                return;
+            }
+        }
+
+        $esgMeasurement = null;
+        $clientTimestamp = null;
+        if ($esgIndicator !== null && filled($this->completingRecordedAt)) {
+            $esgMeasurement = RecordEsgMeasurementRequest::portalToData(
+                $task->id,
+                $esgIndicator,
+                (string) $this->completingRecordedAt,
+                [
+                    'completingEsgValueNumeric' => $this->completingEsgValueNumeric,
+                    'completingEsgValueBoolean' => $this->completingEsgValueBoolean,
+                    'completingEsgValueString' => $this->completingEsgValueString,
+                    'completingEsgValueJson' => $this->completingEsgValueJson,
+                ],
+            );
+            $clientTimestamp = \Carbon\Carbon::parse((string) $this->completingRecordedAt);
+        }
+
+        $completeTask->handle(
+            $task,
+            $worker,
+            $this->completingNote,
+            $this->completingPhotos,
+            $clientTimestamp,
+            $esgMeasurement,
+        );
 
         $this->cancelCompleteTask();
         $this->selectedIssueId = null;
@@ -801,6 +868,7 @@ class UnitPortal extends Component
 
         return Task::where('internal_team_id', $team->id)
             ->whereHas('issue', fn ($q) => $q->where('unit_id', $this->unitId))
+            ->with(['issue.esgIndicator'])
             ->find($taskId);
     }
 

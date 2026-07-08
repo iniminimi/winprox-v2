@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indicatore non trovato o inattivo.",
         "measurement_worker_invalid": "Operatore non trovato.",
         "measurement_correction_invalid": "Misurazione da correggere non trovata.",
-        "measurement_correction_mismatch": "La correzione non appartiene a questa attività o indicatore."
+        "measurement_correction_mismatch": "La correzione non appartiene a questa attività o indicatore.",
+        "measurement_recorded_at_required": "Timestamp della misurazione mancante o non valido."
+    },
+    "portal": {
+        "measurement_label": "Misurazione: :name",
+        "numeric_placeholder": "Valore",
+        "boolean_choose": "Scegli…",
+        "boolean_yes": "Sì",
+        "boolean_no": "No",
+        "string_placeholder": "Valore",
+        "json_placeholder": "{\"chiave\": \"valore\"}"
     }
 }

@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indicator not found or inactive.",
         "measurement_worker_invalid": "Worker not found.",
         "measurement_correction_invalid": "Measurement to correct not found.",
-        "measurement_correction_mismatch": "Correction does not belong to this task or indicator."
+        "measurement_correction_mismatch": "Correction does not belong to this task or indicator.",
+        "measurement_recorded_at_required": "Measurement timestamp is missing or invalid."
+    },
+    "portal": {
+        "measurement_label": "Reading: :name",
+        "numeric_placeholder": "Value",
+        "boolean_choose": "Choose…",
+        "boolean_yes": "Yes",
+        "boolean_no": "No",
+        "string_placeholder": "Value",
+        "json_placeholder": "{\"key\": \"value\"}"
     }
 }

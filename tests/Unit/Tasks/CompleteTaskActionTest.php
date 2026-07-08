@@ -1,11 +1,15 @@
 <?php
 
 use App\Actions\Tasks\CompleteTaskAction;
+use App\Data\Esg\RecordEsgMeasurementData;
 use App\Enums\TaskStatus;
+use App\Models\EsgIndicator;
+use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Support\Carbon;
@@ -140,4 +144,40 @@ it('returns task unchanged when task cannot be completed', function () {
 
     expect($result->status)->toBe($originalStatus);
     expect($result->completed_at)->toBe($originalCompletedAt);
+});
+
+it('records an esg measurement when completing an esg-linked task', function () {
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $indicator = EsgIndicator::factory()->numeric()->create(['tenant_id' => $tenantId]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenantId,
+        'approved_at' => now(),
+        'esg_indicator_id' => $indicator->id,
+        'is_recurring' => true,
+        'unit_id' => Unit::factory()->create(['tenant_id' => $tenantId])->id,
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenantId,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+        'started_at' => now(),
+    ]);
+
+    Tenant::query()->whereKey($tenantId)->update(['has_esg_module' => true]);
+
+    $data = new RecordEsgMeasurementData(
+        taskId: $task->id,
+        esgIndicatorId: $indicator->id,
+        recordedAt: now()->toImmutable(),
+        valueNumeric: 99.5,
+    );
+
+    $result = app(CompleteTaskAction::class)->handle($task, $worker, null, [], null, $data);
+
+    expect($result->status)->toBe(TaskStatus::Done)
+        ->and(EsgMeasurement::count())->toBe(1)
+        ->and((float) EsgMeasurement::query()->value('value_numeric'))->toBe(99.5);
 });

@@ -18,14 +18,32 @@
 
     @if ($completingTaskId === $task->id)
         <form wire:submit="submitCompleteTask"
-              x-data="{ isOffline: !navigator.onLine }"
+              x-data="{
+                  isOffline: !navigator.onLine,
+                  browserLocalIso() {
+                      const d = new Date();
+                      const pad = (n) => String(n).padStart(2, '0');
+                      const tz = -d.getTimezoneOffset();
+                      const sign = tz >= 0 ? '+' : '-';
+                      const tzH = pad(Math.floor(Math.abs(tz) / 60));
+                      const tzM = pad(Math.abs(tz) % 60);
+                      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${tzH}:${tzM}`;
+                  },
+              }"
               x-init="
                 queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.());
                 window.addEventListener('offline', () => isOffline = true);
                 window.addEventListener('online', () => isOffline = false);
-            "
-              @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitCompleteTask()"
+              "
+              @submit.prevent="
+                @if ($task->issue?->esg_indicator_id)
+                    $wire.completingRecordedAt = browserLocalIso();
+                @endif
+                await window.wpAwaitPhotoUploads($el);
+                $wire.submitCompleteTask();
+              "
               class="wp-stack">
+            @include('partials.wp-portal-esg-measurement', ['task' => $task])
             <div class="wp-field">
                 <label class="wp-label" for="note-{{ $task->id }}">{{ __('portal.worker.note') }}</label>
                 <textarea id="note-{{ $task->id }}" class="wp-textarea" rows="3"

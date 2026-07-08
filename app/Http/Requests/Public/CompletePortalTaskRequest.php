@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Public;
 
+use App\Enums\EsgIndicatorType;
+use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,13 +15,19 @@ class CompletePortalTaskRequest extends FormRequest
     }
 
     /** @return array<string, mixed> */
-    public static function ruleSet(): array
+    public static function ruleSet(?EsgIndicatorType $esgType = null): array
     {
-        return [
+        $rules = [
             'completingNote' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'completingPhotos' => ['nullable', 'array', 'max:4'],
             'completingPhotos.*' => ['image', 'max:10240'],
         ];
+
+        if ($esgType !== null) {
+            $rules = array_merge($rules, RecordEsgMeasurementRequest::portalRuleSet($esgType));
+        }
+
+        return $rules;
     }
 
     public function rules(): array
@@ -33,13 +41,22 @@ class CompletePortalTaskRequest extends FormRequest
     }
 
     /** @return array<string, string> */
-    public static function validationMessages(): array
+    public static function validationMessages(?EsgIndicatorType $esgType = null): array
     {
-        return [
+        $messages = [
             'completingNote.max' => __('portal.worker.errors.note_max'),
             'completingPhotos.max' => __('portal.report.errors.photos_max'),
             'completingPhotos.*.image' => __('portal.report.errors.photos_image'),
             'completingPhotos.*.max' => __('portal.report.errors.photos_size'),
         ];
+
+        if ($esgType !== null) {
+            $messages = array_merge(
+                $messages,
+                RecordEsgMeasurementRequest::portalValidationMessages($esgType),
+            );
+        }
+
+        return $messages;
     }
 }

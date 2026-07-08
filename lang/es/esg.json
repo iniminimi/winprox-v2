@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indicador no encontrado o inactivo.",
         "measurement_worker_invalid": "Trabajador no encontrado.",
         "measurement_correction_invalid": "Medición a corregir no encontrada.",
-        "measurement_correction_mismatch": "La corrección no pertenece a esta tarea o indicador."
+        "measurement_correction_mismatch": "La corrección no pertenece a esta tarea o indicador.",
+        "measurement_recorded_at_required": "Falta la marca de tiempo de la medición o no es válida."
+    },
+    "portal": {
+        "measurement_label": "Medición: :name",
+        "numeric_placeholder": "Valor",
+        "boolean_choose": "Elegir…",
+        "boolean_yes": "Sí",
+        "boolean_no": "No",
+        "string_placeholder": "Valor",
+        "json_placeholder": "{\"clave\": \"valor\"}"
     }
 }

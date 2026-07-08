@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Requests\Esg;
 
 use App\Data\Esg\RecordEsgMeasurementData;
+use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Validator;
 
 class RecordEsgMeasurementRequest extends FormRequest
 {
@@ -114,6 +116,95 @@ class RecordEsgMeasurementRequest extends FormRequest
         self::assertValueMatchesIndicator($validated, $indicator);
 
         return RecordEsgMeasurementData::fromValidated($validated);
+    }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public static function portalRuleSet(EsgIndicatorType $type): array
+    {
+        return array_merge(
+            ['completingRecordedAt' => ['required', 'date']],
+            self::portalValueRuleSet($type),
+        );
+    }
+
+    /**
+     * @return array<string, array<int, mixed>>
+     */
+    public static function portalValueRuleSet(EsgIndicatorType $type): array
+    {
+        return match ($type) {
+            EsgIndicatorType::Numeric => ['completingEsgValueNumeric' => ['required', 'numeric']],
+            EsgIndicatorType::Boolean => ['completingEsgValueBoolean' => ['required', 'boolean']],
+            EsgIndicatorType::String => ['completingEsgValueString' => ['required', 'string', 'max:500']],
+            EsgIndicatorType::Json => ['completingEsgValueJson' => ['required', 'string', 'json']],
+        };
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function portalValidationMessages(EsgIndicatorType $type): array
+    {
+        $valueField = match ($type) {
+            EsgIndicatorType::Numeric => 'completingEsgValueNumeric',
+            EsgIndicatorType::Boolean => 'completingEsgValueBoolean',
+            EsgIndicatorType::String => 'completingEsgValueString',
+            EsgIndicatorType::Json => 'completingEsgValueJson',
+        };
+
+        return [
+            'completingRecordedAt.required' => __('esg.errors.measurement_recorded_at_required'),
+            'completingRecordedAt.date' => __('esg.errors.measurement_recorded_at_required'),
+            "{$valueField}.required" => __('esg.errors.measurement_value_required'),
+            "{$valueField}.numeric" => __('esg.errors.measurement_value_wrong_type'),
+            "{$valueField}.boolean" => __('esg.errors.measurement_value_wrong_type'),
+            "{$valueField}.string" => __('esg.errors.measurement_value_wrong_type'),
+            "{$valueField}.max" => __('esg.errors.measurement_value_wrong_type'),
+            "{$valueField}.json" => __('esg.errors.measurement_value_wrong_type'),
+        ];
+    }
+
+    public static function assertPortalRecordedAt(string $recordedAt, Validator $validator): void
+    {
+        try {
+            $parsed = \Carbon\CarbonImmutable::parse($recordedAt);
+        } catch (\Throwable) {
+            return;
+        }
+
+        if ($parsed->greaterThan(now()->addMinutes(5))) {
+            $validator->errors()->add('completingRecordedAt', __('esg.errors.measurement_recorded_at_required'));
+        }
+    }
+
+    /**
+     * @param  array<string, mixed>  $portalInput
+     */
+    public static function portalToData(
+        int $taskId,
+        EsgIndicator $indicator,
+        string $recordedAt,
+        array $portalInput,
+    ): RecordEsgMeasurementData {
+        $jsonValue = $portalInput['completingEsgValueJson'] ?? null;
+        if (is_string($jsonValue) && $jsonValue !== '') {
+            $decoded = json_decode($jsonValue, true);
+            $jsonValue = is_array($decoded) ? $decoded : null;
+        } else {
+            $jsonValue = null;
+        }
+
+        return self::toData([
+            'task_id' => $taskId,
+            'esg_indicator_id' => $indicator->id,
+            'recorded_at' => $recordedAt,
+            'value_numeric' => $portalInput['completingEsgValueNumeric'] ?? null,
+            'value_boolean' => $portalInput['completingEsgValueBoolean'] ?? null,
+            'value_string' => $portalInput['completingEsgValueString'] ?? null,
+            'value_json' => is_array($jsonValue) ? $jsonValue : null,
+        ], $indicator);
     }
 
     /**

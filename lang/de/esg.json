@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indikator nicht gefunden oder inaktiv.",
         "measurement_worker_invalid": "Mitarbeiter nicht gefunden.",
         "measurement_correction_invalid": "Zu korrigierende Messung nicht gefunden.",
-        "measurement_correction_mismatch": "Korrektur gehört nicht zu dieser Aufgabe oder diesem Indikator."
+        "measurement_correction_mismatch": "Korrektur gehört nicht zu dieser Aufgabe oder diesem Indikator.",
+        "measurement_recorded_at_required": "Zeitstempel der Messung fehlt oder ist ungültig."
+    },
+    "portal": {
+        "measurement_label": "Messung: :name",
+        "numeric_placeholder": "Wert",
+        "boolean_choose": "Auswählen…",
+        "boolean_yes": "Ja",
+        "boolean_no": "Nein",
+        "string_placeholder": "Wert",
+        "json_placeholder": "{\"schlüssel\": \"wert\"}"
     }
 }

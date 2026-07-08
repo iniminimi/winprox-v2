@@ -49,6 +49,16 @@
         "measurement_indicator_invalid": "Indicator niet gevonden of niet actief.",
         "measurement_worker_invalid": "Medewerker niet gevonden.",
         "measurement_correction_invalid": "Te corrigeren meting niet gevonden.",
-        "measurement_correction_mismatch": "Correctie hoort niet bij deze taak of indicator."
+        "measurement_correction_mismatch": "Correctie hoort niet bij deze taak of indicator.",
+        "measurement_recorded_at_required": "Tijdstip van meting ontbreekt of is ongeldig."
+    },
+    "portal": {
+        "measurement_label": "Meting: :name",
+        "numeric_placeholder": "Waarde",
+        "boolean_choose": "Kies…",
+        "boolean_yes": "Ja",
+        "boolean_no": "Nee",
+        "string_placeholder": "Waarde",
+        "json_placeholder": "{\"sleutel\": \"waarde\"}"
     }
 }
