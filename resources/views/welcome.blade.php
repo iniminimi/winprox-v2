@@ -6,6 +6,8 @@
     $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
     $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
+    $welcomeEsgImageRel = 'images/welcome/ESG.jpg';
+    $welcomeEsgImageAvailable = is_file(public_path($welcomeEsgImageRel));
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
@@ -123,17 +125,22 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="wp-welcome-esg-visual" role="img" aria-label="{{ __('welcome.esg.visual_alt') }}">
-                        <div class="wp-welcome-esg-mock">
-                            <span class="wp-welcome-esg-mock__label">{{ __('welcome.esg.eyebrow') }}</span>
-                            <div class="wp-welcome-esg-mock__bars" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                    <div class="wp-welcome-esg-visual">
+                        @if ($welcomeEsgImageAvailable)
+                            <figure class="wp-welcome-esg-figure">
+                                <img
+                                    src="{{ asset($welcomeEsgImageRel) }}"
+                                    alt="{{ __('welcome.esg.visual_alt') }}"
+                                    class="wp-welcome-esg-figure__img"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </figure>
+                        @else
+                            <div class="wp-welcome-media-placeholder" role="img" aria-label="{{ __('welcome.esg.visual_alt') }}">
+                                <p>{{ __('welcome.esg.visual_alt') }}</p>
                             </div>
-                            <p>{{ __('welcome.esg.visual_alt') }}</p>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

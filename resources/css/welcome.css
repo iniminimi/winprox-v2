@@ -1154,69 +1154,20 @@
     justify-content: center;
 }
 
-[data-theme='standard'] .wp-welcome-esg-mock {
+[data-theme='standard'] .wp-welcome-esg-figure {
     width: 100%;
     max-width: 28rem;
-    padding: 2rem;
+    margin: 0;
+}
+
+[data-theme='standard'] .wp-welcome-esg-figure__img {
+    display: block;
+    width: 100%;
+    height: auto;
     border-radius: var(--wp-radius-lg);
     border: 1px solid var(--wp-welcome-esg-border);
-    background: var(--wp-surface);
     box-shadow: var(--wp-shadow-lg);
-    text-align: center;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__label {
-    display: inline-flex;
-    margin-bottom: 1.5rem;
-    padding: 0.25rem 0.625rem;
-    border-radius: var(--wp-radius-pill);
-    background: var(--wp-welcome-esg-soft);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--wp-welcome-esg-accent);
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 0.75rem;
-    height: 10rem;
-    margin-bottom: 1.5rem;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars span {
-    display: block;
-    width: 2.5rem;
-    border-radius: var(--wp-radius-sm) var(--wp-radius-sm) 0 0;
-    background: linear-gradient(
-        180deg,
-        var(--wp-welcome-esg-accent) 0%,
-        color-mix(in srgb, var(--wp-welcome-esg-accent) 65%, var(--wp-accent)) 100%
-    );
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars span:nth-child(1) {
-    height: 72%;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars span:nth-child(2) {
-    height: 55%;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars span:nth-child(3) {
-    height: 88%;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock__bars span:nth-child(4) {
-    height: 64%;
-}
-
-[data-theme='standard'] .wp-welcome-esg-mock p {
-    font-size: 0.875rem;
-    color: var(--wp-text-muted);
+    background: var(--wp-surface);
 }
 
 [data-theme='standard'] .wp-welcome-qr-visual {
