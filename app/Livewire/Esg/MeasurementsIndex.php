@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace App\Livewire\Esg;
 
+use App\Actions\Esg\RecordEsgMeasurementCorrectionAction;
+use App\Http\Requests\Esg\RecordEsgMeasurementCorrectionRequest;
 use App\Models\EsgIndicator;
 use App\Models\EsgMeasurement;
 use App\Models\Location;
 use App\Models\Unit;
+use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -35,6 +38,20 @@ class MeasurementsIndex extends Component
     #[Url(as: 'to')]
     public string $recordedTo = '';
 
+    public bool $showCorrectionModal = false;
+
+    public ?int $correctingMeasurementId = null;
+
+    public ?string $correctionValueNumeric = null;
+
+    public ?string $correctionValueBoolean = null;
+
+    public string $correctionValueString = '';
+
+    public string $correctionValueJson = '';
+
+    public string $correctionRecordedAt = '';
+
     public function mount(): void
     {
         $this->authorize('viewAny', EsgMeasurement::class);
@@ -58,16 +75,84 @@ class MeasurementsIndex extends Component
         $this->redirect(route('esg.measurements.index'), navigate: true);
     }
 
+    public function openCorrectionModal(int $measurementId): void
+    {
+        $measurement = EsgMeasurement::query()
+            ->with('indicator')
+            ->findOrFail($measurementId);
+
+        $this->authorize('correct', $measurement);
+
+        $this->correctingMeasurementId = $measurement->id;
+        $this->resetCorrectionFields();
+        $this->correctionRecordedAt = now()->format('Y-m-d\TH:i');
+        $this->showCorrectionModal = true;
+    }
+
+    public function closeCorrectionModal(): void
+    {
+        $this->showCorrectionModal = false;
+        $this->correctingMeasurementId = null;
+        $this->resetCorrectionFields();
+    }
+
+    public function saveCorrection(RecordEsgMeasurementCorrectionAction $recordCorrection): void
+    {
+        if ($this->correctingMeasurementId === null) {
+            return;
+        }
+
+        $original = EsgMeasurement::query()
+            ->with('indicator')
+            ->findOrFail($this->correctingMeasurementId);
+
+        $this->authorize('correct', $original);
+
+        $indicator = $original->indicator;
+        if ($indicator === null) {
+            return;
+        }
+
+        $this->validate(
+            array_merge(
+                ['correctionRecordedAt' => ['required', 'date']],
+                RecordEsgMeasurementCorrectionRequest::valueRules($indicator->type),
+            ),
+            RecordEsgMeasurementCorrectionRequest::validationMessages($indicator->type),
+        );
+
+        $validated = RecordEsgMeasurementCorrectionRequest::livewireToValidated($original, [
+            'correctionValueNumeric' => $this->correctionValueNumeric,
+            'correctionValueBoolean' => $this->correctionValueBoolean,
+            'correctionValueString' => $this->correctionValueString,
+            'correctionValueJson' => $this->correctionValueJson,
+            'correctionRecordedAt' => $this->correctionRecordedAt,
+        ]);
+
+        $data = RecordEsgMeasurementCorrectionRequest::toData($original, $validated);
+
+        $recordCorrection->handle(
+            $original,
+            $data,
+            (int) Tenancy::id(),
+            (int) auth()->id(),
+        );
+
+        session()->flash('success', __('esg.flash.correction_recorded'));
+        $this->closeCorrectionModal();
+    }
+
     public function render()
     {
         $this->authorize('viewAny', EsgMeasurement::class);
 
         $measurements = EsgMeasurement::query()
             ->with([
-                'indicator:id,name,type,unit_of_measure,thresholds',
+                'indicator:id,name,type,unit_of_measure,thresholds,options',
                 'unit:id,name',
                 'location:id,name',
                 'worker:id,first_name,last_name',
+                'correctsMeasurement.indicator:id,name,type,unit_of_measure,thresholds,options',
             ])
             ->when($this->indicatorFilter, fn ($query) => $query->where('esg_indicator_id', $this->indicatorFilter))
             ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
@@ -87,6 +172,9 @@ class MeasurementsIndex extends Component
         return view('livewire.esg.measurements-index', [
             'measurements' => $measurements,
             'showSetupSteps' => ! $hasFilters && ! EsgMeasurement::query()->exists(),
+            'correctingMeasurement' => $this->correctingMeasurementId !== null
+                ? EsgMeasurement::query()->with('indicator')->find($this->correctingMeasurementId)
+                : null,
             'indicators' => EsgIndicator::query()->orderBy('name')->get(['id', 'name']),
             'locations' => Location::query()->orderBy('name')->get(['id', 'name']),
             'units' => Unit::query()
@@ -94,5 +182,14 @@ class MeasurementsIndex extends Component
                 ->orderBy('name')
                 ->get(['id', 'name', 'location_id']),
         ]);
+    }
+
+    private function resetCorrectionFields(): void
+    {
+        $this->correctionValueNumeric = null;
+        $this->correctionValueBoolean = null;
+        $this->correctionValueString = '';
+        $this->correctionValueJson = '';
+        $this->correctionRecordedAt = '';
     }
 }

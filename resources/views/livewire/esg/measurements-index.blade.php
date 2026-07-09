@@ -84,6 +84,13 @@
                             <p class="wp-muted wp-text-sm">
                                 {{ EsgMeasurementPresenter::displayValue($measurement) }}
                             </p>
+                            @if ($measurement->corrects_measurement_id && $measurement->correctsMeasurement)
+                                <p class="wp-muted wp-text-sm">
+                                    {{ __('esg.measurements.corrects_original', [
+                                        'value' => EsgMeasurementPresenter::displayValue($measurement->correctsMeasurement),
+                                    ]) }}
+                                </p>
+                            @endif
                             <p class="wp-muted wp-text-sm">
                                 {{ $measurement->location?->name ?? '—' }}
                                 @if ($measurement->unit)
@@ -109,6 +116,13 @@
                                     {{ __('esg.measurements.view_task') }}
                                 </a>
                             @endif
+                            @can('correct', $measurement)
+                                <button type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="openCorrectionModal({{ $measurement->id }})">
+                                    {{ __('esg.measurements.correct_action') }}
+                                </button>
+                            @endcan
                         </div>
                     </li>
                 @endforeach
@@ -117,4 +131,31 @@
             {{ $measurements->links() }}
         @endif
     </div>
+
+    @if ($showCorrectionModal && $correctingMeasurement?->indicator)
+        <x-wp-modal closeMethod="closeCorrectionModal">
+            <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
+                <h2 class="wp-section-title">{{ __('esg.measurements.correction_modal.title') }}</h2>
+                <p class="wp-muted">{{ $correctingMeasurement->indicator->name }}</p>
+                <p class="wp-muted wp-text-sm">
+                    {{ __('esg.measurements.correction_modal.original_value', [
+                        'value' => EsgMeasurementPresenter::displayValue($correctingMeasurement),
+                    ]) }}
+                </p>
+
+                @include('partials.wp-esg-correction-value-fields', [
+                    'indicator' => $correctingMeasurement->indicator,
+                ])
+
+                <div class="wp-cluster wp-cluster--end">
+                    <button type="button" class="btn btn--ghost" wire:click="closeCorrectionModal">
+                        {{ __('common.button.cancel') }}
+                    </button>
+                    <button type="button" class="btn btn--primary" wire:click="saveCorrection">
+                        {{ __('common.button.save') }}
+                    </button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
 </div>

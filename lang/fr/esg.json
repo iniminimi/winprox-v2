@@ -47,7 +47,8 @@
         "created": "Indicateur créé.",
         "updated": "Indicateur mis à jour.",
         "deactivated": "Indicateur désactivé.",
-        "activated": "Indicateur activé."
+        "activated": "Indicateur activé.",
+        "correction_recorded": "Correction enregistrée."
     },
     "errors": {
         "name_required": "Saisissez un nom.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Collaborateur introuvable.",
         "measurement_correction_invalid": "Mesure à corriger introuvable.",
         "measurement_correction_mismatch": "La correction n'appartient pas à cette tâche ou cet indicateur.",
+        "measurement_correction_source_invalid": "Vous ne pouvez corriger qu'une mesure d'origine, pas une correction précédente.",
         "measurement_recorded_at_required": "L'horodatage de la mesure est manquant ou invalide.",
         "options_min": "Ajoutez au moins deux options différentes.",
         "options_duplicate": "Chaque option ne peut apparaître qu'une fois.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Correction",
+        "correct_action": "Corriger",
+        "corrects_original": "Remplace :value",
+        "correction_modal": {
+            "title": "Corriger la mesure",
+            "original_value": "Valeur actuelle : :value"
+        },
+        "correction_fields": {
+            "value": "Nouvelle valeur",
+            "recorded_at": "Heure de la mesure"
+        },
         "outside_thresholds": "Hors seuil",
         "legacy_choice_value": ":value (plus dans la liste)",
         "view_task": "Tâche",

@@ -47,7 +47,8 @@
         "created": "Indicator created.",
         "updated": "Indicator updated.",
         "deactivated": "Indicator deactivated.",
-        "activated": "Indicator activated."
+        "activated": "Indicator activated.",
+        "correction_recorded": "Correction saved."
     },
     "errors": {
         "name_required": "Enter a name.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Worker not found.",
         "measurement_correction_invalid": "Measurement to correct not found.",
         "measurement_correction_mismatch": "Correction does not belong to this task or indicator.",
+        "measurement_correction_source_invalid": "You can only correct an original measurement, not a previous correction.",
         "measurement_recorded_at_required": "Measurement timestamp is missing or invalid.",
         "options_min": "Add at least two different options.",
         "options_duplicate": "Each option may only appear once.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Correction",
+        "correct_action": "Correct",
+        "corrects_original": "Replaces :value",
+        "correction_modal": {
+            "title": "Correct measurement",
+            "original_value": "Current value: :value"
+        },
+        "correction_fields": {
+            "value": "New value",
+            "recorded_at": "Measurement time"
+        },
         "outside_thresholds": "Outside threshold",
         "legacy_choice_value": ":value (no longer in list)",
         "view_task": "Task",

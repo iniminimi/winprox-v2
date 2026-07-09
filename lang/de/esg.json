@@ -47,7 +47,8 @@
         "created": "Indikator angelegt.",
         "updated": "Indikator aktualisiert.",
         "deactivated": "Indikator deaktiviert.",
-        "activated": "Indikator aktiviert."
+        "activated": "Indikator aktiviert.",
+        "correction_recorded": "Korrektur gespeichert."
     },
     "errors": {
         "name_required": "Geben Sie einen Namen ein.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Mitarbeiter nicht gefunden.",
         "measurement_correction_invalid": "Zu korrigierende Messung nicht gefunden.",
         "measurement_correction_mismatch": "Korrektur gehört nicht zu dieser Aufgabe oder diesem Indikator.",
+        "measurement_correction_source_invalid": "Sie können nur eine ursprüngliche Messung korrigieren, nicht eine frühere Korrektur.",
         "measurement_recorded_at_required": "Zeitstempel der Messung fehlt oder ist ungültig.",
         "options_min": "Fügen Sie mindestens zwei verschiedene Optionen hinzu.",
         "options_duplicate": "Jede Option darf nur einmal vorkommen.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Korrektur",
+        "correct_action": "Korrigieren",
+        "corrects_original": "Ersetzt :value",
+        "correction_modal": {
+            "title": "Messung korrigieren",
+            "original_value": "Aktueller Wert: :value"
+        },
+        "correction_fields": {
+            "value": "Neuer Wert",
+            "recorded_at": "Messzeitpunkt"
+        },
         "outside_thresholds": "Außerhalb Schwelle",
         "legacy_choice_value": ":value (nicht mehr in Liste)",
         "view_task": "Aufgabe",

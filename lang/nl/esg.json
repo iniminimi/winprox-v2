@@ -47,7 +47,8 @@
         "created": "Indicator aangemaakt.",
         "updated": "Indicator bijgewerkt.",
         "deactivated": "Indicator gedeactiveerd.",
-        "activated": "Indicator geactiveerd."
+        "activated": "Indicator geactiveerd.",
+        "correction_recorded": "Correctie opgeslagen."
     },
     "errors": {
         "name_required": "Vul een naam in.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Medewerker niet gevonden.",
         "measurement_correction_invalid": "Te corrigeren meting niet gevonden.",
         "measurement_correction_mismatch": "Correctie hoort niet bij deze taak of indicator.",
+        "measurement_correction_source_invalid": "Je kunt alleen een oorspronkelijke meting corrigeren, niet een eerdere correctie.",
         "measurement_recorded_at_required": "Tijdstip van meting ontbreekt of is ongeldig.",
         "options_min": "Voeg minstens twee verschillende opties toe.",
         "options_duplicate": "Elke optie mag maar één keer voorkomen.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Correctie",
+        "correct_action": "Corrigeren",
+        "corrects_original": "Vervangt :value",
+        "correction_modal": {
+            "title": "Meting corrigeren",
+            "original_value": "Huidige waarde: :value"
+        },
+        "correction_fields": {
+            "value": "Nieuwe waarde",
+            "recorded_at": "Tijdstip van meting"
+        },
         "outside_thresholds": "Buiten drempel",
         "legacy_choice_value": ":value (niet meer in lijst)",
         "view_task": "Taak",

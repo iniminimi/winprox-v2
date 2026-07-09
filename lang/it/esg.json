@@ -47,7 +47,8 @@
         "created": "Indicatore creato.",
         "updated": "Indicatore aggiornato.",
         "deactivated": "Indicatore disattivato.",
-        "activated": "Indicatore attivato."
+        "activated": "Indicatore attivato.",
+        "correction_recorded": "Correzione salvata."
     },
     "errors": {
         "name_required": "Inserisca un nome.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Operatore non trovato.",
         "measurement_correction_invalid": "Misurazione da correggere non trovata.",
         "measurement_correction_mismatch": "La correzione non appartiene a questa attività o indicatore.",
+        "measurement_correction_source_invalid": "Puoi correggere solo una misurazione originale, non una correzione precedente.",
         "measurement_recorded_at_required": "Timestamp della misurazione mancante o non valido.",
         "options_min": "Aggiunga almeno due opzioni diverse.",
         "options_duplicate": "Ogni opzione può comparire una sola volta.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Correzione",
+        "correct_action": "Correggi",
+        "corrects_original": "Sostituisce :value",
+        "correction_modal": {
+            "title": "Correggi misurazione",
+            "original_value": "Valore attuale: :value"
+        },
+        "correction_fields": {
+            "value": "Nuovo valore",
+            "recorded_at": "Ora della misurazione"
+        },
         "outside_thresholds": "Fuori soglia",
         "legacy_choice_value": ":value (non più in elenco)",
         "view_task": "Attività",

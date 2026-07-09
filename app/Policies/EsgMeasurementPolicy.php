@@ -28,6 +28,12 @@ class EsgMeasurementPolicy
             && $this->measurementBelongsToActiveTenant($user, $measurement);
     }
 
+    public function correct(User $user, EsgMeasurement $measurement): bool
+    {
+        return $this->view($user, $measurement)
+            && $measurement->corrects_measurement_id === null;
+    }
+
     private function moduleEnabledForUser(User $user): bool
     {
         $tenant = $this->resolveTenant($user);

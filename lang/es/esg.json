@@ -47,7 +47,8 @@
         "created": "Indicador creado.",
         "updated": "Indicador actualizado.",
         "deactivated": "Indicador desactivado.",
-        "activated": "Indicador activado."
+        "activated": "Indicador activado.",
+        "correction_recorded": "Corrección guardada."
     },
     "errors": {
         "name_required": "Introduzca un nombre.",
@@ -66,6 +67,7 @@
         "measurement_worker_invalid": "Trabajador no encontrado.",
         "measurement_correction_invalid": "Medición a corregir no encontrada.",
         "measurement_correction_mismatch": "La corrección no pertenece a esta tarea o indicador.",
+        "measurement_correction_source_invalid": "Solo puede corregir una medición original, no una corrección anterior.",
         "measurement_recorded_at_required": "Falta la marca de tiempo de la medición o no es válida.",
         "options_min": "Añada al menos dos opciones diferentes.",
         "options_duplicate": "Cada opción solo puede aparecer una vez.",
@@ -102,6 +104,16 @@
             ]
         },
         "correction": "Corrección",
+        "correct_action": "Corregir",
+        "corrects_original": "Sustituye :value",
+        "correction_modal": {
+            "title": "Corregir medición",
+            "original_value": "Valor actual: :value"
+        },
+        "correction_fields": {
+            "value": "Nuevo valor",
+            "recorded_at": "Hora de la medición"
+        },
         "outside_thresholds": "Fuera de umbral",
         "legacy_choice_value": ":value (ya no en la lista)",
         "view_task": "Tarea",

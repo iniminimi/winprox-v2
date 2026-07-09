@@ -374,7 +374,7 @@ worden in rapportage getoond als `:waarde (niet meer in lijst)`.
 
 ### 5b.5 Nog niet in scope (fase 2+)
 `GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen. Zie §5b.6 voor de
-geprioriteerde ESG-backlog (Choice-vervolg, correcties, MultiChoice).
+geprioriteerde ESG-backlog (MultiChoice).
 
 ### 5b.6 Openstaande ESG-werkzaamheden (geprioriteerd)
 
@@ -385,11 +385,12 @@ prioriteit.
 | # | Onderwerp | Status |
 |---|-----------|--------|
 | ~~**1**~~ | ~~**Choice-opties bewerken**~~ | **Afgerond** — blokkeren bij metingen in gebruik; legacy-label in rapportage. |
-| **2** | **Correctie-UI** | Datalaag klaar (`corrects_measurement_id`, Action, API, audit, webhook). Geen backoffice-scherm om een correctie te registreren of de keten oorspronkelijk → correctie te bekijken. Append-only nieuwe rij via UI. |
+| ~~**2**~~ | ~~**Correctie-UI**~~ | **Afgerond** — backoffice `/esg/measurements`: Corrigeren-modal, append-only nieuwe rij, keten oorspronkelijk → correctie zichtbaar. |
 | **3** | **`multi_choice`-indicatortype** | Niet gebouwd. Enum + `options`, checkbox-UI op portaal, opslag (bv. `value_json` als `string[]`), validatie, rapportage. |
 
-**Correcties (achtergrond bij #2):** append-only — een correctie is een **nieuwe** rij met
-`corrects_measurement_id`; de oorspronkelijke meting blijft ongewijzigd.
+**Correcties:** append-only — een correctie is een **nieuwe** rij met
+`corrects_measurement_id`; de oorspronkelijke meting blijft ongewijzigd. Backoffice: knop
+**Corrigeren** op oorspronkelijke rijen; correctierij toont pill + “Vervangt [waarde]”.
 
 **Niet in deze lijst (breedere fase 2):** `GET /api/v1/esg/measurements`, CSV-export,
 dashboards/KPI's, foto's aan metingen — zie §5b.5.
