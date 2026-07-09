@@ -2,7 +2,7 @@
     $locale = app()->getLocale();
     $welcomeDesktopScreenshotRel = "images/welcome/screenshot_{$locale}_desktop.jpg";
     $welcomeDesktopScreenshotAvailable = is_file(public_path($welcomeDesktopScreenshotRel));
-    $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$locale}.jpg";
+    $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$locale}_gsm.jpg";
     $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
     $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
