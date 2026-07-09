@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Hulp — ESG-indicatoren",
+            "title": "Hulp — ESG-metingen",
             "actions": [
                 {
+                    "label": "Hoe werkt het?",
+                    "text": "Met de ESG-module kan u structureel gegevens verzamelen op de werkvloer — energieverbruik, veiligheidscontroles, afvalregistratie — zonder dat uw medewerkers hier iets speciaals voor moeten doen. Zij zien gewoon een taak, zoals altijd."
+                },
+                {
                     "label": "Module inschakelen",
-                    "text": "De ESG-module moet door een superuser staan onder Platform → Tenants. Zonder module ziet u dit menu niet."
+                    "text": "De ESG-module moet eerst door een superuser worden ingeschakeld onder Platform → Tenants. Zonder module ziet u dit menu niet."
                 },
                 {
-                    "label": "Indicator aanmaken",
-                    "text": "Definieer wat u meet (bijv. gas in m³): type getal, ja/nee, tekst of JSON, optioneel met minimum- en maximumdrempels."
+                    "label": "Stap 1 — Indicator aanmaken",
+                    "text": "Een indicator omschrijft <strong>wat</strong> u precies wil meten: een elektriciteitsmeter, een brandblusser-controle of een periodieke controle. Geef een duidelijke naam en, bij een getal, een eenheid (bv. kWh, m³) zodat die correct getoond wordt bij de invoer."
                 },
                 {
-                    "label": "Terugkerende melding",
-                    "text": "Koppel een indicator aan een terugkerende melding met unit bij het aanmaken (stap 1). Elke cyclus vraagt om een meetwaarde bij het afronden van de taak."
+                    "label": "Getal",
+                    "nested": true,
+                    "text": "Voor meterstanden of tellingen (bv. elektriciteit in kWh, water in m³, kilometerstand van een voertuig). U kan een minimum- en maximumwaarde instellen, zodat onrealistische invoer (bv. een negatieve meterstand) wordt opgemerkt."
                 },
                 {
-                    "label": "Actief / inactief",
-                    "text": "Deactiveer indicatoren die u niet meer gebruikt; bestaande metingen blijven bewaard."
+                    "label": "Ja/Nee",
+                    "nested": true,
+                    "text": "Voor snelle controles (bv. \"Is de nooduitgang vrij?\", \"Is de brandblusser gekeurd?\")."
+                },
+                {
+                    "label": "Tekst",
+                    "nested": true,
+                    "text": "Voor een korte toelichting of opmerking bij een meting (bv. opmerking bij een afwijkende meterstand)."
+                },
+                {
+                    "label": "Gekoppeld systeem",
+                    "nested": true,
+                    "text": "Wanneer waarden automatisch uit een extern systeem komen (via de API). Niet bedoeld voor handmatige invoer door medewerkers op het QR-portaal."
+                },
+                {
+                    "label": "Stap 2 — Koppel aan terugkerende melding",
+                    "text": "Bij het aanmaken van een <strong>terugkerende melding</strong> op een unit kunt u een ESG-indicator koppelen. Vanaf dat moment wordt bij elke cyclus automatisch gevraagd om de bijhorende meetwaarde — bijvoorbeeld elke maand de meterstand van die unit."
+                },
+                {
+                    "label": "Stap 3 — Metingen worden bewaard",
+                    "text": "Telkens een medewerker de taak afrondt, wordt de ingevoerde waarde bewaard samen met datum en unit. Zo bouwt u geleidelijk een historiek per meetpunt op, bruikbaar voor rapportage (bv. energieverbruik per gebouw over tijd).<br><br>Eenmaal ingevoerd kan een meting niet meer gewijzigd worden — dit garandeert betrouwbare, controleerbare gegevens, ook bij een externe audit. Het overzicht vindt u onder het tabblad <strong>Metingen</strong>."
+                },
+                {
+                    "label": "Indicator deactiveren",
+                    "text": "Gebruikt u een indicator niet meer (bv. een vervangen meter)? Deactiveer die in plaats van verwijderen. Reeds verzamelde metingen blijven volledig bewaard — u verliest nooit historische gegevens."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Hulp — ESG-metingen",
+            "title": "Hulp — ESG-metingenoverzicht",
             "actions": [
                 {
-                    "label": "Overzicht",
-                    "text": "Alle meetwaarden die via het unit-QR-portaal of de API zijn geregistreerd, met locatie, unit, tijdstip en uitvoerder."
+                    "label": "Wat ziet u hier?",
+                    "text": "Alle meetwaarden die medewerkers hebben ingevoerd bij het afronden van een taak, met indicator, locatie, unit, tijdstip en wie de meting deed. Klik op <strong>Taak</strong> om de onderliggende uitvoering te bekijken."
                 },
                 {
                     "label": "Filters",
-                    "text": "Verfijn op indicator, locatie, unit of periode (datum van meting)."
+                    "text": "Verfijn op indicator, locatie, unit of periode. Handig om bijvoorbeeld alle meterstanden van één gebouw in een kwartaal te bekijken."
                 },
                 {
-                    "label": "Drempels",
-                    "text": "Metingen buiten het minimum of maximum van de indicator krijgen een waarschuwing."
+                    "label": "Drempelwaarschuwingen",
+                    "text": "Staat een indicator ingesteld met minimum of maximum? Metingen buiten die grenzen worden gemarkeerd, zodat u afwijkingen snel opmerkt."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "Registreer metingen ook via POST /api/v1/esg/measurements (ability esg:create). Webhook esg.measurement.recorded bij elke nieuwe meting."
+                    "label": "Externe koppeling",
+                    "text": "Metingen kunnen ook automatisch binnenkomen via een API-koppeling (Instellingen → API). Dat is optioneel — de meeste organisaties verzamelen gegevens via het unit-QR-portaal."
                 }
             ]
         },

@@ -36,7 +36,7 @@ it('laadt paginahulp voor ESG-schermen', function (): void {
     app()->setLocale('nl');
 
     expect(PageHelp::for('esg.indicators'))->not->toBeNull()
-        ->and(PageHelp::for('esg.indicators')['title'])->toBe('Hulp — ESG-indicatoren')
+        ->and(PageHelp::for('esg.indicators')['title'])->toBe('Hulp — ESG-metingen')
         ->and(PageHelp::for('esg.measurements'))->not->toBeNull()
-        ->and(PageHelp::for('esg.measurements')['title'])->toBe('Hulp — ESG-metingen');
+        ->and(PageHelp::for('esg.measurements')['title'])->toBe('Hulp — ESG-metingenoverzicht');
 });

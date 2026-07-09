@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Hilfe — ESG-Indikatoren",
+            "title": "Hilfe — ESG-Messungen",
             "actions": [
                 {
+                    "label": "Wie funktioniert es?",
+                    "text": "Mit dem ESG-Modul erfassen Sie strukturiert Daten vor Ort — Energieverbrauch, Sicherheitskontrollen, Abfallmeldungen — ohne dass Ihre Mitarbeiter etwas Besonderes tun müssen. Sie sehen einfach eine Aufgabe wie gewohnt."
+                },
+                {
                     "label": "Modul aktivieren",
-                    "text": "Ein Superuser muss das ESG-Modul unter Plattform → Mandanten aktivieren. Ohne Modul ist dieses Menü ausgeblendet."
+                    "text": "Ein Superuser muss das ESG-Modul zuerst unter Plattform → Mandanten aktivieren. Ohne Modul ist dieses Menü ausgeblendet."
                 },
                 {
-                    "label": "Indikator anlegen",
-                    "text": "Definieren Sie, was gemessen wird (z. B. Gas in m³): Zahl, Ja/Nein, Text oder JSON, optional mit Mindest- und Höchstwerten."
+                    "label": "Schritt 1 — Indikator anlegen",
+                    "text": "Ein Indikator beschreibt, <strong>was</strong> Sie messen möchten: ein Stromzähler, eine Feuerlöscher-Prüfung oder eine periodische Kontrolle. Geben Sie einen klaren Namen und bei Zahlen eine Einheit (z. B. kWh, m³) an."
                 },
                 {
-                    "label": "Wiederkehrende Meldung",
-                    "text": "Verknüpfen Sie einen Indikator in Schritt 1 mit einer wiederkehrenden Meldung und Unit. Jeder Zyklus verlangt beim Abschluss der Aufgabe einen Messwert."
+                    "label": "Zahl",
+                    "nested": true,
+                    "text": "Für Zählerstände oder Zählungen (z. B. Strom in kWh, Wasser in m³, Fahrzeugkilometer). Minimum und Maximum können gesetzt werden, damit unrealistische Eingaben (z. B. negativer Zählerstand) auffallen."
                 },
                 {
-                    "label": "Aktiv / inaktiv",
-                    "text": "Deaktivieren Sie nicht mehr genutzte Indikatoren; bestehende Messungen bleiben erhalten."
+                    "label": "Ja/Nein",
+                    "nested": true,
+                    "text": "Für schnelle Kontrollen (z. B. „Ist der Notausgang frei?“, „Ist der Feuerlöscher geprüft?“)."
+                },
+                {
+                    "label": "Text",
+                    "nested": true,
+                    "text": "Für eine kurze Anmerkung bei einer Messung (z. B. Hinweis auf einen ungewöhnlichen Zählerstand)."
+                },
+                {
+                    "label": "Gekoppeltes System",
+                    "nested": true,
+                    "text": "Wenn Werte automatisch aus einem externen System kommen (über die API). Nicht für manuelle Eingabe durch Mitarbeiter im QR-Portal gedacht."
+                },
+                {
+                    "label": "Schritt 2 — Mit wiederkehrender Meldung verknüpfen",
+                    "text": "Beim Anlegen einer <strong>wiederkehrenden Meldung</strong> auf einer Unit können Sie einen ESG-Indikator verknüpfen. Ab dann wird in jedem Zyklus automatisch der zugehörige Messwert abgefragt — z. B. monatlich der Zählerstand dieser Unit."
+                },
+                {
+                    "label": "Schritt 3 — Messungen werden gespeichert",
+                    "text": "Jedes Mal, wenn ein Mitarbeiter die Aufgabe abschließt, werden Wert, Datum und Unit gespeichert. So entsteht nach und nach eine Historie pro Messpunkt, nutzbar für Berichte (z. B. Energieverbrauch pro Gebäude über die Zeit).<br><br>Eine einmal erfasste Messung kann nicht mehr geändert werden — das hält Ihre Daten zuverlässig und prüfbar. Die Übersicht finden Sie unter dem Tab <strong>Messungen</strong>."
+                },
+                {
+                    "label": "Indikator deaktivieren",
+                    "text": "Nutzen Sie einen Indikator nicht mehr (z. B. nach Zählerwechsel)? Deaktivieren Sie ihn statt zu löschen. Bereits erfasste Messungen bleiben vollständig erhalten."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Hilfe — ESG-Messungen",
+            "title": "Hilfe — ESG-Messungsübersicht",
             "actions": [
                 {
-                    "label": "Übersicht",
-                    "text": "Alle über das Unit-QR-Portal oder die API erfassten Messwerte mit Standort, Unit, Zeitstempel und Mitarbeiter."
+                    "label": "Was sehen Sie hier?",
+                    "text": "Alle Messwerte, die Mitarbeiter beim Abschließen einer Aufgabe eingegeben haben, mit Indikator, Standort, Unit, Zeitstempel und wer gemessen hat. Klicken Sie auf <strong>Aufgabe</strong> für die zugrunde liegende Ausführung."
                 },
                 {
                     "label": "Filter",
-                    "text": "Eingrenzen nach Indikator, Standort, Unit oder Zeitraum (Messdatum)."
+                    "text": "Eingrenzen nach Indikator, Standort, Unit oder Zeitraum — z. B. alle Zählerstände eines Gebäudes in einem Quartal."
                 },
                 {
-                    "label": "Schwellenwerte",
-                    "text": "Messungen außerhalb des Minimums oder Maximums des Indikators werden markiert."
+                    "label": "Schwellenwert-Warnungen",
+                    "text": "Hat ein Indikator Minimum oder Maximum? Messungen außerhalb dieser Grenzen werden markiert, damit Abweichungen schnell auffallen."
                 },
                 {
-                    "label": "API & Webhooks",
-                    "text": "Messungen auch per POST /api/v1/esg/measurements (Berechtigung esg:create). Webhook esg.measurement.recorded bei jeder neuen Messung."
+                    "label": "Externe Anbindung",
+                    "text": "Messungen können auch automatisch per API eintreffen (Einstellungen → API). Das ist optional — die meisten Organisationen erfassen Daten über das Unit-QR-Portal."
                 }
             ]
         },

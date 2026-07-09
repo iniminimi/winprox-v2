@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Aiuto — Indicatori ESG",
+            "title": "Aiuto — Misurazioni ESG",
             "actions": [
                 {
+                    "label": "Come funziona?",
+                    "text": "Il modulo ESG le permette di raccogliere dati in modo strutturato sul campo — consumo energetico, controlli di sicurezza, registrazione rifiuti — senza che i collaboratori debbano fare nulla di speciale. Vedono semplicemente un compito, come sempre."
+                },
+                {
                     "label": "Attiva modulo",
-                    "text": "Un superuser deve attivare il modulo ESG in Piattaforma → Tenant. Senza modulo questo menu è nascosto."
+                    "text": "Un superuser deve prima attivare il modulo ESG in Piattaforma → Tenant. Senza modulo questo menu è nascosto."
                 },
                 {
-                    "label": "Crea indicatore",
-                    "text": "Definite cosa misurate (es. gas in m³): numero, sì/no, testo o JSON, con soglie min/max opzionali."
+                    "label": "Passo 1 — Crea un indicatore",
+                    "text": "Un indicatore descrive <strong>cosa</strong> vuole misurare: un contatore elettrico, un controllo estintore o un’ispezione periodica. Dia un nome chiaro e, per i numeri, un’unità (es. kWh, m³) mostrata correttamente in fase di inserimento."
                 },
                 {
-                    "label": "Segnalazione ricorrente",
-                    "text": "Collegate un indicatore a una segnalazione ricorrente con unità al passo 1. Ogni ciclo richiede una lettura al completamento del compito."
+                    "label": "Numero",
+                    "nested": true,
+                    "text": "Per letture contatore o conteggi (es. elettricità in kWh, acqua in m³, chilometraggio). Può impostare minimo e massimo per segnalare inserimenti irrealistici (es. una lettura negativa)."
                 },
                 {
-                    "label": "Attivo / inattivo",
-                    "text": "Disattivate indicatori non più usati; le misurazioni esistenti restano salvate."
+                    "label": "Sì/No",
+                    "nested": true,
+                    "text": "Per controlli rapidi (es. «L’uscita di emergenza è libera?», «L’estintore è revisionato?»)."
+                },
+                {
+                    "label": "Testo",
+                    "nested": true,
+                    "text": "Per una breve nota o osservazione con una misurazione (es. commento su una lettura insolita)."
+                },
+                {
+                    "label": "Sistema collegato",
+                    "nested": true,
+                    "text": "Quando i valori arrivano automaticamente da un sistema esterno (via API). Non pensato per inserimento manuale dai collaboratori sul portale QR."
+                },
+                {
+                    "label": "Passo 2 — Collega a segnalazione ricorrente",
+                    "text": "Creando una <strong>segnalazione ricorrente</strong> su un’unità, può collegare un indicatore ESG. Da quel momento, ogni ciclo chiede automaticamente la lettura corrispondente — ad esempio la lettura mensile del contatore di quell’unità."
+                },
+                {
+                    "label": "Passo 3 — Le misurazioni vengono salvate",
+                    "text": "Ogni volta che un collaboratore completa il compito, il valore inserito viene salvato con data e unità. Costruisce così gradualmente uno storico per punto di misura, utile per report (es. consumo energetico per edificio nel tempo).<br><br>Una volta registrata, una misurazione non può essere modificata — i dati restano affidabili e verificabili, anche in audit esterno. La panoramica è nella scheda <strong>Misurazioni</strong>."
+                },
+                {
+                    "label": "Disattiva indicatore",
+                    "text": "Non usa più un indicatore (es. contatore sostituito)? Lo disattivi invece di eliminarlo. Le misurazioni già raccolte restano completamente conservate."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Aiuto — Misurazioni ESG",
+            "title": "Aiuto — Panoramica misurazioni ESG",
             "actions": [
                 {
-                    "label": "Panoramica",
-                    "text": "Tutte le letture registrate via portale QR unità o API, con sede, unità, data e operatore."
+                    "label": "Cosa vede qui?",
+                    "text": "Tutte le letture inserite dai collaboratori al completamento di un compito, con indicatore, sede, unità, data e chi ha effettuato la misurazione. Clicchi su <strong>Compito</strong> per vedere l’esecuzione sottostante."
                 },
                 {
                     "label": "Filtri",
-                    "text": "Affinate per indicatore, sede, unità o periodo (data misurazione)."
+                    "text": "Affini per indicatore, sede, unità o periodo — utile per rivedere tutte le letture di un edificio in un trimestre, ad esempio."
                 },
                 {
-                    "label": "Soglie",
-                    "text": "Le letture fuori dal minimo o massimo dell’indicatore sono evidenziate."
+                    "label": "Avvisi soglia",
+                    "text": "Un indicatore ha minimo o massimo? Le letture fuori da questi limiti sono evidenziate per individuare rapidamente le deviazioni."
                 },
                 {
-                    "label": "API e webhook",
-                    "text": "Registrate anche con POST /api/v1/esg/measurements (permesso esg:create). Webhook esg.measurement.recorded per ogni nuova lettura."
+                    "label": "Collegamento esterno",
+                    "text": "Le misurazioni possono arrivare anche automaticamente via API (Impostazioni → API). È facoltativo — la maggior parte delle organizzazioni raccoglie i dati tramite il portale QR unità."
                 }
             ]
         },

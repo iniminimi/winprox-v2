@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Ayuda — Indicadores ESG",
+            "title": "Ayuda — Mediciones ESG",
             "actions": [
                 {
+                    "label": "¿Cómo funciona?",
+                    "text": "El módulo ESG le permite recopilar datos de forma estructurada en el terreno — consumo energético, controles de seguridad, registro de residuos — sin que sus trabajadores tengan que hacer nada especial. Ven simplemente una tarea, como siempre."
+                },
+                {
                     "label": "Activar módulo",
-                    "text": "Un superusuario debe activar el módulo ESG en Plataforma → Inquilinos. Sin módulo, este menú no aparece."
+                    "text": "Un superusuario debe activar primero el módulo ESG en Plataforma → Inquilinos. Sin módulo, este menú no aparece."
                 },
                 {
-                    "label": "Crear indicador",
-                    "text": "Defina qué mide (p. ej. gas en m³): número, sí/no, texto o JSON, con umbrales mín/máx opcionales."
+                    "label": "Paso 1 — Crear un indicador",
+                    "text": "Un indicador describe <strong>qué</strong> quiere medir: un contador eléctrico, un control de extintor o una inspección periódica. Déle un nombre claro y, para números, una unidad (p. ej. kWh, m³) que se muestre correctamente al introducir el valor."
                 },
                 {
-                    "label": "Incidencia recurrente",
-                    "text": "Vincule un indicador a una incidencia recurrente con unidad en el paso 1. Cada ciclo exige una lectura al completar la tarea."
+                    "label": "Número",
+                    "nested": true,
+                    "text": "Para lecturas de contador o recuentos (p. ej. electricidad en kWh, agua en m³, kilometraje). Puede establecer un mínimo y un máximo para detectar entradas poco realistas (p. ej. una lectura negativa)."
                 },
                 {
-                    "label": "Activo / inactivo",
-                    "text": "Desactive indicadores que ya no use; las mediciones existentes se conservan."
+                    "label": "Sí/No",
+                    "nested": true,
+                    "text": "Para controles rápidos (p. ej. «¿Está libre la salida de emergencia?», «¿Está revisado el extintor?»)."
+                },
+                {
+                    "label": "Texto",
+                    "nested": true,
+                    "text": "Para una breve observación o comentario con una lectura (p. ej. nota sobre una lectura inusual del contador)."
+                },
+                {
+                    "label": "Sistema conectado",
+                    "nested": true,
+                    "text": "Cuando los valores llegan automáticamente de un sistema externo (vía API). No está pensado para entrada manual por trabajadores en el portal QR."
+                },
+                {
+                    "label": "Paso 2 — Vincular a una incidencia recurrente",
+                    "text": "Al crear una <strong>incidencia recurrente</strong> en una unidad, puede vincular un indicador ESG. A partir de entonces, cada ciclo pide automáticamente la lectura correspondiente — por ejemplo la lectura mensual del contador de esa unidad."
+                },
+                {
+                    "label": "Paso 3 — Las mediciones se guardan",
+                    "text": "Cada vez que un trabajador completa la tarea, el valor introducido se guarda con la fecha y la unidad. Así construye gradualmente un historial por punto de medición, útil para informes (p. ej. consumo energético por edificio a lo largo del tiempo).<br><br>Una vez registrada, una medición no puede modificarse — esto garantiza datos fiables y auditables. El resumen está en la pestaña <strong>Mediciones</strong>."
+                },
+                {
+                    "label": "Desactivar indicador",
+                    "text": "¿Ya no usa un indicador (p. ej. contador sustituido)? Desactívelo en lugar de eliminarlo. Las mediciones ya recopiladas se conservan por completo."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Ayuda — Mediciones ESG",
+            "title": "Ayuda — Resumen de mediciones ESG",
             "actions": [
                 {
-                    "label": "Resumen",
-                    "text": "Todas las lecturas registradas vía portal QR de unidad o API, con ubicación, unidad, fecha y trabajador."
+                    "label": "¿Qué ve aquí?",
+                    "text": "Todas las lecturas que los trabajadores introdujeron al completar una tarea, con indicador, ubicación, unidad, fecha y quién tomó la lectura. Haga clic en <strong>Tarea</strong> para ver la ejecución subyacente."
                 },
                 {
                     "label": "Filtros",
-                    "text": "Filtre por indicador, ubicación, unidad o periodo (fecha de medición)."
+                    "text": "Filtre por indicador, ubicación, unidad o periodo — útil para revisar todas las lecturas de un edificio en un trimestre, por ejemplo."
                 },
                 {
-                    "label": "Umbrales",
-                    "text": "Las lecturas fuera del mínimo o máximo del indicador se marcan."
+                    "label": "Alertas de umbral",
+                    "text": "¿Un indicador tiene mínimo o máximo? Las lecturas fuera de esos límites se resaltan para detectar desviaciones rápidamente."
                 },
                 {
-                    "label": "API y webhooks",
-                    "text": "Registre también con POST /api/v1/esg/measurements (permiso esg:create). Webhook esg.measurement.recorded en cada nueva lectura."
+                    "label": "Conexión externa",
+                    "text": "Las lecturas también pueden llegar automáticamente vía API (Ajustes → API). Es opcional — la mayoría de organizaciones recopilan datos mediante el portal QR de unidad."
                 }
             ]
         },

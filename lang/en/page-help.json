@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Help — ESG indicators",
+            "title": "Help — ESG measurements",
             "actions": [
                 {
+                    "label": "How does it work?",
+                    "text": "The ESG module lets you collect data systematically on site — energy use, safety checks, waste logging — without asking workers to do anything special. They simply see a task, as usual."
+                },
+                {
                     "label": "Enable module",
-                    "text": "A superuser must enable the ESG module under Platform → Tenants. Without it, this menu is hidden."
+                    "text": "A superuser must first enable the ESG module under Platform → Tenants. Without it, this menu is hidden."
                 },
                 {
-                    "label": "Create indicator",
-                    "text": "Define what you measure (e.g. gas in m³): numeric, yes/no, text, or JSON, optionally with min and max thresholds."
+                    "label": "Step 1 — Create an indicator",
+                    "text": "An indicator describes <strong>what</strong> you want to measure: an electricity meter, a fire extinguisher check, or a periodic inspection. Give it a clear name and, for numbers, a unit (e.g. kWh, m³) so it displays correctly at entry."
                 },
                 {
-                    "label": "Recurring issue",
-                    "text": "Link an indicator to a recurring issue with a unit in step 1. Each cycle requires a reading when the task is completed."
+                    "label": "Number",
+                    "nested": true,
+                    "text": "For meter readings or counts (e.g. electricity in kWh, water in m³, vehicle mileage). You can set a minimum and maximum so unrealistic entries (e.g. a negative reading) are flagged."
                 },
                 {
-                    "label": "Active / inactive",
-                    "text": "Deactivate indicators you no longer use; existing measurements are kept."
+                    "label": "Yes/No",
+                    "nested": true,
+                    "text": "For quick checks (e.g. \"Is the emergency exit clear?\", \"Is the fire extinguisher inspected?\")."
+                },
+                {
+                    "label": "Text",
+                    "nested": true,
+                    "text": "For a short note or comment with a reading (e.g. a remark about an unusual meter value)."
+                },
+                {
+                    "label": "Linked system",
+                    "nested": true,
+                    "text": "When values come in automatically from an external system (via the API). Not intended for manual entry by workers on the QR portal."
+                },
+                {
+                    "label": "Step 2 — Link to a recurring issue",
+                    "text": "When creating a <strong>recurring issue</strong> on a unit, you can link an ESG indicator. From then on, each cycle automatically asks for the corresponding reading — for example the monthly meter reading for that unit."
+                },
+                {
+                    "label": "Step 3 — Measurements are stored",
+                    "text": "Each time a worker completes the task, the entered value is stored with the date and unit. This gradually builds a history per measurement point, useful for reporting (e.g. energy use per building over time).<br><br>Once recorded, a measurement cannot be changed — this keeps your data reliable and auditable. The overview is on the <strong>Measurements</strong> tab."
+                },
+                {
+                    "label": "Deactivate indicator",
+                    "text": "No longer using an indicator (e.g. a replaced meter)? Deactivate it instead of deleting. All collected measurements remain fully preserved — you never lose historical data."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Help — ESG measurements",
+            "title": "Help — ESG measurements overview",
             "actions": [
                 {
-                    "label": "Overview",
-                    "text": "All readings registered via the unit QR portal or API, with location, unit, timestamp, and worker."
+                    "label": "What do you see here?",
+                    "text": "All readings workers entered when completing a task, with indicator, location, unit, timestamp, and who took the reading. Click <strong>Task</strong> to view the underlying work item."
                 },
                 {
                     "label": "Filters",
-                    "text": "Narrow by indicator, location, unit, or date range (measurement date)."
+                    "text": "Narrow by indicator, location, unit, or period. Useful to review all meter readings for one building in a quarter, for example."
                 },
                 {
-                    "label": "Thresholds",
-                    "text": "Readings outside the indicator minimum or maximum are flagged."
+                    "label": "Threshold warnings",
+                    "text": "If an indicator has a minimum or maximum set, readings outside those limits are highlighted so you spot deviations quickly."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "Register readings via POST /api/v1/esg/measurements (ability esg:create). Webhook esg.measurement.recorded fires for each new reading."
+                    "label": "External integration",
+                    "text": "Readings can also arrive automatically via an API connection (Settings → API). This is optional — most organisations collect data through the unit QR portal."
                 }
             ]
         },

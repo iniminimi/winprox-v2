@@ -678,44 +678,72 @@
             ]
         },
         "esg.indicators": {
-            "title": "Aide — Indicateurs ESG",
+            "title": "Aide — Mesures ESG",
             "actions": [
                 {
+                    "label": "Comment ça marche ?",
+                    "text": "Le module ESG vous permet de collecter des données de façon structurée sur le terrain — consommation d’énergie, contrôles de sécurité, suivi des déchets — sans que vos collaborateurs aient à faire quoi que ce soit de spécial. Ils voient simplement une tâche, comme d’habitude."
+                },
+                {
                     "label": "Activer le module",
-                    "text": "Un superutilisateur doit activer le module ESG sous Plateforme → Locataires. Sans module, ce menu est masqué."
+                    "text": "Un superutilisateur doit d’abord activer le module ESG sous Plateforme → Locataires. Sans module, ce menu est masqué."
                 },
                 {
-                    "label": "Créer un indicateur",
-                    "text": "Définissez ce que vous mesurez (p. ex. gaz en m³) : nombre, oui/non, texte ou JSON, avec seuils min/max optionnels."
+                    "label": "Étape 1 — Créer un indicateur",
+                    "text": "Un indicateur décrit <strong>ce que</strong> vous voulez mesurer : un compteur électrique, un contrôle d’extincteur ou une vérification périodique. Donnez-lui un nom clair et, pour un nombre, une unité (p. ex. kWh, m³) affichée correctement à la saisie."
                 },
                 {
-                    "label": "Signalement récurrent",
-                    "text": "Liez un indicateur à un signalement récurrent avec unité à l’étape 1. Chaque cycle exige une mesure à la clôture de la tâche."
+                    "label": "Nombre",
+                    "nested": true,
+                    "text": "Pour les relevés de compteur ou décomptes (p. ex. électricité en kWh, eau en m³, kilométrage). Vous pouvez définir un minimum et un maximum pour signaler les saisies irréalistes (p. ex. un index négatif)."
                 },
                 {
-                    "label": "Actif / inactif",
-                    "text": "Désactivez les indicateurs inutilisés ; les mesures existantes sont conservées."
+                    "label": "Oui/Non",
+                    "nested": true,
+                    "text": "Pour des contrôles rapides (p. ex. « La sortie de secours est-elle dégagée ? », « L’extincteur est-il contrôlé ? »)."
+                },
+                {
+                    "label": "Texte",
+                    "nested": true,
+                    "text": "Pour une courte remarque ou observation liée à une mesure (p. ex. commentaire sur un index inhabituel)."
+                },
+                {
+                    "label": "Système connecté",
+                    "nested": true,
+                    "text": "Lorsque les valeurs arrivent automatiquement d’un système externe (via l’API). Non prévu pour une saisie manuelle par les collaborateurs sur le portail QR."
+                },
+                {
+                    "label": "Étape 2 — Lier à un signalement récurrent",
+                    "text": "Lors de la création d’un <strong>signalement récurrent</strong> sur une unité, vous pouvez lier un indicateur ESG. À partir de là, chaque cycle demande automatiquement la mesure correspondante — par exemple le relevé mensuel du compteur de cette unité."
+                },
+                {
+                    "label": "Étape 3 — Les mesures sont enregistrées",
+                    "text": "Chaque fois qu’un collaborateur termine la tâche, la valeur saisie est enregistrée avec la date et l’unité. Vous construisez ainsi progressivement un historique par point de mesure, utile pour le reporting (p. ex. consommation énergétique par bâtiment dans le temps).<br><br>Une fois enregistrée, une mesure ne peut plus être modifiée — vos données restent fiables et vérifiables, y compris en audit externe. L’aperçu se trouve dans l’onglet <strong>Mesures</strong>."
+                },
+                {
+                    "label": "Désactiver un indicateur",
+                    "text": "Vous n’utilisez plus un indicateur (p. ex. compteur remplacé) ? Désactivez-le plutôt que de le supprimer. Les mesures déjà collectées restent entièrement conservées."
                 }
             ]
         },
         "esg.measurements": {
-            "title": "Aide — Mesures ESG",
+            "title": "Aide — Aperçu des mesures ESG",
             "actions": [
                 {
-                    "label": "Vue d’ensemble",
-                    "text": "Toutes les mesures enregistrées via le portail QR unité ou l’API, avec lieu, unité, horodatage et intervenant."
+                    "label": "Que voyez-vous ici ?",
+                    "text": "Toutes les mesures saisies par les collaborateurs à la clôture d’une tâche, avec indicateur, lieu, unité, horodatage et auteur. Cliquez sur <strong>Tâche</strong> pour voir l’exécution sous-jacente."
                 },
                 {
                     "label": "Filtres",
-                    "text": "Affinez par indicateur, lieu, unité ou période (date de mesure)."
+                    "text": "Affinez par indicateur, lieu, unité ou période — pratique pour consulter tous les relevés d’un bâtiment sur un trimestre, par exemple."
                 },
                 {
-                    "label": "Seuils",
-                    "text": "Les mesures hors minimum ou maximum de l’indicateur sont signalées."
+                    "label": "Alertes de seuil",
+                    "text": "Un indicateur a un minimum ou maximum ? Les mesures hors de ces limites sont mises en évidence pour repérer rapidement les écarts."
                 },
                 {
-                    "label": "API & webhooks",
-                    "text": "Enregistrez aussi via POST /api/v1/esg/measurements (droit esg:create). Webhook esg.measurement.recorded à chaque nouvelle mesure."
+                    "label": "Connexion externe",
+                    "text": "Les mesures peuvent aussi arriver automatiquement via une connexion API (Paramètres → API). C’est optionnel — la plupart des organisations collectent les données via le portail QR unité."
                 }
             ]
         },
