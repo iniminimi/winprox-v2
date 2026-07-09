@@ -1,5 +1,11 @@
 @php
     $locale = app()->getLocale();
+    $welcomeDesktopScreenshotRel = "images/welcome/screenshot_{$locale}_desktop.jpg";
+    $welcomeDesktopScreenshotAvailable = is_file(public_path($welcomeDesktopScreenshotRel));
+    $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$locale}.jpg";
+    $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
+    $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
+    $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
@@ -17,206 +23,176 @@
 </head>
 <body class="wp-shell wp-welcome-shell">
     <div class="wp-welcome-top">
-    <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
-        <div class="wp-welcome-nav-inner">
-            @include('partials.wp-welcome-brand')
-            <div class="wp-welcome-nav-links">
-                <a href="#hoe-het-werkt">{{ __('welcome.nav.how') }}</a>
-                <a href="#melden">{{ __('welcome.nav.reporting') }}</a>
-                <a href="#uitvoering">{{ __('welcome.nav.execution') }}</a>
-                <a href="#organisaties">{{ __('welcome.nav.sectors') }}</a>
+        <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
+            <div class="wp-welcome-nav-inner">
+                @include('partials.wp-welcome-brand')
+                <div class="wp-welcome-nav-links">
+                    <a href="#platform">{{ __('welcome.nav.platform') }}</a>
+                    <a href="#esg">{{ __('welcome.nav.esg') }}</a>
+                    <a href="#qr">{{ __('welcome.nav.qr') }}</a>
+                    <a href="#organisaties">{{ __('welcome.nav.sectors') }}</a>
+                    <a href="#video">{{ __('welcome.nav.video') }}</a>
+                </div>
+                <div class="wp-welcome-nav-actions">
+                    @include('partials.wp-lang-switch', ['variant' => 'inline'])
+                    <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
+                    <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
+                </div>
             </div>
-            <div class="wp-welcome-nav-actions">
-                @include('partials.wp-lang-switch', ['variant' => 'inline'])
-                <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
-                <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
-    <header class="wp-welcome-hero">
-        <div class="wp-welcome-main">
-            <span class="wp-welcome-badge">{{ __('welcome.hero.badge') }}</span>
-            <h1 class="wp-welcome-h1">
-                {{ __('welcome.hero.tagline_before') }}
-                <em>{{ __('welcome.hero.tagline_highlight') }}</em>
-            </h1>
-            <p class="wp-welcome-lead">{{ __('welcome.hero.lead_intro') }}</p>
-            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.lead_body') }}</p>
-            <div class="wp-welcome-cta-row">
-                <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
-            </div>
-            <div class="wp-welcome-flow-grid" aria-label="{{ __('welcome.hero.badge') }}">
-                @foreach (__('welcome.hero.flow_steps') as $index => $flowStep)
-                    <div class="wp-welcome-flow-step wp-welcome-flow-step--{{ $index + 1 }}">
-                        <span class="wp-welcome-flow-step-label">{{ $flowStep['step'] }}</span>
-                        <span class="wp-welcome-flow-step-title">{{ $flowStep['title'] }}</span>
+        <header class="wp-welcome-hero wp-welcome-hero--split">
+            <div class="wp-welcome-main wp-welcome-hero-split">
+                <div class="wp-welcome-hero-copy">
+                    <span class="wp-welcome-badge">{{ __('welcome.hero.badge') }}</span>
+                    <h1 class="wp-welcome-h1 wp-welcome-h1--hero">{{ __('welcome.hero.title') }}</h1>
+                    <p class="wp-welcome-lead wp-welcome-lead--hero">{{ __('welcome.hero.subtitle') }}</p>
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.hero.body') }}</p>
+                    <div class="wp-welcome-cta-row wp-welcome-cta-row--start">
+                        <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                        <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_video') }}</a>
                     </div>
-                @endforeach
+                </div>
+                <div class="wp-welcome-hero-visual">
+                    @if ($welcomeDesktopScreenshotAvailable)
+                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--hero wp-welcome-screenshot--desktop">
+                            <img
+                                src="{{ asset($welcomeDesktopScreenshotRel) }}"
+                                alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
+                                class="wp-welcome-screenshot__img"
+                                width="1180"
+                                height="925"
+                                loading="eager"
+                                decoding="async"
+                            >
+                        </figure>
+                    @else
+                        <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--desktop" role="img" aria-label="{{ __('welcome.hero.desktop_screenshot_alt') }}">
+                            <p>{{ __('welcome.hero.desktop_screenshot_alt') }}</p>
+                        </div>
+                    @endif
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
     </div>
 
     <main>
-        <section id="talen" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-languages-title">
-            <div class="wp-welcome-section-inner">
-                <div class="wp-welcome-languages-card">
-                    <h2 id="welcome-languages-title" class="wp-welcome-h2">{{ __('welcome.languages.title') }}</h2>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.languages.body') }}</p>
-                    <div class="wp-welcome-languages-glow" aria-hidden="true"></div>
+        <section id="platform" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-pillars-title">
+            <div class="wp-welcome-section-inner--wide wp-welcome-main">
+                <span class="wp-welcome-eyebrow">{{ __('welcome.pillars.eyebrow') }}</span>
+                <h2 id="welcome-pillars-title" class="wp-welcome-h2">{{ __('welcome.pillars.title') }}</h2>
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.pillars.lead') }}</p>
+                <div class="wp-welcome-pillar-grid">
+                    @foreach (__('welcome.pillars.items') as $pillar)
+                        <article @class([
+                            'wp-welcome-pillar-card',
+                            'wp-welcome-pillar-card--esg' => $pillar['icon'] === 'circle',
+                        ])>
+                            <span class="wp-welcome-pillar-icon" @if($pillar['icon'] === 'circle') aria-hidden="true" @endif>
+                                <x-wp-icon :name="$pillar['icon']" class="wp-icon" />
+                            </span>
+                            <h3>{{ $pillar['title'] }}</h3>
+                            <ul class="wp-welcome-pillar-list">
+                                @foreach ($pillar['bullets'] as $bullet)
+                                    <li>{{ $bullet }}</li>
+                                @endforeach
+                            </ul>
+                        </article>
+                    @endforeach
                 </div>
             </div>
         </section>
 
-        <section id="video" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-video-title">
-            <div class="wp-welcome-section-inner">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.video.title') }}</span>
-                <h2 id="welcome-video-title" class="wp-welcome-h2">{{ __('welcome.video.title') }}</h2>
-                @php
-                    $welcomeVideoRel = "video/{$locale}/issue_{$locale}_01.mp4";
-                    $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
-                @endphp
-                @if ($welcomeVideoAvailable)
-                    @include('partials.wp-locale-video', [
-                        'basename' => 'issue',
-                        'title' => __('welcome.video.title'),
-                    ])
-                @else
-                    <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.video.placeholder') }}">
-                        <p>{{ __('welcome.video.placeholder') }}</p>
-                    </div>
-                @endif
-
-                <div class="wp-welcome-video-widget">
-                    <h3>{{ __('welcome.video.widget.title') }}</h3>
-                    <p>{{ __('welcome.video.widget.body') }}</p>
-                    <a href="{{ route('comparison') }}" class="btn btn--primary">{{ __('welcome.video.widget.link') }}</a>
-                    <div class="wp-welcome-video-widget-glow" aria-hidden="true"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="hoe-het-werkt" class="wp-welcome-section" aria-labelledby="welcome-how-title">
-            <div class="wp-welcome-main wp-welcome-section-inner--wide">
-                <div class="wp-welcome-section--center wp-welcome-section-inner">
-                    <span class="wp-welcome-eyebrow">{{ __('welcome.how.eyebrow') }}</span>
-                    <h2 id="welcome-how-title" class="wp-welcome-h2">{{ __('welcome.how.title') }}</h2>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.how.lead') }}</p>
-                </div>
-                <div class="wp-welcome-split">
-                    <div class="wp-welcome-pain-list">
-                        @foreach (__('welcome.how.without') as $line)
-                            <div class="wp-welcome-pain-item">
-                                <span class="wp-welcome-pain-icon" aria-hidden="true"><x-wp-icon name="x-mark" class="wp-icon" /></span>
-                                <span>{{ $line }}</span>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="wp-welcome-panel-dark">
-                        <h3>{{ __('welcome.how.panel_title') }}</h3>
-                        <ul class="wp-welcome-checklist wp-welcome-checklist--dark wp-welcome-checklist--accent">
-                            @foreach (__('welcome.how.checklist') as $item)
-                                <li>{{ $item }}</li>
-                            @endforeach
-                        </ul>
-                        <div class="wp-welcome-panel-glow" aria-hidden="true"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="melden" class="wp-welcome-section wp-welcome-section--alt" aria-labelledby="welcome-reporting-title">
+        <section id="esg" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--esg" aria-labelledby="welcome-esg-title">
             <div class="wp-welcome-main wp-welcome-section-inner--wide">
                 <div class="wp-welcome-split">
                     <div>
-                        <span class="wp-welcome-eyebrow">{{ __('welcome.reporting.eyebrow') }}</span>
-                        <h2 id="welcome-reporting-title" class="wp-welcome-h2">{{ __('welcome.reporting.title') }}</h2>
-                        <div class="wp-welcome-pills">
-                            @foreach (__('welcome.reporting.who') as $who)
-                                <span class="wp-welcome-pill">{{ $who }}</span>
+                        <span class="wp-welcome-eyebrow wp-welcome-eyebrow--esg">{{ __('welcome.esg.eyebrow') }}</span>
+                        <h2 id="welcome-esg-title" class="wp-welcome-h2">{{ __('welcome.esg.title') }}</h2>
+                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.esg.body') }}</p>
+                        <div class="wp-welcome-esg-pillars">
+                            @foreach (__('welcome.esg.pillars') as $esgPillar)
+                                <div class="wp-welcome-esg-block">
+                                    <h3>{{ $esgPillar['title'] }}</h3>
+                                    <ul class="wp-welcome-checklist wp-welcome-checklist--esg">
+                                        @foreach ($esgPillar['items'] as $item)
+                                            <li>{{ $item }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             @endforeach
                         </div>
-                        <p class="wp-welcome-lead wp-welcome-lead--sm">
-                            {{ __('welcome.reporting.via_before') }}<strong>{{ __('welcome.reporting.via_qr') }}</strong>{{ __('welcome.reporting.via_after') }}
-                        </p>
-                        <p class="wp-welcome-badge-ok">{{ __('welcome.reporting.no_app') }}</p>
                     </div>
-                    <div class="wp-welcome-steps-card">
-                        @foreach (__('welcome.reporting.steps') as $index => $step)
-                            <div class="wp-welcome-step-card">
-                                <span class="wp-welcome-step-num">{{ $index + 1 }}</span>
-                                <h4>{{ $step['title'] }}</h4>
-                                <p>{{ $step['body'] }}</p>
+                    <div class="wp-welcome-esg-visual" role="img" aria-label="{{ __('welcome.esg.visual_alt') }}">
+                        <div class="wp-welcome-esg-mock">
+                            <span class="wp-welcome-esg-mock__label">{{ __('welcome.esg.eyebrow') }}</span>
+                            <div class="wp-welcome-esg-mock__bars" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
-                        @endforeach
+                            <p>{{ __('welcome.esg.visual_alt') }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="uitvoering" class="wp-welcome-section" aria-labelledby="welcome-execution-title">
+        <section id="qr" class="wp-welcome-section" aria-labelledby="welcome-qr-title">
             <div class="wp-welcome-main wp-welcome-section-inner--wide">
-                <div class="wp-welcome-section--center wp-welcome-section-inner">
-                    <span class="wp-welcome-eyebrow">{{ __('welcome.execution.eyebrow') }}</span>
-                    <h2 id="welcome-execution-title" class="wp-welcome-h2">{{ __('welcome.execution.title') }}</h2>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">
-                        {{ __('welcome.execution.contrast_before') }}<em>{{ __('welcome.execution.contrast_highlight') }}</em>
-                    </p>
-                </div>
-                <div class="wp-welcome-duo">
-                    <div class="wp-welcome-card-soft">
-                        <h3 class="wp-welcome-h3">{{ __('welcome.execution.team_portal_title') }}</h3>
-                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.execution.team_portal_lead') }}</p>
-                        <div class="wp-welcome-action-grid">
-                            @foreach (__('welcome.execution.actions') as $action)
-                                <div class="wp-welcome-action-chip">
-                                    <x-wp-icon :name="$action['icon']" class="wp-icon" />
-                                    <span>{{ $action['label'] }}</span>
-                                </div>
+                <div class="wp-welcome-split wp-welcome-split--qr">
+                    <div>
+                        <span class="wp-welcome-eyebrow">{{ __('welcome.qr.eyebrow') }}</span>
+                        <h2 id="welcome-qr-title" class="wp-welcome-h2">{{ __('welcome.qr.title') }}</h2>
+                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.qr.lead') }}</p>
+                        <ul class="wp-welcome-checklist wp-welcome-checklist--spaced">
+                            @foreach (__('welcome.qr.benefits') as $benefit)
+                                <li>{{ $benefit }}</li>
                             @endforeach
-                        </div>
-                        <div class="wp-welcome-auth-notes">
-                            @foreach (__('welcome.execution.auth_notes') as $note)
-                                <span>{{ $note }}</span>
-                            @endforeach
-                        </div>
+                        </ul>
+                        <p class="wp-welcome-badge-ok">{{ __('welcome.qr.footer') }}</p>
                     </div>
-                    <div class="wp-welcome-panel-dark">
-                        <span class="wp-welcome-eyebrow wp-welcome-eyebrow--accent">{{ __('welcome.briefing.eyebrow') }}</span>
-                        <h3 class="wp-welcome-h3-lg">{{ __('welcome.briefing.title') }}</h3>
-                        <p class="wp-welcome-muted">{{ __('welcome.briefing.intro') }}</p>
-                        <div class="wp-welcome-briefing-list">
-                            @foreach (__('welcome.briefing.mock') as $row)
-                                <div @class(['wp-welcome-briefing-row', 'wp-welcome-briefing-row--priority' => ! empty($row['priority'])])>
-                                    <span>{{ $row['label'] }}</span>
-                                    <span @class(['wp-welcome-briefing-badge', 'wp-welcome-briefing-badge--priority' => ! empty($row['priority'])])>{{ $row['badge'] }}</span>
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="wp-welcome-panel-glow" aria-hidden="true"></div>
-                    </div>
-                </div>
-
-                <div class="wp-welcome-banner" aria-labelledby="welcome-qr-title">
-                    <span class="wp-welcome-eyebrow wp-welcome-eyebrow--accent">{{ __('welcome.qr_history.concept') }}</span>
-                    <h3 id="welcome-qr-title">{{ __('welcome.qr_history.title') }}</h3>
-                    <p>{{ __('welcome.qr_history.body') }}</p>
-                    <div class="wp-welcome-tag-row">
-                        @foreach (__('welcome.qr_history.tags') as $tag)
-                            <span class="wp-welcome-tag">{{ $tag }}</span>
-                        @endforeach
-                    </div>
-                    <div class="wp-welcome-availability">
-                        @foreach (__('welcome.qr_history.availability') as $item)
-                            <span>✓ {{ $item }}</span>
-                        @endforeach
+                    <div class="wp-welcome-qr-visual">
+                        @if ($welcomeMobileScreenshotAvailable)
+                            <figure class="wp-welcome-screenshot wp-welcome-screenshot--phone">
+                                <img
+                                    src="{{ asset($welcomeMobileScreenshotRel) }}"
+                                    alt="{{ __('welcome.qr.screenshot_alt') }}"
+                                    class="wp-welcome-screenshot__img"
+                                    width="340"
+                                    height="666"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </figure>
+                        @else
+                            <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--phone" role="img" aria-label="{{ __('welcome.qr.screenshot_alt') }}">
+                                <p>{{ __('welcome.qr.screenshot_alt') }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="organisaties" class="wp-welcome-section wp-welcome-section--alt" aria-labelledby="welcome-sectors-title">
+        <section id="flow" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-flow-title">
+            <div class="wp-welcome-section-inner--wide wp-welcome-main">
+                <span class="wp-welcome-eyebrow">{{ __('welcome.flow.eyebrow') }}</span>
+                <h2 id="welcome-flow-title" class="wp-welcome-h2">{{ __('welcome.flow.title') }}</h2>
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.flow.lead') }}</p>
+                <ol class="wp-welcome-timeline">
+                    @foreach (__('welcome.flow.steps') as $step)
+                        <li class="wp-welcome-timeline__step">
+                            <span class="wp-welcome-timeline__dot" aria-hidden="true"></span>
+                            <span class="wp-welcome-timeline__label">{{ $step }}</span>
+                        </li>
+                    @endforeach
+                </ol>
+            </div>
+        </section>
+
+        <section id="organisaties" class="wp-welcome-section" aria-labelledby="welcome-sectors-title">
             <div class="wp-welcome-main wp-welcome-section-inner--wide">
                 <div class="wp-welcome-section--center wp-welcome-section-inner">
                     <span class="wp-welcome-eyebrow">{{ __('welcome.sectors.eyebrow') }}</span>
@@ -235,97 +211,53 @@
             </div>
         </section>
 
-        <section class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-integrations-title">
-            <div class="wp-welcome-section-inner">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.integrations.eyebrow') }}</span>
-                <h2 id="welcome-integrations-title" class="wp-welcome-h2">{{ __('welcome.integrations.title') }}</h2>
-                <p class="wp-welcome-lead wp-welcome-lead--sm">
-                    {{ __('welcome.integrations.body_before') }}<strong>{{ __('welcome.integrations.body_highlight') }}</strong>{{ __('welcome.integrations.body_after') }}
-                </p>
-                <div class="wp-welcome-compare">
-                    <div class="wp-welcome-compare-card">
-                        <span class="wp-welcome-compare-kicker">{{ __('welcome.integrations.compare_other_label') }}</span>
-                        {{ __('welcome.integrations.compare_other_text') }}
-                    </div>
-                    <div class="wp-welcome-compare-card wp-welcome-compare-card--winprox">
-                        <span class="wp-welcome-compare-kicker">{{ __('welcome.integrations.compare_winprox_label') }}</span>
-                        {{ __('welcome.integrations.compare_winprox_text') }}
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="wp-welcome-section wp-welcome-practical" aria-labelledby="welcome-practical-title">
-            <div class="wp-welcome-main wp-welcome-section-inner--wide wp-welcome-practical-inner">
-                <span class="wp-welcome-eyebrow wp-welcome-eyebrow--accent">{{ __('welcome.practical.eyebrow') }}</span>
-                <h2 id="welcome-practical-title" class="wp-welcome-h2">{{ __('welcome.practical.title') }}</h2>
-                <p class="wp-welcome-practical-sub">{{ __('welcome.practical.subtitle') }}</p>
-                <div class="wp-welcome-practical-grid">
-                    @foreach (__('welcome.practical.items') as $item)
-                        <div class="wp-welcome-practical-item">{{ $item }}</div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-        <section class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-screenshots-title">
+        <section id="video" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-trust-title">
             <div class="wp-welcome-section-inner--wide wp-welcome-main">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.screenshots.title') }}</span>
-                <h2 id="welcome-screenshots-title" class="wp-welcome-h2">{{ __('welcome.screenshots.title') }}</h2>
-                @php
-                    $welcomeScreenshotLocale = app()->getLocale();
-                    $welcomeDesktopScreenshotRel = "images/welcome/screenshot_{$welcomeScreenshotLocale}.jpg";
-                    $welcomeDesktopScreenshotAvailable = is_file(public_path($welcomeDesktopScreenshotRel));
-                    $welcomeMobileScreenshotRel = "images/welcome/screenshot_{$welcomeScreenshotLocale}_mobile.jpg";
-                    $welcomeMobileScreenshotAvailable = is_file(public_path($welcomeMobileScreenshotRel));
-                @endphp
-                <div class="wp-welcome-screenshots">
-                    @if ($welcomeDesktopScreenshotAvailable)
-                        <figure class="wp-welcome-screenshot">
-                            <img
-                                src="{{ asset($welcomeDesktopScreenshotRel) }}"
-                                alt="{{ __('welcome.screenshots.desktop') }}"
-                                class="wp-welcome-screenshot__img"
-                                width="1200"
-                                height="675"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </figure>
-                    @else
-                        <div class="wp-welcome-media-placeholder" role="img" aria-label="{{ __('welcome.screenshots.desktop') }}">
-                            <p>{{ __('welcome.screenshots.desktop') }}</p>
-                        </div>
-                    @endif
-                    @if ($welcomeMobileScreenshotAvailable)
-                        <figure class="wp-welcome-screenshot wp-welcome-screenshot--phone">
-                            <img
-                                src="{{ asset($welcomeMobileScreenshotRel) }}"
-                                alt="{{ __('welcome.screenshots.mobile') }}"
-                                class="wp-welcome-screenshot__img"
-                                width="390"
-                                height="844"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        </figure>
-                    @else
-                        <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--phone" role="img" aria-label="{{ __('welcome.screenshots.mobile') }}">
-                            <p>{{ __('welcome.screenshots.mobile') }}</p>
-                        </div>
-                    @endif
+                <span class="wp-welcome-eyebrow">{{ __('welcome.trust.eyebrow') }}</span>
+                <h2 id="welcome-trust-title" class="wp-welcome-h2">{{ __('welcome.trust.title') }}</h2>
+
+                <div class="wp-welcome-trust-languages">
+                    <h3 class="wp-welcome-h3">{{ __('welcome.trust.languages_title') }}</h3>
+                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.trust.languages_body') }}</p>
+                </div>
+
+                <ul class="wp-welcome-trust-grid">
+                    @foreach (__('welcome.trust.items') as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+
+                <div class="wp-welcome-trust-media">
+                    <div class="wp-welcome-trust-video">
+                        <h3 class="wp-welcome-h3">{{ __('welcome.trust.video_title') }}</h3>
+                        @if ($welcomeVideoAvailable)
+                            @include('partials.wp-locale-video', [
+                                'basename' => 'issue',
+                                'title' => __('welcome.trust.video_title'),
+                            ])
+                        @else
+                            <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.trust.video_placeholder') }}">
+                                <p>{{ __('welcome.trust.video_placeholder') }}</p>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="wp-welcome-trust-compare">
+                        <h3 class="wp-welcome-h3">{{ __('welcome.trust.comparison_title') }}</h3>
+                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.trust.comparison_body') }}</p>
+                        <a href="{{ route('comparison') }}" class="btn btn--primary">{{ __('welcome.trust.comparison_link') }}</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-closing-title">
+        <section class="wp-welcome-section wp-welcome-section--center wp-welcome-section--closing" aria-labelledby="welcome-closing-title">
             <div class="wp-welcome-section-inner">
-                <h2 id="welcome-closing-title" class="wp-welcome-h1 wp-welcome-h1--closing">
-                    {{ __('welcome.closing.title_before') }}<br><em>{{ __('welcome.closing.title_highlight') }}</em>
-                </h2>
+                <h2 id="welcome-closing-title" class="wp-welcome-h1 wp-welcome-h1--closing">{{ __('welcome.closing.title') }}</h2>
                 <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.closing.body') }}</p>
-                <blockquote class="wp-welcome-quote">{{ __('welcome.closing.quote') }}</blockquote>
-                <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.closing.cta_start') }}</a>
+                <div class="wp-welcome-cta-row">
+                    <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.closing.cta_start') }}</a>
+                    <a href="{{ route('contact.index') }}" class="btn btn--ghost btn--lg">{{ __('welcome.closing.cta_contact') }}</a>
+                </div>
             </div>
         </section>
     </main>

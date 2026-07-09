@@ -1,166 +1,156 @@
 {
-    "meta_title": "WinProx — transformer les signalements en tâches réalisées",
+    "meta_title": "WinProx — gestion intelligente des bâtiments avec ESG intégré",
     "social": {
-        "og_title": "WinProx — transformer les signalements en tâches réalisées",
-        "og_description": "Gestion facility pour signalements, tâches et exécution sur le terrain. Du QR au travail terminé."
+        "og_title": "WinProx — gestion intelligente des bâtiments avec ESG intégré",
+        "og_description": "Facility management, portails QR intelligents et enregistrement ESG sur une seule plateforme."
     },
     "login": "Connexion",
     "register": "S'inscrire",
     "back_home": "Retour à l'accueil",
     "nav": {
-        "how": "Fonctionnement",
-        "reporting": "Signaler facilement",
-        "execution": "Terrain",
-        "sectors": "Secteurs"
+        "platform": "Plateforme",
+        "esg": "ESG",
+        "qr": "Portails QR",
+        "sectors": "Secteurs",
+        "video": "Vidéo"
     },
     "hero": {
-        "badge": "Transformer les signalements en tâches réalisées",
-        "tagline_before": "Enterprise software manages the data.",
-        "tagline_highlight": "WinProx manages the execution.",
-        "lead_intro": "Recevoir des signalements est simple. Les résoudre efficacement est le défi.",
-        "lead_body": "WinProx fait en sorte que les signalements arrivent aux bonnes personnes, soient traduits en missions claires et suivis jusqu'à la fin complète de la tâche.",
-        "cta_start": "Commencer gratuitement",
-        "flow_steps": [
-            {"step": "Étape 1", "title": "Signalement"},
-            {"step": "Étape 2", "title": "Tâche"},
-            {"step": "Étape 3", "title": "Exécution"},
-            {"step": "Étape 4", "title": "Clôture"}
+        "badge": "Facility · QR · ESG",
+        "title": "Gestion intelligente des bâtiments avec ESG intégré",
+        "subtitle": "Gérez bâtiments, installations, maintenance, documents et ESG depuis une plateforme unique.",
+        "body": "WinProx numérise chaque espace, installation et unité avec un QR code intelligent. Les équipes accèdent directement aux signalements, ordres de travail, documents, inspections et saisies ESG — sans installation d'application.",
+        "cta_start": "Essai gratuit",
+        "cta_video": "Voir la vidéo",
+        "desktop_screenshot_alt": "Tableau de bord WinProx sur ordinateur"
+    },
+    "pillars": {
+        "eyebrow": "Plateforme",
+        "title": "Pourquoi WinProx ?",
+        "lead": "Une plateforme intégrée pour le terrain et le back-office.",
+        "items": [
+            {
+                "title": "Facility Management",
+                "icon": "tasks",
+                "bullets": ["Signalements", "Tâches", "Maintenance", "Sites & unités"]
+            },
+            {
+                "title": "Portails QR intelligents",
+                "icon": "document",
+                "bullets": ["Sans application", "Accès immédiat", "Lié au site"]
+            },
+            {
+                "title": "ESG",
+                "icon": "circle",
+                "bullets": ["Environmental", "Social", "Governance", "Mesures & indicateurs"]
+            },
+            {
+                "title": "Vue d'ensemble",
+                "icon": "dashboard",
+                "bullets": ["Tableau de bord", "Calendrier", "Briefing", "Statut par équipe"]
+            },
+            {
+                "title": "IA",
+                "icon": "chat-bubble",
+                "bullets": ["Traductions automatiques", "Assistant d'aide", "Communication multilingue"]
+            },
+            {
+                "title": "Conformité",
+                "icon": "legal",
+                "bullets": ["Piste d'audit", "Gestion documentaire", "Documents juridiques", "API & webhooks"]
+            }
         ]
     },
-    "how": {
-        "eyebrow": "Comment WinProx fonctionne",
-        "title": "Chaque jour des missions claires via un briefing.",
-        "lead": "WinProx rassemble les signalements et les transforme automatiquement en missions claires pour vos équipes.",
-        "without": [
-            "Plus d'e-mails perdus",
-            "Plus d'appels téléphoniques",
-            "Plus de fichiers Excel",
-            "Plus de confusion"
+    "esg": {
+        "eyebrow": "ESG",
+        "title": "ESG sans administration supplémentaire",
+        "body": "Chaque signalement, inspection ou contrôle contribue à votre reporting ESG. Enregistrez les mesures directement depuis le portail QR ou le back-office.",
+        "pillars": [
+            {
+                "title": "Environmental",
+                "items": ["Énergie", "Eau", "Déchets", "CO₂", "Environnement"]
+            },
+            {
+                "title": "Social",
+                "items": ["Sécurité", "Incidents", "EPI", "Formations", "Bien-être"]
+            },
+            {
+                "title": "Governance",
+                "items": ["Audits", "Certificats", "Conformité", "Procédures", "Piste d'audit"]
+            }
         ],
-        "panel_title": "Chaque collaborateur sait exactement :",
-        "checklist": [
-            "Ce qu'il faut faire",
-            "Où cela doit se passer",
-            "Quelle priorité cela a",
-            "Quelles photos ou informations sont disponibles",
-            "Quand cela doit être terminé"
-        ]
+        "visual_alt": "Vue ESG dans WinProx"
     },
-    "reporting": {
-        "eyebrow": "Signaler est simple",
-        "title": "Tout le monde peut faire un signalement.",
-        "who": ["Citoyens", "Clients", "Visiteurs", "Collaborateurs"],
-        "via_before": "Via un ",
-        "via_qr": "code QR",
-        "via_after": " ils peuvent signaler un problème immédiatement. Pas de comptes ni de téléchargements.",
-        "no_app": "Aucune application requise",
+    "qr": {
+        "eyebrow": "Portails QR",
+        "title": "Portails QR intelligents",
+        "lead": "Scannez le code sur site et travaillez immédiatement — sur tout smartphone.",
+        "benefits": [
+            "Enregistrer des signalements",
+            "Exécuter des ordres de travail",
+            "Consulter les manuels",
+            "Consulter les documents",
+            "Réaliser des inspections",
+            "Enregistrer des données ESG"
+        ],
+        "footer": "Sans application. Scannez et travaillez.",
+        "screenshot_alt": "Portail QR WinProx sur smartphone"
+    },
+    "flow": {
+        "eyebrow": "Fonctionnement",
+        "title": "Tout au même endroit",
+        "lead": "Du signalement au reporting — un flux continu.",
         "steps": [
-            {"title": "Ajouter des photos", "body": "Visualisez la situation tout de suite."},
-            {"title": "Description", "body": "Saisissez les détails nécessaires."},
-            {"title": "Envoyer", "body": "Terminé ! Directement dans le système."}
+            "Signalement",
+            "Ordre de travail",
+            "Exécution",
+            "Inspection",
+            "ESG",
+            "Tableau de bord",
+            "Reporting"
         ]
-    },
-    "execution": {
-        "eyebrow": "Exécution sur le terrain",
-        "title": "Conçu pour ceux qui font le travail.",
-        "contrast_before": "La plupart des logiciels sont faits pour les managers. ",
-        "contrast_highlight": "WinProx est fait pour les équipes terrain.",
-        "team_portal_title": "Le Team Portal",
-        "team_portal_lead": "Via le portail, les collaborateurs reçoivent leurs missions. Sur place, ils peuvent :",
-        "actions": [
-            {"label": "Scanner des codes QR", "icon": "document"},
-            {"label": "Ouvrir des tâches", "icon": "tasks"},
-            {"label": "Ajouter des photos", "icon": "document"},
-            {"label": "Enregistrer des remarques", "icon": "chat-bubble"},
-            {"label": "Valider les travaux", "icon": "tasks"},
-            {"label": "Clôturer des tâches", "icon": "x-mark"}
-        ],
-        "auth_notes": ["Pas d'identifiant", "Pas de mot de passe", "Travailler tout simplement"]
-    },
-    "briefing": {
-        "eyebrow": "Briefing quotidien",
-        "title": "Votre planning de travail numérique.",
-        "intro": "Chaque matin, les équipes voient tout clairement sur un seul écran :",
-        "mock": [
-            {"label": "À exécuter aujourd'hui", "badge": "5 tâches"},
-            {"label": "Nouveaux signalements", "badge": "3 nouveaux"},
-            {"label": "Interventions planifiées", "badge": "2 planifiées"},
-            {"label": "Tâches prioritaires", "badge": "ÉLEVÉ", "priority": true},
-            {"label": "Missions en retard", "badge": "0"}
-        ]
-    },
-    "qr_history": {
-        "concept": "Concept unique",
-        "title": "Un code QR, historique complet",
-        "body": "Chaque lieu, pièce, machine ou installation reçoit un code QR unique. Réutiliser le même code QR crée automatiquement un historique transparent.",
-        "tags": ["Signalements", "Tâches", "Interventions", "Photos", "Solutions"],
-        "availability": ["Toujours disponible", "Toujours consultable"]
-    },
-    "languages": {
-        "title": "WinProx parle votre langue",
-        "body": "Pour offrir à chacun une expérience fluide, WinProx traduit automatiquement les signalements, tâches, annonces et communications grâce à l'IA dans toutes les langues prises en charge. Ainsi, les informations importantes atteignent visiteurs, collaborateurs et équipes terrain dans une langue qu'ils comprennent."
-    },
-    "video": {
-        "title": "Vidéo",
-        "placeholder": "Vidéo bientôt disponible.",
-        "widget": {
-            "title": "Comparer WinProx ?",
-            "body": "Découvrez en un coup d'œil comment WinProx se compare à une plateforme traditionnelle.",
-            "link": "Voir la comparaison"
-        }
     },
     "sectors": {
-        "eyebrow": "Flexibilité",
-        "title": "Fonctionne dans chaque organisation",
-        "lead": "Services publics, équipes facility ou environnements de production.",
+        "eyebrow": "Secteurs",
+        "title": "Pour chaque organisation",
+        "lead": "Équipes facility, services publics et environnements de production.",
         "items": [
-            {"name": "Communes", "body": "Suivre les signalements citoyens.", "icon": "locations"},
-            {"name": "Hôpitaux", "body": "Traiter les signalements techniques.", "icon": "issues"},
-            {"name": "Hôtels", "body": "Résoudre les problèmes plus vite.", "icon": "calendar"},
-            {"name": "Immobilier", "body": "Gérer bâtiments et installations.", "icon": "units"},
-            {"name": "Entreprises industrielles", "body": "Suivre pannes et maintenance.", "icon": "tasks"},
-            {"name": "Équipes facility", "body": "Organiser le travail quotidien.", "icon": "team"}
+            {"name": "Hôpitaux", "body": "Signalements techniques et maintenance.", "icon": "issues"},
+            {"name": "Communes", "body": "Suivi des signalements citoyens.", "icon": "locations"},
+            {"name": "Industrie", "body": "Suivi des pannes et maintenance.", "icon": "tasks"},
+            {"name": "Bureaux", "body": "Gestion des bâtiments et équipements.", "icon": "units"},
+            {"name": "Écoles", "body": "Coordination des signalements.", "icon": "faq"},
+            {"name": "Hôtels", "body": "Résolution plus rapide des problèmes.", "icon": "calendar"},
+            {"name": "Immobilier", "body": "Gestion des installations.", "icon": "document"},
+            {"name": "Ports", "body": "Suivi du terrain et infrastructure.", "icon": "map-pin"}
         ]
     },
-    "integrations": {
-        "eyebrow": "Intégrations",
-        "title": "Fonctionne avec vos logiciels existants.",
-        "body_before": "WinProx ne remplace pas votre ERP, CRM ou GMAO. ",
-        "body_highlight": "WinProx les complète.",
-        "body_after": " Via API et webhooks, WinProx se connecte facilement aux systèmes existants.",
-        "compare_other_label": "Logiciel existant",
-        "compare_other_text": "Gère les données",
-        "compare_winprox_label": "WinProx",
-        "compare_winprox_text": "Gère l'exécution"
-    },
-    "practical": {
-        "eyebrow": "Fonctionnalités & options",
-        "title": "Pratique et flexible",
-        "subtitle": "Inclus par défaut sur notre plateforme.",
+    "trust": {
+        "eyebrow": "Confiance",
+        "title": "Pourquoi les organisations choisissent WinProx",
+        "languages_title": "Multilingue dès le premier jour",
+        "languages_body": "Signalements, tâches et annonces sont traduits automatiquement dans toutes les langues prises en charge.",
         "items": [
-            "Codes QR avec logo de l'organisation",
-            "Différentes mises en page QR",
-            "Thèmes sombres pour smartphones",
-            "Support étiquettes Avery",
-            "Support étiquettes Herma",
-            "Modèles Word",
-            "Interface multilingue",
-            "Calendrier et planification",
-            "Équipes et rôles",
-            "API & webhooks"
-        ]
-    },
-    "screenshots": {
-        "title": "Captures d'écran",
-        "desktop": "Capture bureau à venir.",
-        "mobile": "Capture smartphone à venir."
+            "Sans application",
+            "Cloud",
+            "Modulaire",
+            "Traductions IA",
+            "Portails QR",
+            "Module ESG",
+            "Multilingue",
+            "Conformité",
+            "Évolutif"
+        ],
+        "video_title": "WinProx en action",
+        "video_placeholder": "Vidéo à venir.",
+        "comparison_title": "Comparer WinProx ?",
+        "comparison_body": "Découvrez comment WinProx se compare à une plateforme classique.",
+        "comparison_link": "Voir la comparaison"
     },
     "closing": {
-        "title_before": "Arrêtez de gérer les signalements.",
-        "title_highlight": "Commencez à résoudre les problèmes.",
-        "body": "WinProx réunit signalements, équipes et exécution dans une plateforme conviviale.",
-        "quote": "Enterprise software manages the data. WinProx manages the execution.",
-        "cta_start": "Commencer gratuitement"
+        "title": "Prêt à gérer votre organisation plus intelligemment ?",
+        "body": "Découvrez comment WinProx réunit facility management, technologie QR et ESG sur une plateforme conviviale.",
+        "cta_start": "Essai gratuit",
+        "cta_contact": "Nous contacter"
     },
     "footer": {
         "contact": "Contact",

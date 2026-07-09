@@ -1,166 +1,156 @@
 {
-    "meta_title": "WinProx — meldingen omzetten in uitgevoerde taken",
+    "meta_title": "WinProx — slim gebouwbeheer met geïntegreerde ESG",
     "social": {
-        "og_title": "WinProx — meldingen omzetten in uitgevoerde taken",
-        "og_description": "Facility management voor meldingen, taken en uitvoering op de werkvloer. Van QR-melding tot afgewerkte taak."
+        "og_title": "WinProx — slim gebouwbeheer met geïntegreerde ESG",
+        "og_description": "Facility management, slimme QR-portalen en ESG-registratie in één platform. Van melding tot rapportage."
     },
     "login": "Inloggen",
     "register": "Registreren",
     "back_home": "Terug naar startpagina",
     "nav": {
-        "how": "Werking",
-        "reporting": "Eenvoudig melden",
-        "execution": "Terrein",
-        "sectors": "Sectoren"
+        "platform": "Platform",
+        "esg": "ESG",
+        "qr": "QR-portalen",
+        "sectors": "Sectoren",
+        "video": "Video"
     },
     "hero": {
-        "badge": "Meldingen omzetten in uitgevoerde taken",
-        "tagline_before": "Enterprise software manages the data.",
-        "tagline_highlight": "WinProx manages the execution.",
-        "lead_intro": "Meldingen ontvangen is eenvoudig. Ze effectief oplossen is de uitdaging.",
-        "lead_body": "WinProx zorgt ervoor dat meldingen terechtkomen bij de juiste mensen, vertaald worden naar duidelijke opdrachten en opgevolgd worden tot de taak volledig afgewerkt is.",
-        "cta_start": "Gratis starten",
-        "flow_steps": [
-            {"step": "Stap 1", "title": "Melding"},
-            {"step": "Stap 2", "title": "Taak"},
-            {"step": "Stap 3", "title": "Uitvoering"},
-            {"step": "Stap 4", "title": "Afhandeling"}
+        "badge": "Facility · QR · ESG",
+        "title": "Slim gebouwbeheer met geïntegreerde ESG",
+        "subtitle": "Beheer gebouwen, installaties, onderhoud, documenten en ESG vanuit één intelligent platform.",
+        "body": "WinProx digitaliseert elke ruimte, installatie en unit met een slimme QR-code. Medewerkers krijgen direct toegang tot meldingen, werkopdrachten, documenten, inspecties en ESG-registraties — zonder app-installatie.",
+        "cta_start": "Gratis proberen",
+        "cta_video": "Bekijk video",
+        "desktop_screenshot_alt": "WinProx dashboard op desktop"
+    },
+    "pillars": {
+        "eyebrow": "Platform",
+        "title": "Waarom WinProx?",
+        "lead": "Eén geïntegreerd platform voor de werkvloer en de backoffice.",
+        "items": [
+            {
+                "title": "Facility Management",
+                "icon": "tasks",
+                "bullets": ["Meldingen", "Taken", "Onderhoud", "Locaties & units"]
+            },
+            {
+                "title": "Slimme QR-portalen",
+                "icon": "document",
+                "bullets": ["Geen app nodig", "Direct toegankelijk", "Locatiegebonden"]
+            },
+            {
+                "title": "ESG",
+                "icon": "circle",
+                "bullets": ["Environmental", "Social", "Governance", "Metingen & indicatoren"]
+            },
+            {
+                "title": "Overzicht",
+                "icon": "dashboard",
+                "bullets": ["Dashboard", "Kalender", "Briefing", "Status per team"]
+            },
+            {
+                "title": "AI",
+                "icon": "chat-bubble",
+                "bullets": ["Automatische vertalingen", "Help-assistent", "Meertalige communicatie"]
+            },
+            {
+                "title": "Compliance",
+                "icon": "legal",
+                "bullets": ["Audit trail", "Documentbeheer", "Juridische documenten", "API & webhooks"]
+            }
         ]
     },
-    "how": {
-        "eyebrow": "Hoe WinProx werkt",
-        "title": "Elke dag duidelijke opdrachten via een briefing.",
-        "lead": "WinProx verzamelt meldingen en zet ze automatisch om in duidelijke opdrachten voor uw teams.",
-        "without": [
-            "Geen verloren e-mails",
-            "Geen telefoontjes",
-            "Geen Excel-bestanden",
-            "Geen verwarring"
+    "esg": {
+        "eyebrow": "ESG",
+        "title": "ESG zonder extra administratie",
+        "body": "Elke melding, inspectie of controle draagt bij aan uw ESG-rapportering. Registreer metingen rechtstreeks vanuit het QR-portaal of de backoffice.",
+        "pillars": [
+            {
+                "title": "Environmental",
+                "items": ["Energie", "Water", "Afval", "CO₂", "Milieu"]
+            },
+            {
+                "title": "Social",
+                "items": ["Veiligheid", "Incidenten", "PBM", "Opleidingen", "Welzijn"]
+            },
+            {
+                "title": "Governance",
+                "items": ["Audits", "Certificaten", "Compliance", "Procedures", "Audittrail"]
+            }
         ],
-        "panel_title": "Iedere medewerker weet exact:",
-        "checklist": [
-            "Wat moet gebeuren",
-            "Waar het moet gebeuren",
-            "Welke prioriteit het heeft",
-            "Welke foto's of informatie beschikbaar zijn",
-            "Wanneer het klaar moet zijn"
-        ]
+        "visual_alt": "ESG-overzicht in WinProx"
     },
-    "reporting": {
-        "eyebrow": "Melden is eenvoudig",
-        "title": "Iedereen kan een melding maken.",
-        "who": ["Burgers", "Klanten", "Bezoekers", "Medewerkers"],
-        "via_before": "Via een ",
-        "via_qr": "QR-code",
-        "via_after": " kunnen zij onmiddellijk een probleem melden. Geen gedoe met accounts of downloads.",
-        "no_app": "Geen app nodig",
+    "qr": {
+        "eyebrow": "QR-portalen",
+        "title": "Slimme QR-portalen",
+        "lead": "Scan de code op locatie en werk onmiddellijk verder — op elke smartphone.",
+        "benefits": [
+            "Meldingen registreren",
+            "Werkopdrachten uitvoeren",
+            "Handleidingen raadplegen",
+            "Documenten bekijken",
+            "Inspecties uitvoeren",
+            "ESG registreren"
+        ],
+        "footer": "Geen app nodig. Scan en werk onmiddellijk.",
+        "screenshot_alt": "WinProx QR-portaal op smartphone"
+    },
+    "flow": {
+        "eyebrow": "Werking",
+        "title": "Alles op één plaats",
+        "lead": "Van melding tot rapportage — één doorlopende flow.",
         "steps": [
-            {"title": "Foto's toevoegen", "body": "Visualiseer de situatie direct."},
-            {"title": "Beschrijving", "body": "Vul de nodige details in."},
-            {"title": "Versturen", "body": "Klaar! Direct in het systeem."}
+            "Melding",
+            "Werkopdracht",
+            "Uitvoering",
+            "Inspectie",
+            "ESG",
+            "Dashboard",
+            "Rapportering"
         ]
-    },
-    "execution": {
-        "eyebrow": "Uitvoering op het terrein",
-        "title": "Ontworpen voor mensen die het werk uitvoeren.",
-        "contrast_before": "De meeste software is gebouwd voor managers. ",
-        "contrast_highlight": "WinProx is gebouwd voor uitvoerende teams.",
-        "team_portal_title": "Het Team Portal",
-        "team_portal_lead": "Via het portaal ontvangen medewerkers hun opdrachten. Op locatie kunnen zij:",
-        "actions": [
-            {"label": "QR-codes scannen", "icon": "document"},
-            {"label": "Taken openen", "icon": "tasks"},
-            {"label": "Foto's toevoegen", "icon": "document"},
-            {"label": "Opmerkingen registreren", "icon": "chat-bubble"},
-            {"label": "Werkzaamheden afmelden", "icon": "tasks"},
-            {"label": "Taken afsluiten", "icon": "x-mark"}
-        ],
-        "auth_notes": ["Geen gebruikersnaam", "Geen wachtwoord", "Gewoon werken"]
-    },
-    "briefing": {
-        "eyebrow": "Dagelijkse briefing",
-        "title": "Uw digitale werkplanning.",
-        "intro": "Elke ochtend zien teams onmiddellijk alles overzichtelijk in één scherm:",
-        "mock": [
-            {"label": "Vandaag uit te voeren", "badge": "5 taken"},
-            {"label": "Nieuwe meldingen", "badge": "3 nieuw"},
-            {"label": "Geplande interventies", "badge": "2 gepland"},
-            {"label": "Prioritaire taken", "badge": "HOOG", "priority": true},
-            {"label": "Achterstallige opdrachten", "badge": "0"}
-        ]
-    },
-    "qr_history": {
-        "concept": "Uniek concept",
-        "title": "Één QR-code, volledige historiek",
-        "body": "Elke locatie, ruimte, machine of installatie krijgt een unieke QR-code. Door dezelfde QR-code te gebruiken ontstaat automatisch een transparante historiek.",
-        "tags": ["Meldingen", "Taken", "Interventies", "Foto's", "Oplossingen"],
-        "availability": ["Altijd beschikbaar", "Altijd raadpleegbaar"]
-    },
-    "languages": {
-        "title": "WinProx spreekt jouw taal",
-        "body": "Om iedereen een naadloze ervaring te bieden, vertaalt WinProx meldingen, taken, mededelingen en communicatie automatisch met AI naar alle ondersteunde talen. Zo bereikt belangrijke informatie bezoekers, medewerkers en uitvoerders in een taal die zij begrijpen."
-    },
-    "video": {
-        "title": "Video",
-        "placeholder": "Video volgt binnenkort.",
-        "widget": {
-            "title": "WinProx vergelijken?",
-            "body": "Zie op een rij hoe WinProx zich verhoudt tot een klassiek platform.",
-            "link": "Bekijk de vergelijking"
-        }
     },
     "sectors": {
-        "eyebrow": "Flexibiliteit",
-        "title": "Werkt in elke organisatie",
-        "lead": "Of het nu gaat om publieke diensten, facilitaire teams of productieomgevingen.",
+        "eyebrow": "Sectoren",
+        "title": "Voor elke organisatie",
+        "lead": "Facility teams, publieke diensten en productieomgevingen.",
         "items": [
+            {"name": "Ziekenhuizen", "body": "Technische meldingen en onderhoud.", "icon": "issues"},
             {"name": "Gemeenten", "body": "Burgermeldingen opvolgen.", "icon": "locations"},
-            {"name": "Ziekenhuizen", "body": "Technische meldingen verwerken.", "icon": "issues"},
+            {"name": "Industrie", "body": "Storingen en onderhoud opvolgen.", "icon": "tasks"},
+            {"name": "Kantoren", "body": "Gebouwen en voorzieningen beheren.", "icon": "units"},
+            {"name": "Scholen", "body": "Meldingen en onderhoud coördineren.", "icon": "faq"},
             {"name": "Hotels", "body": "Problemen sneller oplossen.", "icon": "calendar"},
-            {"name": "Vastgoed", "body": "Gebouwen en installaties beheren.", "icon": "units"},
-            {"name": "Productiebedrijven", "body": "Storingen en onderhoud opvolgen.", "icon": "tasks"},
-            {"name": "Facility teams", "body": "Dagelijkse werkzaamheden organiseren.", "icon": "team"}
+            {"name": "Vastgoed", "body": "Installaties en assets beheren.", "icon": "document"},
+            {"name": "Havens", "body": "Terrein en infrastructuur opvolgen.", "icon": "map-pin"}
         ]
     },
-    "integrations": {
-        "eyebrow": "Integraties",
-        "title": "Werkt samen met uw bestaande software.",
-        "body_before": "WinProx vervangt uw ERP, CRM of FMIS niet. ",
-        "body_highlight": "WinProx vult ze aan.",
-        "body_after": " Via API's en Webhooks koppelt WinProx eenvoudig met bestaande systemen.",
-        "compare_other_label": "Bestaande software",
-        "compare_other_text": "Beheert de gegevens",
-        "compare_winprox_label": "WinProx",
-        "compare_winprox_text": "Beheert de uitvoering"
-    },
-    "practical": {
-        "eyebrow": "Features & opties",
-        "title": "Praktisch en flexibel",
-        "subtitle": "Standaard inbegrepen in ons krachtige platform.",
+    "trust": {
+        "eyebrow": "Vertrouwen",
+        "title": "Waarom organisaties kiezen voor WinProx",
+        "languages_title": "Meertalig vanaf dag één",
+        "languages_body": "Meldingen, taken en mededelingen worden automatisch vertaald naar alle ondersteunde talen.",
         "items": [
-            "QR-codes met organisatielogo",
-            "Verschillende QR-layouts",
-            "Donkere lay-outs voor smartphones",
-            "Avery label ondersteuning",
-            "Herma label ondersteuning",
-            "Word-sjablonen",
-            "Meertalige interface",
-            "Kalender en planning",
-            "Teams en rollen",
-            "API & Webhooks"
-        ]
-    },
-    "screenshots": {
-        "title": "Screenshots",
-        "desktop": "Screenshot desktop volgt.",
-        "mobile": "Screenshot smartphone volgt."
+            "Geen app",
+            "Cloud",
+            "Modulair",
+            "AI-vertalingen",
+            "QR-portalen",
+            "ESG-module",
+            "Meertalig",
+            "Compliance",
+            "Schaalbaar"
+        ],
+        "video_title": "WinProx in actie",
+        "video_placeholder": "Video volgt binnenkort.",
+        "comparison_title": "WinProx vergelijken?",
+        "comparison_body": "Zie hoe WinProx zich verhoudt tot een klassiek platform.",
+        "comparison_link": "Bekijk de vergelijking"
     },
     "closing": {
-        "title_before": "Stop met meldingen beheren.",
-        "title_highlight": "Begin met problemen oplossen.",
-        "body": "WinProx brengt meldingen, teams en uitvoering samen in één gebruiksvriendelijk platform.",
-        "quote": "Enterprise software manages the data. WinProx manages the execution.",
-        "cta_start": "Gratis starten"
+        "title": "Klaar om uw organisatie slimmer te beheren?",
+        "body": "Ontdek hoe WinProx facility management, QR-technologie en ESG samenbrengt in één gebruiksvriendelijk platform.",
+        "cta_start": "Gratis proefperiode",
+        "cta_contact": "Contact opnemen"
     },
     "footer": {
         "contact": "Contact",
