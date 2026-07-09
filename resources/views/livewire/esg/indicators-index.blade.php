@@ -6,6 +6,8 @@
         :subtitle="__('esg.subtitle')"
     />
 
+    @include('partials.wp-esg-subnav')
+
     @if (session('success'))
         <div class="wp-card wp-card-pad">
             <p class="wp-text-body">{{ session('success') }}</p>

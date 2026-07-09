@@ -60,5 +60,30 @@
         "boolean_no": "Nee",
         "string_placeholder": "Waarde",
         "json_placeholder": "{\"sleutel\": \"waarde\"}"
+    },
+    "nav": {
+        "aria": "ESG-navigatie",
+        "indicators": "Indicatoren",
+        "measurements": "Metingen"
+    },
+    "measurements": {
+        "subtitle": "Bekijk geregistreerde meetwaarden van de werkvloer voor audits en rapportage.",
+        "list_title": "Metingen",
+        "empty": "Nog geen metingen geregistreerd.",
+        "correction": "Correctie",
+        "outside_thresholds": "Buiten drempel",
+        "view_task": "Taak",
+        "filters": {
+            "indicator": "Indicator",
+            "location": "Locatie",
+            "unit": "Unit",
+            "from": "Van",
+            "to": "Tot",
+            "all_indicators": "Alle indicatoren",
+            "all_locations": "Alle locaties",
+            "all_units": "Alle units",
+            "apply": "Filter toepassen",
+            "reset": "Wissen"
+        }
     }
 }

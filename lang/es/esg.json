@@ -60,5 +60,30 @@
         "boolean_no": "No",
         "string_placeholder": "Valor",
         "json_placeholder": "{\"clave\": \"valor\"}"
+    },
+    "nav": {
+        "aria": "Navegación ESG",
+        "indicators": "Indicadores",
+        "measurements": "Mediciones"
+    },
+    "measurements": {
+        "subtitle": "Consulte lecturas de campo para auditorías e informes.",
+        "list_title": "Mediciones",
+        "empty": "Aún no hay mediciones registradas.",
+        "correction": "Corrección",
+        "outside_thresholds": "Fuera de umbral",
+        "view_task": "Tarea",
+        "filters": {
+            "indicator": "Indicador",
+            "location": "Ubicación",
+            "unit": "Unidad",
+            "from": "Desde",
+            "to": "Hasta",
+            "all_indicators": "Todos los indicadores",
+            "all_locations": "Todas las ubicaciones",
+            "all_units": "Todas las unidades",
+            "apply": "Aplicar filtros",
+            "reset": "Borrar"
+        }
     }
 }

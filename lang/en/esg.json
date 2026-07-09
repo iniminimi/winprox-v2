@@ -60,5 +60,30 @@
         "boolean_no": "No",
         "string_placeholder": "Value",
         "json_placeholder": "{\"key\": \"value\"}"
+    },
+    "nav": {
+        "aria": "ESG navigation",
+        "indicators": "Indicators",
+        "measurements": "Measurements"
+    },
+    "measurements": {
+        "subtitle": "Review field readings for audits and reporting.",
+        "list_title": "Measurements",
+        "empty": "No measurements recorded yet.",
+        "correction": "Correction",
+        "outside_thresholds": "Outside threshold",
+        "view_task": "Task",
+        "filters": {
+            "indicator": "Indicator",
+            "location": "Location",
+            "unit": "Unit",
+            "from": "From",
+            "to": "To",
+            "all_indicators": "All indicators",
+            "all_locations": "All locations",
+            "all_units": "All units",
+            "apply": "Apply filters",
+            "reset": "Clear"
+        }
     }
 }

@@ -60,5 +60,30 @@
         "boolean_no": "No",
         "string_placeholder": "Valore",
         "json_placeholder": "{\"chiave\": \"valore\"}"
+    },
+    "nav": {
+        "aria": "Navigazione ESG",
+        "indicators": "Indicatori",
+        "measurements": "Misurazioni"
+    },
+    "measurements": {
+        "subtitle": "Consulta le letture dal campo per audit e reportistica.",
+        "list_title": "Misurazioni",
+        "empty": "Nessuna misurazione registrata.",
+        "correction": "Correzione",
+        "outside_thresholds": "Fuori soglia",
+        "view_task": "Attività",
+        "filters": {
+            "indicator": "Indicatore",
+            "location": "Sede",
+            "unit": "Unità",
+            "from": "Da",
+            "to": "A",
+            "all_indicators": "Tutti gli indicatori",
+            "all_locations": "Tutte le sedi",
+            "all_units": "Tutte le unità",
+            "apply": "Applica filtri",
+            "reset": "Cancella"
+        }
     }
 }

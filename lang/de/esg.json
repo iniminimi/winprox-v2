@@ -60,5 +60,30 @@
         "boolean_no": "Nein",
         "string_placeholder": "Wert",
         "json_placeholder": "{\"schlüssel\": \"wert\"}"
+    },
+    "nav": {
+        "aria": "ESG-Navigation",
+        "indicators": "Indikatoren",
+        "measurements": "Messungen"
+    },
+    "measurements": {
+        "subtitle": "Registrierte Messwerte vom Feld für Audits und Berichte einsehen.",
+        "list_title": "Messungen",
+        "empty": "Noch keine Messungen erfasst.",
+        "correction": "Korrektur",
+        "outside_thresholds": "Außerhalb Schwelle",
+        "view_task": "Aufgabe",
+        "filters": {
+            "indicator": "Indikator",
+            "location": "Standort",
+            "unit": "Unit",
+            "from": "Von",
+            "to": "Bis",
+            "all_indicators": "Alle Indikatoren",
+            "all_locations": "Alle Standorte",
+            "all_units": "Alle Units",
+            "apply": "Filter anwenden",
+            "reset": "Zurücksetzen"
+        }
     }
 }

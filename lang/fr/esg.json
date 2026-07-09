@@ -60,5 +60,30 @@
         "boolean_no": "Non",
         "string_placeholder": "Valeur",
         "json_placeholder": "{\"clé\": \"valeur\"}"
+    },
+    "nav": {
+        "aria": "Navigation ESG",
+        "indicators": "Indicateurs",
+        "measurements": "Mesures"
+    },
+    "measurements": {
+        "subtitle": "Consultez les relevés terrain pour les audits et rapports.",
+        "list_title": "Mesures",
+        "empty": "Aucune mesure enregistrée.",
+        "correction": "Correction",
+        "outside_thresholds": "Hors seuil",
+        "view_task": "Tâche",
+        "filters": {
+            "indicator": "Indicateur",
+            "location": "Site",
+            "unit": "Unité",
+            "from": "Du",
+            "to": "Au",
+            "all_indicators": "Tous les indicateurs",
+            "all_locations": "Tous les sites",
+            "all_units": "Toutes les unités",
+            "apply": "Appliquer les filtres",
+            "reset": "Effacer"
+        }
     }
 }
