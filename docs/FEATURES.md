@@ -354,6 +354,10 @@ voor API-koppelingen (geen eindgebruiker-keuzelijst).
 **Geïmplementeerde types (na Choice-sprint):** getal · ja/nee · **keuzelijst** · tekst · gekoppeld
 systeem (json).
 
+**Choice-opties bewerken (§5b.6 #1 — afgerond):** optie met bestaande metingen is **niet
+verwijderbaar** (readonly + servervalidatie). Waarden die niet meer in de huidige optielijst staan
+worden in rapportage getoond als `:waarde (niet meer in lijst)`.
+
 ### 5b.2 Terugkerende melding + indicator
 - Bij **nieuwe terugkerende melding** (stap 1): unit verplicht + keuze **ESG-indicator** (alleen actieve).
 - Elke recurring-cyclus: taak op unit-QR-portaal; bij **afronden** verplichte meetwaarde + tijdstip
@@ -369,16 +373,26 @@ systeem (json).
 - Webhook `esg.measurement.recorded` bij elke nieuwe rij.
 
 ### 5b.5 Nog niet in scope (fase 2+)
-`multi_choice`, `GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
+`GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen. Zie §5b.6 voor de
+geprioriteerde ESG-backlog (Choice-vervolg, correcties, MultiChoice).
 
-### 5b.6 Architectuur klaar, UI ontbreekt
+### 5b.6 Openstaande ESG-werkzaamheden (geprioriteerd)
 
-| Onderdeel | Datalaag / Action | Backoffice-UI |
-|-----------|-------------------|---------------|
-| **Meting corrigeren** | `corrects_measurement_id` op `esg_measurements`; `RecordEsgMeasurementAction` + API-veld; audit + webhook | Geen scherm om een correctie te registreren of te bekijken — apart te plannen |
+**Status:** nog geen operationele ESG-metingen in productie — onderstaande punten zijn bewust
+uitgesteld, maar moeten vóór of zodra er echte historiek is opgepakt. Volgorde is aanbevolen
+prioriteit.
 
-Correcties zijn **append-only**: een correctie is een nieuwe rij die naar de oorspronkelijke meting
-verwijst; de oorspronkelijke rij blijft ongewijzigd.
+| # | Onderwerp | Status |
+|---|-----------|--------|
+| ~~**1**~~ | ~~**Choice-opties bewerken**~~ | **Afgerond** — blokkeren bij metingen in gebruik; legacy-label in rapportage. |
+| **2** | **Correctie-UI** | Datalaag klaar (`corrects_measurement_id`, Action, API, audit, webhook). Geen backoffice-scherm om een correctie te registreren of de keten oorspronkelijk → correctie te bekijken. Append-only nieuwe rij via UI. |
+| **3** | **`multi_choice`-indicatortype** | Niet gebouwd. Enum + `options`, checkbox-UI op portaal, opslag (bv. `value_json` als `string[]`), validatie, rapportage. |
+
+**Correcties (achtergrond bij #2):** append-only — een correctie is een **nieuwe** rij met
+`corrects_measurement_id`; de oorspronkelijke meting blijft ongewijzigd.
+
+**Niet in deze lijst (breedere fase 2):** `GET /api/v1/esg/measurements`, CSV-export,
+dashboards/KPI's, foto's aan metingen — zie §5b.5.
 
 ---
 

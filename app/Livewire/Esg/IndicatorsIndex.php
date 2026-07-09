@@ -38,6 +38,9 @@ class IndicatorsIndex extends Component
     /** @var list<string> */
     public array $choiceOptions = ['', ''];
 
+    /** @var list<string> */
+    public array $lockedChoiceOptions = [];
+
     public function mount(): void
     {
         $this->authorize('viewAny', EsgIndicator::class);
@@ -68,6 +71,9 @@ class IndicatorsIndex extends Component
         $this->choiceOptions = $indicator->type === EsgIndicatorType::Choice
             ? ($indicator->normalizedChoiceOptions() !== [] ? $indicator->normalizedChoiceOptions() : ['', ''])
             : ['', ''];
+        $this->lockedChoiceOptions = $indicator->type === EsgIndicatorType::Choice
+            ? $indicator->choiceOptionsWithMeasurements()
+            : [];
         $this->showModal = true;
     }
 
@@ -100,6 +106,10 @@ class IndicatorsIndex extends Component
         ]);
 
         try {
+            $existing = $this->editingIndicatorId !== null
+                ? EsgIndicator::query()->find($this->editingIndicatorId)
+                : null;
+
             $payload = StoreEsgIndicatorRequest::toActionPayload([
                 'name' => $validated['name'],
                 'type' => $validated['type'],
@@ -109,7 +119,7 @@ class IndicatorsIndex extends Component
                 'choice_options' => $validated['type'] === EsgIndicatorType::Choice->value
                     ? $this->choiceOptions
                     : [],
-            ]);
+            ], $existing);
         } catch (ValidationException $exception) {
             foreach ($exception->errors() as $field => $messages) {
                 foreach ($messages as $message) {
@@ -159,6 +169,11 @@ class IndicatorsIndex extends Component
             return;
         }
 
+        $option = trim((string) ($this->choiceOptions[$index] ?? ''));
+        if ($option !== '' && in_array($option, $this->lockedChoiceOptions, true)) {
+            return;
+        }
+
         unset($this->choiceOptions[$index]);
         $this->choiceOptions = array_values($this->choiceOptions);
     }
@@ -187,5 +202,6 @@ class IndicatorsIndex extends Component
         $this->thresholdMin = null;
         $this->thresholdMax = null;
         $this->choiceOptions = ['', ''];
+        $this->lockedChoiceOptions = [];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Support\Esg;
 
 use App\Enums\EsgIndicatorType;
+use App\Models\EsgIndicator;
 use App\Models\EsgMeasurement;
 
 final class EsgMeasurementPresenter
@@ -25,7 +26,7 @@ final class EsgMeasurementPresenter
                 ? __('esg.portal.boolean_yes')
                 : __('esg.portal.boolean_no'),
             EsgIndicatorType::String => (string) ($measurement->value_string ?? '—'),
-            EsgIndicatorType::Choice => (string) ($measurement->value_string ?? '—'),
+            EsgIndicatorType::Choice => self::formatChoice($measurement, $indicator),
             EsgIndicatorType::Json => self::formatJson($measurement->value_json),
         };
     }
@@ -67,6 +68,21 @@ final class EsgMeasurementPresenter
         $formatted = rtrim(rtrim(number_format((float) $measurement->value_numeric, 4, ',', '.'), '0'), ',');
 
         return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
+    }
+
+    private static function formatChoice(EsgMeasurement $measurement, ?EsgIndicator $indicator): string
+    {
+        $value = $measurement->value_string;
+        if ($value === null || $value === '') {
+            return '—';
+        }
+
+        $options = $indicator?->normalizedChoiceOptions() ?? [];
+        if ($options !== [] && ! in_array($value, $options, true)) {
+            return __('esg.measurements.legacy_choice_value', ['value' => $value]);
+        }
+
+        return $value;
     }
 
     /**

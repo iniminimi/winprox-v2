@@ -94,18 +94,23 @@
                     <div class="wp-stack-tight">
                         <p class="wp-label">{{ __('esg.fields.choice_options') }}</p>
                         @foreach ($choiceOptions as $index => $choiceOption)
+                            @php($optionLocked = filled($choiceOption) && in_array($choiceOption, $lockedChoiceOptions, true))
                             <div class="wp-cluster wp-cluster--tight" wire:key="esg-choice-option-{{ $index }}">
                                 <input type="text"
                                        class="wp-input wp-field--grow"
                                        wire:model="choiceOptions.{{ $index }}"
                                        placeholder="{{ __('esg.fields.choice_option_placeholder') }}"
-                                       autocomplete="off">
-                                @if (count($choiceOptions) > 2)
+                                       autocomplete="off"
+                                       @if ($optionLocked) readonly @endif>
+                                @if (count($choiceOptions) > 2 && ! $optionLocked)
                                     <button type="button"
                                             class="btn btn--ghost btn--sm"
                                             wire:click="removeChoiceOption({{ $index }})">
                                         {{ __('esg.actions.remove_option') }}
                                     </button>
+                                @endif
+                                @if ($optionLocked)
+                                    <span class="wp-muted wp-text-sm">{{ __('esg.fields.choice_option_locked') }}</span>
                                 @endif
                             </div>
                         @endforeach

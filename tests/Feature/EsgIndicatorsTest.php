@@ -1,9 +1,15 @@
 <?php
 
+use App\Actions\Esg\RecordEsgMeasurementAction;
+use App\Data\Esg\RecordEsgMeasurementData;
 use App\Enums\EsgIndicatorType;
 use App\Livewire\Esg\IndicatorsIndex;
 use App\Models\EsgIndicator;
+use App\Models\Issue;
+use App\Models\Location;
+use App\Models\Task;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use Livewire\Livewire;
 
@@ -87,6 +93,42 @@ it('laat een admin een keuzelijst-indicator met opties beheren', function () {
     expect($indicator)->not->toBeNull()
         ->and($indicator->type)->toBe(EsgIndicatorType::Choice)
         ->and($indicator->options)->toBe(['Restafval', 'PMD', 'Papier']);
+});
+
+it('weigert verwijderen van een keuze-optie die al in metingen voorkomt', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $indicator = EsgIndicator::factory()->choice(['Restafval', 'PMD', 'Papier'])->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Afvalcategorie',
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'esg_indicator_id' => $indicator->id,
+        'is_recurring' => true,
+    ]);
+    $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+    app(RecordEsgMeasurementAction::class)->handle(
+        new RecordEsgMeasurementData(
+            taskId: $task->id,
+            esgIndicatorId: $indicator->id,
+            recordedAt: now()->toImmutable(),
+            valueString: 'PMD',
+        ),
+        $tenant->id,
+    );
+
+    Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->call('openEditModal', $indicator->id)
+        ->set('choiceOptions', ['Restafval', 'Papier'])
+        ->call('save')
+        ->assertHasErrors(['choiceOptions']);
 });
 
 it('isoleert indicatoren per tenant', function () {

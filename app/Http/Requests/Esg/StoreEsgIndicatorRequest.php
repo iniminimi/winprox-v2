@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Esg;
 
 use App\Enums\EsgIndicatorType;
+use App\Models\EsgIndicator;
+use App\Models\EsgMeasurement;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
@@ -66,7 +68,7 @@ class StoreEsgIndicatorRequest extends FormRequest
      * @param  array{name: string, type: string, unit_of_measure?: ?string, threshold_min?: mixed, threshold_max?: mixed, choice_options?: list<string>}  $validated
      * @return array{name: string, type: string, unit_of_measure: ?string, thresholds: ?array{min?: float, max?: float}, options: ?list<string>}
      */
-    public static function toActionPayload(array $validated): array
+    public static function toActionPayload(array $validated, ?EsgIndicator $existing = null): array
     {
         self::assertThresholdRange($validated);
 
@@ -75,6 +77,9 @@ class StoreEsgIndicatorRequest extends FormRequest
         if ($type === EsgIndicatorType::Choice->value) {
             $options = self::normalizeChoiceOptions($validated['choice_options'] ?? []);
             self::assertChoiceOptionsValid($options);
+            if ($existing !== null) {
+                self::assertChoiceOptionsRespectMeasurements($existing, $options);
+            }
         }
 
         $unitOfMeasure = null;
@@ -126,6 +131,36 @@ class StoreEsgIndicatorRequest extends FormRequest
         if (count($options) !== count(array_unique($options))) {
             throw ValidationException::withMessages([
                 'choiceOptions' => [__('esg.errors.options_duplicate')],
+            ]);
+        }
+    }
+
+    /**
+     * @param  list<string>  $newOptions
+     */
+    public static function assertChoiceOptionsRespectMeasurements(EsgIndicator $indicator, array $newOptions): void
+    {
+        if ($indicator->type !== EsgIndicatorType::Choice) {
+            return;
+        }
+
+        $removedInUse = [];
+        foreach ($indicator->normalizedChoiceOptions() as $oldOption) {
+            if (in_array($oldOption, $newOptions, true)) {
+                continue;
+            }
+
+            if (EsgMeasurement::query()
+                ->where('esg_indicator_id', $indicator->id)
+                ->where('value_string', $oldOption)
+                ->exists()) {
+                $removedInUse[] = $oldOption;
+            }
+        }
+
+        if ($removedInUse !== []) {
+            throw ValidationException::withMessages([
+                'choiceOptions' => [__('esg.errors.options_in_use', ['options' => implode(', ', $removedInUse)])],
             ]);
         }
     }

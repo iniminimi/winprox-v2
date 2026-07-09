@@ -23,7 +23,8 @@
         "threshold_min": "Minimum",
         "threshold_max": "Maximum",
         "choice_options": "Keuzemogelijkheden",
-        "choice_option_placeholder": "Optie"
+        "choice_option_placeholder": "Optie",
+        "choice_option_locked": "In gebruik"
     },
     "types": {
         "numeric": "Getal",
@@ -68,7 +69,8 @@
         "measurement_recorded_at_required": "Tijdstip van meting ontbreekt of is ongeldig.",
         "options_min": "Voeg minstens twee verschillende opties toe.",
         "options_duplicate": "Elke optie mag maar één keer voorkomen.",
-        "measurement_choice_invalid": "Kies een geldige optie uit de lijst."
+        "measurement_choice_invalid": "Kies een geldige optie uit de lijst.",
+        "options_in_use": "Deze opties kunnen niet verwijderd worden omdat er al metingen mee zijn: :options."
     },
     "portal": {
         "measurement_label": "Meting: :name",
@@ -101,6 +103,7 @@
         },
         "correction": "Correctie",
         "outside_thresholds": "Buiten drempel",
+        "legacy_choice_value": ":value (niet meer in lijst)",
         "view_task": "Taak",
         "filters": {
             "indicator": "Indicator",

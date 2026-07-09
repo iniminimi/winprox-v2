@@ -23,7 +23,8 @@
         "threshold_min": "Minimum",
         "threshold_max": "Maximum",
         "choice_options": "Auswahloptionen",
-        "choice_option_placeholder": "Option"
+        "choice_option_placeholder": "Option",
+        "choice_option_locked": "In Verwendung"
     },
     "types": {
         "numeric": "Zahl",
@@ -68,7 +69,8 @@
         "measurement_recorded_at_required": "Zeitstempel der Messung fehlt oder ist ungültig.",
         "options_min": "Fügen Sie mindestens zwei verschiedene Optionen hinzu.",
         "options_duplicate": "Jede Option darf nur einmal vorkommen.",
-        "measurement_choice_invalid": "Wählen Sie eine gültige Option aus der Liste."
+        "measurement_choice_invalid": "Wählen Sie eine gültige Option aus der Liste.",
+        "options_in_use": "Diese Optionen können nicht entfernt werden, weil bereits Messungen damit existieren: :options."
     },
     "portal": {
         "measurement_label": "Messung: :name",
@@ -101,6 +103,7 @@
         },
         "correction": "Korrektur",
         "outside_thresholds": "Außerhalb Schwelle",
+        "legacy_choice_value": ":value (nicht mehr in Liste)",
         "view_task": "Aufgabe",
         "filters": {
             "indicator": "Indikator",

@@ -23,7 +23,8 @@
         "threshold_min": "Minimum",
         "threshold_max": "Maximum",
         "choice_options": "Options de choix",
-        "choice_option_placeholder": "Option"
+        "choice_option_placeholder": "Option",
+        "choice_option_locked": "Utilisée"
     },
     "types": {
         "numeric": "Nombre",
@@ -68,7 +69,8 @@
         "measurement_recorded_at_required": "L'horodatage de la mesure est manquant ou invalide.",
         "options_min": "Ajoutez au moins deux options différentes.",
         "options_duplicate": "Chaque option ne peut apparaître qu'une fois.",
-        "measurement_choice_invalid": "Choisissez une option valide dans la liste."
+        "measurement_choice_invalid": "Choisissez une option valide dans la liste.",
+        "options_in_use": "Ces options ne peuvent pas être supprimées car des mesures les utilisent déjà : :options."
     },
     "portal": {
         "measurement_label": "Mesure : :name",
@@ -101,6 +103,7 @@
         },
         "correction": "Correction",
         "outside_thresholds": "Hors seuil",
+        "legacy_choice_value": ":value (plus dans la liste)",
         "view_task": "Tâche",
         "filters": {
             "indicator": "Indicateur",

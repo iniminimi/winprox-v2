@@ -62,4 +62,25 @@ class EsgIndicator extends Model
 
         return $options;
     }
+
+    /**
+     * Choice-opties die al in minstens één meting voorkomen (niet verwijderbaar in beheer).
+     *
+     * @return list<string>
+     */
+    public function choiceOptionsWithMeasurements(): array
+    {
+        if ($this->type !== EsgIndicatorType::Choice || ! $this->exists) {
+            return [];
+        }
+
+        return EsgMeasurement::query()
+            ->where('esg_indicator_id', $this->id)
+            ->whereNotNull('value_string')
+            ->distinct()
+            ->orderBy('value_string')
+            ->pluck('value_string')
+            ->map(fn (mixed $value): string => (string) $value)
+            ->all();
+    }
 }

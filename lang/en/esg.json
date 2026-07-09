@@ -23,7 +23,8 @@
         "threshold_min": "Minimum",
         "threshold_max": "Maximum",
         "choice_options": "Choices",
-        "choice_option_placeholder": "Option"
+        "choice_option_placeholder": "Option",
+        "choice_option_locked": "In use"
     },
     "types": {
         "numeric": "Number",
@@ -68,7 +69,8 @@
         "measurement_recorded_at_required": "Measurement timestamp is missing or invalid.",
         "options_min": "Add at least two different options.",
         "options_duplicate": "Each option may only appear once.",
-        "measurement_choice_invalid": "Choose a valid option from the list."
+        "measurement_choice_invalid": "Choose a valid option from the list.",
+        "options_in_use": "These options cannot be removed because measurements already use them: :options."
     },
     "portal": {
         "measurement_label": "Reading: :name",
@@ -101,6 +103,7 @@
         },
         "correction": "Correction",
         "outside_thresholds": "Outside threshold",
+        "legacy_choice_value": ":value (no longer in list)",
         "view_task": "Task",
         "filters": {
             "indicator": "Indicator",
