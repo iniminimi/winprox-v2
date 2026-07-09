@@ -135,6 +135,49 @@ it('laat een worker een ESG-taak afhandelen met keuzelijst', function () {
     expect(EsgMeasurement::query()->first()?->value_string)->toBe('PMD');
 });
 
+it('laat een worker een ESG-taak afhandelen met meervoudige keuze', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = esgPortalScaffold();
+
+    $indicator = EsgIndicator::factory()->multiChoice(['Restafval', 'PMD', 'Papier'])->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Afvalstromen',
+    ]);
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'esg_indicator_id' => $indicator->id,
+        'is_recurring' => true,
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+        'started_at' => now(),
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('beginCompleteTask', $task->id)
+        ->assertSee('PMD', false)
+        ->set('completingEsgValueMultiChoice', ['PMD', 'Papier'])
+        ->set('completingRecordedAt', now()->toIso8601String())
+        ->call('submitCompleteTask')
+        ->assertHasNoErrors();
+
+    expect(EsgMeasurement::query()->first()?->value_json)->toBe(['PMD', 'Papier']);
+});
+
 it('weigert afhandelen van een ESG-taak zonder meetwaarde', function () {
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = esgPortalScaffold();
 

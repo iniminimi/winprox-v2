@@ -30,6 +30,7 @@
         "numeric": "Número",
         "boolean": "Sí/no",
         "choice": "Lista de opciones",
+        "multi_choice": "Opción múltiple",
         "string": "Texto",
         "json": "Sistema conectado"
     },
@@ -72,6 +73,7 @@
         "options_min": "Añada al menos dos opciones diferentes.",
         "options_duplicate": "Cada opción solo puede aparecer una vez.",
         "measurement_choice_invalid": "Elija una opción válida de la lista.",
+        "measurement_multi_choice_invalid": "Elija solo opciones válidas de la lista.",
         "options_in_use": "Estas opciones no se pueden eliminar porque ya hay mediciones que las usan: :options."
     },
     "portal": {

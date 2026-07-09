@@ -41,6 +41,18 @@
                 @endforeach
             </select>
             @error('completingEsgValueString') <p class="wp-error">{{ $message }}</p> @enderror
+        @elseif ($indicator->type === \App\Enums\EsgIndicatorType::MultiChoice)
+            <div class="wp-stack-tight">
+                @foreach ($indicator->normalizedChoiceOptions() as $option)
+                    <label class="wp-cluster wp-cluster--tight" wire:key="esg-multi-choice-{{ $task->id }}-{{ $loop->index }}">
+                        <input type="checkbox"
+                               value="{{ $option }}"
+                               wire:model="completingEsgValueMultiChoice">
+                        <span>{{ $option }}</span>
+                    </label>
+                @endforeach
+            </div>
+            @error('completingEsgValueMultiChoice') <p class="wp-error">{{ $message }}</p> @enderror
         @elseif ($indicator->type === \App\Enums\EsgIndicatorType::Json)
             <textarea id="esg-value-{{ $task->id }}"
                       class="wp-textarea"

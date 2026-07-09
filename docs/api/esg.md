@@ -26,7 +26,7 @@ Record ESG/compliance readings linked to tasks and indicators. Measurements are 
 | `value_numeric` | number | Conditional | Required for numeric indicators |
 | `value_boolean` | boolean | Conditional | Required for boolean indicators |
 | `value_string` | string | Conditional | Required for text and **choice** indicators (choice must match a defined option) |
-| `value_json` | object | Conditional | Required for JSON indicators |
+| `value_json` | object or array | Conditional | Required for **json** indicators (free-form object) or **multi_choice** indicators (array of option strings) |
 | `worker_id` | integer | No | Worker who took the reading |
 | `corrects_measurement_id` | integer | No | ID of measurement being corrected (future use) |
 

@@ -90,7 +90,7 @@
                     </div>
                 @endif
 
-                @if ($type === 'choice')
+                @if ($type === 'choice' || $type === 'multi_choice')
                     <div class="wp-stack-tight">
                         <p class="wp-label">{{ __('esg.fields.choice_options') }}</p>
                         @foreach ($choiceOptions as $index => $choiceOption)

@@ -44,7 +44,7 @@ class EsgIndicator extends Model
      */
     public function normalizedChoiceOptions(): array
     {
-        if ($this->type !== EsgIndicatorType::Choice || ! is_array($this->options)) {
+        if (! $this->type->usesOptionList() || ! is_array($this->options)) {
             return [];
         }
 
@@ -63,24 +63,69 @@ class EsgIndicator extends Model
         return $options;
     }
 
+    public function optionValueInUse(string $option): bool
+    {
+        if (! $this->exists || ! $this->type->usesOptionList()) {
+            return false;
+        }
+
+        if ($this->type === EsgIndicatorType::Choice) {
+            return EsgMeasurement::query()
+                ->where('esg_indicator_id', $this->id)
+                ->where('value_string', $option)
+                ->exists();
+        }
+
+        foreach ($this->measurements()->whereNotNull('value_json')->pluck('value_json') as $valueJson) {
+            if (is_array($valueJson) && in_array($option, $valueJson, true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
-     * Choice-opties die al in minstens één meting voorkomen (niet verwijderbaar in beheer).
+     * Keuze-opties die al in minstens één meting voorkomen (niet verwijderbaar in beheer).
      *
      * @return list<string>
      */
     public function choiceOptionsWithMeasurements(): array
     {
-        if ($this->type !== EsgIndicatorType::Choice || ! $this->exists) {
+        if (! $this->exists || ! $this->type->usesOptionList()) {
             return [];
         }
 
-        return EsgMeasurement::query()
-            ->where('esg_indicator_id', $this->id)
-            ->whereNotNull('value_string')
-            ->distinct()
-            ->orderBy('value_string')
-            ->pluck('value_string')
-            ->map(fn (mixed $value): string => (string) $value)
-            ->all();
+        if ($this->type === EsgIndicatorType::Choice) {
+            return EsgMeasurement::query()
+                ->where('esg_indicator_id', $this->id)
+                ->whereNotNull('value_string')
+                ->distinct()
+                ->orderBy('value_string')
+                ->pluck('value_string')
+                ->map(fn (mixed $value): string => (string) $value)
+                ->all();
+        }
+
+        $inUse = [];
+        foreach ($this->measurements()->whereNotNull('value_json')->pluck('value_json') as $valueJson) {
+            if (! is_array($valueJson)) {
+                continue;
+            }
+
+            foreach ($valueJson as $item) {
+                if (is_string($item) || is_numeric($item)) {
+                    $trimmed = trim((string) $item);
+                    if ($trimmed !== '') {
+                        $inUse[$trimmed] = true;
+                    }
+                }
+            }
+        }
+
+        $options = array_keys($inUse);
+        sort($options);
+
+        return $options;
     }
 }

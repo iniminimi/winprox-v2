@@ -68,10 +68,10 @@ class IndicatorsIndex extends Component
         $this->thresholdMax = isset($indicator->thresholds['max'])
             ? (string) $indicator->thresholds['max']
             : null;
-        $this->choiceOptions = $indicator->type === EsgIndicatorType::Choice
+        $this->choiceOptions = $indicator->type->usesOptionList()
             ? ($indicator->normalizedChoiceOptions() !== [] ? $indicator->normalizedChoiceOptions() : ['', ''])
             : ['', ''];
-        $this->lockedChoiceOptions = $indicator->type === EsgIndicatorType::Choice
+        $this->lockedChoiceOptions = $indicator->type->usesOptionList()
             ? $indicator->choiceOptionsWithMeasurements()
             : [];
         $this->showModal = true;
@@ -116,7 +116,7 @@ class IndicatorsIndex extends Component
                 'unit_of_measure' => $validated['unitOfMeasure'] ?: null,
                 'threshold_min' => $validated['thresholdMin'],
                 'threshold_max' => $validated['thresholdMax'],
-                'choice_options' => $validated['type'] === EsgIndicatorType::Choice->value
+                'choice_options' => EsgIndicatorType::from($validated['type'])->usesOptionList()
                     ? $this->choiceOptions
                     : [],
             ], $existing);
@@ -180,7 +180,7 @@ class IndicatorsIndex extends Component
 
     public function updatedType(string $value): void
     {
-        if ($value === EsgIndicatorType::Choice->value && $this->choiceOptions === []) {
+        if (EsgIndicatorType::from($value)->usesOptionList() && $this->choiceOptions === []) {
             $this->choiceOptions = ['', ''];
         }
     }

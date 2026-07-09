@@ -60,6 +60,19 @@ class EsgIndicatorFactory extends Factory
     /**
      * @param  list<string>  $options
      */
+    public function multiChoice(array $options = ['Restafval', 'PMD', 'Papier']): static
+    {
+        return $this->state(fn () => [
+            'type' => EsgIndicatorType::MultiChoice,
+            'unit_of_measure' => null,
+            'thresholds' => null,
+            'options' => $options,
+        ]);
+    }
+
+    /**
+     * @param  list<string>  $options
+     */
     public function choice(array $options = ['Restafval', 'PMD', 'Papier']): static
     {
         return $this->state(fn () => [

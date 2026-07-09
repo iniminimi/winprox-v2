@@ -344,14 +344,15 @@ voor API-koppelingen (geen eindgebruiker-keuzelijst).
 
 - **`choice` wordt toegevoegd** als eerste ontbrekende eindgebruikerstype: `options` JSON op
   `esg_indicators`, meting in `value_string`, dropdown op unit-QR-portaal.
-- **`multi_choice` blijft uitgesteld** (aparte sprint na Choice).
+- **`multi_choice` is gebouwd** — zelfde `options` als Choice; meting in `value_json` als `string[]`;
+  checkbox-UI op unit-QR-portaal; validatie en rapportage.
 - **`json` blijft bestaan** naast Choice — niet deprecaten. Bestaande `json`-indicatoren en
   -metingen worden **niet** automatisch geconverteerd; wie een keuzelijst nodig heeft, maakt een
   nieuwe Choice-indicator aan.
 - **Geen datamigratie** voor bestaande `json`-rijen: kolom `options` is nullable; `json`-type
   blijft ongewijzigd werken.
 
-**Geïmplementeerde types (na Choice-sprint):** getal · ja/nee · **keuzelijst** · tekst · gekoppeld
+**Geïmplementeerde types (na Choice-sprint):** getal · ja/nee · keuzelijst · **meervoudige keuze** · tekst · gekoppeld
 systeem (json).
 
 **Choice-opties bewerken (§5b.6 #1 — afgerond):** optie met bestaande metingen is **niet
@@ -373,8 +374,7 @@ worden in rapportage getoond als `:waarde (niet meer in lijst)`.
 - Webhook `esg.measurement.recorded` bij elke nieuwe rij.
 
 ### 5b.5 Nog niet in scope (fase 2+)
-`GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen. Zie §5b.6 voor de
-geprioriteerde ESG-backlog (MultiChoice).
+`GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
 
 ### 5b.6 Openstaande ESG-werkzaamheden (geprioriteerd)
 
@@ -386,7 +386,7 @@ prioriteit.
 |---|-----------|--------|
 | ~~**1**~~ | ~~**Choice-opties bewerken**~~ | **Afgerond** — blokkeren bij metingen in gebruik; legacy-label in rapportage. |
 | ~~**2**~~ | ~~**Correctie-UI**~~ | **Afgerond** — backoffice `/esg/measurements`: Corrigeren-modal, append-only nieuwe rij, keten oorspronkelijk → correctie zichtbaar. |
-| **3** | **`multi_choice`-indicatortype** | Niet gebouwd. Enum + `options`, checkbox-UI op portaal, opslag (bv. `value_json` als `string[]`), validatie, rapportage. |
+| ~~**3**~~ | ~~**`multi_choice`-indicatortype**~~ | **Afgerond** — enum + `options`, checkbox-portaal, `value_json` als `string[]`, validatie, rapportage, optie-bescherming. |
 
 **Correcties:** append-only — een correctie is een **nieuwe** rij met
 `corrects_measurement_id`; de oorspronkelijke meting blijft ongewijzigd. Backoffice: knop

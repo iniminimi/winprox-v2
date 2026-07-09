@@ -30,6 +30,7 @@
         "numeric": "Getal",
         "boolean": "Ja/nee",
         "choice": "Keuzelijst",
+        "multi_choice": "Meervoudige keuze",
         "string": "Tekst",
         "json": "Gekoppeld systeem"
     },
@@ -72,6 +73,7 @@
         "options_min": "Voeg minstens twee verschillende opties toe.",
         "options_duplicate": "Elke optie mag maar één keer voorkomen.",
         "measurement_choice_invalid": "Kies een geldige optie uit de lijst.",
+        "measurement_multi_choice_invalid": "Kies alleen geldige opties uit de lijst.",
         "options_in_use": "Deze opties kunnen niet verwijderd worden omdat er al metingen mee zijn: :options."
     },
     "portal": {

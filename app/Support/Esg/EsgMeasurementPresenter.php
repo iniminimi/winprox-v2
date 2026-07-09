@@ -27,6 +27,7 @@ final class EsgMeasurementPresenter
                 : __('esg.portal.boolean_no'),
             EsgIndicatorType::String => (string) ($measurement->value_string ?? '—'),
             EsgIndicatorType::Choice => self::formatChoice($measurement, $indicator),
+            EsgIndicatorType::MultiChoice => self::formatMultiChoice($measurement, $indicator),
             EsgIndicatorType::Json => self::formatJson($measurement->value_json),
         };
     }
@@ -83,6 +84,32 @@ final class EsgMeasurementPresenter
         }
 
         return $value;
+    }
+
+    private static function formatMultiChoice(EsgMeasurement $measurement, ?EsgIndicator $indicator): string
+    {
+        $values = $measurement->value_json;
+        if (! is_array($values) || $values === []) {
+            return '—';
+        }
+
+        $options = $indicator?->normalizedChoiceOptions() ?? [];
+        $parts = [];
+
+        foreach ($values as $value) {
+            if (! is_string($value) && ! is_numeric($value)) {
+                continue;
+            }
+
+            $stringValue = (string) $value;
+            if ($options !== [] && ! in_array($stringValue, $options, true)) {
+                $parts[] = __('esg.measurements.legacy_choice_value', ['value' => $stringValue]);
+            } else {
+                $parts[] = $stringValue;
+            }
+        }
+
+        return $parts === [] ? '—' : implode(', ', $parts);
     }
 
     /**

@@ -82,6 +82,8 @@ class UnitPortal extends Component
     public ?bool $completingEsgValueBoolean = null;
     public string $completingEsgValueString = '';
     public string $completingEsgValueJson = '';
+    /** @var list<string> */
+    public array $completingEsgValueMultiChoice = [];
     public ?string $completingRecordedAt = null;
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
@@ -409,6 +411,7 @@ class UnitPortal extends Component
         $this->completingEsgValueBoolean = null;
         $this->completingEsgValueString = '';
         $this->completingEsgValueJson = '';
+        $this->completingEsgValueMultiChoice = [];
         $this->completingRecordedAt = null;
     }
 
@@ -652,6 +655,7 @@ class UnitPortal extends Component
                     'completingEsgValueBoolean' => $this->completingEsgValueBoolean,
                     'completingEsgValueString' => $this->completingEsgValueString,
                     'completingEsgValueJson' => $this->completingEsgValueJson,
+                    'completingEsgValueMultiChoice' => $this->completingEsgValueMultiChoice,
                 ],
             );
             $clientTimestamp = \Carbon\Carbon::parse((string) $this->completingRecordedAt);

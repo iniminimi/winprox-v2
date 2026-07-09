@@ -59,7 +59,7 @@ readonly class RecordEsgMeasurementData
             EsgIndicatorType::Numeric => $this->valueNumeric,
             EsgIndicatorType::Boolean => $this->valueBoolean,
             EsgIndicatorType::String, EsgIndicatorType::Choice => $this->valueString,
-            EsgIndicatorType::Json => $this->valueJson,
+            EsgIndicatorType::Json, EsgIndicatorType::MultiChoice => $this->valueJson,
         };
     }
 
@@ -79,7 +79,9 @@ readonly class RecordEsgMeasurementData
             'value_string' => $type === EsgIndicatorType::String || $type === EsgIndicatorType::Choice
                 ? $this->valueString
                 : null,
-            'value_json' => $type === EsgIndicatorType::Json ? $this->valueJson : null,
+            'value_json' => $type === EsgIndicatorType::Json || $type === EsgIndicatorType::MultiChoice
+                ? $this->valueJson
+                : null,
         ];
     }
 }

@@ -50,6 +50,9 @@ class MeasurementsIndex extends Component
 
     public string $correctionValueJson = '';
 
+    /** @var list<string> */
+    public array $correctionValueMultiChoice = [];
+
     public string $correctionRecordedAt = '';
 
     public function mount(): void
@@ -126,6 +129,7 @@ class MeasurementsIndex extends Component
             'correctionValueBoolean' => $this->correctionValueBoolean,
             'correctionValueString' => $this->correctionValueString,
             'correctionValueJson' => $this->correctionValueJson,
+            'correctionValueMultiChoice' => $this->correctionValueMultiChoice,
             'correctionRecordedAt' => $this->correctionRecordedAt,
         ]);
 
@@ -190,6 +194,7 @@ class MeasurementsIndex extends Component
         $this->correctionValueBoolean = null;
         $this->correctionValueString = '';
         $this->correctionValueJson = '';
+        $this->correctionValueMultiChoice = [];
         $this->correctionRecordedAt = '';
     }
 }

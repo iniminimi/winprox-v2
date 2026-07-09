@@ -74,7 +74,7 @@ class StoreEsgIndicatorRequest extends FormRequest
 
         $type = (string) $validated['type'];
         $options = null;
-        if ($type === EsgIndicatorType::Choice->value) {
+        if (EsgIndicatorType::from($type)->usesOptionList()) {
             $options = self::normalizeChoiceOptions($validated['choice_options'] ?? []);
             self::assertChoiceOptionsValid($options);
             if ($existing !== null) {
@@ -140,7 +140,7 @@ class StoreEsgIndicatorRequest extends FormRequest
      */
     public static function assertChoiceOptionsRespectMeasurements(EsgIndicator $indicator, array $newOptions): void
     {
-        if ($indicator->type !== EsgIndicatorType::Choice) {
+        if (! $indicator->type->usesOptionList()) {
             return;
         }
 
@@ -150,10 +150,7 @@ class StoreEsgIndicatorRequest extends FormRequest
                 continue;
             }
 
-            if (EsgMeasurement::query()
-                ->where('esg_indicator_id', $indicator->id)
-                ->where('value_string', $oldOption)
-                ->exists()) {
+            if ($indicator->optionValueInUse($oldOption)) {
                 $removedInUse[] = $oldOption;
             }
         }

@@ -118,6 +118,64 @@ class RecordEsgMeasurementRequest extends FormRequest
         if ($type === EsgIndicatorType::Choice) {
             self::assertChoiceValueAllowed((string) $validated['value_string'], $indicator);
         }
+
+        if ($type === EsgIndicatorType::MultiChoice) {
+            self::assertMultiChoiceValuesAllowed($validated['value_json'] ?? null, $indicator);
+        }
+    }
+
+    /**
+     * @param  list<mixed>|null  $value
+     */
+    private static function assertMultiChoiceValuesAllowed(?array $value, EsgIndicator $indicator): void
+    {
+        $normalized = self::normalizeMultiChoiceValues($value, $indicator);
+
+        if ($normalized === []) {
+            throw ValidationException::withMessages([
+                'value_json' => [__('esg.errors.measurement_value_required')],
+            ]);
+        }
+    }
+
+    /**
+     * @param  list<mixed>|null  $raw
+     * @return list<string>
+     */
+    public static function normalizeMultiChoiceValues(?array $raw, EsgIndicator $indicator): array
+    {
+        if ($raw === null) {
+            return [];
+        }
+
+        $options = $indicator->normalizedChoiceOptions();
+        $selected = [];
+
+        foreach ($raw as $item) {
+            if (! is_string($item) && ! is_numeric($item)) {
+                throw ValidationException::withMessages([
+                    'value_json' => [__('esg.errors.measurement_multi_choice_invalid')],
+                ]);
+            }
+
+            $trimmed = trim((string) $item);
+            if ($trimmed === '') {
+                continue;
+            }
+
+            if ($options === [] || ! in_array($trimmed, $options, true)) {
+                throw ValidationException::withMessages([
+                    'value_json' => [__('esg.errors.measurement_multi_choice_invalid')],
+                ]);
+            }
+
+            $selected[] = $trimmed;
+        }
+
+        $selected = array_values(array_unique($selected));
+        sort($selected);
+
+        return $selected;
     }
 
     private static function assertChoiceValueAllowed(string $value, EsgIndicator $indicator): void
@@ -135,6 +193,13 @@ class RecordEsgMeasurementRequest extends FormRequest
      */
     public static function toData(array $validated, EsgIndicator $indicator): RecordEsgMeasurementData
     {
+        if ($indicator->type === EsgIndicatorType::MultiChoice) {
+            $validated['value_json'] = self::normalizeMultiChoiceValues(
+                is_array($validated['value_json'] ?? null) ? $validated['value_json'] : null,
+                $indicator,
+            );
+        }
+
         self::assertValueMatchesIndicator($validated, $indicator);
 
         return RecordEsgMeasurementData::fromValidated($validated);
@@ -160,6 +225,10 @@ class RecordEsgMeasurementRequest extends FormRequest
             EsgIndicatorType::Numeric => ['completingEsgValueNumeric' => ['required', 'numeric']],
             EsgIndicatorType::Boolean => ['completingEsgValueBoolean' => ['required', 'boolean']],
             EsgIndicatorType::String, EsgIndicatorType::Choice => ['completingEsgValueString' => ['required', 'string', 'max:500']],
+            EsgIndicatorType::MultiChoice => [
+                'completingEsgValueMultiChoice' => ['required', 'array', 'min:1'],
+                'completingEsgValueMultiChoice.*' => ['string', 'max:500'],
+            ],
             EsgIndicatorType::Json => ['completingEsgValueJson' => ['required', 'string', 'json']],
         };
     }
@@ -173,6 +242,7 @@ class RecordEsgMeasurementRequest extends FormRequest
             EsgIndicatorType::Numeric => 'completingEsgValueNumeric',
             EsgIndicatorType::Boolean => 'completingEsgValueBoolean',
             EsgIndicatorType::String, EsgIndicatorType::Choice => 'completingEsgValueString',
+            EsgIndicatorType::MultiChoice => 'completingEsgValueMultiChoice',
             EsgIndicatorType::Json => 'completingEsgValueJson',
         };
 
@@ -180,11 +250,13 @@ class RecordEsgMeasurementRequest extends FormRequest
             'completingRecordedAt.required' => __('esg.errors.measurement_recorded_at_required'),
             'completingRecordedAt.date' => __('esg.errors.measurement_recorded_at_required'),
             "{$valueField}.required" => __('esg.errors.measurement_value_required'),
+            "{$valueField}.min" => __('esg.errors.measurement_value_required'),
             "{$valueField}.numeric" => __('esg.errors.measurement_value_wrong_type'),
             "{$valueField}.boolean" => __('esg.errors.measurement_value_wrong_type'),
             "{$valueField}.string" => __('esg.errors.measurement_value_wrong_type'),
             "{$valueField}.max" => __('esg.errors.measurement_value_wrong_type'),
             "{$valueField}.json" => __('esg.errors.measurement_value_wrong_type'),
+            'completingEsgValueMultiChoice.*.string' => __('esg.errors.measurement_multi_choice_invalid'),
         ];
     }
 
@@ -216,6 +288,15 @@ class RecordEsgMeasurementRequest extends FormRequest
             $jsonValue = is_array($decoded) ? $decoded : null;
         } else {
             $jsonValue = null;
+        }
+
+        if ($indicator->type === EsgIndicatorType::MultiChoice) {
+            $jsonValue = self::normalizeMultiChoiceValues(
+                is_array($portalInput['completingEsgValueMultiChoice'] ?? null)
+                    ? $portalInput['completingEsgValueMultiChoice']
+                    : null,
+                $indicator,
+            );
         }
 
         return self::toData([

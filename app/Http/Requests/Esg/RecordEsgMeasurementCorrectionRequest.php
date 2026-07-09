@@ -49,6 +49,10 @@ class RecordEsgMeasurementCorrectionRequest extends FormRequest
             EsgIndicatorType::Numeric => ['correctionValueNumeric' => ['required', 'numeric']],
             EsgIndicatorType::Boolean => ['correctionValueBoolean' => ['required', 'boolean']],
             EsgIndicatorType::String, EsgIndicatorType::Choice => ['correctionValueString' => ['required', 'string', 'max:500']],
+            EsgIndicatorType::MultiChoice => [
+                'correctionValueMultiChoice' => ['required', 'array', 'min:1'],
+                'correctionValueMultiChoice.*' => ['string', 'max:500'],
+            ],
             EsgIndicatorType::Json => ['correctionValueJson' => ['required', 'string', 'json']],
         };
     }
@@ -64,6 +68,8 @@ class RecordEsgMeasurementCorrectionRequest extends FormRequest
             'correctionValueNumeric.required' => __('esg.errors.measurement_value_required'),
             'correctionValueBoolean.required' => __('esg.errors.measurement_value_required'),
             'correctionValueString.required' => __('esg.errors.measurement_value_required'),
+            'correctionValueMultiChoice.required' => __('esg.errors.measurement_value_required'),
+            'correctionValueMultiChoice.min' => __('esg.errors.measurement_value_required'),
             'correctionValueJson.required' => __('esg.errors.measurement_value_required'),
             'correctionValueJson.json' => __('esg.errors.measurement_value_wrong_type'),
         ];
@@ -130,6 +136,19 @@ class RecordEsgMeasurementCorrectionRequest extends FormRequest
             $jsonValue = is_array($decoded) ? $decoded : null;
         } else {
             $jsonValue = null;
+        }
+
+        $indicator = $original->relationLoaded('indicator')
+            ? $original->indicator
+            : $original->indicator()->first();
+
+        if ($indicator?->type === EsgIndicatorType::MultiChoice) {
+            $jsonValue = RecordEsgMeasurementRequest::normalizeMultiChoiceValues(
+                is_array($input['correctionValueMultiChoice'] ?? null)
+                    ? $input['correctionValueMultiChoice']
+                    : null,
+                $indicator,
+            );
         }
 
         $valueBoolean = null;

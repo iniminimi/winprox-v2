@@ -8,6 +8,7 @@ enum EsgIndicatorType: string
     case Boolean = 'boolean';
     case String = 'string';
     case Choice = 'choice';
+    case MultiChoice = 'multi_choice';
     case Json = 'json';
 
     public function valueColumn(): string
@@ -16,7 +17,15 @@ enum EsgIndicatorType: string
             self::Numeric => 'value_numeric',
             self::Boolean => 'value_boolean',
             self::String, self::Choice => 'value_string',
-            self::Json => 'value_json',
+            self::MultiChoice, self::Json => 'value_json',
+        };
+    }
+
+    public function usesOptionList(): bool
+    {
+        return match ($this) {
+            self::Choice, self::MultiChoice => true,
+            default => false,
         };
     }
 }

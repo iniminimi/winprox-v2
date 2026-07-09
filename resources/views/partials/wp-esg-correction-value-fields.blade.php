@@ -30,6 +30,19 @@
         @endforeach
     </select>
     @error('correctionValueString') <p class="wp-form-error">{{ $message }}</p> @enderror
+@elseif ($indicator->type === \App\Enums\EsgIndicatorType::MultiChoice)
+    <p class="wp-label">{{ __('esg.measurements.correction_fields.value') }}</p>
+    <div class="wp-stack-tight">
+        @foreach ($indicator->normalizedChoiceOptions() as $option)
+            <label class="wp-cluster wp-cluster--tight" wire:key="esg-correction-multi-{{ $option }}">
+                <input type="checkbox"
+                       value="{{ $option }}"
+                       wire:model="correctionValueMultiChoice">
+                <span>{{ $option }}</span>
+            </label>
+        @endforeach
+    </div>
+    @error('correctionValueMultiChoice') <p class="wp-form-error">{{ $message }}</p> @enderror
 @elseif ($indicator->type === \App\Enums\EsgIndicatorType::String)
     <label class="wp-label" for="esg-correction-string">{{ __('esg.measurements.correction_fields.value') }}</label>
     <input id="esg-correction-string" type="text" class="wp-input" wire:model="correctionValueString">

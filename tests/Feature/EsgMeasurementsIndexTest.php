@@ -128,6 +128,18 @@ it('toont verouderde keuzewaarden in rapportage', function () {
         ->toBe(__('esg.measurements.legacy_choice_value', ['value' => 'PMD']));
 });
 
+it('formateert meervoudige keuzewaarden voor weergave', function () {
+    $indicator = EsgIndicator::factory()->multiChoice(['Restafval', 'Papier'])->make(['name' => 'Afval']);
+    $measurement = EsgMeasurement::factory()->make([
+        'value_json' => ['PMD', 'Papier'],
+        'esg_indicator_id' => 1,
+    ]);
+    $measurement->setRelation('indicator', $indicator);
+
+    expect(EsgMeasurementPresenter::displayValue($measurement))
+        ->toBe(__('esg.measurements.legacy_choice_value', ['value' => 'PMD']).', Papier');
+});
+
 it('toont setup-stappen zonder metingen', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

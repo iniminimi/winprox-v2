@@ -95,6 +95,27 @@ it('laat een admin een keuzelijst-indicator met opties beheren', function () {
         ->and($indicator->options)->toBe(['Restafval', 'PMD', 'Papier']);
 });
 
+it('laat een admin een meervoudige-keuze-indicator met opties beheren', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->call('openCreateModal')
+        ->set('name', 'Afvalstromen')
+        ->set('type', 'multi_choice')
+        ->set('choiceOptions', ['Restafval', 'PMD', 'Papier'])
+        ->call('save')
+        ->assertHasNoErrors()
+        ->assertSee('Afvalstromen');
+
+    $indicator = EsgIndicator::query()->where('tenant_id', $tenant->id)->first();
+
+    expect($indicator)->not->toBeNull()
+        ->and($indicator->type)->toBe(EsgIndicatorType::MultiChoice)
+        ->and($indicator->options)->toBe(['Restafval', 'PMD', 'Papier']);
+});
+
 it('weigert verwijderen van een keuze-optie die al in metingen voorkomt', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -119,6 +140,42 @@ it('weigert verwijderen van een keuze-optie die al in metingen voorkomt', functi
             esgIndicatorId: $indicator->id,
             recordedAt: now()->toImmutable(),
             valueString: 'PMD',
+        ),
+        $tenant->id,
+    );
+
+    Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->call('openEditModal', $indicator->id)
+        ->set('choiceOptions', ['Restafval', 'Papier'])
+        ->call('save')
+        ->assertHasErrors(['choiceOptions']);
+});
+
+it('weigert verwijderen van een meervoudige-keuze-optie die al in metingen voorkomt', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $indicator = EsgIndicator::factory()->multiChoice(['Restafval', 'PMD', 'Papier'])->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Afvalstromen',
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'esg_indicator_id' => $indicator->id,
+        'is_recurring' => true,
+    ]);
+    $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+    app(RecordEsgMeasurementAction::class)->handle(
+        new RecordEsgMeasurementData(
+            taskId: $task->id,
+            esgIndicatorId: $indicator->id,
+            recordedAt: now()->toImmutable(),
+            valueJson: ['PMD', 'Papier'],
         ),
         $tenant->id,
     );
