@@ -708,6 +708,11 @@
                     "text": "Voor een korte toelichting of opmerking bij een meting (bv. opmerking bij een afwijkende meterstand)."
                 },
                 {
+                    "label": "Keuzelijst",
+                    "nested": true,
+                    "text": "Voor een vaste set antwoorden (bv. afvalcategorie: Restafval, PMD, Papier). U definieert de opties bij het aanmaken van de indicator; medewerkers kiezen op het portaal uit een dropdown."
+                },
+                {
                     "label": "Gekoppeld systeem",
                     "nested": true,
                     "text": "Wanneer waarden automatisch uit een extern systeem komen (via de API). Niet bedoeld voor handmatige invoer door medewerkers op het QR-portaal."

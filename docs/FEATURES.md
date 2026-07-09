@@ -320,9 +320,39 @@ Zichtbaar in de sidebar zodra `has_esg_module` aan staat (superuser: Platform �
 admin**-accounts; medewerkers zien ESG niet.
 
 ### 5b.1 Indicatoren (`/esg/indicators`)
-- **Meetdefinitie:** naam, type (getal / ja-nee / tekst / JSON), optionele eenheid en min/max-drempels.
+- **Meetdefinitie:** naam, type, optionele eenheid (getal) en min/max-drempels (getal).
 - **Actief/inactief:** deactiveren i.p.v. verwijderen; bestaande metingen blijven.
 - **Lege staat:** genummerde stappen (module → indicator → terugkerende melding → portaal).
+
+#### 5b.1a Indicatortypes — ontwerp vs implementatie
+
+**Oorspronkelijk productontwerp (5 universele types):**
+
+| Type | Doel |
+|------|------|
+| Numeric | Meterstanden, tellingen |
+| Boolean | Ja/nee-controles |
+| Choice | Eén keuze uit vooraf gedefinieerde opties (bv. afvalcategorie) |
+| MultiChoice | Meerdere keuzes uit dezelfde optielijst |
+| Text | Vrije korte tekst |
+
+**Sprint 1 datalaag (gebouwd):** `numeric`, `boolean`, `string`, `json` — geen `choice` /
+`multi_choice`, geen `options`-kolom op indicatoren. `string` ≈ Text; `json` = technisch type
+voor API-koppelingen (geen eindgebruiker-keuzelijst).
+
+**Beslissing (juli 2026):**
+
+- **`choice` wordt toegevoegd** als eerste ontbrekende eindgebruikerstype: `options` JSON op
+  `esg_indicators`, meting in `value_string`, dropdown op unit-QR-portaal.
+- **`multi_choice` blijft uitgesteld** (aparte sprint na Choice).
+- **`json` blijft bestaan** naast Choice — niet deprecaten. Bestaande `json`-indicatoren en
+  -metingen worden **niet** automatisch geconverteerd; wie een keuzelijst nodig heeft, maakt een
+  nieuwe Choice-indicator aan.
+- **Geen datamigratie** voor bestaande `json`-rijen: kolom `options` is nullable; `json`-type
+  blijft ongewijzigd werken.
+
+**Geïmplementeerde types (na Choice-sprint):** getal · ja/nee · **keuzelijst** · tekst · gekoppeld
+systeem (json).
 
 ### 5b.2 Terugkerende melding + indicator
 - Bij **nieuwe terugkerende melding** (stap 1): unit verplicht + keuze **ESG-indicator** (alleen actieve).
@@ -339,7 +369,16 @@ admin**-accounts; medewerkers zien ESG niet.
 - Webhook `esg.measurement.recorded` bij elke nieuwe rij.
 
 ### 5b.5 Nog niet in scope (fase 2+)
-Correctie-UI, `GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
+`multi_choice`, `GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
+
+### 5b.6 Architectuur klaar, UI ontbreekt
+
+| Onderdeel | Datalaag / Action | Backoffice-UI |
+|-----------|-------------------|---------------|
+| **Meting corrigeren** | `corrects_measurement_id` op `esg_measurements`; `RecordEsgMeasurementAction` + API-veld; audit + webhook | Geen scherm om een correctie te registreren of te bekijken — apart te plannen |
+
+Correcties zijn **append-only**: een correctie is een nieuwe rij die naar de oorspronkelijke meting
+verwijst; de oorspronkelijke rij blijft ongewijzigd.
 
 ---
 

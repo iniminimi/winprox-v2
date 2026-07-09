@@ -25,7 +25,7 @@ Record ESG/compliance readings linked to tasks and indicators. Measurements are 
 | `recorded_at` | string (ISO 8601) | Yes | When the reading was taken (client time) |
 | `value_numeric` | number | Conditional | Required for numeric indicators |
 | `value_boolean` | boolean | Conditional | Required for boolean indicators |
-| `value_string` | string | Conditional | Required for string indicators (max 500) |
+| `value_string` | string | Conditional | Required for text and **choice** indicators (choice must match a defined option) |
 | `value_json` | object | Conditional | Required for JSON indicators |
 | `worker_id` | integer | No | Worker who took the reading |
 | `corrects_measurement_id` | integer | No | ID of measurement being corrected (future use) |

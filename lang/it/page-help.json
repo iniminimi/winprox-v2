@@ -708,6 +708,11 @@
                     "text": "Per una breve nota o osservazione con una misurazione (es. commento su una lettura insolita)."
                 },
                 {
+                    "label": "Elenco scelte",
+                    "nested": true,
+                    "text": "Per un insieme fisso di risposte (es. categoria rifiuti: Indifferenziato, Plastica, Carta). Definisce le opzioni alla creazione dell’indicatore; i collaboratori scelgono da un menu a tendina sul portale."
+                },
+                {
                     "label": "Sistema collegato",
                     "nested": true,
                     "text": "Quando i valori arrivano automaticamente da un sistema esterno (via API). Non pensato per inserimento manuale dai collaboratori sul portale QR."

@@ -708,6 +708,11 @@
                     "text": "Para una breve observación o comentario con una lectura (p. ej. nota sobre una lectura inusual del contador)."
                 },
                 {
+                    "label": "Lista de opciones",
+                    "nested": true,
+                    "text": "Para un conjunto fijo de respuestas (p. ej. categoría de residuos: Resto, Envases, Papel). Define las opciones al crear el indicador; los trabajadores eligen en un desplegable del portal."
+                },
+                {
                     "label": "Sistema conectado",
                     "nested": true,
                     "text": "Cuando los valores llegan automáticamente de un sistema externo (vía API). No está pensado para entrada manual por trabajadores en el portal QR."

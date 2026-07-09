@@ -10,6 +10,7 @@ use App\Http\Requests\Esg\StoreEsgIndicatorRequest;
 use App\Models\EsgIndicator;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -33,6 +34,9 @@ class IndicatorsIndex extends Component
     public ?string $thresholdMin = null;
 
     public ?string $thresholdMax = null;
+
+    /** @var list<string> */
+    public array $choiceOptions = ['', ''];
 
     public function mount(): void
     {
@@ -61,6 +65,9 @@ class IndicatorsIndex extends Component
         $this->thresholdMax = isset($indicator->thresholds['max'])
             ? (string) $indicator->thresholds['max']
             : null;
+        $this->choiceOptions = $indicator->type === EsgIndicatorType::Choice
+            ? ($indicator->normalizedChoiceOptions() !== [] ? $indicator->normalizedChoiceOptions() : ['', ''])
+            : ['', ''];
         $this->showModal = true;
     }
 
@@ -92,13 +99,26 @@ class IndicatorsIndex extends Component
             'type.required' => __('esg.errors.type_required'),
         ]);
 
-        $payload = StoreEsgIndicatorRequest::toActionPayload([
-            'name' => $validated['name'],
-            'type' => $validated['type'],
-            'unit_of_measure' => $validated['unitOfMeasure'] ?: null,
-            'threshold_min' => $validated['thresholdMin'],
-            'threshold_max' => $validated['thresholdMax'],
-        ]);
+        try {
+            $payload = StoreEsgIndicatorRequest::toActionPayload([
+                'name' => $validated['name'],
+                'type' => $validated['type'],
+                'unit_of_measure' => $validated['unitOfMeasure'] ?: null,
+                'threshold_min' => $validated['thresholdMin'],
+                'threshold_max' => $validated['thresholdMax'],
+                'choice_options' => $validated['type'] === EsgIndicatorType::Choice->value
+                    ? $this->choiceOptions
+                    : [],
+            ]);
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($field, $message);
+                }
+            }
+
+            return;
+        }
 
         if ($this->editingIndicatorId === null) {
             $this->authorize('create', EsgIndicator::class);
@@ -128,6 +148,28 @@ class IndicatorsIndex extends Component
         );
     }
 
+    public function addChoiceOption(): void
+    {
+        $this->choiceOptions[] = '';
+    }
+
+    public function removeChoiceOption(int $index): void
+    {
+        if (count($this->choiceOptions) <= 2) {
+            return;
+        }
+
+        unset($this->choiceOptions[$index]);
+        $this->choiceOptions = array_values($this->choiceOptions);
+    }
+
+    public function updatedType(string $value): void
+    {
+        if ($value === EsgIndicatorType::Choice->value && $this->choiceOptions === []) {
+            $this->choiceOptions = ['', ''];
+        }
+    }
+
     public function render()
     {
         return view('livewire.esg.indicators-index', [
@@ -144,5 +186,6 @@ class IndicatorsIndex extends Component
         $this->unitOfMeasure = '';
         $this->thresholdMin = null;
         $this->thresholdMax = null;
+        $this->choiceOptions = ['', ''];
     }
 }

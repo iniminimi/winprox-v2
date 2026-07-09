@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\EsgIndicatorType;
 use App\Livewire\Esg\IndicatorsIndex;
 use App\Models\EsgIndicator;
 use App\Models\Tenant;
@@ -65,6 +66,27 @@ it('deactiveert een indicator zonder hard delete', function () {
 
     expect($indicator->fresh()->is_active)->toBeFalse()
         ->and(EsgIndicator::query()->whereKey($indicator->id)->exists())->toBeTrue();
+});
+
+it('laat een admin een keuzelijst-indicator met opties beheren', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->call('openCreateModal')
+        ->set('name', 'Afvalcategorie')
+        ->set('type', 'choice')
+        ->set('choiceOptions', ['Restafval', 'PMD', 'Papier'])
+        ->call('save')
+        ->assertHasNoErrors()
+        ->assertSee('Afvalcategorie');
+
+    $indicator = EsgIndicator::query()->where('tenant_id', $tenant->id)->first();
+
+    expect($indicator)->not->toBeNull()
+        ->and($indicator->type)->toBe(EsgIndicatorType::Choice)
+        ->and($indicator->options)->toBe(['Restafval', 'PMD', 'Papier']);
 });
 
 it('isoleert indicatoren per tenant', function () {

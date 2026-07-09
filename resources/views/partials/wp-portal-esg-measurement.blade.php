@@ -33,6 +33,14 @@
                    wire:model="completingEsgValueString"
                    placeholder="{{ __('esg.portal.string_placeholder') }}">
             @error('completingEsgValueString') <p class="wp-error">{{ $message }}</p> @enderror
+        @elseif ($indicator->type === \App\Enums\EsgIndicatorType::Choice)
+            <select id="esg-value-{{ $task->id }}" class="wp-select" wire:model="completingEsgValueString">
+                <option value="">{{ __('esg.portal.choice_choose') }}</option>
+                @foreach ($indicator->normalizedChoiceOptions() as $option)
+                    <option value="{{ $option }}">{{ $option }}</option>
+                @endforeach
+            </select>
+            @error('completingEsgValueString') <p class="wp-error">{{ $message }}</p> @enderror
         @elseif ($indicator->type === \App\Enums\EsgIndicatorType::Json)
             <textarea id="esg-value-{{ $task->id }}"
                       class="wp-textarea"

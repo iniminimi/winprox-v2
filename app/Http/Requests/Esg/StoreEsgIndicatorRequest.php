@@ -63,21 +63,71 @@ class StoreEsgIndicatorRequest extends FormRequest
     }
 
     /**
-     * @param  array{name: string, type: string, unit_of_measure?: ?string, threshold_min?: mixed, threshold_max?: mixed}  $validated
-     * @return array{name: string, type: string, unit_of_measure: ?string, thresholds: ?array{min?: float, max?: float}}
+     * @param  array{name: string, type: string, unit_of_measure?: ?string, threshold_min?: mixed, threshold_max?: mixed, choice_options?: list<string>}  $validated
+     * @return array{name: string, type: string, unit_of_measure: ?string, thresholds: ?array{min?: float, max?: float}, options: ?list<string>}
      */
     public static function toActionPayload(array $validated): array
     {
         self::assertThresholdRange($validated);
 
+        $type = (string) $validated['type'];
+        $options = null;
+        if ($type === EsgIndicatorType::Choice->value) {
+            $options = self::normalizeChoiceOptions($validated['choice_options'] ?? []);
+            self::assertChoiceOptionsValid($options);
+        }
+
+        $unitOfMeasure = null;
+        $thresholds = null;
+        if ($type === EsgIndicatorType::Numeric->value) {
+            $unitOfMeasure = filled($validated['unit_of_measure'] ?? null)
+                ? trim((string) $validated['unit_of_measure'])
+                : null;
+            $thresholds = self::thresholdsFromValidated($validated);
+        }
+
         return [
             'name' => trim($validated['name']),
-            'type' => $validated['type'],
-            'unit_of_measure' => filled($validated['unit_of_measure'] ?? null)
-                ? trim((string) $validated['unit_of_measure'])
-                : null,
-            'thresholds' => self::thresholdsFromValidated($validated),
+            'type' => $type,
+            'unit_of_measure' => $unitOfMeasure,
+            'thresholds' => $thresholds,
+            'options' => $options,
         ];
+    }
+
+    /**
+     * @param  list<mixed>  $raw
+     * @return list<string>
+     */
+    public static function normalizeChoiceOptions(array $raw): array
+    {
+        $options = [];
+        foreach ($raw as $option) {
+            $trimmed = trim((string) $option);
+            if ($trimmed !== '') {
+                $options[] = $trimmed;
+            }
+        }
+
+        return array_values($options);
+    }
+
+    /**
+     * @param  list<string>  $options
+     */
+    public static function assertChoiceOptionsValid(array $options): void
+    {
+        if (count($options) < 2) {
+            throw ValidationException::withMessages([
+                'choiceOptions' => [__('esg.errors.options_min')],
+            ]);
+        }
+
+        if (count($options) !== count(array_unique($options))) {
+            throw ValidationException::withMessages([
+                'choiceOptions' => [__('esg.errors.options_duplicate')],
+            ]);
+        }
     }
 
     /**

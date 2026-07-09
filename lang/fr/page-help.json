@@ -708,6 +708,11 @@
                     "text": "Pour une courte remarque ou observation liée à une mesure (p. ex. commentaire sur un index inhabituel)."
                 },
                 {
+                    "label": "Liste de choix",
+                    "nested": true,
+                    "text": "Pour un ensemble fixe de réponses (p. ex. catégorie de déchets : Ordures résiduelles, PMC, Papier). Vous définissez les options à la création de l’indicateur ; les collaborateurs choisissent dans une liste déroulante sur le portail."
+                },
+                {
                     "label": "Système connecté",
                     "nested": true,
                     "text": "Lorsque les valeurs arrivent automatiquement d’un système externe (via l’API). Non prévu pour une saisie manuelle par les collaborateurs sur le portail QR."

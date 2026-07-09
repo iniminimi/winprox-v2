@@ -53,6 +53,20 @@ class EsgIndicatorFactory extends Factory
         return $this->state(fn () => [
             'type' => EsgIndicatorType::Json,
             'unit_of_measure' => null,
+            'options' => null,
+        ]);
+    }
+
+    /**
+     * @param  list<string>  $options
+     */
+    public function choice(array $options = ['Restafval', 'PMD', 'Papier']): static
+    {
+        return $this->state(fn () => [
+            'type' => EsgIndicatorType::Choice,
+            'unit_of_measure' => null,
+            'thresholds' => null,
+            'options' => $options,
         ]);
     }
 }

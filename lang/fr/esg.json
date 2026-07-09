@@ -21,13 +21,16 @@
         "type": "Type",
         "unit_of_measure": "Unité",
         "threshold_min": "Minimum",
-        "threshold_max": "Maximum"
+        "threshold_max": "Maximum",
+        "choice_options": "Options de choix",
+        "choice_option_placeholder": "Option"
     },
     "types": {
         "numeric": "Nombre",
         "boolean": "Oui/non",
+        "choice": "Liste de choix",
         "string": "Texte",
-        "json": "JSON"
+        "json": "Système connecté"
     },
     "status": {
         "active": "Actif",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Désactiver",
-        "activate": "Activer"
+        "activate": "Activer",
+        "add_option": "+ Ajouter une option",
+        "remove_option": "Supprimer"
     },
     "flash": {
         "created": "Indicateur créé.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Collaborateur introuvable.",
         "measurement_correction_invalid": "Mesure à corriger introuvable.",
         "measurement_correction_mismatch": "La correction n'appartient pas à cette tâche ou cet indicateur.",
-        "measurement_recorded_at_required": "L'horodatage de la mesure est manquant ou invalide."
+        "measurement_recorded_at_required": "L'horodatage de la mesure est manquant ou invalide.",
+        "options_min": "Ajoutez au moins deux options différentes.",
+        "options_duplicate": "Chaque option ne peut apparaître qu'une fois.",
+        "measurement_choice_invalid": "Choisissez une option valide dans la liste."
     },
     "portal": {
         "measurement_label": "Mesure : :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Oui",
         "boolean_no": "Non",
         "string_placeholder": "Valeur",
+        "choice_choose": "Choisir…",
         "json_placeholder": "{\"clé\": \"valeur\"}"
     },
     "nav": {

@@ -36,6 +36,7 @@ function esgMeasurementFixture(EsgIndicatorType $type = EsgIndicatorType::Numeri
         EsgIndicatorType::Numeric => EsgIndicator::factory()->numeric()->create(['tenant_id' => $tenant->id]),
         EsgIndicatorType::Boolean => EsgIndicator::factory()->boolean()->create(['tenant_id' => $tenant->id]),
         EsgIndicatorType::String => EsgIndicator::factory()->string()->create(['tenant_id' => $tenant->id]),
+        EsgIndicatorType::Choice => EsgIndicator::factory()->choice(['Restafval', 'PMD', 'Papier'])->create(['tenant_id' => $tenant->id]),
         EsgIndicatorType::Json => EsgIndicator::factory()->json()->create(['tenant_id' => $tenant->id]),
     };
     $issue = Issue::factory()->create([
@@ -107,8 +108,22 @@ it('ondersteunt boolean-, tekst- en json-indicatoren', function (EsgIndicatorTyp
     'boolean true' => [EsgIndicatorType::Boolean, ['value_boolean' => true], true],
     'boolean false' => [EsgIndicatorType::Boolean, ['value_boolean' => false], false],
     'string' => [EsgIndicatorType::String, ['value_string' => 'OK'], 'OK'],
+    'choice' => [EsgIndicatorType::Choice, ['value_string' => 'PMD'], 'PMD'],
     'json' => [EsgIndicatorType::Json, ['value_json' => ['reading' => 12.3]], ['reading' => 12.3]],
 ]);
+
+it('weigert een keuzewaarde buiten de opties', function () {
+    $fixture = esgMeasurementFixture(EsgIndicatorType::Choice);
+    $validated = [
+        'task_id' => $fixture['task']->id,
+        'esg_indicator_id' => $fixture['indicator']->id,
+        'recorded_at' => now()->toIso8601String(),
+        'value_string' => 'Chemisch afval',
+    ];
+
+    expect(fn () => RecordEsgMeasurementRequest::assertValueMatchesIndicator($validated, $fixture['indicator']))
+        ->toThrow(ValidationException::class);
+});
 
 it('weigert meerdere of verkeerde waardekolommen', function () {
     $fixture = esgMeasurementFixture();

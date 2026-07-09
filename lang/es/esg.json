@@ -21,13 +21,16 @@
         "type": "Tipo",
         "unit_of_measure": "Unidad",
         "threshold_min": "Mínimo",
-        "threshold_max": "Máximo"
+        "threshold_max": "Máximo",
+        "choice_options": "Opciones de elección",
+        "choice_option_placeholder": "Opción"
     },
     "types": {
         "numeric": "Número",
         "boolean": "Sí/no",
+        "choice": "Lista de opciones",
         "string": "Texto",
-        "json": "JSON"
+        "json": "Sistema conectado"
     },
     "status": {
         "active": "Activo",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Desactivar",
-        "activate": "Activar"
+        "activate": "Activar",
+        "add_option": "+ Añadir opción",
+        "remove_option": "Eliminar"
     },
     "flash": {
         "created": "Indicador creado.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Trabajador no encontrado.",
         "measurement_correction_invalid": "Medición a corregir no encontrada.",
         "measurement_correction_mismatch": "La corrección no pertenece a esta tarea o indicador.",
-        "measurement_recorded_at_required": "Falta la marca de tiempo de la medición o no es válida."
+        "measurement_recorded_at_required": "Falta la marca de tiempo de la medición o no es válida.",
+        "options_min": "Añada al menos dos opciones diferentes.",
+        "options_duplicate": "Cada opción solo puede aparecer una vez.",
+        "measurement_choice_invalid": "Elija una opción válida de la lista."
     },
     "portal": {
         "measurement_label": "Medición: :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Sí",
         "boolean_no": "No",
         "string_placeholder": "Valor",
+        "choice_choose": "Elegir…",
         "json_placeholder": "{\"clave\": \"valor\"}"
     },
     "nav": {

@@ -708,6 +708,11 @@
                     "text": "For a short note or comment with a reading (e.g. a remark about an unusual meter value)."
                 },
                 {
+                    "label": "Choice list",
+                    "nested": true,
+                    "text": "For a fixed set of answers (e.g. waste category: General waste, PMD, Paper). You define the options when creating the indicator; workers choose from a dropdown on the portal."
+                },
+                {
                     "label": "Linked system",
                     "nested": true,
                     "text": "When values come in automatically from an external system (via the API). Not intended for manual entry by workers on the QR portal."

@@ -21,13 +21,16 @@
         "type": "Type",
         "unit_of_measure": "Unit",
         "threshold_min": "Minimum",
-        "threshold_max": "Maximum"
+        "threshold_max": "Maximum",
+        "choice_options": "Choices",
+        "choice_option_placeholder": "Option"
     },
     "types": {
         "numeric": "Number",
         "boolean": "Yes/no",
+        "choice": "Choice list",
         "string": "Text",
-        "json": "JSON"
+        "json": "Linked system"
     },
     "status": {
         "active": "Active",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Deactivate",
-        "activate": "Activate"
+        "activate": "Activate",
+        "add_option": "+ Add option",
+        "remove_option": "Remove"
     },
     "flash": {
         "created": "Indicator created.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Worker not found.",
         "measurement_correction_invalid": "Measurement to correct not found.",
         "measurement_correction_mismatch": "Correction does not belong to this task or indicator.",
-        "measurement_recorded_at_required": "Measurement timestamp is missing or invalid."
+        "measurement_recorded_at_required": "Measurement timestamp is missing or invalid.",
+        "options_min": "Add at least two different options.",
+        "options_duplicate": "Each option may only appear once.",
+        "measurement_choice_invalid": "Choose a valid option from the list."
     },
     "portal": {
         "measurement_label": "Reading: :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Yes",
         "boolean_no": "No",
         "string_placeholder": "Value",
+        "choice_choose": "Choose…",
         "json_placeholder": "{\"key\": \"value\"}"
     },
     "nav": {

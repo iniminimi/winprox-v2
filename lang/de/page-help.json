@@ -708,6 +708,11 @@
                     "text": "Für eine kurze Anmerkung bei einer Messung (z. B. Hinweis auf einen ungewöhnlichen Zählerstand)."
                 },
                 {
+                    "label": "Auswahlliste",
+                    "nested": true,
+                    "text": "Für eine feste Antwortmenge (z. B. Abfallkategorie: Restmüll, PMD, Papier). Sie definieren die Optionen beim Anlegen des Indikators; Mitarbeiter wählen im Portal aus einer Dropdown-Liste."
+                },
+                {
                     "label": "Gekoppeltes System",
                     "nested": true,
                     "text": "Wenn Werte automatisch aus einem externen System kommen (über die API). Nicht für manuelle Eingabe durch Mitarbeiter im QR-Portal gedacht."

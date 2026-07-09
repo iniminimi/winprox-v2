@@ -21,13 +21,16 @@
         "type": "Type",
         "unit_of_measure": "Eenheid",
         "threshold_min": "Minimum",
-        "threshold_max": "Maximum"
+        "threshold_max": "Maximum",
+        "choice_options": "Keuzemogelijkheden",
+        "choice_option_placeholder": "Optie"
     },
     "types": {
         "numeric": "Getal",
         "boolean": "Ja/nee",
+        "choice": "Keuzelijst",
         "string": "Tekst",
-        "json": "JSON"
+        "json": "Gekoppeld systeem"
     },
     "status": {
         "active": "Actief",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Deactiveren",
-        "activate": "Activeren"
+        "activate": "Activeren",
+        "add_option": "+ Optie toevoegen",
+        "remove_option": "Verwijderen"
     },
     "flash": {
         "created": "Indicator aangemaakt.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Medewerker niet gevonden.",
         "measurement_correction_invalid": "Te corrigeren meting niet gevonden.",
         "measurement_correction_mismatch": "Correctie hoort niet bij deze taak of indicator.",
-        "measurement_recorded_at_required": "Tijdstip van meting ontbreekt of is ongeldig."
+        "measurement_recorded_at_required": "Tijdstip van meting ontbreekt of is ongeldig.",
+        "options_min": "Voeg minstens twee verschillende opties toe.",
+        "options_duplicate": "Elke optie mag maar één keer voorkomen.",
+        "measurement_choice_invalid": "Kies een geldige optie uit de lijst."
     },
     "portal": {
         "measurement_label": "Meting: :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Ja",
         "boolean_no": "Nee",
         "string_placeholder": "Waarde",
+        "choice_choose": "Kies…",
         "json_placeholder": "{\"sleutel\": \"waarde\"}"
     },
     "nav": {

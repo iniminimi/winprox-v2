@@ -90,9 +90,35 @@
                     </div>
                 @endif
 
+                @if ($type === 'choice')
+                    <div class="wp-stack-tight">
+                        <p class="wp-label">{{ __('esg.fields.choice_options') }}</p>
+                        @foreach ($choiceOptions as $index => $choiceOption)
+                            <div class="wp-cluster wp-cluster--tight" wire:key="esg-choice-option-{{ $index }}">
+                                <input type="text"
+                                       class="wp-input wp-field--grow"
+                                       wire:model="choiceOptions.{{ $index }}"
+                                       placeholder="{{ __('esg.fields.choice_option_placeholder') }}"
+                                       autocomplete="off">
+                                @if (count($choiceOptions) > 2)
+                                    <button type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="removeChoiceOption({{ $index }})">
+                                        {{ __('esg.actions.remove_option') }}
+                                    </button>
+                                @endif
+                            </div>
+                        @endforeach
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="addChoiceOption">
+                            {{ __('esg.actions.add_option') }}
+                        </button>
+                    </div>
+                @endif
+
                 @error('name') <p class="wp-form-error">{{ $message }}</p> @enderror
                 @error('type') <p class="wp-form-error">{{ $message }}</p> @enderror
                 @error('thresholdMax') <p class="wp-form-error">{{ $message }}</p> @enderror
+                @error('choiceOptions') <p class="wp-form-error">{{ $message }}</p> @enderror
 
                 <div class="wp-cluster wp-cluster--end">
                     <button type="button" class="btn btn--ghost" wire:click="closeModal">

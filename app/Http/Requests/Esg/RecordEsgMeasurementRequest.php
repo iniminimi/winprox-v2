@@ -114,6 +114,20 @@ class RecordEsgMeasurementRequest extends FormRequest
                 $providedColumns[0] => [__('esg.errors.measurement_value_wrong_type')],
             ]);
         }
+
+        if ($type === EsgIndicatorType::Choice) {
+            self::assertChoiceValueAllowed((string) $validated['value_string'], $indicator);
+        }
+    }
+
+    private static function assertChoiceValueAllowed(string $value, EsgIndicator $indicator): void
+    {
+        $options = $indicator->normalizedChoiceOptions();
+        if ($options === [] || ! in_array($value, $options, true)) {
+            throw ValidationException::withMessages([
+                'value_string' => [__('esg.errors.measurement_choice_invalid')],
+            ]);
+        }
     }
 
     /**
@@ -145,7 +159,7 @@ class RecordEsgMeasurementRequest extends FormRequest
         return match ($type) {
             EsgIndicatorType::Numeric => ['completingEsgValueNumeric' => ['required', 'numeric']],
             EsgIndicatorType::Boolean => ['completingEsgValueBoolean' => ['required', 'boolean']],
-            EsgIndicatorType::String => ['completingEsgValueString' => ['required', 'string', 'max:500']],
+            EsgIndicatorType::String, EsgIndicatorType::Choice => ['completingEsgValueString' => ['required', 'string', 'max:500']],
             EsgIndicatorType::Json => ['completingEsgValueJson' => ['required', 'string', 'json']],
         };
     }
@@ -158,7 +172,7 @@ class RecordEsgMeasurementRequest extends FormRequest
         $valueField = match ($type) {
             EsgIndicatorType::Numeric => 'completingEsgValueNumeric',
             EsgIndicatorType::Boolean => 'completingEsgValueBoolean',
-            EsgIndicatorType::String => 'completingEsgValueString',
+            EsgIndicatorType::String, EsgIndicatorType::Choice => 'completingEsgValueString',
             EsgIndicatorType::Json => 'completingEsgValueJson',
         };
 

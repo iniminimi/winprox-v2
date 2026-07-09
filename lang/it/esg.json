@@ -21,13 +21,16 @@
         "type": "Tipo",
         "unit_of_measure": "Unità",
         "threshold_min": "Minimo",
-        "threshold_max": "Massimo"
+        "threshold_max": "Massimo",
+        "choice_options": "Opzioni di scelta",
+        "choice_option_placeholder": "Opzione"
     },
     "types": {
         "numeric": "Numero",
         "boolean": "Sì/no",
+        "choice": "Elenco scelte",
         "string": "Testo",
-        "json": "JSON"
+        "json": "Sistema collegato"
     },
     "status": {
         "active": "Attivo",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Disattiva",
-        "activate": "Attiva"
+        "activate": "Attiva",
+        "add_option": "+ Aggiungi opzione",
+        "remove_option": "Rimuovi"
     },
     "flash": {
         "created": "Indicatore creato.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Operatore non trovato.",
         "measurement_correction_invalid": "Misurazione da correggere non trovata.",
         "measurement_correction_mismatch": "La correzione non appartiene a questa attività o indicatore.",
-        "measurement_recorded_at_required": "Timestamp della misurazione mancante o non valido."
+        "measurement_recorded_at_required": "Timestamp della misurazione mancante o non valido.",
+        "options_min": "Aggiunga almeno due opzioni diverse.",
+        "options_duplicate": "Ogni opzione può comparire una sola volta.",
+        "measurement_choice_invalid": "Scelga un'opzione valida dall'elenco."
     },
     "portal": {
         "measurement_label": "Misurazione: :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Sì",
         "boolean_no": "No",
         "string_placeholder": "Valore",
+        "choice_choose": "Scelga…",
         "json_placeholder": "{\"chiave\": \"valore\"}"
     },
     "nav": {

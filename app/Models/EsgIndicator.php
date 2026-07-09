@@ -19,12 +19,14 @@ class EsgIndicator extends Model
         'unit_of_measure',
         'is_active',
         'thresholds',
+        'options',
     ];
 
     protected $casts = [
         'type' => EsgIndicatorType::class,
         'is_active' => 'boolean',
         'thresholds' => 'array',
+        'options' => 'array',
     ];
 
     public function measurements(): HasMany
@@ -35,5 +37,29 @@ class EsgIndicator extends Model
     public function issues(): HasMany
     {
         return $this->hasMany(Issue::class);
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function normalizedChoiceOptions(): array
+    {
+        if ($this->type !== EsgIndicatorType::Choice || ! is_array($this->options)) {
+            return [];
+        }
+
+        $options = [];
+        foreach ($this->options as $option) {
+            if (! is_string($option) && ! is_numeric($option)) {
+                continue;
+            }
+
+            $trimmed = trim((string) $option);
+            if ($trimmed !== '') {
+                $options[] = $trimmed;
+            }
+        }
+
+        return $options;
     }
 }

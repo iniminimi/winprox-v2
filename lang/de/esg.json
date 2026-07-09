@@ -21,13 +21,16 @@
         "type": "Typ",
         "unit_of_measure": "Einheit",
         "threshold_min": "Minimum",
-        "threshold_max": "Maximum"
+        "threshold_max": "Maximum",
+        "choice_options": "Auswahloptionen",
+        "choice_option_placeholder": "Option"
     },
     "types": {
         "numeric": "Zahl",
         "boolean": "Ja/Nein",
+        "choice": "Auswahlliste",
         "string": "Text",
-        "json": "JSON"
+        "json": "Gekoppeltes System"
     },
     "status": {
         "active": "Aktiv",
@@ -35,7 +38,9 @@
     },
     "actions": {
         "deactivate": "Deaktivieren",
-        "activate": "Aktivieren"
+        "activate": "Aktivieren",
+        "add_option": "+ Option hinzufügen",
+        "remove_option": "Entfernen"
     },
     "flash": {
         "created": "Indikator angelegt.",
@@ -60,7 +65,10 @@
         "measurement_worker_invalid": "Mitarbeiter nicht gefunden.",
         "measurement_correction_invalid": "Zu korrigierende Messung nicht gefunden.",
         "measurement_correction_mismatch": "Korrektur gehört nicht zu dieser Aufgabe oder diesem Indikator.",
-        "measurement_recorded_at_required": "Zeitstempel der Messung fehlt oder ist ungültig."
+        "measurement_recorded_at_required": "Zeitstempel der Messung fehlt oder ist ungültig.",
+        "options_min": "Fügen Sie mindestens zwei verschiedene Optionen hinzu.",
+        "options_duplicate": "Jede Option darf nur einmal vorkommen.",
+        "measurement_choice_invalid": "Wählen Sie eine gültige Option aus der Liste."
     },
     "portal": {
         "measurement_label": "Messung: :name",
@@ -69,6 +77,7 @@
         "boolean_yes": "Ja",
         "boolean_no": "Nein",
         "string_placeholder": "Wert",
+        "choice_choose": "Wählen…",
         "json_placeholder": "{\"schlüssel\": \"wert\"}"
     },
     "nav": {

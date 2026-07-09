@@ -11,7 +11,7 @@ class CreateEsgIndicatorAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array}  $data
+     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): EsgIndicator
     {
@@ -26,6 +26,7 @@ class CreateEsgIndicatorAction
             'unit_of_measure' => $data['unit_of_measure'] ?? null,
             'is_active' => true,
             'thresholds' => $data['thresholds'] ?? null,
+            'options' => $data['options'] ?? null,
         ]);
 
         $this->audit->record(

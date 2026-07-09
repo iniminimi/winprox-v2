@@ -25,6 +25,7 @@ final class EsgMeasurementPresenter
                 ? __('esg.portal.boolean_yes')
                 : __('esg.portal.boolean_no'),
             EsgIndicatorType::String => (string) ($measurement->value_string ?? '—'),
+            EsgIndicatorType::Choice => (string) ($measurement->value_string ?? '—'),
             EsgIndicatorType::Json => self::formatJson($measurement->value_json),
         };
     }

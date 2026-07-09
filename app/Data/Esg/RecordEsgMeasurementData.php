@@ -58,7 +58,7 @@ readonly class RecordEsgMeasurementData
         return match ($type) {
             EsgIndicatorType::Numeric => $this->valueNumeric,
             EsgIndicatorType::Boolean => $this->valueBoolean,
-            EsgIndicatorType::String => $this->valueString,
+            EsgIndicatorType::String, EsgIndicatorType::Choice => $this->valueString,
             EsgIndicatorType::Json => $this->valueJson,
         };
     }
@@ -76,7 +76,9 @@ readonly class RecordEsgMeasurementData
         return [
             'value_numeric' => $type === EsgIndicatorType::Numeric ? $this->valueNumeric : null,
             'value_boolean' => $type === EsgIndicatorType::Boolean ? $this->valueBoolean : null,
-            'value_string' => $type === EsgIndicatorType::String ? $this->valueString : null,
+            'value_string' => $type === EsgIndicatorType::String || $type === EsgIndicatorType::Choice
+                ? $this->valueString
+                : null,
             'value_json' => $type === EsgIndicatorType::Json ? $this->valueJson : null,
         ];
     }
