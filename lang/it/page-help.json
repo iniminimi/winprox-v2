@@ -677,6 +677,48 @@
                 }
             ]
         },
+        "esg.indicators": {
+            "title": "Aiuto — Indicatori ESG",
+            "actions": [
+                {
+                    "label": "Attiva modulo",
+                    "text": "Un superuser deve attivare il modulo ESG in Piattaforma → Tenant. Senza modulo questo menu è nascosto."
+                },
+                {
+                    "label": "Crea indicatore",
+                    "text": "Definite cosa misurate (es. gas in m³): numero, sì/no, testo o JSON, con soglie min/max opzionali."
+                },
+                {
+                    "label": "Segnalazione ricorrente",
+                    "text": "Collegate un indicatore a una segnalazione ricorrente con unità al passo 1. Ogni ciclo richiede una lettura al completamento del compito."
+                },
+                {
+                    "label": "Attivo / inattivo",
+                    "text": "Disattivate indicatori non più usati; le misurazioni esistenti restano salvate."
+                }
+            ]
+        },
+        "esg.measurements": {
+            "title": "Aiuto — Misurazioni ESG",
+            "actions": [
+                {
+                    "label": "Panoramica",
+                    "text": "Tutte le letture registrate via portale QR unità o API, con sede, unità, data e operatore."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Affinate per indicatore, sede, unità o periodo (data misurazione)."
+                },
+                {
+                    "label": "Soglie",
+                    "text": "Le letture fuori dal minimo o massimo dell’indicatore sono evidenziate."
+                },
+                {
+                    "label": "API e webhook",
+                    "text": "Registrate anche con POST /api/v1/esg/measurements (permesso esg:create). Webhook esg.measurement.recorded per ogni nuova lettura."
+                }
+            ]
+        },
         "legal": {
             "title": "Aiuto — Documenti legali",
             "actions": [

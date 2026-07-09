@@ -78,8 +78,15 @@ class MeasurementsIndex extends Component
             ->orderByDesc('id')
             ->paginate(25);
 
+        $hasFilters = $this->indicatorFilter !== null
+            || $this->locationFilter !== null
+            || $this->unitFilter !== null
+            || trim($this->recordedFrom) !== ''
+            || trim($this->recordedTo) !== '';
+
         return view('livewire.esg.measurements-index', [
             'measurements' => $measurements,
+            'showSetupSteps' => ! $hasFilters && ! EsgMeasurement::query()->exists(),
             'indicators' => EsgIndicator::query()->orderBy('name')->get(['id', 'name']),
             'locations' => Location::query()->orderBy('name')->get(['id', 'name']),
             'units' => Unit::query()

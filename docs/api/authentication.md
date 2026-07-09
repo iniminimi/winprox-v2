@@ -55,6 +55,7 @@ $token = $user->createToken('Read Only', [
 | `units:read` | `GET /api/v1/units` |
 | `teams:read` | `GET /api/v1/teams` |
 | `workers:read` | `GET /api/v1/workers` |
+| `esg:create` | `POST /api/v1/esg/measurements` |
 | `webhooks:manage` | Manage webhook endpoints via UI |
 | `*` | All endpoints |
 

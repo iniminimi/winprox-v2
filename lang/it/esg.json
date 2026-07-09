@@ -4,6 +4,16 @@
     "list_title": "Indicatori",
     "add": "+ Aggiungi indicatore",
     "empty": "Nessun indicatore ancora. Crei una definizione di misura per collegare ispezioni ricorrenti.",
+    "setup": {
+        "title": "Per iniziare",
+        "steps": [
+            "Chieda a un superuser di attivare il modulo ESG (Piattaforma → Tenant).",
+            "Crei un indicatore qui (es. Gas m³, tipo Numero).",
+            "Crei una segnalazione ricorrente con unità e scelga l’indicatore al passo 1.",
+            "Assegni un team al passo 2 così il compito appare sul portale QR unità.",
+            "Completi il compito sul portale con una lettura — comparirà in Misurazioni."
+        ]
+    },
     "create_title": "Nuovo indicatore",
     "edit_title": "Modifica indicatore",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Consulta le letture dal campo per audit e reportistica.",
         "list_title": "Misurazioni",
         "empty": "Nessuna misurazione registrata.",
+        "empty_filtered": "Nessuna misurazione per questi filtri.",
+        "setup": {
+            "title": "Registrare la prima lettura",
+            "steps": [
+                "Crei prima un indicatore nella scheda Indicatori.",
+                "Crei una segnalazione ricorrente con unità e indicatore collegato.",
+                "Completi il compito via portale QR unità e inserisca la lettura.",
+                "Torni qui — o usi l’API (esg:create) per fonti esterne."
+            ]
+        },
         "correction": "Correzione",
         "outside_thresholds": "Fuori soglia",
         "view_task": "Attività",

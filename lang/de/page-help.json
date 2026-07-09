@@ -677,6 +677,48 @@
                 }
             ]
         },
+        "esg.indicators": {
+            "title": "Hilfe — ESG-Indikatoren",
+            "actions": [
+                {
+                    "label": "Modul aktivieren",
+                    "text": "Ein Superuser muss das ESG-Modul unter Plattform → Mandanten aktivieren. Ohne Modul ist dieses Menü ausgeblendet."
+                },
+                {
+                    "label": "Indikator anlegen",
+                    "text": "Definieren Sie, was gemessen wird (z. B. Gas in m³): Zahl, Ja/Nein, Text oder JSON, optional mit Mindest- und Höchstwerten."
+                },
+                {
+                    "label": "Wiederkehrende Meldung",
+                    "text": "Verknüpfen Sie einen Indikator in Schritt 1 mit einer wiederkehrenden Meldung und Unit. Jeder Zyklus verlangt beim Abschluss der Aufgabe einen Messwert."
+                },
+                {
+                    "label": "Aktiv / inaktiv",
+                    "text": "Deaktivieren Sie nicht mehr genutzte Indikatoren; bestehende Messungen bleiben erhalten."
+                }
+            ]
+        },
+        "esg.measurements": {
+            "title": "Hilfe — ESG-Messungen",
+            "actions": [
+                {
+                    "label": "Übersicht",
+                    "text": "Alle über das Unit-QR-Portal oder die API erfassten Messwerte mit Standort, Unit, Zeitstempel und Mitarbeiter."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Eingrenzen nach Indikator, Standort, Unit oder Zeitraum (Messdatum)."
+                },
+                {
+                    "label": "Schwellenwerte",
+                    "text": "Messungen außerhalb des Minimums oder Maximums des Indikators werden markiert."
+                },
+                {
+                    "label": "API & Webhooks",
+                    "text": "Messungen auch per POST /api/v1/esg/measurements (Berechtigung esg:create). Webhook esg.measurement.recorded bei jeder neuen Messung."
+                }
+            ]
+        },
         "legal": {
             "title": "Hilfe — Rechtliche Dokumente",
             "actions": [

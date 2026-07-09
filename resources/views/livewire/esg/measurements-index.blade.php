@@ -6,7 +6,7 @@
     <x-wp-page-head-title
         icon="sliders"
         :title="__('esg.title')"
-        help-page="esg"
+        help-page="esg.measurements"
         :subtitle="__('esg.measurements.subtitle')"
     />
 
@@ -68,7 +68,12 @@
 
     <div class="wp-card wp-card-pad wp-stack-tight">
         @if ($measurements->isEmpty())
-            <p class="wp-muted">{{ __('esg.measurements.empty') }}</p>
+            <p class="wp-muted">
+                {{ $showSetupSteps ? __('esg.measurements.empty') : __('esg.measurements.empty_filtered') }}
+            </p>
+            @if ($showSetupSteps)
+                @include('partials.wp-esg-setup-steps', ['setupKey' => 'esg.measurements.setup'])
+            @endif
         @else
             <ul class="wp-list-plain wp-stack-tight">
                 @foreach ($measurements as $measurement)

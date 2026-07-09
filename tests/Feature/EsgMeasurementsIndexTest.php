@@ -115,3 +115,13 @@ it('formateert meetwaarden voor weergave', function () {
 
     expect(EsgMeasurementPresenter::displayValue($measurement))->toBe('1.234,5 kWh');
 });
+
+it('toont setup-stappen zonder metingen', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(MeasurementsIndex::class)
+        ->assertSee(__('esg.measurements.setup.title'))
+        ->assertSee(__('esg.measurements.setup.steps')[0], false);
+});

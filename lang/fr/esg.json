@@ -4,6 +4,16 @@
     "list_title": "Indicateurs",
     "add": "+ Ajouter un indicateur",
     "empty": "Aucun indicateur pour l'instant. Créez une définition de mesure pour lier des inspections récurrentes.",
+    "setup": {
+        "title": "Premiers pas",
+        "steps": [
+            "Demandez à un superutilisateur d’activer le module ESG (Plateforme → Locataires).",
+            "Créez un indicateur ici (p. ex. Gaz m³, type Nombre).",
+            "Créez un signalement récurrent avec unité et choisissez l’indicateur à l’étape 1.",
+            "Assignez une équipe à l’étape 2 pour que la tâche apparaisse sur le portail QR unité.",
+            "Terminez la tâche sur le portail avec une mesure — elle apparaît sous Mesures."
+        ]
+    },
     "create_title": "Nouvel indicateur",
     "edit_title": "Modifier l'indicateur",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Consultez les relevés terrain pour les audits et rapports.",
         "list_title": "Mesures",
         "empty": "Aucune mesure enregistrée.",
+        "empty_filtered": "Aucune mesure pour ces filtres.",
+        "setup": {
+            "title": "Enregistrer la première mesure",
+            "steps": [
+                "Créez d’abord un indicateur dans l’onglet Indicateurs.",
+                "Créez un signalement récurrent avec unité et indicateur lié.",
+                "Terminez la tâche via le portail QR unité et saisissez la mesure.",
+                "Revenez ici — ou utilisez l’API (esg:create) pour des sources externes."
+            ]
+        },
         "correction": "Correction",
         "outside_thresholds": "Hors seuil",
         "view_task": "Tâche",

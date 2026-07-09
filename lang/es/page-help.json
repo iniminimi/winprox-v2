@@ -677,6 +677,48 @@
                 }
             ]
         },
+        "esg.indicators": {
+            "title": "Ayuda — Indicadores ESG",
+            "actions": [
+                {
+                    "label": "Activar módulo",
+                    "text": "Un superusuario debe activar el módulo ESG en Plataforma → Inquilinos. Sin módulo, este menú no aparece."
+                },
+                {
+                    "label": "Crear indicador",
+                    "text": "Defina qué mide (p. ej. gas en m³): número, sí/no, texto o JSON, con umbrales mín/máx opcionales."
+                },
+                {
+                    "label": "Incidencia recurrente",
+                    "text": "Vincule un indicador a una incidencia recurrente con unidad en el paso 1. Cada ciclo exige una lectura al completar la tarea."
+                },
+                {
+                    "label": "Activo / inactivo",
+                    "text": "Desactive indicadores que ya no use; las mediciones existentes se conservan."
+                }
+            ]
+        },
+        "esg.measurements": {
+            "title": "Ayuda — Mediciones ESG",
+            "actions": [
+                {
+                    "label": "Resumen",
+                    "text": "Todas las lecturas registradas vía portal QR de unidad o API, con ubicación, unidad, fecha y trabajador."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Filtre por indicador, ubicación, unidad o periodo (fecha de medición)."
+                },
+                {
+                    "label": "Umbrales",
+                    "text": "Las lecturas fuera del mínimo o máximo del indicador se marcan."
+                },
+                {
+                    "label": "API y webhooks",
+                    "text": "Registre también con POST /api/v1/esg/measurements (permiso esg:create). Webhook esg.measurement.recorded en cada nueva lectura."
+                }
+            ]
+        },
         "legal": {
             "title": "Ayuda — Documentos legales",
             "actions": [

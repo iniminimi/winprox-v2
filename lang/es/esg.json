@@ -4,6 +4,16 @@
     "list_title": "Indicadores",
     "add": "+ Añadir indicador",
     "empty": "Aún no hay indicadores. Cree una definición de medición para vincular inspecciones recurrentes.",
+    "setup": {
+        "title": "Primeros pasos",
+        "steps": [
+            "Pida a un superusuario que active el módulo ESG (Plataforma → Inquilinos).",
+            "Cree un indicador aquí (p. ej. Gas m³, tipo Número).",
+            "Cree una incidencia recurrente con unidad y elija el indicador en el paso 1.",
+            "Asigne un equipo en el paso 2 para que la tarea aparezca en el portal QR de unidad.",
+            "Complete la tarea en el portal con una lectura — aparecerá en Mediciones."
+        ]
+    },
     "create_title": "Nuevo indicador",
     "edit_title": "Editar indicador",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Consulte lecturas de campo para auditorías e informes.",
         "list_title": "Mediciones",
         "empty": "Aún no hay mediciones registradas.",
+        "empty_filtered": "No hay mediciones para estos filtros.",
+        "setup": {
+            "title": "Registrar la primera lectura",
+            "steps": [
+                "Cree primero un indicador en la pestaña Indicadores.",
+                "Cree una incidencia recurrente con unidad e indicador vinculado.",
+                "Complete la tarea vía el portal QR de unidad e introduzca la lectura.",
+                "Vuelva aquí — o use la API (esg:create) para fuentes externas."
+            ]
+        },
         "correction": "Corrección",
         "outside_thresholds": "Fuera de umbral",
         "view_task": "Tarea",

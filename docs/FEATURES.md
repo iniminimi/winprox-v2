@@ -19,7 +19,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar): Dashboard · Locaties/units · Meldingen · Taken · Kalender ·
-Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
+ESG & Compliance (optioneel, module) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
 
 ---
 
@@ -310,6 +310,36 @@ zie Dashboard §1 / Taken §4.1.
 ### 5.5 NIET overnemen
 Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboarding/demo, complexe
 `FacilityTeamAccess` manager-scoping (optioneel later). Property→Location.
+
+---
+
+## 5b. ESG & Compliance (optionele module)
+
+**Doel:** meetwaarden vastleggen bij terugkerende inspecties (duurzaamheid, compliance, meters).
+Zichtbaar in de sidebar zodra `has_esg_module` aan staat (superuser: Platform → Tenants). **Alleen
+admin**-accounts; medewerkers zien ESG niet.
+
+### 5b.1 Indicatoren (`/esg/indicators`)
+- **Meetdefinitie:** naam, type (getal / ja-nee / tekst / JSON), optionele eenheid en min/max-drempels.
+- **Actief/inactief:** deactiveren i.p.v. verwijderen; bestaande metingen blijven.
+- **Lege staat:** genummerde stappen (module → indicator → terugkerende melding → portaal).
+
+### 5b.2 Terugkerende melding + indicator
+- Bij **nieuwe terugkerende melding** (stap 1): unit verplicht + keuze **ESG-indicator** (alleen actieve).
+- Elke recurring-cyclus: taak op unit-QR-portaal; bij **afronden** verplichte meetwaarde + tijdstip
+  (`recorded_at` = client, `created_at` = server).
+
+### 5b.3 Metingen (`/esg/measurements`)
+- **Append-only** overzicht: indicator, waarde, locatie/unit, uitvoerder, tijdstip; link naar taak.
+- **Filters:** indicator, locatie, unit, datum van meting; drempelwaarschuwing buiten min/max.
+- **Lege staat:** workflow naar eerste meting (indicator → melding → portaal of API).
+
+### 5b.4 API & webhooks (Business+)
+- `POST /api/v1/esg/measurements` — ability `esg:create`; zie `docs/api/esg.md`.
+- Webhook `esg.measurement.recorded` bij elke nieuwe rij.
+
+### 5b.5 Nog niet in scope (fase 2+)
+Correctie-UI, `GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
 
 ---
 

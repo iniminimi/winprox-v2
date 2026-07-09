@@ -4,6 +4,16 @@
     "list_title": "Indikatoren",
     "add": "+ Indikator hinzufügen",
     "empty": "Noch keine Indikatoren. Legen Sie eine Messdefinition an, um wiederkehrende Inspektionen zu verknüpfen.",
+    "setup": {
+        "title": "Erste Schritte",
+        "steps": [
+            "Lassen Sie einen Superuser das ESG-Modul aktivieren (Plattform → Mandanten).",
+            "Legen Sie hier einen Indikator an (z. B. Gas m³, Typ Zahl).",
+            "Erstellen Sie eine wiederkehrende Meldung mit Unit und wählen Sie den Indikator in Schritt 1.",
+            "Weisen Sie in Schritt 2 ein Team zu, damit die Aufgabe im Unit-QR-Portal erscheint.",
+            "Schließen Sie die Aufgabe im Portal mit einem Messwert ab — die Messung erscheint unter Messungen."
+        ]
+    },
     "create_title": "Neuer Indikator",
     "edit_title": "Indikator bearbeiten",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Registrierte Messwerte vom Feld für Audits und Berichte einsehen.",
         "list_title": "Messungen",
         "empty": "Noch keine Messungen erfasst.",
+        "empty_filtered": "Keine Messungen für diese Filter.",
+        "setup": {
+            "title": "Erste Messung erfassen",
+            "steps": [
+                "Legen Sie zuerst einen Indikator auf dem Tab Indikatoren an.",
+                "Erstellen Sie eine wiederkehrende Meldung mit Unit und verknüpftem Indikator.",
+                "Schließen Sie die Aufgabe über das Unit-QR-Portal ab und geben Sie den Messwert ein.",
+                "Kehren Sie hierher zurück — oder nutzen Sie die API (esg:create) für externe Quellen."
+            ]
+        },
         "correction": "Korrektur",
         "outside_thresholds": "Außerhalb Schwelle",
         "view_task": "Aufgabe",

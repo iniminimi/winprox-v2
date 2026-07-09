@@ -4,6 +4,16 @@
     "list_title": "Indicators",
     "add": "+ Add indicator",
     "empty": "No indicators yet. Create a measurement definition to link recurring inspections.",
+    "setup": {
+        "title": "Getting started",
+        "steps": [
+            "Ask a superuser to enable the ESG module (Platform → Tenants).",
+            "Create an indicator here (e.g. Gas m³, type Number).",
+            "Create a recurring issue with a unit and select the indicator in step 1.",
+            "Assign a team in step 2 so the task appears on the unit QR portal.",
+            "Complete the task on the portal with a reading — it will show under Measurements."
+        ]
+    },
     "create_title": "New indicator",
     "edit_title": "Edit indicator",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Review field readings for audits and reporting.",
         "list_title": "Measurements",
         "empty": "No measurements recorded yet.",
+        "empty_filtered": "No measurements match these filters.",
+        "setup": {
+            "title": "Record your first reading",
+            "steps": [
+                "Create an indicator on the Indicators tab first.",
+                "Create a recurring issue with a unit and linked indicator.",
+                "Complete the task via the unit QR portal and enter the reading.",
+                "Return here — or use the API (esg:create) for external sources."
+            ]
+        },
         "correction": "Correction",
         "outside_thresholds": "Outside threshold",
         "view_task": "Task",

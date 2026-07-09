@@ -29,6 +29,36 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 | `task.started` | A task was started | Task data |
 | `task.completed` | A task was completed | Task data |
 | `unit.gps_reported` | A GPS report was recorded for a unit | GPS report metadata |
+| `esg.measurement.recorded` | An ESG measurement was recorded | Measurement metadata |
+
+### ESG measurement webhook payload
+
+`esg.measurement.recorded` fires when a reading is stored via the API, unit QR portal, or backoffice action.
+
+```json
+{
+  "version": "1.0",
+  "event": "esg.measurement.recorded",
+  "payload": {
+    "id": 101,
+    "task_id": 42,
+    "esg_indicator_id": 3,
+    "unit_id": 12,
+    "location_id": 5,
+    "worker_id": 7,
+    "corrects_measurement_id": null,
+    "recorded_at": "2026-07-08T08:15:00+00:00",
+    "created_at": "2026-07-08T08:16:02+00:00",
+    "indicator_type": "numeric",
+    "value_numeric": 456.78,
+    "value_boolean": null,
+    "value_string": null,
+    "value_json": null,
+    "actor_user_id": 15
+  },
+  "delivery_id": 456
+}
+```
 
 ### Translation webhook payloads
 

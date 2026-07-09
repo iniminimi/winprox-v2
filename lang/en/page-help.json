@@ -677,6 +677,48 @@
                 }
             ]
         },
+        "esg.indicators": {
+            "title": "Help — ESG indicators",
+            "actions": [
+                {
+                    "label": "Enable module",
+                    "text": "A superuser must enable the ESG module under Platform → Tenants. Without it, this menu is hidden."
+                },
+                {
+                    "label": "Create indicator",
+                    "text": "Define what you measure (e.g. gas in m³): numeric, yes/no, text, or JSON, optionally with min and max thresholds."
+                },
+                {
+                    "label": "Recurring issue",
+                    "text": "Link an indicator to a recurring issue with a unit in step 1. Each cycle requires a reading when the task is completed."
+                },
+                {
+                    "label": "Active / inactive",
+                    "text": "Deactivate indicators you no longer use; existing measurements are kept."
+                }
+            ]
+        },
+        "esg.measurements": {
+            "title": "Help — ESG measurements",
+            "actions": [
+                {
+                    "label": "Overview",
+                    "text": "All readings registered via the unit QR portal or API, with location, unit, timestamp, and worker."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Narrow by indicator, location, unit, or date range (measurement date)."
+                },
+                {
+                    "label": "Thresholds",
+                    "text": "Readings outside the indicator minimum or maximum are flagged."
+                },
+                {
+                    "label": "API & webhooks",
+                    "text": "Register readings via POST /api/v1/esg/measurements (ability esg:create). Webhook esg.measurement.recorded fires for each new reading."
+                }
+            ]
+        },
         "legal": {
             "title": "Help — Legal documents",
             "actions": [

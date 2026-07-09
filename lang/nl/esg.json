@@ -4,6 +4,16 @@
     "list_title": "Indicatoren",
     "add": "+ Indicator toevoegen",
     "empty": "Nog geen indicatoren. Maak een meetdefinitie aan om terugkerende inspecties te koppelen.",
+    "setup": {
+        "title": "Aan de slag",
+        "steps": [
+            "Laat een superuser de ESG-module inschakelen (Platform → Tenants).",
+            "Maak hier een indicator aan (bijv. Gas m³, type Getal).",
+            "Maak een terugkerende melding met unit en kies de indicator in stap 1.",
+            "Wijs in stap 2 een team toe zodat de taak direct verschijnt op het unit-QR-portaal.",
+            "Rond de taak af op het portaal met een meetwaarde — de meting verschijnt onder Metingen."
+        ]
+    },
     "create_title": "Nieuwe indicator",
     "edit_title": "Indicator bewerken",
     "fields": {
@@ -70,6 +80,16 @@
         "subtitle": "Bekijk geregistreerde meetwaarden van de werkvloer voor audits en rapportage.",
         "list_title": "Metingen",
         "empty": "Nog geen metingen geregistreerd.",
+        "empty_filtered": "Geen metingen voor deze filters.",
+        "setup": {
+            "title": "Eerste meting registreren",
+            "steps": [
+                "Maak eerst een indicator aan op het tabblad Indicatoren.",
+                "Maak een terugkerende melding met unit en gekoppelde indicator.",
+                "Rond de taak af via het unit-QR-portaal en vul de meetwaarde in.",
+                "Kom terug naar dit overzicht — of gebruik de API (esg:create) voor externe bronnen."
+            ]
+        },
         "correction": "Correctie",
         "outside_thresholds": "Buiten drempel",
         "view_task": "Taak",

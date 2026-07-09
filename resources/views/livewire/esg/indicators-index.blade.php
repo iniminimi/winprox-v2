@@ -2,7 +2,7 @@
     <x-wp-page-head-title
         icon="sliders"
         :title="__('esg.title')"
-        help-page="esg"
+        help-page="esg.indicators"
         :subtitle="__('esg.subtitle')"
     />
 
@@ -26,6 +26,7 @@
 
         @if ($indicators->isEmpty())
             <p class="wp-muted">{{ __('esg.empty') }}</p>
+            @include('partials.wp-esg-setup-steps', ['setupKey' => 'esg.setup'])
         @else
             <ul class="wp-list-plain wp-stack-tight">
                 @foreach ($indicators as $indicator)
