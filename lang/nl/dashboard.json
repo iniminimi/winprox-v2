@@ -51,8 +51,13 @@
             "button": "Locaties beheren"
         },
         "clock_point": {
+            "title": "Maak een Clock Point aan",
+            "text": "Met de Time-module melden en klokken uitvoerders in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker zodat je team kan starten.",
+            "button": "Clock Points"
+        },
+        "clock_point_facility": {
             "title": "Maak een Clock Point QR-code aan",
-            "text": "Uitvoerders loggen in via een Clock Point QR-code. Maak minstens één clock point aan en print of deel de QR-code zodat je team kan inloggen.",
+            "text": "Uitvoerders loggen in via een Clock Point QR-code. Open de knop op Gebruikers en print de QR zodat je team kan inloggen.",
             "button": "Clock Point QR-code"
         }
     }

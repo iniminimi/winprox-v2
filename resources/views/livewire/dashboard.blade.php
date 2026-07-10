@@ -1,3 +1,8 @@
+@php
+    use App\Support\Time\TimeModuleAccess;
+
+    $hasTimeModule = TimeModuleAccess::activeTenantHasModule();
+@endphp
 <div class="wp-stack" data-manual-capture="dashboard">
     @if ($onboarding->showTeamsBanner())
         <x-wp-onboarding-banner stage="teams" />
@@ -29,7 +34,7 @@
                     </div>
                     <div class="wp-stack-tight">
                         <p class="wp-text-body"><strong>{{ __('manual.step_3_title') }}</strong></p>
-                        <p class="wp-muted">{{ __('manual.step_3_text') }}</p>
+                        <p class="wp-muted">{{ $hasTimeModule ? __('manual.step_3_text_time') : __('manual.step_3_text_facility') }}</p>
                     </div>
                     <div class="wp-stack-tight">
                         <p class="wp-text-body"><strong>{{ __('manual.step_4_title') }}</strong></p>

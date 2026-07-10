@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Primeros pasos",
         "title": "En funcionamiento en 5 pasos",
-        "intro": "Siga este orden al configurar WinProx por primera vez para su organización."
+        "intro": "Siga este orden al configurar WinProx Facility por primera vez para su organización — y WinProx Time si su organización utiliza el módulo Time."
     },
     "chapter": "Capítulo",
     "toc": {
@@ -55,7 +55,9 @@
     "step_2_title": "Configurar ubicaciones y unidades",
     "step_2_text": "Agrupe unidades en categorías (por ejemplo: taladros, sanitario, equipos de fitness, oficina o electricidad). Estas categorías ayudan a filtrar y organizar sus activos y se adaptan completamente a su sector. Al vincular equipos a categorías específicas, WinProx garantiza que las tareas las recoja siempre el equipo correcto. Además, añada ubicaciones (como sitios, edificios o plantas) y cree sus unidades por ubicación: son las máquinas, espacios u objetos físicos para los que se registran incidencias y tareas. Las ubicaciones y unidades también se pueden cargar mediante importación masiva (archivo CSV).",
     "step_3_title": "Imprimir y colocar códigos QR",
-    "step_3_text": "Imprima el QR de la unidad desde la página de detalle de la ubicación o unidad y el QR Clock Point desde la página del equipo. Colóquelos en un lugar claramente visible (por ejemplo en máquinas, impresoras, mobiliario de oficina o en la entrada). Los usuarios escanean el QR de la unidad para abrir directamente el portal, donde pueden enviar incidencias y consultar documentos o anuncios. Los trabajadores escanean primero el QR Clock Point para iniciar sesión (nombre + icono). Después escanean el QR de la unidad en el lugar para registrar el GPS, tomar fotos e iniciar o completar tareas. Con el módulo Time opcional también pueden fichar entrada y salida mediante el QR Clock Point.",
+    "step_3_text": "¿Su organización utiliza el módulo Time? Cree primero uno o más Clock Points (menú Time → Clock Points), imprima la etiqueta QR y colóquela en la entrada, almacén o taller — aquí los trabajadores inician sesión y fichan. Sin el módulo Time, abra Usuarios → QR Clock Point; WinProx crea entonces automáticamente un Clock Point predeterminado. Imprima también el QR de la unidad desde la página de detalle de la ubicación o unidad y fíjelo a máquinas, salas o activos. Ciudadanos y visitantes escanean el QR de la unidad para incidencias y documentos. Los trabajadores escanean primero el QR Clock Point (nombre + icono) y después el QR de la unidad en el lugar para GPS, fotos y tareas.",
+    "step_3_text_time": "Cree al menos un Clock Point en Time → Clock Points (p. ej. entrada o almacén). Imprima la etiqueta QR y colóquela visiblemente. Imprima también los QR de unidad por ubicación o unidad y fíjelos a máquinas o salas. Los trabajadores escanean primero el QR Clock Point para iniciar sesión y fichar; después el QR de la unidad en el lugar para GPS, fotos y tareas.",
+    "step_3_text_facility": "Abra Usuarios → QR Clock Point e imprima el QR de acceso — WinProx crea automáticamente un Clock Point predeterminado si es necesario. Imprima también el QR de la unidad desde la página de detalle de la ubicación o unidad y coloque ambos visiblemente. Los ciudadanos escanean el QR de la unidad para incidencias; los trabajadores escanean primero el QR Clock Point (nombre + icono) y después el QR de la unidad para tareas en el lugar.",
     "step_4_title": "Recibir incidencias y asignar tareas",
     "step_4_text": "Las incidencias llegan mediante un escaneo QR o entrada manual. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia (por ejemplo para el equipo técnico y el de limpieza). Establezca simplemente una fecha límite y siga el progreso de cerca mediante el panel de control y el calendario.",
     "step_5_title": "Seguimiento y cierre",

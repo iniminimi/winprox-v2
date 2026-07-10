@@ -51,8 +51,13 @@
             "button": "Manage locations"
         },
         "clock_point": {
-            "title": "Create a Clock Point QR code",
-            "text": "Workers sign in via a Clock Point QR code. Create at least one clock point and print or share the QR code so your team can log in.",
+            "title": "Create a Clock Point",
+            "text": "With the Time module, workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker so your team can get started.",
+            "button": "Clock Points"
+        },
+        "clock_point_facility": {
+            "title": "Print the Clock Point QR code",
+            "text": "Workers sign in via a Clock Point QR code. Open the button on Users and print the QR so your team can sign in.",
             "button": "Clock Point QR code"
         }
     }

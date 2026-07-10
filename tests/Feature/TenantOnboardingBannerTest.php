@@ -93,3 +93,40 @@ it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties, 
         ->assertDontSee(__('manual.getting_started.label'))
         ->assertSee(__('dashboard.kpi.locations'));
 });
+
+it('toont time-specifieke clock-point-onboarding en stap 3 op het dashboard met time-module', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    $tenant->update(['has_time_module' => true]);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.onboarding.clock_point.title'))
+        ->assertSee(__('dashboard.onboarding.clock_point.button'))
+        ->assertDontSee(__('dashboard.onboarding.clock_point_facility.title'))
+        ->assertSee(__('manual.step_3_text_time'))
+        ->assertDontSee(__('manual.step_3_text_facility'));
+});
+
+it('toont facility clock-point-onboarding zonder time-module', function () {
+    [$tenant, $admin] = setupOnboardingAdmin();
+    $tenant->update(['has_time_module' => false]);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.onboarding.clock_point_facility.title'))
+        ->assertDontSee(__('dashboard.onboarding.clock_point.title'))
+        ->assertSee(__('manual.step_3_text_facility'))
+        ->assertDontSee(__('manual.step_3_text_time'));
+});

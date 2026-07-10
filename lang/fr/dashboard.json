@@ -51,8 +51,13 @@
             "button": "Gérer les sites"
         },
         "clock_point": {
-            "title": "Créez un QR code Clock Point",
-            "text": "Les ouvriers se connectent via un QR code Clock Point. Créez au moins un clock point et imprimez ou partagez le QR code pour que votre équipe puisse se connecter.",
+            "title": "Créez un Clock Point",
+            "text": "Avec le module Time, les ouvriers se connectent et pointent via un Clock Point. Créez au moins un clock point et imprimez l'autocollant QR pour que votre équipe puisse démarrer.",
+            "button": "Clock Points"
+        },
+        "clock_point_facility": {
+            "title": "Imprimez le QR code Clock Point",
+            "text": "Les ouvriers se connectent via un QR code Clock Point. Ouvrez le bouton sous Utilisateurs et imprimez le QR pour que votre équipe puisse se connecter.",
             "button": "QR code Clock Point"
         }
     }

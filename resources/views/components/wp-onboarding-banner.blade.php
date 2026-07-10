@@ -13,15 +13,19 @@
             : route('team.index'),
         default => route('dashboard'),
     };
+
+    $onboardingKey = $stage === 'clock_point' && ! TimeModuleAccess::activeTenantHasModule()
+        ? 'clock_point_facility'
+        : $stage;
 @endphp
 
 <div class="wp-card wp-card-pad wp-onboarding-card">
     <div class="wp-stack">
-        <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.'.$stage.'.title') }}</strong></p>
-        <p class="wp-muted">{{ __('dashboard.onboarding.'.$stage.'.text') }}</p>
+        <p class="wp-text-body"><strong>{{ __('dashboard.onboarding.'.$onboardingKey.'.title') }}</strong></p>
+        <p class="wp-muted">{{ __('dashboard.onboarding.'.$onboardingKey.'.text') }}</p>
         <a href="{{ $href }}"
            class="btn btn--primary btn--sm wp-badge-critical">
-            {{ __('dashboard.onboarding.'.$stage.'.button') }}
+            {{ __('dashboard.onboarding.'.$onboardingKey.'.button') }}
         </a>
     </div>
 </div>

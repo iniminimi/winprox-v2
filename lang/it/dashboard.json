@@ -51,8 +51,13 @@
             "button": "Gestisci sedi"
         },
         "clock_point": {
-            "title": "Crea un codice QR Clock Point",
-            "text": "I lavoratori accedono tramite un codice QR Clock Point. Crei almeno un clock point e stampi o condivida il codice QR affinché il team possa accedere.",
+            "title": "Crei un Clock Point",
+            "text": "Con il modulo Time, i lavoratori accedono e timbrano tramite un Clock Point. Crei almeno un clock point e stampi l'adesivo QR affinché il team possa iniziare.",
+            "button": "Clock Points"
+        },
+        "clock_point_facility": {
+            "title": "Stampi il codice QR Clock Point",
+            "text": "I lavoratori accedono tramite un codice QR Clock Point. Apri il pulsante in Utenti e stampi il QR affinché il team possa accedere.",
             "button": "Codice QR Clock Point"
         }
     }
