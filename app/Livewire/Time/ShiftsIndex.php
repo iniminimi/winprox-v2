@@ -158,6 +158,13 @@ class ShiftsIndex extends Component
                 'worker' => $this->workerFilter,
                 'clock_point' => $this->clockPointFilter,
             ])),
+            'printUrl' => route('time.shifts.print', array_filter([
+                'from' => $this->from,
+                'to' => $this->to,
+                'team' => $this->teamFilter,
+                'worker' => $this->workerFilter,
+                'clock_point' => $this->clockPointFilter,
+            ])),
         ]);
     }
 }

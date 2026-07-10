@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Imprimir",
+        "title": "Hoja de horas",
+        "document_title": "Hoja de horas — WinProx",
+        "period": "Período del :from al :to",
+        "total_net": "Neto total: :minutes min",
+        "empty": "No hay turnos en este período."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

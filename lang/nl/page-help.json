@@ -752,6 +752,89 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Hulp — Aanwezigheid",
+            "actions": [
+                {
+                    "label": "Live overzicht",
+                    "text": "Toont wie nu ingeklokt is, op pauze staat of nog niet is ingeklokt. De lijst ververst automatisch elke 30 seconden."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Verfijn op team, clock point of zoek op naam. Handig bij grotere organisaties met meerdere inkloklocaties."
+                },
+                {
+                    "label": "Shift sluiten",
+                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. Dit is een admin-actie; de shift krijgt status <strong>Gesloten (admin)</strong>."
+                },
+                {
+                    "label": "Open te lang",
+                    "text": "Shifts die langer open staan dan de ingestelde drempel (standaard 16 uur) tonen een waarschuwing. Na die drempel sluit het systeem ze automatisch als <strong>Gesloten (automatisch)</strong>."
+                },
+                {
+                    "label": "Clock Point QR",
+                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
+                }
+            ]
+        },
+        "time.shifts": {
+            "title": "Hulp — Uren",
+            "actions": [
+                {
+                    "label": "Periode en filters",
+                    "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                },
+                {
+                    "label": "Exporteer CSV",
+                    "text": "Download de gefilterde shifts als CSV (Excel-vriendelijk, puntkomma-gescheiden). Ideaal voor verdere verwerking in loon- of planningssoftware."
+                },
+                {
+                    "label": "Afdrukken",
+                    "text": "Open een afdrukbare urenstaat voor dezelfde filters. Gebruik <strong>Afdrukken</strong> in de browser om een PDF te bewaren of te delen."
+                },
+                {
+                    "label": "Corrigeren",
+                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Wijzigingen worden vastgelegd in het auditlog."
+                },
+                {
+                    "label": "Shift sluiten",
+                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op het scherm Aanwezigheid."
+                },
+                {
+                    "label": "Statussen",
+                    "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
+                }
+            ]
+        },
+        "time.clock_points": {
+            "title": "Hulp — Clock Points",
+            "actions": [
+                {
+                    "label": "Wat is een clock point?",
+                    "text": "Een fysieke inkloklocatie met een eigen QR-sticker. Medewerkers scannen die code om in of uit te klokken en hun pauze te registreren."
+                },
+                {
+                    "label": "QR-code afdrukken",
+                    "text": "Open de printbare QR-pagina en hang de sticker op aan de ingang, magazijn of andere locatie. Elke clock point heeft een unieke code."
+                },
+                {
+                    "label": "QR-code vernieuwen",
+                    "text": "Genereer een nieuwe QR wanneer een sticker verloren is of u misbruik vermoedt. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd."
+                },
+                {
+                    "label": "QR-rotatie",
+                    "text": "Stel een interval in (maanden). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. Tot u vernieuwt blijft inklokken gewoon werken — het is een aanbeveling, geen blokkade."
+                },
+                {
+                    "label": "Geblokkeerde scans",
+                    "text": "Wanneer iemand een verlopen QR gebruikt, wordt dat geweigerd en gelogd. Een waarschuwing verschijnt hier als er in de laatste 7 dagen geblokkeerde pogingen waren."
+                },
+                {
+                    "label": "Actief / inactief",
+                    "text": "Deactiveer een clock point tijdelijk (bv. bij werken op locatie). Het portaal toont dan dat inklokken niet beschikbaar is."
+                }
+            ]
+        },
         "legal": {
             "title": "Hulp — Juridische documenten",
             "actions": [

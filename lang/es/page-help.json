@@ -752,6 +752,38 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Ayuda — Presencia",
+            "actions": [
+                {"label": "Vista en vivo", "text": "Muestra quién está fichado, en pausa o sin fichar. Se actualiza cada 30 segundos."},
+                {"label": "Filtros", "text": "Filtre por equipo, punto de fichaje o nombre."},
+                {"label": "Cerrar turno", "text": "Cierra un turno abierto si alguien olvidó fichar salida. Estado: <strong>Cerrado (admin)</strong>."},
+                {"label": "Abierto demasiado tiempo", "text": "Turnos abiertos más allá del umbral (16 h) se avisan y cierran automáticamente."},
+                {"label": "QR Clock Point", "text": "Fichaje mediante QR en el punto. Identificación por nombre e icono."}
+            ]
+        },
+        "time.shifts": {
+            "title": "Ayuda — Horas",
+            "actions": [
+                {"label": "Período y filtros", "text": "Elija fechas y filtre por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong>."},
+                {"label": "Exportar CSV", "text": "Descargue los turnos filtrados en CSV."},
+                {"label": "Imprimir", "text": "Abra una hoja de horas imprimible; guarde como PDF desde el navegador."},
+                {"label": "Corregir", "text": "Un admin puede corregir turnos cerrados con motivo obligatorio (auditoría)."},
+                {"label": "Cerrar turno", "text": "Los turnos abiertos también pueden cerrarse aquí."},
+                {"label": "Estados", "text": "<strong>Abierto</strong>, <strong>Cerrado</strong>, <strong>Cerrado (admin)</strong>, <strong>Cerrado (automático)</strong>."}
+            ]
+        },
+        "time.clock_points": {
+            "title": "Ayuda — Clock Points",
+            "actions": [
+                {"label": "¿Qué es un clock point?", "text": "Lugar físico de fichaje con su propio QR."},
+                {"label": "Imprimir QR", "text": "Imprima la pegatina y colóquela en la entrada."},
+                {"label": "Renovar QR", "text": "Nuevo código; el anterior funciona unos días (gracia) y luego se bloquea."},
+                {"label": "Rotación QR", "text": "Intervalo en meses; recomendación de renovación aleatoria."},
+                {"label": "Escaneos bloqueados", "text": "QR caducado rechazado y registrado."},
+                {"label": "Activo / inactivo", "text": "Desactive temporalmente un punto de fichaje."}
+            ]
+        },
         "legal": {
             "title": "Ayuda — Documentos legales",
             "actions": [

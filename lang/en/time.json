@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Print",
+        "title": "Timesheet",
+        "document_title": "Timesheet — WinProx",
+        "period": "Period :from to :to",
+        "total_net": "Total net: :minutes min",
+        "empty": "No shifts in this period."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

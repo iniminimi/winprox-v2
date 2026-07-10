@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Drucken",
+        "title": "Stundenzettel",
+        "document_title": "Stundenzettel — WinProx",
+        "period": "Zeitraum :from bis :to",
+        "total_net": "Netto gesamt: :minutes Min.",
+        "empty": "Keine Schichten in diesem Zeitraum."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

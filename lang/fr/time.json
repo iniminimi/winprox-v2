@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Imprimer",
+        "title": "Feuille de temps",
+        "document_title": "Feuille de temps — WinProx",
+        "period": "Période du :from au :to",
+        "total_net": "Total net : :minutes min",
+        "empty": "Aucun shift sur cette période."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

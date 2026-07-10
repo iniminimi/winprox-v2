@@ -52,6 +52,7 @@
         <div class="wp-cluster">
             <button type="button" class="btn btn--primary" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
             <a href="{{ $exportUrl }}" class="btn btn--surface">{{ __('time.export.button') }}</a>
+            <a href="{{ $printUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">{{ __('time.print.button') }}</a>
         </div>
     </div>
 

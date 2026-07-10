@@ -752,6 +752,38 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Aide — Présence",
+            "actions": [
+                {"label": "Vue en direct", "text": "Affiche qui est pointé, en pause ou non pointé. La liste se rafraîchit automatiquement toutes les 30 secondes."},
+                {"label": "Filtres", "text": "Filtrez par équipe, point de pointage ou recherche par nom."},
+                {"label": "Fermer le shift", "text": "Ferme un shift ouvert à l'heure actuelle si quelqu'un a oublié de pointer la sortie. Statut : <strong>Fermé (admin)</strong>."},
+                {"label": "Ouvert trop longtemps", "text": "Les shifts ouverts au-delà du seuil (16 h par défaut) affichent un avertissement, puis sont fermés automatiquement."},
+                {"label": "QR Clock Point", "text": "Les collaborateurs pointent via le QR du clock point. Identification par nom et icône."}
+            ]
+        },
+        "time.shifts": {
+            "title": "Aide — Heures",
+            "actions": [
+                {"label": "Période et filtres", "text": "Choisissez les dates et filtrez par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong>."},
+                {"label": "Exporter CSV", "text": "Téléchargez les shifts filtrés en CSV pour Excel ou la paie."},
+                {"label": "Imprimer", "text": "Ouvrez une feuille de temps imprimable. Utilisez <strong>Imprimer</strong> du navigateur pour un PDF."},
+                {"label": "Corriger", "text": "Un admin peut corriger les heures d'un shift fermé avec une raison obligatoire (audit)."},
+                {"label": "Fermer le shift", "text": "Les shifts ouverts peuvent aussi être fermés ici, comme sur l'écran Présence."},
+                {"label": "Statuts", "text": "<strong>Ouvert</strong>, <strong>Fermé</strong>, <strong>Fermé (admin)</strong>, <strong>Fermé (automatique)</strong>."}
+            ]
+        },
+        "time.clock_points": {
+            "title": "Aide — Clock Points",
+            "actions": [
+                {"label": "Qu'est-ce qu'un clock point ?", "text": "Un lieu de pointage physique avec son propre QR."},
+                {"label": "Imprimer le QR", "text": "Imprimez l'autocollant et installez-le à l'entrée ou sur le site."},
+                {"label": "Renouveler le QR", "text": "Générez un nouveau code ; l'ancien reste valable quelques jours (grâce), puis est bloqué."},
+                {"label": "Rotation QR", "text": "Intervalle en mois ; recommandation de renouvellement à un moment aléatoire."},
+                {"label": "Scans bloqués", "text": "Un QR expiré est refusé et journalisé ; alerte si tentatives dans les 7 derniers jours."},
+                {"label": "Actif / inactif", "text": "Désactivez temporairement un point de pointage."}
+            ]
+        },
         "legal": {
             "title": "Aide — Documents juridiques",
             "actions": [

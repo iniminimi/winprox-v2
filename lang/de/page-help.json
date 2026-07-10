@@ -752,6 +752,38 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Hilfe — Anwesenheit",
+            "actions": [
+                {"label": "Live-Übersicht", "text": "Zeigt eingestempelte, pausierende oder nicht eingestempelte Mitarbeitende. Aktualisiert sich alle 30 Sekunden."},
+                {"label": "Filter", "text": "Nach Team, Stempelpunkt oder Name filtern."},
+                {"label": "Schicht schließen", "text": "Offene Schicht jetzt schließen, wenn jemand vergessen hat auszustempeln. Status: <strong>Geschlossen (Admin)</strong>."},
+                {"label": "Zu lange offen", "text": "Schichten über der Schwelle (Standard 16 Std.) werden gewarnt und automatisch geschlossen."},
+                {"label": "Clock-Point-QR", "text": "Ein-/Ausstempeln per QR am Stempelpunkt. Identifikation per Name und Icon."}
+            ]
+        },
+        "time.shifts": {
+            "title": "Hilfe — Stunden",
+            "actions": [
+                {"label": "Zeitraum und Filter", "text": "Von-/Bis-Datum wählen und optional filtern. <strong>Anwenden</strong> klicken."},
+                {"label": "CSV exportieren", "text": "Gefilterte Schichten als CSV herunterladen."},
+                {"label": "Drucken", "text": "Druckbare Stundenzettel-Ansicht; im Browser als PDF speichern."},
+                {"label": "Korrigieren", "text": "Admin kann geschlossene Schichten mit Begründung korrigieren (Audit)." },
+                {"label": "Schicht schließen", "text": "Offene Schichten können hier wie unter Anwesenheit geschlossen werden."},
+                {"label": "Status", "text": "<strong>Offen</strong>, <strong>Geschlossen</strong>, <strong>Geschlossen (Admin)</strong>, <strong>Geschlossen (automatisch)</strong>."}
+            ]
+        },
+        "time.clock_points": {
+            "title": "Hilfe — Clock Points",
+            "actions": [
+                {"label": "Was ist ein Clock Point?", "text": "Physischer Stempelort mit eigenem QR-Aufkleber."},
+                {"label": "QR drucken", "text": "Aufkleber ausdrucken und am Eingang anbringen."},
+                {"label": "QR erneuern", "text": "Neuer Code; alter funktioniert noch einige Tage (Karenz), dann gesperrt."},
+                {"label": "QR-Rotation", "text": "Intervall in Monaten; zufällige Erneuerungsempfehlung."},
+                {"label": "Gesperrte Scans", "text": "Abgelaufener QR wird abgewiesen und protokolliert."},
+                {"label": "Aktiv / inaktiv", "text": "Stempelpunkt vorübergehend deaktivieren."}
+            ]
+        },
         "legal": {
             "title": "Hilfe — Rechtliche Dokumente",
             "actions": [

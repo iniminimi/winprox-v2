@@ -40,3 +40,12 @@ it('laadt paginahulp voor ESG-schermen', function (): void {
         ->and(PageHelp::for('esg.measurements'))->not->toBeNull()
         ->and(PageHelp::for('esg.measurements')['title'])->toBe('Hulp — ESG-metingenoverzicht');
 });
+
+it('laadt paginahulp voor Time-schermen', function (): void {
+    app()->setLocale('nl');
+
+    expect(PageHelp::for('time.presence'))->not->toBeNull()
+        ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
+        ->and(PageHelp::for('time.shifts'))->not->toBeNull()
+        ->and(PageHelp::for('time.clock_points'))->not->toBeNull();
+});

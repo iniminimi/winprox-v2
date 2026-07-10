@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Afdrukken",
+        "title": "Urenstaat",
+        "document_title": "Urenstaat — WinProx",
+        "period": "Periode :from t/m :to",
+        "total_net": "Totaal netto: :minutes min",
+        "empty": "Geen shifts in deze periode."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

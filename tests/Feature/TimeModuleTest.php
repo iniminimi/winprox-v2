@@ -41,6 +41,27 @@ it('laat een admin het time-aanwezigheidsscherm openen', function () {
         ->assertOk();
 });
 
+it('laat een admin een urenstaat afdrukken', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    $this->actingAs($admin)
+        ->get(route('time.shifts.print', [
+            'from' => now()->startOfMonth()->format('Y-m-d'),
+            'to' => now()->format('Y-m-d'),
+        ]))
+        ->assertOk()
+        ->assertSee(__('time.print.title'), false);
+});
+
 it('klokt in met lockForUpdate en weigert dubbele open shift', function () {
     [$tenant] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

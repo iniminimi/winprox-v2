@@ -77,6 +77,14 @@
             "status": "Status"
         }
     },
+    "print": {
+        "button": "Stampa",
+        "title": "Foglio ore",
+        "document_title": "Foglio ore — WinProx",
+        "period": "Periodo dal :from al :to",
+        "total_net": "Netto totale: :minutes min",
+        "empty": "Nessun turno in questo periodo."
+    },
     "clock_points": {
         "subtitle": "Beheer inkloklocaties en print QR-stickers.",
         "list_title": "Clock Points",

@@ -752,6 +752,38 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Aiuto — Presenze",
+            "actions": [
+                {"label": "Panoramica live", "text": "Mostra chi è timbrato, in pausa o non timbrato. Si aggiorna ogni 30 secondi."},
+                {"label": "Filtri", "text": "Filtra per team, punto timbratura o nome."},
+                {"label": "Chiudi turno", "text": "Chiude un turno aperto se qualcuno ha dimenticato di uscire. Stato: <strong>Chiuso (admin)</strong>."},
+                {"label": "Aperto troppo a lungo", "text": "Turni oltre la soglia (16 ore) mostrano avviso e chiusura automatica."},
+                {"label": "QR Clock Point", "text": "Timbratura tramite QR al punto. Identificazione con nome e icona."}
+            ]
+        },
+        "time.shifts": {
+            "title": "Aiuto — Ore",
+            "actions": [
+                {"label": "Periodo e filtri", "text": "Scegli date e filtra per team, operatore o clock point. Clicca <strong>Applica</strong>."},
+                {"label": "Esporta CSV", "text": "Scarica i turni filtrati in CSV."},
+                {"label": "Stampa", "text": "Apri foglio ore stampabile; salva come PDF dal browser."},
+                {"label": "Correggi", "text": "L'admin può correggere turni chiusi con motivo obbligatorio (audit)."},
+                {"label": "Chiudi turno", "text": "I turni aperti possono essere chiusi anche qui."},
+                {"label": "Stati", "text": "<strong>Aperto</strong>, <strong>Chiuso</strong>, <strong>Chiuso (admin)</strong>, <strong>Chiuso (automatico)</strong>."}
+            ]
+        },
+        "time.clock_points": {
+            "title": "Aiuto — Clock Points",
+            "actions": [
+                {"label": "Cos'è un clock point?", "text": "Luogo fisico di timbratura con QR dedicato."},
+                {"label": "Stampa QR", "text": "Stampa l'adesivo e applicalo all'ingresso."},
+                {"label": "Rinnova QR", "text": "Nuovo codice; il vecchio funziona ancora per alcuni giorni (grazia), poi bloccato."},
+                {"label": "Rotazione QR", "text": "Intervallo in mesi; raccomandazione di rinnovo casuale."},
+                {"label": "Scansioni bloccate", "text": "QR scaduto rifiutato e registrato."},
+                {"label": "Attivo / inattivo", "text": "Disattiva temporaneamente un punto timbratura."}
+            ]
+        },
         "legal": {
             "title": "Aiuto — Documenti legali",
             "actions": [

@@ -17,6 +17,7 @@ use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
 use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\WorkShiftExportController;
+use App\Http\Controllers\Time\WorkShiftTimesheetPrintController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -200,6 +201,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/shifts/export', WorkShiftExportController::class)->name('time.shifts.export');
+        Route::get('/time/shifts/print', WorkShiftTimesheetPrintController::class)->name('time.shifts.print');
         Route::get('/time/clock-points', ClockPointsIndex::class)->name('time.clock-points.index');
         Route::get('/time/clock-points/{clockPoint}/qr', ClockPointQrController::class)->name('time.clock-points.qr');
         Route::get('/team', Team::class)->name('team.index');

@@ -752,6 +752,89 @@
                 }
             ]
         },
+        "time.presence": {
+            "title": "Help — Presence",
+            "actions": [
+                {
+                    "label": "Live overview",
+                    "text": "Shows who is clocked in, on break, or not clocked in. The list refreshes automatically every 30 seconds."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter by team, clock point, or search by name. Useful for larger organisations with multiple clock locations."
+                },
+                {
+                    "label": "Close shift",
+                    "text": "Close an open shift at the current time when someone forgot to clock out. This is an admin action; the shift gets status <strong>Closed (admin)</strong>."
+                },
+                {
+                    "label": "Open too long",
+                    "text": "Shifts open longer than the threshold (default 16 hours) show a warning. After that threshold the system auto-closes them as <strong>Closed (automatic)</strong>."
+                },
+                {
+                    "label": "Clock Point QR",
+                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon — no separate login."
+                }
+            ]
+        },
+        "time.shifts": {
+            "title": "Help — Hours",
+            "actions": [
+                {
+                    "label": "Period and filters",
+                    "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
+                },
+                {
+                    "label": "Export CSV",
+                    "text": "Download filtered shifts as CSV (Excel-friendly, semicolon-separated). Ideal for payroll or planning tools."
+                },
+                {
+                    "label": "Print",
+                    "text": "Open a printable timesheet with the same filters. Use browser <strong>Print</strong> to save or share as PDF."
+                },
+                {
+                    "label": "Correct",
+                    "text": "For closed shifts, an admin can adjust clock-in/out times or break minutes with a required reason. Changes are recorded in the audit log."
+                },
+                {
+                    "label": "Close shift",
+                    "text": "Open shifts in this overview can also be force-closed, same as on the Presence screen."
+                },
+                {
+                    "label": "Statuses",
+                    "text": "<strong>Open</strong> — still clocked in. <strong>Closed</strong> — clocked out normally. <strong>Closed (admin)</strong> — manually closed by admin. <strong>Closed (automatic)</strong> — system closed a forgotten shift after the threshold."
+                }
+            ]
+        },
+        "time.clock_points": {
+            "title": "Help — Clock Points",
+            "actions": [
+                {
+                    "label": "What is a clock point?",
+                    "text": "A physical clock-in location with its own QR sticker. Workers scan it to clock in/out and register breaks."
+                },
+                {
+                    "label": "Print QR code",
+                    "text": "Open the printable QR page and attach the sticker at the entrance, warehouse, or other location. Each clock point has a unique code."
+                },
+                {
+                    "label": "Renew QR code",
+                    "text": "Generate a new QR when a sticker is lost or you suspect misuse. The old code still works for a few days (grace period), then it is blocked."
+                },
+                {
+                    "label": "QR rotation",
+                    "text": "Set an interval (months). The system recommends renewal at a random moment within that interval. Until you renew, clocking in still works — it is a recommendation, not a block."
+                },
+                {
+                    "label": "Blocked scans",
+                    "text": "When someone uses an expired QR, access is denied and logged. A warning appears here if there were blocked attempts in the last 7 days."
+                },
+                {
+                    "label": "Active / inactive",
+                    "text": "Deactivate a clock point temporarily (e.g. during off-site work). The portal then shows that clock-in is unavailable."
+                }
+            ]
+        },
         "legal": {
             "title": "Help — Legal documents",
             "actions": [
