@@ -124,7 +124,7 @@
         </div>
     @endif
 
-    <div class="wp-billing-section-head wp-billing-section-head--first">
+    <div class="wp-billing-section-head">
         <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
         <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
     </div>
