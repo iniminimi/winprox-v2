@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard, optional ESG module and settings."
+            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard, optional ESG module, optional Time module and settings."
         },
         "internet_portal": {
-            "title": "Two QR codes and the field portal",
-            "intro": "Help for the unit QR and team QR portals on site: sign-in, issues, tasks, photos and team leader features."
+            "title": "QR codes on site",
+            "intro": "Help for unit QR and Clock Point QR on site: sign-in, issues, tasks, photos and team leader features."
         }
     },
     "statuses": "Statuses",
@@ -55,31 +55,31 @@
     "step_2_title": "Set up locations & units",
     "step_2_text": "Group units into categories (for example: drills, sanitary, fitness equipment, office or electricity). These categories help filter and organise your assets and are fully tailored to your sector. By linking teams to specific categories, WinProx ensures tasks are always picked up by the right team. Additionally, add locations (such as sites, buildings or floors) and create your units per location: these are the physical machines, spaces or objects for which issues and tasks are registered. Locations and units can also be uploaded via a bulk import (CSV file).",
     "step_3_title": "Print & hang QR codes",
-    "step_3_text": "Print the QR codes from the detail page of the location or unit and attach them in a clearly visible place (for example on machines, printers, office furniture or in rooms). Users scan the unit QR to directly open the portal, where they can submit issues and consult documents or announcements. Workers scan the team QR to link or activate dynamic tokens, record the GPS location of the unit and take photos. Additionally, they can start and complete tasks via this route, including adding photos.",
+    "step_3_text": "Print the unit QR from the location or unit detail page and the Clock Point QR from the team page. Attach both in a clearly visible place (for example on machines, printers, office furniture or at the entrance). Users scan the unit QR to directly open the portal, where they can submit issues and consult documents or announcements. Workers first scan the Clock Point QR to sign in (name + icon). They then scan the unit QR on site to record GPS, take photos and start or complete tasks. With the optional Time module they can also clock in and out via the Clock Point QR.",
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via a QR scan or manual entry. For each issue, a task is automatically created and directly linked to the responsible team. It is possible to create multiple tasks for one issue (for example for both the technical team and the cleaning crew). Simply set a deadline and track progress closely via the dashboard and the calendar.",
     "step_5_title": "Follow up & close",
-    "step_5_text": "Workers carry out tasks on location by scanning the team QR. Once all tasks for an issue have been handled, the administrator can definitively close the issue. All actions remain clearly visible in the audit trail. With the optional ESG module you can also record measurement values during recurring inspections — see the chapters ESG measurements and Measurements.",
+    "step_5_text": "Workers carry out tasks on site via the unit QR portal (after signing in via Clock Point QR). Once all tasks for an issue have been handled, the administrator can definitively close the issue. All actions remain clearly visible in the audit trail. With the optional ESG module you can also record measurement values during recurring inspections — see the chapters ESG measurements and Measurements. With the optional Time module you record presence, breaks and work shifts — see the chapters Presence and Clock Points.",
     "hub": {
         "title": "Manuals",
         "subtitle": "Choose the manual that fits your role",
         "general": "General manual",
-        "general_desc": "Full WinProx app for administrators and staff, including optional ESG module and QR portal help — print or save as PDF.",
+        "general_desc": "Full WinProx app for administrators and staff, including optional ESG and Time modules and QR portal help — print or save as PDF.",
         "workers": "Workers manual",
-        "workers_desc": "Team QR and unit QR on site — sign in, tasks and photos.",
+        "workers_desc": "Clock Point QR and unit QR on site — sign in, tasks and photos.",
         "teamleaders": "Team leader manual",
-        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the team portal."
+        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the Clock Point portal."
     },
     "workers": {
         "cover": {
             "title": "Workers manual",
-            "subtitle": "Team QR and unit QR — tasks on site"
+            "subtitle": "Clock Point QR and unit QR — tasks on site"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Team leader manual",
-            "subtitle": "Team portal — coordinate colleagues and tasks"
+            "subtitle": "Clock Point portal — coordinate colleagues and tasks"
         }
     }
 }

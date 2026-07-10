@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Équipes et utilisateurs jusqu'aux paramètres",
-            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord, module ESG en option et paramètres."
+            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord, module ESG en option, module Time en option et paramètres."
         },
         "internet_portal": {
-            "title": "Deux QR codes et le portail terrain",
-            "intro": "Aide pour les portails QR unité et QR équipe sur site : connexion, signalements, tâches, photos et fonctions chef d'équipe."
+            "title": "QR codes sur le terrain",
+            "intro": "Aide pour le QR unité et le QR Clock Point sur site : connexion, signalements, tâches, photos et fonctions chef d'équipe."
         }
     },
     "statuses": "Statuts",
@@ -55,31 +55,31 @@
     "step_2_title": "Configurer les sites & unités",
     "step_2_text": "Regroupez les unités en catégories (par exemple : perceuses, sanitaire, équipements fitness, bureau ou électricité). Ces catégories aident à filtrer et organiser vos actifs et sont entièrement adaptées à votre secteur. En liant des équipes à des catégories spécifiques, WinProx garantit que les tâches sont toujours prises en charge par la bonne équipe. Ajoutez également des sites (tels que sites, bâtiments ou étages) et créez vos unités par site : ce sont les machines, espaces ou objets physiques pour lesquels des signalements et tâches sont enregistrés. Les sites et unités peuvent également être importés via un import en masse (fichier CSV).",
     "step_3_title": "Imprimer & accrocher les QR",
-    "step_3_text": "Imprimez les QR codes depuis la page de détail du site ou de l'unité et fixez-les à un endroit bien visible (par exemple sur les machines, imprimantes, mobilier de bureau ou dans les salles). Les utilisateurs scannent le QR d'unité pour ouvrir directement le portail, où ils peuvent faire des signalements et consulter des documents ou des annonces. Les exécutants scannent le QR d'équipe pour lier ou activer des jetons dynamiques, enregistrer la localisation GPS de l'unité et prendre des photos. De plus, ils peuvent démarrer et clôturer des tâches via cette voie, y compris l'ajout de photos.",
+    "step_3_text": "Imprimez le QR unité depuis la page de détail du site ou de l'unité et le QR Clock Point depuis la page équipe. Fixez-les à un endroit bien visible (par exemple sur les machines, imprimantes, mobilier de bureau ou à l'entrée). Les utilisateurs scannent le QR unité pour ouvrir directement le portail, où ils peuvent faire des signalements et consulter des documents ou des annonces. Les exécutants scannent d'abord le QR Clock Point pour se connecter (nom + icône). Ensuite, ils scannent le QR unité sur site pour enregistrer le GPS, prendre des photos et démarrer ou clôturer des tâches. Avec le module Time en option, ils peuvent aussi pointer via le QR Clock Point.",
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent via un scan QR ou une saisie manuelle. Pour chaque signalement, une tâche est automatiquement créée et directement liée à l'équipe responsable. Il est possible de créer plusieurs tâches pour un signalement (par exemple pour l'équipe technique et l'équipe de nettoyage). Définissez simplement une date limite et suivez de près la progression via le tableau de bord et le calendrier.",
     "step_5_title": "Suivre & clôturer",
-    "step_5_text": "Les exécutants exécutent les tâches sur place en scannant le QR d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Toutes les actions restent clairement visibles dans l'historique. Avec le module ESG en option, vous pouvez en outre enregistrer des valeurs de mesure lors d'inspections récurrentes — voir les chapitres Mesures ESG et Mesures.",
+    "step_5_text": "Les exécutants exécutent les tâches sur place via le portail QR unité (après connexion via QR Clock Point). Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Toutes les actions restent clairement visibles dans l'historique. Avec le module ESG en option, vous pouvez en outre enregistrer des valeurs de mesure lors d'inspections récurrentes — voir les chapitres Mesures ESG et Mesures. Avec le module Time en option, vous enregistrez présence, pauses et shifts — voir les chapitres Présence et Clock Points.",
     "hub": {
         "title": "Manuels",
         "subtitle": "Choisissez le manuel adapté à votre rôle",
         "general": "Manuel général",
-        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec module ESG en option et aide des portails QR — imprimer ou enregistrer en PDF.",
+        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec modules ESG et Time en option et aide des portails QR — imprimer ou enregistrer en PDF.",
         "workers": "Manuel exécutants",
-        "workers_desc": "QR équipe et QR unité sur le terrain — connexion, tâches et photos.",
+        "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, tâches et photos.",
         "teamleaders": "Manuel chefs d'équipe",
-        "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail équipe."
+        "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail Clock Point."
     },
     "workers": {
         "cover": {
             "title": "Manuel exécutants",
-            "subtitle": "QR équipe et QR unité — tâches sur le terrain"
+            "subtitle": "QR Clock Point et QR unité — tâches sur le terrain"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Manuel chefs d'équipe",
-            "subtitle": "Portail équipe — coordonner collègues et tâches"
+            "subtitle": "Portail Clock Point — coordonner collègues et tâches"
         }
     }
 }

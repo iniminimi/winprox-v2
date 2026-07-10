@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Teams und Benutzer bis Einstellungen",
-            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Dashboard, optionales ESG-Modul und Einstellungen."
+            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Dashboard, optionales ESG-Modul, optionales Time-Modul und Einstellungen."
         },
         "internet_portal": {
-            "title": "Zwei QR-Codes und das Feldportal",
-            "intro": "Hilfe zum Unit-QR- und Team-QR-Portal vor Ort: Anmeldung, Meldungen, Aufgaben, Fotos und Teamleiter-Funktionen."
+            "title": "QR-Codes vor Ort",
+            "intro": "Hilfe zu Unit-QR und Clock Point QR vor Ort: Anmeldung, Meldungen, Aufgaben, Fotos und Teamleiter-Funktionen."
         }
     },
     "statuses": "Status",
@@ -55,31 +55,31 @@
     "step_2_title": "Standorte & Einheiten einrichten",
     "step_2_text": "Gruppieren Sie Einheiten in Kategorien (zum Beispiel: Bohrmaschinen, Sanitär, Fitnessgeräte, Büro oder Elektrik). Diese Kategorien helfen beim Filtern und Organisieren Ihrer Assets und sind vollständig auf Ihren Sektor abgestimmt. Durch die Verknüpfung von Teams mit spezifischen Kategorien stellt WinProx sicher, dass Aufgaben immer vom richtigen Team übernommen werden. Fügen Sie außerdem Standorte hinzu (wie Sites, Gebäude oder Etagen) und erstellen Sie pro Standort Ihre Einheiten: dies sind die physischen Maschinen, Räume oder Objekte, für die Meldungen und Aufgaben registriert werden. Standorte und Einheiten können auch über einen Massenimport (CSV-Datei) hochgeladen werden.",
     "step_3_title": "QR-Codes drucken & aufhängen",
-    "step_3_text": "Drucken Sie die QR-Codes über die Detailseite des Standorts oder der Einheit und befestigen Sie sie an gut sichtbarer Stelle (zum Beispiel auf Maschinen, Druckern, Büromöbeln oder in Räumen). Benutzer scannen den Einheiten-QR, um direkt das Portal zu öffnen, wo sie Meldungen machen können und Dokumente oder Ankündigungen einsehen können. Mitarbeiter scannen den Team-QR, um dynamische Token zu verknüpfen oder zu aktivieren, den GPS-Standort der Einheit festzulegen und Fotos zu machen. Außerdem können sie über diesen Weg Aufgaben starten und abhandeln, einschließlich des Hinzufügens von Fotos.",
+    "step_3_text": "Drucken Sie den Unit-QR über die Detailseite des Standorts oder der Einheit und den Clock Point QR über die Teamseite. Befestigen Sie beide an gut sichtbarer Stelle (zum Beispiel auf Maschinen, Druckern, Büromöbeln oder am Eingang). Benutzer scannen den Unit-QR, um direkt das Portal zu öffnen, wo sie Meldungen machen und Dokumente oder Ankündigungen einsehen können. Mitarbeiter scannen zuerst den Clock Point QR, um sich anzumelden (Name + Symbol). Anschließend scannen sie vor Ort den Unit-QR, um GPS zu erfassen, Fotos zu machen und Aufgaben zu starten oder abzuschließen. Mit dem optionalen Time-Modul können sie auch über den Clock Point QR ein- und ausstempeln.",
     "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
     "step_4_text": "Meldungen kommen über einen QR-Scan oder manuelle Eingabe herein. Für jede Meldung wird automatisch eine Aufgabe erstellt, die direkt dem verantwortlichen Team zugeordnet wird. Es ist möglich, mehrere Aufgaben für eine Meldung zu erstellen (zum Beispiel sowohl für das technische Team als auch für das Reinigungsteam). Legen Sie einfach eine Frist fest und verfolgen Sie den Fortschritt genau über das Dashboard und den Kalender.",
     "step_5_title": "Nachverfolgen & abschließen",
-    "step_5_text": "Mitarbeiter führen Aufgaben vor Ort aus, indem sie den Team-QR scannen. Sobald alle Aufgaben für eine Meldung abgehandelt sind, kann der Administrator die Meldung endgültig schließen. Alle Handlungen bleiben übersichtlich in der Audit-Trail sichtbar. Mit dem optionalen ESG-Modul können Sie zusätzlich Messwerte bei wiederkehrenden Inspektionen erfassen — siehe die Kapitel ESG-Messungen und Messungen.",
+    "step_5_text": "Mitarbeiter führen Aufgaben vor Ort über das Unit-QR-Portal aus (nach Anmeldung über Clock Point QR). Sobald alle Aufgaben für eine Meldung abgehandelt sind, kann der Administrator die Meldung endgültig schließen. Alle Handlungen bleiben übersichtlich in der Audit-Trail sichtbar. Mit dem optionalen ESG-Modul können Sie zusätzlich Messwerte bei wiederkehrenden Inspektionen erfassen — siehe die Kapitel ESG-Messungen und Messungen. Mit dem optionalen Time-Modul erfassen Sie Anwesenheit, Pausen und Arbeitsschichten — siehe die Kapitel Anwesenheit und Clock Points.",
     "hub": {
         "title": "Handbücher",
         "subtitle": "Wählen Sie das Handbuch für Ihre Rolle",
         "general": "Allgemeines Handbuch",
-        "general_desc": "Vollständige WinProx-App für Administratoren und Mitarbeiter, inkl. optionalem ESG-Modul und QR-Portal-Hilfe — drucken oder als PDF speichern.",
+        "general_desc": "Vollständige WinProx-App für Administratoren und Mitarbeiter, inkl. optionalem ESG- und Time-Modul und QR-Portal-Hilfe — drucken oder als PDF speichern.",
         "workers": "Mitarbeiter-Handbuch",
-        "workers_desc": "Team-QR und Einheiten-QR vor Ort — Anmeldung, Aufgaben und Fotos.",
+        "workers_desc": "Clock Point QR und Unit-QR vor Ort — Anmeldung, Aufgaben und Fotos.",
         "teamleaders": "Teamleiter-Handbuch",
-        "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Teamportal koordinieren."
+        "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Clock Point-Portal koordinieren."
     },
     "workers": {
         "cover": {
             "title": "Mitarbeiter-Handbuch",
-            "subtitle": "Team-QR und Einheiten-QR — Aufgaben vor Ort"
+            "subtitle": "Clock Point QR und Unit-QR — Aufgaben vor Ort"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Teamleiter-Handbuch",
-            "subtitle": "Teamportal — Kollegen und Aufgaben koordinieren"
+            "subtitle": "Clock Point-Portal — Kollegen und Aufgaben koordinieren"
         }
     }
 }

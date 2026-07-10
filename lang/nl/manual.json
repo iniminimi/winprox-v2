@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module en instellingen."
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module, optionele Time-module en instellingen."
         },
         "internet_portal": {
-            "title": "Twee QR-codes en het veldportaal",
-            "intro": "Hulp bij het unit-QR- en team-QR-portaal op locatie: aanmelden, meldingen, taken, foto's en teamleader-functies."
+            "title": "QR-codes op de werkvloer",
+            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, taken, foto's en teamleader-functies."
         }
     },
     "statuses": "Statussen",
@@ -55,31 +55,31 @@
     "step_2_title": "Locaties & units inrichten",
     "step_2_text": "Groepeer units in categorieën (bijvoorbeeld: boormachines, sanitair, fitnesstoestellen, kantoor of elektriciteit). Deze categorieën helpen bij het filteren en organiseren van je assets en zijn volledig afgestemd op jouw sector. Door teams aan specifieke categorieën te koppelen, zorgt WinProx ervoor dat taken altijd door het juiste team worden opgepakt. Voeg daarnaast locaties toe (zoals sites, gebouwen of verdiepingen) en maak per locatie je units aan: dit zijn de fysieke machines, ruimtes of objecten waarvoor meldingen en taken geregistreerd worden. Ook locaties en units kunnen via een bulk-import (CSV-bestand) worden geüpload.",
     "step_3_title": "QR-codes afdrukken & ophangen",
-    "step_3_text": "Druk de QR-codes af via de detailpagina van de locatie of unit en bevestig ze op een goed zichtbare plek (bijvoorbeeld op machines, printers, kantoormeubilair of in ruimtes). Gebruikers scannen de unit-QR om direct het portaal te openen, waar zij meldingen kunnen doen en documenten of mededelingen kunnen raadplegen. Uitvoerders scannen de team-QR om dynamische tokens te koppelen of activeren, de GPS-locatie van de unit vast te leggen en foto's te maken. Daarnaast kunnen zij via deze weg taken starten en afhandelen, inclusief het toevoegen van foto's.",
+    "step_3_text": "Druk de unit-QR af via de detailpagina van de locatie of unit en de Clock Point QR via de teampagina. Bevestig beide op een goed zichtbare plek (bijvoorbeeld op machines, printers, kantoormeubilair of bij de ingang). Gebruikers scannen de unit-QR om direct het portaal te openen, waar zij meldingen kunnen doen en documenten of mededelingen kunnen raadplegen. Uitvoerders scannen eerst de Clock Point QR om zich aan te melden (naam + icoon). Daarna scannen zij de unit-QR op locatie om de GPS vast te leggen, foto's te maken en taken te starten of af te ronden. Met de optionele Time-module kunnen zij ook in- en uitklokken via de Clock Point QR.",
     "step_4_title": "Meldingen ontvangen & taken aansturen",
     "step_4_text": "Meldingen komen binnen via een QR-scan of handmatige invoer. Voor elke melding wordt automatisch een taak aangemaakt, die direct wordt gekoppeld aan het verantwoordelijke team. Het is mogelijk om meerdere taken voor één melding aan te maken (bijvoorbeeld voor zowel het technische team als de schoonmaakploeg). Stel eenvoudig een deadline in en volg de voortgang op de voet via het dashboard en de kalender.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders voeren taken uit op locatie door de team-QR te scannen. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Alle handelingen blijven overzichtelijk inzichtelijk in de audittrail. Met de optionele ESG-module kunt u daarnaast meetwaarden laten vastleggen bij terugkerende inspecties — zie de hoofdstukken ESG-metingen en Metingen.",
+    "step_5_text": "Uitvoerders voeren taken uit op locatie via het unit-QR-portaal (na inloggen via Clock Point QR). Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Alle handelingen blijven overzichtelijk inzichtelijk in de audittrail. Met de optionele ESG-module kunt u daarnaast meetwaarden laten vastleggen bij terugkerende inspecties — zie de hoofdstukken ESG-metingen en Metingen. Met de optionele Time-module registreert u aanwezigheid, pauzes en werkshifts — zie de hoofdstukken Aanwezigheid en Clock Points.",
     "hub": {
         "title": "Handleidingen",
         "subtitle": "Kies de handleiding die past bij jouw rol",
         "general": "Algemene handleiding",
-        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief optionele ESG-module en QR-portaalhulp — afdrukken of opslaan als PDF.",
+        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief optionele ESG- en Time-module en QR-portaalhulp — afdrukken of opslaan als PDF.",
         "workers": "Handleiding uitvoerders",
-        "workers_desc": "Team-QR en unit-QR op de werkvloer — aanmelden, taken en foto's.",
+        "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, taken en foto's.",
         "teamleaders": "Handleiding teamleaders",
-        "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het teamportaal."
+        "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het Clock Point-portaal."
     },
     "workers": {
         "cover": {
             "title": "Handleiding uitvoerders",
-            "subtitle": "Team-QR en unit-QR — taken op locatie"
+            "subtitle": "Clock Point QR en unit-QR — taken op locatie"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Handleiding teamleaders",
-            "subtitle": "Teamportaal — collega's en taken coördineren"
+            "subtitle": "Clock Point portaal — collega's en taken coördineren"
         }
     }
 }

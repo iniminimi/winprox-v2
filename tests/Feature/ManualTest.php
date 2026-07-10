@@ -120,7 +120,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 
     $expectedAnchors = array_map(
         fn (int $n) => 'Hoofdstuk '.$n,
-        range(1, 24),
+        range(1, 28),
     );
 
     $expectedChapterIds = [
@@ -136,10 +136,14 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-dashboard',
         'chapter-esg-indicators',
         'chapter-esg-measurements',
+        'chapter-time-presence',
+        'chapter-time-shifts',
+        'chapter-time-clock_points',
         'chapter-settings',
         'chapter-settings-api',
         'chapter-statuses-admin-portal',
         'chapter-portal-worker-qr',
+        'chapter-portal-time',
         'chapter-portal-unit',
         'chapter-portal-team',
         'chapter-portal-worker-photos',
@@ -391,7 +395,7 @@ it('toont de uitvoerdershandleiding voor een admin', function () {
         ->get(route('manual.workers'))
         ->assertOk()
         ->assertSee('Handleiding uitvoerders')
-        ->assertSee('Twee QR-codes');
+        ->assertSee('Clock Point QR');
 });
 
 it('toont de teamleader-handleiding voor een medewerker', function () {

@@ -32,12 +32,16 @@ class ManualIndex extends Component
         'dashboard',
         'esg.indicators',
         'esg.measurements',
+        'time.presence',
+        'time.shifts',
+        'time.clock_points',
         'settings',
         'settings.api',
     ];
 
     private const INTERNET_PORTAL_CHAPTER_KEYS = [
         'portal.worker.qr',
+        'portal.time',
         'portal.unit',
         'portal.team',
         'portal.worker.photos',

@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Equipos y usuarios a través de la configuración",
-            "intro": "Capítulos sobre el portal de administración con sesión iniciada: equipos, ubicaciones, incidencias, tareas, calendario, panel de control, módulo ESG opcional y configuración."
+            "intro": "Capítulos sobre el portal de administración con sesión iniciada: equipos, ubicaciones, incidencias, tareas, calendario, panel de control, módulo ESG opcional, módulo Time opcional y configuración."
         },
         "internet_portal": {
-            "title": "Dos códigos QR y el portal de campo",
-            "intro": "Ayuda para los portales QR de unidad y de equipo en el lugar: inicio de sesión, incidencias, tareas, fotos y funciones de jefe de equipo."
+            "title": "Códigos QR en el lugar",
+            "intro": "Ayuda para el QR de unidad y el QR Clock Point en el lugar: inicio de sesión, incidencias, tareas, fotos y funciones de jefe de equipo."
         }
     },
     "statuses": "Estados",
@@ -55,31 +55,31 @@
     "step_2_title": "Configurar ubicaciones y unidades",
     "step_2_text": "Agrupe unidades en categorías (por ejemplo: taladros, sanitario, equipos de fitness, oficina o electricidad). Estas categorías ayudan a filtrar y organizar sus activos y se adaptan completamente a su sector. Al vincular equipos a categorías específicas, WinProx garantiza que las tareas las recoja siempre el equipo correcto. Además, añada ubicaciones (como sitios, edificios o plantas) y cree sus unidades por ubicación: son las máquinas, espacios u objetos físicos para los que se registran incidencias y tareas. Las ubicaciones y unidades también se pueden cargar mediante importación masiva (archivo CSV).",
     "step_3_title": "Imprimir y colocar códigos QR",
-    "step_3_text": "Imprima los códigos QR desde la página de detalle de la ubicación o unidad y colóquelos en un lugar claramente visible (por ejemplo en máquinas, impresoras, mobiliario de oficina o en salas). Los usuarios escanean el QR de la unidad para abrir directamente el portal, donde pueden enviar incidencias y consultar documentos o anuncios. Los trabajadores escanean el QR del equipo para vincular o activar tokens dinámicos, registrar la ubicación GPS de la unidad y tomar fotos. Además, pueden iniciar y completar tareas por esta vía, incluyendo la adición de fotos.",
+    "step_3_text": "Imprima el QR de la unidad desde la página de detalle de la ubicación o unidad y el QR Clock Point desde la página del equipo. Colóquelos en un lugar claramente visible (por ejemplo en máquinas, impresoras, mobiliario de oficina o en la entrada). Los usuarios escanean el QR de la unidad para abrir directamente el portal, donde pueden enviar incidencias y consultar documentos o anuncios. Los trabajadores escanean primero el QR Clock Point para iniciar sesión (nombre + icono). Después escanean el QR de la unidad en el lugar para registrar el GPS, tomar fotos e iniciar o completar tareas. Con el módulo Time opcional también pueden fichar entrada y salida mediante el QR Clock Point.",
     "step_4_title": "Recibir incidencias y asignar tareas",
     "step_4_text": "Las incidencias llegan mediante un escaneo QR o entrada manual. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia (por ejemplo para el equipo técnico y el de limpieza). Establezca simplemente una fecha límite y siga el progreso de cerca mediante el panel de control y el calendario.",
     "step_5_title": "Seguimiento y cierre",
-    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar escaneando el QR del equipo. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Todas las acciones permanecen claramente visibles en el registro de auditoría. Con el módulo ESG opcional puede registrar además valores de medición en inspecciones recurrentes — véase los capítulos Mediciones ESG y Mediciones.",
+    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar mediante el portal QR de la unidad (tras iniciar sesión con el QR Clock Point). Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Todas las acciones permanecen claramente visibles en el registro de auditoría. Con el módulo ESG opcional puede registrar además valores de medición en inspecciones recurrentes — véase los capítulos Mediciones ESG y Mediciones. Con el módulo Time opcional registra presencia, pausas y turnos — véase los capítulos Presencia y Clock Points.",
     "hub": {
         "title": "Manuales",
         "subtitle": "Elija el manual que se ajuste a su rol",
         "general": "Manual general",
-        "general_desc": "Aplicación WinProx completa para administradores y personal, con módulo ESG opcional y ayuda del portal QR — imprimir o guardar como PDF.",
+        "general_desc": "Aplicación WinProx completa para administradores y personal, con módulos ESG y Time opcionales y ayuda del portal QR — imprimir o guardar como PDF.",
         "workers": "Manual de trabajadores",
-        "workers_desc": "QR de equipo y QR de unidad en el lugar — inicio de sesión, tareas y fotos.",
+        "workers_desc": "QR Clock Point y QR de unidad en el lugar — inicio de sesión, tareas y fotos.",
         "teamleaders": "Manual de jefe de equipo",
-        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal de equipo."
+        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point."
     },
     "workers": {
         "cover": {
             "title": "Manual de trabajadores",
-            "subtitle": "QR de equipo y QR de unidad — tareas en el lugar"
+            "subtitle": "QR Clock Point y QR de unidad — tareas en el lugar"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Manual de jefe de equipo",
-            "subtitle": "Portal de equipo — coordinar colegas y tareas"
+            "subtitle": "Portal Clock Point — coordinar colegas y tareas"
         }
     }
 }

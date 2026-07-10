@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Team e utenti tramite impostazioni",
-            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, dashboard, modulo ESG opzionale e impostazioni."
+            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, dashboard, modulo ESG opzionale, modulo Time opzionale e impostazioni."
         },
         "internet_portal": {
-            "title": "Due codici QR e il portale sul campo",
-            "intro": "Aiuto per il QR unità e il QR team sul posto: accesso, segnalazioni, attività, foto e funzioni caposquadra."
+            "title": "Codici QR sul campo",
+            "intro": "Aiuto per QR unità e QR Clock Point sul posto: accesso, segnalazioni, attività, foto e funzioni caposquadra."
         }
     },
     "statuses": "Stati",
@@ -55,31 +55,31 @@
     "step_2_title": "Configura sedi e unità",
     "step_2_text": "Raggruppi le unità in categorie (ad esempio: trapani, sanitari, attrezzature fitness, ufficio o elettricità). Queste categorie aiutano a filtrare e organizzare i Suoi asset e sono completamente adattate al Suo settore. Collegando i team a categorie specifiche, WinProx garantisce che le attività siano sempre prese in carico dal team giusto. Inoltre, aggiunga sedi (come siti, edifici o piani) e crei le unità per sede: queste sono le macchine, gli spazi o gli oggetti fisici per cui vengono registrate segnalazioni e attività. Sedi e unità possono anche essere caricate tramite importazione massiva (file CSV).",
     "step_3_title": "Stampa e appendi codici QR",
-    "step_3_text": "Stampi i codici QR dalla pagina di dettaglio della sede o dell'unità e li appenda in un luogo ben visibile (ad esempio su macchine, stampanti, mobili d'ufficio o nelle stanze). Gli utenti scansionano il QR unità per aprire direttamente il portale, dove possono inviare segnalazioni e consultare documenti o annunci. I lavoratori scansionano il QR team per collegare o attivare token dinamici, registrare la posizione GPS dell'unità e scattare foto. Inoltre, possono avviare e completare attività tramite questo percorso, incluso l'aggiunta di foto.",
+    "step_3_text": "Stampi il QR unità dalla pagina di dettaglio della sede o dell'unità e il QR Clock Point dalla pagina team. Li appenda in un luogo ben visibile (ad esempio su macchine, stampanti, mobili d'ufficio o all'ingresso). Gli utenti scansionano il QR unità per aprire direttamente il portale, dove possono inviare segnalazioni e consultare documenti o annunci. I lavoratori scansionano prima il QR Clock Point per accedere (nome + icona). Poi scansionano il QR unità sul posto per registrare il GPS, scattare foto e avviare o completare attività. Con il modulo Time opzionale possono anche timbrare entrata e uscita tramite il QR Clock Point.",
     "step_4_title": "Ricevi segnalazioni e assegna attività",
     "step_4_text": "Le segnalazioni arrivano tramite scansione QR o inserimento manuale. Per ogni segnalazione viene creata automaticamente un'attività collegata direttamente al team responsabile. È possibile creare più attività per una segnalazione (ad esempio per il team tecnico e per la squadra di pulizia). Imposti semplicemente una scadenza e segua l'avanzamento da vicino tramite dashboard e calendario.",
     "step_5_title": "Segui e chiudi",
-    "step_5_text": "I lavoratori eseguono le attività sul posto scansionando il QR team. Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Tutte le azioni restano chiaramente visibili nel registro di audit. Con il modulo ESG opzionale può inoltre registrare valori di misurazione durante ispezioni ricorrenti — vedi i capitoli Misurazioni ESG e Misurazioni.",
+    "step_5_text": "I lavoratori eseguono le attività sul posto tramite il portale QR unità (dopo l'accesso tramite QR Clock Point). Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Tutte le azioni restano chiaramente visibili nel registro di audit. Con il modulo ESG opzionale può inoltre registrare valori di misurazione durante ispezioni ricorrenti — vedi i capitoli Misurazioni ESG e Misurazioni. Con il modulo Time opzionale registra presenza, pause e turni — vedi i capitoli Presenza e Clock Points.",
     "hub": {
         "title": "Manuali",
         "subtitle": "Scelga il manuale adatto al Suo ruolo",
         "general": "Manuale generale",
-        "general_desc": "App WinProx completa per amministratori e personale, con modulo ESG opzionale e aiuto sul portale QR — stampi o salvi come PDF.",
+        "general_desc": "App WinProx completa per amministratori e personale, con moduli ESG e Time opzionali e aiuto sul portale QR — stampi o salvi come PDF.",
         "workers": "Manuale lavoratori",
-        "workers_desc": "Team QR e unità QR sul posto — accesso, attività e foto.",
+        "workers_desc": "QR Clock Point e QR unità sul posto — accesso, attività e foto.",
         "teamleaders": "Manuale caposquadra",
-        "teamleaders_desc": "Rilascia icone, gestisca lavoratori e coordini attività tramite il portale team."
+        "teamleaders_desc": "Rilascia icone, gestisca lavoratori e coordini attività tramite il portale Clock Point."
     },
     "workers": {
         "cover": {
             "title": "Manuale lavoratori",
-            "subtitle": "Team QR e unità QR — attività sul posto"
+            "subtitle": "QR Clock Point e QR unità — attività sul posto"
         }
     },
     "teamleaders": {
         "cover": {
             "title": "Manuale caposquadra",
-            "subtitle": "Portale team — coordini colleghi e attività"
+            "subtitle": "Portale Clock Point — coordini colleghi e attività"
         }
     }
 }

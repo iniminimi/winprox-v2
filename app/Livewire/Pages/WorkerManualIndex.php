@@ -19,6 +19,7 @@ class WorkerManualIndex extends Component
 
     private const CHAPTER_KEYS = [
         'portal.worker.qr',
+        'portal.time',
         'portal.team',
         'portal.unit',
         'portal.worker.photos',
