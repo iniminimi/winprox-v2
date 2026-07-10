@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Taak toevoegen",
-                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie en kan de taak via hun team-QR starten."
+                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie. Uitvoerders starten taken via het unit-QR-portaal nadat ze zijn ingelogd via de Clock Point QR."
                 },
                 {
                     "label": "Update plaatsen",
@@ -115,7 +115,7 @@
                     "text": "Klik op een taak voor detail, statuswijziging en koppeling naar de melding."
                 }
             ],
-            "status_note": "Statussen worden vaak automatisch bijgewerkt via het team-QR veldportaal. Je kan ze ook handmatig aanpassen.",
+            "status_note": "Statussen worden vaak automatisch bijgewerkt via het unit-QR-portaal. Je kan ze ook handmatig aanpassen.",
             "statuses": {
                 "new": "Taak is aangemaakt en wacht op start door het team.",
                 "in_progress": "Het team is bezig met de uitvoering.",
@@ -143,7 +143,7 @@
                     "text": "Ga naar de gekoppelde melding voor context, foto's en extra taken."
                 }
             ],
-            "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het team-QR portaal.",
+            "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het unit-QR-portaal (na inloggen via Clock Point QR).",
             "statuses": {
                 "new": "Nog niet gestart op locatie.",
                 "in_progress": "Team is bezig.",
@@ -243,12 +243,12 @@
                     "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Print de Team QR-code of e-mail de link naar een collega. Via deze QR-code kan een uitvoerder het veldportaal openen om zo ter plaatse taken af te handelen na het scannen van de unit QR-code."
+                    "label": "Clock Point QR-code",
+                    "text": "Op Gebruikers staat altijd de knop <strong>Clock Point QR-code</strong>. Daarmee opent u de printbare QR voor inloggen. Zonder Time-module wordt automatisch een standaard clock point aangemaakt; met Time-module linkt de knop naar het scherm Clock Points voor meerdere inkloklocaties."
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen login; ze melden zich aan via team-QR met naam, voornaam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
+                    "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
                 },
                 {
                     "label": "Sorteervolgorde",
@@ -256,7 +256,7 @@
                 },
                 {
                     "label": "Hoe lang blijven uitvoerders aangemeld?",
-                    "text": "Kies hoe lang een uitvoerder ingelogd blijft na het scannen van de team-QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
+                    "text": "Kies hoe lang een uitvoerder ingelogd blijft na het scannen van de Clock Point QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
                 },
                 {
                     "label": "Icoon resetten",
@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "Uitvoerder deactiveren",
-                    "text": "Schakel een uitvoerder uit zodat deze zich niet meer kan aanmelden via team-QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
+                    "text": "Schakel een uitvoerder uit zodat deze zich niet meer kan aanmelden via Clock Point QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
                 },
                 {
                     "label": "Uitvoerder verwijderen",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Recente CSV-imports",
-                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op 'Import terugdraaien' om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via team-QR (en dus een actief toestel hebben) blijven staan en worden als 'heeft toestellen' aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
+                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op 'Import terugdraaien' om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en worden als 'heeft toestellen' aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
                 }
             ]
         },
@@ -454,15 +454,15 @@
             ]
         },
         "portal.worker.qr": {
-            "title": "Hulp — Twee QR-codes",
+            "title": "Hulp — QR-codes werkvloer",
             "actions": [
                 {
                     "label": "Unit-QR",
-                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je aan in worker-modus om open taken op die unit te starten of af te ronden."
+                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je eerst aan via de Clock Point QR; daarna scan je de unit-QR om open taken op die unit te starten of af te ronden."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Hangt bij het team (magazijn, werkplaats, …). Hier meld je je aan om alle open taken van je team te zien en af te handelen, ongeacht op welke unit ze staan."
+                    "label": "Clock Point QR",
+                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). Daarna kunnen ze taken afhandelen via unit-QR-codes. Met de Time-module klokken ze hier ook in en uit."
                 }
             ]
         },
@@ -524,7 +524,7 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Nadat je de team-QR-code hebt gescand, vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
+                    "text": "Nadat je de Clock Point QR hebt gescand, vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
                 },
                 {
                     "label": "Eerste keer",
@@ -536,7 +536,7 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na het aanmelden zie je alle openstaande taken van je team. Tik op een taak om de details te bekijken."
+                    "text": "Na het aanmelden via Clock Point QR zie je op het unit-portaal de open taken van je team. Scan de unit-QR op locatie om een taak te starten of af te ronden."
                 },
                 {
                     "label": "Starten",
@@ -571,8 +571,8 @@
                     "text": "De beheerder wijst teamleaders toe in WinProx bij het team. Je ziet het badge «Teamleader» na aanmelden."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Scan de team-QR en meld je aan met je naam en icoon — hetzelfde als elke uitvoerder."
+                    "label": "Clock Point QR",
+                    "text": "Scan de Clock Point QR en meld je aan met je naam en icoon — hetzelfde als elke uitvoerder."
                 },
                 {
                     "label": "Extra panelen",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Toevoegen",
-                    "text": "Voeg een nieuwe uitvoerder toe met voornaam en achternaam. Laat de collega daarna de team-QR scannen om zich te registreren en een icoon te kiezen."
+                    "text": "Voeg een nieuwe uitvoerder toe met voornaam en achternaam. Laat de collega daarna de Clock Point QR scannen om zich te registreren en een icoon te kiezen."
                 },
                 {
                     "label": "Verwijderen",
@@ -629,6 +629,27 @@
                 "done": "Afgerond door jou of een collega.",
                 "closed": "Afgesloten door beheer."
             }
+        },
+        "portal.time": {
+            "title": "Hulp — Clock Point portaal",
+            "actions": [
+                {
+                    "label": "Inloggen",
+                    "text": "Scan de Clock Point QR-sticker en meld je aan met je voor- en achternaam en je persoonlijke icoon. Twee foute pogingen blokkeren je account tijdelijk — een teamleider of beheerder kan dat vrijgeven."
+                },
+                {
+                    "label": "Open taken",
+                    "text": "Na het aanmelden zie je een read-only overzicht van open taken van je team. Om een taak te starten of af te ronden, scan je de unit-QR op locatie."
+                },
+                {
+                    "label": "In- en uitklokken",
+                    "text": "Alleen wanneer uw organisatie de <strong>Time-module</strong> heeft: klok hier in, uit en registreer pauzes. Zonder Time-module is dit portaal enkel voor inloggen en het takenoverzicht."
+                },
+                {
+                    "label": "Afmelden",
+                    "text": "Meld je af wanneer je klaar bent. Op door de beheerder ingestelde tijdstippen word je bovendien automatisch afgemeld."
+                }
+            ]
         },
         "platform.translations": {
             "title": "Hulp — Vertalingen",
@@ -661,6 +682,10 @@
                 {
                     "label": "Support-modus",
                     "text": "Start support om de app te gebruiken namens een tenant. Stop support om terug te keren naar het platform-overzicht."
+                },
+                {
+                    "label": "Modules",
+                    "text": "Schakel per tenant de <strong>ESG-module</strong> of <strong>Time-module</strong> in. Zonder Time-module kunnen uitvoerders nog steeds inloggen via Clock Point QR; urenregistratie en Time-menu vereisen de module."
                 }
             ]
         },
@@ -756,6 +781,10 @@
             "title": "Hulp — Aanwezigheid",
             "actions": [
                 {
+                    "label": "Time-module",
+                    "text": "Dit scherm is alleen beschikbaar wanneer de Time-module actief is voor uw organisatie (Platform → Tenants)."
+                },
+                {
                     "label": "Live overzicht",
                     "text": "Toont wie nu ingeklokt is, op pauze staat of nog niet is ingeklokt. De lijst ververst automatisch elke 30 seconden."
                 },
@@ -780,6 +809,10 @@
         "time.shifts": {
             "title": "Hulp — Uren",
             "actions": [
+                {
+                    "label": "Time-module",
+                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Gebruikers alleen voor inloggen."
+                },
                 {
                     "label": "Periode en filters",
                     "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
@@ -815,7 +848,11 @@
             "actions": [
                 {
                     "label": "Wat is een clock point?",
-                    "text": "Een fysieke inkloklocatie met een eigen QR-sticker. Medewerkers scannen die code om in of uit te klokken en hun pauze te registreren."
+                    "text": "Een fysieke locatie met een eigen QR-sticker. <strong>Altijd:</strong> uitvoerders scannen deze code om in te loggen (naam + icoon). <strong>Met Time-module:</strong> ook in- en uitklokken en pauzes registreren."
+                },
+                {
+                    "label": "Zonder Time-module",
+                    "text": "Beheer de inlog-QR via de knop <strong>Clock Point QR-code</strong> op Gebruikers → Teams. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
                     "label": "QR-code afdrukken",

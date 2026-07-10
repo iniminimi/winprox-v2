@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Añadir tarea",
-                    "text": "Añada una tarea a una incidencia existente o edite una tarea existente. Proporcione una descripción clara y concreta del problema o la acción a realizar (p. ej., «La impresora imprime sucio»). Seleccione una fecha de vencimiento específica mediante el calendario. Déjelo en blanco si la tarea debe recogerse directamente o de forma flexible. Determine la urgencia de la tarea (Prio 1 a 3). Este campo es exclusivo de administradores para evitar la inflación de prioridades en el taller. Asigne la tarea al equipo operativo correcto. Este equipo recibe una notificación directa y puede iniciar la tarea mediante su QR de equipo."
+                    "text": "Añada una tarea a una incidencia existente o edite una tarea existente. Proporcione una descripción clara y concreta del problema o la acción a realizar (p. ej., «La impresora imprime sucio»). Seleccione una fecha de vencimiento específica mediante el calendario. Déjelo en blanco si la tarea debe recogerse directamente o de forma flexible. Determine la urgencia de la tarea (Prio 1 a 3). Este campo es exclusivo de administradores para evitar la inflación de prioridades en el taller. Asigne la tarea al equipo operativo correcto. Este equipo recibe una notificación directa. Los trabajadores inician tareas mediante el portal QR de unidad tras iniciar sesión con el QR Clock Point."
                 },
                 {
                     "label": "Publicar actualización",
@@ -115,7 +115,7 @@
                     "text": "Haga clic en una tarea para ver el detalle, cambios de estado y el enlace a la incidencia."
                 }
             ],
-            "status_note": "Los estados se actualizan a menudo automáticamente mediante el portal de campo QR del equipo. También puede ajustarlos manualmente.",
+            "status_note": "Los estados se actualizan a menudo automáticamente mediante el portal QR de unidad. También puede ajustarlos manualmente.",
             "statuses": {
                 "new": "La tarea se ha creado y espera a que el equipo la inicie.",
                 "in_progress": "El equipo está trabajando en ella.",
@@ -143,7 +143,7 @@
                     "text": "Vaya a la incidencia vinculada para contexto, fotos y tareas adicionales."
                 }
             ],
-            "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR del equipo.",
+            "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR de unidad (tras iniciar sesión con el QR Clock Point).",
             "statuses": {
                 "new": "Aún no iniciada en el lugar.",
                 "in_progress": "El equipo está trabajando en ella.",
@@ -243,12 +243,12 @@
                     "text": "Cree equipos y trabajadores, asigne jefes de equipo. Una unidad debe tener un equipo vinculado para que un trabajador pueda gestionar las tareas de esa unidad. Mientras no haya trabajadores en el equipo, aún puede eliminar el equipo."
                 },
                 {
-                    "label": "QR de equipo",
-                    "text": "Imprima el código QR del equipo o envíe el enlace por correo a un colega. Mediante este QR un trabajador puede abrir el portal de campo para gestionar tareas en el lugar tras escanear el QR de la unidad."
+                    "label": "QR Clock Point",
+                    "text": "En Usuarios siempre está el botón <strong>QR Clock Point</strong>. Con él abre el QR imprimible para iniciar sesión. Sin el módulo Time se crea automáticamente un clock point predeterminado; con el módulo Time el botón enlaza a la pantalla Clock Points para varios puntos de fichaje."
                 },
                 {
                     "label": "Trabajadores",
-                    "text": "Los trabajadores no tienen inicio de sesión; se identifican mediante el QR del equipo con nombre, apellidos e icono. También puede añadir su correo electrónico y número de teléfono."
+                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican mediante el QR Clock Point con nombre e icono. También puede añadir su correo electrónico y número de teléfono."
                 },
                 {
                     "label": "Orden",
@@ -256,7 +256,7 @@
                 },
                 {
                     "label": "¿Cuánto tiempo permanecen conectados los trabajadores?",
-                    "text": "Elija cuánto tiempo permanece conectado un trabajador tras escanear el QR del equipo: Diario (14 horas), Semanal (144 horas, 6 días laborables) o Personalizado (número de horas personalizado). El valor predeterminado es 14 horas."
+                    "text": "Elija cuánto tiempo permanece conectado un trabajador tras escanear el QR Clock Point: Diario (14 horas), Semanal (144 horas, 6 días laborables) o Personalizado (número de horas personalizado). El valor predeterminado es 14 horas."
                 },
                 {
                     "label": "Restablecer icono",
@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "Desactivar trabajador",
-                    "text": "Desactive un trabajador para que ya no pueda iniciar sesión mediante el QR del equipo. El trabajador permanece en el sistema y puede reactivarse más tarde."
+                    "text": "Desactive un trabajador para que ya no pueda iniciar sesión mediante el QR Clock Point. El trabajador permanece en el sistema y puede reactivarse más tarde."
                 },
                 {
                     "label": "Eliminar trabajador",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Importaciones CSV recientes",
-                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Haga clic en «Deshacer importación» para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los trabajadores que ya han iniciado sesión mediante el QR del equipo (y por tanto tienen un dispositivo activo) permanecen y se marcan como «tiene dispositivos». El botón desaparece una vez eliminados todos los trabajadores de un lote."
+                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Haga clic en «Deshacer importación» para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los trabajadores que ya han iniciado sesión mediante el QR Clock Point (y por tanto tienen un dispositivo activo) permanecen y se marcan como «tiene dispositivos». El botón desaparece una vez eliminados todos los trabajadores de un lote."
                 }
             ]
         },
@@ -454,15 +454,15 @@
             ]
         },
         "portal.worker.qr": {
-            "title": "Ayuda — Dos códigos QR",
+            "title": "Ayuda — Códigos QR en el taller",
             "actions": [
                 {
                     "label": "QR de unidad",
-                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión en modo trabajador para iniciar o completar tareas abiertas en esa unidad."
+                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión primero mediante el QR Clock Point; luego escanee el QR de unidad para iniciar o completar tareas abiertas en esa unidad."
                 },
                 {
-                    "label": "QR de equipo",
-                    "text": "Colocado con el equipo (almacén, taller, …). Inicie sesión aquí para ver y gestionar todas las tareas abiertas de su equipo, independientemente de a qué unidad pertenezcan."
+                    "label": "QR Clock Point",
+                    "text": "Colocado en la entrada, almacén o taller. Los trabajadores inician sesión aquí (nombre + icono). Luego pueden gestionar tareas mediante códigos QR de unidad. Con el módulo Time también fichan entrada y salida aquí."
                 }
             ]
         },
@@ -524,7 +524,7 @@
             "actions": [
                 {
                     "label": "Nombre e icono",
-                    "text": "Tras escanear el código QR del equipo, introduzca su nombre y apellidos y elija un icono personal. Recuerde bien este icono, porque la próxima vez debe seleccionarlo de nuevo. Tiene dos intentos para iniciar sesión con el icono correcto; después su cuenta queda bloqueada. Un jefe de equipo o administrador puede desbloquear su cuenta en ese caso."
+                    "text": "Tras escanear el QR Clock Point, introduzca su nombre y apellidos y elija un icono personal. Recuerde bien este icono, porque la próxima vez debe seleccionarlo de nuevo. Tiene dos intentos para iniciar sesión con el icono correcto; después su cuenta queda bloqueada. Un jefe de equipo o administrador puede desbloquear su cuenta en ese caso."
                 },
                 {
                     "label": "Primera vez",
@@ -536,7 +536,7 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión ve todas las tareas abiertas de su equipo. Pulse una tarea para ver los detalles."
+                    "text": "Tras iniciar sesión mediante el QR Clock Point ve en el portal de unidad las tareas abiertas de su equipo. Escanee el QR de unidad en el lugar para iniciar o completar una tarea."
                 },
                 {
                     "label": "Iniciar",
@@ -571,8 +571,8 @@
                     "text": "Un administrador asigna jefes de equipo en WinProx en el equipo. Ve la insignia «Jefe de equipo» tras iniciar sesión."
                 },
                 {
-                    "label": "QR de equipo",
-                    "text": "Escanee el QR del equipo e inicie sesión con su nombre e icono — igual que cualquier trabajador."
+                    "label": "QR Clock Point",
+                    "text": "Escanee el QR Clock Point e inicie sesión con su nombre e icono — igual que cualquier trabajador."
                 },
                 {
                     "label": "Paneles adicionales",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Añadir",
-                    "text": "Añada un nuevo trabajador con nombre y apellidos. Luego deje que el colega escanee el QR del equipo para registrarse y elegir un icono."
+                    "text": "Añada un nuevo trabajador con nombre y apellidos. Luego deje que el colega escanee el QR Clock Point para registrarse y elegir un icono."
                 },
                 {
                     "label": "Eliminar",
@@ -629,6 +629,27 @@
                 "done": "Completada por usted o un colega.",
                 "closed": "Cerrada por el administrador."
             }
+        },
+        "portal.time": {
+            "title": "Ayuda — Portal Clock Point",
+            "actions": [
+                {
+                    "label": "Iniciar sesión",
+                    "text": "Escanee la pegatina QR Clock Point e inicie sesión con su nombre, apellidos e icono personal. Dos intentos incorrectos bloquean temporalmente su cuenta — un jefe de equipo o administrador puede desbloquearla."
+                },
+                {
+                    "label": "Tareas abiertas",
+                    "text": "Tras iniciar sesión ve un resumen de solo lectura de las tareas abiertas de su equipo. Para iniciar o completar una tarea, escanee el QR de unidad en el lugar."
+                },
+                {
+                    "label": "Fichar entrada y salida",
+                    "text": "Solo cuando su organización tiene el <strong>módulo Time</strong>: fiche entrada, salida y registre pausas aquí. Sin el módulo Time, este portal sirve solo para iniciar sesión y ver el resumen de tareas."
+                },
+                {
+                    "label": "Cerrar sesión",
+                    "text": "Cierre sesión cuando haya terminado. En los horarios establecidos por el administrador también se cierra la sesión automáticamente."
+                }
+            ]
         },
         "platform.translations": {
             "title": "Ayuda — Traducciones",
@@ -661,6 +682,10 @@
                 {
                     "label": "Modo soporte",
                     "text": "Inicie el soporte para usar la aplicación en nombre de un inquilino. Finalice el soporte para volver al resumen de la plataforma."
+                },
+                {
+                    "label": "Módulos",
+                    "text": "Active por inquilino el <strong>módulo ESG</strong> o el <strong>módulo Time</strong>. Sin el módulo Time, los trabajadores aún pueden iniciar sesión mediante el QR Clock Point; el registro de horas y el menú Time requieren el módulo."
                 }
             ]
         },
@@ -755,33 +780,100 @@
         "time.presence": {
             "title": "Ayuda — Presencia",
             "actions": [
-                {"label": "Vista en vivo", "text": "Muestra quién está fichado, en pausa o sin fichar. Se actualiza cada 30 segundos."},
-                {"label": "Filtros", "text": "Filtre por equipo, punto de fichaje o nombre."},
-                {"label": "Cerrar turno", "text": "Cierra un turno abierto si alguien olvidó fichar salida. Estado: <strong>Cerrado (admin)</strong>."},
-                {"label": "Abierto demasiado tiempo", "text": "Turnos abiertos más allá del umbral (16 h) se avisan y cierran automáticamente."},
-                {"label": "QR Clock Point", "text": "Fichaje mediante QR en el punto. Identificación por nombre e icono."}
+                {
+                    "label": "Módulo Time",
+                    "text": "Esta pantalla solo está disponible cuando el módulo Time está activo para su organización (Plataforma → Inquilinos)."
+                },
+                {
+                    "label": "Vista en vivo",
+                    "text": "Muestra quién está fichado ahora, en pausa o aún no fichado. La lista se actualiza automáticamente cada 30 segundos."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Refine por equipo, clock point o búsqueda por nombre. Útil en organizaciones más grandes con varios puntos de fichaje."
+                },
+                {
+                    "label": "Cerrar turno",
+                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar salida. Es una acción de administrador; el turno obtiene el estado <strong>Cerrado (admin)</strong>."
+                },
+                {
+                    "label": "Abierto demasiado tiempo",
+                    "text": "Los turnos abiertos más tiempo que el umbral configurado (16 h por defecto) muestran una advertencia. Tras ese umbral, el sistema los cierra automáticamente como <strong>Cerrado (automático)</strong>."
+                },
+                {
+                    "label": "QR Clock Point",
+                    "text": "Los trabajadores fichan entrada y salida mediante la pegatina QR en un clock point (<code>/time/…</code>). La identificación es por nombre e icono — sin inicio de sesión aparte."
+                }
             ]
         },
         "time.shifts": {
             "title": "Ayuda — Horas",
             "actions": [
-                {"label": "Período y filtros", "text": "Elija fechas y filtre por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong>."},
-                {"label": "Exportar CSV", "text": "Descargue los turnos filtrados en CSV."},
-                {"label": "Imprimir", "text": "Abra una hoja de horas imprimible; guarde como PDF desde el navegador."},
-                {"label": "Corregir", "text": "Un admin puede corregir turnos cerrados con motivo obligatorio (auditoría)."},
-                {"label": "Cerrar turno", "text": "Los turnos abiertos también pueden cerrarse aquí."},
-                {"label": "Estados", "text": "<strong>Abierto</strong>, <strong>Cerrado</strong>, <strong>Cerrado (admin)</strong>, <strong>Cerrado (automático)</strong>."}
+                {
+                    "label": "Módulo Time",
+                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Usuarios solo para iniciar sesión."
+                },
+                {
+                    "label": "Período y filtros",
+                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                },
+                {
+                    "label": "Exportar CSV",
+                    "text": "Descargue los turnos filtrados en CSV (compatible con Excel, separado por punto y coma). Ideal para procesamiento posterior en software de nómina o planificación."
+                },
+                {
+                    "label": "Imprimir",
+                    "text": "Abra una hoja de horas imprimible con los mismos filtros. Use <strong>Imprimir</strong> del navegador para guardar o compartir un PDF."
+                },
+                {
+                    "label": "Corregir",
+                    "text": "En un turno cerrado, un administrador puede ajustar horas de entrada y salida o minutos de pausa con un motivo obligatorio. Los cambios quedan registrados en el registro de auditoría."
+                },
+                {
+                    "label": "Cerrar turno",
+                    "text": "Los turnos abiertos en este resumen también pueden cerrarse forzosamente aquí, como en la pantalla Presencia."
+                },
+                {
+                    "label": "Estados",
+                    "text": "<strong>Abierto</strong> — aún fichado. <strong>Cerrado</strong> — salida normal. <strong>Cerrado (admin)</strong> — cerrado manualmente por el administrador. <strong>Cerrado (automático)</strong> — el sistema cierra un turno olvidado tras el umbral."
+                },
+                {
+                    "label": "Vincular tareas",
+                    "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el trabajador está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
+                }
             ]
         },
         "time.clock_points": {
             "title": "Ayuda — Clock Points",
             "actions": [
-                {"label": "¿Qué es un clock point?", "text": "Lugar físico de fichaje con su propio QR."},
-                {"label": "Imprimir QR", "text": "Imprima la pegatina y colóquela en la entrada."},
-                {"label": "Renovar QR", "text": "Nuevo código; el anterior funciona unos días (gracia) y luego se bloquea."},
-                {"label": "Rotación QR", "text": "Intervalo en meses; recomendación de renovación aleatoria."},
-                {"label": "Escaneos bloqueados", "text": "QR caducado rechazado y registrado."},
-                {"label": "Activo / inactivo", "text": "Desactive temporalmente un punto de fichaje."}
+                {
+                    "label": "¿Qué es un clock point?",
+                    "text": "Un lugar físico con su propia pegatina QR. <strong>Siempre:</strong> los trabajadores escanean este código para iniciar sesión (nombre + icono). <strong>Con módulo Time:</strong> también fichar entrada, salida y registrar pausas."
+                },
+                {
+                    "label": "Sin módulo Time",
+                    "text": "Gestione el QR de inicio de sesión mediante el botón <strong>QR Clock Point</strong> en Usuarios → Equipos. Se crea automáticamente un clock point predeterminado si es necesario."
+                },
+                {
+                    "label": "Imprimir QR",
+                    "text": "Abra la página QR imprimible y coloque la pegatina en la entrada, almacén u otro lugar. Cada clock point tiene un código único."
+                },
+                {
+                    "label": "Renovar QR",
+                    "text": "Genere un nuevo QR cuando se pierda una pegatina o sospeche abuso. El código antiguo sigue funcionando unos días (periodo de gracia), luego se bloquea."
+                },
+                {
+                    "label": "Rotación QR",
+                    "text": "Configure un intervalo (meses). El sistema recomienda en un momento aleatorio dentro de ese intervalo renovar la pegatina. Hasta renovar, el fichaje sigue funcionando con normalidad — es una recomendación, no un bloqueo."
+                },
+                {
+                    "label": "Escaneos bloqueados",
+                    "text": "Cuando alguien usa un QR caducado, se rechaza y se registra. Aparece una advertencia aquí si hubo intentos bloqueados en los últimos 7 días."
+                },
+                {
+                    "label": "Activo / inactivo",
+                    "text": "Desactive temporalmente un clock point (p. ej. por trabajos en el lugar). El portal indica entonces que el fichaje no está disponible."
+                }
             ]
         },
         "legal": {

@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Aufgabe hinzufügen",
-                    "text": "Fügen Sie einer bestehenden Meldung eine Aufgabe hinzu oder bearbeiten Sie eine bestehende Aufgabe. Geben Sie eine klare, konkrete Beschreibung des Problems oder der auszuführenden Handlung (z.B. \"Drucker druckt verschmutzt\"). Wählen Sie ein spezifisches Fälligkeitsdatum über den Kalender. Lassen Sie dies leer, wenn die Aufgabe direkt oder flexibel aufgegriffen werden soll. Bestimmen Sie die Dringlichkeit der Aufgabe (Prio 1 bis 3). Dieses Feld ist exklusiv für Administratoren, um Prioritätsinflation im Betrieb zu verhindern. Weisen Sie die Aufgabe dem richtigen operativen Team zu. Dieses Team erhält eine direkte Benachrichtigung und kann die Aufgabe über sein Team-QR starten."
+                    "text": "Fügen Sie einer bestehenden Meldung eine Aufgabe hinzu oder bearbeiten Sie eine bestehende Aufgabe. Geben Sie eine klare, konkrete Beschreibung des Problems oder der auszuführenden Handlung (z.B. \"Drucker druckt verschmutzt\"). Wählen Sie ein spezifisches Fälligkeitsdatum über den Kalender. Lassen Sie dies leer, wenn die Aufgabe direkt oder flexibel aufgegriffen werden soll. Bestimmen Sie die Dringlichkeit der Aufgabe (Prio 1 bis 3). Dieses Feld ist exklusiv für Administratoren, um Prioritätsinflation im Betrieb zu verhindern. Weisen Sie die Aufgabe dem richtigen operativen Team zu. Dieses Team erhält eine direkte Benachrichtigung. Ausführende starten Aufgaben über das Unit-QR-Portal, nachdem sie sich über die Clock Point QR angemeldet haben."
                 },
                 {
                     "label": "Update posten",
@@ -115,7 +115,7 @@
                     "text": "Klicken Sie auf eine Aufgabe für Details, Statusänderung und Verknüpfung zur Meldung."
                 }
             ],
-            "status_note": "Status werden oft automatisch über das Team-QR-Feldportal aktualisiert. Sie können sie auch manuell anpassen.",
+            "status_note": "Status werden oft automatisch über das Unit-QR-Portal aktualisiert. Sie können sie auch manuell anpassen.",
             "statuses": {
                 "new": "Aufgabe wurde erstellt und wartet auf Start durch das Team.",
                 "in_progress": "Das Team arbeitet daran.",
@@ -143,7 +143,7 @@
                     "text": "Gehen Sie zur verknüpften Meldung für Kontext, Fotos und weitere Aufgaben."
                 }
             ],
-            "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Team-QR-Portal.",
+            "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Unit-QR-Portal (nach Anmeldung über die Clock Point QR).",
             "statuses": {
                 "new": "Noch nicht vor Ort gestartet.",
                 "in_progress": "Team ist beschäftigt.",
@@ -243,20 +243,20 @@
                     "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleaders zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Drucken Sie den Team-QR-Code oder senden Sie den Link per E-Mail an einen Kollegen. Über diesen QR-Code kann ein Mitarbeiter das Feldportal öffnen, um vor Ort Aufgaben abzuwickeln, nachdem er den Unit-QR-Code gescannt hat."
+                    "label": "Clock Point QR-code",
+                    "text": "Auf Benutzer finden Sie immer die Schaltfläche <strong>Clock Point QR-code</strong>. Damit öffnen Sie den druckbaren QR zur Anmeldung. Ohne Time-Modul wird automatisch ein Standard-Clock-Point erstellt; mit Time-Modul verweist die Schaltfläche auf den Bildschirm Clock Points für mehrere Einstempelorte."
                 },
                 {
-                    "label": "Workers",
-                    "text": "Ausführende haben keinen Login; sie melden sich über Team-QR mit Name, Vorname und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
+                    "label": "Ausführende",
+                    "text": "Ausführende haben keinen E-Mail-Login; sie melden sich über die Clock Point QR mit Name und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
                 },
                 {
                     "label": "Sortierreihenfolge",
                     "text": "Bestimmen Sie die Reihenfolge, in der Teams in Listen und Dropdowns erscheinen. Niedrigere Nummern erscheinen zuerst."
                 },
                 {
-                    "label": "Wie lange bleiben Workers eingeloggt?",
-                    "text": "Wählen Sie, wie lange ein Worker nach dem Scannen des Team-QR eingeloggt bleibt: Täglich (14 Stunden), Wöchentlich (144 Stunden, 6 Arbeitstage) oder Benutzerdefiniert (benutzerdefinierte Anzahl Stunden). Der Standardwert ist 14 Stunden."
+                    "label": "Wie lange bleiben Ausführende angemeldet?",
+                    "text": "Wählen Sie, wie lange ein Ausführender nach dem Scannen der Clock Point QR angemeldet bleibt: Täglich (14 Stunden), Wöchentlich (144 Stunden, 6 Arbeitstage) oder Benutzerdefiniert (benutzerdefinierte Anzahl Stunden). Der Standardwert ist 14 Stunden."
                 },
                 {
                     "label": "Icon zurücksetzen",
@@ -267,8 +267,8 @@
                     "text": "Deaktivieren Sie ein Team, damit es nicht mehr in Dropdowns und Listen sichtbar ist. Workers dieses Teams können keine Aufgaben mehr anzeigen oder erledigen. Reaktivierung ist möglich."
                 },
                 {
-                    "label": "Worker deaktivieren",
-                    "text": "Deaktivieren Sie einen Worker, damit er sich nicht mehr über Team-QR anmelden kann. Der Worker bleibt im System erhalten und kann später reaktiviert werden."
+                    "label": "Ausführender deaktivieren",
+                    "text": "Deaktivieren Sie einen Ausführenden, damit er sich nicht mehr über die Clock Point QR anmelden kann. Der Ausführende bleibt im System erhalten und kann später reaktiviert werden."
                 },
                 {
                     "label": "Worker löschen",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Letzte CSV-Imports",
-                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Mitarbeiter. Klicken Sie auf 'Import rükgängig', um die Mitarbeiter dieses Stapels zu löschen. Nur Mitarbeiter ohne verknüpftes Gerät werden gelöscht — Mitarbeiter, die bereits über Team-QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und werden als 'hat Geräte' angezeigt. Die Schaltfläche verschwindet, sobald alle Mitarbeiter eines Stapels gelöscht wurden."
+                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Ausführenden. Klicken Sie auf 'Import rükgängig', um die Ausführenden dieses Stapels zu löschen. Nur Ausführende ohne verknüpftes Gerät werden gelöscht — Ausführende, die bereits über die Clock Point QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und werden als 'hat Geräte' angezeigt. Die Schaltfläche verschwindet, sobald alle Ausführenden eines Stapels gelöscht wurden."
                 }
             ]
         },
@@ -454,15 +454,15 @@
             ]
         },
         "portal.worker.qr": {
-            "title": "Hilfe — Zwei QR-Codes",
+            "title": "Hilfe — QR-Codes auf der Baustelle",
             "actions": [
                 {
-                    "label": "Einheiten-QR",
-                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Mitarbeiter melden Sie sich im Mitarbeiter-Modus an, um offene Aufgaben an dieser Einheit zu starten oder abzuschließen."
+                    "label": "Unit-QR",
+                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Ausführender melden Sie sich zuerst über die Clock Point QR an; danach scannen Sie die Unit-QR, um offene Aufgaben an dieser Unit zu starten oder abzuschließen."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Beim Team platziert (Lager, Werkstatt, …). Melden Sie sich hier an, um alle offenen Aufgaben Ihres Teams zu sehen und zu bearbeiten — unabhängig von der Einheit."
+                    "label": "Clock Point QR",
+                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Danach können sie Aufgaben über Unit-QR-Codes bearbeiten. Mit dem Time-Modul stempeln sie hier auch ein und aus."
                 }
             ]
         },
@@ -524,7 +524,7 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Nachdem Sie den Team-QR-Code gescannt haben, geben Sie Ihren Vor- und Nachnamen ein und wählen Sie ein persönliches Symbol. Merken Sie sich dieses Symbol gut, denn beim nächsten Mal müssen Sie es erneut auswählen. Sie haben zwei Versuche, sich mit dem richtigen Symbol anzumelden; danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto in diesem Fall wieder freigeben."
+                    "text": "Nachdem Sie die Clock Point QR gescannt haben, geben Sie Ihren Vor- und Nachnamen ein und wählen Sie ein persönliches Symbol. Merken Sie sich dieses Symbol gut, denn beim nächsten Mal müssen Sie es erneut auswählen. Sie haben zwei Versuche, sich mit dem richtigen Symbol anzumelden; danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto in diesem Fall wieder freigeben."
                 },
                 {
                     "label": "Erstes Mal",
@@ -536,7 +536,7 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung sehen Sie alle offenen Aufgaben Ihres Teams. Tippen Sie auf eine Aufgabe, um die Details anzuzeigen."
+                    "text": "Nach der Anmeldung über die Clock Point QR sehen Sie im Unit-Portal die offenen Aufgaben Ihres Teams. Scannen Sie die Unit-QR vor Ort, um eine Aufgabe zu starten oder abzuschließen."
                 },
                 {
                     "label": "Starten",
@@ -571,8 +571,8 @@
                     "text": "Ein Administrator weist Teamleiter in WinProx beim Team zu. Nach der Anmeldung sehen Sie das Badge «Teamleiter»."
                 },
                 {
-                    "label": "Team-QR",
-                    "text": "Scannen Sie den Team-QR und melden Sie sich mit Name und Symbol an — wie jeder Mitarbeiter."
+                    "label": "Clock Point QR",
+                    "text": "Scannen Sie die Clock Point QR und melden Sie sich mit Name und Symbol an — wie jeder Ausführende."
                 },
                 {
                     "label": "Zusätzliche Bereiche",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Hinzufügen",
-                    "text": "Fügen Sie einen neuen Mitarbeiter mit Vor- und Nachname hinzu. Lassen Sie den Kollegen danach den Team-QR scannen, um sich zu registrieren und ein Symbol zu wählen."
+                    "text": "Fügen Sie einen neuen Ausführenden mit Vor- und Nachname hinzu. Lassen Sie den Kollegen danach die Clock Point QR scannen, um sich zu registrieren und ein Symbol zu wählen."
                 },
                 {
                     "label": "Entfernen",
@@ -629,6 +629,27 @@
                 "done": "Von Ihnen oder einem Kollegen abgeschlossen.",
                 "closed": "Vom Administrator geschlossen."
             }
+        },
+        "portal.time": {
+            "title": "Hilfe — Clock Point-Portal",
+            "actions": [
+                {
+                    "label": "Anmelden",
+                    "text": "Scannen Sie den Clock Point QR-Aufkleber und melden Sie sich mit Vor- und Nachname und Ihrem persönlichen Icon an. Zwei falsche Versuche sperren Ihr Konto vorübergehend — ein Teamleiter oder Administrator kann das freigeben."
+                },
+                {
+                    "label": "Offene Aufgaben",
+                    "text": "Nach der Anmeldung sehen Sie eine schreibgeschützte Übersicht der offenen Aufgaben Ihres Teams. Um eine Aufgabe zu starten oder abzuschließen, scannen Sie die Unit-QR vor Ort."
+                },
+                {
+                    "label": "Ein- und ausstempeln",
+                    "text": "Nur wenn Ihre Organisation das <strong>Time-Modul</strong> hat: stempeln Sie hier ein, aus und erfassen Sie Pausen. Ohne Time-Modul dient dieses Portal nur zur Anmeldung und zur Aufgabenübersicht."
+                },
+                {
+                    "label": "Abmelden",
+                    "text": "Melden Sie sich ab, wenn Sie fertig sind. Zu vom Administrator festgelegten Zeiten werden Sie außerdem automatisch abgemeldet."
+                }
+            ]
         },
         "platform.translations": {
             "title": "Hilfe — Übersetzungen",
@@ -661,6 +682,10 @@
                 {
                     "label": "Support-Modus",
                     "text": "Starten Sie den Support, um die App im Namen eines Tenants zu nutzen. Beenden Sie den Support, um zur Plattform-Übersicht zurückzukehren."
+                },
+                {
+                    "label": "Module",
+                    "text": "Schalten Sie pro Tenant das <strong>ESG-Modul</strong> oder <strong>Time-Modul</strong> ein. Ohne Time-Modul können Ausführende sich weiterhin über die Clock Point QR anmelden; Zeiterfassung und Time-Menü erfordern das Modul."
                 }
             ]
         },
@@ -755,33 +780,100 @@
         "time.presence": {
             "title": "Hilfe — Anwesenheit",
             "actions": [
-                {"label": "Live-Übersicht", "text": "Zeigt eingestempelte, pausierende oder nicht eingestempelte Mitarbeitende. Aktualisiert sich alle 30 Sekunden."},
-                {"label": "Filter", "text": "Nach Team, Stempelpunkt oder Name filtern."},
-                {"label": "Schicht schließen", "text": "Offene Schicht jetzt schließen, wenn jemand vergessen hat auszustempeln. Status: <strong>Geschlossen (Admin)</strong>."},
-                {"label": "Zu lange offen", "text": "Schichten über der Schwelle (Standard 16 Std.) werden gewarnt und automatisch geschlossen."},
-                {"label": "Clock-Point-QR", "text": "Ein-/Ausstempeln per QR am Stempelpunkt. Identifikation per Name und Icon."}
+                {
+                    "label": "Time-Modul",
+                    "text": "Dieser Bildschirm ist nur verfügbar, wenn das Time-Modul für Ihre Organisation aktiv ist (Plattform → Tenants)."
+                },
+                {
+                    "label": "Live-Übersicht",
+                    "text": "Zeigt, wer jetzt eingestempelt ist, auf Pause steht oder noch nicht eingestempelt ist. Die Liste aktualisiert sich automatisch alle 30 Sekunden."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Verfeinern Sie nach Team, Clock Point oder Suche nach Name. Praktisch bei größeren Organisationen mit mehreren Einstempelorten."
+                },
+                {
+                    "label": "Schicht schließen",
+                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand vergessen hat auszustempeln. Dies ist eine Admin-Aktion; die Schicht erhält den Status <strong>Geschlossen (Admin)</strong>."
+                },
+                {
+                    "label": "Zu lange offen",
+                    "text": "Schichten, die länger offen sind als die eingestellte Schwelle (Standard 16 Stunden), zeigen eine Warnung. Nach dieser Schwelle schließt das System sie automatisch als <strong>Geschlossen (automatisch)</strong>."
+                },
+                {
+                    "label": "Clock Point QR",
+                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Die Identifikation erfolgt mit Name und Icon — kein separates Login."
+                }
             ]
         },
         "time.shifts": {
             "title": "Hilfe — Stunden",
             "actions": [
-                {"label": "Zeitraum und Filter", "text": "Von-/Bis-Datum wählen und optional filtern. <strong>Anwenden</strong> klicken."},
-                {"label": "CSV exportieren", "text": "Gefilterte Schichten als CSV herunterladen."},
-                {"label": "Drucken", "text": "Druckbare Stundenzettel-Ansicht; im Browser als PDF speichern."},
-                {"label": "Korrigieren", "text": "Admin kann geschlossene Schichten mit Begründung korrigieren (Audit)." },
-                {"label": "Schicht schließen", "text": "Offene Schichten können hier wie unter Anwesenheit geschlossen werden."},
-                {"label": "Status", "text": "<strong>Offen</strong>, <strong>Geschlossen</strong>, <strong>Geschlossen (Admin)</strong>, <strong>Geschlossen (automatisch)</strong>."}
+                {
+                    "label": "Time-Modul",
+                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Benutzer nur zur Anmeldung."
+                },
+                {
+                    "label": "Zeitraum und Filter",
+                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
+                },
+                {
+                    "label": "CSV exportieren",
+                    "text": "Laden Sie die gefilterten Schichten als CSV herunter (Excel-freundlich, semikolongetrennt). Ideal für die Weiterverarbeitung in Lohn- oder Planungssoftware."
+                },
+                {
+                    "label": "Drucken",
+                    "text": "Öffnen Sie eine druckbare Stundenzettel-Ansicht für dieselben Filter. Verwenden Sie <strong>Drucken</strong> im Browser, um ein PDF zu speichern oder zu teilen."
+                },
+                {
+                    "label": "Korrigieren",
+                    "text": "Bei einer geschlossenen Schicht kann ein Administrator Ein- und Ausstempelzeiten oder Pausenminuten mit einer Pflichtbegründung anpassen. Änderungen werden im Audit-Log festgehalten."
+                },
+                {
+                    "label": "Schicht schließen",
+                    "text": "Offene Schichten in dieser Übersicht können hier ebenfalls erzwungen geschlossen werden, wie auf dem Bildschirm Anwesenheit."
+                },
+                {
+                    "label": "Status",
+                    "text": "<strong>Offen</strong> — noch eingestempelt. <strong>Geschlossen</strong> — normal ausgestempelt. <strong>Geschlossen (Admin)</strong> — manuell vom Administrator geschlossen. <strong>Geschlossen (automatisch)</strong> — System schließt eine vergessene Schicht nach der Schwelle."
+                },
+                {
+                    "label": "Aufgaben verknüpfen",
+                    "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Mitarbeiter eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
+                }
             ]
         },
         "time.clock_points": {
             "title": "Hilfe — Clock Points",
             "actions": [
-                {"label": "Was ist ein Clock Point?", "text": "Physischer Stempelort mit eigenem QR-Aufkleber."},
-                {"label": "QR drucken", "text": "Aufkleber ausdrucken und am Eingang anbringen."},
-                {"label": "QR erneuern", "text": "Neuer Code; alter funktioniert noch einige Tage (Karenz), dann gesperrt."},
-                {"label": "QR-Rotation", "text": "Intervall in Monaten; zufällige Erneuerungsempfehlung."},
-                {"label": "Gesperrte Scans", "text": "Abgelaufener QR wird abgewiesen und protokolliert."},
-                {"label": "Aktiv / inaktiv", "text": "Stempelpunkt vorübergehend deaktivieren."}
+                {
+                    "label": "Was ist ein Clock Point?",
+                    "text": "Ein physischer Ort mit eigenem QR-Aufkleber. <strong>Immer:</strong> Ausführende scannen diesen Code zur Anmeldung (Name + Icon). <strong>Mit Time-Modul:</strong> auch Ein- und Ausstempeln sowie Pausen erfassen."
+                },
+                {
+                    "label": "Ohne Time-Modul",
+                    "text": "Verwalten Sie den Anmelde-QR über die Schaltfläche <strong>Clock Point QR-code</strong> unter Benutzer → Teams. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
+                },
+                {
+                    "label": "QR-Code drucken",
+                    "text": "Öffnen Sie die druckbare QR-Seite und bringen Sie den Aufkleber am Eingang, im Lager oder an einem anderen Ort an. Jeder Clock Point hat einen eindeutigen Code."
+                },
+                {
+                    "label": "QR-Code erneuern",
+                    "text": "Generieren Sie einen neuen QR, wenn ein Aufkleber verloren ging oder Sie Missbrauch vermuten. Der alte Code funktioniert noch einige Tage (Karenzzeit), danach wird er gesperrt."
+                },
+                {
+                    "label": "QR-Rotation",
+                    "text": "Stellen Sie ein Intervall ein (Monate). Das System empfiehlt zu einem zufälligen Zeitpunkt innerhalb dieses Intervalls, den Aufkleber zu erneuern. Bis zur Erneuerung funktioniert das Einstempeln normal — es ist eine Empfehlung, keine Sperre."
+                },
+                {
+                    "label": "Gesperrte Scans",
+                    "text": "Wenn jemand einen abgelaufenen QR verwendet, wird das abgelehnt und protokolliert. Eine Warnung erscheint hier, wenn es in den letzten 7 Tagen gesperrte Versuche gab."
+                },
+                {
+                    "label": "Aktiv / inaktiv",
+                    "text": "Deaktivieren Sie einen Clock Point vorübergehend (z. B. bei Arbeiten vor Ort). Das Portal zeigt dann an, dass Einstempeln nicht verfügbar ist."
+                }
             ]
         },
         "legal": {

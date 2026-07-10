@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Add task",
-                    "text": "Add a task to an existing issue or edit an existing task. Give a clear, concrete description of the problem or action to be performed (e.g., \"Printer prints dirty\"). Select a specific due date via the calendar. Leave this blank if the task should be picked up directly or flexibly. Determine the urgency of the task (Prio 1 to 3). This field is exclusive to administrators to prevent priority inflation on the shop floor. Assign the task to the right operational team. This team receives a direct notification and can start the task via their team QR."
+                    "text": "Add a task to an existing issue or edit an existing task. Give a clear, concrete description of the problem or action to be performed (e.g., \"Printer prints dirty\"). Select a specific due date via the calendar. Leave this blank if the task should be picked up directly or flexibly. Determine the urgency of the task (Prio 1 to 3). This field is exclusive to administrators to prevent priority inflation on the shop floor. Assign the task to the right operational team. This team receives a direct notification. Workers start tasks via the unit QR portal after signing in via the Clock Point QR."
                 },
                 {
                     "label": "Post update",
@@ -115,7 +115,7 @@
                     "text": "Click a task for detail, status changes and the link to the issue."
                 }
             ],
-            "status_note": "Statuses are often updated automatically via the team QR field portal. You can also adjust them manually.",
+            "status_note": "Statuses are often updated automatically via the unit QR portal. You can also adjust them manually.",
             "statuses": {
                 "new": "Task has been created and is waiting for the team to start.",
                 "in_progress": "The team is working on it.",
@@ -143,7 +143,7 @@
                     "text": "Go to the linked issue for context, photos and additional tasks."
                 }
             ],
-            "status_note": "On the shop floor, workers start and complete tasks via the team QR portal.",
+            "status_note": "On the shop floor, workers start and complete tasks via the unit QR portal (after signing in via Clock Point QR).",
             "statuses": {
                 "new": "Not yet started on site.",
                 "in_progress": "Team is working on it.",
@@ -243,12 +243,12 @@
                     "text": "Create teams and workers, assign teamleaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
-                    "label": "Team QR",
-                    "text": "Print the Team QR code or email the link to a colleague. Via this QR code a worker can open the field portal to handle tasks on site after scanning the unit QR code."
+                    "label": "Clock Point QR code",
+                    "text": "On Users you always have the <strong>Clock Point QR code</strong> button. It opens the printable QR for sign-in. Without the Time module a default clock point is created automatically; with the Time module the button links to the Clock Points screen for multiple clock-in locations."
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no login; they sign in via team QR with name, first name and icon. You can also add their email address and phone number."
+                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. You can also add their email address and phone number."
                 },
                 {
                     "label": "Sort order",
@@ -256,7 +256,7 @@
                 },
                 {
                     "label": "How long do workers stay logged in?",
-                    "text": "Choose how long a worker stays logged in after scanning the team QR: Daily (14 hours), Weekly (144 hours, 6 working days) or Custom (custom number of hours). The default value is 14 hours."
+                    "text": "Choose how long a worker stays logged in after scanning the Clock Point QR: Daily (14 hours), Weekly (144 hours, 6 working days) or Custom (custom number of hours). The default value is 14 hours."
                 },
                 {
                     "label": "Reset icon",
@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "Deactivate worker",
-                    "text": "Disable a worker so they can no longer sign in via team QR. The worker remains in the system and can be reactivated later."
+                    "text": "Disable a worker so they can no longer sign in via Clock Point QR. The worker remains in the system and can be reactivated later."
                 },
                 {
                     "label": "Delete worker",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Recent CSV imports",
-                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click 'Undo import' to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via team QR (and thus have an active device) remain and are marked as 'has devices'. The button disappears once all workers in a batch have been deleted."
+                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click 'Undo import' to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as 'has devices'. The button disappears once all workers in a batch have been deleted."
                 }
             ]
         },
@@ -454,15 +454,15 @@
             ]
         },
         "portal.worker.qr": {
-            "title": "Help — Two QR codes",
+            "title": "Help — QR codes on the shop floor",
             "actions": [
                 {
                     "label": "Unit QR",
-                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in via worker mode to start or complete open tasks on that unit."
+                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in first via the Clock Point QR; then scan the unit QR to start or complete open tasks on that unit."
                 },
                 {
-                    "label": "Team QR",
-                    "text": "Placed with the team (warehouse, workshop, …). Sign in here to see and handle all open tasks for your team, regardless of which unit they belong to."
+                    "label": "Clock Point QR",
+                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). They can then handle tasks via unit QR codes. With the Time module they also clock in and out here."
                 }
             ]
         },
@@ -524,7 +524,7 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "After scanning the team QR code, enter your first and last name and choose a personal icon. Remember this icon well, because next time you must select it again. You get two attempts to sign in with the correct icon; after that your account is blocked. A team leader or administrator can unblock your account in that case."
+                    "text": "After scanning the Clock Point QR, enter your first and last name and choose a personal icon. Remember this icon well, because next time you must select it again. You get two attempts to sign in with the correct icon; after that your account is blocked. A team leader or administrator can unblock your account in that case."
                 },
                 {
                     "label": "First time",
@@ -536,7 +536,7 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in you see all open tasks of your team. Tap a task to view the details."
+                    "text": "After signing in via Clock Point QR you see open tasks for your team on the unit portal. Scan the unit QR on site to start or complete a task."
                 },
                 {
                     "label": "Start",
@@ -571,8 +571,8 @@
                     "text": "An administrator assigns team leaders in WinProx on the team. You see the «Team leader» badge after signing in."
                 },
                 {
-                    "label": "Team QR",
-                    "text": "Scan the team QR and sign in with your name and icon — the same as any worker."
+                    "label": "Clock Point QR",
+                    "text": "Scan the Clock Point QR and sign in with your name and icon — the same as any worker."
                 },
                 {
                     "label": "Extra panels",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Add",
-                    "text": "Add a new worker with first and last name. Then let the colleague scan the team QR to register and choose an icon."
+                    "text": "Add a new worker with first and last name. Then let the colleague scan the Clock Point QR to register and choose an icon."
                 },
                 {
                     "label": "Remove",
@@ -629,6 +629,27 @@
                 "done": "Completed by you or a colleague.",
                 "closed": "Closed by admin."
             }
+        },
+        "portal.time": {
+            "title": "Help — Clock Point portal",
+            "actions": [
+                {
+                    "label": "Sign in",
+                    "text": "Scan the Clock Point QR sticker and sign in with your first and last name and your personal icon. Two wrong attempts temporarily block your account — a team leader or administrator can release it."
+                },
+                {
+                    "label": "Open tasks",
+                    "text": "After signing in you see a read-only overview of open tasks for your team. To start or complete a task, scan the unit QR on site."
+                },
+                {
+                    "label": "Clock in and out",
+                    "text": "Only when your organisation has the <strong>Time module</strong>: clock in, out and register breaks here. Without the Time module this portal is only for sign-in and the task overview."
+                },
+                {
+                    "label": "Sign out",
+                    "text": "Sign out when you are finished. At times set by the administrator you are also automatically signed out."
+                }
+            ]
         },
         "platform.translations": {
             "title": "Help — Translations",
@@ -661,6 +682,10 @@
                 {
                     "label": "Support mode",
                     "text": "Start support to use the app on behalf of a tenant. Stop support to return to the platform overview."
+                },
+                {
+                    "label": "Modules",
+                    "text": "Enable the <strong>ESG module</strong> or <strong>Time module</strong> per tenant. Without the Time module workers can still sign in via Clock Point QR; time tracking and the Time menu require the module."
                 }
             ]
         },
@@ -756,6 +781,10 @@
             "title": "Help — Presence",
             "actions": [
                 {
+                    "label": "Time module",
+                    "text": "This screen is only available when the Time module is active for your organisation (Platform → Tenants)."
+                },
+                {
                     "label": "Live overview",
                     "text": "Shows who is clocked in, on break, or not clocked in. The list refreshes automatically every 30 seconds."
                 },
@@ -780,6 +809,10 @@
         "time.shifts": {
             "title": "Help — Hours",
             "actions": [
+                {
+                    "label": "Time module",
+                    "text": "Time tracking requires the Time module. Without the module you use the <strong>Clock Point QR code</strong> button on Users only for sign-in."
+                },
                 {
                     "label": "Period and filters",
                     "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
@@ -815,7 +848,11 @@
             "actions": [
                 {
                     "label": "What is a clock point?",
-                    "text": "A physical clock-in location with its own QR sticker. Workers scan it to clock in/out and register breaks."
+                    "text": "A physical location with its own QR sticker. <strong>Always:</strong> workers scan this code to sign in (name + icon). <strong>With Time module:</strong> also clock in/out and register breaks."
+                },
+                {
+                    "label": "Without Time module",
+                    "text": "Manage the sign-in QR via the <strong>Clock Point QR code</strong> button on Users → Teams. A default clock point is created automatically if needed."
                 },
                 {
                     "label": "Print QR code",

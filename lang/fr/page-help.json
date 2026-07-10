@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Ajouter une tâche",
-                    "text": "Ajoutez une tâche à un signalement existant ou modifiez une tâche existante. Donnez une description claire et concrète du problème ou de l'action à effectuer (par ex. \"L'imprimante imprime sale\"). Sélectionnez une date d'échéance spécifique via le calendrier. Laissez ce champ vide si la tâche doit être prise en charge directement ou de manière flexible. Déterminez l'urgence de la tâche (Prio 1 à 3). Ce champ est exclusif aux administrateurs pour éviter l'inflation des priorités sur le terrain. Attribuez la tâche à la bonne équipe opérationnelle. Cette équipe reçoit une notification directe et peut démarrer la tâche via son QR d'équipe."
+                    "text": "Ajoutez une tâche à un signalement existant ou modifiez une tâche existante. Donnez une description claire et concrète du problème ou de l'action à effectuer (par ex. \"L'imprimante imprime sale\"). Sélectionnez une date d'échéance spécifique via le calendrier. Laissez ce champ vide si la tâche doit être prise en charge directement ou de manière flexible. Déterminez l'urgence de la tâche (Prio 1 à 3). Ce champ est exclusif aux administrateurs pour éviter l'inflation des priorités sur le terrain. Attribuez la tâche à la bonne équipe opérationnelle. Cette équipe reçoit une notification directe. Les exécutants démarrent les tâches via le portail QR unité après s'être connectés via le QR Clock Point."
                 },
                 {
                     "label": "Publier une mise à jour",
@@ -115,7 +115,7 @@
                     "text": "Cliquez sur une tâche pour le détail, le changement de statut et le lien vers le signalement."
                 }
             ],
-            "status_note": "Les statuts sont souvent mis à jour automatiquement via le portail terrain QR de l'équipe. Vous pouvez aussi les ajuster manuellement.",
+            "status_note": "Les statuts sont souvent mis à jour automatiquement via le portail QR unité. Vous pouvez aussi les ajuster manuellement.",
             "statuses": {
                 "new": "La tâche a été créée et attend le démarrage par l'équipe.",
                 "in_progress": "L'équipe est en train de l'exécuter.",
@@ -143,7 +143,7 @@
                     "text": "Accédez au signalement lié pour le contexte, les photos et les tâches supplémentaires."
                 }
             ],
-            "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR de l'équipe.",
+            "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR unité (après connexion via le QR Clock Point).",
             "statuses": {
                 "new": "Pas encore démarré sur site.",
                 "in_progress": "L'équipe est en cours.",
@@ -243,20 +243,20 @@
                     "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
                 },
                 {
-                    "label": "QR d'équipe",
-                    "text": "Imprimez le QR d'équipe ou envoyez le lien par e-mail à un collègue. Via ce QR un exécutant peut ouvrir le portail terrain pour traiter les tâches sur place après avoir scanné le QR unité."
+                    "label": "QR Clock Point",
+                    "text": "Sur Utilisateurs, le bouton <strong>QR Clock Point</strong> est toujours disponible. Il ouvre le QR imprimable pour la connexion. Sans module Time, un clock point par défaut est créé automatiquement ; avec le module Time, le bouton mène à l'écran Clock Points pour plusieurs lieux de pointage."
                 },
                 {
-                    "label": "Workers",
-                    "text": "Les exécutants n'ont pas de login ; ils s'identifient via le QR d'équipe avec nom, prénom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
+                    "label": "Exécutants",
+                    "text": "Les exécutants n'ont pas de connexion e-mail ; ils s'identifient via le QR Clock Point avec nom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
                 },
                 {
                     "label": "Ordre de tri",
                     "text": "Déterminez l'ordre dans lequel les équipes apparaissent dans les listes et menus déroulants. Les numéros inférieurs apparaissent en premier."
                 },
                 {
-                    "label": "Combien de temps les workers restent-ils connectés?",
-                    "text": "Choisissez combien de temps un worker reste connecté après avoir scanné le QR d'équipe : Quotidien (14 heures), Hebdomadaire (144 heures, 6 jours ouvrés) ou Personnalisé (nombre d'heures personnalisé). La valeur par défaut est 14 heures."
+                    "label": "Combien de temps les exécutants restent-ils connectés ?",
+                    "text": "Choisissez combien de temps un exécutant reste connecté après avoir scanné le QR Clock Point : Quotidien (14 heures), Hebdomadaire (144 heures, 6 jours ouvrés) ou Personnalisé (nombre d'heures personnalisé). La valeur par défaut est 14 heures."
                 },
                 {
                     "label": "Réinitialiser l'icône",
@@ -267,8 +267,8 @@
                     "text": "Désactivez une équipe pour qu'elle ne soit plus visible dans les menus déroulants et listes. Les workers de cette équipe ne peuvent plus voir ou traiter les tâches. La réactivation est possible."
                 },
                 {
-                    "label": "Désactiver le worker",
-                    "text": "Désactivez un worker pour qu'il ne puisse plus se connecter via le QR d'équipe. Le worker reste dans le système et peut être réactivé plus tard."
+                    "label": "Désactiver l'exécutant",
+                    "text": "Désactivez un exécutant pour qu'il ne puisse plus se connecter via le QR Clock Point. L'exécutant reste dans le système et peut être réactivé plus tard."
                 },
                 {
                     "label": "Supprimer le worker",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Imports CSV récents",
-                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'intervenants. Cliquez sur 'Annuler l'import' pour supprimer les intervenants de ce lot. Seuls les intervenants sans appareil lié sont supprimés — les intervenants déjà connectés via le QR d'équipe (et donc avec un appareil actif) restent et sont indiqués comme 'a des appareils'. Le bouton disparaît lorsque tous les intervenants d'un lot ont été supprimés."
+                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'exécutants. Cliquez sur 'Annuler l'import' pour supprimer les exécutants de ce lot. Seuls les exécutants sans appareil lié sont supprimés — les exécutants déjà connectés via le QR Clock Point (et donc avec un appareil actif) restent et sont indiqués comme 'a des appareils'. Le bouton disparaît lorsque tous les exécutants d'un lot ont été supprimés."
                 }
             ]
         },
@@ -454,15 +454,15 @@
             ]
         },
         "portal.worker.qr": {
-            "title": "Aide — Deux codes QR",
+            "title": "Aide — Codes QR sur le terrain",
             "actions": [
                 {
                     "label": "QR unité",
-                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous en mode exécutant pour démarrer ou terminer les tâches ouvertes sur cette unité."
+                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous d'abord via le QR Clock Point ; puis scannez le QR unité pour démarrer ou terminer les tâches ouvertes sur cette unité."
                 },
                 {
-                    "label": "QR équipe",
-                    "text": "Placé avec l'équipe (entrepôt, atelier, …). Connectez-vous ici pour voir et traiter toutes les tâches ouvertes de votre équipe, quelle que soit l'unité concernée."
+                    "label": "QR Clock Point",
+                    "text": "Placé à l'entrée, à l'entrepôt ou à l'atelier. Les exécutants se connectent ici (nom + icône). Ils peuvent ensuite traiter les tâches via les codes QR unité. Avec le module Time, ils pointent aussi ici à l'entrée et à la sortie."
                 }
             ]
         },
@@ -524,7 +524,7 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Après avoir scanné le QR d'équipe, entrez votre nom et prénom et choisissez une icône personnelle. Mémorisez bien cette icône, car la prochaine fois vous devez la sélectionner à nouveau. Vous avez deux tentatives pour vous connecter avec la bonne icône; après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte dans ce cas."
+                    "text": "Après avoir scanné le QR Clock Point, entrez votre nom et prénom et choisissez une icône personnelle. Mémorisez bien cette icône, car la prochaine fois vous devez la sélectionner à nouveau. Vous avez deux tentatives pour vous connecter avec la bonne icône ; après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte dans ce cas."
                 },
                 {
                     "label": "Première fois",
@@ -536,7 +536,7 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion vous voyez toutes les tâches ouvertes de votre équipe. Touchez une tâche pour voir les détails."
+                    "text": "Après connexion via le QR Clock Point, vous voyez sur le portail unité les tâches ouvertes de votre équipe. Scannez le QR unité sur place pour démarrer ou terminer une tâche."
                 },
                 {
                     "label": "Démarrer",
@@ -571,8 +571,8 @@
                     "text": "Un administrateur désigne les chefs d'équipe dans WinProx sur l'équipe. Vous voyez le badge «Chef d'équipe» après connexion."
                 },
                 {
-                    "label": "QR équipe",
-                    "text": "Scannez le QR équipe et connectez-vous avec votre nom et icône — comme tout exécutant."
+                    "label": "QR Clock Point",
+                    "text": "Scannez le QR Clock Point et connectez-vous avec votre nom et icône — comme tout exécutant."
                 },
                 {
                     "label": "Panneaux supplémentaires",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Ajouter",
-                    "text": "Ajoutez un nouvel exécutant avec prénom et nom. Laissez ensuite le collègue scanner le QR équipe pour s'inscrire et choisir une icône."
+                    "text": "Ajoutez un nouvel exécutant avec prénom et nom. Laissez ensuite le collègue scanner le QR Clock Point pour s'inscrire et choisir une icône."
                 },
                 {
                     "label": "Supprimer",
@@ -629,6 +629,27 @@
                 "done": "Terminée par vous ou un collègue.",
                 "closed": "Clôturée par l'administration."
             }
+        },
+        "portal.time": {
+            "title": "Aide — Portail Clock Point",
+            "actions": [
+                {
+                    "label": "Connexion",
+                    "text": "Scannez l'autocollant QR Clock Point et connectez-vous avec votre prénom, nom et icône personnelle. Deux tentatives incorrectes bloquent temporairement votre compte — un chef d'équipe ou un administrateur peut le débloquer."
+                },
+                {
+                    "label": "Tâches ouvertes",
+                    "text": "Après connexion, vous voyez un aperçu en lecture seule des tâches ouvertes de votre équipe. Pour démarrer ou terminer une tâche, scannez le QR unité sur place."
+                },
+                {
+                    "label": "Pointer entrée et sortie",
+                    "text": "Uniquement si votre organisation dispose du <strong>module Time</strong> : pointez ici à l'entrée, à la sortie et enregistrez les pauses. Sans module Time, ce portail sert uniquement à la connexion et à l'aperçu des tâches."
+                },
+                {
+                    "label": "Déconnexion",
+                    "text": "Déconnectez-vous lorsque vous avez terminé. Aux heures définies par l'administrateur, vous êtes également automatiquement déconnecté."
+                }
+            ]
         },
         "platform.translations": {
             "title": "Aide — Traductions",
@@ -661,6 +682,10 @@
                 {
                     "label": "Mode support",
                     "text": "Démarrez le support pour utiliser l'app au nom d'un tenant. Arrêtez le support pour revenir à l'aperçu plateforme."
+                },
+                {
+                    "label": "Modules",
+                    "text": "Activez par tenant le <strong>module ESG</strong> ou le <strong>module Time</strong>. Sans module Time, les exécutants peuvent toujours se connecter via le QR Clock Point ; l'enregistrement des heures et le menu Time nécessitent le module."
                 }
             ]
         },
@@ -755,33 +780,100 @@
         "time.presence": {
             "title": "Aide — Présence",
             "actions": [
-                {"label": "Vue en direct", "text": "Affiche qui est pointé, en pause ou non pointé. La liste se rafraîchit automatiquement toutes les 30 secondes."},
-                {"label": "Filtres", "text": "Filtrez par équipe, point de pointage ou recherche par nom."},
-                {"label": "Fermer le shift", "text": "Ferme un shift ouvert à l'heure actuelle si quelqu'un a oublié de pointer la sortie. Statut : <strong>Fermé (admin)</strong>."},
-                {"label": "Ouvert trop longtemps", "text": "Les shifts ouverts au-delà du seuil (16 h par défaut) affichent un avertissement, puis sont fermés automatiquement."},
-                {"label": "QR Clock Point", "text": "Les collaborateurs pointent via le QR du clock point. Identification par nom et icône."}
+                {
+                    "label": "Module Time",
+                    "text": "Cet écran n'est disponible que lorsque le module Time est actif pour votre organisation (Plateforme → Tenants)."
+                },
+                {
+                    "label": "Vue en direct",
+                    "text": "Affiche qui est actuellement pointé, en pause ou pas encore pointé. La liste se rafraîchit automatiquement toutes les 30 secondes."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Affinez par équipe, clock point ou recherche par nom. Pratique pour les organisations plus grandes avec plusieurs lieux de pointage."
+                },
+                {
+                    "label": "Fermer le shift",
+                    "text": "Fermez un shift ouvert à l'heure actuelle si quelqu'un a oublié de pointer la sortie. Il s'agit d'une action admin ; le shift obtient le statut <strong>Fermé (admin)</strong>."
+                },
+                {
+                    "label": "Ouvert trop longtemps",
+                    "text": "Les shifts ouverts plus longtemps que le seuil configuré (16 h par défaut) affichent un avertissement. Au-delà de ce seuil, le système les ferme automatiquement comme <strong>Fermé (automatique)</strong>."
+                },
+                {
+                    "label": "QR Clock Point",
+                    "text": "Les collaborateurs pointent à l'entrée et à la sortie via l'autocollant QR sur un clock point (<code>/time/…</code>). L'identification se fait par nom et icône — pas de connexion séparée."
+                }
             ]
         },
         "time.shifts": {
             "title": "Aide — Heures",
             "actions": [
-                {"label": "Période et filtres", "text": "Choisissez les dates et filtrez par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong>."},
-                {"label": "Exporter CSV", "text": "Téléchargez les shifts filtrés en CSV pour Excel ou la paie."},
-                {"label": "Imprimer", "text": "Ouvrez une feuille de temps imprimable. Utilisez <strong>Imprimer</strong> du navigateur pour un PDF."},
-                {"label": "Corriger", "text": "Un admin peut corriger les heures d'un shift fermé avec une raison obligatoire (audit)."},
-                {"label": "Fermer le shift", "text": "Les shifts ouverts peuvent aussi être fermés ici, comme sur l'écran Présence."},
-                {"label": "Statuts", "text": "<strong>Ouvert</strong>, <strong>Fermé</strong>, <strong>Fermé (admin)</strong>, <strong>Fermé (automatique)</strong>."}
+                {
+                    "label": "Module Time",
+                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Utilisateurs uniquement pour la connexion."
+                },
+                {
+                    "label": "Période et filtres",
+                    "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
+                },
+                {
+                    "label": "Exporter CSV",
+                    "text": "Téléchargez les shifts filtrés en CSV (compatible Excel, séparateur point-virgule). Idéal pour un traitement ultérieur dans un logiciel de paie ou de planning."
+                },
+                {
+                    "label": "Imprimer",
+                    "text": "Ouvrez une feuille de temps imprimable pour les mêmes filtres. Utilisez <strong>Imprimer</strong> du navigateur pour enregistrer ou partager un PDF."
+                },
+                {
+                    "label": "Corriger",
+                    "text": "Pour un shift fermé, un administrateur peut ajuster les heures d'entrée et de sortie ou les minutes de pause avec une raison obligatoire. Les modifications sont enregistrées dans le journal d'audit."
+                },
+                {
+                    "label": "Fermer le shift",
+                    "text": "Les shifts ouverts dans cet aperçu peuvent aussi être fermés de force ici, comme sur l'écran Présence."
+                },
+                {
+                    "label": "Statuts",
+                    "text": "<strong>Ouvert</strong> — encore pointé. <strong>Fermé</strong> — sortie normale. <strong>Fermé (admin)</strong> — fermé manuellement par l'administrateur. <strong>Fermé (automatique)</strong> — le système ferme un shift oublié après le seuil."
+                },
+                {
+                    "label": "Lier les tâches",
+                    "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que le collaborateur est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
+                }
             ]
         },
         "time.clock_points": {
             "title": "Aide — Clock Points",
             "actions": [
-                {"label": "Qu'est-ce qu'un clock point ?", "text": "Un lieu de pointage physique avec son propre QR."},
-                {"label": "Imprimer le QR", "text": "Imprimez l'autocollant et installez-le à l'entrée ou sur le site."},
-                {"label": "Renouveler le QR", "text": "Générez un nouveau code ; l'ancien reste valable quelques jours (grâce), puis est bloqué."},
-                {"label": "Rotation QR", "text": "Intervalle en mois ; recommandation de renouvellement à un moment aléatoire."},
-                {"label": "Scans bloqués", "text": "Un QR expiré est refusé et journalisé ; alerte si tentatives dans les 7 derniers jours."},
-                {"label": "Actif / inactif", "text": "Désactivez temporairement un point de pointage."}
+                {
+                    "label": "Qu'est-ce qu'un clock point ?",
+                    "text": "Un lieu physique avec son propre autocollant QR. <strong>Toujours :</strong> les exécutants scannent ce code pour se connecter (nom + icône). <strong>Avec module Time :</strong> aussi pointer à l'entrée, à la sortie et enregistrer les pauses."
+                },
+                {
+                    "label": "Sans module Time",
+                    "text": "Gérez le QR de connexion via le bouton <strong>QR Clock Point</strong> sous Utilisateurs → Équipes. Un clock point par défaut est créé automatiquement si nécessaire."
+                },
+                {
+                    "label": "Imprimer le QR",
+                    "text": "Ouvrez la page QR imprimable et installez l'autocollant à l'entrée, à l'entrepôt ou sur un autre site. Chaque clock point a un code unique."
+                },
+                {
+                    "label": "Renouveler le QR",
+                    "text": "Générez un nouveau QR si un autocollant est perdu ou si vous suspectez un abus. L'ancien code fonctionne encore quelques jours (période de grâce), puis est bloqué."
+                },
+                {
+                    "label": "Rotation QR",
+                    "text": "Définissez un intervalle (mois). Le système recommande à un moment aléatoire dans cet intervalle de renouveler l'autocollant. Jusqu'au renouvellement, le pointage continue normalement — c'est une recommandation, pas un blocage."
+                },
+                {
+                    "label": "Scans bloqués",
+                    "text": "Lorsque quelqu'un utilise un QR expiré, c'est refusé et journalisé. Un avertissement apparaît ici s'il y a eu des tentatives bloquées au cours des 7 derniers jours."
+                },
+                {
+                    "label": "Actif / inactif",
+                    "text": "Désactivez temporairement un clock point (p. ex. lors de travaux sur site). Le portail indique alors que le pointage n'est pas disponible."
+                }
             ]
         },
         "legal": {
