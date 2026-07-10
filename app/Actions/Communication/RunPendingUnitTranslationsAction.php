@@ -9,7 +9,7 @@ class RunPendingUnitTranslationsAction
 {
     public function __construct(private TranslateUnitAction $translateUnit) {}
 
-    public function handle(?int $limit = null, ?int $actorUserId = null): int
+    public function handle(?int $limit = null, ?int $actorUserId = null, ?callable $onProgress = null): int
     {
         $limit = $limit ?? (int) config('ollama.batch_limit', 25);
 
@@ -23,6 +23,9 @@ class RunPendingUnitTranslationsAction
 
         $processed = 0;
 
+        $total = $rows->count();
+        $onProgress?->__invoke($processed, $total, null, null);
+
         foreach ($rows as $row) {
             if ($row->unit === null) {
                 continue;
@@ -30,6 +33,7 @@ class RunPendingUnitTranslationsAction
 
             $this->translateUnit->handle($row->unit, $row->locale, $actorUserId);
             $processed++;
+            $onProgress?->__invoke($processed, $total, $row->id, $row->locale);
         }
 
         return $processed;

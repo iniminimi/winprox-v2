@@ -132,7 +132,10 @@ class IndicatorsIndex extends Component
 
         if ($this->editingIndicatorId === null) {
             $this->authorize('create', EsgIndicator::class);
-            $create->handle($tenantId, $payload, (int) auth()->id());
+            $create->handle($tenantId, [
+                ...$payload,
+                'original_language' => auth()->user()?->locale ?? app()->getLocale(),
+            ], (int) auth()->id());
             session()->flash('success', __('esg.flash.created'));
         } else {
             $indicator = EsgIndicator::query()->findOrFail($this->editingIndicatorId);

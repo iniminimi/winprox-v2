@@ -2,18 +2,26 @@
 
 namespace App\Actions\Esg;
 
+use App\Actions\Communication\EnsureEsgIndicatorTranslationSlotsAction;
 use App\Models\EsgIndicator;
 use App\Support\Audit\AuditRecorder;
 
 class SetEsgIndicatorActiveAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureEsgIndicatorTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(EsgIndicator $indicator, bool $active, ?int $actorUserId = null): EsgIndicator
     {
         $indicator->update(['is_active' => $active]);
 
         $fresh = $indicator->fresh();
+
+        if ($active) {
+            $this->ensureTranslationSlots->handle($fresh);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

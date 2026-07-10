@@ -2,19 +2,28 @@
 
 namespace App\Actions\Esg;
 
+use App\Actions\Communication\EnsureEsgIndicatorTranslationSlotsAction;
+use App\Actions\Communication\InvalidateEsgIndicatorTranslationsOnSourceChangeAction;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateEsgIndicatorAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private InvalidateEsgIndicatorTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureEsgIndicatorTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
      * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
      */
     public function handle(EsgIndicator $indicator, array $data, ?int $actorUserId = null): EsgIndicator
     {
+        $previousName = (string) $indicator->name;
+        $previousOptions = $indicator->normalizedChoiceOptions();
+
         $type = $data['type'] instanceof EsgIndicatorType
             ? $data['type']
             : EsgIndicatorType::from((string) $data['type']);
@@ -28,6 +37,9 @@ class UpdateEsgIndicatorAction
         ]);
 
         $fresh = $indicator->fresh();
+
+        $this->invalidateTranslations->handle($fresh, $previousName, $previousOptions, $actorUserId);
+        $this->ensureTranslationSlots->handle($fresh);
 
         $this->audit->record(
             userId: $actorUserId,

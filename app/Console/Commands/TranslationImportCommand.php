@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
+use App\Actions\Communication\ImportEsgIndicatorTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
@@ -23,6 +24,7 @@ class TranslationImportCommand extends Command
         ImportAnnouncementTranslationsAction $importAnnouncements,
         ImportLocationTranslationsAction $importLocations,
         ImportUnitTranslationsAction $importUnits,
+        ImportEsgIndicatorTranslationsAction $importEsgIndicators,
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
     ): int {
@@ -56,6 +58,7 @@ class TranslationImportCommand extends Command
         $announcementItems = [];
         $locationItems = [];
         $unitItems = [];
+        $esgIndicatorItems = [];
         $taskItems = [];
         $documentItems = [];
 
@@ -70,6 +73,8 @@ class TranslationImportCommand extends Command
                 $taskItems[] = $item;
             } elseif (isset($item['location_id'])) {
                 $locationItems[] = $item;
+            } elseif (isset($item['esg_indicator_id'])) {
+                $esgIndicatorItems[] = $item;
             } elseif (isset($item['unit_id'])) {
                 $unitItems[] = $item;
             } elseif (isset($item['announcement_id'])) {
@@ -84,6 +89,7 @@ class TranslationImportCommand extends Command
                 + $importAnnouncements->handle($announcementItems)
                 + $importLocations->handle($locationItems)
                 + $importUnits->handle($unitItems)
+                + $importEsgIndicators->handle($esgIndicatorItems)
                 + $importTasks->handle($taskItems)
                 + $importDocuments->handle($documentItems);
         } catch (ValidationException $exception) {

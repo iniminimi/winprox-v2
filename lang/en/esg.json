@@ -74,7 +74,12 @@
         "options_duplicate": "Each option may only appear once.",
         "measurement_choice_invalid": "Choose a valid option from the list.",
         "measurement_multi_choice_invalid": "Choose only valid options from the list.",
-        "options_in_use": "These options cannot be removed because measurements already use them: :options."
+        "options_in_use": "These options cannot be removed because measurements already use them: :options.",
+        "translation_requires_active": "Translations are only available for active indicators.",
+        "translation_import_missing": "Indicator not found or not active.",
+        "translation_import_name_too_long": "The translated indicator name is too long.",
+        "translation_import_option_too_long": "A translated option is too long.",
+        "translation_import_options_mismatch": "The number of translated options does not match the source."
     },
     "portal": {
         "measurement_label": "Reading: :name",

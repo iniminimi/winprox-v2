@@ -74,7 +74,12 @@
         "options_duplicate": "Elke optie mag maar één keer voorkomen.",
         "measurement_choice_invalid": "Kies een geldige optie uit de lijst.",
         "measurement_multi_choice_invalid": "Kies alleen geldige opties uit de lijst.",
-        "options_in_use": "Deze opties kunnen niet verwijderd worden omdat er al metingen mee zijn: :options."
+        "options_in_use": "Deze opties kunnen niet verwijderd worden omdat er al metingen mee zijn: :options.",
+        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve indicatoren.",
+        "translation_import_missing": "Indicator niet gevonden of niet actief.",
+        "translation_import_name_too_long": "De vertaalde indicatornaam is te lang.",
+        "translation_import_option_too_long": "Een vertaalde optie is te lang.",
+        "translation_import_options_mismatch": "Het aantal vertaalde opties komt niet overeen met de brontekst."
     },
     "portal": {
         "measurement_label": "Meting: :name",

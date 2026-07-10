@@ -4,12 +4,14 @@ namespace App\Actions\Communication;
 
 use App\Enums\AnnouncementTranslationStatus;
 use App\Enums\DocumentTranslationStatus;
+use App\Enums\EsgIndicatorTranslationStatus;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\LocationTranslationStatus;
 use App\Enums\TaskTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
 use App\Models\DocumentTranslation;
+use App\Models\EsgIndicatorTranslation;
 use App\Models\IssueTranslation;
 use App\Models\LocationTranslation;
 use App\Models\TaskTranslation;
@@ -51,6 +53,11 @@ class CountPendingIssueTranslationsAction
             ->whereHas('document', fn ($query) => $query->where('is_active', true))
             ->count();
 
-        return $issues + $announcements + $locations + $units + $tasks + $documents;
+        $esgIndicators = EsgIndicatorTranslation::query()
+            ->where('status', EsgIndicatorTranslationStatus::Pending)
+            ->whereHas('indicator', fn ($query) => $query->where('is_active', true))
+            ->count();
+
+        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators;
     }
 }

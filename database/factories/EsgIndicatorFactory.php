@@ -19,6 +19,7 @@ class EsgIndicatorFactory extends Factory
             'name' => fake()->words(3, true),
             'type' => EsgIndicatorType::Numeric,
             'unit_of_measure' => 'kWh',
+            'original_language' => 'nl',
             'is_active' => true,
             'thresholds' => null,
         ];

@@ -30,6 +30,7 @@ class TranslateExportItemsAction
             $unitId = (int) ($item['unit_id'] ?? 0);
             $taskId = (int) ($item['task_id'] ?? 0);
             $documentId = (int) ($item['document_id'] ?? 0);
+            $esgIndicatorId = (int) ($item['esg_indicator_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
             $sourceName = trim((string) ($item['source_name'] ?? ''));
@@ -51,6 +52,40 @@ class TranslateExportItemsAction
                 if ($onProgress !== null) {
                     $onProgress($index + 1, $total, [
                         'location_id' => $locationId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
+            if ($esgIndicatorId > 0) {
+                if ($locale === '' || $sourceName === '') {
+                    continue;
+                }
+
+                $translatedName = trim($this->translator->translate($sourceName, $locale));
+                $row = [
+                    'locale' => $locale,
+                    'esg_indicator_id' => $esgIndicatorId,
+                    'name' => $translatedName !== '' ? $translatedName : $sourceName,
+                ];
+
+                $sourceOptions = $item['source_options'] ?? [];
+                if (is_array($sourceOptions) && $sourceOptions !== []) {
+                    $translatedOptions = [];
+                    foreach ($sourceOptions as $option) {
+                        $translatedOption = trim($this->translator->translate((string) $option, $locale));
+                        $translatedOptions[] = $translatedOption !== '' ? $translatedOption : (string) $option;
+                    }
+                    $row['options'] = $translatedOptions;
+                }
+
+                $translated[] = $row;
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'esg_indicator_id' => $esgIndicatorId,
                         'locale' => $locale,
                     ]);
                 }

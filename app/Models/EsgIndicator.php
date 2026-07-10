@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Enums\EsgIndicatorType;
+use App\Enums\EsgIndicatorTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,6 +17,7 @@ class EsgIndicator extends Model
     protected $fillable = [
         'tenant_id',
         'name',
+        'original_language',
         'type',
         'unit_of_measure',
         'is_active',
@@ -37,6 +40,74 @@ class EsgIndicator extends Model
     public function issues(): HasMany
     {
         return $this->hasMany(Issue::class);
+    }
+
+    public function translations(): HasMany
+    {
+        return $this->hasMany(EsgIndicatorTranslation::class);
+    }
+
+    public function normalizedOriginalLanguage(): string
+    {
+        return LocaleSupport::normalize($this->original_language);
+    }
+
+    public function localizedName(?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+        $name = (string) $this->name;
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $name;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if ($row instanceof EsgIndicatorTranslation && filled($row->name)) {
+            return (string) $row->name;
+        }
+
+        return $name;
+    }
+
+    public function localizedChoiceOptionLabel(string $canonicalOption, ?string $locale = null): string
+    {
+        $locale = LocaleSupport::normalize($locale ?? app()->getLocale());
+
+        if ($locale === $this->normalizedOriginalLanguage()) {
+            return $canonicalOption;
+        }
+
+        $row = $this->findCompletedTranslation($locale);
+
+        if (! $row instanceof EsgIndicatorTranslation || ! is_array($row->options)) {
+            return $canonicalOption;
+        }
+
+        $sourceOptions = $this->normalizedChoiceOptions();
+        $index = array_search($canonicalOption, $sourceOptions, true);
+
+        if ($index === false) {
+            return $canonicalOption;
+        }
+
+        $translated = $row->options[$index] ?? null;
+
+        return filled($translated) ? (string) $translated : $canonicalOption;
+    }
+
+    private function findCompletedTranslation(string $locale): ?EsgIndicatorTranslation
+    {
+        if ($this->relationLoaded('translations')) {
+            return $this->translations
+                ->first(fn (EsgIndicatorTranslation $row): bool => $row->locale === $locale
+                    && $row->status === EsgIndicatorTranslationStatus::Completed);
+        }
+
+        return $this->translations()
+            ->where('locale', $locale)
+            ->where('status', EsgIndicatorTranslationStatus::Completed)
+            ->first();
     }
 
     /**

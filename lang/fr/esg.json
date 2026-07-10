@@ -74,7 +74,12 @@
         "options_duplicate": "Chaque option ne peut apparaître qu'une fois.",
         "measurement_choice_invalid": "Choisissez une option valide dans la liste.",
         "measurement_multi_choice_invalid": "Choisissez uniquement des options valides dans la liste.",
-        "options_in_use": "Ces options ne peuvent pas être supprimées car des mesures les utilisent déjà : :options."
+        "options_in_use": "Ces options ne peuvent pas être supprimées car des mesures les utilisent déjà : :options.",
+        "translation_requires_active": "Les traductions ne sont possibles que pour les indicateurs actifs.",
+        "translation_import_missing": "Indicateur introuvable ou inactif.",
+        "translation_import_name_too_long": "Le nom d'indicateur traduit est trop long.",
+        "translation_import_option_too_long": "Une option traduite est trop longue.",
+        "translation_import_options_mismatch": "Le nombre d'options traduites ne correspond pas à la source."
     },
     "portal": {
         "measurement_label": "Mesure : :name",

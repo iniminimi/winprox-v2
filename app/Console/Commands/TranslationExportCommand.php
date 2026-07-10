@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
+use App\Actions\Communication\ExportPendingEsgIndicatorTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
@@ -22,6 +23,7 @@ class TranslationExportCommand extends Command
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingLocationTranslationsAction $exportLocations,
         ExportPendingUnitTranslationsAction $exportUnits,
+        ExportPendingEsgIndicatorTranslationsAction $exportEsgIndicators,
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
     ): int {
@@ -30,6 +32,7 @@ class TranslationExportCommand extends Command
             $exportAnnouncements->handle(),
             $exportLocations->handle(),
             $exportUnits->handle(),
+            $exportEsgIndicators->handle(),
             $exportTasks->handle(),
             $exportDocuments->handle(),
         );

@@ -2,21 +2,21 @@
 
 namespace App\Actions\Communication;
 
-use App\Enums\DocumentTranslationStatus;
-use App\Models\DocumentTranslation;
+use App\Enums\EsgIndicatorTranslationStatus;
+use App\Models\EsgIndicatorTranslation;
 
-class RunPendingDocumentTranslationsAction
+class RunPendingEsgIndicatorTranslationsAction
 {
-    public function __construct(private TranslateDocumentAction $translateDocument) {}
+    public function __construct(private TranslateEsgIndicatorAction $translateIndicator) {}
 
     public function handle(?int $limit = null, ?int $actorUserId = null, ?callable $onProgress = null): int
     {
         $limit = $limit ?? (int) config('ollama.batch_limit', 25);
 
-        $rows = DocumentTranslation::query()
-            ->where('status', DocumentTranslationStatus::Pending)
-            ->whereHas('document', fn ($query) => $query->where('is_active', true))
-            ->with('document')
+        $rows = EsgIndicatorTranslation::query()
+            ->where('status', EsgIndicatorTranslationStatus::Pending)
+            ->whereHas('indicator', fn ($query) => $query->where('is_active', true))
+            ->with('indicator')
             ->orderBy('id')
             ->limit($limit)
             ->get();
@@ -27,11 +27,11 @@ class RunPendingDocumentTranslationsAction
         $onProgress?->__invoke($processed, $total, null, null);
 
         foreach ($rows as $row) {
-            if ($row->document === null) {
+            if ($row->indicator === null) {
                 continue;
             }
 
-            $this->translateDocument->handle($row->document, $row->locale, $actorUserId);
+            $this->translateIndicator->handle($row->indicator, $row->locale, $actorUserId);
             $processed++;
             $onProgress?->__invoke($processed, $total, $row->id, $row->locale);
         }

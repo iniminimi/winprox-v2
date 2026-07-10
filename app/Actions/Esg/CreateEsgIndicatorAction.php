@@ -2,16 +2,21 @@
 
 namespace App\Actions\Esg;
 
+use App\Actions\Communication\EnsureEsgIndicatorTranslationSlotsAction;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 
 class CreateEsgIndicatorAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureEsgIndicatorTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     /**
-     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
+     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>, original_language?: ?string}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): EsgIndicator
     {
@@ -22,12 +27,15 @@ class CreateEsgIndicatorAction
         $indicator = EsgIndicator::query()->create([
             'tenant_id' => $tenantId,
             'name' => trim($data['name']),
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'type' => $type,
             'unit_of_measure' => $data['unit_of_measure'] ?? null,
             'is_active' => true,
             'thresholds' => $data['thresholds'] ?? null,
             'options' => $data['options'] ?? null,
         ]);
+
+        $this->ensureTranslationSlots->handle($indicator);
 
         $this->audit->record(
             userId: $actorUserId,
