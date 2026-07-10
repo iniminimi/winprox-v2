@@ -35,6 +35,7 @@ class Tenant extends Model
         'stripe_customer_id',
         'allow_trial_api',
         'has_esg_module',
+        'time_qr_rotation_months',
     ];
 
     protected function casts(): array
@@ -688,5 +689,18 @@ class Tenant extends Model
         };
 
         return $line !== '' ? $line : null;
+    }
+
+    public function effectiveTimeQrRotationMonths(): ?int
+    {
+        if ($this->time_qr_rotation_months !== null) {
+            $months = (int) $this->time_qr_rotation_months;
+
+            return $months > 0 ? $months : null;
+        }
+
+        $default = (int) config('time.qr_rotation_months_default', 6);
+
+        return $default > 0 ? $default : null;
     }
 }

@@ -18,12 +18,16 @@ class ClockPoint extends Model
         'location_id',
         'name',
         'qr_token',
+        'qr_renewed_at',
+        'qr_renewal_recommended_at',
         'is_active',
         'sort_order',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'qr_renewed_at' => 'datetime',
+        'qr_renewal_recommended_at' => 'datetime',
     ];
 
     protected static function booted(): void
@@ -43,6 +47,17 @@ class ClockPoint extends Model
     public function clockInShifts(): HasMany
     {
         return $this->hasMany(WorkShift::class, 'clock_in_clock_point_id');
+    }
+
+    public function qrTokens(): HasMany
+    {
+        return $this->hasMany(ClockPointQrToken::class);
+    }
+
+    public function isRenewalRecommended(): bool
+    {
+        return $this->qr_renewal_recommended_at !== null
+            && $this->qr_renewal_recommended_at->lessThanOrEqualTo(now());
     }
 
     public function portalUrl(): string

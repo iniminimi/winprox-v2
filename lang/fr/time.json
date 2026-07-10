@@ -98,9 +98,18 @@
             "sort_order": "Sorteervolgorde"
         },
         "qr": {
-            "button": "QR-code",
-            "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "button": "Code QR",
+            "subtitle": "Scannez pour pointer l'entrée ou la sortie",
+            "print": "Imprimer",
+            "renew": "Renouveler le code QR",
+            "renew_confirm": "Générer un nouveau code QR ? L'ancien autocollant fonctionnera encore quelques jours (période de grâce).",
+            "renewed": "Code QR renouvelé. Imprimez un nouvel autocollant.",
+            "renewal_recommended": "À remplacer",
+            "rotation_title": "Rotation QR",
+            "rotation_hint": "Après cet intervalle, une recommandation de renouvellement apparaît. 0 = désactivé (pas de recommandations).",
+            "rotation_months": "Intervalle (mois)",
+            "rotation_saved": "Paramètre de rotation QR enregistré.",
+            "blocked_attempts": ":count scan(s) QR bloqué(s) au cours des 7 derniers jours."
         }
     },
     "portal": {

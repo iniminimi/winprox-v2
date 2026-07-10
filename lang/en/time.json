@@ -98,9 +98,18 @@
             "sort_order": "Sorteervolgorde"
         },
         "qr": {
-            "button": "QR-code",
-            "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "button": "QR code",
+            "subtitle": "Scan to clock in or out",
+            "print": "Print",
+            "renew": "Renew QR code",
+            "renew_confirm": "Generate a new QR code? The old sticker will still work for a few days (grace period).",
+            "renewed": "QR code renewed. Print a new sticker.",
+            "renewal_recommended": "Due for replacement",
+            "rotation_title": "QR rotation",
+            "rotation_hint": "After this interval a renewal recommendation appears. 0 = off (no recommendations).",
+            "rotation_months": "Interval (months)",
+            "rotation_saved": "QR rotation setting saved.",
+            "blocked_attempts": ":count blocked QR scan(s) in the last 7 days."
         }
     },
     "portal": {

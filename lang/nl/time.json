@@ -100,7 +100,16 @@
         "qr": {
             "button": "QR-code",
             "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "print": "Afdrukken",
+            "renew": "QR-code vernieuwen",
+            "renew_confirm": "Nieuwe QR-code genereren? De oude sticker werkt nog enkele dagen (grace-periode).",
+            "renewed": "QR-code vernieuwd. Print een nieuwe sticker.",
+            "renewal_recommended": "Aan vervanging toe",
+            "rotation_title": "QR-rotatie",
+            "rotation_hint": "Na dit interval verschijnt een aanbeveling om de sticker te vernieuwen. 0 = uit (geen aanbevelingen).",
+            "rotation_months": "Interval (maanden)",
+            "rotation_saved": "QR-rotatie-instelling opgeslagen.",
+            "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen."
         }
     },
     "portal": {

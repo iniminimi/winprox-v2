@@ -100,7 +100,16 @@
         "qr": {
             "button": "QR-code",
             "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "print": "Afdrukken",
+            "renew": "QR-Code erneuern",
+            "renew_confirm": "Neuen QR-Code generieren? Der alte Aufkleber funktioniert noch einige Tage (Übergangsfrist).",
+            "renewed": "QR-Code erneuert. Neuen Aufkleber drucken.",
+            "renewal_recommended": "Erneuerung empfohlen",
+            "rotation_title": "QR-Rotation",
+            "rotation_hint": "Nach diesem Intervall erscheint eine Empfehlung zur Erneuerung. 0 = aus (keine Empfehlungen).",
+            "rotation_months": "Intervall (Monate)",
+            "rotation_saved": "QR-Rotations-Einstellung gespeichert.",
+            "blocked_attempts": ":count blockierte QR-Scan(s) in den letzten 7 Tagen."
         }
     },
     "portal": {

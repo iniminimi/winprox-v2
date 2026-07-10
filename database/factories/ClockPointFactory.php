@@ -22,6 +22,7 @@ class ClockPointFactory extends Factory
             'location_id' => null,
             'name' => fake()->words(2, true),
             'qr_token' => Str::lower(Str::random(40)),
+            'qr_renewed_at' => now(),
             'is_active' => true,
             'sort_order' => 0,
         ];

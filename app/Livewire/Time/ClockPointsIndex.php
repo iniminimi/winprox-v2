@@ -3,10 +3,13 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\CreateClockPointAction;
+use App\Actions\Time\RenewClockPointQrAction;
 use App\Actions\Time\SetClockPointActiveAction;
 use App\Actions\Time\UpdateClockPointAction;
+use App\Actions\Time\UpdateTenantTimeQrRotationMonthsAction;
 use App\Http\Requests\Time\StoreClockPointRequest;
 use App\Http\Requests\Time\UpdateClockPointRequest;
+use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -27,10 +30,15 @@ class ClockPointsIndex extends Component
     public string $name = '';
     public ?int $locationId = null;
     public int $sortOrder = 0;
+    public ?int $qrRotationMonths = null;
 
     public function mount(): void
     {
         $this->authorize('viewAny', ClockPoint::class);
+
+        $tenant = Tenant::query()->find(Tenancy::id());
+        $this->qrRotationMonths = $tenant?->time_qr_rotation_months
+            ?? $tenant?->effectiveTimeQrRotationMonths();
     }
 
     public function openCreate(): void
@@ -96,6 +104,31 @@ class ClockPointsIndex extends Component
         $setActive->handle($clockPoint, ! $clockPoint->is_active, auth()->id());
     }
 
+    public function renewQr(int $clockPointId, RenewClockPointQrAction $renew): void
+    {
+        $clockPoint = ClockPoint::query()->findOrFail($clockPointId);
+        $this->authorize('renewQr', $clockPoint);
+
+        $renew->handle($clockPoint, (int) Tenancy::id(), auth()->id());
+        session()->flash('time_flash', __('time.clock_points.qr.renewed'));
+    }
+
+    public function saveQrRotationSettings(UpdateTenantTimeQrRotationMonthsAction $update): void
+    {
+        $this->authorize('create', ClockPoint::class);
+
+        $validated = $this->validate([
+            'qrRotationMonths' => ['nullable', 'integer', 'min:0', 'max:120'],
+        ], [], [
+            'qrRotationMonths' => __('time.clock_points.qr.rotation_months'),
+        ]);
+
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        $months = $validated['qrRotationMonths'];
+        $update->handle($tenant, $months !== null ? (int) $months : null, auth()->id());
+        session()->flash('time_flash', __('time.clock_points.qr.rotation_saved'));
+    }
+
     public function closeModal(): void
     {
         $this->showModal = false;
@@ -104,9 +137,16 @@ class ClockPointsIndex extends Component
 
     public function render()
     {
+        $tenantId = (int) Tenancy::id();
+
         return view('livewire.time.clock-points-index', [
             'clockPoints' => ClockPoint::query()->with('location')->orderBy('sort_order')->orderBy('name')->get(),
             'locations' => Location::query()->where('is_active', true)->orderBy('name')->get(),
+            'blockedQrAttempts' => AuditLog::query()
+                ->where('tenant_id', $tenantId)
+                ->where('action', 'clock_point.qr_blocked')
+                ->where('created_at', '>=', now()->subDays(7))
+                ->count(),
         ]);
     }
 

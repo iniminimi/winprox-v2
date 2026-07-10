@@ -100,7 +100,16 @@
         "qr": {
             "button": "QR-code",
             "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "print": "Afdrukken",
+            "renew": "Renovar código QR",
+            "renew_confirm": "¿Generar un nuevo código QR? La pegatina antigua seguirá funcionando unos días (periodo de gracia).",
+            "renewed": "Código QR renovado. Imprima una nueva pegatina.",
+            "renewal_recommended": "Pendiente de renovación",
+            "rotation_title": "Rotación QR",
+            "rotation_hint": "Tras este intervalo aparece una recomendación de renovación. 0 = desactivado (sin recomendaciones).",
+            "rotation_months": "Intervalo (meses)",
+            "rotation_saved": "Configuración de rotación QR guardada.",
+            "blocked_attempts": ":count escaneo(s) QR bloqueado(s) en los últimos 7 días."
         }
     },
     "portal": {

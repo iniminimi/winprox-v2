@@ -14,6 +14,7 @@
         "unit_inactive": "Dieses Portal ist derzeit nicht verfügbar.",
         "team_inactive": "Dieses Teamportal ist derzeit nicht verfügbar.",
         "clock_point_inactive": "Dieser Stempelpunkt ist derzeit nicht verfügbar.",
+        "clock_point_qr_expired": "Dieser QR-Code ist nicht mehr gültig — wenden Sie sich an die Verwaltung.",
         "tenant_inactive": "Dieses Portal ist für diese Organisation derzeit nicht verfügbar.",
         "subscription_inactive": "Dieses Portal ist vorübergehend nicht verfügbar. Wenden Sie sich an Ihren Administrator."
     },

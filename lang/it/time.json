@@ -100,7 +100,16 @@
         "qr": {
             "button": "QR-code",
             "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken"
+            "print": "Afdrukken",
+            "renew": "Rinnova codice QR",
+            "renew_confirm": "Generare un nuovo codice QR? L'adesivo vecchio funzionerà ancora per alcuni giorni (periodo di grazia).",
+            "renewed": "Codice QR rinnovato. Stampa un nuovo adesivo.",
+            "renewal_recommended": "Da sostituire",
+            "rotation_title": "Rotazione QR",
+            "rotation_hint": "Dopo questo intervallo appare una raccomandazione di rinnovo. 0 = disattivato (nessuna raccomandazione).",
+            "rotation_months": "Intervallo (mesi)",
+            "rotation_saved": "Impostazione rotazione QR salvata.",
+            "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni."
         }
     },
     "portal": {

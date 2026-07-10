@@ -204,6 +204,65 @@ it('sluit vergeten open shifts automatisch na drempel', function () {
         ->and($recentShift->fresh()->status)->toBe(WorkShiftStatus::Open);
 });
 
+it('vernieuwt een clock point QR en laat oude token werken tijdens grace', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'old-clock-token',
+        'qr_renewed_at' => now()->subMonths(7),
+    ]);
+    $oldToken = $clockPoint->qr_token;
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Time\ClockPointsIndex::class)
+        ->call('renewQr', $clockPoint->id)
+        ->assertHasNoErrors();
+
+    $clockPoint = $clockPoint->fresh();
+    expect($clockPoint->qr_token)->not->toBe($oldToken)
+        ->and(\App\Models\ClockPointQrToken::query()->where('qr_token', $oldToken)->exists())->toBeTrue();
+
+    Livewire::test(TimePortal::class, ['token' => $oldToken])
+        ->assertSet('inactiveReasonKey', null);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSet('inactiveReasonKey', null);
+});
+
+it('blokkeert een verlopen QR-token en logt de poging', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'current-token',
+    ]);
+
+    $history = \App\Models\ClockPointQrToken::query()->create([
+        'tenant_id' => $tenant->id,
+        'clock_point_id' => $clockPoint->id,
+        'qr_token' => 'blocked-token',
+        'grace_ends_at' => now()->subDay(),
+        'blocked_at' => now(),
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => $history->qr_token])
+        ->assertSet('inactiveReasonKey', 'portal.inactive.clock_point_qr_expired');
+
+    expect(DB::table('audit_logs')
+        ->where('action', 'clock_point.qr_blocked')
+        ->where('model_id', $clockPoint->id)
+        ->exists())->toBeTrue();
+});
+
+it('toont renewal-aanbeveling wanneer aanbevolen datum verstreken is', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_renewal_recommended_at' => now()->subDay(),
+    ]);
+
+    expect($clockPoint->isRenewalRecommended())->toBeTrue();
+});
+
 it('laat een admin een gesloten shift corrigeren met auditlog', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

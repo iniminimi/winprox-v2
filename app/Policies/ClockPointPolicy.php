@@ -30,6 +30,11 @@ class ClockPointPolicy
             && ($user->isAdmin() || $user->isEmployee());
     }
 
+    public function renewQr(User $user, ClockPoint $clockPoint): bool
+    {
+        return $this->update($user, $clockPoint);
+    }
+
     private function sameTenant(User $user, int $tenantId): bool
     {
         return SuperuserTenantAccess::canAccessTenant($user, $tenantId);

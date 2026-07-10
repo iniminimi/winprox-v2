@@ -6,7 +6,8 @@ use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
-use App\Actions\Time\StartWorkBreakAction;
+use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
+use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
@@ -18,6 +19,7 @@ use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
+use App\Support\Time\ClockPointPortalTokenResolution;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
 use InvalidArgumentException;
@@ -50,11 +52,31 @@ class TimePortal extends Component
 
     public function mount(string $token): void
     {
-        $clockPoint = ClockPoint::withoutGlobalScope('tenant')
-            ->where('qr_token', $token)
-            ->first();
+        $resolution = app(ResolveClockPointPortalTokenAction::class)->handle($token);
 
+        if ($resolution->status === ClockPointPortalTokenResolution::STATUS_NOT_FOUND) {
+            abort(404);
+        }
+
+        $clockPoint = $resolution->clockPoint;
         abort_unless($clockPoint, 404);
+
+        if ($resolution->status === ClockPointPortalTokenResolution::STATUS_BLOCKED) {
+            Tenancy::actAs($clockPoint->tenant_id);
+            app(LogBlockedClockPointQrAttemptAction::class)->handle(
+                $clockPoint,
+                $token,
+                $resolution->historyToken,
+            );
+            $this->token = $token;
+            $this->clockPointId = $clockPoint->id;
+            $this->tenantId = $clockPoint->tenant_id;
+            $this->clockPointName = $clockPoint->name;
+            $this->inactiveReasonKey = 'portal.inactive.clock_point_qr_expired';
+            $this->syncLocaleFromRequest();
+
+            return;
+        }
 
         $this->token = $token;
         $this->clockPointId = $clockPoint->id;
