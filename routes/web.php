@@ -92,7 +92,9 @@ Route::get('/q/{token}', QrController::class)->name('qr.scan');
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 
-Route::get('/time/{token}', TimePortal::class)->name('public.time-portal');
+Route::get('/time/{token}', TimePortal::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.time-portal');
 
 Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirm'])
     ->middleware('signed')

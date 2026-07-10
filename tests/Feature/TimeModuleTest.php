@@ -33,6 +33,14 @@ function timeTenantWithAdmin(): array
     return [$tenant, $admin];
 }
 
+it('laat een admin het time-aanwezigheidsscherm openen', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+
+    $this->actingAs($admin)
+        ->get(route('time.presence.index'))
+        ->assertOk();
+});
+
 it('klokt in met lockForUpdate en weigert dubbele open shift', function () {
     [$tenant] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
