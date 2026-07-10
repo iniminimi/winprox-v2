@@ -12,7 +12,7 @@ class PrepareManualCaptureCommand extends Command
 {
     protected $signature = 'winprox:prepare-manual-capture';
 
-    protected $description = 'Zet has_esg_module aan voor de MANUAL_CAPTURE_EMAIL-tenant (handleiding-screenshots)';
+    protected $description = 'Bereid de MANUAL_CAPTURE_EMAIL-tenant voor (ESG, Time, Clock Point)';
 
     public function handle(PrepareManualCaptureTenantAction $prepare): int
     {
@@ -24,7 +24,13 @@ class PrepareManualCaptureCommand extends Command
             return self::FAILURE;
         }
 
-        $this->info("Capture-tenant #{$tenant->id} ({$tenant->name}): ESG-module actief.");
+        $this->info("Capture-tenant #{$tenant->id} ({$tenant->name}): ESG- en Time-module actief.");
+
+        $clockPointToken = $prepare->clockPointQrToken($tenant);
+        if (is_string($clockPointToken) && $clockPointToken !== '') {
+            $this->line("Clock Point QR-token: {$clockPointToken}");
+            $this->line('Zet in .env: MANUAL_CAPTURE_CLOCK_POINT_TOKEN='.$clockPointToken);
+        }
 
         return self::SUCCESS;
     }

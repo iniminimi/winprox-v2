@@ -95,6 +95,30 @@
             "optional": true
         },
         {
+            "id": "time-presence",
+            "path": "/time/presence",
+            "selector": "[data-manual-capture=\"time-presence\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
+            "id": "time-shifts",
+            "path": "/time/shifts",
+            "selector": "[data-manual-capture=\"time-shifts\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
+            "id": "time-clock-points",
+            "path": "/time/clock-points",
+            "selector": "[data-manual-capture=\"time-clock-points\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
             "id": "settings",
             "path": "/settings",
             "selector": "[data-manual-capture=\"settings\"]",
@@ -131,8 +155,15 @@
             "prepareClick": "button.wp-tile--primary"
         },
         {
+            "id": "portal-time",
+            "path": "/time/{clock_point_token}",
+            "selector": "[data-manual-capture=\"portal-team-identify\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false
+        },
+        {
             "id": "portal-team",
-            "path": "/team/{team_token}",
+            "path": "/time/{clock_point_token}",
             "selector": "[data-manual-capture=\"portal-team-identify\"]",
             "viewport": { "width": 390, "height": 844 },
             "auth": false
@@ -147,7 +178,7 @@
         },
         {
             "id": "portal-teamleader-role",
-            "path": "/team/{team_token}",
+            "path": "/time/{clock_point_token}",
             "selector": "[data-manual-capture=\"portal-team-signed-in\"]",
             "viewport": { "width": 390, "height": 844 },
             "auth": false,
@@ -155,7 +186,7 @@
         },
         {
             "id": "portal-teamleader-release",
-            "path": "/team/{team_token}",
+            "path": "/time/{clock_point_token}",
             "selector": "[data-manual-capture=\"portal-teamleader-release\"]",
             "viewport": { "width": 390, "height": 844 },
             "auth": false,
@@ -164,7 +195,7 @@
         },
         {
             "id": "portal-teamleader-workers",
-            "path": "/team/{team_token}",
+            "path": "/time/{clock_point_token}",
             "selector": "[data-manual-capture=\"portal-teamleader-workers\"]",
             "viewport": { "width": 390, "height": 844 },
             "auth": false,
@@ -174,7 +205,7 @@
         {
             "id": "portal-teamleader-tasks",
             "path": "/melden/{unit_token}",
-            "workerSignInPath": "/team/{team_token}",
+            "workerSignInPath": "/time/{clock_point_token}",
             "selector": "[data-manual-capture=\"portal-unit-worker-tasks\"]",
             "viewport": { "width": 390, "height": 844 },
             "auth": false,

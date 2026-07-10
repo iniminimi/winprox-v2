@@ -83,10 +83,14 @@ if (-not (Test-Path 'node_modules\playwright')) {
 npx playwright install chromium
 Pop-Location
 
-Write-Host 'Stap 2b/5: capture-tenant voorbereiden (ESG-module)...'
-php artisan winprox:prepare-manual-capture
+Write-Host 'Stap 2b/5: capture-tenant voorbereiden (ESG, Time, Clock Point)...'
+$prepareOutput = php artisan winprox:prepare-manual-capture 2>&1 | Out-String
 if ($LASTEXITCODE -ne 0) {
     throw 'Voorbereiden capture-tenant mislukt (MANUAL_CAPTURE_EMAIL in .env?).'
+}
+if ($prepareOutput -match 'MANUAL_CAPTURE_CLOCK_POINT_TOKEN=(\S+)') {
+    $env:MANUAL_CAPTURE_CLOCK_POINT_TOKEN = $Matches[1]
+    Write-Host "  Clock Point token uit prepare: $($Matches[1])"
 }
 
 Write-Host "Stap 3/5: capture tegen $($env:MANUAL_CAPTURE_BASE_URL) ..."

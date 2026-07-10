@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="time-clock-points">
     <x-wp-page-head-title
         :title="__('time.title')"
         help-page="time.clock_points"

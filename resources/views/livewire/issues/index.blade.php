@@ -110,9 +110,9 @@
                 <p class="wp-muted">{{ $hasFilters ? __('issues.list.empty_filtered') : __('issues.list.empty') }}</p>
             </div>
         @endforelse
+    @endif
 
-        @if ($showCreateModal)
-            @include('livewire.issues.partials.create-modal')
-        @endif
+    @if ($showCreateModal)
+        @include('livewire.issues.partials.create-modal')
     @endif
 </div>

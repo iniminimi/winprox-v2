@@ -23,7 +23,7 @@ MANUAL_CAPTURE_LOCATION_ID=...
 MANUAL_CAPTURE_ISSUE_ID=...
 MANUAL_CAPTURE_TASK_ID=...
 MANUAL_CAPTURE_UNIT_QR_TOKEN=...   # units.qr_token
-MANUAL_CAPTURE_TEAM_QR_TOKEN=...   # internal_teams.field_qr_token — team mét workers+iconen
+MANUAL_CAPTURE_CLOCK_POINT_TOKEN=...   # clock_points.qr_token (na prepare-manual-capture)
 MANUAL_CAPTURE_WORKER_FIRST_NAME=John
 MANUAL_CAPTURE_WORKER_LAST_NAME=Workman
 MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
@@ -31,8 +31,8 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
 
 - `APP_URL` = `MANUAL_CAPTURE_BASE_URL` = exact de URL waarmee je in de browser opent (geen
   `/winprox/public` als Apache al naar `public/` wijst).
-- Team-QR: kies een team **met actieve workers die een icoon hebben** — anders zie je
-  registratie i.p.v. identificatie (`portal-team-identify` timeout).
+- Clock Point QR: `MANUAL_CAPTURE_CLOCK_POINT_TOKEN` = `clock_points.qr_token` van de capture-tenant.
+  Stap **2b** (`winprox:prepare-manual-capture`) maakt zonodig een Clock Point aan en print het token.
 - Worker-icoon moet overeenkomen met `workers.field_icon_slug` (niet raden).
 - **ESG-shots:** de capture-tenant (`MANUAL_CAPTURE_EMAIL`) moet `has_esg_module = 1` hebben.
   Zonder module worden `/esg/indicators` en `/esg/measurements` overgeslagen (selector timeout).
@@ -40,7 +40,7 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
 
 **Teamleader-shots (optioneel maar aanbevolen):**
 
-- `MANUAL_CAPTURE_TEAM_QR_TOKEN` → team van John Workman (team **met** workers + icoon).
+- `MANUAL_CAPTURE_CLOCK_POINT_TOKEN` → Clock Point van het team van John Workman.
 - `MANUAL_CAPTURE_WORKER_ICON=star` (of het echte icoon van die worker).
 - **`portal-teamleader-release`:** het team moet een **tweede worker** hebben met
   `field_icon_locked_at` gezet (geblokkeerd icoon). Anders wordt die ene target overgeslagen.
@@ -68,8 +68,8 @@ php artisan config:clear
 .\scripts\capture-manual-local.ps1
 ```
 
-Stap **2b** zet `has_esg_module` automatisch aan voor de tenant van `MANUAL_CAPTURE_EMAIL`
-(`php artisan winprox:prepare-manual-capture`). Zonder dat mislukt de ESG-capture (403).
+Stap **2b** zet `has_esg_module` en `has_time_module` aan en maakt zonodig een Clock Point aan
+voor de tenant van `MANUAL_CAPTURE_EMAIL` (`php artisan winprox:prepare-manual-capture`).
 
 Het script doet **altijd** alles:
 

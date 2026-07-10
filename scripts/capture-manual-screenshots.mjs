@@ -32,7 +32,9 @@ const pathVars = {
     issue_id: process.env.MANUAL_CAPTURE_ISSUE_ID ?? '',
     task_id: process.env.MANUAL_CAPTURE_TASK_ID ?? '',
     unit_token: process.env.MANUAL_CAPTURE_UNIT_QR_TOKEN ?? '',
-    team_token: process.env.MANUAL_CAPTURE_TEAM_QR_TOKEN ?? '',
+    clock_point_token: process.env.MANUAL_CAPTURE_CLOCK_POINT_TOKEN
+        ?? process.env.MANUAL_CAPTURE_TEAM_QR_TOKEN
+        ?? '',
 };
 
 if (!email || !password) {
