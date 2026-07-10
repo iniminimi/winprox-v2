@@ -5,6 +5,7 @@ namespace App\Livewire\Locations;
 use App\Actions\Locations\BulkCreateUnitsAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeactivateLocationAction;
+use App\Actions\Locations\ActivateUnitAction;
 use App\Actions\Locations\DeactivateUnitAction;
 use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Locations\DeleteUnitBulkBatchAction;
@@ -357,6 +358,15 @@ class Show extends Component
         $this->authorize('deactivate', $unit);
         $deactivateUnit->handle($unit, (int) auth()->id());
         session()->flash('success', __('locations.units.flash.deactivated'));
+        $this->location->refresh();
+    }
+
+    public function activateUnit(int $unitId, ActivateUnitAction $activateUnit): void
+    {
+        $unit = Unit::where('location_id', $this->location->id)->findOrFail($unitId);
+        $this->authorize('activate', $unit);
+        $activateUnit->handle($unit, (int) auth()->id());
+        session()->flash('success', __('locations.units.flash.activated'));
         $this->location->refresh();
     }
 

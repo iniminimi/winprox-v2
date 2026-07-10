@@ -127,6 +127,7 @@
             "created": "Unit created.",
             "updated": "Unit updated.",
             "deactivated": "Unit deactivated.",
+            "activated": "Unit activated.",
             "deleted": "Unit deleted."
         },
         "delete_blocked_issues": "This unit has issues and cannot be deleted.",

@@ -127,6 +127,7 @@
             "created": "Unit angelegt.",
             "updated": "Unit aktualisiert.",
             "deactivated": "Unit deaktiviert.",
+            "activated": "Unit aktiviert.",
             "deleted": "Unit gelöscht."
         },
         "delete_blocked_issues": "Diese Unit hat Meldungen und kann nicht gelöscht werden.",

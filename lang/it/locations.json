@@ -127,6 +127,7 @@
             "created": "Unità creata.",
             "updated": "Unità aggiornata.",
             "deactivated": "Unità disattivata.",
+            "activated": "Unità attivata.",
             "deleted": "Unità eliminata."
         },
         "delete_blocked_issues": "Questa unità ha segnalazioni e non può essere eliminata.",

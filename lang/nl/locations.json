@@ -127,6 +127,7 @@
             "created": "Unit aangemaakt.",
             "updated": "Unit bijgewerkt.",
             "deactivated": "Unit gedeactiveerd.",
+            "activated": "Unit geactiveerd.",
             "deleted": "Unit verwijderd."
         },
         "delete_blocked_issues": "Deze unit heeft meldingen en kan niet worden verwijderd.",

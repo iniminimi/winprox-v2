@@ -177,6 +177,25 @@ it('bulk creates units on location show', function () {
         ->and($location->units()->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
 });
 
+it('laat een gedeactiveerde unit opnieuw activeren', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Reactivate']);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Lift 1',
+        'is_active' => false,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('activateUnit', $unit->id)
+        ->assertHasNoErrors();
+
+    expect($unit->fresh()->is_active)->toBeTrue();
+});
+
 it('filters units on location show by category', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

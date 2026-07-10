@@ -149,6 +149,8 @@
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
                         @if ($unit->is_active)
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateUnit({{ $unit->id }})">{{ __('locations.deactivate') }}</button>
+                        @else
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="activateUnit({{ $unit->id }})">{{ __('locations.activate') }}</button>
                         @endif
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
                                 @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>

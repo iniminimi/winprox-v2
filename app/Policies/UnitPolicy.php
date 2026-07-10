@@ -39,6 +39,11 @@ class UnitPolicy
         return $this->view($user, $unit);
     }
 
+    public function activate(User $user, Unit $unit): bool
+    {
+        return $this->view($user, $unit);
+    }
+
     public function delete(User $user, Unit $unit): bool
     {
         return $this->view($user, $unit)
