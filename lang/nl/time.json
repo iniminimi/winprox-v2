@@ -26,6 +26,24 @@
         "clocked_in_at": "Ingeklokt bij :name",
         "clocked_out_at": "Uitgeklokt bij :name"
     },
+    "corrections": {
+        "button": "Corrigeren",
+        "title": "Shift corrigeren",
+        "subtitle": "Pas in- en uitkloktijden of pauze aan. De reden wordt vastgelegd in het auditlog.",
+        "saved": "Shift gecorrigeerd.",
+        "fields": {
+            "clock_in": "Inkloktijd",
+            "clock_out": "Uitkloktijd",
+            "break_minutes": "Pauze (minuten)",
+            "reason": "Reden"
+        },
+        "errors": {
+            "clock_out_before_clock_in": "Uitkloktijd moet na inkloktijd liggen.",
+            "break_exceeds_duration": "Pauze mag niet langer zijn dan de shift.",
+            "shift_still_open": "Open shifts kunnen niet gecorrigeerd worden.",
+            "shift_missing_clock_out": "Deze shift heeft geen uitkloktijd."
+        }
+    },
     "status": {
         "open": "Open",
         "closed": "Gesloten",

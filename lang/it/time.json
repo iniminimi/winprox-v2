@@ -24,7 +24,25 @@
         "break_minutes": "Pauze: :minutes min",
         "net_minutes": "Netto: :minutes min",
         "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Uitgeklokt bij :name"
+        "clocked_out_at": "Timbrato uscita presso :name"
+    },
+    "corrections": {
+        "button": "Correggi",
+        "title": "Correggi turno",
+        "subtitle": "Modifica orari di entrata/uscita o pausa. Il motivo viene registrato nel log di audit.",
+        "saved": "Turno corretto.",
+        "fields": {
+            "clock_in": "Ora entrata",
+            "clock_out": "Ora uscita",
+            "break_minutes": "Pausa (minuti)",
+            "reason": "Motivo"
+        },
+        "errors": {
+            "clock_out_before_clock_in": "L'ora di uscita deve essere dopo l'ora di entrata.",
+            "break_exceeds_duration": "La pausa non può essere più lunga del turno.",
+            "shift_still_open": "I turni aperti non possono essere corretti.",
+            "shift_missing_clock_out": "Questo turno non ha un'ora di uscita."
+        }
     },
     "status": {
         "open": "Open",

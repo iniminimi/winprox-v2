@@ -24,6 +24,13 @@ class WorkShiftPolicy
             && ($user->isAdmin() || $user->isEmployee());
     }
 
+    public function correct(User $user, WorkShift $workShift): bool
+    {
+        return $this->sameTenant($user, (int) $workShift->tenant_id)
+            && $user->isAdmin()
+            && ! $workShift->status->isOpen();
+    }
+
     private function sameTenant(User $user, int $tenantId): bool
     {
         return SuperuserTenantAccess::canAccessTenant($user, $tenantId);

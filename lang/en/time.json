@@ -24,7 +24,25 @@
         "break_minutes": "Pauze: :minutes min",
         "net_minutes": "Netto: :minutes min",
         "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Uitgeklokt bij :name"
+        "clocked_out_at": "Clocked out at :name"
+    },
+    "corrections": {
+        "button": "Correct",
+        "title": "Correct shift",
+        "subtitle": "Adjust clock-in/out times or break minutes. The reason is recorded in the audit log.",
+        "saved": "Shift corrected.",
+        "fields": {
+            "clock_in": "Clock-in time",
+            "clock_out": "Clock-out time",
+            "break_minutes": "Break (minutes)",
+            "reason": "Reason"
+        },
+        "errors": {
+            "clock_out_before_clock_in": "Clock-out must be after clock-in.",
+            "break_exceeds_duration": "Break cannot be longer than the shift.",
+            "shift_still_open": "Open shifts cannot be corrected.",
+            "shift_missing_clock_out": "This shift has no clock-out time."
+        }
     },
     "status": {
         "open": "Open",

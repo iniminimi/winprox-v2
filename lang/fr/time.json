@@ -24,7 +24,25 @@
         "break_minutes": "Pauze: :minutes min",
         "net_minutes": "Netto: :minutes min",
         "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Uitgeklokt bij :name"
+        "clocked_out_at": "Pointé sortie à :name"
+    },
+    "corrections": {
+        "button": "Corriger",
+        "title": "Corriger le shift",
+        "subtitle": "Ajustez les heures d'entrée/sortie ou la pause. La raison est enregistrée dans le journal d'audit.",
+        "saved": "Shift corrigé.",
+        "fields": {
+            "clock_in": "Heure d'entrée",
+            "clock_out": "Heure de sortie",
+            "break_minutes": "Pause (minutes)",
+            "reason": "Raison"
+        },
+        "errors": {
+            "clock_out_before_clock_in": "L'heure de sortie doit être après l'heure d'entrée.",
+            "break_exceeds_duration": "La pause ne peut pas dépasser la durée du shift.",
+            "shift_still_open": "Les shifts ouverts ne peuvent pas être corrigés.",
+            "shift_missing_clock_out": "Ce shift n'a pas d'heure de sortie."
+        }
     },
     "status": {
         "open": "Open",

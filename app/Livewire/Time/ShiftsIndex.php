@@ -2,13 +2,16 @@
 
 namespace App\Livewire\Time;
 
+use App\Actions\Time\CorrectWorkShiftAction;
 use App\Actions\Time\ForceCloseWorkShiftAction;
+use App\Http\Requests\Time\CorrectWorkShiftRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -37,6 +40,13 @@ class ShiftsIndex extends Component
     #[Url(as: 'to')]
     public string $to = '';
 
+    public bool $showCorrectionModal = false;
+    public ?int $correctionShiftId = null;
+    public string $correctionClockIn = '';
+    public string $correctionClockOut = '';
+    public int $correctionBreakMinutes = 0;
+    public string $correctionReason = '';
+
     public function mount(): void
     {
         $this->authorize('viewAny', WorkShift::class);
@@ -61,6 +71,68 @@ class ShiftsIndex extends Component
 
         $forceClose->handle($shift, (int) Tenancy::id(), auth()->id());
         session()->flash('time_flash', __('time.presence.force_closed'));
+    }
+
+    public function openCorrection(int $shiftId): void
+    {
+        $shift = WorkShift::query()->findOrFail($shiftId);
+        $this->authorize('correct', $shift);
+
+        $this->correctionShiftId = $shift->id;
+        $this->correctionClockIn = $shift->clock_in_at->format('Y-m-d\TH:i');
+        $this->correctionClockOut = $shift->clock_out_at?->format('Y-m-d\TH:i') ?? '';
+        $this->correctionBreakMinutes = (int) $shift->total_break_minutes;
+        $this->correctionReason = '';
+        $this->showCorrectionModal = true;
+    }
+
+    public function closeCorrection(): void
+    {
+        $this->showCorrectionModal = false;
+        $this->correctionShiftId = null;
+        $this->correctionReason = '';
+    }
+
+    public function saveCorrection(CorrectWorkShiftAction $correct): void
+    {
+        $shift = WorkShift::query()->findOrFail($this->correctionShiftId);
+        $this->authorize('correct', $shift);
+
+        $validated = $this->validate(
+            [
+                'correctionClockIn' => ['required', 'date'],
+                'correctionClockOut' => ['required', 'date', 'after:correctionClockIn'],
+                'correctionBreakMinutes' => ['required', 'integer', 'min:0', 'max:1440'],
+                'correctionReason' => ['required', 'string', 'min:3', 'max:500'],
+            ],
+            [],
+            [
+                'correctionClockIn' => __('time.corrections.fields.clock_in'),
+                'correctionClockOut' => __('time.corrections.fields.clock_out'),
+                'correctionBreakMinutes' => __('time.corrections.fields.break_minutes'),
+                'correctionReason' => __('time.corrections.fields.reason'),
+            ],
+        );
+
+        try {
+            $correct->handle($shift, [
+                'clock_in_at' => $validated['correctionClockIn'],
+                'clock_out_at' => $validated['correctionClockOut'],
+                'total_break_minutes' => (int) $validated['correctionBreakMinutes'],
+                'reason' => $validated['correctionReason'],
+            ], (int) Tenancy::id(), auth()->id());
+        } catch (InvalidArgumentException $e) {
+            $messageKey = match ($e->getMessage()) {
+                'break_exceeds_duration' => 'correctionBreakMinutes',
+                default => 'correctionClockOut',
+            };
+            $this->addError($messageKey, __('time.corrections.errors.'.$e->getMessage()));
+
+            return;
+        }
+
+        $this->closeCorrection();
+        session()->flash('time_flash', __('time.corrections.saved'));
     }
 
     public function render()

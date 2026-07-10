@@ -9,6 +9,7 @@ use App\Enums\WorkShiftStatus;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
+use App\Livewire\Time\ShiftsIndex;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
@@ -201,4 +202,42 @@ it('sluit vergeten open shifts automatisch na drempel', function () {
         ->and($staleShift->fresh()->clock_out_source)->toBe(ClockSource::Auto)
         ->and($staleShift->fresh()->clock_out_at)->not->toBeNull()
         ->and($recentShift->fresh()->status)->toBe(WorkShiftStatus::Open);
+});
+
+it('laat een admin een gesloten shift corrigeren met auditlog', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    $newClockIn = $shift->clock_in_at->copy()->subHour();
+    $newClockOut = $shift->fresh()->clock_out_at->copy()->subMinutes(30);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->call('openCorrection', $shift->id)
+        ->set('correctionClockIn', $newClockIn->format('Y-m-d\TH:i'))
+        ->set('correctionClockOut', $newClockOut->format('Y-m-d\TH:i'))
+        ->set('correctionBreakMinutes', 10)
+        ->set('correctionReason', 'Vergeten uit te klokken')
+        ->call('saveCorrection')
+        ->assertHasNoErrors();
+
+    $shift = $shift->fresh();
+    expect($shift->clock_in_at->format('Y-m-d H:i'))->toBe($newClockIn->format('Y-m-d H:i'))
+        ->and($shift->clock_out_at->format('Y-m-d H:i'))->toBe($newClockOut->format('Y-m-d H:i'))
+        ->and($shift->total_break_minutes)->toBe(10);
+
+    expect(DB::table('audit_logs')
+        ->where('action', 'work_shift.corrected')
+        ->where('model_id', $shift->id)
+        ->where('tenant_id', $tenant->id)
+        ->exists())->toBeTrue();
 });

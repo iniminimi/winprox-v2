@@ -89,6 +89,10 @@
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="forceClose({{ $shift->id }})" wire:confirm="{{ __('time.presence.force_close_confirm') }}">
                             {{ __('time.presence.force_close') }}
                         </button>
+                    @elseif (auth()->user()?->can('correct', $shift))
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openCorrection({{ $shift->id }})">
+                            {{ __('time.corrections.button') }}
+                        </button>
                     @endif
                 </div>
             </div>
@@ -98,4 +102,40 @@
     </div>
 
     {{ $shifts->links() }}
+
+    @if ($showCorrectionModal)
+        <x-wp-modal closeMethod="closeCorrection" aria-labelledby="shift-correction-title">
+            <form wire:submit="saveCorrection" class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="shift-correction-title" class="wp-h2">{{ __('time.corrections.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCorrection" />
+                </div>
+                <p class="wp-muted wp-text-sm">{{ __('time.corrections.subtitle') }}</p>
+                <div class="wp-field">
+                    <label class="wp-label" for="correction-clock-in">{{ __('time.corrections.fields.clock_in') }}</label>
+                    <input id="correction-clock-in" type="datetime-local" class="wp-input" wire:model="correctionClockIn">
+                    @error('correctionClockIn') <p class="wp-field-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="correction-clock-out">{{ __('time.corrections.fields.clock_out') }}</label>
+                    <input id="correction-clock-out" type="datetime-local" class="wp-input" wire:model="correctionClockOut">
+                    @error('correctionClockOut') <p class="wp-field-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="correction-break-minutes">{{ __('time.corrections.fields.break_minutes') }}</label>
+                    <input id="correction-break-minutes" type="number" min="0" max="1440" class="wp-input" wire:model="correctionBreakMinutes">
+                    @error('correctionBreakMinutes') <p class="wp-field-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label" for="correction-reason">{{ __('time.corrections.fields.reason') }}</label>
+                    <textarea id="correction-reason" class="wp-input" rows="3" wire:model="correctionReason"></textarea>
+                    @error('correctionReason') <p class="wp-field-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--surface" wire:click="closeCorrection">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                </div>
+            </form>
+        </x-wp-modal>
+    @endif
 </div>
