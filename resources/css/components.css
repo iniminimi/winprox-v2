@@ -3022,6 +3022,10 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
+.wp-billing-section-head--first {
+    margin-top: 0;
+}
+
 .wp-billing-section-head .wp-section-title {
     margin: 0;
 }

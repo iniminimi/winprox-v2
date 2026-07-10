@@ -124,6 +124,39 @@
         </div>
     @endif
 
+    <div class="wp-billing-section-head wp-billing-section-head--first">
+        <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+        <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
+    </div>
+
+    <div class="wp-billing-plan-list">
+        <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
+            <div class="wp-billing-plan-card-body">
+                <div class="wp-billing-plan-card-head">
+                    <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
+                    <p class="wp-billing-plan-card-price">{{ __('subscription.products.time.price') }}</p>
+                </div>
+                <p class="wp-billing-plan-card-minimum">{{ __('subscription.products.time.includes') }}</p>
+                <ul class="wp-billing-plan-card-meta">
+                    @foreach (__('subscription.products.time.bullets') as $bullet)
+                        <li>{{ $bullet }}</li>
+                    @endforeach
+                </ul>
+                <p class="wp-billing-plan-card-desc">{{ __('subscription.products.time.description') }}</p>
+            </div>
+            @if ($canManage)
+                <div class="wp-billing-plan-card-action">
+                    <a
+                        href="{{ route('contact.index') }}"
+                        class="btn btn--primary btn--block"
+                    >
+                        {{ __('subscription.products.time.contact_cta') }}
+                    </a>
+                </div>
+            @endif
+        </article>
+    </div>
+
     <div class="wp-billing-section-head">
         <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
         <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
@@ -240,39 +273,6 @@
                 @endif
             </article>
         @endforeach
-    </div>
-
-    <div class="wp-billing-section-head">
-        <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
-        <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
-    </div>
-
-    <div class="wp-billing-plan-list">
-        <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
-            <div class="wp-billing-plan-card-body">
-                <div class="wp-billing-plan-card-head">
-                    <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
-                    <p class="wp-billing-plan-card-price">{{ __('subscription.products.time.price') }}</p>
-                </div>
-                <p class="wp-billing-plan-card-minimum">{{ __('subscription.products.time.includes') }}</p>
-                <ul class="wp-billing-plan-card-meta">
-                    @foreach (__('subscription.products.time.bullets') as $bullet)
-                        <li>{{ $bullet }}</li>
-                    @endforeach
-                </ul>
-                <p class="wp-billing-plan-card-desc">{{ __('subscription.products.time.description') }}</p>
-            </div>
-            @if ($canManage)
-                <div class="wp-billing-plan-card-action">
-                    <a
-                        href="{{ route('contact.index') }}"
-                        class="btn btn--primary btn--block"
-                    >
-                        {{ __('subscription.products.time.contact_cta') }}
-                    </a>
-                </div>
-            @endif
-        </article>
     </div>
 
     <p class="wp-billing-legal">
