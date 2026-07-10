@@ -34,6 +34,9 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
 - Team-QR: kies een team **met actieve workers die een icoon hebben** — anders zie je
   registratie i.p.v. identificatie (`portal-team-identify` timeout).
 - Worker-icoon moet overeenkomen met `workers.field_icon_slug` (niet raden).
+- **ESG-shots:** de capture-tenant (`MANUAL_CAPTURE_EMAIL`) moet `has_esg_module = 1` hebben.
+  Zonder module worden `/esg/indicators` en `/esg/measurements` overgeslagen (selector timeout).
+  Minstens één actieve indicator en één meting geven rijkere shots; lege pagina's met setup-stappen zijn ook oké.
 
 **Teamleader-shots (optioneel maar aanbevolen):**
 
@@ -77,7 +80,7 @@ Bij mislukte capture: geen commit/push.
 ### 3. Output controleren
 
 - Pad: `public/images/manual/{locale}/*.png` (één map per entry in `config/locales.supported`)
-- ~20 bestanden per taal (80 totaal)
+- ~24 bestanden per taal (144 totaal voor 6 talen)
 - Internetportaal-PNG's zijn smal (~390px breed); handleiding toont ze op ware grootte
   (natuurlijke hoogte uit het bestand, geen geforceerde telefoon-verhouding)
 
@@ -139,6 +142,7 @@ Viewport-richtlijn:
 | `portal-team-identify` timeout | Verkeerd team-token (leeg team) of device-cookie — script reset portaal-cookies |
 | Teamleader skips | Worker naam/icoon/team-token kloppen niet — of Livewire sign-in (update script) |
 | `locations-gps-history` skip | Geen unit met GPS op de capture-locatie — minstens één `unit_gps_reports`-rij nodig |
+| `esg-indicators` / `esg-measurements` skip | ESG-module uit op capture-tenant — zet `has_esg_module` aan voor die tenant |
 | Server `pthread_create` | Shared hosting — capture lokaal |
 | “Klaar” maar 0 PNG's | PowerShell toont nu een error; check script-output |
 
