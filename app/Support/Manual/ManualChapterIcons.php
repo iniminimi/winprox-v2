@@ -18,6 +18,8 @@ final class ManualChapterIcons
         'tasks.show' => 'tasks',
         'calendar' => 'calendar',
         'dashboard' => 'dashboard',
+        'esg.indicators' => 'document',
+        'esg.measurements' => 'sliders',
         'settings' => 'settings',
         'settings.api' => 'api',
         'statuses.admin-portal' => 'dashboard',

@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Terminer",
-                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. La tâche obtient ensuite le statut \"Traité\"."
+                    "text": "Après avoir démarré la tâche, terminez-la en cliquant sur \"Traiter la tâche\". Ici vous pouvez ajouter une courte note et éventuellement joindre des photos. Parfois le portail demande une valeur de mesure (p. ex. un relevé de compteur) — saisissez-la avant de confirmer. La tâche obtient ensuite le statut \"Traité\"."
                 },
                 {
                     "label": "Enregistrer la position GPS",

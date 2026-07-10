@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Completa",
-                    "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. L'attività ottiene poi lo stato «Completata»."
+                    "text": "Dopo aver avviato l'attività, la completi cliccando su «Completa attività». Qui può aggiungere una breve nota e allegare facoltativamente foto. A volte il portale chiede un valore di misurazione (es. una lettura contatore) — lo inserisca prima di confermare. L'attività ottiene poi lo stato «Completata»."
                 },
                 {
                     "label": "Registra posizione GPS",

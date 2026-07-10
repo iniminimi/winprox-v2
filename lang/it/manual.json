@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Team e utenti tramite impostazioni",
-            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, dashboard e impostazioni."
+            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, dashboard, modulo ESG opzionale e impostazioni."
         },
         "internet_portal": {
             "title": "Due codici QR e il portale sul campo",
@@ -59,12 +59,12 @@
     "step_4_title": "Ricevi segnalazioni e assegna attività",
     "step_4_text": "Le segnalazioni arrivano tramite scansione QR o inserimento manuale. Per ogni segnalazione viene creata automaticamente un'attività collegata direttamente al team responsabile. È possibile creare più attività per una segnalazione (ad esempio per il team tecnico e per la squadra di pulizia). Imposti semplicemente una scadenza e segua l'avanzamento da vicino tramite dashboard e calendario.",
     "step_5_title": "Segui e chiudi",
-    "step_5_text": "I lavoratori eseguono le attività sul posto scansionando il QR team. Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Tutte le azioni restano chiaramente visibili nel registro di audit.",
+    "step_5_text": "I lavoratori eseguono le attività sul posto scansionando il QR team. Una volta gestite tutte le attività di una segnalazione, l'amministratore può chiudere definitivamente la segnalazione. Tutte le azioni restano chiaramente visibili nel registro di audit. Con il modulo ESG opzionale può inoltre registrare valori di misurazione durante ispezioni ricorrenti — vedi i capitoli Misurazioni ESG e Misurazioni.",
     "hub": {
         "title": "Manuali",
         "subtitle": "Scelga il manuale adatto al Suo ruolo",
         "general": "Manuale generale",
-        "general_desc": "App WinProx completa per amministratori e personale, inclusa l'aiuto sul portale QR — stampi o salvi come PDF.",
+        "general_desc": "App WinProx completa per amministratori e personale, con modulo ESG opzionale e aiuto sul portale QR — stampi o salvi come PDF.",
         "workers": "Manuale lavoratori",
         "workers_desc": "Team QR e unità QR sul posto — accesso, attività e foto.",
         "teamleaders": "Manuale caposquadra",

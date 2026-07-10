@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard en instellingen."
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module en instellingen."
         },
         "internet_portal": {
             "title": "Twee QR-codes en het veldportaal",
@@ -59,12 +59,12 @@
     "step_4_title": "Meldingen ontvangen & taken aansturen",
     "step_4_text": "Meldingen komen binnen via een QR-scan of handmatige invoer. Voor elke melding wordt automatisch een taak aangemaakt, die direct wordt gekoppeld aan het verantwoordelijke team. Het is mogelijk om meerdere taken voor één melding aan te maken (bijvoorbeeld voor zowel het technische team als de schoonmaakploeg). Stel eenvoudig een deadline in en volg de voortgang op de voet via het dashboard en de kalender.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders voeren taken uit op locatie door de team-QR te scannen. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Alle handelingen blijven overzichtelijk inzichtelijk in de audittrail.",
+    "step_5_text": "Uitvoerders voeren taken uit op locatie door de team-QR te scannen. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Alle handelingen blijven overzichtelijk inzichtelijk in de audittrail. Met de optionele ESG-module kunt u daarnaast meetwaarden laten vastleggen bij terugkerende inspecties — zie de hoofdstukken ESG-metingen en Metingen.",
     "hub": {
         "title": "Handleidingen",
         "subtitle": "Kies de handleiding die past bij jouw rol",
         "general": "Algemene handleiding",
-        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief QR-portaalhulp — afdrukken of opslaan als PDF.",
+        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief optionele ESG-module en QR-portaalhulp — afdrukken of opslaan als PDF.",
         "workers": "Handleiding uitvoerders",
         "workers_desc": "Team-QR en unit-QR op de werkvloer — aanmelden, taken en foto's.",
         "teamleaders": "Handleiding teamleaders",

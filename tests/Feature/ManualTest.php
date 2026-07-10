@@ -120,7 +120,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
 
     $expectedAnchors = array_map(
         fn (int $n) => 'Hoofdstuk '.$n,
-        range(1, 22),
+        range(1, 24),
     );
 
     $expectedChapterIds = [
@@ -134,6 +134,8 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-tasks-show',
         'chapter-calendar',
         'chapter-dashboard',
+        'chapter-esg-indicators',
+        'chapter-esg-measurements',
         'chapter-settings',
         'chapter-settings-api',
         'chapter-statuses-admin-portal',

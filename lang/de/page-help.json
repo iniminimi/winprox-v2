@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Abschließen",
-                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
+                    "text": "Nachdem Sie die Aufgabe gestartet haben, schließen Sie sie ab, indem Sie auf \"Aufgabe erledigen\" klicken. Hier können Sie eine kurze Notiz hinzufügen und optional Fotos beifügen. Manchmal fragt das Portal nach einem Messwert (z. B. einem Zählerstand) — geben Sie ihn ein, bevor Sie bestätigen. Die Aufgabe erhält anschließend den Status \"Erledigt\"."
                 },
                 {
                     "label": "GPS-Standort (neu) erfassen",

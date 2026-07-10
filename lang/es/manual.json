@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Equipos y usuarios a través de la configuración",
-            "intro": "Capítulos sobre el portal de administración con sesión iniciada: equipos, ubicaciones, incidencias, tareas, calendario, panel de control y configuración."
+            "intro": "Capítulos sobre el portal de administración con sesión iniciada: equipos, ubicaciones, incidencias, tareas, calendario, panel de control, módulo ESG opcional y configuración."
         },
         "internet_portal": {
             "title": "Dos códigos QR y el portal de campo",
@@ -59,12 +59,12 @@
     "step_4_title": "Recibir incidencias y asignar tareas",
     "step_4_text": "Las incidencias llegan mediante un escaneo QR o entrada manual. Para cada incidencia, se crea automáticamente una tarea vinculada directamente al equipo responsable. Es posible crear varias tareas para una incidencia (por ejemplo para el equipo técnico y el de limpieza). Establezca simplemente una fecha límite y siga el progreso de cerca mediante el panel de control y el calendario.",
     "step_5_title": "Seguimiento y cierre",
-    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar escaneando el QR del equipo. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Todas las acciones permanecen claramente visibles en el registro de auditoría.",
+    "step_5_text": "Los trabajadores ejecutan las tareas en el lugar escaneando el QR del equipo. Una vez gestionadas todas las tareas de una incidencia, el administrador puede cerrarla definitivamente. Todas las acciones permanecen claramente visibles en el registro de auditoría. Con el módulo ESG opcional puede registrar además valores de medición en inspecciones recurrentes — véase los capítulos Mediciones ESG y Mediciones.",
     "hub": {
         "title": "Manuales",
         "subtitle": "Elija el manual que se ajuste a su rol",
         "general": "Manual general",
-        "general_desc": "Aplicación WinProx completa para administradores y personal, incluida la ayuda del portal QR — imprimir o guardar como PDF.",
+        "general_desc": "Aplicación WinProx completa para administradores y personal, con módulo ESG opcional y ayuda del portal QR — imprimir o guardar como PDF.",
         "workers": "Manual de trabajadores",
         "workers_desc": "QR de equipo y QR de unidad en el lugar — inicio de sesión, tareas y fotos.",
         "teamleaders": "Manual de jefe de equipo",

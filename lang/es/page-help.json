@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Completar",
-                    "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. La tarea obtiene entonces el estado «Completada»."
+                    "text": "Tras haber iniciado la tarea, complétela haciendo clic en «Completar tarea». Aquí puede añadir una nota breve y opcionalmente adjuntar fotos. A veces el portal pide un valor de medición (p. ej. una lectura de contador) — introdúzcalo antes de confirmar. La tarea obtiene entonces el estado «Completada»."
                 },
                 {
                     "label": "Capturar ubicación GPS",

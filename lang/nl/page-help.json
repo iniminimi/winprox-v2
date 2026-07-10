@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Afronden",
-                    "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. De taak krijgt daarna de status \"Afgehandeld\"."
+                    "text": "Nadat je de taak bent gestart, rond je deze af door op \"Taak afhandelen\" te klikken. Hier kun je een korte notitie toevoegen en eventueel foto's bijvoegen. Soms vraagt het portaal om een meetwaarde (bv. een meterstand) — vul die in voordat je bevestigt. De taak krijgt daarna de status \"Afgehandeld\"."
                 },
                 {
                     "label": "GPS-locatie (her)vastleggen",

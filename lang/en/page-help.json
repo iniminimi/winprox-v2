@@ -544,7 +544,7 @@
                 },
                 {
                     "label": "Complete",
-                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. The task then gets status \"Completed\"."
+                    "text": "After you have started the task, complete it by clicking on \"Complete task\". Here you can add a short note and optionally attach photos. Sometimes the portal asks for a measurement value (e.g. a meter reading) — enter it before you confirm. The task then gets status \"Completed\"."
                 },
                 {
                     "label": "Capture GPS location",

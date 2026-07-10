@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard and settings."
+            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard, optional ESG module and settings."
         },
         "internet_portal": {
             "title": "Two QR codes and the field portal",
@@ -59,12 +59,12 @@
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via a QR scan or manual entry. For each issue, a task is automatically created and directly linked to the responsible team. It is possible to create multiple tasks for one issue (for example for both the technical team and the cleaning crew). Simply set a deadline and track progress closely via the dashboard and the calendar.",
     "step_5_title": "Follow up & close",
-    "step_5_text": "Workers carry out tasks on location by scanning the team QR. Once all tasks for an issue have been handled, the administrator can definitively close the issue. All actions remain clearly visible in the audit trail.",
+    "step_5_text": "Workers carry out tasks on location by scanning the team QR. Once all tasks for an issue have been handled, the administrator can definitively close the issue. All actions remain clearly visible in the audit trail. With the optional ESG module you can also record measurement values during recurring inspections — see the chapters ESG measurements and Measurements.",
     "hub": {
         "title": "Manuals",
         "subtitle": "Choose the manual that fits your role",
         "general": "General manual",
-        "general_desc": "Full WinProx app for administrators and staff, including QR portal help — print or save as PDF.",
+        "general_desc": "Full WinProx app for administrators and staff, including optional ESG module and QR portal help — print or save as PDF.",
         "workers": "Workers manual",
         "workers_desc": "Team QR and unit QR on site — sign in, tasks and photos.",
         "teamleaders": "Team leader manual",

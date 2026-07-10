@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Équipes et utilisateurs jusqu'aux paramètres",
-            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord et paramètres."
+            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, tableau de bord, module ESG en option et paramètres."
         },
         "internet_portal": {
             "title": "Deux QR codes et le portail terrain",
@@ -59,12 +59,12 @@
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent via un scan QR ou une saisie manuelle. Pour chaque signalement, une tâche est automatiquement créée et directement liée à l'équipe responsable. Il est possible de créer plusieurs tâches pour un signalement (par exemple pour l'équipe technique et l'équipe de nettoyage). Définissez simplement une date limite et suivez de près la progression via le tableau de bord et le calendrier.",
     "step_5_title": "Suivre & clôturer",
-    "step_5_text": "Les exécutants exécutent les tâches sur place en scannant le QR d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Toutes les actions restent clairement visibles dans l'historique.",
+    "step_5_text": "Les exécutants exécutent les tâches sur place en scannant le QR d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Toutes les actions restent clairement visibles dans l'historique. Avec le module ESG en option, vous pouvez en outre enregistrer des valeurs de mesure lors d'inspections récurrentes — voir les chapitres Mesures ESG et Mesures.",
     "hub": {
         "title": "Manuels",
         "subtitle": "Choisissez le manuel adapté à votre rôle",
         "general": "Manuel général",
-        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec l'aide des portails QR — imprimer ou enregistrer en PDF.",
+        "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec module ESG en option et aide des portails QR — imprimer ou enregistrer en PDF.",
         "workers": "Manuel exécutants",
         "workers_desc": "QR équipe et QR unité sur le terrain — connexion, tâches et photos.",
         "teamleaders": "Manuel chefs d'équipe",
