@@ -7,7 +7,8 @@
 </p>
 <p>
     WinProx («Work in Proximity») es una plataforma SaaS para la gestión técnica y operativa de instalaciones:
-    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos.
+    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y registro
+    ESG/cumplimiento opcional.
 </p>
 
 <h2>2. Identidad del proveedor del servicio</h2>
@@ -23,6 +24,7 @@
     <li>registrar incidencias, incluidas a través de portales QR.</li>
     <li>gestionar y dar seguimiento a tareas.</li>
     <li>asignar trabajo a equipos internos y trabajadores.</li>
+    <li>registrar y dar seguimiento a mediciones ESG/cumplimiento de forma opcional (si el módulo está activado).</li>
 </ul>
 <p>
     WinProx es únicamente una plataforma técnica y no realiza trabajos in situ por sí misma.

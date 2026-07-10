@@ -7,7 +7,8 @@
 </p>
 <p>
     WinProx (“Work in Proximity”) is een SaaS-platform voor technisch en operationeel locatiebeheer:
-    QR-meldingen, opvolging van issues en taken voor interne operationele teams.
+    QR-meldingen, opvolging van issues en taken voor interne operationele teams, en optioneel
+    ESG-/compliance-registratie.
 </p>
 
 <h2>2. Identiteit van de dienstverlener</h2>
@@ -23,6 +24,7 @@
     <li>meldingen (issues) kunnen registreren, onder meer via QR-portalen.</li>
     <li>taken kunnen beheren en opvolgen.</li>
     <li>werk kunnen toewijzen aan interne teams en uitvoerders.</li>
+    <li>optioneel ESG-/compliance-metingen kunnen registreren en opvolgen (indien de module is geactiveerd).</li>
 </ul>
 <p>
     WinProx is uitsluitend een technisch platform en voert zelf geen werken uit op locatie.

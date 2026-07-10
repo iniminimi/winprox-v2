@@ -1,7 +1,8 @@
 ﻿<h2>1. Wer wir sind</h2>
 <p>
     WinProx („Work in Proximity“) ist eine SaaS-Plattform für technisches und operatives Standortmanagement:
-    QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams.
+    QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams sowie optionale
+    ESG-/Compliance-Erfassung.
 </p>
 <p>
     Die Plattform wird betrieben von:
@@ -68,6 +69,22 @@
     <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind.</li>
 </ul>
 
+<p><strong>ESG & Compliance (optionales Modul)</strong></p>
+<p>
+    Wenn der Kunde das optionale ESG-Modul aktiviert, können Messwerte und Compliance-Daten erfasst werden,
+    z. B. bei wiederkehrenden Inspektionen oder beim Abschließen von Aufgaben im QR-Portal.
+</p>
+<ul>
+    <li>Indikatordefinitionen (Name, Typ, Einheit, Schwellenwerte, Optionen).</li>
+    <li>Messwerte (z. B. Zahl, Ja/Nein, Auswahl oder Text) mit Zeitstempel.</li>
+    <li>Verknüpfung mit Meldung, Aufgabe, Standort, Unit und optional dem ausführenden Worker.</li>
+    <li>Korrekturen als neue Messzeilen (append-only); frühere Werte bleiben erhalten.</li>
+</ul>
+<p>
+    Das Modul ist optional und nur für Administratoren sichtbar, wenn es aktiviert ist. Der Kunde ist verantwortlich
+    für Inhalt und Nutzung der ESG-Daten innerhalb seiner Organisation.
+</p>
+
 <h2>4. KI-Übersetzungen (optional)</h2>
 <p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>Produktverbesserung durch Onboarding-Statistiken (soweit möglich aggregiert).</li>
     <li>Sicherheit und Protokollierung.</li>
     <li>mehrsprachige Unterstützung durch KI-Übersetzungen (falls aktiviert).</li>
+    <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
 </ul>
 
 <h2>6. QR-Meldungen und Teamzugang</h2>
@@ -119,6 +137,7 @@
     <li>Protokolle: 6 Monate.</li>
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
+    <li>ESG-Messungen: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
 </ul>
 
 <h2>9. Weitergabe von Daten</h2>

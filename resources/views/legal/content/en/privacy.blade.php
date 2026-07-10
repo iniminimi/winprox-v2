@@ -1,7 +1,8 @@
 <h2>1. Who we are</h2>
 <p>
     WinProx (“Work in Proximity”) is a SaaS platform for technical and operational site management:
-    QR issue reporting and task follow-up for internal operational teams.
+    QR issue reporting and task follow-up for internal operational teams, and optional
+    ESG/compliance recording.
 </p>
 <p>
     The platform is operated by:
@@ -68,6 +69,22 @@
     <li>technical metadata required for security and abuse prevention</li>
 </ul>
 
+<p><strong>ESG & Compliance (optional module)</strong></p>
+<p>
+    If the customer enables the optional ESG module, measurement values and compliance data may be recorded,
+    for example during recurring inspections or when completing tasks on the QR portal.
+</p>
+<ul>
+    <li>indicator definitions (name, type, unit, thresholds, options).</li>
+    <li>measurement values (such as number, yes/no, choice or text) with timestamp.</li>
+    <li>link to issue, task, location, unit and optionally the worker who recorded the value.</li>
+    <li>corrections as new measurement rows (append-only); earlier values are retained.</li>
+</ul>
+<p>
+    The module is optional and visible to administrators only when enabled. The customer is responsible
+    for the content and use of ESG data within their organisation.
+</p>
+
 <h2>4. AI Translations (optional)</h2>
 <p>If enabled by the administrator, the platform may use AI translations:</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>product improvement through superuser onboarding statistics (aggregated where possible).</li>
     <li>security and logging.</li>
     <li>multilingual support via AI translations (if enabled).</li>
+    <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
 </ul>
 
 <h2>6. QR reporting and team access</h2>
@@ -118,6 +136,7 @@
     <li>logs: 6 months</li>
     <li>onboarding events per user (for onboarding statistics): 6 months; aggregated onboarding figures without personal data may be retained longer</li>
     <li>media (photos): 24 months after closing the relevant issue or task</li>
+    <li>ESG measurements: same retention as issues and tasks (contract period + 36 months)</li>
 </ul>
 
 <h2>9. Sharing of data</h2>

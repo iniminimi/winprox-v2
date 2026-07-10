@@ -1,7 +1,8 @@
 ﻿<h2>1. Qui sommes-nous</h2>
 <p>
     WinProx (« Work in Proximity ») est une plateforme SaaS de gestion technique et opérationnelle de sites :
-    signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes.
+    signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes, et enregistrement
+    ESG/conformité en option.
 </p>
 <p>
     La plateforme est exploitée par :
@@ -68,6 +69,22 @@
     <li>métadonnées techniques nécessaires à la sécurité et à la prévention des abus.</li>
 </ul>
 
+<p><strong>ESG & Conformité (module optionnel)</strong></p>
+<p>
+    Si le client active le module ESG optionnel, des valeurs de mesure et des données de conformité peuvent être enregistrées,
+    par exemple lors d’inspections récurrentes ou lors de l’exécution de tâches sur le portail QR.
+</p>
+<ul>
+    <li>définitions d’indicateurs (nom, type, unité, seuils, options).</li>
+    <li>valeurs de mesure (nombre, oui/non, choix ou texte) avec horodatage.</li>
+    <li>lien vers le signalement, la tâche, le site, l’unité et éventuellement l’exécutant.</li>
+    <li>corrections sous forme de nouvelles lignes (append-only) ; les valeurs antérieures sont conservées.</li>
+</ul>
+<p>
+    Le module est optionnel et visible uniquement par les administrateurs lorsqu’il est activé. Le client est responsable
+    du contenu et de l’usage des données ESG au sein de son organisation.
+</p>
+
 <h2>4. Traductions IA (optionnel)</h2>
 <p>Si activé par l'administrateur, la plateforme peut utiliser des traductions IA :</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>l’amélioration du produit via des statistiques d'onboarding (agrégées lorsque possible).</li>
     <li>la sécurité et la journalisation.</li>
     <li>la prise en charge multilingue via les traductions IA (si activé).</li>
+    <li>l’enregistrement et le suivi des mesures ESG/conformité (si le module est activé).</li>
 </ul>
 
 <h2>6. Signalements QR et accès des équipes</h2>
@@ -118,6 +136,7 @@
     <li>journaux : 6 mois.</li>
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>
+    <li>mesures ESG : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
 </ul>
 
 <h2>9. Partage des données</h2>

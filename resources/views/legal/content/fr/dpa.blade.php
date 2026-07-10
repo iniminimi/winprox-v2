@@ -19,7 +19,8 @@
 
 <p>
     WinProx traite des données personnelles sur instruction du client dans le cadre de l’utilisation de la plateforme pour
-    la gestion de sites, les signalements QR et le suivi des issues et tâches.
+    la gestion de sites, les signalements QR et le suivi des issues et tâches, et — si activé — des mesures
+    ESG/conformité en option.
 </p>
 
 <h2>3. Finalité du traitement</h2>
@@ -33,6 +34,7 @@
     <li>gestion des sites et unités.</li>
     <li>envoi de notifications par e-mail sur instruction du client.</li>
     <li>journalisation et sécurité.</li>
+    <li>enregistrement et suivi des mesures ESG/conformité (si le module est activé).</li>
 </ul>
 
 <h2>4. Types de données</h2>
@@ -44,6 +46,7 @@
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client.</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>
+    <li>données ESG/conformité (définitions d’indicateurs, valeurs de mesure, liens et attribution optionnelle aux exécutants).</li>
 </ul>
 
 <h2>5. Obligations de WinProx</h2>
@@ -101,6 +104,7 @@
     <li>issues et tâches : durée du contrat + 36 mois.</li>
     <li>journaux : 6 mois.</li>
     <li>photos : 24 mois après clôture.</li>
+    <li>mesures ESG : même durée de conservation que les issues et tâches.</li>
 </ul>
 
 <h2>11. Fin de l’accord</h2>

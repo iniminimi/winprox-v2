@@ -19,7 +19,8 @@
 
 <p>
     WinProx verarbeitet personenbezogene Daten im Auftrag des Kunden im Zusammenhang mit der Nutzung der Plattform für
-    Standortmanagement, QR-Meldungen und Nachverfolgung von Issues und Aufgaben.
+    Standortmanagement, QR-Meldungen und Nachverfolgung von Issues und Aufgaben sowie — falls aktiviert — optionale
+    ESG-/Compliance-Messungen.
 </p>
 
 <h2>3. Zweck der Verarbeitung</h2>
@@ -33,6 +34,7 @@
     <li>Verwaltung von Standorten und Units.</li>
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Protokollierung und Sicherheit.</li>
+    <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
 </ul>
 
 <h2>4. Art der Daten</h2>
@@ -44,6 +46,7 @@
     <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben.</li>
     <li>Zugangs- und Sitzungsdaten.</li>
     <li>Abonnement- und Zugriffsmetadaten.</li>
+    <li>ESG-/Compliance-Daten (Indikatordefinitionen, Messwerte, Verknüpfungen und optionale Zuordnung zu Ausführenden).</li>
 </ul>
 
 <h2>5. Pflichten von WinProx</h2>
@@ -101,6 +104,7 @@
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>
+    <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
 </ul>
 
 <h2>11. Ende der Vereinbarung</h2>

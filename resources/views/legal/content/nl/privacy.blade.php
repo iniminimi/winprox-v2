@@ -1,7 +1,8 @@
 ﻿<h2>1. Wie zijn wij</h2>
 <p>
     WinProx (“Work in Proximity”) is een SaaS-platform voor technisch en operationeel locatiebeheer:
-    QR-meldingen, opvolging van issues en taken voor interne operationele teams.
+    QR-meldingen, opvolging van issues en taken voor interne operationele teams, en optioneel
+    ESG-/compliance-registratie.
 </p>
 <p>
     Het platform wordt geëxploiteerd door:
@@ -68,6 +69,22 @@
     <li>technische metadata die nodig is voor beveiliging en misbruikpreventie.</li>
 </ul>
 
+<p><strong>ESG & Compliance (optionele module)</strong></p>
+<p>
+    Indien de klant de optionele ESG-module activeert, kunnen meetwaarden en compliancegegevens worden vastgelegd,
+    bijvoorbeeld bij terugkerende inspecties of bij het afhandelen van taken op het QR-portaal.
+</p>
+<ul>
+    <li>indicatordefinities (naam, type, eenheid, drempels, opties).</li>
+    <li>meetwaarden (zoals getal, ja/nee, keuze of tekst) met tijdstip van meting.</li>
+    <li>koppeling aan melding, taak, locatie, unit en optioneel de uitvoerder (worker).</li>
+    <li>correcties als nieuwe meetrijen (append-only); eerdere waarden blijven bewaard.</li>
+</ul>
+<p>
+    De module is optioneel en enkel zichtbaar voor beheerders wanneer ze is ingeschakeld. De klant is verantwoordelijk
+    voor de inhoud en het gebruik van ESG-gegevens binnen de eigen organisatie.
+</p>
+
 <h2>4. AI Vertalingen (optioneel)</h2>
 <p>Indien geactiveerd door de beheerder, kan het platform gebruikmaken van AI-vertalingen:</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>productverbetering via onboarding-statistieken (geaggregeerd waar mogelijk).</li>
     <li>beveiliging en logging.</li>
     <li>meertalige ondersteuning via AI-vertalingen (indien geactiveerd).</li>
+    <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
 </ul>
 
 <h2>6. QR-meldingen en team-toegang</h2>
@@ -119,6 +137,7 @@
     <li>logs: 6 maanden.</li>
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>
+    <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
 </ul>
 
 <h2>9. Delen van gegevens</h2>

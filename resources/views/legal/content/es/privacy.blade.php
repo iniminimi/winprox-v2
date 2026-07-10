@@ -1,7 +1,8 @@
 <h2>1. Quiénes somos</h2>
 <p>
     WinProx («Work in Proximity») es una plataforma SaaS para la gestión técnica y operativa de instalaciones:
-    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos.
+    informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y registro
+    ESG/cumplimiento opcional.
 </p>
 <p>
     La plataforma está operada por:
@@ -68,6 +69,22 @@
     <li>metadatos técnicos necesarios para la seguridad y la prevención de abusos</li>
 </ul>
 
+<p><strong>ESG y cumplimiento (módulo opcional)</strong></p>
+<p>
+    Si el cliente activa el módulo ESG opcional, pueden registrarse valores de medición y datos de cumplimiento,
+    por ejemplo en inspecciones recurrentes o al completar tareas en el portal QR.
+</p>
+<ul>
+    <li>definiciones de indicadores (nombre, tipo, unidad, umbrales, opciones).</li>
+    <li>valores de medición (número, sí/no, elección o texto) con marca de tiempo.</li>
+    <li>vínculo con incidencia, tarea, ubicación, unidad y opcionalmente el trabajador.</li>
+    <li>correcciones como nuevas filas (append-only); los valores anteriores se conservan.</li>
+</ul>
+<p>
+    El módulo es opcional y solo visible para administradores cuando está activado. El cliente es responsable
+    del contenido y uso de los datos ESG dentro de su organización.
+</p>
+
 <h2>4. Traducciones con IA (opcional)</h2>
 <p>Si el administrador lo activa, la plataforma puede utilizar traducciones con IA:</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>mejora del producto mediante estadísticas de incorporación de superusuarios (agregadas cuando sea posible).</li>
     <li>seguridad y registro de actividad.</li>
     <li>soporte multilingüe mediante traducciones con IA (si está activado).</li>
+    <li>registro y seguimiento de mediciones ESG/cumplimiento (si el módulo está activado).</li>
 </ul>
 
 <h2>6. Informes QR y acceso de equipos</h2>
@@ -118,6 +136,7 @@
     <li>registros: 6 meses</li>
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>
+    <li>mediciones ESG: mismo plazo que incidencias y tareas (duración del contrato + 36 meses)</li>
 </ul>
 
 <h2>9. Comunicación de datos</h2>

@@ -374,7 +374,7 @@ worden in rapportage getoond als `:waarde (niet meer in lijst)`.
 - Webhook `esg.measurement.recorded` bij elke nieuwe rij.
 
 ### 5b.5 Nog niet in scope (fase 2+)
-`GET` metingen, CSV-export, dashboards/KPI's, foto's aan metingen.
+`GET` metingen, CSV-export, dashboards/KPI's.
 
 ### 5b.6 Openstaande ESG-werkzaamheden (geprioriteerd)
 
@@ -393,7 +393,7 @@ prioriteit.
 **Corrigeren** op oorspronkelijke rijen; correctierij toont pill + “Vervangt [waarde]”.
 
 **Niet in deze lijst (breedere fase 2):** `GET /api/v1/esg/measurements`, CSV-export,
-dashboards/KPI's, foto's aan metingen — zie §5b.5.
+dashboards/KPI's — zie §5b.5.
 
 ---
 

@@ -1,7 +1,8 @@
 <h2>1. Chi siamo</h2>
 <p>
     WinProx («Work in Proximity») è una piattaforma SaaS per la gestione tecnica e operativa degli impianti:
-    segnalazione di problematiche tramite QR e follow-up delle attività per i team operativi interni.
+    segnalazione di problematiche tramite QR e follow-up delle attività per i team operativi interni, e registrazione
+    ESG/conformità opzionale.
 </p>
 <p>
     La piattaforma è gestita da:
@@ -68,6 +69,22 @@
     <li>metadati tecnici necessari per la sicurezza e la prevenzione degli abusi</li>
 </ul>
 
+<p><strong>ESG e conformità (modulo opzionale)</strong></p>
+<p>
+    Se il cliente attiva il modulo ESG opzionale, possono essere registrati valori di misurazione e dati di conformità,
+    ad esempio durante ispezioni ricorrenti o al completamento delle attività sul portale QR.
+</p>
+<ul>
+    <li>definizioni degli indicatori (nome, tipo, unità, soglie, opzioni).</li>
+    <li>valori di misurazione (numero, sì/no, scelta o testo) con timestamp.</li>
+    <li>collegamento a problematica, attività, sede, unità e opzionalmente al lavoratore.</li>
+    <li>correzioni come nuove righe (append-only); i valori precedenti restano conservati.</li>
+</ul>
+<p>
+    Il modulo è opzionale e visibile solo agli amministratori quando è attivato. Il cliente è responsabile
+    del contenuto e dell’uso dei dati ESG all’interno della propria organizzazione.
+</p>
+
 <h2>4. Traduzioni IA (opzionale)</h2>
 <p>Se abilitato dall'amministratore, la piattaforma può utilizzare traduzioni IA:</p>
 <ul>
@@ -88,6 +105,7 @@
     <li>il miglioramento del prodotto tramite statistiche di onboarding dei superutenti (aggregate ove possibile).</li>
     <li>sicurezza e registrazione delle attività.</li>
     <li>supporto multilingue tramite traduzioni IA (se abilitato).</li>
+    <li>registrazione e follow-up delle misurazioni ESG/conformità (se il modulo è attivato).</li>
 </ul>
 
 <h2>6. Segnalazioni QR e accesso dei team</h2>
@@ -118,6 +136,7 @@
     <li>registri: 6 mesi</li>
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>
+    <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività (durata del contratto + 36 mesi)</li>
 </ul>
 
 <h2>9. Comunicazione dei dati</h2>

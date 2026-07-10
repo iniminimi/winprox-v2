@@ -19,7 +19,8 @@
 
 <p>
     WinProx processes personal data on the customer’s instructions in connection with use of the platform for
-    site management, QR issue reporting and follow-up of issues and tasks.
+    site management, QR issue reporting and follow-up of issues and tasks, and — if enabled — optional
+    ESG/compliance measurements.
 </p>
 
 <h2>3. Purpose of processing</h2>
@@ -33,6 +34,7 @@
     <li>management of locations and units.</li>
     <li>sending email notifications on the customer’s instructions.</li>
     <li>logging and security.</li>
+    <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
 </ul>
 
 <h2>4. Types of data</h2>
@@ -44,6 +46,7 @@
     <li>data of workers and QR reporters, to the extent collected by the customer.</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
+    <li>ESG/compliance data (indicator definitions, measurement values, links and optional attribution to workers).</li>
 </ul>
 
 <h2>5. WinProx obligations</h2>
@@ -101,6 +104,7 @@
     <li>issues and tasks: contract period + 36 months.</li>
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>
+    <li>ESG measurements: same retention as issues and tasks.</li>
 </ul>
 
 <h2>11. End of agreement</h2>

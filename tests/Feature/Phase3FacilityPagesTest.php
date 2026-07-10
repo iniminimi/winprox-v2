@@ -132,7 +132,8 @@ it('toont privacy-document publiek', function () {
         ->assertOk()
         ->assertSee(__('legal.documents.privacy'))
         ->assertSee(__('legal.applicable_law_notice'))
-        ->assertSee('QR-meldingen', false);
+        ->assertSee('QR reports', false)
+        ->assertSee('ESG & Compliance', false);
 });
 
 it('toont contact voor gasten', function () {
