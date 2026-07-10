@@ -21,12 +21,13 @@ class ClockOutAction
         Worker $worker,
         ClockPoint $clockPoint,
         ?\Carbon\Carbon $clientTimestamp = null,
+        ClockSource $source = ClockSource::ClockPointQr,
     ): WorkShift {
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
         }
 
-        return DB::transaction(function () use ($worker, $clockPoint, $clientTimestamp) {
+        return DB::transaction(function () use ($worker, $clockPoint, $clientTimestamp, $source) {
             $shift = $this->lockOpenShift($worker);
             $shift->load('openBreak');
 
@@ -41,7 +42,7 @@ class ClockOutAction
                 'status' => WorkShiftStatus::Closed,
                 'clock_out_at' => now(),
                 'clock_out_client_at' => $clientTimestamp,
-                'clock_out_source' => ClockSource::ClockPointQr,
+                'clock_out_source' => $source,
                 'clock_out_clock_point_id' => $clockPoint->id,
                 'total_break_minutes' => $totalBreakMinutes,
             ]);

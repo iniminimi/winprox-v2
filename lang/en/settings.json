@@ -157,6 +157,7 @@
         "ability_teams_read": "Read teams",
         "ability_workers_read": "Read workers",
         "ability_time_read": "Read time tracking",
+        "ability_time_write": "Write time tracking",
         "ability_webhooks_manage": "Manage webhooks",
         "ability_all": "Full access"
     },

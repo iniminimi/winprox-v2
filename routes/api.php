@@ -90,6 +90,12 @@ Route::prefix('v1')->group(function () {
             Route::post('esg/measurements', [EsgMeasurementController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':esg:create'])
                 ->name('api.v1.esg.measurements.store');
+            Route::post('time/clock-in', [WorkShiftController::class, 'clockIn'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.clock-in');
+            Route::post('time/clock-out', [WorkShiftController::class, 'clockOut'])
+                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->name('api.v1.time.clock-out');
         });
 
         // Translation sync endpoints (superuser-only, authorized via UserPolicy::runTranslationSync)

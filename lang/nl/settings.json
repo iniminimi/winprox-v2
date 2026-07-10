@@ -157,6 +157,7 @@
         "ability_teams_read": "Teams lezen",
         "ability_workers_read": "Workers lezen",
         "ability_time_read": "Urenregistratie lezen",
+        "ability_time_write": "Urenregistratie schrijven",
         "ability_webhooks_manage": "Webhooks beheren",
         "ability_all": "Volledige toegang"
     },

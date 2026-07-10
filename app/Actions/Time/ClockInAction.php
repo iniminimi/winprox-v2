@@ -19,6 +19,7 @@ class ClockInAction
         ClockPoint $clockPoint,
         ?WorkerDevice $device = null,
         ?\Carbon\Carbon $clientTimestamp = null,
+        ClockSource $source = ClockSource::ClockPointQr,
     ): WorkShift {
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
@@ -32,7 +33,7 @@ class ClockInAction
             throw new InvalidArgumentException('clock_point_inactive');
         }
 
-        return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp) {
+        return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp, $source) {
             Worker::query()->whereKey($worker->id)->lockForUpdate()->first();
 
             $existing = WorkShift::query()
@@ -53,7 +54,7 @@ class ClockInAction
                 'status' => WorkShiftStatus::Open,
                 'clock_in_at' => now(),
                 'clock_in_client_at' => $clientTimestamp,
-                'clock_in_source' => ClockSource::ClockPointQr,
+                'clock_in_source' => $source,
                 'clock_in_device_id' => $device?->id,
             ]);
 

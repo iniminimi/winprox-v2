@@ -157,6 +157,7 @@
         "ability_teams_read": "Lire les équipes",
         "ability_workers_read": "Lire les exécutants",
         "ability_time_read": "Lire le suivi du temps",
+        "ability_time_write": "Écrire le suivi du temps",
         "ability_webhooks_manage": "Gérer les webhooks",
         "ability_all": "Accès complet"
     },
