@@ -56,9 +56,6 @@
         <h2 class="wp-section-title">{{ __('time.presence.not_clocked_in') }} ({{ $snapshot->notClockedIn->count() }})</h2>
         @forelse ($snapshot->notClockedIn as $worker)
             <div class="wp-cluster" wire:key="not-clocked-{{ $worker->id }}">
-                @if ($worker->field_icon_slug)
-                    <x-wp-worker-icon :slug="$worker->field_icon_slug" />
-                @endif
                 <span>{{ $worker->displayName() }}</span>
                 <span class="wp-muted">{{ $worker->team?->name }}</span>
             </div>

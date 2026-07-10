@@ -8,9 +8,6 @@
         @endphp
         <div class="wp-cluster wp-cluster--spread" wire:key="presence-shift-{{ $shift->id }}">
             <div class="wp-cluster">
-                @if ($shift->worker?->field_icon_slug)
-                    <x-wp-worker-icon :slug="$shift->worker->field_icon_slug" />
-                @endif
                 <div>
                     <strong>{{ $shift->worker?->displayName() }}</strong>
                     <p class="wp-muted wp-text-sm">
