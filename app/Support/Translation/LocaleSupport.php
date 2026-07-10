@@ -51,4 +51,20 @@ final class LocaleSupport
             default => $locale,
         };
     }
+
+    /**
+     * BCP 47-taal voor native date-inputs (dd/mm/jjjj in EU, kalender in app-taal).
+     */
+    public static function dateInputLang(?string $locale = null): string
+    {
+        return match (self::normalize($locale ?? app()->getLocale())) {
+            'nl' => 'nl-NL',
+            'en' => 'en-GB',
+            'fr' => 'fr-FR',
+            'de' => 'de-DE',
+            'es' => 'es-ES',
+            'it' => 'it-IT',
+            default => 'nl-NL',
+        };
+    }
 }

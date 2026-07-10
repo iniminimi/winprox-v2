@@ -192,7 +192,7 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
-                        <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
+                        <x-wp-date-input id="taskScheduledFor" wire:model="taskScheduledFor" />
                         @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
@@ -247,7 +247,7 @@
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
-                        <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">
+                        <x-wp-date-input id="taskScheduledFor" wire:model="taskScheduledFor" />
                         @error('taskScheduledFor') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">

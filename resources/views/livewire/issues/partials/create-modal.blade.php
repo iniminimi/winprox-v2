@@ -102,7 +102,7 @@
                         </div>
                         <div class="wp-field">
                             <label class="wp-label" for="create_recurrence_first_due_date">{{ __('issues.create.first_due') }}</label>
-                            <input type="date" id="create_recurrence_first_due_date" class="wp-input" wire:model="recurrence_first_due_date">
+                            <x-wp-date-input id="create_recurrence_first_due_date" wire:model="recurrence_first_due_date" />
                             @error('recurrence_first_due_date') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     </div>

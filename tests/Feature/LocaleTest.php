@@ -15,3 +15,9 @@ it('koppelt elke taakstatus aan een vertaalsleutel', function () {
         expect(__($status->labelKey(), [], 'nl'))->not->toBe($status->labelKey());
     }
 });
+
+it('mapt app-locale naar europese date-input locale', function () {
+    expect(\App\Support\Translation\LocaleSupport::dateInputLang('nl'))->toBe('nl-NL')
+        ->and(\App\Support\Translation\LocaleSupport::dateInputLang('en'))->toBe('en-GB')
+        ->and(\App\Support\Translation\LocaleSupport::dateInputLang('fr'))->toBe('fr-FR');
+});
