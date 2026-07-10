@@ -76,4 +76,22 @@ return [
             'self_activate' => false,
         ],
     ],
+
+    'modules' => [
+        'esg' => [
+            'label_key' => 'subscription.modules.esg.name',
+            'minimum_plan' => 'pro',
+        ],
+        'time' => [
+            'label_key' => 'subscription.modules.time.name',
+            'minimum_plan' => 'starter',
+        ],
+    ],
+
+    'bundles' => [
+        'time' => [
+            'label_key' => 'subscription.products.time.name',
+            'base_plan' => 'micro',
+        ],
+    ],
 ];

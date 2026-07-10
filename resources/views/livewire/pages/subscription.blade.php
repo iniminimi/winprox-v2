@@ -65,6 +65,12 @@
                 @else
                     <li class="wp-billing-status-list__warn">{{ __('subscription.status_expired') }}</li>
                 @endif
+                @if ($tenant->has_esg_module)
+                    <li>{{ __('subscription.status_module_esg') }}</li>
+                @endif
+                @if ($tenant->has_time_module)
+                    <li>{{ __('subscription.status_module_time') }}</li>
+                @endif
             </ul>
             @if (! in_array($billingStatus, ['paid', 'grace'], true))
                 <p class="wp-muted">{{ __('subscription.pricing_intro') }}</p>
@@ -110,6 +116,11 @@
             {{ __('subscription.admin_required') }}
         </div>
     @endif
+
+    <div class="wp-billing-section-head">
+        <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
+        <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
+    </div>
 
     <div class="wp-billing-plan-list">
         @foreach ($planKeys as $planKey)
@@ -170,6 +181,83 @@
                 @endif
             </article>
         @endforeach
+    </div>
+
+    <div class="wp-billing-section-head">
+        <h2 class="wp-section-title">{{ __('subscription.modules_heading') }}</h2>
+        <p class="wp-muted">{{ __('subscription.modules_intro') }}</p>
+    </div>
+
+    <div class="wp-billing-plan-list">
+        @foreach ($moduleKeys as $moduleKey)
+            @php
+                $isModuleActive = $moduleKey === 'esg'
+                    ? (bool) $tenant?->has_esg_module
+                    : (bool) $tenant?->has_time_module;
+            @endphp
+            <article class="wp-billing-plan-card" wire:key="subscription-module-{{ $moduleKey }}">
+                <div class="wp-billing-plan-card-body">
+                    <div class="wp-billing-plan-card-head">
+                        <h2 class="wp-billing-plan-card-title">{{ __("subscription.modules.{$moduleKey}.name") }}</h2>
+                        <p class="wp-billing-plan-card-price">{{ __("subscription.modules.{$moduleKey}.price") }}</p>
+                    </div>
+                    <p class="wp-billing-plan-card-minimum">{{ __("subscription.modules.{$moduleKey}.minimum_plan") }}</p>
+                    <ul class="wp-billing-plan-card-meta">
+                        @foreach (__("subscription.modules.{$moduleKey}.bullets") as $bullet)
+                            <li>{{ $bullet }}</li>
+                        @endforeach
+                    </ul>
+                    <p class="wp-billing-plan-card-desc">{{ __("subscription.modules.{$moduleKey}.description") }}</p>
+                </div>
+                @if ($canManage)
+                    <div class="wp-billing-plan-card-action">
+                        @if ($isModuleActive)
+                            <span class="wp-pill wp-pill--done">{{ __('subscription.module_active') }}</span>
+                        @else
+                            <a
+                                href="{{ route('contact.index') }}"
+                                class="btn btn--primary btn--block"
+                            >
+                                {{ __('subscription.module_contact_cta') }}
+                            </a>
+                        @endif
+                    </div>
+                @endif
+            </article>
+        @endforeach
+    </div>
+
+    <div class="wp-billing-section-head">
+        <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+        <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
+    </div>
+
+    <div class="wp-billing-plan-list">
+        <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
+            <div class="wp-billing-plan-card-body">
+                <div class="wp-billing-plan-card-head">
+                    <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
+                    <p class="wp-billing-plan-card-price">{{ __('subscription.products.time.price') }}</p>
+                </div>
+                <p class="wp-billing-plan-card-minimum">{{ __('subscription.products.time.includes') }}</p>
+                <ul class="wp-billing-plan-card-meta">
+                    @foreach (__('subscription.products.time.bullets') as $bullet)
+                        <li>{{ $bullet }}</li>
+                    @endforeach
+                </ul>
+                <p class="wp-billing-plan-card-desc">{{ __('subscription.products.time.description') }}</p>
+            </div>
+            @if ($canManage)
+                <div class="wp-billing-plan-card-action">
+                    <a
+                        href="{{ route('contact.index') }}"
+                        class="btn btn--primary btn--block"
+                    >
+                        {{ __('subscription.products.time.contact_cta') }}
+                    </a>
+                </div>
+            @endif
+        </article>
     </div>
 
     <p class="wp-billing-legal">

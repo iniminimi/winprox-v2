@@ -127,6 +127,7 @@ class Subscription extends Component
             $tenant = $realign->handle($tenant);
         }
         $planKeys = array_keys(config('billing.plans', []));
+        $moduleKeys = array_keys(config('billing.modules', []));
 
         $billingStatus = match (true) {
             $tenant?->isLegacyWithoutBillingTracking() => 'legacy',
@@ -147,6 +148,7 @@ class Subscription extends Component
         return view('livewire.pages.subscription', [
             'tenant' => $tenant,
             'planKeys' => $planKeys,
+            'moduleKeys' => $moduleKeys,
             'billingStatus' => $billingStatus,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'canManage' => $tenant && auth()->user()?->can('manageSubscription', $tenant),

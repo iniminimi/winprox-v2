@@ -18,7 +18,15 @@
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "WinProx includes a one-month free trial. After that, choose a plan based on the number of units at your sites (machines, zones, or areas).",
+    "pricing_intro": "WinProx includes a one-month free trial. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Optional modules and WinProx Time are listed below.",
+    "facility_heading": "WinProx Facility",
+    "facility_intro": "Plans based on units and team seats. Micro is facility-only; larger plans scale with your organisation.",
+    "modules_heading": "Optional modules",
+    "modules_intro": "Add-ons for WinProx Facility. Monthly surcharge on top of your plan; activation via WinProx.",
+    "module_active": "Active",
+    "module_contact_cta": "Request module",
+    "status_module_esg": "ESG module active on your account.",
+    "status_module_time": "Time module active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" and \"Add location\" stay disabled until you upgrade.",
     "page_limits_users_body": "You are using :current of :max team seats on your plan (1 administrator plus up to :max staff). \"Add user\" is disabled until you upgrade.",
@@ -100,6 +108,34 @@
             "documents": "Unlimited documents for your organisation",
             "description": "Includes API access, webhooks, and custom solutions.",
             "features": ["API access", "Webhooks", "Custom solutions"]
+        }
+    },
+    "modules": {
+        "esg": {
+            "name": "ESG module",
+            "price": "+ €59 / month",
+            "minimum_plan": "From Pro plan",
+            "description": "Measurements, indicators, and ESG reporting for your organisation.",
+            "bullets": ["Indicators & measurements", "ESG portal", "Compliance & reporting"]
+        },
+        "time": {
+            "name": "Time module",
+            "price": "+ €59 / month",
+            "minimum_plan": "From Starter plan",
+            "description": "Clock in/out, breaks, and shifts alongside your facility management.",
+            "bullets": ["Attendance", "Breaks", "Shifts", "Clock Points"]
+        }
+    },
+    "products": {
+        "time": {
+            "heading": "WinProx Time",
+            "intro": "All-in-one for time tracking: Micro scope with the Time module included.",
+            "name": "WinProx Time",
+            "price": "€59 / month",
+            "includes": "Micro scope · Time module included",
+            "description": "Entry package when time tracking is your focus — without a separate Facility plan.",
+            "bullets": ["Up to 10 units/spaces", "Clock in/out", "Breaks & shifts", "Clock Point QR"],
+            "contact_cta": "Request WinProx Time"
         }
     },
     "stripe": {

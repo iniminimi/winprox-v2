@@ -18,7 +18,15 @@
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
     "status_grace": "Abonnement :plan afgelopen op :ended. Nalichtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng tijdig om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een plan om verder te gaan.",
-    "pricing_intro": "WinProx is 1 maand gratis te testen. Daarna kies je een formule op basis van het aantal units op je locaties (machines, zones of ruimtes).",
+    "pricing_intro": "WinProx is 1 maand gratis te testen. Daarna kies je een formule op basis van het aantal units op je locaties (machines, zones of ruimtes). Optionele modules en WinProx Time staan hieronder.",
+    "facility_heading": "WinProx Facility",
+    "facility_intro": "Formules op basis van units en teamplaatsen. Micro is facility-only; grotere formules schalen mee met uw organisatie.",
+    "modules_heading": "Optionele modules",
+    "modules_intro": "Uitbreidingen op WinProx Facility. Maandelijkse toeslag boven op uw formule; activering via WinProx.",
+    "module_active": "Actief",
+    "module_contact_cta": "Module aanvragen",
+    "status_module_esg": "ESG-module actief op uw account.",
+    "status_module_time": "Time-module actief op uw account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
     "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Nieuwe locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
     "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule (1 beheerder plus maximaal :max medewerkers). \"Medewerker toevoegen\" is uitgeschakeld tot je upgradet.",
@@ -100,6 +108,34 @@
             "documents": "Onbeperkt documenten voor uw organisatie",
             "description": "Inclusief API-toegang, webhooks en maatwerk.",
             "features": ["API-toegang", "Webhooks", "Maatwerk"]
+        }
+    },
+    "modules": {
+        "esg": {
+            "name": "ESG-module",
+            "price": "+ €59 / maand",
+            "minimum_plan": "Vanaf Pro-formule",
+            "description": "Metingen, indicatoren en ESG-rapportage voor uw organisatie.",
+            "bullets": ["Indicatoren & metingen", "ESG-portaal", "Compliance & rapportage"]
+        },
+        "time": {
+            "name": "Time-module",
+            "price": "+ €59 / maand",
+            "minimum_plan": "Vanaf Starter-formule",
+            "description": "In- en uitklokken, pauzes en shifts naast uw facility-beheer.",
+            "bullets": ["Aanwezigheid", "Pauzes", "Shifts", "Clock Points"]
+        }
+    },
+    "products": {
+        "time": {
+            "heading": "WinProx Time",
+            "intro": "Alles-in-één voor urenregistratie: Micro-omvang met Time-module inbegrepen.",
+            "name": "WinProx Time",
+            "price": "€59 / maand",
+            "includes": "Micro-omvang · Time-module inbegrepen",
+            "description": "Instappakket wanneer tijdregistratie centraal staat — zonder aparte Facility-formule.",
+            "bullets": ["Tot 10 units/ruimtes", "In- en uitklokken", "Pauzes & shifts", "Clock Point QR"],
+            "contact_cta": "WinProx Time aanvragen"
         }
     },
     "stripe": {

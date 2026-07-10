@@ -18,7 +18,15 @@
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
     "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugriff. Verlängern Sie rechtzeitig, um Unterbrechungen zu vermeiden.",
     "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten eine Formel, um fortzufahren.",
-    "pricing_intro": "WinProx bietet einen Gratis-Monat zum Testen. Danach wählen Sie eine Formel nach der Anzahl Units an Ihren Standorten (Maschinen, Zonen oder Bereiche).",
+    "pricing_intro": "WinProx bietet einen Gratis-Monat zum Testen. Danach wählen Sie eine Formel nach der Anzahl Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Optionale Module und WinProx Time finden Sie unten.",
+    "facility_heading": "WinProx Facility",
+    "facility_intro": "Formeln nach Units und Teamplätzen. Micro nur Facility; größere Formeln skalieren mit Ihrer Organisation.",
+    "modules_heading": "Optionale Module",
+    "modules_intro": "Erweiterungen für WinProx Facility. Monatlicher Aufpreis zu Ihrer Formel; Aktivierung über WinProx.",
+    "module_active": "Aktiv",
+    "module_contact_cta": "Modul anfragen",
+    "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
+    "status_module_time": "Time-Modul auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
     "page_limits_units_body": "Sie nutzen :current von :max Units. „Unit hinzufügen“ und „Neuen Standort hinzufügen“ bleiben deaktiviert, bis Sie upgraden.",
     "page_limits_users_body": "Sie nutzen :current von :max Team-Plätzen (1 Administrator plus max. :max Mitarbeitende). „Mitarbeiter hinzufügen“ ist deaktiviert, bis Sie upgraden.",
@@ -100,6 +108,34 @@
             "documents": "Unbegrenzt Dokumente für Ihre Organisation",
             "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen.",
             "features": ["API-Zugriff", "Webhooks", "Maßgeschneiderte Lösungen"]
+        }
+    },
+    "modules": {
+        "esg": {
+            "name": "ESG-Modul",
+            "price": "+ €59 / Monat",
+            "minimum_plan": "Ab Pro-Formel",
+            "description": "Messungen, Indikatoren und ESG-Berichterstattung für Ihre Organisation.",
+            "bullets": ["Indikatoren & Messungen", "ESG-Portal", "Compliance & Berichte"]
+        },
+        "time": {
+            "name": "Time-Modul",
+            "price": "+ €59 / Monat",
+            "minimum_plan": "Ab Starter-Formel",
+            "description": "Ein- und Ausstempeln, Pausen und Schichten neben Ihrem Facility-Management.",
+            "bullets": ["Anwesenheit", "Pausen", "Schichten", "Clock Points"]
+        }
+    },
+    "products": {
+        "time": {
+            "heading": "WinProx Time",
+            "intro": "Alles-in-einem für Zeiterfassung: Micro-Umfang mit Time-Modul inklusive.",
+            "name": "WinProx Time",
+            "price": "€59 / Monat",
+            "includes": "Micro-Umfang · Time-Modul inklusive",
+            "description": "Einstiegspaket, wenn Zeiterfassung im Mittelpunkt steht — ohne separate Facility-Formel.",
+            "bullets": ["Bis zu 10 Units/Räume", "Ein- und Ausstempeln", "Pausen & Schichten", "Clock Point QR"],
+            "contact_cta": "WinProx Time anfragen"
         }
     },
     "stripe": {

@@ -91,6 +91,28 @@ it('stuurt gebruikers zonder toegang door naar abonnement', function () {
         ->assertRedirect(route('subscription.index'));
 });
 
+it('toont facility-formules modules en WinProx Time op abonnement', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(5),
+        'has_esg_module' => true,
+        'has_time_module' => false,
+        'is_active' => true,
+    ]);
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->assertSee(__('subscription.facility_heading'))
+        ->assertSee(__('subscription.modules.esg.name'))
+        ->assertSee(__('subscription.modules.time.name'))
+        ->assertSee(__('subscription.products.time.name'))
+        ->assertSee(__('subscription.status_module_esg'))
+        ->assertDontSee(__('subscription.status_module_time'));
+});
+
 it('laat een beheerder een plan activeren', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(3),

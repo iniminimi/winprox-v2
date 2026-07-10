@@ -3016,6 +3016,20 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
+.wp-billing-section-head {
+    max-width: 48rem;
+    margin: 2rem auto 0.75rem;
+    width: 100%;
+}
+
+.wp-billing-section-head .wp-section-title {
+    margin: 0;
+}
+
+.wp-billing-section-head .wp-muted {
+    margin: 0.35rem 0 0;
+}
+
 .wp-billing-plan-card {
     display: flex;
     flex-direction: column;
@@ -3085,6 +3099,18 @@ svg.wp-release-worker-row__icon,
     font-size: 0.875rem;
     line-height: 1.55;
     color: var(--wp-text-muted);
+}
+
+.wp-billing-plan-card-minimum {
+    margin: 0.35rem 0 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--wp-text-muted);
+}
+
+.wp-billing-plan-card--bundle {
+    border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
+    background: color-mix(in srgb, var(--wp-accent) 4%, var(--wp-surface));
 }
 
 .wp-billing-plan-card-action {
