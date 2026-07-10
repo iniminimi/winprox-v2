@@ -38,21 +38,6 @@
         </div>
     </div>
 
-    <div class="wp-grid wp-grid--3">
-        <div class="wp-card wp-card-pad">
-            <p class="wp-kpi-value">{{ $snapshot->present->count() }}</p>
-            <p class="wp-muted">{{ __('time.presence.present') }}</p>
-        </div>
-        <div class="wp-card wp-card-pad">
-            <p class="wp-kpi-value">{{ $snapshot->onBreak->count() }}</p>
-            <p class="wp-muted">{{ __('time.presence.on_break') }}</p>
-        </div>
-        <div class="wp-card wp-card-pad">
-            <p class="wp-kpi-value">{{ $snapshot->notClockedIn->count() }}</p>
-            <p class="wp-muted">{{ __('time.presence.not_clocked_in') }}</p>
-        </div>
-    </div>
-
     @include('partials.wp-time-presence-section', [
         'title' => __('time.presence.present'),
         'shifts' => $snapshot->present,
