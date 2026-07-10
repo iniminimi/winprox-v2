@@ -83,14 +83,16 @@
             "path": "/esg/indicators",
             "selector": "[data-manual-capture=\"esg-indicators\"]",
             "viewport": { "width": 1280, "height": 800 },
-            "auth": true
+            "auth": true,
+            "optional": true
         },
         {
             "id": "esg-measurements",
             "path": "/esg/measurements",
             "selector": "[data-manual-capture=\"esg-measurements\"]",
             "viewport": { "width": 1280, "height": 800 },
-            "auth": true
+            "auth": true,
+            "optional": true
         },
         {
             "id": "settings",

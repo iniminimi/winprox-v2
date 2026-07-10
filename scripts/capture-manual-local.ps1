@@ -4,7 +4,7 @@ $root = Resolve-Path (Join-Path $PSScriptRoot '..')
 Set-Location $root
 
 $manualRoot = Join-Path $root 'public\images\manual'
-$locales = @('nl', 'en', 'fr', 'de')
+$locales = @('nl', 'en', 'fr', 'de', 'es', 'it')
 
 function Import-ManualCaptureEnv {
     param([string]$EnvPath)
@@ -82,6 +82,12 @@ if (-not (Test-Path 'node_modules\playwright')) {
 }
 npx playwright install chromium
 Pop-Location
+
+Write-Host 'Stap 2b/5: capture-tenant voorbereiden (ESG-module)...'
+php artisan winprox:prepare-manual-capture
+if ($LASTEXITCODE -ne 0) {
+    throw 'Voorbereiden capture-tenant mislukt (MANUAL_CAPTURE_EMAIL in .env?).'
+}
 
 Write-Host "Stap 3/5: capture tegen $($env:MANUAL_CAPTURE_BASE_URL) ..."
 node (Join-Path $root 'scripts\capture-manual-screenshots.mjs')

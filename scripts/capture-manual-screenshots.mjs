@@ -138,7 +138,20 @@ try {
             }
 
             const locator = page.locator(target.selector).first();
-            await locator.waitFor({ state: 'visible', timeout: 30_000 });
+            try {
+                await locator.waitFor({ state: 'visible', timeout: 30_000 });
+            } catch (error) {
+                if (target.optional === true) {
+                    console.warn(
+                        `Skip ${target.id}: selector not visible (${target.selector}). `
+                        + 'Zie docs/MANUAL_SCREENSHOTS.md — ESG vereist has_esg_module op de capture-tenant.',
+                    );
+                    skipped++;
+                    continue;
+                }
+
+                throw error;
+            }
 
             const localeDir = join(outputDir, locale);
             mkdirSync(localeDir, { recursive: true });

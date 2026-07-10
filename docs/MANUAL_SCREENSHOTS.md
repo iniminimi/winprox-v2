@@ -68,6 +68,9 @@ php artisan config:clear
 .\scripts\capture-manual-local.ps1
 ```
 
+Stap **2b** zet `has_esg_module` automatisch aan voor de tenant van `MANUAL_CAPTURE_EMAIL`
+(`php artisan winprox:prepare-manual-capture`). Zonder dat mislukt de ESG-capture (403).
+
 Het script doet **altijd** alles:
 
 1. Verwijdert bestaande `*.png` in `public/images/manual/{locale}/` (locales uit `config/locales.php`)
