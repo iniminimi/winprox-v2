@@ -1,8 +1,10 @@
 <?php
 
+use App\Actions\Time\AutoCloseStaleWorkShiftsAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ForceCloseWorkShiftAction;
+use App\Enums\ClockSource;
 use App\Enums\WorkShiftStatus;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\ClockPointsIndex;
@@ -160,4 +162,43 @@ it('isoleert time-data per tenant', function () {
 
     Tenancy::actAs($tenantB->id);
     expect(WorkShift::query()->count())->toBe(0);
+});
+
+it('sluit vergeten open shifts automatisch na drempel', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $staleShift = WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => now()->subHours(20),
+    ]);
+
+    $recentShift = WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => Worker::factory()->create([
+            'tenant_id' => $tenant->id,
+            'internal_team_id' => $team->id,
+            'field_icon_slug' => 'star',
+        ])->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => now()->subHours(2),
+    ]);
+
+    $closed = app(AutoCloseStaleWorkShiftsAction::class)->handle(16);
+
+    expect($closed)->toBe(1)
+        ->and($staleShift->fresh()->status)->toBe(WorkShiftStatus::ForceClosed)
+        ->and($staleShift->fresh()->clock_out_source)->toBe(ClockSource::Auto)
+        ->and($staleShift->fresh()->clock_out_at)->not->toBeNull()
+        ->and($recentShift->fresh()->status)->toBe(WorkShiftStatus::Open);
 });

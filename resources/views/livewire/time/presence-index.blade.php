@@ -57,12 +57,14 @@
         'title' => __('time.presence.present'),
         'shifts' => $snapshot->present,
         'showForceClose' => true,
+        'staleHours' => $staleHours,
     ])
 
     @include('partials.wp-time-presence-section', [
         'title' => __('time.presence.on_break'),
         'shifts' => $snapshot->onBreak,
         'showForceClose' => true,
+        'staleHours' => $staleHours,
     ])
 
     <div class="wp-card wp-card-pad wp-stack">

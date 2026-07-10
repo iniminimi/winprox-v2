@@ -80,7 +80,11 @@
                     </p>
                 </div>
                 <div class="wp-cluster">
-                    <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
+                    @if ($shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto)
+                        <span class="wp-pill wp-pill--closed">{{ __('time.status.auto_closed') }}</span>
+                    @else
+                        <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
+                    @endif
                     @if ($shift->status->isOpen())
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="forceClose({{ $shift->id }})" wire:confirm="{{ __('time.presence.force_close_confirm') }}">
                             {{ __('time.presence.force_close') }}

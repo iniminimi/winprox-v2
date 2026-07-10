@@ -156,6 +156,7 @@
         "ability_units_read": "Units lesen",
         "ability_teams_read": "Teams lesen",
         "ability_workers_read": "Mitarbeiter lesen",
+        "ability_time_read": "Zeiterfassung lesen",
         "ability_webhooks_manage": "Webhooks verwalten",
         "ability_all": "Vollzugriff"
     },

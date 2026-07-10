@@ -134,6 +134,7 @@ class ApiSettings extends Component
                 'units:read' => __('settings.api.ability_units_read'),
                 'teams:read' => __('settings.api.ability_teams_read'),
                 'workers:read' => __('settings.api.ability_workers_read'),
+                'time:read' => __('settings.api.ability_time_read'),
                 'webhooks:manage' => __('settings.api.ability_webhooks_manage'),
                 '*' => __('settings.api.ability_all'),
             ],

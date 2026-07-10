@@ -15,7 +15,8 @@
         "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
         "force_close": "Shift sluiten",
         "force_close_confirm": "Deze open shift nu sluiten met de huidige tijd?",
-        "force_closed": "Shift gesloten."
+        "force_closed": "Turno chiuso.",
+        "stale_warning": "Aperto da più di :hours ore"
     },
     "shifts": {
         "subtitle": "Urenoverzicht per periode.",
@@ -28,7 +29,8 @@
     "status": {
         "open": "Open",
         "closed": "Gesloten",
-        "force_closed": "Gesloten (admin)"
+        "force_closed": "Chiuso (admin)",
+        "auto_closed": "Chiuso (automatico)"
     },
     "filters": {
         "team": "Team",

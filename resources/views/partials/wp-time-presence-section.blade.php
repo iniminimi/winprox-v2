@@ -1,8 +1,11 @@
-@props(['title', 'shifts', 'showForceClose' => false])
+@props(['title', 'shifts', 'showForceClose' => false, 'staleHours' => 16])
 
 <div class="wp-card wp-card-pad wp-stack">
     <h2 class="wp-section-title">{{ $title }} ({{ $shifts->count() }})</h2>
     @forelse ($shifts as $shift)
+        @php
+            $isStale = $shift->clock_in_at->lt(now()->subHours(max(1, (int) $staleHours)));
+        @endphp
         <div class="wp-cluster wp-cluster--spread" wire:key="presence-shift-{{ $shift->id }}">
             <div class="wp-cluster">
                 @if ($shift->worker?->field_icon_slug)
@@ -15,6 +18,9 @@
                         &middot; {{ $shift->clock_in_at->format('H:i') }}
                         &middot; {{ $shift->clockInClockPoint?->name }}
                     </p>
+                    @if ($isStale)
+                        <p class="wp-error wp-text-sm">{{ __('time.presence.stale_warning', ['hours' => $staleHours]) }}</p>
+                    @endif
                 </div>
             </div>
             @if ($showForceClose)

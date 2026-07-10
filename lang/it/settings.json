@@ -156,6 +156,7 @@
         "ability_units_read": "Leggi unità",
         "ability_teams_read": "Leggi team",
         "ability_workers_read": "Leggi lavoratori",
+        "ability_time_read": "Leggi rilevazione presenze",
         "ability_webhooks_manage": "Gestisci webhooks",
         "ability_all": "Accesso completo"
     },

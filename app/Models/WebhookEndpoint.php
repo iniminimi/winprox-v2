@@ -26,6 +26,8 @@ class WebhookEndpoint extends Model
         'task.created',
         'task.started',
         'task.completed',
+        'time.shift.started',
+        'time.shift.ended',
         'unit.gps_reported',
         'esg.measurement.recorded',
     ];

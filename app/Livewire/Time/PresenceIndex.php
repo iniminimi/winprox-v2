@@ -57,6 +57,7 @@ class PresenceIndex extends Component
             'snapshot' => $snapshot,
             'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
+            'staleHours' => (int) config('time.stale_shift_hours', 16),
         ]);
     }
 }
