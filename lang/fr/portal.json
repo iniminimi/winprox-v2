@@ -13,6 +13,7 @@
         "location_inactive": "Ce portail est actuellement indisponible.",
         "unit_inactive": "Ce portail est actuellement indisponible.",
         "team_inactive": "Ce portail d'équipe est actuellement indisponible.",
+        "clock_point_inactive": "Ce point d'horloge est actuellement indisponible.",
         "tenant_inactive": "Ce portail est actuellement indisponible pour cette organisation.",
         "subscription_inactive": "Ce portail est temporairement indisponible. Contactez votre administrateur."
     },

@@ -2,6 +2,7 @@
 
 namespace App\Support\Portal;
 
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -89,4 +90,26 @@ final class PortalAccess
         return self::teamPortalInactiveReasonKey($team) === null;
     }
 
+    /**
+     * @return null|string Vertaalsleutel onder portal.inactive.*
+     */
+    public static function clockPointInactiveReasonKey(ClockPoint $clockPoint): ?string
+    {
+        $clockPoint->loadMissing('tenant');
+
+        if ($reason = self::tenantInactiveReasonKey($clockPoint->tenant)) {
+            return $reason;
+        }
+
+        if (! $clockPoint->is_active) {
+            return 'portal.inactive.clock_point_inactive';
+        }
+
+        return null;
+    }
+
+    public static function isClockPointPortalOpen(ClockPoint $clockPoint): bool
+    {
+        return self::clockPointInactiveReasonKey($clockPoint) === null;
+    }
 }

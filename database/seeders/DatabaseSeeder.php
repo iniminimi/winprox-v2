@@ -8,6 +8,7 @@ use App\Actions\Tasks\UpdateTaskStatusAction;
 use App\Enums\TaskStatus;
 use App\Models\Announcement;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\Document;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -57,13 +58,24 @@ class DatabaseSeeder extends Seeder
         $locationA = Location::create(['name' => 'Hoofdgebouw', 'address' => 'Stationsstraat 1, Antwerpen']);
         $locationB = Location::create(['name' => 'Magazijn Noord', 'address' => 'Havenlaan 22, Antwerpen']);
 
-        // Vaste, URL-veilige tokens zodat de publieke QR-URL's stabiel/testbaar zijn.
-        $teamTechniek = InternalTeam::create(['name' => 'Technische dienst', 'field_qr_token' => 'team-technische-dienst']);
-        $teamSchoonmaak = InternalTeam::create(['name' => 'Schoonmaak', 'field_qr_token' => 'team-schoonmaak']);
-        $teamElektriciteit = InternalTeam::create(['name' => 'Elektriciteit', 'field_qr_token' => 'team-elektriciteit']);
+        $teamTechniek = InternalTeam::create(['name' => 'Technische dienst']);
+        $teamSchoonmaak = InternalTeam::create(['name' => 'Schoonmaak']);
+        $teamElektriciteit = InternalTeam::create(['name' => 'Elektriciteit']);
 
-        // Eén leeg team om open registratie via team-QR te demonstreren (geen workers).
-        InternalTeam::create(['name' => 'Tuinonderhoud (nog op te starten)', 'field_qr_token' => 'team-tuinonderhoud']);
+        InternalTeam::create(['name' => 'Tuinonderhoud (nog op te starten)']);
+
+        ClockPoint::create([
+            'name' => 'Hoofdingang',
+            'location_id' => $locationA->id,
+            'qr_token' => 'clock-hoofdingang',
+            'sort_order' => 0,
+        ]);
+        ClockPoint::create([
+            'name' => 'Magazijn',
+            'location_id' => $locationB->id,
+            'qr_token' => 'clock-magazijn',
+            'sort_order' => 1,
+        ]);
 
         // Workers met elk een eigen icoon-slug (per team uniek).
         $workers = [

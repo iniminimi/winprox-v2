@@ -5,6 +5,7 @@ namespace App\Support\Portal;
 use App\Actions\Portal\AttachWorkerDeviceAction;
 use App\Actions\Portal\RegisterWorkerForPortalAction;
 use App\Actions\Portal\ResolveWorkerIdentityAction;
+use App\Actions\Portal\ResolveWorkerIdentityForTenantAction;
 use App\Actions\Portal\RevokeWorkerDeviceSessionAction;
 use App\Actions\Portal\TouchWorkerDeviceAction;
 use App\Models\InternalTeam;
@@ -183,6 +184,31 @@ final class WorkerDeviceSession
             'status' => $result['status']->value,
             'worker' => $result['worker'] ?? null,
         ], fn ($value) => $value !== null);
+    }
+
+    /**
+     * Naam-opzoeking over alle actieve workers van de tenant (Time-portaal).
+     *
+     * @return array{status: 'found'|'claimable'|'not_found'|'ambiguous', worker?: Worker}
+     */
+    public static function resolveIdentityForTenant(int $tenantId, string $firstName, string $lastName): array
+    {
+        $result = app(ResolveWorkerIdentityForTenantAction::class)->handle($tenantId, $firstName, $lastName);
+
+        return array_filter([
+            'status' => $result['status']->value,
+            'worker' => $result['worker'] ?? null,
+        ], fn ($value) => $value !== null);
+    }
+
+    public static function bindRememberedWorkerForTenant(Worker $worker): void
+    {
+        $team = $worker->team;
+        if ($team === null) {
+            return;
+        }
+
+        self::bindRememberedWorker($team, $worker);
     }
 
     /**

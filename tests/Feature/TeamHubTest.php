@@ -364,8 +364,7 @@ it('laat een admin een team aanmaken en deactiveren', function () {
 
     $team = InternalTeam::where('name', 'Technische dienst')->first();
     expect($team)->not->toBeNull()
-        ->and($team->sort_order)->toBe(3)
-        ->and($team->field_qr_token)->not->toBeEmpty();
+        ->and($team->sort_order)->toBe(3);
 
     Livewire::actingAs($admin)
         ->test(Team::class)
@@ -427,42 +426,6 @@ it('laat een medewerker teaminhoud bewerken maar niet aanmaken/deactiveren', fun
         ->assertForbidden();
 
     expect($team->fresh()->is_active)->toBeTrue();
-});
-
-it('toont de team-QR die naar het publieke team-portaal linkt', function () {
-    [$tenant, $admin] = tenantWithAdmin();
-    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
-
-    $this->actingAs($admin)
-        ->get(route('team.qr', $team))
-        ->assertOk()
-        ->assertSee('<svg', false)
-        ->assertSee(__('team.qr.email'), false);
-});
-
-it('laat een team-beheerder de team-QR per e-mail versturen via de winprox-mailtemplate', function () {
-    Mail::fake();
-
-    [$tenant, $admin] = tenantWithAdmin();
-    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
-    $portalUrl = route('public.team-portal', $team->field_qr_token);
-
-    Livewire::actingAs($admin)
-        ->test(\App\Livewire\Team\QrEmail::class, [
-            'team' => $team,
-            'portalUrl' => $portalUrl,
-        ])
-        ->set('recipientEmail', 'uitvoerder@acme.test')
-        ->set('recipientName', 'Jan')
-        ->call('send')
-        ->assertHasNoErrors();
-
-    Mail::assertSent(\App\Mail\Team\TeamQrMail::class, function (\App\Mail\Team\TeamQrMail $mail) use ($portalUrl) {
-        return $mail->hasTo('uitvoerder@acme.test')
-            && $mail->portalUrl === $portalUrl
-            && $mail->team->name === 'Onderhoud'
-            && $mail->recipientName === 'Jan';
-    });
 });
 
 // --- Workers ---------------------------------------------------------------

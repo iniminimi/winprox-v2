@@ -1,0 +1,110 @@
+{
+    "title": "Time",
+    "nav": {
+        "label": "Time-navigatie",
+        "presence": "Aanwezigheid",
+        "shifts": "Uren",
+        "clock_points": "Clock Points"
+    },
+    "presence": {
+        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "present": "Aanwezig",
+        "on_break": "Pauze",
+        "not_clocked_in": "Niet ingeklokt",
+        "empty_section": "Niemand in deze groep.",
+        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "force_close": "Shift sluiten",
+        "force_close_confirm": "Deze open shift nu sluiten met de huidige tijd?",
+        "force_closed": "Shift gesloten."
+    },
+    "shifts": {
+        "subtitle": "Urenoverzicht per periode.",
+        "empty": "Geen shifts gevonden voor deze filters.",
+        "break_minutes": "Pauze: :minutes min",
+        "net_minutes": "Netto: :minutes min",
+        "clocked_in_at": "Ingeklokt bij :name",
+        "clocked_out_at": "Uitgeklokt bij :name"
+    },
+    "status": {
+        "open": "Open",
+        "closed": "Gesloten",
+        "force_closed": "Gesloten (admin)"
+    },
+    "filters": {
+        "team": "Team",
+        "worker": "Medewerker",
+        "clock_point": "Clock Point",
+        "search": "Zoek medewerker",
+        "from": "Van",
+        "to": "Tot",
+        "all_teams": "Alle teams",
+        "all_workers": "Alle medewerkers",
+        "all_clock_points": "Alle clock points",
+        "apply": "Toepassen"
+    },
+    "export": {
+        "button": "Exporteer CSV",
+        "columns": {
+            "date": "Datum",
+            "worker": "Medewerker",
+            "team": "Team",
+            "clock_in": "In",
+            "clock_out": "Uit",
+            "break_minutes": "Pauze (min)",
+            "net_minutes": "Netto (min)",
+            "clock_in_at": "Ingeklokt bij",
+            "clock_out_at": "Uitgeklokt bij",
+            "status": "Status"
+        }
+    },
+    "clock_points": {
+        "subtitle": "Beheer inkloklocaties en print QR-stickers.",
+        "list_title": "Clock Points",
+        "add": "Clock Point toevoegen",
+        "empty": "Nog geen clock points. Voeg een inkloklocatie toe en print de QR-sticker.",
+        "create_title": "Nieuw clock point",
+        "edit_title": "Clock point bewerken",
+        "saved": "Clock point opgeslagen.",
+        "activate": "Activeren",
+        "deactivate": "Deactiveren",
+        "status": {
+            "active": "Actief",
+            "inactive": "Inactief"
+        },
+        "fields": {
+            "name": "Naam",
+            "location": "Locatie",
+            "no_location": "Geen locatie gekoppeld",
+            "sort_order": "Sorteervolgorde"
+        },
+        "qr": {
+            "button": "QR-code",
+            "subtitle": "Scan om in of uit te klokken",
+            "print": "Afdrukken"
+        }
+    },
+    "portal": {
+        "title": "Inklokken",
+        "clock": {
+            "title": "Aanwezigheid",
+            "not_clocked_in": "Je bent nog niet ingeklokt.",
+            "clocked_in_since": "Ingeklokt sinds :time",
+            "on_break_since": "Op pauze sinds :time",
+            "in": "Inklokken",
+            "out": "Uitklokken",
+            "start_break": "Pauze starten",
+            "end_break": "Pauze beëindigen"
+        },
+        "clocked_in": "Je bent ingeklokt.",
+        "clocked_out": "Je bent uitgeklokt.",
+        "break_started": "Pauze gestart.",
+        "break_ended": "Pauze beëindigd.",
+        "errors": {
+            "already_clocked_in": "Je bent al ingeklokt.",
+            "not_clocked_in": "Je bent niet ingeklokt.",
+            "break_already_open": "Je pauze loopt al.",
+            "break_not_open": "Je bent niet op pauze.",
+            "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
+        }
+    }
+}

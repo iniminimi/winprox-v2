@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\V1\TranslationController;
 use App\Http\Controllers\Api\V1\UnitController;
 use App\Http\Controllers\Api\V1\UnitGpsReportController;
 use App\Http\Controllers\Api\V1\WorkerController;
+use App\Http\Controllers\Api\V1\WorkShiftController;
 use App\Http\Middleware\CheckTokenAbilities;
 use App\Http\Middleware\SetTenantFromToken;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +49,9 @@ Route::prefix('v1')->group(function () {
         Route::get('workers', [WorkerController::class, 'index'])
             ->middleware([CheckTokenAbilities::class.':workers:read'])
             ->name('api.v1.workers.index');
+        Route::get('time/work-shifts', [WorkShiftController::class, 'index'])
+            ->middleware([CheckTokenAbilities::class.':time:read'])
+            ->name('api.v1.time.work-shifts.index');
         Route::get('announcements', [AnnouncementController::class, 'index'])
             ->middleware([CheckTokenAbilities::class.':locations:read'])
             ->name('api.v1.announcements.index');

@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Actions\Time;
+
+use App\Enums\ClockSource;
+use App\Enums\WorkShiftStatus;
+use App\Events\Time\TimeShiftStarted;
+use App\Models\ClockPoint;
+use App\Models\Worker;
+use App\Models\WorkerDevice;
+use App\Models\WorkShift;
+use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
+
+class ClockInAction
+{
+    public function handle(
+        Worker $worker,
+        ClockPoint $clockPoint,
+        ?WorkerDevice $device = null,
+        ?\Carbon\Carbon $clientTimestamp = null,
+    ): WorkShift {
+        if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
+            throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
+        }
+
+        if (! $worker->is_active) {
+            throw new InvalidArgumentException('worker_inactive');
+        }
+
+        if (! $clockPoint->is_active) {
+            throw new InvalidArgumentException('clock_point_inactive');
+        }
+
+        return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp) {
+            Worker::query()->whereKey($worker->id)->lockForUpdate()->first();
+
+            $existing = WorkShift::query()
+                ->where('worker_id', $worker->id)
+                ->where('status', WorkShiftStatus::Open)
+                ->lockForUpdate()
+                ->first();
+
+            if ($existing !== null) {
+                throw new InvalidArgumentException('shift_already_open');
+            }
+
+            $shift = WorkShift::create([
+                'tenant_id' => $worker->tenant_id,
+                'worker_id' => $worker->id,
+                'internal_team_id' => $worker->internal_team_id,
+                'clock_in_clock_point_id' => $clockPoint->id,
+                'status' => WorkShiftStatus::Open,
+                'clock_in_at' => now(),
+                'clock_in_client_at' => $clientTimestamp,
+                'clock_in_source' => ClockSource::ClockPointQr,
+                'clock_in_device_id' => $device?->id,
+            ]);
+
+            event(new TimeShiftStarted($shift->fresh()));
+
+            return $shift->fresh(['worker', 'team', 'clockInClockPoint', 'openBreak']);
+        });
+    }
+}

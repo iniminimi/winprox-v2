@@ -42,6 +42,7 @@
                 ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
                 ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
                 ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
+                ['route' => 'time.presence.index', 'active' => 'time.*', 'icon' => 'clock', 'label' => 'common.nav.time'],
                 ...($showEsgNav ? [
                     ['route' => 'esg.indicators.index', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
                 ] : []),

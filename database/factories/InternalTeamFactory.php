@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /** @extends Factory<InternalTeam> */
 class InternalTeamFactory extends Factory
@@ -19,7 +18,6 @@ class InternalTeamFactory extends Factory
             'name' => fake()->randomElement(['Technische dienst', 'Schoonmaak', 'Onderhoud', 'Logistiek']),
             'sort_order' => 0,
             'is_active' => true,
-            'field_qr_token' => Str::lower(Str::random(40)),
         ];
     }
 }

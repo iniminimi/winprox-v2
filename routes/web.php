@@ -15,7 +15,8 @@ use App\Http\Controllers\PromoVideoTrackController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
-use App\Http\Controllers\Team\TeamQrController;
+use App\Http\Controllers\Time\ClockPointQrController;
+use App\Http\Controllers\Time\WorkShiftExportController;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -56,7 +57,10 @@ use App\Livewire\Platform\Users as PlatformUsers;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Support\Platform\SupportTenantContext;
 use App\Livewire\Tasks\Show as TaskShow;
-use App\Livewire\Public\TeamPortal;
+use App\Livewire\Time\ClockPointsIndex;
+use App\Livewire\Time\PresenceIndex;
+use App\Livewire\Time\ShiftsIndex;
+use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
@@ -88,7 +92,7 @@ Route::get('/q/{token}', QrController::class)->name('qr.scan');
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
 
-Route::get('/team/{token}', TeamPortal::class)->name('public.team-portal');
+Route::get('/time/{token}', TimePortal::class)->name('public.time-portal');
 
 Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirm'])
     ->middleware('signed')
@@ -191,12 +195,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');
+        Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
+        Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
+        Route::get('/time/shifts/export', WorkShiftExportController::class)->name('time.shifts.export');
+        Route::get('/time/clock-points', ClockPointsIndex::class)->name('time.clock-points.index');
+        Route::get('/time/clock-points/{clockPoint}/qr', ClockPointQrController::class)->name('time.clock-points.qr');
         Route::get('/team', Team::class)->name('team.index');
         Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');
         Route::get('/settings/api/docs', ApiDocumentation::class)->name('settings.api.docs');
         Route::get('/settings/api/docs/{file}', ApiDocumentation::class)->name('settings.api.docs.show');
-        Route::get('/team/{team}/qr', TeamQrController::class)->name('team.qr');
         Route::get('/subscription', Subscription::class)->name('subscription.index');
         Route::get('/qr/connect/{token}', QrConnect::class)->name('qr.connect');
     });

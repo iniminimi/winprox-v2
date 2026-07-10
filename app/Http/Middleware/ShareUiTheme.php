@@ -17,7 +17,7 @@ final class ShareUiTheme
         $theme = $request->routeIs(
             'public.unit-portal',
             'public.location-portal',
-            'public.team-portal',
+            'public.time-portal',
         )
             ? UiThemeResolver::resolvePortal()
             : UiThemeResolver::resolve($request->user());

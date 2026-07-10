@@ -13,6 +13,7 @@
         "location_inactive": "Dit portaal is momenteel niet beschikbaar.",
         "unit_inactive": "Dit portaal is momenteel niet beschikbaar.",
         "team_inactive": "Dit teamportaal is momenteel niet beschikbaar.",
+        "clock_point_inactive": "Dit inklokpunt is momenteel niet beschikbaar.",
         "tenant_inactive": "Dit portaal is momenteel niet beschikbaar voor deze organisatie.",
         "subscription_inactive": "Dit portaal is tijdelijk niet beschikbaar. Neem contact op met de beheerder."
     },

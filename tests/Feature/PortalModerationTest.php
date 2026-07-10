@@ -2,9 +2,10 @@
 
 use App\Enums\TaskStatus;
 use App\Livewire\Issues\Show;
-use App\Livewire\Public\TeamPortal;
+use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnitPortal;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -69,17 +70,16 @@ it('toont goedgekeurde melding-inhoud zonder blur op het unit-portaal', function
         ->assertDontSee(__('portal.pending_review'));
 });
 
-it('blokkeert het team-portaal bij inactieve tenant', function () {
+it('blokkeert het time-portaal bij inactieve tenant', function () {
     $tenant = Tenant::factory()->create(['is_active' => false]);
     Tenancy::actAs($tenant->id);
 
-    InternalTeam::factory()->create([
+    ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
-        'is_active' => true,
-        'field_qr_token' => 'inactive-tenant-team',
+        'qr_token' => 'inactive-clock-point',
     ]);
 
-    Livewire::test(TeamPortal::class, ['token' => 'inactive-tenant-team'])
+    Livewire::test(TimePortal::class, ['token' => 'inactive-clock-point'])
         ->assertSet('inactiveReasonKey', 'portal.inactive.tenant_inactive');
 });
 
