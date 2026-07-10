@@ -8,6 +8,7 @@ use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
+use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
@@ -36,6 +37,7 @@ use Livewire\Component;
 #[Title('WinProx')]
 class TimePortal extends Component
 {
+    use PortalTeamleaderManageWorkers;
     use PortalTeamleaderRelease;
     use SwitchesPortalUiTheme;
 
@@ -334,6 +336,14 @@ class TimePortal extends Component
         }
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
+            ? Worker::query()
+                ->where('internal_team_id', $team->id)
+                ->where('is_active', true)
+                ->orderBy('last_name')
+                ->orderBy('first_name')
+                ->get()
+            : collect();
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -349,6 +359,8 @@ class TimePortal extends Component
             'openShift' => $openShift,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
+            'teamWorkers' => $teamWorkers,
+            'manageWorkersMessage' => $this->manageWorkersMessage,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
@@ -453,6 +465,16 @@ class TimePortal extends Component
     }
 
     protected function portalReleaseFlash(string $message): void
+    {
+        $this->flashMessage = $message;
+    }
+
+    protected function portalManageWorkersTeam(): ?\App\Models\InternalTeam
+    {
+        return $this->verifiedWorker()?->team;
+    }
+
+    protected function portalManageWorkersFlash(string $message): void
     {
         $this->flashMessage = $message;
     }

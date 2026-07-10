@@ -1,7 +1,7 @@
 {{-- Teamleader: collega-icoon vrijgeven (eigen icoon eerst bevestigen). --}}
 @php($blockedColleagues = $this->blockedReleaseCandidates())
 
-@if ($blockedColleagues->isNotEmpty() || ($isTeamPortal ?? false))
+@if ($blockedColleagues->isNotEmpty() || ($isTeamPortal ?? false) || ($isTimePortal ?? false))
 <div class="wp-card wp-card-pad wp-stack">
     @if ($blockedColleagues->isNotEmpty())
         <div class="wp-row">
@@ -66,8 +66,8 @@
         @endif
     @endif
 
-    {{-- Worker management: ONLY on TeamPortal --}}
-    @if ($isTeamPortal ?? false)
+    {{-- Worker management: Clock Point- en (legacy) teamportaal --}}
+    @if (($isTeamPortal ?? false) || ($isTimePortal ?? false))
         @if ($blockedColleagues->isNotEmpty())
             <div class="wp-divider"></div>
         @endif

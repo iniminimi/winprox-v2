@@ -132,7 +132,7 @@ try {
                 } catch {
                     console.warn(
                         `Skip ${target.id}: prepareClick not visible (${target.prepareClick}). `
-                        + 'Zie docs/MANUAL_SCREENSHOTS.md — teamleader-release vereist een geblokkeerde collega.',
+                        + 'Controleer of de teamleader is ingelogd en of worker-beheer op het Clock Point-portaal beschikbaar is.',
                     );
                     skipped++;
                     continue;
