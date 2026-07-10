@@ -80,11 +80,11 @@ return [
     'modules' => [
         'esg' => [
             'label_key' => 'subscription.modules.esg.name',
-            'minimum_plan' => 'pro',
+            'plan_tiers' => ['pro', 'business'],
         ],
         'time' => [
             'label_key' => 'subscription.modules.time.name',
-            'minimum_plan' => 'starter',
+            'plan_tiers' => ['pro', 'business'],
         ],
     ],
 

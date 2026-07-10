@@ -22,7 +22,7 @@
     "facility_heading": "WinProx Facility",
     "facility_intro": "Planes según unidades y plazas de equipo. Micro solo facility; los planes mayores escalan con su organización.",
     "modules_heading": "Módulos opcionales",
-    "modules_intro": "Extensiones para WinProx Facility. Recargo mensual sobre su plan; activación a través de WinProx.",
+    "modules_intro": "Extensiones para WinProx Facility (Pro o Business). Recargo mensual sobre su plan; activación a través de WinProx.",
     "module_active": "Activo",
     "module_contact_cta": "Solicitar módulo",
     "status_module_esg": "Módulo ESG activo en su cuenta.",
@@ -113,15 +113,21 @@
     "modules": {
         "esg": {
             "name": "Módulo ESG",
-            "price": "+ 59 € / mes",
-            "minimum_plan": "Desde plan Pro",
+            "pricing_caption": "Recargo mensual por plan Facility",
+            "pricing": {
+                "pro": "+ 59 € / mes",
+                "business": "+ 99 € / mes"
+            },
             "description": "Mediciones, indicadores e informes ESG para su organización.",
             "bullets": ["Indicadores y mediciones", "Portal ESG", "Cumplimiento e informes"]
         },
         "time": {
             "name": "Módulo Time",
-            "price": "+ 59 € / mes",
-            "minimum_plan": "Desde plan Starter",
+            "pricing_caption": "Recargo mensual por plan Facility",
+            "pricing": {
+                "pro": "+ 59 € / mes",
+                "business": "+ 99 € / mes"
+            },
             "description": "Fichaje, pausas y turnos junto a su gestión facility.",
             "bullets": ["Asistencia", "Pausas", "Turnos", "Clock Points"]
         }

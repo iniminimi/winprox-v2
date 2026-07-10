@@ -3108,6 +3108,37 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-text-muted);
 }
 
+.wp-billing-module-pricing {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.wp-billing-module-pricing li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.35rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.45;
+}
+
+.wp-billing-module-pricing__plan {
+    font-weight: 600;
+    color: var(--wp-text);
+}
+
+.wp-billing-module-pricing__price {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--wp-accent);
+    white-space: nowrap;
+}
+
 .wp-billing-plan-card--bundle {
     border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
     background: color-mix(in srgb, var(--wp-accent) 4%, var(--wp-surface));

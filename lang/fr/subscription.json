@@ -22,7 +22,7 @@
     "facility_heading": "WinProx Facility",
     "facility_intro": "Formules selon les unités et places d'équipe. Micro = facility uniquement ; les formules supérieures évoluent avec votre organisation.",
     "modules_heading": "Modules optionnels",
-    "modules_intro": "Extensions pour WinProx Facility. Supplément mensuel en plus de votre formule ; activation via WinProx.",
+    "modules_intro": "Extensions pour WinProx Facility (Pro ou Business). Supplément mensuel en plus de votre formule ; activation via WinProx.",
     "module_active": "Actif",
     "module_contact_cta": "Demander le module",
     "status_module_esg": "Module ESG actif sur votre compte.",
@@ -113,15 +113,21 @@
     "modules": {
         "esg": {
             "name": "Module ESG",
-            "price": "+ 59 € / mois",
-            "minimum_plan": "À partir de la formule Pro",
+            "pricing_caption": "Supplément mensuel par formule Facility",
+            "pricing": {
+                "pro": "+ 59 € / mois",
+                "business": "+ 99 € / mois"
+            },
             "description": "Mesures, indicateurs et reporting ESG pour votre organisation.",
             "bullets": ["Indicateurs & mesures", "Portail ESG", "Conformité & reporting"]
         },
         "time": {
             "name": "Module Time",
-            "price": "+ 59 € / mois",
-            "minimum_plan": "À partir de la formule Starter",
+            "pricing_caption": "Supplément mensuel par formule Facility",
+            "pricing": {
+                "pro": "+ 59 € / mois",
+                "business": "+ 99 € / mois"
+            },
             "description": "Pointage, pauses et shifts en complément de votre gestion facility.",
             "bullets": ["Présence", "Pauses", "Shifts", "Clock Points"]
         }

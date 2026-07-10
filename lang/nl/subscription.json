@@ -22,7 +22,7 @@
     "facility_heading": "WinProx Facility",
     "facility_intro": "Formules op basis van units en teamplaatsen. Micro is facility-only; grotere formules schalen mee met uw organisatie.",
     "modules_heading": "Optionele modules",
-    "modules_intro": "Uitbreidingen op WinProx Facility. Maandelijkse toeslag boven op uw formule; activering via WinProx.",
+    "modules_intro": "Uitbreidingen op WinProx Facility (Pro of Business). Maandelijkse toeslag boven op uw formule; activering via WinProx.",
     "module_active": "Actief",
     "module_contact_cta": "Module aanvragen",
     "status_module_esg": "ESG-module actief op uw account.",
@@ -113,15 +113,21 @@
     "modules": {
         "esg": {
             "name": "ESG-module",
-            "price": "+ €59 / maand",
-            "minimum_plan": "Vanaf Pro-formule",
+            "pricing_caption": "Maandelijkse toeslag per Facility-formule",
+            "pricing": {
+                "pro": "+ €59 / maand",
+                "business": "+ €99 / maand"
+            },
             "description": "Metingen, indicatoren en ESG-rapportage voor uw organisatie.",
             "bullets": ["Indicatoren & metingen", "ESG-portaal", "Compliance & rapportage"]
         },
         "time": {
             "name": "Time-module",
-            "price": "+ €59 / maand",
-            "minimum_plan": "Vanaf Starter-formule",
+            "pricing_caption": "Maandelijkse toeslag per Facility-formule",
+            "pricing": {
+                "pro": "+ €59 / maand",
+                "business": "+ €99 / maand"
+            },
             "description": "In- en uitklokken, pauzes en shifts naast uw facility-beheer.",
             "bullets": ["Aanwezigheid", "Pauzes", "Shifts", "Clock Points"]
         }

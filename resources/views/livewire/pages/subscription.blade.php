@@ -45,19 +45,26 @@
                 @elseif ($billingStatus === 'trial')
                     @php
                         $trialPlanKey = $tenant->effectivePlanKey();
+                        $trialPlanKey = is_string($trialPlanKey) ? strtolower($trialPlanKey) : null;
                     @endphp
                     <li>{{ __('subscription.status_trial', [
                         'plan' => $trialPlanKey ? __("subscription.plans.{$trialPlanKey}.name") : '—',
                         'date' => $tenant->trial_ends_at?->timezone(config('app.timezone'))->format('d/m/Y') ?? '—',
                     ]) }}</li>
                 @elseif ($billingStatus === 'paid')
+                    @php
+                        $displayPlanKey = is_string($tenant->billing_plan) ? strtolower($tenant->billing_plan) : null;
+                    @endphp
                     <li>{{ __('subscription.status_active', [
-                        'plan' => __("subscription.plans.{$tenant->billing_plan}.name"),
+                        'plan' => $displayPlanKey ? __("subscription.plans.{$displayPlanKey}.name") : '—',
                         'date' => $tenant->billing_active_until->timezone(config('app.timezone'))->format('d/m/Y'),
                     ]) }}</li>
                 @elseif ($billingStatus === 'grace')
+                    @php
+                        $displayPlanKey = is_string($tenant->billing_plan) ? strtolower($tenant->billing_plan) : null;
+                    @endphp
                     <li class="wp-billing-status-list__warn">{{ __('subscription.status_grace', [
-                        'plan' => __("subscription.plans.{$tenant->billing_plan}.name"),
+                        'plan' => $displayPlanKey ? __("subscription.plans.{$displayPlanKey}.name") : '—',
                         'ended' => $tenant->billing_active_until->timezone(config('app.timezone'))->format('d/m/Y'),
                         'grace_end' => $tenant->paidSubscriptionGraceEndsAt()?->timezone(config('app.timezone'))->format('d/m/Y'),
                         'days' => (int) ($tenant->paidSubscriptionGraceBatteryState()['days_remaining'] ?? 0),
@@ -194,14 +201,22 @@
                 $isModuleActive = $moduleKey === 'esg'
                     ? (bool) $tenant?->has_esg_module
                     : (bool) $tenant?->has_time_module;
+                $modulePlanTiers = config("billing.modules.{$moduleKey}.plan_tiers", ['pro', 'business']);
             @endphp
             <article class="wp-billing-plan-card" wire:key="subscription-module-{{ $moduleKey }}">
                 <div class="wp-billing-plan-card-body">
                     <div class="wp-billing-plan-card-head">
                         <h2 class="wp-billing-plan-card-title">{{ __("subscription.modules.{$moduleKey}.name") }}</h2>
-                        <p class="wp-billing-plan-card-price">{{ __("subscription.modules.{$moduleKey}.price") }}</p>
                     </div>
-                    <p class="wp-billing-plan-card-minimum">{{ __("subscription.modules.{$moduleKey}.minimum_plan") }}</p>
+                    <p class="wp-billing-plan-card-minimum">{{ __("subscription.modules.{$moduleKey}.pricing_caption") }}</p>
+                    <ul class="wp-billing-module-pricing">
+                        @foreach ($modulePlanTiers as $planTier)
+                            <li>
+                                <span class="wp-billing-module-pricing__plan">{{ __("subscription.plans.{$planTier}.name") }}</span>
+                                <span class="wp-billing-module-pricing__price">{{ __("subscription.modules.{$moduleKey}.pricing.{$planTier}") }}</span>
+                            </li>
+                        @endforeach
+                    </ul>
                     <ul class="wp-billing-plan-card-meta">
                         @foreach (__("subscription.modules.{$moduleKey}.bullets") as $bullet)
                             <li>{{ $bullet }}</li>

@@ -22,7 +22,7 @@
     "facility_heading": "WinProx Facility",
     "facility_intro": "Formeln nach Units und Teamplätzen. Micro nur Facility; größere Formeln skalieren mit Ihrer Organisation.",
     "modules_heading": "Optionale Module",
-    "modules_intro": "Erweiterungen für WinProx Facility. Monatlicher Aufpreis zu Ihrer Formel; Aktivierung über WinProx.",
+    "modules_intro": "Erweiterungen für WinProx Facility (Pro oder Business). Monatlicher Aufpreis zu Ihrer Formel; Aktivierung über WinProx.",
     "module_active": "Aktiv",
     "module_contact_cta": "Modul anfragen",
     "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
@@ -113,15 +113,21 @@
     "modules": {
         "esg": {
             "name": "ESG-Modul",
-            "price": "+ €59 / Monat",
-            "minimum_plan": "Ab Pro-Formel",
+            "pricing_caption": "Monatlicher Aufpreis pro Facility-Formel",
+            "pricing": {
+                "pro": "+ €59 / Monat",
+                "business": "+ €99 / Monat"
+            },
             "description": "Messungen, Indikatoren und ESG-Berichterstattung für Ihre Organisation.",
             "bullets": ["Indikatoren & Messungen", "ESG-Portal", "Compliance & Berichte"]
         },
         "time": {
             "name": "Time-Modul",
-            "price": "+ €59 / Monat",
-            "minimum_plan": "Ab Starter-Formel",
+            "pricing_caption": "Monatlicher Aufpreis pro Facility-Formel",
+            "pricing": {
+                "pro": "+ €59 / Monat",
+                "business": "+ €99 / Monat"
+            },
             "description": "Ein- und Ausstempeln, Pausen und Schichten neben Ihrem Facility-Management.",
             "bullets": ["Anwesenheit", "Pausen", "Schichten", "Clock Points"]
         }

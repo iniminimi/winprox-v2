@@ -107,10 +107,32 @@ it('toont facility-formules modules en WinProx Time op abonnement', function () 
         ->test(Subscription::class)
         ->assertSee(__('subscription.facility_heading'))
         ->assertSee(__('subscription.modules.esg.name'))
+        ->assertSee(__('subscription.modules.esg.pricing.pro'))
+        ->assertSee(__('subscription.modules.esg.pricing.business'))
         ->assertSee(__('subscription.modules.time.name'))
+        ->assertSee(__('subscription.modules.time.pricing.pro'))
+        ->assertSee(__('subscription.modules.time.pricing.business'))
         ->assertSee(__('subscription.products.time.name'))
         ->assertSee(__('subscription.status_module_esg'))
         ->assertDontSee(__('subscription.status_module_time'));
+});
+
+it('toont planlabel correct bij billing_plan met hoofdletter', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => null,
+        'billing_plan' => 'Business',
+        'billing_active_until' => now()->addMonth(),
+        'is_active' => true,
+    ]);
+    $admin = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->assertSee(__('subscription.plans.business.name'))
+        ->assertDontSee('subscription.plans.Business.name');
 });
 
 it('laat een beheerder een plan activeren', function () {

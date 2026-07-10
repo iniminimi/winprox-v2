@@ -22,7 +22,7 @@
     "facility_heading": "WinProx Facility",
     "facility_intro": "Plans based on units and team seats. Micro is facility-only; larger plans scale with your organisation.",
     "modules_heading": "Optional modules",
-    "modules_intro": "Add-ons for WinProx Facility. Monthly surcharge on top of your plan; activation via WinProx.",
+    "modules_intro": "Add-ons for WinProx Facility (Pro or Business). Monthly surcharge on top of your plan; activation via WinProx.",
     "module_active": "Active",
     "module_contact_cta": "Request module",
     "status_module_esg": "ESG module active on your account.",
@@ -113,15 +113,21 @@
     "modules": {
         "esg": {
             "name": "ESG module",
-            "price": "+ €59 / month",
-            "minimum_plan": "From Pro plan",
+            "pricing_caption": "Monthly surcharge per Facility plan",
+            "pricing": {
+                "pro": "+ €59 / month",
+                "business": "+ €99 / month"
+            },
             "description": "Measurements, indicators, and ESG reporting for your organisation.",
             "bullets": ["Indicators & measurements", "ESG portal", "Compliance & reporting"]
         },
         "time": {
             "name": "Time module",
-            "price": "+ €59 / month",
-            "minimum_plan": "From Starter plan",
+            "pricing_caption": "Monthly surcharge per Facility plan",
+            "pricing": {
+                "pro": "+ €59 / month",
+                "business": "+ €99 / month"
+            },
             "description": "Clock in/out, breaks, and shifts alongside your facility management.",
             "bullets": ["Attendance", "Breaks", "Shifts", "Clock Points"]
         }
