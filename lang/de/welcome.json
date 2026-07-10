@@ -1,13 +1,14 @@
 {
-    "meta_title": "WinProx — intelligentes Gebäudemanagement mit integriertem ESG",
+    "meta_title": "WinProx — Facility & Time vor Ort",
     "social": {
-        "og_title": "WinProx — intelligentes Gebäudemanagement mit integriertem ESG",
-        "og_description": "Facility Management, smarte QR-Portale und ESG-Erfassung auf einer Plattform."
+        "og_title": "WinProx — Facility & Time vor Ort",
+        "og_description": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten. Smarte QR-Portale und optionales ESG-Modul."
     },
     "login": "Anmelden",
     "register": "Registrieren",
-    "back_home": "Zur Startseite",
+    "back_home": "Zurück zur Startseite",
     "nav": {
+        "products": "Produkte",
         "platform": "Plattform",
         "esg": "ESG",
         "qr": "QR-Portale",
@@ -15,28 +16,52 @@
         "video": "Video"
     },
     "hero": {
-        "badge": "Facility · QR · ESG",
-        "title": "Intelligentes Gebäudemanagement mit integriertem ESG",
-        "subtitle": "Verwalten Sie Gebäude, Anlagen, Wartung, Dokumente und ESG auf einer intelligenten Plattform.",
-        "body": "WinProx digitalisiert jeden Raum, jede Anlage und Unit mit einem smarten QR-Code. Mitarbeitende erhalten direkten Zugang zu Meldungen, Arbeitsaufträgen, Dokumenten, Inspektionen und ESG-Erfassungen — ohne App-Installation.",
+        "badge": "Facility · Time",
+        "title": "Zwei Lösungen, eine Plattform",
+        "subtitle": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten vor Ort.",
+        "body": "Eine App, ein QR-Workflow. Mitarbeiter melden sich über den Clock Point QR an; Bürger und Teams arbeiten über den Unit-QR — ohne App-Installation.",
         "cta_start": "Kostenlos testen",
         "cta_video": "Video ansehen",
-        "desktop_screenshot_alt": "WinProx-Dashboard auf dem Desktop"
+        "desktop_screenshot_alt": "WinProx Dashboard auf dem Desktop"
+    },
+    "products": {
+        "eyebrow": "Produkte",
+        "title": "WinProx Facility und WinProx Time",
+        "lead": "Eine Plattform, zwei Einstiege. Derselbe Clock Point QR für Mitarbeiter; Facility ergänzt Meldungen, Aufgaben und optionale Module.",
+        "facility": {
+            "name": "WinProx Facility",
+            "tagline": "Meldung → Aufgabe → Abschluss",
+            "body": "Vollständiges Facility Management mit smarten QR-Portalen an jeder Einheit. Optionales ESG- und Time-Modul.",
+            "logo_alt": "WinProx Facility",
+            "bullets": ["Meldungen & Aufgaben", "Standorte & Einheiten", "Optional ESG", "Optional Time"]
+        },
+        "time": {
+            "name": "WinProx Time",
+            "tagline": "Kompakte Zeiterfassung vor Ort",
+            "body": "Einstiegspaket für Anwesenheit, Pausen und Schichten über den Clock Point QR — ideal, wenn Zeiterfassung im Mittelpunkt steht.",
+            "logo_alt": "WinProx Time",
+            "bullets": ["Ein- und Ausstempeln", "Pausen", "Schichten", "Clock Points"]
+        }
     },
     "pillars": {
         "eyebrow": "Plattform",
         "title": "Warum WinProx?",
-        "lead": "Eine integrierte Plattform für Außendienst und Backoffice.",
+        "lead": "Eine integrierte Plattform für die Werker und die Verwaltung — modular erweiterbar.",
         "items": [
             {
-                "title": "Facility Management",
+                "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Meldungen", "Aufgaben", "Wartung", "Standorte & Units"]
+                "bullets": ["Meldungen", "Aufgaben", "Wartung", "Standorte & Einheiten"]
+            },
+            {
+                "title": "WinProx Time",
+                "icon": "clock",
+                "bullets": ["Anwesenheit", "Pausen", "Schichten", "Clock Points"]
             },
             {
                 "title": "Smarte QR-Portale",
                 "icon": "document",
-                "bullets": ["Keine App nötig", "Sofort zugänglich", "Standortgebunden"]
+                "bullets": ["Clock Point QR", "Unit-QR", "Keine App nötig", "Standortgebunden"]
             },
             {
                 "title": "ESG",
@@ -49,11 +74,6 @@
                 "bullets": ["Dashboard", "Kalender", "Briefing", "Status pro Team"]
             },
             {
-                "title": "KI",
-                "icon": "chat-bubble",
-                "bullets": ["Automatische Übersetzungen", "Hilfe-Assistent", "Mehrsprachige Kommunikation"]
-            },
-            {
                 "title": "Compliance",
                 "icon": "legal",
                 "bullets": ["Audit-Trail", "Dokumentenverwaltung", "Rechtsdokumente", "API & Webhooks"]
@@ -62,8 +82,8 @@
     },
     "esg": {
         "eyebrow": "ESG",
-        "title": "ESG ohne zusätzlichen Verwaltungsaufwand",
-        "body": "Jede Meldung, Inspektion oder Kontrolle trägt zu Ihrem ESG-Reporting bei. Erfassen Sie Messwerte direkt über das QR-Portal oder Backoffice.",
+        "title": "ESG ohne zusätzliche Verwaltung",
+        "body": "Jede Meldung, Inspektion oder Kontrolle trägt zu Ihrer ESG-Berichterstattung bei. Erfassen Sie Messwerte direkt aus dem QR-Portal oder der Verwaltung.",
         "pillars": [
             {
                 "title": "Environmental",
@@ -82,31 +102,31 @@
     },
     "qr": {
         "eyebrow": "QR-Portale",
-        "title": "Smarte QR-Portale",
-        "lead": "Code vor Ort scannen und sofort weiterarbeiten — auf jedem Smartphone.",
+        "title": "Clock Point QR und Unit-QR",
+        "lead": "Mitarbeiter scannen den Clock Point QR zum Anmelden; vor Ort arbeiten sie weiter über den Unit-QR — auf jedem Smartphone.",
         "benefits": [
+            "Ein- und Ausstempeln (Time)",
             "Meldungen erfassen",
             "Arbeitsaufträge ausführen",
-            "Handbücher einsehen",
+            "Anleitungen einsehen",
             "Dokumente ansehen",
-            "Inspektionen durchführen",
             "ESG erfassen"
         ],
-        "footer": "Keine App nötig. Scannen und loslegen.",
+        "footer": "Keine App nötig. Scannen und sofort loslegen.",
         "screenshot_alt": "WinProx QR-Portal auf dem Smartphone"
     },
     "flow": {
         "eyebrow": "Ablauf",
         "title": "Alles an einem Ort",
-        "lead": "Von der Meldung bis zum Reporting — ein durchgängiger Ablauf.",
+        "lead": "Von der Meldung bis zur Berichterstattung — ein durchgängiger Ablauf.",
         "steps": [
+            "Clock Point",
             "Meldung",
             "Arbeitsauftrag",
             "Ausführung",
-            "Inspektion",
             "ESG",
             "Dashboard",
-            "Reporting"
+            "Berichterstattung"
         ]
     },
     "sectors": {
@@ -127,13 +147,13 @@
     "trust": {
         "eyebrow": "Vertrauen",
         "title": "Warum Organisationen WinProx wählen",
-        "languages_title": "Mehrsprachig von Anfang an",
-        "languages_body": "Meldungen, Aufgaben und Mitteilungen werden automatisch in alle unterstützten Sprachen übersetzt.",
+        "languages_title": "Mehrsprachig ab Tag eins",
+        "languages_body": "Meldungen, Aufgaben und Ankündigungen werden automatisch in alle unterstützten Sprachen übersetzt.",
         "items": [
             "Keine App",
             "Cloud",
             "Modular",
-            "KI-Übersetzungen",
+            "Facility & Time",
             "QR-Portale",
             "ESG-Modul",
             "Mehrsprachig",
@@ -143,12 +163,12 @@
         "video_title": "WinProx in Aktion",
         "video_placeholder": "Video folgt in Kürze.",
         "comparison_title": "WinProx vergleichen?",
-        "comparison_body": "Sehen Sie, wie sich WinProx von einer klassischen Plattform unterscheidet.",
+        "comparison_body": "Sehen Sie, wie WinProx sich zu einer klassischen Plattform verhält.",
         "comparison_link": "Vergleich ansehen"
     },
     "closing": {
         "title": "Bereit, Ihre Organisation smarter zu verwalten?",
-        "body": "Entdecken Sie, wie WinProx Facility Management, QR-Technologie und ESG auf einer benutzerfreundlichen Plattform vereint.",
+        "body": "Wählen Sie WinProx Facility für das Gesamtbild oder WinProx Time, wenn Zeiterfassung im Vordergrund steht — immer auf derselben zuverlässigen Plattform.",
         "cta_start": "Kostenlose Testphase",
         "cta_contact": "Kontakt aufnehmen"
     },

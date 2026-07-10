@@ -1,13 +1,14 @@
 {
-    "meta_title": "WinProx — smart building management with integrated ESG",
+    "meta_title": "WinProx — Facility & Time on site",
     "social": {
-        "og_title": "WinProx — smart building management with integrated ESG",
-        "og_description": "Facility management, smart QR portals and ESG recording in one platform. From report to reporting."
+        "og_title": "WinProx — Facility & Time on site",
+        "og_description": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts. Smart QR portals and optional ESG module."
     },
     "login": "Log in",
     "register": "Register",
     "back_home": "Back to home",
     "nav": {
+        "products": "Products",
         "platform": "Platform",
         "esg": "ESG",
         "qr": "QR portals",
@@ -15,28 +16,52 @@
         "video": "Video"
     },
     "hero": {
-        "badge": "Facility · QR · ESG",
-        "title": "Smart building management with integrated ESG",
-        "subtitle": "Manage buildings, installations, maintenance, documents and ESG from one intelligent platform.",
-        "body": "WinProx digitises every space, installation and unit with a smart QR code. Staff get instant access to reports, work orders, documents, inspections and ESG entries — with no app install.",
+        "badge": "Facility · Time",
+        "title": "Two solutions, one platform",
+        "subtitle": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts on site.",
+        "body": "One app, one QR workflow. Staff sign in via the Clock Point QR; citizens and teams work via the unit QR — with no app install.",
         "cta_start": "Try for free",
         "cta_video": "Watch video",
         "desktop_screenshot_alt": "WinProx dashboard on desktop"
     },
+    "products": {
+        "eyebrow": "Products",
+        "title": "WinProx Facility and WinProx Time",
+        "lead": "One platform, two entry points. The same Clock Point QR for staff; Facility adds issues, tasks and optional modules.",
+        "facility": {
+            "name": "WinProx Facility",
+            "tagline": "Issue → task → completion",
+            "body": "Full facility management with smart QR portals on every unit. Optional ESG and Time modules.",
+            "logo_alt": "WinProx Facility",
+            "bullets": ["Issues & tasks", "Locations & units", "Optional ESG", "Optional Time"]
+        },
+        "time": {
+            "name": "WinProx Time",
+            "tagline": "Compact time tracking on site",
+            "body": "Entry package for presence, breaks and shifts via the Clock Point QR — ideal when time tracking is the priority.",
+            "logo_alt": "WinProx Time",
+            "bullets": ["Clock in & out", "Breaks", "Shifts", "Clock Points"]
+        }
+    },
     "pillars": {
         "eyebrow": "Platform",
         "title": "Why WinProx?",
-        "lead": "One integrated platform for the field and the back office.",
+        "lead": "One integrated platform for the field and the back office — modular and expandable.",
         "items": [
             {
-                "title": "Facility Management",
+                "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Reports", "Tasks", "Maintenance", "Locations & units"]
+                "bullets": ["Issues", "Tasks", "Maintenance", "Locations & units"]
+            },
+            {
+                "title": "WinProx Time",
+                "icon": "clock",
+                "bullets": ["Presence", "Breaks", "Shifts", "Clock Points"]
             },
             {
                 "title": "Smart QR portals",
                 "icon": "document",
-                "bullets": ["No app required", "Instant access", "Location-based"]
+                "bullets": ["Clock Point QR", "Unit QR", "No app required", "Location-based"]
             },
             {
                 "title": "ESG",
@@ -47,11 +72,6 @@
                 "title": "Overview",
                 "icon": "dashboard",
                 "bullets": ["Dashboard", "Calendar", "Briefing", "Status per team"]
-            },
-            {
-                "title": "AI",
-                "icon": "chat-bubble",
-                "bullets": ["Automatic translations", "Help assistant", "Multilingual communication"]
             },
             {
                 "title": "Compliance",
@@ -82,14 +102,14 @@
     },
     "qr": {
         "eyebrow": "QR portals",
-        "title": "Smart QR portals",
-        "lead": "Scan the code on site and continue immediately — on any smartphone.",
+        "title": "Clock Point QR and unit QR",
+        "lead": "Staff scan the Clock Point QR to sign in; on site they continue via the unit QR — on any smartphone.",
         "benefits": [
+            "Clock in & out (Time)",
             "Log reports",
             "Execute work orders",
             "Consult manuals",
             "View documents",
-            "Perform inspections",
             "Record ESG data"
         ],
         "footer": "No app needed. Scan and get to work.",
@@ -100,10 +120,10 @@
         "title": "Everything in one place",
         "lead": "From report to reporting — one continuous flow.",
         "steps": [
+            "Clock Point",
             "Report",
             "Work order",
             "Execution",
-            "Inspection",
             "ESG",
             "Dashboard",
             "Reporting"
@@ -133,7 +153,7 @@
             "No app",
             "Cloud",
             "Modular",
-            "AI translations",
+            "Facility & Time",
             "QR portals",
             "ESG module",
             "Multilingual",
@@ -148,7 +168,7 @@
     },
     "closing": {
         "title": "Ready to manage your organisation smarter?",
-        "body": "Discover how WinProx brings facility management, QR technology and ESG together in one user-friendly platform.",
+        "body": "Choose WinProx Facility for the full picture, or WinProx Time when time tracking comes first — always on the same reliable platform.",
         "cta_start": "Free trial",
         "cta_contact": "Contact us"
     },

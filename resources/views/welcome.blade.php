@@ -29,6 +29,7 @@
             <div class="wp-welcome-nav-inner">
                 @include('partials.wp-welcome-brand')
                 <div class="wp-welcome-nav-links">
+                    <a href="#producten">{{ __('welcome.nav.products') }}</a>
                     <a href="#platform">{{ __('welcome.nav.platform') }}</a>
                     <a href="#esg">{{ __('welcome.nav.esg') }}</a>
                     <a href="#qr">{{ __('welcome.nav.qr') }}</a>
@@ -79,6 +80,37 @@
     </div>
 
     <main>
+        <section id="producten" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-products-title">
+            <div class="wp-welcome-main wp-welcome-section-inner--wide">
+                <span class="wp-welcome-eyebrow">{{ __('welcome.products.eyebrow') }}</span>
+                <h2 id="welcome-products-title" class="wp-welcome-h2">{{ __('welcome.products.title') }}</h2>
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.products.lead') }}</p>
+                <div class="wp-welcome-product-grid">
+                    @foreach (['facility', 'time'] as $productKey)
+                        <article class="wp-welcome-product-card">
+                            <figure class="wp-welcome-product-card__logo">
+                                <img
+                                    src="{{ asset('images/welcome/winprox_'.$productKey.'_logo.jpg') }}"
+                                    alt="{{ __('welcome.products.'.$productKey.'.logo_alt') }}"
+                                    class="wp-welcome-product-card__logo-img"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </figure>
+                            <h3>{{ __('welcome.products.'.$productKey.'.name') }}</h3>
+                            <p class="wp-welcome-product-card__tagline">{{ __('welcome.products.'.$productKey.'.tagline') }}</p>
+                            <p class="wp-welcome-product-card__body">{{ __('welcome.products.'.$productKey.'.body') }}</p>
+                            <ul class="wp-welcome-pillar-list">
+                                @foreach (__('welcome.products.'.$productKey.'.bullets') as $bullet)
+                                    <li>{{ $bullet }}</li>
+                                @endforeach
+                            </ul>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
         <section id="platform" class="wp-welcome-section wp-welcome-section--center" aria-labelledby="welcome-pillars-title">
             <div class="wp-welcome-section-inner--wide wp-welcome-main">
                 <span class="wp-welcome-eyebrow">{{ __('welcome.pillars.eyebrow') }}</span>
