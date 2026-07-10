@@ -20,20 +20,11 @@ class InvalidateUnitTranslationsOnSourceChangeAction
             return;
         }
 
-        if (! $unit->is_active) {
-            return;
-        }
-
         $source = $unit->normalizedOriginalLanguage();
 
         $invalidated = UnitTranslation::query()
             ->where('unit_id', $unit->id)
             ->where('locale', '!=', $source)
-            ->where(function ($query) {
-                $query->where('status', '!=', UnitTranslationStatus::Pending->value)
-                    ->orWhereNotNull('name')
-                    ->orWhereNotNull('description');
-            })
             ->update([
                 'name' => null,
                 'description' => null,

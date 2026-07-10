@@ -4,6 +4,7 @@ use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\TranslateUnitAction;
 use App\Actions\Locations\CreateUnitAction;
+use App\Actions\Locations\UpdateUnitAction;
 use App\Enums\UnitTranslationStatus;
 use App\Livewire\Locations\Show;
 use App\Livewire\Public\UnitPortal;
@@ -272,4 +273,64 @@ it('toont vertaalde unitnaam in portaal bij taalwissel', function () {
         ->call('switchLocale', 'en')
         ->assertSee('Excavator')
         ->assertSee('Warehouse zone B');
+});
+
+it('maakt unitvertalingen opnieuw pending na hernoemen en vertaalt opnieuw', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = app(CreateUnitAction::class)->handle($location, [
+        'name' => 'Graafmachine',
+        'description' => 'Zone B',
+        'original_language' => 'nl',
+    ], $tenant->id, null);
+
+    app(TranslateUnitAction::class)->handle($unit, 'en');
+
+    expect($unit->fresh()->localizedName('en'))->toBe('[en] Graafmachine');
+
+    app(UpdateUnitAction::class)->handle($unit, [
+        'name' => 'Kraan',
+        'description' => 'Zone B',
+    ]);
+
+    $row = UnitTranslation::query()->where('unit_id', $unit->id)->where('locale', 'en')->first();
+
+    expect($row->status)->toBe(UnitTranslationStatus::Pending)
+        ->and($row->name)->toBeNull()
+        ->and($unit->fresh()->localizedName('en'))->toBe('Kraan');
+
+    app(TranslateUnitAction::class)->handle($unit->fresh(), 'en');
+
+    expect($unit->fresh()->localizedName('en'))->toBe('[en] Kraan');
+});
+
+it('maakt unitvertalingen opnieuw pending na hernoemen van inactieve unit', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+    app(TranslateUnitAction::class)->handle($unit, 'en');
+
+    app(\App\Actions\Locations\DeactivateUnitAction::class)->handle($unit->fresh());
+
+    app(UpdateUnitAction::class)->handle($unit->fresh(), [
+        'name' => 'Kraan',
+        'description' => null,
+    ]);
+
+    $row = UnitTranslation::query()->where('unit_id', $unit->id)->where('locale', 'en')->first();
+
+    expect($row->status)->toBe(UnitTranslationStatus::Pending)
+        ->and($row->name)->toBeNull();
 });

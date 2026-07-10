@@ -43,7 +43,14 @@ class TranslateUnitAction
             ->firstOrFail();
 
         if ($row->status === UnitTranslationStatus::Completed && $this->rowIsComplete($unit, $row)) {
-            return $row;
+            $unitUpdatedAt = $unit->updated_at;
+            $rowUpdatedAt = $row->updated_at;
+
+            if ($unitUpdatedAt !== null && $rowUpdatedAt !== null && $unitUpdatedAt->greaterThan($rowUpdatedAt)) {
+                // Brontekst gewijzigd na laatste vertaling — opnieuw vertalen.
+            } else {
+                return $row;
+            }
         }
 
         $stored = [];
