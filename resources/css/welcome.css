@@ -1054,14 +1054,21 @@
 }
 
 [data-theme='standard'] .wp-welcome-product-card__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 14rem;
+    height: 14rem;
     margin: 0 auto 1.5rem;
-    max-width: 11rem;
 }
 
 [data-theme='standard'] .wp-welcome-product-card__logo-img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
 }
 
 [data-theme='standard'] .wp-welcome-product-card h3 {
