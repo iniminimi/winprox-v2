@@ -21,6 +21,7 @@ use App\Actions\Team\SyncTeamCategoriesAction;
 use App\Actions\Team\UpdateColleagueAction;
 use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
+use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
@@ -649,6 +650,17 @@ class Team extends Component
         $this->showWorkerImportModal = true;
     }
 
+    public function openClockPointQr(EnsureDefaultClockPointAction $ensure): void
+    {
+        $this->authorize('create', InternalTeam::class);
+
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        $clockPoint = $ensure->handle($tenant, __('team.clock_point_qr.default_name'), auth()->id());
+        $this->authorize('view', $clockPoint);
+
+        $this->redirect(route('time.clock-points.qr', $clockPoint), navigate: false);
+    }
+
     public function closeWorkerImportModal(): void
     {
         $this->showWorkerImportModal = false;
@@ -791,6 +803,7 @@ class Team extends Component
             ->get(['id', 'name']);
 
         $tenantId = Tenancy::id();
+        $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;
         $workerImportBatches = WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
             ->map(fn (array $batch) => array_merge(
                 $batch,
@@ -804,6 +817,7 @@ class Team extends Component
             'canManageUsers' => $canManageUsers,
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
+            'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
             'roles' => User::ROLES,
             'categories' => $categories,
         ]);

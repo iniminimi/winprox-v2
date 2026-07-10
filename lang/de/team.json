@@ -137,6 +137,10 @@
         "email_body": "Hier ist der Team-QR für :team. Scannen Sie den Code, um das Team-Feldportal zu öffnen.",
         "open_link": "Diesen QR-Code öffnen"
     },
+    "clock_point_qr": {
+        "button": "Clock Point QR-Code",
+        "default_name": "Anmeldung"
+    },
     "errors": {
         "not_authorized": "Sie sind nicht berechtigt, diese Aktion durchzuführen.",
         "name_required": "Geben Sie einen Namen an.",

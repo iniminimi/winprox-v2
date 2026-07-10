@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -31,6 +32,7 @@ it('toont categorieën-onboarding zodra er een team is maar nog geen categorieë
     Worker::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     $state = TenantOnboardingState::current();
 
@@ -54,7 +56,28 @@ it('toont locaties-onboarding op functionele paginas wanneer teams bestaan maar 
         ->and($state->showWelcomeGuide)->toBeTrue();
 });
 
-it('is klaar voor het dashboard wanneer teams, workers, categorieën, locaties en units bestaan', function () {
+it('is klaar voor het dashboard wanneer teams, workers, categorieën, locaties, units en een clock point bestaan', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $state = TenantOnboardingState::current();
+
+    expect($state->showTeamsBanner())->toBeFalse()
+        ->and($state->showCategoriesBanner())->toBeFalse()
+        ->and($state->showCategoriesOrLocationsBanner())->toBeFalse()
+        ->and($state->showClockPointBanner())->toBeFalse()
+        ->and($state->showWelcomeGuide)->toBeFalse()
+        ->and($state->blocksDashboardMain())->toBeFalse();
+});
+
+it('toont clock point-onboarding wanneer facility-basis klaar is maar nog geen clock point', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 
@@ -66,9 +89,7 @@ it('is klaar voor het dashboard wanneer teams, workers, categorieën, locaties e
 
     $state = TenantOnboardingState::current();
 
-    expect($state->showTeamsBanner())->toBeFalse()
-        ->and($state->showCategoriesBanner())->toBeFalse()
-        ->and($state->showCategoriesOrLocationsBanner())->toBeFalse()
-        ->and($state->showWelcomeGuide)->toBeFalse()
-        ->and($state->blocksDashboardMain())->toBeFalse();
+    expect($state->showClockPointBanner())->toBeTrue()
+        ->and($state->blocksDashboardMain())->toBeTrue()
+        ->and($state->showWelcomeGuide)->toBeTrue();
 });

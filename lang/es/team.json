@@ -137,6 +137,10 @@
         "email_body": "Aquí está el QR del equipo para :team. Escanee el código para abrir el portal de campo del equipo.",
         "open_link": "Abrir este código QR"
     },
+    "clock_point_qr": {
+        "button": "Código QR Clock Point",
+        "default_name": "Inicio de sesión"
+    },
     "errors": {
         "not_authorized": "No está autorizado para realizar esta acción.",
         "name_required": "Introduzca un nombre.",

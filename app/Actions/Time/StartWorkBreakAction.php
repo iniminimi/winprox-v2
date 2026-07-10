@@ -7,6 +7,7 @@ use App\Enums\WorkShiftStatus;
 use App\Models\Worker;
 use App\Models\WorkBreak;
 use App\Models\WorkShift;
+use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
@@ -17,6 +18,8 @@ class StartWorkBreakAction
         if ((int) $worker->id !== (int) $shift->worker_id) {
             throw new InvalidArgumentException('shift_worker_mismatch');
         }
+
+        TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         return DB::transaction(function () use ($worker, $shift) {
             $shift = WorkShift::query()

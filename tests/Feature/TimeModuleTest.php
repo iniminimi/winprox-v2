@@ -28,7 +28,7 @@ use Livewire\Livewire;
 
 function timeTenantWithAdmin(): array
 {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->create([
         'tenant_id' => $tenant->id,
@@ -182,8 +182,8 @@ it('laat een admin een clock point aanmaken', function () {
 });
 
 it('isoleert time-data per tenant', function () {
-    $tenantA = Tenant::factory()->create();
-    $tenantB = Tenant::factory()->create();
+    $tenantA = Tenant::factory()->create(['has_time_module' => true]);
+    $tenantB = Tenant::factory()->create(['has_time_module' => true]);
 
     Tenancy::actAs($tenantA->id);
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenantA->id]);

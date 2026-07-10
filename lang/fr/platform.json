@@ -11,6 +11,7 @@
     "status_inactive": "inactif",
     "trial_api": "Accès API",
     "esg_module": "Module ESG",
+    "time_module": "Module Time",
     "open_support": "Ouvrir la vue support",
     "stop": "Terminer la vue support",
     "active": "Vous consultez :name.",

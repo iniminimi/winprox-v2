@@ -137,6 +137,10 @@
         "email_body": "Here is the team QR for :team. Scan the code to open the team field portal.",
         "open_link": "Open this QR code"
     },
+    "clock_point_qr": {
+        "button": "Clock Point QR code",
+        "default_name": "Sign in"
+    },
     "errors": {
         "not_authorized": "You are not authorized to perform this action.",
         "name_required": "Enter a name.",

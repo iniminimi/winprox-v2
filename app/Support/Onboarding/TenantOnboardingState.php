@@ -3,6 +3,7 @@
 namespace App\Support\Onboarding;
 
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Unit;
@@ -15,6 +16,7 @@ final readonly class TenantOnboardingState
         public bool $needsTeamsOnboarding,
         public bool $needsCategoriesOnboarding,
         public bool $needsLocationsOnboarding,
+        public bool $needsClockPointOnboarding,
         public bool $showWelcomeGuide,
     ) {}
 
@@ -24,6 +26,7 @@ final readonly class TenantOnboardingState
         $workerCount = Worker::query()->count();
         $locationCount = Location::query()->count();
         $unitCount = Unit::query()->count();
+        $clockPointCount = ClockPoint::query()->count();
         $categoryCount = Schema::hasTable('categories')
             ? Category::query()->count()
             : 0;
@@ -32,10 +35,12 @@ final readonly class TenantOnboardingState
             needsTeamsOnboarding: $teamCount === 0,
             needsCategoriesOnboarding: $teamCount > 0 && $categoryCount === 0,
             needsLocationsOnboarding: $teamCount > 0 && ($locationCount === 0 || $unitCount === 0),
+            needsClockPointOnboarding: $clockPointCount === 0,
             showWelcomeGuide: $teamCount === 0
                 || $workerCount === 0
                 || $locationCount === 0
-                || $unitCount === 0,
+                || $unitCount === 0
+                || $clockPointCount === 0,
         );
     }
 
@@ -55,8 +60,18 @@ final readonly class TenantOnboardingState
             && ($this->needsCategoriesOnboarding || $this->needsLocationsOnboarding);
     }
 
+    public function showClockPointBanner(): bool
+    {
+        return ! $this->needsTeamsOnboarding
+            && ! $this->needsCategoriesOnboarding
+            && ! $this->needsLocationsOnboarding
+            && $this->needsClockPointOnboarding;
+    }
+
     public function blocksDashboardMain(): bool
     {
-        return $this->showTeamsBanner() || $this->showCategoriesBanner();
+        return $this->showTeamsBanner()
+            || $this->showCategoriesBanner()
+            || $this->showClockPointBanner();
     }
 }

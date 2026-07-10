@@ -6,6 +6,7 @@ use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Pages\Calendar;
 use App\Livewire\Tasks\Index as TasksIndex;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -36,7 +37,7 @@ it('toont teams-onboarding met pulserende knop op het dashboard zonder teams', f
         ->assertSee(__('dashboard.onboarding.teams.button'))
         ->assertSeeHtml('wp-badge-critical')
         ->assertSee(__('dashboard.welcome'))
-        ->assertDontSee(__('dashboard.kpi.locations'));
+        ->assertDontSeeHtml('wp-kpi--locations');
 });
 
 it('toont categorieën-onboarding op meldingen zodra er een team is', function () {
@@ -74,10 +75,10 @@ it('toont op locaties de beheerpagina zodra er een team is zodat categorieën aa
         ->test(LocationsIndex::class)
         ->assertSee(__('locations.add'))
         ->assertSee(__('locations.categories.title'))
-        ->assertDontSee(__('dashboard.onboarding.categories.title'));
+        ->assertDontSee(__('dashboard.onboarding.categories.button'));
 });
 
-it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties en units bestaan', function () {
+it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties, units en een clock point bestaan', function () {
     [$tenant, $admin] = setupOnboardingAdmin();
 
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
@@ -85,6 +86,7 @@ it('verbergt de welkomstgids op het dashboard wanneer teams, workers, locaties e
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)

@@ -8,6 +8,7 @@ use App\Events\Time\TimeShiftEnded;
 use App\Models\ClockPoint;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
@@ -27,6 +28,8 @@ class ClockOutAction
         if ((int) $worker->tenant_id !== (int) $clockPoint->tenant_id) {
             throw new InvalidArgumentException('worker_clock_point_tenant_mismatch');
         }
+
+        TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         return DB::transaction(function () use ($worker, $clockPoint, $clientTimestamp, $source) {
             $shift = $this->lockOpenShift($worker);

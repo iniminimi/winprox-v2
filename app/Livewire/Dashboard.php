@@ -54,6 +54,12 @@ class Dashboard extends Component
             $tenant = $realign->handle($tenant);
         }
 
+        $hasTimeModule = $tenant?->hasTimeModule() ?? false;
+
+        if (! $hasTimeModule) {
+            unset($stats['present_now']);
+        }
+
         return view('livewire.dashboard', [
             'stats' => $stats,
             'recent' => $recent,
@@ -61,6 +67,7 @@ class Dashboard extends Component
             'onboarding' => TenantOnboardingState::current(),
             'health' => $healthService->report(),
             'topScannedUnits' => $topScannedUnits->topForCurrentTenant(),
+            'hasTimeModule' => $hasTimeModule,
         ]);
     }
 }

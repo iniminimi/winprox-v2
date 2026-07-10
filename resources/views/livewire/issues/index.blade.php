@@ -3,6 +3,8 @@
         <x-wp-onboarding-banner stage="teams" />
     @elseif ($onboarding->showCategoriesOrLocationsBanner())
         <x-wp-onboarding-banner stage="categories" />
+    @elseif ($onboarding->showClockPointBanner())
+        <x-wp-onboarding-banner stage="clock_point" />
     @else
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">

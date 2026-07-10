@@ -9,6 +9,7 @@ use App\Models\ClockPoint;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
+use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
@@ -32,6 +33,8 @@ class ClockInAction
         if (! $clockPoint->is_active) {
             throw new InvalidArgumentException('clock_point_inactive');
         }
+
+        TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
         return DB::transaction(function () use ($worker, $clockPoint, $device, $clientTimestamp, $source) {
             Worker::query()->whereKey($worker->id)->lockForUpdate()->first();

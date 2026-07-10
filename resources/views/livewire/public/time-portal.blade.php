@@ -112,34 +112,36 @@
                     @include('partials.wp-portal-teamleader-release')
                 @endif
 
-                <div class="wp-card wp-card-pad wp-stack">
-                    <h2 class="wp-section-title">{{ __('time.portal.clock.title') }}</h2>
-                    @if ($openShift === null)
-                        <p class="wp-muted">{{ __('time.portal.clock.not_clocked_in') }}</p>
-                        <button type="button" class="btn btn--primary btn--block" wire:click="clockIn">
-                            {{ __('time.portal.clock.in') }}
-                        </button>
-                    @else
-                        <p class="wp-muted">
-                            {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
-                        </p>
-                        @if ($openShift->openBreak)
-                            <p class="wp-muted">{{ __('time.portal.clock.on_break_since', ['time' => $openShift->openBreak->started_at->format('H:i')]) }}</p>
-                            <button type="button" class="btn btn--primary btn--block" wire:click="endBreak">
-                                {{ __('time.portal.clock.end_break') }}
+                @if ($hasTimeModule)
+                    <div class="wp-card wp-card-pad wp-stack">
+                        <h2 class="wp-section-title">{{ __('time.portal.clock.title') }}</h2>
+                        @if ($openShift === null)
+                            <p class="wp-muted">{{ __('time.portal.clock.not_clocked_in') }}</p>
+                            <button type="button" class="btn btn--primary btn--block" wire:click="clockIn">
+                                {{ __('time.portal.clock.in') }}
                             </button>
                         @else
-                            <div class="wp-cluster">
-                                <button type="button" class="btn btn--surface" wire:click="startBreak">
-                                    {{ __('time.portal.clock.start_break') }}
+                            <p class="wp-muted">
+                                {{ __('time.portal.clock.clocked_in_since', ['time' => $openShift->clock_in_at->format('H:i')]) }}
+                            </p>
+                            @if ($openShift->openBreak)
+                                <p class="wp-muted">{{ __('time.portal.clock.on_break_since', ['time' => $openShift->openBreak->started_at->format('H:i')]) }}</p>
+                                <button type="button" class="btn btn--primary btn--block" wire:click="endBreak">
+                                    {{ __('time.portal.clock.end_break') }}
                                 </button>
-                                <button type="button" class="btn btn--primary" wire:click="clockOut">
-                                    {{ __('time.portal.clock.out') }}
-                                </button>
-                            </div>
+                            @else
+                                <div class="wp-cluster">
+                                    <button type="button" class="btn btn--surface" wire:click="startBreak">
+                                        {{ __('time.portal.clock.start_break') }}
+                                    </button>
+                                    <button type="button" class="btn btn--primary" wire:click="clockOut">
+                                        {{ __('time.portal.clock.out') }}
+                                    </button>
+                                </div>
+                            @endif
                         @endif
-                    @endif
-                </div>
+                    </div>
+                @endif
 
                 <div class="wp-flash wp-flash--muted">{{ __('portal.team.read_only_hint') }}</div>
 

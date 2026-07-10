@@ -137,6 +137,10 @@
         "email_body": "Hierbij de team-QR voor :team. Scan de code om het team-veldportaal te openen.",
         "open_link": "Deze QR-code openen"
     },
+    "clock_point_qr": {
+        "button": "Clock Point QR-code",
+        "default_name": "Inloggen"
+    },
     "errors": {
         "not_authorized": "Je hebt geen toestemming om dit te doen.",
         "name_required": "Geef een naam op.",

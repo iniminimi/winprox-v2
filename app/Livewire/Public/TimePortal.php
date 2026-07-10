@@ -11,6 +11,7 @@ use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
@@ -19,6 +20,7 @@ use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
+use App\Support\Time\TimeModuleAccess;
 use App\Support\Time\ClockPointPortalTokenResolution;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Validation\Rule;
@@ -326,8 +328,12 @@ class TimePortal extends Component
         $showVerify = $this->activeClockPoint() !== null && ! $canAct && $hasSignInWorkers
             && $deviceWorker !== null && ! $iconBlocked;
 
-        $openShift = $canAct && $verifiedWorker !== null ? $findShift->handle($verifiedWorker) : null;
+        $openShift = null;
+        if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
+            $openShift = $findShift->handle($verifiedWorker);
+        }
         $tasks = $canAct && $verifiedWorker !== null ? TimePortalData::openTasksForWorker($verifiedWorker) : collect();
+        $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -342,6 +348,7 @@ class TimePortal extends Component
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
             'tasks' => $tasks,
+            'hasTimeModule' => $hasTimeModule,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);

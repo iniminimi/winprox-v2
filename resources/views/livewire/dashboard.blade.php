@@ -3,6 +3,8 @@
         <x-wp-onboarding-banner stage="teams" />
     @elseif ($onboarding->showCategoriesBanner())
         <x-wp-onboarding-banner stage="categories" />
+    @elseif ($onboarding->showClockPointBanner())
+        <x-wp-onboarding-banner stage="clock_point" />
     @endif
 
     @if ($onboarding->showWelcomeGuide)
@@ -76,7 +78,9 @@
                 ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units', 'meta' => 'dashboard.kpi.meta_total'],
                 ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null],
                 ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null],
-                ['key' => 'present_now', 'icon' => 'clock', 'label' => 'dashboard.kpi.present_now', 'meta' => null],
+                ...($hasTimeModule ? [
+                    ['key' => 'present_now', 'icon' => 'clock', 'label' => 'dashboard.kpi.present_now', 'meta' => null],
+                ] : []),
             ];
             $highlightCutoff = now()->subHours(3);
         @endphp

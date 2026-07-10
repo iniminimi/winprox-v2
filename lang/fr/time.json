@@ -1,5 +1,8 @@
 {
     "title": "Time",
+    "errors": {
+        "module_disabled": "Le module Time n'est pas activé pour cette organisation."
+    },
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",

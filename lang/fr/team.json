@@ -137,6 +137,10 @@
         "email_body": "Voici le QR de l'équipe :team. Scannez le code pour ouvrir le portail terrain.",
         "open_link": "Ouvrir ce QR"
     },
+    "clock_point_qr": {
+        "button": "QR code Clock Point",
+        "default_name": "Connexion"
+    },
     "errors": {
         "not_authorized": "Vous n'êtes pas autorisé à effectuer cette action.",
         "name_required": "Indiquez un nom.",

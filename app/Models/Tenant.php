@@ -36,6 +36,7 @@ class Tenant extends Model
         'allow_trial_api',
         'has_esg_module',
         'time_qr_rotation_months',
+        'has_time_module',
     ];
 
     protected function casts(): array
@@ -47,6 +48,7 @@ class Tenant extends Model
             'is_active' => 'boolean',
             'allow_trial_api' => 'boolean',
             'has_esg_module' => 'boolean',
+            'has_time_module' => 'boolean',
         ];
     }
 
@@ -169,6 +171,11 @@ class Tenant extends Model
     public function hasEsgModule(): bool
     {
         return (bool) $this->has_esg_module;
+    }
+
+    public function hasTimeModule(): bool
+    {
+        return (bool) $this->has_time_module;
     }
 
     public function trialDaysRemaining(): int

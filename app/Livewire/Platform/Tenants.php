@@ -5,6 +5,7 @@ namespace App\Livewire\Platform;
 use App\Actions\Platform\StartSupportViewAction;
 use App\Actions\Platform\StopSupportViewAction;
 use App\Actions\Platform\ToggleEsgModuleAction;
+use App\Actions\Platform\ToggleTimeModuleAction;
 use App\Actions\Platform\ToggleTrialApiAction;
 use App\Models\Tenant;
 use App\Models\User;
@@ -47,6 +48,12 @@ class Tenants extends Component
     }
 
     public function toggleEsgModule(int $tenantId, ToggleEsgModuleAction $toggle): void
+    {
+        $tenant = Tenant::query()->findOrFail($tenantId);
+        $toggle->handle($tenant, (int) auth()->id());
+    }
+
+    public function toggleTimeModule(int $tenantId, ToggleTimeModuleAction $toggle): void
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
         $toggle->handle($tenant, (int) auth()->id());

@@ -46,6 +46,10 @@
                                 <input type="checkbox" wire:click="toggleEsgModule({{ $tenant->id }})" {{ $tenant->has_esg_module ? 'checked' : '' }}>
                                 <span>{{ __('platform.esg_module') }}</span>
                             </label>
+                            <label class="wp-chip wp-chip--sm">
+                                <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
+                                <span>{{ __('platform.time_module') }}</span>
+                            </label>
                             <button type="button" class="btn btn--primary btn--sm"
                                     wire:click="startSupport({{ $tenant->id }})">
                                 {{ __('platform.open_support') }}

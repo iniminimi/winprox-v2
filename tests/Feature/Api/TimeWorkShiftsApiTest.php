@@ -11,7 +11,7 @@ use App\Support\Tenancy;
 afterEach(fn () => Tenancy::forget());
 
 it('klokt een worker in via de API met time:write', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $worker = Worker::factory()->create([
         'tenant_id' => $tenant->id,
@@ -40,7 +40,7 @@ it('klokt een worker in via de API met time:write', function () {
 });
 
 it('klokt een worker uit via de API met time:write', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $worker = Worker::factory()->create([
         'tenant_id' => $tenant->id,
@@ -68,7 +68,7 @@ it('klokt een worker uit via de API met time:write', function () {
 });
 
 it('weigert time write zonder time:write ability', function () {
-    $tenant = Tenant::factory()->create();
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
     $worker = Worker::factory()->create(['tenant_id' => $tenant->id]);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     $user = User::factory()->create([
