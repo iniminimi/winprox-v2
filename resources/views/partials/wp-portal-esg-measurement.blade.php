@@ -2,7 +2,7 @@
 @if ($indicator)
     <div class="wp-field">
         <label class="wp-label" for="esg-value-{{ $task->id }}">
-            {{ __('esg.portal.measurement_label', ['name' => $indicator->localizedName()]) }}
+            {{ __('esg.portal.measurement_label', ['name' => $indicator->localizedName($locale ?? null)]) }}
         </label>
 
         @if ($indicator->type === \App\Enums\EsgIndicatorType::Numeric)
@@ -37,7 +37,7 @@
             <select id="esg-value-{{ $task->id }}" class="wp-select" wire:model="completingEsgValueString">
                 <option value="">{{ __('esg.portal.choice_choose') }}</option>
                 @foreach ($indicator->normalizedChoiceOptions() as $option)
-                    <option value="{{ $option }}">{{ $indicator->localizedChoiceOptionLabel($option) }}</option>
+                    <option value="{{ $option }}">{{ $indicator->localizedChoiceOptionLabel($option, $locale ?? null) }}</option>
                 @endforeach
             </select>
             @error('completingEsgValueString') <p class="wp-error">{{ $message }}</p> @enderror
@@ -48,7 +48,7 @@
                         <input type="checkbox"
                                value="{{ $option }}"
                                wire:model="completingEsgValueMultiChoice">
-                        <span>{{ $indicator->localizedChoiceOptionLabel($option) }}</span>
+                        <span>{{ $indicator->localizedChoiceOptionLabel($option, $locale ?? null) }}</span>
                     </label>
                 @endforeach
             </div>

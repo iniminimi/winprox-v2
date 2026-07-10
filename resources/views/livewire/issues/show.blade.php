@@ -55,7 +55,7 @@
                             <span class="wp-pill wp-pill--progress">{{ __('issues.show.recurring_active') }}</span>
                         @endif
                         @if ($issue->esgIndicator)
-                            <p class="wp-muted">{{ __('issues.show.esg_indicator', ['name' => $issue->esgIndicator->name]) }}</p>
+                            <p class="wp-muted">{{ __('issues.show.esg_indicator', ['name' => $issue->esgIndicator->localizedName()]) }}</p>
                         @endif
                     </div>
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRecurrencePause">

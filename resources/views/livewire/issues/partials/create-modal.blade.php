@@ -114,7 +114,7 @@
                                 <option value="">{{ __('issues.create.esg_indicator_none') }}</option>
                                 @foreach ($createEsgIndicators as $indicator)
                                     <option value="{{ $indicator->id }}">
-                                        {{ $indicator->name }}
+                                        {{ $indicator->localizedName() }}
                                         @if ($indicator->unit_of_measure)
                                             ({{ $indicator->unit_of_measure }})
                                         @endif

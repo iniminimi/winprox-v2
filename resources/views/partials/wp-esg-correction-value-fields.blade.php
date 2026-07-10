@@ -26,7 +26,7 @@
     <select id="esg-correction-choice" class="wp-input" wire:model="correctionValueString">
         <option value="">{{ __('esg.portal.choice_choose') }}</option>
         @foreach ($indicator->normalizedChoiceOptions() as $option)
-            <option value="{{ $option }}">{{ $option }}</option>
+            <option value="{{ $option }}">{{ $indicator->localizedChoiceOptionLabel($option) }}</option>
         @endforeach
     </select>
     @error('correctionValueString') <p class="wp-form-error">{{ $message }}</p> @enderror
@@ -38,7 +38,7 @@
                 <input type="checkbox"
                        value="{{ $option }}"
                        wire:model="correctionValueMultiChoice">
-                <span>{{ $option }}</span>
+                <span>{{ $indicator->localizedChoiceOptionLabel($option) }}</span>
             </label>
         @endforeach
     </div>

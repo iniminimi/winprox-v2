@@ -83,7 +83,7 @@ final class EsgMeasurementPresenter
             return __('esg.measurements.legacy_choice_value', ['value' => $value]);
         }
 
-        return $value;
+        return $indicator->localizedChoiceOptionLabel($value);
     }
 
     private static function formatMultiChoice(EsgMeasurement $measurement, ?EsgIndicator $indicator): string
@@ -105,7 +105,7 @@ final class EsgMeasurementPresenter
             if ($options !== [] && ! in_array($stringValue, $options, true)) {
                 $parts[] = __('esg.measurements.legacy_choice_value', ['value' => $stringValue]);
             } else {
-                $parts[] = $stringValue;
+                $parts[] = $indicator->localizedChoiceOptionLabel($stringValue);
             }
         }
 

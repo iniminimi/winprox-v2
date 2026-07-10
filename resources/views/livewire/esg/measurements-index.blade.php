@@ -22,7 +22,7 @@
                     <select id="esg-filter-indicator" class="wp-input" wire:model="indicatorFilter">
                         <option value="">{{ __('esg.measurements.filters.all_indicators') }}</option>
                         @foreach ($indicators as $indicator)
-                            <option value="{{ $indicator->id }}">{{ $indicator->name }}</option>
+                            <option value="{{ $indicator->id }}">{{ $indicator->localizedName() }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -80,7 +80,7 @@
                     @php($outsideThresholds = EsgMeasurementPresenter::isOutsideThresholds($measurement))
                     <li class="wp-list-row" wire:key="esg-measurement-{{ $measurement->id }}">
                         <div>
-                            <strong>{{ $measurement->indicator?->name ?? '—' }}</strong>
+                            <strong>{{ $measurement->indicator?->localizedName() ?? '—' }}</strong>
                             <p class="wp-muted wp-text-sm">
                                 {{ EsgMeasurementPresenter::displayValue($measurement) }}
                             </p>
@@ -92,9 +92,9 @@
                                 </p>
                             @endif
                             <p class="wp-muted wp-text-sm">
-                                {{ $measurement->location?->name ?? '—' }}
+                                {{ $measurement->location?->localizedName() ?? '—' }}
                                 @if ($measurement->unit)
-                                    · {{ $measurement->unit->name }}
+                                    · {{ $measurement->unit->localizedName() }}
                                 @endif
                                 · {{ optional($measurement->recorded_at)->format('d-m-Y H:i') }}
                             </p>
@@ -136,7 +136,7 @@
         <x-wp-modal closeMethod="closeCorrectionModal">
             <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
                 <h2 class="wp-section-title">{{ __('esg.measurements.correction_modal.title') }}</h2>
-                <p class="wp-muted">{{ $correctingMeasurement->indicator->name }}</p>
+                <p class="wp-muted">{{ $correctingMeasurement->indicator->localizedName() }}</p>
                 <p class="wp-muted wp-text-sm">
                     {{ __('esg.measurements.correction_modal.original_value', [
                         'value' => EsgMeasurementPresenter::displayValue($correctingMeasurement),

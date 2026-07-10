@@ -389,7 +389,7 @@ class Index extends Component
                 : collect(),
             'hasEsgModule' => EsgModuleAccess::activeTenantHasModule(),
             'createEsgIndicators' => $this->showCreateModal && EsgModuleAccess::activeTenantHasModule()
-                ? EsgIndicator::query()->where('is_active', true)->orderBy('name')->get()
+                ? EsgIndicator::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
                 : collect(),
             'priorities' => TaskPriority::cases(),
         ]);

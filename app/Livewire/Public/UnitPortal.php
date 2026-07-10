@@ -872,7 +872,7 @@ class UnitPortal extends Component
 
         return Task::where('internal_team_id', $team->id)
             ->whereHas('issue', fn ($q) => $q->where('unit_id', $this->unitId))
-            ->with(['issue.esgIndicator'])
+            ->with(['issue.esgIndicator.translations'])
             ->find($taskId);
     }
 

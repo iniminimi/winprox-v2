@@ -152,11 +152,15 @@ class MeasurementsIndex extends Component
 
         $measurements = EsgMeasurement::query()
             ->with([
-                'indicator:id,name,type,unit_of_measure,thresholds,options',
-                'unit:id,name',
-                'location:id,name',
+                'indicator:id,name,original_language,type,unit_of_measure,thresholds,options',
+                'indicator.translations',
+                'unit:id,name,original_language,location_id',
+                'unit.translations',
+                'location:id,name,original_language',
+                'location.translations',
                 'worker:id,first_name,last_name',
-                'correctsMeasurement.indicator:id,name,type,unit_of_measure,thresholds,options',
+                'correctsMeasurement.indicator:id,name,original_language,type,unit_of_measure,thresholds,options',
+                'correctsMeasurement.indicator.translations',
             ])
             ->when($this->indicatorFilter, fn ($query) => $query->where('esg_indicator_id', $this->indicatorFilter))
             ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
@@ -177,14 +181,15 @@ class MeasurementsIndex extends Component
             'measurements' => $measurements,
             'showSetupSteps' => ! $hasFilters && ! EsgMeasurement::query()->exists(),
             'correctingMeasurement' => $this->correctingMeasurementId !== null
-                ? EsgMeasurement::query()->with('indicator')->find($this->correctingMeasurementId)
+                ? EsgMeasurement::query()->with(['indicator.translations'])->find($this->correctingMeasurementId)
                 : null,
-            'indicators' => EsgIndicator::query()->orderBy('name')->get(['id', 'name']),
-            'locations' => Location::query()->orderBy('name')->get(['id', 'name']),
+            'indicators' => EsgIndicator::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
+            'locations' => Location::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
             'units' => Unit::query()
+                ->with('translations')
                 ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
                 ->orderBy('name')
-                ->get(['id', 'name', 'location_id']),
+                ->get(['id', 'name', 'location_id', 'original_language']),
         ]);
     }
 

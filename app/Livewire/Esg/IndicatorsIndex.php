@@ -191,7 +191,7 @@ class IndicatorsIndex extends Component
     public function render()
     {
         return view('livewire.esg.indicators-index', [
-            'indicators' => EsgIndicator::query()->orderBy('name')->get(),
+            'indicators' => EsgIndicator::query()->with('translations')->orderBy('name')->get(),
             'types' => EsgIndicatorType::cases(),
         ]);
     }

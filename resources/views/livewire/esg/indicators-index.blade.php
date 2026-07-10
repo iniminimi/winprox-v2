@@ -32,7 +32,7 @@
                 @foreach ($indicators as $indicator)
                     <li class="wp-list-row">
                         <div>
-                            <strong>{{ $indicator->name }}</strong>
+                            <strong>{{ $indicator->localizedName() }}</strong>
                             <p class="wp-muted wp-text-sm">
                                 {{ __('esg.types.'.$indicator->type->value) }}
                                 @if ($indicator->unit_of_measure)

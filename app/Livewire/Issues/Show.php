@@ -371,7 +371,7 @@ class Show extends Component
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit.translations',
-            'esgIndicator',
+            'esgIndicator.translations',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
     }
@@ -385,7 +385,7 @@ class Show extends Component
             'photos' => fn ($q) => $q->orderBy('created_at'),
             'location',
             'unit.translations',
-            'esgIndicator',
+            'esgIndicator.translations',
             'updates' => fn ($q) => $q->with(['user', 'worker', 'photos'])->latest(),
         ]);
 
