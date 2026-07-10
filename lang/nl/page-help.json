@@ -803,6 +803,10 @@
                 {
                     "label": "Statussen",
                     "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
+                },
+                {
+                    "label": "Taken koppelen",
+                    "text": "Start of rond een taak af via het unit-QR-portaal terwijl de medewerker ingeklokt is — dan wordt die taak automatisch aan de open shift gekoppeld. Bij uitklokken worden nog open gekoppelde taken afgesloten."
                 }
             ]
         },

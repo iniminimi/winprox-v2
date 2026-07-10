@@ -803,6 +803,10 @@
                 {
                     "label": "Statuses",
                     "text": "<strong>Open</strong> — still clocked in. <strong>Closed</strong> — clocked out normally. <strong>Closed (admin)</strong> — manually closed by admin. <strong>Closed (automatic)</strong> — system closed a forgotten shift after the threshold."
+                },
+                {
+                    "label": "Link tasks",
+                    "text": "Start or complete a task via the unit QR portal while clocked in — the task is automatically linked to the open shift. Open links are closed on clock-out."
                 }
             ]
         },

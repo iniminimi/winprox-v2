@@ -42,9 +42,15 @@ class WorkShiftExportController
                 __('time.export.columns.clock_in_at'),
                 __('time.export.columns.clock_out_at'),
                 __('time.export.columns.status'),
+                __('time.export.columns.tasks'),
             ], ';');
 
             foreach ($rows as $shift) {
+                $taskLabels = $shift->taskLogs
+                    ->map(fn ($log) => $log->task?->displayDescription() ?: '')
+                    ->filter()
+                    ->implode(' | ');
+
                 fputcsv($handle, [
                     $shift->clock_in_at->format('Y-m-d'),
                     $shift->worker?->displayName() ?? '',
@@ -56,6 +62,7 @@ class WorkShiftExportController
                     $shift->clockInClockPoint?->name ?? '',
                     $shift->clockOutClockPoint?->name ?? '',
                     $shift->status->value,
+                    $taskLabels,
                 ], ';');
             }
 

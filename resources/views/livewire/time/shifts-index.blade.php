@@ -79,6 +79,21 @@
                             &middot; {{ __('time.shifts.clocked_out_at', ['name' => $shift->clockOutClockPoint->name]) }}
                         @endif
                     </p>
+                    @if ($shift->taskLogs->isNotEmpty())
+                        <p class="wp-muted wp-text-sm">{{ __('time.shifts.tasks_heading') }}</p>
+                        <ul class="wp-muted wp-text-sm">
+                            @foreach ($shift->taskLogs as $log)
+                                <li wire:key="shift-{{ $shift->id }}-task-{{ $log->id }}">
+                                    {{ $log->task?->displayDescription() ?: __('time.shifts.task_unknown') }}
+                                    @if ($log->ended_at)
+                                        &middot; {{ __('time.shifts.task_duration', ['minutes' => $log->durationMinutes()]) }}
+                                    @else
+                                        &middot; {{ __('time.shifts.task_open') }}
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </div>
                 <div class="wp-cluster">
                     @if ($shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto)

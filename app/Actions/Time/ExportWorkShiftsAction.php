@@ -26,7 +26,7 @@ class ExportWorkShiftsAction
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
             ->when($workerId, fn ($q) => $q->where('worker_id', $workerId))
             ->when($clockPointId, fn ($q) => $q->where('clock_in_clock_point_id', $clockPointId))
-            ->with(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint'])
+            ->with(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint', 'taskLogs.task'])
             ->orderByDesc('clock_in_at')
             ->get();
     }

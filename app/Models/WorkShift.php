@@ -73,6 +73,11 @@ class WorkShift extends Model
         return $this->hasMany(WorkBreak::class);
     }
 
+    public function taskLogs(): HasMany
+    {
+        return $this->hasMany(WorkShiftTaskLog::class);
+    }
+
     public function openBreak(): HasOne
     {
         return $this->hasOne(WorkBreak::class)->whereNull('ended_at')->latestOfMany('started_at');

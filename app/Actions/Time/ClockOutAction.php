@@ -15,6 +15,7 @@ class ClockOutAction
 {
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
+        private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
     ) {}
 
     public function handle(
@@ -48,6 +49,7 @@ class ClockOutAction
             ]);
 
             $shift = $shift->fresh(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint']);
+            $this->closeOpenTaskLogs->handle($shift, $shift->clock_out_at);
 
             event(new TimeShiftEnded($shift));
 

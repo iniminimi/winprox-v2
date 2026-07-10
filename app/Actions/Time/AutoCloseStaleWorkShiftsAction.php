@@ -14,6 +14,7 @@ class AutoCloseStaleWorkShiftsAction
 {
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
+        private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
     ) {}
 
     public function handle(?int $staleHours = null): int
@@ -70,7 +71,10 @@ class AutoCloseStaleWorkShiftsAction
                 'total_break_minutes' => $totalBreakMinutes,
             ]);
 
-            event(new TimeShiftEnded($locked->fresh(), null));
+            $locked = $locked->fresh(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint']);
+            $this->closeOpenTaskLogs->handle($locked, $locked->clock_out_at);
+
+            event(new TimeShiftEnded($locked, null));
 
             return true;
         });

@@ -10,6 +10,7 @@ use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
 use App\Models\Task;
 use App\Models\Worker;
+use App\Actions\Time\LogWorkShiftTaskEndAction;
 use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
 use App\Support\Tasks\TaskIssueApproval;
@@ -27,6 +28,7 @@ class CompleteTaskAction
         private IssuePhotoStorage $storage,
         private AuditRecorder $audit,
         private RecalculateIssueStatusAction $recalculateIssueStatus,
+        private LogWorkShiftTaskEndAction $logShiftTaskEnd,
     ) {}
 
     /**
@@ -80,6 +82,11 @@ class CompleteTaskAction
             'started_at' => $task->started_at ?? ($clientTimestamp ?? now()),
             'completed_at' => $clientTimestamp ?? now(),
         ]);
+
+        if ($worker !== null) {
+            $fresh = $task->fresh();
+            $this->logShiftTaskEnd->handle($fresh, $worker, $fresh->completed_at);
+        }
 
         $this->audit->record(
             userId: null, // Workers are not users

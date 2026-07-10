@@ -13,6 +13,7 @@ class ForceCloseWorkShiftAction
 {
     public function __construct(
         private EndWorkBreakAction $endWorkBreak,
+        private CloseOpenWorkShiftTaskLogsAction $closeOpenTaskLogs,
     ) {}
 
     public function handle(WorkShift $shift, int $tenantId, ?int $actorUserId): WorkShift
@@ -53,6 +54,7 @@ class ForceCloseWorkShiftAction
             ]);
 
             $locked = $locked->fresh(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint']);
+            $this->closeOpenTaskLogs->handle($locked, $locked->clock_out_at);
 
             event(new TimeShiftEnded($locked, $actorUserId));
 

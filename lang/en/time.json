@@ -24,7 +24,11 @@
         "break_minutes": "Pauze: :minutes min",
         "net_minutes": "Netto: :minutes min",
         "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Clocked out at :name"
+        "clocked_out_at": "Clocked out at :name",
+        "tasks_heading": "Tasks during this shift:",
+        "task_unknown": "Task",
+        "task_duration": ":minutes min",
+        "task_open": "in progress"
     },
     "corrections": {
         "button": "Correct",
@@ -74,7 +78,8 @@
             "net_minutes": "Netto (min)",
             "clock_in_at": "Ingeklokt bij",
             "clock_out_at": "Uitgeklokt bij",
-            "status": "Status"
+            "status": "Status",
+            "tasks": "Tasks"
         }
     },
     "print": {

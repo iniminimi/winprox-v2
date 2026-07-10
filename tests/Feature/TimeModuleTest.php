@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Tasks\CompleteTaskAction;
+use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\AutoCloseStaleWorkShiftsAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
@@ -12,10 +14,13 @@ use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Issue;
+use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Models\WorkShiftTaskLog;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\DB;
@@ -328,4 +333,57 @@ it('laat een admin een gesloten shift corrigeren met auditlog', function () {
         ->where('model_id', $shift->id)
         ->where('tenant_id', $tenant->id)
         ->exists())->toBeTrue();
+});
+
+it('koppelt taken aan een open shift bij start en afhandeling', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'description' => 'Filter vervangen',
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartTaskAction::class)->handle($task, $worker);
+
+    $log = WorkShiftTaskLog::query()->where('task_id', $task->id)->first();
+    expect($log)->not->toBeNull()
+        ->and($log->ended_at)->toBeNull();
+
+    app(CompleteTaskAction::class)->handle($task->fresh(), $worker);
+
+    expect($log->fresh()->ended_at)->not->toBeNull();
+});
+
+it('sluit open taakkoppelingen bij uitklokken', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartTaskAction::class)->handle($task, $worker);
+    app(ClockOutAction::class)->handle($worker, $clockPoint);
+
+    $log = WorkShiftTaskLog::query()->where('task_id', $task->id)->first();
+    expect($log?->ended_at)->not->toBeNull();
 });
