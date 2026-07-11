@@ -34,8 +34,8 @@
     "shifts": {
         "subtitle": "Urenoverzicht per periode.",
         "empty": "Geen shifts gevonden voor deze filters.",
-        "break_minutes": "Pauze: :minutes min",
-        "net_minutes": "Netto: :minutes min",
+        "break_minutes": "Pauze: :duration",
+        "worked": "Gewerkt: :duration",
         "clocked_in_at": "Ingeklokt bij :name",
         "clocked_out_at": "Uitgeklokt bij :name",
         "tasks_heading": "Taken tijdens deze shift:",
@@ -87,8 +87,8 @@
             "team": "Team",
             "clock_in": "In",
             "clock_out": "Uit",
-            "break_minutes": "Pauze (min)",
-            "net_minutes": "Netto (min)",
+            "break_minutes": "Pauze",
+            "worked": "Gewerkt",
             "clock_in_at": "Ingeklokt bij",
             "clock_out_at": "Uitgeklokt bij",
             "status": "Status",
@@ -100,7 +100,7 @@
         "title": "Urenstaat",
         "document_title": "Urenstaat — WinProx",
         "period": "Periode :from t/m :to",
-        "total_net": "Totaal netto: :minutes min",
+        "total_worked": "Totaal gewerkt: :duration",
         "empty": "Geen shifts in deze periode."
     },
     "clock_points": {
@@ -137,6 +137,10 @@
             "rotation_saved": "QR-rotatie-instelling opgeslagen.",
             "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen."
         }
+    },
+    "duration": {
+        "hour_short": "u",
+        "minute_short": "min"
     },
     "portal": {
         "title": "Inklokken",

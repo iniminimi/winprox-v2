@@ -47,7 +47,7 @@
                             <th>{{ __('time.export.columns.clock_in') }}</th>
                             <th>{{ __('time.export.columns.clock_out') }}</th>
                             <th>{{ __('time.export.columns.break_minutes') }}</th>
-                            <th>{{ __('time.export.columns.net_minutes') }}</th>
+                            <th>{{ __('time.export.columns.worked') }}</th>
                             <th>{{ __('time.export.columns.status') }}</th>
                         </tr>
                     </thead>
@@ -59,8 +59,8 @@
                                 <td>{{ $shift->team?->name }}</td>
                                 <td>{{ $shift->clock_in_at->format('H:i') }}</td>
                                 <td>{{ $shift->clock_out_at?->format('H:i') ?? '—' }}</td>
-                                <td>{{ $shift->total_break_minutes }}</td>
-                                <td>{{ $shift->netWorkMinutes() }}</td>
+                                <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes) }}</td>
+                                <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes()) }}</td>
                                 <td>
                                     @if ($shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto)
                                         {{ __('time.status.auto_closed') }}
@@ -72,7 +72,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <p class="wp-muted wp-text-sm">{{ __('time.print.total_net', ['minutes' => $totalNetMinutes]) }}</p>
+                <p class="wp-muted wp-text-sm">{{ __('time.print.total_worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($totalNetMinutes)]) }}</p>
             </div>
         @endif
     </div>

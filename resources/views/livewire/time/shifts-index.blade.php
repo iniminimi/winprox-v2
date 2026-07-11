@@ -70,8 +70,8 @@
                         &middot; {{ $shift->team?->name }}
                     </p>
                     <p class="wp-muted wp-text-sm">
-                        {{ __('time.shifts.break_minutes', ['minutes' => $shift->total_break_minutes]) }}
-                        &middot; {{ __('time.shifts.net_minutes', ['minutes' => $shift->netWorkMinutes()]) }}
+                        {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}
+                        &middot; {{ __('time.shifts.worked', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes())]) }}
                     </p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('time.shifts.clocked_in_at', ['name' => $shift->clockInClockPoint?->name ?? '—']) }}

@@ -34,8 +34,8 @@
     "shifts": {
         "subtitle": "Urenoverzicht per periode.",
         "empty": "Geen shifts gevonden voor deze filters.",
-        "break_minutes": "Pauze: :minutes min",
-        "net_minutes": "Netto: :minutes min",
+        "break_minutes": "Pausa: :duration",
+        "worked": "Lavorato: :duration",
         "clocked_in_at": "Ingeklokt bij :name",
         "clocked_out_at": "Timbrato uscita presso :name",
         "tasks_heading": "Attività durante questo turno:",
@@ -87,8 +87,8 @@
             "team": "Team",
             "clock_in": "In",
             "clock_out": "Uit",
-            "break_minutes": "Pauze (min)",
-            "net_minutes": "Netto (min)",
+            "break_minutes": "Pausa",
+            "worked": "Lavorato",
             "clock_in_at": "Ingeklokt bij",
             "clock_out_at": "Uitgeklokt bij",
             "status": "Status",
@@ -100,7 +100,7 @@
         "title": "Foglio ore",
         "document_title": "Foglio ore — WinProx",
         "period": "Periodo dal :from al :to",
-        "total_net": "Netto totale: :minutes min",
+        "total_worked": "Totale lavorato: :duration",
         "empty": "Nessun turno in questo periodo."
     },
     "clock_points": {
@@ -137,6 +137,10 @@
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni."
         }
+    },
+    "duration": {
+        "hour_short": "h",
+        "minute_short": "min"
     },
     "portal": {
         "title": "Inklokken",

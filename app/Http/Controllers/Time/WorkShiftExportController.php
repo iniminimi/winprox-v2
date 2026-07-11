@@ -38,7 +38,7 @@ class WorkShiftExportController
                 __('time.export.columns.clock_in'),
                 __('time.export.columns.clock_out'),
                 __('time.export.columns.break_minutes'),
-                __('time.export.columns.net_minutes'),
+                __('time.export.columns.worked'),
                 __('time.export.columns.clock_in_at'),
                 __('time.export.columns.clock_out_at'),
                 __('time.export.columns.status'),
