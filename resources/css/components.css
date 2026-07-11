@@ -3016,6 +3016,13 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
+.wp-billing-page-width {
+    max-width: 64rem;
+    margin-inline: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .wp-billing-product {
     display: grid;
     grid-template-columns: 14rem minmax(0, 1fr);

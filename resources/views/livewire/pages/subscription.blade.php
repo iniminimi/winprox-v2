@@ -4,7 +4,7 @@
 @endphp
 
 <div class="wp-stack">
-    <div class="wp-page-head">
+    <div @class(['wp-page-head', 'wp-billing-page-width' => $publicMode])>
         @if ($publicMode)
             <x-wp-page-head-title
                 icon="subscription"
@@ -28,7 +28,7 @@
     </div>
 
     @if ($publicMode)
-        <div class="wp-card wp-card-pad wp-stack-tight">
+        <div class="wp-card wp-card-pad wp-stack-tight wp-billing-page-width">
             <p class="wp-muted">{{ __('subscription.pricing_intro') }}</p>
             @guest
                 <div class="wp-cluster">
