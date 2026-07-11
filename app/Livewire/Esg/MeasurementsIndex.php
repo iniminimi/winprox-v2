@@ -78,6 +78,16 @@ class MeasurementsIndex extends Component
         $this->redirect(route('esg.measurements.index'), navigate: true);
     }
 
+    public function updatedLocationFilter(): void
+    {
+        $this->resetUnitFilterIfInvalid();
+    }
+
+    public function updatedIndicatorFilter(): void
+    {
+        $this->resetUnitFilterIfInvalid();
+    }
+
     public function openCorrectionModal(int $measurementId): void
     {
         $measurement = EsgMeasurement::query()
@@ -185,12 +195,48 @@ class MeasurementsIndex extends Component
                 : null,
             'indicators' => EsgIndicator::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
             'locations' => Location::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language']),
-            'units' => Unit::query()
-                ->with('translations')
-                ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
-                ->orderBy('name')
-                ->get(['id', 'name', 'location_id', 'original_language']),
+            'units' => $this->filterableUnits(),
         ]);
+    }
+
+    /** @return \Illuminate\Support\Collection<int, Unit> */
+    private function filterableUnits()
+    {
+        $unitIds = $this->filterableUnitIds();
+
+        if ($unitIds === []) {
+            return collect();
+        }
+
+        return Unit::query()
+            ->with('translations')
+            ->whereIn('id', $unitIds)
+            ->orderBy('name')
+            ->get(['id', 'name', 'location_id', 'original_language']);
+    }
+
+    /** @return list<int> */
+    private function filterableUnitIds(): array
+    {
+        return EsgMeasurement::query()
+            ->when($this->indicatorFilter, fn ($query) => $query->where('esg_indicator_id', $this->indicatorFilter))
+            ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
+            ->whereNotNull('unit_id')
+            ->distinct()
+            ->pluck('unit_id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+    }
+
+    private function resetUnitFilterIfInvalid(): void
+    {
+        if ($this->unitFilter === null) {
+            return;
+        }
+
+        if (! in_array($this->unitFilter, $this->filterableUnitIds(), true)) {
+            $this->unitFilter = null;
+        }
     }
 
     private function resetCorrectionFields(): void

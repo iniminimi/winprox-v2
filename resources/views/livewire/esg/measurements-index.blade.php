@@ -16,8 +16,8 @@
         <p class="wp-section-title">{{ __('esg.measurements.list_title') }}</p>
 
         <form wire:submit="applyFilters" class="wp-stack-tight">
-            <div class="wp-cluster wp-cluster--wrap">
-                <div class="wp-field wp-field--grow">
+            <div class="wp-filter-grid wp-filter-grid--3">
+                <div class="wp-filter-field">
                     <label class="wp-label" for="esg-filter-indicator">{{ __('esg.measurements.filters.indicator') }}</label>
                     <select id="esg-filter-indicator" class="wp-input" wire:model="indicatorFilter">
                         <option value="">{{ __('esg.measurements.filters.all_indicators') }}</option>
@@ -26,33 +26,33 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="wp-field wp-field--grow">
+                <div class="wp-filter-field">
                     <label class="wp-label" for="esg-filter-location">{{ __('esg.measurements.filters.location') }}</label>
                     <select id="esg-filter-location" class="wp-input" wire:model.live="locationFilter">
                         <option value="">{{ __('esg.measurements.filters.all_locations') }}</option>
                         @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                            <option value="{{ $location->id }}">{{ $location->localizedName() }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="wp-field wp-field--grow">
+                <div class="wp-filter-field">
                     <label class="wp-label" for="esg-filter-unit">{{ __('esg.measurements.filters.unit') }}</label>
-                    <select id="esg-filter-unit" class="wp-input" wire:model="unitFilter">
+                    <select id="esg-filter-unit" class="wp-input" wire:model="unitFilter" @disabled($units->isEmpty())>
                         <option value="">{{ __('esg.measurements.filters.all_units') }}</option>
                         @foreach ($units as $unit)
-                            <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            <option value="{{ $unit->id }}">{{ $unit->localizedName() }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div class="wp-cluster wp-cluster--wrap">
-                <div class="wp-field wp-field--grow">
+            <div class="wp-filter-grid">
+                <div class="wp-filter-field">
                     <label class="wp-label" for="esg-filter-from">{{ __('esg.measurements.filters.from') }}</label>
-                    <input id="esg-filter-from" type="date" class="wp-input" wire:model="recordedFrom">
+                    <x-wp-date-input id="esg-filter-from" wire:model="recordedFrom" />
                 </div>
-                <div class="wp-field wp-field--grow">
+                <div class="wp-filter-field">
                     <label class="wp-label" for="esg-filter-to">{{ __('esg.measurements.filters.to') }}</label>
-                    <input id="esg-filter-to" type="date" class="wp-input" wire:model="recordedTo">
+                    <x-wp-date-input id="esg-filter-to" wire:model="recordedTo" />
                 </div>
             </div>
             <div class="wp-cluster wp-cluster--end">

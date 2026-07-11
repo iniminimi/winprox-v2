@@ -74,6 +74,29 @@ it('toont geregistreerde metingen met context', function () {
         ->assertSee(__('esg.measurements.outside_thresholds'));
 });
 
+it('toont alleen units met geregistreerde metingen in unitfilter', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site A']);
+    $measuredUnit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'name' => 'Gasmeter']);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'name' => 'Ongebruikte unit']);
+    $indicator = EsgIndicator::factory()->numeric()->create(['tenant_id' => $tenant->id, 'name' => 'Gas']);
+
+    EsgMeasurement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $measuredUnit->id,
+        'esg_indicator_id' => $indicator->id,
+        'value_numeric' => 12,
+        'recorded_at' => now(),
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(MeasurementsIndex::class)
+        ->assertSee('Gasmeter')
+        ->assertDontSee('Ongebruikte unit');
+});
+
 it('filtert metingen op indicator', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
