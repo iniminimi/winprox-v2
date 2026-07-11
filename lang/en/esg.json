@@ -124,6 +124,19 @@
             "title": "Threshold alerts",
             "all": "View readings",
             "empty": "No recent threshold alerts."
+        },
+        "trend": {
+            "title": "Usage trend",
+            "indicator": "Indicator",
+            "period": "Last :days days|Last :days day|Last :days days",
+            "empty": "No readings in this period yet.",
+            "aria": "Trend chart with :count data points"
+        },
+        "top_locations": {
+            "title": "Highest usage by location",
+            "all": "All readings",
+            "empty": "No usage by location in this period yet.",
+            "readings": ":count readings|:count reading|:count readings"
         }
     },
     "measurements": {

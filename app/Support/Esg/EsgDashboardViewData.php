@@ -17,6 +17,17 @@ final readonly class EsgDashboardViewData
      *     has_measurement: bool,
      *     recorded_at_label: ?string,
      * }>  $indicatorKpis
+     * @param  list<array{id: int, name: string}>  $trendIndicatorOptions
+     * @param  list<array{label: string, value: float}>  $trendPoints
+     * @param  list<array{
+     *     location_id: int,
+     *     name: string,
+     *     total: float,
+     *     total_formatted: string,
+     *     measurement_count: int,
+     *     detail_url: string,
+     *     measurements_url: string,
+     * }>  $topLocations
      */
     public function __construct(
         public int $alarmCount,
@@ -30,5 +41,12 @@ final readonly class EsgDashboardViewData
         public bool $showSetup,
         public int $indicatorCount,
         public int $measurementCount,
+        public ?int $selectedTrendIndicatorId,
+        public ?string $selectedTrendIndicatorName,
+        public ?string $selectedTrendUnit,
+        public array $trendIndicatorOptions,
+        public array $trendPoints,
+        public int $trendPeriodDays,
+        public array $topLocations,
     ) {}
 }

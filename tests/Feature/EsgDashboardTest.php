@@ -162,6 +162,88 @@ it('bouwt dashboarddata per tenant via action', function () {
         ->and($dashboard->indicatorKpis[0]['value'])->toContain('42');
 });
 
+it('toont trend en top-locaties voor geselecteerde indicator', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $indicator = EsgIndicator::factory()->numeric('m3')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Gas m3',
+        'thresholds' => ['min' => 0, 'max' => 500],
+    ]);
+    $locationHigh = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Blok A']);
+    $locationLow = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Blok B']);
+    $unitHigh = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $locationHigh->id]);
+    $unitLow = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $locationLow->id]);
+
+    foreach ([
+        [$locationHigh, $unitHigh, 200.0],
+        [$locationLow, $unitLow, 50.0],
+    ] as [$location, $unit, $value]) {
+        $issue = Issue::factory()->create([
+            'tenant_id' => $tenant->id,
+            'location_id' => $location->id,
+            'unit_id' => $unit->id,
+            'esg_indicator_id' => $indicator->id,
+            'approved_at' => now(),
+        ]);
+        $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+        app(RecordEsgMeasurementAction::class)->handle(
+            new RecordEsgMeasurementData(
+                taskId: $task->id,
+                esgIndicatorId: $indicator->id,
+                recordedAt: now()->toImmutable(),
+                valueNumeric: $value,
+            ),
+            $tenant->id,
+        );
+    }
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('esg.dashboard.trend.title'))
+        ->assertSee(__('esg.dashboard.top_locations.title'))
+        ->assertSee('Blok A')
+        ->assertSee('200')
+        ->assertSeeInOrder(['Blok A', 'Blok B']);
+});
+
+it('bouwt trendpunten en top-locaties via action', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $indicator = EsgIndicator::factory()->numeric('kWh')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Elektriciteit',
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Gebouw 1']);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'esg_indicator_id' => $indicator->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+    app(RecordEsgMeasurementAction::class)->handle(
+        new RecordEsgMeasurementData(
+            taskId: $task->id,
+            esgIndicatorId: $indicator->id,
+            recordedAt: now()->toImmutable(),
+            valueNumeric: 88.5,
+        ),
+        $tenant->id,
+    );
+
+    $dashboard = app(BuildEsgDashboardAction::class)->handle($tenant->id, $indicator->id);
+
+    expect($dashboard->selectedTrendIndicatorId)->toBe($indicator->id)
+        ->and($dashboard->trendPoints)->not->toBeEmpty()
+        ->and($dashboard->topLocations)->toHaveCount(1)
+        ->and($dashboard->topLocations[0]['name'])->toBe('Gebouw 1')
+        ->and($dashboard->topLocations[0]['total_formatted'])->toContain('88,5');
+});
+
 it('toont dashboard-tab in esg-subnav', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

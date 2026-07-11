@@ -80,35 +80,101 @@
         @endforeach
     </div>
 
-    <div @class([
-        'wp-dashboard-widgets',
-        'wp-dashboard-widgets--single' => $dashboard->thresholdSampleSize === 0 && $dashboard->openEsgTasks->isEmpty(),
-    ])>
-        @if ($dashboard->thresholdSampleSize > 0)
-            <a href="{{ route('esg.measurements.index') }}"
-               class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
-               wire:key="esg-threshold-widget">
-                <div class="wp-health-widget__body">
-                    <x-wp-health-donut
-                        size="sm"
-                        :percent-complete="$dashboard->thresholdOkPercent"
-                        :incomplete-fraction="$dashboard->thresholdIncompleteFraction"
-                    />
+    @if ($dashboard->trendIndicatorOptions !== [])
+        <div @class([
+            'wp-dashboard-widgets',
+            'wp-dashboard-widgets--trend' => $dashboard->thresholdSampleSize > 0,
+            'wp-dashboard-widgets--single' => $dashboard->thresholdSampleSize === 0,
+        ])>
+            <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-trend">
+                <div class="wp-row">
                     <div class="wp-stack-tight wp-grow">
-                        <p class="wp-kpi-kicker">{{ __('esg.dashboard.threshold.kicker') }}</p>
-                        <p class="wp-dashboard-widget__title">{{ __('esg.dashboard.threshold.title') }}</p>
-                        <p class="wp-muted">
-                            {{ trans_choice('esg.dashboard.threshold.summary', $dashboard->alarmCount, [
-                                'count' => $dashboard->alarmCount,
+                        <p class="wp-section-title">{{ __('esg.dashboard.trend.title') }}</p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ trans_choice('esg.dashboard.trend.period', $dashboard->trendPeriodDays, [
+                                'days' => $dashboard->trendPeriodDays,
                             ]) }}
                         </p>
                     </div>
-                    <x-wp-icon name="arrow-right" class="wp-health-widget__chevron" />
+                    <div class="wp-filter-field wp-esg-trend__select">
+                        <label class="wp-label" for="esg-trend-indicator">{{ __('esg.dashboard.trend.indicator') }}</label>
+                        <select id="esg-trend-indicator" class="wp-input" wire:model.live="trendIndicatorId">
+                            @foreach ($dashboard->trendIndicatorOptions as $option)
+                                <option value="{{ $option['id'] }}">{{ $option['name'] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </a>
-        @endif
 
-        <div class="wp-dashboard-widget wp-card wp-card-pad wp-stack-tight" wire:key="esg-open-tasks-widget">
+                <x-wp-esg-trend-chart
+                    :points="$dashboard->trendPoints"
+                    :unit="$dashboard->selectedTrendUnit"
+                />
+            </div>
+
+            @if ($dashboard->thresholdSampleSize > 0)
+                <a href="{{ route('esg.measurements.index') }}"
+                   class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
+                   wire:key="esg-threshold-widget">
+                    <div class="wp-health-widget__body">
+                        <x-wp-health-donut
+                            size="sm"
+                            :percent-complete="$dashboard->thresholdOkPercent"
+                            :incomplete-fraction="$dashboard->thresholdIncompleteFraction"
+                        />
+                        <div class="wp-stack-tight wp-grow">
+                            <p class="wp-kpi-kicker">{{ __('esg.dashboard.threshold.kicker') }}</p>
+                            <p class="wp-dashboard-widget__title">{{ __('esg.dashboard.threshold.title') }}</p>
+                            <p class="wp-muted">
+                                {{ trans_choice('esg.dashboard.threshold.summary', $dashboard->alarmCount, [
+                                    'count' => $dashboard->alarmCount,
+                                ]) }}
+                            </p>
+                        </div>
+                        <x-wp-icon name="chevron-down" class="wp-health-widget__chevron" />
+                    </div>
+                </a>
+            @endif
+        </div>
+
+        <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-top-locations">
+            <div class="wp-row">
+                <p class="wp-section-title">{{ __('esg.dashboard.top_locations.title') }}</p>
+                @if ($dashboard->selectedTrendIndicatorId)
+                    <a href="{{ route('esg.measurements.index', ['indicator' => $dashboard->selectedTrendIndicatorId]) }}"
+                       class="btn btn--ghost btn--sm">
+                        {{ __('esg.dashboard.top_locations.all') }}
+                    </a>
+                @endif
+            </div>
+
+            @if ($dashboard->topLocations === [])
+                <p class="wp-muted">{{ __('esg.dashboard.top_locations.empty') }}</p>
+            @else
+                <div class="wp-list wp-list--entity-rows wp-esg-top-locations__list">
+                    @foreach ($dashboard->topLocations as $row)
+                        <a href="{{ $row['measurements_url'] }}" class="wp-traffic-row" wire:key="esg-top-location-{{ $row['location_id'] }}">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ $row['name'] }}</p>
+                                <p class="wp-issue-card-meta">
+                                    {{ trans_choice('esg.dashboard.top_locations.readings', $row['measurement_count'], [
+                                        'count' => $row['measurement_count'],
+                                    ]) }}
+                                </p>
+                            </div>
+                            <div class="wp-cluster">
+                                <span class="wp-pill wp-pill--closed wp-tabular">{{ $row['total_formatted'] }}</span>
+                                <x-wp-icon name="chevron-down" class="wp-traffic-row__chevron" />
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    @endif
+
+    @if ($dashboard->trendIndicatorOptions !== [])
+        <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-open-tasks-widget">
             <div class="wp-row">
                 <p class="wp-section-title">{{ __('esg.dashboard.open_tasks.title') }}</p>
                 <a href="{{ route('tasks.index') }}" class="btn btn--ghost btn--sm">
@@ -144,7 +210,73 @@
                 </ul>
             @endif
         </div>
-    </div>
+    @else
+        <div @class([
+            'wp-dashboard-widgets',
+            'wp-dashboard-widgets--single' => $dashboard->thresholdSampleSize === 0 && $dashboard->openEsgTasks->isEmpty(),
+        ])>
+            @if ($dashboard->thresholdSampleSize > 0)
+                <a href="{{ route('esg.measurements.index') }}"
+                   class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
+                   wire:key="esg-threshold-widget">
+                    <div class="wp-health-widget__body">
+                        <x-wp-health-donut
+                            size="sm"
+                            :percent-complete="$dashboard->thresholdOkPercent"
+                            :incomplete-fraction="$dashboard->thresholdIncompleteFraction"
+                        />
+                        <div class="wp-stack-tight wp-grow">
+                            <p class="wp-kpi-kicker">{{ __('esg.dashboard.threshold.kicker') }}</p>
+                            <p class="wp-dashboard-widget__title">{{ __('esg.dashboard.threshold.title') }}</p>
+                            <p class="wp-muted">
+                                {{ trans_choice('esg.dashboard.threshold.summary', $dashboard->alarmCount, [
+                                    'count' => $dashboard->alarmCount,
+                                ]) }}
+                            </p>
+                        </div>
+                        <x-wp-icon name="chevron-down" class="wp-health-widget__chevron" />
+                    </div>
+                </a>
+            @endif
+
+            <div class="wp-dashboard-widget wp-card wp-card-pad wp-stack-tight" wire:key="esg-open-tasks-widget">
+                <div class="wp-row">
+                    <p class="wp-section-title">{{ __('esg.dashboard.open_tasks.title') }}</p>
+                    <a href="{{ route('tasks.index') }}" class="btn btn--ghost btn--sm">
+                        {{ __('esg.dashboard.open_tasks.all') }}
+                    </a>
+                </div>
+
+                @if ($dashboard->openEsgTasks->isEmpty())
+                    <p class="wp-muted">{{ __('esg.dashboard.open_tasks.empty') }}</p>
+                @else
+                    <ul class="wp-list-plain wp-stack-tight">
+                        @foreach ($dashboard->openEsgTasks as $task)
+                            <li class="wp-list-row" wire:key="esg-open-task-{{ $task->id }}">
+                                <div>
+                                    <strong>{{ $task->issue?->esgIndicator?->localizedName() ?? '—' }}</strong>
+                                    <p class="wp-muted wp-text-sm">
+                                        {{ $task->issue?->location?->localizedName() ?? '—' }}
+                                        @if ($task->issue?->unit)
+                                            · {{ $task->issue->unit->localizedName() }}
+                                        @endif
+                                    </p>
+                                    @if ($task->due_at)
+                                        <p class="wp-muted wp-text-sm">
+                                            {{ __('esg.dashboard.open_tasks.due', ['date' => $task->due_at->format('d-m-Y')]) }}
+                                        </p>
+                                    @endif
+                                </div>
+                                <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
+                                    {{ __('esg.measurements.view_task') }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+            </div>
+        </div>
+    @endif
 
     <div class="wp-dashboard-widgets">
         <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-recent-measurements">

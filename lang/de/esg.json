@@ -124,6 +124,19 @@
             "title": "Schwellenalarme",
             "all": "Zu Messungen",
             "empty": "Keine aktuellen Schwellenalarme."
+        },
+        "trend": {
+            "title": "Verbrauchstrend",
+            "indicator": "Indikator",
+            "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage",
+            "empty": "Noch keine Messungen in diesem Zeitraum.",
+            "aria": "Trenddiagramm mit :count Datenpunkten"
+        },
+        "top_locations": {
+            "title": "Höchster Verbrauch je Standort",
+            "all": "Alle Messungen",
+            "empty": "Noch kein Verbrauch je Standort in diesem Zeitraum.",
+            "readings": ":count Messungen|:count Messung|:count Messungen"
         }
     },
     "measurements": {

@@ -124,6 +124,19 @@
             "title": "Alertas de umbral",
             "all": "Ver mediciones",
             "empty": "No hay alertas de umbral recientes."
+        },
+        "trend": {
+            "title": "Tendencia de consumo",
+            "indicator": "Indicador",
+            "period": "Últimos :days días|Último :days día|Últimos :days días",
+            "empty": "Aún no hay mediciones en este período.",
+            "aria": "Gráfico de tendencia con :count puntos de datos"
+        },
+        "top_locations": {
+            "title": "Mayor consumo por ubicación",
+            "all": "Todas las mediciones",
+            "empty": "Aún no hay consumo por ubicación en este período.",
+            "readings": ":count mediciones|:count medición|:count mediciones"
         }
     },
     "measurements": {

@@ -124,6 +124,19 @@
             "title": "Drempelalarmen",
             "all": "Naar metingen",
             "empty": "Geen recente drempelalarmen."
+        },
+        "trend": {
+            "title": "Verbruikstrend",
+            "indicator": "Indicator",
+            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen",
+            "empty": "Nog geen metingen in deze periode.",
+            "aria": "Trendgrafiek met :count meetpunten"
+        },
+        "top_locations": {
+            "title": "Hoogste verbruik per locatie",
+            "all": "Alle metingen",
+            "empty": "Nog geen verbruik per locatie in deze periode.",
+            "readings": ":count metingen|:count meting|:count metingen"
         }
     },
     "measurements": {

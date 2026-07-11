@@ -8,9 +8,11 @@ use App\Enums\EsgIndicatorType;
 use App\Enums\TaskStatus;
 use App\Models\EsgIndicator;
 use App\Models\EsgMeasurement;
+use App\Models\Location;
 use App\Models\Task;
 use App\Support\Esg\EsgDashboardViewData;
 use App\Support\Esg\EsgMeasurementPresenter;
+use Carbon\CarbonInterface;
 use Illuminate\Support\Collection;
 
 class BuildEsgDashboardAction
@@ -25,7 +27,11 @@ class BuildEsgDashboardAction
 
     private const int THRESHOLD_SAMPLE_LIMIT = 30;
 
-    public function handle(int $tenantId): EsgDashboardViewData
+    private const int TOP_LOCATION_LIMIT = 10;
+
+    private const int TREND_PERIOD_DAYS = 30;
+
+    public function handle(int $tenantId, ?int $trendIndicatorId = null): EsgDashboardViewData
     {
         $indicatorCount = EsgIndicator::query()
             ->where('tenant_id', $tenantId)
@@ -97,6 +103,16 @@ class BuildEsgDashboardAction
             ->limit(self::OPEN_TASK_LIMIT)
             ->get();
 
+        $trendIndicatorOptions = $this->trendIndicatorOptions($tenantId);
+        $selectedTrendIndicator = $this->resolveTrendIndicator($tenantId, $trendIndicatorId);
+        $periodStart = now()->subDays(self::TREND_PERIOD_DAYS)->startOfDay();
+        $trendPoints = $selectedTrendIndicator instanceof EsgIndicator
+            ? $this->buildTrendPoints($tenantId, $selectedTrendIndicator, $periodStart)
+            : [];
+        $topLocations = $selectedTrendIndicator instanceof EsgIndicator
+            ? $this->buildTopLocations($tenantId, $selectedTrendIndicator, $periodStart)
+            : [];
+
         return new EsgDashboardViewData(
             alarmCount: $alarmCount,
             thresholdOkPercent: $thresholdOkPercent,
@@ -109,6 +125,13 @@ class BuildEsgDashboardAction
             showSetup: $indicatorCount === 0 || $measurementCount === 0,
             indicatorCount: $indicatorCount,
             measurementCount: $measurementCount,
+            selectedTrendIndicatorId: $selectedTrendIndicator?->id,
+            selectedTrendIndicatorName: $selectedTrendIndicator?->localizedName(),
+            selectedTrendUnit: $selectedTrendIndicator?->unit_of_measure,
+            trendIndicatorOptions: $trendIndicatorOptions,
+            trendPoints: $trendPoints,
+            trendPeriodDays: self::TREND_PERIOD_DAYS,
+            topLocations: $topLocations,
         );
     }
 
@@ -165,5 +188,164 @@ class BuildEsgDashboardAction
             ->orderByDesc('id')
             ->limit(self::THRESHOLD_SAMPLE_LIMIT)
             ->get();
+    }
+
+    /** @return list<array{id: int, name: string}> */
+    private function trendIndicatorOptions(int $tenantId): array
+    {
+        return EsgIndicator::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->where('type', EsgIndicatorType::Numeric)
+            ->orderBy('name')
+            ->get()
+            ->map(fn (EsgIndicator $indicator): array => [
+                'id' => $indicator->id,
+                'name' => $indicator->localizedName(),
+            ])
+            ->values()
+            ->all();
+    }
+
+    private function resolveTrendIndicator(int $tenantId, ?int $requestedId): ?EsgIndicator
+    {
+        if ($requestedId !== null) {
+            $indicator = EsgIndicator::query()
+                ->where('tenant_id', $tenantId)
+                ->where('is_active', true)
+                ->where('type', EsgIndicatorType::Numeric)
+                ->whereKey($requestedId)
+                ->first();
+
+            if ($indicator instanceof EsgIndicator) {
+                return $indicator;
+            }
+        }
+
+        $latestIndicatorId = EsgMeasurement::query()
+            ->where('tenant_id', $tenantId)
+            ->whereHas('indicator', fn ($query) => $query
+                ->where('type', EsgIndicatorType::Numeric)
+                ->where('is_active', true))
+            ->orderByDesc('recorded_at')
+            ->orderByDesc('id')
+            ->value('esg_indicator_id');
+
+        if ($latestIndicatorId !== null) {
+            $indicator = EsgIndicator::query()
+                ->where('tenant_id', $tenantId)
+                ->whereKey($latestIndicatorId)
+                ->first();
+
+            if ($indicator instanceof EsgIndicator) {
+                return $indicator;
+            }
+        }
+
+        return EsgIndicator::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->where('type', EsgIndicatorType::Numeric)
+            ->orderBy('name')
+            ->first();
+    }
+
+    /**
+     * @return list<array{label: string, value: float}>
+     */
+    private function buildTrendPoints(int $tenantId, EsgIndicator $indicator, CarbonInterface $periodStart): array
+    {
+        $measurements = EsgMeasurement::query()
+            ->where('tenant_id', $tenantId)
+            ->where('esg_indicator_id', $indicator->id)
+            ->where('recorded_at', '>=', $periodStart)
+            ->whereNotNull('value_numeric')
+            ->orderBy('recorded_at')
+            ->get(['recorded_at', 'value_numeric']);
+
+        if ($measurements->isEmpty()) {
+            return [];
+        }
+
+        return $measurements
+            ->groupBy(fn (EsgMeasurement $measurement): string => $measurement->recorded_at->format('Y-m-d'))
+            ->map(fn (Collection $group): float => (float) $group->sum(fn (EsgMeasurement $measurement): float => (float) $measurement->value_numeric))
+            ->sortKeys()
+            ->map(fn (float $total, string $day): array => [
+                'label' => \Illuminate\Support\Carbon::parse($day)->format('d-m'),
+                'value' => $total,
+            ])
+            ->values()
+            ->all();
+    }
+
+    /**
+     * @return list<array{
+     *     location_id: int,
+     *     name: string,
+     *     total: float,
+     *     total_formatted: string,
+     *     measurement_count: int,
+     *     detail_url: string,
+     *     measurements_url: string,
+     * }>
+     */
+    private function buildTopLocations(int $tenantId, EsgIndicator $indicator, CarbonInterface $periodStart): array
+    {
+        $measurements = EsgMeasurement::query()
+            ->where('tenant_id', $tenantId)
+            ->where('esg_indicator_id', $indicator->id)
+            ->where('recorded_at', '>=', $periodStart)
+            ->whereNotNull('location_id')
+            ->whereNotNull('value_numeric')
+            ->with('location')
+            ->get(['location_id', 'value_numeric']);
+
+        if ($measurements->isEmpty()) {
+            return [];
+        }
+
+        $rows = $measurements
+            ->groupBy('location_id')
+            ->map(function (Collection $group) use ($indicator, $tenantId): ?array {
+                $first = $group->first();
+                if (! $first instanceof EsgMeasurement) {
+                    return null;
+                }
+
+                $location = $first->location;
+                if (! $location instanceof Location) {
+                    return null;
+                }
+
+                $total = (float) $group->sum(fn (EsgMeasurement $measurement): float => (float) $measurement->value_numeric);
+
+                return [
+                    'location_id' => (int) $location->id,
+                    'name' => $location->localizedName(),
+                    'total' => $total,
+                    'total_formatted' => $this->formatNumericTotal($total, $indicator->unit_of_measure),
+                    'measurement_count' => $group->count(),
+                    'detail_url' => route('locations.show', $location),
+                    'measurements_url' => route('esg.measurements.index', [
+                        'indicator' => $indicator->id,
+                        'location' => $location->id,
+                    ]),
+                ];
+            })
+            ->filter()
+            ->sortByDesc('total')
+            ->take(self::TOP_LOCATION_LIMIT)
+            ->values()
+            ->all();
+
+        return $rows;
+    }
+
+    private function formatNumericTotal(float $value, ?string $unitOfMeasure): string
+    {
+        $formatted = rtrim(rtrim(number_format($value, 4, ',', '.'), '0'), ',');
+
+        return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
     }
 }

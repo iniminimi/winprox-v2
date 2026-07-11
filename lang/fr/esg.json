@@ -124,6 +124,19 @@
             "title": "Alertes de seuil",
             "all": "Voir les mesures",
             "empty": "Aucune alerte de seuil récente."
+        },
+        "trend": {
+            "title": "Tendance de consommation",
+            "indicator": "Indicateur",
+            "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours",
+            "empty": "Pas encore de mesures sur cette période.",
+            "aria": "Graphique de tendance avec :count points de données"
+        },
+        "top_locations": {
+            "title": "Consommation la plus élevée par site",
+            "all": "Toutes les mesures",
+            "empty": "Pas encore de consommation par site sur cette période.",
+            "readings": ":count mesures|:count mesure|:count mesures"
         }
     },
     "measurements": {
