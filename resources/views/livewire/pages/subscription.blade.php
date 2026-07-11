@@ -152,19 +152,19 @@
     @endif
 
     <div class="wp-billing-section-head">
-        <div class="wp-billing-section-head__title-row">
+        <figure class="wp-billing-section-head__logo">
             <img
                 src="{{ asset('images/welcome/winprox_time_logo.jpg') }}"
                 alt="{{ __('welcome.products.time.logo_alt') }}"
-                class="wp-billing-section-head__logo"
-                width="56"
-                height="56"
+                class="wp-billing-section-head__logo-img"
                 loading="lazy"
                 decoding="async"
             >
+        </figure>
+        <div class="wp-billing-section-head__copy">
             <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+            <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
         </div>
-        <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
     </div>
 
     <div class="wp-billing-plan-list">
@@ -196,19 +196,19 @@
     </div>
 
     <div class="wp-billing-section-head">
-        <div class="wp-billing-section-head__title-row">
+        <figure class="wp-billing-section-head__logo">
             <img
                 src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
                 alt="{{ __('welcome.products.facility.logo_alt') }}"
-                class="wp-billing-section-head__logo"
-                width="56"
-                height="56"
+                class="wp-billing-section-head__logo-img"
                 loading="lazy"
                 decoding="async"
             >
+        </figure>
+        <div class="wp-billing-section-head__copy">
             <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
+            <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
         </div>
-        <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
     </div>
 
     <div class="wp-billing-plan-list">

@@ -3017,23 +3017,36 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-billing-section-head {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
     max-width: 48rem;
     margin: 2rem auto 0.75rem;
     width: 100%;
-}
-
-.wp-billing-section-head__title-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+    text-align: left;
 }
 
 .wp-billing-section-head__logo {
-    width: 2.75rem;
-    height: 2.75rem;
-    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    width: 14rem;
+    height: 14rem;
+    margin: 0;
+}
+
+.wp-billing-section-head__logo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+}
+
+.wp-billing-section-head__copy {
+    flex: 1;
+    min-width: 0;
 }
 
 .wp-billing-section-head .wp-section-title {
