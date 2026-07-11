@@ -152,7 +152,18 @@
     @endif
 
     <div class="wp-billing-section-head">
-        <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+        <div class="wp-billing-section-head__title-row">
+            <img
+                src="{{ asset('images/welcome/winprox_time_logo.jpg') }}"
+                alt="{{ __('welcome.products.time.logo_alt') }}"
+                class="wp-billing-section-head__logo"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+            >
+            <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+        </div>
         <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
     </div>
 
@@ -185,7 +196,18 @@
     </div>
 
     <div class="wp-billing-section-head">
-        <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
+        <div class="wp-billing-section-head__title-row">
+            <img
+                src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
+                alt="{{ __('welcome.products.facility.logo_alt') }}"
+                class="wp-billing-section-head__logo"
+                width="56"
+                height="56"
+                loading="lazy"
+                decoding="async"
+            >
+            <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
+        </div>
         <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
     </div>
 

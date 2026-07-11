@@ -3022,6 +3022,20 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
+.wp-billing-section-head__title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.wp-billing-section-head__logo {
+    width: 2.75rem;
+    height: 2.75rem;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .wp-billing-section-head .wp-section-title {
     margin: 0;
 }
