@@ -3028,12 +3028,17 @@ svg.wp-release-worker-row__icon,
     box-sizing: border-box;
 }
 
-.wp-billing-product .wp-billing-plan-card:not(.wp-billing-plan-card--bundle) {
-    background: color-mix(in srgb, var(--wp-bg) 65%, var(--wp-surface) 35%);
-}
-
 .wp-billing-product + .wp-billing-product {
     margin-top: 3rem;
+}
+
+.wp-billing-product--module {
+    grid-template-columns: 9.8rem minmax(0, 1fr);
+}
+
+.wp-billing-product--module .wp-billing-product__logo {
+    width: 9.8rem;
+    height: 9.8rem;
 }
 
 .wp-billing-product__logo {
@@ -3078,6 +3083,10 @@ svg.wp-release-worker-row__icon,
     .wp-billing-product {
         grid-template-columns: 1fr;
         gap: 1.25rem;
+    }
+
+    .wp-billing-product--module {
+        grid-template-columns: 1fr;
     }
 
     .wp-billing-product__logo {
@@ -3206,11 +3215,6 @@ svg.wp-release-worker-row__icon,
     font-variant-numeric: tabular-nums;
     color: var(--wp-accent);
     white-space: nowrap;
-}
-
-.wp-billing-plan-card--bundle {
-    border-color: color-mix(in srgb, var(--wp-accent) 35%, var(--wp-border));
-    background: color-mix(in srgb, var(--wp-accent) 4%, var(--wp-surface));
 }
 
 .wp-billing-plan-card-action {

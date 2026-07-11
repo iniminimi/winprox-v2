@@ -168,7 +168,7 @@
             </header>
 
             <div class="wp-billing-plan-list">
-                <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
+                <article class="wp-billing-plan-card" wire:key="subscription-product-time">
                     <div class="wp-billing-plan-card-body">
                         <div class="wp-billing-plan-card-head">
                             <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
@@ -288,7 +288,7 @@
                 : (bool) $tenant?->has_time_module;
             $modulePlanTiers = config("billing.modules.{$moduleKey}.plan_tiers", ['pro', 'business']);
         @endphp
-        <section class="wp-billing-product wp-card wp-card-pad" wire:key="subscription-module-section-{{ $moduleKey }}">
+        <section class="wp-billing-product wp-billing-product--module wp-card wp-card-pad" wire:key="subscription-module-section-{{ $moduleKey }}">
             <figure class="wp-billing-product__logo">
                 <img
                     src="{{ asset('images/welcome/winprox_'.$moduleKey.'_module_logo.jpg') }}"
