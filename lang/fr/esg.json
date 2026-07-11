@@ -162,7 +162,15 @@
             "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours",
             "empty": "Pas encore de mesures sur cette période.",
             "aria": "Répartition par catégorie avec :count segments"
+        },
+        "auto_task": {
+            "pill": "Alerte auto",
+            "follow_up": "Tâche de suivi"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "Alerte de seuil ESG : :indicator mesure :value à :location · :unit.",
+        "task_description": "Examiner le dépassement de seuil :indicator (:value) et prendre des mesures correctives."
     },
     "measurements": {
         "subtitle": "Consultez les relevés terrain pour les audits et rapports.",

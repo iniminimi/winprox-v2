@@ -162,7 +162,15 @@
             "period": "Últimos :days días|Último :days día|Últimos :days días",
             "empty": "Aún no hay mediciones en este período.",
             "aria": "Distribución por categoría con :count segmentos"
+        },
+        "auto_task": {
+            "pill": "Alerta auto",
+            "follow_up": "Tarea de seguimiento"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "Alerta de umbral ESG: :indicator mide :value en :location · :unit.",
+        "task_description": "Investigar el umbral superado de :indicator (:value) y tomar medidas correctivas."
     },
     "measurements": {
         "subtitle": "Consulte lecturas de campo para auditorías e informes.",

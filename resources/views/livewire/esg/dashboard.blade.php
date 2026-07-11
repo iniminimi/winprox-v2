@@ -262,9 +262,14 @@
                                     </p>
                                 @endif
                             </div>
-                            <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
-                                {{ __('esg.measurements.view_task') }}
-                            </a>
+                            <div class="wp-cluster">
+                                @if ($task->esg_threshold_measurement_id)
+                                    <span class="wp-pill wp-pill--progress">{{ __('esg.dashboard.auto_task.pill') }}</span>
+                                @endif
+                                <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
+                                    {{ __('esg.measurements.view_task') }}
+                                </a>
+                            </div>
                         </li>
                     @endforeach
                 </ul>
@@ -327,9 +332,14 @@
                                         </p>
                                     @endif
                                 </div>
-                                <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
-                                    {{ __('esg.measurements.view_task') }}
-                                </a>
+                                <div class="wp-cluster">
+                                    @if ($task->esg_threshold_measurement_id)
+                                        <span class="wp-pill wp-pill--progress">{{ __('esg.dashboard.auto_task.pill') }}</span>
+                                    @endif
+                                    <a href="{{ route('tasks.show', $task) }}" class="btn btn--ghost btn--sm">
+                                        {{ __('esg.measurements.view_task') }}
+                                    </a>
+                                </div>
                             </li>
                         @endforeach
                     </ul>
@@ -376,6 +386,11 @@
                                         {{ __('esg.measurements.view_task') }}
                                     </a>
                                 @endif
+                                @if ($measurement->thresholdFollowUpTask)
+                                    <a href="{{ route('tasks.show', $measurement->thresholdFollowUpTask) }}" class="btn btn--primary btn--sm">
+                                        {{ __('esg.dashboard.auto_task.follow_up') }}
+                                    </a>
+                                @endif
                             </div>
                         </li>
                     @endforeach
@@ -413,6 +428,11 @@
                             @if ($measurement->task_id)
                                 <a href="{{ route('tasks.show', $measurement->task_id) }}" class="btn btn--ghost btn--sm">
                                     {{ __('esg.measurements.view_task') }}
+                                </a>
+                            @endif
+                            @if ($measurement->thresholdFollowUpTask)
+                                <a href="{{ route('tasks.show', $measurement->thresholdFollowUpTask) }}" class="btn btn--primary btn--sm">
+                                    {{ __('esg.dashboard.auto_task.follow_up') }}
                                 </a>
                             @endif
                         </li>

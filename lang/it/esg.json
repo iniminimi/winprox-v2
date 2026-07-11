@@ -162,7 +162,15 @@
             "period": "Ultimi :days giorni|Ultimo :days giorno|Ultimi :days giorni",
             "empty": "Nessuna misurazione in questo periodo.",
             "aria": "Distribuzione per categoria con :count segmenti"
+        },
+        "auto_task": {
+            "pill": "Allarme auto",
+            "follow_up": "Attività di follow-up"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "Allarme soglia ESG: :indicator rileva :value presso :location · :unit.",
+        "task_description": "Verificare il superamento soglia di :indicator (:value) e intervenire."
     },
     "measurements": {
         "subtitle": "Consulta le letture dal campo per audit e reportistica.",

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Esg;
 
+use App\Actions\Esg\CreateEsgThresholdFollowUpTaskAction;
 use App\Data\Esg\RecordEsgMeasurementData;
 use App\Events\Esg\EsgMeasurementRecorded;
 use App\Models\EsgIndicator;
@@ -17,7 +18,10 @@ use Illuminate\Validation\ValidationException;
 
 class RecordEsgMeasurementAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private CreateEsgThresholdFollowUpTaskAction $createThresholdFollowUp,
+    ) {}
 
     public function handle(
         RecordEsgMeasurementData $data,
@@ -140,6 +144,8 @@ class RecordEsgMeasurementAction
         $measurement = $measurement->fresh(['indicator', 'unit', 'location', 'worker']);
 
         event(new EsgMeasurementRecorded($measurement, $actorUserId));
+
+        $this->createThresholdFollowUp->handle($measurement, $actorUserId);
 
         return $measurement;
     }

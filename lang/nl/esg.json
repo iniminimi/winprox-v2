@@ -162,7 +162,15 @@
             "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen",
             "empty": "Nog geen metingen in deze periode.",
             "aria": "Categorieverdeling met :count segmenten"
+        },
+        "auto_task": {
+            "pill": "Auto-alarm",
+            "follow_up": "Opvolgtaak"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "ESG-drempelalarm: :indicator meet :value bij :location · :unit.",
+        "task_description": "Onderzoek drempeloverschrijding :indicator (:value) en neem corrigerende maatregelen."
     },
     "measurements": {
         "subtitle": "Bekijk geregistreerde meetwaarden van de werkvloer voor audits en rapportage.",

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class EsgMeasurement extends Model
 {
@@ -56,6 +57,11 @@ class EsgMeasurement extends Model
     public function indicator(): BelongsTo
     {
         return $this->belongsTo(EsgIndicator::class, 'esg_indicator_id');
+    }
+
+    public function thresholdFollowUpTask(): HasOne
+    {
+        return $this->hasOne(Task::class, 'esg_threshold_measurement_id');
     }
 
     public function worker(): BelongsTo

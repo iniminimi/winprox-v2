@@ -68,6 +68,7 @@ class BuildEsgDashboardAction
                 'task',
                 'worker',
                 'correctsMeasurement.indicator',
+                'thresholdFollowUpTask',
             ])
             ->orderByDesc('recorded_at')
             ->orderByDesc('id')
@@ -101,6 +102,7 @@ class BuildEsgDashboardAction
                 'issue.esgIndicator.translations',
                 'issue.location',
                 'issue.unit.translations',
+                'esgThresholdMeasurement.indicator',
             ])
             ->orderByRaw('due_at IS NULL')
             ->orderBy('due_at')
@@ -198,7 +200,7 @@ class BuildEsgDashboardAction
             ->whereHas('indicator', fn ($query) => $query
                 ->where('type', EsgIndicatorType::Numeric)
                 ->whereNotNull('thresholds'))
-            ->with(['indicator.translations', 'location', 'unit.translations', 'task'])
+            ->with(['indicator.translations', 'location', 'unit.translations', 'task', 'thresholdFollowUpTask'])
             ->orderByDesc('recorded_at')
             ->orderByDesc('id')
             ->limit(self::THRESHOLD_SAMPLE_LIMIT)

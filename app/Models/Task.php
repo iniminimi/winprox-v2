@@ -20,6 +20,7 @@ class Task extends Model
     protected $fillable = [
         'tenant_id',
         'issue_id',
+        'esg_threshold_measurement_id',
         'internal_team_id',
         'status',
         'priority',
@@ -55,6 +56,17 @@ class Task extends Model
     public function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
+    }
+
+    public function esgThresholdMeasurement(): BelongsTo
+    {
+        return $this->belongsTo(EsgMeasurement::class, 'esg_threshold_measurement_id');
+    }
+
+    /** Taken aangemaakt bij een ESG-drempelalarm. */
+    public function scopeEsgThresholdFollowUp(Builder $query): Builder
+    {
+        return $query->whereNotNull('esg_threshold_measurement_id');
     }
 
     /** Taken van goedgekeurde meldingen (zichtbaar in beheer). */

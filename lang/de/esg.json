@@ -162,7 +162,15 @@
             "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage",
             "empty": "Noch keine Messungen in diesem Zeitraum.",
             "aria": "Kategorieverteilung mit :count Segmenten"
+        },
+        "auto_task": {
+            "pill": "Auto-Alarm",
+            "follow_up": "Folgeaufgabe"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "ESG-Schwellenalarm: :indicator misst :value bei :location · :unit.",
+        "task_description": "Untersuche Schwellenüberschreitung :indicator (:value) und leite Maßnahmen ein."
     },
     "measurements": {
         "subtitle": "Registrierte Messwerte vom Feld für Audits und Berichte einsehen.",

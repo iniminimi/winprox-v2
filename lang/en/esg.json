@@ -162,7 +162,15 @@
             "period": "Last :days days|Last :days day|Last :days days",
             "empty": "No readings in this period yet.",
             "aria": "Category distribution with :count segments"
+        },
+        "auto_task": {
+            "pill": "Auto alert",
+            "follow_up": "Follow-up task"
         }
+    },
+    "threshold_follow_up": {
+        "issue_description": "ESG threshold alert: :indicator reading :value at :location · :unit.",
+        "task_description": "Investigate :indicator threshold breach (:value) and take corrective action."
     },
     "measurements": {
         "subtitle": "Review field readings for audits and reporting.",
