@@ -1,5 +1,8 @@
 {
     "title": "Abonnement, Limits & Abrechnung",
+    "public_title": "Preise & Formeln",
+    "public_subtitle": "Überblick über WinProx Facility, WinProx Time und optionale Module. Einen Monat kostenlos testen, danach Formel wählen.",
+    "public_register_cta": "Kostenlos testen",
     "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits gelten pro Organisation für Units, Dokumente und Benutzer; Details in der FAQ.",
     "plans_heading": "Verfügbare Formeln",
     "choose_plan": "Diese Formel wählen",

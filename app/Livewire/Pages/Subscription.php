@@ -7,6 +7,7 @@ use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Http\Requests\Billing\ActivateSubscriptionPlanRequest;
 use App\Models\Tenant;
+use App\Support\Billing\BillingCatalogViewData;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
@@ -126,9 +127,6 @@ class Subscription extends Component
         if ($tenant !== null) {
             $tenant = $realign->handle($tenant);
         }
-        $planKeys = array_keys(config('billing.plans', []));
-        $moduleKeys = array_keys(config('billing.modules', []));
-
         $billingStatus = match (true) {
             $tenant?->isLegacyWithoutBillingTracking() => 'legacy',
             $tenant?->isTrialActive() => 'trial',
@@ -137,23 +135,15 @@ class Subscription extends Component
             default => 'expired',
         };
 
-        $stripeService = app(StripeCheckoutService::class);
-        $stripeReadyPlans = collect($planKeys)
-            ->filter(fn (string $key) => $key !== 'enterprise' && $stripeService->isConfiguredForPlan($key))
-            ->values()
-            ->all();
-
-        $stripeLive = config('stripe.enabled') && $stripeReadyPlans !== [];
-
         return view('livewire.pages.subscription', [
+            ...BillingCatalogViewData::catalog(),
+            'publicMode' => false,
             'tenant' => $tenant,
-            'planKeys' => $planKeys,
-            'moduleKeys' => $moduleKeys,
             'billingStatus' => $billingStatus,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'canManage' => $tenant && auth()->user()?->can('manageSubscription', $tenant),
-            'stripeReadyPlans' => $stripeReadyPlans,
-            'stripeLive' => $stripeLive,
+            'selectedPlan' => $this->selectedPlan,
+            'statusMessage' => $this->statusMessage,
         ]);
     }
 }

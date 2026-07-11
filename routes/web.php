@@ -40,6 +40,7 @@ use App\Livewire\Pages\ManualHub;
 use App\Livewire\Pages\ManualIndex;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\WorkerManualIndex;
+use App\Livewire\Pages\Pricing;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
@@ -106,6 +107,7 @@ Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscrib
     ->name('email.resubscribe');
 
 Route::get('/contact', Contact::class)->name('contact.index');
+Route::get('/pricing', Pricing::class)->name('pricing');
 Route::get('/promo', [PromoController::class, 'show'])->name('promo');
 Route::post('/promo/track/video', PromoVideoTrackController::class)
     ->middleware('throttle:60,1')

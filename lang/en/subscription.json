@@ -1,5 +1,8 @@
 {
     "title": "Subscription, limits & billing",
+    "public_title": "Pricing & plans",
+    "public_subtitle": "Overview of WinProx Facility, WinProx Time and optional modules. Try free for one month, then choose a plan.",
+    "public_register_cta": "Start free trial",
     "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents and users; see the FAQ for details.",
     "plans_heading": "Available plans",
     "choose_plan": "Choose this plan",

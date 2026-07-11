@@ -35,6 +35,7 @@
                     <a href="#qr">{{ __('welcome.nav.qr') }}</a>
                     <a href="#organisaties">{{ __('welcome.nav.sectors') }}</a>
                     <a href="#video">{{ __('welcome.nav.video') }}</a>
+                    <a href="{{ route('pricing') }}">{{ __('welcome.nav.pricing') }}</a>
                 </div>
                 <div class="wp-welcome-nav-actions">
                     @include('partials.wp-lang-switch', ['variant' => 'inline'])

@@ -1,5 +1,8 @@
 {
     "title": "Suscripción, límites y facturación",
+    "public_title": "Precios y planes",
+    "public_subtitle": "Resumen de WinProx Facility, WinProx Time y módulos opcionales. Pruebe gratis un mes y luego elija un plan.",
+    "public_register_cta": "Probar gratis",
     "subtitle": "Tras su mes gratuito, elija un plan. Los límites se aplican por organización para unidades, documentos y usuarios; consulte la FAQ para más detalles.",
     "plans_heading": "Planes disponibles",
     "choose_plan": "Elegir este plan",
