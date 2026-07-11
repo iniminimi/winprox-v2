@@ -102,7 +102,7 @@
                         <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
                     @endif
                     @if ($shift->status->isOpen())
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="forceClose({{ $shift->id }})" wire:confirm="{{ __('time.presence.force_close_confirm') }}">
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openForceClose({{ $shift->id }})">
                             {{ __('time.presence.force_close') }}
                         </button>
                     @elseif (auth()->user()?->can('correct', $shift))
@@ -154,4 +154,6 @@
             </form>
         </x-wp-modal>
     @endif
+
+    @include('partials.wp-time-force-close-modal')
 </div>

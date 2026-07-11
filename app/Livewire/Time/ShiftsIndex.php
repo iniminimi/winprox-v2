@@ -3,7 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\CorrectWorkShiftAction;
-use App\Actions\Time\ForceCloseWorkShiftAction;
+use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Http\Requests\Time\CorrectWorkShiftRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
@@ -23,6 +23,7 @@ use Livewire\WithPagination;
 class ShiftsIndex extends Component
 {
     use AuthorizesRequests;
+    use ManagesWorkShiftForceClose;
     use WithPagination;
 
     #[Url(as: 'team')]
@@ -62,15 +63,6 @@ class ShiftsIndex extends Component
     public function applyFilters(): void
     {
         $this->resetPage();
-    }
-
-    public function forceClose(int $shiftId, ForceCloseWorkShiftAction $forceClose): void
-    {
-        $shift = WorkShift::query()->findOrFail($shiftId);
-        $this->authorize('forceClose', $shift);
-
-        $forceClose->handle($shift, (int) Tenancy::id(), auth()->id());
-        session()->flash('time_flash', __('time.presence.force_closed'));
     }
 
     public function openCorrection(int $shiftId): void

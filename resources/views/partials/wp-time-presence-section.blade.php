@@ -21,7 +21,7 @@
                 </div>
             </div>
             @if ($showForceClose)
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="forceClose({{ $shift->id }})" wire:confirm="{{ __('time.presence.force_close_confirm') }}">
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openForceClose({{ $shift->id }})">
                     {{ __('time.presence.force_close') }}
                 </button>
             @endif

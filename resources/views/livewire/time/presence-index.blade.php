@@ -63,4 +63,6 @@
             <p class="wp-muted">{{ __('time.presence.empty_not_clocked_in') }}</p>
         @endforelse
     </div>
+
+    @include('partials.wp-time-force-close-modal')
 </div>

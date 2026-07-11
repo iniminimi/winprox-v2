@@ -5,7 +5,6 @@ use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\AutoCloseStaleWorkShiftsAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
-use App\Actions\Time\ForceCloseWorkShiftAction;
 use App\Enums\ClockSource;
 use App\Enums\WorkShiftStatus;
 use App\Livewire\Public\TimePortal;
@@ -108,7 +107,7 @@ it('sluit een shift via uitklokken en berekent pauzeminuten', function () {
         ->and($closed->total_break_minutes)->toBe(15);
 });
 
-it('laat een admin een open shift geforceerd sluiten', function () {
+it('laat een admin een open shift geforceerd sluiten met reden en auditlog', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $worker = Worker::factory()->create([
@@ -121,11 +120,19 @@ it('laat een admin een open shift geforceerd sluiten', function () {
 
     Livewire::actingAs($admin)
         ->test(PresenceIndex::class)
-        ->call('forceClose', $shift->id)
+        ->call('openForceClose', $shift->id)
+        ->set('forceCloseReason', 'Vergeten uit te klokken')
+        ->call('confirmForceClose')
         ->assertHasNoErrors();
 
     expect($shift->fresh()->status)->toBe(WorkShiftStatus::ForceClosed)
         ->and($shift->fresh()->clock_out_at)->not->toBeNull();
+
+    expect(DB::table('audit_logs')
+        ->where('action', 'work_shift.force_closed')
+        ->where('model_id', $shift->id)
+        ->where('user_id', $admin->id)
+        ->exists())->toBeTrue();
 });
 
 it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', function () {

@@ -17,9 +17,19 @@
         "empty_section": "Niemand in deze groep.",
         "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
         "force_close": "Shift sluiten",
-        "force_close_confirm": "Deze open shift nu sluiten met de huidige tijd?",
         "force_closed": "Shift gesloten.",
         "stale_warning": "Open sinds meer dan :hours uur"
+    },
+    "force_close": {
+        "title": "Shift sluiten",
+        "subtitle": "U sluit de open shift van :worker af met de huidige tijd. De reden wordt vastgelegd in het auditlog.",
+        "submit": "Shift sluiten",
+        "fields": {
+            "reason": "Reden"
+        },
+        "errors": {
+            "shift_not_open": "Deze shift is niet meer open."
+        }
     },
     "shifts": {
         "subtitle": "Urenoverzicht per periode.",

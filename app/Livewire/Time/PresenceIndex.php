@@ -3,7 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\BuildTimePresenceSnapshotAction;
-use App\Actions\Time\ForceCloseWorkShiftAction;
+use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\WorkShift;
@@ -19,6 +19,7 @@ use Livewire\Component;
 class PresenceIndex extends Component
 {
     use AuthorizesRequests;
+    use ManagesWorkShiftForceClose;
 
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
@@ -32,15 +33,6 @@ class PresenceIndex extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', WorkShift::class);
-    }
-
-    public function forceClose(int $shiftId, ForceCloseWorkShiftAction $forceClose): void
-    {
-        $shift = WorkShift::query()->findOrFail($shiftId);
-        $this->authorize('forceClose', $shift);
-
-        $forceClose->handle($shift, (int) Tenancy::id(), auth()->id());
-        session()->flash('time_flash', __('time.presence.force_closed'));
     }
 
     public function render(BuildTimePresenceSnapshotAction $buildPresence)
