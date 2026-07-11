@@ -48,7 +48,7 @@
                     ['route' => 'time.presence.index', 'active' => 'time.*', 'icon' => 'clock', 'label' => 'common.nav.time'],
                 ] : []),
                 ...($showEsgNav ? [
-                    ['route' => 'esg.indicators.index', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
+                    ['route' => 'esg.dashboard', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
                 ] : []),
             ]),
         ];

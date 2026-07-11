@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "Navigazione ESG",
+        "dashboard": "Dashboard",
         "indicators": "Indicatori",
         "measurements": "Misurazioni"
+    },
+    "dashboard": {
+        "subtitle": "Panoramica operativa di indicatori, misurazioni e allarmi soglia.",
+        "empty": "Nessun dato ESG ancora. Segui i passaggi qui sotto per iniziare.",
+        "kpi": {
+            "alarms": "Allarmi soglia",
+            "alarms_meta": "nelle ultime :count misurazioni|nell'ultima misurazione|nelle ultime :count misurazioni",
+            "no_reading": "Nessuna misurazione"
+        },
+        "threshold": {
+            "kicker": "Soglie",
+            "title": "Misurazioni entro i limiti",
+            "summary": "0 fuori soglia nel campione|:count fuori soglia nel campione|:count fuori soglia nel campione"
+        },
+        "open_tasks": {
+            "title": "Attività ESG aperte",
+            "all": "Tutte le attività",
+            "empty": "Nessuna attività ESG aperta.",
+            "due": "Scadenza :date"
+        },
+        "recent": {
+            "title": "Misurazioni recenti",
+            "all": "Tutte le misurazioni"
+        },
+        "alarms": {
+            "title": "Allarmi soglia",
+            "all": "Vedi misurazioni",
+            "empty": "Nessun allarme soglia recente."
+        }
     },
     "measurements": {
         "subtitle": "Consulta le letture dal campo per audit e reportistica.",

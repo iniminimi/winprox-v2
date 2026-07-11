@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "ESG-Navigation",
+        "dashboard": "Dashboard",
         "indicators": "Indikatoren",
         "measurements": "Messungen"
+    },
+    "dashboard": {
+        "subtitle": "Operativer Überblick über Indikatoren, Messungen und Schwellenalarme.",
+        "empty": "Noch keine ESG-Daten. Folgen Sie den Schritten unten, um zu starten.",
+        "kpi": {
+            "alarms": "Schwellenalarme",
+            "alarms_meta": "in den letzten :count Messungen|in der letzten :count Messung|in den letzten :count Messungen",
+            "no_reading": "Keine Messung"
+        },
+        "threshold": {
+            "kicker": "Schwellen",
+            "title": "Messungen innerhalb der Grenzen",
+            "summary": "0 außerhalb der Schwelle in Stichprobe|:count außerhalb der Schwelle in Stichprobe|:count außerhalb der Schwelle in Stichprobe"
+        },
+        "open_tasks": {
+            "title": "Offene ESG-Aufgaben",
+            "all": "Alle Aufgaben",
+            "empty": "Keine offenen ESG-Aufgaben.",
+            "due": "Fällig :date"
+        },
+        "recent": {
+            "title": "Aktuelle Messungen",
+            "all": "Alle Messungen"
+        },
+        "alarms": {
+            "title": "Schwellenalarme",
+            "all": "Zu Messungen",
+            "empty": "Keine aktuellen Schwellenalarme."
+        }
     },
     "measurements": {
         "subtitle": "Registrierte Messwerte vom Feld für Audits und Berichte einsehen.",

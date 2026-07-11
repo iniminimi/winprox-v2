@@ -23,6 +23,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Dashboard;
+use App\Livewire\Esg\Dashboard as EsgDashboard;
 use App\Livewire\Esg\IndicatorsIndex as EsgIndicatorsIndex;
 use App\Livewire\Esg\MeasurementsIndex as EsgMeasurementsIndex;
 use App\Livewire\Issues\Index as IssueIndex;
@@ -198,6 +199,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
+        Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');

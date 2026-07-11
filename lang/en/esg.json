@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "ESG navigation",
+        "dashboard": "Dashboard",
         "indicators": "Indicators",
         "measurements": "Measurements"
+    },
+    "dashboard": {
+        "subtitle": "Operational overview of indicators, readings and threshold alerts.",
+        "empty": "No ESG data yet. Follow the steps below to get started.",
+        "kpi": {
+            "alarms": "Threshold alerts",
+            "alarms_meta": "in last :count readings|in last :count reading|in last :count readings",
+            "no_reading": "No reading"
+        },
+        "threshold": {
+            "kicker": "Thresholds",
+            "title": "Readings within limits",
+            "summary": "0 outside threshold in sample|:count outside threshold in sample|:count outside threshold in sample"
+        },
+        "open_tasks": {
+            "title": "Open ESG tasks",
+            "all": "All tasks",
+            "empty": "No open ESG tasks.",
+            "due": "Due :date"
+        },
+        "recent": {
+            "title": "Recent readings",
+            "all": "All readings"
+        },
+        "alarms": {
+            "title": "Threshold alerts",
+            "all": "View readings",
+            "empty": "No recent threshold alerts."
+        }
     },
     "measurements": {
         "subtitle": "Review field readings for audits and reporting.",

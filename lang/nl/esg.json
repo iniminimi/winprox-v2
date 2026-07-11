@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "ESG-navigatie",
+        "dashboard": "Dashboard",
         "indicators": "Indicatoren",
         "measurements": "Metingen"
+    },
+    "dashboard": {
+        "subtitle": "Operationeel overzicht van indicatoren, metingen en drempelalarmen.",
+        "empty": "Nog geen ESG-data. Volg de stappen hieronder om te starten.",
+        "kpi": {
+            "alarms": "Drempelalarmen",
+            "alarms_meta": "in laatste :count metingen|in laatste :count meting|in laatste :count metingen",
+            "no_reading": "Geen meting"
+        },
+        "threshold": {
+            "kicker": "Drempels",
+            "title": "Metingen binnen grens",
+            "summary": "0 buiten drempel in steekproef|:count buiten drempel in steekproef|:count buiten drempel in steekproef"
+        },
+        "open_tasks": {
+            "title": "Openstaande ESG-taken",
+            "all": "Alle taken",
+            "empty": "Geen openstaande ESG-taken.",
+            "due": "Deadline :date"
+        },
+        "recent": {
+            "title": "Recente metingen",
+            "all": "Alle metingen"
+        },
+        "alarms": {
+            "title": "Drempelalarmen",
+            "all": "Naar metingen",
+            "empty": "Geen recente drempelalarmen."
+        }
     },
     "measurements": {
         "subtitle": "Bekijk geregistreerde meetwaarden van de werkvloer voor audits en rapportage.",

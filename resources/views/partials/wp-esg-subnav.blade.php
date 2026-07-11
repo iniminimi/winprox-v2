@@ -1,4 +1,8 @@
 <nav class="wp-cluster wp-cluster--tight" aria-label="{{ __('esg.nav.aria') }}">
+    <a href="{{ route('esg.dashboard') }}"
+       class="btn btn--sm {{ request()->routeIs('esg.dashboard') ? 'btn--primary' : 'btn--ghost' }}">
+        {{ __('esg.nav.dashboard') }}
+    </a>
     <a href="{{ route('esg.indicators.index') }}"
        class="btn btn--sm {{ request()->routeIs('esg.indicators.*') ? 'btn--primary' : 'btn--ghost' }}">
         {{ __('esg.nav.indicators') }}

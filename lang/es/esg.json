@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "Navegación ESG",
+        "dashboard": "Panel",
         "indicators": "Indicadores",
         "measurements": "Mediciones"
+    },
+    "dashboard": {
+        "subtitle": "Vista operativa de indicadores, mediciones y alertas de umbral.",
+        "empty": "Aún no hay datos ESG. Siga los pasos siguientes para empezar.",
+        "kpi": {
+            "alarms": "Alertas de umbral",
+            "alarms_meta": "en las últimas :count mediciones|en la última medición|en las últimas :count mediciones",
+            "no_reading": "Sin medición"
+        },
+        "threshold": {
+            "kicker": "Umbrales",
+            "title": "Mediciones dentro de límites",
+            "summary": "0 fuera de umbral en la muestra|:count fuera de umbral en la muestra|:count fuera de umbral en la muestra"
+        },
+        "open_tasks": {
+            "title": "Tareas ESG abiertas",
+            "all": "Todas las tareas",
+            "empty": "No hay tareas ESG abiertas.",
+            "due": "Vence :date"
+        },
+        "recent": {
+            "title": "Mediciones recientes",
+            "all": "Todas las mediciones"
+        },
+        "alarms": {
+            "title": "Alertas de umbral",
+            "all": "Ver mediciones",
+            "empty": "No hay alertas de umbral recientes."
+        }
     },
     "measurements": {
         "subtitle": "Consulte lecturas de campo para auditorías e informes.",

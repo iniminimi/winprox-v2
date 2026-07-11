@@ -93,8 +93,38 @@
     },
     "nav": {
         "aria": "Navigation ESG",
+        "dashboard": "Tableau de bord",
         "indicators": "Indicateurs",
         "measurements": "Mesures"
+    },
+    "dashboard": {
+        "subtitle": "Vue opérationnelle des indicateurs, mesures et alertes de seuil.",
+        "empty": "Pas encore de données ESG. Suivez les étapes ci-dessous pour commencer.",
+        "kpi": {
+            "alarms": "Alertes de seuil",
+            "alarms_meta": "sur les :count dernières mesures|sur la dernière mesure|sur les :count dernières mesures",
+            "no_reading": "Aucune mesure"
+        },
+        "threshold": {
+            "kicker": "Seuils",
+            "title": "Mesures dans les limites",
+            "summary": "0 hors seuil dans l'échantillon|:count hors seuil dans l'échantillon|:count hors seuil dans l'échantillon"
+        },
+        "open_tasks": {
+            "title": "Tâches ESG ouvertes",
+            "all": "Toutes les tâches",
+            "empty": "Aucune tâche ESG ouverte.",
+            "due": "Échéance :date"
+        },
+        "recent": {
+            "title": "Mesures récentes",
+            "all": "Toutes les mesures"
+        },
+        "alarms": {
+            "title": "Alertes de seuil",
+            "all": "Voir les mesures",
+            "empty": "Aucune alerte de seuil récente."
+        }
     },
     "measurements": {
         "subtitle": "Consultez les relevés terrain pour les audits et rapports.",
