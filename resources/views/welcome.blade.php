@@ -25,25 +25,7 @@
 </head>
 <body class="wp-shell wp-welcome-shell">
     <div class="wp-welcome-top">
-        <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
-            <div class="wp-welcome-nav-inner">
-                @include('partials.wp-welcome-brand')
-                <div class="wp-welcome-nav-links">
-                    <a href="#producten">{{ __('welcome.nav.products') }}</a>
-                    <a href="#platform">{{ __('welcome.nav.platform') }}</a>
-                    <a href="#esg">{{ __('welcome.nav.esg') }}</a>
-                    <a href="#qr">{{ __('welcome.nav.qr') }}</a>
-                    <a href="#organisaties">{{ __('welcome.nav.sectors') }}</a>
-                    <a href="#video">{{ __('welcome.nav.video') }}</a>
-                    <a href="{{ route('pricing') }}">{{ __('welcome.nav.pricing') }}</a>
-                </div>
-                <div class="wp-welcome-nav-actions">
-                    @include('partials.wp-lang-switch', ['variant' => 'inline'])
-                    <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
-                    <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
-                </div>
-            </div>
-        </nav>
+        @include('partials.wp-welcome-nav')
 
         <header class="wp-welcome-hero wp-welcome-hero--split">
             <div class="wp-welcome-main wp-welcome-hero-split">

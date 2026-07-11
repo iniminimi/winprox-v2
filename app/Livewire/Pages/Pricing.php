@@ -13,7 +13,7 @@ class Pricing extends Component
     {
         $layout = auth()->check()
             ? 'components.layouts.app'
-            : 'components.layouts.public';
+            : 'components.layouts.marketing';
 
         return view('livewire.pages.subscription', [
             ...BillingCatalogViewData::catalog(),

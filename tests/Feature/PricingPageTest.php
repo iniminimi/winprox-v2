@@ -8,6 +8,8 @@ it('toont publieke prijzenpagina zonder plan-knoppen', function () {
     $this->get(route('pricing'))
         ->assertOk()
         ->assertSee(__('subscription.public_title'))
+        ->assertSee(__('welcome.nav.products'), false)
+        ->assertSee(__('welcome.nav.pricing'), false)
         ->assertSee(__('subscription.facility_heading'))
         ->assertSee(__('subscription.products.time.name'))
         ->assertDontSee(__('subscription.choose_plan'), false);

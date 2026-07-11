@@ -109,6 +109,12 @@
     margin: 0 auto;
 }
 
+[data-theme='standard'] .wp-welcome-marketing-main {
+    max-width: var(--wp-welcome-max);
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
 [data-theme='standard'] .wp-welcome-section {
     padding: 4rem 1.5rem;
 }

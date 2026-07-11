@@ -3,7 +3,7 @@
     $showManageActions = ($canManage ?? false) && ! $publicMode;
 @endphp
 
-<div @class(['wp-stack', 'wp-public-page' => $publicMode && ! auth()->check()])>
+<div class="wp-stack">
     <div class="wp-page-head">
         @if ($publicMode)
             <x-wp-page-head-title
