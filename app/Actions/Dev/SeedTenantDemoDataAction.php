@@ -162,13 +162,6 @@ final class SeedTenantDemoDataAction
      */
     private function seedEsg(Tenant $tenant, Collection $locations, ?int $actorUserId): array
     {
-        if (EsgIndicator::query()
-            ->where('tenant_id', $tenant->id)
-            ->where('name', 'Elektriciteit kWh')
-            ->exists()) {
-            return [0, 0];
-        }
-
         $units = $this->ensureUnits($tenant, $locations);
         $definitions = [
             ['name' => 'Elektriciteit kWh', 'type' => EsgIndicatorType::Numeric, 'unit_of_measure' => 'kWh', 'thresholds' => ['min' => 0, 'max' => 5000]],
@@ -185,6 +178,15 @@ final class SeedTenantDemoDataAction
         $measurementCount = 0;
 
         foreach ($definitions as $definition) {
+            $name = $definition['name'];
+
+            if (EsgIndicator::query()
+                ->where('tenant_id', $tenant->id)
+                ->where('name', $name)
+                ->exists()) {
+                continue;
+            }
+
             $indicator = $this->createEsgIndicator->handle($tenant->id, $definition, $actorUserId);
             $indicatorCount++;
 

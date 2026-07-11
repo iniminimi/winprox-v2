@@ -30,7 +30,7 @@
         @else
             <ul class="wp-list-plain wp-stack-tight">
                 @foreach ($indicators as $indicator)
-                    <li class="wp-list-row">
+                    <li class="wp-list-row" wire:key="esg-indicator-{{ $indicator->id }}">
                         <div>
                             <strong>{{ $indicator->localizedName() }}</strong>
                             <p class="wp-muted wp-text-sm">

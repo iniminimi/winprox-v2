@@ -13,6 +13,32 @@ use App\Models\Unit;
 use App\Models\User;
 use Livewire\Livewire;
 
+it('toont elke indicator eenmaal in de lijst', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    EsgIndicator::factory()->choice(['Restafval', 'PMD'])->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Afvalstroom',
+    ]);
+    EsgIndicator::factory()->numeric('kg')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'CO₂ kg',
+    ]);
+    EsgIndicator::factory()->numeric('kWh')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Elektriciteit kWh',
+    ]);
+
+    $html = Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->html();
+
+    expect(substr_count($html, '<strong>Afvalstroom</strong>'))->toBe(1)
+        ->and(substr_count($html, '<strong>CO₂ kg</strong>'))->toBe(1)
+        ->and(substr_count($html, '<strong>Elektriciteit kWh</strong>'))->toBe(1);
+});
+
 it('weigert toegang tot indicatoren zonder esg-module', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => false]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
