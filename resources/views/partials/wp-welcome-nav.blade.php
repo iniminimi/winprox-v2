@@ -7,9 +7,9 @@
     <div class="wp-welcome-nav-inner">
         @include('partials.wp-welcome-brand')
         <details class="wp-welcome-nav-menu">
-            <summary class="wp-welcome-nav-menu__toggle btn btn--ghost btn--sm">
+            <summary class="wp-welcome-nav-menu__toggle btn btn--ghost btn--sm" aria-label="{{ __('welcome.nav.menu') }}">
                 <x-wp-icon name="menu" class="wp-icon" aria-hidden="true" />
-                {{ __('welcome.nav.menu') }}
+                <span class="wp-welcome-nav-menu__toggle-label">{{ __('welcome.nav.menu') }}</span>
             </summary>
             <div class="wp-welcome-nav-menu__panel">
                 <div class="wp-welcome-nav-links">
@@ -21,12 +21,16 @@
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                 </div>
+                <div class="wp-welcome-nav-menu__auth wp-cluster">
+                    <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
+                    <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
+                </div>
             </div>
         </details>
         <div class="wp-welcome-nav-actions">
             @include('partials.wp-lang-switch', ['variant' => 'inline'])
-            <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
-            <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
+            <a href="{{ route('login') }}" class="btn btn--ghost btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.login') }}</a>
+            <a href="{{ route('register') }}" class="btn btn--primary btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.hero.cta_start') }}</a>
         </div>
     </div>
 </nav>
@@ -53,7 +57,7 @@
     syncWelcomeNavMenu();
 
     document.querySelectorAll('.wp-welcome-nav-menu').forEach(function (menu) {
-        menu.querySelectorAll('.wp-welcome-nav-links a').forEach(function (link) {
+        menu.querySelectorAll('.wp-welcome-nav-links a, .wp-welcome-nav-menu__auth a').forEach(function (link) {
             link.addEventListener('click', function () {
                 if (! desktopMq.matches) {
                     menu.removeAttribute('open');
