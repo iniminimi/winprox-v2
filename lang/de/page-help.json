@@ -702,6 +702,55 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Hilfe — ESG-Dashboard",
+            "actions": [
+                {
+                    "label": "Was ist dieser Bildschirm?",
+                    "text": "Das ESG-Dashboard bietet einen operativen Überblick über Ihr Messprogramm: letzte Werte, Schwellenalarme, Trends und offene Folgeaktionen. Es ist Ihr Ausgangspunkt für das tägliche ESG-Management — Details und Historie finden Sie unter <strong>Messungen</strong>."
+                },
+                {
+                    "label": "KPI-Karten oben",
+                    "text": "Die erste Karte zeigt die Anzahl der <strong>Schwellenalarme</strong> in der aktuellen Stichprobe. Außerdem sehen Sie pro aktivem numerischem Indikator den <strong>letzten Messwert</strong> und wann er erfasst wurde. Rot markiert = außerhalb von Minimum oder Maximum. Klicken Sie auf eine Karte für die gefilterte Messungsübersicht."
+                },
+                {
+                    "label": "Verbrauchstrend",
+                    "text": "Liniendiagramm des gewählten Indikators über die letzten 30 Tage. Messwerte pro Tag werden <strong>summiert</strong> (nützlich für Verbrauchsindikatoren wie kWh). Wählen Sie oben rechts einen anderen Indikator zum Vergleich."
+                },
+                {
+                    "label": "Messungen innerhalb der Grenzen",
+                    "text": "Das Donut-Diagramm zeigt den Anteil der jüngsten Messungen (Stichprobe), die <strong>innerhalb der konfigurierten Schwellen</strong> liegen. Die Beschriftung unten nennt die Anzahl der Alarme in dieser Stichprobe. Klicken Sie für die Messungsübersicht."
+                },
+                {
+                    "label": "Höchster Verbrauch pro Standort",
+                    "text": "Rangliste der Standorte nach der <strong>Gesamtsumme</strong> der Messwerte des gewählten Indikators in den letzten 30 Tagen. Nützlich, um zu sehen, welches Gebäude oder welcher Standort am meisten beiträgt. Klicken Sie auf eine Zeile für Messungen an diesem Standort."
+                },
+                {
+                    "label": "ESG-Score (Compliance)",
+                    "text": "Gewichteter Score über 30 Tage: <strong>60 % Schwelleneinhaltung</strong> (Messungen mit Schwellen innerhalb der Grenzen) + <strong>40 % Messabdeckung</strong> (aktive numerische Indikatoren mit mindestens einer Messung). Unter dem Donut sehen Sie die Einzelwerte."
+                },
+                {
+                    "label": "Verteilung nach Kategorie",
+                    "text": "Donut der Messungsanzahl pro Indikatorkategorie (z. B. Energie, Abfall, Sicherheit) in den letzten 30 Tagen. Kategorien legen Sie beim Anlegen oder Bearbeiten eines Indikators unter <strong>Indikatoren</strong> fest."
+                },
+                {
+                    "label": "Offene ESG-Aufgaben",
+                    "text": "Aufgaben zu einem ESG-Indikator, die noch nicht erledigt sind — sowohl periodische Messaufgaben als auch automatische Folgeaktionen. Das Badge <strong>Auto-Alarm</strong> kennzeichnet Aufgaben, die WinProx nach einer Schwellenüberschreitung erstellt hat."
+                },
+                {
+                    "label": "Auto-Alarm und Folgeaufgabe",
+                    "text": "Liegt eine Messung außerhalb des konfigurierten Minimums oder Maximums, kann WinProx automatisch eine <strong>Folgeaufgabe mit Priorität 2</strong> anlegen (höchstens eine offene Aufgabe pro Indikator und Unit). Der Button <strong>Folgeaufgabe</strong> bei jüngsten Messungen und Alarmen führt direkt dorthin. Das zugewiesene Team folgt dem Team der ursprünglichen Messaufgabe."
+                },
+                {
+                    "label": "Jüngste Messungen und Schwellenalarme",
+                    "text": "Zwei Listen unten: alle jüngsten Messwerte und separat Messungen mit Schwellenalarm. Werte außerhalb der Grenzen tragen das Label <strong>Außerhalb Schwellen</strong>. Über <strong>Aufgabe</strong> öffnen Sie die Messaufgabe im QR-Portal."
+                },
+                {
+                    "label": "Leeres Dashboard",
+                    "text": "Noch keine Indikatoren oder Messungen? WinProx zeigt die Startschritte: Modul aktiv, Indikator anlegen, mit wiederkehrender Meldung verknüpfen. Ausführliche Hilfe zu Indikatoren finden Sie unter dem Tab <strong>Indikatoren</strong>."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Hilfe — ESG-Messungen",
             "actions": [

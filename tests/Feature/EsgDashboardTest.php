@@ -14,6 +14,7 @@ use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Support\PageHelp;
 use App\Support\Tenancy;
 use Livewire\Livewire;
 
@@ -85,6 +86,7 @@ it('toont kpi-waarden en drempelalarmen op het dashboard', function () {
         ->test(Dashboard::class)
         ->assertSee('Gas m3')
         ->assertSee('150')
+        ->assertSee(PageHelp::for('esg.dashboard')['title'], false)
         ->assertSee(__('esg.dashboard.kpi.alarms'))
         ->assertSee(__('esg.dashboard.recent.title'))
         ->assertSee(__('esg.dashboard.alarms.title'))

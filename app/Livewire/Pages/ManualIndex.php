@@ -30,6 +30,7 @@ class ManualIndex extends Component
         'tasks.show',
         'calendar',
         'dashboard',
+        'esg.dashboard',
         'esg.indicators',
         'esg.measurements',
         'time.presence',

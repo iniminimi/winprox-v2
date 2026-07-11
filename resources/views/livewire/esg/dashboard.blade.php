@@ -8,6 +8,7 @@
             <x-wp-page-head-title
                 icon="sliders"
                 :title="__('esg.title')"
+                help-page="esg.dashboard"
                 :subtitle="__('esg.dashboard.subtitle')"
             />
         </div>

@@ -702,6 +702,55 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Ayuda — Panel ESG",
+            "actions": [
+                {
+                    "label": "¿Qué es esta pantalla?",
+                    "text": "El panel ESG ofrece una visión operativa de su programa de medición: últimos valores, alarmas de umbral, tendencias y acciones de seguimiento abiertas. Es su punto de partida para la gestión ESG diaria — el detalle y el historial están en <strong>Mediciones</strong>."
+                },
+                {
+                    "label": "Tarjetas KPI arriba",
+                    "text": "La primera tarjeta muestra el número de <strong>alarmas de umbral</strong> en la muestra reciente. También ve la <strong>última lectura</strong> por indicador numérico activo y cuándo se registró. En rojo = fuera del mínimo o máximo. Haga clic en una tarjeta para abrir el listado filtrado de mediciones."
+                },
+                {
+                    "label": "Tendencia de consumo",
+                    "text": "Gráfico de líneas del indicador seleccionado en los últimos 30 días. Las lecturas por día se <strong>suman</strong> (útil para consumo, p. ej. kWh). Elija otro indicador arriba a la derecha para comparar tendencias."
+                },
+                {
+                    "label": "Mediciones dentro de límites",
+                    "text": "El donut muestra el porcentaje de mediciones recientes (muestra) que están <strong>dentro de los umbrales configurados</strong>. El texto inferior indica cuántas alarmas hay en esa muestra. Haga clic para abrir el listado de mediciones."
+                },
+                {
+                    "label": "Mayor consumo por ubicación",
+                    "text": "Clasificación de ubicaciones por la <strong>suma total</strong> de lecturas del indicador seleccionado en los últimos 30 días. Útil para ver qué edificio o sitio contribuye más. Haga clic en una fila para mediciones en esa ubicación."
+                },
+                {
+                    "label": "Puntuación ESG (cumplimiento)",
+                    "text": "Puntuación ponderada en 30 días: <strong>60 % cumplimiento de umbrales</strong> (mediciones con umbrales dentro de límites) + <strong>40 % cobertura de medición</strong> (indicadores numéricos activos con al menos una lectura). Debajo del donut ve los porcentajes individuales."
+                },
+                {
+                    "label": "Distribución por categoría",
+                    "text": "Donut del número de mediciones por categoría de indicador (p. ej. energía, residuos, seguridad) en los últimos 30 días. Configure categorías al crear o editar un indicador en <strong>Indicadores</strong>."
+                },
+                {
+                    "label": "Tareas ESG abiertas",
+                    "text": "Tareas vinculadas a un indicador ESG aún no completadas — tanto mediciones periódicas como acciones de seguimiento automáticas. La insignia <strong>Alarma auto</strong> marca tareas que WinProx creó tras un incumplimiento de umbral."
+                },
+                {
+                    "label": "Alarma auto y tarea de seguimiento",
+                    "text": "Cuando una lectura queda fuera del mínimo o máximo configurado, WinProx puede crear automáticamente una <strong>tarea de seguimiento prioridad 2</strong> (como máximo una tarea abierta por indicador y unidad). El botón <strong>Tarea de seguimiento</strong> en lecturas recientes y alarmas lleva directamente a esa tarea. El equipo asignado sigue al de la tarea de medición original."
+                },
+                {
+                    "label": "Mediciones recientes y alarmas de umbral",
+                    "text": "Dos listas abajo: todas las lecturas recientes y, por separado, las que tienen alarma de umbral. Los valores fuera de límites llevan la etiqueta <strong>Fuera de umbrales</strong>. Con <strong>Tarea</strong> abre la tarea de medición del portal QR."
+                },
+                {
+                    "label": "Panel vacío",
+                    "text": "¿Aún no hay indicadores o mediciones? WinProx muestra los pasos de inicio: módulo activo, crear indicador, vincular a una incidencia recurrente. La ayuda detallada sobre indicadores está en la pestaña <strong>Indicadores</strong>."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Ayuda — Mediciones ESG",
             "actions": [

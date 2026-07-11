@@ -702,6 +702,55 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Hulp — ESG-dashboard",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Het ESG-dashboard geeft een operationeel overzicht van uw meetprogramma: laatste waarden, drempelalarmen, trends en openstaande opvolgacties. Het is uw startpunt voor dagelijks ESG-beheer — detail en historiek vindt u onder <strong>Metingen</strong>."
+                },
+                {
+                    "label": "KPI-kaarten bovenaan",
+                    "text": "De eerste kaart toont het aantal <strong>drempelalarmen</strong> in de recente steekproef. Daarnaast ziet u per actieve numerieke indicator de <strong>laatste meetwaarde</strong> en wanneer die is geregistreerd. Rood gemarkeerd = buiten minimum of maximum. Klik een kaart om naar het gefilterde metingenoverzicht te gaan."
+                },
+                {
+                    "label": "Verbruikstrend",
+                    "text": "Lijngrafiek van de geselecteerde indicator over de laatste 30 dagen. Per dag worden alle meetwaarden <strong>opgeteld</strong> (handig voor verbruiksindicatoren zoals kWh). Kies rechtsboven een andere indicator om de trend te vergelijken."
+                },
+                {
+                    "label": "Metingen binnen grens",
+                    "text": "Donut toont het percentage recente metingen (steekproef) dat <strong>binnen de ingestelde drempels</strong> valt. Het bijschrift onderaan geeft aan hoeveel alarmen er in die steekproef zitten. Klik om naar het metingenoverzicht te gaan."
+                },
+                {
+                    "label": "Hoogste verbruik per locatie",
+                    "text": "Rangschikking van locaties op basis van de <strong>totale som</strong> van meetwaarden voor de geselecteerde indicator in de laatste 30 dagen. Handig om te zien welk gebouw of site het meest bijdraagt. Klik een rij voor metingen op die locatie."
+                },
+                {
+                    "label": "ESG-score (compliance)",
+                    "text": "Gewogen score over de laatste 30 dagen: <strong>60% drempelnaleving</strong> (metingen met drempels die binnen grens liggen) + <strong>40% meetdekking</strong> (actieve numerieke indicatoren die minstens één meting hebben). Onder de donut ziet u de afzonderlijke percentages."
+                },
+                {
+                    "label": "Verdeling per categorie",
+                    "text": "Donut van het aantal metingen per indicatorcategorie (bv. energie, afval, veiligheid) in de laatste 30 dagen. Stel categorieën in bij het aanmaken of bewerken van een indicator onder <strong>Indicatoren</strong>."
+                },
+                {
+                    "label": "Openstaande ESG-taken",
+                    "text": "Taken gekoppeld aan een ESG-indicator die nog niet afgehandeld zijn — zowel periodieke metingstaken als automatische opvolgacties. De badge <strong>Auto-alarm</strong> markeert taken die WinProx aanmaakte na een drempeloverschrijding."
+                },
+                {
+                    "label": "Auto-alarm en opvolgtaak",
+                    "text": "Wanneer een meting buiten de ingestelde minimum- of maximumwaarde valt, kan WinProx automatisch een <strong>prio-2 opvolgtaak</strong> aanmaken (maximaal één open taak per indicator en unit). De knop <strong>Opvolgtaak</strong> op recente metingen en alarmen leidt rechtstreeks naar die taak. Het toegewezen team volgt het team van de oorspronkelijke meettaak."
+                },
+                {
+                    "label": "Recente metingen en drempelalarmen",
+                    "text": "Twee lijsten onderaan: alle recente meetwaarden, en apart de metingen met drempelalarm. Waarden buiten grens krijgen het label <strong>Buiten drempels</strong>. Via <strong>Taak</strong> opent u de meettaak op het QR-portaal."
+                },
+                {
+                    "label": "Leeg dashboard",
+                    "text": "Zijn er nog geen indicatoren of metingen? Dan toont WinProx de opstartstappen: module actief, indicator aanmaken, koppelen aan terugkerende melding. Uitgebreide uitleg over indicatoren staat onder het tabblad <strong>Indicatoren</strong>."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Hulp — ESG-metingen",
             "actions": [

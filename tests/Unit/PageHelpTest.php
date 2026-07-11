@@ -38,7 +38,9 @@ it('laadt paginahulp voor ESG-schermen', function (): void {
     expect(PageHelp::for('esg.indicators'))->not->toBeNull()
         ->and(PageHelp::for('esg.indicators')['title'])->toBe('Hulp — ESG-metingen')
         ->and(PageHelp::for('esg.measurements'))->not->toBeNull()
-        ->and(PageHelp::for('esg.measurements')['title'])->toBe('Hulp — ESG-metingenoverzicht');
+        ->and(PageHelp::for('esg.measurements')['title'])->toBe('Hulp — ESG-metingenoverzicht')
+        ->and(PageHelp::for('esg.dashboard'))->not->toBeNull()
+        ->and(PageHelp::for('esg.dashboard')['title'])->toBe('Hulp — ESG-dashboard');
 });
 
 it('laadt paginahulp voor Time-schermen', function (): void {

@@ -702,6 +702,55 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Help — ESG dashboard",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "The ESG dashboard gives an operational overview of your measurement programme: latest values, threshold alarms, trends, and open follow-up actions. It is your starting point for day-to-day ESG management — detail and history are on the <strong>Measurements</strong> tab."
+                },
+                {
+                    "label": "KPI cards at the top",
+                    "text": "The first card shows the number of <strong>threshold alarms</strong> in the recent sample. You also see the <strong>latest reading</strong> per active numeric indicator and when it was recorded. Highlighted in red = outside minimum or maximum. Click a card to open the filtered measurements overview."
+                },
+                {
+                    "label": "Usage trend",
+                    "text": "Line chart for the selected indicator over the last 30 days. Readings per day are <strong>summed</strong> (useful for consumption indicators such as kWh). Choose another indicator at the top right to compare trends."
+                },
+                {
+                    "label": "Readings within limits",
+                    "text": "The donut shows the percentage of recent readings (sample) that fall <strong>within the configured thresholds</strong>. The caption below states how many alarms are in that sample. Click to open the measurements overview."
+                },
+                {
+                    "label": "Highest usage per location",
+                    "text": "Ranking of locations by the <strong>total sum</strong> of readings for the selected indicator in the last 30 days. Useful to see which building or site contributes most. Click a row for readings at that location."
+                },
+                {
+                    "label": "ESG score (compliance)",
+                    "text": "Weighted score over the last 30 days: <strong>60% threshold compliance</strong> (readings with thresholds that are within limits) + <strong>40% measurement coverage</strong> (active numeric indicators with at least one reading). Below the donut you see the individual percentages."
+                },
+                {
+                    "label": "Distribution by category",
+                    "text": "Donut of the number of readings per indicator category (e.g. energy, waste, safety) in the last 30 days. Set categories when creating or editing an indicator under <strong>Indicators</strong>."
+                },
+                {
+                    "label": "Open ESG tasks",
+                    "text": "Tasks linked to an ESG indicator that are not yet completed — both periodic measurement tasks and automatic follow-up actions. The <strong>Auto-alarm</strong> badge marks tasks WinProx created after a threshold breach."
+                },
+                {
+                    "label": "Auto-alarm and follow-up task",
+                    "text": "When a reading falls outside the configured minimum or maximum, WinProx can automatically create a <strong>priority-2 follow-up task</strong> (at most one open task per indicator and unit). The <strong>Follow-up task</strong> button on recent readings and alarms goes straight to that task. The assigned team follows the team of the original measurement task."
+                },
+                {
+                    "label": "Recent readings and threshold alarms",
+                    "text": "Two lists at the bottom: all recent readings, and separately readings with threshold alarms. Values outside limits get the <strong>Outside thresholds</strong> label. Use <strong>Task</strong> to open the measurement task from the QR portal."
+                },
+                {
+                    "label": "Empty dashboard",
+                    "text": "No indicators or readings yet? WinProx shows getting-started steps: module active, create an indicator, link to a recurring issue. Full guidance on indicators is on the <strong>Indicators</strong> tab."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Help — ESG measurements",
             "actions": [

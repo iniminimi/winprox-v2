@@ -702,6 +702,55 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Aiuto — Dashboard ESG",
+            "actions": [
+                {
+                    "label": "Cos'è questa schermata?",
+                    "text": "Il dashboard ESG offre una panoramica operativa del programma di misurazione: ultimi valori, allarmi di soglia, trend e azioni di follow-up aperte. È il punto di partenza per la gestione ESG quotidiana — dettagli e storico sono nella scheda <strong>Misurazioni</strong>."
+                },
+                {
+                    "label": "Schede KPI in alto",
+                    "text": "La prima scheda mostra il numero di <strong>allarmi di soglia</strong> nel campione recente. Vedi anche l'<strong>ultima lettura</strong> per indicatore numerico attivo e quando è stata registrata. In rosso = fuori dal minimo o massimo. Clicca una scheda per aprire l'elenco filtrato delle misurazioni."
+                },
+                {
+                    "label": "Trend di consumo",
+                    "text": "Grafico a linee dell'indicatore selezionato negli ultimi 30 giorni. Le letture per giorno vengono <strong>sommate</strong> (utile per consumi come kWh). Scegli un altro indicatore in alto a destra per confrontare i trend."
+                },
+                {
+                    "label": "Misurazioni entro i limiti",
+                    "text": "Il donut mostra la percentuale di misurazioni recenti (campione) che restano <strong>entro le soglie configurate</strong>. La didascalia indica quanti allarmi ci sono in quel campione. Clicca per aprire l'elenco misurazioni."
+                },
+                {
+                    "label": "Consumo più alto per sede",
+                    "text": "Classifica delle sedi per la <strong>somma totale</strong> delle letture dell'indicatore selezionato negli ultimi 30 giorni. Utile per capire quale edificio o sito contribuisce di più. Clicca una riga per le misurazioni in quella sede."
+                },
+                {
+                    "label": "Punteggio ESG (conformità)",
+                    "text": "Punteggio ponderato su 30 giorni: <strong>60 % rispetto soglie</strong> (misurazioni con soglie entro i limiti) + <strong>40 % copertura misurazioni</strong> (indicatori numerici attivi con almeno una lettura). Sotto il donut vedi le percentuali singole."
+                },
+                {
+                    "label": "Distribuzione per categoria",
+                    "text": "Donut del numero di misurazioni per categoria indicatore (es. energia, rifiuti, sicurezza) negli ultimi 30 giorni. Imposta le categorie creando o modificando un indicatore in <strong>Indicatori</strong>."
+                },
+                {
+                    "label": "Attività ESG aperte",
+                    "text": "Attività collegate a un indicatore ESG non ancora completate — sia misurazioni periodiche sia follow-up automatici. Il badge <strong>Allarme auto</strong> contrassegna le attività create da WinProx dopo un superamento di soglia."
+                },
+                {
+                    "label": "Allarme auto e attività di follow-up",
+                    "text": "Quando una lettura è fuori dal minimo o massimo configurato, WinProx può creare automaticamente un'<strong>attività di follow-up priorità 2</strong> (al massimo un'attività aperta per indicatore e unità). Il pulsante <strong>Attività di follow-up</strong> su letture recenti e allarmi porta direttamente a quell'attività. Il team assegnato segue quello dell'attività di misurazione originale."
+                },
+                {
+                    "label": "Misurazioni recenti e allarmi di soglia",
+                    "text": "Due elenchi in basso: tutte le letture recenti e, separatamente, quelle con allarme di soglia. I valori fuori limite hanno l'etichetta <strong>Fuori soglia</strong>. Con <strong>Attività</strong> apri l'attività di misurazione dal portale QR."
+                },
+                {
+                    "label": "Dashboard vuoto",
+                    "text": "Ancora nessun indicatore o misurazione? WinProx mostra i passi iniziali: modulo attivo, creare indicatore, collegare a una segnalazione ricorrente. La guida dettagliata sugli indicatori è nella scheda <strong>Indicatori</strong>."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Aiuto — Misurazioni ESG",
             "actions": [

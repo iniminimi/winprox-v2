@@ -18,6 +18,7 @@ final class ManualChapterIcons
         'tasks.show' => 'tasks',
         'calendar' => 'calendar',
         'dashboard' => 'dashboard',
+        'esg.dashboard' => 'sliders',
         'esg.indicators' => 'document',
         'esg.measurements' => 'sliders',
         'time.presence' => 'clock',

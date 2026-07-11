@@ -702,6 +702,104 @@
                 }
             ]
         },
+        "esg.dashboard": {
+            "title": "Aide — Tableau de bord ESG",
+            "actions": [
+                {
+                    "label": "Qu'est-ce que cet écran ?",
+                    "text": "Le tableau de bord ESG offre une vue opérationnelle de votre programme de mesure : dernières valeurs, alarmes de seuil, tendances et actions de suivi ouvertes. C'est votre point de départ pour la gestion ESG quotidienne — le détail et l'historique se trouvent sous <strong>Mesures</strong>."
+                },
+                {
+                    "label": "Cartes KPI en haut",
+                    "text": "La première carte affiche le nombre d'<strong>alarmes de seuil</strong> dans l'échantillon récent. Vous voyez aussi la <strong>dernière valeur</strong> par indicateur numérique actif et sa date d'enregistrement. En rouge = en dehors du minimum ou maximum. Cliquez sur une carte pour ouvrir l'aperçu filtré des mesures."
+                },
+                {
+                    "label": "Tendance de consommation",
+                    "text": "Graphique linéaire de l'indicateur sélectionné sur les 30 derniers jours. Les valeurs par jour sont <strong>additionnées</strong> (utile pour la consommation, ex. kWh). Choisissez un autre indicateur en haut à droite pour comparer les tendances."
+                },
+                {
+                    "label": "Mesures dans les limites",
+                    "text": "Le donut montre le pourcentage de mesures récentes (échantillon) qui restent <strong>dans les seuils configurés</strong>. La légende indique combien d'alarmes figurent dans cet échantillon. Cliquez pour ouvrir l'aperçu des mesures."
+                },
+                {
+                    "label": "Consommation la plus élevée par site",
+                    "text": "Classement des sites selon la <strong>somme totale</strong> des mesures de l'indicateur sélectionné sur les 30 derniers jours. Utile pour voir quel bâtiment ou site contribue le plus. Cliquez sur une ligne pour les mesures de ce site."
+                },
+                {
+                    "label": "Score ESG (conformité)",
+                    "text": "Score pondéré sur 30 jours : <strong>60 % respect des seuils</strong> (mesures avec seuils dans les limites) + <strong>40 % couverture de mesure</strong> (indicateurs numériques actifs avec au moins une mesure). Sous le donut, les pourcentages détaillés."
+                },
+                {
+                    "label": "Répartition par catégorie",
+                    "text": "Donut du nombre de mesures par catégorie d'indicateur (ex. énergie, déchets, sécurité) sur 30 jours. Définissez les catégories à la création ou modification d'un indicateur sous <strong>Indicateurs</strong>."
+                },
+                {
+                    "label": "Tâches ESG ouvertes",
+                    "text": "Tâches liées à un indicateur ESG non encore terminées — mesures périodiques et actions de suivi automatiques. Le badge <strong>Alarme auto</strong> marque les tâches créées par WinProx après un dépassement de seuil."
+                },
+                {
+                    "label": "Alarme auto et tâche de suivi",
+                    "text": "Lorsqu'une mesure dépasse le minimum ou maximum configuré, WinProx peut créer automatiquement une <strong>tâche de suivi priorité 2</strong> (au plus une tâche ouverte par indicateur et unité). Le bouton <strong>Tâche de suivi</strong> sur les mesures récentes et alarmes mène directement à cette tâche. L'équipe assignée suit celle de la tâche de mesure d'origine."
+                },
+                {
+                    "label": "Mesures récentes et alarmes de seuil",
+                    "text": "Deux listes en bas : toutes les mesures récentes, et séparément celles avec alarme de seuil. Les valeurs hors limites portent le libellé <strong>Hors seuils</strong>. Via <strong>Tâche</strong>, ouvrez la tâche de mesure du portail QR."
+                },
+                {
+                    "label": "Tableau de bord vide",
+                    "text": "Pas encore d'indicateurs ou de mesures ? WinProx affiche les étapes de démarrage : module actif, créer un indicateur, lier à une signalement récurrent. L'aide détaillée sur les indicateurs se trouve sous l'onglet <strong>Indicateurs</strong>."
+                }
+            ]
+        },
+        "esg.dashboard": {
+            "title": "Aide — Tableau de bord ESG",
+            "actions": [
+                {
+                    "label": "Qu'est-ce que cet écran ?",
+                    "text": "Le tableau de bord ESG offre une vue opérationnelle de votre programme de mesure : dernières valeurs, alarmes de seuil, tendances et actions de suivi ouvertes. C'est votre point de départ pour la gestion ESG quotidienne — le détail et l'historique se trouvent sous <strong>Mesures</strong>."
+                },
+                {
+                    "label": "Cartes KPI en haut",
+                    "text": "La première carte affiche le nombre d'<strong>alarmes de seuil</strong> dans l'échantillon récent. Vous voyez aussi la <strong>dernière valeur</strong> par indicateur numérique actif et sa date d'enregistrement. En rouge = en dehors du minimum ou maximum. Cliquez sur une carte pour ouvrir l'aperçu filtré des mesures."
+                },
+                {
+                    "label": "Tendance de consommation",
+                    "text": "Graphique linéaire de l'indicateur sélectionné sur les 30 derniers jours. Les valeurs par jour sont <strong>additionnées</strong> (utile pour la consommation, ex. kWh). Choisissez un autre indicateur en haut à droite pour comparer les tendances."
+                },
+                {
+                    "label": "Mesures dans les limites",
+                    "text": "Le donut montre le pourcentage de mesures récentes (échantillon) qui restent <strong>dans les seuils configurés</strong>. La légende indique combien d'alarmes figurent dans cet échantillon. Cliquez pour ouvrir l'aperçu des mesures."
+                },
+                {
+                    "label": "Consommation la plus élevée par site",
+                    "text": "Classement des sites selon la <strong>somme totale</strong> des mesures de l'indicateur sélectionné sur les 30 derniers jours. Utile pour voir quel bâtiment ou site contribue le plus. Cliquez sur une ligne pour les mesures de ce site."
+                },
+                {
+                    "label": "Score ESG (conformité)",
+                    "text": "Score pondéré sur 30 jours : <strong>60 % respect des seuils</strong> (mesures avec seuils dans les limites) + <strong>40 % couverture de mesure</strong> (indicateurs numériques actifs avec au moins une mesure). Sous le donut, les pourcentages détaillés."
+                },
+                {
+                    "label": "Répartition par catégorie",
+                    "text": "Donut du nombre de mesures par catégorie d'indicateur (ex. énergie, déchets, sécurité) sur 30 jours. Définissez les catégories à la création ou modification d'un indicateur sous <strong>Indicateurs</strong>."
+                },
+                {
+                    "label": "Tâches ESG ouvertes",
+                    "text": "Tâches liées à un indicateur ESG non encore terminées — mesures périodiques et actions de suivi automatiques. Le badge <strong>Alarme auto</strong> marque les tâches créées par WinProx après un dépassement de seuil."
+                },
+                {
+                    "label": "Alarme auto et tâche de suivi",
+                    "text": "Lorsqu'une mesure dépasse le minimum ou maximum configuré, WinProx peut créer automatiquement une <strong>tâche de suivi priorité 2</strong> (au plus une tâche ouverte par indicateur et unité). Le bouton <strong>Tâche de suivi</strong> sur les mesures récentes et alarmes mène directement à cette tâche. L'équipe assignée suit celle de la tâche de mesure d'origine."
+                },
+                {
+                    "label": "Mesures récentes et alarmes de seuil",
+                    "text": "Deux listes en bas : toutes les mesures récentes, et séparément celles avec alarme de seuil. Les valeurs hors limites portent le libellé <strong>Hors seuils</strong>. Via <strong>Tâche</strong>, ouvrez la tâche de mesure du portail QR."
+                },
+                {
+                    "label": "Tableau de bord vide",
+                    "text": "Pas encore d'indicateurs ou de mesures ? WinProx affiche les étapes de démarrage : module actif, créer un indicateur, lier à une signalement récurrent. L'aide détaillée sur les indicateurs se trouve sous l'onglet <strong>Indicateurs</strong>."
+                }
+            ]
+        },
         "esg.indicators": {
             "title": "Aide — Mesures ESG",
             "actions": [
