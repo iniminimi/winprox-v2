@@ -35,6 +35,9 @@
                             <strong>{{ $indicator->localizedName() }}</strong>
                             <p class="wp-muted wp-text-sm">
                                 {{ __('esg.types.'.$indicator->type->value) }}
+                                @if ($indicator->category)
+                                    · {{ __($indicator->category->labelKey()) }}
+                                @endif
                                 @if ($indicator->unit_of_measure)
                                     · {{ $indicator->unit_of_measure }}
                                 @endif
@@ -75,6 +78,14 @@
                 <select id="esg-type" class="wp-input" wire:model.live="type">
                     @foreach ($types as $indicatorType)
                         <option value="{{ $indicatorType->value }}">{{ __('esg.types.'.$indicatorType->value) }}</option>
+                    @endforeach
+                </select>
+
+                <label class="wp-label" for="esg-category">{{ __('esg.fields.category') }}</label>
+                <select id="esg-category" class="wp-input" wire:model="category">
+                    <option value="">{{ __('esg.fields.category_unset') }}</option>
+                    @foreach ($categories as $indicatorCategory)
+                        <option value="{{ $indicatorCategory->value }}">{{ __($indicatorCategory->labelKey()) }}</option>
                     @endforeach
                 </select>
 

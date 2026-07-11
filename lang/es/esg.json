@@ -24,7 +24,18 @@
         "threshold_max": "Máximo",
         "choice_options": "Opciones de elección",
         "choice_option_placeholder": "Opción",
-        "choice_option_locked": "En uso"
+        "choice_option_locked": "En uso",
+        "category": "Categoría",
+        "category_unset": "Sin categoría"
+    },
+    "categories": {
+        "energy": "Energía",
+        "water": "Agua",
+        "gas": "Gas",
+        "waste": "Residuos",
+        "emissions": "Emisiones",
+        "compliance": "Cumplimiento",
+        "other": "Otro"
     },
     "types": {
         "numeric": "Número",
@@ -137,6 +148,20 @@
             "all": "Todas las mediciones",
             "empty": "Aún no hay consumo por ubicación en este período.",
             "readings": ":count mediciones|:count medición|:count mediciones"
+        },
+        "score": {
+            "kicker": "Cumplimiento",
+            "title": "Puntuación ESG",
+            "subtitle": "Puntuación ponderada según umbrales y cobertura de mediciones.",
+            "threshold": "Dentro de umbrales: :percent%",
+            "coverage": "Indicadores activos con medición: :percent%"
+        },
+        "distribution": {
+            "kicker": "Categorías",
+            "title": "Distribución por categoría",
+            "period": "Últimos :days días|Último :days día|Últimos :days días",
+            "empty": "Aún no hay mediciones en este período.",
+            "aria": "Distribución por categoría con :count segmentos"
         }
     },
     "measurements": {

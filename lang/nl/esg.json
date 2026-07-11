@@ -24,7 +24,18 @@
         "threshold_max": "Maximum",
         "choice_options": "Keuzemogelijkheden",
         "choice_option_placeholder": "Optie",
-        "choice_option_locked": "In gebruik"
+        "choice_option_locked": "In gebruik",
+        "category": "Categorie",
+        "category_unset": "Geen categorie"
+    },
+    "categories": {
+        "energy": "Energie",
+        "water": "Water",
+        "gas": "Gas",
+        "waste": "Afval",
+        "emissions": "Emissies",
+        "compliance": "Compliance",
+        "other": "Overig"
     },
     "types": {
         "numeric": "Getal",
@@ -137,6 +148,20 @@
             "all": "Alle metingen",
             "empty": "Nog geen verbruik per locatie in deze periode.",
             "readings": ":count metingen|:count meting|:count metingen"
+        },
+        "score": {
+            "kicker": "Compliance",
+            "title": "ESG-score",
+            "subtitle": "Gewogen score op basis van drempelnaleving en meetdekking.",
+            "threshold": "Drempels binnen grens: :percent%",
+            "coverage": "Actieve indicatoren met meting: :percent%"
+        },
+        "distribution": {
+            "kicker": "Categorieën",
+            "title": "Verdeling per categorie",
+            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen",
+            "empty": "Nog geen metingen in deze periode.",
+            "aria": "Categorieverdeling met :count segmenten"
         }
     },
     "measurements": {

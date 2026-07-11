@@ -244,6 +244,90 @@ it('bouwt trendpunten en top-locaties via action', function () {
         ->and($dashboard->topLocations[0]['total_formatted'])->toContain('88,5');
 });
 
+it('toont esg-score en categorieverdeling op het dashboard', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $energyIndicator = EsgIndicator::factory()->numeric('kWh')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Elektriciteit kWh',
+        'category' => \App\Enums\EsgIndicatorCategory::Energy,
+        'thresholds' => ['min' => 0, 'max' => 1000],
+    ]);
+    $gasIndicator = EsgIndicator::factory()->numeric('m3')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Gas m3',
+        'category' => \App\Enums\EsgIndicatorCategory::Gas,
+        'thresholds' => ['min' => 0, 'max' => 500],
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    foreach ([$energyIndicator, $gasIndicator] as $indicator) {
+        $issue = Issue::factory()->create([
+            'tenant_id' => $tenant->id,
+            'location_id' => $location->id,
+            'unit_id' => $unit->id,
+            'esg_indicator_id' => $indicator->id,
+            'approved_at' => now(),
+        ]);
+        $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+        app(RecordEsgMeasurementAction::class)->handle(
+            new RecordEsgMeasurementData(
+                taskId: $task->id,
+                esgIndicatorId: $indicator->id,
+                recordedAt: now()->toImmutable(),
+                valueNumeric: 42.0,
+            ),
+            $tenant->id,
+        );
+    }
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('esg.dashboard.score.title'))
+        ->assertSee(__('esg.dashboard.distribution.title'))
+        ->assertSee(__('esg.categories.energy'))
+        ->assertSee(__('esg.categories.gas'));
+});
+
+it('berekent compliance-score en categorieen via action', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $indicator = EsgIndicator::factory()->numeric('kWh')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Elektriciteit',
+        'category' => \App\Enums\EsgIndicatorCategory::Energy,
+        'thresholds' => ['min' => 0, 'max' => 100],
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'esg_indicator_id' => $indicator->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create(['tenant_id' => $tenant->id, 'issue_id' => $issue->id]);
+
+    app(RecordEsgMeasurementAction::class)->handle(
+        new RecordEsgMeasurementData(
+            taskId: $task->id,
+            esgIndicatorId: $indicator->id,
+            recordedAt: now()->toImmutable(),
+            valueNumeric: 50.0,
+        ),
+        $tenant->id,
+    );
+
+    $dashboard = app(BuildEsgDashboardAction::class)->handle($tenant->id);
+
+    expect($dashboard->showComplianceScore)->toBeTrue()
+        ->and($dashboard->complianceScore)->toBeGreaterThan(0)
+        ->and($dashboard->categorySegments)->toHaveCount(1)
+        ->and($dashboard->categorySegments[0]['key'])->toBe('energy');
+});
+
 it('toont dashboard-tab in esg-subnav', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);

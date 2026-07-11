@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Enums\EsgIndicatorTranslationStatus;
 use App\Models\Concerns\BelongsToTenant;
@@ -19,6 +20,7 @@ class EsgIndicator extends Model
         'name',
         'original_language',
         'type',
+        'category',
         'unit_of_measure',
         'is_active',
         'thresholds',
@@ -27,6 +29,7 @@ class EsgIndicator extends Model
 
     protected $casts = [
         'type' => EsgIndicatorType::class,
+        'category' => EsgIndicatorCategory::class,
         'is_active' => 'boolean',
         'thresholds' => 'array',
         'options' => 'array',

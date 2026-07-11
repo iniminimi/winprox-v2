@@ -28,6 +28,12 @@ final readonly class EsgDashboardViewData
      *     detail_url: string,
      *     measurements_url: string,
      * }>  $topLocations
+     * @param  list<array{
+     *     key: string,
+     *     label: string,
+     *     count: int,
+     *     percent: float,
+     * }>  $categorySegments
      */
     public function __construct(
         public int $alarmCount,
@@ -48,5 +54,12 @@ final readonly class EsgDashboardViewData
         public array $trendPoints,
         public int $trendPeriodDays,
         public array $topLocations,
+        public bool $showComplianceScore,
+        public ?int $complianceScore,
+        public ?int $complianceThresholdPercent,
+        public ?int $complianceCoveragePercent,
+        public float $complianceIncompleteFraction,
+        public array $categorySegments,
+        public int $categoryMeasurementTotal,
     ) {}
 }

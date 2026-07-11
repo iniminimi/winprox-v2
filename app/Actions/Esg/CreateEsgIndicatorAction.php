@@ -3,6 +3,7 @@
 namespace App\Actions\Esg;
 
 use App\Actions\Communication\EnsureEsgIndicatorTranslationSlotsAction;
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use App\Support\Audit\AuditRecorder;
@@ -16,7 +17,7 @@ class CreateEsgIndicatorAction
     ) {}
 
     /**
-     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>, original_language?: ?string}  $data
+     * @param  array{name: string, type: string|EsgIndicatorType, category?: ?EsgIndicatorCategory, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>, original_language?: ?string}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): EsgIndicator
     {
@@ -29,6 +30,7 @@ class CreateEsgIndicatorAction
             'name' => trim($data['name']),
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'type' => $type,
+            'category' => $data['category'] ?? null,
             'unit_of_measure' => $data['unit_of_measure'] ?? null,
             'is_active' => true,
             'thresholds' => $data['thresholds'] ?? null,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Esg;
 
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use App\Models\EsgMeasurement;
@@ -33,6 +34,7 @@ class StoreEsgIndicatorRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'type' => ['required', new Enum(EsgIndicatorType::class)],
+            'category' => ['nullable', new Enum(EsgIndicatorCategory::class)],
             'unit_of_measure' => ['nullable', 'string', 'max:64'],
             'threshold_min' => ['nullable', 'numeric'],
             'threshold_max' => ['nullable', 'numeric'],
@@ -66,13 +68,16 @@ class StoreEsgIndicatorRequest extends FormRequest
 
     /**
      * @param  array{name: string, type: string, unit_of_measure?: ?string, threshold_min?: mixed, threshold_max?: mixed, choice_options?: list<string>}  $validated
-     * @return array{name: string, type: string, unit_of_measure: ?string, thresholds: ?array{min?: float, max?: float}, options: ?list<string>}
+     * @return array{name: string, type: string, category: ?EsgIndicatorCategory, unit_of_measure: ?string, thresholds: ?array{min?: float, max?: float}, options: ?list<string>}
      */
     public static function toActionPayload(array $validated, ?EsgIndicator $existing = null): array
     {
         self::assertThresholdRange($validated);
 
         $type = (string) $validated['type'];
+        $category = filled($validated['category'] ?? null)
+            ? EsgIndicatorCategory::from((string) $validated['category'])
+            : null;
         $options = null;
         if (EsgIndicatorType::from($type)->usesOptionList()) {
             $options = self::normalizeChoiceOptions($validated['choice_options'] ?? []);
@@ -94,6 +99,7 @@ class StoreEsgIndicatorRequest extends FormRequest
         return [
             'name' => trim($validated['name']),
             'type' => $type,
+            'category' => $category,
             'unit_of_measure' => $unitOfMeasure,
             'thresholds' => $thresholds,
             'options' => $options,

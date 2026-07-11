@@ -5,6 +5,7 @@ namespace App\Livewire\Esg;
 use App\Actions\Esg\CreateEsgIndicatorAction;
 use App\Actions\Esg\SetEsgIndicatorActiveAction;
 use App\Actions\Esg\UpdateEsgIndicatorAction;
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Http\Requests\Esg\StoreEsgIndicatorRequest;
 use App\Models\EsgIndicator;
@@ -28,6 +29,8 @@ class IndicatorsIndex extends Component
     public string $name = '';
 
     public string $type = 'numeric';
+
+    public string $category = '';
 
     public string $unitOfMeasure = '';
 
@@ -61,6 +64,7 @@ class IndicatorsIndex extends Component
         $this->editingIndicatorId = (int) $indicator->id;
         $this->name = (string) $indicator->name;
         $this->type = $indicator->type->value;
+        $this->category = $indicator->category?->value ?? '';
         $this->unitOfMeasure = (string) ($indicator->unit_of_measure ?? '');
         $this->thresholdMin = isset($indicator->thresholds['min'])
             ? (string) $indicator->thresholds['min']
@@ -96,6 +100,7 @@ class IndicatorsIndex extends Component
         $validated = $this->validate([
             'name' => $rules['name'],
             'type' => $rules['type'],
+            'category' => $rules['category'],
             'unitOfMeasure' => $rules['unit_of_measure'],
             'thresholdMin' => $rules['threshold_min'],
             'thresholdMax' => $rules['threshold_max'],
@@ -113,6 +118,7 @@ class IndicatorsIndex extends Component
             $payload = StoreEsgIndicatorRequest::toActionPayload([
                 'name' => $validated['name'],
                 'type' => $validated['type'],
+                'category' => filled($validated['category']) ? $validated['category'] : null,
                 'unit_of_measure' => $validated['unitOfMeasure'] ?: null,
                 'threshold_min' => $validated['thresholdMin'],
                 'threshold_max' => $validated['thresholdMax'],
@@ -193,6 +199,7 @@ class IndicatorsIndex extends Component
         return view('livewire.esg.indicators-index', [
             'indicators' => EsgIndicator::query()->with('translations')->orderBy('name')->get(),
             'types' => EsgIndicatorType::cases(),
+            'categories' => EsgIndicatorCategory::cases(),
         ]);
     }
 
@@ -201,6 +208,7 @@ class IndicatorsIndex extends Component
         $this->editingIndicatorId = null;
         $this->name = '';
         $this->type = EsgIndicatorType::Numeric->value;
+        $this->category = '';
         $this->unitOfMeasure = '';
         $this->thresholdMin = null;
         $this->thresholdMax = null;

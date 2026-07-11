@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Esg;
 
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Enums\TaskStatus;
 use App\Models\EsgIndicator;
@@ -30,6 +31,10 @@ class BuildEsgDashboardAction
     private const int TOP_LOCATION_LIMIT = 10;
 
     private const int TREND_PERIOD_DAYS = 30;
+
+    private const float COMPLIANCE_THRESHOLD_WEIGHT = 0.6;
+
+    private const float COMPLIANCE_COVERAGE_WEIGHT = 0.4;
 
     public function handle(int $tenantId, ?int $trendIndicatorId = null): EsgDashboardViewData
     {
@@ -113,6 +118,9 @@ class BuildEsgDashboardAction
             ? $this->buildTopLocations($tenantId, $selectedTrendIndicator, $periodStart)
             : [];
 
+        $compliance = $this->buildComplianceScore($tenantId, $periodStart);
+        $categoryBreakdown = $this->buildCategorySegments($tenantId, $periodStart);
+
         return new EsgDashboardViewData(
             alarmCount: $alarmCount,
             thresholdOkPercent: $thresholdOkPercent,
@@ -132,6 +140,13 @@ class BuildEsgDashboardAction
             trendPoints: $trendPoints,
             trendPeriodDays: self::TREND_PERIOD_DAYS,
             topLocations: $topLocations,
+            showComplianceScore: $compliance['show'],
+            complianceScore: $compliance['score'],
+            complianceThresholdPercent: $compliance['threshold_percent'],
+            complianceCoveragePercent: $compliance['coverage_percent'],
+            complianceIncompleteFraction: $compliance['incomplete_fraction'],
+            categorySegments: $categoryBreakdown['segments'],
+            categoryMeasurementTotal: $categoryBreakdown['total'],
         );
     }
 
@@ -347,5 +362,127 @@ class BuildEsgDashboardAction
         $formatted = rtrim(rtrim(number_format($value, 4, ',', '.'), '0'), ',');
 
         return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
+    }
+
+    /**
+     * @return array{
+     *     show: bool,
+     *     score: ?int,
+     *     threshold_percent: ?int,
+     *     coverage_percent: ?int,
+     *     incomplete_fraction: float,
+     * }
+     */
+    private function buildComplianceScore(int $tenantId, CarbonInterface $periodStart): array
+    {
+        $thresholdMeasurements = EsgMeasurement::query()
+            ->where('tenant_id', $tenantId)
+            ->where('recorded_at', '>=', $periodStart)
+            ->whereHas('indicator', fn ($query) => $query
+                ->where('type', EsgIndicatorType::Numeric)
+                ->whereNotNull('thresholds'))
+            ->with('indicator')
+            ->get();
+
+        $thresholdPercent = null;
+        if ($thresholdMeasurements->isNotEmpty()) {
+            $okCount = $thresholdMeasurements
+                ->filter(fn (EsgMeasurement $measurement) => ! EsgMeasurementPresenter::isOutsideThresholds($measurement))
+                ->count();
+            $thresholdPercent = (int) round(($okCount / $thresholdMeasurements->count()) * 100);
+        }
+
+        $activeNumericIndicatorIds = EsgIndicator::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->where('type', EsgIndicatorType::Numeric)
+            ->pluck('id');
+
+        $coveragePercent = null;
+        if ($activeNumericIndicatorIds->isNotEmpty()) {
+            $indicatorsWithReadings = EsgMeasurement::query()
+                ->where('tenant_id', $tenantId)
+                ->where('recorded_at', '>=', $periodStart)
+                ->whereIn('esg_indicator_id', $activeNumericIndicatorIds)
+                ->distinct()
+                ->count('esg_indicator_id');
+
+            $coveragePercent = (int) round(($indicatorsWithReadings / $activeNumericIndicatorIds->count()) * 100);
+        }
+
+        $score = null;
+        if ($thresholdPercent !== null && $coveragePercent !== null) {
+            $score = (int) round(
+                (self::COMPLIANCE_THRESHOLD_WEIGHT * $thresholdPercent)
+                + (self::COMPLIANCE_COVERAGE_WEIGHT * $coveragePercent)
+            );
+        } elseif ($thresholdPercent !== null) {
+            $score = $thresholdPercent;
+        } elseif ($coveragePercent !== null) {
+            $score = $coveragePercent;
+        }
+
+        return [
+            'show' => $score !== null,
+            'score' => $score,
+            'threshold_percent' => $thresholdPercent,
+            'coverage_percent' => $coveragePercent,
+            'incomplete_fraction' => $score === null ? 0.0 : (100 - $score) / 100,
+        ];
+    }
+
+    /**
+     * @return array{
+     *     total: int,
+     *     segments: list<array{key: string, label: string, count: int, percent: float}>,
+     * }
+     */
+    private function buildCategorySegments(int $tenantId, CarbonInterface $periodStart): array
+    {
+        $measurements = EsgMeasurement::query()
+            ->where('tenant_id', $tenantId)
+            ->where('recorded_at', '>=', $periodStart)
+            ->with('indicator')
+            ->get(['esg_indicator_id']);
+
+        $total = $measurements->count();
+        if ($total === 0) {
+            return [
+                'total' => 0,
+                'segments' => [],
+            ];
+        }
+
+        $segments = $measurements
+            ->groupBy(function (EsgMeasurement $measurement): string {
+                $category = $measurement->indicator?->category;
+
+                return $category instanceof EsgIndicatorCategory
+                    ? $category->value
+                    : EsgIndicatorCategory::Other->value;
+            })
+            ->map(function (Collection $group, string $key): array {
+                $category = EsgIndicatorCategory::from($key);
+
+                return [
+                    'key' => $key,
+                    'label' => __($category->labelKey()),
+                    'count' => $group->count(),
+                    'percent' => 0.0,
+                ];
+            })
+            ->sortByDesc('count')
+            ->values()
+            ->map(function (array $segment) use ($total): array {
+                $segment['percent'] = round(($segment['count'] / $total) * 100, 1);
+
+                return $segment;
+            })
+            ->all();
+
+        return [
+            'total' => $total,
+            'segments' => $segments,
+        ];
     }
 }

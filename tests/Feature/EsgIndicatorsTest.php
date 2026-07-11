@@ -2,6 +2,7 @@
 
 use App\Actions\Esg\RecordEsgMeasurementAction;
 use App\Data\Esg\RecordEsgMeasurementData;
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Livewire\Esg\IndicatorsIndex;
 use App\Models\EsgIndicator;
@@ -12,6 +13,27 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use Livewire\Livewire;
+
+it('laat een admin een indicator met categorie beheren', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(IndicatorsIndex::class)
+        ->call('openCreateModal')
+        ->set('name', 'Waterverbruik m3')
+        ->set('type', 'numeric')
+        ->set('category', EsgIndicatorCategory::Water->value)
+        ->set('unitOfMeasure', 'm3')
+        ->call('save')
+        ->assertHasNoErrors()
+        ->assertSee(__('esg.categories.water'));
+
+    $indicator = EsgIndicator::query()->where('tenant_id', $tenant->id)->first();
+
+    expect($indicator)->not->toBeNull()
+        ->and($indicator->category)->toBe(EsgIndicatorCategory::Water);
+});
 
 it('toont elke indicator eenmaal in de lijst', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);

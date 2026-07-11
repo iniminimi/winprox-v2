@@ -173,6 +173,66 @@
         </div>
     @endif
 
+    @if ($dashboard->showComplianceScore || $dashboard->categorySegments !== [])
+        <div @class([
+            'wp-dashboard-widgets',
+            'wp-dashboard-widgets--donuts',
+            'wp-dashboard-widgets--single' => ! $dashboard->showComplianceScore || $dashboard->categorySegments === [],
+        ])>
+            @if ($dashboard->showComplianceScore)
+                <div class="wp-dashboard-widget wp-card wp-card-pad wp-esg-score-widget" wire:key="esg-compliance-score">
+                    <div class="wp-esg-score-widget__body">
+                        <x-wp-health-donut
+                            size="lg"
+                            :percent-complete="$dashboard->complianceScore"
+                            :incomplete-fraction="$dashboard->complianceIncompleteFraction"
+                        />
+                        <div class="wp-stack-tight wp-grow">
+                            <p class="wp-kpi-kicker">{{ __('esg.dashboard.score.kicker') }}</p>
+                            <p class="wp-dashboard-widget__title">{{ __('esg.dashboard.score.title') }}</p>
+                            <p class="wp-muted wp-text-sm">{{ __('esg.dashboard.score.subtitle') }}</p>
+                            <ul class="wp-esg-score-widget__breakdown wp-muted wp-text-sm">
+                                @if ($dashboard->complianceThresholdPercent !== null)
+                                    <li>
+                                        {{ __('esg.dashboard.score.threshold', [
+                                            'percent' => $dashboard->complianceThresholdPercent,
+                                        ]) }}
+                                    </li>
+                                @endif
+                                @if ($dashboard->complianceCoveragePercent !== null)
+                                    <li>
+                                        {{ __('esg.dashboard.score.coverage', [
+                                            'percent' => $dashboard->complianceCoveragePercent,
+                                        ]) }}
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            @if ($dashboard->categorySegments !== [])
+                <div class="wp-dashboard-widget wp-card wp-card-pad wp-stack-tight" wire:key="esg-category-distribution">
+                    <div class="wp-stack-tight">
+                        <p class="wp-kpi-kicker">{{ __('esg.dashboard.distribution.kicker') }}</p>
+                        <p class="wp-dashboard-widget__title">{{ __('esg.dashboard.distribution.title') }}</p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ trans_choice('esg.dashboard.distribution.period', $dashboard->trendPeriodDays, [
+                                'days' => $dashboard->trendPeriodDays,
+                            ]) }}
+                        </p>
+                    </div>
+                    <x-wp-segment-donut
+                        :segments="$dashboard->categorySegments"
+                        :center-label="(string) $dashboard->categoryMeasurementTotal"
+                        size="md"
+                    />
+                </div>
+            @endif
+        </div>
+    @endif
+
     @if ($dashboard->trendIndicatorOptions !== [])
         <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-open-tasks-widget">
             <div class="wp-row">

@@ -4,6 +4,7 @@ namespace App\Actions\Esg;
 
 use App\Actions\Communication\EnsureEsgIndicatorTranslationSlotsAction;
 use App\Actions\Communication\InvalidateEsgIndicatorTranslationsOnSourceChangeAction;
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Models\EsgIndicator;
 use App\Support\Audit\AuditRecorder;
@@ -17,7 +18,7 @@ class UpdateEsgIndicatorAction
     ) {}
 
     /**
-     * @param  array{name: string, type: string|EsgIndicatorType, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
+     * @param  array{name: string, type: string|EsgIndicatorType, category?: ?EsgIndicatorCategory, unit_of_measure?: ?string, thresholds?: ?array, options?: ?list<string>}  $data
      */
     public function handle(EsgIndicator $indicator, array $data, ?int $actorUserId = null): EsgIndicator
     {
@@ -31,6 +32,7 @@ class UpdateEsgIndicatorAction
         $indicator->update([
             'name' => trim($data['name']),
             'type' => $type,
+            'category' => $data['category'] ?? null,
             'unit_of_measure' => $data['unit_of_measure'] ?? null,
             'thresholds' => $data['thresholds'] ?? null,
             'options' => $data['options'] ?? null,

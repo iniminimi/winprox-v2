@@ -824,6 +824,125 @@ a.wp-kpi:hover {
     margin-top: 0.75rem;
 }
 
+.wp-esg-score-widget__body {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.wp-esg-score-widget__breakdown {
+    margin: 0;
+    padding-left: 1.125rem;
+}
+
+.wp-segment-donut__body {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wp-segment-donut__svg {
+    display: block;
+}
+
+.wp-segment-donut__track {
+    stroke: var(--wp-border);
+}
+
+.wp-segment-donut__label {
+    position: absolute;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-segment-donut__body {
+    margin-top: 0.75rem;
+}
+
+.wp-segment-donut__legend {
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wp-segment-donut__legend-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.375rem 0;
+}
+
+.wp-segment-donut__swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    flex-shrink: 0;
+}
+
+.wp-segment-donut__segment--energy {
+    stroke: var(--wp-accent);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--energy {
+    background-color: var(--wp-accent);
+}
+
+.wp-segment-donut__segment--water {
+    stroke: var(--wp-info);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--water {
+    background-color: var(--wp-info);
+}
+
+.wp-segment-donut__segment--gas {
+    stroke: var(--wp-warning);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--gas {
+    background-color: var(--wp-warning);
+}
+
+.wp-segment-donut__segment--waste {
+    stroke: var(--wp-text-muted);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--waste {
+    background-color: var(--wp-text-muted);
+}
+
+.wp-segment-donut__segment--emissions {
+    stroke: var(--wp-danger);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--emissions {
+    background-color: var(--wp-danger);
+}
+
+.wp-segment-donut__segment--compliance {
+    stroke: color-mix(in srgb, var(--wp-accent) 55%, var(--wp-info) 45%);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--compliance {
+    background-color: color-mix(in srgb, var(--wp-accent) 55%, var(--wp-info) 45%);
+}
+
+.wp-segment-donut__segment--other {
+    stroke: var(--wp-border-strong);
+}
+
+.wp-segment-donut__legend-row .wp-segment-donut__swatch.wp-segment-donut__segment--other {
+    background-color: var(--wp-border-strong);
+}
+
+@media (min-width: 75rem) {
+    .wp-dashboard-widgets--donuts {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    }
+}
+
 .wp-dashboard-widget {
     min-width: 0;
 }

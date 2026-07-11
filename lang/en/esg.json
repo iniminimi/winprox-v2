@@ -24,7 +24,18 @@
         "threshold_max": "Maximum",
         "choice_options": "Choices",
         "choice_option_placeholder": "Option",
-        "choice_option_locked": "In use"
+        "choice_option_locked": "In use",
+        "category": "Category",
+        "category_unset": "No category"
+    },
+    "categories": {
+        "energy": "Energy",
+        "water": "Water",
+        "gas": "Gas",
+        "waste": "Waste",
+        "emissions": "Emissions",
+        "compliance": "Compliance",
+        "other": "Other"
     },
     "types": {
         "numeric": "Number",
@@ -137,6 +148,20 @@
             "all": "All readings",
             "empty": "No usage by location in this period yet.",
             "readings": ":count readings|:count reading|:count readings"
+        },
+        "score": {
+            "kicker": "Compliance",
+            "title": "ESG score",
+            "subtitle": "Weighted score based on threshold compliance and measurement coverage.",
+            "threshold": "Within thresholds: :percent%",
+            "coverage": "Active indicators with readings: :percent%"
+        },
+        "distribution": {
+            "kicker": "Categories",
+            "title": "Distribution by category",
+            "period": "Last :days days|Last :days day|Last :days days",
+            "empty": "No readings in this period yet.",
+            "aria": "Category distribution with :count segments"
         }
     },
     "measurements": {
