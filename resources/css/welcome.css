@@ -101,8 +101,12 @@
     }
 
     [data-theme='standard'] .wp-welcome-nav-menu {
-        display: contents;
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: center;
+        align-items: center;
         margin-left: 0;
+        min-width: 0;
     }
 
     [data-theme='standard'] .wp-welcome-nav-menu__toggle {
@@ -110,14 +114,17 @@
     }
 
     [data-theme='standard'] .wp-welcome-nav-menu__panel {
-        display: contents;
+        display: block;
         flex-basis: auto;
         padding: 0;
         border-top: none;
+        width: 100%;
     }
 
     [data-theme='standard'] .wp-welcome-nav-links {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
         gap: 2rem;
     }

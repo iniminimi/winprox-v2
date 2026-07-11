@@ -31,13 +31,35 @@
     </div>
 </nav>
 <script>
-document.querySelectorAll('.wp-welcome-nav-menu').forEach(function (menu) {
-    menu.querySelectorAll('.wp-welcome-nav-links a').forEach(function (link) {
-        link.addEventListener('click', function () {
-            if (window.matchMedia('(max-width: 47.99rem)').matches) {
+(function () {
+    var desktopMq = window.matchMedia('(min-width: 48rem)');
+
+    function syncWelcomeNavMenu() {
+        document.querySelectorAll('.wp-welcome-nav-menu').forEach(function (menu) {
+            if (desktopMq.matches) {
+                menu.setAttribute('open', '');
+            } else {
                 menu.removeAttribute('open');
             }
         });
+    }
+
+    if (typeof desktopMq.addEventListener === 'function') {
+        desktopMq.addEventListener('change', syncWelcomeNavMenu);
+    } else if (typeof desktopMq.addListener === 'function') {
+        desktopMq.addListener(syncWelcomeNavMenu);
+    }
+
+    syncWelcomeNavMenu();
+
+    document.querySelectorAll('.wp-welcome-nav-menu').forEach(function (menu) {
+        menu.querySelectorAll('.wp-welcome-nav-links a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                if (! desktopMq.matches) {
+                    menu.removeAttribute('open');
+                }
+            });
+        });
     });
-});
+})();
 </script>
