@@ -61,5 +61,17 @@
             });
         });
     });
+
+    document.addEventListener('click', function (event) {
+        if (desktopMq.matches) {
+            return;
+        }
+
+        document.querySelectorAll('.wp-welcome-nav-menu[open]').forEach(function (menu) {
+            if (! menu.contains(event.target)) {
+                menu.removeAttribute('open');
+            }
+        });
+    });
 })();
 </script>
