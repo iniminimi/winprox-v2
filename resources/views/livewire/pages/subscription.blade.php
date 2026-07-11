@@ -27,18 +27,6 @@
         @endif
     </div>
 
-    @if ($publicMode)
-        <div class="wp-card wp-card-pad wp-stack-tight wp-billing-page-width">
-            <p class="wp-muted">{{ __('subscription.pricing_intro') }}</p>
-            @guest
-                <div class="wp-cluster">
-                    <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('subscription.public_register_cta') }}</a>
-                    <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
-                </div>
-            @endguest
-        </div>
-    @endif
-
     @if (! $publicMode)
         @if (session('success'))
             <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
