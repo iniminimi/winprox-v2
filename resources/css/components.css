@@ -3016,27 +3016,31 @@ svg.wp-release-worker-row__icon,
     width: 100%;
 }
 
-.wp-billing-section-head {
-    display: flex;
-    align-items: center;
+.wp-billing-product {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
     gap: 2rem;
-    max-width: 48rem;
-    margin: 2rem auto 0.75rem;
+    max-width: 64rem;
+    margin: 2rem auto 0;
     width: 100%;
+    align-items: start;
     text-align: left;
 }
 
-.wp-billing-section-head__logo {
+.wp-billing-product + .wp-billing-product {
+    margin-top: 3rem;
+}
+
+.wp-billing-product__logo {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    flex-shrink: 0;
     width: 14rem;
     height: 14rem;
     margin: 0;
 }
 
-.wp-billing-section-head__logo-img {
+.wp-billing-product__logo-img {
     display: block;
     width: 100%;
     height: 100%;
@@ -3044,9 +3048,41 @@ svg.wp-release-worker-row__icon,
     object-position: center center;
 }
 
-.wp-billing-section-head__copy {
-    flex: 1;
+.wp-billing-product__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     min-width: 0;
+}
+
+.wp-billing-product__intro .wp-section-title {
+    margin: 0;
+}
+
+.wp-billing-product__intro .wp-muted {
+    margin: 0.35rem 0 0;
+}
+
+.wp-billing-product .wp-billing-plan-list {
+    max-width: none;
+    margin-inline: 0;
+}
+
+@media (max-width: 47.99rem) {
+    .wp-billing-product {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .wp-billing-product__logo {
+        margin-inline: auto;
+    }
+}
+
+.wp-billing-section-head {
+    max-width: 48rem;
+    margin: 2rem auto 0.75rem;
+    width: 100%;
 }
 
 .wp-billing-section-head .wp-section-title {

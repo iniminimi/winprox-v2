@@ -151,126 +151,130 @@
         @endif
     @endif
 
-    <div class="wp-billing-section-head">
-        <figure class="wp-billing-section-head__logo">
+    <section class="wp-billing-product">
+        <figure class="wp-billing-product__logo">
             <img
                 src="{{ asset('images/welcome/winprox_time_logo.jpg') }}"
                 alt="{{ __('welcome.products.time.logo_alt') }}"
-                class="wp-billing-section-head__logo-img"
+                class="wp-billing-product__logo-img"
                 loading="lazy"
                 decoding="async"
             >
         </figure>
-        <div class="wp-billing-section-head__copy">
-            <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
-            <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
-        </div>
-    </div>
+        <div class="wp-billing-product__content">
+            <header class="wp-billing-product__intro">
+                <h2 class="wp-section-title">{{ __('subscription.products.time.heading') }}</h2>
+                <p class="wp-muted">{{ __('subscription.products.time.intro') }}</p>
+            </header>
 
-    <div class="wp-billing-plan-list">
-        <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
-            <div class="wp-billing-plan-card-body">
-                <div class="wp-billing-plan-card-head">
-                    <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
-                    <p class="wp-billing-plan-card-price">{{ __('subscription.products.time.price') }}</p>
-                </div>
-                <p class="wp-billing-plan-card-minimum">{{ __('subscription.products.time.includes') }}</p>
-                <ul class="wp-billing-plan-card-meta">
-                    @foreach (__('subscription.products.time.bullets') as $bullet)
-                        <li>{{ $bullet }}</li>
-                    @endforeach
-                </ul>
-                <p class="wp-billing-plan-card-desc">{{ __('subscription.products.time.description') }}</p>
-            </div>
-            @if ($showManageActions)
-                <div class="wp-billing-plan-card-action">
-                    <a
-                        href="{{ route('contact.index') }}"
-                        class="btn btn--primary btn--block"
-                    >
-                        {{ __('subscription.products.time.contact_cta') }}
-                    </a>
-                </div>
-            @endif
-        </article>
-    </div>
-
-    <div class="wp-billing-section-head">
-        <figure class="wp-billing-section-head__logo">
-            <img
-                src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
-                alt="{{ __('welcome.products.facility.logo_alt') }}"
-                class="wp-billing-section-head__logo-img"
-                loading="lazy"
-                decoding="async"
-            >
-        </figure>
-        <div class="wp-billing-section-head__copy">
-            <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
-            <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
-        </div>
-    </div>
-
-    <div class="wp-billing-plan-list">
-        @foreach ($planKeys as $planKey)
-            @php
-                $isEnterprise = $planKey === 'enterprise';
-            @endphp
-            <article class="wp-billing-plan-card">
-                <div class="wp-billing-plan-card-body">
-                    <div class="wp-billing-plan-card-head">
-                        <h2 class="wp-billing-plan-card-title">{{ __("subscription.plans.{$planKey}.name") }}</h2>
-                        <p class="wp-billing-plan-card-price">{{ __("subscription.plans.{$planKey}.price") }}</p>
+            <div class="wp-billing-plan-list">
+                <article class="wp-billing-plan-card wp-billing-plan-card--bundle" wire:key="subscription-product-time">
+                    <div class="wp-billing-plan-card-body">
+                        <div class="wp-billing-plan-card-head">
+                            <h2 class="wp-billing-plan-card-title">{{ __('subscription.products.time.name') }}</h2>
+                            <p class="wp-billing-plan-card-price">{{ __('subscription.products.time.price') }}</p>
+                        </div>
+                        <p class="wp-billing-plan-card-minimum">{{ __('subscription.products.time.includes') }}</p>
+                        <ul class="wp-billing-plan-card-meta">
+                            @foreach (__('subscription.products.time.bullets') as $bullet)
+                                <li>{{ $bullet }}</li>
+                            @endforeach
+                        </ul>
+                        <p class="wp-billing-plan-card-desc">{{ __('subscription.products.time.description') }}</p>
                     </div>
-                    <ul class="wp-billing-plan-card-meta">
-                        <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
-                        <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
-                        @if (__("subscription.plans.{$planKey}.announcements") !== "subscription.plans.{$planKey}.announcements")
-                            <li>{{ __("subscription.plans.{$planKey}.announcements") }}</li>
-                        @endif
-                        @if (__("subscription.plans.{$planKey}.documents") !== "subscription.plans.{$planKey}.documents")
-                            <li>{{ __("subscription.plans.{$planKey}.documents") }}</li>
-                        @endif
-                    </ul>
-                    <p class="wp-billing-plan-card-desc">{{ __("subscription.plans.{$planKey}.description") }}</p>
-                </div>
-                @if ($showManageActions)
-                    <div class="wp-billing-plan-card-action">
-                        @if ($isEnterprise)
+                    @if ($showManageActions)
+                        <div class="wp-billing-plan-card-action">
                             <a
                                 href="{{ route('contact.index') }}"
                                 class="btn btn--primary btn--block"
                             >
-                                {{ __('subscription.enterprise_cta') }}
+                                {{ __('subscription.products.time.contact_cta') }}
                             </a>
-                        @elseif (in_array($planKey, $stripeReadyPlans, true))
-                            <button
-                                type="button"
-                                class="btn btn--primary btn--block"
-                                wire:click="activatePlan('{{ $planKey }}')"
-                                wire:loading.attr="disabled"
-                            >
-                                <x-wp-spinner wire:loading class="wp-mr-2" />
-                                <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
-                                <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
-                            </button>
-                        @else
-                            <button
-                                type="button"
-                                class="btn btn--primary btn--block"
-                                wire:click="activatePlan('{{ $planKey }}')"
-                                wire:loading.attr="disabled"
-                            >
-                                <x-wp-spinner wire:loading class="wp-mr-2" />
-                                <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
-                                <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
-                            </button>
+                        </div>
+                    @endif
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="wp-billing-product">
+        <figure class="wp-billing-product__logo">
+            <img
+                src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
+                alt="{{ __('welcome.products.facility.logo_alt') }}"
+                class="wp-billing-product__logo-img"
+                loading="lazy"
+                decoding="async"
+            >
+        </figure>
+        <div class="wp-billing-product__content">
+            <header class="wp-billing-product__intro">
+                <h2 class="wp-section-title">{{ __('subscription.facility_heading') }}</h2>
+                <p class="wp-muted">{{ __('subscription.facility_intro') }}</p>
+            </header>
+
+            <div class="wp-billing-plan-list">
+                @foreach ($planKeys as $planKey)
+                    @php
+                        $isEnterprise = $planKey === 'enterprise';
+                    @endphp
+                    <article class="wp-billing-plan-card">
+                        <div class="wp-billing-plan-card-body">
+                            <div class="wp-billing-plan-card-head">
+                                <h2 class="wp-billing-plan-card-title">{{ __("subscription.plans.{$planKey}.name") }}</h2>
+                                <p class="wp-billing-plan-card-price">{{ __("subscription.plans.{$planKey}.price") }}</p>
+                            </div>
+                            <ul class="wp-billing-plan-card-meta">
+                                <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
+                                <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
+                                @if (__("subscription.plans.{$planKey}.announcements") !== "subscription.plans.{$planKey}.announcements")
+                                    <li>{{ __("subscription.plans.{$planKey}.announcements") }}</li>
+                                @endif
+                                @if (__("subscription.plans.{$planKey}.documents") !== "subscription.plans.{$planKey}.documents")
+                                    <li>{{ __("subscription.plans.{$planKey}.documents") }}</li>
+                                @endif
+                            </ul>
+                            <p class="wp-billing-plan-card-desc">{{ __("subscription.plans.{$planKey}.description") }}</p>
+                        </div>
+                        @if ($showManageActions)
+                            <div class="wp-billing-plan-card-action">
+                                @if ($isEnterprise)
+                                    <a
+                                        href="{{ route('contact.index') }}"
+                                        class="btn btn--primary btn--block"
+                                    >
+                                        {{ __('subscription.enterprise_cta') }}
+                                    </a>
+                                @elseif (in_array($planKey, $stripeReadyPlans, true))
+                                    <button
+                                        type="button"
+                                        class="btn btn--primary btn--block"
+                                        wire:click="activatePlan('{{ $planKey }}')"
+                                        wire:loading.attr="disabled"
+                                    >
+                                        <x-wp-spinner wire:loading class="wp-mr-2" />
+                                        <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
+                                        <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
+                                    </button>
+                                @else
+                                    <button
+                                        type="button"
+                                        class="btn btn--primary btn--block"
+                                        wire:click="activatePlan('{{ $planKey }}')"
+                                        wire:loading.attr="disabled"
+                                    >
+                                        <x-wp-spinner wire:loading class="wp-mr-2" />
+                                        <span wire:loading.remove>{{ __('subscription.choose_plan') }}</span>
+                                        <span wire:loading>{{ __('subscription.choose_plan_loading') }}</span>
+                                    </button>
+                                @endif
+                            </div>
                         @endif
-                    </div>
-                @endif
-            </article>
-        @endforeach
-    </div>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
     <div class="wp-billing-section-head">
         <h2 class="wp-section-title">{{ __('subscription.modules_heading') }}</h2>
