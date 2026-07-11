@@ -39,30 +39,26 @@
     </div>
 
     @include('partials.wp-time-presence-section', [
+        'section' => 'present',
         'title' => __('time.presence.present'),
+        'subtitle' => __('time.presence.present_subtitle'),
         'shifts' => $snapshot->present,
         'showForceClose' => true,
         'staleHours' => $staleHours,
     ])
 
     @include('partials.wp-time-presence-section', [
+        'section' => 'on_break',
         'title' => __('time.presence.on_break'),
+        'subtitle' => __('time.presence.on_break_subtitle'),
         'shifts' => $snapshot->onBreak,
         'showForceClose' => true,
         'staleHours' => $staleHours,
     ])
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <h2 class="wp-section-title">{{ __('time.presence.not_clocked_in') }} ({{ $snapshot->notClockedIn->count() }})</h2>
-        @forelse ($snapshot->notClockedIn as $worker)
-            <div class="wp-cluster" wire:key="not-clocked-{{ $worker->id }}">
-                <span>{{ $worker->displayName() }}</span>
-                <span class="wp-muted">{{ $worker->team?->name }}</span>
-            </div>
-        @empty
-            <p class="wp-muted">{{ __('time.presence.empty_not_clocked_in') }}</p>
-        @endforelse
-    </div>
+    @include('partials.wp-time-presence-absent-section', [
+        'workers' => $snapshot->notClockedIn,
+    ])
 
     @include('partials.wp-time-force-close-modal')
 </div>

@@ -12,8 +12,12 @@
     "presence": {
         "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
         "present": "Aanwezig",
+        "present_subtitle": "Employés actifs",
         "on_break": "Pauze",
+        "on_break_subtitle": "Employés en pause",
         "not_clocked_in": "Niet ingeklokt",
+        "not_clocked_in_subtitle": "Pas encore pointé aujourd'hui",
+        "worked_so_far": "Travaillé : :duration",
         "empty_section": "Niemand in deze groep.",
         "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
         "force_close": "Shift sluiten",
