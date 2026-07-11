@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "Alles-in-één voor urenregistratie: Micro-omvang met Time-module inbegrepen.",
+            "intro": "Alles-in-één voor urenregistratie met beperkte WinProx Facility inbegrepen.",
             "name": "WinProx Time",
             "price": "€59 / maand",
-            "includes": "Micro-omvang · Time-module inbegrepen",
-            "description": "Instappakket wanneer tijdregistratie centraal staat — zonder aparte Facility-formule.",
-            "bullets": ["Tot 10 units/ruimtes", "In- en uitklokken", "Pauzes & shifts", "Clock Point QR"],
+            "includes": "WinProx Facility micro met Time-module inbegrepen.",
+            "description": "Instappakket wanneer tijdregistratie centraal staat.",
+            "bullets": ["In- en uitklokken", "Pauzes & shifts", "Clock Point QR", "Tot 10 units/ruimtes"],
             "contact_cta": "WinProx Time aanvragen"
         }
     },

@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "Todo en uno para registro horario: alcance Micro con el módulo Time incluido.",
+            "intro": "Todo en uno para registro horario con WinProx Facility limitado incluido.",
             "name": "WinProx Time",
             "price": "59 € / mes",
-            "includes": "Alcance Micro · módulo Time incluido",
-            "description": "Paquete de entrada cuando el registro horario es prioritario — sin plan Facility aparte.",
-            "bullets": ["Hasta 10 unidades/espacios", "Fichaje", "Pausas y turnos", "Clock Point QR"],
+            "includes": "WinProx Facility micro con módulo Time incluido.",
+            "description": "Paquete de entrada cuando el registro horario es prioritario.",
+            "bullets": ["Fichaje", "Pausas y turnos", "Clock Point QR", "Hasta 10 unidades/espacios"],
             "contact_cta": "Solicitar WinProx Time"
         }
     },

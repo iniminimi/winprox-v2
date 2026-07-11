@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "All-in-one for time tracking: Micro scope with the Time module included.",
+            "intro": "All-in-one for time tracking with limited WinProx Facility included.",
             "name": "WinProx Time",
             "price": "€59 / month",
-            "includes": "Micro scope · Time module included",
-            "description": "Entry package when time tracking is your focus — without a separate Facility plan.",
-            "bullets": ["Up to 10 units/spaces", "Clock in/out", "Breaks & shifts", "Clock Point QR"],
+            "includes": "WinProx Facility micro with Time module included.",
+            "description": "Entry package when time tracking is your focus.",
+            "bullets": ["Clock in/out", "Breaks & shifts", "Clock Point QR", "Up to 10 units/spaces"],
             "contact_cta": "Request WinProx Time"
         }
     },

@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "Alles-in-einem für Zeiterfassung: Micro-Umfang mit Time-Modul inklusive.",
+            "intro": "Alles-in-einem für Zeiterfassung mit begrenztem WinProx Facility inklusive.",
             "name": "WinProx Time",
             "price": "€59 / Monat",
-            "includes": "Micro-Umfang · Time-Modul inklusive",
-            "description": "Einstiegspaket, wenn Zeiterfassung im Mittelpunkt steht — ohne separate Facility-Formel.",
-            "bullets": ["Bis zu 10 Units/Räume", "Ein- und Ausstempeln", "Pausen & Schichten", "Clock Point QR"],
+            "includes": "WinProx Facility Micro mit Time-Modul inklusive.",
+            "description": "Einstiegspaket, wenn Zeiterfassung im Mittelpunkt steht.",
+            "bullets": ["Ein- und Ausstempeln", "Pausen & Schichten", "Clock Point QR", "Bis zu 10 Units/Räume"],
             "contact_cta": "WinProx Time anfragen"
         }
     },

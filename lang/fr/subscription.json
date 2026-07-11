@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "Tout-en-un pour la saisie des temps : portée Micro avec le module Time inclus.",
+            "intro": "Tout-en-un pour la saisie des temps avec WinProx Facility limité inclus.",
             "name": "WinProx Time",
             "price": "59 € / mois",
-            "includes": "Portée Micro · module Time inclus",
-            "description": "Formule d'entrée lorsque la saisie des temps est centrale — sans formule Facility séparée.",
-            "bullets": ["Jusqu'à 10 unités/espaces", "Pointage", "Pauses & shifts", "Clock Point QR"],
+            "includes": "WinProx Facility micro avec module Time inclus.",
+            "description": "Formule d'entrée lorsque la saisie des temps est centrale.",
+            "bullets": ["Pointage", "Pauses & shifts", "Clock Point QR", "Jusqu'à 10 unités/espaces"],
             "contact_cta": "Demander WinProx Time"
         }
     },

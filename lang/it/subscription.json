@@ -138,12 +138,12 @@
     "products": {
         "time": {
             "heading": "WinProx Time",
-            "intro": "Tutto-in-uno per la rilevazione ore: ambito Micro con modulo Time incluso.",
+            "intro": "Tutto-in-uno per la rilevazione ore con WinProx Facility limitato incluso.",
             "name": "WinProx Time",
             "price": "59 € / mese",
-            "includes": "Ambito Micro · modulo Time incluso",
-            "description": "Pacchetto d'ingresso quando la rilevazione ore è centrale — senza piano Facility separato.",
-            "bullets": ["Fino a 10 unità/spazi", "Timbratura", "Pause e turni", "Clock Point QR"],
+            "includes": "WinProx Facility micro con modulo Time incluso.",
+            "description": "Pacchetto d'ingresso quando la rilevazione ore è centrale.",
+            "bullets": ["Timbratura", "Pause e turni", "Clock Point QR", "Fino a 10 unità/spazi"],
             "contact_cta": "Richiedi WinProx Time"
         }
     },
