@@ -152,7 +152,7 @@
     @endif
 
     <section class="wp-billing-product">
-        <figure class="wp-billing-product__logo">
+        <figure class="wp-billing-product__logo wp-card wp-card-pad">
             <img
                 src="{{ asset('images/welcome/winprox_time_logo.jpg') }}"
                 alt="{{ __('welcome.products.time.logo_alt') }}"
@@ -198,7 +198,7 @@
     </section>
 
     <section class="wp-billing-product">
-        <figure class="wp-billing-product__logo">
+        <figure class="wp-billing-product__logo wp-card wp-card-pad">
             <img
                 src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
                 alt="{{ __('welcome.products.facility.logo_alt') }}"

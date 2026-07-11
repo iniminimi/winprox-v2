@@ -3033,11 +3033,12 @@ svg.wp-release-worker-row__icon,
 
 .wp-billing-product__logo {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     width: 14rem;
     height: 14rem;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .wp-billing-product__logo-img {
