@@ -3039,6 +3039,18 @@ svg.wp-release-worker-row__icon,
     margin-top: 3rem;
 }
 
+.wp-billing-product + .wp-card.wp-billing-page-width {
+    margin-top: 3rem;
+}
+
+.wp-billing-page-width .wp-section-title {
+    margin: 0;
+}
+
+.wp-billing-page-width .wp-muted {
+    margin: 0;
+}
+
 .wp-billing-product--module {
     grid-template-columns: 9.8rem minmax(0, 1fr);
 }
@@ -3099,20 +3111,6 @@ svg.wp-release-worker-row__icon,
     .wp-billing-product__logo {
         margin-inline: auto;
     }
-}
-
-.wp-billing-section-head {
-    max-width: 48rem;
-    margin: 2rem auto 0.75rem;
-    width: 100%;
-}
-
-.wp-billing-section-head .wp-section-title {
-    margin: 0;
-}
-
-.wp-billing-section-head .wp-muted {
-    margin: 0.35rem 0 0;
 }
 
 .wp-billing-plan-card {

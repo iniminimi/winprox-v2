@@ -276,7 +276,7 @@
         </div>
     </section>
 
-    <div class="wp-billing-section-head">
+    <div class="wp-card wp-card-pad wp-stack-tight wp-billing-page-width">
         <h2 class="wp-section-title">{{ __('subscription.modules_heading') }}</h2>
         <p class="wp-muted">{{ __('subscription.modules_intro') }}</p>
     </div>
