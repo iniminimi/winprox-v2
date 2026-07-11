@@ -12,6 +12,8 @@ it('toont publieke prijzenpagina zonder plan-knoppen', function () {
         ->assertSee(__('welcome.nav.pricing'), false)
         ->assertSee(__('subscription.facility_heading'))
         ->assertSee(__('subscription.products.time.name'))
+        ->assertSee(__('subscription.modules.esg.name'))
+        ->assertSee(__('subscription.modules.time.name'))
         ->assertDontSee(__('subscription.choose_plan'), false);
 });
 

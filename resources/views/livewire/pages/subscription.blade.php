@@ -281,52 +281,66 @@
         <p class="wp-muted">{{ __('subscription.modules_intro') }}</p>
     </div>
 
-    <div class="wp-billing-plan-list">
-        @foreach ($moduleKeys as $moduleKey)
-            @php
-                $isModuleActive = $moduleKey === 'esg'
-                    ? (bool) $tenant?->has_esg_module
-                    : (bool) $tenant?->has_time_module;
-                $modulePlanTiers = config("billing.modules.{$moduleKey}.plan_tiers", ['pro', 'business']);
-            @endphp
-            <article class="wp-billing-plan-card" wire:key="subscription-module-{{ $moduleKey }}">
-                <div class="wp-billing-plan-card-body">
-                    <div class="wp-billing-plan-card-head">
-                        <h2 class="wp-billing-plan-card-title">{{ __("subscription.modules.{$moduleKey}.name") }}</h2>
-                    </div>
-                    <p class="wp-billing-plan-card-minimum">{{ __("subscription.modules.{$moduleKey}.pricing_caption") }}</p>
-                    <ul class="wp-billing-module-pricing">
-                        @foreach ($modulePlanTiers as $planTier)
-                            <li>
-                                <span class="wp-billing-module-pricing__plan">{{ __("subscription.plans.{$planTier}.name") }}</span>
-                                <span class="wp-billing-module-pricing__price">{{ __("subscription.modules.{$moduleKey}.pricing.{$planTier}") }}</span>
-                            </li>
-                        @endforeach
-                    </ul>
-                    <ul class="wp-billing-plan-card-meta">
-                        @foreach (__("subscription.modules.{$moduleKey}.bullets") as $bullet)
-                            <li>{{ $bullet }}</li>
-                        @endforeach
-                    </ul>
-                    <p class="wp-billing-plan-card-desc">{{ __("subscription.modules.{$moduleKey}.description") }}</p>
-                </div>
-                @if ($showManageActions)
-                    <div class="wp-billing-plan-card-action">
-                        @if ($isModuleActive)
-                            <span class="wp-pill wp-pill--done">{{ __('subscription.module_active') }}</span>
-                        @else
-                            <a
-                                href="{{ route('contact.index') }}"
-                                class="btn btn--primary btn--block"
-                            >
-                                {{ __('subscription.module_contact_cta') }}
-                            </a>
+    @foreach ($moduleKeys as $moduleKey)
+        @php
+            $isModuleActive = $moduleKey === 'esg'
+                ? (bool) $tenant?->has_esg_module
+                : (bool) $tenant?->has_time_module;
+            $modulePlanTiers = config("billing.modules.{$moduleKey}.plan_tiers", ['pro', 'business']);
+        @endphp
+        <section class="wp-billing-product" wire:key="subscription-module-section-{{ $moduleKey }}">
+            <figure class="wp-billing-product__logo wp-card wp-card-pad">
+                <img
+                    src="{{ asset('images/welcome/winprox_'.$moduleKey.'_module_logo.jpg') }}"
+                    alt="{{ __('subscription.modules.'.$moduleKey.'.name') }}"
+                    class="wp-billing-product__logo-img"
+                    loading="lazy"
+                    decoding="async"
+                >
+            </figure>
+            <div class="wp-billing-product__content">
+                <header class="wp-billing-product__intro">
+                    <h2 class="wp-section-title">{{ __("subscription.modules.{$moduleKey}.name") }}</h2>
+                    <p class="wp-muted">{{ __("subscription.modules.{$moduleKey}.description") }}</p>
+                </header>
+
+                <div class="wp-billing-plan-list">
+                    <article class="wp-billing-plan-card" wire:key="subscription-module-{{ $moduleKey }}">
+                        <div class="wp-billing-plan-card-body">
+                            <p class="wp-billing-plan-card-minimum">{{ __("subscription.modules.{$moduleKey}.pricing_caption") }}</p>
+                            <ul class="wp-billing-module-pricing">
+                                @foreach ($modulePlanTiers as $planTier)
+                                    <li>
+                                        <span class="wp-billing-module-pricing__plan">{{ __("subscription.plans.{$planTier}.name") }}</span>
+                                        <span class="wp-billing-module-pricing__price">{{ __("subscription.modules.{$moduleKey}.pricing.{$planTier}") }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <ul class="wp-billing-plan-card-meta">
+                                @foreach (__("subscription.modules.{$moduleKey}.bullets") as $bullet)
+                                    <li>{{ $bullet }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @if ($showManageActions)
+                            <div class="wp-billing-plan-card-action">
+                                @if ($isModuleActive)
+                                    <span class="wp-pill wp-pill--done">{{ __('subscription.module_active') }}</span>
+                                @else
+                                    <a
+                                        href="{{ route('contact.index') }}"
+                                        class="btn btn--primary btn--block"
+                                    >
+                                        {{ __('subscription.module_contact_cta') }}
+                                    </a>
+                                @endif
+                            </div>
                         @endif
-                    </div>
-                @endif
-            </article>
-        @endforeach
-    </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    @endforeach
 
     <p class="wp-billing-legal">
         <span>{{ __('subscription.legal_footer_intro') }}</span>
