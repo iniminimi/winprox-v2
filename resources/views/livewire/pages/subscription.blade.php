@@ -151,8 +151,8 @@
         @endif
     @endif
 
-    <section class="wp-billing-product">
-        <figure class="wp-billing-product__logo wp-card wp-card-pad">
+    <section class="wp-billing-product wp-card wp-card-pad">
+        <figure class="wp-billing-product__logo">
             <img
                 src="{{ asset('images/welcome/winprox_time_logo.jpg') }}"
                 alt="{{ __('welcome.products.time.logo_alt') }}"
@@ -197,8 +197,8 @@
         </div>
     </section>
 
-    <section class="wp-billing-product">
-        <figure class="wp-billing-product__logo wp-card wp-card-pad">
+    <section class="wp-billing-product wp-card wp-card-pad">
+        <figure class="wp-billing-product__logo">
             <img
                 src="{{ asset('images/welcome/winprox_facility_logo.jpg') }}"
                 alt="{{ __('welcome.products.facility.logo_alt') }}"
@@ -288,8 +288,8 @@
                 : (bool) $tenant?->has_time_module;
             $modulePlanTiers = config("billing.modules.{$moduleKey}.plan_tiers", ['pro', 'business']);
         @endphp
-        <section class="wp-billing-product" wire:key="subscription-module-section-{{ $moduleKey }}">
-            <figure class="wp-billing-product__logo wp-card wp-card-pad">
+        <section class="wp-billing-product wp-card wp-card-pad" wire:key="subscription-module-section-{{ $moduleKey }}">
+            <figure class="wp-billing-product__logo">
                 <img
                     src="{{ asset('images/welcome/winprox_'.$moduleKey.'_module_logo.jpg') }}"
                     alt="{{ __('subscription.modules.'.$moduleKey.'.name') }}"

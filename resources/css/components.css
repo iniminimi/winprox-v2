@@ -3025,6 +3025,11 @@ svg.wp-release-worker-row__icon,
     width: 100%;
     align-items: start;
     text-align: left;
+    box-sizing: border-box;
+}
+
+.wp-billing-product .wp-billing-plan-card:not(.wp-billing-plan-card--bundle) {
+    background: color-mix(in srgb, var(--wp-bg) 65%, var(--wp-surface) 35%);
 }
 
 .wp-billing-product + .wp-billing-product {
