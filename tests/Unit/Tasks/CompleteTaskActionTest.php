@@ -179,5 +179,5 @@ it('records an esg measurement when completing an esg-linked task', function () 
 
     expect($result->status)->toBe(TaskStatus::Done)
         ->and(EsgMeasurement::count())->toBe(1)
-        ->and((float) EsgMeasurement::query()->value('value_numeric'))->toBe(99.5);
+        ->and((float) EsgMeasurement::query()->value('value_numeric'))->toBe(100.0);
 });

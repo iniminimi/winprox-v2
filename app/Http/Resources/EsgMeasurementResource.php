@@ -26,7 +26,7 @@ class EsgMeasurementResource extends JsonResource
             'corrects_measurement_id' => $this->corrects_measurement_id,
             'recorded_at' => $this->recorded_at?->toIso8601String(),
             'created_at' => $this->created_at?->toIso8601String(),
-            'value_numeric' => $this->value_numeric !== null ? (float) $this->value_numeric : null,
+            'value_numeric' => $this->value_numeric !== null ? (int) round((float) $this->value_numeric) : null,
             'value_boolean' => $this->value_boolean,
             'value_string' => $this->value_string,
             'value_json' => $this->value_json,

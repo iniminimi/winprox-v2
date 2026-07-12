@@ -5,7 +5,8 @@
     <div class="wp-cluster wp-cluster--tight">
         <input id="esg-correction-numeric"
                type="number"
-               step="any"
+               step="1"
+               inputmode="numeric"
                class="wp-input"
                wire:model="correctionValueNumeric">
         @if (filled($indicator->unit_of_measure))

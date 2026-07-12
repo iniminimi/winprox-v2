@@ -368,9 +368,7 @@ class BuildEsgDashboardAction
 
     private function formatNumericTotal(float $value, ?string $unitOfMeasure): string
     {
-        $formatted = rtrim(rtrim(number_format($value, 4, ',', '.'), '0'), ',');
-
-        return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
+        return EsgMeasurementPresenter::formatNumericValue($value, $unitOfMeasure);
     }
 
     /**

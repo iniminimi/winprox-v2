@@ -9,8 +9,8 @@
             <div class="wp-cluster wp-cluster--tight">
                 <input id="esg-value-{{ $task->id }}"
                        type="number"
-                       step="any"
-                       inputmode="decimal"
+                       step="1"
+                       inputmode="numeric"
                        class="wp-input"
                        wire:model="completingEsgValueNumeric"
                        placeholder="{{ __('esg.portal.numeric_placeholder') }}">

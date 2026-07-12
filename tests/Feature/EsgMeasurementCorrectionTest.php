@@ -75,7 +75,7 @@ it('registreert een correctie via de correction action', function () {
 
     expect(EsgMeasurement::count())->toBe(2)
         ->and($correction->corrects_measurement_id)->toBe($fixture['original']->id)
-        ->and((float) $correction->value_numeric)->toBe(12.5)
+        ->and((float) $correction->value_numeric)->toBe(13.0)
         ->and((float) $fixture['original']->fresh()->value_numeric)->toBe(10.0);
 });
 

@@ -95,9 +95,9 @@
 
                     <div class="wp-stack-tight">
                         <label class="wp-label" for="esg-threshold-min">{{ __('esg.fields.threshold_min') }}</label>
-                        <input id="esg-threshold-min" type="number" step="any" class="wp-input" wire:model="thresholdMin">
+                        <input id="esg-threshold-min" type="number" step="1" inputmode="numeric" class="wp-input" wire:model="thresholdMin">
                         <label class="wp-label" for="esg-threshold-max">{{ __('esg.fields.threshold_max') }}</label>
-                        <input id="esg-threshold-max" type="number" step="any" class="wp-input" wire:model="thresholdMax">
+                        <input id="esg-threshold-max" type="number" step="1" inputmode="numeric" class="wp-input" wire:model="thresholdMax">
                     </div>
                 @endif
 

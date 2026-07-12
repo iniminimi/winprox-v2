@@ -172,7 +172,7 @@ it('formateert meetwaarden voor weergave', function () {
     ]);
     $measurement->setRelation('indicator', $indicator);
 
-    expect(EsgMeasurementPresenter::displayValue($measurement))->toBe('1.234,5 kWh');
+    expect(EsgMeasurementPresenter::displayValue($measurement))->toBe('1.235 kWh');
 });
 
 it('toont verouderde keuzewaarden in rapportage', function () {

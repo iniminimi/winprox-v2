@@ -36,7 +36,7 @@ class EsgThresholdFollowUpCreated implements WebhookEvent
             'location_id' => $this->measurement->location_id,
             'recorded_at' => $this->measurement->recorded_at?->toIso8601String(),
             'value_numeric' => $this->measurement->value_numeric !== null
-                ? (float) $this->measurement->value_numeric
+                ? (int) round((float) $this->measurement->value_numeric)
                 : null,
         ];
 

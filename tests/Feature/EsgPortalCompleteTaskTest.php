@@ -89,7 +89,7 @@ it('laat een worker een ESG-taak afhandelen met numerieke meting', function () {
     expect($measurement->task_id)->toBe($task->id)
         ->and($measurement->esg_indicator_id)->toBe($indicator->id)
         ->and($measurement->worker_id)->toBe($worker->id)
-        ->and((float) $measurement->value_numeric)->toBe(123.45);
+        ->and((float) $measurement->value_numeric)->toBe(123.0);
 });
 
 it('laat een worker een ESG-taak afhandelen met keuzelijst', function () {

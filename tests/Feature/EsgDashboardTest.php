@@ -243,7 +243,7 @@ it('bouwt trendpunten en top-locaties via action', function () {
         ->and($dashboard->trendPoints)->not->toBeEmpty()
         ->and($dashboard->topLocations)->toHaveCount(1)
         ->and($dashboard->topLocations[0]['name'])->toBe('Gebouw 1')
-        ->and($dashboard->topLocations[0]['total_formatted'])->toContain('88,5');
+        ->and($dashboard->topLocations[0]['total_formatted'])->toContain('89');
 });
 
 it('toont esg-score en categorieverdeling op het dashboard', function () {

@@ -68,7 +68,7 @@ it('registreert een ESG-meting via de API', function () {
     $response->assertCreated()
         ->assertJsonPath('data.task_id', $fixture['task']->id)
         ->assertJsonPath('data.esg_indicator_id', $fixture['indicator']->id)
-        ->assertJsonPath('data.value_numeric', 456.78);
+        ->assertJsonPath('data.value_numeric', 457);
 
     Tenancy::actAs($fixture['tenant']->id);
     expect(EsgMeasurement::count())->toBe(1);

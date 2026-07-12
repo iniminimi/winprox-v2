@@ -77,7 +77,7 @@ it('slaat een numerieke ESG-meting append-only op', function () {
         ->and($measurement->location_id)->toBe($fixture['location']->id)
         ->and($measurement->task_id)->toBe($fixture['task']->id)
         ->and($measurement->esg_indicator_id)->toBe($fixture['indicator']->id)
-        ->and((float) $measurement->value_numeric)->toBe(42.5)
+        ->and((float) $measurement->value_numeric)->toBe(43.0)
         ->and($measurement->value_boolean)->toBeNull()
         ->and($measurement->recorded_at?->toIso8601String())->toBe($recordedAt->toIso8601String())
         ->and($measurement->created_at)->not->toBeNull();

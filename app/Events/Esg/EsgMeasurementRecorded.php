@@ -40,7 +40,7 @@ class EsgMeasurementRecorded implements WebhookEvent
             'recorded_at' => $measurement->recorded_at?->toIso8601String(),
             'created_at' => $measurement->created_at?->toIso8601String(),
             'indicator_type' => $indicator?->type->value,
-            'value_numeric' => $measurement->value_numeric !== null ? (float) $measurement->value_numeric : null,
+            'value_numeric' => $measurement->value_numeric !== null ? (int) round((float) $measurement->value_numeric) : null,
             'value_boolean' => $measurement->value_boolean,
             'value_string' => $measurement->value_string,
             'value_json' => $measurement->value_json,

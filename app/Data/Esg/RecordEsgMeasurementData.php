@@ -40,7 +40,7 @@ readonly class RecordEsgMeasurementData
             esgIndicatorId: (int) $input['esg_indicator_id'],
             recordedAt: CarbonImmutable::parse($input['recorded_at']),
             valueNumeric: array_key_exists('value_numeric', $input) && $input['value_numeric'] !== null && $input['value_numeric'] !== ''
-                ? (float) $input['value_numeric']
+                ? (float) round((float) $input['value_numeric'])
                 : null,
             valueBoolean: array_key_exists('value_boolean', $input) && $input['value_boolean'] !== null
                 ? filter_var($input['value_boolean'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE)
@@ -74,7 +74,9 @@ readonly class RecordEsgMeasurementData
     public function valueColumnsForInsert(EsgIndicatorType $type): array
     {
         return [
-            'value_numeric' => $type === EsgIndicatorType::Numeric ? $this->valueNumeric : null,
+            'value_numeric' => $type === EsgIndicatorType::Numeric && $this->valueNumeric !== null
+                ? (float) round($this->valueNumeric)
+                : null,
             'value_boolean' => $type === EsgIndicatorType::Boolean ? $this->valueBoolean : null,
             'value_string' => $type === EsgIndicatorType::String || $type === EsgIndicatorType::Choice
                 ? $this->valueString

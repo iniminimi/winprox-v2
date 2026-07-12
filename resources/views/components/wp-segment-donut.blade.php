@@ -73,7 +73,7 @@
                 <li class="wp-segment-donut__legend-row" wire:key="esg-category-{{ $segment['key'] }}">
                     <span @class(['wp-segment-donut__swatch', 'wp-segment-donut__segment--'.$segment['key']]) aria-hidden="true"></span>
                     <span class="wp-grow">{{ $segment['label'] }}</span>
-                    <span class="wp-muted wp-tabular">{{ number_format((float) $segment['percent'], 1, ',', '.') }}%</span>
+                    <span class="wp-muted wp-tabular">{{ number_format((int) round((float) $segment['percent']), 0, ',', '.') }}%</span>
                 </li>
             @endforeach
         </ul>

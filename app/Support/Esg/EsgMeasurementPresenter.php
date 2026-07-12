@@ -60,15 +60,20 @@ final class EsgMeasurementPresenter
         return false;
     }
 
+    public static function formatNumericValue(float $value, ?string $unitOfMeasure = null): string
+    {
+        $formatted = number_format((int) round($value), 0, ',', '.');
+
+        return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
+    }
+
     private static function formatNumeric(EsgMeasurement $measurement, ?string $unitOfMeasure): string
     {
         if ($measurement->value_numeric === null) {
             return '—';
         }
 
-        $formatted = rtrim(rtrim(number_format((float) $measurement->value_numeric, 4, ',', '.'), '0'), ',');
-
-        return filled($unitOfMeasure) ? "{$formatted} {$unitOfMeasure}" : $formatted;
+        return self::formatNumericValue((float) $measurement->value_numeric, $unitOfMeasure);
     }
 
     private static function formatChoice(EsgMeasurement $measurement, ?EsgIndicator $indicator): string

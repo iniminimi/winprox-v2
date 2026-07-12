@@ -66,7 +66,7 @@
                     cy="{{ round($y, 1) }}"
                     r="4"
                 >
-                    <title>{{ $point['label'] }}: {{ number_format((float) $point['value'], 2, ',', '.') }}{{ filled($unit) ? ' '.$unit : '' }}</title>
+                    <title>{{ $point['label'] }}: {{ \App\Support\Esg\EsgMeasurementPresenter::formatNumericValue((float) $point['value'], $unit) }}</title>
                 </circle>
             @endforeach
         </svg>
