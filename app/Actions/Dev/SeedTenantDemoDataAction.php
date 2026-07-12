@@ -219,7 +219,7 @@ final class SeedTenantDemoDataAction
             EsgIndicatorType::Numeric => ['value_numeric' => fake()->randomFloat(4, 0, 9999)],
             EsgIndicatorType::Boolean => ['value_boolean' => fake()->boolean()],
             EsgIndicatorType::String => ['value_string' => fake()->sentence()],
-            EsgIndicatorType::Json => ['value_json' => ['reading' => fake()->randomFloat(2, 0, 100)]],
+            EsgIndicatorType::Json => ['value_json' => ['reading' => fake()->numberBetween(0, 100)]],
             EsgIndicatorType::Choice => ['value_string' => fake()->randomElement($indicator->options ?? ['Onbekend'])],
             EsgIndicatorType::MultiChoice => ['value_json' => [fake()->randomElement($indicator->options ?? ['Onbekend'])]],
         };

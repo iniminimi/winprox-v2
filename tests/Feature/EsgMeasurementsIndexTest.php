@@ -175,6 +175,17 @@ it('formateert meetwaarden voor weergave', function () {
     expect(EsgMeasurementPresenter::displayValue($measurement))->toBe('1.235 kWh');
 });
 
+it('toont json-metingen als waarde zonder engelse sleutels', function () {
+    $indicator = EsgIndicator::factory()->json()->make(['name' => 'Sensor snapshot']);
+    $measurement = EsgMeasurement::factory()->make([
+        'value_json' => ['reading' => 71.24],
+        'esg_indicator_id' => 1,
+    ]);
+    $measurement->setRelation('indicator', $indicator);
+
+    expect(EsgMeasurementPresenter::displayValue($measurement))->toBe('71');
+});
+
 it('toont verouderde keuzewaarden in rapportage', function () {
     $indicator = EsgIndicator::factory()->choice(['Restafval', 'Papier'])->make(['name' => 'Afval']);
     $measurement = EsgMeasurement::factory()->make([

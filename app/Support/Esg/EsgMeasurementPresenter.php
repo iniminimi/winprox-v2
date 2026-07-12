@@ -126,8 +126,39 @@ final class EsgMeasurementPresenter
             return '—';
         }
 
+        $parts = [];
+
+        foreach ($value as $item) {
+            $formatted = self::formatJsonScalar($item);
+
+            if ($formatted !== null) {
+                $parts[] = $formatted;
+            }
+        }
+
+        if ($parts !== []) {
+            return implode(', ', $parts);
+        }
+
         $encoded = json_encode($value, JSON_UNESCAPED_UNICODE);
 
         return $encoded === false ? '—' : $encoded;
+    }
+
+    private static function formatJsonScalar(mixed $value): ?string
+    {
+        if (is_int($value) || is_float($value)) {
+            return self::formatNumericValue((float) $value);
+        }
+
+        if (is_bool($value)) {
+            return $value ? __('esg.portal.boolean_yes') : __('esg.portal.boolean_no');
+        }
+
+        if (is_string($value) && $value !== '') {
+            return $value;
+        }
+
+        return null;
     }
 }
