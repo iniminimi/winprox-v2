@@ -149,6 +149,10 @@ class BuildEsgDashboardAction
             complianceIncompleteFraction: $compliance['incomplete_fraction'],
             categorySegments: $categoryBreakdown['segments'],
             categoryMeasurementTotal: $categoryBreakdown['total'],
+            alarmsMeasurementsUrl: route('esg.measurements.index', ['alarms' => 1]),
+            periodMeasurementsUrl: route('esg.measurements.index', [
+                'from' => $periodStart->format('Y-m-d'),
+            ]),
         );
     }
 
@@ -160,6 +164,7 @@ class BuildEsgDashboardAction
      *     is_alert: bool,
      *     has_measurement: bool,
      *     recorded_at_label: ?string,
+     *     measurements_url: string,
      * }
      */
     private function buildIndicatorKpi(EsgIndicator $indicator): array
@@ -179,6 +184,7 @@ class BuildEsgDashboardAction
                 'is_alert' => false,
                 'has_measurement' => false,
                 'recorded_at_label' => null,
+                'measurements_url' => route('esg.measurements.index', ['indicator' => $indicator->id]),
             ];
         }
 
@@ -189,6 +195,7 @@ class BuildEsgDashboardAction
             'is_alert' => EsgMeasurementPresenter::isOutsideThresholds($latestMeasurement),
             'has_measurement' => true,
             'recorded_at_label' => $latestMeasurement->recorded_at?->format('d-m-Y H:i'),
+            'measurements_url' => route('esg.measurements.index', ['indicator' => $indicator->id]),
         ];
     }
 

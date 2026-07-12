@@ -154,7 +154,8 @@
             "title": "ESG score",
             "subtitle": "Weighted score based on threshold compliance and measurement coverage.",
             "threshold": "Within thresholds: :percent%",
-            "coverage": "Active indicators with readings: :percent%"
+            "coverage": "Active indicators with readings: :percent%",
+            "drill_down": "Readings in recent period"
         },
         "distribution": {
             "kicker": "Categories",
@@ -210,7 +211,36 @@
             "all_locations": "All locations",
             "all_units": "All units",
             "apply": "Apply filters",
-            "reset": "Clear"
+            "reset": "Clear",
+            "alarms_only": "Threshold alarms only"
+        }
+    },
+    "chain": {
+        "title": "Operational chain",
+        "measurement": "Reading",
+        "alarm": "Threshold alarm",
+        "measurement_task": "Measurement task",
+        "follow_up_task": "Follow-up task",
+        "esg_task": "ESG task",
+        "open": "Open"
+    },
+    "point": {
+        "title": "Measurement point history",
+        "subtitle": ":unit · :location",
+        "location": "Location",
+        "indicator": "Indicator",
+        "link": "ESG history",
+        "readings": ":count readings|:count reading|:count readings",
+        "alarms": ":count alarms|:count alarm|:count alarms",
+        "open_follow_ups": ":count open follow-up|:count open follow-up|:count open follow-ups",
+        "all_measurements": "All readings",
+        "trend": {
+            "title": "Trend per measurement point",
+            "period": "Last :days days|Last :days day|Last :days days"
+        },
+        "timeline": {
+            "title": "Timeline",
+            "empty": "No readings at this measurement point yet."
         }
     }
 }

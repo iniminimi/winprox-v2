@@ -154,7 +154,8 @@
             "title": "ESG-score",
             "subtitle": "Gewogen score op basis van drempelnaleving en meetdekking.",
             "threshold": "Drempels binnen grens: :percent%",
-            "coverage": "Actieve indicatoren met meting: :percent%"
+            "coverage": "Actieve indicatoren met meting: :percent%",
+            "drill_down": "Metingen laatste periode"
         },
         "distribution": {
             "kicker": "Categorieën",
@@ -210,7 +211,36 @@
             "all_locations": "Alle locaties",
             "all_units": "Alle units",
             "apply": "Filter toepassen",
-            "reset": "Wissen"
+            "reset": "Wissen",
+            "alarms_only": "Alleen drempelalarmen"
+        }
+    },
+    "chain": {
+        "title": "Operationele keten",
+        "measurement": "Meting",
+        "alarm": "Drempelalarm",
+        "measurement_task": "Meettaak",
+        "follow_up_task": "Opvolgtaak",
+        "esg_task": "ESG-taak",
+        "open": "Openen"
+    },
+    "point": {
+        "title": "Meetpunthistoriek",
+        "subtitle": ":unit · :location",
+        "location": "Locatie",
+        "indicator": "Indicator",
+        "link": "ESG-historiek",
+        "readings": ":count metingen|:count meting|:count metingen",
+        "alarms": ":count alarmen|:count alarm|:count alarmen",
+        "open_follow_ups": ":count open opvolgtaak|:count open opvolgtaak|:count open opvolgtaken",
+        "all_measurements": "Alle metingen",
+        "trend": {
+            "title": "Trend per meetpunt",
+            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen"
+        },
+        "timeline": {
+            "title": "Tijdlijn",
+            "empty": "Nog geen metingen op dit meetpunt."
         }
     }
 }

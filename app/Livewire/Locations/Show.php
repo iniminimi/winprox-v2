@@ -18,8 +18,10 @@ use App\Http\Requests\Locations\StoreUnitRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Models\Category;
+use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\EntityDetailNavigation;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Translation\LocaleSupport;
@@ -565,6 +567,16 @@ class Show extends Component
             'bulkSummaries' => $bulkSummaries,
             'teams' => $teams,
             'categories' => $categories,
+            'hasEsgModule' => (bool) Tenant::query()
+                ->whereKey($this->location->tenant_id)
+                ->value('has_esg_module'),
+            'unitIdsWithEsgMeasurements' => EsgMeasurement::query()
+                ->where('location_id', $this->location->id)
+                ->whereNotNull('unit_id')
+                ->distinct()
+                ->pluck('unit_id')
+                ->map(fn ($id) => (int) $id)
+                ->all(),
             'nav' => EntityDetailNavigation::forLocation($this->location),
             'bulkPreview' => $this->bulkPreviewNames(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),

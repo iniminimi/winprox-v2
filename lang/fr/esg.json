@@ -154,7 +154,8 @@
             "title": "Score ESG",
             "subtitle": "Score pondéré basé sur le respect des seuils et la couverture des mesures.",
             "threshold": "Dans les seuils : :percent%",
-            "coverage": "Indicateurs actifs avec mesure : :percent%"
+            "coverage": "Indicateurs actifs avec mesure : :percent%",
+            "drill_down": "Mesures de la période récente"
         },
         "distribution": {
             "kicker": "Catégories",
@@ -210,7 +211,36 @@
             "all_locations": "Tous les sites",
             "all_units": "Toutes les unités",
             "apply": "Appliquer les filtres",
-            "reset": "Effacer"
+            "reset": "Effacer",
+            "alarms_only": "Alarmes de seuil uniquement"
+        }
+    },
+    "chain": {
+        "title": "Chaîne opérationnelle",
+        "measurement": "Mesure",
+        "alarm": "Alarme de seuil",
+        "measurement_task": "Tâche de mesure",
+        "follow_up_task": "Tâche de suivi",
+        "esg_task": "Tâche ESG",
+        "open": "Ouvrir"
+    },
+    "point": {
+        "title": "Historique du point de mesure",
+        "subtitle": ":unit · :location",
+        "location": "Site",
+        "indicator": "Indicateur",
+        "link": "Historique ESG",
+        "readings": ":count mesures|:count mesure|:count mesures",
+        "alarms": ":count alarmes|:count alarme|:count alarmes",
+        "open_follow_ups": ":count suivi ouvert|:count suivi ouvert|:count suivis ouverts",
+        "all_measurements": "Toutes les mesures",
+        "trend": {
+            "title": "Tendance par point de mesure",
+            "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours"
+        },
+        "timeline": {
+            "title": "Chronologie",
+            "empty": "Pas encore de mesures sur ce point."
         }
     }
 }

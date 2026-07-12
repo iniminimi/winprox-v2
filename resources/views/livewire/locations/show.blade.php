@@ -155,6 +155,9 @@
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
                                 @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
                         <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
+                        @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
+                            <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
+                        @endif
                     </div>
                 </div>
             @empty

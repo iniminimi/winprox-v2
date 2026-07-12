@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Esg;
 
+use App\Actions\Esg\ListEsgMeasurementsAction;
 use App\Actions\Esg\RecordEsgMeasurementCorrectionAction;
 use App\Http\Requests\Esg\RecordEsgMeasurementCorrectionRequest;
 use App\Models\EsgIndicator;
@@ -38,6 +39,9 @@ class MeasurementsIndex extends Component
     #[Url(as: 'to')]
     public string $recordedTo = '';
 
+    #[Url(as: 'alarms')]
+    public bool $alarmsOnly = false;
+
     public bool $showCorrectionModal = false;
 
     public ?int $correctingMeasurementId = null;
@@ -70,6 +74,7 @@ class MeasurementsIndex extends Component
             'unit' => $this->unitFilter ?: null,
             'from' => trim($this->recordedFrom) !== '' ? trim($this->recordedFrom) : null,
             'to' => trim($this->recordedTo) !== '' ? trim($this->recordedTo) : null,
+            'alarms' => $this->alarmsOnly ? 1 : null,
         ])), navigate: true);
     }
 
@@ -156,36 +161,26 @@ class MeasurementsIndex extends Component
         $this->closeCorrectionModal();
     }
 
-    public function render()
+    public function render(ListEsgMeasurementsAction $listMeasurements)
     {
         $this->authorize('viewAny', EsgMeasurement::class);
 
-        $measurements = EsgMeasurement::query()
-            ->with([
-                'indicator:id,name,original_language,type,unit_of_measure,thresholds,options',
-                'indicator.translations',
-                'unit:id,name,original_language,location_id',
-                'unit.translations',
-                'location:id,name,original_language',
-                'location.translations',
-                'worker:id,first_name,last_name',
-                'correctsMeasurement.indicator:id,name,original_language,type,unit_of_measure,thresholds,options',
-                'correctsMeasurement.indicator.translations',
-            ])
-            ->when($this->indicatorFilter, fn ($query) => $query->where('esg_indicator_id', $this->indicatorFilter))
-            ->when($this->locationFilter, fn ($query) => $query->where('location_id', $this->locationFilter))
-            ->when($this->unitFilter, fn ($query) => $query->where('unit_id', $this->unitFilter))
-            ->when(trim($this->recordedFrom) !== '', fn ($query) => $query->whereDate('recorded_at', '>=', trim($this->recordedFrom)))
-            ->when(trim($this->recordedTo) !== '', fn ($query) => $query->whereDate('recorded_at', '<=', trim($this->recordedTo)))
-            ->orderByDesc('recorded_at')
-            ->orderByDesc('id')
-            ->paginate(25);
+        $measurements = $listMeasurements->handle(
+            tenantId: (int) Tenancy::id(),
+            indicatorId: $this->indicatorFilter,
+            locationId: $this->locationFilter,
+            unitId: $this->unitFilter,
+            recordedFrom: trim($this->recordedFrom) !== '' ? trim($this->recordedFrom) : null,
+            recordedTo: trim($this->recordedTo) !== '' ? trim($this->recordedTo) : null,
+            alarmsOnly: $this->alarmsOnly,
+        );
 
         $hasFilters = $this->indicatorFilter !== null
             || $this->locationFilter !== null
             || $this->unitFilter !== null
             || trim($this->recordedFrom) !== ''
-            || trim($this->recordedTo) !== '';
+            || trim($this->recordedTo) !== ''
+            || $this->alarmsOnly;
 
         return view('livewire.esg.measurements-index', [
             'measurements' => $measurements,

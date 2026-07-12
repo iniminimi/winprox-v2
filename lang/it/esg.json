@@ -154,7 +154,8 @@
             "title": "Punteggio ESG",
             "subtitle": "Punteggio ponderato su soglie e copertura delle misurazioni.",
             "threshold": "Entro le soglie: :percent%",
-            "coverage": "Indicatori attivi con misurazione: :percent%"
+            "coverage": "Indicatori attivi con misurazione: :percent%",
+            "drill_down": "Misurazioni del periodo recente"
         },
         "distribution": {
             "kicker": "Categorie",
@@ -210,7 +211,36 @@
             "all_locations": "Tutte le sedi",
             "all_units": "Tutte le unità",
             "apply": "Applica filtri",
-            "reset": "Cancella"
+            "reset": "Cancella",
+            "alarms_only": "Solo allarmi di soglia"
+        }
+    },
+    "chain": {
+        "title": "Catena operativa",
+        "measurement": "Misurazione",
+        "alarm": "Allarme di soglia",
+        "measurement_task": "Attività di misurazione",
+        "follow_up_task": "Attività di follow-up",
+        "esg_task": "Attività ESG",
+        "open": "Apri"
+    },
+    "point": {
+        "title": "Storico punto di misurazione",
+        "subtitle": ":unit · :location",
+        "location": "Sede",
+        "indicator": "Indicatore",
+        "link": "Storico ESG",
+        "readings": ":count misurazioni|:count misurazione|:count misurazioni",
+        "alarms": ":count allarmi|:count allarme|:count allarmi",
+        "open_follow_ups": ":count follow-up aperto|:count follow-up aperto|:count follow-up aperti",
+        "all_measurements": "Tutte le misurazioni",
+        "trend": {
+            "title": "Trend per punto di misurazione",
+            "period": "Ultimi :days giorni|Ultimo :days giorno|Ultimi :days giorni"
+        },
+        "timeline": {
+            "title": "Cronologia",
+            "empty": "Nessuna misurazione su questo punto."
         }
     }
 }

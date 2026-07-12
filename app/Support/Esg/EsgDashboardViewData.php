@@ -16,6 +16,7 @@ final readonly class EsgDashboardViewData
      *     is_alert: bool,
      *     has_measurement: bool,
      *     recorded_at_label: ?string,
+     *     measurements_url: string,
      * }>  $indicatorKpis
      * @param  list<array{id: int, name: string}>  $trendIndicatorOptions
      * @param  list<array{label: string, value: float}>  $trendPoints
@@ -61,5 +62,7 @@ final readonly class EsgDashboardViewData
         public float $complianceIncompleteFraction,
         public array $categorySegments,
         public int $categoryMeasurementTotal,
+        public string $alarmsMeasurementsUrl,
+        public string $periodMeasurementsUrl,
     ) {}
 }

@@ -835,6 +835,43 @@ a.wp-kpi:hover {
     padding-left: 1.125rem;
 }
 
+.wp-esg-chain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin: 0.375rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wp-esg-chain__step {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.375rem 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--wp-border);
+    border-radius: 999px;
+    background-color: var(--wp-surface-muted);
+}
+
+.wp-esg-chain__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--wp-text-muted);
+}
+
+.wp-esg-point-timeline__row {
+    align-items: flex-start;
+}
+
+.wp-filter-field--checkbox {
+    display: flex;
+    align-items: flex-end;
+}
+
 .wp-segment-donut__body {
     position: relative;
     display: inline-flex;

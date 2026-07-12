@@ -63,6 +63,13 @@
         <p class="wp-text-body">{{ $task->priority->label() }}</p>
     </div>
 
+    @if ($esgChainSteps !== [])
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <p class="wp-section-title">{{ __('esg.chain.title') }}</p>
+            @include('partials.wp-esg-operation-chain', ['steps' => $esgChainSteps])
+        </div>
+    @endif
+
     @if ($showEditTaskModal)
         @teleport('body')
         <div class="wp-modal" role="dialog" aria-modal="true" aria-labelledby="task-edit-title" x-on:keydown.escape.window="$wire.closeEditTaskModal()">

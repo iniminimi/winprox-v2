@@ -154,7 +154,8 @@
             "title": "Puntuación ESG",
             "subtitle": "Puntuación ponderada según umbrales y cobertura de mediciones.",
             "threshold": "Dentro de umbrales: :percent%",
-            "coverage": "Indicadores activos con medición: :percent%"
+            "coverage": "Indicadores activos con medición: :percent%",
+            "drill_down": "Mediciones del período reciente"
         },
         "distribution": {
             "kicker": "Categorías",
@@ -210,7 +211,36 @@
             "all_locations": "Todas las ubicaciones",
             "all_units": "Todas las unidades",
             "apply": "Aplicar filtros",
-            "reset": "Borrar"
+            "reset": "Borrar",
+            "alarms_only": "Solo alarmas de umbral"
+        }
+    },
+    "chain": {
+        "title": "Cadena operativa",
+        "measurement": "Medición",
+        "alarm": "Alarma de umbral",
+        "measurement_task": "Tarea de medición",
+        "follow_up_task": "Tarea de seguimiento",
+        "esg_task": "Tarea ESG",
+        "open": "Abrir"
+    },
+    "point": {
+        "title": "Historial del punto de medición",
+        "subtitle": ":unit · :location",
+        "location": "Ubicación",
+        "indicator": "Indicador",
+        "link": "Historial ESG",
+        "readings": ":count mediciones|:count medición|:count mediciones",
+        "alarms": ":count alarmas|:count alarma|:count alarmas",
+        "open_follow_ups": ":count seguimiento abierto|:count seguimiento abierto|:count seguimientos abiertos",
+        "all_measurements": "Todas las mediciones",
+        "trend": {
+            "title": "Tendencia por punto de medición",
+            "period": "Últimos :days días|Último :days día|Últimos :days días"
+        },
+        "timeline": {
+            "title": "Línea de tiempo",
+            "empty": "Aún no hay mediciones en este punto."
         }
     }
 }

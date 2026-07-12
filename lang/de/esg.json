@@ -154,7 +154,8 @@
             "title": "ESG-Score",
             "subtitle": "Gewichteter Score aus Schwellen-Compliance und Messabdeckung.",
             "threshold": "Innerhalb der Schwellen: :percent%",
-            "coverage": "Aktive Indikatoren mit Messung: :percent%"
+            "coverage": "Aktive Indikatoren mit Messung: :percent%",
+            "drill_down": "Messungen im letzten Zeitraum"
         },
         "distribution": {
             "kicker": "Kategorien",
@@ -210,7 +211,36 @@
             "all_locations": "Alle Standorte",
             "all_units": "Alle Units",
             "apply": "Filter anwenden",
-            "reset": "Zurücksetzen"
+            "reset": "Zurücksetzen",
+            "alarms_only": "Nur Schwellenalarme"
+        }
+    },
+    "chain": {
+        "title": "Operative Kette",
+        "measurement": "Messung",
+        "alarm": "Schwellenalarm",
+        "measurement_task": "Messaufgabe",
+        "follow_up_task": "Folgeaufgabe",
+        "esg_task": "ESG-Aufgabe",
+        "open": "Öffnen"
+    },
+    "point": {
+        "title": "Messpunkt-Historie",
+        "subtitle": ":unit · :location",
+        "location": "Standort",
+        "indicator": "Indikator",
+        "link": "ESG-Historie",
+        "readings": ":count Messungen|:count Messung|:count Messungen",
+        "alarms": ":count Alarme|:count Alarm|:count Alarme",
+        "open_follow_ups": ":count offene Folgeaufgabe|:count offene Folgeaufgabe|:count offene Folgeaufgaben",
+        "all_measurements": "Alle Messungen",
+        "trend": {
+            "title": "Trend pro Messpunkt",
+            "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage"
+        },
+        "timeline": {
+            "title": "Zeitachse",
+            "empty": "Noch keine Messungen an diesem Messpunkt."
         }
     }
 }

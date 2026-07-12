@@ -1,5 +1,6 @@
 @php
     use App\Support\Esg\EsgMeasurementPresenter;
+    use App\Support\Esg\EsgOperationChainPresenter;
 @endphp
 
 <div class="wp-stack" data-manual-capture="esg-measurements">
@@ -54,6 +55,12 @@
                     <label class="wp-label" for="esg-filter-to">{{ __('esg.measurements.filters.to') }}</label>
                     <x-wp-date-input id="esg-filter-to" wire:model="recordedTo" />
                 </div>
+                <div class="wp-filter-field wp-filter-field--checkbox">
+                    <label class="wp-checkbox">
+                        <input type="checkbox" wire:model="alarmsOnly">
+                        <span>{{ __('esg.measurements.filters.alarms_only') }}</span>
+                    </label>
+                </div>
             </div>
             <div class="wp-cluster wp-cluster--end">
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="resetFilters">
@@ -92,12 +99,19 @@
                                 </p>
                             @endif
                             <p class="wp-muted wp-text-sm">
-                                {{ $measurement->location?->localizedName() ?? '—' }}
+                                @if ($measurement->location)
+                                    <a href="{{ route('locations.show', $measurement->location) }}">{{ $measurement->location->localizedName() }}</a>
+                                @else
+                                    —
+                                @endif
                                 @if ($measurement->unit)
-                                    · {{ $measurement->unit->localizedName() }}
+                                    · <a href="{{ route('esg.point.history', ['unit' => $measurement->unit_id, 'indicator' => $measurement->esg_indicator_id]) }}">{{ $measurement->unit->localizedName() }}</a>
                                 @endif
                                 · {{ optional($measurement->recorded_at)->format('d-m-Y H:i') }}
                             </p>
+                            @include('partials.wp-esg-operation-chain', [
+                                'steps' => EsgOperationChainPresenter::stepsForMeasurement($measurement),
+                            ])
                             @if ($measurement->worker)
                                 <p class="wp-muted wp-text-sm">
                                     {{ trim($measurement->worker->first_name.' '.$measurement->worker->last_name) }}
@@ -114,6 +128,11 @@
                             @if ($measurement->task_id)
                                 <a href="{{ route('tasks.show', $measurement->task_id) }}" class="btn btn--ghost btn--sm">
                                     {{ __('esg.measurements.view_task') }}
+                                </a>
+                            @endif
+                            @if ($measurement->thresholdFollowUpTask)
+                                <a href="{{ route('tasks.show', $measurement->thresholdFollowUpTask) }}" class="btn btn--primary btn--sm">
+                                    {{ __('esg.dashboard.auto_task.follow_up') }}
                                 </a>
                             @endif
                             @can('correct', $measurement)

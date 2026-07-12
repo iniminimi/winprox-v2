@@ -12,6 +12,7 @@ use App\Enums\TaskStatus;
 use App\Models\InternalTeam;
 use App\Models\Task;
 use App\Support\EntityDetailNavigation;
+use App\Support\Esg\EsgOperationChainPresenter;
 use App\Support\Tasks\TaskStatusTransitions;
 use App\Support\Validation\TextDescriptionLimits;
 use Livewire\Attributes\Layout;
@@ -46,11 +47,15 @@ class Show extends Component
         $this->task = $task->load([
             'issue.location',
             'issue.unit.translations',
+            'issue.esgIndicator.translations',
             'issue.translations',
             'issue.updates.user',
             'issue.updates.worker',
             'translations',
             'team',
+            'esgThresholdMeasurement.indicator.translations',
+            'esgThresholdMeasurement.task',
+            'esgThresholdMeasurement.thresholdFollowUpTask',
         ]);
         $this->syncFormFromTask();
     }
@@ -213,6 +218,7 @@ class Show extends Component
             'transitions' => TaskStatusTransitions::nextOptions($current),
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),
             'nav' => EntityDetailNavigation::forTask($this->task),
+            'esgChainSteps' => EsgOperationChainPresenter::stepsForTask($this->task),
         ]);
     }
 }

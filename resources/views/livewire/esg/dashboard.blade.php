@@ -34,7 +34,7 @@
     @endif
 
     <div class="wp-kpis">
-        <a href="{{ route('esg.measurements.index') }}"
+        <a href="{{ $dashboard->alarmsMeasurementsUrl }}"
            class="wp-kpi @if ($dashboard->alarmCount > 0) wp-kpi--alert @endif"
            wire:key="kpi-alarms">
             <div class="wp-kpi-body">
@@ -58,7 +58,7 @@
         </a>
 
         @foreach ($dashboard->indicatorKpis as $kpi)
-            <a href="{{ route('esg.measurements.index', ['indicator' => $kpi['indicator_id']]) }}"
+            <a href="{{ $kpi['measurements_url'] }}"
                class="wp-kpi @if ($kpi['is_alert']) wp-kpi--alert @endif"
                wire:key="kpi-indicator-{{ $kpi['indicator_id'] }}">
                 <div class="wp-kpi-body">
@@ -114,7 +114,7 @@
             </div>
 
             @if ($dashboard->thresholdSampleSize > 0)
-                <a href="{{ route('esg.measurements.index') }}"
+                <a href="{{ $dashboard->alarmsMeasurementsUrl }}"
                    class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
                    wire:key="esg-threshold-widget">
                     <div class="wp-health-widget__body">
@@ -208,6 +208,9 @@
                                     </li>
                                 @endif
                             </ul>
+                            <a href="{{ $dashboard->periodMeasurementsUrl }}" class="btn btn--ghost btn--sm">
+                                {{ __('esg.dashboard.score.drill_down') }}
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -282,7 +285,7 @@
             'wp-dashboard-widgets--single' => $dashboard->thresholdSampleSize === 0 && $dashboard->openEsgTasks->isEmpty(),
         ])>
             @if ($dashboard->thresholdSampleSize > 0)
-                <a href="{{ route('esg.measurements.index') }}"
+                <a href="{{ $dashboard->alarmsMeasurementsUrl }}"
                    class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
                    wire:key="esg-threshold-widget">
                     <div class="wp-health-widget__body">
@@ -373,7 +376,7 @@
                                 <p class="wp-muted wp-text-sm">
                                     {{ $measurement->location?->localizedName() ?? '—' }}
                                     @if ($measurement->unit)
-                                        · {{ $measurement->unit->localizedName() }}
+                                        · <a href="{{ route('esg.point.history', ['unit' => $measurement->unit_id, 'indicator' => $measurement->esg_indicator_id]) }}">{{ $measurement->unit->localizedName() }}</a>
                                     @endif
                                     · {{ optional($measurement->recorded_at)->format('d-m-Y H:i') }}
                                 </p>
@@ -402,7 +405,7 @@
         <div class="wp-card wp-card-pad wp-stack-tight" wire:key="esg-alarms">
             <div class="wp-row">
                 <p class="wp-section-title">{{ __('esg.dashboard.alarms.title') }}</p>
-                <a href="{{ route('esg.measurements.index') }}" class="btn btn--ghost btn--sm">
+                <a href="{{ $dashboard->alarmsMeasurementsUrl }}" class="btn btn--ghost btn--sm">
                     {{ __('esg.dashboard.alarms.all') }}
                 </a>
             </div>
@@ -421,7 +424,7 @@
                                 <p class="wp-muted wp-text-sm">
                                     {{ $measurement->location?->localizedName() ?? '—' }}
                                     @if ($measurement->unit)
-                                        · {{ $measurement->unit->localizedName() }}
+                                        · <a href="{{ route('esg.point.history', ['unit' => $measurement->unit_id, 'indicator' => $measurement->esg_indicator_id]) }}">{{ $measurement->unit->localizedName() }}</a>
                                     @endif
                                     · {{ optional($measurement->recorded_at)->format('d-m-Y H:i') }}
                                 </p>

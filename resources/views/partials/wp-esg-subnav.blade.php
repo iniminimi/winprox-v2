@@ -8,7 +8,7 @@
         {{ __('esg.nav.indicators') }}
     </a>
     <a href="{{ route('esg.measurements.index') }}"
-       class="btn btn--sm {{ request()->routeIs('esg.measurements.*') ? 'btn--primary' : 'btn--ghost' }}">
+       class="btn btn--sm {{ request()->routeIs('esg.measurements.*') || request()->routeIs('esg.point.*') ? 'btn--primary' : 'btn--ghost' }}">
         {{ __('esg.nav.measurements') }}
     </a>
 </nav>
