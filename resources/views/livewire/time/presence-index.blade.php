@@ -21,7 +21,7 @@
 
     <div class="wp-card wp-filter-panel wp-time-presence-toolbar">
         <div class="wp-filter-form wp-time-presence-toolbar__form">
-            <div class="wp-filter-form__row wp-time-presence-toolbar__quad">
+            <div class="wp-filter-form__row wp-time-presence-toolbar__primary">
                 <div class="wp-filter-cell wp-filter-cell--search">
                     <label class="wp-filter-inline-label" for="presence-search">{{ __('time.presence.search_label') }}</label>
                     <input id="presence-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
@@ -45,6 +45,8 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+            <div class="wp-filter-form__row">
                 <div class="wp-filter-cell">
                     <label class="wp-filter-inline-label" for="presence-clock-point">{{ __('time.filters.clock_point') }}</label>
                     <select id="presence-clock-point" class="wp-select" wire:model.live="clockPointFilter">
