@@ -141,6 +141,10 @@
                 {
                     "label": "Apri segnalazione",
                     "text": "Vada alla segnalazione collegata per contesto, foto e attività aggiuntive."
+                },
+                {
+                    "label": "Misurazione e follow-up",
+                    "text": "Visibile solo sulle attività di misurazione ESG. Mostra il valore registrato, un eventuale allarme soglia, il task di misurazione e un task di follow-up. <strong>Apri</strong> su Misurazione porta alla panoramica filtrata; su Task di misurazione apre il task collegato."
                 }
             ],
             "status_note": "In produzione, i lavoratori avviano e completano attività tramite il portale QR unità (dopo l'accesso tramite il QR Clock Point).",
@@ -802,6 +806,23 @@
                 {
                     "label": "Disattiva indicatore",
                     "text": "Non usa più un indicatore (es. contatore sostituito)? Lo disattivi invece di eliminarlo. Le misurazioni già raccolte restano completamente conservate."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Aiuto — Cronologia punto di misura",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Cronologia di tutte le misurazioni ESG su un'unità: trend, timeline e allarmi per indicatore."
+                },
+                {
+                    "label": "Misurazione e follow-up",
+                    "text": "Sotto ogni misurazione nella timeline vede i passaggi collegati: la <strong>misurazione</strong> (valore), eventualmente un <strong>allarme soglia</strong>, il <strong>task di misurazione</strong> usato per l'inserimento e un <strong>task di follow-up</strong> se il valore era fuori soglia. Usi <strong>Apri</strong> per andare alla panoramica misurazioni o al task."
+                },
+                {
+                    "label": "Trend",
+                    "text": "Grafico delle misurazioni numeriche nel periodo recente per l'indicatore selezionato."
                 }
             ]
         },

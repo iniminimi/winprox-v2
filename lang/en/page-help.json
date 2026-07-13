@@ -141,6 +141,10 @@
                 {
                     "label": "Open issue",
                     "text": "Go to the linked issue for context, photos and additional tasks."
+                },
+                {
+                    "label": "Reading and follow-up",
+                    "text": "Shown only on ESG measurement tasks. Lists the recorded value, any threshold alarm, the measurement task, and a follow-up task. <strong>Open</strong> on Reading goes to the filtered measurements overview; on Measurement task opens the linked task."
                 }
             ],
             "status_note": "On the shop floor, workers start and complete tasks via the unit QR portal (after signing in via Clock Point QR).",
@@ -802,6 +806,23 @@
                 {
                     "label": "Deactivate indicator",
                     "text": "No longer using an indicator (e.g. a replaced meter)? Deactivate it instead of deleting. All collected measurements remain fully preserved — you never lose historical data."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Help — Measurement point history",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "History of all ESG readings on one unit: trend, timeline, and alarms per indicator."
+                },
+                {
+                    "label": "Reading and follow-up",
+                    "text": "Under each reading in the timeline you see linked steps: the <strong>reading</strong> (value), optionally a <strong>threshold alarm</strong>, the <strong>measurement task</strong> used to enter the value, and a <strong>follow-up task</strong> when the value was outside limits. Use <strong>Open</strong> to jump to the measurements overview or the task."
+                },
+                {
+                    "label": "Trend",
+                    "text": "Chart of numeric readings over the recent period for the selected indicator."
                 }
             ]
         },

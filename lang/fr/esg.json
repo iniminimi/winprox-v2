@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Chaîne opérationnelle",
+        "title": "Mesure et suivi",
+        "subtitle": "De la valeur enregistrée à la tâche de mesure et à l'éventuelle tâche de suivi.",
         "measurement": "Mesure",
         "alarm": "Alarme de seuil",
         "measurement_task": "Tâche de mesure",

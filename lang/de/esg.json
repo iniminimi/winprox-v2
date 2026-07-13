@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Operative Kette",
+        "title": "Messung und Nachverfolgung",
+        "subtitle": "Vom erfassten Wert zur Messtask und ggf. Folgetask.",
         "measurement": "Messung",
         "alarm": "Schwellenalarm",
         "measurement_task": "Messaufgabe",

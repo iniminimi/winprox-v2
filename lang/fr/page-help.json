@@ -141,6 +141,10 @@
                 {
                     "label": "Ouvrir le signalement",
                     "text": "Accédez au signalement lié pour le contexte, les photos et les tâches supplémentaires."
+                },
+                {
+                    "label": "Mesure et suivi",
+                    "text": "Visible uniquement sur les tâches de mesure ESG. Affiche la valeur enregistrée, une alarme de seuil éventuelle, la tâche de mesure et une tâche de suivi. <strong>Ouvrir</strong> sur Mesure mène à l'aperçu filtré ; sur Tâche de mesure ouvre la tâche liée."
                 }
             ],
             "status_note": "Sur le terrain, les exécutants démarrent et terminent les tâches via le portail QR unité (après connexion via le QR Clock Point).",
@@ -851,6 +855,23 @@
                 {
                     "label": "Désactiver un indicateur",
                     "text": "Vous n’utilisez plus un indicateur (p. ex. compteur remplacé) ? Désactivez-le plutôt que de le supprimer. Les mesures déjà collectées restent entièrement conservées."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Aide — Historique du point de mesure",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Historique de toutes les mesures ESG sur une unité : tendance, chronologie et alarmes par indicateur."
+                },
+                {
+                    "label": "Mesure et suivi",
+                    "text": "Sous chaque mesure dans la chronologie, vous voyez les étapes liées : la <strong>mesure</strong> (valeur), éventuellement une <strong>alarme de seuil</strong>, la <strong>tâche de mesure</strong> utilisée pour la saisie, et une <strong>tâche de suivi</strong> si la valeur dépassait les limites. Utilisez <strong>Ouvrir</strong> pour aller à l'aperçu des mesures ou à la tâche."
+                },
+                {
+                    "label": "Tendance",
+                    "text": "Graphique des mesures numériques sur la période récente pour l'indicateur choisi."
                 }
             ]
         },

@@ -141,6 +141,10 @@
                 {
                     "label": "Melding openen",
                     "text": "Ga naar de gekoppelde melding voor context, foto's en extra taken."
+                },
+                {
+                    "label": "Meting en opvolging",
+                    "text": "Verschijnt alleen bij ESG-meettaken. Toont de geregistreerde waarde, eventueel een drempelalarm, de meettaak en een opvolgtaak. <strong>Openen</strong> bij Meting gaat naar het gefilterde metingenoverzicht; bij Meettaak opent u de gekoppelde taak."
                 }
             ],
             "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het unit-QR-portaal (na inloggen via Clock Point QR).",
@@ -802,6 +806,23 @@
                 {
                     "label": "Indicator deactiveren",
                     "text": "Gebruikt u een indicator niet meer (bv. een vervangen meter)? Deactiveer die in plaats van verwijderen. Reeds verzamelde metingen blijven volledig bewaard — u verliest nooit historische gegevens."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Hulp — Meetpunthistoriek",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Historiek van alle ESG-metingen op één unit: trend, tijdlijn en alarmen per indicator."
+                },
+                {
+                    "label": "Meting en opvolging",
+                    "text": "Onder elke meting in de tijdlijn ziet u gekoppelde stappen: de <strong>meting</strong> (waarde), eventueel een <strong>drempelalarm</strong>, de <strong>meettaak</strong> waarmee de waarde werd ingevoerd, en een <strong>opvolgtaak</strong> als de waarde buiten de grenzen viel. Met <strong>Openen</strong> springt u naar het metingenoverzicht of de taak."
+                },
+                {
+                    "label": "Trend",
+                    "text": "Grafiek van numerieke metingen over de laatste periode voor de gekozen indicator."
                 }
             ]
         },

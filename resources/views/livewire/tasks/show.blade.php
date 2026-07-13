@@ -65,7 +65,10 @@
 
     @if ($esgChainSteps !== [])
         <div class="wp-card wp-card-pad wp-stack-tight">
-            <p class="wp-section-title">{{ __('esg.chain.title') }}</p>
+            <div class="wp-stack-tight">
+                <p class="wp-section-title">{{ __('esg.chain.title') }}</p>
+                <p class="wp-muted wp-text-sm">{{ __('esg.chain.subtitle') }}</p>
+            </div>
             @include('partials.wp-esg-operation-chain', ['steps' => $esgChainSteps])
         </div>
     @endif

@@ -141,6 +141,10 @@
                 {
                     "label": "Meldung öffnen",
                     "text": "Gehen Sie zur verknüpften Meldung für Kontext, Fotos und weitere Aufgaben."
+                },
+                {
+                    "label": "Messung und Nachverfolgung",
+                    "text": "Nur bei ESG-Messtasks sichtbar. Zeigt den erfassten Wert, ggf. einen Schwellenalarm, die Messtask und eine Folgetask. <strong>Öffnen</strong> bei Messung führt zur gefilterten Messungsübersicht; bei Messtask zur verknüpften Aufgabe."
                 }
             ],
             "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Unit-QR-Portal (nach Anmeldung über die Clock Point QR).",
@@ -802,6 +806,23 @@
                 {
                     "label": "Indikator deaktivieren",
                     "text": "Nutzen Sie einen Indikator nicht mehr (z. B. nach Zählerwechsel)? Deaktivieren Sie ihn statt zu löschen. Bereits erfasste Messungen bleiben vollständig erhalten."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Hilfe — Messpunkt-Historie",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Historie aller ESG-Messungen an einer Unit: Trend, Zeitachse und Alarme pro Indikator."
+                },
+                {
+                    "label": "Messung und Nachverfolgung",
+                    "text": "Unter jeder Messung in der Zeitachse sehen Sie verknüpfte Schritte: die <strong>Messung</strong> (Wert), ggf. einen <strong>Schwellenalarm</strong>, die <strong>Messtask</strong> zur Eingabe und eine <strong>Folgetask</strong> bei Grenzwertüberschreitung. Mit <strong>Öffnen</strong> springen Sie zur Messungsübersicht oder zur Aufgabe."
+                },
+                {
+                    "label": "Trend",
+                    "text": "Diagramm numerischer Messungen über den letzten Zeitraum für den gewählten Indikator."
                 }
             ]
         },

@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Cadena operativa",
+        "title": "Medición y seguimiento",
+        "subtitle": "Del valor registrado a la tarea de medición y a la posible tarea de seguimiento.",
         "measurement": "Medición",
         "alarm": "Alarma de umbral",
         "measurement_task": "Tarea de medición",

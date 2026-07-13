@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Operationele keten",
+        "title": "Meting en opvolging",
+        "subtitle": "Van ingevoerde waarde tot meettaak en eventuele opvolgtaak.",
         "measurement": "Meting",
         "alarm": "Drempelalarm",
         "measurement_task": "Meettaak",

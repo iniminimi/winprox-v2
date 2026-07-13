@@ -141,6 +141,10 @@
                 {
                     "label": "Abrir incidencia",
                     "text": "Vaya a la incidencia vinculada para contexto, fotos y tareas adicionales."
+                },
+                {
+                    "label": "Medición y seguimiento",
+                    "text": "Solo en tareas de medición ESG. Muestra el valor registrado, una alarma de umbral si aplica, la tarea de medición y una tarea de seguimiento. <strong>Abrir</strong> en Medición lleva al resumen filtrado; en Tarea de medición abre la tarea vinculada."
                 }
             ],
             "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR de unidad (tras iniciar sesión con el QR Clock Point).",
@@ -802,6 +806,23 @@
                 {
                     "label": "Desactivar indicador",
                     "text": "¿Ya no usa un indicador (p. ej. contador sustituido)? Desactívelo en lugar de eliminarlo. Las mediciones ya recopiladas se conservan por completo."
+                }
+            ]
+        },
+        "esg.point": {
+            "title": "Ayuda — Historial del punto de medición",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Historial de todas las mediciones ESG en una unidad: tendencia, línea de tiempo y alarmas por indicador."
+                },
+                {
+                    "label": "Medición y seguimiento",
+                    "text": "Bajo cada medición en la línea de tiempo ve los pasos vinculados: la <strong>medición</strong> (valor), opcionalmente una <strong>alarma de umbral</strong>, la <strong>tarea de medición</strong> con la que se introdujo el valor, y una <strong>tarea de seguimiento</strong> si el valor estaba fuera de límites. Use <strong>Abrir</strong> para ir al resumen de mediciones o a la tarea."
+                },
+                {
+                    "label": "Tendencia",
+                    "text": "Gráfico de mediciones numéricas del período reciente para el indicador seleccionado."
                 }
             ]
         },

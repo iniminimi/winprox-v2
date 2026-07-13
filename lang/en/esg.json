@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Operational chain",
+        "title": "Reading and follow-up",
+        "subtitle": "From the recorded value to the measurement task and any follow-up task.",
         "measurement": "Reading",
         "alarm": "Threshold alarm",
         "measurement_task": "Measurement task",

@@ -216,7 +216,8 @@
         }
     },
     "chain": {
-        "title": "Catena operativa",
+        "title": "Misurazione e follow-up",
+        "subtitle": "Dal valore registrato al task di misurazione e all'eventuale task di follow-up.",
         "measurement": "Misurazione",
         "alarm": "Allarme di soglia",
         "measurement_task": "Attività di misurazione",
