@@ -20,9 +20,9 @@ use Illuminate\Support\Collection;
 final class SeedTenantPresenceAction
 {
     /**
-     * @return array{open_shifts: int, on_break: int, present: int, workers_total: int}
+     * @return array{open_shifts: int, on_break: int, present: int, workers_total: int, alarms_seeded: int}
      */
-    public function handle(Tenant $tenant, int $openTarget, int $onBreakTarget): array
+    public function handle(Tenant $tenant, int $openTarget, int $onBreakTarget, int $alarmsTarget = 0): array
     {
         $openTarget = max(0, $openTarget);
         $onBreakTarget = max(0, min($onBreakTarget, $openTarget));
@@ -40,6 +40,7 @@ final class SeedTenantPresenceAction
 
             $this->ensureOpenShiftCount($tenant, $clockPoints, $openTarget);
             $this->ensureOnBreakCount($tenant, $onBreakTarget);
+            $alarmsSeeded = $this->ensureDemoAlarms($tenant, $alarmsTarget);
 
             $openShifts = WorkShift::query()
                 ->where('tenant_id', $tenant->id)
@@ -58,6 +59,7 @@ final class SeedTenantPresenceAction
                     ->where('tenant_id', $tenant->id)
                     ->where('is_active', true)
                     ->count(),
+                'alarms_seeded' => $alarmsSeeded,
             ];
         } finally {
             Tenancy::forget();
@@ -197,5 +199,39 @@ final class SeedTenantPresenceAction
                 'break_type' => BreakType::Break,
             ]);
         }
+    }
+
+    /**
+     * Zet clock_in_at terug op een subset open shifts zodat aandachtsregels alarmen opleveren.
+     */
+    private function ensureDemoAlarms(Tenant $tenant, int $target): int
+    {
+        if ($target <= 0) {
+            return 0;
+        }
+
+        $shifts = WorkShift::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('status', WorkShiftStatus::Open)
+            ->inRandomOrder()
+            ->limit($target)
+            ->get();
+
+        $patterns = [17, 11, 7];
+        $updatedIds = [];
+
+        foreach ($shifts as $index => $shift) {
+            $hours = $patterns[$index % count($patterns)];
+            $shift->update(['clock_in_at' => now()->subHours($hours)]);
+            $updatedIds[] = $shift->id;
+        }
+
+        WorkShift::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('status', WorkShiftStatus::Open)
+            ->when($updatedIds !== [], fn ($q) => $q->whereNotIn('id', $updatedIds))
+            ->update(['clock_in_at' => now()->subHours(2)]);
+
+        return $shifts->count();
     }
 }

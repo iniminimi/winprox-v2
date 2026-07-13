@@ -5,7 +5,7 @@
         :subtitle="__('time.shifts.subtitle')"
     />
 
-    @include('partials.wp-time-nav')
+    @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
 
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>

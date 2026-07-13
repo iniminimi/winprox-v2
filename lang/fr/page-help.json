@@ -883,24 +883,41 @@
                     "text": "Cet écran n'est disponible que lorsque le module Time est actif pour votre organisation (Plateforme → Tenants)."
                 },
                 {
-                    "label": "Vue en direct",
-                    "text": "Affiche qui est actuellement pointé, en pause ou pas encore pointé. La liste se rafraîchit automatiquement toutes les 30 secondes."
+                    "label": "Tableau de bord",
+                    "text": "KPI en direct en haut : pointés, actifs, pause, non pointés et à surveiller. <strong>À surveiller</strong> ouvre l'écran Alertes."
+                },
+                {
+                    "label": "Affichage",
+                    "text": "Choisissez <strong>Équipes</strong>, <strong>Cartes équipe</strong> ou <strong>Sites</strong>. Dépliez une équipe uniquement pour voir les collaborateurs."
                 },
                 {
                     "label": "Filtres",
-                    "text": "Affinez par équipe, clock point ou recherche par nom. Pratique pour les organisations plus grandes avec plusieurs lieux de pointage."
+                    "text": "Filtrez par équipe, site, clock point ou nom. Statuts : présents, pause ou absents."
                 },
                 {
                     "label": "Fermer le shift",
-                    "text": "Fermez un shift ouvert à l'heure actuelle si quelqu'un a oublié de pointer la sortie. Il s'agit d'une action admin ; le shift obtient le statut <strong>Fermé (admin)</strong>."
-                },
-                {
-                    "label": "Ouvert trop longtemps",
-                    "text": "Les shifts ouverts plus longtemps que le seuil configuré (16 h par défaut) affichent un avertissement. Au-delà de ce seuil, le système les ferme automatiquement comme <strong>Fermé (automatique)</strong>."
+                    "text": "Fermez un shift ouvert à l'heure actuelle. Le motif est enregistré dans le journal d'audit."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Les collaborateurs pointent à l'entrée et à la sortie via l'autocollant QR sur un clock point (<code>/time/…</code>). L'identification se fait par nom et icône — pas de connexion séparée."
+                    "text": "Les collaborateurs pointent via l'autocollant QR sur un clock point (<code>/time/…</code>)."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Aide — Alertes",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Affiche les shifts ouverts à surveiller : trop longtemps pointés, sortie oubliée ou pas de pause."
+                },
+                {
+                    "label": "Types",
+                    "text": "Filtrez : <strong>Shift long</strong> (&gt;10 h), <strong>Non dépointé</strong> (&gt;16 h) ou <strong>Pas de pause</strong> (&gt;6 h)."
+                },
+                {
+                    "label": "Action",
+                    "text": "Utilisez <strong>Fermer le shift</strong> avec un motif. Le badge de navigation indique le nombre d'alertes."
                 }
             ]
         },

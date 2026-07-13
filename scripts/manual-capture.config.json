@@ -103,6 +103,14 @@
             "optional": true
         },
         {
+            "id": "time-alarms",
+            "path": "/time/alarms",
+            "selector": "[data-manual-capture=\"time-alarms\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
             "id": "time-shifts",
             "path": "/time/shifts",
             "selector": "[data-manual-capture=\"time-shifts\"]",

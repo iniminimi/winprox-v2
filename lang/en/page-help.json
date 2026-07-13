@@ -834,24 +834,41 @@
                     "text": "This screen is only available when the Time module is active for your organisation (Platform → Tenants)."
                 },
                 {
-                    "label": "Live overview",
-                    "text": "Shows who is clocked in, on break, or not clocked in. The list refreshes automatically every 30 seconds."
+                    "label": "Dashboard",
+                    "text": "Live KPIs at the top: clocked in, active, break, not clocked in, and attention. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
+                },
+                {
+                    "label": "Views",
+                    "text": "Choose <strong>Teams</strong> (accordion), <strong>Team cards</strong> (summary per team), or <strong>Locations</strong> (clocked in per site). Expand a team only when you need worker details."
                 },
                 {
                     "label": "Filters",
-                    "text": "Filter by team, clock point, or search by name. Useful for larger organisations with multiple clock locations."
+                    "text": "Filter by team, location, clock point, or search by name. Status filters: present, break, or absent."
                 },
                 {
                     "label": "Close shift",
-                    "text": "Close an open shift at the current time when someone forgot to clock out. This is an admin action; the shift gets status <strong>Closed (admin)</strong>."
-                },
-                {
-                    "label": "Open too long",
-                    "text": "Shifts open longer than the threshold (default 16 hours) show a warning. After that threshold the system auto-closes them as <strong>Closed (automatic)</strong>."
+                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason is recorded in the audit log."
                 },
                 {
                     "label": "Clock Point QR",
                     "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon — no separate login."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Help — Alarms",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Shows open shifts that need attention: clocked in too long, forgotten clock-out, or no break recorded."
+                },
+                {
+                    "label": "Types",
+                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), or <strong>No break</strong> (&gt;6 h without a break)."
+                },
+                {
+                    "label": "Action",
+                    "text": "Use <strong>Close shift</strong> to end a shift with a reason. The nav badge shows the total alarm count."
                 }
             ]
         },

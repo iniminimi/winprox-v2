@@ -1,4 +1,4 @@
-<div class="wp-stack" wire:poll.30s data-manual-capture="time-presence">
+<div class="wp-stack" wire:poll.visible.30s data-manual-capture="time-presence">
     <x-wp-page-head-title
         :title="__('time.title')"
         help-page="time.presence"

@@ -834,24 +834,41 @@
                     "text": "Dieser Bildschirm ist nur verfügbar, wenn das Time-Modul für Ihre Organisation aktiv ist (Plattform → Tenants)."
                 },
                 {
-                    "label": "Live-Übersicht",
-                    "text": "Zeigt, wer jetzt eingestempelt ist, auf Pause steht oder noch nicht eingestempelt ist. Die Liste aktualisiert sich automatisch alle 30 Sekunden."
+                    "label": "Dashboard",
+                    "text": "Oben sehen Sie Live-KPIs: eingestempelt, aktiv, Pause, nicht eingestempelt und Aufmerksamkeit. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
+                },
+                {
+                    "label": "Ansicht",
+                    "text": "Wählen Sie <strong>Teams</strong> (Akkordeon), <strong>Teamkarten</strong> oder <strong>Standorte</strong>. Klappen Sie ein Team erst auf, wenn Sie Mitarbeitende sehen möchten."
                 },
                 {
                     "label": "Filter",
-                    "text": "Verfeinern Sie nach Team, Clock Point oder Suche nach Name. Praktisch bei größeren Organisationen mit mehreren Einstempelorten."
+                    "text": "Filtern nach Team, Standort, Clock Point oder Name. Status: anwesend, Pause oder abwesend."
                 },
                 {
                     "label": "Schicht schließen",
-                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand vergessen hat auszustempeln. Dies ist eine Admin-Aktion; die Schicht erhält den Status <strong>Geschlossen (Admin)</strong>."
-                },
-                {
-                    "label": "Zu lange offen",
-                    "text": "Schichten, die länger offen sind als die eingestellte Schwelle (Standard 16 Stunden), zeigen eine Warnung. Nach dieser Schwelle schließt das System sie automatisch als <strong>Geschlossen (automatisch)</strong>."
+                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit. Der Grund wird im Auditlog festgehalten."
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Die Identifikation erfolgt mit Name und Icon — kein separates Login."
+                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>)."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Hilfe — Alarme",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Zeigt offene Schichten mit Auffälligkeiten: zu lange eingestempelt, vergessene Ausstempelung oder keine Pause."
+                },
+                {
+                    "label": "Typen",
+                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.) oder <strong>Keine Pause</strong> (&gt;6 Std.)."
+                },
+                {
+                    "label": "Aktion",
+                    "text": "Mit <strong>Schicht schließen</strong> beenden Sie eine Schicht mit Begründung. Das Badge in der Navigation zeigt die Anzahl."
                 }
             ]
         },

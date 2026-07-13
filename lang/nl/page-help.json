@@ -834,24 +834,41 @@
                     "text": "Dit scherm is alleen beschikbaar wanneer de Time-module actief is voor uw organisatie (Platform → Tenants)."
                 },
                 {
-                    "label": "Live overzicht",
-                    "text": "Toont wie nu ingeklokt is, op pauze staat of nog niet is ingeklokt. De lijst ververst automatisch elke 30 seconden."
+                    "label": "Dashboard",
+                    "text": "Bovenaan ziet u live KPI's: ingelogd, actief, pauze, niet ingeklokt en aandacht. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
+                },
+                {
+                    "label": "Weergave",
+                    "text": "Kies tussen <strong>Teams</strong> (accordion), <strong>Teamkaarten</strong> (overzicht per team) of <strong>Locaties</strong> (ingeklokt per vestiging). Open een team pas wanneer u medewerkers wilt zien."
                 },
                 {
                     "label": "Filters",
-                    "text": "Verfijn op team, clock point of zoek op naam. Handig bij grotere organisaties met meerdere inkloklocaties."
+                    "text": "Verfijn op team, locatie, clock point of zoek op naam. Statusfilters: aanwezig, pauze of afwezig."
                 },
                 {
                     "label": "Shift sluiten",
-                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. Dit is een admin-actie; de shift krijgt status <strong>Gesloten (admin)</strong>."
-                },
-                {
-                    "label": "Open te lang",
-                    "text": "Shifts die langer open staan dan de ingestelde drempel (standaard 16 uur) tonen een waarschuwing. Na die drempel sluit het systeem ze automatisch als <strong>Gesloten (automatisch)</strong>."
+                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden wordt vastgelegd in het auditlog."
                 },
                 {
                     "label": "Clock Point QR",
                     "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Hulp — Alarmen",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Toont open shifts die aandacht vragen: te lang ingeklokt, vergeten uit te klokken of geen pauze geregistreerd."
+                },
+                {
+                    "label": "Typen",
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur) of <strong>Geen pauze</strong> (&gt;6 uur zonder break)."
+                },
+                {
+                    "label": "Actie",
+                    "text": "Gebruik <strong>Shift sluiten</strong> om een shift af te sluiten met reden. De badge in de navigatie toont het totaal aantal alarmen."
                 }
             ]
         },

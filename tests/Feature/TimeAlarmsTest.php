@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Actions\Time\CountTimePresenceAttentionAction;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
@@ -46,4 +47,28 @@ it('toont alarmen voor lange open shifts', function () {
         ->get(route('time.alarms.index'))
         ->assertOk()
         ->assertSee($worker->displayName(), false);
+
+    expect(app(CountTimePresenceAttentionAction::class)->handle($tenant->id))->toBe(1);
+});
+
+it('toont alarm-badge in time-nav op urenscherm', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    config(['time.long_shift_hours' => 8]);
+
+    $admin = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+
+    $shift = app(\App\Actions\Time\ClockInAction::class)->handle($worker, $clockPoint);
+    $shift->update(['clock_in_at' => now()->subHours(9)]);
+
+    $this->actingAs($admin)
+        ->get(route('time.shifts.index'))
+        ->assertOk()
+        ->assertSee('wp-time-nav__alarm-count', false);
 });

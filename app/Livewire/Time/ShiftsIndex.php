@@ -4,6 +4,7 @@ namespace App\Livewire\Time;
 
 use App\Actions\Time\CorrectWorkShiftAction;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
+use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Http\Requests\Time\CorrectWorkShiftRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
@@ -24,6 +25,7 @@ class ShiftsIndex extends Component
 {
     use AuthorizesRequests;
     use ManagesWorkShiftForceClose;
+    use ProvidesTimeNavAlarmCount;
     use WithPagination;
 
     #[Url(as: 'team')]
@@ -157,6 +159,7 @@ class ShiftsIndex extends Component
                 'worker' => $this->workerFilter,
                 'clock_point' => $this->clockPointFilter,
             ])),
+            'alarmCount' => $this->timeNavAlarmCount(),
         ]);
     }
 }

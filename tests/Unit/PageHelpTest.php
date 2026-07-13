@@ -48,6 +48,8 @@ it('laadt paginahulp voor Time-schermen', function (): void {
 
     expect(PageHelp::for('time.presence'))->not->toBeNull()
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
+        ->and(PageHelp::for('time.alarms'))->not->toBeNull()
+        ->and(PageHelp::for('time.alarms')['title'])->toBe('Hulp — Alarmen')
         ->and(PageHelp::for('time.shifts'))->not->toBeNull()
         ->and(PageHelp::for('time.clock_points'))->not->toBeNull()
         ->and(PageHelp::for('portal.time'))->not->toBeNull()

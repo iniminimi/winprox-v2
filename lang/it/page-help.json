@@ -834,24 +834,41 @@
                     "text": "Questa schermata è disponibile solo quando il modulo Time è attivo per la Sua organizzazione (Piattaforma → Tenant)."
                 },
                 {
-                    "label": "Panoramica live",
-                    "text": "Mostra chi è attualmente timbrato, in pausa o non ancora timbrato. L'elenco si aggiorna automaticamente ogni 30 secondi."
+                    "label": "Dashboard",
+                    "text": "KPI live in alto: timbrati, attivi, pausa, non timbrati e attenzione. <strong>Attenzione</strong> apre la schermata Allarmi."
+                },
+                {
+                    "label": "Vista",
+                    "text": "Scelga <strong>Team</strong>, <strong>Schede team</strong> o <strong>Sedi</strong>. Espanda un team solo per vedere i lavoratori."
                 },
                 {
                     "label": "Filtri",
-                    "text": "Affini per team, clock point o ricerca per nome. Utile per organizzazioni più grandi con più punti di timbratura."
+                    "text": "Filtri per team, sede, clock point o nome. Stati: presenti, pausa o assenti."
                 },
                 {
                     "label": "Chiudi turno",
-                    "text": "Chiuda un turno aperto all'ora attuale se qualcuno ha dimenticato di timbrare l'uscita. È un'azione admin; il turno ottiene lo stato <strong>Chiuso (admin)</strong>."
-                },
-                {
-                    "label": "Aperto troppo a lungo",
-                    "text": "I turni aperti più a lungo della soglia impostata (16 ore predefinite) mostrano un avviso. Oltre quella soglia, il sistema li chiude automaticamente come <strong>Chiuso (automatico)</strong>."
+                    "text": "Chiuda un turno aperto all'ora attuale. Il motivo viene registrato nel log di audit."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "I lavoratori timbrano entrata e uscita tramite l'adesivo QR su un clock point (<code>/time/…</code>). L'identificazione avviene con nome e icona — nessun accesso separato."
+                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>)."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Aiuto — Allarmi",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Mostra turni aperti che richiedono attenzione: timbratura troppo lunga, uscita dimenticata o nessuna pausa."
+                },
+                {
+                    "label": "Tipi",
+                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h) o <strong>Nessuna pausa</strong> (&gt;6 h)."
+                },
+                {
+                    "label": "Azione",
+                    "text": "Usi <strong>Chiudi turno</strong> con motivo. Il badge nella navigazione mostra il numero di allarmi."
                 }
             ]
         },

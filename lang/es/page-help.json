@@ -834,24 +834,41 @@
                     "text": "Esta pantalla solo está disponible cuando el módulo Time está activo para su organización (Plataforma → Inquilinos)."
                 },
                 {
-                    "label": "Vista en vivo",
-                    "text": "Muestra quién está fichado ahora, en pausa o aún no fichado. La lista se actualiza automáticamente cada 30 segundos."
+                    "label": "Panel",
+                    "text": "KPI en vivo arriba: fichados, activos, pausa, no fichados y atención. <strong>Atención</strong> abre la pantalla de alertas."
+                },
+                {
+                    "label": "Vista",
+                    "text": "Elija <strong>Equipos</strong>, <strong>Tarjetas</strong> o <strong>Ubicaciones</strong>. Expanda un equipo solo cuando necesite ver trabajadores."
                 },
                 {
                     "label": "Filtros",
-                    "text": "Refine por equipo, clock point o búsqueda por nombre. Útil en organizaciones más grandes con varios puntos de fichaje."
+                    "text": "Filtre por equipo, ubicación, clock point o nombre. Estados: presentes, pausa o ausentes."
                 },
                 {
                     "label": "Cerrar turno",
-                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar salida. Es una acción de administrador; el turno obtiene el estado <strong>Cerrado (admin)</strong>."
-                },
-                {
-                    "label": "Abierto demasiado tiempo",
-                    "text": "Los turnos abiertos más tiempo que el umbral configurado (16 h por defecto) muestran una advertencia. Tras ese umbral, el sistema los cierra automáticamente como <strong>Cerrado (automático)</strong>."
+                    "text": "Cierre un turno abierto con la hora actual. El motivo queda en el registro de auditoría."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Los trabajadores fichan entrada y salida mediante la pegatina QR en un clock point (<code>/time/…</code>). La identificación es por nombre e icono — sin inicio de sesión aparte."
+                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>)."
+                }
+            ]
+        },
+        "time.alarms": {
+            "title": "Ayuda — Alertas",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Muestra turnos abiertos que requieren atención: demasiado tiempo fichado, salida olvidada o sin pausa."
+                },
+                {
+                    "label": "Tipos",
+                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h) o <strong>Sin pausa</strong> (&gt;6 h)."
+                },
+                {
+                    "label": "Acción",
+                    "text": "Use <strong>Cerrar turno</strong> con motivo. La insignia en la navegación muestra el número de alertas."
                 }
             ]
         },
