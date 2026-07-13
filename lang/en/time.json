@@ -79,7 +79,8 @@
         "type_all": "All",
         "type_long_shift": "Long shift",
         "type_stale_shift": "Not clocked out",
-        "type_no_break": "No break"
+        "type_no_break": "No break",
+        "shown": ":shown of :total alarms shown"
     },
     "force_close": {
         "title": "Close shift",

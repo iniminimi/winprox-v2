@@ -2,12 +2,15 @@
 
 declare(strict_types=1);
 
+use App\Actions\Time\ClockInAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
+use App\Livewire\Time\AlarmsIndex;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use Livewire\Livewire;
 
 it('laat een admin het time-alarmenscherm openen', function () {
     [$tenant, $admin] = (function () {
@@ -71,4 +74,33 @@ it('toont alarm-badge in time-nav op urenscherm', function () {
         ->get(route('time.shifts.index'))
         ->assertOk()
         ->assertSee('wp-time-nav__alarm-count', false);
+});
+
+it('toont alarmen met load-more bij grote lijsten', function () {
+    config(['time.presence_team_page_size' => 3, 'time.stale_shift_hours' => 16]);
+
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+
+    $admin = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    for ($i = 0; $i < 6; $i++) {
+        $worker = Worker::factory()->create([
+            'tenant_id' => $tenant->id,
+            'internal_team_id' => $team->id,
+        ]);
+        $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+        $shift->update(['clock_in_at' => now()->subHours(17)]);
+    }
+
+    Livewire::actingAs($admin)
+        ->test(AlarmsIndex::class)
+        ->assertSee(__('time.alarms.shown', ['shown' => 3, 'total' => 6]), false)
+        ->call('loadMore')
+        ->assertDontSee(__('time.presence.load_more', ['count' => 1]), false);
 });

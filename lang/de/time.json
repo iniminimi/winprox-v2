@@ -79,7 +79,8 @@
         "type_all": "Alle",
         "type_long_shift": "Lange Schicht",
         "type_stale_shift": "Nicht ausgestempelt",
-        "type_no_break": "Keine Pause"
+        "type_no_break": "Keine Pause",
+        "shown": ":shown von :total Alarmen angezeigt"
     },
     "force_close": {
         "title": "Schicht schließen",

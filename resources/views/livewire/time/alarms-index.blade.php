@@ -53,6 +53,9 @@
     @if ($items->isEmpty())
         <p class="wp-muted">{{ __('time.alarms.empty') }}</p>
     @else
+        @if ($filteredCount > $items->count())
+            <p class="wp-muted wp-text-sm">{{ __('time.alarms.shown', ['shown' => $items->count(), 'total' => $filteredCount]) }}</p>
+        @endif
         @php
             $grouped = $items->groupBy(fn ($item) => $item->type->value);
         @endphp
@@ -65,11 +68,14 @@
                         \App\Enums\TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
                         \App\Enums\TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
                     };
+                    $typeTotal = $attentionType !== null
+                        ? $filteredCount
+                        : (int) ($typeCounts[$type] ?? $groupItems->count());
                 @endphp
                 <section class="wp-card wp-card-pad wp-stack" wire:key="alarms-group-{{ $type }}">
                     <div class="wp-time-presence-attention__head">
                         <h2 class="wp-section-title">{{ __('time.presence.attention.'.$type, ['hours' => $hours]) }}</h2>
-                        <span class="wp-pill wp-pill--progress">{{ $groupItems->count() }}</span>
+                        <span class="wp-pill wp-pill--progress">{{ $typeTotal }}</span>
                     </div>
                     <div class="wp-time-presence-attention__list">
                         @foreach ($groupItems as $item)
@@ -86,6 +92,12 @@
                 </section>
             @endforeach
         </div>
+
+        @if ($hasMore)
+            <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMore">
+                {{ __('time.presence.load_more', ['count' => min($pageSize, $filteredCount - $items->count())]) }}
+            </button>
+        @endif
     @endif
 
     @include('partials.wp-time-force-close-modal')

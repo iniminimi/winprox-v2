@@ -79,7 +79,8 @@
         "type_all": "Toutes",
         "type_long_shift": "Shift long",
         "type_stale_shift": "Non dépointé",
-        "type_no_break": "Pas de pause"
+        "type_no_break": "Pas de pause",
+        "shown": ":shown sur :total alarmes affichées"
     },
     "force_close": {
         "title": "Fermer le shift",

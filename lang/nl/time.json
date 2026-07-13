@@ -79,7 +79,8 @@
         "type_all": "Alle",
         "type_long_shift": "Lange shift",
         "type_stale_shift": "Niet uitgeklokt",
-        "type_no_break": "Geen pauze"
+        "type_no_break": "Geen pauze",
+        "shown": ":shown van :total alarmen getoond"
     },
     "force_close": {
         "title": "Shift sluiten",

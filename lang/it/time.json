@@ -79,7 +79,8 @@
         "type_all": "Tutti",
         "type_long_shift": "Turno lungo",
         "type_stale_shift": "Non timbrato in uscita",
-        "type_no_break": "Nessuna pausa"
+        "type_no_break": "Nessuna pausa",
+        "shown": ":shown di :total allarmi mostrati"
     },
     "force_close": {
         "title": "Chiudi turno",

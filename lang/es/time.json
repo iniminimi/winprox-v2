@@ -79,7 +79,8 @@
         "type_all": "Todas",
         "type_long_shift": "Turno largo",
         "type_stale_shift": "Sin fichar salida",
-        "type_no_break": "Sin pausa"
+        "type_no_break": "Sin pausa",
+        "shown": ":shown de :total alarmas mostradas"
     },
     "force_close": {
         "title": "Cerrar turno",

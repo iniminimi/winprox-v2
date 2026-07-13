@@ -33,14 +33,43 @@ class AlarmsIndex extends Component
     #[Url(as: 'type')]
     public ?string $attentionType = null;
 
+    public int $shownLimit = 0;
+
     public function mount(): void
     {
         $this->authorize('viewAny', WorkShift::class);
+        $this->shownLimit = $this->alarmsPageSize();
+    }
+
+    public function updatedTeamFilter(): void
+    {
+        $this->resetShownLimit();
+    }
+
+    public function updatedLocationFilter(): void
+    {
+        $this->resetShownLimit();
     }
 
     public function setAttentionType(string $type = ''): void
     {
         $this->attentionType = $type === '' ? null : $type;
+        $this->resetShownLimit();
+    }
+
+    public function loadMore(): void
+    {
+        $this->shownLimit += $this->alarmsPageSize();
+    }
+
+    private function resetShownLimit(): void
+    {
+        $this->shownLimit = $this->alarmsPageSize();
+    }
+
+    private function alarmsPageSize(): int
+    {
+        return max(1, (int) config('time.presence_team_page_size', 50));
     }
 
     public function render(BuildTimePresenceDashboardAction $buildDashboard)
@@ -61,15 +90,22 @@ class AlarmsIndex extends Component
             $items = $items->filter(fn ($item) => $item->type === $typeFilter)->values();
         }
 
+        $filteredCount = $items->count();
+        $visibleItems = $items->take(max(1, $this->shownLimit));
+        $pageSize = $this->alarmsPageSize();
+
         $typeCounts = $dashboard->attentionItems
             ->groupBy(fn ($item) => $item->type->value)
             ->map->count();
 
         return view('livewire.time.alarms-index', [
-            'items' => $items,
+            'items' => $visibleItems,
+            'filteredCount' => $filteredCount,
             'totalCount' => $dashboard->attentionItems->count(),
             'typeCounts' => $typeCounts,
             'attentionType' => $typeFilter,
+            'hasMore' => $filteredCount > $visibleItems->count(),
+            'pageSize' => $pageSize,
             'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
             'locations' => Location::query()->orderBy('name')->get(),
             'staleHours' => (int) config('time.stale_shift_hours', 16),
