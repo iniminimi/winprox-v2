@@ -14,9 +14,10 @@
             <div class="wp-welcome-nav-menu__panel">
                 <div class="wp-welcome-nav-links">
                     <a href="{{ $welcomeSection('producten') }}">{{ __('welcome.nav.products') }}</a>
+                    <a href="{{ $welcomeSection('flow') }}">{{ __('welcome.nav.how') }}</a>
+                    <a href="{{ $welcomeSection('qr') }}">{{ __('welcome.nav.qr') }}</a>
                     <a href="{{ $welcomeSection('platform') }}">{{ __('welcome.nav.platform') }}</a>
                     <a href="{{ $welcomeSection('esg') }}">{{ __('welcome.nav.esg') }}</a>
-                    <a href="{{ $welcomeSection('qr') }}">{{ __('welcome.nav.qr') }}</a>
                     <a href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>

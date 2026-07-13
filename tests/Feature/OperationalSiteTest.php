@@ -17,8 +17,9 @@ it('toont volledige welcome landingspagina', function () {
     $this->get(route('welcome'))
         ->assertOk()
         ->assertSee(__('welcome.hero.badge'))
-        ->assertSee(__('welcome.pillars.title'))
-        ->assertSee(__('welcome.closing.title'));
+        ->assertSee(__('welcome.pillars.eyebrow'))
+        ->assertSee(__('welcome.flow.steps.0.title'))
+        ->assertSee(__('welcome.closing.cta_start'));
 });
 
 it('briefing filtert op datum en team', function () {

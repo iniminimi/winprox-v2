@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Facility & Time sul campo",
+    "meta_title": "WinProx — Ogni sede, un portale QR",
     "social": {
-        "og_title": "WinProx — Facility & Time sul campo",
-        "og_description": "WinProx Facility per segnalazioni e attività. WinProx Time per presenza e turni. Portali QR intelligenti e modulo ESG opzionale."
+        "og_title": "WinProx — Ogni sede, un portale QR",
+        "og_description": "Segnala guasti, gestisci attività e registra presenze tramite portali QR intelligenti. WinProx Facility, Time e modulo ESG opzionale su un'unica piattaforma."
     },
     "login": "Accedi",
     "register": "Registrati",
@@ -10,6 +10,7 @@
     "nav": {
         "menu": "Menu",
         "products": "Prodotti",
+        "how": "Funzionamento",
         "platform": "Piattaforma",
         "esg": "ESG",
         "qr": "Portali QR",
@@ -18,37 +19,52 @@
         "pricing": "Prezzi"
     },
     "hero": {
-        "badge": "Facility · Time",
-        "title": "Due soluzioni, una piattaforma",
-        "subtitle": "WinProx Facility per segnalazioni e attività. WinProx Time per presenza e turni sul posto.",
-        "body": "Un'app, un flusso QR. I lavoratori accedono tramite il QR Clock Point; cittadini e team lavorano tramite il QR unità — senza installare app.",
+        "badge": "Facility · Time · ESG",
+        "title": "Ogni sede fisica ottiene il proprio portale QR digitale.",
+        "title_lines": [
+            ["Ogni", "sede", "fisica", "ottiene"],
+            ["il", "proprio", "portale", "QR", "digitale."]
+        ],
+        "title_accent": ["portale", "QR", "digitale."],
+        "subtitle": "Segnala guasti, gestisci attività, registra presenze e segui azioni ESG — con un solo codice QR, senza app.",
+        "body": "Il personale timbra tramite il QR Clock Point; cittadini e team continuano in sede tramite il QR unità in ogni location.",
         "cta_start": "Prova gratuita",
         "cta_video": "Guarda il video",
+        "hero_note": "Nessuna carta di credito · avvio in 2 minuti",
         "desktop_screenshot_alt": "Dashboard WinProx su desktop"
+    },
+    "trust_bar": {
+        "items": [
+            "Nessuna installazione app",
+            "Conforme GDPR",
+            "Traduzioni IA",
+            "Modulare",
+            "Cloud"
+        ]
     },
     "products": {
         "eyebrow": "Prodotti",
-        "title": "WinProx Facility e WinProx Time",
-        "lead": "Una piattaforma, due punti di ingresso. Lo stesso QR Clock Point per i lavoratori; Facility aggiunge segnalazioni, attività e moduli opzionali.",
+        "title": "Una piattaforma, due prodotti chiave.",
+        "lead": "WinProx Facility per segnalazioni e attività. WinProx Time per presenze e turni. Lo stesso QR Clock Point, modulare ed espandibile.",
         "facility": {
             "name": "WinProx Facility",
-            "tagline": "Segnalazione → attività → chiusura",
+            "tagline": "Segnalazione → attività → completamento",
             "body": "Facility management completo con portali QR intelligenti su ogni unità. Moduli ESG e Time opzionali.",
             "logo_alt": "WinProx Facility",
             "bullets": ["Segnalazioni e attività", "Sedi e unità", "ESG opzionale", "Time opzionale"]
         },
         "time": {
             "name": "WinProx Time",
-            "tagline": "Rilevazione presenze compatta sul posto",
-            "body": "Pacchetto di ingresso per presenza, pause e turni tramite il QR Clock Point — ideale quando il time tracking è prioritario.",
+            "tagline": "Rilevazione presenze compatta in sede",
+            "body": "Pacchetto base per presenze, pause e turni tramite QR Clock Point — ideale quando il time tracking è prioritario.",
             "logo_alt": "WinProx Time",
-            "bullets": ["Timbratura entrata/uscita", "Pause", "Turni", "Clock Points"]
+            "bullets": ["Entrata e uscita", "Pause", "Turni", "Clock Points"]
         }
     },
     "pillars": {
         "eyebrow": "Piattaforma",
         "title": "Perché WinProx?",
-        "lead": "Una piattaforma integrata per il campo e il back-office — modulare ed espandibile.",
+        "lead": "Una piattaforma integrata per campo e backoffice — modulare ed espandibile.",
         "items": [
             {
                 "title": "WinProx Facility",
@@ -58,12 +74,12 @@
             {
                 "title": "WinProx Time",
                 "icon": "clock",
-                "bullets": ["Presenza", "Pause", "Turni", "Clock Points"]
+                "bullets": ["Presenze", "Pause", "Turni", "Clock Points"]
             },
             {
                 "title": "Portali QR intelligenti",
                 "icon": "document",
-                "bullets": ["QR Clock Point", "QR unità", "Nessuna app", "Basato sulla sede"]
+                "bullets": ["QR Clock Point", "QR unità", "Nessuna app", "Legato alla sede"]
             },
             {
                 "title": "ESG",
@@ -78,14 +94,14 @@
             {
                 "title": "Compliance",
                 "icon": "legal",
-                "bullets": ["Audit trail", "Gestione documenti", "Documenti legali", "API e webhook"]
+                "bullets": ["Audit trail", "Gestione documenti", "Documenti legali", "API e webhooks"]
             }
         ]
     },
     "esg": {
         "eyebrow": "ESG",
         "title": "ESG senza amministrazione extra",
-        "body": "Ogni segnalazione, ispezione o controllo contribuisce al reporting ESG. Registri le misurazioni direttamente dal portale QR o dal back-office.",
+        "body": "Ogni segnalazione, ispezione o controllo contribuisce al reporting ESG. Registra misurazioni direttamente dal portale QR o dal backoffice.",
         "pillars": [
             {
                 "title": "Environmental",
@@ -100,36 +116,52 @@
                 "items": ["Audit", "Certificati", "Compliance", "Procedure", "Audit trail"]
             }
         ],
-        "visual_alt": "Illustrazione: ambiente, sociale e governance (ESG)"
+        "visual_alt": "Illustrazione: ambientale, sociale e governance (ESG)"
     },
     "qr": {
         "eyebrow": "Portali QR",
-        "title": "QR Clock Point e QR unità",
-        "lead": "I lavoratori scansionano il QR Clock Point per accedere; sul posto continuano tramite il QR unità — su qualsiasi smartphone.",
+        "title": "Ogni unità ottiene la propria pagina digitale.",
+        "lead": "Il personale scansiona il QR Clock Point per timbrare; in sede continuano tramite il QR unità — su qualsiasi smartphone.",
+        "unit_features": [
+            "Documenti",
+            "Manuali",
+            "Segnalazioni",
+            "Foto",
+            "Storico",
+            "Codice QR",
+            "IA",
+            "GPS"
+        ],
         "benefits": [
-            "Timbratura (Time)",
+            "Entrata e uscita (Time)",
             "Registrare segnalazioni",
             "Eseguire ordini di lavoro",
             "Consultare manuali",
             "Visualizzare documenti",
-            "Registrare ESG"
+            "Registrare dati ESG"
         ],
-        "footer": "Nessuna app. Scansioni e lavori subito.",
+        "footer": "Nessuna app. Scansiona e inizia subito.",
         "screenshot_alt": "Portale QR WinProx su smartphone"
     },
     "flow": {
         "eyebrow": "Funzionamento",
-        "title": "Tutto in un unico posto",
-        "lead": "Dalla segnalazione al reporting — un flusso continuo.",
+        "title": "Scansiona → segnala → segui.",
+        "lead": "Meno amministrazione e follow-up più rapido — tutto collegato alla sede.",
         "steps": [
-            "Clock Point",
-            "Segnalazione",
-            "Ordine di lavoro",
-            "Esecuzione",
-            "ESG",
-            "Dashboard",
-            "Reporting"
-        ]
+            {
+                "label": "Passo 1",
+                "title": "Scansiona codice QR"
+            },
+            {
+                "label": "Passo 2",
+                "title": "Segnalazione o registrazione"
+            },
+            {
+                "label": "Passo 3",
+                "title": "Attività seguite automaticamente"
+            }
+        ],
+        "footer": "Dalla segnalazione al completamento su un'unica piattaforma."
     },
     "sectors": {
         "eyebrow": "Settori",
@@ -137,20 +169,20 @@
         "lead": "Team facility, servizi pubblici e ambienti produttivi.",
         "items": [
             {"name": "Ospedali", "body": "Segnalazioni tecniche e manutenzione.", "icon": "issues"},
-            {"name": "Comuni", "body": "Seguire le segnalazioni dei cittadini.", "icon": "locations"},
-            {"name": "Industria", "body": "Monitorare guasti e manutenzione.", "icon": "tasks"},
+            {"name": "Comuni", "body": "Seguire segnalazioni dei cittadini.", "icon": "locations"},
+            {"name": "Industria", "body": "Seguire guasti e manutenzione.", "icon": "tasks"},
             {"name": "Uffici", "body": "Gestire edifici e servizi.", "icon": "units"},
             {"name": "Scuole", "body": "Coordinare segnalazioni e manutenzione.", "icon": "faq"},
-            {"name": "Hotel", "body": "Risolvere i problemi più rapidamente.", "icon": "calendar"},
+            {"name": "Hotel", "body": "Risolvere problemi più velocemente.", "icon": "calendar"},
             {"name": "Immobiliare", "body": "Gestire impianti e asset.", "icon": "document"},
-            {"name": "Porti", "body": "Monitorare sito e infrastrutture.", "icon": "map-pin"}
+            {"name": "Porti", "body": "Seguire sito e infrastrutture.", "icon": "map-pin"}
         ]
     },
     "trust": {
         "eyebrow": "Fiducia",
         "title": "Perché le organizzazioni scelgono WinProx",
         "languages_title": "Multilingue dal primo giorno",
-        "languages_body": "Segnalazioni, attività e annunci vengono tradotti automaticamente in tutte le lingue supportate.",
+        "languages_body": "Segnalazioni, attività e comunicazioni vengono tradotte automaticamente in tutte le lingue supportate.",
         "items": [
             "Nessuna app",
             "Cloud",
@@ -165,12 +197,16 @@
         "video_title": "WinProx in azione",
         "video_placeholder": "Video in arrivo.",
         "comparison_title": "Confrontare WinProx?",
-        "comparison_body": "Scopra come WinProx si confronta con una piattaforma classica.",
+        "comparison_body": "Scopri come WinProx si confronta con una piattaforma classica.",
         "comparison_link": "Vedi confronto"
     },
     "closing": {
-        "title": "Pronto a gestire la Sua organizzazione in modo più intelligente?",
-        "body": "Scelga WinProx Facility per il quadro completo, o WinProx Time quando il time tracking è prioritario — sempre sulla stessa piattaforma affidabile.",
+        "title": "Pronto a lasciare carta, telefoni ed Excel alle spalle?",
+        "title_lines": [
+            ["Pronto", "a", "lasciare", "carta,", "telefoni"],
+            ["ed", "Excel", "alle", "spalle?"]
+        ],
+        "body": "Scegli WinProx Facility per il quadro completo, o WinProx Time quando il time tracking è prioritario.",
         "cta_start": "Prova gratuita",
         "cta_contact": "Contattaci"
     },

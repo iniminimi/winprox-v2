@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Facility & Time op de werkvloer",
+    "meta_title": "WinProx — Elke locatie, één QR-portaal",
     "social": {
-        "og_title": "WinProx — Facility & Time op de werkvloer",
-        "og_description": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts. Slimme QR-portalen en optionele ESG-module."
+        "og_title": "WinProx — Elke locatie, één QR-portaal",
+        "og_description": "Meld defecten, beheer taken en registreer aanwezigheid via slimme QR-portalen. WinProx Facility, Time en optionele ESG-module op één platform."
     },
     "login": "Inloggen",
     "register": "Registreren",
@@ -10,6 +10,7 @@
     "nav": {
         "menu": "Menu",
         "products": "Producten",
+        "how": "Werking",
         "platform": "Platform",
         "esg": "ESG",
         "qr": "QR-portalen",
@@ -18,18 +19,33 @@
         "pricing": "Prijzen"
     },
     "hero": {
-        "badge": "Facility · Time",
-        "title": "Twee oplossingen, één platform",
-        "subtitle": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts op locatie.",
-        "body": "Eén app, één QR-werkwijze. Medewerkers melden zich aan via de Clock Point QR; burgers en teams werken via de unit-QR — zonder app-installatie.",
+        "badge": "Facility · Time · ESG",
+        "title": "Iedere fysieke locatie krijgt een eigen digitaal QR-portaal.",
+        "title_lines": [
+            ["Iedere", "fysieke", "locatie", "krijgt"],
+            ["een", "eigen", "digitaal", "QR-portaal."]
+        ],
+        "title_accent": ["digitaal", "QR-portaal."],
+        "subtitle": "Meld defecten, beheer taken, registreer aanwezigheid en volg ESG-acties op — via één QR-code, zonder app.",
+        "body": "Medewerkers klokken in via de Clock Point QR; burgers en teams werken verder via de unit-QR op elke locatie.",
         "cta_start": "Gratis proberen",
         "cta_video": "Bekijk video",
+        "hero_note": "Geen kredietkaart nodig · binnen 2 minuten gestart",
         "desktop_screenshot_alt": "WinProx dashboard op desktop"
+    },
+    "trust_bar": {
+        "items": [
+            "Geen app-installatie",
+            "GDPR-ready",
+            "AI-vertalingen",
+            "Modulair",
+            "Cloud"
+        ]
     },
     "products": {
         "eyebrow": "Producten",
-        "title": "WinProx Facility en WinProx Time",
-        "lead": "Eén platform, twee instappen. Dezelfde Clock Point QR voor medewerkers; Facility voegt meldingen, taken en optionele modules toe.",
+        "title": "Eén platform, twee kernproducten.",
+        "lead": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts. Dezelfde Clock Point QR, modulair uitbreidbaar.",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Melding → taak → afhandeling",
@@ -104,8 +120,18 @@
     },
     "qr": {
         "eyebrow": "QR-portalen",
-        "title": "Clock Point QR en unit-QR",
-        "lead": "Medewerkers scannen de Clock Point QR om in te loggen; op locatie werken ze verder via de unit-QR — op elke smartphone.",
+        "title": "Iedere unit krijgt een eigen digitale pagina.",
+        "lead": "Medewerkers scannen de Clock Point QR om in te klokken; op locatie werken ze verder via de unit-QR — op elke smartphone.",
+        "unit_features": [
+            "Documenten",
+            "Handleidingen",
+            "Meldingen",
+            "Foto's",
+            "Historiek",
+            "QR-code",
+            "AI",
+            "GPS"
+        ],
         "benefits": [
             "In- en uitklokken (Time)",
             "Meldingen registreren",
@@ -118,18 +144,24 @@
         "screenshot_alt": "WinProx QR-portaal op smartphone"
     },
     "flow": {
-        "eyebrow": "Werking",
-        "title": "Alles op één plaats",
-        "lead": "Van melding tot rapportage — één doorlopende flow.",
+        "eyebrow": "Hoe werkt het",
+        "title": "Scan → meld → volg op.",
+        "lead": "Minder administratie en snellere opvolging — alles gekoppeld aan de locatie.",
         "steps": [
-            "Clock Point",
-            "Melding",
-            "Werkopdracht",
-            "Uitvoering",
-            "ESG",
-            "Dashboard",
-            "Rapportering"
-        ]
+            {
+                "label": "Stap 1",
+                "title": "Scan QR-code"
+            },
+            {
+                "label": "Stap 2",
+                "title": "Melding of registratie"
+            },
+            {
+                "label": "Stap 3",
+                "title": "Taken automatisch opgevolgd"
+            }
+        ],
+        "footer": "Van melding tot afhandeling op één platform."
     },
     "sectors": {
         "eyebrow": "Sectoren",
@@ -169,9 +201,13 @@
         "comparison_link": "Bekijk de vergelijking"
     },
     "closing": {
-        "title": "Klaar om uw organisatie slimmer te beheren?",
-        "body": "Kies WinProx Facility voor het volledige plaatje, of WinProx Time wanneer tijdregistratie voorop staat — altijd op hetzelfde betrouwbare platform.",
-        "cta_start": "Gratis proefperiode",
+        "title": "Klaar om papier, telefoons en Excel achter je te laten?",
+        "title_lines": [
+            ["Klaar", "om", "papier,", "telefoons"],
+            ["en", "Excel", "achter", "je", "te", "laten?"]
+        ],
+        "body": "Kies WinProx Facility voor het volledige plaatje, of WinProx Time wanneer tijdregistratie voorop staat.",
+        "cta_start": "Gratis proberen",
         "cta_contact": "Contact opnemen"
     },
     "footer": {

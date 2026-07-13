@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Facility & Time on site",
+    "meta_title": "WinProx — Every location, one QR portal",
     "social": {
-        "og_title": "WinProx — Facility & Time on site",
-        "og_description": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts. Smart QR portals and optional ESG module."
+        "og_title": "WinProx — Every location, one QR portal",
+        "og_description": "Report issues, manage tasks and track presence via smart QR portals. WinProx Facility, Time and optional ESG module on one platform."
     },
     "login": "Log in",
     "register": "Register",
@@ -10,6 +10,7 @@
     "nav": {
         "menu": "Menu",
         "products": "Products",
+        "how": "How it works",
         "platform": "Platform",
         "esg": "ESG",
         "qr": "QR portals",
@@ -18,18 +19,33 @@
         "pricing": "Pricing"
     },
     "hero": {
-        "badge": "Facility · Time",
-        "title": "Two solutions, one platform",
-        "subtitle": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts on site.",
-        "body": "One app, one QR workflow. Staff sign in via the Clock Point QR; citizens and teams work via the unit QR — with no app install.",
+        "badge": "Facility · Time · ESG",
+        "title": "Every physical location gets its own digital QR portal.",
+        "title_lines": [
+            ["Every", "physical", "location", "gets"],
+            ["its", "own", "digital", "QR", "portal."]
+        ],
+        "title_accent": ["digital", "QR", "portal."],
+        "subtitle": "Report issues, manage tasks, track presence and follow ESG actions — via one QR code, no app required.",
+        "body": "Staff clock in via the Clock Point QR; citizens and teams continue on site via the unit QR at each location.",
         "cta_start": "Try for free",
         "cta_video": "Watch video",
+        "hero_note": "No credit card required · get started in 2 minutes",
         "desktop_screenshot_alt": "WinProx dashboard on desktop"
+    },
+    "trust_bar": {
+        "items": [
+            "No app install",
+            "GDPR-ready",
+            "AI translations",
+            "Modular",
+            "Cloud"
+        ]
     },
     "products": {
         "eyebrow": "Products",
-        "title": "WinProx Facility and WinProx Time",
-        "lead": "One platform, two entry points. The same Clock Point QR for staff; Facility adds issues, tasks and optional modules.",
+        "title": "One platform, two core products.",
+        "lead": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts. The same Clock Point QR, modular and expandable.",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Issue → task → completion",
@@ -104,8 +120,18 @@
     },
     "qr": {
         "eyebrow": "QR portals",
-        "title": "Clock Point QR and unit QR",
-        "lead": "Staff scan the Clock Point QR to sign in; on site they continue via the unit QR — on any smartphone.",
+        "title": "Every unit gets its own digital page.",
+        "lead": "Staff scan the Clock Point QR to clock in; on site they continue via the unit QR — on any smartphone.",
+        "unit_features": [
+            "Documents",
+            "Manuals",
+            "Reports",
+            "Photos",
+            "History",
+            "QR code",
+            "AI",
+            "GPS"
+        ],
         "benefits": [
             "Clock in & out (Time)",
             "Log reports",
@@ -119,17 +145,23 @@
     },
     "flow": {
         "eyebrow": "How it works",
-        "title": "Everything in one place",
-        "lead": "From report to reporting — one continuous flow.",
+        "title": "Scan → report → follow up.",
+        "lead": "Less administration and faster follow-up — everything linked to the location.",
         "steps": [
-            "Clock Point",
-            "Report",
-            "Work order",
-            "Execution",
-            "ESG",
-            "Dashboard",
-            "Reporting"
-        ]
+            {
+                "label": "Step 1",
+                "title": "Scan QR code"
+            },
+            {
+                "label": "Step 2",
+                "title": "Report or registration"
+            },
+            {
+                "label": "Step 3",
+                "title": "Tasks followed up automatically"
+            }
+        ],
+        "footer": "From report to completion on one platform."
     },
     "sectors": {
         "eyebrow": "Sectors",
@@ -169,9 +201,13 @@
         "comparison_link": "View comparison"
     },
     "closing": {
-        "title": "Ready to manage your organisation smarter?",
-        "body": "Choose WinProx Facility for the full picture, or WinProx Time when time tracking comes first — always on the same reliable platform.",
-        "cta_start": "Free trial",
+        "title": "Ready to leave paper, phones and Excel behind?",
+        "title_lines": [
+            ["Ready", "to", "leave", "paper,", "phones"],
+            ["and", "Excel", "behind?"]
+        ],
+        "body": "Choose WinProx Facility for the full picture, or WinProx Time when time tracking comes first.",
+        "cta_start": "Try for free",
         "cta_contact": "Contact us"
     },
     "footer": {
