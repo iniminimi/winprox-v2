@@ -22,8 +22,7 @@
         "badge": "Facility · Time · ESG",
         "title": "Chaque site physique dispose de son propre portail QR numérique.",
         "title_lines": [
-            ["Chaque", "site", "physique", "dispose"],
-            ["de", "son", "propre", "portail", "QR", "numérique."]
+            ["Chaque", "site", "physique", "dispose", "de", "son", "propre", "portail", "QR", "numérique."]
         ],
         "title_accent": ["portail", "QR", "numérique."],
         "subtitle": "Signalez des défauts, gérez les tâches, enregistrez la présence et suivez les actions ESG — via un seul QR code, sans application.",

@@ -22,8 +22,7 @@
         "badge": "Facility · Time · ESG",
         "title": "Cada ubicación física obtiene su propio portal QR digital.",
         "title_lines": [
-            ["Cada", "ubicación", "física", "obtiene"],
-            ["su", "propio", "portal", "QR", "digital."]
+            ["Cada", "ubicación", "física", "obtiene", "su", "propio", "portal", "QR", "digital."]
         ],
         "title_accent": ["portal", "QR", "digital."],
         "subtitle": "Reporte incidencias, gestione tareas, registre presencia y siga acciones ESG — con un solo código QR, sin aplicación.",

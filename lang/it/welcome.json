@@ -22,8 +22,7 @@
         "badge": "Facility · Time · ESG",
         "title": "Ogni sede fisica ottiene il proprio portale QR digitale.",
         "title_lines": [
-            ["Ogni", "sede", "fisica", "ottiene"],
-            ["il", "proprio", "portale", "QR", "digitale."]
+            ["Ogni", "sede", "fisica", "ottiene", "il", "proprio", "portale", "QR", "digitale."]
         ],
         "title_accent": ["portale", "QR", "digitale."],
         "subtitle": "Segnala guasti, gestisci attività, registra presenze e segui azioni ESG — con un solo codice QR, senza app.",
