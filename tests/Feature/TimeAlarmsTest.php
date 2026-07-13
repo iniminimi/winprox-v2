@@ -104,3 +104,32 @@ it('toont alarmen met load-more bij grote lijsten', function () {
         ->call('loadMore')
         ->assertDontSee(__('time.presence.load_more', ['count' => 1]), false);
 });
+
+it('filtert alarmen op type zonder blade-fout', function () {
+    config(['time.stale_shift_hours' => 16, 'time.long_shift_hours' => 10]);
+
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+
+    $admin = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $staleWorker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+    $staleShift = app(ClockInAction::class)->handle($staleWorker, $clockPoint);
+    $staleShift->update(['clock_in_at' => now()->subHours(17)]);
+
+    $longWorker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+    $longShift = app(ClockInAction::class)->handle($longWorker, $clockPoint);
+    $longShift->update(['clock_in_at' => now()->subHours(11)]);
+
+    Livewire::actingAs($admin)
+        ->test(AlarmsIndex::class)
+        ->call('setAttentionType', 'stale_shift')
+        ->assertSet('attentionType', 'stale_shift')
+        ->assertSee($staleWorker->displayName(), false)
+        ->assertDontSee($longWorker->displayName(), false);
+});

@@ -103,7 +103,6 @@ class AlarmsIndex extends Component
             'filteredCount' => $filteredCount,
             'totalCount' => $dashboard->attentionItems->count(),
             'typeCounts' => $typeCounts,
-            'attentionType' => $typeFilter,
             'hasMore' => $filteredCount > $visibleItems->count(),
             'pageSize' => $pageSize,
             'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),

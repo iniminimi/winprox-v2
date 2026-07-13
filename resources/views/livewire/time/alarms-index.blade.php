@@ -1,4 +1,7 @@
 <div class="wp-stack" wire:poll.visible.30s data-manual-capture="time-alarms">
+    @php
+        $activeAttentionType = \App\Enums\TimePresenceAttentionType::tryFrom((string) $attentionType);
+    @endphp
     <x-wp-page-head-title
         :title="__('time.alarms.title')"
         help-page="time.alarms"
@@ -37,7 +40,7 @@
             <div class="wp-time-presence-toolbar__meta">
                 <div class="wp-time-presence-toolbar__actions">
                     @include('partials.wp-time-alarms-type-filters', [
-                        'attentionType' => $attentionType,
+                        'activeAttentionType' => $activeAttentionType,
                         'typeCounts' => $typeCounts,
                         'totalCount' => $totalCount,
                     ])
@@ -68,7 +71,7 @@
                         \App\Enums\TimePresenceAttentionType::LongShift => (int) config('time.long_shift_hours', 10),
                         \App\Enums\TimePresenceAttentionType::NoBreak => (int) config('time.break_reminder_hours', 6),
                     };
-                    $typeTotal = $attentionType !== null
+                    $typeTotal = $activeAttentionType !== null
                         ? $filteredCount
                         : (int) ($typeCounts[$type] ?? $groupItems->count());
                 @endphp

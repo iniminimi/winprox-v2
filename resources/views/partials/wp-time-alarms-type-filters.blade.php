@@ -1,5 +1,3 @@
-@props(['attentionType', 'typeCounts', 'totalCount'])
-
 @php
     use App\Enums\TimePresenceAttentionType;
 
@@ -16,8 +14,8 @@
         @php
             $count = $value === '' ? $totalCount : (int) ($typeCounts[$value] ?? 0);
             $isActive = $value === ''
-                ? $attentionType === null
-                : $attentionType?->value === $value;
+                ? $activeAttentionType === null
+                : $activeAttentionType === TimePresenceAttentionType::from($value);
         @endphp
         <button type="button"
                 role="tab"
