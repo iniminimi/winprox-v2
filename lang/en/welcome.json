@@ -183,6 +183,7 @@
         "title": "Why organisations choose WinProx",
         "languages_title": "Multilingual from day one",
         "languages_body": "Reports, tasks and announcements are automatically translated into all supported languages.",
+        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
         "items": [
             "No app",
             "Cloud",

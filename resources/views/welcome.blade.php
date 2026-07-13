@@ -286,46 +286,66 @@
             </div>
         </section>
 
-        <section id="video" class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-labelledby="welcome-trust-title">
+        <section id="video" class="wp-welcome-section wp-welcome-section--trust" aria-labelledby="welcome-trust-title">
             <div class="wp-welcome-section-inner--wide wp-welcome-main">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.trust.eyebrow') }}</span>
-                <x-wp-text-reveal
-                    as="h2"
-                    id="welcome-trust-title"
-                    class="wp-welcome-h2"
-                    :text="__('welcome.trust.title')"
-                />
-
-                <div class="wp-welcome-trust-languages">
-                    <h3 class="wp-welcome-h3">{{ __('welcome.trust.languages_title') }}</h3>
-                    <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.trust.languages_body') }}</p>
+                <div class="wp-welcome-trust-head wp-welcome-section--center wp-welcome-section-inner">
+                    <span class="wp-welcome-eyebrow">{{ __('welcome.trust.eyebrow') }}</span>
+                    <x-wp-text-reveal
+                        as="h2"
+                        id="welcome-trust-title"
+                        class="wp-welcome-h2"
+                        :text="__('welcome.trust.title')"
+                    />
                 </div>
 
-                <ul class="wp-welcome-trust-grid">
-                    @foreach (__('welcome.trust.items') as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-
-                <div class="wp-welcome-trust-media">
-                    <div class="wp-welcome-trust-video">
-                        <h3 class="wp-welcome-h3">{{ __('welcome.trust.video_title') }}</h3>
+                <div class="wp-welcome-trust-bento">
+                    <div class="wp-welcome-trust-bento__media wp-card">
+                        <p class="wp-welcome-trust-bento__label">{{ __('welcome.trust.video_title') }}</p>
                         @if ($welcomeVideoAvailable)
                             @include('partials.wp-locale-video', [
                                 'basename' => 'issue',
                                 'title' => __('welcome.trust.video_title'),
                             ])
+                        @elseif ($welcomeDesktopScreenshotAvailable)
+                            <figure class="wp-welcome-trust-bento__screenshot">
+                                <img
+                                    src="{{ asset($welcomeDesktopScreenshotRel) }}"
+                                    alt="{{ __('welcome.hero.desktop_screenshot_alt') }}"
+                                    class="wp-welcome-screenshot__img"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </figure>
                         @else
                             <div class="wp-welcome-media-placeholder wp-welcome-media-placeholder--video" role="img" aria-label="{{ __('welcome.trust.video_placeholder') }}">
                                 <p>{{ __('welcome.trust.video_placeholder') }}</p>
                             </div>
                         @endif
                     </div>
-                    <div class="wp-welcome-trust-compare">
-                        <h3 class="wp-welcome-h3">{{ __('welcome.trust.comparison_title') }}</h3>
-                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.trust.comparison_body') }}</p>
-                        <a href="{{ route('comparison') }}" class="btn btn--primary">{{ __('welcome.trust.comparison_link') }}</a>
+
+                    <div class="wp-welcome-trust-bento__aside">
+                        <div class="wp-welcome-trust-lang wp-card">
+                            <h3 class="wp-welcome-h3">{{ __('welcome.trust.languages_title') }}</h3>
+                            <p class="wp-welcome-trust-lang__body">{{ __('welcome.trust.languages_body') }}</p>
+                            <ul class="wp-welcome-trust-lang__chips" aria-label="{{ __('welcome.trust.languages_title') }}">
+                                @foreach (__('welcome.trust.locale_chips') as $chip)
+                                    <li><span class="wp-welcome-trust-lang__chip notranslate" translate="no">{{ $chip }}</span></li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <a href="{{ route('comparison') }}" class="wp-welcome-trust-compare wp-card">
+                            <h3 class="wp-welcome-h3">{{ __('welcome.trust.comparison_title') }}</h3>
+                            <p class="wp-welcome-trust-compare__body">{{ __('welcome.trust.comparison_body') }}</p>
+                            <span class="wp-welcome-trust-compare__link">{{ __('welcome.trust.comparison_link') }} →</span>
+                        </a>
                     </div>
+
+                    <ul class="wp-welcome-trust-chips">
+                        @foreach (__('welcome.trust.items') as $item)
+                            <li><span class="wp-welcome-trust-chip">{{ $item }}</span></li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </section>

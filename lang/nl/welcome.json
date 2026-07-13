@@ -183,6 +183,7 @@
         "title": "Waarom organisaties kiezen voor WinProx",
         "languages_title": "Meertalig vanaf dag één",
         "languages_body": "Meldingen, taken en mededelingen worden automatisch vertaald naar alle ondersteunde talen.",
+        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
         "items": [
             "Geen app",
             "Cloud",
