@@ -11,44 +11,43 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-time-alarms-summary">
-            <p class="wp-text-body">
-                <span class="wp-pill wp-pill--progress">{{ $totalCount }}</span>
-                {{ trans_choice('time.alarms.summary', $totalCount, ['count' => $totalCount]) }}
-            </p>
-            <p class="wp-muted wp-time-presence-toolbar__updated">
-                <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
-                <span>{{ now()->format('H:i') }}</span>
-            </p>
-        </div>
-
-        <div class="wp-grid wp-grid--2">
-            <div class="wp-field">
-                <label class="wp-label" for="alarms-team">{{ __('time.filters.team') }}</label>
-                <select id="alarms-team" class="wp-input" wire:model.live="teamFilter">
-                    <option value="">{{ __('time.filters.all_teams') }}</option>
-                    @foreach ($teams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
-                    @endforeach
-                </select>
+    <div class="wp-card wp-filter-panel wp-time-alarms-toolbar">
+        <div class="wp-filter-form wp-time-alarms-toolbar__form">
+            <div class="wp-filter-form__row">
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="alarms-team">{{ __('time.filters.team') }}</label>
+                    <select id="alarms-team" class="wp-select" wire:model.live="teamFilter">
+                        <option value="">{{ __('time.filters.all_teams') }}</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="alarms-location">{{ __('time.presence.location') }}</label>
+                    <select id="alarms-location" class="wp-select" wire:model.live="locationFilter">
+                        <option value="">{{ __('time.presence.all_locations') }}</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <div class="wp-field">
-                <label class="wp-label" for="alarms-location">{{ __('time.presence.location') }}</label>
-                <select id="alarms-location" class="wp-input" wire:model.live="locationFilter">
-                    <option value="">{{ __('time.presence.all_locations') }}</option>
-                    @foreach ($locations as $location)
-                        <option value="{{ $location->id }}">{{ $location->name }}</option>
-                    @endforeach
-                </select>
+
+            <div class="wp-time-presence-toolbar__meta">
+                <div class="wp-time-presence-toolbar__actions">
+                    @include('partials.wp-time-alarms-type-filters', [
+                        'attentionType' => $attentionType,
+                        'typeCounts' => $typeCounts,
+                        'totalCount' => $totalCount,
+                    ])
+                </div>
+                <p class="wp-time-presence-toolbar__updated wp-muted">
+                    <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
+                    <span>{{ now()->format('H:i') }}</span>
+                </p>
             </div>
         </div>
-
-        @include('partials.wp-time-alarms-type-filters', [
-            'attentionType' => $attentionType,
-            'typeCounts' => $typeCounts,
-            'totalCount' => $totalCount,
-        ])
     </div>
 
     @if ($items->isEmpty())
