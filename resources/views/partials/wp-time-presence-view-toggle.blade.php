@@ -1,5 +1,3 @@
-@props(['viewMode'])
-
 @php
     use App\Enums\TimePresenceViewMode;
 @endphp
@@ -8,19 +6,22 @@
     <button type="button"
             role="tab"
             wire:click="setViewMode('teams')"
-            @class(['btn btn--sm', $viewMode === TimePresenceViewMode::Teams ? 'btn--primary' : 'btn--surface'])>
+            aria-selected="{{ $presenceView === TimePresenceViewMode::Teams ? 'true' : 'false' }}"
+            @class(['btn btn--sm', $presenceView === TimePresenceViewMode::Teams ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.presence.view.teams') }}
     </button>
     <button type="button"
             role="tab"
             wire:click="setViewMode('cards')"
-            @class(['btn btn--sm', $viewMode === TimePresenceViewMode::Cards ? 'btn--primary' : 'btn--surface'])>
+            aria-selected="{{ $presenceView === TimePresenceViewMode::Cards ? 'true' : 'false' }}"
+            @class(['btn btn--sm', $presenceView === TimePresenceViewMode::Cards ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.presence.view.cards') }}
     </button>
     <button type="button"
             role="tab"
             wire:click="setViewMode('locations')"
-            @class(['btn btn--sm', $viewMode === TimePresenceViewMode::Locations ? 'btn--primary' : 'btn--surface'])>
+            aria-selected="{{ $presenceView === TimePresenceViewMode::Locations ? 'true' : 'false' }}"
+            @class(['btn btn--sm', $presenceView === TimePresenceViewMode::Locations ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.presence.view.locations') }}
     </button>
 </div>

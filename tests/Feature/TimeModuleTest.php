@@ -45,6 +45,32 @@ it('laat een admin het time-aanwezigheidsscherm openen', function () {
         ->assertOk();
 });
 
+it('wisselt tussen teams-, teamkaarten- en locatie-weergave', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Hoofdkantoor']);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSee('wp-time-presence-teams', false)
+        ->call('setViewMode', 'cards')
+        ->assertSet('viewMode', 'cards')
+        ->assertSee('wp-time-presence-card-grid', false)
+        ->assertSee(__('time.presence.view_team'), false)
+        ->call('setViewMode', 'locations')
+        ->assertSet('viewMode', 'locations')
+        ->assertSee('Hoofdkantoor', false);
+});
+
 it('laat een admin een urenstaat afdrukken', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);

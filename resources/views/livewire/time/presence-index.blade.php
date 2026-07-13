@@ -1,4 +1,7 @@
 <div class="wp-stack" wire:poll.visible.30s data-manual-capture="time-presence">
+    @php
+        $presenceView = \App\Enums\TimePresenceViewMode::tryFromRequest($viewMode);
+    @endphp
     <x-wp-page-head-title
         :title="__('time.title')"
         help-page="time.presence"
@@ -62,7 +65,7 @@
         @include('partials.wp-time-presence-status-filters', ['statusFilter' => $statusFilter])
 
         @if (! $dashboard->isSearchMode)
-            @include('partials.wp-time-presence-view-toggle', ['viewMode' => $viewMode])
+            @include('partials.wp-time-presence-view-toggle', ['presenceView' => $presenceView])
         @endif
     </div>
 
@@ -83,12 +86,12 @@
             'showForceClose' => true,
             'staleHours' => $staleHours,
         ])
-    @elseif ($viewMode === \App\Enums\TimePresenceViewMode::Cards)
+    @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Cards)
         @include('partials.wp-time-presence-team-cards', [
             'teamBuckets' => $dashboard->teamBuckets,
             'statusFilter' => $statusFilter,
         ])
-    @elseif ($viewMode === \App\Enums\TimePresenceViewMode::Locations)
+    @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Locations)
         @include('partials.wp-time-presence-location-cards', [
             'locationBuckets' => $dashboard->locationBuckets,
         ])

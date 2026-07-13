@@ -70,7 +70,9 @@ class PresenceIndex extends Component
 
     public function setViewMode(string $mode): void
     {
-        $this->viewMode = $mode;
+        $this->viewMode = TimePresenceViewMode::tryFromRequest($mode)->value;
+        $this->expandedTeams = [];
+        $this->teamShiftLimits = [];
     }
 
     public function toggleTeam(int $teamId): void
@@ -123,7 +125,6 @@ class PresenceIndex extends Component
         return view('livewire.time.presence-index', [
             'dashboard' => $dashboard,
             'statusFilter' => TimePresenceStatusFilter::tryFromRequest($this->statusFilter),
-            'viewMode' => TimePresenceViewMode::tryFromRequest($this->viewMode),
             'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'locations' => Location::query()->orderBy('name')->get(),
