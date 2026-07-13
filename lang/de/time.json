@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Live-Übersicht pro Team — Team aufklappen für Mitarbeitende.",
         "present": "Aanwezig",
         "present_subtitle": "Aktive Mitarbeitende",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Heute noch nicht eingestempelt",
         "worked_so_far": "Gearbeitet: :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Alle mit offener Schicht sind eingestempelt.",
         "force_close": "Shift sluiten",
         "force_closed": "Schicht geschlossen.",
-        "stale_warning": "Seit mehr als :hours Stunden offen"
+        "stale_warning": "Seit mehr als :hours Stunden offen",
+        "search_label": "Mitarbeitende suchen",
+        "search_placeholder": "Name…",
+        "search_results": "Suchergebnisse",
+        "search_empty": "Keine Mitarbeitenden gefunden.",
+        "location": "Standort",
+        "all_locations": "Alle Standorte",
+        "status_filters": "Status",
+        "no_attention": "Derzeit keine Abweichungen.",
+        "attention_title": "Braucht Aufmerksamkeit",
+        "attention_show_all": "Alle :count Abweichungen anzeigen",
+        "absent_truncated": "Noch :count weitere — mit Suche oder Teamfilter eingrenzen.",
+        "team_summary_active": ":count aktiv",
+        "team_summary_break": ":count Pause",
+        "team_summary_absent": ":count nicht eingestempelt",
+        "team_summary_attention": ":count Aufmerksamkeit",
+        "kpi": {
+            "clocked_in": "Eingestempelt",
+            "active": "Aktiv",
+            "break": "Pause",
+            "absent": "Nicht eingestempelt",
+            "attention": "Aufmerksamkeit"
+        },
+        "status": {
+            "all": "Alle",
+            "active": "Anwesend",
+            "break": "Pause",
+            "absent": "Abwesend",
+            "attention": "Aufmerksamkeit"
+        },
+        "attention": {
+            "long_shift": "Schicht länger als :hours Stunden",
+            "stale_shift": "Nicht ausgestempelt (> :hours Std.)",
+            "no_break": "Keine Pause nach :hours Stunden"
+        }
     },
     "force_close": {
         "title": "Schicht schließen",

@@ -11,7 +11,24 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
-    <div class="wp-card wp-card-pad wp-stack">
+    @include('partials.wp-time-presence-kpis', [
+        'kpis' => $dashboard->kpis,
+        'statusFilter' => $statusFilter,
+    ])
+
+    <div class="wp-card wp-card-pad wp-stack wp-time-presence-toolbar">
+        <div class="wp-grid wp-grid--2">
+            <div class="wp-field">
+                <label class="wp-label" for="presence-search">{{ __('time.presence.search_label') }}</label>
+                <input id="presence-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+                       placeholder="{{ __('time.presence.search_placeholder') }}">
+            </div>
+            <p class="wp-time-presence-toolbar__updated wp-muted">
+                <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
+                <span>{{ now()->format('H:i') }}</span>
+            </p>
+        </div>
+
         <div class="wp-grid wp-grid--3">
             <div class="wp-field">
                 <label class="wp-label" for="presence-team">{{ __('time.filters.team') }}</label>
@@ -19,6 +36,15 @@
                     <option value="">{{ __('time.filters.all_teams') }}</option>
                     @foreach ($teams as $team)
                         <option value="{{ $team->id }}">{{ $team->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="wp-field">
+                <label class="wp-label" for="presence-location">{{ __('time.presence.location') }}</label>
+                <select id="presence-location" class="wp-input" wire:model.live="locationFilter">
+                    <option value="">{{ __('time.presence.all_locations') }}</option>
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name }}</option>
                     @endforeach
                 </select>
             </div>
@@ -31,34 +57,39 @@
                     @endforeach
                 </select>
             </div>
-            <div class="wp-field">
-                <label class="wp-label" for="presence-search">{{ __('time.filters.search') }}</label>
-                <input id="presence-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search">
-            </div>
         </div>
+
+        @include('partials.wp-time-presence-status-filters', ['statusFilter' => $statusFilter])
     </div>
 
-    @include('partials.wp-time-presence-section', [
-        'section' => 'present',
-        'title' => __('time.presence.present'),
-        'subtitle' => __('time.presence.present_subtitle'),
-        'shifts' => $snapshot->present,
-        'showForceClose' => true,
-        'staleHours' => $staleHours,
-    ])
+    @if ($dashboard->attentionItems->isNotEmpty() && $statusFilter !== \App\Enums\TimePresenceStatusFilter::Absent)
+        @include('partials.wp-time-presence-attention', [
+            'items' => $dashboard->attentionItems->take($statusFilter === \App\Enums\TimePresenceStatusFilter::Attention ? 100 : 8),
+            'total' => $dashboard->attentionItems->count(),
+            'showForceClose' => true,
+            'staleHours' => $staleHours,
+            'compact' => $statusFilter !== \App\Enums\TimePresenceStatusFilter::Attention,
+        ])
+    @endif
 
-    @include('partials.wp-time-presence-section', [
-        'section' => 'on_break',
-        'title' => __('time.presence.on_break'),
-        'subtitle' => __('time.presence.on_break_subtitle'),
-        'shifts' => $snapshot->onBreak,
-        'showForceClose' => true,
-        'staleHours' => $staleHours,
-    ])
-
-    @include('partials.wp-time-presence-absent-section', [
-        'workers' => $snapshot->notClockedIn,
-    ])
+    @if ($dashboard->isSearchMode)
+        @include('partials.wp-time-presence-search-results', [
+            'shifts' => $dashboard->searchShifts,
+            'absentWorkers' => $dashboard->searchAbsentWorkers,
+            'showForceClose' => true,
+            'staleHours' => $staleHours,
+        ])
+    @elseif ($statusFilter === \App\Enums\TimePresenceStatusFilter::Attention && $dashboard->attentionItems->isEmpty())
+        <p class="wp-muted">{{ __('time.presence.no_attention') }}</p>
+    @elseif ($statusFilter !== \App\Enums\TimePresenceStatusFilter::Attention)
+        @include('partials.wp-time-presence-teams', [
+            'teamBuckets' => $dashboard->teamBuckets,
+            'expandedTeams' => $expandedTeams,
+            'statusFilter' => $statusFilter,
+            'showForceClose' => true,
+            'staleHours' => $staleHours,
+        ])
+    @endif
 
     @include('partials.wp-time-force-close-modal')
 </div>

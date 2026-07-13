@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Panoramica live per team — espandi un team per i dipendenti.",
         "present": "Aanwezig",
         "present_subtitle": "Dipendenti attivi",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Non ancora timbrati oggi",
         "worked_so_far": "Lavorato: :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Tutti con turno aperto sono timbrati.",
         "force_close": "Shift sluiten",
         "force_closed": "Turno chiuso.",
-        "stale_warning": "Aperto da più di :hours ore"
+        "stale_warning": "Aperto da più di :hours ore",
+        "search_label": "Cerca dipendente",
+        "search_placeholder": "Nome…",
+        "search_results": "Risultati di ricerca",
+        "search_empty": "Nessun dipendente trovato.",
+        "location": "Sede",
+        "all_locations": "Tutte le sedi",
+        "status_filters": "Stato",
+        "no_attention": "Nessuna anomalia al momento.",
+        "attention_title": "Richiede attenzione",
+        "attention_show_all": "Mostra tutte le :count anomalie",
+        "absent_truncated": "Altri :count — affina con ricerca o filtro team.",
+        "team_summary_active": ":count attivi",
+        "team_summary_break": ":count in pausa",
+        "team_summary_absent": ":count non timbrati",
+        "team_summary_attention": ":count attenzione",
+        "kpi": {
+            "clocked_in": "Timbrati",
+            "active": "Attivi",
+            "break": "Pausa",
+            "absent": "Non timbrati",
+            "attention": "Attenzione"
+        },
+        "status": {
+            "all": "Tutti",
+            "active": "Presenti",
+            "break": "Pausa",
+            "absent": "Assenti",
+            "attention": "Attenzione"
+        },
+        "attention": {
+            "long_shift": "Turno oltre :hours ore",
+            "stale_shift": "Non timbrato in uscita (> :hours h)",
+            "no_break": "Nessuna pausa dopo :hours ore"
+        }
     },
     "force_close": {
         "title": "Chiudi turno",

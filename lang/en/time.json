@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Live overview by team — expand a team for workers.",
         "present": "Aanwezig",
         "present_subtitle": "Active employees",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Not clocked in today",
         "worked_so_far": "Worked: :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Everyone with an open shift is clocked in.",
         "force_close": "Shift sluiten",
         "force_closed": "Shift closed.",
-        "stale_warning": "Open for more than :hours hours"
+        "stale_warning": "Open for more than :hours hours",
+        "search_label": "Search worker",
+        "search_placeholder": "Name…",
+        "search_results": "Search results",
+        "search_empty": "No workers found.",
+        "location": "Location",
+        "all_locations": "All locations",
+        "status_filters": "Status",
+        "no_attention": "No exceptions at the moment.",
+        "attention_title": "Needs attention",
+        "attention_show_all": "Show all :count exceptions",
+        "absent_truncated": ":count more — refine with search or team filter.",
+        "team_summary_active": ":count active",
+        "team_summary_break": ":count on break",
+        "team_summary_absent": ":count not clocked in",
+        "team_summary_attention": ":count attention",
+        "kpi": {
+            "clocked_in": "Clocked in",
+            "active": "Active",
+            "break": "Break",
+            "absent": "Not clocked in",
+            "attention": "Attention"
+        },
+        "status": {
+            "all": "All",
+            "active": "Present",
+            "break": "Break",
+            "absent": "Absent",
+            "attention": "Attention"
+        },
+        "attention": {
+            "long_shift": "Shift longer than :hours hours",
+            "stale_shift": "Not clocked out (> :hours hours)",
+            "no_break": "No break after :hours hours"
+        }
     },
     "force_close": {
         "title": "Close shift",

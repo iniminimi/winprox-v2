@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Live overzicht per team — open een team voor medewerkers.",
         "present": "Aanwezig",
         "present_subtitle": "Actieve werknemers",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Nog niet ingeklokt vandaag",
         "worked_so_far": "Gewerkt: :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Iedereen met een open shift is ingeklokt.",
         "force_close": "Shift sluiten",
         "force_closed": "Shift gesloten.",
-        "stale_warning": "Open sinds meer dan :hours uur"
+        "stale_warning": "Open sinds meer dan :hours uur",
+        "search_label": "Zoek medewerker",
+        "search_placeholder": "Naam…",
+        "search_results": "Zoekresultaten",
+        "search_empty": "Geen medewerkers gevonden.",
+        "location": "Locatie",
+        "all_locations": "Alle locaties",
+        "status_filters": "Status",
+        "no_attention": "Geen afwijkingen op dit moment.",
+        "attention_title": "Vraagt aandacht",
+        "attention_show_all": "Alle :count afwijkingen tonen",
+        "absent_truncated": "Nog :count anderen — verfijn met zoeken of teamfilter.",
+        "team_summary_active": ":count actief",
+        "team_summary_break": ":count pauze",
+        "team_summary_absent": ":count niet ingeklokt",
+        "team_summary_attention": ":count aandacht",
+        "kpi": {
+            "clocked_in": "Ingelogd",
+            "active": "Actief",
+            "break": "Pauze",
+            "absent": "Niet ingeklokt",
+            "attention": "Aandacht"
+        },
+        "status": {
+            "all": "Alle",
+            "active": "Aanwezig",
+            "break": "Pauze",
+            "absent": "Afwezig",
+            "attention": "Aandacht"
+        },
+        "attention": {
+            "long_shift": "Shift langer dan :hours uur",
+            "stale_shift": "Niet uitgeklokt (> :hours uur)",
+            "no_break": "Geen pauze na :hours uur"
+        }
     },
     "force_close": {
         "title": "Shift sluiten",

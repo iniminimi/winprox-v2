@@ -4091,234 +4091,235 @@ svg.wp-release-worker-row__icon,
 }
 
 /* ---------------------------------------------------------------------------
- | Time — aanwezigheid
+ | Time — aanwezigheid (dashboard)
  * ------------------------------------------------------------------------- */
-.wp-time-presence-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.wp-time-presence-section__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.75rem 1.25rem;
-}
-
-.wp-time-presence-section__head-main {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    min-width: 0;
-}
-
-.wp-time-presence-section__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    flex-shrink: 0;
-}
-
-.wp-time-presence-section__icon--present {
-    background: var(--wp-accent-soft);
-    color: var(--wp-accent-text);
-    border: 1px solid var(--wp-accent-border);
-}
-
-.wp-time-presence-section__icon--break {
-    background: var(--wp-warning-soft);
-    color: var(--wp-warning-text);
-    border: 1px solid var(--wp-warning-border);
-}
-
-.wp-time-presence-section__icon--absent {
-    background: var(--wp-surface-2);
-    color: var(--wp-text-muted);
+.wp-time-presence-kpis .wp-kpi {
+    cursor: pointer;
     border: 1px solid var(--wp-border);
+    background: var(--wp-surface);
+    font: inherit;
+    text-align: left;
+    width: 100%;
 }
 
-.wp-time-presence-section__icon .wp-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+.wp-time-presence-kpis .wp-kpi--selected {
+    border-color: var(--wp-accent-border);
+    box-shadow: inset 0 0 0 1px var(--wp-accent-border);
 }
 
-.wp-time-presence-section__title {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0;
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--wp-text);
-}
-
-.wp-time-presence-section__subtitle {
-    margin: 0.2rem 0 0;
-    font-size: 0.875rem;
-    color: var(--wp-text-muted);
-}
-
-.wp-time-presence-section__updated {
+.wp-time-presence-toolbar__updated {
     display: inline-flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.35rem;
     margin: 0;
-    font-size: 0.875rem;
+    align-self: end;
     font-variant-numeric: tabular-nums;
-    color: var(--wp-text-muted);
 }
 
-.wp-time-presence-section__updated-icon {
+.wp-time-presence-toolbar__updated-icon {
     width: 1rem;
     height: 1rem;
 }
 
-.wp-time-presence-section__list {
+.wp-time-presence-status-filters {
+    flex-wrap: wrap;
+}
+
+.wp-time-presence-teams {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
-.wp-time-presence-section__empty {
-    margin: 0;
-}
-
-.wp-time-presence-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) auto;
-    gap: 1rem 1.25rem;
-    align-items: center;
-    padding: 1rem 1.15rem;
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-lg);
-    background: var(--wp-surface);
-    box-shadow: var(--wp-shadow-sm);
-}
-
-.wp-time-presence-card--absent {
-    grid-template-columns: minmax(0, 1fr);
-}
-
-.wp-time-presence-card__identity {
+.wp-time-presence-team-toggle {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.wp-time-presence-team-summary {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    white-space: nowrap;
+}
+
+.wp-time-presence-team-summary__alert {
+    color: var(--wp-warning-text);
+}
+
+.wp-time-presence-team-panel {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-time-presence-team-panel__heading {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--wp-text-muted);
+}
+
+.wp-time-presence-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 3.5rem 4rem auto;
+    gap: 0.75rem;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-time-presence-row:last-child {
+    border-bottom: none;
+}
+
+.wp-time-presence-row--break .wp-time-presence-row__duration,
+.wp-time-presence-row--break .wp-time-presence-row__clock {
+    color: var(--wp-warning-text);
+}
+
+.wp-time-presence-row--absent {
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.wp-time-presence-row__identity {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     min-width: 0;
 }
 
-.wp-time-presence-card__initial {
+.wp-time-presence-row__initial {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 1.75rem;
+    height: 1.75rem;
     border-radius: 999px;
     background: var(--wp-accent-soft);
     color: var(--wp-accent-text);
     border: 1px solid var(--wp-accent-border);
-    font-size: 0.9375rem;
+    font-size: 0.6875rem;
     font-weight: 700;
     flex-shrink: 0;
 }
 
-.wp-time-presence-card__initial--absent {
+.wp-time-presence-row__initial--absent {
     background: var(--wp-surface-2);
     color: var(--wp-text-muted);
     border-color: var(--wp-border);
 }
 
-.wp-time-presence-card__identity-copy {
-    min-width: 0;
-}
-
-.wp-time-presence-card__name {
-    display: block;
-    font-size: 0.975rem;
-    line-height: 1.35;
-}
-
-.wp-time-presence-card__meta {
-    min-width: 0;
-    padding-left: 1rem;
-    border-left: 1px solid var(--wp-border);
-}
-
-.wp-time-presence-card--absent .wp-time-presence-card__meta {
-    display: none;
-}
-
-.wp-time-presence-card__clock {
+.wp-time-presence-row__copy {
     display: flex;
-    align-items: flex-start;
-    gap: 0.55rem;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
 }
 
-.wp-time-presence-card__clock-icon {
-    width: 1.125rem;
-    height: 1.125rem;
-    margin-top: 0.1rem;
-    color: var(--wp-accent-text);
-    flex-shrink: 0;
-}
-
-.wp-time-presence-section--break .wp-time-presence-card__clock-icon {
-    color: var(--wp-warning-text);
-}
-
-.wp-time-presence-card__clock-time {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: var(--wp-accent-text);
-    line-height: 1.3;
-}
-
-.wp-time-presence-section--break .wp-time-presence-card__clock-time {
-    color: var(--wp-warning-text);
-}
-
-.wp-time-presence-card__action {
-    justify-self: end;
-}
-
-.wp-time-presence-card__action .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
+.wp-time-presence-row__name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.wp-time-presence-card__action-icon {
-    width: 1rem;
-    height: 1rem;
+.wp-time-presence-row__clock,
+.wp-time-presence-row__duration {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--wp-accent-text);
+    text-align: right;
+}
+
+.wp-time-presence-row__action .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.wp-time-presence-row__action-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.wp-time-presence-attention__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.wp-time-presence-attention__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.wp-time-presence-attention__item {
+    border: 1px solid var(--wp-warning-border);
+    border-radius: var(--wp-radius-md);
+    background: var(--wp-warning-soft);
+    padding: 0.5rem 0.75rem;
+}
+
+.wp-time-presence-attention__reason {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0 0 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--wp-warning-text);
+}
+
+.wp-time-presence-attention__reason-icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    flex-shrink: 0;
+}
+
+.wp-time-presence-attention__item .wp-time-presence-row {
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 @media (max-width: 48rem) {
-    .wp-time-presence-card {
-        grid-template-columns: 1fr;
+    .wp-time-presence-team-summary {
+        display: none;
     }
 
-    .wp-time-presence-card__meta {
-        padding-left: 0;
-        border-left: 0;
-        padding-top: 0.75rem;
-        border-top: 1px solid var(--wp-border);
+    .wp-time-presence-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "identity action"
+            "meta meta";
     }
 
-    .wp-time-presence-card__action {
-        justify-self: stretch;
+    .wp-time-presence-row__identity {
+        grid-area: identity;
     }
 
-    .wp-time-presence-card__action .btn {
-        width: 100%;
-        justify-content: center;
+    .wp-time-presence-row__clock {
+        grid-area: meta;
+        text-align: left;
+    }
+
+    .wp-time-presence-row__duration {
+        display: none;
+    }
+
+    .wp-time-presence-row__action {
+        grid-area: action;
+    }
+
+    .wp-time-presence-row__action-label {
+        display: none;
     }
 }

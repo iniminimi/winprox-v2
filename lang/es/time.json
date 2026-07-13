@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Vista en vivo por equipo — expanda un equipo para ver empleados.",
         "present": "Aanwezig",
         "present_subtitle": "Empleados activos",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Aún no fichados hoy",
         "worked_so_far": "Trabajado: :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Todos con turno abierto están fichados.",
         "force_close": "Shift sluiten",
         "force_closed": "Turno cerrado.",
-        "stale_warning": "Abierto desde hace más de :hours horas"
+        "stale_warning": "Abierto desde hace más de :hours horas",
+        "search_label": "Buscar empleado",
+        "search_placeholder": "Nombre…",
+        "search_results": "Resultados de búsqueda",
+        "search_empty": "No se encontraron empleados.",
+        "location": "Ubicación",
+        "all_locations": "Todas las ubicaciones",
+        "status_filters": "Estado",
+        "no_attention": "Sin excepciones por el momento.",
+        "attention_title": "Requiere atención",
+        "attention_show_all": "Mostrar las :count excepciones",
+        "absent_truncated": ":count más — refine con búsqueda o filtro de equipo.",
+        "team_summary_active": ":count activos",
+        "team_summary_break": ":count en pausa",
+        "team_summary_absent": ":count sin fichar",
+        "team_summary_attention": ":count atención",
+        "kpi": {
+            "clocked_in": "Fichados",
+            "active": "Activos",
+            "break": "Pausa",
+            "absent": "Sin fichar",
+            "attention": "Atención"
+        },
+        "status": {
+            "all": "Todos",
+            "active": "Presentes",
+            "break": "Pausa",
+            "absent": "Ausentes",
+            "attention": "Atención"
+        },
+        "attention": {
+            "long_shift": "Turno de más de :hours horas",
+            "stale_shift": "Sin fichar salida (> :hours h)",
+            "no_break": "Sin pausa tras :hours horas"
+        }
     },
     "force_close": {
         "title": "Cerrar turno",

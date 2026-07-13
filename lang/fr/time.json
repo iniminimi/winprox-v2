@@ -10,7 +10,7 @@
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Live overzicht van wie ingeklokt is, op pauze staat of nog niet is ingeklokt.",
+        "subtitle": "Vue live par équipe — ouvrez une équipe pour voir les employés.",
         "present": "Aanwezig",
         "present_subtitle": "Employés actifs",
         "on_break": "Pauze",
@@ -19,10 +19,44 @@
         "not_clocked_in_subtitle": "Pas encore pointé aujourd'hui",
         "worked_so_far": "Travaillé : :duration",
         "empty_section": "Niemand in deze groep.",
-        "empty_not_clocked_in": "Iedereen met een open shift staat hierboven vermeld.",
+        "empty_not_clocked_in": "Tous ceux avec un shift ouvert sont pointés.",
         "force_close": "Shift sluiten",
         "force_closed": "Shift fermé.",
-        "stale_warning": "Ouvert depuis plus de :hours heures"
+        "stale_warning": "Ouvert depuis plus de :hours heures",
+        "search_label": "Rechercher un employé",
+        "search_placeholder": "Nom…",
+        "search_results": "Résultats de recherche",
+        "search_empty": "Aucun employé trouvé.",
+        "location": "Site",
+        "all_locations": "Tous les sites",
+        "status_filters": "Statut",
+        "no_attention": "Aucune anomalie pour le moment.",
+        "attention_title": "À surveiller",
+        "attention_show_all": "Afficher les :count anomalies",
+        "absent_truncated": ":count de plus — affinez avec la recherche ou le filtre équipe.",
+        "team_summary_active": ":count actifs",
+        "team_summary_break": ":count en pause",
+        "team_summary_absent": ":count non pointés",
+        "team_summary_attention": ":count à surveiller",
+        "kpi": {
+            "clocked_in": "Pointés",
+            "active": "Actifs",
+            "break": "Pause",
+            "absent": "Non pointés",
+            "attention": "À surveiller"
+        },
+        "status": {
+            "all": "Tous",
+            "active": "Présents",
+            "break": "Pause",
+            "absent": "Absents",
+            "attention": "À surveiller"
+        },
+        "attention": {
+            "long_shift": "Shift de plus de :hours heures",
+            "stale_shift": "Non dépointé (> :hours h)",
+            "no_break": "Pas de pause après :hours heures"
+        }
     },
     "force_close": {
         "title": "Fermer le shift",
