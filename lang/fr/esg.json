@@ -139,7 +139,7 @@
         "trend": {
             "title": "Tendance de consommation",
             "indicator": "Indicateur",
-            "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours",
+            "period": "{1} Dernier :days jour|[2,*] Derniers :days jours",
             "empty": "Pas encore de mesures sur cette période.",
             "aria": "Graphique de tendance avec :count points de données"
         },
@@ -160,7 +160,7 @@
         "distribution": {
             "kicker": "Catégories",
             "title": "Répartition par catégorie",
-            "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours",
+            "period": "{1} Dernier :days jour|[2,*] Derniers :days jours",
             "empty": "Pas encore de mesures sur cette période.",
             "aria": "Répartition par catégorie avec :count segments"
         },
@@ -236,7 +236,7 @@
         "all_measurements": "Toutes les mesures",
         "trend": {
             "title": "Tendance par point de mesure",
-            "period": "Derniers :days jours|Dernier :days jour|Derniers :days jours"
+            "period": "{1} Dernier :days jour|[2,*] Derniers :days jours"
         },
         "timeline": {
             "title": "Chronologie",

@@ -139,7 +139,7 @@
         "trend": {
             "title": "Verbrauchstrend",
             "indicator": "Indikator",
-            "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage",
+            "period": "{1} Letzter :days Tag|[2,*] Letzte :days Tage",
             "empty": "Noch keine Messungen in diesem Zeitraum.",
             "aria": "Trenddiagramm mit :count Datenpunkten"
         },
@@ -160,7 +160,7 @@
         "distribution": {
             "kicker": "Kategorien",
             "title": "Verteilung nach Kategorie",
-            "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage",
+            "period": "{1} Letzter :days Tag|[2,*] Letzte :days Tage",
             "empty": "Noch keine Messungen in diesem Zeitraum.",
             "aria": "Kategorieverteilung mit :count Segmenten"
         },
@@ -236,7 +236,7 @@
         "all_measurements": "Alle Messungen",
         "trend": {
             "title": "Trend pro Messpunkt",
-            "period": "Letzte :days Tage|Letzter :days Tag|Letzte :days Tage"
+            "period": "{1} Letzter :days Tag|[2,*] Letzte :days Tage"
         },
         "timeline": {
             "title": "Zeitachse",

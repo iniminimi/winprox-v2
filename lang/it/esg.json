@@ -139,7 +139,7 @@
         "trend": {
             "title": "Trend di consumo",
             "indicator": "Indicatore",
-            "period": "Ultimi :days giorni|Ultimo :days giorno|Ultimi :days giorni",
+            "period": "{1} Ultimo :days giorno|[2,*] Ultimi :days giorni",
             "empty": "Nessuna misurazione in questo periodo.",
             "aria": "Grafico di tendenza con :count punti dati"
         },
@@ -160,7 +160,7 @@
         "distribution": {
             "kicker": "Categorie",
             "title": "Distribuzione per categoria",
-            "period": "Ultimi :days giorni|Ultimo :days giorno|Ultimi :days giorni",
+            "period": "{1} Ultimo :days giorno|[2,*] Ultimi :days giorni",
             "empty": "Nessuna misurazione in questo periodo.",
             "aria": "Distribuzione per categoria con :count segmenti"
         },
@@ -236,7 +236,7 @@
         "all_measurements": "Tutte le misurazioni",
         "trend": {
             "title": "Trend per punto di misurazione",
-            "period": "Ultimi :days giorni|Ultimo :days giorno|Ultimi :days giorni"
+            "period": "{1} Ultimo :days giorno|[2,*] Ultimi :days giorni"
         },
         "timeline": {
             "title": "Cronologia",

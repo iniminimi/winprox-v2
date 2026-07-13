@@ -293,6 +293,13 @@ it('toont esg-score en categorieverdeling op het dashboard', function () {
         ->assertSee(__('esg.categories.gas'));
 });
 
+it('gebruikt meervoud voor esg-periode met 30 dagen', function () {
+    app()->setLocale('nl');
+
+    expect(trans_choice('esg.dashboard.distribution.period', 30, ['days' => 30]))
+        ->toBe('Laatste 30 dagen');
+});
+
 it('berekent compliance-score en categorieen via action', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => true]);
     $indicator = EsgIndicator::factory()->numeric('kWh')->create([

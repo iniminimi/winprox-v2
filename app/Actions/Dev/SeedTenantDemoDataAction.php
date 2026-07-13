@@ -8,6 +8,7 @@ use App\Actions\Esg\CreateEsgIndicatorAction;
 use App\Actions\Time\CreateClockPointAction;
 use App\Enums\BreakType;
 use App\Enums\ClockSource;
+use App\Enums\EsgIndicatorCategory;
 use App\Enums\EsgIndicatorType;
 use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
@@ -83,6 +84,9 @@ final class SeedTenantDemoDataAction
             $esgTrendMeasurements = 0;
             if ($seedEsg) {
                 [$esgIndicators, $esgMeasurements] = $this->seedEsg($tenant, $locations, $actorUserId);
+            }
+            if ($seedEsg || $seedEsgTrends) {
+                $this->ensureDemoIndicatorCategories($tenant);
             }
             if ($seedEsgTrends) {
                 $esgTrendMeasurements = $this->seedEsgTrendMeasurements($tenant, $locations);
@@ -173,14 +177,14 @@ final class SeedTenantDemoDataAction
     {
         $units = $this->ensureUnits($tenant, $locations);
         $definitions = [
-            ['name' => 'Elektriciteit kWh', 'type' => EsgIndicatorType::Numeric, 'unit_of_measure' => 'kWh', 'thresholds' => ['min' => 0, 'max' => 5000]],
-            ['name' => 'Gas m³', 'type' => EsgIndicatorType::Numeric, 'unit_of_measure' => 'm³', 'thresholds' => ['min' => 0, 'max' => 500]],
-            ['name' => 'CO₂ kg', 'type' => EsgIndicatorType::Numeric, 'unit_of_measure' => 'kg', 'thresholds' => null],
-            ['name' => 'Veiligheidsinspectie OK', 'type' => EsgIndicatorType::Boolean, 'unit_of_measure' => null, 'thresholds' => null],
-            ['name' => 'Opmerking inspectie', 'type' => EsgIndicatorType::String, 'unit_of_measure' => null, 'thresholds' => null],
-            ['name' => 'Sensor snapshot', 'type' => EsgIndicatorType::Json, 'unit_of_measure' => null, 'thresholds' => null],
-            ['name' => 'Afvalstroom', 'type' => EsgIndicatorType::Choice, 'unit_of_measure' => null, 'thresholds' => null, 'options' => ['Restafval', 'PMD', 'Papier']],
-            ['name' => 'Energiebronnen', 'type' => EsgIndicatorType::MultiChoice, 'unit_of_measure' => null, 'thresholds' => null, 'options' => ['Zon', 'Net', 'Generator']],
+            ['name' => 'Elektriciteit kWh', 'type' => EsgIndicatorType::Numeric, 'category' => EsgIndicatorCategory::Energy, 'unit_of_measure' => 'kWh', 'thresholds' => ['min' => 0, 'max' => 5000]],
+            ['name' => 'Gas m³', 'type' => EsgIndicatorType::Numeric, 'category' => EsgIndicatorCategory::Gas, 'unit_of_measure' => 'm³', 'thresholds' => ['min' => 0, 'max' => 500]],
+            ['name' => 'CO₂ kg', 'type' => EsgIndicatorType::Numeric, 'category' => EsgIndicatorCategory::Emissions, 'unit_of_measure' => 'kg', 'thresholds' => null],
+            ['name' => 'Veiligheidsinspectie OK', 'type' => EsgIndicatorType::Boolean, 'category' => EsgIndicatorCategory::Compliance, 'unit_of_measure' => null, 'thresholds' => null],
+            ['name' => 'Opmerking inspectie', 'type' => EsgIndicatorType::String, 'category' => EsgIndicatorCategory::Compliance, 'unit_of_measure' => null, 'thresholds' => null],
+            ['name' => 'Sensor snapshot', 'type' => EsgIndicatorType::Json, 'category' => EsgIndicatorCategory::Other, 'unit_of_measure' => null, 'thresholds' => null],
+            ['name' => 'Afvalstroom', 'type' => EsgIndicatorType::Choice, 'category' => EsgIndicatorCategory::Waste, 'unit_of_measure' => null, 'thresholds' => null, 'options' => ['Restafval', 'PMD', 'Papier']],
+            ['name' => 'Energiebronnen', 'type' => EsgIndicatorType::MultiChoice, 'category' => EsgIndicatorCategory::Energy, 'unit_of_measure' => null, 'thresholds' => null, 'options' => ['Zon', 'Net', 'Generator']],
         ];
 
         $indicatorCount = 0;
@@ -220,6 +224,28 @@ final class SeedTenantDemoDataAction
         }
 
         return [$indicatorCount, $measurementCount];
+    }
+
+    private function ensureDemoIndicatorCategories(Tenant $tenant): void
+    {
+        $categoriesByName = [
+            'Elektriciteit kWh' => EsgIndicatorCategory::Energy,
+            'Gas m³' => EsgIndicatorCategory::Gas,
+            'CO₂ kg' => EsgIndicatorCategory::Emissions,
+            'Veiligheidsinspectie OK' => EsgIndicatorCategory::Compliance,
+            'Opmerking inspectie' => EsgIndicatorCategory::Compliance,
+            'Sensor snapshot' => EsgIndicatorCategory::Other,
+            'Afvalstroom' => EsgIndicatorCategory::Waste,
+            'Energiebronnen' => EsgIndicatorCategory::Energy,
+        ];
+
+        foreach ($categoriesByName as $name => $category) {
+            EsgIndicator::query()
+                ->where('tenant_id', $tenant->id)
+                ->where('name', $name)
+                ->whereNull('category')
+                ->update(['category' => $category]);
+        }
     }
 
     /**

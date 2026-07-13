@@ -139,7 +139,7 @@
         "trend": {
             "title": "Verbruikstrend",
             "indicator": "Indicator",
-            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen",
+            "period": "{1} Laatste :days dag|[2,*] Laatste :days dagen",
             "empty": "Nog geen metingen in deze periode.",
             "aria": "Trendgrafiek met :count meetpunten"
         },
@@ -160,7 +160,7 @@
         "distribution": {
             "kicker": "Categorieën",
             "title": "Verdeling per categorie",
-            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen",
+            "period": "{1} Laatste :days dag|[2,*] Laatste :days dagen",
             "empty": "Nog geen metingen in deze periode.",
             "aria": "Categorieverdeling met :count segmenten"
         },
@@ -236,7 +236,7 @@
         "all_measurements": "Alle metingen",
         "trend": {
             "title": "Trend per meetpunt",
-            "period": "Laatste :days dagen|Laatste :days dag|Laatste :days dagen"
+            "period": "{1} Laatste :days dag|[2,*] Laatste :days dagen"
         },
         "timeline": {
             "title": "Tijdlijn",

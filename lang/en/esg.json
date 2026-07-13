@@ -139,7 +139,7 @@
         "trend": {
             "title": "Usage trend",
             "indicator": "Indicator",
-            "period": "Last :days days|Last :days day|Last :days days",
+            "period": "{1} Last :days day|[2,*] Last :days days",
             "empty": "No readings in this period yet.",
             "aria": "Trend chart with :count data points"
         },
@@ -160,7 +160,7 @@
         "distribution": {
             "kicker": "Categories",
             "title": "Distribution by category",
-            "period": "Last :days days|Last :days day|Last :days days",
+            "period": "{1} Last :days day|[2,*] Last :days days",
             "empty": "No readings in this period yet.",
             "aria": "Category distribution with :count segments"
         },
@@ -236,7 +236,7 @@
         "all_measurements": "All readings",
         "trend": {
             "title": "Trend per measurement point",
-            "period": "Last :days days|Last :days day|Last :days days"
+            "period": "{1} Last :days day|[2,*] Last :days days"
         },
         "timeline": {
             "title": "Timeline",

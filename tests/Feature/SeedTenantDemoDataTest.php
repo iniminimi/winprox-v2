@@ -65,12 +65,34 @@ it('seed esg trends vult dagelijkse numerieke metingen voor de laatste 30 dagen'
     expect($result['esg_trend_measurements'])->toBeGreaterThan(0)
         ->and($after)->toBeGreaterThan($before);
 
-    $seed->handle($tenant, [
+    $seed->handle($tenant, ['clock_points' => 0, 'esg' => false, 'esg_trends' => true, 'time' => false]);
+
+    expect(EsgMeasurement::withoutGlobalScopes()->where('tenant_id', $tenant->id)->count())->toBe($after);
+});
+
+it('seed zet demo-indicatorcategorieen voor bestaande indicatoren', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    EsgIndicator::factory()->numeric('kWh')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Elektriciteit kWh',
+        'category' => null,
+    ]);
+    EsgIndicator::factory()->numeric('m³')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Gas m³',
+        'category' => null,
+    ]);
+
+    app(SeedTenantDemoDataAction::class)->handle($tenant, [
         'clock_points' => 0,
         'esg' => false,
         'esg_trends' => true,
         'time' => false,
     ]);
 
-    expect(EsgMeasurement::withoutGlobalScopes()->where('tenant_id', $tenant->id)->count())->toBe($after);
+    expect(EsgIndicator::withoutGlobalScopes()->where('tenant_id', $tenant->id)->pluck('category', 'name')->all())
+        ->toMatchArray([
+            'Elektriciteit kWh' => \App\Enums\EsgIndicatorCategory::Energy,
+            'Gas m³' => \App\Enums\EsgIndicatorCategory::Gas,
+        ]);
 });
