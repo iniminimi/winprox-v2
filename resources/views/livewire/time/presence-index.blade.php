@@ -19,54 +19,57 @@
         'statusFilter' => $statusFilter,
     ])
 
-    <div class="wp-card wp-card-pad wp-stack wp-time-presence-toolbar">
-        <div class="wp-grid wp-grid--2">
-            <div class="wp-field">
-                <label class="wp-label" for="presence-search">{{ __('time.presence.search_label') }}</label>
-                <input id="presence-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
-                       placeholder="{{ __('time.presence.search_placeholder') }}">
+    <div class="wp-card wp-filter-panel wp-time-presence-toolbar">
+        <div class="wp-filter-form wp-time-presence-toolbar__form">
+            <div class="wp-filter-form__row wp-time-presence-toolbar__quad">
+                <div class="wp-filter-cell wp-filter-cell--search">
+                    <label class="wp-filter-inline-label" for="presence-search">{{ __('time.presence.search_label') }}</label>
+                    <input id="presence-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+                           placeholder="{{ __('time.presence.search_placeholder') }}">
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="presence-team">{{ __('time.filters.team') }}</label>
+                    <select id="presence-team" class="wp-select" wire:model.live="teamFilter">
+                        <option value="">{{ __('time.filters.all_teams') }}</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="presence-location">{{ __('time.presence.location') }}</label>
+                    <select id="presence-location" class="wp-select" wire:model.live="locationFilter">
+                        <option value="">{{ __('time.presence.all_locations') }}</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="presence-clock-point">{{ __('time.filters.clock_point') }}</label>
+                    <select id="presence-clock-point" class="wp-select" wire:model.live="clockPointFilter">
+                        <option value="">{{ __('time.filters.all_clock_points') }}</option>
+                        @foreach ($clockPoints as $clockPoint)
+                            <option value="{{ $clockPoint->id }}">{{ $clockPoint->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
-            <p class="wp-time-presence-toolbar__updated wp-muted">
-                <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
-                <span>{{ now()->format('H:i') }}</span>
-            </p>
+
+            <div class="wp-time-presence-toolbar__meta">
+                <div class="wp-time-presence-toolbar__actions">
+                    @include('partials.wp-time-presence-status-filters', ['statusFilter' => $statusFilter])
+
+                    @if (! $dashboard->isSearchMode)
+                        @include('partials.wp-time-presence-view-toggle', ['presenceView' => $presenceView])
+                    @endif
+                </div>
+                <p class="wp-time-presence-toolbar__updated wp-muted">
+                    <x-wp-icon name="clock" class="wp-time-presence-toolbar__updated-icon" />
+                    <span>{{ now()->format('H:i') }}</span>
+                </p>
+            </div>
         </div>
-
-        <div class="wp-grid wp-grid--3">
-            <div class="wp-field">
-                <label class="wp-label" for="presence-team">{{ __('time.filters.team') }}</label>
-                <select id="presence-team" class="wp-input" wire:model.live="teamFilter">
-                    <option value="">{{ __('time.filters.all_teams') }}</option>
-                    @foreach ($teams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="wp-field">
-                <label class="wp-label" for="presence-location">{{ __('time.presence.location') }}</label>
-                <select id="presence-location" class="wp-input" wire:model.live="locationFilter">
-                    <option value="">{{ __('time.presence.all_locations') }}</option>
-                    @foreach ($locations as $location)
-                        <option value="{{ $location->id }}">{{ $location->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="wp-field">
-                <label class="wp-label" for="presence-clock-point">{{ __('time.filters.clock_point') }}</label>
-                <select id="presence-clock-point" class="wp-input" wire:model.live="clockPointFilter">
-                    <option value="">{{ __('time.filters.all_clock_points') }}</option>
-                    @foreach ($clockPoints as $clockPoint)
-                        <option value="{{ $clockPoint->id }}">{{ $clockPoint->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
-        @include('partials.wp-time-presence-status-filters', ['statusFilter' => $statusFilter])
-
-        @if (! $dashboard->isSearchMode)
-            @include('partials.wp-time-presence-view-toggle', ['presenceView' => $presenceView])
-        @endif
     </div>
 
     @if ($dashboard->isSearchMode)
