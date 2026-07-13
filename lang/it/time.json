@@ -56,7 +56,18 @@
             "long_shift": "Turno oltre :hours ore",
             "stale_shift": "Non timbrato in uscita (> :hours h)",
             "no_break": "Nessuna pausa dopo :hours ore"
-        }
+        },
+        "view_modes": "Vista",
+        "view": {
+            "teams": "Team",
+            "cards": "Schede team",
+            "locations": "Sedi"
+        },
+        "view_team": "Vedi",
+        "view_location": "Mostra team",
+        "empty_locations": "Nessun dipendente timbrato per sede.",
+        "unknown_location": "Senza sede",
+        "load_more": "Mostra altri :count"
     },
     "force_close": {
         "title": "Chiudi turno",

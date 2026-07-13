@@ -56,7 +56,18 @@
             "long_shift": "Turno de más de :hours horas",
             "stale_shift": "Sin fichar salida (> :hours h)",
             "no_break": "Sin pausa tras :hours horas"
-        }
+        },
+        "view_modes": "Vista",
+        "view": {
+            "teams": "Equipos",
+            "cards": "Tarjetas",
+            "locations": "Ubicaciones"
+        },
+        "view_team": "Ver",
+        "view_location": "Ver equipos",
+        "empty_locations": "Sin empleados fichados por ubicación.",
+        "unknown_location": "Sin ubicación",
+        "load_more": "Mostrar :count más"
     },
     "force_close": {
         "title": "Cerrar turno",

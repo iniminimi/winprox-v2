@@ -4323,3 +4323,49 @@ svg.wp-release-worker-row__icon,
         display: none;
     }
 }
+
+.wp-time-presence-view-toggle {
+    flex-wrap: wrap;
+}
+
+.wp-time-presence-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: 0.75rem;
+}
+
+.wp-time-presence-summary-card__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.wp-time-presence-summary-card__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+}
+
+.wp-time-presence-summary-card__stats dt {
+    margin: 0;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--wp-text-muted);
+}
+
+.wp-time-presence-summary-card__stats dd {
+    margin: 0.15rem 0 0;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-time-presence-summary-card__icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    transform: rotate(-90deg);
+}

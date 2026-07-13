@@ -56,7 +56,18 @@
             "long_shift": "Schicht länger als :hours Stunden",
             "stale_shift": "Nicht ausgestempelt (> :hours Std.)",
             "no_break": "Keine Pause nach :hours Stunden"
-        }
+        },
+        "view_modes": "Ansicht",
+        "view": {
+            "teams": "Teams",
+            "cards": "Teamkarten",
+            "locations": "Standorte"
+        },
+        "view_team": "Anzeigen",
+        "view_location": "Teams zeigen",
+        "empty_locations": "Keine eingestempelten Mitarbeitenden pro Standort.",
+        "unknown_location": "Ohne Standort",
+        "load_more": ":count weitere anzeigen"
     },
     "force_close": {
         "title": "Schicht schließen",

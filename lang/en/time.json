@@ -56,7 +56,18 @@
             "long_shift": "Shift longer than :hours hours",
             "stale_shift": "Not clocked out (> :hours hours)",
             "no_break": "No break after :hours hours"
-        }
+        },
+        "view_modes": "View",
+        "view": {
+            "teams": "Teams",
+            "cards": "Team cards",
+            "locations": "Locations"
+        },
+        "view_team": "View",
+        "view_location": "Show teams",
+        "empty_locations": "No clocked-in workers by location.",
+        "unknown_location": "No location",
+        "load_more": "Show :count more"
     },
     "force_close": {
         "title": "Close shift",

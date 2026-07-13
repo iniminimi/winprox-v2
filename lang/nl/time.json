@@ -56,7 +56,18 @@
             "long_shift": "Shift langer dan :hours uur",
             "stale_shift": "Niet uitgeklokt (> :hours uur)",
             "no_break": "Geen pauze na :hours uur"
-        }
+        },
+        "view_modes": "Weergave",
+        "view": {
+            "teams": "Teams",
+            "cards": "Teamkaarten",
+            "locations": "Locaties"
+        },
+        "view_team": "Bekijken",
+        "view_location": "Teams tonen",
+        "empty_locations": "Geen ingeklokte medewerkers per locatie.",
+        "unknown_location": "Zonder locatie",
+        "load_more": ":count meer tonen"
     },
     "force_close": {
         "title": "Shift sluiten",

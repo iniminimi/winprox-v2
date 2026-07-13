@@ -2,8 +2,9 @@
     'teamBuckets',
     'expandedTeams',
     'statusFilter',
+    'teamShiftLimits' => [],
+    'teamPageSize' => 50,
     'showForceClose' => false,
-    'staleHours' => 16,
 ])
 
 @php
@@ -17,6 +18,9 @@
         @foreach ($teamBuckets as $bucket)
             @php
                 $isExpanded = in_array($bucket->team->id, $expandedTeams, true);
+                $activeLimit = $teamShiftLimits[$bucket->team->id] ?? $teamPageSize;
+                $visibleActive = $bucket->activeShifts->take($activeLimit);
+                $visibleBreak = $bucket->breakShifts->take($activeLimit);
             @endphp
             <div class="wp-disclosure-block" wire:key="presence-team-{{ $bucket->team->id }}">
                 <button type="button"
@@ -46,40 +50,50 @@
                 @if ($isExpanded)
                     <div class="wp-disclosure-panel wp-time-presence-team-panel">
                         @if ($statusFilter === TimePresenceStatusFilter::Absent)
-                                <p class="wp-time-presence-team-panel__heading">{{ __('time.presence.not_clocked_in') }}</p>
-                                @forelse ($bucket->absentWorkers as $worker)
-                                    @include('partials.wp-time-presence-absent-row', ['worker' => $worker])
-                                @empty
-                                    <p class="wp-muted wp-text-sm">{{ __('time.presence.empty_not_clocked_in') }}</p>
-                                @endforelse
-                                @if ($bucket->absentCount > $bucket->absentWorkers->count())
-                                    <p class="wp-muted wp-text-sm">{{ __('time.presence.absent_truncated', ['count' => $bucket->absentCount]) }}</p>
-                                @endif
+                            <p class="wp-time-presence-team-panel__heading">{{ __('time.presence.not_clocked_in') }}</p>
+                            @forelse ($bucket->absentWorkers as $worker)
+                                @include('partials.wp-time-presence-absent-row', ['worker' => $worker])
+                            @empty
+                                <p class="wp-muted wp-text-sm">{{ __('time.presence.empty_not_clocked_in') }}</p>
+                            @endforelse
+                            @if ($bucket->absentCount > $bucket->absentWorkers->count())
+                                <p class="wp-muted wp-text-sm">{{ __('time.presence.absent_truncated', ['count' => $bucket->absentCount]) }}</p>
+                            @endif
                         @endif
 
                         @if ($statusFilter !== TimePresenceStatusFilter::Absent)
-                            @if ($bucket->activeShifts->isNotEmpty() && $statusFilter !== TimePresenceStatusFilter::Break)
-                                @if ($bucket->breakShifts->isNotEmpty())
+                            @if ($bucket->activeCount > 0 && $statusFilter !== TimePresenceStatusFilter::Break)
+                                @if ($bucket->breakCount > 0)
                                     <p class="wp-time-presence-team-panel__heading">{{ __('time.presence.present') }}</p>
                                 @endif
-                                @foreach ($bucket->activeShifts as $shift)
+                                @foreach ($visibleActive as $shift)
                                     @include('partials.wp-time-presence-row', [
                                         'shift' => $shift,
                                         'showForceClose' => $showForceClose,
                                         'variant' => 'active',
                                     ])
                                 @endforeach
+                                @if ($bucket->activeCount > $visibleActive->count())
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMoreTeamShifts({{ $bucket->team->id }})">
+                                        {{ __('time.presence.load_more', ['count' => min($teamPageSize, $bucket->activeCount - $visibleActive->count())]) }}
+                                    </button>
+                                @endif
                             @endif
 
-                            @if ($bucket->breakShifts->isNotEmpty() && $statusFilter !== TimePresenceStatusFilter::Active)
+                            @if ($bucket->breakCount > 0 && $statusFilter !== TimePresenceStatusFilter::Active)
                                 <p class="wp-time-presence-team-panel__heading">{{ __('time.presence.on_break') }}</p>
-                                @foreach ($bucket->breakShifts as $shift)
+                                @foreach ($visibleBreak as $shift)
                                     @include('partials.wp-time-presence-row', [
                                         'shift' => $shift,
                                         'showForceClose' => $showForceClose,
                                         'variant' => 'break',
                                     ])
                                 @endforeach
+                                @if ($bucket->breakCount > $visibleBreak->count())
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMoreTeamShifts({{ $bucket->team->id }})">
+                                        {{ __('time.presence.load_more', ['count' => min($teamPageSize, $bucket->breakCount - $visibleBreak->count())]) }}
+                                    </button>
+                                @endif
                             @endif
                         @endif
                     </div>

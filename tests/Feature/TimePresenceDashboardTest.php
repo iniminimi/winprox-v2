@@ -50,6 +50,7 @@ it('filtert op status actief', function () {
     $dashboard = app(BuildTimePresenceDashboardAction::class)->handle(
         $tenant->id,
         statusFilter: TimePresenceStatusFilter::Absent,
+        expandedTeamIds: [$team->id],
     );
 
     expect($dashboard->kpis->notClockedIn)->toBe(1)
@@ -74,4 +75,37 @@ it('detecteert lange shifts als aandacht', function () {
 
     expect($dashboard->kpis->attention)->toBe(1)
         ->and($dashboard->attentionItems->first()->type)->toBe(TimePresenceAttentionType::LongShift);
+});
+
+it('laadt shift-details alleen voor uitgeklapte teams', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $collapsed = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id);
+    $expanded = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id, expandedTeamIds: [$team->id]);
+
+    expect($collapsed->teamBuckets->first()->activeShifts)->toHaveCount(0)
+        ->and($expanded->teamBuckets->first()->activeShifts)->toHaveCount(1);
+});
+
+it('groepeert ingeklokte medewerkers per locatie', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $dashboard = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id);
+
+    expect($dashboard->locationBuckets)->toHaveCount(1)
+        ->and($dashboard->locationBuckets->first()->clockedInCount)->toBe(1)
+        ->and($dashboard->locationBuckets->first()->location?->id)->toBe($location->id);
 });

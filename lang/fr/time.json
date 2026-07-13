@@ -56,7 +56,18 @@
             "long_shift": "Shift de plus de :hours heures",
             "stale_shift": "Non dépointé (> :hours h)",
             "no_break": "Pas de pause après :hours heures"
-        }
+        },
+        "view_modes": "Affichage",
+        "view": {
+            "teams": "Équipes",
+            "cards": "Cartes équipe",
+            "locations": "Sites"
+        },
+        "view_team": "Voir",
+        "view_location": "Voir équipes",
+        "empty_locations": "Aucun employé pointé par site.",
+        "unknown_location": "Sans site",
+        "load_more": "Afficher :count de plus"
     },
     "force_close": {
         "title": "Fermer le shift",

@@ -4,11 +4,13 @@ namespace App\Actions\Time;
 
 use App\Data\Time\TimePresenceDashboard;
 use App\Data\Time\TimePresenceKpis;
+use App\Data\Time\TimePresenceLocationBucket;
 use App\Data\Time\TimePresenceTeamBucket;
 use App\Enums\TimePresenceStatusFilter;
 use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Time\TimePresenceAttentionRules;
@@ -23,6 +25,7 @@ class BuildTimePresenceDashboardAction
         ?int $locationId = null,
         ?string $search = null,
         TimePresenceStatusFilter $statusFilter = TimePresenceStatusFilter::All,
+        array $expandedTeamIds = [],
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
@@ -65,6 +68,7 @@ class BuildTimePresenceDashboardAction
                 kpis: $kpis,
                 attentionItems: $this->filterAttention($attentionItems, $statusFilter),
                 teamBuckets: collect(),
+                locationBuckets: collect(),
                 searchShifts: $this->filterShiftsForStatus($openShifts, $statusFilter),
                 searchAbsentWorkers: $this->loadAbsentWorkers(
                     $tenantId,
@@ -105,8 +109,7 @@ class BuildTimePresenceDashboardAction
             $tenantId,
             $clockedInWorkerIds,
             $needle,
-            $clockPointId,
-            $locationId,
+            $expandedTeamIds,
         ) {
             $teamActive = $active->where('internal_team_id', $team->id)->values();
             $teamBreak = $onBreak->where('internal_team_id', $team->id)->values();
@@ -114,8 +117,8 @@ class BuildTimePresenceDashboardAction
                 fn ($item) => (int) $item->shift->internal_team_id === (int) $team->id
             )->count();
             $teamAbsentCount = (int) ($absentByTeam[$team->id] ?? 0);
-
-            $loadAbsent = $statusFilter === TimePresenceStatusFilter::Absent && $teamAbsentCount > 0;
+            $isExpanded = in_array($team->id, $expandedTeamIds, true);
+            $loadAbsent = $isExpanded && $statusFilter === TimePresenceStatusFilter::Absent && $teamAbsentCount > 0;
 
             return new TimePresenceTeamBucket(
                 team: $team,
@@ -123,8 +126,8 @@ class BuildTimePresenceDashboardAction
                 breakCount: $teamBreak->count(),
                 absentCount: $teamAbsentCount,
                 attentionCount: $teamAttention,
-                activeShifts: $teamActive,
-                breakShifts: $teamBreak,
+                activeShifts: $isExpanded ? $teamActive : collect(),
+                breakShifts: $isExpanded ? $teamBreak : collect(),
                 absentWorkers: $loadAbsent
                     ? $this->loadAbsentWorkersForTeam($tenantId, $team->id, $clockedInWorkerIds, $needle)
                     : collect(),
@@ -146,14 +149,106 @@ class BuildTimePresenceDashboardAction
             return $bucket->hasActivity();
         })->values();
 
+        $locationBuckets = $this->buildLocationBuckets(
+            $tenantId,
+            $openShifts,
+            $attentionItems,
+            $locationId,
+            $statusFilter,
+        );
+
         return new TimePresenceDashboard(
             kpis: $kpis,
             attentionItems: $this->filterAttention($attentionItems, $statusFilter),
             teamBuckets: $teamBuckets,
+            locationBuckets: $locationBuckets,
             searchShifts: collect(),
             searchAbsentWorkers: collect(),
             isSearchMode: false,
         );
+    }
+
+    /**
+     * @param  Collection<int, WorkShift>  $openShifts
+     * @param  Collection<int, \App\Data\Time\TimePresenceAttentionItem>  $attentionItems
+     * @return Collection<int, TimePresenceLocationBucket>
+     */
+    private function buildLocationBuckets(
+        int $tenantId,
+        Collection $openShifts,
+        Collection $attentionItems,
+        ?int $locationId,
+        TimePresenceStatusFilter $statusFilter,
+    ): Collection {
+        if ($statusFilter === TimePresenceStatusFilter::Absent) {
+            return collect();
+        }
+
+        $locations = Location::query()
+            ->where('tenant_id', $tenantId)
+            ->when($locationId, fn ($q) => $q->where('id', $locationId))
+            ->orderBy('name')
+            ->get();
+
+        $locationIds = $locations->pluck('id')->all();
+        $hasUnknown = $openShifts->contains(
+            fn (WorkShift $shift) => $shift->clockInClockPoint?->location_id === null
+                || ! in_array((int) $shift->clockInClockPoint?->location_id, $locationIds, true)
+        );
+
+        $buckets = $locations->map(function (Location $location) use ($openShifts, $attentionItems) {
+            $shifts = $openShifts->filter(
+                fn (WorkShift $shift) => (int) $shift->clockInClockPoint?->location_id === (int) $location->id
+            );
+            $activeCount = $shifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
+            $breakCount = $shifts->count() - $activeCount;
+            $attentionCount = $attentionItems->filter(
+                fn ($item) => (int) $item->shift->clockInClockPoint?->location_id === (int) $location->id
+            )->count();
+
+            return new TimePresenceLocationBucket(
+                location: $location,
+                activeCount: $activeCount,
+                breakCount: $breakCount,
+                attentionCount: $attentionCount,
+                clockedInCount: $shifts->count(),
+            );
+        });
+
+        if ($hasUnknown) {
+            $unknownShifts = $openShifts->filter(function (WorkShift $shift) use ($locationIds) {
+                $id = $shift->clockInClockPoint?->location_id;
+
+                return $id === null || ! in_array((int) $id, $locationIds, true);
+            });
+            $activeCount = $unknownShifts->filter(fn (WorkShift $s) => $s->openBreak === null)->count();
+            $breakCount = $unknownShifts->count() - $activeCount;
+            $attentionCount = $attentionItems->filter(
+                fn ($item) => $item->shift->clockInClockPoint?->location_id === null
+            )->count();
+
+            $buckets->push(new TimePresenceLocationBucket(
+                location: null,
+                activeCount: $activeCount,
+                breakCount: $breakCount,
+                attentionCount: $attentionCount,
+                clockedInCount: $unknownShifts->count(),
+            ));
+        }
+
+        return $buckets->filter(function (TimePresenceLocationBucket $bucket) use ($statusFilter) {
+            if ($statusFilter === TimePresenceStatusFilter::Active) {
+                return $bucket->activeCount > 0;
+            }
+            if ($statusFilter === TimePresenceStatusFilter::Break) {
+                return $bucket->breakCount > 0;
+            }
+            if ($statusFilter === TimePresenceStatusFilter::Attention) {
+                return $bucket->attentionCount > 0;
+            }
+
+            return $bucket->hasActivity();
+        })->values();
     }
 
     /** @return list<int>|null */

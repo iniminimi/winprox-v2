@@ -10,6 +10,9 @@ return [
     /** Shift zonder geregistreerde pauze na dit aantal uren → aandacht. */
     'break_reminder_hours' => (int) env('TIME_BREAK_REMINDER_HOURS', 6),
 
+    /** Max. rijen per team-sectie vóór "toon meer". */
+    'presence_team_page_size' => (int) env('TIME_PRESENCE_TEAM_PAGE_SIZE', 50),
+
     /** Standaard QR-rotatie-interval (maanden) wanneer tenant geen eigen waarde heeft. 0 = uit. */
     'qr_rotation_months_default' => (int) env('TIME_QR_ROTATION_MONTHS_DEFAULT', 6),
 
