@@ -69,16 +69,6 @@
         @endif
     </div>
 
-    @if ($dashboard->attentionItems->isNotEmpty() && $statusFilter !== \App\Enums\TimePresenceStatusFilter::Absent)
-        @include('partials.wp-time-presence-attention', [
-            'items' => $dashboard->attentionItems->take(8),
-            'total' => $dashboard->attentionItems->count(),
-            'showForceClose' => true,
-            'staleHours' => $staleHours,
-            'compact' => true,
-        ])
-    @endif
-
     @if ($dashboard->isSearchMode)
         @include('partials.wp-time-presence-search-results', [
             'shifts' => $dashboard->searchShifts,
