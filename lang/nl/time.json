@@ -6,6 +6,7 @@
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
+        "alarms": "Alarmen",
         "shifts": "Uren",
         "clock_points": "Clock Points"
     },
@@ -68,6 +69,17 @@
         "empty_locations": "Geen ingeklokte medewerkers per locatie.",
         "unknown_location": "Zonder locatie",
         "load_more": ":count meer tonen"
+    },
+    "alarms": {
+        "title": "Alarmen",
+        "subtitle": "Open shifts die aandacht vragen — lange shifts, vergeten uitklokken of geen pauze.",
+        "empty": "Geen alarmen op dit moment.",
+        "summary": "{0} Geen alarmen|{1} :count alarm|[2,*] :count alarmen",
+        "type_filters": "Type alarm",
+        "type_all": "Alle",
+        "type_long_shift": "Lange shift",
+        "type_stale_shift": "Niet uitgeklokt",
+        "type_no_break": "Geen pauze"
     },
     "force_close": {
         "title": "Shift sluiten",

@@ -5,7 +5,7 @@
         :subtitle="__('time.presence.subtitle')"
     />
 
-    @include('partials.wp-time-nav')
+    @include('partials.wp-time-nav', ['alarmCount' => $dashboard->kpis->attention])
 
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
@@ -61,18 +61,18 @@
 
         @include('partials.wp-time-presence-status-filters', ['statusFilter' => $statusFilter])
 
-        @if (! $dashboard->isSearchMode && $statusFilter !== \App\Enums\TimePresenceStatusFilter::Attention)
+        @if (! $dashboard->isSearchMode)
             @include('partials.wp-time-presence-view-toggle', ['viewMode' => $viewMode])
         @endif
     </div>
 
     @if ($dashboard->attentionItems->isNotEmpty() && $statusFilter !== \App\Enums\TimePresenceStatusFilter::Absent)
         @include('partials.wp-time-presence-attention', [
-            'items' => $dashboard->attentionItems->take($statusFilter === \App\Enums\TimePresenceStatusFilter::Attention ? 100 : 8),
+            'items' => $dashboard->attentionItems->take(8),
             'total' => $dashboard->attentionItems->count(),
             'showForceClose' => true,
             'staleHours' => $staleHours,
-            'compact' => $statusFilter !== \App\Enums\TimePresenceStatusFilter::Attention,
+            'compact' => true,
         ])
     @endif
 
@@ -83,28 +83,24 @@
             'showForceClose' => true,
             'staleHours' => $staleHours,
         ])
-    @elseif ($statusFilter === \App\Enums\TimePresenceStatusFilter::Attention && $dashboard->attentionItems->isEmpty())
-        <p class="wp-muted">{{ __('time.presence.no_attention') }}</p>
-    @elseif ($statusFilter !== \App\Enums\TimePresenceStatusFilter::Attention)
-        @if ($viewMode === \App\Enums\TimePresenceViewMode::Cards)
-            @include('partials.wp-time-presence-team-cards', [
-                'teamBuckets' => $dashboard->teamBuckets,
-                'statusFilter' => $statusFilter,
-            ])
-        @elseif ($viewMode === \App\Enums\TimePresenceViewMode::Locations)
-            @include('partials.wp-time-presence-location-cards', [
-                'locationBuckets' => $dashboard->locationBuckets,
-            ])
-        @else
-            @include('partials.wp-time-presence-teams', [
-                'teamBuckets' => $dashboard->teamBuckets,
-                'expandedTeams' => $expandedTeams,
-                'statusFilter' => $statusFilter,
-                'teamShiftLimits' => $teamShiftLimits,
-                'teamPageSize' => $teamPageSize,
-                'showForceClose' => true,
-            ])
-        @endif
+    @elseif ($viewMode === \App\Enums\TimePresenceViewMode::Cards)
+        @include('partials.wp-time-presence-team-cards', [
+            'teamBuckets' => $dashboard->teamBuckets,
+            'statusFilter' => $statusFilter,
+        ])
+    @elseif ($viewMode === \App\Enums\TimePresenceViewMode::Locations)
+        @include('partials.wp-time-presence-location-cards', [
+            'locationBuckets' => $dashboard->locationBuckets,
+        ])
+    @else
+        @include('partials.wp-time-presence-teams', [
+            'teamBuckets' => $dashboard->teamBuckets,
+            'expandedTeams' => $expandedTeams,
+            'statusFilter' => $statusFilter,
+            'teamShiftLimits' => $teamShiftLimits,
+            'teamPageSize' => $teamPageSize,
+            'showForceClose' => true,
+        ])
     @endif
 
     @include('partials.wp-time-force-close-modal')

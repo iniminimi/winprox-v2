@@ -7,7 +7,6 @@
         ['key' => 'active', 'value' => $kpis->active, 'filter' => TimePresenceStatusFilter::Active, 'icon' => 'team', 'label' => 'time.presence.kpi.active'],
         ['key' => 'break', 'value' => $kpis->onBreak, 'filter' => TimePresenceStatusFilter::Break, 'icon' => 'hourglass', 'label' => 'time.presence.kpi.break'],
         ['key' => 'absent', 'value' => $kpis->notClockedIn, 'filter' => TimePresenceStatusFilter::Absent, 'icon' => 'team', 'label' => 'time.presence.kpi.absent'],
-        ['key' => 'attention', 'value' => $kpis->attention, 'filter' => TimePresenceStatusFilter::Attention, 'icon' => 'alert-triangle', 'label' => 'time.presence.kpi.attention'],
     ];
 @endphp
 
@@ -37,7 +36,6 @@
                 @class([
                     'wp-kpi',
                     'wp-kpi--'.$tile['key'],
-                    'wp-kpi--alert' => $tile['key'] === 'attention' && $tile['value'] > 0,
                     'wp-kpi--selected' => $statusFilter === $tile['filter'],
                 ])>
             <div class="wp-kpi-body">
@@ -53,4 +51,22 @@
             </div>
         </button>
     @endforeach
+
+    <a href="{{ route('time.alarms.index') }}"
+       @class([
+           'wp-kpi wp-kpi--attention',
+           'wp-kpi--alert' => $kpis->attention > 0,
+       ])>
+        <div class="wp-kpi-body">
+            <div class="wp-kpi-main">
+                <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
+                <p class="wp-kpi-stats">
+                    <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
+                </p>
+            </div>
+            <span class="wp-kpi-icon" aria-hidden="true">
+                <x-wp-icon name="alert-triangle" />
+            </span>
+        </div>
+    </a>
 </div>

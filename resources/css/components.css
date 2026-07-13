@@ -4369,3 +4369,32 @@ svg.wp-release-worker-row__icon,
     height: 0.9rem;
     transform: rotate(-90deg);
 }
+
+.wp-time-nav__alarms {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.wp-time-nav__alarm-count {
+    min-width: 1.25rem;
+    padding-inline: 0.35rem;
+    font-size: 0.6875rem;
+}
+
+.wp-time-alarms-summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.wp-time-alarms-groups {
+    gap: 0.75rem;
+}
+
+a.wp-kpi.wp-kpi--attention {
+    text-decoration: none;
+    color: inherit;
+}

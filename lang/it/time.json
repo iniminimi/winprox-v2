@@ -6,6 +6,7 @@
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
+        "alarms": "Allarmi",
         "shifts": "Uren",
         "clock_points": "Clock Points"
     },
@@ -68,6 +69,17 @@
         "empty_locations": "Nessun dipendente timbrato per sede.",
         "unknown_location": "Senza sede",
         "load_more": "Mostra altri :count"
+    },
+    "alarms": {
+        "title": "Allarmi",
+        "subtitle": "Turni aperti da controllare — turno lungo, uscita dimenticata o nessuna pausa.",
+        "empty": "Nessun allarme al momento.",
+        "summary": "{0} Nessun allarme|{1} :count allarme|[2,*] :count allarmi",
+        "type_filters": "Tipo di allarme",
+        "type_all": "Tutti",
+        "type_long_shift": "Turno lungo",
+        "type_stale_shift": "Non timbrato in uscita",
+        "type_no_break": "Nessuna pausa"
     },
     "force_close": {
         "title": "Chiudi turno",

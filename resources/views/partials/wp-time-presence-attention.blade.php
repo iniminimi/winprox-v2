@@ -39,8 +39,8 @@
     </div>
 
     @if ($compact && $total > $items->count())
-        <button type="button" class="btn btn--ghost btn--sm" wire:click="setStatusFilter('attention')">
+        <a href="{{ route('time.alarms.index') }}" class="btn btn--ghost btn--sm">
             {{ __('time.presence.attention_show_all', ['count' => $total]) }}
-        </button>
+        </a>
     @endif
 </section>

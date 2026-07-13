@@ -8,7 +8,6 @@
         TimePresenceStatusFilter::Active,
         TimePresenceStatusFilter::Break,
         TimePresenceStatusFilter::Absent,
-        TimePresenceStatusFilter::Attention,
     ];
 @endphp
 
@@ -24,4 +23,7 @@
             {{ __('time.presence.status.'.$filter->value) }}
         </button>
     @endforeach
+    <a href="{{ route('time.alarms.index') }}" class="btn btn--sm btn--surface">
+        {{ __('time.presence.status.attention') }}
+    </a>
 </div>

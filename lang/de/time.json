@@ -6,6 +6,7 @@
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
+        "alarms": "Alarme",
         "shifts": "Uren",
         "clock_points": "Clock Points"
     },
@@ -68,6 +69,17 @@
         "empty_locations": "Keine eingestempelten Mitarbeitenden pro Standort.",
         "unknown_location": "Ohne Standort",
         "load_more": ":count weitere anzeigen"
+    },
+    "alarms": {
+        "title": "Alarme",
+        "subtitle": "Offene Schichten mit Auffälligkeiten — lange Schicht, vergessene Ausstempelung oder keine Pause.",
+        "empty": "Derzeit keine Alarme.",
+        "summary": "{0} Keine Alarme|{1} :count Alarm|[2,*] :count Alarme",
+        "type_filters": "Alarmtyp",
+        "type_all": "Alle",
+        "type_long_shift": "Lange Schicht",
+        "type_stale_shift": "Nicht ausgestempelt",
+        "type_no_break": "Keine Pause"
     },
     "force_close": {
         "title": "Schicht schließen",

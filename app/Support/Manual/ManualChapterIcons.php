@@ -22,6 +22,7 @@ final class ManualChapterIcons
         'esg.indicators' => 'document',
         'esg.measurements' => 'sliders',
         'time.presence' => 'clock',
+        'time.alarms' => 'alert-triangle',
         'time.shifts' => 'calendar',
         'time.clock_points' => 'map-pin',
         'settings' => 'settings',

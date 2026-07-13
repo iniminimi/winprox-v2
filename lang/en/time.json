@@ -6,6 +6,7 @@
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
+        "alarms": "Alarms",
         "shifts": "Uren",
         "clock_points": "Clock Points"
     },
@@ -68,6 +69,17 @@
         "empty_locations": "No clocked-in workers by location.",
         "unknown_location": "No location",
         "load_more": "Show :count more"
+    },
+    "alarms": {
+        "title": "Alarms",
+        "subtitle": "Open shifts that need attention — long shifts, forgotten clock-out, or no break.",
+        "empty": "No alarms at the moment.",
+        "summary": "{0} No alarms|{1} :count alarm|[2,*] :count alarms",
+        "type_filters": "Alarm type",
+        "type_all": "All",
+        "type_long_shift": "Long shift",
+        "type_stale_shift": "Not clocked out",
+        "type_no_break": "No break"
     },
     "force_close": {
         "title": "Close shift",

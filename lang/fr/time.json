@@ -6,6 +6,7 @@
     "nav": {
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
+        "alarms": "Alertes",
         "shifts": "Uren",
         "clock_points": "Clock Points"
     },
@@ -68,6 +69,17 @@
         "empty_locations": "Aucun employé pointé par site.",
         "unknown_location": "Sans site",
         "load_more": "Afficher :count de plus"
+    },
+    "alarms": {
+        "title": "Alertes",
+        "subtitle": "Shifts ouverts à surveiller — shift long, oubli de dépointage ou pas de pause.",
+        "empty": "Aucune alerte pour le moment.",
+        "summary": "{0} Aucune alerte|{1} :count alerte|[2,*] :count alertes",
+        "type_filters": "Type d'alerte",
+        "type_all": "Toutes",
+        "type_long_shift": "Shift long",
+        "type_stale_shift": "Non dépointé",
+        "type_no_break": "Pas de pause"
     },
     "force_close": {
         "title": "Fermer le shift",
