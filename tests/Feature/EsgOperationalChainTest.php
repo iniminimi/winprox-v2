@@ -105,7 +105,29 @@ it('bouwt operationele keten voor meting met opvolgtaak', function () {
             'alarm',
             'measurement_task',
             'follow_up_task',
-        ]);
+        ])
+        ->and($steps[0]['url'])->toContain('/esg/measurements');
+});
+
+it('opent meettaak uit keten ook zonder goedgekeurde melding', function () {
+    $fixture = esgThresholdFixture();
+    $fixture['issue']->update(['approved_at' => null]);
+
+    $measurement = app(RecordEsgMeasurementAction::class)->handle(
+        new RecordEsgMeasurementData(
+            taskId: $fixture['task']->id,
+            esgIndicatorId: $fixture['indicator']->id,
+            recordedAt: now()->toImmutable(),
+            valueNumeric: 42.0,
+        ),
+        $fixture['tenant']->id,
+    );
+
+    $admin = User::factory()->admin()->create(['tenant_id' => $fixture['tenant']->id]);
+
+    $this->actingAs($admin)
+        ->get(route('tasks.show', $measurement->task_id))
+        ->assertOk();
 });
 
 it('toont operationele keten op taakdetail voor opvolgtaak', function () {

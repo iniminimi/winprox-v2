@@ -25,7 +25,7 @@ final class EsgOperationChainPresenter
             'key' => 'measurement',
             'label' => __('esg.chain.measurement'),
             'detail' => EsgMeasurementPresenter::displayValue($measurement),
-            'url' => self::pointHistoryUrl($measurement),
+            'url' => self::measurementsIndexUrl($measurement),
             'status_label' => null,
             'status_modifier' => null,
         ]];
@@ -142,15 +142,19 @@ final class EsgOperationChainPresenter
         ];
     }
 
-    private static function pointHistoryUrl(EsgMeasurement $measurement): ?string
+    private static function measurementsIndexUrl(EsgMeasurement $measurement): ?string
     {
         if ($measurement->unit_id === null) {
             return null;
         }
 
-        return route('esg.point.history', array_filter([
+        $recordedDate = $measurement->recorded_at?->format('Y-m-d');
+
+        return route('esg.measurements.index', array_filter([
             'unit' => $measurement->unit_id,
             'indicator' => $measurement->esg_indicator_id,
+            'from' => $recordedDate,
+            'to' => $recordedDate,
         ]));
     }
 }

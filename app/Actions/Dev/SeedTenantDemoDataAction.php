@@ -212,6 +212,7 @@ final class SeedTenantDemoDataAction
                     'esg_indicator_id' => $indicator->id,
                     'is_recurring' => true,
                     'description' => 'Demo ESG — '.$indicator->name,
+                    'approved_at' => now(),
                 ]);
                 $task = Task::factory()->create([
                     'tenant_id' => $tenant->id,
@@ -311,6 +312,7 @@ final class SeedTenantDemoDataAction
                     'esg_indicator_id' => $indicator->id,
                     'is_recurring' => true,
                     'description' => 'Demo ESG trend — '.$indicator->name,
+                    'approved_at' => now(),
                 ]);
                 $task = Task::factory()->create([
                     'tenant_id' => $tenant->id,

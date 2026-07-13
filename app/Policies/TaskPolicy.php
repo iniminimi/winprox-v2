@@ -4,6 +4,8 @@ namespace App\Policies;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Tenant;
+use App\Support\Esg\EsgModuleAccess;
 use App\Support\Platform\SuperuserTenantAccess;
 
 class TaskPolicy
@@ -21,7 +23,11 @@ class TaskPolicy
 
         $task->loadMissing('issue');
 
-        return $task->issue?->isApproved() ?? false;
+        if ($task->issue?->isApproved()) {
+            return true;
+        }
+
+        return $this->canViewEsgMeasurementTask($user, $task);
     }
 
     public function create(User $user): bool
@@ -44,5 +50,16 @@ class TaskPolicy
     private function sameTenant(User $user, int $tenantId): bool
     {
         return SuperuserTenantAccess::canAccessTenant($user, $tenantId);
+    }
+
+    private function canViewEsgMeasurementTask(User $user, Task $task): bool
+    {
+        if (! $user->isAdmin() || $task->issue?->esg_indicator_id === null) {
+            return false;
+        }
+
+        return EsgModuleAccess::tenantHasModule(
+            Tenant::query()->find((int) $task->tenant_id),
+        );
     }
 }
