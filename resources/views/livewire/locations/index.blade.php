@@ -244,10 +244,10 @@
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeImportModal">{{ __('common.button.cancel') }}</button>
-                    <button type="button" class="btn btn--primary" wire:click="importUnits" wire:loading.attr="disabled" :disabled="$importFile === null">
-                        <x-wp-spinner wire:loading class="wp-mr-2" />
-                        <span wire:loading.remove>{{ __('locations.import_submit') }}</span>
-                        <span wire:loading>{{ __('locations.import_submit_loading') }}</span>
+                    <button type="button" class="btn btn--primary" wire:click="importUnits" wire:loading.attr="disabled" wire:target="importUnits,importFile" :disabled="$importFile === null">
+                        <x-wp-spinner wire:loading wire:target="importUnits,importFile" class="wp-mr-2" />
+                        <span wire:loading.remove wire:target="importUnits,importFile">{{ __('locations.import_submit') }}</span>
+                        <span wire:loading wire:target="importUnits,importFile">{{ __('locations.import_submit_loading') }}</span>
                     </button>
                 </div>
             </div>
