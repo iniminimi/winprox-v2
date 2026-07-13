@@ -13,7 +13,7 @@
 
     <div class="wp-card wp-filter-panel wp-time-shifts-toolbar">
         <div class="wp-filter-form wp-time-shifts-toolbar__form">
-            <div class="wp-filter-form__row wp-time-shifts-toolbar__filters">
+            <div class="wp-filter-form__row wp-time-shifts-toolbar__primary">
                 <div class="wp-filter-cell">
                     <label class="wp-filter-inline-label" for="shifts-from">{{ __('time.filters.from') }}</label>
                     <input id="shifts-from" type="date" class="wp-input" wire:model="from">
@@ -31,6 +31,8 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+            <div class="wp-filter-form__row">
                 <div class="wp-filter-cell">
                     <label class="wp-filter-inline-label" for="shifts-worker">{{ __('time.filters.worker') }}</label>
                     <select id="shifts-worker" class="wp-select" wire:model="workerFilter">
