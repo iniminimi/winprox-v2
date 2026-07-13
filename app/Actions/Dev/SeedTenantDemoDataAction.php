@@ -29,18 +29,21 @@ use Illuminate\Support\Collection;
 
 final class SeedTenantDemoDataAction
 {
+    private const int ESG_TREND_DAYS = 30;
+
     public function __construct(
         private CreateClockPointAction $createClockPoint,
         private CreateEsgIndicatorAction $createEsgIndicator,
     ) {}
 
     /**
-     * @param  array{clock_points?: int, esg?: bool, time?: bool}  $options
+     * @param  array{clock_points?: int, esg?: bool, esg_trends?: bool, time?: bool}  $options
      * @return array{
      *     clock_points_created: int,
      *     clock_points_total: int,
      *     esg_indicators: int,
      *     esg_measurements: int,
+     *     esg_trend_measurements: int,
      *     work_shifts: int,
      *     workers_total: int
      * }
@@ -49,6 +52,7 @@ final class SeedTenantDemoDataAction
     {
         $clockPointTarget = max(0, (int) ($options['clock_points'] ?? 10));
         $seedEsg = (bool) ($options['esg'] ?? true);
+        $seedEsgTrends = (bool) ($options['esg_trends'] ?? false);
         $seedTime = (bool) ($options['time'] ?? true);
 
         $updates = [];
@@ -76,8 +80,12 @@ final class SeedTenantDemoDataAction
 
             $esgIndicators = 0;
             $esgMeasurements = 0;
+            $esgTrendMeasurements = 0;
             if ($seedEsg) {
                 [$esgIndicators, $esgMeasurements] = $this->seedEsg($tenant, $locations, $actorUserId);
+            }
+            if ($seedEsgTrends) {
+                $esgTrendMeasurements = $this->seedEsgTrendMeasurements($tenant, $locations);
             }
 
             $workShifts = 0;
@@ -90,6 +98,7 @@ final class SeedTenantDemoDataAction
                 'clock_points_total' => ClockPoint::query()->where('tenant_id', $tenant->id)->count(),
                 'esg_indicators' => $esgIndicators,
                 'esg_measurements' => $esgMeasurements,
+                'esg_trend_measurements' => $esgTrendMeasurements,
                 'work_shifts' => $workShifts,
                 'workers_total' => Worker::query()->where('tenant_id', $tenant->id)->where('is_active', true)->count(),
             ];
@@ -211,6 +220,92 @@ final class SeedTenantDemoDataAction
         }
 
         return [$indicatorCount, $measurementCount];
+    }
+
+    /**
+     * @param  Collection<int, Location>  $locations
+     */
+    private function seedEsgTrendMeasurements(Tenant $tenant, Collection $locations): int
+    {
+        $units = $this->ensureUnits($tenant, $locations);
+        $indicators = EsgIndicator::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('type', EsgIndicatorType::Numeric)
+            ->where('is_active', true)
+            ->orderBy('id')
+            ->get();
+
+        if ($indicators->isEmpty()) {
+            return 0;
+        }
+
+        $created = 0;
+        $periodStart = now()->subDays(self::ESG_TREND_DAYS - 1)->startOfDay();
+
+        foreach ($indicators as $indicatorIndex => $indicator) {
+            $base = match ($indicator->unit_of_measure) {
+                'kWh' => 280,
+                'm³' => 35,
+                'kg' => 120,
+                default => 100,
+            };
+            $maxThreshold = isset($indicator->thresholds['max'])
+                ? (float) $indicator->thresholds['max']
+                : null;
+
+            for ($day = 0; $day < self::ESG_TREND_DAYS; $day++) {
+                $recordedAt = $periodStart->copy()->addDays($day)->setTime(10, random_int(0, 59));
+
+                $dayExists = EsgMeasurement::query()
+                    ->where('tenant_id', $tenant->id)
+                    ->where('esg_indicator_id', $indicator->id)
+                    ->whereDate('recorded_at', $recordedAt->toDateString())
+                    ->exists();
+
+                if ($dayExists) {
+                    continue;
+                }
+
+                $unit = $units->get(($day + $indicatorIndex) % max(1, $units->count()));
+                if (! $unit instanceof Unit) {
+                    continue;
+                }
+
+                $seasonal = (int) round(sin($day / 7 * M_PI) * 20);
+                $value = (int) round($base + ($day * 2) + $seasonal + random_int(-15, 15));
+
+                if ($maxThreshold !== null && $indicatorIndex === 0 && in_array($day, [26, 27], true)) {
+                    $value = (int) round($maxThreshold * 1.05);
+                }
+
+                $issue = Issue::factory()->create([
+                    'tenant_id' => $tenant->id,
+                    'location_id' => $unit->location_id,
+                    'unit_id' => $unit->id,
+                    'esg_indicator_id' => $indicator->id,
+                    'is_recurring' => true,
+                    'description' => 'Demo ESG trend — '.$indicator->name,
+                ]);
+                $task = Task::factory()->create([
+                    'tenant_id' => $tenant->id,
+                    'issue_id' => $issue->id,
+                ]);
+
+                EsgMeasurement::query()->create([
+                    'tenant_id' => $tenant->id,
+                    'task_id' => $task->id,
+                    'esg_indicator_id' => $indicator->id,
+                    'unit_id' => $unit->id,
+                    'location_id' => $unit->location_id,
+                    'value_numeric' => $value,
+                    'recorded_at' => $recordedAt,
+                    'created_at' => now(),
+                ]);
+                $created++;
+            }
+        }
+
+        return $created;
     }
 
     private function createDemoMeasurement(Tenant $tenant, EsgIndicator $indicator, Task $task, Unit $unit): void

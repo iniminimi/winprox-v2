@@ -14,6 +14,7 @@ class SeedTenantDemoDataCommand extends Command
         {tenant=3 : Tenant-ID}
         {--clock-points=10 : Streefaantal clock points}
         {--no-esg : Sla ESG-data over}
+        {--esg-trends : Vul 30 dagen trendmetingen voor numerieke indicatoren}
         {--no-time : Sla Time-data over}
         {--force : Ook buiten local uitvoeren}';
 
@@ -39,12 +40,14 @@ class SeedTenantDemoDataCommand extends Command
         $result = $seed->handle($tenant, [
             'clock_points' => (int) $this->option('clock-points'),
             'esg' => ! $this->option('no-esg'),
+            'esg_trends' => $this->option('esg-trends'),
             'time' => ! $this->option('no-time'),
         ]);
 
         $this->info("Tenant #{$tenant->id} ({$tenant->name}) — demo-data toegevoegd:");
         $this->line("  Clock points: +{$result['clock_points_created']} (totaal {$result['clock_points_total']})");
-        $this->line("  ESG: {$result['esg_indicators']} indicatoren, {$result['esg_measurements']} metingen");
+        $this->line("  ESG: {$result['esg_indicators']} indicatoren, {$result['esg_measurements']} metingen"
+            .($result['esg_trend_measurements'] > 0 ? ", +{$result['esg_trend_measurements']} trendmetingen" : ''));
         $this->line("  Time: {$result['work_shifts']} shifts ({$result['workers_total']} actieve workers)");
 
         return self::SUCCESS;

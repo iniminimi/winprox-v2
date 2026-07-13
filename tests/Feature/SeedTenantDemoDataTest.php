@@ -45,3 +45,32 @@ it('seed demo esg maakt geen dubbele indicatoren bij herhaald draaien', function
     expect($firstCount)->toBeGreaterThan(0)
         ->and($secondCount)->toBe($firstCount);
 });
+
+it('seed esg trends vult dagelijkse numerieke metingen voor de laatste 30 dagen', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true]);
+    $seed = app(SeedTenantDemoDataAction::class);
+
+    $seed->handle($tenant, ['clock_points' => 0, 'esg' => true, 'time' => false]);
+    $before = EsgMeasurement::withoutGlobalScopes()->where('tenant_id', $tenant->id)->count();
+
+    $result = $seed->handle($tenant, [
+        'clock_points' => 0,
+        'esg' => false,
+        'esg_trends' => true,
+        'time' => false,
+    ]);
+
+    $after = EsgMeasurement::withoutGlobalScopes()->where('tenant_id', $tenant->id)->count();
+
+    expect($result['esg_trend_measurements'])->toBeGreaterThan(0)
+        ->and($after)->toBeGreaterThan($before);
+
+    $seed->handle($tenant, [
+        'clock_points' => 0,
+        'esg' => false,
+        'esg_trends' => true,
+        'time' => false,
+    ]);
+
+    expect(EsgMeasurement::withoutGlobalScopes()->where('tenant_id', $tenant->id)->count())->toBe($after);
+});
