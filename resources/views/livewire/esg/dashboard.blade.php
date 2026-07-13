@@ -114,9 +114,8 @@
             </div>
 
             @if ($dashboard->thresholdSampleSize > 0)
-                <a href="{{ $dashboard->alarmsMeasurementsUrl }}"
-                   class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
-                   wire:key="esg-threshold-widget">
+                <div class="wp-dashboard-widget wp-card wp-card-pad"
+                     wire:key="esg-threshold-widget">
                     <div class="wp-health-widget__body">
                         <x-wp-health-donut
                             size="sm"
@@ -131,10 +130,12 @@
                                     'count' => $dashboard->alarmCount,
                                 ]) }}
                             </p>
+                            <a href="{{ $dashboard->alarmsMeasurementsUrl }}" class="btn btn--ghost btn--sm">
+                                {{ __('esg.dashboard.alarms.all') }}
+                            </a>
                         </div>
-                        <x-wp-icon name="chevron-down" class="wp-health-widget__chevron" />
                     </div>
-                </a>
+                </div>
             @endif
         </div>
 
@@ -285,9 +286,8 @@
             'wp-dashboard-widgets--single' => $dashboard->thresholdSampleSize === 0 && $dashboard->openEsgTasks->isEmpty(),
         ])>
             @if ($dashboard->thresholdSampleSize > 0)
-                <a href="{{ $dashboard->alarmsMeasurementsUrl }}"
-                   class="wp-dashboard-widget wp-health-widget wp-card wp-card-pad"
-                   wire:key="esg-threshold-widget">
+                <div class="wp-dashboard-widget wp-card wp-card-pad"
+                     wire:key="esg-threshold-widget">
                     <div class="wp-health-widget__body">
                         <x-wp-health-donut
                             size="sm"
@@ -302,10 +302,12 @@
                                     'count' => $dashboard->alarmCount,
                                 ]) }}
                             </p>
+                            <a href="{{ $dashboard->alarmsMeasurementsUrl }}" class="btn btn--ghost btn--sm">
+                                {{ __('esg.dashboard.alarms.all') }}
+                            </a>
                         </div>
-                        <x-wp-icon name="chevron-down" class="wp-health-widget__chevron" />
                     </div>
-                </a>
+                </div>
             @endif
 
             <div class="wp-dashboard-widget wp-card wp-card-pad wp-stack-tight" wire:key="esg-open-tasks-widget">
