@@ -18,7 +18,7 @@ Authorization: Bearer your-api-token
 ### Subscription Requirements
 
 API access and webhooks are available for:
-- **Business** plan and above (Business, Enterprise)
+- **Corporate** plan (API access and webhooks)
 - Trial accounts with explicit API access enabled (contact support)
 
 Starter, Micro, and Pro plans do not include API access. Trial accounts without explicit API access will receive a `403 Forbidden` response when attempting to use API endpoints or configure webhooks.

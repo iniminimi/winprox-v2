@@ -20,7 +20,7 @@ class BillingUserLimitTest extends TestCase
 
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         User::factory()->admin()->for($tenant)->create();
-        User::factory()->employee()->count(5)->for($tenant)->create();
+        User::factory()->employee()->count(2)->for($tenant)->create();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('user_limit_exceeded');
@@ -41,18 +41,18 @@ class BillingUserLimitTest extends TestCase
 
         $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
         User::factory()->admin()->for($tenant)->create();
-        User::factory()->employee()->count(3)->for($tenant)->create();
+        User::factory()->employee()->count(1)->for($tenant)->create();
 
         $user = app(CreateColleagueAction::class)->handle([
-            'name' => 'Vijfde',
-            'email' => 'vijf@example.test',
+            'name' => 'Tweede',
+            'email' => 'tweede@example.test',
             'locale' => 'nl',
             'role' => User::ROLE_EMPLOYEE,
             'password' => 'wachtwoord123',
             'send_account_email' => false,
         ], $tenant->id);
 
-        $this->assertSame('vijf@example.test', $user->email);
-        $this->assertSame(5, User::query()->where('tenant_id', $tenant->id)->count());
+        $this->assertSame('tweede@example.test', $user->email);
+        $this->assertSame(3, User::query()->where('tenant_id', $tenant->id)->count());
     }
 }

@@ -46,6 +46,14 @@ class ImportUnitsAction
      */
     public function handle(ImportUnitsData $data, int $tenantId, ?int $actorUserId = null): array
     {
+        $tenant = \App\Models\Tenant::query()->findOrFail($tenantId);
+        if (! $tenant->hasCsvUnitsImport()) {
+            return [
+                'success' => false,
+                'errors' => [__('subscription.errors.csv_units_not_allowed')],
+            ];
+        }
+
         // Generate unique batch ID for this import
         $batchId = (string) \Illuminate\Support\Str::uuid();
 

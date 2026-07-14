@@ -1,39 +1,32 @@
 {
     "title": "Subscription, limits & billing",
     "public_title": "Pricing & plans",
-    "public_subtitle": "Overview of WinProx Facility, WinProx Time and optional modules. Try free for one month, then choose a plan.",
+    "public_subtitle": "Three clear plans for time tracking, facility management, and enterprise portfolios. Try free for one month.",
     "public_register_cta": "Start free trial",
-    "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents and users; see the FAQ for details.",
-    "plans_heading": "Available plans",
+    "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents, photos and users.",
+    "plans_heading": "Plans",
+    "plans_intro": "WinProx Time focuses on attendance. WinProx Facility adds full QR facility workflows with Time included. WinProx Corporate adds ESG, API access and unlimited scale.",
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",
     "current_plan": "Current plan",
     "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",
     "activated": "You chose :plan. Your subscription is active for the configured period.",
-    "enterprise_hint": "Full support for large site operators and complex portfolios. Contact us for a custom quote.",
-    "enterprise_cta": "Contact us",
-    "enterprise_mail_subject": "WinProx Enterprise - quote request",
-    "enterprise_contact": "Contact us at :email for a custom quote.",
+    "facility_not_included": "Issues, tasks and calendar require WinProx Facility or Corporate. Upgrade your plan to unlock facility workflows.",
     "status_heading": "Current status",
     "status_legacy": "Your organisation does not use trial tracking yet (legacy account). All features remain available.",
     "status_trial": "Trial with :plan active until :date.",
     "status_active": "Active subscription: :plan, valid until :date.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
-    "pricing_intro": "WinProx includes a one-month free trial. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Optional modules and WinProx Time are listed below.",
-    "facility_heading": "WinProx Facility",
-    "facility_intro": "Plans based on units and team seats. Micro is facility-only; larger plans scale with your organisation.",
-    "modules_heading": "Optional modules",
-    "modules_intro": "Add-ons for WinProx Facility (Pro or Business). Monthly surcharge on top of your plan; activation via WinProx.",
-    "module_active": "Active",
-    "module_contact_cta": "Request module",
+    "pricing_intro": "WinProx includes a one-month free trial with facility and time features. After that, choose the plan that matches your organisation.",
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time module active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
     "page_limits_units_body": "You are using :current of :max units. \"Add unit\" and \"Add location\" stay disabled until you upgrade.",
-    "page_limits_users_body": "You are using :current of :max team seats on your plan (1 administrator plus up to :max staff). \"Add user\" is disabled until you upgrade.",
+    "page_limits_users_body": "You are using :current of :max team seats on your plan. \"Add user\" is disabled until you upgrade.",
     "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
+    "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
     "manage_in_stripe": "Manage subscription (invoice, payment method)",
     "legal_footer_intro": "Your account is subject to, among others:",
     "legal_terms": "Terms of service",
@@ -65,86 +58,35 @@
         "trial": {
             "name": "Trial"
         },
-        "micro": {
-            "name": "Micro",
-            "price": "€99 / year",
+        "time": {
+            "name": "WinProx Time",
+            "price": "€149 / month",
             "units": "Up to 10 units/spaces",
             "users": "Includes 1 administrator and 1 staff member",
-            "announcements": "Up to 2 announcements per unit",
-            "documents": "Up to 2 documents per unit · max. 10 for your organisation",
-            "description": "Ideal for small businesses and compact property managers."
+            "documents": "Up to 10 documents for your organisation",
+            "photos": "Up to 10 photos for your organisation",
+            "description": "Clocking, breaks, shifts and QR Clock Points. CSV import for workers only.",
+            "features": ["Time module included", "CSV worker import", "No facility issues/tasks", "No API access"]
         },
-        "starter": {
-            "name": "Starter",
-            "price": "€29 / month",
-            "units": "Up to 25 units/spaces",
-            "users": "Includes 1 administrator and 2 staff members",
-            "announcements": "Up to 4 announcements per unit",
-            "documents": "Up to 4 documents per unit · max. 20 for your organisation",
-            "description": "Ideal for a single site or pilot with a compact coordination team."
-        },
-        "pro": {
-            "name": "Pro",
-            "price": "€59 / month",
+        "facility": {
+            "name": "WinProx Facility",
+            "price": "€399 / month",
             "units": "Up to 100 units/spaces",
-            "users": "Includes 1 administrator and 5 staff members",
-            "announcements": "Up to 10 announcements per unit",
-            "documents": "Up to 6 documents per unit · max. 40 for your organisation",
-            "description": "Suited for growing facility organisations with more units and internal teams."
+            "users": "Includes 1 administrator and up to 4 staff members",
+            "documents": "Up to 100 documents for your organisation",
+            "photos": "Up to 100 photos for your organisation",
+            "description": "Full facility workflows with document management. WinProx Time included. CSV bulk import for units and workers.",
+            "features": ["Facility + Time included", "CSV units & workers", "QR issues & tasks", "No API access"]
         },
-        "business": {
-            "name": "Business",
-            "price": "€99 / month",
-            "units": "Up to 300 units/spaces",
-            "users": "Includes 1 administrator and 15 staff members",
-            "announcements": "Up to 20 announcements per unit",
-            "documents": "Up to 8 documents per unit · max. 80 for your organisation",
-            "description": "For organisations with multiple sites, many units, and larger teams. Includes API access and webhooks.",
-            "features": ["API access", "Webhooks"]
-        },
-        "enterprise": {
-            "name": "Enterprise",
-            "price": "Custom",
-            "units": "For large site operators and complex portfolios. Contact us.",
-            "users": "",
-            "announcements": "Unlimited announcements per unit",
-            "documents": "Unlimited documents for your organisation",
-            "description": "Includes API access, webhooks, and custom solutions.",
-            "features": ["API access", "Webhooks", "Custom solutions"]
-        }
-    },
-    "modules": {
-        "esg": {
-            "name": "ESG module",
-            "pricing_caption": "Monthly surcharge per Facility plan",
-            "pricing": {
-                "pro": "+ €59 / month",
-                "business": "+ €99 / month"
-            },
-            "description": "Measurements, indicators, and ESG reporting for your organisation.",
-            "bullets": ["Indicators & measurements", "ESG portal", "Compliance & reporting"]
-        },
-        "time": {
-            "name": "Time module",
-            "pricing_caption": "Monthly surcharge per Facility plan",
-            "pricing": {
-                "pro": "+ €59 / month",
-                "business": "+ €99 / month"
-            },
-            "description": "Clock in/out, breaks, and shifts alongside your facility management.",
-            "bullets": ["Attendance", "Breaks", "Shifts", "Clock Points"]
-        }
-    },
-    "products": {
-        "time": {
-            "heading": "WinProx Time",
-            "intro": "All-in-one for time tracking with limited WinProx Facility included.",
-            "name": "WinProx Time",
-            "price": "€59 / month",
-            "includes": "WinProx Facility micro with Time module included.",
-            "description": "Entry package when time tracking is your focus.",
-            "bullets": ["Clock in/out", "Breaks & shifts", "Clock Point QR", "Up to 10 units/spaces"],
-            "contact_cta": "Request WinProx Time"
+        "corporate": {
+            "name": "WinProx Corporate",
+            "price": "€999 / month",
+            "units": "Unlimited units/spaces",
+            "users": "Unlimited team seats",
+            "documents": "Unlimited documents",
+            "photos": "Unlimited photos",
+            "description": "For large portfolios and integrations. ESG included, API access, webhooks and priority support.",
+            "features": ["Facility + Time + ESG", "API & webhooks", "Unlimited scale", "Priority support"]
         }
     },
     "stripe": {
@@ -154,12 +96,14 @@
         "checkout_cancelled": "Checkout cancelled. You can choose a plan again later.",
         "return_unconfirmed": "We could not confirm the payment result here. If you just paid, your status will update shortly — refresh the page."
     },
-    "stripe_notice_live": "Payment and renewal run through Stripe. Enterprise remains via personal contact.",
-    "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment). Enterprise always requires personal contact.",
+    "stripe_notice_live": "Payment and renewal run through Stripe.",
+    "stripe_notice_simulated": "Stripe is not fully configured: your choice activates the subscription period as set here (without real payment).",
     "errors": {
         "plan_required": "Choose a plan.",
         "plan_invalid": "This plan is not available.",
         "admin_only": "Only an administrator can choose a subscription.",
-        "activation_disabled": "Self-activation is disabled. Contact WinProx."
+        "activation_disabled": "Self-activation is disabled. Contact WinProx.",
+        "csv_workers_not_allowed": "CSV worker import is not available on your plan.",
+        "csv_units_not_allowed": "CSV unit import requires WinProx Facility or Corporate."
     }
 }

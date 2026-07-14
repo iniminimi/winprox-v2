@@ -4,6 +4,7 @@ use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Livewire\Dashboard;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -28,6 +29,7 @@ it('toont het dashboard met tenant-gescopete KPI-tellingen', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->count(3)->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
@@ -73,6 +75,7 @@ it('sorteert recente meldingen op status en prioriteit', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     $makeIssue = function (TaskStatus $status, TaskPriority $priority, string $description) use ($tenant) {
         $issue = Issue::factory()->create([
@@ -130,6 +133,7 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
@@ -140,7 +144,7 @@ it('toont de proefperiode-batterijcapsule op het dashboard', function () {
 it('toont de abonnements-batterijcapsule na planactivatie', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now(),
-        'billing_plan' => 'starter',
+        'billing_plan' => 'facility',
         'billing_active_until' => now()->addDays(29),
     ]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
@@ -152,6 +156,7 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)

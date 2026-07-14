@@ -17,9 +17,11 @@
             />
         </div>
         <div class="wp-cluster">
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
-                {{ __('locations.import') }}
-            </button>
+            @if ($canImportUnits ?? false)
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openImportModal">
+                    {{ __('locations.import') }}
+                </button>
+            @endif
             <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
                 {{ __('locations.add') }}
             </button>

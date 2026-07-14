@@ -11,7 +11,6 @@ final class BillingCatalogViewData
     /**
      * @return array{
      *     planKeys: list<string>,
-     *     moduleKeys: list<string>,
      *     stripeReadyPlans: list<string>,
      *     stripeLive: bool,
      * }
@@ -19,11 +18,10 @@ final class BillingCatalogViewData
     public static function catalog(): array
     {
         $planKeys = array_keys(config('billing.plans', []));
-        $moduleKeys = array_keys(config('billing.modules', []));
 
         $stripeService = app(StripeCheckoutService::class);
         $stripeReadyPlans = collect($planKeys)
-            ->filter(fn (string $key) => $key !== 'enterprise' && $stripeService->isConfiguredForPlan($key))
+            ->filter(fn (string $key) => $stripeService->isConfiguredForPlan($key))
             ->values()
             ->all();
 
@@ -31,7 +29,6 @@ final class BillingCatalogViewData
 
         return [
             'planKeys' => $planKeys,
-            'moduleKeys' => $moduleKeys,
             'stripeReadyPlans' => $stripeReadyPlans,
             'stripeLive' => $stripeLive,
         ];

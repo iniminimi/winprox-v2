@@ -7,9 +7,8 @@ return [
     'success_path' => env('STRIPE_SUCCESS_PATH', '/subscription'),
     'cancel_path' => env('STRIPE_CANCEL_PATH', '/subscription'),
     'price_ids' => [
-        'micro' => env('STRIPE_PRICE_MICRO'),
-        'starter' => env('STRIPE_PRICE_STARTER'),
-        'pro' => env('STRIPE_PRICE_PRO'),
-        'business' => env('STRIPE_PRICE_BUSINESS'),
+        'time' => env('STRIPE_PRICE_TIME'),
+        'facility' => env('STRIPE_PRICE_FACILITY'),
+        'corporate' => env('STRIPE_PRICE_CORPORATE'),
     ],
 ];

@@ -5,12 +5,14 @@ use App\Livewire\Dashboard;
 use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Public\UnitPortal;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\QrCode;
 use App\Models\QrScan;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\Worker;
 use App\Models\UnitPortalVisit;
 use App\Models\User;
 use App\Support\Dashboard\TopScannedUnitsService;
@@ -87,9 +89,11 @@ it('toont de traffic-widget altijd met lege staat zonder scan-data', function ()
     Tenancy::actAs($tenant->id);
 
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
@@ -103,6 +107,7 @@ it('toont de traffic-widget naast de health-widget op het dashboard', function (
     Tenancy::actAs($tenant->id);
 
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = Unit::factory()->create([
@@ -111,6 +116,7 @@ it('toont de traffic-widget naast de health-widget op het dashboard', function (
         'background_photo_path' => null,
         'is_active' => true,
     ]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     UnitPortalVisit::factory()->create([
         'tenant_id' => $tenant->id,

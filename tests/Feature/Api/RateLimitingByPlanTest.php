@@ -29,9 +29,9 @@ it('past trial rate limiet toe (30 req/min)', function () {
         ->assertHeader('X-RateLimit-Remaining', 29);
 });
 
-it('past enterprise plan rate limiet toe (10000 req/min)', function () {
+it('past corporate plan rate limiet toe (10000 req/min)', function () {
     $tenant = Tenant::factory()->create([
-        'billing_plan' => 'enterprise',
+        'billing_plan' => 'corporate',
         'billing_active_until' => now()->addDays(30),
     ]);
     Tenancy::actAs($tenant->id);

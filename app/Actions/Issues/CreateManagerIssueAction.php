@@ -6,6 +6,7 @@ use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
 use App\Enums\IssueSource;
 use App\Events\Issues\IssueCreated;
 use App\Models\Issue;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Support\IssuePhotoStorage;
 use App\Support\Recurrence\RecurrenceSchedule;
@@ -47,7 +48,12 @@ class CreateManagerIssueAction
 
         event(new IssueCreated($issue));
 
-        foreach (array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile)) as $photo) {
+        $validPhotos = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
+        if ($validPhotos !== []) {
+            Tenant::query()->findOrFail($actor->tenant_id)->assertCanAddPhotos(count($validPhotos));
+        }
+
+        foreach ($validPhotos as $photo) {
             $issue->photos()->create([
                 'path' => $this->storage->storePrecompressedCopy($photo),
             ]);

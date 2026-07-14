@@ -93,15 +93,6 @@ class Subscription extends Component
         $validated = validator(['plan' => $plan], $request->rules(), $request->messages())->validate();
 
         $planKey = $validated['plan'];
-        $planConfig = config("billing.plans.{$planKey}");
-
-        if (! ($planConfig['self_activate'] ?? false)) {
-            $this->statusMessage = __('subscription.enterprise_contact', [
-                'email' => config('billing.contact_email'),
-            ]);
-
-            return;
-        }
 
         if (! config('billing.allow_tenant_self_activation', true)) {
             $this->addError('plan', __('subscription.errors.activation_disabled'));

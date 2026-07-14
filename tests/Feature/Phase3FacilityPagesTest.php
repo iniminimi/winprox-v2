@@ -92,11 +92,11 @@ it('stuurt gebruikers zonder toegang door naar abonnement', function () {
         ->assertRedirect(route('subscription.index'));
 });
 
-it('toont facility-formules modules en WinProx Time op abonnement', function () {
+it('toont drie formules op abonnement', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => now()->addDays(5),
-        'has_esg_module' => true,
-        'has_time_module' => false,
+        'has_esg_module' => false,
+        'has_time_module' => true,
         'is_active' => true,
     ]);
     $admin = User::factory()->create([
@@ -106,22 +106,16 @@ it('toont facility-formules modules en WinProx Time op abonnement', function () 
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.facility_heading'))
-        ->assertSee(__('subscription.modules.esg.name'))
-        ->assertSee(__('subscription.modules.esg.pricing.pro'))
-        ->assertSee(__('subscription.modules.esg.pricing.business'))
-        ->assertSee(__('subscription.modules.time.name'))
-        ->assertSee(__('subscription.modules.time.pricing.pro'))
-        ->assertSee(__('subscription.modules.time.pricing.business'))
-        ->assertSee(__('subscription.products.time.name'))
-        ->assertSee(__('subscription.status_module_esg'))
-        ->assertDontSee(__('subscription.status_module_time'));
+        ->assertSee(__('subscription.plans.time.name'))
+        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertSee(__('subscription.plans.corporate.name'))
+        ->assertSee(__('subscription.status_module_time'));
 });
 
 it('toont planlabel correct bij billing_plan met hoofdletter', function () {
     $tenant = Tenant::factory()->create([
         'trial_ends_at' => null,
-        'billing_plan' => 'Business',
+        'billing_plan' => 'Facility',
         'billing_active_until' => now()->addMonth(),
         'is_active' => true,
     ]);
@@ -132,8 +126,8 @@ it('toont planlabel correct bij billing_plan met hoofdletter', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->assertSee(__('subscription.plans.business.name'))
-        ->assertDontSee('subscription.plans.Business.name');
+        ->assertSee(__('subscription.plans.facility.name'))
+        ->assertDontSee('subscription.plans.Facility.name');
 });
 
 it('laat een beheerder een plan activeren', function () {
@@ -148,15 +142,17 @@ it('laat een beheerder een plan activeren', function () {
 
     Livewire::actingAs($admin)
         ->test(Subscription::class)
-        ->call('activatePlan', 'pro')
+        ->call('activatePlan', 'facility')
         ->assertHasNoErrors();
 
     $tenant->refresh();
 
-    expect($tenant->billing_plan)->toBe('pro')
+    expect($tenant->billing_plan)->toBe('facility')
         ->and($tenant->billing_active_until)->not->toBeNull()
         ->and($tenant->isPaidSubscriptionActive())->toBeTrue()
-        ->and($tenant->isTrialActive())->toBeFalse();
+        ->and($tenant->isTrialActive())->toBeFalse()
+        ->and($tenant->hasTimeModule())->toBeTrue()
+        ->and($tenant->hasEsgModule())->toBeFalse();
 });
 
 it('laadt de FAQ-pagina met facility-inhoud', function () {

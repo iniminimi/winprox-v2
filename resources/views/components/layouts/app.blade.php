@@ -23,6 +23,7 @@
         $isPlatformOnlySuperuser = $authUser?->is_superuser && $supportTenant === null;
 
         $activeTenant = $supportTenant ?? $authUser?->tenant;
+        $showFacilityNav = $activeTenant instanceof Tenant && $activeTenant->hasFacilityAccess();
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
         $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
 
@@ -41,9 +42,11 @@
             ] : [
                 ['route' => 'dashboard', 'active' => 'dashboard', 'icon' => 'dashboard', 'label' => 'common.nav.dashboard'],
                 ['route' => 'locations.index', 'active' => 'locations.*', 'icon' => 'locations', 'label' => 'common.nav.locations'],
-                ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
-                ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
-                ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
+                ...($showFacilityNav ? [
+                    ['route' => 'issues.index', 'active' => 'issues.*', 'icon' => 'issues', 'label' => 'common.nav.issues'],
+                    ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
+                    ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
+                ] : []),
                 ...($showTimeNav ? [
                     ['route' => 'time.presence.index', 'active' => 'time.*', 'icon' => 'clock', 'label' => 'common.nav.time'],
                 ] : []),
@@ -73,8 +76,10 @@
             ...($showSettingsNav ? [
                 ['route' => 'settings.index', 'active' => 'settings.index', 'icon' => 'settings', 'label' => 'common.nav.settings'],
             ] : []),
-            ...($showTenantAdminNav ? [
+            ...($showTenantAdminNav && ($activeTenant?->hasApiAccess() ?? false) ? [
                 ['route' => 'settings.api', 'active' => 'settings.api', 'icon' => 'api', 'label' => 'settings.api.nav'],
+            ] : []),
+            ...($showTenantAdminNav ? [
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
             ] : []),
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],

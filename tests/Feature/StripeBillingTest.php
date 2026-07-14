@@ -21,22 +21,22 @@ class StripeBillingTest extends TestCase
         $admin = User::factory()->admin()->for($tenant)->create();
 
         $service = app(StripeCheckoutService::class);
-        $this->assertFalse($service->isConfiguredForPlan('starter'));
+        $this->assertFalse($service->isConfiguredForPlan('facility'));
 
-        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'starter', 'manual');
+        app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'facility', 'manual');
 
         $tenant->refresh();
-        $this->assertSame('starter', $tenant->billing_plan);
+        $this->assertSame('facility', $tenant->billing_plan);
         $this->assertTrue($tenant->isPaidSubscriptionActive());
         $this->assertTrue($tenant->billing_active_until->lte(now()->addDays(30)));
         $this->assertTrue($tenant->billing_active_until->gte(now()->addDays(29)));
     }
 
-    public function test_realigns_starter_subscription_after_yearly_misactivation(): void
+    public function test_realigns_facility_subscription_after_yearly_misactivation(): void
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now(),
-            'billing_plan' => 'starter',
+            'billing_plan' => 'facility',
             'billing_active_until' => now()->addDays(364),
         ]);
 

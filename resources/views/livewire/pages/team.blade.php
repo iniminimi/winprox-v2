@@ -73,9 +73,11 @@
                             {{ __('team.clock_point_qr.button') }}
                         </button>
                     @endif
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openWorkerImportModal">
-                        {{ __('team.workers.import') }}
-                    </button>
+                    @if ($canImportWorkers ?? false)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openWorkerImportModal">
+                            {{ __('team.workers.import') }}
+                        </button>
+                    @endif
                     <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateTeam">
                         {{ __('team.teams.add') }}
                     </button>

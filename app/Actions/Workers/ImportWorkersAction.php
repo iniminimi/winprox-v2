@@ -31,6 +31,11 @@ class ImportWorkersAction
      */
     public function handle(ImportWorkersData $data, int $tenantId, ?int $actorUserId = null): array
     {
+        $tenant = \App\Models\Tenant::query()->findOrFail($tenantId);
+        if (! $tenant->hasCsvWorkersImport()) {
+            return ['success' => false, 'errors' => [__('subscription.errors.csv_workers_not_allowed')]];
+        }
+
         $batchId = (string) Str::uuid();
 
         $handle = fopen($data->filePath, 'r');

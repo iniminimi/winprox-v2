@@ -162,10 +162,64 @@ class Tenant extends Model
             return false;
         }
 
-        // Only Business and Enterprise plans have API access
-        $apiAllowedPlans = ['business', 'enterprise'];
-        
-        return in_array($this->billing_plan, $apiAllowedPlans, true);
+        // Only Corporate plan has API access
+        return $this->billing_plan === 'corporate';
+    }
+
+    public function hasFacilityAccess(): bool
+    {
+        if (! $this->hasFullAppAccess()) {
+            return false;
+        }
+
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return true;
+        }
+
+        $config = $this->planConfig();
+
+        return $config !== null && (bool) ($config['includes_facility'] ?? true);
+    }
+
+    public function hasCsvWorkersImport(): bool
+    {
+        return $this->planAllows('csv_workers_import');
+    }
+
+    public function hasCsvUnitsImport(): bool
+    {
+        return $this->planAllows('csv_units_import');
+    }
+
+    public function planAllows(string $feature): bool
+    {
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return true;
+        }
+
+        $config = $this->planConfig();
+        if ($config === null) {
+            return false;
+        }
+
+        return (bool) ($config[$feature] ?? false);
+    }
+
+    /**
+     * @return array<string, mixed>|null
+     */
+    private function planConfig(): ?array
+    {
+        $planKey = $this->effectivePlanKey();
+        if ($planKey === null) {
+            return null;
+        }
+
+        if ($planKey === config('billing.trial_plan_facility')) {
+            return config('billing.trial');
+        }
+
+        return config("billing.plans.{$planKey}");
     }
 
     public function hasEsgModule(): bool
@@ -447,7 +501,47 @@ class Tenant extends Model
         return $this->billingLimitValue('documents_per_unit');
     }
 
-    /** null = onbeperkt (legacy of enterprise). */
+    /** null = onbeperkt (legacy of corporate). */
+    public function maxPhotosOrgLimit(): ?int
+    {
+        return $this->billingLimitValue('photos_org_limit');
+    }
+
+    public function currentPhotosCount(): int
+    {
+        return IssuePhoto::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
+    }
+
+    public function remainingPhotoOrgSlots(): ?int
+    {
+        $max = $this->maxPhotosOrgLimit();
+        if ($max === null) {
+            return null;
+        }
+
+        return max(0, $max - $this->currentPhotosCount());
+    }
+
+    public function isAtPhotosOrgLimit(): bool
+    {
+        $remaining = $this->remainingPhotoOrgSlots();
+
+        return $remaining !== null && $remaining === 0;
+    }
+
+    public function assertCanAddPhotos(int $count = 1): void
+    {
+        $max = $this->maxPhotosOrgLimit();
+        if ($max === null) {
+            return;
+        }
+
+        if ($this->currentPhotosCount() + $count > $max) {
+            throw new \InvalidArgumentException('photo_org_limit_exceeded');
+        }
+    }
+
+    /** null = onbeperkt (legacy of corporate). */
     public function maxDocumentsOrgLimit(): ?int
     {
         return $this->billingLimitValue('documents_org_limit');
@@ -562,7 +656,7 @@ class Tenant extends Model
         }
 
         $planKey = $this->effectivePlanKey();
-        if ($planKey === null || $planKey === 'enterprise') {
+        if ($planKey === null || $planKey === 'corporate') {
             return null;
         }
 

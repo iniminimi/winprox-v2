@@ -4,6 +4,7 @@ namespace App\Actions\Public;
 
 use App\Actions\Issues\CreateIssueAction;
 use App\Models\Issue;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\IssuePhotoStorage;
@@ -64,7 +65,12 @@ class SubmitReportAction
             'original_language' => $data['original_language'] ?? null,
         ], $teamIds);
 
-        foreach ($photos as $photo) {
+        $validPhotos = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
+        if ($validPhotos !== []) {
+            Tenant::query()->findOrFail($unit->tenant_id)->assertCanAddPhotos(count($validPhotos));
+        }
+
+        foreach ($validPhotos as $photo) {
             if ($photo instanceof UploadedFile) {
                 $issue->photos()->create([
                     'path' => $this->storage->storePrecompressedCopy($photo),

@@ -9,7 +9,10 @@ use Illuminate\Support\Carbon;
 
 class ActivateSubscriptionPlanAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private ApplyPlanEntitlementsAction $applyEntitlements,
+    ) {}
 
     public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
     {
@@ -22,7 +25,7 @@ class ActivateSubscriptionPlanAction
             'is_active' => true,
         ])->save();
 
-        $fresh = $tenant->fresh();
+        $fresh = $this->applyEntitlements->handle($tenant->fresh(), $plan);
 
         $this->audit->record(
             userId: $actor?->id,

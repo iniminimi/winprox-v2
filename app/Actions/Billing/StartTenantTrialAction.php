@@ -6,6 +6,8 @@ use App\Models\Tenant;
 
 class StartTenantTrialAction
 {
+    public function __construct(private ApplyPlanEntitlementsAction $applyEntitlements) {}
+
     public function handle(Tenant $tenant): Tenant
     {
         $days = (int) config('billing.trial_days', 14);
@@ -17,6 +19,6 @@ class StartTenantTrialAction
             'is_active' => true,
         ])->save();
 
-        return $tenant->fresh();
+        return $this->applyEntitlements->handle($tenant->fresh());
     }
 }

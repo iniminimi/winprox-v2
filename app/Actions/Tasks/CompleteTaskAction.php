@@ -9,6 +9,7 @@ use App\Enums\TaskStatus;
 use App\Events\Tasks\TaskCompleted;
 use App\Models\IssueUpdate;
 use App\Models\Task;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Actions\Time\LogWorkShiftTaskEndAction;
 use App\Support\Audit\AuditRecorder;
@@ -62,6 +63,8 @@ class CompleteTaskAction
 
         $files = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
         if ($files !== [] && $worker !== null) {
+            Tenant::query()->findOrFail($issue->tenant_id)->assertCanAddPhotos(count($files));
+
             /** @var IssueUpdate $update */
             $update = $issue->updates()->create([
                 'worker_id' => $worker->id,

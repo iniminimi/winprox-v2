@@ -1,52 +1,45 @@
 {
     "title": "Abonnement, Limits & Abrechnung",
-    "public_title": "Preise & Formeln",
-    "public_subtitle": "Überblick über WinProx Facility, WinProx Time und optionale Module. Einen Monat kostenlos testen, danach Formel wählen.",
-    "public_register_cta": "Kostenlos testen",
-    "subtitle": "Nach dem Gratis-Monat wählen Sie eine Formel. Limits gelten pro Organisation für Units, Dokumente und Benutzer; Details in der FAQ.",
-    "plans_heading": "Verfügbare Formeln",
-    "choose_plan": "Diese Formel wählen",
+    "public_title": "Preise & Tarife",
+    "public_subtitle": "Drei klare Tarife für Zeiterfassung, Facility-Management und Enterprise-Portfolios. Einen Monat kostenlos testen.",
+    "public_register_cta": "Kostenlose Testphase starten",
+    "subtitle": "Nach dem kostenlosen Monat wählen Sie einen Tarif. Limits gelten pro Organisation für Units, Dokumente, Fotos und Benutzer.",
+    "plans_heading": "Tarife",
+    "plans_intro": "WinProx Time fokussiert auf Anwesenheit. WinProx Facility ergänzt vollständige QR-Facility-Workflows inklusive Time. WinProx Corporate ergänzt ESG, API-Zugang und unbegrenzte Skalierung.",
+    "choose_plan": "Diesen Tarif wählen",
     "choose_plan_loading": "Wird gewählt...",
-    "activate_plan": "Diese Formel wählen",
-    "current_plan": "Aktuelle Formel",
+    "activate_plan": "Diesen Tarif wählen",
+    "current_plan": "Aktueller Tarif",
     "admin_required": "Nur ein Administrator kann ein Abonnement wählen. Wenden Sie sich an den Administrator Ihrer Organisation.",
     "activated": "Sie haben :plan gewählt. Ihr Abonnement ist für den konfigurierten Zeitraum aktiv.",
-    "enterprise_hint": "Vollständige Betreuung für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns für ein individuelles Angebot.",
-    "enterprise_cta": "Kontakt aufnehmen",
-    "enterprise_mail_subject": "WinProx Enterprise - Angebotsanfrage",
-    "enterprise_contact": "Kontaktieren Sie uns unter :email für ein individuelles Angebot.",
+    "facility_not_included": "Meldungen, Aufgaben und Kalender erfordern WinProx Facility oder Corporate. Upgraden Sie Ihren Tarif.",
     "status_heading": "Aktueller Status",
-    "status_legacy": "Ihre Organisation nutzt noch kein Testphasen-Tracking (Bestandskonto). Alle Funktionen bleiben verfügbar.",
+    "status_legacy": "Ihre Organisation nutzt noch kein Trial-Tracking (Legacy-Konto). Alle Funktionen bleiben verfügbar.",
     "status_trial": "Testphase mit :plan aktiv bis :date.",
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
-    "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugriff. Verlängern Sie rechtzeitig, um Unterbrechungen zu vermeiden.",
-    "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten eine Formel, um fortzufahren.",
-    "pricing_intro": "WinProx bietet einen Gratis-Monat zum Testen. Danach wählen Sie eine Formel nach der Anzahl Units an Ihren Standorten (Maschinen, Zonen oder Bereiche). Optionale Module und WinProx Time finden Sie unten.",
-    "facility_heading": "WinProx Facility",
-    "facility_intro": "Formeln nach Units und Teamplätzen. Micro nur Facility; größere Formeln skalieren mit Ihrer Organisation.",
-    "modules_heading": "Optionale Module",
-    "modules_intro": "Erweiterungen für WinProx Facility (Pro oder Business). Monatlicher Aufpreis zu Ihrer Formel; Aktivierung über WinProx.",
-    "module_active": "Aktiv",
-    "module_contact_cta": "Modul anfragen",
+    "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugang.",
+    "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten einen Tarif.",
+    "pricing_intro": "WinProx enthält einen kostenlosen Testmonat mit Facility- und Time-Funktionen. Danach wählen Sie den passenden Tarif.",
     "status_module_esg": "ESG-Modul auf Ihrem Konto aktiv.",
     "status_module_time": "Time-Modul auf Ihrem Konto aktiv.",
     "page_limits_title": "Warum bestimmte Aktionen nicht verfügbar sind",
-    "page_limits_units_body": "Sie nutzen :current von :max Units. „Unit hinzufügen“ und „Neuen Standort hinzufügen“ bleiben deaktiviert, bis Sie upgraden.",
-    "page_limits_users_body": "Sie nutzen :current von :max Team-Plätzen (1 Administrator plus max. :max Mitarbeitende). „Mitarbeiter hinzufügen“ ist deaktiviert, bis Sie upgraden.",
-    "page_limits_documents_body": "Ihre Organisation nutzt :current von :max Dokumenten. Löschen Sie ein Dokument oder upgraden Sie Ihre Formel, um weitere hochzuladen.",
+    "page_limits_units_body": "Sie nutzen :current von :max Units. \"Unit hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
+    "page_limits_users_body": "Sie nutzen :current von :max Teamplätzen. \"Benutzer hinzufügen\" bleibt deaktiviert bis zum Upgrade.",
+    "page_limits_documents_body": "Ihre Organisation nutzt :current von :max Dokumenten. Löschen Sie Dokumente oder upgraden Sie.",
+    "page_limits_photos_body": "Ihre Organisation nutzt :current von :max Fotos. Löschen Sie Fotos oder upgraden Sie.",
     "manage_in_stripe": "Abonnement verwalten (Rechnung, Zahlungsmethode)",
-    "legal_footer_intro": "Für Ihr Konto gelten unter anderem:",
-    "legal_terms": "Allgemeine Geschäftsbedingungen",
+    "legal_footer_intro": "Ihr Konto unterliegt u.a.:",
+    "legal_terms": "AGB",
     "legal_privacy": "Datenschutz",
-    "legal_dpa": "DPA",
+    "legal_dpa": "AVV",
     "status": {
         "title": "Status",
-        "access": "App-Zugriff",
+        "access": "App-Zugang",
         "access_ok": "Aktiv",
         "access_blocked": "Gesperrt",
         "trial": "Testphase",
         "trial_days": "Noch :days Tage",
-        "plan": "Formel",
+        "plan": "Tarif",
         "active_until": "Gültig bis",
         "usage": "Nutzung",
         "usage_counts": ":units Units · :users Benutzer"
@@ -55,111 +48,60 @@
         "units": ":count Units",
         "users": ":count Benutzer",
         "unlimited": "unbegrenzt",
-        "warning_units": "Sie haben noch :remaining Unit-Plätze in Ihrer Formel.",
-        "critical_units": "Unit-Limit erreicht. Upgraden Sie Ihre Formel, um mehr Units hinzuzufügen.",
-        "warning_users": "Sie haben noch :remaining Benutzer-Plätze in Ihrer Formel.",
-        "critical_users": "Benutzer-Limit erreicht. Upgraden Sie Ihre Formel, um mehr Kolleginnen und Kollegen einzuladen.",
+        "warning_units": "Sie haben noch :remaining Unit-Plätze.",
+        "critical_units": "Unit-Limit erreicht. Upgraden Sie Ihren Tarif.",
+        "warning_users": "Sie haben noch :remaining Benutzer-Plätze.",
+        "critical_users": "Benutzer-Limit erreicht. Upgraden Sie Ihren Tarif.",
         "cta": "Abonnement ansehen"
     },
     "plans": {
-        "trial": {
-            "name": "Testphase"
-        },
-        "micro": {
-            "name": "Micro",
-            "price": "€99 / Jahr",
-            "units": "Bis zu 10 Units/Räume",
-            "users": "Inklusive 1 Administrator und 1 Mitarbeitende",
-            "announcements": "Bis zu 2 Mitteilungen pro Unit",
-            "documents": "Bis zu 2 Dokumente pro Unit · max. 10 für Ihre Organisation",
-            "description": "Ideal für kleine Unternehmen und kompakte Immobilienverwalter."
-        },
-        "starter": {
-            "name": "Starter",
-            "price": "€29 / Monat",
-            "units": "Bis zu 25 Units/Räume",
-            "users": "Inklusive 1 Administrator und 2 Mitarbeitende",
-            "announcements": "Bis zu 4 Mitteilungen pro Unit",
-            "documents": "Bis zu 4 Dokumente pro Unit · max. 20 für Ihre Organisation",
-            "description": "Ideal für einen einzelnen Standort oder Pilot mit kompaktem Koordinationsteam."
-        },
-        "pro": {
-            "name": "Pro",
-            "price": "€59 / Monat",
-            "units": "Bis zu 100 Units/Räume",
-            "users": "Inklusive 1 Administrator und 5 Mitarbeitende",
-            "announcements": "Bis zu 10 Mitteilungen pro Unit",
-            "documents": "Bis zu 6 Dokumente pro Unit · max. 40 für Ihre Organisation",
-            "description": "Geeignet für wachsende Facility-Organisationen mit mehr Units und internen Teams."
-        },
-        "business": {
-            "name": "Business",
-            "price": "€99 / Monat",
-            "units": "Bis zu 300 Units/Räume",
-            "users": "Inklusive 1 Administrator und 15 Mitarbeitende",
-            "announcements": "Bis zu 20 Mitteilungen pro Unit",
-            "documents": "Bis zu 8 Dokumente pro Unit · max. 80 für Ihre Organisation",
-            "description": "Für Organisationen mit mehreren Standorten, vielen Units und größeren Teams. Inklusive API-Zugriff und Webhooks.",
-            "features": ["API-Zugriff", "Webhooks"]
-        },
-        "enterprise": {
-            "name": "Enterprise",
-            "price": "Individuell",
-            "units": "Für große Standortbetreiber und komplexe Portfolios. Kontaktieren Sie uns.",
-            "users": "",
-            "announcements": "Unbegrenzt Mitteilungen pro Unit",
-            "documents": "Unbegrenzt Dokumente für Ihre Organisation",
-            "description": "Inklusive API-Zugriff, Webhooks und maßgeschneiderte Lösungen.",
-            "features": ["API-Zugriff", "Webhooks", "Maßgeschneiderte Lösungen"]
-        }
-    },
-    "modules": {
-        "esg": {
-            "name": "ESG-Modul",
-            "pricing_caption": "Monatlicher Aufpreis pro Facility-Formel",
-            "pricing": {
-                "pro": "+ €59 / Monat",
-                "business": "+ €99 / Monat"
-            },
-            "description": "Messungen, Indikatoren und ESG-Berichterstattung für Ihre Organisation.",
-            "bullets": ["Indikatoren & Messungen", "ESG-Portal", "Compliance & Berichte"]
-        },
+        "trial": { "name": "Testphase" },
         "time": {
-            "name": "Time-Modul",
-            "pricing_caption": "Monatlicher Aufpreis pro Facility-Formel",
-            "pricing": {
-                "pro": "+ €59 / Monat",
-                "business": "+ €99 / Monat"
-            },
-            "description": "Ein- und Ausstempeln, Pausen und Schichten neben Ihrem Facility-Management.",
-            "bullets": ["Anwesenheit", "Pausen", "Schichten", "Clock Points"]
-        }
-    },
-    "products": {
-        "time": {
-            "heading": "WinProx Time",
-            "intro": "Alles-in-einem für Zeiterfassung mit begrenztem WinProx Facility inklusive.",
             "name": "WinProx Time",
-            "price": "€59 / Monat",
-            "includes": "WinProx Facility Micro mit Time-Modul inklusive.",
-            "description": "Einstiegspaket, wenn Zeiterfassung im Mittelpunkt steht.",
-            "bullets": ["Ein- und Ausstempeln", "Pausen & Schichten", "Clock Point QR", "Bis zu 10 Units/Räume"],
-            "contact_cta": "WinProx Time anfragen"
+            "price": "€149 / Monat",
+            "units": "Bis zu 10 Units/Räume",
+            "users": "1 Administrator und 1 Mitarbeiter inklusive",
+            "documents": "Bis zu 10 Dokumente pro Organisation",
+            "photos": "Bis zu 10 Fotos pro Organisation",
+            "description": "Ein-/Ausstempeln, Pausen, Schichten und QR Clock Points. CSV-Import nur für Mitarbeiter.",
+            "features": ["Time-Modul inklusive", "CSV Mitarbeiter-Import", "Keine Facility-Meldungen", "Kein API-Zugang"]
+        },
+        "facility": {
+            "name": "WinProx Facility",
+            "price": "€399 / Monat",
+            "units": "Bis zu 100 Units/Räume",
+            "users": "1 Administrator und bis zu 4 Mitarbeiter",
+            "documents": "Bis zu 100 Dokumente pro Organisation",
+            "photos": "Bis zu 100 Fotos pro Organisation",
+            "description": "Vollständige Facility-Workflows mit Dokumentenverwaltung. WinProx Time inklusive. CSV-Bulk-Import.",
+            "features": ["Facility + Time inklusive", "CSV Units & Mitarbeiter", "QR-Meldungen & Aufgaben", "Kein API-Zugang"]
+        },
+        "corporate": {
+            "name": "WinProx Corporate",
+            "price": "€999 / Monat",
+            "units": "Unbegrenzte Units/Räume",
+            "users": "Unbegrenzte Teamplätze",
+            "documents": "Unbegrenzte Dokumente",
+            "photos": "Unbegrenzte Fotos",
+            "description": "Für große Portfolios und Integrationen. ESG inklusive, API, Webhooks und Priority-Support.",
+            "features": ["Facility + Time + ESG", "API & Webhooks", "Unbegrenzte Skalierung", "Priority-Support"]
         }
     },
     "stripe": {
-        "activated": "Danke! Ihre Zahlung ist eingegangen; Ihr Abonnement wird in Kürze aktiv (ggf. Seite aktualisieren).",
-        "not_configured": "Online-Zahlung ist noch nicht konfiguriert. Kontaktieren Sie WinProx oder versuchen Sie es später erneut.",
-        "simulated_hint": "Stripe ist nicht vollständig konfiguriert: Ihre Wahl aktiviert den Abonnementzeitraum wie hier eingestellt (ohne echte Zahlung).",
-        "checkout_cancelled": "Checkout abgebrochen. Sie können später erneut eine Formel wählen.",
-        "return_unconfirmed": "Wir konnten das Zahlungsergebnis hier nicht bestätigen. Wenn Sie gerade bezahlt haben, wird Ihr Status aktualisiert — Seite aktualisieren."
+        "activated": "Danke! Ihre Zahlung wurde empfangen; Ihr Abonnement wird in Kürze aktiv.",
+        "not_configured": "Online-Zahlung ist noch nicht konfiguriert. Kontaktieren Sie WinProx.",
+        "simulated_hint": "Stripe nicht vollständig konfiguriert: Ihre Wahl aktiviert die Periode ohne echte Zahlung.",
+        "checkout_cancelled": "Checkout abgebrochen. Sie können später erneut wählen.",
+        "return_unconfirmed": "Zahlungsergebnis konnte hier nicht bestätigt werden. Seite aktualisieren."
     },
-    "stripe_notice_live": "Zahlung und Verlängerung laufen über Stripe. Enterprise bleibt über persönlichen Kontakt.",
-    "stripe_notice_simulated": "Stripe ist nicht vollständig konfiguriert: Ihre Wahl aktiviert den Abonnementzeitraum wie hier eingestellt (ohne echte Zahlung). Enterprise erfordert immer persönlichen Kontakt.",
+    "stripe_notice_live": "Zahlung und Verlängerung über Stripe.",
+    "stripe_notice_simulated": "Stripe nicht vollständig konfiguriert: Aktivierung ohne echte Zahlung.",
     "errors": {
-        "plan_required": "Wählen Sie eine Formel.",
-        "plan_invalid": "Diese Formel ist nicht verfügbar.",
+        "plan_required": "Wählen Sie einen Tarif.",
+        "plan_invalid": "Dieser Tarif ist nicht verfügbar.",
         "admin_only": "Nur ein Administrator kann ein Abonnement wählen.",
-        "activation_disabled": "Selbstaktivierung ist deaktiviert. Kontaktieren Sie WinProx."
+        "activation_disabled": "Selbstaktivierung deaktiviert. Kontaktieren Sie WinProx.",
+        "csv_workers_not_allowed": "CSV-Mitarbeiter-Import ist in Ihrem Tarif nicht verfügbar.",
+        "csv_units_not_allowed": "CSV-Unit-Import erfordert WinProx Facility oder Corporate."
     }
 }

@@ -6,6 +6,7 @@ use App\Actions\Locations\CreateLocationAnnouncementAction;
 use App\Actions\Locations\ToggleLocationAnnouncementActiveAction;
 use App\Models\Announcement;
 use App\Models\Document;
+use App\Models\IssuePhoto;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -29,26 +30,20 @@ class BillingPortalContentLimitTest extends TestCase
         $tenant->fresh()->assertCanAddDocument(null);
     }
 
-    public function test_paid_plan_enforces_documents_per_unit_limit(): void
+    public function test_paid_plan_enforces_photos_org_limit(): void
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'micro',
+            'billing_plan' => 'time',
             'billing_active_until' => now()->addMonth(),
         ]);
-        $location = Location::factory()->for($tenant)->create();
-        $unit = Unit::factory()->for($location)->for($tenant)->create();
 
-        Document::factory()->count(2)->create([
-            'tenant_id' => $tenant->id,
-            'location_id' => $location->id,
-            'unit_id' => $unit->id,
-        ]);
+        IssuePhoto::factory()->count(10)->create(['tenant_id' => $tenant->id]);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('document_unit_limit_exceeded');
+        $this->expectExceptionMessage('photo_org_limit_exceeded');
 
-        $tenant->fresh()->assertCanAddDocument($unit->id);
+        $tenant->fresh()->assertCanAddPhotos(1);
     }
 
     public function test_inactive_documents_still_count_toward_org_limit(): void
@@ -61,9 +56,11 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_active_announcements_per_unit_limit_is_enforced(): void
     {
+        config(['billing.plans.time.announcements_per_unit' => 2]);
+
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'micro',
+            'billing_plan' => 'time',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();
@@ -98,7 +95,7 @@ class BillingPortalContentLimitTest extends TestCase
     {
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'micro',
+            'billing_plan' => 'time',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();
@@ -124,9 +121,11 @@ class BillingPortalContentLimitTest extends TestCase
 
     public function test_toggle_announcement_active_respects_unit_limit(): void
     {
+        config(['billing.plans.time.announcements_per_unit' => 2]);
+
         $tenant = Tenant::factory()->create([
             'trial_ends_at' => now()->subDay(),
-            'billing_plan' => 'micro',
+            'billing_plan' => 'time',
             'billing_active_until' => now()->addMonth(),
         ]);
         $user = User::factory()->for($tenant)->create();

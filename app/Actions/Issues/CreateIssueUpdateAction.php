@@ -4,6 +4,7 @@ namespace App\Actions\Issues;
 
 use App\Models\Issue;
 use App\Models\IssueUpdate;
+use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
 use App\Support\IssuePhotoStorage;
@@ -32,7 +33,12 @@ class CreateIssueUpdateAction
             'description' => $description,
         ]);
 
-        foreach (array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile)) as $photo) {
+        $validPhotos = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
+        if ($validPhotos !== []) {
+            Tenant::query()->findOrFail($issue->tenant_id)->assertCanAddPhotos(count($validPhotos));
+        }
+
+        foreach ($validPhotos as $photo) {
             $issue->photos()->create([
                 'issue_update_id' => $update->id,
                 'path' => $this->storage->storePrecompressedCopy($photo),

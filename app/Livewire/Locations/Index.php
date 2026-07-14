@@ -487,6 +487,7 @@ class Index extends Component
             : collect();
 
         $tenantId = Tenancy::id();
+        $tenant = $tenantId !== null ? \App\Models\Tenant::query()->find($tenantId) : null;
         $unitImportBatches = ImportBatchRegistry::recentBatchesForTenant($tenantId)
             ->map(fn (array $batch) => array_merge(
                 $batch,
@@ -500,6 +501,7 @@ class Index extends Component
             'teams' => $teams,
             'categories' => $categories,
             'unitImportBatches' => $unitImportBatches,
+            'canImportUnits' => $tenant?->hasCsvUnitsImport() ?? false,
             'onboarding' => TenantOnboardingState::current(),
         ]);
     }

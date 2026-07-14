@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Support\Billing\BillingCatalogViewData;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -14,11 +15,19 @@ class Pricing extends Component
             ? 'components.layouts.app'
             : 'components.layouts.marketing';
 
-        return view('livewire.pages.pricing-unavailable')
-            ->layout($layout, [
-                'title' => __('pricing.meta_title'),
-                'socialTitle' => __('pricing.social.og_title'),
-                'socialDescription' => __('pricing.social.og_description'),
-            ]);
+        return view('livewire.pages.subscription', [
+            ...BillingCatalogViewData::catalog(),
+            'publicMode' => true,
+            'tenant' => auth()->user()?->tenant,
+            'billingStatus' => null,
+            'portalBatteryState' => null,
+            'canManage' => false,
+            'selectedPlan' => null,
+            'statusMessage' => null,
+        ])->layout($layout, [
+            'title' => __('pricing.meta_title'),
+            'socialTitle' => __('pricing.social.og_title'),
+            'socialDescription' => __('pricing.social.og_description'),
+        ]);
     }
 }

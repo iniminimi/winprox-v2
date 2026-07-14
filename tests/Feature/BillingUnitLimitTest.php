@@ -21,7 +21,7 @@ class BillingUnitLimitTest extends TestCase
         $user = User::factory()->for($tenant)->create();
         $location = Location::factory()->for($tenant)->create();
 
-        Unit::factory()->count(25)->for($location)->for($tenant)->create();
+        Unit::factory()->count(10)->for($location)->for($tenant)->create();
 
         $this->actingAs($user);
 
@@ -40,16 +40,16 @@ class BillingUnitLimitTest extends TestCase
         $user = User::factory()->for($tenant)->create();
         $location = Location::factory()->for($tenant)->create();
 
-        Unit::factory()->count(24)->for($location)->for($tenant)->create();
+        Unit::factory()->count(9)->for($location)->for($tenant)->create();
 
         $this->actingAs($user);
 
         $unit = app(CreateUnitAction::class)->handle($location, [
-            'name' => 'Unit 25',
+            'name' => 'Unit 10',
             'type' => 'other',
         ], $tenant->id);
 
-        $this->assertSame('Unit 25', $unit->name);
-        $this->assertSame(25, Unit::query()->where('tenant_id', $tenant->id)->count());
+        $this->assertSame('Unit 10', $unit->name);
+        $this->assertSame(10, Unit::query()->where('tenant_id', $tenant->id)->count());
     }
 }

@@ -818,6 +818,7 @@ class Team extends Component
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
+            'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,
             'roles' => User::ROLES,
             'categories' => $categories,
         ]);

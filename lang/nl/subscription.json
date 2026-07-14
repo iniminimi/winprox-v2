@@ -1,52 +1,45 @@
 {
-    "title": "Abonnement, limieten & betaling",
+    "title": "Abonnement, limieten & facturatie",
     "public_title": "Prijzen & formules",
-    "public_subtitle": "Overzicht van WinProx Facility, WinProx Time en optionele modules. Eén maand gratis proberen, daarna kies je een formule.",
-    "public_register_cta": "Gratis proberen",
-    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten en gebruikers; details in de FAQ.",
-    "plans_heading": "Beschikbare formules",
-    "choose_plan": "Kies dit plan",
+    "public_subtitle": "Drie duidelijke formules voor tijdregistratie, facilitybeheer en enterprise-portefeuilles. Eén maand gratis proberen.",
+    "public_register_cta": "Start gratis proefperiode",
+    "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten, foto's en gebruikers.",
+    "plans_heading": "Formules",
+    "plans_intro": "WinProx Time richt zich op aanwezigheid. WinProx Facility voegt volledige QR-facility workflows toe met Time inbegrepen. WinProx Corporate voegt ESG, API-toegang en onbeperkte schaal toe.",
+    "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
-    "activate_plan": "Kies dit plan",
-    "current_plan": "Huidig plan",
-    "admin_required": "Enkel een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
-    "activated": "Je koos :plan. Je abonnement is geactiveerd voor de geconfigureerde periode.",
-    "enterprise_hint": "Volledige ontzorging voor grote site-operators en complexe portefeuilles. Neem contact op voor maatwerk.",
-    "enterprise_cta": "Contact opnemen",
-    "enterprise_mail_subject": "WinProx Enterprise - offerte aanvraag",
-    "enterprise_contact": "Neem contact op via :email voor een offerte op maat.",
+    "activate_plan": "Kies deze formule",
+    "current_plan": "Huidige formule",
+    "admin_required": "Alleen een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
+    "activated": "Je koos :plan. Je abonnement is actief voor de geconfigureerde periode.",
+    "facility_not_included": "Meldingen, taken en kalender vereisen WinProx Facility of Corporate. Upgrade je formule om facility-workflows te ontgrendelen.",
     "status_heading": "Huidige status",
-    "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (bestaand account). Alle functies blijven beschikbaar.",
+    "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (legacy-account). Alle functies blijven beschikbaar.",
     "status_trial": "Proefperiode met :plan actief tot :date.",
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
-    "status_grace": "Abonnement :plan afgelopen op :ended. Nalichtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng tijdig om onderbreking te vermijden.",
-    "status_expired": "Je proefperiode is afgelopen. Kies hieronder een plan om verder te gaan.",
-    "pricing_intro": "WinProx is 1 maand gratis te testen. Daarna kies je een formule op basis van het aantal units op je locaties (machines, zones of ruimtes). Optionele modules en WinProx Time staan hieronder.",
-    "facility_heading": "WinProx Facility",
-    "facility_intro": "Formules op basis van units en teamplaatsen. Micro is facility-only; grotere formules schalen mee met uw organisatie.",
-    "modules_heading": "Optionele modules",
-    "modules_intro": "Uitbreidingen op WinProx Facility (Pro of Business). Maandelijkse toeslag boven op uw formule; activering via WinProx.",
-    "module_active": "Actief",
-    "module_contact_cta": "Module aanvragen",
-    "status_module_esg": "ESG-module actief op uw account.",
-    "status_module_time": "Time-module actief op uw account.",
+    "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
+    "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
+    "pricing_intro": "WinProx bevat een gratis proefmaand met facility- en time-functies. Daarna kies je de formule die bij je organisatie past.",
+    "status_module_esg": "ESG-module actief op je account.",
+    "status_module_time": "Time-module actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
-    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Nieuwe locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
-    "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule (1 beheerder plus maximaal :max medewerkers). \"Medewerker toevoegen\" is uitgeschakeld tot je upgradet.",
-    "page_limits_documents_body": "Uw organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade uw plan om meer te uploaden.",
+    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
+    "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule. \"Gebruiker toevoegen\" is uitgeschakeld tot je upgradet.",
+    "page_limits_documents_body": "Je organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade je formule om meer te uploaden.",
+    "page_limits_photos_body": "Je organisatie gebruikt :current van :max foto's. Verwijder foto's of upgrade je formule om meer te uploaden.",
     "manage_in_stripe": "Abonnement beheren (factuur, betaalmethode)",
-    "legal_footer_intro": "Op je account zijn onder meer van toepassing:",
+    "legal_footer_intro": "Je account valt onder o.a.:",
     "legal_terms": "Algemene voorwaarden",
     "legal_privacy": "Privacy",
-    "legal_dpa": "DPA",
+    "legal_dpa": "Verwerkersovereenkomst",
     "status": {
         "title": "Status",
         "access": "App-toegang",
         "access_ok": "Actief",
         "access_blocked": "Geblokkeerd",
         "trial": "Proefperiode",
-        "trial_days": ":days dagen resterend",
-        "plan": "Plan",
+        "trial_days": "Nog :days dagen",
+        "plan": "Formule",
         "active_until": "Geldig tot",
         "usage": "Gebruik",
         "usage_counts": ":units units · :users gebruikers"
@@ -55,111 +48,62 @@
         "units": ":count units",
         "users": ":count gebruikers",
         "unlimited": "onbeperkt",
-        "warning_units": "Je hebt nog :remaining unit-slots over in je plan.",
-        "critical_units": "Je unit-limiet is bereikt. Upgrade je plan om meer units toe te voegen.",
-        "warning_users": "Je hebt nog :remaining gebruikersslots over in je plan.",
-        "critical_users": "Je gebruikerslimiet is bereikt. Upgrade je plan om meer collega's uit te nodigen.",
+        "warning_units": "Je hebt nog :remaining unitplaatsen op je formule.",
+        "critical_units": "Je unitlimiet is bereikt. Upgrade je formule om meer units toe te voegen.",
+        "warning_users": "Je hebt nog :remaining gebruikersplaatsen op je formule.",
+        "critical_users": "Je gebruikerslimiet is bereikt. Upgrade je formule om meer collega's uit te nodigen.",
         "cta": "Bekijk abonnement"
     },
     "plans": {
         "trial": {
             "name": "Proefperiode"
         },
-        "micro": {
-            "name": "Micro",
-            "price": "€99 / jaar",
+        "time": {
+            "name": "WinProx Time",
+            "price": "€149 / maand",
             "units": "Tot 10 units/ruimtes",
             "users": "Inclusief 1 beheerder en 1 medewerker",
-            "announcements": "Tot 2 mededelingen per unit",
-            "documents": "Tot 2 documenten per unit · max. 10 voor uw organisatie",
-            "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
+            "documents": "Tot 10 documenten voor je organisatie",
+            "photos": "Tot 10 foto's voor je organisatie",
+            "description": "In- en uitklokken, pauzes, shifts en QR Clock Points. CSV-import alleen voor workers.",
+            "features": ["Time-module inbegrepen", "CSV worker-import", "Geen facility-meldingen/taken", "Geen API-toegang"]
         },
-        "starter": {
-            "name": "Starter",
-            "price": "€29 / maand",
-            "units": "Tot 25 units/ruimtes",
-            "users": "Inclusief 1 beheerder en 2 medewerkers",
-            "announcements": "Tot 4 mededelingen per unit",
-            "documents": "Tot 4 documenten per unit · max. 20 voor uw organisatie",
-            "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
-        },
-        "pro": {
-            "name": "Pro",
-            "price": "€59 / maand",
+        "facility": {
+            "name": "WinProx Facility",
+            "price": "€399 / maand",
             "units": "Tot 100 units/ruimtes",
-            "users": "Inclusief 1 beheerder en 5 medewerkers",
-            "announcements": "Tot 10 mededelingen per unit",
-            "documents": "Tot 6 documenten per unit · max. 40 voor uw organisatie",
-            "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
+            "users": "Inclusief 1 beheerder en tot 4 medewerkers",
+            "documents": "Tot 100 documenten voor je organisatie",
+            "photos": "Tot 100 foto's voor je organisatie",
+            "description": "Volledige facility-workflows met documentbeheer. WinProx Time inbegrepen. CSV bulk-import voor units en workers.",
+            "features": ["Facility + Time inbegrepen", "CSV units & workers", "QR-meldingen & taken", "Geen API-toegang"]
         },
-        "business": {
-            "name": "Business",
-            "price": "€99 / maand",
-            "units": "Tot 300 units/ruimtes",
-            "users": "Inclusief 1 beheerder en 15 medewerkers",
-            "announcements": "Tot 20 mededelingen per unit",
-            "documents": "Tot 8 documenten per unit · max. 80 voor uw organisatie",
-            "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks.",
-            "features": ["API-toegang", "Webhooks"]
-        },
-        "enterprise": {
-            "name": "Enterprise",
-            "price": "Op maat",
-            "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
-            "users": "",
-            "announcements": "Onbeperkt mededelingen per unit",
-            "documents": "Onbeperkt documenten voor uw organisatie",
-            "description": "Inclusief API-toegang, webhooks en maatwerk.",
-            "features": ["API-toegang", "Webhooks", "Maatwerk"]
-        }
-    },
-    "modules": {
-        "esg": {
-            "name": "ESG-module",
-            "pricing_caption": "Maandelijkse toeslag per Facility-formule",
-            "pricing": {
-                "pro": "+ €59 / maand",
-                "business": "+ €99 / maand"
-            },
-            "description": "Metingen, indicatoren en ESG-rapportage voor uw organisatie.",
-            "bullets": ["Indicatoren & metingen", "ESG-portaal", "Compliance & rapportage"]
-        },
-        "time": {
-            "name": "Time-module",
-            "pricing_caption": "Maandelijkse toeslag per Facility-formule",
-            "pricing": {
-                "pro": "+ €59 / maand",
-                "business": "+ €99 / maand"
-            },
-            "description": "In- en uitklokken, pauzes en shifts naast uw facility-beheer.",
-            "bullets": ["Aanwezigheid", "Pauzes", "Shifts", "Clock Points"]
-        }
-    },
-    "products": {
-        "time": {
-            "heading": "WinProx Time",
-            "intro": "Alles-in-één voor urenregistratie met beperkte WinProx Facility inbegrepen.",
-            "name": "WinProx Time",
-            "price": "€59 / maand",
-            "includes": "WinProx Facility micro met Time-module inbegrepen.",
-            "description": "Instappakket wanneer tijdregistratie centraal staat.",
-            "bullets": ["In- en uitklokken", "Pauzes & shifts", "Clock Point QR", "Tot 10 units/ruimtes"],
-            "contact_cta": "WinProx Time aanvragen"
+        "corporate": {
+            "name": "WinProx Corporate",
+            "price": "€999 / maand",
+            "units": "Onbeperkt units/ruimtes",
+            "users": "Onbeperkt teamplaatsen",
+            "documents": "Onbeperkt documenten",
+            "photos": "Onbeperkt foto's",
+            "description": "Voor grote portefeuilles en integraties. ESG inbegrepen, API-toegang, webhooks en prioritaire support.",
+            "features": ["Facility + Time + ESG", "API & webhooks", "Onbeperkte schaal", "Prioritaire support"]
         }
     },
     "stripe": {
-        "activated": "Bedankt! Je betaling is ontvangen; je abonnement wordt zo dadelijk actief (even vernieuwen indien nodig).",
-        "not_configured": "Online betaling is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
+        "activated": "Bedankt! Je betaling is ontvangen; je abonnement wordt zo actief (ververs indien nodig).",
+        "not_configured": "Online betalen is nog niet geconfigureerd. Neem contact op met WinProx of probeer later opnieuw.",
         "simulated_hint": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
-        "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een plan kiezen.",
-        "return_unconfirmed": "We konden het betaalresultaat hier niet tonen. Als je net betaald hebt, wordt je status zo bijgewerkt — vernieuw de pagina."
+        "checkout_cancelled": "Checkout geannuleerd. Je kunt later opnieuw een formule kiezen.",
+        "return_unconfirmed": "We konden het betalingsresultaat hier niet bevestigen. Als je net betaald hebt, wordt je status zo bijgewerkt — ververs de pagina."
     },
-    "stripe_notice_live": "Betaling en verlenging lopen via Stripe. Enterprise blijft via persoonlijk contact.",
-    "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling). Voor Enterprise geldt altijd persoonlijk contact.",
+    "stripe_notice_live": "Betaling en verlenging verlopen via Stripe.",
+    "stripe_notice_simulated": "Stripe is niet volledig geconfigureerd: je keuze activeert de abonnementsperiode zoals hier ingesteld (zonder echte betaling).",
     "errors": {
-        "plan_required": "Kies een plan.",
-        "plan_invalid": "Dit plan is niet beschikbaar.",
-        "admin_only": "Enkel een beheerder kan een abonnement kiezen.",
-        "activation_disabled": "Zelf activeren is uitgeschakeld. Neem contact op met WinProx."
+        "plan_required": "Kies een formule.",
+        "plan_invalid": "Deze formule is niet beschikbaar.",
+        "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
+        "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
+        "csv_workers_not_allowed": "CSV worker-import is niet beschikbaar op je formule.",
+        "csv_units_not_allowed": "CSV unit-import vereist WinProx Facility of Corporate."
     }
 }
