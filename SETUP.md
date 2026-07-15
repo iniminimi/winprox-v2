@@ -88,6 +88,10 @@ Na CSS/JS-wijzigingen: opnieuw `npm run build`. Bij twijfel in de browser: harde
 
 **Commit nooit** `.env` of secrets.
 
+Na deploy op de server: `./pull-deploy.sh` (geen `npm run build` op productie — assets komen uit git).
+
+Zie **`pull-deploy.sh`**: shallow fetch + rsync, `.git`/packs blijven niet op de server staan.
+
 ## Dagelijks werken (meerdere laptops)
 
 **Start van de dag:**

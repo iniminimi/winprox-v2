@@ -31,7 +31,7 @@ Op gedeelde hosting draait **geen** permanente `queue:work`-daemon.
    een `delay` heeft, en worden bij de volgende cron-tick meerdere mails in een korte burst
    verstuurd (±3 s tussen jobs i.p.v. de ingestelde vertraging).
 
-Na `git pull` op de server: `php artisan config:clear`.
+Na deploy op de server: `./pull-deploy.sh` en `php artisan config:clear` indien nodig.
 
 ## Controleren
 
