@@ -72,20 +72,35 @@
             text-align: center;
             font-weight: bold;
             font-size: 18px;
-            padding: 8px;
+            padding: 12px 10px;
             border: 4px outset #ffff00;
             margin: 10px 0;
             text-shadow: 1px 1px 2px #fff;
         }
+        .construction-gif {
+            display: block;
+            margin: 0 auto 10px;
+            width: min(100%, 480px);
+            height: auto;
+            border: 3px outset #c0c0c0;
+            image-rendering: auto;
+        }
+        .construction-text {
+            margin: 0;
+            line-height: 1.35;
+        }
 
         .banner-wrap {
             text-align: center;
-            margin: 8px 0 12px;
+            margin: 10px 0 14px;
         }
         .banner-wrap img {
+            display: block;
+            margin: 0 auto;
+            width: min(100%, 980px);
             max-width: 100%;
             height: auto;
-            border: 2px inset #808080;
+            border: 3px inset #808080;
         }
 
         table.layout {
@@ -266,7 +281,9 @@
 
 @if ($bannerUrl)
     <div class="banner-wrap">
-        <img src="{{ $bannerUrl }}" alt="WinProx banner 1995" width="468" height="60">
+        <a href="{{ route('register') }}">
+            <img src="{{ $bannerUrl }}" alt="WinProx banner 1995 — Klik hier!">
+        </a>
     </div>
 @endif
 
@@ -279,12 +296,9 @@
 
 <div class="construction">
     @if ($constructionUrl)
-        <img src="{{ $constructionUrl }}" alt="Under construction" width="40" height="40" style="vertical-align:middle;">
+        <img class="construction-gif" src="{{ $constructionUrl }}" alt="Under construction">
     @endif
-    DEZE WEBSITE IS PERMANENT IN AANBOUW — KOM SNEL TERUG VOOR MEER UPDATES!
-    @if ($constructionUrl)
-        <img src="{{ $constructionUrl }}" alt="" width="40" height="40" style="vertical-align:middle;">
-    @endif
+    <p class="construction-text">DEZE WEBSITE IS PERMANENT IN AANBOUW — KOM SNEL TERUG VOOR MEER UPDATES!</p>
 </div>
 
 <table class="layout" cellspacing="0" cellpadding="0">
