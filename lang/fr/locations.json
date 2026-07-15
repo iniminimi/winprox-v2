@@ -210,6 +210,7 @@
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",
         "country_code_invalid": "Saisissez un code pays ISO valide à 2 lettres.",
         "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
+        "location_limit": "La limite de sites de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "translation_import_missing": "Site introuvable ou inactif.",
         "translation_import_name_too_long": "Le nom de site traduit est trop long."
     },

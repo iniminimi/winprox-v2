@@ -5,7 +5,8 @@
     "public_register_cta": "Inizia prova gratuita",
     "subtitle": "Dopo il mese gratuito, scegli un piano. I limiti si applicano per organizzazione su unità, documenti, foto e utenti.",
     "plans_heading": "Piani",
-    "plans_intro": "WinProx Time si concentra sulle presenze. WinProx Facility aggiunge i flussi facility QR con Time incluso. WinProx Corporate aggiunge ESG, API e scala illimitata.",
+    "plans_intro": "WinProx Time è il piano compatto per piccole organizzazioni. WinProx Facility scala a 100 sedi e unità. WinProx Corporate aggiunge ESG, API e scala illimitata.",
+    "page_limits_locations_body": "Stai usando :current di :max sedi. \"Aggiungi sede\" resta disabilitato fino all'upgrade.",
     "choose_plan": "Scegli questo piano",
     "choose_plan_loading": "Scelta in corso...",
     "activate_plan": "Scegli questo piano",
@@ -59,30 +60,24 @@
         "time": {
             "name": "WinProx Time",
             "price": "€149 / mese",
-            "units": "Fino a 10 unità/spazi",
-            "users": "1 amministratore e 1 collaboratore inclusi",
-            "documents": "Fino a 10 documenti per la tua organizzazione",
-            "photos": "Fino a 10 foto per la tua organizzazione",
-            "description": "Timbrature, pause, turni e QR Clock Points. Import CSV solo lavoratori.",
-            "features": ["Modulo Time incluso", "Import CSV lavoratori", "Nessuna segnalazione facility", "Nessun accesso API"]
+            "scale": "Fino a 10 unità/sedi/documenti/foto per la tua organizzazione",
+            "users": "1 amministratore e 1 collaboratore inclusi. Lavoratori illimitati via import CSV.",
+            "description": "Segnalazioni e attività QR illimitate nelle tue sedi e unità.",
+            "features": ["Modulo Time: timbrature, pause, turni e QR Clock Points", "Nessun accesso API"]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / mese",
-            "units": "Fino a 100 unità/spazi",
-            "users": "1 amministratore e fino a 4 collaboratori",
-            "documents": "Fino a 100 documenti per la tua organizzazione",
-            "photos": "Fino a 100 foto per la tua organizzazione",
-            "description": "Flussi facility completi con gestione documenti. WinProx Time incluso. Import CSV massivo.",
-            "features": ["Facility + Time inclusi", "CSV unità e lavoratori", "Segnalazioni e attività QR", "Nessun accesso API"]
+            "scale": "Fino a 100 unità/sedi/documenti/foto per la tua organizzazione",
+            "users": "1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV.",
+            "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import CSV massivo.",
+            "features": ["Segnalazioni e attività illimitate", "CSV unità e lavoratori", "Nessun accesso API"]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / mese",
-            "units": "Unità/spazi illimitati",
-            "users": "Posti team illimitati",
-            "documents": "Documenti illimitati",
-            "photos": "Foto illimitate",
+            "scale": "Unità/sedi/documenti/foto illimitati",
+            "users": "Posti team e lavoratori illimitati",
             "description": "Per grandi portafogli e integrazioni. ESG incluso, API, webhook e supporto prioritario.",
             "features": ["Facility + Time + ESG", "API e webhook", "Scala illimitata", "Supporto prioritario"]
         }

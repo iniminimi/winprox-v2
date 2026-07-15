@@ -27,6 +27,7 @@ use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Tenancy;
 use App\Support\Units\ImportBatchRegistry;
 use Illuminate\Support\Facades\Schema;
+use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
@@ -143,7 +144,17 @@ class Index extends Component
             $this->authorize('create', Location::class);
             $validated = StoreLocationRequest::validatePayload($payload);
             $validated['original_language'] = auth()->user()?->locale;
-            $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
+            try {
+                $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
+            } catch (InvalidArgumentException $e) {
+                if ($e->getMessage() === 'location_limit_exceeded') {
+                    $this->addError('locationFormName', __('locations.errors.location_limit'));
+
+                    return;
+                }
+
+                throw $e;
+            }
             session()->flash('success', __('locations.flash.created'));
         } else {
             $location = Location::findOrFail($this->editingLocationId);

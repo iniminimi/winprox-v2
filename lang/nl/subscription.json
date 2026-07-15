@@ -5,7 +5,7 @@
     "public_register_cta": "Start gratis proefperiode",
     "subtitle": "Na je gratis maand kies je een formule. Limieten gelden per organisatie voor units, documenten, foto's en gebruikers.",
     "plans_heading": "Formules",
-    "plans_intro": "WinProx Time richt zich op aanwezigheid. WinProx Facility voegt volledige QR-facility workflows toe met Time inbegrepen. WinProx Corporate voegt ESG, API-toegang en onbeperkte schaal toe.",
+    "plans_intro": "WinProx Time is het compacte pakket voor kleine organisaties. WinProx Facility schaalt naar 100 locaties en units. WinProx Corporate voegt ESG, API en onbeperkte schaal toe.",
     "choose_plan": "Kies deze formule",
     "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies deze formule",
@@ -23,7 +23,8 @@
     "status_module_esg": "ESG-module actief op je account.",
     "status_module_time": "Time-module actief op je account.",
     "page_limits_title": "Waarom bepaalde acties niet beschikbaar zijn",
-    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" en \"Locatie toevoegen\" blijven uitgeschakeld tot je upgradet.",
+    "page_limits_units_body": "Je gebruikt :current van :max units. \"Unit toevoegen\" blijft uitgeschakeld tot je upgradet.",
+    "page_limits_locations_body": "Je gebruikt :current van :max locaties. \"Locatie toevoegen\" blijft uitgeschakeld tot je upgradet.",
     "page_limits_users_body": "Je gebruikt :current van :max teamplaatsen op je formule. \"Gebruiker toevoegen\" is uitgeschakeld tot je upgradet.",
     "page_limits_documents_body": "Je organisatie gebruikt :current van :max documenten. Verwijder een document of upgrade je formule om meer te uploaden.",
     "page_limits_photos_body": "Je organisatie gebruikt :current van :max foto's. Verwijder foto's of upgrade je formule om meer te uploaden.",
@@ -61,30 +62,31 @@
         "time": {
             "name": "WinProx Time",
             "price": "€149 / maand",
-            "units": "Tot 10 units/ruimtes",
-            "users": "Inclusief 1 beheerder en 1 medewerker",
-            "documents": "Tot 10 documenten voor je organisatie",
-            "photos": "Tot 10 foto's voor je organisatie",
-            "description": "In- en uitklokken, pauzes, shifts en QR Clock Points. CSV-import alleen voor workers.",
-            "features": ["Time-module inbegrepen", "CSV worker-import", "Geen facility-meldingen/taken", "Geen API-toegang"]
+            "scale": "Tot 10 units/locaties/documenten/foto's voor je organisatie",
+            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV-import.",
+            "description": "QR-meldingen en taken onbeperkt binnen je locaties en units.",
+            "features": [
+                "Time-module: in- en uitklokken, pauzes, shifts en QR Clock Points",
+                "Geen API-toegang"
+            ]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / maand",
-            "units": "Tot 100 units/ruimtes",
-            "users": "Inclusief 1 beheerder en tot 4 medewerkers",
-            "documents": "Tot 100 documenten voor je organisatie",
-            "photos": "Tot 100 foto's voor je organisatie",
-            "description": "Volledige facility-workflows met documentbeheer. WinProx Time inbegrepen. CSV bulk-import voor units en workers.",
-            "features": ["Facility + Time inbegrepen", "CSV units & workers", "QR-meldingen & taken", "Geen API-toegang"]
+            "scale": "Tot 100 units/locaties/documenten/foto's voor je organisatie",
+            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV-import.",
+            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV bulk-import voor units en workers.",
+            "features": [
+                "QR-meldingen en taken onbeperkt binnen je locaties en units",
+                "CSV units & workers",
+                "Geen API-toegang"
+            ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / maand",
-            "units": "Onbeperkt units/ruimtes",
-            "users": "Onbeperkt teamplaatsen",
-            "documents": "Onbeperkt documenten",
-            "photos": "Onbeperkt foto's",
+            "scale": "Onbeperkt units/locaties/documenten/foto's",
+            "users": "Onbeperkt teamplaatsen en uitvoerders",
             "description": "Voor grote portefeuilles en integraties. ESG inbegrepen, API-toegang, webhooks en prioritaire support.",
             "features": ["Facility + Time + ESG", "API & webhooks", "Onbeperkte schaal", "Prioritaire support"]
         }

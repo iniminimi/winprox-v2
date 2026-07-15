@@ -189,20 +189,18 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
         Route::get('/health', Health::class)->name('health.index');
 
-        Route::middleware('facility.access')->group(function () {
-            Route::get('/issues', IssueIndex::class)->name('issues.index');
-            Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');
-            Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
+        Route::get('/issues', IssueIndex::class)->name('issues.index');
+        Route::get('/issues/create', fn () => redirect()->route('issues.index', ['create' => 1]))->name('issues.create');
+        Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
-            Route::get('/tasks', TaskIndex::class)->name('tasks.index');
-            Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
-            Route::get('/calendar', Calendar::class)->name('calendar.index');
-        });
         Route::get('/locations', LocationIndex::class)->name('locations.index');
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
         Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
         Route::get('/briefing/print', BriefingPrintController::class)->name('briefing.print');
+        Route::get('/tasks', TaskIndex::class)->name('tasks.index');
+        Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
+        Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');

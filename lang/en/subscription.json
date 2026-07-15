@@ -5,7 +5,7 @@
     "public_register_cta": "Start free trial",
     "subtitle": "After your free month, choose a plan. Limits apply per organisation for units, documents, photos and users.",
     "plans_heading": "Plans",
-    "plans_intro": "WinProx Time focuses on attendance. WinProx Facility adds full QR facility workflows with Time included. WinProx Corporate adds ESG, API access and unlimited scale.",
+    "plans_intro": "WinProx Time is the compact plan for small organisations. WinProx Facility scales to 100 locations and units. WinProx Corporate adds ESG, API and unlimited scale.",
     "choose_plan": "Choose this plan",
     "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",
@@ -23,7 +23,8 @@
     "status_module_esg": "ESG module active on your account.",
     "status_module_time": "Time module active on your account.",
     "page_limits_title": "Why certain actions are unavailable",
-    "page_limits_units_body": "You are using :current of :max units. \"Add unit\" and \"Add location\" stay disabled until you upgrade.",
+    "page_limits_units_body": "You are using :current of :max units. \"Add unit\" stays disabled until you upgrade.",
+    "page_limits_locations_body": "You are using :current of :max locations. \"Add location\" stays disabled until you upgrade.",
     "page_limits_users_body": "You are using :current of :max team seats on your plan. \"Add user\" is disabled until you upgrade.",
     "page_limits_documents_body": "Your organisation is using :current of :max documents. Delete a document or upgrade your plan to upload more.",
     "page_limits_photos_body": "Your organisation is using :current of :max photos. Delete photos or upgrade your plan to upload more.",
@@ -61,30 +62,31 @@
         "time": {
             "name": "WinProx Time",
             "price": "€149 / month",
-            "units": "Up to 10 units/spaces",
-            "users": "Includes 1 administrator and 1 staff member",
-            "documents": "Up to 10 documents for your organisation",
-            "photos": "Up to 10 photos for your organisation",
-            "description": "Clocking, breaks, shifts and QR Clock Points. CSV import for workers only.",
-            "features": ["Time module included", "CSV worker import", "No facility issues/tasks", "No API access"]
+            "scale": "Up to 10 units/locations/documents/photos for your organisation",
+            "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV import.",
+            "description": "Unlimited QR issues and tasks within your locations and units.",
+            "features": [
+                "Time module: clock in/out, breaks, shifts and QR Clock Points",
+                "No API access"
+            ]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / month",
-            "units": "Up to 100 units/spaces",
-            "users": "Includes 1 administrator and up to 4 staff members",
-            "documents": "Up to 100 documents for your organisation",
-            "photos": "Up to 100 photos for your organisation",
-            "description": "Full facility workflows with document management. WinProx Time included. CSV bulk import for units and workers.",
-            "features": ["Facility + Time included", "CSV units & workers", "QR issues & tasks", "No API access"]
+            "scale": "Up to 100 units/locations/documents/photos for your organisation",
+            "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV import.",
+            "description": "Full facility workflows at larger scale. WinProx Time included. CSV bulk import for units and workers.",
+            "features": [
+                "Unlimited QR issues and tasks within your locations and units",
+                "CSV units & workers",
+                "No API access"
+            ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / month",
-            "units": "Unlimited units/spaces",
-            "users": "Unlimited team seats",
-            "documents": "Unlimited documents",
-            "photos": "Unlimited photos",
+            "scale": "Unlimited units/locations/documents/photos",
+            "users": "Unlimited team seats and workers",
             "description": "For large portfolios and integrations. ESG included, API access, webhooks and priority support.",
             "features": ["Facility + Time + ESG", "API & webhooks", "Unlimited scale", "Priority support"]
         }

@@ -4,6 +4,7 @@ namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureLocationTranslationSlotsAction;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Str;
@@ -20,6 +21,8 @@ class CreateLocationAction
      */
     public function handle(array $data, int $tenantId, ?int $actorUserId = null): Location
     {
+        Tenant::query()->findOrFail($tenantId)->assertCanAddLocations(1);
+
         $name = trim((string) ($data['name'] ?? ''));
         if ($name === '') {
             $name = trim((string) ($data['street'] ?? '')) ?: __('locations.default_name');

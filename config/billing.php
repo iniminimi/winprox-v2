@@ -17,6 +17,7 @@ return [
 
     'trial' => [
         'units_limit' => 10,
+        'locations_limit' => 10,
         'users_limit' => 2,
         'documents_org_limit' => 10,
         'photos_org_limit' => 10,
@@ -34,12 +35,13 @@ return [
         'time' => [
             'label_key' => 'subscription.plans.time.name',
             'units_limit' => 10,
+            'locations_limit' => 10,
             'users_limit' => 2,
             'documents_org_limit' => 10,
             'photos_org_limit' => 10,
             'documents_per_unit' => null,
             'announcements_per_unit' => null,
-            'includes_facility' => false,
+            'includes_facility' => true,
             'time_module' => true,
             'esg_module' => false,
             'api_access' => false,
@@ -51,6 +53,7 @@ return [
         'facility' => [
             'label_key' => 'subscription.plans.facility.name',
             'units_limit' => 100,
+            'locations_limit' => 100,
             'users_limit' => 5,
             'documents_org_limit' => 100,
             'photos_org_limit' => 100,
@@ -68,6 +71,7 @@ return [
         'corporate' => [
             'label_key' => 'subscription.plans.corporate.name',
             'units_limit' => null,
+            'locations_limit' => null,
             'users_limit' => null,
             'documents_org_limit' => null,
             'photos_org_limit' => null,

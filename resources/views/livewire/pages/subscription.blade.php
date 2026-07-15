@@ -101,9 +101,13 @@
             @if (! $tenant->isLegacyWithoutBillingTracking())
                 @php
                     $limitMaxUnits = $tenant->maxUnitsLimit();
+                    $limitMaxLocations = $tenant->maxLocationsLimit();
                     $limitMaxUsers = $tenant->maxUsersLimit();
                     $limitShowUnits = $limitMaxUnits !== null
                         && $tenant->isAtUnitLimit()
+                        && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
+                    $limitShowLocations = $limitMaxLocations !== null
+                        && $tenant->isAtLocationLimit()
                         && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
                     $limitShowUsers = $limitMaxUsers !== null
                         && ! $tenant->canAddUser()
@@ -117,10 +121,13 @@
                         && $tenant->isAtPhotosOrgLimit()
                         && in_array($billingStatus, ['trial', 'paid', 'grace'], true);
                 @endphp
-                @if ($limitShowUnits || $limitShowUsers || $limitShowDocuments || $limitShowPhotos)
+                @if ($limitShowUnits || $limitShowLocations || $limitShowUsers || $limitShowDocuments || $limitShowPhotos)
                     <div class="wp-flash wp-flash--muted">
                         <p class="wp-section-title">{{ __('subscription.page_limits_title') }}</p>
                         <ul class="wp-billing-status-list">
+                            @if ($limitShowLocations)
+                                <li>{{ __('subscription.page_limits_locations_body', ['max' => $limitMaxLocations, 'current' => $tenant->currentLocationsCount()]) }}</li>
+                            @endif
                             @if ($limitShowUnits)
                                 <li>{{ __('subscription.page_limits_units_body', ['max' => $limitMaxUnits, 'current' => $tenant->currentUnitsCount()]) }}</li>
                             @endif
@@ -164,9 +171,13 @@
                             <p class="wp-billing-plan-card-price">{{ __("subscription.plans.{$planKey}.price") }}</p>
                         </div>
                         <ul class="wp-billing-plan-card-meta">
-                            <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
-                            <li>{{ __("subscription.plans.{$planKey}.documents") }}</li>
-                            <li>{{ __("subscription.plans.{$planKey}.photos") }}</li>
+                            @if (__("subscription.plans.{$planKey}.scale") !== "subscription.plans.{$planKey}.scale")
+                                <li>{{ __("subscription.plans.{$planKey}.scale") }}</li>
+                            @else
+                                <li>{{ __("subscription.plans.{$planKey}.units") }}</li>
+                                <li>{{ __("subscription.plans.{$planKey}.documents") }}</li>
+                                <li>{{ __("subscription.plans.{$planKey}.photos") }}</li>
+                            @endif
                             @if (__("subscription.plans.{$planKey}.users") !== "subscription.plans.{$planKey}.users")
                                 <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
                             @endif

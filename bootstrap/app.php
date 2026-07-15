@@ -5,7 +5,6 @@ use App\Support\ResolveAppLocale;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
-use App\Http\Middleware\EnsureFacilityAccess;
 use App\Http\Middleware\EnsureTenantHasAppAccess;
 use App\Http\Middleware\RequireSupportTenantForSuperuser;
 use App\Http\Middleware\SetLocale;
@@ -37,7 +36,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'superuser' => EnsureSuperuser::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
             'api.access' => CheckApiAccess::class,
-            'facility.access' => EnsureFacilityAccess::class,
             'idempotency' => EnsureRequestIdempotency::class,
         ]);
 

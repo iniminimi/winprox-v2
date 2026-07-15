@@ -210,6 +210,7 @@
         "name_or_address_required": "Inserisca un nome sede, oppure compili via, CAP e città.",
         "country_code_invalid": "Inserisca un codice paese ISO a 2 lettere valido.",
         "unit_limit": "Ha raggiunto il limite unità del Suo piano. Aggiorni l'abbonamento per aggiungere altre unità.",
+        "location_limit": "Ha raggiunto il limite sedi del Suo piano. Aggiorni l'abbonamento per aggiungere altre sedi.",
         "translation_import_missing": "Sede non trovata o non attiva.",
         "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo."
     },

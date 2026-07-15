@@ -210,6 +210,7 @@
         "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",
         "country_code_invalid": "Geef een geldige ISO-landcode van 2 letters op.",
         "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen.",
+        "location_limit": "Je planlimiet voor locaties is bereikt. Upgrade je abonnement om meer locaties toe te voegen.",
         "translation_import_missing": "Locatie niet gevonden of niet actief.",
         "translation_import_name_too_long": "De vertaalde locatienaam is te lang."
     },

@@ -166,21 +166,6 @@ class Tenant extends Model
         return $this->billing_plan === 'corporate';
     }
 
-    public function hasFacilityAccess(): bool
-    {
-        if (! $this->hasFullAppAccess()) {
-            return false;
-        }
-
-        if ($this->isLegacyWithoutBillingTracking()) {
-            return true;
-        }
-
-        $config = $this->planConfig();
-
-        return $config !== null && (bool) ($config['includes_facility'] ?? true);
-    }
-
     public function hasCsvWorkersImport(): bool
     {
         return $this->planAllows('csv_workers_import');
@@ -481,6 +466,46 @@ class Tenant extends Model
         if ($count > $remaining) {
             throw new \InvalidArgumentException('unit_limit_exceeded');
         }
+    }
+
+    /** null = onbeperkt (legacy of corporate). */
+    public function maxLocationsLimit(): ?int
+    {
+        return $this->billingLimitValue('locations_limit');
+    }
+
+    public function currentLocationsCount(): int
+    {
+        return Location::query()->withoutGlobalScopes()->where('tenant_id', $this->id)->count();
+    }
+
+    public function remainingLocationSlots(): ?int
+    {
+        $max = $this->maxLocationsLimit();
+        if ($max === null) {
+            return null;
+        }
+
+        return max(0, $max - $this->currentLocationsCount());
+    }
+
+    public function assertCanAddLocations(int $count): void
+    {
+        $remaining = $this->remainingLocationSlots();
+        if ($remaining === null) {
+            return;
+        }
+
+        if ($count > $remaining) {
+            throw new \InvalidArgumentException('location_limit_exceeded');
+        }
+    }
+
+    public function isAtLocationLimit(): bool
+    {
+        $remaining = $this->remainingLocationSlots();
+
+        return $remaining !== null && $remaining === 0;
     }
 
     /** null = onbeperkt (legacy of enterprise). */

@@ -5,7 +5,8 @@
     "public_register_cta": "Iniciar prueba gratuita",
     "subtitle": "Tras el mes gratis, elija un plan. Los límites aplican por organización para unidades, documentos, fotos y usuarios.",
     "plans_heading": "Planes",
-    "plans_intro": "WinProx Time se centra en la asistencia. WinProx Facility añade flujos facility QR con Time incluido. WinProx Corporate añade ESG, API y escala ilimitada.",
+    "plans_intro": "WinProx Time es el plan compacto para organizaciones pequeñas. WinProx Facility escala a 100 ubicaciones y unidades. WinProx Corporate añade ESG, API y escala ilimitada.",
+    "page_limits_locations_body": "Usa :current de :max ubicaciones. \"Añadir ubicación\" permanece desactivado hasta actualizar.",
     "choose_plan": "Elegir este plan",
     "choose_plan_loading": "Eligiendo...",
     "activate_plan": "Elegir este plan",
@@ -59,30 +60,24 @@
         "time": {
             "name": "WinProx Time",
             "price": "149 € / mes",
-            "units": "Hasta 10 unidades/espacios",
-            "users": "1 administrador y 1 empleado incluidos",
-            "documents": "Hasta 10 documentos para su organización",
-            "photos": "Hasta 10 fotos para su organización",
-            "description": "Fichaje, pausas, turnos y QR Clock Points. Importación CSV solo de trabajadores.",
-            "features": ["Módulo Time incluido", "Importación CSV trabajadores", "Sin incidencias facility", "Sin acceso API"]
+            "scale": "Hasta 10 unidades/ubicaciones/documentos/fotos para su organización",
+            "users": "1 administrador y 1 empleado incluidos. Trabajadores ilimitados vía importación CSV.",
+            "description": "Incidencias y tareas QR ilimitadas dentro de sus ubicaciones y unidades.",
+            "features": ["Módulo Time: fichaje, pausas, turnos y QR Clock Points", "Sin acceso API"]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "399 € / mes",
-            "units": "Hasta 100 unidades/espacios",
-            "users": "1 administrador y hasta 4 empleados",
-            "documents": "Hasta 100 documentos para su organización",
-            "photos": "Hasta 100 fotos para su organización",
-            "description": "Flujos facility completos con gestión documental. WinProx Time incluido. Importación CSV masiva.",
-            "features": ["Facility + Time incluidos", "CSV unidades y trabajadores", "Incidencias y tareas QR", "Sin acceso API"]
+            "scale": "Hasta 100 unidades/ubicaciones/documentos/fotos para su organización",
+            "users": "1 administrador y hasta 4 empleados. Trabajadores ilimitados vía importación CSV.",
+            "description": "Flujos facility completos a mayor escala. WinProx Time incluido. Importación CSV masiva.",
+            "features": ["Incidencias y tareas ilimitadas", "CSV unidades y trabajadores", "Sin acceso API"]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "999 € / mes",
-            "units": "Unidades/espacios ilimitados",
-            "users": "Plazas de equipo ilimitadas",
-            "documents": "Documentos ilimitados",
-            "photos": "Fotos ilimitadas",
+            "scale": "Unidades/ubicaciones/documentos/fotos ilimitados",
+            "users": "Plazas de equipo y trabajadores ilimitados",
             "description": "Para grandes carteras e integraciones. ESG incluido, API, webhooks y soporte prioritario.",
             "features": ["Facility + Time + ESG", "API y webhooks", "Escala ilimitada", "Soporte prioritario"]
         }
