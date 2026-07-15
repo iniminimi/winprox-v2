@@ -67,27 +67,33 @@
         @keyframes blinker { 50% { opacity: 0; } }
 
         .construction {
-            background: repeating-linear-gradient(45deg, #ffff00, #ffff00 20px, #000000 20px, #000000 40px);
+            background: repeating-linear-gradient(45deg, #ffff00, #ffff00 12px, #000000 12px, #000000 24px);
             color: #ff0000;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
-            padding: 12px 10px;
-            border: 4px outset #ffff00;
+            font-size: 14px;
+            padding: 6px 8px;
+            border: 3px outset #ffff00;
             margin: 10px 0;
-            text-shadow: 1px 1px 2px #fff;
+            text-shadow: 1px 1px 1px #fff;
         }
         .construction-gif {
             display: block;
-            margin: 0 auto 10px;
-            width: min(100%, 480px);
+            margin: 0 auto 4px;
+            width: min(100%, 220px);
             height: auto;
-            border: 3px outset #c0c0c0;
-            image-rendering: auto;
+            border: 2px outset #c0c0c0;
         }
         .construction-text {
             margin: 0;
-            line-height: 1.35;
+            line-height: 1.3;
+        }
+
+        .email-gif {
+            width: 56px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 6px;
         }
 
         .banner-wrap {
@@ -408,7 +414,7 @@ WinProx guestbook daemon 0.9b — please try again after inserting disk 2 of 2.
         <h2> Contacteer Ons</h2>
         <p>
             @if ($emailGifUrl)
-                <img src="{{ $emailGifUrl }}" alt="" width="24" height="16" style="vertical-align:middle;">
+                <img class="email-gif" src="{{ $emailGifUrl }}" alt="">
             @endif
             Stuur een e-mail via
             <a class="email-link" href="{{ route('contact.index') }}">ons contactformulier (2026)</a>
