@@ -298,8 +298,8 @@
                     />
                 </div>
 
-                <div class="wp-welcome-trust-bento">
-                    <div class="wp-welcome-trust-bento__media wp-card">
+                <div class="wp-welcome-trust-stage">
+                    <div class="wp-welcome-trust-phone">
                         <p class="wp-welcome-trust-bento__label">{{ __('welcome.trust.video_title') }}</p>
                         @if ($welcomeVideoAvailable)
                             @include('partials.wp-locale-video', [
@@ -323,24 +323,22 @@
                         @endif
                     </div>
 
-                    <div class="wp-welcome-trust-bento__aside">
-                        <div class="wp-welcome-trust-lang wp-card">
-                            <h3 class="wp-welcome-h3">{{ __('welcome.trust.languages_title') }}</h3>
-                            <p class="wp-welcome-trust-lang__body">{{ __('welcome.trust.languages_body') }}</p>
-                            <ul class="wp-welcome-trust-lang__chips" aria-label="{{ __('welcome.trust.languages_title') }}">
-                                @foreach (__('welcome.trust.locale_chips') as $chip)
-                                    <li><span class="wp-welcome-trust-lang__chip notranslate" translate="no">{{ $chip }}</span></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-
-                    <ul class="wp-welcome-trust-chips">
-                        @foreach (__('welcome.trust.items') as $item)
-                            <li><span class="wp-welcome-trust-chip">{{ $item }}</span></li>
-                        @endforeach
-                    </ul>
+                    <aside class="wp-welcome-trust-lang wp-card">
+                        <h3 class="wp-welcome-h3">{{ __('welcome.trust.languages_title') }}</h3>
+                        <p class="wp-welcome-trust-lang__body">{{ __('welcome.trust.languages_body') }}</p>
+                        <ul class="wp-welcome-trust-lang__chips" aria-label="{{ __('welcome.trust.languages_title') }}">
+                            @foreach (__('welcome.trust.locale_chips') as $chip)
+                                <li><span class="wp-welcome-trust-lang__chip notranslate" translate="no">{{ $chip }}</span></li>
+                            @endforeach
+                        </ul>
+                    </aside>
                 </div>
+
+                <ul class="wp-welcome-trust-chips">
+                    @foreach (__('welcome.trust.items') as $item)
+                        <li><span class="wp-welcome-trust-chip">{{ $item }}</span></li>
+                    @endforeach
+                </ul>
             </div>
         </section>
 

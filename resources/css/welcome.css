@@ -1489,7 +1489,7 @@
     }
 }
 
-/* Trust section — bento layout */
+/* Trust section — portrait phone + compact language card */
 [data-theme='standard'] .wp-welcome-section--trust {
     background: linear-gradient(
         180deg,
@@ -1497,67 +1497,57 @@
         var(--wp-surface) 45%,
         var(--wp-bg) 100%
     );
+    padding-bottom: 5rem;
 }
 
 [data-theme='standard'] .wp-welcome-trust-head {
     margin-bottom: 2.5rem;
 }
 
-[data-theme='standard'] .wp-welcome-trust-bento {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-        'media'
-        'aside'
-        'chips';
-}
-
-@media (min-width: 64rem) {
-    [data-theme='standard'] .wp-welcome-trust-bento {
-        grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
-        grid-template-areas:
-            'media aside'
-            'chips chips';
-        gap: 1rem 1.25rem;
-        align-items: start;
-    }
-}
-
-[data-theme='standard'] .wp-welcome-trust-bento__media {
-    grid-area: media;
-    padding: 1.25rem;
+[data-theme='standard'] .wp-welcome-trust-stage {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
+    max-width: 52rem;
+    margin-inline: auto;
 }
 
-[data-theme='standard'] .wp-welcome-trust-bento__aside {
-    grid-area: aside;
-    display: grid;
-    gap: 1rem;
-    align-content: start;
+@media (min-width: 56rem) {
+    [data-theme='standard'] .wp-welcome-trust-stage {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+    }
+}
+
+[data-theme='standard'] .wp-welcome-trust-phone {
+    width: min(100%, 19.5rem);
+    flex-shrink: 0;
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__label {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--wp-text-muted);
-    align-self: stretch;
+    text-align: center;
 }
 
-[data-theme='standard'] .wp-welcome-trust-bento__media .wp-video {
+[data-theme='standard'] .wp-welcome-trust-phone .wp-video {
     width: 100%;
-    max-width: 21.25rem;
     margin-inline: auto;
-    border: none;
-    border-radius: var(--wp-radius);
+    border: 1px solid var(--wp-border);
+    border-radius: 1.25rem;
+    box-shadow: var(--wp-shadow-lg);
+    overflow: hidden;
+    background: var(--wp-surface);
 }
 
-[data-theme='standard'] .wp-welcome-trust-bento__media .wp-video-player {
+[data-theme='standard'] .wp-welcome-trust-phone .wp-video-player {
     width: 100%;
     max-height: none;
     aspect-ratio: 9 / 16;
@@ -1568,27 +1558,36 @@
 [data-theme='standard'] .wp-welcome-trust-bento__screenshot {
     margin: 0;
     width: 100%;
-    max-width: 21.25rem;
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__screenshot .wp-welcome-screenshot__img {
     width: 100%;
     height: auto;
-    border-radius: var(--wp-radius);
+    border-radius: 1.25rem;
+    box-shadow: var(--wp-shadow-lg);
 }
 
-[data-theme='standard'] .wp-welcome-trust-bento__media .wp-welcome-media-placeholder--video {
+[data-theme='standard'] .wp-welcome-trust-phone .wp-welcome-media-placeholder--video {
     margin-top: 0;
     width: 100%;
-    max-width: 21.25rem;
     aspect-ratio: 9 / 16;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 1.25rem;
 }
 
 [data-theme='standard'] .wp-welcome-trust-lang {
-    padding: 1.5rem;
+    width: min(100%, 22rem);
+    flex-shrink: 0;
+    padding: 1.5rem 1.75rem;
+    text-align: left;
+}
+
+@media (min-width: 56rem) {
+    [data-theme='standard'] .wp-welcome-trust-lang {
+        align-self: center;
+    }
 }
 
 [data-theme='standard'] .wp-welcome-trust-lang .wp-welcome-h3 {
@@ -1627,12 +1626,12 @@
 }
 
 [data-theme='standard'] .wp-welcome-trust-chips {
-    grid-area: chips;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    margin: 0.5rem 0 0;
+    max-width: 48rem;
+    margin: 2.5rem auto 0;
     padding: 0;
     list-style: none;
 }
