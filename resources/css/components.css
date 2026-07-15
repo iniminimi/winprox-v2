@@ -4506,12 +4506,8 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-time-presence-board__list {
     display: flex;
-    flex: 1 1 auto;
     flex-direction: column;
     gap: 0.65rem;
-    max-height: min(70vh, 42rem);
-    overflow-y: auto;
-    padding-right: 0.15rem;
 }
 
 .wp-time-presence-card {
