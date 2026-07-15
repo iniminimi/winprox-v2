@@ -81,6 +81,16 @@
             'showForceClose' => true,
             'staleHours' => $staleHours,
         ])
+    @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Board)
+        @include('partials.wp-time-presence-board', [
+            'teamBuckets' => $dashboard->teamBuckets,
+            'attentionItems' => $dashboard->attentionItems,
+            'statusFilter' => $statusFilter,
+            'boardLimit' => $boardLimit,
+            'teamPageSize' => $teamPageSize,
+            'showForceClose' => true,
+            'showTeam' => $teamFilter === null,
+        ])
     @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Cards)
         @include('partials.wp-time-presence-team-cards', [
             'teamBuckets' => $dashboard->teamBuckets,

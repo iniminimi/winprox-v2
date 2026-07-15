@@ -5,6 +5,13 @@
 <div class="wp-cluster wp-cluster--tight wp-time-presence-view-toggle" role="tablist" aria-label="{{ __('time.presence.view_modes') }}">
     <button type="button"
             role="tab"
+            wire:click="setViewMode('board')"
+            aria-selected="{{ $presenceView === TimePresenceViewMode::Board ? 'true' : 'false' }}"
+            @class(['btn btn--sm', $presenceView === TimePresenceViewMode::Board ? 'btn--primary' : 'btn--surface'])>
+        {{ __('time.presence.view.board') }}
+    </button>
+    <button type="button"
+            role="tab"
             wire:click="setViewMode('teams')"
             aria-selected="{{ $presenceView === TimePresenceViewMode::Teams ? 'true' : 'false' }}"
             @class(['btn btn--sm', $presenceView === TimePresenceViewMode::Teams ? 'btn--primary' : 'btn--surface'])>

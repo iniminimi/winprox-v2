@@ -45,7 +45,7 @@ it('laat een admin het time-aanwezigheidsscherm openen', function () {
         ->assertOk();
 });
 
-it('wisselt tussen teams-, teamkaarten- en locatie-weergave', function () {
+it('wisselt tussen board-, teams-, teamkaarten- en locatie-weergave', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
     $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Hoofdkantoor']);
@@ -61,6 +61,11 @@ it('wisselt tussen teams-, teamkaarten- en locatie-weergave', function () {
 
     Livewire::actingAs($admin)
         ->test(PresenceIndex::class)
+        ->assertSet('viewMode', 'board')
+        ->assertSee('wp-time-presence-board', false)
+        ->assertSee(__('time.presence.force_close'), false)
+        ->call('setViewMode', 'teams')
+        ->assertSet('viewMode', 'teams')
         ->assertSee('wp-time-presence-teams', false)
         ->call('setViewMode', 'cards')
         ->assertSet('viewMode', 'cards')

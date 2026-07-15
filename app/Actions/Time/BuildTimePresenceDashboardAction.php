@@ -26,6 +26,7 @@ class BuildTimePresenceDashboardAction
         ?string $search = null,
         TimePresenceStatusFilter $statusFilter = TimePresenceStatusFilter::All,
         array $expandedTeamIds = [],
+        bool $includeAbsentRoster = false,
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
@@ -110,6 +111,7 @@ class BuildTimePresenceDashboardAction
             $clockedInWorkerIds,
             $needle,
             $expandedTeamIds,
+            $includeAbsentRoster,
         ) {
             $teamActive = $active->where('internal_team_id', $team->id)->values();
             $teamBreak = $onBreak->where('internal_team_id', $team->id)->values();
@@ -118,7 +120,12 @@ class BuildTimePresenceDashboardAction
             )->count();
             $teamAbsentCount = (int) ($absentByTeam[$team->id] ?? 0);
             $isExpanded = in_array($team->id, $expandedTeamIds, true);
-            $loadAbsent = $isExpanded && $statusFilter === TimePresenceStatusFilter::Absent && $teamAbsentCount > 0;
+            $loadAbsent = $isExpanded
+                && $teamAbsentCount > 0
+                && (
+                    $statusFilter === TimePresenceStatusFilter::Absent
+                    || ($includeAbsentRoster && $statusFilter === TimePresenceStatusFilter::All)
+                );
 
             return new TimePresenceTeamBucket(
                 team: $team,

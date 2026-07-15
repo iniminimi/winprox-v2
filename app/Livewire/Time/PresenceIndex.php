@@ -37,7 +37,7 @@ class PresenceIndex extends Component
     public string $statusFilter = 'all';
 
     #[Url(as: 'view')]
-    public string $viewMode = 'teams';
+    public string $viewMode = 'board';
 
     #[Url]
     public string $search = '';
@@ -47,6 +47,8 @@ class PresenceIndex extends Component
 
     /** @var array<int, int> */
     public array $teamShiftLimits = [];
+
+    public int $boardLimit = 0;
 
     public function mount(): void
     {
@@ -61,11 +63,28 @@ class PresenceIndex extends Component
     {
         $this->expandedTeams = $value !== null ? [$value] : [];
         $this->teamShiftLimits = [];
+        $this->boardLimit = 0;
+    }
+
+    public function updatedLocationFilter(): void
+    {
+        $this->boardLimit = 0;
+    }
+
+    public function updatedClockPointFilter(): void
+    {
+        $this->boardLimit = 0;
+    }
+
+    public function updatedSearch(): void
+    {
+        $this->boardLimit = 0;
     }
 
     public function setStatusFilter(string $status): void
     {
         $this->statusFilter = $status;
+        $this->boardLimit = 0;
     }
 
     public function setViewMode(string $mode): void
@@ -73,6 +92,7 @@ class PresenceIndex extends Component
         $this->viewMode = TimePresenceViewMode::tryFromRequest($mode)->value;
         $this->expandedTeams = [];
         $this->teamShiftLimits = [];
+        $this->boardLimit = 0;
     }
 
     public function toggleTeam(int $teamId): void
@@ -109,9 +129,31 @@ class PresenceIndex extends Component
         $this->teamShiftLimits[$teamId] = $current + $pageSize;
     }
 
+    public function loadMoreBoard(): void
+    {
+        $pageSize = (int) config('time.presence_team_page_size', 50);
+        $this->boardLimit = ($this->boardLimit > 0 ? $this->boardLimit : $pageSize) + $pageSize;
+    }
+
     public function render(BuildTimePresenceDashboardAction $buildDashboard)
     {
         $tenantId = (int) Tenancy::id();
+        $viewMode = TimePresenceViewMode::tryFromRequest($this->viewMode);
+        $expandedTeamIds = $this->expandedTeams;
+        $includeAbsentRoster = false;
+
+        if ($viewMode === TimePresenceViewMode::Board) {
+            $expandedTeamIds = $this->teamFilter !== null
+                ? [$this->teamFilter]
+                : InternalTeam::query()
+                    ->where('is_active', true)
+                    ->orderBy('sort_order')
+                    ->orderBy('name')
+                    ->pluck('id')
+                    ->all();
+            $includeAbsentRoster = true;
+        }
+
         $dashboard = $buildDashboard->handle(
             $tenantId,
             $this->teamFilter,
@@ -119,7 +161,8 @@ class PresenceIndex extends Component
             $this->locationFilter,
             $this->search,
             TimePresenceStatusFilter::tryFromRequest($this->statusFilter),
-            $this->expandedTeams,
+            $expandedTeamIds,
+            $includeAbsentRoster,
         );
 
         return view('livewire.time.presence-index', [
@@ -130,6 +173,7 @@ class PresenceIndex extends Component
             'locations' => Location::query()->orderBy('name')->get(),
             'staleHours' => (int) config('time.stale_shift_hours', 16),
             'teamPageSize' => (int) config('time.presence_team_page_size', 50),
+            'boardLimit' => $this->boardLimit,
         ]);
     }
 }

@@ -19,6 +19,7 @@
         "not_clocked_in": "Niet ingeklokt",
         "not_clocked_in_subtitle": "Nog niet ingeklokt vandaag",
         "worked_so_far": "Gewerkt: :duration",
+        "hours_label": "Uren",
         "empty_section": "Niemand in deze groep.",
         "empty_not_clocked_in": "Iedereen met een open shift is ingeklokt.",
         "force_close": "Shift sluiten",
@@ -59,7 +60,10 @@
             "no_break": "Geen pauze na :hours uur"
         },
         "view_modes": "Weergave",
+        "board_absent_title": "Afwezig",
+        "attention_board_subtitle": "Open shifts die aandacht vragen",
         "view": {
+            "board": "Board",
             "teams": "Teams",
             "cards": "Teamkaarten",
             "locations": "Locaties"

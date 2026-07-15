@@ -19,6 +19,7 @@
         "not_clocked_in": "Niet ingeklokt",
         "not_clocked_in_subtitle": "Pas encore pointé aujourd'hui",
         "worked_so_far": "Travaillé : :duration",
+        "hours_label": "Heures",
         "empty_section": "Niemand in deze groep.",
         "empty_not_clocked_in": "Tous ceux avec un shift ouvert sont pointés.",
         "force_close": "Shift sluiten",
@@ -59,7 +60,10 @@
             "no_break": "Pas de pause après :hours heures"
         },
         "view_modes": "Affichage",
+        "board_absent_title": "Absent",
+        "attention_board_subtitle": "Shifts ouverts nécessitant une attention",
         "view": {
+            "board": "Board",
             "teams": "Équipes",
             "cards": "Cartes équipe",
             "locations": "Sites"

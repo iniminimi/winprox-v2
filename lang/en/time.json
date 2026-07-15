@@ -19,6 +19,7 @@
         "not_clocked_in": "Niet ingeklokt",
         "not_clocked_in_subtitle": "Not clocked in today",
         "worked_so_far": "Worked: :duration",
+        "hours_label": "Hours",
         "empty_section": "Niemand in deze groep.",
         "empty_not_clocked_in": "Everyone with an open shift is clocked in.",
         "force_close": "Shift sluiten",
@@ -59,7 +60,10 @@
             "no_break": "No break after :hours hours"
         },
         "view_modes": "View",
+        "board_absent_title": "Absent",
+        "attention_board_subtitle": "Open shifts that need attention",
         "view": {
+            "board": "Board",
             "teams": "Teams",
             "cards": "Team cards",
             "locations": "Locations"
