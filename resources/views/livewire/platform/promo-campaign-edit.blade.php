@@ -52,6 +52,11 @@
         <div class="wp-card wp-card-pad wp-stack">
             <p class="wp-subhead">{{ __('platform.promo_campaigns.letter_title') }}</p>
             <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.letter_lead') }}</p>
+            <label class="wp-cluster wp-text-sm">
+                <input type="checkbox" wire:model="attachLetterToEmail">
+                {{ __('platform.promo_campaigns.attach_letter_to_email') }}
+            </label>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.attach_letter_to_email_hint') }}</p>
             <p class="wp-muted wp-text-sm">@lang('platform.promo_campaigns.placeholders_hint')</p>
             <div
                 wire:ignore
@@ -71,11 +76,6 @@
                 <input id="email-subject" type="text" class="wp-input" wire:model="emailSubject">
                 @error('emailSubject') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
-            <label class="wp-row wp-gap-xs wp-text-sm">
-                <input type="checkbox" wire:model="attachLetterToEmail">
-                {{ __('platform.promo_campaigns.attach_letter_to_email') }}
-            </label>
-            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.attach_letter_to_email_hint') }}</p>
             <div
                 wire:ignore
                 class="wp-promo-quill"
