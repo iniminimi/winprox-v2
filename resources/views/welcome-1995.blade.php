@@ -1,6 +1,6 @@
 {{--
   Easter egg: Geocities/Netscape look. Geen app-CSS, grap-pagina, niet functioneel.
-  Drop GIF/banner in public/images/welcome/1995/ (banner.gif, under-construction.gif, …).
+  Assets in public/images/welcome/1995/ (banner_1995.png, under-construction.gif, …).
 --}}
 @php
     $img1995 = static function (string $file): ?string {
@@ -8,7 +8,7 @@
 
         return is_file(public_path($rel)) ? asset($rel) : null;
     };
-    $bannerUrl = $img1995('banner.gif');
+    $bannerUrl = $img1995('banner_1995.png') ?? $img1995('banner.gif');
     $constructionUrl = $img1995('under-construction.gif');
     $emailGifUrl = $img1995('email.gif');
     $bulletUrl = $img1995('bullet.gif');

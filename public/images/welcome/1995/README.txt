@@ -1,6 +1,8 @@
-# Drop optional GIFs here (shown when present):
+# Optional assets for the 1995 easter-egg page
 #
-#   banner.gif              — classic 468×60 banner under the marquee
+#   banner_1995.png         — main banner under the marquee (preferred)
+#   banner.gif              — fallback if banner_1995.png is missing
 #   under-construction.gif  — construction strip
 #   email.gif               — contact row icon
-#   bullet.gif              — list bullets
+#   bullet.gif              — tiny list marker before each module line
+#                              (classic Geocities: spinning ball / arrow / star, ~12×12px)
