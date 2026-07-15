@@ -63,6 +63,7 @@
         "board_absent_title": "Absent / Action requise",
         "board_attention_pill": "Attention : :count",
         "board_expected_pill": "Attendu : :count",
+        "board_column_filtered": "Utilisez le filtre Tous pour remplir cette colonne.",
         "attention_board_subtitle": "Shifts ouverts nécessitant une attention",
         "view": {
             "board": "Board",

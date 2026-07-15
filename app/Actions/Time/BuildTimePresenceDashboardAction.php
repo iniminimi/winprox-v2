@@ -124,7 +124,7 @@ class BuildTimePresenceDashboardAction
                 && $teamAbsentCount > 0
                 && (
                     $statusFilter === TimePresenceStatusFilter::Absent
-                    || ($includeAbsentRoster && $statusFilter === TimePresenceStatusFilter::All)
+                    || $includeAbsentRoster
                 );
 
             return new TimePresenceTeamBucket(

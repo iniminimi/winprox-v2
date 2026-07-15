@@ -63,6 +63,7 @@
         "board_absent_title": "Ausente / Acción extra",
         "board_attention_pill": "Atención: :count",
         "board_expected_pill": "Esperados: :count",
+        "board_column_filtered": "Use el filtro Todos para rellenar esta columna.",
         "attention_board_subtitle": "Turnos abiertos que requieren atención",
         "view": {
             "board": "Board",

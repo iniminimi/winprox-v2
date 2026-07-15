@@ -4466,10 +4466,9 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-time-presence-board {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    align-items: stretch;
     gap: 1.25rem;
-    align-items: start;
 }
 
 .wp-time-presence-page--board .wp-time-presence-toolbar {
@@ -4507,6 +4506,7 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-time-presence-board__column {
     display: flex;
+    flex: 1 1 0;
     flex-direction: column;
     gap: 0.75rem;
     min-width: 0;
@@ -4535,8 +4535,12 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-time-presence-board__list {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
     gap: 0.65rem;
+    max-height: min(70vh, 42rem);
+    overflow-y: auto;
+    padding-right: 0.15rem;
 }
 
 .wp-time-presence-card {
@@ -4710,7 +4714,7 @@ a.wp-kpi.wp-kpi--attention {
 
 @media (max-width: 40rem) {
     .wp-time-presence-board {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
 
     .wp-time-presence-card {

@@ -60,9 +60,12 @@
 
     $showPresentColumn = $statusFilter !== TimePresenceStatusFilter::Absent
         && $statusFilter !== TimePresenceStatusFilter::Attention;
-    $showAbsentColumn = $statusFilter === TimePresenceStatusFilter::All
-        || $statusFilter === TimePresenceStatusFilter::Absent
-        || $statusFilter === TimePresenceStatusFilter::Attention;
+    $showAbsentColumn = true;
+    $showPresentCards = $showPresentColumn && $statusFilter !== TimePresenceStatusFilter::Absent;
+    $showAbsentCards = $statusFilter !== TimePresenceStatusFilter::Active
+        && $statusFilter !== TimePresenceStatusFilter::Break
+        && $statusFilter !== TimePresenceStatusFilter::Attention;
+    $showAttentionCards = $statusFilter === TimePresenceStatusFilter::Attention;
 @endphp
 
 @if ($teamBuckets->isEmpty())
@@ -99,20 +102,24 @@
                 </header>
 
                 <div class="wp-time-presence-board__list">
-                    @forelse ($visiblePresent as $shift)
-                        @include('partials.wp-time-presence-card', [
-                            'shift' => $shift,
-                            'attentionItem' => $attentionByShiftId->get($shift->id),
-                            'showForceClose' => $showForceClose,
-                            'showTeam' => $showTeam,
-                            'variant' => $shift->isOnBreak() ? 'break' : 'active',
-                        ])
-                    @empty
-                        <p class="wp-muted wp-text-sm">{{ __('time.presence.empty_section') }}</p>
-                    @endforelse
+                    @if ($showPresentCards)
+                        @forelse ($visiblePresent as $shift)
+                            @include('partials.wp-time-presence-card', [
+                                'shift' => $shift,
+                                'attentionItem' => $attentionByShiftId->get($shift->id),
+                                'showForceClose' => $showForceClose,
+                                'showTeam' => $showTeam,
+                                'variant' => $shift->isOnBreak() ? 'break' : 'active',
+                            ])
+                        @empty
+                            <p class="wp-muted wp-text-sm">{{ __('time.presence.empty_section') }}</p>
+                        @endforelse
+                    @else
+                        <p class="wp-muted wp-text-sm">{{ __('time.presence.board_column_filtered') }}</p>
+                    @endif
                 </div>
 
-                @if ($presentShifts->count() > $visiblePresent->count())
+                @if ($showPresentCards && $presentShifts->count() > $visiblePresent->count())
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMoreBoard">
                         {{ __('time.presence.load_more', ['count' => min($teamPageSize, $presentShifts->count() - $visiblePresent->count())]) }}
                     </button>
@@ -125,23 +132,23 @@
                 <header class="wp-time-presence-board__head">
                     <div>
                         <h2 id="presence-board-absent-heading" class="wp-time-presence-board__title">
-                            {{ $statusFilter === TimePresenceStatusFilter::Attention
+                            {{ $showAttentionCards
                                 ? __('time.presence.attention_title')
                                 : __('time.presence.board_absent_title') }}
                         </h2>
                         <p class="wp-time-presence-board__subtitle wp-muted">
-                            {{ $statusFilter === TimePresenceStatusFilter::Attention
+                            {{ $showAttentionCards
                                 ? __('time.presence.attention_board_subtitle')
                                 : __('time.presence.not_clocked_in_subtitle') }}
                         </p>
                     </div>
                     <span class="wp-pill wp-pill--progress wp-tabular">
-                        {{ $statusFilter === TimePresenceStatusFilter::Attention ? $totalPresent : $totalAbsent }}
+                        {{ $showAttentionCards ? $totalPresent : $totalAbsent }}
                     </span>
                 </header>
 
                 <div class="wp-time-presence-board__list">
-                    @if ($statusFilter === TimePresenceStatusFilter::Attention)
+                    @if ($showAttentionCards)
                         @forelse ($visiblePresent as $shift)
                             @include('partials.wp-time-presence-card', [
                                 'shift' => $shift,
@@ -153,7 +160,7 @@
                         @empty
                             <p class="wp-muted wp-text-sm">{{ __('time.presence.no_attention') }}</p>
                         @endforelse
-                    @else
+                    @elseif ($showAbsentCards)
                         @forelse ($visibleAbsent as $worker)
                             @include('partials.wp-time-presence-absent-card', [
                                 'worker' => $worker,
@@ -162,18 +169,20 @@
                         @empty
                             <p class="wp-muted wp-text-sm">{{ __('time.presence.empty_not_clocked_in') }}</p>
                         @endforelse
+                    @else
+                        <p class="wp-muted wp-text-sm">{{ __('time.presence.board_column_filtered') }}</p>
                     @endif
                 </div>
 
-                @if ($statusFilter === TimePresenceStatusFilter::Attention && $presentShifts->count() > $visiblePresent->count())
+                @if ($showAttentionCards && $presentShifts->count() > $visiblePresent->count())
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMoreBoard">
                         {{ __('time.presence.load_more', ['count' => min($teamPageSize, $presentShifts->count() - $visiblePresent->count())]) }}
                     </button>
-                @elseif ($statusFilter !== TimePresenceStatusFilter::Attention && $absentWorkers->count() > $visibleAbsent->count())
+                @elseif ($showAbsentCards && $absentWorkers->count() > $visibleAbsent->count())
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="loadMoreBoard">
                         {{ __('time.presence.load_more', ['count' => min($teamPageSize, $absentWorkers->count() - $visibleAbsent->count())]) }}
                     </button>
-                @elseif ($totalAbsent > $visibleAbsent->count() && $statusFilter === TimePresenceStatusFilter::All)
+                @elseif ($showAbsentCards && $totalAbsent > $visibleAbsent->count() && $statusFilter === TimePresenceStatusFilter::All)
                     <p class="wp-muted wp-text-sm">{{ __('time.presence.absent_truncated', ['count' => $totalAbsent - $visibleAbsent->count()]) }}</p>
                 @endif
             </section>
