@@ -333,12 +333,6 @@
                                 @endforeach
                             </ul>
                         </div>
-
-                        <a href="{{ route('comparison') }}" class="wp-welcome-trust-compare wp-card">
-                            <h3 class="wp-welcome-h3">{{ __('welcome.trust.comparison_title') }}</h3>
-                            <p class="wp-welcome-trust-compare__body">{{ __('welcome.trust.comparison_body') }}</p>
-                            <span class="wp-welcome-trust-compare__link">{{ __('welcome.trust.comparison_link') }} →</span>
-                        </a>
                     </div>
 
                     <ul class="wp-welcome-trust-chips">

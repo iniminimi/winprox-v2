@@ -195,10 +195,7 @@
             "Escalable"
         ],
         "video_title": "WinProx en acción",
-        "video_placeholder": "Vídeo próximamente.",
-        "comparison_title": "¿Comparar WinProx?",
-        "comparison_body": "Vea cómo WinProx se compara con una plataforma clásica.",
-        "comparison_link": "Ver comparación"
+        "video_placeholder": "Vídeo próximamente."
     },
     "closing": {
         "title": "¿Listo para dejar atrás el papel, los teléfonos y Excel?",
