@@ -2009,7 +2009,11 @@
 }
 
 [data-theme='standard'] .wp-welcome-section--closing {
-    padding-bottom: 0;
+    padding-bottom: 4.5rem;
+}
+
+[data-theme='standard'] .wp-welcome-closing-panel .wp-welcome-cta-row {
+    margin-bottom: 0.5rem;
 }
 
 /* Text reveal (Linear / Stripe style) */
