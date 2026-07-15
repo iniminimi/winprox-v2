@@ -374,6 +374,22 @@ it('splitst enkele quill-paragraaf met br-tags voor e-mail', function () {
         );
 });
 
+it('compacteert handtekeningregels in promo e-mail', function () {
+    $html = '<p>Goedemorgen,</p><p><br></p>'
+        .'<p>Voor {{name}} ben ik op zoek.</p><p><br></p>'
+        .'<p>Alvast hartelijk bedankt voor uw hulp.</p><p><br></p>'
+        .'<p>Met vriendelijke groeten,</p><p><br></p><p><br></p>'
+        .'<p>Schaepdrijver Dominique</p><p>Founder WinProx</p>'
+        .'<p>www.winprox.app</p><p>dominique.schaepdrijver@winprox.app</p>';
+
+    $prepared = PromoCampaignQuillHtmlNormalizer::forMail($html);
+
+    expect($prepared)
+        ->toContain('<p style="margin:0 0 24px 0">Met vriendelijke groeten,</p>')
+        ->toContain('<p style="margin:0">Schaepdrijver Dominique<br>Founder WinProx<br>www.winprox.app<br>dominique.schaepdrijver@winprox.app</p>')
+        ->not->toMatch('/Founder WinProx<\/p>\s*<p style="margin:0 0 16px 0">www\.winprox\.app/');
+});
+
 it('verwijdert alleen vast handtekeningblok uit brief voor docx', function () {
     $html = '<p>Wavre</p><p>place de l\'Hôtel de Ville</p><p>1300 Wavre</p><p><br></p>'
         .'<p>Madame, Monsieur,</p><p><br></p>'

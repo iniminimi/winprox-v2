@@ -48,7 +48,9 @@ final class PromoCampaignQuillHtmlNormalizer
 
         $html = self::splitSingleParagraphOnBreaks($html);
 
-        return self::applyMailBodyParagraphSpacing($html);
+        $html = self::applyMailBodyParagraphSpacing($html);
+
+        return self::compactMailSignatureSpacing($html);
     }
 
     /**
@@ -248,6 +250,69 @@ final class PromoCampaignQuillHtmlNormalizer
             },
             $html,
         ) ?? $html;
+    }
+
+    /**
+     * Handtekeningregels na afsluiting (Met vriendelijke groeten, …) staan in Quill vaak als aparte
+     * paragrafen; 16px marge tussen elke regel oogt in mail te ruim. Voeg ze samen met <br>.
+     */
+    private static function compactMailSignatureSpacing(string $html): string
+    {
+        if (! preg_match_all('/<p(\s[^>]*)?>(.*?)<\/p>/is', $html, $matches, PREG_SET_ORDER)) {
+            return $html;
+        }
+
+        $closingPattern = '/Met vriendelijke groet(en)?,?|Cordialement,?|Met de meeste hoogachting,?|Bien cordialement,?|Kind regards,?|Sincerely yours,?|Mit freundlichen Gr(?:ü|u)(?:ß|ss)en,?/iu';
+
+        $signatureStartIndex = null;
+        foreach ($matches as $index => $match) {
+            $text = trim(preg_replace('/\s+/u', ' ', strip_tags($match[2])) ?? '');
+            if ($text !== '' && preg_match($closingPattern, $text)) {
+                $signatureStartIndex = $index;
+            }
+        }
+
+        if ($signatureStartIndex === null || $signatureStartIndex >= count($matches) - 1) {
+            return $html;
+        }
+
+        $result = '';
+        foreach ($matches as $index => $match) {
+            if ($index > $signatureStartIndex) {
+                continue;
+            }
+
+            if ($index === $signatureStartIndex) {
+                $result .= self::mailParagraphTag('0 0 24px 0', $match[1] ?? '', $match[2]);
+
+                continue;
+            }
+
+            $result .= $match[0];
+        }
+
+        $signatureLines = [];
+        foreach (array_slice($matches, $signatureStartIndex + 1) as $match) {
+            $line = trim($match[2]);
+            if ($line !== '' && ! PromoCampaignHtmlSanitizer::isBlank($line)) {
+                $signatureLines[] = $line;
+            }
+        }
+
+        if ($signatureLines === []) {
+            return $result;
+        }
+
+        $result .= '<p style="margin:0">'.implode('<br>', $signatureLines).'</p>';
+
+        return $result;
+    }
+
+    private static function mailParagraphTag(string $margin, string $attrs, string $inner): string
+    {
+        $attrs = preg_replace('/\s+style="[^"]*"/', '', $attrs) ?? $attrs;
+
+        return '<p style="margin:'.$margin.'"'.$attrs.'>'.$inner.'</p>';
     }
 
     /**
