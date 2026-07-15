@@ -78,17 +78,18 @@
             "description": "Full facility workflows at larger scale. WinProx Time included. CSV bulk import for units and workers.",
             "features": [
                 "Unlimited QR issues and tasks within your locations and units.",
-                "CSV units and workers.",
                 "No API access."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / month",
-            "scale": "Unlimited units/locations/documents/photos.",
-            "users": "Unlimited team seats and workers.",
-            "description": "For large portfolios and integrations. ESG included, API access, webhooks and priority support.",
-            "features": ["Facility, Time and ESG.", "API and webhooks.", "Unlimited scale.", "Priority support."]
+            "scale": "Unlimited data.",
+            "description": "For large portfolios and integrations.",
+            "features": [
+                "ESG, API and webhooks included.",
+                "Priority support."
+            ]
         }
     },
     "stripe": {

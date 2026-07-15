@@ -78,17 +78,18 @@
             "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV bulk-import voor units en workers.",
             "features": [
                 "QR-meldingen en taken onbeperkt binnen je locaties en units.",
-                "CSV units en workers.",
                 "Geen API-toegang."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / maand",
-            "scale": "Onbeperkt units/locaties/documenten/foto's.",
-            "users": "Onbeperkt teamplaatsen en uitvoerders.",
-            "description": "Voor grote portefeuilles en integraties. ESG inbegrepen, API-toegang, webhooks en prioritaire support.",
-            "features": ["Facility, Time en ESG.", "API en webhooks.", "Onbeperkte schaal.", "Prioritaire support."]
+            "scale": "Onbeperkt data.",
+            "description": "Voor grote portefeuilles en integraties.",
+            "features": [
+                "ESG, API en webhooks inclusief.",
+                "Prioritaire support."
+            ]
         }
     },
     "stripe": {

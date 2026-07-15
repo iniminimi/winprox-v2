@@ -71,15 +71,14 @@
             "scale": "Fino a 100 unità/sedi/documenti/foto per la tua organizzazione.",
             "users": "1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV.",
             "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import CSV massivo.",
-            "features": ["Segnalazioni e attività illimitate.", "CSV unità e lavoratori.", "Nessun accesso API."]
+            "features": ["Segnalazioni e attività illimitate.", "Nessun accesso API."]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / mese",
-            "scale": "Unità/sedi/documenti/foto illimitati.",
-            "users": "Posti team e lavoratori illimitati.",
-            "description": "Per grandi portafogli e integrazioni. ESG incluso, API, webhook e supporto prioritario.",
-            "features": ["Facility, Time e ESG.", "API e webhook.", "Scala illimitata.", "Supporto prioritario."]
+            "scale": "Dati illimitati.",
+            "description": "Per grandi portafogli e integrazioni.",
+            "features": ["ESG, API e webhook inclusi.", "Supporto prioritario."]
         }
     },
     "stripe": {
