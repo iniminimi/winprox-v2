@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# WinProx productie-deploy — geen .git/packs op de server.
+# WinProx productie-deploy — geen .git in app-dir; cache buiten httpdocs.
 # Gebruik: ./pull-deploy.sh   (vanuit ~/httpdocs/winprox)
 set -euo pipefail
 
@@ -8,17 +8,22 @@ cd "$APP_DIR"
 
 REPO_URL="${WINPROX_REPO_URL:-https://github.com/iniminimi/winprox-v2.git}"
 BRANCH="${WINPROX_DEPLOY_BRANCH:-main}"
-CHECKOUT="$(mktemp -d)"
+CACHE_DIR="${WINPROX_DEPLOY_CACHE:-$HOME/deploy-cache/winprox}"
+LOCK_HASH_FILE="$CACHE_DIR/.composer-lock-sha256"
+COMPOSER="$(command -v composer)"
 
-cleanup() {
-    rm -rf "$CHECKOUT"
-}
-trap cleanup EXIT
+echo "==> Fetch ${BRANCH}"
+mkdir -p "$(dirname "$CACHE_DIR")"
+if [[ -d "$CACHE_DIR/.git" ]]; then
+    git -C "$CACHE_DIR" fetch --depth 1 origin "$BRANCH"
+    git -C "$CACHE_DIR" reset --hard "origin/$BRANCH"
+    git -C "$CACHE_DIR" clean -fdx
+else
+    rm -rf "$CACHE_DIR"
+    git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$CACHE_DIR"
+fi
 
-echo "==> Fetch ${BRANCH} (depth 1, geen packs op server)"
-git clone --depth 1 --branch "$BRANCH" "$REPO_URL" "$CHECKOUT"
-
-echo "==> Sync code (behoud .env, storage, mysql-data)"
+echo "==> Sync code (behoud .env, storage, mysql-data, vendor)"
 rsync -a --delete \
     --exclude '.env' \
     --exclude 'storage/' \
@@ -26,11 +31,17 @@ rsync -a --delete \
     --exclude 'node_modules/' \
     --exclude 'vendor/' \
     --exclude '.git/' \
-    "$CHECKOUT/" "$APP_DIR/"
+    "$CACHE_DIR/" "$APP_DIR/"
 
-if [[ -f composer.lock ]]; then
-    echo "==> composer install"
-    composer install --no-dev --optimize-autoloader --no-interaction
+if [[ -f composer.lock ]] && [[ -n "$COMPOSER" ]]; then
+    LOCK_HASH="$(sha256sum composer.lock | awk '{print $1}')"
+    if [[ ! -d vendor ]] || [[ ! -f "$LOCK_HASH_FILE" ]] || [[ "$(cat "$LOCK_HASH_FILE")" != "$LOCK_HASH" ]]; then
+        echo "==> composer install (lock gewijzigd of vendor ontbreekt)"
+        "$COMPOSER" install --no-dev --optimize-autoloader --no-interaction
+        echo "$LOCK_HASH" > "$LOCK_HASH_FILE"
+    else
+        echo "==> composer overgeslagen (lock ongewijzigd)"
+    fi
 fi
 
 echo "==> Laravel"
@@ -39,9 +50,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Oude volledige clone opruimen (eenmalig effect + geen packs meer)
 if [[ -d .git ]]; then
-    echo "==> Verwijder .git (packs)"
+    echo "==> Verwijder .git uit app-dir"
     rm -rf .git
 fi
 
