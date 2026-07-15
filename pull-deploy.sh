@@ -24,6 +24,7 @@ rsync -a --delete \
     --exclude 'storage/' \
     --exclude 'mysql-data/' \
     --exclude 'node_modules/' \
+    --exclude 'vendor/' \
     --exclude '.git/' \
     "$CHECKOUT/" "$APP_DIR/"
 
