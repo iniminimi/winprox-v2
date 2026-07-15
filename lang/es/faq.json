@@ -217,7 +217,7 @@
             "slug": "style",
             "type": "text",
             "title": "¿Qué es el estilo WinProx y el estilo personalizado del portal?",
-            "body": "El estilo WinProx determina cómo se ve la aplicación para administradores y personal (estándar, oscuro, alta resolución). El estilo personalizado del portal es opcional y ajusta los colores de fondo y botones del portal público que ven reportadores y trabajadores tras escanear un código QR. Configure ambos en Configuración.",
+            "body": "El estilo WinProx determina cómo se ve la aplicación para administradores y personal (estándar u oscuro). El estilo personalizado del portal es opcional y ajusta los colores de fondo y botones del portal público que ven reportadores y trabajadores tras escanear un código QR. Configure ambos en Configuración.",
             "summary": "Estilo WinProx para la aplicación, estilo personalizado del portal para el portal público (colores de fondo y botones)."
         }
     }

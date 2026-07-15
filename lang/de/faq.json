@@ -217,7 +217,7 @@
             "slug": "style",
             "type": "text",
             "title": "Was ist WinProx-Stil und Eigener Portal-Stil?",
-            "body": "WinProx-Stil bestimmt, wie die App für Administratoren und Mitarbeitende aussieht (Standard, Dunkel, High Res). Eigener Portal-Stil ist optional und passt Hintergrund- und Knopffarben für das öffentliche Portal an, das Melder und Ausführende nach dem Scannen eines QR-Codes sehen. Konfigurieren Sie beide unter Einstellungen.",
+            "body": "WinProx-Stil bestimmt, wie die App für Administratoren und Mitarbeitende aussieht (Standard oder Dunkel). Eigener Portal-Stil ist optional und passt Hintergrund- und Knopffarben für das öffentliche Portal an, das Melder und Ausführende nach dem Scannen eines QR-Codes sehen. Konfigurieren Sie beide unter Einstellungen.",
             "summary": "WinProx-Stil für die App, Eigener Portal-Stil für das öffentliche Portal (Hintergrund- und Knopffarben)."
         }
     }

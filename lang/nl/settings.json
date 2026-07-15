@@ -93,10 +93,6 @@
             "dark": {
                 "label": "Donker",
                 "description": "Nachtmodus met donkere achtergronden, zoals op je telefoon."
-            },
-            "highres": {
-                "label": "High Res",
-                "description": "Verfijnd met zachte verlopen, rijkere kleuren en glassmorphism."
             }
         }
     },

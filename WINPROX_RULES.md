@@ -187,8 +187,8 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 
 ### 6.2 Tokens & thema's
 - **`tokens.css`** = structurele tokens (radius, schaduw, knop-geometrie, transitie) — thema-onafhankelijk.
-- **`themes/standard.css`** = de **kleuren** van het standaardthema (licht, modern, emerald). **Dit is voorlopig het enige thema.**
-- Een later thema is enkel een nieuw bestand dat dezelfde variabelen overschrijft onder `[data-theme="..."]` (bv. donker/grijs). Componenten veranderen daarbij **niet**.
+- **`themes/simple.css`** = standaardthema (licht, modern, emerald). **`themes/dark.css`** = donker (vooral QR-portaal op gsm).
+- Geen extra thema's — componenten veranderen **niet** per thema; enkel token-overschrijving onder `[data-theme="..."]`.
 - Componenten verwijzen **altijd** naar variabelen, nooit naar harde kleuren.
 
 ### 6.3 Kleuren (standaardthema)

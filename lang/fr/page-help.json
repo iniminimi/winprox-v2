@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "Style WinProx",
-                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard, Sombre ou High Res. Votre choix s'applique sur tous les appareils où vous êtes connecté."
+                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté."
                 },
                 {
                     "label": "Style de portail personnalisé",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Thème",
-                    "text": "Changez entre les différents thèmes (simple, sombre, high-res) en haut à droite pour une vue qui correspond à vos préférences."
+                    "text": "Changez entre les thèmes Standard et Sombre en haut à droite pour une vue qui correspond à vos préférences. Le mode sombre est pratique sur mobile."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",

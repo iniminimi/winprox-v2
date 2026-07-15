@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "WinProx-stijl",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Standaard, Donker of High Res. Je keuze geldt op al je ingelogde apparaten."
+                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
                 },
                 {
                     "label": "Eigen portaal-stijl",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Thema",
-                    "text": "Wissel rechtsboven tussen de verschillende thema's (simpel, donker, high-res) voor een weergave die aansluit bij uw voorkeur."
+                    "text": "Wissel rechtsboven tussen de thema's Standaard en Donker voor een weergave die aansluit bij uw voorkeur. Donker is handig op gsm."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",

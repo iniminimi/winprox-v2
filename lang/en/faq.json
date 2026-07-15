@@ -217,7 +217,7 @@
             "slug": "style",
             "type": "text",
             "title": "What is WinProx style and Custom portal style?",
-            "body": "WinProx style determines how the app looks for administrators and staff (standard, dark, high res). Custom portal style is optional and adjusts background and button colors for the public portal that reporters and workers see after scanning a QR code. Configure both under Settings.",
+            "body": "WinProx style determines how the app looks for administrators and staff (standard or dark). Custom portal style is optional and adjusts background and button colors for the public portal that reporters and workers see after scanning a QR code. Configure both under Settings.",
             "summary": "WinProx style for the app, Custom portal style for the public portal (background and button colors)."
         }
     }

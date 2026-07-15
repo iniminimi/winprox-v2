@@ -217,7 +217,7 @@
             "slug": "style",
             "type": "text",
             "title": "Cos'è lo stile WinProx e lo stile portale personalizzato?",
-            "body": "Lo stile WinProx determina l'aspetto dell'app per amministratori e personale (standard, scuro, high res). Lo stile portale personalizzato è facoltativo e regola colori di sfondo e pulsanti per il portale pubblico che reporter e lavoratori vedono dopo la scansione di un codice QR. Configuri entrambi sotto Impostazioni.",
+            "body": "Lo stile WinProx determina l'aspetto dell'app per amministratori e personale (standard o scuro). Lo stile portale personalizzato è facoltativo e regola colori di sfondo e pulsanti per il portale pubblico che reporter e lavoratori vedono dopo la scansione di un codice QR. Configuri entrambi sotto Impostazioni.",
             "summary": "Stile WinProx per l'app, stile portale personalizzato per il portale pubblico (colori sfondo e pulsanti)."
         }
     }

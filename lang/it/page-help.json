@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "Stile WinProx",
-                    "text": "Scelga come WinProx appare per Lei nell'admin: Standard, Scuro o High Res. La Sua scelta si applica su tutti i dispositivi in cui è connesso."
+                    "text": "Scelga come WinProx appare per Lei nell'admin: Standard o Scuro. La Sua scelta si applica su tutti i dispositivi in cui è connesso."
                 },
                 {
                     "label": "Stile portale personalizzato",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Tema",
-                    "text": "Passi tra i diversi temi (simple, dark, high-res) in alto a destra per una vista adatta alle Sue preferenze."
+                    "text": "Passi tra i temi Standard e Scuro in alto a destra per una vista adatta alle Sue preferenze. Lo scuro è utile sul telefono."
                 }
             ],
             "status_note": "Le attività aperte su questa pagina seguono gli stati qui sotto.",

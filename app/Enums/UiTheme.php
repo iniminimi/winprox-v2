@@ -8,7 +8,6 @@ enum UiTheme: string
 {
     case Simple = 'simple';
     case Dark = 'dark';
-    case HighRes = 'highres';
 
     public static function default(): self
     {
@@ -23,6 +22,6 @@ enum UiTheme: string
     /** @return list<self> */
     public static function choices(): array
     {
-        return [self::Simple, self::Dark, self::HighRes];
+        return [self::Simple, self::Dark];
     }
 }

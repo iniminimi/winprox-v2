@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "Estilo WinProx",
-                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar, Oscuro o Alta resolución. Su elección se aplica en todos los dispositivos donde haya iniciado sesión."
+                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión."
                 },
                 {
                     "label": "Estilo personalizado del portal",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Tema",
-                    "text": "Cambie entre los diferentes temas (simple, oscuro, alta resolución) arriba a la derecha para una vista que se ajuste a su preferencia."
+                    "text": "Cambie entre los temas Estándar y Oscuro arriba a la derecha para una vista que se ajuste a su preferencia. El modo oscuro es útil en el móvil."
                 }
             ],
             "status_note": "Las tareas abiertas en esta página siguen los estados indicados a continuación.",

@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "WinProx style",
-                    "text": "Choose how WinProx looks for you in admin: Standard, Dark or High Res. Your choice applies on all devices where you are signed in."
+                    "text": "Choose how WinProx looks for you in admin: Standard or Dark. Your choice applies on all devices where you are signed in."
                 },
                 {
                     "label": "Custom portal style",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Theme",
-                    "text": "Switch between the different themes (simple, dark, high-res) in the top right for a view that matches your preference."
+                    "text": "Switch between Standard and Dark themes in the top right for a view that matches your preference. Dark is useful on mobile."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",

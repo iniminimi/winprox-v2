@@ -93,10 +93,6 @@
             "dark": {
                 "label": "Oscuro",
                 "description": "Modo nocturno con fondos oscuros, como en su teléfono."
-            },
-            "highres": {
-                "label": "Alta resolución",
-                "description": "Refinado con gradientes suaves, colores más ricos y glassmorphism."
             }
         }
     },

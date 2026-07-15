@@ -309,7 +309,7 @@
                 },
                 {
                     "label": "WinProx-Stil",
-                    "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard, Dunkel oder High Res. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind."
+                    "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind."
                 },
                 {
                     "label": "Eigenes Portal-Design",
@@ -499,7 +499,7 @@
                 },
                 {
                     "label": "Thema",
-                    "text": "Wechseln Sie oben rechts zwischen den verschiedenen Themen (einfach, dunkel, high-res) für eine Ansicht, die Ihren Vorlieben entspricht."
+                    "text": "Wechseln Sie oben rechts zwischen Standard und Dunkel für eine Ansicht, die Ihren Vorlieben entspricht. Dunkel ist auf dem Smartphone praktisch."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",
