@@ -60,26 +60,26 @@
         "time": {
             "name": "WinProx Time",
             "price": "149 € / mois",
-            "scale": "Jusqu'à 10 unités/sites/documents/photos pour votre organisation",
+            "scale": "Jusqu'à 10 unités/sites/documents/photos pour votre organisation.",
             "users": "1 administrateur et 1 collaborateur inclus. Workers illimités via import CSV.",
             "description": "Signalements et tâches QR illimités dans vos sites et unités.",
-            "features": ["Module Time : pointage, pauses, shifts et QR Clock Points", "Pas d'accès API"]
+            "features": ["Module Time : pointage, pauses, shifts et QR Clock Points.", "Pas d'accès API."]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "399 € / mois",
-            "scale": "Jusqu'à 100 unités/sites/documents/photos pour votre organisation",
+            "scale": "Jusqu'à 100 unités/sites/documents/photos pour votre organisation.",
             "users": "1 administrateur et jusqu'à 4 collaborateurs. Workers illimités via import CSV.",
             "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV en masse.",
-            "features": ["Signalements et tâches illimités", "CSV unités & workers", "Pas d'accès API"]
+            "features": ["Signalements et tâches illimités.", "CSV unités et workers.", "Pas d'accès API."]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "999 € / mois",
-            "scale": "Unités/sites/documents/photos illimités",
-            "users": "Places d'équipe et workers illimités",
+            "scale": "Unités/sites/documents/photos illimités.",
+            "users": "Places d'équipe et workers illimités.",
             "description": "Pour grands portefeuilles et intégrations. ESG inclus, API, webhooks et support prioritaire.",
-            "features": ["Facility + Time + ESG", "API & webhooks", "Échelle illimitée", "Support prioritaire"]
+            "features": ["Facility, Time et ESG.", "API et webhooks.", "Échelle illimitée.", "Support prioritaire."]
         }
     },
     "stripe": {

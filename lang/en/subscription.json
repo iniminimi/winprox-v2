@@ -62,33 +62,33 @@
         "time": {
             "name": "WinProx Time",
             "price": "€149 / month",
-            "scale": "Up to 10 units/locations/documents/photos for your organisation",
+            "scale": "Up to 10 units/locations/documents/photos for your organisation.",
             "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV import.",
             "description": "Unlimited QR issues and tasks within your locations and units.",
             "features": [
-                "Time module: clock in/out, breaks, shifts and QR Clock Points",
-                "No API access"
+                "Time module: clock in/out, breaks, shifts and QR Clock Points.",
+                "No API access."
             ]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / month",
-            "scale": "Up to 100 units/locations/documents/photos for your organisation",
+            "scale": "Up to 100 units/locations/documents/photos for your organisation.",
             "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV import.",
             "description": "Full facility workflows at larger scale. WinProx Time included. CSV bulk import for units and workers.",
             "features": [
-                "Unlimited QR issues and tasks within your locations and units",
-                "CSV units & workers",
-                "No API access"
+                "Unlimited QR issues and tasks within your locations and units.",
+                "CSV units and workers.",
+                "No API access."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / month",
-            "scale": "Unlimited units/locations/documents/photos",
-            "users": "Unlimited team seats and workers",
+            "scale": "Unlimited units/locations/documents/photos.",
+            "users": "Unlimited team seats and workers.",
             "description": "For large portfolios and integrations. ESG included, API access, webhooks and priority support.",
-            "features": ["Facility + Time + ESG", "API & webhooks", "Unlimited scale", "Priority support"]
+            "features": ["Facility, Time and ESG.", "API and webhooks.", "Unlimited scale.", "Priority support."]
         }
     },
     "stripe": {

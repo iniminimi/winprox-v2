@@ -170,7 +170,7 @@
                             <h2 class="wp-billing-plan-card-title">{{ __("subscription.plans.{$planKey}.name") }}</h2>
                             <p class="wp-billing-plan-card-price">{{ __("subscription.plans.{$planKey}.price") }}</p>
                         </div>
-                        <ul class="wp-billing-plan-card-meta">
+                        <ul class="wp-billing-plan-card-meta wp-billing-plan-card-bullets">
                             @if (__("subscription.plans.{$planKey}.scale") !== "subscription.plans.{$planKey}.scale")
                                 <li>{{ __("subscription.plans.{$planKey}.scale") }}</li>
                             @else
@@ -181,15 +181,15 @@
                             @if (__("subscription.plans.{$planKey}.users") !== "subscription.plans.{$planKey}.users")
                                 <li>{{ __("subscription.plans.{$planKey}.users") }}</li>
                             @endif
-                        </ul>
-                        @if (is_array(__("subscription.plans.{$planKey}.features")))
-                            <ul class="wp-billing-plan-card-meta">
+                            @if (is_array(__("subscription.plans.{$planKey}.features")))
                                 @foreach (__("subscription.plans.{$planKey}.features") as $feature)
                                     <li>{{ $feature }}</li>
                                 @endforeach
-                            </ul>
-                        @endif
-                        <p class="wp-billing-plan-card-desc">{{ __("subscription.plans.{$planKey}.description") }}</p>
+                            @endif
+                            @if (__("subscription.plans.{$planKey}.description") !== "subscription.plans.{$planKey}.description")
+                                <li>{{ __("subscription.plans.{$planKey}.description") }}</li>
+                            @endif
+                        </ul>
                     </div>
                     @if ($showManageActions)
                         <div class="wp-billing-plan-card-action">

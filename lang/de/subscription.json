@@ -60,26 +60,26 @@
         "time": {
             "name": "WinProx Time",
             "price": "€149 / Monat",
-            "scale": "Bis zu 10 Units/Standorte/Dokumente/Fotos pro Organisation",
+            "scale": "Bis zu 10 Units/Standorte/Dokumente/Fotos pro Organisation.",
             "users": "1 Administrator und 1 Mitarbeiter inklusive. Unbegrenzt Mitarbeiter via CSV-Import.",
             "description": "Unbegrenzt QR-Meldungen und Aufgaben innerhalb Ihrer Standorte und Units.",
-            "features": ["Time-Modul: Ein-/Ausstempeln, Pausen, Schichten und QR Clock Points", "Kein API-Zugang"]
+            "features": ["Time-Modul: Ein-/Ausstempeln, Pausen, Schichten und QR Clock Points.", "Kein API-Zugang."]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / Monat",
-            "scale": "Bis zu 100 Units/Standorte/Dokumente/Fotos pro Organisation",
+            "scale": "Bis zu 100 Units/Standorte/Dokumente/Fotos pro Organisation.",
             "users": "1 Administrator und bis zu 4 Mitarbeiter. Unbegrenzt Mitarbeiter via CSV-Import.",
             "description": "Vollständige Facility-Workflows in größerem Umfang. WinProx Time inklusive. CSV-Bulk-Import.",
-            "features": ["Unbegrenzt QR-Meldungen und Aufgaben", "CSV Units & Mitarbeiter", "Kein API-Zugang"]
+            "features": ["Unbegrenzt QR-Meldungen und Aufgaben.", "CSV Units und Mitarbeiter.", "Kein API-Zugang."]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / Monat",
-            "scale": "Unbegrenzt Units/Standorte/Dokumente/Fotos",
-            "users": "Unbegrenzte Teamplätze und Mitarbeiter",
+            "scale": "Unbegrenzt Units/Standorte/Dokumente/Fotos.",
+            "users": "Unbegrenzte Teamplätze und Mitarbeiter.",
             "description": "Für große Portfolios und Integrationen. ESG inklusive, API, Webhooks und Priority-Support.",
-            "features": ["Facility + Time + ESG", "API & Webhooks", "Unbegrenzte Skalierung", "Priority-Support"]
+            "features": ["Facility, Time und ESG.", "API und Webhooks.", "Unbegrenzte Skalierung.", "Priority-Support."]
         }
     },
     "stripe": {
