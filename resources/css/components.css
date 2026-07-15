@@ -4475,35 +4475,6 @@ a.wp-kpi.wp-kpi--attention {
     margin-bottom: 0;
 }
 
-.wp-time-presence-board__summary {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
-}
-
-.wp-time-presence-board__summary-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    text-decoration: none;
-    border: 0;
-    cursor: pointer;
-    font: inherit;
-}
-
-.wp-time-presence-board__summary-pill--muted {
-    background: var(--wp-surface);
-    color: var(--wp-text-muted);
-    border: 1px solid var(--wp-border);
-}
-
-.wp-time-presence-board__summary-icon {
-    width: 0.85rem;
-    height: 0.85rem;
-}
-
 .wp-time-presence-board__column {
     display: flex;
     flex: 1 1 0;

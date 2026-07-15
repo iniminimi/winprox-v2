@@ -61,9 +61,6 @@
         },
         "view_modes": "Ansicht",
         "board_absent_title": "Abwesend / Extra Aktion",
-        "board_attention_pill": "Achtung: :count",
-        "board_expected_pill": "Erwartet: :count",
-        "board_column_filtered": "Filter Alle verwenden, um diese Spalte zu füllen.",
         "attention_board_subtitle": "Offene Shifts mit Handlungsbedarf",
         "view": {
             "board": "Board",

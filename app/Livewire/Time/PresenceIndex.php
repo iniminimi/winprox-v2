@@ -144,12 +144,13 @@ class PresenceIndex extends Component
 
         if ($viewMode === TimePresenceViewMode::Board) {
             $expandedTeamIds = $this->teamFilter !== null
-                ? [$this->teamFilter]
+                ? [(int) $this->teamFilter]
                 : InternalTeam::query()
                     ->where('is_active', true)
                     ->orderBy('sort_order')
                     ->orderBy('name')
                     ->pluck('id')
+                    ->map(fn ($id) => (int) $id)
                     ->all();
             $includeAbsentRoster = true;
         }
@@ -167,7 +168,6 @@ class PresenceIndex extends Component
 
         return view('livewire.time.presence-index', [
             'dashboard' => $dashboard,
-            'statusFilter' => TimePresenceStatusFilter::tryFromRequest($this->statusFilter),
             'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'locations' => Location::query()->orderBy('name')->get(),

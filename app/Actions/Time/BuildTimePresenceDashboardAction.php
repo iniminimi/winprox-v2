@@ -30,6 +30,7 @@ class BuildTimePresenceDashboardAction
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
+        $expandedTeamIds = array_map(intval(...), $expandedTeamIds);
 
         $clockPointIdsForLocation = $this->clockPointIdsForLocation($tenantId, $locationId);
 
@@ -119,12 +120,11 @@ class BuildTimePresenceDashboardAction
                 fn ($item) => (int) $item->shift->internal_team_id === (int) $team->id
             )->count();
             $teamAbsentCount = (int) ($absentByTeam[$team->id] ?? 0);
-            $isExpanded = in_array($team->id, $expandedTeamIds, true);
-            $loadAbsent = $isExpanded
-                && $teamAbsentCount > 0
+            $isExpanded = in_array((int) $team->id, $expandedTeamIds, true);
+            $loadAbsent = $teamAbsentCount > 0
                 && (
-                    $statusFilter === TimePresenceStatusFilter::Absent
-                    || $includeAbsentRoster
+                    $includeAbsentRoster
+                    || ($isExpanded && $statusFilter === TimePresenceStatusFilter::Absent)
                 );
 
             return new TimePresenceTeamBucket(

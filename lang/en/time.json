@@ -61,9 +61,6 @@
         },
         "view_modes": "View",
         "board_absent_title": "Absent / Extra action",
-        "board_attention_pill": "Attention: :count",
-        "board_expected_pill": "Expected: :count",
-        "board_column_filtered": "Use the All filter to populate this column.",
         "attention_board_subtitle": "Open shifts that need attention",
         "view": {
             "board": "Board",

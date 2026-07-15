@@ -3,6 +3,8 @@
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Time\AutoCloseStaleWorkShiftsAction;
+use App\Actions\Time\BuildTimePresenceDashboardAction;
+use App\Enums\TimePresenceStatusFilter;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Enums\ClockSource;
@@ -43,6 +45,62 @@ it('laat een admin het time-aanwezigheidsscherm openen', function () {
     $this->actingAs($admin)
         ->get(route('time.presence.index'))
         ->assertOk();
+});
+
+it('laadt afwezige werknemers in board-dashboard', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $clockedIn = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    app(ClockInAction::class)->handle($clockedIn, $clockPoint);
+
+    $teamIds = InternalTeam::query()->where('is_active', true)->pluck('id')->map(fn ($id) => (int) $id)->all();
+    $dashboard = app(BuildTimePresenceDashboardAction::class)->handle(
+        $tenant->id,
+        null,
+        null,
+        null,
+        '',
+        TimePresenceStatusFilter::All,
+        $teamIds,
+        true,
+    );
+
+    expect($dashboard->kpis->notClockedIn)->toBe(1)
+        ->and($dashboard->teamBuckets->sum('absentCount'))->toBe(1)
+        ->and($dashboard->teamBuckets->flatMap(fn ($b) => $b->absentWorkers)->count())->toBe(1);
+});
+
+it('toont afwezige werknemers in board-weergave', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $clockedIn = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Aanwezig',
+    ]);
+    $absent = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Afwezig',
+    ]);
+    app(ClockInAction::class)->handle($clockedIn, $clockPoint);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSet('viewMode', 'board')
+        ->assertSee('Jan Aanwezig', false)
+        ->assertSee('Piet Afwezig', false);
 });
 
 it('wisselt tussen board-, teams-, teamkaarten- en locatie-weergave', function () {

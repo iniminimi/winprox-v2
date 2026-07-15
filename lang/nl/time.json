@@ -61,9 +61,6 @@
         },
         "view_modes": "Weergave",
         "board_absent_title": "Afwezig / Extra actie",
-        "board_attention_pill": "Aandacht: :count",
-        "board_expected_pill": "Verwacht: :count",
-        "board_column_filtered": "Gebruik filter Alle om deze kolom te vullen.",
         "attention_board_subtitle": "Open shifts die aandacht vragen",
         "view": {
             "board": "Board",
