@@ -1,7 +1,7 @@
-<div class="wp-stack" wire:poll.visible.30s data-manual-capture="time-presence">
-    @php
-        $presenceView = \App\Enums\TimePresenceViewMode::tryFromRequest($viewMode);
-    @endphp
+@php
+    $presenceView = \App\Enums\TimePresenceViewMode::tryFromRequest($viewMode);
+@endphp
+<div @class(['wp-stack', 'wp-time-presence-page', 'wp-time-presence-page--board' => $presenceView === \App\Enums\TimePresenceViewMode::Board]) wire:poll.visible.30s data-manual-capture="time-presence">
     <x-wp-page-head-title
         :title="__('time.title')"
         help-page="time.presence"
@@ -14,10 +14,12 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
-    @include('partials.wp-time-presence-kpis', [
-        'kpis' => $dashboard->kpis,
-        'statusFilter' => $statusFilter,
-    ])
+    @if ($presenceView !== \App\Enums\TimePresenceViewMode::Board)
+        @include('partials.wp-time-presence-kpis', [
+            'kpis' => $dashboard->kpis,
+            'statusFilter' => $statusFilter,
+        ])
+    @endif
 
     <div class="wp-card wp-filter-panel wp-time-presence-toolbar">
         <div class="wp-filter-form wp-time-presence-toolbar__form">
@@ -90,6 +92,7 @@
             'teamPageSize' => $teamPageSize,
             'showForceClose' => true,
             'showTeam' => $teamFilter === null,
+            'kpis' => $dashboard->kpis,
         ])
     @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Cards)
         @include('partials.wp-time-presence-team-cards', [

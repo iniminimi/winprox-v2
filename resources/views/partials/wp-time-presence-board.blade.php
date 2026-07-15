@@ -6,6 +6,7 @@
     'teamPageSize' => 50,
     'showForceClose' => false,
     'showTeam' => false,
+    'kpis' => null,
 ])
 
 @php
@@ -67,6 +68,25 @@
 @if ($teamBuckets->isEmpty())
     <p class="wp-muted">{{ __('time.presence.empty_section') }}</p>
 @else
+    @if ($kpis !== null)
+        <div class="wp-time-presence-board__summary">
+            @if ($kpis->attention > 0)
+                <a href="{{ route('time.alarms.index') }}" class="wp-pill wp-pill--progress wp-time-presence-board__summary-pill">
+                    <x-wp-icon name="alert-triangle" class="wp-time-presence-board__summary-icon" />
+                    {{ __('time.presence.board_attention_pill', ['count' => $kpis->attention]) }}
+                </a>
+            @endif
+            @if ($kpis->notClockedIn > 0)
+                <button type="button"
+                        class="wp-pill wp-time-presence-board__summary-pill wp-time-presence-board__summary-pill--muted"
+                        wire:click="setStatusFilter('absent')">
+                    <x-wp-icon name="team" class="wp-time-presence-board__summary-icon" />
+                    {{ __('time.presence.board_expected_pill', ['count' => $kpis->notClockedIn]) }}
+                </button>
+            @endif
+        </div>
+    @endif
+
     <div class="wp-time-presence-board">
         @if ($showPresentColumn)
             <section class="wp-time-presence-board__column" aria-labelledby="presence-board-present-heading">

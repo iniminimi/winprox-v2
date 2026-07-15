@@ -60,7 +60,9 @@
             "no_break": "Keine Pause nach :hours Stunden"
         },
         "view_modes": "Ansicht",
-        "board_absent_title": "Abwesend",
+        "board_absent_title": "Abwesend / Extra Aktion",
+        "board_attention_pill": "Achtung: :count",
+        "board_expected_pill": "Erwartet: :count",
         "attention_board_subtitle": "Offene Shifts mit Handlungsbedarf",
         "view": {
             "board": "Board",
