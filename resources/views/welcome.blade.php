@@ -370,7 +370,19 @@
                 @endforeach
                 <a href="{{ route('contact.index') }}">{{ __('welcome.footer.contact') }}</a>
             </nav>
-            <p>&copy; <a href="{{ route('welcome.classic') }}" class="wp-welcome-footer-year" title="est. 1995">{{ date('Y') }}</a> WinProx. {{ __('welcome.footer.rights') }}</p>
+            <p class="wp-welcome-footer-copy">
+                <a href="{{ route('welcome.classic') }}" class="wp-welcome-footer-egg" title="est. 1995">
+                    <img
+                        src="{{ asset('images/welcome/1995/easter_egg.gif') }}"
+                        alt=""
+                        width="32"
+                        height="32"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </a>
+                <span>&copy; {{ date('Y') }} WinProx. {{ __('welcome.footer.rights') }}</span>
+            </p>
         </div>
     </footer>
 </body>
