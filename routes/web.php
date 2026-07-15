@@ -71,6 +71,12 @@ use App\Livewire\Public\UnitPortal;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/welcome-1995', function () {
+    return response()
+        ->view('welcome-1995')
+        ->header('X-Robots-Tag', 'noindex, nofollow');
+})->name('welcome.classic');
+
 Route::get('/', function () {
     if (Auth::check()) {
         $user = Auth::user();

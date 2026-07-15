@@ -16,7 +16,18 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertSee(__('welcome.hero.badge'))
         ->assertSee(__('welcome.trust_bar.items.0'))
         ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
-        ->assertSee('/images/promo/og_1.jpg', false);
+        ->assertSee('/images/promo/og_1.jpg', false)
+        ->assertSee(route('welcome.classic'), false);
+});
+
+it('toont de 1995 easter-egg pagina met noindex', function () {
+    $this->get(route('welcome.classic'))
+        ->assertOk()
+        ->assertHeader('X-Robots-Tag', 'noindex, nofollow')
+        ->assertSee('noindex, nofollow', false)
+        ->assertSee('Gastenboek', false)
+        ->assertSee(route('register'), false)
+        ->assertSee(route('welcome'), false);
 });
 
 it('zet open graph meta op de promo-pagina', function () {
