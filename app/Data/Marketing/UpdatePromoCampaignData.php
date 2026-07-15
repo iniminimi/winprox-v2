@@ -15,6 +15,7 @@ final class UpdatePromoCampaignData
         public readonly ?string $letterBodyHtml,
         public readonly ?string $emailSubject,
         public readonly ?string $emailBodyHtml,
+        public readonly bool $attachLetterToEmail,
         public readonly ?string $flowImagePath,
         public readonly ?array $columnMapping,
     ) {}

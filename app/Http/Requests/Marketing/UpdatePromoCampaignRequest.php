@@ -32,6 +32,7 @@ class UpdatePromoCampaignRequest extends FormRequest
             'letterBodyHtml' => ['nullable', 'string'],
             'emailSubject' => ['nullable', 'string', 'max:255'],
             'emailBodyHtml' => ['nullable', 'string'],
+            'attachLetterToEmail' => ['boolean'],
             'flowImagePath' => ['nullable', 'string', 'max:500'],
             'mapName' => ['nullable', 'string', 'max:255'],
             'mapEmail' => ['nullable', 'string', 'max:255'],

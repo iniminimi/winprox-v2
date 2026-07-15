@@ -5,6 +5,7 @@ use App\Actions\Marketing\CreatePromoRecipientAction;
 use App\Actions\Marketing\GeneratePromoCampaignLettersAction;
 use App\Actions\Marketing\ImportPromoCampaignSpreadsheetAction;
 use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
+use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
 use App\Jobs\SendPromoCampaignEmailJob;
@@ -143,6 +144,7 @@ it('genereert docx met paragraaf-spacing in het middenstuk', function () {
                 .'<ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol>',
             emailSubject: null,
             emailBodyHtml: null,
+            attachLetterToEmail: true,
             flowImagePath: null,
             columnMapping: null,
         ),
@@ -258,6 +260,7 @@ it('genereert docx voor campagne-ontvanger', function () {
             letterBodyHtml: '<p>Intro {{name}}</p><p>Les avantages :</p><ol><li data-list="bullet">Punt één</li><li data-list="bullet">Punt twee</li></ol><p>Afsluiting.</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
+            attachLetterToEmail: true,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
             columnMapping: null,
         ),
@@ -452,6 +455,7 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
             letterBodyHtml: '<p>Brief {{name}}</p>',
             emailSubject: 'Onderwerp {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
+            attachLetterToEmail: false,
             flowImagePath: 'public/images/promo/flow_fr.jpg',
             columnMapping: [
                 'name' => 'nom',
@@ -496,6 +500,7 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
         ->letter_body_html->toBe($source->letter_body_html)
         ->email_subject->toBe($source->email_subject)
         ->email_body_html->toBe($source->email_body_html)
+        ->attach_letter_to_email->toBe($source->attach_letter_to_email)
         ->flow_image_path->toBe($source->flow_image_path)
         ->column_mapping->toMatchArray($source->column_mapping);
 
@@ -541,6 +546,7 @@ it('bewaart lege regels in e-mailtekst bij opslaan campagne', function () {
             letterBodyHtml: null,
             emailSubject: 'Onderwerp',
             emailBodyHtml: $emailHtml,
+            attachLetterToEmail: true,
             flowImagePath: null,
             columnMapping: null,
         ),
@@ -685,6 +691,7 @@ function promoCampaignReadyForEmail(User $superuser, string $excelEmail = 'gemee
             letterBodyHtml: '<p>Brief {{name}}</p>',
             emailSubject: 'Test {{name}}',
             emailBodyHtml: '<p>Email {{name}}</p>',
+            attachLetterToEmail: true,
             flowImagePath: null,
             columnMapping: null,
         ),
@@ -790,4 +797,104 @@ it('stuurt testmail alleen naar ingevuld testadres', function () {
 
     $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign->fresh());
     expect($preview['queued'])->toBe(1);
+});
+
+/**
+ * @return array{0: PromoCampaign, 1: PromoCampaignTarget}
+ */
+function promoCampaignReadyForEmailOnly(User $superuser, string $excelEmail = 'gemeente@example.com'): array
+{
+    $campaign = app(CreatePromoCampaignAction::class)->handle(
+        slug: 'email-only-'.uniqid(),
+        name: 'Email only',
+        locale: 'nl',
+        actorUserId: (int) $superuser->id,
+    );
+
+    app(UpdatePromoCampaignAction::class)->handle(
+        campaign: $campaign,
+        data: new UpdatePromoCampaignData(
+            name: 'Email only',
+            locale: 'nl',
+            letterBodyHtml: null,
+            emailSubject: 'Test {{name}}',
+            emailBodyHtml: '<p>Email {{name}} {{promo_url}}</p>',
+            attachLetterToEmail: false,
+            flowImagePath: null,
+            columnMapping: null,
+        ),
+        actorUserId: (int) $superuser->id,
+    );
+
+    $import = PromoCampaignImport::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'original_filename' => 'test.xlsx',
+        'row_count' => 1,
+        'imported_by' => $superuser->id,
+        'imported_at' => now(),
+    ]);
+
+    $target = PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'name' => 'Testgemeente',
+        'email' => $excelEmail,
+        'street_address' => 'Straat 1',
+        'postal_code' => '1000',
+        'city' => 'Brussel',
+    ]);
+
+    return [$campaign->fresh(), $target];
+}
+
+it('verstuurt promo-mail zonder bijlage wanneer brief niet vereist is', function () {
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmailOnly($superuser);
+
+    app(SendPromoCampaignEmailAction::class)->handle(
+        campaign: $campaign,
+        target: $target,
+        actorUserId: (int) $superuser->id,
+        overrideRecipientEmail: 'test@winprox.app',
+    );
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('test@winprox.app')
+            && $mail->docxPath === null
+            && $mail->attachments() === [];
+    });
+});
+
+it('zet bulk-mails in wachtrij zonder brief wanneer bijlage uit staat', function () {
+    Queue::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmailOnly($superuser);
+
+    app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign,
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+    );
+
+    Queue::assertPushed(SendPromoCampaignEmailJob::class);
+});
+
+it('stuurt testmail zonder brief wanneer bijlage uit staat', function () {
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmailOnly($superuser);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaignEdit::class, ['promoCampaign' => $campaign])
+        ->set('testEmailTo', 'test@winprox.app')
+        ->call('sendTestEmail')
+        ->assertSet('noticeType', 'success');
+
+    Mail::assertSent(PromoCampaignLetterMail::class, function (PromoCampaignLetterMail $mail): bool {
+        return $mail->hasTo('test@winprox.app') && $mail->docxPath === null;
+    });
 });

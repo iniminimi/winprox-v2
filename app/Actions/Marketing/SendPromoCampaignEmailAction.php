@@ -10,15 +10,20 @@ use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
+use App\Models\PromoRecipient;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
+use App\Support\Marketing\PromoLandingUrl;
 use Illuminate\Support\Facades\Mail;
 use RuntimeException;
 use Throwable;
 
 class SendPromoCampaignEmailAction
 {
-    public function __construct(private LogAuditAction $logAudit) {}
+    public function __construct(
+        private LogAuditAction $logAudit,
+        private CreatePromoRecipientAction $createPromoRecipient,
+    ) {}
 
     public function handle(
         PromoCampaign $campaign,
@@ -30,8 +35,12 @@ class SendPromoCampaignEmailAction
             throw new RuntimeException('Target does not belong to campaign.');
         }
 
-        if ($target->docx_filename === null || $target->generated_at === null) {
-            throw new RuntimeException('Letter has not been generated for this target.');
+        $attachLetter = $campaign->attach_letter_to_email;
+
+        if ($attachLetter) {
+            if ($target->docx_filename === null || $target->generated_at === null) {
+                throw new RuntimeException('Letter has not been generated for this target.');
+            }
         }
 
         $target->loadMissing('promoRecipient');
@@ -41,9 +50,12 @@ class SendPromoCampaignEmailAction
             throw new RuntimeException('Invalid recipient email.');
         }
 
-        $docxPath = $campaign->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
-        if (! is_file($docxPath)) {
-            throw new RuntimeException('DOCX file not found for target.');
+        $docxPath = null;
+        if ($attachLetter) {
+            $docxPath = $campaign->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
+            if (! is_file($docxPath)) {
+                throw new RuntimeException('DOCX file not found for target.');
+            }
         }
 
         $emailSubject = trim((string) ($campaign->email_subject ?? ''));
@@ -52,13 +64,11 @@ class SendPromoCampaignEmailAction
             throw new RuntimeException('Email subject and body are required.');
         }
 
-        $promoUrl = '';
-        if ($target->promoRecipient !== null) {
-            $promoUrl = \App\Support\Marketing\PromoLandingUrl::forRecipientToken(
-                $target->promoRecipient->token,
-                $campaign->locale,
-            );
-        }
+        $recipient = $this->resolvePromoRecipient($campaign, $target, $actorUserId);
+        $promoUrl = PromoLandingUrl::forRecipientToken(
+            $recipient->token,
+            $campaign->locale,
+        );
 
         $placeholders = PromoCampaignPlaceholderRenderer::forTarget(
             name: $target->name,
@@ -133,6 +143,7 @@ class SendPromoCampaignEmailAction
                     'promo_campaign_id' => $campaign->id,
                     'promo_campaign_target_id' => $target->id,
                     'recipient_email' => $recipientEmail,
+                    'attach_letter' => $attachLetter,
                 ],
             );
 
@@ -150,9 +161,42 @@ class SendPromoCampaignEmailAction
                 'promo_campaign_target_id' => $target->id,
                 'recipient_email' => $recipientEmail,
                 'override_recipient' => false,
+                'attach_letter' => $attachLetter,
             ],
         );
 
         return $send->fresh() ?? $send;
+    }
+
+    private function resolvePromoRecipient(
+        PromoCampaign $campaign,
+        PromoCampaignTarget $target,
+        int $actorUserId,
+    ): PromoRecipient {
+        if ($target->promo_recipient_id !== null) {
+            $existing = PromoRecipient::query()->find($target->promo_recipient_id);
+            if ($existing instanceof PromoRecipient) {
+                return $existing;
+            }
+        }
+
+        $byLabel = PromoRecipient::query()->where('label', $target->name)->first();
+        if ($byLabel instanceof PromoRecipient) {
+            if ($target->promo_recipient_id !== $byLabel->id) {
+                $target->update(['promo_recipient_id' => $byLabel->id]);
+            }
+
+            return $byLabel;
+        }
+
+        $recipient = $this->createPromoRecipient->handle(
+            label: $target->name,
+            note: $campaign->name,
+            actorUserId: $actorUserId,
+        );
+
+        $target->update(['promo_recipient_id' => $recipient->id]);
+
+        return $recipient;
     }
 }

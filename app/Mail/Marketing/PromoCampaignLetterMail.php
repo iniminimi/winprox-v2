@@ -17,7 +17,7 @@ class PromoCampaignLetterMail extends Mailable
     public function __construct(
         public string $emailSubject,
         public string $emailBodyHtml,
-        public string $docxPath,
+        public ?string $docxPath,
         public string $mailLocale,
     ) {
         $this->locale($mailLocale);
@@ -53,6 +53,10 @@ class PromoCampaignLetterMail extends Mailable
      */
     public function attachments(): array
     {
+        if ($this->docxPath === null || ! is_file($this->docxPath)) {
+            return [];
+        }
+
         return [
             Attachment::fromPath($this->docxPath)
                 ->as(basename($this->docxPath))

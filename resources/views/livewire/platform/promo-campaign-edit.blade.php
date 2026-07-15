@@ -71,6 +71,11 @@
                 <input id="email-subject" type="text" class="wp-input" wire:model="emailSubject">
                 @error('emailSubject') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
+            <label class="wp-row wp-gap-xs wp-text-sm">
+                <input type="checkbox" wire:model="attachLetterToEmail">
+                {{ __('platform.promo_campaigns.attach_letter_to_email') }}
+            </label>
+            <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.attach_letter_to_email_hint') }}</p>
             <div
                 wire:ignore
                 class="wp-promo-quill"

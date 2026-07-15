@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PromoCampaign extends Model
 {
+    protected $attributes = [
+        'attach_letter_to_email' => true,
+    ];
+
     protected $fillable = [
         'slug',
         'name',
@@ -15,6 +19,7 @@ class PromoCampaign extends Model
         'letter_body_html',
         'email_subject',
         'email_body_html',
+        'attach_letter_to_email',
         'flow_image_path',
         'column_mapping',
         'created_by',
@@ -24,6 +29,7 @@ class PromoCampaign extends Model
     {
         return [
             'column_mapping' => 'array',
+            'attach_letter_to_email' => 'boolean',
         ];
     }
 

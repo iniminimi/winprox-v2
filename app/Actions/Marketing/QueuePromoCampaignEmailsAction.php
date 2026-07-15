@@ -67,8 +67,10 @@ class QueuePromoCampaignEmailsAction
                 ->all();
         }
 
+        $attachLetter = $campaign->attach_letter_to_email;
+
         foreach ($campaign->targets()->orderBy('id')->get() as $target) {
-            if ($target->generated_at === null || $target->docx_filename === null) {
+            if ($attachLetter && ($target->generated_at === null || $target->docx_filename === null)) {
                 $skipped++;
 
                 continue;
