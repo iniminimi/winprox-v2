@@ -1515,18 +1515,21 @@
 
 @media (min-width: 64rem) {
     [data-theme='standard'] .wp-welcome-trust-bento {
-        grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
+        grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
         grid-template-areas:
             'media aside'
             'chips chips';
         gap: 1rem 1.25rem;
-        align-items: stretch;
+        align-items: start;
     }
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__media {
     grid-area: media;
     padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__aside {
@@ -1543,11 +1546,13 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--wp-text-muted);
+    align-self: stretch;
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__media .wp-video {
     width: 100%;
-    margin-inline: 0;
+    max-width: 21.25rem;
+    margin-inline: auto;
     border: none;
     border-radius: var(--wp-radius);
 }
@@ -1555,13 +1560,15 @@
 [data-theme='standard'] .wp-welcome-trust-bento__media .wp-video-player {
     width: 100%;
     max-height: none;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
     background: var(--wp-surface-2);
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__screenshot {
     margin: 0;
+    width: 100%;
+    max-width: 21.25rem;
 }
 
 [data-theme='standard'] .wp-welcome-trust-bento__screenshot .wp-welcome-screenshot__img {
@@ -1572,7 +1579,9 @@
 
 [data-theme='standard'] .wp-welcome-trust-bento__media .wp-welcome-media-placeholder--video {
     margin-top: 0;
-    aspect-ratio: 16 / 10;
+    width: 100%;
+    max-width: 21.25rem;
+    aspect-ratio: 9 / 16;
     display: flex;
     align-items: center;
     justify-content: center;
