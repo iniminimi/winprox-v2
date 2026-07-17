@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database moet in .env staan.",
         "queue_confirm_title": "Bulk verzenden bevestigen",
         "queue_confirm_body": ":count e-mail(s) worden in de wachtrij gezet naar de adressen uit Excel.",
-        "queue_confirm_skipped": ":skipped ontvanger(s) worden overgeslagen (geen e-mail, geen brief indien vereist, of al verstuurd).",
+        "queue_confirm_skipped": ":skipped ontvanger(s) worden overgeslagen (geen e-mail, uitgeschreven, geen brief indien vereist, of al verstuurd).",
         "queue_confirm_submit": "In wachtrij zetten",
         "queue_none": "Geen mails om in de wachtrij te zetten.",
         "notice_title": "Melding",
@@ -208,6 +208,7 @@
         "email_sent": "mail verstuurd :date",
         "email_sent_to": "mail verstuurd :date naar :email",
         "email_failed": "mail mislukt",
+        "email_unsubscribed": "uitgeschreven — niet verstuurd",
         "email_not_sent": "geen mail",
         "targets_truncated": "Toont :shown van :total ontvangers."
     },

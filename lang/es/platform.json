@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database debe estar en .env.",
         "queue_confirm_title": "Confirmar envío masivo",
         "queue_confirm_body": ":count correo(s) se encolarán a las direcciones del Excel.",
-        "queue_confirm_skipped": ":skipped destinatario(s) se omitirán (sin correo, carta faltante si es obligatoria, o ya enviado).",
+        "queue_confirm_skipped": ":skipped destinatario(s) se omitirán (sin correo, baja, carta faltante si es obligatoria, o ya enviado).",
         "queue_confirm_submit": "Encolar correos",
         "queue_none": "No hay correos para encolar.",
         "notice_title": "Aviso",
@@ -208,6 +208,7 @@
         "email_sent": "correo enviado :date",
         "email_sent_to": "correo enviado :date a :email",
         "email_failed": "correo fallido",
+        "email_unsubscribed": "baja — no enviado",
         "email_not_sent": "sin correo",
         "targets_truncated": "Muestra :shown de :total destinatarios."
     },

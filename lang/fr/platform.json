@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database doit être défini dans .env.",
         "queue_confirm_title": "Confirmer l'envoi en masse",
         "queue_confirm_body": ":count e-mail(s) seront mis en file vers les adresses Excel.",
-        "queue_confirm_skipped": ":skipped destinataire(s) seront ignorés (pas d'e-mail, lettre manquante si requise, ou déjà envoyé).",
+        "queue_confirm_skipped": ":skipped destinataire(s) seront ignorés (pas d'e-mail, désabonné, lettre manquante si requise, ou déjà envoyé).",
         "queue_confirm_submit": "Mettre en file",
         "queue_none": "Aucun e-mail à mettre en file.",
         "notice_title": "Message",
@@ -208,6 +208,7 @@
         "email_sent": "e-mail envoyé :date",
         "email_sent_to": "e-mail envoyé :date vers :email",
         "email_failed": "e-mail échoué",
+        "email_unsubscribed": "désabonné — non envoyé",
         "email_not_sent": "pas d'e-mail",
         "targets_truncated": "Affiche :shown sur :total destinataires."
     },

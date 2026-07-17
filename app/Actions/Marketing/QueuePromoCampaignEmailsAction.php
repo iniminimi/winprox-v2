@@ -6,8 +6,11 @@ namespace App\Actions\Marketing;
 
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Jobs\SendPromoCampaignEmailJob;
+use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaign;
+use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
+use App\Support\EmailUnsubscribeExemptions;
 
 class QueuePromoCampaignEmailsAction
 {
@@ -16,7 +19,12 @@ class QueuePromoCampaignEmailsAction
      */
     public function preview(PromoCampaign $campaign, bool $forceResend = false): array
     {
-        return $this->resolveTargets($campaign, $forceResend);
+        $resolved = $this->resolveTargets($campaign, $forceResend);
+
+        return [
+            'queued' => $resolved['queued'],
+            'skipped' => $resolved['skipped'],
+        ];
     }
 
     /**
@@ -31,6 +39,10 @@ class QueuePromoCampaignEmailsAction
         $delaySeconds = max(0, $delaySeconds);
         $resolved = $this->resolveTargets($campaign, $forceResend);
         $queueIndex = 0;
+
+        foreach ($resolved['unsubscribed_targets'] as $target) {
+            $this->markUnsubscribedSkipped($campaign, $target, $actorUserId);
+        }
 
         foreach ($resolved['targets'] as $target) {
             SendPromoCampaignEmailJob::dispatch(
@@ -50,7 +62,12 @@ class QueuePromoCampaignEmailsAction
     }
 
     /**
-     * @return array{queued: int, skipped: int, targets: list<PromoCampaignTarget>}
+     * @return array{
+     *     queued: int,
+     *     skipped: int,
+     *     targets: list<PromoCampaignTarget>,
+     *     unsubscribed_targets: list<PromoCampaignTarget>
+     * }
      */
     private function resolveTargets(PromoCampaign $campaign, bool $forceResend): array
     {
@@ -58,6 +75,8 @@ class QueuePromoCampaignEmailsAction
         $skipped = 0;
         /** @var list<PromoCampaignTarget> $targets */
         $targets = [];
+        /** @var list<PromoCampaignTarget> $unsubscribedTargets */
+        $unsubscribedTargets = [];
 
         $sentTargetIds = [];
         if (! $forceResend) {
@@ -88,6 +107,17 @@ class QueuePromoCampaignEmailsAction
                 continue;
             }
 
+            $normalizedEmail = EmailUnsubscribe::normalizeEmail((string) $target->email);
+            if (
+                EmailUnsubscribe::isUnsubscribed($normalizedEmail)
+                && ! EmailUnsubscribeExemptions::isExempt($normalizedEmail)
+            ) {
+                $unsubscribedTargets[] = $target;
+                $skipped++;
+
+                continue;
+            }
+
             $targets[] = $target;
             $queued++;
         }
@@ -96,6 +126,31 @@ class QueuePromoCampaignEmailsAction
             'queued' => $queued,
             'skipped' => $skipped,
             'targets' => $targets,
+            'unsubscribed_targets' => $unsubscribedTargets,
         ];
+    }
+
+    private function markUnsubscribedSkipped(
+        PromoCampaign $campaign,
+        PromoCampaignTarget $target,
+        int $actorUserId,
+    ): void {
+        $send = PromoCampaignEmailSend::query()->firstOrNew([
+            'promo_campaign_id' => $campaign->id,
+            'promo_campaign_target_id' => $target->id,
+        ]);
+
+        if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Sent) {
+            return;
+        }
+
+        $send->fill([
+            'recipient_email' => EmailUnsubscribe::normalizeEmail((string) $target->email),
+            'status' => MunicipalPromoEmailSendStatus::Skipped,
+            'error_message' => 'unsubscribed',
+            'sent_at' => null,
+            'created_by' => $actorUserId,
+        ]);
+        $send->save();
     }
 }

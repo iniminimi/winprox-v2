@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database deve essere in .env.",
         "queue_confirm_title": "Conferma invio massivo",
         "queue_confirm_body": ":count email saranno messe in coda agli indirizzi Excel.",
-        "queue_confirm_skipped": ":skipped destinatari saranno saltati (nessuna email, lettera mancante se richiesta, o già inviata).",
+        "queue_confirm_skipped": ":skipped destinatari saranno saltati (nessuna email, disiscritto, lettera mancante se richiesta, o già inviata).",
         "queue_confirm_submit": "Metti in coda",
         "queue_none": "Nessuna email da mettere in coda.",
         "notice_title": "Avviso",
@@ -208,6 +208,7 @@
         "email_sent": "email inviata :date",
         "email_sent_to": "email inviata :date a :email",
         "email_failed": "email fallita",
+        "email_unsubscribed": "disiscritto — non inviata",
         "email_not_sent": "nessuna email",
         "targets_truncated": "Mostra :shown di :total destinatari."
     },

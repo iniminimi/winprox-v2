@@ -7,10 +7,12 @@ namespace App\Actions\Marketing;
 use App\Actions\Audit\LogAuditAction;
 use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Mail\Marketing\PromoCampaignLetterMail;
+use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
 use App\Models\PromoRecipient;
+use App\Support\EmailUnsubscribeExemptions;
 use App\Support\Marketing\PromoCampaignPlaceholderRenderer;
 use App\Support\Marketing\PromoCampaignQuillHtmlNormalizer;
 use App\Support\Marketing\PromoLandingUrl;
@@ -50,6 +52,19 @@ class SendPromoCampaignEmailAction
             throw new RuntimeException('Invalid recipient email.');
         }
 
+        $isTestSend = $overrideRecipientEmail !== null;
+        $normalizedRecipientEmail = EmailUnsubscribe::normalizeEmail($recipientEmail);
+        $isUnsubscribed = EmailUnsubscribe::isUnsubscribed($normalizedRecipientEmail)
+            && ! EmailUnsubscribeExemptions::isExempt($normalizedRecipientEmail);
+
+        if ($isUnsubscribed && $isTestSend) {
+            throw new RuntimeException('Recipient is unsubscribed.');
+        }
+
+        if ($isUnsubscribed && ! $isTestSend) {
+            return $this->markUnsubscribedSkipped($campaign, $target, $normalizedRecipientEmail, $actorUserId);
+        }
+
         $docxPath = null;
         if ($attachLetter) {
             $docxPath = $campaign->lettersDirectory().DIRECTORY_SEPARATOR.$target->docx_filename;
@@ -84,7 +99,6 @@ class SendPromoCampaignEmailAction
             PromoCampaignPlaceholderRenderer::render($emailBodyHtml, $placeholders),
         );
 
-        $isTestSend = $overrideRecipientEmail !== null;
         $send = null;
 
         if (! $isTestSend) {
@@ -162,6 +176,46 @@ class SendPromoCampaignEmailAction
                 'recipient_email' => $recipientEmail,
                 'override_recipient' => false,
                 'attach_letter' => $attachLetter,
+            ],
+        );
+
+        return $send->fresh() ?? $send;
+    }
+
+    private function markUnsubscribedSkipped(
+        PromoCampaign $campaign,
+        PromoCampaignTarget $target,
+        string $normalizedRecipientEmail,
+        int $actorUserId,
+    ): PromoCampaignEmailSend {
+        $send = PromoCampaignEmailSend::query()->firstOrNew([
+            'promo_campaign_id' => $campaign->id,
+            'promo_campaign_target_id' => $target->id,
+        ]);
+
+        if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Sent) {
+            throw new RuntimeException('Email already sent for this target.');
+        }
+
+        $send->fill([
+            'recipient_email' => $normalizedRecipientEmail,
+            'status' => MunicipalPromoEmailSendStatus::Skipped,
+            'error_message' => 'unsubscribed',
+            'sent_at' => null,
+            'created_by' => $actorUserId,
+        ]);
+        $send->save();
+
+        $this->logAudit->handle(
+            userId: $actorUserId,
+            tenantId: null,
+            action: 'marketing.promo_campaign_email_skipped_unsubscribed',
+            modelType: 'PromoCampaignEmailSend',
+            modelId: $send->id,
+            payload: [
+                'promo_campaign_id' => $campaign->id,
+                'promo_campaign_target_id' => $target->id,
+                'recipient_email' => $normalizedRecipientEmail,
             ],
         );
 

@@ -8,10 +8,12 @@ use App\Actions\Marketing\QueuePromoCampaignEmailsAction;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Actions\Marketing\UpdatePromoCampaignAction;
 use App\Data\Marketing\UpdatePromoCampaignData;
+use App\Enums\MunicipalPromoEmailSendStatus;
 use App\Jobs\SendPromoCampaignEmailJob;
 use App\Livewire\Platform\PromoCampaignEdit;
 use App\Livewire\Platform\PromoCampaigns;
 use App\Mail\Marketing\PromoCampaignLetterMail;
+use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignImport;
@@ -764,6 +766,51 @@ it('zet bulk-mails in wachtrij naar excel-adressen zonder testadres', function (
     Queue::assertPushed(SendPromoCampaignEmailJob::class, function (SendPromoCampaignEmailJob $job): bool {
         return $job->overrideRecipientEmail === null;
     });
+});
+
+it('slaat uitgeschreven adressen over bij bulk promo-campagne mails', function () {
+    Queue::fake();
+    Mail::fake();
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'unsub@example.com');
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'unsub@example.com',
+        'unsubscribed_at' => now(),
+    ]);
+
+    $preview = app(QueuePromoCampaignEmailsAction::class)->preview($campaign);
+    expect($preview['queued'])->toBe(0)
+        ->and($preview['skipped'])->toBe(1);
+
+    $result = app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign,
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 0,
+    );
+
+    expect($result['queued'])->toBe(0)
+        ->and($result['skipped'])->toBe(1);
+
+    Queue::assertNothingPushed();
+
+    $send = PromoCampaignEmailSend::query()
+        ->where('promo_campaign_target_id', $target->id)
+        ->first();
+
+    expect($send)->not->toBeNull()
+        ->and($send->status)->toBe(MunicipalPromoEmailSendStatus::Skipped)
+        ->and($send->error_message)->toBe('unsubscribed');
+
+    $sendResult = app(SendPromoCampaignEmailAction::class)->handle(
+        campaign: $campaign->fresh(),
+        target: $target->fresh(),
+        actorUserId: (int) $superuser->id,
+    );
+
+    expect($sendResult?->status)->toBe(MunicipalPromoEmailSendStatus::Skipped);
+    Mail::assertNothingSent();
 });
 
 it('toont bevestigingspopup met aantal mails voor bulk verzenden', function () {

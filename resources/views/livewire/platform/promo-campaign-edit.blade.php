@@ -253,6 +253,9 @@
                                     @else
                                         {{ __('platform.promo_campaigns.email_sent', ['date' => $target->latestSentEmailSend->sent_at?->format('d-m-Y H:i')]) }}
                                     @endif
+                                @elseif ($target->latestEmailSend?->status?->value === 'skipped'
+                                    && $target->latestEmailSend?->error_message === 'unsubscribed')
+                                    {{ __('platform.promo_campaigns.email_unsubscribed') }}
                                 @elseif ($target->latestEmailSend?->status?->value === 'failed')
                                     {{ __('platform.promo_campaigns.email_failed') }}
                                 @else

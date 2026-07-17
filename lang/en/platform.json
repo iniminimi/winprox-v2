@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database must be set in .env.",
         "queue_confirm_title": "Confirm bulk send",
         "queue_confirm_body": ":count email(s) will be queued to the addresses from Excel.",
-        "queue_confirm_skipped": ":skipped recipient(s) will be skipped (no email, missing letter when required, or already sent).",
+        "queue_confirm_skipped": ":skipped recipient(s) will be skipped (no email, unsubscribed, missing letter when required, or already sent).",
         "queue_confirm_submit": "Queue emails",
         "queue_none": "No emails to queue.",
         "notice_title": "Notice",
@@ -208,6 +208,7 @@
         "email_sent": "email sent :date",
         "email_sent_to": "email sent :date to :email",
         "email_failed": "email failed",
+        "email_unsubscribed": "unsubscribed — not sent",
         "email_not_sent": "no email",
         "targets_truncated": "Showing :shown of :total recipients."
     },
