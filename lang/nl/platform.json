@@ -211,7 +211,18 @@
         "email_bounced": "gebounced — niet opnieuw versturen",
         "email_unsubscribed": "uitgeschreven — niet verstuurd",
         "email_not_sent": "geen mail",
-        "targets_truncated": "Toont :shown van :total ontvangers."
+        "targets_truncated": "Toont :shown van :total ontvangers.",
+        "delivery_status": {
+            "complete": "Afgerond",
+            "sending": "Bezig met versturen",
+            "needs_restart": "Herstarten nodig",
+            "not_started": "Nog niet gestart",
+            "no_recipients": "Geen ontvangers"
+        },
+        "delivery_stats": ":sent verstuurd · :remaining nog te sturen · :failed mislukt · :queued in wachtrij",
+        "delivery_restart_hint": "Open de campagne en zet opnieuw Mails in wachtrij (zonder Opnieuw versturen). Alleen de rest wordt gestuurd.",
+        "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan.",
+        "delivery_failed_jobs": ":count job(s) definitief mislukt in de queue."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

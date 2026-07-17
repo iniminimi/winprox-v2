@@ -4,6 +4,7 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
 use App\Models\PromoCampaign;
@@ -128,10 +129,13 @@ class PromoCampaigns extends Component
         $this->redirect(route('platform.promo-campaigns.edit', $campaign), navigate: true);
     }
 
-    public function render()
+    public function render(SummarizePromoCampaignsDeliveryAction $summarize)
     {
+        $campaigns = PromoCampaign::query()->latest('id')->get();
+
         return view('livewire.platform.promo-campaigns', [
-            'campaigns' => PromoCampaign::query()->latest('id')->get(),
+            'campaigns' => $campaigns,
+            'deliverySummaries' => $summarize->handle($campaigns),
         ]);
     }
 }

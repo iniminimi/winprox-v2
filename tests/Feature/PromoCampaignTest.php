@@ -525,6 +525,45 @@ it('kopieert promo-campagne naar nieuwe campagne', function () {
     expect(PromoCampaignTarget::query()->where('promo_campaign_id', $copy->id)->count())->toBe(0);
 });
 
+it('toont verzendstatus per promo-campagne in de lijst', function () {
+    $superuser = User::factory()->superuser()->create();
+    [$campaign, $target] = promoCampaignReadyForEmail($superuser, 'half@example.com');
+
+    PromoCampaignEmailSend::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_target_id' => $target->id,
+        'recipient_email' => 'half@example.com',
+        'status' => MunicipalPromoEmailSendStatus::Sent,
+        'sent_at' => now(),
+        'created_by' => $superuser->id,
+    ]);
+
+    $import = $campaign->imports()->firstOrFail();
+    PromoCampaignTarget::query()->create([
+        'promo_campaign_id' => $campaign->id,
+        'promo_campaign_import_id' => $import->id,
+        'name' => 'Nog te sturen',
+        'email' => 'rest@example.com',
+        'street_address' => 'Straat 2',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+        'docx_filename' => $target->docx_filename,
+        'generated_at' => now(),
+    ]);
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->status)->toBe('needs_restart')
+        ->and($summary->sent)->toBe(1)
+        ->and($summary->remaining)->toBe(1);
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.delivery_status.needs_restart'))
+        ->assertSee(__('platform.promo_campaigns.delivery_restart_hint'));
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 

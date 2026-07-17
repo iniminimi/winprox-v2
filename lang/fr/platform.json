@@ -211,7 +211,18 @@
         "email_unsubscribed": "désabonné — non envoyé",
         "email_not_sent": "pas d'e-mail",
         "targets_truncated": "Affiche :shown sur :total destinataires.",
-        "email_bounced": "bounced — ne sera pas renvoyé"
+        "email_bounced": "bounced — ne sera pas renvoyé",
+        "delivery_status": {
+            "complete": "Terminé",
+            "sending": "Envoi en cours",
+            "needs_restart": "Relance nécessaire",
+            "not_started": "Pas encore démarré",
+            "no_recipients": "Aucun destinataire"
+        },
+        "delivery_stats": ":sent envoyés · :remaining restants · :failed échoués · :queued en file",
+        "delivery_restart_hint": "Ouvrez la campagne et remettez les e-mails en file (sans Renvoyer). Seul le reste sera envoyé.",
+        "delivery_sending_hint": "La file tourne encore. Actualisation auto ; laissez faire.",
+        "delivery_failed_jobs": ":count job(s) définitivement échoué(s) dans la file."
     },
     "manual_screenshots": {
         "nav": "Captures",

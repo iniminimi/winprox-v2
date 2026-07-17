@@ -1,0 +1,31 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Data\Marketing;
+
+final readonly class PromoCampaignDeliverySummaryData
+{
+    public function __construct(
+        public int $targets,
+        public int $withEmail,
+        public int $sent,
+        public int $failed,
+        public int $skipped,
+        public int $remaining,
+        public int $queuedJobs,
+        public int $failedJobs,
+        public string $status,
+    ) {}
+
+    public function pillClass(): string
+    {
+        return match ($this->status) {
+            'complete' => 'wp-pill wp-pill--done',
+            'sending' => 'wp-pill wp-pill--progress',
+            'needs_restart' => 'wp-pill wp-pill--new',
+            'not_started' => 'wp-pill wp-pill--closed',
+            default => 'wp-pill wp-pill--closed',
+        };
+    }
+}

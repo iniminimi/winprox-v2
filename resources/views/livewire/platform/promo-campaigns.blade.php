@@ -44,17 +44,43 @@
         </form>
     </div>
 
-    <div class="wp-card wp-card-pad wp-stack">
+    <div class="wp-card wp-card-pad wp-stack" wire:poll.30s>
         <p class="wp-subhead">{{ __('platform.promo_campaigns.list_title') }}</p>
         @if ($campaigns->isEmpty())
             <p class="wp-muted">{{ __('platform.promo_campaigns.list_empty') }}</p>
         @else
             <div class="wp-list wp-list--entity-rows">
                 @foreach ($campaigns as $campaign)
+                    @php
+                        $summary = $deliverySummaries[$campaign->id] ?? null;
+                    @endphp
                     <div class="wp-list-row" wire:key="campaign-{{ $campaign->id }}">
                         <div class="wp-grow">
                             <p class="wp-text-body"><strong>{{ $campaign->name }}</strong></p>
                             <p class="wp-muted wp-text-sm">{{ $campaign->slug }} · {{ strtoupper($campaign->locale) }}</p>
+                            @if ($summary)
+                                <div class="wp-stack-tight">
+                                    <span class="{{ $summary->pillClass() }}">
+                                        {{ __('platform.promo_campaigns.delivery_status.'.$summary->status) }}
+                                    </span>
+                                    <p class="wp-muted wp-text-sm">
+                                        {{ __('platform.promo_campaigns.delivery_stats', [
+                                            'sent' => $summary->sent,
+                                            'remaining' => $summary->remaining,
+                                            'failed' => $summary->failed,
+                                            'queued' => $summary->queuedJobs,
+                                        ]) }}
+                                    </p>
+                                    @if ($summary->status === 'needs_restart')
+                                        <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_restart_hint') }}</p>
+                                    @elseif ($summary->status === 'sending')
+                                        <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_sending_hint') }}</p>
+                                    @endif
+                                    @if ($summary->failedJobs > 0)
+                                        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.delivery_failed_jobs', ['count' => $summary->failedJobs]) }}</p>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                         <div class="wp-row wp-row--gap-sm">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openCopyModal({{ $campaign->id }})">
