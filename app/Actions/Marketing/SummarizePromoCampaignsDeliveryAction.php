@@ -148,13 +148,8 @@ class SummarizePromoCampaignsDeliveryAction
             ->pluck('payload');
 
         foreach ($rows as $payload) {
-            $payload = (string) $payload;
-            if (preg_match('/promoCampaignId";i:(\d+);/', $payload, $matches) !== 1) {
-                continue;
-            }
-
-            $campaignId = (int) $matches[1];
-            if (! array_key_exists($campaignId, $counts)) {
+            $campaignId = $this->campaignIdFromJobPayload((string) $payload);
+            if ($campaignId === null || ! array_key_exists($campaignId, $counts)) {
                 continue;
             }
 
@@ -162,6 +157,21 @@ class SummarizePromoCampaignsDeliveryAction
         }
 
         return $counts;
+    }
+
+    private function campaignIdFromJobPayload(string $payload): ?int
+    {
+        $command = $payload;
+        $decoded = json_decode($payload, true);
+        if (is_array($decoded)) {
+            $command = (string) ($decoded['data']['command'] ?? $payload);
+        }
+
+        if (preg_match('/promoCampaignId";i:(\d+);/', $command, $matches) !== 1) {
+            return null;
+        }
+
+        return (int) $matches[1];
     }
 
     private function resolveStatus(

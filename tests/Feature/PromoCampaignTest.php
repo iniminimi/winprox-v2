@@ -564,6 +564,27 @@ it('toont verzendstatus per promo-campagne in de lijst', function () {
         ->assertSee(__('platform.promo_campaigns.delivery_restart_hint'));
 });
 
+it('telt database-queue jobs per promo-campagne in de verzendstatus', function () {
+    config(['queue.default' => 'database']);
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'queue-count@example.com');
+
+    SendPromoCampaignEmailJob::dispatch(
+        promoCampaignId: (int) $campaign->id,
+        promoCampaignTargetId: 999,
+        actorUserId: (int) $superuser->id,
+    )->delay(now()->addHour());
+
+    $summary = app(\App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction::class)
+        ->handle(collect([$campaign->fresh()]))[$campaign->id];
+
+    expect($summary->queuedJobs)->toBe(1)
+        ->and($summary->status)->toBe('sending');
+
+    \Illuminate\Support\Facades\DB::table('jobs')->where('payload', 'like', '%SendPromoCampaignEmailJob%')->delete();
+});
+
 it('laat superuser promo-campagnes beheren', function () {
     $superuser = User::factory()->superuser()->create();
 
