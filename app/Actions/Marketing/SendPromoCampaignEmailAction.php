@@ -111,6 +111,10 @@ class SendPromoCampaignEmailAction
                 throw new RuntimeException('Email already sent for this target.');
             }
 
+            if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Bounced) {
+                throw new RuntimeException('Email previously bounced for this target.');
+            }
+
             $send->fill([
                 'recipient_email' => $recipientEmail,
                 'status' => MunicipalPromoEmailSendStatus::Pending,
@@ -193,7 +197,10 @@ class SendPromoCampaignEmailAction
             'promo_campaign_target_id' => $target->id,
         ]);
 
-        if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Sent) {
+        if ($send->exists && in_array($send->status, [
+            MunicipalPromoEmailSendStatus::Sent,
+            MunicipalPromoEmailSendStatus::Bounced,
+        ], true)) {
             throw new RuntimeException('Email already sent for this target.');
         }
 

@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database deve essere in .env.",
         "queue_confirm_title": "Conferma invio massivo",
         "queue_confirm_body": ":count email saranno messe in coda agli indirizzi Excel.",
-        "queue_confirm_skipped": ":skipped destinatari saranno saltati (nessuna email, disiscritto, lettera mancante se richiesta, o già inviata).",
+        "queue_confirm_skipped": ":skipped destinatari saranno saltati (nessuna email, disiscritto, bounced, lettera mancante se richiesta, o già inviata).",
         "queue_confirm_submit": "Metti in coda",
         "queue_none": "Nessuna email da mettere in coda.",
         "notice_title": "Avviso",
@@ -200,7 +200,7 @@
         "test_email_no_letter": "Genera prima almeno una lettera.",
         "test_email_no_target": "Importa prima almeno un destinatario.",
         "test_email_sent": "Email di test inviata a :email.",
-        "stats": ":targets destinatari · :generated lettere · :sent email inviate",
+        "stats": ":targets destinatari · :generated lettere · :sent email inviate · :bounced bounced",
         "save": "Salva",
         "targets_title": "Destinatari (primi 50)",
         "letter_ready": "lettera pronta",
@@ -210,7 +210,8 @@
         "email_failed": "email fallita",
         "email_unsubscribed": "disiscritto — non inviata",
         "email_not_sent": "nessuna email",
-        "targets_truncated": "Mostra :shown di :total destinatari."
+        "targets_truncated": "Mostra :shown di :total destinatari.",
+        "email_bounced": "bounced — non verrà reinviata"
     },
     "manual_screenshots": {
         "nav": "Screenshot",

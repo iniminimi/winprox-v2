@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database debe estar en .env.",
         "queue_confirm_title": "Confirmar envío masivo",
         "queue_confirm_body": ":count correo(s) se encolarán a las direcciones del Excel.",
-        "queue_confirm_skipped": ":skipped destinatario(s) se omitirán (sin correo, baja, carta faltante si es obligatoria, o ya enviado).",
+        "queue_confirm_skipped": ":skipped destinatario(s) se omitirán (sin correo, baja, rebotado, carta faltante si es obligatoria, o ya enviado).",
         "queue_confirm_submit": "Encolar correos",
         "queue_none": "No hay correos para encolar.",
         "notice_title": "Aviso",
@@ -200,7 +200,7 @@
         "test_email_no_letter": "Genere al menos una carta primero.",
         "test_email_no_target": "Importe al menos un destinatario primero.",
         "test_email_sent": "Correo de prueba enviado a :email.",
-        "stats": ":targets destinatarios · :generated cartas · :sent correos enviados",
+        "stats": ":targets destinatarios · :generated cartas · :sent correos enviados · :bounced rebotados",
         "save": "Guardar",
         "targets_title": "Destinatarios (primeros 50)",
         "letter_ready": "carta lista",
@@ -210,7 +210,8 @@
         "email_failed": "correo fallido",
         "email_unsubscribed": "baja — no enviado",
         "email_not_sent": "sin correo",
-        "targets_truncated": "Muestra :shown de :total destinatarios."
+        "targets_truncated": "Muestra :shown de :total destinatarios.",
+        "email_bounced": "rebotado — no se reenviará"
     },
     "manual_screenshots": {
         "nav": "Capturas de pantalla",

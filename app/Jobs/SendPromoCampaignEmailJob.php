@@ -76,6 +76,16 @@ class SendPromoCampaignEmailJob implements ShouldQueue
                 return;
             }
 
+            if ($exception->getMessage() === 'Email previously bounced for this target.') {
+                Log::info('promo_campaign_email_job_skipped', [
+                    'promo_campaign_id' => $this->promoCampaignId,
+                    'promo_campaign_target_id' => $this->promoCampaignTargetId,
+                    'reason' => 'bounced',
+                ]);
+
+                return;
+            }
+
             throw $exception;
         }
     }

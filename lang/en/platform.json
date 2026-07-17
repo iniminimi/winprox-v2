@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database must be set in .env.",
         "queue_confirm_title": "Confirm bulk send",
         "queue_confirm_body": ":count email(s) will be queued to the addresses from Excel.",
-        "queue_confirm_skipped": ":skipped recipient(s) will be skipped (no email, unsubscribed, missing letter when required, or already sent).",
+        "queue_confirm_skipped": ":skipped recipient(s) will be skipped (no email, unsubscribed, bounced, missing letter when required, or already sent).",
         "queue_confirm_submit": "Queue emails",
         "queue_none": "No emails to queue.",
         "notice_title": "Notice",
@@ -200,7 +200,7 @@
         "test_email_no_letter": "Generate at least one letter first.",
         "test_email_no_target": "Import at least one recipient first.",
         "test_email_sent": "Test email sent to :email.",
-        "stats": ":targets recipients · :generated letters · :sent emails sent",
+        "stats": ":targets recipients · :generated letters · :sent emails sent · :bounced bounced",
         "save": "Save",
         "targets_title": "Recipients (first 50)",
         "letter_ready": "letter ready",
@@ -210,7 +210,8 @@
         "email_failed": "email failed",
         "email_unsubscribed": "unsubscribed — not sent",
         "email_not_sent": "no email",
-        "targets_truncated": "Showing :shown of :total recipients."
+        "targets_truncated": "Showing :shown of :total recipients.",
+        "email_bounced": "bounced — will not resend"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

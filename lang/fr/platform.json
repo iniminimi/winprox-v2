@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database doit être défini dans .env.",
         "queue_confirm_title": "Confirmer l'envoi en masse",
         "queue_confirm_body": ":count e-mail(s) seront mis en file vers les adresses Excel.",
-        "queue_confirm_skipped": ":skipped destinataire(s) seront ignorés (pas d'e-mail, désabonné, lettre manquante si requise, ou déjà envoyé).",
+        "queue_confirm_skipped": ":skipped destinataire(s) seront ignorés (pas d'e-mail, désabonné, bounced, lettre manquante si requise, ou déjà envoyé).",
         "queue_confirm_submit": "Mettre en file",
         "queue_none": "Aucun e-mail à mettre en file.",
         "notice_title": "Message",
@@ -200,7 +200,7 @@
         "test_email_no_letter": "Générez d'abord au moins une lettre.",
         "test_email_no_target": "Importez d'abord au moins un destinataire.",
         "test_email_sent": "E-mail test envoyé à :email.",
-        "stats": ":targets destinataires · :generated lettres · :sent e-mails envoyés",
+        "stats": ":targets destinataires · :generated lettres · :sent e-mails envoyés · :bounced bounced",
         "save": "Enregistrer",
         "targets_title": "Destinataires (50 premiers)",
         "letter_ready": "lettre prête",
@@ -210,7 +210,8 @@
         "email_failed": "e-mail échoué",
         "email_unsubscribed": "désabonné — non envoyé",
         "email_not_sent": "pas d'e-mail",
-        "targets_truncated": "Affiche :shown sur :total destinataires."
+        "targets_truncated": "Affiche :shown sur :total destinataires.",
+        "email_bounced": "bounced — ne sera pas renvoyé"
     },
     "manual_screenshots": {
         "nav": "Captures",

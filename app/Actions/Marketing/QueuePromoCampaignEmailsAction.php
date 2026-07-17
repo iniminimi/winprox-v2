@@ -92,10 +92,21 @@ class QueuePromoCampaignEmailsAction
                 ->all();
         }
 
+        $bouncedTargetIds = $campaign->emailSends()
+            ->where('status', MunicipalPromoEmailSendStatus::Bounced)
+            ->pluck('promo_campaign_target_id')
+            ->all();
+
         $attachLetter = $campaign->attach_letter_to_email;
 
         foreach ($campaign->targets()->orderBy('id')->get() as $target) {
             if ($attachLetter && ($target->generated_at === null || $target->docx_filename === null)) {
+                $skipped++;
+
+                continue;
+            }
+
+            if (in_array($target->id, $bouncedTargetIds, true)) {
                 $skipped++;
 
                 continue;
@@ -146,7 +157,10 @@ class QueuePromoCampaignEmailsAction
             'promo_campaign_target_id' => $target->id,
         ]);
 
-        if ($send->exists && $send->status === MunicipalPromoEmailSendStatus::Sent) {
+        if ($send->exists && in_array($send->status, [
+            MunicipalPromoEmailSendStatus::Sent,
+            MunicipalPromoEmailSendStatus::Bounced,
+        ], true)) {
             return;
         }
 

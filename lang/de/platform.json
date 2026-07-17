@@ -189,7 +189,7 @@
         "queue_hint": "QUEUE_CONNECTION=database muss in .env stehen.",
         "queue_confirm_title": "Massenversand bestätigen",
         "queue_confirm_body": ":count E-Mail(s) werden in die Warteschlange gestellt an die Excel-Adressen.",
-        "queue_confirm_skipped": ":skipped Empfänger werden übersprungen (keine E-Mail, abgemeldet, fehlender Brief falls erforderlich, oder bereits gesendet).",
+        "queue_confirm_skipped": ":skipped Empfänger werden übersprungen (keine E-Mail, abgemeldet, gebounced, fehlender Brief falls erforderlich, oder bereits gesendet).",
         "queue_confirm_submit": "In Warteschlange stellen",
         "queue_none": "Keine Mails zum Einreihen.",
         "notice_title": "Hinweis",
@@ -200,7 +200,7 @@
         "test_email_no_letter": "Generieren Sie zuerst mindestens einen Brief.",
         "test_email_no_target": "Importieren Sie zuerst mindestens einen Empfänger.",
         "test_email_sent": "Testmail gesendet an :email.",
-        "stats": ":targets Empfänger · :generated Briefe · :sent Mails gesendet",
+        "stats": ":targets Empfänger · :generated Briefe · :sent Mails gesendet · :bounced gebounced",
         "save": "Speichern",
         "targets_title": "Empfänger (erste 50)",
         "letter_ready": "Brief fertig",
@@ -210,7 +210,8 @@
         "email_failed": "Mail fehlgeschlagen",
         "email_unsubscribed": "abgemeldet — nicht gesendet",
         "email_not_sent": "keine Mail",
-        "targets_truncated": "Zeigt :shown von :total Empfängern."
+        "targets_truncated": "Zeigt :shown von :total Empfängern.",
+        "email_bounced": "gebounced — wird nicht erneut gesendet"
     },
     "manual_screenshots": {
         "nav": "Screenshots",

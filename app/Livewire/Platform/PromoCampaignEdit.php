@@ -317,6 +317,7 @@ class PromoCampaignEdit extends Component
             'targets' => $this->campaign->targets()->count(),
             'generated' => $this->campaign->targets()->whereNotNull('generated_at')->count(),
             'sent' => $this->campaign->emailSends()->where('status', 'sent')->count(),
+            'bounced' => $this->campaign->emailSends()->where('status', 'bounced')->count(),
         ];
 
         return view('livewire.platform.promo-campaign-edit', [
