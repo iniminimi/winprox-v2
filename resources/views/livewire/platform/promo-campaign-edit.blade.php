@@ -208,7 +208,7 @@
             <div class="wp-row wp-gap-md wp-wrap wp-items-end">
                 <div>
                     <label class="wp-label" for="delay-seconds">{{ __('platform.promo_campaigns.delay_seconds') }}</label>
-                    <input id="delay-seconds" type="number" min="0" class="wp-input wp-promo-actions__delay-input" wire:model="delaySeconds">
+                    <input id="delay-seconds" type="number" min="20" class="wp-input wp-promo-actions__delay-input" wire:model="delaySeconds">
                     <p class="wp-muted wp-text-sm wp-mt-1">{{ __('platform.promo_campaigns.delay_seconds_hint') }}</p>
                 </div>
                 <label class="wp-row wp-gap-xs wp-text-sm wp-promo-actions__checkbox">

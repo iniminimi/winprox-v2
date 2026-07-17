@@ -768,6 +768,60 @@ it('zet bulk-mails in wachtrij naar excel-adressen zonder testadres', function (
     });
 });
 
+it('plant opeenvolgende bulk-mails met minstens het ingestelde delay-interval', function () {
+    Queue::fake();
+    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+
+    $superuser = User::factory()->superuser()->create();
+    [$campaign] = promoCampaignReadyForEmail($superuser, 'eerste@example.com');
+
+    $import = $campaign->imports()->firstOrFail();
+    $firstTarget = $campaign->targets()->firstOrFail();
+    $campaign->targets()->create([
+        'promo_campaign_import_id' => $import->id,
+        'promo_recipient_id' => $firstTarget->promo_recipient_id,
+        'name' => 'Tweede gemeente',
+        'email' => 'tweede@example.com',
+        'street_address' => 'Straat 2',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+        'docx_filename' => $firstTarget->docx_filename,
+        'generated_at' => now(),
+    ]);
+
+    app(QueuePromoCampaignEmailsAction::class)->handle(
+        campaign: $campaign->fresh(),
+        actorUserId: (int) $superuser->id,
+        delaySeconds: 16,
+    );
+
+    $delaySeconds = Queue::pushed(SendPromoCampaignEmailJob::class)
+        ->map(function (SendPromoCampaignEmailJob $job): int {
+            if ($job->delay === null) {
+                return 0;
+            }
+
+            return (int) now()->diffInSeconds($job->delay, false);
+        })
+        ->sort()
+        ->values()
+        ->all();
+
+    // First job immediate, second forced to >= min interval (20) even if UI asked 16.
+    expect($delaySeconds)->toHaveCount(2)
+        ->and($delaySeconds[0])->toBeLessThanOrEqual(1)
+        ->and($delaySeconds[1])->toBeGreaterThanOrEqual(19);
+});
+
+it('laat promo-smtp throttle slechts één send-slot per interval toe', function () {
+    config(['winprox.promo_campaign_email_min_interval_seconds' => 20]);
+    \Illuminate\Support\Facades\RateLimiter::clear(\App\Support\Marketing\PromoSmtpThrottle::cacheKey());
+
+    expect(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeTrue()
+        ->and(\App\Support\Marketing\PromoSmtpThrottle::tryAcquire())->toBeFalse()
+        ->and(\App\Support\Marketing\PromoSmtpThrottle::secondsUntilAvailable())->toBeGreaterThan(0);
+});
+
 it('slaat uitgeschreven adressen over bij bulk promo-campagne mails', function () {
     Queue::fake();
     Mail::fake();

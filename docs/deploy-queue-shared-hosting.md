@@ -48,9 +48,16 @@ php artisan schedule:run -v
 
 ## Promo-mails
 
-Jobs met vertraging (`delay-seconds`, standaard 16) worden verwerkt terwijl de cron-worker
+Jobs met vertraging (`delay-seconds`, standaard **20**) worden verwerkt terwijl de cron-worker
 pollt (max. ~55 s per minuut). Verwacht ~1 mail per ingestelde vertraging, niet bursts van
 meerdere mails per seconde.
+
+**Cloud86-limiet:** max. **~250 uitgaande mails per uur** per hostingplan. Daarom:
+- UI/queue forceert minstens 20 seconden tussen bulk-mails (≈ 180/uur, marge voor andere mail);
+- jobs gebruiken daarnaast een **harde SMTP-throttle** (`PromoSmtpThrottle`), zodat ook bij
+  overlappende workers of `delay=0` niet sneller dan 1 mail per interval wordt verzonden.
+
+Env (optioneel): `WINPROX_PROMO_EMAIL_MIN_INTERVAL_SECONDS=20`
 
 Op shared hosting kan er tussen twee worker-runs een korte pauze zitten (cron elke minuut).
 Dat is normaler dan het oude patroon: één mail, dan een minuut wachten, dan 3–4 mails in

@@ -180,7 +180,7 @@
         "test_email_to": "Testadres",
         "test_email_to_hint": "Alleen voor testmail — wordt niet gebruikt bij bulk verzenden.",
         "delay_seconds": "Vertraging tussen mails (sec)",
-        "delay_seconds_hint": "Pauze tussen elke mail in de wachtrij.",
+        "delay_seconds_hint": "Pauze tussen elke mail (min. 20 sec i.v.m. Cloud86-limiet ~250/uur).",
         "test_email": "Testmail versturen",
         "force_send": "Opnieuw versturen",
         "queue_section": "Bulk verzenden",

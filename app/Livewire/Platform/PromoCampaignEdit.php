@@ -59,7 +59,7 @@ class PromoCampaignEdit extends Component
     /** @var list<string> */
     public array $detectedHeaders = [];
 
-    public int $delaySeconds = 16;
+    public int $delaySeconds = 20;
 
     public string $testEmailTo = '';
 

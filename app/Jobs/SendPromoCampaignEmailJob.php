@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Actions\Marketing\SendPromoCampaignEmailAction;
 use App\Models\PromoCampaign;
 use App\Models\PromoCampaignTarget;
+use App\Support\Marketing\PromoSmtpThrottle;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +15,7 @@ class SendPromoCampaignEmailJob implements ShouldQueue
 {
     use Queueable;
 
-    public int $tries = 3;
+    public int $tries = 25;
 
     /** @return list<int> */
     public function backoff(): array
@@ -40,6 +41,19 @@ class SendPromoCampaignEmailJob implements ShouldQueue
                 'promo_campaign_target_id' => $this->promoCampaignTargetId,
                 'reason' => 'not_found',
             ]);
+
+            return;
+        }
+
+        $waitSeconds = PromoSmtpThrottle::secondsUntilAvailable();
+        if ($waitSeconds !== null) {
+            $this->release($waitSeconds);
+
+            return;
+        }
+
+        if (! PromoSmtpThrottle::tryAcquire()) {
+            $this->release(PromoSmtpThrottle::intervalSeconds());
 
             return;
         }

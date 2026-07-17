@@ -180,7 +180,7 @@
         "test_email_to": "Indirizzo email di test",
         "test_email_to_hint": "Solo per email di prova — non usato per l'invio massivo.",
         "delay_seconds": "Ritardo tra email (sec)",
-        "delay_seconds_hint": "Pausa tra ogni email in coda.",
+        "delay_seconds_hint": "Pausa tra email (min. 20 sec; limite Cloud86 ~250/ora).",
         "test_email": "Invia email di test",
         "force_send": "Reinvia",
         "queue_section": "Invio massivo",

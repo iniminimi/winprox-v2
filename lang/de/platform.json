@@ -180,7 +180,7 @@
         "test_email_to": "Test-E-Mail-Adresse",
         "test_email_to_hint": "Nur für Testmail — wird beim Massenversand nicht verwendet.",
         "delay_seconds": "Verzögerung zwischen Mails (Sek)",
-        "delay_seconds_hint": "Pause zwischen jeder Mail in der Warteschlange.",
+        "delay_seconds_hint": "Pause zwischen Mails (min. 20 Sek; Cloud86-Limit ~250/Std).",
         "test_email": "Testmail senden",
         "force_send": "Erneut senden",
         "queue_section": "Massenversand",

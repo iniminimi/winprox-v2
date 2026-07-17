@@ -25,6 +25,12 @@ class QueueMunicipalPromoLetterEmailsAction
         bool $forceResend = false,
     ): array {
         $delaySeconds = max(0, $delaySeconds);
+        if ($delaySeconds > 0) {
+            $delaySeconds = max(
+                $delaySeconds,
+                (int) config('winprox.promo_campaign_email_min_interval_seconds', 20),
+            );
+        }
         $queued = 0;
         $skipped = 0;
         $queueIndex = 0;

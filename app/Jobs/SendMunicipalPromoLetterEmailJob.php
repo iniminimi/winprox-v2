@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Actions\Marketing\ListMunicipalPromoEmailCandidatesAction;
 use App\Actions\Marketing\SendMunicipalPromoLetterEmailAction;
+use App\Support\Marketing\PromoSmtpThrottle;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;
@@ -13,7 +14,7 @@ class SendMunicipalPromoLetterEmailJob implements ShouldQueue
 {
     use Queueable;
 
-    public int $tries = 3;
+    public int $tries = 25;
 
     /** @return list<int> */
     public function backoff(): array
@@ -53,6 +54,19 @@ class SendMunicipalPromoLetterEmailJob implements ShouldQueue
                 'campaign' => $this->campaign,
                 'reason' => $candidate?->blockReason ?? 'not_found',
             ]);
+
+            return;
+        }
+
+        $waitSeconds = PromoSmtpThrottle::secondsUntilAvailable();
+        if ($waitSeconds !== null) {
+            $this->release($waitSeconds);
+
+            return;
+        }
+
+        if (! PromoSmtpThrottle::tryAcquire()) {
+            $this->release(PromoSmtpThrottle::intervalSeconds());
 
             return;
         }

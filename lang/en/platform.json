@@ -180,7 +180,7 @@
         "test_email_to": "Test email address",
         "test_email_to_hint": "For test email only — not used for bulk send.",
         "delay_seconds": "Delay between emails (sec)",
-        "delay_seconds_hint": "Pause between each queued email.",
+        "delay_seconds_hint": "Pause between emails (min. 20 sec; Cloud86 limit ~250/hour).",
         "test_email": "Send test email",
         "force_send": "Resend",
         "queue_section": "Bulk send",

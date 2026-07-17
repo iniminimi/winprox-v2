@@ -180,7 +180,7 @@
         "test_email_to": "Dirección de correo de prueba",
         "test_email_to_hint": "Solo para correo de prueba — no se usa en envío masivo.",
         "delay_seconds": "Retraso entre correos (seg)",
-        "delay_seconds_hint": "Pausa entre cada correo en la cola.",
+        "delay_seconds_hint": "Pausa entre correos (mín. 20 seg; límite Cloud86 ~250/h).",
         "test_email": "Enviar correo de prueba",
         "force_send": "Reenviar",
         "queue_section": "Envío masivo",
