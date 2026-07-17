@@ -48,7 +48,7 @@ it('toont gemeentenaam in welkomstkader bij promo via ref', function () {
 
     $this->get(route('promo', ['ref' => $recipient->token]))
         ->assertOk()
-        ->assertSee(__('promo.recipient_welcome', ['municipality' => 'Aalter']), false);
+        ->assertSee(__('promo.recipient_welcome', ['municipality' => 'Aalter']));
 });
 
 it('logt geen promo-bezoek bij bekende mailscanner user-agent', function () {

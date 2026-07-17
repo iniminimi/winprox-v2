@@ -648,7 +648,7 @@ it('rendert promo-campagne e-mail als html zonder view-fout', function () {
 
 it('voegt campagne-locale toe aan promo-landing-url', function () {
     expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
-        ->toBe('https://winprox.app/promo?ref=prm_4cfe5ddb16702059&lang=fr');
+        ->toBe('https://winprox.app/fr/promo?ref=prm_4cfe5ddb16702059');
 });
 
 it('opent promo-pagina in campagne-locale via ref-link', function () {
@@ -681,7 +681,11 @@ it('opent promo-pagina in campagne-locale via ref-link', function () {
         'generated_at' => now(),
     ]);
 
-    $this->get(route('promo', ['ref' => $recipient->token]))
+    $this->get(route('promo', ['locale' => 'nl', 'ref' => $recipient->token]))
+        ->assertRedirect(route('promo', ['locale' => 'fr', 'ref' => $recipient->token]));
+
+    $this->followingRedirects()
+        ->get(route('promo', ['locale' => 'nl', 'ref' => $recipient->token]))
         ->assertOk()
         ->assertSee(__('promo.video.qr_portal.title', [], 'fr'), false);
 });

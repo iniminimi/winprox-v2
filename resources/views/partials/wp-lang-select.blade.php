@@ -1,8 +1,11 @@
 {{--
   Taalkeuze als dropdown (V1 welcome-hub patroon: details/summary).
-  driver=route → /locale/{code}  |  driver=livewire → switchLocale() op portaal
+  driver=route → marketing: /{locale}/…  | app: /locale/{code}
+  driver=livewire → switchLocale() op portaal
 --}}
 @php
+    use App\Support\Marketing\MarketingSeo;
+
     $variant = $variant ?? 'inline';
     $driver = $driver ?? 'route';
     $livewireMethod = $livewireMethod ?? 'switchLocale';
@@ -37,7 +40,10 @@
                     <span class="notranslate" translate="no">{{ $label }}</span>
                 </button>
             @else
-                <a href="{{ route('locale.switch', $code) }}"
+                @php
+                    $langHref = MarketingSeo::switchUrl($code) ?? route('locale.switch', $code);
+                @endphp
+                <a href="{{ $langHref }}"
                    role="listitem"
                    @class(['wp-lang-select-option', 'is-active' => $current === $code])
                    @if ($current === $code) aria-current="true" @endif>

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ApiDocumentationController;
+use App\Http\Controllers\AdminEmailUnsubscribeController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
 use App\Http\Controllers\LegalDocumentController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
 use App\Http\Controllers\PromoController;
@@ -60,6 +61,7 @@ use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Livewire\Platform\Users as PlatformUsers;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Support\Platform\SupportTenantContext;
+use App\Support\ResolveAppLocale;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockPointsIndex;
@@ -68,8 +70,11 @@ use App\Livewire\Time\ShiftsIndex;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+$localePattern = implode('|', config('locales.supported', ['nl']));
 
 Route::get('/welcome-1995', function () {
     return response()
@@ -77,18 +82,7 @@ Route::get('/welcome-1995', function () {
         ->header('X-Robots-Tag', 'noindex, nofollow');
 })->name('welcome.classic');
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        $user = Auth::user();
-        if ($user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
-            return redirect()->route('platform.tenants');
-        }
-
-        return redirect()->route('dashboard');
-    }
-
-    return view('welcome');
-})->name('welcome');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
@@ -111,18 +105,85 @@ Route::get('/email/resubscribe', [EmailUnsubscribeController::class, 'resubscrib
     ->middleware('signed')
     ->name('email.resubscribe');
 
-Route::get('/contact', Contact::class)->name('contact.index');
-Route::get('/pricing', Pricing::class)->name('pricing');
-Route::get('/promo', [PromoController::class, 'show'])->name('promo');
+/*
+|--------------------------------------------------------------------------
+| Marketing (unieke URL per taal) + legacy redirects zonder locale-prefix
+|--------------------------------------------------------------------------
+*/
+
+$redirectToLocalized = static function (string $routeName) {
+    return static function (Request $request) use ($routeName) {
+        $supported = config('locales.supported', []);
+        $locale = null;
+        $lang = $request->query('lang');
+        if (is_string($lang)) {
+            $lang = strtolower(trim($lang));
+            if (in_array($lang, $supported, true)) {
+                $locale = $lang;
+            }
+        }
+        $locale ??= ResolveAppLocale::resolve($request);
+
+        $query = $request->query();
+        unset($query['lang']);
+
+        return redirect()->route($routeName, array_merge($query, ['locale' => $locale]));
+    };
+};
+
+Route::get('/', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
+            return redirect()->route('platform.tenants');
+        }
+
+        return redirect()->route('dashboard');
+    }
+
+    $locale = ResolveAppLocale::resolve(request());
+
+    return redirect()->route('welcome', ['locale' => $locale]);
+})->name('home');
+
+Route::get('/promo', $redirectToLocalized('promo'));
+Route::get('/pricing', $redirectToLocalized('pricing'));
+Route::get('/contact', $redirectToLocalized('contact.index'));
+
+foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+    Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
+}
+
+Route::prefix('{locale}')
+    ->where(['locale' => $localePattern])
+    ->group(function () {
+        Route::get('/', function () {
+            if (Auth::check()) {
+                $user = Auth::user();
+                if ($user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
+                    return redirect()->route('platform.tenants');
+                }
+
+                return redirect()->route('dashboard');
+            }
+
+            return view('welcome');
+        })->name('welcome');
+
+        Route::get('/contact', Contact::class)->name('contact.index');
+        Route::get('/pricing', Pricing::class)->name('pricing');
+        Route::get('/promo', [PromoController::class, 'show'])->name('promo');
+
+        foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+            Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
+                return app(LegalDocumentController::class)->show(request(), $legalDoc);
+            })->name($legalMeta['route']);
+        }
+    });
+
 Route::post('/promo/track/video', PromoVideoTrackController::class)
     ->middleware('throttle:60,1')
     ->name('promo.track.video');
-
-foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
-    Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
-        return app(LegalDocumentController::class)->show(request(), $legalDoc);
-    })->name($legalMeta['route']);
-}
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->name('login');

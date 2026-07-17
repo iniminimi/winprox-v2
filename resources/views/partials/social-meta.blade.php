@@ -11,6 +11,7 @@
 ])
 
 @php
+    use App\Support\Marketing\MarketingSeo;
     use App\Support\Marketing\PromoOgImage;
 
     $socialTitle = $title ?? __('common.social.og_title');
@@ -20,10 +21,18 @@
     $socialImageWidth = $imageWidth ?? $promoOg['width'];
     $socialImageHeight = $imageHeight ?? $promoOg['height'];
     $socialImageType = $imageType ?? $promoOg['type'];
-    $socialUrl = $url ?? url()->current();
+    $canonicalUrl = MarketingSeo::canonicalUrl();
+    $socialUrl = $url ?? $canonicalUrl ?? url()->current();
+    $hreflangLinks = MarketingSeo::alternateLinks();
 @endphp
 
 <meta name="description" content="{{ $socialDescription }}">
+@if ($canonicalUrl)
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+@endif
+@foreach ($hreflangLinks as $hreflang)
+    <link rel="alternate" hreflang="{{ $hreflang['hreflang'] }}" href="{{ $hreflang['href'] }}">
+@endforeach
 <meta property="og:title" content="{{ $socialTitle }}">
 <meta property="og:description" content="{{ $socialDescription }}">
 <meta property="og:site_name" content="WinProx">

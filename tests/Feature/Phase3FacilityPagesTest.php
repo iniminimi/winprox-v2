@@ -32,12 +32,10 @@ it('toont de 1995 easter-egg pagina met noindex', function () {
 });
 
 it('zet open graph meta op de promo-pagina', function () {
-    app()->setLocale('en');
-
-    $this->get(route('promo'))
+    $this->get(route('promo', ['locale' => 'en']))
         ->assertOk()
-        ->assertSee('property="og:title" content="'.__('promo.social.og_title').'"', false)
-        ->assertSee('property="og:description" content="'.__('promo.social.og_description').'"', false)
+        ->assertSee('property="og:title" content="'.__('promo.social.og_title', [], 'en').'"', false)
+        ->assertSee('property="og:description" content="'.__('promo.social.og_description', [], 'en').'"', false)
         ->assertSee('/images/promo/og_1.jpg', false);
 });
 
@@ -56,8 +54,7 @@ it('toont beschikbare promo-video per locale', function () {
 });
 
 it('toont beschikbare promo-video voor franse locale', function () {
-    $this->withSession(['locale' => 'fr'])
-        ->get(route('promo'))
+    $this->get(route('promo', ['locale' => 'fr']))
         ->assertOk()
         ->assertSee(__('promo.video.qr_portal.title', [], 'fr'))
         ->assertSee(__('promo.video.qr_portal.items.0.title', [], 'fr'))
@@ -181,10 +178,10 @@ it('laadt de FAQ-pagina met facility-inhoud', function () {
 });
 
 it('toont privacy-document publiek', function () {
-    $this->get(route('legal.privacy'))
+    $this->get(route('legal.privacy', ['locale' => 'en']))
         ->assertOk()
-        ->assertSee(__('legal.documents.privacy'))
-        ->assertSee(__('legal.applicable_law_notice'))
+        ->assertSee(__('legal.documents.privacy', [], 'en'))
+        ->assertSee(__('legal.applicable_law_notice', [], 'en'))
         ->assertSee('QR reports', false)
         ->assertSee('ESG & Compliance', false);
 });

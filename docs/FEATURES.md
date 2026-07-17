@@ -543,9 +543,13 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 
 ## 11. Welcome / landingspagina (publiek)
 
-**Doel:** publieke marketing-/landingspagina op `/`. Bron: V1 `resources/views/welcome-facility.blade.php`
-+ home-route. **Facility-only, voorlopig ZONDER demo.** In V2 vervangt dit de tijdelijke
-`welcome.blade.php` (nu een stijl-preview).
+**Doel:** publieke marketing-/landingspagina. **Facility-only, voorlopig ZONDER demo.**
+
+**SEO / meertaligheid (hard):** elke marketingpagina heeft een **unieke URL per taal**
+(`/{locale}/`, `/{locale}/promo`, `/{locale}/pricing`, `/{locale}/contact`, `/{locale}/legal/…`).
+`/` en oude paden zonder prefix **redirecten** naar de gelokaliseerde URL. In `<head>`:
+hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in `robots.txt`). App/QR-portals blijven
+cookie/`?lang=` (geen SEO-prefix).
 
 ### 11.1 Structuur (behouden, opgeschoond)
 - **Nav:** WinProx-logo, **taal-pillen** (NL/FR/EN/DE), **Inloggen**, **Account aanmaken**.
@@ -643,7 +647,8 @@ Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder gel
 tenant inactief, locatie inactief, unit inactief, team inactief. 404 bij onbekend token.
 
 ### Locale
-`?lang=nl|fr|en|de` → sessie + cookie (1 jaar); taal-pillen op het portaal; standaard nl.
+`?lang=nl|fr|en|de|es|it` → sessie + cookie (1 jaar); taal-pillen op het portaal; standaard nl.
+(Marketingpagina’s: zie §11 — locale in het pad, niet via `?lang=`.)
 
 ### Layout/UX (alleen structuur, geen kleuren)
 Mobile-first kaart, grote tapbare tegels op home, full-width primaire knoppen, sticky acties,

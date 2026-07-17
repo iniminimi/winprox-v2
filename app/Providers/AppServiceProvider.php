@@ -19,6 +19,7 @@ use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -56,5 +57,8 @@ class AppServiceProvider extends ServiceProvider
 
         Paginator::defaultView('vendor.pagination.tailwind');
         Paginator::defaultSimpleView('vendor.pagination.tailwind');
+
+        // Marketingroutes vereisen {locale}; default voor route()-generatie buiten request-context.
+        URL::defaults(['locale' => config('locales.default', 'nl')]);
     }
 }

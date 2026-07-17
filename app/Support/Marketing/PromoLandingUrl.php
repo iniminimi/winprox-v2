@@ -6,32 +6,28 @@ namespace App\Support\Marketing;
 
 final class PromoLandingUrl
 {
-    public static function anonymous(): string
+    public static function anonymous(?string $locale = null): string
     {
-        return route('promo', absolute: true);
+        return route('promo', [
+            'locale' => self::normalizeLocale($locale) ?? config('locales.default', 'nl'),
+        ], absolute: true);
     }
 
     public static function forRecipientToken(string $token, ?string $locale = null): string
     {
-        $params = ['ref' => $token];
-        $normalizedLocale = self::normalizeLocale($locale);
-        if ($normalizedLocale !== null) {
-            $params['lang'] = $normalizedLocale;
-        }
-
-        return route('promo', $params, absolute: true);
+        return route('promo', [
+            'locale' => self::normalizeLocale($locale) ?? config('locales.default', 'nl'),
+            'ref' => $token,
+        ], absolute: true);
     }
 
     public static function forRecipientTokenOnBaseUrl(string $token, string $baseUrl, ?string $locale = null): string
     {
         $baseUrl = rtrim($baseUrl, '/');
+        $normalizedLocale = self::normalizeLocale($locale) ?? config('locales.default', 'nl');
         $query = 'ref='.rawurlencode($token);
-        $normalizedLocale = self::normalizeLocale($locale);
-        if ($normalizedLocale !== null) {
-            $query .= '&lang='.rawurlencode($normalizedLocale);
-        }
 
-        return $baseUrl.'/promo?'.$query;
+        return $baseUrl.'/'.$normalizedLocale.'/promo?'.$query;
     }
 
     private static function normalizeLocale(?string $locale): ?string
