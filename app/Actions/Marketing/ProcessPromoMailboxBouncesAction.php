@@ -21,7 +21,7 @@ class ProcessPromoMailboxBouncesAction
      *     scanned: int,
      *     bounce_messages: int,
      *     emails_found: int,
-     *     marked: int,
+     *     removed: int,
      *     blocked: int,
      *     dry_run: bool
      * }
@@ -51,7 +51,7 @@ class ProcessPromoMailboxBouncesAction
         $scanned = 0;
         $bounceMessages = 0;
         $emailsFound = 0;
-        $marked = 0;
+        $removed = 0;
         $blocked = 0;
 
         try {
@@ -76,7 +76,7 @@ class ProcessPromoMailboxBouncesAction
 
                 $bounceMessages++;
                 $emailsFound += $result['emails_found'];
-                $marked += $result['marked'];
+                $removed += $result['removed'];
                 $blocked += $result['blocked'];
 
                 if (! $dryRun) {
@@ -99,14 +99,14 @@ class ProcessPromoMailboxBouncesAction
             'scanned' => $scanned,
             'bounce_messages' => $bounceMessages,
             'emails_found' => $emailsFound,
-            'marked' => $marked,
+            'removed' => $removed,
             'blocked' => $blocked,
             'dry_run' => $dryRun,
         ];
     }
 
     /**
-     * @return array{is_bounce: bool, emails_found: int, marked: int, blocked: int}
+     * @return array{is_bounce: bool, emails_found: int, removed: int, blocked: int}
      */
     private function processMessage(Message $message, bool $dryRun): array
     {
@@ -121,13 +121,13 @@ class ProcessPromoMailboxBouncesAction
         }
 
         if (! PromoBounceMessageParser::looksLikeBounce($subject, $from)) {
-            return ['is_bounce' => false, 'emails_found' => 0, 'marked' => 0, 'blocked' => 0];
+            return ['is_bounce' => false, 'emails_found' => 0, 'removed' => 0, 'blocked' => 0];
         }
 
         $body = (string) ($message->getTextBody() ?: $message->getHTMLBody() ?: '');
         $emails = PromoBounceMessageParser::extractRecipientEmails($subject, $body);
 
-        $marked = 0;
+        $removed = 0;
         $blocked = 0;
 
         foreach ($emails as $email) {
@@ -138,7 +138,7 @@ class ProcessPromoMailboxBouncesAction
             }
 
             $result = $this->markBounced->handle($email, 'Undelivered Mail Returned to Sender');
-            $marked += $result['marked'];
+            $removed += $result['removed'];
             if ($result['blocked']) {
                 $blocked++;
             }
@@ -147,7 +147,7 @@ class ProcessPromoMailboxBouncesAction
         return [
             'is_bounce' => true,
             'emails_found' => count($emails),
-            'marked' => $marked,
+            'removed' => $removed,
             'blocked' => $blocked,
         ];
     }
