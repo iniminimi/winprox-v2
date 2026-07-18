@@ -99,7 +99,8 @@
         "source": "Source",
         "source_voluntary": "Désabonnement volontaire",
         "source_undeliverable": "Non remis (bounce)",
-        "source_manual": "Bloqué manuellement"
+        "source_manual": "Bloqué manuellement",
+        "filter_undeliverable": "Non remis (bounce) (:count)"
     },
     "promo_qr": {
         "title": "QR promo",

@@ -264,6 +264,30 @@ it('laat superuser e-mail uitschrijvingen beheren via platform', function () {
     expect(EmailUnsubscribe::isUnsubscribed('block@example.com'))->toBeFalse();
 });
 
+it('filtert platform-uitschrijvingen op onbezorgbaar', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    EmailUnsubscribe::query()->create([
+        'email' => 'zelf@example.com',
+        'source' => \App\Enums\EmailUnsubscribeSource::Voluntary,
+        'unsubscribed_at' => now(),
+    ]);
+    EmailUnsubscribe::query()->create([
+        'email' => 'bounce@example.com',
+        'source' => \App\Enums\EmailUnsubscribeSource::Undeliverable,
+        'unsubscribed_at' => now(),
+    ]);
+
+    Livewire::actingAs($superuser)
+        ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
+        ->assertSee('zelf@example.com')
+        ->assertSee('bounce@example.com')
+        ->assertSee(__('platform.email_unsubscribe.filter_undeliverable', ['count' => 1]))
+        ->set('undeliverableOnly', true)
+        ->assertDontSee('zelf@example.com')
+        ->assertSee('bounce@example.com');
+});
+
 it('toont uitschrijvingen in superuser-menu in plaats van contactberichten', function () {
     $superuser = User::factory()->superuser()->create();
 

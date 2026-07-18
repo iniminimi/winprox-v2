@@ -99,7 +99,8 @@
         "source": "Quelle",
         "source_voluntary": "Selbst abgemeldet",
         "source_undeliverable": "Unzustellbar (Bounce)",
-        "source_manual": "Manuell blockiert"
+        "source_manual": "Manuell blockiert",
+        "filter_undeliverable": "Unzustellbar (Bounce) (:count)"
     },
     "promo_qr": {
         "title": "Promo-QR",

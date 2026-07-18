@@ -99,7 +99,8 @@
         "source": "Origen",
         "source_voluntary": "Baja voluntaria",
         "source_undeliverable": "No entregable (bounce)",
-        "source_manual": "Bloqueado manualmente"
+        "source_manual": "Bloqueado manualmente",
+        "filter_undeliverable": "No entregable (bounce) (:count)"
     },
     "promo_qr": {
         "title": "QR promocional",

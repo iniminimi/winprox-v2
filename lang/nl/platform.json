@@ -99,7 +99,8 @@
         "source": "Bron",
         "source_voluntary": "Zelf uitgeschreven",
         "source_undeliverable": "Onbezorgbaar (bounce)",
-        "source_manual": "Handmatig geblokkeerd"
+        "source_manual": "Handmatig geblokkeerd",
+        "filter_undeliverable": "Onbezorgbaar (bounce) (:count)"
     },
     "promo_qr": {
         "title": "Promotie-QR",

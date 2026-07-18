@@ -99,7 +99,8 @@
         "source": "Origine",
         "source_voluntary": "Disiscrizione volontaria",
         "source_undeliverable": "Non recapitabile (bounce)",
-        "source_manual": "Bloccato manualmente"
+        "source_manual": "Bloccato manualmente",
+        "filter_undeliverable": "Non recapitabile (bounce) (:count)"
     },
     "promo_qr": {
         "title": "QR promozionale",

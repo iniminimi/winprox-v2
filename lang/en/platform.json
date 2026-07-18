@@ -99,7 +99,8 @@
         "source": "Source",
         "source_voluntary": "Unsubscribed by recipient",
         "source_undeliverable": "Undeliverable (bounce)",
-        "source_manual": "Blocked manually"
+        "source_manual": "Blocked manually",
+        "filter_undeliverable": "Undeliverable (bounce) (:count)"
     },
     "promo_qr": {
         "title": "Promo QR",

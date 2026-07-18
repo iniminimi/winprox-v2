@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Contact;
 
+use App\Enums\EmailUnsubscribeSource;
 use App\Models\EmailUnsubscribe;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
@@ -14,14 +15,22 @@ class ListEmailUnsubscribesAction
     /**
      * @return array{
      *     rows: LengthAwarePaginator,
-     *     matchedUsers: Collection<string, User>
+     *     matchedUsers: Collection<string, User>,
+     *     undeliverableCount: int
      * }
      */
-    public function handle(string $search = '', int $page = 1, int $perPage = 50): array
-    {
+    public function handle(
+        string $search = '',
+        int $page = 1,
+        int $perPage = 50,
+        bool $undeliverableOnly = false,
+    ): array {
         $search = trim($search);
 
         $rows = EmailUnsubscribe::query()
+            ->when($undeliverableOnly, function ($query): void {
+                $query->where('source', EmailUnsubscribeSource::Undeliverable);
+            })
             ->when($search !== '', function ($query) use ($search): void {
                 $like = '%'.addcslashes($search, '%_\\').'%';
                 $query->where('email', 'like', $like);
@@ -32,6 +41,9 @@ class ListEmailUnsubscribesAction
         return [
             'rows' => $rows,
             'matchedUsers' => $this->matchedUsers($rows->getCollection()),
+            'undeliverableCount' => EmailUnsubscribe::query()
+                ->where('source', EmailUnsubscribeSource::Undeliverable)
+                ->count(),
         ];
     }
 
