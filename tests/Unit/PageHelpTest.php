@@ -57,3 +57,13 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and(PageHelp::for('portal.time'))->not->toBeNull()
         ->and(PageHelp::for('portal.time')['title'])->toBe('Hulp — Clock Point portaal');
 });
+
+it('laadt paginahulp voor e-mail uitschrijvingen', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('platform.email_unsubscribes');
+
+    expect($help)->not->toBeNull()
+        ->and($help['title'])->toBe('Hulp — E-mail uitschrijvingen')
+        ->and($help['actions'])->not->toBeEmpty();
+});

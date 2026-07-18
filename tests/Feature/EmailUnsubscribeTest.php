@@ -281,7 +281,7 @@ it('filtert platform-uitschrijvingen op onbezorgbaar', function () {
     Livewire::actingAs($superuser)
         ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
         ->assertSee('zelf@example.com')
-        ->assertSee('bounce@example.com')
+        ->assertDontSee('bounce@example.com')
         ->assertSee(__('platform.email_unsubscribe.filter_undeliverable', ['count' => 1]))
         ->set('undeliverableOnly', true)
         ->assertDontSee('zelf@example.com')
@@ -294,7 +294,8 @@ it('toont uitschrijvingen in superuser-menu in plaats van contactberichten', fun
     $this->actingAs($superuser)
         ->get(route('platform.email-unsubscribes'))
         ->assertOk()
-        ->assertSee(__('platform.email_unsubscribe.title'));
+        ->assertSee(__('platform.email_unsubscribe.title'))
+        ->assertSee(\App\Support\PageHelp::for('platform.email_unsubscribes')['title'], false);
 
     $this->actingAs($superuser)
         ->get(route('platform.dashboard'))

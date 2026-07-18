@@ -706,6 +706,31 @@
                 }
             ]
         },
+        "platform.email_unsubscribes": {
+            "title": "Help — Email unsubscribes",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "Manage addresses that no longer receive <strong>WinProx emails</strong> — marketing, contact and system mail. Only superusers see this page."
+                },
+                {
+                    "label": "Block an address",
+                    "text": "Add an email address manually to block it. That row gets the source <strong>Blocked manually</strong>."
+                },
+                {
+                    "label": "Search and filter",
+                    "text": "Search by email address. By default (checkbox off) bounce addresses are hidden. Turn on <strong>Undeliverable (bounce)</strong> to show only addresses blocked automatically after a failed promo email; the count is in parentheses."
+                },
+                {
+                    "label": "Unsubscribe source",
+                    "text": "<strong>Unsubscribed by recipient</strong> = via the unsubscribe link in an email. <strong>Undeliverable (bounce)</strong> = automatic after an undeliverable promo email. <strong>Blocked manually</strong> = via this screen."
+                },
+                {
+                    "label": "Restore",
+                    "text": "<strong>Restore</strong> removes the address from the list; it will receive emails again."
+                }
+            ]
+        },
         "esg.dashboard": {
             "title": "Help — ESG dashboard",
             "actions": [
@@ -974,4 +999,3 @@
         }
     }
 }
-

@@ -706,6 +706,31 @@
                 }
             ]
         },
+        "platform.email_unsubscribes": {
+            "title": "Ayuda — Bajas de correo",
+            "actions": [
+                {
+                    "label": "¿Para qué sirve esta pantalla?",
+                    "text": "Gestione las direcciones que ya no reciben <strong>correos de WinProx</strong> — marketing, contacto y correo del sistema. Solo los superusuarios ven esta página."
+                },
+                {
+                    "label": "Bloquear una dirección",
+                    "text": "Añada manualmente una dirección de correo para bloquearla. Esa fila obtiene el origen <strong>Bloqueado manualmente</strong>."
+                },
+                {
+                    "label": "Búsqueda y filtro",
+                    "text": "Busque por dirección de correo. Por defecto (casilla desmarcada) no se muestran las direcciones bounce. Active <strong>No entregable (bounce)</strong> para ver solo las bloqueadas automáticamente tras un correo promo fallido; el total va entre paréntesis."
+                },
+                {
+                    "label": "Origen de la baja",
+                    "text": "<strong>Baja voluntaria</strong> = mediante el enlace de baja en un correo. <strong>No entregable (bounce)</strong> = automático tras un correo promo no entregable. <strong>Bloqueado manualmente</strong> = desde esta pantalla."
+                },
+                {
+                    "label": "Restablecer",
+                    "text": "<strong>Restablecer</strong> quita la dirección de la lista; volverá a recibir correos."
+                }
+            ]
+        },
         "esg.dashboard": {
             "title": "Ayuda — Panel ESG",
             "actions": [
@@ -974,4 +999,3 @@
         }
     }
 }
-

@@ -28,9 +28,15 @@ class ListEmailUnsubscribesAction
         $search = trim($search);
 
         $rows = EmailUnsubscribe::query()
-            ->when($undeliverableOnly, function ($query): void {
-                $query->where('source', EmailUnsubscribeSource::Undeliverable);
-            })
+            ->when(
+                $undeliverableOnly,
+                function ($query): void {
+                    $query->where('source', EmailUnsubscribeSource::Undeliverable);
+                },
+                function ($query): void {
+                    $query->where('source', '!=', EmailUnsubscribeSource::Undeliverable);
+                },
+            )
             ->when($search !== '', function ($query) use ($search): void {
                 $like = '%'.addcslashes($search, '%_\\').'%';
                 $query->where('email', 'like', $like);

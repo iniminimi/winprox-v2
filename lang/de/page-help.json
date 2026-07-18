@@ -706,6 +706,31 @@
                 }
             ]
         },
+        "platform.email_unsubscribes": {
+            "title": "Hilfe — E-Mail-Abmeldungen",
+            "actions": [
+                {
+                    "label": "Wofür ist dieser Bildschirm?",
+                    "text": "Verwalten Sie Adressen, die keine <strong>WinProx-E-Mails</strong> mehr erhalten — Marketing, Kontakt und Systemmails. Nur Superuser sehen diese Seite."
+                },
+                {
+                    "label": "Adresse sperren",
+                    "text": "Fügen Sie manuell eine E-Mail-Adresse hinzu, um sie zu sperren. Die Zeile erhält die Quelle <strong>Manuell blockiert</strong>."
+                },
+                {
+                    "label": "Suche und Filter",
+                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig (Häkchen aus) sind Bounce-Adressen ausgeblendet. Aktivieren Sie <strong>Unzustellbar (Bounce)</strong>, um nur Adressen zu sehen, die automatisch nach einer fehlgeschlagenen Promo-Mail gesperrt wurden; die Anzahl steht in Klammern."
+                },
+                {
+                    "label": "Quelle der Abmeldung",
+                    "text": "<strong>Selbst abgemeldet</strong> = über den Abmeldelink in einer Mail. <strong>Unzustellbar (Bounce)</strong> = automatisch nach einer unzustellbaren Promo-Mail. <strong>Manuell blockiert</strong> = über diesen Bildschirm."
+                },
+                {
+                    "label": "Wiederherstellen",
+                    "text": "Mit <strong>Wiederherstellen</strong> entfernen Sie die Adresse von der Liste; sie erhält danach wieder E-Mails."
+                }
+            ]
+        },
         "esg.dashboard": {
             "title": "Hilfe — ESG-Dashboard",
             "actions": [
@@ -974,4 +999,3 @@
         }
     }
 }
-

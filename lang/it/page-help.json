@@ -706,6 +706,31 @@
                 }
             ]
         },
+        "platform.email_unsubscribes": {
+            "title": "Aiuto — Disiscrizioni e-mail",
+            "actions": [
+                {
+                    "label": "A cosa serve questa schermata?",
+                    "text": "Gestite gli indirizzi che non ricevono più le <strong>e-mail WinProx</strong> — marketing, contatto e mail di sistema. Solo i superuser vedono questa pagina."
+                },
+                {
+                    "label": "Bloccare un indirizzo",
+                    "text": "Aggiungete manualmente un indirizzo e-mail per bloccarlo. La riga riceve l’origine <strong>Bloccato manualmente</strong>."
+                },
+                {
+                    "label": "Ricerca e filtro",
+                    "text": "Cercate per indirizzo e-mail. Di default (casella spenta) gli indirizzi bounce sono nascosti. Attivate <strong>Non recapitabile (bounce)</strong> per vedere solo gli indirizzi bloccati automaticamente dopo una mail promo non recapitata; il totale è tra parentesi."
+                },
+                {
+                    "label": "Origine della disiscrizione",
+                    "text": "<strong>Disiscrizione volontaria</strong> = tramite il link di disiscrizione in una mail. <strong>Non recapitabile (bounce)</strong> = automatico dopo una mail promo non recapitabile. <strong>Bloccato manualmente</strong> = da questa schermata."
+                },
+                {
+                    "label": "Ripristina",
+                    "text": "Con <strong>Ripristina</strong> rimuovete l’indirizzo dall’elenco; tornerà a ricevere e-mail."
+                }
+            ]
+        },
         "esg.dashboard": {
             "title": "Aiuto — Dashboard ESG",
             "actions": [

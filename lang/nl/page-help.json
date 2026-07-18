@@ -706,6 +706,31 @@
                 }
             ]
         },
+        "platform.email_unsubscribes": {
+            "title": "Hulp — E-mail uitschrijvingen",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Hier beheert u adressen die <strong>geen WinProx-e-mails</strong> meer ontvangen — marketing, contact en systeemmails. Alleen superusers zien deze pagina."
+                },
+                {
+                    "label": "Adres blokkeren",
+                    "text": "Voeg handmatig een e-mailadres toe om het te blokkeren. Die rij krijgt de bron <strong>Handmatig geblokkeerd</strong>."
+                },
+                {
+                    "label": "Zoeken en filter",
+                    "text": "Zoek op e-mailadres. Standaard (vinkje uit) ziet u geen bounce-adressen. Zet <strong>Onbezorgbaar (bounce)</strong> aan om alleen de automatisch geblokkeerde adressen na een mislukte promo-mail te tonen; het aantal staat tussen haakjes."
+                },
+                {
+                    "label": "Bron van de uitschrijving",
+                    "text": "<strong>Zelf uitgeschreven</strong> = via de uitschrijflink in een mail. <strong>Onbezorgbaar (bounce)</strong> = automatisch na een undeliverable promo-mail. <strong>Handmatig geblokkeerd</strong> = via dit scherm."
+                },
+                {
+                    "label": "Herstellen",
+                    "text": "Met <strong>Herstellen</strong> verwijdert u het adres van de lijst; het ontvangt daarna weer e-mails."
+                }
+            ]
+        },
         "esg.dashboard": {
             "title": "Hulp — ESG-dashboard",
             "actions": [
@@ -974,4 +999,3 @@
         }
     }
 }
-

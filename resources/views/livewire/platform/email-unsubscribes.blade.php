@@ -2,6 +2,7 @@
     <x-wp-page-head-title
         icon="contact"
         :title="__('platform.email_unsubscribe.title')"
+        help-page="platform.email_unsubscribes"
         :subtitle="__('platform.email_unsubscribe.subtitle')"
     />
 
