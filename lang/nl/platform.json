@@ -30,7 +30,13 @@
         "recent_users": "Recente gebruikers",
         "recent_audit": "Recente audit",
         "open_audit": "Audit openen",
-        "empty": "Nog geen gegevens."
+        "empty": "Nog geen gegevens.",
+        "welcome_unique_title": "Unieke bezoekers",
+        "welcome_unique_today": "Vandaag",
+        "welcome_unique_7d": "Laatste 7 dagen",
+        "welcome_unique_30d": "Laatste 30 dagen",
+        "welcome_unique_2026": "Totaal 2026",
+        "welcome_locale_title": "Taal bezoekers"
     },
     "users": {
         "nav": "Gebruikers",

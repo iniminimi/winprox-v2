@@ -30,7 +30,13 @@
         "recent_users": "Utilisateurs récents",
         "recent_audit": "Audit récent",
         "open_audit": "Ouvrir l'audit",
-        "empty": "Pas encore de données."
+        "empty": "Pas encore de données.",
+        "welcome_unique_title": "Visiteurs uniques",
+        "welcome_unique_today": "Aujourd'hui",
+        "welcome_unique_7d": "7 derniers jours",
+        "welcome_unique_30d": "30 derniers jours",
+        "welcome_unique_2026": "Total 2026",
+        "welcome_locale_title": "Langues des visiteurs"
     },
     "users": {
         "nav": "Utilisateurs",

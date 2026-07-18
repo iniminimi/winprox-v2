@@ -9,6 +9,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoQrDownloadController;
 use App\Http\Controllers\PromoRecipientQrDownloadController;
@@ -157,18 +158,7 @@ foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
 Route::prefix('{locale}')
     ->where(['locale' => $localePattern])
     ->group(function () {
-        Route::get('/', function () {
-            if (Auth::check()) {
-                $user = Auth::user();
-                if ($user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
-                    return redirect()->route('platform.tenants');
-                }
-
-                return redirect()->route('dashboard');
-            }
-
-            return view('welcome');
-        })->name('welcome');
+        Route::get('/', WelcomeController::class)->name('welcome');
 
         Route::get('/contact', Contact::class)->name('contact.index');
         Route::get('/pricing', Pricing::class)->name('pricing');

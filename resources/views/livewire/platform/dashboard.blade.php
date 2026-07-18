@@ -75,6 +75,41 @@
 
     <div class="wp-grid wp-grid--two">
         <section class="wp-card wp-card-pad wp-stack">
+            <h2 class="wp-section-title">{{ __('platform.dashboard.welcome_unique_title') }}</h2>
+            <dl class="wp-stack-tight">
+                <div class="wp-row">
+                    <dt class="wp-muted wp-text-sm">{{ __('platform.dashboard.welcome_unique_today') }}</dt>
+                    <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->uniqueToday }}</dd>
+                </div>
+                <div class="wp-row">
+                    <dt class="wp-muted wp-text-sm">{{ __('platform.dashboard.welcome_unique_7d') }}</dt>
+                    <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->uniqueLast7Days }}</dd>
+                </div>
+                <div class="wp-row">
+                    <dt class="wp-muted wp-text-sm">{{ __('platform.dashboard.welcome_unique_30d') }}</dt>
+                    <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->uniqueLast30Days }}</dd>
+                </div>
+                <div class="wp-row">
+                    <dt class="wp-muted wp-text-sm">{{ __('platform.dashboard.welcome_unique_2026') }}</dt>
+                    <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->uniqueYear2026 }}</dd>
+                </div>
+            </dl>
+        </section>
+        <section class="wp-card wp-card-pad wp-stack">
+            <h2 class="wp-section-title">{{ __('platform.dashboard.welcome_locale_title') }}</h2>
+            <dl class="wp-stack-tight">
+                @foreach (['nl', 'fr', 'en', 'de'] as $localeCode)
+                    <div class="wp-row">
+                        <dt class="wp-muted wp-text-sm">{{ strtoupper($localeCode) }}</dt>
+                        <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->byLocale[$localeCode] }}</dd>
+                    </div>
+                @endforeach
+            </dl>
+        </section>
+    </div>
+
+    <div class="wp-grid wp-grid--two">
+        <section class="wp-card wp-card-pad wp-stack">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('platform.dashboard.recent_tenants') }}</h2>
             </div>
