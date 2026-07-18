@@ -221,8 +221,7 @@
         },
         "delivery_stats": ":sent inviate · :remaining da inviare · :failed fallite · :queued in coda",
         "delivery_restart_hint": "Apri la campagna e rimetti in coda le email (senza Reinvia). Verrà inviato solo il resto.",
-        "delivery_sending_hint": "La coda è ancora attiva. Aggiornamento automatico; attendi.",
-        "delivery_failed_jobs": ":count job falliti definitivamente in coda."
+        "delivery_sending_hint": "La coda è ancora attiva. Aggiornamento automatico; attendi."
     },
     "manual_screenshots": {
         "nav": "Screenshot",

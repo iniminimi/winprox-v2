@@ -59,9 +59,6 @@ class SummarizePromoCampaignsDeliveryAction
         }
 
         $queuedJobsByCampaign = $this->countJobsByCampaign($ids, 'jobs');
-        $failedJobsByCampaign = Schema::hasTable('failed_jobs')
-            ? $this->countJobsByCampaign($ids, 'failed_jobs')
-            : array_fill_keys($ids, 0);
 
         $summaries = [];
 
@@ -73,7 +70,6 @@ class SummarizePromoCampaignsDeliveryAction
             $skipped = $statusCounts[MunicipalPromoEmailSendStatus::Skipped->value] ?? 0;
             $remaining = $this->countRemaining($campaign);
             $queuedJobs = $queuedJobsByCampaign[$campaignId] ?? 0;
-            $failedJobs = $failedJobsByCampaign[$campaignId] ?? 0;
             $targets = (int) ($targetTotals[$campaignId] ?? 0);
             $withEmail = (int) ($withEmailTotals[$campaignId] ?? 0);
 
@@ -85,7 +81,6 @@ class SummarizePromoCampaignsDeliveryAction
                 skipped: $skipped,
                 remaining: $remaining,
                 queuedJobs: $queuedJobs,
-                failedJobs: $failedJobs,
                 status: $this->resolveStatus(
                     withEmail: $withEmail,
                     sent: $sent,

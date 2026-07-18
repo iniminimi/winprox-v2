@@ -221,8 +221,7 @@
         },
         "delivery_stats": ":sent sent · :remaining left to send · :failed failed · :queued queued",
         "delivery_restart_hint": "Open the campaign and queue emails again (without Resend). Only the remainder will be sent.",
-        "delivery_sending_hint": "Queue is still running. Auto-refreshes; leave it alone.",
-        "delivery_failed_jobs": ":count job(s) permanently failed in the queue."
+        "delivery_sending_hint": "Queue is still running. Auto-refreshes; leave it alone."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

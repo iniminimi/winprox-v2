@@ -76,9 +76,6 @@
                                     @elseif ($summary->status === 'sending')
                                         <p class="wp-text-sm">{{ __('platform.promo_campaigns.delivery_sending_hint') }}</p>
                                     @endif
-                                    @if ($summary->failedJobs > 0)
-                                        <p class="wp-muted wp-text-sm">{{ __('platform.promo_campaigns.delivery_failed_jobs', ['count' => $summary->failedJobs]) }}</p>
-                                    @endif
                                 </div>
                             @endif
                         </div>

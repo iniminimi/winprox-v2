@@ -221,8 +221,7 @@
         },
         "delivery_stats": ":sent verstuurd · :remaining nog te sturen · :failed mislukt · :queued in wachtrij",
         "delivery_restart_hint": "Open de campagne en zet opnieuw Mails in wachtrij (zonder Opnieuw versturen). Alleen de rest wordt gestuurd.",
-        "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan.",
-        "delivery_failed_jobs": ":count job(s) definitief mislukt in de queue."
+        "delivery_sending_hint": "Wachtrij loopt nog. Vernieuwt automatisch; even laten staan."
     },
     "manual_screenshots": {
         "nav": "Screenshots",

@@ -14,7 +14,6 @@ final readonly class PromoCampaignDeliverySummaryData
         public int $skipped,
         public int $remaining,
         public int $queuedJobs,
-        public int $failedJobs,
         public string $status,
     ) {}
 
