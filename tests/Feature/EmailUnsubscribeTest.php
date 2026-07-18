@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
+use Livewire\Livewire;
 use Symfony\Component\Mime\Email;
 
 uses()->group('email');
@@ -237,6 +238,43 @@ describe('WelcomeAccountMail mailable', function () {
             return $mailable->hasTo('newuser@example.com');
         });
     });
+});
+
+it('laat superuser e-mail uitschrijvingen beheren via platform', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    Livewire::actingAs($superuser)
+        ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
+        ->set('newEmail', 'block@example.com')
+        ->call('add')
+        ->assertHasNoErrors()
+        ->assertSee('block@example.com');
+
+    expect(EmailUnsubscribe::isUnsubscribed('block@example.com'))->toBeTrue();
+
+    $row = EmailUnsubscribe::query()->where('email', 'block@example.com')->firstOrFail();
+
+    Livewire::actingAs($superuser)
+        ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
+        ->call('restore', $row->id)
+        ->assertHasNoErrors();
+
+    expect(EmailUnsubscribe::isUnsubscribed('block@example.com'))->toBeFalse();
+});
+
+it('toont uitschrijvingen in superuser-menu in plaats van contactberichten', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $this->actingAs($superuser)
+        ->get(route('platform.email-unsubscribes'))
+        ->assertOk()
+        ->assertSee(__('platform.email_unsubscribe.title'));
+
+    $this->actingAs($superuser)
+        ->get(route('platform.dashboard'))
+        ->assertOk()
+        ->assertSee(__('platform.email_unsubscribe.nav'))
+        ->assertDontSee(__('platform.contact_messages.nav'), false);
 });
 
 describe('Email unsubscribe confirmation route', function () {

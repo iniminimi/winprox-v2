@@ -81,15 +81,21 @@
     },
     "email_unsubscribe": {
         "title": "E-Mail-Abmeldungen",
-        "search_placeholder": "Nach E-Mail-Adresse suchen…",
+        "search_placeholder": "Nach E-Mail suchen…",
         "search": "Suchen",
         "email": "E-Mail",
         "user": "Benutzer",
         "unsubscribed_at": "Abgemeldet am",
         "actions": "Aktionen",
         "restore": "Wiederherstellen",
-        "confirm_restore": "Sind Sie sicher, dass Sie diese E-Mail-Adresse wiederherstellen möchten?",
-        "restored": ":email wurde wiederhergestellt und erhält wieder E-Mails."
+        "confirm_restore": "Möchten Sie diese E-Mail-Adresse wirklich wiederherstellen?",
+        "restored": ":email wurde wiederhergestellt und erhält wieder E-Mails.",
+        "nav": "Abmeldungen",
+        "subtitle": "Adressen, die keine WinProx-E-Mails mehr erhalten. Manuell hinzufügen oder wiederherstellen.",
+        "add_title": "Adresse sperren",
+        "add_submit": "Hinzufügen",
+        "added": ":email wurde zur Abmeldeliste hinzugefügt.",
+        "empty": "Keine Abmeldungen gefunden."
     },
     "promo_qr": {
         "title": "Promo-QR",

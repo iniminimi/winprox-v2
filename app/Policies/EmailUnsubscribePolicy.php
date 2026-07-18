@@ -12,6 +12,11 @@ class EmailUnsubscribePolicy
         return $user->is_superuser;
     }
 
+    public function create(User $user): bool
+    {
+        return $user->is_superuser;
+    }
+
     public function delete(User $user, EmailUnsubscribe $emailUnsubscribe): bool
     {
         return $user->is_superuser;

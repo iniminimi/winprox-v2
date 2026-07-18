@@ -81,15 +81,21 @@
     },
     "email_unsubscribe": {
         "title": "Bajas de correo",
-        "search_placeholder": "Buscar por correo electrónico…",
+        "search_placeholder": "Buscar por correo…",
         "search": "Buscar",
         "email": "Correo",
         "user": "Usuario",
         "unsubscribed_at": "Dado de baja el",
         "actions": "Acciones",
         "restore": "Restaurar",
-        "confirm_restore": "¿Está seguro de que desea restaurar esta dirección de correo?",
-        "restored": ":email ha sido restaurado y volverá a recibir correos."
+        "confirm_restore": "¿Seguro que quieres restaurar esta dirección de correo?",
+        "restored": ":email se ha restaurado y volverá a recibir correos.",
+        "nav": "Bajas",
+        "subtitle": "Direcciones que ya no reciben correos de WinProx. Añadir o restaurar.",
+        "add_title": "Bloquear dirección",
+        "add_submit": "Añadir",
+        "added": ":email se añadió a la lista de bajas.",
+        "empty": "No se encontraron bajas."
     },
     "promo_qr": {
         "title": "QR promocional",

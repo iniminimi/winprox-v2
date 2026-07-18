@@ -80,8 +80,8 @@
         "patterns_required": "Add at least one pattern."
     },
     "email_unsubscribe": {
-        "title": "Email Unsubscribes",
-        "search_placeholder": "Search by email address…",
+        "title": "Email unsubscribes",
+        "search_placeholder": "Search by email…",
         "search": "Search",
         "email": "Email",
         "user": "User",
@@ -89,7 +89,13 @@
         "actions": "Actions",
         "restore": "Restore",
         "confirm_restore": "Are you sure you want to restore this email address?",
-        "restored": ":email has been restored and will receive emails again."
+        "restored": ":email has been restored and will receive emails again.",
+        "nav": "Unsubscribes",
+        "subtitle": "Addresses that no longer receive WinProx emails. Add manually or restore.",
+        "add_title": "Block address",
+        "add_submit": "Add",
+        "added": ":email was added to the unsubscribe list.",
+        "empty": "No unsubscribes found."
     },
     "promo_qr": {
         "title": "Promo QR",

@@ -81,15 +81,21 @@
     },
     "email_unsubscribe": {
         "title": "Désabonnements e-mail",
-        "search_placeholder": "Rechercher par adresse e-mail…",
+        "search_placeholder": "Rechercher par e-mail…",
         "search": "Rechercher",
         "email": "E-mail",
         "user": "Utilisateur",
         "unsubscribed_at": "Désabonné le",
         "actions": "Actions",
         "restore": "Restaurer",
-        "confirm_restore": "Êtes-vous sûr de vouloir restaurer cette adresse e-mail ?",
-        "restored": ":email a été restauré et recevra à nouveau des e-mails."
+        "confirm_restore": "Voulez-vous vraiment restaurer cette adresse e-mail ?",
+        "restored": ":email a été restauré et recevra à nouveau des e-mails.",
+        "nav": "Désabonnements",
+        "subtitle": "Adresses qui ne reçoivent plus les e-mails WinProx. Ajoutez ou restaurez.",
+        "add_title": "Bloquer une adresse",
+        "add_submit": "Ajouter",
+        "added": ":email a été ajouté à la liste de désabonnement.",
+        "empty": "Aucun désabonnement trouvé."
     },
     "promo_qr": {
         "title": "QR promo",

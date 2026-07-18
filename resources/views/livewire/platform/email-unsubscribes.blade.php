@@ -1,0 +1,74 @@
+<div class="wp-stack">
+    <x-wp-page-head-title
+        icon="contact"
+        :title="__('platform.email_unsubscribe.title')"
+        :subtitle="__('platform.email_unsubscribe.subtitle')"
+    />
+
+    @if ($flashMessage)
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $flashType !== 'error',
+            'wp-flash--danger' => $flashType === 'error',
+        ])>{{ $flashMessage }}</div>
+    @endif
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <p class="wp-subhead">{{ __('platform.email_unsubscribe.add_title') }}</p>
+        <form wire:submit="add" class="wp-stack">
+            <div>
+                <label class="wp-label" for="unsubscribe-new-email">{{ __('platform.email_unsubscribe.email') }}</label>
+                <input id="unsubscribe-new-email" type="email" class="wp-input" wire:model="newEmail" autocomplete="off">
+                @error('newEmail') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div>
+                <button type="submit" class="btn btn--primary">{{ __('platform.email_unsubscribe.add_submit') }}</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <label class="wp-label" for="unsubscribe-search">{{ __('platform.email_unsubscribe.search') }}</label>
+        <input id="unsubscribe-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
+               placeholder="{{ __('platform.email_unsubscribe.search_placeholder') }}" autocomplete="off">
+
+        @if ($rows->isEmpty())
+            <p class="wp-muted">{{ __('platform.email_unsubscribe.empty') }}</p>
+        @else
+            <div class="wp-list wp-list--entity-rows">
+                @foreach ($rows as $row)
+                    @php
+                        $matchedUser = $matchedUsers[\App\Models\EmailUnsubscribe::normalizeEmail($row->email)] ?? null;
+                    @endphp
+                    <div class="wp-list-row" wire:key="unsubscribe-{{ $row->id }}">
+                        <div class="wp-grow">
+                            <p class="wp-text-body"><strong>{{ $row->email }}</strong></p>
+                            <p class="wp-muted wp-text-sm">
+                                {{ __('platform.email_unsubscribe.unsubscribed_at') }}:
+                                {{ $row->unsubscribed_at?->format('d-m-Y H:i') ?? '—' }}
+                                @if ($matchedUser)
+                                    · {{ $matchedUser->name }}
+                                    @if ($matchedUser->tenant)
+                                        ({{ $matchedUser->tenant->name }})
+                                    @endif
+                                @endif
+                            </p>
+                        </div>
+                        <button
+                            type="button"
+                            class="btn btn--ghost btn--sm"
+                            wire:click="restore({{ $row->id }})"
+                            wire:confirm="{{ __('platform.email_unsubscribe.confirm_restore') }}"
+                        >
+                            {{ __('platform.email_unsubscribe.restore') }}
+                        </button>
+                    </div>
+                @endforeach
+            </div>
+
+            <div>
+                {{ $rows->links() }}
+            </div>
+        @endif
+    </div>
+</div>

@@ -89,7 +89,13 @@
         "actions": "Acties",
         "restore": "Herstellen",
         "confirm_restore": "Weet je zeker dat je dit e-mailadres wilt herstellen?",
-        "restored": ":email is hersteld en ontvangt weer e-mails."
+        "restored": ":email is hersteld en ontvangt weer e-mails.",
+        "nav": "Uitschrijvingen",
+        "subtitle": "Adressen die geen WinProx-e-mails meer ontvangen. Voeg handmatig toe of herstel.",
+        "add_title": "Adres blokkeren",
+        "add_submit": "Toevoegen",
+        "added": ":email is toegevoegd aan de uitschrijvingen.",
+        "empty": "Geen uitschrijvingen gevonden."
     },
     "promo_qr": {
         "title": "Promotie-QR",

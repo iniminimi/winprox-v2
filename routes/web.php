@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminEmailUnsubscribeController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
@@ -49,6 +48,7 @@ use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
 use App\Livewire\Platform\Audit as PlatformAudit;
+use App\Livewire\Platform\EmailUnsubscribes;
 use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
 use App\Livewire\Platform\Help as PlatformHelp;
@@ -200,6 +200,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/platform/help', PlatformHelp::class)
         ->middleware('superuser')
         ->name('platform.help');
+    Route::get('/platform/email-unsubscribes', EmailUnsubscribes::class)
+        ->middleware('superuser')
+        ->name('platform.email-unsubscribes');
     Route::get('/platform/contact-messages', ContactMessages::class)
         ->middleware('superuser')
         ->name('platform.contact-messages');
@@ -290,8 +293,7 @@ Route::middleware('auth')->group(function () {
 */
 
 Route::middleware(['auth', 'superuser'])->group(function () {
-    Route::get('/admin/email-unsubscribes', [AdminEmailUnsubscribeController::class, 'index'])
-        ->name('admin.email-unsubscribes.index');
-    Route::delete('/admin/email-unsubscribes/{emailUnsubscribe}', [AdminEmailUnsubscribeController::class, 'destroy'])
-        ->name('admin.email-unsubscribes.destroy');
+    Route::get('/admin/email-unsubscribes', function () {
+        return redirect()->route('platform.email-unsubscribes');
+    })->name('admin.email-unsubscribes.index');
 });

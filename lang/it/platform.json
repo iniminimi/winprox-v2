@@ -80,16 +80,22 @@
         "patterns_required": "Aggiunga almeno un pattern."
     },
     "email_unsubscribe": {
-        "title": "Disiscrizioni e-mail",
-        "search_placeholder": "Cerca per indirizzo e-mail…",
+        "title": "Disiscrizioni email",
+        "search_placeholder": "Cerca per email…",
         "search": "Cerca",
-        "email": "E-mail",
+        "email": "Email",
         "user": "Utente",
         "unsubscribed_at": "Disiscritto il",
         "actions": "Azioni",
         "restore": "Ripristina",
-        "confirm_restore": "È sicuro di voler ripristinare questo indirizzo e-mail?",
-        "restored": ":email è stato ripristinato e riceverà di nuovo le e-mail."
+        "confirm_restore": "Sei sicuro di voler ripristinare questo indirizzo email?",
+        "restored": ":email è stato ripristinato e riceverà di nuovo le email.",
+        "nav": "Disiscrizioni",
+        "subtitle": "Indirizzi che non ricevono più email WinProx. Aggiungi o ripristina.",
+        "add_title": "Blocca indirizzo",
+        "add_submit": "Aggiungi",
+        "added": ":email è stato aggiunto all'elenco disiscrizioni.",
+        "empty": "Nessuna disiscrizione trovata."
     },
     "promo_qr": {
         "title": "QR promozionale",
