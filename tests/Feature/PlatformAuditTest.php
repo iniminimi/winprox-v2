@@ -79,3 +79,23 @@ it('zoekt auditregels op menselijke actielabel', function () {
     expect($result['rows'])->toHaveCount(1)
         ->and($result['summaries']->first()['title'])->toBe('E-mail uitgeschreven');
 });
+
+it('toont recente activiteiten op het platform-dashboard', function () {
+    app()->setLocale('nl');
+
+    $superuser = User::factory()->superuser()->create();
+    app(LogAuditAction::class)->handle(
+        userId: $superuser->id,
+        tenantId: null,
+        action: 'issue.approved',
+        modelType: 'Issue',
+        modelId: 9,
+        payload: null,
+    );
+
+    $this->actingAs($superuser)
+        ->get(route('platform.dashboard'))
+        ->assertOk()
+        ->assertSee(__('platform.dashboard.recent_audit'))
+        ->assertSee('Melding goedgekeurd');
+});

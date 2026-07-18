@@ -165,7 +165,7 @@
             <h2 class="wp-section-title">{{ __('platform.dashboard.recent_audit') }}</h2>
             <a href="{{ route('platform.audit') }}" class="btn btn--ghost btn--sm">{{ __('platform.dashboard.open_audit') }}</a>
         </div>
-        @if ($recentAuditLogs->isEmpty())
+        @if ($recentAuditLogs === [])
             <p class="wp-muted">{{ __('platform.dashboard.empty') }}</p>
         @else
             <div class="wp-list wp-list--entity-rows">
