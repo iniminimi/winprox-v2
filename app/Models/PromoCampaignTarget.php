@@ -17,6 +17,7 @@ class PromoCampaignTarget extends Model
         'street_address',
         'postal_code',
         'city',
+        'notes',
         'docx_filename',
         'generated_at',
     ];
