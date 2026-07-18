@@ -573,6 +573,45 @@
     }
 }
 
+/* Compacte welcome-teller op platformdashboard (naast elkaar, weinig witruimte). */
+.wp-platform-welcome-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 40rem) {
+    .wp-platform-welcome-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.wp-platform-welcome-stats__card {
+    padding: 0.85rem 1rem;
+}
+
+.wp-platform-welcome-stats__card .wp-subhead {
+    margin: 0 0 0.5rem;
+}
+
+.wp-platform-welcome-stats__list {
+    margin: 0;
+}
+
+.wp-platform-welcome-stats__list > * + * {
+    margin-top: 0.2rem;
+}
+
+.wp-platform-welcome-stats__list .wp-row {
+    gap: 0.5rem;
+    min-height: 0;
+}
+
+.wp-platform-welcome-stats__list dd {
+    margin: 0;
+    font-weight: 600;
+}
+
 .wp-kpi {
     display: block;
     padding: 1rem 1.125rem;

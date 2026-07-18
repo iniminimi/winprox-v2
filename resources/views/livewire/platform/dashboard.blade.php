@@ -73,10 +73,10 @@
         @endforeach
     </div>
 
-    <div class="wp-grid wp-grid--two">
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">{{ __('platform.dashboard.welcome_unique_title') }}</h2>
-            <dl class="wp-stack-tight">
+    <div class="wp-platform-welcome-stats">
+        <section class="wp-card wp-card-pad wp-platform-welcome-stats__card">
+            <p class="wp-subhead">{{ __('platform.dashboard.welcome_unique_title') }}</p>
+            <dl class="wp-platform-welcome-stats__list">
                 <div class="wp-row">
                     <dt class="wp-muted wp-text-sm">{{ __('platform.dashboard.welcome_unique_today') }}</dt>
                     <dd class="wp-text-body wp-tabular">{{ $welcomeVisitStats->uniqueToday }}</dd>
@@ -95,9 +95,9 @@
                 </div>
             </dl>
         </section>
-        <section class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">{{ __('platform.dashboard.welcome_locale_title') }}</h2>
-            <dl class="wp-stack-tight">
+        <section class="wp-card wp-card-pad wp-platform-welcome-stats__card">
+            <p class="wp-subhead">{{ __('platform.dashboard.welcome_locale_title') }}</p>
+            <dl class="wp-platform-welcome-stats__list">
                 @foreach (['nl', 'fr', 'en', 'de'] as $localeCode)
                     <div class="wp-row">
                         <dt class="wp-muted wp-text-sm">{{ strtoupper($localeCode) }}</dt>
