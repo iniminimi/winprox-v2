@@ -95,7 +95,11 @@
         "add_title": "Block address",
         "add_submit": "Add",
         "added": ":email was added to the unsubscribe list.",
-        "empty": "No unsubscribes found."
+        "empty": "No unsubscribes found.",
+        "source": "Source",
+        "source_voluntary": "Unsubscribed by recipient",
+        "source_undeliverable": "Undeliverable (bounce)",
+        "source_manual": "Blocked manually"
     },
     "promo_qr": {
         "title": "Promo QR",

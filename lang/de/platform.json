@@ -95,7 +95,11 @@
         "add_title": "Adresse sperren",
         "add_submit": "Hinzufügen",
         "added": ":email wurde zur Abmeldeliste hinzugefügt.",
-        "empty": "Keine Abmeldungen gefunden."
+        "empty": "Keine Abmeldungen gefunden.",
+        "source": "Quelle",
+        "source_voluntary": "Selbst abgemeldet",
+        "source_undeliverable": "Unzustellbar (Bounce)",
+        "source_manual": "Manuell blockiert"
     },
     "promo_qr": {
         "title": "Promo-QR",

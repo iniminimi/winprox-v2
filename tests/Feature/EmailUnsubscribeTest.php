@@ -253,9 +253,11 @@ it('laat superuser e-mail uitschrijvingen beheren via platform', function () {
     expect(EmailUnsubscribe::isUnsubscribed('block@example.com'))->toBeTrue();
 
     $row = EmailUnsubscribe::query()->where('email', 'block@example.com')->firstOrFail();
+    expect($row->source)->toBe(\App\Enums\EmailUnsubscribeSource::Manual);
 
     Livewire::actingAs($superuser)
         ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
+        ->assertSee(__('platform.email_unsubscribe.source_manual'))
         ->call('restore', $row->id)
         ->assertHasNoErrors();
 
@@ -316,6 +318,8 @@ describe('Email unsubscribe confirmation route', function () {
         $response->assertViewIs('email.unsubscribed');
         $response->assertViewHas('email', 'test@example.com');
         expect(EmailUnsubscribe::isUnsubscribed($email))->toBeTrue();
+        expect(EmailUnsubscribe::query()->where('email', $email)->value('source'))
+            ->toBe(\App\Enums\EmailUnsubscribeSource::Voluntary);
     });
 
     it('returns 403 for invalid token', function () {

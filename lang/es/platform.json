@@ -95,7 +95,11 @@
         "add_title": "Bloquear dirección",
         "add_submit": "Añadir",
         "added": ":email se añadió a la lista de bajas.",
-        "empty": "No se encontraron bajas."
+        "empty": "No se encontraron bajas.",
+        "source": "Origen",
+        "source_voluntary": "Baja voluntaria",
+        "source_undeliverable": "No entregable (bounce)",
+        "source_manual": "Bloqueado manualmente"
     },
     "promo_qr": {
         "title": "QR promocional",

@@ -53,6 +53,11 @@
                                     @endif
                                 @endif
                             </p>
+                            @if ($row->source)
+                                <p class="wp-text-sm">
+                                    <span class="wp-pill">{{ __($row->source->labelKey()) }}</span>
+                                </p>
+                            @endif
                         </div>
                         <button
                             type="button"

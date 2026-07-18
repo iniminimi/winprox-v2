@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use App\Enums\EmailUnsubscribeSource;
 use Illuminate\Database\Eloquent\Model;
 
 class EmailUnsubscribe extends Model
 {
     protected $fillable = [
         'email',
+        'source',
         'unsubscribed_at',
     ];
 
     protected function casts(): array
     {
         return [
+            'source' => EmailUnsubscribeSource::class,
             'unsubscribed_at' => 'datetime',
         ];
     }

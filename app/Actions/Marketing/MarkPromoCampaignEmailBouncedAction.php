@@ -6,6 +6,7 @@ namespace App\Actions\Marketing;
 
 use App\Actions\Audit\LogAuditAction;
 use App\Actions\Contact\SetEmailSubscriptionAction;
+use App\Enums\EmailUnsubscribeSource;
 use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
@@ -37,7 +38,12 @@ class MarkPromoCampaignEmailBouncedAction
 
         $wasBlocked = EmailUnsubscribe::isUnsubscribed($normalized);
         if (! $wasBlocked) {
-            $this->setEmailSubscription->handle($normalized, true);
+            $this->setEmailSubscription->handle(
+                $normalized,
+                true,
+                null,
+                EmailUnsubscribeSource::Undeliverable,
+            );
         }
 
         $targetIds = PromoCampaignEmailSend::query()

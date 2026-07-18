@@ -95,7 +95,11 @@
         "add_title": "Bloquer une adresse",
         "add_submit": "Ajouter",
         "added": ":email a été ajouté à la liste de désabonnement.",
-        "empty": "Aucun désabonnement trouvé."
+        "empty": "Aucun désabonnement trouvé.",
+        "source": "Source",
+        "source_voluntary": "Désabonnement volontaire",
+        "source_undeliverable": "Non remis (bounce)",
+        "source_manual": "Bloqué manuellement"
     },
     "promo_qr": {
         "title": "QR promo",

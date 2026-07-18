@@ -95,7 +95,11 @@
         "add_title": "Blocca indirizzo",
         "add_submit": "Aggiungi",
         "added": ":email è stato aggiunto all'elenco disiscrizioni.",
-        "empty": "Nessuna disiscrizione trovata."
+        "empty": "Nessuna disiscrizione trovata.",
+        "source": "Origine",
+        "source_voluntary": "Disiscrizione volontaria",
+        "source_undeliverable": "Non recapitabile (bounce)",
+        "source_manual": "Bloccato manualmente"
     },
     "promo_qr": {
         "title": "QR promozionale",

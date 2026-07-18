@@ -950,6 +950,8 @@ it('zet gebouncete promo-adressen op unsubscribe en verwijdert ze uit de campagn
     expect($result['removed'])->toBe(1)
         ->and($result['blocked'])->toBeTrue()
         ->and(EmailUnsubscribe::isUnsubscribed('bounce@example.com'))->toBeTrue()
+        ->and(EmailUnsubscribe::query()->where('email', 'bounce@example.com')->value('source'))
+        ->toBe(\App\Enums\EmailUnsubscribeSource::Undeliverable)
         ->and(PromoCampaignTarget::query()->find($targetId))->toBeNull()
         ->and(PromoCampaignEmailSend::query()->where('promo_campaign_id', $campaign->id)->count())->toBe(0);
 

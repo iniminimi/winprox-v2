@@ -95,7 +95,11 @@
         "add_title": "Adres blokkeren",
         "add_submit": "Toevoegen",
         "added": ":email is toegevoegd aan de uitschrijvingen.",
-        "empty": "Geen uitschrijvingen gevonden."
+        "empty": "Geen uitschrijvingen gevonden.",
+        "source": "Bron",
+        "source_voluntary": "Zelf uitgeschreven",
+        "source_undeliverable": "Onbezorgbaar (bounce)",
+        "source_manual": "Handmatig geblokkeerd"
     },
     "promo_qr": {
         "title": "Promotie-QR",
