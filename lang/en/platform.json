@@ -101,7 +101,7 @@
         "source_undeliverable": "Undeliverable (bounce)",
         "source_manual": "Blocked manually",
         "filter_undeliverable": "Undeliverable (bounce) (:count)",
-        "list_line": ":email, :source on :date"
+        "list_date_prefix": "on"
     },
     "promo_qr": {
         "title": "Promo QR",

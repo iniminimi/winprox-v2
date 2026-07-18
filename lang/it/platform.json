@@ -101,7 +101,7 @@
         "source_undeliverable": "Non recapitabile (bounce)",
         "source_manual": "Bloccato manualmente",
         "filter_undeliverable": "Non recapitabile (bounce) (:count)",
-        "list_line": ":email, :source il :date"
+        "list_date_prefix": "il"
     },
     "promo_qr": {
         "title": "QR promozionale",

@@ -54,15 +54,9 @@
                     <div class="wp-list-row" wire:key="unsubscribe-{{ $row->id }}">
                         <div class="wp-grow">
                             <p class="wp-text-body">
-                                {{ __('platform.email_unsubscribe.list_line', [
-                                    'email' => $row->email,
-                                    'source' => $row->source
-                                        ? mb_strtolower(__($row->source->labelKey()), 'UTF-8')
-                                        : '—',
-                                    'date' => $row->unsubscribed_at?->format('d-m-Y H:i') ?? '—',
-                                ]) }}
+                                <strong>{{ $row->email }}</strong><span class="wp-muted wp-text-sm">, {{ mb_strtolower($row->source ? __($row->source->labelKey()) : '—', 'UTF-8') }} {{ __('platform.email_unsubscribe.list_date_prefix') }} {{ $row->unsubscribed_at?->format('d-m-Y H:i') ?? '—' }}</span>
                                 @if ($matchedUser)
-                                    <span class="wp-muted">
+                                    <span class="wp-muted wp-text-sm">
                                         · {{ $matchedUser->name }}
                                         @if ($matchedUser->tenant)
                                             ({{ $matchedUser->tenant->name }})

@@ -101,7 +101,7 @@
         "source_undeliverable": "Unzustellbar (Bounce)",
         "source_manual": "Manuell blockiert",
         "filter_undeliverable": "Unzustellbar (Bounce) (:count)",
-        "list_line": ":email, :source am :date"
+        "list_date_prefix": "am"
     },
     "promo_qr": {
         "title": "Promo-QR",

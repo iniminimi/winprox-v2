@@ -101,7 +101,7 @@
         "source_undeliverable": "Onbezorgbaar (bounce)",
         "source_manual": "Handmatig geblokkeerd",
         "filter_undeliverable": "Onbezorgbaar (bounce) (:count)",
-        "list_line": ":email, :source datum :date"
+        "list_date_prefix": "datum"
     },
     "promo_qr": {
         "title": "Promotie-QR",
