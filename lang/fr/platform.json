@@ -100,7 +100,8 @@
         "source_voluntary": "Désabonnement volontaire",
         "source_undeliverable": "Non remis (bounce)",
         "source_manual": "Bloqué manuellement",
-        "filter_undeliverable": "Non remis (bounce) (:count)"
+        "filter_undeliverable": "Non remis (bounce) (:count)",
+        "list_line": ":email, :source le :date"
     },
     "promo_qr": {
         "title": "QR promo",

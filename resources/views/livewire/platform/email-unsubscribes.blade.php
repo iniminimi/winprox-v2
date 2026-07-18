@@ -53,22 +53,23 @@
                     @endphp
                     <div class="wp-list-row" wire:key="unsubscribe-{{ $row->id }}">
                         <div class="wp-grow">
-                            <p class="wp-text-body"><strong>{{ $row->email }}</strong></p>
-                            <p class="wp-muted wp-text-sm">
-                                {{ __('platform.email_unsubscribe.unsubscribed_at') }}:
-                                {{ $row->unsubscribed_at?->format('d-m-Y H:i') ?? '—' }}
+                            <p class="wp-text-body">
+                                {{ __('platform.email_unsubscribe.list_line', [
+                                    'email' => $row->email,
+                                    'source' => $row->source
+                                        ? mb_strtolower(__($row->source->labelKey()), 'UTF-8')
+                                        : '—',
+                                    'date' => $row->unsubscribed_at?->format('d-m-Y H:i') ?? '—',
+                                ]) }}
                                 @if ($matchedUser)
-                                    · {{ $matchedUser->name }}
-                                    @if ($matchedUser->tenant)
-                                        ({{ $matchedUser->tenant->name }})
-                                    @endif
+                                    <span class="wp-muted">
+                                        · {{ $matchedUser->name }}
+                                        @if ($matchedUser->tenant)
+                                            ({{ $matchedUser->tenant->name }})
+                                        @endif
+                                    </span>
                                 @endif
                             </p>
-                            @if ($row->source)
-                                <p class="wp-text-sm">
-                                    <span class="wp-pill">{{ __($row->source->labelKey()) }}</span>
-                                </p>
-                            @endif
                         </div>
                         <button
                             type="button"

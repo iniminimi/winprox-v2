@@ -100,7 +100,8 @@
         "source_voluntary": "Disiscrizione volontaria",
         "source_undeliverable": "Non recapitabile (bounce)",
         "source_manual": "Bloccato manualmente",
-        "filter_undeliverable": "Non recapitabile (bounce) (:count)"
+        "filter_undeliverable": "Non recapitabile (bounce) (:count)",
+        "list_line": ":email, :source il :date"
     },
     "promo_qr": {
         "title": "QR promozionale",

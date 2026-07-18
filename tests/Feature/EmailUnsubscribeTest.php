@@ -257,7 +257,7 @@ it('laat superuser e-mail uitschrijvingen beheren via platform', function () {
 
     Livewire::actingAs($superuser)
         ->test(\App\Livewire\Platform\EmailUnsubscribes::class)
-        ->assertSee(__('platform.email_unsubscribe.source_manual'))
+        ->assertSee('block@example.com, '.mb_strtolower(__('platform.email_unsubscribe.source_manual'), 'UTF-8'), false)
         ->call('restore', $row->id)
         ->assertHasNoErrors();
 

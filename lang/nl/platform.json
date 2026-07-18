@@ -100,7 +100,8 @@
         "source_voluntary": "Zelf uitgeschreven",
         "source_undeliverable": "Onbezorgbaar (bounce)",
         "source_manual": "Handmatig geblokkeerd",
-        "filter_undeliverable": "Onbezorgbaar (bounce) (:count)"
+        "filter_undeliverable": "Onbezorgbaar (bounce) (:count)",
+        "list_line": ":email, :source datum :date"
     },
     "promo_qr": {
         "title": "Promotie-QR",

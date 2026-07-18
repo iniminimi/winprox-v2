@@ -100,7 +100,8 @@
         "source_voluntary": "Baja voluntaria",
         "source_undeliverable": "No entregable (bounce)",
         "source_manual": "Bloqueado manualmente",
-        "filter_undeliverable": "No entregable (bounce) (:count)"
+        "filter_undeliverable": "No entregable (bounce) (:count)",
+        "list_line": ":email, :source el :date"
     },
     "promo_qr": {
         "title": "QR promocional",
