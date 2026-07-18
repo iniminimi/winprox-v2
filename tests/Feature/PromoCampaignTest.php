@@ -959,6 +959,17 @@ it('zet gebouncete promo-adressen op unsubscribe en verwijdert ze uit de campagn
     Queue::assertNothingPushed();
 });
 
+it('blokkeert geen Message-ID als bounce-ontvanger', function () {
+    $result = app(\App\Actions\Marketing\MarkPromoCampaignEmailBouncedAction::class)
+        ->handle('178430534480.3659332.10843687058335425167@shared200.cloud86-host.io');
+
+    expect($result['removed'])->toBe(0)
+        ->and($result['blocked'])->toBeFalse()
+        ->and(EmailUnsubscribe::isUnsubscribed(
+            '178430534480.3659332.10843687058335425167@shared200.cloud86-host.io',
+        ))->toBeFalse();
+});
+
 it('toont bevestigingspopup met aantal mails voor bulk verzenden', function () {
     $superuser = User::factory()->superuser()->create();
     [$campaign] = promoCampaignReadyForEmail($superuser);

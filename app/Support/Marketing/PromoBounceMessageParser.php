@@ -20,6 +20,17 @@ final class PromoBounceMessageParser
     ];
 
     /**
+     * Domains that appear in bounce envelopes / Message-IDs, never real recipients.
+     *
+     * @var list<string>
+     */
+    private const REJECTED_DOMAIN_SUFFIXES = [
+        'winprox.app',
+        'cloud86-host.io',
+        'localhost',
+    ];
+
+    /**
      * @return list<string> Normalized email addresses
      */
     public static function extractRecipientEmails(string $subject, string $body): array
@@ -73,6 +84,14 @@ final class PromoBounceMessageParser
     }
 
     /**
+     * Whether an address is a plausible real recipient (not Message-ID / system mail).
+     */
+    public static function isPlausibleRecipientEmail(string $email): bool
+    {
+        return self::normalizeCandidate($email) !== null;
+    }
+
+    /**
      * @return list<string>
      */
     private static function dsnFieldEmails(string $haystack): array
@@ -101,20 +120,29 @@ final class PromoBounceMessageParser
     }
 
     /**
+     * Last-resort extraction near failure keywords — never scrape Message-ID headers.
+     *
      * @return list<string>
      */
     private static function fallbackBodyEmails(string $haystack): array
     {
         $emails = [];
+        $patterns = [
+            '/(?:RCPT\s+TO|Failed\s+recipient|Intended\s+recipient|Recipient\s+address)\s*[:=]?\s*<?([A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,})>?/i',
+            '/The\s+following\s+address(?:es)?[^\n]{0,80}?([A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,})/i',
+            '/(?:to|voor)\s*<?([A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,})>?\s+(?:failed|could not|was not|kon niet)/i',
+        ];
 
-        if (preg_match_all('/[A-Z0-9._%+\-]+@[A-Z0-9.\-]+\.[A-Z]{2,}/i', $haystack, $matches) === false) {
-            return [];
-        }
+        foreach ($patterns as $pattern) {
+            if (preg_match_all($pattern, $haystack, $matches) === false) {
+                continue;
+            }
 
-        foreach ($matches[0] as $raw) {
-            $email = self::normalizeCandidate((string) $raw);
-            if ($email !== null) {
-                $emails[] = $email;
+            foreach ($matches[1] as $raw) {
+                $email = self::normalizeCandidate((string) $raw);
+                if ($email !== null) {
+                    $emails[] = $email;
+                }
             }
         }
 
@@ -132,12 +160,27 @@ final class PromoBounceMessageParser
         }
 
         $email = EmailUnsubscribe::normalizeEmail($raw);
-        $local = strstr($email, '@', true);
-        if ($local === false) {
+        $atPos = strrpos($email, '@');
+        if ($atPos === false) {
+            return null;
+        }
+
+        $local = substr($email, 0, $atPos);
+        $domain = substr($email, $atPos + 1);
+
+        if ($local === '' || $domain === '') {
             return null;
         }
 
         if (in_array($local, self::SYSTEM_LOCAL_PARTS, true)) {
+            return null;
+        }
+
+        if (self::looksLikeMessageIdLocalPart($local)) {
+            return null;
+        }
+
+        if (self::isRejectedDomain($domain)) {
             return null;
         }
 
@@ -152,5 +195,33 @@ final class PromoBounceMessageParser
         }
 
         return $email;
+    }
+
+    private static function looksLikeMessageIdLocalPart(string $local): bool
+    {
+        // Classic Message-ID: 178430534480.3659332.10843687058335425167
+        if (preg_match('/^\d+(?:\.\d+){1,}$/', $local) === 1) {
+            return true;
+        }
+
+        // Hash / MD5-style ids used as Message-ID local parts
+        if (preg_match('/^[a-f0-9]{16,}$/i', $local) === 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static function isRejectedDomain(string $domain): bool
+    {
+        $domain = strtolower($domain);
+
+        foreach (self::REJECTED_DOMAIN_SUFFIXES as $suffix) {
+            if ($domain === $suffix || str_ends_with($domain, '.'.$suffix)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

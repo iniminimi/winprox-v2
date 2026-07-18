@@ -12,7 +12,7 @@ Schedule::command('winprox:recurrence-tick')->dailyAt('06:00');
 Schedule::command('winprox:time-auto-close-stale')->hourly();
 Schedule::command('winprox:time-finalize-qr-grace')->dailyAt('04:15');
 Schedule::command('winprox:retention-prune')->dailyAt('03:30');
-Schedule::command('marketing:process-promo-bounces --all')->hourly();
+Schedule::command('marketing:process-promo-bounces')->hourly();
 Schedule::command('translation:backfill-slots')->dailyAt('01:55');
 Schedule::command('translation:export')->dailyAt('02:00');
 Schedule::command('translation:import')->hourly();

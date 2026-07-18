@@ -277,6 +277,30 @@ it('toont uitschrijvingen in superuser-menu in plaats van contactberichten', fun
         ->assertDontSee(__('platform.contact_messages.nav'), false);
 });
 
+it('purgeert Message-ID uitschrijvingen maar behoudt echte adressen', function () {
+    EmailUnsubscribe::query()->create([
+        'email' => 'lammering@trefoil.nl',
+        'unsubscribed_at' => now(),
+    ]);
+    EmailUnsubscribe::query()->create([
+        'email' => 'b126f9f96778abff0fbddf73cb42a975@winprox.app',
+        'unsubscribed_at' => now(),
+    ]);
+    EmailUnsubscribe::query()->create([
+        'email' => '178430534480.3659332.10843687058335425167@shared200.cloud86-host.io',
+        'unsubscribed_at' => now(),
+    ]);
+
+    $result = app(\App\Actions\Marketing\PurgeBogusEmailUnsubscribesAction::class)->handle();
+
+    expect($result['purged'])->toBe(2)
+        ->and(EmailUnsubscribe::isUnsubscribed('lammering@trefoil.nl'))->toBeTrue()
+        ->and(EmailUnsubscribe::isUnsubscribed('b126f9f96778abff0fbddf73cb42a975@winprox.app'))->toBeFalse()
+        ->and(EmailUnsubscribe::isUnsubscribed(
+            '178430534480.3659332.10843687058335425167@shared200.cloud86-host.io',
+        ))->toBeFalse();
+});
+
 describe('Email unsubscribe confirmation route', function () {
     it('confirms unsubscribe with valid token', function () {
         $email = 'test@example.com';

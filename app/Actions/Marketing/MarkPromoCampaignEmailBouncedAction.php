@@ -9,6 +9,7 @@ use App\Actions\Contact\SetEmailSubscriptionAction;
 use App\Models\EmailUnsubscribe;
 use App\Models\PromoCampaignEmailSend;
 use App\Models\PromoCampaignTarget;
+use App\Support\Marketing\PromoBounceMessageParser;
 use Illuminate\Support\Facades\DB;
 
 class MarkPromoCampaignEmailBouncedAction
@@ -25,8 +26,10 @@ class MarkPromoCampaignEmailBouncedAction
      */
     public function handle(string $recipientEmail, ?string $reason = null): array
     {
-        $normalized = EmailUnsubscribe::normalizeEmail($recipientEmail);
-        if ($normalized === '' || filter_var($normalized, FILTER_VALIDATE_EMAIL) === false) {
+        $normalized = PromoBounceMessageParser::isPlausibleRecipientEmail($recipientEmail)
+            ? EmailUnsubscribe::normalizeEmail($recipientEmail)
+            : '';
+        if ($normalized === '') {
             return ['removed' => 0, 'blocked' => false];
         }
 
