@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Platform;
 
+use App\Actions\Audit\ListPlatformAuditLogsAction;
 use App\Actions\Marketing\SummarizeWelcomeVisitsAction;
-use App\Models\AuditLog;
 use App\Models\HelpChatUnansweredQuestion;
 use App\Models\Issue;
 use App\Models\Task;
@@ -25,8 +25,10 @@ class Dashboard extends Component
         $this->authorize('accessPlatform', User::class);
     }
 
-    public function render(SummarizeWelcomeVisitsAction $summarizeWelcomeVisits)
-    {
+    public function render(
+        SummarizeWelcomeVisitsAction $summarizeWelcomeVisits,
+        ListPlatformAuditLogsAction $listAuditLogs,
+    ) {
         return view('livewire.platform.dashboard', [
             'stats' => [
                 'tenants' => Tenant::query()->count(),
@@ -39,7 +41,7 @@ class Dashboard extends Component
             'welcomeVisitStats' => $summarizeWelcomeVisits->handle(),
             'recentTenants' => Tenant::query()->latest()->take(5)->get(),
             'recentUsers' => User::query()->with('tenant')->latest()->take(5)->get(),
-            'recentAuditLogs' => AuditLog::query()->with(['tenant', 'user'])->latest('created_at')->take(8)->get(),
+            'recentAuditLogs' => $listAuditLogs->recentSummaries(8),
         ]);
     }
 }

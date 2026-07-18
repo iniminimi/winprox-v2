@@ -28,8 +28,8 @@
         "stat_help": "Offene Hilfefragen",
         "recent_tenants": "Neueste Organisationen",
         "recent_users": "Neueste Benutzer",
-        "recent_audit": "Neueste Audit-Einträge",
-        "open_audit": "Audit öffnen",
+        "recent_audit": "Letzte Aktivität",
+        "open_audit": "Alles anzeigen",
         "empty": "Noch keine Daten.",
         "welcome_unique_title": "Eindeutige Besucher",
         "welcome_unique_today": "Heute",
@@ -52,11 +52,12 @@
         "nav": "Kontakt-Nachrichten"
     },
     "audit": {
-        "nav": "Audit",
-        "title": "Plattformaudit",
-        "subtitle": "Neueste Audit-Einträge über alle Organisationen.",
-        "search_placeholder": "Aktion, Modell, Benutzer oder Organisation…",
-        "empty": "Keine Audit-Einträge gefunden."
+        "nav": "Aktivitätsprotokoll",
+        "title": "Aktivitätsprotokoll",
+        "subtitle": "Was kürzlich auf der Plattform und bei Organisationen passiert ist — in klarer Sprache.",
+        "search": "Suchen",
+        "search_placeholder": "Nach Ereignis, Organisation oder Person suchen…",
+        "empty": "Noch keine Aktivitäten gefunden."
     },
     "help_nav": "Hilfe-Verwaltung",
     "help": {

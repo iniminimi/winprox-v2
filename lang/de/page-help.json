@@ -996,6 +996,27 @@
                     "text": "Datenschutzrichtlinie, Allgemeine Geschäftsbedingungen und andere rechtliche Texte von WinProx."
                 }
             ]
+        },
+        "platform.audit": {
+            "title": "Hilfe — Aktivitätsprotokoll",
+            "actions": [
+                {
+                    "label": "Wofür ist dieser Bildschirm?",
+                    "text": "Das ist das <strong>Aktivitätsprotokoll</strong> von WinProx: wer hat was wann bei welcher Organisation gemacht. Klartext statt technischer Codes."
+                },
+                {
+                    "label": "Eine Zeile lesen",
+                    "text": "Der fettgedruckte Satz ist das Ereignis. Danach: Organisation, Person (oder System) und Uhrzeit. Zusätzlicher Kontext steht darunter, falls vorhanden."
+                },
+                {
+                    "label": "Suche",
+                    "text": "Suchen Sie mit normalen Worten (z. B. <em>Meldung</em>, <em>Promo</em>), Organisationsname oder Name/E-Mail des Nutzers."
+                },
+                {
+                    "label": "Warum hilfreich?",
+                    "text": "Um zu sehen, wer eine Meldung genehmigt hat, welche Promo-Kampagne importiert wurde oder wer sich abgemeldet hat — ohne in die Datenbank zu schauen."
+                }
+            ]
         }
     }
 }

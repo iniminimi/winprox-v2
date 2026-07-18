@@ -28,8 +28,8 @@
         "stat_help": "Questions d'aide ouvertes",
         "recent_tenants": "Organisations récentes",
         "recent_users": "Utilisateurs récents",
-        "recent_audit": "Audit récent",
-        "open_audit": "Ouvrir l'audit",
+        "recent_audit": "Activité récente",
+        "open_audit": "Tout voir",
         "empty": "Pas encore de données.",
         "welcome_unique_title": "Visiteurs uniques",
         "welcome_unique_today": "Aujourd'hui",
@@ -52,11 +52,12 @@
         "nav": "Messages Contact"
     },
     "audit": {
-        "nav": "Audit",
-        "title": "Audit plateforme",
-        "subtitle": "Entrées d'audit récentes pour toutes les organisations.",
-        "search_placeholder": "Action, modèle, utilisateur ou organisation…",
-        "empty": "Aucune entrée d'audit trouvée."
+        "nav": "Journal d’activité",
+        "title": "Journal d’activité",
+        "subtitle": "Ce qui s’est passé récemment sur la plateforme et chez les organisations — en langage clair.",
+        "search": "Rechercher",
+        "search_placeholder": "Rechercher par événement, organisation ou personne…",
+        "empty": "Aucune activité trouvée."
     },
     "help_nav": "Gestion aide",
     "help": {

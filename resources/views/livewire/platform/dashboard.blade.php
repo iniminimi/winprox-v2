@@ -170,12 +170,15 @@
         @else
             <div class="wp-list wp-list--entity-rows">
                 @foreach ($recentAuditLogs as $log)
-                    <div class="wp-list-row" wire:key="audit-{{ $log->id }}">
+                    <div class="wp-list-row" wire:key="audit-{{ $log['id'] }}">
                         <div class="wp-grow">
-                            <p class="wp-text-body"><strong>{{ $log->action }}</strong></p>
-                            <p class="wp-muted wp-text-sm">
-                                {{ $log->tenant?->name ?? '—' }} · {{ $log->user?->email ?? '—' }} · {{ $log->created_at?->format('d-m-Y H:i') }}
+                            <p class="wp-text-body">
+                                <strong>{{ $log['title'] }}</strong>
+                                <span class="wp-muted wp-text-sm"> · {{ $log['meta'] }}</span>
                             </p>
+                            @if (! empty($log['context']))
+                                <p class="wp-muted wp-text-sm">{{ $log['context'] }}</p>
+                            @endif
                         </div>
                     </div>
                 @endforeach

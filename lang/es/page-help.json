@@ -996,6 +996,27 @@
                     "text": "Política de privacidad, términos del servicio y otros textos legales de WinProx."
                 }
             ]
+        },
+        "platform.audit": {
+            "title": "Ayuda — Registro de actividad",
+            "actions": [
+                {
+                    "label": "¿Para qué sirve esta pantalla?",
+                    "text": "Es el <strong>registro de actividad</strong> de WinProx: quién hizo qué, cuándo y en qué organización. En lenguaje claro, sin códigos técnicos."
+                },
+                {
+                    "label": "Leer una fila",
+                    "text": "La frase en negrita es el evento. Después: organización, persona (o Sistema) y hora. El contexto extra aparece debajo si está disponible."
+                },
+                {
+                    "label": "Buscar",
+                    "text": "Busque con palabras simples (p. ej. <em>incidencia</em>, <em>promo</em>), nombre de organización o nombre/correo del usuario."
+                },
+                {
+                    "label": "Por qué ayuda",
+                    "text": "Útil para ver quién aprobó una incidencia, qué campaña promo se importó o quién se dio de baja — sin mirar la base de datos."
+                }
+            ]
         }
     }
 }

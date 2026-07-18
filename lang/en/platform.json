@@ -28,8 +28,8 @@
         "stat_help": "Open help questions",
         "recent_tenants": "Recent organisations",
         "recent_users": "Recent users",
-        "recent_audit": "Recent audit",
-        "open_audit": "Open audit",
+        "recent_audit": "Recent activity",
+        "open_audit": "View all",
         "empty": "No data yet.",
         "welcome_unique_title": "Unique visitors",
         "welcome_unique_today": "Today",
@@ -52,11 +52,12 @@
         "nav": "Contact Messages"
     },
     "audit": {
-        "nav": "Audit",
-        "title": "Platform audit",
-        "subtitle": "Recent audit entries across all organisations.",
-        "search_placeholder": "Action, model, user or organisation…",
-        "empty": "No audit entries found."
+        "nav": "Activity log",
+        "title": "Activity log",
+        "subtitle": "What recently happened on the platform and in organisations — in plain language.",
+        "search": "Search",
+        "search_placeholder": "Search by event, organisation or person…",
+        "empty": "No activity found yet."
     },
     "help_nav": "Help admin",
     "help": {

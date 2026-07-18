@@ -996,6 +996,27 @@
                     "text": "Privacybeleid, algemene voorwaarden en andere juridische teksten van WinProx."
                 }
             ]
+        },
+        "platform.audit": {
+            "title": "Hulp — Activiteitenlog",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Dit is het <strong>activiteitenlog</strong> van WinProx: wie deed wat, wanneer, en bij welke organisatie. Geen technische codes, maar leesbare gebeurtenissen."
+                },
+                {
+                    "label": "Lees een rij",
+                    "text": "De vetgedrukte zin is de gebeurtenis. Daarachter staan organisatie, persoon (of Systeem) en tijdstip. Onder de regel staat eventuele extra context (naam, e-mail, bestand, #id)."
+                },
+                {
+                    "label": "Zoeken",
+                    "text": "Zoek op gewone woorden (bv. <em>melding</em>, <em>promo</em>), op organisatienaam of op e-mail/naam van de gebruiker."
+                },
+                {
+                    "label": "Waarom nuttig?",
+                    "text": "Handig om te zien wie een melding goedkeurde, welke promo-campagne werd geïmporteerd, of wie een e-mail uitschreef — zonder in de database te duiken."
+                }
+            ]
         }
     }
 }

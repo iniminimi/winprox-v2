@@ -67,3 +67,13 @@ it('laadt paginahulp voor e-mail uitschrijvingen', function (): void {
         ->and($help['title'])->toBe('Hulp — E-mail uitschrijvingen')
         ->and($help['actions'])->not->toBeEmpty();
 });
+
+it('laadt paginahulp voor platformaudit', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('platform.audit');
+
+    expect($help)->not->toBeNull()
+        ->and($help['title'])->toBe('Hulp — Activiteitenlog')
+        ->and($help['actions'])->not->toBeEmpty();
+});

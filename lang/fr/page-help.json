@@ -996,6 +996,27 @@
                     "text": "Politique de confidentialité, conditions générales et autres textes juridiques de WinProx."
                 }
             ]
+        },
+        "platform.audit": {
+            "title": "Aide — Journal d’activité",
+            "actions": [
+                {
+                    "label": "À quoi sert cet écran ?",
+                    "text": "C’est le <strong>journal d’activité</strong> WinProx : qui a fait quoi, quand, et dans quelle organisation. En langage clair, sans codes techniques."
+                },
+                {
+                    "label": "Lire une ligne",
+                    "text": "La phrase en gras est l’événement. Ensuite : organisation, personne (ou Système) et heure. Le contexte supplémentaire apparaît en dessous si disponible."
+                },
+                {
+                    "label": "Recherche",
+                    "text": "Cherchez avec des mots simples (ex. <em>signalement</em>, <em>promo</em>), le nom d’organisation ou l’e-mail/nom de l’utilisateur."
+                },
+                {
+                    "label": "Pourquoi c’est utile",
+                    "text": "Pour voir qui a approuvé un signalement, quelle campagne promo a été importée, ou qui s’est désabonné — sans fouiller la base de données."
+                }
+            ]
         }
     }
 }

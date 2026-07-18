@@ -28,8 +28,8 @@
         "stat_help": "Open helpvragen",
         "recent_tenants": "Recente organisaties",
         "recent_users": "Recente gebruikers",
-        "recent_audit": "Recente audit",
-        "open_audit": "Audit openen",
+        "recent_audit": "Recente activiteit",
+        "open_audit": "Alles bekijken",
         "empty": "Nog geen gegevens.",
         "welcome_unique_title": "Unieke bezoekers",
         "welcome_unique_today": "Vandaag",
@@ -52,11 +52,12 @@
         "nav": "Contactberichten"
     },
     "audit": {
-        "nav": "Audit",
-        "title": "Platformaudit",
-        "subtitle": "Recente auditregels over alle organisaties.",
-        "search_placeholder": "Actie, model, gebruiker of organisatie…",
-        "empty": "Geen auditregels gevonden."
+        "nav": "Activiteitenlog",
+        "title": "Activiteitenlog",
+        "subtitle": "Wat gebeurde er recent op het platform en bij organisaties — in gewone taal.",
+        "search": "Zoeken",
+        "search_placeholder": "Zoek op gebeurtenis, organisatie of persoon…",
+        "empty": "Nog geen activiteiten gevonden."
     },
     "help_nav": "Help-beheer",
     "help": {

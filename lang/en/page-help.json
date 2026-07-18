@@ -996,6 +996,27 @@
                     "text": "Privacy policy, terms of service and other legal texts from WinProx."
                 }
             ]
+        },
+        "platform.audit": {
+            "title": "Help — Activity log",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "This is WinProx’s <strong>activity log</strong>: who did what, when, and in which organisation. Plain language instead of technical codes."
+                },
+                {
+                    "label": "Reading a row",
+                    "text": "The bold line is the event. After it: organisation, person (or System) and time. Extra context (name, email, file, #id) appears underneath when available."
+                },
+                {
+                    "label": "Search",
+                    "text": "Search by everyday words (e.g. <em>issue</em>, <em>promo</em>), organisation name, or the user’s name/email."
+                },
+                {
+                    "label": "Why it helps",
+                    "text": "Useful to see who approved an issue, which promo campaign was imported, or who unsubscribed — without digging into the database."
+                }
+            ]
         }
     }
 }
