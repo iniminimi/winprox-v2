@@ -1,152 +1,162 @@
 {
     "title": "Veelgestelde vragen",
-    "subtitle": "Korte uitleg voor coördinatoren, teamleiders en veldteams.",
+    "subtitle": "Korte uitleg voor beheerders, medewerkers en veldteams — afgestemd op de huidige WinProx Facility-app.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
-            "title": "Hoe werkt WinProx",
-            "intro": "Een eenvoudige workflow om locaties, meldingen en interne teams te beheren.",
-            "summary": "Workflow: locatie en units, melding via QR, taken voor interne teams, opvolging via dashboard, briefing en kalender.",
+            "title": "Hoe werkt WinProx?",
+            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Optioneel komen Time (klokken) en ESG (metingen) erbij.",
+            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Optioneel: Time en ESG.",
             "steps": [
                 {
-                    "title": "Maak een locatie",
-                    "text": "Start met het aanmaken van een locatie. Voeg units toe (machines, zones of ruimtes) met een korte beschrijving of locatiehint, zodat meldingen en taken correct gelinkt worden."
+                    "title": "Locaties en units",
+                    "text": "Maak locaties aan en voeg units toe (machines, zones of ruimtes), één voor één of in bulk. Koppel een team aan een unit zodat taken automatisch goed landen."
                 },
                 {
-                    "title": "Maak een melding",
-                    "text": "Maak zelf een melding of laat melders melden via een QR-code, eventueel met foto's. Alles blijft op één centrale plaats."
+                    "title": "Melding maken",
+                    "text": "Beheerders en medewerkers melden in de app (met tot 4 foto's). Melders scannen de unit-QR en doen hetzelfde in de browser — zonder app-installatie."
                 },
                 {
-                    "title": "Voeg updates toe",
-                    "text": "Voeg extra informatie of foto's toe zodat coördinatoren en teams dezelfde situatie zien."
+                    "title": "Goedkeuring (publiek)",
+                    "text": "Nieuwe meldingen via QR zijn op het publieke portaal geblurd tot een beheerder of medewerker ze goedkeurt. In het beheer ziet u alles altijd onverkort."
                 },
                 {
-                    "title": "Pas de status aan",
-                    "text": "Geef aan wat er gebeurt met de melding: nieuw, in uitvoering, afgehandeld of gesloten."
+                    "title": "Taken voor teams",
+                    "text": "Een melding kan meerdere taken hebben, elk toegewezen aan één team. Plan ook terugkerend onderhoud via de kalender."
                 },
                 {
-                    "title": "Taak voor intern team",
-                    "text": "Bij een unit-melding wordt automatisch een taak aangemaakt voor het gekoppelde team. U kunt ook manueel taken toewijzen of terugkerend onderhoud plannen (bijvoorbeeld maandelijks) via de kalender."
+                    "title": "Veldwerk via QR",
+                    "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via unit-QR of team-QR — zonder WinProx-login.",
+                    "highlight": "Clock Point = aanmelden; unit-/team-QR = taken en meldingen op locatie."
                 },
                 {
-                    "title": "Registratie uitvoerder via team-QR",
-                    "text": "Uitvoerders scannen de team-QR en starten of ronden taken af op locatie.",
-                    "highlight": "Uitvoerders gebruiken de team-QR zonder WinProx-login."
-                },
-                {
-                    "title": "Opvolgen en afsluiten",
-                    "text": "Coördinatoren volgen taken op in dashboard, briefing en kalender. Zet status op voltooid wanneer het werk klaar is."
+                    "title": "Opvolgen en afronden",
+                    "text": "Volg voortgang in dashboard, briefing en kalender. Rond taken af met notitie en foto's; sluit de melding wanneer het werk klaar is."
                 }
             ],
             "box_title": "Interne teams",
-            "box_body": "Organiseer uw onderhoudsteams per team. Koppel teams aan units zodat meldingen automatisch op de juiste lijst belanden. Via de team-QR registreren uitvoerders updates en foto's op locatie."
+            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-/team-QR registreren uitvoerders updates en foto's op locatie."
         },
         "pricing": {
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "WinProx start met een proefperiode. Daarna kiest u een formule op basis van het aantal units op uw locaties (machines, zones of ruimtes). Activeren kan onder Abonnement. Limieten voor units, documenten en mededelingen gelden voor uw hele organisatie.",
-            "summary": "Proefperiode, daarna plannen Micro, Starter, Pro, Business of Enterprise. Documenten en mededelingen hebben limieten per unit en per organisatie.",
-            "content_note": "Mededelingen: alleen actieve, niet-verlopen berichten tellen mee (per gekoppelde unit). Documenten: alle opgeslagen bestanden tellen mee voor uw organisatie, ook gedeactiveerde — verwijder om ruimte vrij te maken. Tijdens de proefperiode geldt een maximum van 10 documenten voor uw organisatie.",
+            "intro": "U start met een gratis proefmaand (facility- en time-functies). Daarna kiest u Time, Facility of Corporate onder Abonnement. Limieten gelden voor uw hele organisatie (units, locaties, documenten, foto's, gebruikers).",
+            "summary": "Proefperiode, daarna WinProx Time, Facility of Corporate. Time en Facility zonder API; Corporate met ESG, API en webhooks.",
+            "content_note": "Documenten en foto's tellen mee voor de hele organisatie. Tijdens de proefperiode gelden lagere limieten (o.a. max. 10 documenten/foto's). Exacte limieten en prijzen staan onder Abonnement.",
             "plans": {
-                "micro": {
-                    "units": "Tot 10 units/ruimtes",
-                    "users": "Inclusief 1 beheerder en 1 medewerker",
-                    "announcements": "Tot 2 mededelingen per unit",
-                    "documents": "Tot 2 documenten per unit · max. 10 voor uw organisatie",
-                    "description": "Ideaal voor kleine ondernemingen, compacte vastgoedbeheerders."
+                "time": {
+                    "units": "Tot 10 units / locaties / documenten / foto's",
+                    "users": "1 beheerder + 1 medewerker · onbeperkt uitvoerders (CSV)",
+                    "announcements": "€149 / maand · Time-module inbegrepen",
+                    "documents": "QR-meldingen en taken binnen uw limieten · geen API",
+                    "description": "Ideaal om te starten met tijdregistratie én facility-basisworkflows."
                 },
-                "starter": {
-                    "units": "Tot 25 units/ruimtes",
-                    "users": "Inclusief 1 beheerder en 2 medewerkers",
-                    "announcements": "Tot 4 mededelingen per unit",
-                    "documents": "Tot 4 documenten per unit · max. 20 voor uw organisatie",
-                    "description": "Ideaal voor een enkele site of pilot met een compact coördinatieteam."
+                "facility": {
+                    "units": "Tot 100 units / locaties / documenten / foto's",
+                    "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV)",
+                    "announcements": "€399 / maand · Time inbegrepen",
+                    "documents": "CSV-import voor units en workers · geen API",
+                    "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time."
                 },
-                "pro": {
-                    "units": "Tot 100 units/ruimtes",
-                    "users": "Inclusief 1 beheerder en 5 medewerkers",
-                    "announcements": "Tot 10 mededelingen per unit",
-                    "documents": "Tot 6 documenten per unit · max. 40 voor uw organisatie",
-                    "description": "Geschikt voor groeiende facility-organisaties met meer units en interne teams."
-                },
-                "business": {
-                    "units": "Tot 300 units/ruimtes",
-                    "users": "Inclusief 1 beheerder en 15 medewerkers",
-                    "announcements": "Tot 20 mededelingen per unit",
-                    "documents": "Tot 8 documenten per unit · max. 80 voor uw organisatie",
-                    "description": "Voor organisaties met meerdere locaties, veel units en uitgebreidere teams. Inclusief API-toegang en webhooks."
-                },
-                "enterprise": {
-                    "units": "Voor grote site-operators en complexe portefeuilles. Neem contact op.",
-                    "users": "",
-                    "announcements": "Onbeperkt mededelingen per unit",
-                    "documents": "Onbeperkt documenten voor uw organisatie",
-                    "description": "Inclusief API-toegang, webhooks en maatwerk."
+                "corporate": {
+                    "units": "Onbeperkt data",
+                    "users": "Schaalbaar voor grote portefeuilles",
+                    "announcements": "€999 / maand · ESG, API en webhooks",
+                    "documents": "Prioritaire support",
+                    "description": "Voor enterprise-portefeuilles en integraties."
                 }
             }
         },
         "qr_code": {
             "slug": "qr_code",
             "type": "text",
-            "title": "Hoe werken de QR-codes?",
-            "body": "Er zijn twee QR-codes: de unit-QR voor melders (nieuwe melding, open meldingen, optioneel documenten en mededelingen) en de team-QR voor uitvoerders (taken starten, foto's en status op locatie). Print beide zichtbaar op. Scannen opent het juiste portaal in de browser — zonder app-installatie.",
-            "summary": "Unit-QR voor melders en team-QR voor uitvoerders; beide werken in de browser zonder app."
+            "title": "Welke QR-codes zijn er?",
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken op die unit af. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan (en klokken in/uit als Time actief is). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
+            "summary": "Unit-QR (melden/taken), team-QR (teamtaken), Clock Point-QR (aanmelden/klokken), locatie-QR — allemaal in de browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Hoe werkt het meldersportaal?",
-            "intro": "Na het scannen van de unit-QR opent een eenvoudige webpagina voor die unit. Melders geven problemen door; uitvoerders met toegang tot het gekoppelde team kunnen daar ook open taken voor die unit afhandelen.",
-            "summary": "Na scan van de unit-QR: melding doorgeven, open meldingen, documenten, mededelingen en optioneel taken op locatie.",
+            "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen er open taken afhandelen.",
+            "summary": "Unit-QR-portaal: melding (tot 4 foto's), open meldingen na goedkeuring, documenten, mededelingen, taken op locatie voor uitvoerders.",
             "sections": [
                 {
                     "title": "Nieuwe melding",
-                    "text": "Snel een probleem doorgeven met categorie, beschrijving en optioneel foto's. Zo ontstaat een melding die aan de juiste unit hangt."
+                    "text": "Beschrijf het probleem en voeg optioneel tot 4 foto's toe. Foto's worden op het toestel verkleind vóór upload. Er gelden limieten tegen spam (o.a. max. één melding per paar minuten per apparaat)."
+                },
+                {
+                    "title": "Wacht op controle",
+                    "text": "Tot een beheerder of medewerker goedkeurt, blijven tekst en foto's op het publieke portaal geblurd. In het beheer is alles meteen leesbaar."
                 },
                 {
                     "title": "Open meldingen",
-                    "text": "Overzicht van actieve meldingen voor deze unit, met detail en status."
+                    "text": "Overzicht van goedgekeurde, actieve meldingen voor deze unit, met status."
                 },
                 {
-                    "title": "Documenten",
-                    "text": "Documenten bekijken die uw organisatie heeft gedeeld voor de locatie of unit, wanneer beschikbaar."
+                    "title": "Documenten en mededelingen",
+                    "text": "Gedeelde handleidingen en aankondigingen voor de locatie of unit, met taalkeuze en automatische vertaling wanneer beschikbaar."
                 },
                 {
-                    "title": "Mededelingen",
-                    "text": "Aankondigingen lezen die bedoeld zijn voor melders of teams op deze locatie."
-                },
-                {
-                    "title": "Taken op locatie (uitvoerders)",
-                    "text": "Uitvoerders die via de unit-QR binnenkomen en bij het gekoppelde team horen, zien open taken voor die unit. Ze kunnen taken starten, foto's toevoegen en afronden — dezelfde flow als via de team-QR."
+                    "title": "Taken op locatie",
+                    "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via unit-QR — dezelfde flow als via team-QR."
                 }
             ]
+        },
+        "moderation": {
+            "slug": "moderation",
+            "type": "text",
+            "title": "Waarom is inhoud op het QR-portaal geblurd?",
+            "body": "Publieke QR-pagina's blurren omschrijving en foto's tot een beheerder of medewerker de melding goedkeurt. Zo voorkomt u dat ongepaste of onjuiste inhoud publiek zichtbaar is. Beheerschermen (dashboard, meldingen, taken) tonen altijd alles onverkort — daar beoordeelt u de inhoud.",
+            "summary": "Blur alleen op publieke QR-portalen tot goedkeuring; beheer nooit geblurd."
+        },
+        "photos": {
+            "slug": "photos",
+            "type": "text",
+            "title": "Hoe werken foto's bij meldingen en taken?",
+            "body": "Bij een melding of taakafhandeling kunt u tot 4 foto's toevoegen. Op telefoon en in de browser worden ze eerst verkleind (snellere upload). In beheer ziet u foto's scherp; op het publieke portaal blijven ze geblurd tot goedkeuring van de melding.",
+            "summary": "Maximaal 4 foto's, client-side verkleind; blur alleen op publiek portaal vóór goedkeuring."
+        },
+        "time_clock": {
+            "slug": "time_clock",
+            "type": "text",
+            "title": "Wat is de Time-module / Clock Point?",
+            "body": "Met Time klokken uitvoerders in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Zonder Time blijft Clock Point nuttig om uitvoerders te identificeren vóór taken via unit-QR. Time wordt per organisatie in- of uitgeschakeld (afhankelijk van uw formule; Corporate/superuser kan modules beheren).",
+            "summary": "Time: in-/uitklokken via Clock Point. Clock Point dient ook om uitvoerders te identificeren voor taken."
+        },
+        "esg": {
+            "slug": "esg",
+            "type": "text",
+            "title": "Wat is ESG & Compliance?",
+            "body": "ESG is een optionele module (Corporate) om meetwaarden vast te leggen bij terugkerende inspecties (energie, veiligheid, …). Beheerders zien indicatoren, metingen en opvolgtaken. Koppel een indicator aan een terugkerende melding; metingen gebeuren via het portaal of API.",
+            "summary": "Optionele ESG-module: indicatoren, metingen en opvolging bij terugkerende inspecties (Corporate)."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Voor wie is WinProx?",
-            "body": "WinProx is nuttig voor fabrieken, ziekenhuizen, gemeenten en grote site-beheerders die meldingen, interne teams en veldopvolging centraal willen sturen.",
-            "summary": "Voor facility-organisaties die meldingen, teams en veldwerk centraal opvolgen."
+            "body": "Voor facility-organisaties — fabrieken, zorg, gemeenten, campuses — die meldingen, interne teams, veldopvolging en optioneel tijdregistratie of ESG centraal willen sturen. Geen aparte hospitality- of aannemersportalen: één Facility-app.",
+            "summary": "Facility-organisaties: meldingen, teams, veldwerk; optioneel Time en ESG."
         },
         "user_roles": {
             "slug": "user_roles",
             "type": "roles",
             "title": "Hoe werken de verschillende gebruikers?",
-            "summary": "Beheerder: volledige controle en abonnement. Gewone gebruiker: dagelijkse opvolging zonder gebruikersbeheer. Uitvoerder: taken op locatie via team-QR zonder login.",
+            "summary": "Beheerder: volledige controle en abonnement. Medewerker: dagelijkse opvolging. Uitvoerder: veldwerk via Clock Point en QR zonder login.",
             "roles": [
                 {
                     "title": "Beheerder",
-                    "text": "Heeft volledige controle over WinProx en is de enige die gebruikers binnen jullie organisatie kan toevoegen of verwijderen. Ook gebruikers- en abonnementsinstellingen zijn voorbehouden aan de beheerder."
+                    "text": "Volledige controle: locaties, meldingen, taken, team, abonnement, collega-accounts en (indien van toepassing) API-instellingen."
                 },
                 {
-                    "title": "Gewone gebruiker",
-                    "text": "Kan de dagelijkse opvolging afhandelen: locaties, meldingen en taken. Geen toegang tot collega-accounts of abonnementsinstellingen."
+                    "title": "Medewerker",
+                    "text": "Dagelijkse opvolging van locaties, meldingen en taken. Geen beheer van abonnement of collega-accounts."
                 },
                 {
-                    "title": "Uitvoerder (team)",
-                    "text": "Gebruikt de team-QR om taken op locatie te starten, foto's toe te voegen en taken af te ronden. Werkt zonder WinProx-login — registratie gebeurt via de team-QR."
+                    "title": "Uitvoerder",
+                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via unit- of team-QR, met foto's en notities."
                 }
             ]
         },
@@ -154,71 +164,78 @@
             "slug": "data_export",
             "type": "text",
             "title": "Kan ik mijn gegevens exporteren?",
-            "body": "Ja. Onderaan de pagina Gebruikers kan de beheerder een JSON-export downloaden met account- en activiteitsgegevens binnen jullie omgeving (locaties, meldingen, taken). Bewaar het bestand veilig en deel het niet onnodig.",
-            "summary": "Beheerders kunnen onder Gebruikers een JSON-export van account- en activiteitsgegevens downloaden."
+            "body": "Ja. Onderaan Gebruikers (Team) kan de beheerder een JSON-export downloaden met account- en activiteitsgegevens binnen jullie omgeving. Bewaar het bestand veilig.",
+            "summary": "Beheerders downloaden onder Gebruikers een JSON-export (AVG/GDPR)."
         },
         "internal_teams": {
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Teams worden aangemaakt via het menu Team. Koppel teams aan units zodat meldingen en taken automatisch bij de juiste groep terechtkomen.",
-            "summary": "Maak teams aan via Team en koppel ze aan units."
+            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig of CSV), koppel teams aan units en optioneel aan categorieën. Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
+            "summary": "Teams onder Team; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
-            "title": "Hoe volgen interne teams taken op?",
-            "body": "Taken verschijnen op de team-QR en in het dashboard. Werknemers handelen de taak ter plaatse af, posten een beschrijving en nemen eventueel foto's. De verantwoordelijke volgt de voortgang op via de ochtendbriefing en de kalender.",
-            "summary": "Taken via team-QR en dashboard; opvolging via briefing en kalender."
+            "title": "Hoe volgen teams taken op?",
+            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data.",
+            "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli inbegrepen."
         },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
             "title": "Kan ik meerdere locaties beheren?",
-            "body": "Ja. U kunt meerdere locaties en units op één plek opvolgen en houdt overzicht per locatie, melding en taak.",
-            "summary": "Meerdere locaties en units zijn centraal beheerbaar."
+            "body": "Ja. Beheer meerdere locaties en units op één plek, met filters en zoeken. Limieten hangen af van uw abonnement.",
+            "summary": "Meerdere locaties en units centraal; limieten per formule."
+        },
+        "page_help": {
+            "slug": "page_help",
+            "type": "text",
+            "title": "Waar vind ik uitleg op een scherm?",
+            "body": "Op de meeste schermen staat een ? naast de titel. Die opent pagina-hulp met acties en — waar relevant — uitleg over statussen (nieuw, in uitvoering, afgehandeld, gesloten). Op publieke QR-portalen staat dezelfde hulp bij de kop.",
+            "summary": "Gebruik de ?-knop naast de paginatitel voor actie- en statushulp."
         },
         "mobile": {
             "slug": "mobile",
             "type": "text",
             "title": "Werkt WinProx op smartphone?",
-            "body": "Ja. WinProx werkt volledig in de browser op smartphone, tablet en desktop. Uitvoerders gebruiken de team-QR op de gsm.",
-            "summary": "WinProx werkt in de browser op gsm, tablet en desktop."
+            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-/team-QR. Thema Donker is handig op telefoon.",
+            "summary": "Browser op gsm/tablet/desktop; veld via QR is mobiel-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Moet ik software installeren?",
-            "body": "Nee. WinProx is een webapplicatie. Coördinatoren en veldteams starten meteen in de browser, zonder aparte installatie.",
-            "summary": "Geen installatie nodig — alles via de browser."
-        },
-        "status_help": {
-            "slug": "status_help",
-            "type": "text",
-            "title": "Waar vind ik uitleg over statussen?",
-            "body": "Op de gsm gebruikt u de knop \"Status hulp\" en leest u wat elke status betekent. Op desktop ziet u een toelichting wanneer u met de muis over de status beweegt.",
-            "summary": "Status hulp op meldingen en taken legt elke status en de aanbevolen vervolgstap uit."
+            "body": "Nee. WinProx is een webapp. Coördinatoren en veldteams werken in de browser, zonder aparte installatie of app-store.",
+            "summary": "Geen installatie — alles via de browser."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",
             "type": "text",
             "title": "Dynamische QR-codes",
-            "body": "WinProx ondersteunt twee types QR-stickers: dynamische QR-codes en statische QR-codes. Dynamische QR-codes kunnen op elk moment aan een andere unit worden gekoppeld (herkoppelbaar). Statische QR-codes zijn vastgelegd aan één specifieke unit. Print dynamische stickers in bulk. Ga op pad, kleef een sticker en scan die met de gsm. Je moet aangemeld zijn waarna je een unit kan toewijzen aan die QR-code sticker.",
-            "summary": "Dynamische QR-codes zijn herkoppelbaar, statische QR-codes zijn vast. Print dynamische stickers in bulk en wijs op locatie een unit toe."
+            "body": "Dynamische QR-stickers kunt u later aan een andere unit koppelen. Print in bulk (o.a. Avery-vellen), kleef op locatie, scan terwijl u bent aangemeld en wijs een unit toe. Statische codes blijven vast aan één unit.",
+            "summary": "Dynamische QR's herkoppelbaar; print bulk-stickers en wijs op locatie een unit toe."
         },
         "stickers": {
             "slug": "stickers",
             "type": "text",
             "title": "Welke stickers kan ik gebruiken?",
-            "body": "Voor het printen adviseren we labels van Avery of Herma vanwege hun kwaliteit en compatibiliteit met standaard printers. De correcte types A4-vellen staan aangeduid.",
-            "summary": "Avery en Herma labels aanbevolen voor printen. Correcte A4-vellen types aangeduid."
+            "body": "Voor printen adviseren we Avery- of Herma-labels (A4). In Locaties downloadt u een stickerblad (Word) met het juiste formaat. Optioneel stelt u onder Instellingen een stickerachtergrond of organisatielogo in.",
+            "summary": "Avery/Herma A4; stickerblad vanuit Locaties; optioneel logo/achtergrond in Instellingen."
         },
         "style": {
             "slug": "style",
             "type": "text",
-            "title": "Wat is WinProx-stijl en Eigen portaal-stijl?",
-            "body": "WinProx-stijl bepaalt hoe de app eruitziet voor beheerders en medewerkers (standaard of donker). Eigen portaal-stijl is optioneel en past de achtergrond- en knopkleuren aan voor het publieke portaal dat melders en uitvoerders zien na het scannen van een QR-code. Stel beide in onder Instellingen.",
-            "summary": "WinProx-stijl voor de app, Eigen portaal-stijl voor het publieke portaal (achtergrond- en knopkleuren)."
+            "title": "WinProx-stijl en Eigen portaal-stijl",
+            "body": "Onder Instellingen kiest u WinProx-stijl: Standaard of Donker (voor de app). Eigen portaal-stijl is optioneel: achtergrond- en knopkleuren (en optioneel achtergrondfoto) voor het publieke QR-portaal dat melders en uitvoerders zien.",
+            "summary": "Standaard/Donker voor de app; optionele eigen kleuren/achtergrond voor het QR-portaal."
+        },
+        "api_webhooks": {
+            "slug": "api_webhooks",
+            "type": "text",
+            "title": "API en webhooks?",
+            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken en ESG-metingen.",
+            "summary": "API-tokens en webhooks onder Instellingen (Corporate); HMAC-ondertekende leveringen."
         }
     }
 }

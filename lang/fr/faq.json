@@ -1,152 +1,162 @@
 {
     "title": "Questions fréquentes",
-    "subtitle": "Guide rapide pour coordinateurs, chefs d'équipe et équipes terrain.",
+    "subtitle": "Guide court pour administrateurs, collaborateurs et équipes terrain — aligné sur l'application WinProx Facility actuelle.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
-            "title": "Comment fonctionne WinProx",
-            "intro": "Un workflow simple pour gérer les sites, signalements et équipes internes.",
-            "summary": "Workflow : sites et unités, signalements QR, tâches pour équipes internes, suivi via tableau de bord, briefing et calendrier.",
+            "title": "Comment fonctionne WinProx ?",
+            "intro": "WinProx suit un flux central : signalement → tâches → clôture. En option : Time (pointage) et ESG (mesures).",
+            "summary": "Sites et units, signalement via QR ou gestion, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. En option : Time et ESG.",
             "steps": [
                 {
-                    "title": "Créer un site",
-                    "text": "Commencez par créer un site. Ajoutez des unités (machines, zones ou espaces) avec une courte description ou indication de lieu pour lier correctement signalements et tâches."
+                    "title": "Sites et units",
+                    "text": "Créez des sites et ajoutez des units (machines, zones ou espaces), une par une ou en masse. Liez une équipe à une unit pour que les tâches arrivent automatiquement."
                 },
                 {
                     "title": "Créer un signalement",
-                    "text": "Créez vous-même un signalement ou laissez les déclarants signaler via QR, éventuellement avec photos. Tout reste au même endroit."
+                    "text": "Les administrateurs et collaborateurs signalent dans l'app (jusqu'à 4 photos). Les rapporteurs scannent le QR de l'unit et font de même dans le navigateur — sans installation d'app."
                 },
                 {
-                    "title": "Ajouter des mises à jour",
-                    "text": "Ajoutez des informations ou photos pour que coordinateurs et équipes voient la même situation."
+                    "title": "Approbation (public)",
+                    "text": "Les nouveaux signalements via QR sont floutés sur le portail public jusqu'à approbation par un administrateur ou un collaborateur. En gestion, vous voyez toujours tout en clair."
                 },
                 {
-                    "title": "Mettre à jour le statut",
-                    "text": "Indiquez l'état du signalement : nouveau, en cours, traité ou fermé."
+                    "title": "Tâches pour les équipes",
+                    "text": "Un signalement peut avoir plusieurs tâches, chacune assignée à une équipe. Planifiez aussi la maintenance récurrente via le calendrier."
                 },
                 {
-                    "title": "Tâche pour une équipe interne",
-                    "text": "Pour un signalement d'unité, une tâche est créée automatiquement pour l'équipe liée. Vous pouvez aussi assigner manuellement ou planifier un entretien récurrent (par ex. mensuel) via le calendrier."
-                },
-                {
-                    "title": "Enregistrement terrain via QR équipe",
-                    "text": "Les intervenants scannent le QR équipe et démarrent ou terminent les tâches sur site.",
-                    "highlight": "Les intervenants utilisent le QR équipe sans connexion WinProx."
+                    "title": "Travail terrain via QR",
+                    "text": "Les exécutants s'enregistrent via le QR Clock Point (nom + icône) et traitent les tâches via QR unit ou QR équipe — sans connexion WinProx.",
+                    "highlight": "Clock Point = enregistrement ; QR unit/équipe = tâches et signalements sur site."
                 },
                 {
                     "title": "Suivre et clôturer",
-                    "text": "Les coordinateurs suivent les tâches dans le tableau de bord, le briefing et le calendrier. Marquez terminé quand le travail est fini."
+                    "text": "Suivez l'avancement dans le tableau de bord, le briefing et le calendrier. Clôturez les tâches avec note et photos ; fermez le signalement quand le travail est terminé."
                 }
             ],
             "box_title": "Équipes internes",
-            "box_body": "Organisez vos équipes de maintenance. Liez les équipes aux unités pour que les signalements arrivent sur la bonne liste. Via le QR équipe, les intervenants enregistrent mises à jour et photos sur site."
+            "box_body": "Organisez les équipes de maintenance sous Team. Liez les équipes aux units et catégories. Via Clock Point et QR unit/équipe, les exécutants enregistrent mises à jour et photos sur site."
         },
         "pricing": {
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "WinProx démarre avec une période d'essai. Ensuite, choisissez une formule selon le nombre d'unités sur vos sites (machines, zones ou espaces). Activation sous Abonnement. Les limites d'unités, documents et annonces s'appliquent à toute votre organisation.",
-            "summary": "Essai, puis formules Micro, Starter, Pro, Business ou Enterprise. Documents et annonces : limites par unité et par organisation.",
-            "content_note": "Annonces : seuls les messages actifs et non expirés comptent (par unité liée). Documents : chaque fichier enregistré compte pour votre organisation, y compris les documents désactivés — supprimez pour libérer de l'espace. Pendant l'essai : maximum 10 documents pour votre organisation.",
+            "intro": "Vous commencez avec un mois d'essai gratuit (fonctions facility et time). Ensuite, choisissez Time, Facility ou Corporate sous Abonnement. Les limites s'appliquent à toute votre organisation (units, sites, documents, photos, utilisateurs).",
+            "summary": "Période d'essai, puis WinProx Time, Facility ou Corporate. Time et Facility sans API ; Corporate avec ESG, API et webhooks.",
+            "content_note": "Documents et photos comptent pour toute l'organisation. Pendant l'essai, des limites plus basses s'appliquent (p.ex. max. 10 documents/photos). Les limites et prix exacts figurent sous Abonnement.",
             "plans": {
-                "micro": {
-                    "units": "Jusqu'à 10 unités/espaces",
-                    "users": "Inclut 1 administrateur et 1 collaborateur",
-                    "announcements": "Jusqu'à 2 annonces par unité",
-                    "documents": "Jusqu'à 2 documents par unité · max. 10 pour votre organisation",
-                    "description": "Idéal pour les petites entreprises et les gestionnaires immobiliers compacts."
+                "time": {
+                    "units": "Jusqu'à 10 units / sites / documents / photos",
+                    "users": "1 administrateur + 1 collaborateur · exécutants illimités (CSV)",
+                    "announcements": "149 € / mois · module Time inclus",
+                    "documents": "Signalements QR et tâches dans vos limites · pas d'API",
+                    "description": "Idéal pour démarrer avec le suivi du temps et les workflows facility de base."
                 },
-                "starter": {
-                    "units": "Jusqu'à 25 unités/espaces",
-                    "users": "Inclut 1 administrateur et 2 collaborateurs",
-                    "announcements": "Jusqu'à 4 annonces par unité",
-                    "documents": "Jusqu'à 4 documents par unité · max. 20 pour votre organisation",
-                    "description": "Idéal pour un site unique ou un pilote avec une petite équipe de coordination."
+                "facility": {
+                    "units": "Jusqu'à 100 units / sites / documents / photos",
+                    "users": "1 administrateur + jusqu'à 4 collaborateurs · exécutants illimités (CSV)",
+                    "announcements": "399 € / mois · Time inclus",
+                    "documents": "Import CSV pour units et workers · pas d'API",
+                    "description": "Workflows facility complets à grande échelle, y compris WinProx Time."
                 },
-                "pro": {
-                    "units": "Jusqu'à 100 unités/espaces",
-                    "users": "Inclut 1 administrateur et 5 collaborateurs",
-                    "announcements": "Jusqu'à 10 annonces par unité",
-                    "documents": "Jusqu'à 6 documents par unité · max. 40 pour votre organisation",
-                    "description": "Adapté aux organisations facility en croissance avec plus d'unités et d'équipes internes."
-                },
-                "business": {
-                    "units": "Jusqu'à 300 unités/espaces",
-                    "users": "Inclut 1 administrateur et 15 collaborateurs",
-                    "announcements": "Jusqu'à 20 annonces par unité",
-                    "documents": "Jusqu'à 8 documents par unité · max. 80 pour votre organisation",
-                    "description": "Pour les organisations multi-sites avec de nombreuses unités et des équipes étendues. Inclut l'accès API et les webhooks."
-                },
-                "enterprise": {
-                    "units": "Pour les grands opérateurs de sites et portefeuilles complexes. Contactez-nous.",
-                    "users": "",
-                    "announcements": "Annonces illimitées par unité",
-                    "documents": "Documents illimités pour votre organisation",
-                    "description": "Inclut l'accès API, les webhooks et des solutions sur mesure."
+                "corporate": {
+                    "units": "Données illimitées",
+                    "users": "Évolutif pour grands portefeuilles",
+                    "announcements": "999 € / mois · ESG, API et webhooks",
+                    "documents": "Support prioritaire",
+                    "description": "Pour portefeuilles enterprise et intégrations."
                 }
             }
         },
         "qr_code": {
             "slug": "qr_code",
             "type": "text",
-            "title": "Comment fonctionnent les codes QR ?",
-            "body": "Il y a deux codes QR : le QR unité pour les déclarants (nouveau signalement, signalements ouverts, documents et annonces optionnels) et le QR équipe pour les intervenants (démarrer tâches, photos et statut sur site). Imprimez les deux de façon visible. Le scan ouvre le bon portail dans le navigateur — sans installation d'app.",
-            "summary": "QR unité pour déclarants et QR équipe pour intervenants ; les deux dans le navigateur sans app."
+            "title": "Quels codes QR existent ?",
+            "body": "QR unit : les rapporteurs signalent ; les exécutants (après enregistrement Clock Point) traitent les tâches ouvertes sur cette unit. QR équipe : aperçu des tâches d'équipe sur site. QR Clock Point : les exécutants s'enregistrent (et pointent entrée/sortie si Time est actif). QR site : lien général vers le site. Tout s'ouvre dans le navigateur — sans app.",
+            "summary": "QR unit (signaler/tâches), QR équipe (tâches équipe), QR Clock Point (enregistrement/pointage), QR site — tout dans le navigateur."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
-            "title": "Comment fonctionne le portail déclarant ?",
-            "intro": "Après scan du QR unité, une page web simple s'ouvre pour cette unité. Les déclarants signalent des problèmes ; les intervenants de l'équipe liée peuvent aussi traiter les tâches ouvertes pour cette unité.",
-            "summary": "Après scan QR unité : signaler, signalements ouverts, documents, annonces et tâches terrain optionnelles.",
+            "title": "Comment fonctionne le portail rapporteurs ?",
+            "intro": "Après scan du QR unit, une page web s'ouvre pour cette unit. Les rapporteurs signalent des problèmes ; les signalements approuvés et documents/annonces partagés sont visibles. Les exécutants avec accès équipe peuvent y traiter les tâches ouvertes.",
+            "summary": "Portail QR unit : signalement (jusqu'à 4 photos), signalements ouverts après approbation, documents, annonces, tâches sur site pour exécutants.",
             "sections": [
                 {
                     "title": "Nouveau signalement",
-                    "text": "Signaler rapidement avec catégorie, description et photos optionnelles. Le signalement est lié à la bonne unité."
+                    "text": "Décrivez le problème et ajoutez éventuellement jusqu'à 4 photos. Les photos sont compressées sur l'appareil avant l'envoi. Des limites anti-spam s'appliquent (p.ex. max. un signalement toutes les quelques minutes par appareil)."
+                },
+                {
+                    "title": "En attente de contrôle",
+                    "text": "Jusqu'à approbation par un administrateur ou collaborateur, texte et photos restent floutés sur le portail public. En gestion, tout est lisible immédiatement."
                 },
                 {
                     "title": "Signalements ouverts",
-                    "text": "Vue des signalements actifs pour cette unité, avec détail et statut."
+                    "text": "Aperçu des signalements approuvés et actifs pour cette unit, avec statut."
                 },
                 {
-                    "title": "Documents",
-                    "text": "Consulter les documents partagés par votre organisation pour le site ou l'unité, si disponibles."
+                    "title": "Documents et annonces",
+                    "text": "Manuels et annonces partagés pour le site ou l'unit, avec choix de langue et traduction automatique si disponible."
                 },
                 {
-                    "title": "Annonces",
-                    "text": "Lire les annonces destinées aux déclarants ou équipes sur ce site."
-                },
-                {
-                    "title": "Tâches sur site (intervenants)",
-                    "text": "Les intervenants qui entrent via le QR unité et appartiennent à l'équipe liée voient les tâches ouvertes. Ils peuvent démarrer, ajouter des photos et terminer — comme via le QR équipe."
+                    "title": "Tâches sur site",
+                    "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via QR unit — le même flux que via QR équipe."
                 }
             ]
+        },
+        "moderation": {
+            "slug": "moderation",
+            "type": "text",
+            "title": "Pourquoi le contenu du portail QR est-il flouté ?",
+            "body": "Les pages QR publiques floutent description et photos jusqu'à approbation du signalement par un administrateur ou collaborateur. Cela évite qu'un contenu inapproprié ou incorrect soit visible publiquement. Les écrans de gestion (tableau de bord, signalements, tâches) affichent toujours tout en clair — c'est là que vous évaluez le contenu.",
+            "summary": "Flou uniquement sur les portails QR publics jusqu'à approbation ; gestion jamais floutée."
+        },
+        "photos": {
+            "slug": "photos",
+            "type": "text",
+            "title": "Comment fonctionnent les photos pour signalements et tâches ?",
+            "body": "Lors d'un signalement ou clôture de tâche, vous pouvez ajouter jusqu'à 4 photos. Sur téléphone et navigateur, elles sont d'abord compressées (envoi plus rapide). En gestion, les photos sont nettes ; sur le portail public, elles restent floutées jusqu'à approbation du signalement.",
+            "summary": "Max. 4 photos, compression côté client ; flou uniquement sur portail public avant approbation."
+        },
+        "time_clock": {
+            "slug": "time_clock",
+            "type": "text",
+            "title": "Qu'est-ce que le module Time / Clock Point ?",
+            "body": "Avec Time, les exécutants pointent entrée et sortie via le QR Clock Point (pauses et shifts inclus). Sans Time, Clock Point reste utile pour identifier les exécutants avant les tâches via QR unit. Time s'active ou se désactive par organisation (selon votre formule ; Corporate/superuser peut gérer les modules).",
+            "summary": "Time : pointage entrée/sortie via Clock Point. Clock Point sert aussi à identifier les exécutants pour les tâches."
+        },
+        "esg": {
+            "slug": "esg",
+            "type": "text",
+            "title": "Qu'est-ce qu'ESG & Compliance ?",
+            "body": "ESG est un module optionnel (Corporate) pour enregistrer des valeurs de mesure lors d'inspections récurrentes (énergie, sécurité, …). Les administrateurs voient indicateurs, mesures et tâches de suivi. Liez un indicateur à un signalement récurrent ; les mesures se font via le portail ou l'API.",
+            "summary": "Module ESG optionnel : indicateurs, mesures et suivi pour inspections récurrentes (Corporate)."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Pour qui est WinProx ?",
-            "body": "WinProx aide usines, hôpitaux, communes et grands gestionnaires de sites à centraliser signalements, équipes internes et suivi terrain.",
-            "summary": "Pour organisations facility qui centralisent signalements, équipes et travail terrain."
+            "body": "Pour les organisations facility — usines, soins, communes, campus — qui veulent centraliser signalements, équipes internes, suivi terrain et éventuellement pointage ou ESG. Pas de portails hospitality ou prestataires séparés : une app Facility.",
+            "summary": "Organisations facility : signalements, équipes, terrain ; Time et ESG en option."
         },
         "user_roles": {
             "slug": "user_roles",
             "type": "roles",
-            "title": "Comment fonctionnent les rôles ?",
-            "summary": "Administrateur : contrôle total et abonnement. Utilisateur standard : suivi quotidien sans gestion des comptes. Exécutant : tâches sur site via QR-équipe sans login.",
+            "title": "Comment fonctionnent les différents utilisateurs ?",
+            "summary": "Administrateur : contrôle total et abonnement. Collaborateur : suivi quotidien. Exécutant : travail terrain via Clock Point et QR sans connexion.",
             "roles": [
                 {
                     "title": "Administrateur",
-                    "text": "Contrôle total sur WinProx et seul rôle pouvant ajouter ou retirer des utilisateurs. Gère aussi abonnement et paramètres utilisateurs."
+                    "text": "Contrôle total : sites, signalements, tâches, équipe, abonnement, comptes collègues et (le cas échéant) paramètres API."
                 },
                 {
-                    "title": "Utilisateur standard",
-                    "text": "Gère le suivi quotidien : sites, signalements et tâches. Pas d'accès aux comptes collègues ni aux paramètres d'abonnement."
+                    "title": "Collaborateur",
+                    "text": "Suivi quotidien des sites, signalements et tâches. Pas de gestion de l'abonnement ni des comptes collègues."
                 },
                 {
-                    "title": "Exécutant (équipe)",
-                    "text": "Utilise la QR-équipe pour démarrer les tâches sur site, ajouter des photos et terminer les tâches. Fonctionne sans login WinProx — l'enregistrement se fait via la QR-équipe."
+                    "title": "Exécutant",
+                    "text": "Travaille sans connexion WinProx. S'enregistre via QR Clock Point ; démarre/clôture les tâches via QR unit ou équipe, avec photos et notes."
                 }
             ]
         },
@@ -154,71 +164,78 @@
             "slug": "data_export",
             "type": "text",
             "title": "Puis-je exporter mes données ?",
-            "body": "Oui. En bas de la page Utilisateurs, un administrateur peut télécharger un export JSON avec données de compte et d'activité dans votre environnement (sites, signalements, tâches). Conservez le fichier en sécurité.",
-            "summary": "Les administrateurs peuvent télécharger un export JSON sous Utilisateurs."
+            "body": "Oui. En bas de Utilisateurs (Team), l'administrateur peut télécharger une export JSON avec données de compte et d'activité dans votre environnement. Conservez le fichier en sécurité.",
+            "summary": "Les administrateurs téléchargent une export JSON sous Utilisateurs (RGPD)."
         },
         "internal_teams": {
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Créez des équipes via le menu Équipe. Liez-les aux unités pour router automatiquement signalements et tâches.",
-            "summary": "Créer des équipes via Équipe et les lier aux unités."
+            "body": "Allez dans Team : créez des équipes, ajoutez des exécutants (manuellement ou CSV), liez les équipes aux units et éventuellement aux catégories. Imprimez ou envoyez le QR équipe et QR Clock Point pour le terrain.",
+            "summary": "Équipes sous Team ; lien aux units/catégories ; QR Clock Point et équipe pour le terrain."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Comment les équipes suivent-elles les tâches ?",
-            "body": "Les tâches apparaissent sur le QR équipe et dans le tableau de bord. Les travailleurs traitent sur site, ajoutent une description et des photos. Le responsable suit via le briefing du matin et le calendrier.",
-            "summary": "Tâches via QR équipe et tableau de bord ; suivi via briefing et calendrier."
+            "body": "Les tâches apparaissent dans Tâches, au calendrier, au briefing et sur le QR équipe/unit. Les exécutants démarrent et clôturent sur site. Les coordinateurs suivent le statut en gestion. Les signalements récurrents génèrent des cycles avec dates d'échéance planifiées.",
+            "summary": "Suivi via Tâches, calendrier, briefing et QR ; cycles récurrents inclus."
         },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
             "title": "Puis-je gérer plusieurs sites ?",
-            "body": "Oui. Vous pouvez suivre plusieurs sites et unités au même endroit et garder la vue par site, signalement et tâche.",
-            "summary": "Plusieurs sites et unités sont gérables centralement."
+            "body": "Oui. Gérez plusieurs sites et units en un seul endroit, avec filtres et recherche. Les limites dépendent de votre abonnement.",
+            "summary": "Plusieurs sites et units centralisés ; limites par formule."
+        },
+        "page_help": {
+            "slug": "page_help",
+            "type": "text",
+            "title": "Où trouver de l'aide sur un écran ?",
+            "body": "Sur la plupart des écrans, un ? apparaît à côté du titre. Il ouvre l'aide page avec actions et — le cas échéant — explications des statuts (nouveau, en cours, traité, fermé). Sur les portails QR publics, la même aide figure dans l'en-tête.",
+            "summary": "Utilisez le bouton ? à côté du titre pour l'aide actions et statuts."
         },
         "mobile": {
             "slug": "mobile",
             "type": "text",
             "title": "WinProx fonctionne-t-il sur smartphone ?",
-            "body": "Oui. WinProx fonctionne entièrement dans le navigateur sur téléphone, tablette et ordinateur. Les intervenants utilisent le QR équipe sur mobile.",
-            "summary": "WinProx dans le navigateur sur mobile, tablette et ordinateur."
+            "body": "Oui. La gestion est desktop-first mais utilisable sur tablette. Les portails terrain et QR sont mobile-first. Les exécutants travaillent sur mobile via Clock Point et QR unit/équipe. Le thème Sombre est pratique sur téléphone.",
+            "summary": "Navigateur sur mobile/tablette/desktop ; terrain via QR mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Dois-je installer un logiciel ?",
-            "body": "Non. WinProx est une application web. Coordinateurs et équipes terrain démarrent tout de suite dans le navigateur, sans installation.",
+            "body": "Non. WinProx est une webapp. Coordinateurs et équipes terrain travaillent dans le navigateur, sans installation ni app store.",
             "summary": "Pas d'installation — tout via le navigateur."
-        },
-        "status_help": {
-            "slug": "status_help",
-            "type": "text",
-            "title": "Où trouver l'aide sur les statuts ?",
-            "body": "Sur mobile, utilisez le bouton « Aide statut » pour lire chaque statut. Sur ordinateur, une info s'affiche au survol du statut.",
-            "summary": "L'aide statut sur signalements et tâches explique chaque statut et la prochaine étape recommandée."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",
             "type": "text",
             "title": "Codes QR dynamiques",
-            "body": "WinProx prend en charge deux types d'étiquettes QR : les codes QR dynamiques et les codes QR statiques. Les codes QR dynamiques peuvent être reliés à une autre unité à tout moment (reliables). Les codes QR statiques sont fixés à une unité spécifique. Imprimez les étiquettes dynamiques en bulk. Allez sur site, collez une étiquette et scannez-la avec votre téléphone. Vous devez être connecté, après quoi vous pouvez assigner une unité à cette étiquette QR.",
-            "summary": "Les codes QR dynamiques sont reliables, les codes QR statiques sont fixes. Imprimez les étiquettes dynamiques en bulk et assignez une unité sur site."
+            "body": "Les stickers QR dynamiques peuvent être liés plus tard à une autre unit. Imprimez en masse (p.ex. feuilles Avery), collez sur site, scannez connecté et assignez une unit. Les codes statiques restent fixés à une unit.",
+            "summary": "QR dynamiques re-liables ; imprimez en masse et assignez une unit sur site."
         },
         "stickers": {
             "slug": "stickers",
             "type": "text",
-            "title": "Quelles étiquettes puis-je utiliser ?",
-            "body": "Pour l'impression, nous recommandons les étiquettes Avery ou Herma pour leur qualité et compatibilité avec les imprimantes standard. Les types de feuilles A4 corrects sont indiqués.",
-            "summary": "Étiquettes Avery et Herma recommandées pour l'impression. Types de feuilles A4 corrects indiqués."
+            "title": "Quels stickers puis-je utiliser ?",
+            "body": "Pour l'impression, nous recommandons Avery ou Herma (A4). Dans Sites, téléchargez une feuille d'étiquettes (Word) au bon format. Définissez éventuellement un fond d'étiquette ou logo organisation sous Paramètres.",
+            "summary": "Avery/Herma A4 ; feuille d'étiquettes depuis Sites ; logo/fond optionnel dans Paramètres."
         },
         "style": {
             "slug": "style",
             "type": "text",
-            "title": "Qu'est-ce que le style WinProx et le style de portail personnalisé ?",
-            "body": "Le style WinProx détermine l'apparence de l'application pour les administrateurs et le personnel (standard ou sombre). Le style de portail personnalisé est optionnel et ajuste les couleurs d'arrière-plan et de boutons pour le portail public que les signaleurs et exécutants voient après avoir scanné un code QR. Configurez les deux sous Paramètres.",
-            "summary": "Style WinProx pour l'application, style de portail personnalisé pour le portail public (couleurs d'arrière-plan et de boutons)."
+            "title": "Style WinProx et style portail personnalisé",
+            "body": "Sous Paramètres, choisissez le style WinProx : Standard ou Sombre (pour l'app). Le style portail personnalisé est optionnel : couleurs de fond et boutons (et photo de fond optionnelle) pour le portail QR public vu par rapporteurs et exécutants.",
+            "summary": "Standard/Sombre pour l'app ; couleurs/fond personnalisés optionnels pour le portail QR."
+        },
+        "api_webhooks": {
+            "slug": "api_webhooks",
+            "type": "text",
+            "title": "API et webhooks ?",
+            "body": "Sur Corporate (ou quand l'API est activée), gérez sous Paramètres les tokens API et webhooks sortants (signés HMAC). Cela connecte WinProx à d'autres systèmes pour signalements, tâches et mesures ESG.",
+            "summary": "Tokens API et webhooks sous Paramètres (Corporate) ; livraisons signées HMAC."
         }
     }
 }

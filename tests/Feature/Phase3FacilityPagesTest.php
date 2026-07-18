@@ -174,6 +174,9 @@ it('laadt de FAQ-pagina met facility-inhoud', function () {
         ->assertSee(__('faq.title'))
         ->assertSee(__('faq.items.how_it_works.title'))
         ->assertSee(__('faq.items.qr_code.title'))
+        ->assertSee(__('faq.items.pricing.title'))
+        ->assertSee(__('faq.items.moderation.title'))
+        ->assertSee(__('faq.items.time_clock.title'))
         ->assertSee(__('faq.items.internal_teams.title'), false);
 });
 

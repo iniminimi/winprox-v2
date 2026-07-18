@@ -1,152 +1,162 @@
 {
     "title": "Frequently asked questions",
-    "subtitle": "Quick guide for coordinators, team leads, and field crews.",
+    "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx Facility app.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
-            "title": "How WinProx works",
-            "intro": "A simple workflow to manage sites, issues, and internal teams.",
-            "summary": "Workflow: sites and units, QR issues, tasks for internal teams, follow-up via dashboard, briefing, and calendar.",
+            "title": "How does WinProx work?",
+            "intro": "WinProx follows one core flow: issue → tasks → completion. Optionally, Time (clocking) and ESG (measurements) are added.",
+            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Optional: Time and ESG.",
             "steps": [
                 {
-                    "title": "Create a site",
-                    "text": "Start by creating a site. Add units (machines, zones, or areas) with a short description or location hint so issues and tasks link correctly."
+                    "title": "Sites and units",
+                    "text": "Create sites and add units (machines, zones, or areas), one by one or in bulk. Link a team to a unit so tasks land automatically."
                 },
                 {
                     "title": "Create an issue",
-                    "text": "Create an issue yourself or let reporters submit via QR code, optionally with photos. Everything stays in one place."
+                    "text": "Administrators and staff report in the app (with up to 4 photos). Reporters scan the unit QR and do the same in the browser — no app installation required."
                 },
                 {
-                    "title": "Add updates",
-                    "text": "Add extra information or photos so coordinators and crews see the same picture."
+                    "title": "Approval (public)",
+                    "text": "New issues via QR are blurred on the public portal until an administrator or staff member approves them. In admin, you always see everything in full."
                 },
                 {
-                    "title": "Update status",
-                    "text": "Show what happens with the issue: new, in progress, done, or closed."
+                    "title": "Tasks for teams",
+                    "text": "An issue can have multiple tasks, each assigned to one team. Also schedule recurring maintenance via the calendar."
                 },
                 {
-                    "title": "Task for an internal team",
-                    "text": "For a unit issue, a task is created automatically for the linked team. You can also assign tasks manually or schedule recurring maintenance (for example monthly) via the calendar."
-                },
-                {
-                    "title": "Field worker registration via team QR",
-                    "text": "Field workers scan the team QR and start or complete tasks on site.",
-                    "highlight": "Field workers use the team QR without a WinProx login."
+                    "title": "Field work via QR",
+                    "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via unit QR or team QR — without a WinProx login.",
+                    "highlight": "Clock Point = sign in; unit/team QR = tasks and issues on site."
                 },
                 {
                     "title": "Follow up and close",
-                    "text": "Coordinators track tasks in the dashboard, briefing, and calendar. Mark completed when work is done."
+                    "text": "Track progress in the dashboard, briefing, and calendar. Complete tasks with notes and photos; close the issue when work is done."
                 }
             ],
             "box_title": "Internal teams",
-            "box_body": "Organise maintenance crews by team. Link teams to units so issues land on the right list automatically. Via the team QR, field workers log updates and photos on site."
+            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit/team QR, field workers log updates and photos on site."
         },
         "pricing": {
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "WinProx starts with a trial period. After that, choose a plan based on the number of units at your sites (machines, zones, or areas). Activate under Subscription. Limits for units, documents, and announcements apply to your whole organisation.",
-            "summary": "Trial period, then Micro, Starter, Pro, Business, or Enterprise. Documents and announcements have per-unit and per-organisation limits.",
-            "content_note": "Announcements: only active, non-expired messages count (per linked unit). Documents: every stored file counts for your organisation, including deactivated ones — delete to free space. During the trial, your organisation may upload up to 10 documents.",
+            "intro": "You start with a free trial month (facility and time features). After that, choose Time, Facility, or Corporate under Subscription. Limits apply to your entire organisation (units, sites, documents, photos, users).",
+            "summary": "Trial period, then WinProx Time, Facility, or Corporate. Time and Facility without API; Corporate with ESG, API, and webhooks.",
+            "content_note": "Documents and photos count for the entire organisation. During the trial, lower limits apply (e.g. max. 10 documents/photos). Exact limits and prices are shown under Subscription.",
             "plans": {
-                "micro": {
-                    "units": "Up to 10 units/spaces",
-                    "users": "Includes 1 administrator and 1 staff member",
-                    "announcements": "Up to 2 announcements per unit",
-                    "documents": "Up to 2 documents per unit · max. 10 for your organisation",
-                    "description": "Ideal for small businesses and compact property managers."
+                "time": {
+                    "units": "Up to 10 units / sites / documents / photos",
+                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV)",
+                    "announcements": "€149 / month · Time module included",
+                    "documents": "QR issues and tasks within your limits · no API",
+                    "description": "Ideal to start with time tracking and basic facility workflows."
                 },
-                "starter": {
-                    "units": "Up to 25 units/spaces",
-                    "users": "Includes 1 administrator and 2 staff members",
-                    "announcements": "Up to 4 announcements per unit",
-                    "documents": "Up to 4 documents per unit · max. 20 for your organisation",
-                    "description": "Ideal for a single site or pilot with a compact coordination team."
+                "facility": {
+                    "units": "Up to 100 units / sites / documents / photos",
+                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV)",
+                    "announcements": "€399 / month · Time included",
+                    "documents": "CSV import for units and workers · no API",
+                    "description": "Full facility workflows at scale, including WinProx Time."
                 },
-                "pro": {
-                    "units": "Up to 100 units/spaces",
-                    "users": "Includes 1 administrator and 5 staff members",
-                    "announcements": "Up to 10 announcements per unit",
-                    "documents": "Up to 6 documents per unit · max. 40 for your organisation",
-                    "description": "Suited for growing facility organisations with more units and internal teams."
-                },
-                "business": {
-                    "units": "Up to 300 units/spaces",
-                    "users": "Includes 1 administrator and 15 staff members",
-                    "announcements": "Up to 20 announcements per unit",
-                    "documents": "Up to 8 documents per unit · max. 80 for your organisation",
-                    "description": "For organisations with multiple sites, many units, and larger teams. Includes API access and webhooks."
-                },
-                "enterprise": {
-                    "units": "For large site operators and complex portfolios. Contact us.",
-                    "users": "",
-                    "announcements": "Unlimited announcements per unit",
-                    "documents": "Unlimited documents for your organisation",
-                    "description": "Includes API access, webhooks, and custom solutions."
+                "corporate": {
+                    "units": "Unlimited data",
+                    "users": "Scalable for large portfolios",
+                    "announcements": "€999 / month · ESG, API, and webhooks",
+                    "documents": "Priority support",
+                    "description": "For enterprise portfolios and integrations."
                 }
             }
         },
         "qr_code": {
             "slug": "qr_code",
             "type": "text",
-            "title": "How do the QR codes work?",
-            "body": "There are two QR codes: the unit QR for reporters (new issue, open issues, optional documents and announcements) and the team QR for field workers (start tasks, photos, and status on site). Print both visibly. Scanning opens the right portal in the browser — no app install.",
-            "summary": "Unit QR for reporters and team QR for field workers; both work in the browser without an app."
+            "title": "Which QR codes are there?",
+            "body": "Unit QR: reporters submit an issue; field workers (after Clock Point sign-in) complete open tasks on that unit. Team QR: overview of team tasks on site. Clock Point QR: field workers sign in (and clock in/out when Time is active). Site QR: general link to the site. Everything opens in the browser — no app.",
+            "summary": "Unit QR (report/tasks), team QR (team tasks), Clock Point QR (sign in/clock), site QR — all in the browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "How does the reporter portal work?",
-            "intro": "After scanning the unit QR, a simple web page opens for that unit. Reporters submit problems; field workers linked to the team can also complete open tasks for that unit there.",
-            "summary": "After scanning the unit QR: report issues, open issues, documents, announcements, and optional on-site tasks.",
+            "intro": "After scanning the unit QR, a web page opens for that unit. Reporters report problems; approved issues and shared documents/announcements are visible. Field workers with team access can complete open tasks there.",
+            "summary": "Unit QR portal: issue (up to 4 photos), open issues after approval, documents, announcements, on-site tasks for field workers.",
             "sections": [
                 {
                     "title": "New issue",
-                    "text": "Report a problem quickly with category, description, and optional photos. The issue links to the correct unit."
+                    "text": "Describe the problem and optionally add up to 4 photos. Photos are compressed on the device before upload. Limits apply against spam (e.g. max. one issue every few minutes per device)."
+                },
+                {
+                    "title": "Awaiting review",
+                    "text": "Until an administrator or staff member approves, text and photos remain blurred on the public portal. In admin, everything is readable immediately."
                 },
                 {
                     "title": "Open issues",
-                    "text": "Overview of active issues for this unit, with detail and status."
+                    "text": "Overview of approved, active issues for this unit, with status."
                 },
                 {
-                    "title": "Documents",
-                    "text": "View documents your organisation shared for the site or unit, when available."
+                    "title": "Documents and announcements",
+                    "text": "Shared manuals and announcements for the site or unit, with language choice and automatic translation when available."
                 },
                 {
-                    "title": "Announcements",
-                    "text": "Read announcements meant for reporters or teams on this site."
-                },
-                {
-                    "title": "On-site tasks (field workers)",
-                    "text": "Field workers who open the unit QR and belong to the linked team see open tasks for that unit. They can start tasks, add photos, and complete them — the same flow as via the team QR."
+                    "title": "Tasks on site",
+                    "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via unit QR — the same flow as via team QR."
                 }
             ]
+        },
+        "moderation": {
+            "slug": "moderation",
+            "type": "text",
+            "title": "Why is content on the QR portal blurred?",
+            "body": "Public QR pages blur description and photos until an administrator or staff member approves the issue. This prevents inappropriate or incorrect content from being publicly visible. Admin screens (dashboard, issues, tasks) always show everything in full — that is where you review content.",
+            "summary": "Blur only on public QR portals until approval; admin never blurred."
+        },
+        "photos": {
+            "slug": "photos",
+            "type": "text",
+            "title": "How do photos work for issues and tasks?",
+            "body": "When reporting an issue or completing a task, you can add up to 4 photos. On phone and in the browser, they are compressed first (faster upload). In admin, photos are shown clearly; on the public portal they remain blurred until the issue is approved.",
+            "summary": "Up to 4 photos, client-side compression; blur only on public portal before approval."
+        },
+        "time_clock": {
+            "slug": "time_clock",
+            "type": "text",
+            "title": "What is the Time module / Clock Point?",
+            "body": "With Time, field workers clock in and out via the Clock Point QR (breaks and shifts included). Without Time, Clock Point is still useful to identify field workers before tasks via unit QR. Time is enabled or disabled per organisation (depending on your plan; Corporate/superuser can manage modules).",
+            "summary": "Time: clock in/out via Clock Point. Clock Point also identifies field workers for tasks."
+        },
+        "esg": {
+            "slug": "esg",
+            "type": "text",
+            "title": "What is ESG & Compliance?",
+            "body": "ESG is an optional module (Corporate) to record measurement values during recurring inspections (energy, safety, …). Administrators see indicators, measurements, and follow-up tasks. Link an indicator to a recurring issue; measurements happen via the portal or API.",
+            "summary": "Optional ESG module: indicators, measurements, and follow-up for recurring inspections (Corporate)."
         },
         "for_who": {
             "slug": "for_who",
             "type": "text",
             "title": "Who is WinProx for?",
-            "body": "WinProx helps factories, hospitals, municipalities, and large site operators centralise issues, internal teams, and field follow-up.",
-            "summary": "For facility organisations that centralise issues, teams, and field work."
+            "body": "For facility organisations — factories, healthcare, municipalities, campuses — that want to manage issues, internal teams, field follow-up, and optionally time tracking or ESG centrally. No separate hospitality or contractor portals: one Facility app.",
+            "summary": "Facility organisations: issues, teams, field work; optional Time and ESG."
         },
         "user_roles": {
             "slug": "user_roles",
             "type": "roles",
-            "title": "How do user roles work?",
-            "summary": "Administrator: full control and subscription. Standard user: daily follow-up without user management. Worker: tasks on location via team-QR without login.",
+            "title": "How do the different users work?",
+            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login.",
             "roles": [
                 {
                     "title": "Administrator",
-                    "text": "Has full control over WinProx and is the only role that can add or remove users. Also manages subscription and user settings."
+                    "text": "Full control: sites, issues, tasks, team, subscription, colleague accounts, and (where applicable) API settings."
                 },
                 {
-                    "title": "Standard user",
-                    "text": "Handles daily follow-up: sites, issues, and tasks. No access to colleague accounts or subscription settings."
+                    "title": "Staff member",
+                    "text": "Daily follow-up of sites, issues, and tasks. No management of subscription or colleague accounts."
                 },
                 {
-                    "title": "Worker (team)",
-                    "text": "Uses the team-QR to start tasks on location, add photos, and complete tasks. Works without WinProx login — registration happens via the team-QR."
+                    "title": "Field worker",
+                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via unit or team QR, with photos and notes."
                 }
             ]
         },
@@ -154,71 +164,78 @@
             "slug": "data_export",
             "type": "text",
             "title": "Can I export my data?",
-            "body": "Yes. At the bottom of the Users page, an administrator can download a JSON export with account and activity data in your environment (sites, issues, tasks). Keep the file secure and do not share it unnecessarily.",
-            "summary": "Administrators can download a JSON export of account and activity data under Users."
+            "body": "Yes. At the bottom of Users (Team), the administrator can download a JSON export with account and activity data within your environment. Keep the file secure.",
+            "summary": "Administrators download a JSON export under Users (GDPR)."
         },
         "internal_teams": {
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Create teams via the Team menu. Link teams to units so issues and tasks route to the right group automatically.",
-            "summary": "Create teams via Team and link them to units."
+            "body": "Go to Team: create teams, add field workers (manually or CSV), link teams to units and optionally to categories. Print or email the team QR and Clock Point QR for the shop floor.",
+            "summary": "Teams under Team; link to units/categories; Clock Point and team QR for the floor."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
-            "title": "How do internal teams follow up on tasks?",
-            "body": "Tasks appear on the team QR and in the dashboard. Workers handle tasks on site, add a description, and take photos when needed. Coordinators follow progress via the morning briefing and calendar.",
-            "summary": "Tasks via team QR and dashboard; follow-up via briefing and calendar."
+            "title": "How do teams follow up on tasks?",
+            "body": "Tasks appear in Tasks, on the calendar, in the briefing, and on the team/unit QR. Field workers start and complete on site. Coordinators track status in admin. Recurring issues generate cycles with planned due dates.",
+            "summary": "Follow-up via Tasks, calendar, briefing, and QR; recurring cycles included."
         },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
             "title": "Can I manage multiple sites?",
-            "body": "Yes. You can follow multiple sites and units in one place and keep overview per site, issue, and task.",
-            "summary": "Multiple sites and units can be managed centrally."
+            "body": "Yes. Manage multiple sites and units in one place, with filters and search. Limits depend on your subscription.",
+            "summary": "Multiple sites and units centrally; limits per plan."
+        },
+        "page_help": {
+            "slug": "page_help",
+            "type": "text",
+            "title": "Where do I find help on a screen?",
+            "body": "On most screens, a ? appears next to the title. It opens page help with actions and — where relevant — explanations of statuses (new, in progress, done, closed). On public QR portals, the same help appears in the header.",
+            "summary": "Use the ? button next to the page title for action and status help."
         },
         "mobile": {
             "slug": "mobile",
             "type": "text",
-            "title": "Does WinProx work on smartphones?",
-            "body": "Yes. WinProx runs fully in the browser on phone, tablet, and desktop. Field workers use the team QR on their phone.",
-            "summary": "WinProx works in the browser on phone, tablet, and desktop."
+            "title": "Does WinProx work on a smartphone?",
+            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit/team QR. Dark theme is handy on phone.",
+            "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
         },
         "install": {
             "slug": "install",
             "type": "text",
             "title": "Do I need to install software?",
-            "body": "No. WinProx is a web application. Coordinators and field teams start immediately in the browser without a separate install.",
-            "summary": "No install needed — everything runs in the browser."
-        },
-        "status_help": {
-            "slug": "status_help",
-            "type": "text",
-            "title": "Where can I find help about statuses?",
-            "body": "On mobile, use the \"Status help\" button to read what each status means. On desktop, you see a description when you hover over the status.",
-            "summary": "Status help on issues and tasks explains each status and the recommended next step."
+            "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store.",
+            "summary": "No installation — everything via the browser."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",
             "type": "text",
             "title": "Dynamic QR codes",
-            "body": "WinProx supports two types of QR stickers: dynamic QR codes and static QR codes. Dynamic QR codes can be linked to a different unit at any time (re-linkable). Static QR codes are fixed to one specific unit. Print dynamic stickers in bulk. Go on site, stick a sticker and scan it with your phone. You must be logged in, after which you can assign a unit to that QR code sticker.",
-            "summary": "Dynamic QR codes are re-linkable, static QR codes are fixed. Print dynamic stickers in bulk and assign a unit on site."
+            "body": "Dynamic QR stickers can later be linked to a different unit. Print in bulk (e.g. Avery sheets), stick on site, scan while signed in, and assign a unit. Static codes stay fixed to one unit.",
+            "summary": "Dynamic QRs re-linkable; print bulk stickers and assign a unit on site."
         },
         "stickers": {
             "slug": "stickers",
             "type": "text",
             "title": "Which stickers can I use?",
-            "body": "For printing, we recommend labels from Avery or Herma due to their quality and compatibility with standard printers. The correct A4 sheet types are indicated.",
-            "summary": "Avery and Herma labels recommended for printing. Correct A4 sheet types indicated."
+            "body": "For printing we recommend Avery or Herma labels (A4). In Sites, download a sticker sheet (Word) in the correct format. Optionally set a sticker background or organisation logo under Settings.",
+            "summary": "Avery/Herma A4; sticker sheet from Sites; optional logo/background in Settings."
         },
         "style": {
             "slug": "style",
             "type": "text",
-            "title": "What is WinProx style and Custom portal style?",
-            "body": "WinProx style determines how the app looks for administrators and staff (standard or dark). Custom portal style is optional and adjusts background and button colors for the public portal that reporters and workers see after scanning a QR code. Configure both under Settings.",
-            "summary": "WinProx style for the app, Custom portal style for the public portal (background and button colors)."
+            "title": "WinProx style and Custom portal style",
+            "body": "Under Settings, choose WinProx style: Standard or Dark (for the app). Custom portal style is optional: background and button colours (and optional background photo) for the public QR portal that reporters and field workers see.",
+            "summary": "Standard/Dark for the app; optional custom colours/background for the QR portal."
+        },
+        "api_webhooks": {
+            "slug": "api_webhooks",
+            "type": "text",
+            "title": "API and webhooks?",
+            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. This connects WinProx to other systems for issues, tasks, and ESG measurements.",
+            "summary": "API tokens and webhooks under Settings (Corporate); HMAC-signed deliveries."
         }
     }
 }
