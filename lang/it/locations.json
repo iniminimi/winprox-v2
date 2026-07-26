@@ -4,9 +4,6 @@
     "show_subtitle": "Panoramica della sede e delle unità.",
     "default_name": "Sede",
     "add": "+ Aggiungi nuova sede",
-    "import": "Importazione CSV",
-    "import_title": "Importa unità tramite CSV",
-    "import_hint": "Import a livello di organizzazione: sedi e unità in un solo file. Ogni riga richiede location_name e unit_name; i campi indirizzo sono opzionali. Per sole unità su una sede esistente: apra quella sede e usi lì l'import CSV.",
     "units_csv": {
         "button": "Importa unità CSV",
         "title": "Importa unità via CSV",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Importazione in corso...",
     "import_sample": {
         "download_sample_csv": "Scarica CSV di esempio",
-        "sample_location_name": "Main Depot Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Enter via gate B",
         "sample_unit_name": "Excavator Takeuchi TB210R",
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Importazioni CSV recenti",
-        "hint": "Annulla importazione rimuove unità senza segnalazioni o attività e pulisce sedi e categorie vuote create dall'importazione.",
+        "hint": "Annullare rimuove le unità senza segnalazioni o attività. Le categorie vuote create solo dall'importazione vengono ripulite. La sede stessa viene mantenuta.",
         "unknown_file": "File sconosciuto",
         "unit_count": ":count unità",
         "confirm_delete": "Eliminare :count unità senza segnalazioni o attività?",

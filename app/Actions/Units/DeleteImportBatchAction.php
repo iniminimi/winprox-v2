@@ -48,7 +48,6 @@ class DeleteImportBatchAction
 
             $locationIdsFromBatch = $allUnits->pluck('location_id')->unique()->filter()->values()->all();
             $categoryIdsFromBatch = $allUnits->pluck('category_id')->unique()->filter()->values()->all();
-            $locationsEligibleForCleanup = $this->locationIdsWithOnlyBatchUnits($tenantId, $data->importBatchId, $locationIdsFromBatch);
             $categoriesEligibleForCleanup = $this->categoryIdsWithOnlyBatchUnits($tenantId, $data->importBatchId, $categoryIdsFromBatch);
             $createdLocationIds = $this->createdLocationIdsFromImportAudit($tenantId, $data->importBatchId);
             $createdCategoryIds = $this->createdCategoryIdsFromImportAudit($tenantId, $data->importBatchId);
@@ -71,9 +70,11 @@ class DeleteImportBatchAction
             }
 
             $preservedCount = $totalCount - $deletedCount;
+            // Only remove locations that the import itself created — never the
+            // location the user imported into (location-scoped CSV).
             $deletedLocationCount = $this->deleteEmptyImportLocations(
                 $tenantId,
-                $createdLocationIds !== [] ? $createdLocationIds : $locationsEligibleForCleanup,
+                $createdLocationIds,
                 $actorUserId,
             );
             $deletedCategoryCount = $this->deleteEmptyImportCategories(
@@ -116,31 +117,6 @@ class DeleteImportBatchAction
                 'errors' => ['Er is een databasefout opgetreden tijdens het verwijderen: '.$e->getMessage()],
             ];
         }
-    }
-
-    /**
-     * @param  list<int>  $locationIds
-     * @return list<int>
-     */
-    private function locationIdsWithOnlyBatchUnits(int $tenantId, string $batchId, array $locationIds): array
-    {
-        $eligible = [];
-
-        foreach ($locationIds as $locationId) {
-            $hasNonBatchUnits = Unit::where('tenant_id', $tenantId)
-                ->where('location_id', $locationId)
-                ->where(function ($query) use ($batchId) {
-                    $query->where('import_batch_id', '!=', $batchId)
-                        ->orWhereNull('import_batch_id');
-                })
-                ->exists();
-
-            if (! $hasNonBatchUnits) {
-                $eligible[] = (int) $locationId;
-            }
-        }
-
-        return $eligible;
     }
 
     /**

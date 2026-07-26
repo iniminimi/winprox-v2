@@ -171,14 +171,6 @@
                     "text": "Show deactivated locations to reactivate or review them."
                 },
                 {
-                    "label": "CSV import",
-                    "text": "Import units in bulk via a CSV file. The file must have exactly these headers: location_name, unit_name, description (optional), category_name (required), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Locations and categories are automatically created if they don't exist yet."
-                },
-                {
-                    "label": "Recent CSV imports",
-                    "text": "Below the import button, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of units. Click 'Undo import' to roll back the import. Units without issues or tasks are removed; empty locations and categories created by the import are cleaned up too. Units linked to an issue or task remain."
-                },
-                {
                     "label": "Categories",
                     "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."
                 }
@@ -194,6 +186,14 @@
                 {
                     "label": "Bulk units",
                     "text": "Quickly create dozens of units (such as rooms, floors or consecutive assets) at once within a logical numbering range. Number of ranges: specify how many ranges (e.g. floors or zones) you want to generate at once. Units per range: determine the number of specific units (e.g. rooms or devices) to be created per range. Numbering: Choose the numbering structure (e.g. steps of 10 such as 01, 11, 21 or continuous). The dynamic preview box at the bottom immediately shows how the units will be named. Optional prefix: Add fixed text before the number (e.g. ROOM- or ZONE-) so units are immediately recognizable (e.g. ROOM-01). Category: Link the newly generated range directly to a specific category (e.g. Sanitary or Office) to organize the units correctly right away."
+                },
+                {
+                    "label": "Import units CSV",
+                    "text": "Import units for this location via CSV. Required: unit_name. Optional: description, category_name. Location columns are not needed — everything goes on this location. If headers are wrong or required fields are missing, the entire import is rejected with a clear error per row. Categories are created automatically if they do not exist yet."
+                },
+                {
+                    "label": "Recent CSV imports",
+                    "text": "After an import, an overview of recent imports (30 days) for this location appears. Per import you see file name, date and unit count. Click Undo import to remove units without issues or tasks. Empty categories created only by the import are cleaned up. The location itself is kept."
                 },
                 {
                     "label": "Download QR sticker sheet",
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Do I need this?",
-                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of locations or users at once? Use the CSV import available in each module (Teams, Locations, Units). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
+                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of units or workers at once? Use the CSV import on a location (units) or on Teams (workers). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
                 },
                 {
                     "label": "API — what is it?",

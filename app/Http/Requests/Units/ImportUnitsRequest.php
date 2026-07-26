@@ -21,6 +21,7 @@ class ImportUnitsRequest extends FormRequest
     {
         return [
             'file' => 'required|file|mimes:csv,txt|max:10240', // Max 10MB
+            'location_id' => 'required|integer|exists:locations,id',
         ];
     }
 
@@ -33,6 +34,8 @@ class ImportUnitsRequest extends FormRequest
             'file.required' => 'Er moet een bestand worden geüpload.',
             'file.mimes' => 'Het bestand moet een CSV-bestand zijn.',
             'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
+            'location_id.required' => 'Een locatie is verplicht.',
+            'location_id.exists' => 'Locatie niet gevonden.',
         ];
     }
 

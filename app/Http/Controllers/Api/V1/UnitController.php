@@ -6,6 +6,7 @@ use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Http\Resources\UnitResource;
+use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Tenancy;
 use Illuminate\Http\JsonResponse;
@@ -27,13 +28,19 @@ class UnitController extends Controller
     {
         $this->authorize('create', Unit::class);
 
-        // Build DTO from validated file
+        $location = Location::query()
+            ->where('tenant_id', Tenancy::id())
+            ->whereKey((int) $request->validated('location_id'))
+            ->firstOrFail();
+
+        $this->authorize('update', $location);
+
         $dto = new ImportUnitsData(
             filePath: $request->file('file')->getRealPath(),
             originalName: $request->file('file')->getClientOriginalName(),
+            locationId: (int) $location->id,
         );
 
-        // Call Action with explicit context
         $result = $importUnits->handle(
             $dto,
             Tenancy::id(),

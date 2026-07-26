@@ -4,9 +4,6 @@
     "show_subtitle": "Resumen de la ubicación y sus unidades.",
     "default_name": "Ubicación",
     "add": "+ Añadir nueva ubicación",
-    "import": "Importación CSV",
-    "import_title": "Importar unidades vía CSV",
-    "import_hint": "Importación de toda la organización: ubicaciones y unidades en un archivo. Cada fila necesita location_name y unit_name; los campos de dirección son opcionales. Para unidades en una sola ubicación existente: ábrala y use la importación CSV allí.",
     "units_csv": {
         "button": "Importar unidades CSV",
         "title": "Importar unidades vía CSV",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Importando...",
     "import_sample": {
         "download_sample_csv": "Descargar CSV de ejemplo",
-        "sample_location_name": "Depósito principal Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Entrada por la puerta B",
         "sample_unit_name": "Excavadora Takeuchi TB210R",
         "sample_description": "Comprobar contador horario en la incidencia",
         "sample_category_name": "Movimiento de tierras"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Importaciones CSV recientes",
-        "hint": "Deshacer importación elimina unidades sin incidencias ni tareas y limpia ubicaciones y categorías vacías creadas por la importación.",
+        "hint": "Deshacer elimina unidades sin incidencias ni tareas. Las categorías vacías creadas solo por la importación se limpian. La ubicación en sí se conserva.",
         "unknown_file": "Archivo desconocido",
         "unit_count": ":count unidades",
         "confirm_delete": "¿Eliminar :count unidad(es) sin incidencias ni tareas?",

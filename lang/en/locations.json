@@ -4,9 +4,6 @@
     "show_subtitle": "Overview of location and units.",
     "default_name": "Location",
     "add": "+ Add new location",
-    "import": "CSV import",
-    "import_title": "Import units via CSV",
-    "import_hint": "Organisation-wide import: locations and units in one file. Each row needs location_name and unit_name; address fields are optional. To add units to one existing location only: open that location and use CSV import there.",
     "units_csv": {
         "button": "Import units CSV",
         "title": "Import units via CSV",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Importing...",
     "import_sample": {
         "download_sample_csv": "Download sample CSV",
-        "sample_location_name": "Main Depot Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Enter via gate B",
         "sample_unit_name": "Excavator Takeuchi TB210R",
         "sample_description": "Check hour meter on issue",
         "sample_category_name": "Earthmoving"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Recent CSV imports",
-        "hint": "Import undo removes units without issues or tasks and cleans up empty locations and categories created by the import.",
+        "hint": "Undo removes units without issues or tasks. Empty categories created only by the import are cleaned up. The location itself is kept.",
         "unknown_file": "Unknown file",
         "unit_count": ":count units",
         "confirm_delete": "Delete :count unit(s) without issues or tasks?",
@@ -337,7 +327,3 @@
         }
     }
 }
-
-
-
-

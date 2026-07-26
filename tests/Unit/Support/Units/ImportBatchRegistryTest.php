@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Support\Tenancy;
@@ -13,27 +14,27 @@ beforeEach(function () {
 
 it('handles old audit logs without batch_id', function () {
     $tenantId = Tenancy::id();
+    $location = Location::factory()->create(['tenant_id' => $tenantId]);
 
-    // Create an old audit log without batch_id
     DB::table('audit_logs')->insert([
         'tenant_id' => $tenantId,
         'user_id' => null,
         'action' => 'units.import',
         'model_type' => Unit::class,
         'model_id' => null,
-        'payload' => json_encode(['count' => 5]), // No batch_id
+        'payload' => json_encode(['count' => 5]),
         'created_at' => now()->subDays(1),
     ]);
 
-    $batches = ImportBatchRegistry::recentBatchesForTenant($tenantId);
+    $batches = ImportBatchRegistry::recentBatchesForLocation($tenantId, $location->id);
 
     expect($batches)->toBeEmpty();
 });
 
 it('handles audit logs with null batch_id', function () {
     $tenantId = Tenancy::id();
+    $location = Location::factory()->create(['tenant_id' => $tenantId]);
 
-    // Create an audit log with explicit null batch_id
     DB::table('audit_logs')->insert([
         'tenant_id' => $tenantId,
         'user_id' => null,
@@ -44,22 +45,20 @@ it('handles audit logs with null batch_id', function () {
         'created_at' => now()->subDays(1),
     ]);
 
-    $batches = ImportBatchRegistry::recentBatchesForTenant($tenantId);
+    $batches = ImportBatchRegistry::recentBatchesForLocation($tenantId, $location->id);
 
     expect($batches)->toBeEmpty();
 });
 
-it('returns batches with valid batch_id', function () {
+it('returns batches with valid batch_id for the location', function () {
     $tenantId = Tenancy::id();
     $batchId = 'test-batch-123';
 
-    // Create a location first
-    $location = \App\Models\Location::create([
+    $location = Location::factory()->create([
         'tenant_id' => $tenantId,
         'name' => 'Test Location',
     ]);
 
-    // Create a unit with the batch_id
     Unit::create([
         'tenant_id' => $tenantId,
         'location_id' => $location->id,
@@ -69,41 +68,50 @@ it('returns batches with valid batch_id', function () {
         'is_active' => true,
     ]);
 
-    // Create an audit log with valid batch_id
     DB::table('audit_logs')->insert([
         'tenant_id' => $tenantId,
         'user_id' => null,
         'action' => 'units.import',
         'model_type' => Unit::class,
         'model_id' => null,
-        'payload' => json_encode(['count' => 5, 'batch_id' => $batchId, 'file_name' => 'test.csv']),
+        'payload' => json_encode([
+            'count' => 5,
+            'batch_id' => $batchId,
+            'file_name' => 'test.csv',
+            'location_id' => $location->id,
+        ]),
         'created_at' => now()->subDays(1),
     ]);
 
-    $batches = ImportBatchRegistry::recentBatchesForTenant($tenantId);
+    $batches = ImportBatchRegistry::recentBatchesForLocation($tenantId, $location->id);
 
-    expect($batches)->toHaveCount(1);
-    expect($batches[0]['batch_id'])->toBe($batchId);
-    expect($batches[0]['file_name'])->toBe('test.csv');
-    expect($batches[0]['unit_count'])->toBe(1);
+    expect($batches)->toHaveCount(1)
+        ->and($batches[0]['batch_id'])->toBe($batchId)
+        ->and($batches[0]['file_name'])->toBe('test.csv')
+        ->and($batches[0]['unit_count'])->toBe(1);
 });
 
 it('filters out batches with zero units', function () {
     $tenantId = Tenancy::id();
     $batchId = 'test-batch-empty';
+    $location = Location::factory()->create(['tenant_id' => $tenantId]);
 
-    // Create an audit log with valid batch_id but no units
     DB::table('audit_logs')->insert([
         'tenant_id' => $tenantId,
         'user_id' => null,
         'action' => 'units.import',
         'model_type' => Unit::class,
         'model_id' => null,
-        'payload' => json_encode(['count' => 0, 'batch_id' => $batchId, 'file_name' => 'empty.csv']),
+        'payload' => json_encode([
+            'count' => 0,
+            'batch_id' => $batchId,
+            'file_name' => 'empty.csv',
+            'location_id' => $location->id,
+        ]),
         'created_at' => now()->subDays(1),
     ]);
 
-    $batches = ImportBatchRegistry::recentBatchesForTenant($tenantId);
+    $batches = ImportBatchRegistry::recentBatchesForLocation($tenantId, $location->id);
 
     expect($batches)->toBeEmpty();
 });

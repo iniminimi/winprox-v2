@@ -23,7 +23,13 @@
         <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost">{{ __('dashboard.briefing_print') }}</a>
     </div>
 
-    @if (session('success'))
+    @if ($unitsImportNotice)
+        <div @class([
+            'wp-flash',
+            'wp-flash--success' => $unitsImportNoticeType !== 'error',
+            'wp-flash--danger' => $unitsImportNoticeType === 'error',
+        ])>{{ $unitsImportNotice }}</div>
+    @elseif (session('success'))
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
     @if (session('error'))
@@ -78,6 +84,8 @@
             @endforeach
         </x-wp-disclosure-card>
     @endif
+
+    @include('livewire.locations.import-history', ['batches' => $unitImportBatches])
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-row">

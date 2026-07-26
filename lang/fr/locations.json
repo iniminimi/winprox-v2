@@ -4,9 +4,6 @@
     "show_subtitle": "Aperçu du site et des unités.",
     "default_name": "Site",
     "add": "+ Ajouter un site",
-    "import": "Import CSV",
-    "import_title": "Importer des unités via CSV",
-    "import_hint": "Import à l'échelle de l'organisation : lieux et unités dans un seul fichier. Chaque ligne nécessite location_name et unit_name ; les champs d'adresse sont optionnels. Pour des unités sur un seul lieu existant : ouvrez ce lieu et utilisez l'import CSV là-bas.",
     "units_csv": {
         "button": "Importer unités CSV",
         "title": "Importer des unités via CSV",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Importation en cours...",
     "import_sample": {
         "download_sample_csv": "Télécharger exemple CSV",
-        "sample_location_name": "Dépôt principal Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Entrée via porte B",
         "sample_unit_name": "Pelle Takeuchi TB210R",
         "sample_description": "Vérifier compteur horaire à la sortie",
         "sample_category_name": "Terrassement"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Imports CSV récents",
-        "hint": "L'annulation supprime les unités sans signalement ni tâche et nettoie les sites et catégories vides créés par l'import.",
+        "hint": "Annuler supprime les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé.",
         "unknown_file": "Fichier inconnu",
         "unit_count": ":count unités",
         "confirm_delete": "Supprimer :count unité(s) sans signalement ni tâche ?",
@@ -337,7 +327,3 @@
         }
     }
 }
-
-
-
-

@@ -10,35 +10,25 @@ use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
-use App\Actions\Units\DeleteImportBatchAction;
-use App\Actions\Units\ImportUnitsAction;
-use App\Data\Units\DeleteImportBatchData;
-use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
-use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
-use App\Models\Unit;
 use App\Support\Onboarding\TenantOnboardingState;
-use App\Support\Tenancy;
-use App\Support\Units\ImportBatchRegistry;
 use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
 class Index extends Component
 {
-    use WithFileUploads;
     #[Url(as: 'q')]
     public string $search = '';
 
@@ -61,18 +51,6 @@ class Index extends Component
     public string $locationFormCountryCode = 'BE';
 
     public string $locationFormNotes = '';
-
-    public $importFile = null;
-
-    public array $importErrors = [];
-
-    public ?int $importedCount = null;
-
-    public ?string $unitsImportNotice = null;
-
-    public string $unitsImportNoticeType = 'success';
-
-    public bool $showImportModal = false;
 
     public bool $showCategoriesModal = false;
 
@@ -181,166 +159,6 @@ class Index extends Component
         $this->authorize('update', $location);
         $activateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.activated'));
-    }
-
-    public function openImportModal(): void
-    {
-        $this->authorize('create', Location::class);
-        $this->importFile = null;
-        $this->importErrors = [];
-        $this->importedCount = null;
-        $this->unitsImportNotice = null;
-        $this->showImportModal = true;
-    }
-
-    public function closeImportModal(): void
-    {
-        $this->showImportModal = false;
-        $this->importFile = null;
-        $this->importErrors = [];
-        $this->importedCount = null;
-    }
-
-    public function importUnits(ImportUnitsAction $importUnits): void
-    {
-        $this->authorize('create', Location::class);
-
-        if ($this->importFile === null) {
-            $this->importErrors = ['Er moet een bestand worden geüpload.'];
-            return;
-        }
-
-        // Validate using reusable rules from Form Request
-        $validator = \Illuminate\Support\Facades\Validator::make(
-            ['file' => $this->importFile],
-            ImportUnitsRequest::getReusableRules(),
-            ImportUnitsRequest::getReusableMessages()
-        );
-
-        if ($validator->fails()) {
-            $this->importErrors = $validator->errors()->all();
-            return;
-        }
-
-        // Build DTO from validated file
-        $dto = new ImportUnitsData(
-            filePath: $this->importFile->getRealPath(),
-            originalName: $this->importFile->getClientOriginalName(),
-        );
-
-        // Call Action with explicit context
-        $result = $importUnits->handle(
-            $dto,
-            Tenancy::id(),
-            (int) auth()->id()
-        );
-
-        if ($result['success']) {
-            $this->importedCount = $result['count'];
-            $this->importErrors = [];
-            $this->unitsImportNotice = __('locations.flash.imported', ['count' => $result['count']]);
-            $this->unitsImportNoticeType = 'success';
-            $this->closeImportModal();
-        } else {
-            $this->importErrors = $result['errors'];
-        }
-    }
-
-    public function deleteImportBatch(string $batchId, DeleteImportBatchAction $deleteBatch): void
-    {
-        $this->authorize('create', Unit::class);
-
-        $tenantId = Tenancy::id();
-        $summary = ImportBatchRegistry::summary($tenantId, $batchId);
-
-        if (! $summary['can_delete']) {
-            $this->unitsImportNotice = __('locations.import_history.nothing_deletable');
-            $this->unitsImportNoticeType = 'error';
-
-            return;
-        }
-
-        $dto = new DeleteImportBatchData(importBatchId: $batchId);
-        $result = $deleteBatch->handle($dto, $tenantId, (int) auth()->id());
-
-        if ($result['success']) {
-            $locationsDeleted = (int) ($result['deleted_location_count'] ?? 0);
-            $categoriesDeleted = (int) ($result['deleted_category_count'] ?? 0);
-            $extrasDeleted = $locationsDeleted + $categoriesDeleted;
-
-            if ($result['preserved_count'] > 0) {
-                $this->unitsImportNotice = $extrasDeleted > 0
-                    ? __('locations.import_history.partially_deleted_with_cleanup', [
-                        'deleted' => $result['deleted_count'],
-                        'preserved' => $result['preserved_count'],
-                        'locations' => $locationsDeleted,
-                        'categories' => $categoriesDeleted,
-                    ])
-                    : __('locations.import_history.partially_deleted', [
-                        'deleted' => $result['deleted_count'],
-                        'preserved' => $result['preserved_count'],
-                    ]);
-            } else {
-                $this->unitsImportNotice = $extrasDeleted > 0
-                    ? __('locations.import_history.fully_deleted_with_cleanup', [
-                        'count' => $result['deleted_count'],
-                        'locations' => $locationsDeleted,
-                        'categories' => $categoriesDeleted,
-                    ])
-                    : __('locations.import_history.fully_deleted', [
-                        'count' => $result['deleted_count'],
-                    ]);
-            }
-
-            $this->unitsImportNoticeType = 'success';
-        } else {
-            $this->unitsImportNotice = $result['errors'][0] ?? __('locations.import_history.delete_failed');
-            $this->unitsImportNoticeType = 'error';
-        }
-    }
-
-    public function downloadSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
-    {
-        $this->authorize('create', Location::class);
-
-        $headers = [
-            'location_name',
-            'street',
-            'house_number',
-            'postal_code',
-            'city',
-            'country_code',
-            'notes',
-            'unit_name',
-            'description',
-            'category_name',
-        ];
-
-        // Localized sample row
-        $sampleRow = [
-            __('locations.import_sample.sample_location_name'),
-            __('locations.import_sample.sample_street'),
-            __('locations.import_sample.sample_house_number'),
-            __('locations.import_sample.sample_postal_code'),
-            __('locations.import_sample.sample_city'),
-            __('locations.import_sample.sample_country_code'),
-            __('locations.import_sample.sample_notes'),
-            __('locations.import_sample.sample_unit_name'),
-            __('locations.import_sample.sample_description'),
-            __('locations.import_sample.sample_category_name'),
-        ];
-
-        return response()->streamDownload(function () use ($headers, $sampleRow) {
-            // UTF-8 BOM for Excel compatibility
-            echo "\xEF\xBB\xBF";
-
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $headers);
-            fputcsv($file, $sampleRow);
-            fclose($file);
-        }, 'winprox_sample.csv', [
-            'Content-Type' => 'text/csv; charset=UTF-8',
-        ]);
     }
 
     /**
@@ -497,22 +315,12 @@ class Index extends Component
             ? Category::query()->orderBy('name')->get(['id', 'name'])
             : collect();
 
-        $tenantId = Tenancy::id();
-        $tenant = $tenantId !== null ? \App\Models\Tenant::query()->find($tenantId) : null;
-        $unitImportBatches = ImportBatchRegistry::recentBatchesForTenant($tenantId)
-            ->map(fn (array $batch) => array_merge(
-                $batch,
-                ImportBatchRegistry::summary($tenantId, $batch['batch_id']),
-            ));
-
         return view('livewire.locations.index', [
             'locations' => $locations,
             'hasAnyLocation' => $hasAnyLocation,
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
-            'unitImportBatches' => $unitImportBatches,
-            'canImportUnits' => $tenant?->hasCsvUnitsImport() ?? false,
             'onboarding' => TenantOnboardingState::current(),
         ]);
     }

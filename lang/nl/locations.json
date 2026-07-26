@@ -4,9 +4,6 @@
     "show_subtitle": "Overzicht van locatie en units.",
     "default_name": "Locatie",
     "add": "+ Nieuwe locatie toevoegen",
-    "import": "CSV import",
-    "import_title": "Units importeren via CSV",
-    "import_hint": "Organisatie-brede import: locaties én units in één bestand. Elke rij heeft location_name (verplicht) en unit_name (verplicht); adresvelden zijn optioneel. Voor alleen units op één bestaande locatie: open die locatie en gebruik daar CSV import.",
     "units_csv": {
         "button": "CSV units importeren",
         "title": "Units importeren via CSV",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Bezig met importeren...",
     "import_sample": {
         "download_sample_csv": "Download voorbeeld-CSV",
-        "sample_location_name": "Hoofddepot Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Ingang via poort B",
         "sample_unit_name": "Graafmachine Takeuchi TB210R",
         "sample_description": "Urenstand controleren bij uitgifte",
         "sample_category_name": "Grondverzet"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Recente CSV-imports",
-        "hint": "Ongedaan maken verwijdert units zonder melding of taak en ruimt lege locaties en categorieën op die door de import zijn aangemaakt.",
+        "hint": "Ongedaan maken verwijdert units zonder melding of taak. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden.",
         "unknown_file": "Onbekend bestand",
         "unit_count": ":count units",
         "confirm_delete": ":count unit(s) zonder melding of taak verwijderen?",
@@ -337,6 +327,3 @@
         }
     }
 }
-
-
-

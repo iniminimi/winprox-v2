@@ -12,7 +12,9 @@ use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
+use App\Actions\Units\DeleteImportBatchAction;
 use App\Actions\Units\ImportUnitsAction;
+use App\Data\Units\DeleteImportBatchData;
 use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -34,6 +36,7 @@ use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
+use App\Support\Units\ImportBatchRegistry;
 use App\Support\Units\UnitBulkBatchRegistry;
 use App\Support\Units\UnitBulkNaming;
 use App\Support\Units\UnitDeletionGuard;
@@ -69,6 +72,10 @@ class Show extends Component
 
     /** @var list<string> */
     public array $csvImportErrors = [];
+
+    public ?string $unitsImportNotice = null;
+
+    public string $unitsImportNoticeType = 'success';
 
     public bool $showQrPackModal = false;
 
@@ -500,6 +507,61 @@ class Show extends Component
         ]);
     }
 
+    public function deleteImportBatch(string $batchId, DeleteImportBatchAction $deleteBatch): void
+    {
+        $this->authorize('create', Unit::class);
+
+        $tenantId = (int) Tenancy::id();
+        $summary = ImportBatchRegistry::summary($tenantId, $batchId, (int) $this->location->id);
+
+        if (! $summary['can_delete']) {
+            $this->unitsImportNotice = __('locations.import_history.nothing_deletable');
+            $this->unitsImportNoticeType = 'error';
+
+            return;
+        }
+
+        $result = $deleteBatch->handle(
+            new DeleteImportBatchData(importBatchId: $batchId),
+            $tenantId,
+            (int) auth()->id(),
+        );
+
+        if ($result['success']) {
+            $categoriesDeleted = (int) ($result['deleted_category_count'] ?? 0);
+
+            if ($result['preserved_count'] > 0) {
+                $this->unitsImportNotice = $categoriesDeleted > 0
+                    ? __('locations.import_history.partially_deleted_with_cleanup', [
+                        'deleted' => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                        'locations' => 0,
+                        'categories' => $categoriesDeleted,
+                    ])
+                    : __('locations.import_history.partially_deleted', [
+                        'deleted' => $result['deleted_count'],
+                        'preserved' => $result['preserved_count'],
+                    ]);
+            } else {
+                $this->unitsImportNotice = $categoriesDeleted > 0
+                    ? __('locations.import_history.fully_deleted_with_cleanup', [
+                        'count' => $result['deleted_count'],
+                        'locations' => 0,
+                        'categories' => $categoriesDeleted,
+                    ])
+                    : __('locations.import_history.fully_deleted', [
+                        'count' => $result['deleted_count'],
+                    ]);
+            }
+
+            $this->unitsImportNoticeType = 'success';
+            $this->location->refresh();
+        } else {
+            $this->unitsImportNotice = $result['errors'][0] ?? __('locations.import_history.delete_failed');
+            $this->unitsImportNoticeType = 'error';
+        }
+    }
+
     private function locationTenant(): ?Tenant
     {
         return Tenant::query()->find($this->location->tenant_id);
@@ -638,6 +700,13 @@ class Show extends Component
                 UnitBulkBatchRegistry::summary($batch),
             ));
 
+        $tenantId = (int) $this->location->tenant_id;
+        $unitImportBatches = ImportBatchRegistry::recentBatchesForLocation($tenantId, (int) $this->location->id)
+            ->map(fn (array $batch) => array_merge(
+                $batch,
+                ImportBatchRegistry::summary($tenantId, $batch['batch_id'], (int) $this->location->id),
+            ));
+
         $teams = InternalTeam::query()
             ->where('is_active', true)
             ->orderBy('sort_order')
@@ -672,6 +741,7 @@ class Show extends Component
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
+            'unitImportBatches' => $unitImportBatches,
             'teams' => $teams,
             'categories' => $categories,
             'hasEsgModule' => (bool) Tenant::query()

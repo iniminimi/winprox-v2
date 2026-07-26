@@ -22,30 +22,12 @@ class ImportUnitsAction
     ) {}
 
     /** @var list<string> */
-    private const ORG_REQUIRED_HEADERS = [
-        'location_name',
+    private const REQUIRED_HEADERS = [
         'unit_name',
     ];
 
     /** @var list<string> */
-    private const ORG_OPTIONAL_HEADERS = [
-        'description',
-        'category_name',
-        'street',
-        'house_number',
-        'postal_code',
-        'city',
-        'country_code',
-        'notes',
-    ];
-
-    /** @var list<string> */
-    private const LOCATION_REQUIRED_HEADERS = [
-        'unit_name',
-    ];
-
-    /** @var list<string> */
-    private const LOCATION_OPTIONAL_HEADERS = [
+    private const OPTIONAL_HEADERS = [
         'description',
         'category_name',
     ];
@@ -63,27 +45,17 @@ class ImportUnitsAction
             ];
         }
 
-        $scopedLocation = null;
-        if ($data->locationId !== null) {
-            $scopedLocation = Location::query()
-                ->where('tenant_id', $tenantId)
-                ->whereKey($data->locationId)
-                ->first();
+        $location = Location::query()
+            ->where('tenant_id', $tenantId)
+            ->whereKey($data->locationId)
+            ->first();
 
-            if ($scopedLocation === null) {
-                return [
-                    'success' => false,
-                    'errors' => [__('locations.units_csv.errors.location_not_found')],
-                ];
-            }
+        if ($location === null) {
+            return [
+                'success' => false,
+                'errors' => [__('locations.units_csv.errors.location_not_found')],
+            ];
         }
-
-        $requiredHeaders = $scopedLocation !== null
-            ? self::LOCATION_REQUIRED_HEADERS
-            : self::ORG_REQUIRED_HEADERS;
-        $optionalHeaders = $scopedLocation !== null
-            ? self::LOCATION_OPTIONAL_HEADERS
-            : self::ORG_OPTIONAL_HEADERS;
 
         $handle = fopen($data->filePath, 'r');
         if ($handle === false) {
@@ -105,7 +77,7 @@ class ImportUnitsAction
 
         $headers = array_map(fn ($h) => trim(strtolower((string) $h)), $headers);
 
-        $missingHeaders = array_diff($requiredHeaders, $headers);
+        $missingHeaders = array_diff(self::REQUIRED_HEADERS, $headers);
         if ($missingHeaders !== []) {
             return [
                 'success' => false,
@@ -117,7 +89,7 @@ class ImportUnitsAction
             ];
         }
 
-        $expectedHeaders = array_merge($requiredHeaders, $optionalHeaders);
+        $expectedHeaders = array_merge(self::REQUIRED_HEADERS, self::OPTIONAL_HEADERS);
         $unexpectedHeaders = array_diff($headers, $expectedHeaders);
         if ($unexpectedHeaders !== []) {
             return [
@@ -163,26 +135,11 @@ class ImportUnitsAction
             $lineNumber = $row['_line_number'];
             unset($row['_line_number']);
 
-            $rules = $scopedLocation !== null
-                ? [
-                    'unit_name' => 'required|string|max:255',
-                    'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
-                    'category_name' => 'nullable|string|max:255',
-                ]
-                : [
-                    'location_name' => 'required|string|max:255',
-                    'unit_name' => 'required|string|max:255',
-                    'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
-                    'category_name' => 'required|string|max:255',
-                    'street' => 'nullable|string|max:255',
-                    'house_number' => 'nullable|string|max:50',
-                    'postal_code' => 'nullable|string|max:20',
-                    'city' => 'nullable|string|max:255',
-                    'country_code' => 'nullable|string|max:2',
-                    'notes' => 'nullable|string|max:2000',
-                ];
-
-            $validator = Validator::make($row, $rules);
+            $validator = Validator::make($row, [
+                'unit_name' => 'required|string|max:255',
+                'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
+                'category_name' => 'nullable|string|max:255',
+            ]);
 
             if ($validator->fails()) {
                 foreach ($validator->errors()->all() as $error) {
@@ -224,34 +181,9 @@ class ImportUnitsAction
         DB::beginTransaction();
         try {
             $importedCount = 0;
-            $createdLocationIds = [];
             $createdCategoryIds = [];
 
             foreach ($validatedRows as $row) {
-                if ($scopedLocation !== null) {
-                    $location = $scopedLocation;
-                } else {
-                    $location = Location::firstOrCreate(
-                        [
-                            'tenant_id' => $tenantId,
-                            'name' => $row['location_name'],
-                        ],
-                        [
-                            'country_code' => $row['country_code'] ?? 'BE',
-                            'street' => $row['street'] ?? null,
-                            'house_number' => $row['house_number'] ?? null,
-                            'postal_code' => $row['postal_code'] ?? null,
-                            'city' => $row['city'] ?? null,
-                            'notes' => $row['notes'] ?? null,
-                            'is_active' => true,
-                        ]
-                    );
-
-                    if ($location->wasRecentlyCreated) {
-                        $createdLocationIds[$location->id] = $location->id;
-                    }
-                }
-
                 $categoryId = null;
                 $categoryName = trim((string) ($row['category_name'] ?? ''));
                 if ($categoryName !== '') {
@@ -293,9 +225,8 @@ class ImportUnitsAction
                 $importedCount,
                 $batchId,
                 $data->originalName,
-                array_values($createdLocationIds),
                 array_values($createdCategoryIds),
-                $scopedLocation?->id,
+                $location->id,
             );
 
             DB::commit();
@@ -316,7 +247,6 @@ class ImportUnitsAction
     }
 
     /**
-     * @param  list<int>  $createdLocationIds
      * @param  list<int>  $createdCategoryIds
      */
     protected function logAudit(
@@ -325,7 +255,6 @@ class ImportUnitsAction
         int $count,
         string $batchId,
         string $fileName,
-        array $createdLocationIds = [],
         array $createdCategoryIds = [],
         ?int $locationId = null,
     ): void {
@@ -340,7 +269,7 @@ class ImportUnitsAction
                 'batch_id' => $batchId,
                 'file_name' => $fileName,
                 'location_id' => $locationId,
-                'created_location_ids' => $createdLocationIds,
+                'created_location_ids' => [],
                 'created_category_ids' => $createdCategoryIds,
             ],
         );

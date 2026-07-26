@@ -15,32 +15,52 @@ final class ImportBatchRegistry
     public const RECENT_BATCH_DAYS = 30;
 
     /**
-     * Get recent import batches for a tenant.
+     * Get recent import batches for a location.
      *
      * @return Collection<int, array{batch_id: string, created_at: \Carbon\Carbon, unit_count: int, file_name: string|null}>
      */
-    public static function recentBatchesForTenant(int $tenantId): Collection
+    public static function recentBatchesForLocation(int $tenantId, int $locationId): Collection
     {
         return AuditLog::query()
             ->where('tenant_id', $tenantId)
             ->where('action', 'units.import')
             ->where('created_at', '>=', now()->subDays(self::RECENT_BATCH_DAYS))
             ->orderByDesc('id')
-            ->limit(self::RECENT_BATCH_LIMIT)
+            ->limit(self::RECENT_BATCH_LIMIT * 3)
             ->get()
-            ->map(function (AuditLog $log) use ($tenantId) {
+            ->map(function (AuditLog $log) use ($tenantId, $locationId) {
                 $payload = self::payloadArray($log->payload);
                 $batchId = $payload['batch_id'] ?? null;
 
-                // Skip logs without batch_id (old imports before this feature)
                 if ($batchId === null) {
                     return null;
                 }
 
-                // Get actual unit count for this batch
+                $payloadLocationId = isset($payload['location_id']) ? (int) $payload['location_id'] : null;
+                if ($payloadLocationId !== null && $payloadLocationId !== $locationId) {
+                    return null;
+                }
+
                 $unitCount = Unit::where('tenant_id', $tenantId)
+                    ->where('location_id', $locationId)
                     ->where('import_batch_id', $batchId)
                     ->count();
+
+                if ($unitCount === 0) {
+                    return null;
+                }
+
+                // Legacy org-wide batches without location_id: only show if units remain on this location.
+                if ($payloadLocationId === null) {
+                    $otherLocationUnits = Unit::where('tenant_id', $tenantId)
+                        ->where('import_batch_id', $batchId)
+                        ->where('location_id', '!=', $locationId)
+                        ->exists();
+
+                    if ($otherLocationUnits) {
+                        return null;
+                    }
+                }
 
                 return [
                     'batch_id' => $batchId,
@@ -50,22 +70,24 @@ final class ImportBatchRegistry
                 ];
             })
             ->filter()
-            ->filter(fn ($batch) => $batch['unit_count'] > 0);
+            ->take(self::RECENT_BATCH_LIMIT)
+            ->values();
     }
 
     /**
-     * Get summary for a specific batch.
+     * Get summary for a specific batch (optionally scoped to one location).
      *
      * @return array{total: int, deletable: int, blocked: int, can_delete: bool}
      */
-    public static function summary(int $tenantId, string $batchId): array
+    public static function summary(int $tenantId, string $batchId, ?int $locationId = null): array
     {
-        $total = Unit::where('tenant_id', $tenantId)
+        $query = Unit::where('tenant_id', $tenantId)
             ->where('import_batch_id', $batchId)
-            ->count();
+            ->when($locationId !== null, fn ($q) => $q->where('location_id', $locationId));
 
-        $deletable = Unit::where('tenant_id', $tenantId)
-            ->where('import_batch_id', $batchId)
+        $total = (clone $query)->count();
+
+        $deletable = (clone $query)
             ->whereDoesntHave('issues')
             ->whereDoesntHave('issues.tasks')
             ->count();
@@ -81,9 +103,9 @@ final class ImportBatchRegistry
     /**
      * Check if a batch can be deleted.
      */
-    public static function canDelete(int $tenantId, string $batchId): bool
+    public static function canDelete(int $tenantId, string $batchId, ?int $locationId = null): bool
     {
-        return self::summary($tenantId, $batchId)['can_delete'];
+        return self::summary($tenantId, $batchId, $locationId)['can_delete'];
     }
 
     /**

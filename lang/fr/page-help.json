@@ -171,14 +171,6 @@
                     "text": "Affichez les sites désactivés pour les réactiver ou les consulter."
                 },
                 {
-                    "label": "Import CSV",
-                    "text": "Importez des unités en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : location_name, unit_name, description (optionnel), category_name (obligatoire), street (optionnel), house_number (optionnel), postal_code (optionnel), city (optionnel), country_code (optionnel), notes (optionnel). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les sites et catégories sont créés automatiquement s'ils n'existent pas encore."
-                },
-                {
-                    "label": "Imports CSV récents",
-                    "text": "Sous le bouton d'import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur 'Annuler l'import' pour annuler l'import. Les unités sans signalement ni tâche sont supprimées ; les sites et catégories vides créés par l'import sont aussi nettoyés. Les unités liées à un signalement ou une tâche restent."
-                },
-                {
                     "label": "Catégories",
                     "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."
                 }
@@ -194,6 +186,14 @@
                 {
                     "label": "Unités en masse",
                     "text": "Créez rapidement des dizaines d'unités (comme des chambres, des étages ou des actifs consécutifs) à la fois dans une plage de numérotation logique. Nombre de plages : indiquez combien de plages (p. ex. étages ou zones) vous souhaitez générer à la fois. Unités par plage : déterminez le nombre d'unités spécifiques (p. ex. chambres ou appareils) à créer par plage. Numérotation : Choisissez la structure de numérotation (p. ex. pas de 10 comme 01, 11, 21 ou continu). La zone d'aperçu dynamique en bas montre immédiatement comment les unités seront nommées. Préfixe optionnel : Ajoutez un texte fixe avant le numéro (p. ex. CHAMBRE- ou ZONE-) pour que les unités soient immédiatement reconnaissables (p. ex. CHAMBRE-01). Catégorie : Liez la nouvelle plage générée directement à une catégorie spécifique (p. ex. Sanitaire ou Bureau) pour organiser les unités correctement dès le départ."
+                },
+                {
+                    "label": "Importer unités CSV",
+                    "text": "Importez des unités pour ce lieu via CSV. Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu — tout va sur ce lieu. Si les en-têtes sont incorrects ou des champs obligatoires manquent, l'import entier est rejeté avec un message clair par ligne. Les catégories sont créées automatiquement si elles n'existent pas encore."
+                },
+                {
+                    "label": "Imports CSV récents",
+                    "text": "Après un import, un aperçu des imports récents (30 jours) pour ce lieu apparaît. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur Annuler l'import pour supprimer les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé."
                 },
                 {
                     "label": "Télécharger la feuille d'autocollants QR",
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "En ai-je besoin ?",
-                    "text": "En général non. Si vous utilisez WinProx uniquement via le site web et les QR codes, vous n'avez rien à configurer ici.<br><br>Pour une mise en place ponctuelle : vous souhaitez importer des milliers de sites ou d'utilisateurs en une fois ? Utilisez l'import CSV disponible dans chaque module (Équipes, Sites, Unités). C'est souvent plus rapide et plus simple pour une première migration.<br><br>Pour l'automatisation continue : cette page API s'adresse aux administrateurs ou partenaires IT qui souhaitent construire une connexion en direct pour que les systèmes communiquent automatiquement (p. ex. couplage ERP en temps réel ou tableaux de bord personnalisés)."
+                    "text": "En général non. Si vous utilisez WinProx uniquement via le site web et les QR codes, vous n'avez rien à configurer ici.<br><br>Pour une mise en place ponctuelle : vous souhaitez importer des milliers d'unités ou d'intervenants en une fois ? Utilisez l'import CSV sur un lieu (unités) ou dans Équipes (intervenants). C'est souvent plus rapide et plus simple pour une première migration.<br><br>Pour l'automatisation continue : cette page API s'adresse aux administrateurs ou partenaires IT qui souhaitent construire une connexion en direct pour que les systèmes communiquent automatiquement (p. ex. couplage ERP en temps réel ou tableaux de bord personnalisés)."
                 },
                 {
                     "label": "API — c'est quoi ?",

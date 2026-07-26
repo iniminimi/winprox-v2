@@ -171,14 +171,6 @@
                     "text": "Zeigen Sie deaktivierte Standorte, um sie erneut zu aktivieren oder einzusehen."
                 },
                 {
-                    "label": "CSV-Import",
-                    "text": "Importieren Sie Units massenhaft über eine CSV-Datei. Die Datei muss genau diese Header haben: location_name, unit_name, description (optional), category_name (erforderlich), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Standorte und Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
-                },
-                {
-                    "label": "Letzte CSV-Imports",
-                    "text": "Unter der Import-Schaltfläche erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Units. Klicken Sie auf 'Import rükgängig', um den Import rückgängig zu machen. Units ohne Meldung oder Aufgabe werden entfernt; leere Standorte und Kategorien aus dem Import werden ebenfalls aufgeräumt. Units mit verknüpfter Meldung oder Aufgabe bleiben erhalten."
-                },
-                {
                     "label": "Kategorien",
                     "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."
                 }
@@ -194,6 +186,14 @@
                 {
                     "label": "Bulk-Units",
                     "text": "Erstellen Sie schnell Dutzende Units (wie Zimmer, Etagen oder aufeinanderfolgende Assets) gleichzeitig innerhalb einer logischen Nummerierungsreihe. Anzahl Reihen: geben Sie an, wie viele Reihen (z.B. Etagen oder Zonen) Sie auf einmal generieren möchten. Units pro Reihe: bestimmen Sie die Anzahl spezifischer Einheiten (z.B. Zimmer oder Geräte), die pro Reihe erstellt werden sollen. Nummerierung: Wählen Sie die Struktur der Nummerierung (z.B. Schritte von 10 wie 01, 11, 21 oder fortlaufend). Das dynamische Vorschauvorschau unten zeigt sofort, wie die Units benannt werden. Optionales Präfix: Fügen Sie festen Text vor der Nummer hinzu (z.B. ZIMMER- oder ZONE-), damit Units sofort erkennbar sind (z.B. ZIMMER-01). Kategorie: Verknüpfen Sie die neu generierte Reihe direkt mit einer bestimmten Kategorie (z.B. Sanitär oder Büro), um die Units sofort richtig zu organisieren."
+                },
+                {
+                    "label": "Units per CSV importieren",
+                    "text": "Importieren Sie Units für diesen Standort per CSV. Pflicht: unit_name. Optional: description, category_name. Standortspalten sind nicht nötig — alles landet auf diesem Standort. Bei falschen Headern oder fehlenden Pflichtfeldern wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
+                },
+                {
+                    "label": "Letzte CSV-Imports",
+                    "text": "Nach einem Import erscheint eine Übersicht der letzten Imports (30 Tage) für diesen Standort. Pro Import sehen Sie Dateiname, Datum und Unit-Anzahl. Klicken Sie auf Import rückgängig machen, um Units ohne Meldungen oder Aufgaben zu entfernen. Leere nur durch den Import erstellte Kategorien werden aufgeräumt. Der Standort selbst bleibt erhalten."
                 },
                 {
                     "label": "QR-Aufkleberblatt herunterladen",
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Brauche ich das?",
-                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Standorte oder Benutzer auf einmal importieren? Nutzen Sie den CSV-Import in jedem Modul (Teams, Standorte, Units). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
+                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Units oder Mitarbeiter auf einmal importieren? Nutzen Sie den CSV-Import auf einem Standort (Units) oder unter Teams (Mitarbeiter). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
                 },
                 {
                     "label": "API — was ist das?",

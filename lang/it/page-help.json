@@ -171,14 +171,6 @@
                     "text": "Mostri le sedi disattivate per riattivarle o revisionarle."
                 },
                 {
-                    "label": "Importazione CSV",
-                    "text": "Importi unità in massa tramite file CSV. Il file deve avere esattamente queste intestazioni: location_name, unit_name, description (optional), category_name (required), street (optional), house_number (optional), postal_code (optional), city (optional), country_code (optional), notes (optional). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. Sedi e categorie vengono create automaticamente se non esistono ancora."
-                },
-                {
-                    "label": "Importazioni CSV recenti",
-                    "text": "Sotto il pulsante importazione, compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di unità. Clicchi «Annulla importazione» per annullare l'importazione. Le unità senza segnalazioni o attività vengono rimosse; anche sedi e categorie vuote create dall'importazione vengono pulite. Le unità collegate a una segnalazione o attività restano."
-                },
-                {
                     "label": "Categorie",
                     "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
                 }
@@ -194,6 +186,14 @@
                 {
                     "label": "Unità in massa",
                     "text": "Crei rapidamente decine di unità (come stanze, piani o asset consecutivi) in un'unica operazione entro un intervallo di numerazione logico. Numero di serie: specifichi quante serie (es. piani o zone) generare in una volta. Unità per serie: determini il numero di unità specifiche (es. stanze o dispositivi) da creare per serie. Numerazione: scelga la struttura di numerazione (es. passi di 10 come 01, 11, 21 o continua). La casella anteprima dinamica in basso mostra subito come saranno nominate le unità. Prefisso facoltativo: aggiunga testo fisso prima del numero (es. STANZA- o ZONA-) per rendere le unità immediatamente riconoscibili (es. STANZA-01). Categoria: colleghi direttamente la nuova serie a una categoria specifica (es. Sanitari o Ufficio) per organizzare subito correttamente le unità."
+                },
+                {
+                    "label": "Importa unità CSV",
+                    "text": "Importi unità per questa sede via CSV. Obbligatorio: unit_name. Opzionale: description, category_name. Non servono colonne della sede — tutto va su questa sede. Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio chiaro per riga. Le categorie vengono create automaticamente se non esistono ancora."
+                },
+                {
+                    "label": "Importazioni CSV recenti",
+                    "text": "Dopo un'importazione compare una panoramica delle importazioni recenti (30 giorni) per questa sede. Per importazione vede nome file, data e numero di unità. Clicchi Annulla importazione per rimuovere le unità senza segnalazioni o attività. Le categorie vuote create solo dall'importazione vengono ripulite. La sede stessa viene mantenuta."
                 },
                 {
                     "label": "Scarica foglio adesivi QR",

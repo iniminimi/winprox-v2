@@ -4,9 +4,6 @@
     "show_subtitle": "Übersicht über Standort und Units.",
     "default_name": "Standort",
     "add": "+ Neuen Standort hinzufügen",
-    "import": "CSV-Import",
-    "import_title": "Units per CSV importieren",
-    "import_hint": "Organisationsweiter Import: Standorte und Units in einer Datei. Jede Zeile braucht location_name und unit_name; Adressfelder sind optional. Nur Units für einen bestehenden Standort: Öffnen Sie den Standort und nutzen Sie dort den CSV-Import.",
     "units_csv": {
         "button": "Units per CSV importieren",
         "title": "Units per CSV importieren",
@@ -29,13 +26,6 @@
     "import_submit_loading": "Importiere...",
     "import_sample": {
         "download_sample_csv": "Beispiel-CSV herunterladen",
-        "sample_location_name": "Hauptdepot Deinze",
-        "sample_street": "Industrielaan",
-        "sample_house_number": "12",
-        "sample_postal_code": "9800",
-        "sample_city": "Deinze",
-        "sample_country_code": "BE",
-        "sample_notes": "Eingang über Tor B",
         "sample_unit_name": "Bagger Takeuchi TB210R",
         "sample_description": "Stundenzähler bei Ausgabe prüfen",
         "sample_category_name": "Erdbewegung"
@@ -182,7 +172,7 @@
     },
     "import_history": {
         "title": "Letzte CSV-Imports",
-        "hint": "Rückgängig entfernt Units ohne Meldung oder Aufgabe und räumt leere Standorte und Kategorien auf, die durch den Import erstellt wurden.",
+        "hint": "Rückgängig machen entfernt Units ohne Meldungen oder Aufgaben. Leere Kategorien, die nur durch den Import erstellt wurden, werden aufgeräumt. Der Standort selbst bleibt erhalten.",
         "unknown_file": "Unbekannte Datei",
         "unit_count": ":count Units",
         "confirm_delete": ":count Unit(s) ohne Meldung oder Aufgabe löschen?",
@@ -337,7 +327,3 @@
         }
     }
 }
-
-
-
-

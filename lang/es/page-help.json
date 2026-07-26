@@ -171,14 +171,6 @@
                     "text": "Muestre ubicaciones desactivadas para reactivarlas o revisarlas."
                 },
                 {
-                    "label": "Importación CSV",
-                    "text": "Importe unidades en bloque mediante un archivo CSV. El archivo debe tener exactamente estos encabezados: location_name, unit_name, description (opcional), category_name (obligatorio), street (opcional), house_number (opcional), postal_code (opcional), city (opcional), country_code (opcional), notes (opcional). Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Las ubicaciones y categorías se crean automáticamente si aún no existen."
-                },
-                {
-                    "label": "Importaciones CSV recientes",
-                    "text": "Debajo del botón de importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de unidades. Haga clic en «Deshacer importación» para revertir la importación. Se eliminan unidades sin incidencias ni tareas; también se limpian ubicaciones y categorías vacías creadas por la importación. Las unidades vinculadas a una incidencia o tarea permanecen."
-                },
-                {
                     "label": "Categorías",
                     "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
                 }
@@ -194,6 +186,14 @@
                 {
                     "label": "Unidades en bloque",
                     "text": "Cree rápidamente decenas de unidades (como habitaciones, plantas o activos consecutivos) de una vez dentro de un rango de numeración lógico. Número de series: indique cuántas series (p. ej. plantas o zonas) desea generar a la vez. Unidades por serie: determine el número de unidades específicas (p. ej. habitaciones o dispositivos) a crear por serie. Numeración: elija la estructura de numeración (p. ej. pasos de 10 como 01, 11, 21 o continua). El cuadro de vista previa dinámica en la parte inferior muestra inmediatamente cómo se nombrarán las unidades. Prefijo opcional: añada texto fijo antes del número (p. ej. HAB- o ZONA-) para que las unidades sean inmediatamente reconocibles (p. ej. HAB-01). Categoría: vincule la nueva serie generada directamente a una categoría específica (p. ej. Sanitario u Oficina) para organizar las unidades correctamente desde el principio."
+                },
+                {
+                    "label": "Importar unidades CSV",
+                    "text": "Importe unidades para esta ubicación vía CSV. Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación: todo va a esta ubicación. Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje claro por fila. Las categorías se crean automáticamente si aún no existen."
+                },
+                {
+                    "label": "Importaciones CSV recientes",
+                    "text": "Tras una importación, aparece un resumen de importaciones recientes (30 días) de esta ubicación. Por importación ve el nombre del archivo, la fecha y el número de unidades. Pulse Deshacer importación para eliminar unidades sin incidencias ni tareas. Las categorías vacías creadas solo por la importación se limpian. La ubicación en sí se conserva."
                 },
                 {
                     "label": "Descargar hoja de pegatinas QR",

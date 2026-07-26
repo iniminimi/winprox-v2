@@ -173,14 +173,6 @@
                 {
                     "label": "Categorieën",
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
-                },
-                {
-                    "label": "CSV import",
-                    "text": "Importeer units in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: location_name, unit_name, description (optioneel), category_name (verplicht), street (optioneel), house_number (optioneel), postal_code (optioneel), city (optioneel), country_code (optioneel), notes (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Locaties en categorieën worden automatisch aangemaakt als ze nog niet bestaan."
-                },
-                {
-                    "label": "Recente CSV-imports",
-                    "text": "Onder de importknop verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal units. Klik op 'Import terugdraaien' om de import ongedaan te maken. Units zonder melding of taak worden verwijderd; lege locaties en categorieën die door de import zijn aangemaakt worden ook opgeruimd. Units met een gekoppelde melding of taak blijven staan."
                 }
             ]
         },
@@ -194,6 +186,14 @@
                 {
                     "label": "Bulk units",
                     "text": "Maak snel tientallen units (zoals kamers, verdiepingen of opeenvolgende assets) tegelijkertijd aan binnen een logische nummeringsreeks. Aantal reeksen : geef aan hoeveel reeksen (bijv. verdiepingen of zones) je in één keer wilt genereren. Units per reeks : bepaal het aantal specifieke eenheden (bijv. kamers of apparaten) dat per reeks moet worden aangemaakt. Nummering : Kies de structuur van de nummering (bijv. stappen van 10 zoals 01, 11, 21 of doorlopend). Het dynamische voorbeeldvak onderaan toont direct hoe de units worden genoemd. Optionele prefix : Voeg een vaste tekst toe vóór het nummer (bijv. KAMER- of ZONE-), zodat units direct herkenbaar zijn (bijv. KAMER-01). Categorie : Koppel de nieuw gegenereerde reeks direct aan een specifieke categorie (bijv. Sanitair of Kantoor) om de units meteen juist te organiseren."
+                },
+                {
+                    "label": "CSV units importeren",
+                    "text": "Importeer units voor deze locatie via CSV. Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn niet nodig — alles komt op deze locatie. Bij foute headers of ontbrekende velden wordt de hele import geweigerd met een foutmelding per rij. Categorieën worden automatisch aangemaakt als ze nog niet bestaan."
+                },
+                {
+                    "label": "Recente CSV-imports",
+                    "text": "Na een import verschijnt een overzicht van recente imports (30 dagen) voor deze locatie. Per import zie je bestandsnaam, datum en aantal units. Klik op Import terugdraaien om units zonder melding of taak te verwijderen. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden."
                 },
                 {
                     "label": "QR-stickerblad downloaden",
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden locaties of gebruikers importeren? Gebruik dan de CSV-import die je per module (Teams, Locaties, Units) vindt. Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",
