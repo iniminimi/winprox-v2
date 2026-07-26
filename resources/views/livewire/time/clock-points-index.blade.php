@@ -79,11 +79,14 @@
     </div>
 
     @if ($showModal)
-        <x-wp-modal closeMethod="closeModal">
-            <h2 class="wp-section-title">
-                {{ $editingClockPointId ? __('time.clock_points.edit_title') : __('time.clock_points.create_title') }}
-            </h2>
-            <form wire:submit="save" class="wp-stack">
+        <x-wp-modal closeMethod="closeModal" aria-labelledby="clock-point-modal-title">
+            <form wire:submit="save" class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="clock-point-modal-title" class="wp-h2">
+                        {{ $editingClockPointId ? __('time.clock_points.edit_title') : __('time.clock_points.create_title') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeModal" />
+                </div>
                 <div class="wp-field">
                     <label class="wp-label" for="cp-name">{{ __('time.clock_points.fields.name') }}</label>
                     <input id="cp-name" type="text" class="wp-input" wire:model="name">
@@ -91,7 +94,7 @@
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="cp-location">{{ __('time.clock_points.fields.location') }}</label>
-                    <select id="cp-location" class="wp-input" wire:model="locationId">
+                    <select id="cp-location" class="wp-select" wire:model="locationId">
                         <option value="">{{ __('time.clock_points.fields.no_location') }}</option>
                         @foreach ($locations as $location)
                             <option value="{{ $location->id }}">{{ $location->localizedName() }}</option>
@@ -105,7 +108,7 @@
                     @error('sortOrder') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-cluster">
-                    <button type="button" class="btn btn--ghost" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--surface" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
