@@ -223,21 +223,53 @@
             "title": "Aide — Calendrier",
             "actions": [
                 {
-                    "label": "Navigation",
-                    "text": "Utilisez précédent, aujourd'hui et suivant pour parcourir la période."
+                    "label": "Objectif",
+                    "text": "Vue chronologique des tâches planifiées, signalements créés et réservations d’unités. L’administration affiche tout clairement — pas de flou sur cet écran."
                 },
                 {
                     "label": "Affichage",
-                    "text": "Basculez entre la vue mois, semaine et jour."
+                    "text": "Choisissez mois, semaine ou jour. La semaine commence le lundi. Aujourd’hui est marqué en émeraude ; les jours hors du mois choisi sont grisés."
                 },
                 {
-                    "label": "Filtre",
-                    "text": "Filtrez par site et type (tâches, signalements ou réservations). Pour les réservations, vous pouvez aussi filtrer par catégorie réservable."
+                    "label": "Navigation",
+                    "text": "Parcourez avec précédent, aujourd’hui et suivant. L’URL mémorise l’affichage, le type, la date, le site et (pour les réservations) la catégorie — pratique pour partager ou mettre en favori."
+                },
+                {
+                    "label": "Type",
+                    "text": "Basculez entre Tâches (par défaut), Signalements et Réservations. Chaque type montre des éléments et pastilles de statut différents."
+                },
+                {
+                    "label": "Tâches",
+                    "text": "Affiche les tâches avec une date planifiée ou d’échéance — y compris les cycles des signalements récurrents. Uniquement les tâches de signalements approuvés. Triées par priorité. Un clic ouvre le détail de la tâche (référence + pastille de statut)."
+                },
+                {
+                    "label": "Signalements",
+                    "text": "Affiche les signalements à leur date de création (quand ils sont arrivés). Un clic ouvre le détail du signalement."
+                },
+                {
+                    "label": "Réservations",
+                    "text": "Affiche les holds pending actifs et les réservations confirmées (annulées ou expirées n’apparaissent pas ici). Par élément : unité et créneau ; en vue semaine/jour aussi le nom de l’invité. Un clic ouvre la liste des réservations."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Site : tous les sites ou un seul. Pour Réservations, un second filtre apparaît pour les catégories réservables. En revenant à Tâches ou Signalements, ce filtre catégorie disparaît."
+                },
+                {
+                    "label": "Grille mensuelle",
+                    "text": "Au plus cinq éléments par jour ; ensuite «+X de plus». Utilisez la vue semaine ou jour pour la liste complète du jour."
+                },
+                {
+                    "label": "Semaine et jour",
+                    "text": "Cartes liste par jour. En vue jour, parcourez les pages avec précédent/suivant s’il y a plus de 50 éléments."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Imprimer le briefing ouvre une vue imprimable des tâches pour ce jour, regroupées par équipe. En mode Tâches, la date du briefing suit le jour sélectionné dans le calendrier."
                 }
             ],
-            "status_note": "La couleur et le statut sur le calendrier suivent le statut de la tâche ou du signalement.",
+            "status_note": "Pour Tâches et Signalements, les pastilles suivent le statut de tâche ou signalement ci-dessous. Pour Réservations : pending (en attente de confirmation e-mail) ou confirmé — ceux-ci bloquent les créneaux qui se chevauchent.",
             "statuses": {
-                "new": "Planifié mais pas encore démarré.",
+                "new": "Planifié ou nouveau, pas encore démarré.",
                 "in_progress": "Exécution en cours.",
                 "done": "Terminé, en attente de clôture.",
                 "closed": "Entièrement clôturé."

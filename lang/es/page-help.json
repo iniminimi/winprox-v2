@@ -223,21 +223,53 @@
             "title": "Ayuda — Calendario",
             "actions": [
                 {
-                    "label": "Navegación",
-                    "text": "Use anterior, hoy y siguiente para recorrer el periodo."
+                    "label": "Objetivo",
+                    "text": "Vista temporal de tareas planificadas, incidencias creadas y reservas de unidades. La administración muestra todo con claridad — sin desenfoque en esta pantalla."
                 },
                 {
                     "label": "Vista",
-                    "text": "Cambie entre vista de mes, semana y día."
+                    "text": "Elija mes, semana o día. La semana empieza el lunes. Hoy está marcado en esmeralda; los días fuera del mes elegido aparecen en gris."
                 },
                 {
-                    "label": "Filtro",
-                    "text": "Filtre por ubicación y tipo (tareas, incidencias o reservas). En reservas también puede filtrar por categoría reservable."
+                    "label": "Navegación",
+                    "text": "Desplácese con anterior, hoy y siguiente. La URL recuerda vista, tipo, fecha, ubicación y (en reservas) categoría — útil para compartir o marcar."
+                },
+                {
+                    "label": "Tipo",
+                    "text": "Cambie entre Tareas (predeterminado), Incidencias y Reservas. Cada tipo muestra elementos y pastillas de estado distintos."
+                },
+                {
+                    "label": "Tareas",
+                    "text": "Muestra tareas con fecha planificada o de vencimiento — incluidos ciclos de incidencias recurrentes. Solo tareas de incidencias aprobadas. Ordenadas por prioridad. Un clic abre el detalle de la tarea (número de referencia + pastilla de estado)."
+                },
+                {
+                    "label": "Incidencias",
+                    "text": "Muestra incidencias en su fecha de creación (cuando llegaron). Un clic abre el detalle de la incidencia."
+                },
+                {
+                    "label": "Reservas",
+                    "text": "Muestra holds pending activos y reservas confirmadas (canceladas o caducadas no aparecen aquí). Por elemento: unidad y franja; en vista semana/día también el nombre del invitado. Un clic abre la lista de reservas."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Ubicación: todas o una. En Reservas aparece un segundo filtro por categorías reservables. Al volver a Tareas o Incidencias, ese filtro de categoría desaparece."
+                },
+                {
+                    "label": "Cuadrícula mensual",
+                    "text": "Máximo cinco elementos por día; luego «+X más». Use la vista semana o día para la lista completa de ese día."
+                },
+                {
+                    "label": "Semana y día",
+                    "text": "Tarjetas de lista por día. En vista día, pase páginas con anterior/siguiente si hay más de 50 elementos."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Imprimir briefing abre un resumen imprimible de tareas de ese día, agrupadas por equipo. En modo Tareas, la fecha del briefing sigue el día seleccionado en el calendario."
                 }
             ],
-            "status_note": "El color y el estado en el calendario siguen el estado de la tarea o incidencia.",
+            "status_note": "En Tareas e Incidencias, las pastillas siguen el estado de tarea o incidencia abajo. En Reservas: pending (espera confirmación por correo) o confirmada — bloquean franjas solapadas.",
             "statuses": {
-                "new": "Programada pero aún no iniciada.",
+                "new": "Planificada o nueva, aún no iniciada.",
                 "in_progress": "Trabajo en curso.",
                 "done": "Completada, esperando cierre.",
                 "closed": "Completamente cerrada."

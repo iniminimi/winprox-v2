@@ -289,23 +289,29 @@ demo, hospitality, trades/work-types, complexe morning-briefing-routing. Propert
 ### 5.1 Weergave & navigatie
 - **Views:** maand / week / dag (toggle). Knoppen **vorige / volgende / vandaag**; periodelabel
   (bv. "mei 2026", "maandag 4 mei 2026", "Week 04/05 – 10/05"). Maandgrid start op **maandag**.
-- **Type-toggle:** **Taken** (standaard) of **Meldingen**.
-- **Locatie-filter** (was `property_id`): toon alles of één locatie.
-- Per dag: kleine entries met **status-badge** (onze 4 statussen) + titel/omschrijving; klik → detail.
+- **Type-toggle:** **Taken** (standaard), **Meldingen** of **Reserveringen**.
+- **Locatie-filter:** toon alles of één locatie.
+- **Categorie-filter** (alleen bij Reserveringen): alleen categorieën met `is_reservable`.
+- Per dag: kleine entries met **status-badge** + titel/omschrijving; klik → detail (of
+  reserveringenlijst). Maand toont max. **5** items per dag (+meer); week/dag = lijst;
+  dagweergave paginert bij >50 items.
+- URL onthoudt `view`, `type`, `date`, `location`, `category`.
 
 ### 5.2 Wat verschijnt waar
-- **Taken-modus:** taken met een **`scheduled_for`**-datum (vooral **recurring-cycli** §3.4/§4.4 +
-  handmatig geplande taken), gegroepeerd per dag. (V1 mergde dit met "operationele
-  briefing-entries"; voor V2 = gewoon geplande taken van de tenant/locatie.)
+- **Taken-modus:** taken met **`scheduled_for`** of **`due_at`** (recurring-cycli §3.4/§4.4 +
+  handmatig geplande taken), alleen van goedgekeurde meldingen, gesorteerd op prioriteit.
 - **Meldingen-modus:** meldingen op **aanmaakdatum**.
+- **Reserveringen-modus:** actieve pending holds + bevestigde boekingen (`blocking()`),
+  gegroepeerd op startdatum; unit + tijdvak (+ gastnaam in week/dag).
 
 ### 5.3 Status-badges (verminderd)
-Gebruik onze pill-modifiers: `new`→Nieuw, `in_progress`(+oud `on_hold`)→In uitvoering,
-`done`→Afgehandeld, `closed`(+oud `not_executed`)→Gesloten.
+- Taken/meldingen: onze pill-modifiers `new`→Nieuw, `in_progress`→In uitvoering,
+  `done`→Afgehandeld, `closed`→Gesloten.
+- Reserveringen: lifecycle-pillen pending / confirmed (cancelled/expired niet op de kalender).
 
 ### 5.4 Briefing
-Vanuit de kalender (dag/team) link naar de **Briefing afdrukken** (taken van die dag per team) —
-zie Dashboard §1 / Taken §4.1.
+Vanuit de kalender: **Briefing afdrukken** — taken van die dag per team. In Taken-modus volgt
+de briefingdatum de geselecteerde kalenderdag — zie Dashboard §1 / Taken §4.1.
 
 ### 5.5 NIET overnemen
 Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboarding/demo, complexe

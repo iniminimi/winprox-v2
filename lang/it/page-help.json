@@ -223,21 +223,53 @@
             "title": "Aiuto — Calendario",
             "actions": [
                 {
-                    "label": "Navigazione",
-                    "text": "Usi precedente, oggi e successivo per scorrere il periodo."
+                    "label": "Scopo",
+                    "text": "Panoramica temporale di attività pianificate, segnalazioni create e prenotazioni unità. L’amministrazione mostra tutto chiaramente — nessun blur su questa schermata."
                 },
                 {
                     "label": "Vista",
-                    "text": "Passi tra vista mese, settimana e giorno."
+                    "text": "Scegli mese, settimana o giorno. La settimana inizia il lunedì. Oggi è evidenziato in smeraldo; i giorni fuori dal mese selezionato sono grigi."
                 },
                 {
-                    "label": "Filtro",
-                    "text": "Filtra per sede e tipo (attività, segnalazioni o prenotazioni). Per le prenotazioni puoi anche filtrare per categoria prenotabile."
+                    "label": "Navigazione",
+                    "text": "Scorri con precedente, oggi e successivo. L’URL ricorda vista, tipo, data, sede e (per le prenotazioni) categoria — utile da condividere o mettere nei preferiti."
+                },
+                {
+                    "label": "Tipo",
+                    "text": "Passa tra Attività (predefinito), Segnalazioni e Prenotazioni. Ogni tipo mostra elementi e pillole di stato diversi."
+                },
+                {
+                    "label": "Attività",
+                    "text": "Mostra attività con data pianificata o di scadenza — inclusi i cicli delle segnalazioni ricorrenti. Solo attività di segnalazioni approvate. Ordinate per priorità. Un clic apre il dettaglio attività (numero di riferimento + pillola di stato)."
+                },
+                {
+                    "label": "Segnalazioni",
+                    "text": "Mostra le segnalazioni nella data di creazione (quando sono arrivate). Un clic apre il dettaglio della segnalazione."
+                },
+                {
+                    "label": "Prenotazioni",
+                    "text": "Mostra hold pending attivi e prenotazioni confermate (annullate o scadute non compaiono qui). Per elemento: unità e fascia oraria; in vista settimana/giorno anche il nome dell’ospite. Un clic apre l’elenco prenotazioni."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Sede: tutte le sedi o una. In Prenotazioni compare un secondo filtro per categorie prenotabili. Tornando ad Attività o Segnalazioni, quel filtro categoria scompare."
+                },
+                {
+                    "label": "Griglia mensile",
+                    "text": "Massimo cinque elementi al giorno; poi «+X in più». Usa la vista settimana o giorno per l’elenco completo di quel giorno."
+                },
+                {
+                    "label": "Settimana e giorno",
+                    "text": "Schede elenco per giorno. In vista giorno, scorri le pagine con precedente/successivo se ci sono più di 50 elementi."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Stampa briefing apre un riepilogo stampabile delle attività di quel giorno, raggruppate per team. In modalità Attività la data del briefing segue il giorno selezionato nel calendario."
                 }
             ],
-            "status_note": "Colore e stato sul calendario seguono lo stato attività o segnalazione.",
+            "status_note": "Per Attività e Segnalazioni le pillole seguono lo stato attività o segnalazione sotto. Per Prenotazioni: pending (in attesa di conferma e-mail) o confermata — bloccano gli slot sovrapposti.",
             "statuses": {
-                "new": "Pianificata ma non ancora avviata.",
+                "new": "Pianificata o nuova, non ancora avviata.",
                 "in_progress": "Lavoro in corso.",
                 "done": "Completata, in attesa di chiusura.",
                 "closed": "Completamente chiusa."

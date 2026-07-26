@@ -223,21 +223,53 @@
             "title": "Help — Calendar",
             "actions": [
                 {
-                    "label": "Navigation",
-                    "text": "Use previous, today and next to browse through the period."
+                    "label": "Purpose",
+                    "text": "Time overview of scheduled tasks, created issues and unit reservations. Admin screens show everything clearly — no blur here."
                 },
                 {
                     "label": "View",
-                    "text": "Switch between month, week and day view."
+                    "text": "Choose month, week or day. Weeks start on Monday. Today is highlighted in emerald; days outside the selected month are grey."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Filter by location and type (tasks, issues or reservations). For reservations you can also filter by reservable category."
+                    "label": "Navigation",
+                    "text": "Browse with previous, today and next. The URL remembers view, type, date, location and (for reservations) category — useful to share or bookmark."
+                },
+                {
+                    "label": "Type",
+                    "text": "Switch between Tasks (default), Issues and Reservations. Each type shows different items and status pills."
+                },
+                {
+                    "label": "Tasks",
+                    "text": "Shows tasks with a planned date or due date — including cycles from recurring issues. Only tasks from approved issues. Sorted by priority. Click opens the task detail (reference number + status pill)."
+                },
+                {
+                    "label": "Issues",
+                    "text": "Shows issues on their creation date (when they came in). Click opens the issue detail."
+                },
+                {
+                    "label": "Reservations",
+                    "text": "Shows active pending holds and confirmed bookings (cancelled or expired do not appear here). Per item: unit and time slot; in week and day view also the guest name. Click opens the reservations list."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Location: all locations or one. For Reservations a second filter appears for reservable categories. Switching back to Tasks or Issues clears that category filter."
+                },
+                {
+                    "label": "Month grid",
+                    "text": "Up to five items per day; then «+X more». Use week or day view for the full list of that day."
+                },
+                {
+                    "label": "Week and day",
+                    "text": "List cards per day. In day view, browse pages with previous/next when there are more than 50 items."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Print briefing opens a printable overview of tasks for that day, grouped by team. In Tasks mode the briefing date follows the selected calendar day."
                 }
             ],
-            "status_note": "Colour and status on the calendar follow task or issue status.",
+            "status_note": "For Tasks and Issues, pills follow the task or issue status below. For Reservations: pending (awaiting email confirmation) or confirmed — those block overlapping slots.",
             "statuses": {
-                "new": "Planned but not yet started.",
+                "new": "Planned or new, not yet started.",
                 "in_progress": "Work in progress.",
                 "done": "Completed, waiting to be closed.",
                 "closed": "Fully closed."

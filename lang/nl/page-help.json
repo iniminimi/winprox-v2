@@ -223,21 +223,53 @@
             "title": "Hulp — Kalender",
             "actions": [
                 {
-                    "label": "Navigatie",
-                    "text": "Gebruik vorige, vandaag en volgende om door de periode te bladeren."
+                    "label": "Doel",
+                    "text": "Overzicht van geplande taken, aangemaakte meldingen en unit-reserveringen in de tijd. Beheer ziet alles onversluierd — geen blur op dit scherm."
                 },
                 {
                     "label": "Weergave",
-                    "text": "Schakel tussen maand-, week- en dagoverzicht."
+                    "text": "Kies maand, week of dag. De week start op maandag. Vandaag is emerald gemarkeerd; dagen buiten de gekozen maand staan grijs."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Filter op locatie en type (taken, meldingen of reserveringen). Bij reserveringen kun je ook filteren op reserveerbare categorie."
+                    "label": "Navigatie",
+                    "text": "Blader met vorige, vandaag en volgende. De URL onthoudt weergave, type, datum, locatie en (bij reserveringen) categorie — handig om te delen of te bookmarken."
+                },
+                {
+                    "label": "Type",
+                    "text": "Schakel tussen Taken (standaard), Meldingen en Reserveringen. Elk type toont andere items en statuspillen."
+                },
+                {
+                    "label": "Taken",
+                    "text": "Toont taken met een geplande datum of vervaldatum — inclusief cycli van terugkerende meldingen. Alleen taken van goedgekeurde meldingen. Gesorteerd op prioriteit. Klik opent het taakdetail (referentienummer + statuspil)."
+                },
+                {
+                    "label": "Meldingen",
+                    "text": "Toont meldingen op hun aanmaakdatum (wanneer ze binnenkwamen). Klik opent het meldingdetail."
+                },
+                {
+                    "label": "Reserveringen",
+                    "text": "Toont actieve pending holds en bevestigde boekingen (geannuleerd of verlopen zie je hier niet). Per item: unit en tijdvak; in week- en dagweergave ook de gastnaam. Klik opent de reserveringenlijst."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Locatie: alle locaties of één. Bij Reserveringen verschijnt een tweede filter op reserveerbare categorie. Wissel je terug naar Taken of Meldingen, dan verdwijnt die categoriefilter."
+                },
+                {
+                    "label": "Maandgrid",
+                    "text": "Per dag max. vijf items; daarna «+X meer». Gebruik week- of dagweergave voor de volledige lijst van die dag."
+                },
+                {
+                    "label": "Week en dag",
+                    "text": "Lijstkaarten per dag. In dagweergave blader je met vorige/volgende pagina als er meer dan 50 items zijn."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Briefing afdrukken opent een printbaar overzicht van taken voor die dag, gegroepeerd per team. In Taken-modus volgt de briefingdatum de geselecteerde kalenderdag."
                 }
             ],
-            "status_note": "Kleur en status op de kalender volgen de taak- of meldingstatus.",
+            "status_note": "Bij Taken en Meldingen volgen de pillen de taak- of meldingstatus hieronder. Bij Reserveringen: pending (wacht op e-mailbevestiging) of bevestigd — die blokkeren overlappende slots.",
             "statuses": {
-                "new": "Gepland maar nog niet gestart.",
+                "new": "Gepland of nieuw, nog niet gestart.",
                 "in_progress": "Lopende uitvoering.",
                 "done": "Afgerond, wacht op sluiting.",
                 "closed": "Volledig afgesloten."

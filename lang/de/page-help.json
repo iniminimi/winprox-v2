@@ -223,21 +223,53 @@
             "title": "Hilfe — Kalender",
             "actions": [
                 {
-                    "label": "Navigation",
-                    "text": "Verwenden Sie zurück, heute und weiter, um durch den Zeitraum zu blättern."
+                    "label": "Zweck",
+                    "text": "Zeitübersicht geplanter Aufgaben, erstellter Meldungen und Unit-Reservierungen. Die Verwaltung zeigt alles klar — kein Blur auf diesem Bildschirm."
                 },
                 {
                     "label": "Ansicht",
-                    "text": "Wechseln Sie zwischen Monats-, Wochen- und Tagesansicht."
+                    "text": "Wählen Sie Monat, Woche oder Tag. Die Woche beginnt am Montag. Heute ist emerald markiert; Tage außerhalb des gewählten Monats sind grau."
+                },
+                {
+                    "label": "Navigation",
+                    "text": "Blättern Sie mit zurück, heute und weiter. Die URL merkt sich Ansicht, Typ, Datum, Standort und (bei Reservierungen) Kategorie — praktisch zum Teilen oder Bookmarken."
+                },
+                {
+                    "label": "Typ",
+                    "text": "Wechseln Sie zwischen Aufgaben (Standard), Meldungen und Reservierungen. Jeder Typ zeigt andere Einträge und Status-Pills."
+                },
+                {
+                    "label": "Aufgaben",
+                    "text": "Zeigt Aufgaben mit geplantem Datum oder Fälligkeitsdatum — inklusive Zyklen wiederkehrender Meldungen. Nur Aufgaben freigegebener Meldungen. Sortiert nach Priorität. Klick öffnet die Aufgabendetails (Referenznummer + Status-Pill)."
+                },
+                {
+                    "label": "Meldungen",
+                    "text": "Zeigt Meldungen nach Erstellungsdatum (wann sie eingegangen sind). Klick öffnet die Meldungsdetails."
+                },
+                {
+                    "label": "Reservierungen",
+                    "text": "Zeigt aktive Pending-Holds und bestätigte Buchungen (storniert oder abgelaufen erscheinen hier nicht). Pro Eintrag: Unit und Zeitraum; in Wochen- und Tagesansicht auch der Gastname. Klick öffnet die Reservierungsliste."
                 },
                 {
                     "label": "Filter",
-                    "text": "Filtern Sie nach Standort und Typ (Aufgaben, Meldungen oder Reservierungen). Bei Reservierungen zusätzlich nach reservierbarer Kategorie."
+                    "text": "Standort: alle Standorte oder einer. Bei Reservierungen erscheint ein zweiter Filter für reservierbare Kategorien. Wechsel zurück zu Aufgaben oder Meldungen entfernt diesen Kategoriefilter."
+                },
+                {
+                    "label": "Monatsraster",
+                    "text": "Pro Tag maximal fünf Einträge; danach «+X mehr». Nutzen Sie Wochen- oder Tagesansicht für die vollständige Liste des Tages."
+                },
+                {
+                    "label": "Woche und Tag",
+                    "text": "Listenkarten pro Tag. In der Tagesansicht blättern Sie mit vorheriger/nächster Seite bei mehr als 50 Einträgen."
+                },
+                {
+                    "label": "Briefing",
+                    "text": "Briefing drucken öffnet eine druckbare Übersicht der Aufgaben für diesen Tag, gruppiert nach Team. Im Aufgabenmodus folgt das Briefingdatum dem gewählten Kalendertag."
                 }
             ],
-            "status_note": "Farbe und Status im Kalender folgen dem Aufgaben- oder Meldungsstatus.",
+            "status_note": "Bei Aufgaben und Meldungen folgen die Pills dem Aufgaben- oder Meldungsstatus unten. Bei Reservierungen: pending (wartet auf E-Mail-Bestätigung) oder bestätigt — diese blockieren überlappende Slots.",
             "statuses": {
-                "new": "Geplant, aber noch nicht gestartet.",
+                "new": "Geplant oder neu, noch nicht gestartet.",
                 "in_progress": "Laufende Ausführung.",
                 "done": "Abgeschlossen, wartet auf Schließung.",
                 "closed": "Vollständig geschlossen."
