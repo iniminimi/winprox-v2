@@ -36,7 +36,7 @@ class CreateUnitAction
                 : true,
             'allow_reservations' => array_key_exists('allow_reservations', $data)
                 ? (bool) $data['allow_reservations']
-                : true,
+                : false,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {
