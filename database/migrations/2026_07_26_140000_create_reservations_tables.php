@@ -13,7 +13,7 @@ return new class extends Migration
         });
 
         Schema::table('units', function (Blueprint $table) {
-            $table->boolean('allow_reservations')->default(false)->after('public_reports_enabled');
+            $table->boolean('allow_reservations')->default(true)->after('public_reports_enabled');
         });
 
         Schema::create('reservations', function (Blueprint $table) {

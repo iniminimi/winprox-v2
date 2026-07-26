@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Abilitare",
-                    "text": "Attiva Prenotabile sulla categoria. Per unità puoi disattivare Consenti prenotazioni. Il QR unità mostra allora il riquadro Prenota."
+                    "text": "Attiva Prenotabile sulla categoria. Tutte le unità diventano prenotabili; disattiva Consenti prenotazioni per unità per escluderne una. Il QR mostra Prenota."
                 },
                 {
                     "label": "Ospite",

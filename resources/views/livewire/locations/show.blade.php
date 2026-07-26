@@ -279,6 +279,7 @@
                     <input type="checkbox" wire:model="unitAllowReservations">
                     <span>{{ __('locations.units.fields.allow_reservations') }}</span>
                 </label>
+                <p class="wp-hint">{{ __('locations.units.allow_reservations_hint') }}</p>
 
                 @if ($editingUnitId && $this->editingUnit)
                     @php

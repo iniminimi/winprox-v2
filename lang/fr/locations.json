@@ -143,7 +143,8 @@
         "delete_blocked_issues": "Cette unité a des signalements et ne peut pas être supprimée.",
         "delete_blocked_tasks": "Cette unité a des tâches et ne peut pas être supprimée.",
         "delete_blocked_esg_measurements": "Cette unité a des mesures ESG et ne peut pas être supprimée.",
-        "delete_blocked": "Cette unité ne peut pas être supprimée."
+        "delete_blocked": "Cette unité ne peut pas être supprimée.",
+        "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Activé par défaut ; désactivez pour exclure cette unité."
     },
     "bulk": {
         "title": "Ajout en masse d'unités",

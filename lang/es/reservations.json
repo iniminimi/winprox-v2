@@ -69,9 +69,9 @@
         "lead": "Las reservas sirven para salas, vehículos, llaves, … con el mismo QR de unidad.",
         "steps": [
             "Abra Ubicaciones/unidades y edite la categoría (p. ej. Salas).",
-            "Active Reservable en esa categoría.",
-            "Compruebe por unidad que Permitir reservas está activado.",
-            "Comparta o imprima el QR de unidad — los invitados verán la baldosa Reservar."
+            "Active Reservable en esa categoría — todas las unidades pasan a ser reservables.",
+            "Opcionalmente desactive Permitir reservas en unidades a excluir.",
+            "Comparta o imprima el QR de unidad — los invitados verán Reservar."
         ],
         "cta_locations": "Ir a ubicaciones y unidades"
     },

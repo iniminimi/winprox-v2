@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Enable",
-                    "text": "Turn on Reservable on the category. Per unit you can turn off Allow reservations. The unit QR then shows the Reserve tile."
+                    "text": "Turn on Reservable on the category. All units in that category become bookable; turn off Allow reservations per unit to exclude one. The unit QR then shows the Reserve tile."
                 },
                 {
                     "label": "Guest flow",

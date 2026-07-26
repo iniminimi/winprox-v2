@@ -69,9 +69,9 @@
         "lead": "Reservierungen gelten für Räume, Fahrzeuge, Schlüssel, … über denselben Unit-QR.",
         "steps": [
             "Öffnen Sie Standorte/Units und bearbeiten Sie die Kategorie (z. B. Besprechungsräume).",
-            "Aktivieren Sie Reservierbar für diese Kategorie.",
-            "Prüfen Sie pro Unit, dass Reservierungen erlauben aktiv ist.",
-            "Teilen oder drucken Sie den Unit-QR — Gäste sehen dann die Kachel Reservieren."
+            "Aktivieren Sie Reservierbar für diese Kategorie — alle Units darunter werden buchbar.",
+            "Schalten Sie optional Reservierungen erlauben bei Units aus, die Sie ausschließen wollen.",
+            "Teilen oder drucken Sie den Unit-QR — Gäste sehen die Kachel Reservieren."
         ],
         "cta_locations": "Zu Standorten & Units"
     },

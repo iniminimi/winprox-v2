@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Activer",
-                    "text": "Activez Réservable sur la catégorie. Par unité vous pouvez désactiver Autoriser les réservations. Le QR unité affiche alors la tuile Réserver."
+                    "text": "Activez Réservable sur la catégorie. Toutes les unités deviennent réservables ; désactivez Autoriser les réservations par unité pour en exclure une. Le QR affiche alors Réserver."
                 },
                 {
                     "label": "Invité",

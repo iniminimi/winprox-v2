@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Inschakelen",
-                    "text": "Zet op de categorie Reserveerbaar aan. Per unit kun je Reserveringen toestaan uitzetten. Daarna verschijnt op de unit-QR de tegel Reserveren."
+                    "text": "Zet op de categorie Reserveerbaar aan. Alle units in die categorie worden reserveerbaar; zet per unit Reserveringen toestaan uit om er een uit te sluiten. Daarna verschijnt op de unit-QR de tegel Reserveren."
                 },
                 {
                     "label": "Gastflow",

@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Activar",
-                    "text": "Active Reservable en la categoría. Por unidad puede desactivar Permitir reservas. El QR de unidad muestra entonces la baldosa Reservar."
+                    "text": "Active Reservable en la categoría. Todas las unidades pasan a ser reservables; desactive Permitir reservas por unidad para excluir una. El QR mostrará Reservar."
                 },
                 {
                     "label": "Invitado",

@@ -69,9 +69,9 @@
         "lead": "Le prenotazioni servono per sale, veicoli, chiavi, … tramite lo stesso QR unità.",
         "steps": [
             "Apri Sedi/unità e modifica la categoria (es. Sale riunioni).",
-            "Attiva Prenotabile per quella categoria.",
-            "Verifica per unità che Consenti prenotazioni sia attivo.",
-            "Condividi o stampa il QR unità — gli ospiti vedranno il riquadro Prenota."
+            "Attiva Prenotabile per quella categoria — tutte le unità diventano prenotabili.",
+            "Opzionalmente disattiva Consenti prenotazioni sulle unità da escludere.",
+            "Condividi o stampa il QR unità — gli ospiti vedranno Prenota."
         ],
         "cta_locations": "Vai a sedi e unità"
     },

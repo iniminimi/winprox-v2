@@ -69,8 +69,8 @@
         "lead": "Reservations work for meeting rooms, vehicles, keys, … via the same unit QR.",
         "steps": [
             "Open Locations/units and edit the category (e.g. Meeting rooms).",
-            "Turn on Reservable for that category.",
-            "Check per unit that Allow reservations is on.",
+            "Turn on Reservable for that category — all units under it become bookable.",
+            "Optionally turn off Allow reservations on units you want to exclude.",
             "Share or print the unit QR — guests will see the Reserve tile."
         ],
         "cta_locations": "Go to locations & units"

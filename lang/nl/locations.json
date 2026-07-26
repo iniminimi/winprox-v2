@@ -143,7 +143,8 @@
         "delete_blocked_issues": "Deze unit heeft meldingen en kan niet worden verwijderd.",
         "delete_blocked_tasks": "Deze unit heeft taken en kan niet worden verwijderd.",
         "delete_blocked_esg_measurements": "Deze unit heeft ESG-metingen en kan niet worden verwijderd.",
-        "delete_blocked": "Deze unit kan niet worden verwijderd."
+        "delete_blocked": "Deze unit kan niet worden verwijderd.",
+        "allow_reservations_hint": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard aan; zet uit om deze unit uit te sluiten."
     },
     "bulk": {
         "title": "Bulk units toevoegen",

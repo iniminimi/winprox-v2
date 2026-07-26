@@ -107,7 +107,7 @@ class Show extends Component
 
     public bool $unitPublicReportsEnabled = true;
 
-    public bool $unitAllowReservations = false;
+    public bool $unitAllowReservations = true;
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
@@ -252,7 +252,7 @@ class Show extends Component
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitPublicReportsEnabled = true;
-        $this->unitAllowReservations = false;
+        $this->unitAllowReservations = true;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -285,7 +285,7 @@ class Show extends Component
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitPublicReportsEnabled = true;
-        $this->unitAllowReservations = false;
+        $this->unitAllowReservations = true;
         $this->unitPhotos = [];
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');

@@ -143,7 +143,8 @@
         "delete_blocked_issues": "This unit has issues and cannot be deleted.",
         "delete_blocked_tasks": "This unit has tasks and cannot be deleted.",
         "delete_blocked_esg_measurements": "This unit has ESG measurements and cannot be deleted.",
-        "delete_blocked": "This unit cannot be deleted."
+        "delete_blocked": "This unit cannot be deleted.",
+        "allow_reservations_hint": "Only relevant when the category is Reservable. On by default; turn off to exclude this unit."
     },
     "bulk": {
         "title": "Bulk add units",

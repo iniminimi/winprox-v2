@@ -244,7 +244,7 @@
                 },
                 {
                     "label": "Aktivieren",
-                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Pro Unit können Sie Reservierungen erlauben ausschalten. Der Unit-QR zeigt dann die Kachel Reservieren."
+                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Alle Units werden buchbar; schalten Sie Reservierungen erlauben pro Unit aus, um eine auszuschließen. Der Unit-QR zeigt dann Reservieren."
                 },
                 {
                     "label": "Gastflow",

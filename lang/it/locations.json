@@ -143,7 +143,8 @@
         "delete_blocked_issues": "Questa unità ha segnalazioni e non può essere eliminata.",
         "delete_blocked_tasks": "Questa unità ha attività e non può essere eliminata.",
         "delete_blocked_esg_measurements": "Questa unità ha misurazioni ESG e non può essere eliminata.",
-        "delete_blocked": "Questa unità non può essere eliminata."
+        "delete_blocked": "Questa unità non può essere eliminata.",
+        "allow_reservations_hint": "Rilevante solo se la categoria è Prenotabile. Attivo di default; disattiva per escludere questa unità."
     },
     "bulk": {
         "title": "Aggiungi unità in massa",

@@ -69,8 +69,8 @@
         "lead": "Reserveren werkt voor vergaderzalen, voertuigen, sleutels, … via dezelfde unit-QR.",
         "steps": [
             "Open Locaties/units en bewerk de categorie (bv. Vergaderzalen).",
-            "Zet Reserveerbaar aan voor die categorie.",
-            "Controleer per unit dat Reserveringen toestaan aan staat.",
+            "Zet Reserveerbaar aan voor die categorie — alle units daaronder worden reserveerbaar.",
+            "Zet eventueel Reserveringen toestaan uit op units die je wilt uitsluiten.",
             "Deel of print de unit-QR — gasten zien dan de tegel Reserveren."
         ],
         "cta_locations": "Naar locaties & units"
