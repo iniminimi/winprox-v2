@@ -17,6 +17,8 @@
         "sectors": "Branchen",
         "video": "Video",
         "faq": "FAQ",
+        "about": "Über uns",
+        "api": "API",
         "pricing": "Preise"
     },
     "hero": {
@@ -46,6 +48,7 @@
         "eyebrow": "Produkte",
         "title": "Eine Plattform, zwei Kernprodukte.",
         "lead": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten. Derselbe Clock-Point-QR, modular erweiterbar.",
+        "learn_more": "Mehr erfahren",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Meldung → Aufgabe → Erledigung",

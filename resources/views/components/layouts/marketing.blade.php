@@ -10,6 +10,7 @@
         'description' => $socialDescription ?? __('welcome.social.og_description'),
         'url' => $socialUrl ?? url()->current(),
     ])
+    @include('partials.wp-json-ld', ['graphs' => $jsonLdGraphs ?? []])
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles

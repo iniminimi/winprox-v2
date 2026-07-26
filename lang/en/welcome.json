@@ -17,6 +17,8 @@
         "sectors": "Sectors",
         "video": "Video",
         "faq": "FAQ",
+        "about": "About",
+        "api": "API",
         "pricing": "Pricing"
     },
     "hero": {
@@ -46,6 +48,7 @@
         "eyebrow": "Products",
         "title": "One platform, two core products.",
         "lead": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts. The same Clock Point QR, modular and expandable.",
+        "learn_more": "Learn more",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Issue → task → completion",

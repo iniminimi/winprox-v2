@@ -1,0 +1,143 @@
+{
+    "shared": {
+        "related_title": "Páginas relacionadas",
+        "links": {
+            "about": "Acerca de WinProx",
+            "api": "API",
+            "faq": "FAQ",
+            "pricing": "Precios"
+        }
+    },
+    "facility": {
+        "nav_label": "Facility",
+        "meta_title": "Gestión Facility vía QR | WinProx",
+        "social": {
+            "og_title": "Gestión Facility vía QR | WinProx",
+            "og_description": "Incidencias, tareas por equipo, moderación en portales QR públicos, calendario y briefing — sin aplicación."
+        },
+        "eyebrow": "Facility",
+        "title": "Gestión Facility vía portales QR",
+        "lead": "WinProx Facility vincula cada unidad a un portal digital: reportar, aprobar, asignar tareas y completar el trabajo en un solo flujo.",
+        "problem": {
+            "title": "¿Qué problema resuelve?",
+            "body": "Los defectos y solicitudes se dispersan entre teléfono, Excel y correo. A los equipos de campo les falta contexto; a los responsables, visión general. WinProx centraliza incidencia → tareas → finalización."
+        },
+        "solution": {
+            "title": "Solución",
+            "body": "Escanee el QR de la unidad para reportar (con fotos). El personal aprueba (lo público permanece difuminado hasta entonces). Las tareas van a equipos operativos. Los trabajadores actúan vía Clock Point + QR de unidad in situ."
+        },
+        "capabilities": {
+            "title": "Funcionalidades",
+            "items": [
+                "Ubicaciones y unidades con QR (individual o hoja de pegatinas)",
+                "Portales de reporte públicos con moderación/difuminado hasta aprobación",
+                "Varias tareas por incidencia, cada una asignada a un equipo",
+                "Calendario, briefing y seguimiento en panel",
+                "Equipos, trabajadores y flujos teamleader en el terreno"
+            ]
+        },
+        "audience": {
+            "title": "Para quién",
+            "body": "Coordinadores Facility, equipos de mantenimiento y organizaciones con varios edificios o activos que necesitan un control estricto de incidencias y tareas."
+        }
+    },
+    "time": {
+        "nav_label": "Time",
+        "meta_title": "Control horario vía Clock Point QR | WinProx",
+        "social": {
+            "og_title": "Control horario vía Clock Point QR | WinProx",
+            "og_description": "Fichaje entrada/salida y pausas vía Clock Point QR, presencia y turnos — vinculados a flujos Facility."
+        },
+        "eyebrow": "Time",
+        "title": "Control horario vía Clock Point",
+        "lead": "WinProx Time permite a los trabajadores fichar con el mismo enfoque QR que Facility: rápido en el terreno, visible para los responsables.",
+        "problem": {
+            "title": "¿Qué problema resuelve?",
+            "body": "La presencia y los turnos suelen vivir en una herramienta separada, desconectada de incidencias y tareas — lo que dificulta ver quién estuvo in situ y cuándo."
+        },
+        "solution": {
+            "title": "Solución",
+            "body": "Clock Point QR para inicio de sesión y fichaje entrada/salida (cuando Time está activo). Los responsables ven presencia, alarmas y resúmenes de turnos en el módulo Time."
+        },
+        "capabilities": {
+            "title": "Funcionalidades",
+            "items": [
+                "Fichaje entrada y salida vía Clock Point",
+                "Iniciar/detener pausas",
+                "Panel de presencia y alarmas",
+                "Listas de turnos y exportar/imprimir",
+                "Misma identidad de trabajador (nombre + icono) que Facility"
+            ]
+        },
+        "audience": {
+            "title": "Para quién",
+            "body": "Organizaciones que quieren vincular la presencia al trabajo de campo y al seguimiento Facility, sin una aplicación de reloj fichador separada."
+        }
+    },
+    "esg": {
+        "nav_label": "ESG",
+        "meta_title": "Mediciones ESG y cumplimiento | WinProx",
+        "social": {
+            "og_title": "Mediciones ESG y cumplimiento | WinProx",
+            "og_description": "Módulo ESG opcional: indicadores, mediciones y tareas de seguimiento vinculados a unidades y portales QR."
+        },
+        "eyebrow": "ESG",
+        "title": "Mediciones ESG en el mismo portal",
+        "lead": "El módulo ESG añade indicadores y mediciones a WinProx para que los datos de sostenibilidad y cumplimiento convivan junto a las tareas Facility.",
+        "problem": {
+            "title": "¿Qué problema resuelve?",
+            "body": "Los datos ESG suelen estar en hojas de cálculo, lejos del terreno. Los umbrales y el seguimiento se pierden entre equipos."
+        },
+        "solution": {
+            "title": "Solución",
+            "body": "Defina indicadores, registre mediciones (incluidos flujos de campo cuando proceda) y adjunte tareas de seguimiento cuando los umbrales requieran acción — en el mismo tenant que Facility."
+        },
+        "capabilities": {
+            "title": "Funcionalidades",
+            "items": [
+                "Indicadores y mediciones ESG",
+                "Panel e historial",
+                "Tareas de seguimiento en umbrales",
+                "Vinculación a unidades/ubicaciones",
+                "Registro API de mediciones (Corporate)"
+            ]
+        },
+        "audience": {
+            "title": "Para quién",
+            "body": "Organizaciones que quieren acercar Facility y ESG sin un sistema silo separado."
+        }
+    },
+    "qr": {
+        "nav_label": "Portales QR",
+        "meta_title": "Portales QR para reportes y trabajo de campo | WinProx",
+        "social": {
+            "og_title": "Portales QR para reportes y trabajo de campo | WinProx",
+            "og_description": "QR de unidad, Clock Point QR y QR de ubicación: reportes y trabajo de campo en el navegador, sin instalar aplicación."
+        },
+        "eyebrow": "Portales QR",
+        "title": "Cómo funcionan los portales QR",
+        "lead": "WinProx se centra en códigos QR físicos que abren un portal digital: para reportadores, trabajadores de campo y (opcionalmente) fichaje.",
+        "problem": {
+            "title": "¿Qué problema resuelve?",
+            "body": "Sin contexto local, los reportes son genéricos (« gotea en algún sitio »). Instalar aplicaciones en dispositivos compartidos falla. El QR pone en primer plano la unidad y el flujo correctos."
+        },
+        "solution": {
+            "title": "Solución",
+            "body": "QR de unidad para reportes y tareas en esa unidad. Clock Point QR para inicio de sesión del trabajador (y Time). QR de ubicación para un enlace general de ubicación. Todo en el navegador."
+        },
+        "capabilities": {
+            "title": "Funcionalidades",
+            "items": [
+                "QR de unidad: reporte + tareas de trabajador in situ",
+                "Clock Point QR: inicio de sesión / fichaje entrada",
+                "QR de ubicación y hojas de pegatinas (p. ej. Avery)",
+                "QR dinámico asignable a una unidad más tarde",
+                "Moderación: difuminado hasta aprobación en páginas públicas"
+            ]
+        },
+        "audience": {
+            "title": "Para quién",
+            "body": "Cualquier organización que quiera que reportes y trabajo de campo empiecen desde el lugar físico — sin tienda de aplicaciones ni app de campo separada."
+        }
+    }
+}

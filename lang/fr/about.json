@@ -1,0 +1,79 @@
+{
+    "meta_title": "À propos de WinProx | Facility via QR",
+    "social": {
+        "og_title": "À propos de WinProx | Facility via QR",
+        "og_description": "WinProx est une plateforme facility basée sur QR : signalements, tâches, Time et ESG optionnel — dans le navigateur, sans application."
+    },
+    "eyebrow": "À propos de WinProx",
+    "title": "Qu'est-ce que WinProx ?",
+    "lead": "WinProx est une plateforme de facility management basée sur des QR codes pour les signalements, tâches, présence (Time) et mesures ESG optionnelles — dans le navigateur, sans application native.",
+    "what": {
+        "title": "Idée centrale",
+        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture."
+    },
+    "audience": {
+        "title": "Pour qui",
+        "items": [
+            "Équipes facility et maintenance qui pilotent signalements et tâches",
+            "Organisations avec plusieurs sites, unités ou assets",
+            "Équipes qui enregistrent le temps/présence via Clock Point",
+            "Organisations qui lient des mesures ESG aux mêmes portails"
+        ]
+    },
+    "sectors": {
+        "title": "Secteurs",
+        "items": [
+            "Hôpitaux et campus de soins",
+            "Usines et entrepôts",
+            "Communes et bâtiments publics",
+            "Ports, logistique et bureaux"
+        ]
+    },
+    "modules": {
+        "title": "Modules",
+        "items": [
+            {
+                "name": "Facility",
+                "text": "Signalements, modération sur portails publics, tâches par équipe, calendrier et briefing."
+            },
+            {
+                "name": "Time",
+                "text": "Pointage entrée/sortie et pauses via QR Clock Point, présence et vues de shifts."
+            },
+            {
+                "name": "ESG",
+                "text": "Mesures et indicateurs optionnels liés aux unités et tâches de suivi."
+            },
+            {
+                "name": "API & webhooks",
+                "text": "API REST (Sanctum) et webhooks sortants sur Corporate — pour les intégrations."
+            }
+        ]
+    },
+    "tech": {
+        "title": "Technologie",
+        "body": "Application web (Laravel + Livewire). Les portails QR publics fonctionnent sur smartphone sans installation. Multilingue (NL, EN, FR, DE, ES, IT) avec traductions IA optionnelles des textes de signalement."
+    },
+    "compliance": {
+        "title": "Confidentialité & conformité",
+        "items": [
+            "Conception orientée RGPD avec documents privacy et DPA publics",
+            "Photos et textes des pages QR publiques restent floutés jusqu'à approbation",
+            "Isolation multi-tenant : données par organisation"
+        ]
+    },
+    "languages": {
+        "title": "Langues",
+        "body": "Interface et marketing en néerlandais, anglais, français, allemand, espagnol et italien."
+    },
+    "related_title": "Pages associées",
+    "links": {
+        "facility": "Facility",
+        "time": "Time",
+        "esg": "ESG",
+        "qr": "Portails QR",
+        "api": "API",
+        "faq": "FAQ",
+        "pricing": "Tarifs"
+    }
+}

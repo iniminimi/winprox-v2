@@ -235,6 +235,24 @@
     padding: 2rem 1.5rem 4rem;
 }
 
+[data-theme='standard'] .wp-welcome-related__list {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+[data-theme='standard'] .wp-welcome-related__list a {
+    color: var(--wp-link, var(--wp-accent));
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+[data-theme='standard'] .wp-welcome-product-card__more {
+    margin-top: 1rem;
+}
+
 [data-theme='standard'] .wp-welcome-section {
     padding: 4rem 1.5rem;
 }

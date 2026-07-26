@@ -1,0 +1,56 @@
+{
+    "meta_title": "API WinProx | REST & webhooks",
+    "social": {
+        "og_title": "API WinProx | REST & webhooks",
+        "og_description": "Présentation publique de l'API REST WinProx (Sanctum), des webhooks et de la disponibilité Corporate."
+    },
+    "eyebrow": "API",
+    "title": "API REST WinProx & webhooks",
+    "lead": "Intégrez signalements, tâches, sites, unités, équipes, workers et mesures ESG via une API REST versionnée sous /api/v1. Des webhooks sortants notifient vos systèmes.",
+    "overview": {
+        "title": "Vue d'ensemble",
+        "body": "L'API est JSON entrant/sortant, scopée au tenant via le token utilisateur, avec enveloppes cohérentes et pagination. Limite : 60 requêtes/minute/token."
+    },
+    "auth": {
+        "title": "Authentification",
+        "body": "Utilisez des tokens Sanctum en Bearer dans l'en-tête Authorization.",
+        "items": [
+            "Authorization: Bearer <token>",
+            "Tokens avec abilities (moindre privilège), ex. issues:read, tasks:update, webhooks:manage",
+            "L'accès API nécessite Corporate (ou activation trial explicite)"
+        ]
+    },
+    "endpoints": {
+        "title": "Ressources clés",
+        "items": [
+            {
+                "name": "Issues & tâches",
+                "text": "Créer/lire/approuver des signalements ; créer, démarrer, terminer et mettre à jour des tâches."
+            },
+            {
+                "name": "Sites, unités, équipes, workers",
+                "text": "Lecture de votre structure facility et des équipes terrain."
+            },
+            {
+                "name": "Mesures ESG",
+                "text": "Enregistrer des mesures via esg:create lorsque le module est actif."
+            }
+        ]
+    },
+    "webhooks": {
+        "title": "Webhooks",
+        "body": "Enregistrez des endpoints par tenant pour des events comme issue.created, issue.approved, task.created/started/completed. Livraison en file, signature HMAC, retries et journal."
+    },
+    "access": {
+        "title": "Comment obtenir l'accès ?",
+        "body": "Sur Corporate, gérez tokens et webhooks sous Paramètres. La doc technique complète est dans l'app pour les clients API. Contactez-nous pour un trial API ou une intégration."
+    },
+    "related_title": "Pages associées",
+    "links": {
+        "about": "À propos",
+        "pricing": "Tarifs",
+        "facility": "Facility",
+        "faq": "FAQ",
+        "contact": "Contact"
+    }
+}

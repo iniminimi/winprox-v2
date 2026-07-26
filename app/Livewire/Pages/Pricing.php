@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Support\Billing\BillingCatalogViewData;
+use App\Support\Marketing\JsonLd;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -15,6 +16,19 @@ class Pricing extends Component
             ? 'components.layouts.app'
             : 'components.layouts.marketing';
 
+        $layoutData = [
+            'title' => __('pricing.meta_title'),
+            'socialTitle' => __('pricing.social.og_title'),
+            'socialDescription' => __('pricing.social.og_description'),
+        ];
+
+        if ($layout === 'components.layouts.marketing') {
+            $layoutData['jsonLdGraphs'] = [
+                JsonLd::organization(),
+                JsonLd::softwareApplication(),
+            ];
+        }
+
         return view('livewire.pages.subscription', [
             ...BillingCatalogViewData::catalog(),
             'publicMode' => true,
@@ -24,10 +38,6 @@ class Pricing extends Component
             'canManage' => false,
             'selectedPlan' => null,
             'statusMessage' => null,
-        ])->layout($layout, [
-            'title' => __('pricing.meta_title'),
-            'socialTitle' => __('pricing.social.og_title'),
-            'socialDescription' => __('pricing.social.og_description'),
-        ]);
+        ])->layout($layout, $layoutData);
     }
 }

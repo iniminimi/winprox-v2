@@ -24,9 +24,23 @@ class BuildLlmsTxtAction
         foreach (config('locales.supported', []) as $locale) {
             $label = strtoupper((string) $locale);
             $home = route('welcome', ['locale' => $locale], absolute: true);
+            $about = route('about', ['locale' => $locale], absolute: true);
             $faq = route('faq.public', ['locale' => $locale], absolute: true);
             $lines[] = "- [Homepage ({$label})]({$home}): Marketing overview of Facility, Time and ESG.";
+            $lines[] = "- [About ({$label})]({$about}): What WinProx is, who it is for, modules and compliance.";
             $lines[] = "- [FAQ ({$label})]({$faq}): Full frequently asked questions, always visible in HTML for readers and crawlers.";
+        }
+
+        $lines[] = '';
+        $lines[] = '## Features';
+
+        foreach (config('locales.supported', []) as $locale) {
+            $label = strtoupper((string) $locale);
+            $lines[] = '- [Facility ('.$label.')]('.route('features.facility', ['locale' => $locale], absolute: true).'): Issues, tasks, moderation and facility workflows via QR.';
+            $lines[] = '- [Time ('.$label.')]('.route('features.time', ['locale' => $locale], absolute: true).'): Clock Point presence, breaks and shifts.';
+            $lines[] = '- [ESG ('.$label.')]('.route('features.esg', ['locale' => $locale], absolute: true).'): Optional ESG measurements on the same portals.';
+            $lines[] = '- [QR portals ('.$label.')]('.route('features.qr', ['locale' => $locale], absolute: true).'): Unit QR and Clock Point QR without a native app.';
+            $lines[] = '- [API ('.$label.')]('.route('api.public', ['locale' => $locale], absolute: true).'): REST API and webhooks overview.';
         }
 
         $lines[] = '';

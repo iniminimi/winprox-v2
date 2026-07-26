@@ -1,0 +1,143 @@
+{
+    "shared": {
+        "related_title": "Gerelateerde pagina's",
+        "links": {
+            "about": "Over WinProx",
+            "api": "API",
+            "faq": "FAQ",
+            "pricing": "Prijzen"
+        }
+    },
+    "facility": {
+        "nav_label": "Facility",
+        "meta_title": "Facility management via QR | WinProx",
+        "social": {
+            "og_title": "Facility management via QR | WinProx",
+            "og_description": "Meldingen, taken per team, moderatie op publieke QR-portalen, kalender en briefing — zonder app."
+        },
+        "eyebrow": "Facility",
+        "title": "Facility management via QR-portalen",
+        "lead": "WinProx Facility koppelt elke unit aan een digitaal portaal: melden, goedkeuren, taken toewijzen en afhandelen in één flow.",
+        "problem": {
+            "title": "Welk probleem lost het op?",
+            "body": "Defecten en verzoeken raken verspreid over telefoon, Excel en e-mail. Veldteams missen context; beheerders missen overzicht. WinProx centraliseert de keten melding → taken → afhandeling."
+        },
+        "solution": {
+            "title": "Oplossing",
+            "body": "Scan de unit-QR om te melden (met foto's). Beheer keurt goed (publiek blijft geblurd tot dan). Taken gaan naar operationele teams. Uitvoerders werken via Clock Point + unit-QR ter plaatse."
+        },
+        "capabilities": {
+            "title": "Functies",
+            "items": [
+                "Locaties en units met QR (individueel of stickerblad)",
+                "Publieke meldportalen met moderatie/blur tot goedkeuring",
+                "Meerdere taken per melding, elk aan één team",
+                "Kalender, briefing en dashboardopvolging",
+                "Teams, workers en teamleader-flows op de werkvloer"
+            ]
+        },
+        "audience": {
+            "title": "Voor wie",
+            "body": "Facilitycoördinatoren, onderhoudsteams en organisaties met meerdere gebouwen of assets die meldingen en taken strak willen sturen."
+        }
+    },
+    "time": {
+        "nav_label": "Time",
+        "meta_title": "Tijdregistratie via Clock Point QR | WinProx",
+        "social": {
+            "og_title": "Tijdregistratie via Clock Point QR | WinProx",
+            "og_description": "In-/uitklokken en pauzes via Clock Point-QR, aanwezigheid en shifts — gekoppeld aan facility-workflows."
+        },
+        "eyebrow": "Time",
+        "title": "Tijdregistratie via Clock Point",
+        "lead": "WinProx Time laat uitvoerders inklokken via dezelfde QR-werkwijze als facility: snel op de werkvloer, zichtbaar voor beheer.",
+        "problem": {
+            "title": "Welk probleem lost het op?",
+            "body": "Aanwezigheid en shifts zitten vaak in een aparte tool, los van meldingen en taken. Dat bemoeilijkt opvolging wie wanneer op locatie was."
+        },
+        "solution": {
+            "title": "Oplossing",
+            "body": "Clock Point-QR voor aanmelden én in-/uitklokken (als Time actief is). Beheer ziet aanwezigheid, alarmen en shiftoverzichten in de Time-module."
+        },
+        "capabilities": {
+            "title": "Functies",
+            "items": [
+                "In- en uitklokken via Clock Point",
+                "Pauzes starten/stoppen",
+                "Aanwezigheidsbord en alarmen",
+                "Shiftlijsten en export/print",
+                "Zelfde worker-identiteit (naam + icoon) als facility"
+            ]
+        },
+        "audience": {
+            "title": "Voor wie",
+            "body": "Organisaties die aanwezigheid willen koppelen aan veldwerk en facility-opvolging, zonder aparte prikklok-app."
+        }
+    },
+    "esg": {
+        "nav_label": "ESG",
+        "meta_title": "ESG & compliance metingen | WinProx",
+        "social": {
+            "og_title": "ESG & compliance metingen | WinProx",
+            "og_description": "Optionele ESG-module: indicatoren, metingen en opvolgtaken gekoppeld aan units en QR-portalen."
+        },
+        "eyebrow": "ESG",
+        "title": "ESG-metingen in hetzelfde portaal",
+        "lead": "De ESG-module voegt indicatoren en metingen toe aan WinProx, zodat duurzaamheids- en compliance-data naast facility-taken leeft.",
+        "problem": {
+            "title": "Welk probleem lost het op?",
+            "body": "ESG-data zit vaak in spreadsheets, los van de werkvloer. Drempels en opvolging raken zo zoek tussen teams."
+        },
+        "solution": {
+            "title": "Oplossing",
+            "body": "Definieer indicatoren, registreer metingen (ook via veldflows waar relevant) en koppel opvolgtaken wanneer drempels vragen om actie — in dezelfde tenant als Facility."
+        },
+        "capabilities": {
+            "title": "Functies",
+            "items": [
+                "ESG-indicatoren en metingen",
+                "Dashboard- en historiekviews",
+                "Opvolgtaken bij drempels",
+                "Koppeling aan units/locaties",
+                "API-registratie van metingen (Corporate)"
+            ]
+        },
+        "audience": {
+            "title": "Voor wie",
+            "body": "Organisaties die facility en ESG dichter bij elkaar willen brengen zonder een apart silo-systeem."
+        }
+    },
+    "qr": {
+        "nav_label": "QR-portalen",
+        "meta_title": "QR-portalen voor melden & veldwerk | WinProx",
+        "social": {
+            "og_title": "QR-portalen voor melden & veldwerk | WinProx",
+            "og_description": "Unit-QR, Clock Point-QR en locatie-QR: melden en veldwerk in de browser, zonder app-installatie."
+        },
+        "eyebrow": "QR-portalen",
+        "title": "Hoe QR-portalen werken",
+        "lead": "WinProx draait om fysieke QR-codes die een digitaal portaal openen: voor melders, uitvoerders en (optioneel) inklokken.",
+        "problem": {
+            "title": "Welk probleem lost het op?",
+            "body": "Zonder lokale context raken meldingen generiek (“ergens lek”). Apps installeren op gedeelde toestellen faalt. QR brengt de juiste unit en workflow naar voren."
+        },
+        "solution": {
+            "title": "Oplossing",
+            "body": "Unit-QR voor melden en taken op die unit. Clock Point-QR voor worker-login (en Time). Locatie-QR voor een algemene locatielink. Alles in de browser."
+        },
+        "capabilities": {
+            "title": "Functies",
+            "items": [
+                "Unit-QR: melden + worker-taken ter plaatse",
+                "Clock Point-QR: aanmelden / inklokken",
+                "Locatie-QR en stickerbladen (o.a. Avery)",
+                "Dynamische QR die later een unit kan krijgen",
+                "Moderatie: blur tot goedkeuring op publieke pagina's"
+            ]
+        },
+        "audience": {
+            "title": "Voor wie",
+            "body": "Elke organisatie die meldingen en veldwerk wil starten vanaf de fysieke plek — zonder app store of aparte veld-app."
+        }
+    }
+}

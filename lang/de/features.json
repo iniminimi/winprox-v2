@@ -1,0 +1,143 @@
+{
+    "shared": {
+        "related_title": "Verwandte Seiten",
+        "links": {
+            "about": "Über WinProx",
+            "api": "API",
+            "faq": "FAQ",
+            "pricing": "Preise"
+        }
+    },
+    "facility": {
+        "nav_label": "Facility",
+        "meta_title": "Facility-Management per QR | WinProx",
+        "social": {
+            "og_title": "Facility-Management per QR | WinProx",
+            "og_description": "Meldungen, Aufgaben pro Team, Moderation auf öffentlichen QR-Portalen, Kalender und Briefing — ohne App."
+        },
+        "eyebrow": "Facility",
+        "title": "Facility-Management über QR-Portale",
+        "lead": "WinProx Facility verknüpft jede Einheit mit einem digitalen Portal: melden, genehmigen, Aufgaben zuweisen und Arbeit in einem Ablauf abschließen.",
+        "problem": {
+            "title": "Welches Problem löst es?",
+            "body": "Mängel und Anfragen verteilen sich über Telefon, Excel und E-Mail. Außendienstteams fehlt der Kontext; Managern fehlt der Überblick. WinProx bündelt Meldung → Aufgaben → Abschluss."
+        },
+        "solution": {
+            "title": "Lösung",
+            "body": "Scannen Sie den Einheiten-QR zum Melden (mit Fotos). Mitarbeiter genehmigen (öffentlich bleibt bis dahin unscharf). Aufgaben gehen an operative Teams. Mitarbeiter handeln über Clock Point + Einheiten-QR vor Ort."
+        },
+        "capabilities": {
+            "title": "Funktionen",
+            "items": [
+                "Standorte und Einheiten mit QR (einzeln oder Aufkleberbogen)",
+                "Öffentliche Meldeportale mit Moderation/Unschärfe bis zur Genehmigung",
+                "Mehrere Aufgaben pro Meldung, jeweils einem Team zugewiesen",
+                "Kalender, Briefing und Dashboard-Nachverfolgung",
+                "Teams, Mitarbeiter und Teamleader-Abläufe vor Ort"
+            ]
+        },
+        "audience": {
+            "title": "Für wen",
+            "body": "Facility-Koordinatoren, Wartungsteams und Organisationen mit mehreren Gebäuden oder Assets, die Meldungen und Aufgaben eng steuern müssen."
+        }
+    },
+    "time": {
+        "nav_label": "Time",
+        "meta_title": "Zeiterfassung per Clock Point QR | WinProx",
+        "social": {
+            "og_title": "Zeiterfassung per Clock Point QR | WinProx",
+            "og_description": "Ein-/Ausstempeln und Pausen per Clock Point QR, Anwesenheit und Schichten — verknüpft mit Facility-Workflows."
+        },
+        "eyebrow": "Time",
+        "title": "Zeiterfassung per Clock Point",
+        "lead": "WinProx Time lässt Mitarbeiter mit dem gleichen QR-Ansatz wie Facility einstempeln: schnell vor Ort, sichtbar für Manager.",
+        "problem": {
+            "title": "Welches Problem löst es?",
+            "body": "Anwesenheit und Schichten liegen oft in einem separaten Tool, getrennt von Meldungen und Aufgaben — was es schwer macht zu sehen, wer wann vor Ort war."
+        },
+        "solution": {
+            "title": "Lösung",
+            "body": "Clock Point QR für Anmeldung und Ein-/Ausstempeln (wenn Time aktiviert ist). Manager sehen Anwesenheit, Alarme und Schichtübersichten im Time-Modul."
+        },
+        "capabilities": {
+            "title": "Funktionen",
+            "items": [
+                "Ein- und Ausstempeln per Clock Point",
+                "Pausen starten/stoppen",
+                "Anwesenheitstafel und Alarme",
+                "Schichtlisten und Export/Druck",
+                "Gleiche Mitarbeiteridentität (Name + Icon) wie Facility"
+            ]
+        },
+        "audience": {
+            "title": "Für wen",
+            "body": "Organisationen, die Anwesenheit mit Außendienstarbeit und Facility-Nachverfolgung verbinden wollen, ohne separate Stempeluhr-App."
+        }
+    },
+    "esg": {
+        "nav_label": "ESG",
+        "meta_title": "ESG & Compliance-Messungen | WinProx",
+        "social": {
+            "og_title": "ESG & Compliance-Messungen | WinProx",
+            "og_description": "Optionales ESG-Modul: Indikatoren, Messungen und Nachverfolgungsaufgaben verknüpft mit Einheiten und QR-Portalen."
+        },
+        "eyebrow": "ESG",
+        "title": "ESG-Messungen im gleichen Portal",
+        "lead": "Das ESG-Modul fügt WinProx Indikatoren und Messungen hinzu, damit Nachhaltigkeits- und Compliance-Daten neben Facility-Aufgaben leben.",
+        "problem": {
+            "title": "Welches Problem löst es?",
+            "body": "ESG-Daten liegen oft in Tabellen, fern vom Einsatzort. Schwellenwerte und Nachverfolgung gehen zwischen Teams verloren."
+        },
+        "solution": {
+            "title": "Lösung",
+            "body": "Definieren Sie Indikatoren, erfassen Sie Messungen (einschließlich Außendienst-Abläufen wo relevant) und verknüpfen Sie Nachverfolgungsaufgaben, wenn Schwellenwerte Maßnahmen erfordern — im gleichen Tenant wie Facility."
+        },
+        "capabilities": {
+            "title": "Funktionen",
+            "items": [
+                "ESG-Indikatoren und Messungen",
+                "Dashboard- und Verlaufsansichten",
+                "Nachverfolgungsaufgaben bei Schwellenwerten",
+                "Verknüpfung mit Einheiten/Standorten",
+                "API-Erfassung von Messungen (Corporate)"
+            ]
+        },
+        "audience": {
+            "title": "Für wen",
+            "body": "Organisationen, die Facility und ESG näher zusammenbringen wollen, ohne separates Silo-System."
+        }
+    },
+    "qr": {
+        "nav_label": "QR-Portale",
+        "meta_title": "QR-Portale für Meldungen & Außendienst | WinProx",
+        "social": {
+            "og_title": "QR-Portale für Meldungen & Außendienst | WinProx",
+            "og_description": "Einheiten-QR, Clock Point QR und Standort-QR: Meldungen und Außendienst im Browser, ohne App-Installation."
+        },
+        "eyebrow": "QR-Portale",
+        "title": "So funktionieren QR-Portale",
+        "lead": "WinProx basiert auf physischen QR-Codes, die ein digitales Portal öffnen: für Melder, Außendienstmitarbeiter und (optional) Stempeln.",
+        "problem": {
+            "title": "Welches Problem löst es?",
+            "body": "Ohne lokalen Kontext bleiben Meldungen generisch („irgendwo undicht“). Apps auf gemeinsam genutzten Geräten installieren scheitert. QR bringt die richtige Einheit und den richtigen Workflow nach vorn."
+        },
+        "solution": {
+            "title": "Lösung",
+            "body": "Einheiten-QR für Meldungen und Aufgaben an dieser Einheit. Clock Point QR für Mitarbeiter-Login (und Time). Standort-QR für einen allgemeinen Standortlink. Alles im Browser."
+        },
+        "capabilities": {
+            "title": "Funktionen",
+            "items": [
+                "Einheiten-QR: Meldung + Mitarbeiteraufgaben vor Ort",
+                "Clock Point QR: Anmeldung / Einstempeln",
+                "Standort-QR und Aufkleberbögen (z. B. Avery)",
+                "Dynamischer QR, der später einer Einheit zugewiesen werden kann",
+                "Moderation: Unschärfe bis Genehmigung auf öffentlichen Seiten"
+            ]
+        },
+        "audience": {
+            "title": "Für wen",
+            "body": "Jede Organisation, die Meldungen und Außendienstarbeit vom physischen Ort aus starten will — ohne App Store oder separate Außendienst-App."
+        }
+    }
+}

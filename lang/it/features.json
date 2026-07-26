@@ -1,0 +1,143 @@
+{
+    "shared": {
+        "related_title": "Pagine correlate",
+        "links": {
+            "about": "Informazioni su WinProx",
+            "api": "API",
+            "faq": "FAQ",
+            "pricing": "Prezzi"
+        }
+    },
+    "facility": {
+        "nav_label": "Facility",
+        "meta_title": "Gestione Facility via QR | WinProx",
+        "social": {
+            "og_title": "Gestione Facility via QR | WinProx",
+            "og_description": "Segnalazioni, attività per team, moderazione su portali QR pubblici, calendario e briefing — senza app."
+        },
+        "eyebrow": "Facility",
+        "title": "Gestione Facility via portali QR",
+        "lead": "WinProx Facility collega ogni unità a un portale digitale: segnalare, approvare, assegnare attività e completare il lavoro in un unico flusso.",
+        "problem": {
+            "title": "Quale problema risolve?",
+            "body": "Difetti e richieste si disperdono tra telefono, Excel ed e-mail. I team sul campo mancano di contesto; ai responsabili manca la panoramica. WinProx centralizza segnalazione → attività → completamento."
+        },
+        "solution": {
+            "title": "Soluzione",
+            "body": "Scansionate il QR dell'unità per segnalare (con foto). Il personale approva (il pubblico resta sfocato fino ad allora). Le attività vanno ai team operativi. Gli operatori agiscono via Clock Point + QR unità in loco."
+        },
+        "capabilities": {
+            "title": "Funzionalità",
+            "items": [
+                "Sedi e unità con QR (singolo o foglio adesivi)",
+                "Portali di segnalazione pubblici con moderazione/sfocatura fino all'approvazione",
+                "Più attività per segnalazione, ciascuna assegnata a un team",
+                "Calendario, briefing e monitoraggio dashboard",
+                "Team, operatori e flussi teamleader sul campo"
+            ]
+        },
+        "audience": {
+            "title": "Per chi",
+            "body": "Coordinatori Facility, team di manutenzione e organizzazioni con più edifici o asset che necessitano di un controllo rigoroso di segnalazioni e attività."
+        }
+    },
+    "time": {
+        "nav_label": "Time",
+        "meta_title": "Rilevazione presenze via Clock Point QR | WinProx",
+        "social": {
+            "og_title": "Rilevazione presenze via Clock Point QR | WinProx",
+            "og_description": "Timbratura entrata/uscita e pause via Clock Point QR, presenze e turni — collegati ai workflow Facility."
+        },
+        "eyebrow": "Time",
+        "title": "Rilevazione presenze via Clock Point",
+        "lead": "WinProx Time consente agli operatori di timbrare con lo stesso approccio QR di Facility: rapido sul campo, visibile ai responsabili.",
+        "problem": {
+            "title": "Quale problema risolve?",
+            "body": "Presenze e turni spesso vivono in uno strumento separato, scollegato da segnalazioni e attività — rendendo difficile vedere chi era in loco e quando."
+        },
+        "solution": {
+            "title": "Soluzione",
+            "body": "Clock Point QR per accesso e timbratura entrata/uscita (quando Time è attivo). I responsabili vedono presenze, allarmi e panoramiche turni nel modulo Time."
+        },
+        "capabilities": {
+            "title": "Funzionalità",
+            "items": [
+                "Timbratura entrata e uscita via Clock Point",
+                "Avviare/fermare pause",
+                "Bacheca presenze e allarmi",
+                "Elenchi turni ed export/stampa",
+                "Stessa identità operatore (nome + icona) di Facility"
+            ]
+        },
+        "audience": {
+            "title": "Per chi",
+            "body": "Organizzazioni che vogliono collegare le presenze al lavoro sul campo e al monitoraggio Facility, senza un'app timbratrice separata."
+        }
+    },
+    "esg": {
+        "nav_label": "ESG",
+        "meta_title": "Misurazioni ESG e conformità | WinProx",
+        "social": {
+            "og_title": "Misurazioni ESG e conformità | WinProx",
+            "og_description": "Modulo ESG opzionale: indicatori, misurazioni e attività di follow-up collegati a unità e portali QR."
+        },
+        "eyebrow": "ESG",
+        "title": "Misurazioni ESG nello stesso portale",
+        "lead": "Il modulo ESG aggiunge indicatori e misurazioni a WinProx così che i dati di sostenibilità e conformità convivano accanto alle attività Facility.",
+        "problem": {
+            "title": "Quale problema risolve?",
+            "body": "I dati ESG spesso stanno in fogli di calcolo, lontani dal campo. Soglie e follow-up si perdono tra i team."
+        },
+        "solution": {
+            "title": "Soluzione",
+            "body": "Definite indicatori, registrate misurazioni (inclusi i flussi sul campo dove rilevante) e collegate attività di follow-up quando le soglie richiedono azione — nello stesso tenant di Facility."
+        },
+        "capabilities": {
+            "title": "Funzionalità",
+            "items": [
+                "Indicatori e misurazioni ESG",
+                "Dashboard e viste storiche",
+                "Attività di follow-up sulle soglie",
+                "Collegamento a unità/sedi",
+                "Registrazione API delle misurazioni (Corporate)"
+            ]
+        },
+        "audience": {
+            "title": "Per chi",
+            "body": "Organizzazioni che vogliono avvicinare Facility ed ESG senza un sistema silo separato."
+        }
+    },
+    "qr": {
+        "nav_label": "Portali QR",
+        "meta_title": "Portali QR per segnalazioni e lavoro sul campo | WinProx",
+        "social": {
+            "og_title": "Portali QR per segnalazioni e lavoro sul campo | WinProx",
+            "og_description": "QR unità, Clock Point QR e QR sede: segnalazioni e lavoro sul campo nel browser, senza installazione app."
+        },
+        "eyebrow": "Portali QR",
+        "title": "Come funzionano i portali QR",
+        "lead": "WinProx si basa su codici QR fisici che aprono un portale digitale: per segnalatori, operatori sul campo e (opzionalmente) timbratura.",
+        "problem": {
+            "title": "Quale problema risolve?",
+            "body": "Senza contesto locale, le segnalazioni restano generiche (« perde da qualche parte »). Installare app su dispositivi condivisi fallisce. Il QR mette in evidenza l'unità e il workflow giusti."
+        },
+        "solution": {
+            "title": "Soluzione",
+            "body": "QR unità per segnalazioni e attività su quell'unità. Clock Point QR per accesso operatore (e Time). QR sede per un link generale della sede. Tutto nel browser."
+        },
+        "capabilities": {
+            "title": "Funzionalità",
+            "items": [
+                "QR unità: segnalazione + attività operatore in loco",
+                "Clock Point QR: accesso / timbratura entrata",
+                "QR sede e fogli adesivi (es. Avery)",
+                "QR dinamico assegnabile a un'unità in seguito",
+                "Moderazione: sfocatura fino all'approvazione sulle pagine pubbliche"
+            ]
+        },
+        "audience": {
+            "title": "Per chi",
+            "body": "Qualsiasi organizzazione che voglia avviare segnalazioni e lavoro sul campo dal luogo fisico — senza app store o app sul campo separata."
+        }
+    }
+}

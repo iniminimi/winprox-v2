@@ -17,6 +17,8 @@
         "sectors": "Sectores",
         "video": "Vídeo",
         "faq": "FAQ",
+        "about": "Acerca de",
+        "api": "API",
         "pricing": "Precios"
     },
     "hero": {
@@ -46,6 +48,7 @@
         "eyebrow": "Productos",
         "title": "Una plataforma, dos productos clave.",
         "lead": "WinProx Facility para incidencias y tareas. WinProx Time para presencia y turnos. El mismo QR Clock Point, modular y ampliable.",
+        "learn_more": "Más información",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Incidencia → tarea → resolución",

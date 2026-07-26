@@ -17,6 +17,8 @@
         "sectors": "Sectoren",
         "video": "Video",
         "faq": "FAQ",
+        "about": "Over WinProx",
+        "api": "API",
         "pricing": "Prijzen"
     },
     "hero": {
@@ -46,6 +48,7 @@
         "eyebrow": "Producten",
         "title": "Eén platform, twee kernproducten.",
         "lead": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts. Dezelfde Clock Point QR, modulair uitbreidbaar.",
+        "learn_more": "Meer informatie",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Melding → taak → afhandeling",

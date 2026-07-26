@@ -1,0 +1,79 @@
+{
+    "meta_title": "Über WinProx | Facility per QR",
+    "social": {
+        "og_title": "Über WinProx | Facility per QR",
+        "og_description": "WinProx ist eine QR-basierte Facility-Plattform: Meldungen, Aufgaben, Time und optionales ESG — im Browser, ohne App."
+    },
+    "eyebrow": "Über WinProx",
+    "title": "Was ist WinProx?",
+    "lead": "WinProx ist eine QR-basierte Facility-Management-Plattform für Meldungen, Aufgaben, Anwesenheit (Time) und optionale ESG-Messungen — im Browser, ohne native App.",
+    "what": {
+        "title": "Kernidee",
+        "body": "Jeder physische Standort oder jede Unit erhält ein digitales QR-Portal. Bürger und Mitarbeitende melden Defekte über den Unit-QR. Ausführende melden sich über den Clock-Point-QR an und erledigen Aufgaben vor Ort. Manager verfolgen alles in einem Workspace: Meldung → Aufgaben → Abschluss."
+    },
+    "audience": {
+        "title": "Für wen",
+        "items": [
+            "Facility- und Wartungsteams, die Meldungen und Aufgaben steuern",
+            "Organisationen mit mehreren Standorten, Units oder Assets",
+            "Teams, die Zeit/Anwesenheit über Clock Point erfassen",
+            "Organisationen, die ESG-Messungen an dieselben Portale koppeln wollen"
+        ]
+    },
+    "sectors": {
+        "title": "Branchen",
+        "items": [
+            "Krankenhäuser und Pflegecampus",
+            "Fabriken und Lager",
+            "Kommunen und Behördengebäude",
+            "Häfen, Logistik und Büros"
+        ]
+    },
+    "modules": {
+        "title": "Module",
+        "items": [
+            {
+                "name": "Facility",
+                "text": "Meldungen, Moderation auf öffentlichen Portalen, Aufgaben pro Team, Kalender und Briefing."
+            },
+            {
+                "name": "Time",
+                "text": "Ein-/Ausstempeln und Pausen über Clock-Point-QR, Anwesenheit und Schichtübersichten."
+            },
+            {
+                "name": "ESG",
+                "text": "Optionale Messungen und Indikatoren, verknüpft mit Units und Folgetasks."
+            },
+            {
+                "name": "API & Webhooks",
+                "text": "REST-API (Sanctum) und ausgehende Webhooks auf Corporate — für Integrationen."
+            }
+        ]
+    },
+    "tech": {
+        "title": "Technologie",
+        "body": "Webanwendung (Laravel + Livewire). Öffentliche QR-Portale funktionieren am Smartphone ohne Installation. Mehrsprachig (NL, EN, FR, DE, ES, IT) mit optionaler KI-Übersetzung von Meldetexten."
+    },
+    "compliance": {
+        "title": "Datenschutz & Compliance",
+        "items": [
+            "DSGVO-orientiertes Design mit öffentlichen Privacy- und DPA-Dokumenten",
+            "Fotos und Texte auf öffentlichen QR-Seiten bleiben bis zur Freigabe unscharf",
+            "Tenant-Isolation: Daten pro Organisation"
+        ]
+    },
+    "languages": {
+        "title": "Sprachen",
+        "body": "Oberfläche und Marketing auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch."
+    },
+    "related_title": "Weiterführende Seiten",
+    "links": {
+        "facility": "Facility",
+        "time": "Time",
+        "esg": "ESG",
+        "qr": "QR-Portale",
+        "api": "API",
+        "faq": "FAQ",
+        "pricing": "Preise"
+    }
+}

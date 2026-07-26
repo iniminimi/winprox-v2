@@ -21,7 +21,9 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
         ->assertSee('/images/promo/og_1.jpg', false)
         ->assertSee('images/welcome/1995/easter_egg.gif', false)
-        ->assertSee(route('welcome.classic'), false);
+        ->assertSee(route('welcome.classic'), false)
+        ->assertSee('"@type":"Organization"', false)
+        ->assertSee('"@type":"SoftwareApplication"', false);
 });
 
 it('serveert llms.txt voor AI-bots', function () {

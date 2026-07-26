@@ -1,0 +1,143 @@
+{
+    "shared": {
+        "related_title": "Related pages",
+        "links": {
+            "about": "About WinProx",
+            "api": "API",
+            "faq": "FAQ",
+            "pricing": "Pricing"
+        }
+    },
+    "facility": {
+        "nav_label": "Facility",
+        "meta_title": "Facility management via QR | WinProx",
+        "social": {
+            "og_title": "Facility management via QR | WinProx",
+            "og_description": "Issues, tasks per team, moderation on public QR portals, calendar and briefing — no app."
+        },
+        "eyebrow": "Facility",
+        "title": "Facility management via QR portals",
+        "lead": "WinProx Facility links every unit to a digital portal: report, approve, assign tasks and complete work in one flow.",
+        "problem": {
+            "title": "What problem does it solve?",
+            "body": "Defects and requests scatter across phone, Excel and email. Field teams lack context; managers lack overview. WinProx centralises issue → tasks → completion."
+        },
+        "solution": {
+            "title": "Solution",
+            "body": "Scan the unit QR to report (with photos). Staff approve (public stays blurred until then). Tasks go to operational teams. Workers act via Clock Point + unit QR on site."
+        },
+        "capabilities": {
+            "title": "Capabilities",
+            "items": [
+                "Locations and units with QR (individual or sticker sheet)",
+                "Public report portals with moderation/blur until approval",
+                "Multiple tasks per issue, each assigned to one team",
+                "Calendar, briefing and dashboard follow-up",
+                "Teams, workers and teamleader flows on the floor"
+            ]
+        },
+        "audience": {
+            "title": "Who it is for",
+            "body": "Facility coordinators, maintenance teams and organisations with multiple buildings or assets that need tight control of issues and tasks."
+        }
+    },
+    "time": {
+        "nav_label": "Time",
+        "meta_title": "Time tracking via Clock Point QR | WinProx",
+        "social": {
+            "og_title": "Time tracking via Clock Point QR | WinProx",
+            "og_description": "Clock in/out and breaks via Clock Point QR, presence and shifts — linked to facility workflows."
+        },
+        "eyebrow": "Time",
+        "title": "Time tracking via Clock Point",
+        "lead": "WinProx Time lets workers clock in with the same QR approach as facility: fast on the floor, visible to managers.",
+        "problem": {
+            "title": "What problem does it solve?",
+            "body": "Presence and shifts often live in a separate tool, disconnected from issues and tasks — making it hard to see who was on site when."
+        },
+        "solution": {
+            "title": "Solution",
+            "body": "Clock Point QR for sign-in and clock in/out (when Time is enabled). Managers see presence, alarms and shift overviews in the Time module."
+        },
+        "capabilities": {
+            "title": "Capabilities",
+            "items": [
+                "Clock in and out via Clock Point",
+                "Start/stop breaks",
+                "Presence board and alarms",
+                "Shift lists and export/print",
+                "Same worker identity (name + icon) as facility"
+            ]
+        },
+        "audience": {
+            "title": "Who it is for",
+            "body": "Organisations that want presence tied to field work and facility follow-up, without a separate time-clock app."
+        }
+    },
+    "esg": {
+        "nav_label": "ESG",
+        "meta_title": "ESG & compliance measurements | WinProx",
+        "social": {
+            "og_title": "ESG & compliance measurements | WinProx",
+            "og_description": "Optional ESG module: indicators, measurements and follow-up tasks linked to units and QR portals."
+        },
+        "eyebrow": "ESG",
+        "title": "ESG measurements in the same portal",
+        "lead": "The ESG module adds indicators and measurements to WinProx so sustainability and compliance data live next to facility tasks.",
+        "problem": {
+            "title": "What problem does it solve?",
+            "body": "ESG data often sits in spreadsheets, away from the floor. Thresholds and follow-up get lost between teams."
+        },
+        "solution": {
+            "title": "Solution",
+            "body": "Define indicators, record measurements (including field flows where relevant) and attach follow-up tasks when thresholds need action — in the same tenant as Facility."
+        },
+        "capabilities": {
+            "title": "Capabilities",
+            "items": [
+                "ESG indicators and measurements",
+                "Dashboard and history views",
+                "Follow-up tasks on thresholds",
+                "Linking to units/locations",
+                "API recording of measurements (Corporate)"
+            ]
+        },
+        "audience": {
+            "title": "Who it is for",
+            "body": "Organisations that want facility and ESG closer together without a separate silo system."
+        }
+    },
+    "qr": {
+        "nav_label": "QR portals",
+        "meta_title": "QR portals for reporting & field work | WinProx",
+        "social": {
+            "og_title": "QR portals for reporting & field work | WinProx",
+            "og_description": "Unit QR, Clock Point QR and location QR: reporting and field work in the browser, no app install."
+        },
+        "eyebrow": "QR portals",
+        "title": "How QR portals work",
+        "lead": "WinProx centres on physical QR codes that open a digital portal: for reporters, field workers and (optionally) clocking.",
+        "problem": {
+            "title": "What problem does it solve?",
+            "body": "Without local context, reports stay generic (“somewhere leaking”). Installing apps on shared devices fails. QR brings the right unit and workflow forward."
+        },
+        "solution": {
+            "title": "Solution",
+            "body": "Unit QR for reporting and tasks on that unit. Clock Point QR for worker login (and Time). Location QR for a general location link. All in the browser."
+        },
+        "capabilities": {
+            "title": "Capabilities",
+            "items": [
+                "Unit QR: report + worker tasks on site",
+                "Clock Point QR: sign-in / clock in",
+                "Location QR and sticker sheets (e.g. Avery)",
+                "Dynamic QR that can be assigned to a unit later",
+                "Moderation: blur until approval on public pages"
+            ]
+        },
+        "audience": {
+            "title": "Who it is for",
+            "body": "Any organisation that wants reporting and field work to start from the physical place — without an app store or separate field app."
+        }
+    }
+}

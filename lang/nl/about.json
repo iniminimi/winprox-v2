@@ -1,0 +1,79 @@
+{
+    "meta_title": "Over WinProx | Facility via QR",
+    "social": {
+        "og_title": "Over WinProx | Facility via QR",
+        "og_description": "WinProx is een QR-gebaseerd facility platform: meldingen, taken, Time en optionele ESG — in de browser, zonder app."
+    },
+    "eyebrow": "Over WinProx",
+    "title": "Wat is WinProx?",
+    "lead": "WinProx is een QR-gebaseerd facility-managementplatform voor meldingen, taken, aanwezigheid (Time) en optionele ESG-metingen — bruikbaar in de browser, zonder native app.",
+    "what": {
+        "title": "Kernidee",
+        "body": "Elke fysieke locatie of unit krijgt een digitaal QR-portaal. Burgers en medewerkers melden defecten via de unit-QR. Uitvoerders melden zich aan via de Clock Point-QR en handelen taken af ter plaatse. Beheerders volgen alles op in één workspace: melding → taken → afhandeling."
+    },
+    "audience": {
+        "title": "Voor wie",
+        "items": [
+            "Facility- en onderhoudsteams die meldingen en taken willen sturen",
+            "Organisaties met meerdere locaties, units of assets",
+            "Teams die tijd/aanwezigheid willen registreren via Clock Point",
+            "Organisaties die ESG-metingen en opvolging willen koppelen aan hetzelfde portaal"
+        ]
+    },
+    "sectors": {
+        "title": "Sectoren",
+        "items": [
+            "Ziekenhuizen en zorgcampussen",
+            "Fabrieken en magazijnen",
+            "Gemeenten en overheidsgebouwen",
+            "Havens, logistiek en kantoren"
+        ]
+    },
+    "modules": {
+        "title": "Modules",
+        "items": [
+            {
+                "name": "Facility",
+                "text": "Meldingen, goedkeuring/moderatie op publieke portalen, taken per team, kalender en briefing."
+            },
+            {
+                "name": "Time",
+                "text": "In-/uitklokken en pauzes via Clock Point-QR, aanwezigheid en shiftoverzichten."
+            },
+            {
+                "name": "ESG",
+                "text": "Optionele metingen en indicatoren, gekoppeld aan units en opvolgtaken."
+            },
+            {
+                "name": "API & webhooks",
+                "text": "REST API (Sanctum) en uitgaande webhooks op Corporate — voor integraties."
+            }
+        ]
+    },
+    "tech": {
+        "title": "Technologie",
+        "body": "Webapplicatie (Laravel + Livewire). Publieke QR-portalen werken op smartphone zonder installatie. Meertalig (NL, EN, FR, DE, ES, IT) met optionele AI-vertalingen van meldteksten."
+    },
+    "compliance": {
+        "title": "Privacy & compliance",
+        "items": [
+            "GDPR-gericht ontwerp met publieke privacy- en DPA-documenten",
+            "Foto's en tekst op publieke QR-pagina's blijven geblurd tot goedkeuring",
+            "Tenant-isolatie: data per organisatie"
+        ]
+    },
+    "languages": {
+        "title": "Talen",
+        "body": "Interface en marketing in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans."
+    },
+    "related_title": "Verder lezen",
+    "links": {
+        "facility": "Facility",
+        "time": "Time",
+        "esg": "ESG",
+        "qr": "QR-portalen",
+        "api": "API",
+        "faq": "FAQ",
+        "pricing": "Prijzen"
+    }
+}

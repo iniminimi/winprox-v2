@@ -1,0 +1,56 @@
+{
+    "meta_title": "API WinProx | REST y webhooks",
+    "social": {
+        "og_title": "API WinProx | REST y webhooks",
+        "og_description": "Resumen público de la API REST WinProx (Sanctum), webhooks y disponibilidad Corporate."
+    },
+    "eyebrow": "API",
+    "title": "API REST WinProx y webhooks",
+    "lead": "Integre incidencias, tareas, ubicaciones, unidades, equipos, workers y mediciones ESG mediante una API REST versionada bajo /api/v1. Los webhooks salientes notifican a sus sistemas.",
+    "overview": {
+        "title": "Resumen",
+        "body": "La API es JSON entrada/salida, con alcance de tenant vía el token de usuario, envelopes coherentes y paginación. Límite: 60 peticiones/minuto/token."
+    },
+    "auth": {
+        "title": "Autenticación",
+        "body": "Use tokens Sanctum como Bearer en la cabecera Authorization.",
+        "items": [
+            "Authorization: Bearer <token>",
+            "Tokens con abilities (mínimo privilegio), p. ej. issues:read, tasks:update, webhooks:manage",
+            "El acceso API requiere Corporate (o habilitación trial explícita)"
+        ]
+    },
+    "endpoints": {
+        "title": "Recursos clave",
+        "items": [
+            {
+                "name": "Issues y tareas",
+                "text": "Crear/leer/aprobar incidencias; crear, iniciar, completar y actualizar tareas."
+            },
+            {
+                "name": "Ubicaciones, unidades, equipos, workers",
+                "text": "Lectura de su estructura facility y equipos de campo."
+            },
+            {
+                "name": "Mediciones ESG",
+                "text": "Registrar mediciones vía esg:create cuando el módulo está activo."
+            }
+        ]
+    },
+    "webhooks": {
+        "title": "Webhooks",
+        "body": "Registre endpoints por tenant para eventos como issue.created, issue.approved, task.created/started/completed. Entrega en cola, firma HMAC, reintentos y log."
+    },
+    "access": {
+        "title": "Cómo obtener acceso",
+        "body": "En Corporate gestione tokens y webhooks en Ajustes. La documentación técnica completa está en la app para clientes con API. Contáctenos para trial API o integración."
+    },
+    "related_title": "Relacionado",
+    "links": {
+        "about": "Sobre WinProx",
+        "pricing": "Precios",
+        "facility": "Facility",
+        "faq": "FAQ",
+        "contact": "Contacto"
+    }
+}

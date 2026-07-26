@@ -33,11 +33,13 @@ use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
+use App\Livewire\Pages\About;
 use App\Livewire\Pages\Calendar;
 use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
+use App\Livewire\Pages\FeaturePage;
 use App\Livewire\Pages\Health;
 use App\Livewire\Pages\Legal;
 use App\Livewire\Pages\ManualHub;
@@ -45,6 +47,7 @@ use App\Livewire\Pages\ManualIndex;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Pages\Pricing;
+use App\Livewire\Pages\PublicApi;
 use App\Livewire\Pages\PublicFaq;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
@@ -153,6 +156,12 @@ Route::get('/', function () {
 Route::get('/promo', $redirectToLocalized('promo'));
 Route::get('/pricing', $redirectToLocalized('pricing'));
 Route::get('/contact', $redirectToLocalized('contact.index'));
+Route::get('/about', $redirectToLocalized('about'));
+Route::get('/api', $redirectToLocalized('api.public'));
+Route::get('/features/facility', $redirectToLocalized('features.facility'));
+Route::get('/features/time', $redirectToLocalized('features.time'));
+Route::get('/features/esg', $redirectToLocalized('features.esg'));
+Route::get('/features/qr-portals', $redirectToLocalized('features.qr'));
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
     Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
@@ -166,6 +175,12 @@ Route::prefix('{locale}')
         Route::get('/contact', Contact::class)->name('contact.index');
         Route::get('/pricing', Pricing::class)->name('pricing');
         Route::get('/faq', PublicFaq::class)->name('faq.public');
+        Route::get('/about', About::class)->name('about');
+        Route::get('/api', PublicApi::class)->name('api.public');
+        Route::get('/features/facility', FeaturePage::class)->name('features.facility');
+        Route::get('/features/time', FeaturePage::class)->name('features.time');
+        Route::get('/features/esg', FeaturePage::class)->name('features.esg');
+        Route::get('/features/qr-portals', FeaturePage::class)->name('features.qr');
         Route::get('/promo', [PromoController::class, 'show'])->name('promo');
 
         foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {

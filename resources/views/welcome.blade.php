@@ -20,6 +20,12 @@
         'description' => __('welcome.social.og_description'),
         'url' => route('welcome'),
     ])
+    @include('partials.wp-json-ld', [
+        'graphs' => [
+            \App\Support\Marketing\JsonLd::organization(),
+            \App\Support\Marketing\JsonLd::softwareApplication(),
+        ],
+    ])
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -160,7 +166,7 @@
                 />
                 <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.products.lead') }}</p>
                 <div class="wp-welcome-product-grid">
-                    @foreach (['facility', 'time'] as $productKey)
+                    @foreach (['facility' => 'features.facility', 'time' => 'features.time'] as $productKey => $featureRoute)
                         <article class="wp-welcome-product-card">
                             <figure class="wp-welcome-product-card__logo">
                                 <img
@@ -179,6 +185,9 @@
                                     <li>{{ $bullet }}</li>
                                 @endforeach
                             </ul>
+                            <p class="wp-welcome-product-card__more">
+                                <a href="{{ route($featureRoute) }}" class="btn btn--ghost btn--sm">{{ __('welcome.products.learn_more') }}</a>
+                            </p>
                         </article>
                     @endforeach
                 </div>
@@ -228,6 +237,9 @@
                             :text="__('welcome.esg.title')"
                         />
                         <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.esg.body') }}</p>
+                        <p class="wp-welcome-product-card__more">
+                            <a href="{{ route('features.esg') }}" class="btn btn--ghost btn--sm">{{ __('welcome.products.learn_more') }}</a>
+                        </p>
                         <div class="wp-welcome-esg-pillars">
                             @foreach (__('welcome.esg.pillars') as $esgPillar)
                                 <div class="wp-welcome-esg-block">
