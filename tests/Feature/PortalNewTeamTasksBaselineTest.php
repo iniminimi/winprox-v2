@@ -147,7 +147,7 @@ it('markeert nieuwe taken als gezien na dismiss', function () {
     expect(app(FindNewTeamTasksSinceBaselineAction::class)->handle($worker, (int) $unitA->id))->toHaveCount(0);
 });
 
-it('vernieuwt baseline via time-portaal render zodat zichtbare taken geen banner meer geven', function () {
+it('vernieuwt baseline via time-portaal openen zodat zichtbare taken geen banner meer geven', function () {
     ['tenant' => $tenant, 'team' => $team, 'worker' => $worker, 'unitA' => $unitA, 'unitB' => $unitB, 'location' => $location] = newTeamTasksScaffold();
 
     WorkerVerification::markVerified($team, $worker);
@@ -162,6 +162,22 @@ it('vernieuwt baseline via time-portaal render zodat zichtbare taken geen banner
         ->assertSee(__('time.portal.title'), false);
 
     expect(app(FindNewTeamTasksSinceBaselineAction::class)->handle($worker, (int) $unitA->id))->toHaveCount(0);
+});
+
+it('neemt nieuwe taken niet op in baseline bij poll/refresh van een open time-portaal', function () {
+    ['tenant' => $tenant, 'team' => $team, 'worker' => $worker, 'unitA' => $unitA, 'unitB' => $unitB, 'location' => $location] = newTeamTasksScaffold();
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    $component = Livewire::test(TimePortal::class, ['token' => 'clock-baseline-token']);
+    expect($component->get('taskBaselineSyncedThisVisit'))->toBeTrue();
+
+    approvedTeamTask($tenant, $location, $unitB, $team);
+
+    $component->call('$refresh');
+
+    expect(app(FindNewTeamTasksSinceBaselineAction::class)->handle($worker, (int) $unitA->id))->toHaveCount(1);
 });
 
 it('mark team tasks seen action voegt ids toe aan baseline', function () {

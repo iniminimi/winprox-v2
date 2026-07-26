@@ -60,6 +60,9 @@ class TimePortal extends Component
     public string $selected_icon_slug = '';
     public string $flashMessage = '';
 
+    /** Baseline alleen bij openen/login synchen — niet bij elke wire:poll. */
+    public bool $taskBaselineSyncedThisVisit = false;
+
     public function mount(string $token): void
     {
         $resolution = app(ResolveClockPointPortalTokenAction::class)->handle($token);
@@ -227,6 +230,9 @@ class TimePortal extends Component
 
         $this->reset(['first_name', 'last_name', 'selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
         $this->flashMessage = __('portal.team.onboarding_done');
+        $this->taskBaselineSyncedThisVisit = false;
+        app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
+        $this->taskBaselineSyncedThisVisit = true;
     }
 
     public function signInAsDifferentWorker(): void
@@ -241,6 +247,7 @@ class TimePortal extends Component
             app(ClearWorkerTaskBaselineAction::class)->handle((int) $team->id);
         }
 
+        $this->taskBaselineSyncedThisVisit = false;
         $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
     }
@@ -284,6 +291,9 @@ class TimePortal extends Component
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
         $this->sign_in_icon_slug = '';
         $this->flashMessage = __('portal.worker.signed_in');
+        $this->taskBaselineSyncedThisVisit = false;
+        app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
+        $this->taskBaselineSyncedThisVisit = true;
     }
 
     public function clockIn(ClockInAction $clockIn): void
@@ -376,8 +386,9 @@ class TimePortal extends Component
         $canAct = $verifiedWorker !== null;
         $team = $verifiedWorker?->team;
 
-        if ($canAct && $verifiedWorker !== null) {
+        if ($canAct && $verifiedWorker !== null && ! $this->taskBaselineSyncedThisVisit) {
             $syncBaseline->handle($verifiedWorker);
+            $this->taskBaselineSyncedThisVisit = true;
         }
 
         $hasAnyWorkers = Worker::query()
