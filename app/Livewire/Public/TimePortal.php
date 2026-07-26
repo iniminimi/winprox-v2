@@ -13,6 +13,7 @@ use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\ClockPoint;
+use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Support\Portal\TimePortalData;
@@ -53,6 +54,8 @@ class TimePortal extends Component
     public string $first_name = '';
     public string $last_name = '';
     public string $sign_in_icon_slug = '';
+    public bool $showRegisterForm = false;
+    public string $selected_icon_slug = '';
     public string $flashMessage = '';
 
     public function mount(string $token): void
@@ -148,7 +151,10 @@ class TimePortal extends Component
         }
 
         if ($identity['status'] === 'claimable') {
-            $this->addError('identify', __('time.portal.errors.icon_not_configured'));
+            $this->showRegisterForm = true;
+            $this->selected_icon_slug = '';
+            $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
+
             return;
         }
 
@@ -159,8 +165,66 @@ class TimePortal extends Component
         }
 
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+        $this->showRegisterForm = false;
         $this->sign_in_icon_slug = '';
-        $this->resetErrorBag(['identify', 'sign_in_icon_slug']);
+        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
+    }
+
+    public function showRegister(): void
+    {
+        if ($this->activeClockPoint() === null || TimePortalData::openRegistrationTeam($this->tenantId) === null) {
+            return;
+        }
+
+        $this->showRegisterForm = true;
+        $this->selected_icon_slug = '';
+        $this->resetErrorBag(['selected_icon_slug', 'identify']);
+    }
+
+    public function cancelRegistration(): void
+    {
+        $this->showRegisterForm = false;
+        $this->selected_icon_slug = '';
+        $this->resetErrorBag(['selected_icon_slug', 'identify']);
+    }
+
+    public function completeOnboarding(): void
+    {
+        if ($this->activeClockPoint() === null) {
+            return;
+        }
+
+        $validated = $this->validate([
+            'first_name' => ['required', 'string', 'max:120'],
+            'last_name' => ['required', 'string', 'max:120'],
+            'selected_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)],
+        ], [
+            'first_name.required' => __('portal.worker.errors.name_required'),
+            'last_name.required' => __('portal.worker.errors.name_required'),
+            'selected_icon_slug.required' => __('portal.worker.errors.icon_required'),
+            'selected_icon_slug.in' => __('portal.worker.errors.icon_required'),
+        ]);
+
+        $team = $this->resolveOnboardingTeam($validated['first_name'], $validated['last_name']);
+        if ($team === null) {
+            $this->addError('identify', __('portal.worker.errors.identify_unknown'));
+
+            return;
+        }
+
+        $result = WorkerDeviceSession::registerWorkerForTeam(
+            $team,
+            $validated['first_name'],
+            $validated['last_name'],
+            $validated['selected_icon_slug'],
+        );
+
+        $worker = $result['worker'];
+        WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+        WorkerVerification::markVerified($team, $worker);
+
+        $this->reset(['first_name', 'last_name', 'selected_icon_slug', 'showRegisterForm', 'sign_in_icon_slug']);
+        $this->flashMessage = __('portal.team.onboarding_done');
     }
 
     public function signInAsDifferentWorker(): void
@@ -174,8 +238,8 @@ class TimePortal extends Component
             WorkerVerification::clearForTeam((int) $team->id);
         }
 
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug']);
-        $this->resetErrorBag(['identify', 'sign_in_icon_slug']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm']);
+        $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);
     }
 
     public function signInWithIcon(): void
@@ -309,6 +373,11 @@ class TimePortal extends Component
         $canAct = $verifiedWorker !== null;
         $team = $verifiedWorker?->team;
 
+        $hasAnyWorkers = Worker::query()
+            ->where('tenant_id', $this->tenantId)
+            ->where('is_active', true)
+            ->exists();
+
         $hasSignInWorkers = Worker::query()
             ->where('tenant_id', $this->tenantId)
             ->where('is_active', true)
@@ -316,8 +385,15 @@ class TimePortal extends Component
             ->where('field_icon_slug', '!=', '')
             ->exists();
 
+        $openRegistrationTeam = TimePortalData::openRegistrationTeam($this->tenantId);
+        $allowOpenRegistration = $openRegistrationTeam !== null;
+        $registerOnly = $this->activeClockPoint() !== null
+            && ! $canAct
+            && ! $hasAnyWorkers
+            && $allowOpenRegistration;
+
         $deviceWorker = null;
-        if (! $canAct && $hasSignInWorkers) {
+        if (! $canAct && ($hasSignInWorkers || $this->showRegisterForm)) {
             $deviceWorker = $this->rememberedWorkerForTenant();
         }
 
@@ -326,10 +402,13 @@ class TimePortal extends Component
             $iconBlocked = WorkerIconGuard::isBlocked($deviceWorker->team);
         }
 
-        $showIdentify = $this->activeClockPoint() !== null && ! $canAct && $hasSignInWorkers
-            && $deviceWorker === null && ! $iconBlocked;
+        $showRegisterForm = $this->showRegisterForm && ! $registerOnly;
+        $showIdentify = $this->activeClockPoint() !== null && ! $canAct && $hasAnyWorkers
+            && $deviceWorker === null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
         $showVerify = $this->activeClockPoint() !== null && ! $canAct && $hasSignInWorkers
-            && $deviceWorker !== null && ! $iconBlocked;
+            && $deviceWorker !== null && ! $showRegisterForm && ! $registerOnly && ! $iconBlocked;
+        $showNoWorkers = $this->activeClockPoint() !== null && ! $canAct && ! $hasAnyWorkers
+            && ! $registerOnly && ! $showRegisterForm && ! $iconBlocked;
 
         $openShift = null;
         if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
@@ -350,8 +429,12 @@ class TimePortal extends Component
             'canAct' => $canAct,
             'verifiedWorker' => $verifiedWorker,
             'hasSignInWorkers' => $hasSignInWorkers,
+            'allowOpenRegistration' => $allowOpenRegistration,
+            'registerOnly' => $registerOnly,
+            'showRegisterForm' => $showRegisterForm,
             'showIdentify' => $showIdentify,
             'showVerify' => $showVerify,
+            'showNoWorkers' => $showNoWorkers,
             'iconBlocked' => $iconBlocked,
             'deviceWorker' => $deviceWorker,
             'remainingAttempts' => $deviceWorker?->team !== null
@@ -365,6 +448,23 @@ class TimePortal extends Component
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);
+    }
+
+    private function resolveOnboardingTeam(string $firstName, string $lastName): ?InternalTeam
+    {
+        $identity = WorkerDeviceSession::resolveIdentityForTenant($this->tenantId, $firstName, $lastName);
+        if ($identity['status'] === 'claimable') {
+            $worker = $identity['worker'] ?? null;
+
+            return $worker?->team;
+        }
+
+        $openTeam = TimePortalData::openRegistrationTeam($this->tenantId);
+        if ($openTeam !== null && ($this->showRegisterForm || $identity['status'] === 'not_found')) {
+            return $openTeam;
+        }
+
+        return null;
     }
 
     private function activeClockPoint(): ?ClockPoint

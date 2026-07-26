@@ -251,6 +251,54 @@ it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', fu
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });
 
+it('laat een claimable worker een icoon kiezen via clock point QR', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    $worker = Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Peters',
+    ]);
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Techniek',
+        'qr_token' => 'claimable-clock',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'claimable-clock'])
+        ->assertDontSee('team-QR', false)
+        ->assertSee(__('portal.worker.title'), false)
+        ->set('first_name', 'Piet')
+        ->set('last_name', 'Peters')
+        ->call('identifyWorker')
+        ->assertSet('showRegisterForm', true)
+        ->set('selected_icon_slug', 'star')
+        ->call('completeOnboarding')
+        ->assertSet('flashMessage', __('portal.team.onboarding_done'));
+
+    expect($worker->fresh()->field_icon_slug)->toBe('star');
+});
+
+it('toont open registratie wanneer er precies één leeg team is', function () {
+    [$tenant] = timeTenantWithAdmin();
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'empty-team-clock',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'empty-team-clock'])
+        ->assertSee(__('portal.team.register.empty_team_hint'), false)
+        ->set('first_name', 'Nora')
+        ->set('last_name', 'Nieuw')
+        ->set('selected_icon_slug', 'bell')
+        ->call('completeOnboarding')
+        ->assertSet('flashMessage', __('portal.team.onboarding_done'));
+
+    expect(Worker::query()->where('first_name', 'Nora')->where('last_name', 'Nieuw')->exists())->toBeTrue();
+});
+
 it('blokkeert het time-portaal bij inactieve tenant', function () {
     $tenant = Tenant::factory()->create(['is_active' => false]);
     Tenancy::actAs($tenant->id);

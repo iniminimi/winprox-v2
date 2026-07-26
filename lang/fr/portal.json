@@ -76,7 +76,7 @@
         "attempts_left": ":count tentative(s) restante(s).",
         "confirm_icon": "Confirmer",
         "different_worker": "Se connecter en tant qu'autre employé",
-        "no_workers": "Il n'y a pas encore d'employés pour cette équipe. L'intégration se fait via le QR d'équipe.",
+        "no_workers": "Il n'y a pas encore d'employés. Ajoutez-les via Équipe dans WinProx ; ils choisissent leur icône via ce QR Clock Point.",
         "wrong_team": "Cet appareil appartient à une autre équipe.",
         "signed_in": "Vous êtes connecté.",
         "signed_in_as": "Connecté en tant que",
@@ -118,7 +118,7 @@
         "register": {
             "title": "Nouvel employé",
             "hint": "Saisissez votre nom et choisissez une icône personnelle.",
-            "empty_team_hint": "Il n'y a pas encore d'employés pour cette équipe. Enregistrez-vous pour commencer.",
+            "empty_team_hint": "Il n'y a pas encore d'employés. Enregistrez-vous via ce QR Clock Point pour commencer.",
             "choose_icon": "Choisissez votre icône personnelle",
             "submit": "S'enregistrer",
             "cta": "Enregistrer un nouvel employé"

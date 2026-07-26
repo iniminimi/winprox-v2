@@ -42,4 +42,22 @@ final class TimePortalData
     {
         return PortalAccess::clockPointInactiveReasonKey($clockPoint);
     }
+
+    /**
+     * Open registratie op Clock Point alleen wanneer er precies één actief leeg team is
+     * (anders moet de beheerder workers via Team aanmaken).
+     */
+    public static function openRegistrationTeam(int $tenantId): ?InternalTeam
+    {
+        $emptyTeams = InternalTeam::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->get()
+            ->filter(fn (InternalTeam $team) => TeamPortalData::allowsOpenRegistration($team))
+            ->values();
+
+        return $emptyTeams->count() === 1 ? $emptyTeams->first() : null;
+    }
 }

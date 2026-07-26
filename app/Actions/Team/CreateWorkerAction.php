@@ -8,7 +8,7 @@ use App\Support\Audit\AuditRecorder;
 
 /**
  * Voegt een worker (uitvoerder zonder login) toe aan een team. De worker
- * bevestigt later zelf een persoonlijk icoon via het team-QR-portaal.
+ * bevestigt later zelf een persoonlijk icoon via de Clock Point-QR.
  */
 class CreateWorkerAction
 {

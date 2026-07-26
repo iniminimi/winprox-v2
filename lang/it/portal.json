@@ -76,7 +76,7 @@
         "attempts_left": ":count tentativo/i rimanente/i.",
         "confirm_icon": "Conferma",
         "different_worker": "Accedi come altro lavoratore",
-        "no_workers": "Non ci sono ancora lavoratori per questo team. L'onboarding avviene tramite il team QR.",
+        "no_workers": "Non ci sono ancora lavoratori. Aggiungili tramite Team in WinProx; scelgono l'icona con questo QR Clock Point.",
         "wrong_team": "Questo dispositivo appartiene a un altro team.",
         "signed_in": "È connesso.",
         "signed_in_as": "Connesso come",
@@ -118,7 +118,7 @@
         "register": {
             "title": "Nuovo lavoratore",
             "hint": "Inserisca il Suo nome e scelga un'icona personale.",
-            "empty_team_hint": "Non ci sono ancora lavoratori per questo team. Si registri per iniziare.",
+            "empty_team_hint": "Non ci sono ancora lavoratori. Si registri con questo QR Clock Point per iniziare.",
             "choose_icon": "Scelga la Sua icona personale",
             "submit": "Registrati",
             "cta": "Registra un nuovo lavoratore"

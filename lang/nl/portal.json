@@ -76,7 +76,7 @@
         "attempts_left": "Nog :count poging(en).",
         "confirm_icon": "Bevestigen",
         "different_worker": "Aanmelden als andere medewerker",
-        "no_workers": "Er zijn nog geen medewerkers voor dit team. Onboarding gebeurt via de team-QR.",
+        "no_workers": "Er zijn nog geen medewerkers. Voeg ze toe via Team in WinProx; zij kiezen hun icoon via deze Clock Point-QR.",
         "wrong_team": "Dit toestel hoort bij een ander team.",
         "signed_in": "Je bent aangemeld.",
         "signed_in_as": "Aangemeld als",
@@ -118,7 +118,7 @@
         "register": {
             "title": "Nieuwe medewerker",
             "hint": "Vul je naam in en kies een persoonlijk icoon.",
-            "empty_team_hint": "Er zijn nog geen medewerkers voor dit team. Registreer jezelf om te starten.",
+            "empty_team_hint": "Er zijn nog geen medewerkers. Registreer jezelf via deze Clock Point-QR om te starten.",
             "choose_icon": "Kies je persoonlijke icoon",
             "submit": "Registreren",
             "cta": "Nieuwe medewerker aanmelden"

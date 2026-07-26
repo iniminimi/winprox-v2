@@ -76,7 +76,7 @@
         "attempts_left": ":count attempt(s) left.",
         "confirm_icon": "Confirm",
         "different_worker": "Sign in as a different worker",
-        "no_workers": "There are no workers for this team yet. Onboarding happens via the team QR.",
+        "no_workers": "There are no workers yet. Add them via Team in WinProx; they choose their icon via this Clock Point QR.",
         "wrong_team": "This device belongs to a different team.",
         "signed_in": "You are signed in.",
         "signed_in_as": "Signed in as",
@@ -118,7 +118,7 @@
         "register": {
             "title": "New worker",
             "hint": "Enter your name and choose a personal icon.",
-            "empty_team_hint": "There are no workers for this team yet. Register yourself to get started.",
+            "empty_team_hint": "There are no workers yet. Register yourself via this Clock Point QR to get started.",
             "choose_icon": "Choose your personal icon",
             "submit": "Register",
             "cta": "Register a new worker"

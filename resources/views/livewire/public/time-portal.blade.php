@@ -33,7 +33,49 @@
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 
-        @if ($showIdentify)
+        @if ($registerOnly || $showRegisterForm)
+            <div class="wp-card wp-card-pad wp-stack" data-manual-capture="portal-team-register">
+                <h2 class="wp-section-title">{{ __('portal.team.register.title') }}</h2>
+                <p class="wp-muted">{{ $registerOnly ? __('portal.team.register.empty_team_hint') : __('portal.team.register.hint') }}</p>
+
+                <form wire:submit="completeOnboarding" class="wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="reg_first">{{ __('portal.worker.first_name') }}</label>
+                        <input id="reg_first" type="text" class="wp-input" wire:model="first_name" autocomplete="given-name">
+                        @error('first_name') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="reg_last">{{ __('portal.worker.last_name') }}</label>
+                        <input id="reg_last" type="text" class="wp-input" wire:model="last_name" autocomplete="family-name">
+                        @error('last_name') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label">{{ __('portal.team.register.choose_icon') }}</label>
+                        <div class="wp-icon-grid">
+                            @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
+                                <button type="button"
+                                        wire:key="reg-icon-{{ $slug }}"
+                                        wire:click="$set('selected_icon_slug', '{{ $slug }}')"
+                                        @class(['wp-icon-tile', 'is-selected' => $selected_icon_slug === $slug])
+                                        title="{{ \App\Support\Portal\WorkerIcon::label($slug) }}"
+                                        aria-label="{{ \App\Support\Portal\WorkerIcon::label($slug) }}">
+                                    <x-wp-worker-icon :slug="$slug" />
+                                </button>
+                            @endforeach
+                        </div>
+                        @error('selected_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('identify') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="wp-stack-tight">
+                        <button type="submit" class="btn btn--primary btn--block">{{ __('portal.team.register.submit') }}</button>
+                        @unless ($registerOnly)
+                            <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="cancelRegistration">{{ __('common.button.cancel') }}</button>
+                        @endunless
+                    </div>
+                </form>
+            </div>
+        @elseif ($showIdentify)
             <div class="wp-card wp-card-pad wp-stack" data-manual-capture="portal-team-identify">
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
                 <p class="wp-muted">{{ __('portal.worker.identify_hint') }}</p>
@@ -51,6 +93,9 @@
                     @error('identify') <p class="wp-error">{{ $message }}</p> @enderror
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.continue') }}</button>
                 </form>
+                @if ($allowOpenRegistration)
+                    <button type="button" class="btn btn--ghost btn--block btn--sm" wire:click="showRegister">{{ __('portal.team.register.cta') }}</button>
+                @endif
             </div>
         @elseif ($showVerify)
             <div class="wp-card wp-card-pad wp-stack">
@@ -87,7 +132,7 @@
                     {{ __('portal.worker.different_worker') }}
                 </button>
             </div>
-        @elseif (! $hasSignInWorkers)
+        @elseif ($showNoWorkers)
             <div class="wp-card wp-card-pad">
                 <p class="wp-muted">{{ __('portal.worker.no_workers') }}</p>
             </div>

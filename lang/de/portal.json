@@ -76,7 +76,7 @@
         "attempts_left": "Noch :count Versuch(e).",
         "confirm_icon": "Bestätigen",
         "different_worker": "Als anderer Mitarbeiter anmelden",
-        "no_workers": "Für dieses Team gibt es noch keine Mitarbeiter. Das Onboarding erfolgt über den Team-QR.",
+        "no_workers": "Es gibt noch keine Mitarbeiter. Fügen Sie sie unter Team in WinProx hinzu; sie wählen ihr Symbol über diesen Clock-Point-QR.",
         "wrong_team": "Dieses Gerät gehört zu einem anderen Team.",
         "signed_in": "Sie sind angemeldet.",
         "signed_in_as": "Angemeldet als",
@@ -118,7 +118,7 @@
         "register": {
             "title": "Neuer Mitarbeiter",
             "hint": "Geben Sie Ihren Namen ein und wählen Sie ein persönliches Symbol.",
-            "empty_team_hint": "Für dieses Team gibt es noch keine Mitarbeiter. Registrieren Sie sich, um zu beginnen.",
+            "empty_team_hint": "Es gibt noch keine Mitarbeiter. Registrieren Sie sich über diesen Clock-Point-QR, um zu starten.",
             "choose_icon": "Wählen Sie Ihr persönliches Symbol",
             "submit": "Registrieren",
             "cta": "Neuen Mitarbeiter registrieren"

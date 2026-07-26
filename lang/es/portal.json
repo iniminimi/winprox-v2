@@ -76,7 +76,7 @@
         "attempts_left": "Quedan :count intento(s).",
         "confirm_icon": "Confirmar",
         "different_worker": "Iniciar sesión como otro trabajador",
-        "no_workers": "Aún no hay trabajadores para este equipo. La incorporación se realiza mediante el QR del equipo.",
+        "no_workers": "Aún no hay trabajadores. Añádalos en Equipo en WinProx; eligen su icono con este QR de Clock Point.",
         "wrong_team": "Este dispositivo pertenece a otro equipo.",
         "signed_in": "Ha iniciado sesión.",
         "signed_in_as": "Sesión iniciada como",
@@ -118,7 +118,7 @@
         "register": {
             "title": "Nuevo trabajador",
             "hint": "Introduzca su nombre y elija un icono personal.",
-            "empty_team_hint": "Aún no hay trabajadores para este equipo. Regístrese para empezar.",
+            "empty_team_hint": "Aún no hay trabajadores. Regístrese con este QR de Clock Point para empezar.",
             "choose_icon": "Elija su icono personal",
             "submit": "Registrarse",
             "cta": "Registrar un nuevo trabajador"
