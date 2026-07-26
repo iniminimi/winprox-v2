@@ -188,6 +188,7 @@ it('stuurt bevestigingsmail synchroon bij pending reservering', function () {
     });
 });
 
+it('toont manage-pagina via token', function () {
     Mail::fake();
     [, , $unit] = reservationFixture();
     [$start, $end] = reservationWindow();
