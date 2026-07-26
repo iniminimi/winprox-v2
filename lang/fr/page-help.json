@@ -173,6 +173,10 @@
                 {
                     "label": "Catégories",
                     "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."
+                },
+                {
+                    "label": "Réservable",
+                    "text": "Activez Réservable sur une catégorie pour les ressources partagées avec créneau (salle de réunion, véhicule, clé, …). Toutes les unités de cette catégorie deviennent réservables et affichent la tuile Réserver sur le QR unité. Les signalements de défaut restent via Signalement → tâche."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Ajouter une unité",
                     "text": "Ajoutez un objet/machine/actif/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue. Autorisez ou non les signalements par unité."
+                },
+                {
+                    "label": "Autoriser les réservations",
+                    "text": "Uniquement pertinent si la catégorie est Réservable. Activé par défaut ; désactivez pour exclure cette unité des réservations tandis que les autres unités de la même catégorie restent réservables."
                 },
                 {
                     "label": "Unités en masse",

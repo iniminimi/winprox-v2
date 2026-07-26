@@ -173,6 +173,10 @@
                 {
                     "label": "Kategorien",
                     "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."
+                },
+                {
+                    "label": "Reservierbar",
+                    "text": "Aktivieren Sie bei einer Kategorie Reservierbar für teilbare Ressourcen mit Zeitfenster (Besprechungsraum, Fahrzeug, Schlüssel, …). Alle Units dieser Kategorie werden reservierbar und zeigen auf dem Unit-QR die Kachel Reservieren. Störungsmeldungen bleiben über Meldung → Aufgabe."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Unit hinzufügen",
                     "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
+                },
+                {
+                    "label": "Reservierungen erlauben",
+                    "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig an; schalten Sie aus, um diese Unit von Reservierungen auszuschließen, während andere Units derselben Kategorie reservierbar bleiben."
                 },
                 {
                     "label": "Bulk-Units",

@@ -173,6 +173,10 @@
                 {
                     "label": "Categorieën",
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
+                },
+                {
+                    "label": "Reserveerbaar",
+                    "text": "Zet bij een categorie Reserveerbaar aan voor deelbare middelen met een tijdslot (vergaderzaal, voertuig, sleutel, …). Alle units in die categorie worden reserveerbaar en tonen op de unit-QR de tegel Reserveren. Defectmeldingen blijven via Melding → taak."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Unit toevoegen",
                     "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
+                },
+                {
+                    "label": "Reserveringen toestaan",
+                    "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard aan; zet uit om deze unit uit te sluiten van reserveringen terwijl andere units in dezelfde categorie wel reserveerbaar blijven."
                 },
                 {
                     "label": "Bulk units",

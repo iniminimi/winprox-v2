@@ -173,6 +173,10 @@
                 {
                     "label": "Categorías",
                     "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
+                },
+                {
+                    "label": "Reservable",
+                    "text": "Active Reservable en una categoría para recursos compartidos con franja horaria (sala de reuniones, vehículo, llave, …). Todas las unidades de esa categoría pasan a ser reservables y muestran el mosaico Reservar en el QR de la unidad. Los informes de defectos siguen vía Incidencia → tarea."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Añadir unidad",
                     "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
+                },
+                {
+                    "label": "Permitir reservas",
+                    "text": "Solo relevante si la categoría es Reservable. Activado por defecto; desactívelo para excluir esta unidad de las reservas mientras otras unidades de la misma categoría siguen siendo reservables."
                 },
                 {
                     "label": "Unidades en bloque",

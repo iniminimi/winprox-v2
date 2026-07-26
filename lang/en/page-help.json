@@ -173,6 +173,10 @@
                 {
                     "label": "Categories",
                     "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."
+                },
+                {
+                    "label": "Reservable",
+                    "text": "Turn on Reservable on a category for shared resources with a time slot (meeting room, vehicle, key, …). All units in that category become reservable and show the Reserve tile on the unit QR. Defect reports remain via Issue → task."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Add unit",
                     "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
+                },
+                {
+                    "label": "Allow reservations",
+                    "text": "Only relevant if the category is Reservable. On by default; turn off to exclude this unit from reservations while other units in the same category stay reservable."
                 },
                 {
                     "label": "Bulk units",

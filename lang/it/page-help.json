@@ -173,6 +173,10 @@
                 {
                     "label": "Categorie",
                     "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
+                },
+                {
+                    "label": "Prenotabile",
+                    "text": "Attivi Prenotabile su una categoria per risorse condivise con fascia oraria (sala riunioni, veicolo, chiave, …). Tutte le unità di quella categoria diventano prenotabili e mostrano il riquadro Prenota sul QR unità. Le segnalazioni di guasto restano via Segnalazione → attività."
                 }
             ]
         },
@@ -182,6 +186,10 @@
                 {
                     "label": "Aggiungi unità",
                     "text": "Aggiunga un oggetto/macchina/asset/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
+                },
+                {
+                    "label": "Consenti prenotazioni",
+                    "text": "Rilevante solo se la categoria è Prenotabile. Attivo di default; disattivi per escludere questa unità dalle prenotazioni mentre le altre unità della stessa categoria restano prenotabili."
                 },
                 {
                     "label": "Unità in massa",
