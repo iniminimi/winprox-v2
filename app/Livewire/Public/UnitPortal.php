@@ -2,9 +2,13 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Portal\ClearWorkerTaskBaselineAction;
+use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
+use App\Actions\Portal\MarkTeamTasksSeenInBaselineAction;
 use App\Actions\Public\RecordUnitPortalVisitAction;
 use App\Actions\Public\SubmitReportAction;
 use App\Exceptions\Public\PublicReportRateLimitExceededException;
+use App\Actions\Time\ResolveDefaultClockPointAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
@@ -21,6 +25,7 @@ use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Data\Units\RecordUnitGpsReportData;
 use App\Http\Requests\Units\RecordUnitGpsReportRequest;
 use App\Models\Task;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\PortalAccess;
@@ -321,11 +326,30 @@ class UnitPortal extends Component
         WorkerIconGuard::clearSessionForTeam((int) $team->id);
         WorkerVerification::clearForTeam((int) $team->id);
         WorkerVerification::clearUnitFieldTrustForTeam((int) $team->id);
+        app(ClearWorkerTaskBaselineAction::class)->handle((int) $team->id);
 
         $this->first_name = '';
         $this->last_name = '';
         $this->sign_in_icon_slug = '';
         $this->resetErrorBag(['identify', 'sign_in_icon_slug']);
+    }
+
+    public function dismissNewTeamTasksBanner(
+        FindNewTeamTasksSinceBaselineAction $findNewTeamTasks,
+        MarkTeamTasksSeenInBaselineAction $markSeen,
+    ): void {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $taskIds = $findNewTeamTasks
+            ->handle($worker, (int) $this->unit()->id)
+            ->pluck('id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+
+        $markSeen->handle($worker, $taskIds);
     }
 
     public function signInWithIcon(): void
@@ -676,8 +700,10 @@ class UnitPortal extends Component
         $this->flashMessage = '';
     }
 
-    public function render()
-    {
+    public function render(
+        FindNewTeamTasksSinceBaselineAction $findNewTeamTasks,
+        ResolveDefaultClockPointAction $resolveDefaultClockPoint,
+    ) {
         $unit = $this->unit();
         app()->setLocale($this->locale);
 
@@ -709,6 +735,8 @@ class UnitPortal extends Component
         $openTasksForIssue = collect();
         $allOpenUnitTasks = collect();
         $openTaskCount = 0;
+        $newTeamTasksCount = 0;
+        $clockPointPortalUrl = null;
 
         if ($this->inactiveReasonKey === null) {
             if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
@@ -742,6 +770,16 @@ class UnitPortal extends Component
                     $openTasksForIssue = UnitPortalData::openTeamTasksForIssue($selectedIssue, (int) $team->id);
                 }
             }
+
+            if ($canAct && $worker !== null) {
+                $newTeamTasksCount = $findNewTeamTasks->handle($worker, (int) $unit->id)->count();
+
+                if ($newTeamTasksCount > 0) {
+                    $tenant = Tenant::query()->find($this->tenantId);
+                    $clockPoint = $tenant !== null ? $resolveDefaultClockPoint->handle($tenant) : null;
+                    $clockPointPortalUrl = $clockPoint?->portalUrl();
+                }
+            }
         }
 
         return view('livewire.public.unit-portal', [
@@ -769,6 +807,8 @@ class UnitPortal extends Component
             'isTeamPortal' => false,
             'manageWorkersMessage' => '',
             'unitBackgroundUrl' => $unit->backgroundPhotoPublicUrl(),
+            'newTeamTasksCount' => $newTeamTasksCount,
+            'clockPointPortalUrl' => $clockPointPortalUrl,
         ])->layout('components.layouts.public', [
             'portalBgUrl' => $unit->backgroundPhotoPublicUrl(),
             'title' => 'WinProx',

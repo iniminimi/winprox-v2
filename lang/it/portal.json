@@ -88,6 +88,8 @@
         "issue_meta": ":description, :datetime",
         "photos_offline_not_supported": "Le foto non sono supportate in modalità offline.",
         "no_open_tasks": "Nessuna attività aperta.",
+        "new_team_tasks_banner": "{1} C'è una nuova attività per il tuo team. Consultala nella pagina di accesso.|[2,*] Ci sono :count nuove attività per il tuo team. Consultale nella pagina di accesso.",
+        "open_login_overview": "Apri panoramica attività",
         "start_task": "Avvia attività",
         "complete_task": "Completa attività",
         "note": "Nota",

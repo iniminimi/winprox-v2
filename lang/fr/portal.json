@@ -88,6 +88,8 @@
         "issue_meta": ":description, :datetime",
         "photos_offline_not_supported": "Les photos ne sont pas prises en charge en mode hors ligne.",
         "no_open_tasks": "Aucune tâche ouverte.",
+        "new_team_tasks_banner": "{1} Il y a une nouvelle tâche pour votre équipe. Consultez-la sur la page de connexion.|[2,*] Il y a :count nouvelles tâches pour votre équipe. Consultez-les sur la page de connexion.",
+        "open_login_overview": "Ouvrir l'aperçu des tâches",
         "start_task": "Démarrer la tâche",
         "complete_task": "Terminer la tâche",
         "note": "Note",

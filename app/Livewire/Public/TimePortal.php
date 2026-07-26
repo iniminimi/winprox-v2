@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Public;
 
+use App\Actions\Portal\ClearWorkerTaskBaselineAction;
+use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
@@ -236,6 +238,7 @@ class TimePortal extends Component
         if ($team !== null) {
             WorkerIconGuard::clearSessionForTeam((int) $team->id);
             WorkerVerification::clearForTeam((int) $team->id);
+            app(ClearWorkerTaskBaselineAction::class)->handle((int) $team->id);
         }
 
         $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm']);
@@ -365,13 +368,17 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline)
     {
         app()->setLocale($this->locale);
 
         $verifiedWorker = $this->verifiedWorker();
         $canAct = $verifiedWorker !== null;
         $team = $verifiedWorker?->team;
+
+        if ($canAct && $verifiedWorker !== null) {
+            $syncBaseline->handle($verifiedWorker);
+        }
 
         $hasAnyWorkers = Worker::query()
             ->where('tenant_id', $this->tenantId)

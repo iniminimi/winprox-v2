@@ -88,6 +88,8 @@
         "issue_meta": ":description, :datetime",
         "photos_offline_not_supported": "Photos are not supported in offline mode.",
         "no_open_tasks": "No open tasks.",
+        "new_team_tasks_banner": "{1} There is a new task for your team. View it on the login page.|[2,*] There are :count new tasks for your team. View them on the login page.",
+        "open_login_overview": "Open task overview",
         "start_task": "Start task",
         "complete_task": "Complete task",
         "note": "Note",

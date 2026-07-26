@@ -1,4 +1,4 @@
-<div class="wp-stack">
+<div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">

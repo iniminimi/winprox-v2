@@ -198,6 +198,24 @@
             <div class="wp-flash">{{ $flashMessage }}</div>
         @endif
 
+        @if (($newTeamTasksCount ?? 0) > 0)
+            <div class="wp-card wp-card-pad wp-stack" wire:key="new-team-tasks-banner" data-manual-capture="portal-new-team-tasks">
+                <p class="wp-text-body">
+                    {{ trans_choice('portal.worker.new_team_tasks_banner', $newTeamTasksCount, ['count' => $newTeamTasksCount]) }}
+                </p>
+                <div class="wp-cluster">
+                    @if ($clockPointPortalUrl)
+                        <a href="{{ $clockPointPortalUrl }}" class="btn btn--primary btn--sm">
+                            {{ __('portal.worker.open_login_overview') }}
+                        </a>
+                    @endif
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="dismissNewTeamTasksBanner">
+                        {{ __('common.button.close') }}
+                    </button>
+                </div>
+            </div>
+        @endif
+
         {{-- ============================ HOME ============================ --}}
         @if ($portalSection === 'home')
             <div data-manual-capture="portal-unit-home" class="wp-stack">

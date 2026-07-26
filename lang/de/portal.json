@@ -88,6 +88,8 @@
         "issue_meta": ":description, :datetime",
         "photos_offline_not_supported": "Fotos werden im Offline-Modus nicht unterstützt.",
         "no_open_tasks": "Keine offenen Aufgaben.",
+        "new_team_tasks_banner": "{1} Es gibt eine neue Aufgabe für Ihr Team. Sehen Sie sie auf der Anmeldeseite.|[2,*] Es gibt :count neue Aufgaben für Ihr Team. Sehen Sie sie auf der Anmeldeseite.",
+        "open_login_overview": "Aufgabenübersicht öffnen",
         "start_task": "Aufgabe starten",
         "complete_task": "Aufgabe abschließen",
         "note": "Notiz",

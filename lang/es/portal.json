@@ -88,6 +88,8 @@
         "issue_meta": ":description, :datetime",
         "photos_offline_not_supported": "Las fotos no son compatibles en modo sin conexión.",
         "no_open_tasks": "No hay tareas abiertas.",
+        "new_team_tasks_banner": "{1} Hay una nueva tarea para tu equipo. Consúltala en la página de acceso.|[2,*] Hay :count nuevas tareas para tu equipo. Consúltalas en la página de acceso.",
+        "open_login_overview": "Abrir resumen de tareas",
         "start_task": "Iniciar tarea",
         "complete_task": "Completar tarea",
         "note": "Nota",
