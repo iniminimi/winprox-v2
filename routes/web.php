@@ -45,6 +45,7 @@ use App\Livewire\Pages\ManualIndex;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Pages\Pricing;
+use App\Livewire\Pages\PublicFaq;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team;
@@ -164,6 +165,7 @@ Route::prefix('{locale}')
 
         Route::get('/contact', Contact::class)->name('contact.index');
         Route::get('/pricing', Pricing::class)->name('pricing');
+        Route::get('/faq', PublicFaq::class)->name('faq.public');
         Route::get('/promo', [PromoController::class, 'show'])->name('promo');
 
         foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {

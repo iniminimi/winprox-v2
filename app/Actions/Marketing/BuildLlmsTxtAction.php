@@ -24,9 +24,9 @@ class BuildLlmsTxtAction
         foreach (config('locales.supported', []) as $locale) {
             $label = strtoupper((string) $locale);
             $home = route('welcome', ['locale' => $locale], absolute: true);
-            $faq = $home.'#faq';
+            $faq = route('faq.public', ['locale' => $locale], absolute: true);
             $lines[] = "- [Homepage ({$label})]({$home}): Marketing overview of Facility, Time and ESG.";
-            $lines[] = "- [FAQ on homepage ({$label})]({$faq}): Full frequently asked questions, always visible in HTML for readers and crawlers.";
+            $lines[] = "- [FAQ ({$label})]({$faq}): Full frequently asked questions, always visible in HTML for readers and crawlers.";
         }
 
         $lines[] = '';
@@ -44,6 +44,7 @@ class BuildLlmsTxtAction
 
         $previousLocale = app()->getLocale();
         app()->setLocale('en');
+        $faqBase = route('faq.public', ['locale' => 'en'], absolute: true);
         foreach (FaqSections::orderedItems() as $item) {
             $title = (string) ($item['title'] ?? '');
             $summary = (string) ($item['summary'] ?? $item['intro'] ?? '');
@@ -51,8 +52,7 @@ class BuildLlmsTxtAction
                 continue;
             }
             $slug = (string) ($item['slug'] ?? '');
-            $anchor = $slug !== '' ? '#faq-'.$slug : '#faq';
-            $url = route('welcome', ['locale' => 'en'], absolute: true).$anchor;
+            $url = $slug !== '' ? $faqBase.'#faq-'.$slug : $faqBase;
             $note = $summary !== '' ? ': '.$this->oneLine($summary) : '';
             $lines[] = "- [{$title}]({$url}){$note}";
         }

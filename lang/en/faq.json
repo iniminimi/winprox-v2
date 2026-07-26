@@ -1,4 +1,10 @@
 {
+    "meta_title": "Frequently asked questions | WinProx",
+    "social": {
+        "og_title": "Frequently asked questions | WinProx",
+        "og_description": "Answers about issues, tasks, QR portals, Time, ESG and plans."
+    },
+    "eyebrow": "FAQ",
     "title": "Frequently asked questions",
     "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx Facility app.",
     "items": {

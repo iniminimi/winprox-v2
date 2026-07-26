@@ -1,4 +1,10 @@
 {
+    "meta_title": "Häufig gestellte Fragen | WinProx",
+    "social": {
+        "og_title": "Häufig gestellte Fragen | WinProx",
+        "og_description": "Antworten zu Meldungen, Aufgaben, QR-Portalen, Time, ESG und Abos."
+    },
+    "eyebrow": "FAQ",
     "title": "Häufig gestellte Fragen",
     "subtitle": "Kurze Erklärung für Administratoren, Mitarbeiter und Außendienstteams — abgestimmt auf die aktuelle WinProx Facility-App.",
     "items": {

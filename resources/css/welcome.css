@@ -2067,6 +2067,10 @@
     text-align: left;
 }
 
+[data-theme='standard'] .wp-welcome-faq-page {
+    padding-top: 2rem;
+}
+
 [data-theme='standard'] .wp-welcome-faq-item {
     margin: 0;
 }

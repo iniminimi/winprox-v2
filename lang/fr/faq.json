@@ -1,4 +1,10 @@
 {
+    "meta_title": "Questions fréquentes | WinProx",
+    "social": {
+        "og_title": "Questions fréquentes | WinProx",
+        "og_description": "Réponses sur les signalements, tâches, portails QR, Time, ESG et abonnements."
+    },
+    "eyebrow": "FAQ",
     "title": "Questions fréquentes",
     "subtitle": "Guide court pour administrateurs, collaborateurs et équipes terrain — aligné sur l'application WinProx Facility actuelle.",
     "items": {

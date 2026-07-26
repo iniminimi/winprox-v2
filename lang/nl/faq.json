@@ -1,4 +1,10 @@
 {
+    "meta_title": "Veelgestelde vragen | WinProx",
+    "social": {
+        "og_title": "Veelgestelde vragen | WinProx",
+        "og_description": "Antwoorden over meldingen, taken, QR-portalen, Time, ESG en abonnementen."
+    },
+    "eyebrow": "FAQ",
     "title": "Veelgestelde vragen",
     "subtitle": "Korte uitleg voor beheerders, medewerkers en veldteams — afgestemd op de huidige WinProx Facility-app.",
     "items": {

@@ -14,7 +14,7 @@ final class MarketingSeo
      */
     public static function routeNames(): array
     {
-        $names = ['welcome', 'promo', 'pricing', 'contact.index'];
+        $names = ['welcome', 'promo', 'pricing', 'contact.index', 'faq.public'];
 
         foreach (config('legal.documents', []) as $meta) {
             if (isset($meta['route']) && is_string($meta['route'])) {
