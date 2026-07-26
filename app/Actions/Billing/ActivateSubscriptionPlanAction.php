@@ -16,6 +16,7 @@ class ActivateSubscriptionPlanAction
 
     public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
     {
+        $plan = Tenant::normalizeBillingPlanKey($plan) ?? $plan;
         $periodDays = Tenant::subscriptionPeriodDaysForPlan($plan);
 
         $tenant->forceFill([

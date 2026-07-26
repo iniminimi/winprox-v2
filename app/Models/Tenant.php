@@ -163,7 +163,7 @@ class Tenant extends Model
         }
 
         // Only Corporate plan has API access
-        return $this->billing_plan === 'corporate';
+        return self::normalizeBillingPlanKey($this->billing_plan) === 'corporate';
     }
 
     public function hasCsvWorkersImport(): bool
@@ -228,7 +228,8 @@ class Tenant extends Model
 
     public static function subscriptionPeriodDaysForPlan(?string $planKey): int
     {
-        if (! is_string($planKey) || $planKey === '') {
+        $planKey = self::normalizeBillingPlanKey($planKey);
+        if ($planKey === null) {
             return max(1, (int) config('billing.subscription_period_days', 30));
         }
 
@@ -430,7 +431,7 @@ class Tenant extends Model
     public function effectivePlanKey(): ?string
     {
         if ($this->isPaidSubscriptionActive() || $this->isInPaidSubscriptionGrace()) {
-            return $this->billing_plan;
+            return self::normalizeBillingPlanKey($this->billing_plan);
         }
 
         if ($this->isTrialActive()) {
@@ -438,6 +439,18 @@ class Tenant extends Model
         }
 
         return null;
+    }
+
+    /**
+     * Plan-keys in config zijn lowercase; DB kan legacy casing hebben (bv. "Facility").
+     */
+    public static function normalizeBillingPlanKey(?string $planKey): ?string
+    {
+        if (! is_string($planKey) || $planKey === '') {
+            return null;
+        }
+
+        return strtolower(trim($planKey));
     }
 
     /** null = onbeperkt (legacy of enterprise). */

@@ -2,6 +2,7 @@
 
 use App\Livewire\Auth\Register;
 use App\Livewire\Pages\Subscription;
+use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
@@ -137,6 +138,28 @@ it('toont planlabel correct bij billing_plan met hoofdletter', function () {
         ->test(Subscription::class)
         ->assertSee(__('subscription.plans.facility.name'))
         ->assertDontSee('subscription.plans.Facility.name');
+
+    expect($tenant->effectivePlanKey())->toBe('facility')
+        ->and($tenant->hasCsvUnitsImport())->toBeTrue();
+});
+
+it('toont csv-import knop op locaties bij Facility-plan met hoofdletter in DB', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => null,
+        'billing_plan' => 'Facility',
+        'billing_active_until' => now()->addMonth(),
+        'is_active' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    expect($tenant->hasCsvUnitsImport())->toBeTrue();
+
+    $this->actingAs($admin)
+        ->get(route('locations.index'))
+        ->assertOk()
+        ->assertSee(__('locations.import'), false);
 });
 
 it('laat een beheerder een plan activeren', function () {

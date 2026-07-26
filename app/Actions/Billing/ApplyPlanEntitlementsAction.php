@@ -45,6 +45,8 @@ class ApplyPlanEntitlementsAction
     private function resolvePlanConfig(Tenant $tenant, ?string $planKey): ?array
     {
         if ($planKey !== null) {
+            $planKey = Tenant::normalizeBillingPlanKey($planKey) ?? $planKey;
+
             return $planKey === config('billing.trial_plan_facility')
                 ? config('billing.trial')
                 : config("billing.plans.{$planKey}");
@@ -55,9 +57,9 @@ class ApplyPlanEntitlementsAction
         }
 
         if ($tenant->isPaidSubscriptionActive() || $tenant->isInPaidSubscriptionGrace()) {
-            $key = $tenant->billing_plan;
+            $key = Tenant::normalizeBillingPlanKey($tenant->billing_plan);
 
-            return is_string($key) ? config("billing.plans.{$key}") : null;
+            return $key !== null ? config("billing.plans.{$key}") : null;
         }
 
         return null;
