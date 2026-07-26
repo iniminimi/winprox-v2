@@ -16,6 +16,7 @@
         "qr": "QR-portalen",
         "sectors": "Sectoren",
         "video": "Video",
+        "faq": "FAQ",
         "pricing": "Prijzen"
     },
     "hero": {
@@ -206,6 +207,11 @@
         "body": "Kies WinProx Facility voor het volledige plaatje, of WinProx Time wanneer tijdregistratie voorop staat.",
         "cta_start": "Gratis proberen",
         "cta_contact": "Contact opnemen"
+    },
+    "faq": {
+        "eyebrow": "FAQ",
+        "title": "Veelgestelde vragen",
+        "lead": "Antwoorden over meldingen, taken, QR-portalen, Time, ESG en abonnementen — leesbaar voor iedereen."
     },
     "footer": {
         "contact": "Contact",

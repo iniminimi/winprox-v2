@@ -8,6 +8,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\PromoQrDownloadController;
@@ -84,6 +85,7 @@ Route::get('/welcome-1995', function () {
 })->name('welcome.classic');
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
 
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 

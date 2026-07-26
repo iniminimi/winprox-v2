@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\Marketing\RecordWelcomeVisitAction;
+use App\Support\Faq\FaqSections;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -33,7 +34,9 @@ class WelcomeController extends Controller
             utmCampaign: $this->queryString($request, 'utm_campaign'),
         );
 
-        return view('welcome');
+        return view('welcome', [
+            'faqItems' => FaqSections::orderedItems(),
+        ]);
     }
 
     private function queryString(Request $request, string $key): ?string

@@ -342,6 +342,8 @@
             </div>
         </section>
 
+        @include('partials.wp-welcome-faq')
+
         <section class="wp-welcome-section wp-welcome-section--closing wp-welcome-closing-panel" aria-labelledby="welcome-closing-title">
             <div class="wp-welcome-section-inner wp-welcome-closing-panel__inner">
                 <x-wp-text-reveal

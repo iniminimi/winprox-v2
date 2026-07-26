@@ -17,10 +17,26 @@ it('toont de welcome-pagina voor gasten', function () {
         ->assertOk()
         ->assertSee(__('welcome.hero.badge'))
         ->assertSee(__('welcome.trust_bar.items.0'))
+        ->assertSee(__('welcome.faq.eyebrow'))
+        ->assertSee(__('faq.items.how_it_works.title'))
+        ->assertSee(__('faq.items.pricing.title'))
+        ->assertSee(__('faq.items.how_it_works.intro'))
+        ->assertSee('id="faq"', false)
+        ->assertSee('id="faq-how_it_works"', false)
         ->assertSee('property="og:description" content="'.__('welcome.social.og_description').'"', false)
         ->assertSee('/images/promo/og_1.jpg', false)
         ->assertSee('images/welcome/1995/easter_egg.gif', false)
         ->assertSee(route('welcome.classic'), false);
+});
+
+it('serveert llms.txt voor AI-bots', function () {
+    $this->get(route('llms.txt'))
+        ->assertOk()
+        ->assertHeader('Content-Type', 'text/plain; charset=utf-8')
+        ->assertSee('# WinProx', false)
+        ->assertSee('> Facility management via QR portals', false)
+        ->assertSee(route('welcome', ['locale' => 'en'], absolute: true).'#faq', false)
+        ->assertSee(__('faq.items.how_it_works.title', [], 'en'), false);
 });
 
 it('toont de 1995 easter-egg pagina met noindex', function () {

@@ -16,6 +16,7 @@
         "qr": "Portails QR",
         "sectors": "Secteurs",
         "video": "Vidéo",
+        "faq": "FAQ",
         "pricing": "Tarifs"
     },
     "hero": {
@@ -206,6 +207,11 @@
         "body": "Choisissez WinProx Facility pour la vue complète, ou WinProx Time quand le suivi du temps est prioritaire.",
         "cta_start": "Essai gratuit",
         "cta_contact": "Nous contacter"
+    },
+    "faq": {
+        "eyebrow": "FAQ",
+        "title": "Questions fréquentes",
+        "lead": "Réponses sur les signalements, tâches, portails QR, Time, ESG et abonnements — lisibles pour tout le monde."
     },
     "footer": {
         "contact": "Contact",

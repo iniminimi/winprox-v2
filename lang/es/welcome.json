@@ -16,6 +16,7 @@
         "qr": "Portales QR",
         "sectors": "Sectores",
         "video": "Vídeo",
+        "faq": "FAQ",
         "pricing": "Precios"
     },
     "hero": {
@@ -206,6 +207,11 @@
         "body": "Elija WinProx Facility para la visión completa, o WinProx Time cuando el control horario es prioritario.",
         "cta_start": "Probar gratis",
         "cta_contact": "Contactar"
+    },
+    "faq": {
+        "eyebrow": "FAQ",
+        "title": "Preguntas frecuentes",
+        "lead": "Respuestas sobre incidencias, tareas, portales QR, Time, ESG y planes — legibles para todos."
     },
     "footer": {
         "contact": "Contacto",

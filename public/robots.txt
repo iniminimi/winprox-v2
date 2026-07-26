@@ -2,3 +2,6 @@ User-agent: *
 Disallow:
 
 Sitemap: https://winprox.app/sitemap.xml
+
+# Curated index for AI / LLM crawlers (https://llmstxt.org/)
+# https://winprox.app/llms.txt

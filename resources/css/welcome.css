@@ -2060,6 +2060,30 @@
     color: var(--wp-accent-text);
 }
 
+[data-theme='standard'] .wp-welcome-faq-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.75rem;
+    text-align: left;
+}
+
+[data-theme='standard'] .wp-welcome-faq-item {
+    margin: 0;
+}
+
+[data-theme='standard'] .wp-welcome-faq-item .wp-welcome-h3 {
+    margin-bottom: 0.5rem;
+}
+
+[data-theme='standard'] .wp-welcome-faq-item .wp-stack {
+    gap: 0.75rem;
+}
+
+[data-theme='standard'] .wp-welcome-faq-item .wp-plan-limits {
+    margin: 0.35rem 0;
+    padding-left: 1.1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
     [data-theme='standard'] .wp-text-reveal__word {
         transform: none;

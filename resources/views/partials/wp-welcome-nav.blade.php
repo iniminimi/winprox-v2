@@ -20,6 +20,7 @@
                     <a href="{{ $welcomeSection('esg') }}">{{ __('welcome.nav.esg') }}</a>
                     <a href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
+                    <a href="{{ $welcomeSection('faq') }}">{{ __('welcome.nav.faq') }}</a>
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                 </div>
                 <div class="wp-welcome-nav-menu__auth wp-cluster">

@@ -16,6 +16,7 @@
         "qr": "QR-Portale",
         "sectors": "Branchen",
         "video": "Video",
+        "faq": "FAQ",
         "pricing": "Preise"
     },
     "hero": {
@@ -206,6 +207,11 @@
         "body": "Wählen Sie WinProx Facility für das Gesamtbild oder WinProx Time, wenn Zeiterfassung im Vordergrund steht.",
         "cta_start": "Kostenlos testen",
         "cta_contact": "Kontakt aufnehmen"
+    },
+    "faq": {
+        "eyebrow": "FAQ",
+        "title": "Häufig gestellte Fragen",
+        "lead": "Antworten zu Meldungen, Aufgaben, QR-Portalen, Time, ESG und Abos — für alle lesbar."
     },
     "footer": {
         "contact": "Kontakt",
