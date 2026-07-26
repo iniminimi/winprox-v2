@@ -1,6 +1,7 @@
 {
     "title": "Utilisateurs",
     "subtitle": "Gérez les utilisateurs collègues, les équipes opérationnelles et les intervenants.",
+    "briefing": "Imprimer le briefing",
     "colleagues": {
         "title": "Utilisateurs collègues",
         "add": "+ Ajouter un utilisateur",

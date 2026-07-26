@@ -20,6 +20,16 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
+it('toont de briefing-afdrukknop op de gebruikerspagina', function () {
+    [, $admin] = tenantWithAdmin();
+
+    $this->actingAs($admin)
+        ->get(route('team.index'))
+        ->assertOk()
+        ->assertSee(__('team.briefing'), false)
+        ->assertSee(route('briefing.print'), false);
+});
+
 /**
  * @return array{0: Tenant, 1: User}
  */

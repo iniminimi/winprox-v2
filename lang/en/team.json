@@ -1,6 +1,7 @@
 {
     "title": "Users",
     "subtitle": "Manage colleague users, operational teams and workers.",
+    "briefing": "Print briefing",
     "colleagues": {
         "title": "Colleague users",
         "add": "+ Add user",

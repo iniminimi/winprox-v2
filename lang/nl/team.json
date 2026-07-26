@@ -1,6 +1,7 @@
 {
     "title": "Gebruikers",
     "subtitle": "Beheer collega-gebruikers, operationele teams en uitvoerders.",
+    "briefing": "Briefing afdrukken",
     "colleagues": {
         "title": "Collega-gebruikers",
         "add": "+ Gebruiker toevoegen",

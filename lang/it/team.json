@@ -1,6 +1,7 @@
 {
     "title": "Utenti",
     "subtitle": "Gestisca utenti colleghi, team operativi e lavoratori.",
+    "briefing": "Stampa briefing",
     "colleagues": {
         "title": "Utenti colleghi",
         "add": "+ Aggiungi utente",

@@ -1,6 +1,7 @@
 {
     "title": "Benutzer",
     "subtitle": "Verwalten Sie Kollegenkonten, operative Teams und Mitarbeiter.",
+    "briefing": "Briefing drucken",
     "colleagues": {
         "title": "Kollegenkonten",
         "add": "+ Benutzer hinzufügen",
