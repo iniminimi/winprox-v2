@@ -69,6 +69,16 @@ it('laadt paginahulp voor reserveringen', function (): void {
         ->and(collect($help['statuses'])->pluck('key')->all())->toContain('pending');
 });
 
+it('laadt paginahulp voor e-mail uitschrijvingen', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('platform.email_unsubscribes');
+
+    expect($help)->not->toBeNull()
+        ->and($help['title'])->toBe('Hulp — E-mail uitschrijvingen')
+        ->and($help['actions'])->not->toBeEmpty();
+});
+
 it('laadt paginahulp voor platformaudit', function (): void {
     app()->setLocale('nl');
 
