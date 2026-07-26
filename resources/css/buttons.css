@@ -69,6 +69,19 @@
     background-color: var(--wp-surface-2);
 }
 
+/* Actieve toggle (kalender chips, statuskeuze, …) — emerald soft. */
+.btn.is-active {
+    background-color: var(--wp-accent-soft);
+    border-color: var(--wp-accent);
+    color: var(--wp-accent-text);
+    box-shadow: none;
+}
+.btn.is-active:hover {
+    background-color: var(--wp-accent-soft);
+    border-color: var(--wp-accent-strong);
+    color: var(--wp-accent-strong);
+}
+
 /* Surface — witte achtergrond voor contrast. */
 .btn--surface {
     background-color: var(--wp-surface);

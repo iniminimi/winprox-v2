@@ -49,22 +49,22 @@
                 </div>
             </div>
 
-            <div class="wp-row">
+            <div class="wp-row wp-row--wrap">
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="previousPeriod">‹</button>
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="goToToday">{{ __('calendar.today') }}</button>
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="nextPeriod">›</button>
+                    <strong class="wp-calendar-period">{{ $periodLabel }}</strong>
                 </div>
-                <strong>{{ $periodLabel }}</strong>
-                <div class="wp-cluster">
-                    <select class="wp-select wp-select--compact" wire:model.live="locationFilter">
+                <div class="wp-cluster wp-calendar-filters">
+                    <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('calendar.all_locations') }}">
                         <option value="">{{ __('calendar.all_locations') }}</option>
                         @foreach ($locations as $location)
                             <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
                         @endforeach
                     </select>
                     @if ($entryType === 'reservations')
-                        <select class="wp-select wp-select--compact" wire:model.live="categoryFilter">
+                        <select class="wp-select wp-select--compact" wire:model.live="categoryFilter" aria-label="{{ __('calendar.all_categories') }}">
                             <option value="">{{ __('calendar.all_categories') }}</option>
                             @foreach ($reservableCategories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
