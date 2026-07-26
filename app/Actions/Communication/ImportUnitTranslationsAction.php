@@ -68,9 +68,20 @@ class ImportUnitTranslationsAction
                 ->where('locale', $locale)
                 ->firstOrFail();
 
+            $nextName = $name !== '' ? $name : null;
+            $nextDescription = $description !== '' ? $description : null;
+
+            if (
+                $row->status === UnitTranslationStatus::Completed
+                && $row->name === $nextName
+                && $row->description === $nextDescription
+            ) {
+                continue;
+            }
+
             $row->fill([
-                'name' => $name !== '' ? $name : null,
-                'description' => $description !== '' ? $description : null,
+                'name' => $nextName,
+                'description' => $nextDescription,
                 'status' => UnitTranslationStatus::Completed,
             ])->save();
 

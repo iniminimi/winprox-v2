@@ -33,9 +33,9 @@ class TranslationImportCommand extends Command
         File::ensureDirectoryExists(dirname($path));
 
         if (! File::exists($path)) {
-            $this->error("File not found: {$path}");
+            $this->info('No import file present; nothing to import.');
 
-            return self::FAILURE;
+            return self::SUCCESS;
         }
 
         $decoded = json_decode(File::get($path), true);
@@ -97,6 +97,9 @@ class TranslationImportCommand extends Command
 
             return self::FAILURE;
         }
+
+        // Prevent hourly scheduler from re-applying the same file forever.
+        File::delete($path);
 
         $this->info("Imported {$count} translation(s).");
 

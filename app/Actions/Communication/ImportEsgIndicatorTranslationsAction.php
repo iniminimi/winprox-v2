@@ -98,6 +98,14 @@ class ImportEsgIndicatorTranslationsAction
                 ->where('locale', $locale)
                 ->firstOrFail();
 
+            if (
+                $row->status === EsgIndicatorTranslationStatus::Completed
+                && $row->name === $name
+                && $row->options == $normalizedOptions
+            ) {
+                continue;
+            }
+
             $row->fill([
                 'name' => $name,
                 'options' => $normalizedOptions,

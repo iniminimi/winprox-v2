@@ -17,6 +17,7 @@ use App\Models\UnitTranslation;
 use App\Models\User;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Livewire\Livewire;
 use Tests\Support\FakeTranslationProvider;
@@ -80,6 +81,45 @@ it('exporteert en importeert pending unitvertalingen', function () {
     expect($imported)->toBe(1)
         ->and($unit->fresh()->localizedName('en'))->toBe('Excavator')
         ->and($unit->fresh()->localizedDescription('en'))->toBe('Zone B EN');
+});
+
+it('slaagt unchanged unit-import over zonder audit of webhook', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'description' => 'Zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+
+    $payload = [[
+        'unit_id' => $unit->id,
+        'locale' => 'en',
+        'name' => 'Excavator',
+        'description' => 'Zone B EN',
+    ]];
+
+    expect(app(ImportUnitTranslationsAction::class)->handle($payload))->toBe(1);
+
+    $auditsBefore = DB::table('audit_logs')
+        ->where('action', 'unit.translation_imported')
+        ->where('tenant_id', $tenant->id)
+        ->count();
+
+    expect(app(ImportUnitTranslationsAction::class)->handle($payload))->toBe(0)
+        ->and(
+            DB::table('audit_logs')
+                ->where('action', 'unit.translation_imported')
+                ->where('tenant_id', $tenant->id)
+                ->count()
+        )->toBe($auditsBefore);
 });
 
 it('vertaalt unit via de provider', function () {

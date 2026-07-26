@@ -60,6 +60,13 @@ class ImportLocationTranslationsAction
                 ->where('locale', $locale)
                 ->firstOrFail();
 
+            if (
+                $row->status === LocationTranslationStatus::Completed
+                && $row->name === $name
+            ) {
+                continue;
+            }
+
             $row->fill([
                 'name' => $name,
                 'status' => LocationTranslationStatus::Completed,
