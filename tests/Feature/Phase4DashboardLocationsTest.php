@@ -571,31 +571,41 @@ it('qr-pack download with dynamic QR codes validates count', function () {
 });
 
 it('downloads sample CSV with correct headers and UTF-8 BOM', function () {
-    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => null,
+        'billing_plan' => 'facility',
+        'billing_active_until' => now()->addMonth(),
+        'is_active' => true,
+    ]);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
 
-    // Test that the component has the downloadSampleCsv method
     $component = Livewire::actingAs($user)
-        ->test(LocationIndex::class);
+        ->test(LocationShow::class, ['location' => $location]);
 
-    // Verify the method exists and can be called (Livewire will handle the response)
-    $component->call('downloadSampleCsv')
+    $component->call('downloadLocationUnitsSampleCsv')
         ->assertStatus(200);
 
-    // For detailed content verification, we'll test the component method directly
-    // by setting up the proper context
-    Tenancy::actAs($tenant->id);
     auth()->login($user);
 
-    $livewireComponent = new LocationIndex();
-    $livewireComponent->mount();
+    $livewireComponent = new LocationShow();
+    $livewireComponent->location = $location;
 
-    $csvResponse = $livewireComponent->downloadSampleCsv();
+    $csvResponse = $livewireComponent->downloadLocationUnitsSampleCsv();
 
     expect($csvResponse->getStatusCode())->toBe(200)
         ->and($csvResponse->headers->get('content-type'))->toBe('text/csv; charset=UTF-8')
-        ->and($csvResponse->headers->get('content-disposition'))->toContain('winprox_sample.csv');
+        ->and($csvResponse->headers->get('content-disposition'))->toContain('units-location-sample.csv');
 
-    // Verify the response is a StreamedResponse
     expect($csvResponse)->toBeInstanceOf(\Symfony\Component\HttpFoundation\StreamedResponse::class);
+
+    ob_start();
+    $csvResponse->sendContent();
+    $csv = (string) ob_get_clean();
+
+    expect($csv)->toStartWith("\xEF\xBB\xBF")
+        ->and($csv)->toContain('unit_name,description,category_name')
+        ->and($csv)->not->toContain('location_name');
 });

@@ -47,7 +47,7 @@
         },
         "categories": {
             "title": "Inizi creando le categorie",
-            "text": "Vada a sedi e unità e aggiunga categorie per raggruppare le unità (es. trapani, sanitari, attrezzature fitness, ufficio, elettricità). Le categorie aiutano a filtrare e organizzare le unità e dipendono dal settore dell'azienda. Collegando i team di lavoratori a categorie specifiche, WinProx garantisce che le attività siano eseguite dal team corretto. Aggiunga sedi (siti, edifici, piani) e crei unità per sede — questi sono gli asset, le macchine o le stanze in cui vengono registrate segnalazioni e attività. Sedi e unità possono anche essere caricate tramite importazione massiva (file CSV).",
+            "text": "Vada a sedi e unità e aggiunga categorie per raggruppare le unità (es. trapani, sanitari, attrezzature fitness, ufficio, elettricità). Le categorie aiutano a filtrare e organizzare le unità e dipendono dal settore dell'azienda. Collegando i team di lavoratori a categorie specifiche, WinProx garantisce che le attività siano eseguite dal team corretto. Aggiunga sedi (siti, edifici, piani) e crei unità per sede — questi sono gli asset, le macchine o le stanze in cui vengono registrate segnalazioni e attività. Può anche importare unità per sede via CSV (o crearle in blocco).",
             "button": "Gestisci sedi"
         },
         "clock_point": {
