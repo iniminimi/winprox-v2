@@ -154,20 +154,46 @@
                 </div>
 
                 <div class="wp-field">
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="categoryAllowGpsLocation" />
-                        <span>{{ __('locations.categories.fields.allow_gps_location') }}</span>
-                    </label>
-                    <p class="wp-hint">{{ __('locations.categories.allow_gps_location_hint') }}</p>
+                    <div class="wp-check-with-tip">
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="categoryAllowGpsLocation" />
+                            <span>{{ __('locations.categories.fields.allow_gps_location') }}</span>
+                        </label>
+                        <span class="wp-tooltip">
+                            <button
+                                type="button"
+                                class="wp-tooltip__trigger"
+                                aria-label="{{ __('locations.categories.allow_gps_location_hint') }}"
+                            >
+                                <x-wp-icon name="information-circle" />
+                            </button>
+                            <span class="wp-tooltip__bubble wp-tooltip__bubble--wrap" role="tooltip">
+                                {{ __('locations.categories.allow_gps_location_hint') }}
+                            </span>
+                        </span>
+                    </div>
                     @error('categoryAllowGpsLocation') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
                 <div class="wp-field">
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="categoryIsReservable" />
-                        <span>{{ __('locations.categories.fields.is_reservable') }}</span>
-                    </label>
-                    <p class="wp-hint">{{ __('locations.categories.is_reservable_hint') }}</p>
+                    <div class="wp-check-with-tip">
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="categoryIsReservable" />
+                            <span>{{ __('locations.categories.fields.is_reservable') }}</span>
+                        </label>
+                        <span class="wp-tooltip">
+                            <button
+                                type="button"
+                                class="wp-tooltip__trigger"
+                                aria-label="{{ __('locations.categories.is_reservable_hint') }}"
+                            >
+                                <x-wp-icon name="information-circle" />
+                            </button>
+                            <span class="wp-tooltip__bubble wp-tooltip__bubble--wrap" role="tooltip">
+                                {{ __('locations.categories.is_reservable_hint') }}
+                            </span>
+                        </span>
+                    </div>
                     @error('categoryIsReservable') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
