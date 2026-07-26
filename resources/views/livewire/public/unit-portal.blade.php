@@ -255,6 +255,16 @@
                 <button type="button" class="wp-tile" wire:click="openSection('documents')">
                     <span class="wp-tile-title">{{ __('portal.tiles.documents') }} : {{ $documents->count() }}</span>
                 </button>
+                @if ($isReservable)
+                    <button type="button" class="wp-tile" wire:click="openSection('reserve')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.reserve') }}</span>
+                    </button>
+                    @if ($guestReservations->isNotEmpty())
+                        <button type="button" class="wp-tile" wire:click="openSection('my_reservations')">
+                            <span class="wp-tile-title">{{ __('portal.tiles.my_reservations') }} : {{ $guestReservations->count() }}</span>
+                        </button>
+                    @endif
+                @endif
             </div>
 
             @if ($isFieldVisitor && $hasUnitTeam)
@@ -503,6 +513,79 @@
                     </div>
                 @empty
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.announcements.empty') }}</p></div>
+                @endforelse
+            </div>
+        @endif
+
+        {{-- =========================== RESERVE =========================== --}}
+        @if ($portalSection === 'reserve' && $isReservable)
+            <x-wp-portal-back wire:click="openSection('home')" />
+            <x-wp-page-head-title variant="portal" icon="calendar" :title="__('portal.reservations.title')" />
+
+            <form wire:submit="submitReservation" class="wp-card wp-card-pad wp-stack">
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.reservations.fields.first_name') }}</label>
+                    <input type="text" class="wp-input" wire:model="reserveFirstName">
+                    @error('reserveFirstName') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.reservations.fields.last_name') }}</label>
+                    <input type="text" class="wp-input" wire:model="reserveLastName">
+                    @error('reserveLastName') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.reservations.fields.email') }}</label>
+                    <input type="email" class="wp-input" wire:model="reserveEmail">
+                    @error('reserveEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.reservations.fields.start_at') }}</label>
+                    <input type="datetime-local" class="wp-input" wire:model="reserveStartAt">
+                    @error('reserveStartAt') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-field">
+                    <label class="wp-label">{{ __('portal.reservations.fields.end_at') }}</label>
+                    <input type="datetime-local" class="wp-input" wire:model="reserveEndAt">
+                    @error('reserveEndAt') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <p class="wp-muted">{{ __('portal.reservations.hold_hint', ['minutes' => \App\Models\Reservation::HOLD_MINUTES]) }}</p>
+                <div class="wp-portal-actions">
+                    <button type="submit" class="btn btn--primary btn--block" wire:loading.attr="disabled" wire:target="submitReservation">
+                        <x-wp-spinner wire:loading wire:target="submitReservation" class="wp-mr-2" />
+                        <span>{{ __('portal.reservations.submit') }}</span>
+                    </button>
+                </div>
+            </form>
+        @endif
+
+        {{-- ====================== MY RESERVATIONS ========================= --}}
+        @if ($portalSection === 'my_reservations' && $isReservable)
+            <x-wp-portal-back wire:click="openSection('home')" />
+            <x-wp-page-head-title variant="portal" icon="calendar" :title="__('portal.reservations.my_title')" />
+            <div class="wp-list">
+                @forelse ($guestReservations as $reservation)
+                    <div class="wp-card wp-card-pad wp-stack-tight" wire:key="my-reservation-{{ $reservation->id }}">
+                        <p class="wp-text-body">
+                            {{ $reservation->start_at->timezone(config('app.timezone'))->isoFormat('D MMM YYYY HH:mm') }}
+                            &ndash;
+                            {{ $reservation->end_at->timezone(config('app.timezone'))->isoFormat('HH:mm') }}
+                        </p>
+                        <span class="wp-pill wp-pill--{{ $reservation->lifecycle()->pillVariant() }}">
+                            {{ __('reservations.lifecycle.'.$reservation->lifecycle()->value) }}
+                        </span>
+                        @if ($reservation->isCancellable())
+                            <div class="wp-cluster wp-cluster--tight">
+                                <a class="btn btn--ghost btn--sm" href="{{ route('reservations.manage', ['token' => $reservation->manage_token]) }}" target="_blank" rel="noopener">
+                                    {{ __('portal.reservations.manage_link') }}
+                                </a>
+                                <button type="button" class="btn btn--danger btn--sm" wire:confirm="{{ __('portal.reservations.cancel_confirm') }}" wire:click="cancelMyReservation({{ $reservation->id }})">
+                                    {{ __('common.button.cancel') }}
+                                </button>
+                            </div>
+                        @endif
+                    </div>
+                @empty
+                    <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.reservations.empty') }}</p></div>
                 @endforelse
             </div>
         @endif

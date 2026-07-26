@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Teamleiter geändert",
         "worker.updated": "Ausführender aktualisiert",
         "workers.delete_import_batch": "Ausführenden-Importstapel gelöscht",
-        "workers.import": "Ausführende importiert"
+        "workers.import": "Ausführende importiert",
+        "reservation.created": "Reservierung erstellt",
+        "reservation.confirmed": "Reservierung bestätigt",
+        "reservation.updated": "Reservierung aktualisiert",
+        "reservation.cancelled": "Reservierung storniert"
     }
 }

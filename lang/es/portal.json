@@ -33,7 +33,9 @@
         "issues": "Informes",
         "open_tasks": "Tareas abiertas",
         "announcements": "Anuncios",
-        "documents": "Documentos"
+        "documents": "Documentos",
+        "reserve": "Reservar",
+        "my_reservations": "Mis reservas"
     },
     "report": {
         "title": "Crear un informe",
@@ -218,5 +220,24 @@
         "background_photo_updated": "Foto del entorno guardada.",
         "background_photo_deleted": "Foto del entorno eliminada.",
         "background_photo_delete_confirm": "¿Eliminar esta foto del entorno?"
+    },
+    "reservations": {
+        "title": "Reservar",
+        "my_title": "Mis reservas",
+        "submit": "Solicitar reserva",
+        "hold_hint": "Tiene :minutes minutos para confirmar por correo.",
+        "submitted": "Reserva solicitada — revise su correo para confirmar.",
+        "cancelled": "Reserva cancelada.",
+        "cancel": "Cancelar",
+        "manage": "Gestionar",
+        "cancel_confirm": "¿Cancelar esta reserva?",
+        "empty": "Sin reservas.",
+        "fields": {
+            "first_name": "Nombre",
+            "last_name": "Apellido",
+            "email": "Correo",
+            "start_at": "Inicio",
+            "end_at": "Fin"
+        }
     }
 }

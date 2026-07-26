@@ -38,6 +38,10 @@ class UpdateUnitAction
             $payload['public_reports_enabled'] = (bool) $data['public_reports_enabled'];
         }
 
+        if (array_key_exists('allow_reservations', $data)) {
+            $payload['allow_reservations'] = (bool) $data['allow_reservations'];
+        }
+
         if (Schema::hasColumn('units', 'category_id')) {
             $payload['category_id'] = $data['category_id'] ?? null;
         }

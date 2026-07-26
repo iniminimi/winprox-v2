@@ -12,7 +12,8 @@
     },
     "type": {
         "tasks": "Tasks",
-        "issues": "Issues"
+        "issues": "Issues",
+        "reservations": "Reservations"
     },
     "period": {
         "week": "Week :start – :end"

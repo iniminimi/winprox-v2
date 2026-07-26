@@ -155,7 +155,9 @@
         "ability_time_read": "Leggi rilevazione presenze",
         "ability_time_write": "Scrivi rilevazione presenze",
         "ability_webhooks_manage": "Gestisci webhooks",
-        "ability_all": "Accesso completo"
+        "ability_all": "Accesso completo",
+        "ability_reservations_read": "Leggere prenotazioni",
+        "ability_reservations_write": "Scrivere prenotazioni"
     },
     "config_overview": {
         "title": "Panoramica configurazione",

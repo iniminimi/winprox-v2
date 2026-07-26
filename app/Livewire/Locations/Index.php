@@ -62,6 +62,8 @@ class Index extends Component
 
     public bool $categoryAllowGpsLocation = false;
 
+    public bool $categoryIsReservable = false;
+
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
 
@@ -208,6 +210,7 @@ class Index extends Component
         $this->editingCategoryId = (int) $category->id;
         $this->categoryName = (string) $category->name;
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
+        $this->categoryIsReservable = (bool) $category->is_reservable;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
         $this->showCategoriesModal = true;
         $this->resetErrorBag();
@@ -229,6 +232,7 @@ class Index extends Component
         $validated = $this->validate([
             'categoryName' => $rules['name'],
             'categoryAllowGpsLocation' => $rules['allow_gps_location'],
+            'categoryIsReservable' => $rules['is_reservable'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
             'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
@@ -243,6 +247,7 @@ class Index extends Component
             $category = $createCategory->handle($tenantId, [
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
+                'is_reservable' => (bool) $validated['categoryIsReservable'],
             ], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
@@ -250,6 +255,7 @@ class Index extends Component
             $updateCategory->handle($category, [
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
+                'is_reservable' => (bool) $validated['categoryIsReservable'],
             ], (int) auth()->id());
         }
 
@@ -275,6 +281,7 @@ class Index extends Component
         $this->editingCategoryId = null;
         $this->categoryName = '';
         $this->categoryAllowGpsLocation = false;
+        $this->categoryIsReservable = false;
         $this->selectedCategoryTeamIds = [];
     }
 

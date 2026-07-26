@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Teamleider gewijzigd",
         "worker.updated": "Uitvoerder bijgewerkt",
         "workers.delete_import_batch": "Uitvoerders-importbatch verwijderd",
-        "workers.import": "Uitvoerders geïmporteerd"
+        "workers.import": "Uitvoerders geïmporteerd",
+        "reservation.created": "Reservering aangemaakt",
+        "reservation.confirmed": "Reservering bevestigd",
+        "reservation.updated": "Reservering bijgewerkt",
+        "reservation.cancelled": "Reservering geannuleerd"
     }
 }

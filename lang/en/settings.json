@@ -155,7 +155,9 @@
         "ability_time_read": "Read time tracking",
         "ability_time_write": "Write time tracking",
         "ability_webhooks_manage": "Manage webhooks",
-        "ability_all": "Full access"
+        "ability_all": "Full access",
+        "ability_reservations_read": "Read reservations",
+        "ability_reservations_write": "Write reservations"
     },
     "config_overview": {
         "title": "Configuration overview",

@@ -12,7 +12,8 @@
     },
     "type": {
         "tasks": "Taken",
-        "issues": "Meldingen"
+        "issues": "Meldingen",
+        "reservations": "Reserveringen"
     },
     "period": {
         "week": "Week :start – :end"

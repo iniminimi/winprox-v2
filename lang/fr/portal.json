@@ -33,7 +33,9 @@
         "issues": "Signalements",
         "open_tasks": "Tâches ouvertes",
         "announcements": "Annonces",
-        "documents": "Documents"
+        "documents": "Documents",
+        "reserve": "Réserver",
+        "my_reservations": "Mes réservations"
     },
     "report": {
         "title": "Créer un signalement",
@@ -218,6 +220,24 @@
         "background_photo_updated": "Photo d'environnement enregistrée.",
         "background_photo_deleted": "Photo d'environnement supprimée.",
         "background_photo_delete_confirm": "Supprimer cette photo d'environnement ?"
+    },
+    "reservations": {
+        "title": "Réserver",
+        "my_title": "Mes réservations",
+        "submit": "Demander une réservation",
+        "hold_hint": "Vous avez :minutes minutes pour confirmer par e-mail.",
+        "submitted": "Réservation demandée — vérifiez votre e-mail pour confirmer.",
+        "cancelled": "Réservation annulée.",
+        "cancel": "Annuler",
+        "manage": "Gérer",
+        "cancel_confirm": "Annuler cette réservation ?",
+        "empty": "Aucune réservation.",
+        "fields": {
+            "first_name": "Prénom",
+            "last_name": "Nom",
+            "email": "E-mail",
+            "start_at": "Début",
+            "end_at": "Fin"
+        }
     }
 }
-

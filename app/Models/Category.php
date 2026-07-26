@@ -17,10 +17,12 @@ class Category extends Model
         'tenant_id',
         'name',
         'allow_gps_location',
+        'is_reservable',
     ];
 
     protected $casts = [
         'allow_gps_location' => 'boolean',
+        'is_reservable' => 'boolean',
     ];
 
     public function tenant(): BelongsTo

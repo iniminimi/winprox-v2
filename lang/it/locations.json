@@ -100,7 +100,8 @@
             "name": "Nome unità",
             "description": "Descrizione",
             "category": "Categoria",
-            "public_reports_enabled": "I visitatori possono inviare una segnalazione tramite il portale QR"
+            "public_reports_enabled": "I visitatori possono inviare una segnalazione tramite il portale QR",
+            "allow_reservations": "Consenti prenotazioni"
         },
         "translation_preview": "Traduzione (portale)",
         "edit": {
@@ -199,7 +200,8 @@
         "fields": {
             "name": "Nome categoria",
             "teams": "Team",
-            "allow_gps_location": "Consenti posizione GPS"
+            "allow_gps_location": "Consenti posizione GPS",
+            "is_reservable": "Prenotabile"
         },
         "allow_gps_location_hint": "Consenta l'invio della posizione GPS delle unità in questa categoria tramite il portale.",
         "teams_subtitle": "Selezioni i team responsabili per questa categoria.",
@@ -213,7 +215,8 @@
             "created": "Categoria creata.",
             "updated": "Categoria aggiornata.",
             "deleted": "Categoria eliminata."
-        }
+        },
+        "is_reservable_hint": "Abilita le prenotazioni per tutte le unità di questa categoria (sala, veicolo, …)."
     },
     "errors": {
         "name_or_address_required": "Inserisca un nome sede, oppure compili via, CAP e città.",

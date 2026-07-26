@@ -31,6 +31,10 @@ class WebhookEndpoint extends Model
         'unit.gps_reported',
         'esg.measurement.recorded',
         'esg.threshold.follow_up_created',
+        'reservation.created',
+        'reservation.confirmed',
+        'reservation.updated',
+        'reservation.cancelled',
     ];
 
     protected $fillable = [

@@ -155,7 +155,9 @@
         "ability_time_read": "Zeiterfassung lesen",
         "ability_time_write": "Zeiterfassung schreiben",
         "ability_webhooks_manage": "Webhooks verwalten",
-        "ability_all": "Vollzugriff"
+        "ability_all": "Vollzugriff",
+        "ability_reservations_read": "Reservierungen lesen",
+        "ability_reservations_write": "Reservierungen schreiben"
     },
     "config_overview": {
         "title": "Konfigurationsübersicht",

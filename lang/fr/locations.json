@@ -100,7 +100,8 @@
             "name": "Nom de l'unité",
             "description": "Description",
             "category": "Catégorie",
-            "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR"
+            "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR",
+            "allow_reservations": "Autoriser les réservations"
         },
         "translation_preview": "Traduction (portail)",
         "edit": {
@@ -199,7 +200,8 @@
         "fields": {
             "name": "Nom de la catégorie",
             "teams": "Équipes",
-            "allow_gps_location": "Autoriser la localisation GPS"
+            "allow_gps_location": "Autoriser la localisation GPS",
+            "is_reservable": "Réservable"
         },
         "allow_gps_location_hint": "Autorise la transmission de la localisation GPS des unités de cette catégorie via le portail.",
         "teams_subtitle": "Sélectionnez les équipes responsables de cette catégorie.",
@@ -213,7 +215,8 @@
             "created": "Catégorie créée.",
             "updated": "Catégorie mise à jour.",
             "deleted": "Catégorie supprimée."
-        }
+        },
+        "is_reservable_hint": "Active les réservations pour toutes les unités de cette catégorie (salle, véhicule, …)."
     },
     "errors": {
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",

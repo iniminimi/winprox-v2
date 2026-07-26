@@ -34,6 +34,9 @@ class CreateUnitAction
             'public_reports_enabled' => array_key_exists('public_reports_enabled', $data)
                 ? (bool) $data['public_reports_enabled']
                 : true,
+            'allow_reservations' => array_key_exists('allow_reservations', $data)
+                ? (bool) $data['allow_reservations']
+                : true,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {

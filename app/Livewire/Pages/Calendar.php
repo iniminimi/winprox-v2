@@ -5,6 +5,7 @@ namespace App\Livewire\Pages;
 use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\Reservation;
 use App\Models\Task;
 use App\Support\Onboarding\TenantOnboardingState;
 use Carbon\Carbon;
@@ -41,7 +42,7 @@ class Calendar extends Component
             $this->viewMode = 'month';
         }
 
-        if (! in_array($this->entryType, ['tasks', 'issues'], true)) {
+        if (! in_array($this->entryType, ['tasks', 'issues', 'reservations'], true)) {
             $this->entryType = 'tasks';
         }
     }
@@ -64,7 +65,7 @@ class Calendar extends Component
 
     public function setEntryType(string $type): void
     {
-        if (in_array($type, ['tasks', 'issues'], true)) {
+        if (in_array($type, ['tasks', 'issues', 'reservations'], true)) {
             $this->entryType = $type;
         }
     }
@@ -147,6 +148,17 @@ class Calendar extends Component
                 ->get();
 
             $entriesByDate = $issues->groupBy(fn (Issue $issue) => $issue->created_at?->toDateString());
+        } elseif ($this->entryType === 'reservations') {
+            $reservations = Reservation::query()
+                ->with(['unit.location', 'unit.translations'])
+                ->blocking()
+                ->where('start_at', '<=', $gridEnd->copy()->endOfDay())
+                ->where('end_at', '>=', $gridStart->copy()->startOfDay())
+                ->when($this->locationFilter, fn ($q) => $q->whereHas('unit', fn ($uq) => $uq->where('location_id', $this->locationFilter)))
+                ->orderBy('start_at')
+                ->get();
+
+            $entriesByDate = $reservations->groupBy(fn (Reservation $reservation) => $reservation->start_at?->toDateString());
         } else {
             $tasks = Task::query()
                 ->forApprovedIssue()

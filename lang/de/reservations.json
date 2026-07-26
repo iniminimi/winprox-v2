@@ -1,0 +1,53 @@
+{
+    "title": "Reservierungen",
+    "subtitle": "Besprechungsräume, Fahrzeuge und andere buchbare Units.",
+    "empty": "Keine kommenden Reservierungen.",
+    "columns": {
+        "when": "Wann",
+        "unit": "Unit",
+        "guest": "Gast",
+        "status": "Status"
+    },
+    "fields": {
+        "unit": "Unit",
+        "unit_placeholder": "Unit wählen",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "email": "E-Mail",
+        "start_at": "Start",
+        "end_at": "Ende"
+    },
+    "actions": {
+        "create": "Neue Reservierung",
+        "edit": "Reservierung bearbeiten",
+        "cancel": "Stornieren"
+    },
+    "lifecycle": {
+        "pending": "Wartet auf Bestätigung",
+        "confirmed": "Bestätigt",
+        "cancelled": "Storniert",
+        "expired": "Abgelaufen"
+    },
+    "public": {
+        "confirm_title": "Reservierung bestätigen",
+        "manage_title": "Reservierung verwalten",
+        "confirm_ok": "Ihre Reservierung ist bestätigt.",
+        "confirm_failed": "Bestätigung fehlgeschlagen.",
+        "open_manage": "Verwaltung öffnen",
+        "updated": "Reservierung aktualisiert.",
+        "cancelled": "Reservierung storniert.",
+        "cancel_confirm": "Diese Reservierung stornieren?"
+    },
+    "errors": {
+        "unit_not_reservable": "Diese Unit ist nicht reservierbar.",
+        "end_after_start": "Ende muss nach dem Start liegen.",
+        "start_in_past": "Start darf nicht in der Vergangenheit liegen.",
+        "min_duration": "Mindestdauer: 15 Minuten.",
+        "max_duration": "Maximaldauer: 24 Stunden.",
+        "overlap": "Dieser Zeitraum ist bereits belegt.",
+        "already_cancelled": "Diese Reservierung ist bereits storniert.",
+        "hold_expired": "Das 30-Minuten-Bestätigungsfenster ist abgelaufen.",
+        "not_editable": "Diese Reservierung kann nicht mehr geändert werden.",
+        "not_cancellable": "Diese Reservierung kann nicht mehr storniert werden."
+    }
+}

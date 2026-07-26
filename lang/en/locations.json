@@ -100,7 +100,8 @@
             "name": "Unit name",
             "description": "Description",
             "category": "Category",
-            "public_reports_enabled": "Visitors can submit a report via the QR portal"
+            "public_reports_enabled": "Visitors can submit a report via the QR portal",
+            "allow_reservations": "Allow reservations"
         },
         "translation_preview": "Translation (portal)",
         "edit": {
@@ -199,7 +200,8 @@
         "fields": {
             "name": "Category name",
             "teams": "Teams",
-            "allow_gps_location": "Allow GPS location"
+            "allow_gps_location": "Allow GPS location",
+            "is_reservable": "Reservable"
         },
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
@@ -213,7 +215,8 @@
             "created": "Category created.",
             "updated": "Category updated.",
             "deleted": "Category deleted."
-        }
+        },
+        "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …)."
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",

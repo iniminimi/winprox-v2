@@ -12,7 +12,8 @@
     },
     "type": {
         "tasks": "Attività",
-        "issues": "Segnalazioni"
+        "issues": "Segnalazioni",
+        "reservations": "Prenotazioni"
     },
     "period": {
         "week": "Settimana :start – :end"

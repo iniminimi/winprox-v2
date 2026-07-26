@@ -155,7 +155,9 @@
         "ability_time_read": "Urenregistratie lezen",
         "ability_time_write": "Urenregistratie schrijven",
         "ability_webhooks_manage": "Webhooks beheren",
-        "ability_all": "Volledige toegang"
+        "ability_all": "Volledige toegang",
+        "ability_reservations_read": "Reserveringen lezen",
+        "ability_reservations_write": "Reserveringen schrijven"
     },
     "config_overview": {
         "title": "Configuratie-overzicht",

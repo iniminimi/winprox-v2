@@ -28,12 +28,14 @@ class Unit extends Model
         'original_language',
         'is_active',
         'public_reports_enabled',
+        'allow_reservations',
         'background_photo_path',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
         'public_reports_enabled' => 'boolean',
+        'allow_reservations' => 'boolean',
     ];
 
     protected static function booted(): void
@@ -66,6 +68,18 @@ class Unit extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function reservations(): HasMany
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function isReservable(): bool
+    {
+        $this->loadMissing('category');
+
+        return (bool) $this->category?->is_reservable && $this->allow_reservations;
     }
 
     public function issues(): HasMany

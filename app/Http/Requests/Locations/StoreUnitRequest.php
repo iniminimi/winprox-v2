@@ -41,6 +41,7 @@ class StoreUnitRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'category_id' => $categoryRules,
             'public_reports_enabled' => ['boolean'],
+            'allow_reservations' => ['boolean'],
         ];
     }
 

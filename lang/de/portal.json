@@ -33,7 +33,9 @@
         "issues": "Meldungen",
         "open_tasks": "Offene Aufgaben",
         "announcements": "Mitteilungen",
-        "documents": "Dokumente"
+        "documents": "Dokumente",
+        "reserve": "Reservieren",
+        "my_reservations": "Meine Reservierungen"
     },
     "report": {
         "title": "Eine Meldung erstellen",
@@ -218,6 +220,24 @@
         "background_photo_updated": "Umgebungsfoto gespeichert.",
         "background_photo_deleted": "Umgebungsfoto entfernt.",
         "background_photo_delete_confirm": "Dieses Umgebungsfoto löschen?"
+    },
+    "reservations": {
+        "title": "Reservieren",
+        "my_title": "Meine Reservierungen",
+        "submit": "Reservierung anfragen",
+        "hold_hint": "Sie haben :minutes Minuten zur Bestätigung per E-Mail.",
+        "submitted": "Reservierung angefragt — prüfen Sie Ihre E-Mail zur Bestätigung.",
+        "cancelled": "Reservierung storniert.",
+        "cancel": "Stornieren",
+        "manage": "Verwalten",
+        "cancel_confirm": "Diese Reservierung stornieren?",
+        "empty": "Keine Reservierungen.",
+        "fields": {
+            "first_name": "Vorname",
+            "last_name": "Nachname",
+            "email": "E-Mail",
+            "start_at": "Start",
+            "end_at": "Ende"
+        }
     }
 }
-

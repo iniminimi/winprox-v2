@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Líder de equipo cambiado",
         "worker.updated": "Operario actualizado",
         "workers.delete_import_batch": "Lote de importación de operarios eliminado",
-        "workers.import": "Operarios importados"
+        "workers.import": "Operarios importados",
+        "reservation.created": "Reserva creada",
+        "reservation.confirmed": "Reserva confirmada",
+        "reservation.updated": "Reserva actualizada",
+        "reservation.cancelled": "Reserva cancelada"
     }
 }

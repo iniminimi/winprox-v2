@@ -53,6 +53,7 @@ class RecordAuditLogForDomainEvent
         }
 
         return match (true) {
+            str_starts_with($eventName, 'reservation.') => [\App\Models\Reservation::class, $id],
             str_starts_with($eventName, 'issue.') => [Issue::class, $id],
             str_starts_with($eventName, 'task.') => [Task::class, $id],
             str_starts_with($eventName, 'time.') => [WorkShift::class, $id],

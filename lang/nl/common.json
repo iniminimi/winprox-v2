@@ -18,7 +18,8 @@
         "faq": "FAQ & kennisbank",
         "manual": "Handleiding",
         "legal": "Juridische documenten",
-        "contact": "Contact"
+        "contact": "Contact",
+        "reservations": "Reserveringen"
     },
     "status": {
         "new": "Nieuw (Open)",

@@ -58,5 +58,20 @@
         "signer_title": "Oprichter / Architect WinProx",
         "phone": "0494/840854",
         "footer": "WinProx — slim facility management"
+    },
+    "reservation_confirm": {
+        "subject": "Bevestig je WinProx-reservering",
+        "subject_confirmed": "Je WinProx-reservering",
+        "greeting": "Hallo :name,",
+        "body_pending": "Je hebt :unit (:location) gereserveerd voor :when. Bevestig binnen :minutes minuten.",
+        "body_confirmed": "Je reservering voor :unit (:location) op :when is bevestigd.",
+        "cta_confirm": "Reservering bevestigen",
+        "cta_manage": "Reservering beheren"
+    },
+    "reservation_manage": {
+        "subject": "Beheer je WinProx-reservering",
+        "greeting": "Hallo :name,",
+        "body": "Je reservering voor :unit (:location) op :when is bevestigd. Via onderstaande link kun je wijzigen of annuleren.",
+        "cta": "Reservering beheren"
     }
 }

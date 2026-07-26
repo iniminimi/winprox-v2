@@ -1,0 +1,53 @@
+{
+    "title": "Prenotazioni",
+    "subtitle": "Sale riunioni, veicoli e altre unità prenotabili.",
+    "empty": "Nessuna prenotazione imminente.",
+    "columns": {
+        "when": "Quando",
+        "unit": "Unità",
+        "guest": "Ospite",
+        "status": "Stato"
+    },
+    "fields": {
+        "unit": "Unità",
+        "unit_placeholder": "Scegli un’unità",
+        "first_name": "Nome",
+        "last_name": "Cognome",
+        "email": "Email",
+        "start_at": "Inizio",
+        "end_at": "Fine"
+    },
+    "actions": {
+        "create": "Nuova prenotazione",
+        "edit": "Modifica prenotazione",
+        "cancel": "Annulla"
+    },
+    "lifecycle": {
+        "pending": "In attesa di conferma",
+        "confirmed": "Confermata",
+        "cancelled": "Annullata",
+        "expired": "Scaduta"
+    },
+    "public": {
+        "confirm_title": "Conferma prenotazione",
+        "manage_title": "Gestisci prenotazione",
+        "confirm_ok": "La prenotazione è confermata.",
+        "confirm_failed": "Conferma non riuscita.",
+        "open_manage": "Apri gestione",
+        "updated": "Prenotazione aggiornata.",
+        "cancelled": "Prenotazione annullata.",
+        "cancel_confirm": "Annullare questa prenotazione?"
+    },
+    "errors": {
+        "unit_not_reservable": "Questa unità non è prenotabile.",
+        "end_after_start": "La fine deve essere dopo l’inizio.",
+        "start_in_past": "L’inizio non può essere nel passato.",
+        "min_duration": "Durata minima: 15 minuti.",
+        "max_duration": "Durata massima: 24 ore.",
+        "overlap": "Questo orario è già occupato.",
+        "already_cancelled": "Questa prenotazione è già annullata.",
+        "hold_expired": "La finestra di conferma di 30 minuti è scaduta.",
+        "not_editable": "Questa prenotazione non può più essere modificata.",
+        "not_cancellable": "Questa prenotazione non può più essere annullata."
+    }
+}

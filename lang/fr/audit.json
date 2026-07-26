@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Chef d’équipe modifié",
         "worker.updated": "Intervenant mis à jour",
         "workers.delete_import_batch": "Lot d’import d’intervenants supprimé",
-        "workers.import": "Intervenants importés"
+        "workers.import": "Intervenants importés",
+        "reservation.created": "Réservation créée",
+        "reservation.confirmed": "Réservation confirmée",
+        "reservation.updated": "Réservation mise à jour",
+        "reservation.cancelled": "Réservation annulée"
     }
 }

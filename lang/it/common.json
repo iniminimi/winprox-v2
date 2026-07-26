@@ -18,7 +18,8 @@
         "faq": "FAQ e knowledge base",
         "manual": "Manuale utente",
         "legal": "Documenti legali",
-        "contact": "Contatto"
+        "contact": "Contatto",
+        "reservations": "Prenotazioni"
     },
     "status": {
         "new": "Nuova (Aperta)",

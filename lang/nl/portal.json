@@ -33,7 +33,9 @@
         "issues": "Meldingen",
         "open_tasks": "Open Taken",
         "announcements": "Mededelingen",
-        "documents": "Documenten"
+        "documents": "Documenten",
+        "reserve": "Reserveren",
+        "my_reservations": "Mijn reserveringen"
     },
     "report": {
         "title": "Een melding maken",
@@ -218,6 +220,24 @@
         "background_photo_updated": "Omgevingsfoto opgeslagen.",
         "background_photo_deleted": "Omgevingsfoto verwijderd.",
         "background_photo_delete_confirm": "Deze omgevingsfoto verwijderen?"
+    },
+    "reservations": {
+        "title": "Reserveren",
+        "my_title": "Mijn reserveringen",
+        "submit": "Reservering aanvragen",
+        "hold_hint": "Je hebt :minutes minuten om te bevestigen via e-mail.",
+        "submitted": "Reservering aangevraagd — check je e-mail om te bevestigen.",
+        "cancelled": "Reservering geannuleerd.",
+        "cancel": "Annuleren",
+        "manage": "Beheren",
+        "cancel_confirm": "Deze reservering annuleren?",
+        "empty": "Geen reserveringen.",
+        "fields": {
+            "first_name": "Voornaam",
+            "last_name": "Achternaam",
+            "email": "E-mail",
+            "start_at": "Start",
+            "end_at": "Einde"
+        }
     }
 }
-

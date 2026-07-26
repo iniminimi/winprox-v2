@@ -313,6 +313,33 @@ Hospitality-takken, contractor-taaktypes (`type != internal`-splitsing), onboard
 
 ---
 
+## 5c. Unit-reserveringen (Facility)
+
+**Doel:** eenvoudig reserveren van units (vergaderzaal, voertuig, sleutel, …) via de unit-QR,
+zonder SSO of verplichte account-login.
+
+### Instellingen
+- **Categorie:** vinkje `is_reservable` schakelt reserveren in voor alle units in die categorie.
+- **Unit:** vinkje `allow_reservations` (standaard aan) kan reserveren per unit uitzetten.
+
+### Gastflow (unit-QR)
+- Tegel **Reserveren** op het portaal wanneer de unit reserveerbaar is.
+- Gast vult voornaam, achternaam, e-mail, start/eind in → pending hold **30 minuten**.
+- Bevestiging via e-mail (magic link). Na bevestiging: manage-link om te wijzigen/annuleren.
+- Zelfde acties ook via QR (herkenning via cookie + e-mail).
+- Overlap-check op bevestigde én actieve pending holds. Geen statusmachine daarbuiten
+  (pending / confirmed / cancelled / expired).
+
+### Beheer
+- Sidebar **Reserveringen**: lijst, aanmaken (direct bevestigd), wijzigen, annuleren
+  (admin + medewerker via Policy).
+- Kalender: derde type-toggle **Reserveringen** naast taken/meldingen.
+
+### API & webhooks
+- `/api/v1/reservations` (CRUD/cancel) + events `reservation.created|confirmed|updated|cancelled`.
+
+---
+
 ## 5b. ESG & Compliance (optionele module)
 
 **Doel:** meetwaarden vastleggen bij terugkerende inspecties (duurzaamheid, compliance, meters).

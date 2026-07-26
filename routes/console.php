@@ -8,6 +8,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
+Schedule::command('winprox:reservations-expire-pending')->everyFiveMinutes();
 Schedule::command('winprox:recurrence-tick')->dailyAt('06:00');
 Schedule::command('winprox:time-auto-close-stale')->hourly();
 Schedule::command('winprox:time-finalize-qr-grace')->dailyAt('04:15');

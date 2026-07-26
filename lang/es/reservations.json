@@ -1,0 +1,53 @@
+{
+    "title": "Reservas",
+    "subtitle": "Salas de reunión, vehículos y otras unidades reservables.",
+    "empty": "No hay reservas próximas.",
+    "columns": {
+        "when": "Cuándo",
+        "unit": "Unidad",
+        "guest": "Invitado",
+        "status": "Estado"
+    },
+    "fields": {
+        "unit": "Unidad",
+        "unit_placeholder": "Elija una unidad",
+        "first_name": "Nombre",
+        "last_name": "Apellido",
+        "email": "Correo",
+        "start_at": "Inicio",
+        "end_at": "Fin"
+    },
+    "actions": {
+        "create": "Nueva reserva",
+        "edit": "Editar reserva",
+        "cancel": "Cancelar"
+    },
+    "lifecycle": {
+        "pending": "Pendiente de confirmación",
+        "confirmed": "Confirmada",
+        "cancelled": "Cancelada",
+        "expired": "Caducada"
+    },
+    "public": {
+        "confirm_title": "Confirmar reserva",
+        "manage_title": "Gestionar reserva",
+        "confirm_ok": "Su reserva está confirmada.",
+        "confirm_failed": "La confirmación falló.",
+        "open_manage": "Abrir gestión",
+        "updated": "Reserva actualizada.",
+        "cancelled": "Reserva cancelada.",
+        "cancel_confirm": "¿Cancelar esta reserva?"
+    },
+    "errors": {
+        "unit_not_reservable": "Esta unidad no se puede reservar.",
+        "end_after_start": "El fin debe ser posterior al inicio.",
+        "start_in_past": "El inicio no puede estar en el pasado.",
+        "min_duration": "Duración mínima: 15 minutos.",
+        "max_duration": "Duración máxima: 24 horas.",
+        "overlap": "Este horario ya está ocupado.",
+        "already_cancelled": "Esta reserva ya está cancelada.",
+        "hold_expired": "El plazo de confirmación de 30 minutos ha caducado.",
+        "not_editable": "Esta reserva ya no se puede editar.",
+        "not_cancellable": "Esta reserva ya no se puede cancelar."
+    }
+}

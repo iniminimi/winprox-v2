@@ -163,6 +163,15 @@
                 </div>
 
                 <div class="wp-field">
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="categoryIsReservable" />
+                        <span>{{ __('locations.categories.fields.is_reservable') }}</span>
+                    </label>
+                    <p class="wp-hint">{{ __('locations.categories.is_reservable_hint') }}</p>
+                    @error('categoryIsReservable') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-field">
                     <h3 class="wp-label">{{ __('locations.categories.fields.teams') }}</h3>
                     <p class="wp-hint">{{ __('locations.categories.teams_subtitle') }}</p>
                 </div>

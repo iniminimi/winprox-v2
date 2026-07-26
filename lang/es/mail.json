@@ -58,5 +58,20 @@
         "signer_title": "Oprichter / Architect WinProx",
         "phone": "0494/840854",
         "footer": "WinProx — slim facility management"
+    },
+    "reservation_confirm": {
+        "subject": "Confirm your WinProx reservation",
+        "subject_confirmed": "Your WinProx reservation",
+        "greeting": "Hello :name,",
+        "body_pending": "You reserved :unit (:location) for :when. Confirm within :minutes minutes.",
+        "body_confirmed": "Your reservation for :unit (:location) at :when is confirmed.",
+        "cta_confirm": "Confirm reservation",
+        "cta_manage": "Manage reservation"
+    },
+    "reservation_manage": {
+        "subject": "Manage your WinProx reservation",
+        "greeting": "Hello :name,",
+        "body": "Your reservation for :unit (:location) at :when is confirmed. Use the link below to change or cancel.",
+        "cta": "Manage reservation"
     }
 }

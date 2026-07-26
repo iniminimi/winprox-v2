@@ -28,6 +28,7 @@ class StoreCategoryRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'allow_gps_location' => ['sometimes', 'boolean'],
+            'is_reservable' => ['sometimes', 'boolean'],
         ];
     }
 

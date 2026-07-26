@@ -33,7 +33,9 @@
         "issues": "Reports",
         "open_tasks": "Open tasks",
         "announcements": "Announcements",
-        "documents": "Documents"
+        "documents": "Documents",
+        "reserve": "Reserve",
+        "my_reservations": "My reservations"
     },
     "report": {
         "title": "Create a report",
@@ -218,6 +220,24 @@
         "background_photo_updated": "Environment photo saved.",
         "background_photo_deleted": "Environment photo removed.",
         "background_photo_delete_confirm": "Remove this environment photo?"
+    },
+    "reservations": {
+        "title": "Reserve",
+        "my_title": "My reservations",
+        "submit": "Request reservation",
+        "hold_hint": "You have :minutes minutes to confirm by email.",
+        "submitted": "Reservation requested — check your email to confirm.",
+        "cancelled": "Reservation cancelled.",
+        "cancel": "Cancel",
+        "manage": "Manage",
+        "cancel_confirm": "Cancel this reservation?",
+        "empty": "No reservations.",
+        "fields": {
+            "first_name": "First name",
+            "last_name": "Last name",
+            "email": "Email",
+            "start_at": "Start",
+            "end_at": "End"
+        }
     }
 }
-

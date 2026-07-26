@@ -33,7 +33,9 @@
         "issues": "Segnalazioni",
         "open_tasks": "Attività aperte",
         "announcements": "Annunci",
-        "documents": "Documenti"
+        "documents": "Documenti",
+        "reserve": "Prenota",
+        "my_reservations": "Le mie prenotazioni"
     },
     "report": {
         "title": "Crea una segnalazione",
@@ -218,5 +220,24 @@
         "background_photo_updated": "Foto ambiente salvata.",
         "background_photo_deleted": "Foto ambiente rimossa.",
         "background_photo_delete_confirm": "Rimuovere questa foto ambiente?"
+    },
+    "reservations": {
+        "title": "Prenota",
+        "my_title": "Le mie prenotazioni",
+        "submit": "Richiedi prenotazione",
+        "hold_hint": "Hai :minutes minuti per confermare via e-mail.",
+        "submitted": "Prenotazione richiesta — controlla l’e-mail per confermare.",
+        "cancelled": "Prenotazione annullata.",
+        "cancel": "Annulla",
+        "manage": "Gestisci",
+        "cancel_confirm": "Annullare questa prenotazione?",
+        "empty": "Nessuna prenotazione.",
+        "fields": {
+            "first_name": "Nome",
+            "last_name": "Cognome",
+            "email": "Email",
+            "start_at": "Inizio",
+            "end_at": "Fine"
+        }
     }
 }

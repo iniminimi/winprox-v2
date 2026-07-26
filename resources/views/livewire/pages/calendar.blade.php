@@ -41,6 +41,11 @@
                             wire:click="setEntryType('issues')">
                         {{ __('calendar.type.issues') }}
                     </button>
+                    <button type="button"
+                            class="btn btn--ghost btn--sm {{ $entryType === 'reservations' ? 'is-active' : '' }}"
+                            wire:click="setEntryType('reservations')">
+                        {{ __('calendar.type.reservations') }}
+                    </button>
                 </div>
             </div>
 
@@ -87,6 +92,11 @@
                                                 <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }} wp-pill--xs">{{ __($entry->status->labelKey()) }}</span>
                                                 <span class="wp-calendar-entry-title">{{ \Illuminate\Support\Str::limit($entry->localizedDescription(), 40) }}</span>
                                             </a>
+                                        @elseif ($entryType === 'reservations')
+                                            <a href="{{ route('reservations.index') }}" class="wp-calendar-entry">
+                                                <span class="wp-pill wp-pill--{{ $entry->lifecycle()->pillVariant() }} wp-pill--xs">{{ __('reservations.lifecycle.'.$entry->lifecycle()->value) }}</span>
+                                                <span class="wp-calendar-entry-title">{{ $entry->unit?->name }} · {{ $entry->start_at?->format('H:i') }}–{{ $entry->end_at?->format('H:i') }}</span>
+                                            </a>
                                         @else
                                             <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry">
                                                 <x-wp-ref-nr type="task" :id="$entry->id" class="wp-calendar-entry-nr" />
@@ -125,6 +135,11 @@
                                     <x-wp-ref-nr :id="$entry->id" />
                                     <span class="wp-pill wp-pill--{{ $entry->status->pillModifier() }}">{{ __($entry->status->labelKey()) }}</span>
                                     <span>{{ $entry->localizedDescription() }}</span>
+                                </a>
+                            @elseif ($entryType === 'reservations')
+                                <a href="{{ route('reservations.index') }}" class="wp-calendar-entry wp-calendar-entry--row">
+                                    <span class="wp-pill wp-pill--{{ $entry->lifecycle()->pillVariant() }}">{{ __('reservations.lifecycle.'.$entry->lifecycle()->value) }}</span>
+                                    <span>{{ $entry->unit?->name }} · {{ $entry->guestFullName() }} · {{ $entry->start_at?->format('H:i') }}–{{ $entry->end_at?->format('H:i') }}</span>
                                 </a>
                             @else
                                 <a href="{{ route('tasks.show', $entry) }}" class="wp-calendar-entry wp-calendar-entry--row">

@@ -136,6 +136,8 @@ class ApiSettings extends Component
                 'workers:read' => __('settings.api.ability_workers_read'),
                 'time:read' => __('settings.api.ability_time_read'),
                 'time:write' => __('settings.api.ability_time_write'),
+                'reservations:read' => __('settings.api.ability_reservations_read'),
+                'reservations:write' => __('settings.api.ability_reservations_write'),
                 'webhooks:manage' => __('settings.api.ability_webhooks_manage'),
                 '*' => __('settings.api.ability_all'),
             ],

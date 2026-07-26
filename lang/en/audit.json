@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Team leader changed",
         "worker.updated": "Worker updated",
         "workers.delete_import_batch": "Worker import batch deleted",
-        "workers.import": "Workers imported"
+        "workers.import": "Workers imported",
+        "reservation.created": "Reservation created",
+        "reservation.confirmed": "Reservation confirmed",
+        "reservation.updated": "Reservation updated",
+        "reservation.cancelled": "Reservation cancelled"
     }
 }

@@ -12,7 +12,8 @@
     },
     "type": {
         "tasks": "Tareas",
-        "issues": "Incidencias"
+        "issues": "Incidencias",
+        "reservations": "Reservas"
     },
     "period": {
         "week": "Semana :start – :end"

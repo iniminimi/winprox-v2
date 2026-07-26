@@ -275,6 +275,11 @@
                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
                 </label>
 
+                <label class="wp-check wp-check--boxed">
+                    <input type="checkbox" wire:model="unitAllowReservations">
+                    <span>{{ __('locations.units.fields.allow_reservations') }}</span>
+                </label>
+
                 @if ($editingUnitId && $this->editingUnit)
                     @php
                         $storedCount = $this->editingUnit?->qrLinkPhotos->count() ?? 0;

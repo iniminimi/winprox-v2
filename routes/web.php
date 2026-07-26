@@ -73,9 +73,12 @@ use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\ShiftsIndex;
+use App\Livewire\Public\ReservationConfirm;
+use App\Livewire\Public\ReservationManage;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
+use App\Livewire\Pages\ReservationsIndex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -99,6 +102,8 @@ Route::get('/q/{token}', QrController::class)->name('qr.scan');
 
 Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
 Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
+Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
+Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');
 
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
@@ -276,6 +281,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks', TaskIndex::class)->name('tasks.index');
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
+        Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');
         Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');

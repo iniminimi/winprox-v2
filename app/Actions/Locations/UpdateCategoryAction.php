@@ -10,13 +10,14 @@ class UpdateCategoryAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool}  $data
      */
     public function handle(Category $category, array $data, ?int $actorUserId = null): Category
     {
         $category->update([
             'name' => trim($data['name']),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
+            'is_reservable' => (bool) ($data['is_reservable'] ?? false),
         ]);
 
         $fresh = $category->fresh();
@@ -31,6 +32,7 @@ class UpdateCategoryAction
                 'id' => $fresh->id,
                 'name' => $fresh->name,
                 'allow_gps_location' => $fresh->allow_gps_location,
+                'is_reservable' => $fresh->is_reservable,
             ],
         );
 

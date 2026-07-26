@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\V1\TeamController;
 use App\Http\Controllers\Api\V1\TranslationController;
 use App\Http\Controllers\Api\V1\UnitController;
 use App\Http\Controllers\Api\V1\UnitGpsReportController;
+use App\Http\Controllers\Api\V1\ReservationController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Controllers\Api\V1\WorkShiftController;
 use App\Http\Middleware\CheckTokenAbilities;
@@ -96,6 +97,19 @@ Route::prefix('v1')->group(function () {
             Route::post('time/clock-out', [WorkShiftController::class, 'clockOut'])
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.clock-out');
+
+            Route::get('reservations', [ReservationController::class, 'index'])
+                ->middleware([CheckTokenAbilities::class.':reservations:read'])
+                ->name('api.v1.reservations.index');
+            Route::post('reservations', [ReservationController::class, 'store'])
+                ->middleware([CheckTokenAbilities::class.':reservations:write', 'idempotency'])
+                ->name('api.v1.reservations.store');
+            Route::patch('reservations/{reservation}', [ReservationController::class, 'update'])
+                ->middleware([CheckTokenAbilities::class.':reservations:write', 'idempotency'])
+                ->name('api.v1.reservations.update');
+            Route::delete('reservations/{reservation}', [ReservationController::class, 'destroy'])
+                ->middleware([CheckTokenAbilities::class.':reservations:write', 'idempotency'])
+                ->name('api.v1.reservations.destroy');
         });
 
         // Translation sync endpoints (superuser-only, authorized via UserPolicy::runTranslationSync)

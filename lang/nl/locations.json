@@ -100,7 +100,8 @@
             "name": "Unitnaam",
             "description": "Beschrijving",
             "category": "Categorie",
-            "public_reports_enabled": "Bezoekers kunnen een melding maken via QR-portaal"
+            "public_reports_enabled": "Bezoekers kunnen een melding maken via QR-portaal",
+            "allow_reservations": "Reserveringen toestaan"
         },
         "translation_preview": "Vertaling (portaal)",
         "edit": {
@@ -199,7 +200,8 @@
         "fields": {
             "name": "Categorienaam",
             "teams": "Teams",
-            "allow_gps_location": "GPS-locatie toestaan"
+            "allow_gps_location": "GPS-locatie toestaan",
+            "is_reservable": "Reserveerbaar"
         },
         "allow_gps_location_hint": "Sta toe dat de GPS-locatie van units in deze categorie via het portaal wordt doorgegeven.",
         "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
@@ -213,7 +215,8 @@
             "created": "Categorie aangemaakt.",
             "updated": "Categorie bijgewerkt.",
             "deleted": "Categorie verwijderd."
-        }
+        },
+        "is_reservable_hint": "Schakel reserveringen in voor alle units in deze categorie (vergaderzaal, voertuig, …)."
     },
     "errors": {
         "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",

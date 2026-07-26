@@ -1,0 +1,53 @@
+{
+    "title": "Réservations",
+    "subtitle": "Salles de réunion, véhicules et autres unités réservables.",
+    "empty": "Aucune réservation à venir.",
+    "columns": {
+        "when": "Quand",
+        "unit": "Unité",
+        "guest": "Invité",
+        "status": "Statut"
+    },
+    "fields": {
+        "unit": "Unité",
+        "unit_placeholder": "Choisir une unité",
+        "first_name": "Prénom",
+        "last_name": "Nom",
+        "email": "E-mail",
+        "start_at": "Début",
+        "end_at": "Fin"
+    },
+    "actions": {
+        "create": "Nouvelle réservation",
+        "edit": "Modifier la réservation",
+        "cancel": "Annuler"
+    },
+    "lifecycle": {
+        "pending": "En attente de confirmation",
+        "confirmed": "Confirmée",
+        "cancelled": "Annulée",
+        "expired": "Expirée"
+    },
+    "public": {
+        "confirm_title": "Confirmer la réservation",
+        "manage_title": "Gérer la réservation",
+        "confirm_ok": "Votre réservation est confirmée.",
+        "confirm_failed": "Échec de la confirmation.",
+        "open_manage": "Ouvrir la gestion",
+        "updated": "Réservation mise à jour.",
+        "cancelled": "Réservation annulée.",
+        "cancel_confirm": "Annuler cette réservation ?"
+    },
+    "errors": {
+        "unit_not_reservable": "Cette unité n’est pas réservable.",
+        "end_after_start": "La fin doit être après le début.",
+        "start_in_past": "Le début ne peut pas être dans le passé.",
+        "min_duration": "Durée minimale : 15 minutes.",
+        "max_duration": "Durée maximale : 24 heures.",
+        "overlap": "Ce créneau est déjà pris.",
+        "already_cancelled": "Cette réservation est déjà annulée.",
+        "hold_expired": "Le délai de confirmation de 30 minutes a expiré.",
+        "not_editable": "Cette réservation ne peut plus être modifiée.",
+        "not_cancellable": "Cette réservation ne peut plus être annulée."
+    }
+}

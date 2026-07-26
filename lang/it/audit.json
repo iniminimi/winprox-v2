@@ -112,6 +112,10 @@
         "worker.teamleader_changed": "Caposquadra modificato",
         "worker.updated": "Operatore aggiornato",
         "workers.delete_import_batch": "Batch import operatori eliminato",
-        "workers.import": "Operatori importati"
+        "workers.import": "Operatori importati",
+        "reservation.created": "Prenotazione creata",
+        "reservation.confirmed": "Prenotazione confermata",
+        "reservation.updated": "Prenotazione aggiornata",
+        "reservation.cancelled": "Prenotazione annullata"
     }
 }

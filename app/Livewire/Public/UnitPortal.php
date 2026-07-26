@@ -7,6 +7,8 @@ use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
 use App\Actions\Portal\MarkTeamTasksSeenInBaselineAction;
 use App\Actions\Public\RecordUnitPortalVisitAction;
 use App\Actions\Public\SubmitReportAction;
+use App\Actions\Reservations\CancelReservationAction;
+use App\Actions\Reservations\CreateReservationAction;
 use App\Exceptions\Public\PublicReportRateLimitExceededException;
 use App\Actions\Time\ResolveDefaultClockPointAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
@@ -15,6 +17,7 @@ use App\Actions\Units\RecordUnitGpsReportAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
+use App\Data\Reservations\ReservationBookingData;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
@@ -22,13 +25,16 @@ use App\Http\Requests\Public\ReportIssueRequest;
 use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
 use App\Http\Requests\Public\UploadUnitBackgroundPhotoRequest;
 use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
+use App\Http\Requests\Reservations\StoreReservationRequest;
 use App\Data\Units\RecordUnitGpsReportData;
 use App\Http\Requests\Units\RecordUnitGpsReportRequest;
+use App\Models\Reservation;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\PortalAccess;
+use App\Support\Portal\ReservationGuestSession;
 use App\Support\Portal\UnitPortalData;
 use App\Support\Portal\UnitSignInPhase;
 use App\Support\Portal\WorkerDeviceSession;
@@ -38,7 +44,9 @@ use App\Support\Portal\WorkerVerification;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -102,6 +110,12 @@ class UnitPortal extends Component
     public ?float $gpsLatitude = null;
     public ?float $gpsLongitude = null;
     public ?string $gpsReportedAt = null;
+
+    public string $reserveFirstName = '';
+    public string $reserveLastName = '';
+    public string $reserveEmail = '';
+    public string $reserveStartAt = '';
+    public string $reserveEndAt = '';
 
     public function mount(string $token, RecordUnitPortalVisitAction $recordVisit): void
     {
@@ -178,7 +192,11 @@ class UnitPortal extends Component
             return;
         }
 
-        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements'], true)) {
+        if ($section === 'reserve' && ! $this->unit()->isReservable()) {
+            return;
+        }
+
+        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations'], true)) {
             return;
         }
 
@@ -192,6 +210,26 @@ class UnitPortal extends Component
         if ($section === 'new') {
             $this->dispatch('wp-prepare-photo-inputs');
         }
+
+        if ($section === 'reserve') {
+            $this->prefillReservationGuest();
+        }
+    }
+
+    private function prefillReservationGuest(): void
+    {
+        if ($this->reserveFirstName !== '' || $this->reserveLastName !== '' || $this->reserveEmail !== '') {
+            return;
+        }
+
+        $guest = ReservationGuestSession::read();
+        if ($guest === null) {
+            return;
+        }
+
+        $this->reserveFirstName = $guest['first_name'];
+        $this->reserveLastName = $guest['last_name'];
+        $this->reserveEmail = $guest['email'];
     }
 
     public function openIssueDetail(int $issueId): void
@@ -272,6 +310,123 @@ class UnitPortal extends Component
         }
 
         return __('portal.report.errors.rate_limited', ['minutes' => $minutes, 'max' => $exception->maxAttempts]);
+    }
+
+    public function submitReservation(CreateReservationAction $createReservation): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        $unit = $this->unit();
+        if (! $unit->isReservable()) {
+            return;
+        }
+
+        $payload = [
+            'guest_first_name' => trim($this->reserveFirstName),
+            'guest_last_name' => trim($this->reserveLastName),
+            'guest_email' => trim($this->reserveEmail),
+            'start_at' => $this->reserveStartAt,
+            'end_at' => $this->reserveEndAt,
+        ];
+
+        $validator = Validator::make($payload, StoreReservationRequest::ruleSet());
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->getMessages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($this->reservationFieldName($field), $message);
+                }
+            }
+
+            return;
+        }
+
+        $validated = $validator->validated();
+        $worker = $this->authorizedWorker();
+
+        try {
+            $createReservation->handle($unit, ReservationBookingData::fromValidated(
+                $validated,
+                autoConfirm: false,
+                createdByUserId: null,
+                workerId: $worker?->id,
+            ));
+        } catch (ValidationException $e) {
+            foreach ($e->errors() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($this->reservationFieldName($field), $message);
+                }
+            }
+
+            return;
+        }
+
+        ReservationGuestSession::remember(
+            (string) $validated['guest_first_name'],
+            (string) $validated['guest_last_name'],
+            (string) $validated['guest_email'],
+        );
+
+        $this->reset(['reserveStartAt', 'reserveEndAt']);
+        $this->flashMessage = __('portal.reservations.submitted');
+        $this->portalSection = 'my_reservations';
+    }
+
+    public function cancelMyReservation(int $reservationId, CancelReservationAction $cancelReservation): void
+    {
+        $guest = ReservationGuestSession::read();
+        if ($guest === null) {
+            return;
+        }
+
+        $reservation = Reservation::query()
+            ->where('unit_id', $this->unitId)
+            ->where('guest_email', $guest['email'])
+            ->find($reservationId);
+
+        if ($reservation === null) {
+            return;
+        }
+
+        try {
+            $cancelReservation->handle($reservation);
+            $this->flashMessage = __('portal.reservations.cancelled');
+        } catch (ValidationException) {
+            // Already cancelled/not cancellable — ignore silently, list will reflect current state.
+        }
+    }
+
+    private function reservationFieldName(string $field): string
+    {
+        return match ($field) {
+            'guest_first_name' => 'reserveFirstName',
+            'guest_last_name' => 'reserveLastName',
+            'guest_email' => 'reserveEmail',
+            'start_at', 'unit_id' => 'reserveStartAt',
+            'end_at' => 'reserveEndAt',
+            default => 'reserveStartAt',
+        };
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, Reservation>
+     */
+    private function guestReservationsForUnit(): \Illuminate\Support\Collection
+    {
+        $guest = ReservationGuestSession::read();
+        if ($guest === null) {
+            return collect();
+        }
+
+        return Reservation::query()
+            ->where('unit_id', $this->unitId)
+            ->where('guest_email', $guest['email'])
+            ->whereNull('cancelled_at')
+            ->where('end_at', '>=', now())
+            ->orderBy('start_at')
+            ->get();
     }
 
     public function identifyWorker(): void
@@ -737,6 +892,12 @@ class UnitPortal extends Component
         $openTaskCount = 0;
         $newTeamTasksCount = 0;
         $clockPointPortalUrl = null;
+        $isReservable = $unit->isReservable();
+        $guestReservations = collect();
+
+        if ($isReservable && in_array($this->portalSection, ['home', 'my_reservations'], true)) {
+            $guestReservations = $this->guestReservationsForUnit();
+        }
 
         if ($this->inactiveReasonKey === null) {
             if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
@@ -809,6 +970,8 @@ class UnitPortal extends Component
             'unitBackgroundUrl' => $unit->backgroundPhotoPublicUrl(),
             'newTeamTasksCount' => $newTeamTasksCount,
             'clockPointPortalUrl' => $clockPointPortalUrl,
+            'isReservable' => $isReservable,
+            'guestReservations' => $guestReservations,
         ])->layout('components.layouts.public', [
             'portalBgUrl' => $unit->backgroundPhotoPublicUrl(),
             'title' => 'WinProx',

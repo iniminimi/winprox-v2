@@ -10,7 +10,7 @@ class CreateCategoryAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -18,6 +18,7 @@ class CreateCategoryAction
             'tenant_id' => $tenantId,
             'name' => trim($data['name']),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
+            'is_reservable' => (bool) ($data['is_reservable'] ?? false),
         ]);
 
         $this->audit->record(
@@ -30,6 +31,7 @@ class CreateCategoryAction
                 'id' => $category->id,
                 'name' => $category->name,
                 'allow_gps_location' => $category->allow_gps_location,
+                'is_reservable' => $category->is_reservable,
             ],
         );
 

@@ -1,0 +1,53 @@
+{
+    "title": "Reserveringen",
+    "subtitle": "Vergaderzalen, voertuigen en andere reserveerbare units.",
+    "empty": "Geen aankomende reserveringen.",
+    "columns": {
+        "when": "Wanneer",
+        "unit": "Unit",
+        "guest": "Gast",
+        "status": "Status"
+    },
+    "fields": {
+        "unit": "Unit",
+        "unit_placeholder": "Kies een unit",
+        "first_name": "Voornaam",
+        "last_name": "Achternaam",
+        "email": "E-mail",
+        "start_at": "Start",
+        "end_at": "Einde"
+    },
+    "actions": {
+        "create": "Nieuwe reservering",
+        "edit": "Reservering wijzigen",
+        "cancel": "Annuleren"
+    },
+    "lifecycle": {
+        "pending": "Wacht op bevestiging",
+        "confirmed": "Bevestigd",
+        "cancelled": "Geannuleerd",
+        "expired": "Verlopen"
+    },
+    "public": {
+        "confirm_title": "Reservering bevestigen",
+        "manage_title": "Reservering beheren",
+        "confirm_ok": "Je reservering is bevestigd.",
+        "confirm_failed": "Bevestigen mislukt.",
+        "open_manage": "Beheer openen",
+        "updated": "Reservering bijgewerkt.",
+        "cancelled": "Reservering geannuleerd.",
+        "cancel_confirm": "Deze reservering annuleren?"
+    },
+    "errors": {
+        "unit_not_reservable": "Deze unit is niet reserveerbaar.",
+        "end_after_start": "Eindtijd moet na starttijd liggen.",
+        "start_in_past": "Starttijd mag niet in het verleden liggen.",
+        "min_duration": "Minimale duur is 15 minuten.",
+        "max_duration": "Maximale duur is 24 uur.",
+        "overlap": "Dit tijdslot is al bezet.",
+        "already_cancelled": "Deze reservering is al geannuleerd.",
+        "hold_expired": "De bevestigingstermijn van 30 minuten is verlopen.",
+        "not_editable": "Deze reservering kan niet meer worden gewijzigd.",
+        "not_cancellable": "Deze reservering kan niet meer worden geannuleerd."
+    }
+}
