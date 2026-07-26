@@ -123,52 +123,66 @@
     </div>
 
     @if ($showForm)
-        <x-wp-modal closeMethod="closeForm">
-            <x-slot:title>
-                {{ $editingId ? __('reservations.actions.edit') : __('reservations.actions.create') }}
-            </x-slot:title>
-            <form wire:submit="save" class="wp-stack">
-                @if ($editingId === null)
+        <x-wp-modal closeMethod="closeForm" aria-labelledby="reservation-form-title">
+            <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="reservation-form-title" class="wp-section-title">
+                        {{ $editingId ? __('reservations.actions.edit') : __('reservations.actions.create') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeForm" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    @if ($editingId === null)
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('reservations.fields.unit') }}</span>
+                            <select class="wp-select" wire:model="unitId">
+                                <option value="">{{ __('reservations.fields.unit_placeholder') }}</option>
+                                @foreach ($units as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->location?->name }} · {{ $unit->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('unit_id') <p class="wp-error">{{ $message }}</p> @enderror
+                        </label>
+                        <p class="wp-hint">{{ __('reservations.form.staff_hint') }}</p>
+                    @endif
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('reservations.fields.first_name') }}</span>
+                            <input type="text" class="wp-input" wire:model="guestFirstName">
+                            @error('guest_first_name') <p class="wp-error">{{ $message }}</p> @enderror
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('reservations.fields.last_name') }}</span>
+                            <input type="text" class="wp-input" wire:model="guestLastName">
+                            @error('guest_last_name') <p class="wp-error">{{ $message }}</p> @enderror
+                        </label>
+                    </div>
                     <label class="wp-field">
-                        <span>{{ __('reservations.fields.unit') }}</span>
-                        <select class="wp-select" wire:model="unitId">
-                            <option value="">{{ __('reservations.fields.unit_placeholder') }}</option>
-                            @foreach ($units as $unit)
-                                <option value="{{ $unit->id }}">{{ $unit->location?->name }} · {{ $unit->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('unit_id') <p class="wp-error">{{ $message }}</p> @enderror
+                        <span class="wp-label">{{ __('reservations.fields.email') }}</span>
+                        <input type="email" class="wp-input" wire:model="guestEmail">
+                        @error('guest_email') <p class="wp-error">{{ $message }}</p> @enderror
                     </label>
-                    <p class="wp-hint">{{ __('reservations.form.staff_hint') }}</p>
-                @endif
-                <label class="wp-field">
-                    <span>{{ __('reservations.fields.first_name') }}</span>
-                    <input type="text" class="wp-input" wire:model="guestFirstName">
-                    @error('guest_first_name') <p class="wp-error">{{ $message }}</p> @enderror
-                </label>
-                <label class="wp-field">
-                    <span>{{ __('reservations.fields.last_name') }}</span>
-                    <input type="text" class="wp-input" wire:model="guestLastName">
-                    @error('guest_last_name') <p class="wp-error">{{ $message }}</p> @enderror
-                </label>
-                <label class="wp-field">
-                    <span>{{ __('reservations.fields.email') }}</span>
-                    <input type="email" class="wp-input" wire:model="guestEmail">
-                    @error('guest_email') <p class="wp-error">{{ $message }}</p> @enderror
-                </label>
-                <label class="wp-field">
-                    <span>{{ __('reservations.fields.start_at') }}</span>
-                    <input type="datetime-local" class="wp-input" wire:model="startAt">
-                    @error('start_at') <p class="wp-error">{{ $message }}</p> @enderror
-                </label>
-                <label class="wp-field">
-                    <span>{{ __('reservations.fields.end_at') }}</span>
-                    <input type="datetime-local" class="wp-input" wire:model="endAt">
-                    @error('end_at') <p class="wp-error">{{ $message }}</p> @enderror
-                </label>
-                <div class="wp-cluster">
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('reservations.fields.start_at') }}</span>
+                            <input type="datetime-local" class="wp-input" wire:model="startAt">
+                            @error('start_at') <p class="wp-error">{{ $message }}</p> @enderror
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('reservations.fields.end_at') }}</span>
+                            <input type="datetime-local" class="wp-input" wire:model="endAt">
+                            @error('end_at') <p class="wp-error">{{ $message }}</p> @enderror
+                        </label>
+                    </div>
+                </div>
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeForm">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="save">
+                        <span wire:loading wire:target="save" class="wp-mr-2">
+                            <x-wp-spinner size="sm" />
+                        </span>
+                        <span>{{ __('common.button.save') }}</span>
+                    </button>
                 </div>
             </form>
         </x-wp-modal>
