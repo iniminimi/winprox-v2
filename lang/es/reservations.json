@@ -21,7 +21,8 @@
         "create": "Nueva reserva",
         "edit": "Editar reserva",
         "cancel": "Cancelar",
-        "open_calendar": "Abrir calendario"
+        "open_calendar": "Abrir calendario",
+        "resend_confirm": "Reenviar correo de confirmación"
     },
     "lifecycle": {
         "pending": "Pendiente de confirmación",
@@ -77,5 +78,8 @@
     },
     "form": {
         "staff_hint": "Las reservas que cree aquí se confirman de inmediato (sin retención de 30 minutos por correo)."
+    },
+    "flash": {
+        "confirm_resent": "Correo de confirmación reenviado."
     }
 }

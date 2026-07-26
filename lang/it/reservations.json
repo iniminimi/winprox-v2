@@ -21,7 +21,8 @@
         "create": "Nuova prenotazione",
         "edit": "Modifica prenotazione",
         "cancel": "Annulla",
-        "open_calendar": "Apri calendario"
+        "open_calendar": "Apri calendario",
+        "resend_confirm": "Reinvia e-mail di conferma"
     },
     "lifecycle": {
         "pending": "In attesa di conferma",
@@ -77,5 +78,8 @@
     },
     "form": {
         "staff_hint": "Le prenotazioni create qui sono confermate subito (nessun hold e-mail di 30 minuti)."
+    },
+    "flash": {
+        "confirm_resent": "E-mail di conferma reinviata."
     }
 }

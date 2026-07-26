@@ -2,15 +2,14 @@
 
 namespace App\Actions\Reservations;
 
-use App\Events\Reservations\ReservationConfirmed;
-use App\Mail\ReservationManageMail;
+use App\Mail\ReservationConfirmMail;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 
-class ConfirmReservationAction
+class ResendReservationConfirmMailAction
 {
-    public function handle(Reservation $reservation, ?int $actorUserId = null): Reservation
+    public function handle(Reservation $reservation): Reservation
     {
         if ($reservation->cancelled_at !== null) {
             throw ValidationException::withMessages([
@@ -19,6 +18,10 @@ class ConfirmReservationAction
         }
 
         if ($reservation->confirmed_at !== null) {
+            Mail::to($reservation->guest_email)->send(
+                new ReservationConfirmMail($reservation, alreadyConfirmed: true)
+            );
+
             return $reservation;
         }
 
@@ -28,15 +31,10 @@ class ConfirmReservationAction
             ]);
         }
 
-        $reservation->forceFill([
-            'confirmed_at' => now(),
-            'expires_at' => null,
-        ])->save();
+        Mail::to($reservation->guest_email)->send(
+            new ReservationConfirmMail($reservation, alreadyConfirmed: false)
+        );
 
-        event(new ReservationConfirmed($reservation, $actorUserId));
-
-        Mail::to($reservation->guest_email)->send(new ReservationManageMail($reservation));
-
-        return $reservation->refresh();
+        return $reservation;
     }
 }

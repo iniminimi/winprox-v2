@@ -3,21 +3,20 @@
 namespace App\Mail;
 
 use App\Models\Reservation;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 
-class ReservationManageMail extends Mailable implements ShouldQueue
+class ReservationManageMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use SerializesModels;
 
     public function __construct(public Reservation $reservation)
     {
         $this->locale((string) config('locales.default', 'nl'));
+        $this->reservation->loadMissing(['unit.location', 'tenant']);
     }
 
     public function envelope(): Envelope
@@ -27,8 +26,6 @@ class ReservationManageMail extends Mailable implements ShouldQueue
 
     public function content(): Content
     {
-        $this->reservation->loadMissing(['unit.location']);
-
         $manageUrl = URL::route('reservations.manage', ['token' => $this->reservation->manage_token], true);
         $when = $this->reservation->start_at?->timezone(config('app.timezone'))->format('d-m-Y H:i')
             .' – '.$this->reservation->end_at?->timezone(config('app.timezone'))->format('H:i');
@@ -36,6 +33,7 @@ class ReservationManageMail extends Mailable implements ShouldQueue
         return new Content(
             html: 'emails.contact.winprox-template',
             with: [
+                'recipientName' => null,
                 'bodyText' => '',
                 'bodyHtml' => view('emails.reservations.manage-body', [
                     'guestName' => $this->reservation->guestFullName(),

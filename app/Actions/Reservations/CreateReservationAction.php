@@ -42,7 +42,8 @@ class CreateReservationAction
 
         event(new ReservationCreated($reservation, $data->createdByUserId));
 
-        Mail::to($reservation->guest_email)->queue(
+        // Synchroon: 30-min bevestigingshold mag niet op een trage/falende queue wachten.
+        Mail::to($reservation->guest_email)->send(
             new ReservationConfirmMail($reservation, alreadyConfirmed: $autoConfirm)
         );
 

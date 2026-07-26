@@ -18,6 +18,10 @@
         </div>
     </div>
 
+    @if (session('reservations_flash'))
+        <div class="wp-flash wp-flash--success">{{ session('reservations_flash') }}</div>
+    @endif
+
     @if ($reservableUnitCount === 0)
         <div class="wp-card wp-card-pad wp-stack-tight">
             <p class="wp-section-title">{{ __('reservations.setup.title') }}</p>
@@ -76,6 +80,11 @@
                     </div>
                     <div class="wp-cluster">
                         @can('update', $reservation)
+                            @if ($reservation->isPendingActive())
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="resendConfirmMail({{ $reservation->id }})">
+                                    {{ __('reservations.actions.resend_confirm') }}
+                                </button>
+                            @endif
                             @if ($reservation->isEditable())
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $reservation->id }})">
                                     {{ __('common.button.edit') }}

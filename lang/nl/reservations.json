@@ -21,7 +21,8 @@
         "create": "Nieuwe reservering",
         "edit": "Reservering wijzigen",
         "cancel": "Annuleren",
-        "open_calendar": "Kalender openen"
+        "open_calendar": "Kalender openen",
+        "resend_confirm": "Bevestigingsmail opnieuw sturen"
     },
     "lifecycle": {
         "pending": "Wacht op bevestiging",
@@ -77,5 +78,8 @@
     },
     "form": {
         "staff_hint": "Reserveringen die je hier aanmaakt zijn meteen bevestigd (geen e-mailhold van 30 minuten)."
+    },
+    "flash": {
+        "confirm_resent": "Bevestigingsmail opnieuw verzonden."
     }
 }

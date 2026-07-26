@@ -167,7 +167,27 @@ it('laat staff een bevestigde reservering aanmaken en annuleren', function () {
         ->assertOk();
 });
 
-it('toont manage-pagina via token', function () {
+it('stuurt bevestigingsmail synchroon bij pending reservering', function () {
+    Mail::fake();
+    [, , $unit] = reservationFixture();
+    [$start, $end] = reservationWindow();
+
+    app(CreateReservationAction::class)->handle(
+        $unit,
+        ReservationBookingData::fromValidated([
+            'guest_first_name' => 'Ada',
+            'guest_last_name' => 'Lovelace',
+            'guest_email' => 'ada@example.com',
+            'start_at' => $start,
+            'end_at' => $end,
+        ]),
+    );
+
+    Mail::assertSent(\App\Mail\ReservationConfirmMail::class, function ($mail) {
+        return $mail->hasTo('ada@example.com') && $mail->alreadyConfirmed === false;
+    });
+});
+
     Mail::fake();
     [, , $unit] = reservationFixture();
     [$start, $end] = reservationWindow();

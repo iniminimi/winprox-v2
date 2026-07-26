@@ -4,6 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\CreateReservationAction;
+use App\Actions\Reservations\ResendReservationConfirmMailAction;
 use App\Actions\Reservations\UpdateReservationAction;
 use App\Data\Reservations\ReservationBookingData;
 use App\Http\Requests\Reservations\StoreReservationRequest;
@@ -166,6 +167,14 @@ class ReservationsIndex extends Component
         $reservation = Reservation::query()->findOrFail($reservationId);
         $this->authorize('delete', $reservation);
         $cancelReservation->handle($reservation, (int) auth()->id());
+    }
+
+    public function resendConfirmMail(int $reservationId, ResendReservationConfirmMailAction $resendConfirmMail): void
+    {
+        $reservation = Reservation::query()->findOrFail($reservationId);
+        $this->authorize('update', $reservation);
+        $resendConfirmMail->handle($reservation);
+        session()->flash('reservations_flash', __('reservations.flash.confirm_resent'));
     }
 
     public function render()
