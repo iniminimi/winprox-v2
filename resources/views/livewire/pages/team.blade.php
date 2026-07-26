@@ -64,15 +64,9 @@
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
                 <div class="wp-cluster">
-                    @if ($hasTimeModule)
-                        <a href="{{ route('time.clock-points.index') }}" class="btn btn--ghost btn--sm">
-                            {{ __('team.clock_point_qr.button') }}
-                        </a>
-                    @else
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openClockPointQr">
-                            {{ __('team.clock_point_qr.button') }}
-                        </button>
-                    @endif
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openClockPointQr">
+                        {{ __('team.clock_point_qr.button') }}
+                    </button>
                     @if ($canImportWorkers ?? false)
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openWorkerImportModal">
                             {{ __('team.workers.import') }}

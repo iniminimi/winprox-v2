@@ -3,6 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\CreateClockPointAction;
+use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Actions\Time\RenewClockPointQrAction;
 use App\Actions\Time\SetClockPointActiveAction;
 use App\Actions\Time\UpdateClockPointAction;
@@ -34,13 +35,21 @@ class ClockPointsIndex extends Component
     public int $sortOrder = 0;
     public ?int $qrRotationMonths = null;
 
-    public function mount(): void
+    public function mount(EnsureDefaultClockPointAction $ensureDefaultClockPoint): void
     {
         $this->authorize('viewAny', ClockPoint::class);
 
         $tenant = Tenant::query()->find(Tenancy::id());
         $this->qrRotationMonths = $tenant?->time_qr_rotation_months
             ?? $tenant?->effectiveTimeQrRotationMonths();
+
+        if ($tenant !== null) {
+            $ensureDefaultClockPoint->handle(
+                $tenant,
+                __('team.clock_point_qr.default_name'),
+                auth()->id(),
+            );
+        }
     }
 
     public function openCreate(): void

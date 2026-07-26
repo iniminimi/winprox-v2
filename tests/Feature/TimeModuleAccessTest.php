@@ -21,7 +21,7 @@ it('verbergt time-navigatie zonder time-module', function () {
     $this->actingAs($admin)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertDontSee(__('common.nav.time'), false);
+        ->assertDontSee('href="'.route('time.presence.index').'"', false);
 });
 
 it('weigert time-beheerschermen zonder time-module', function () {
@@ -66,14 +66,43 @@ it('maakt een default clock point aan via de teams-knop zonder time-module', fun
     expect(ClockPoint::query()->count())->toBe(1);
 });
 
-it('linkt de teams-knop naar clock points met time-module', function () {
+it('opent via de teams-knop altijd de default clock point QR (ook met time-module)', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
-    $this->actingAs($admin)
-        ->get(route('team.index'))
-        ->assertOk()
-        ->assertSee(route('time.clock-points.index'), false);
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openClockPointQr')
+        ->assertRedirect(route('time.clock-points.qr', ClockPoint::query()->first()));
+
+    expect(ClockPoint::query()->count())->toBe(1)
+        ->and(ClockPoint::query()->first()?->name)->toBe(__('team.clock_point_qr.default_name'));
+});
+
+it('maakt een default clock point bij het openen van clock points-beheer', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    expect(ClockPoint::query()->count())->toBe(0);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Time\ClockPointsIndex::class)
+        ->assertOk();
+
+    expect(ClockPoint::query()->count())->toBe(1);
+});
+
+it('maakt een default clock point bij inschakelen van de time-module', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => false]);
+    Tenancy::actAs($tenant->id);
+
+    app(\App\Actions\Platform\ToggleTimeModuleAction::class)->handle($tenant, null);
+
+    expect($tenant->fresh()->has_time_module)->toBeTrue()
+        ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
 });
 
 it('weigert inklokken zonder time-module', function () {
