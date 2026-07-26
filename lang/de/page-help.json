@@ -188,11 +188,11 @@
                     "text": "Erstellen Sie schnell Dutzende Units (wie Zimmer, Etagen oder aufeinanderfolgende Assets) gleichzeitig innerhalb einer logischen Nummerierungsreihe. Anzahl Reihen: geben Sie an, wie viele Reihen (z.B. Etagen oder Zonen) Sie auf einmal generieren möchten. Units pro Reihe: bestimmen Sie die Anzahl spezifischer Einheiten (z.B. Zimmer oder Geräte), die pro Reihe erstellt werden sollen. Nummerierung: Wählen Sie die Struktur der Nummerierung (z.B. Schritte von 10 wie 01, 11, 21 oder fortlaufend). Das dynamische Vorschauvorschau unten zeigt sofort, wie die Units benannt werden. Optionales Präfix: Fügen Sie festen Text vor der Nummer hinzu (z.B. ZIMMER- oder ZONE-), damit Units sofort erkennbar sind (z.B. ZIMMER-01). Kategorie: Verknüpfen Sie die neu generierte Reihe direkt mit einer bestimmten Kategorie (z.B. Sanitär oder Büro), um die Units sofort richtig zu organisieren."
                 },
                 {
-                    "label": "Units per CSV importieren",
-                    "text": "Importieren Sie Units für diesen Standort per CSV. Pflicht: unit_name. Optional: description, category_name. Standortspalten sind nicht nötig — alles landet auf diesem Standort. Bei falschen Headern oder fehlenden Pflichtfeldern wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
+                    "label": "Units importieren",
+                    "text": "Importieren Sie Units für diesen Standort per CSV oder Excel (.xlsx). Pflicht: unit_name. Optional: description, category_name. Standortspalten sind nicht nötig — alles landet auf diesem Standort. Bei falschen Headern oder fehlenden Pflichtfeldern wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Kategorien werden automatisch erstellt, wenn sie noch nicht existieren."
                 },
                 {
-                    "label": "Letzte CSV-Imports",
+                    "label": "Letzte Imports",
                     "text": "Nach einem Import erscheint eine Übersicht der letzten Imports (30 Tage) für diesen Standort. Pro Import sehen Sie Dateiname, Datum und Unit-Anzahl. Klicken Sie auf Import rückgängig machen, um Units ohne Meldungen oder Aufgaben zu entfernen. Leere nur durch den Import erstellte Kategorien werden aufgeräumt. Der Standort selbst bleibt erhalten."
                 },
                 {

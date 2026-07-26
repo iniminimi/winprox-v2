@@ -5,11 +5,11 @@
     "default_name": "Locatie",
     "add": "+ Nieuwe locatie toevoegen",
     "units_csv": {
-        "button": "CSV units importeren",
-        "title": "Units importeren via CSV",
-        "hint": "Importeer units voor :location. Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn hier niet nodig.",
+        "button": "Units importeren",
+        "title": "Units importeren (CSV / Excel)",
+        "hint": "Importeer units voor :location via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn hier niet nodig.",
         "errors": {
-            "file_required": "Kies een CSV-bestand.",
+            "file_required": "Kies een CSV- of Excel-bestand (.xlsx).",
             "failed": "Import mislukt.",
             "location_not_found": "Locatie niet gevonden.",
             "unreadable": "CSV-bestand kon niet worden gelezen.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Onbekende kolommen: :columns",
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
-            "database": "Databasefout: :message"
+            "database": "Databasefout: :message",
+            "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx)."
         }
     },
-    "import_file_label": "CSV-bestand",
+    "import_file_label": "CSV- of Excel-bestand (.xlsx)",
     "import_submit": "Importeren",
     "import_submit_loading": "Bezig met importeren...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Recente CSV-imports",
+        "title": "Recente imports",
         "hint": "Ongedaan maken verwijdert units zonder melding of taak. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden.",
         "unknown_file": "Onbekend bestand",
         "unit_count": ":count units",

@@ -188,11 +188,11 @@
                     "text": "Maak snel tientallen units (zoals kamers, verdiepingen of opeenvolgende assets) tegelijkertijd aan binnen een logische nummeringsreeks. Aantal reeksen : geef aan hoeveel reeksen (bijv. verdiepingen of zones) je in één keer wilt genereren. Units per reeks : bepaal het aantal specifieke eenheden (bijv. kamers of apparaten) dat per reeks moet worden aangemaakt. Nummering : Kies de structuur van de nummering (bijv. stappen van 10 zoals 01, 11, 21 of doorlopend). Het dynamische voorbeeldvak onderaan toont direct hoe de units worden genoemd. Optionele prefix : Voeg een vaste tekst toe vóór het nummer (bijv. KAMER- of ZONE-), zodat units direct herkenbaar zijn (bijv. KAMER-01). Categorie : Koppel de nieuw gegenereerde reeks direct aan een specifieke categorie (bijv. Sanitair of Kantoor) om de units meteen juist te organiseren."
                 },
                 {
-                    "label": "CSV units importeren",
-                    "text": "Importeer units voor deze locatie via CSV. Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn niet nodig — alles komt op deze locatie. Bij foute headers of ontbrekende velden wordt de hele import geweigerd met een foutmelding per rij. Categorieën worden automatisch aangemaakt als ze nog niet bestaan."
+                    "label": "Units importeren",
+                    "text": "Importeer units voor deze locatie via CSV of Excel (.xlsx). Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn niet nodig — alles komt op deze locatie. Bij foute headers of ontbrekende velden wordt de hele import geweigerd met een foutmelding per rij. Categorieën worden automatisch aangemaakt als ze nog niet bestaan."
                 },
                 {
-                    "label": "Recente CSV-imports",
+                    "label": "Recente imports",
                     "text": "Na een import verschijnt een overzicht van recente imports (30 dagen) voor deze locatie. Per import zie je bestandsnaam, datum en aantal units. Klik op Import terugdraaien om units zonder melding of taak te verwijderen. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden."
                 },
                 {

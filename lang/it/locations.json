@@ -5,11 +5,11 @@
     "default_name": "Sede",
     "add": "+ Aggiungi nuova sede",
     "units_csv": {
-        "button": "Importa unità CSV",
-        "title": "Importa unità via CSV",
-        "hint": "Importi unità per :location. Obbligatorio: unit_name. Opzionale: description, category_name. Qui non servono colonne della sede.",
+        "button": "Importa unità",
+        "title": "Importa unità (CSV / Excel)",
+        "hint": "Importi unità per :location via CSV o Excel (.xlsx). Obbligatorio: unit_name. Opzionale: description, category_name. Qui non servono colonne della sede.",
         "errors": {
-            "file_required": "Scelga un file CSV.",
+            "file_required": "Scelga un file CSV o Excel (.xlsx).",
             "failed": "Importazione non riuscita.",
             "location_not_found": "Sede non trovata.",
             "unreadable": "Impossibile leggere il file CSV.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Colonne sconosciute: :columns",
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
-            "database": "Errore database: :message"
+            "database": "Errore database: :message",
+            "unsupported_format": "Formato file non valido. Usi CSV o Excel (.xlsx)."
         }
     },
-    "import_file_label": "File CSV",
+    "import_file_label": "File CSV o Excel (.xlsx)",
     "import_submit": "Importa",
     "import_submit_loading": "Importazione in corso...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Importazioni CSV recenti",
+        "title": "Importazioni recenti",
         "hint": "Annullare rimuove le unità senza segnalazioni o attività. Le categorie vuote create solo dall'importazione vengono ripulite. La sede stessa viene mantenuta.",
         "unknown_file": "File sconosciuto",
         "unit_count": ":count unità",

@@ -188,11 +188,11 @@
                     "text": "Créez rapidement des dizaines d'unités (comme des chambres, des étages ou des actifs consécutifs) à la fois dans une plage de numérotation logique. Nombre de plages : indiquez combien de plages (p. ex. étages ou zones) vous souhaitez générer à la fois. Unités par plage : déterminez le nombre d'unités spécifiques (p. ex. chambres ou appareils) à créer par plage. Numérotation : Choisissez la structure de numérotation (p. ex. pas de 10 comme 01, 11, 21 ou continu). La zone d'aperçu dynamique en bas montre immédiatement comment les unités seront nommées. Préfixe optionnel : Ajoutez un texte fixe avant le numéro (p. ex. CHAMBRE- ou ZONE-) pour que les unités soient immédiatement reconnaissables (p. ex. CHAMBRE-01). Catégorie : Liez la nouvelle plage générée directement à une catégorie spécifique (p. ex. Sanitaire ou Bureau) pour organiser les unités correctement dès le départ."
                 },
                 {
-                    "label": "Importer unités CSV",
-                    "text": "Importez des unités pour ce lieu via CSV. Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu — tout va sur ce lieu. Si les en-têtes sont incorrects ou des champs obligatoires manquent, l'import entier est rejeté avec un message clair par ligne. Les catégories sont créées automatiquement si elles n'existent pas encore."
+                    "label": "Importer unités",
+                    "text": "Importez des unités pour ce lieu via CSV ou Excel (.xlsx). Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu — tout va sur ce lieu. Si les en-têtes sont incorrects ou des champs obligatoires manquent, l'import entier est rejeté avec un message clair par ligne. Les catégories sont créées automatiquement si elles n'existent pas encore."
                 },
                 {
-                    "label": "Imports CSV récents",
+                    "label": "Imports récents",
                     "text": "Après un import, un aperçu des imports récents (30 jours) pour ce lieu apparaît. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur Annuler l'import pour supprimer les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé."
                 },
                 {

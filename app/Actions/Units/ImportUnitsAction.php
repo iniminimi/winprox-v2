@@ -8,17 +8,20 @@ use App\Models\Category;
 use App\Models\Location;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Import\TabularImportReader;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class ImportUnitsAction
 {
     public function __construct(
         private AuditRecorder $audit,
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
+        private TabularImportReader $tabularReader,
     ) {}
 
     /** @var list<string> */
@@ -57,25 +60,28 @@ class ImportUnitsAction
             ];
         }
 
-        $handle = fopen($data->filePath, 'r');
-        if ($handle === false) {
+        try {
+            $table = $this->tabularReader->read($data->filePath, $data->originalName);
+        } catch (RuntimeException $e) {
+            $message = match ($e->getMessage()) {
+                'unsupported_import_format' => __('locations.units_csv.errors.unsupported_format'),
+                'unreadable' => __('locations.units_csv.errors.unreadable'),
+                default => __('locations.units_csv.errors.unreadable'),
+            };
+
             return [
                 'success' => false,
-                'errors' => [__('locations.units_csv.errors.unreadable')],
+                'errors' => [$message],
             ];
         }
 
-        $headers = fgetcsv($handle);
-        fclose($handle);
-
-        if ($headers === false) {
+        $headers = $table['headers'];
+        if ($headers === []) {
             return [
                 'success' => false,
                 'errors' => [__('locations.units_csv.errors.empty')],
             ];
         }
-
-        $headers = array_map(fn ($h) => trim(strtolower((string) $h)), $headers);
 
         $missingHeaders = array_diff(self::REQUIRED_HEADERS, $headers);
         if ($missingHeaders !== []) {
@@ -102,40 +108,18 @@ class ImportUnitsAction
             ];
         }
 
-        $handle = fopen($data->filePath, 'r');
-        fgetcsv($handle);
-
-        $rows = [];
-        $lineNumber = 2;
-
-        while (($row = fgetcsv($handle)) !== false) {
-            if (array_filter($row) === []) {
-                $lineNumber++;
-                continue;
-            }
-
-            if (count($row) !== count($headers)) {
-                $lineNumber++;
-                continue;
-            }
-
-            $row = array_slice($row, 0, count($headers));
-            $dataRow = array_combine($headers, $row);
-            $dataRow['_line_number'] = $lineNumber;
-            $rows[] = $dataRow;
-            $lineNumber++;
-        }
-
-        fclose($handle);
-
+        $headerCount = count($headers);
         $errors = [];
         $validatedRows = [];
 
-        foreach ($rows as $row) {
-            $lineNumber = $row['_line_number'];
-            unset($row['_line_number']);
+        foreach ($table['rows'] as $row) {
+            $values = array_pad(array_slice($row['values'], 0, $headerCount), $headerCount, '');
+            $dataRow = array_combine($headers, $values);
+            if ($dataRow === false) {
+                continue;
+            }
 
-            $validator = Validator::make($row, [
+            $validator = Validator::make($dataRow, [
                 'unit_name' => 'required|string|max:255',
                 'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
                 'category_name' => 'nullable|string|max:255',
@@ -144,12 +128,12 @@ class ImportUnitsAction
             if ($validator->fails()) {
                 foreach ($validator->errors()->all() as $error) {
                     $errors[] = __('locations.units_csv.errors.row', [
-                        'line' => $lineNumber,
+                        'line' => $row['line'],
                         'message' => $error,
                     ]);
                 }
             } else {
-                $validatedRows[] = $row;
+                $validatedRows[] = $dataRow;
             }
         }
 

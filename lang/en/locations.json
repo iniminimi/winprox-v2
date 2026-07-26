@@ -5,11 +5,11 @@
     "default_name": "Location",
     "add": "+ Add new location",
     "units_csv": {
-        "button": "Import units CSV",
-        "title": "Import units via CSV",
-        "hint": "Import units for :location. Required: unit_name. Optional: description, category_name. Location columns are not needed here.",
+        "button": "Import units",
+        "title": "Import units (CSV / Excel)",
+        "hint": "Import units for :location via CSV or Excel (.xlsx). Required: unit_name. Optional: description, category_name. Location columns are not needed here.",
         "errors": {
-            "file_required": "Choose a CSV file.",
+            "file_required": "Choose a CSV or Excel (.xlsx) file.",
             "failed": "Import failed.",
             "location_not_found": "Location not found.",
             "unreadable": "CSV file could not be read.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Unknown columns: :columns",
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
-            "database": "Database error: :message"
+            "database": "Database error: :message",
+            "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx)."
         }
     },
-    "import_file_label": "CSV file",
+    "import_file_label": "CSV or Excel file (.xlsx)",
     "import_submit": "Import",
     "import_submit_loading": "Importing...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Recent CSV imports",
+        "title": "Recent imports",
         "hint": "Undo removes units without issues or tasks. Empty categories created only by the import are cleaned up. The location itself is kept.",
         "unknown_file": "Unknown file",
         "unit_count": ":count units",

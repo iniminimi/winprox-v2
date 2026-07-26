@@ -5,11 +5,11 @@
     "default_name": "Standort",
     "add": "+ Neuen Standort hinzufügen",
     "units_csv": {
-        "button": "Units per CSV importieren",
-        "title": "Units per CSV importieren",
-        "hint": "Units für :location importieren. Pflicht: unit_name. Optional: description, category_name. Standortspalten sind hier nicht nötig.",
+        "button": "Units importieren",
+        "title": "Units importieren (CSV / Excel)",
+        "hint": "Importieren Sie Units für :location per CSV oder Excel (.xlsx). Pflicht: unit_name. Optional: description, category_name. Standortspalten sind hier nicht nötig.",
         "errors": {
-            "file_required": "Wählen Sie eine CSV-Datei.",
+            "file_required": "Wählen Sie eine CSV- oder Excel-Datei (.xlsx).",
             "failed": "Import fehlgeschlagen.",
             "location_not_found": "Standort nicht gefunden.",
             "unreadable": "CSV-Datei konnte nicht gelesen werden.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Unbekannte Spalten: :columns",
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
-            "database": "Datenbankfehler: :message"
+            "database": "Datenbankfehler: :message",
+            "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx)."
         }
     },
-    "import_file_label": "CSV-Datei",
+    "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
     "import_submit": "Importieren",
     "import_submit_loading": "Importiere...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Letzte CSV-Imports",
+        "title": "Letzte Imports",
         "hint": "Rückgängig machen entfernt Units ohne Meldungen oder Aufgaben. Leere Kategorien, die nur durch den Import erstellt wurden, werden aufgeräumt. Der Standort selbst bleibt erhalten.",
         "unknown_file": "Unbekannte Datei",
         "unit_count": ":count Units",

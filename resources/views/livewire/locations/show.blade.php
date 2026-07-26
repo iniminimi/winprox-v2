@@ -446,7 +446,7 @@
                     <div class="wp-field">
                         <label class="wp-label" for="location-units-csv-file">{{ __('locations.import_file_label') }}</label>
                         <div class="wp-cluster">
-                            <input type="file" id="location-units-csv-file" class="wp-input wp-grow" wire:model="csvImportFile" accept=".csv" />
+                            <input type="file" id="location-units-csv-file" class="wp-input wp-grow" wire:model="csvImportFile" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationUnitsSampleCsv">
                                 {{ __('locations.import_sample.download_sample_csv') }}
                             </button>

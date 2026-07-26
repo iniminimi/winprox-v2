@@ -194,3 +194,36 @@ it('rejects location columns for location-scoped import', function () {
         ->and($result['errors'])->not->toBeEmpty()
         ->and(Unit::where('tenant_id', $tenant->id)->count())->toBe(0);
 });
+
+it('imports units from an Excel xlsx file', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $xlsxPath = tempnam(sys_get_temp_dir(), 'units_xlsx_').'.xlsx';
+    \Tests\Support\MinimalXlsxFactory::write($xlsxPath, [
+        ['unit_name', 'description', 'category_name'],
+        ['Excel Unit 1', 'From spreadsheet', 'Earthmoving'],
+        ['Excel Unit 2', '', ''],
+    ]);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $xlsxPath,
+            originalName: 'units.xlsx',
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue()
+        ->and($result['count'])->toBe(2)
+        ->and(Unit::where('tenant_id', $tenant->id)->where('location_id', $location->id)->count())->toBe(2)
+        ->and(Unit::where('name', 'Excel Unit 1')->first()?->category?->name)->toBe('Earthmoving')
+        ->and(Unit::where('name', 'Excel Unit 2')->first()?->category_id)->toBeNull();
+
+    @unlink($xlsxPath);
+});

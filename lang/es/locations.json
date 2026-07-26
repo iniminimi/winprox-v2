@@ -5,11 +5,11 @@
     "default_name": "Ubicación",
     "add": "+ Añadir nueva ubicación",
     "units_csv": {
-        "button": "Importar unidades CSV",
-        "title": "Importar unidades vía CSV",
-        "hint": "Importe unidades para :location. Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación aquí.",
+        "button": "Importar unidades",
+        "title": "Importar unidades (CSV / Excel)",
+        "hint": "Importe unidades para :location vía CSV o Excel (.xlsx). Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación aquí.",
         "errors": {
-            "file_required": "Elija un archivo CSV.",
+            "file_required": "Elija un archivo CSV o Excel (.xlsx).",
             "failed": "Error en la importación.",
             "location_not_found": "Ubicación no encontrada.",
             "unreadable": "No se pudo leer el archivo CSV.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Columnas desconocidas: :columns",
             "row": "Fila :line: :message",
             "no_rows": "No se encontraron filas válidas.",
-            "database": "Error de base de datos: :message"
+            "database": "Error de base de datos: :message",
+            "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx)."
         }
     },
-    "import_file_label": "Archivo CSV",
+    "import_file_label": "Archivo CSV o Excel (.xlsx)",
     "import_submit": "Importar",
     "import_submit_loading": "Importando...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Importaciones CSV recientes",
+        "title": "Importaciones recientes",
         "hint": "Deshacer elimina unidades sin incidencias ni tareas. Las categorías vacías creadas solo por la importación se limpian. La ubicación en sí se conserva.",
         "unknown_file": "Archivo desconocido",
         "unit_count": ":count unidades",

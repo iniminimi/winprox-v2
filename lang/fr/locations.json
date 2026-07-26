@@ -5,11 +5,11 @@
     "default_name": "Site",
     "add": "+ Ajouter un site",
     "units_csv": {
-        "button": "Importer unités CSV",
-        "title": "Importer des unités via CSV",
-        "hint": "Importer des unités pour :location. Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu ici.",
+        "button": "Importer unités",
+        "title": "Importer des unités (CSV / Excel)",
+        "hint": "Importez des unités pour :location via CSV ou Excel (.xlsx). Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu ici.",
         "errors": {
-            "file_required": "Choisissez un fichier CSV.",
+            "file_required": "Choisissez un fichier CSV ou Excel (.xlsx).",
             "failed": "Échec de l'import.",
             "location_not_found": "Lieu introuvable.",
             "unreadable": "Le fichier CSV n'a pas pu être lu.",
@@ -18,10 +18,11 @@
             "unexpected_headers": "Colonnes inconnues : :columns",
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
-            "database": "Erreur de base de données : :message"
+            "database": "Erreur de base de données : :message",
+            "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx)."
         }
     },
-    "import_file_label": "Fichier CSV",
+    "import_file_label": "Fichier CSV ou Excel (.xlsx)",
     "import_submit": "Importer",
     "import_submit_loading": "Importation en cours...",
     "import_sample": {
@@ -171,7 +172,7 @@
         }
     },
     "import_history": {
-        "title": "Imports CSV récents",
+        "title": "Imports récents",
         "hint": "Annuler supprime les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé.",
         "unknown_file": "Fichier inconnu",
         "unit_count": ":count unités",
