@@ -33,6 +33,8 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),
+            // Eigen URI: mag /storage niet claimen (dat is de public disk / symlink).
+            'url' => '/local-files',
             'serve' => true,
             'throw' => false,
             'report' => false,
@@ -41,8 +43,11 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            // Relatief pad: werkt ongeacht APP_URL (localhost vs LAN/poort).
+            'url' => '/storage',
             'visibility' => 'public',
+            // Fallback wanneer de webserver alles via index.php stuurt (geen symlink-hit).
+            'serve' => true,
             'throw' => false,
             'report' => false,
         ],
