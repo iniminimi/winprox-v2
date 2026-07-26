@@ -2,7 +2,7 @@
     @if (! empty($inline))
         <span class="wp-unit-title-row__sep" aria-hidden="true">-</span>
     @endif
-    <span class="wp-tooltip">
+    <x-wp-tooltip :text="__('locations.units.gps_history.open')">
         <button
             type="button"
             class="wp-muted wp-unit-gps-trigger"
@@ -13,6 +13,5 @@
             @include('partials.wp-gps-pin-icon', ['class' => 'wp-unit-gps-trigger__icon'])
             <span>GPS</span>
         </button>
-        <span class="wp-tooltip__bubble" role="tooltip">{{ __('locations.units.gps_history.open') }}</span>
-    </span>
+    </x-wp-tooltip>
 @endif

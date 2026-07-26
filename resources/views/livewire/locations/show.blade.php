@@ -275,11 +275,12 @@
                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
                 </label>
 
-                <label class="wp-check wp-check--boxed">
-                    <input type="checkbox" wire:model="unitAllowReservations">
-                    <span>{{ __('locations.units.fields.allow_reservations') }}</span>
-                </label>
-                <p class="wp-hint">{{ __('locations.units.allow_reservations_hint') }}</p>
+                <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="unitAllowReservations">
+                        <span>{{ __('locations.units.fields.allow_reservations') }}</span>
+                    </label>
+                </x-wp-tooltip>
 
                 @if ($editingUnitId && $this->editingUnit)
                     @php
