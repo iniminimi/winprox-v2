@@ -29,7 +29,8 @@
         "download_sample_csv": "Scarica CSV di esempio",
         "sample_unit_name": "Excavator Takeuchi TB210R",
         "sample_description": "Check hour meter on issue",
-        "sample_category_name": "Earthmoving"
+        "sample_category_name": "Earthmoving",
+        "download_sample_xlsx": "Scarica esempio XLSX"
     },
     "create_title": "Aggiungi nuova sede",
     "edit_title": "Modifica sede",

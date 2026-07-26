@@ -29,7 +29,8 @@
         "download_sample_csv": "Beispiel-CSV herunterladen",
         "sample_unit_name": "Bagger Takeuchi TB210R",
         "sample_description": "Stundenzähler bei Ausgabe prüfen",
-        "sample_category_name": "Erdbewegung"
+        "sample_category_name": "Erdbewegung",
+        "download_sample_xlsx": "Beispiel-XLSX herunterladen"
     },
     "create_title": "Neuen Standort hinzufügen",
     "edit_title": "Standort bearbeiten",

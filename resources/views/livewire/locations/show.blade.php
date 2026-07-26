@@ -450,6 +450,9 @@
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationUnitsSampleCsv">
                                 {{ __('locations.import_sample.download_sample_csv') }}
                             </button>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationUnitsSampleXlsx">
+                                {{ __('locations.import_sample.download_sample_xlsx') }}
+                            </button>
                         </div>
                         @error('csvImportFile') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>

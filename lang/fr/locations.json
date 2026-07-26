@@ -29,7 +29,8 @@
         "download_sample_csv": "Télécharger exemple CSV",
         "sample_unit_name": "Pelle Takeuchi TB210R",
         "sample_description": "Vérifier compteur horaire à la sortie",
-        "sample_category_name": "Terrassement"
+        "sample_category_name": "Terrassement",
+        "download_sample_xlsx": "Télécharger un exemple XLSX"
     },
     "create_title": "Ajouter un site",
     "edit_title": "Modifier le site",

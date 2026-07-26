@@ -29,7 +29,8 @@
         "download_sample_csv": "Descargar CSV de ejemplo",
         "sample_unit_name": "Excavadora Takeuchi TB210R",
         "sample_description": "Comprobar contador horario en la incidencia",
-        "sample_category_name": "Movimiento de tierras"
+        "sample_category_name": "Movimiento de tierras",
+        "download_sample_xlsx": "Descargar ejemplo XLSX"
     },
     "create_title": "Añadir nueva ubicación",
     "edit_title": "Editar ubicación",

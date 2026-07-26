@@ -608,4 +608,13 @@ it('downloads sample CSV with correct headers and UTF-8 BOM', function () {
     expect($csv)->toStartWith("\xEF\xBB\xBF")
         ->and($csv)->toContain('unit_name,description,category_name')
         ->and($csv)->not->toContain('location_name');
+
+    $xlsxResponse = $livewireComponent->downloadLocationUnitsSampleXlsx();
+    expect($xlsxResponse->getStatusCode())->toBe(200)
+        ->and($xlsxResponse->headers->get('content-disposition'))->toContain('units-location-sample.xlsx');
+
+    ob_start();
+    $xlsxResponse->sendContent();
+    $xlsxBinary = (string) ob_get_clean();
+    expect(substr($xlsxBinary, 0, 2))->toBe('PK');
 });

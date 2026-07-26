@@ -29,7 +29,8 @@
         "download_sample_csv": "Download voorbeeld-CSV",
         "sample_unit_name": "Graafmachine Takeuchi TB210R",
         "sample_description": "Urenstand controleren bij uitgifte",
-        "sample_category_name": "Grondverzet"
+        "sample_category_name": "Grondverzet",
+        "download_sample_xlsx": "Download voorbeeld-xlsx"
     },
     "create_title": "Nieuwe locatie toevoegen",
     "edit_title": "Locatie bewerken",

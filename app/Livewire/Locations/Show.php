@@ -507,6 +507,33 @@ class Show extends Component
         ]);
     }
 
+    public function downloadLocationUnitsSampleXlsx(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $this->authorize('create', Unit::class);
+        abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
+
+        $rows = [
+            ['unit_name', 'description', 'category_name'],
+            [
+                __('locations.import_sample.sample_unit_name'),
+                __('locations.import_sample.sample_description'),
+                __('locations.import_sample.sample_category_name'),
+            ],
+        ];
+
+        return response()->streamDownload(function () use ($rows) {
+            $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'units-location-sample-'.uniqid('', true).'.xlsx';
+            try {
+                \App\Support\Import\MinimalXlsxWriter::write($tempPath, $rows);
+                readfile($tempPath);
+            } finally {
+                @unlink($tempPath);
+            }
+        }, 'units-location-sample.xlsx', [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        ]);
+    }
+
     public function deleteImportBatch(string $batchId, DeleteImportBatchAction $deleteBatch): void
     {
         $this->authorize('create', Unit::class);
