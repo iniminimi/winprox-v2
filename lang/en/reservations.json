@@ -20,7 +20,8 @@
     "actions": {
         "create": "New reservation",
         "edit": "Edit reservation",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "open_calendar": "Open calendar"
     },
     "lifecycle": {
         "pending": "Awaiting confirmation",
@@ -49,5 +50,32 @@
         "hold_expired": "The 30-minute confirmation window has expired.",
         "not_editable": "This reservation can no longer be edited.",
         "not_cancellable": "This reservation can no longer be cancelled."
+    },
+    "list_title": "Overview",
+    "empty_title": "No reservations yet",
+    "empty_body": "Once guests book via the unit QR — or you create one here — they appear in this list and on the calendar.",
+    "filters": {
+        "status": "Status filter",
+        "location": "Location filter",
+        "upcoming": "Upcoming",
+        "pending": "Awaiting confirmation",
+        "confirmed": "Confirmed",
+        "past": "Past / cancelled",
+        "all": "All",
+        "all_locations": "All locations"
+    },
+    "setup": {
+        "title": "Enable reservations",
+        "lead": "Reservations work for meeting rooms, vehicles, keys, … via the same unit QR.",
+        "steps": [
+            "Open Locations/units and edit the category (e.g. Meeting rooms).",
+            "Turn on Reservable for that category.",
+            "Check per unit that Allow reservations is on.",
+            "Share or print the unit QR — guests will see the Reserve tile."
+        ],
+        "cta_locations": "Go to locations & units"
+    },
+    "form": {
+        "staff_hint": "Reservations you create here are confirmed immediately (no 30-minute email hold)."
     }
 }

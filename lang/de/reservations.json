@@ -20,7 +20,8 @@
     "actions": {
         "create": "Neue Reservierung",
         "edit": "Reservierung bearbeiten",
-        "cancel": "Stornieren"
+        "cancel": "Stornieren",
+        "open_calendar": "Kalender öffnen"
     },
     "lifecycle": {
         "pending": "Wartet auf Bestätigung",
@@ -49,5 +50,32 @@
         "hold_expired": "Das 30-Minuten-Bestätigungsfenster ist abgelaufen.",
         "not_editable": "Diese Reservierung kann nicht mehr geändert werden.",
         "not_cancellable": "Diese Reservierung kann nicht mehr storniert werden."
+    },
+    "list_title": "Übersicht",
+    "empty_title": "Noch keine Reservierungen",
+    "empty_body": "Sobald Gäste über den Unit-QR buchen — oder Sie hier eine Reservierung anlegen — erscheinen sie in dieser Liste und im Kalender.",
+    "filters": {
+        "status": "Statusfilter",
+        "location": "Standortfilter",
+        "upcoming": "Bevorstehend",
+        "pending": "Wartet auf Bestätigung",
+        "confirmed": "Bestätigt",
+        "past": "Vergangen / storniert",
+        "all": "Alle",
+        "all_locations": "Alle Standorte"
+    },
+    "setup": {
+        "title": "Reservierungen aktivieren",
+        "lead": "Reservierungen gelten für Räume, Fahrzeuge, Schlüssel, … über denselben Unit-QR.",
+        "steps": [
+            "Öffnen Sie Standorte/Units und bearbeiten Sie die Kategorie (z. B. Besprechungsräume).",
+            "Aktivieren Sie Reservierbar für diese Kategorie.",
+            "Prüfen Sie pro Unit, dass Reservierungen erlauben aktiv ist.",
+            "Teilen oder drucken Sie den Unit-QR — Gäste sehen dann die Kachel Reservieren."
+        ],
+        "cta_locations": "Zu Standorten & Units"
+    },
+    "form": {
+        "staff_hint": "Hier angelegte Reservierungen sind sofort bestätigt (kein 30-Minuten-E-Mail-Hold)."
     }
 }

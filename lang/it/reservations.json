@@ -20,7 +20,8 @@
     "actions": {
         "create": "Nuova prenotazione",
         "edit": "Modifica prenotazione",
-        "cancel": "Annulla"
+        "cancel": "Annulla",
+        "open_calendar": "Apri calendario"
     },
     "lifecycle": {
         "pending": "In attesa di conferma",
@@ -49,5 +50,32 @@
         "hold_expired": "La finestra di conferma di 30 minuti è scaduta.",
         "not_editable": "Questa prenotazione non può più essere modificata.",
         "not_cancellable": "Questa prenotazione non può più essere annullata."
+    },
+    "list_title": "Panoramica",
+    "empty_title": "Ancora nessuna prenotazione",
+    "empty_body": "Quando gli ospiti prenotano tramite il QR unità — o ne crei una qui — compaiono in questo elenco e sul calendario.",
+    "filters": {
+        "status": "Filtro stato",
+        "location": "Filtro sede",
+        "upcoming": "In arrivo",
+        "pending": "In attesa di conferma",
+        "confirmed": "Confermate",
+        "past": "Passate / annullate",
+        "all": "Tutte",
+        "all_locations": "Tutte le sedi"
+    },
+    "setup": {
+        "title": "Abilita le prenotazioni",
+        "lead": "Le prenotazioni servono per sale, veicoli, chiavi, … tramite lo stesso QR unità.",
+        "steps": [
+            "Apri Sedi/unità e modifica la categoria (es. Sale riunioni).",
+            "Attiva Prenotabile per quella categoria.",
+            "Verifica per unità che Consenti prenotazioni sia attivo.",
+            "Condividi o stampa il QR unità — gli ospiti vedranno il riquadro Prenota."
+        ],
+        "cta_locations": "Vai a sedi e unità"
+    },
+    "form": {
+        "staff_hint": "Le prenotazioni create qui sono confermate subito (nessun hold e-mail di 30 minuti)."
     }
 }

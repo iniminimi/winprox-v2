@@ -20,7 +20,8 @@
     "actions": {
         "create": "Nouvelle réservation",
         "edit": "Modifier la réservation",
-        "cancel": "Annuler"
+        "cancel": "Annuler",
+        "open_calendar": "Ouvrir le calendrier"
     },
     "lifecycle": {
         "pending": "En attente de confirmation",
@@ -49,5 +50,32 @@
         "hold_expired": "Le délai de confirmation de 30 minutes a expiré.",
         "not_editable": "Cette réservation ne peut plus être modifiée.",
         "not_cancellable": "Cette réservation ne peut plus être annulée."
+    },
+    "list_title": "Aperçu",
+    "empty_title": "Pas encore de réservations",
+    "empty_body": "Dès que des invités réservent via le QR unité — ou que vous en créez une ici — elles apparaissent dans cette liste et sur le calendrier.",
+    "filters": {
+        "status": "Filtre statut",
+        "location": "Filtre site",
+        "upcoming": "À venir",
+        "pending": "En attente de confirmation",
+        "confirmed": "Confirmées",
+        "past": "Passées / annulées",
+        "all": "Tout",
+        "all_locations": "Tous les sites"
+    },
+    "setup": {
+        "title": "Activer les réservations",
+        "lead": "Les réservations concernent salles, véhicules, clés, … via le même QR unité.",
+        "steps": [
+            "Ouvrez Sites/unités et modifiez la catégorie (ex. Salles).",
+            "Activez Réservable pour cette catégorie.",
+            "Vérifiez par unité que Autoriser les réservations est activé.",
+            "Partagez ou imprimez le QR unité — les invités voient alors la tuile Réserver."
+        ],
+        "cta_locations": "Vers sites & unités"
+    },
+    "form": {
+        "staff_hint": "Les réservations créées ici sont confirmées immédiatement (pas de délai e-mail de 30 minutes)."
     }
 }

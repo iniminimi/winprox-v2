@@ -20,7 +20,8 @@
     "actions": {
         "create": "Nueva reserva",
         "edit": "Editar reserva",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "open_calendar": "Abrir calendario"
     },
     "lifecycle": {
         "pending": "Pendiente de confirmación",
@@ -49,5 +50,32 @@
         "hold_expired": "El plazo de confirmación de 30 minutos ha caducado.",
         "not_editable": "Esta reserva ya no se puede editar.",
         "not_cancellable": "Esta reserva ya no se puede cancelar."
+    },
+    "list_title": "Resumen",
+    "empty_title": "Aún no hay reservas",
+    "empty_body": "Cuando los invitados reserven por el QR de unidad — o cree una aquí — aparecerán en esta lista y en el calendario.",
+    "filters": {
+        "status": "Filtro de estado",
+        "location": "Filtro de ubicación",
+        "upcoming": "Próximas",
+        "pending": "Pendiente de confirmación",
+        "confirmed": "Confirmadas",
+        "past": "Pasadas / canceladas",
+        "all": "Todas",
+        "all_locations": "Todas las ubicaciones"
+    },
+    "setup": {
+        "title": "Activar reservas",
+        "lead": "Las reservas sirven para salas, vehículos, llaves, … con el mismo QR de unidad.",
+        "steps": [
+            "Abra Ubicaciones/unidades y edite la categoría (p. ej. Salas).",
+            "Active Reservable en esa categoría.",
+            "Compruebe por unidad que Permitir reservas está activado.",
+            "Comparta o imprima el QR de unidad — los invitados verán la baldosa Reservar."
+        ],
+        "cta_locations": "Ir a ubicaciones y unidades"
+    },
+    "form": {
+        "staff_hint": "Las reservas que cree aquí se confirman de inmediato (sin retención de 30 minutos por correo)."
     }
 }

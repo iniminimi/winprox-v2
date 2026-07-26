@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filter op locatie, team en type (taken of meldingen)."
+                    "text": "Filter op locatie en type (taken, meldingen of reserveringen)."
                 }
             ],
             "status_note": "Kleur en status op de kalender volgen de taak- of meldingstatus.",
@@ -233,6 +233,38 @@
                 "in_progress": "Lopende uitvoering.",
                 "done": "Afgerond, wacht op sluiting.",
                 "closed": "Volledig afgesloten."
+            }
+        },
+        "reservations": {
+            "title": "Hulp — Reserveringen",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Reserveringen zijn bedoeld voor deelbare middelen met een tijdslot: vergaderzalen, voertuigen, sleutels, … Niet voor defectmeldingen — die blijven via Melding → taak."
+                },
+                {
+                    "label": "Inschakelen",
+                    "text": "Zet op de categorie Reserveerbaar aan. Per unit kun je Reserveringen toestaan uitzetten. Daarna verschijnt op de unit-QR de tegel Reserveren."
+                },
+                {
+                    "label": "Gastflow",
+                    "text": "Een gast boekt via de QR, krijgt 30 minuten hold en bevestigt per e-mail. Wijzigen of annuleren kan via de mail-link of opnieuw via de QR (naam/e-mail onthouden in een cookie)."
+                },
+                {
+                    "label": "Beheer",
+                    "text": "Hier maak je direct bevestigde reserveringen aan, wijzig je tijdvakken en annuleer je boekingen. Filters: aankomend, pending, bevestigd, afgelopen. Open de kalender voor het tijdblok-overzicht."
+                },
+                {
+                    "label": "Overlap",
+                    "text": "Het systeem blokkeert overlappende slots voor bevestigde én actieve pending holds. Verlopen pending holds vervallen na 30 minuten."
+                }
+            ],
+            "status_note": "Statuspillen op dit scherm:",
+            "statuses": {
+                "pending": "Aangevraagd, wacht op e-mailbevestiging (max. 30 min).",
+                "confirmed": "Definitief; zichtbaar op de kalender.",
+                "cancelled": "Geannuleerd door gast of beheer.",
+                "expired": "Pending hold verlopen zonder bevestiging."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Melding doen",
                     "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Er wordt vervolgens een taak aangemaakt voor het team. Houd er rekening mee dat de melding eerst moet worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Ter voorkoming van spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
+                },
+                {
+                    "label": "Reserveren",
+                    "text": "Als deze unit reserveerbaar is, zie je de tegel Reserveren. Kies een tijdslot, vul naam en e-mail in en bevestig binnen 30 minuten via de e-mail. Via Mijn reserveringen of de link in de mail kun je wijzigen of annuleren."
                 },
                 {
                     "label": "Documenten",

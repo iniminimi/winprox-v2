@@ -82,6 +82,35 @@ final class PageHelp
                     'pill' => $status->pillModifier(),
                 ];
             }
+
+            // Domeinspecifieke statussen (bv. reserveringen) als er geen TaskStatus-keys zijn.
+            if ($statuses === []) {
+                foreach ($statusItems as $key => $text) {
+                    if (! is_string($key) || ! is_string($text) || $text === '') {
+                        continue;
+                    }
+
+                    $labelKey = 'reservations.lifecycle.'.$key;
+                    $label = __($labelKey);
+                    if ($label === $labelKey) {
+                        $label = $key;
+                    }
+
+                    $pill = match ($key) {
+                        'pending' => 'new',
+                        'confirmed' => 'progress',
+                        'cancelled', 'expired' => 'closed',
+                        default => 'new',
+                    };
+
+                    $statuses[] = [
+                        'key' => $key,
+                        'label' => $label,
+                        'text' => $text,
+                        'pill' => $pill,
+                    ];
+                }
+            }
         }
 
         $statusNote = null;

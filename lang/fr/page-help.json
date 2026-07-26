@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtre",
-                    "text": "Filtrez par site, équipe et type (tâches ou signalements)."
+                    "text": "Filtrez par site et type (tâches, signalements ou réservations)."
                 }
             ],
             "status_note": "La couleur et le statut sur le calendrier suivent le statut de la tâche ou du signalement.",
@@ -233,6 +233,38 @@
                 "in_progress": "Exécution en cours.",
                 "done": "Terminé, en attente de clôture.",
                 "closed": "Entièrement clôturé."
+            }
+        },
+        "reservations": {
+            "title": "Aide — Réservations",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Les réservations concernent des ressources partagées à créneau: salles, véhicules, clés, … Pas les signalements — ceux-ci restent Signalement → tâche."
+                },
+                {
+                    "label": "Activer",
+                    "text": "Activez Réservable sur la catégorie. Par unité vous pouvez désactiver Autoriser les réservations. Le QR unité affiche alors la tuile Réserver."
+                },
+                {
+                    "label": "Invité",
+                    "text": "Un invité réserve via QR, a 30 minutes de hold et confirme par e-mail. Modifier ou annuler via le lien mail ou à nouveau via QR (nom/e-mail mémorisés)."
+                },
+                {
+                    "label": "Administration",
+                    "text": "Ici vous créez des réservations confirmées immédiatement, modifiez les créneaux et annulez. Filtres: à venir, en attente, confirmées, passées. Ouvrez le calendrier pour la vue blocs."
+                },
+                {
+                    "label": "Chevauchement",
+                    "text": "Le système bloque les créneaux qui se chevauchent pour les réservations confirmées et holds pending actifs. Les holds expirés tombent après 30 minutes."
+                }
+            ],
+            "status_note": "Pastilles de statut:",
+            "statuses": {
+                "pending": "Demandée, en attente de confirmation e-mail (max. 30 min).",
+                "confirmed": "Définitive; visible au calendrier.",
+                "cancelled": "Annulée par l’invité ou le staff.",
+                "expired": "Hold pending expiré sans confirmation."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Signaler un problème",
                     "text": "Cliquez sur \"Créer un signalement\", décrivez le problème et ajoutez éventuellement jusqu'à quatre photos. Une tâche est ensuite créée pour l'équipe. Notez que le signalement doit d'abord être approuvé avant d'être visible sur le portail. Pour éviter le spam, des limites s'appliquent : au maximum un signalement toutes les 3 minutes et au maximum cinq signalements par 30 minutes pour cette unité (par appareil)."
+                },
+                {
+                    "label": "Réserver",
+                    "text": "Si cette unité est réservable, vous voyez la tuile Réserver. Choisissez un créneau, saisissez nom et e-mail, et confirmez sous 30 minutes par e-mail. Mes réservations ou le lien mail permettent de modifier ou d’annuler."
                 },
                 {
                     "label": "Documents",

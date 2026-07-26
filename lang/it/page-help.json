@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Filtri per sede, team e tipo (attività o segnalazioni)."
+                    "text": "Filtra per sede e tipo (attività, segnalazioni o prenotazioni)."
                 }
             ],
             "status_note": "Colore e stato sul calendario seguono lo stato attività o segnalazione.",
@@ -233,6 +233,38 @@
                 "in_progress": "Lavoro in corso.",
                 "done": "Completata, in attesa di chiusura.",
                 "closed": "Completamente chiusa."
+            }
+        },
+        "reservations": {
+            "title": "Guida — Prenotazioni",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Le prenotazioni sono per risorse condivise a fascia oraria: sale, veicoli, chiavi, … Non per segnalazioni — quelle restano Segnalazione → attività."
+                },
+                {
+                    "label": "Abilitare",
+                    "text": "Attiva Prenotabile sulla categoria. Per unità puoi disattivare Consenti prenotazioni. Il QR unità mostra allora il riquadro Prenota."
+                },
+                {
+                    "label": "Ospite",
+                    "text": "Un ospite prenota via QR, ha 30 minuti di hold e conferma via e-mail. Modifica/annulla dal link e-mail o di nuovo via QR (nome/e-mail in cookie)."
+                },
+                {
+                    "label": "Amministrazione",
+                    "text": "Qui crei prenotazioni subito confermate, modifichi le fasce e annulli. Filtri: in arrivo, in attesa, confermate, passate. Apri il calendario per la vista a blocchi."
+                },
+                {
+                    "label": "Sovrapposizione",
+                    "text": "Il sistema blocca fasce sovrapposte per prenotazioni confermate e hold pending attivi. Gli hold scaduti decadono dopo 30 minuti."
+                }
+            ],
+            "status_note": "Pill di stato:",
+            "statuses": {
+                "pending": "Richiesta, in attesa di conferma e-mail (max. 30 min).",
+                "confirmed": "Definitiva; visibile sul calendario.",
+                "cancelled": "Annullata da ospite o staff.",
+                "expired": "Hold pending scaduto senza conferma."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Segnala problema",
                     "text": "Clicchi su «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Viene poi creata un'attività per il team. Noti che la segnalazione deve prima essere approvata prima di diventare visibile sul portale. Per prevenire spam, si applicano limiti: al massimo una segnalazione ogni 3 minuti e un massimo di cinque segnalazioni per 30 minuti per questa unità (per dispositivo)."
+                },
+                {
+                    "label": "Prenota",
+                    "text": "Se questa unità è prenotabile, vedi il riquadro Prenota. Scegli una fascia, inserisci nome ed e-mail e conferma entro 30 minuti via e-mail. Le mie prenotazioni o il link e-mail consentono di modificare o annullare."
                 },
                 {
                     "label": "Documenti",

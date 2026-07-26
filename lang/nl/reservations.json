@@ -20,7 +20,8 @@
     "actions": {
         "create": "Nieuwe reservering",
         "edit": "Reservering wijzigen",
-        "cancel": "Annuleren"
+        "cancel": "Annuleren",
+        "open_calendar": "Kalender openen"
     },
     "lifecycle": {
         "pending": "Wacht op bevestiging",
@@ -49,5 +50,32 @@
         "hold_expired": "De bevestigingstermijn van 30 minuten is verlopen.",
         "not_editable": "Deze reservering kan niet meer worden gewijzigd.",
         "not_cancellable": "Deze reservering kan niet meer worden geannuleerd."
+    },
+    "list_title": "Overzicht",
+    "empty_title": "Nog geen reserveringen",
+    "empty_body": "Zodra gasten via de unit-QR boeken — of jij hier een reservering aanmaakt — verschijnen ze in deze lijst en op de kalender.",
+    "filters": {
+        "status": "Statusfilter",
+        "location": "Locatiefilter",
+        "upcoming": "Aankomend",
+        "pending": "Wacht op bevestiging",
+        "confirmed": "Bevestigd",
+        "past": "Afgelopen / geannuleerd",
+        "all": "Alles",
+        "all_locations": "Alle locaties"
+    },
+    "setup": {
+        "title": "Reserveringen inschakelen",
+        "lead": "Reserveren werkt voor vergaderzalen, voertuigen, sleutels, … via dezelfde unit-QR.",
+        "steps": [
+            "Open Locaties/units en bewerk de categorie (bv. Vergaderzalen).",
+            "Zet Reserveerbaar aan voor die categorie.",
+            "Controleer per unit dat Reserveringen toestaan aan staat.",
+            "Deel of print de unit-QR — gasten zien dan de tegel Reserveren."
+        ],
+        "cta_locations": "Naar locaties & units"
+    },
+    "form": {
+        "staff_hint": "Reserveringen die je hier aanmaakt zijn meteen bevestigd (geen e-mailhold van 30 minuten)."
     }
 }

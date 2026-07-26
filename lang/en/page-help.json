@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filter by location, team and type (tasks or issues)."
+                    "text": "Filter by location and type (tasks, issues or reservations)."
                 }
             ],
             "status_note": "Colour and status on the calendar follow task or issue status.",
@@ -233,6 +233,38 @@
                 "in_progress": "Work in progress.",
                 "done": "Completed, waiting to be closed.",
                 "closed": "Fully closed."
+            }
+        },
+        "reservations": {
+            "title": "Help — Reservations",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Reservations are for shareable timed resources: meeting rooms, vehicles, keys, … Not for defect reports — those stay on Issue → task."
+                },
+                {
+                    "label": "Enable",
+                    "text": "Turn on Reservable on the category. Per unit you can turn off Allow reservations. The unit QR then shows the Reserve tile."
+                },
+                {
+                    "label": "Guest flow",
+                    "text": "A guest books via QR, gets a 30-minute hold and confirms by email. Change or cancel via the mail link or again via QR (name/email remembered in a cookie)."
+                },
+                {
+                    "label": "Admin",
+                    "text": "Here you create immediately confirmed reservations, edit time slots and cancel bookings. Filters: upcoming, pending, confirmed, past. Open the calendar for the time-block overview."
+                },
+                {
+                    "label": "Overlap",
+                    "text": "The system blocks overlapping slots for confirmed and active pending holds. Expired pending holds lapse after 30 minutes."
+                }
+            ],
+            "status_note": "Status pills on this screen:",
+            "statuses": {
+                "pending": "Requested, awaiting email confirmation (max. 30 min).",
+                "confirmed": "Final; shown on the calendar.",
+                "cancelled": "Cancelled by guest or staff.",
+                "expired": "Pending hold expired without confirmation."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Report issue",
                     "text": "Click on \"Create issue\", describe the problem and optionally add up to four photos. A task is then created for the team. Please note that the issue must first be approved before it becomes visible on the portal. To prevent spam, limits apply: at most one report every 3 minutes and a maximum of five reports per 30 minutes for this unit (per device)."
+                },
+                {
+                    "label": "Reserve",
+                    "text": "If this unit is reservable, you see the Reserve tile. Pick a time slot, enter name and email, and confirm within 30 minutes via email. Use My reservations or the mail link to change or cancel."
                 },
                 {
                     "label": "Documents",

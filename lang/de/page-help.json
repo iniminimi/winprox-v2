@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filtern Sie nach Standort, Team und Typ (Aufgaben oder Meldungen)."
+                    "text": "Filtern Sie nach Standort und Typ (Aufgaben, Meldungen oder Reservierungen)."
                 }
             ],
             "status_note": "Farbe und Status im Kalender folgen dem Aufgaben- oder Meldungsstatus.",
@@ -233,6 +233,38 @@
                 "in_progress": "Laufende Ausführung.",
                 "done": "Abgeschlossen, wartet auf Schließung.",
                 "closed": "Vollständig geschlossen."
+            }
+        },
+        "reservations": {
+            "title": "Hilfe — Reservierungen",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Reservierungen gelten für teilbare Zeitslots: Räume, Fahrzeuge, Schlüssel, … Nicht für Mängelmeldungen — die bleiben Meldung → Aufgabe."
+                },
+                {
+                    "label": "Aktivieren",
+                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Pro Unit können Sie Reservierungen erlauben ausschalten. Der Unit-QR zeigt dann die Kachel Reservieren."
+                },
+                {
+                    "label": "Gastflow",
+                    "text": "Ein Gast bucht per QR, erhält 30 Minuten Hold und bestätigt per E-Mail. Ändern/stornieren über den Mail-Link oder erneut per QR (Name/E-Mail im Cookie)."
+                },
+                {
+                    "label": "Verwaltung",
+                    "text": "Hier legen Sie sofort bestätigte Reservierungen an, ändern Zeitfenster und stornieren. Filter: bevorstehend, pending, bestätigt, vergangen. Öffnen Sie den Kalender für die Zeitblöcke."
+                },
+                {
+                    "label": "Überlappung",
+                    "text": "Das System blockiert überlappende Slots für bestätigte und aktive Pending-Holds. Abgelaufene Holds entfallen nach 30 Minuten."
+                }
+            ],
+            "status_note": "Status-Pills:",
+            "statuses": {
+                "pending": "Angefragt, wartet auf E-Mail-Bestätigung (max. 30 Min.).",
+                "confirmed": "Endgültig; im Kalender sichtbar.",
+                "cancelled": "Storniert durch Gast oder Personal.",
+                "expired": "Pending-Hold ohne Bestätigung abgelaufen."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Meldung erstellen",
                     "text": "Klicken Sie auf \"Meldung erstellen\", beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Es wird dann eine Aufgabe für das Team erstellt. Beachten Sie, dass die Meldung zuerst genehmigt werden muss, bevor sie auf dem Portal sichtbar wird. Um Spam zu vermeiden, gelten Limits: höchstens eine Meldung alle 3 Minuten und höchstens fünf Meldungen pro 30 Minuten für diese Unit (pro Gerät)."
+                },
+                {
+                    "label": "Reservieren",
+                    "text": "Wenn diese Unit reservierbar ist, sehen Sie die Kachel Reservieren. Wählen Sie ein Zeitfenster, geben Sie Name und E-Mail ein und bestätigen Sie innerhalb von 30 Minuten per E-Mail. Über Meine Reservierungen oder den Mail-Link können Sie ändern oder stornieren."
                 },
                 {
                     "label": "Dokumente",

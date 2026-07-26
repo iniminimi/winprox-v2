@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Filtre por ubicación, equipo y tipo (tareas o incidencias)."
+                    "text": "Filtre por ubicación y tipo (tareas, incidencias o reservas)."
                 }
             ],
             "status_note": "El color y el estado en el calendario siguen el estado de la tarea o incidencia.",
@@ -233,6 +233,38 @@
                 "in_progress": "Trabajo en curso.",
                 "done": "Completada, esperando cierre.",
                 "closed": "Completamente cerrada."
+            }
+        },
+        "reservations": {
+            "title": "Ayuda — Reservas",
+            "actions": [
+                {
+                    "label": "Finalidad",
+                    "text": "Las reservas son para recursos compartidos con franja horaria: salas, vehículos, llaves, … No para incidencias — esas siguen Incidencia → tarea."
+                },
+                {
+                    "label": "Activar",
+                    "text": "Active Reservable en la categoría. Por unidad puede desactivar Permitir reservas. El QR de unidad muestra entonces la baldosa Reservar."
+                },
+                {
+                    "label": "Invitado",
+                    "text": "Un invitado reserva por QR, tiene 30 minutos de retención y confirma por correo. Cambiar o cancelar vía el enlace del correo o de nuevo por QR (nombre/correo en cookie)."
+                },
+                {
+                    "label": "Administración",
+                    "text": "Aquí crea reservas confirmadas de inmediato, edita franjas y cancela. Filtros: próximas, pendientes, confirmadas, pasadas. Abra el calendario para la vista de bloques."
+                },
+                {
+                    "label": "Solapamiento",
+                    "text": "El sistema bloquea franjas solapadas para reservas confirmadas y holds pendientes activos. Los holds caducados expiran a los 30 minutos."
+                }
+            ],
+            "status_note": "Píldoras de estado:",
+            "statuses": {
+                "pending": "Solicitada, esperando confirmación por correo (máx. 30 min).",
+                "confirmed": "Definitiva; visible en el calendario.",
+                "cancelled": "Cancelada por el invitado o el personal.",
+                "expired": "Hold pendiente caducado sin confirmación."
             }
         },
         "team": {
@@ -480,6 +512,10 @@
                 {
                     "label": "Informar incidencia",
                     "text": "Haga clic en «Crear informe», describa el problema y opcionalmente añada hasta cuatro fotos. Se crea entonces una tarea para el equipo. Tenga en cuenta que la incidencia debe aprobarse primero antes de ser visible en el portal. Para evitar spam, se aplican límites: como máximo un informe cada 3 minutos y un máximo de cinco informes por 30 minutos para esta unidad (por dispositivo)."
+                },
+                {
+                    "label": "Reservar",
+                    "text": "Si esta unidad es reservable, verá la baldosa Reservar. Elija un horario, introduzca nombre y correo y confirme en 30 minutos por correo. Mis reservas o el enlace del correo permiten cambiar o cancelar."
                 },
                 {
                     "label": "Documentos",

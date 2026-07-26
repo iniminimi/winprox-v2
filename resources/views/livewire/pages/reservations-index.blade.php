@@ -4,76 +4,113 @@
             <x-wp-page-head-title
                 icon="calendar"
                 :title="__('reservations.title')"
+                help-page="reservations"
                 :subtitle="__('reservations.subtitle')"
             />
         </div>
-        @can('create', App\Models\Reservation::class)
-            <button type="button" class="btn btn--primary btn--sm" wire:click="openCreate">
-                {{ __('reservations.actions.create') }}
-            </button>
-        @endcan
+        <div class="wp-cluster">
+            <a href="{{ $calendarReservationsUrl }}" class="btn btn--ghost btn--sm">{{ __('reservations.actions.open_calendar') }}</a>
+            @can('create', App\Models\Reservation::class)
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreate" @disabled($reservableUnitCount === 0)>
+                    {{ __('reservations.actions.create') }}
+                </button>
+            @endcan
+        </div>
     </div>
 
-    <div class="wp-card wp-card-pad">
-        <div class="wp-table-wrap">
-            <table class="wp-table">
-                <thead>
-                    <tr>
-                        <th>{{ __('reservations.columns.when') }}</th>
-                        <th>{{ __('reservations.columns.unit') }}</th>
-                        <th>{{ __('reservations.columns.guest') }}</th>
-                        <th>{{ __('reservations.columns.status') }}</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($reservations as $reservation)
-                        <tr wire:key="res-{{ $reservation->id }}">
-                            <td>
-                                {{ $reservation->start_at?->format('d-m-Y H:i') }}
-                                –
-                                {{ $reservation->end_at?->format('H:i') }}
-                            </td>
-                            <td>
-                                {{ $reservation->unit?->location?->name }}
-                                ·
-                                {{ $reservation->unit?->name }}
-                            </td>
-                            <td>
-                                {{ $reservation->guestFullName() }}
-                                <div class="wp-muted">{{ $reservation->guest_email }}</div>
-                            </td>
-                            <td>
-                                <span class="wp-pill wp-pill--{{ $reservation->lifecycle()->pillVariant() }}">
-                                    {{ __('reservations.lifecycle.'.$reservation->lifecycle()->value) }}
-                                </span>
-                            </td>
-                            <td class="wp-cluster">
-                                @can('update', $reservation)
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $reservation->id }})">
-                                        {{ __('common.button.edit') }}
-                                    </button>
-                                @endcan
-                                @can('delete', $reservation)
-                                    @if ($reservation->isCancellable())
-                                        <button type="button" class="btn btn--danger btn--sm"
-                                            wire:confirm="{{ __('reservations.public.cancel_confirm') }}"
-                                            wire:click="cancelReservation({{ $reservation->id }})">
-                                            {{ __('reservations.actions.cancel') }}
-                                        </button>
-                                    @endif
-                                @endcan
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="wp-muted">{{ __('reservations.empty') }}</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+    @if ($reservableUnitCount === 0)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <p class="wp-section-title">{{ __('reservations.setup.title') }}</p>
+            <p class="wp-muted">{{ __('reservations.setup.lead') }}</p>
+            <ol class="wp-list-plain wp-text-sm wp-muted wp-stack-tight">
+                @foreach (__('reservations.setup.steps') as $step)
+                    <li>{{ $step }}</li>
+                @endforeach
+            </ol>
+            <div class="wp-cluster">
+                <a href="{{ $locationsUrl }}" class="btn btn--primary btn--sm">{{ __('reservations.setup.cta_locations') }}</a>
+            </div>
         </div>
-        <div class="wp-pagination">{{ $reservations->links() }}</div>
+    @endif
+
+    <div class="wp-card wp-card-pad wp-stack">
+        <div class="wp-cluster wp-cluster--between wp-cluster--wrap">
+            <p class="wp-section-title">{{ __('reservations.list_title') }}</p>
+            <div class="wp-cluster wp-cluster--wrap">
+                <select class="wp-select wp-select--compact" wire:model.live="statusFilter" aria-label="{{ __('reservations.filters.status') }}">
+                    <option value="upcoming">{{ __('reservations.filters.upcoming') }}</option>
+                    <option value="pending">{{ __('reservations.filters.pending') }}</option>
+                    <option value="confirmed">{{ __('reservations.filters.confirmed') }}</option>
+                    <option value="past">{{ __('reservations.filters.past') }}</option>
+                    <option value="all">{{ __('reservations.filters.all') }}</option>
+                </select>
+                <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('reservations.filters.location') }}">
+                    <option value="">{{ __('reservations.filters.all_locations') }}</option>
+                    @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
+        <div class="wp-list">
+            @forelse ($reservations as $reservation)
+                <div class="wp-card wp-card-pad wp-cluster wp-cluster--spread" wire:key="res-{{ $reservation->id }}">
+                    <div class="wp-stack-tight">
+                        <div class="wp-cluster wp-cluster--wrap">
+                            <strong>{{ $reservation->start_at?->format('d-m-Y H:i') }} – {{ $reservation->end_at?->format('H:i') }}</strong>
+                            <span class="wp-pill wp-pill--{{ $reservation->lifecycle()->pillVariant() }}">
+                                {{ __('reservations.lifecycle.'.$reservation->lifecycle()->value) }}
+                            </span>
+                        </div>
+                        <p class="wp-text-body">
+                            {{ $reservation->unit?->location?->name }}
+                            ·
+                            {{ $reservation->unit?->name }}
+                        </p>
+                        <p class="wp-muted wp-text-sm">
+                            {{ $reservation->guestFullName() }}
+                            ·
+                            {{ $reservation->guest_email }}
+                        </p>
+                    </div>
+                    <div class="wp-cluster">
+                        @can('update', $reservation)
+                            @if ($reservation->isEditable())
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $reservation->id }})">
+                                    {{ __('common.button.edit') }}
+                                </button>
+                            @endif
+                        @endcan
+                        @can('delete', $reservation)
+                            @if ($reservation->isCancellable())
+                                <button type="button" class="btn btn--danger btn--sm"
+                                    wire:confirm="{{ __('reservations.public.cancel_confirm') }}"
+                                    wire:click="cancelReservation({{ $reservation->id }})">
+                                    {{ __('reservations.actions.cancel') }}
+                                </button>
+                            @endif
+                        @endcan
+                    </div>
+                </div>
+            @empty
+                <div class="wp-stack-tight">
+                    <p class="wp-section-title">{{ __('reservations.empty_title') }}</p>
+                    <p class="wp-muted">{{ __('reservations.empty_body') }}</p>
+                    @if ($reservableUnitCount > 0)
+                        @can('create', App\Models\Reservation::class)
+                            <button type="button" class="btn btn--primary btn--sm" wire:click="openCreate">
+                                {{ __('reservations.actions.create') }}
+                            </button>
+                        @endcan
+                    @endif
+                </div>
+            @endforelse
+        </div>
+
+        @if ($reservations->hasPages())
+            <div class="wp-pagination">{{ $reservations->links() }}</div>
+        @endif
     </div>
 
     @if ($showForm)
@@ -93,6 +130,7 @@
                         </select>
                         @error('unit_id') <p class="wp-error">{{ $message }}</p> @enderror
                     </label>
+                    <p class="wp-hint">{{ __('reservations.form.staff_hint') }}</p>
                 @endif
                 <label class="wp-field">
                     <span>{{ __('reservations.fields.first_name') }}</span>

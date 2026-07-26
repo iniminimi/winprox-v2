@@ -58,14 +58,15 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and(PageHelp::for('portal.time')['title'])->toBe('Hulp — Clock Point portaal');
 });
 
-it('laadt paginahulp voor e-mail uitschrijvingen', function (): void {
+it('laadt paginahulp voor reserveringen', function (): void {
     app()->setLocale('nl');
 
-    $help = PageHelp::for('platform.email_unsubscribes');
+    $help = PageHelp::for('reservations');
 
     expect($help)->not->toBeNull()
-        ->and($help['title'])->toBe('Hulp — E-mail uitschrijvingen')
-        ->and($help['actions'])->not->toBeEmpty();
+        ->and($help['title'])->toBe('Hulp — Reserveringen')
+        ->and($help['actions'])->not->toBeEmpty()
+        ->and(collect($help['statuses'])->pluck('key')->all())->toContain('pending');
 });
 
 it('laadt paginahulp voor platformaudit', function (): void {

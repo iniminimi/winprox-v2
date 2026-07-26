@@ -17,6 +17,7 @@ final class ManualChapterIcons
         'tasks.list' => 'tasks',
         'tasks.show' => 'tasks',
         'calendar' => 'calendar',
+        'reservations' => 'calendar',
         'dashboard' => 'dashboard',
         'esg.dashboard' => 'sliders',
         'esg.indicators' => 'document',
