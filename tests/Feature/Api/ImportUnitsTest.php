@@ -209,3 +209,68 @@ it('rolls back transaction on database error', function () {
     // For now, we'll just verify the structure handles errors
     expect($action)->toBeInstanceOf(ImportUnitsAction::class);
 });
+
+it('imports units into an existing location without location columns', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Depot Deinze',
+    ]);
+
+    $csvContent = "unit_name,description,category_name\n";
+    $csvContent .= "Takeuchi TB210R,Check hours,Earthmoving\n";
+    $csvContent .= "Compressor,,\n";
+
+    $file = UploadedFile::fake()->createWithContent('units-location.csv', $csvContent);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue()
+        ->and($result['count'])->toBe(2)
+        ->and(Location::where('tenant_id', $tenant->id)->count())->toBe(1)
+        ->and(Unit::where('tenant_id', $tenant->id)->where('location_id', $location->id)->count())->toBe(2);
+
+    $withCategory = Unit::where('name', 'Takeuchi TB210R')->first();
+    expect($withCategory?->category?->name)->toBe('Earthmoving');
+
+    $withoutCategory = Unit::where('name', 'Compressor')->first();
+    expect($withoutCategory?->category_id)->toBeNull();
+});
+
+it('rejects location columns when importing for a scoped location', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvContent = "location_name,unit_name\n";
+    $csvContent .= "Somewhere,Unit 1\n";
+
+    $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and($result['errors'])->not->toBeEmpty()
+        ->and(Unit::where('tenant_id', $tenant->id)->count())->toBe(0);
+});

@@ -89,6 +89,9 @@
                 @if ($units->total() > 0)
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal">{{ __('locations.qr_pack_download') }}</button>
                 @endif
+                @if ($canImportUnitsCsv)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCsvImportModal">{{ __('locations.units_csv.button') }}</button>
+                @endif
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
                 <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
             </div>
@@ -364,7 +367,7 @@
             <form wire:submit="createBulk" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
                     <h2 class="wp-section-title">{{ __('locations.bulk.title') }}</h2>
-                    <x-wp-modal-close wire:click="$set('showBulkModal', false)" />
+                    <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
 
                 <div class="wp-form-grid-2">
@@ -411,7 +414,7 @@
                 @error('bulkFloors') <span class="wp-error">{{ $message }}</span> @enderror
 
                 <div class="wp-row">
-                    <button type="button" class="btn btn--ghost" wire:click="$set('showBulkModal', false)">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeBulkModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="createBulk">
                         <span wire:loading wire:target="createBulk" class="wp-mr-2">
                             <x-wp-spinner size="sm" />
@@ -420,6 +423,47 @@
                     </button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showCsvImportModal)
+        <x-wp-modal closeMethod="closeCsvImportModal" aria-labelledby="location-units-csv-title">
+            <div class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="location-units-csv-title" class="wp-section-title">{{ __('locations.units_csv.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCsvImportModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('locations.units_csv.hint', ['location' => $location->localizedName()]) }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="location-units-csv-file">{{ __('locations.import_file_label') }}</label>
+                        <div class="wp-cluster">
+                            <input type="file" id="location-units-csv-file" class="wp-input wp-grow" wire:model="csvImportFile" accept=".csv" />
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadLocationUnitsSampleCsv">
+                                {{ __('locations.import_sample.download_sample_csv') }}
+                            </button>
+                        </div>
+                        @error('csvImportFile') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    @if ($csvImportErrors !== [])
+                        <div class="wp-flash wp-flash--danger">
+                            <ul class="wp-form-error-list">
+                                @foreach ($csvImportErrors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeCsvImportModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="importUnitsCsv" wire:loading.attr="disabled" wire:target="importUnitsCsv,csvImportFile" :disabled="$csvImportFile === null">
+                        <x-wp-spinner wire:loading wire:target="importUnitsCsv,csvImportFile" class="wp-mr-2" />
+                        <span wire:loading.remove wire:target="importUnitsCsv,csvImportFile">{{ __('locations.import_submit') }}</span>
+                        <span wire:loading wire:target="importUnitsCsv,csvImportFile">{{ __('locations.import_submit_loading') }}</span>
+                    </button>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 

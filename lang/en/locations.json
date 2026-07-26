@@ -6,7 +6,24 @@
     "add": "+ Add new location",
     "import": "CSV import",
     "import_title": "Import units via CSV",
-    "import_hint": "Upload a CSV file (see sample below). The following columns are required: location_name, unit_name. The file must have exactly these headers.",
+    "import_hint": "Organisation-wide import: locations and units in one file. Each row needs location_name and unit_name; address fields are optional. To add units to one existing location only: open that location and use CSV import there.",
+    "units_csv": {
+        "button": "Import units CSV",
+        "title": "Import units via CSV",
+        "hint": "Import units for :location. Required: unit_name. Optional: description, category_name. Location columns are not needed here.",
+        "errors": {
+            "file_required": "Choose a CSV file.",
+            "failed": "Import failed.",
+            "location_not_found": "Location not found.",
+            "unreadable": "CSV file could not be read.",
+            "empty": "CSV file is empty.",
+            "missing_headers": "Missing columns: :columns",
+            "unexpected_headers": "Unknown columns: :columns",
+            "row": "Row :line: :message",
+            "no_rows": "No valid rows found.",
+            "database": "Database error: :message"
+        }
+    },
     "import_file_label": "CSV file",
     "import_submit": "Import",
     "import_submit_loading": "Importing...",

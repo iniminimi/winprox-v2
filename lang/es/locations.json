@@ -6,7 +6,24 @@
     "add": "+ Añadir nueva ubicación",
     "import": "Importación CSV",
     "import_title": "Importar unidades vía CSV",
-    "import_hint": "Suba un archivo CSV (véase el ejemplo abajo). Las siguientes columnas son obligatorias: location_name, unit_name. El archivo debe tener exactamente estos encabezados.",
+    "import_hint": "Importación de toda la organización: ubicaciones y unidades en un archivo. Cada fila necesita location_name y unit_name; los campos de dirección son opcionales. Para unidades en una sola ubicación existente: ábrala y use la importación CSV allí.",
+    "units_csv": {
+        "button": "Importar unidades CSV",
+        "title": "Importar unidades vía CSV",
+        "hint": "Importe unidades para :location. Obligatorio: unit_name. Opcional: description, category_name. No se necesitan columnas de ubicación aquí.",
+        "errors": {
+            "file_required": "Elija un archivo CSV.",
+            "failed": "Error en la importación.",
+            "location_not_found": "Ubicación no encontrada.",
+            "unreadable": "No se pudo leer el archivo CSV.",
+            "empty": "El archivo CSV está vacío.",
+            "missing_headers": "Columnas faltantes: :columns",
+            "unexpected_headers": "Columnas desconocidas: :columns",
+            "row": "Fila :line: :message",
+            "no_rows": "No se encontraron filas válidas.",
+            "database": "Error de base de datos: :message"
+        }
+    },
     "import_file_label": "Archivo CSV",
     "import_submit": "Importar",
     "import_submit_loading": "Importando...",

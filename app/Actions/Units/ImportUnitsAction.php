@@ -12,6 +12,7 @@ use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class ImportUnitsAction
 {
@@ -20,12 +21,14 @@ class ImportUnitsAction
         private EnsureUnitTranslationSlotsAction $ensureTranslationSlots,
     ) {}
 
-    protected array $requiredHeaders = [
+    /** @var list<string> */
+    private const ORG_REQUIRED_HEADERS = [
         'location_name',
         'unit_name',
     ];
 
-    protected array $optionalHeaders = [
+    /** @var list<string> */
+    private const ORG_OPTIONAL_HEADERS = [
         'description',
         'category_name',
         'street',
@@ -36,13 +39,19 @@ class ImportUnitsAction
         'notes',
     ];
 
+    /** @var list<string> */
+    private const LOCATION_REQUIRED_HEADERS = [
+        'unit_name',
+    ];
+
+    /** @var list<string> */
+    private const LOCATION_OPTIONAL_HEADERS = [
+        'description',
+        'category_name',
+    ];
+
     /**
-     * Import units from CSV file.
-     *
-     * @param ImportUnitsData $data
-     * @param int $tenantId
-     * @param int|null $actorUserId
-     * @return array
+     * @return array{success: bool, count?: int, batch_id?: string, errors?: list<string>}
      */
     public function handle(ImportUnitsData $data, int $tenantId, ?int $actorUserId = null): array
     {
@@ -54,15 +63,33 @@ class ImportUnitsAction
             ];
         }
 
-        // Generate unique batch ID for this import
-        $batchId = (string) \Illuminate\Support\Str::uuid();
+        $scopedLocation = null;
+        if ($data->locationId !== null) {
+            $scopedLocation = Location::query()
+                ->where('tenant_id', $tenantId)
+                ->whereKey($data->locationId)
+                ->first();
 
-        // Open and parse CSV
+            if ($scopedLocation === null) {
+                return [
+                    'success' => false,
+                    'errors' => [__('locations.units_csv.errors.location_not_found')],
+                ];
+            }
+        }
+
+        $requiredHeaders = $scopedLocation !== null
+            ? self::LOCATION_REQUIRED_HEADERS
+            : self::ORG_REQUIRED_HEADERS;
+        $optionalHeaders = $scopedLocation !== null
+            ? self::LOCATION_OPTIONAL_HEADERS
+            : self::ORG_OPTIONAL_HEADERS;
+
         $handle = fopen($data->filePath, 'r');
         if ($handle === false) {
             return [
                 'success' => false,
-                'errors' => ['Kon het bestand niet openen.'],
+                'errors' => [__('locations.units_csv.errors.unreadable')],
             ];
         }
 
@@ -72,65 +99,55 @@ class ImportUnitsAction
         if ($headers === false) {
             return [
                 'success' => false,
-                'errors' => ['Het bestand is leeg of ongeldig.'],
+                'errors' => [__('locations.units_csv.errors.empty')],
             ];
         }
 
-        // Normalize headers (trim, lowercase)
-        $headers = array_map(fn($h) => trim(strtolower($h)), $headers);
+        $headers = array_map(fn ($h) => trim(strtolower((string) $h)), $headers);
 
-        // 1. Fail-fast header validation - check for missing required headers
-        $missingHeaders = array_diff($this->requiredHeaders, $headers);
-        if (!empty($missingHeaders)) {
+        $missingHeaders = array_diff($requiredHeaders, $headers);
+        if ($missingHeaders !== []) {
             return [
                 'success' => false,
                 'errors' => [
-                    sprintf(
-                        'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Ontbrekende kolommen: %s',
-                        implode(', ', $missingHeaders)
-                    ),
+                    __('locations.units_csv.errors.missing_headers', [
+                        'columns' => implode(', ', $missingHeaders),
+                    ]),
                 ],
             ];
         }
 
-        // Check for unexpected headers
-        $expectedHeaders = array_merge($this->requiredHeaders, $this->optionalHeaders);
+        $expectedHeaders = array_merge($requiredHeaders, $optionalHeaders);
         $unexpectedHeaders = array_diff($headers, $expectedHeaders);
-        if (!empty($unexpectedHeaders)) {
+        if ($unexpectedHeaders !== []) {
             return [
                 'success' => false,
                 'errors' => [
-                    sprintf(
-                        'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: %s',
-                        implode(', ', $unexpectedHeaders)
-                    ),
+                    __('locations.units_csv.errors.unexpected_headers', [
+                        'columns' => implode(', ', $unexpectedHeaders),
+                    ]),
                 ],
             ];
         }
 
-        // Parse all rows
         $handle = fopen($data->filePath, 'r');
-        fgetcsv($handle); // Skip header row
+        fgetcsv($handle);
 
         $rows = [];
-        $lineNumber = 2; // Start at line 2 (after header)
+        $lineNumber = 2;
 
         while (($row = fgetcsv($handle)) !== false) {
             if (array_filter($row) === []) {
-                // Skip empty rows
                 $lineNumber++;
                 continue;
             }
 
-            // Skip rows with mismatched column count
             if (count($row) !== count($headers)) {
                 $lineNumber++;
                 continue;
             }
 
-            // Trim row to match header count (handle trailing empty columns)
             $row = array_slice($row, 0, count($headers));
-
             $dataRow = array_combine($headers, $row);
             $dataRow['_line_number'] = $lineNumber;
             $rows[] = $dataRow;
@@ -139,7 +156,6 @@ class ImportUnitsAction
 
         fclose($handle);
 
-        // 2. Content validation (collect all errors)
         $errors = [];
         $validatedRows = [];
 
@@ -147,37 +163,64 @@ class ImportUnitsAction
             $lineNumber = $row['_line_number'];
             unset($row['_line_number']);
 
-            $validator = Validator::make($row, [
-                'location_name' => 'required|string|max:255',
-                'unit_name' => 'required|string|max:255',
-                'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
-                'category_name' => 'required|string|max:255',
-                'street' => 'nullable|string|max:255',
-                'house_number' => 'nullable|string|max:50',
-                'postal_code' => 'nullable|string|max:20',
-                'city' => 'nullable|string|max:255',
-                'country_code' => 'nullable|string|max:2',
-                'notes' => 'nullable|string|max:2000',
-            ]);
+            $rules = $scopedLocation !== null
+                ? [
+                    'unit_name' => 'required|string|max:255',
+                    'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
+                    'category_name' => 'nullable|string|max:255',
+                ]
+                : [
+                    'location_name' => 'required|string|max:255',
+                    'unit_name' => 'required|string|max:255',
+                    'description' => 'nullable|string|max:'.TextDescriptionLimits::MAX,
+                    'category_name' => 'required|string|max:255',
+                    'street' => 'nullable|string|max:255',
+                    'house_number' => 'nullable|string|max:50',
+                    'postal_code' => 'nullable|string|max:20',
+                    'city' => 'nullable|string|max:255',
+                    'country_code' => 'nullable|string|max:2',
+                    'notes' => 'nullable|string|max:2000',
+                ];
+
+            $validator = Validator::make($row, $rules);
 
             if ($validator->fails()) {
                 foreach ($validator->errors()->all() as $error) {
-                    $errors[] = "Rij {$lineNumber}: {$error}";
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $lineNumber,
+                        'message' => $error,
+                    ]);
                 }
             } else {
                 $validatedRows[] = $row;
             }
         }
 
-        // If there are errors, reject the entire file
-        if (!empty($errors)) {
+        if ($errors !== []) {
             return [
                 'success' => false,
                 'errors' => $errors,
             ];
         }
 
-        // 3. Import within a database transaction
+        if ($validatedRows === []) {
+            return [
+                'success' => false,
+                'errors' => [__('locations.units_csv.errors.no_rows')],
+            ];
+        }
+
+        try {
+            $tenant->assertCanAddUnits(count($validatedRows));
+        } catch (\InvalidArgumentException) {
+            return [
+                'success' => false,
+                'errors' => [__('locations.errors.unit_limit')],
+            ];
+        }
+
+        $batchId = (string) Str::uuid();
+
         DB::beginTransaction();
         try {
             $importedCount = 0;
@@ -185,44 +228,49 @@ class ImportUnitsAction
             $createdCategoryIds = [];
 
             foreach ($validatedRows as $row) {
-                // Find or create location
-                $location = Location::firstOrCreate(
-                    [
-                        'tenant_id' => $tenantId,
-                        'name' => $row['location_name'],
-                    ],
-                    [
-                        'country_code' => $row['country_code'] ?? 'BE',
-                        'street' => $row['street'] ?? null,
-                        'house_number' => $row['house_number'] ?? null,
-                        'postal_code' => $row['postal_code'] ?? null,
-                        'city' => $row['city'] ?? null,
-                        'notes' => $row['notes'] ?? null,
-                        'is_active' => true,
-                    ]
-                );
+                if ($scopedLocation !== null) {
+                    $location = $scopedLocation;
+                } else {
+                    $location = Location::firstOrCreate(
+                        [
+                            'tenant_id' => $tenantId,
+                            'name' => $row['location_name'],
+                        ],
+                        [
+                            'country_code' => $row['country_code'] ?? 'BE',
+                            'street' => $row['street'] ?? null,
+                            'house_number' => $row['house_number'] ?? null,
+                            'postal_code' => $row['postal_code'] ?? null,
+                            'city' => $row['city'] ?? null,
+                            'notes' => $row['notes'] ?? null,
+                            'is_active' => true,
+                        ]
+                    );
 
-                if ($location->wasRecentlyCreated) {
-                    $createdLocationIds[$location->id] = $location->id;
+                    if ($location->wasRecentlyCreated) {
+                        $createdLocationIds[$location->id] = $location->id;
+                    }
                 }
 
-                // Find or create category
-                $category = Category::firstOrCreate(
-                    [
-                        'tenant_id' => $tenantId,
-                        'name' => trim($row['category_name']),
-                    ],
-                    [
-                        'is_active' => true,
-                    ]
-                );
+                $categoryId = null;
+                $categoryName = trim((string) ($row['category_name'] ?? ''));
+                if ($categoryName !== '') {
+                    $category = Category::firstOrCreate(
+                        [
+                            'tenant_id' => $tenantId,
+                            'name' => $categoryName,
+                        ],
+                        [
+                            'is_active' => true,
+                        ]
+                    );
 
-                if ($category->wasRecentlyCreated) {
-                    $createdCategoryIds[$category->id] = $category->id;
+                    if ($category->wasRecentlyCreated) {
+                        $createdCategoryIds[$category->id] = $category->id;
+                    }
+                    $categoryId = $category->id;
                 }
-                $categoryId = $category->id;
 
-                // Create unit
                 $unit = Unit::create([
                     'tenant_id' => $tenantId,
                     'location_id' => $location->id,
@@ -239,7 +287,6 @@ class ImportUnitsAction
                 $importedCount++;
             }
 
-            // Audit logging
             $this->logAudit(
                 $tenantId,
                 $actorUserId,
@@ -248,6 +295,7 @@ class ImportUnitsAction
                 $data->originalName,
                 array_values($createdLocationIds),
                 array_values($createdCategoryIds),
+                $scopedLocation?->id,
             );
 
             DB::commit();
@@ -259,15 +307,28 @@ class ImportUnitsAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+
             return [
                 'success' => false,
-                'errors' => ['Er is een databasefout opgetreden tijdens het importeren: ' . $e->getMessage()],
+                'errors' => [__('locations.units_csv.errors.database', ['message' => $e->getMessage()])],
             ];
         }
     }
 
-    protected function logAudit(int $tenantId, ?int $actorUserId, int $count, string $batchId, string $fileName, array $createdLocationIds = [], array $createdCategoryIds = []): void
-    {
+    /**
+     * @param  list<int>  $createdLocationIds
+     * @param  list<int>  $createdCategoryIds
+     */
+    protected function logAudit(
+        int $tenantId,
+        ?int $actorUserId,
+        int $count,
+        string $batchId,
+        string $fileName,
+        array $createdLocationIds = [],
+        array $createdCategoryIds = [],
+        ?int $locationId = null,
+    ): void {
         $this->audit->record(
             userId: $actorUserId,
             tenantId: $tenantId,
@@ -278,6 +339,7 @@ class ImportUnitsAction
                 'count' => $count,
                 'batch_id' => $batchId,
                 'file_name' => $fileName,
+                'location_id' => $locationId,
                 'created_location_ids' => $createdLocationIds,
                 'created_category_ids' => $createdCategoryIds,
             ],

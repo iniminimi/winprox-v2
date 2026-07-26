@@ -12,11 +12,14 @@ use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
+use App\Actions\Units\ImportUnitsAction;
+use App\Data\Units\ImportUnitsData;
 use App\Http\Requests\Locations\BulkCreateUnitsRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\StoreUnitRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Http\Requests\Locations\UpdateUnitRequest;
+use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Models\Category;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
@@ -24,11 +27,13 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\EntityDetailNavigation;
 use App\Support\Qr\QrStickerSheetTemplate;
+use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Models\QrLinkPhoto;
 use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 use App\Support\Units\UnitBulkBatchRegistry;
 use App\Support\Units\UnitBulkNaming;
 use App\Support\Units\UnitDeletionGuard;
@@ -56,6 +61,14 @@ class Show extends Component
     public bool $showUnitModal = false;
 
     public bool $showBulkModal = false;
+
+    public bool $showCsvImportModal = false;
+
+    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    public $csvImportFile = null;
+
+    /** @var list<string> */
+    public array $csvImportErrors = [];
 
     public bool $showQrPackModal = false;
 
@@ -398,6 +411,100 @@ class Show extends Component
         $this->showBulkModal = true;
     }
 
+    public function closeBulkModal(): void
+    {
+        $this->showBulkModal = false;
+    }
+
+    public function openCsvImportModal(): void
+    {
+        $this->authorize('create', Unit::class);
+        abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
+
+        $this->csvImportFile = null;
+        $this->csvImportErrors = [];
+        $this->showCsvImportModal = true;
+    }
+
+    public function closeCsvImportModal(): void
+    {
+        $this->showCsvImportModal = false;
+        $this->csvImportFile = null;
+        $this->csvImportErrors = [];
+    }
+
+    public function importUnitsCsv(ImportUnitsAction $importUnits): void
+    {
+        $this->authorize('create', Unit::class);
+        abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
+
+        if ($this->csvImportFile === null) {
+            $this->csvImportErrors = [__('locations.units_csv.errors.file_required')];
+
+            return;
+        }
+
+        $validator = Validator::make(
+            ['file' => $this->csvImportFile],
+            ImportUnitsRequest::getReusableRules(),
+            ImportUnitsRequest::getReusableMessages()
+        );
+
+        if ($validator->fails()) {
+            $this->csvImportErrors = $validator->errors()->all();
+
+            return;
+        }
+
+        $result = $importUnits->handle(
+            new ImportUnitsData(
+                filePath: $this->csvImportFile->getRealPath(),
+                originalName: $this->csvImportFile->getClientOriginalName(),
+                locationId: (int) $this->location->id,
+            ),
+            (int) Tenancy::id(),
+            (int) auth()->id(),
+        );
+
+        if ($result['success']) {
+            session()->flash('success', __('locations.flash.imported', ['count' => $result['count']]));
+            $this->closeCsvImportModal();
+            $this->location->refresh();
+
+            return;
+        }
+
+        $this->csvImportErrors = $result['errors'] ?? [__('locations.units_csv.errors.failed')];
+    }
+
+    public function downloadLocationUnitsSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $this->authorize('create', Unit::class);
+        abort_unless($this->locationTenant()?->hasCsvUnitsImport() ?? false, 403);
+
+        $headers = ['unit_name', 'description', 'category_name'];
+        $sampleRow = [
+            __('locations.import_sample.sample_unit_name'),
+            __('locations.import_sample.sample_description'),
+            __('locations.import_sample.sample_category_name'),
+        ];
+
+        return response()->streamDownload(function () use ($headers, $sampleRow) {
+            echo "\xEF\xBB\xBF";
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fputcsv($file, $sampleRow);
+            fclose($file);
+        }, 'units-location-sample.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    private function locationTenant(): ?Tenant
+    {
+        return Tenant::query()->find($this->location->tenant_id);
+    }
+
     /**
      * @return list<string>
      */
@@ -586,6 +693,7 @@ class Show extends Component
             'previewDescription' => $previewDescription,
             'previewDescriptionMissing' => $previewDescriptionMissing,
             'descriptionLocales' => config('locales.labels', []),
+            'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
         ]);
     }
 

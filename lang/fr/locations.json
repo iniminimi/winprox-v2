@@ -6,7 +6,24 @@
     "add": "+ Ajouter un site",
     "import": "Import CSV",
     "import_title": "Importer des unités via CSV",
-    "import_hint": "Téléchargez un fichier CSV (voir exemple ci-dessous). Les colonnes suivantes sont obligatoires : location_name, unit_name. Le fichier doit avoir exactement ces en-têtes.",
+    "import_hint": "Import à l'échelle de l'organisation : lieux et unités dans un seul fichier. Chaque ligne nécessite location_name et unit_name ; les champs d'adresse sont optionnels. Pour des unités sur un seul lieu existant : ouvrez ce lieu et utilisez l'import CSV là-bas.",
+    "units_csv": {
+        "button": "Importer unités CSV",
+        "title": "Importer des unités via CSV",
+        "hint": "Importer des unités pour :location. Obligatoire : unit_name. Optionnel : description, category_name. Pas de colonnes de lieu ici.",
+        "errors": {
+            "file_required": "Choisissez un fichier CSV.",
+            "failed": "Échec de l'import.",
+            "location_not_found": "Lieu introuvable.",
+            "unreadable": "Le fichier CSV n'a pas pu être lu.",
+            "empty": "Le fichier CSV est vide.",
+            "missing_headers": "Colonnes manquantes : :columns",
+            "unexpected_headers": "Colonnes inconnues : :columns",
+            "row": "Ligne :line : :message",
+            "no_rows": "Aucune ligne valide trouvée.",
+            "database": "Erreur de base de données : :message"
+        }
+    },
     "import_file_label": "Fichier CSV",
     "import_submit": "Importer",
     "import_submit_loading": "Importation en cours...",

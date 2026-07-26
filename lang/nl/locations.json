@@ -6,7 +6,24 @@
     "add": "+ Nieuwe locatie toevoegen",
     "import": "CSV import",
     "import_title": "Units importeren via CSV",
-    "import_hint": "Upload een CSV-bestand (zie voorbeeld hieronder). Volgende kolommen moeten verplicht ingevuld worden: location_name, unit_name. Het bestand moet exact deze headers hebben.",
+    "import_hint": "Organisatie-brede import: locaties én units in één bestand. Elke rij heeft location_name (verplicht) en unit_name (verplicht); adresvelden zijn optioneel. Voor alleen units op één bestaande locatie: open die locatie en gebruik daar CSV import.",
+    "units_csv": {
+        "button": "CSV units importeren",
+        "title": "Units importeren via CSV",
+        "hint": "Importeer units voor :location. Verplicht: unit_name. Optioneel: description, category_name. Locatiekolommen zijn hier niet nodig.",
+        "errors": {
+            "file_required": "Kies een CSV-bestand.",
+            "failed": "Import mislukt.",
+            "location_not_found": "Locatie niet gevonden.",
+            "unreadable": "CSV-bestand kon niet worden gelezen.",
+            "empty": "CSV-bestand is leeg.",
+            "missing_headers": "Ontbrekende kolommen: :columns",
+            "unexpected_headers": "Onbekende kolommen: :columns",
+            "row": "Rij :line: :message",
+            "no_rows": "Geen geldige rijen gevonden.",
+            "database": "Databasefout: :message"
+        }
+    },
     "import_file_label": "CSV-bestand",
     "import_submit": "Importeren",
     "import_submit_loading": "Bezig met importeren...",
