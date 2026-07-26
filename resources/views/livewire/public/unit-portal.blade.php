@@ -576,7 +576,7 @@
                         @if ($reservation->isCancellable())
                             <div class="wp-cluster wp-cluster--tight">
                                 <a class="btn btn--ghost btn--sm" href="{{ route('reservations.manage', ['token' => $reservation->manage_token]) }}" target="_blank" rel="noopener">
-                                    {{ __('portal.reservations.manage_link') }}
+                                    {{ __('portal.reservations.manage') }}
                                 </a>
                                 <button type="button" class="btn btn--danger btn--sm" wire:confirm="{{ __('portal.reservations.cancel_confirm') }}" wire:click="cancelMyReservation({{ $reservation->id }})">
                                     {{ __('common.button.cancel') }}
