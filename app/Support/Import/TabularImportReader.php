@@ -81,6 +81,9 @@ final class TabularImportReader
                 static fn ($h) => trim(strtolower((string) $h)),
                 $headers,
             );
+            if ($headers !== []) {
+                $headers[0] = ltrim($headers[0], "\xEF\xBB\xBF");
+            }
 
             $rows = [];
             $line = 2;

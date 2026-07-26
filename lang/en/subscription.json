@@ -63,7 +63,7 @@
             "name": "WinProx Time",
             "price": "€149 / month",
             "scale": "Up to 10 units/locations/documents/photos for your organisation.",
-            "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV import.",
+            "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV/Excel import.",
             "description": "Unlimited QR issues and tasks within your locations and units.",
             "features": [
                 "Time module: clock in/out, breaks, shifts and QR Clock Points.",
@@ -74,8 +74,8 @@
             "name": "WinProx Facility",
             "price": "€399 / month",
             "scale": "Up to 100 units/locations/documents/photos for your organisation.",
-            "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV import.",
-            "description": "Full facility workflows at larger scale. WinProx Time included. CSV bulk import for units and workers.",
+            "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV/Excel import.",
+            "description": "Full facility workflows at larger scale. WinProx Time included. CSV/Excel bulk import for units and workers.",
             "features": [
                 "Unlimited QR issues and tasks within your locations and units.",
                 "No API access."
@@ -106,7 +106,7 @@
         "plan_invalid": "This plan is not available.",
         "admin_only": "Only an administrator can choose a subscription.",
         "activation_disabled": "Self-activation is disabled. Contact WinProx.",
-        "csv_workers_not_allowed": "CSV worker import is not available on your plan.",
-        "csv_units_not_allowed": "CSV unit import requires WinProx Facility or Corporate."
+        "csv_workers_not_allowed": "CSV/Excel worker import is not available on your plan.",
+        "csv_units_not_allowed": "CSV/Excel unit import requires WinProx Facility or Corporate."
     }
 }

@@ -279,12 +279,12 @@
                     "text": "Supprimez définitivement un worker du système. Tout l'historique et les tâches de ce worker sont conservés, mais le worker ne peut plus être utilisé."
                 },
                 {
-                    "label": "Import CSV",
-                    "text": "Importez des intervenants en masse via un fichier CSV. Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, external_id (optionnels). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. L'annulation supprime les intervenants sans appareil lié et nettoie les équipes vides créées par l'import. Les intervenants liés à un appareil (worker_device) sont toujours conservés."
+                    "label": "Import",
+                    "text": "Importez des intervenants en masse via CSV ou Excel (.xlsx). Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, external_id (optionnels). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. L'annulation supprime les intervenants sans appareil lié et nettoie les équipes vides créées par l'import. Les intervenants liés à un appareil (worker_device) sont toujours conservés."
                 },
                 {
-                    "label": "Imports CSV récents",
-                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'exécutants. Cliquez sur 'Annuler l'import' pour supprimer les exécutants de ce lot. Seuls les exécutants sans appareil lié sont supprimés — les exécutants déjà connectés via le QR Clock Point (et donc avec un appareil actif) restent et sont indiqués comme 'a des appareils'. Le bouton disparaît lorsque tous les exécutants d'un lot ont été supprimés."
+                    "label": "Imports récents",
+                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'exécutants. Cliquez sur Annuler l'import pour supprimer les exécutants de ce lot. Seuls les exécutants sans appareil lié sont supprimés — les exécutants déjà connectés via le QR Clock Point (et donc avec un appareil actif) restent et sont indiqués comme a des appareils. Le bouton disparaît lorsque tous les exécutants d'un lot ont été supprimés."
                 }
             ]
         },
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "En ai-je besoin ?",
-                    "text": "En général non. Si vous utilisez WinProx uniquement via le site web et les QR codes, vous n'avez rien à configurer ici.<br><br>Pour une mise en place ponctuelle : vous souhaitez importer des milliers d'unités ou d'intervenants en une fois ? Utilisez l'import CSV sur un lieu (unités) ou dans Équipes (intervenants). C'est souvent plus rapide et plus simple pour une première migration.<br><br>Pour l'automatisation continue : cette page API s'adresse aux administrateurs ou partenaires IT qui souhaitent construire une connexion en direct pour que les systèmes communiquent automatiquement (p. ex. couplage ERP en temps réel ou tableaux de bord personnalisés)."
+                    "text": "En général non. Si vous utilisez WinProx uniquement via le site web et les QR codes, vous n'avez rien à configurer ici.<br><br>Pour une mise en place ponctuelle : vous souhaitez importer des milliers d'unités ou d'intervenants en une fois ? Utilisez l'import CSV/Excel sur un lieu (unités) ou dans Équipes (intervenants). C'est souvent plus rapide et plus simple pour une première migration.<br><br>Pour l'automatisation continue : cette page API s'adresse aux administrateurs ou partenaires IT qui souhaitent construire une connexion en direct pour que les systèmes communiquent automatiquement (p. ex. couplage ERP en temps réel ou tableaux de bord personnalisés)."
                 },
                 {
                     "label": "API — c'est quoi ?",

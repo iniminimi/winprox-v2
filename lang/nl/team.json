@@ -82,11 +82,10 @@
         "reset_icon": "Icoon resetten",
         "deactivate": "Deactiveren",
         "activate": "Activeren",
-        "import": "CSV import",
-        "import_title": "Uitvoerders importeren",
-        "import_hint": "Importeer uitvoerders in bulk via een CSV-bestand. Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, external_id. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
-        "import_download_sample": "Voorbeeldbestand downloaden",
-        "import_file_label": "CSV-bestand",
+        "import": "Import",
+        "import_title": "Uitvoerders importeren (CSV / Excel)",
+        "import_hint": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, external_id. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
+        "import_file_label": "CSV- of Excel-bestand (.xlsx)",
         "import_submit": "Importeren",
         "flash": {
             "imported": ":count uitvoerder(s) succesvol geïmporteerd."
@@ -105,10 +104,22 @@
             "edit_title": "Uitvoerder bewerken",
             "edit_subtitle": "Pas de gegevens van deze uitvoerder aan.",
             "save": "Uitvoerder opslaan"
+        },
+        "import_download_sample_csv": "Download voorbeeld-CSV",
+        "import_download_sample_xlsx": "Download voorbeeld-xlsx",
+        "errors": {
+            "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
+            "unreadable": "Kon het bestand niet openen.",
+            "empty": "Het bestand is leeg of ongeldig.",
+            "missing_headers": "De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Ontbrekende kolommen: :columns",
+            "unexpected_headers": "De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: :columns",
+            "row": "Rij :line: :message",
+            "no_rows": "Geen geldige rijen gevonden.",
+            "database": "Er is een databasefout opgetreden tijdens het importeren: :message"
         }
     },
     "import_history": {
-        "title": "Recente CSV-imports",
+        "title": "Recente imports",
         "hint": "Ongedaan maken verwijdert uitvoerders zonder gekoppeld toestel en lege teams die door de import zijn aangemaakt.",
         "unknown_file": "Onbekend bestand",
         "worker_count": ":count uitvoerder(s)",

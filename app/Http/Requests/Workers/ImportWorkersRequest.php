@@ -14,7 +14,7 @@ class ImportWorkersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'required|file|mimes:csv,txt|max:10240',
+            'file' => 'required|file|mimes:csv,txt,xlsx|max:10240',
         ];
     }
 
@@ -22,15 +22,15 @@ class ImportWorkersRequest extends FormRequest
     {
         return [
             'file.required' => 'Er moet een bestand worden geüpload.',
-            'file.mimes'    => 'Het bestand moet een CSV-bestand zijn.',
-            'file.max'      => 'Het bestand mag maximaal 10MB groot zijn.',
+            'file.mimes' => 'Het bestand moet CSV of Excel (.xlsx) zijn.',
+            'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
         ];
     }
 
     public static function getReusableRules(): array
     {
         return [
-            'file' => 'required|file|mimes:csv,txt|max:10240',
+            'file' => 'required|file|mimes:csv,txt,xlsx|max:10240',
         ];
     }
 
@@ -38,8 +38,8 @@ class ImportWorkersRequest extends FormRequest
     {
         return [
             'file.required' => 'Er moet een bestand worden geüpload.',
-            'file.mimes'    => 'Het bestand moet een CSV-bestand zijn.',
-            'file.max'      => 'Het bestand mag maximaal 10MB groot zijn.',
+            'file.mimes' => 'Het bestand moet CSV of Excel (.xlsx) zijn.',
+            'file.max' => 'Het bestand mag maximaal 10MB groot zijn.',
         ];
     }
 }

@@ -73,6 +73,32 @@ it('imports workers with all fields successfully', function () {
     unlink($csvPath);
 });
 
+it('imports workers from an Excel xlsx file', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $xlsxPath = tempnam(sys_get_temp_dir(), 'workers_xlsx_').'.xlsx';
+    \App\Support\Import\MinimalXlsxWriter::write($xlsxPath, [
+        ['team_name', 'first_name', 'last_name', 'email'],
+        ['Excel Team', 'Anna', 'Anders', 'anna@bedrijf.be'],
+        ['Excel Team', 'Bert', 'Bos', ''],
+    ]);
+
+    $result = app(ImportWorkersAction::class)->handle(
+        new ImportWorkersData(filePath: $xlsxPath, originalName: 'workers.xlsx'),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeTrue()
+        ->and($result['count'])->toBe(2)
+        ->and(Worker::where('tenant_id', $tenant->id)->count())->toBe(2)
+        ->and(InternalTeam::where('tenant_id', $tenant->id)->where('name', 'Excel Team')->exists())->toBeTrue();
+
+    @unlink($xlsxPath);
+});
+
 // ---------------------------------------------------------------------------
 // Scenario 2: Succesvolle import zonder optionele velden
 // ---------------------------------------------------------------------------

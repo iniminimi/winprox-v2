@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Up to 10 units / sites / documents / photos",
-                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV)",
+                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV/Excel)",
                     "announcements": "€149 / month · Time module included",
                     "documents": "QR issues and tasks within your limits · no API",
                     "description": "Ideal to start with time tracking and basic facility workflows."
                 },
                 "facility": {
                     "units": "Up to 100 units / sites / documents / photos",
-                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV)",
+                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV/Excel)",
                     "announcements": "€399 / month · Time included",
-                    "documents": "CSV import for units and workers · no API",
+                    "documents": "CSV/Excel import for units and workers · no API",
                     "description": "Full facility workflows at scale, including WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Go to Team: create teams, add field workers (manually or CSV), link teams to units and optionally to categories. Print or email the team QR and Clock Point QR for the shop floor.",
+            "body": "Go to Team: create teams, add field workers (manually, CSV or Excel), link teams to units and optionally to categories. Print or email the team QR and Clock Point QR for the shop floor.",
             "summary": "Teams under Team; link to units/categories; Clock Point and team QR for the floor."
         },
         "team_follow_up": {

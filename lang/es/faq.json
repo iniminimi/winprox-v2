@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Hasta 10 units / sitios / documentos / fotos",
-                    "users": "1 administrador + 1 personal · operarios ilimitados (CSV)",
+                    "users": "1 administrador + 1 personal · operarios ilimitados (CSV/Excel)",
                     "announcements": "149 € / mes · módulo Time incluido",
                     "documents": "Incidencias QR y tareas dentro de sus límites · sin API",
                     "description": "Ideal para empezar con registro horario y workflows facility básicos."
                 },
                 "facility": {
                     "units": "Hasta 100 units / sitios / documentos / fotos",
-                    "users": "1 administrador + hasta 4 personal · operarios ilimitados (CSV)",
+                    "users": "1 administrador + hasta 4 personal · operarios ilimitados (CSV/Excel)",
                     "announcements": "399 € / mes · Time incluido",
-                    "documents": "Importación CSV para units y workers · sin API",
+                    "documents": "Importación CSV/Excel para units y workers · sin API",
                     "description": "Workflows facility completos a mayor escala, incluyendo WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Vaya a Team: cree equipos, añada operarios (manual o CSV), vincule equipos a units y opcionalmente a categorías. Imprima o envíe el QR equipo y QR Clock Point para la planta.",
+            "body": "Vaya a Team: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a units y opcionalmente a categorías. Imprima o envíe el QR equipo y QR Clock Point para la planta.",
             "summary": "Equipos en Team; vincular a units/categorías; QR Clock Point y equipo para la planta."
         },
         "team_follow_up": {

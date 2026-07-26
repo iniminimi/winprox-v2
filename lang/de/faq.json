@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Bis zu 10 Units / Standorte / Dokumente / Fotos",
-                    "users": "1 Administrator + 1 Mitarbeiter · unbegrenzt Ausführende (CSV)",
+                    "users": "1 Administrator + 1 Mitarbeiter · unbegrenzt Ausführende (CSV/Excel)",
                     "announcements": "149 € / Monat · Time-Modul inklusive",
                     "documents": "QR-Meldungen und Aufgaben innerhalb Ihrer Limits · keine API",
                     "description": "Ideal zum Start mit Zeiterfassung und grundlegenden Facility-Workflows."
                 },
                 "facility": {
                     "units": "Bis zu 100 Units / Standorte / Dokumente / Fotos",
-                    "users": "1 Administrator + bis zu 4 Mitarbeiter · unbegrenzt Ausführende (CSV)",
+                    "users": "1 Administrator + bis zu 4 Mitarbeiter · unbegrenzt Ausführende (CSV/Excel)",
                     "announcements": "399 € / Monat · Time inklusive",
-                    "documents": "CSV-Import für Units und Workers · keine API",
+                    "documents": "CSV/Excel-Import für Units und Workers · keine API",
                     "description": "Vollständige Facility-Workflows in größerem Maßstab, inklusive WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Gehen Sie zu Team: erstellen Sie Teams, fügen Sie Ausführende hinzu (manuell oder CSV), verknüpfen Sie Teams mit Units und optional mit Kategorien. Drucken oder mailen Sie den Team-QR und Clock-Point-QR für die Werkstatt.",
+            "body": "Gehen Sie zu Team: erstellen Sie Teams, fügen Sie Ausführende hinzu (manuell, CSV oder Excel), verknüpfen Sie Teams mit Units und optional mit Kategorien. Drucken oder mailen Sie den Team-QR und Clock-Point-QR für die Werkstatt.",
             "summary": "Teams unter Team; Verknüpfung mit Units/Kategorien; Clock-Point- und Team-QR für die Werkstatt."
         },
         "team_follow_up": {

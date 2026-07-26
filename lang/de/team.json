@@ -82,11 +82,10 @@
         "reset_icon": "Symbol zurücksetzen",
         "deactivate": "Deaktivieren",
         "activate": "Aktivieren",
-        "import": "CSV-Import",
-        "import_title": "Mitarbeiter importieren",
-        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über eine CSV-Datei. Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, external_id. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
-        "import_download_sample": "Beispieldatei herunterladen",
-        "import_file_label": "CSV-Datei",
+        "import": "Import",
+        "import_title": "Mitarbeiter importieren (CSV / Excel)",
+        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, external_id. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
+        "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
         "import_submit": "Importieren",
         "flash": {
             "imported": ":count Mitarbeiter erfolgreich importiert."
@@ -105,10 +104,22 @@
             "edit_title": "Mitarbeiter bearbeiten",
             "edit_subtitle": "Aktualisieren Sie die Daten dieses Mitarbeiters.",
             "save": "Mitarbeiter speichern"
+        },
+        "import_download_sample_csv": "Beispiel-CSV herunterladen",
+        "import_download_sample_xlsx": "Beispiel-XLSX herunterladen",
+        "errors": {
+            "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
+            "unreadable": "Die Datei konnte nicht geöffnet werden.",
+            "empty": "Die Datei ist leer oder ungültig.",
+            "missing_headers": "Die Spalten in Ihrer Datei stimmen nicht mit der WinProx-Vorlage überein. Fehlende Spalten: :columns",
+            "unexpected_headers": "Die Spalten in Ihrer Datei stimmen nicht mit der WinProx-Vorlage überein. Unerwartete Spalten: :columns",
+            "row": "Zeile :line: :message",
+            "no_rows": "Keine gültigen Zeilen gefunden.",
+            "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message"
         }
     },
     "import_history": {
-        "title": "Letzte CSV-Imports",
+        "title": "Letzte Imports",
         "hint": "Rükgängig entfernt Mitarbeiter ohne verknüpftes Gerät und leere Teams, die durch den Import erstellt wurden.",
         "unknown_file": "Unbekannte Datei",
         "worker_count": ":count Mitarbeiter",

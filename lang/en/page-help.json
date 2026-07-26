@@ -279,12 +279,12 @@
                     "text": "Permanently remove a worker from the system. All history and tasks for this worker are preserved, but the worker can no longer be used."
                 },
                 {
-                    "label": "CSV import",
-                    "text": "Import workers in bulk via a CSV file. The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, external_id (optional). If the headers don't match or if required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they don't exist yet. Undo removes workers without a linked device and cleans up empty teams created by the import. Workers linked to a device (worker_device) are always kept."
+                    "label": "Import",
+                    "text": "Import workers in bulk via CSV or Excel (.xlsx). The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, external_id (optional). If the headers do not match or required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they do not exist yet. Undo removes workers without a linked device and cleans up empty teams created by the import. Workers linked to a device (worker_device) are always kept."
                 },
                 {
-                    "label": "Recent CSV imports",
-                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click 'Undo import' to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as 'has devices'. The button disappears once all workers in a batch have been deleted."
+                    "label": "Recent imports",
+                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click Undo import to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as has devices. The button disappears once all workers in a batch have been deleted."
                 }
             ]
         },
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Do I need this?",
-                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of units or workers at once? Use the CSV import on a location (units) or on Teams (workers). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
+                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of units or workers at once? Use the CSV/Excel import on a location (units) or on Teams (workers). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
                 },
                 {
                     "label": "API — what is it?",

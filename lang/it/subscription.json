@@ -56,29 +56,40 @@
         "cta": "Vedi abbonamento"
     },
     "plans": {
-        "trial": { "name": "Prova" },
+        "trial": {
+            "name": "Prova"
+        },
         "time": {
             "name": "WinProx Time",
             "price": "€149 / mese",
             "scale": "Fino a 10 unità/sedi/documenti/foto per la tua organizzazione.",
-            "users": "1 amministratore e 1 collaboratore inclusi. Lavoratori illimitati via import CSV.",
+            "users": "Include 1 amministratore e 1 collaboratore. Lavoratori illimitati via import CSV/Excel.",
             "description": "Segnalazioni e attività QR illimitate nelle tue sedi e unità.",
-            "features": ["Modulo Time: timbrature, pause, turni e QR Clock Points.", "Nessun accesso API."]
+            "features": [
+                "Modulo Time: timbrature, pause, turni e QR Clock Points.",
+                "Nessun accesso API."
+            ]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / mese",
             "scale": "Fino a 100 unità/sedi/documenti/foto per la tua organizzazione.",
-            "users": "1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV.",
-            "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import CSV massivo.",
-            "features": ["Segnalazioni e attività illimitate.", "Nessun accesso API."]
+            "users": "Include 1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV/Excel.",
+            "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import massivo CSV/Excel per unità e lavoratori.",
+            "features": [
+                "Segnalazioni e attività illimitate.",
+                "Nessun accesso API."
+            ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / mese",
             "scale": "Dati illimitati.",
             "description": "Per grandi portafogli e integrazioni.",
-            "features": ["ESG, API e webhook inclusi.", "Supporto prioritario."]
+            "features": [
+                "ESG, API e webhook inclusi.",
+                "Supporto prioritario."
+            ]
         }
     },
     "stripe": {
@@ -95,7 +106,7 @@
         "plan_invalid": "Questo piano non è disponibile.",
         "admin_only": "Solo un amministratore può scegliere un abbonamento.",
         "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
-        "csv_workers_not_allowed": "Import CSV lavoratori non disponibile sul tuo piano.",
-        "csv_units_not_allowed": "Import CSV unità richiede WinProx Facility o Corporate."
+        "csv_workers_not_allowed": "Import CSV/Excel lavoratori non disponibile sul tuo piano.",
+        "csv_units_not_allowed": "Import CSV/Excel unità richiede WinProx Facility o Corporate."
     }
 }

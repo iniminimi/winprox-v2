@@ -42,12 +42,12 @@
     "onboarding": {
         "teams": {
             "title": "Begin met het aanmaken Teams & uitvoerders",
-            "text": "Maak operationele teams aan, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen. Uitvoerders melden zich aan met hun naam en een gekozen icoon. Teams en uitvoerders kunnen ook via bulk import (csv-bestand) geüpload worden.",
+            "text": "Maak operationele teams aan, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan categorieën zodat taken altijd bij het juiste team terechtkomen. Uitvoerders melden zich aan met hun naam en een gekozen icoon. Teams en uitvoerders kunnen ook via bulk import (CSV/Excel) geüpload worden.",
             "button": "Voeg teams toe"
         },
         "categories": {
             "title": "Begin met het aanmaken van categorieën",
-            "text": "Ga naar locaties en units en voeg categorieën toe om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units en zijn afhankelijk van de sector van het bedrijf. Door teams van uitvoerders te koppelen aan specifieke categorieën zorgt WinProx ervoor dat taken uitgevoerd worden door het correcte team. Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd. Units kun je per locatie ook via CSV importeren (of bulk aanmaken).",
+            "text": "Ga naar locaties en units en voeg categorieën toe om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units en zijn afhankelijk van de sector van het bedrijf. Door teams van uitvoerders te koppelen aan specifieke categorieën zorgt WinProx ervoor dat taken uitgevoerd worden door het correcte team. Voeg locaties (sites, gebouwen, verdiepingen) toe en maak per locatie units aan — dit zijn de assets, machines of ruimtes waarop meldingen en taken worden geregistreerd. Units kun je per locatie ook via CSV of Excel importeren (of bulk aanmaken).",
             "button": "Locaties beheren"
         },
         "clock_point": {

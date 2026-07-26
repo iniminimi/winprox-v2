@@ -63,7 +63,7 @@
             "name": "WinProx Time",
             "price": "€149 / maand",
             "scale": "Tot 10 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV-import.",
+            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV/Excel-import.",
             "description": "QR-meldingen en taken onbeperkt binnen je locaties en units.",
             "features": [
                 "Time-module: in- en uitklokken, pauzes, shifts en QR Clock Points.",
@@ -74,8 +74,8 @@
             "name": "WinProx Facility",
             "price": "€399 / maand",
             "scale": "Tot 100 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV-import.",
-            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV bulk-import voor units en workers.",
+            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV/Excel-import.",
+            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV/Excel bulk-import voor units en workers.",
             "features": [
                 "QR-meldingen en taken onbeperkt binnen je locaties en units.",
                 "Geen API-toegang."
@@ -106,7 +106,7 @@
         "plan_invalid": "Deze formule is niet beschikbaar.",
         "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
         "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
-        "csv_workers_not_allowed": "CSV worker-import is niet beschikbaar op je formule.",
-        "csv_units_not_allowed": "CSV unit-import vereist WinProx Facility of Corporate."
+        "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op je formule.",
+        "csv_units_not_allowed": "CSV/Excel unit-import vereist WinProx Facility of Corporate."
     }
 }

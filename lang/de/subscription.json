@@ -56,29 +56,40 @@
         "cta": "Abonnement ansehen"
     },
     "plans": {
-        "trial": { "name": "Testphase" },
+        "trial": {
+            "name": "Testphase"
+        },
         "time": {
             "name": "WinProx Time",
             "price": "€149 / Monat",
             "scale": "Bis zu 10 Units/Standorte/Dokumente/Fotos pro Organisation.",
-            "users": "1 Administrator und 1 Mitarbeiter inklusive. Unbegrenzt Mitarbeiter via CSV-Import.",
+            "users": "1 Administrator und 1 Mitarbeiter inklusive. Unbegrenzt Mitarbeiter via CSV/Excel-Import.",
             "description": "Unbegrenzt QR-Meldungen und Aufgaben innerhalb Ihrer Standorte und Units.",
-            "features": ["Time-Modul: Ein-/Ausstempeln, Pausen, Schichten und QR Clock Points.", "Kein API-Zugang."]
+            "features": [
+                "Time-Modul: Ein-/Ausstempeln, Pausen, Schichten und QR Clock Points.",
+                "Kein API-Zugang."
+            ]
         },
         "facility": {
             "name": "WinProx Facility",
             "price": "€399 / Monat",
             "scale": "Bis zu 100 Units/Standorte/Dokumente/Fotos pro Organisation.",
-            "users": "1 Administrator und bis zu 4 Mitarbeiter. Unbegrenzt Mitarbeiter via CSV-Import.",
-            "description": "Vollständige Facility-Workflows in größerem Umfang. WinProx Time inklusive. CSV-Bulk-Import.",
-            "features": ["Unbegrenzt QR-Meldungen und Aufgaben.", "Kein API-Zugang."]
+            "users": "1 Administrator und bis zu 4 Mitarbeiter. Unbegrenzt Mitarbeiter via CSV/Excel-Import.",
+            "description": "Vollständige Facility-Workflows in größerem Maßstab. WinProx Time inklusive. CSV/Excel-Massenimport für Units und Mitarbeiter.",
+            "features": [
+                "Unbegrenzt QR-Meldungen und Aufgaben.",
+                "Kein API-Zugang."
+            ]
         },
         "corporate": {
             "name": "WinProx Corporate",
             "price": "€999 / Monat",
             "scale": "Unbegrenzte Daten.",
             "description": "Für große Portfolios und Integrationen.",
-            "features": ["ESG, API und Webhooks inklusive.", "Priority-Support."]
+            "features": [
+                "ESG, API und Webhooks inklusive.",
+                "Priority-Support."
+            ]
         }
     },
     "stripe": {
@@ -95,7 +106,7 @@
         "plan_invalid": "Dieser Tarif ist nicht verfügbar.",
         "admin_only": "Nur ein Administrator kann ein Abonnement wählen.",
         "activation_disabled": "Selbstaktivierung deaktiviert. Kontaktieren Sie WinProx.",
-        "csv_workers_not_allowed": "CSV-Mitarbeiter-Import ist in Ihrem Tarif nicht verfügbar.",
-        "csv_units_not_allowed": "CSV-Unit-Import erfordert WinProx Facility oder Corporate."
+        "csv_workers_not_allowed": "CSV/Excel-Mitarbeiter-Import ist in Ihrem Tarif nicht verfügbar.",
+        "csv_units_not_allowed": "CSV/Excel-Unit-Import erfordert WinProx Facility oder Corporate."
     }
 }

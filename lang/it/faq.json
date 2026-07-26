@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Fino a 10 unit / sedi / documenti / foto",
-                    "users": "1 amministratore + 1 collaboratore · esecutori illimitati (CSV)",
+                    "users": "1 amministratore + 1 collaboratore · esecutori illimitati (CSV/Excel)",
                     "announcements": "149 € / mese · modulo Time incluso",
                     "documents": "Segnalazioni QR e task entro i limiti · nessuna API",
                     "description": "Ideale per iniziare con registrazione orari e workflow facility di base."
                 },
                 "facility": {
                     "units": "Fino a 100 unit / sedi / documenti / foto",
-                    "users": "1 amministratore + fino a 4 collaboratori · esecutori illimitati (CSV)",
+                    "users": "1 amministratore + fino a 4 collaboratori · esecutori illimitati (CSV/Excel)",
                     "announcements": "399 € / mese · Time incluso",
-                    "documents": "Import CSV per unit e workers · nessuna API",
+                    "documents": "Import CSV/Excel per unit e workers · nessuna API",
                     "description": "Workflow facility completi su larga scala, incluso WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Vai a Team: crea team, aggiungi esecutori (manualmente o CSV), collega team a unit e opzionalmente a categorie. Stampa o invia il QR team e QR Clock Point per il reparto.",
+            "body": "Vai a Team: crea team, aggiungi esecutori (manualmente, CSV o Excel), collega team a unit e opzionalmente a categorie. Stampa o invia il QR team e QR Clock Point per il reparto.",
             "summary": "Team sotto Team; collegamento a unit/categorie; QR Clock Point e team per il reparto."
         },
         "team_follow_up": {

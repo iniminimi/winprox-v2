@@ -279,12 +279,12 @@
                     "text": "Entfernen Sie einen Worker dauerhaft aus dem System. Der gesamte Verlauf und alle Aufgaben dieses Workers bleiben erhalten, aber der Worker kann nicht mehr verwendet werden."
                 },
                 {
-                    "label": "CSV-Import",
-                    "text": "Importieren Sie Mitarbeiter in großer Menge über eine CSV-Datei. Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, external_id (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Beim Rückgängigmachen werden Mitarbeiter ohne verknüpftes Gerät entfernt und leere durch den Import erstellte Teams aufgeräumt. Mitarbeiter mit einem Gerät (worker_device) bleiben immer erhalten."
+                    "label": "Import",
+                    "text": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, external_id (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Beim Rückgängigmachen werden Mitarbeiter ohne verknüpftes Gerät entfernt und leere durch den Import erstellte Teams aufgeräumt. Mitarbeiter mit einem Gerät (worker_device) bleiben immer erhalten."
                 },
                 {
-                    "label": "Letzte CSV-Imports",
-                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Ausführenden. Klicken Sie auf 'Import rükgängig', um die Ausführenden dieses Stapels zu löschen. Nur Ausführende ohne verknüpftes Gerät werden gelöscht — Ausführende, die bereits über die Clock Point QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und werden als 'hat Geräte' angezeigt. Die Schaltfläche verschwindet, sobald alle Ausführenden eines Stapels gelöscht wurden."
+                    "label": "Letzte Imports",
+                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Mitarbeiter. Klicken Sie auf Import rückgängig machen, um die Mitarbeiter dieses Batches zu entfernen. Nur Mitarbeiter ohne verknüpftes Gerät werden gelöscht — Mitarbeiter, die bereits über Clock Point QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und werden als hat Geräte markiert. Die Schaltfläche verschwindet, sobald alle Mitarbeiter eines Batches gelöscht wurden."
                 }
             ]
         },
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Brauche ich das?",
-                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Units oder Mitarbeiter auf einmal importieren? Nutzen Sie den CSV-Import auf einem Standort (Units) oder unter Teams (Mitarbeiter). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
+                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Units oder Mitarbeiter auf einmal importieren? Nutzen Sie den CSV/Excel-Import auf einem Standort (Units) oder unter Teams (Mitarbeiter). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
                 },
                 {
                     "label": "API — was ist das?",

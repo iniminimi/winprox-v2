@@ -279,12 +279,12 @@
                     "text": "Verwijder een uitvoerder definitief uit het systeem. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
                 },
                 {
-                    "label": "CSV import",
-                    "text": "Importeer uitvoerders in bulk via een CSV-bestand. Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
+                    "label": "Import",
+                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
                 },
                 {
-                    "label": "Recente CSV-imports",
-                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op 'Import terugdraaien' om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en worden als 'heeft toestellen' aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
+                    "label": "Recente imports",
+                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op Import terugdraaien om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en worden als heeft toestellen aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
                 }
             ]
         },
@@ -354,7 +354,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV/Excel-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",

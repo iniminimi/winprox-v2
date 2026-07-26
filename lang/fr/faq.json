@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Jusqu'à 10 units / sites / documents / photos",
-                    "users": "1 administrateur + 1 collaborateur · exécutants illimités (CSV)",
+                    "users": "1 administrateur + 1 collaborateur · exécutants illimités (CSV/Excel)",
                     "announcements": "149 € / mois · module Time inclus",
                     "documents": "Signalements QR et tâches dans vos limites · pas d'API",
                     "description": "Idéal pour démarrer avec le suivi du temps et les workflows facility de base."
                 },
                 "facility": {
                     "units": "Jusqu'à 100 units / sites / documents / photos",
-                    "users": "1 administrateur + jusqu'à 4 collaborateurs · exécutants illimités (CSV)",
+                    "users": "1 administrateur + jusqu'à 4 collaborateurs · exécutants illimités (CSV/Excel)",
                     "announcements": "399 € / mois · Time inclus",
-                    "documents": "Import CSV pour units et workers · pas d'API",
+                    "documents": "Import CSV/Excel pour units et workers · pas d'API",
                     "description": "Workflows facility complets à grande échelle, y compris WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Comment configurer les équipes internes ?",
-            "body": "Allez dans Team : créez des équipes, ajoutez des exécutants (manuellement ou CSV), liez les équipes aux units et éventuellement aux catégories. Imprimez ou envoyez le QR équipe et QR Clock Point pour le terrain.",
+            "body": "Allez dans Team : créez des équipes, ajoutez des exécutants (manuellement, CSV ou Excel), liez les équipes aux units et éventuellement aux catégories. Imprimez ou envoyez le QR équipe et QR Clock Point pour le terrain.",
             "summary": "Équipes sous Team ; lien aux units/catégories ; QR Clock Point et équipe pour le terrain."
         },
         "team_follow_up": {

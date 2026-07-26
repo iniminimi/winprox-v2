@@ -54,16 +54,16 @@
             "plans": {
                 "time": {
                     "units": "Tot 10 units / locaties / documenten / foto's",
-                    "users": "1 beheerder + 1 medewerker · onbeperkt uitvoerders (CSV)",
+                    "users": "1 beheerder + 1 medewerker · onbeperkt uitvoerders (CSV/Excel)",
                     "announcements": "€149 / maand · Time-module inbegrepen",
                     "documents": "QR-meldingen en taken binnen uw limieten · geen API",
                     "description": "Ideaal om te starten met tijdregistratie én facility-basisworkflows."
                 },
                 "facility": {
                     "units": "Tot 100 units / locaties / documenten / foto's",
-                    "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV)",
+                    "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV/Excel)",
                     "announcements": "€399 / maand · Time inbegrepen",
-                    "documents": "CSV-import voor units en workers · geen API",
+                    "documents": "CSV/Excel-import voor units en workers · geen API",
                     "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time."
                 },
                 "corporate": {
@@ -177,7 +177,7 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig of CSV), koppel teams aan units en optioneel aan categorieën. Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
+            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
             "summary": "Teams onder Team; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
         },
         "team_follow_up": {

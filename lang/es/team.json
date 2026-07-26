@@ -82,11 +82,10 @@
         "reset_icon": "Restablecer icono",
         "deactivate": "Desactivar",
         "activate": "Activar",
-        "import": "Importación CSV",
-        "import_title": "Importar trabajadores",
-        "import_hint": "Importe trabajadores en bloque mediante un archivo CSV. Columnas obligatorias: team_name, first_name, last_name. Opcionales: email, phone, external_id. Los equipos se crean automáticamente si aún no existen.",
-        "import_download_sample": "Descargar archivo de ejemplo",
-        "import_file_label": "Archivo CSV",
+        "import": "Importación",
+        "import_title": "Importar trabajadores (CSV / Excel)",
+        "import_hint": "Importe trabajadores en bloque mediante CSV o Excel (.xlsx). Columnas obligatorias: team_name, first_name, last_name. Opcionales: email, phone, external_id. Los equipos se crean automáticamente si aún no existen.",
+        "import_file_label": "Archivo CSV o Excel (.xlsx)",
         "import_submit": "Importar",
         "flash": {
             "imported": ":count trabajador(es) importado(s) correctamente."
@@ -105,10 +104,22 @@
             "edit_title": "Editar trabajador",
             "edit_subtitle": "Actualice los datos de este trabajador.",
             "save": "Guardar trabajador"
+        },
+        "import_download_sample_csv": "Descargar ejemplo CSV",
+        "import_download_sample_xlsx": "Descargar ejemplo XLSX",
+        "errors": {
+            "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx).",
+            "unreadable": "No se pudo abrir el archivo.",
+            "empty": "El archivo está vacío o no es válido.",
+            "missing_headers": "Las columnas de su archivo no coinciden con la plantilla WinProx. Columnas faltantes: :columns",
+            "unexpected_headers": "Las columnas de su archivo no coinciden con la plantilla WinProx. Columnas inesperadas: :columns",
+            "row": "Fila :line: :message",
+            "no_rows": "No se encontraron filas válidas.",
+            "database": "Se produjo un error de base de datos durante la importación: :message"
         }
     },
     "import_history": {
-        "title": "Importaciones CSV recientes",
+        "title": "Importaciones recientes",
         "hint": "Deshacer elimina trabajadores sin dispositivo vinculado y equipos vacíos creados por la importación.",
         "unknown_file": "Archivo desconocido",
         "worker_count": ":count trabajador(es)",

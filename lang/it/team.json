@@ -82,11 +82,10 @@
         "reset_icon": "Reimposta icona",
         "deactivate": "Disattiva",
         "activate": "Attiva",
-        "import": "Importazione CSV",
-        "import_title": "Importa lavoratori",
-        "import_hint": "Importi lavoratori in massa tramite file CSV. Colonne obbligatorie: team_name, first_name, last_name. Facoltative: email, phone, external_id. I team vengono creati automaticamente se non esistono ancora.",
-        "import_download_sample": "Scarica file di esempio",
-        "import_file_label": "File CSV",
+        "import": "Importazione",
+        "import_title": "Importa lavoratori (CSV / Excel)",
+        "import_hint": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Colonne obbligatorie: team_name, first_name, last_name. Facoltative: email, phone, external_id. I team vengono creati automaticamente se non esistono ancora.",
+        "import_file_label": "File CSV o Excel (.xlsx)",
         "import_submit": "Importa",
         "flash": {
             "imported": ":count lavoratore/i importato/i con successo."
@@ -105,10 +104,22 @@
             "edit_title": "Modifica lavoratore",
             "edit_subtitle": "Aggiorni i dati di questo lavoratore.",
             "save": "Salva lavoratore"
+        },
+        "import_download_sample_csv": "Scarica esempio CSV",
+        "import_download_sample_xlsx": "Scarica esempio XLSX",
+        "errors": {
+            "unsupported_format": "Formato file non valido. Usi CSV o Excel (.xlsx).",
+            "unreadable": "Impossibile aprire il file.",
+            "empty": "Il file è vuoto o non valido.",
+            "missing_headers": "Le colonne del file non corrispondono al modello WinProx. Colonne mancanti: :columns",
+            "unexpected_headers": "Le colonne del file non corrispondono al modello WinProx. Colonne inattese: :columns",
+            "row": "Riga :line: :message",
+            "no_rows": "Nessuna riga valida trovata.",
+            "database": "Si è verificato un errore del database durante l'importazione: :message"
         }
     },
     "import_history": {
-        "title": "Importazioni CSV recenti",
+        "title": "Importazioni recenti",
         "hint": "Annulla rimuove lavoratori senza dispositivo collegato e team vuoti creati dall'importazione.",
         "unknown_file": "File sconosciuto",
         "worker_count": ":count lavoratore/i",

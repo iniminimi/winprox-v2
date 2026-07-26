@@ -6,21 +6,28 @@ use App\Data\Workers\ImportWorkersData;
 use App\Models\InternalTeam;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Import\TabularImportReader;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use RuntimeException;
 
 class ImportWorkersAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private TabularImportReader $tabularReader,
+    ) {}
 
-    protected array $requiredHeaders = [
+    /** @var list<string> */
+    private const REQUIRED_HEADERS = [
         'team_name',
         'first_name',
         'last_name',
     ];
 
-    protected array $optionalHeaders = [
+    /** @var list<string> */
+    private const OPTIONAL_HEADERS = [
         'email',
         'phone',
         'external_id',
@@ -36,100 +43,85 @@ class ImportWorkersAction
             return ['success' => false, 'errors' => [__('subscription.errors.csv_workers_not_allowed')]];
         }
 
-        $batchId = (string) Str::uuid();
+        try {
+            $table = $this->tabularReader->read($data->filePath, $data->originalName);
+        } catch (RuntimeException $e) {
+            $message = match ($e->getMessage()) {
+                'unsupported_import_format' => __('team.workers.errors.unsupported_format'),
+                'unreadable' => __('team.workers.errors.unreadable'),
+                default => __('team.workers.errors.unreadable'),
+            };
 
-        $handle = fopen($data->filePath, 'r');
-        if ($handle === false) {
-            return ['success' => false, 'errors' => ['Kon het bestand niet openen.']];
+            return ['success' => false, 'errors' => [$message]];
         }
 
-        $headers = fgetcsv($handle);
-        fclose($handle);
-
-        if ($headers === false) {
-            return ['success' => false, 'errors' => ['Het bestand is leeg of ongeldig.']];
+        $headers = $table['headers'];
+        if ($headers === []) {
+            return ['success' => false, 'errors' => [__('team.workers.errors.empty')]];
         }
 
-        $headers = array_map(fn ($h) => trim(strtolower($h)), $headers);
-        $headers[0] = ltrim($headers[0], "\xEF\xBB\xBF");
-
-        $missingHeaders = array_diff($this->requiredHeaders, $headers);
-        if (! empty($missingHeaders)) {
+        $missingHeaders = array_diff(self::REQUIRED_HEADERS, $headers);
+        if ($missingHeaders !== []) {
             return [
                 'success' => false,
-                'errors' => [sprintf(
-                    'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Ontbrekende kolommen: %s',
-                    implode(', ', $missingHeaders)
-                )],
+                'errors' => [__('team.workers.errors.missing_headers', [
+                    'columns' => implode(', ', $missingHeaders),
+                ])],
             ];
         }
 
-        $expectedHeaders = array_merge($this->requiredHeaders, $this->optionalHeaders);
+        $expectedHeaders = array_merge(self::REQUIRED_HEADERS, self::OPTIONAL_HEADERS);
         $unexpectedHeaders = array_diff($headers, $expectedHeaders);
-        if (! empty($unexpectedHeaders)) {
+        if ($unexpectedHeaders !== []) {
             return [
                 'success' => false,
-                'errors' => [sprintf(
-                    'De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: %s',
-                    implode(', ', $unexpectedHeaders)
-                )],
+                'errors' => [__('team.workers.errors.unexpected_headers', [
+                    'columns' => implode(', ', $unexpectedHeaders),
+                ])],
             ];
         }
 
-        $handle = fopen($data->filePath, 'r');
-        fgetcsv($handle);
-
-        $rows = [];
-        $lineNumber = 2;
-
-        while (($row = fgetcsv($handle)) !== false) {
-            if (array_filter($row) === []) {
-                $lineNumber++;
-                continue;
-            }
-
-            if (count($row) !== count($headers)) {
-                $lineNumber++;
-                continue;
-            }
-
-            $row = array_slice($row, 0, count($headers));
-            $dataRow = array_combine($headers, $row);
-            $dataRow['_line_number'] = $lineNumber;
-            $rows[] = $dataRow;
-            $lineNumber++;
-        }
-
-        fclose($handle);
-
+        $headerCount = count($headers);
         $errors = [];
         $validatedRows = [];
 
-        foreach ($rows as $row) {
-            $lineNumber = $row['_line_number'];
-            unset($row['_line_number']);
+        foreach ($table['rows'] as $row) {
+            $values = array_pad(array_slice($row['values'], 0, $headerCount), $headerCount, '');
+            $dataRow = array_combine($headers, $values);
+            if ($dataRow === false) {
+                continue;
+            }
 
-            $validator = Validator::make($row, [
-                'team_name'   => 'required|string|max:255',
-                'first_name'  => 'required|string|max:255',
-                'last_name'   => 'required|string|max:255',
-                'email'       => 'nullable|email|max:255',
-                'phone'       => 'nullable|string|max:64',
+            $validator = Validator::make($dataRow, [
+                'team_name' => 'required|string|max:255',
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'email' => 'nullable|email|max:255',
+                'phone' => 'nullable|string|max:64',
                 'external_id' => 'nullable|string|max:255',
             ]);
 
             if ($validator->fails()) {
                 foreach ($validator->errors()->all() as $error) {
-                    $errors[] = "Rij {$lineNumber}: {$error}";
+                    $errors[] = __('team.workers.errors.row', [
+                        'line' => $row['line'],
+                        'message' => $error,
+                    ]);
                 }
             } else {
-                $validatedRows[] = $row;
+                $validatedRows[] = $dataRow;
             }
         }
 
-        if (! empty($errors)) {
+        if ($errors !== []) {
             return ['success' => false, 'errors' => $errors];
         }
+
+        if ($validatedRows === []) {
+            return ['success' => false, 'errors' => [__('team.workers.errors.no_rows')]];
+        }
+
+        $batchId = (string) Str::uuid();
 
         DB::beginTransaction();
         try {
@@ -147,16 +139,16 @@ class ImportWorkersAction
                 }
 
                 Worker::create([
-                    'tenant_id'       => $tenantId,
+                    'tenant_id' => $tenantId,
                     'internal_team_id' => $team->id,
-                    'first_name'      => trim($row['first_name']),
-                    'last_name'       => trim($row['last_name']),
-                    'email'           => isset($row['email']) && $row['email'] !== '' ? trim($row['email']) : null,
-                    'phone'           => isset($row['phone']) && $row['phone'] !== '' ? trim($row['phone']) : null,
-                    'external_id'     => isset($row['external_id']) && $row['external_id'] !== '' ? trim($row['external_id']) : null,
+                    'first_name' => trim($row['first_name']),
+                    'last_name' => trim($row['last_name']),
+                    'email' => isset($row['email']) && $row['email'] !== '' ? trim($row['email']) : null,
+                    'phone' => isset($row['phone']) && $row['phone'] !== '' ? trim($row['phone']) : null,
+                    'external_id' => isset($row['external_id']) && $row['external_id'] !== '' ? trim($row['external_id']) : null,
                     'import_batch_id' => $batchId,
-                    'is_active'       => true,
-                    'is_teamleader'   => false,
+                    'is_active' => true,
+                    'is_teamleader' => false,
                 ]);
 
                 $importedCount++;
@@ -169,9 +161,9 @@ class ImportWorkersAction
                 modelType: Worker::class,
                 modelId: null,
                 payload: [
-                    'count'            => $importedCount,
-                    'batch_id'         => $batchId,
-                    'file_name'        => $data->originalName,
+                    'count' => $importedCount,
+                    'batch_id' => $batchId,
+                    'file_name' => $data->originalName,
                     'created_team_ids' => array_values($createdTeamIds),
                 ],
             );
@@ -179,8 +171,8 @@ class ImportWorkersAction
             DB::commit();
 
             return [
-                'success'  => true,
-                'count'    => $importedCount,
+                'success' => true,
+                'count' => $importedCount,
                 'batch_id' => $batchId,
             ];
         } catch (\Throwable $e) {
@@ -188,7 +180,7 @@ class ImportWorkersAction
 
             return [
                 'success' => false,
-                'errors'  => ['Er is een databasefout opgetreden tijdens het importeren: '.$e->getMessage()],
+                'errors' => [__('team.workers.errors.database', ['message' => $e->getMessage()])],
             ];
         }
     }

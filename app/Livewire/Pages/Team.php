@@ -612,7 +612,7 @@ class Team extends Component
         }
     }
 
-    // --- Worker CSV import ------------------------------------------------
+    // --- Worker CSV / Excel import ----------------------------------------
 
     public function downloadSampleCsv(): \Symfony\Component\HttpFoundation\StreamedResponse
     {
@@ -637,6 +637,35 @@ class Team extends Component
             fclose($file);
         }, 'winprox_workers_sample.csv', [
             'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    public function downloadSampleXlsx(): \Symfony\Component\HttpFoundation\StreamedResponse
+    {
+        $this->authorize('create', InternalTeam::class);
+
+        $rows = [
+            ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'],
+            [
+                __('team.workers.import_sample.team_name'),
+                __('team.workers.import_sample.first_name'),
+                __('team.workers.import_sample.last_name'),
+                __('team.workers.import_sample.email'),
+                __('team.workers.import_sample.phone'),
+                __('team.workers.import_sample.external_id'),
+            ],
+        ];
+
+        return response()->streamDownload(function () use ($rows) {
+            $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'winprox-workers-sample-'.uniqid('', true).'.xlsx';
+            try {
+                \App\Support\Import\MinimalXlsxWriter::write($tempPath, $rows);
+                readfile($tempPath);
+            } finally {
+                @unlink($tempPath);
+            }
+        }, 'winprox_workers_sample.xlsx', [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         ]);
     }
 

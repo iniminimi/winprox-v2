@@ -279,12 +279,12 @@
                     "text": "Rimuova definitivamente un lavoratore dal sistema. Tutta la cronologia e le attività per questo lavoratore sono conservate, ma il lavoratore non può più essere utilizzato."
                 },
                 {
-                    "label": "Importazione CSV",
-                    "text": "Importi lavoratori in massa tramite file CSV. Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (required), email, phone, external_id (optional). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. Annulla rimuove lavoratori senza dispositivo collegato e pulisce team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) sono sempre conservati."
+                    "label": "Importazione",
+                    "text": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (obbligatorie), email, phone, external_id (facoltative). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. L'annullamento rimuove i lavoratori senza dispositivo collegato e ripulisce i team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) vengono sempre conservati."
                 },
                 {
-                    "label": "Importazioni CSV recenti",
-                    "text": "Dopo un'importazione, compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di lavoratori. Clicchi «Annulla importazione» per rimuovere i lavoratori di quel batch. Solo i lavoratori senza dispositivo collegato vengono eliminati — i lavoratori già connessi tramite il QR Clock Point (e quindi con dispositivo attivo) restano e sono contrassegnati come «ha dispositivi». Il pulsante scompare quando tutti i lavoratori in un batch sono stati eliminati."
+                    "label": "Importazioni recenti",
+                    "text": "Dopo un'importazione compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di lavoratori. Clicchi Annulla importazione per rimuovere i lavoratori di quel lotto. Solo i lavoratori senza dispositivo collegato vengono eliminati — i lavoratori già connessi tramite Clock Point QR (e quindi con un dispositivo attivo) restano e sono indicati come ha dispositivi. Il pulsante scompare quando tutti i lavoratori di un lotto sono stati eliminati."
                 }
             ]
         },

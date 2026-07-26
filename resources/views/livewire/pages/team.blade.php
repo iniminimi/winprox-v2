@@ -301,7 +301,7 @@
 
     @include('livewire.pages.worker-import-history', ['batches' => $workerImportBatches])
 
-    {{-- Modal: worker CSV import --------------------------------------------}}
+    {{-- Modal: worker CSV / Excel import ------------------------------------}}
     @if ($showWorkerImportModal)
         <x-wp-modal closeMethod="closeWorkerImportModal">
             <div class="wp-card wp-card-pad wp-stack wp-modal-card">
@@ -311,9 +311,12 @@
                 </div>
                 <p class="wp-muted">{{ __('team.workers.import_hint') }}</p>
 
-                <div class="wp-field">
+                <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadSampleCsv">
-                        {{ __('team.workers.import_download_sample') }}
+                        {{ __('team.workers.import_download_sample_csv') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadSampleXlsx">
+                        {{ __('team.workers.import_download_sample_xlsx') }}
                     </button>
                 </div>
 
@@ -325,7 +328,7 @@
                             x-on:change="fileReady = false"
                             x-on:livewire-upload-finish="fileReady = true"
                             x-on:livewire-upload-error="fileReady = false"
-                            accept=".csv,.txt">
+                            accept=".csv,.txt,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                         @error('workerImportFile') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
 
