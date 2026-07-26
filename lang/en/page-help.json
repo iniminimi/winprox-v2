@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filter by location and type (tasks, issues or reservations)."
+                    "text": "Filter by location and type (tasks, issues or reservations). For reservations you can also filter by reservable category."
                 }
             ],
             "status_note": "Colour and status on the calendar follow task or issue status.",

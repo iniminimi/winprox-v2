@@ -188,6 +188,68 @@ it('stuurt bevestigingsmail synchroon bij pending reservering', function () {
     });
 });
 
+it('filtert kalender-reserveringen op reserveerbare categorie', function () {
+    Mail::fake();
+    [$tenant, $admin, $unit] = reservationFixture();
+    \App\Models\InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    \App\Models\ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $unit->forceFill(['name' => 'Vergaderzaal Alpha'])->saveQuietly();
+    [$start, $end] = reservationWindow();
+
+    $otherCategory = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Niet-filter-categorie',
+        'is_reservable' => true,
+    ]);
+    $otherUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $unit->location_id,
+        'category_id' => $otherCategory->id,
+        'allow_reservations' => true,
+        'is_active' => true,
+        'name' => 'Voertuig Bravo',
+    ]);
+
+    app(CreateReservationAction::class)->handle(
+        $unit->fresh(),
+        ReservationBookingData::fromValidated(
+            [
+                'guest_first_name' => 'Ada',
+                'guest_last_name' => 'Lovelace',
+                'guest_email' => 'ada@example.com',
+                'start_at' => $start,
+                'end_at' => $end,
+            ],
+            autoConfirm: true,
+        ),
+    );
+    app(CreateReservationAction::class)->handle(
+        $otherUnit,
+        ReservationBookingData::fromValidated(
+            [
+                'guest_first_name' => 'Grace',
+                'guest_last_name' => 'Hopper',
+                'guest_email' => 'grace@example.com',
+                'start_at' => $start,
+                'end_at' => $end,
+            ],
+            autoConfirm: true,
+        ),
+    );
+
+    \Livewire\Livewire::actingAs($admin)
+        ->withQueryParams([
+            'type' => 'reservations',
+            'category' => (string) $unit->category_id,
+            'date' => now()->toDateString(),
+            'view' => 'month',
+        ])
+        ->test(\App\Livewire\Pages\Calendar::class)
+        ->assertSee('Vergaderzaal Alpha')
+        ->assertDontSee('Voertuig Bravo')
+        ->assertSee(__('calendar.all_categories'));
+});
+
 it('toont manage-pagina via token', function () {
     Mail::fake();
     [, , $unit] = reservationFixture();

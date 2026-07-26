@@ -4,6 +4,7 @@
     "briefing": "Print briefing",
     "today": "Today",
     "all_locations": "All locations",
+    "all_categories": "All categories",
     "empty_day": "Nothing scheduled.",
     "view": {
         "month": "Month",

@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Enums\TaskStatus;
+use App\Models\Category;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Reservation;
@@ -29,6 +30,9 @@ class Calendar extends Component
 
     #[Url(as: 'location')]
     public ?int $locationFilter = null;
+
+    #[Url(as: 'category')]
+    public ?int $categoryFilter = null;
 
     public int $dayPage = 1;
 
@@ -65,8 +69,13 @@ class Calendar extends Component
 
     public function setEntryType(string $type): void
     {
-        if (in_array($type, ['tasks', 'issues', 'reservations'], true)) {
-            $this->entryType = $type;
+        if (! in_array($type, ['tasks', 'issues', 'reservations'], true)) {
+            return;
+        }
+
+        $this->entryType = $type;
+        if ($type !== 'reservations') {
+            $this->categoryFilter = null;
         }
     }
 
@@ -150,11 +159,12 @@ class Calendar extends Component
             $entriesByDate = $issues->groupBy(fn (Issue $issue) => $issue->created_at?->toDateString());
         } elseif ($this->entryType === 'reservations') {
             $reservations = Reservation::query()
-                ->with(['unit.location', 'unit.translations'])
+                ->with(['unit.location', 'unit.translations', 'unit.category'])
                 ->blocking()
                 ->where('start_at', '<=', $gridEnd->copy()->endOfDay())
                 ->where('end_at', '>=', $gridStart->copy()->startOfDay())
                 ->when($this->locationFilter, fn ($q) => $q->whereHas('unit', fn ($uq) => $uq->where('location_id', $this->locationFilter)))
+                ->when($this->categoryFilter, fn ($q) => $q->whereHas('unit', fn ($uq) => $uq->where('category_id', $this->categoryFilter)))
                 ->orderBy('start_at')
                 ->get();
 
@@ -216,6 +226,9 @@ class Calendar extends Component
             'isMonthView' => $isMonthView,
             'isDayView' => $isDayView,
             'locations' => Location::query()->orderBy('name')->get(),
+            'reservableCategories' => $this->entryType === 'reservations'
+                ? Category::query()->where('is_reservable', true)->orderBy('name')->get(['id', 'name'])
+                : collect(),
             'dayPage' => $this->dayPage,
             'onboarding' => TenantOnboardingState::current(),
         ]);

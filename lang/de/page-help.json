@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filtern Sie nach Standort und Typ (Aufgaben, Meldungen oder Reservierungen)."
+                    "text": "Filtern Sie nach Standort und Typ (Aufgaben, Meldungen oder Reservierungen). Bei Reservierungen zusätzlich nach reservierbarer Kategorie."
                 }
             ],
             "status_note": "Farbe und Status im Kalender folgen dem Aufgaben- oder Meldungsstatus.",

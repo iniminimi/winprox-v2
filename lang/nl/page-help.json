@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Filter op locatie en type (taken, meldingen of reserveringen)."
+                    "text": "Filter op locatie en type (taken, meldingen of reserveringen). Bij reserveringen kun je ook filteren op reserveerbare categorie."
                 }
             ],
             "status_note": "Kleur en status op de kalender volgen de taak- of meldingstatus.",

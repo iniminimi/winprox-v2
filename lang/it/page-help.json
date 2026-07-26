@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Filtra per sede e tipo (attività, segnalazioni o prenotazioni)."
+                    "text": "Filtra per sede e tipo (attività, segnalazioni o prenotazioni). Per le prenotazioni puoi anche filtrare per categoria prenotabile."
                 }
             ],
             "status_note": "Colore e stato sul calendario seguono lo stato attività o segnalazione.",

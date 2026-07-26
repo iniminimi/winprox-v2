@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtro",
-                    "text": "Filtre por ubicación y tipo (tareas, incidencias o reservas)."
+                    "text": "Filtre por ubicación y tipo (tareas, incidencias o reservas). En reservas también puede filtrar por categoría reservable."
                 }
             ],
             "status_note": "El color y el estado en el calendario siguen el estado de la tarea o incidencia.",

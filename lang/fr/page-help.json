@@ -224,7 +224,7 @@
                 },
                 {
                     "label": "Filtre",
-                    "text": "Filtrez par site et type (tâches, signalements ou réservations)."
+                    "text": "Filtrez par site et type (tâches, signalements ou réservations). Pour les réservations, vous pouvez aussi filtrer par catégorie réservable."
                 }
             ],
             "status_note": "La couleur et le statut sur le calendrier suivent le statut de la tâche ou du signalement.",

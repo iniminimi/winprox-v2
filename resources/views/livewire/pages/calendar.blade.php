@@ -56,12 +56,22 @@
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="nextPeriod">›</button>
                 </div>
                 <strong>{{ $periodLabel }}</strong>
-                <select class="wp-select wp-select--compact" wire:model.live="locationFilter">
-                    <option value="">{{ __('calendar.all_locations') }}</option>
-                    @foreach ($locations as $location)
-                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
-                    @endforeach
-                </select>
+                <div class="wp-cluster">
+                    <select class="wp-select wp-select--compact" wire:model.live="locationFilter">
+                        <option value="">{{ __('calendar.all_locations') }}</option>
+                        @foreach ($locations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                        @endforeach
+                    </select>
+                    @if ($entryType === 'reservations')
+                        <select class="wp-select wp-select--compact" wire:model.live="categoryFilter">
+                            <option value="">{{ __('calendar.all_categories') }}</option>
+                            @foreach ($reservableCategories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                </div>
             </div>
         </div>
 
