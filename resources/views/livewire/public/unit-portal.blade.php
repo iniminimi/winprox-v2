@@ -205,7 +205,7 @@
                 </p>
                 <div class="wp-cluster">
                     @if ($clockPointPortalUrl)
-                        <a href="{{ $clockPointPortalUrl }}" class="btn btn--primary btn--sm">
+                        <a href="{{ $clockPointPortalUrl }}" class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer">
                             {{ __('portal.worker.open_login_overview') }}
                         </a>
                     @endif
