@@ -319,10 +319,6 @@
                     "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleaders zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
                 },
                 {
-                    "label": "Clock Point QR-code",
-                    "text": "Ohne Time-Modul zeigt Teams die Schaltfläche <strong>Clock Point QR-code</strong>, um den druckbaren Anmelde-QR zu öffnen (ein Standard-Clock-Point wird automatisch erstellt). Mit Time-Modul verwalten Sie dies unter Time → Clock Points."
-                },
-                {
                     "label": "Ausführende",
                     "text": "Ausführende haben keinen E-Mail-Login; sie melden sich über die Clock Point QR mit Name und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
                 },

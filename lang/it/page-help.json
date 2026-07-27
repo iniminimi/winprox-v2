@@ -319,10 +319,6 @@
                     "text": "Crei team e lavoratori, assegni capisquadra. Un'unità deve avere un team collegato affinché un lavoratore possa gestire attività per quell'unità. Finché non ci sono lavoratori nel team, può ancora eliminare il team."
                 },
                 {
-                    "label": "QR Clock Point",
-                    "text": "Senza il modulo Time, Team mostra il pulsante <strong>QR Clock Point</strong> per aprire il QR di accesso stampabile (viene creato automaticamente un clock point predefinito). Con il modulo Time, gestiscilo in Time → Clock Points."
-                },
-                {
                     "label": "Lavoratori",
                     "text": "I lavoratori non hanno accesso e-mail; accedono tramite il QR Clock Point con nome e icona. Può anche aggiungere indirizzo e-mail e numero di telefono."
                 },

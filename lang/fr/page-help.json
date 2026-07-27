@@ -319,10 +319,6 @@
                     "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
                 },
                 {
-                    "label": "QR Clock Point",
-                    "text": "Sans module Time, Équipes affiche le bouton <strong>QR Clock Point</strong> pour ouvrir le QR de connexion imprimable (un clock point par défaut est créé automatiquement). Avec le module Time, gérez cela via Time → Clock Points."
-                },
-                {
                     "label": "Exécutants",
                     "text": "Les exécutants n'ont pas de connexion e-mail ; ils s'identifient via le QR Clock Point avec nom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
                 },

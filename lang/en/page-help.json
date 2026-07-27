@@ -319,10 +319,6 @@
                     "text": "Create teams and workers, assign teamleaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
-                    "label": "Clock Point QR code",
-                    "text": "Without the Time module, Teams shows the <strong>Clock Point QR code</strong> button to open the printable login QR (a default clock point is created automatically). With the Time module, manage this under Time → Clock Points."
-                },
-                {
                     "label": "Workers",
                     "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. You can also add their email address and phone number."
                 },
