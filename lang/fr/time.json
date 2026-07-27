@@ -4,55 +4,55 @@
         "module_disabled": "Le module Time n'est pas activé pour cette organisation."
     },
     "nav": {
-        "label": "Time-navigatie",
-        "presence": "Aanwezigheid",
-        "alarms": "Alertes",
-        "shifts": "Uren",
+        "label": "Navigation Time",
+        "presence": "Présence",
+        "alarms": "Alarmes",
+        "shifts": "Heures",
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Vue live par équipe — ouvrez une équipe pour voir les employés.",
-        "present": "Aanwezig",
-        "present_subtitle": "Employés actifs",
-        "on_break": "Pauze",
-        "on_break_subtitle": "Employés en pause",
-        "not_clocked_in": "Niet ingeklokt",
+        "subtitle": "Vue en direct par équipe — développez une équipe pour les collaborateurs.",
+        "present": "Présent",
+        "present_subtitle": "Collaborateurs actifs",
+        "on_break": "Pause",
+        "on_break_subtitle": "Collaborateurs en pause",
+        "not_clocked_in": "Non pointé",
         "not_clocked_in_subtitle": "Pas encore pointé aujourd'hui",
         "worked_so_far": "Travaillé : :duration",
         "hours_label": "Heures",
-        "empty_section": "Niemand in deze groep.",
+        "empty_section": "Personne dans ce groupe.",
         "empty_not_clocked_in": "Tous ceux avec un shift ouvert sont pointés.",
-        "force_close": "Shift sluiten",
-        "force_closed": "Shift fermé.",
+        "force_close": "Clôturer le shift",
+        "force_closed": "Shift clôturé.",
         "stale_warning": "Ouvert depuis plus de :hours heures",
-        "search_label": "Rechercher un employé",
+        "search_label": "Rechercher un collaborateur",
         "search_placeholder": "Nom…",
         "search_results": "Résultats de recherche",
-        "search_empty": "Aucun employé trouvé.",
+        "search_empty": "Aucun collaborateur trouvé.",
         "location": "Site",
         "all_locations": "Tous les sites",
         "status_filters": "Statut",
         "no_attention": "Aucune anomalie pour le moment.",
-        "attention_title": "À surveiller",
+        "attention_title": "Nécessite une attention",
         "attention_show_all": "Afficher les :count anomalies",
-        "absent_truncated": ":count de plus — affinez avec la recherche ou le filtre équipe.",
-        "team_summary_active": ":count actifs",
+        "absent_truncated": ":count de plus — affinez avec la recherche ou le filtre d'équipe.",
+        "team_summary_active": ":count actif(s)",
         "team_summary_break": ":count en pause",
-        "team_summary_absent": ":count non pointés",
-        "team_summary_attention": ":count à surveiller",
+        "team_summary_absent": ":count non pointé(s)",
+        "team_summary_attention": ":count attention",
         "kpi": {
-            "clocked_in": "Pointés",
-            "active": "Actifs",
+            "clocked_in": "Pointé",
+            "active": "Actif",
             "break": "Pause",
-            "absent": "Non pointés",
-            "attention": "À surveiller"
+            "absent": "Non pointé",
+            "attention": "Attention"
         },
         "status": {
             "all": "Tous",
-            "active": "Présents",
+            "active": "Présent",
             "break": "Pause",
-            "absent": "Absents",
-            "attention": "À surveiller"
+            "absent": "Absent",
+            "attention": "Attention"
         },
         "attention": {
             "long_shift": "Shift de plus de :hours heures",
@@ -60,36 +60,36 @@
             "no_break": "Pas de pause après :hours heures"
         },
         "view_modes": "Affichage",
-        "board_absent_title": "Absent / Action requise",
+        "board_absent_title": "Absent / Action extra",
         "attention_board_subtitle": "Shifts ouverts nécessitant une attention",
         "view": {
-            "board": "Board",
+            "board": "Tableau",
             "teams": "Équipes",
-            "cards": "Cartes équipe",
+            "cards": "Cartes d'équipe",
             "locations": "Sites"
         },
         "view_team": "Voir",
-        "view_location": "Voir équipes",
-        "empty_locations": "Aucun employé pointé par site.",
+        "view_location": "Afficher les équipes",
+        "empty_locations": "Aucun collaborateur pointé par site.",
         "unknown_location": "Sans site",
         "load_more": "Afficher :count de plus"
     },
     "alarms": {
-        "title": "Alertes",
-        "subtitle": "Shifts ouverts à surveiller — shift long, oubli de dépointage ou pas de pause.",
-        "empty": "Aucune alerte pour le moment.",
-        "summary": "{0} Aucune alerte|{1} :count alerte|[2,*] :count alertes",
-        "type_filters": "Type d'alerte",
-        "type_all": "Toutes",
-        "type_long_shift": "Shift long",
+        "title": "Alarmes",
+        "subtitle": "Shifts ouverts nécessitant une attention — longs shifts, oubli de dépointerage ou pas de pause.",
+        "empty": "Aucune alarme pour le moment.",
+        "summary": "{0} Aucune alarme|{1} :count alarme|[2,*] :count alarmes",
+        "type_filters": "Type d'alarme",
+        "type_all": "Tous",
+        "type_long_shift": "Long shift",
         "type_stale_shift": "Non dépointé",
         "type_no_break": "Pas de pause",
         "shown": ":shown sur :total alarmes affichées"
     },
     "force_close": {
-        "title": "Fermer le shift",
-        "subtitle": "Vous fermez le shift ouvert de :worker à l'heure actuelle. Le motif est enregistré dans le journal d'audit.",
-        "submit": "Fermer le shift",
+        "title": "Clôturer le shift",
+        "subtitle": "Vous clôturez le shift ouvert de :worker à l'heure actuelle. Le motif est enregistré dans le journal d'audit.",
+        "submit": "Clôturer le shift",
         "fields": {
             "reason": "Motif"
         },
@@ -98,12 +98,12 @@
         }
     },
     "shifts": {
-        "subtitle": "Urenoverzicht per periode.",
-        "empty": "Geen shifts gevonden voor deze filters.",
+        "subtitle": "Aperçu des heures par période.",
+        "empty": "Aucun shift trouvé pour ces filtres.",
         "break_minutes": "Pause : :duration",
         "worked": "Travaillé : :duration",
-        "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Pointé sortie à :name",
+        "clocked_in_at": "Pointé à :name",
+        "clocked_out_at": "Dépointé à :name",
         "tasks_heading": "Tâches pendant ce shift :",
         "task_unknown": "Tâche",
         "task_duration": ":minutes min",
@@ -112,13 +112,13 @@
     "corrections": {
         "button": "Corriger",
         "title": "Corriger le shift",
-        "subtitle": "Ajustez les heures d'entrée/sortie ou la pause. La raison est enregistrée dans le journal d'audit.",
+        "subtitle": "Ajustez les heures de pointage ou les minutes de pause. Le motif est enregistré dans le journal d'audit.",
         "saved": "Shift corrigé.",
         "fields": {
             "clock_in": "Heure d'entrée",
             "clock_out": "Heure de sortie",
             "break_minutes": "Pause (minutes)",
-            "reason": "Raison"
+            "reason": "Motif"
         },
         "errors": {
             "clock_out_before_clock_in": "L'heure de sortie doit être après l'heure d'entrée.",
@@ -128,74 +128,74 @@
         }
     },
     "status": {
-        "open": "Open",
-        "closed": "Gesloten",
-        "force_closed": "Fermé (admin)",
-        "auto_closed": "Fermé (automatique)"
+        "open": "Ouvert",
+        "closed": "Clôturé",
+        "force_closed": "Clôturé (admin)",
+        "auto_closed": "Clôturé (automatique)"
     },
     "filters": {
-        "team": "Team",
-        "worker": "Medewerker",
+        "team": "Équipe",
+        "worker": "Collaborateur",
         "clock_point": "Clock Point",
-        "search": "Zoek medewerker",
-        "from": "Van",
-        "to": "Tot",
-        "all_teams": "Alle teams",
-        "all_workers": "Alle medewerkers",
-        "all_clock_points": "Alle clock points",
-        "apply": "Toepassen"
+        "search": "Rechercher un collaborateur",
+        "from": "Du",
+        "to": "Au",
+        "all_teams": "Toutes les équipes",
+        "all_workers": "Tous les collaborateurs",
+        "all_clock_points": "Tous les clock points",
+        "apply": "Appliquer"
     },
     "export": {
-        "button": "Exporteer CSV",
+        "button": "Exporter CSV",
         "columns": {
-            "date": "Datum",
-            "worker": "Medewerker",
-            "team": "Team",
-            "clock_in": "In",
-            "clock_out": "Uit",
+            "date": "Date",
+            "worker": "Collaborateur",
+            "team": "Équipe",
+            "clock_in": "Entrée",
+            "clock_out": "Sortie",
             "break_minutes": "Pause",
             "worked": "Travaillé",
-            "clock_in_at": "Ingeklokt bij",
-            "clock_out_at": "Uitgeklokt bij",
-            "status": "Status",
-            "tasks": "Taken"
+            "clock_in_at": "Pointé à",
+            "clock_out_at": "Dépointé à",
+            "status": "Statut",
+            "tasks": "Tâches"
         }
     },
     "print": {
         "button": "Imprimer",
-        "title": "Feuille de temps",
-        "document_title": "Feuille de temps — WinProx",
+        "title": "Feuille d'heures",
+        "document_title": "Feuille d'heures — WinProx",
         "period": "Période du :from au :to",
         "total_worked": "Total travaillé : :duration",
         "empty": "Aucun shift sur cette période."
     },
     "clock_points": {
-        "subtitle": "Beheer inkloklocaties en print QR-stickers.",
+        "subtitle": "Gérez les lieux de pointage et imprimez les stickers QR.",
         "list_title": "Clock Points",
-        "add": "Clock Point toevoegen",
-        "empty": "Nog geen clock points. Voeg een inkloklocatie toe en print de QR-sticker.",
-        "create_title": "Nieuw clock point",
-        "edit_title": "Clock point bewerken",
-        "saved": "Clock point opgeslagen.",
-        "activate": "Activeren",
-        "deactivate": "Deactiveren",
+        "add": "Ajouter un Clock Point",
+        "empty": "Aucun clock point pour le moment. Ajoutez un lieu de pointage et imprimez le sticker QR.",
+        "create_title": "Nouveau clock point",
+        "edit_title": "Modifier le clock point",
+        "saved": "Clock point enregistré.",
+        "activate": "Activer",
+        "deactivate": "Désactiver",
         "status": {
-            "active": "Actief",
-            "inactive": "Inactief"
+            "active": "Actif",
+            "inactive": "Inactif"
         },
         "fields": {
-            "name": "Naam",
-            "location": "Locatie",
-            "no_location": "Geen locatie gekoppeld",
-            "sort_order": "Sorteervolgorde"
+            "name": "Nom",
+            "location": "Site",
+            "no_location": "Aucun site lié",
+            "sort_order": "Ordre de tri"
         },
         "qr": {
             "button": "Code QR",
             "subtitle": "Scannez pour pointer l'entrée ou la sortie",
             "print": "Imprimer",
             "renew": "Renouveler le code QR",
-            "renew_confirm": "Générer un nouveau code QR ? L'ancien autocollant fonctionnera encore quelques jours (période de grâce).",
-            "renewed": "Code QR renouvelé. Imprimez un nouvel autocollant.",
+            "renew_confirm": "Générer un nouveau code QR ? L'ancien sticker fonctionne encore quelques jours (période de grâce).",
+            "renewed": "Code QR renouvelé. Imprimez un nouveau sticker.",
             "renewal_recommended": "À remplacer",
             "rotation_title": "Rotation QR",
             "rotation_hint": "Après cet intervalle, une recommandation de renouvellement apparaît. 0 = désactivé (pas de recommandations).",
@@ -209,27 +209,27 @@
         "minute_short": "min"
     },
     "portal": {
-        "title": "Inklokken",
+        "title": "Pointage",
         "clock": {
-            "title": "Aanwezigheid",
-            "not_clocked_in": "Je bent nog niet ingeklokt.",
-            "clocked_in_since": "Ingeklokt sinds :time",
-            "on_break_since": "Op pauze sinds :time",
-            "in": "Inklokken",
-            "out": "Uitklokken",
-            "start_break": "Pauze starten",
-            "end_break": "Pauze beëindigen"
+            "title": "Présence",
+            "not_clocked_in": "Vous n'êtes pas encore pointé.",
+            "clocked_in_since": "Pointé depuis :time",
+            "on_break_since": "En pause depuis :time",
+            "in": "Pointer l'entrée",
+            "out": "Pointer la sortie",
+            "start_break": "Commencer la pause",
+            "end_break": "Terminer la pause"
         },
-        "clocked_in": "Je bent ingeklokt.",
-        "clocked_out": "Je bent uitgeklokt.",
-        "break_started": "Pauze gestart.",
-        "break_ended": "Pauze beëindigd.",
+        "clocked_in": "Vous êtes pointé.",
+        "clocked_out": "Vous êtes dépointé.",
+        "break_started": "Pause commencée.",
+        "break_ended": "Pause terminée.",
         "errors": {
-            "already_clocked_in": "Je bent al ingeklokt.",
-            "not_clocked_in": "Je bent niet ingeklokt.",
-            "break_already_open": "Je pauze loopt al.",
-            "break_not_open": "Je bent niet op pauze.",
-            "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
+            "already_clocked_in": "Vous êtes déjà pointé.",
+            "not_clocked_in": "Vous n'êtes pas pointé.",
+            "break_already_open": "Votre pause est déjà en cours.",
+            "break_not_open": "Vous n'êtes pas en pause.",
+            "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur."
         }
     }
 }

@@ -4,25 +4,25 @@
         "module_disabled": "Time-Modul ist für diese Organisation nicht aktiviert."
     },
     "nav": {
-        "label": "Time-navigatie",
-        "presence": "Aanwezigheid",
+        "label": "Time-Navigation",
+        "presence": "Anwesenheit",
         "alarms": "Alarme",
-        "shifts": "Uren",
+        "shifts": "Stunden",
         "clock_points": "Clock Points"
     },
     "presence": {
         "subtitle": "Live-Übersicht pro Team — Team aufklappen für Mitarbeitende.",
-        "present": "Aanwezig",
+        "present": "Anwesend",
         "present_subtitle": "Aktive Mitarbeitende",
-        "on_break": "Pauze",
+        "on_break": "Pause",
         "on_break_subtitle": "Mitarbeitende in Pause",
-        "not_clocked_in": "Niet ingeklokt",
+        "not_clocked_in": "Nicht eingestempelt",
         "not_clocked_in_subtitle": "Heute noch nicht eingestempelt",
         "worked_so_far": "Gearbeitet: :duration",
         "hours_label": "Stunden",
-        "empty_section": "Niemand in deze groep.",
+        "empty_section": "Niemand in dieser Gruppe.",
         "empty_not_clocked_in": "Alle mit offener Schicht sind eingestempelt.",
-        "force_close": "Shift sluiten",
+        "force_close": "Schicht schließen",
         "force_closed": "Schicht geschlossen.",
         "stale_warning": "Seit mehr als :hours Stunden offen",
         "search_label": "Mitarbeitende suchen",
@@ -98,11 +98,11 @@
         }
     },
     "shifts": {
-        "subtitle": "Urenoverzicht per periode.",
-        "empty": "Geen shifts gevonden voor deze filters.",
+        "subtitle": "Stundenübersicht nach Zeitraum.",
+        "empty": "Keine Schichten für diese Filter gefunden.",
         "break_minutes": "Pause: :duration",
         "worked": "Gearbeitet: :duration",
-        "clocked_in_at": "Ingeklokt bij :name",
+        "clocked_in_at": "Eingestempelt bei :name",
         "clocked_out_at": "Ausgestempelt bei :name",
         "tasks_heading": "Aufgaben während dieser Schicht:",
         "task_unknown": "Aufgabe",
@@ -128,35 +128,35 @@
         }
     },
     "status": {
-        "open": "Open",
-        "closed": "Gesloten",
+        "open": "Offen",
+        "closed": "Geschlossen",
         "force_closed": "Geschlossen (Admin)",
         "auto_closed": "Geschlossen (automatisch)"
     },
     "filters": {
         "team": "Team",
-        "worker": "Medewerker",
+        "worker": "Mitarbeitende",
         "clock_point": "Clock Point",
-        "search": "Zoek medewerker",
-        "from": "Van",
-        "to": "Tot",
-        "all_teams": "Alle teams",
-        "all_workers": "Alle medewerkers",
-        "all_clock_points": "Alle clock points",
-        "apply": "Toepassen"
+        "search": "Mitarbeitende suchen",
+        "from": "Von",
+        "to": "Bis",
+        "all_teams": "Alle Teams",
+        "all_workers": "Alle Mitarbeitenden",
+        "all_clock_points": "Alle Clock Points",
+        "apply": "Anwenden"
     },
     "export": {
-        "button": "Exporteer CSV",
+        "button": "CSV exportieren",
         "columns": {
             "date": "Datum",
-            "worker": "Medewerker",
+            "worker": "Mitarbeitende",
             "team": "Team",
-            "clock_in": "In",
-            "clock_out": "Uit",
+            "clock_in": "Ein",
+            "clock_out": "Aus",
             "break_minutes": "Pause",
             "worked": "Gearbeitet",
-            "clock_in_at": "Ingeklokt bij",
-            "clock_out_at": "Uitgeklokt bij",
+            "clock_in_at": "Eingestempelt bei",
+            "clock_out_at": "Ausgestempelt bei",
             "status": "Status",
             "tasks": "Aufgaben"
         }
@@ -170,29 +170,29 @@
         "empty": "Keine Schichten in diesem Zeitraum."
     },
     "clock_points": {
-        "subtitle": "Beheer inkloklocaties en print QR-stickers.",
+        "subtitle": "Einstempelorte verwalten und QR-Aufkleber drucken.",
         "list_title": "Clock Points",
-        "add": "Clock Point toevoegen",
-        "empty": "Nog geen clock points. Voeg een inkloklocatie toe en print de QR-sticker.",
-        "create_title": "Nieuw clock point",
-        "edit_title": "Clock point bewerken",
-        "saved": "Clock point opgeslagen.",
-        "activate": "Activeren",
-        "deactivate": "Deactiveren",
+        "add": "Clock Point hinzufügen",
+        "empty": "Noch keine Clock Points. Fügen Sie einen Einstempelort hinzu und drucken Sie den QR-Aufkleber.",
+        "create_title": "Neuer Clock Point",
+        "edit_title": "Clock Point bearbeiten",
+        "saved": "Clock Point gespeichert.",
+        "activate": "Aktivieren",
+        "deactivate": "Deaktivieren",
         "status": {
-            "active": "Actief",
-            "inactive": "Inactief"
+            "active": "Aktiv",
+            "inactive": "Inaktiv"
         },
         "fields": {
-            "name": "Naam",
-            "location": "Locatie",
-            "no_location": "Geen locatie gekoppeld",
-            "sort_order": "Sorteervolgorde"
+            "name": "Name",
+            "location": "Standort",
+            "no_location": "Kein Standort verknüpft",
+            "sort_order": "Sortierreihenfolge"
         },
         "qr": {
-            "button": "QR-code",
-            "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken",
+            "button": "QR-Code",
+            "subtitle": "Scannen zum Ein- oder Ausstempeln",
+            "print": "Drucken",
             "renew": "QR-Code erneuern",
             "renew_confirm": "Neuen QR-Code generieren? Der alte Aufkleber funktioniert noch einige Tage (Übergangsfrist).",
             "renewed": "QR-Code erneuert. Neuen Aufkleber drucken.",
@@ -209,27 +209,27 @@
         "minute_short": "min"
     },
     "portal": {
-        "title": "Inklokken",
+        "title": "Einstempeln",
         "clock": {
-            "title": "Aanwezigheid",
-            "not_clocked_in": "Je bent nog niet ingeklokt.",
-            "clocked_in_since": "Ingeklokt sinds :time",
-            "on_break_since": "Op pauze sinds :time",
-            "in": "Inklokken",
-            "out": "Uitklokken",
-            "start_break": "Pauze starten",
-            "end_break": "Pauze beëindigen"
+            "title": "Anwesenheit",
+            "not_clocked_in": "Sie sind noch nicht eingestempelt.",
+            "clocked_in_since": "Eingestempelt seit :time",
+            "on_break_since": "In Pause seit :time",
+            "in": "Einstempeln",
+            "out": "Ausstempeln",
+            "start_break": "Pause starten",
+            "end_break": "Pause beenden"
         },
-        "clocked_in": "Je bent ingeklokt.",
-        "clocked_out": "Je bent uitgeklokt.",
-        "break_started": "Pauze gestart.",
-        "break_ended": "Pauze beëindigd.",
+        "clocked_in": "Sie sind eingestempelt.",
+        "clocked_out": "Sie sind ausgestempelt.",
+        "break_started": "Pause gestartet.",
+        "break_ended": "Pause beendet.",
         "errors": {
-            "already_clocked_in": "Je bent al ingeklokt.",
-            "not_clocked_in": "Je bent niet ingeklokt.",
-            "break_already_open": "Je pauze loopt al.",
-            "break_not_open": "Je bent niet op pauze.",
-            "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
+            "already_clocked_in": "Sie sind bereits eingestempelt.",
+            "not_clocked_in": "Sie sind nicht eingestempelt.",
+            "break_already_open": "Ihre Pause läuft bereits.",
+            "break_not_open": "Sie sind nicht in Pause.",
+            "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator."
         }
     }
 }

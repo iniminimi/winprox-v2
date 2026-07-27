@@ -4,31 +4,31 @@
         "module_disabled": "Il modulo Time non è abilitato per questa organizzazione."
     },
     "nav": {
-        "label": "Time-navigatie",
-        "presence": "Aanwezigheid",
+        "label": "Navigazione Time",
+        "presence": "Presenza",
         "alarms": "Allarmi",
-        "shifts": "Uren",
+        "shifts": "Ore",
         "clock_points": "Clock Points"
     },
     "presence": {
-        "subtitle": "Panoramica live per team — espandi un team per i dipendenti.",
-        "present": "Aanwezig",
+        "subtitle": "Panoramica live per team — espandi un team per i lavoratori.",
+        "present": "Presente",
         "present_subtitle": "Dipendenti attivi",
-        "on_break": "Pauze",
+        "on_break": "Pausa",
         "on_break_subtitle": "Dipendenti in pausa",
-        "not_clocked_in": "Niet ingeklokt",
+        "not_clocked_in": "Non timbrato",
         "not_clocked_in_subtitle": "Non ancora timbrati oggi",
         "worked_so_far": "Lavorato: :duration",
         "hours_label": "Ore",
-        "empty_section": "Niemand in deze groep.",
+        "empty_section": "Nessuno in questo gruppo.",
         "empty_not_clocked_in": "Tutti con turno aperto sono timbrati.",
-        "force_close": "Shift sluiten",
+        "force_close": "Chiudi turno",
         "force_closed": "Turno chiuso.",
         "stale_warning": "Aperto da più di :hours ore",
-        "search_label": "Cerca dipendente",
+        "search_label": "Cerca lavoratore",
         "search_placeholder": "Nome…",
         "search_results": "Risultati di ricerca",
-        "search_empty": "Nessun dipendente trovato.",
+        "search_empty": "Nessun lavoratore trovato.",
         "location": "Sede",
         "all_locations": "Tutte le sedi",
         "status_filters": "Stato",
@@ -41,54 +41,54 @@
         "team_summary_absent": ":count non timbrati",
         "team_summary_attention": ":count attenzione",
         "kpi": {
-            "clocked_in": "Timbrati",
-            "active": "Attivi",
+            "clocked_in": "Timbrato",
+            "active": "Attivo",
             "break": "Pausa",
-            "absent": "Non timbrati",
+            "absent": "Non timbrato",
             "attention": "Attenzione"
         },
         "status": {
             "all": "Tutti",
-            "active": "Presenti",
+            "active": "Presente",
             "break": "Pausa",
-            "absent": "Assenti",
+            "absent": "Assente",
             "attention": "Attenzione"
         },
         "attention": {
-            "long_shift": "Turno oltre :hours ore",
-            "stale_shift": "Non timbrato in uscita (> :hours h)",
+            "long_shift": "Turno più lungo di :hours ore",
+            "stale_shift": "Uscita non timbrata (> :hours ore)",
             "no_break": "Nessuna pausa dopo :hours ore"
         },
         "view_modes": "Vista",
         "board_absent_title": "Assente / Azione extra",
         "attention_board_subtitle": "Turni aperti che richiedono attenzione",
         "view": {
-            "board": "Board",
+            "board": "Bacheca",
             "teams": "Team",
             "cards": "Schede team",
             "locations": "Sedi"
         },
         "view_team": "Vedi",
         "view_location": "Mostra team",
-        "empty_locations": "Nessun dipendente timbrato per sede.",
+        "empty_locations": "Nessun lavoratore timbrato per sede.",
         "unknown_location": "Senza sede",
         "load_more": "Mostra altri :count"
     },
     "alarms": {
         "title": "Allarmi",
-        "subtitle": "Turni aperti da controllare — turno lungo, uscita dimenticata o nessuna pausa.",
+        "subtitle": "Turni aperti che richiedono attenzione — turni lunghi, uscita dimenticata o nessuna pausa.",
         "empty": "Nessun allarme al momento.",
         "summary": "{0} Nessun allarme|{1} :count allarme|[2,*] :count allarmi",
         "type_filters": "Tipo di allarme",
         "type_all": "Tutti",
         "type_long_shift": "Turno lungo",
-        "type_stale_shift": "Non timbrato in uscita",
+        "type_stale_shift": "Uscita non timbrata",
         "type_no_break": "Nessuna pausa",
         "shown": ":shown di :total allarmi mostrati"
     },
     "force_close": {
         "title": "Chiudi turno",
-        "subtitle": "Chiude il turno aperto di :worker all'ora attuale. Il motivo viene registrato nel log di audit.",
+        "subtitle": "Stai chiudendo il turno aperto di :worker con l'ora attuale. Il motivo viene registrato nel registro di audit.",
         "submit": "Chiudi turno",
         "fields": {
             "reason": "Motivo"
@@ -98,12 +98,12 @@
         }
     },
     "shifts": {
-        "subtitle": "Urenoverzicht per periode.",
-        "empty": "Geen shifts gevonden voor deze filters.",
+        "subtitle": "Riepilogo ore per periodo.",
+        "empty": "Nessun turno trovato per questi filtri.",
         "break_minutes": "Pausa: :duration",
         "worked": "Lavorato: :duration",
-        "clocked_in_at": "Ingeklokt bij :name",
-        "clocked_out_at": "Timbrato uscita presso :name",
+        "clocked_in_at": "Timbrato presso :name",
+        "clocked_out_at": "Uscita timbrata presso :name",
         "tasks_heading": "Attività durante questo turno:",
         "task_unknown": "Attività",
         "task_duration": ":minutes min",
@@ -112,52 +112,52 @@
     "corrections": {
         "button": "Correggi",
         "title": "Correggi turno",
-        "subtitle": "Modifica orari di entrata/uscita o pausa. Il motivo viene registrato nel log di audit.",
+        "subtitle": "Modifica orari di entrata/uscita o minuti di pausa. Il motivo viene registrato nel registro di audit.",
         "saved": "Turno corretto.",
         "fields": {
-            "clock_in": "Ora entrata",
-            "clock_out": "Ora uscita",
+            "clock_in": "Ora di entrata",
+            "clock_out": "Ora di uscita",
             "break_minutes": "Pausa (minuti)",
             "reason": "Motivo"
         },
         "errors": {
-            "clock_out_before_clock_in": "L'ora di uscita deve essere dopo l'ora di entrata.",
+            "clock_out_before_clock_in": "L'ora di uscita deve essere successiva all'entrata.",
             "break_exceeds_duration": "La pausa non può essere più lunga del turno.",
             "shift_still_open": "I turni aperti non possono essere corretti.",
             "shift_missing_clock_out": "Questo turno non ha un'ora di uscita."
         }
     },
     "status": {
-        "open": "Open",
-        "closed": "Gesloten",
+        "open": "Aperto",
+        "closed": "Chiuso",
         "force_closed": "Chiuso (admin)",
         "auto_closed": "Chiuso (automatico)"
     },
     "filters": {
         "team": "Team",
-        "worker": "Medewerker",
+        "worker": "Lavoratore",
         "clock_point": "Clock Point",
-        "search": "Zoek medewerker",
-        "from": "Van",
-        "to": "Tot",
-        "all_teams": "Alle teams",
-        "all_workers": "Alle medewerkers",
-        "all_clock_points": "Alle clock points",
-        "apply": "Toepassen"
+        "search": "Cerca lavoratore",
+        "from": "Da",
+        "to": "A",
+        "all_teams": "Tutti i team",
+        "all_workers": "Tutti i lavoratori",
+        "all_clock_points": "Tutti i clock points",
+        "apply": "Applica"
     },
     "export": {
-        "button": "Exporteer CSV",
+        "button": "Esporta CSV",
         "columns": {
-            "date": "Datum",
-            "worker": "Medewerker",
+            "date": "Data",
+            "worker": "Lavoratore",
             "team": "Team",
-            "clock_in": "In",
-            "clock_out": "Uit",
+            "clock_in": "Entrata",
+            "clock_out": "Uscita",
             "break_minutes": "Pausa",
             "worked": "Lavorato",
-            "clock_in_at": "Ingeklokt bij",
-            "clock_out_at": "Uitgeklokt bij",
-            "status": "Status",
+            "clock_in_at": "Timbrato presso",
+            "clock_out_at": "Uscita presso",
+            "status": "Stato",
             "tasks": "Attività"
         }
     },
@@ -170,35 +170,35 @@
         "empty": "Nessun turno in questo periodo."
     },
     "clock_points": {
-        "subtitle": "Beheer inkloklocaties en print QR-stickers.",
+        "subtitle": "Gestisci i punti di timbratura e stampa gli adesivi QR.",
         "list_title": "Clock Points",
-        "add": "Clock Point toevoegen",
-        "empty": "Nog geen clock points. Voeg een inkloklocatie toe en print de QR-sticker.",
-        "create_title": "Nieuw clock point",
-        "edit_title": "Clock point bewerken",
-        "saved": "Clock point opgeslagen.",
-        "activate": "Activeren",
-        "deactivate": "Deactiveren",
+        "add": "Aggiungi Clock Point",
+        "empty": "Nessun clock point ancora. Aggiungi un punto di timbratura e stampa l'adesivo QR.",
+        "create_title": "Nuovo clock point",
+        "edit_title": "Modifica clock point",
+        "saved": "Clock point salvato.",
+        "activate": "Attiva",
+        "deactivate": "Disattiva",
         "status": {
-            "active": "Actief",
-            "inactive": "Inactief"
+            "active": "Attivo",
+            "inactive": "Inattivo"
         },
         "fields": {
-            "name": "Naam",
-            "location": "Locatie",
-            "no_location": "Geen locatie gekoppeld",
-            "sort_order": "Sorteervolgorde"
+            "name": "Nome",
+            "location": "Sede",
+            "no_location": "Nessuna sede collegata",
+            "sort_order": "Ordine"
         },
         "qr": {
-            "button": "QR-code",
-            "subtitle": "Scan om in of uit te klokken",
-            "print": "Afdrukken",
+            "button": "Codice QR",
+            "subtitle": "Scansiona per timbrare entrata o uscita",
+            "print": "Stampa",
             "renew": "Rinnova codice QR",
-            "renew_confirm": "Generare un nuovo codice QR? L'adesivo vecchio funzionerà ancora per alcuni giorni (periodo di grazia).",
+            "renew_confirm": "Generare un nuovo codice QR? Il vecchio adesivo funziona ancora per alcuni giorni (periodo di grazia).",
             "renewed": "Codice QR rinnovato. Stampa un nuovo adesivo.",
             "renewal_recommended": "Da sostituire",
             "rotation_title": "Rotazione QR",
-            "rotation_hint": "Dopo questo intervallo appare una raccomandazione di rinnovo. 0 = disattivato (nessuna raccomandazione).",
+            "rotation_hint": "Dopo questo intervallo compare una raccomandazione di rinnovo. 0 = disattivato (nessuna raccomandazione).",
             "rotation_months": "Intervallo (mesi)",
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni."
@@ -209,27 +209,27 @@
         "minute_short": "min"
     },
     "portal": {
-        "title": "Inklokken",
+        "title": "Timbratura",
         "clock": {
-            "title": "Aanwezigheid",
-            "not_clocked_in": "Je bent nog niet ingeklokt.",
-            "clocked_in_since": "Ingeklokt sinds :time",
-            "on_break_since": "Op pauze sinds :time",
-            "in": "Inklokken",
-            "out": "Uitklokken",
-            "start_break": "Pauze starten",
-            "end_break": "Pauze beëindigen"
+            "title": "Presenza",
+            "not_clocked_in": "Non hai ancora timbrato.",
+            "clocked_in_since": "Timbrato dalle :time",
+            "on_break_since": "In pausa dalle :time",
+            "in": "Timbra entrata",
+            "out": "Timbra uscita",
+            "start_break": "Inizia pausa",
+            "end_break": "Termina pausa"
         },
-        "clocked_in": "Je bent ingeklokt.",
-        "clocked_out": "Je bent uitgeklokt.",
-        "break_started": "Pauze gestart.",
-        "break_ended": "Pauze beëindigd.",
+        "clocked_in": "Hai timbrato l'entrata.",
+        "clocked_out": "Hai timbrato l'uscita.",
+        "break_started": "Pausa iniziata.",
+        "break_ended": "Pausa terminata.",
         "errors": {
-            "already_clocked_in": "Je bent al ingeklokt.",
-            "not_clocked_in": "Je bent niet ingeklokt.",
-            "break_already_open": "Je pauze loopt al.",
-            "break_not_open": "Je bent niet op pauze.",
-            "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder."
+            "already_clocked_in": "Hai già timbrato l'entrata.",
+            "not_clocked_in": "Non hai timbrato l'entrata.",
+            "break_already_open": "La pausa è già in corso.",
+            "break_not_open": "Non sei in pausa.",
+            "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore."
         }
     }
 }
