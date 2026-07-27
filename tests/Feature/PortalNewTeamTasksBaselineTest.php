@@ -115,6 +115,7 @@ it('toont banner op unit-portaal voor nieuwe teamtaak elders sinds baseline', fu
     Livewire::test(UnitPortal::class, ['token' => 'unit-a-token'])
         ->assertSee(trans_choice('portal.worker.new_team_tasks_banner', 1, ['count' => 1]), false)
         ->assertSee(__('portal.worker.open_login_overview'), false)
+        ->assertSee('wp-portal-new-team-tasks-banner', false)
         ->assertSee($clockPoint->portalUrl(), false);
 });
 

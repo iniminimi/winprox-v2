@@ -199,8 +199,14 @@
         @endif
 
         @if (($newTeamTasksCount ?? 0) > 0)
-            <div class="wp-card wp-card-pad wp-stack" wire:key="new-team-tasks-banner" data-manual-capture="portal-new-team-tasks">
-                <p class="wp-text-body">
+            <div
+                class="wp-card wp-card-pad wp-stack wp-portal-new-team-tasks-banner"
+                wire:key="new-team-tasks-banner"
+                data-manual-capture="portal-new-team-tasks"
+                role="status"
+                aria-live="polite"
+            >
+                <p class="wp-portal-new-team-tasks-banner__title">
                     {{ trans_choice('portal.worker.new_team_tasks_banner', $newTeamTasksCount, ['count' => $newTeamTasksCount]) }}
                 </p>
                 <div class="wp-cluster">
