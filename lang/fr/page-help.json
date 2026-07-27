@@ -1106,6 +1106,10 @@
                     "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
                 },
                 {
+                    "label": "Qu’est-ce qu’une passerelle ?",
+                    "text": "Une <strong>passerelle</strong> (gateway) est le pont entre vos capteurs et WinProx. Les capteurs communiquent souvent via LoRaWAN, Zigbee, Bluetooth ou MQTT avec une passerelle de votre fournisseur. Celle-ci traduit les données et n’envoie à WinProx que les événements pertinents (via HTTPS). WinProx ne vend ni capteurs ni passerelles : vous enregistrez ici une passerelle logique avec un jeton pour que WinProx sache quelle organisation peut recevoir les événements."
+                },
+                {
                     "label": "Create a gateway",
                     "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
                 },

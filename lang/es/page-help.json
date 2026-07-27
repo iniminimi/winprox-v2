@@ -1106,6 +1106,10 @@
                     "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
                 },
                 {
+                    "label": "¿Qué es una pasarela?",
+                    "text": "Una <strong>pasarela</strong> (gateway) es el puente entre tus sensores y WinProx. Los sensores suelen hablar por LoRaWAN, Zigbee, Bluetooth o MQTT con una pasarela de tu proveedor. Esa pasarela traduce los datos y envía a WinProx solo los eventos relevantes (por HTTPS). WinProx no vende sensores ni pasarelas: aquí registras una pasarela lógica con un token para que WinProx sepa qué organización puede recibir los eventos."
+                },
+                {
                     "label": "Create a gateway",
                     "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
                 },
