@@ -13,6 +13,11 @@
     color: var(--wp-text-muted);
 }
 
+/* Bevestigingswachtwoord (bv. gevaarlijke zone): niet full-width. */
+.wp-field--password {
+    max-width: 18rem;
+}
+
 /* Twee formuliervelden naast elkaar (labels + inputs uitgelijnd). */
 .wp-form-grid-2 {
     display: grid;

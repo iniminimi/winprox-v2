@@ -247,10 +247,17 @@
                         </label>
                         <p>{{ __('subscription.purge.status_ready') }}</p>
                         @if ($canExecuteTrialPurge)
-                            <label class="wp-field">
+                            <div class="wp-field wp-field--password">
                                 <span class="wp-label">{{ __('subscription.purge.password_label') }}</span>
-                                <input type="password" class="wp-input" wire:model="purgeExecutePassword" autocomplete="current-password">
-                            </label>
+                                <x-wp-password-input
+                                    wireModel="purgeExecutePassword"
+                                    id="purgeExecutePassword"
+                                    autocomplete="new-password"
+                                    name="purge_execute_confirm"
+                                    readonly
+                                    onfocus="this.removeAttribute('readonly')"
+                                />
+                            </div>
                             @error('purge_password')
                                 <p class="wp-form-error">{{ $message }}</p>
                             @enderror
@@ -292,10 +299,17 @@
                         <p class="wp-form-error">{{ $message }}</p>
                     @enderror
 
-                    <label class="wp-field">
+                    <div class="wp-field wp-field--password">
                         <span class="wp-label">{{ __('subscription.purge.password_label') }}</span>
-                        <input type="password" class="wp-input" wire:model="purgePassword" autocomplete="current-password">
-                    </label>
+                        <x-wp-password-input
+                            wireModel="purgePassword"
+                            id="purgePassword"
+                            autocomplete="new-password"
+                            name="purge_start_confirm"
+                            readonly
+                            onfocus="this.removeAttribute('readonly')"
+                        />
+                    </div>
                     @error('purge_password')
                         <p class="wp-form-error">{{ $message }}</p>
                     @enderror
