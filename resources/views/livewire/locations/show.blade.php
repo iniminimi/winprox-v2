@@ -437,31 +437,72 @@
                                 @endif
                             </div>
 
-                            <div class="wp-form-grid-2">
-                                <label class="wp-field">
+                            <div class="wp-cluster">
+                                <label class="wp-field wp-grow">
                                     <span class="wp-label">{{ __('locations.bulk.start') }}</span>
-                                    <input type="text" inputmode="numeric" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.start" placeholder="20" />
+                                    <input
+                                        type="text"
+                                        inputmode="numeric"
+                                        class="wp-input"
+                                        value="{{ $range['start'] }}"
+                                        placeholder="{{ __('locations.bulk.start_hint') }}"
+                                        wire:ignore.self
+                                        wire:input.live.debounce.300ms="setBulkRangeField({{ $index }}, 'start', $event.target.value)"
+                                    />
                                 </label>
-                                <label class="wp-field">
+                                <label class="wp-field wp-grow">
                                     <span class="wp-label">{{ __('locations.bulk.count') }}</span>
-                                    <input type="number" min="1" max="500" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.count" />
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="500"
+                                        class="wp-input"
+                                        value="{{ $range['count'] }}"
+                                        wire:ignore.self
+                                        wire:input.live.debounce.300ms="setBulkRangeField({{ $index }}, 'count', $event.target.value)"
+                                    />
                                 </label>
                             </div>
 
-                            <div class="wp-form-grid-2">
-                                <label class="wp-field">
+                            <div class="wp-cluster">
+                                <label class="wp-field wp-grow">
                                     <span class="wp-label">{{ __('locations.bulk.padding') }}</span>
-                                    <input type="number" min="1" max="20" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.padding" placeholder="{{ __('locations.bulk.padding_auto') }}" />
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="20"
+                                        class="wp-input"
+                                        value="{{ $range['padding'] }}"
+                                        placeholder="{{ __('locations.bulk.padding_auto') }}"
+                                        wire:ignore.self
+                                        wire:input.live.debounce.300ms="setBulkRangeField({{ $index }}, 'padding', $event.target.value)"
+                                    />
                                 </label>
-                                <label class="wp-field">
+                                <label class="wp-field wp-grow">
                                     <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
-                                    <input type="text" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.prefix" maxlength="30" placeholder="Kamer " />
+                                    <input
+                                        type="text"
+                                        class="wp-input"
+                                        value="{{ $range['prefix'] }}"
+                                        placeholder="{{ __('locations.bulk.prefix_hint') }}"
+                                        maxlength="30"
+                                        wire:ignore.self
+                                        wire:input.live.debounce.300ms="setBulkRangeField({{ $index }}, 'prefix', $event.target.value)"
+                                    />
                                 </label>
                             </div>
 
                             <label class="wp-field">
                                 <span class="wp-label">{{ __('locations.bulk.suffix') }}</span>
-                                <input type="text" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.suffix" maxlength="30" placeholder="-A" />
+                                <input
+                                    type="text"
+                                    class="wp-input"
+                                    value="{{ $range['suffix'] }}"
+                                    placeholder="{{ __('locations.bulk.suffix_hint') }}"
+                                    maxlength="30"
+                                    wire:ignore.self
+                                    wire:input.live.debounce.300ms="setBulkRangeField({{ $index }}, 'suffix', $event.target.value)"
+                                />
                             </label>
 
                             @error('bulkRanges.'.$index.'.start') <span class="wp-error">{{ $message }}</span> @enderror
@@ -475,19 +516,11 @@
                     {{ __('locations.bulk.add_range') }}
                 </button>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
-                    <select class="wp-input" wire:model="bulkCategoryId">
-                        <option value="">{{ __('locations.units.no_category') }}</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                </label>
-
-                @if ($bulkPreview['preview_names'] !== [])
-                    <div class="wp-card wp-card-pad wp-surface-2">
-                        <p class="wp-label">{{ __('locations.bulk.preview') }} ({{ __('locations.bulk.batch_count', ['count' => $bulkPreview['total']]) }})</p>
+                <div class="wp-card wp-card-pad wp-surface-2">
+                    <p class="wp-label">{{ __('locations.bulk.preview') }} ({{ __('locations.bulk.batch_count', ['count' => $bulkPreview['total']]) }})</p>
+                    @if ($bulkPreview['preview_names'] === [])
+                        <p class="wp-muted">{{ __('locations.bulk.preview_empty') }}</p>
+                    @else
                         <p class="wp-muted">
                             @foreach ($bulkPreview['preview_names'] as $i => $name)
                                 @if ($bulkPreview['truncated'] && $i === count($bulkPreview['preview_names']) - 1)
@@ -501,8 +534,18 @@
                         @if ($bulkPreview['has_duplicates'])
                             <p class="wp-error">{{ __('locations.bulk.errors.duplicates_count', ['count' => count($bulkPreview['duplicates'])]) }}</p>
                         @endif
-                    </div>
-                @endif
+                    @endif
+                </div>
+
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
+                    <select class="wp-input" wire:model="bulkCategoryId">
+                        <option value="">{{ __('locations.units.no_category') }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </label>
 
                 @error('bulkRanges') <span class="wp-error">{{ $message }}</span> @enderror
 

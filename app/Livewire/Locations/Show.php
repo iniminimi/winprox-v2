@@ -552,6 +552,21 @@ class Show extends Component
         $this->bulkRanges = array_values($this->bulkRanges);
     }
 
+    public function setBulkRangeField(int $index, string $field, mixed $value): void
+    {
+        if (! array_key_exists($index, $this->bulkRanges)) {
+            return;
+        }
+
+        if (! in_array($field, ['start', 'count', 'padding', 'prefix', 'suffix'], true)) {
+            return;
+        }
+
+        $ranges = $this->bulkRanges;
+        $ranges[$index][$field] = $value;
+        $this->bulkRanges = array_values($ranges);
+    }
+
     /**
      * @return array{start: string, count: int, padding: string, prefix: string, suffix: string}
      */

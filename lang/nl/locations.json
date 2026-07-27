@@ -182,7 +182,11 @@
             "padding": "Aantal cijfers mag niet kleiner zijn dan het startnummer.",
             "duplicates": "Dubbele unitnamen in de reeksen — pas de reeksen aan.",
             "duplicates_count": ":count dubbele naam/namen in het voorbeeld."
-        }
+        },
+        "start_hint": "bv. 20",
+        "prefix_hint": "bv. Kamer ",
+        "suffix_hint": "bv. -A",
+        "preview_empty": "Vul een startnummer en aantal in om de preview te zien."
     },
     "import_history": {
         "title": "Recente imports",

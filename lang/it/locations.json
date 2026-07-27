@@ -182,7 +182,11 @@
             "padding": "Il numero di cifre non può essere inferiore al numero iniziale.",
             "duplicates": "Nomi unità duplicati nelle serie — correggi le serie.",
             "duplicates_count": ":count nome/i duplicato/i nell’anteprima."
-        }
+        },
+        "start_hint": "es. 20",
+        "prefix_hint": "es. Stanza ",
+        "suffix_hint": "es. -A",
+        "preview_empty": "Inserisci un numero iniziale e una quantità per vedere l’anteprima."
     },
     "import_history": {
         "title": "Importazioni recenti",

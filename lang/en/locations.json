@@ -182,7 +182,11 @@
             "padding": "Digit count cannot be smaller than the start number.",
             "duplicates": "Duplicate unit names across ranges — adjust the ranges.",
             "duplicates_count": ":count duplicate name(s) in the preview."
-        }
+        },
+        "start_hint": "e.g. 20",
+        "prefix_hint": "e.g. Room ",
+        "suffix_hint": "e.g. -A",
+        "preview_empty": "Enter a start number and count to see the preview."
     },
     "import_history": {
         "title": "Recent imports",

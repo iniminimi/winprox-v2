@@ -182,7 +182,11 @@
             "padding": "Ziffernanzahl darf nicht kleiner als die Startnummer sein.",
             "duplicates": "Doppelte Unit-Namen in den Reihen — passen Sie die Reihen an.",
             "duplicates_count": ":count doppelte(r) Name(n) in der Vorschau."
-        }
+        },
+        "start_hint": "z.B. 20",
+        "prefix_hint": "z.B. Zimmer ",
+        "suffix_hint": "z.B. -A",
+        "preview_empty": "Geben Sie Startnummer und Anzahl ein, um die Vorschau zu sehen."
     },
     "import_history": {
         "title": "Letzte Imports",

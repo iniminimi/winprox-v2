@@ -182,7 +182,11 @@
             "padding": "Le nombre de chiffres ne peut pas être inférieur au numéro de départ.",
             "duplicates": "Noms d’unités en double dans les séries — ajustez les séries.",
             "duplicates_count": ":count nom(s) en double dans l’aperçu."
-        }
+        },
+        "start_hint": "ex. 20",
+        "prefix_hint": "ex. Chambre ",
+        "suffix_hint": "ex. -A",
+        "preview_empty": "Saisissez un numéro de départ et un nombre pour voir l’aperçu."
     },
     "import_history": {
         "title": "Imports récents",

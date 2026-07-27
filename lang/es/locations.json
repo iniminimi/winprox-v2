@@ -182,7 +182,11 @@
             "padding": "La cantidad de dígitos no puede ser menor que el número inicial.",
             "duplicates": "Nombres de unidad duplicados en las series — ajuste las series.",
             "duplicates_count": ":count nombre(s) duplicado(s) en la vista previa."
-        }
+        },
+        "start_hint": "p. ej. 20",
+        "prefix_hint": "p. ej. Habitación ",
+        "suffix_hint": "p. ej. -A",
+        "preview_empty": "Introduzca un número inicial y una cantidad para ver la vista previa."
     },
     "import_history": {
         "title": "Importaciones recientes",

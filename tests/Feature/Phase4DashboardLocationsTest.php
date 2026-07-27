@@ -211,6 +211,23 @@ it('shows bulk preview total and last name when truncated', function () {
         ->assertSee('Kamer 217');
 });
 
+it('updates bulk preview live when range fields are set via action', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Live Preview']);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openBulkModal')
+        ->call('setBulkRangeField', 0, 'start', '20')
+        ->call('setBulkRangeField', 0, 'count', '3')
+        ->call('setBulkRangeField', 0, 'prefix', 'Kamer ')
+        ->assertSee('Kamer 20')
+        ->assertSee('Kamer 21')
+        ->assertSee('Kamer 22')
+        ->assertSee(__('locations.bulk.submit_count', ['count' => 3]));
+});
+
 it('laat een gedeactiveerde unit opnieuw activeren', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
