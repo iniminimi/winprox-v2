@@ -17,6 +17,7 @@ use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Platform\SupportTenantContext;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
@@ -28,6 +29,8 @@ use Livewire\Component;
 class Subscription extends Component
 {
     use AuthorizesRequests;
+
+    private const PURGE_PASSWORD_FAILURES_SESSION_KEY = 'tenant_purge.password_failures';
 
     public ?string $selectedPlan = null;
 
@@ -159,10 +162,12 @@ class Subscription extends Component
             }
 
             if (! Hash::check($this->purgePassword, (string) auth()->user()?->password)) {
-                $this->addError('purge_password', __('subscription.purge.errors.password'));
+                $this->handlePurgePasswordFailure();
 
                 return;
             }
+
+            $this->clearPurgePasswordFailures();
         }
 
         if ($kind === 'execute_trial') {
@@ -173,10 +178,12 @@ class Subscription extends Component
             }
 
             if (! Hash::check($this->purgeExecutePassword, (string) auth()->user()?->password)) {
-                $this->addError('purge_password', __('subscription.purge.errors.password'));
+                $this->handlePurgePasswordFailure();
 
                 return;
             }
+
+            $this->clearPurgePasswordFailures();
         }
 
         $this->purgeConfirmKind = $kind;
@@ -185,6 +192,36 @@ class Subscription extends Component
     public function dismissPurgeConfirm(): void
     {
         $this->purgeConfirmKind = null;
+    }
+
+    private function handlePurgePasswordFailure(): void
+    {
+        $max = max(1, (int) config('tenant_purge.password_max_attempts', 3));
+        $failures = (int) session(self::PURGE_PASSWORD_FAILURES_SESSION_KEY, 0) + 1;
+        session([self::PURGE_PASSWORD_FAILURES_SESSION_KEY => $failures]);
+
+        if ($failures >= $max) {
+            $this->logoutAfterPurgePasswordLockout();
+
+            return;
+        }
+
+        $this->addError('purge_password', __('subscription.purge.errors.password'));
+    }
+
+    private function clearPurgePasswordFailures(): void
+    {
+        session()->forget(self::PURGE_PASSWORD_FAILURES_SESSION_KEY);
+    }
+
+    private function logoutAfterPurgePasswordLockout(): void
+    {
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        session()->flash('error', __('subscription.purge.errors.too_many_password_attempts'));
+
+        $this->redirect(route('login'), navigate: false);
     }
 
     public function confirmPurgeAction(

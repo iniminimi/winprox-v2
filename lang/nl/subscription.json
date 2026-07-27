@@ -155,7 +155,8 @@
             "superuser_only": "Alleen WinProx-administratie kan dit uitvoeren.",
             "not_scheduled": "Deze aanvraag is niet gepland.",
             "cooldown_active": "Cool-down actief tot :date.",
-            "generic": "Verwijdering mislukt."
+            "generic": "Verwijdering mislukt.",
+            "too_many_password_attempts": "Te veel foute wachtwoordpogingen. Je bent uitgelogd. Log opnieuw in om verder te gaan."
         }
     }
 }

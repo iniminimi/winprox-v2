@@ -25,4 +25,9 @@ return [
     | Relatief pad onder storage/app voor snapshots (buiten webroot).
     */
     'backup_directory' => 'tenant-purge-backups',
+
+    /*
+    | Max. foute wachtwoordpogingen bij purge; daarna uitloggen.
+    */
+    'password_max_attempts' => (int) env('TENANT_PURGE_PASSWORD_MAX_ATTEMPTS', 3),
 ];

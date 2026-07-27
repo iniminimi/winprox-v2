@@ -155,7 +155,8 @@
             "superuser_only": "Only WinProx administration can perform this.",
             "not_scheduled": "This request is not scheduled.",
             "cooldown_active": "Cool-down active until :date.",
-            "generic": "Deletion failed."
+            "generic": "Deletion failed.",
+            "too_many_password_attempts": "Too many incorrect password attempts. You have been logged out. Sign in again to continue."
         }
     }
 }

@@ -3,6 +3,10 @@
         <div class="wp-auth-notice wp-auth-notice--success" role="status">{{ session('status') }}</div>
     @endif
 
+    @if (session('error'))
+        <div class="wp-auth-notice wp-auth-notice--error" role="alert">{{ session('error') }}</div>
+    @endif
+
     @if ($errors->any())
         <div class="wp-auth-notice wp-auth-notice--error" role="alert">
             {{ $errors->first() }}

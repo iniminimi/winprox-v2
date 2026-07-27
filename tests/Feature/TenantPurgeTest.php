@@ -185,3 +185,34 @@ it('purge start: toont fout bij verkeerd wachtwoord zonder modal', function () {
         ->assertSet('purgeConfirmKind', null)
         ->assertSee(__('subscription.purge.errors.password'));
 });
+
+it('purge start: logt uit na drie foute wachtwoordpogingen', function () {
+    config(['tenant_purge.password_max_attempts' => 3]);
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(8)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $component = Livewire::actingAs($admin)
+        ->test(\App\Livewire\Pages\Subscription::class)
+        ->set('purgeExportAck', true)
+        ->set('purgePassword', 'verkeerd-1')
+        ->call('preparePurgeConfirm', 'start')
+        ->assertHasErrors(['purge_password']);
+
+    expect(auth()->check())->toBeTrue();
+
+    $component
+        ->set('purgePassword', 'verkeerd-2')
+        ->call('preparePurgeConfirm', 'start')
+        ->assertHasErrors(['purge_password']);
+
+    expect(auth()->check())->toBeTrue();
+
+    $component
+        ->set('purgePassword', 'verkeerd-3')
+        ->call('preparePurgeConfirm', 'start')
+        ->assertRedirect(route('login'));
+
+    expect(auth()->check())->toBeFalse()
+        ->and(session('error'))->toBe(__('subscription.purge.errors.too_many_password_attempts'));
+});
