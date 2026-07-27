@@ -261,7 +261,21 @@
                             @error('purge_password')
                                 <p class="wp-form-error">{{ $message }}</p>
                             @enderror
-                            <button type="button" class="btn btn--danger" wire:click="executeTrialPurge" wire:confirm="{{ __('subscription.purge.confirm_execute') }}">
+                            <button
+                                type="button"
+                                class="btn btn--danger"
+                                x-data
+                                x-on:click.prevent="
+                                    const pwd = String($wire.purgeExecutePassword ?? '').trim();
+                                    if (! pwd) {
+                                        $wire.executeTrialPurge();
+                                        return;
+                                    }
+                                    if (confirm(@js(__('subscription.purge.confirm_execute')))) {
+                                        $wire.executeTrialPurge();
+                                    }
+                                "
+                            >
                                 {{ __('subscription.purge.execute_trial') }}
                             </button>
                         @endif
@@ -292,7 +306,7 @@
                         <a href="{{ route('account.data-export') }}" class="wp-link">{{ __('subscription.purge.export_link') }}</a>
                     </p>
                     <label class="wp-check">
-                        <input type="checkbox" wire:model="purgeExportAck">
+                        <input type="checkbox" wire:model.live="purgeExportAck">
                         <span>{{ __('subscription.purge.export_ack') }}</span>
                     </label>
                     @error('purge_export_ack')
@@ -320,7 +334,22 @@
                         <p class="wp-muted">{{ __('subscription.purge.paid_hint') }}</p>
                     @endif
 
-                    <button type="button" class="btn btn--danger" wire:click="startPurgeRequest" wire:confirm="{{ __('subscription.purge.confirm_start') }}">
+                    <button
+                        type="button"
+                        class="btn btn--danger"
+                        x-data
+                        x-on:click.prevent="
+                            const ack = !! $wire.purgeExportAck;
+                            const pwd = String($wire.purgePassword ?? '').trim();
+                            if (! ack || ! pwd) {
+                                $wire.startPurgeRequest();
+                                return;
+                            }
+                            if (confirm(@js(__('subscription.purge.confirm_start')))) {
+                                $wire.startPurgeRequest();
+                            }
+                        "
+                    >
                         {{ __('subscription.purge.start') }}
                     </button>
                 </div>

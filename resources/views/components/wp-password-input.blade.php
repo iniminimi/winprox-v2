@@ -10,7 +10,7 @@
         :type="show ? 'text' : 'password'"
         @if ($id) id="{{ $id }}" @endif
         class="wp-input"
-        wire:model="{{ $wireModel }}"
+        wire:model.live="{{ $wireModel }}"
         placeholder="{{ $placeholder }}"
         autocomplete="{{ $autocomplete }}"
         {{ $attributes }}
