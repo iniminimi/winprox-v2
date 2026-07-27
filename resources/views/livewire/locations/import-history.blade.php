@@ -1,9 +1,10 @@
 <div>
     @if ($batches->isNotEmpty())
-        <div class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-section-title">{{ __('locations.import_history.title') }}</h2>
-            <p class="wp-muted">{{ __('locations.import_history.hint') }}</p>
-
+        <x-wp-disclosure-card
+            :title="__('locations.import_history.title')"
+            :subtitle="__('locations.import_history.hint')"
+            :count="$batches->count()"
+        >
             <div class="wp-list wp-list--entity-rows">
                 @foreach ($batches as $batch)
                     <div class="wp-issue-row" wire:key="batch-{{ $batch['batch_id'] }}">
@@ -31,6 +32,6 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        </x-wp-disclosure-card>
     @endif
 </div>
