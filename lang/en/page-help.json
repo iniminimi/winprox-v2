@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Add issue",
-                    "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
+                    "text": "Create an issue in two steps: location\/unit + description, then a task for the right team."
                 }
             ],
             "status_note": "Issue status on the dashboard follows the status of linked tasks.",
@@ -144,7 +144,7 @@
                 },
                 {
                     "label": "Reading and follow-up",
-                    "text": "Shown only on ESG measurement tasks. Lists the recorded value, any threshold alarm, the measurement task, and a follow-up task. <strong>Open</strong> on Reading goes to the filtered measurements overview; on Measurement task opens the linked task."
+                    "text": "Shown only on ESG measurement tasks. Lists the recorded value, any threshold alarm, the measurement task, and a follow-up task. <strong>Open<\/strong> on Reading goes to the filtered measurements overview; on Measurement task opens the linked task."
                 }
             ],
             "status_note": "On the shop floor, workers start and complete tasks via the unit QR portal (after signing in via Clock Point QR).",
@@ -185,7 +185,7 @@
             "actions": [
                 {
                     "label": "Add unit",
-                    "text": "Add an object/machine/asset/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
+                    "text": "Add an object\/machine\/asset\/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
                 },
                 {
                     "label": "Allow reservations",
@@ -205,7 +205,7 @@
                 },
                 {
                     "label": "Download QR sticker sheet",
-                    "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
+                    "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators\/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
                 },
                 {
                     "label": "GPS",
@@ -260,7 +260,7 @@
                 },
                 {
                     "label": "Week and day",
-                    "text": "List cards per day. In day view, browse pages with previous/next when there are more than 50 items."
+                    "text": "List cards per day. In day view, browse pages with previous\/next when there are more than 50 items."
                 },
                 {
                     "label": "Briefing",
@@ -288,7 +288,7 @@
                 },
                 {
                     "label": "Guest flow",
-                    "text": "A guest books via QR, gets a 30-minute hold and confirms by email. Change or cancel via the mail link or again via QR (name/email remembered in a cookie)."
+                    "text": "A guest books via QR, gets a 30-minute hold and confirms by email. Change or cancel via the mail link or again via QR (name\/email remembered in a cookie)."
                 },
                 {
                     "label": "Admin",
@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "Clock Point QR code",
-                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon) and clock in or out. Manage and print it under <strong>Time → Clock Points</strong>."
+                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon) and clock in or out. Manage and print it under <strong>Time → Clock Points<\/strong>."
                 },
                 {
                     "label": "Workers",
@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "External workers",
-                    "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. BrightSpark Electrical). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
+                    "text": "When adding or editing a worker, tick <strong>External worker<\/strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. BrightSpark Electrical). In the list they show an <strong>Ext<\/strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
                 },
                 {
                     "label": "Sort order",
@@ -369,7 +369,7 @@
             "actions": [
                 {
                     "label": "Configuration overview",
-                    "text": "At the very top you will find a collapsible overview of your environment's configuration status. Expand it to see the completeness meter, eight counts (inactive locations, units, teams and workers; categories with or without GPS; active and inactive documents) and the most important action items with a direct <strong>Fix</strong> link. If the panel shows a badge, there are open action items. Use <strong>Open full overview</strong> to go to the dedicated configuration page with all action items and filter cards per type."
+                    "text": "At the very top you will find a collapsible overview of your environment's configuration status. Expand it to see the completeness meter, eight counts (inactive locations, units, teams and workers; categories with or without GPS; active and inactive documents) and the most important action items with a direct <strong>Fix<\/strong> link. If the panel shows a badge, there are open action items. Use <strong>Open full overview<\/strong> to go to the dedicated configuration page with all action items and filter cards per type."
                 },
                 {
                     "label": "Organisation details",
@@ -377,11 +377,11 @@
                 },
                 {
                     "label": "Organisation logo",
-                    "text": "The administrator uploads an organisation logo (PNG/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                    "text": "The administrator uploads an organisation logo (PNG\/JPG, max. 2 MB). As an employee you only see the current logo for reference. It appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
                 },
                 {
                     "label": "Portal background",
-                    "text": "Optional background image for the reporting portal after scanning a QR code (PNG/JPG, max. 4 MB). This is not the same as the sticker background under QR sticker sheets."
+                    "text": "Optional background image for the reporting portal after scanning a QR code (PNG\/JPG, max. 4 MB). This is not the same as the sticker background under QR sticker sheets."
                 },
                 {
                     "label": "WinProx style",
@@ -408,7 +408,7 @@
                 {
                     "label": "Background",
                     "nested": true,
-                    "text": "Pick a custom image (PNG/JPG, max. 4 MB); it is saved immediately. Without a custom background WinProx uses the default sticker design. Use 'Remove custom background' to return to that default."
+                    "text": "Pick a custom image (PNG\/JPG, max. 4 MB); it is saved immediately. Without a custom background WinProx uses the default sticker design. Use 'Remove custom background' to return to that default."
                 },
                 {
                     "label": "Preview",
@@ -430,7 +430,7 @@
                 },
                 {
                     "label": "Do I need this?",
-                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of units or workers at once? Use the CSV/Excel import on a location (units) or on Teams (workers). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
+                    "text": "Usually not. If you only use WinProx via the website and QR codes, you do not need to configure anything here.<br><br>For one-off setup: Want to import thousands of units or workers at once? Use the CSV\/Excel import on a location (units) or on Teams (workers). That is often faster and simpler for an initial migration.<br><br>For ongoing automation: This API page is intended for administrators or IT partners who want to build a live integration so systems communicate automatically (e.g. real-time ERP connections or custom dashboards)."
                 },
                 {
                     "label": "API — what is it?",
@@ -446,7 +446,7 @@
                 },
                 {
                     "label": "What can the API do?",
-                    "text": "With a valid token, software can among other things read issues and tasks, list locations/units/teams/workers, create or approve issues, and start or complete tasks. For technical docs, ask your IT partner or WinProx support."
+                    "text": "With a valid token, software can among other things read issues and tasks, list locations\/units\/teams\/workers, create or approve issues, and start or complete tasks. For technical docs, ask your IT partner or WinProx support."
                 },
                 {
                     "label": "Webhooks — what are they?",
@@ -454,7 +454,7 @@
                 },
                 {
                     "label": "Adding a webhook endpoint",
-                    "text": "Enter a full URL starting with https:// (secure connection). Tick the events you want to receive. Optionally add a description (e.g. \"Production ERP\"). Save — WinProx stores the address and sends data automatically for those events."
+                    "text": "Enter a full URL starting with https:\/\/ (secure connection). Tick the events you want to receive. Optionally add a description (e.g. \"Production ERP\"). Save — WinProx stores the address and sends data automatically for those events."
                 },
                 {
                     "label": "Event: issue.created",
@@ -512,6 +512,10 @@
                 {
                     "label": "Choose plan",
                     "text": "Select a plan that fits the number of units you manage."
+                },
+                {
+                    "label": "Delete organisation data",
+                    "text": "Administrators only. First download an export (link on this page), tick the confirmation and enter your password. All administrators receive a confirmation email. During a trial you can then permanently delete yourself (SQL snapshot without media, kept 30 days). On a paid plan there is a 7-day cool-down with banner and reminder email; WinProx administration performs the deletion. You can cancel until then via Subscription."
                 }
             ]
         },
@@ -520,7 +524,7 @@
             "actions": [
                 {
                     "label": "Knowledge base",
-                    "text": "Answers to frequently asked questions about WinProx, QR, teams, Time, ESG, portal approval/blur, and page help (?)."
+                    "text": "Answers to frequently asked questions about WinProx, QR, teams, Time, ESG, portal approval\/blur, and page help (?)."
                 }
             ]
         },
@@ -551,7 +555,7 @@
             "actions": [
                 {
                     "label": "Welcome",
-                    "text": "Welcome to the public portal of :tenant. Read below for more information. Interested in your own company portal? Click on <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                    "text": "Welcome to the public portal of :tenant. Read below for more information. Interested in your own company portal? Click on <a href=\"https:\/\/winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app<\/a>."
                 },
                 {
                     "label": "Report issue",
@@ -727,7 +731,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Only when your organisation has the <strong>Time module</strong>: clock in, out and register breaks here. Without the Time module this portal is only for sign-in and the task overview."
+                    "text": "Only when your organisation has the <strong>Time module<\/strong>: clock in, out and register breaks here. Without the Time module this portal is only for sign-in and the task overview."
                 },
                 {
                     "label": "Sign out",
@@ -744,7 +748,7 @@
                 },
                 {
                     "label": "Local via Ollama",
-                    "text": "As superuser on your laptop: start <code>php artisan queue:work</code>, click « Start translations ». Pending issues, announcements, units, tasks and documents are exported, translated locally, and imported back on the server."
+                    "text": "As superuser on your laptop: start <code>php artisan queue:work<\/code>, click « Start translations ». Pending issues, announcements, units, tasks and documents are exported, translated locally, and imported back on the server."
                 },
                 {
                     "label": "Server status",
@@ -769,7 +773,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
+                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code<\/strong> button on Teams for login only."
                 }
             ]
         },
@@ -791,23 +795,23 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "Manage addresses that no longer receive <strong>WinProx emails</strong> — marketing, contact and system mail. Only superusers see this page."
+                    "text": "Manage addresses that no longer receive <strong>WinProx emails<\/strong> — marketing, contact and system mail. Only superusers see this page."
                 },
                 {
                     "label": "Block an address",
-                    "text": "Add an email address manually to block it. That row gets the source <strong>Blocked manually</strong>."
+                    "text": "Add an email address manually to block it. That row gets the source <strong>Blocked manually<\/strong>."
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Search by email address. By default (checkbox off) bounce addresses are hidden. Turn on <strong>Undeliverable (bounce)</strong> to show only addresses blocked automatically after a failed promo email; the count is in parentheses."
+                    "text": "Search by email address. By default (checkbox off) bounce addresses are hidden. Turn on <strong>Undeliverable (bounce)<\/strong> to show only addresses blocked automatically after a failed promo email; the count is in parentheses."
                 },
                 {
                     "label": "Unsubscribe source",
-                    "text": "<strong>Unsubscribed by recipient</strong> = via the unsubscribe link in an email. <strong>Undeliverable (bounce)</strong> = automatic after an undeliverable promo email. <strong>Blocked manually</strong> = via this screen."
+                    "text": "<strong>Unsubscribed by recipient<\/strong> = via the unsubscribe link in an email. <strong>Undeliverable (bounce)<\/strong> = automatic after an undeliverable promo email. <strong>Blocked manually<\/strong> = via this screen."
                 },
                 {
                     "label": "Restore",
-                    "text": "<strong>Restore</strong> removes the address from the list; it will receive emails again."
+                    "text": "<strong>Restore<\/strong> removes the address from the list; it will receive emails again."
                 }
             ]
         },
@@ -816,47 +820,47 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "The ESG dashboard gives an operational overview of your measurement programme: latest values, threshold alarms, trends, and open follow-up actions. It is your starting point for day-to-day ESG management — detail and history are on the <strong>Measurements</strong> tab."
+                    "text": "The ESG dashboard gives an operational overview of your measurement programme: latest values, threshold alarms, trends, and open follow-up actions. It is your starting point for day-to-day ESG management — detail and history are on the <strong>Measurements<\/strong> tab."
                 },
                 {
                     "label": "KPI cards at the top",
-                    "text": "The first card shows the number of <strong>threshold alarms</strong> in the recent sample. You also see the <strong>latest reading</strong> per active numeric indicator and when it was recorded. Highlighted in red = outside minimum or maximum. Click a card to open the filtered measurements overview."
+                    "text": "The first card shows the number of <strong>threshold alarms<\/strong> in the recent sample. You also see the <strong>latest reading<\/strong> per active numeric indicator and when it was recorded. Highlighted in red = outside minimum or maximum. Click a card to open the filtered measurements overview."
                 },
                 {
                     "label": "Usage trend",
-                    "text": "Line chart for the selected indicator over the last 30 days. Readings per day are <strong>summed</strong> (useful for consumption indicators such as kWh). Choose another indicator at the top right to compare trends."
+                    "text": "Line chart for the selected indicator over the last 30 days. Readings per day are <strong>summed<\/strong> (useful for consumption indicators such as kWh). Choose another indicator at the top right to compare trends."
                 },
                 {
                     "label": "Readings within limits",
-                    "text": "The donut shows the percentage of recent readings (sample) that fall <strong>within the configured thresholds</strong>. The caption below states how many alarms are in that sample. Click to open the measurements overview."
+                    "text": "The donut shows the percentage of recent readings (sample) that fall <strong>within the configured thresholds<\/strong>. The caption below states how many alarms are in that sample. Click to open the measurements overview."
                 },
                 {
                     "label": "Highest usage per location",
-                    "text": "Ranking of locations by the <strong>total sum</strong> of readings for the selected indicator in the last 30 days. Useful to see which building or site contributes most. Click a row for readings at that location."
+                    "text": "Ranking of locations by the <strong>total sum<\/strong> of readings for the selected indicator in the last 30 days. Useful to see which building or site contributes most. Click a row for readings at that location."
                 },
                 {
                     "label": "ESG score (compliance)",
-                    "text": "Weighted score over the last 30 days: <strong>60% threshold compliance</strong> (readings with thresholds that are within limits) + <strong>40% measurement coverage</strong> (active numeric indicators with at least one reading). Below the donut you see the individual percentages."
+                    "text": "Weighted score over the last 30 days: <strong>60% threshold compliance<\/strong> (readings with thresholds that are within limits) + <strong>40% measurement coverage<\/strong> (active numeric indicators with at least one reading). Below the donut you see the individual percentages."
                 },
                 {
                     "label": "Distribution by category",
-                    "text": "Donut of the number of readings per indicator category (e.g. energy, waste, safety) in the last 30 days. Set categories when creating or editing an indicator under <strong>Indicators</strong>."
+                    "text": "Donut of the number of readings per indicator category (e.g. energy, waste, safety) in the last 30 days. Set categories when creating or editing an indicator under <strong>Indicators<\/strong>."
                 },
                 {
                     "label": "Open ESG tasks",
-                    "text": "Tasks linked to an ESG indicator that are not yet completed — both periodic measurement tasks and automatic follow-up actions. The <strong>Auto-alarm</strong> badge marks tasks WinProx created after a threshold breach."
+                    "text": "Tasks linked to an ESG indicator that are not yet completed — both periodic measurement tasks and automatic follow-up actions. The <strong>Auto-alarm<\/strong> badge marks tasks WinProx created after a threshold breach."
                 },
                 {
                     "label": "Auto-alarm and follow-up task",
-                    "text": "When a reading falls outside the configured minimum or maximum, WinProx can automatically create a <strong>priority-2 follow-up task</strong> (at most one open task per indicator and unit). The <strong>Follow-up task</strong> button on recent readings and alarms goes straight to that task. The assigned team follows the team of the original measurement task."
+                    "text": "When a reading falls outside the configured minimum or maximum, WinProx can automatically create a <strong>priority-2 follow-up task<\/strong> (at most one open task per indicator and unit). The <strong>Follow-up task<\/strong> button on recent readings and alarms goes straight to that task. The assigned team follows the team of the original measurement task."
                 },
                 {
                     "label": "Recent readings and threshold alarms",
-                    "text": "Two lists at the bottom: all recent readings, and separately readings with threshold alarms. Values outside limits get the <strong>Outside thresholds</strong> label. Use <strong>Task</strong> to open the measurement task from the QR portal."
+                    "text": "Two lists at the bottom: all recent readings, and separately readings with threshold alarms. Values outside limits get the <strong>Outside thresholds<\/strong> label. Use <strong>Task<\/strong> to open the measurement task from the QR portal."
                 },
                 {
                     "label": "Empty dashboard",
-                    "text": "No indicators or readings yet? WinProx shows getting-started steps: module active, create an indicator, link to a recurring issue. Full guidance on indicators is on the <strong>Indicators</strong> tab."
+                    "text": "No indicators or readings yet? WinProx shows getting-started steps: module active, create an indicator, link to a recurring issue. Full guidance on indicators is on the <strong>Indicators<\/strong> tab."
                 }
             ]
         },
@@ -873,7 +877,7 @@
                 },
                 {
                     "label": "Step 1 — Create an indicator",
-                    "text": "An indicator describes <strong>what</strong> you want to measure: an electricity meter, a fire extinguisher check, or a periodic inspection. Give it a clear name and, for numbers, a unit (e.g. kWh, m³) so it displays correctly at entry."
+                    "text": "An indicator describes <strong>what<\/strong> you want to measure: an electricity meter, a fire extinguisher check, or a periodic inspection. Give it a clear name and, for numbers, a unit (e.g. kWh, m³) so it displays correctly at entry."
                 },
                 {
                     "label": "Number",
@@ -881,7 +885,7 @@
                     "text": "For meter readings or counts (e.g. electricity in kWh, water in m³, vehicle mileage). You can set a minimum and maximum so unrealistic entries (e.g. a negative reading) are flagged."
                 },
                 {
-                    "label": "Yes/No",
+                    "label": "Yes\/No",
                     "nested": true,
                     "text": "For quick checks (e.g. \"Is the emergency exit clear?\", \"Is the fire extinguisher inspected?\")."
                 },
@@ -902,11 +906,11 @@
                 },
                 {
                     "label": "Step 2 — Link to a recurring issue",
-                    "text": "When creating a <strong>recurring issue</strong> on a unit, you can link an ESG indicator. From then on, each cycle automatically asks for the corresponding reading — for example the monthly meter reading for that unit."
+                    "text": "When creating a <strong>recurring issue<\/strong> on a unit, you can link an ESG indicator. From then on, each cycle automatically asks for the corresponding reading — for example the monthly meter reading for that unit."
                 },
                 {
                     "label": "Step 3 — Measurements are stored",
-                    "text": "Each time a worker completes the task, the entered value is stored with the date and unit. This gradually builds a history per measurement point, useful for reporting (e.g. energy use per building over time).<br><br>Once recorded, a measurement cannot be changed — this keeps your data reliable and auditable. The overview is on the <strong>Measurements</strong> tab."
+                    "text": "Each time a worker completes the task, the entered value is stored with the date and unit. This gradually builds a history per measurement point, useful for reporting (e.g. energy use per building over time).<br><br>Once recorded, a measurement cannot be changed — this keeps your data reliable and auditable. The overview is on the <strong>Measurements<\/strong> tab."
                 },
                 {
                     "label": "Deactivate indicator",
@@ -923,7 +927,7 @@
                 },
                 {
                     "label": "Reading and follow-up",
-                    "text": "Under each reading in the timeline you see linked steps: the <strong>reading</strong> (value), optionally a <strong>threshold alarm</strong>, the <strong>measurement task</strong> used to enter the value, and a <strong>follow-up task</strong> when the value was outside limits. Use <strong>Open</strong> to jump to the measurements overview or the task."
+                    "text": "Under each reading in the timeline you see linked steps: the <strong>reading<\/strong> (value), optionally a <strong>threshold alarm<\/strong>, the <strong>measurement task<\/strong> used to enter the value, and a <strong>follow-up task<\/strong> when the value was outside limits. Use <strong>Open<\/strong> to jump to the measurements overview or the task."
                 },
                 {
                     "label": "Trend",
@@ -936,7 +940,7 @@
             "actions": [
                 {
                     "label": "What do you see here?",
-                    "text": "All readings workers entered when completing a task, with indicator, location, unit, timestamp, and who took the reading. Click <strong>Task</strong> to view the underlying work item."
+                    "text": "All readings workers entered when completing a task, with indicator, location, unit, timestamp, and who took the reading. Click <strong>Task<\/strong> to view the underlying work item."
                 },
                 {
                     "label": "Filters",
@@ -961,11 +965,11 @@
                 },
                 {
                     "label": "Dashboard",
-                    "text": "Live KPIs at the top: clocked in, active, break, not clocked in, and attention. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
+                    "text": "Live KPIs at the top: clocked in, active, break, not clocked in, and attention. Click a tile to filter. <strong>Attention<\/strong> opens the alarms screen."
                 },
                 {
                     "label": "Views",
-                    "text": "Choose <strong>Teams</strong> (accordion), <strong>Team cards</strong> (summary per team), or <strong>Locations</strong> (clocked in per site). Expand a team only when you need worker details."
+                    "text": "Choose <strong>Teams<\/strong> (accordion), <strong>Team cards<\/strong> (summary per team), or <strong>Locations<\/strong> (clocked in per site). Expand a team only when you need worker details."
                 },
                 {
                     "label": "Filters",
@@ -977,7 +981,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon — no separate login."
+                    "text": "Workers clock in and out via the QR sticker on a clock point (<code>\/time\/…<\/code>). Identification uses name and icon — no separate login."
                 }
             ]
         },
@@ -990,11 +994,11 @@
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 h), <strong>Not clocked out</strong> (&gt;16 h), or <strong>No break</strong> (&gt;6 h without a break)."
+                    "text": "Filter by <strong>Long shift<\/strong> (&gt;10 h), <strong>Not clocked out<\/strong> (&gt;16 h), or <strong>No break<\/strong> (&gt;6 h without a break)."
                 },
                 {
                     "label": "Action",
-                    "text": "Use <strong>Close shift</strong> to end a shift with a reason. The nav badge shows the total alarm count."
+                    "text": "Use <strong>Close shift<\/strong> to end a shift with a reason. The nav badge shows the total alarm count."
                 }
             ]
         },
@@ -1003,11 +1007,11 @@
             "actions": [
                 {
                     "label": "Time module",
-                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
+                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code<\/strong> button on Teams for login only."
                 },
                 {
                     "label": "Period and filters",
-                    "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
+                    "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply<\/strong> to refresh the list."
                 },
                 {
                     "label": "Export CSV",
@@ -1015,11 +1019,11 @@
                 },
                 {
                     "label": "Print",
-                    "text": "Open a printable timesheet with the same filters. Use browser <strong>Print</strong> to save or share as PDF."
+                    "text": "Open a printable timesheet with the same filters. Use browser <strong>Print<\/strong> to save or share as PDF."
                 },
                 {
                     "label": "Correct",
-                    "text": "For closed shifts, an admin can adjust clock-in/out times or break minutes with a required reason. Changes are recorded in the audit log."
+                    "text": "For closed shifts, an admin can adjust clock-in\/out times or break minutes with a required reason. Changes are recorded in the audit log."
                 },
                 {
                     "label": "Close shift",
@@ -1027,7 +1031,7 @@
                 },
                 {
                     "label": "Statuses",
-                    "text": "<strong>Open</strong> — still clocked in. <strong>Closed</strong> — clocked out normally. <strong>Closed (admin)</strong> — manually closed by admin. <strong>Closed (automatic)</strong> — system closed a forgotten shift after the threshold."
+                    "text": "<strong>Open<\/strong> — still clocked in. <strong>Closed<\/strong> — clocked out normally. <strong>Closed (admin)<\/strong> — manually closed by admin. <strong>Closed (automatic)<\/strong> — system closed a forgotten shift after the threshold."
                 },
                 {
                     "label": "Link tasks",
@@ -1044,7 +1048,7 @@
                 },
                 {
                     "label": "Without Time module",
-                    "text": "Manage the sign-in QR via the <strong>Clock Point QR code</strong> button on Users → Teams. A default clock point is created automatically if needed."
+                    "text": "Manage the sign-in QR via the <strong>Clock Point QR code<\/strong> button on Users → Teams. A default clock point is created automatically if needed."
                 },
                 {
                     "label": "Print QR code",
@@ -1063,7 +1067,7 @@
                     "text": "When someone uses an expired QR, access is denied and logged. A warning appears here if there were blocked attempts in the last 7 days."
                 },
                 {
-                    "label": "Active / inactive",
+                    "label": "Active \/ inactive",
                     "text": "Deactivate a clock point temporarily (e.g. during off-site work). The portal then shows that clock-in is unavailable."
                 }
             ]
@@ -1082,7 +1086,7 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "This is WinProx’s <strong>activity log</strong>: who did what, when, and in which organisation. Plain language instead of technical codes."
+                    "text": "This is WinProx’s <strong>activity log<\/strong>: who did what, when, and in which organisation. Plain language instead of technical codes."
                 },
                 {
                     "label": "Reading a row",
@@ -1090,7 +1094,7 @@
                 },
                 {
                     "label": "Search",
-                    "text": "Search by everyday words (e.g. <em>issue</em>, <em>promo</em>), organisation name, or the user’s name/email."
+                    "text": "Search by everyday words (e.g. <em>issue<\/em>, <em>promo<\/em>), organisation name, or the user’s name\/email."
                 },
                 {
                     "label": "Why it helps",
@@ -1103,35 +1107,35 @@
             "actions": [
                 {
                     "label": "What is this screen?",
-                    "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
+                    "text": "Manage <strong>gateways<\/strong>, <strong>sensors<\/strong>, <strong>alarm rules<\/strong> and review recent <strong>events<\/strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway\/vendor."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
+                    "text": "<strong>Facility:<\/strong> alarms become approved issues with tasks. <strong>Corporate:<\/strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
                 },
                 {
                     "label": "Edit",
-                    "text": "You can <strong>edit</strong> or <strong>deactivate</strong> gateways, sensors and rules later. For a gateway you can also rotate the token (the old token then stops working). We do not hard-delete: events are kept."
+                    "text": "You can <strong>edit<\/strong> or <strong>deactivate<\/strong> gateways, sensors and rules later. For a gateway you can also rotate the token (the old token then stops working). We do not hard-delete: events are kept."
                 },
                 {
                     "label": "What is a gateway?",
-                    "text": "A <strong>gateway</strong> is the bridge between your sensors and WinProx. Sensors often talk to a vendor gateway over LoRaWAN, Zigbee, Bluetooth or MQTT. That gateway translates the data and forwards only relevant events to WinProx (over HTTPS). WinProx does not sell sensors or gateways: here you register a logical gateway with a token so WinProx knows which organisation may receive the events."
+                    "text": "A <strong>gateway<\/strong> is the bridge between your sensors and WinProx. Sensors often talk to a vendor gateway over LoRaWAN, Zigbee, Bluetooth or MQTT. That gateway translates the data and forwards only relevant events to WinProx (over HTTPS). WinProx does not sell sensors or gateways: here you register a logical gateway with a token so WinProx knows which organisation may receive the events."
                 },
                 {
                     "label": "Create a gateway",
-                    "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
+                    "text": "Create a gateway and <strong>save the token immediately<\/strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key<\/code> or Bearer)."
                 },
                 {
                     "label": "Sensors",
-                    "text": "Map an <strong>external sensor ID</strong> (as sent by the gateway) to a name, type and preferably a unit. For ESG measurements (Corporate), also link an active numeric ESG indicator."
+                    "text": "Map an <strong>external sensor ID<\/strong> (as sent by the gateway) to a name, type and preferably a unit. For ESG measurements (Corporate), also link an active numeric ESG indicator."
                 },
                 {
                     "label": "Alarm rules",
-                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduplicated</strong>."
+                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduplicated<\/strong>."
                 },
                 {
                     "label": "Sending events",
-                    "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
+                    "text": "The gateway posts to <code>POST \/api\/v1\/iot\/events<\/code> with <code>kind<\/code> <em>alarm<\/em> or <em>measurement<\/em>. Optional: <code>idempotency_key<\/code> to avoid duplicate posts. See the API docs (IoT Connect)."
                 }
             ]
         }
