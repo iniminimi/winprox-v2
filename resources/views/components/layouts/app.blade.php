@@ -188,13 +188,13 @@
             @endphp
             @if ($purgeBannerRequest)
                 <div class="wp-purge-banner-bar" role="status">
+                    @can('cancelTenantPurge', $purgeBannerTenant)
+                        <a href="{{ route('subscription.index') }}" class="btn btn--ghost btn--sm">{{ __('subscription.purge.banner_link') }}</a>
+                    @endcan
                     <span>{{ __('subscription.purge.banner', [
                         'days' => $purgeBannerRequest->daysUntilPurge() ?? 0,
                         'date' => $purgeBannerRequest->scheduled_purge_at->timezone(config('app.timezone'))->format('d/m/Y H:i'),
                     ]) }}</span>
-                    @can('cancelTenantPurge', $purgeBannerTenant)
-                        <a href="{{ route('subscription.index') }}" class="btn btn--ghost btn--sm">{{ __('subscription.purge.banner_link') }}</a>
-                    @endcan
                 </div>
             @endif
 
