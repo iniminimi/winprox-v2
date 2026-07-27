@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Auf Benutzer finden Sie immer die Schaltfläche <strong>Clock Point QR-code</strong>. Damit öffnen Sie den druckbaren QR zur Anmeldung. Ohne Time-Modul wird automatisch ein Standard-Clock-Point erstellt; mit Time-Modul verweist die Schaltfläche auf den Bildschirm Clock Points für mehrere Einstempelorte."
+                    "text": "Ohne Time-Modul zeigt Teams die Schaltfläche <strong>Clock Point QR-code</strong>, um den druckbaren Anmelde-QR zu öffnen (ein Standard-Clock-Point wird automatisch erstellt). Mit Time-Modul verwalten Sie dies unter Time → Clock Points."
                 },
                 {
                     "label": "Ausführende",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Schalten Sie pro Tenant das <strong>ESG-Modul</strong> oder <strong>Time-Modul</strong> ein. Ohne Time-Modul können Ausführende sich weiterhin über die Clock Point QR anmelden; Zeiterfassung und Time-Menü erfordern das Modul."
+                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Time-Modul",
-                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Benutzer nur zur Anmeldung."
+                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
                 },
                 {
                     "label": "Zeitraum und Filter",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "Was ist ein Clock Point?",
-                    "text": "Ein physischer Ort mit eigenem QR-Aufkleber. <strong>Immer:</strong> Ausführende scannen diesen Code zur Anmeldung (Name + Icon). <strong>Mit Time-Modul:</strong> auch Ein- und Ausstempeln sowie Pausen erfassen."
+                    "text": "Verwalten Sie Einstempelorte und druckbare QR-Codes unter Time → Clock Points. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
                 },
                 {
                     "label": "Ohne Time-Modul",

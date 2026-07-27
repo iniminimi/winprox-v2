@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "Clock Point QR code",
-                    "text": "On Users you always have the <strong>Clock Point QR code</strong> button. It opens the printable QR for sign-in. Without the Time module a default clock point is created automatically; with the Time module the button links to the Clock Points screen for multiple clock-in locations."
+                    "text": "Without the Time module, Teams shows the <strong>Clock Point QR code</strong> button to open the printable login QR (a default clock point is created automatically). With the Time module, manage this under Time → Clock Points."
                 },
                 {
                     "label": "Workers",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Enable the <strong>ESG module</strong> or <strong>Time module</strong> per tenant. Without the Time module workers can still sign in via Clock Point QR; time tracking and the Time menu require the module."
+                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Time module",
-                    "text": "Time tracking requires the Time module. Without the module you use the <strong>Clock Point QR code</strong> button on Users only for sign-in."
+                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
                 },
                 {
                     "label": "Period and filters",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "What is a clock point?",
-                    "text": "A physical location with its own QR sticker. <strong>Always:</strong> workers scan this code to sign in (name + icon). <strong>With Time module:</strong> also clock in/out and register breaks."
+                    "text": "Manage clock-in points and printable QR codes under Time → Clock Points. A default clock point is created automatically if needed."
                 },
                 {
                     "label": "Without Time module",

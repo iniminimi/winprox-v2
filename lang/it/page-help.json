@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "In Utenti è sempre presente il pulsante <strong>QR Clock Point</strong>. Con esso apre il QR stampabile per l'accesso. Senza il modulo Time viene creato automaticamente un clock point predefinito; con il modulo Time il pulsante collega alla schermata Clock Points per più punti di timbratura."
+                    "text": "Senza il modulo Time, Team mostra il pulsante <strong>QR Clock Point</strong> per aprire il QR di accesso stampabile (viene creato automaticamente un clock point predefinito). Con il modulo Time, gestiscilo in Time → Clock Points."
                 },
                 {
                     "label": "Lavoratori",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "Attivi per tenant il <strong>modulo ESG</strong> o il <strong>modulo Time</strong>. Senza modulo Time, i lavoratori possono ancora accedere tramite il QR Clock Point; la registrazione ore e il menu Time richiedono il modulo."
+                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Modulo Time",
-                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Utenti solo per l'accesso."
+                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
                 },
                 {
                     "label": "Periodo e filtri",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "Cos'è un clock point?",
-                    "text": "Un luogo fisico con il proprio adesivo QR. <strong>Sempre:</strong> i lavoratori scansionano questo codice per accedere (nome + icona). <strong>Con modulo Time:</strong> anche timbrare entrata, uscita e registrare le pause."
+                    "text": "Gestisca i punti di timbratura e i QR stampabili in Time → Clock Points. Se necessario viene creato automaticamente un clock point predefinito."
                 },
                 {
                     "label": "Senza modulo Time",

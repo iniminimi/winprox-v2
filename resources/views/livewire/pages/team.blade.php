@@ -71,9 +71,11 @@
             <h2 class="wp-section-title">{{ __('team.teams.title') }}</h2>
             @if ($canManageTeams)
                 <div class="wp-cluster">
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openClockPointQr">
-                        {{ __('team.clock_point_qr.button') }}
-                    </button>
+                    @unless ($hasTimeModule)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openClockPointQr">
+                            {{ __('team.clock_point_qr.button') }}
+                        </button>
+                    @endunless
                     @if ($canImportWorkers ?? false)
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openWorkerImportModal">
                             {{ __('team.workers.import') }}

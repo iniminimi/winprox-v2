@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Op Gebruikers staat altijd de knop <strong>Clock Point QR-code</strong>. Daarmee opent u de printbare QR voor inloggen. Zonder Time-module wordt automatisch een standaard clock point aangemaakt; met Time-module linkt de knop naar het scherm Clock Points voor meerdere inkloklocaties."
+                    "text": "Zonder Time-module staat op Teams de knop <strong>Clock Point QR-code</strong> om de printbare inlog-QR te openen (standaard clock point wordt automatisch aangemaakt). Met Time-module beheert u dit via Time → Clock Points."
                 },
                 {
                     "label": "Uitvoerders",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Schakel per tenant de <strong>ESG-module</strong> of <strong>Time-module</strong> in. Zonder Time-module kunnen uitvoerders nog steeds inloggen via Clock Point QR; urenregistratie en Time-menu vereisen de module."
+                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Time-module",
-                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Gebruikers alleen voor inloggen."
+                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
                 },
                 {
                     "label": "Periode en filters",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "Wat is een clock point?",
-                    "text": "Een fysieke locatie met een eigen QR-sticker. <strong>Altijd:</strong> uitvoerders scannen deze code om in te loggen (naam + icoon). <strong>Met Time-module:</strong> ook in- en uitklokken en pauzes registreren."
+                    "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
                     "label": "Zonder Time-module",

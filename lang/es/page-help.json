@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "En Usuarios siempre está el botón <strong>QR Clock Point</strong>. Con él abre el QR imprimible para iniciar sesión. Sin el módulo Time se crea automáticamente un clock point predeterminado; con el módulo Time el botón enlaza a la pantalla Clock Points para varios puntos de fichaje."
+                    "text": "Sin el módulo Time, Equipos muestra el botón <strong>QR Clock Point</strong> para abrir el QR de inicio de sesión imprimible (se crea automáticamente un clock point predeterminado). Con el módulo Time, gestiónelo en Time → Clock Points."
                 },
                 {
                     "label": "Trabajadores",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "Active por inquilino el <strong>módulo ESG</strong> o el <strong>módulo Time</strong>. Sin el módulo Time, los trabajadores aún pueden iniciar sesión mediante el QR Clock Point; el registro de horas y el menú Time requieren el módulo."
+                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Módulo Time",
-                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Usuarios solo para iniciar sesión."
+                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
                 },
                 {
                     "label": "Período y filtros",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "¿Qué es un clock point?",
-                    "text": "Un lugar físico con su propia pegatina QR. <strong>Siempre:</strong> los trabajadores escanean este código para iniciar sesión (nombre + icono). <strong>Con módulo Time:</strong> también fichar entrada, salida y registrar pausas."
+                    "text": "Gestione puntos de fichaje y códigos QR imprimibles en Time → Clock Points. Se crea automáticamente un clock point predeterminado si es necesario."
                 },
                 {
                     "label": "Sin módulo Time",

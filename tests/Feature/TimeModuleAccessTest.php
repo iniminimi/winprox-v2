@@ -42,7 +42,7 @@ it('laat time-beheerschermen toe met time-module', function () {
         ->assertOk();
 });
 
-it('toont altijd de clock point qr-knop op teams', function () {
+it('toont de clock point qr-knop op teams zonder time-module', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => false]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
@@ -50,6 +50,16 @@ it('toont altijd de clock point qr-knop op teams', function () {
         ->get(route('team.index'))
         ->assertOk()
         ->assertSee(__('team.clock_point_qr.button'), false);
+});
+
+it('verbergt de clock point qr-knop op teams met time-module', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('team.index'))
+        ->assertOk()
+        ->assertDontSee('wire:click="openClockPointQr"', false);
 });
 
 it('maakt een default clock point aan via de teams-knop zonder time-module', function () {
@@ -64,21 +74,6 @@ it('maakt een default clock point aan via de teams-knop zonder time-module', fun
         ->assertRedirect(route('time.clock-points.qr', ClockPoint::query()->first()));
 
     expect(ClockPoint::query()->count())->toBe(1);
-});
-
-it('opent via de teams-knop altijd de default clock point QR (ook met time-module)', function () {
-    $tenant = Tenant::factory()->create(['has_time_module' => true]);
-    Tenancy::actAs($tenant->id);
-    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
-    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
-
-    Livewire::actingAs($admin)
-        ->test(Team::class)
-        ->call('openClockPointQr')
-        ->assertRedirect(route('time.clock-points.qr', ClockPoint::query()->first()));
-
-    expect(ClockPoint::query()->count())->toBe(1)
-        ->and(ClockPoint::query()->first()?->name)->toBe(__('team.clock_point_qr.default_name'));
 });
 
 it('maakt een default clock point bij het openen van clock points-beheer', function () {

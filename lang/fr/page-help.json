@@ -320,7 +320,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Sur Utilisateurs, le bouton <strong>QR Clock Point</strong> est toujours disponible. Il ouvre le QR imprimable pour la connexion. Sans module Time, un clock point par défaut est créé automatiquement ; avec le module Time, le bouton mène à l'écran Clock Points pour plusieurs lieux de pointage."
+                    "text": "Sans module Time, Équipes affiche le bouton <strong>QR Clock Point</strong> pour ouvrir le QR de connexion imprimable (un clock point par défaut est créé automatiquement). Avec le module Time, gérez cela via Time → Clock Points."
                 },
                 {
                     "label": "Exécutants",
@@ -765,7 +765,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Activez par tenant le <strong>module ESG</strong> ou le <strong>module Time</strong>. Sans module Time, les exécutants peuvent toujours se connecter via le QR Clock Point ; l'enregistrement des heures et le menu Time nécessitent le module."
+                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Équipes uniquement pour la connexion."
                 }
             ]
         },
@@ -999,7 +999,7 @@
             "actions": [
                 {
                     "label": "Module Time",
-                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Utilisateurs uniquement pour la connexion."
+                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Équipes uniquement pour la connexion."
                 },
                 {
                     "label": "Période et filtres",
@@ -1036,7 +1036,7 @@
             "actions": [
                 {
                     "label": "Qu'est-ce qu'un clock point ?",
-                    "text": "Un lieu physique avec son propre autocollant QR. <strong>Toujours :</strong> les exécutants scannent ce code pour se connecter (nom + icône). <strong>Avec module Time :</strong> aussi pointer à l'entrée, à la sortie et enregistrer les pauses."
+                    "text": "Gérez les points de pointage et les QR imprimables via Time → Clock Points. Un clock point par défaut est créé automatiquement si nécessaire."
                 },
                 {
                     "label": "Sans module Time",
