@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filtros",
-                    "text": "Combine estado, equipo, término de búsqueda y recurrente para refinar la lista. Pulse ¡IR! para aplicar."
+                    "text": "Combine estado, equipo, término de búsqueda y recurrente para refinar la lista. El término de búsqueda revisa la descripción (texto fuente y traducciones completadas), ubicación, dirección, código postal, ciudad, unidad y reportador. Pulse ¡IR! para aplicar."
                 },
                 {
                     "label": "Aprobar",
@@ -188,6 +188,10 @@
                     "text": "Añada un objeto\/máquina\/activo\/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
                 },
                 {
+                    "label": "Traducciones de unidad",
+                    "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Platform → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                },
+                {
                     "label": "Permitir reservas",
                     "text": "Solo relevante si la categoría es Reservable. Activado por defecto; desactívelo para excluir esta unidad de las reservas mientras otras unidades de la misma categoría siguen siendo reservables."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Usuarios colegas",
                     "text": "Gestione el personal administrativo que trabaja principalmente en PC. Deben iniciar sesión con correo y contraseña. Un administrador es el usuario principal que puede actualizar los datos de la empresa. El administrador puede añadir otros administradores y empleados según la suscripción elegida."
+                },
+                {
+                    "label": "Imprimir briefing",
+                    "text": "Abra un resumen imprimible de tareas abiertas por equipo — útil en el lugar de trabajo. El mismo briefing también está en Panel, Incidencias y Calendario."
                 },
                 {
                     "label": "Equipos operativos",
@@ -625,6 +633,10 @@
                 {
                     "label": "Tareas abiertas",
                     "text": "Tras iniciar sesión mediante el QR Clock Point ve en el portal de unidad las tareas abiertas de su equipo. Escanee el QR de unidad en el lugar para iniciar o completar una tarea."
+                },
+                {
+                    "label": "Nuevas tareas del equipo",
+                    "text": "Si desde su inicio de sesión vía Clock Point han llegado nuevas tareas para su equipo, el portal de unidad muestra un banner de atención fijo. Abra el resumen de tareas mediante el enlace Clock Point o cierre el banner."
                 },
                 {
                     "label": "Iniciar",

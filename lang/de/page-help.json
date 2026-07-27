@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filter",
-                    "text": "Kombinieren Sie Status, Team, Suchbegriff und wiederkehrend, um die Liste zu verfeinern. Drücken Sie GO!, um anzuwenden."
+                    "text": "Kombinieren Sie Status, Team, Suchbegriff und wiederkehrend, um die Liste zu verfeinern. Der Suchbegriff durchsucht die Beschreibung (Quelltext und abgeschlossene Übersetzungen), Standort, Adresse, Postleitzahl, Ort, Unit und Melder. Drücken Sie GO!, um anzuwenden."
                 },
                 {
                     "label": "Freigeben",
@@ -188,6 +188,10 @@
                     "text": "Fügen Sie ein Objekt\/Maschine\/Asset\/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
                 },
                 {
+                    "label": "Unit-Übersetzungen",
+                    "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Platform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                },
+                {
                     "label": "Reservierungen erlauben",
                     "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig an; schalten Sie aus, um diese Unit von Reservierungen auszuschließen, während andere Units derselben Kategorie reservierbar bleiben."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Kollegenbenutzer",
                     "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie müssen sich mit E-Mail und Passwort anmelden. Ein Administrator ist der Hauptbenutzer, der die Unternehmensdaten anpassen kann. Der Administrator kann je nach gewähltem Abonnement weitere Administratoren und Mitarbeiter hinzufügen."
+                },
+                {
+                    "label": "Briefing drucken",
+                    "text": "Öffnen Sie eine druckbare Übersicht offener Aufgaben pro Team — praktisch für die Werkstatt. Dasselbe Briefing finden Sie auch auf Dashboard, Meldungen und Kalender."
                 },
                 {
                     "label": "Operative Teams",
@@ -625,6 +633,10 @@
                 {
                     "label": "Offene Aufgaben",
                     "text": "Nach der Anmeldung über die Clock Point QR sehen Sie im Unit-Portal die offenen Aufgaben Ihres Teams. Scannen Sie die Unit-QR vor Ort, um eine Aufgabe zu starten oder abzuschließen."
+                },
+                {
+                    "label": "Neue Teamaufgaben",
+                    "text": "Wenn seit Ihrer Anmeldung über Clock Point neue Aufgaben für Ihr Team eingetroffen sind, zeigt das Unit-Portal ein auffälliges Sticky-Banner. Öffnen Sie die Aufgabenübersicht über den Clock-Point-Link oder schließen Sie das Banner."
                 },
                 {
                     "label": "Starten",

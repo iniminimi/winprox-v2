@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filtri",
-                    "text": "Combini stato, team, termine di ricerca e ricorrente per affinare l'elenco. Premi VAI! per applicare."
+                    "text": "Combini stato, team, termine di ricerca e ricorrente per affinare l'elenco. Il termine di ricerca cerca nella descrizione (testo sorgente e traduzioni completate), sede, indirizzo, CAP, città, unità e segnalatore. Premi VAI! per applicare."
                 },
                 {
                     "label": "Approva",
@@ -188,6 +188,10 @@
                     "text": "Aggiunga un oggetto\/macchina\/asset\/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
                 },
                 {
+                    "label": "Traduzioni unità",
+                    "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Platform → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                },
+                {
                     "label": "Consenti prenotazioni",
                     "text": "Rilevante solo se la categoria è Prenotabile. Attivo di default; disattivi per escludere questa unità dalle prenotazioni mentre le altre unità della stessa categoria restano prenotabili."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Utenti colleghi",
                     "text": "Gestisca il personale amministrativo che lavora principalmente su PC. Devono accedere con e-mail e password. Un amministratore è l'utente principale che può aggiornare i dati aziendali. L'amministratore può aggiungere altri amministratori e collaboratori in base all'abbonamento scelto."
+                },
+                {
+                    "label": "Stampa briefing",
+                    "text": "Apri un riepilogo stampabile delle attività aperte per team — utile sul campo. Lo stesso briefing si trova anche su Dashboard, Segnalazioni e Calendario."
                 },
                 {
                     "label": "Team operativi",
@@ -625,6 +633,10 @@
                 {
                     "label": "Attività aperte",
                     "text": "Dopo l'accesso tramite il QR Clock Point vede nel portale unità le attività aperte del Suo team. Scansioni il QR unità sul posto per avviare o completare un'attività."
+                },
+                {
+                    "label": "Nuove attività del team",
+                    "text": "Se dall'accesso tramite Clock Point sono arrivate nuove attività per il Suo team, il portale unità mostra un banner di attenzione sticky. Apra il riepilogo attività tramite il link Clock Point o chiuda il banner."
                 },
                 {
                     "label": "Avvia",

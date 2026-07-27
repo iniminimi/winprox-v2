@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filtres",
-                    "text": "Combinez statut, équipe, terme de recherche et récurrent pour affiner la liste. Appuyez sur GO! pour appliquer."
+                    "text": "Combinez statut, équipe, terme de recherche et récurrent pour affiner la liste. Le terme de recherche parcourt la description (texte source et traductions terminées), le site, l'adresse, le code postal, la ville, l'unité et le déclarant. Appuyez sur GO! pour appliquer."
                 },
                 {
                     "label": "Approuver",
@@ -188,6 +188,10 @@
                     "text": "Ajoutez un objet\/machine\/actif\/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue. Autorisez ou non les signalements par unité."
                 },
                 {
+                    "label": "Traductions d'unité",
+                    "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Platform → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                },
+                {
                     "label": "Autoriser les réservations",
                     "text": "Uniquement pertinent si la catégorie est Réservable. Activé par défaut ; désactivez pour exclure cette unité des réservations tandis que les autres unités de la même catégorie restent réservables."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Utilisateurs collègues",
                     "text": "Gérez le personnel administratif qui travaille principalement sur PC. Ils doivent se connecter avec e-mail et mot de passe. Un administrateur est l'utilisateur principal qui peut modifier les données de l'entreprise. L'administrateur peut ajouter d'autres administrateurs et collaborateurs selon l'abonnement choisi."
+                },
+                {
+                    "label": "Imprimer le briefing",
+                    "text": "Ouvrez un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain. Le même briefing se trouve aussi sur Tableau de bord, Signalements et Calendrier."
                 },
                 {
                     "label": "Équipes opérationnelles",
@@ -625,6 +633,10 @@
                 {
                     "label": "Tâches ouvertes",
                     "text": "Après connexion via le QR Clock Point, vous voyez sur le portail unité les tâches ouvertes de votre équipe. Scannez le QR unité sur place pour démarrer ou terminer une tâche."
+                },
+                {
+                    "label": "Nouvelles tâches d'équipe",
+                    "text": "Si de nouvelles tâches pour votre équipe sont arrivées depuis votre connexion via Clock Point, le portail unité affiche une bannière d'attention sticky. Ouvrez l'aperçu des tâches via le lien Clock Point ou fermez la bannière."
                 },
                 {
                     "label": "Démarrer",

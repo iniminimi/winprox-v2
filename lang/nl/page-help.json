@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combineer status, team, zoekterm en terugkerend om de lijst te verfijnen. Druk op GO! om toe te passen."
+                    "text": "Combineer status, team, zoekterm en terugkerend om de lijst te verfijnen. De zoekterm doorzoekt de omschrijving (brontekst én voltooide vertalingen), locatie, adres, postcode, plaats, unit en melder. Druk op GO! om toe te passen."
                 },
                 {
                     "label": "Goedkeuren",
@@ -188,6 +188,10 @@
                     "text": "Voeg een voorwerp\/machine\/asset\/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
                 },
                 {
+                    "label": "Unitvertalingen",
+                    "text": "In het unit-bewerkformulier kun je naam en omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                },
+                {
                     "label": "Reserveringen toestaan",
                     "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard aan; zet uit om deze unit uit te sluiten van reserveringen terwijl andere units in dezelfde categorie wel reserveerbaar blijven."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Collega-gebruikers",
                     "text": "Beheer administratieve medewerkers die voornamelijk op een pc werken. Deze moeten inloggen met e-mail en wachtwoord. Een beheerder is de hoofdgebruiker die de bedrijfsgegevens kan aanpassen. De beheerder kan andere beheerders en medewerkers toevoegen naargelang de keuze van abonnement."
+                },
+                {
+                    "label": "Briefing afdrukken",
+                    "text": "Open een afdrukbaar overzicht van open taken per team — handig voor de werkvloer. Dezelfde briefing vind je ook op Dashboard, Meldingen en Kalender."
                 },
                 {
                     "label": "Operationele teams",
@@ -625,6 +633,10 @@
                 {
                     "label": "Open taken",
                     "text": "Na het aanmelden via Clock Point QR zie je op het unit-portaal de open taken van je team. Scan de unit-QR op locatie om een taak te starten of af te ronden."
+                },
+                {
+                    "label": "Nieuwe teamtaken",
+                    "text": "Als er sinds je aanmelding via Clock Point nieuwe taken voor je team zijn, toont het unit-portaal een opvallende sticky banner. Open het takenoverzicht via de Clock Point-link of sluit de banner."
                 },
                 {
                     "label": "Starten",

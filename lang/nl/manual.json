@@ -23,11 +23,11 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module, optionele Time-module, IoT Connect en instellingen."
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, reserveringen, dashboard, optionele ESG-module, optionele Time-module, IoT Connect, instellingen en abonnement (inclusief gegevens verwijderen)."
         },
         "internet_portal": {
             "title": "QR-codes op de werkvloer",
-            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, taken, foto's en teamleader-functies."
+            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, reserveringen, taken, foto's, nieuwe-teamtaken-banner en teamleader-functies."
         }
     },
     "statuses": "Statussen",
@@ -51,22 +51,22 @@
         }
     },
     "step_1_title": "Teams & uitvoerders aanmaken",
-    "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV/Excel).",
+    "step_1_text": "Stel operationele teams samen, voeg uitvoerders toe (intern of extern met optionele bedrijfsnaam) en wijs een teamleider aan. Koppel teams aan specifieke categorieën, zodat taken altijd bij de juiste vakmensen terechtkomen. Uitvoerders melden zich eenvoudig aan met hun naam en een persoonlijk icoon. Je kunt teams en uitvoerders ook in één keer toevoegen via een bulk-import (CSV/Excel).",
     "step_2_title": "Locaties & units inrichten",
-    "step_2_text": "Groepeer units in categorieën (bijvoorbeeld: boormachines, sanitair, fitnesstoestellen, kantoor of elektriciteit). Deze categorieën helpen bij het filteren en organiseren van je assets en zijn volledig afgestemd op jouw sector. Door teams aan specifieke categorieën te koppelen, zorgt WinProx ervoor dat taken altijd door het juiste team worden opgepakt. Voeg daarnaast locaties toe (zoals sites, gebouwen of verdiepingen) en maak per locatie je units aan: dit zijn de fysieke machines, ruimtes of objecten waarvoor meldingen en taken geregistreerd worden. Units kun je per locatie ook via CSV of Excel importeren of in bulk aanmaken.",
+    "step_2_text": "Groepeer units in categorieën (bijvoorbeeld: boormachines, sanitair, fitnesstoestellen, kantoor of elektriciteit). Markeer categorieën als Reserveerbaar als units een tijdslot moeten kunnen boeken. Door teams aan specifieke categorieën te koppelen, zorgt WinProx ervoor dat taken altijd door het juiste team worden opgepakt. Voeg daarnaast locaties toe en maak per locatie je units aan — via het formulier, bulkreeks of CSV/Excel-import. Unitnamen en -omschrijvingen kun je per taal handmatig bijwerken.",
     "step_3_title": "QR-codes afdrukken & ophangen",
-    "step_3_text": "Heeft uw organisatie de Time-module? Maak dan eerst één of meer Clock Points aan (menu Time → Clock Points), druk de QR-sticker af en hang die op bij ingang, magazijn of werkplaats — hier melden uitvoerders zich aan en klokken ze in en uit. Zonder Time-module opent u Gebruikers → Clock Point QR-code; WinProx maakt dan automatisch een standaard clock point aan. Druk daarnaast de unit-QR af via de detailpagina van de locatie of unit en bevestig die op machines, ruimtes of assets. Burgers en bezoekers scannen de unit-QR voor meldingen en documenten. Uitvoerders scannen eerst de Clock Point QR (naam + icoon) en daarna de unit-QR op locatie voor GPS, foto's en taken.",
+    "step_3_text": "Heeft uw organisatie de Time-module? Maak dan eerst één of meer Clock Points aan (menu Time → Clock Points), druk de QR-sticker af en hang die op bij ingang, magazijn of werkplaats — hier melden uitvoerders zich aan en klokken ze in en uit. Zonder Time-module opent u Teams → Clock Point QR-code; WinProx maakt dan automatisch een standaard clock point aan. Druk daarnaast de unit-QR af via de detailpagina van de locatie of unit en bevestig die op machines, ruimtes of assets. Burgers en bezoekers scannen de unit-QR voor meldingen, documenten en eventueel reserveringen. Uitvoerders scannen eerst de Clock Point QR (naam + icoon) en daarna de unit-QR op locatie voor GPS, foto's en taken.",
     "step_3_text_time": "Maak minstens één Clock Point aan onder Time → Clock Points (bijv. ingang of magazijn). Druk de QR-sticker af en hang die op een zichtbare plek. Druk ook de unit-QR's af per locatie of unit en bevestig die op de machines of ruimtes. Uitvoerders scannen eerst de Clock Point QR om zich aan te melden en in te klokken; daarna de unit-QR op locatie voor GPS, foto's en taken.",
-    "step_3_text_facility": "Open Gebruikers → Clock Point QR-code en druk de inlog-QR af — WinProx maakt automatisch een standaard clock point aan als dat nog nodig is. Druk ook de unit-QR af via de locatie- of unitdetailpagina en hang beide op een zichtbare plek. Burgers scannen de unit-QR voor meldingen; uitvoerders scannen eerst de Clock Point QR (naam + icoon) en daarna de unit-QR voor taken op locatie.",
+    "step_3_text_facility": "Open Teams → Clock Point QR-code en druk de inlog-QR af — WinProx maakt automatisch een standaard clock point aan als dat nog nodig is. Druk ook de unit-QR af via de locatie- of unitdetailpagina en hang beide op een zichtbare plek. Burgers scannen de unit-QR voor meldingen (en reserveringen indien actief); uitvoerders scannen eerst de Clock Point QR (naam + icoon) en daarna de unit-QR voor taken op locatie.",
     "step_4_title": "Meldingen ontvangen & taken aansturen",
-    "step_4_text": "Meldingen komen binnen via een QR-scan of handmatige invoer. Voor elke melding wordt automatisch een taak aangemaakt, die direct wordt gekoppeld aan het verantwoordelijke team. Het is mogelijk om meerdere taken voor één melding aan te maken (bijvoorbeeld voor zowel het technische team als de schoonmaakploeg). Stel eenvoudig een deadline in en volg de voortgang op de voet via het dashboard en de kalender.",
+    "step_4_text": "Meldingen komen binnen via een QR-scan, handmatige invoer of (met IoT Connect) een sensoralarm. Voor elke melding wordt automatisch een taak aangemaakt, die direct wordt gekoppeld aan het verantwoordelijke team. Het is mogelijk om meerdere taken voor één melding aan te maken. Stel een deadline in en volg de voortgang via dashboard, kalender en — voor boekingen — Reserveringen.",
     "step_5_title": "Opvolgen & afsluiten",
-    "step_5_text": "Uitvoerders voeren taken uit op locatie via het unit-QR-portaal (na inloggen via Clock Point QR). Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Alle handelingen blijven overzichtelijk inzichtelijk in de audittrail. Met de optionele ESG-module kunt u daarnaast meetwaarden laten vastleggen bij terugkerende inspecties — zie de hoofdstukken ESG-metingen en Metingen. Met de optionele Time-module registreert u aanwezigheid, pauzes en werkshifts — zie de hoofdstukken Aanwezigheid en Clock Points.",
+    "step_5_text": "Uitvoerders voeren taken uit op locatie via het unit-QR-portaal (na inloggen via Clock Point QR); bij nieuwe teamtaken verschijnt een banner. Zodra alle taken voor een melding zijn afgehandeld, kan de beheerder de melding definitief sluiten. Optioneel: ESG-metingen, Time-aanwezigheid, IoT Connect en unit-reserveringen — zie de bijbehorende hoofdstukken. Organisatiegegevens wissen doe je via Abonnement (na export in Instellingen).",
     "hub": {
         "title": "Handleidingen",
         "subtitle": "Kies de handleiding die past bij jouw rol",
         "general": "Algemene handleiding",
-        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief optionele ESG- en Time-module en QR-portaalhulp — afdrukken of opslaan als PDF.",
+        "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief reserveringen, optionele ESG-/Time-/IoT-modules, abonnement en QR-portaalhulp — afdrukken of opslaan als PDF.",
         "workers": "Handleiding uitvoerders",
         "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, taken en foto's.",
         "teamleaders": "Handleiding teamleaders",

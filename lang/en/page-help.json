@@ -47,7 +47,7 @@
                 },
                 {
                     "label": "Filters",
-                    "text": "Combine status, team, search term and recurring to refine the list. Press GO! to apply."
+                    "text": "Combine status, team, search term and recurring to refine the list. The search term looks in the description (source text and completed translations), location, address, postcode, city, unit and reporter. Press GO! to apply."
                 },
                 {
                     "label": "Approve",
@@ -188,6 +188,10 @@
                     "text": "Add an object\/machine\/asset\/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
                 },
                 {
+                    "label": "Unit translations",
+                    "text": "In the unit edit form you can manually update name and description per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Saving finalises the translation for that language."
+                },
+                {
                     "label": "Allow reservations",
                     "text": "Only relevant if the category is Reservable. On by default; turn off to exclude this unit from reservations while other units in the same category stay reservable."
                 },
@@ -313,6 +317,10 @@
                 {
                     "label": "Colleague users",
                     "text": "Manage administrative staff who primarily work on a PC. They must log in with email and password. An administrator is the main user who can update company details. The administrator can add other administrators and staff members depending on the chosen subscription."
+                },
+                {
+                    "label": "Print briefing",
+                    "text": "Open a printable overview of open tasks per team — useful on the shop floor. The same briefing is also available on Dashboard, Issues and Calendar."
                 },
                 {
                     "label": "Operational teams",
@@ -625,6 +633,10 @@
                 {
                     "label": "Open tasks",
                     "text": "After signing in via Clock Point QR you see open tasks for your team on the unit portal. Scan the unit QR on site to start or complete a task."
+                },
+                {
+                    "label": "New team tasks",
+                    "text": "If new tasks for your team arrived since you signed in via Clock Point, the unit portal shows a sticky attention banner. Open the task overview via the Clock Point link or dismiss the banner."
                 },
                 {
                     "label": "Start",
