@@ -319,6 +319,34 @@ it('laat handmatige unitvertaling opslaan in de bewerk-popup', function () {
         ->and($row->description)->toBe('Warehouse zone B');
 });
 
+it('toont de brontaal niet in de vertaal-taalkiezer', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'nl', 'role' => User::ROLE_ADMIN]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'description' => 'Magazijn zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertSet('previewLocale', 'en')
+        ->assertViewHas('descriptionLocales', function (array $locales): bool {
+            return ! array_key_exists('nl', $locales)
+                && array_key_exists('en', $locales)
+                && array_key_exists('fr', $locales);
+        });
+});
+
 it('toont vertaalde unitnaam in portaal bij taalwissel', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

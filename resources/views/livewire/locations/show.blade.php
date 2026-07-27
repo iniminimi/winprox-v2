@@ -238,52 +238,60 @@
                 </label>
 
                 @if ($editingUnitId && $previewUnit?->is_active)
-                    <x-wp-disclosure-card
-                        :title="__('locations.units.translation_preview')"
-                        class="wp-surface-muted"
-                    >
-                        <div class="wp-cluster wp-issue-description-row">
-                            <select
-                                class="wp-select"
-                                wire:model.live="previewLocale"
-                                aria-label="{{ __('issues.show.description_language') }}"
-                            >
-                                @foreach ($descriptionLocales as $code => $label)
-                                    <option value="{{ $code }}">{{ $label }}</option>
-                                @endforeach
-                            </select>
+                    <div class="wp-disclosure-block wp-surface-muted" x-data="{ open: false }">
+                        <button
+                            type="button"
+                            class="wp-disclosure-block-toggle wp-team-row-toggle"
+                            @click="open = !open"
+                            :aria-expanded="open"
+                        >
+                            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                            <span class="wp-data-row-title">{{ __('locations.units.translation_preview') }}</span>
+                        </button>
+                        <div class="wp-disclosure-panel wp-stack-tight" x-show="open" x-cloak>
+                            <div class="wp-cluster wp-issue-description-row">
+                                <select
+                                    class="wp-select wp-select--compact"
+                                    wire:model.live="previewLocale"
+                                    aria-label="{{ __('issues.show.description_language') }}"
+                                >
+                                    @foreach ($descriptionLocales as $code => $label)
+                                        <option value="{{ $code }}">{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <label class="wp-field">
+                                <span class="wp-label">{{ __('locations.units.translation_edit.name') }}</span>
+                                <textarea class="wp-input" wire:model="unitTranslationName" rows="1"></textarea>
+                                @error('unitTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                            </label>
+
+                            <label class="wp-field">
+                                <span class="wp-label">{{ __('locations.units.translation_edit.description') }}</span>
+                                <textarea class="wp-input" wire:model="unitTranslationDescription" rows="2"></textarea>
+                                @error('unitTranslationDescription') <span class="wp-error">{{ $message }}</span> @enderror
+                            </label>
+
+                            <div class="wp-row">
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    wire:click="saveUnitTranslationOverride"
+                                    wire:loading.attr="disabled"
+                                    wire:target="saveUnitTranslationOverride"
+                                >
+                                    <span wire:loading wire:target="saveUnitTranslationOverride" class="wp-mr-2">
+                                        <x-wp-spinner size="sm" />
+                                    </span>
+                                    <span>{{ __('locations.units.translation_edit.save') }}</span>
+                                </button>
+                            </div>
                         </div>
-
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.units.translation_edit.name') }}</span>
-                            <textarea class="wp-input" wire:model="unitTranslationName" rows="2"></textarea>
-                            @error('unitTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
-                        </label>
-
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.units.translation_edit.description') }}</span>
-                            <textarea class="wp-input" wire:model="unitTranslationDescription" rows="3"></textarea>
-                            @error('unitTranslationDescription') <span class="wp-error">{{ $message }}</span> @enderror
-                        </label>
-
-                        <div class="wp-row">
-                            <button
-                                type="button"
-                                class="btn btn--ghost btn--sm"
-                                wire:click="saveUnitTranslationOverride"
-                                wire:loading.attr="disabled"
-                                wire:target="saveUnitTranslationOverride"
-                            >
-                                <span wire:loading wire:target="saveUnitTranslationOverride" class="wp-mr-2">
-                                    <x-wp-spinner size="sm" />
-                                </span>
-                                <span>{{ __('locations.units.translation_edit.save') }}</span>
-                            </button>
-                        </div>
-                    </x-wp-disclosure-card>
+                    </div>
                 @endif
 
-                <label class="wp-field">
+                <label class="wp-field wp-border-top">
                     <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
                     <select class="wp-input" wire:model="unitCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>

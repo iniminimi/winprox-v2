@@ -277,7 +277,7 @@ class Show extends Component
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitPhotos = [];
-        $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+        $this->previewLocale = $this->defaultTranslationLocaleFor($unit);
         $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
 
         $this->resetErrorBag();
@@ -477,11 +477,28 @@ class Show extends Component
         }
 
         $locale = LocaleSupport::normalize($this->previewLocale);
+        if ($locale === $unit->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleFor($unit);
+            $this->previewLocale = $locale;
+        }
+
         $translation = $unit->translations
             ->first(fn ($row) => $row->locale === $locale);
 
         $this->unitTranslationName = (string) ($translation?->name ?? '');
         $this->unitTranslationDescription = (string) ($translation?->description ?? '');
+    }
+
+    private function defaultTranslationLocaleFor(Unit $unit): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($unit->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     public function deactivateUnit(int $unitId, DeactivateUnitAction $deactivateUnit): void
@@ -855,12 +872,22 @@ class Show extends Component
             : collect();
 
         $previewUnit = null;
+        $descriptionLocales = config('locales.labels', []);
 
         if ($this->showUnitModal && $this->editingUnitId !== null) {
             $previewUnit = Unit::query()
                 ->where('location_id', $this->location->id)
                 ->with('translations')
                 ->find($this->editingUnitId);
+
+            if ($previewUnit !== null) {
+                $sourceLocale = $previewUnit->normalizedOriginalLanguage();
+                $descriptionLocales = array_filter(
+                    $descriptionLocales,
+                    fn (string $label, string $code): bool => $code !== $sourceLocale,
+                    ARRAY_FILTER_USE_BOTH,
+                );
+            }
         }
 
         return view('livewire.locations.show', [
@@ -883,7 +910,7 @@ class Show extends Component
             'bulkPreview' => $this->bulkPreviewNames(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
             'previewUnit' => $previewUnit,
-            'descriptionLocales' => config('locales.labels', []),
+            'descriptionLocales' => $descriptionLocales,
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
         ]);
     }
