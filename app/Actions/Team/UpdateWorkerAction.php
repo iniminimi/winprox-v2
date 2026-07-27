@@ -14,11 +14,16 @@ class UpdateWorkerAction
      */
     public function handle(Worker $worker, array $data, ?int $actorUserId = null): Worker
     {
+        $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
+        $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);
+
         $worker->update([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'] ?? null,
             'phone' => $data['phone'] ?? null,
+            'is_external' => $isExternal,
+            'company_name' => $companyName,
         ]);
 
         $this->audit->record(
@@ -31,5 +36,16 @@ class UpdateWorkerAction
         );
 
         return $worker->fresh();
+    }
+
+    private static function normalizedCompanyName(mixed $value): ?string
+    {
+        if (! is_string($value)) {
+            return null;
+        }
+
+        $trimmed = trim($value);
+
+        return $trimmed === '' ? null : $trimmed;
     }
 }

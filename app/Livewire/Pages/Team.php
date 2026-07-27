@@ -96,6 +96,8 @@ class Team extends Component
     public string $workerLastName = '';
     public string $workerEmail = '';
     public string $workerPhone = '';
+    public bool $workerIsExternal = false;
+    public string $workerCompanyName = '';
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
@@ -488,9 +490,16 @@ class Team extends Component
         $this->expandTeam($teamId);
         $this->addingWorkerTeamId = $teamId;
         $this->editingWorkerId = null;
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
         $this->showWorkerModal = true;
+    }
+
+    public function updatedWorkerCompanyName(string $value): void
+    {
+        if (trim($value) !== '') {
+            $this->workerIsExternal = true;
+        }
     }
 
     public function saveWorker(CreateWorkerAction $createWorker, UpdateWorkerAction $updateWorker): void
@@ -506,6 +515,8 @@ class Team extends Component
                     'workerLastName' => $request->rules()['last_name'],
                     'workerEmail' => $request->rules()['email'],
                     'workerPhone' => $request->rules()['phone'],
+                    'workerIsExternal' => $request->rules()['is_external'],
+                    'workerCompanyName' => $request->rules()['company_name'],
                 ],
                 [
                     'workerFirstName.required' => __('team.errors.worker_name_required'),
@@ -513,6 +524,7 @@ class Team extends Component
                     'workerEmail.email' => __('team.errors.worker_email_invalid'),
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
+                    'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
                 ],
             );
 
@@ -521,6 +533,8 @@ class Team extends Component
                 'last_name' => $validated['workerLastName'],
                 'email' => $validated['workerEmail'] ?? null,
                 'phone' => $validated['workerPhone'] ?? null,
+                'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
+                'company_name' => $validated['workerCompanyName'] ?? null,
             ], (int) auth()->id());
         } else {
             // Create mode
@@ -534,6 +548,8 @@ class Team extends Component
                     'workerLastName' => $request->rules()['last_name'],
                     'workerEmail' => $request->rules()['email'],
                     'workerPhone' => $request->rules()['phone'],
+                    'workerIsExternal' => $request->rules()['is_external'],
+                    'workerCompanyName' => $request->rules()['company_name'],
                 ],
                 [
                     'workerFirstName.required' => __('team.errors.worker_name_required'),
@@ -541,6 +557,7 @@ class Team extends Component
                     'workerEmail.email' => __('team.errors.worker_email_invalid'),
                     'workerEmail.max' => __('team.errors.worker_email_max'),
                     'workerPhone.max' => __('team.errors.worker_phone_max'),
+                    'workerCompanyName.max' => __('team.errors.worker_company_name_max'),
                 ],
             );
 
@@ -549,6 +566,8 @@ class Team extends Component
                 'last_name' => $validated['workerLastName'],
                 'email' => $validated['workerEmail'] ?? null,
                 'phone' => $validated['workerPhone'] ?? null,
+                'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
+                'company_name' => $validated['workerCompanyName'] ?? null,
             ], (int) auth()->id());
         }
 
@@ -564,13 +583,15 @@ class Team extends Component
         $this->workerLastName = $worker->last_name;
         $this->workerEmail = $worker->email ?? '';
         $this->workerPhone = $worker->phone ?? '';
+        $this->workerIsExternal = (bool) $worker->is_external;
+        $this->workerCompanyName = $worker->company_name ?? '';
         $this->showWorkerModal = true;
     }
 
     public function cancelWorkerModal(): void
     {
-        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone']);
+        $this->reset(['showWorkerModal', 'editingWorkerId', 'addingWorkerTeamId', 'workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName']);
     }
 
     public function resetWorkerIcon(int $workerId, ResetWorkerIconAction $resetIcon): void

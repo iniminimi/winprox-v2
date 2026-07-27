@@ -25,12 +25,22 @@ class WorkerFactory extends Factory
             'field_icon_locked_at' => null,
             'is_active' => true,
             'is_teamleader' => false,
+            'is_external' => false,
+            'company_name' => null,
         ];
     }
 
     public function teamleader(): static
     {
         return $this->state(fn () => ['is_teamleader' => true]);
+    }
+
+    public function external(?string $companyName = null): static
+    {
+        return $this->state(fn () => [
+            'is_external' => true,
+            'company_name' => $companyName,
+        ]);
     }
 
     /** Worker zonder bevestigd icoon (admin voegde enkel een naam toe). */

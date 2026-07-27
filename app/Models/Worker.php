@@ -22,6 +22,8 @@ class Worker extends Model
         'field_icon_locked_at',
         'is_active',
         'is_teamleader',
+        'is_external',
+        'company_name',
         'import_batch_id',
         'email',
         'phone',
@@ -33,6 +35,7 @@ class Worker extends Model
         'field_icon_locked_at' => 'datetime',
         'is_active' => 'boolean',
         'is_teamleader' => 'boolean',
+        'is_external' => 'boolean',
     ];
 
     public function team(): BelongsTo

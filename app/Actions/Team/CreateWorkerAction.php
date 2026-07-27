@@ -29,6 +29,9 @@ class CreateWorkerAction
             }
         }
 
+        $companyName = self::normalizedCompanyName($data['company_name'] ?? null);
+        $isExternal = $companyName !== null || (bool) ($data['is_external'] ?? false);
+
         $worker = Worker::create([
             'tenant_id' => $team->tenant_id,
             'internal_team_id' => $team->id,
@@ -36,6 +39,8 @@ class CreateWorkerAction
             'last_name' => $data['last_name'],
             'email' => $data['email'] ?? null,
             'phone' => $data['phone'] ?? null,
+            'is_external' => $isExternal,
+            'company_name' => $companyName,
             'is_active' => true,
         ]);
 
@@ -52,5 +57,16 @@ class CreateWorkerAction
         );
 
         return $worker;
+    }
+
+    private static function normalizedCompanyName(mixed $value): ?string
+    {
+        if (! is_string($value)) {
+            return null;
+        }
+
+        $trimmed = trim($value);
+
+        return $trimmed === '' ? null : $trimmed;
     }
 }

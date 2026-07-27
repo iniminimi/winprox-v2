@@ -21,6 +21,8 @@ class WorkerResource extends JsonResource
             'last_name' => $this->last_name,
             'is_active' => (bool) $this->is_active,
             'is_teamleader' => (bool) $this->is_teamleader,
+            'is_external' => (bool) $this->is_external,
+            'company_name' => $this->company_name,
         ];
     }
 }

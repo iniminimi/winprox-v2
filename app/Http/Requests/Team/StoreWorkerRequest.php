@@ -21,6 +21,8 @@ class StoreWorkerRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:120'],
             'email' => ['nullable', 'email', 'max:255'],
             'phone' => ['nullable', 'string', 'max:50'],
+            'is_external' => ['sometimes', 'boolean'],
+            'company_name' => ['nullable', 'string', 'max:120'],
         ];
     }
 
@@ -35,6 +37,7 @@ class StoreWorkerRequest extends FormRequest
             'email.email' => __('team.errors.worker_email_invalid'),
             'email.max' => __('team.errors.worker_email_max'),
             'phone.max' => __('team.errors.worker_phone_max'),
+            'company_name.max' => __('team.errors.worker_company_name_max'),
         ];
     }
 }

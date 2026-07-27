@@ -139,11 +139,17 @@
                                     <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
                                         <div class="wp-data-row-main">
                                             <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
+                                            @if ($worker->company_name)
+                                                <span class="wp-muted">{{ $worker->company_name }}</span>
+                                            @endif
                                             @unless ($worker->field_icon_slug)
                                                 <span class="wp-muted">{{ __('team.workers.no_icon') }}</span>
                                             @endunless
                                         </div>
                                         <div class="wp-cluster wp-cluster--tight">
+                                            @if ($worker->is_external)
+                                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.external_badge') }}</span>
+                                            @endif
                                             @if ($worker->is_teamleader)
                                                 <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
                                             @endif
@@ -291,6 +297,15 @@
                         <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone">
                         @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
+                        <input type="text" id="workerCompanyName" class="wp-input" wire:model.live="workerCompanyName" maxlength="120">
+                        @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="workerIsExternal">
+                        <span>{{ __('team.workers.is_external') }}</span>
+                    </label>
                 </div>
 
                 <div class="wp-modal-foot">
