@@ -63,6 +63,16 @@ return [
             'body_key' => 'faq.items.user_roles.summary',
         ],
         [
+            'patterns' => [
+                'verwijder account', 'verwijder gegevens', 'account verwijderen', 'organisatie verwijderen',
+                'delete account', 'delete data', 'delete organisation', 'delete organization',
+                'konto löschen', 'daten löschen', 'supprimer compte', 'supprimer données',
+                'eliminar cuenta', 'eliminar datos', 'elimina account', 'elimina dati',
+                'wissen', 'purge', 'gdpr delete', 'avg wissen',
+            ],
+            'body_key' => 'faq.items.delete_account.summary',
+        ],
+        [
             'patterns' => ['export', 'gegevens', 'data', 'gdpr', 'avg'],
             'body_key' => 'faq.items.data_export.summary',
         ],

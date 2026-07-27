@@ -34,7 +34,7 @@
                 {
                     "title": "Field work via QR",
                     "text": "Field workers sign in via the Clock Point QR (name + icon) and complete tasks via unit QR or team QR — without a WinProx login.",
-                    "highlight": "Clock Point = sign in; unit/team QR = tasks and issues on site."
+                    "highlight": "Clock Point = sign in; unit\/team QR = tasks and issues on site."
                 },
                 {
                     "title": "Follow up and close",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Internal teams",
-            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit/team QR, field workers log updates and photos on site."
+            "box_body": "Organise maintenance teams under Team. Link teams to units and categories. Via Clock Point and unit\/team QR, field workers log updates and photos on site."
         },
         "pricing": {
             "slug": "pricing",
@@ -50,26 +50,26 @@
             "title": "How much does WinProx cost?",
             "intro": "You start with a free trial month (facility and time features). After that, choose Time, Facility, or Corporate under Subscription. Limits apply to your entire organisation (units, sites, documents, photos, users).",
             "summary": "Trial period, then WinProx Time, Facility, or Corporate. Time and Facility without API; Corporate with ESG, API, and webhooks.",
-            "content_note": "Documents and photos count for the entire organisation. During the trial, lower limits apply (e.g. max. 10 documents/photos). Exact limits and prices are shown under Subscription.",
+            "content_note": "Documents and photos count for the entire organisation. During the trial, lower limits apply (e.g. max. 10 documents\/photos). Exact limits and prices are shown under Subscription.",
             "plans": {
                 "time": {
-                    "units": "Up to 10 units / sites / documents / photos",
-                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV/Excel)",
-                    "announcements": "€149 / month · Time module included",
+                    "units": "Up to 10 units \/ sites \/ documents \/ photos",
+                    "users": "1 administrator + 1 staff member · unlimited field workers (CSV\/Excel)",
+                    "announcements": "€149 \/ month · Time module included",
                     "documents": "QR issues and tasks within your limits · no API",
                     "description": "Ideal to start with time tracking and basic facility workflows."
                 },
                 "facility": {
-                    "units": "Up to 100 units / sites / documents / photos",
-                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV/Excel)",
-                    "announcements": "€399 / month · Time included",
-                    "documents": "CSV/Excel import for units and workers · no API",
+                    "units": "Up to 100 units \/ sites \/ documents \/ photos",
+                    "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV\/Excel)",
+                    "announcements": "€399 \/ month · Time included",
+                    "documents": "CSV\/Excel import for units and workers · no API",
                     "description": "Full facility workflows at scale, including WinProx Time."
                 },
                 "corporate": {
                     "units": "Unlimited data",
                     "users": "Scalable for large portfolios",
-                    "announcements": "€999 / month · ESG, API, and webhooks",
+                    "announcements": "€999 \/ month · ESG, API, and webhooks",
                     "documents": "Priority support",
                     "description": "For enterprise portfolios and integrations."
                 }
@@ -79,14 +79,14 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit an issue; field workers (after Clock Point sign-in) complete open tasks on that unit. Team QR: overview of team tasks on site. Clock Point QR: field workers sign in (and clock in/out when Time is active). Site QR: general link to the site. Everything opens in the browser — no app.",
-            "summary": "Unit QR (report/tasks), team QR (team tasks), Clock Point QR (sign in/clock), site QR — all in the browser."
+            "body": "Unit QR: reporters submit an issue; field workers (after Clock Point sign-in) complete open tasks on that unit. Team QR: overview of team tasks on site. Clock Point QR: field workers sign in (and clock in\/out when Time is active). Site QR: general link to the site. Everything opens in the browser — no app.",
+            "summary": "Unit QR (report\/tasks), team QR (team tasks), Clock Point QR (sign in\/clock), site QR — all in the browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "How does the reporter portal work?",
-            "intro": "After scanning the unit QR, a web page opens for that unit. Reporters report problems; approved issues and shared documents/announcements are visible. Field workers with team access can complete open tasks there.",
+            "intro": "After scanning the unit QR, a web page opens for that unit. Reporters report problems; approved issues and shared documents\/announcements are visible. Field workers with team access can complete open tasks there.",
             "summary": "Unit QR portal: issue (up to 4 photos), open issues after approval, documents, announcements, on-site tasks for field workers.",
             "sections": [
                 {
@@ -128,9 +128,9 @@
         "time_clock": {
             "slug": "time_clock",
             "type": "text",
-            "title": "What is the Time module / Clock Point?",
-            "body": "With Time, field workers clock in and out via the Clock Point QR (breaks and shifts included). Without Time, Clock Point is still useful to identify field workers before tasks via unit QR. Time is enabled or disabled per organisation (depending on your plan; Corporate/superuser can manage modules).",
-            "summary": "Time: clock in/out via Clock Point. Clock Point also identifies field workers for tasks."
+            "title": "What is the Time module \/ Clock Point?",
+            "body": "With Time, field workers clock in and out via the Clock Point QR (breaks and shifts included). Without Time, Clock Point is still useful to identify field workers before tasks via unit QR. Time is enabled or disabled per organisation (depending on your plan; Corporate\/superuser can manage modules).",
+            "summary": "Time: clock in\/out via Clock Point. Clock Point also identifies field workers for tasks."
         },
         "esg": {
             "slug": "esg",
@@ -162,7 +162,7 @@
                 },
                 {
                     "title": "Field worker",
-                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts/completes tasks via unit or team QR, with photos and notes."
+                    "text": "Works without a WinProx login. Signs in via Clock Point QR; starts\/completes tasks via unit or team QR, with photos and notes."
                 }
             ]
         },
@@ -170,21 +170,28 @@
             "slug": "data_export",
             "type": "text",
             "title": "Can I export my data?",
-            "body": "Yes. At the bottom of Users (Team), the administrator can download a JSON export with account and activity data within your environment. Keep the file secure.",
-            "summary": "Administrators download a JSON export under Users (GDPR)."
+            "body": "Yes. Go to Settings → Privacy & data export. There an administrator can download a machine-readable export (JSON in a ZIP) of the account and relevant activity in your environment. Keep the file safe.",
+            "summary": "Administrators export via Settings → Privacy & data export (GDPR)."
+        },
+        "delete_account": {
+            "slug": "delete_account",
+            "type": "text",
+            "title": "How do I delete my account \/ organisation data?",
+            "body": "Only an administrator can do this. Go to Subscription → Delete organisation data. First download an export via Settings → Privacy & data export, then confirm with password and email. During a trial you can permanently delete yourself afterwards. On a paid plan there is a 7-day wait; WinProx administration performs the deletion. You can cancel until then via Subscription. Media files (photos, documents) are not kept in the recovery snapshot.",
+            "summary": "Admin: Subscription → delete data (export + password + email; trial self-serve, paid via WinProx after 7 days)."
         },
         "internal_teams": {
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
             "body": "Go to Team: create teams, add field workers (manually, CSV or Excel), link teams to units and optionally to categories. Print or email the team QR and Clock Point QR for the shop floor.",
-            "summary": "Teams under Team; link to units/categories; Clock Point and team QR for the floor."
+            "summary": "Teams under Team; link to units\/categories; Clock Point and team QR for the floor."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "How do teams follow up on tasks?",
-            "body": "Tasks appear in Tasks, on the calendar, in the briefing, and on the team/unit QR. Field workers start and complete on site. Coordinators track status in admin. Recurring issues generate cycles with planned due dates.",
+            "body": "Tasks appear in Tasks, on the calendar, in the briefing, and on the team\/unit QR. Field workers start and complete on site. Coordinators track status in admin. Recurring issues generate cycles with planned due dates.",
             "summary": "Follow-up via Tasks, calendar, briefing, and QR; recurring cycles included."
         },
         "multiple_locations": {
@@ -205,8 +212,8 @@
             "slug": "mobile",
             "type": "text",
             "title": "Does WinProx work on a smartphone?",
-            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit/team QR. Dark theme is handy on phone.",
-            "summary": "Browser on phone/tablet/desktop; field via QR is mobile-first."
+            "body": "Yes. Admin is desktop-first but usable on tablet. Field and QR portals are mobile-first. Field workers work on their phone via Clock Point and unit\/team QR. Dark theme is handy on phone.",
+            "summary": "Browser on phone\/tablet\/desktop; field via QR is mobile-first."
         },
         "install": {
             "slug": "install",
@@ -227,14 +234,14 @@
             "type": "text",
             "title": "Which stickers can I use?",
             "body": "For printing we recommend Avery or Herma labels (A4). In Sites, download a sticker sheet (Word) in the correct format. Optionally set a sticker background or organisation logo under Settings.",
-            "summary": "Avery/Herma A4; sticker sheet from Sites; optional logo/background in Settings."
+            "summary": "Avery\/Herma A4; sticker sheet from Sites; optional logo\/background in Settings."
         },
         "style": {
             "slug": "style",
             "type": "text",
             "title": "WinProx style and Custom portal style",
             "body": "Under Settings, choose WinProx style: Standard or Dark (for the app). Custom portal style is optional: background and button colours (and optional background photo) for the public QR portal that reporters and field workers see.",
-            "summary": "Standard/Dark for the app; optional custom colours/background for the QR portal."
+            "summary": "Standard\/Dark for the app; optional custom colours\/background for the QR portal."
         },
         "api_webhooks": {
             "slug": "api_webhooks",
@@ -247,7 +254,7 @@
             "slug": "iot",
             "type": "text",
             "title": "What is IoT Connect?",
-            "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST /api/v1/iot/events with a gateway token (also on Facility, without full REST API).",
+            "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST \/api\/v1\/iot\/events with a gateway token (also on Facility, without full REST API).",
             "summary": "IoT Connect: sensor alarms → issues (Facility+); measurements → ESG (Corporate). Gateway-token ingest."
         }
     }

@@ -26,6 +26,7 @@ return [
         'stickers',
         'style',
         'data_export',
+        'delete_account',
         'api_webhooks',
     ],
 ];
