@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Unités en masse",
-                    "text": "Créez plusieurs unités d’un coup via des séries indépendantes. Par série : numéro de départ (en texte pour garder les zéros, ex. 01 ou 201), nombre, chiffres optionnels (padding ; vide = auto selon le numéro de départ), préfixe (ex. Chambre + espace) et suffixe (ex. -A). Utilisez “+ Ajouter une autre série” pour combiner plusieurs séries — ex. 01, Chambre 20–22, Chambre 201–203 et Chambre 501. L’aperçu liste tous les noms ; les doublons sont en rouge et bloquent la création. Optionnellement, liez toutes les nouvelles unités à une catégorie. Maximum 500 unités par lot."
+                    "text": "Créez une série d’unités d’un coup. Saisissez le numéro de départ (en texte pour garder les zéros, ex. 01 ou 201), le nombre, des chiffres optionnels (padding ; vide = auto selon le numéro de départ), un préfixe (ex. Chambre + espace) et un suffixe (ex. -A). Exemples : 01 ; Chambre 20–22 ; Chambre 201–203 ; Chambre 501. L’aperçu liste les noms en direct ; les doublons sont en rouge et bloquent la création. Optionnellement, liez toutes les nouvelles unités à une catégorie. Maximum 500 unités par lot."
                 },
                 {
                     "label": "Importer unités",

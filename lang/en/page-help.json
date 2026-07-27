@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Create multiple units at once with independent ranges. Per range enter: start number (as text so leading zeros are kept, e.g. 01 or 201), count, optional digits (padding; leave empty to auto-detect from the start number), prefix (e.g. Room + space) and suffix (e.g. -A). Use “+ Add another range” to combine several ranges in one bulk — e.g. 01, Room 20–22, Room 201–203 and Room 501. The preview lists all names together; duplicates are highlighted in red and block Create. Optionally assign all new units to one category. Maximum 500 units per bulk."
+                    "text": "Create a range of units at once. Enter start number (as text so leading zeros are kept, e.g. 01 or 201), count, optional digits (padding; leave empty to auto-detect from the start number), prefix (e.g. Room + space) and suffix (e.g. -A). Examples: 01; Room 20–22; Room 201–203; Room 501. The preview lists names live; duplicates are highlighted in red and block Create. Optionally assign all new units to one category. Maximum 500 units per bulk."
                 },
                 {
                     "label": "Import units",

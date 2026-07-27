@@ -1,5 +1,5 @@
 /**
- * Alpine UI for bulk unit ranges: live preview without Livewire roundtrips.
+ * Alpine UI for one bulk unit range: live preview without Livewire roundtrips.
  * Submit still goes through Livewire → Form Request → BulkCreateUnitsAction.
  */
 
@@ -17,41 +17,38 @@ function emptyRange() {
 }
 
 /**
- * @param {Array<Record<string, unknown>>} ranges
+ * @param {Record<string, unknown>} range
  * @returns {string[]}
  */
-export function namesFromRanges(ranges) {
+export function namesFromRange(range) {
+    const startStr = String(range?.start ?? '').trim();
+    if (!/^\d+$/.test(startStr)) {
+        return [];
+    }
+
+    const count = Number.parseInt(String(range?.count ?? ''), 10);
+    if (!Number.isFinite(count) || count < 1) {
+        return [];
+    }
+
+    const paddingRaw = range?.padding;
+    let padding;
+    if (paddingRaw === '' || paddingRaw === null || paddingRaw === undefined) {
+        padding = startStr.length;
+    } else {
+        padding = Number.parseInt(String(paddingRaw), 10);
+        if (!Number.isFinite(padding) || padding < startStr.length) {
+            return [];
+        }
+    }
+
+    const prefix = String(range?.prefix ?? '');
+    const suffix = String(range?.suffix ?? '');
+    const start = Number.parseInt(startStr, 10);
     const names = [];
 
-    for (const range of ranges) {
-        const startStr = String(range?.start ?? '').trim();
-        if (!/^\d+$/.test(startStr)) {
-            continue;
-        }
-
-        const count = Number.parseInt(String(range?.count ?? ''), 10);
-        if (!Number.isFinite(count) || count < 1) {
-            continue;
-        }
-
-        const paddingRaw = range?.padding;
-        let padding;
-        if (paddingRaw === '' || paddingRaw === null || paddingRaw === undefined) {
-            padding = startStr.length;
-        } else {
-            padding = Number.parseInt(String(paddingRaw), 10);
-            if (!Number.isFinite(padding) || padding < startStr.length) {
-                continue;
-            }
-        }
-
-        const prefix = String(range?.prefix ?? '');
-        const suffix = String(range?.suffix ?? '');
-        const start = Number.parseInt(startStr, 10);
-
-        for (let i = 0; i < count; i++) {
-            names.push(prefix + String(start + i).padStart(padding, '0') + suffix);
-        }
+    for (let i = 0; i < count; i++) {
+        names.push(prefix + String(start + i).padStart(padding, '0') + suffix);
     }
 
     return names;
@@ -99,16 +96,19 @@ function registerAlpineComponent() {
     window.__wpBulkUnitRangesRegistered = true;
 
     window.Alpine.data('wpBulkUnitRanges', (config = {}) => ({
-        ranges: Array.isArray(config.initialRanges) && config.initialRanges.length > 0
-            ? config.initialRanges.map((range) => ({ ...emptyRange(), ...range }))
-            : [emptyRange()],
+        range: {
+            ...emptyRange(),
+            ...(Array.isArray(config.initialRanges) && config.initialRanges[0]
+                ? config.initialRanges[0]
+                : (config.initialRange ?? {})),
+        },
         categoryId: config.categoryId ?? '',
         i18n: config.i18n ?? {},
         maxUnits: config.maxUnits ?? MAX_UNITS,
         submitting: false,
 
         get preview() {
-            const names = namesFromRanges(this.ranges);
+            const names = namesFromRange(this.range);
             if (names.length > this.maxUnits) {
                 return {
                     names: [],
@@ -127,10 +127,6 @@ function registerAlpineComponent() {
             return this.preview.total > 0 && !this.preview.hasDuplicates && !this.submitting;
         },
 
-        rangeLabel(index) {
-            return String(this.i18n.rangeLabel ?? 'Range :n').replaceAll(':n', String(index + 1));
-        },
-
         batchCountLabel(count) {
             return String(this.i18n.batchCount ?? ':count').replaceAll(':count', String(count));
         },
@@ -143,30 +139,18 @@ function registerAlpineComponent() {
             return String(this.i18n.duplicatesCount ?? ':count').replaceAll(':count', String(count));
         },
 
-        addRange() {
-            this.ranges.push(emptyRange());
-        },
+        rangeForSubmit() {
+            const padding = this.range.padding;
 
-        removeRange(index) {
-            if (this.ranges.length <= 1) {
-                return;
-            }
-            this.ranges.splice(index, 1);
-        },
-
-        rangesForSubmit() {
-            return this.ranges.map((range) => {
-                const padding = range.padding;
-                return {
-                    start: String(range.start ?? '').trim(),
-                    count: Number.parseInt(String(range.count ?? '0'), 10) || 0,
-                    padding: padding === '' || padding === null || padding === undefined
-                        ? null
-                        : Number.parseInt(String(padding), 10),
-                    prefix: String(range.prefix ?? ''),
-                    suffix: String(range.suffix ?? ''),
-                };
-            });
+            return {
+                start: String(this.range.start ?? '').trim(),
+                count: Number.parseInt(String(this.range.count ?? '0'), 10) || 0,
+                padding: padding === '' || padding === null || padding === undefined
+                    ? null
+                    : Number.parseInt(String(padding), 10),
+                prefix: String(this.range.prefix ?? ''),
+                suffix: String(this.range.suffix ?? ''),
+            };
         },
 
         async submit(wire) {
@@ -180,7 +164,7 @@ function registerAlpineComponent() {
                     ? null
                     : Number.parseInt(String(this.categoryId), 10);
 
-                await wire.set('bulkRanges', this.rangesForSubmit());
+                await wire.set('bulkRanges', [this.rangeForSubmit()]);
                 await wire.set('bulkCategoryId', Number.isFinite(categoryId) ? categoryId : null);
                 await wire.createBulk();
             } finally {

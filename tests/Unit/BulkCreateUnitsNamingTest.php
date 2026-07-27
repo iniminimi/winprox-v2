@@ -44,22 +44,10 @@ it('applies suffix per unit', function () {
     expect($names)->toBe(['20A', '21A']);
 });
 
-it('combines multiple ranges', function () {
+it('combines prefix and start for a single range', function () {
     $names = app(BulkCreateUnitsAction::class)->namesFromRanges([
-        ['start' => '01', 'count' => 1, 'padding' => '', 'prefix' => '', 'suffix' => ''],
         ['start' => '20', 'count' => 2, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
-        ['start' => '201', 'count' => 2, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
     ]);
 
-    expect($names)->toBe(['01', 'Kamer 20', 'Kamer 21', 'Kamer 201', 'Kamer 202']);
-});
-
-it('detects duplicate names across ranges', function () {
-    $action = app(BulkCreateUnitsAction::class);
-    $names = $action->namesFromRanges([
-        ['start' => '20', 'count' => 2, 'padding' => '', 'prefix' => '', 'suffix' => ''],
-        ['start' => '21', 'count' => 1, 'padding' => '', 'prefix' => '', 'suffix' => ''],
-    ]);
-
-    expect($action->duplicateNames($names))->toBe(['21']);
+    expect($names)->toBe(['Kamer 20', 'Kamer 21']);
 });

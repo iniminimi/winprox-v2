@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Bulk-Units",
-                    "text": "Erstellen Sie mehrere Units auf einmal über unabhängige Reihen. Pro Reihe: Startnummer (als Text, damit führende Nullen erhalten bleiben, z.B. 01 oder 201), Anzahl, optional Ziffern (Padding; leer = automatisch aus der Startnummer), Präfix (z.B. Zimmer + Leerzeichen) und Suffix (z.B. -A). Mit “+ Weitere Reihe hinzufügen” kombinieren Sie mehrere Reihen in einem Bulk — z.B. 01, Zimmer 20–22, Zimmer 201–203 und Zimmer 501. Die Vorschau zeigt alle Namen; Duplikate werden rot markiert und blockieren Erstellen. Optional alle neuen Units einer Kategorie zuweisen. Maximal 500 Units pro Bulk."
+                    "text": "Erstellen Sie eine Reihe Units auf einmal. Geben Sie Startnummer ein (als Text, damit führende Nullen erhalten bleiben, z.B. 01 oder 201), Anzahl, optional Ziffern (Padding; leer = automatisch aus der Startnummer), Präfix (z.B. Zimmer + Leerzeichen) und Suffix (z.B. -A). Beispiele: 01; Zimmer 20–22; Zimmer 201–203; Zimmer 501. Die Vorschau zeigt Namen live; Duplikate werden rot markiert und blockieren Erstellen. Optional alle neuen Units einer Kategorie zuweisen. Maximal 500 Units pro Bulk."
                 },
                 {
                     "label": "Units importieren",

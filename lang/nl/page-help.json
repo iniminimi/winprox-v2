@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Maak in één keer meerdere units via losse reeksen. Per reeks vul je in: startnummer (als tekst, zodat leidende nullen blijven, bv. 01 of 201), aantal, optioneel cijfers (padding; leeg = automatisch uit het startnummer), prefix (bv. Kamer + spatie) en suffix (bv. -A). Voeg met “+ Nog een reeks toevoegen” meerdere reeksen toe in dezelfde bulk — zo combineer je bv. 01, Kamer 20–22, Kamer 201–203 en Kamer 501. Het voorbeeld toont alle namen samen; dubbele namen worden rood gemarkeerd en blokkeren Aanmaken. Optioneel koppel je alle nieuwe units aan één categorie. Maximum 500 units per bulk."
+                    "text": "Maak in één keer een reeks units. Vul startnummer in (als tekst, zodat leidende nullen blijven, bv. 01 of 201), aantal, optioneel cijfers (padding; leeg = automatisch uit het startnummer), prefix (bv. Kamer + spatie) en suffix (bv. -A). Voorbeelden: 01; Kamer 20–22; Kamer 201–203; Kamer 501. Het voorbeeld toont de namen live; dubbele namen worden rood gemarkeerd en blokkeren Aanmaken. Optioneel koppel je alle nieuwe units aan één categorie. Maximum 500 units per bulk."
                 },
                 {
                     "label": "Units importeren",

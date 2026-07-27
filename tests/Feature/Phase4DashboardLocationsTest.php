@@ -176,7 +176,7 @@ it('bulk creates units from ranges on location show', function () {
         ->and($location->units()->orderBy('name')->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
 });
 
-it('bulk creates multi-range hotel rooms with prefix', function () {
+it('bulk creates hotel rooms with prefix from a single range', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Sequential']);
@@ -186,14 +186,12 @@ it('bulk creates multi-range hotel rooms with prefix', function () {
         ->call('openBulkModal')
         ->set('bulkRanges', [
             ['start' => '20', 'count' => 3, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
-            ['start' => '201', 'count' => 3, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
-            ['start' => '501', 'count' => 1, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
         ])
         ->call('createBulk')
         ->assertHasNoErrors();
 
     expect($location->units()->orderBy('name')->pluck('name')->all())
-        ->toBe(['Kamer 20', 'Kamer 201', 'Kamer 202', 'Kamer 203', 'Kamer 21', 'Kamer 22', 'Kamer 501']);
+        ->toBe(['Kamer 20', 'Kamer 21', 'Kamer 22']);
 });
 
 it('shows bulk preview names from action when ranges are valid', function () {

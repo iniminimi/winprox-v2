@@ -423,7 +423,6 @@
                     categoryId: @js($bulkCategoryId),
                     maxUnits: {{ \App\Actions\Locations\BulkCreateUnitsAction::MAX_UNITS }},
                     i18n: {
-                        rangeLabel: @js(__('locations.bulk.range_label')),
                         batchCount: @js(__('locations.bulk.batch_count')),
                         submitCount: @js(__('locations.bulk.submit_count')),
                         duplicatesCount: @js(__('locations.bulk.errors.duplicates_count')),
@@ -437,89 +436,70 @@
                     <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
 
-                <div class="wp-stack">
-                    <template x-for="(range, index) in ranges" :key="index">
-                        <div class="wp-card wp-card-pad wp-surface-2 wp-stack">
-                            <div class="wp-row">
-                                <p class="wp-label" x-text="rangeLabel(index)"></p>
-                                <button
-                                    type="button"
-                                    class="btn btn--ghost btn--sm"
-                                    x-show="ranges.length > 1"
-                                    x-on:click="removeRange(index)"
-                                    aria-label="{{ __('locations.bulk.remove_range') }}"
-                                >×</button>
-                            </div>
+                <div class="wp-card wp-card-pad wp-surface-2 wp-stack">
+                    <div class="wp-cluster">
+                        <label class="wp-field wp-grow">
+                            <span class="wp-label">{{ __('locations.bulk.start') }}</span>
+                            <input
+                                type="text"
+                                inputmode="numeric"
+                                class="wp-input"
+                                x-model="range.start"
+                                placeholder="{{ __('locations.bulk.start_hint') }}"
+                            />
+                        </label>
+                        <label class="wp-field wp-grow">
+                            <span class="wp-label">{{ __('locations.bulk.count') }}</span>
+                            <input
+                                type="number"
+                                min="1"
+                                max="500"
+                                class="wp-input"
+                                x-model="range.count"
+                            />
+                        </label>
+                    </div>
 
-                            <div class="wp-cluster">
-                                <label class="wp-field wp-grow">
-                                    <span class="wp-label">{{ __('locations.bulk.start') }}</span>
-                                    <input
-                                        type="text"
-                                        inputmode="numeric"
-                                        class="wp-input"
-                                        x-model="range.start"
-                                        placeholder="{{ __('locations.bulk.start_hint') }}"
-                                    />
-                                </label>
-                                <label class="wp-field wp-grow">
-                                    <span class="wp-label">{{ __('locations.bulk.count') }}</span>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        max="500"
-                                        class="wp-input"
-                                        x-model="range.count"
-                                    />
-                                </label>
-                            </div>
+                    <div class="wp-cluster">
+                        <label class="wp-field wp-grow">
+                            <span class="wp-label">{{ __('locations.bulk.padding') }}</span>
+                            <input
+                                type="number"
+                                min="1"
+                                max="20"
+                                class="wp-input"
+                                x-model="range.padding"
+                                placeholder="{{ __('locations.bulk.padding_auto') }}"
+                            />
+                        </label>
+                        <label class="wp-field wp-grow">
+                            <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
+                            <input
+                                type="text"
+                                class="wp-input"
+                                x-model="range.prefix"
+                                placeholder="{{ __('locations.bulk.prefix_hint') }}"
+                                maxlength="30"
+                            />
+                        </label>
+                    </div>
 
-                            <div class="wp-cluster">
-                                <label class="wp-field wp-grow">
-                                    <span class="wp-label">{{ __('locations.bulk.padding') }}</span>
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        max="20"
-                                        class="wp-input"
-                                        x-model="range.padding"
-                                        placeholder="{{ __('locations.bulk.padding_auto') }}"
-                                    />
-                                </label>
-                                <label class="wp-field wp-grow">
-                                    <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
-                                    <input
-                                        type="text"
-                                        class="wp-input"
-                                        x-model="range.prefix"
-                                        placeholder="{{ __('locations.bulk.prefix_hint') }}"
-                                        maxlength="30"
-                                    />
-                                </label>
-                            </div>
-
-                            <label class="wp-field">
-                                <span class="wp-label">{{ __('locations.bulk.suffix') }}</span>
-                                <input
-                                    type="text"
-                                    class="wp-input"
-                                    x-model="range.suffix"
-                                    placeholder="{{ __('locations.bulk.suffix_hint') }}"
-                                    maxlength="30"
-                                />
-                            </label>
-                        </div>
-                    </template>
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.bulk.suffix') }}</span>
+                        <input
+                            type="text"
+                            class="wp-input"
+                            x-model="range.suffix"
+                            placeholder="{{ __('locations.bulk.suffix_hint') }}"
+                            maxlength="30"
+                        />
+                    </label>
                 </div>
-
-                <button type="button" class="btn btn--ghost" x-on:click="addRange()">
-                    {{ __('locations.bulk.add_range') }}
-                </button>
 
                 <div class="wp-card wp-card-pad wp-surface-2">
                     <p class="wp-label">
                         {{ __('locations.bulk.preview') }}
-                        (<span x-text="'(' + batchCountLabel(preview.total) + ')'"></span>
+                        <span x-text="'(' + batchCountLabel(preview.total) + ')'"></span>
                     </p>
                     <p class="wp-muted" x-show="preview.previewNames.length === 0" x-text="i18n.previewEmpty"></p>
                     <p class="wp-muted" x-show="preview.previewNames.length > 0">

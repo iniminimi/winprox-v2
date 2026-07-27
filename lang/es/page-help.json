@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Unidades en bloque",
-                    "text": "Cree varias unidades de una vez con series independientes. Por serie: número inicial (como texto para conservar ceros iniciales, p. ej. 01 o 201), cantidad, dígitos opcionales (padding; vacío = automático según el número inicial), prefijo (p. ej. Habitación + espacio) y sufijo (p. ej. -A). Con “+ Añadir otra serie” combine varias series — p. ej. 01, Habitación 20–22, Habitación 201–203 y Habitación 501. La vista previa muestra todos los nombres; los duplicados se marcan en rojo y bloquean Crear. Opcionalmente asigne todas las unidades nuevas a una categoría. Máximo 500 unidades por lote."
+                    "text": "Cree una serie de unidades de una vez. Introduzca el número inicial (como texto para conservar ceros iniciales, p. ej. 01 o 201), la cantidad, dígitos opcionales (padding; vacío = automático según el número inicial), prefijo (p. ej. Habitación + espacio) y sufijo (p. ej. -A). Ejemplos: 01; Habitación 20–22; Habitación 201–203; Habitación 501. La vista previa muestra los nombres en vivo; los duplicados se marcan en rojo y bloquean Crear. Opcionalmente asigne todas las unidades nuevas a una categoría. Máximo 500 unidades por lote."
                 },
                 {
                     "label": "Importar unidades",

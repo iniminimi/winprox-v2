@@ -115,13 +115,11 @@ Acties: **Annuleren** / **Locatie opslaan**. Validatie via Form Request; logica 
   heeft) · **Unit-QR** (individuele QR-code = publieke meld-link `/melden/{token}`).
 
 ### 2.4 Modal "Bulk units toevoegen"
-Genereert in één keer meerdere units via **losse, combineerbare reeksen**.
-- Per reeks: **Startnummer** (string, leidende nullen behouden, bv. `01` / `20` / `201`),
+Genereert in één keer meerdere units via **één reeks**.
+- **Startnummer** (string, leidende nullen behouden, bv. `01` / `20` / `201`),
   **Aantal**, optioneel **Cijfers** (padding; leeg = auto uit startnummer), **Prefix**
   (bv. `Kamer `) en **Suffix** (bv. `-A`).
-- **+ Nog een reeks toevoegen**: meerdere reeksen in één bulk (bv. `01` + `Kamer 20–22` +
-  `Kamer 201–203` + `Kamer 501`).
-- **Voorbeeld**-blok (vóór categorie): live lijst van alle namen; **duplicaten** rood
+- **Voorbeeld**-blok (vóór categorie): live lijst van namen; **duplicaten** rood
   gemarkeerd → Aanmaken disabled.
 - **Categorie** (optioneel, globaal voor de hele bulk).
 - Acties: **Annuleren** / **Alle :count units aanmaken** (max. 500).
@@ -134,7 +132,7 @@ qr_token, bulk-batch-referentie t.b.v. "recente bulk-aanmaak", actief/inactief).
 
 **Nieuw t.o.v. huidige bouw (backlog):** locatie-CRUD + (de)activeren, zoek/inactief-filter,
 locatie-detail met vorige/volgende, algemene locatie-QR, QR-stickerblad (QR-pack) downloaden,
-unit-CRUD per stuk, **bulk-aanmaak met reeksen + preview**, recente-bulk-beheer met veilige
+unit-CRUD per stuk, **bulk-aanmaak met reeks + preview**, recente-bulk-beheer met veilige
 verwijderregels (niet verwijderen wat een melding/taak heeft), unit-QR → publieke meld-link.
 
 ### 2.5 QR-stickerblad (.docx) — OVERNEMEN uit `winprox_old`
