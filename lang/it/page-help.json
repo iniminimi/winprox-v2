@@ -192,8 +192,8 @@
                     "text": "Rilevante solo se la categoria è Prenotabile. Attivo di default; disattivi per escludere questa unità dalle prenotazioni mentre le altre unità della stessa categoria restano prenotabili."
                 },
                 {
-                    "label": "Unità in massa",
-                    "text": "Crei rapidamente decine di unità (come stanze, piani o asset consecutivi) in un'unica operazione entro un intervallo di numerazione logico. Numero di serie: specifichi quante serie (es. piani o zone) generare in una volta. Unità per serie: determini il numero di unità specifiche (es. stanze o dispositivi) da creare per serie. Numerazione: aggiungi una o più serie con numero iniziale, quantità e prefisso facoltativo (es. 01; Stanza 20–22; Stanza 201–203; Stanza 501)."
+                    "label": "Unità in blocco",
+                    "text": "Crea più unità in una volta con serie indipendenti. Per serie: numero iniziale (come testo per mantenere gli zeri iniziali, es. 01 o 201), quantità, cifre opzionali (padding; vuoto = automatico dal numero iniziale), prefisso (es. Stanza + spazio) e suffisso (es. -A). Con “+ Aggiungi un’altra serie” combina più serie — es. 01, Stanza 20–22, Stanza 201–203 e Stanza 501. L’anteprima elenca tutti i nomi; i duplicati sono in rosso e bloccano Crea. Opzionalmente assegna tutte le nuove unità a una categoria. Massimo 500 unità per blocco."
                 },
                 {
                     "label": "Importa unità",

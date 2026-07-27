@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Bulk-Units",
-                    "text": "Erstellen Sie schnell Dutzende Units (wie Zimmer, Etagen oder aufeinanderfolgende Assets) gleichzeitig innerhalb einer logischen Nummerierungsreihe. Anzahl Reihen: geben Sie an, wie viele Reihen (z.B. Etagen oder Zonen) Sie auf einmal generieren möchten. Units pro Reihe: bestimmen Sie die Anzahl spezifischer Einheiten (z.B. Zimmer oder Geräte), die pro Reihe erstellt werden sollen. Nummerierung: fügen Sie eine oder mehrere Reihen mit Startnummer, Anzahl und optionalem Präfix hinzu (z.B. 01; Zimmer 20–22; Zimmer 201–203; Zimmer 501)."
+                    "text": "Erstellen Sie mehrere Units auf einmal über unabhängige Reihen. Pro Reihe: Startnummer (als Text, damit führende Nullen erhalten bleiben, z.B. 01 oder 201), Anzahl, optional Ziffern (Padding; leer = automatisch aus der Startnummer), Präfix (z.B. Zimmer + Leerzeichen) und Suffix (z.B. -A). Mit “+ Weitere Reihe hinzufügen” kombinieren Sie mehrere Reihen in einem Bulk — z.B. 01, Zimmer 20–22, Zimmer 201–203 und Zimmer 501. Die Vorschau zeigt alle Namen; Duplikate werden rot markiert und blockieren Erstellen. Optional alle neuen Units einer Kategorie zuweisen. Maximal 500 Units pro Bulk."
                 },
                 {
                     "label": "Units importieren",
