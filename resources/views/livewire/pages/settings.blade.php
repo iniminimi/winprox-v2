@@ -250,7 +250,11 @@
     @endif
 
     @if ($canManageOrganisation)
-        <x-wp-settings-section :title="__('settings.privacy.title')">
+        <x-wp-settings-section
+            id="settings-privacy"
+            :title="__('settings.privacy.title')"
+            :open-by-default="request()->query('open') === 'privacy'"
+        >
             <p class="wp-muted">{{ __('settings.privacy.hint') }}</p>
             <div
                 x-data="{

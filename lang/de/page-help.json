@@ -515,7 +515,7 @@
                 },
                 {
                     "label": "Organisationsdaten löschen",
-                    "text": "Nur Administratoren. Laden Sie zuerst einen Export herunter (Link auf dieser Seite), bestätigen Sie das Kontrollkästchen und geben Sie Ihr Passwort ein. Alle Administratoren erhalten eine Bestätigungs-E-Mail. In der Testphase können Sie danach selbst endgültig löschen (SQL-Snapshot ohne Medien, 30 Tage aufbewahrt). Bei einem bezahlten Abonnement folgt eine 7-tägige Cool-down mit Banner und Erinnerungsmail; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen."
+                    "text": "Nur Administratoren. Laden Sie zuerst einen Datenexport über Einstellungen → Datenschutz & Datenexport herunter. Bestätigen Sie danach unter Abonnement das Kontrollkästchen und geben Sie Ihr Passwort ein. Alle Administratoren erhalten eine Bestätigungs-E-Mail. In der Testphase können Sie danach selbst endgültig löschen (technischer Snapshot ohne Medien, 30 Tage aufbewahrt). Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit mit Banner und Erinnerungsmail; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen."
                 }
             ]
         },

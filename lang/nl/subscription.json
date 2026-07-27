@@ -115,8 +115,8 @@
     "purge": {
         "title": "Organisatiegegevens verwijderen",
         "intro": "Verwijder alle gegevens van deze organisatie uit WinProx. Dit is onomkeerbaar (mediabestanden worden niet in de herstel-snapshot bewaard).",
-        "export_link": "Download eerst een export van je gegevens",
-        "export_ack": "Ik heb de exportmogelijkheid gezien of gedownload",
+        "export_link": "Export via Instellingen → Privacy & export van gegevens",
+        "export_ack": "Ik heb de exportmogelijkheid gezien of gedownload (Instellingen)",
         "password_label": "Bevestig met je wachtwoord",
         "start": "Verwijdering starten",
         "cancel": "Verwijdering annuleren",

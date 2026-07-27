@@ -515,7 +515,7 @@
                 },
                 {
                     "label": "Organisatiegegevens verwijderen",
-                    "text": "Alleen beheerders. Download eerst een export (link op deze pagina), vink de bevestiging aan en geef je wachtwoord. Alle beheerders krijgen een bevestigingsmail. Bij een proefperiode kun je daarna zelf definitief wissen (SQL-snapshot zonder media, 30 dagen bewaard). Bij een betaald abonnement volgt een cool-down van 7 dagen met banner en herinneringsmail; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement."
+                    "text": "Alleen beheerders. Download eerst een gegevensexport via Instellingen → Privacy & export van gegevens. Vink daarna op Abonnement de bevestiging aan en geef je wachtwoord. Alle beheerders krijgen een bevestigingsmail. Bij een proefperiode kun je daarna zelf definitief wissen (technische snapshot zonder media, 30 dagen bewaard). Bij een betaald abonnement volgt een wachttijd van 7 dagen met banner en herinneringsmail; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement."
                 }
             ]
         },

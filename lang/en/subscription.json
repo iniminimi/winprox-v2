@@ -115,8 +115,8 @@
     "purge": {
         "title": "Delete organisation data",
         "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
-        "export_link": "Download an export of your data first",
-        "export_ack": "I have seen or downloaded the export option",
+        "export_link": "Export via Settings → Privacy & data export",
+        "export_ack": "I have seen or downloaded the export option (Settings)",
         "password_label": "Confirm with your password",
         "start": "Start deletion",
         "cancel": "Cancel deletion",

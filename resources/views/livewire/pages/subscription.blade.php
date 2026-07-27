@@ -291,7 +291,7 @@
             @elseif ($canRequestPurge)
                 <div class="wp-stack-tight">
                     <p>
-                        <a href="{{ route('account.data-export') }}" class="wp-link">{{ __('subscription.purge.export_link') }}</a>
+                        <a href="{{ route('settings.index', ['open' => 'privacy']) }}" class="wp-link">{{ __('subscription.purge.export_link') }}</a>
                     </p>
                     <label class="wp-check">
                         <input type="checkbox" wire:model.live="purgeExportAck">

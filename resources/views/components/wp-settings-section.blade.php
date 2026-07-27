@@ -1,9 +1,10 @@
 @props([
     'title',
     'titleId' => null,
+    'openByDefault' => false,
 ])
 
-<div {{ $attributes->merge(['class' => 'wp-card wp-card-pad wp-stack-tight wp-settings-section']) }} x-data="{ open: false }">
+<div {{ $attributes->merge(['class' => 'wp-card wp-card-pad wp-stack-tight wp-settings-section']) }} x-data="{ open: @js((bool) $openByDefault) }">
     <button
         type="button"
         class="wp-settings-section-toggle"

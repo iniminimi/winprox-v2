@@ -515,7 +515,7 @@
                 },
                 {
                     "label": "Supprimer les données de l’organisation",
-                    "text": "Administrateurs uniquement. Téléchargez d’abord une exportation (lien sur cette page), cochez la confirmation et saisissez votre mot de passe. Tous les administrateurs reçoivent un e-mail de confirmation. Pendant l’essai, vous pouvez ensuite supprimer définitivement vous-même (instantané SQL sans médias, conservé 30 jours). Avec un abonnement payant, un délai de 7 jours s’applique avec bannière et e-mail de rappel ; l’administration WinProx effectue la suppression. Vous pouvez annuler d’ici là via Abonnement."
+                    "text": "Administrateurs uniquement. Téléchargez d’abord une exportation via Paramètres → Confidentialité & export des données. Cochez ensuite la confirmation sur Abonnement et saisissez votre mot de passe. Tous les administrateurs reçoivent un e-mail de confirmation. Pendant l’essai, vous pouvez ensuite supprimer définitivement vous-même (instantané technique sans médias, conservé 30 jours). Avec un abonnement payant, un délai de 7 jours s’applique avec bannière et e-mail de rappel ; l’administration WinProx effectue la suppression. Vous pouvez annuler d’ici là via Abonnement."
                 }
             ]
         },
