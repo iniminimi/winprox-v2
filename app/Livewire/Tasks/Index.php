@@ -4,8 +4,11 @@ namespace App\Livewire\Tasks;
 
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskStatusAction;
+use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
+use App\Enums\TaskTranslationStatus;
+use App\Enums\UnitTranslationStatus;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Task;
@@ -81,9 +84,15 @@ class Index extends Component
                 $term = '%'.trim($this->search).'%';
                 $q->where(function ($query) use ($term) {
                     $query->where('description', 'like', $term)
+                        ->orWhereHas('translations', fn ($translation) => $translation
+                            ->where('status', TaskTranslationStatus::Completed)
+                            ->where('description', 'like', $term))
                         ->orWhereHas('issue', fn ($issue) => $issue
                             ->where('description', 'like', $term)
                             ->orWhere('reporter_name', 'like', $term)
+                            ->orWhereHas('translations', fn ($translation) => $translation
+                                ->where('status', IssueTranslationStatus::Completed)
+                                ->where('description', 'like', $term))
                             ->orWhereHas('location', fn ($loc) => $loc->where(function ($locationQuery) use ($term) {
                                 $locationQuery->where('name', 'like', $term)
                                     ->orWhere('street', 'like', $term)
@@ -92,7 +101,15 @@ class Index extends Component
                                     ->orWhere('city', 'like', $term)
                                     ->orWhere('address', 'like', $term);
                             }))
-                            ->orWhereHas('unit', fn ($unit) => $unit->where('name', 'like', $term)));
+                            ->orWhereHas('unit', fn ($unit) => $unit->where(function ($unitQuery) use ($term) {
+                                $unitQuery->where('name', 'like', $term)
+                                    ->orWhereHas('translations', fn ($translation) => $translation
+                                        ->where('status', UnitTranslationStatus::Completed)
+                                        ->where(function ($translatedUnit) use ($term) {
+                                            $translatedUnit->where('name', 'like', $term)
+                                                ->orWhere('description', 'like', $term);
+                                        }));
+                            })));
                 });
             })
             ->orderByDesc('id')

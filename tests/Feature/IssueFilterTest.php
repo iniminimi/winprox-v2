@@ -1,10 +1,13 @@
 <?php
 
+use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskStatus;
 use App\Livewire\Issues\Index;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
+use App\Models\IssueTranslation;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
@@ -18,6 +21,7 @@ function seedFilterableIssues(Tenant $tenant): array
     $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Technische dienst']);
     $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Schoonmaak']);
     Category::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = \App\Models\Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
@@ -110,6 +114,7 @@ it('zoekt meldingen op locatiestraat', function () {
 
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     $location = \App\Models\Location::factory()->create([
         'tenant_id' => $tenant->id,
@@ -141,4 +146,52 @@ it('zoekt meldingen op locatiestraat', function () {
         ->call('applyFilters')
         ->assertSee('Melding op industrieweg')
         ->assertDontSee('Andere melding');
+});
+
+it('zoekt meldingen ook in voltooide vertalingen van de omschrijving', function () {
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'original_language' => 'nl',
+        'description' => 'De lift werkt niet meer',
+    ]);
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'original_language' => 'nl',
+        'description' => 'Kapotte kraan in het magazijn',
+    ]);
+
+    IssueTranslation::query()->create([
+        'issue_id' => $issue->id,
+        'locale' => 'en',
+        'description' => 'The elevator stopped working',
+        'status' => IssueTranslationStatus::Completed,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(Index::class)
+        ->set('search', 'elevator')
+        ->assertSee('The elevator stopped working')
+        ->assertDontSee('Kapotte kraan in het magazijn');
 });
