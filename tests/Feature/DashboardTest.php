@@ -163,3 +163,77 @@ it('toont de abonnements-batterijcapsule na planactivatie', function () {
         ->assertSee(__('dashboard.trial_capsule.paid_short', ['days' => 29]))
         ->assertSee('wp-dashboard-trial-capsule', false);
 });
+
+it('toont conditionele actie-KPI’s alleen bij telling groter dan nul', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'has_iot_module' => true,
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.kpi.present_now'))
+        ->assertDontSee(__('dashboard.kpi.pending_review'))
+        ->assertDontSee(__('dashboard.kpi.iot_alarms'));
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => null,
+        'description' => 'Wacht op QR-controle',
+    ]);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'source' => \App\Enums\IssueSource::Iot,
+        'description' => 'Open IoT-alarm',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.kpi.pending_review'))
+        ->assertSee(__('dashboard.kpi.iot_alarms'))
+        ->assertSeeHtml('wp-kpi--pending_review')
+        ->assertSeeHtml('wp-kpi--iot_alarms');
+});
+
+it('verbergt IoT-KPI zonder IoT-module ook bij open IoT-meldingen', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'has_iot_module' => false,
+    ]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+        'source' => \App\Enums\IssueSource::Iot,
+        'description' => 'Verborgen IoT zonder module',
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.kpi.iot_alarms'));
+});

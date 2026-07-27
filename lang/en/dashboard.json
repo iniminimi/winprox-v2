@@ -20,7 +20,10 @@
         "new_issues": "New issues",
         "open_tasks": "Open tasks",
         "present_now": "Present now",
-        "meta_total": "Total"
+        "meta_total": "Total",
+        "pending_review": "Pending review",
+        "time_attention": "Time attention",
+        "iot_alarms": "IoT alarms"
     },
     "recent": {
         "title": "Recent issues",

@@ -39,6 +39,11 @@ linkt naar zijn lijst):
 - Units — totaal → unit-lijst
 - Nieuwe meldingen — aantal nieuw/open → meldingen (status=nieuw). **Alert-accent** als > 0.
 - Open taken — "In uitvoering" → taken (open/in uitvoering).
+- Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; standaard aan).
+- **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
+  - Te beoordelen — QR-wachtlijst → meldingen
+  - Time-aandacht — open shifts met uitzondering → Time-alarmen
+  - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
 
 **Recente meldingen** (kaart met lijst)
 - "Laatste activiteit door melders of team", met nadruk op **nieuwe** meldingen; laatste **5**.

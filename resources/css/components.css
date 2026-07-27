@@ -569,11 +569,13 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.25rem;
+    justify-content: start;
 }
 
 @media (min-width: 75rem) {
     .wp-kpis {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        /* auto-fit: geen lege kolommen; tegels links uitgelijnd bij 5–7 stuks */
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     }
 }
 
@@ -683,6 +685,16 @@ a.wp-kpi:hover {
     color: var(--wp-text-body);
 }
 
+.wp-kpi--present_now .wp-kpi-kicker {
+    color: var(--wp-accent-text);
+}
+
+.wp-kpi--pending_review .wp-kpi-kicker,
+.wp-kpi--time_attention .wp-kpi-kicker,
+.wp-kpi--iot_alarms .wp-kpi-kicker {
+    color: var(--wp-warning-text);
+}
+
 .wp-kpi-stats {
     display: flex;
     align-items: flex-end;
@@ -748,6 +760,20 @@ a.wp-kpi:hover {
     background-color: var(--wp-surface-2);
     border-color: var(--wp-border);
     color: var(--wp-text-body);
+}
+
+.wp-kpi--present_now .wp-kpi-icon {
+    background-color: var(--wp-accent-soft);
+    border-color: var(--wp-accent-border);
+    color: var(--wp-accent-text);
+}
+
+.wp-kpi--pending_review .wp-kpi-icon,
+.wp-kpi--time_attention .wp-kpi-icon,
+.wp-kpi--iot_alarms .wp-kpi-icon {
+    background-color: var(--wp-warning-soft);
+    border-color: var(--wp-warning-border);
+    color: var(--wp-warning-text);
 }
 
 .wp-kpi-icon svg {

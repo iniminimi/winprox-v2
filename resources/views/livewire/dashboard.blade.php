@@ -77,29 +77,23 @@
                 'new_issues' => route('issues.index', ['status' => 'new']),
                 'open_tasks' => route('tasks.index'),
                 'present_now' => route('time.presence.index'),
-            ];
-            $kpis = [
-                ['key' => 'locations', 'icon' => 'locations', 'label' => 'dashboard.kpi.locations', 'meta' => 'dashboard.kpi.meta_total'],
-                ['key' => 'units', 'icon' => 'units', 'label' => 'dashboard.kpi.units', 'meta' => 'dashboard.kpi.meta_total'],
-                ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null],
-                ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null],
-                ...($hasTimeModule ? [
-                    ['key' => 'present_now', 'icon' => 'clock', 'label' => 'dashboard.kpi.present_now', 'meta' => null],
-                ] : []),
+                'pending_review' => route('issues.index'),
+                'time_attention' => route('time.alarms.index'),
+                'iot_alarms' => route('iot.index'),
             ];
             $highlightCutoff = now()->subHours(3);
         @endphp
 
         <div class="wp-kpis">
-            @foreach ($kpis as $kpi)
-                <a href="{{ $kpiLinks[$kpi['key']] }}"
-                   class="wp-kpi wp-kpi--{{ $kpi['key'] }} @if ($kpi['key'] === 'new_issues' && $stats['new_issues'] > 0) wp-kpi--alert @endif"
+            @foreach ($stats->kpiTiles() as $kpi)
+                <a href="{{ $kpiLinks[$kpi['href_key']] }}"
+                   @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert']])
                    wire:key="kpi-{{ $kpi['key'] }}">
                     <div class="wp-kpi-body">
                         <div class="wp-kpi-main">
                             <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
                             <p class="wp-kpi-stats">
-                                <span class="wp-kpi-value wp-tabular">{{ $stats[$kpi['key']] }}</span>
+                                <span class="wp-kpi-value wp-tabular">{{ $stats->valueFor($kpi['key']) }}</span>
                                 @if ($kpi['meta'])
                                     <span class="wp-kpi-meta">{{ __($kpi['meta']) }}</span>
                                 @endif

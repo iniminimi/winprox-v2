@@ -20,7 +20,10 @@
         "new_issues": "Nuove segnalazioni",
         "open_tasks": "Attività aperte",
         "present_now": "Presenti",
-        "meta_total": "Totale"
+        "meta_total": "Totale",
+        "pending_review": "Da valutare",
+        "time_attention": "Attenzione Time",
+        "iot_alarms": "Allarmi IoT"
     },
     "recent": {
         "title": "Segnalazioni recenti",

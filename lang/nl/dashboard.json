@@ -20,7 +20,10 @@
         "new_issues": "Nieuwe meldingen",
         "open_tasks": "Open taken",
         "present_now": "Nu aanwezig",
-        "meta_total": "Totaal"
+        "meta_total": "Totaal",
+        "pending_review": "Te beoordelen",
+        "time_attention": "Time-aandacht",
+        "iot_alarms": "IoT-alarmen"
     },
     "recent": {
         "title": "Recente meldingen",

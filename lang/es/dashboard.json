@@ -20,7 +20,10 @@
         "new_issues": "Nuevas incidencias",
         "open_tasks": "Tareas abiertas",
         "present_now": "Presentes",
-        "meta_total": "Total"
+        "meta_total": "Total",
+        "pending_review": "Por revisar",
+        "time_attention": "Atención Time",
+        "iot_alarms": "Alarmas IoT"
     },
     "recent": {
         "title": "Incidencias recientes",

@@ -20,7 +20,10 @@
         "new_issues": "Neue Meldungen",
         "open_tasks": "Offene Aufgaben",
         "present_now": "Anwesend",
-        "meta_total": "Gesamt"
+        "meta_total": "Gesamt",
+        "pending_review": "Zur Prüfung",
+        "time_attention": "Time-Aufmerksamkeit",
+        "iot_alarms": "IoT-Alarme"
     },
     "recent": {
         "title": "Aktuelle Meldungen",

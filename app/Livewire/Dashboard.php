@@ -3,16 +3,13 @@
 namespace App\Livewire;
 
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
+use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Enums\TaskStatus;
-use App\Enums\WorkShiftStatus;
 use App\Models\Issue;
-use App\Models\Location;
-use App\Models\Task;
-use App\Models\Unit;
-use App\Models\WorkShift;
 use App\Support\Admin\AdminHealthService;
 use App\Support\Dashboard\TopScannedUnitsService;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -23,19 +20,20 @@ class Dashboard extends Component
 {
     public function render(
         RealignSubscriptionPeriodAction $realign,
+        BuildDashboardStatsAction $buildStats,
         AdminHealthService $healthService,
         TopScannedUnitsService $topScannedUnits,
     ) {
-        $stats = [
-            'locations' => Location::query()->count(),
-            'units' => Unit::query()->count(),
-            'new_issues' => Issue::query()->where('status', TaskStatus::New->value)->count(),
-            'open_tasks' => Task::query()->forApprovedIssue()->whereIn('status', TaskStatus::openValues())->count(),
-            'present_now' => WorkShift::query()
-                ->where('status', WorkShiftStatus::Open)
-                ->whereDoesntHave('breaks', fn ($query) => $query->whereNull('ended_at'))
-                ->count(),
-        ];
+        $tenant = auth()->user()?->tenant;
+        if ($tenant !== null) {
+            $tenant = $realign->handle($tenant);
+        }
+
+        $tenantId = (int) (Tenancy::id() ?? $tenant?->id ?? 0);
+        $hasTimeModule = $tenant?->hasTimeModule() ?? false;
+        $hasIotModule = $tenant?->hasIotModule() ?? false;
+
+        $stats = $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
 
         $recent = Issue::query()
             ->where('status', '!=', TaskStatus::Closed->value)
@@ -48,17 +46,6 @@ class Dashboard extends Component
             ])
             ->take(5)
             ->values();
-
-        $tenant = auth()->user()?->tenant;
-        if ($tenant !== null) {
-            $tenant = $realign->handle($tenant);
-        }
-
-        $hasTimeModule = $tenant?->hasTimeModule() ?? false;
-
-        if (! $hasTimeModule) {
-            unset($stats['present_now']);
-        }
 
         return view('livewire.dashboard', [
             'stats' => $stats,
