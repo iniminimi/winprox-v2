@@ -121,10 +121,12 @@ class BuildTimePresenceDashboardAction
             )->count();
             $teamAbsentCount = (int) ($absentByTeam[$team->id] ?? 0);
             $isExpanded = in_array((int) $team->id, $expandedTeamIds, true);
+            $wantsAbsentRoster = $statusFilter === TimePresenceStatusFilter::Absent
+                || $statusFilter === TimePresenceStatusFilter::All;
             $loadAbsent = $teamAbsentCount > 0
                 && (
                     $includeAbsentRoster
-                    || ($isExpanded && $statusFilter === TimePresenceStatusFilter::Absent)
+                    || ($isExpanded && $wantsAbsentRoster)
                 );
 
             return new TimePresenceTeamBucket(

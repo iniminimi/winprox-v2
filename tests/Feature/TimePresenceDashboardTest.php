@@ -77,20 +77,26 @@ it('detecteert lange shifts als aandacht', function () {
         ->and($dashboard->attentionItems->first()->type)->toBe(TimePresenceAttentionType::LongShift);
 });
 
-it('laadt shift-details alleen voor uitgeklapte teams', function () {
+it('laadt afwezigen bij uitgeklapt team met status alle', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
     Tenancy::actAs($tenant->id);
 
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
-    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
-    app(ClockInAction::class)->handle($worker, $clockPoint);
+    Worker::factory()->count(2)->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id]);
 
-    $collapsed = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id);
-    $expanded = app(BuildTimePresenceDashboardAction::class)->handle($tenant->id, expandedTeamIds: [$team->id]);
+    $collapsed = app(BuildTimePresenceDashboardAction::class)->handle(
+        $tenant->id,
+        statusFilter: TimePresenceStatusFilter::All,
+    );
+    $expanded = app(BuildTimePresenceDashboardAction::class)->handle(
+        $tenant->id,
+        statusFilter: TimePresenceStatusFilter::All,
+        expandedTeamIds: [$team->id],
+    );
 
-    expect($collapsed->teamBuckets->first()->activeShifts)->toHaveCount(0)
-        ->and($expanded->teamBuckets->first()->activeShifts)->toHaveCount(1);
+    expect($collapsed->teamBuckets->first()->absentCount)->toBe(2)
+        ->and($collapsed->teamBuckets->first()->absentWorkers)->toHaveCount(0)
+        ->and($expanded->teamBuckets->first()->absentWorkers)->toHaveCount(2);
 });
 
 it('groepeert ingeklokte medewerkers per locatie', function () {
