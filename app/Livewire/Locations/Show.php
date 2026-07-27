@@ -854,10 +854,6 @@ class Show extends Component
             ? Category::query()->orderBy('name')->get(['id', 'name'])
             : collect();
 
-        $previewName = '';
-        $previewNameMissing = false;
-        $previewDescription = '';
-        $previewDescriptionMissing = false;
         $previewUnit = null;
 
         if ($this->showUnitModal && $this->editingUnitId !== null) {
@@ -865,14 +861,6 @@ class Show extends Component
                 ->where('location_id', $this->location->id)
                 ->with('translations')
                 ->find($this->editingUnitId);
-
-            if ($previewUnit !== null && $previewUnit->is_active) {
-                $displayLocale = LocaleSupport::normalize($this->previewLocale);
-                $previewName = $previewUnit->nameForDisplayLocale($displayLocale);
-                $previewNameMissing = $previewUnit->nameMissingForDisplayLocale($displayLocale);
-                $previewDescription = $previewUnit->descriptionForDisplayLocale($displayLocale);
-                $previewDescriptionMissing = $previewUnit->descriptionMissingForDisplayLocale($displayLocale);
-            }
         }
 
         return view('livewire.locations.show', [
@@ -895,10 +883,6 @@ class Show extends Component
             'bulkPreview' => $this->bulkPreviewNames(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
             'previewUnit' => $previewUnit,
-            'previewName' => $previewName,
-            'previewNameMissing' => $previewNameMissing,
-            'previewDescription' => $previewDescription,
-            'previewDescriptionMissing' => $previewDescriptionMissing,
             'descriptionLocales' => config('locales.labels', []),
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
         ]);

@@ -239,9 +239,11 @@
                 </label>
 
                 @if ($editingUnitId && $previewUnit?->is_active)
-                    <div class="wp-card wp-card-pad wp-surface-muted wp-stack-tight">
+                    <x-wp-disclosure-card
+                        :title="__('locations.units.translation_preview')"
+                        class="wp-surface-muted"
+                    >
                         <div class="wp-cluster wp-issue-description-row">
-                            <span class="wp-label">{{ __('locations.units.translation_preview') }}</span>
                             <select
                                 class="wp-select"
                                 wire:model.live="previewLocale"
@@ -252,14 +254,10 @@
                                 @endforeach
                             </select>
                         </div>
-                        <p wire:key="unit-preview-name-{{ $previewLocale }}" @class(['wp-text-body', 'wp-muted' => $previewNameMissing])>{{ $previewName }}</p>
-                        @if (filled($previewUnit->description))
-                            <p wire:key="unit-preview-desc-{{ $previewLocale }}" @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
-                        @endif
 
                         <label class="wp-field">
                             <span class="wp-label">{{ __('locations.units.translation_edit.name') }}</span>
-                            <input type="text" class="wp-input" wire:model="unitTranslationName" />
+                            <textarea class="wp-input" wire:model="unitTranslationName" rows="2"></textarea>
                             @error('unitTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
                         </label>
 
@@ -283,7 +281,7 @@
                                 <span>{{ __('locations.units.translation_edit.save') }}</span>
                             </button>
                         </div>
-                    </div>
+                    </x-wp-disclosure-card>
                 @endif
 
                 <label class="wp-field">

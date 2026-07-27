@@ -253,8 +253,8 @@ it('toont vertaal-preview in unit-bewerk-modal', function () {
         ->test(Show::class, ['location' => $location])
         ->call('openEditUnit', $unit->id)
         ->assertSet('previewLocale', 'en')
-        ->assertSee('[en] Graafmachine')
-        ->assertSee('[en] Magazijn zone B');
+        ->assertSet('unitTranslationName', '[en] Graafmachine')
+        ->assertSet('unitTranslationDescription', '[en] Magazijn zone B');
 });
 
 it('toont nog niet vertaald in unit-bewerk-modal wanneer vertaling ontbreekt', function () {
@@ -278,7 +278,45 @@ it('toont nog niet vertaald in unit-bewerk-modal wanneer vertaling ontbreekt', f
         ->test(Show::class, ['location' => $location])
         ->call('openEditUnit', $unit->id)
         ->assertSet('previewLocale', 'en')
-        ->assertSee('Not translated yet');
+        ->assertSet('unitTranslationName', '')
+        ->assertSet('unitTranslationDescription', '');
+});
+
+it('laat handmatige unitvertaling opslaan in de bewerk-popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Graafmachine',
+        'description' => 'Magazijn zone B',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    app(EnsureUnitTranslationSlotsAction::class)->handle($unit);
+
+    Livewire::actingAs($user)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('previewLocale', 'en')
+        ->set('unitTranslationName', 'Excavator')
+        ->set('unitTranslationDescription', 'Warehouse zone B')
+        ->call('saveUnitTranslationOverride')
+        ->assertHasNoErrors();
+
+    $row = UnitTranslation::query()
+        ->where('unit_id', $unit->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($row)->not->toBeNull()
+        ->and($row->status)->toBe(UnitTranslationStatus::Completed)
+        ->and($row->name)->toBe('Excavator')
+        ->and($row->description)->toBe('Warehouse zone B');
 });
 
 it('toont vertaalde unitnaam in portaal bij taalwissel', function () {
