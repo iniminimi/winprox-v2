@@ -32,7 +32,7 @@
         "team_label": "Team",
         "team_all": "Alle Teams",
         "search": "Suchen",
-        "search_placeholder": "Suche nach Standort, Adresse, PLZ, Ort, Unit oder Melder",
+        "search_placeholder": "Suche nach Beschreibung, Standort, Adresse, PLZ, Ort, Unit oder Melder",
         "recurring": "Wiederkehrende Meldung",
         "recurring_only": "Nur wiederkehrende Meldungen",
         "apply": "GO!",

@@ -32,7 +32,7 @@
         "team_label": "Équipe",
         "team_all": "Toutes les équipes",
         "search": "Rechercher",
-        "search_placeholder": "Rechercher par site, adresse, code postal, ville, unité ou signaleur",
+        "search_placeholder": "Rechercher par description, site, adresse, code postal, ville, unité ou signaleur",
         "recurring": "Signalement récurrent",
         "recurring_only": "Signalements récurrents uniquement",
         "apply": "GO!",

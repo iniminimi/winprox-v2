@@ -32,7 +32,7 @@
         "team_label": "Team",
         "team_all": "All teams",
         "search": "Search",
-        "search_placeholder": "Search by location, address, postal code, city, unit or reporter",
+        "search_placeholder": "Search by description, location, address, postal code, city, unit or reporter",
         "recurring": "Recurring issue",
         "recurring_only": "Recurring issues only",
         "apply": "GO!",

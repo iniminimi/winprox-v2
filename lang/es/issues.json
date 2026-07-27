@@ -32,7 +32,7 @@
         "team_label": "Equipo",
         "team_all": "Todos los equipos",
         "search": "Buscar",
-        "search_placeholder": "Buscar por ubicación, dirección, código postal, ciudad, unidad o reportador",
+        "search_placeholder": "Buscar por descripción, ubicación, dirección, código postal, ciudad, unidad o reportador",
         "recurring": "Incidencia recurrente",
         "recurring_only": "Solo incidencias recurrentes",
         "apply": "¡IR!",
