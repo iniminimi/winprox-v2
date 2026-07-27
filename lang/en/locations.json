@@ -104,6 +104,11 @@
             "allow_reservations": "Allow reservations"
         },
         "translation_preview": "Translation (portal)",
+        "translation_edit": {
+            "name": "Translated unit name",
+            "description": "Translated description",
+            "save": "Save translation"
+        },
         "edit": {
             "photos_label": "Photos of the QR link",
             "photos_hint": "Maximum 4 photos per unit.",
@@ -136,6 +141,7 @@
         "flash": {
             "created": "Unit created.",
             "updated": "Unit updated.",
+            "translation_saved": "Unit translation saved.",
             "deactivated": "Unit deactivated.",
             "activated": "Unit activated.",
             "deleted": "Unit deleted."

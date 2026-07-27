@@ -104,6 +104,11 @@
             "allow_reservations": "Reserveringen toestaan"
         },
         "translation_preview": "Vertaling (portaal)",
+        "translation_edit": {
+            "name": "Vertaalde unitnaam",
+            "description": "Vertaalde beschrijving",
+            "save": "Vertaling opslaan"
+        },
         "edit": {
             "photos_label": "Foto's van de QR-koppeling",
             "photos_hint": "Maximaal 4 foto's per unit.",
@@ -136,6 +141,7 @@
         "flash": {
             "created": "Unit aangemaakt.",
             "updated": "Unit bijgewerkt.",
+            "translation_saved": "Unitvertaling opgeslagen.",
             "deactivated": "Unit gedeactiveerd.",
             "activated": "Unit geactiveerd.",
             "deleted": "Unit verwijderd."

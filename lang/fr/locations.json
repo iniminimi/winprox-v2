@@ -104,6 +104,11 @@
             "allow_reservations": "Autoriser les réservations"
         },
         "translation_preview": "Traduction (portail)",
+        "translation_edit": {
+            "name": "Nom d'unité traduit",
+            "description": "Description traduite",
+            "save": "Enregistrer la traduction"
+        },
         "edit": {
             "photos_label": "Photos de la liaison QR",
             "photos_hint": "Maximum 4 photos par unité.",
@@ -136,6 +141,7 @@
         "flash": {
             "created": "Unité créée.",
             "updated": "Unité mise à jour.",
+            "translation_saved": "Traduction de l'unité enregistrée.",
             "deactivated": "Unité désactivée.",
             "activated": "Unité activée.",
             "deleted": "Unité supprimée."

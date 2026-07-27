@@ -256,6 +256,33 @@
                         @if (filled($previewUnit->description))
                             <p wire:key="unit-preview-desc-{{ $previewLocale }}" @class(['wp-text-body', 'wp-issue-description-text', 'wp-muted' => $previewDescriptionMissing])>{{ $previewDescription }}</p>
                         @endif
+
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.units.translation_edit.name') }}</span>
+                            <input type="text" class="wp-input" wire:model="unitTranslationName" />
+                            @error('unitTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                        </label>
+
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.units.translation_edit.description') }}</span>
+                            <textarea class="wp-input" wire:model="unitTranslationDescription" rows="3"></textarea>
+                            @error('unitTranslationDescription') <span class="wp-error">{{ $message }}</span> @enderror
+                        </label>
+
+                        <div class="wp-row">
+                            <button
+                                type="button"
+                                class="btn btn--ghost btn--sm"
+                                wire:click="saveUnitTranslationOverride"
+                                wire:loading.attr="disabled"
+                                wire:target="saveUnitTranslationOverride"
+                            >
+                                <span wire:loading wire:target="saveUnitTranslationOverride" class="wp-mr-2">
+                                    <x-wp-spinner size="sm" />
+                                </span>
+                                <span>{{ __('locations.units.translation_edit.save') }}</span>
+                            </button>
+                        </div>
                     </div>
                 @endif
 

@@ -12,6 +12,7 @@ use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
+use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Units\DeleteImportBatchAction;
 use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\DeleteImportBatchData;
@@ -40,6 +41,7 @@ use App\Support\Units\ImportBatchRegistry;
 use App\Support\Units\UnitBulkBatchRegistry;
 use App\Support\Units\UnitBulkNaming;
 use App\Support\Units\UnitDeletionGuard;
+use App\Support\Validation\TextDescriptionLimits;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -47,6 +49,7 @@ use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Validation\ValidationException;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
@@ -120,6 +123,10 @@ class Show extends Component
     public string $unitSearch = '';
 
     public string $previewLocale = '';
+
+    public string $unitTranslationName = '';
+
+    public string $unitTranslationDescription = '';
 
     public function updatedUnitCategoryFilter(): void
     {
@@ -271,6 +278,7 @@ class Show extends Component
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitPhotos = [];
         $this->previewLocale = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+        $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
 
         $this->resetErrorBag();
         $this->showUnitModal = true;
@@ -287,8 +295,27 @@ class Show extends Component
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = true;
         $this->unitPhotos = [];
+        $this->unitTranslationName = '';
+        $this->unitTranslationDescription = '';
         $this->resetErrorBag();
         $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function updatedPreviewLocale(): void
+    {
+        if ($this->editingUnitId === null) {
+            $this->unitTranslationName = '';
+            $this->unitTranslationDescription = '';
+
+            return;
+        }
+
+        $unit = Unit::query()
+            ->where('location_id', $this->location->id)
+            ->with('translations')
+            ->find($this->editingUnitId);
+
+        $this->hydrateUnitTranslationInputs($unit);
     }
 
     public function openQrPackModal(): void
@@ -379,6 +406,82 @@ class Show extends Component
         $this->showUnitModal = false;
         $this->unitCategoryId = null;
         $this->location->refresh();
+    }
+
+    public function saveUnitTranslationOverride(ImportUnitTranslationsAction $importUnitTranslations): void
+    {
+        if ($this->editingUnitId === null) {
+            return;
+        }
+
+        $unit = Unit::query()
+            ->where('location_id', $this->location->id)
+            ->with('translations')
+            ->findOrFail($this->editingUnitId);
+
+        $this->authorize('update', $unit);
+
+        $validated = $this->validate([
+            'unitTranslationName' => ['nullable', 'string', 'max:255'],
+            'unitTranslationDescription' => ['nullable', 'string', 'max:'.TextDescriptionLimits::TRANSLATION_MAX],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->previewLocale);
+        if ($locale === $unit->normalizedOriginalLanguage()) {
+            $this->addError('unitTranslationDescription', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) ($validated['unitTranslationName'] ?? ''));
+        $description = trim((string) ($validated['unitTranslationDescription'] ?? ''));
+
+        if ($name === '' && $description === '') {
+            $this->addError('unitTranslationDescription', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importUnitTranslations->handle([
+                [
+                    'unit_id' => $unit->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                    'description' => $description,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (is_array($messages)) {
+                    foreach ($messages as $message) {
+                        $this->addError('unitTranslationDescription', (string) $message);
+                    }
+                }
+            }
+
+            return;
+        }
+
+        $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
+        session()->flash('success', __('locations.units.flash.translation_saved'));
+    }
+
+    private function hydrateUnitTranslationInputs(?Unit $unit): void
+    {
+        if ($unit === null) {
+            $this->unitTranslationName = '';
+            $this->unitTranslationDescription = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->previewLocale);
+        $translation = $unit->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->unitTranslationName = (string) ($translation?->name ?? '');
+        $this->unitTranslationDescription = (string) ($translation?->description ?? '');
     }
 
     public function deactivateUnit(int $unitId, DeactivateUnitAction $deactivateUnit): void
