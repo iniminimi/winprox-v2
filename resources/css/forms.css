@@ -73,6 +73,37 @@
     font-weight: 600;
 }
 
+/* Klikbaar veld-kader (bv. unitvertaling in modal): dicht = trigger, open = inhoud. */
+.wp-field-panel {
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+}
+
+.wp-field-panel__trigger {
+    display: block;
+    width: 100%;
+    min-height: var(--wp-btn-height);
+    padding: 0.5rem 0.75rem;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--wp-text-muted);
+    font-size: 0.875rem;
+    border-radius: var(--wp-radius);
+    transition: color var(--wp-transition), background-color var(--wp-transition);
+}
+
+.wp-field-panel__trigger:hover {
+    color: var(--wp-text);
+    background-color: var(--wp-surface-muted);
+}
+
+.wp-field-panel__body {
+    padding: 0.75rem;
+}
+
 /* Checkbox styling for category/team selection */
 .wp-check--boxed {
     display: flex;

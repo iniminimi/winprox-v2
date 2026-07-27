@@ -105,6 +105,8 @@
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
+            "label": "Übersetzung",
+            "open": "Hier klicken zum Anpassen",
             "name": "Übersetzter Unit-Name",
             "description": "Übersetzte Beschreibung",
             "save": "Übersetzung speichern"

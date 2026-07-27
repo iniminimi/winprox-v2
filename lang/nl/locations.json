@@ -105,6 +105,8 @@
         },
         "translation_preview": "Vertaling (portaal)",
         "translation_edit": {
+            "label": "Vertaling",
+            "open": "Klik hier om aan te passen",
             "name": "Vertaalde unitnaam",
             "description": "Vertaalde beschrijving",
             "save": "Vertaling opslaan"

@@ -105,6 +105,8 @@
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
+            "label": "Traducción",
+            "open": "Haga clic aquí para editar",
             "name": "Nombre de unidad traducido",
             "description": "Descripción traducida",
             "save": "Guardar traducción"

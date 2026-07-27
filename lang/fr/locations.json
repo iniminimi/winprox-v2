@@ -105,6 +105,8 @@
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
+            "label": "Traduction",
+            "open": "Cliquez ici pour modifier",
             "name": "Nom d'unité traduit",
             "description": "Description traduite",
             "save": "Enregistrer la traduction"
