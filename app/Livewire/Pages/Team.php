@@ -495,10 +495,11 @@ class Team extends Component
         $this->showWorkerModal = true;
     }
 
-    public function updatedWorkerCompanyName(string $value): void
+    public function updatedWorkerIsExternal(bool $value): void
     {
-        if (trim($value) !== '') {
-            $this->workerIsExternal = true;
+        if (! $value) {
+            $this->workerCompanyName = '';
+            $this->resetErrorBag(['workerCompanyName']);
         }
     }
 

@@ -297,15 +297,17 @@
                         <input type="tel" id="workerPhone" class="wp-input" wire:model="workerPhone">
                         @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
-                        <input type="text" id="workerCompanyName" class="wp-input" wire:model.live="workerCompanyName" maxlength="120">
-                        @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
                     <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model="workerIsExternal">
+                        <input type="checkbox" wire:model.live="workerIsExternal">
                         <span>{{ __('team.workers.is_external') }}</span>
                     </label>
+                    @if ($workerIsExternal)
+                        <div class="wp-field">
+                            <label class="wp-label" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
+                            <input type="text" id="workerCompanyName" class="wp-input" wire:model="workerCompanyName" maxlength="120">
+                            @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                 </div>
 
                 <div class="wp-modal-foot">

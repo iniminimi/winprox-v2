@@ -82,6 +82,7 @@ it('slaat externe worker op via team-hub met auto-flag', function () {
         ->call('openAddWorker', $team->id)
         ->set('workerFirstName', 'Sven')
         ->set('workerLastName', 'Peeters')
+        ->set('workerIsExternal', true)
         ->set('workerCompanyName', 'Schilders BV')
         ->call('saveWorker')
         ->assertHasNoErrors();
@@ -90,4 +91,17 @@ it('slaat externe worker op via team-hub met auto-flag', function () {
     expect($worker)->not->toBeNull()
         ->and($worker->is_external)->toBeTrue()
         ->and($worker->company_name)->toBe('Schilders BV');
+});
+
+it('wist bedrijfsnaam wanneer externe-checkbox uitgaat', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openAddWorker', $team->id)
+        ->set('workerIsExternal', true)
+        ->set('workerCompanyName', 'Schilders BV')
+        ->set('workerIsExternal', false)
+        ->assertSet('workerCompanyName', '');
 });
