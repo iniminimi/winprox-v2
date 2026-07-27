@@ -17,6 +17,7 @@ use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Platform\SupportTenantContext;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -156,11 +157,23 @@ class Subscription extends Component
 
                 return;
             }
+
+            if (! Hash::check($this->purgePassword, (string) auth()->user()?->password)) {
+                $this->addError('purge_password', __('subscription.purge.errors.password'));
+
+                return;
+            }
         }
 
         if ($kind === 'execute_trial') {
             if (trim($this->purgeExecutePassword) === '') {
                 $this->addError('purge_password', __('subscription.purge.errors.password_required'));
+
+                return;
+            }
+
+            if (! Hash::check($this->purgeExecutePassword, (string) auth()->user()?->password)) {
+                $this->addError('purge_password', __('subscription.purge.errors.password'));
 
                 return;
             }

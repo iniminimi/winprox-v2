@@ -171,3 +171,17 @@ it('purge start: opent wp-modal bevestiging na geldige velden', function () {
         ->assertSet('purgeConfirmKind', 'start')
         ->assertSee(__('subscription.purge.confirm_start'));
 });
+
+it('purge start: toont fout bij verkeerd wachtwoord zonder modal', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(8)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Pages\Subscription::class)
+        ->set('purgeExportAck', true)
+        ->set('purgePassword', 'verkeerd-wachtwoord')
+        ->call('preparePurgeConfirm', 'start')
+        ->assertHasErrors(['purge_password'])
+        ->assertSet('purgeConfirmKind', null)
+        ->assertSee(__('subscription.purge.errors.password'));
+});
