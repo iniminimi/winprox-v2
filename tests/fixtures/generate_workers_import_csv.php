@@ -37,7 +37,7 @@ if ($out === false) {
     exit(1);
 }
 
-fputcsv($out, ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id']);
+fputcsv($out, ['team_name', 'first_name', 'last_name', 'email', 'phone', 'company_name']);
 
 $emp = 1;
 
@@ -56,9 +56,9 @@ foreach ($teams as $teamIndex => $team) {
         $part4 = str_pad((string) (10 + ($emp * 17) % 90), 2, '0', STR_PAD_LEFT);
         $phone = sprintf('+32 %d %s %s %s', $prefix, $part2, $part3, $part4);
 
-        $externalId = sprintf('EMP-%03d', $emp);
+        $companyName = ($emp % 7 === 0) ? 'Elektro '.$lastName : '';
 
-        fputcsv($out, [$team, $firstName, $lastName, $email, $phone, $externalId]);
+        fputcsv($out, [$team, $firstName, $lastName, $email, $phone, $companyName]);
         $emp++;
     }
 }

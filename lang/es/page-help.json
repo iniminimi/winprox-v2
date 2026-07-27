@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Importación",
-                    "text": "Importe trabajadores en bloque mediante CSV o Excel (.xlsx). El archivo debe tener exactamente estos encabezados: team_name, first_name, last_name (obligatorios), email, phone, external_id (opcionales). Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Los equipos se crean automáticamente si aún no existen. Deshacer elimina trabajadores sin dispositivo vinculado y limpia equipos vacíos creados por la importación. Los trabajadores vinculados a un dispositivo (worker_device) siempre se conservan."
+                    "text": "Importe trabajadores en bloque mediante CSV o Excel (.xlsx). El archivo debe tener exactamente estos encabezados: team_name, first_name, last_name (obligatorios), email, phone, company_name (opcionales). Un nombre de empresa rellenado marca automáticamente al trabajador como externo. Si los encabezados no coinciden o faltan campos obligatorios, toda la importación se rechaza con un mensaje de error claro por fila. Los equipos se crean automáticamente si aún no existen. Deshacer elimina trabajadores sin dispositivo vinculado y limpia equipos vacíos creados por la importación. Los trabajadores vinculados a un dispositivo (worker_device) siempre se conservan."
                 },
                 {
                     "label": "Importaciones recientes",

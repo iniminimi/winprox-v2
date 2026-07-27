@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Import workers in bulk via CSV or Excel (.xlsx). The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, external_id (optional). If the headers do not match or required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they do not exist yet. Undo removes workers without a linked device and cleans up empty teams created by the import. Workers linked to a device (worker_device) are always kept."
+                    "text": "Import workers in bulk via CSV or Excel (.xlsx). The file must have exactly these headers: team_name, first_name, last_name (required), email, phone, company_name (optional). A filled company name automatically marks the worker as external. If the headers do not match or required fields are missing, the entire import is rejected with a clear error message per row. Teams are automatically created if they do not exist yet. Undo removes workers without a linked device and cleans up empty teams created by the import. Workers linked to a device (worker_device) are always kept."
                 },
                 {
                     "label": "Recent imports",

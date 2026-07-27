@@ -87,7 +87,7 @@
         "activate": "Activate",
         "import": "Import",
         "import_title": "Import workers (CSV / Excel)",
-        "import_hint": "Import workers in bulk via CSV or Excel (.xlsx). Required columns: team_name, first_name, last_name. Optional: email, phone, external_id. Teams are automatically created if they do not exist yet.",
+        "import_hint": "Import workers in bulk via CSV or Excel (.xlsx). Required columns: team_name, first_name, last_name. Optional: email, phone, company_name. A filled company name automatically marks the worker as external. Teams are automatically created if they do not exist yet.",
         "import_file_label": "CSV or Excel file (.xlsx)",
         "import_submit": "Import",
         "flash": {
@@ -99,7 +99,7 @@
             "last_name": "Smith",
             "email": "john.smith@company.com",
             "phone": "+44 7700 900123",
-            "external_id": "EMP-001"
+            "company_name": "BrightSpark Electrical"
         },
         "modal": {
             "create_title": "Add worker",

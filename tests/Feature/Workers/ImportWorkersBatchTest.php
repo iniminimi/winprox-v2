@@ -40,9 +40,9 @@ it('imports workers with all fields successfully', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
     $csvPath = makeCsvFile([
-        ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'],
-        ['Onderhoud', 'Jan', 'Janssen', 'jan@bedrijf.be', '+32470123456', 'EMP-001'],
-        ['Schoonmaak', 'Piet', 'Pieters', 'piet@bedrijf.be', '+32470654321', 'EMP-002'],
+        ['team_name', 'first_name', 'last_name', 'email', 'phone', 'company_name'],
+        ['Onderhoud', 'Jan', 'Janssen', 'jan@bedrijf.be', '+32470123456', 'Elektro Peeters'],
+        ['Schoonmaak', 'Piet', 'Pieters', 'piet@bedrijf.be', '+32470654321', ''],
     ]);
 
     $dto = new ImportWorkersData(filePath: $csvPath, originalName: 'workers.csv');
@@ -60,8 +60,13 @@ it('imports workers with all fields successfully', function () {
     expect($jan->last_name)->toBe('Janssen');
     expect($jan->email)->toBe('jan@bedrijf.be');
     expect($jan->phone)->toBe('+32470123456');
-    expect($jan->external_id)->toBe('EMP-001');
+    expect($jan->company_name)->toBe('Elektro Peeters');
+    expect($jan->is_external)->toBeTrue();
     expect($jan->is_active)->toBeTrue();
+
+    $piet = $workers->firstWhere('first_name', 'Piet');
+    expect($piet->company_name)->toBeNull();
+    expect($piet->is_external)->toBeFalse();
 
     // Teams worden aangemaakt
     expect(InternalTeam::where('tenant_id', $tenant->id)->where('name', 'Onderhoud')->exists())->toBeTrue();
@@ -124,7 +129,8 @@ it('imports workers with only required fields (no optional fields)', function ()
     expect($worker)->not->toBeNull();
     expect($worker->email)->toBeNull();
     expect($worker->phone)->toBeNull();
-    expect($worker->external_id)->toBeNull();
+    expect($worker->company_name)->toBeNull();
+    expect($worker->is_external)->toBeFalse();
     expect($worker->import_batch_id)->toBe($result['batch_id']);
 
     unlink($csvPath);
@@ -167,9 +173,9 @@ it('deletes empty teams created during import on batch undo', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
     $csvPath = makeCsvFile([
-        ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'],
-        ['Nieuw Team A', 'Jan', 'Janssen', 'jan@bedrijf.be', '+32470123456', 'EMP-001'],
-        ['Nieuw Team B', 'Piet', 'Pieters', 'piet@bedrijf.be', '+32470654321', 'EMP-002'],
+        ['team_name', 'first_name', 'last_name', 'email', 'phone', 'company_name'],
+        ['Nieuw Team A', 'Jan', 'Janssen', 'jan@bedrijf.be', '+32470123456', ''],
+        ['Nieuw Team B', 'Piet', 'Pieters', 'piet@bedrijf.be', '+32470654321', ''],
     ]);
 
     $importDto = new ImportWorkersData(filePath: $csvPath, originalName: 'teams.csv');

@@ -87,7 +87,7 @@
         "activate": "Activeren",
         "import": "Import",
         "import_title": "Uitvoerders importeren (CSV / Excel)",
-        "import_hint": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, external_id. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
+        "import_hint": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte kolommen: team_name, first_name, last_name. Optioneel: email, phone, company_name. Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Teams worden automatisch aangemaakt als ze nog niet bestaan.",
         "import_file_label": "CSV- of Excel-bestand (.xlsx)",
         "import_submit": "Importeren",
         "flash": {
@@ -99,7 +99,7 @@
             "last_name": "Janssen",
             "email": "jan.janssen@bedrijf.be",
             "phone": "+32 470 12 34 56",
-            "external_id": "EMP-001"
+            "company_name": "Elektro Peeters"
         },
         "modal": {
             "create_title": "Uitvoerder toevoegen",

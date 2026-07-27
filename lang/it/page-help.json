@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Importazione",
-                    "text": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (obbligatorie), email, phone, external_id (facoltative). Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. L'annullamento rimuove i lavoratori senza dispositivo collegato e ripulisce i team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) vengono sempre conservati."
+                    "text": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Il file deve avere esattamente queste intestazioni: team_name, first_name, last_name (obbligatorie), email, phone, company_name (facoltative). Un nome azienda compilato segna automaticamente il lavoratore come esterno. Se le intestazioni non corrispondono o mancano campi obbligatori, l'intera importazione viene rifiutata con un messaggio di errore chiaro per riga. I team vengono creati automaticamente se non esistono ancora. L'annullamento rimuove i lavoratori senza dispositivo collegato e ripulisce i team vuoti creati dall'importazione. I lavoratori collegati a un dispositivo (worker_device) vengono sempre conservati."
                 },
                 {
                     "label": "Importazioni recenti",

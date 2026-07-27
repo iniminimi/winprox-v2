@@ -30,7 +30,7 @@ class ImportWorkersAction
     private const OPTIONAL_HEADERS = [
         'email',
         'phone',
-        'external_id',
+        'company_name',
     ];
 
     /**
@@ -98,7 +98,7 @@ class ImportWorkersAction
                 'last_name' => 'required|string|max:255',
                 'email' => 'nullable|email|max:255',
                 'phone' => 'nullable|string|max:64',
-                'external_id' => 'nullable|string|max:255',
+                'company_name' => 'nullable|string|max:120',
             ]);
 
             if ($validator->fails()) {
@@ -138,6 +138,8 @@ class ImportWorkersAction
                     $createdTeamIds[$team->id] = $team->id;
                 }
 
+                $companyName = self::normalizedCompanyName($row['company_name'] ?? null);
+
                 Worker::create([
                     'tenant_id' => $tenantId,
                     'internal_team_id' => $team->id,
@@ -145,7 +147,8 @@ class ImportWorkersAction
                     'last_name' => trim($row['last_name']),
                     'email' => isset($row['email']) && $row['email'] !== '' ? trim($row['email']) : null,
                     'phone' => isset($row['phone']) && $row['phone'] !== '' ? trim($row['phone']) : null,
-                    'external_id' => isset($row['external_id']) && $row['external_id'] !== '' ? trim($row['external_id']) : null,
+                    'company_name' => $companyName,
+                    'is_external' => $companyName !== null,
                     'import_batch_id' => $batchId,
                     'is_active' => true,
                     'is_teamleader' => false,
@@ -183,5 +186,16 @@ class ImportWorkersAction
                 'errors' => [__('team.workers.errors.database', ['message' => $e->getMessage()])],
             ];
         }
+    }
+
+    private static function normalizedCompanyName(mixed $value): ?string
+    {
+        if (! is_string($value)) {
+            return null;
+        }
+
+        $trimmed = trim($value);
+
+        return $trimmed === '' ? null : $trimmed;
     }
 }

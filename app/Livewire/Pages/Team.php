@@ -640,7 +640,7 @@ class Team extends Component
     {
         $this->authorize('create', InternalTeam::class);
 
-        $headers = ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'];
+        $headers = ['team_name', 'first_name', 'last_name', 'email', 'phone', 'company_name'];
 
         $sampleRow = [
             __('team.workers.import_sample.team_name'),
@@ -648,7 +648,7 @@ class Team extends Component
             __('team.workers.import_sample.last_name'),
             __('team.workers.import_sample.email'),
             __('team.workers.import_sample.phone'),
-            __('team.workers.import_sample.external_id'),
+            __('team.workers.import_sample.company_name'),
         ];
 
         return response()->streamDownload(function () use ($headers, $sampleRow) {
@@ -667,14 +667,14 @@ class Team extends Component
         $this->authorize('create', InternalTeam::class);
 
         $rows = [
-            ['team_name', 'first_name', 'last_name', 'email', 'phone', 'external_id'],
+            ['team_name', 'first_name', 'last_name', 'email', 'phone', 'company_name'],
             [
                 __('team.workers.import_sample.team_name'),
                 __('team.workers.import_sample.first_name'),
                 __('team.workers.import_sample.last_name'),
                 __('team.workers.import_sample.email'),
                 __('team.workers.import_sample.phone'),
-                __('team.workers.import_sample.external_id'),
+                __('team.workers.import_sample.company_name'),
             ],
         ];
 

@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importez des intervenants en masse via CSV ou Excel (.xlsx). Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, external_id (optionnels). Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. L'annulation supprime les intervenants sans appareil lié et nettoie les équipes vides créées par l'import. Les intervenants liés à un appareil (worker_device) sont toujours conservés."
+                    "text": "Importez des intervenants en masse via CSV ou Excel (.xlsx). Le fichier doit avoir exactement ces en-têtes : team_name, first_name, last_name (obligatoires), email, phone, company_name (optionnels). Un nom d’entreprise renseigné marque automatiquement l’intervenant comme externe. Si les en-têtes ne correspondent pas ou si des champs obligatoires manquent, l'import entier est rejeté avec un message d'erreur clair par ligne. Les équipes sont créées automatiquement si elles n'existent pas encore. L'annulation supprime les intervenants sans appareil lié et nettoie les équipes vides créées par l'import. Les intervenants liés à un appareil (worker_device) sont toujours conservés."
                 },
                 {
                     "label": "Imports récents",

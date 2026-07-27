@@ -27,7 +27,6 @@ class Worker extends Model
         'import_batch_id',
         'email',
         'phone',
-        'external_id',
     ];
 
     protected $casts = [

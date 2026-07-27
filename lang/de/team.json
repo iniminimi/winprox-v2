@@ -87,7 +87,7 @@
         "activate": "Aktivieren",
         "import": "Import",
         "import_title": "Mitarbeiter importieren (CSV / Excel)",
-        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, external_id. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
+        "import_hint": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Pflichtkolumnen: team_name, first_name, last_name. Optional: email, phone, company_name. Ein ausgefüllter Firmenname markiert den Mitarbeiter automatisch als extern. Teams werden automatisch erstellt, wenn sie noch nicht existieren.",
         "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
         "import_submit": "Importieren",
         "flash": {
@@ -99,7 +99,7 @@
             "last_name": "Müller",
             "email": "hans.mueller@unternehmen.de",
             "phone": "+49 170 1234567",
-            "external_id": "EMP-001"
+            "company_name": "Elektro Müller"
         },
         "modal": {
             "create_title": "Mitarbeiter hinzufügen",

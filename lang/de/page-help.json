@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, external_id (optional). Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Beim Rückgängigmachen werden Mitarbeiter ohne verknüpftes Gerät entfernt und leere durch den Import erstellte Teams aufgeräumt. Mitarbeiter mit einem Gerät (worker_device) bleiben immer erhalten."
+                    "text": "Importieren Sie Mitarbeiter in großer Menge über CSV oder Excel (.xlsx). Die Datei muss genau diese Header haben: team_name, first_name, last_name (erforderlich), email, phone, company_name (optional). Ein ausgefüllter Firmenname markiert den Mitarbeiter automatisch als extern. Wenn die Header nicht übereinstimmen oder Pflichtfelder fehlen, wird der gesamte Import mit einer klaren Fehlermeldung pro Zeile abgelehnt. Teams werden automatisch erstellt, wenn sie noch nicht existieren. Beim Rückgängigmachen werden Mitarbeiter ohne verknüpftes Gerät entfernt und leere durch den Import erstellte Teams aufgeräumt. Mitarbeiter mit einem Gerät (worker_device) bleiben immer erhalten."
                 },
                 {
                     "label": "Letzte Imports",

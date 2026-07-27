@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Import",
-                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, external_id (optioneel). Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
+                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Het bestand moet exact de headers hebben: team_name, first_name, last_name (verplicht), email, phone, company_name (optioneel). Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Als de headers niet kloppen of als er verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan. Bij ongedaan maken worden uitvoerders zonder gekoppeld toestel verwijderd; lege teams die door de import zijn aangemaakt worden ook opgeruimd. Uitvoerders met een toestel (worker_device) blijven altijd staan."
                 },
                 {
                     "label": "Recente imports",

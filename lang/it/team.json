@@ -87,19 +87,19 @@
         "activate": "Attiva",
         "import": "Importazione",
         "import_title": "Importa lavoratori (CSV / Excel)",
-        "import_hint": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Colonne obbligatorie: team_name, first_name, last_name. Facoltative: email, phone, external_id. I team vengono creati automaticamente se non esistono ancora.",
+        "import_hint": "Importi lavoratori in massa tramite CSV o Excel (.xlsx). Colonne obbligatorie: team_name, first_name, last_name. Facoltative: email, phone, company_name. Un nome azienda compilato segna automaticamente il lavoratore come esterno. I team vengono creati automaticamente se non esistono ancora.",
         "import_file_label": "File CSV o Excel (.xlsx)",
         "import_submit": "Importa",
         "flash": {
             "imported": ":count lavoratore/i importato/i con successo."
         },
         "import_sample": {
-            "team_name": "Maintenance team",
-            "first_name": "John",
-            "last_name": "Smith",
-            "email": "john.smith@company.com",
-            "phone": "+44 7700 900123",
-            "external_id": "EMP-001"
+            "team_name": "Team manutenzione",
+            "first_name": "Marco",
+            "last_name": "Rossi",
+            "email": "marco.rossi@azienda.it",
+            "phone": "+39 333 123 4567",
+            "company_name": "Elettricità Rossi"
         },
         "modal": {
             "create_title": "Aggiungi lavoratore",
