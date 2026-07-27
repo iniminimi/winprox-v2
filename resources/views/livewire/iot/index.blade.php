@@ -53,6 +53,9 @@
                                     {{ $gateway->is_active ? __('iot.status.active') : __('iot.status.inactive') }}
                                 </span>
                                 @can('update', $gateway)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditGatewayModal({{ $gateway->id }})">
+                                        {{ __('common.button.edit') }}
+                                    </button>
                                     <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleGateway({{ $gateway->id }})">
                                         {{ $gateway->is_active ? __('iot.actions.deactivate') : __('iot.actions.activate') }}
                                     </button>
@@ -90,9 +93,19 @@
                                     · {{ $sensor->gateway?->name }}
                                 </p>
                             </div>
-                            <span class="wp-pill {{ $sensor->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
-                                {{ $sensor->is_active ? __('iot.status.active') : __('iot.status.inactive') }}
-                            </span>
+                            <div class="wp-cluster">
+                                <span class="wp-pill {{ $sensor->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                                    {{ $sensor->is_active ? __('iot.status.active') : __('iot.status.inactive') }}
+                                </span>
+                                @can('update', $sensor)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditSensorModal({{ $sensor->id }})">
+                                        {{ __('common.button.edit') }}
+                                    </button>
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleSensor({{ $sensor->id }})">
+                                        {{ $sensor->is_active ? __('iot.actions.deactivate') : __('iot.actions.activate') }}
+                                    </button>
+                                @endcan
+                            </div>
                         </li>
                     @endforeach
                 </ul>
@@ -124,9 +137,19 @@
                                     · {{ __('iot.operators.'.$rule->operator->value) }} {{ $rule->threshold }}
                                 </p>
                             </div>
-                            <span class="wp-pill {{ $rule->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
-                                {{ $rule->is_active ? __('iot.status.active') : __('iot.status.inactive') }}
-                            </span>
+                            <div class="wp-cluster">
+                                <span class="wp-pill {{ $rule->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                                    {{ $rule->is_active ? __('iot.status.active') : __('iot.status.inactive') }}
+                                </span>
+                                @can('update', $rule)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditRuleModal({{ $rule->id }})">
+                                        {{ __('common.button.edit') }}
+                                    </button>
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleRule({{ $rule->id }})">
+                                        {{ $rule->is_active ? __('iot.actions.deactivate') : __('iot.actions.activate') }}
+                                    </button>
+                                @endcan
+                            </div>
                         </li>
                     @endforeach
                 </ul>
@@ -164,7 +187,9 @@
     @if ($showGatewayModal)
         <x-wp-modal closeMethod="closeGatewayModal">
             <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">{{ __('iot.gateways.create_title') }}</h2>
+                <h2 class="wp-section-title">
+                    {{ $editingGatewayId ? __('iot.gateways.edit_title') : __('iot.gateways.create_title') }}
+                </h2>
 
                 @if ($createdGatewayToken)
                     <p class="wp-text-body">{{ __('iot.gateways.token_once') }}</p>
@@ -181,6 +206,9 @@
 
                     <div class="wp-cluster">
                         <button type="button" class="btn btn--primary" wire:click="saveGateway">{{ __('common.button.save') }}</button>
+                        @if ($editingGatewayId)
+                            <button type="button" class="btn btn--ghost" wire:click="rotateGatewayToken">{{ __('iot.gateways.rotate_token') }}</button>
+                        @endif
                         <button type="button" class="btn btn--ghost" wire:click="closeGatewayModal">{{ __('common.button.cancel') }}</button>
                     </div>
                 @endif
@@ -191,7 +219,9 @@
     @if ($showSensorModal)
         <x-wp-modal closeMethod="closeSensorModal">
             <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">{{ __('iot.sensors.create_title') }}</h2>
+                <h2 class="wp-section-title">
+                    {{ $editingSensorId ? __('iot.sensors.edit_title') : __('iot.sensors.create_title') }}
+                </h2>
 
                 <label class="wp-label" for="iot-sensor-gateway">{{ __('iot.fields.gateway') }}</label>
                 <select id="iot-sensor-gateway" class="wp-input" wire:model="sensorGatewayId">
@@ -243,7 +273,9 @@
     @if ($showRuleModal)
         <x-wp-modal closeMethod="closeRuleModal">
             <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">{{ __('iot.rules.create_title') }}</h2>
+                <h2 class="wp-section-title">
+                    {{ $editingRuleId ? __('iot.rules.edit_title') : __('iot.rules.create_title') }}
+                </h2>
 
                 <label class="wp-label" for="iot-rule-sensor">{{ __('iot.fields.sensor') }}</label>
                 <select id="iot-rule-sensor" class="wp-input" wire:model="ruleSensorId">

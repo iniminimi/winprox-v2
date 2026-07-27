@@ -124,6 +124,14 @@
         "iot_rule.created": "IoT-Regel erstellt",
         "iot_alarm.issue_created": "IoT-Alarmmeldung erstellt",
         "iot_alarm.skipped_duplicate": "Doppelter IoT-Alarm übersprungen",
-        "tenant.iot_module_toggled": "IoT Connect ein-/ausgeschaltet"
+        "tenant.iot_module_toggled": "IoT Connect ein-/ausgeschaltet",
+        "iot_gateway.updated": "IoT gateway updated",
+        "iot_gateway.token_rotated": "IoT gateway token rotated",
+        "iot_sensor.updated": "IoT sensor updated",
+        "iot_sensor.activated": "IoT sensor activated",
+        "iot_sensor.deactivated": "IoT sensor deactivated",
+        "iot_rule.updated": "IoT rule updated",
+        "iot_rule.activated": "IoT rule activated",
+        "iot_rule.deactivated": "IoT rule deactivated"
     }
 }

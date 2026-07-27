@@ -124,6 +124,14 @@
         "iot_rule.created": "IoT-regel aangemaakt",
         "iot_alarm.issue_created": "IoT-alarmmelding aangemaakt",
         "iot_alarm.skipped_duplicate": "Dubbel IoT-alarm overgeslagen",
-        "tenant.iot_module_toggled": "IoT Connect in/uitgeschakeld"
+        "tenant.iot_module_toggled": "IoT Connect in/uitgeschakeld",
+        "iot_gateway.updated": "IoT-gateway bijgewerkt",
+        "iot_gateway.token_rotated": "IoT-gateway-token vernieuwd",
+        "iot_sensor.updated": "IoT-sensor bijgewerkt",
+        "iot_sensor.activated": "IoT-sensor geactiveerd",
+        "iot_sensor.deactivated": "IoT-sensor gedeactiveerd",
+        "iot_rule.updated": "IoT-regel bijgewerkt",
+        "iot_rule.activated": "IoT-regel geactiveerd",
+        "iot_rule.deactivated": "IoT-regel gedeactiveerd"
     }
 }

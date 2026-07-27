@@ -38,19 +38,23 @@
         "create_title": "Nieuwe gateway",
         "token_once": "Bewaar dit token nu. Het wordt niet opnieuw getoond.",
         "token_prefix": "Token :prefix…",
-        "last_seen": "Laatst gezien :at"
+        "last_seen": "Laatst gezien :at",
+        "edit_title": "Gateway bewerken",
+        "rotate_token": "Token vernieuwen"
     },
     "sensors": {
         "title": "Sensoren",
         "add": "Sensor toevoegen",
         "empty": "Nog geen sensoren gekoppeld.",
-        "create_title": "Nieuwe sensor"
+        "create_title": "Nieuwe sensor",
+        "edit_title": "Sensor bewerken"
     },
     "rules": {
         "title": "Alarmregels",
         "add": "Regel toevoegen",
         "empty": "Nog geen regels. Zonder regel wordt geen melding aangemaakt.",
-        "create_title": "Nieuwe regel"
+        "create_title": "Nieuwe regel",
+        "edit_title": "Regel bewerken"
     },
     "events": {
         "title": "Recente events",
@@ -59,7 +63,11 @@
     "flash": {
         "gateway_created": "Gateway aangemaakt.",
         "sensor_created": "Sensor aangemaakt.",
-        "rule_created": "Regel aangemaakt."
+        "rule_created": "Regel aangemaakt.",
+        "gateway_updated": "Gateway bijgewerkt.",
+        "sensor_updated": "Sensor bijgewerkt.",
+        "rule_updated": "Regel bijgewerkt.",
+        "gateway_token_rotated": "Gateway-token vernieuwd. Bewaar het nieuwe token."
     },
     "sensor_types": {
         "water_leak": "Waterlek",
@@ -103,6 +111,8 @@
         "esg_required_for_measurement": "Sensor-metingen vereisen de ESG-module (Corporate).",
         "esg_indicator_invalid": "Ongeldige of inactieve ESG-indicator.",
         "sensor_not_measurement_ready": "Sensor mist unit of ESG-indicator voor metingen.",
-        "measurement_numeric_only": "IoT-metingen ondersteunen alleen numerieke ESG-indicatoren."
+        "measurement_numeric_only": "IoT-metingen ondersteunen alleen numerieke ESG-indicatoren.",
+        "name_required": "Naam is verplicht.",
+        "external_id_taken": "Deze externe sensor-ID bestaat al op deze gateway."
     }
 }

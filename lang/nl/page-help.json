@@ -1106,6 +1106,10 @@
                     "text": "<strong>Facility:</strong> alarmen worden goedgekeurde meldingen met taken. <strong>Corporate:</strong> hetzelfde, plus sensor-metingen naar ESG wanneer de sensor een unit en numerieke ESG-indicator heeft."
                 },
                 {
+                    "label": "Bewerken",
+                    "text": "Gateways, sensoren en regels kunt u achteraf <strong>bewerken</strong> of <strong>deactiveren</strong>. Bij een gateway kunt u ook het token vernieuwen (oud token werkt dan niet meer). Hard verwijderen doen we niet: events blijven bewaard."
+                },
+                {
                     "label": "Wat is een gateway?",
                     "text": "Een <strong>gateway</strong> is de brug tussen uw sensoren en WinProx. Sensoren praten vaak via LoRaWAN, Zigbee, Bluetooth of MQTT met een gateway van uw leverancier. Die gateway vertaalt de data en stuurt alleen relevante events door naar WinProx (via HTTPS). WinProx verkoopt zelf geen sensoren of gateways: u koppelt hier een logische gateway met een token, zodat WinProx weet welke organisatie de events mag ontvangen."
                 },

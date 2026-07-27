@@ -1106,6 +1106,10 @@
                     "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
                 },
                 {
+                    "label": "Edit",
+                    "text": "You can <strong>edit</strong> or <strong>deactivate</strong> gateways, sensors and rules later. For a gateway you can also rotate the token (the old token then stops working). We do not hard-delete: events are kept."
+                },
+                {
                     "label": "Was ist ein Gateway?",
                     "text": "Ein <strong>Gateway</strong> ist die Brücke zwischen Ihren Sensoren und WinProx. Sensoren sprechen oft über LoRaWAN, Zigbee, Bluetooth oder MQTT mit einem Gateway Ihres Anbieters. Dieses Gateway übersetzt die Daten und sendet nur relevante Events an WinProx (per HTTPS). WinProx verkauft keine Sensoren oder Gateways: Hier hinterlegen Sie ein logisches Gateway mit Token, damit WinProx weiß, welche Organisation die Events empfangen darf."
                 },

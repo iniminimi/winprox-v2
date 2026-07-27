@@ -38,19 +38,23 @@
         "create_title": "New gateway",
         "token_once": "Save this token now. It will not be shown again.",
         "token_prefix": "Token :prefix…",
-        "last_seen": "Last seen :at"
+        "last_seen": "Last seen :at",
+        "edit_title": "Edit gateway",
+        "rotate_token": "Rotate token"
     },
     "sensors": {
         "title": "Sensors",
         "add": "Add sensor",
         "empty": "No sensors linked yet.",
-        "create_title": "New sensor"
+        "create_title": "New sensor",
+        "edit_title": "Edit sensor"
     },
     "rules": {
         "title": "Alarm rules",
         "add": "Add rule",
         "empty": "No rules yet. Without a rule, no issue is created.",
-        "create_title": "New rule"
+        "create_title": "New rule",
+        "edit_title": "Edit rule"
     },
     "events": {
         "title": "Recent events",
@@ -59,7 +63,11 @@
     "flash": {
         "gateway_created": "Gateway created.",
         "sensor_created": "Sensor created.",
-        "rule_created": "Rule created."
+        "rule_created": "Rule created.",
+        "gateway_updated": "Gateway updated.",
+        "sensor_updated": "Sensor updated.",
+        "rule_updated": "Rule updated.",
+        "gateway_token_rotated": "Gateway token rotated. Save the new token."
     },
     "sensor_types": {
         "water_leak": "Water leak",
@@ -103,6 +111,8 @@
         "esg_required_for_measurement": "Sensor measurements require the ESG module (Corporate).",
         "esg_indicator_invalid": "Invalid or inactive ESG indicator.",
         "sensor_not_measurement_ready": "Sensor is missing a unit or ESG indicator for measurements.",
-        "measurement_numeric_only": "IoT measurements only support numeric ESG indicators."
+        "measurement_numeric_only": "IoT measurements only support numeric ESG indicators.",
+        "name_required": "Name is required.",
+        "external_id_taken": "This external sensor ID already exists on this gateway."
     }
 }
