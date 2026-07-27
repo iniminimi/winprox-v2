@@ -316,7 +316,7 @@
                 },
                 {
                     "label": "Operational teams",
-                    "text": "Create teams and workers, assign teamleaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
+                    "text": "Create teams and workers, assign team leaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
                     "label": "Clock Point QR code",
@@ -360,7 +360,7 @@
                 },
                 {
                     "label": "Recent imports",
-                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click Undo import to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as has devices. The button disappears once all workers in a batch have been deleted."
+                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click Undo import to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as «Has devices». The button disappears once all workers in a batch have been deleted."
                 }
             ]
         },
@@ -893,7 +893,7 @@
                 {
                     "label": "Choice list",
                     "nested": true,
-                    "text": "For a fixed set of answers (e.g. waste category: General waste, PMD, Paper). You define the options when creating the indicator; workers choose from a dropdown on the portal."
+                    "text": "For a fixed set of answers (e.g. waste category: General waste, Recyclables, Paper). You define the options when creating the indicator; workers choose from a dropdown on the portal."
                 },
                 {
                     "label": "Linked system",

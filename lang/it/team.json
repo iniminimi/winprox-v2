@@ -128,7 +128,7 @@
         "worker_count": ":count lavoratore/i",
         "confirm_delete": "Eliminare :count lavoratore/i senza dispositivo?",
         "delete_button": "Annulla importazione (:count)",
-        "has_devices": "Ha dispositivi",
+        "has_devices": "Dispositivo collegato",
         "deleted": "Eliminato",
         "nothing_deletable": "Nessun lavoratore in questa importazione può essere eliminato.",
         "partially_deleted": ":deleted lavoratore/i eliminato/i. :preserved lavoratore/i con dispositivi sono stati conservati.",

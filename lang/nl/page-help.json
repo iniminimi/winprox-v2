@@ -360,7 +360,7 @@
                 },
                 {
                     "label": "Recente imports",
-                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op Import terugdraaien om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en worden als heeft toestellen aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
+                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op Import terugdraaien om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en werden als «Heeft toestellen» aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
                 }
             ]
         },

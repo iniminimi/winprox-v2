@@ -360,7 +360,7 @@
                 },
                 {
                     "label": "Importaciones recientes",
-                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Pulse Deshacer importación para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los que ya iniciaron sesión vía Clock Point QR (y por tanto tienen un dispositivo activo) permanecen y se marcan como tiene dispositivos. El botón desaparece cuando se han eliminado todos los trabajadores de un lote."
+                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Pulse Deshacer importación para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los que ya iniciaron sesión vía Clock Point QR (y por tanto tienen un dispositivo activo) permanecen y se marcan como «Con dispositivo». El botón desaparece cuando se han eliminado todos los trabajadores de un lote."
                 }
             ]
         },

@@ -63,7 +63,7 @@
                     "units": "Tot 100 units / locaties / documenten / foto's",
                     "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV/Excel)",
                     "announcements": "€399 / maand · Time inbegrepen",
-                    "documents": "CSV/Excel-import voor units en workers · geen API",
+                    "documents": "CSV/Excel-import voor units en uitvoerders · geen API",
                     "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time."
                 },
                 "corporate": {

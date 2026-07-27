@@ -128,7 +128,7 @@
         "worker_count": ":count intervenant(s)",
         "confirm_delete": "Supprimer :count intervenant(s) sans appareil ?",
         "delete_button": "Annuler l'import (:count)",
-        "has_devices": "A des appareils",
+        "has_devices": "Appareil lié",
         "deleted": "Supprimé",
         "nothing_deletable": "Aucun intervenant de cet import ne peut être supprimé.",
         "partially_deleted": ":deleted intervenant(s) supprimé(s). :preserved intervenant(s) avec appareils conservés.",

@@ -128,7 +128,7 @@
         "worker_count": ":count Mitarbeiter",
         "confirm_delete": ":count Mitarbeiter ohne Gerät löschen?",
         "delete_button": "Import rükgängig (:count)",
-        "has_devices": "Hat Geräte",
+        "has_devices": "Gerät vorhanden",
         "deleted": "Gelöscht",
         "nothing_deletable": "Keine Mitarbeiter in diesem Import können gelöscht werden.",
         "partially_deleted": ":deleted Mitarbeiter gelöscht. :preserved Mitarbeiter mit Geräten blieben.",
