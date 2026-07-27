@@ -5,6 +5,7 @@
             :subtitle="__('locations.import_history.hint')"
             :count="$batches->count()"
         >
+
             <div class="wp-list wp-list--entity-rows">
                 @foreach ($batches as $batch)
                     <div class="wp-issue-row" wire:key="batch-{{ $batch['batch_id'] }}">
