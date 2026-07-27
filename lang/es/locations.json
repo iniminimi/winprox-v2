@@ -180,7 +180,11 @@
             "scheme_range": "La numeración supera el rango permitido.",
             "names_exist": "Todos los nombres generados ya existen en esta ubicación.",
             "too_many": "Demasiadas unidades en un solo bloque (máx. 500)."
-        }
+        },
+        "scheme_sequential": "Secuencial desde número inicial (21, 22, 23…)",
+        "start_number": "Número inicial",
+        "count": "Cantidad",
+        "count_hint": "hasta máx. 500"
     },
     "import_history": {
         "title": "Importaciones recientes",

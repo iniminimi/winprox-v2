@@ -177,6 +177,25 @@ it('bulk creates units on location show', function () {
         ->and($location->units()->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
 });
 
+it('bulk creates sequential units from a start number', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Sequential']);
+
+    Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openBulkModal')
+        ->set('bulkScheme', UnitBulkNaming::SCHEME_SEQUENTIAL)
+        ->set('bulkFloors', '21')
+        ->set('bulkRoomsPerFloor', '3')
+        ->set('bulkPrefix', 'Kamer')
+        ->call('createBulk')
+        ->assertHasNoErrors();
+
+    expect($location->units()->orderBy('name')->pluck('name')->all())
+        ->toBe(['Kamer 21', 'Kamer 22', 'Kamer 23']);
+});
+
 it('laat een gedeactiveerde unit opnieuw activeren', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

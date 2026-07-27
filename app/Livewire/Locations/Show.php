@@ -545,6 +545,30 @@ class Show extends Component
         $this->showBulkModal = true;
     }
 
+    public function updatedBulkScheme(string $value): void
+    {
+        if (UnitBulkNaming::isSequential($value)) {
+            if ((int) $this->bulkFloors < 0) {
+                $this->bulkFloors = '1';
+            }
+            if ((int) $this->bulkRoomsPerFloor < 1) {
+                $this->bulkRoomsPerFloor = '1';
+            }
+
+            return;
+        }
+
+        if ((int) $this->bulkFloors < 1) {
+            $this->bulkFloors = '1';
+        }
+        if ((int) $this->bulkRoomsPerFloor < 1) {
+            $this->bulkRoomsPerFloor = '1';
+        }
+        if ($value === UnitBulkNaming::SCHEME_COMPACT_2 && (int) $this->bulkRoomsPerFloor > 9) {
+            $this->bulkRoomsPerFloor = '9';
+        }
+    }
+
     public function closeBulkModal(): void
     {
         $this->showBulkModal = false;
@@ -730,8 +754,15 @@ class Show extends Component
             return [];
         }
 
-        $floorCount = max(1, (int) trim($this->bulkFloors));
-        $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
+        if (UnitBulkNaming::isSequential($this->bulkScheme)) {
+            $start = (int) trim($this->bulkFloors);
+            $count = max(1, (int) trim($this->bulkRoomsPerFloor));
+            $floorCount = $start;
+            $roomsPerFloor = $count;
+        } else {
+            $floorCount = max(1, (int) trim($this->bulkFloors));
+            $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
+        }
 
         if (UnitBulkNaming::validateConfig($floorCount, $roomsPerFloor, $this->bulkScheme) !== null) {
             return [];
@@ -754,7 +785,11 @@ class Show extends Component
 
     public function getBulkRoomsMaxProperty(): int
     {
-        return $this->bulkScheme === UnitBulkNaming::SCHEME_COMPACT_2 ? 9 : 99;
+        return match ($this->bulkScheme) {
+            UnitBulkNaming::SCHEME_COMPACT_2 => 9,
+            UnitBulkNaming::SCHEME_SEQUENTIAL => UnitBulkNaming::MAX_SEQUENTIAL,
+            default => 99,
+        };
     }
 
     public function getEditingUnitProperty(): ?Unit
@@ -770,7 +805,7 @@ class Show extends Component
     {
         $this->authorize('create', Unit::class);
 
-        $bulkRules = BulkCreateUnitsRequest::ruleSet();
+        $bulkRules = BulkCreateUnitsRequest::ruleSet($this->bulkScheme);
         $validated = $this->validate([
             'bulkFloors' => $bulkRules['floors'],
             'bulkRoomsPerFloor' => $bulkRules['rooms_per_floor'],

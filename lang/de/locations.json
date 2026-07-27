@@ -180,7 +180,11 @@
             "scheme_range": "Nummerierung überschreitet den erlaubten Bereich.",
             "names_exist": "Alle generierten Namen existieren bereits an diesem Standort.",
             "too_many": "Zu viele Units auf einmal (max. 500)."
-        }
+        },
+        "scheme_sequential": "Fortlaufend ab Startnummer (21, 22, 23…)",
+        "start_number": "Startnummer",
+        "count": "Anzahl",
+        "count_hint": "bis max. 500"
     },
     "import_history": {
         "title": "Letzte Imports",

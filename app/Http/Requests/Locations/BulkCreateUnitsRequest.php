@@ -18,14 +18,26 @@ class BulkCreateUnitsRequest extends FormRequest
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(): array
+    public static function ruleSet(?string $scheme = null): array
     {
-        return [
-            'floors' => ['required', 'integer', 'min:1', 'max:10'],
-            'rooms_per_floor' => ['required', 'integer', 'min:1', 'max:99'],
-            'scheme' => ['required', Rule::in([UnitBulkNaming::SCHEME_BLOCK_3, UnitBulkNaming::SCHEME_COMPACT_2])],
+        $scheme = $scheme ?? (string) request()->input('scheme', UnitBulkNaming::SCHEME_COMPACT_2);
+
+        $rules = [
+            'scheme' => ['required', Rule::in(UnitBulkNaming::schemes())],
             'prefix' => ['nullable', 'string', 'max:30'],
         ];
+
+        if (UnitBulkNaming::isSequential($scheme)) {
+            $rules['floors'] = ['required', 'integer', 'min:0', 'max:65535'];
+            $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:'.UnitBulkNaming::MAX_SEQUENTIAL];
+
+            return $rules;
+        }
+
+        $rules['floors'] = ['required', 'integer', 'min:1', 'max:10'];
+        $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:99'];
+
+        return $rules;
     }
 
     /**
@@ -33,6 +45,6 @@ class BulkCreateUnitsRequest extends FormRequest
      */
     public function rules(): array
     {
-        return self::ruleSet();
+        return self::ruleSet($this->input('scheme'));
     }
 }

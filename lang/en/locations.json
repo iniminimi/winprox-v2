@@ -180,7 +180,11 @@
             "scheme_range": "Numbering exceeds the allowed range.",
             "names_exist": "All generated names already exist at this location.",
             "too_many": "Too many units in one bulk (max. 500)."
-        }
+        },
+        "scheme_sequential": "Sequential from start number (21, 22, 23…)",
+        "start_number": "Start number",
+        "count": "Count",
+        "count_hint": "up to 500"
     },
     "import_history": {
         "title": "Recent imports",

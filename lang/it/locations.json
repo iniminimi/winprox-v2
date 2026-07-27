@@ -180,7 +180,11 @@
             "scheme_range": "La numerazione supera l'intervallo consentito.",
             "names_exist": "Tutti i nomi generati esistono già in questa sede.",
             "too_many": "Troppe unità in una sola massa (max. 500)."
-        }
+        },
+        "scheme_sequential": "Consecutivo da numero iniziale (21, 22, 23…)",
+        "start_number": "Numero iniziale",
+        "count": "Quantità",
+        "count_hint": "fino a max 500"
     },
     "import_history": {
         "title": "Importazioni recenti",

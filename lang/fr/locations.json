@@ -180,7 +180,11 @@
             "scheme_range": "La numérotation dépasse la plage autorisée.",
             "names_exist": "Tous les noms générés existent déjà sur ce site.",
             "too_many": "Trop d'unités en une fois (max. 500)."
-        }
+        },
+        "scheme_sequential": "Séquentiel à partir du numéro de départ (21, 22, 23…)",
+        "start_number": "Numéro de départ",
+        "count": "Nombre",
+        "count_hint": "jusqu’à 500"
     },
     "import_history": {
         "title": "Imports récents",

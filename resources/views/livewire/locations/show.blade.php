@@ -422,24 +422,38 @@
                     <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
 
-                <div class="wp-form-grid-2">
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.bulk.floors') }}</span>
-                        <input type="number" min="1" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
-                    </label>
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.bulk.rooms_per_floor') }}</span>
-                        <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.rooms_per_floor_hint') }}" />
-                    </label>
-                </div>
-
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.bulk.scheme') }}</span>
                     <select class="wp-input" wire:model.live.debounce.300ms="bulkScheme">
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_COMPACT_2 }}">{{ __('locations.bulk.scheme_compact') }}</option>
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_BLOCK_3 }}">{{ __('locations.bulk.scheme_block') }}</option>
+                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL }}">{{ __('locations.bulk.scheme_sequential') }}</option>
                     </select>
                 </label>
+
+                @if (\App\Support\Units\UnitBulkNaming::isSequential($bulkScheme))
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.bulk.start_number') }}</span>
+                            <input type="number" min="0" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.bulk.count') }}</span>
+                            <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.count_hint') }}" />
+                        </label>
+                    </div>
+                @else
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.bulk.floors') }}</span>
+                            <input type="number" min="1" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
+                        </label>
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.bulk.rooms_per_floor') }}</span>
+                            <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.rooms_per_floor_hint') }}" />
+                        </label>
+                    </div>
+                @endif
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
