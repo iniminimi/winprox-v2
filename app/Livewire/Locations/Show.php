@@ -537,36 +537,6 @@ class Show extends Component
         $this->showBulkModal = true;
     }
 
-    public function addBulkRange(): void
-    {
-        $this->bulkRanges[] = $this->emptyBulkRange();
-    }
-
-    public function removeBulkRange(int $index): void
-    {
-        if (count($this->bulkRanges) <= 1) {
-            return;
-        }
-
-        unset($this->bulkRanges[$index]);
-        $this->bulkRanges = array_values($this->bulkRanges);
-    }
-
-    public function setBulkRangeField(int $index, string $field, mixed $value): void
-    {
-        if (! array_key_exists($index, $this->bulkRanges)) {
-            return;
-        }
-
-        if (! in_array($field, ['start', 'count', 'padding', 'prefix', 'suffix'], true)) {
-            return;
-        }
-
-        $ranges = $this->bulkRanges;
-        $ranges[$index][$field] = $value;
-        $this->bulkRanges = array_values($ranges);
-    }
-
     /**
      * @return array{start: string, count: int, padding: string, prefix: string, suffix: string}
      */
@@ -757,35 +727,6 @@ class Show extends Component
         return Tenant::query()->find($this->location->tenant_id);
     }
 
-    /**
-     * @return array{
-     *     names: list<string>,
-     *     duplicates: list<string>,
-     *     total: int,
-     *     truncated: bool,
-     *     preview_names: list<string>,
-     *     has_duplicates: bool
-     * }
-     */
-    private function bulkPreviewPayload(): array
-    {
-        if (! $this->showBulkModal) {
-            return [
-                'names' => [],
-                'duplicates' => [],
-                'total' => 0,
-                'truncated' => false,
-                'preview_names' => [],
-                'has_duplicates' => false,
-            ];
-        }
-
-        $preview = app(BulkCreateUnitsAction::class)->preview($this->bulkRanges);
-        $preview['has_duplicates'] = $preview['duplicates'] !== [];
-
-        return $preview;
-    }
-
     public function getEditingUnitProperty(): ?Unit
     {
         if ($this->editingUnitId === null) {
@@ -955,7 +896,6 @@ class Show extends Component
                 ->map(fn ($id) => (int) $id)
                 ->all(),
             'nav' => EntityDetailNavigation::forLocation($this->location),
-            'bulkPreview' => $this->bulkPreviewPayload(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
             'previewUnit' => $previewUnit,
             'descriptionLocales' => $descriptionLocales,

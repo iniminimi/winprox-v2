@@ -196,36 +196,15 @@ it('bulk creates multi-range hotel rooms with prefix', function () {
         ->toBe(['Kamer 20', 'Kamer 201', 'Kamer 202', 'Kamer 203', 'Kamer 21', 'Kamer 22', 'Kamer 501']);
 });
 
-it('shows bulk preview total and last name when truncated', function () {
-    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Preview']);
+it('shows bulk preview names from action when ranges are valid', function () {
+    $preview = app(\App\Actions\Locations\BulkCreateUnitsAction::class)->preview([
+        ['start' => '201', 'count' => 17, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
+    ]);
 
-    Livewire::actingAs($user)
-        ->test(LocationShow::class, ['location' => $location])
-        ->call('openBulkModal')
-        ->set('bulkRanges', [
-            ['start' => '201', 'count' => 17, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
-        ])
-        ->assertSee('Kamer 201')
-        ->assertSee('Kamer 217');
-});
-
-it('updates bulk preview live when range fields are set via action', function () {
-    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Live Preview']);
-
-    Livewire::actingAs($user)
-        ->test(LocationShow::class, ['location' => $location])
-        ->call('openBulkModal')
-        ->call('setBulkRangeField', 0, 'start', '20')
-        ->call('setBulkRangeField', 0, 'count', '3')
-        ->call('setBulkRangeField', 0, 'prefix', 'Kamer ')
-        ->assertSee('Kamer 20')
-        ->assertSee('Kamer 21')
-        ->assertSee('Kamer 22')
-        ->assertSee(__('locations.bulk.submit_count', ['count' => 3]));
+    expect($preview['total'])->toBe(17)
+        ->and($preview['truncated'])->toBeTrue()
+        ->and($preview['preview_names'][0])->toBe('Kamer 201')
+        ->and($preview['preview_names'][count($preview['preview_names']) - 1])->toBe('Kamer 217');
 });
 
 it('laat een gedeactiveerde unit opnieuw activeren', function () {
