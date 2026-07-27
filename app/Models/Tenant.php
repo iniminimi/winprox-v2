@@ -108,6 +108,21 @@ class Tenant extends Model
         return $this->trial_ends_at !== null && $this->trial_ends_at->isFuture();
     }
 
+    /**
+     * Trial-self-service purge alleen bij actieve proef zonder betaald/grace.
+     * Legacy en betalende tenants: betaald-spoor (superuser-uitvoering).
+     */
+    public function purgeTrack(): \App\Enums\TenantPurgeTrack
+    {
+        if ($this->isTrialActive()
+            && ! $this->isPaidSubscriptionActive()
+            && ! $this->isInPaidSubscriptionGrace()) {
+            return \App\Enums\TenantPurgeTrack::Trial;
+        }
+
+        return \App\Enums\TenantPurgeTrack::Paid;
+    }
+
     public function isPaidSubscriptionActive(): bool
     {
         return $this->billing_plan !== null

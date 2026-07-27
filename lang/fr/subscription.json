@@ -61,9 +61,9 @@
         },
         "time": {
             "name": "WinProx Time",
-            "price": "149 € / mois",
-            "scale": "Jusqu'à 10 unités/sites/documents/photos pour votre organisation.",
-            "users": "1 administrateur et 1 collaborateur inclus. Intervenants illimités via import CSV/Excel.",
+            "price": "149 € \/ mois",
+            "scale": "Jusqu'à 10 unités\/sites\/documents\/photos pour votre organisation.",
+            "users": "1 administrateur et 1 collaborateur inclus. Intervenants illimités via import CSV\/Excel.",
             "description": "Signalements et tâches QR illimités dans vos sites et unités.",
             "features": [
                 "Module Time : pointage, pauses, shifts et QR Clock Points.",
@@ -72,19 +72,19 @@
         },
         "facility": {
             "name": "WinProx Facility",
-            "price": "399 € / mois",
-            "scale": "Jusqu'à 100 unités/sites/documents/photos pour votre organisation.",
-            "users": "1 administrateur et jusqu'à 4 collaborateurs. Intervenants illimités via import CSV/Excel.",
-            "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV/Excel en masse pour unités et intervenants.",
+            "price": "399 € \/ mois",
+            "scale": "Jusqu'à 100 unités\/sites\/documents\/photos pour votre organisation.",
+            "users": "1 administrateur et jusqu'à 4 collaborateurs. Intervenants illimités via import CSV\/Excel.",
+            "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV\/Excel en masse pour unités et intervenants.",
             "features": [
                 "Signalements QR et tâches illimités dans vos sites et unités.",
                 "IoT Connect : alarmes capteurs → signalements (ingest gateway).",
-                "Pas d’API REST complète / webhooks."
+                "Pas d’API REST complète \/ webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "999 € / mois",
+            "price": "999 € \/ mois",
             "scale": "Données illimitées.",
             "description": "Pour grands portefeuilles et intégrations.",
             "features": [
@@ -108,8 +108,54 @@
         "plan_invalid": "Cette formule n'est pas disponible.",
         "admin_only": "Seul un administrateur peut choisir un abonnement.",
         "activation_disabled": "Auto-activation désactivée. Contactez WinProx.",
-        "csv_workers_not_allowed": "Import CSV/Excel workers non disponible sur votre formule.",
-        "csv_units_not_allowed": "Import CSV/Excel unités nécessite WinProx Facility ou Corporate."
+        "csv_workers_not_allowed": "Import CSV\/Excel workers non disponible sur votre formule.",
+        "csv_units_not_allowed": "Import CSV\/Excel unités nécessite WinProx Facility ou Corporate."
     },
-    "status_module_iot": "IoT Connect est actif sur votre compte."
+    "status_module_iot": "IoT Connect est actif sur votre compte.",
+    "purge": {
+        "title": "Supprimer les données de l'organisation",
+        "intro": "Delete all data for this organisation from WinProx. This cannot be undone (media files are not kept in the recovery snapshot).",
+        "export_link": "Download an export of your data first",
+        "export_ack": "I have seen or downloaded the export option",
+        "password_label": "Confirm with your password",
+        "start": "Démarrer la suppression",
+        "cancel": "Annuler la suppression",
+        "execute_trial": "Permanently delete everything",
+        "execute_paid": "Execute deletion now (WinProx administration)",
+        "trial_hint": "All administrators receive a confirmation email. Only after confirming via the link can you delete. A SQL snapshot without media is created first.",
+        "paid_hint": "After email confirmation there is a 7-day cool-down. WinProx administration performs the deletion at the scheduled time. A SQL snapshot without media is created first.",
+        "status_awaiting_email": "Confirmation email sent to all administrators. Open the link in that email to confirm.",
+        "status_ready": "Email confirmation received. You can permanently delete the data now.",
+        "status_scheduled": "La suppression des données sera effectuée le :date (:timezone) par l'administration WinProx.",
+        "days_remaining": "Encore :days jours avant la suppression des données.",
+        "email_confirmed_checkbox": "Deletion confirmed via email",
+        "email_confirmed": "Email confirmation successful.",
+        "started": "Confirmation email sent to all administrators.",
+        "cancelled": "Deletion request cancelled.",
+        "completed": "Organisation data has been deleted.",
+        "completed_superuser": "Tenant data has been deleted.",
+        "confirm_start": "Send confirmation email and start the deletion procedure?",
+        "confirm_cancel": "Cancel the deletion request?",
+        "confirm_execute": "Permanently delete all data? This cannot be undone.",
+        "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
+        "banner": "Encore :days jours avant la suppression des données (prévu :date).",
+        "banner_link": "Voir \/ annuler",
+        "errors": {
+            "admin_only": "Only an administrator can do this.",
+            "export_required": "Confirm that you have seen the export option.",
+            "password": "Incorrect password.",
+            "password_required": "Password is required.",
+            "already_open": "A deletion request is already open.",
+            "not_awaiting_email": "This request is not awaiting email confirmation.",
+            "token_expired": "The confirmation link has expired.",
+            "token_invalid": "Invalid confirmation link.",
+            "not_open": "There is no open deletion request.",
+            "tenant_missing": "Organisation not found.",
+            "email_not_confirmed": "Confirm via the email link first.",
+            "superuser_only": "Only WinProx administration can perform this.",
+            "not_scheduled": "This request is not scheduled.",
+            "cooldown_active": "Cool-down active until :date.",
+            "generic": "Deletion failed."
+        }
+    }
 }

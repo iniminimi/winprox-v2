@@ -17,7 +17,11 @@ Dit document beschrijft **hoe het platform ondersteunt**, geen juridisch advies.
 ## Verwijdering / beperking
 
 - **Account deactiveren / gebruiker pauzeren**: door tenant-beheerder (login wordt geblokkeerd; sessies worden ingetrokken).
-- **Volledige verwijdering** tenant of persoonsrecord: procedure via support en database-actie na machtiging (litigation hold respecteren).
+- **Volledige tenant-verwijdering (self-service)**: onder **Abonnement** — alleen beheerder, met wachtwoord, export-aanbod en e-mailbevestiging naar alle admins.
+  - **Trial**: na e-mailbevestiging kan de beheerder zelf uitvoeren (SQL-snapshot zonder media, daarna hard delete).
+  - **Betaald**: cool-down 7 dagen, T−2 herinnering, uitvoering alleen door **WinProx-superuser**; banner in de app.
+  - Snapshot zonder media max. **30 dagen**; resultaatmail met tellingen. Zie `docs/FEATURES.md` §7.4.
+- Overige persoonsrecords / uitzonderingen: procedure via support (litigation hold respecteren).
 
 ## Bewaartermijnen en logs
 

@@ -1,0 +1,28 @@
+<?php
+
+return [
+    /*
+    | Cool-down voor betalende tenants na e-mailbevestiging (dagen).
+    */
+    'paid_cooldown_days' => (int) env('TENANT_PURGE_PAID_COOLDOWN_DAYS', 7),
+
+    /*
+    | Reminder naar admins zoveel dagen vóór geplande purge.
+    */
+    'reminder_days_before' => (int) env('TENANT_PURGE_REMINDER_DAYS_BEFORE', 2),
+
+    /*
+    | Bewaartermijn SQL-snapshot zonder media na uitvoering (dagen).
+    */
+    'backup_retention_days' => (int) env('TENANT_PURGE_BACKUP_RETENTION_DAYS', 30),
+
+    /*
+    | Geldigheid van de e-mailbevestigingslink (uren).
+    */
+    'confirm_token_hours' => (int) env('TENANT_PURGE_CONFIRM_TOKEN_HOURS', 48),
+
+    /*
+    | Relatief pad onder storage/app voor snapshots (buiten webroot).
+    */
+    'backup_directory' => 'tenant-purge-backups',
+];

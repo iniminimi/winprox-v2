@@ -528,7 +528,24 @@ Bron: `Billing.php`, `billing.blade.php`, `Tenant.php`, `config/billing.php`,
 Nu: **trial + plan-state + limieten + gesimuleerde activatie** (lokaal). Stripe-integratie
 (env price-ids, checkout, customer portal, webhooks) als **aparte latere fase**.
 
-### 7.4 NIET overnemen
+### 7.4 Gegevens verwijderen (tenant purge)
+Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
+
+**Trial** (`Tenant::purgeTrack() === trial`):
+1. Export aanbieden (`account.data-export`) + checkbox + wachtwoord.
+2. Bevestigingsmail naar **alle** admins → link zet status “bevestigd via e-mail”.
+3. Admin voert uit (opnieuw wachtwoord) → SQL-snapshot **zonder media** → hard delete tenant (cascade) → resultaatmail met tellingen; snapshot 30 dagen.
+
+**Betaald / grace / legacy** (`paid` track):
+1. Zelfde start (export + wachtwoord) → mail naar alle admins.
+2. Na bevestiging: **cool-down 7 dagen**; mail met “wordt doorgvoerd op [datum uur] door WinProx-administratie”.
+3. App-banner: “Nog X dagen tot verwijderen…”. Reminder-mail op **T−2**.
+4. Alleen **superuser** voert uit ná gepland tijdstip → snapshot → delete → resultaatmail.
+5. Snapshot retentie **30 dagen** (`winprox:tenant-purge-maintenance`).
+
+Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
+
+### 7.5 NIET overnemen
 `micro_hospitality`, hospitality-trialplan-split, demo/marketing-query-params, sector-subtitels,
 battery-PNG-widget (vervangen door tekstcapsule).
 

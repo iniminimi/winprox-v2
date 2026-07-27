@@ -5,11 +5,19 @@ namespace App\Livewire\Pages;
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
+use App\Actions\TenantPurge\CancelTenantPurgeRequestAction;
+use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
+use App\Actions\TenantPurge\StartTenantPurgeRequestAction;
+use App\Enums\TenantPurgeStatus;
 use App\Http\Requests\Billing\ActivateSubscriptionPlanRequest;
+use App\Http\Requests\TenantPurge\StartTenantPurgeRequest;
 use App\Models\Tenant;
+use App\Models\TenantPurgeRequest;
 use App\Support\Billing\BillingCatalogViewData;
+use App\Support\Platform\SupportTenantContext;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -24,15 +32,20 @@ class Subscription extends Component
 
     public ?string $statusMessage = null;
 
+    public string $purgePassword = '';
+
+    public bool $purgeExportAck = false;
+
+    public string $purgeExecutePassword = '';
+
     public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe, RealignSubscriptionPeriodAction $realign): void
     {
-        $tenant = auth()->user()?->tenant;
+        $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $realign->handle($tenant);
-            auth()->user()?->load('tenant');
         }
 
-        $this->selectedPlan = auth()->user()?->tenant?->effectivePlanKey();
+        $this->selectedPlan = $this->resolveTenant()?->effectivePlanKey();
 
         if (request()->query('stripe') === 'cancel') {
             session()->flash('error', __('subscription.stripe.checkout_cancelled'));
@@ -41,7 +54,7 @@ class Subscription extends Component
         $sessionId = request()->query('session_id');
         if (request()->query('stripe') === 'success' && is_string($sessionId) && $sessionId !== '') {
             if ($fulfillStripe->handle($sessionId)) {
-                $this->selectedPlan = auth()->user()?->tenant?->fresh()?->effectivePlanKey();
+                $this->selectedPlan = $this->resolveTenant()?->fresh()?->effectivePlanKey();
                 session()->flash('success', __('subscription.stripe.activated'));
             } else {
                 session()->flash('warning', __('subscription.stripe.return_unconfirmed'));
@@ -53,7 +66,7 @@ class Subscription extends Component
     {
         $this->statusMessage = null;
 
-        $tenant = auth()->user()->tenant;
+        $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
             return;
         }
@@ -78,7 +91,7 @@ class Subscription extends Component
     {
         $this->statusMessage = null;
 
-        $tenant = auth()->user()->tenant;
+        $tenant = $this->resolveTenant();
         if (! $tenant instanceof Tenant) {
             return;
         }
@@ -112,9 +125,130 @@ class Subscription extends Component
         session()->flash('success', __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]));
     }
 
+    public function startPurgeRequest(StartTenantPurgeRequestAction $start): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('requestTenantPurge', $tenant);
+
+        $form = new StartTenantPurgeRequest;
+        try {
+            $validated = validator(
+                [
+                    'purge_password' => $this->purgePassword,
+                    'purge_export_ack' => $this->purgeExportAck,
+                ],
+                $form::rules(),
+                $form->messages(),
+            )->validate();
+        } catch (ValidationException $e) {
+            foreach ($e->errors() as $key => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($key, $message);
+                }
+            }
+
+            return;
+        }
+
+        try {
+            $start->handle(
+                $tenant,
+                auth()->user(),
+                $validated['purge_password'],
+                (bool) $validated['purge_export_ack'],
+            );
+        } catch (ValidationException $e) {
+            foreach ($e->errors() as $key => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($key, $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->purgePassword = '';
+        $this->purgeExportAck = false;
+        session()->flash('success', __('subscription.purge.started'));
+    }
+
+    public function cancelPurgeRequest(CancelTenantPurgeRequestAction $cancel): void
+    {
+        $tenant = $this->resolveTenant();
+        $purge = $this->openPurgeRequest($tenant);
+        if ($tenant === null || $purge === null) {
+            return;
+        }
+
+        $this->authorize('cancelTenantPurge', $tenant);
+
+        try {
+            $cancel->handle($purge, auth()->user());
+        } catch (ValidationException $e) {
+            $this->addError('purge', collect($e->errors())->flatten()->first() ?? __('subscription.purge.errors.generic'));
+
+            return;
+        }
+
+        session()->flash('success', __('subscription.purge.cancelled'));
+    }
+
+    public function executeTrialPurge(ExecuteTenantPurgeAction $execute): void
+    {
+        $tenant = $this->resolveTenant();
+        $purge = $this->openPurgeRequest($tenant);
+        if ($tenant === null || $purge === null) {
+            return;
+        }
+
+        $this->authorize('executeTrialTenantPurge', $tenant);
+
+        try {
+            $execute->handle($purge, auth()->user(), $this->purgeExecutePassword);
+        } catch (ValidationException $e) {
+            foreach ($e->errors() as $key => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($key, $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->purgeExecutePassword = '';
+        session()->flash('success', __('subscription.purge.completed'));
+        $this->redirect(route('login'));
+    }
+
+    public function executePaidPurge(ExecuteTenantPurgeAction $execute): void
+    {
+        $tenant = $this->resolveTenant();
+        $purge = $this->openPurgeRequest($tenant);
+        if ($tenant === null || $purge === null) {
+            return;
+        }
+
+        $this->authorize('executePaidTenantPurge', $tenant);
+
+        try {
+            $execute->handle($purge, auth()->user());
+        } catch (ValidationException $e) {
+            $this->addError('purge', collect($e->errors())->flatten()->first() ?? __('subscription.purge.errors.generic'));
+
+            return;
+        }
+
+        session()->flash('success', __('subscription.purge.completed_superuser'));
+        $this->redirect(route('platform.tenants'));
+    }
+
     public function render(RealignSubscriptionPeriodAction $realign)
     {
-        $tenant = auth()->user()?->tenant;
+        $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $tenant = $realign->handle($tenant);
         }
@@ -126,15 +260,56 @@ class Subscription extends Component
             default => 'expired',
         };
 
+        $purgeRequest = $this->openPurgeRequest($tenant);
+        $user = auth()->user();
+
         return view('livewire.pages.subscription', [
             ...BillingCatalogViewData::catalog(),
             'publicMode' => false,
             'tenant' => $tenant,
             'billingStatus' => $billingStatus,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
-            'canManage' => $tenant && auth()->user()?->can('manageSubscription', $tenant),
+            'canManage' => $tenant && $user?->can('manageSubscription', $tenant),
             'selectedPlan' => $this->selectedPlan,
             'statusMessage' => $this->statusMessage,
+            'purgeRequest' => $purgeRequest,
+            'purgeTrack' => $tenant?->purgeTrack(),
+            'canRequestPurge' => $tenant && $user?->can('requestTenantPurge', $tenant),
+            'canCancelPurge' => $tenant && $purgeRequest && $user?->can('cancelTenantPurge', $tenant),
+            'canExecuteTrialPurge' => $tenant
+                && $purgeRequest?->status === TenantPurgeStatus::Ready
+                && $user?->can('executeTrialTenantPurge', $tenant),
+            'canExecutePaidPurge' => $tenant
+                && $purgeRequest?->status === TenantPurgeStatus::Scheduled
+                && $purgeRequest->scheduled_purge_at !== null
+                && ! $purgeRequest->scheduled_purge_at->isFuture()
+                && $user?->can('executePaidTenantPurge', $tenant),
         ]);
+    }
+
+    private function resolveTenant(): ?Tenant
+    {
+        if (auth()->user()?->is_superuser && SupportTenantContext::isActive()) {
+            return Tenant::query()->find(SupportTenantContext::activeTenantId());
+        }
+
+        return auth()->user()?->tenant;
+    }
+
+    private function openPurgeRequest(?Tenant $tenant): ?TenantPurgeRequest
+    {
+        if ($tenant === null) {
+            return null;
+        }
+
+        return TenantPurgeRequest::query()
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('status', [
+                TenantPurgeStatus::AwaitingEmail->value,
+                TenantPurgeStatus::Ready->value,
+                TenantPurgeStatus::Scheduled->value,
+            ])
+            ->latest('id')
+            ->first();
     }
 }

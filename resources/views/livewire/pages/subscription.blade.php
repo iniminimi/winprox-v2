@@ -223,6 +223,97 @@
         </div>
     </section>
 
+    @if (! $publicMode && ($canRequestPurge || $purgeRequest))
+        <section class="wp-card wp-card-pad wp-stack wp-billing-page-width" wire:key="subscription-purge">
+            <p class="wp-section-title">{{ __('subscription.purge.title') }}</p>
+            <p class="wp-muted">{{ __('subscription.purge.intro') }}</p>
+
+            @error('purge')
+                <p class="wp-form-error">{{ $message }}</p>
+            @enderror
+
+            @if ($purgeRequest)
+                <div class="wp-stack-tight">
+                    @if ($purgeRequest->status->value === 'awaiting_email')
+                        <p>{{ __('subscription.purge.status_awaiting_email') }}</p>
+                        <label class="wp-check">
+                            <input type="checkbox" disabled>
+                            <span>{{ __('subscription.purge.email_confirmed_checkbox') }}</span>
+                        </label>
+                    @elseif ($purgeRequest->status->value === 'ready')
+                        <label class="wp-check">
+                            <input type="checkbox" checked disabled>
+                            <span>{{ __('subscription.purge.email_confirmed_checkbox') }}</span>
+                        </label>
+                        <p>{{ __('subscription.purge.status_ready') }}</p>
+                        @if ($canExecuteTrialPurge)
+                            <label class="wp-field">
+                                <span class="wp-label">{{ __('subscription.purge.password_label') }}</span>
+                                <input type="password" class="wp-input" wire:model="purgeExecutePassword" autocomplete="current-password">
+                            </label>
+                            @error('purge_password')
+                                <p class="wp-form-error">{{ $message }}</p>
+                            @enderror
+                            <button type="button" class="btn btn--danger" wire:click="executeTrialPurge" wire:confirm="{{ __('subscription.purge.confirm_execute') }}">
+                                {{ __('subscription.purge.execute_trial') }}
+                            </button>
+                        @endif
+                    @elseif ($purgeRequest->status->value === 'scheduled')
+                        <p>{{ __('subscription.purge.status_scheduled', [
+                            'date' => $purgeRequest->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
+                            'timezone' => config('app.timezone'),
+                        ]) }}</p>
+                        <p class="wp-muted">{{ __('subscription.purge.days_remaining', [
+                            'days' => $purgeRequest->daysUntilPurge() ?? 0,
+                        ]) }}</p>
+                        @if ($canExecutePaidPurge)
+                            <button type="button" class="btn btn--danger" wire:click="executePaidPurge" wire:confirm="{{ __('subscription.purge.confirm_execute_superuser') }}">
+                                {{ __('subscription.purge.execute_paid') }}
+                            </button>
+                        @endif
+                    @endif
+
+                    @if ($canCancelPurge)
+                        <button type="button" class="btn btn--ghost" wire:click="cancelPurgeRequest" wire:confirm="{{ __('subscription.purge.confirm_cancel') }}">
+                            {{ __('subscription.purge.cancel') }}
+                        </button>
+                    @endif
+                </div>
+            @elseif ($canRequestPurge)
+                <div class="wp-stack-tight">
+                    <p>
+                        <a href="{{ route('account.data-export') }}" class="wp-link">{{ __('subscription.purge.export_link') }}</a>
+                    </p>
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="purgeExportAck">
+                        <span>{{ __('subscription.purge.export_ack') }}</span>
+                    </label>
+                    @error('purge_export_ack')
+                        <p class="wp-form-error">{{ $message }}</p>
+                    @enderror
+
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('subscription.purge.password_label') }}</span>
+                        <input type="password" class="wp-input" wire:model="purgePassword" autocomplete="current-password">
+                    </label>
+                    @error('purge_password')
+                        <p class="wp-form-error">{{ $message }}</p>
+                    @enderror
+
+                    @if ($purgeTrack?->value === 'trial')
+                        <p class="wp-muted">{{ __('subscription.purge.trial_hint') }}</p>
+                    @else
+                        <p class="wp-muted">{{ __('subscription.purge.paid_hint') }}</p>
+                    @endif
+
+                    <button type="button" class="btn btn--danger" wire:click="startPurgeRequest" wire:confirm="{{ __('subscription.purge.confirm_start') }}">
+                        {{ __('subscription.purge.start') }}
+                    </button>
+                </div>
+            @endif
+        </section>
+    @endif
+
     <p class="wp-billing-legal wp-billing-page-width">
         <span>{{ __('subscription.legal_footer_intro') }}</span>
         <a href="{{ route('legal.terms') }}" target="_blank" rel="noopener noreferrer">{{ __('subscription.legal_terms') }}</a><span class="wp-billing-legal-sep">,</span>

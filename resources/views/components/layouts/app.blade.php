@@ -174,6 +174,30 @@
                 </div>
             @endif
 
+            @php
+                $purgeBannerRequest = null;
+                $purgeBannerTenant = $activeTenant;
+                if ($purgeBannerTenant instanceof Tenant) {
+                    $purgeBannerRequest = \App\Models\TenantPurgeRequest::query()
+                        ->where('tenant_id', $purgeBannerTenant->id)
+                        ->where('status', \App\Enums\TenantPurgeStatus::Scheduled->value)
+                        ->whereNotNull('scheduled_purge_at')
+                        ->latest('id')
+                        ->first();
+                }
+            @endphp
+            @if ($purgeBannerRequest)
+                <div class="wp-purge-banner-bar" role="status">
+                    <span>{{ __('subscription.purge.banner', [
+                        'days' => $purgeBannerRequest->daysUntilPurge() ?? 0,
+                        'date' => $purgeBannerRequest->scheduled_purge_at->timezone(config('app.timezone'))->format('d/m/Y H:i'),
+                    ]) }}</span>
+                    @can('cancelTenantPurge', $purgeBannerTenant)
+                        <a href="{{ route('subscription.index') }}" class="btn btn--ghost btn--sm">{{ __('subscription.purge.banner_link') }}</a>
+                    @endcan
+                </div>
+            @endif
+
             <div class="wp-header-search">
                 <livewire:global-search />
             </div>

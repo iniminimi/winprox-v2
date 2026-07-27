@@ -61,9 +61,9 @@
         },
         "time": {
             "name": "WinProx Time",
-            "price": "€149 / maand",
-            "scale": "Tot 10 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV/Excel-import.",
+            "price": "€149 \/ maand",
+            "scale": "Tot 10 units\/locaties\/documenten\/foto's voor je organisatie.",
+            "users": "Inclusief 1 beheerder en 1 medewerker. Onbeperkt uitvoerders via CSV\/Excel-import.",
             "description": "QR-meldingen en taken onbeperkt binnen je locaties en units.",
             "features": [
                 "Time-module: in- en uitklokken, pauzes, shifts en QR Clock Points.",
@@ -72,19 +72,19 @@
         },
         "facility": {
             "name": "WinProx Facility",
-            "price": "€399 / maand",
-            "scale": "Tot 100 units/locaties/documenten/foto's voor je organisatie.",
-            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV/Excel-import.",
-            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV/Excel bulk-import voor units en workers.",
+            "price": "€399 \/ maand",
+            "scale": "Tot 100 units\/locaties\/documenten\/foto's voor je organisatie.",
+            "users": "Inclusief 1 beheerder en tot 4 medewerkers. Onbeperkt uitvoerders via CSV\/Excel-import.",
+            "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV\/Excel bulk-import voor units en workers.",
             "features": [
                 "QR-meldingen en taken onbeperkt binnen je locaties en units.",
                 "IoT Connect: sensor-alarmen → meldingen (gateway-ingest).",
-                "Geen volledige REST API / webhooks."
+                "Geen volledige REST API \/ webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "€999 / maand",
+            "price": "€999 \/ maand",
             "scale": "Onbeperkt data.",
             "description": "Voor grote portefeuilles en integraties.",
             "features": [
@@ -108,8 +108,54 @@
         "plan_invalid": "Deze formule is niet beschikbaar.",
         "admin_only": "Alleen een beheerder kan een abonnement kiezen.",
         "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
-        "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op je formule.",
-        "csv_units_not_allowed": "CSV/Excel unit-import vereist WinProx Facility of Corporate."
+        "csv_workers_not_allowed": "CSV\/Excel worker-import is niet beschikbaar op je formule.",
+        "csv_units_not_allowed": "CSV\/Excel unit-import vereist WinProx Facility of Corporate."
     },
-    "status_module_iot": "IoT Connect actief op je account."
+    "status_module_iot": "IoT Connect actief op je account.",
+    "purge": {
+        "title": "Organisatiegegevens verwijderen",
+        "intro": "Verwijder alle gegevens van deze organisatie uit WinProx. Dit is onomkeerbaar (mediabestanden worden niet in de herstel-snapshot bewaard).",
+        "export_link": "Download eerst een export van je gegevens",
+        "export_ack": "Ik heb de exportmogelijkheid gezien of gedownload",
+        "password_label": "Bevestig met je wachtwoord",
+        "start": "Verwijdering starten",
+        "cancel": "Verwijdering annuleren",
+        "execute_trial": "Alles definitief verwijderen",
+        "execute_paid": "Verwijdering nu uitvoeren (WinProx-administratie)",
+        "trial_hint": "Na starten ontvangen alle beheerders een bevestigingsmail. Pas na bevestiging via de link kun je wissen. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
+        "paid_hint": "Na e-mailbevestiging volgt een cool-down van 7 dagen. WinProx-administratie voert de verwijdering uit op het geplande tijdstip. Er wordt eerst een SQL-snapshot zonder media gemaakt.",
+        "status_awaiting_email": "Bevestigingsmail verzonden naar alle beheerders. Open de link in die mail om te bevestigen.",
+        "status_ready": "E-mailbevestiging ontvangen. Je kunt de gegevens nu definitief verwijderen.",
+        "status_scheduled": "Het verwijderen van de gegevens wordt doorgvoerd op :date (:timezone) door WinProx-administratie.",
+        "days_remaining": "Nog :days dagen tot verwijderen van de gegevens.",
+        "email_confirmed_checkbox": "Verwijderen bevestigd via e-mail",
+        "email_confirmed": "E-mailbevestiging gelukt.",
+        "started": "Bevestigingsmail verzonden naar alle beheerders.",
+        "cancelled": "Verwijderingsaanvraag geannuleerd.",
+        "completed": "Organisatiegegevens zijn verwijderd.",
+        "completed_superuser": "Tenant-gegevens zijn verwijderd.",
+        "confirm_start": "Bevestigingsmail sturen en verwijderingsprocedure starten?",
+        "confirm_cancel": "Verwijderingsaanvraag annuleren?",
+        "confirm_execute": "Alle gegevens definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
+        "confirm_execute_superuser": "Tenant nu wissen? Snapshot zonder media wordt eerst opgeslagen.",
+        "banner": "Nog :days dagen tot verwijderen van de gegevens (gepland :date).",
+        "banner_link": "Bekijk \/ annuleer",
+        "errors": {
+            "admin_only": "Alleen een beheerder kan dit doen.",
+            "export_required": "Bevestig dat je de exportmogelijkheid hebt gezien.",
+            "password": "Wachtwoord is onjuist.",
+            "password_required": "Wachtwoord is verplicht.",
+            "already_open": "Er loopt al een verwijderingsaanvraag.",
+            "not_awaiting_email": "Deze aanvraag wacht niet op e-mailbevestiging.",
+            "token_expired": "De bevestigingslink is verlopen.",
+            "token_invalid": "Ongeldige bevestigingslink.",
+            "not_open": "Er is geen openstaande verwijderingsaanvraag.",
+            "tenant_missing": "Organisatie niet gevonden.",
+            "email_not_confirmed": "Bevestig eerst via de e-maillink.",
+            "superuser_only": "Alleen WinProx-administratie kan dit uitvoeren.",
+            "not_scheduled": "Deze aanvraag is niet gepland.",
+            "cooldown_active": "Cool-down actief tot :date.",
+            "generic": "Verwijdering mislukt."
+        }
+    }
 }

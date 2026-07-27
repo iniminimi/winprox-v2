@@ -196,6 +196,19 @@
     font-size: 0.875rem;
 }
 
+.wp-purge-banner-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
+    background: #fef3c7;
+    border-bottom: 1px solid #f59e0b;
+    color: #92400e;
+    font-size: 0.875rem;
+}
+
 .wp-list-row {
     display: flex;
     flex-wrap: wrap;

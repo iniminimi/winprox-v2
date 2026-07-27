@@ -30,6 +30,27 @@ class TenantPolicy
         return $this->isTenantAdminFor($user, $tenant);
     }
 
+    public function requestTenantPurge(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant);
+    }
+
+    public function cancelTenantPurge(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant)
+            || ($user->is_superuser && SuperuserTenantAccess::canAccessTenant($user, (int) $tenant->id));
+    }
+
+    public function executeTrialTenantPurge(User $user, Tenant $tenant): bool
+    {
+        return $this->isTenantAdminFor($user, $tenant);
+    }
+
+    public function executePaidTenantPurge(User $user, Tenant $tenant): bool
+    {
+        return $user->is_superuser && SuperuserTenantAccess::canAccessTenant($user, (int) $tenant->id);
+    }
+
     private function isTenantAdminFor(User $user, Tenant $tenant): bool
     {
         return $user->tenant_id !== null

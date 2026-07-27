@@ -8,6 +8,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UiThemeController;
 use App\Http\Controllers\UserDataExportController;
+use App\Http\Controllers\TenantPurgeConfirmController;
 use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PromoController;
@@ -267,6 +268,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/manual/workers', WorkerManualIndex::class)->name('manual.workers');
     Route::get('/manual/teamleaders', TeamleaderManualIndex::class)->name('manual.teamleaders');
     Route::get('/account/data-export', UserDataExportController::class)->name('account.data-export');
+    Route::get('/subscription/purge/confirm/{purgeRequest}/{token}', TenantPurgeConfirmController::class)
+        ->name('subscription.purge.confirm');
 
     Route::middleware('support.tenant')->group(function () {
         Route::get('/dashboard', Dashboard::class)->name('dashboard');
