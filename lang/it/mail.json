@@ -83,7 +83,8 @@
             "paid_note": "After confirmation a cool-down follows; WinProx administration carries out the deletion at the scheduled time.",
             "cta": "Confirm via this link:",
             "expiry": "This link is valid for :hours hours.",
-            "footer": "If you did not start this request, ignore this email or contact WinProx."
+            "footer": "If you did not start this request, ignore this email or contact WinProx.",
+            "cta_button": "Conferma eliminazione"
         },
         "scheduled": {
             "subject": "WinProx: deletion of :tenant scheduled",
@@ -132,6 +133,8 @@
                 "iot_rules": "IoT rules: :count",
                 "audit_logs": "Audit logs: :count"
             }
-        }
+        },
+        "link_fallback": "Se il pulsante non funziona, copia questo link:",
+        "open_subscription": "Apri abbonamento"
     }
 }

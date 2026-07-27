@@ -83,7 +83,8 @@
             "paid_note": "Na bevestiging volgt een cool-down; WinProx-administratie voert de verwijdering uit op het geplande tijdstip.",
             "cta": "Bevestig via deze link:",
             "expiry": "Deze link is :hours uur geldig.",
-            "footer": "Heb je deze aanvraag niet gestart? Negeer deze mail of neem contact op met WinProx."
+            "footer": "Heb je deze aanvraag niet gestart? Negeer deze mail of neem contact op met WinProx.",
+            "cta_button": "Verwijdering bevestigen"
         },
         "scheduled": {
             "subject": "WinProx: verwijdering :tenant gepland",
@@ -132,6 +133,8 @@
                 "iot_rules": "IoT-regels: :count",
                 "audit_logs": "Auditlogs: :count"
             }
-        }
+        },
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
+        "open_subscription": "Abonnement openen"
     }
 }

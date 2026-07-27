@@ -22,27 +22,35 @@ class TenantPurgeCompletedMail extends Mailable
         public array $counts,
         public Carbon $backupExpiresAt,
         public string $adminLocale = 'nl',
-    ) {}
+    ) {
+        $locale = in_array($adminLocale, config('locales.supported', []), true)
+            ? $adminLocale
+            : (string) config('locales.default', 'nl');
+
+        $this->locale($locale);
+    }
 
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('mail.tenant_purge.completed.subject', ['tenant' => $this->tenantName], $this->adminLocale),
+            subject: __('mail.tenant_purge.completed.subject', ['tenant' => $this->tenantName]),
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            text: 'mail.tenant-purge-completed',
+            html: 'emails.contact.winprox-template',
             with: [
-                'adminName' => $this->adminName,
-                'tenantName' => $this->tenantName,
-                'counts' => $this->counts,
-                'backupExpiresAt' => $this->backupExpiresAt
-                    ->timezone(config('app.timezone'))
-                    ->format('d/m/Y'),
-                'locale' => $this->adminLocale,
+                'recipientName' => $this->adminName,
+                'bodyText' => '',
+                'bodyHtml' => view('emails.tenant-purge.completed-body', [
+                    'tenantName' => $this->tenantName,
+                    'counts' => $this->counts,
+                    'backupExpiresAt' => $this->backupExpiresAt
+                        ->timezone(config('app.timezone'))
+                        ->format('d/m/Y'),
+                ])->render(),
             ],
         );
     }

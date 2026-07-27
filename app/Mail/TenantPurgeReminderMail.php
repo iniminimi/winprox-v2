@@ -9,6 +9,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
 
 class TenantPurgeReminderMail extends Mailable
 {
@@ -17,7 +18,13 @@ class TenantPurgeReminderMail extends Mailable
     public function __construct(
         public TenantPurgeRequest $purgeRequest,
         public User $admin,
-    ) {}
+    ) {
+        $locale = in_array((string) $admin->locale, config('locales.supported', []), true)
+            ? (string) $admin->locale
+            : (string) config('locales.default', 'nl');
+
+        $this->locale($locale);
+    }
 
     public function envelope(): Envelope
     {
@@ -32,14 +39,19 @@ class TenantPurgeReminderMail extends Mailable
             ?->timezone(config('app.timezone'))
             ->format('d/m/Y H:i');
 
+        $subscriptionUrl = URL::route('subscription.index', [], true);
+
         return new Content(
-            text: 'mail.tenant-purge-reminder',
+            html: 'emails.contact.winprox-template',
             with: [
-                'adminName' => $this->admin->name,
-                'tenantName' => $this->purgeRequest->tenant_name,
-                'scheduledAt' => $when ?? '—',
-                'timezone' => config('app.timezone'),
-                'subscriptionUrl' => route('subscription.index'),
+                'recipientName' => (string) $this->admin->name,
+                'bodyText' => '',
+                'bodyHtml' => view('emails.tenant-purge.reminder-body', [
+                    'tenantName' => $this->purgeRequest->tenant_name,
+                    'scheduledAt' => $when ?? '—',
+                    'timezone' => config('app.timezone'),
+                    'subscriptionUrl' => $subscriptionUrl,
+                ])->render(),
             ],
         );
     }
