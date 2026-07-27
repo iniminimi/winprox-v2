@@ -264,17 +264,7 @@
                             <button
                                 type="button"
                                 class="btn btn--danger"
-                                x-data
-                                x-on:click.prevent="
-                                    const pwd = String($wire.purgeExecutePassword ?? '').trim();
-                                    if (! pwd) {
-                                        $wire.executeTrialPurge();
-                                        return;
-                                    }
-                                    if (confirm(@js(__('subscription.purge.confirm_execute')))) {
-                                        $wire.executeTrialPurge();
-                                    }
-                                "
+                                wire:click="preparePurgeConfirm('execute_trial')"
                             >
                                 {{ __('subscription.purge.execute_trial') }}
                             </button>
@@ -288,14 +278,14 @@
                             'days' => $purgeRequest->daysUntilPurge() ?? 0,
                         ]) }}</p>
                         @if ($canExecutePaidPurge)
-                            <button type="button" class="btn btn--danger" wire:click="executePaidPurge" wire:confirm="{{ __('subscription.purge.confirm_execute_superuser') }}">
+                            <button type="button" class="btn btn--danger" wire:click="preparePurgeConfirm('execute_paid')">
                                 {{ __('subscription.purge.execute_paid') }}
                             </button>
                         @endif
                     @endif
 
                     @if ($canCancelPurge)
-                        <button type="button" class="btn btn--ghost" wire:click="cancelPurgeRequest" wire:confirm="{{ __('subscription.purge.confirm_cancel') }}">
+                        <button type="button" class="btn btn--ghost" wire:click="preparePurgeConfirm('cancel')">
                             {{ __('subscription.purge.cancel') }}
                         </button>
                     @endif
@@ -334,27 +324,46 @@
                         <p class="wp-muted">{{ __('subscription.purge.paid_hint') }}</p>
                     @endif
 
-                    <button
-                        type="button"
-                        class="btn btn--danger"
-                        x-data
-                        x-on:click.prevent="
-                            const ack = !! $wire.purgeExportAck;
-                            const pwd = String($wire.purgePassword ?? '').trim();
-                            if (! ack || ! pwd) {
-                                $wire.startPurgeRequest();
-                                return;
-                            }
-                            if (confirm(@js(__('subscription.purge.confirm_start')))) {
-                                $wire.startPurgeRequest();
-                            }
-                        "
-                    >
+                    <button type="button" class="btn btn--danger" wire:click="preparePurgeConfirm('start')">
                         {{ __('subscription.purge.start') }}
                     </button>
                 </div>
             @endif
         </section>
+    @endif
+
+    @if ($purgeConfirmKind)
+        @php
+            $purgeConfirmBody = match ($purgeConfirmKind) {
+                'start' => __('subscription.purge.confirm_start'),
+                'execute_trial' => __('subscription.purge.confirm_execute'),
+                'execute_paid' => __('subscription.purge.confirm_execute_superuser'),
+                'cancel' => __('subscription.purge.confirm_cancel'),
+                default => '',
+            };
+            $purgeConfirmSubmit = match ($purgeConfirmKind) {
+                'start' => __('subscription.purge.start'),
+                'execute_trial' => __('subscription.purge.execute_trial'),
+                'execute_paid' => __('subscription.purge.execute_paid'),
+                'cancel' => __('subscription.purge.cancel'),
+                default => __('common.button.close'),
+            };
+        @endphp
+        <x-wp-modal closeMethod="dismissPurgeConfirm" aria-labelledby="subscription-purge-confirm-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card" role="alertdialog" aria-labelledby="subscription-purge-confirm-title">
+                <div class="wp-modal-head">
+                    <h2 id="subscription-purge-confirm-title" class="wp-section-title">{{ __('subscription.purge.title') }}</h2>
+                    <x-wp-modal-close wire:click="dismissPurgeConfirm" />
+                </div>
+                <div class="wp-modal-body">
+                    <p class="wp-text-body">{{ $purgeConfirmBody }}</p>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="dismissPurgeConfirm">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--danger" wire:click="confirmPurgeAction">{{ $purgeConfirmSubmit }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 
     <p class="wp-billing-legal wp-billing-page-width">

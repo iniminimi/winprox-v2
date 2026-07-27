@@ -146,3 +146,28 @@ it('subscription livewire toont purge sectie voor admin op trial', function () {
         ->assertSee(__('subscription.purge.title'))
         ->assertSee(__('subscription.purge.start'));
 });
+
+it('purge start: toont veldfouten zonder modal bij ontbrekende gegevens', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(8)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Pages\Subscription::class)
+        ->call('preparePurgeConfirm', 'start')
+        ->assertHasErrors(['purge_password', 'purge_export_ack'])
+        ->assertSet('purgeConfirmKind', null);
+});
+
+it('purge start: opent wp-modal bevestiging na geldige velden', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(8)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Pages\Subscription::class)
+        ->set('purgeExportAck', true)
+        ->set('purgePassword', 'password')
+        ->call('preparePurgeConfirm', 'start')
+        ->assertHasNoErrors()
+        ->assertSet('purgeConfirmKind', 'start')
+        ->assertSee(__('subscription.purge.confirm_start'));
+});

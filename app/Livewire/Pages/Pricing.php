@@ -38,6 +38,7 @@ class Pricing extends Component
             'canManage' => false,
             'selectedPlan' => null,
             'statusMessage' => null,
+            'purgeConfirmKind' => null,
         ])->layout($layout, $layoutData);
     }
 }

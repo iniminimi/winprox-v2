@@ -38,6 +38,9 @@ class Subscription extends Component
 
     public string $purgeExecutePassword = '';
 
+    /** @var null|'start'|'execute_trial'|'execute_paid'|'cancel' */
+    public ?string $purgeConfirmKind = null;
+
     public function mount(FulfillStripeCheckoutSessionAction $fulfillStripe, RealignSubscriptionPeriodAction $realign): void
     {
         $tenant = $this->resolveTenant();
@@ -123,6 +126,69 @@ class Subscription extends Component
 
         $this->selectedPlan = $planKey;
         session()->flash('success', __('subscription.activated', ['plan' => __("subscription.plans.{$planKey}.name")]));
+    }
+
+    public function preparePurgeConfirm(string $kind): void
+    {
+        if (! in_array($kind, ['start', 'execute_trial', 'execute_paid', 'cancel'], true)) {
+            return;
+        }
+
+        $this->resetErrorBag('purge', 'purge_password', 'purge_export_ack');
+
+        if ($kind === 'start') {
+            $form = new StartTenantPurgeRequest;
+            try {
+                validator(
+                    [
+                        'purge_password' => $this->purgePassword,
+                        'purge_export_ack' => $this->purgeExportAck,
+                    ],
+                    $form::rules(),
+                    $form->messages(),
+                )->validate();
+            } catch (ValidationException $e) {
+                foreach ($e->errors() as $key => $messages) {
+                    foreach ($messages as $message) {
+                        $this->addError($key, $message);
+                    }
+                }
+
+                return;
+            }
+        }
+
+        if ($kind === 'execute_trial') {
+            if (trim($this->purgeExecutePassword) === '') {
+                $this->addError('purge_password', __('subscription.purge.errors.password_required'));
+
+                return;
+            }
+        }
+
+        $this->purgeConfirmKind = $kind;
+    }
+
+    public function dismissPurgeConfirm(): void
+    {
+        $this->purgeConfirmKind = null;
+    }
+
+    public function confirmPurgeAction(
+        StartTenantPurgeRequestAction $start,
+        CancelTenantPurgeRequestAction $cancel,
+        ExecuteTenantPurgeAction $execute,
+    ): void {
+        $kind = $this->purgeConfirmKind;
+        $this->dismissPurgeConfirm();
+
+        match ($kind) {
+            'start' => $this->startPurgeRequest($start),
+            'execute_trial' => $this->executeTrialPurge($execute),
+            'execute_paid' => $this->executePaidPurge($execute),
+            'cancel' => $this->cancelPurgeRequest($cancel),
+            default => null,
+        };
     }
 
     public function startPurgeRequest(StartTenantPurgeRequestAction $start): void
@@ -284,6 +350,7 @@ class Subscription extends Component
                 && $purgeRequest->scheduled_purge_at !== null
                 && ! $purgeRequest->scheduled_purge_at->isFuture()
                 && $user?->can('executePaidTenantPurge', $tenant),
+            'purgeConfirmKind' => $this->purgeConfirmKind,
         ]);
     }
 
