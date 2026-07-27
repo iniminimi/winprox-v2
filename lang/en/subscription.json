@@ -78,7 +78,8 @@
             "description": "Full facility workflows at larger scale. WinProx Time included. CSV/Excel bulk import for units and workers.",
             "features": [
                 "Unlimited QR issues and tasks within your locations and units.",
-                "No API access."
+                "IoT Connect: sensor alarms → issues (gateway ingest).",
+                "No full REST API / webhooks."
             ]
         },
         "corporate": {
@@ -87,6 +88,7 @@
             "scale": "Unlimited data.",
             "description": "For large portfolios and integrations.",
             "features": [
+                "IoT Connect + ESG measurements via sensors.",
                 "ESG, API and webhooks included.",
                 "Priority support."
             ]

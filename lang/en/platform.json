@@ -322,5 +322,6 @@
         "cancelled_note": "The translation run was stopped. Nothing was imported on the server.",
         "phase_cancelling": "Stopping…",
         "phase_cancelled": "Stopped"
-    }
+    },
+    "iot_module": "IoT Connect"
 }

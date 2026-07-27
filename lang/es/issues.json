@@ -61,7 +61,8 @@
         "source_manual": "Manual",
         "no_team": "Sin equipo",
         "reported": "Informada por :name · :datetime",
-        "unknown_reporter": "Desconocido"
+        "unknown_reporter": "Desconocido",
+        "source_iot": "Via IoT"
     },
     "create": {
         "title": "Nueva incidencia",

@@ -24,6 +24,7 @@
 
         $activeTenant = $supportTenant ?? $authUser?->tenant;
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
+        $showIotNav = $activeTenant instanceof Tenant && $activeTenant->hasIotModule();
         $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
 
         $primaryNav = [
@@ -50,6 +51,9 @@
                 ] : []),
                 ...($showEsgNav ? [
                     ['route' => 'esg.dashboard', 'active' => 'esg.*', 'icon' => 'sliders', 'label' => 'common.nav.esg'],
+                ] : []),
+                ...($showIotNav ? [
+                    ['route' => 'iot.index', 'active' => 'iot.*', 'icon' => 'api', 'label' => 'common.nav.iot'],
                 ] : []),
             ]),
         ];

@@ -77,8 +77,9 @@
             "users": "1 Administrator und bis zu 4 Mitarbeiter. Unbegrenzt Mitarbeiter via CSV/Excel-Import.",
             "description": "Vollständige Facility-Workflows in größerem Maßstab. WinProx Time inklusive. CSV/Excel-Massenimport für Units und Mitarbeiter.",
             "features": [
-                "Unbegrenzt QR-Meldungen und Aufgaben.",
-                "Kein API-Zugang."
+                "Unbegrenzte QR-Meldungen und Aufgaben in Ihren Standorten und Units.",
+                "IoT Connect: Sensoralarme → Meldungen (Gateway-Ingest).",
+                "Keine vollständige REST-API / Webhooks."
             ]
         },
         "corporate": {
@@ -87,8 +88,9 @@
             "scale": "Unbegrenzte Daten.",
             "description": "Für große Portfolios und Integrationen.",
             "features": [
+                "IoT Connect + ESG-Messungen über Sensoren.",
                 "ESG, API und Webhooks inklusive.",
-                "Priority-Support."
+                "Prioritärer Support."
             ]
         }
     },

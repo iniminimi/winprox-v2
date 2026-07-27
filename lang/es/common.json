@@ -19,7 +19,8 @@
         "manual": "Manual de usuario",
         "legal": "Documentos legales",
         "contact": "Contacto",
-        "reservations": "Reservas"
+        "reservations": "Reservas",
+        "iot": "IoT Connect"
     },
     "status": {
         "new": "Nueva (Abierta)",

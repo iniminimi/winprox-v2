@@ -21,6 +21,9 @@ API access and webhooks are available for:
 - **Corporate** plan (API access and webhooks)
 - Trial accounts with explicit API access enabled (contact support)
 
+**IoT Connect ingest** (`POST /api/v1/iot/events`) uses a **gateway token** and is available on
+**Facility** and **Corporate** without full Sanctum API access. See [iot.md](iot.md).
+
 Starter, Micro, and Pro plans do not include API access. Trial accounts without explicit API access will receive a `403 Forbidden` response when attempting to use API endpoints or configure webhooks.
 
 ### Token Abilities

@@ -1,0 +1,108 @@
+{
+    "title": "IoT Connect",
+    "subtitle": "Koppel sensoren via een gateway. Alarmen worden meldingen; metingen gaan naar ESG (Corporate).",
+    "nav": {
+        "aria": "IoT Connect navigatie",
+        "gateways": "Gateways",
+        "sensors": "Sensoren",
+        "rules": "Regels",
+        "events": "Events"
+    },
+    "status": {
+        "active": "Actief",
+        "inactive": "Inactief"
+    },
+    "actions": {
+        "activate": "Activeren",
+        "deactivate": "Deactiveren"
+    },
+    "fields": {
+        "name": "Naam",
+        "choose": "Kies…",
+        "gateway": "Gateway",
+        "external_id": "Externe sensor-ID",
+        "sensor_type": "Sensortype",
+        "unit": "Unit",
+        "esg_indicator": "ESG-indicator",
+        "sensor": "Sensor",
+        "operator": "Operator",
+        "threshold": "Drempel",
+        "description": "Meldingstekst",
+        "team": "Team",
+        "priority": "Prioriteit"
+    },
+    "gateways": {
+        "title": "Gateways",
+        "add": "Gateway toevoegen",
+        "empty": "Nog geen gateway. Voeg er een toe om events te ontvangen.",
+        "create_title": "Nieuwe gateway",
+        "token_once": "Bewaar dit token nu. Het wordt niet opnieuw getoond.",
+        "token_prefix": "Token :prefix…",
+        "last_seen": "Laatst gezien :at"
+    },
+    "sensors": {
+        "title": "Sensoren",
+        "add": "Sensor toevoegen",
+        "empty": "Nog geen sensoren gekoppeld.",
+        "create_title": "Nieuwe sensor"
+    },
+    "rules": {
+        "title": "Alarmregels",
+        "add": "Regel toevoegen",
+        "empty": "Nog geen regels. Zonder regel wordt geen melding aangemaakt.",
+        "create_title": "Nieuwe regel"
+    },
+    "events": {
+        "title": "Recente events",
+        "empty": "Nog geen events ontvangen."
+    },
+    "flash": {
+        "gateway_created": "Gateway aangemaakt.",
+        "sensor_created": "Sensor aangemaakt.",
+        "rule_created": "Regel aangemaakt."
+    },
+    "sensor_types": {
+        "water_leak": "Waterlek",
+        "temperature": "Temperatuur",
+        "humidity": "Vochtigheid",
+        "door": "Deur",
+        "vibration": "Trilling",
+        "sound": "Geluid",
+        "energy": "Energie",
+        "fill_level": "Vulgraad",
+        "other": "Overig"
+    },
+    "operators": {
+        "gt": "Groter dan",
+        "gte": "Groter of gelijk",
+        "lt": "Kleiner dan",
+        "lte": "Kleiner of gelijk",
+        "eq": "Gelijk aan"
+    },
+    "kinds": {
+        "alarm": "Alarm",
+        "measurement": "Meting"
+    },
+    "event_status": {
+        "processed": "Verwerkt",
+        "ignored": "Genegeerd",
+        "deduped": "Gededupliceerd",
+        "failed": "Mislukt"
+    },
+    "alarm": {
+        "default_description": "IoT-alarm: :sensor (waarde :value, drempel :threshold)."
+    },
+    "errors": {
+        "module_disabled": "IoT Connect is niet actief voor deze organisatie.",
+        "gateway_invalid": "Ongeldige gateway.",
+        "location_invalid": "Ongeldige locatie.",
+        "unit_invalid": "Ongeldige unit.",
+        "sensor_invalid": "Ongeldige sensor.",
+        "team_invalid": "Ongeldig team.",
+        "esg_required_for_indicator": "ESG-indicatoren vereisen de ESG-module (Corporate).",
+        "esg_required_for_measurement": "Sensor-metingen vereisen de ESG-module (Corporate).",
+        "esg_indicator_invalid": "Ongeldige of inactieve ESG-indicator.",
+        "sensor_not_measurement_ready": "Sensor mist unit of ESG-indicator voor metingen.",
+        "measurement_numeric_only": "IoT-metingen ondersteunen alleen numerieke ESG-indicatoren."
+    }
+}

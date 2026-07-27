@@ -25,6 +25,7 @@ class ApplyPlanEntitlementsAction
         $tenant->forceFill([
             'has_time_module' => $wantsTimeModule,
             'has_esg_module' => (bool) ($config['esg_module'] ?? false),
+            'has_iot_module' => (bool) ($config['iot_module'] ?? false),
         ])->save();
 
         // Worker-login loopt via Clock Point QR (Team-QR is weg). Zorg altijd voor ≥1 punt.

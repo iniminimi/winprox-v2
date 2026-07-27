@@ -35,6 +35,7 @@ class Tenant extends Model
         'stripe_customer_id',
         'allow_trial_api',
         'has_esg_module',
+        'has_iot_module',
         'time_qr_rotation_months',
         'has_time_module',
     ];
@@ -48,6 +49,7 @@ class Tenant extends Model
             'is_active' => 'boolean',
             'allow_trial_api' => 'boolean',
             'has_esg_module' => 'boolean',
+            'has_iot_module' => 'boolean',
             'has_time_module' => 'boolean',
         ];
     }
@@ -210,6 +212,11 @@ class Tenant extends Model
     public function hasEsgModule(): bool
     {
         return (bool) $this->has_esg_module;
+    }
+
+    public function hasIotModule(): bool
+    {
+        return (bool) $this->has_iot_module;
     }
 
     public function hasTimeModule(): bool

@@ -322,5 +322,6 @@
         "cancelled_note": "La sincronización se detuvo. No se importó nada en el servidor.",
         "phase_cancelling": "Deteniendo…",
         "phase_cancelled": "Detenida"
-    }
+    },
+    "iot_module": "IoT Connect"
 }

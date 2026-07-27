@@ -322,5 +322,6 @@
         "cancelled_note": "De vertaal-run is gestopt. Niets is geïmporteerd op de server.",
         "phase_cancelling": "Stoppen…",
         "phase_cancelled": "Gestopt"
-    }
+    },
+    "iot_module": "IoT Connect"
 }

@@ -61,7 +61,8 @@
         "source_manual": "Manuell",
         "no_team": "Kein Team",
         "reported": "Gemeldet von :name · :datetime",
-        "unknown_reporter": "Unbekannt"
+        "unknown_reporter": "Unbekannt",
+        "source_iot": "Via IoT"
     },
     "create": {
         "title": "Neue Meldung",

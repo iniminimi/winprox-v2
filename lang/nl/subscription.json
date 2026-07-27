@@ -78,7 +78,8 @@
             "description": "Volledige facility-workflows op grotere schaal. WinProx Time inbegrepen. CSV/Excel bulk-import voor units en workers.",
             "features": [
                 "QR-meldingen en taken onbeperkt binnen je locaties en units.",
-                "Geen API-toegang."
+                "IoT Connect: sensor-alarmen → meldingen (gateway-ingest).",
+                "Geen volledige REST API / webhooks."
             ]
         },
         "corporate": {
@@ -87,6 +88,7 @@
             "scale": "Onbeperkt data.",
             "description": "Voor grote portefeuilles en integraties.",
             "features": [
+                "IoT Connect + ESG-metingen via sensoren.",
                 "ESG, API en webhooks inclusief.",
                 "Prioritaire support."
             ]

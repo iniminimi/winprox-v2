@@ -322,5 +322,6 @@
         "cancelled_note": "La synchronisation a été arrêtée. Rien n'a été importé sur le serveur.",
         "phase_cancelling": "Arrêt…",
         "phase_cancelled": "Arrêtée"
-    }
+    },
+    "iot_module": "IoT Connect"
 }

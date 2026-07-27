@@ -47,6 +47,10 @@
                                 <span>{{ __('platform.esg_module') }}</span>
                             </label>
                             <label class="wp-chip wp-chip--sm">
+                                <input type="checkbox" wire:click="toggleIotModule({{ $tenant->id }})" {{ $tenant->has_iot_module ? 'checked' : '' }}>
+                                <span>{{ __('platform.iot_module') }}</span>
+                            </label>
+                            <label class="wp-chip wp-chip--sm">
                                 <input type="checkbox" wire:click="toggleTimeModule({{ $tenant->id }})" {{ $tenant->has_time_module ? 'checked' : '' }}>
                                 <span>{{ __('platform.time_module') }}</span>
                             </label>

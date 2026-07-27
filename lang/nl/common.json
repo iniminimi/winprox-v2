@@ -19,7 +19,8 @@
         "manual": "Handleiding",
         "legal": "Juridische documenten",
         "contact": "Contact",
-        "reservations": "Reserveringen"
+        "reservations": "Reserveringen",
+        "iot": "IoT Connect"
     },
     "status": {
         "new": "Nieuw (Open)",

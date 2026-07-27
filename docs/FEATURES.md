@@ -430,6 +430,30 @@ dashboards/KPI's — zie §5b.5.
 
 ---
 
+## 5c. IoT Connect
+
+**Doel:** hardware-onafhankelijke sensor-ingest. WinProx is geen IoT-platform: de gateway
+stuurt events; WinProx zet die om in workflow.
+
+### Plannen
+- **Facility:** IoT Connect aan (`has_iot_module`) — alleen **alarm → Issue → Task**.
+- **Corporate:** idem + **measurement → ESG-meting** (vereist ook `has_esg_module`).
+- Time/trial: IoT uit (tenzij platform-toggle).
+
+### Beheer (`/iot`)
+- Gateways (token éénmalig tonen), sensoren (external_id → location/unit, optioneel ESG-indicator),
+  alarmregels (operator/threshold/team/prio/tekst), recente events.
+- Alleen **admin**; module via plan-entitlements of Platform → Tenants toggle.
+
+### Ingest
+- `POST /api/v1/iot/events` — gateway-token (`X-WinProx-Iot-Key` / Bearer), **buiten** full
+  Sanctum `api.access` (Facility kan dus wel ingesten). Zie `docs/api/iot.md`.
+- Events in `iot_events` (geen time-series dump): status processed/ignored/deduped/failed.
+- Alarms: `IssueSource::Iot`, direct goedgekeurd; dedup zolang open taak bestaat voor dezelfde regel.
+- Measurements: `esg_measurements.task_id` mag `null` (sensorpad); threshold follow-up blijft werken.
+
+---
+
 ## 6. Team
 
 **Doel:** beheer van **collega-gebruikers** (WinProx-accounts: admin) én **operationele teams +

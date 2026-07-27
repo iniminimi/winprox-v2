@@ -29,6 +29,7 @@ use App\Livewire\Esg\Dashboard as EsgDashboard;
 use App\Livewire\Esg\IndicatorsIndex as EsgIndicatorsIndex;
 use App\Livewire\Esg\MeasurementsIndex as EsgMeasurementsIndex;
 use App\Livewire\Esg\PointHistory as EsgPointHistory;
+use App\Livewire\Iot\Index as IotIndex;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
@@ -286,6 +287,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');
         Route::get('/esg/point', EsgPointHistory::class)->name('esg.point.history');
+        Route::get('/iot', IotIndex::class)->name('iot.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');

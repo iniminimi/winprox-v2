@@ -77,8 +77,9 @@
             "users": "Include 1 amministratore e fino a 4 collaboratori. Lavoratori illimitati via import CSV/Excel.",
             "description": "Flussi facility completi su scala maggiore. WinProx Time incluso. Import massivo CSV/Excel per unità e lavoratori.",
             "features": [
-                "Segnalazioni e attività illimitate.",
-                "Nessun accesso API."
+                "Segnalazioni QR e task illimitati nelle tue sedi e unità.",
+                "IoT Connect: allarmi sensori → segnalazioni (ingest gateway).",
+                "Nessuna API REST completa / webhook."
             ]
         },
         "corporate": {
@@ -87,6 +88,7 @@
             "scale": "Dati illimitati.",
             "description": "Per grandi portafogli e integrazioni.",
             "features": [
+                "IoT Connect + misurazioni ESG via sensori.",
                 "ESG, API e webhook inclusi.",
                 "Supporto prioritario."
             ]

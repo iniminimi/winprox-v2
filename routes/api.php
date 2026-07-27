@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\AnnouncementController;
 use App\Http\Controllers\Api\V1\EsgMeasurementController;
 use App\Http\Controllers\Api\V1\HookController;
+use App\Http\Controllers\Api\V1\IotEventController;
 use App\Http\Controllers\Api\V1\IssueController;
 use App\Http\Controllers\Api\V1\LocationController;
 use App\Http\Controllers\Api\V1\TaskController;
@@ -21,6 +22,11 @@ Route::prefix('v1')->group(function () {
     Route::post('hooks/inbound', [HookController::class, 'inbound'])
         ->middleware('throttle:60,1')
         ->name('api.v1.hooks.inbound');
+
+    // IoT Connect ingest: gateway-token, buiten full Sanctum API (Facility + Corporate).
+    Route::post('iot/events', [IotEventController::class, 'store'])
+        ->middleware(['iot.gateway', 'throttle:120,1', 'idempotency'])
+        ->name('api.v1.iot.events.store');
 
     Route::middleware(['auth:sanctum', SetTenantFromToken::class, 'api.access'])->group(function () {
         // Read endpoints (geen idempotency nodig)
