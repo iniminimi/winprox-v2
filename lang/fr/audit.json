@@ -116,6 +116,14 @@
         "reservation.created": "Réservation créée",
         "reservation.confirmed": "Réservation confirmée",
         "reservation.updated": "Réservation mise à jour",
-        "reservation.cancelled": "Réservation annulée"
+        "reservation.cancelled": "Réservation annulée",
+        "iot_gateway.created": "Passerelle IoT créée",
+        "iot_gateway.activated": "Passerelle IoT activée",
+        "iot_gateway.deactivated": "Passerelle IoT désactivée",
+        "iot_sensor.created": "Capteur IoT créé",
+        "iot_rule.created": "Règle IoT créée",
+        "iot_alarm.issue_created": "Signalement alarme IoT créé",
+        "iot_alarm.skipped_duplicate": "Alarme IoT en double ignorée",
+        "tenant.iot_module_toggled": "IoT Connect activé/désactivé"
     }
 }

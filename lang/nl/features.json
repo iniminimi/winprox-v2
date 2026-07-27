@@ -139,5 +139,38 @@
             "title": "Voor wie",
             "body": "Elke organisatie die meldingen en veldwerk wil starten vanaf de fysieke plek — zonder app store of aparte veld-app."
         }
+    },
+    "iot": {
+        "nav_label": "IoT Connect",
+        "meta_title": "IoT Connect | sensoren → meldingen | WinProx",
+        "social": {
+            "og_title": "IoT Connect | sensoren → meldingen | WinProx",
+            "og_description": "Koppel sensorgateways: alarmen worden meldingen; op Corporate ook ESG-metingen."
+        },
+        "eyebrow": "IoT Connect",
+        "title": "Sensoren die werk starten",
+        "lead": "WinProx blijft de workflow-engine: gateways sturen events, jullie bepalen de regels. Geen hardware-lock-in.",
+        "problem": {
+            "title": "Welk probleem lost het op?",
+            "body": "Sensoralarmen belanden in aparte dashboards terwijl facility-teams in WinProx werken. Opvolging raakt zo versnipperd."
+        },
+        "solution": {
+            "title": "Oplossing",
+            "body": "Alarm → goedgekeurde melding → taak voor het juiste team. Op Corporate: metingen naar ESG naast dezelfde Issue-flow."
+        },
+        "capabilities": {
+            "title": "Functies",
+            "items": [
+                "Gateway-token ingest (ook Facility)",
+                "Sensoren gekoppeld aan units",
+                "Configureerbare alarmregels + dedup",
+                "ESG-metingen via sensoren (Corporate)",
+                "Events-log zonder time-series dump"
+            ]
+        },
+        "audience": {
+            "title": "Voor wie",
+            "body": "Facility-organisaties die lekdetectie, deuren, temperatuur of meters willen koppelen aan bestaande meldingen en taken."
+        }
     }
 }

@@ -1093,6 +1093,39 @@
                     "text": "Um zu sehen, wer eine Meldung genehmigt hat, welche Promo-Kampagne importiert wurde oder wer sich abgemeldet hat — ohne in die Datenbank zu schauen."
                 }
             ]
+        },
+        "iot.index": {
+            "title": "Help — IoT Connect",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
+                },
+                {
+                    "label": "Facility vs Corporate",
+                    "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
+                },
+                {
+                    "label": "Create a gateway",
+                    "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
+                },
+                {
+                    "label": "Sensors",
+                    "text": "Map an <strong>external sensor ID</strong> (as sent by the gateway) to a name, type and preferably a unit. For ESG measurements (Corporate), also link an active numeric ESG indicator."
+                },
+                {
+                    "label": "Alarm rules",
+                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduped</strong>."
+                },
+                {
+                    "label": "Sending events",
+                    "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
+                },
+                {
+                    "label": "Module not visible?",
+                    "text": "IoT Connect is included with Facility and Corporate. Superusers can also toggle it under Platform → Tenants."
+                }
+            ]
         }
     }
 }

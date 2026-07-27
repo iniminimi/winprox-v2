@@ -143,8 +143,8 @@
             "slug": "for_who",
             "type": "text",
             "title": "Who is WinProx for?",
-            "body": "For facility organisations — factories, healthcare, municipalities, campuses — that want to manage issues, internal teams, field follow-up, and optionally time tracking or ESG centrally. No separate hospitality or contractor portals: one Facility app.",
-            "summary": "Facility organisations: issues, teams, field work; optional Time and ESG."
+            "body": "For facility organisations — factories, healthcare, municipalities, campuses — that want to manage issues, internal teams, field follow-up, and optionally time tracking ESG or IoT Connect centrally. No separate hospitality or contractor portals: one Facility app.",
+            "summary": "Facility organisations: issues, teams, field work; optional Time, ESG and IoT Connect."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -242,6 +242,13 @@
             "title": "API and webhooks?",
             "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. This connects WinProx to other systems for issues, tasks, and ESG measurements.",
             "summary": "API tokens and webhooks under Settings (Corporate); HMAC-signed deliveries."
+        },
+        "iot": {
+            "slug": "iot",
+            "type": "text",
+            "title": "What is IoT Connect?",
+            "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST /api/v1/iot/events with a gateway token (also on Facility, without full REST API).",
+            "summary": "IoT Connect: sensor alarms → issues (Facility+); measurements → ESG (Corporate). Gateway-token ingest."
         }
     }
 }

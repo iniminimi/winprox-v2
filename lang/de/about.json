@@ -74,6 +74,7 @@
         "qr": "QR-Portale",
         "api": "API",
         "faq": "FAQ",
-        "pricing": "Preise"
+        "pricing": "Preise",
+        "iot": "IoT Connect"
     }
 }

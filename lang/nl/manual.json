@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & gebruikers tot instellingen",
-            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module, optionele Time-module en instellingen."
+            "intro": "Hoofdstukken over het ingelogde beheerportaal: teams, locaties, meldingen, taken, kalender, dashboard, optionele ESG-module, optionele Time-module, IoT Connect en instellingen."
         },
         "internet_portal": {
             "title": "QR-codes op de werkvloer",

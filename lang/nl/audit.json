@@ -116,6 +116,14 @@
         "reservation.created": "Reservering aangemaakt",
         "reservation.confirmed": "Reservering bevestigd",
         "reservation.updated": "Reservering bijgewerkt",
-        "reservation.cancelled": "Reservering geannuleerd"
+        "reservation.cancelled": "Reservering geannuleerd",
+        "iot_gateway.created": "IoT-gateway aangemaakt",
+        "iot_gateway.activated": "IoT-gateway geactiveerd",
+        "iot_gateway.deactivated": "IoT-gateway gedeactiveerd",
+        "iot_sensor.created": "IoT-sensor aangemaakt",
+        "iot_rule.created": "IoT-regel aangemaakt",
+        "iot_alarm.issue_created": "IoT-alarmmelding aangemaakt",
+        "iot_alarm.skipped_duplicate": "Dubbel IoT-alarm overgeslagen",
+        "tenant.iot_module_toggled": "IoT Connect in/uitgeschakeld"
     }
 }

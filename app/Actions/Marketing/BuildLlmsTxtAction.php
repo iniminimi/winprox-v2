@@ -39,6 +39,7 @@ class BuildLlmsTxtAction
             $lines[] = '- [Facility ('.$label.')]('.route('features.facility', ['locale' => $locale], absolute: true).'): Issues, tasks, moderation and facility workflows via QR.';
             $lines[] = '- [Time ('.$label.')]('.route('features.time', ['locale' => $locale], absolute: true).'): Clock Point presence, breaks and shifts.';
             $lines[] = '- [ESG ('.$label.')]('.route('features.esg', ['locale' => $locale], absolute: true).'): Optional ESG measurements on the same portals.';
+            $lines[] = '- [IoT Connect ('.$label.')]('.route('features.iot', ['locale' => $locale], absolute: true).'): Sensor gateway ingest: alarms become issues; Corporate also records ESG measurements.';
             $lines[] = '- [QR portals ('.$label.')]('.route('features.qr', ['locale' => $locale], absolute: true).'): Unit QR and Clock Point QR without a native app.';
             $lines[] = '- [API ('.$label.')]('.route('api.public', ['locale' => $locale], absolute: true).'): REST API and webhooks overview.';
         }

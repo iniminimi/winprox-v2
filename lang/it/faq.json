@@ -242,6 +242,13 @@
             "title": "API e webhook?",
             "body": "Su Corporate (o quando l'API è abilitata), gestisci in Impostazioni token API e webhook in uscita (firmati HMAC). Così colleghi WinProx ad altri sistemi per segnalazioni, task e misurazioni ESG.",
             "summary": "Token API e webhook in Impostazioni (Corporate); consegne firmate HMAC."
+        },
+        "iot": {
+            "slug": "iot",
+            "type": "text",
+            "title": "Cos’è IoT Connect?",
+            "body": "IoT Connect collega gateway di sensori a WinProx senza che WinProx venda hardware. Gli allarmi (perdita d’acqua, porta aperta troppo a lungo) creano automaticamente una segnalazione e un task approvati. Su Corporate le letture possono anche essere salvate come misurazioni ESG. Gestisci gateway, sensori e regole in IoT Connect; il gateway invia a POST /api/v1/iot/events con un token gateway (anche su Facility, senza API REST completa).",
+            "summary": "IoT Connect: allarmi sensori → segnalazioni (Facility+); misurazioni → ESG (Corporate). Ingest con token gateway."
         }
     }
 }

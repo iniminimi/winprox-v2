@@ -167,6 +167,7 @@ Route::get('/api', $redirectToLocalized('api.public'));
 Route::get('/features/facility', $redirectToLocalized('features.facility'));
 Route::get('/features/time', $redirectToLocalized('features.time'));
 Route::get('/features/esg', $redirectToLocalized('features.esg'));
+Route::get('/features/iot', $redirectToLocalized('features.iot'));
 Route::get('/features/qr-portals', $redirectToLocalized('features.qr'));
 
 foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
@@ -186,6 +187,7 @@ Route::prefix('{locale}')
         Route::get('/features/facility', FeaturePage::class)->name('features.facility');
         Route::get('/features/time', FeaturePage::class)->name('features.time');
         Route::get('/features/esg', FeaturePage::class)->name('features.esg');
+        Route::get('/features/iot', FeaturePage::class)->name('features.iot');
         Route::get('/features/qr-portals', FeaturePage::class)->name('features.qr');
         Route::get('/promo', [PromoController::class, 'show'])->name('promo');
 

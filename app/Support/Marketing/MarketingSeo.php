@@ -25,6 +25,7 @@ final class MarketingSeo
             'features.facility',
             'features.time',
             'features.esg',
+            'features.iot',
             'features.qr',
         ];
 

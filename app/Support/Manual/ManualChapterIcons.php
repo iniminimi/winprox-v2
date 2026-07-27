@@ -22,6 +22,7 @@ final class ManualChapterIcons
         'esg.dashboard' => 'sliders',
         'esg.indicators' => 'document',
         'esg.measurements' => 'sliders',
+        'iot.index' => 'api',
         'time.presence' => 'clock',
         'time.alarms' => 'alert-triangle',
         'time.shifts' => 'calendar',

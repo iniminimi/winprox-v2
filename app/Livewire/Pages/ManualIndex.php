@@ -34,6 +34,7 @@ class ManualIndex extends Component
         'esg.dashboard',
         'esg.indicators',
         'esg.measurements',
+        'iot.index',
         'time.presence',
         'time.shifts',
         'time.clock_points',

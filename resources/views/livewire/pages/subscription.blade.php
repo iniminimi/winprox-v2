@@ -89,6 +89,9 @@
                     @if ($tenant->has_esg_module)
                         <li>{{ __('subscription.status_module_esg') }}</li>
                     @endif
+                    @if ($tenant->has_iot_module)
+                        <li>{{ __('subscription.status_module_iot') }}</li>
+                    @endif
                     @if ($tenant->has_time_module)
                         <li>{{ __('subscription.status_module_time') }}</li>
                     @endif

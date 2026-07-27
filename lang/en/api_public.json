@@ -34,6 +34,10 @@
             {
                 "name": "ESG measurements",
                 "text": "Record measurements via esg:create where the module is enabled."
+            },
+            {
+                "name": "IoT Connect (gateway)",
+                "text": "Sensor events via gateway token to /api/v1/iot/events (Facility + Corporate; full Sanctum API not required)."
             }
         ]
     },

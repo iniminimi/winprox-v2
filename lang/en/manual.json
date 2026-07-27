@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard, optional ESG module, optional Time module and settings."
+            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, dashboard, optional ESG module, optional Time module, IoT Connect and settings."
         },
         "internet_portal": {
             "title": "QR codes on site",

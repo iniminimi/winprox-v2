@@ -27,6 +27,10 @@ return [
             'body_key' => 'faq.items.esg.summary',
         ],
         [
+            'patterns' => ['iot', 'sensor', 'gateway', 'lora', 'mqtt', 'waterlek', 'lekdetectie'],
+            'body_key' => 'faq.items.iot.summary',
+        ],
+        [
             'patterns' => ['taak', 'task', 'tache', 'aufgabe', 'briefing'],
             'body_key' => 'faq.items.team_follow_up.summary',
         ],

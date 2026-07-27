@@ -110,5 +110,6 @@
         "activation_disabled": "Auto-attivazione disabilitata. Contatta WinProx.",
         "csv_workers_not_allowed": "Import CSV/Excel lavoratori non disponibile sul tuo piano.",
         "csv_units_not_allowed": "Import CSV/Excel unità richiede WinProx Facility o Corporate."
-    }
+    },
+    "status_module_iot": "IoT Connect è attivo sul tuo account."
 }

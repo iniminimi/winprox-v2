@@ -110,5 +110,6 @@
         "activation_disabled": "Zelf-activeren is uitgeschakeld. Neem contact op met WinProx.",
         "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op je formule.",
         "csv_units_not_allowed": "CSV/Excel unit-import vereist WinProx Facility of Corporate."
-    }
+    },
+    "status_module_iot": "IoT Connect actief op je account."
 }

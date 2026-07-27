@@ -13,6 +13,7 @@ return [
         'photos',
         'time_clock',
         'esg',
+        'iot',
         'for_who',
         'user_roles',
         'internal_teams',

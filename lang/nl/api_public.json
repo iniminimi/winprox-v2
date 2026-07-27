@@ -34,6 +34,10 @@
             {
                 "name": "ESG-metingen",
                 "text": "Registreren van metingen via esg:create (waar de module actief is)."
+            },
+            {
+                "name": "IoT Connect (gateway)",
+                "text": "Sensor-events via gateway-token naar /api/v1/iot/events (Facility + Corporate; geen full Sanctum API nodig)."
             }
         ]
     },

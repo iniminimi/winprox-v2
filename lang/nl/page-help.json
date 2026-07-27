@@ -1093,6 +1093,39 @@
                     "text": "Handig om te zien wie een melding goedkeurde, welke promo-campagne werd geïmporteerd, of wie een e-mail uitschreef — zonder in de database te duiken."
                 }
             ]
+        },
+        "iot.index": {
+            "title": "Hulp — IoT Connect",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Hier beheert u <strong>gateways</strong>, <strong>sensoren</strong>, <strong>alarmregels</strong> en bekijkt u recente <strong>events</strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway/leverancier."
+                },
+                {
+                    "label": "Facility vs Corporate",
+                    "text": "<strong>Facility:</strong> alarmen worden goedgekeurde meldingen met taken. <strong>Corporate:</strong> hetzelfde, plus sensor-metingen naar ESG wanneer de sensor een unit en numerieke ESG-indicator heeft."
+                },
+                {
+                    "label": "Gateway aanmaken",
+                    "text": "Maak een gateway aan en <strong>bewaar het token meteen</strong> — het wordt maar één keer getoond. Configureer dit token in uw IoT-gateway (header <code>X-WinProx-Iot-Key</code> of Bearer)."
+                },
+                {
+                    "label": "Sensoren",
+                    "text": "Koppel een <strong>externe sensor-ID</strong> (zoals de gateway die stuurt) aan een naam, type en bij voorkeur een unit. Voor ESG-metingen (Corporate) koppelt u ook een actieve numerieke ESG-indicator."
+                },
+                {
+                    "label": "Alarmregels",
+                    "text": "Een regel bepaalt wanneer een event een melding wordt: operator + drempel, meldingstekst, team en prioriteit. Zolang er een open taak is voor dezelfde regel, worden nieuwe alarms <strong>gededupliceerd</strong>."
+                },
+                {
+                    "label": "Events versturen",
+                    "text": "De gateway post naar <code>POST /api/v1/iot/events</code> met <code>kind</code> <em>alarm</em> of <em>measurement</em>. Optioneel: <code>idempotency_key</code> om dubbele posts te voorkomen. Details staan in de API-docs (IoT Connect)."
+                },
+                {
+                    "label": "Module niet zichtbaar?",
+                    "text": "IoT Connect hoort bij Facility en Corporate (plan-entitlement). Superusers kunnen de module ook onder Platform → Tenants in- of uitschakelen."
+                }
+            ]
         }
     }
 }

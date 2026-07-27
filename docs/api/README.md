@@ -111,6 +111,7 @@ The API follows RESTful conventions with some specific action endpoints:
 - [Teams](./teams.md)
 - [Workers](./workers.md)
 - [ESG Measurements](./esg.md)
+- [IoT Connect](./iot.md)
 - [Webhooks](./webhooks.md)
 
 ## Multi-Tenancy

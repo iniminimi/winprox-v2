@@ -10,7 +10,7 @@ use Livewire\Component;
 class FeaturePage extends Component
 {
     /** @var list<string> */
-    public const SLUGS = ['facility', 'time', 'esg', 'qr'];
+    public const SLUGS = ['facility', 'time', 'esg', 'iot', 'qr'];
 
     public string $slug = '';
 
@@ -20,6 +20,7 @@ class FeaturePage extends Component
             request()->routeIs('features.facility') => 'facility',
             request()->routeIs('features.time') => 'time',
             request()->routeIs('features.esg') => 'esg',
+            request()->routeIs('features.iot') => 'iot',
             request()->routeIs('features.qr') => 'qr',
             default => null,
         };

@@ -139,5 +139,38 @@
             "title": "Per chi",
             "body": "Qualsiasi organizzazione che voglia avviare segnalazioni e lavoro sul campo dal luogo fisico — senza app store o app sul campo separata."
         }
+    },
+    "iot": {
+        "nav_label": "IoT Connect",
+        "meta_title": "IoT Connect | sensors → issues | WinProx",
+        "social": {
+            "og_title": "IoT Connect | sensors → issues | WinProx",
+            "og_description": "Connect sensor gateways: alarms become issues; on Corporate also ESG measurements."
+        },
+        "eyebrow": "IoT Connect",
+        "title": "Sensors that start work",
+        "lead": "WinProx stays the workflow engine: gateways send events, you set the rules. No hardware lock-in.",
+        "problem": {
+            "title": "What problem does it solve?",
+            "body": "Sensor alarms live in separate dashboards while facility teams work in WinProx. Follow-up gets fragmented."
+        },
+        "solution": {
+            "title": "Solution",
+            "body": "Alarm → approved issue → task for the right team. On Corporate: measurements into ESG alongside the same issue flow."
+        },
+        "capabilities": {
+            "title": "Features",
+            "items": [
+                "Gateway-token ingest (also Facility)",
+                "Sensors linked to units",
+                "Configurable alarm rules + dedupe",
+                "ESG measurements via sensors (Corporate)",
+                "Event log without a time-series dump"
+            ]
+        },
+        "audience": {
+            "title": "Who it is for",
+            "body": "Facility organisations that want leak detection, doors, temperature or meters tied into existing issues and tasks."
+        }
     }
 }

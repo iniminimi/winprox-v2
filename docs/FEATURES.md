@@ -19,7 +19,7 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar): Dashboard · Locaties/units · Meldingen · Taken · Kalender ·
-ESG & Compliance (optioneel, module) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
+ESG & Compliance (optioneel, module) · IoT Connect (Facility+/Corporate) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
 
 ---
 
@@ -451,6 +451,10 @@ stuurt events; WinProx zet die om in workflow.
 - Events in `iot_events` (geen time-series dump): status processed/ignored/deduped/failed.
 - Alarms: `IssueSource::Iot`, direct goedgekeurd; dedup zolang open taak bestaat voor dezelfde regel.
 - Measurements: `esg_measurements.task_id` mag `null` (sensorpad); threshold follow-up blijft werken.
+
+### Help / FAQ / marketing
+- FAQ-item `iot` + help-chat patronen; page-help `iot.index`; handleiding-hoofdstuk.
+- Marketing: `/features/iot`, about-link, sitemap/`llms.txt`, abonnementstatusregel.
 
 ---
 
