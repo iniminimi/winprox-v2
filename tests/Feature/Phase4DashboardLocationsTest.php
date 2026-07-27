@@ -196,6 +196,27 @@ it('bulk creates sequential units from a start number', function () {
         ->toBe(['Kamer 21', 'Kamer 22', 'Kamer 23']);
 });
 
+it('shows sequential bulk preview total and last name when truncated', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Preview']);
+
+    $component = Livewire::actingAs($user)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openBulkModal')
+        ->set('bulkScheme', UnitBulkNaming::SCHEME_SEQUENTIAL)
+        ->set('bulkFloors', '2')
+        ->set('bulkRoomsPerFloor', '17')
+        ->set('bulkPrefix', 'Kamer');
+
+    $preview = $component->instance()->bulkPreviewNames();
+
+    expect($preview['total'])->toBe(17)
+        ->and($preview['truncated'])->toBeTrue()
+        ->and($preview['names'][0])->toBe('Kamer 2')
+        ->and($preview['names'][count($preview['names']) - 1])->toBe('Kamer 18');
+});
+
 it('laat een gedeactiveerde unit opnieuw activeren', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

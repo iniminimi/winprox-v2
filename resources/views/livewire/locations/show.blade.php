@@ -470,10 +470,16 @@
                     </select>
                 </label>
 
-                @if ($bulkPreview !== [])
+                @if ($bulkPreview['names'] !== [])
                     <div class="wp-card wp-card-pad wp-surface-2">
-                        <p class="wp-label">{{ __('locations.bulk.preview') }}</p>
-                        <p class="wp-muted">{{ implode(', ', $bulkPreview) }}</p>
+                        <p class="wp-label">{{ __('locations.bulk.preview') }} ({{ __('locations.bulk.batch_count', ['count' => $bulkPreview['total']]) }})</p>
+                        <p class="wp-muted">
+                            @if ($bulkPreview['truncated'])
+                                {{ implode(', ', array_slice($bulkPreview['names'], 0, -1)) }}, …, {{ $bulkPreview['names'][count($bulkPreview['names']) - 1] }}
+                            @else
+                                {{ implode(', ', $bulkPreview['names']) }}
+                            @endif
+                        </p>
                     </div>
                 @endif
 

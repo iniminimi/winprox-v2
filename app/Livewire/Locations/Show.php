@@ -746,32 +746,34 @@ class Show extends Component
     }
 
     /**
-     * @return list<string>
+     * Preview van nog aan te maken namen. Bij >16 namen: eerste 15 + laatste (met ellipsis in de UI).
+     *
+     * @return array{names: list<string>, truncated: bool, total: int}
      */
     public function bulkPreviewNames(): array
     {
+        $empty = ['names' => [], 'truncated' => false, 'total' => 0];
+
         if (! $this->showBulkModal) {
-            return [];
+            return $empty;
         }
 
         if (UnitBulkNaming::isSequential($this->bulkScheme)) {
-            $start = (int) trim($this->bulkFloors);
-            $count = max(1, (int) trim($this->bulkRoomsPerFloor));
-            $floorCount = $start;
-            $roomsPerFloor = $count;
+            $floorCount = (int) trim($this->bulkFloors);
+            $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
         } else {
             $floorCount = max(1, (int) trim($this->bulkFloors));
             $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
         }
 
         if (UnitBulkNaming::validateConfig($floorCount, $roomsPerFloor, $this->bulkScheme) !== null) {
-            return [];
+            return $empty;
         }
 
         try {
             $names = UnitBulkNaming::generate($floorCount, $roomsPerFloor, $this->bulkScheme, trim($this->bulkPrefix));
         } catch (\InvalidArgumentException) {
-            return [];
+            return $empty;
         }
 
         $existing = Unit::query()
@@ -780,7 +782,22 @@ class Show extends Component
             ->pluck('name')
             ->all();
 
-        return array_values(array_slice(array_diff($names, $existing), 0, 16));
+        $available = array_values(array_diff($names, $existing));
+        $total = count($available);
+        $limit = 16;
+
+        if ($total <= $limit) {
+            return ['names' => $available, 'truncated' => false, 'total' => $total];
+        }
+
+        return [
+            'names' => [
+                ...array_slice($available, 0, $limit - 1),
+                $available[$total - 1],
+            ],
+            'truncated' => true,
+            'total' => $total,
+        ];
     }
 
     public function getBulkRoomsMaxProperty(): int
