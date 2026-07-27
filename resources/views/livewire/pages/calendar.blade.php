@@ -67,7 +67,7 @@
                         <select class="wp-select wp-select--compact" wire:model.live="categoryFilter" aria-label="{{ __('calendar.all_categories') }}">
                             <option value="">{{ __('calendar.all_categories') }}</option>
                             @foreach ($reservableCategories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                             @endforeach
                         </select>
                     @endif

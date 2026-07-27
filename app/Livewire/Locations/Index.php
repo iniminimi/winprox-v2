@@ -248,6 +248,7 @@ class Index extends Component
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
+                'original_language' => auth()->user()?->locale,
             ], (int) auth()->id());
         } else {
             $category = Category::query()->findOrFail($this->editingCategoryId);
@@ -314,12 +315,13 @@ class Index extends Component
 
         $teams = InternalTeam::query()
             ->where('is_active', true)
+            ->with('translations')
             ->orderBy('sort_order')
             ->orderBy('name')
-            ->get(['id', 'name']);
+            ->get(['id', 'name', 'original_language']);
 
         $categories = $categoriesEnabled
-            ? Category::query()->orderBy('name')->get(['id', 'name'])
+            ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
         return view('livewire.locations.index', [

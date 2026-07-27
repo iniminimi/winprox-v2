@@ -22,7 +22,7 @@
                     <select id="alarms-team" class="wp-select" wire:model.live="teamFilter">
                         <option value="">{{ __('time.filters.all_teams') }}</option>
                         @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                         @endforeach
                     </select>
                 </div>

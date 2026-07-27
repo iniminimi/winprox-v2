@@ -52,7 +52,7 @@ class Show extends Component
             'issue.updates.user',
             'issue.updates.worker',
             'translations',
-            'team',
+            'team.translations',
             'esgThresholdMeasurement.indicator.translations',
             'esgThresholdMeasurement.task',
             'esgThresholdMeasurement.thresholdFollowUpTask',
@@ -173,7 +173,7 @@ class Show extends Component
 
     protected function refreshTask(): void
     {
-        $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team']);
+        $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'team.translations']);
         $this->syncFormFromTask();
     }
 
@@ -211,9 +211,10 @@ class Show extends Component
             'addressLine' => $addressLine,
             'teams' => InternalTeam::query()
                 ->where('is_active', true)
+                ->with('translations')
                 ->orderBy('sort_order')
                 ->orderBy('name')
-                ->get(['id', 'name']),
+                ->get(['id', 'name', 'original_language']),
             'priorities' => TaskPriority::cases(),
             'transitions' => TaskStatusTransitions::nextOptions($current),
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),

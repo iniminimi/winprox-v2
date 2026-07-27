@@ -103,7 +103,7 @@
                                     aria-expanded="{{ $isTeamExpanded ? 'true' : 'false' }}"
                                     aria-controls="team-panel-{{ $team->id }}">
                                 <x-wp-icon name="chevron-down" class="wp-disclosure-chevron {{ $isTeamExpanded ? 'is-open' : '' }}" />
-                                <span class="wp-data-row-title">{{ $team->name }}</span>
+                                <span class="wp-data-row-title">{{ $team->localizedName() }}</span>
                             </button>
                             <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
                         </div>
@@ -427,7 +427,7 @@
                                 <input type="checkbox"
                                        wire:model.live="selectedCategoryIds"
                                        value="{{ $category->id }}">
-                                <span>{{ $category->name }}</span>
+                                <span>{{ $category->localizedName() }}</span>
                             </label>
                         @endforeach
                     </div>

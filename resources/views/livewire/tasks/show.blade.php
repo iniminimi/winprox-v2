@@ -3,7 +3,7 @@
 
     $issue = $task->issue;
     $canUpdate = auth()->user()?->can('update', $task) ?? false;
-    $teamName = $task->team?->name ?: __('tasks.card.no_team');
+    $teamName = $task->team?->localizedName() ?: __('tasks.card.no_team');
     $taskDescription = trim($task->displayDescription());
     $issueDescriptionDiffers = $issue
         && filled($issue->localizedDescription())
@@ -113,7 +113,7 @@
                         <select id="teamId" class="wp-select" wire:model="teamId">
                             <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
                             @foreach ($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                             @endforeach
                         </select>
                         @error('teamId') <p class="wp-error">{{ $message }}</p> @enderror

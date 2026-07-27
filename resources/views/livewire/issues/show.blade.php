@@ -133,7 +133,7 @@
                 @forelse ($issue->tasks as $task)
                     @php
                         $taskDescription = trim($task->displayDescription());
-                        $teamName = $task->team?->name ?? __('issues.show.no_team');
+                        $teamName = $task->team?->localizedName() ?? __('issues.show.no_team');
                     @endphp
                     <div class="wp-issue-row" wire:key="task-{{ $task->id }}">
                         <div class="wp-grow wp-stack-tight">
@@ -209,7 +209,7 @@
                         <select id="newTeamId" class="wp-select" wire:model="newTeamId">
                             <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
                             @foreach ($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                             @endforeach
                         </select>
                         @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror
@@ -264,7 +264,7 @@
                         <select id="newTeamId" class="wp-select" wire:model="newTeamId">
                             <option value="">{{ __('issues.show.add_task_placeholder') }}</option>
                             @foreach ($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                             @endforeach
                         </select>
                         @error('newTeamId') <p class="wp-error">{{ $message }}</p> @enderror

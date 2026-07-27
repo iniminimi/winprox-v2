@@ -40,7 +40,7 @@
                             <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
                                 <option value="">{{ __('tasks.filter.team_all') }}</option>
                                 @foreach ($teams as $team)
-                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                    <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -110,7 +110,7 @@
                             $addressLine = $issue?->location
                                 ? trim(($issue->location->country_code ?: 'BE').' '.$issue->location->formattedAddress())
                                 : '';
-                            $teamName = $task->team?->name ?: __('tasks.card.no_team');
+                            $teamName = $task->team?->localizedName() ?: __('tasks.card.no_team');
                             $taskLine = __('tasks.card.line_team', ['team' => $teamName]);
                             $metaParts = collect();
                             if ($issue) {

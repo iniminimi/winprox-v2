@@ -176,6 +176,7 @@
         "user_limit": "La limite d'utilisateurs de votre forfait est atteinte. Passez à un abonnement supérieur pour inviter d'autres collègues.",
         "import_file_required": "Veuillez sélectionner un fichier CSV à importer.",
         "import_file_type": "Le fichier doit être un fichier CSV.",
-        "import_file_max": "Le fichier ne peut pas dépasser 10 Mo."
+        "import_file_max": "Le fichier ne peut pas dépasser 10 Mo.",
+        "translation_requires_active": "Les traductions ne sont possibles que pour les équipes actives."
     }
 }

@@ -6,8 +6,12 @@ namespace App\Actions\Communication;
 
 use App\Models\Announcement;
 use App\Models\AnnouncementTranslation;
+use App\Models\Category;
+use App\Models\CategoryTranslation;
 use App\Models\Document;
 use App\Models\DocumentTranslation;
+use App\Models\InternalTeam;
+use App\Models\InternalTeamTranslation;
 use App\Models\Issue;
 use App\Models\IssueTranslation;
 use App\Models\Location;
@@ -21,7 +25,7 @@ use Illuminate\Support\Facades\DB;
 
 /**
  * Vult ontbrekende content-vertalingen voor één tenant (lokaal via Ollama + import-pad).
- * Locaties inbegrepen (die ontbreken in winprox:translate-local-all).
+ * Locaties, categorieën en teams inbegrepen.
  */
 class FillTenantContentTranslationsAction
 {
@@ -33,6 +37,8 @@ class FillTenantContentTranslationsAction
         private BackfillTaskTranslationSlotsAction $backfillTasks,
         private BackfillDocumentTranslationSlotsAction $backfillDocuments,
         private BackfillEsgIndicatorTranslationSlotsAction $backfillEsgIndicators,
+        private BackfillCategoryTranslationSlotsAction $backfillCategories,
+        private BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         private TranslateExportItemsAction $translateItems,
         private ImportIssueTranslationsAction $importIssues,
         private ImportAnnouncementTranslationsAction $importAnnouncements,
@@ -41,6 +47,8 @@ class FillTenantContentTranslationsAction
         private ImportTaskTranslationsAction $importTasks,
         private ImportDocumentTranslationsAction $importDocuments,
         private ImportEsgIndicatorTranslationsAction $importEsgIndicators,
+        private ImportCategoryTranslationsAction $importCategories,
+        private ImportInternalTeamTranslationsAction $importTeams,
         private ExportPendingIssueTranslationsAction $exportIssues,
         private ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         private ExportPendingLocationTranslationsAction $exportLocations,
@@ -48,6 +56,8 @@ class FillTenantContentTranslationsAction
         private ExportPendingTaskTranslationsAction $exportTasks,
         private ExportPendingDocumentTranslationsAction $exportDocuments,
         private ExportPendingEsgIndicatorTranslationsAction $exportEsgIndicators,
+        private ExportPendingCategoryTranslationsAction $exportCategories,
+        private ExportPendingInternalTeamTranslationsAction $exportTeams,
     ) {}
 
     /**
@@ -65,6 +75,8 @@ class FillTenantContentTranslationsAction
             'tasks' => $this->backfillTasks->handle($tenantId),
             'documents' => $this->backfillDocuments->handle($tenantId),
             'esg' => $this->backfillEsgIndicators->handle($tenantId),
+            'categories' => $this->backfillCategories->handle($tenantId),
+            'teams' => $this->backfillTeams->handle($tenantId),
         ];
 
         $pending = [];
@@ -76,6 +88,8 @@ class FillTenantContentTranslationsAction
             $this->exportTasks->handle(),
             $this->exportDocuments->handle(),
             $this->exportEsgIndicators->handle(),
+            $this->exportCategories->handle(),
+            $this->exportTeams->handle(),
         ] as $batch) {
             if (! is_array($batch)) {
                 continue;
@@ -119,6 +133,14 @@ class FillTenantContentTranslationsAction
             )
             + $this->importEsgIndicators->handle(
                 array_values(array_filter($translated, static fn (array $i): bool => isset($i['esg_indicator_id']))),
+                $actorUserId,
+            )
+            + $this->importCategories->handle(
+                array_values(array_filter($translated, static fn (array $i): bool => isset($i['category_id']))),
+                $actorUserId,
+            )
+            + $this->importTeams->handle(
+                array_values(array_filter($translated, static fn (array $i): bool => isset($i['internal_team_id']))),
                 $actorUserId,
             );
 
@@ -174,6 +196,20 @@ class FillTenantContentTranslationsAction
             LocationTranslation::class,
             'location_id',
             static fn (Location $row): string => trim((string) $row->name),
+        );
+
+        $changed += $this->repointSourceLanguage(
+            Category::query()->where('tenant_id', $tenantId)->get(),
+            CategoryTranslation::class,
+            'category_id',
+            static fn (Category $row): string => trim((string) $row->name),
+        );
+
+        $changed += $this->repointSourceLanguage(
+            InternalTeam::query()->where('tenant_id', $tenantId)->where('is_active', true)->get(),
+            InternalTeamTranslation::class,
+            'internal_team_id',
+            static fn (InternalTeam $row): string => trim((string) $row->name),
         );
 
         // Units: alleen herlabelen als naam+omschrijving geen duidelijk Nederlands bevatten.

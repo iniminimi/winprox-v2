@@ -27,7 +27,7 @@
                     <select id="shifts-team" class="wp-select" wire:model="teamFilter">
                         <option value="">{{ __('time.filters.all_teams') }}</option>
                         @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,7 +71,7 @@
                         @if ($shift->clock_out_at)
                             – {{ $shift->clock_out_at->format('H:i') }}
                         @endif
-                        &middot; {{ $shift->team?->name }}
+                        &middot; {{ $shift->team?->localizedName() }}
                     </p>
                     <p class="wp-muted wp-text-sm">
                         {{ __('time.shifts.break_minutes', ['duration' => \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes)]) }}

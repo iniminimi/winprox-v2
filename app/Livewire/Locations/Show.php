@@ -822,7 +822,10 @@ class Show extends Component
             ->with(['qrCodes' => function ($q) {
                 $q->where('status', \App\Enums\QrCodeStatus::Active);
             }])
-            ->when($categoriesEnabled, fn ($q) => $q->with('category:id,name'))
+            ->when($categoriesEnabled, fn ($q) => $q->with([
+                'category.translations',
+                'category.teams.translations',
+            ]))
             ->with('translations')
             ->withExists('gpsReports')
             ->withCount('issues')
@@ -852,12 +855,13 @@ class Show extends Component
 
         $teams = InternalTeam::query()
             ->where('is_active', true)
+            ->with('translations')
             ->orderBy('sort_order')
             ->orderBy('name')
-            ->get(['id', 'name']);
+            ->get(['id', 'name', 'original_language']);
 
         $categories = $categoriesEnabled
-            ? Category::query()->orderBy('name')->get(['id', 'name'])
+            ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
         $previewUnit = null;

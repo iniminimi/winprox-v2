@@ -3,20 +3,26 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\RunPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
+use App\Actions\Communication\RunPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\RunPendingIssueTranslationsAction;
 use App\Actions\Communication\RunPendingTaskTranslationsAction;
 use App\Actions\Communication\RunPendingUnitTranslationsAction;
 use App\Enums\AnnouncementTranslationStatus;
+use App\Enums\CategoryTranslationStatus;
 use App\Enums\DocumentTranslationStatus;
 use App\Enums\EsgIndicatorTranslationStatus;
+use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
+use App\Models\CategoryTranslation;
 use App\Models\DocumentTranslation;
 use App\Models\EsgIndicatorTranslation;
+use App\Models\InternalTeamTranslation;
 use App\Models\IssueTranslation;
 use App\Models\TaskTranslation;
 use App\Models\UnitTranslation;
@@ -38,6 +44,8 @@ class TranslateLocalAllCommand extends Command
         RunPendingDocumentTranslationsAction $runDocuments,
         RunPendingUnitTranslationsAction $runUnits,
         RunPendingEsgIndicatorTranslationsAction $runEsgIndicators,
+        RunPendingCategoryTranslationsAction $runCategories,
+        RunPendingInternalTeamTranslationsAction $runTeams,
     ): int {
         $processAll = (bool) $this->option('all');
         $limit = $this->option('limit');
@@ -59,6 +67,8 @@ class TranslateLocalAllCommand extends Command
             'documents' => 0,
             'units' => 0,
             'esg_indicators' => 0,
+            'categories' => 0,
+            'teams' => 0,
         ];
 
         do {
@@ -77,50 +87,25 @@ class TranslateLocalAllCommand extends Command
 
             $progressBar = null;
             if ($showProgress) {
-                $progressBar = $this->output->createProgressBar(6);
+                $progressBar = $this->output->createProgressBar(8);
                 $progressBar->start();
             }
 
-            $issueCount = $runIssues->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('Issues') : null,
-            );
+            $issueCount = $runIssues->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Issues') : null);
             $progressBar?->advance();
-
-            $taskCount = $runTasks->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('Tasks') : null,
-            );
+            $taskCount = $runTasks->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Tasks') : null);
             $progressBar?->advance();
-
-            $announcementCount = $runAnnouncements->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('Announcements') : null,
-            );
+            $announcementCount = $runAnnouncements->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Announcements') : null);
             $progressBar?->advance();
-
-            $documentCount = $runDocuments->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('Documents') : null,
-            );
+            $documentCount = $runDocuments->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Documents') : null);
             $progressBar?->advance();
-
-            $unitCount = $runUnits->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('Units') : null,
-            );
+            $unitCount = $runUnits->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Units') : null);
             $progressBar?->advance();
-
-            $esgIndicatorCount = $runEsgIndicators->handle(
-                $parsedLimit,
-                null,
-                $showProgress ? $this->progressLogger('ESG indicators') : null,
-            );
+            $esgIndicatorCount = $runEsgIndicators->handle($parsedLimit, null, $showProgress ? $this->progressLogger('ESG indicators') : null);
+            $progressBar?->advance();
+            $categoryCount = $runCategories->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Categories') : null);
+            $progressBar?->advance();
+            $teamCount = $runTeams->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Teams') : null);
             $progressBar?->advance();
 
             if ($progressBar !== null) {
@@ -134,8 +119,10 @@ class TranslateLocalAllCommand extends Command
             $totals['documents'] += $documentCount;
             $totals['units'] += $unitCount;
             $totals['esg_indicators'] += $esgIndicatorCount;
+            $totals['categories'] += $categoryCount;
+            $totals['teams'] += $teamCount;
 
-            $processedThisRound = $issueCount + $taskCount + $announcementCount + $documentCount + $unitCount + $esgIndicatorCount;
+            $processedThisRound = $issueCount + $taskCount + $announcementCount + $documentCount + $unitCount + $esgIndicatorCount + $categoryCount + $teamCount;
 
             if (! $processAll) {
                 break;
@@ -159,6 +146,8 @@ class TranslateLocalAllCommand extends Command
         $this->line("Documents: {$totals['documents']}");
         $this->line("Units: {$totals['units']}");
         $this->line("ESG indicators: {$totals['esg_indicators']}");
+        $this->line("Categories: {$totals['categories']}");
+        $this->line("Teams: {$totals['teams']}");
         $this->newLine();
         $this->line('Still pending:');
         $this->printPendingCounts($pendingAfter);
@@ -175,7 +164,7 @@ class TranslateLocalAllCommand extends Command
     }
 
     /**
-     * @return array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int}
+     * @return array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int}
      */
     private function pendingCounts(): array
     {
@@ -204,11 +193,19 @@ class TranslateLocalAllCommand extends Command
                 ->where('status', EsgIndicatorTranslationStatus::Pending)
                 ->whereHas('indicator', fn ($query) => $query->where('is_active', true))
                 ->count(),
+            'categories' => CategoryTranslation::query()
+                ->where('status', CategoryTranslationStatus::Pending)
+                ->whereHas('category', fn ($query) => $query->where('name', '!=', ''))
+                ->count(),
+            'teams' => InternalTeamTranslation::query()
+                ->where('status', InternalTeamTranslationStatus::Pending)
+                ->whereHas('team', fn ($query) => $query->where('is_active', true)->where('name', '!=', ''))
+                ->count(),
         ];
     }
 
     /**
-     * @param  array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int}  $counts
+     * @param  array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int}  $counts
      */
     private function printPendingCounts(array $counts): void
     {
@@ -218,6 +215,8 @@ class TranslateLocalAllCommand extends Command
         $this->line("Documents: {$counts['documents']}");
         $this->line("Units: {$counts['units']}");
         $this->line("ESG indicators: {$counts['esg_indicators']}");
+        $this->line("Categories: {$counts['categories']}");
+        $this->line("Teams: {$counts['teams']}");
         $this->line('Total: '.array_sum($counts));
     }
 

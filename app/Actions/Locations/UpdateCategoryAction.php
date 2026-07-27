@@ -2,18 +2,26 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureCategoryTranslationSlotsAction;
+use App\Actions\Communication\InvalidateCategoryTranslationsOnSourceChangeAction;
 use App\Models\Category;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateCategoryAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private InvalidateCategoryTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureCategoryTranslationSlotsAction $ensureSlots,
+    ) {}
 
     /**
      * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool}  $data
      */
     public function handle(Category $category, array $data, ?int $actorUserId = null): Category
     {
+        $previousName = (string) $category->name;
+
         $category->update([
             'name' => trim($data['name']),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
@@ -21,6 +29,9 @@ class UpdateCategoryAction
         ]);
 
         $fresh = $category->fresh();
+
+        $this->invalidateTranslations->handle($fresh, $previousName, $actorUserId);
+        $this->ensureSlots->handle($fresh);
 
         $this->audit->record(
             userId: $actorUserId,

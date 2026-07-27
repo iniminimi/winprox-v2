@@ -365,7 +365,7 @@ class Show extends Component
     protected function refreshIssue(): void
     {
         $this->issue = $this->issue->fresh([
-            'tasks.team',
+            'tasks.team.translations',
             'tasks.translations',
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
@@ -379,7 +379,7 @@ class Show extends Component
     public function render()
     {
         $issue = $this->issue->load([
-            'tasks.team',
+            'tasks.team.translations',
             'tasks.translations',
             'translations',
             'photos' => fn ($q) => $q->orderBy('created_at'),
@@ -404,7 +404,7 @@ class Show extends Component
 
         return view('livewire.issues.show', [
             'issue' => $issue,
-            'teams' => InternalTeam::query()->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'priorities' => TaskPriority::cases(),
             'headline' => $headline,
             'addressLine' => $addressLine,

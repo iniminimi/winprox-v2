@@ -110,7 +110,7 @@
                 <select class="wp-input" wire:model.live="unitCategoryFilter">
                     <option value="">{{ __('locations.units.filters.all_categories') }}</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                     @endforeach
                 </select>
             </label>
@@ -137,7 +137,7 @@
                         @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
                             <p class="wp-issue-card-meta">
                                 @if ($unit->category)
-                                    {{ __('locations.units.meta_category', ['category' => $unit->category->name]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->name]) }}@endif
+                                    {{ __('locations.units.meta_category', ['category' => $unit->category->localizedName()]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->localizedName()]) }}@endif
                                 @endif
                             </p>
                         @endif
@@ -301,7 +301,7 @@
                     <select class="wp-input" wire:model="unitCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                         @endforeach
                     </select>
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
@@ -528,7 +528,7 @@
                     <select class="wp-input" x-model="categoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
                         @endforeach
                     </select>
                 </label>

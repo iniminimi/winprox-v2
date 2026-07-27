@@ -314,7 +314,7 @@
                 <select id="iot-rule-team" class="wp-input" wire:model="ruleTeamId">
                     <option value="">{{ __('iot.fields.choose') }}</option>
                     @foreach ($teams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                     @endforeach
                 </select>
 

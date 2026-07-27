@@ -28,7 +28,7 @@
                         wire:click="toggleTeam({{ $bucket->team->id }})"
                         aria-expanded="{{ $isExpanded ? 'true' : 'false' }}">
                     <x-wp-icon name="chevron-down" @class(['wp-disclosure-chevron', 'is-open' => $isExpanded]) />
-                    <span class="wp-data-row-title">{{ $bucket->team->name }}</span>
+                    <span class="wp-data-row-title">{{ $bucket->team->localizedName() }}</span>
                     <span class="wp-muted wp-time-presence-team-summary">
                         @if ($bucket->activeCount > 0)
                             {{ __('time.presence.team_summary_active', ['count' => $bucket->activeCount]) }}

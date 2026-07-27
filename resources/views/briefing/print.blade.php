@@ -96,7 +96,7 @@
                 <div class="wp-stack-tight">
                     <h2 class="wp-page-title">{{ __('briefing.title') }}</h2>
                     <p class="wp-muted">
-                        {{ $selectedTeam->name }}
+                        {{ $selectedTeam->localizedName() }}
                         &middot;
                         @if ($openTasksOnly)
                             {{ __('briefing.scope_open_tasks') }}

@@ -11,7 +11,7 @@
         @foreach ($teamBuckets as $bucket)
             <article class="wp-card wp-card-pad wp-stack wp-time-presence-summary-card" wire:key="presence-team-card-{{ $bucket->team->id }}">
                 <div class="wp-time-presence-summary-card__head">
-                    <h2 class="wp-section-title">{{ $bucket->team->name }}</h2>
+                    <h2 class="wp-section-title">{{ $bucket->team->localizedName() }}</h2>
                     @if ($bucket->attentionCount > 0)
                         <span class="wp-pill wp-pill--progress">{{ $bucket->attentionCount }}</span>
                     @endif

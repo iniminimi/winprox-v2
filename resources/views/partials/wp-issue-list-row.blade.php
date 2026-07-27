@@ -6,7 +6,7 @@
     $openTasks = $issue->tasks->filter(fn ($t) => $t->status !== TaskStatus::Closed);
 
     $teamNames = $issue->isApproved()
-        ? $openTasks->map(fn ($t) => $t->team?->name)->filter()->unique()->values()
+        ? $openTasks->map(fn ($t) => $t->team?->localizedName())->filter()->unique()->values()
         : collect();
     $cardTitle = collect([
         $issue->location?->localizedName(),

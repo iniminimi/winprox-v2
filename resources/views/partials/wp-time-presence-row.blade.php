@@ -18,7 +18,7 @@
         <div class="wp-time-presence-row__copy">
             <span class="wp-time-presence-row__name">{{ $shift->worker?->displayName() }}</span>
             @if ($showTeam)
-                <span class="wp-muted wp-text-sm">{{ $shift->team?->name }}</span>
+                <span class="wp-muted wp-text-sm">{{ $shift->team?->localizedName() }}</span>
             @endif
         </div>
     </div>

@@ -412,6 +412,7 @@ class Team extends Component
 
             $team = $createTeam->handle([
                 'name' => $validated['teamName'],
+                'original_language' => auth()->user()?->locale,
                 'sort_order' => $this->teamSortOrder,
                 'is_active' => $this->teamIsActive,
                 'session_lifespan_hours' => $sessionLifespanHours,
@@ -828,7 +829,10 @@ class Team extends Component
                 ->get()
             : collect();
 
-        $teams = InternalTeam::with(['workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name')])
+        $teams = InternalTeam::with([
+            'translations',
+            'workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name'),
+        ])
             ->when(trim($this->search) !== '', function ($query) {
                 $term = '%'.trim($this->search).'%';
                 $query->where(function ($teamQuery) use ($term) {
@@ -850,8 +854,9 @@ class Team extends Component
         }
 
         $categories = \App\Models\Category::where('tenant_id', Tenancy::id())
+            ->with('translations')
             ->orderBy('name')
-            ->get(['id', 'name']);
+            ->get(['id', 'name', 'original_language']);
 
         $tenantId = Tenancy::id();
         $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;

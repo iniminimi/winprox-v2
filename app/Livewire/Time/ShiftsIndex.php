@@ -132,7 +132,7 @@ class ShiftsIndex extends Component
     public function render()
     {
         $query = WorkShift::query()
-            ->with(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint', 'taskLogs.task'])
+            ->with(['worker', 'team.translations', 'clockInClockPoint', 'clockOutClockPoint', 'taskLogs.task'])
             ->when($this->from !== '', fn ($q) => $q->where('clock_in_at', '>=', $this->from.' 00:00:00'))
             ->when($this->to !== '', fn ($q) => $q->where('clock_in_at', '<=', $this->to.' 23:59:59'))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
@@ -142,7 +142,7 @@ class ShiftsIndex extends Component
 
         return view('livewire.time.shifts-index', [
             'shifts' => $query->paginate(25),
-            'teams' => InternalTeam::query()->orderBy('sort_order')->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'exportUrl' => route('time.shifts.export', array_filter([

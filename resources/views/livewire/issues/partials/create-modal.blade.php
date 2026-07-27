@@ -159,7 +159,7 @@
                 <select id="create_internal_team_id" class="wp-select" wire:model="internal_team_id">
                     <option value="">{{ __('issues.create.team_none') }}</option>
                     @foreach ($createTeams as $team)
-                        <option value="{{ $team->id }}">{{ $team->name }}</option>
+                        <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                     @endforeach
                 </select>
                 @error('internal_team_id') <p class="wp-error">{{ $message }}</p> @enderror

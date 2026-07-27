@@ -333,7 +333,7 @@ class Index extends Component
             'rules' => IotRule::query()->with(['sensor', 'team'])->latest()->limit(100)->get(),
             'events' => IotEvent::query()->with(['sensor', 'issue'])->latest('received_at')->limit(50)->get(),
             'units' => Unit::query()->orderBy('name')->get(),
-            'teams' => InternalTeam::query()->where('is_active', true)->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get(),
             'indicators' => $hasEsg
                 ? EsgIndicator::query()->where('is_active', true)->orderBy('name')->get()
                 : collect(),

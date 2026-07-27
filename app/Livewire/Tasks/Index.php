@@ -74,7 +74,7 @@ class Index extends Component
 
         $tasks = Task::query()
             ->forApprovedIssue()
-            ->with(['issue.location', 'issue.unit.translations', 'issue.translations', 'translations', 'team'])
+            ->with(['issue.location', 'issue.unit.translations', 'issue.translations', 'translations', 'team.translations'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->priorityFilter !== '', fn ($q) => $q->where('priority', $this->priorityFilter))
@@ -137,7 +137,7 @@ class Index extends Component
             'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
             'priorities' => TaskPriority::cases(),
-            'teams' => InternalTeam::query()->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->priorityFilter !== '' || $this->search !== '' || $this->recurring,
             'onboarding' => TenantOnboardingState::current(),
             'hasNoIssues' => $hasNoIssues,

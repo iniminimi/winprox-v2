@@ -105,7 +105,7 @@ class AlarmsIndex extends Component
             'typeCounts' => $typeCounts,
             'hasMore' => $filteredCount > $visibleItems->count(),
             'pageSize' => $pageSize,
-            'teams' => InternalTeam::query()->where('is_active', true)->orderBy('sort_order')->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'locations' => Location::query()->orderBy('name')->get(),
             'staleHours' => (int) config('time.stale_shift_hours', 16),
         ]);

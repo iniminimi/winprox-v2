@@ -176,6 +176,7 @@
         "user_limit": "Ha raggiunto il limite utenti del Suo piano. Aggiorni l'abbonamento per aggiungere altri colleghi.",
         "import_file_required": "Selezioni un file CSV da importare.",
         "import_file_type": "Il file deve essere un file CSV.",
-        "import_file_max": "Il file non può superare 10 MB."
+        "import_file_max": "Il file non può superare 10 MB.",
+        "translation_requires_active": "Le traduzioni sono disponibili solo per team attivi."
     }
 }

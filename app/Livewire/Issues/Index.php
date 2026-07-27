@@ -309,7 +309,7 @@ class Index extends Component
         $this->authorize('viewAny', Issue::class);
 
         $issues = Issue::query()
-            ->with(['location', 'unit.translations', 'tasks.team', 'translations'])
+            ->with(['location', 'unit.translations', 'tasks.team.translations', 'translations'])
             ->when($this->statusFilter !== '', fn ($q) => $q->where('status', $this->statusFilter))
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->teamFilter, fn ($q) => $q->whereHas('tasks', fn ($t) => $t->where('internal_team_id', $this->teamFilter)))
@@ -387,7 +387,7 @@ class Index extends Component
             'total' => $issues->count(),
             'perStatusLimits' => PerStatusListLimit::OPTIONS,
             'statuses' => TaskStatus::cases(),
-            'teams' => InternalTeam::query()->orderBy('name')->get(),
+            'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
             'hasFilters' => $this->statusFilter !== '' || $this->teamFilter || $this->search !== '' || $this->recurring || $this->unitFilter,
             'highlightIssue' => $this->highlightIssue,
             'onboarding' => TenantOnboardingState::current(),
@@ -398,7 +398,7 @@ class Index extends Component
                 ? Unit::query()->where('location_id', $this->location_id)->orderBy('name')->get()
                 : collect(),
             'createTeams' => $this->showCreateModal
-                ? InternalTeam::query()->where('is_active', true)->orderBy('name')->get()
+                ? InternalTeam::query()->where('is_active', true)->with('translations')->orderBy('name')->get()
                 : collect(),
             'hasEsgModule' => EsgModuleAccess::activeTenantHasModule(),
             'createEsgIndicators' => $this->showCreateModal && EsgModuleAccess::activeTenantHasModule()

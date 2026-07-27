@@ -227,7 +227,7 @@ class Calendar extends Component
             'isDayView' => $isDayView,
             'locations' => Location::query()->orderBy('name')->get(),
             'reservableCategories' => $this->entryType === 'reservations'
-                ? Category::query()->where('is_reservable', true)->orderBy('name')->get(['id', 'name'])
+                ? Category::query()->where('is_reservable', true)->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
                 : collect(),
             'dayPage' => $this->dayPage,
             'onboarding' => TenantOnboardingState::current(),

@@ -17,7 +17,7 @@
         <div class="wp-time-presence-card__head">
             <h3 class="wp-time-presence-card__name">{{ $worker->displayName() }}</h3>
             @if ($showTeam)
-                <p class="wp-time-presence-card__team wp-muted">{{ $worker->team?->name }}</p>
+                <p class="wp-time-presence-card__team wp-muted">{{ $worker->team?->localizedName() }}</p>
             @endif
         </div>
 

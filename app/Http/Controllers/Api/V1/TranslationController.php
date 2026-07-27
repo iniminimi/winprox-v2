@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
+use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
+use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
+use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
@@ -28,6 +32,8 @@ class TranslationController extends Controller
         ExportPendingUnitTranslationsAction $exportUnits,
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
+        ExportPendingCategoryTranslationsAction $exportCategories,
+        ExportPendingInternalTeamTranslationsAction $exportTeams,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
@@ -38,6 +44,8 @@ class TranslationController extends Controller
             $exportUnits->handle(),
             $exportTasks->handle(),
             $exportDocuments->handle(),
+            $exportCategories->handle(),
+            $exportTeams->handle(),
         );
 
         return $this->success([
@@ -55,6 +63,8 @@ class TranslationController extends Controller
         ImportUnitTranslationsAction $importUnits,
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
+        ImportCategoryTranslationsAction $importCategories,
+        ImportInternalTeamTranslationsAction $importTeams,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
@@ -74,6 +84,8 @@ class TranslationController extends Controller
         $unitItems = [];
         $taskItems = [];
         $documentItems = [];
+        $categoryItems = [];
+        $teamItems = [];
 
         foreach ($items as $item) {
             if (isset($item['document_id'])) {
@@ -86,6 +98,10 @@ class TranslationController extends Controller
                 $unitItems[] = $item;
             } elseif (isset($item['announcement_id'])) {
                 $announcementItems[] = $item;
+            } elseif (isset($item['category_id'])) {
+                $categoryItems[] = $item;
+            } elseif (isset($item['internal_team_id'])) {
+                $teamItems[] = $item;
             } else {
                 $issueItems[] = $item;
             }
@@ -96,7 +112,9 @@ class TranslationController extends Controller
             + $importLocations->handle($locationItems, $actorUserId)
             + $importUnits->handle($unitItems, $actorUserId)
             + $importTasks->handle($taskItems, $actorUserId)
-            + $importDocuments->handle($documentItems, $actorUserId);
+            + $importDocuments->handle($documentItems, $actorUserId)
+            + $importCategories->handle($categoryItems, $actorUserId)
+            + $importTeams->handle($teamItems, $actorUserId);
 
         return $this->success(['imported' => $imported]);
     }

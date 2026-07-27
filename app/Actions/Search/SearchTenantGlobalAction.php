@@ -182,7 +182,7 @@ final class SearchTenantGlobalAction
         $query = Worker::query()
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
-            ->with('team:id,name');
+            ->with(['team' => fn ($q) => $q->select('id', 'name', 'original_language')->with('translations')]);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             GlobalSearchQuery::applyWorkerNameMatch($termQuery, $term);
@@ -197,7 +197,7 @@ final class SearchTenantGlobalAction
                 'id' => $worker->id,
                 'type' => 'worker',
                 'title' => $worker->displayName(),
-                'subtitle' => (string) ($worker->team?->name ?? ''),
+                'subtitle' => (string) ($worker->team?->localizedName() ?? ''),
                 'url' => route('team.index', ['worker' => $worker->id]),
             ]);
     }
@@ -238,7 +238,8 @@ final class SearchTenantGlobalAction
     {
         $query = InternalTeam::query()
             ->where('tenant_id', $tenantId)
-            ->where('is_active', true);
+            ->where('is_active', true)
+            ->with('translations');
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             GlobalSearchQuery::applyColumnLike($termQuery, $term, ['name']);
@@ -252,7 +253,7 @@ final class SearchTenantGlobalAction
             ->map(static fn (InternalTeam $team): array => [
                 'id' => $team->id,
                 'type' => 'team',
-                'title' => (string) $team->name,
+                'title' => $team->localizedName(),
                 'subtitle' => '',
                 'url' => route('team.index', ['team' => $team->id]),
             ]);
@@ -317,7 +318,7 @@ final class SearchTenantGlobalAction
         $query = Task::query()
             ->forApprovedIssue()
             ->where('tenant_id', $tenantId)
-            ->with(['issue.location', 'issue.unit', 'team:id,name']);
+            ->with(['issue.location', 'issue.unit', 'team' => fn ($q) => $q->select('id', 'name', 'original_language')->with('translations')]);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             $termQuery->where(static function (Builder $taskQuery) use ($term): void {
@@ -350,7 +351,7 @@ final class SearchTenantGlobalAction
                 'id' => $task->id,
                 'type' => 'task',
                 'title' => '#'.$task->id.($task->displayDescription() !== '' ? ' - '.mb_strimwidth($task->displayDescription(), 0, 40, '...') : ''),
-                'subtitle' => trim((string) ($task->team?->name ?? '').($task->issue?->location?->localizedName() ? ' · '.$task->issue->location->localizedName() : '')),
+                'subtitle' => trim((string) ($task->team?->localizedName() ?? '').($task->issue?->location?->localizedName() ? ' · '.$task->issue->location->localizedName() : '')),
                 'url' => route('tasks.show', ['task' => $task->id]),
             ]);
     }

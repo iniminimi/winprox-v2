@@ -214,6 +214,7 @@ final class AdminHealthService
 
         $categories = Category::query()
             ->whereDoesntHave('teams')
+            ->with('translations')
             ->orderBy('name')
             ->get();
 
@@ -221,7 +222,7 @@ final class AdminHealthService
             $issues[] = new AdminHealthIssue(
                 type: AdminHealthIssueType::CategoryMissingTeam,
                 id: (int) $category->id,
-                title: $category->name,
+                title: $category->localizedName(),
                 subtitle: __('health.issue.category_team_hint'),
                 fixUrl: route('locations.index', ['edit_category' => $category->id]),
             );

@@ -56,7 +56,7 @@
                             <tr>
                                 <td>{{ $shift->clock_in_at->format('d-m-Y') }}</td>
                                 <td>{{ $shift->worker?->displayName() }}</td>
-                                <td>{{ $shift->team?->name }}</td>
+                                <td>{{ $shift->team?->localizedName() }}</td>
                                 <td>{{ $shift->clock_in_at->format('H:i') }}</td>
                                 <td>{{ $shift->clock_out_at?->format('H:i') ?? '—' }}</td>
                                 <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes) }}</td>

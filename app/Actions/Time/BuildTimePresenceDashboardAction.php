@@ -37,7 +37,7 @@ class BuildTimePresenceDashboardAction
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
-            ->with(['worker.team', 'openBreak', 'clockInClockPoint', 'breaks'])
+            ->with(['worker.team.translations', 'openBreak', 'clockInClockPoint', 'breaks'])
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
             ->when($clockPointId, fn ($q) => $q->where('clock_in_clock_point_id', $clockPointId))
             ->when($clockPointIdsForLocation !== null, fn ($q) => $q->whereIn('clock_in_clock_point_id', $clockPointIdsForLocation))
@@ -89,6 +89,7 @@ class BuildTimePresenceDashboardAction
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
             ->when($teamId, fn ($q) => $q->where('id', $teamId))
+            ->with('translations')
             ->orderBy('sort_order')
             ->orderBy('name')
             ->get();
@@ -356,7 +357,7 @@ class BuildTimePresenceDashboardAction
         }
 
         return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)
-            ->with('team')
+            ->with('team.translations')
             ->orderBy('last_name')
             ->orderBy('first_name')
             ->limit(100)
@@ -374,7 +375,7 @@ class BuildTimePresenceDashboardAction
         string $needle,
     ): Collection {
         return $this->absentWorkersQuery($tenantId, $teamId, $clockedInWorkerIds, $needle)
-            ->with('team')
+            ->with('team.translations')
             ->orderBy('last_name')
             ->orderBy('first_name')
             ->limit(50)

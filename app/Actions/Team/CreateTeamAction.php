@@ -2,8 +2,10 @@
 
 namespace App\Actions\Team;
 
+use App\Actions\Communication\EnsureInternalTeamTranslationSlotsAction;
 use App\Models\InternalTeam;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 
 /**
  * Maakt een operationeel team aan (incl. auto-gegenereerde team-QR-token).
@@ -13,7 +15,10 @@ use App\Support\Audit\AuditRecorder;
  */
 class CreateTeamAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureInternalTeamTranslationSlotsAction $ensureSlots,
+    ) {}
 
     /**
      * @param  array<string, mixed>  $data
@@ -23,10 +28,13 @@ class CreateTeamAction
         $team = InternalTeam::create([
             'tenant_id' => $tenantId,
             'name' => $data['name'],
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'sort_order' => (int) ($data['sort_order'] ?? 0),
             'is_active' => (bool) ($data['is_active'] ?? true),
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
+
+        $this->ensureSlots->handle($team);
 
         $this->audit->record(
             userId: $actorUserId,

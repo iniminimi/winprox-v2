@@ -2,24 +2,32 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Communication\EnsureCategoryTranslationSlotsAction;
 use App\Models\Category;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 
 class CreateCategoryAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private EnsureCategoryTranslationSlotsAction $ensureSlots,
+    ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
         $category = Category::query()->create([
             'tenant_id' => $tenantId,
             'name' => trim($data['name']),
+            'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
         ]);
+
+        $this->ensureSlots->handle($category);
 
         $this->audit->record(
             userId: $actorUserId,

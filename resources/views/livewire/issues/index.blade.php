@@ -47,7 +47,7 @@
                             <select id="teamFilter" class="wp-select" wire:model.defer="teamFilter">
                                 <option value="">{{ __('issues.filter.team_all') }}</option>
                                 @foreach ($teams as $team)
-                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                    <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
                                 @endforeach
                             </select>
                         </div>

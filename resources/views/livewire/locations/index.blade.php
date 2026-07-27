@@ -45,7 +45,7 @@
                 @foreach ($categories as $category)
                     <div class="wp-issue-row" wire:key="category-{{ $category->id }}">
                         <div class="wp-grow wp-stack-tight">
-                            <p class="wp-issue-card-title">{{ $category->name }}</p>
+                            <p class="wp-issue-card-title">{{ $category->localizedName() }}</p>
                         </div>
                         <div class="wp-cluster">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCategory({{ $category->id }})">{{ __('common.button.edit') }}</button>
@@ -189,7 +189,7 @@
                                        wire:model.live="selectedCategoryTeamIds"
                                        value="{{ $team->id }}"
                                        @if ($isTeamSelected) checked @endif>
-                                <span>{{ $team->name }}</span>
+                                <span>{{ $team->localizedName() }}</span>
                             </label>
                         @endforeach
                     </div>
