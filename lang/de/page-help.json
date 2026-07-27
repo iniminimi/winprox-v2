@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "Externe Ausführende",
-                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Peeters). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
+                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Müller). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
                 },
                 {
                     "label": "Sortierreihenfolge",

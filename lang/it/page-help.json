@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "Lavoratori esterni",
-                    "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno</strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elektro Peeters). Nell’elenco li riconosce dal badge <strong>Ext</strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
+                    "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno</strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elettricità Rossi). Nell’elenco li riconosce dal badge <strong>Ext</strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
                 },
                 {
                     "label": "Ordine di visualizzazione",

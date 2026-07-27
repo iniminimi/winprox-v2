@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "External workers",
-                    "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. Elektro Peeters). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
+                    "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. BrightSpark Electrical). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
                 },
                 {
                     "label": "Sort order",

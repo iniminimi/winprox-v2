@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "Exécutants externes",
-                    "text": "Lors de l’ajout ou de la modification, cochez <strong>Intervenant externe</strong> pour les installateurs, peintres, indépendants ou autres intervenants externes. Vous pouvez ensuite saisir optionnellement un nom d’entreprise (ex. Elektro Peeters). Dans la liste, ils portent le badge <strong>Ext</strong> et le nom d’entreprise s’il est renseigné. Ils utilisent le même parcours Clock Point et QR d’unité que les exécutants internes — pas de portail ni de connexion séparés."
+                    "text": "Lors de l’ajout ou de la modification, cochez <strong>Intervenant externe</strong> pour les installateurs, peintres, indépendants ou autres intervenants externes. Vous pouvez ensuite saisir optionnellement un nom d’entreprise (ex. Électricité Dupont). Dans la liste, ils portent le badge <strong>Ext</strong> et le nom d’entreprise s’il est renseigné. Ils utilisent le même parcours Clock Point et QR d’unité que les exécutants internes — pas de portail ni de connexion séparés."
                 },
                 {
                     "label": "Ordre de tri",

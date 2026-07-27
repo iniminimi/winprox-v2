@@ -328,7 +328,7 @@
                 },
                 {
                     "label": "Trabajadores externos",
-                    "text": "Al añadir o editar, marque <strong>Trabajador externo</strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Elektro Peeters). En la lista se reconocen por la insignia <strong>Ext</strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
+                    "text": "Al añadir o editar, marque <strong>Trabajador externo</strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Electricidad García). En la lista se reconocen por la insignia <strong>Ext</strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
                 },
                 {
                     "label": "Orden",
