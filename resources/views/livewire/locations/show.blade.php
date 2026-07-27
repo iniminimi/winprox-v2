@@ -20,7 +20,6 @@
                 </x-slot:toolbar>
             </x-wp-page-head-title>
         </div>
-        <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost">{{ __('dashboard.briefing_print') }}</a>
     </div>
 
     @if ($unitsImportNotice)
