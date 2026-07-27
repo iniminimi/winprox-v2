@@ -241,14 +241,15 @@
                     <div class="wp-field" x-data="{ open: false }">
                         <span class="wp-label">{{ __('locations.units.translation_edit.label') }}</span>
 
-                        <div class="wp-field-panel">
+                        <div class="wp-field-panel" :class="{ 'is-open': open }">
                             <button
                                 type="button"
                                 class="wp-field-panel__trigger"
-                                x-show="!open"
-                                @click="open = true"
+                                @click="open = !open"
+                                :aria-expanded="open"
                             >
-                                {{ __('locations.units.translation_edit.open') }}
+                                <span>{{ __('locations.units.translation_edit.open') }}</span>
+                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
                             </button>
 
                             <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>

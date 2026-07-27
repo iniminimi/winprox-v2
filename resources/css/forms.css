@@ -80,8 +80,16 @@
     background-color: var(--wp-surface);
 }
 
+.wp-field-panel.is-open {
+    border-color: var(--wp-border);
+    background-color: var(--wp-surface-muted);
+}
+
 .wp-field-panel__trigger {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
     width: 100%;
     min-height: var(--wp-btn-height);
     padding: 0.5rem 0.75rem;
@@ -100,8 +108,18 @@
     background-color: var(--wp-surface-muted);
 }
 
+.wp-field-panel.is-open .wp-field-panel__trigger {
+    border-bottom: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius) var(--wp-radius) 0 0;
+}
+
 .wp-field-panel__body {
     padding: 0.75rem;
+}
+
+/* Extra ademruimte onder het vertaal-kader (anders plakt Categorie ertegen). */
+.wp-stack > .wp-field:has(> .wp-field-panel) + .wp-field {
+    margin-top: 1.5rem;
 }
 
 /* Checkbox styling for category/team selection */
