@@ -186,10 +186,13 @@
 
     @if ($showGatewayModal)
         <x-wp-modal closeMethod="closeGatewayModal">
-            <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">
-                    {{ $editingGatewayId ? __('iot.gateways.edit_title') : __('iot.gateways.create_title') }}
-                </h2>
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">
+                        {{ $editingGatewayId ? __('iot.gateways.edit_title') : __('iot.gateways.create_title') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeGatewayModal" />
+                </div>
 
                 @if ($createdGatewayToken)
                     <p class="wp-text-body">{{ __('iot.gateways.token_once') }}</p>
@@ -218,10 +221,13 @@
 
     @if ($showSensorModal)
         <x-wp-modal closeMethod="closeSensorModal">
-            <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">
-                    {{ $editingSensorId ? __('iot.sensors.edit_title') : __('iot.sensors.create_title') }}
-                </h2>
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">
+                        {{ $editingSensorId ? __('iot.sensors.edit_title') : __('iot.sensors.create_title') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeSensorModal" />
+                </div>
 
                 <label class="wp-label" for="iot-sensor-gateway">{{ __('iot.fields.gateway') }}</label>
                 <select id="iot-sensor-gateway" class="wp-input" wire:model="sensorGatewayId">
@@ -272,10 +278,13 @@
 
     @if ($showRuleModal)
         <x-wp-modal closeMethod="closeRuleModal">
-            <div class="wp-modal__panel wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">
-                    {{ $editingRuleId ? __('iot.rules.edit_title') : __('iot.rules.create_title') }}
-                </h2>
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">
+                        {{ $editingRuleId ? __('iot.rules.edit_title') : __('iot.rules.create_title') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeRuleModal" />
+                </div>
 
                 <label class="wp-label" for="iot-rule-sensor">{{ __('iot.fields.sensor') }}</label>
                 <select id="iot-rule-sensor" class="wp-input" wire:model="ruleSensorId">
