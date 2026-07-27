@@ -327,6 +327,10 @@
                     "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
                 },
                 {
+                    "label": "Externe uitvoerders",
+                    "text": "Vink bij het toevoegen of bewerken <strong>Externe uitvoerder</strong> aan voor installateurs, schilders, zzp’ers of andere externe krachten. Optioneel vul je daarna een bedrijfsnaam in (bijv. Elektro Peeters). In de lijst herken je hen aan het badge <strong>Ext</strong> en eventueel de bedrijfsnaam. Ze gebruiken dezelfde Clock Point- en unit-QR-flow als interne uitvoerders — geen apart portaal of login."
+                },
+                {
                     "label": "Sorteervolgorde",
                     "text": "Bepaal de volgorde waarin teams verschijnen in lijsten en dropdowns. Lagere nummers verschijnen eerst."
                 },

@@ -327,6 +327,10 @@
                     "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. You can also add their email address and phone number."
                 },
                 {
+                    "label": "External workers",
+                    "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. Elektro Peeters). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
+                },
+                {
                     "label": "Sort order",
                     "text": "Determine the order in which teams appear in lists and dropdowns. Lower numbers appear first."
                 },

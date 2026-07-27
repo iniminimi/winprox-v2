@@ -327,6 +327,10 @@
                     "text": "Ausführende haben keinen E-Mail-Login; sie melden sich über die Clock Point QR mit Name und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
                 },
                 {
+                    "label": "Externe Ausführende",
+                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Peeters). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
+                },
+                {
                     "label": "Sortierreihenfolge",
                     "text": "Bestimmen Sie die Reihenfolge, in der Teams in Listen und Dropdowns erscheinen. Niedrigere Nummern erscheinen zuerst."
                 },
