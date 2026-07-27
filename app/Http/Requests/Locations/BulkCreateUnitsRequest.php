@@ -2,13 +2,13 @@
 
 namespace App\Http\Requests\Locations;
 
-use App\Support\Units\UnitBulkNaming;
+use App\Actions\Locations\BulkCreateUnitsAction;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 
 class BulkCreateUnitsRequest extends FormRequest
 {
-    public const MAX_UNITS = 500;
+    public const MAX_UNITS = BulkCreateUnitsAction::MAX_UNITS;
 
     public function authorize(): bool
     {
@@ -18,27 +18,29 @@ class BulkCreateUnitsRequest extends FormRequest
     /**
      * @return array<string, array<int, mixed>>
      */
-    public static function ruleSet(?string $scheme = null): array
+    public static function ruleSet(): array
     {
-        $scheme = $scheme ?? (string) request()->input('scheme', UnitBulkNaming::SCHEME_COMPACT_2);
-
-        $rules = [
-            'scheme' => ['required', Rule::in(UnitBulkNaming::schemes())],
-            'prefix' => ['nullable', 'string', 'max:30'],
+        return [
+            'ranges' => ['required', 'array', 'min:1'],
+            'ranges.*.start' => ['required', 'string', 'max:20', 'regex:/^\d+$/'],
+            'ranges.*.count' => ['required', 'integer', 'min:1', 'max:'.self::MAX_UNITS],
+            'ranges.*.padding' => ['nullable', 'integer', 'min:1', 'max:20'],
+            'ranges.*.prefix' => ['nullable', 'string', 'max:30'],
+            'ranges.*.suffix' => ['nullable', 'string', 'max:30'],
         ];
+    }
 
-        if (UnitBulkNaming::isSequential($scheme)) {
-            $maxRooms = $scheme === UnitBulkNaming::SCHEME_SEQUENTIAL_2
-                ? UnitBulkNaming::MAX_SEQUENTIAL_2
-                : UnitBulkNaming::MAX_SEQUENTIAL_3;
-            $rules['floors'] = ['required', 'integer', 'min:0', 'max:9'];
-            $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:'.$maxRooms];
-
-            return $rules;
+    /**
+     * Livewire property map: bulkRanges.* → ranges.*
+     *
+     * @return array<string, array<int, mixed>>
+     */
+    public static function livewireRuleSet(): array
+    {
+        $rules = [];
+        foreach (self::ruleSet() as $key => $rule) {
+            $rules[str_replace('ranges', 'bulkRanges', $key)] = $rule;
         }
-
-        $rules['floors'] = ['required', 'integer', 'min:1', 'max:10'];
-        $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:99'];
 
         return $rules;
     }
@@ -48,6 +50,58 @@ class BulkCreateUnitsRequest extends FormRequest
      */
     public function rules(): array
     {
-        return self::ruleSet($this->input('scheme'));
+        return self::ruleSet();
+    }
+
+    public function withValidator(Validator $validator): void
+    {
+        $validator->after(function (Validator $validator): void {
+            if ($validator->errors()->isNotEmpty()) {
+                return;
+            }
+
+            /** @var list<array<string, mixed>> $ranges */
+            $ranges = array_values($this->input('ranges', []));
+            self::assertRangesConsistent($validator, $ranges, 'ranges');
+        });
+    }
+
+    /**
+     * Shared after-checks for HTTP and Livewire.
+     *
+     * @param  list<array<string, mixed>>  $ranges
+     */
+    public static function assertRangesConsistent(Validator $validator, array $ranges, string $errorKey): void
+    {
+        $total = 0;
+
+        foreach ($ranges as $index => $range) {
+            $start = trim((string) ($range['start'] ?? ''));
+            $paddingRaw = $range['padding'] ?? null;
+            if ($paddingRaw !== null && $paddingRaw !== '' && (int) $paddingRaw < strlen($start)) {
+                $validator->errors()->add(
+                    $errorKey.'.'.$index.'.padding',
+                    __('locations.bulk.errors.padding'),
+                );
+            }
+
+            $total += (int) ($range['count'] ?? 0);
+        }
+
+        if ($total > self::MAX_UNITS) {
+            $validator->errors()->add($errorKey, __('locations.bulk.errors.too_many'));
+
+            return;
+        }
+
+        if ($validator->errors()->isNotEmpty()) {
+            return;
+        }
+
+        $action = app(BulkCreateUnitsAction::class);
+        $names = $action->namesFromRanges($ranges);
+        if ($action->duplicateNames($names) !== []) {
+            $validator->errors()->add($errorKey, __('locations.bulk.errors.duplicates'));
+        }
     }
 }

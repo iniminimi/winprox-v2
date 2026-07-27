@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Unidades en bloque",
-                    "text": "Cree rápidamente decenas de unidades (como habitaciones, plantas o activos consecutivos) de una vez dentro de un rango de numeración lógico. Número de series: indique cuántas series (p. ej. plantas o zonas) desea generar a la vez. Unidades por serie: determine el número de unidades específicas (p. ej. habitaciones o dispositivos) a crear por serie. Numeración: elija la estructura de numeración (p. ej. pasos de 10 como 01, 11, 21 o continua). El cuadro de vista previa dinámica en la parte inferior muestra inmediatamente cómo se nombrarán las unidades. Prefijo opcional: añada texto fijo antes del número (p. ej. HAB- o ZONA-) para que las unidades sean inmediatamente reconocibles (p. ej. HAB-01). Categoría: vincule la nueva serie generada directamente a una categoría específica (p. ej. Sanitario u Oficina) para organizar las unidades correctamente desde el principio. Numeración: esquema hotel en varias plantas (01/11/21 o 001/101/201), o un solo piso (piso 2 → Habitación 20–22 o Habitación 201–203) con prefijo opcional."
+                    "text": "Cree rápidamente decenas de unidades (como habitaciones, plantas o activos consecutivos) de una vez dentro de un rango de numeración lógico. Número de series: indique cuántas series (p. ej. plantas o zonas) desea generar a la vez. Unidades por serie: determine el número de unidades específicas (p. ej. habitaciones o dispositivos) a crear por serie. Numeración: añada una o más series con número inicial, cantidad y prefijo opcional (p. ej. 01; Habitación 20–22; Habitación 201–203; Habitación 501)."
                 },
                 {
                     "label": "Importar unidades",

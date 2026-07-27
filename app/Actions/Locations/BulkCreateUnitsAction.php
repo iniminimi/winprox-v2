@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Locations;
 
 use App\Actions\Communication\EnsureUnitTranslationSlotsAction;
@@ -9,13 +11,14 @@ use App\Models\Unit;
 use App\Models\UnitBulkBatch;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
-use App\Support\Units\UnitBulkNaming;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 class BulkCreateUnitsAction
 {
-    private const MAX_UNITS = 500;
+    public const MAX_UNITS = 500;
+
+    public const SCHEME_RANGES = 'ranges';
 
     public function __construct(
         private AuditRecorder $audit,
@@ -23,25 +26,167 @@ class BulkCreateUnitsAction
     ) {}
 
     /**
+     * Soft preview for UI: skips incomplete rows.
+     *
+     * @param  list<array<string, mixed>>  $ranges
+     * @return array{
+     *     names: list<string>,
+     *     duplicates: list<string>,
+     *     total: int,
+     *     truncated: bool,
+     *     preview_names: list<string>
+     * }
+     */
+    public function preview(array $ranges): array
+    {
+        $usable = [];
+
+        foreach ($ranges as $range) {
+            if (! is_array($range)) {
+                continue;
+            }
+
+            $start = trim((string) ($range['start'] ?? ''));
+            if ($start === '' || preg_match('/^\d+$/', $start) !== 1) {
+                continue;
+            }
+
+            $count = (int) ($range['count'] ?? 0);
+            if ($count < 1) {
+                continue;
+            }
+
+            $paddingRaw = $range['padding'] ?? null;
+            if ($paddingRaw !== null && $paddingRaw !== '' && (int) $paddingRaw < strlen($start)) {
+                continue;
+            }
+
+            $usable[] = [
+                'start' => $start,
+                'count' => $count,
+                'padding' => $paddingRaw,
+                'prefix' => (string) ($range['prefix'] ?? ''),
+                'suffix' => (string) ($range['suffix'] ?? ''),
+            ];
+        }
+
+        if ($usable === []) {
+            return [
+                'names' => [],
+                'duplicates' => [],
+                'total' => 0,
+                'truncated' => false,
+                'preview_names' => [],
+            ];
+        }
+
+        $totalCount = array_sum(array_map(fn (array $r): int => (int) $r['count'], $usable));
+        if ($totalCount > self::MAX_UNITS) {
+            return [
+                'names' => [],
+                'duplicates' => [],
+                'total' => 0,
+                'truncated' => false,
+                'preview_names' => [],
+            ];
+        }
+
+        $names = $this->namesFromRanges($usable);
+        $duplicates = $this->duplicateNames($names);
+        $total = count($names);
+        $limit = 16;
+
+        if ($total <= $limit) {
+            return [
+                'names' => $names,
+                'duplicates' => $duplicates,
+                'total' => $total,
+                'truncated' => false,
+                'preview_names' => $names,
+            ];
+        }
+
+        return [
+            'names' => $names,
+            'duplicates' => $duplicates,
+            'total' => $total,
+            'truncated' => true,
+            'preview_names' => [
+                ...array_slice($names, 0, $limit - 1),
+                $names[$total - 1],
+            ],
+        ];
+    }
+
+    /**
+     * Expand validated ranges into unit names (start .. start+count-1, padded).
+     *
+     * @param  list<array<string, mixed>>  $ranges
+     * @return list<string>
+     */
+    public function namesFromRanges(array $ranges): array
+    {
+        $names = [];
+
+        foreach ($ranges as $range) {
+            $startStr = trim((string) ($range['start'] ?? ''));
+            $count = (int) ($range['count'] ?? 0);
+            $paddingRaw = $range['padding'] ?? null;
+            $padding = ($paddingRaw === null || $paddingRaw === '')
+                ? strlen($startStr)
+                : max((int) $paddingRaw, strlen($startStr));
+            $prefix = (string) ($range['prefix'] ?? '');
+            $suffix = (string) ($range['suffix'] ?? '');
+            $start = (int) $startStr;
+
+            for ($i = 0; $i < $count; $i++) {
+                $number = str_pad((string) ($start + $i), $padding, '0', STR_PAD_LEFT);
+                $names[] = $prefix.$number.$suffix;
+            }
+        }
+
+        return $names;
+    }
+
+    /**
+     * @param  list<string>  $names
+     * @return list<string>
+     */
+    public function duplicateNames(array $names): array
+    {
+        $counts = array_count_values($names);
+        $duplicates = [];
+
+        foreach ($counts as $name => $count) {
+            if ($count > 1) {
+                $duplicates[] = (string) $name;
+            }
+        }
+
+        return $duplicates;
+    }
+
+    /**
      * @param  array<string, mixed>  $data
      * @return array{batch: UnitBulkBatch, created: int}
      */
     public function handle(Location $location, array $data, int $tenantId, ?int $actorUserId = null): array
     {
-        $floorCount = (int) $data['floors'];
-        $roomsPerFloor = (int) $data['rooms_per_floor'];
-        $scheme = (string) $data['scheme'];
-        $prefix = trim((string) ($data['prefix'] ?? ''));
+        /** @var list<array<string, mixed>> $ranges */
+        $ranges = array_values($data['ranges'] ?? []);
 
-        $configError = UnitBulkNaming::validateConfig($floorCount, $roomsPerFloor, $scheme);
-        if ($configError !== null) {
-            throw new InvalidArgumentException($configError);
+        $names = $this->namesFromRanges($ranges);
+
+        if ($names === []) {
+            throw new InvalidArgumentException('invalid');
         }
 
-        try {
-            $names = UnitBulkNaming::generate($floorCount, $roomsPerFloor, $scheme, $prefix);
-        } catch (\InvalidArgumentException $e) {
-            throw new InvalidArgumentException($e->getMessage());
+        if ($this->duplicateNames($names) !== []) {
+            throw new InvalidArgumentException('duplicates');
+        }
+
+        if (count($names) > self::MAX_UNITS) {
+            throw new InvalidArgumentException('too_many');
         }
 
         $existingNames = Unit::query()
@@ -57,35 +202,41 @@ class BulkCreateUnitsAction
             throw new InvalidArgumentException('names_exist');
         }
 
-        if ($total > self::MAX_UNITS) {
-            throw new InvalidArgumentException('too_many');
-        }
-
         Tenant::query()->findOrFail($tenantId)->assertCanAddUnits($total);
 
         $categoryId = isset($data['category_id']) && $data['category_id'] !== ''
             ? (int) $data['category_id']
             : null;
 
+        $batchPrefix = null;
+        foreach ($ranges as $range) {
+            $prefix = trim((string) ($range['prefix'] ?? ''));
+            if ($prefix !== '') {
+                $batchPrefix = $prefix;
+                break;
+            }
+        }
+
+        $rangeCount = count($ranges);
+
         return DB::transaction(function () use (
             $location,
             $tenantId,
             $names,
             $total,
-            $prefix,
-            $scheme,
-            $floorCount,
-            $roomsPerFloor,
+            $batchPrefix,
+            $rangeCount,
             $categoryId,
             $actorUserId,
+            $data,
         ): array {
             $batch = UnitBulkBatch::create([
                 'tenant_id' => $tenantId,
                 'location_id' => $location->id,
-                'prefix' => $prefix !== '' ? $prefix : null,
-                'scheme' => $scheme,
-                'floors' => $floorCount,
-                'rooms_per_floor' => $roomsPerFloor,
+                'prefix' => $batchPrefix,
+                'scheme' => self::SCHEME_RANGES,
+                'floors' => $rangeCount,
+                'rooms_per_floor' => $total,
                 'units_count' => $total,
             ]);
 

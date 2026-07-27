@@ -422,44 +422,58 @@
                     <x-wp-modal-close wire:click="closeBulkModal" />
                 </div>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.bulk.scheme') }}</span>
-                    <select class="wp-input" wire:model.live.debounce.300ms="bulkScheme">
-                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_COMPACT_2 }}">{{ __('locations.bulk.scheme_compact') }}</option>
-                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_BLOCK_3 }}">{{ __('locations.bulk.scheme_block') }}</option>
-                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL_2 }}">{{ __('locations.bulk.scheme_sequential_2') }}</option>
-                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL_3 }}">{{ __('locations.bulk.scheme_sequential_3') }}</option>
-                    </select>
-                </label>
+                <div class="wp-stack">
+                    @foreach ($bulkRanges as $index => $range)
+                        <div class="wp-card wp-card-pad wp-surface-2 wp-stack" wire:key="bulk-range-{{ $index }}">
+                            <div class="wp-row">
+                                <p class="wp-label">{{ __('locations.bulk.range_label', ['n' => $index + 1]) }}</p>
+                                @if (count($bulkRanges) > 1)
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="removeBulkRange({{ $index }})"
+                                        aria-label="{{ __('locations.bulk.remove_range') }}"
+                                    >×</button>
+                                @endif
+                            </div>
 
-                @if (\App\Support\Units\UnitBulkNaming::isSequential($bulkScheme))
-                    <div class="wp-form-grid-2">
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.bulk.floor_number') }}</span>
-                            <input type="number" min="0" max="9" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
-                        </label>
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.bulk.count') }}</span>
-                            <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.count_hint') }}" />
-                        </label>
-                    </div>
-                @else
-                    <div class="wp-form-grid-2">
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.bulk.floors') }}</span>
-                            <input type="number" min="1" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
-                        </label>
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.bulk.rooms_per_floor') }}</span>
-                            <input type="number" min="1" max="{{ $this->bulkRoomsMax }}" class="wp-input" wire:model.live.debounce.300ms="bulkRoomsPerFloor" placeholder="{{ __('locations.bulk.rooms_per_floor_hint') }}" />
-                        </label>
-                    </div>
-                @endif
+                            <div class="wp-form-grid-2">
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('locations.bulk.start') }}</span>
+                                    <input type="text" inputmode="numeric" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.start" placeholder="20" />
+                                </label>
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('locations.bulk.count') }}</span>
+                                    <input type="number" min="1" max="500" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.count" />
+                                </label>
+                            </div>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
-                    <input type="text" class="wp-input" wire:model.live.debounce.500ms="bulkPrefix" maxlength="30" />
-                </label>
+                            <div class="wp-form-grid-2">
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('locations.bulk.padding') }}</span>
+                                    <input type="number" min="1" max="20" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.padding" placeholder="{{ __('locations.bulk.padding_auto') }}" />
+                                </label>
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
+                                    <input type="text" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.prefix" maxlength="30" placeholder="Kamer " />
+                                </label>
+                            </div>
+
+                            <label class="wp-field">
+                                <span class="wp-label">{{ __('locations.bulk.suffix') }}</span>
+                                <input type="text" class="wp-input" wire:model.live.debounce.300ms="bulkRanges.{{ $index }}.suffix" maxlength="30" placeholder="-A" />
+                            </label>
+
+                            @error('bulkRanges.'.$index.'.start') <span class="wp-error">{{ $message }}</span> @enderror
+                            @error('bulkRanges.'.$index.'.count') <span class="wp-error">{{ $message }}</span> @enderror
+                            @error('bulkRanges.'.$index.'.padding') <span class="wp-error">{{ $message }}</span> @enderror
+                        </div>
+                    @endforeach
+                </div>
+
+                <button type="button" class="btn btn--ghost" wire:click="addBulkRange">
+                    {{ __('locations.bulk.add_range') }}
+                </button>
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
@@ -471,28 +485,40 @@
                     </select>
                 </label>
 
-                @if ($bulkPreview['names'] !== [])
+                @if ($bulkPreview['preview_names'] !== [])
                     <div class="wp-card wp-card-pad wp-surface-2">
                         <p class="wp-label">{{ __('locations.bulk.preview') }} ({{ __('locations.bulk.batch_count', ['count' => $bulkPreview['total']]) }})</p>
                         <p class="wp-muted">
-                            @if ($bulkPreview['truncated'])
-                                {{ implode(', ', array_slice($bulkPreview['names'], 0, -1)) }}, …, {{ $bulkPreview['names'][count($bulkPreview['names']) - 1] }}
-                            @else
-                                {{ implode(', ', $bulkPreview['names']) }}
-                            @endif
+                            @foreach ($bulkPreview['preview_names'] as $i => $name)
+                                @if ($bulkPreview['truncated'] && $i === count($bulkPreview['preview_names']) - 1)
+                                    @if ($i > 0), @endif…,
+                                @elseif ($i > 0)
+                                    ,
+                                @endif
+                                <span @class(['wp-error' => in_array($name, $bulkPreview['duplicates'], true)])>{{ $name }}</span>
+                            @endforeach
                         </p>
+                        @if ($bulkPreview['has_duplicates'])
+                            <p class="wp-error">{{ __('locations.bulk.errors.duplicates_count', ['count' => count($bulkPreview['duplicates'])]) }}</p>
+                        @endif
                     </div>
                 @endif
 
-                @error('bulkFloors') <span class="wp-error">{{ $message }}</span> @enderror
+                @error('bulkRanges') <span class="wp-error">{{ $message }}</span> @enderror
 
                 <div class="wp-row">
                     <button type="button" class="btn btn--ghost" wire:click="closeBulkModal">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="createBulk">
+                    <button
+                        type="submit"
+                        class="btn btn--primary"
+                        wire:loading.attr="disabled"
+                        wire:target="createBulk"
+                        @disabled($bulkPreview['has_duplicates'] || $bulkPreview['total'] < 1)
+                    >
                         <span wire:loading wire:target="createBulk" class="wp-mr-2">
                             <x-wp-spinner size="sm" />
                         </span>
-                        <span>{{ __('locations.bulk.submit') }}</span>
+                        <span>{{ __('locations.bulk.submit_count', ['count' => max($bulkPreview['total'], 0)]) }}</span>
                     </button>
                 </div>
             </form>

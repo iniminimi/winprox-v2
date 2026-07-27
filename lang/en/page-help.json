@@ -193,7 +193,7 @@
                 },
                 {
                     "label": "Bulk units",
-                    "text": "Quickly create dozens of units (such as rooms, floors or consecutive assets) at once within a logical numbering range. Number of ranges: specify how many ranges (e.g. floors or zones) you want to generate at once. Units per range: determine the number of specific units (e.g. rooms or devices) to be created per range. Numbering: Choose the numbering structure (e.g. steps of 10 such as 01, 11, 21 or continuous). The dynamic preview box at the bottom immediately shows how the units will be named. Optional prefix: Add fixed text before the number (e.g. ROOM- or ZONE-) so units are immediately recognizable (e.g. ROOM-01). Category: Link the newly generated range directly to a specific category (e.g. Sanitary or Office) to organize the units correctly right away. Numbering: hotel scheme across multiple floors (01/11/21 or 001/101/201), or one floor (floor 2 → Room 20–22 or Room 201–203) with optional prefix."
+                    "text": "Quickly create dozens of units (such as rooms, floors or consecutive assets) at once within a logical numbering range. Number of ranges: specify how many ranges (e.g. floors or zones) you want to generate at once. Units per range: determine the number of specific units (e.g. rooms or devices) to be created per range. Numbering: add one or more ranges with start number, count and optional prefix (e.g. 01; Room 20–22; Room 201–203; Room 501)."
                 },
                 {
                     "label": "Import units",

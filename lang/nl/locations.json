@@ -156,15 +156,17 @@
     },
     "bulk": {
         "title": "Bulk units toevoegen",
-        "floors": "Aantal reeksen",
-        "rooms_per_floor": "Units per reeks",
-        "rooms_per_floor_hint": "tot max 99",
-        "scheme": "Nummering",
-        "scheme_compact": "01, 11, 21… (twee cijfers, max. 9 per reeks)",
-        "scheme_block": "001, 101, 201… (drie cijfers)",
-        "prefix": "Optionele prefix",
+        "start": "Startnummer",
+        "count": "Aantal",
+        "padding": "Cijfers",
+        "padding_auto": "auto",
+        "prefix": "Prefix",
+        "suffix": "Suffix",
+        "range_label": "Reeks :n",
+        "add_range": "+ Nog een reeks toevoegen",
+        "remove_range": "Reeks verwijderen",
         "preview": "Voorbeeld",
-        "submit": "Alle units aanmaken",
+        "submit_count": "Alle :count units aanmaken",
         "created": ":count units aangemaakt.",
         "recent_title": "Recente bulk-aanmaak",
         "recent_hint": "Verwijder per bulk alleen units zonder melding of taak.",
@@ -175,17 +177,12 @@
         "batch_nothing_deletable": "Geen units in deze bulk kunnen worden verwijderd.",
         "errors": {
             "invalid": "Ongeldige bulk-configuratie.",
-            "scheme_rooms": "Maximaal 9 units per reeks bij dit nummeringsschema.",
-            "scheme_floors": "Maximaal 10 reeksen bij dit nummeringsschema.",
-            "scheme_range": "Nummering overschrijdt het toegestane bereik.",
             "names_exist": "Alle gegenereerde namen bestaan al op deze locatie.",
-            "too_many": "Te veel units in één bulk (max. 500)."
-        },
-        "count": "Aantal",
-        "count_hint": "max. 10 (2 cijfers) of 99 (3 cijfers)",
-        "scheme_sequential_2": "Eén verdieping, 2 cijfers (20, 21, 22…)",
-        "scheme_sequential_3": "Eén verdieping, 3 cijfers (201, 202, 203…)",
-        "floor_number": "Verdieping / reeks"
+            "too_many": "Te veel units in één bulk (max. 500).",
+            "padding": "Aantal cijfers mag niet kleiner zijn dan het startnummer.",
+            "duplicates": "Dubbele unitnamen in de reeksen — pas de reeksen aan.",
+            "duplicates_count": ":count dubbele naam/namen in het voorbeeld."
+        }
     },
     "import_history": {
         "title": "Recente imports",

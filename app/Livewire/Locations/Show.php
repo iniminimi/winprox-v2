@@ -39,7 +39,6 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use App\Support\Units\ImportBatchRegistry;
 use App\Support\Units\UnitBulkBatchRegistry;
-use App\Support\Units\UnitBulkNaming;
 use App\Support\Units\UnitDeletionGuard;
 use App\Support\Validation\TextDescriptionLimits;
 use InvalidArgumentException;
@@ -138,13 +137,8 @@ class Show extends Component
         $this->resetPage();
     }
 
-    public string $bulkFloors = '1';
-
-    public string $bulkRoomsPerFloor = '1';
-
-    public string $bulkScheme = UnitBulkNaming::SCHEME_COMPACT_2;
-
-    public string $bulkPrefix = '';
+    /** @var list<array{start: string, count: int|string, padding: string, prefix: string, suffix: string}> */
+    public array $bulkRanges = [];
 
     public ?int $bulkCategoryId = null;
 
@@ -537,42 +531,39 @@ class Show extends Component
     public function openBulkModal(): void
     {
         $this->authorize('create', Unit::class);
-        $this->bulkFloors = '3';
-        $this->bulkRoomsPerFloor = '1';
-        $this->bulkScheme = UnitBulkNaming::SCHEME_COMPACT_2;
-        $this->bulkPrefix = '';
+        $this->bulkRanges = [$this->emptyBulkRange()];
         $this->bulkCategoryId = null;
+        $this->resetErrorBag();
         $this->showBulkModal = true;
     }
 
-    public function updatedBulkScheme(string $value): void
+    public function addBulkRange(): void
     {
-        if (UnitBulkNaming::isSequential($value)) {
-            if ((int) $this->bulkFloors < 0 || (int) $this->bulkFloors > 9) {
-                $this->bulkFloors = '2';
-            }
-            if ((int) $this->bulkRoomsPerFloor < 1) {
-                $this->bulkRoomsPerFloor = '3';
-            }
-            $maxRooms = $value === UnitBulkNaming::SCHEME_SEQUENTIAL_2
-                ? UnitBulkNaming::MAX_SEQUENTIAL_2
-                : UnitBulkNaming::MAX_SEQUENTIAL_3;
-            if ((int) $this->bulkRoomsPerFloor > $maxRooms) {
-                $this->bulkRoomsPerFloor = (string) $maxRooms;
-            }
+        $this->bulkRanges[] = $this->emptyBulkRange();
+    }
 
+    public function removeBulkRange(int $index): void
+    {
+        if (count($this->bulkRanges) <= 1) {
             return;
         }
 
-        if ((int) $this->bulkFloors < 1) {
-            $this->bulkFloors = '1';
-        }
-        if ((int) $this->bulkRoomsPerFloor < 1) {
-            $this->bulkRoomsPerFloor = '1';
-        }
-        if ($value === UnitBulkNaming::SCHEME_COMPACT_2 && (int) $this->bulkRoomsPerFloor > 9) {
-            $this->bulkRoomsPerFloor = '9';
-        }
+        unset($this->bulkRanges[$index]);
+        $this->bulkRanges = array_values($this->bulkRanges);
+    }
+
+    /**
+     * @return array{start: string, count: int, padding: string, prefix: string, suffix: string}
+     */
+    private function emptyBulkRange(): array
+    {
+        return [
+            'start' => '',
+            'count' => 1,
+            'padding' => '',
+            'prefix' => '',
+            'suffix' => '',
+        ];
     }
 
     public function closeBulkModal(): void
@@ -752,68 +743,32 @@ class Show extends Component
     }
 
     /**
-     * Preview van nog aan te maken namen. Bij >16 namen: eerste 15 + laatste (met ellipsis in de UI).
-     *
-     * @return array{names: list<string>, truncated: bool, total: int}
+     * @return array{
+     *     names: list<string>,
+     *     duplicates: list<string>,
+     *     total: int,
+     *     truncated: bool,
+     *     preview_names: list<string>,
+     *     has_duplicates: bool
+     * }
      */
-    public function bulkPreviewNames(): array
+    private function bulkPreviewPayload(): array
     {
-        $empty = ['names' => [], 'truncated' => false, 'total' => 0];
-
         if (! $this->showBulkModal) {
-            return $empty;
+            return [
+                'names' => [],
+                'duplicates' => [],
+                'total' => 0,
+                'truncated' => false,
+                'preview_names' => [],
+                'has_duplicates' => false,
+            ];
         }
 
-        if (UnitBulkNaming::isSequential($this->bulkScheme)) {
-            $floorCount = (int) trim($this->bulkFloors);
-            $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
-        } else {
-            $floorCount = max(1, (int) trim($this->bulkFloors));
-            $roomsPerFloor = max(1, (int) trim($this->bulkRoomsPerFloor));
-        }
+        $preview = app(BulkCreateUnitsAction::class)->preview($this->bulkRanges);
+        $preview['has_duplicates'] = $preview['duplicates'] !== [];
 
-        if (UnitBulkNaming::validateConfig($floorCount, $roomsPerFloor, $this->bulkScheme) !== null) {
-            return $empty;
-        }
-
-        try {
-            $names = UnitBulkNaming::generate($floorCount, $roomsPerFloor, $this->bulkScheme, trim($this->bulkPrefix));
-        } catch (\InvalidArgumentException) {
-            return $empty;
-        }
-
-        $existing = Unit::query()
-            ->where('location_id', $this->location->id)
-            ->whereIn('name', $names)
-            ->pluck('name')
-            ->all();
-
-        $available = array_values(array_diff($names, $existing));
-        $total = count($available);
-        $limit = 16;
-
-        if ($total <= $limit) {
-            return ['names' => $available, 'truncated' => false, 'total' => $total];
-        }
-
-        return [
-            'names' => [
-                ...array_slice($available, 0, $limit - 1),
-                $available[$total - 1],
-            ],
-            'truncated' => true,
-            'total' => $total,
-        ];
-    }
-
-    public function getBulkRoomsMaxProperty(): int
-    {
-        return match ($this->bulkScheme) {
-            UnitBulkNaming::SCHEME_COMPACT_2 => 9,
-            UnitBulkNaming::SCHEME_SEQUENTIAL_2 => UnitBulkNaming::MAX_SEQUENTIAL_2,
-            UnitBulkNaming::SCHEME_SEQUENTIAL_3 => UnitBulkNaming::MAX_SEQUENTIAL_3,
-            default => 99,
-        };
+        return $preview;
     }
 
     public function getEditingUnitProperty(): ?Unit
@@ -829,21 +784,42 @@ class Show extends Component
     {
         $this->authorize('create', Unit::class);
 
-        $bulkRules = BulkCreateUnitsRequest::ruleSet($this->bulkScheme);
+        $this->bulkRanges = array_values(array_map(function (array $range): array {
+            $padding = $range['padding'] ?? '';
+
+            return [
+                'start' => trim((string) ($range['start'] ?? '')),
+                'count' => (int) ($range['count'] ?? 0),
+                'padding' => ($padding === '' || $padding === null) ? null : (int) $padding,
+                'prefix' => (string) ($range['prefix'] ?? ''),
+                'suffix' => (string) ($range['suffix'] ?? ''),
+            ];
+        }, $this->bulkRanges));
+
         $validated = $this->validate([
-            'bulkFloors' => $bulkRules['floors'],
-            'bulkRoomsPerFloor' => $bulkRules['rooms_per_floor'],
-            'bulkScheme' => $bulkRules['scheme'],
-            'bulkPrefix' => $bulkRules['prefix'],
+            ...BulkCreateUnitsRequest::livewireRuleSet(),
             'bulkCategoryId' => ['nullable', 'integer', 'exists:categories,id'],
         ]);
 
+        $consistency = Validator::make([], []);
+        BulkCreateUnitsRequest::assertRangesConsistent(
+            $consistency,
+            $validated['bulkRanges'],
+            'bulkRanges',
+        );
+        if ($consistency->fails()) {
+            foreach ($consistency->errors()->messages() as $key => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($key, $message);
+                }
+            }
+
+            return;
+        }
+
         try {
             $result = $bulkCreate->handle($this->location, [
-                'floors' => (int) $validated['bulkFloors'],
-                'rooms_per_floor' => (int) $validated['bulkRoomsPerFloor'],
-                'scheme' => $validated['bulkScheme'],
-                'prefix' => $validated['bulkPrefix'] ?? '',
+                'ranges' => $validated['bulkRanges'],
                 'category_id' => $validated['bulkCategoryId'] ?? null,
             ], (int) auth()->user()->tenant_id, (int) auth()->id());
 
@@ -852,15 +828,13 @@ class Show extends Component
             $this->location->refresh();
         } catch (InvalidArgumentException $e) {
             $key = match ($e->getMessage()) {
-                'scheme_rooms' => 'locations.bulk.errors.scheme_rooms',
-                'scheme_floors' => 'locations.bulk.errors.scheme_floors',
-                'scheme_range' => 'locations.bulk.errors.scheme_range',
+                'duplicates' => 'locations.bulk.errors.duplicates',
                 'names_exist' => 'locations.bulk.errors.names_exist',
                 'too_many' => 'locations.bulk.errors.too_many',
                 'unit_limit_exceeded' => 'locations.errors.unit_limit',
                 default => 'locations.bulk.errors.invalid',
             };
-            $this->addError('bulkFloors', __($key));
+            $this->addError('bulkRanges', __($key));
         }
     }
 
@@ -966,7 +940,7 @@ class Show extends Component
                 ->map(fn ($id) => (int) $id)
                 ->all(),
             'nav' => EntityDetailNavigation::forLocation($this->location),
-            'bulkPreview' => $this->bulkPreviewNames(),
+            'bulkPreview' => $this->bulkPreviewPayload(),
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
             'previewUnit' => $previewUnit,
             'descriptionLocales' => $descriptionLocales,

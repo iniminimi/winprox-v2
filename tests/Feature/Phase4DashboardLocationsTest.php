@@ -12,7 +12,6 @@ use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use Illuminate\Support\Facades\Storage;
 use App\Support\Tenancy;
-use App\Support\Units\UnitBulkNaming;
 use Illuminate\Support\Carbon;
 use Livewire\Livewire;
 
@@ -158,7 +157,7 @@ it('creates a location via Livewire', function () {
         ->and($location->street)->toBe('Industrieweg');
 });
 
-it('bulk creates units on location show', function () {
+it('bulk creates units from ranges on location show', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Bulk']);
@@ -166,18 +165,18 @@ it('bulk creates units on location show', function () {
     Livewire::actingAs($user)
         ->test(LocationShow::class, ['location' => $location])
         ->call('openBulkModal')
-        ->set('bulkFloors', '2')
-        ->set('bulkRoomsPerFloor', '1')
-        ->set('bulkScheme', UnitBulkNaming::SCHEME_COMPACT_2)
-        ->set('bulkPrefix', 'Machine')
+        ->set('bulkRanges', [
+            ['start' => '01', 'count' => 1, 'padding' => '', 'prefix' => 'Machine ', 'suffix' => ''],
+            ['start' => '11', 'count' => 1, 'padding' => '', 'prefix' => 'Machine ', 'suffix' => ''],
+        ])
         ->call('createBulk')
         ->assertHasNoErrors();
 
     expect($location->units()->count())->toBe(2)
-        ->and($location->units()->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
+        ->and($location->units()->orderBy('name')->pluck('name')->all())->toBe(['Machine 01', 'Machine 11']);
 });
 
-it('bulk creates sequential units from a start number', function () {
+it('bulk creates multi-range hotel rooms with prefix', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Sequential']);
@@ -185,55 +184,31 @@ it('bulk creates sequential units from a start number', function () {
     Livewire::actingAs($user)
         ->test(LocationShow::class, ['location' => $location])
         ->call('openBulkModal')
-        ->set('bulkScheme', UnitBulkNaming::SCHEME_SEQUENTIAL_2)
-        ->set('bulkFloors', '2')
-        ->set('bulkRoomsPerFloor', '3')
-        ->set('bulkPrefix', 'Kamer')
+        ->set('bulkRanges', [
+            ['start' => '20', 'count' => 3, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
+            ['start' => '201', 'count' => 3, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
+            ['start' => '501', 'count' => 1, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
+        ])
         ->call('createBulk')
         ->assertHasNoErrors();
 
     expect($location->units()->orderBy('name')->pluck('name')->all())
-        ->toBe(['Kamer 20', 'Kamer 21', 'Kamer 22']);
+        ->toBe(['Kamer 20', 'Kamer 201', 'Kamer 202', 'Kamer 203', 'Kamer 21', 'Kamer 22', 'Kamer 501']);
 });
 
-it('bulk creates three-digit sequential units for one floor', function () {
-    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
-    $user = User::factory()->create(['tenant_id' => $tenant->id]);
-    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Sequential3']);
-
-    Livewire::actingAs($user)
-        ->test(LocationShow::class, ['location' => $location])
-        ->call('openBulkModal')
-        ->set('bulkScheme', UnitBulkNaming::SCHEME_SEQUENTIAL_3)
-        ->set('bulkFloors', '2')
-        ->set('bulkRoomsPerFloor', '3')
-        ->set('bulkPrefix', 'Kamer')
-        ->call('createBulk')
-        ->assertHasNoErrors();
-
-    expect($location->units()->orderBy('name')->pluck('name')->all())
-        ->toBe(['Kamer 201', 'Kamer 202', 'Kamer 203']);
-});
-
-it('shows sequential bulk preview total and last name when truncated', function () {
+it('shows bulk preview total and last name when truncated', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Preview']);
 
-    $component = Livewire::actingAs($user)
+    Livewire::actingAs($user)
         ->test(LocationShow::class, ['location' => $location])
         ->call('openBulkModal')
-        ->set('bulkScheme', UnitBulkNaming::SCHEME_SEQUENTIAL_3)
-        ->set('bulkFloors', '2')
-        ->set('bulkRoomsPerFloor', '17')
-        ->set('bulkPrefix', 'Kamer');
-
-    $preview = $component->instance()->bulkPreviewNames();
-
-    expect($preview['total'])->toBe(17)
-        ->and($preview['truncated'])->toBeTrue()
-        ->and($preview['names'][0])->toBe('Kamer 201')
-        ->and($preview['names'][count($preview['names']) - 1])->toBe('Kamer 217');
+        ->set('bulkRanges', [
+            ['start' => '201', 'count' => 17, 'padding' => '', 'prefix' => 'Kamer ', 'suffix' => ''],
+        ])
+        ->assertSee('Kamer 201')
+        ->assertSee('Kamer 217');
 });
 
 it('laat een gedeactiveerde unit opnieuw activeren', function () {
