@@ -437,8 +437,8 @@
                 </div>
 
                 <div class="wp-card wp-card-pad wp-surface-2 wp-stack">
-                    <div class="wp-cluster">
-                        <label class="wp-field wp-grow">
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
                             <span class="wp-label">{{ __('locations.bulk.start') }}</span>
                             <input
                                 type="text"
@@ -448,7 +448,7 @@
                                 placeholder="{{ __('locations.bulk.start_hint') }}"
                             />
                         </label>
-                        <label class="wp-field wp-grow">
+                        <label class="wp-field">
                             <span class="wp-label">{{ __('locations.bulk.count') }}</span>
                             <input
                                 type="number"
@@ -460,8 +460,8 @@
                         </label>
                     </div>
 
-                    <div class="wp-cluster">
-                        <label class="wp-field wp-grow">
+                    <div class="wp-form-grid-2">
+                        <label class="wp-field">
                             <span class="wp-label">{{ __('locations.bulk.padding') }}</span>
                             <input
                                 type="number"
@@ -472,7 +472,7 @@
                                 placeholder="{{ __('locations.bulk.padding_auto') }}"
                             />
                         </label>
-                        <label class="wp-field wp-grow">
+                        <label class="wp-field">
                             <span class="wp-label">{{ __('locations.bulk.prefix') }}</span>
                             <input
                                 type="text"
