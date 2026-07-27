@@ -181,10 +181,11 @@
             "names_exist": "All generated names already exist at this location.",
             "too_many": "Too many units in one bulk (max. 500)."
         },
-        "scheme_sequential": "Sequential from start number (21, 22, 23…)",
-        "start_number": "Start number",
         "count": "Count",
-        "count_hint": "up to 500"
+        "count_hint": "max. 10 (2 digits) or 99 (3 digits)",
+        "scheme_sequential_2": "One floor, 2 digits (20, 21, 22…)",
+        "scheme_sequential_3": "One floor, 3 digits (201, 202, 203…)",
+        "floor_number": "Floor / series"
     },
     "import_history": {
         "title": "Recent imports",

@@ -181,10 +181,11 @@
             "names_exist": "Tutti i nomi generati esistono già in questa sede.",
             "too_many": "Troppe unità in una sola massa (max. 500)."
         },
-        "scheme_sequential": "Consecutivo da numero iniziale (21, 22, 23…)",
-        "start_number": "Numero iniziale",
         "count": "Quantità",
-        "count_hint": "fino a max 500"
+        "count_hint": "max. 10 (2 cifre) o 99 (3 cifre)",
+        "scheme_sequential_2": "Un piano, 2 cifre (20, 21, 22…)",
+        "scheme_sequential_3": "Un piano, 3 cifre (201, 202, 203…)",
+        "floor_number": "Piano / serie"
     },
     "import_history": {
         "title": "Importazioni recenti",

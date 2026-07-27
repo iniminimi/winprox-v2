@@ -427,15 +427,16 @@
                     <select class="wp-input" wire:model.live.debounce.300ms="bulkScheme">
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_COMPACT_2 }}">{{ __('locations.bulk.scheme_compact') }}</option>
                         <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_BLOCK_3 }}">{{ __('locations.bulk.scheme_block') }}</option>
-                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL }}">{{ __('locations.bulk.scheme_sequential') }}</option>
+                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL_2 }}">{{ __('locations.bulk.scheme_sequential_2') }}</option>
+                        <option value="{{ \App\Support\Units\UnitBulkNaming::SCHEME_SEQUENTIAL_3 }}">{{ __('locations.bulk.scheme_sequential_3') }}</option>
                     </select>
                 </label>
 
                 @if (\App\Support\Units\UnitBulkNaming::isSequential($bulkScheme))
                     <div class="wp-form-grid-2">
                         <label class="wp-field">
-                            <span class="wp-label">{{ __('locations.bulk.start_number') }}</span>
-                            <input type="number" min="0" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
+                            <span class="wp-label">{{ __('locations.bulk.floor_number') }}</span>
+                            <input type="number" min="0" max="9" class="wp-input" wire:model.live.debounce.300ms="bulkFloors" />
                         </label>
                         <label class="wp-field">
                             <span class="wp-label">{{ __('locations.bulk.count') }}</span>

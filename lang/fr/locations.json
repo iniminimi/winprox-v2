@@ -181,10 +181,11 @@
             "names_exist": "Tous les noms générés existent déjà sur ce site.",
             "too_many": "Trop d'unités en une fois (max. 500)."
         },
-        "scheme_sequential": "Séquentiel à partir du numéro de départ (21, 22, 23…)",
-        "start_number": "Numéro de départ",
         "count": "Nombre",
-        "count_hint": "jusqu’à 500"
+        "count_hint": "max. 10 (2 chiffres) ou 99 (3 chiffres)",
+        "scheme_sequential_2": "Un étage, 2 chiffres (20, 21, 22…)",
+        "scheme_sequential_3": "Un étage, 3 chiffres (201, 202, 203…)",
+        "floor_number": "Étage / série"
     },
     "import_history": {
         "title": "Imports récents",

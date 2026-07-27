@@ -181,10 +181,11 @@
             "names_exist": "Alle gegenereerde namen bestaan al op deze locatie.",
             "too_many": "Te veel units in één bulk (max. 500)."
         },
-        "scheme_sequential": "Opeenvolgend vanaf startnummer (21, 22, 23…)",
-        "start_number": "Startnummer",
         "count": "Aantal",
-        "count_hint": "tot max 500"
+        "count_hint": "max. 10 (2 cijfers) of 99 (3 cijfers)",
+        "scheme_sequential_2": "Eén verdieping, 2 cijfers (20, 21, 22…)",
+        "scheme_sequential_3": "Eén verdieping, 3 cijfers (201, 202, 203…)",
+        "floor_number": "Verdieping / reeks"
     },
     "import_history": {
         "title": "Recente imports",

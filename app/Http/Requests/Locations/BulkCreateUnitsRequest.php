@@ -28,8 +28,11 @@ class BulkCreateUnitsRequest extends FormRequest
         ];
 
         if (UnitBulkNaming::isSequential($scheme)) {
-            $rules['floors'] = ['required', 'integer', 'min:0', 'max:65535'];
-            $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:'.UnitBulkNaming::MAX_SEQUENTIAL];
+            $maxRooms = $scheme === UnitBulkNaming::SCHEME_SEQUENTIAL_2
+                ? UnitBulkNaming::MAX_SEQUENTIAL_2
+                : UnitBulkNaming::MAX_SEQUENTIAL_3;
+            $rules['floors'] = ['required', 'integer', 'min:0', 'max:9'];
+            $rules['rooms_per_floor'] = ['required', 'integer', 'min:1', 'max:'.$maxRooms];
 
             return $rules;
         }

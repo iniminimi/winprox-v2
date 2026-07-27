@@ -181,10 +181,11 @@
             "names_exist": "Alle generierten Namen existieren bereits an diesem Standort.",
             "too_many": "Zu viele Units auf einmal (max. 500)."
         },
-        "scheme_sequential": "Fortlaufend ab Startnummer (21, 22, 23…)",
-        "start_number": "Startnummer",
         "count": "Anzahl",
-        "count_hint": "bis max. 500"
+        "count_hint": "max. 10 (2 Ziffern) oder 99 (3 Ziffern)",
+        "scheme_sequential_2": "Eine Etage, 2 Ziffern (20, 21, 22…)",
+        "scheme_sequential_3": "Eine Etage, 3 Ziffern (201, 202, 203…)",
+        "floor_number": "Etage / Reihe"
     },
     "import_history": {
         "title": "Letzte Imports",

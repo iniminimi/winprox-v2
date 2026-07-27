@@ -181,10 +181,11 @@
             "names_exist": "Todos los nombres generados ya existen en esta ubicación.",
             "too_many": "Demasiadas unidades en un solo bloque (máx. 500)."
         },
-        "scheme_sequential": "Secuencial desde número inicial (21, 22, 23…)",
-        "start_number": "Número inicial",
         "count": "Cantidad",
-        "count_hint": "hasta máx. 500"
+        "count_hint": "máx. 10 (2 dígitos) o 99 (3 dígitos)",
+        "scheme_sequential_2": "Un piso, 2 dígitos (20, 21, 22…)",
+        "scheme_sequential_3": "Un piso, 3 dígitos (201, 202, 203…)",
+        "floor_number": "Piso / serie"
     },
     "import_history": {
         "title": "Importaciones recientes",

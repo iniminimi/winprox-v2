@@ -548,11 +548,17 @@ class Show extends Component
     public function updatedBulkScheme(string $value): void
     {
         if (UnitBulkNaming::isSequential($value)) {
-            if ((int) $this->bulkFloors < 0) {
-                $this->bulkFloors = '1';
+            if ((int) $this->bulkFloors < 0 || (int) $this->bulkFloors > 9) {
+                $this->bulkFloors = '2';
             }
             if ((int) $this->bulkRoomsPerFloor < 1) {
-                $this->bulkRoomsPerFloor = '1';
+                $this->bulkRoomsPerFloor = '3';
+            }
+            $maxRooms = $value === UnitBulkNaming::SCHEME_SEQUENTIAL_2
+                ? UnitBulkNaming::MAX_SEQUENTIAL_2
+                : UnitBulkNaming::MAX_SEQUENTIAL_3;
+            if ((int) $this->bulkRoomsPerFloor > $maxRooms) {
+                $this->bulkRoomsPerFloor = (string) $maxRooms;
             }
 
             return;
@@ -804,7 +810,8 @@ class Show extends Component
     {
         return match ($this->bulkScheme) {
             UnitBulkNaming::SCHEME_COMPACT_2 => 9,
-            UnitBulkNaming::SCHEME_SEQUENTIAL => UnitBulkNaming::MAX_SEQUENTIAL,
+            UnitBulkNaming::SCHEME_SEQUENTIAL_2 => UnitBulkNaming::MAX_SEQUENTIAL_2,
+            UnitBulkNaming::SCHEME_SEQUENTIAL_3 => UnitBulkNaming::MAX_SEQUENTIAL_3,
             default => 99,
         };
     }
