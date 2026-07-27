@@ -40,6 +40,7 @@ class ManualIndex extends Component
         'time.clock_points',
         'settings',
         'settings.api',
+        'subscription',
     ];
 
     private const INTERNET_PORTAL_CHAPTER_KEYS = [

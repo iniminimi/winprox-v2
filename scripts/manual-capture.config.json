@@ -72,6 +72,13 @@
             "auth": true
         },
         {
+            "id": "reservations",
+            "path": "/reservations",
+            "selector": "[data-manual-capture=\"reservations\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
             "id": "dashboard",
             "path": "/dashboard",
             "selector": "[data-manual-capture=\"dashboard\"]",
@@ -90,6 +97,14 @@
             "id": "esg-measurements",
             "path": "/esg/measurements",
             "selector": "[data-manual-capture=\"esg-measurements\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "optional": true
+        },
+        {
+            "id": "iot-index",
+            "path": "/iot",
+            "selector": "[data-manual-capture=\"iot-connect\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true,
             "optional": true
@@ -137,6 +152,13 @@
             "id": "settings-api",
             "path": "/settings/api",
             "selector": "[data-manual-capture=\"settings-api\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true
+        },
+        {
+            "id": "subscription",
+            "path": "/subscription",
+            "selector": "[data-manual-capture=\"subscription\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true
         },

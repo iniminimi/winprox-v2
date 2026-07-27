@@ -46,6 +46,10 @@ final class PrepareManualCaptureTenantAction
             $updates['has_time_module'] = true;
         }
 
+        if (! $tenant->hasIotModule()) {
+            $updates['has_iot_module'] = true;
+        }
+
         if ($updates !== []) {
             $tenant->update($updates);
             $tenant->refresh();

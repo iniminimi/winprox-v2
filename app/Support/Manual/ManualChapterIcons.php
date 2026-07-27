@@ -29,6 +29,7 @@ final class ManualChapterIcons
         'time.clock_points' => 'map-pin',
         'settings' => 'settings',
         'settings.api' => 'api',
+        'subscription' => 'subscription',
         'statuses.admin-portal' => 'dashboard',
         'statuses.internet-portal' => 'map-pin',
         'portal.worker.qr' => 'map-pin',

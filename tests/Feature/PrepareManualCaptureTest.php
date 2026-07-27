@@ -16,6 +16,17 @@ it('zet has_esg_module aan voor de capture-tenant', function () {
         ->and($tenant->fresh()->has_esg_module)->toBeTrue();
 });
 
+it('zet has_iot_module aan voor de capture-tenant', function () {
+    $tenant = Tenant::factory()->create(['has_iot_module' => false]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    config(['manual_capture.email' => 'capture@example.com']);
+
+    $result = app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect($result->id)->toBe($tenant->id)
+        ->and($tenant->fresh()->has_iot_module)->toBeTrue();
+});
+
 it('zet has_time_module aan en maakt een clock point aan voor de capture-tenant', function () {
     $tenant = Tenant::factory()->create([
         'has_esg_module' => true,

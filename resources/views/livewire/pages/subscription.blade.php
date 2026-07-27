@@ -3,7 +3,7 @@
     $showManageActions = ($canManage ?? false) && ! $publicMode;
 @endphp
 
-<div class="wp-stack">
+<div class="wp-stack" data-manual-capture="subscription">
     <div @class(['wp-page-head', 'wp-billing-page-width' => $publicMode])>
         @if ($publicMode)
             <x-wp-page-head-title

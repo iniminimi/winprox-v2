@@ -37,6 +37,7 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
 - **ESG-shots:** de capture-tenant (`MANUAL_CAPTURE_EMAIL`) moet `has_esg_module = 1` hebben.
   Zonder module worden `/esg/indicators` en `/esg/measurements` overgeslagen (selector timeout).
   Minstens één actieve indicator en één meting geven rijkere shots; lege pagina's met setup-stappen zijn ook oké.
+- **IoT-shots:** `has_iot_module = 1` (stap **2b** zet dit aan). Zonder module wordt `/iot` overgeslagen.
 
 **Teamleader-shots (optioneel maar aanbevolen):**
 
@@ -68,7 +69,7 @@ php artisan config:clear
 .\scripts\capture-manual-local.ps1
 ```
 
-Stap **2b** zet `has_esg_module` en `has_time_module` aan en maakt zonodig een Clock Point aan
+Stap **2b** zet `has_esg_module`, `has_time_module` en `has_iot_module` aan en maakt zonodig een Clock Point aan
 voor de tenant van `MANUAL_CAPTURE_EMAIL` (`php artisan winprox:prepare-manual-capture`).
 
 Het script doet **altijd** alles:
@@ -83,7 +84,7 @@ Bij mislukte capture: geen commit/push.
 ### 3. Output controleren
 
 - Pad: `public/images/manual/{locale}/*.png` (één map per entry in `config/locales.supported`)
-- ~24 bestanden per taal (144 totaal voor 6 talen)
+- ~27–32 bestanden per taal (locales uit `config/locales.php`; optionele ESG/Time/IoT-shots als modules aan staan)
 - Internetportaal-PNG's zijn smal (~390px breed); handleiding toont ze op ware grootte
   (natuurlijke hoogte uit het bestand, geen geforceerde telefoon-verhouding)
 
@@ -126,7 +127,7 @@ Taal tijdens capture:
 1. `data-manual-capture="jouw-sleutel"` op het te fotograferen element in Blade.
 2. Target in `scripts/manual-capture.config.json` (id, path, selector, viewport).
 3. Hoofdstuksleutel in handleiding → bestandsnaam via `ManualScreenshotAssets::filenameForChapter`
-   (`issues.list` → `issues-list.png`).
+   (`issues.list` → `issues-list.png`, `iot.index` → `iot-index.png`).
 4. Capture opnieuw draaien; PNG's committen.
 
 Viewport-richtlijn:
@@ -146,6 +147,7 @@ Viewport-richtlijn:
 | Teamleader skips | Worker naam/icoon/team-token kloppen niet — of Livewire sign-in (update script) |
 | `locations-gps-history` skip | Geen unit met GPS op de capture-locatie — minstens één `unit_gps_reports`-rij nodig |
 | `esg-indicators` / `esg-measurements` skip | ESG-module uit op capture-tenant — zet `has_esg_module` aan voor die tenant |
+| `iot-index` skip | IoT-module uit — `winprox:prepare-manual-capture` zet `has_iot_module` aan |
 | Server `pthread_create` | Shared hosting — capture lokaal |
 | “Klaar” maar 0 PNG's | PowerShell toont nu een error; check script-output |
 
