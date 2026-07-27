@@ -94,7 +94,7 @@
     "event_status": {
         "processed": "Processed",
         "ignored": "Ignored",
-        "deduped": "Deduped",
+        "deduped": "Deduplicated",
         "failed": "Failed"
     },
     "alarm": {

@@ -1099,39 +1099,39 @@
             ]
         },
         "iot.index": {
-            "title": "Help — IoT Connect",
+            "title": "Aide — IoT Connect",
             "actions": [
                 {
-                    "label": "What is this screen?",
-                    "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
+                    "label": "À quoi sert cet écran ?",
+                    "text": "Ici vous gérez les <strong>passerelles</strong>, les <strong>capteurs</strong>, les <strong>règles d’alarme</strong> et consultez les <strong>événements</strong> récents. WinProx reçoit les données des capteurs ; les capteurs physiques et les protocoles restent chez votre passerelle / fournisseur."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
+                    "text": "<strong>Facility :</strong> les alarmes deviennent des signalements approuvés avec des tâches. <strong>Corporate :</strong> idem, plus les mesures de capteurs vers ESG lorsque le capteur a une unité et un indicateur ESG numérique."
                 },
                 {
-                    "label": "Edit",
-                    "text": "You can <strong>edit</strong> or <strong>deactivate</strong> gateways, sensors and rules later. For a gateway you can also rotate the token (the old token then stops working). We do not hard-delete: events are kept."
+                    "label": "Modifier",
+                    "text": "Vous pouvez ensuite <strong>modifier</strong> ou <strong>désactiver</strong> les passerelles, capteurs et règles. Pour une passerelle, vous pouvez aussi renouveler le jeton (l’ancien ne fonctionne plus). Pas de suppression définitive : les événements sont conservés."
                 },
                 {
                     "label": "Qu’est-ce qu’une passerelle ?",
                     "text": "Une <strong>passerelle</strong> (gateway) est le pont entre vos capteurs et WinProx. Les capteurs communiquent souvent via LoRaWAN, Zigbee, Bluetooth ou MQTT avec une passerelle de votre fournisseur. Celle-ci traduit les données et n’envoie à WinProx que les événements pertinents (via HTTPS). WinProx ne vend ni capteurs ni passerelles : vous enregistrez ici une passerelle logique avec un jeton pour que WinProx sache quelle organisation peut recevoir les événements."
                 },
                 {
-                    "label": "Create a gateway",
-                    "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
+                    "label": "Créer une passerelle",
+                    "text": "Créez une passerelle et <strong>enregistrez le jeton immédiatement</strong> — il n’est affiché qu’une seule fois. Configurez-le dans votre passerelle IoT (en-tête <code>X-WinProx-Iot-Key</code> ou Bearer)."
                 },
                 {
-                    "label": "Sensors",
-                    "text": "Map an <strong>external sensor ID</strong> (as sent by the gateway) to a name, type and preferably a unit. For ESG measurements (Corporate), also link an active numeric ESG indicator."
+                    "label": "Capteurs",
+                    "text": "Associez un <strong>identifiant de capteur externe</strong> (tel qu’envoyé par la passerelle) à un nom, un type et de préférence une unité. Pour les mesures ESG (Corporate), liez aussi un indicateur ESG numérique actif."
                 },
                 {
-                    "label": "Alarm rules",
-                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduped</strong>."
+                    "label": "Règles d’alarme",
+                    "text": "Une règle décide quand un événement devient un signalement : opérateur + seuil, texte du signalement, équipe et priorité. Tant qu’une tâche ouverte existe pour la même règle, les nouvelles alarmes sont <strong>dédupliquées</strong>."
                 },
                 {
-                    "label": "Sending events",
-                    "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
+                    "label": "Envoyer des événements",
+                    "text": "La passerelle envoie vers <code>POST /api/v1/iot/events</code> avec <code>kind</code> <em>alarm</em> ou <em>measurement</em>. Optionnel : <code>idempotency_key</code> pour éviter les envois en double. Voir la doc API (IoT Connect)."
                 }
             ]
         }

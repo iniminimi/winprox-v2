@@ -1,118 +1,118 @@
 {
     "title": "IoT Connect",
-    "subtitle": "Connect sensors via a gateway. Alarms become issues; measurements go to ESG (Corporate).",
+    "subtitle": "Verbinden Sie Sensoren über ein Gateway. Alarme werden zu Meldungen; Messungen gehen zu ESG (Corporate).",
     "nav": {
-        "aria": "IoT Connect navigation",
+        "aria": "IoT Connect Navigation",
         "gateways": "Gateways",
-        "sensors": "Sensors",
-        "rules": "Rules",
+        "sensors": "Sensoren",
+        "rules": "Regeln",
         "events": "Events"
     },
     "status": {
-        "active": "Active",
-        "inactive": "Inactive"
+        "active": "Aktiv",
+        "inactive": "Inaktiv"
     },
     "actions": {
-        "activate": "Activate",
-        "deactivate": "Deactivate"
+        "activate": "Aktivieren",
+        "deactivate": "Deaktivieren"
     },
     "fields": {
         "name": "Name",
-        "choose": "Choose…",
+        "choose": "Wählen…",
         "gateway": "Gateway",
-        "external_id": "External sensor ID",
-        "sensor_type": "Sensor type",
+        "external_id": "Externe Sensor-ID",
+        "sensor_type": "Sensortyp",
         "unit": "Unit",
-        "esg_indicator": "ESG indicator",
+        "esg_indicator": "ESG-Indikator",
         "sensor": "Sensor",
         "operator": "Operator",
-        "threshold": "Threshold",
-        "description": "Issue text",
+        "threshold": "Schwellenwert",
+        "description": "Meldungstext",
         "team": "Team",
-        "priority": "Priority"
+        "priority": "Priorität"
     },
     "gateways": {
         "title": "Gateways",
-        "add": "Add gateway",
-        "empty": "No gateway yet. Add one to receive events.",
-        "create_title": "New gateway",
-        "token_once": "Save this token now. It will not be shown again.",
+        "add": "Gateway hinzufügen",
+        "empty": "Noch kein Gateway. Fügen Sie eines hinzu, um Events zu empfangen.",
+        "create_title": "Neues Gateway",
+        "token_once": "Speichern Sie dieses Token jetzt. Es wird nicht erneut angezeigt.",
         "token_prefix": "Token :prefix…",
-        "last_seen": "Last seen :at",
-        "edit_title": "Edit gateway",
-        "rotate_token": "Rotate token"
+        "last_seen": "Zuletzt gesehen :at",
+        "edit_title": "Gateway bearbeiten",
+        "rotate_token": "Token erneuern"
     },
     "sensors": {
-        "title": "Sensors",
-        "add": "Add sensor",
-        "empty": "No sensors linked yet.",
-        "create_title": "New sensor",
-        "edit_title": "Edit sensor"
+        "title": "Sensoren",
+        "add": "Sensor hinzufügen",
+        "empty": "Noch keine Sensoren verknüpft.",
+        "create_title": "Neuer Sensor",
+        "edit_title": "Sensor bearbeiten"
     },
     "rules": {
-        "title": "Alarm rules",
-        "add": "Add rule",
-        "empty": "No rules yet. Without a rule, no issue is created.",
-        "create_title": "New rule",
-        "edit_title": "Edit rule"
+        "title": "Alarmregeln",
+        "add": "Regel hinzufügen",
+        "empty": "Noch keine Regeln. Ohne Regel wird keine Meldung erstellt.",
+        "create_title": "Neue Regel",
+        "edit_title": "Regel bearbeiten"
     },
     "events": {
-        "title": "Recent events",
-        "empty": "No events received yet."
+        "title": "Aktuelle Events",
+        "empty": "Noch keine Events empfangen."
     },
     "flash": {
-        "gateway_created": "Gateway created.",
-        "sensor_created": "Sensor created.",
-        "rule_created": "Rule created.",
-        "gateway_updated": "Gateway updated.",
-        "sensor_updated": "Sensor updated.",
-        "rule_updated": "Rule updated.",
-        "gateway_token_rotated": "Gateway token rotated. Save the new token."
+        "gateway_created": "Gateway erstellt.",
+        "sensor_created": "Sensor erstellt.",
+        "rule_created": "Regel erstellt.",
+        "gateway_updated": "Gateway aktualisiert.",
+        "sensor_updated": "Sensor aktualisiert.",
+        "rule_updated": "Regel aktualisiert.",
+        "gateway_token_rotated": "Gateway-Token erneuert. Speichern Sie das neue Token."
     },
     "sensor_types": {
-        "water_leak": "Water leak",
-        "temperature": "Temperature",
-        "humidity": "Humidity",
-        "door": "Door",
+        "water_leak": "Wasserleck",
+        "temperature": "Temperatur",
+        "humidity": "Luftfeuchtigkeit",
+        "door": "Tür",
         "vibration": "Vibration",
-        "sound": "Sound",
-        "energy": "Energy",
-        "fill_level": "Fill level",
-        "other": "Other"
+        "sound": "Geräusch",
+        "energy": "Energie",
+        "fill_level": "Füllstand",
+        "other": "Sonstiges"
     },
     "operators": {
-        "gt": "Greater than",
-        "gte": "Greater or equal",
-        "lt": "Less than",
-        "lte": "Less or equal",
-        "eq": "Equal to"
+        "gt": "Größer als",
+        "gte": "Größer oder gleich",
+        "lt": "Kleiner als",
+        "lte": "Kleiner oder gleich",
+        "eq": "Gleich"
     },
     "kinds": {
         "alarm": "Alarm",
-        "measurement": "Measurement"
+        "measurement": "Messung"
     },
     "event_status": {
-        "processed": "Processed",
-        "ignored": "Ignored",
-        "deduped": "Deduped",
-        "failed": "Failed"
+        "processed": "Verarbeitet",
+        "ignored": "Ignoriert",
+        "deduped": "Dedupliziert",
+        "failed": "Fehlgeschlagen"
     },
     "alarm": {
-        "default_description": "IoT alarm: :sensor (value :value, threshold :threshold)."
+        "default_description": "IoT-Alarm: :sensor (Wert :value, Schwellenwert :threshold)."
     },
     "errors": {
-        "module_disabled": "IoT Connect is not enabled for this organisation.",
-        "gateway_invalid": "Invalid gateway.",
-        "location_invalid": "Invalid location.",
-        "unit_invalid": "Invalid unit.",
-        "sensor_invalid": "Invalid sensor.",
-        "team_invalid": "Invalid team.",
-        "esg_required_for_indicator": "ESG indicators require the ESG module (Corporate).",
-        "esg_required_for_measurement": "Sensor measurements require the ESG module (Corporate).",
-        "esg_indicator_invalid": "Invalid or inactive ESG indicator.",
-        "sensor_not_measurement_ready": "Sensor is missing a unit or ESG indicator for measurements.",
-        "measurement_numeric_only": "IoT measurements only support numeric ESG indicators.",
-        "name_required": "Name is required.",
-        "external_id_taken": "This external sensor ID already exists on this gateway."
+        "module_disabled": "IoT Connect ist für diese Organisation nicht aktiv.",
+        "gateway_invalid": "Ungültiges Gateway.",
+        "location_invalid": "Ungültiger Standort.",
+        "unit_invalid": "Ungültige Unit.",
+        "sensor_invalid": "Ungültiger Sensor.",
+        "team_invalid": "Ungültiges Team.",
+        "esg_required_for_indicator": "ESG-Indikatoren erfordern das ESG-Modul (Corporate).",
+        "esg_required_for_measurement": "Sensormessungen erfordern das ESG-Modul (Corporate).",
+        "esg_indicator_invalid": "Ungültiger oder inaktiver ESG-Indikator.",
+        "sensor_not_measurement_ready": "Dem Sensor fehlt eine Unit oder ein ESG-Indikator für Messungen.",
+        "measurement_numeric_only": "IoT-Messungen unterstützen nur numerische ESG-Indikatoren.",
+        "name_required": "Name ist erforderlich.",
+        "external_id_taken": "Diese externe Sensor-ID existiert bereits auf diesem Gateway."
     }
 }

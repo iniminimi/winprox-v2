@@ -1099,39 +1099,39 @@
             ]
         },
         "iot.index": {
-            "title": "Help — IoT Connect",
+            "title": "Guida — IoT Connect",
             "actions": [
                 {
-                    "label": "What is this screen?",
-                    "text": "Manage <strong>gateways</strong>, <strong>sensors</strong>, <strong>alarm rules</strong> and review recent <strong>events</strong>. WinProx receives sensor events; physical sensors and protocols stay with your gateway/vendor."
+                    "label": "A cosa serve questa schermata?",
+                    "text": "Qui gestisce <strong>gateway</strong>, <strong>sensori</strong>, <strong>regole di allarme</strong> e consulta gli <strong>eventi</strong> recenti. WinProx riceve i dati dei sensori; i sensori fisici e i protocolli restano presso il gateway / fornitore."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:</strong> alarms become approved issues with tasks. <strong>Corporate:</strong> the same, plus sensor measurements into ESG when the sensor has a unit and numeric ESG indicator."
+                    "text": "<strong>Facility:</strong> gli allarmi diventano segnalazioni approvate con attività. <strong>Corporate:</strong> lo stesso, più le misurazioni dei sensori verso ESG quando il sensore ha un’unità e un indicatore ESG numerico."
                 },
                 {
-                    "label": "Edit",
-                    "text": "You can <strong>edit</strong> or <strong>deactivate</strong> gateways, sensors and rules later. For a gateway you can also rotate the token (the old token then stops working). We do not hard-delete: events are kept."
+                    "label": "Modifica",
+                    "text": "In seguito può <strong>modificare</strong> o <strong>disattivare</strong> gateway, sensori e regole. Per un gateway può anche rinnovare il token (quello precedente non funziona più). Nessuna eliminazione definitiva: gli eventi restano conservati."
                 },
                 {
                     "label": "Cos’è un gateway?",
                     "text": "Un <strong>gateway</strong> è il ponte tra i tuoi sensori e WinProx. I sensori spesso comunicano via LoRaWAN, Zigbee, Bluetooth o MQTT con un gateway del fornitore. Quel gateway traduce i dati e invia a WinProx solo gli eventi rilevanti (via HTTPS). WinProx non vende sensori o gateway: qui registri un gateway logico con un token così WinProx sa quale organizzazione può ricevere gli eventi."
                 },
                 {
-                    "label": "Create a gateway",
-                    "text": "Create a gateway and <strong>save the token immediately</strong> — it is shown only once. Configure it in your IoT gateway (<code>X-WinProx-Iot-Key</code> or Bearer)."
+                    "label": "Creare un gateway",
+                    "text": "Crei un gateway e <strong>salvi subito il token</strong> — viene mostrato una sola volta. Lo configuri nel gateway IoT (header <code>X-WinProx-Iot-Key</code> o Bearer)."
                 },
                 {
-                    "label": "Sensors",
-                    "text": "Map an <strong>external sensor ID</strong> (as sent by the gateway) to a name, type and preferably a unit. For ESG measurements (Corporate), also link an active numeric ESG indicator."
+                    "label": "Sensori",
+                    "text": "Colleghi un <strong>ID sensore esterno</strong> (come inviato dal gateway) a un nome, un tipo e preferibilmente un’unità. Per le misurazioni ESG (Corporate) colleghi anche un indicatore ESG numerico attivo."
                 },
                 {
-                    "label": "Alarm rules",
-                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduped</strong>."
+                    "label": "Regole di allarme",
+                    "text": "Una regola decide quando un evento diventa una segnalazione: operatore + soglia, testo della segnalazione, team e priorità. Finché esiste un’attività aperta per la stessa regola, i nuovi allarmi vengono <strong>deduplicati</strong>."
                 },
                 {
-                    "label": "Sending events",
-                    "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
+                    "label": "Inviare eventi",
+                    "text": "Il gateway invia a <code>POST /api/v1/iot/events</code> con <code>kind</code> <em>alarm</em> o <em>measurement</em>. Opzionale: <code>idempotency_key</code> per evitare invii duplicati. Dettagli nella documentazione API (IoT Connect)."
                 }
             ]
         }

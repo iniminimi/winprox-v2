@@ -1127,7 +1127,7 @@
                 },
                 {
                     "label": "Alarm rules",
-                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduped</strong>."
+                    "text": "A rule decides when an event becomes an issue: operator + threshold, issue text, team and priority. While an open task exists for the same rule, new alarms are <strong>deduplicated</strong>."
                 },
                 {
                     "label": "Sending events",
