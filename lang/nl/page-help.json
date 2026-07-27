@@ -1120,10 +1120,6 @@
                 {
                     "label": "Events versturen",
                     "text": "De gateway post naar <code>POST /api/v1/iot/events</code> met <code>kind</code> <em>alarm</em> of <em>measurement</em>. Optioneel: <code>idempotency_key</code> om dubbele posts te voorkomen. Details staan in de API-docs (IoT Connect)."
-                },
-                {
-                    "label": "Module niet zichtbaar?",
-                    "text": "IoT Connect hoort bij Facility en Corporate (plan-entitlement). Superusers kunnen de module ook onder Platform → Tenants in- of uitschakelen."
                 }
             ]
         }

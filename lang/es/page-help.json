@@ -1120,10 +1120,6 @@
                 {
                     "label": "Sending events",
                     "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
-                },
-                {
-                    "label": "Module not visible?",
-                    "text": "IoT Connect is included with Facility and Corporate. Superusers can also toggle it under Platform → Tenants."
                 }
             ]
         }
