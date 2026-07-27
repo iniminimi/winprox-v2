@@ -319,6 +319,10 @@
                     "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
                 },
                 {
+                    "label": "QR Clock Point",
+                    "text": "Le QR Clock Point est le QR imprimable avec lequel les exécutants s’identifient (nom + icône) et pointent l’entrée ou la sortie. Gérez-le et imprimez-le via <strong>Time → Clock Points</strong>."
+                },
+                {
                     "label": "Exécutants",
                     "text": "Les exécutants n'ont pas de connexion e-mail ; ils s'identifient via le QR Clock Point avec nom et icône. Vous pouvez également ajouter leur adresse e-mail et numéro de téléphone."
                 },

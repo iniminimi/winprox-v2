@@ -319,6 +319,10 @@
                     "text": "Cree equipos y trabajadores, asigne jefes de equipo. Una unidad debe tener un equipo vinculado para que un trabajador pueda gestionar las tareas de esa unidad. Mientras no haya trabajadores en el equipo, aún puede eliminar el equipo."
                 },
                 {
+                    "label": "QR Clock Point",
+                    "text": "El QR Clock Point es el QR imprimible con el que los trabajadores inician sesión (nombre + icono) y fichan la entrada o la salida. Gestione e imprímalo en <strong>Time → Clock Points</strong>."
+                },
+                {
                     "label": "Trabajadores",
                     "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican mediante el QR Clock Point con nombre e icono. También puede añadir su correo electrónico y número de teléfono."
                 },

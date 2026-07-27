@@ -319,6 +319,10 @@
                     "text": "Create teams and workers, assign teamleaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
                 },
                 {
+                    "label": "Clock Point QR code",
+                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon) and clock in or out. Manage and print it under <strong>Time → Clock Points</strong>."
+                },
+                {
                     "label": "Workers",
                     "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon. You can also add their email address and phone number."
                 },

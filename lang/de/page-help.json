@@ -319,6 +319,10 @@
                     "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleaders zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
                 },
                 {
+                    "label": "Clock Point QR-code",
+                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Icon) und ein- oder ausstempeln. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong>."
+                },
+                {
                     "label": "Ausführende",
                     "text": "Ausführende haben keinen E-Mail-Login; sie melden sich über die Clock Point QR mit Name und Icon an. Sie können auch ihre E-Mail-Adresse und Telefonnummer hinzufügen."
                 },

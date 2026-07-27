@@ -319,6 +319,10 @@
                     "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
                 },
                 {
+                    "label": "Clock Point QR-code",
+                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon) en in- of uitklokken. Beheer en print deze via <strong>Time → Clock Points</strong>."
+                },
+                {
                     "label": "Uitvoerders",
                     "text": "Uitvoerders hebben geen e-maillogin; ze melden zich aan via de Clock Point QR met naam en icoon. Je kan ook hun e-mailadres en telefoonnummer toevoegen."
                 },
