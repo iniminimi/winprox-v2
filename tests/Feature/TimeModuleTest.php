@@ -103,6 +103,24 @@ it('toont afwezige werknemers in board-weergave', function () {
         ->assertSee('Piet Afwezig', false);
 });
 
+it('toont afwezige werknemers in uitgeklapt team met status alle', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sara',
+        'last_name' => 'Thuis',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->call('setViewMode', 'teams')
+        ->set('teamFilter', $team->id)
+        ->assertSee('Sara Thuis', false)
+        ->assertSee(__('time.presence.team_summary_absent', ['count' => 1]), false);
+});
+
 it('wisselt tussen board-, teams-, teamkaarten- en locatie-weergave', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
