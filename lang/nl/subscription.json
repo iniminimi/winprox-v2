@@ -134,7 +134,7 @@
         "cancelled": "Verwijderingsaanvraag geannuleerd.",
         "completed": "Organisatiegegevens zijn verwijderd.",
         "completed_superuser": "Tenant-gegevens zijn verwijderd.",
-        "confirm_start": "Bevestigingsmail sturen en verwijderingsprocedure starten?",
+        "confirm_start": "Verwijderingsprocedure starten? U krijgt een bevestigingsmail.",
         "confirm_cancel": "Verwijderingsaanvraag annuleren?",
         "confirm_execute": "Alle gegevens definitief verwijderen? Dit kan niet ongedaan worden gemaakt.",
         "confirm_execute_superuser": "Tenant nu wissen? Snapshot zonder media wordt eerst opgeslagen.",

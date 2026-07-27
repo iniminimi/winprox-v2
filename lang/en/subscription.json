@@ -134,7 +134,7 @@
         "cancelled": "Deletion request cancelled.",
         "completed": "Organisation data has been deleted.",
         "completed_superuser": "Tenant data has been deleted.",
-        "confirm_start": "Send confirmation email and start the deletion procedure?",
+        "confirm_start": "Start the deletion procedure? You will receive a confirmation email.",
         "confirm_cancel": "Cancel the deletion request?",
         "confirm_execute": "Permanently delete all data? This cannot be undone.",
         "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
