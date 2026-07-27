@@ -254,8 +254,6 @@
                                     id="purgeExecutePassword"
                                     autocomplete="new-password"
                                     name="purge_execute_confirm"
-                                    readonly
-                                    onfocus="this.removeAttribute('readonly')"
                                 />
                             </div>
                             @error('purge_password')
@@ -310,8 +308,6 @@
                             id="purgePassword"
                             autocomplete="new-password"
                             name="purge_start_confirm"
-                            readonly
-                            onfocus="this.removeAttribute('readonly')"
                         />
                     </div>
                     @error('purge_password')
