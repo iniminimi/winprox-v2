@@ -47,7 +47,7 @@
         @endif
 
         @error('plan')
-            <p class="wp-form-error">{{ $message }}</p>
+            <p class="wp-error">{{ $message }}</p>
         @enderror
 
         @if ($tenant)
@@ -229,7 +229,7 @@
             <p class="wp-muted">{{ __('subscription.purge.intro') }}</p>
 
             @error('purge')
-                <p class="wp-form-error">{{ $message }}</p>
+                <p class="wp-error">{{ $message }}</p>
             @enderror
 
             @if ($purgeRequest)
@@ -259,7 +259,7 @@
                                 />
                             </div>
                             @error('purge_password')
-                                <p class="wp-form-error">{{ $message }}</p>
+                                <p class="wp-error">{{ $message }}</p>
                             @enderror
                             <button
                                 type="button"
@@ -300,7 +300,7 @@
                         <span>{{ __('subscription.purge.export_ack') }}</span>
                     </label>
                     @error('purge_export_ack')
-                        <p class="wp-form-error">{{ $message }}</p>
+                        <p class="wp-error">{{ $message }}</p>
                     @enderror
 
                     <div class="wp-field wp-field--password">
@@ -315,7 +315,7 @@
                         />
                     </div>
                     @error('purge_password')
-                        <p class="wp-form-error">{{ $message }}</p>
+                        <p class="wp-error">{{ $message }}</p>
                     @enderror
 
                     @if ($purgeTrack?->value === 'trial')

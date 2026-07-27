@@ -13,7 +13,7 @@
         <h2 class="wp-auth-section-title">{{ __('auth.register.section_company') }}</h2>
 
         <input type="text" id="organization" class="wp-input" wire:model="organization"
-               placeholder="{{ __('auth.register.placeholder_company') }}" autocomplete="organization" autofocus required>
+               placeholder="{{ __('auth.register.placeholder_company') }}" autocomplete="organization" autofocus>
         @error('organization') <p class="wp-error">{{ $message }}</p> @enderror
 
         <input type="tel" id="phone" class="wp-input" wire:model="phone"
@@ -47,11 +47,11 @@
         <h2 class="wp-auth-section-title">{{ __('auth.register.section_admin') }}</h2>
 
         <input type="text" id="name" class="wp-input" wire:model="name"
-               placeholder="{{ __('auth.register.placeholder_name') }}" autocomplete="name" required>
+               placeholder="{{ __('auth.register.placeholder_name') }}" autocomplete="name">
         @error('name') <p class="wp-error">{{ $message }}</p> @enderror
 
         <input type="email" id="email" class="wp-input" wire:model="email"
-               placeholder="{{ __('auth.email') }}" autocomplete="email" required>
+               placeholder="{{ __('auth.email') }}" autocomplete="email">
         @error('email') <p class="wp-error">{{ $message }}</p> @enderror
 
         <x-wp-password-input wireModel="password" id="password" :placeholder="__('auth.password')" autocomplete="new-password" />
