@@ -16,7 +16,7 @@ class EnsureCategoryTranslationSlotsAction
         }
 
         foreach (LocaleSupport::targetLocalesForSource($category->original_language) as $locale) {
-            CategoryTranslation::firstOrCreate(
+            $row = CategoryTranslation::firstOrCreate(
                 [
                     'category_id' => $category->id,
                     'locale' => $locale,
@@ -25,6 +25,16 @@ class EnsureCategoryTranslationSlotsAction
                     'status' => CategoryTranslationStatus::Pending,
                 ],
             );
+
+            // Self-heal old failed rows (empty value) so export can retry.
+            if (
+                $row->status === CategoryTranslationStatus::Failed
+                && blank($row->name)
+            ) {
+                $row->fill([
+                    'status' => CategoryTranslationStatus::Pending,
+                ])->save();
+            }
         }
     }
 }

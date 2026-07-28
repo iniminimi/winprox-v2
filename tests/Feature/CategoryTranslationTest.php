@@ -108,3 +108,25 @@ it('weigert import van te lange categorienaam', function () {
         ],
     ]))->toThrow(ValidationException::class);
 });
+
+it('herstelt lege failed categorierijen naar pending tijdens ensure', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    Tenancy::actAs($tenant->id);
+
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Techniek',
+        'original_language' => 'nl',
+    ]);
+
+    $row = CategoryTranslation::query()->create([
+        'category_id' => $category->id,
+        'locale' => 'en',
+        'name' => null,
+        'status' => CategoryTranslationStatus::Failed->value,
+    ]);
+
+    app(EnsureCategoryTranslationSlotsAction::class)->handle($category);
+
+    expect($row->fresh()->status)->toBe(CategoryTranslationStatus::Pending);
+});

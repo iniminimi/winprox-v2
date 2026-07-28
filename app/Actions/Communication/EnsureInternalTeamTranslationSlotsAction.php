@@ -16,7 +16,7 @@ class EnsureInternalTeamTranslationSlotsAction
         }
 
         foreach (LocaleSupport::targetLocalesForSource($team->original_language) as $locale) {
-            InternalTeamTranslation::firstOrCreate(
+            $row = InternalTeamTranslation::firstOrCreate(
                 [
                     'internal_team_id' => $team->id,
                     'locale' => $locale,
@@ -25,6 +25,16 @@ class EnsureInternalTeamTranslationSlotsAction
                     'status' => InternalTeamTranslationStatus::Pending,
                 ],
             );
+
+            // Self-heal old failed rows (empty value) so export can retry.
+            if (
+                $row->status === InternalTeamTranslationStatus::Failed
+                && blank($row->name)
+            ) {
+                $row->fill([
+                    'status' => InternalTeamTranslationStatus::Pending,
+                ])->save();
+            }
         }
     }
 }

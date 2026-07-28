@@ -46,7 +46,6 @@ class TranslateCategoryAction
 
         $failed = $sourceName === ''
             || $translatedName === ''
-            || $translatedName === $sourceName
             || mb_strlen($translatedName) > 255;
 
         if ($failed) {

@@ -127,3 +127,26 @@ it('weigert import van te lange teamnaam', function () {
         ],
     ]))->toThrow(ValidationException::class);
 });
+
+it('herstelt lege failed teamrijen naar pending tijdens ensure', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    Tenancy::actAs($tenant->id);
+
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Techniek',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    $row = InternalTeamTranslation::query()->create([
+        'internal_team_id' => $team->id,
+        'locale' => 'en',
+        'name' => null,
+        'status' => InternalTeamTranslationStatus::Failed->value,
+    ]);
+
+    app(EnsureInternalTeamTranslationSlotsAction::class)->handle($team);
+
+    expect($row->fresh()->status)->toBe(InternalTeamTranslationStatus::Pending);
+});
