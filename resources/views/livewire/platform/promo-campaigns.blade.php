@@ -44,6 +44,27 @@
         </form>
     </div>
 
+    <div class="wp-card wp-card-pad wp-stack">
+        <p class="wp-subhead">{{ __('platform.promo_campaigns.bounces_title') }}</p>
+        <p class="wp-muted">{{ __('platform.promo_campaigns.bounces_lead') }}</p>
+        <div>
+            <button
+                type="button"
+                class="btn btn--ghost"
+                wire:click="processPromoBounces"
+                wire:loading.attr="disabled"
+                wire:target="processPromoBounces"
+            >
+                <span wire:loading.remove wire:target="processPromoBounces">
+                    {{ __('platform.promo_campaigns.bounces_submit') }}
+                </span>
+                <span wire:loading wire:target="processPromoBounces">
+                    {{ __('platform.promo_campaigns.bounces_loading') }}
+                </span>
+            </button>
+        </div>
+    </div>
+
     <div class="wp-card wp-card-pad wp-stack" wire:poll.30s>
         <p class="wp-subhead">{{ __('platform.promo_campaigns.list_title') }}</p>
         @if ($campaigns->isEmpty())

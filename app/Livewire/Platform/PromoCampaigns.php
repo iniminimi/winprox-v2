@@ -4,6 +4,7 @@ namespace App\Livewire\Platform;
 
 use App\Actions\Marketing\CopyPromoCampaignAction;
 use App\Actions\Marketing\CreatePromoCampaignAction;
+use App\Actions\Marketing\ProcessPromoMailboxBouncesAction;
 use App\Actions\Marketing\SummarizePromoCampaignsDeliveryAction;
 use App\Http\Requests\Marketing\CopyPromoCampaignRequest;
 use App\Http\Requests\Marketing\CreatePromoCampaignRequest;
@@ -13,6 +14,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Throwable;
 
 #[Layout('components.layouts.app')]
 #[Title('WinProx')]
@@ -127,6 +129,32 @@ class PromoCampaigns extends Component
         $this->closeCopyModal();
 
         $this->redirect(route('platform.promo-campaigns.edit', $campaign), navigate: true);
+    }
+
+    public function processPromoBounces(ProcessPromoMailboxBouncesAction $process): void
+    {
+        $this->authorize('managePromoCampaigns', User::class);
+
+        try {
+            $result = $process->handle(unseenOnly: true, limit: null, dryRun: false);
+        } catch (Throwable $e) {
+            $this->flashType = 'error';
+            $message = trim($e->getMessage());
+            $this->flashMessage = $message !== ''
+                ? __('platform.promo_campaigns.bounces_failed', ['error' => $message])
+                : __('platform.promo_campaigns.bounces_failed_generic');
+
+            return;
+        }
+
+        $this->flashType = 'success';
+        $this->flashMessage = __('platform.promo_campaigns.bounces_processed', [
+            'scanned' => $result['scanned'],
+            'bounces' => $result['bounce_messages'],
+            'emails' => $result['emails_found'],
+            'removed' => $result['removed'],
+            'blocked' => $result['blocked'],
+        ]);
     }
 
     public function render(SummarizePromoCampaignsDeliveryAction $summarize)

@@ -1124,3 +1124,52 @@ it('stuurt testmail zonder brief wanneer bijlage uit staat', function () {
         return $mail->hasTo('test@winprox.app') && $mail->docxPath === null;
     });
 });
+
+it('laat superuser bounces verwerken vanaf de promo-campagnes pagina', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $this->mock(\App\Actions\Marketing\ProcessPromoMailboxBouncesAction::class, function ($mock) {
+        $mock->shouldReceive('handle')
+            ->once()
+            ->with(true, null, false)
+            ->andReturn([
+                'scanned' => 3,
+                'bounce_messages' => 1,
+                'emails_found' => 1,
+                'removed' => 1,
+                'blocked' => 1,
+                'dry_run' => false,
+            ]);
+    });
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->assertSee(__('platform.promo_campaigns.bounces_submit'))
+        ->call('processPromoBounces')
+        ->assertSet('flashType', 'success')
+        ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_processed', [
+            'scanned' => 3,
+            'bounces' => 1,
+            'emails' => 1,
+            'removed' => 1,
+            'blocked' => 1,
+        ]));
+});
+
+it('toont fout wanneer bounce-scan mislukt vanaf promo-campagnes pagina', function () {
+    $superuser = User::factory()->superuser()->create();
+
+    $this->mock(\App\Actions\Marketing\ProcessPromoMailboxBouncesAction::class, function ($mock) {
+        $mock->shouldReceive('handle')
+            ->once()
+            ->andThrow(new RuntimeException('Promo IMAP is not configured (imap.promo).'));
+    });
+
+    Livewire::actingAs($superuser)
+        ->test(PromoCampaigns::class)
+        ->call('processPromoBounces')
+        ->assertSet('flashType', 'error')
+        ->assertSet('flashMessage', __('platform.promo_campaigns.bounces_failed', [
+            'error' => 'Promo IMAP is not configured (imap.promo).',
+        ]));
+});

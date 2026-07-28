@@ -236,7 +236,14 @@
         },
         "delivery_stats": ":sent envoyés · :remaining restants · :failed échoués · :queued en file",
         "delivery_restart_hint": "Ouvrez la campagne et remettez les e-mails en file (sans Renvoyer). Seul le reste sera envoyé.",
-        "delivery_sending_hint": "La file tourne encore. Actualisation auto ; laissez faire."
+        "delivery_sending_hint": "La file tourne encore. Actualisation auto ; laissez faire.",
+        "bounces_title": "Mails non distribués (bounces)",
+        "bounces_lead": "Parcourir la boîte promo pour les messages undelivered/bounces. Les adresses trouvées sont désinscrites et retirées des campagnes. Tourne aussi automatiquement chaque heure.",
+        "bounces_submit": "Traiter les bounces maintenant",
+        "bounces_loading": "Analyse de la boîte…",
+        "bounces_processed": "Terminé : :scanned messages analysés, :bounces bounces, :emails adresses trouvées, :removed retirées des campagnes, :blocked désinscrites.",
+        "bounces_failed": "Échec du traitement des bounces : :error",
+        "bounces_failed_generic": "Échec du traitement des bounces."
     },
     "manual_screenshots": {
         "nav": "Captures",

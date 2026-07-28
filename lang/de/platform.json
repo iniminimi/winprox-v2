@@ -236,7 +236,14 @@
         },
         "delivery_stats": ":sent gesendet · :remaining noch zu senden · :failed fehlgeschlagen · :queued in Warteschlange",
         "delivery_restart_hint": "Kampagne öffnen und Mails erneut einreihen (ohne Erneut senden). Nur der Rest wird gesendet.",
-        "delivery_sending_hint": "Warteschlange läuft noch. Aktualisiert automatisch; abwarten."
+        "delivery_sending_hint": "Warteschlange läuft noch. Aktualisiert automatisch; abwarten.",
+        "bounces_title": "Unzustellbare Mails (Bounces)",
+        "bounces_lead": "Promo-Postfach auf Unzustellbarkeits-/Bounce-Nachrichten prüfen. Gefundene Adressen werden abgemeldet und aus Kampagnen entfernt. Läuft auch stündlich automatisch.",
+        "bounces_submit": "Bounces jetzt verarbeiten",
+        "bounces_loading": "Postfach wird gescannt…",
+        "bounces_processed": "Fertig: :scanned Nachrichten gescannt, :bounces Bounces, :emails Adressen gefunden, :removed aus Kampagnen entfernt, :blocked abgemeldet.",
+        "bounces_failed": "Bounce-Verarbeitung fehlgeschlagen: :error",
+        "bounces_failed_generic": "Bounce-Verarbeitung fehlgeschlagen."
     },
     "manual_screenshots": {
         "nav": "Screenshots",
