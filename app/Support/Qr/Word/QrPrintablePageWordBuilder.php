@@ -42,9 +42,13 @@ final class QrPrintablePageWordBuilder
     /** Space between location caption (above) and the QR code. */
     private const ABOVE_QR_GAP_MM = 6.0;
 
+    /** Type sizes at A6 content width; scaled up for A5/A4. */
     private const PRIMARY_FONT_MM = 2.8;
 
     private const SECONDARY_FONT_MM = 3.8;
+
+    /** A6 printable content short side (105 − 2×5 mm margins). */
+    private const BASE_CONTENT_SHORT_SIDE_MM = 95.0;
 
     /**
      * @param  list<QrStickerEntry>  $entries
@@ -494,10 +498,11 @@ final class QrPrintablePageWordBuilder
             $secondaryText = '';
         }
 
-        $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM);
-        $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM);
-        $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM);
-        $aboveQrGapPx = self::mmToPixelAtDpi(self::ABOVE_QR_GAP_MM);
+        $typeScale = min($contentWidthMm, $contentHeightMm) / self::BASE_CONTENT_SHORT_SIDE_MM;
+        $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM * $typeScale);
+        $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM * $typeScale);
+        $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM * $typeScale);
+        $aboveQrGapPx = self::mmToPixelAtDpi(self::ABOVE_QR_GAP_MM * $typeScale);
 
         $aboveBlock = 0;
         if ($secondaryText !== '') {
