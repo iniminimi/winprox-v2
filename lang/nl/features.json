@@ -57,7 +57,7 @@
         },
         "solution": {
             "title": "Oplossing",
-            "body": "Clock Point-QR voor aanmelden én in-/uitklokken (als Time actief is). Beheer ziet aanwezigheid, alarmen en shiftoverzichten in de Time-module."
+            "body": "Clock Point-QR voor aanmelden én in-/uitklokken. Beheer ziet aanwezigheid, alarmen en shiftoverzichten in Time."
         },
         "capabilities": {
             "title": "Functies",

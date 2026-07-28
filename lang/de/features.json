@@ -57,7 +57,7 @@
         },
         "solution": {
             "title": "Lösung",
-            "body": "Clock Point QR für Anmeldung und Ein-/Ausstempeln (wenn Time aktiviert ist). Manager sehen Anwesenheit, Alarme und Schichtübersichten im Time-Modul."
+            "body": "Clock Point-QR zum Anmelden und Ein-/Ausstempeln. Verwaltung sieht Anwesenheit, Alarme und Schichtübersichten in Time."
         },
         "capabilities": {
             "title": "Funktionen",

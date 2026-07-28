@@ -12,7 +12,7 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "Hoe werkt WinProx?",
-            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Optioneel komen Time (klokken) en ESG (metingen) erbij.",
+            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (klokken) hoort er standaard bij; ESG (metingen) is optioneel.",
             "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Optioneel: Time en ESG.",
             "steps": [
                 {
@@ -34,7 +34,7 @@
                 {
                     "title": "Veldwerk via QR",
                     "text": "Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon) en handelen taken af via unit-QR of team-QR — zonder WinProx-login.",
-                    "highlight": "Clock Point = aanmelden; unit-\/team-QR = taken en meldingen op locatie."
+                    "highlight": "Clock Point = aanmelden; unit-/team-QR = taken en meldingen op locatie."
                 },
                 {
                     "title": "Opvolgen en afronden",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Interne teams",
-            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-\/team-QR registreren uitvoerders updates en foto's op locatie."
+            "box_body": "Organiseer onderhoudsteams onder Team. Koppel teams aan units en categorieën. Via Clock Point en unit-/team-QR registreren uitvoerders updates en foto's op locatie."
         },
         "pricing": {
             "slug": "pricing",
@@ -50,26 +50,26 @@
             "title": "Hoeveel kost WinProx?",
             "intro": "U start met een gratis proefmaand (facility- en time-functies). Daarna kiest u Time, Facility of Corporate onder Abonnement. Limieten gelden voor uw hele organisatie (units, locaties, documenten, foto's, gebruikers).",
             "summary": "Proefperiode, daarna WinProx Time, Facility of Corporate. Time en Facility zonder API; Corporate met ESG, API en webhooks.",
-            "content_note": "Documenten en foto's tellen mee voor de hele organisatie. Tijdens de proefperiode gelden lagere limieten (o.a. max. 10 documenten\/foto's). Exacte limieten en prijzen staan onder Abonnement.",
+            "content_note": "Documenten en foto's tellen mee voor de hele organisatie. Tijdens de proefperiode gelden lagere limieten (o.a. max. 10 documenten/foto's). Exacte limieten en prijzen staan onder Abonnement.",
             "plans": {
                 "time": {
-                    "units": "Tot 10 units \/ locaties \/ documenten \/ foto's",
-                    "users": "1 beheerder + 1 medewerker · onbeperkt uitvoerders (CSV\/Excel)",
-                    "announcements": "€149 \/ maand · Time-module inbegrepen",
+                    "units": "Tot 10 units / locaties / documenten / foto's",
+                    "users": "1 beheerder + 1 medewerker · onbeperkt uitvoerders (CSV/Excel)",
+                    "announcements": "€149 / maand · Time-module inbegrepen",
                     "documents": "QR-meldingen en taken binnen uw limieten · geen API",
                     "description": "Ideaal om te starten met tijdregistratie én facility-basisworkflows."
                 },
                 "facility": {
-                    "units": "Tot 100 units \/ locaties \/ documenten \/ foto's",
-                    "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV\/Excel)",
-                    "announcements": "€399 \/ maand · Time inbegrepen",
-                    "documents": "CSV\/Excel-import voor units en uitvoerders · geen API",
+                    "units": "Tot 100 units / locaties / documenten / foto's",
+                    "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV/Excel)",
+                    "announcements": "€399 / maand · Time inbegrepen",
+                    "documents": "CSV/Excel-import voor units en uitvoerders · geen API",
                     "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time."
                 },
                 "corporate": {
                     "units": "Onbeperkt data",
                     "users": "Schaalbaar voor grote portefeuilles",
-                    "announcements": "€999 \/ maand · ESG, API en webhooks",
+                    "announcements": "€999 / maand · ESG, API en webhooks",
                     "documents": "Prioritaire support",
                     "description": "Voor enterprise-portefeuilles en integraties."
                 }
@@ -79,14 +79,14 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken op die unit af. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan (en klokken in\/uit als Time actief is). Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
-            "summary": "Unit-QR (melden\/taken), team-QR (teamtaken), Clock Point-QR (aanmelden\/klokken), locatie-QR — allemaal in de browser."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken op die unit af. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan en klokken in/uit. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
+            "summary": "Unit-QR (melden/taken), team-QR (teamtaken), Clock Point-QR (aanmelden/klokken), locatie-QR — allemaal in de browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Hoe werkt het meldersportaal?",
-            "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten\/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen er open taken afhandelen.",
+            "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen er open taken afhandelen.",
             "summary": "Unit-QR-portaal: melding (tot 4 foto's), open meldingen na goedkeuring, documenten, mededelingen, taken op locatie voor uitvoerders.",
             "sections": [
                 {
@@ -128,9 +128,9 @@
         "time_clock": {
             "slug": "time_clock",
             "type": "text",
-            "title": "Wat is de Time-module \/ Clock Point?",
-            "body": "Met Time klokken uitvoerders in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Zonder Time blijft Clock Point nuttig om uitvoerders te identificeren vóór taken via unit-QR. Time wordt per organisatie in- of uitgeschakeld (afhankelijk van uw formule; Corporate\/superuser kan modules beheren).",
-            "summary": "Time: in-\/uitklokken via Clock Point. Clock Point dient ook om uitvoerders te identificeren voor taken."
+            "title": "Wat is de Time-module / Clock Point?",
+            "body": "Met Time klokken uitvoerders in en uit via de Clock Point-QR (pauzes en shifts inbegrepen). Clock Point dient ook om uitvoerders te identificeren vóór taken via unit-QR. Time hoort standaard bij elk abonnement.",
+            "summary": "Time: in-/uitklokken via Clock Point. Standaard bij elk abonnement."
         },
         "esg": {
             "slug": "esg",
@@ -143,8 +143,8 @@
             "slug": "for_who",
             "type": "text",
             "title": "Voor wie is WinProx?",
-            "body": "Voor facility-organisaties — fabrieken, zorg, gemeenten, campuses — die meldingen, interne teams, veldopvolging en optioneel tijdregistratie ESG of IoT Connect centraal willen sturen. Geen aparte hospitality- of aannemersportalen: één Facility-app.",
-            "summary": "Facility-organisaties: meldingen, teams, veldwerk; optioneel Time, ESG en IoT Connect."
+            "body": "Voor facility-organisaties — fabrieken, zorg, gemeenten, campuses — die meldingen, interne teams, veldopvolging, Time (uren) en optioneel ESG of IoT Connect centraal willen sturen. Geen aparte hospitality- of aannemersportalen: één Facility-app.",
+            "summary": "Facility-organisaties: meldingen, teams, veldwerk; Time standaard; optioneel ESG en IoT Connect."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -162,7 +162,7 @@
                 },
                 {
                     "title": "Uitvoerder",
-                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten\/afronden via unit- of team-QR, met foto's en notities."
+                    "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR; taken starten/afronden via unit- of team-QR, met foto's en notities."
                 }
             ]
         },
@@ -171,12 +171,12 @@
             "type": "text",
             "title": "Kan ik mijn gegevens exporteren?",
             "body": "Ja. Ga naar Instellingen → Privacy & export van gegevens. Daar kan de beheerder een machineleesbare export (JSON in een ZIP) downloaden van het account en relevante activiteit binnen jullie omgeving. Bewaar het bestand veilig.",
-            "summary": "Beheerders exporteren via Instellingen → Privacy & export van gegevens (AVG\/GDPR)."
+            "summary": "Beheerders exporteren via Instellingen → Privacy & export van gegevens (AVG/GDPR)."
         },
         "delete_account": {
             "slug": "delete_account",
             "type": "text",
-            "title": "Hoe verwijder ik mijn account \/ organisatiegegevens?",
+            "title": "Hoe verwijder ik mijn account / organisatiegegevens?",
             "body": "Alleen een beheerder kan dit. Ga naar Abonnement → Organisatiegegevens verwijderen. Download eerst een export via Instellingen → Privacy & export van gegevens, bevestig met wachtwoord en e-mail. Bij een proefperiode kun je daarna zelf definitief wissen. Bij een betaald abonnement volgt een wachttijd van 7 dagen; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Mediabestanden (foto’s, documenten) worden niet in de herstel-snapshot bewaard.",
             "summary": "Beheerder: Abonnement → gegevens verwijderen (export + wachtwoord + e-mail; trial zelf, betaald via WinProx na 7 dagen)."
         },
@@ -185,13 +185,13 @@
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
             "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
-            "summary": "Teams onder Team; koppel aan units\/categorieën; Clock Point- en team-QR voor de vloer."
+            "summary": "Teams onder Team; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "Hoe volgen teams taken op?",
-            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-\/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data.",
+            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data.",
             "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli inbegrepen."
         },
         "multiple_locations": {
@@ -212,8 +212,8 @@
             "slug": "mobile",
             "type": "text",
             "title": "Werkt WinProx op smartphone?",
-            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-\/team-QR. Thema Donker is handig op telefoon.",
-            "summary": "Browser op gsm\/tablet\/desktop; veld via QR is mobiel-first."
+            "body": "Ja. Beheer is desktop-first maar bruikbaar op tablet. Veld- en QR-portalen zijn mobiel-first. Uitvoerders werken op de gsm via Clock Point en unit-/team-QR. Thema Donker is handig op telefoon.",
+            "summary": "Browser op gsm/tablet/desktop; veld via QR is mobiel-first."
         },
         "install": {
             "slug": "install",
@@ -234,14 +234,14 @@
             "type": "text",
             "title": "Welke stickers kan ik gebruiken?",
             "body": "Voor printen adviseren we Avery- of Herma-labels (A4). In Locaties downloadt u een stickerblad (Word) met het juiste formaat. Optioneel stelt u onder Instellingen een stickerachtergrond of organisatielogo in.",
-            "summary": "Avery\/Herma A4; stickerblad vanuit Locaties; optioneel logo\/achtergrond in Instellingen."
+            "summary": "Avery/Herma A4; stickerblad vanuit Locaties; optioneel logo/achtergrond in Instellingen."
         },
         "style": {
             "slug": "style",
             "type": "text",
             "title": "WinProx-stijl en Eigen portaal-stijl",
             "body": "Onder Instellingen kiest u WinProx-stijl: Standaard of Donker (voor de app). Eigen portaal-stijl is optioneel: achtergrond- en knopkleuren (en optioneel achtergrondfoto) voor het publieke QR-portaal dat melders en uitvoerders zien.",
-            "summary": "Standaard\/Donker voor de app; optionele eigen kleuren\/achtergrond voor het QR-portaal."
+            "summary": "Standaard/Donker voor de app; optionele eigen kleuren/achtergrond voor het QR-portaal."
         },
         "api_webhooks": {
             "slug": "api_webhooks",
@@ -254,7 +254,7 @@
             "slug": "iot",
             "type": "text",
             "title": "Wat is IoT Connect?",
-            "body": "IoT Connect koppelt sensorgateways aan WinProx zonder dat WinProx zelf hardware verkoopt. Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Op Corporate kunnen sensor-metingen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST \/api\/v1\/iot\/events met een gateway-token (ook op Facility, zonder volledige REST API).",
+            "body": "IoT Connect koppelt sensorgateways aan WinProx zonder dat WinProx zelf hardware verkoopt. Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Op Corporate kunnen sensor-metingen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST /api/v1/iot/events met een gateway-token (ook op Facility, zonder volledige REST API).",
             "summary": "IoT Connect: sensor-alarmen → meldingen (Facility+); metingen → ESG (Corporate). Gateway-token ingest."
         }
     }

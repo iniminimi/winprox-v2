@@ -57,7 +57,7 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "Clock Point QR pour la connexion et le pointage entrée/sortie (quand Time est activé). Les responsables voient la présence, les alertes et les aperçus de shifts dans le module Time."
+            "body": "Clock Point QR pour la connexion et le pointage entrée/sortie. Les responsables voient la présence, les alertes et les aperçus de shifts dans Time."
         },
         "capabilities": {
             "title": "Fonctionnalités",

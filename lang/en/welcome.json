@@ -65,14 +65,14 @@
     "products": {
         "eyebrow": "Products",
         "title": "One platform, two core products.",
-        "lead": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts. The same Clock Point QR, modular and expandable.",
+        "lead": "WinProx Facility for issues and tasks. WinProx Time for presence and shifts — included with every subscription. The same Clock Point QR, modularly extendable with ESG and IoT.",
         "iot_note": "IoT Connect is optional: sensors send alarms straight into issues and tasks.",
         "iot_cta": "View IoT Connect",
         "learn_more": "Learn more",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Issue → task → completion",
-            "body": "Full facility management with smart QR portals on every unit. Optional ESG and Time modules.",
+            "body": "Full facility management with smart QR portals on every unit. Time included; ESG optional.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Issues & tasks",

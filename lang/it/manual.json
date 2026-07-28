@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Per iniziare",
         "title": "Operativo in 5 passi",
-        "intro": "Segua questo ordine quando configura WinProx Facility per la prima volta per la Sua organizzazione — e WinProx Time se la Sua organizzazione utilizza il modulo Time."
+        "intro": "Segua questo ordine quando configura WinProx Facility per la prima volta, incluso Time (ore e Clock Points)."
     },
     "chapter": "Capitolo",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Team e utenti tramite impostazioni",
-            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, modulo ESG opzionale, modulo Time opzionale, IoT Connect, impostazioni e abbonamento (inclusa l'eliminazione dei dati dell'organizzazione)."
+            "intro": "Capitoli sul portale admin con accesso: team, sedi, segnalazioni, attività, calendario, prenotazioni, dashboard, Time (ore e Clock Points), modulo ESG opzionale, IoT Connect, impostazioni e abbonamento (inclusa l'eliminazione dei dati dell'organizzazione)."
         },
         "internet_portal": {
             "title": "Codici QR sul campo",
@@ -55,9 +55,8 @@
     "step_2_title": "Configura sedi e unità",
     "step_2_text": "Raggruppi le unità in categorie (ad esempio: trapani, sanitari, attrezzature fitness, ufficio o elettricità). Contrassegni le categorie come Prenotabile se le unità devono consentire la prenotazione di uno slot orario. Collegando i team a categorie specifiche, WinProx garantisce che le attività siano sempre prese in carico dal team giusto. Inoltre, aggiunga sedi e crei le unità per sede — tramite il modulo, serie massiva o importazione CSV/Excel. Può aggiornare manualmente nomi e descrizioni unità per lingua.",
     "step_3_title": "Stampa e appendi codici QR",
-    "step_3_text": "La Sua organizzazione utilizza il modulo Time? Crei prima uno o più Clock Points (menu Time → Clock Points), stampi l'adesivo QR e lo appenda all'ingresso, al magazzino o all'officina — qui i lavoratori accedono e timbrano. Senza il modulo Time, apra Team → QR Clock Point; WinProx crea automaticamente un Clock Point predefinito. Stampi anche il QR unità dalla pagina di dettaglio della sede o dell'unità e lo fissi a macchine, stanze o asset. Cittadini e visitatori scansionano il QR unità per segnalazioni, documenti e eventualmente prenotazioni. I lavoratori scansionano prima il QR Clock Point (nome + icona), poi il QR unità sul posto per GPS, foto e attività.",
-    "step_3_text_time": "Crei almeno un Clock Point in Time → Clock Points (ad es. ingresso o magazzino). Stampi l'adesivo QR e lo appenda in un luogo visibile. Stampi anche i QR unità per sede o unità e li appenda a macchine o stanze. I lavoratori scansionano prima il QR Clock Point per accedere e timbrare; poi il QR unità sul posto per GPS, foto e attività.",
-    "step_3_text_facility": "Apra Team → QR Clock Point e stampi il QR di accesso — WinProx crea automaticamente un Clock Point predefinito se necessario. Stampi anche il QR unità dalla pagina di dettaglio della sede o dell'unità e appenda entrambi in modo visibile. I cittadini scansionano il QR unità per le segnalazioni (e le prenotazioni se attive); i lavoratori scansionano prima il QR Clock Point (nome + icona), poi il QR unità per le attività sul posto.",
+    "step_3_text": "Crei prima uno o più Clock Points (menu Time → Clock Points), stampi l'adesivo QR o il foglio di stampa QR e lo appenda all'ingresso, al magazzino o all'officina — qui i lavoratori accedono e timbrano. Stampi anche il QR unità dalla pagina di dettaglio della sede o dell'unità e lo fissi a macchine, stanze o asset. Cittadini e visitatori scansionano il QR unità per segnalazioni, documenti e eventualmente prenotazioni. I lavoratori scansionano prima il QR Clock Point (nome + icona), poi il QR unità sul posto per GPS, foto e attività.",
+    "step_3_text_time": "Crei almeno un Clock Point in Time → Clock Points (es. ingresso o magazzino). Stampi l'adesivo QR o il foglio di stampa QR e lo appenda in un punto visibile. Stampi anche i QR unità per sede o unità e li fissi a macchine o stanze. I lavoratori scansionano prima il QR Clock Point per accedere e timbrare; poi il QR unità sul posto per GPS, foto e attività.",
     "step_4_title": "Ricevi segnalazioni e assegna attività",
     "step_4_text": "Le segnalazioni arrivano tramite scansione QR, inserimento manuale o (con IoT Connect) un allarme sensore. Per ogni segnalazione viene creata automaticamente un'attività collegata direttamente al team responsabile. È possibile creare più attività per una segnalazione. Imposti una scadenza e segua l'avanzamento tramite dashboard, calendario e — per le prenotazioni — Prenotazioni.",
     "step_5_title": "Segui e chiudi",

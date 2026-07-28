@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). Daarna kunnen ze taken afhandelen via unit-QR-codes. Met de Time-module klokken ze hier ook in en uit."
+                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon) en klokken ze in en uit. Daarna kunnen ze taken afhandelen via unit-QR-codes."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Alleen wanneer uw organisatie de <strong>Time-module</strong> heeft: klok hier in, uit en registreer pauzes. Zonder Time-module is dit portaal enkel voor inloggen en het takenoverzicht."
+                    "text": "Klok hier in, uit en registreer pauzes. Gebruik daarna de unit-QR op locatie om taken te starten of af te ronden."
                 },
                 {
                     "label": "Afmelden",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
+                    "text": "Schakel optionele modules in of uit (ESG, IoT Connect). Time (uren, aanwezigheid en Clock Points) hoort standaard bij elk abonnement."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Hulp — Aanwezigheid",
             "actions": [
                 {
-                    "label": "Time-module",
-                    "text": "Dit scherm is alleen beschikbaar wanneer de Time-module actief is voor uw organisatie (Platform → Tenants)."
-                },
-                {
                     "label": "Dashboard",
                     "text": "Bovenaan ziet u live KPI's: ingelogd, actief, pauze, niet ingeklokt en aandacht. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Hulp — Uren",
             "actions": [
                 {
-                    "label": "Time-module",
-                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
-                },
-                {
                     "label": "Periode en filters",
                     "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "Wat is een clock point?",
                     "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
-                },
-                {
-                    "label": "Zonder Time-module",
-                    "text": "Beheer de inlog-QR via de knop <strong>Clock Point QR-code</strong> op Gebruikers → Teams. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
                     "label": "QR-code afdrukken",

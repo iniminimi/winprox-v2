@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Colocado en la entrada, almacén o taller. Los trabajadores inician sesión aquí (nombre + icono). Luego pueden gestionar tareas mediante códigos QR de unidad. Con el módulo Time también fichan entrada y salida aquí."
+                    "text": "Colocado en la entrada, almacén o taller. Aquí los trabajadores inician sesión (nombre + icono) y fichan entrada y salida. Después pueden gestionar tareas mediante códigos QR de unidad."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Solo cuando su organización tiene el <strong>módulo Time</strong>: fiche entrada, salida y registre pausas aquí. Sin el módulo Time, este portal sirve solo para iniciar sesión y ver el resumen de tareas."
+                    "text": "Fiche aquí entrada, salida y registre pausas. Después use el QR de unidad en el lugar para iniciar o completar tareas."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
+                    "text": "Active o desactive módulos opcionales (ESG, IoT Connect). Time (horas, presencia y Clock Points) está incluido por defecto en cada suscripción."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Ayuda — Presencia",
             "actions": [
                 {
-                    "label": "Módulo Time",
-                    "text": "Esta pantalla solo está disponible cuando el módulo Time está activo para su organización (Plataforma → Inquilinos)."
-                },
-                {
                     "label": "Panel",
                     "text": "KPI en vivo arriba: fichados, activos, pausa, no fichados y atención. <strong>Atención</strong> abre la pantalla de alertas."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Ayuda — Horas",
             "actions": [
                 {
-                    "label": "Módulo Time",
-                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
-                },
-                {
                     "label": "Período y filtros",
                     "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "¿Qué es un clock point?",
                     "text": "Gestione puntos de fichaje y códigos QR imprimibles en Time → Clock Points. Se crea automáticamente un clock point predeterminado si es necesario."
-                },
-                {
-                    "label": "Sin módulo Time",
-                    "text": "Gestione el QR de inicio de sesión mediante el botón <strong>QR Clock Point</strong> en Usuarios → Equipos. Se crea automáticamente un clock point predeterminado si es necesario."
                 },
                 {
                     "label": "Imprimir QR",

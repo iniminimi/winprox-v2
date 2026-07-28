@@ -63,14 +63,14 @@
     "products": {
         "eyebrow": "Producten",
         "title": "Eén platform, twee kernproducten.",
-        "lead": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts. Dezelfde Clock Point QR, modulair uitbreidbaar.",
+        "lead": "WinProx Facility voor meldingen en taken. WinProx Time voor aanwezigheid en shifts — standaard bij elk abonnement. Dezelfde Clock Point QR, modulair uitbreidbaar met ESG en IoT.",
         "iot_note": "IoT Connect is optioneel: sensoren sturen alarmen rechtstreeks naar meldingen en taken.",
         "iot_cta": "IoT Connect bekijken",
         "learn_more": "Meer informatie",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Melding → taak → afhandeling",
-            "body": "Volledig facility management met slimme QR-portalen op elke unit. Optioneel de ESG-module en Time-module.",
+            "body": "Volledig facility management met slimme QR-portalen op elke unit. Time inbegrepen; ESG optioneel.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Meldingen & taken",

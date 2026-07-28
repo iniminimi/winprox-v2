@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Danach können sie Aufgaben über Unit-QR-Codes bearbeiten. Mit dem Time-Modul stempeln sie hier auch ein und aus."
+                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon) und stempeln ein und aus. Danach können sie Aufgaben über Unit-QR-Codes bearbeiten."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Ein- und ausstempeln",
-                    "text": "Nur wenn Ihre Organisation das <strong>Time-Modul</strong> hat: stempeln Sie hier ein, aus und erfassen Sie Pausen. Ohne Time-Modul dient dieses Portal nur zur Anmeldung und zur Aufgabenübersicht."
+                    "text": "Stempeln Sie hier ein, aus und erfassen Sie Pausen. Nutzen Sie danach den Unit-QR vor Ort, um Aufgaben zu starten oder abzuschließen."
                 },
                 {
                     "label": "Abmelden",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
+                    "text": "Schalten Sie optionale Module ein oder aus (ESG, IoT Connect). Time (Stunden, Anwesenheit und Clock Points) gehört standardmäßig zu jedem Abonnement."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Hilfe — Anwesenheit",
             "actions": [
                 {
-                    "label": "Time-Modul",
-                    "text": "Dieser Bildschirm ist nur verfügbar, wenn das Time-Modul für Ihre Organisation aktiv ist (Plattform → Tenants)."
-                },
-                {
                     "label": "Dashboard",
                     "text": "Oben sehen Sie Live-KPIs: eingestempelt, aktiv, Pause, nicht eingestempelt und Aufmerksamkeit. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Hilfe — Stunden",
             "actions": [
                 {
-                    "label": "Time-Modul",
-                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
-                },
-                {
                     "label": "Zeitraum und Filter",
                     "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "Was ist ein Clock Point?",
                     "text": "Verwalten Sie Einstempelorte und druckbare QR-Codes unter Time → Clock Points. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
-                },
-                {
-                    "label": "Ohne Time-Modul",
-                    "text": "Verwalten Sie den Anmelde-QR über die Schaltfläche <strong>Clock Point QR-code</strong> unter Benutzer → Teams. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
                 },
                 {
                     "label": "QR-Code drucken",

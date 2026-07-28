@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Getting started",
         "title": "Up and running in 5 steps",
-        "intro": "Follow this order when first setting up WinProx Facility — and WinProx Time if your organisation uses the Time module."
+        "intro": "Follow this order when first setting up WinProx Facility, including Time (hours and Clock Points)."
     },
     "chapter": "Chapter",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams & users through settings",
-            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, reservations, dashboard, optional ESG module, optional Time module, IoT Connect, settings and subscription (including deleting organisation data)."
+            "intro": "Chapters on the signed-in admin portal: teams, locations, issues, tasks, calendar, reservations, dashboard, Time (hours and Clock Points), optional ESG module, IoT Connect, settings and subscription (including deleting organisation data)."
         },
         "internet_portal": {
             "title": "QR codes on site",
@@ -55,9 +55,8 @@
     "step_2_title": "Set up locations & units",
     "step_2_text": "Group units into categories (for example: drills, sanitary, fitness equipment, office or electricity). Mark categories as Reservable if units need to support time-slot booking. By linking teams to specific categories, WinProx ensures tasks are always picked up by the right team. Additionally, add locations and create your units per location — via the form, bulk range or CSV/Excel import. You can manually update unit names and descriptions per language.",
     "step_3_title": "Print & hang QR codes",
-    "step_3_text": "Does your organisation use the Time module? First create one or more Clock Points (menu Time → Clock Points), print the QR sticker and place it at the entrance, warehouse or workshop — workers sign in and clock in/out here. Without the Time module, open Teams → Clock Point QR code; WinProx then creates a default clock point automatically. Also print the unit QR from the location or unit detail page and attach it to machines, rooms or assets. Citizens and visitors scan the unit QR for issues, documents and optionally reservations. Workers first scan the Clock Point QR (name + icon), then the unit QR on site for GPS, photos and tasks.",
-    "step_3_text_time": "Create at least one Clock Point under Time → Clock Points (e.g. entrance or warehouse). Print the QR sticker and place it visibly. Also print unit QRs per location or unit and attach them to machines or rooms. Workers first scan the Clock Point QR to sign in and clock in; then the unit QR on site for GPS, photos and tasks.",
-    "step_3_text_facility": "Open Teams → Clock Point QR code and print the sign-in QR — WinProx creates a default clock point automatically if needed. Also print the unit QR from the location or unit detail page and place both visibly. Citizens scan the unit QR for issues (and reservations if active); workers first scan the Clock Point QR (name + icon), then the unit QR for tasks on site.",
+    "step_3_text": "First create one or more Clock Points (menu Time → Clock Points), print the QR sticker or QR print sheet and place it at the entrance, warehouse or workshop — workers sign in and clock in/out here. Also print the unit QR from the location or unit detail page and attach it to machines, rooms or assets. Citizens and visitors scan the unit QR for issues, documents and optionally reservations. Workers first scan the Clock Point QR (name + icon), then the unit QR on site for GPS, photos and tasks.",
+    "step_3_text_time": "Create at least one Clock Point under Time → Clock Points (e.g. entrance or warehouse). Print the QR sticker or QR print sheet and place it visibly. Also print unit QRs per location or unit and attach them to machines or rooms. Workers first scan the Clock Point QR to sign in and clock in; then the unit QR on site for GPS, photos and tasks.",
     "step_4_title": "Receive issues & assign tasks",
     "step_4_text": "Issues come in via a QR scan, manual entry or (with IoT Connect) a sensor alarm. For each issue, a task is automatically created and directly linked to the responsible team. It is possible to create multiple tasks for one issue. Set a deadline and track progress via the dashboard, calendar and — for bookings — Reservations.",
     "step_5_title": "Follow up & close",

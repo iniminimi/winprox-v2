@@ -57,7 +57,7 @@
         },
         "solution": {
             "title": "Solución",
-            "body": "Clock Point QR para inicio de sesión y fichaje entrada/salida (cuando Time está activo). Los responsables ven presencia, alarmas y resúmenes de turnos en el módulo Time."
+            "body": "QR Clock Point para inicio de sesión y fichaje. Los responsables ven presencia, alarmas y turnos en Time."
         },
         "capabilities": {
             "title": "Funcionalidades",

@@ -12,7 +12,7 @@
             "slug": "how_it_works",
             "type": "steps",
             "title": "¿Cómo funciona WinProx?",
-            "intro": "WinProx sigue un flujo central: incidencia → tareas → cierre. Opcionalmente se añaden Time (fichaje) y ESG (mediciones).",
+            "intro": "WinProx sigue un flujo central: incidencia → tareas → cierre. Time (fichaje) está incluido por defecto; ESG (mediciones) es opcional.",
             "summary": "Sitios y units, incidencia vía QR o gestión, aprobación en el portal público, tareas por equipo, seguimiento vía panel, briefing y calendario. Opcional: Time y ESG.",
             "steps": [
                 {
@@ -34,7 +34,7 @@
                 {
                     "title": "Trabajo de campo vía QR",
                     "text": "Los operarios se registran vía QR Clock Point (nombre + icono) y completan tareas vía QR unit o QR equipo — sin login WinProx.",
-                    "highlight": "Clock Point = registro; QR unit\/equipo = tareas e incidencias en sitio."
+                    "highlight": "Clock Point = registro; QR unit/equipo = tareas e incidencias en sitio."
                 },
                 {
                     "title": "Seguir y cerrar",
@@ -42,7 +42,7 @@
                 }
             ],
             "box_title": "Equipos internos",
-            "box_body": "Organice equipos de mantenimiento en Team. Vincule equipos a units y categorías. Vía Clock Point y QR unit\/equipo, los operarios registran actualizaciones y fotos en sitio."
+            "box_body": "Organice equipos de mantenimiento en Team. Vincule equipos a units y categorías. Vía Clock Point y QR unit/equipo, los operarios registran actualizaciones y fotos en sitio."
         },
         "pricing": {
             "slug": "pricing",
@@ -50,26 +50,26 @@
             "title": "¿Cuánto cuesta WinProx?",
             "intro": "Empieza con un mes de prueba gratis (funciones facility y time). Después elija Time, Facility o Corporate en Suscripción. Los límites aplican a toda su organización (units, sitios, documentos, fotos, usuarios).",
             "summary": "Periodo de prueba, luego WinProx Time, Facility o Corporate. Time y Facility sin API; Corporate con ESG, API y webhooks.",
-            "content_note": "Documentos y fotos cuentan para toda la organización. Durante la prueba aplican límites más bajos (p.ej. máx. 10 documentos\/fotos). Límites y precios exactos están en Suscripción.",
+            "content_note": "Documentos y fotos cuentan para toda la organización. Durante la prueba aplican límites más bajos (p.ej. máx. 10 documentos/fotos). Límites y precios exactos están en Suscripción.",
             "plans": {
                 "time": {
-                    "units": "Hasta 10 units \/ sitios \/ documentos \/ fotos",
-                    "users": "1 administrador + 1 personal · operarios ilimitados (CSV\/Excel)",
-                    "announcements": "149 € \/ mes · módulo Time incluido",
+                    "units": "Hasta 10 units / sitios / documentos / fotos",
+                    "users": "1 administrador + 1 personal · operarios ilimitados (CSV/Excel)",
+                    "announcements": "149 € / mes · módulo Time incluido",
                     "documents": "Incidencias QR y tareas dentro de sus límites · sin API",
                     "description": "Ideal para empezar con registro horario y workflows facility básicos."
                 },
                 "facility": {
-                    "units": "Hasta 100 units \/ sitios \/ documentos \/ fotos",
-                    "users": "1 administrador + hasta 4 personal · operarios ilimitados (CSV\/Excel)",
-                    "announcements": "399 € \/ mes · Time incluido",
-                    "documents": "Importación CSV\/Excel para unidades y trabajadores · sin API",
+                    "units": "Hasta 100 units / sitios / documentos / fotos",
+                    "users": "1 administrador + hasta 4 personal · operarios ilimitados (CSV/Excel)",
+                    "announcements": "399 € / mes · Time incluido",
+                    "documents": "Importación CSV/Excel para unidades y trabajadores · sin API",
                     "description": "Workflows facility completos a mayor escala, incluyendo WinProx Time."
                 },
                 "corporate": {
                     "units": "Datos ilimitados",
                     "users": "Escalable para grandes carteras",
-                    "announcements": "999 € \/ mes · ESG, API y webhooks",
+                    "announcements": "999 € / mes · ESG, API y webhooks",
                     "documents": "Soporte prioritario",
                     "description": "Para carteras enterprise e integraciones."
                 }
@@ -79,14 +79,14 @@
             "slug": "qr_code",
             "type": "text",
             "title": "¿Qué códigos QR hay?",
-            "body": "QR unit: los reportadores crean incidencias; operarios (tras registro Clock Point) completan tareas abiertas en esa unit. QR equipo: resumen de tareas del equipo en sitio. QR Clock Point: operarios se registran (y fichan entrada\/salida si Time está activo). QR sitio: enlace general al sitio. Todo abre en el navegador — sin app.",
-            "summary": "QR unit (reportar\/tareas), QR equipo (tareas equipo), QR Clock Point (registro\/fichaje), QR sitio — todo en el navegador."
+            "body": "QR de unidad: los informantes envían una incidencia; los trabajadores (tras acceso Clock Point) completan tareas abiertas en esa unidad. QR de equipo: resumen de tareas del equipo in situ. QR Clock Point: los trabajadores inician sesión y fichan. QR de ubicación: enlace general al sitio. Todo se abre en el navegador — sin app.",
+            "summary": "QR unit (reportar/tareas), QR equipo (tareas equipo), QR Clock Point (registro/fichaje), QR sitio — todo en el navegador."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "¿Cómo funciona el portal de reportadores?",
-            "intro": "Tras escanear el QR unit, se abre una página web para esa unit. Los reportadores comunican problemas; incidencias aprobadas y documentos\/anuncios compartidos son visibles. Operarios con acceso de equipo pueden completar tareas abiertas allí.",
+            "intro": "Tras escanear el QR unit, se abre una página web para esa unit. Los reportadores comunican problemas; incidencias aprobadas y documentos/anuncios compartidos son visibles. Operarios con acceso de equipo pueden completar tareas abiertas allí.",
             "summary": "Portal QR unit: incidencia (hasta 4 fotos), incidencias abiertas tras aprobación, documentos, anuncios, tareas en sitio para operarios.",
             "sections": [
                 {
@@ -128,9 +128,9 @@
         "time_clock": {
             "slug": "time_clock",
             "type": "text",
-            "title": "¿Qué es el módulo Time \/ Clock Point?",
-            "body": "Con Time, los operarios fichan entrada y salida vía QR Clock Point (pausas y turnos incluidos). Sin Time, Clock Point sigue siendo útil para identificar operarios antes de tareas vía QR unit. Time se activa o desactiva por organización (según su plan; Corporate\/superuser puede gestionar módulos).",
-            "summary": "Time: fichaje entrada\/salida vía Clock Point. Clock Point también identifica operarios para tareas."
+            "title": "¿Qué es el módulo Time / Clock Point?",
+            "body": "Con Time, los trabajadores fichan mediante el QR Clock Point (pausas y turnos incluidos). Clock Point también sirve para identificar a los trabajadores antes de las tareas vía QR de unidad. Time está incluido por defecto en cada suscripción.",
+            "summary": "Time: fichaje vía Clock Point. Incluido en cada suscripción."
         },
         "esg": {
             "slug": "esg",
@@ -143,8 +143,8 @@
             "slug": "for_who",
             "type": "text",
             "title": "¿Para quién es WinProx?",
-            "body": "Para organizaciones facility — fábricas, sanidad, municipios, campus — que quieren centralizar incidencias, equipos internos, seguimiento de campo y opcionalmente registro horario o ESG. Sin portales hospitality o contratistas separados: una app Facility.",
-            "summary": "Organizaciones facility: incidencias, equipos, campo; Time y ESG opcionales."
+            "body": "Para organizaciones facility — fábricas, sanidad, ayuntamientos, campus — que quieren centralizar incidencias, equipos internos, seguimiento de campo, Time (horas) y opcionalmente ESG o IoT Connect. Sin portales hospitality o de contratistas separados: una sola app Facility.",
+            "summary": "Organizaciones facility: incidencias, equipos, trabajo de campo; Time incluido; ESG e IoT Connect opcionales."
         },
         "user_roles": {
             "slug": "user_roles",
@@ -162,7 +162,7 @@
                 },
                 {
                     "title": "Operario",
-                    "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia\/completa tareas vía QR unit o equipo, con fotos y notas."
+                    "text": "Trabaja sin login WinProx. Se registra vía QR Clock Point; inicia/completa tareas vía QR unit o equipo, con fotos y notas."
                 }
             ]
         },
@@ -176,7 +176,7 @@
         "delete_account": {
             "slug": "delete_account",
             "type": "text",
-            "title": "¿Cómo elimino mi cuenta \/ los datos de la organización?",
+            "title": "¿Cómo elimino mi cuenta / los datos de la organización?",
             "body": "Solo un administrador puede hacerlo. Vaya a Suscripción → Eliminar datos de la organización. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos, luego confirme con contraseña y correo. En periodo de prueba puede eliminar definitivamente después. Con un plan de pago hay una espera de 7 días; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Los archivos multimedia (fotos, documentos) no se guardan en la instantánea de recuperación.",
             "summary": "Admin: Suscripción → eliminar datos (exportación + contraseña + correo; prueba usted mismo, de pago vía WinProx tras 7 días)."
         },
@@ -185,13 +185,13 @@
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
             "body": "Vaya a Team: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a units y opcionalmente a categorías. Imprima o envíe el QR equipo y QR Clock Point para la planta.",
-            "summary": "Equipos en Team; vincular a units\/categorías; QR Clock Point y equipo para la planta."
+            "summary": "Equipos en Team; vincular a units/categorías; QR Clock Point y equipo para la planta."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
             "type": "text",
             "title": "¿Cómo siguen los equipos las tareas?",
-            "body": "Las tareas aparecen en Tareas, en el calendario, en el briefing y en el QR equipo\/unit. Los operarios inician y completan en sitio. Los coordinadores siguen el estado en gestión. Las incidencias recurrentes generan ciclos con fechas de vencimiento planificadas.",
+            "body": "Las tareas aparecen en Tareas, en el calendario, en el briefing y en el QR equipo/unit. Los operarios inician y completan en sitio. Los coordinadores siguen el estado en gestión. Las incidencias recurrentes generan ciclos con fechas de vencimiento planificadas.",
             "summary": "Seguimiento vía Tareas, calendario, briefing y QR; ciclos recurrentes incluidos."
         },
         "multiple_locations": {
@@ -212,8 +212,8 @@
             "slug": "mobile",
             "type": "text",
             "title": "¿Funciona WinProx en smartphone?",
-            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR unit\/equipo. El tema Oscuro es útil en móvil.",
-            "summary": "Navegador en móvil\/tablet\/escritorio; campo vía QR es mobile-first."
+            "body": "Sí. La gestión es desktop-first pero usable en tablet. Los portales de campo y QR son mobile-first. Los operarios trabajan en móvil vía Clock Point y QR unit/equipo. El tema Oscuro es útil en móvil.",
+            "summary": "Navegador en móvil/tablet/escritorio; campo vía QR es mobile-first."
         },
         "install": {
             "slug": "install",
@@ -234,14 +234,14 @@
             "type": "text",
             "title": "¿Qué pegatinas puedo usar?",
             "body": "Para imprimir recomendamos etiquetas Avery o Herma (A4). En Sitios descargue una hoja de pegatinas (Word) en el formato correcto. Opcionalmente configure fondo de pegatina o logo de organización en Ajustes.",
-            "summary": "Avery\/Herma A4; hoja de pegatinas desde Sitios; logo\/fondo opcional en Ajustes."
+            "summary": "Avery/Herma A4; hoja de pegatinas desde Sitios; logo/fondo opcional en Ajustes."
         },
         "style": {
             "slug": "style",
             "type": "text",
             "title": "Estilo WinProx y estilo portal personalizado",
             "body": "En Ajustes elija estilo WinProx: Estándar u Oscuro (para la app). El estilo portal personalizado es opcional: colores de fondo y botones (y foto de fondo opcional) para el portal QR público que ven reportadores y operarios.",
-            "summary": "Estándar\/Oscuro para la app; colores\/fondo personalizados opcionales para el portal QR."
+            "summary": "Estándar/Oscuro para la app; colores/fondo personalizados opcionales para el portal QR."
         },
         "api_webhooks": {
             "slug": "api_webhooks",
@@ -254,7 +254,7 @@
             "slug": "iot",
             "type": "text",
             "title": "¿Qué es IoT Connect?",
-            "body": "IoT Connect conecta pasarelas de sensores a WinProx sin que WinProx venda hardware. Las alarmas (fuga de agua, puerta abierta demasiado tiempo) crean automáticamente una incidencia y tarea aprobadas. En Corporate, las lecturas también pueden guardarse como mediciones ESG. Gestione pasarelas, sensores y reglas en IoT Connect; la pasarela envía a POST \/api\/v1\/iot\/events con un token de pasarela (también en Facility, sin API REST completa).",
+            "body": "IoT Connect conecta pasarelas de sensores a WinProx sin que WinProx venda hardware. Las alarmas (fuga de agua, puerta abierta demasiado tiempo) crean automáticamente una incidencia y tarea aprobadas. En Corporate, las lecturas también pueden guardarse como mediciones ESG. Gestione pasarelas, sensores y reglas en IoT Connect; la pasarela envía a POST /api/v1/iot/events con un token de pasarela (también en Facility, sin API REST completa).",
             "summary": "IoT Connect: alarmas de sensores → incidencias (Facility+); mediciones → ESG (Corporate). Ingesta con token de pasarela."
         }
     }

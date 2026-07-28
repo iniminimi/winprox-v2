@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Commencer",
         "title": "Opérationnel en 5 étapes",
-        "intro": "Suivez cet ordre lors de la première configuration de WinProx Facility — et de WinProx Time si votre organisation utilise le module Time."
+        "intro": "Suivez cet ordre lors de la première configuration de WinProx Facility, y compris Time (heures et Clock Points)."
     },
     "chapter": "Chapitre",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Équipes et utilisateurs jusqu'aux paramètres",
-            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, réservations, tableau de bord, module ESG en option, module Time en option, IoT Connect, paramètres et abonnement (y compris la suppression des données d'organisation)."
+            "intro": "Chapitres sur le portail de gestion connecté : équipes, sites, signalements, tâches, calendrier, réservations, tableau de bord, Time (heures et Clock Points), module ESG en option, IoT Connect, paramètres et abonnement (y compris la suppression des données d'organisation)."
         },
         "internet_portal": {
             "title": "QR codes sur le terrain",
@@ -55,9 +55,8 @@
     "step_2_title": "Configurer les sites & unités",
     "step_2_text": "Regroupez les unités en catégories (par exemple : perceuses, sanitaire, équipements fitness, bureau ou électricité). Marquez les catégories comme Réservable si les unités doivent permettre la réservation d'un créneau. En liant des équipes à des catégories spécifiques, WinProx garantit que les tâches sont toujours prises en charge par la bonne équipe. Ajoutez également des sites et créez vos unités par site — via le formulaire, une série en masse ou un import CSV/Excel. Vous pouvez mettre à jour manuellement les noms et descriptions d'unité par langue.",
     "step_3_title": "Imprimer & accrocher les QR",
-    "step_3_text": "Votre organisation utilise-t-elle le module Time ? Créez d'abord un ou plusieurs Clock Points (menu Time → Clock Points), imprimez l'autocollant QR et placez-le à l'entrée, à l'entrepôt ou à l'atelier — les exécutants s'y connectent et pointent. Sans le module Time, ouvrez Équipes → QR Clock Point ; WinProx crée alors automatiquement un Clock Point par défaut. Imprimez également le QR unité depuis la page de détail du site ou de l'unité et fixez-le aux machines, salles ou actifs. Les citoyens et visiteurs scannent le QR unité pour les signalements, documents et éventuellement les réservations. Les exécutants scannent d'abord le QR Clock Point (nom + icône), puis le QR unité sur site pour le GPS, les photos et les tâches.",
-    "step_3_text_time": "Créez au moins un Clock Point sous Time → Clock Points (par ex. entrée ou entrepôt). Imprimez l'autocollant QR et placez-le bien en vue. Imprimez aussi les QR unité par site ou unité et fixez-les aux machines ou salles. Les exécutants scannent d'abord le QR Clock Point pour se connecter et pointer ; puis le QR unité sur site pour le GPS, les photos et les tâches.",
-    "step_3_text_facility": "Ouvrez Équipes → QR Clock Point et imprimez le QR de connexion — WinProx crée automatiquement un Clock Point par défaut si nécessaire. Imprimez aussi le QR unité depuis la page de détail du site ou de l'unité et placez les deux bien en vue. Les citoyens scannent le QR unité pour les signalements (et les réservations si actives) ; les exécutants scannent d'abord le QR Clock Point (nom + icône), puis le QR unité pour les tâches sur site.",
+    "step_3_text": "Créez d'abord un ou plusieurs Clock Points (menu Time → Clock Points), imprimez l'autocollant QR ou la feuille d'impression QR et placez-le à l'entrée, à l'entrepôt ou à l'atelier — les exécutants s'y connectent et pointent. Imprimez également le QR unité depuis la page de détail du site ou de l'unité et fixez-le aux machines, salles ou actifs. Les citoyens et visiteurs scannent le QR unité pour les signalements, documents et éventuellement les réservations. Les exécutants scannent d'abord le QR Clock Point (nom + icône), puis le QR unité sur site pour le GPS, les photos et les tâches.",
+    "step_3_text_time": "Créez au moins un Clock Point sous Time → Clock Points (p. ex. entrée ou entrepôt). Imprimez l'autocollant QR ou la feuille d'impression QR et placez-le bien en vue. Imprimez aussi les QR unité par site ou unité et fixez-les aux machines ou salles. Les exécutants scannent d'abord le QR Clock Point pour se connecter et pointer ; puis le QR unité sur site pour le GPS, les photos et les tâches.",
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent via un scan QR, une saisie manuelle ou (avec IoT Connect) une alarme capteur. Pour chaque signalement, une tâche est automatiquement créée et directement liée à l'équipe responsable. Il est possible de créer plusieurs tâches pour un signalement. Définissez une date limite et suivez la progression via le tableau de bord, le calendrier et — pour les réservations — Réservations.",
     "step_5_title": "Suivre & clôturer",

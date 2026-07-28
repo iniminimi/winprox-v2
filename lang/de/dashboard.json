@@ -55,13 +55,8 @@
         },
         "clock_point": {
             "title": "Clock Point anlegen",
-            "text": "Mit dem Time-Modul melden sich Mitarbeiter an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber, damit Ihr Team starten kann.",
+            "text": "Ausführende melden sich an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber oder das QR-Druckblatt, damit Ihr Team starten kann.",
             "button": "Clock Points"
-        },
-        "clock_point_facility": {
-            "title": "Clock Point QR-Code drucken",
-            "text": "Ausführer melden sich über einen Clock Point QR-Code an. Öffnen Sie die Schaltfläche unter Benutzer und drucken Sie den QR, damit Ihr Team sich anmelden kann.",
-            "button": "Clock Point QR-Code"
         }
     }
 }

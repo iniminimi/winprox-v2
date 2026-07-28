@@ -55,13 +55,8 @@
         },
         "clock_point": {
             "title": "Cree un Clock Point",
-            "text": "Con el módulo Time, los trabajadores inician sesión y fichan mediante un Clock Point. Cree al menos un clock point e imprima la etiqueta QR para que su equipo pueda empezar.",
+            "text": "Los trabajadores inician sesión y fichan mediante un Clock Point. Cree al menos un clock point e imprima la etiqueta QR o la hoja de impresión QR para que su equipo pueda empezar.",
             "button": "Clock Points"
-        },
-        "clock_point_facility": {
-            "title": "Imprima el código QR Clock Point",
-            "text": "Los trabajadores inician sesión mediante un código QR Clock Point. Abra el botón en Usuarios e imprima el QR para que su equipo pueda iniciar sesión.",
-            "button": "Código QR Clock Point"
         }
     }
 }

@@ -66,14 +66,14 @@
     "products": {
         "eyebrow": "Produits",
         "title": "Une plateforme, deux produits clés.",
-        "lead": "WinProx Facility pour les signalements et tâches. WinProx Time pour la présence et les shifts. Le même QR Clock Point, modulaire et extensible.",
+        "lead": "WinProx Facility pour les signalements et tâches. WinProx Time pour la présence et les shifts — inclus dans chaque abonnement. Le même QR Clock Point, extensible avec ESG et IoT.",
         "iot_note": "IoT Connect est optionnel : les capteurs envoient les alarmes directement vers les signalements et les tâches.",
         "iot_cta": "Voir IoT Connect",
         "learn_more": "En savoir plus",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Signalement → tâche → traitement",
-            "body": "Gestion facility complète avec portails QR intelligents sur chaque unité. Modules ESG et Time en option.",
+            "body": "Gestion facility complète avec portails QR intelligents sur chaque unité. Time inclus ; ESG en option.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Signalements & tâches",

@@ -13,7 +13,7 @@
     "getting_started": {
         "label": "Erste Schritte",
         "title": "In 5 Schritten einsatzbereit",
-        "intro": "Folgen Sie dieser Reihenfolge bei der Ersteinrichtung von WinProx Facility — und von WinProx Time, wenn Ihre Organisation das Time-Modul nutzt."
+        "intro": "Folgen Sie dieser Reihenfolge bei der ersten Einrichtung von WinProx Facility, einschließlich Time (Stunden und Clock Points)."
     },
     "chapter": "Kapitel",
     "toc": {
@@ -23,7 +23,7 @@
     "sections": {
         "admin_portal": {
             "title": "Teams und Benutzer bis Einstellungen",
-            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Reservierungen, Dashboard, optionales ESG-Modul, optionales Time-Modul, IoT Connect, Einstellungen und Abonnement (einschließlich Löschen von Organisationsdaten)."
+            "intro": "Kapitel zum angemeldeten Verwaltungsportal: Teams, Standorte, Meldungen, Aufgaben, Kalender, Reservierungen, Dashboard, Time (Stunden und Clock Points), optionales ESG-Modul, IoT Connect, Einstellungen und Abonnement (einschließlich Löschen von Organisationsdaten)."
         },
         "internet_portal": {
             "title": "QR-Codes vor Ort",
@@ -55,9 +55,8 @@
     "step_2_title": "Standorte & Einheiten einrichten",
     "step_2_text": "Gruppieren Sie Einheiten in Kategorien (zum Beispiel: Bohrmaschinen, Sanitär, Fitnessgeräte, Büro oder Elektrik). Markieren Sie Kategorien als Reservierbar, wenn Units ein Zeitfenster buchen können sollen. Durch die Verknüpfung von Teams mit spezifischen Kategorien stellt WinProx sicher, dass Aufgaben immer vom richtigen Team übernommen werden. Fügen Sie außerdem Standorte hinzu und erstellen Sie pro Standort Ihre Units — über das Formular, eine Bulk-Reihe oder CSV/Excel-Import. Unitnamen und -beschreibungen können Sie pro Sprache manuell aktualisieren.",
     "step_3_title": "QR-Codes drucken & aufhängen",
-    "step_3_text": "Nutzt Ihre Organisation das Time-Modul? Legen Sie zuerst einen oder mehrere Clock Points an (Menü Time → Clock Points), drucken Sie den QR-Aufkleber und befestigen Sie ihn am Eingang, im Lager oder in der Werkstatt — hier melden sich Ausführende an und stempeln ein und aus. Ohne Time-Modul öffnen Sie Teams → Clock Point QR-Code; WinProx legt dann automatisch einen Standard-Clock Point an. Drucken Sie außerdem den Unit-QR über die Detailseite des Standorts oder der Einheit und befestigen Sie ihn an Maschinen, Räumen oder Assets. Bürger und Besucher scannen den Unit-QR für Meldungen, Dokumente und ggf. Reservierungen. Ausführende scannen zuerst den Clock Point QR (Name + Symbol) und anschließend den Unit-QR vor Ort für GPS, Fotos und Aufgaben.",
-    "step_3_text_time": "Legen Sie mindestens einen Clock Point unter Time → Clock Points an (z. B. Eingang oder Lager). Drucken Sie den QR-Aufkleber und befestigen Sie ihn gut sichtbar. Drucken Sie auch die Unit-QRs pro Standort oder Einheit und befestigen Sie sie an Maschinen oder Räumen. Mitarbeiter scannen zuerst den Clock Point QR zum Anmelden und Einstempeln; anschließend den Unit-QR vor Ort für GPS, Fotos und Aufgaben.",
-    "step_3_text_facility": "Öffnen Sie Teams → Clock Point QR-Code und drucken Sie den Anmelde-QR — WinProx legt bei Bedarf automatisch einen Standard-Clock Point an. Drucken Sie auch den Unit-QR über die Standort- oder Einheitsdetailseite und befestigen Sie beide gut sichtbar. Bürger scannen den Unit-QR für Meldungen (und Reservierungen, falls aktiv); Ausführende scannen zuerst den Clock Point QR (Name + Symbol) und anschließend den Unit-QR für Aufgaben vor Ort.",
+    "step_3_text": "Legen Sie zuerst einen oder mehrere Clock Points an (Menü Time → Clock Points), drucken Sie den QR-Aufkleber oder das QR-Druckblatt und befestigen Sie ihn am Eingang, im Lager oder in der Werkstatt — hier melden sich Ausführende an und stempeln ein und aus. Drucken Sie außerdem den Unit-QR über die Detailseite des Standorts oder der Einheit und befestigen Sie ihn an Maschinen, Räumen oder Assets. Bürger und Besucher scannen den Unit-QR für Meldungen, Dokumente und ggf. Reservierungen. Ausführende scannen zuerst den Clock Point QR (Name + Symbol) und anschließend den Unit-QR vor Ort für GPS, Fotos und Aufgaben.",
+    "step_3_text_time": "Legen Sie mindestens einen Clock Point unter Time → Clock Points an (z. B. Eingang oder Lager). Drucken Sie den QR-Aufkleber oder das QR-Druckblatt und bringen Sie ihn gut sichtbar an. Drucken Sie auch Unit-QRs pro Standort oder Einheit und befestigen Sie sie an Maschinen oder Räumen. Ausführende scannen zuerst den Clock Point QR zum Anmelden und Einstempeln; danach den Unit-QR vor Ort für GPS, Fotos und Aufgaben.",
     "step_4_title": "Meldungen empfangen & Aufgaben zuweisen",
     "step_4_text": "Meldungen kommen über einen QR-Scan, manuelle Eingabe oder (mit IoT Connect) einen Sensoralarm herein. Für jede Meldung wird automatisch eine Aufgabe erstellt, die direkt dem verantwortlichen Team zugeordnet wird. Es ist möglich, mehrere Aufgaben für eine Meldung zu erstellen. Legen Sie eine Frist fest und verfolgen Sie den Fortschritt über Dashboard, Kalender und — für Buchungen — Reservierungen.",
     "step_5_title": "Nachverfolgen & abschließen",

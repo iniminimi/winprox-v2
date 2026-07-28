@@ -63,14 +63,14 @@
     "products": {
         "eyebrow": "Produkte",
         "title": "Eine Plattform, zwei Kernprodukte.",
-        "lead": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten. Derselbe Clock-Point-QR, modular erweiterbar.",
+        "lead": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten — in jedem Abonnement enthalten. Derselbe Clock Point QR, modular erweiterbar mit ESG und IoT.",
         "iot_note": "IoT Connect ist optional: Sensoren senden Alarme direkt in Meldungen und Aufgaben.",
         "iot_cta": "IoT Connect ansehen",
         "learn_more": "Mehr erfahren",
         "facility": {
             "name": "WinProx Facility",
             "tagline": "Meldung → Aufgabe → Erledigung",
-            "body": "Vollständiges Facility Management mit intelligenten QR-Portalen an jeder Unit. Optionale ESG- und Time-Module.",
+            "body": "Vollständiges Facility-Management mit smarten QR-Portalen an jeder Unit. Time inklusive; ESG optional.",
             "logo_alt": "WinProx Facility",
             "bullets": [
                 "Meldungen & Aufgaben",

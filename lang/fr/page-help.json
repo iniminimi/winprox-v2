@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Placé à l'entrée, à l'entrepôt ou à l'atelier. Les exécutants se connectent ici (nom + icône). Ils peuvent ensuite traiter les tâches via les codes QR unité. Avec le module Time, ils pointent aussi ici à l'entrée et à la sortie."
+                    "text": "Placé à l'entrée, à l'entrepôt ou à l'atelier. Les exécutants se connectent ici (nom + icône) et pointent à l'entrée et à la sortie. Ils peuvent ensuite traiter les tâches via les codes QR unité."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Uniquement si votre organisation dispose du <strong>module Time</strong> : pointez ici à l'entrée, à la sortie et enregistrez les pauses. Sans module Time, ce portail sert uniquement à la connexion et à l'aperçu des tâches."
+                    "text": "Pointez ici à l'entrée, à la sortie et enregistrez les pauses. Utilisez ensuite le QR unité sur site pour démarrer ou terminer des tâches."
                 },
                 {
                     "label": "Déconnexion",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Équipes uniquement pour la connexion."
+                    "text": "Activez ou désactivez les modules optionnels (ESG, IoT Connect). Time (heures, présence et Clock Points) est inclus par défaut dans chaque abonnement."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Aide — Présence",
             "actions": [
                 {
-                    "label": "Module Time",
-                    "text": "Cet écran n'est disponible que lorsque le module Time est actif pour votre organisation (Plateforme → Tenants)."
-                },
-                {
                     "label": "Tableau de bord",
                     "text": "KPI en direct en haut : pointés, actifs, pause, non pointés et à surveiller. <strong>À surveiller</strong> ouvre l'écran Alertes."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Aide — Heures",
             "actions": [
                 {
-                    "label": "Module Time",
-                    "text": "L'enregistrement des heures nécessite le module Time. Sans module, utilisez le bouton <strong>QR Clock Point</strong> sous Équipes uniquement pour la connexion."
-                },
-                {
                     "label": "Période et filtres",
                     "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, collaborateur ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "Qu'est-ce qu'un clock point ?",
                     "text": "Gérez les points de pointage et les QR imprimables via Time → Clock Points. Un clock point par défaut est créé automatiquement si nécessaire."
-                },
-                {
-                    "label": "Sans module Time",
-                    "text": "Gérez le QR de connexion via le bouton <strong>QR Clock Point</strong> sous Utilisateurs → Équipes. Un clock point par défaut est créé automatiquement si nécessaire."
                 },
                 {
                     "label": "Imprimer le QR",

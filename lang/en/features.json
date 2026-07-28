@@ -57,7 +57,7 @@
         },
         "solution": {
             "title": "Solution",
-            "body": "Clock Point QR for sign-in and clock in/out (when Time is enabled). Managers see presence, alarms and shift overviews in the Time module."
+            "body": "Clock Point QR for sign-in and clock in/out. Managers see presence, alarms and shift overviews in Time."
         },
         "capabilities": {
             "title": "Capabilities",

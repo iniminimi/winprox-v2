@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Posizionato all'ingresso, magazzino o officina. I lavoratori accedono qui (nome + icona). Possono poi gestire attività tramite codici QR unità. Con il modulo Time timbrano anche entrata e uscita qui."
+                    "text": "Si trova all'ingresso, magazzino o officina. Qui i lavoratori accedono (nome + icona) e timbrano entrata e uscita. Poi possono gestire le attività tramite i codici QR unità."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Timbratura entrata e uscita",
-                    "text": "Solo quando la Sua organizzazione ha il <strong>modulo Time</strong>: timbri entrata, uscita e registri le pause qui. Senza modulo Time, questo portale serve solo per l'accesso e la panoramica delle attività."
+                    "text": "Timbri qui entrata, uscita e registri le pause. Poi usi il QR unità sul posto per avviare o completare attività."
                 },
                 {
                     "label": "Esci",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
+                    "text": "Attivi o disattivi i moduli opzionali (ESG, IoT Connect). Time (ore, presenza e Clock Points) è incluso di default in ogni abbonamento."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Aiuto — Presenze",
             "actions": [
                 {
-                    "label": "Modulo Time",
-                    "text": "Questa schermata è disponibile solo quando il modulo Time è attivo per la Sua organizzazione (Piattaforma → Tenant)."
-                },
-                {
                     "label": "Dashboard",
                     "text": "KPI live in alto: timbrati, attivi, pausa, non timbrati e attenzione. <strong>Attenzione</strong> apre la schermata Allarmi."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Aiuto — Ore",
             "actions": [
                 {
-                    "label": "Modulo Time",
-                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
-                },
-                {
                     "label": "Periodo e filtri",
                     "text": "Scelga date di inizio e fine e filtri facoltativamente per team, lavoratore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "Cos'è un clock point?",
                     "text": "Gestisca i punti di timbratura e i QR stampabili in Time → Clock Points. Se necessario viene creato automaticamente un clock point predefinito."
-                },
-                {
-                    "label": "Senza modulo Time",
-                    "text": "Gestisca il QR di accesso tramite il pulsante <strong>QR Clock Point</strong> in Utenti → Team. Se necessario, viene creato automaticamente un clock point predefinito."
                 },
                 {
                     "label": "Stampa QR",

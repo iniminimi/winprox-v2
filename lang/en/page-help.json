@@ -574,7 +574,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). They can then handle tasks via unit QR codes. With the Time module they also clock in and out here."
+                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon) and clock in and out. They can then handle tasks via unit QR codes."
                 }
             ]
         },
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Only when your organisation has the <strong>Time module</strong>: clock in, out and register breaks here. Without the Time module this portal is only for sign-in and the task overview."
+                    "text": "Clock in, out and register breaks here. Then use the unit QR on site to start or complete tasks."
                 },
                 {
                     "label": "Sign out",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
+                    "text": "Enable or disable optional modules (ESG, IoT Connect). Time (hours, presence and Clock Points) is included with every subscription by default."
                 }
             ]
         },
@@ -992,10 +992,6 @@
             "title": "Help — Presence",
             "actions": [
                 {
-                    "label": "Time module",
-                    "text": "This screen is only available when the Time module is active for your organisation (Platform → Tenants)."
-                },
-                {
                     "label": "Dashboard",
                     "text": "Live KPIs at the top: clocked in, active, break, not clocked in, and attention. Click a tile to filter. <strong>Attention</strong> opens the alarms screen."
                 },
@@ -1038,10 +1034,6 @@
             "title": "Help — Hours",
             "actions": [
                 {
-                    "label": "Time module",
-                    "text": "Time tracking requires the Time module. Without the module, use the <strong>Clock Point QR code</strong> button on Teams for login only."
-                },
-                {
                     "label": "Period and filters",
                     "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
                 },
@@ -1077,10 +1069,6 @@
                 {
                     "label": "What is a clock point?",
                     "text": "Manage clock-in points and printable QR codes under Time → Clock Points. A default clock point is created automatically if needed."
-                },
-                {
-                    "label": "Without Time module",
-                    "text": "Manage the sign-in QR via the <strong>Clock Point QR code</strong> button on Users → Teams. A default clock point is created automatically if needed."
                 },
                 {
                     "label": "Print QR code",
