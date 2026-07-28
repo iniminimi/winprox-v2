@@ -42,19 +42,17 @@
     <div class="wp-list">
         @forelse ($clockPoints as $clockPoint)
             <div class="wp-card wp-card-pad wp-cluster" wire:key="clock-point-{{ $clockPoint->id }}">
-                <div class="wp-grow">
+                <div class="wp-cluster wp-grow">
                     <strong>{{ $clockPoint->name }}</strong>
                     @if ($clockPoint->location)
-                        <p class="wp-muted wp-text-sm">{{ $clockPoint->location->localizedName() }}</p>
+                        <span class="wp-muted wp-text-sm">{{ $clockPoint->location->localizedName() }}</span>
                     @endif
-                    <p class="wp-muted wp-text-sm">
-                        <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
-                            {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
-                        </span>
-                        @if ($clockPoint->isRenewalRecommended())
-                            <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
-                        @endif
-                    </p>
+                    <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                        {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
+                    </span>
+                    @if ($clockPoint->isRenewalRecommended())
+                        <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                    @endif
                 </div>
                 <div class="wp-cluster">
                     <a href="{{ route('time.clock-points.qr', $clockPoint) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">
