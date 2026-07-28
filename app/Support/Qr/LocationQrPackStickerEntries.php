@@ -47,6 +47,7 @@ final class LocationQrPackStickerEntries
                 reportUrl: $reportUrl,
                 headerFallback: self::portalHeaderFallback($unit, $location),
                 stickerNumber: $stickerNumber !== '' ? $stickerNumber : null,
+                locationUnitLabel: self::locationUnitCaption($location, $unit),
             );
         }
 
@@ -67,9 +68,7 @@ final class LocationQrPackStickerEntries
 
     private static function portalHeaderFallback(Unit $unit, Location $location): string
     {
-        $locationName = trim((string) $location->name);
-        $unitName = trim((string) $unit->name) !== '' ? trim((string) $unit->name) : '—';
-        $line1 = $locationName !== '' ? $locationName.' · '.$unitName : $unitName;
+        $line1 = self::locationUnitCaption($location, $unit, separator: ' · ');
         $description = trim((string) ($unit->description ?? ''));
 
         if ($description === '') {
@@ -77,6 +76,14 @@ final class LocationQrPackStickerEntries
         }
 
         return $line1."\n".$description;
+    }
+
+    private static function locationUnitCaption(Location $location, Unit $unit, string $separator = ' - '): string
+    {
+        $locationName = trim((string) $location->name);
+        $unitName = trim((string) $unit->name) !== '' ? trim((string) $unit->name) : '—';
+
+        return $locationName !== '' ? $locationName.$separator.$unitName : $unitName;
     }
 
     private static function stickerNumberForUnit(Unit $unit): ?string

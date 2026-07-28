@@ -592,7 +592,13 @@ it('qr-pack download returns a6 printable docx when GD available', function () {
 
     expect($documentXml)->toBeString()
         ->and($documentXml)->toContain('w:pgSz')
+        ->and($documentXml)->toContain('w:left="567"')
+        ->and($documentXml)->toContain('w:top="567"')
         ->and($mediaCount)->toBeGreaterThanOrEqual(1);
+
+    $entries = \App\Support\Qr\LocationQrPackStickerEntries::forLocation($location->fresh());
+    expect($entries)->toHaveCount(1)
+        ->and($entries[0]->locationUnitLabel)->toBe('Hal A6 - Poort 1');
 });
 
 it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () {

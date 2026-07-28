@@ -51,7 +51,9 @@ it('zet unitbeschrijving naast de naam op QR-stickerlabels', function () {
     $entries = LocationQrPackStickerEntries::forLocation($location->fresh());
 
     expect($entries[0]->unitLabel)->toBe('Boormachine 001 - Serienummer 34962')
-        ->and($entries[1]->unitLabel)->toBe('Lift A');
+        ->and($entries[1]->unitLabel)->toBe('Lift A')
+        ->and($entries[0]->locationUnitLabel)->toBe($location->name.' - Boormachine 001')
+        ->and($entries[1]->locationUnitLabel)->toBe($location->name.' - Lift A');
 });
 
 it('geeft twee units met dezelfde naam elk een eigen qr_token', function () {

@@ -8,6 +8,7 @@ use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrPrintablePageBackground;
+use App\Support\Qr\QrPrintablePageFont;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerRasterCache;
 use App\Support\Qr\QrStickerSheetTemplate;
@@ -26,12 +27,19 @@ final class QrPrintablePageWordBuilder
 {
     private const EXPORT_DPI = 200;
 
-    /** QR size as fraction of the page's shorter side. */
+    /** Safe printer margin on each side (avoids edge clipping). */
+    private const PAGE_MARGIN_MM = 10.0;
+
+    /** QR size as fraction of the printable area's shorter side. */
     private const QR_SIZE_RATIO = 0.48;
 
-    private const LABEL_GAP_RATIO = 0.03;
+    private const LABEL_GAP_MM = 2.5;
 
-    private const LABEL_FONT_RATIO = 0.035;
+    private const LINE_GAP_MM = 1.2;
+
+    private const PRIMARY_FONT_MM = 3.0;
+
+    private const SECONDARY_FONT_MM = 2.6;
 
     /**
      * @param  list<QrStickerEntry>  $entries
@@ -60,13 +68,15 @@ final class QrPrintablePageWordBuilder
         $backgroundPath = QrPrintablePageBackground::absolutePathForTemplate($template, $sheetSettings);
         $pageWidthMm = $template->pageWidthMm();
         $pageHeightMm = $template->pageHeightMm();
+        $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
+        $contentHeightMm = $pageHeightMm - (2 * self::PAGE_MARGIN_MM);
         $tempFiles = [];
 
         try {
             $backgroundPng = $this->prepareBackgroundPng(
                 $backgroundPath,
-                $pageWidthMm,
-                $pageHeightMm,
+                $contentWidthMm,
+                $contentHeightMm,
                 $tempFiles,
             );
 
@@ -82,8 +92,8 @@ final class QrPrintablePageWordBuilder
                 );
 
                 $section->addImage($pagePng, [
-                    'width' => self::mmToPoint($pageWidthMm),
-                    'height' => self::mmToPoint($pageHeightMm),
+                    'width' => self::mmToPoint($contentWidthMm),
+                    'height' => self::mmToPoint($contentHeightMm),
                     'unit' => 'pt',
                     'marginTop' => 0,
                     'marginLeft' => 0,
@@ -106,12 +116,12 @@ final class QrPrintablePageWordBuilder
      */
     private function prepareBackgroundPng(
         string $backgroundPath,
-        float $pageWidthMm,
-        float $pageHeightMm,
+        float $contentWidthMm,
+        float $contentHeightMm,
         array &$tempFiles,
     ): string {
-        $widthPx = self::mmToPixelAtDpi($pageWidthMm);
-        $heightPx = self::mmToPixelAtDpi($pageHeightMm);
+        $widthPx = self::mmToPixelAtDpi($contentWidthMm);
+        $heightPx = self::mmToPixelAtDpi($contentHeightMm);
 
         if (class_exists(Imagick::class)) {
             return $this->rasterizeBackgroundWithImagick($backgroundPath, $widthPx, $heightPx, $tempFiles);
@@ -251,26 +261,45 @@ final class QrPrintablePageWordBuilder
         ?string $centerLogoPath,
         array &$tempFiles,
     ): string {
-        $widthPx = self::mmToPixelAtDpi($pageWidthMm);
-        $heightPx = self::mmToPixelAtDpi($pageHeightMm);
-        [$qrPx, $qrX, $qrY, $labelY, $fontSizePx] = $this->layoutMetrics($pageWidthMm, $pageHeightMm, $entry->unitLabel);
+        $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
+        $contentHeightMm = $pageHeightMm - (2 * self::PAGE_MARGIN_MM);
+        $widthPx = self::mmToPixelAtDpi($contentWidthMm);
+        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry);
 
         $qrTemp = $this->allocateTempPng($tempFiles);
-        QrCodePngWriter::writeFileForStickerSheet($entry->reportUrl, $qrTemp, max(480, $qrPx), $centerLogoPath);
+        QrCodePngWriter::writeFileForStickerSheet(
+            $entry->reportUrl,
+            $qrTemp,
+            max(480, $layout['qrPx']),
+            $centerLogoPath,
+        );
 
         $canvas = new Imagick($backgroundPng);
         $qr = new Imagick($qrTemp);
-        $qr->resizeImage($qrPx, $qrPx, Imagick::FILTER_LANCZOS, 1, true);
-        $canvas->compositeImage($qr, Imagick::COMPOSITE_OVER, $qrX, $qrY);
+        $qr->resizeImage($layout['qrPx'], $layout['qrPx'], Imagick::FILTER_LANCZOS, 1, true);
+        $canvas->compositeImage($qr, Imagick::COMPOSITE_OVER, $layout['qrX'], $layout['qrY']);
         $qr->clear();
 
-        if ($entry->unitLabel !== '') {
-            $draw = new ImagickDraw;
-            $draw->setFillColor(new ImagickPixel('#111827'));
-            $draw->setFontSize($fontSizePx);
-            $draw->setTextAlignment(Imagick::ALIGN_CENTER);
-            $draw->setFontWeight(700);
-            $canvas->annotateImage($draw, (int) round($widthPx / 2), $labelY, 0, $entry->unitLabel);
+        $centerX = (int) round($widthPx / 2);
+        if ($layout['primaryText'] !== '') {
+            $this->drawImagickCenteredText(
+                $canvas,
+                $layout['primaryText'],
+                $centerX,
+                $layout['primaryY'],
+                $layout['primaryFontPx'],
+                QrPrintablePageFont::semiboldAbsolutePath(),
+            );
+        }
+        if ($layout['secondaryText'] !== '') {
+            $this->drawImagickCenteredText(
+                $canvas,
+                $layout['secondaryText'],
+                $centerX,
+                $layout['secondaryY'],
+                $layout['secondaryFontPx'],
+                QrPrintablePageFont::regularAbsolutePath(),
+            );
         }
 
         $canvas->setImageFormat('png');
@@ -292,12 +321,18 @@ final class QrPrintablePageWordBuilder
         ?string $centerLogoPath,
         array &$tempFiles,
     ): string {
-        $widthPx = self::mmToPixelAtDpi($pageWidthMm);
-        $heightPx = self::mmToPixelAtDpi($pageHeightMm);
-        [$qrPx, $qrX, $qrY, $labelY, $fontSizePx] = $this->layoutMetrics($pageWidthMm, $pageHeightMm, $entry->unitLabel);
+        $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
+        $contentHeightMm = $pageHeightMm - (2 * self::PAGE_MARGIN_MM);
+        $widthPx = self::mmToPixelAtDpi($contentWidthMm);
+        $layout = $this->layoutMetrics($contentWidthMm, $contentHeightMm, $entry);
 
         $qrTemp = $this->allocateTempPng($tempFiles);
-        QrCodePngWriter::writeFileForStickerSheet($entry->reportUrl, $qrTemp, max(480, $qrPx), $centerLogoPath);
+        QrCodePngWriter::writeFileForStickerSheet(
+            $entry->reportUrl,
+            $qrTemp,
+            max(480, $layout['qrPx']),
+            $centerLogoPath,
+        );
 
         $canvas = @imagecreatefrompng($backgroundPng);
         if ($canvas === false) {
@@ -310,7 +345,7 @@ final class QrPrintablePageWordBuilder
             throw new RuntimeException('Unable to load printable QR PNG.');
         }
 
-        $qrScaled = imagecreatetruecolor($qrPx, $qrPx);
+        $qrScaled = imagecreatetruecolor($layout['qrPx'], $layout['qrPx']);
         if ($qrScaled === false) {
             imagedestroy($canvas);
             imagedestroy($qr);
@@ -319,20 +354,36 @@ final class QrPrintablePageWordBuilder
 
         imagealphablending($qrScaled, false);
         imagesavealpha($qrScaled, true);
-        imagecopyresampled($qrScaled, $qr, 0, 0, 0, 0, $qrPx, $qrPx, imagesx($qr), imagesy($qr));
+        imagecopyresampled($qrScaled, $qr, 0, 0, 0, 0, $layout['qrPx'], $layout['qrPx'], imagesx($qr), imagesy($qr));
         imagedestroy($qr);
 
         imagealphablending($canvas, true);
-        imagecopy($canvas, $qrScaled, $qrX, $qrY, 0, 0, $qrPx, $qrPx);
+        imagecopy($canvas, $qrScaled, $layout['qrX'], $layout['qrY'], 0, 0, $layout['qrPx'], $layout['qrPx']);
         imagedestroy($qrScaled);
 
-        if ($entry->unitLabel !== '') {
-            $black = imagecolorallocate($canvas, 17, 24, 39);
-            if ($black !== false) {
-                $bbox = imagettfbbox($fontSizePx, 0, $this->gdFontPath(), $entry->unitLabel);
-                $textWidth = is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0;
-                $textX = (int) round(($widthPx - $textWidth) / 2);
-                imagettftext($canvas, $fontSizePx, 0, $textX, $labelY, $black, $this->gdFontPath(), $entry->unitLabel);
+        $color = imagecolorallocate($canvas, 17, 24, 39);
+        if ($color !== false) {
+            if ($layout['primaryText'] !== '') {
+                $this->drawGdCenteredText(
+                    $canvas,
+                    $layout['primaryText'],
+                    $widthPx,
+                    $layout['primaryY'],
+                    $layout['primaryFontPx'],
+                    $color,
+                    QrPrintablePageFont::semiboldAbsolutePath(),
+                );
+            }
+            if ($layout['secondaryText'] !== '') {
+                $this->drawGdCenteredText(
+                    $canvas,
+                    $layout['secondaryText'],
+                    $widthPx,
+                    $layout['secondaryY'],
+                    $layout['secondaryFontPx'],
+                    $color,
+                    QrPrintablePageFont::regularAbsolutePath(),
+                );
             }
         }
 
@@ -347,43 +398,101 @@ final class QrPrintablePageWordBuilder
     }
 
     /**
-     * @return array{0: int, 1: int, 2: int, 3: int, 4: int} qrPx, qrX, qrY, labelY, fontSizePx
+     * @return array{
+     *     qrPx: int,
+     *     qrX: int,
+     *     qrY: int,
+     *     primaryText: string,
+     *     secondaryText: string,
+     *     primaryY: int,
+     *     secondaryY: int,
+     *     primaryFontPx: float,
+     *     secondaryFontPx: float
+     * }
      */
-    private function layoutMetrics(float $pageWidthMm, float $pageHeightMm, string $unitLabel): array
+    private function layoutMetrics(float $contentWidthMm, float $contentHeightMm, QrStickerEntry $entry): array
     {
-        $widthPx = self::mmToPixelAtDpi($pageWidthMm);
-        $heightPx = self::mmToPixelAtDpi($pageHeightMm);
-        $shortSideMm = min($pageWidthMm, $pageHeightMm);
+        $widthPx = self::mmToPixelAtDpi($contentWidthMm);
+        $heightPx = self::mmToPixelAtDpi($contentHeightMm);
+        $shortSideMm = min($contentWidthMm, $contentHeightMm);
         $qrMm = $shortSideMm * self::QR_SIZE_RATIO;
         $qrPx = self::mmToPixelAtDpi($qrMm);
         $qrX = (int) round(($widthPx - $qrPx) / 2);
-        $labelGapPx = (int) round($heightPx * self::LABEL_GAP_RATIO);
-        $fontSizePx = max(14, (int) round($heightPx * self::LABEL_FONT_RATIO));
-        $labelReserve = $unitLabel !== '' ? ($labelGapPx + $fontSizePx + 8) : 0;
-        $blockHeight = $qrPx + $labelReserve;
-        $blockTop = (int) round(($heightPx - $blockHeight) / 2);
-        $qrY = $blockTop;
-        $labelY = $qrY + $qrPx + $labelGapPx + $fontSizePx;
 
-        return [$qrPx, $qrX, $qrY, $labelY, $fontSizePx];
-    }
-
-    private function gdFontPath(): string
-    {
-        $candidates = [
-            'C:\\Windows\\Fonts\\arialbd.ttf',
-            'C:\\Windows\\Fonts\\Arial.ttf',
-            '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf',
-            '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf',
-        ];
-
-        foreach ($candidates as $path) {
-            if (is_file($path)) {
-                return $path;
-            }
+        $primaryText = trim((string) ($entry->stickerNumber ?? $entry->unitLabel));
+        $secondaryText = trim((string) ($entry->locationUnitLabel ?? ''));
+        // Avoid duplicate lines when sticker number equals the location/unit caption.
+        if ($secondaryText !== '' && strcasecmp($secondaryText, $primaryText) === 0) {
+            $secondaryText = '';
         }
 
-        throw new RuntimeException('No TrueType font available for printable QR labels.');
+        $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM);
+        $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM);
+        $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM);
+        $lineGapPx = self::mmToPixelAtDpi(self::LINE_GAP_MM);
+
+        $labelBlock = 0;
+        if ($primaryText !== '') {
+            $labelBlock += $labelGapPx + (int) ceil($primaryFontPx) + 2;
+        }
+        if ($secondaryText !== '') {
+            $labelBlock += ($primaryText !== '' ? $lineGapPx : $labelGapPx) + (int) ceil($secondaryFontPx) + 2;
+        }
+
+        $blockHeight = $qrPx + $labelBlock;
+        $blockTop = (int) round(($heightPx - $blockHeight) / 2);
+        $qrY = $blockTop;
+
+        $primaryY = $qrY + $qrPx + $labelGapPx + (int) round($primaryFontPx);
+        $secondaryY = $primaryText !== ''
+            ? $primaryY + $lineGapPx + (int) round($secondaryFontPx)
+            : $qrY + $qrPx + $labelGapPx + (int) round($secondaryFontPx);
+
+        return [
+            'qrPx' => $qrPx,
+            'qrX' => $qrX,
+            'qrY' => $qrY,
+            'primaryText' => $primaryText,
+            'secondaryText' => $secondaryText,
+            'primaryY' => $primaryY,
+            'secondaryY' => $secondaryY,
+            'primaryFontPx' => (float) $primaryFontPx,
+            'secondaryFontPx' => (float) $secondaryFontPx,
+        ];
+    }
+
+    private function drawImagickCenteredText(
+        Imagick $canvas,
+        string $text,
+        int $centerX,
+        int $baselineY,
+        float $fontSizePx,
+        string $fontPath,
+    ): void {
+        $draw = new ImagickDraw;
+        $draw->setFillColor(new ImagickPixel('#111827'));
+        $draw->setFont($fontPath);
+        $draw->setFontSize($fontSizePx);
+        $draw->setTextAlignment(Imagick::ALIGN_CENTER);
+        $canvas->annotateImage($draw, $centerX, $baselineY, 0, $text);
+    }
+
+    /**
+     * @param  \GdImage  $canvas
+     */
+    private function drawGdCenteredText(
+        $canvas,
+        string $text,
+        int $canvasWidthPx,
+        int $baselineY,
+        float $fontSizePx,
+        int $color,
+        string $fontPath,
+    ): void {
+        $bbox = imagettfbbox($fontSizePx, 0, $fontPath, $text);
+        $textWidth = is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0;
+        $textX = (int) round(($canvasWidthPx - $textWidth) / 2);
+        imagettftext($canvas, $fontSizePx, 0, $textX, $baselineY, $color, $fontPath, $text);
     }
 
     /**
@@ -391,13 +500,14 @@ final class QrPrintablePageWordBuilder
      */
     private function sectionStyle(QrStickerSheetTemplate $template, bool $startsOnNewPage): array
     {
+        $marginTwip = self::mmToTwip(self::PAGE_MARGIN_MM);
         $style = [
             'pageSizeW' => self::mmToTwip($template->pageWidthMm()),
             'pageSizeH' => self::mmToTwip($template->pageHeightMm()),
-            'marginTop' => 0,
-            'marginBottom' => 0,
-            'marginLeft' => 0,
-            'marginRight' => 0,
+            'marginTop' => $marginTwip,
+            'marginBottom' => $marginTwip,
+            'marginLeft' => $marginTwip,
+            'marginRight' => $marginTwip,
         ];
 
         if ($startsOnNewPage) {
