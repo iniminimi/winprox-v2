@@ -85,6 +85,10 @@ class Settings extends Component
 
     public string $qrPrintableBackgroundPreset = 'blue';
 
+    public string $qrPrintableTenantLogo = 'bottom_right';
+
+    public string $qrPrintableTenantAddress = 'bottom_left';
+
     /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
     public $qrPrintableBackground = null;
 
@@ -378,7 +382,11 @@ class Settings extends Component
         $this->authorize('updateTenantBranding', $tenant);
 
         Validator::make(
-            ['preset' => $this->qrPrintableBackgroundPreset],
+            [
+                'preset' => $this->qrPrintableBackgroundPreset,
+                'tenantLogo' => $this->qrPrintableTenantLogo,
+                'tenantAddress' => $this->qrPrintableTenantAddress,
+            ],
             UpdateTenantQrPrintablePageSettingsRequest::rulesFor(),
         )->validate();
 
@@ -386,6 +394,8 @@ class Settings extends Component
             $tenant,
             UpdateTenantQrPrintablePageSettingsData::fromValidated([
                 'preset' => $this->qrPrintableBackgroundPreset,
+                'tenantLogo' => $this->qrPrintableTenantLogo,
+                'tenantAddress' => $this->qrPrintableTenantAddress,
             ]),
             (int) auth()->id(),
         );
@@ -665,7 +675,10 @@ class Settings extends Component
         $this->qrStickerAvery6289TenantAddress = $layout->tenantAddressPlacement()->value;
 
         $printableSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+        $printableLayout = BrandedQrStickerLayoutConfig::fromSetting($printableSetting);
         $this->qrPrintableBackgroundPreset = QrPrintablePageBackgroundPreset::fromSetting($printableSetting)->value;
+        $this->qrPrintableTenantLogo = $printableLayout->tenantLogoPlacement()->value;
+        $this->qrPrintableTenantAddress = $printableLayout->tenantAddressPlacement()->value;
     }
 
     private function resolveTenant(): ?Tenant

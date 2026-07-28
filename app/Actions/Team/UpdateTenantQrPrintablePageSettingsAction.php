@@ -30,9 +30,8 @@ class UpdateTenantQrPrintablePageSettingsAction
         $template = QrStickerSheetTemplate::printablePageSettings();
         $existing = $this->findTenantQrStickerSheetSetting((int) $tenant->id, $template);
         $backgroundPath = $existing?->background_path;
-        $hasUpload = is_string($backgroundPath) && $backgroundPath !== '';
 
-        if ($data->isDefaultPreset() && ! $hasUpload) {
+        if ($data->isEmpty($backgroundPath)) {
             if ($existing !== null) {
                 $this->backgroundStorage->delete($existing->background_path);
                 $settingId = (int) $existing->id;
@@ -55,10 +54,10 @@ class UpdateTenantQrPrintablePageSettingsAction
 
         $attributes = [
             'header_text' => null,
-            'layout_config' => $data->isDefaultPreset() ? null : $data->layoutConfig(),
+            'layout_config' => $data->layoutConfig(),
         ];
 
-        if ($hasUpload) {
+        if (is_string($backgroundPath) && $backgroundPath !== '') {
             $attributes['background_path'] = $backgroundPath;
         }
 

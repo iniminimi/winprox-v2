@@ -6,7 +6,7 @@
         <form
             wire:submit="saveQrPrintablePageSettings"
             class="wp-stack-tight"
-            x-data="{ openPreset: true, openBackground: false }"
+            x-data="{ openPreset: false, openLogo: false, openBackground: false }"
         >
             <div class="wp-disclosure-block">
                 <button
@@ -32,6 +32,39 @@
                         </select>
                         @error('preset') <p class="wp-error">{{ $message }}</p> @enderror
                         <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.printable_page.preset_hint') }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wp-disclosure-block">
+                <button
+                    type="button"
+                    class="wp-disclosure-block-toggle wp-team-row-toggle"
+                    @click="openLogo = !openLogo"
+                    :aria-expanded="openLogo"
+                >
+                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': openLogo }" />
+                    <span class="wp-data-row-title">{{ __('settings.qr_stickers.printable_page.section_logo') }}</span>
+                </button>
+                <div class="wp-disclosure-panel wp-stack-tight" x-show="openLogo" x-cloak>
+                    <div class="wp-field">
+                        <label class="wp-label" for="qrPrintableTenantLogo">{{ __('settings.qr_stickers.printable_page.tenant_logo_label') }}</label>
+                        <select id="qrPrintableTenantLogo" class="wp-input" wire:model.live="qrPrintableTenantLogo">
+                            @foreach ($qrStickerTenantLogoChoices as $choice)
+                                <option value="{{ $choice->value }}">{{ __('settings.qr_stickers.printable_page.tenant_logo_'.$choice->value) }}</option>
+                            @endforeach
+                        </select>
+                        @error('tenantLogo') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="wp-field">
+                        <label class="wp-label" for="qrPrintableTenantAddress">{{ __('settings.qr_stickers.printable_page.tenant_address_label') }}</label>
+                        <select id="qrPrintableTenantAddress" class="wp-input" wire:model.live="qrPrintableTenantAddress">
+                            @foreach ($qrStickerTenantLogoChoices as $choice)
+                                <option value="{{ $choice->value }}">{{ __('settings.qr_stickers.printable_page.tenant_logo_'.$choice->value) }}</option>
+                            @endforeach
+                        </select>
+                        @error('tenantAddress') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
             </div>
@@ -85,7 +118,7 @@
             <img
                 src="{{ $qrPrintableBackgroundPreviewUrl }}"
                 alt="{{ __('settings.qr_stickers.printable_page.preview_alt') }}"
-                class="wp-qr-sticker-preview-img"
+                class="wp-qr-sticker-preview-img wp-qr-printable-preview-img"
             >
         @else
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.printable_page.preview_unavailable') }}</p>

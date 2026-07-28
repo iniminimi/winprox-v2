@@ -102,3 +102,47 @@ it('exports a6 printable docx using the shared green preset', function () {
     expect($binary)->not->toBe('')
         ->and(substr($binary, 0, 2))->toBe('PK');
 });
+
+it('saves printable page logo and address placements with the shared preset', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->addDays(5),
+        'name' => 'Haven NV',
+        'street' => 'Kaai',
+        'house_number' => '12',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+    ]);
+
+    $updated = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
+        $tenant,
+        new UpdateTenantQrPrintablePageSettingsData(
+            QrPrintablePageBackgroundPreset::Multi,
+            \App\Enums\QrStickerTenantLogoPlacement::BottomRight,
+            \App\Enums\QrStickerTenantLogoPlacement::BottomLeft,
+        ),
+        actorUserId: null,
+    );
+
+    $setting = $updated->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+    expect($setting)->not->toBeNull()
+        ->and($setting->layout_config['background_preset'] ?? null)->toBe('multi')
+        ->and($setting->layout_config['tenant_logo'] ?? null)->toBeNull()
+        ->and($setting->layout_config['tenant_address'] ?? null)->toBeNull();
+
+    $custom = app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
+        $tenant,
+        new UpdateTenantQrPrintablePageSettingsData(
+            QrPrintablePageBackgroundPreset::Blue,
+            \App\Enums\QrStickerTenantLogoPlacement::TopLeft,
+            \App\Enums\QrStickerTenantLogoPlacement::None,
+        ),
+        actorUserId: null,
+    );
+
+    $customSetting = $custom->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
+    expect($customSetting->layout_config['tenant_logo'] ?? null)->toBe('top_left')
+        ->and($customSetting->layout_config['tenant_address'] ?? null)->toBe('none')
+        ->and($customSetting->layout_config['background_preset'] ?? null)->toBeNull();
+});

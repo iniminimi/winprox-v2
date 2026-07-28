@@ -6,9 +6,13 @@ namespace App\Support\Qr\Word;
 
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
+use App\Support\Qr\BrandedQrStickerLayoutConfig;
+use App\Support\Qr\BrandedQrStickerTenantDetails;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrPrintablePageBackground;
 use App\Support\Qr\QrPrintablePageFont;
+use App\Support\Qr\QrPrintablePageTenantBranding;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerRasterCache;
 use App\Support\Qr\QrStickerSheetTemplate;
@@ -88,6 +92,8 @@ final class QrPrintablePageWordBuilder
                     $pageWidthMm,
                     $pageHeightMm,
                     $centerLogoPath,
+                    $tenant,
+                    $sheetSettings,
                     $tempFiles,
                 );
 
@@ -227,6 +233,8 @@ final class QrPrintablePageWordBuilder
         float $pageWidthMm,
         float $pageHeightMm,
         ?string $centerLogoPath,
+        ?Tenant $tenant,
+        ?TenantQrStickerSheetSetting $sheetSettings,
         array &$tempFiles,
     ): string {
         if (class_exists(Imagick::class)) {
@@ -236,6 +244,8 @@ final class QrPrintablePageWordBuilder
                 $pageWidthMm,
                 $pageHeightMm,
                 $centerLogoPath,
+                $tenant,
+                $sheetSettings,
                 $tempFiles,
             );
         }
@@ -246,6 +256,8 @@ final class QrPrintablePageWordBuilder
             $pageWidthMm,
             $pageHeightMm,
             $centerLogoPath,
+            $tenant,
+            $sheetSettings,
             $tempFiles,
         );
     }
@@ -259,6 +271,8 @@ final class QrPrintablePageWordBuilder
         float $pageWidthMm,
         float $pageHeightMm,
         ?string $centerLogoPath,
+        ?Tenant $tenant,
+        ?TenantQrStickerSheetSetting $sheetSettings,
         array &$tempFiles,
     ): string {
         $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
@@ -302,6 +316,8 @@ final class QrPrintablePageWordBuilder
             );
         }
 
+        $this->drawTenantBrandingOnImagick($canvas, $tenant, $sheetSettings);
+
         $canvas->setImageFormat('png');
         $path = $this->allocateTempPng($tempFiles);
         $canvas->writeImage($path);
@@ -319,6 +335,8 @@ final class QrPrintablePageWordBuilder
         float $pageWidthMm,
         float $pageHeightMm,
         ?string $centerLogoPath,
+        ?Tenant $tenant,
+        ?TenantQrStickerSheetSetting $sheetSettings,
         array &$tempFiles,
     ): string {
         $contentWidthMm = $pageWidthMm - (2 * self::PAGE_MARGIN_MM);
@@ -387,6 +405,8 @@ final class QrPrintablePageWordBuilder
             }
         }
 
+        $this->drawTenantBrandingOnGd($canvas, $tenant, $sheetSettings);
+
         $path = $this->allocateTempPng($tempFiles);
         if (! imagepng($canvas, $path)) {
             imagedestroy($canvas);
@@ -395,6 +415,53 @@ final class QrPrintablePageWordBuilder
         imagedestroy($canvas);
 
         return $path;
+    }
+
+    private function drawTenantBrandingOnImagick(
+        Imagick $canvas,
+        ?Tenant $tenant,
+        ?TenantQrStickerSheetSetting $sheetSettings,
+    ): void {
+        $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSettings);
+        $addressLines = $layout->showTenantAddress()
+            ? BrandedQrStickerTenantDetails::lines($tenant)
+            : [];
+        $logoPath = $layout->showTenantLogoOnSticker()
+            ? QrCenterLogo::tenantLogoAbsolutePath($tenant)
+            : null;
+
+        QrPrintablePageTenantBranding::drawOnImagick(
+            $canvas,
+            $addressLines,
+            $logoPath,
+            $layout->tenantLogoPlacement(),
+            $layout->tenantAddressPlacement(),
+        );
+    }
+
+    /**
+     * @param  \GdImage  $canvas
+     */
+    private function drawTenantBrandingOnGd(
+        $canvas,
+        ?Tenant $tenant,
+        ?TenantQrStickerSheetSetting $sheetSettings,
+    ): void {
+        $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSettings);
+        $addressLines = $layout->showTenantAddress()
+            ? BrandedQrStickerTenantDetails::lines($tenant)
+            : [];
+        $logoPath = $layout->showTenantLogoOnSticker()
+            ? QrCenterLogo::tenantLogoAbsolutePath($tenant)
+            : null;
+
+        QrPrintablePageTenantBranding::drawOnGd(
+            $canvas,
+            $addressLines,
+            $logoPath,
+            $layout->tenantLogoPlacement(),
+            $layout->tenantAddressPlacement(),
+        );
     }
 
     /**

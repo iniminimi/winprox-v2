@@ -4131,6 +4131,11 @@ svg.wp-release-worker-row__icon,
     background-color: var(--wp-surface);
 }
 
+/* Printable presets (esp. multi) may have transparency — always show paper white behind. */
+.wp-qr-printable-preview-img {
+    background-color: #ffffff;
+}
+
 /* Instellingen — inklapbare rubrieken. */
 .wp-settings-section-toggle {
     display: flex;
