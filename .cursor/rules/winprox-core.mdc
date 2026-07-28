@@ -16,7 +16,12 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 ## Houd het mager
 - **Minimale diff**: alleen wat de taak vraagt; geen refactor “erbij”.
 - **Geen repo-brede alignment-runs** — brede cleanup is klaar (zie `WINPROX_RULES.md` §13).
-- **Tooling:** Python is lokaal beschikbaar; gebruik Python voor bulkbewerkingen (bv. locale/JSON) wanneer dit aantoonbaar sneller en veiliger is dan handmatig patchen.
+- **Tooling:** Python is lokaal beschikbaar via
+  `C:\Users\domin\AppData\Local\Programs\Python\Python313\python.exe`
+  (niet de Windows Store-stub in `WindowsApps`). Gebruik Python voor
+  bulkbewerkingen (bv. locale/JSON) wanneer dit aantoonbaar sneller en veiliger
+  is dan handmatig patchen. **Tijdelijke scripts altijd opruimen** na gebruik
+  (verwijderen uit `scripts/` of elders) — nooit in de repo laten staan.
 - **Geen** extra lagen (repositories, service-duplicatie, static helpers met business logic).
 - **Geen** ongebruikte locale-keys; alle talen altijd in pariteit (`npm run check:locales:parity`).
 - **Geen** nieuwe UI-varianten: hergebruik `.btn`, `.wp-pill`, `.wp-card`, `wp-*` tokens.

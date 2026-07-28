@@ -34,6 +34,11 @@ wit/lichtgrijs, zachte randen, veel witruimte). Geen regenboogaccenten.
 - **Frontend:** Livewire 4 + Blade.
 - **Styling:** Tailwind v4 (via `@tailwindcss/vite`) + een kleine, gedeelde `wp-*` componentlaag.
 - **Build:** Vite. **DB:** MySQL. **Lokaal:** Windows → **Productie:** Linux.
+- **Python (lokaal, AI/tooling):** beschikbaar op
+  `C:\Users\domin\AppData\Local\Programs\Python\Python313\python.exe`.
+  Gebruik dit pad expliciet (niet `python` uit PATH — dat kan de Windows Store-stub zijn).
+  Geschikt voor bulkbewerkingen (bv. locale/JSON) wanneer dat sneller/veiliger is dan handmatig
+  patchen. **Tijdelijke scripts altijd opruimen** na gebruik — nooit in de repo laten staan.
 
 ---
 
