@@ -2,11 +2,11 @@
     "meta_title": "About WinProx | Facility via QR",
     "social": {
         "og_title": "About WinProx | Facility via QR",
-        "og_description": "WinProx is a QR-based facility platform: issues, tasks, Time and optional ESG — in the browser, no app install."
+        "og_description": "WinProx is a QR-based facility platform: issues, tasks, Time, optional ESG and IoT Connect — in the browser, no app install."
     },
     "eyebrow": "About WinProx",
     "title": "What is WinProx?",
-    "lead": "WinProx is a QR-code based facility management platform for issues, tasks, presence (Time) and optional ESG measurements — used in the browser, without a native app.",
+    "lead": "WinProx is a QR-code based facility management platform for issues, tasks, presence (Time), optional ESG measurements and IoT Connect — used in the browser, without a native app.",
     "what": {
         "title": "Core idea",
         "body": "Every physical location or unit gets a digital QR portal. Citizens and staff report defects via the unit QR. Field workers sign in via the Clock Point QR and complete tasks on site. Managers follow everything in one workspace: issue → tasks → completion."
@@ -17,7 +17,8 @@
             "Facility and maintenance teams who need to steer issues and tasks",
             "Organisations with multiple locations, units or assets",
             "Teams that register time/presence via Clock Point",
-            "Organisations that want ESG measurements tied to the same portals"
+            "Organisations that want ESG measurements tied to the same portals",
+            "Organisations that want sensors and gateways tied to the same issues and tasks (IoT Connect)"
         ]
     },
     "sectors": {
@@ -43,6 +44,10 @@
             {
                 "name": "ESG",
                 "text": "Optional measurements and indicators linked to units and follow-up tasks."
+            },
+            {
+                "name": "IoT Connect",
+                "text": "Optional sensor gateways: alarms become issues and tasks; on Corporate also ESG measurements."
             },
             {
                 "name": "API & webhooks",

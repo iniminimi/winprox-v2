@@ -2,11 +2,11 @@
     "meta_title": "Su WinProx | Facility via QR",
     "social": {
         "og_title": "Su WinProx | Facility via QR",
-        "og_description": "WinProx è una piattaforma facility basata su QR: segnalazioni, attività, Time e ESG opzionale — nel browser, senza app."
+        "og_description": "WinProx è una piattaforma facility basata su QR: segnalazioni, attività, Time, ESG opzionale e IoT Connect — nel browser, senza app."
     },
     "eyebrow": "Su WinProx",
     "title": "Cos'è WinProx?",
-    "lead": "WinProx è una piattaforma di facility management basata su codici QR per segnalazioni, attività, presenza (Time) e misurazioni ESG opzionali — nel browser, senza app nativa.",
+    "lead": "WinProx è una piattaforma di facility management basata su codici QR per segnalazioni, attività, presenza (Time), misurazioni ESG opzionali e IoT Connect — nel browser, senza app nativa.",
     "what": {
         "title": "Idea centrale",
         "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano difetti tramite il QR unità. Gli esecutori si identificano con il QR Clock Point e chiudono le attività sul posto. I gestori seguono tutto in un workspace: segnalazione → attività → chiusura."
@@ -17,7 +17,8 @@
             "Team facility e manutenzione che guidano segnalazioni e attività",
             "Organizzazioni con più sedi, unità o asset",
             "Team che registrano tempo/presenza via Clock Point",
-            "Organizzazioni che collegano misurazioni ESG agli stessi portali"
+            "Organizzazioni che collegano misurazioni ESG agli stessi portali",
+            "Organizzazioni che vogliono collegare sensori e gateway alle stesse segnalazioni e attività (IoT Connect)"
         ]
     },
     "sectors": {
@@ -43,6 +44,10 @@
             {
                 "name": "ESG",
                 "text": "Misurazioni e indicatori opzionali collegati a unità e attività di follow-up."
+            },
+            {
+                "name": "IoT Connect",
+                "text": "Gateway sensori opzionali: gli allarmi diventano segnalazioni e attività; su Corporate anche misurazioni ESG."
             },
             {
                 "name": "API e webhook",

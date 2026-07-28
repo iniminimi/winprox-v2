@@ -2,11 +2,11 @@
     "meta_title": "Sobre WinProx | Facility por QR",
     "social": {
         "og_title": "Sobre WinProx | Facility por QR",
-        "og_description": "WinProx es una plataforma facility basada en QR: incidencias, tareas, Time y ESG opcional — en el navegador, sin app."
+        "og_description": "WinProx es una plataforma facility basada en QR: incidencias, tareas, Time, ESG opcional e IoT Connect — en el navegador, sin app."
     },
     "eyebrow": "Sobre WinProx",
     "title": "¿Qué es WinProx?",
-    "lead": "WinProx es una plataforma de facility management basada en códigos QR para incidencias, tareas, presencia (Time) y mediciones ESG opcionales — en el navegador, sin app nativa.",
+    "lead": "WinProx es una plataforma de facility management basada en códigos QR para incidencias, tareas, presencia (Time), mediciones ESG opcionales e IoT Connect — en el navegador, sin app nativa.",
     "what": {
         "title": "Idea central",
         "body": "Cada ubicación o unidad física tiene un portal QR digital. Ciudadanos y personal reportan defectos con el QR de unidad. Los operarios se identifican con el QR Clock Point y cierran tareas in situ. Los gestores siguen todo en un workspace: incidencia → tareas → cierre."
@@ -17,7 +17,8 @@
             "Equipos de facility y mantenimiento que dirigen incidencias y tareas",
             "Organizaciones con varias ubicaciones, unidades o activos",
             "Equipos que registran tiempo/presencia vía Clock Point",
-            "Organizaciones que quieren mediciones ESG en los mismos portales"
+            "Organizaciones que quieren mediciones ESG en los mismos portales",
+            "Organizaciones que quieren vincular sensores y gateways a las mismas incidencias y tareas (IoT Connect)"
         ]
     },
     "sectors": {
@@ -43,6 +44,10 @@
             {
                 "name": "ESG",
                 "text": "Mediciones e indicadores opcionales ligados a unidades y tareas de seguimiento."
+            },
+            {
+                "name": "IoT Connect",
+                "text": "Gateways de sensores opcionales: las alarmas se convierten en incidencias y tareas; en Corporate también mediciones ESG."
             },
             {
                 "name": "API y webhooks",

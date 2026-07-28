@@ -2,11 +2,11 @@
     "meta_title": "À propos de WinProx | Facility via QR",
     "social": {
         "og_title": "À propos de WinProx | Facility via QR",
-        "og_description": "WinProx est une plateforme facility basée sur QR : signalements, tâches, Time et ESG optionnel — dans le navigateur, sans application."
+        "og_description": "WinProx est une plateforme facility basée sur QR : signalements, tâches, Time, ESG optionnel et IoT Connect — dans le navigateur, sans application."
     },
     "eyebrow": "À propos de WinProx",
     "title": "Qu'est-ce que WinProx ?",
-    "lead": "WinProx est une plateforme de facility management basée sur des QR codes pour les signalements, tâches, présence (Time) et mesures ESG optionnelles — dans le navigateur, sans application native.",
+    "lead": "WinProx est une plateforme de facility management basée sur des QR codes pour les signalements, tâches, présence (Time), mesures ESG optionnelles et IoT Connect — dans le navigateur, sans application native.",
     "what": {
         "title": "Idée centrale",
         "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture."
@@ -17,7 +17,8 @@
             "Équipes facility et maintenance qui pilotent signalements et tâches",
             "Organisations avec plusieurs sites, unités ou assets",
             "Équipes qui enregistrent le temps/présence via Clock Point",
-            "Organisations qui lient des mesures ESG aux mêmes portails"
+            "Organisations qui lient des mesures ESG aux mêmes portails",
+            "Organisations qui veulent relier capteurs et passerelles aux mêmes signalements et tâches (IoT Connect)"
         ]
     },
     "sectors": {
@@ -43,6 +44,10 @@
             {
                 "name": "ESG",
                 "text": "Mesures et indicateurs optionnels liés aux unités et tâches de suivi."
+            },
+            {
+                "name": "IoT Connect",
+                "text": "Passerelles capteurs optionnelles : les alarmes deviennent signalements et tâches ; sur Corporate aussi des mesures ESG."
             },
             {
                 "name": "API & webhooks",
