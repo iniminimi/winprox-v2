@@ -88,9 +88,9 @@
 <h2>4. AI Vertalingen (optioneel)</h2>
 <p>Indien geactiveerd door de beheerder, kan het platform gebruikmaken van AI-vertalingen:</p>
 <ul>
-    <li>automatische vertaling van meldingsteksten naar andere talen.</li>
+    <li>automatische vertaling van teksten die meertalig in het platform of QR-portaal worden getoond (onder meer meldingen, taken, units, mededelingen, documentomschrijvingen, locaties, categorieën en teamnamen).</li>
     <li>gebruik van een lokale Ollama-instantie (geen externe diensten).</li>
-    <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid.</li>
+    <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid; beheerders kunnen vertalingen in het platform handmatig corrigeren.</li>
     <li>deze functie is optioneel en kan te allen tijde worden uitgeschakeld.</li>
 </ul>
 
@@ -138,7 +138,12 @@
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
+    <li>technische SQL-snapshot na een volledige organisatieverwijdering (zonder mediabestanden): maximaal 30 dagen, daarna vernietiging.</li>
 </ul>
+<p>
+    Bij een volledige organisatieverwijdering (zie hieronder) worden de live gegevens van de tenant hard verwijderd;
+    mediabestanden (foto’s, documenten) maken geen deel uit van de herstel-snapshot.
+</p>
 
 <h2>9. Delen van gegevens</h2>
 <p>Persoonsgegevens worden niet verkocht of gedeeld met derden, behalve:</p>
@@ -173,7 +178,42 @@
     <li>bezwaar te maken tegen de verwerking.</li>
 </ul>
 
-<p>Verzoeken kunnen gericht worden aan:</p>
+<p><strong>Hoe het platform dit ondersteunt</strong></p>
+<ul>
+    <li>
+        <strong>Inzage / export:</strong> een beheerder kan onder
+        <em>Instellingen → Privacy &amp; export van gegevens</em> een machineleesbare export (JSON in een ZIP)
+        downloaden van het eigen account en relevante gegevens binnen de organisatie. Downloads worden gelogd.
+    </li>
+    <li>
+        <strong>Rectificatie:</strong> gebruikers met rechten kunnen hun profiel (naam, e-mail, taal) aanpassen;
+        beheerders kunnen organisatiegegevens aanpassen.
+    </li>
+    <li>
+        <strong>Gebruiker deactiveren:</strong> een beheerder kan collega-accounts deactiveren of pauzeren
+        (login wordt geblokkeerd; sessies worden ingetrokken). Dit is geen volledige wissing van de organisatie.
+    </li>
+    <li>
+        <strong>Organisatiegegevens verwijderen (self-service):</strong> alleen een beheerder, via
+        <em>Abonnement → Organisatiegegevens verwijderen</em>. Eerst wordt een export aangeboden; daarna bevestiging
+        met wachtwoord en e-mail naar alle beheerders.
+        <ul>
+            <li><strong>Proefperiode:</strong> na e-mailbevestiging kan de beheerder zelf definitief wissen
+                (technische SQL-snapshot zonder media, max. 30 dagen bewaard).</li>
+            <li><strong>Betaald abonnement / grace:</strong> na bevestiging volgt een wachttijd van 7 dagen
+                (banner in de app, herinneringsmail ongeveer 2 dagen vóór uitvoering); WinProx-administratie
+                (superuser) voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Verlopen proef zonder abonnement:</strong> na het einde van de proefperiode blijft login beperkt
+        tot abonnements-/facturatiezaken. Zonder abonnement stuurt WinProx waarschuwingsmails en kan de organisatie
+        automatisch worden verwijderd (standaard: waarschuwing rond dag 7, uitvoering rond dag 14 na einde proef).
+        Activeren van een abonnement annuleert een openstaande automatische verwijdering.
+    </li>
+</ul>
+
+<p>Overige of uitzonderlijke verzoeken (bijv. litigation hold) kunnen gericht worden aan:</p>
 @include('partials.wp-legal-operator')
 
 <p>

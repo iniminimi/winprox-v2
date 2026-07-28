@@ -90,7 +90,10 @@
 <h2>9. Diritti degli interessati</h2>
 
 <p>
-    WinProx supporta il cliente nella gestione delle richieste degli interessati.
+    WinProx supporta il cliente nella gestione delle richieste degli interessati, anche tramite
+    funzioni della piattaforma per l'esportazione (Impostazioni → Privacy ed esportazione dati), la disattivazione utenti
+    e la cancellazione self-service dell'organizzazione (Abbonamento), come descritto nell'
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>10. Periodi di conservazione</h2>
@@ -105,6 +108,7 @@
     <li>registri: 6 mesi.</li>
     <li>foto: 24 mesi dopo la chiusura.</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività.</li>
+    <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza media): max. 30 giorni.</li>
 </ul>
 
 <h2>11. Fine dell'accordo</h2>
@@ -114,8 +118,11 @@
 </p>
 
 <ul>
-    <li>il cliente può esportare i dati.</li>
-    <li>i dati verranno eliminati conformemente alla politica di conservazione.</li>
+    <li>il cliente può esportare i dati tramite la piattaforma (JSON/ZIP) prima della cancellazione.</li>
+    <li>il cliente (amministratore) può avviare una cancellazione completa del tenant in self-service (prova: esecuzione dopo conferma e-mail; a pagamento: attesa di 7 giorni ed esecuzione da parte dell'amministrazione WinProx).</li>
+    <li>WinProx può, per una prova scaduta senza abbonamento e dopo avviso, eliminare l'organizzazione automaticamente.</li>
+    <li>i dati live vengono eliminati in modo definitivo; uno snapshot SQL tecnico senza file media viene conservato max. 30 giorni e poi distrutto.</li>
+    <li>gli altri dati vengono eliminati o anonimizzati conformemente alla politica di conservazione, fatte salve obblighi legali di conservazione o litigation holds.</li>
 </ul>
 
 <h2>12. Responsabilità</h2>

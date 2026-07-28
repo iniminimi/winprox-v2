@@ -91,6 +91,12 @@
     Bij uitblijven van tijdige betaling of bij verlopen abonnement kan WinProx de toegang tot het platform beperken of opschorten, voor zover technisch voorzien en rekening houdend met redelijke termijnen waar van toepassing.
 </p>
 <p>
+    Na het einde van een proefperiode zonder actief abonnement kan de toegang beperkt blijven tot abonnements- en facturatiepagina’s.
+    Zonder tijdig abonnement kan WinProx de organisatie automatisch verwijderen na voorafgaande waarschuwing per e-mail
+    (standaard: waarschuwing rond 7 dagen en verwijdering rond 14 dagen na einde proef). Activeren van een abonnement
+    stopt een geplande automatische verwijdering.
+</p>
+<p>
     WinProx kan tarieven en formules aanpassen. Relevante wijzigingen worden meegedeeld via het platform en/of per e-mail met redelijke voorschottermijn.
 </p>
 <p>
@@ -140,7 +146,22 @@
 </ul>
 
 <p>
-    Gebruikers kunnen hun account stopzetten volgens de afspraken die met hun klant / beheerder of rechtstreeks met WinProx gelden.
+    Individuele gebruikersaccounts kunnen door de beheerder van de organisatie worden gedeactiveerd of gepauzeerd
+    volgens de rechten in het platform.
+</p>
+<p>
+    Een beheerder kan de volledige organisatiegegevens self-service laten verwijderen via
+    <em>Abonnement → Organisatiegegevens verwijderen</em>, na exportaanbod, wachtwoordbevestiging en e-mailbevestiging
+    naar alle beheerders:
+</p>
+<ul>
+    <li><strong>Proefperiode:</strong> na bevestiging kan de beheerder zelf definitief wissen.</li>
+    <li><strong>Betaald abonnement:</strong> wachttijd van 7 dagen; uitvoering door WinProx-administratie; annuleren kan tot die tijd via Abonnement.</li>
+</ul>
+<p>
+    Bij definitieve verwijdering wordt een technische SQL-snapshot zonder mediabestanden max. 30 dagen bewaard en daarna vernietigd.
+    Details over persoonsgegevens staan in de
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>13. Internationale beschikbaarheid</h2>

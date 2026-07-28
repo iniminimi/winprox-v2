@@ -88,9 +88,9 @@
 <h2>4. AI Translations (optional)</h2>
 <p>If enabled by the administrator, the platform may use AI translations:</p>
 <ul>
-    <li>automatic translation of issue texts to other languages.</li>
+    <li>automatic translation of texts shown multilingually in the platform or QR portal (including issues, tasks, units, announcements, document descriptions, locations, categories and team names).</li>
     <li>using a local Ollama instance (no external services).</li>
-    <li>translations are stored and retained according to the retention policy.</li>
+    <li>translations are stored and retained according to the retention policy; administrators can manually correct translations in the platform.</li>
     <li>this feature is optional and can be disabled at any time.</li>
 </ul>
 
@@ -137,7 +137,12 @@
     <li>onboarding events per user (for onboarding statistics): 6 months; aggregated onboarding figures without personal data may be retained longer</li>
     <li>media (photos): 24 months after closing the relevant issue or task</li>
     <li>ESG measurements: same retention as issues and tasks (contract period + 36 months)</li>
+    <li>technical SQL snapshot after a full organisation deletion (without media files): maximum 30 days, then destruction</li>
 </ul>
+<p>
+    After a full organisation deletion (see below), the tenant’s live data is hard-deleted;
+    media files (photos, documents) are not included in the recovery snapshot.
+</p>
 
 <h2>9. Sharing of data</h2>
 <p>Personal data is not sold or shared with third parties, except:</p>
@@ -172,7 +177,42 @@
     <li>object to processing.</li>
 </ul>
 
-<p>Requests may be sent to:</p>
+<p><strong>How the platform supports this</strong></p>
+<ul>
+    <li>
+        <strong>Access / export:</strong> an administrator can download a machine-readable export (JSON in a ZIP)
+        under <em>Settings → Privacy &amp; data export</em> for their own account and relevant organisation data.
+        Downloads are logged.
+    </li>
+    <li>
+        <strong>Rectification:</strong> authorised users can update their profile (name, email, language);
+        administrators can update organisation details.
+    </li>
+    <li>
+        <strong>Deactivate a user:</strong> an administrator can deactivate or pause colleague accounts
+        (login is blocked; sessions are revoked). This is not a full organisation wipe.
+    </li>
+    <li>
+        <strong>Delete organisation data (self-service):</strong> administrators only, via
+        <em>Subscription → Delete organisation data</em>. An export is offered first; then confirmation with password
+        and email to all administrators.
+        <ul>
+            <li><strong>Trial:</strong> after email confirmation the administrator can wipe definitively
+                (technical SQL snapshot without media, kept max. 30 days).</li>
+            <li><strong>Paid subscription / grace:</strong> after confirmation a 7-day cooling-off period applies
+                (in-app banner, reminder email about 2 days before execution); WinProx administration (superuser)
+                performs the deletion. Cancellation is possible until then via Subscription.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Expired trial without subscription:</strong> after the trial ends, login may be limited to
+        subscription/billing pages. Without a subscription, WinProx sends warning emails and may delete the
+        organisation automatically (default: warning around day 7, deletion around day 14 after trial end).
+        Activating a subscription cancels a pending automatic deletion.
+    </li>
+</ul>
+
+<p>Other or exceptional requests (e.g. litigation hold) may be sent to:</p>
 @include('partials.wp-legal-operator')
 
 <p>

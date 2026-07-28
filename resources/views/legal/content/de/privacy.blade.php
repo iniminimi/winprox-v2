@@ -88,9 +88,9 @@
 <h2>4. KI-Übersetzungen (optional)</h2>
 <p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
 <ul>
-    <li>automatische Übersetzung von Issue-Texten in andere Sprachen.</li>
+    <li>automatische Übersetzung von Texten, die mehrsprachig in der Plattform oder im QR-Portal angezeigt werden (u. a. Meldungen, Aufgaben, Units, Mitteilungen, Dokumentbeschreibungen, Standorte, Kategorien und Teamnamen).</li>
     <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste).</li>
-    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt.</li>
+    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt; Administratoren können Übersetzungen in der Plattform manuell korrigieren.</li>
     <li>diese Funktion ist optional und kann jederzeit deaktiviert werden.</li>
 </ul>
 
@@ -138,7 +138,12 @@
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
+    <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Mediendateien): maximal 30 Tage, danach Vernichtung.</li>
 </ul>
+<p>
+    Nach einer vollständigen Organisationslöschung (siehe unten) werden die Live-Daten des Tenants endgültig gelöscht;
+    Mediendateien (Fotos, Dokumente) sind nicht Bestandteil des Wiederherstellungs-Snapshots.
+</p>
 
 <h2>9. Weitergabe von Daten</h2>
 <p>Personenbezogene Daten werden nicht verkauft oder an Dritte weitergegeben, außer:</p>
@@ -173,7 +178,42 @@
     <li>der Verarbeitung zu widersprechen.</li>
 </ul>
 
-<p>Anfragen können gerichtet werden an:</p>
+<p><strong>Wie die Plattform dies unterstützt</strong></p>
+<ul>
+    <li>
+        <strong>Auskunft / Export:</strong> ein Administrator kann unter
+        <em>Einstellungen → Datenschutz &amp; Datenexport</em> einen maschinenlesbaren Export (JSON in einer ZIP)
+        des eigenen Kontos und relevanter Organisationsdaten herunterladen. Downloads werden protokolliert.
+    </li>
+    <li>
+        <strong>Berichtigung:</strong> berechtigte Benutzer können ihr Profil (Name, E-Mail, Sprache) anpassen;
+        Administratoren können Organisationsdaten anpassen.
+    </li>
+    <li>
+        <strong>Benutzer deaktivieren:</strong> ein Administrator kann Kollegenkonten deaktivieren oder pausieren
+        (Login gesperrt; Sitzungen widerrufen). Das ist keine vollständige Organisationslöschung.
+    </li>
+    <li>
+        <strong>Organisationsdaten löschen (Self-Service):</strong> nur Administratoren, über
+        <em>Abonnement → Organisationsdaten löschen</em>. Zuerst wird ein Export angeboten; danach Bestätigung
+        mit Passwort und E-Mail an alle Administratoren.
+        <ul>
+            <li><strong>Testphase:</strong> nach E-Mail-Bestätigung kann der Administrator endgültig löschen
+                (technischer SQL-Snapshot ohne Medien, max. 30 Tage aufbewahrt).</li>
+            <li><strong>Bezahltes Abonnement / Grace:</strong> nach Bestätigung gilt eine Wartezeit von 7 Tagen
+                (Banner in der App, Erinnerungsmail etwa 2 Tage vorher); die WinProx-Administration (Superuser)
+                führt die Löschung aus. Stornierung bis dahin über Abonnement möglich.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Abgelaufene Testphase ohne Abonnement:</strong> nach Ende der Testphase kann der Login auf
+        Abonnement-/Rechnungsseiten beschränkt bleiben. Ohne Abonnement sendet WinProx Warnmails und kann die
+        Organisation automatisch löschen (Standard: Warnung ca. Tag 7, Löschung ca. Tag 14 nach Testende).
+        Die Aktivierung eines Abonnements storniert eine geplante automatische Löschung.
+    </li>
+</ul>
+
+<p>Sonstige oder außergewöhnliche Anfragen (z. B. Litigation Hold) können gerichtet werden an:</p>
 @include('partials.wp-legal-operator')
 
 <p>

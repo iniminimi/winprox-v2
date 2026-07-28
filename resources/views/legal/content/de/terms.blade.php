@@ -91,6 +91,12 @@
     Bei ausbleibender rechtzeitiger Zahlung oder abgelaufenem Abonnement kann WinProx den Zugang zur Plattform einschränken oder aussetzen, soweit technisch vorgesehen und unter Berücksichtigung angemessener Fristen.
 </p>
 <p>
+    Nach Ende einer Testphase ohne aktives Abonnement kann der Zugang auf Abonnement- und Rechnungsseiten beschränkt bleiben.
+    Ohne rechtzeitiges Abonnement kann WinProx die Organisation nach vorheriger E-Mail-Warnung automatisch löschen
+    (Standard: Warnung ca. 7 Tage und Löschung ca. 14 Tage nach Testende). Die Aktivierung eines Abonnements
+    stoppt eine geplante automatische Löschung.
+</p>
+<p>
     WinProx kann Tarife und Formeln anpassen. Relevante Änderungen werden über die Plattform und/oder per E-Mail mit angemessener Vorlaufzeit mitgeteilt.
 </p>
 <p>
@@ -140,7 +146,22 @@
 </ul>
 
 <p>
-    Benutzer können ihr Konto gemäß den Vereinbarungen mit ihrem Kunden / Administrator oder direkt mit WinProx beenden.
+    Einzelne Benutzerkonten können vom Administrator der Organisation gemäß den in der Plattform verfügbaren Rechten
+    deaktiviert oder pausiert werden.
+</p>
+<p>
+    Ein Administrator kann die vollständige Löschung der Organisationsdaten über
+    <em>Abonnement → Organisationsdaten löschen</em> anfordern, nach Exportangebot, Passwortbestätigung und
+    E-Mail-Bestätigung an alle Administratoren:
+</p>
+<ul>
+    <li><strong>Testphase:</strong> nach Bestätigung kann der Administrator endgültig löschen.</li>
+    <li><strong>Bezahltes Abonnement:</strong> Wartezeit von 7 Tagen; Ausführung durch WinProx-Administration; Stornierung bis dahin über Abonnement möglich.</li>
+</ul>
+<p>
+    Bei endgültiger Löschung wird ein technischer SQL-Snapshot ohne Mediendateien max. 30 Tage aufbewahrt und danach vernichtet.
+    Details zu personenbezogenen Daten stehen in der
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>13. Internationale Verfügbarkeit</h2>

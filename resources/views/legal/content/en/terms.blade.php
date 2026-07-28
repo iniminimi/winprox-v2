@@ -91,6 +91,12 @@
     If payment is not made on time or the subscription expires, WinProx may restrict or suspend access to the platform, where technically provided and subject to reasonable notice where applicable.
 </p>
 <p>
+    After a trial ends without an active subscription, access may remain limited to subscription and billing pages.
+    Without a timely subscription, WinProx may delete the organisation automatically after prior email warning
+    (default: warning around 7 days and deletion around 14 days after trial end). Activating a subscription
+    stops a scheduled automatic deletion.
+</p>
+<p>
     WinProx may adjust pricing and plans. Relevant changes will be communicated via the platform and/or by email with reasonable advance notice.
 </p>
 <p>
@@ -140,7 +146,22 @@
 </ul>
 
 <p>
-    Users may stop their account according to arrangements with their customer / administrator or directly with WinProx.
+    Individual user accounts may be deactivated or paused by the organisation’s administrator
+    according to the rights available in the platform.
+</p>
+<p>
+    An administrator may request full organisation deletion via
+    <em>Subscription → Delete organisation data</em>, after an export offer, password confirmation and email
+    confirmation to all administrators:
+</p>
+<ul>
+    <li><strong>Trial:</strong> after confirmation the administrator can wipe definitively.</li>
+    <li><strong>Paid subscription:</strong> 7-day cooling-off period; deletion by WinProx administration; cancellation possible until then via Subscription.</li>
+</ul>
+<p>
+    Upon definitive deletion, a technical SQL snapshot without media files is kept for max. 30 days and then destroyed.
+    Details on personal data are set out in the
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>13. International availability</h2>

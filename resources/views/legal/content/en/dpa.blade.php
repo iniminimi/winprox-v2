@@ -90,7 +90,10 @@
 <h2>9. Data subject rights</h2>
 
 <p>
-    WinProx supports the customer in handling requests from data subjects.
+    WinProx supports the customer in handling requests from data subjects, including through
+    platform features for export (Settings → Privacy &amp; data export), user deactivation
+    and self-service organisation deletion (Subscription), as described in the
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>10. Retention periods</h2>
@@ -105,6 +108,7 @@
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>
     <li>ESG measurements: same retention as issues and tasks.</li>
+    <li>technical SQL snapshot after full organisation deletion (without media): max. 30 days.</li>
 </ul>
 
 <h2>11. End of agreement</h2>
@@ -114,8 +118,11 @@
 </p>
 
 <ul>
-    <li>the customer may export data.</li>
-    <li>data will be deleted according to the retention policy.</li>
+    <li>the customer may export data via the platform (JSON/ZIP) before deletion.</li>
+    <li>the customer (administrator) may start a full tenant deletion via self-service (trial: execute after email confirmation; paid: 7-day cooling-off and execution by WinProx administration).</li>
+    <li>WinProx may, for an expired trial without subscription and after warning, delete the organisation automatically.</li>
+    <li>live data is hard-deleted; a technical SQL snapshot without media files is kept for max. 30 days and then destroyed.</li>
+    <li>other data is deleted or anonymised according to the retention policy, subject to legal retention duties or litigation holds.</li>
 </ul>
 
 <h2>12. Liability</h2>

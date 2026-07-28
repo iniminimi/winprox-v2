@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "Hoe verwijder ik mijn account / organisatiegegevens?",
-            "body": "Alleen een beheerder kan dit. Ga naar Abonnement → Organisatiegegevens verwijderen. Download eerst een export via Instellingen → Privacy & export van gegevens, bevestig met wachtwoord en e-mail. Bij een proefperiode kun je daarna zelf definitief wissen. Bij een betaald abonnement volgt een wachttijd van 7 dagen; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Mediabestanden (foto’s, documenten) worden niet in de herstel-snapshot bewaard.",
-            "summary": "Beheerder: Abonnement → gegevens verwijderen (export + wachtwoord + e-mail; trial zelf, betaald via WinProx na 7 dagen)."
+            "body": "Alleen een beheerder kan dit. Ga naar Abonnement → Organisatiegegevens verwijderen. Download eerst een export via Instellingen → Privacy & export van gegevens, bevestig met wachtwoord en e-mail. Bij een proefperiode kun je daarna zelf definitief wissen. Bij een betaald abonnement volgt een wachttijd van 7 dagen; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Mediabestanden (foto’s, documenten) worden niet in de herstel-snapshot bewaard. Eindigt de proef zonder abonnement, dan stuurt WinProx waarschuwingen en kan de organisatie automatisch worden verwijderd (standaard rond dag 14 na einde proef).",
+            "summary": "Beheerder: Abonnement → gegevens verwijderen (export + wachtwoord + e-mail; trial zelf, betaald via WinProx na 7 dagen; verlopen proef kan auto-wissen)."
         },
         "internal_teams": {
             "slug": "internal_teams",

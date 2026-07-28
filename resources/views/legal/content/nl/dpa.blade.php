@@ -90,7 +90,10 @@
 <h2>9. Rechten van betrokkenen</h2>
 
 <p>
-    WinProx ondersteunt de klant bij het behandelen van verzoeken van betrokkenen.
+    WinProx ondersteunt de klant bij het behandelen van verzoeken van betrokkenen, onder meer via
+    platformfuncties voor export (Instellingen → Privacy &amp; export van gegevens), gebruikersdeactivatie
+    en self-service organisatieverwijdering (Abonnement), zoals beschreven in de
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>10. Bewaartermijnen</h2>
@@ -105,6 +108,7 @@
     <li>logs: 6 maanden.</li>
     <li>foto’s: 24 maanden na afsluiten.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken.</li>
+    <li>technische SQL-snapshot na volledige organisatieverwijdering (zonder media): max. 30 dagen.</li>
 </ul>
 
 <h2>11. Einde overeenkomst</h2>
@@ -114,8 +118,11 @@
 </p>
 
 <ul>
-    <li>kan de klant gegevens exporteren.</li>
-    <li>worden gegevens verwijderd conform het bewaarbeleid.</li>
+    <li>kan de klant gegevens exporteren via het platform (JSON/ZIP) vóór verwijdering.</li>
+    <li>kan de klant (beheerder) self-service een volledige tenant-verwijdering starten (proef: zelf uitvoeren na e-mailbevestiging; betaald: cool-down van 7 dagen en uitvoering door WinProx-administratie).</li>
+    <li>kan WinProx bij een verlopen proef zonder abonnement, na waarschuwing, de organisatie automatisch verwijderen.</li>
+    <li>worden live gegevens hard verwijderd; een technische SQL-snapshot zonder mediabestanden wordt max. 30 dagen bewaard en daarna vernietigd.</li>
+    <li>overige gegevens worden verwijderd of geanonimiseerd conform het bewaarbeleid, behoudens wettelijke bewaarplichten of litigation holds.</li>
 </ul>
 
 <h2>12. Aansprakelijkheid</h2>

@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "¿Cómo elimino mi cuenta / los datos de la organización?",
-            "body": "Solo un administrador puede hacerlo. Vaya a Suscripción → Eliminar datos de la organización. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos, luego confirme con contraseña y correo. En periodo de prueba puede eliminar definitivamente después. Con un plan de pago hay una espera de 7 días; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Los archivos multimedia (fotos, documentos) no se guardan en la instantánea de recuperación.",
-            "summary": "Admin: Suscripción → eliminar datos (exportación + contraseña + correo; prueba usted mismo, de pago vía WinProx tras 7 días)."
+            "body": "Solo un administrador puede hacerlo. Vaya a Suscripción → Eliminar datos de la organización. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos, luego confirme con contraseña y correo. En periodo de prueba puede eliminar definitivamente después. Con un plan de pago hay una espera de 7 días; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Los archivos multimedia (fotos, documentos) no se guardan en la instantánea de recuperación. Si la prueba termina sin suscripción, WinProx envía avisos y puede eliminar la organización automáticamente (por defecto hacia el día 14 tras el fin de la prueba).",
+            "summary": "Admin: Suscripción → eliminar datos (exportación + contraseña + correo; prueba usted mismo, de pago vía WinProx tras 7 días; prueba caducada puede autoeliminar)."
         },
         "internal_teams": {
             "slug": "internal_teams",

@@ -91,6 +91,12 @@
     Se il pagamento non viene effettuato in tempo o l'abbonamento scade, WinProx può limitare o sospendere l'accesso alla piattaforma, ove previsto tecnicamente e con un preavviso ragionevole ove applicabile.
 </p>
 <p>
+    Dopo la fine di un periodo di prova senza abbonamento attivo, l'accesso può restare limitato alle pagine di abbonamento e fatturazione.
+    Senza un abbonamento tempestivo, WinProx può eliminare l'organizzazione automaticamente dopo un avviso e-mail preventivo
+    (predefinito: avviso intorno a 7 giorni e cancellazione intorno a 14 giorni dopo la fine della prova). L'attivazione di un abbonamento
+    interrompe una cancellazione automatica programmata.
+</p>
+<p>
     WinProx può modificare prezzi e piani. Le modifiche rilevanti saranno comunicate tramite la piattaforma e/o via e-mail con un preavviso ragionevole.
 </p>
 <p>
@@ -140,7 +146,22 @@
 </ul>
 
 <p>
-    Gli utenti possono chiudere il proprio account secondo gli accordi con il proprio cliente / amministratore o direttamente con WinProx.
+    Gli account utente individuali possono essere disattivati o messi in pausa dall'amministratore dell'organizzazione
+    secondo i diritti disponibili nella piattaforma.
+</p>
+<p>
+    Un amministratore può richiedere la cancellazione completa dei dati dell'organizzazione tramite
+    <em>Abbonamento → Elimina dati organizzazione</em>, dopo offerta di esportazione, conferma password e
+    conferma e-mail a tutti gli amministratori:
+</p>
+<ul>
+    <li><strong>Periodo di prova:</strong> dopo la conferma l'amministratore può cancellare definitivamente.</li>
+    <li><strong>Abbonamento a pagamento:</strong> periodo di attesa di 7 giorni; esecuzione da parte dell'amministrazione WinProx; annullamento possibile fino ad allora tramite Abbonamento.</li>
+</ul>
+<p>
+    Alla cancellazione definitiva viene conservato uno snapshot SQL tecnico senza file media per max. 30 giorni e poi distrutto.
+    I dettagli sui dati personali sono nell'
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>13. Disponibilità internazionale</h2>

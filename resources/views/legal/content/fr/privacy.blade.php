@@ -88,9 +88,9 @@
 <h2>4. Traductions IA (optionnel)</h2>
 <p>Si activé par l'administrateur, la plateforme peut utiliser des traductions IA :</p>
 <ul>
-    <li>traduction automatique des textes d'issues vers d'autres langues.</li>
+    <li>traduction automatique des textes affichés en plusieurs langues dans la plateforme ou le portail QR (notamment signalements, tâches, unités, annonces, descriptions de documents, sites, catégories et noms d’équipes).</li>
     <li>utilisation d'une instance Ollama locale (aucun service externe).</li>
-    <li>les traductions sont stockées et conservées conformément à la politique de conservation.</li>
+    <li>les traductions sont stockées et conservées conformément à la politique de conservation ; les administrateurs peuvent les corriger manuellement dans la plateforme.</li>
     <li>cette fonctionnalité est optionnelle et peut être désactivée à tout moment.</li>
 </ul>
 
@@ -137,7 +137,12 @@
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>
     <li>mesures ESG : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
+    <li>instantané SQL technique après suppression complète de l’organisation (sans fichiers médias) : maximum 30 jours, puis destruction.</li>
 </ul>
+<p>
+    Après une suppression complète de l’organisation (voir ci-dessous), les données actives du tenant sont définitivement effacées ;
+    les fichiers médias (photos, documents) ne font pas partie de l’instantané de récupération.
+</p>
 
 <h2>9. Partage des données</h2>
 <p>Les données personnelles ne sont ni vendues ni partagées avec des tiers, sauf :</p>
@@ -172,7 +177,42 @@
     <li>s’opposer au traitement.</li>
 </ul>
 
-<p>Les demandes peuvent être adressées à :</p>
+<p><strong>Comment la plateforme le permet</strong></p>
+<ul>
+    <li>
+        <strong>Accès / export :</strong> un administrateur peut télécharger un export lisible par machine (JSON dans un ZIP)
+        sous <em>Paramètres → Confidentialité &amp; export des données</em> pour son compte et les données pertinentes de l’organisation.
+        Les téléchargements sont journalisés.
+    </li>
+    <li>
+        <strong>Rectification :</strong> les utilisateurs autorisés peuvent mettre à jour leur profil (nom, e-mail, langue) ;
+        les administrateurs peuvent mettre à jour les données de l’organisation.
+    </li>
+    <li>
+        <strong>Désactiver un utilisateur :</strong> un administrateur peut désactiver ou suspendre des comptes collègues
+        (connexion bloquée ; sessions révoquées). Ce n’est pas une suppression complète de l’organisation.
+    </li>
+    <li>
+        <strong>Supprimer les données de l’organisation (self-service) :</strong> administrateurs uniquement, via
+        <em>Abonnement → Supprimer les données de l’organisation</em>. Un export est d’abord proposé ; puis confirmation
+        par mot de passe et e-mail à tous les administrateurs.
+        <ul>
+            <li><strong>Période d’essai :</strong> après confirmation par e-mail, l’administrateur peut effacer définitivement
+                (instantané SQL technique sans médias, conservé max. 30 jours).</li>
+            <li><strong>Abonnement payant / grâce :</strong> après confirmation, un délai de 7 jours s’applique
+                (bannière dans l’app, e-mail de rappel environ 2 jours avant) ; l’administration WinProx (superuser)
+                exécute la suppression. Annulation possible jusque-là via Abonnement.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Essai expiré sans abonnement :</strong> après la fin de l’essai, la connexion peut être limitée aux pages
+        d’abonnement/facturation. Sans abonnement, WinProx envoie des e-mails d’avertissement et peut supprimer
+        l’organisation automatiquement (par défaut : avertissement vers le jour 7, suppression vers le jour 14 après la fin de l’essai).
+        L’activation d’un abonnement annule une suppression automatique en cours.
+    </li>
+</ul>
+
+<p>Les autres demandes ou demandes exceptionnelles (p. ex. litigation hold) peuvent être adressées à :</p>
 @include('partials.wp-legal-operator')
 
 <p>

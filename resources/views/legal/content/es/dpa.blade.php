@@ -90,7 +90,10 @@
 <h2>9. Derechos de los interesados</h2>
 
 <p>
-    WinProx apoya al cliente en la gestión de solicitudes de los interesados.
+    WinProx apoya al cliente en la gestión de solicitudes de los interesados, entre otros mediante
+    funciones de la plataforma para exportación (Ajustes → Privacidad y exportación de datos), desactivación de usuarios
+    y eliminación autoservicio de la organización (Suscripción), según se describe en la
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>10. Plazos de conservación</h2>
@@ -105,6 +108,7 @@
     <li>registros: 6 meses.</li>
     <li>fotos: 24 meses tras el cierre.</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas.</li>
+    <li>instantánea SQL técnica tras la eliminación completa de la organización (sin multimedia): máx. 30 días.</li>
 </ul>
 
 <h2>11. Fin del acuerdo</h2>
@@ -114,8 +118,11 @@
 </p>
 
 <ul>
-    <li>el cliente puede exportar los datos.</li>
-    <li>los datos se eliminarán conforme a la política de retención.</li>
+    <li>el cliente puede exportar datos mediante la plataforma (JSON/ZIP) antes de la eliminación.</li>
+    <li>el cliente (administrador) puede iniciar una eliminación completa del inquilino en autoservicio (prueba: ejecución tras confirmación por correo; de pago: plazo de 7 días y ejecución por la administración de WinProx).</li>
+    <li>WinProx puede, ante una prueba caducada sin suscripción y tras aviso, eliminar la organización automáticamente.</li>
+    <li>los datos en vivo se eliminan de forma definitiva; una instantánea SQL técnica sin archivos multimedia se conserva máx. 30 días y después se destruye.</li>
+    <li>los demás datos se eliminan o anonimizan conforme a la política de retención, sin perjuicio de obligaciones legales de conservación o litigation holds.</li>
 </ul>
 
 <h2>12. Responsabilidad</h2>

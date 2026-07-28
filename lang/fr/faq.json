@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "Comment supprimer mon compte / les données de l’organisation ?",
-            "body": "Seul un administrateur peut le faire. Allez dans Abonnement → Supprimer les données de l’organisation. Téléchargez d’abord un export via Paramètres → Confidentialité & export des données, puis confirmez avec mot de passe et e-mail. Pendant l’essai, vous pouvez ensuite supprimer définitivement vous-même. Avec un abonnement payant, un délai de 7 jours s’applique ; l’administration WinProx effectue la suppression. Vous pouvez annuler d’ici là via Abonnement. Les fichiers médias (photos, documents) ne sont pas conservés dans l’instantané de récupération.",
-            "summary": "Admin : Abonnement → supprimer les données (export + mot de passe + e-mail ; essai en autonomie, payant via WinProx après 7 jours)."
+            "body": "Seul un administrateur peut le faire. Allez dans Abonnement → Supprimer les données de l’organisation. Téléchargez d’abord un export via Paramètres → Confidentialité & export des données, puis confirmez avec mot de passe et e-mail. Pendant l’essai, vous pouvez ensuite supprimer définitivement vous-même. Avec un abonnement payant, un délai de 7 jours s’applique ; l’administration WinProx effectue la suppression. Vous pouvez annuler d’ici là via Abonnement. Les fichiers médias (photos, documents) ne sont pas conservés dans l’instantané de récupération. Si l’essai se termine sans abonnement, WinProx envoie des avertissements et peut supprimer l’organisation automatiquement (par défaut vers le jour 14 après la fin de l’essai).",
+            "summary": "Admin : Abonnement → supprimer les données (export + mot de passe + e-mail ; essai en autonomie, payant via WinProx après 7 jours ; essai expiré peut auto-supprimer)."
         },
         "internal_teams": {
             "slug": "internal_teams",

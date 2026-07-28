@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "Come elimino il mio account / i dati dell’organizzazione?",
-            "body": "Solo un amministratore può farlo. Vai su Abbonamento → Elimina i dati dell’organizzazione. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati, poi conferma con password ed email. In prova puoi poi eliminare definitivamente tu stesso. Con un abbonamento a pagamento c’è un’attesa di 7 giorni; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. I file multimediali (foto, documenti) non sono conservati nello snapshot di ripristino.",
-            "summary": "Admin: Abbonamento → elimina dati (export + password + email; prova in autonomia, a pagamento via WinProx dopo 7 giorni)."
+            "body": "Solo un amministratore può farlo. Vai su Abbonamento → Elimina i dati dell’organizzazione. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati, poi conferma con password ed email. In prova puoi poi eliminare definitivamente tu stesso. Con un abbonamento a pagamento c’è un’attesa di 7 giorni; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. I file multimediali (foto, documenti) non sono conservati nello snapshot di ripristino. Se la prova termina senza abbonamento, WinProx invia avvisi e può eliminare l’organizzazione automaticamente (predefinito intorno al giorno 14 dopo la fine della prova).",
+            "summary": "Admin: Abbonamento → elimina dati (export + password + email; prova in autonomia, a pagamento via WinProx dopo 7 giorni; prova scaduta può auto-eliminare)."
         },
         "internal_teams": {
             "slug": "internal_teams",

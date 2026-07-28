@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "Wie lösche ich mein Konto / Organisationsdaten?",
-            "body": "Nur ein Administrator kann das. Gehen Sie zu Abonnement → Organisationsdaten löschen. Laden Sie zuerst einen Export unter Einstellungen → Datenschutz & Datenexport herunter, bestätigen Sie mit Passwort und E-Mail. In der Testphase können Sie danach selbst endgültig löschen. Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen. Mediendateien (Fotos, Dokumente) werden nicht im Wiederherstellungs-Snapshot gespeichert.",
-            "summary": "Admin: Abonnement → Daten löschen (Export + Passwort + E-Mail; Trial selbst, bezahlt über WinProx nach 7 Tagen)."
+            "body": "Nur ein Administrator kann das. Gehen Sie zu Abonnement → Organisationsdaten löschen. Laden Sie zuerst einen Export unter Einstellungen → Datenschutz & Datenexport herunter, bestätigen Sie mit Passwort und E-Mail. In der Testphase können Sie danach selbst endgültig löschen. Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen. Mediendateien (Fotos, Dokumente) werden nicht im Wiederherstellungs-Snapshot gespeichert. Endet die Testphase ohne Abonnement, sendet WinProx Warnungen und kann die Organisation automatisch löschen (Standard etwa Tag 14 nach Testende).",
+            "summary": "Admin: Abonnement → Daten löschen (Export + Passwort + E-Mail; Trial selbst, bezahlt über WinProx nach 7 Tagen; abgelaufene Testphase kann auto-löschen)."
         },
         "internal_teams": {
             "slug": "internal_teams",

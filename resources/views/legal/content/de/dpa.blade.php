@@ -90,7 +90,10 @@
 <h2>9. Rechte betroffener Personen</h2>
 
 <p>
-    WinProx unterstützt den Kunden bei der Bearbeitung von Anfragen betroffener Personen.
+    WinProx unterstützt den Kunden bei der Bearbeitung von Anfragen betroffener Personen, unter anderem über
+    Plattformfunktionen für Export (Einstellungen → Datenschutz &amp; Datenexport), Benutzerdeaktivierung
+    und Self-Service-Organisationslöschung (Abonnement), wie in der
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a> beschrieben.
 </p>
 
 <h2>10. Aufbewahrungsfristen</h2>
@@ -105,6 +108,7 @@
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
+    <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Medien): max. 30 Tage.</li>
 </ul>
 
 <h2>11. Ende der Vereinbarung</h2>
@@ -114,8 +118,11 @@
 </p>
 
 <ul>
-    <li>kann der Kunde Daten exportieren.</li>
-    <li>werden Daten gemäß der Aufbewahrungsrichtlinie gelöscht.</li>
+    <li>kann der Kunde Daten über die Plattform (JSON/ZIP) vor der Löschung exportieren.</li>
+    <li>kann der Kunde (Administrator) eine vollständige Tenant-Löschung per Self-Service starten (Testphase: Ausführung nach E-Mail-Bestätigung; bezahlt: 7-Tage-Wartezeit und Ausführung durch WinProx-Administration).</li>
+    <li>kann WinProx bei abgelaufener Testphase ohne Abonnement nach Warnung die Organisation automatisch löschen.</li>
+    <li>werden Live-Daten endgültig gelöscht; ein technischer SQL-Snapshot ohne Mediendateien wird max. 30 Tage aufbewahrt und danach vernichtet.</li>
+    <li>werden übrige Daten gemäß Aufbewahrungsrichtlinie gelöscht oder anonymisiert, vorbehaltlich gesetzlicher Aufbewahrungspflichten oder Litigation Holds.</li>
 </ul>
 
 <h2>12. Haftung</h2>

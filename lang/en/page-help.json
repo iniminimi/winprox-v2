@@ -543,7 +543,7 @@
                 },
                 {
                     "label": "Delete organisation data",
-                    "text": "Administrators only. First download a data export via Settings → Privacy & data export. Then on Subscription tick the confirmation and enter your password. All administrators receive a confirmation email. During a trial you can then permanently delete yourself (technical snapshot without media, kept 30 days). On a paid plan there is a 7-day wait with banner and reminder email; WinProx administration performs the deletion. You can cancel until then via Subscription."
+                    "text": "Administrators only. First download a data export via Settings → Privacy & data export. Then on Subscription tick the confirmation and enter your password. All administrators receive a confirmation email. During a trial you can then permanently delete yourself (technical snapshot without media, kept 30 days). On a paid plan there is a 7-day wait with banner and reminder email; WinProx administration performs the deletion. You can cancel until then via Subscription. If the trial ends without a subscription, warning emails follow and the organisation may be deleted automatically (default around day 14)."
                 }
             ]
         },

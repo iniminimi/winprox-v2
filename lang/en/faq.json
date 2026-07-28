@@ -177,8 +177,8 @@
             "slug": "delete_account",
             "type": "text",
             "title": "How do I delete my account / organisation data?",
-            "body": "Only an administrator can do this. Go to Subscription → Delete organisation data. First download an export via Settings → Privacy & data export, then confirm with password and email. During a trial you can permanently delete yourself afterwards. On a paid plan there is a 7-day wait; WinProx administration performs the deletion. You can cancel until then via Subscription. Media files (photos, documents) are not kept in the recovery snapshot.",
-            "summary": "Admin: Subscription → delete data (export + password + email; trial self-serve, paid via WinProx after 7 days)."
+            "body": "Only an administrator can do this. Go to Subscription → Delete organisation data. First download an export via Settings → Privacy & data export, then confirm with password and email. During a trial you can permanently delete yourself afterwards. On a paid plan there is a 7-day wait; WinProx administration performs the deletion. You can cancel until then via Subscription. Media files (photos, documents) are not kept in the recovery snapshot. If the trial ends without a subscription, WinProx sends warnings and may delete the organisation automatically (default around day 14 after trial end).",
+            "summary": "Admin: Subscription → delete data (export + password + email; trial self-serve, paid via WinProx after 7 days; expired trial may auto-delete)."
         },
         "internal_teams": {
             "slug": "internal_teams",

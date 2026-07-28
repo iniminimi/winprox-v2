@@ -543,7 +543,7 @@
                 },
                 {
                     "label": "Eliminar datos de la organización",
-                    "text": "Solo administradores. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos. Luego en Suscripción marque la confirmación e introduzca su contraseña. Todos los administradores reciben un correo de confirmación. En periodo de prueba puede eliminar definitivamente después (instantánea técnica sin medios, guardada 30 días). Con un plan de pago hay una espera de 7 días con banner y recordatorio; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción."
+                    "text": "Solo administradores. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos. Luego en Suscripción marque la confirmación e introduzca su contraseña. Todos los administradores reciben un correo de confirmación. En periodo de prueba puede eliminar definitivamente después (instantánea técnica sin medios, guardada 30 días). Con un plan de pago hay una espera de 7 días con banner y recordatorio; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Si la prueba termina sin suscripción, hay correos de aviso y la organización puede eliminarse automáticamente (por defecto hacia el día 14)."
                 }
             ]
         },

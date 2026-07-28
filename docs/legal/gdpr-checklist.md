@@ -14,7 +14,7 @@ Status legend: `TODO`, `IN PROGRESS`, `DONE`
 ## 2) Legal Basis and Transparency
 
 - [ ] `TODO` Document legal basis per flow (issues, tasks, owner notifications, logs).
-- [x] `DONE` Privacy policy updated with **owner-notification flow** (sections on owners / communication with owners in `legal/content/*/privacy.blade.php`).
+- [x] `DONE` Privacy / terms / DPA describe self-service organisation deletion, trial vs paid cool-down, expired-trial auto-purge, export path, and snapshot without media (2026-07-28).
 - [ ] `TODO` Define when explicit consent is needed vs legitimate interest.
 
 ## 3) Contracts
@@ -28,8 +28,8 @@ Status legend: `TODO`, `IN PROGRESS`, `DONE`
 - [ ] `TODO` Define process for access request (SAR).
 - [ ] `TODO` Define process for rectification and erasure.
 - [x] `DONE` Basic authenticated JSON export (`GET /account/data-export`) + activity log entry (`user_data_export_downloaded`). Formal SAR/process wording still `TODO`.
-- [ ] `IN PROGRESS` Operational outline for rights handling: `docs/legal/data-subject-requests.md` (not legal advice).
-- [ ] `TODO` Set response SLA (for example 30 days).
+- [x] `DONE` Operational outline for rights handling: `docs/legal/data-subject-requests.md` (synced with public legal pages; not legal advice).
+- [x] `DONE` Platform erasure paths documented (user deactivate + tenant purge trial/paid/expired_trial) in privacy/terms/DPA.
 
 ## 5) Security and Access
 

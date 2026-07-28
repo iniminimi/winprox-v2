@@ -88,9 +88,9 @@
 <h2>4. Traducciones con IA (opcional)</h2>
 <p>Si el administrador lo activa, la plataforma puede utilizar traducciones con IA:</p>
 <ul>
-    <li>traducción automática de textos de incidencias a otros idiomas.</li>
+    <li>traducción automática de textos mostrados en varios idiomas en la plataforma o el portal QR (incluidas incidencias, tareas, unidades, anuncios, descripciones de documentos, ubicaciones, categorías y nombres de equipos).</li>
     <li>mediante una instancia local de Ollama (sin servicios externos).</li>
-    <li>las traducciones se almacenan y conservan conforme a la política de retención.</li>
+    <li>las traducciones se almacenan y conservan conforme a la política de retención; los administradores pueden corregirlas manualmente en la plataforma.</li>
     <li>esta función es opcional y puede desactivarse en cualquier momento.</li>
 </ul>
 
@@ -137,7 +137,12 @@
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas (duración del contrato + 36 meses)</li>
+    <li>instantánea SQL técnica tras la eliminación completa de la organización (sin archivos multimedia): máximo 30 días, después destrucción</li>
 </ul>
+<p>
+    Tras una eliminación completa de la organización (véase más abajo), los datos en vivo del inquilino se eliminan de forma definitiva;
+    los archivos multimedia (fotos, documentos) no forman parte de la instantánea de recuperación.
+</p>
 
 <h2>9. Comunicación de datos</h2>
 <p>Los datos personales no se venden ni se comunican a terceros, excepto:</p>
@@ -172,7 +177,42 @@
     <li>oponerse al tratamiento.</li>
 </ul>
 
-<p>Las solicitudes pueden enviarse a:</p>
+<p><strong>Cómo lo permite la plataforma</strong></p>
+<ul>
+    <li>
+        <strong>Acceso / exportación:</strong> un administrador puede descargar una exportación legible por máquina (JSON en un ZIP)
+        en <em>Ajustes → Privacidad y exportación de datos</em> de su cuenta y de datos relevantes de la organización.
+        Las descargas se registran.
+    </li>
+    <li>
+        <strong>Rectificación:</strong> los usuarios autorizados pueden actualizar su perfil (nombre, correo, idioma);
+        los administradores pueden actualizar los datos de la organización.
+    </li>
+    <li>
+        <strong>Desactivar un usuario:</strong> un administrador puede desactivar o pausar cuentas de colegas
+        (inicio de sesión bloqueado; sesiones revocadas). No es un borrado completo de la organización.
+    </li>
+    <li>
+        <strong>Eliminar datos de la organización (autoservicio):</strong> solo administradores, mediante
+        <em>Suscripción → Eliminar datos de la organización</em>. Primero se ofrece una exportación; después confirmación
+        con contraseña y correo a todos los administradores.
+        <ul>
+            <li><strong>Periodo de prueba:</strong> tras la confirmación por correo, el administrador puede borrar definitivamente
+                (instantánea SQL técnica sin multimedia, conservada máx. 30 días).</li>
+            <li><strong>Suscripción de pago / gracia:</strong> tras la confirmación hay un plazo de 7 días
+                (banner en la app, correo recordatorio unos 2 días antes); la administración de WinProx (superusuario)
+                ejecuta la eliminación. Se puede cancelar hasta entonces vía Suscripción.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Prueba caducada sin suscripción:</strong> tras el fin de la prueba, el acceso puede limitarse a páginas
+        de suscripción/facturación. Sin suscripción, WinProx envía correos de aviso y puede eliminar la organización
+        automáticamente (por defecto: aviso hacia el día 7, eliminación hacia el día 14 tras el fin de la prueba).
+        Activar una suscripción cancela una eliminación automática pendiente.
+    </li>
+</ul>
+
+<p>Otras solicitudes o solicitudes excepcionales (p. ej. litigation hold) pueden enviarse a:</p>
 @include('partials.wp-legal-operator')
 
 <p>

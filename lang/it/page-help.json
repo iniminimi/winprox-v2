@@ -543,7 +543,7 @@
                 },
                 {
                     "label": "Elimina i dati dell’organizzazione",
-                    "text": "Solo amministratori. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati. Poi in Abbonamento spunta la conferma e inserisci la password. Tutti gli amministratori ricevono un’email di conferma. In prova puoi poi eliminare definitivamente tu stesso (snapshot tecnico senza media, conservato 30 giorni). Con un abbonamento a pagamento c’è un’attesa di 7 giorni con banner e email di promemoria; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento."
+                    "text": "Solo amministratori. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati. Poi in Abbonamento spunta la conferma e inserisci la password. Tutti gli amministratori ricevono un’email di conferma. In prova puoi poi eliminare definitivamente tu stesso (snapshot tecnico senza media, conservato 30 giorni). Con un abbonamento a pagamento c’è un’attesa di 7 giorni con banner e email di promemoria; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. Se la prova termina senza abbonamento, seguono e-mail di avviso e l’organizzazione può essere eliminata automaticamente (predefinito intorno al giorno 14)."
                 }
             ]
         },

@@ -91,6 +91,12 @@
     Si el pago no se realiza a tiempo o la suscripción expira, WinProx puede restringir o suspender el acceso a la plataforma, cuando esté previsto técnicamente y con un preaviso razonable cuando proceda.
 </p>
 <p>
+    Tras el fin de un periodo de prueba sin suscripción activa, el acceso puede permanecer limitado a páginas de suscripción y facturación.
+    Sin una suscripción a tiempo, WinProx puede eliminar la organización automáticamente tras aviso previo por correo
+    (por defecto: aviso hacia 7 días y eliminación hacia 14 días tras el fin de la prueba). Activar una suscripción
+    detiene una eliminación automática programada.
+</p>
+<p>
     WinProx puede ajustar precios y planes. Los cambios relevantes se comunicarán a través de la plataforma y/o por correo electrónico con un preaviso razonable.
 </p>
 <p>
@@ -140,7 +146,22 @@
 </ul>
 
 <p>
-    Los usuarios pueden dar de baja su cuenta según los acuerdos con su cliente / administrador o directamente con WinProx.
+    Las cuentas de usuario individuales pueden desactivarse o pausarse por el administrador de la organización
+    según los derechos disponibles en la plataforma.
+</p>
+<p>
+    Un administrador puede solicitar la eliminación completa de los datos de la organización mediante
+    <em>Suscripción → Eliminar datos de la organización</em>, tras oferta de exportación, confirmación con contraseña
+    y confirmación por correo a todos los administradores:
+</p>
+<ul>
+    <li><strong>Periodo de prueba:</strong> tras la confirmación, el administrador puede borrar definitivamente.</li>
+    <li><strong>Suscripción de pago:</strong> plazo de 7 días; ejecución por la administración de WinProx; cancelación posible hasta entonces vía Suscripción.</li>
+</ul>
+<p>
+    Tras la eliminación definitiva, se conserva una instantánea SQL técnica sin archivos multimedia durante máx. 30 días y después se destruye.
+    Los detalles sobre datos personales figuran en la
+    <a href="{{ route('legal.privacy') }}">{{ __('legal.documents.privacy') }}</a>.
 </p>
 
 <h2>13. Disponibilidad internacional</h2>

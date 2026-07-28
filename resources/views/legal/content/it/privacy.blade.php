@@ -88,9 +88,9 @@
 <h2>4. Traduzioni IA (opzionale)</h2>
 <p>Se abilitato dall'amministratore, la piattaforma può utilizzare traduzioni IA:</p>
 <ul>
-    <li>traduzione automatica dei testi delle problematiche in altre lingue.</li>
+    <li>traduzione automatica dei testi mostrati in più lingue nella piattaforma o nel portale QR (incluse segnalazioni, attività, unità, annunci, descrizioni di documenti, sedi, categorie e nomi dei team).</li>
     <li>mediante un'istanza locale Ollama (senza servizi esterni).</li>
-    <li>le traduzioni vengono archiviate e conservate conformemente alla politica di conservazione.</li>
+    <li>le traduzioni vengono archiviate e conservate conformemente alla politica di conservazione; gli amministratori possono correggerle manualmente nella piattaforma.</li>
     <li>questa funzione è opzionale e può essere disattivata in qualsiasi momento.</li>
 </ul>
 
@@ -137,7 +137,12 @@
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività (durata del contratto + 36 mesi)</li>
+    <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza file media): massimo 30 giorni, poi distruzione</li>
 </ul>
+<p>
+    Dopo una cancellazione completa dell'organizzazione (vedi sotto), i dati live del tenant vengono eliminati in modo definitivo;
+    i file media (foto, documenti) non fanno parte dello snapshot di ripristino.
+</p>
 
 <h2>9. Comunicazione dei dati</h2>
 <p>I dati personali non vengono venduti né comunicati a terzi, salvo:</p>
@@ -172,7 +177,42 @@
     <li>opporsi al trattamento.</li>
 </ul>
 
-<p>Le richieste possono essere inviate a:</p>
+<p><strong>Come la piattaforma lo supporta</strong></p>
+<ul>
+    <li>
+        <strong>Accesso / esportazione:</strong> un amministratore può scaricare un'esportazione leggibile da macchina (JSON in uno ZIP)
+        in <em>Impostazioni → Privacy ed esportazione dati</em> del proprio account e dei dati rilevanti dell'organizzazione.
+        I download vengono registrati.
+    </li>
+    <li>
+        <strong>Rettifica:</strong> gli utenti autorizzati possono aggiornare il profilo (nome, e-mail, lingua);
+        gli amministratori possono aggiornare i dati dell'organizzazione.
+    </li>
+    <li>
+        <strong>Disattivare un utente:</strong> un amministratore può disattivare o mettere in pausa gli account dei colleghi
+        (accesso bloccato; sessioni revocate). Non è una cancellazione completa dell'organizzazione.
+    </li>
+    <li>
+        <strong>Eliminare i dati dell'organizzazione (self-service):</strong> solo amministratori, tramite
+        <em>Abbonamento → Elimina dati organizzazione</em>. Prima viene offerta un'esportazione; poi conferma
+        con password e e-mail a tutti gli amministratori.
+        <ul>
+            <li><strong>Periodo di prova:</strong> dopo la conferma via e-mail l'amministratore può cancellare definitivamente
+                (snapshot SQL tecnico senza media, conservato max. 30 giorni).</li>
+            <li><strong>Abbonamento a pagamento / grace:</strong> dopo la conferma vale un periodo di attesa di 7 giorni
+                (banner nell'app, e-mail di promemoria circa 2 giorni prima); l'amministrazione WinProx (superuser)
+                esegue la cancellazione. Annullamento possibile fino ad allora tramite Abbonamento.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Prova scaduta senza abbonamento:</strong> dopo la fine della prova, l'accesso può restare limitato alle pagine
+        di abbonamento/fatturazione. Senza abbonamento, WinProx invia e-mail di avviso e può eliminare l'organizzazione
+        automaticamente (predefinito: avviso intorno al giorno 7, cancellazione intorno al giorno 14 dopo la fine della prova).
+        L'attivazione di un abbonamento annulla una cancellazione automatica in sospeso.
+    </li>
+</ul>
+
+<p>Altre richieste o richieste eccezionali (ad es. litigation hold) possono essere inviate a:</p>
 @include('partials.wp-legal-operator')
 
 <p>
