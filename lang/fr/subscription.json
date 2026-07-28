@@ -61,9 +61,9 @@
         },
         "time": {
             "name": "WinProx Time",
-            "price": "149 € \/ mois",
-            "scale": "Jusqu'à 10 unités\/sites\/documents\/photos pour votre organisation.",
-            "users": "1 administrateur et 1 collaborateur inclus. Intervenants illimités via import CSV\/Excel.",
+            "price": "149 € / mois",
+            "scale": "Jusqu'à 10 unités/sites/documents/photos pour votre organisation.",
+            "users": "1 administrateur et 1 collaborateur inclus. Intervenants illimités via import CSV/Excel.",
             "description": "Signalements et tâches QR illimités dans vos sites et unités.",
             "features": [
                 "Module Time : pointage, pauses, shifts et QR Clock Points.",
@@ -72,19 +72,19 @@
         },
         "facility": {
             "name": "WinProx Facility",
-            "price": "399 € \/ mois",
-            "scale": "Jusqu'à 100 unités\/sites\/documents\/photos pour votre organisation.",
-            "users": "1 administrateur et jusqu'à 4 collaborateurs. Intervenants illimités via import CSV\/Excel.",
-            "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV\/Excel en masse pour unités et intervenants.",
+            "price": "399 € / mois",
+            "scale": "Jusqu'à 100 unités/sites/documents/photos pour votre organisation.",
+            "users": "1 administrateur et jusqu'à 4 collaborateurs. Intervenants illimités via import CSV/Excel.",
+            "description": "Workflows facility complets à plus grande échelle. WinProx Time inclus. Import CSV/Excel en masse pour unités et intervenants.",
             "features": [
                 "Signalements QR et tâches illimités dans vos sites et unités.",
                 "IoT Connect : alarmes capteurs → signalements (ingest gateway).",
-                "Pas d’API REST complète \/ webhooks."
+                "Pas d’API REST complète / webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "999 € \/ mois",
+            "price": "999 € / mois",
             "scale": "Données illimitées.",
             "description": "Pour grands portefeuilles et intégrations.",
             "features": [
@@ -108,8 +108,8 @@
         "plan_invalid": "Cette formule n'est pas disponible.",
         "admin_only": "Seul un administrateur peut choisir un abonnement.",
         "activation_disabled": "Auto-activation désactivée. Contactez WinProx.",
-        "csv_workers_not_allowed": "Import CSV\/Excel workers non disponible sur votre formule.",
-        "csv_units_not_allowed": "Import CSV\/Excel unités nécessite WinProx Facility ou Corporate."
+        "csv_workers_not_allowed": "Import CSV/Excel workers non disponible sur votre formule.",
+        "csv_units_not_allowed": "Import CSV/Excel unités nécessite WinProx Facility ou Corporate."
     },
     "status_module_iot": "IoT Connect est actif sur votre compte.",
     "purge": {
@@ -139,7 +139,7 @@
         "confirm_execute": "Permanently delete all data? This cannot be undone.",
         "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
         "banner": "Encore :days jours avant la suppression des données (prévu :date).",
-        "banner_link": "Voir \/ annuler",
+        "banner_link": "Voir / annuler",
         "errors": {
             "admin_only": "Only an administrator can do this.",
             "export_required": "Confirm that you have seen the export option.",
@@ -157,6 +157,9 @@
             "cooldown_active": "Cool-down active until :date.",
             "generic": "Deletion failed.",
             "too_many_password_attempts": "Trop de tentatives de mot de passe incorrectes. Vous avez été déconnecté. Reconnectez-vous pour continuer."
-        }
+        },
+        "status_scheduled_expired_trial": "Sans abonnement, les données de l’organisation seront automatiquement supprimées le :date (:timezone).",
+        "expired_trial_subscribe_hint": "Activez un abonnement pour arrêter cela, ou exportez d’abord vos données via Paramètres.",
+        "banner_expired_trial": "Encore :days jours avant la suppression automatique des données (prévue :date). Abonnez-vous pour les conserver."
     }
 }

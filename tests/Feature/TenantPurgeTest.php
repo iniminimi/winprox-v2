@@ -321,3 +321,150 @@ it('prune verwijdert verlopen backupbestanden zonder DB-row', function () {
     expect($stats['deleted'])->toBeGreaterThan(0);
     Storage::disk('local')->assertMissing($path);
 });
+
+it('expired trial: plant purge op T+7, reminder T-2, voert uit op T+14', function () {
+    Mail::fake();
+    Storage::fake('local');
+    Storage::fake('public');
+
+    config([
+        'tenant_purge.expired_trial_warning_days' => 7,
+        'tenant_purge.expired_trial_purge_days' => 14,
+        'tenant_purge.reminder_days_before' => 2,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'name' => 'Expired Trial Co',
+        'trial_ends_at' => now()->subDays(7)->startOfDay(),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+        'is_active' => true,
+    ]);
+    $admin = User::factory()->admin()->create([
+        'tenant_id' => $tenant->id,
+        'locale' => 'nl',
+    ]);
+    $admin2 = User::factory()->admin()->create([
+        'tenant_id' => $tenant->id,
+        'locale' => 'en',
+    ]);
+    User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    expect($tenant->isExpiredTrialWithoutSubscription())->toBeTrue()
+        ->and($tenant->hasFullAppAccess())->toBeFalse();
+
+    $scheduleStats = app(\App\Actions\TenantPurge\ScheduleExpiredTrialPurgesAction::class)->handle(now());
+    expect($scheduleStats['scheduled'])->toBe(1);
+
+    $purge = TenantPurgeRequest::query()->where('tenant_id', $tenant->id)->first();
+    expect($purge)->not->toBeNull()
+        ->and($purge->track)->toBe(TenantPurgeTrack::ExpiredTrial)
+        ->and($purge->status)->toBe(TenantPurgeStatus::Scheduled)
+        ->and($purge->scheduled_purge_at->toDateString())
+        ->toBe($tenant->trial_ends_at->copy()->addDays(14)->toDateString());
+
+    Mail::assertSent(\App\Mail\TenantPurgeExpiredTrialWarningMail::class, 2);
+
+    // Reminder window T-2
+    $purge->scheduled_purge_at = now()->addDays(2)->setTime(12, 0);
+    $purge->reminder_sent_at = null;
+    $purge->save();
+
+    $reminderStats = app(SendTenantPurgeRemindersAction::class)->handle(now());
+    expect($reminderStats['sent'])->toBe(1);
+    Mail::assertSent(TenantPurgeReminderMail::class, 2);
+
+    $purge->scheduled_purge_at = now()->subMinute();
+    $purge->save();
+
+    $execStats = app(\App\Actions\TenantPurge\ExecuteDueExpiredTrialPurgesAction::class)->handle(now());
+    expect($execStats['executed'])->toBe(1)
+        ->and(Tenant::query()->whereKey($tenant->id)->exists())->toBeFalse();
+
+    Mail::assertSent(TenantPurgeCompletedMail::class, 2);
+});
+
+it('expired trial: abonnement annuleert openstaande auto-purge', function () {
+    Mail::fake();
+
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->subDays(10),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $purge = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::ExpiredTrial,
+        'status' => TenantPurgeStatus::Scheduled,
+        'scheduled_purge_at' => now()->addDays(4),
+    ]);
+
+    app(\App\Actions\Billing\ActivateSubscriptionPlanAction::class)
+        ->handle($admin, $tenant, 'facility', 'manual');
+
+    expect($purge->fresh()->status)->toBe(TenantPurgeStatus::Cancelled)
+        ->and($tenant->fresh()->hasFullAppAccess())->toBeTrue();
+});
+
+it('expired trial: plant niet opnieuw na annulering door admin', function () {
+    Mail::fake();
+    config([
+        'tenant_purge.expired_trial_warning_days' => 7,
+        'tenant_purge.expired_trial_purge_days' => 14,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->subDays(8),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::ExpiredTrial,
+        'status' => TenantPurgeStatus::Cancelled,
+        'scheduled_purge_at' => now()->addDays(3),
+    ]);
+
+    $stats = app(\App\Actions\TenantPurge\ScheduleExpiredTrialPurgesAction::class)->handle(now());
+    expect($stats['scheduled'])->toBe(0)
+        ->and(TenantPurgeRequest::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('status', TenantPurgeStatus::Scheduled)
+            ->exists())->toBeFalse();
+
+    // Sanity: admin cancel path still authorized for open expired-trial
+    $open = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::ExpiredTrial,
+        'status' => TenantPurgeStatus::Scheduled,
+        'scheduled_purge_at' => now()->addDays(3),
+    ]);
+    app(\App\Actions\TenantPurge\CancelTenantPurgeRequestAction::class)->handle($open, $admin);
+    expect($open->fresh()->status)->toBe(TenantPurgeStatus::Cancelled);
+});
+
+it('na verlopen trial blijft subscription-route bereikbaar', function () {
+    $tenant = Tenant::factory()->create([
+        'trial_ends_at' => now()->subDay(),
+        'billing_plan' => null,
+        'billing_active_until' => null,
+        'is_active' => true,
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('subscription.index'))
+        ->assertOk();
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertRedirect(route('subscription.index'));
+});

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Billing;
 
+use App\Actions\TenantPurge\CancelOpenExpiredTrialPurgesForTenantAction;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Audit\AuditRecorder;
@@ -12,6 +13,7 @@ class ActivateSubscriptionPlanAction
     public function __construct(
         private AuditRecorder $audit,
         private ApplyPlanEntitlementsAction $applyEntitlements,
+        private CancelOpenExpiredTrialPurgesForTenantAction $cancelExpiredTrialPurges,
     ) {}
 
     public function handle(?User $actor, Tenant $tenant, string $plan, string $source = 'manual'): Tenant
@@ -27,6 +29,8 @@ class ActivateSubscriptionPlanAction
         ])->save();
 
         $fresh = $this->applyEntitlements->handle($tenant->fresh(), $plan);
+
+        $this->cancelExpiredTrialPurges->handle($fresh, $actor);
 
         $this->audit->record(
             userId: $actor?->id,

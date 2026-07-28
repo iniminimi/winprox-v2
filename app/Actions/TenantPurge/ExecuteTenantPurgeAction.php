@@ -29,7 +29,7 @@ final class ExecuteTenantPurgeAction
         private AuditRecorder $audit,
     ) {}
 
-    public function handle(TenantPurgeRequest $request, User $actor, ?string $password = null): TenantPurgeRequest
+    public function handle(TenantPurgeRequest $request, ?User $actor = null, ?string $password = null): TenantPurgeRequest
     {
         if (! $request->isOpen()) {
             throw ValidationException::withMessages([
@@ -44,11 +44,11 @@ final class ExecuteTenantPurgeAction
             ]);
         }
 
-        if ($request->track === TenantPurgeTrack::Trial) {
-            $this->assertTrialActor($request, $actor, $password);
-        } else {
-            $this->assertPaidActor($request, $actor);
-        }
+        match ($request->track) {
+            TenantPurgeTrack::Trial => $this->assertTrialActor($request, $actor, $password),
+            TenantPurgeTrack::Paid => $this->assertPaidActor($request, $actor),
+            TenantPurgeTrack::ExpiredTrial => $this->assertExpiredTrialReady($request),
+        };
 
         $adminEmails = User::query()
             ->where('tenant_id', $tenant->id)
@@ -60,14 +60,15 @@ final class ExecuteTenantPurgeAction
 
         $counts = $this->collectCounts->handle($tenant);
         $counts['_executor'] = [
-            'id' => $actor->id,
-            'name' => $actor->name,
-            'email' => $actor->email,
-            'superuser' => (bool) $actor->is_superuser,
+            'id' => $actor?->id,
+            'name' => $actor?->name,
+            'email' => $actor?->email,
+            'superuser' => (bool) ($actor?->is_superuser),
+            'system' => $actor === null,
         ];
 
         $this->audit->record(
-            userId: $actor->id,
+            userId: $actor?->id,
             tenantId: (int) $tenant->id,
             action: 'tenant_purge.executing',
             modelType: TenantPurgeRequest::class,
@@ -87,7 +88,7 @@ final class ExecuteTenantPurgeAction
         // Mark complete before tenant delete: user/tenant FKs on this row are nullOnDelete.
         $request->status = TenantPurgeStatus::Completed;
         $request->executed_at = now();
-        $request->executed_by_user_id = $actor->id;
+        $request->executed_by_user_id = $actor?->id;
         $request->backup_path = $backupPath;
         $request->backup_expires_at = $backupExpiresAt;
         $request->deleted_counts = $counts;
@@ -121,8 +122,14 @@ final class ExecuteTenantPurgeAction
         return $request;
     }
 
-    private function assertTrialActor(TenantPurgeRequest $request, User $actor, ?string $password): void
+    private function assertTrialActor(TenantPurgeRequest $request, ?User $actor, ?string $password): void
     {
+        if ($actor === null) {
+            throw ValidationException::withMessages([
+                'purge' => [__('subscription.purge.errors.admin_only')],
+            ]);
+        }
+
         if ($request->status !== TenantPurgeStatus::Ready) {
             throw ValidationException::withMessages([
                 'purge' => [__('subscription.purge.errors.email_not_confirmed')],
@@ -144,14 +151,31 @@ final class ExecuteTenantPurgeAction
         }
     }
 
-    private function assertPaidActor(TenantPurgeRequest $request, User $actor): void
+    private function assertPaidActor(TenantPurgeRequest $request, ?User $actor): void
     {
-        if (! $actor->is_superuser) {
+        if ($actor === null || ! $actor->is_superuser) {
             throw ValidationException::withMessages([
                 'purge' => [__('subscription.purge.errors.superuser_only')],
             ]);
         }
 
+        if ($request->status !== TenantPurgeStatus::Scheduled) {
+            throw ValidationException::withMessages([
+                'purge' => [__('subscription.purge.errors.not_scheduled')],
+            ]);
+        }
+
+        if ($request->scheduled_purge_at === null || $request->scheduled_purge_at->isFuture()) {
+            throw ValidationException::withMessages([
+                'purge' => [__('subscription.purge.errors.cooldown_active', [
+                    'date' => $request->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
+                ])],
+            ]);
+        }
+    }
+
+    private function assertExpiredTrialReady(TenantPurgeRequest $request): void
+    {
         if ($request->status !== TenantPurgeStatus::Scheduled) {
             throw ValidationException::withMessages([
                 'purge' => [__('subscription.purge.errors.not_scheduled')],

@@ -7,6 +7,16 @@ return [
     'paid_cooldown_days' => (int) env('TENANT_PURGE_PAID_COOLDOWN_DAYS', 7),
 
     /*
+    | Dagen na einde proefperiode: waarschuwingsmail + planning auto-purge.
+    */
+    'expired_trial_warning_days' => (int) env('TENANT_PURGE_EXPIRED_TRIAL_WARNING_DAYS', 7),
+
+    /*
+    | Dagen na einde proefperiode: automatische purge (zonder abonnement).
+    */
+    'expired_trial_purge_days' => (int) env('TENANT_PURGE_EXPIRED_TRIAL_PURGE_DAYS', 14),
+
+    /*
     | Reminder naar admins zoveel dagen vóór geplande purge.
     */
     'reminder_days_before' => (int) env('TENANT_PURGE_REMINDER_DAYS_BEFORE', 2),

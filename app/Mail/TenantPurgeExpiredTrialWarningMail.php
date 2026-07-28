@@ -2,7 +2,6 @@
 
 namespace App\Mail;
 
-use App\Enums\TenantPurgeTrack;
 use App\Models\TenantPurgeRequest;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
@@ -12,7 +11,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 
-class TenantPurgeReminderMail extends Mailable
+class TenantPurgeExpiredTrialWarningMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,12 +28,10 @@ class TenantPurgeReminderMail extends Mailable
 
     public function envelope(): Envelope
     {
-        $prefix = $this->purgeRequest->track === TenantPurgeTrack::ExpiredTrial
-            ? 'mail.tenant_purge.expired_trial_reminder'
-            : 'mail.tenant_purge.reminder';
-
         return new Envelope(
-            subject: __($prefix.'.subject', ['tenant' => $this->purgeRequest->tenant_name]),
+            subject: __('mail.tenant_purge.expired_trial_warning.subject', [
+                'tenant' => $this->purgeRequest->tenant_name,
+            ]),
         );
     }
 
@@ -45,21 +42,19 @@ class TenantPurgeReminderMail extends Mailable
             ->format('d/m/Y H:i');
 
         $subscriptionUrl = URL::route('subscription.index', [], true);
-        $mailKey = $this->purgeRequest->track === TenantPurgeTrack::ExpiredTrial
-            ? 'expired_trial_reminder'
-            : 'reminder';
+        $retentionDays = (int) config('tenant_purge.backup_retention_days', 30);
 
         return new Content(
             html: 'emails.contact.winprox-template',
             with: [
                 'recipientName' => (string) $this->admin->name,
                 'bodyText' => '',
-                'bodyHtml' => view('emails.tenant-purge.reminder-body', [
+                'bodyHtml' => view('emails.tenant-purge.expired-trial-warning-body', [
                     'tenantName' => $this->purgeRequest->tenant_name,
                     'scheduledAt' => $when ?? '—',
                     'timezone' => config('app.timezone'),
                     'subscriptionUrl' => $subscriptionUrl,
-                    'mailKey' => $mailKey,
+                    'retentionDays' => $retentionDays,
                 ])->render(),
             ],
         );

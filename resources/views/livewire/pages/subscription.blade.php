@@ -268,10 +268,18 @@
                             </button>
                         @endif
                     @elseif ($purgeRequest->status->value === 'scheduled')
-                        <p>{{ __('subscription.purge.status_scheduled', [
-                            'date' => $purgeRequest->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
-                            'timezone' => config('app.timezone'),
-                        ]) }}</p>
+                        @if ($purgeRequest->track->value === 'expired_trial')
+                            <p>{{ __('subscription.purge.status_scheduled_expired_trial', [
+                                'date' => $purgeRequest->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
+                                'timezone' => config('app.timezone'),
+                            ]) }}</p>
+                            <p class="wp-muted">{{ __('subscription.purge.expired_trial_subscribe_hint') }}</p>
+                        @else
+                            <p>{{ __('subscription.purge.status_scheduled', [
+                                'date' => $purgeRequest->scheduled_purge_at?->timezone(config('app.timezone'))->format('d/m/Y H:i') ?? '—',
+                                'timezone' => config('app.timezone'),
+                            ]) }}</p>
+                        @endif
                         <p class="wp-muted">{{ __('subscription.purge.days_remaining', [
                             'days' => $purgeRequest->daysUntilPurge() ?? 0,
                         ]) }}</p>

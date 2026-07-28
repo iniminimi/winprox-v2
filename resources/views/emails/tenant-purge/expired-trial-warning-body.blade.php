@@ -1,12 +1,14 @@
-<p>{{ __('mail.tenant_purge.'.$mailKey.'.body', [
+<p>{{ __('mail.tenant_purge.expired_trial_warning.body', [
     'tenant' => $tenantName,
     'date' => $scheduledAt,
     'timezone' => $timezone,
 ]) }}</p>
 
+<p>{{ __('mail.tenant_purge.expired_trial_warning.export') }}</p>
+
 <p style="text-align: center; margin-top: 24px;">
     <a href="{{ $subscriptionUrl }}" style="display: inline-block; background-color: #059669; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 600; font-size: 14px;">
-        {{ __('mail.tenant_purge.open_subscription') }}
+        {{ __('mail.tenant_purge.expired_trial_warning.cta') }}
     </a>
 </p>
 
@@ -15,5 +17,5 @@
     <a href="{{ $subscriptionUrl }}" style="color: #059669; word-break: break-all;">{{ $subscriptionUrl }}</a>
 </p>
 
-<p>{{ __('mail.tenant_purge.'.$mailKey.'.cancel') }}</p>
-<p style="font-size: 13px; color: #64748b;">{{ __('mail.tenant_purge.'.$mailKey.'.footer') }}</p>
+<p>{{ __('mail.tenant_purge.expired_trial_warning.cancel') }}</p>
+<p style="font-size: 13px; color: #64748b;">{{ __('mail.tenant_purge.expired_trial_warning.footer', ['days' => $retentionDays]) }}</p>

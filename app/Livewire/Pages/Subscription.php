@@ -9,6 +9,7 @@ use App\Actions\TenantPurge\CancelTenantPurgeRequestAction;
 use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
 use App\Actions\TenantPurge\StartTenantPurgeRequestAction;
 use App\Enums\TenantPurgeStatus;
+use App\Enums\TenantPurgeTrack;
 use App\Http\Requests\Billing\ActivateSubscriptionPlanRequest;
 use App\Http\Requests\TenantPurge\StartTenantPurgeRequest;
 use App\Models\Tenant;
@@ -397,6 +398,7 @@ class Subscription extends Component
                 && $user?->can('executeTrialTenantPurge', $tenant),
             'canExecutePaidPurge' => $tenant
                 && $purgeRequest?->status === TenantPurgeStatus::Scheduled
+                && $purgeRequest->track === TenantPurgeTrack::Paid
                 && $purgeRequest->scheduled_purge_at !== null
                 && ! $purgeRequest->scheduled_purge_at->isFuture()
                 && $user?->can('executePaidTenantPurge', $tenant),

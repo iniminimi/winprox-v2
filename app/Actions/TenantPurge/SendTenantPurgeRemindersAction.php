@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 /**
- * Stuurt T−N reminder naar alle admins voor geplande betaalde purges.
+ * Stuurt T−N reminder naar alle admins voor geplande purges (paid + expired_trial).
  */
 final class SendTenantPurgeRemindersAction
 {

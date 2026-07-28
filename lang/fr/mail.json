@@ -24,7 +24,7 @@
         "html_intro": "Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous",
         "text_intro": "Si vous ne souhaitez plus recevoir d'e-mails, vous pouvez vous désabonner ici :",
         "link_label": "désabonner ici",
-        "settings_hint_html": "Vous pouvez aussi gérer vos préférences e-mail dans vos <a href=\":url\" style=\"color:#059669;font-weight:600;\">Paramètres<\/a>.",
+        "settings_hint_html": "Vous pouvez aussi gérer vos préférences e-mail dans vos <a href=\":url\" style=\"color:#059669;font-weight:600;\">Paramètres</a>.",
         "settings_hint_text": "Vous pouvez aussi gérer vos préférences e-mail dans Paramètres : :url"
     },
     "new_tenant": {
@@ -38,7 +38,7 @@
         "greeting": "Bonjour,",
         "greeting_name": "Bonjour :name,",
         "intro": "Un nouveau signalement a été envoyé via le portail QR de :tenant.",
-        "field_location": "Lieu \/ unité",
+        "field_location": "Lieu / unité",
         "field_reporter": "Signalé par",
         "field_description": "Description",
         "open_issue": "Voir le signalement",
@@ -51,12 +51,12 @@
         "body_1": "Met WinProx digitaliseren we dit proces via slimme QR-technologie. De essentie is eenvoudig: burgers en medewerkers scannen een object, melden direct een defect (inclusief foto's) en de onderhoudsploeg kan meteen aan de slag. Zonder dat daar een app-installatie voor nodig is.",
         "body_2": "In de bijgevoegde brief vindt u meer informatie over hoe wij gemeentebesturen helpen om onderhoudstaken sneller en foutloos af te handelen.",
         "body_3": "Graag kom ik dit in een korte demo van 15 minuten toelichten.",
-        "body_4_html": "<a href=\":url\" style=\"color:#059669;font-weight:600;\">Klik hier<\/a> om alvast enkele video's te bekijken.",
+        "body_4_html": "<a href=\":url\" style=\"color:#059669;font-weight:600;\">Klik hier</a> om alvast enkele video's te bekijken.",
         "body_4_text": "Klik hier om alvast enkele video's te bekijken: :url",
         "closing": "Met vriendelijke groet,",
         "signer_name": "Dominique Schaepdrijver",
-        "signer_title": "Oprichter \/ Architect WinProx",
-        "phone": "0494\/840854",
+        "signer_title": "Oprichter / Architect WinProx",
+        "phone": "0494/840854",
         "footer": "WinProx — slim facility management"
     },
     "reservation_confirm": {
@@ -135,6 +135,20 @@
             }
         },
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :",
-        "open_subscription": "Ouvrir l’abonnement"
+        "open_subscription": "Ouvrir l’abonnement",
+        "expired_trial_warning": {
+            "subject": "WinProx : le compte :tenant sera supprimé — abonnez-vous ou exportez",
+            "body": "La période d’essai de :tenant est terminée. Sans abonnement, toutes les données de l’organisation seront automatiquement supprimées le :date (:timezone). Cela inclut les utilisateurs, signalements, tâches, photos et documents.",
+            "export": "Exportez d’abord vos données dans WinProx (Abonnement / Paramètres → Confidentialité et export) si vous souhaitez une copie.",
+            "cta": "Choisir un abonnement",
+            "cancel": "L’activation d’un abonnement arrête la suppression automatique. Vous pouvez aussi annuler la planification sous Abonnement.",
+            "footer": "Après suppression, une sauvegarde technique sans médias est conservée jusqu’à :days jours."
+        },
+        "expired_trial_reminder": {
+            "subject": "WinProx : rappel — les données de :tenant seront bientôt supprimées",
+            "body": "Rappel : sans abonnement, les données de :tenant seront automatiquement supprimées le :date (:timezone).",
+            "cancel": "Vous souhaitez arrêter ? Activez un abonnement ou annulez sous Abonnement :",
+            "footer": "Exportez d’abord vos données si besoin. Une sauvegarde sans médias est ensuite conservée jusqu’à 30 jours."
+        }
     }
 }

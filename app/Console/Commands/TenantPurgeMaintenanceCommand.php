@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\TenantPurge\ExecuteDueExpiredTrialPurgesAction;
 use App\Actions\TenantPurge\PruneExpiredTenantPurgeBackupsAction;
+use App\Actions\TenantPurge\ScheduleExpiredTrialPurgesAction;
 use App\Actions\TenantPurge\SendTenantPurgeRemindersAction;
 use Illuminate\Console\Command;
 
@@ -11,17 +13,34 @@ class TenantPurgeMaintenanceCommand extends Command
     protected $signature = 'winprox:tenant-purge-maintenance
                             {--dry-run : Alleen backup-prune tellen, niets wissen}';
 
-    protected $description = 'Stuur T−2 purge-reminders en ruim verlopen tenant-purge backups op';
+    protected $description = 'Plan expired-trial purges, stuur reminders, voer due auto-purges uit, ruim backups op';
 
     public function handle(
+        ScheduleExpiredTrialPurgesAction $scheduleExpired,
         SendTenantPurgeRemindersAction $reminders,
+        ExecuteDueExpiredTrialPurgesAction $executeExpired,
         PruneExpiredTenantPurgeBackupsAction $pruneBackups,
     ): int {
+        $scheduleStats = $scheduleExpired->handle();
+        $this->info(sprintf(
+            'Expired-trial schedule: scanned=%d scheduled=%d',
+            $scheduleStats['scanned'],
+            $scheduleStats['scheduled'],
+        ));
+
         $reminderStats = $reminders->handle();
         $this->info(sprintf(
             'Reminders: scanned=%d sent=%d',
             $reminderStats['scanned'],
             $reminderStats['sent'],
+        ));
+
+        $executeStats = $executeExpired->handle();
+        $this->info(sprintf(
+            'Expired-trial execute: scanned=%d executed=%d failed=%d',
+            $executeStats['scanned'],
+            $executeStats['executed'],
+            $executeStats['failed'],
         ));
 
         $pruneStats = $pruneBackups->handle(dryRun: (bool) $this->option('dry-run'));

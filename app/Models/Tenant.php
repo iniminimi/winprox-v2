@@ -123,6 +123,26 @@ class Tenant extends Model
         return \App\Enums\TenantPurgeTrack::Paid;
     }
 
+    /**
+     * Proef verlopen, nooit een plan geactiveerd → kandidaat voor auto-purge.
+     */
+    public function isExpiredTrialWithoutSubscription(): bool
+    {
+        if ($this->isLegacyWithoutBillingTracking()) {
+            return false;
+        }
+
+        if ($this->billing_plan !== null) {
+            return false;
+        }
+
+        if ($this->isPaidSubscriptionActive() || $this->isInPaidSubscriptionGrace()) {
+            return false;
+        }
+
+        return $this->trial_ends_at !== null && $this->trial_ends_at->isPast();
+    }
+
     public function isPaidSubscriptionActive(): bool
     {
         return $this->billing_plan !== null

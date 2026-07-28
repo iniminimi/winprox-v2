@@ -61,30 +61,30 @@
         },
         "time": {
             "name": "WinProx Time",
-            "price": "€149 \/ month",
-            "scale": "Up to 10 units\/locations\/documents\/photos for your organisation.",
-            "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV\/Excel import.",
+            "price": "€149 / month",
+            "scale": "Up to 10 units/locations/documents/photos for your organisation.",
+            "users": "Includes 1 administrator and 1 staff member. Unlimited workers via CSV/Excel import.",
             "description": "Unlimited QR issues and tasks within your locations and units.",
             "features": [
-                "Time module: clock in\/out, breaks, shifts and QR Clock Points.",
+                "Time module: clock in/out, breaks, shifts and QR Clock Points.",
                 "No API access."
             ]
         },
         "facility": {
             "name": "WinProx Facility",
-            "price": "€399 \/ month",
-            "scale": "Up to 100 units\/locations\/documents\/photos for your organisation.",
-            "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV\/Excel import.",
-            "description": "Full facility workflows at larger scale. WinProx Time included. CSV\/Excel bulk import for units and workers.",
+            "price": "€399 / month",
+            "scale": "Up to 100 units/locations/documents/photos for your organisation.",
+            "users": "Includes 1 administrator and up to 4 staff members. Unlimited workers via CSV/Excel import.",
+            "description": "Full facility workflows at larger scale. WinProx Time included. CSV/Excel bulk import for units and workers.",
             "features": [
                 "Unlimited QR issues and tasks within your locations and units.",
                 "IoT Connect: sensor alarms → issues (gateway ingest).",
-                "No full REST API \/ webhooks."
+                "No full REST API / webhooks."
             ]
         },
         "corporate": {
             "name": "WinProx Corporate",
-            "price": "€999 \/ month",
+            "price": "€999 / month",
             "scale": "Unlimited data.",
             "description": "For large portfolios and integrations.",
             "features": [
@@ -108,8 +108,8 @@
         "plan_invalid": "This plan is not available.",
         "admin_only": "Only an administrator can choose a subscription.",
         "activation_disabled": "Self-activation is disabled. Contact WinProx.",
-        "csv_workers_not_allowed": "CSV\/Excel worker import is not available on your plan.",
-        "csv_units_not_allowed": "CSV\/Excel unit import requires WinProx Facility or Corporate."
+        "csv_workers_not_allowed": "CSV/Excel worker import is not available on your plan.",
+        "csv_units_not_allowed": "CSV/Excel unit import requires WinProx Facility or Corporate."
     },
     "status_module_iot": "IoT Connect is active on your account.",
     "purge": {
@@ -139,7 +139,7 @@
         "confirm_execute": "Permanently delete all data? This cannot be undone.",
         "confirm_execute_superuser": "Delete tenant now? A snapshot without media will be saved first.",
         "banner": ":days days left until data deletion (scheduled :date).",
-        "banner_link": "View \/ cancel",
+        "banner_link": "View / cancel",
         "errors": {
             "admin_only": "Only an administrator can do this.",
             "export_required": "Confirm that you have seen the export option.",
@@ -157,6 +157,9 @@
             "cooldown_active": "Cool-down active until :date.",
             "generic": "Deletion failed.",
             "too_many_password_attempts": "Too many incorrect password attempts. You have been logged out. Sign in again to continue."
-        }
+        },
+        "status_scheduled_expired_trial": "Without a subscription, organisation data will be automatically deleted on :date (:timezone).",
+        "expired_trial_subscribe_hint": "Activate a subscription to stop this, or export your data first via Settings.",
+        "banner_expired_trial": ":days days left until automatic data deletion (scheduled :date). Subscribe to keep your data."
     }
 }

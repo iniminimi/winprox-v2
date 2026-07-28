@@ -548,6 +548,14 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 4. Alleen **superuser** voert uit ná gepland tijdstip → snapshot → delete → resultaatmail.
 5. Snapshot retentie **30 dagen** (`winprox:tenant-purge-maintenance`).
 
+**Verlopen proef zonder abonnement** (`expired_trial` track, automatisch):
+1. Na trial-einde: login blijft mogelijk **alleen** voor billing/abonnement (`EnsureTenantHasAppAccess`).
+2. **T+7**: waarschuwingsmail naar **alle** admins (locale per admin) + plan auto-purge op **T+14**.
+3. **T−2** (T+12): reminder-mail; CTA abonneren + exportvermelding.
+4. **T+14**: scheduler voert purge uit via dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete).
+5. Abonnementsactivatie annuleert openstaande `expired_trial`-aanvragen.
+6. Self-service purge mag naast dit spoor bestaan (één open aanvraag tegelijk).
+
 Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 
 ### 7.5 NIET overnemen

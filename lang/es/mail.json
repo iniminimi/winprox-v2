@@ -1,14 +1,14 @@
 {
     "outbound": {
-        "greeting_name": "Estimado\/a :name,"
+        "greeting_name": "Estimado/a :name,"
     },
     "welcome": {
-        "subject": "Bienvenido\/a a :tenant - Establezca su contraseña",
-        "html_title": "Bienvenido\/a a WinProx",
-        "heading": "¡Bienvenido\/a a WinProx!",
+        "subject": "Bienvenido/a a :tenant - Establezca su contraseña",
+        "html_title": "Bienvenido/a a WinProx",
+        "heading": "¡Bienvenido/a a WinProx!",
         "greeting": "¡Hola!",
         "greeting_name": "¡Hola :name!",
-        "intro": "Ha sido invitado\/a a unirse a :tenant en WinProx.",
+        "intro": "Ha sido invitado/a a unirse a :tenant en WinProx.",
         "account_details": "Datos de su cuenta:\n- Correo: :email\n- Rol: :role",
         "admin_contact": "Contacte con :name (:email) si tiene alguna pregunta.",
         "reset_hint": "Establezca su contraseña en :minutes minutos usando el botón de abajo.",
@@ -24,7 +24,7 @@
         "html_intro": "Si ya no desea recibir correos electrónicos, puede",
         "text_intro": "Si ya no desea recibir correos electrónicos, puede darse de baja aquí:",
         "link_label": "darse de baja aquí",
-        "settings_hint_html": "También puede gestionar las preferencias de correo en su <a href=\":url\" style=\"color:#059669;font-weight:600;\">Configuración<\/a>.",
+        "settings_hint_html": "También puede gestionar las preferencias de correo en su <a href=\":url\" style=\"color:#059669;font-weight:600;\">Configuración</a>.",
         "settings_hint_text": "También puede gestionar las preferencias de correo en Configuración: :url"
     },
     "new_tenant": {
@@ -38,7 +38,7 @@
         "greeting": "Hola,",
         "greeting_name": "Hola :name,",
         "intro": "Se ha enviado un nuevo informe a través del portal QR de :tenant.",
-        "field_location": "Ubicación \/ unidad",
+        "field_location": "Ubicación / unidad",
         "field_reporter": "Informado por",
         "field_description": "Descripción",
         "open_issue": "Ver informe",
@@ -51,12 +51,12 @@
         "body_1": "Met WinProx digitaliseren we dit proces via slimme QR-technologie. De essentie is eenvoudig: burgers en medewerkers scannen een object, melden direct een defect (inclusief foto's) en de onderhoudsploeg kan meteen aan de slag. Zonder dat daar een app-installatie voor nodig is.",
         "body_2": "In de bijgevoegde brief vindt u meer informatie over hoe wij gemeentebesturen helpen om onderhoudstaken sneller en foutloos af te handelen.",
         "body_3": "Graag kom ik dit in een korte demo van 15 minuten toelichten.",
-        "body_4_html": "<a href=\":url\" style=\"color:#059669;font-weight:600;\">Klik hier<\/a> om alvast enkele video's te bekijken.",
+        "body_4_html": "<a href=\":url\" style=\"color:#059669;font-weight:600;\">Klik hier</a> om alvast enkele video's te bekijken.",
         "body_4_text": "Klik hier om alvast enkele video's te bekijken: :url",
         "closing": "Met vriendelijke groet,",
         "signer_name": "Dominique Schaepdrijver",
-        "signer_title": "Oprichter \/ Architect WinProx",
-        "phone": "0494\/840854",
+        "signer_title": "Oprichter / Architect WinProx",
+        "phone": "0494/840854",
         "footer": "WinProx — slim facility management"
     },
     "reservation_confirm": {
@@ -135,6 +135,20 @@
             }
         },
         "link_fallback": "Si el botón no funciona, copie este enlace:",
-        "open_subscription": "Abrir suscripción"
+        "open_subscription": "Abrir suscripción",
+        "expired_trial_warning": {
+            "subject": "WinProx: la cuenta :tenant se eliminará — suscríbete o exporta",
+            "body": "El periodo de prueba de :tenant ha terminado. Sin suscripción, todos los datos de la organización se eliminarán automáticamente el :date (:timezone). Esto incluye usuarios, incidencias, tareas, fotos y documentos.",
+            "export": "Exporta primero tus datos en WinProx (Suscripción / Ajustes → Privacidad y exportación) si quieres una copia.",
+            "cta": "Elegir suscripción",
+            "cancel": "Activar una suscripción detiene la eliminación automática. También puedes cancelar la programación en Suscripción.",
+            "footer": "Tras la eliminación, se conserva una copia técnica sin medios durante máx. :days días."
+        },
+        "expired_trial_reminder": {
+            "subject": "WinProx: recordatorio — los datos de :tenant se eliminarán pronto",
+            "body": "Recordatorio: sin suscripción, los datos de :tenant se eliminarán automáticamente el :date (:timezone).",
+            "cancel": "¿Quieres detenerlo? Activa una suscripción o cancela en Suscripción:",
+            "footer": "Exporta primero tus datos si hace falta. Después se conserva una copia sin medios máx. 30 días."
+        }
     }
 }

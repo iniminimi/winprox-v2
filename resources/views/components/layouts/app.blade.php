@@ -191,10 +191,15 @@
                     @can('cancelTenantPurge', $purgeBannerTenant)
                         <a href="{{ route('subscription.index') }}" class="btn btn--ghost btn--sm">{{ __('subscription.purge.banner_link') }}</a>
                     @endcan
-                    <span>{{ __('subscription.purge.banner', [
-                        'days' => $purgeBannerRequest->daysUntilPurge() ?? 0,
-                        'date' => $purgeBannerRequest->scheduled_purge_at->timezone(config('app.timezone'))->format('d/m/Y H:i'),
-                    ]) }}</span>
+                    <span>{{ __(
+                        $purgeBannerRequest->track === \App\Enums\TenantPurgeTrack::ExpiredTrial
+                            ? 'subscription.purge.banner_expired_trial'
+                            : 'subscription.purge.banner',
+                        [
+                            'days' => $purgeBannerRequest->daysUntilPurge() ?? 0,
+                            'date' => $purgeBannerRequest->scheduled_purge_at->timezone(config('app.timezone'))->format('d/m/Y H:i'),
+                        ]
+                    ) }}</span>
                 </div>
             @endif
 
