@@ -8,6 +8,7 @@ use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -77,6 +78,7 @@ it('toont ongekeurde meldingen in een apart blok bovenaan de lijst', function ()
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     Issue::factory()->create([

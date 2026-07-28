@@ -10,11 +10,10 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Support\Tenancy;
-use Illuminate\Auth\Notifications\ResetPassword as ResetPasswordNotification;
+use App\Mail\WelcomeAccountMail;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
@@ -46,7 +45,7 @@ function tenantWithAdmin(): array
 // --- Collega-gebruikers (admin) -------------------------------------------
 
 it('laat een admin een collega-gebruiker aanmaken met set-wachtwoord-mail', function () {
-    Notification::fake();
+    Mail::fake();
     [$tenant, $admin] = tenantWithAdmin();
 
     Livewire::actingAs($admin)
@@ -69,11 +68,11 @@ it('laat een admin een collega-gebruiker aanmaken met set-wachtwoord-mail', func
         ->and($user->locale)->toBe('nl')
         ->and($user->is_active)->toBeTrue();
 
-    Notification::assertSentTo($user, ResetPasswordNotification::class);
+    Mail::assertSent(WelcomeAccountMail::class, fn (WelcomeAccountMail $mail): bool => $mail->hasTo('collega@acme.test'));
 });
 
 it('stuurt geen accountmail wanneer de checkbox uit staat', function () {
-    Notification::fake();
+    Mail::fake();
     [, $admin] = tenantWithAdmin();
 
     Livewire::actingAs($admin)
@@ -93,7 +92,7 @@ it('stuurt geen accountmail wanneer de checkbox uit staat', function () {
     expect($user)->not->toBeNull()
         ->and($user->locale)->toBe('en');
 
-    Notification::assertNothingSent();
+    Mail::assertNothingSent();
 });
 
 it('laat een admin een collega bewerken en deactiveren', function () {
@@ -137,7 +136,7 @@ it('weigert dat een medewerker collega-gebruikers beheert', function () {
     Livewire::actingAs($employee)
         ->test(Team::class)
         ->call('openCreateColleague')
-        ->assertForbidden();
+        ->assertHasErrors(['colleagueCreate']);
 });
 
 it('toont gelokaliseerde bestandskiezer op instellingen', function () {

@@ -15,7 +15,14 @@ beforeEach(function () {
     Tenancy::forget();
 });
 
+afterEach(function () {
+    Carbon::setTestNow();
+});
+
 it('shows recurring tasks in calendar view', function () {
+    // Vastzetten midden in de maand zodat due+7 binnen de maandgrid blijft.
+    Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
+
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
 

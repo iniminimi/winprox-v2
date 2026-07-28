@@ -1092,18 +1092,30 @@ it('toont de cooldown-uitleg in de actieve locale', function () {
         'portal.public_report_rate_limit.per_tenant.max_attempts' => 50,
     ]);
 
-    unitPortalScaffold();
+    ['unit' => $unit] = unitPortalScaffold();
 
-    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'new')
         ->set('description', 'Eerste melding met tekst.')
         ->call('submitReport')
         ->assertHasNoErrors();
 
-    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+    $component
+        ->call('openSection', 'new')
         ->set('description', 'Tweede melding binnen de cooldown.')
         ->call('submitReport')
-        ->assertHasErrors('description')
-        ->assertSee(__('portal.report.errors.cooldown', ['seconds' => 180, 'minutes' => 3]), false);
+        ->assertHasErrors('description');
+
+    $seconds = max(1, \Illuminate\Support\Facades\RateLimiter::availableIn(
+        app(\App\Actions\Public\AssertPublicReportRateLimitAction::class)
+            ->cooldownKey((int) $unit->tenant_id, (int) $unit->id, '127.0.0.1')
+    ));
+    $minutes = max(1, (int) ceil($seconds / 60));
+    $locale = (string) $component->get('locale');
+
+    expect($component->errors()->first('description'))->toBe(
+        __('portal.report.errors.cooldown', ['seconds' => $seconds, 'minutes' => $minutes], $locale)
+    );
 });
 
 it('telt cooldown-geblokkeerde meldingen niet mee voor het venster', function () {

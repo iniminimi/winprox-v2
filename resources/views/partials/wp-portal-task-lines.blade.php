@@ -2,7 +2,7 @@
 @props(['task', 'issue'])
 
 @php
-    $taskDescription = trim($task->displayDescription());
+    $taskDescription = trim($task->localizedDescription());
 @endphp
 
 <p class="wp-text-body">{{ __('portal.worker.task_heading', ['nr' => $task->id]) }}</p>

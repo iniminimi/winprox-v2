@@ -5,6 +5,7 @@ use App\Livewire\Locations\Show as LocationShow;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\QrCode;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
@@ -41,6 +42,7 @@ it('dashboard KPI links return 200', function () {
 it('finds locations by house number in search', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Location::factory()->create([
         'tenant_id' => $tenant->id,
         'name' => 'Magazijn Zuid',
@@ -370,7 +372,7 @@ it('qr-pack download returns docx when GD available', function () {
     @unlink($tmp);
 
     expect($documentXml)->toBeString()
-        ->and($documentXml)->toContain('Machine 12')
+        ->and($documentXml)->toContain(QrCode::where('tenant_id', $tenant->id)->firstOrFail()->display_sticker_number)
         ->and($documentXml)->toContain('<w:gridCol w:w="3118"/>')
         ->and($documentXml)->toContain('<w:gridCol w:w="283"/>')
         ->and($documentXml)->toContain('<w:tblLayout w:type="fixed"/>')
@@ -411,7 +413,7 @@ it('qr-pack download returns herma docx layout when GD available', function () {
     @unlink($tmp);
 
     expect($documentXml)->toBeString()
-        ->and($documentXml)->toContain('Deur 3')
+        ->and($documentXml)->toContain(QrCode::where('tenant_id', $tenant->id)->firstOrFail()->display_sticker_number)
         ->and($documentXml)->toContain('<w:gridCol w:w="3968"/>')
         ->and($documentXml)->toContain('w:top="1219"')
         ->and($documentXml)->toContain('w:left="0"');

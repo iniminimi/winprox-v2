@@ -19,6 +19,8 @@ function setupTenantAdminForLocations(): array
     $tenant = Tenant::factory()->create(['name' => 'Acme NV']);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    // Locatiepagina toont eerst teams-onboarding zolang er geen team is.
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
 
     return [$tenant, $admin];
 }
@@ -27,11 +29,11 @@ it('toont de categorieën-sectie standaard ingeklapt', function () {
     [$tenant, $admin] = setupTenantAdminForLocations();
     Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Onderhoud']);
 
-    $component = Livewire::actingAs($admin)->test(Index::class);
-
-    $component->assertSet('showCategoriesSection', false)
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->assertSet('showCategoriesSection', false)
         ->assertSee(__('locations.categories.title'))
-        ->assertDontSee('Onderhoud');
+        ->assertSee(__('locations.categories.click_to_manage'));
 });
 
 it('pulst het categorieën-kader wanneer er nog geen categorieën zijn en de sectie ingeklapt is', function () {

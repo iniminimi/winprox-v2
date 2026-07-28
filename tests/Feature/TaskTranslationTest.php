@@ -9,6 +9,7 @@ use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Enums\TaskTranslationStatus;
 use App\Livewire\Tasks\Index;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -172,6 +173,7 @@ it('toont vertaalde taakomschrijving in takenlijst volgens gebruikerstaal', func
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     $issue = Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,

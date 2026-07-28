@@ -177,7 +177,7 @@ it('shows damaged QR code page', function () {
     $response = $this->get("/q/{$qrCode->token}");
 
     $response->assertStatus(403)
-        ->assertSee('QR-code beschadigd');
+        ->assertSee(__('qr.damaged.title'));
 });
 
 it('shows inactive QR code page', function () {
@@ -188,7 +188,7 @@ it('shows inactive QR code page', function () {
     $response = $this->get("/q/{$qrCode->token}");
 
     $response->assertStatus(403)
-        ->assertSee('QR-code gedeactiveerd');
+        ->assertSee(__('qr.inactive.title'));
 });
 
 it('returns 404 for non-existent QR token', function () {

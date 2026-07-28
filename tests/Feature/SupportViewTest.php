@@ -25,6 +25,7 @@ it('beperkt superuser in support view tot de gekozen tenant', function () {
     $super = User::factory()->superuser()->create();
     $tenantA = Tenant::factory()->create(['name' => 'Org A']);
     $tenantB = Tenant::factory()->create(['name' => 'Org B']);
+    seedTenantPastOnboarding($tenantA);
 
     Issue::factory()->create(['tenant_id' => $tenantA->id, 'description' => 'Melding tenant A']);
     $issueB = Issue::factory()->create(['tenant_id' => $tenantB->id, 'description' => 'Melding tenant B']);

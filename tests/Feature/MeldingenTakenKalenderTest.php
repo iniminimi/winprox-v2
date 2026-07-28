@@ -8,6 +8,7 @@ use App\Livewire\Pages\Calendar;
 use App\Livewire\Tasks\Index as TaskIndex;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -165,6 +166,7 @@ it('filtert terugkerende meldingen op de index', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -268,6 +270,7 @@ it('toont een geplande taak op de kalender op de juiste dag', function () {
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Category::factory()->create(['tenant_id' => $tenant->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -399,6 +402,7 @@ it('beperkt meldingen per statusgroep met teller shown/total', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
 
     Issue::factory()->count(15)->create([
@@ -440,6 +444,7 @@ it('beperkt taken per statusgroep met teller shown/total', function () {
     Category::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     $issue = Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,

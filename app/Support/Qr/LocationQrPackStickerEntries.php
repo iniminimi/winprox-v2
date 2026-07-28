@@ -35,10 +35,10 @@ final class LocationQrPackStickerEntries
 
             if ($ensureStickerQr !== null) {
                 $qrCode = $ensureStickerQr->handle($unit, (int) $location->tenant_id, $actorUserId);
-                $stickerNumber = trim($qrCode->display_sticker_number);
+                $stickerNumber = trim((string) $qrCode->display_sticker_number);
                 $reportUrl = route('qr.scan', ['token' => $qrCode->token]);
             } else {
-                $stickerNumber = self::stickerNumberForUnit($unit);
+                $stickerNumber = self::stickerNumberForUnit($unit) ?? '';
                 $reportUrl = UnitPortalUrl::forUnit($unit);
             }
 
@@ -89,7 +89,7 @@ final class LocationQrPackStickerEntries
             return null;
         }
 
-        $number = trim($qrCode->display_sticker_number);
+        $number = trim((string) $qrCode->display_sticker_number);
 
         return $number !== '' ? $number : null;
     }

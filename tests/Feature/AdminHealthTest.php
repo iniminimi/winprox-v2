@@ -7,6 +7,7 @@ use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Pages\Health;
 use App\Livewire\Pages\Settings;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -48,7 +49,9 @@ function seedHealthyTenant(Tenant $tenant): array
         'is_active' => true,
     ]);
 
-    return compact('team', 'category', 'location', 'unit');
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    return compact('team', 'category', 'location', 'unit', 'clockPoint');
 }
 
 it('rapporteert gezonde tenant wanneer actieve records compleet zijn', function () {
@@ -129,6 +132,7 @@ it('toont de gezondheidswidget op het dashboard bij onvolledigheid', function ()
         'background_photo_path' => null,
         'is_active' => true,
     ]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)

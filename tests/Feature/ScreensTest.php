@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Issues\Index;
 use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
@@ -52,6 +53,7 @@ it('toont beheerschermen NOOIT geblurd, ook niet voor een niet-goedgekeurde meld
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
@@ -104,6 +106,7 @@ it('toont geen blur voor een goedgekeurde melding', function () {
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
