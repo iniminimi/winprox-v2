@@ -42,6 +42,26 @@ final class PruneExpiredTenantPurgeBackupsAction
                 $stats['deleted']++;
             });
 
+        $cutoff = $now->copy()->subDays((int) config('tenant_purge.backup_retention_days', 30))->getTimestamp();
+        $directory = trim((string) config('tenant_purge.backup_directory', 'tenant-purge-backups'), '/');
+
+        foreach ($disk->allFiles($directory) as $path) {
+            if (! str_ends_with($path, '.sql.gz')) {
+                continue;
+            }
+
+            $stats['scanned']++;
+            if ($disk->lastModified($path) > $cutoff) {
+                continue;
+            }
+
+            if (! $dryRun) {
+                $disk->delete($path);
+            }
+
+            $stats['deleted']++;
+        }
+
         return $stats;
     }
 }

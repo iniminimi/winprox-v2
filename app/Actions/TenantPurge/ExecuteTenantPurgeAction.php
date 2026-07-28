@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Maakt SQL-snapshot, wist mediabestanden, verwijdert de tenant (cascade).
+ * Maakt SQL-snapshot, wist media + tenant-rijen en verwijdert de tenant volledig.
  */
 final class ExecuteTenantPurgeAction
 {
@@ -80,6 +80,7 @@ final class ExecuteTenantPurgeAction
         $backupExpiresAt = now()->addDays($retentionDays);
 
         $this->deleteMediaFiles($tenant);
+        $this->deleteSetNullTenantRows((int) $tenant->id);
 
         $tenantName = $tenant->name;
 
@@ -97,8 +98,6 @@ final class ExecuteTenantPurgeAction
             $tenant->delete();
         });
 
-        $request->refresh();
-
         foreach ($adminEmails as $admin) {
             Mail::to($admin->email)->send(new TenantPurgeCompletedMail(
                 tenantName: $tenantName,
@@ -112,6 +111,12 @@ final class ExecuteTenantPurgeAction
                 adminLocale: $admin->locale ?: 'nl',
             ));
         }
+
+        // Strict purge: keep no tenant-specific purge history in DB.
+        TenantPurgeRequest::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $tenant->id)
+            ->delete();
 
         return $request;
     }
@@ -211,5 +216,12 @@ final class ExecuteTenantPurgeAction
                     }
                 });
         }
+    }
+
+    private function deleteSetNullTenantRows(int $tenantId): void
+    {
+        // These tables use tenant_id -> nullOnDelete; strict purge requires hard delete.
+        DB::table('audit_logs')->where('tenant_id', $tenantId)->delete();
+        DB::table('contact_messages')->where('tenant_id', $tenantId)->delete();
     }
 }

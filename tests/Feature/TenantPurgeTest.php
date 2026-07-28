@@ -3,6 +3,7 @@
 use App\Actions\TenantPurge\ConfirmTenantPurgeEmailAction;
 use App\Actions\TenantPurge\CreateTenantPurgeBackupAction;
 use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
+use App\Actions\TenantPurge\PruneExpiredTenantPurgeBackupsAction;
 use App\Actions\TenantPurge\SendTenantPurgeRemindersAction;
 use App\Actions\TenantPurge\StartTenantPurgeRequestAction;
 use App\Enums\TenantPurgeStatus;
@@ -303,4 +304,20 @@ it('tenant purge backup bevat tenant en tenant-scoped data-rows', function () {
         ->and($sql)->toContain('INSERT INTO `tenants`')
         ->and($sql)->toMatch('/INSERT INTO `(?:main\\.)?issues`/')
         ->and($sql)->toMatch('/INSERT INTO `(?:main\\.)?locations`/');
+});
+
+it('prune verwijdert verlopen backupbestanden zonder DB-row', function () {
+    Storage::fake('local');
+    config(['tenant_purge.backup_directory' => 'tenant-purge-backups', 'tenant_purge.backup_retention_days' => 30]);
+
+    $path = 'tenant-purge-backups/tenant-99-purge-1-20250701000000.sql.gz';
+    Storage::disk('local')->put($path, gzencode('-- test backup', 9));
+
+    $stats = app(PruneExpiredTenantPurgeBackupsAction::class)->handle(
+        dryRun: false,
+        now: now()->addDays(40),
+    );
+
+    expect($stats['deleted'])->toBeGreaterThan(0);
+    Storage::disk('local')->assertMissing($path);
 });
