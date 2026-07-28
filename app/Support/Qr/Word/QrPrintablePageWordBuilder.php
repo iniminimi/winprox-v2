@@ -52,6 +52,9 @@ final class QrPrintablePageWordBuilder
 
     private const HEADLINE_FONT_MM = 5.2;
 
+    /** Nudge the centred QR block upward on A6/A5/A4 (room for bottom branding). */
+    private const CONTENT_NUDGE_UP_MM = 10.0;
+
     /** A6 printable content short side (105 − 2×5 mm margins). */
     private const BASE_CONTENT_SHORT_SIDE_MM = 95.0;
 
@@ -558,7 +561,9 @@ final class QrPrintablePageWordBuilder
         }
 
         $blockHeight = $aboveBlock + $qrPx + $belowBlock;
-        $blockTop = (int) round(($heightPx - $blockHeight) / 2);
+        $blockTop = (int) round(($heightPx - $blockHeight) / 2)
+            - self::mmToPixelAtDpi(self::CONTENT_NUDGE_UP_MM);
+        $blockTop = max(0, $blockTop);
 
         $cursorY = $blockTop;
         $headlineY = 0;
