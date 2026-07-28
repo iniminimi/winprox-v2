@@ -3,8 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
+use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
+use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingEsgIndicatorTranslationsAction;
+use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
@@ -19,6 +23,8 @@ class TranslationExportCommand extends Command
     protected $description = 'Export pending translations to storage/app/exports/translations.json';
 
     public function handle(
+        BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingLocationTranslationsAction $exportLocations,
@@ -26,7 +32,12 @@ class TranslationExportCommand extends Command
         ExportPendingEsgIndicatorTranslationsAction $exportEsgIndicators,
         ExportPendingTaskTranslationsAction $exportTasks,
         ExportPendingDocumentTranslationsAction $exportDocuments,
+        ExportPendingCategoryTranslationsAction $exportCategories,
+        ExportPendingInternalTeamTranslationsAction $exportTeams,
     ): int {
+        $backfillCategories->handle();
+        $backfillTeams->handle();
+
         $items = array_merge(
             $exportIssues->handle()['items'],
             $exportAnnouncements->handle(),
@@ -35,6 +46,8 @@ class TranslationExportCommand extends Command
             $exportEsgIndicators->handle(),
             $exportTasks->handle(),
             $exportDocuments->handle(),
+            $exportCategories->handle(),
+            $exportTeams->handle(),
         );
 
         $payload = [

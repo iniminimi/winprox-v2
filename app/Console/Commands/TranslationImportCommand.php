@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
+use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Communication\ImportDocumentTranslationsAction;
 use App\Actions\Communication\ImportEsgIndicatorTranslationsAction;
+use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
@@ -27,6 +29,8 @@ class TranslationImportCommand extends Command
         ImportEsgIndicatorTranslationsAction $importEsgIndicators,
         ImportTaskTranslationsAction $importTasks,
         ImportDocumentTranslationsAction $importDocuments,
+        ImportCategoryTranslationsAction $importCategories,
+        ImportInternalTeamTranslationsAction $importTeams,
     ): int {
         $path = storage_path('app/imports/translated.json');
 
@@ -61,6 +65,8 @@ class TranslationImportCommand extends Command
         $esgIndicatorItems = [];
         $taskItems = [];
         $documentItems = [];
+        $categoryItems = [];
+        $teamItems = [];
 
         foreach ($items as $item) {
             if (! is_array($item)) {
@@ -73,6 +79,10 @@ class TranslationImportCommand extends Command
                 $taskItems[] = $item;
             } elseif (isset($item['location_id'])) {
                 $locationItems[] = $item;
+            } elseif (isset($item['category_id'])) {
+                $categoryItems[] = $item;
+            } elseif (isset($item['internal_team_id'])) {
+                $teamItems[] = $item;
             } elseif (isset($item['esg_indicator_id'])) {
                 $esgIndicatorItems[] = $item;
             } elseif (isset($item['unit_id'])) {
@@ -91,7 +101,9 @@ class TranslationImportCommand extends Command
                 + $importUnits->handle($unitItems)
                 + $importEsgIndicators->handle($esgIndicatorItems)
                 + $importTasks->handle($taskItems)
-                + $importDocuments->handle($documentItems);
+                + $importDocuments->handle($documentItems)
+                + $importCategories->handle($categoryItems)
+                + $importTeams->handle($teamItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 
