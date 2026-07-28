@@ -17,7 +17,8 @@
     @endif
 
     @if ($completingTaskId === $task->id)
-        <form wire:submit="submitCompleteTask"
+        {{-- Geen wire:submit naast Alpine: anders firet Livewire meteen vóór wpAwaitPhotoUploads. --}}
+        <form
               x-data="{
                   isOffline: !navigator.onLine,
                   browserLocalIso() {

@@ -269,6 +269,53 @@ it('lets a verified field worker start and complete a task (issue rolls up to do
         ->and($issue->updates()->where('kind', 'worker_note')->count())->toBe(1);
 });
 
+it('slaagt erin afhandelingsfoto’s via het portaal op te slaan gekoppeld aan de taak', function () {
+    Storage::fake('public');
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'status' => TaskStatus::InProgress,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+        'started_at' => now()->subHour(),
+    ]);
+
+    WorkerVerification::markVerified($team, $worker);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = UploadedFile::fake()->createWithContent('portal-done.jpg', $jpeg, 'image/jpeg');
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('beginCompleteTask', $task->id)
+        ->set('completingPhotos', [$file])
+        ->call('submitCompleteTask')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'task_done');
+
+    $update = $issue->fresh()->updates()->where('kind', 'worker_photos')->first();
+    expect($task->fresh()->status)->toBe(TaskStatus::Done)
+        ->and($update)->not->toBeNull()
+        ->and($update?->task_id)->toBe($task->id)
+        ->and($update?->photos)->toHaveCount(1)
+        ->and($update?->photos->first()?->hasPublicFile())->toBeTrue();
+});
+
 it('shows task nr and issue line on the worker portal and hides photos missing on disk', function () {
     Storage::fake('public');
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
