@@ -206,7 +206,8 @@
             "Alarmregeln → Meldung → Aufgabe für das richtige Team",
             "Optionale ESG-Messungen über Sensoren (Corporate)"
         ],
-        "cta": "IoT Connect ansehen"
+        "cta": "IoT Connect ansehen",
+        "visual_alt": "Illustration: IoT-Sensoren und Gateways verbunden mit WinProx"
     },
     "qr": {
         "eyebrow": "QR-Portale",

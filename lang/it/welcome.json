@@ -208,7 +208,8 @@
             "Regole di allarme → segnalazione → attività per il team giusto",
             "Misurazioni ESG opzionali via sensori (Corporate)"
         ],
-        "cta": "Vedi IoT Connect"
+        "cta": "Vedi IoT Connect",
+        "visual_alt": "Illustrazione: sensori e gateway IoT collegati a WinProx"
     },
     "qr": {
         "eyebrow": "Portali QR",

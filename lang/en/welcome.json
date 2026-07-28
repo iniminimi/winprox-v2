@@ -208,7 +208,8 @@
             "Alarm rules → issue → task for the right team",
             "Optional ESG measurements via sensors (Corporate)"
         ],
-        "cta": "View IoT Connect"
+        "cta": "View IoT Connect",
+        "visual_alt": "Illustration: IoT sensors and gateways connected to WinProx"
     },
     "qr": {
         "eyebrow": "QR portals",

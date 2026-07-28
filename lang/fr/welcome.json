@@ -209,7 +209,8 @@
             "Règles d’alarme → signalement → tâche pour la bonne équipe",
             "Mesures ESG optionnelles via capteurs (Corporate)"
         ],
-        "cta": "Voir IoT Connect"
+        "cta": "Voir IoT Connect",
+        "visual_alt": "Illustration : capteurs et passerelles IoT reliés à WinProx"
     },
     "qr": {
         "eyebrow": "Portails QR",

@@ -208,7 +208,8 @@
             "Reglas de alarma → incidencia → tarea para el equipo correcto",
             "Mediciones ESG opcionales vía sensores (Corporate)"
         ],
-        "cta": "Ver IoT Connect"
+        "cta": "Ver IoT Connect",
+        "visual_alt": "Ilustración: sensores y gateways IoT conectados a WinProx"
     },
     "qr": {
         "eyebrow": "Portales QR",

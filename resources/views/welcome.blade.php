@@ -8,6 +8,8 @@
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
     $welcomeEsgImageRel = 'images/welcome/ESG.jpg';
     $welcomeEsgImageAvailable = is_file(public_path($welcomeEsgImageRel));
+    $welcomeIotImageRel = 'images/welcome/IoT.jpg';
+    $welcomeIotImageAvailable = is_file(public_path($welcomeIotImageRel));
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
@@ -278,24 +280,45 @@
             </div>
         </section>
 
-        <section id="iot" class="wp-welcome-section wp-welcome-section--center wp-welcome-iot" aria-labelledby="welcome-iot-title">
-            <div class="wp-welcome-main wp-welcome-section-inner">
-                <span class="wp-welcome-eyebrow">{{ __('welcome.iot.eyebrow') }}</span>
-                <x-wp-text-reveal
-                    as="h2"
-                    id="welcome-iot-title"
-                    class="wp-welcome-h2"
-                    :text="__('welcome.iot.title')"
-                />
-                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.iot.body') }}</p>
-                <ul class="wp-welcome-checklist wp-welcome-iot__points">
-                    @foreach (__('welcome.iot.items') as $item)
-                        <li>{{ $item }}</li>
-                    @endforeach
-                </ul>
-                <p class="wp-welcome-product-card__more">
-                    <a href="{{ route('features.iot') }}" class="btn btn--ghost btn--sm">{{ __('welcome.iot.cta') }}</a>
-                </p>
+        <section id="iot" class="wp-welcome-section wp-welcome-iot" aria-labelledby="welcome-iot-title">
+            <div class="wp-welcome-main wp-welcome-section-inner--wide">
+                <div class="wp-welcome-split wp-welcome-split--iot">
+                    <div class="wp-welcome-iot-visual">
+                        @if ($welcomeIotImageAvailable)
+                            <figure class="wp-welcome-iot-figure">
+                                <img
+                                    src="{{ asset($welcomeIotImageRel) }}"
+                                    alt="{{ __('welcome.iot.visual_alt') }}"
+                                    class="wp-welcome-iot-figure__img"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </figure>
+                        @else
+                            <div class="wp-welcome-media-placeholder" role="img" aria-label="{{ __('welcome.iot.visual_alt') }}">
+                                <p>{{ __('welcome.iot.visual_alt') }}</p>
+                            </div>
+                        @endif
+                    </div>
+                    <div>
+                        <span class="wp-welcome-eyebrow">{{ __('welcome.iot.eyebrow') }}</span>
+                        <x-wp-text-reveal
+                            as="h2"
+                            id="welcome-iot-title"
+                            class="wp-welcome-h2"
+                            :text="__('welcome.iot.title')"
+                        />
+                        <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.iot.body') }}</p>
+                        <ul class="wp-welcome-checklist wp-welcome-iot__points">
+                            @foreach (__('welcome.iot.items') as $item)
+                                <li>{{ $item }}</li>
+                            @endforeach
+                        </ul>
+                        <p class="wp-welcome-product-card__more">
+                            <a href="{{ route('features.iot') }}" class="btn btn--ghost btn--sm">{{ __('welcome.iot.cta') }}</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -206,7 +206,8 @@
             "Alarmregels → melding → taak voor het juiste team",
             "Optioneel ESG-metingen via sensoren (Corporate)"
         ],
-        "cta": "IoT Connect bekijken"
+        "cta": "IoT Connect bekijken",
+        "visual_alt": "Illustratie: IoT-sensoren en gateways gekoppeld aan WinProx"
     },
     "qr": {
         "eyebrow": "QR-portalen",

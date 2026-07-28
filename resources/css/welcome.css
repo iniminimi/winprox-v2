@@ -637,6 +637,10 @@
     [data-theme='standard'] .wp-welcome-split--qr {
         grid-template-columns: 7fr 5fr;
     }
+
+    [data-theme='standard'] .wp-welcome-split--iot {
+        grid-template-columns: 5fr 7fr;
+    }
 }
 
 [data-theme='standard'] .wp-welcome-pain-list {
@@ -1511,14 +1515,38 @@
 }
 
 [data-theme='standard'] .wp-welcome-iot .wp-welcome-iot__points {
-    display: inline-block;
+    margin: 1.25rem 0 0;
     text-align: left;
-    margin: 1.25rem auto 0;
-    max-width: 28rem;
 }
 
 [data-theme='standard'] .wp-welcome-iot .wp-welcome-product-card__more {
     margin-top: 1.25rem;
+}
+
+[data-theme='standard'] .wp-welcome-iot .wp-welcome-split > div:last-child {
+    text-align: left;
+}
+
+[data-theme='standard'] .wp-welcome-iot-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+[data-theme='standard'] .wp-welcome-iot-figure {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0;
+}
+
+[data-theme='standard'] .wp-welcome-iot-figure__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--wp-radius-lg);
+    border: 1px solid var(--wp-border);
+    box-shadow: var(--wp-shadow-lg);
+    background: var(--wp-surface);
 }
 
 /* Flow timeline */
