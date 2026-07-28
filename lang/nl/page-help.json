@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Vertaling omschrijving",
-                    "text": "Heeft de taak een eigen omschrijving (niet alleen die van de melding), dan wordt die automatisch vertaald via Platform → Vertalingen. In het portaal en in overzichten ziet de bezoeker de vertaling zodra die klaar is; anders de brontekst. Zonder eigen omschrijving volgt de taak de vertaling van de gekoppelde melding."
+                    "text": "Heeft de taak een eigen omschrijving (niet alleen die van de melding), dan wordt die automatisch vertaald via Platform → Vertalingen. In het taak-bewerkformulier kun je die omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal. Zonder eigen omschrijving volgt de taak de vertaling van de gekoppelde melding."
                 },
                 {
                     "label": "Melding openen",
@@ -171,8 +171,16 @@
                     "text": "Toon gedeactiveerde locaties om ze opnieuw te activeren of te raadplegen."
                 },
                 {
+                    "label": "Locatievertalingen",
+                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                },
+                {
                     "label": "Categorieën",
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
+                },
+                {
+                    "label": "Categorievertalingen",
+                    "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Reserveerbaar",
@@ -186,6 +194,10 @@
                 {
                     "label": "Unit toevoegen",
                     "text": "Voeg een voorwerp\/machine\/asset\/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
+                },
+                {
+                    "label": "Locatievertalingen",
+                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Unitvertalingen",
@@ -325,6 +337,10 @@
                 {
                     "label": "Operationele teams",
                     "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
+                },
+                {
+                    "label": "Teamvertalingen",
+                    "text": "In het team-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Clock Point QR-code",

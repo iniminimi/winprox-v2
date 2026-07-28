@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Traducción de la descripción",
-                    "text": "Si la tarea tiene su propia descripción (no solo el texto de la incidencia), se traduce automáticamente vía Plataforma → Traducciones. En el portal y las listas, los visitantes ven la traducción una vez lista; de lo contrario el texto de origen. Sin descripción propia, la tarea sigue la traducción de la incidencia vinculada."
+                    "text": "Si la tarea tiene su propia descripción (no solo el texto de la incidencia), se traduce automáticamente vía Plataforma → Traducciones. En el formulario de edición de la tarea puede actualizar manualmente esa descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma. Sin descripción propia, la tarea sigue la traducción de la incidencia vinculada."
                 },
                 {
                     "label": "Abrir incidencia",
@@ -171,8 +171,16 @@
                     "text": "Muestre ubicaciones desactivadas para reactivarlas o revisarlas."
                 },
                 {
+                    "label": "Traducciones de ubicación",
+                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                },
+                {
                     "label": "Categorías",
                     "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
+                },
+                {
+                    "label": "Traducciones de categoría",
+                    "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Reservable",
@@ -186,6 +194,10 @@
                 {
                     "label": "Añadir unidad",
                     "text": "Añada un objeto\/máquina\/activo\/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
+                },
+                {
+                    "label": "Traducciones de ubicación",
+                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Traducciones de unidad",
@@ -325,6 +337,10 @@
                 {
                     "label": "Equipos operativos",
                     "text": "Cree equipos y trabajadores, asigne jefes de equipo. Una unidad debe tener un equipo vinculado para que un trabajador pueda gestionar las tareas de esa unidad. Mientras no haya trabajadores en el equipo, aún puede eliminar el equipo."
+                },
+                {
+                    "label": "Traducciones de equipo",
+                    "text": "En el formulario de edición de equipo puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "QR Clock Point",

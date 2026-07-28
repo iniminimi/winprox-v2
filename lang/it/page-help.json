@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Traduzione descrizione",
-                    "text": "Se l'attività ha una descrizione propria (non solo il testo della segnalazione), viene tradotta automaticamente tramite Piattaforma → Traduzioni. Nel portale e negli elenchi, i visitatori vedono la traduzione una volta pronta; altrimenti il testo di origine. Senza descrizione propria, l'attività segue la traduzione della segnalazione collegata."
+                    "text": "Se l'attività ha una descrizione propria (non solo il testo della segnalazione), viene tradotta automaticamente tramite Piattaforma → Traduzioni. Nel modulo di modifica attività può aggiornare manualmente quella descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua. Senza descrizione propria, l'attività segue la traduzione della segnalazione collegata."
                 },
                 {
                     "label": "Apri segnalazione",
@@ -171,8 +171,16 @@
                     "text": "Mostri le sedi disattivate per riattivarle o revisionarle."
                 },
                 {
+                    "label": "Traduzioni sede",
+                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                },
+                {
                     "label": "Categorie",
                     "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
+                },
+                {
+                    "label": "Traduzioni categoria",
+                    "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Prenotabile",
@@ -186,6 +194,10 @@
                 {
                     "label": "Aggiungi unità",
                     "text": "Aggiunga un oggetto\/macchina\/asset\/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
+                },
+                {
+                    "label": "Traduzioni sede",
+                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Traduzioni unità",
@@ -325,6 +337,10 @@
                 {
                     "label": "Team operativi",
                     "text": "Crei team e lavoratori, assegni capisquadra. Un'unità deve avere un team collegato affinché un lavoratore possa gestire attività per quell'unità. Finché non ci sono lavoratori nel team, può ancora eliminare il team."
+                },
+                {
+                    "label": "Traduzioni team",
+                    "text": "Nel modulo di modifica team può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "QR Clock Point",

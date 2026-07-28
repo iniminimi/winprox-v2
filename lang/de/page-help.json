@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Übersetzung Beschreibung",
-                    "text": "Hat die Aufgabe eine eigene Beschreibung (nicht nur die der Meldung), wird sie automatisch über Plattform → Übersetzungen übersetzt. Im Portal und in Übersichten sieht der Besucher die Übersetzung, sobald sie fertig ist; sonst den Ausgangstext. Ohne eigene Beschreibung folgt die Aufgabe der Übersetzung der verknüpften Meldung."
+                    "text": "Hat die Aufgabe eine eigene Beschreibung (nicht nur die der Meldung), wird sie automatisch über Plattform → Übersetzungen übersetzt. Im Aufgaben-Bearbeitungsformular können Sie diese Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig. Ohne eigene Beschreibung folgt die Aufgabe der Übersetzung der verknüpften Meldung."
                 },
                 {
                     "label": "Meldung öffnen",
@@ -171,8 +171,16 @@
                     "text": "Zeigen Sie deaktivierte Standorte, um sie erneut zu aktivieren oder einzusehen."
                 },
                 {
+                    "label": "Standort-Übersetzungen",
+                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                },
+                {
                     "label": "Kategorien",
                     "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."
+                },
+                {
+                    "label": "Kategorie-Übersetzungen",
+                    "text": "Im Kategorie-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Reservierbar",
@@ -186,6 +194,10 @@
                 {
                     "label": "Unit hinzufügen",
                     "text": "Fügen Sie ein Objekt\/Maschine\/Asset\/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
+                },
+                {
+                    "label": "Standort-Übersetzungen",
+                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Unit-Übersetzungen",
@@ -325,6 +337,10 @@
                 {
                     "label": "Operative Teams",
                     "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleiter zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
+                },
+                {
+                    "label": "Team-Übersetzungen",
+                    "text": "Im Team-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Clock Point QR-code",

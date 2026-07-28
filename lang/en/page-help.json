@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Description translation",
-                    "text": "If the task has its own description (not only the issue text), it is translated automatically via Platform → Translations. In the portal and lists, visitors see the translation once ready; otherwise the source text. Without its own description, the task follows the linked issue translation."
+                    "text": "If the task has its own description (not only the issue text), it is translated automatically via Platform → Translations. In the task edit form you can manually update that description per language (NL, EN, FR, DE). Useful when the automatic translation is wrong or still missing. Saving finalises the translation for that language. Without its own description, the task follows the linked issue translation."
                 },
                 {
                     "label": "Open issue",
@@ -171,8 +171,16 @@
                     "text": "Show deactivated locations to reactivate or review them."
                 },
                 {
+                    "label": "Location translations",
+                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Saving finalises the translation for that language."
+                },
+                {
                     "label": "Categories",
                     "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."
+                },
+                {
+                    "label": "Category translations",
+                    "text": "In the category edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Reservable",
@@ -186,6 +194,10 @@
                 {
                     "label": "Add unit",
                     "text": "Add an object\/machine\/asset\/space with QR token and default team. A unit can be very diverse: a hotel room, a drill machine, an aerial work platform, a fitness device, etc. It depends on which sector the company operates in. Set per unit whether visitors may submit reports."
+                },
+                {
+                    "label": "Location translations",
+                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Unit translations",
@@ -325,6 +337,10 @@
                 {
                     "label": "Operational teams",
                     "text": "Create teams and workers, assign team leaders. A unit must have a team linked so that a worker can handle tasks for this unit. As long as there are no workers in the team, you can still delete the team."
+                },
+                {
+                    "label": "Team translations",
+                    "text": "In the team edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Clock Point QR code",

@@ -136,7 +136,7 @@
                 },
                 {
                     "label": "Traduction de la description",
-                    "text": "Si la tâche a une description propre (pas seulement celle du signalement), elle est traduite automatiquement via Plateforme → Traductions. Dans le portail et les listes, le visiteur voit la traduction dès qu'elle est prête ; sinon le texte source. Sans description propre, la tâche suit la traduction du signalement lié."
+                    "text": "Si la tâche a une description propre (pas seulement celle du signalement), elle est traduite automatiquement via Plateforme → Traductions. Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement cette description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue. Sans description propre, la tâche suit la traduction du signalement lié."
                 },
                 {
                     "label": "Ouvrir le signalement",
@@ -171,8 +171,16 @@
                     "text": "Affichez les sites désactivés pour les réactiver ou les consulter."
                 },
                 {
+                    "label": "Traductions de lieu",
+                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                },
+                {
                     "label": "Catégories",
                     "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."
+                },
+                {
+                    "label": "Traductions de catégorie",
+                    "text": "Dans le formulaire d’édition de catégorie, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Réservable",
@@ -186,6 +194,10 @@
                 {
                     "label": "Ajouter une unité",
                     "text": "Ajoutez un objet\/machine\/actif\/espace avec jeton QR et équipe par défaut. Une unité peut être très diversifiée : une chambre d'hôtel, une perceuse, une nacelle élévatrice, un appareil de fitness, etc. Cela dépend du secteur dans lequel l'entreprise évolue. Autorisez ou non les signalements par unité."
+                },
+                {
+                    "label": "Traductions de lieu",
+                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Traductions d'unité",
@@ -325,6 +337,10 @@
                 {
                     "label": "Équipes opérationnelles",
                     "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
+                },
+                {
+                    "label": "Traductions d’équipe",
+                    "text": "Dans le formulaire d’édition d’équipe, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "QR Clock Point",
