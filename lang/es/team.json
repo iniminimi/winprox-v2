@@ -48,6 +48,15 @@
         "deactivate": "Desactivar",
         "activate": "Activar",
         "confirm_delete": "¿Eliminar este equipo?",
+        "translation_edit": {
+            "label": "Traducción",
+            "open": "Haga clic aquí para editar",
+            "name": "Nombre del equipo traducido",
+            "save": "Guardar traducción"
+        },
+        "flash": {
+            "translation_saved": "Traducción del equipo guardada."
+        },
         "modal": {
             "create_title": "Añadir equipo",
             "edit_title": "Editar equipo",

@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\TenantPurge\ConfirmTenantPurgeEmailAction;
+use App\Actions\TenantPurge\CreateTenantPurgeBackupAction;
 use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
 use App\Actions\TenantPurge\SendTenantPurgeRemindersAction;
 use App\Actions\TenantPurge\StartTenantPurgeRequestAction;
@@ -17,7 +18,9 @@ use App\Models\TenantPurgeRequest;
 use App\Models\User;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
@@ -215,4 +218,89 @@ it('purge start: logt uit na drie foute wachtwoordpogingen', function () {
 
     expect(auth()->check())->toBeFalse()
         ->and(session('error'))->toBe(__('subscription.purge.errors.too_many_password_attempts'));
+});
+
+it('trial purge laat geen tenant_id referenties achter in tenant-scoped tabellen', function () {
+    Storage::fake('local');
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['name' => 'Cleanup Co', 'trial_ends_at' => now()->addDays(5)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
+    Issue::factory()->create(['tenant_id' => $tenant->id]);
+
+    DB::table('audit_logs')->insert([
+        'tenant_id' => $tenant->id,
+        'user_id' => $admin->id,
+        'action' => 'tenant_purge.test',
+        'model_type' => Tenant::class,
+        'model_id' => $tenant->id,
+        'payload' => json_encode(['check' => true], JSON_THROW_ON_ERROR),
+        'created_at' => now(),
+    ]);
+
+    DB::table('contact_messages')->insert([
+        'message_id' => 'purge-test-'.$tenant->id,
+        'name' => 'Tenant Admin',
+        'email' => 'admin@example.com',
+        'subject' => 'Purge test',
+        'message' => 'Check tenant cleanup.',
+        'direction' => 'inbound',
+        'tenant_id' => $tenant->id,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $purge = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::Trial,
+        'status' => TenantPurgeStatus::Ready,
+        'initiated_by_user_id' => $admin->id,
+        'export_acknowledged_at' => now(),
+        'password_verified_at' => now(),
+        'email_confirmed_at' => now(),
+        'email_confirmed_by_user_id' => $admin->id,
+    ]);
+
+    app(ExecuteTenantPurgeAction::class)->handle($purge, $admin, 'password');
+
+    $tables = collect(Schema::getTableListing())
+        ->filter(fn (string $table): bool => Schema::hasColumn($table, 'tenant_id'))
+        ->values();
+
+    foreach ($tables as $table) {
+        $count = (int) DB::table($table)->where('tenant_id', $tenant->id)->count();
+        expect($count)->toBe(0, 'Tenant reference remained in '.$table);
+    }
+});
+
+it('tenant purge backup bevat tenant en tenant-scoped data-rows', function () {
+    Storage::fake('local');
+
+    $tenant = Tenant::factory()->create(['name' => 'Backup Co', 'trial_ends_at' => now()->addDays(7)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Issue::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+
+    $purge = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::Trial,
+        'status' => TenantPurgeStatus::Ready,
+        'initiated_by_user_id' => $admin->id,
+        'export_acknowledged_at' => now(),
+        'password_verified_at' => now(),
+        'email_confirmed_at' => now(),
+        'email_confirmed_by_user_id' => $admin->id,
+    ]);
+
+    $backupPath = app(CreateTenantPurgeBackupAction::class)->handle($tenant, $purge);
+    $raw = Storage::disk('local')->get($backupPath);
+    $sql = gzdecode($raw);
+
+    expect($sql)->not->toBeFalse()
+        ->and($sql)->toContain('INSERT INTO `tenants`')
+        ->and($sql)->toMatch('/INSERT INTO `(?:main\\.)?issues`/')
+        ->and($sql)->toMatch('/INSERT INTO `(?:main\\.)?locations`/');
 });

@@ -218,6 +218,12 @@
         "allow_gps_location_hint": "Consenta l'invio della posizione GPS delle unità in questa categoria tramite il portale.",
         "teams_subtitle": "Selezioni i team responsabili per questa categoria.",
         "teams_empty": "Nessun team disponibile.",
+        "translation_edit": {
+            "label": "Traduzione",
+            "open": "Clicchi qui per modificare",
+            "name": "Nome categoria tradotto",
+            "save": "Salva traduzione"
+        },
         "errors": {
             "name_required": "Inserisca un nome categoria.",
             "duplicate_name": "Questo nome categoria esiste già.",
@@ -226,7 +232,8 @@
         "flash": {
             "created": "Categoria creata.",
             "updated": "Categoria aggiornata.",
-            "deleted": "Categoria eliminata."
+            "deleted": "Categoria eliminata.",
+            "translation_saved": "Traduzione categoria salvata."
         },
         "is_reservable_hint": "Abilita le prenotazioni per tutte le unità di questa categoria (sala, veicolo, …)."
     },
