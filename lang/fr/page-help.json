@@ -80,6 +80,10 @@
                 {
                     "label": "Traduction de la description",
                     "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces et documents actifs suivent le même principe sur la page du site. Les tâches avec une description propre affichent le texte traduit dans les listes et le portail dès qu'il est prêt."
+                },
+                {
+                    "label": "Traductions de tâche",
+                    "text": "Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement la description de la tâche par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Disponible uniquement lorsque la tâche a une description propre. Enregistrer finalise la traduction pour cette langue."
                 }
             ],
             "status_note": "Modifiez le statut du signalement en mettant à jour les tâches.",

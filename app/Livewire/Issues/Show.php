@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Issues;
 
+use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Issues\ApproveIssueAction;
 use App\Actions\Issues\CloseIssueAction;
 use App\Actions\Issues\CreateIssueUpdateAction;
@@ -18,6 +19,7 @@ use App\Models\Issue;
 use App\Support\EntityDetailNavigation;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -61,6 +63,10 @@ class Show extends Component
     public array $updatePhotos = [];
 
     public string $descriptionLocale = '';
+
+    public string $taskPreviewLocale = '';
+
+    public string $taskTranslationDescription = '';
 
     public function mount(Issue $issue): void
     {
@@ -192,6 +198,9 @@ class Show extends Component
         $this->taskNote = trim((string) ($task->description ?: $this->issue->description));
         $this->taskPriority = $task->priority->value;
         $this->taskScheduledFor = $task->scheduled_for?->format('Y-m-d');
+        $task->loadMissing('translations');
+        $this->taskPreviewLocale = $this->defaultTranslationLocaleForTask($task);
+        $this->hydrateTaskTranslationInput($task);
 
         $this->resetValidation();
         $this->showEditTaskModal = true;
@@ -201,6 +210,82 @@ class Show extends Component
     {
         $this->showEditTaskModal = false;
         $this->editTaskId = null;
+        $this->taskPreviewLocale = '';
+        $this->taskTranslationDescription = '';
+    }
+
+    public function updatedTaskPreviewLocale(): void
+    {
+        $task = $this->editingTask();
+        if (! $task) {
+            return;
+        }
+
+        $task->loadMissing('translations');
+        $this->hydrateTaskTranslationInput($task);
+    }
+
+    public function saveTaskTranslationOverride(ImportTaskTranslationsAction $importTaskTranslations): void
+    {
+        $this->authorize('update', $this->issue);
+
+        $task = $this->editingTask();
+        if (! $task) {
+            return;
+        }
+
+        if (! filled(trim((string) ($task->description ?? '')))) {
+            $this->addError('taskTranslationDescription', __('tasks.errors.translation_requires_description'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'taskTranslationDescription' => ['required', 'string', 'max:'.TextDescriptionLimits::TRANSLATION_MAX],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->taskPreviewLocale);
+        if ($locale === $task->normalizedOriginalLanguage()) {
+            $this->addError('taskTranslationDescription', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $description = trim((string) $validated['taskTranslationDescription']);
+        if ($description === '') {
+            $this->addError('taskTranslationDescription', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importTaskTranslations->handle([
+                [
+                    'task_id' => $task->id,
+                    'locale' => $locale,
+                    'description' => $description,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (! is_array($messages)) {
+                    continue;
+                }
+
+                foreach ($messages as $message) {
+                    $this->addError('taskTranslationDescription', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->refreshIssue();
+        $fresh = $this->editingTask();
+        if ($fresh) {
+            $this->hydrateTaskTranslationInput($fresh);
+        }
+        session()->flash('success', __('tasks.flash.translation_saved'));
     }
 
     public function editTask(
@@ -255,7 +340,7 @@ class Show extends Component
         );
 
         $this->closeEditTaskModal();
-        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority']);
+        $this->reset(['newTeamId', 'taskNote', 'taskScheduledFor', 'taskPriority', 'taskPreviewLocale', 'taskTranslationDescription']);
 
         $this->refreshIssue();
     }
@@ -376,6 +461,43 @@ class Show extends Component
         ]);
     }
 
+    private function editingTask(): ?Task
+    {
+        if ($this->editTaskId === null) {
+            return null;
+        }
+
+        $task = $this->issue->tasks->find($this->editTaskId);
+
+        return $task instanceof Task ? $task : null;
+    }
+
+    private function hydrateTaskTranslationInput(Task $task): void
+    {
+        $locale = LocaleSupport::normalize($this->taskPreviewLocale);
+        if ($locale === $task->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForTask($task);
+            $this->taskPreviewLocale = $locale;
+        }
+
+        $translation = $task->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->taskTranslationDescription = (string) ($translation?->description ?? '');
+    }
+
+    private function defaultTranslationLocaleForTask(Task $task): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($task->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
+    }
+
     public function render()
     {
         $issue = $this->issue->load([
@@ -402,6 +524,17 @@ class Show extends Component
         $descriptionMissing = $issue->isApproved()
             && $issue->descriptionMissingForDisplayLocale($displayLocale);
 
+        $editTask = $this->editingTask();
+        $taskTranslationLocales = config('locales.labels', []);
+        if ($this->showEditTaskModal && $editTask) {
+            $sourceLocale = $editTask->normalizedOriginalLanguage();
+            $taskTranslationLocales = array_filter(
+                $taskTranslationLocales,
+                fn (string $label, string $code): bool => $code !== $sourceLocale,
+                ARRAY_FILTER_USE_BOTH,
+            );
+        }
+
         return view('livewire.issues.show', [
             'issue' => $issue,
             'teams' => InternalTeam::query()->with('translations')->orderBy('name')->get(),
@@ -412,6 +545,8 @@ class Show extends Component
             'descriptionText' => $descriptionText,
             'descriptionMissing' => $descriptionMissing,
             'descriptionLocales' => config('locales.labels', []),
+            'editTask' => $editTask,
+            'taskTranslationLocales' => $taskTranslationLocales,
         ]);
     }
 }

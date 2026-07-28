@@ -80,6 +80,10 @@
                 {
                     "label": "Description translation",
                     "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval via Platform → Translations. If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Active announcements and documents follow the same pattern on the location page. Tasks with their own description show the translated text in lists and the portal once ready."
+                },
+                {
+                    "label": "Task translations",
+                    "text": "In the task edit form you can manually update the task description per language (NL, EN, FR, DE). Useful when the automatic translation via Platform → Translations is wrong or still missing. Only available when the task has its own description. Saving finalises the translation for that language."
                 }
             ],
             "status_note": "Change issue status by updating the tasks.",

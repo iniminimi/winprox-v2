@@ -80,6 +80,10 @@
                 {
                     "label": "Übersetzung der Beschreibung",
                     "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Aktive Mitteilungen und Dokumente funktionieren gleich auf der Standortseite. Aufgaben mit eigener Beschreibung zeigen den übersetzten Text in Listen und im Portal, sobald er fertig ist."
+                },
+                {
+                    "label": "Aufgaben-Übersetzungen",
+                    "text": "Im Aufgaben-Bearbeitungsformular können Sie die Aufgabenbeschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Nur verfügbar, wenn die Aufgabe eine eigene Beschreibung hat. Speichern macht die Übersetzung für diese Sprache endgültig."
                 }
             ],
             "status_note": "Ändern Sie den Meldungsstatus, indem Sie die Aufgaben aktualisieren.",

@@ -80,6 +80,10 @@
                 {
                     "label": "Vertaling omschrijving",
                     "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald via Platform → Vertalingen. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen en actieve documenten volgen hetzelfde principe op de locatiepagina. Taken met een eigen omschrijving tonen de vertaalde tekst in lijsten en portaal zodra die klaar is."
+                },
+                {
+                    "label": "Taakvertalingen",
+                    "text": "In het taak-bewerkformulier kun je de taakomschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Alleen beschikbaar wanneer de taak een eigen omschrijving heeft. Opslaan maakt de vertaling definitief voor die taal."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",

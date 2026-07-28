@@ -7,6 +7,7 @@ use App\Actions\Communication\TranslateTaskAction;
 use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Enums\TaskTranslationStatus;
+use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Tasks\Index;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Models\Category;
@@ -228,5 +229,44 @@ it('laat een admin een taakvertaling opslaan vanuit de bewerk-popup', function (
 
     expect($translation)->not->toBeNull()
         ->and($translation?->description)->toBe('Replace gasket manually')
+        ->and($translation?->status)->toBe(TaskTranslationStatus::Completed);
+});
+
+it('laat een admin een taakvertaling opslaan vanuit de melding-bewerk-popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'original_language' => 'en',
+        'description' => "Elevator doesn't seem to work. Please fix it.",
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    $task = app(CreateTaskAction::class)->handle(
+        $issue,
+        $team->id,
+        description: "Elevator doesn't seem to work. Please fix it.",
+    );
+
+    Livewire::actingAs($user)
+        ->test(IssueShow::class, ['issue' => $issue])
+        ->call('openEditTaskModal', $task->id)
+        ->assertSee(__('tasks.translation_edit.label'))
+        ->set('taskPreviewLocale', 'nl')
+        ->set('taskTranslationDescription', 'Lift lijkt niet te werken. Gelieve te herstellen.')
+        ->call('saveTaskTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = TaskTranslation::query()
+        ->where('task_id', $task->id)
+        ->where('locale', 'nl')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->description)->toBe('Lift lijkt niet te werken. Gelieve te herstellen.')
         ->and($translation?->status)->toBe(TaskTranslationStatus::Completed);
 });

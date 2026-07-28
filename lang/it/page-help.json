@@ -80,6 +80,10 @@
                 {
                     "label": "Traduzione descrizione",
                     "text": "Su segnalazioni approvate, scelga una lingua (NL, EN, FR, DE) accanto alla descrizione. Il testo viene tradotto automaticamente dopo l'approvazione tramite Piattaforma → Traduzioni. Se una traduzione non è ancora pronta, vedrà «Non ancora tradotta». Elenchi e ricerca mostrano il testo di origine fino ad allora. Annunci e documenti attivi seguono lo stesso schema nella pagina sede. Le attività con descrizione propria mostrano il testo tradotto negli elenchi e nel portale una volta pronto."
+                },
+                {
+                    "label": "Traduzioni attività",
+                    "text": "Nel modulo di modifica attività può aggiornare manualmente la descrizione dell'attività per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Disponibile solo quando l'attività ha una descrizione propria. Salvare finalizza la traduzione per quella lingua."
                 }
             ],
             "status_note": "Cambi lo stato segnalazione aggiornando le attività.",

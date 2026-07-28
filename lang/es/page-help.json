@@ -80,6 +80,10 @@
                 {
                     "label": "Traducción de la descripción",
                     "text": "En incidencias aprobadas, elija un idioma (NL, EN, FR, DE) junto a la descripción. El texto se traduce automáticamente tras la aprobación vía Plataforma → Traducciones. Si una traducción aún no está lista, verá «Aún no traducida». Las listas y la búsqueda muestran el texto de origen hasta entonces. Los anuncios y documentos activos siguen el mismo patrón en la página de ubicación. Las tareas con su propia descripción muestran el texto traducido en listas y portal una vez lista."
+                },
+                {
+                    "label": "Traducciones de tarea",
+                    "text": "En el formulario de edición de la tarea puede actualizar manualmente la descripción de la tarea por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Solo disponible cuando la tarea tiene su propia descripción. Guardar finaliza la traducción para ese idioma."
                 }
             ],
             "status_note": "Cambie el estado de la incidencia actualizando las tareas.",
