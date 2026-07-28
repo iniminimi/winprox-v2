@@ -13,6 +13,7 @@
         "how": "Funzionamento",
         "platform": "Piattaforma",
         "esg": "ESG",
+        "iot": "IoT Connect",
         "qr": "Portali QR",
         "sectors": "Settori",
         "video": "Video",
@@ -22,7 +23,7 @@
         "pricing": "Prezzi"
     },
     "hero": {
-        "badge": "Facility · Time · ESG",
+        "badge": "Facility · Time · ESG · IoT",
         "title": "Ogni sede fisica ottiene il proprio portale QR digitale.",
         "title_lines": [
             ["Ogni", "sede", "fisica", "ottiene", "il", "proprio", "portale", "QR", "digitale."]
@@ -48,6 +49,8 @@
         "eyebrow": "Prodotti",
         "title": "Una piattaforma, due prodotti chiave.",
         "lead": "WinProx Facility per segnalazioni e attività. WinProx Time per presenze e turni. Lo stesso QR Clock Point, modulare ed espandibile.",
+        "iot_note": "IoT Connect è opzionale: i sensori inviano allarmi direttamente a segnalazioni e attività.",
+        "iot_cta": "Vedi IoT Connect",
         "learn_more": "Scopri di più",
         "facility": {
             "name": "WinProx Facility",

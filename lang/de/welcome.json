@@ -13,6 +13,7 @@
         "how": "Ablauf",
         "platform": "Plattform",
         "esg": "ESG",
+        "iot": "IoT Connect",
         "qr": "QR-Portale",
         "sectors": "Branchen",
         "video": "Video",
@@ -22,7 +23,7 @@
         "pricing": "Preise"
     },
     "hero": {
-        "badge": "Facility · Time · ESG",
+        "badge": "Facility · Time · ESG · IoT",
         "title": "Jeder physische Standort erhält ein eigenes digitales QR-Portal.",
         "title_lines": [
             ["Jeder", "physische", "Standort", "erhält", "ein", "eigenes", "digitales", "QR-Portal."]
@@ -48,6 +49,8 @@
         "eyebrow": "Produkte",
         "title": "Eine Plattform, zwei Kernprodukte.",
         "lead": "WinProx Facility für Meldungen und Aufgaben. WinProx Time für Anwesenheit und Schichten. Derselbe Clock-Point-QR, modular erweiterbar.",
+        "iot_note": "IoT Connect ist optional: Sensoren senden Alarme direkt in Meldungen und Aufgaben.",
+        "iot_cta": "IoT Connect ansehen",
         "learn_more": "Mehr erfahren",
         "facility": {
             "name": "WinProx Facility",

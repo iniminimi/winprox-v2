@@ -191,6 +191,10 @@
                         </article>
                     @endforeach
                 </div>
+                <p class="wp-welcome-product-card__more">
+                    {{ __('welcome.products.iot_note') }}
+                    <a href="{{ route('features.iot') }}" class="btn btn--ghost btn--sm">{{ __('welcome.products.iot_cta') }}</a>
+                </p>
             </div>
         </section>
 
