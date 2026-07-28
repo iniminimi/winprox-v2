@@ -97,7 +97,12 @@
     color: var(--wp-text-body);
 }
 
-[data-theme='standard'] .wp-welcome-nav-links a {
+[data-theme='standard'] .wp-welcome-nav-links--desktop {
+    display: none;
+}
+
+[data-theme='standard'] .wp-welcome-nav-links a,
+[data-theme='standard'] .wp-welcome-nav-direct {
     display: block;
     padding: 0.625rem 0.5rem;
     border-radius: var(--wp-radius-md);
@@ -106,14 +111,57 @@
 }
 
 [data-theme='standard'] .wp-welcome-nav-links a:hover,
-[data-theme='standard'] .wp-welcome-nav-links a:focus-visible {
+[data-theme='standard'] .wp-welcome-nav-links a:focus-visible,
+[data-theme='standard'] .wp-welcome-nav-direct:hover,
+[data-theme='standard'] .wp-welcome-nav-direct:focus-visible {
     color: var(--wp-accent-text);
     background: color-mix(in srgb, var(--wp-accent-soft) 55%, transparent);
 }
 
-[data-theme='standard'] .wp-welcome-nav-links a[aria-current='page'] {
+[data-theme='standard'] .wp-welcome-nav-links a[aria-current='page'],
+[data-theme='standard'] .wp-welcome-nav-direct[aria-current='page'] {
     color: var(--wp-accent-text);
     font-weight: 600;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group {
+    position: relative;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group__toggle {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: inherit;
+    font: inherit;
+    font-weight: 500;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group__toggle::-webkit-details-marker {
+    display: none;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group__toggle::after {
+    content: '';
+    width: 0.35rem;
+    height: 0.35rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    opacity: 0.65;
+    margin-top: -0.15rem;
+    transition: transform 0.15s ease;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group[open] > .wp-welcome-nav-group__toggle::after {
+    transform: rotate(225deg);
+    margin-top: 0.15rem;
+}
+
+[data-theme='standard'] .wp-welcome-nav-group__panel {
+    display: none;
 }
 
 @media (min-width: 48rem) {
@@ -154,24 +202,69 @@
         width: 100%;
     }
 
-    [data-theme='standard'] .wp-welcome-nav-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
+    [data-theme='standard'] .wp-welcome-nav-links--mobile {
+        display: none;
     }
 
-    [data-theme='standard'] .wp-welcome-nav-links a {
+    [data-theme='standard'] .wp-welcome-nav-links--desktop {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-direct {
         display: inline;
         padding: 0;
         border-radius: 0;
         background: transparent;
+        white-space: nowrap;
     }
 
-    [data-theme='standard'] .wp-welcome-nav-links a:hover,
-    [data-theme='standard'] .wp-welcome-nav-links a:focus-visible {
+    [data-theme='standard'] .wp-welcome-nav-direct:hover,
+    [data-theme='standard'] .wp-welcome-nav-direct:focus-visible {
         background: transparent;
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-group__toggle {
+        white-space: nowrap;
+        padding: 0.25rem 0;
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-group__toggle:hover,
+    [data-theme='standard'] .wp-welcome-nav-group__toggle:focus-visible,
+    [data-theme='standard'] .wp-welcome-nav-group[open] > .wp-welcome-nav-group__toggle {
+        color: var(--wp-accent-text);
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-group__panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 12rem;
+        padding: 0.5rem;
+        background: var(--wp-surface);
+        border: 1px solid var(--wp-border);
+        border-radius: var(--wp-radius-md);
+        box-shadow: var(--wp-shadow);
+        z-index: 70;
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-group[open] > .wp-welcome-nav-group__panel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+    }
+
+    [data-theme='standard'] .wp-welcome-nav-group__panel a {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        border-radius: var(--wp-radius-md);
+        white-space: nowrap;
     }
 }
 

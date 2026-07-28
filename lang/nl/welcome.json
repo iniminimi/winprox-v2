@@ -20,15 +20,30 @@
         "faq": "FAQ",
         "about": "Over WinProx",
         "api": "API",
-        "pricing": "Prijzen"
+        "pricing": "Prijzen",
+        "group_products": "Producten",
+        "group_how": "Werking",
+        "group_more": "Meer"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",
         "title": "Iedere fysieke locatie krijgt een eigen digitaal QR-portaal.",
         "title_lines": [
-            ["Iedere", "fysieke", "locatie", "krijgt", "een", "eigen", "digitaal", "QR-portaal."]
+            [
+                "Iedere",
+                "fysieke",
+                "locatie",
+                "krijgt",
+                "een",
+                "eigen",
+                "digitaal",
+                "QR-portaal."
+            ]
         ],
-        "title_accent": ["digitaal", "QR-portaal."],
+        "title_accent": [
+            "digitaal",
+            "QR-portaal."
+        ],
         "subtitle": "Meld defecten, beheer taken, registreer aanwezigheid en volg ESG-acties op — via één QR-code, zonder app.",
         "body": "Medewerkers klokken in via de Clock Point QR; burgers en teams werken verder via de unit-QR op elke locatie.",
         "cta_start": "Gratis proberen",
@@ -57,14 +72,24 @@
             "tagline": "Melding → taak → afhandeling",
             "body": "Volledig facility management met slimme QR-portalen op elke unit. Optioneel de ESG-module en Time-module.",
             "logo_alt": "WinProx Facility",
-            "bullets": ["Meldingen & taken", "Locaties & units", "Optioneel ESG", "Optioneel Time"]
+            "bullets": [
+                "Meldingen & taken",
+                "Locaties & units",
+                "Optioneel ESG",
+                "Optioneel Time"
+            ]
         },
         "time": {
             "name": "WinProx Time",
             "tagline": "Compacte tijdregistratie op locatie",
             "body": "Instappakket voor aanwezigheid, pauzes en shifts via de Clock Point QR — ideaal wanneer urenregistratie centraal staat.",
             "logo_alt": "WinProx Time",
-            "bullets": ["In- en uitklokken", "Pauzes", "Shifts", "Clock Points"]
+            "bullets": [
+                "In- en uitklokken",
+                "Pauzes",
+                "Shifts",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -75,32 +100,62 @@
             {
                 "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Meldingen", "Taken", "Onderhoud", "Locaties & units"]
+                "bullets": [
+                    "Meldingen",
+                    "Taken",
+                    "Onderhoud",
+                    "Locaties & units"
+                ]
             },
             {
                 "title": "WinProx Time",
                 "icon": "clock",
-                "bullets": ["Aanwezigheid", "Pauzes", "Shifts", "Clock Points"]
+                "bullets": [
+                    "Aanwezigheid",
+                    "Pauzes",
+                    "Shifts",
+                    "Clock Points"
+                ]
             },
             {
                 "title": "Slimme QR-portalen",
                 "icon": "document",
-                "bullets": ["Clock Point QR", "Unit-QR", "Geen app nodig", "Locatiegebonden"]
+                "bullets": [
+                    "Clock Point QR",
+                    "Unit-QR",
+                    "Geen app nodig",
+                    "Locatiegebonden"
+                ]
             },
             {
                 "title": "ESG",
                 "icon": "circle",
-                "bullets": ["Environmental", "Social", "Governance", "Metingen & indicatoren"]
+                "bullets": [
+                    "Environmental",
+                    "Social",
+                    "Governance",
+                    "Metingen & indicatoren"
+                ]
             },
             {
                 "title": "Overzicht",
                 "icon": "dashboard",
-                "bullets": ["Dashboard", "Kalender", "Briefing", "Status per team"]
+                "bullets": [
+                    "Dashboard",
+                    "Kalender",
+                    "Briefing",
+                    "Status per team"
+                ]
             },
             {
                 "title": "Compliance",
                 "icon": "legal",
-                "bullets": ["Audit trail", "Documentbeheer", "Juridische documenten", "API & webhooks"]
+                "bullets": [
+                    "Audit trail",
+                    "Documentbeheer",
+                    "Juridische documenten",
+                    "API & webhooks"
+                ]
             }
         ]
     },
@@ -111,15 +166,33 @@
         "pillars": [
             {
                 "title": "Environmental",
-                "items": ["Energie", "Water", "Afval", "CO₂", "Milieu"]
+                "items": [
+                    "Energie",
+                    "Water",
+                    "Afval",
+                    "CO₂",
+                    "Milieu"
+                ]
             },
             {
                 "title": "Social",
-                "items": ["Veiligheid", "Incidenten", "PBM", "Opleidingen", "Welzijn"]
+                "items": [
+                    "Veiligheid",
+                    "Incidenten",
+                    "PBM",
+                    "Opleidingen",
+                    "Welzijn"
+                ]
             },
             {
                 "title": "Governance",
-                "items": ["Audits", "Certificaten", "Compliance", "Procedures", "Audittrail"]
+                "items": [
+                    "Audits",
+                    "Certificaten",
+                    "Compliance",
+                    "Procedures",
+                    "Audittrail"
+                ]
             }
         ],
         "visual_alt": "Illustratie: milieu, sociaal en governance (ESG)"
@@ -174,14 +247,46 @@
         "title": "Voor elke organisatie",
         "lead": "Facility teams, publieke diensten en productieomgevingen.",
         "items": [
-            {"name": "Ziekenhuizen", "body": "Technische meldingen en onderhoud.", "icon": "issues"},
-            {"name": "Gemeenten", "body": "Burgermeldingen opvolgen.", "icon": "locations"},
-            {"name": "Industrie", "body": "Storingen en onderhoud opvolgen.", "icon": "tasks"},
-            {"name": "Kantoren", "body": "Gebouwen en voorzieningen beheren.", "icon": "units"},
-            {"name": "Scholen", "body": "Meldingen en onderhoud coördineren.", "icon": "faq"},
-            {"name": "Hotels", "body": "Problemen sneller oplossen.", "icon": "calendar"},
-            {"name": "Vastgoed", "body": "Installaties en assets beheren.", "icon": "document"},
-            {"name": "Havens", "body": "Terrein en infrastructuur opvolgen.", "icon": "map-pin"}
+            {
+                "name": "Ziekenhuizen",
+                "body": "Technische meldingen en onderhoud.",
+                "icon": "issues"
+            },
+            {
+                "name": "Gemeenten",
+                "body": "Burgermeldingen opvolgen.",
+                "icon": "locations"
+            },
+            {
+                "name": "Industrie",
+                "body": "Storingen en onderhoud opvolgen.",
+                "icon": "tasks"
+            },
+            {
+                "name": "Kantoren",
+                "body": "Gebouwen en voorzieningen beheren.",
+                "icon": "units"
+            },
+            {
+                "name": "Scholen",
+                "body": "Meldingen en onderhoud coördineren.",
+                "icon": "faq"
+            },
+            {
+                "name": "Hotels",
+                "body": "Problemen sneller oplossen.",
+                "icon": "calendar"
+            },
+            {
+                "name": "Vastgoed",
+                "body": "Installaties en assets beheren.",
+                "icon": "document"
+            },
+            {
+                "name": "Havens",
+                "body": "Terrein en infrastructuur opvolgen.",
+                "icon": "map-pin"
+            }
         ]
     },
     "trust": {
@@ -189,7 +294,14 @@
         "title": "Waarom organisaties kiezen voor WinProx",
         "languages_title": "Meertalig vanaf dag één",
         "languages_body": "Meldingen, taken en mededelingen worden automatisch vertaald naar alle ondersteunde talen.",
-        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
+        "locale_chips": [
+            "NL",
+            "EN",
+            "FR",
+            "DE",
+            "ES",
+            "IT"
+        ],
         "items": [
             "Geen app",
             "Cloud",
@@ -207,8 +319,20 @@
     "closing": {
         "title": "Klaar om papier, telefoons en Excel achter je te laten?",
         "title_lines": [
-            ["Klaar", "om", "papier,", "telefoons"],
-            ["en", "Excel", "achter", "je", "te", "laten?"]
+            [
+                "Klaar",
+                "om",
+                "papier,",
+                "telefoons"
+            ],
+            [
+                "en",
+                "Excel",
+                "achter",
+                "je",
+                "te",
+                "laten?"
+            ]
         ],
         "body": "Kies WinProx Facility voor het volledige plaatje, of WinProx Time wanneer tijdregistratie voorop staat.",
         "cta_start": "Gratis proberen",

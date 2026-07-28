@@ -20,15 +20,32 @@
         "faq": "FAQ",
         "about": "Acerca de",
         "api": "API",
-        "pricing": "Precios"
+        "pricing": "Precios",
+        "group_products": "Productos",
+        "group_how": "Funcionamiento",
+        "group_more": "Más"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",
         "title": "Cada ubicación física obtiene su propio portal QR digital.",
         "title_lines": [
-            ["Cada", "ubicación", "física", "obtiene", "su", "propio", "portal", "QR", "digital."]
+            [
+                "Cada",
+                "ubicación",
+                "física",
+                "obtiene",
+                "su",
+                "propio",
+                "portal",
+                "QR",
+                "digital."
+            ]
         ],
-        "title_accent": ["portal", "QR", "digital."],
+        "title_accent": [
+            "portal",
+            "QR",
+            "digital."
+        ],
         "subtitle": "Reporte incidencias, gestione tareas, registre presencia y siga acciones ESG — con un solo código QR, sin aplicación.",
         "body": "El personal ficha con el QR Clock Point; ciudadanos y equipos continúan en sitio con el QR de unidad en cada ubicación.",
         "cta_start": "Probar gratis",
@@ -57,14 +74,24 @@
             "tagline": "Incidencia → tarea → resolución",
             "body": "Gestión facility completa con portales QR inteligentes en cada unidad. Módulos ESG y Time opcionales.",
             "logo_alt": "WinProx Facility",
-            "bullets": ["Incidencias y tareas", "Ubicaciones y unidades", "ESG opcional", "Time opcional"]
+            "bullets": [
+                "Incidencias y tareas",
+                "Ubicaciones y unidades",
+                "ESG opcional",
+                "Time opcional"
+            ]
         },
         "time": {
             "name": "WinProx Time",
             "tagline": "Control horario compacto en sitio",
             "body": "Paquete de entrada para presencia, pausas y turnos vía QR Clock Point — ideal cuando el control horario es prioritario.",
             "logo_alt": "WinProx Time",
-            "bullets": ["Entrada y salida", "Pausas", "Turnos", "Clock Points"]
+            "bullets": [
+                "Entrada y salida",
+                "Pausas",
+                "Turnos",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -75,32 +102,62 @@
             {
                 "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Incidencias", "Tareas", "Mantenimiento", "Ubicaciones y unidades"]
+                "bullets": [
+                    "Incidencias",
+                    "Tareas",
+                    "Mantenimiento",
+                    "Ubicaciones y unidades"
+                ]
             },
             {
                 "title": "WinProx Time",
                 "icon": "clock",
-                "bullets": ["Presencia", "Pausas", "Turnos", "Clock Points"]
+                "bullets": [
+                    "Presencia",
+                    "Pausas",
+                    "Turnos",
+                    "Clock Points"
+                ]
             },
             {
                 "title": "Portales QR inteligentes",
                 "icon": "document",
-                "bullets": ["QR Clock Point", "QR de unidad", "Sin app", "Vinculado al sitio"]
+                "bullets": [
+                    "QR Clock Point",
+                    "QR de unidad",
+                    "Sin app",
+                    "Vinculado al sitio"
+                ]
             },
             {
                 "title": "ESG",
                 "icon": "circle",
-                "bullets": ["Environmental", "Social", "Governance", "Mediciones e indicadores"]
+                "bullets": [
+                    "Environmental",
+                    "Social",
+                    "Governance",
+                    "Mediciones e indicadores"
+                ]
             },
             {
                 "title": "Visión general",
                 "icon": "dashboard",
-                "bullets": ["Panel", "Calendario", "Briefing", "Estado por equipo"]
+                "bullets": [
+                    "Panel",
+                    "Calendario",
+                    "Briefing",
+                    "Estado por equipo"
+                ]
             },
             {
                 "title": "Cumplimiento",
                 "icon": "legal",
-                "bullets": ["Pista de auditoría", "Gestión documental", "Documentos legales", "API y webhooks"]
+                "bullets": [
+                    "Pista de auditoría",
+                    "Gestión documental",
+                    "Documentos legales",
+                    "API y webhooks"
+                ]
             }
         ]
     },
@@ -111,15 +168,33 @@
         "pillars": [
             {
                 "title": "Environmental",
-                "items": ["Energía", "Agua", "Residuos", "CO₂", "Medio ambiente"]
+                "items": [
+                    "Energía",
+                    "Agua",
+                    "Residuos",
+                    "CO₂",
+                    "Medio ambiente"
+                ]
             },
             {
                 "title": "Social",
-                "items": ["Seguridad", "Incidentes", "EPP", "Formación", "Bienestar"]
+                "items": [
+                    "Seguridad",
+                    "Incidentes",
+                    "EPP",
+                    "Formación",
+                    "Bienestar"
+                ]
             },
             {
                 "title": "Governance",
-                "items": ["Auditorías", "Certificados", "Cumplimiento", "Procedimientos", "Pista de auditoría"]
+                "items": [
+                    "Auditorías",
+                    "Certificados",
+                    "Cumplimiento",
+                    "Procedimientos",
+                    "Pista de auditoría"
+                ]
             }
         ],
         "visual_alt": "Ilustración: ambiental, social y gobernanza (ESG)"
@@ -174,14 +249,46 @@
         "title": "Para cada organización",
         "lead": "Equipos facility, servicios públicos y entornos de producción.",
         "items": [
-            {"name": "Hospitales", "body": "Incidencias técnicas y mantenimiento.", "icon": "issues"},
-            {"name": "Municipios", "body": "Seguir incidencias ciudadanas.", "icon": "locations"},
-            {"name": "Industria", "body": "Seguir averías y mantenimiento.", "icon": "tasks"},
-            {"name": "Oficinas", "body": "Gestionar edificios e instalaciones.", "icon": "units"},
-            {"name": "Escuelas", "body": "Coordinar incidencias y mantenimiento.", "icon": "faq"},
-            {"name": "Hoteles", "body": "Resolver problemas más rápido.", "icon": "calendar"},
-            {"name": "Inmobiliaria", "body": "Gestionar instalaciones y activos.", "icon": "document"},
-            {"name": "Puertos", "body": "Seguir terreno e infraestructura.", "icon": "map-pin"}
+            {
+                "name": "Hospitales",
+                "body": "Incidencias técnicas y mantenimiento.",
+                "icon": "issues"
+            },
+            {
+                "name": "Municipios",
+                "body": "Seguir incidencias ciudadanas.",
+                "icon": "locations"
+            },
+            {
+                "name": "Industria",
+                "body": "Seguir averías y mantenimiento.",
+                "icon": "tasks"
+            },
+            {
+                "name": "Oficinas",
+                "body": "Gestionar edificios e instalaciones.",
+                "icon": "units"
+            },
+            {
+                "name": "Escuelas",
+                "body": "Coordinar incidencias y mantenimiento.",
+                "icon": "faq"
+            },
+            {
+                "name": "Hoteles",
+                "body": "Resolver problemas más rápido.",
+                "icon": "calendar"
+            },
+            {
+                "name": "Inmobiliaria",
+                "body": "Gestionar instalaciones y activos.",
+                "icon": "document"
+            },
+            {
+                "name": "Puertos",
+                "body": "Seguir terreno e infraestructura.",
+                "icon": "map-pin"
+            }
         ]
     },
     "trust": {
@@ -189,7 +296,14 @@
         "title": "Por qué las organizaciones eligen WinProx",
         "languages_title": "Multilingüe desde el primer día",
         "languages_body": "Incidencias, tareas y anuncios se traducen automáticamente a todos los idiomas admitidos.",
-        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
+        "locale_chips": [
+            "NL",
+            "EN",
+            "FR",
+            "DE",
+            "ES",
+            "IT"
+        ],
         "items": [
             "Sin app",
             "Nube",
@@ -207,8 +321,20 @@
     "closing": {
         "title": "¿Listo para dejar atrás el papel, los teléfonos y Excel?",
         "title_lines": [
-            ["¿Listo", "para", "dejar", "atrás", "el", "papel,"],
-            ["los", "teléfonos", "y", "Excel?"]
+            [
+                "¿Listo",
+                "para",
+                "dejar",
+                "atrás",
+                "el",
+                "papel,"
+            ],
+            [
+                "los",
+                "teléfonos",
+                "y",
+                "Excel?"
+            ]
         ],
         "body": "Elija WinProx Facility para la visión completa, o WinProx Time cuando el control horario es prioritario.",
         "cta_start": "Probar gratis",

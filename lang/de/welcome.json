@@ -20,15 +20,30 @@
         "faq": "FAQ",
         "about": "Über uns",
         "api": "API",
-        "pricing": "Preise"
+        "pricing": "Preise",
+        "group_products": "Produkte",
+        "group_how": "Funktionsweise",
+        "group_more": "Mehr"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",
         "title": "Jeder physische Standort erhält ein eigenes digitales QR-Portal.",
         "title_lines": [
-            ["Jeder", "physische", "Standort", "erhält", "ein", "eigenes", "digitales", "QR-Portal."]
+            [
+                "Jeder",
+                "physische",
+                "Standort",
+                "erhält",
+                "ein",
+                "eigenes",
+                "digitales",
+                "QR-Portal."
+            ]
         ],
-        "title_accent": ["digitales", "QR-Portal."],
+        "title_accent": [
+            "digitales",
+            "QR-Portal."
+        ],
         "subtitle": "Mängel melden, Aufgaben verwalten, Anwesenheit erfassen und ESG-Maßnahmen verfolgen — über einen QR-Code, ohne App.",
         "body": "Mitarbeitende stempeln über den Clock-Point-QR ein; Bürger und Teams arbeiten vor Ort über den Unit-QR an jedem Standort weiter.",
         "cta_start": "Kostenlos testen",
@@ -57,14 +72,24 @@
             "tagline": "Meldung → Aufgabe → Erledigung",
             "body": "Vollständiges Facility Management mit intelligenten QR-Portalen an jeder Unit. Optionale ESG- und Time-Module.",
             "logo_alt": "WinProx Facility",
-            "bullets": ["Meldungen & Aufgaben", "Standorte & Units", "Optional ESG", "Optional Time"]
+            "bullets": [
+                "Meldungen & Aufgaben",
+                "Standorte & Units",
+                "Optional ESG",
+                "Optional Time"
+            ]
         },
         "time": {
             "name": "WinProx Time",
             "tagline": "Kompakte Zeiterfassung vor Ort",
             "body": "Einstiegspaket für Anwesenheit, Pausen und Schichten über den Clock-Point-QR — ideal, wenn Zeiterfassung im Vordergrund steht.",
             "logo_alt": "WinProx Time",
-            "bullets": ["Ein- und Ausstempeln", "Pausen", "Schichten", "Clock Points"]
+            "bullets": [
+                "Ein- und Ausstempeln",
+                "Pausen",
+                "Schichten",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -75,32 +100,62 @@
             {
                 "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Meldungen", "Aufgaben", "Wartung", "Standorte & Units"]
+                "bullets": [
+                    "Meldungen",
+                    "Aufgaben",
+                    "Wartung",
+                    "Standorte & Units"
+                ]
             },
             {
                 "title": "WinProx Time",
                 "icon": "clock",
-                "bullets": ["Anwesenheit", "Pausen", "Schichten", "Clock Points"]
+                "bullets": [
+                    "Anwesenheit",
+                    "Pausen",
+                    "Schichten",
+                    "Clock Points"
+                ]
             },
             {
                 "title": "Intelligente QR-Portale",
                 "icon": "document",
-                "bullets": ["Clock-Point-QR", "Unit-QR", "Keine App nötig", "Standortgebunden"]
+                "bullets": [
+                    "Clock-Point-QR",
+                    "Unit-QR",
+                    "Keine App nötig",
+                    "Standortgebunden"
+                ]
             },
             {
                 "title": "ESG",
                 "icon": "circle",
-                "bullets": ["Environmental", "Social", "Governance", "Messungen & Indikatoren"]
+                "bullets": [
+                    "Environmental",
+                    "Social",
+                    "Governance",
+                    "Messungen & Indikatoren"
+                ]
             },
             {
                 "title": "Überblick",
                 "icon": "dashboard",
-                "bullets": ["Dashboard", "Kalender", "Briefing", "Status pro Team"]
+                "bullets": [
+                    "Dashboard",
+                    "Kalender",
+                    "Briefing",
+                    "Status pro Team"
+                ]
             },
             {
                 "title": "Compliance",
                 "icon": "legal",
-                "bullets": ["Audit-Trail", "Dokumentenverwaltung", "Rechtsdokumente", "API & Webhooks"]
+                "bullets": [
+                    "Audit-Trail",
+                    "Dokumentenverwaltung",
+                    "Rechtsdokumente",
+                    "API & Webhooks"
+                ]
             }
         ]
     },
@@ -111,15 +166,33 @@
         "pillars": [
             {
                 "title": "Environmental",
-                "items": ["Energie", "Wasser", "Abfall", "CO₂", "Umwelt"]
+                "items": [
+                    "Energie",
+                    "Wasser",
+                    "Abfall",
+                    "CO₂",
+                    "Umwelt"
+                ]
             },
             {
                 "title": "Social",
-                "items": ["Sicherheit", "Vorfälle", "PSA", "Schulungen", "Wohlbefinden"]
+                "items": [
+                    "Sicherheit",
+                    "Vorfälle",
+                    "PSA",
+                    "Schulungen",
+                    "Wohlbefinden"
+                ]
             },
             {
                 "title": "Governance",
-                "items": ["Audits", "Zertifikate", "Compliance", "Verfahren", "Audit-Trail"]
+                "items": [
+                    "Audits",
+                    "Zertifikate",
+                    "Compliance",
+                    "Verfahren",
+                    "Audit-Trail"
+                ]
             }
         ],
         "visual_alt": "Illustration: Umwelt, Soziales und Governance (ESG)"
@@ -174,14 +247,46 @@
         "title": "Für jede Organisation",
         "lead": "Facility-Teams, öffentliche Dienste und Produktionsumgebungen.",
         "items": [
-            {"name": "Krankenhäuser", "body": "Technische Meldungen und Wartung.", "icon": "issues"},
-            {"name": "Gemeinden", "body": "Bürgermeldungen nachverfolgen.", "icon": "locations"},
-            {"name": "Industrie", "body": "Störungen und Wartung verfolgen.", "icon": "tasks"},
-            {"name": "Büros", "body": "Gebäude und Einrichtungen verwalten.", "icon": "units"},
-            {"name": "Schulen", "body": "Meldungen und Wartung koordinieren.", "icon": "faq"},
-            {"name": "Hotels", "body": "Probleme schneller lösen.", "icon": "calendar"},
-            {"name": "Immobilien", "body": "Anlagen und Assets verwalten.", "icon": "document"},
-            {"name": "Häfen", "body": "Gelände und Infrastruktur verfolgen.", "icon": "map-pin"}
+            {
+                "name": "Krankenhäuser",
+                "body": "Technische Meldungen und Wartung.",
+                "icon": "issues"
+            },
+            {
+                "name": "Gemeinden",
+                "body": "Bürgermeldungen nachverfolgen.",
+                "icon": "locations"
+            },
+            {
+                "name": "Industrie",
+                "body": "Störungen und Wartung verfolgen.",
+                "icon": "tasks"
+            },
+            {
+                "name": "Büros",
+                "body": "Gebäude und Einrichtungen verwalten.",
+                "icon": "units"
+            },
+            {
+                "name": "Schulen",
+                "body": "Meldungen und Wartung koordinieren.",
+                "icon": "faq"
+            },
+            {
+                "name": "Hotels",
+                "body": "Probleme schneller lösen.",
+                "icon": "calendar"
+            },
+            {
+                "name": "Immobilien",
+                "body": "Anlagen und Assets verwalten.",
+                "icon": "document"
+            },
+            {
+                "name": "Häfen",
+                "body": "Gelände und Infrastruktur verfolgen.",
+                "icon": "map-pin"
+            }
         ]
     },
     "trust": {
@@ -189,7 +294,14 @@
         "title": "Warum Organisationen WinProx wählen",
         "languages_title": "Mehrsprachig ab Tag eins",
         "languages_body": "Meldungen, Aufgaben und Mitteilungen werden automatisch in alle unterstützten Sprachen übersetzt.",
-        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
+        "locale_chips": [
+            "NL",
+            "EN",
+            "FR",
+            "DE",
+            "ES",
+            "IT"
+        ],
         "items": [
             "Keine App",
             "Cloud",
@@ -207,8 +319,19 @@
     "closing": {
         "title": "Bereit, Papier, Telefone und Excel hinter sich zu lassen?",
         "title_lines": [
-            ["Bereit,", "Papier,", "Telefone"],
-            ["und", "Excel", "hinter", "sich", "zu", "lassen?"]
+            [
+                "Bereit,",
+                "Papier,",
+                "Telefone"
+            ],
+            [
+                "und",
+                "Excel",
+                "hinter",
+                "sich",
+                "zu",
+                "lassen?"
+            ]
         ],
         "body": "Wählen Sie WinProx Facility für das Gesamtbild oder WinProx Time, wenn Zeiterfassung im Vordergrund steht.",
         "cta_start": "Kostenlos testen",

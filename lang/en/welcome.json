@@ -20,15 +20,32 @@
         "faq": "FAQ",
         "about": "About",
         "api": "API",
-        "pricing": "Pricing"
+        "pricing": "Pricing",
+        "group_products": "Products",
+        "group_how": "How it works",
+        "group_more": "More"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",
         "title": "Every physical location gets its own digital QR portal.",
         "title_lines": [
-            ["Every", "physical", "location", "gets", "its", "own", "digital", "QR", "portal."]
+            [
+                "Every",
+                "physical",
+                "location",
+                "gets",
+                "its",
+                "own",
+                "digital",
+                "QR",
+                "portal."
+            ]
         ],
-        "title_accent": ["digital", "QR", "portal."],
+        "title_accent": [
+            "digital",
+            "QR",
+            "portal."
+        ],
         "subtitle": "Report issues, manage tasks, track presence and follow ESG actions — via one QR code, no app required.",
         "body": "Staff clock in via the Clock Point QR; citizens and teams continue on site via the unit QR at each location.",
         "cta_start": "Try for free",
@@ -57,14 +74,24 @@
             "tagline": "Issue → task → completion",
             "body": "Full facility management with smart QR portals on every unit. Optional ESG and Time modules.",
             "logo_alt": "WinProx Facility",
-            "bullets": ["Issues & tasks", "Locations & units", "Optional ESG", "Optional Time"]
+            "bullets": [
+                "Issues & tasks",
+                "Locations & units",
+                "Optional ESG",
+                "Optional Time"
+            ]
         },
         "time": {
             "name": "WinProx Time",
             "tagline": "Compact time tracking on site",
             "body": "Entry package for presence, breaks and shifts via the Clock Point QR — ideal when time tracking is the priority.",
             "logo_alt": "WinProx Time",
-            "bullets": ["Clock in & out", "Breaks", "Shifts", "Clock Points"]
+            "bullets": [
+                "Clock in & out",
+                "Breaks",
+                "Shifts",
+                "Clock Points"
+            ]
         }
     },
     "pillars": {
@@ -75,32 +102,62 @@
             {
                 "title": "WinProx Facility",
                 "icon": "tasks",
-                "bullets": ["Issues", "Tasks", "Maintenance", "Locations & units"]
+                "bullets": [
+                    "Issues",
+                    "Tasks",
+                    "Maintenance",
+                    "Locations & units"
+                ]
             },
             {
                 "title": "WinProx Time",
                 "icon": "clock",
-                "bullets": ["Presence", "Breaks", "Shifts", "Clock Points"]
+                "bullets": [
+                    "Presence",
+                    "Breaks",
+                    "Shifts",
+                    "Clock Points"
+                ]
             },
             {
                 "title": "Smart QR portals",
                 "icon": "document",
-                "bullets": ["Clock Point QR", "Unit QR", "No app required", "Location-based"]
+                "bullets": [
+                    "Clock Point QR",
+                    "Unit QR",
+                    "No app required",
+                    "Location-based"
+                ]
             },
             {
                 "title": "ESG",
                 "icon": "circle",
-                "bullets": ["Environmental", "Social", "Governance", "Measurements & indicators"]
+                "bullets": [
+                    "Environmental",
+                    "Social",
+                    "Governance",
+                    "Measurements & indicators"
+                ]
             },
             {
                 "title": "Overview",
                 "icon": "dashboard",
-                "bullets": ["Dashboard", "Calendar", "Briefing", "Status per team"]
+                "bullets": [
+                    "Dashboard",
+                    "Calendar",
+                    "Briefing",
+                    "Status per team"
+                ]
             },
             {
                 "title": "Compliance",
                 "icon": "legal",
-                "bullets": ["Audit trail", "Document management", "Legal documents", "API & webhooks"]
+                "bullets": [
+                    "Audit trail",
+                    "Document management",
+                    "Legal documents",
+                    "API & webhooks"
+                ]
             }
         ]
     },
@@ -111,15 +168,33 @@
         "pillars": [
             {
                 "title": "Environmental",
-                "items": ["Energy", "Water", "Waste", "CO₂", "Environment"]
+                "items": [
+                    "Energy",
+                    "Water",
+                    "Waste",
+                    "CO₂",
+                    "Environment"
+                ]
             },
             {
                 "title": "Social",
-                "items": ["Safety", "Incidents", "PPE", "Training", "Well-being"]
+                "items": [
+                    "Safety",
+                    "Incidents",
+                    "PPE",
+                    "Training",
+                    "Well-being"
+                ]
             },
             {
                 "title": "Governance",
-                "items": ["Audits", "Certificates", "Compliance", "Procedures", "Audit trail"]
+                "items": [
+                    "Audits",
+                    "Certificates",
+                    "Compliance",
+                    "Procedures",
+                    "Audit trail"
+                ]
             }
         ],
         "visual_alt": "Illustration: environmental, social and governance (ESG)"
@@ -174,14 +249,46 @@
         "title": "For every organisation",
         "lead": "Facility teams, public services and production environments.",
         "items": [
-            {"name": "Hospitals", "body": "Technical reports and maintenance.", "icon": "issues"},
-            {"name": "Municipalities", "body": "Follow up citizen reports.", "icon": "locations"},
-            {"name": "Industry", "body": "Track breakdowns and maintenance.", "icon": "tasks"},
-            {"name": "Offices", "body": "Manage buildings and facilities.", "icon": "units"},
-            {"name": "Schools", "body": "Coordinate reports and maintenance.", "icon": "faq"},
-            {"name": "Hotels", "body": "Resolve issues faster.", "icon": "calendar"},
-            {"name": "Real estate", "body": "Manage installations and assets.", "icon": "document"},
-            {"name": "Ports", "body": "Follow up site and infrastructure.", "icon": "map-pin"}
+            {
+                "name": "Hospitals",
+                "body": "Technical reports and maintenance.",
+                "icon": "issues"
+            },
+            {
+                "name": "Municipalities",
+                "body": "Follow up citizen reports.",
+                "icon": "locations"
+            },
+            {
+                "name": "Industry",
+                "body": "Track breakdowns and maintenance.",
+                "icon": "tasks"
+            },
+            {
+                "name": "Offices",
+                "body": "Manage buildings and facilities.",
+                "icon": "units"
+            },
+            {
+                "name": "Schools",
+                "body": "Coordinate reports and maintenance.",
+                "icon": "faq"
+            },
+            {
+                "name": "Hotels",
+                "body": "Resolve issues faster.",
+                "icon": "calendar"
+            },
+            {
+                "name": "Real estate",
+                "body": "Manage installations and assets.",
+                "icon": "document"
+            },
+            {
+                "name": "Ports",
+                "body": "Follow up site and infrastructure.",
+                "icon": "map-pin"
+            }
         ]
     },
     "trust": {
@@ -189,7 +296,14 @@
         "title": "Why organisations choose WinProx",
         "languages_title": "Multilingual from day one",
         "languages_body": "Reports, tasks and announcements are automatically translated into all supported languages.",
-        "locale_chips": ["NL", "EN", "FR", "DE", "ES", "IT"],
+        "locale_chips": [
+            "NL",
+            "EN",
+            "FR",
+            "DE",
+            "ES",
+            "IT"
+        ],
         "items": [
             "No app",
             "Cloud",
@@ -207,8 +321,18 @@
     "closing": {
         "title": "Ready to leave paper, phones and Excel behind?",
         "title_lines": [
-            ["Ready", "to", "leave", "paper,", "phones"],
-            ["and", "Excel", "behind?"]
+            [
+                "Ready",
+                "to",
+                "leave",
+                "paper,",
+                "phones"
+            ],
+            [
+                "and",
+                "Excel",
+                "behind?"
+            ]
         ],
         "body": "Choose WinProx Facility for the full picture, or WinProx Time when time tracking comes first.",
         "cta_start": "Try for free",
