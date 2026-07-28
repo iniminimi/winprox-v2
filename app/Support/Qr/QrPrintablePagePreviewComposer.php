@@ -254,8 +254,8 @@ final class QrPrintablePagePreviewComposer
     {
         $qrPx = max(64, (int) round(min($width, $height) * self::QR_SIZE_RATIO));
         $qrX = (int) round(($width - $qrPx) / 2);
-        $primaryFontPx = max(9.0, $height * 0.028);
-        $secondaryFontPx = max(8.0, $height * 0.024);
+        $primaryFontPx = max(11.0, $height * 0.034);
+        $secondaryFontPx = max(10.0, $height * 0.029);
         $labelGap = max(4, (int) round($height * 0.012));
         $lineGap = max(2, (int) round($height * 0.008));
         $secondaryText = trim((string) $secondaryLabel);

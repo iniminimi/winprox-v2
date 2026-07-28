@@ -155,14 +155,14 @@ final class QrPrintablePageTenantBranding
         $short = min($width, $height);
 
         return [
-            'pad_side' => max(10, (int) round($width * 0.035)),
+            'pad_side' => max(10, (int) round($width * 0.04)),
             'pad_top' => max(10, (int) round($height * 0.03)),
-            'pad_bottom' => max(8, (int) round($height * 0.022)),
-            // Compact text; larger logo inside the single bottom band.
+            // Lift band above the design's bottom curve / footer edge.
+            'pad_bottom' => max(18, (int) round($height * 0.055)),
             'logo_max_w' => max(56, (int) round($width * 0.22)),
             'logo_max_h' => max(44, (int) round($height * 0.095)),
-            'font_max' => max(9, (int) round($short * 0.014)),
-            'font_min' => max(7, (int) round($short * 0.01)),
+            'font_max' => max(14, (int) round($short * 0.024)),
+            'font_min' => max(11, (int) round($short * 0.017)),
             'gap' => max(6, (int) round($width * 0.015)),
         ];
     }
