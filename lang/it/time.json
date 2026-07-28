@@ -203,12 +203,26 @@
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni.",
             "pack": {
+                "button": "Foglio di stampa QR",
+                "modal_title": "Foglio di stampa QR",
+                "modal_subtitle": "Scegli il formato carta per :name.",
                 "unavailable": "L'export QR non è disponibile su questo server.",
                 "generating": "Creazione foglio di stampa…",
                 "download_failed": "Impossibile creare il foglio di stampa QR.",
-                "a6_print": "Word A6",
-                "a5_print": "Word A5",
-                "a4_print": "Word A4"
+                "formats": {
+                    "a6_print": {
+                        "title": "Foglio A6",
+                        "description": "1 codice QR per pagina (105 × 148 mm) — pagina intera con sfondo."
+                    },
+                    "a5_print": {
+                        "title": "Foglio A5",
+                        "description": "1 codice QR per pagina (148 × 210 mm) — pagina intera con sfondo."
+                    },
+                    "a4_print": {
+                        "title": "Foglio A4",
+                        "description": "1 codice QR per pagina (210 × 297 mm) — pagina intera con sfondo."
+                    }
+                }
             }
         }
     },

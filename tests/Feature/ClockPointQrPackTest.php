@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Livewire\Time\ClockPointsIndex;
 use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -9,6 +10,7 @@ use App\Models\User;
 use App\Support\Qr\ClockPointQrPackStickerEntries;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Tenancy;
+use Livewire\Livewire;
 
 it('maps clock point to printable sticker entry with name above and location below', function () {
     $tenant = Tenant::factory()->create();
@@ -105,7 +107,7 @@ it('rejects non-printable clock-point qr-pack templates', function () {
         ->assertUnprocessable();
 });
 
-it('toont word-formaatknoppen op clock-point qr-printpagina', function () {
+it('keeps browser print page without word format buttons', function () {
     $tenant = Tenant::factory()->create(['has_time_module' => false]);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -113,8 +115,28 @@ it('toont word-formaatknoppen op clock-point qr-printpagina', function () {
     $this->actingAs($admin)
         ->get(route('time.clock-points.qr', $clockPoint))
         ->assertOk()
-        ->assertSee(__('time.clock_points.qr.pack.a6_print'), false)
-        ->assertSee(__('time.clock_points.qr.pack.a5_print'), false)
-        ->assertSee(__('time.clock_points.qr.pack.a4_print'), false)
+        ->assertSee(__('time.clock_points.qr.print'), false)
+        ->assertDontSee(__('time.clock_points.qr.pack.formats.a6_print.title'), false)
+        ->assertDontSee('qr-pack?template=a6_print', false);
+});
+
+it('opens clock-point qr pack modal with a6 a5 a4 choices', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Poort Zuid',
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(ClockPointsIndex::class)
+        ->call('openQrPackModal', $clockPoint->id)
+        ->assertSet('showQrPackModal', true)
+        ->assertSet('qrPackClockPointId', $clockPoint->id)
+        ->assertSee(__('time.clock_points.qr.pack.modal_title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a6_print.title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a5_print.title'), false)
+        ->assertSee(__('time.clock_points.qr.pack.formats.a4_print.title'), false)
         ->assertSee('qr-pack?template=a6_print', false);
 });

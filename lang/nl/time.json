@@ -203,12 +203,26 @@
             "rotation_saved": "QR-rotatie-instelling opgeslagen.",
             "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen.",
             "pack": {
+                "button": "QR-afdrukblad",
+                "modal_title": "QR-afdrukblad",
+                "modal_subtitle": "Kies het papierformaat voor :name.",
                 "unavailable": "QR-export is niet beschikbaar op deze server.",
                 "generating": "Afdrukblad wordt aangemaakt…",
                 "download_failed": "QR-afdrukblad kon niet worden aangemaakt.",
-                "a6_print": "Word A6",
-                "a5_print": "Word A5",
-                "a4_print": "Word A4"
+                "formats": {
+                    "a6_print": {
+                        "title": "A6-afdrukblad",
+                        "description": "1 QR-code per blad (105 × 148 mm) — full-page met achtergrond."
+                    },
+                    "a5_print": {
+                        "title": "A5-afdrukblad",
+                        "description": "1 QR-code per blad (148 × 210 mm) — full-page met achtergrond."
+                    },
+                    "a4_print": {
+                        "title": "A4-afdrukblad",
+                        "description": "1 QR-code per blad (210 × 297 mm) — full-page met achtergrond."
+                    }
+                }
             }
         }
     },

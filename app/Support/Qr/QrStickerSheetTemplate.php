@@ -36,6 +36,17 @@ enum QrStickerSheetTemplate: string
         ));
     }
 
+    /**
+     * @return list<self>
+     */
+    public static function printableDownloadCases(): array
+    {
+        return array_values(array_filter(
+            self::downloadCases(),
+            static fn (self $template): bool => $template->isPrintablePage(),
+        ));
+    }
+
     public function isDownloadFormat(): bool
     {
         return match ($this) {

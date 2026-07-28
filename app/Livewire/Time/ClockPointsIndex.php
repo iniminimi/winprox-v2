@@ -15,6 +15,7 @@ use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
@@ -29,7 +30,9 @@ class ClockPointsIndex extends Component
     use ProvidesTimeNavAlarmCount;
 
     public bool $showModal = false;
+    public bool $showQrPackModal = false;
     public ?int $editingClockPointId = null;
+    public ?int $qrPackClockPointId = null;
     public string $name = '';
     public ?int $locationId = null;
     public int $sortOrder = 0;
@@ -124,6 +127,21 @@ class ClockPointsIndex extends Component
         session()->flash('time_flash', __('time.clock_points.qr.renewed'));
     }
 
+    public function openQrPackModal(int $clockPointId): void
+    {
+        $clockPoint = ClockPoint::query()->findOrFail($clockPointId);
+        $this->authorize('view', $clockPoint);
+
+        $this->qrPackClockPointId = $clockPoint->id;
+        $this->showQrPackModal = true;
+    }
+
+    public function closeQrPackModal(): void
+    {
+        $this->showQrPackModal = false;
+        $this->qrPackClockPointId = null;
+    }
+
     public function saveQrRotationSettings(UpdateTenantTimeQrRotationMonthsAction $update): void
     {
         $this->authorize('create', ClockPoint::class);
@@ -149,6 +167,9 @@ class ClockPointsIndex extends Component
     public function render()
     {
         $tenantId = (int) Tenancy::id();
+        $qrPackClockPoint = $this->qrPackClockPointId !== null
+            ? ClockPoint::query()->with('location')->find($this->qrPackClockPointId)
+            : null;
 
         return view('livewire.time.clock-points-index', [
             'clockPoints' => ClockPoint::query()->with('location')->orderBy('sort_order')->orderBy('name')->get(),
@@ -159,6 +180,8 @@ class ClockPointsIndex extends Component
                 ->where('created_at', '>=', now()->subDays(7))
                 ->count(),
             'alarmCount' => $this->timeNavAlarmCount(),
+            'qrPackClockPoint' => $qrPackClockPoint,
+            'qrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
         ]);
     }
 

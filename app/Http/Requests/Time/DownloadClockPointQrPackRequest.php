@@ -26,11 +26,10 @@ class DownloadClockPointQrPackRequest extends FormRequest
             'template' => [
                 'required',
                 'string',
-                Rule::in([
-                    QrStickerSheetTemplate::A6Print->value,
-                    QrStickerSheetTemplate::A5Print->value,
-                    QrStickerSheetTemplate::A4Print->value,
-                ]),
+                Rule::in(array_map(
+                    static fn (QrStickerSheetTemplate $template): string => $template->value,
+                    QrStickerSheetTemplate::printableDownloadCases(),
+                )),
             ],
         ];
     }

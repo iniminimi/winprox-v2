@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Time;
 
 use App\Models\ClockPoint;
 use App\Support\Qr\QrCenterLogo;
-use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Qr\TeamQrCode;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
@@ -23,11 +22,6 @@ class ClockPointQrController
             'url' => $url,
             'qrSvg' => TeamQrCode::svg($url),
             'centerLogoUrl' => QrCenterLogo::publicUrl($clockPoint->tenant),
-            'qrPackTemplates' => [
-                QrStickerSheetTemplate::A6Print,
-                QrStickerSheetTemplate::A5Print,
-                QrStickerSheetTemplate::A4Print,
-            ],
         ]);
     }
 }

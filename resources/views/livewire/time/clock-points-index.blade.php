@@ -60,6 +60,11 @@
                     <a href="{{ route('time.clock-points.qr', $clockPoint) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface btn--sm">
                         {{ __('time.clock_points.qr.button') }}
                     </a>
+                    @can('view', $clockPoint)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal({{ $clockPoint->id }})">
+                            {{ __('time.clock_points.qr.pack.button') }}
+                        </button>
+                    @endcan
                     @can('renewQr', $clockPoint)
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="renewQr({{ $clockPoint->id }})" wire:confirm="{{ __('time.clock_points.qr.renew_confirm') }}">
                             {{ __('time.clock_points.qr.renew') }}
@@ -112,6 +117,71 @@
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showQrPackModal && $qrPackClockPoint)
+        <x-wp-modal closeMethod="closeQrPackModal" aria-labelledby="clock-point-qr-pack-modal-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="clock-point-qr-pack-modal-title" class="wp-section-title">{{ __('time.clock_points.qr.pack.modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeQrPackModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('time.clock_points.qr.pack.modal_subtitle', ['name' => $qrPackClockPoint->name]) }}</p>
+
+                <div
+                    class="wp-list wp-list--entity-rows"
+                    x-data="{
+                        downloading: null,
+                        error: null,
+                        async download(url, key) {
+                            if (this.downloading) {
+                                return;
+                            }
+
+                            this.downloading = key;
+                            this.error = null;
+
+                            try {
+                                await window.wpDownloadQrPackUrl(url);
+                            } catch (exception) {
+                                this.error = exception?.message || @js(__('time.clock_points.qr.pack.download_failed'));
+                            } finally {
+                                this.downloading = null;
+                            }
+                        },
+                    }"
+                >
+                    @foreach ($qrPackTemplates as $template)
+                        @php
+                            $qrPackDownloadUrl = route('time.clock-points.qr-pack', [
+                                'clockPoint' => $qrPackClockPoint,
+                                'template' => $template->value,
+                            ]);
+                        @endphp
+                        <button
+                            type="button"
+                            class="wp-issue-row"
+                            wire:key="clock-qr-pack-format-{{ $qrPackClockPoint->id }}-{{ $template->value }}"
+                            @click="download(@js($qrPackDownloadUrl), @js($template->value))"
+                            :disabled="downloading !== null"
+                            :aria-busy="downloading === @js($template->value)"
+                        >
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ __('time.clock_points.qr.pack.formats.'.$template->value.'.title') }}</p>
+                                <p class="wp-muted" x-show="downloading !== @js($template->value)">{{ __('time.clock_points.qr.pack.formats.'.$template->value.'.description') }}</p>
+                                <p class="wp-muted wp-cluster" x-show="downloading === @js($template->value)" x-cloak>
+                                    <x-wp-spinner size="sm" :visible="true" />
+                                    <span>{{ __('time.clock_points.qr.pack.generating') }}</span>
+                                </p>
+                            </div>
+                        </button>
+                    @endforeach
+
+                    <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
+                </div>
+            </div>
         </x-wp-modal>
     @endif
 </div>
