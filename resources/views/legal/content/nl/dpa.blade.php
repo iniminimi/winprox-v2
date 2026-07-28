@@ -20,7 +20,7 @@
 <p>
     WinProx verwerkt persoonsgegevens in opdracht van de klant in het kader van het gebruik van het platform voor
     locatiebeheer, QR-meldingen en opvolging van issues en taken, en — indien geactiveerd — optionele
-    ESG-/compliance-metingen.
+    ESG-/compliance-metingen en IoT Connect (sensor-events naar workflow).
 </p>
 
 <h2>3. Doel van verwerking</h2>
@@ -35,6 +35,7 @@
     <li>verzenden van e-mailnotificaties in opdracht van de klant.</li>
     <li>logging en beveiliging.</li>
     <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
+    <li>verwerking van IoT-events (alarms naar meldingen/taken; metingen naar ESG indien geconfigureerd).</li>
 </ul>
 
 <h2>4. Type gegevens</h2>
@@ -46,7 +47,8 @@
     <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld.</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>
-    <li>ESG-/compliance-gegevens (indicatordefinities, meetwaarden, koppelingen en optionele toeschrijving aan uitvoerders).</li>
+    <li>ESG-/compliance-gegevens (indicatordefinities, meetwaarden, koppelingen, drempelopvolging en optionele toeschrijving aan uitvoerders).</li>
+    <li>IoT-gegevens (gateways, sensorkoppelingen, alarmregels, eventstatussen; geen timeseries-dump).</li>
 </ul>
 
 <h2>5. Verplichtingen van WinProx</h2>
@@ -108,6 +110,7 @@
     <li>logs: 6 maanden.</li>
     <li>foto’s: 24 maanden na afsluiten.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken.</li>
+    <li>IoT-events en gateway-/sensormetadata: contractperiode + 36 maanden (behoudens eerdere tenant-verwijdering).</li>
     <li>technische SQL-snapshot na volledige organisatieverwijdering (zonder media): max. 30 dagen.</li>
 </ul>
 

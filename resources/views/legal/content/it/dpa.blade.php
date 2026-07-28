@@ -20,7 +20,7 @@
 <p>
     WinProx tratta dati personali seguendo le istruzioni del cliente in relazione all'utilizzo della piattaforma per
     la gestione degli impianti, la segnalazione di problematiche tramite QR e il follow-up di problematiche e attività, e — se
-    attivato — misurazioni ESG/conformità opzionali.
+    attivato — misurazioni ESG/conformità opzionali e IoT Connect (eventi sensore nel flusso di lavoro).
 </p>
 
 <h2>3. Finalità del trattamento</h2>
@@ -35,6 +35,7 @@
     <li>invio di notifiche e-mail seguendo le istruzioni del cliente.</li>
     <li>registrazione delle attività e sicurezza.</li>
     <li>registrazione e follow-up delle misurazioni ESG/conformità (se il modulo è attivato).</li>
+    <li>elaborazione degli eventi IoT (allarmi in segnalazioni/attività; misurazioni in ESG se configurato).</li>
 </ul>
 
 <h2>4. Tipi di dati</h2>
@@ -46,7 +47,8 @@
     <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente.</li>
     <li>dati di accesso e sessione.</li>
     <li>metadati di abbonamento e accesso.</li>
-    <li>dati ESG/conformità (definizioni degli indicatori, valori di misurazione, collegamenti e attribuzione opzionale ai lavoratori).</li>
+    <li>dati ESG/conformità (definizioni degli indicatori, valori di misurazione, collegamenti, follow-up soglie e attribuzione opzionale ai lavoratori).</li>
+    <li>dati IoT (gateway, mappature sensore, regole di allarme, stati evento; nessun dump di serie temporali).</li>
 </ul>
 
 <h2>5. Obblighi di WinProx</h2>
@@ -108,6 +110,7 @@
     <li>registri: 6 mesi.</li>
     <li>foto: 24 mesi dopo la chiusura.</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività.</li>
+    <li>eventi IoT e metadati gateway/sensore: durata del contratto + 36 mesi (salvo cancellazione precedente del tenant).</li>
     <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza media): max. 30 giorni.</li>
 </ul>
 

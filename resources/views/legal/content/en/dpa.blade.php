@@ -20,7 +20,7 @@
 <p>
     WinProx processes personal data on the customer’s instructions in connection with use of the platform for
     site management, QR issue reporting and follow-up of issues and tasks, and — if enabled — optional
-    ESG/compliance measurements.
+    ESG/compliance measurements and IoT Connect (sensor events into workflow).
 </p>
 
 <h2>3. Purpose of processing</h2>
@@ -35,6 +35,7 @@
     <li>sending email notifications on the customer’s instructions.</li>
     <li>logging and security.</li>
     <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
+    <li>processing of IoT events (alarms into issues/tasks; measurements into ESG where configured).</li>
 </ul>
 
 <h2>4. Types of data</h2>
@@ -46,7 +47,8 @@
     <li>data of workers and QR reporters, to the extent collected by the customer.</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
-    <li>ESG/compliance data (indicator definitions, measurement values, links and optional attribution to workers).</li>
+    <li>ESG/compliance data (indicator definitions, measurement values, links, threshold follow-up and optional attribution to workers).</li>
+    <li>IoT data (gateways, sensor mappings, alarm rules, event statuses; no time-series dump).</li>
 </ul>
 
 <h2>5. WinProx obligations</h2>
@@ -108,6 +110,7 @@
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>
     <li>ESG measurements: same retention as issues and tasks.</li>
+    <li>IoT events and gateway/sensor metadata: contract period + 36 months (unless earlier tenant deletion).</li>
     <li>technical SQL snapshot after full organisation deletion (without media): max. 30 days.</li>
 </ul>
 

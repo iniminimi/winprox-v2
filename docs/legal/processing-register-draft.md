@@ -6,7 +6,8 @@
 |----------------------|-------------------------------|-------------------------|---------------------------|---------------------------|
 | Platformaccounts en login | Uitvoering overeenkomst / gerechtvaardigd belang (beveiliging) | Gebruikers, beheerders | Zie `data-retention-policy.md` | Hosting, e‑mail indien van toepassing |
 | Meldingen en taken | Uitvoering overeenkomst (vastgoedbeheer) | Bewonerscontacten, gebruikers, workers | Zie retentiebeleid | Zoals in productflow |
-| ESG-metingen (optionele module) | Uitvoering overeenkomst (compliance/inspectie) | Beheerders, workers, QR-melders | Zie retentiebeleid (zelfde als meldingen/taken) | Zoals in productflow |
+| ESG-metingen (optionele module) | Uitvoering overeenkomst (compliance/inspectie) | Beheerders, workers (via taken/portaal) | Zie retentiebeleid (zelfde als meldingen/taken) | API/webhooks van de klant indien gekoppeld |
+| IoT Connect (optionele module) | Uitvoering overeenkomst (sensor → workflow) | Indirect via meldingen/taken/ESG; gateway-tokens | Contractperiode + 36 maanden (events/metadata) | Gateways van de klant pushen naar WinProx; geen externe IoT-cloud van WinProx |
 | Eigenaarscommunicatie | Uitvoering overeenkomst (instructie klant) | Eigenaars, zoals door klant ingevoerd | Zie retentiebeleid | E‑mailprovider |
 | Facturatie / Stripe | Uitvoering overeenkomst / wettelijke verplichting | Facturatiecontacten | Naar boekhoudvereisten | Stripe, zie subprocessors (niet operationeel - toekomstige functionaliteit) |
 | AI vertalingen (Ollama) | Uitvoering overeenkomst (meertalige ondersteuning) | Meldingsteksten, gebruikers | Zie retentiebeleid (issue translations) | Lokale Ollama instance (optioneel, configureerbaar) |

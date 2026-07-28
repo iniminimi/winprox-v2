@@ -17,7 +17,8 @@ This policy is a draft and requires legal approval.
 | User accounts | Name, email, role | While account is active + 24 months | Delete or anonymize |
 | Buildings/units | Address and structure data | Contract period + 24 months | Delete or export then delete |
 | Issues/tasks | Reports, statuses, notes | Contract period + 36 months | Archive or delete |
-| ESG measurements | Indicator definitions, values, links to issues/tasks/locations | Contract period + 36 months | Delete with related records |
+| ESG measurements | Indicator definitions, values, thresholds, follow-up tasks, API/webhooks | Contract period + 36 months | Delete with related records |
+| IoT Connect | Gateway/sensor metadata, alarm rules, event records (not time-series) | Contract period + 36 months | Delete with tenant / related workflow records |
 | Issue translations | AI-generated translations of issue descriptions | Contract period + 36 months | Delete with parent issue |
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |

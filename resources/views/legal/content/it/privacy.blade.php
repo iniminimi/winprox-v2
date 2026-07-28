@@ -2,7 +2,7 @@
 <p>
     WinProx («Work in Proximity») è una piattaforma SaaS per la gestione tecnica e operativa degli impianti:
     segnalazione di problematiche tramite QR e follow-up delle attività per i team operativi interni, e registrazione
-    ESG/conformità opzionale.
+    ESG/conformità opzionale e IoT Connect (eventi sensore nel flusso di lavoro).
 </p>
 <p>
     La piattaforma è gestita da:
@@ -72,23 +72,45 @@
 <p><strong>ESG e conformità (modulo opzionale)</strong></p>
 <p>
     Se il cliente attiva il modulo ESG opzionale, possono essere registrati valori di misurazione e dati di conformità,
-    ad esempio durante ispezioni ricorrenti o al completamento delle attività sul portale QR.
+    ad esempio durante ispezioni ricorrenti, al completamento delle attività sul portale QR, tramite API oppure — se
+    IoT Connect è attivato — da eventi sensore.
 </p>
 <ul>
-    <li>definizioni degli indicatori (nome, tipo, unità, soglie, opzioni).</li>
+    <li>definizioni degli indicatori (nome, tipo, unità, soglie, opzioni), comprese eventuali traduzioni dei testi degli indicatori.</li>
     <li>valori di misurazione (numero, sì/no, scelta o testo) con timestamp.</li>
-    <li>collegamento a problematica, attività, sede, unità e opzionalmente al lavoratore.</li>
+    <li>collegamento a problematica, attività, sede, unità e opzionalmente al lavoratore; sul percorso sensore l’attività può mancare.</li>
     <li>correzioni come nuove righe (append-only); i valori precedenti restano conservati.</li>
+    <li>allarmi di soglia e relative attività di follow-up quando una misurazione esce dai limiti configurati.</li>
+    <li>creazione di misurazioni via API e webhook opzionali (ad es. alla registrazione di una nuova riga), se il cliente li collega.</li>
 </ul>
 <p>
     Il modulo è opzionale e visibile solo agli amministratori quando è attivato. Il cliente è responsabile
     del contenuto e dell’uso dei dati ESG all’interno della propria organizzazione.
 </p>
 
+<p><strong>IoT Connect (modulo opzionale)</strong></p>
+<p>
+    Se il cliente attiva IoT Connect, i gateway possono inviare eventi a WinProx. WinProx non è un cloud IoT né
+    una piattaforma di serie temporali: il cliente (o il suo partner hardware) gestisce gateway e sensori; WinProx
+    trasforma gli eventi in ingresso in workflow all’interno del tenant.
+</p>
+<ul>
+    <li>configurazione dei gateway e token di autenticazione (memorizzati in modo sicuro; un nuovo token è tipicamente mostrato una sola volta).</li>
+    <li>mappature sensore (id esterno → sede/unità, opzionalmente un indicatore ESG).</li>
+    <li>regole di allarme (soglie, operatore, team assegnato, priorità, testo).</li>
+    <li>record di eventi (elaborato / ignorato / deduplicato / fallito) — nessun archivio continuo di serie temporali.</li>
+    <li>in caso di allarme: una segnalazione e un’attività approvate nell’organizzazione (con deduplicazione finché esiste un’attività aperta per la stessa regola).</li>
+    <li>in caso di misurazione (Corporate, con modulo ESG): una riga di misurazione ESG basata sull’evento sensore.</li>
+</ul>
+<p>
+    I dati personali nei flussi IoT si limitano a quanto configura il cliente (ad es. assegnazione a team/lavoratori
+    tramite segnalazioni e attività). Il cliente resta responsabile delle fonti sensore e del contenuto degli eventi.
+</p>
+
 <h2>4. Traduzioni IA (opzionale)</h2>
 <p>Se abilitato dall'amministratore, la piattaforma può utilizzare traduzioni IA:</p>
 <ul>
-    <li>traduzione automatica dei testi mostrati in più lingue nella piattaforma o nel portale QR (incluse segnalazioni, attività, unità, annunci, descrizioni di documenti, sedi, categorie e nomi dei team).</li>
+    <li>traduzione automatica dei testi mostrati in più lingue nella piattaforma o nel portale QR (incluse segnalazioni, attività, unità, annunci, descrizioni di documenti, sedi, categorie, nomi dei team e testi degli indicatori ESG).</li>
     <li>mediante un'istanza locale Ollama (senza servizi esterni).</li>
     <li>le traduzioni vengono archiviate e conservate conformemente alla politica di conservazione; gli amministratori possono correggerle manualmente nella piattaforma.</li>
     <li>questa funzione è opzionale e può essere disattivata in qualsiasi momento.</li>
@@ -106,6 +128,7 @@
     <li>sicurezza e registrazione delle attività.</li>
     <li>supporto multilingue tramite traduzioni IA (se abilitato).</li>
     <li>registrazione e follow-up delle misurazioni ESG/conformità (se il modulo è attivato).</li>
+    <li>elaborazione degli eventi IoT in segnalazioni, attività e/o misurazioni ESG (se IoT Connect è attivato).</li>
 </ul>
 
 <h2>6. Segnalazioni QR e accesso dei team</h2>
@@ -137,6 +160,7 @@
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività (durata del contratto + 36 mesi)</li>
+    <li>eventi IoT, metadati di gateway e sensore: durata del contratto + 36 mesi (o più breve se la problematica/attività sottostante viene rimossa prima con la cancellazione dell’organizzazione)</li>
     <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza file media): massimo 30 giorni, poi distruzione</li>
 </ul>
 <p>

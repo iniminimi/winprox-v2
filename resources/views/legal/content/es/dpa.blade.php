@@ -20,7 +20,7 @@
 <p>
     WinProx trata datos personales siguiendo las instrucciones del cliente en relación con el uso de la plataforma para
     la gestión de instalaciones, informes de incidencias mediante QR y seguimiento de incidencias y tareas, y — si está
-    activado — mediciones ESG/cumplimiento opcionales.
+    activado — mediciones ESG/cumplimiento opcionales e IoT Connect (eventos de sensores al flujo de trabajo).
 </p>
 
 <h2>3. Finalidad del tratamiento</h2>
@@ -35,6 +35,7 @@
     <li>envío de notificaciones por correo electrónico siguiendo las instrucciones del cliente.</li>
     <li>registro de actividad y seguridad.</li>
     <li>registro y seguimiento de mediciones ESG/cumplimiento (si el módulo está activado).</li>
+    <li>procesamiento de eventos IoT (alarmas a incidencias/tareas; mediciones a ESG si está configurado).</li>
 </ul>
 
 <h2>4. Tipos de datos</h2>
@@ -46,7 +47,8 @@
     <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente.</li>
     <li>datos de acceso y sesión.</li>
     <li>metadatos de suscripción y acceso.</li>
-    <li>datos ESG/cumplimiento (definiciones de indicadores, valores de medición, vínculos y atribución opcional a trabajadores).</li>
+    <li>datos ESG/cumplimiento (definiciones de indicadores, valores de medición, vínculos, seguimiento de umbrales y atribución opcional a trabajadores).</li>
+    <li>datos IoT (pasarelas, mapeos de sensores, reglas de alarma, estados de eventos; sin volcado de series temporales).</li>
 </ul>
 
 <h2>5. Obligaciones de WinProx</h2>
@@ -108,6 +110,7 @@
     <li>registros: 6 meses.</li>
     <li>fotos: 24 meses tras el cierre.</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas.</li>
+    <li>eventos IoT y metadatos de pasarela/sensor: duración del contrato + 36 meses (salvo eliminación anterior del inquilino).</li>
     <li>instantánea SQL técnica tras la eliminación completa de la organización (sin multimedia): máx. 30 días.</li>
 </ul>
 

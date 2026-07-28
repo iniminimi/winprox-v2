@@ -8,7 +8,7 @@
 <p>
     WinProx (« Work in Proximity ») est une plateforme SaaS de gestion technique et opérationnelle de sites :
     signalements par QR, suivi des issues et des tâches pour les équipes opérationnelles internes, et enregistrement
-    ESG/conformité en option.
+    ESG/conformité en option ainsi qu’IoT Connect (événements capteurs vers le workflow).
 </p>
 
 <h2>2. Identité du prestataire</h2>
@@ -25,6 +25,7 @@
     <li>gérer et suivre des tâches.</li>
     <li>affecter le travail aux équipes internes et aux exécutants.</li>
     <li>enregistrer et suivre des mesures ESG/conformité en option (si le module est activé).</li>
+    <li>utiliser IoT Connect en option : relier gateways/capteurs pour que les alarmes et (le cas échéant) les mesures démarrent un workflow dans WinProx.</li>
 </ul>
 <p>
     WinProx est uniquement une plateforme technique et n’exécute pas lui-même de travaux sur site.

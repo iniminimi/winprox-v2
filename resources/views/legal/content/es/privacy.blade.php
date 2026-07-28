@@ -2,7 +2,7 @@
 <p>
     WinProx («Work in Proximity») es una plataforma SaaS para la gestión técnica y operativa de instalaciones:
     informes de incidencias mediante QR y seguimiento de tareas para equipos operativos internos, y registro
-    ESG/cumplimiento opcional.
+    ESG/cumplimiento opcional e IoT Connect (eventos de sensores al flujo de trabajo).
 </p>
 <p>
     La plataforma está operada por:
@@ -72,23 +72,45 @@
 <p><strong>ESG y cumplimiento (módulo opcional)</strong></p>
 <p>
     Si el cliente activa el módulo ESG opcional, pueden registrarse valores de medición y datos de cumplimiento,
-    por ejemplo en inspecciones recurrentes o al completar tareas en el portal QR.
+    por ejemplo en inspecciones recurrentes, al completar tareas en el portal QR, mediante la API o — si
+    IoT Connect está activado — a partir de eventos de sensores.
 </p>
 <ul>
-    <li>definiciones de indicadores (nombre, tipo, unidad, umbrales, opciones).</li>
+    <li>definiciones de indicadores (nombre, tipo, unidad, umbrales, opciones), incluidas posibles traducciones de textos de indicadores.</li>
     <li>valores de medición (número, sí/no, elección o texto) con marca de tiempo.</li>
-    <li>vínculo con incidencia, tarea, ubicación, unidad y opcionalmente el trabajador.</li>
+    <li>vínculo con incidencia, tarea, ubicación, unidad y opcionalmente el trabajador; en la ruta de sensor puede no haber tarea.</li>
     <li>correcciones como nuevas filas (append-only); los valores anteriores se conservan.</li>
+    <li>alarmas de umbral y tareas de seguimiento resultantes cuando una medición queda fuera de los límites configurados.</li>
+    <li>creación de mediciones por API y webhooks opcionales (p. ej. al registrar una nueva fila), si el cliente los conecta.</li>
 </ul>
 <p>
     El módulo es opcional y solo visible para administradores cuando está activado. El cliente es responsable
     del contenido y uso de los datos ESG dentro de su organización.
 </p>
 
+<p><strong>IoT Connect (módulo opcional)</strong></p>
+<p>
+    Si el cliente activa IoT Connect, las pasarelas pueden enviar eventos a WinProx. WinProx no es una nube IoT ni
+    una plataforma de series temporales: el cliente (o su partner de hardware) gestiona pasarelas y sensores; WinProx
+    convierte los eventos entrantes en flujo de trabajo dentro del inquilino.
+</p>
+<ul>
+    <li>configuración de pasarelas y tokens de autenticación (almacenados de forma segura; un token nuevo suele mostrarse una sola vez).</li>
+    <li>mapeos de sensores (id externo → ubicación/unidad, opcionalmente un indicador ESG).</li>
+    <li>reglas de alarma (umbrales, operador, equipo asignado, prioridad, texto).</li>
+    <li>registros de eventos (procesado / ignorado / deduplicado / fallido) — sin almacenamiento continuo de series temporales.</li>
+    <li>en alarma: una incidencia y tarea aprobadas en la organización (con deduplicación mientras exista una tarea abierta para la misma regla).</li>
+    <li>en medición (Corporate, con módulo ESG): una fila de medición ESG basada en el evento del sensor.</li>
+</ul>
+<p>
+    Los datos personales en los flujos IoT se limitan a lo que configura el cliente (p. ej. asignación a equipos/trabajadores
+    mediante incidencias y tareas). El cliente sigue siendo responsable de las fuentes de sensores y del contenido de los eventos.
+</p>
+
 <h2>4. Traducciones con IA (opcional)</h2>
 <p>Si el administrador lo activa, la plataforma puede utilizar traducciones con IA:</p>
 <ul>
-    <li>traducción automática de textos mostrados en varios idiomas en la plataforma o el portal QR (incluidas incidencias, tareas, unidades, anuncios, descripciones de documentos, ubicaciones, categorías y nombres de equipos).</li>
+    <li>traducción automática de textos mostrados en varios idiomas en la plataforma o el portal QR (incluidas incidencias, tareas, unidades, anuncios, descripciones de documentos, ubicaciones, categorías, nombres de equipos y textos de indicadores ESG).</li>
     <li>mediante una instancia local de Ollama (sin servicios externos).</li>
     <li>las traducciones se almacenan y conservan conforme a la política de retención; los administradores pueden corregirlas manualmente en la plataforma.</li>
     <li>esta función es opcional y puede desactivarse en cualquier momento.</li>
@@ -106,6 +128,7 @@
     <li>seguridad y registro de actividad.</li>
     <li>soporte multilingüe mediante traducciones con IA (si está activado).</li>
     <li>registro y seguimiento de mediciones ESG/cumplimiento (si el módulo está activado).</li>
+    <li>procesamiento de eventos IoT en incidencias, tareas y/o mediciones ESG (si IoT Connect está activado).</li>
 </ul>
 
 <h2>6. Informes QR y acceso de equipos</h2>
@@ -137,6 +160,7 @@
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas (duración del contrato + 36 meses)</li>
+    <li>eventos IoT, metadatos de pasarela y sensor: duración del contrato + 36 meses (o menos si la incidencia/tarea subyacente se elimina antes al borrar la organización)</li>
     <li>instantánea SQL técnica tras la eliminación completa de la organización (sin archivos multimedia): máximo 30 días, después destrucción</li>
 </ul>
 <p>

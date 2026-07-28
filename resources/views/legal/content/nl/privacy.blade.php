@@ -2,7 +2,7 @@
 <p>
     WinProx (“Work in Proximity”) is een SaaS-platform voor technisch en operationeel locatiebeheer:
     QR-meldingen, opvolging van issues en taken voor interne operationele teams, en optioneel
-    ESG-/compliance-registratie.
+    ESG-/compliance-registratie en IoT Connect (sensor-events naar workflow).
 </p>
 <p>
     Het platform wordt geëxploiteerd door:
@@ -72,23 +72,45 @@
 <p><strong>ESG & Compliance (optionele module)</strong></p>
 <p>
     Indien de klant de optionele ESG-module activeert, kunnen meetwaarden en compliancegegevens worden vastgelegd,
-    bijvoorbeeld bij terugkerende inspecties of bij het afhandelen van taken op het QR-portaal.
+    bijvoorbeeld bij terugkerende inspecties, bij het afhandelen van taken op het QR-portaal, via de API of — indien
+    IoT Connect is geactiveerd — via sensorgegevens.
 </p>
 <ul>
-    <li>indicatordefinities (naam, type, eenheid, drempels, opties).</li>
+    <li>indicatordefinities (naam, type, eenheid, drempels, opties), inclusief eventuele vertalingen van indicatorteksten.</li>
     <li>meetwaarden (zoals getal, ja/nee, keuze of tekst) met tijdstip van meting.</li>
-    <li>koppeling aan melding, taak, locatie, unit en optioneel de uitvoerder (worker).</li>
+    <li>koppeling aan melding, taak, locatie, unit en optioneel de uitvoerder (worker); bij sensorpad kan een taak ontbreken.</li>
     <li>correcties als nieuwe meetrijen (append-only); eerdere waarden blijven bewaard.</li>
+    <li>drempelalarmen en daaruit voortvloeiende opvolgtaken wanneer een meting buiten ingestelde grenzen valt.</li>
+    <li>API-aanmaak van metingen en optionele webhooks (bijv. bij een nieuwe meetrij), indien de klant die koppelt.</li>
 </ul>
 <p>
     De module is optioneel en enkel zichtbaar voor beheerders wanneer ze is ingeschakeld. De klant is verantwoordelijk
     voor de inhoud en het gebruik van ESG-gegevens binnen de eigen organisatie.
 </p>
 
+<p><strong>IoT Connect (optionele module)</strong></p>
+<p>
+    Indien de klant IoT Connect activeert, kunnen gateways events naar WinProx sturen. WinProx is geen IoT-cloud of
+    timeseries-platform: de klant (of diens hardwarepartner) beheert gateways en sensoren; WinProx zet binnenkomende
+    events om in workflow binnen de tenant.
+</p>
+<ul>
+    <li>gatewayconfiguratie en authenticatietokens (tokens worden veilig bewaard; een nieuw token wordt doorgaans éénmalig getoond).</li>
+    <li>sensorkoppelingen (externe id → locatie/unit, optioneel een ESG-indicator).</li>
+    <li>alarmregels (drempels, operator, toegewezen team, prioriteit, tekst).</li>
+    <li>eventrecords (verwerkt / genegeerd / gededupliceerd / mislukt) — geen continue meetreeksopslag.</li>
+    <li>bij alarm: een goedgekeurde melding en taak binnen de organisatie (met deduplicatie zolang er een open taak voor dezelfde regel is).</li>
+    <li>bij meting (Corporate, met ESG-module): een ESG-meetrij op basis van het sensorevent.</li>
+</ul>
+<p>
+    Persoonsgegevens in IoT-flows zijn beperkt tot wat de klant configureert (bijv. toewijzing aan teams/uitvoerders
+    via meldingen en taken). De klant blijft verantwoordelijk voor de sensorbronnen en de inhoud van events.
+</p>
+
 <h2>4. AI Vertalingen (optioneel)</h2>
 <p>Indien geactiveerd door de beheerder, kan het platform gebruikmaken van AI-vertalingen:</p>
 <ul>
-    <li>automatische vertaling van teksten die meertalig in het platform of QR-portaal worden getoond (onder meer meldingen, taken, units, mededelingen, documentomschrijvingen, locaties, categorieën en teamnamen).</li>
+    <li>automatische vertaling van teksten die meertalig in het platform of QR-portaal worden getoond (onder meer meldingen, taken, units, mededelingen, documentomschrijvingen, locaties, categorieën, teamnamen en ESG-indicatorteksten).</li>
     <li>gebruik van een lokale Ollama-instantie (geen externe diensten).</li>
     <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid; beheerders kunnen vertalingen in het platform handmatig corrigeren.</li>
     <li>deze functie is optioneel en kan te allen tijde worden uitgeschakeld.</li>
@@ -106,6 +128,7 @@
     <li>beveiliging en logging.</li>
     <li>meertalige ondersteuning via AI-vertalingen (indien geactiveerd).</li>
     <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
+    <li>verwerking van IoT-events tot meldingen, taken en/of ESG-metingen (indien IoT Connect is geactiveerd).</li>
 </ul>
 
 <h2>6. QR-meldingen en team-toegang</h2>
@@ -138,6 +161,7 @@
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
+    <li>IoT-events, gateway- en sensormetadata: contractperiode + 36 maanden (of korter indien de onderliggende melding/taak eerder wordt verwijderd in het kader van organisatieverwijdering).</li>
     <li>technische SQL-snapshot na een volledige organisatieverwijdering (zonder mediabestanden): maximaal 30 dagen, daarna vernietiging.</li>
 </ul>
 <p>

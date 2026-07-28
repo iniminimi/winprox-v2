@@ -2,7 +2,7 @@
 <p>
     WinProx („Work in Proximity“) ist eine SaaS-Plattform für technisches und operatives Standortmanagement:
     QR-Meldungen, Nachverfolgung von Issues und Aufgaben für interne operative Teams sowie optionale
-    ESG-/Compliance-Erfassung.
+    ESG-/Compliance-Erfassung und IoT Connect (Sensor-Events in den Workflow).
 </p>
 <p>
     Die Plattform wird betrieben von:
@@ -72,23 +72,45 @@
 <p><strong>ESG & Compliance (optionales Modul)</strong></p>
 <p>
     Wenn der Kunde das optionale ESG-Modul aktiviert, können Messwerte und Compliance-Daten erfasst werden,
-    z. B. bei wiederkehrenden Inspektionen oder beim Abschließen von Aufgaben im QR-Portal.
+    z. B. bei wiederkehrenden Inspektionen, beim Abschließen von Aufgaben im QR-Portal, über die API oder — falls
+    IoT Connect aktiviert ist — über Sensor-Events.
 </p>
 <ul>
-    <li>Indikatordefinitionen (Name, Typ, Einheit, Schwellenwerte, Optionen).</li>
+    <li>Indikatordefinitionen (Name, Typ, Einheit, Schwellenwerte, Optionen), einschließlich etwaiger Übersetzungen von Indikatortexten.</li>
     <li>Messwerte (z. B. Zahl, Ja/Nein, Auswahl oder Text) mit Zeitstempel.</li>
-    <li>Verknüpfung mit Meldung, Aufgabe, Standort, Unit und optional dem ausführenden Worker.</li>
+    <li>Verknüpfung mit Meldung, Aufgabe, Standort, Unit und optional dem ausführenden Worker; auf dem Sensorpfad kann eine Aufgabe fehlen.</li>
     <li>Korrekturen als neue Messzeilen (append-only); frühere Werte bleiben erhalten.</li>
+    <li>Schwellenalarme und daraus resultierende Folgeaufgaben, wenn eine Messung außerhalb der konfigurierten Grenzen liegt.</li>
+    <li>API-Erstellung von Messungen und optionale Webhooks (z. B. bei einer neuen Messzeile), sofern der Kunde sie anbindet.</li>
 </ul>
 <p>
     Das Modul ist optional und nur für Administratoren sichtbar, wenn es aktiviert ist. Der Kunde ist verantwortlich
     für Inhalt und Nutzung der ESG-Daten innerhalb seiner Organisation.
 </p>
 
+<p><strong>IoT Connect (optionales Modul)</strong></p>
+<p>
+    Wenn der Kunde IoT Connect aktiviert, können Gateways Events an WinProx senden. WinProx ist keine IoT-Cloud und
+    keine Zeitreihen-Plattform: Der Kunde (oder sein Hardwarepartner) verwaltet Gateways und Sensoren; WinProx wandelt
+    eingehende Events in Workflow innerhalb des Tenants um.
+</p>
+<ul>
+    <li>Gateway-Konfiguration und Authentifizierungstoken (sicher gespeichert; ein neues Token wird typischerweise einmalig angezeigt).</li>
+    <li>Sensormappings (externe ID → Standort/Unit, optional ein ESG-Indikator).</li>
+    <li>Alarmregeln (Schwellen, Operator, zugewiesenes Team, Priorität, Text).</li>
+    <li>Event-Datensätze (verarbeitet / ignoriert / dedupliziert / fehlgeschlagen) — keine kontinuierliche Zeitreihen-Speicherung.</li>
+    <li>bei Alarm: eine freigegebene Meldung und Aufgabe in der Organisation (mit Deduplizierung, solange eine offene Aufgabe für dieselbe Regel existiert).</li>
+    <li>bei Messung (Corporate, mit ESG-Modul): eine ESG-Messzeile auf Basis des Sensor-Events.</li>
+</ul>
+<p>
+    Personenbezogene Daten in IoT-Flows beschränken sich auf das, was der Kunde konfiguriert (z. B. Zuweisung an Teams/Ausführende
+    über Meldungen und Aufgaben). Der Kunde bleibt verantwortlich für Sensorquellen und Event-Inhalte.
+</p>
+
 <h2>4. KI-Übersetzungen (optional)</h2>
 <p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
 <ul>
-    <li>automatische Übersetzung von Texten, die mehrsprachig in der Plattform oder im QR-Portal angezeigt werden (u. a. Meldungen, Aufgaben, Units, Mitteilungen, Dokumentbeschreibungen, Standorte, Kategorien und Teamnamen).</li>
+    <li>automatische Übersetzung von Texten, die mehrsprachig in der Plattform oder im QR-Portal angezeigt werden (u. a. Meldungen, Aufgaben, Units, Mitteilungen, Dokumentbeschreibungen, Standorte, Kategorien, Teamnamen und ESG-Indikatortexte).</li>
     <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste).</li>
     <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt; Administratoren können Übersetzungen in der Plattform manuell korrigieren.</li>
     <li>diese Funktion ist optional und kann jederzeit deaktiviert werden.</li>
@@ -106,6 +128,7 @@
     <li>Sicherheit und Protokollierung.</li>
     <li>mehrsprachige Unterstützung durch KI-Übersetzungen (falls aktiviert).</li>
     <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
+    <li>Verarbeitung von IoT-Events zu Meldungen, Aufgaben und/oder ESG-Messungen (falls IoT Connect aktiviert ist).</li>
 </ul>
 
 <h2>6. QR-Meldungen und Teamzugang</h2>
@@ -138,6 +161,7 @@
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
+    <li>IoT-Events, Gateway- und Sensor-Metadaten: Vertragslaufzeit + 36 Monate (oder kürzer, wenn die zugrunde liegende Meldung/Aufgabe bei Organisationslöschung früher entfernt wird).</li>
     <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Mediendateien): maximal 30 Tage, danach Vernichtung.</li>
 </ul>
 <p>

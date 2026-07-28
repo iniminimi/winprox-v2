@@ -20,7 +20,7 @@
 <p>
     WinProx verarbeitet personenbezogene Daten im Auftrag des Kunden im Zusammenhang mit der Nutzung der Plattform für
     Standortmanagement, QR-Meldungen und Nachverfolgung von Issues und Aufgaben sowie — falls aktiviert — optionale
-    ESG-/Compliance-Messungen.
+    ESG-/Compliance-Messungen und IoT Connect (Sensor-Events in den Workflow).
 </p>
 
 <h2>3. Zweck der Verarbeitung</h2>
@@ -35,6 +35,7 @@
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Protokollierung und Sicherheit.</li>
     <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
+    <li>Verarbeitung von IoT-Events (Alarme zu Meldungen/Aufgaben; Messungen zu ESG, sofern konfiguriert).</li>
 </ul>
 
 <h2>4. Art der Daten</h2>
@@ -46,7 +47,8 @@
     <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben.</li>
     <li>Zugangs- und Sitzungsdaten.</li>
     <li>Abonnement- und Zugriffsmetadaten.</li>
-    <li>ESG-/Compliance-Daten (Indikatordefinitionen, Messwerte, Verknüpfungen und optionale Zuordnung zu Ausführenden).</li>
+    <li>ESG-/Compliance-Daten (Indikatordefinitionen, Messwerte, Verknüpfungen, Schwellennachverfolgung und optionale Zuordnung zu Ausführenden).</li>
+    <li>IoT-Daten (Gateways, Sensormappings, Alarmregeln, Event-Status; kein Zeitreihen-Dump).</li>
 </ul>
 
 <h2>5. Pflichten von WinProx</h2>
@@ -108,6 +110,7 @@
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
+    <li>IoT-Events und Gateway-/Sensor-Metadaten: Vertragslaufzeit + 36 Monate (sofern nicht früher durch Tenant-Löschung entfernt).</li>
     <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Medien): max. 30 Tage.</li>
 </ul>
 
