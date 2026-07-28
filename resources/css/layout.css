@@ -34,8 +34,8 @@
 .wp-app {
     min-height: 100vh;
     min-height: 100dvh;
-    /* Beheer: vaste thumb-maat (~50% van 80px); max 4 foto's, geen extra kolommen. */
-    --wp-photo-thumb-size: 2.5rem;
+    /* Beheer: ~50% van eerdere fluid-thumbs (~160px → 80px); max 4 slots. */
+    --wp-photo-thumb-size: 5rem;
 }
 
 .wp-app .wp-photo-grid--gallery {
