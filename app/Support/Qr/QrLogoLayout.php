@@ -19,8 +19,8 @@ final class QrLogoLayout
     /** Binnenpadding wit kader — minimaal, logo vult het kader. */
     public const BOX_INNER_PADDING_RATIO = 0.02;
 
-    /** Vierkant WinProx-icoon (zonder A6-tekst). */
-    public const WINPROX_QR_CENTER_SVG = 'images/qr/svg/winprox_qr_center.svg';
+    /** Vierkant WinProx-icoon (PNG voor QR-midden / fallback). */
+    public const WINPROX_QR_CENTER_PNG = 'images/Winprox_logo_200.png';
 
     public static function innerPaddingPx(): int
     {

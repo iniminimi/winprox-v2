@@ -13,7 +13,7 @@ use RuntimeException;
  */
 final class QrStickerBackground
 {
-    public const DEFAULT_AVERY_62X89_RELATIVE = 'images/qr/svg/qr_background.png';
+    public const DEFAULT_AVERY_62X89_RELATIVE = 'images/qr/avery_62x89_background.png';
 
     public static function absolutePathForTemplate(
         QrStickerSheetTemplate $template,

@@ -19,9 +19,7 @@ final class QrCenterLogo
         'Winprox_logo_300.png',
     ];
 
-    private const WINPROX_QR_CENTER_SVG = QrLogoLayout::WINPROX_QR_CENTER_SVG;
-
-    private const WINPROX_A6_SVG = 'images/qr/svg/A6_winprox_logo.svg';
+    private const WINPROX_QR_CENTER = QrLogoLayout::WINPROX_QR_CENTER_PNG;
 
     /** Publieke URL voor het centrelogo op scherm/print (nooit leeg). */
     public static function publicUrl(?Tenant $tenant): string
@@ -56,7 +54,7 @@ final class QrCenterLogo
             }
         }
 
-        return asset(self::WINPROX_QR_CENTER_SVG);
+        return asset(self::WINPROX_QR_CENTER);
     }
 
     public static function winproxAbsolutePath(): string
@@ -68,12 +66,7 @@ final class QrCenterLogo
             }
         }
 
-        $qrCenter = public_path(self::WINPROX_QR_CENTER_SVG);
-        if (is_file($qrCenter)) {
-            return $qrCenter;
-        }
-
-        return public_path(self::WINPROX_A6_SVG);
+        return public_path(self::WINPROX_QR_CENTER);
     }
 
     /** Absoluut pad voor PNG-stickerexport (organisatie of WinProx-fallback). */

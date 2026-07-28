@@ -16,12 +16,15 @@ enum QrPrintablePageBackgroundPreset: string
 
     public const LAYOUT_KEY = 'background_preset';
 
+    /**
+     * GD-friendly raster (outside images/qr/svg — that folder keeps SVG sources only).
+     */
     public function relativePng(): string
     {
         return match ($this) {
-            self::Blue => 'images/qr/svg/QR_printable_blue.png',
-            self::Green => 'images/qr/svg/QR_printable_green.png',
-            self::Multi => 'images/qr/svg/QR_printable_multi_color.png',
+            self::Blue => 'images/qr/QR_printable_blue.png',
+            self::Green => 'images/qr/QR_printable_green.png',
+            self::Multi => 'images/qr/QR_printable_multi_color.png',
         };
     }
 
@@ -46,7 +49,7 @@ enum QrPrintablePageBackgroundPreset: string
             return $svg;
         }
 
-        throw new \RuntimeException('Printable QR page preset background is missing at '.$this->relativePng().'.');
+        throw new \RuntimeException('Printable QR page preset background is missing at '.$this->relativeSvg().'.');
     }
 
     public function publicUrl(): string

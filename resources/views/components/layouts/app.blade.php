@@ -162,7 +162,7 @@
             @if (file_exists(public_path('images/Winprox_logo_100.png')))
                 <img src="{{ asset('images/Winprox_logo_100.png') }}" alt="" width="32" height="32" class="wp-brand-float-img">
             @else
-                <img src="{{ asset('images/qr/svg/A6_winprox_logo.svg') }}" alt="" width="72" height="40" class="wp-brand-float-img">
+                <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" width="72" height="40" class="wp-brand-float-img">
             @endif
         </a>
 
