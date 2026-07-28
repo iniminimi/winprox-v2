@@ -70,12 +70,12 @@
         "confirm_status": "Aplicar estado",
         "pause": "Nota de pausa",
         "pause_submit": "Guardar nota de pausa",
-        "updates": "Progreso",
+        "updates": "Resolución",
         "errors": {
             "team_required": "Elija un equipo.",
             "issue_not_approved": "La incidencia debe estar aprobada antes de poder editar las tareas."
         },
-        "updates_hint": "Notas, fotos y acciones de trabajadores y administradores al resolver esta incidencia."
+        "updates_hint": "Solo notas, fotos y acciones de estado de esta tarea."
     },
     "errors": {
         "invalid_transition": "Este cambio de estado no está permitido.",

@@ -55,6 +55,7 @@ class CompleteTaskAction
 
         if ($note !== null && $worker !== null) {
             $issue->updates()->create([
+                'task_id' => $task->id,
                 'worker_id' => $worker->id,
                 'kind' => 'worker_note',
                 'description' => $note,
@@ -67,6 +68,7 @@ class CompleteTaskAction
 
             /** @var IssueUpdate $update */
             $update = $issue->updates()->create([
+                'task_id' => $task->id,
                 'worker_id' => $worker->id,
                 'kind' => 'worker_photos',
                 'description' => null,

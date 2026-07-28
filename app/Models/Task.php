@@ -58,6 +58,12 @@ class Task extends Model
         return $this->belongsTo(Issue::class);
     }
 
+    /** Afhandelingsnotities/foto's die bij deze taak horen (IssueUpdate met task_id). */
+    public function updates(): HasMany
+    {
+        return $this->hasMany(IssueUpdate::class);
+    }
+
     public function esgThresholdMeasurement(): BelongsTo
     {
         return $this->belongsTo(EsgMeasurement::class, 'esg_threshold_measurement_id');

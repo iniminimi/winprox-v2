@@ -50,6 +50,7 @@ class UpdateTaskStatusAction
                 description: trim($reason),
                 userId: $actor?->id,
                 kind: 'status_reason',
+                taskId: (int) $task->id,
             );
         }
 

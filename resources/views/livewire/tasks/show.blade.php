@@ -251,11 +251,11 @@
         </div>
     @endif
 
-    @if ($issue?->updates->isNotEmpty())
+    @if ($task->updates->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('tasks.show.updates') }}</h2>
             <p class="wp-muted wp-text-sm">{{ __('tasks.show.updates_hint') }}</p>
-            @foreach ($issue->updates->sortByDesc('created_at') as $update)
+            @foreach ($task->updates->sortByDesc('created_at') as $update)
                 <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted" wire:key="task-update-{{ $update->id }}">
                     <div class="wp-row">
                         <span aria-hidden="true"></span>

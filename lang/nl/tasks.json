@@ -70,12 +70,12 @@
         "confirm_status": "Status toepassen",
         "pause": "Pauzenotitie",
         "pause_submit": "Pauzenotitie opslaan",
-        "updates": "Voortgang",
+        "updates": "Afhandeling",
         "errors": {
             "team_required": "Kies een team.",
             "issue_not_approved": "De melding moet eerst goedgekeurd zijn voordat taken bewerkt kunnen worden."
         },
-        "updates_hint": "Notities, foto's en acties van uitvoerders en beheerders bij het oplossen van deze melding."
+        "updates_hint": "Alleen notities, foto's en statusacties van deze taak."
     },
     "errors": {
         "invalid_transition": "Deze statuswijziging is niet toegestaan.",

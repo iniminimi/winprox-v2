@@ -40,10 +40,15 @@ it('completes a task with current timestamp when no client timestamp provided', 
     Carbon::setTestNow('2024-01-01 12:00:00');
 
     $action = app(CompleteTaskAction::class);
-    $result = $action->handle($task, $worker);
+    $result = $action->handle($task, $worker, 'Intercom was ok');
 
     expect($result->status)->toBe(TaskStatus::Done);
     expect($result->completed_at)->toEqual(Carbon::parse('2024-01-01 12:00:00'));
+
+    $update = $issue->updates()->where('kind', 'worker_note')->first();
+    expect($update)->not->toBeNull()
+        ->and($update?->task_id)->toBe($task->id)
+        ->and($update?->description)->toBe('Intercom was ok');
 });
 
 it('completes a task with client timestamp when provided', function () {

@@ -530,7 +530,7 @@ it('sorteert meldingen en taken binnen status op id aflopend', function () {
         });
 });
 
-it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding', function () {
+it('toont op taakdetail alleen afhandeling van deze taak, niet van andere taken', function () {
     Storage::fake('public');
 
     $tenant = Tenant::factory()->create();
@@ -542,7 +542,12 @@ it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding'
         'tenant_id' => $tenant->id,
         'approved_at' => now(),
     ]);
-    $task = Task::factory()->create([
+    $thisTask = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $otherTask = Task::factory()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
         'internal_team_id' => $team->id,
@@ -557,6 +562,7 @@ it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding'
     \App\Models\IssueUpdate::query()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
+        'task_id' => $thisTask->id,
         'worker_id' => $worker->id,
         'kind' => 'worker_note',
         'description' => 'Intercom was ok',
@@ -565,9 +571,28 @@ it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding'
     $photos = \App\Models\IssueUpdate::query()->create([
         'tenant_id' => $tenant->id,
         'issue_id' => $issue->id,
+        'task_id' => $thisTask->id,
         'worker_id' => $worker->id,
         'kind' => 'worker_photos',
         'description' => null,
+    ]);
+
+    \App\Models\IssueUpdate::query()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'task_id' => $otherTask->id,
+        'worker_id' => $worker->id,
+        'kind' => 'worker_note',
+        'description' => 'Andere taak: TV is hersteld',
+    ]);
+
+    \App\Models\IssueUpdate::query()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'task_id' => null,
+        'user_id' => $user->id,
+        'kind' => 'note',
+        'description' => 'Algemene meldingsnotitie',
     ]);
 
     IssuePhoto::factory()->create([
@@ -579,12 +604,14 @@ it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding'
     Storage::disk('public')->put('issue-photos/task-progress.jpg', 'jpeg');
 
     Livewire::actingAs($user)
-        ->test(TaskShow::class, ['task' => $task])
+        ->test(TaskShow::class, ['task' => $thisTask])
         ->assertSee(__('tasks.show.updates'))
         ->assertSee(__('tasks.show.updates_hint'))
         ->assertSee('Intercom was ok')
         ->assertSee(__('issues.show.added_by_worker'))
         ->assertSee('Jan Uitvoerder')
         ->assertSee(__('issues.updates.kind.worker_photos'))
-        ->assertSee('/storage/issue-photos/task-progress.jpg', false);
+        ->assertSee('/storage/issue-photos/task-progress.jpg', false)
+        ->assertDontSee('Andere taak: TV is hersteld')
+        ->assertDontSee('Algemene meldingsnotitie');
 });

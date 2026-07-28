@@ -11,8 +11,14 @@ use App\Models\IssueUpdate;
  */
 class AddIssueUpdateAction
 {
-    public function handle(Issue $issue, string $description, ?int $workerId = null, ?int $userId = null, ?string $kind = null): IssueUpdate
-    {
+    public function handle(
+        Issue $issue,
+        string $description,
+        ?int $workerId = null,
+        ?int $userId = null,
+        ?string $kind = null,
+        ?int $taskId = null,
+    ): IssueUpdate {
         // Prevent update creation for closed issues
         if ($issue->isClosed()) {
             throw new \InvalidArgumentException('Cannot add update to closed issue');
@@ -23,6 +29,7 @@ class AddIssueUpdateAction
             'worker_id' => $workerId,
             'user_id' => $userId,
             'kind' => $kind,
+            'task_id' => $taskId,
         ]);
     }
 }

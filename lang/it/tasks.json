@@ -70,12 +70,12 @@
         "confirm_status": "Applica stato",
         "pause": "Nota di pausa",
         "pause_submit": "Salva nota di pausa",
-        "updates": "Avanzamento",
+        "updates": "Gestione",
         "errors": {
             "team_required": "Scelga un team.",
             "issue_not_approved": "La segnalazione deve essere approvata prima di poter modificare le attività."
         },
-        "updates_hint": "Note, foto e azioni di operatori e amministratori durante la risoluzione di questa segnalazione."
+        "updates_hint": "Solo note, foto e azioni di stato di questa attività."
     },
     "errors": {
         "invalid_transition": "Questo cambio di stato non è consentito.",

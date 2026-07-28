@@ -29,6 +29,7 @@ class PauseTaskAction
             description: trim($note),
             userId: $actor?->id,
             kind: 'pause',
+            taskId: (int) $task->id,
         );
 
         return $task->fresh();

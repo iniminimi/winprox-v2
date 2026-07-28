@@ -56,9 +56,9 @@ class Show extends Component
             'issue.unit.translations',
             'issue.esgIndicator.translations',
             'issue.translations',
-            'issue.updates.user',
-            'issue.updates.worker',
-            'issue.updates.photos',
+            'updates.user',
+            'updates.worker',
+            'updates.photos',
             'translations',
             'team.translations',
             'esgThresholdMeasurement.indicator.translations',
@@ -147,9 +147,9 @@ class Show extends Component
             'issue.unit.translations',
             'issue.esgIndicator.translations',
             'issue.translations',
-            'issue.updates.user',
-            'issue.updates.worker',
-            'issue.updates.photos',
+            'updates.user',
+            'updates.worker',
+            'updates.photos',
             'translations',
             'team.translations',
             'esgThresholdMeasurement.indicator.translations',
@@ -260,7 +260,7 @@ class Show extends Component
 
     protected function refreshTask(): void
     {
-        $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'issue.updates.user', 'issue.updates.worker', 'issue.updates.photos', 'team.translations']);
+        $this->task = $this->task->fresh(['issue.location', 'issue.unit', 'updates.user', 'updates.worker', 'updates.photos', 'team.translations']);
         $this->syncFormFromTask();
     }
 

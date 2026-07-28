@@ -11,11 +11,16 @@ class IssueUpdate extends Model
 {
     use BelongsToTenant;
 
-    protected $fillable = ['tenant_id', 'issue_id', 'user_id', 'worker_id', 'kind', 'description'];
+    protected $fillable = ['tenant_id', 'issue_id', 'task_id', 'user_id', 'worker_id', 'kind', 'description'];
 
     public function issue(): BelongsTo
     {
         return $this->belongsTo(Issue::class);
+    }
+
+    public function task(): BelongsTo
+    {
+        return $this->belongsTo(Task::class);
     }
 
     public function photos(): HasMany
