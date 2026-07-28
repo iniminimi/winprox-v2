@@ -224,8 +224,8 @@
                     "text": "Dopo un'importazione compare una panoramica delle importazioni recenti (30 giorni) per questa sede. Per importazione vede nome file, data e numero di unità. Clicchi Annulla importazione per rimuovere le unità senza segnalazioni o attività. Le categorie vuote create solo dall'importazione vengono ripulite. La sede stessa viene mantenuta."
                 },
                 {
-                    "label": "Scarica foglio adesivi QR",
-                    "text": "Scarichi un file Word (Avery 55×55 o HERMA 70×50) con adesivi QR per tutte le unità in questa sede. Può anche generare codici QR dinamici liberi non ancora collegati a un'unità. Questi possono prima essere appiccicati a un'unità e poi assegnati a un'unità tramite lo stesso codice QR. Amministratori\/dipendenti possono collegare tutte le unità a questi codici QR dinamici. I lavoratori del team possono collegare solo unità collegate al proprio team."
+                    "label": "Foglio di stampa QR",
+                    "text": "Scarichi un file Word con adesivi QR (Avery\/HERMA) o fogli a pagina intera (A6\/A5\/A4, 1 QR per pagina) per tutte le unità in questa sede. Può anche generare codici QR dinamici liberi non ancora collegati a un'unità. Questi possono prima essere appiccicati a un'unità e poi assegnati a un'unità tramite lo stesso codice QR. Amministratori\/dipendenti possono collegare tutte le unità a questi codici QR dinamici. I lavoratori del team possono collegare solo unità collegate al proprio team."
                 },
                 {
                     "label": "GPS",

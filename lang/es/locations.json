@@ -62,7 +62,7 @@
     "location_qr_subtitle": "QR general de la ubicación para informes sin unidad.",
     "unit_qr": "QR de unidad",
     "unit_qr_subtitle": "Código QR de esta unidad — enlaza al portal de informes.",
-    "qr_pack_download": "Descargar hoja de pegatinas QR",
+    "qr_pack_download": "Hoja de impresión QR",
     "nav_label": "Navegación de ubicaciones",
     "prev": "Ubicación anterior",
     "next": "Ubicación siguiente",
@@ -249,12 +249,12 @@
     },
     "qr_pack": {
         "unavailable": "La exportación QR no está disponible en este servidor.",
-        "no_units": "Aún no hay unidades para generar una hoja de pegatinas QR.",
+        "no_units": "Aún no hay unidades para generar una hoja de impresión QR.",
         "invalid_count": "El número de códigos QR debe estar entre 1 y 100.",
-        "modal_title": "Descargar hoja de pegatinas QR",
-        "modal_subtitle": "Elija el formato de etiqueta que coincida con su hoja de pegatinas.",
-        "generating": "Generando hoja de pegatinas…",
-        "download_failed": "No se ha podido generar la hoja de pegatinas QR.",
+        "modal_title": "Hoja de impresión QR",
+        "modal_subtitle": "Elija un formato de etiqueta o de papel.",
+        "generating": "Generando hoja de impresión…",
+        "download_failed": "No se ha podido generar la hoja de impresión QR.",
         "generate_dynamic": "Generar códigos QR dinámicos (aún no vinculados a unidades)",
         "dynamic_count_label": "Número de códigos QR",
         "dynamic_count_help": "Los códigos QR dinámicos se pueden vincular a unidades más tarde mediante la página de vinculación QR. Máximo 100.",
@@ -270,6 +270,18 @@
             "avery_62x89_r": {
                 "title": "Avery 62×89-R",
                 "description": "9 etiquetas por hoja (62 × 89 mm) — Avery L7108REV."
+            },
+            "a6_print": {
+                "title": "Hoja A6",
+                "description": "1 código QR por página (105 × 148 mm) — página completa con fondo."
+            },
+            "a5_print": {
+                "title": "Hoja A5",
+                "description": "1 código QR por página (148 × 210 mm) — página completa con fondo."
+            },
+            "a4_print": {
+                "title": "Hoja A4",
+                "description": "1 código QR por página (210 × 297 mm) — página completa con fondo."
             }
         }
     },

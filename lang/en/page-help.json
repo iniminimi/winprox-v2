@@ -224,8 +224,8 @@
                     "text": "After an import, an overview of recent imports (30 days) for this location appears. Per import you see file name, date and unit count. Click Undo import to remove units without issues or tasks. Empty categories created only by the import are cleaned up. The location itself is kept."
                 },
                 {
-                    "label": "Download QR sticker sheet",
-                    "text": "Download a Word file (Avery 55×55 or HERMA 70×50) with QR stickers for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators\/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
+                    "label": "QR print sheet",
+                    "text": "Download a Word file with QR stickers (Avery\/HERMA) or full-page print sheets (A6\/A5\/A4, 1 QR per page) for all units at this location. You can also generate free dynamic QR codes that are not yet linked to a unit. These can first be attached to a unit and then assigned to a unit via the same QR code. Administrators\/employees can link all units to these dynamic QR codes. Team workers can only link units that are connected to their team."
                 },
                 {
                     "label": "GPS",

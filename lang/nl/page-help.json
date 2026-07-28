@@ -224,8 +224,8 @@
                     "text": "Na een import verschijnt een overzicht van recente imports (30 dagen) voor deze locatie. Per import zie je bestandsnaam, datum en aantal units. Klik op Import terugdraaien om units zonder melding of taak te verwijderen. Lege categorieën die alleen door de import zijn aangemaakt worden opgeruimd. De locatie zelf blijft behouden."
                 },
                 {
-                    "label": "QR-stickerblad downloaden",
-                    "text": "Download een Word-bestand (Avery 55×55 of HERMA 70×50) met QR-stickers voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders\/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
+                    "label": "QR-afdrukblad",
+                    "text": "Download een Word-bestand met QR-stickers (Avery\/HERMA) of full-page afdrukbladen (A6\/A5\/A4, 1 QR per blad) voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders\/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
                 {
                     "label": "GPS",

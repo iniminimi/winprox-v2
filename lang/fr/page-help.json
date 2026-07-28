@@ -224,8 +224,8 @@
                     "text": "Après un import, un aperçu des imports récents (30 jours) pour ce lieu apparaît. Par import, vous voyez le nom du fichier, la date et le nombre d'unités. Cliquez sur Annuler l'import pour supprimer les unités sans signalement ni tâche. Les catégories vides créées uniquement par l'import sont nettoyées. Le lieu lui-même est conservé."
                 },
                 {
-                    "label": "Télécharger la feuille d'autocollants QR",
-                    "text": "Téléchargez un fichier Word (Avery 55×55 ou HERMA 70×50) avec des autocollants QR pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs\/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
+                    "label": "Feuille d’impression QR",
+                    "text": "Téléchargez un fichier Word avec des autocollants QR (Avery\/HERMA) ou des feuilles pleine page (A6\/A5\/A4, 1 QR par page) pour toutes les unités de ce site. Vous pouvez également générer des codes QR dynamiques libres qui ne sont pas encore liés à une unité. Ceux-ci peuvent d'abord être fixés à une unité puis assignés à une unité via le même code QR. Les administrateurs\/employés peuvent lier toutes les unités à ces codes QR dynamiques. Les travailleurs d'équipe ne peuvent lier que les unités connectées à leur équipe."
                 },
                 {
                     "label": "GPS",

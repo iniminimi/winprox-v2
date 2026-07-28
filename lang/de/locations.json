@@ -62,7 +62,7 @@
     "location_qr_subtitle": "Allgemeiner Standort-QR für Meldungen ohne Unit.",
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-Code für diese Unit — Link zum Meldeportal.",
-    "qr_pack_download": "QR-Etikettenbogen herunterladen",
+    "qr_pack_download": "QR-Druckbogen",
     "nav_label": "Standortnavigation",
     "prev": "Vorheriger Standort",
     "next": "Nächster Standort",
@@ -249,12 +249,12 @@
     },
     "qr_pack": {
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
-        "no_units": "Es gibt noch keine Units für einen QR-Etikettenbogen.",
+        "no_units": "Es gibt noch keine Units für einen QR-Druckbogen.",
         "invalid_count": "Die Anzahl der QR-Codes muss zwischen 1 und 100 liegen.",
-        "modal_title": "QR-Etikettenbogen herunterladen",
-        "modal_subtitle": "Wählen Sie das Etikettenformat, das zu Ihrem Bogen passt.",
-        "generating": "Etikettenbogen wird erstellt…",
-        "download_failed": "QR-Etikettenbogen konnte nicht erstellt werden.",
+        "modal_title": "QR-Druckbogen",
+        "modal_subtitle": "Wählen Sie ein Etiketten- oder Papierformat.",
+        "generating": "Druckbogen wird erstellt…",
+        "download_failed": "QR-Druckbogen konnte nicht erstellt werden.",
         "generate_dynamic": "Dynamische QR-Codes generieren (noch nicht mit Units verknüpft)",
         "dynamic_count_label": "Anzahl QR-Codes",
         "dynamic_count_help": "Dynamische QR-Codes können später über die QR-connect-Seite mit Units verknüpft werden. Maximum 100.",
@@ -270,6 +270,18 @@
             "avery_62x89_r": {
                 "title": "Avery 62×89-R",
                 "description": "9 Etiketten pro Bogen (62 × 89 mm) — Avery L7108REV."
+            },
+            "a6_print": {
+                "title": "A6-Druckbogen",
+                "description": "1 QR-Code pro Blatt (105 × 148 mm) — ganzseitig mit Hintergrund."
+            },
+            "a5_print": {
+                "title": "A5-Druckbogen",
+                "description": "1 QR-Code pro Blatt (148 × 210 mm) — ganzseitig mit Hintergrund."
+            },
+            "a4_print": {
+                "title": "A4-Druckbogen",
+                "description": "1 QR-Code pro Blatt (210 × 297 mm) — ganzseitig mit Hintergrund."
             }
         }
     },

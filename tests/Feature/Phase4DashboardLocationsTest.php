@@ -522,7 +522,7 @@ it('qr-pack dynamic download works for avery 62x89 branded template', function (
     expect(\App\Models\QrCode::where('tenant_id', $tenant->id)->count())->toBe(3);
 });
 
-it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function () {
+it('toont QR-afdrukblad-modal met formaten wanneer units aanwezig', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -540,7 +540,59 @@ it('toont QR-stickerblad-modal met formaten wanneer units aanwezig', function ()
         ->assertSee(__('locations.qr_pack.generating'))
         ->assertSee(__('locations.qr_pack.formats.avery_55x55_s.title'))
         ->assertSee(__('locations.qr_pack.formats.herma_70x50.title'))
-        ->assertSee(__('locations.qr_pack.formats.avery_62x89_r.title'));
+        ->assertSee(__('locations.qr_pack.formats.avery_62x89_r.title'))
+        ->assertSee(__('locations.qr_pack.formats.a6_print.title'))
+        ->assertSee(__('locations.qr_pack.formats.a5_print.title'))
+        ->assertSee(__('locations.qr_pack.formats.a4_print.title'));
+});
+
+it('qr-pack download returns a6 printable docx when GD available', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hal A6',
+    ]);
+    Unit::factory()->withQrToken('qr-facility-a6-print')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Poort 1',
+        'is_active' => true,
+    ]);
+
+    $response = $this->actingAs($user)->get(route('locations.qr-pack', [
+        'location' => $location,
+        'template' => 'a6_print',
+    ]));
+
+    $response->assertOk();
+    $response->assertHeader(
+        'content-type',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    );
+
+    $zip = new \ZipArchive;
+    $tmp = tempnam(sys_get_temp_dir(), 'wp-docx-a6-');
+    file_put_contents($tmp, $response->streamedContent());
+    expect($zip->open($tmp))->toBeTrue();
+    $documentXml = $zip->getFromName('word/document.xml');
+    $mediaCount = 0;
+    for ($i = 0; $i < $zip->numFiles; $i++) {
+        $name = $zip->getNameIndex($i);
+        if (is_string($name) && str_starts_with($name, 'word/media/')) {
+            $mediaCount++;
+        }
+    }
+    $zip->close();
+    @unlink($tmp);
+
+    expect($documentXml)->toBeString()
+        ->and($documentXml)->toContain('w:pgSz')
+        ->and($mediaCount)->toBeGreaterThanOrEqual(1);
 });
 
 it('toont WinProx-logo in unit-QR wanneer geen organisatielogo is', function () {

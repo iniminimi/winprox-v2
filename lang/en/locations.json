@@ -62,7 +62,7 @@
     "location_qr_subtitle": "General location QR for reports without a unit.",
     "unit_qr": "Unit QR",
     "unit_qr_subtitle": "QR code for this unit — links to the report portal.",
-    "qr_pack_download": "Download QR sticker sheet",
+    "qr_pack_download": "QR print sheet",
     "nav_label": "Location navigation",
     "prev": "Previous location",
     "next": "Next location",
@@ -249,12 +249,12 @@
     },
     "qr_pack": {
         "unavailable": "QR export is unavailable on this server.",
-        "no_units": "There are no units yet to build a QR sticker sheet.",
+        "no_units": "There are no units yet to build a QR print sheet.",
         "invalid_count": "The number of QR codes must be between 1 and 100.",
-        "modal_title": "Download QR sticker sheet",
-        "modal_subtitle": "Choose the label format that matches your sticker sheet.",
-        "generating": "Generating sticker sheet…",
-        "download_failed": "Could not generate the QR sticker sheet.",
+        "modal_title": "QR print sheet",
+        "modal_subtitle": "Choose a label or paper format.",
+        "generating": "Generating print sheet…",
+        "download_failed": "Could not generate the QR print sheet.",
         "generate_dynamic": "Generate dynamic QR codes (not yet linked to units)",
         "dynamic_count_label": "Number of QR codes",
         "dynamic_count_help": "Dynamic QR codes can be linked to units later via the QR-connect page. Maximum 100.",
@@ -270,6 +270,18 @@
             "avery_62x89_r": {
                 "title": "Avery 62×89-R",
                 "description": "9 labels per sheet (62 × 89 mm) — Avery L7108REV."
+            },
+            "a6_print": {
+                "title": "A6 print sheet",
+                "description": "1 QR code per page (105 × 148 mm) — full-page with background."
+            },
+            "a5_print": {
+                "title": "A5 print sheet",
+                "description": "1 QR code per page (148 × 210 mm) — full-page with background."
+            },
+            "a4_print": {
+                "title": "A4 print sheet",
+                "description": "1 QR code per page (210 × 297 mm) — full-page with background."
             }
         }
     },

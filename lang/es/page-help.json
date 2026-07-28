@@ -224,8 +224,8 @@
                     "text": "Tras una importación, aparece un resumen de importaciones recientes (30 días) de esta ubicación. Por importación ve el nombre del archivo, la fecha y el número de unidades. Pulse Deshacer importación para eliminar unidades sin incidencias ni tareas. Las categorías vacías creadas solo por la importación se limpian. La ubicación en sí se conserva."
                 },
                 {
-                    "label": "Descargar hoja de pegatinas QR",
-                    "text": "Descargue un archivo Word (Avery 55×55 o HERMA 70×50) con pegatinas QR para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores\/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
+                    "label": "Hoja de impresión QR",
+                    "text": "Descargue un archivo Word con pegatinas QR (Avery\/HERMA) u hojas a página completa (A6/A5/A4, 1 QR por página) para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores\/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
                 },
                 {
                     "label": "GPS",

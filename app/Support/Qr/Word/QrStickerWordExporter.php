@@ -21,6 +21,7 @@ final class QrStickerWordExporter
         private readonly Avery55x55WordStickerSheetBuilder $avery55x55Builder = new Avery55x55WordStickerSheetBuilder,
         private readonly Herma7050WordStickerSheetBuilder $herma7050Builder = new Herma7050WordStickerSheetBuilder,
         private readonly Avery62x89WordStickerSheetBuilder $avery62x89Builder = new Avery62x89WordStickerSheetBuilder,
+        private readonly QrPrintablePageWordBuilder $printablePageBuilder = new QrPrintablePageWordBuilder,
     ) {}
 
     public function downloadFilename(Location $location, QrStickerSheetTemplate $template): string
@@ -75,6 +76,15 @@ final class QrStickerWordExporter
                 QrStickerSheetTemplate::Avery55x55S => $this->avery55x55Builder->build($entries, $centerLogoPath),
                 QrStickerSheetTemplate::Herma7050 => $this->herma7050Builder->build($entries, $centerLogoPath),
                 QrStickerSheetTemplate::Avery62x89R => $this->avery62x89Builder->build($entries, $centerLogoPath, $tenant, $sheetSettings),
+                QrStickerSheetTemplate::A6Print,
+                QrStickerSheetTemplate::A5Print,
+                QrStickerSheetTemplate::A4Print => $this->printablePageBuilder->build(
+                    $entries,
+                    $template,
+                    $centerLogoPath,
+                    $tenant,
+                    $sheetSettings,
+                ),
             };
         } finally {
             QrStickerRasterCache::clear();

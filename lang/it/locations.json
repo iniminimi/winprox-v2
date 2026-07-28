@@ -62,7 +62,7 @@
     "location_qr_subtitle": "QR sede generale per segnalazioni senza unità.",
     "unit_qr": "QR unità",
     "unit_qr_subtitle": "Codice QR per questa unità — collega al portale segnalazioni.",
-    "qr_pack_download": "Scarica foglio adesivi QR",
+    "qr_pack_download": "Foglio di stampa QR",
     "nav_label": "Navigazione sede",
     "prev": "Sede precedente",
     "next": "Sede successiva",
@@ -249,12 +249,12 @@
     },
     "qr_pack": {
         "unavailable": "Esportazione QR non disponibile su questo server.",
-        "no_units": "Non ci sono ancora unità per creare un foglio adesivi QR.",
+        "no_units": "Non ci sono ancora unità per creare un foglio di stampa QR.",
         "invalid_count": "Il numero di codici QR deve essere tra 1 e 100.",
-        "modal_title": "Scarica foglio adesivi QR",
-        "modal_subtitle": "Scelga il formato etichetta corrispondente al Suo foglio adesivi.",
-        "generating": "Generazione foglio adesivi…",
-        "download_failed": "Impossibile generare il foglio adesivi QR.",
+        "modal_title": "Foglio di stampa QR",
+        "modal_subtitle": "Scelga un formato etichetta o carta.",
+        "generating": "Generazione foglio di stampa…",
+        "download_failed": "Impossibile generare il foglio di stampa QR.",
         "generate_dynamic": "Genera codici QR dinamici (non ancora collegati a unità)",
         "dynamic_count_label": "Numero di codici QR",
         "dynamic_count_help": "I codici QR dinamici possono essere collegati alle unità in seguito tramite la pagina QR-connect. Massimo 100.",
@@ -270,6 +270,18 @@
             "avery_62x89_r": {
                 "title": "Avery 62×89-R",
                 "description": "9 etichette per foglio (62 × 89 mm) — Avery L7108REV."
+            },
+            "a6_print": {
+                "title": "Foglio A6",
+                "description": "1 codice QR per pagina (105 × 148 mm) — pagina intera con sfondo."
+            },
+            "a5_print": {
+                "title": "Foglio A5",
+                "description": "1 codice QR per pagina (148 × 210 mm) — pagina intera con sfondo."
+            },
+            "a4_print": {
+                "title": "Foglio A4",
+                "description": "1 codice QR per pagina (210 × 297 mm) — pagina intera con sfondo."
             }
         }
     },

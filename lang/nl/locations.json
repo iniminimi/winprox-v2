@@ -62,7 +62,7 @@
     "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-code voor deze unit — link naar het meldportaal.",
-    "qr_pack_download": "QR-stickerblad downloaden",
+    "qr_pack_download": "QR-afdrukblad",
     "nav_label": "Locatienavigatie",
     "prev": "Vorige locatie",
     "next": "Volgende locatie",
@@ -249,12 +249,12 @@
     },
     "qr_pack": {
         "unavailable": "QR-export is niet beschikbaar op deze server.",
-        "no_units": "Er zijn nog geen units om een QR-stickerblad te maken.",
+        "no_units": "Er zijn nog geen units om een QR-afdrukblad te maken.",
         "invalid_count": "Het aantal QR-codes moet tussen 1 en 100 liggen.",
-        "modal_title": "QR-stickerblad downloaden",
-        "modal_subtitle": "Kies het etiketformaat dat bij je stickerblad past.",
-        "generating": "Stickervellen worden aangemaakt…",
-        "download_failed": "QR-stickerblad kon niet worden aangemaakt.",
+        "modal_title": "QR-afdrukblad",
+        "modal_subtitle": "Kies het etiket- of papierformaat.",
+        "generating": "Afdrukblad wordt aangemaakt…",
+        "download_failed": "QR-afdrukblad kon niet worden aangemaakt.",
         "generate_dynamic": "Genereer dynamische QR-codes (nog niet gekoppeld aan units)",
         "dynamic_count_label": "Aantal QR-codes",
         "dynamic_count_help": "Dynamische QR-codes kunnen later worden gekoppeld aan units via de QR-connect pagina. Maximaal 100.",
@@ -270,6 +270,18 @@
             "avery_62x89_r": {
                 "title": "Avery 62×89-R",
                 "description": "9 etiketten per vel (62 × 89 mm) — Avery L7108REV."
+            },
+            "a6_print": {
+                "title": "A6-afdrukblad",
+                "description": "1 QR-code per blad (105 × 148 mm) — full-page met achtergrond."
+            },
+            "a5_print": {
+                "title": "A5-afdrukblad",
+                "description": "1 QR-code per blad (148 × 210 mm) — full-page met achtergrond."
+            },
+            "a4_print": {
+                "title": "A4-afdrukblad",
+                "description": "1 QR-code per blad (210 × 297 mm) — full-page met achtergrond."
             }
         }
     },

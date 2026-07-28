@@ -224,8 +224,8 @@
                     "text": "Nach einem Import erscheint eine Übersicht der letzten Imports (30 Tage) für diesen Standort. Pro Import sehen Sie Dateiname, Datum und Unit-Anzahl. Klicken Sie auf Import rückgängig machen, um Units ohne Meldungen oder Aufgaben zu entfernen. Leere nur durch den Import erstellte Kategorien werden aufgeräumt. Der Standort selbst bleibt erhalten."
                 },
                 {
-                    "label": "QR-Aufkleberblatt herunterladen",
-                    "text": "Laden Sie eine Word-Datei (Avery 55×55 oder HERMA 70×50) mit QR-Aufklebern für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren\/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
+                    "label": "QR-Druckbogen",
+                    "text": "Laden Sie eine Word-Datei mit QR-Aufklebern (Avery\/HERMA) oder ganzseitigen Druckbögen (A6\/A5\/A4, 1 QR pro Blatt) für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren\/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
                 },
                 {
                     "label": "GPS",
