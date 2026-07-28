@@ -41,9 +41,9 @@ final class QrPrintablePageWordBuilder
 
     private const LINE_GAP_MM = 1.2;
 
-    private const PRIMARY_FONT_MM = 3.6;
+    private const PRIMARY_FONT_MM = 2.8;
 
-    private const SECONDARY_FONT_MM = 3.1;
+    private const SECONDARY_FONT_MM = 3.8;
 
     /**
      * @param  list<QrStickerEntry>  $entries
