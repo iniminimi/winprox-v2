@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "Stampa QR",
-                    "text": "Apri la pagina QR stampabile e applichi l'adesivo all'ingresso, magazzino o altro luogo. Ogni clock point ha un codice univoco."
+                    "text": "Con <strong>Codice QR</strong> apre una pagina di stampa rapida nel browser. Clicchi su Stampa e applichi il QR all'ingresso, magazzino o altro luogo. Ogni clock point ha un codice univoco."
+                },
+                {
+                    "label": "Foglio di stampa QR",
+                    "text": "Con <strong>Foglio di stampa QR</strong> scarica un file Word con un QR a pagina intera (A6, A5 o A4) per questo clock point. Il foglio usa lo stesso sfondo e branding di Impostazioni → Foglio di stampa QR (A6/A5/A4)."
                 },
                 {
                     "label": "Rinnova QR",

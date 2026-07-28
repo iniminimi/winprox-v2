@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "Imprimir QR",
-                    "text": "Abra la página QR imprimible y coloque la pegatina en la entrada, almacén u otro lugar. Cada clock point tiene un código único."
+                    "text": "Con <strong>Código QR</strong> abre una página de impresión rápida en el navegador. Pulse Imprimir y coloque el QR en la entrada, almacén u otro lugar. Cada clock point tiene un código único."
+                },
+                {
+                    "label": "Hoja de impresión QR",
+                    "text": "Con <strong>Hoja de impresión QR</strong> descarga un archivo Word con un QR a página completa (A6, A5 o A4) para este clock point. La hoja usa el mismo fondo y marca que en Ajustes → Hoja de impresión QR (A6/A5/A4)."
                 },
                 {
                     "label": "Renovar QR",

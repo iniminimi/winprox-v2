@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "Imprimer le QR",
-                    "text": "Ouvrez la page QR imprimable et installez l'autocollant à l'entrée, à l'entrepôt ou sur un autre site. Chaque clock point a un code unique."
+                    "text": "Via <strong>Code QR</strong>, ouvrez une page d'impression rapide dans le navigateur. Cliquez sur Imprimer et placez le QR à l'entrée, à l'entrepôt ou sur un autre site. Chaque clock point a un code unique."
+                },
+                {
+                    "label": "Feuille d'impression QR",
+                    "text": "Via <strong>Feuille d'impression QR</strong>, téléchargez un fichier Word avec un QR pleine page (A6, A5 ou A4) pour ce clock point. La feuille utilise le même arrière-plan et la même charte que dans Paramètres → Feuille d'impression QR (A6/A5/A4)."
                 },
                 {
                     "label": "Renouveler le QR",

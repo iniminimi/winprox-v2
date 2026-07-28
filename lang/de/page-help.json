@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "QR-Code drucken",
-                    "text": "Öffnen Sie die druckbare QR-Seite und bringen Sie den Aufkleber am Eingang, im Lager oder an einem anderen Ort an. Jeder Clock Point hat einen eindeutigen Code."
+                    "text": "Über <strong>QR-Code</strong> öffnen Sie eine schnelle Druckseite im Browser. Klicken Sie auf Drucken und bringen Sie den QR am Eingang, im Lager oder an einem anderen Ort an. Jeder Clock Point hat einen eindeutigen Code."
+                },
+                {
+                    "label": "QR-Druckblatt",
+                    "text": "Über <strong>QR-Druckblatt</strong> laden Sie eine Word-Datei mit einem ganzseitigen QR (A6, A5 oder A4) für diesen Clock Point herunter. Das Blatt nutzt denselben Hintergrund und dasselbe Branding wie unter Einstellungen → QR-Druckblatt (A6/A5/A4)."
                 },
                 {
                     "label": "QR-Code erneuern",

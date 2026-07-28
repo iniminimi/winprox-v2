@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "QR-code afdrukken",
-                    "text": "Open de printbare QR-pagina en hang de sticker op aan de ingang, magazijn of andere locatie. Elke clock point heeft een unieke code."
+                    "text": "Via <strong>QR-code</strong> opent u een snelle printpagina in de browser. Klik op Afdrukken en hang de QR op aan de ingang, magazijn of andere locatie. Elke clock point heeft een unieke code."
+                },
+                {
+                    "label": "QR-afdrukblad",
+                    "text": "Via <strong>QR-afdrukblad</strong> downloadt u een Word-bestand met één full-page QR (A6, A5 of A4) voor dit clock point. Het blad gebruikt dezelfde achtergrond en branding als bij Instellingen → QR-afdrukblad (A6/A5/A4)."
                 },
                 {
                     "label": "QR-code vernieuwen",

@@ -1084,7 +1084,11 @@
                 },
                 {
                     "label": "Print QR code",
-                    "text": "Open the printable QR page and attach the sticker at the entrance, warehouse, or other location. Each clock point has a unique code."
+                    "text": "Use <strong>QR code</strong> to open a quick browser print page. Click Print and place the QR at the entrance, warehouse, or other location. Each clock point has a unique code."
+                },
+                {
+                    "label": "QR print sheet",
+                    "text": "Use <strong>QR print sheet</strong> to download a Word file with one full-page QR (A6, A5 or A4) for this clock point. The sheet uses the same background and branding as Settings → QR print sheet (A6/A5/A4)."
                 },
                 {
                     "label": "Renew QR code",
