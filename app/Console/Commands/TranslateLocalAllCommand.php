@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\RunPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
+use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
@@ -38,6 +40,8 @@ class TranslateLocalAllCommand extends Command
     protected $description = 'Translate all pending records locally without translation export/import sync';
 
     public function handle(
+        BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         RunPendingIssueTranslationsAction $runIssues,
         RunPendingTaskTranslationsAction $runTasks,
         RunPendingAnnouncementTranslationsAction $runAnnouncements,
@@ -59,6 +63,13 @@ class TranslateLocalAllCommand extends Command
 
         $this->line('Starting local translation run...');
         $this->line('Database: '.config('database.default').' / '.config('database.connections.'.config('database.default').'.database'));
+
+        $categoryBackfill = $backfillCategories->handle();
+        $teamBackfill = $backfillTeams->handle();
+        $this->line(
+            "Backfill done: categories {$categoryBackfill['categories']} (+{$categoryBackfill['slots_created']} slots), "
+            ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots)."
+        );
 
         $totals = [
             'issues' => 0,

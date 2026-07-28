@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Actions\Communication\BackfillAnnouncementTranslationSlotsAction;
+use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillEsgIndicatorTranslationSlotsAction;
 use App\Actions\Communication\BackfillIssueTranslationSlotsAction;
 use App\Actions\Communication\BackfillDocumentTranslationSlotsAction;
+use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillLocationTranslationSlotsAction;
 use App\Actions\Communication\BackfillTaskTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitTranslationSlotsAction;
@@ -25,6 +27,8 @@ class TranslationBackfillSlotsCommand extends Command
         BackfillEsgIndicatorTranslationSlotsAction $backfillEsgIndicators,
         BackfillTaskTranslationSlotsAction $backfillTasks,
         BackfillDocumentTranslationSlotsAction $backfillDocuments,
+        BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillInternalTeamTranslationSlotsAction $backfillTeams,
     ): int {
         $tenantId = $this->option('tenant');
         $tenantFilter = $tenantId !== null && $tenantId !== '' ? (int) $tenantId : null;
@@ -36,6 +40,8 @@ class TranslationBackfillSlotsCommand extends Command
         $esgIndicators = $backfillEsgIndicators->handle($tenantFilter);
         $tasks = $backfillTasks->handle($tenantFilter);
         $documents = $backfillDocuments->handle($tenantFilter);
+        $categories = $backfillCategories->handle($tenantFilter);
+        $teams = $backfillTeams->handle($tenantFilter);
 
         $this->info(
             "Verwerkt: {$issues['issues']} melding(en), {$issues['slots_created']} melding-slot(s); "
@@ -44,7 +50,9 @@ class TranslationBackfillSlotsCommand extends Command
             ."{$units['units']} unit(s), {$units['slots_created']} unit-slot(s); "
             ."{$esgIndicators['indicators']} ESG-indicator(s), {$esgIndicators['slots_created']} ESG-indicator-slot(s); "
             ."{$tasks['tasks']} taak/taken, {$tasks['slots_created']} taak-slot(s); "
-            ."{$documents['documents']} document(en), {$documents['slots_created']} document-slot(s)."
+            ."{$documents['documents']} document(en), {$documents['slots_created']} document-slot(s); "
+            ."{$categories['categories']} categorie(ën), {$categories['slots_created']} categorie-slot(s); "
+            ."{$teams['teams']} team(s), {$teams['slots_created']} team-slot(s)."
         );
 
         return self::SUCCESS;
