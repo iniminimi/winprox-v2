@@ -197,6 +197,17 @@
         ],
         "visual_alt": "Illustratie: milieu, sociaal en governance (ESG)"
     },
+    "iot": {
+        "eyebrow": "IoT Connect",
+        "title": "Sensoren die werk starten",
+        "body": "Alarmen van gateways worden meldingen en taken in WinProx — zonder apart IoT-dashboard.",
+        "items": [
+            "Gateways en sensoren gekoppeld aan units",
+            "Alarmregels → melding → taak voor het juiste team",
+            "Optioneel ESG-metingen via sensoren (Corporate)"
+        ],
+        "cta": "IoT Connect bekijken"
+    },
     "qr": {
         "eyebrow": "QR-portalen",
         "title": "Iedere unit krijgt een eigen digitale pagina.",

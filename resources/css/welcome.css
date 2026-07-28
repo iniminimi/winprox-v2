@@ -1510,6 +1510,17 @@
     color: var(--wp-text-body);
 }
 
+[data-theme='standard'] .wp-welcome-iot .wp-welcome-iot__points {
+    display: inline-block;
+    text-align: left;
+    margin: 1.25rem auto 0;
+    max-width: 28rem;
+}
+
+[data-theme='standard'] .wp-welcome-iot .wp-welcome-product-card__more {
+    margin-top: 1.25rem;
+}
+
 /* Flow timeline */
 [data-theme='standard'] .wp-welcome-timeline {
     display: flex;

@@ -197,6 +197,17 @@
         ],
         "visual_alt": "Illustration: Umwelt, Soziales und Governance (ESG)"
     },
+    "iot": {
+        "eyebrow": "IoT Connect",
+        "title": "Sensoren, die Arbeit starten",
+        "body": "Gateway-Alarme werden in WinProx zu Meldungen und Aufgaben — ohne separates IoT-Dashboard.",
+        "items": [
+            "Gateways und Sensoren an Units gekoppelt",
+            "Alarmregeln → Meldung → Aufgabe für das richtige Team",
+            "Optionale ESG-Messungen über Sensoren (Corporate)"
+        ],
+        "cta": "IoT Connect ansehen"
+    },
     "qr": {
         "eyebrow": "QR-Portale",
         "title": "Jede Unit erhält eine eigene digitale Seite.",

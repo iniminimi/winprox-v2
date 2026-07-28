@@ -199,6 +199,17 @@
         ],
         "visual_alt": "Ilustración: ambiental, social y gobernanza (ESG)"
     },
+    "iot": {
+        "eyebrow": "IoT Connect",
+        "title": "Sensores que inician el trabajo",
+        "body": "Las alarmas de los gateways se convierten en incidencias y tareas en WinProx — sin un panel IoT aparte.",
+        "items": [
+            "Gateways y sensores vinculados a units",
+            "Reglas de alarma → incidencia → tarea para el equipo correcto",
+            "Mediciones ESG opcionales vía sensores (Corporate)"
+        ],
+        "cta": "Ver IoT Connect"
+    },
     "qr": {
         "eyebrow": "Portales QR",
         "title": "Cada unidad obtiene su propia página digital.",

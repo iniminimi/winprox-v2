@@ -278,6 +278,27 @@
             </div>
         </section>
 
+        <section id="iot" class="wp-welcome-section wp-welcome-section--center wp-welcome-iot" aria-labelledby="welcome-iot-title">
+            <div class="wp-welcome-main wp-welcome-section-inner">
+                <span class="wp-welcome-eyebrow">{{ __('welcome.iot.eyebrow') }}</span>
+                <x-wp-text-reveal
+                    as="h2"
+                    id="welcome-iot-title"
+                    class="wp-welcome-h2"
+                    :text="__('welcome.iot.title')"
+                />
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.iot.body') }}</p>
+                <ul class="wp-welcome-checklist wp-welcome-iot__points">
+                    @foreach (__('welcome.iot.items') as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+                <p class="wp-welcome-product-card__more">
+                    <a href="{{ route('features.iot') }}" class="btn btn--ghost btn--sm">{{ __('welcome.iot.cta') }}</a>
+                </p>
+            </div>
+        </section>
+
         <section id="organisaties" class="wp-welcome-section" aria-labelledby="welcome-sectors-title">
             <div class="wp-welcome-main wp-welcome-section-inner--wide">
                 <div class="wp-welcome-section--center wp-welcome-section-inner">

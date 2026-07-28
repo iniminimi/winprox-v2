@@ -199,6 +199,17 @@
         ],
         "visual_alt": "Illustration: environmental, social and governance (ESG)"
     },
+    "iot": {
+        "eyebrow": "IoT Connect",
+        "title": "Sensors that start work",
+        "body": "Gateway alarms become issues and tasks in WinProx — without a separate IoT dashboard.",
+        "items": [
+            "Gateways and sensors linked to units",
+            "Alarm rules → issue → task for the right team",
+            "Optional ESG measurements via sensors (Corporate)"
+        ],
+        "cta": "View IoT Connect"
+    },
     "qr": {
         "eyebrow": "QR portals",
         "title": "Every unit gets its own digital page.",

@@ -20,7 +20,7 @@
                     <a href="{{ $welcomeSection('qr') }}">{{ __('welcome.nav.qr') }}</a>
                     <a href="{{ $welcomeSection('platform') }}">{{ __('welcome.nav.platform') }}</a>
                     <a href="{{ $welcomeSection('esg') }}">{{ __('welcome.nav.esg') }}</a>
-                    <a href="{{ route('features.iot') }}" @if (request()->routeIs('features.iot')) aria-current="page" @endif>{{ __('welcome.nav.iot') }}</a>
+                    <a href="{{ $welcomeSection('iot') }}">{{ __('welcome.nav.iot') }}</a>
                     <a href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
                     <a href="{{ route('faq.public') }}" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
@@ -35,7 +35,7 @@
                         <div class="wp-welcome-nav-group__panel" role="list">
                             <a href="{{ $welcomeSection('producten') }}" role="listitem">{{ __('welcome.nav.products') }}</a>
                             <a href="{{ $welcomeSection('esg') }}" role="listitem">{{ __('welcome.nav.esg') }}</a>
-                            <a href="{{ route('features.iot') }}" role="listitem" @if (request()->routeIs('features.iot')) aria-current="page" @endif>{{ __('welcome.nav.iot') }}</a>
+                            <a href="{{ $welcomeSection('iot') }}" role="listitem">{{ __('welcome.nav.iot') }}</a>
                         </div>
                     </details>
 

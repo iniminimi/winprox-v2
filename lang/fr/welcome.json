@@ -200,6 +200,17 @@
         ],
         "visual_alt": "Illustration : environnemental, social et gouvernance (ESG)"
     },
+    "iot": {
+        "eyebrow": "IoT Connect",
+        "title": "Des capteurs qui démarrent le travail",
+        "body": "Les alarmes des passerelles deviennent signalements et tâches dans WinProx — sans tableau de bord IoT séparé.",
+        "items": [
+            "Passerelles et capteurs liés aux unités",
+            "Règles d’alarme → signalement → tâche pour la bonne équipe",
+            "Mesures ESG optionnelles via capteurs (Corporate)"
+        ],
+        "cta": "Voir IoT Connect"
+    },
     "qr": {
         "eyebrow": "Portails QR",
         "title": "Chaque unité dispose de sa propre page numérique.",
