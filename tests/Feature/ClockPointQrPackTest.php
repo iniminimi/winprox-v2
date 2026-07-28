@@ -100,7 +100,7 @@ it('rejects non-printable clock-point qr-pack templates', function () {
             'clockPoint' => $clockPoint,
             'template' => 'avery_55x55_s',
         ]))
-        ->assertNotFound();
+        ->assertUnprocessable();
 });
 
 it('toont word-formaatknoppen op clock-point qr-printpagina', function () {

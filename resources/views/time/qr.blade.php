@@ -1,13 +1,3 @@
-@php
-    use App\Support\Qr\QrStickerSheetTemplate;
-
-    $qrPackTemplates = [
-        QrStickerSheetTemplate::A6Print,
-        QrStickerSheetTemplate::A5Print,
-        QrStickerSheetTemplate::A4Print,
-    ];
-@endphp
-
 <x-layouts.print :title="$clockPoint->name">
     <div class="wp-qr-page">
         <x-wp-page-head-title
@@ -49,16 +39,10 @@
             <button type="button" class="btn btn--primary" onclick="window.print()">{{ __('time.clock_points.qr.print') }}</button>
 
             @foreach ($qrPackTemplates as $template)
-                @php
-                    $qrPackDownloadUrl = route('time.clock-points.qr-pack', [
-                        'clockPoint' => $clockPoint,
-                        'template' => $template->value,
-                    ]);
-                @endphp
                 <button
                     type="button"
                     class="btn"
-                    @click="download(@js($qrPackDownloadUrl), @js($template->value))"
+                    @click="download(@js(route('time.clock-points.qr-pack', ['clockPoint' => $clockPoint, 'template' => $template->value])), @js($template->value))"
                     :disabled="downloading !== null"
                     :aria-busy="downloading === @js($template->value)"
                 >
