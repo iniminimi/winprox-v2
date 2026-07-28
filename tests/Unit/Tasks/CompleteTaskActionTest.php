@@ -12,7 +12,9 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     $tenant = Tenant::factory()->create();
@@ -49,6 +51,42 @@ it('completes a task with current timestamp when no client timestamp provided', 
     expect($update)->not->toBeNull()
         ->and($update?->task_id)->toBe($task->id)
         ->and($update?->description)->toBe('Intercom was ok');
+});
+
+it('stores note and photos on one task-scoped update when completing', function () {
+    Storage::fake('public');
+
+    $tenantId = Tenancy::id();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenantId]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenantId, 'internal_team_id' => $team->id]);
+    $issue = Issue::factory()->create(['tenant_id' => $tenantId, 'approved_at' => now()]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenantId,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+        'started_at' => Carbon::parse('2024-01-01 10:00:00'),
+        'completed_at' => null,
+    ]);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = UploadedFile::fake()->createWithContent('done.jpg', $jpeg, 'image/jpeg');
+
+    app(CompleteTaskAction::class)->handle($task, $worker, 'Klaar met foto', [$file]);
+
+    $updates = $issue->updates()->get();
+    expect($updates)->toHaveCount(1);
+
+    $update = $updates->first();
+    expect($update->task_id)->toBe($task->id)
+        ->and($update->kind)->toBe('worker_note')
+        ->and($update->description)->toBe('Klaar met foto')
+        ->and($update->photos)->toHaveCount(1)
+        ->and($update->photos->first()?->tenant_id)->toBe($tenantId)
+        ->and($update->photos->first()?->hasPublicFile())->toBeTrue();
 });
 
 it('completes a task with client timestamp when provided', function () {

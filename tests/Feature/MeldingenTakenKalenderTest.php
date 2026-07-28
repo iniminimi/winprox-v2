@@ -530,6 +530,51 @@ it('sorteert meldingen en taken binnen status op id aflopend', function () {
         });
 });
 
+it('toont afhandelingsfoto op taakdetail na complete met foto', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::InProgress,
+        'started_at' => now()->subHour(),
+    ]);
+    $worker = \App\Models\Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Foto',
+    ]);
+
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+    $file = UploadedFile::fake()->createWithContent('afhandeling.jpg', $jpeg, 'image/jpeg');
+
+    app(\App\Actions\Tasks\CompleteTaskAction::class)->handle($task, $worker, null, [$file]);
+
+    $photo = $issue->fresh()->photos()->first();
+    expect($photo)->not->toBeNull()
+        ->and($photo?->issue_update_id)->not->toBeNull();
+
+    Livewire::actingAs($user)
+        ->test(TaskShow::class, ['task' => $task->fresh()])
+        ->assertSee(__('tasks.show.updates'))
+        ->assertSee(__('issues.updates.kind.worker_photos'))
+        ->assertSee('/storage/'.$photo->path, false);
+});
+
 it('toont op taakdetail alleen afhandeling van deze taak, niet van andere taken', function () {
     Storage::fake('public');
 

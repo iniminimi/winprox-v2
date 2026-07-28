@@ -52,30 +52,25 @@ class CompleteTaskAction
         $issue = $task->issue;
         $this->recordRequiredEsgMeasurement($task, $esgMeasurement, $worker);
         $note = $note !== null && trim($note) !== '' ? trim($note) : null;
-
-        if ($note !== null && $worker !== null) {
-            $issue->updates()->create([
-                'task_id' => $task->id,
-                'worker_id' => $worker->id,
-                'kind' => 'worker_note',
-                'description' => $note,
-            ]);
-        }
-
         $files = array_values(array_filter($photos, fn ($photo) => $photo instanceof UploadedFile));
-        if ($files !== [] && $worker !== null) {
-            Tenant::query()->findOrFail($issue->tenant_id)->assertCanAddPhotos(count($files));
+
+        if ($worker !== null && ($note !== null || $files !== [])) {
+            if ($files !== []) {
+                Tenant::query()->findOrFail($issue->tenant_id)->assertCanAddPhotos(count($files));
+            }
 
             /** @var IssueUpdate $update */
             $update = $issue->updates()->create([
+                'tenant_id' => (int) $issue->tenant_id,
                 'task_id' => $task->id,
                 'worker_id' => $worker->id,
-                'kind' => 'worker_photos',
-                'description' => null,
+                'kind' => $note !== null ? 'worker_note' : 'worker_photos',
+                'description' => $note,
             ]);
 
             foreach ($files as $photo) {
                 $issue->photos()->create([
+                    'tenant_id' => (int) $issue->tenant_id,
                     'issue_update_id' => $update->id,
                     'path' => $this->storage->storePrecompressedCopy($photo),
                 ]);
