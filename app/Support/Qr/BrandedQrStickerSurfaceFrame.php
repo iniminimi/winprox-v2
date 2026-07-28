@@ -49,8 +49,9 @@ final class BrandedQrStickerSurfaceFrame
 
     /**
      * @param  GdImage|resource  $canvas
+     * @param  float  $fillOpacity  1.0 = solid white; 0.9 = 10% transparent
      */
-    public static function drawOnGd($canvas, int $x, int $y, int $width, int $height): void
+    public static function drawOnGd($canvas, int $x, int $y, int $width, int $height, float $fillOpacity = 1.0): void
     {
         if ($width <= 0 || $height <= 0) {
             return;
@@ -66,7 +67,14 @@ final class BrandedQrStickerSurfaceFrame
         }
 
         [$fr, $fg, $fb] = self::FILL_RGB;
-        $fillColor = imagecolorallocate($canvas, $fr, $fg, $fb);
+        $opacity = max(0.0, min(1.0, $fillOpacity));
+        if ($opacity >= 0.999) {
+            $fillColor = imagecolorallocate($canvas, $fr, $fg, $fb);
+        } else {
+            // GD alpha: 0 = opaque, 127 = fully transparent.
+            $gdAlpha = (int) round((1.0 - $opacity) * 127);
+            $fillColor = imagecolorallocatealpha($canvas, $fr, $fg, $fb, $gdAlpha);
+        }
         if ($fillColor === false) {
             throw new \RuntimeException('Unable to allocate branded sticker surface fill color.');
         }
@@ -85,20 +93,25 @@ final class BrandedQrStickerSurfaceFrame
         self::fillRoundedRectGd($canvas, $innerX, $innerY, $innerW, $innerH, $innerRadius, $fillColor);
     }
 
-    public static function drawOnImagick(Imagick $canvas, int $x, int $y, int $width, int $height): void
+    /**
+     * @param  float  $fillOpacity  1.0 = solid white; 0.9 = 10% transparent
+     */
+    public static function drawOnImagick(Imagick $canvas, int $x, int $y, int $width, int $height, float $fillOpacity = 1.0): void
     {
         if ($width <= 0 || $height <= 0) {
             return;
         }
 
         $radius = min((float) self::radiusPx(), min($width, $height) / 2.0);
+        $opacity = max(0.0, min(1.0, $fillOpacity));
 
         $draw = new ImagickDraw;
         $draw->setFillColor(new ImagickPixel(sprintf(
-            'rgb(%d,%d,%d)',
+            'rgba(%d,%d,%d,%.3f)',
             self::FILL_RGB[0],
             self::FILL_RGB[1],
             self::FILL_RGB[2],
+            $opacity,
         )));
         $draw->setStrokeColor(new ImagickPixel(sprintf(
             'rgb(%d,%d,%d)',

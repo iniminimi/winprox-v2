@@ -20,6 +20,9 @@ final class QrPrintablePageTenantBranding
 
     private const LINE_HEIGHT_RATIO = 1.2;
 
+    /** Bottom address/logo band fill: 10% transparent. */
+    private const BOTTOM_BAND_FILL_OPACITY = 0.9;
+
     /**
      * @param  list<string>  $addressLines
      * @param  GdImage|resource  $canvas
@@ -59,6 +62,7 @@ final class QrPrintablePageTenantBranding
             $layout['box_y'],
             $layout['box_width'],
             $layout['box_height'],
+            self::BOTTOM_BAND_FILL_OPACITY,
         );
 
         if ($layout['logo'] !== null) {
@@ -115,6 +119,7 @@ final class QrPrintablePageTenantBranding
             $layout['box_y'],
             $layout['box_width'],
             $layout['box_height'],
+            self::BOTTOM_BAND_FILL_OPACITY,
         );
 
         if ($layout['logo'] !== null) {
