@@ -322,7 +322,7 @@
             </div>
         </section>
 
-        <section id="organisaties" class="wp-welcome-section" aria-labelledby="welcome-sectors-title">
+        <section id="organisaties" class="wp-welcome-section wp-welcome-section--alt" aria-labelledby="welcome-sectors-title">
             <div class="wp-welcome-main wp-welcome-section-inner--wide">
                 <div class="wp-welcome-section--center wp-welcome-section-inner">
                     <span class="wp-welcome-eyebrow">{{ __('welcome.sectors.eyebrow') }}</span>

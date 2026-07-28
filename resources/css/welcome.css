@@ -1639,15 +1639,34 @@
     }
 }
 
-/* Trust section — portrait phone + compact language card */
+/* Trust section — donkere band na lichte Sectoren */
 [data-theme='standard'] .wp-welcome-section--trust {
     background: linear-gradient(
-        180deg,
-        color-mix(in srgb, var(--wp-bg) 70%, var(--wp-surface) 30%) 0%,
-        var(--wp-surface) 45%,
-        var(--wp-bg) 100%
+        160deg,
+        color-mix(in srgb, var(--wp-text) 92%, var(--wp-accent-strong) 8%) 0%,
+        color-mix(in srgb, var(--wp-text) 96%, #0b1220 4%) 100%
     );
+    color: var(--wp-welcome-on-panel);
     padding-bottom: 5rem;
+}
+
+[data-theme='standard'] .wp-welcome-section--trust .wp-welcome-eyebrow {
+    color: var(--wp-welcome-highlight-on-panel);
+}
+
+[data-theme='standard'] .wp-welcome-section--trust .wp-welcome-h2,
+[data-theme='standard'] .wp-welcome-section--trust .wp-welcome-h2 .wp-text-reveal__word {
+    color: #fff;
+}
+
+[data-theme='standard'] .wp-welcome-section--trust .wp-welcome-trust-bento__label {
+    color: var(--wp-welcome-on-panel-muted);
+}
+
+[data-theme='standard'] .wp-welcome-section--trust .wp-welcome-trust-chip {
+    border-color: color-mix(in srgb, var(--wp-welcome-on-panel) 28%, transparent);
+    background: color-mix(in srgb, #fff 10%, transparent);
+    color: var(--wp-welcome-on-panel);
 }
 
 [data-theme='standard'] .wp-welcome-trust-head {
