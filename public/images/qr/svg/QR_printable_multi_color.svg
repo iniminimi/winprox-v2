@@ -559,7 +559,7 @@
          d="m 264.648,321.608 -10.808,-11.8 c 0.696,-0.64 69.56,-64.832 69.56,-148.504 0,-83.728 -70.2,-145.16 -70.912,-145.768 l 10.44,-12.128 c 3.128,2.688 76.48,66.896 76.48,157.888 0,90.856 -71.704,157.528 -74.76,160.312 z"
          id="path5"
          style="fill:#ffffff;stroke-width:24.2322;stroke-dasharray:none" /></g><rect
-       style="display:inline;mix-blend-mode:lighten;fill:#1291ff;fill-opacity:0.591922;stroke:none;stroke-width:0;stroke-dasharray:none"
+       style="display:none;mix-blend-mode:lighten;fill:#1291ff;fill-opacity:0.591922;stroke:none;stroke-width:0;stroke-dasharray:none"
        id="rect2-8"
        width="97.497757"
        height="122.54221"
