@@ -4,6 +4,7 @@ use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
 use App\Http\Controllers\LegalDocumentController;
+use App\Http\Controllers\IndexNowKeyController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UiThemeController;
@@ -96,6 +97,11 @@ Route::get('/welcome-1995', function () {
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
+
+$indexNowKey = trim((string) config('indexnow.key', ''));
+if ($indexNowKey !== '' && preg_match('/^[a-f0-9]{8,128}$/i', $indexNowKey)) {
+    Route::get('/'.$indexNowKey.'.txt', IndexNowKeyController::class)->name('indexnow.key');
+}
 
 Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 

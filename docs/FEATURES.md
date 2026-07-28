@@ -639,7 +639,9 @@ foutieve `card_body_facility` (hotel-tekst in DE).
 **SEO / meertaligheid (hard):** elke marketingpagina heeft een **unieke URL per taal**
 (`/{locale}/`, `/{locale}/promo`, `/{locale}/pricing`, `/{locale}/contact`, `/{locale}/legal/…`).
 `/` en oude paden zonder prefix **redirecten** naar de gelokaliseerde URL. In `<head>`:
-hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in `robots.txt`). App/QR-portals blijven
+hreflang + canonical. Sitemap: `/sitemap.xml` (vermeld in `robots.txt`). **IndexNow** (Bing e.a.):
+key-bestand in site-root + `php artisan marketing:indexnow-submit` na deploy/content-wijziging
+(`config/indexnow.php`). App/QR-portals blijven
 cookie/`?lang=` (geen SEO-prefix).
 
 ### 11.1 Structuur (behouden, opgeschoond)
