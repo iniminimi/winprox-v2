@@ -42,10 +42,15 @@ final class QrPrintablePageWordBuilder
     /** Space between location caption (above) and the QR code. */
     private const ABOVE_QR_GAP_MM = 6.0;
 
+    /** Space between optional page headline and the caption above the QR. */
+    private const HEADLINE_GAP_MM = 4.0;
+
     /** Type sizes at A6 content width; scaled up for A5/A4. */
     private const PRIMARY_FONT_MM = 2.8;
 
     private const SECONDARY_FONT_MM = 3.8;
+
+    private const HEADLINE_FONT_MM = 5.2;
 
     /** A6 printable content short side (105 − 2×5 mm margins). */
     private const BASE_CONTENT_SHORT_SIDE_MM = 95.0;
@@ -300,6 +305,16 @@ final class QrPrintablePageWordBuilder
         $qr->clear();
 
         $centerX = (int) round($widthPx / 2);
+        if ($layout['headlineText'] !== '') {
+            $this->drawImagickCenteredText(
+                $canvas,
+                $layout['headlineText'],
+                $centerX,
+                $layout['headlineY'],
+                $layout['headlineFontPx'],
+                QrPrintablePageFont::semiboldAbsolutePath(),
+            );
+        }
         if ($layout['primaryText'] !== '') {
             $this->drawImagickCenteredText(
                 $canvas,
@@ -386,6 +401,17 @@ final class QrPrintablePageWordBuilder
 
         $color = imagecolorallocate($canvas, 17, 24, 39);
         if ($color !== false) {
+            if ($layout['headlineText'] !== '') {
+                $this->drawGdCenteredText(
+                    $canvas,
+                    $layout['headlineText'],
+                    $widthPx,
+                    $layout['headlineY'],
+                    $layout['headlineFontPx'],
+                    $color,
+                    QrPrintablePageFont::semiboldAbsolutePath(),
+                );
+            }
             if ($layout['primaryText'] !== '') {
                 $this->drawGdCenteredText(
                     $canvas,
@@ -476,10 +502,13 @@ final class QrPrintablePageWordBuilder
      *     qrY: int,
      *     primaryText: string,
      *     secondaryText: string,
+     *     headlineText: string,
      *     primaryY: int,
      *     secondaryY: int,
+     *     headlineY: int,
      *     primaryFontPx: float,
-     *     secondaryFontPx: float
+     *     secondaryFontPx: float,
+     *     headlineFontPx: float
      * }
      */
     private function layoutMetrics(float $contentWidthMm, float $contentHeightMm, QrStickerEntry $entry): array
@@ -493,20 +522,34 @@ final class QrPrintablePageWordBuilder
 
         $primaryText = trim((string) ($entry->stickerNumber ?? $entry->unitLabel));
         $secondaryText = trim((string) ($entry->locationUnitLabel ?? ''));
+        $headlineText = trim((string) ($entry->pageHeadline ?? ''));
         // Avoid duplicate lines when sticker number equals the location/unit caption.
         if ($secondaryText !== '' && strcasecmp($secondaryText, $primaryText) === 0) {
             $secondaryText = '';
+        }
+        if ($headlineText !== '' && strcasecmp($headlineText, $secondaryText) === 0) {
+            $headlineText = '';
         }
 
         $typeScale = min($contentWidthMm, $contentHeightMm) / self::BASE_CONTENT_SHORT_SIDE_MM;
         $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM * $typeScale);
         $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM * $typeScale);
+        $headlineFontPx = self::mmToPixelAtDpi(self::HEADLINE_FONT_MM * $typeScale);
         $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM * $typeScale);
         $aboveQrGapPx = self::mmToPixelAtDpi(self::ABOVE_QR_GAP_MM * $typeScale);
+        $headlineGapPx = self::mmToPixelAtDpi(self::HEADLINE_GAP_MM * $typeScale);
 
         $aboveBlock = 0;
+        if ($headlineText !== '') {
+            $aboveBlock += (int) ceil($headlineFontPx) + 2;
+            if ($secondaryText !== '') {
+                $aboveBlock += $headlineGapPx;
+            } else {
+                $aboveBlock += $aboveQrGapPx;
+            }
+        }
         if ($secondaryText !== '') {
-            $aboveBlock = (int) ceil($secondaryFontPx) + 2 + $aboveQrGapPx;
+            $aboveBlock += (int) ceil($secondaryFontPx) + 2 + $aboveQrGapPx;
         }
 
         $belowBlock = 0;
@@ -517,10 +560,18 @@ final class QrPrintablePageWordBuilder
         $blockHeight = $aboveBlock + $qrPx + $belowBlock;
         $blockTop = (int) round(($heightPx - $blockHeight) / 2);
 
+        $cursorY = $blockTop;
+        $headlineY = 0;
         $secondaryY = 0;
-        $qrY = $blockTop;
+
+        if ($headlineText !== '') {
+            $headlineY = $cursorY + (int) round($headlineFontPx);
+            $cursorY = $headlineY + ($secondaryText !== '' ? $headlineGapPx : $aboveQrGapPx);
+        }
+
+        $qrY = $cursorY;
         if ($secondaryText !== '') {
-            $secondaryY = $blockTop + (int) round($secondaryFontPx);
+            $secondaryY = $cursorY + (int) round($secondaryFontPx);
             $qrY = $secondaryY + $aboveQrGapPx;
         }
 
@@ -532,10 +583,13 @@ final class QrPrintablePageWordBuilder
             'qrY' => $qrY,
             'primaryText' => $primaryText,
             'secondaryText' => $secondaryText,
+            'headlineText' => $headlineText,
             'primaryY' => $primaryY,
             'secondaryY' => $secondaryY,
+            'headlineY' => $headlineY,
             'primaryFontPx' => (float) $primaryFontPx,
             'secondaryFontPx' => (float) $secondaryFontPx,
+            'headlineFontPx' => (float) $headlineFontPx,
         ];
     }
 

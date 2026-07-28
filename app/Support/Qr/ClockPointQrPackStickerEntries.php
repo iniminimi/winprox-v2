@@ -31,6 +31,7 @@ final class ClockPointQrPackStickerEntries
                 reportUrl: $clockPoint->portalUrl(),
                 stickerNumber: $locationName !== '' ? $locationName : '',
                 locationUnitLabel: $name,
+                pageHeadline: __('time.clock_points.qr.subtitle'),
             ),
         ];
     }

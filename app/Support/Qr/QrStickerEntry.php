@@ -14,7 +14,9 @@ final readonly class QrStickerEntry
         public ?string $headerFallback = null,
         /** Winprox sticker number below QR on branded Avery 62×89 sheets. */
         public ?string $stickerNumber = null,
-        /** Second line on printable A6/A5/A4 pages: "location - unit". */
+        /** Caption above QR on printable A6/A5/A4 pages (e.g. location - unit). */
         public ?string $locationUnitLabel = null,
+        /** Optional large headline above the printable-page caption (clock-point scan hint). */
+        public ?string $pageHeadline = null,
     ) {}
 }

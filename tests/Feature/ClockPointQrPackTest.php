@@ -26,6 +26,7 @@ it('maps clock point to printable sticker entry with name above and location bel
         ->and($entries[0]->unitLabel)->toBe('Ingang A')
         ->and($entries[0]->locationUnitLabel)->toBe('Ingang A')
         ->and($entries[0]->stickerNumber)->toBe('Hal Noord')
+        ->and($entries[0]->pageHeadline)->toBe(__('time.clock_points.qr.subtitle'))
         ->and($entries[0]->reportUrl)->toBe($clockPoint->portalUrl());
 });
 
@@ -39,7 +40,8 @@ it('omits below-label when clock point has no location', function () {
 
     expect($entries)->toHaveCount(1)
         ->and($entries[0]->locationUnitLabel)->toBe('Reception')
-        ->and($entries[0]->stickerNumber)->toBe('');
+        ->and($entries[0]->stickerNumber)->toBe('')
+        ->and($entries[0]->pageHeadline)->toBe(__('time.clock_points.qr.subtitle'));
 });
 
 it('clock-point qr-pack a6 download returns docx without time module', function () {
