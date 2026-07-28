@@ -35,9 +35,10 @@
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     showguides="true" /><defs
+     showguides="true"
+     inkscape:export-bgcolor="#ffffffff" /><defs
      id="defs1"><inkscape:path-effect
        effect="fillet_chamfer"
        id="path-effect1"
@@ -480,10 +481,10 @@
      inkscape:label="Laag 2"
      style="display:inline"><path
        id="path1-1-1"
-       style="fill:url(#linearGradient15);stroke-width:0.246367"
+       style="display:inline;fill:url(#linearGradient15);stroke-width:0.246367"
        d="M 52.739711,89.46861 A 88.694459,24.932833 0 0 0 3.842606,93.599954 v 41.603516 a 88.694459,24.932833 0 0 0 48.897105,4.13134 88.694459,24.932833 0 0 0 48.614099,-4.0786 V 93.547213 A 88.694459,24.932833 0 0 0 52.739711,89.46861 Z" /><path
        id="path1-1-1-8"
-       style="fill:url(#linearGradient17);stroke-width:0.246035"
+       style="display:inline;fill:url(#linearGradient17);stroke-width:0.246035"
        d="M 48.982539,67.351905 A 88.455591,24.932833 0 0 0 3.8700195,70.838153 v 42.893277 a 88.455591,24.932833 0 0 0 45.1125195,3.48626 88.455591,24.932833 0 0 0 52.279111,-4.82041 V 72.172294 A 88.455591,24.932833 0 0 0 48.982539,67.351905 Z" /><path
        id="path1-1-1-8-4"
        style="fill:url(#linearGradient18);stroke-width:0.200548"
