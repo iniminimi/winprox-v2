@@ -3,8 +3,10 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Qr\RenderBrandedQrStickerPreviewAction;
+use App\Actions\Qr\RenderQrPrintablePagePreviewAction;
 use App\Actions\Settings\UpdateUserNotifyOnNewIssueEmailAction;
 use App\Actions\Settings\UpdateUserUiThemeAction;
+use App\Data\Qr\BrandedQrPrintablePagePreviewData;
 use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
@@ -597,11 +599,12 @@ class Settings extends Component
             'qrStickerTenantLogoChoices' => QrStickerTenantLogoPlacement::choices(),
             'qrStickerPreviewDataUrl' => $this->resolveQrStickerPreviewDataUrl(),
             'qrPrintableBackgroundPresets' => QrPrintablePageBackgroundPreset::choices(),
-            'qrPrintableBackgroundPreviewUrl' => $this->resolveQrPrintableBackgroundPreviewUrl(),
+            'qrPrintableBackgroundPreviewUrl' => $this->resolveQrPrintablePreviewDataUrl(),
         ]);
     }
 
-    private function resolveQrPrintableBackgroundPreviewUrl(): ?string
+    /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */
+    private function resolveQrPrintablePreviewDataUrl(): ?string
     {
         if (! $this->canUpdateTenantBranding) {
             return null;
@@ -612,17 +615,18 @@ class Settings extends Component
             return null;
         }
 
-        $tenant->loadMissing('qrStickerSheetSettings');
+        $tenant = $tenant->fresh()->load('qrStickerSheetSettings');
         $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings());
-        $uploadUrl = $sheetSetting?->backgroundPublicUrl();
-        if (is_string($uploadUrl) && $uploadUrl !== '') {
-            return $uploadUrl;
-        }
 
-        $preset = QrPrintablePageBackgroundPreset::tryFrom($this->qrPrintableBackgroundPreset)
-            ?? QrPrintablePageBackgroundPreset::fromSetting($sheetSetting);
-
-        return $preset->publicUrl();
+        return app(RenderQrPrintablePagePreviewAction::class)->handle(
+            $tenant,
+            BrandedQrPrintablePagePreviewData::fromLivewireForm(
+                $this->qrPrintableBackgroundPreset,
+                $this->qrPrintableTenantLogo,
+                $this->qrPrintableTenantAddress,
+            ),
+            $sheetSetting,
+        );
     }
 
     /** Alleen bij render — nooit als public Livewire-state (base64 > 1 MB breekt requests). */

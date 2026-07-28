@@ -111,7 +111,7 @@
 
     <aside class="wp-settings-split-preview wp-qr-sticker-preview" aria-label="{{ __('settings.qr_stickers.printable_page.preview_label') }}">
         <p class="wp-label">{{ __('settings.qr_stickers.printable_page.preview_label') }}</p>
-        <div wire:loading wire:target="qrPrintableBackgroundPreset, qrPrintableBackground, saveQrPrintablePageSettings, removeQrPrintableBackground">
+        <div wire:loading wire:target="qrPrintableBackgroundPreset, qrPrintableTenantLogo, qrPrintableTenantAddress, qrPrintableBackground, saveQrPrintablePageSettings, removeQrPrintableBackground">
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.printable_page.preview_loading') }}</p>
         </div>
         @if ($qrPrintableBackgroundPreviewUrl)
@@ -119,6 +119,8 @@
                 src="{{ $qrPrintableBackgroundPreviewUrl }}"
                 alt="{{ __('settings.qr_stickers.printable_page.preview_alt') }}"
                 class="wp-qr-sticker-preview-img wp-qr-printable-preview-img"
+                wire:loading.remove
+                wire:target="qrPrintableBackgroundPreset, qrPrintableTenantLogo, qrPrintableTenantAddress, qrPrintableBackground, saveQrPrintablePageSettings, removeQrPrintableBackground"
             >
         @else
             <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.printable_page.preview_unavailable') }}</p>
