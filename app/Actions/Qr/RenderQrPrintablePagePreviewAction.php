@@ -7,6 +7,7 @@ namespace App\Actions\Qr;
 use App\Data\Qr\BrandedQrPrintablePagePreviewData;
 use App\Models\Tenant;
 use App\Models\TenantQrStickerSheetSetting;
+use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrCodePngWriter;
 use App\Support\Qr\QrPrintablePageBackground;
 use App\Support\Qr\QrPrintablePagePreviewComposer;
@@ -42,6 +43,8 @@ class RenderQrPrintablePagePreviewAction
                 $backgroundPath,
                 $tenant,
                 $data->brandingLayout(),
+                QrCenterLogo::absolutePath($tenant),
+                (string) __('settings.qr_stickers.avery_62x89_r.preview_portal_fallback'),
             );
         } catch (\Throwable) {
             return null;

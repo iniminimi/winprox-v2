@@ -10,28 +10,39 @@ use ImagickPixel;
 use RuntimeException;
 
 /**
- * Settings preview for A6/A5/A4 printable backgrounds with live logo/address overlays.
+ * Settings preview for A6/A5/A4 printable backgrounds with live QR + logo/address overlays.
  */
 final class QrPrintablePagePreviewComposer
 {
     private const PREVIEW_MAX_WIDTH_PX = 280;
 
+    private const DEMO_REPORT_URL = 'https://example.test/melden/preview';
+
+    private const DEMO_PRIMARY_LABEL = 'Winprox-2606-00001';
+
+    /** QR size as fraction of the preview's shorter side (matches Word export). */
+    private const QR_SIZE_RATIO = 0.48;
+
     public function composePngBytes(
         string $backgroundPath,
         ?Tenant $tenant,
         BrandedQrStickerLayoutConfig $layout,
+        ?string $centerLogoPath = null,
+        ?string $secondaryLabel = null,
     ): string {
         if (class_exists(Imagick::class)) {
-            return $this->composeWithImagick($backgroundPath, $tenant, $layout);
+            return $this->composeWithImagick($backgroundPath, $tenant, $layout, $centerLogoPath, $secondaryLabel);
         }
 
-        return $this->composeWithGd($backgroundPath, $tenant, $layout);
+        return $this->composeWithGd($backgroundPath, $tenant, $layout, $centerLogoPath, $secondaryLabel);
     }
 
     private function composeWithImagick(
         string $backgroundPath,
         ?Tenant $tenant,
         BrandedQrStickerLayoutConfig $layout,
+        ?string $centerLogoPath,
+        ?string $secondaryLabel,
     ): string {
         try {
             $image = new Imagick;
@@ -55,6 +66,7 @@ final class QrPrintablePagePreviewComposer
             $canvas->compositeImage($image, Imagick::COMPOSITE_OVER, 0, 0);
             $image->clear();
 
+            $this->drawQrAndLabelsOnImagick($canvas, $centerLogoPath, $secondaryLabel);
             $this->drawBrandingOnImagick($canvas, $tenant, $layout);
 
             $bytes = $canvas->getImageBlob();
@@ -74,6 +86,8 @@ final class QrPrintablePagePreviewComposer
         string $backgroundPath,
         ?Tenant $tenant,
         BrandedQrStickerLayoutConfig $layout,
+        ?string $centerLogoPath,
+        ?string $secondaryLabel,
     ): string {
         $source = QrStickerRasterCache::gdSource($backgroundPath);
         if ($source === false) {
@@ -101,6 +115,7 @@ final class QrPrintablePagePreviewComposer
         imagealphablending($canvas, true);
         imagecopyresampled($canvas, $source, 0, 0, 0, 0, $width, $height, $srcW, $srcH);
 
+        $this->drawQrAndLabelsOnGd($canvas, $centerLogoPath, $secondaryLabel);
         $this->drawBrandingOnGd($canvas, $tenant, $layout);
 
         ob_start();
@@ -113,6 +128,192 @@ final class QrPrintablePagePreviewComposer
         }
 
         return $bytes;
+    }
+
+    private function drawQrAndLabelsOnImagick(
+        Imagick $canvas,
+        ?string $centerLogoPath,
+        ?string $secondaryLabel,
+    ): void {
+        $width = $canvas->getImageWidth();
+        $height = $canvas->getImageHeight();
+        $layout = $this->qrLayout($width, $height, $secondaryLabel);
+
+        $qrBytes = QrCodePngWriter::writeStringWithCenterLogo(
+            self::DEMO_REPORT_URL,
+            max(240, $layout['qrPx']),
+            QrLogoLayout::STICKER_BOX_RATIO,
+            $centerLogoPath,
+        );
+        $qr = new Imagick;
+        $qr->readImageBlob($qrBytes);
+        $qr->resizeImage($layout['qrPx'], $layout['qrPx'], Imagick::FILTER_LANCZOS, 1, true);
+        $canvas->compositeImage($qr, Imagick::COMPOSITE_OVER, $layout['qrX'], $layout['qrY']);
+        $qr->clear();
+
+        $centerX = (int) round($width / 2);
+        $this->drawImagickCenteredText(
+            $canvas,
+            self::DEMO_PRIMARY_LABEL,
+            $centerX,
+            $layout['primaryY'],
+            $layout['primaryFontPx'],
+            QrPrintablePageFont::semiboldAbsolutePath(),
+        );
+        if ($layout['secondaryText'] !== '') {
+            $this->drawImagickCenteredText(
+                $canvas,
+                $layout['secondaryText'],
+                $centerX,
+                $layout['secondaryY'],
+                $layout['secondaryFontPx'],
+                QrPrintablePageFont::regularAbsolutePath(),
+            );
+        }
+    }
+
+    /**
+     * @param  \GdImage  $canvas
+     */
+    private function drawQrAndLabelsOnGd(
+        $canvas,
+        ?string $centerLogoPath,
+        ?string $secondaryLabel,
+    ): void {
+        $width = imagesx($canvas);
+        $height = imagesy($canvas);
+        $layout = $this->qrLayout($width, $height, $secondaryLabel);
+
+        $qrBytes = QrCodePngWriter::writeStringWithCenterLogo(
+            self::DEMO_REPORT_URL,
+            max(240, $layout['qrPx']),
+            QrLogoLayout::STICKER_BOX_RATIO,
+            $centerLogoPath,
+        );
+        $qr = @imagecreatefromstring($qrBytes);
+        if ($qr === false) {
+            return;
+        }
+
+        $qrScaled = imagecreatetruecolor($layout['qrPx'], $layout['qrPx']);
+        if ($qrScaled === false) {
+            imagedestroy($qr);
+
+            return;
+        }
+
+        imagealphablending($qrScaled, false);
+        imagesavealpha($qrScaled, true);
+        imagecopyresampled($qrScaled, $qr, 0, 0, 0, 0, $layout['qrPx'], $layout['qrPx'], imagesx($qr), imagesy($qr));
+        imagedestroy($qr);
+
+        imagealphablending($canvas, true);
+        imagecopy($canvas, $qrScaled, $layout['qrX'], $layout['qrY'], 0, 0, $layout['qrPx'], $layout['qrPx']);
+        imagedestroy($qrScaled);
+
+        $color = imagecolorallocate($canvas, 17, 24, 39);
+        if ($color === false) {
+            return;
+        }
+
+        $this->drawGdCenteredText(
+            $canvas,
+            self::DEMO_PRIMARY_LABEL,
+            $width,
+            $layout['primaryY'],
+            $layout['primaryFontPx'],
+            $color,
+            QrPrintablePageFont::semiboldAbsolutePath(),
+        );
+        if ($layout['secondaryText'] !== '') {
+            $this->drawGdCenteredText(
+                $canvas,
+                $layout['secondaryText'],
+                $width,
+                $layout['secondaryY'],
+                $layout['secondaryFontPx'],
+                $color,
+                QrPrintablePageFont::regularAbsolutePath(),
+            );
+        }
+    }
+
+    /**
+     * @return array{
+     *     qrPx: int,
+     *     qrX: int,
+     *     qrY: int,
+     *     primaryY: int,
+     *     secondaryY: int,
+     *     primaryFontPx: float,
+     *     secondaryFontPx: float,
+     *     secondaryText: string
+     * }
+     */
+    private function qrLayout(int $width, int $height, ?string $secondaryLabel): array
+    {
+        $qrPx = max(64, (int) round(min($width, $height) * self::QR_SIZE_RATIO));
+        $qrX = (int) round(($width - $qrPx) / 2);
+        $primaryFontPx = max(9.0, $height * 0.028);
+        $secondaryFontPx = max(8.0, $height * 0.024);
+        $labelGap = max(4, (int) round($height * 0.012));
+        $lineGap = max(2, (int) round($height * 0.008));
+        $secondaryText = trim((string) $secondaryLabel);
+
+        $labelBlock = $labelGap + (int) ceil($primaryFontPx) + 2;
+        if ($secondaryText !== '') {
+            $labelBlock += $lineGap + (int) ceil($secondaryFontPx) + 2;
+        }
+
+        $blockHeight = $qrPx + $labelBlock;
+        $qrY = (int) round(($height - $blockHeight) / 2);
+        $primaryY = $qrY + $qrPx + $labelGap + (int) round($primaryFontPx);
+        $secondaryY = $primaryY + $lineGap + (int) round($secondaryFontPx);
+
+        return [
+            'qrPx' => $qrPx,
+            'qrX' => $qrX,
+            'qrY' => $qrY,
+            'primaryY' => $primaryY,
+            'secondaryY' => $secondaryY,
+            'primaryFontPx' => $primaryFontPx,
+            'secondaryFontPx' => $secondaryFontPx,
+            'secondaryText' => $secondaryText,
+        ];
+    }
+
+    private function drawImagickCenteredText(
+        Imagick $canvas,
+        string $text,
+        int $centerX,
+        int $baselineY,
+        float $fontSizePx,
+        string $fontPath,
+    ): void {
+        $draw = new \ImagickDraw;
+        $draw->setFillColor(new ImagickPixel('#111827'));
+        $draw->setFont($fontPath);
+        $draw->setFontSize($fontSizePx);
+        $draw->setTextAlignment(Imagick::ALIGN_CENTER);
+        $canvas->annotateImage($draw, $centerX, $baselineY, 0, $text);
+    }
+
+    /**
+     * @param  \GdImage  $canvas
+     */
+    private function drawGdCenteredText(
+        $canvas,
+        string $text,
+        int $canvasWidthPx,
+        int $baselineY,
+        float $fontSizePx,
+        int $color,
+        string $fontPath,
+    ): void {
+        $bbox = imagettfbbox($fontSizePx, 0, $fontPath, $text);
+        $textWidth = is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0;
+        $textX = (int) round(($canvasWidthPx - $textWidth) / 2);
+        imagettftext($canvas, $fontSizePx, 0, $textX, $baselineY, $color, $fontPath, $text);
     }
 
     private function drawBrandingOnImagick(
