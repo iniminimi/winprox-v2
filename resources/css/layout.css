@@ -34,6 +34,8 @@
 .wp-app {
     min-height: 100vh;
     min-height: 100dvh;
+    /* Beheer: thumbs ~50% van portaal-formaat (lightbox blijft aanklikbaar). */
+    --wp-photo-thumb-columns: 8;
 }
 
 .wp-sidebar {
