@@ -6,12 +6,16 @@ use App\Enums\AnnouncementTranslationStatus;
 use App\Enums\DocumentTranslationStatus;
 use App\Enums\EsgIndicatorTranslationStatus;
 use App\Enums\IssueTranslationStatus;
+use App\Enums\CategoryTranslationStatus;
+use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\LocationTranslationStatus;
 use App\Enums\TaskTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
+use App\Models\CategoryTranslation;
 use App\Models\DocumentTranslation;
 use App\Models\EsgIndicatorTranslation;
+use App\Models\InternalTeamTranslation;
 use App\Models\IssueTranslation;
 use App\Models\LocationTranslation;
 use App\Models\TaskTranslation;
@@ -58,6 +62,16 @@ class CountPendingIssueTranslationsAction
             ->whereHas('indicator', fn ($query) => $query->where('is_active', true))
             ->count();
 
-        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators;
+        $categories = CategoryTranslation::query()
+            ->where('status', CategoryTranslationStatus::Pending)
+            ->whereHas('category', fn ($query) => $query->where('name', '!=', ''))
+            ->count();
+
+        $teams = InternalTeamTranslation::query()
+            ->where('status', InternalTeamTranslationStatus::Pending)
+            ->whereHas('team', fn ($query) => $query->where('is_active', true)->where('name', '!=', ''))
+            ->count();
+
+        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators + $categories + $teams;
     }
 }

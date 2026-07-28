@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
+use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
+use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
@@ -26,6 +28,8 @@ use Illuminate\Http\Request;
 class TranslationController extends Controller
 {
     public function export(
+        BackfillCategoryTranslationSlotsAction $backfillCategories,
+        BackfillInternalTeamTranslationSlotsAction $backfillTeams,
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingLocationTranslationsAction $exportLocations,
@@ -36,6 +40,10 @@ class TranslationController extends Controller
         ExportPendingInternalTeamTranslationsAction $exportTeams,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
+
+        // Ensure legacy categories/teams receive translation slots before export.
+        $backfillCategories->handle();
+        $backfillTeams->handle();
 
         $items = array_merge(
             $exportIssues->handle()['items'],
