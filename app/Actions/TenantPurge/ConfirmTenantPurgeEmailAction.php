@@ -16,7 +16,10 @@ use Illuminate\Validation\ValidationException;
  */
 final class ConfirmTenantPurgeEmailAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyOpsOfScheduledTenantPurgeAction $notifyOps,
+    ) {}
 
     public function handle(TenantPurgeRequest $request, User $actor, string $plainToken): TenantPurgeRequest
     {
@@ -64,6 +67,8 @@ final class ConfirmTenantPurgeEmailAction
         $request->save();
 
         if ($request->track === TenantPurgeTrack::Paid && $request->tenant_id !== null) {
+            $fresh = $request->fresh();
+
             $admins = User::query()
                 ->where('tenant_id', $request->tenant_id)
                 ->where('role', User::ROLE_ADMIN)
@@ -73,8 +78,10 @@ final class ConfirmTenantPurgeEmailAction
                 ->get();
 
             foreach ($admins as $admin) {
-                Mail::to($admin->email)->send(new TenantPurgeScheduledMail($request->fresh(), $admin));
+                Mail::to($admin->email)->send(new TenantPurgeScheduledMail($fresh, $admin));
             }
+
+            $this->notifyOps->handle($fresh);
         }
 
         $this->audit->record(

@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Mail;
  */
 final class ScheduleExpiredTrialPurgesAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyOpsOfScheduledTenantPurgeAction $notifyOps,
+    ) {}
 
     /**
      * @return array{scanned: int, scheduled: int}
@@ -92,6 +95,8 @@ final class ScheduleExpiredTrialPurgesAction
                 foreach ($admins as $admin) {
                     Mail::to($admin->email)->send(new TenantPurgeExpiredTrialWarningMail($request, $admin));
                 }
+
+                $this->notifyOps->handle($request);
 
                 $this->audit->record(
                     userId: null,

@@ -149,6 +149,10 @@
             "body": "Promemoria: senza abbonamento, i dati di :tenant verranno eliminati automaticamente il :date (:timezone).",
             "cancel": "Vuoi interrompere? Attiva un abbonamento o annulla in Abbonamento:",
             "footer": "Esporta prima i dati se necessario. Uno snapshot senza media resta poi disponibile per max. 30 giorni."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx: eliminazione pianificata — :tenant",
+            "body": "È stata pianificata l’eliminazione di un account.\\n\\nOrganizzazione: :tenant\\nID tenant: :tenant_id\\nPercorso: :track\\nPrevista per: :date (:timezone)\\nID richiesta purge: :purge_request_id"
         }
     }
 }

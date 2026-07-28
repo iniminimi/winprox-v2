@@ -149,6 +149,10 @@
             "body": "Herinnering: zonder abonnement worden de gegevens van :tenant op :date (:timezone) automatisch verwijderd.",
             "cancel": "Wil je dit stopzetten? Activeer een abonnement of annuleer onder Abonnement:",
             "footer": "Exporteer eventueel eerst je gegevens. Snapshot zonder media blijft daarna max. 30 dagen bewaard."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx: verwijdering gepland — :tenant",
+            "body": "Er is een account-verwijdering gepland.\\n\\nOrganisatie: :tenant\\nTenant-ID: :tenant_id\\nSpoor: :track\\nGepland op: :date (:timezone)\\nPurge-aanvraag-ID: :purge_request_id"
         }
     }
 }

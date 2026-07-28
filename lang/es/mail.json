@@ -149,6 +149,10 @@
             "body": "Recordatorio: sin suscripción, los datos de :tenant se eliminarán automáticamente el :date (:timezone).",
             "cancel": "¿Quieres detenerlo? Activa una suscripción o cancela en Suscripción:",
             "footer": "Exporta primero tus datos si hace falta. Después se conserva una copia sin medios máx. 30 días."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx: eliminación programada — :tenant",
+            "body": "Se ha programado la eliminación de una cuenta.\\n\\nOrganización: :tenant\\nID de tenant: :tenant_id\\nVía: :track\\nProgramada para: :date (:timezone)\\nID de solicitud de purge: :purge_request_id"
         }
     }
 }

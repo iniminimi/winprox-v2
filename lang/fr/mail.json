@@ -149,6 +149,10 @@
             "body": "Rappel : sans abonnement, les données de :tenant seront automatiquement supprimées le :date (:timezone).",
             "cancel": "Vous souhaitez arrêter ? Activez un abonnement ou annulez sous Abonnement :",
             "footer": "Exportez d’abord vos données si besoin. Une sauvegarde sans médias est ensuite conservée jusqu’à 30 jours."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx : suppression planifiée — :tenant",
+            "body": "Une suppression de compte a été planifiée.\\n\\nOrganisation : :tenant\\nID locataire : :tenant_id\\nParcours : :track\\nPrévu le : :date (:timezone)\\nID demande de purge : :purge_request_id"
         }
     }
 }

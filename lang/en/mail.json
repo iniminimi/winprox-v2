@@ -149,6 +149,10 @@
             "body": "Reminder: without a subscription, data for :tenant will be automatically deleted on :date (:timezone).",
             "cancel": "Want to stop this? Activate a subscription or cancel under Subscription:",
             "footer": "Export your data first if needed. A snapshot without media is then kept for up to 30 days."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx: deletion scheduled — :tenant",
+            "body": "An account deletion has been scheduled.\\n\\nOrganisation: :tenant\\nTenant ID: :tenant_id\\nTrack: :track\\nScheduled for: :date (:timezone)\\nPurge request ID: :purge_request_id"
         }
     }
 }

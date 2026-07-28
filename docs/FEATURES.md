@@ -555,6 +555,8 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 4. **T+14**: scheduler voert purge uit via dezelfde `ExecuteTenantPurgeAction` (snapshot + hard delete).
 5. Abonnementsactivatie annuleert openstaande `expired_trial`-aanvragen.
 6. Self-service purge mag naast dit spoor bestaan (één open aanvraag tegelijk).
+7. Bij elke geplande purge (paid cool-down of expired_trial) ook interne mail naar `info@winprox.app`
+   (`tenant_purge.ops_notification_email`).
 
 Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 

@@ -149,6 +149,10 @@
             "body": "Erinnerung: Ohne Abonnement werden die Daten von :tenant am :date (:timezone) automatisch gelöscht.",
             "cancel": "Möchten Sie das stoppen? Aktivieren Sie ein Abonnement oder brechen Sie unter Abonnement ab:",
             "footer": "Exportieren Sie bei Bedarf zuerst Ihre Daten. Ein Snapshot ohne Medien bleibt danach max. 30 Tage erhalten."
+        },
+        "ops_scheduled": {
+            "subject": "WinProx: Löschung geplant — :tenant",
+            "body": "Eine Kontolöschung wurde geplant.\\n\\nOrganisation: :tenant\\nTenant-ID: :tenant_id\\nTrack: :track\\nGeplant für: :date (:timezone)\\nPurge-Anfrage-ID: :purge_request_id"
         }
     }
 }

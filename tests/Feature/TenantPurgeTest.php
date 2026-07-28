@@ -10,8 +10,10 @@ use App\Enums\TenantPurgeStatus;
 use App\Enums\TenantPurgeTrack;
 use App\Mail\TenantPurgeCompletedMail;
 use App\Mail\TenantPurgeConfirmMail;
+use App\Mail\TenantPurgeExpiredTrialWarningMail;
 use App\Mail\TenantPurgeReminderMail;
 use App\Mail\TenantPurgeScheduledMail;
+use App\Mail\TenantPurgeScheduledToOpsMail;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -117,6 +119,7 @@ it('paid purge: plant cool-down, reminder, alleen superuser voert uit', function
     expect($scheduled->status)->toBe(TenantPurgeStatus::Scheduled)
         ->and($scheduled->scheduled_purge_at)->not->toBeNull();
     Mail::assertSent(TenantPurgeScheduledMail::class, 1);
+    Mail::assertSent(TenantPurgeScheduledToOpsMail::class, 1);
 
     expect(fn () => app(ExecuteTenantPurgeAction::class)->handle($scheduled->fresh(), $admin))
         ->toThrow(\Illuminate\Validation\ValidationException::class);
@@ -364,7 +367,10 @@ it('expired trial: plant purge op T+7, reminder T-2, voert uit op T+14', functio
         ->and($purge->scheduled_purge_at->toDateString())
         ->toBe($tenant->trial_ends_at->copy()->addDays(14)->toDateString());
 
-    Mail::assertSent(\App\Mail\TenantPurgeExpiredTrialWarningMail::class, 2);
+    Mail::assertSent(TenantPurgeExpiredTrialWarningMail::class, 2);
+    Mail::assertSent(TenantPurgeScheduledToOpsMail::class, function (TenantPurgeScheduledToOpsMail $mail) {
+        return $mail->hasTo(config('tenant_purge.ops_notification_email'));
+    });
 
     // Reminder window T-2
     $purge->scheduled_purge_at = now()->addDays(2)->setTime(12, 0);

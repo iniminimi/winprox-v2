@@ -40,4 +40,12 @@ return [
     | Max. foute wachtwoordpogingen bij purge; daarna uitloggen.
     */
     'password_max_attempts' => (int) env('TENANT_PURGE_PASSWORD_MAX_ATTEMPTS', 3),
+
+    /*
+    | Interne melding wanneer een account-purge gepland wordt.
+    */
+    'ops_notification_email' => env(
+        'TENANT_PURGE_OPS_NOTIFICATION_EMAIL',
+        env('WINPROX_NEW_TENANT_NOTIFICATION_EMAIL', 'info@winprox.app'),
+    ),
 ];
