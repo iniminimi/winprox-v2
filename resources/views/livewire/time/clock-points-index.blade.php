@@ -41,8 +41,8 @@
 
     <div class="wp-list">
         @forelse ($clockPoints as $clockPoint)
-            <div class="wp-card wp-card-pad wp-cluster wp-cluster--spread" wire:key="clock-point-{{ $clockPoint->id }}">
-                <div>
+            <div class="wp-card wp-card-pad wp-cluster" wire:key="clock-point-{{ $clockPoint->id }}">
+                <div class="wp-grow">
                     <strong>{{ $clockPoint->name }}</strong>
                     @if ($clockPoint->location)
                         <p class="wp-muted wp-text-sm">{{ $clockPoint->location->localizedName() }}</p>
