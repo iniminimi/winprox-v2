@@ -31,6 +31,8 @@ class TranslateExportItemsAction
             $taskId = (int) ($item['task_id'] ?? 0);
             $documentId = (int) ($item['document_id'] ?? 0);
             $esgIndicatorId = (int) ($item['esg_indicator_id'] ?? 0);
+            $categoryId = (int) ($item['category_id'] ?? 0);
+            $internalTeamId = (int) ($item['internal_team_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
             $sourceText = trim((string) ($item['source_text'] ?? ''));
             $sourceName = trim((string) ($item['source_name'] ?? ''));
@@ -86,6 +88,60 @@ class TranslateExportItemsAction
                 if ($onProgress !== null) {
                     $onProgress($index + 1, $total, [
                         'esg_indicator_id' => $esgIndicatorId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
+            if ($categoryId > 0) {
+                if ($locale === '' || $sourceName === '') {
+                    continue;
+                }
+
+                $translatedName = trim($this->translator->translate($sourceName, $locale));
+
+                if ($translatedName === '') {
+                    $translatedName = $sourceName;
+                }
+
+                $translated[] = [
+                    'category_id' => $categoryId,
+                    'locale' => $locale,
+                    'name' => $translatedName,
+                ];
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'category_id' => $categoryId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
+            if ($internalTeamId > 0) {
+                if ($locale === '' || $sourceName === '') {
+                    continue;
+                }
+
+                $translatedName = trim($this->translator->translate($sourceName, $locale));
+
+                if ($translatedName === '') {
+                    $translatedName = $sourceName;
+                }
+
+                $translated[] = [
+                    'internal_team_id' => $internalTeamId,
+                    'locale' => $locale,
+                    'name' => $translatedName,
+                ];
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'internal_team_id' => $internalTeamId,
                         'locale' => $locale,
                     ]);
                 }

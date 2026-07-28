@@ -100,6 +100,34 @@ it('vertaalt locatie export-items via de provider', function () {
     ]);
 });
 
+it('vertaalt categorie export-items via de provider', function () {
+    $items = app(TranslateExportItemsAction::class)->handle([
+        [
+            'category_id' => 11,
+            'locale' => 'de',
+            'source_name' => 'Techniek',
+        ],
+    ]);
+
+    expect($items)->toBe([
+        ['category_id' => 11, 'locale' => 'de', 'name' => '[de] Techniek'],
+    ]);
+});
+
+it('vertaalt team export-items via de provider', function () {
+    $items = app(TranslateExportItemsAction::class)->handle([
+        [
+            'internal_team_id' => 15,
+            'locale' => 'fr',
+            'source_name' => 'Technische dienst',
+        ],
+    ]);
+
+    expect($items)->toBe([
+        ['internal_team_id' => 15, 'locale' => 'fr', 'name' => '[fr] Technische dienst'],
+    ]);
+});
+
 it('faalt wanneer geen exportregels vertaald werden', function () {
     $fake = new FakeTranslationSyncRemoteClient;
     $fake->exportItems = [
