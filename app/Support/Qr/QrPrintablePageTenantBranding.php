@@ -18,7 +18,7 @@ final class QrPrintablePageTenantBranding
 {
     private const MAX_ADDRESS_LINES = 3;
 
-    private const LINE_HEIGHT_RATIO = 1.38;
+    private const LINE_HEIGHT_RATIO = 1.2;
 
     /**
      * @param  list<string>  $addressLines
@@ -44,36 +44,12 @@ final class QrPrintablePageTenantBranding
             : [];
         $bottomLogoPath = self::usesBottomLogo($logoPath, $logoPlacement) ? $logoPath : null;
 
-        if ($lines === [] && $bottomLogoPath === null) {
-            return;
+        if ($lines !== []) {
+            self::drawAddressFrameOnGd($canvas, $lines, $metrics, $width, $height, $logoPlacement, $bottomLogoPath !== null);
         }
 
-        $layout = self::bottomBandLayout($width, $height, $lines, $bottomLogoPath, $logoPlacement, $metrics);
-        if ($layout === null) {
-            return;
-        }
-
-        BrandedQrStickerSurfaceFrame::drawOnGd(
-            $canvas,
-            $layout['box_x'],
-            $layout['box_y'],
-            $layout['box_width'],
-            $layout['box_height'],
-        );
-
-        if ($layout['logo'] !== null) {
-            BrandedQrStickerLogoRaster::compositeOnGd(
-                $canvas,
-                $layout['logo']['path'],
-                $layout['logo']['x'],
-                $layout['logo']['y'],
-                $layout['logo']['width'],
-                $layout['logo']['height'],
-            );
-        }
-
-        if ($layout['text'] !== null) {
-            self::drawTextOnGd($canvas, $layout['text']);
+        if ($bottomLogoPath !== null) {
+            self::drawBottomLogoFrameOnGd($canvas, $bottomLogoPath, $logoPlacement, $metrics, $width, $height);
         }
     }
 
@@ -100,36 +76,12 @@ final class QrPrintablePageTenantBranding
             : [];
         $bottomLogoPath = self::usesBottomLogo($logoPath, $logoPlacement) ? $logoPath : null;
 
-        if ($lines === [] && $bottomLogoPath === null) {
-            return;
+        if ($lines !== []) {
+            self::drawAddressFrameOnImagick($canvas, $lines, $metrics, $width, $height, $logoPlacement, $bottomLogoPath !== null);
         }
 
-        $layout = self::bottomBandLayout($width, $height, $lines, $bottomLogoPath, $logoPlacement, $metrics);
-        if ($layout === null) {
-            return;
-        }
-
-        BrandedQrStickerSurfaceFrame::drawOnImagick(
-            $canvas,
-            $layout['box_x'],
-            $layout['box_y'],
-            $layout['box_width'],
-            $layout['box_height'],
-        );
-
-        if ($layout['logo'] !== null) {
-            BrandedQrStickerLogoRaster::compositeOnImagick(
-                $canvas,
-                $layout['logo']['path'],
-                $layout['logo']['x'],
-                $layout['logo']['y'],
-                $layout['logo']['width'],
-                $layout['logo']['height'],
-            );
-        }
-
-        if ($layout['text'] !== null) {
-            self::drawTextOnImagick($canvas, $layout['text']);
+        if ($bottomLogoPath !== null) {
+            self::drawBottomLogoFrameOnImagick($canvas, $bottomLogoPath, $logoPlacement, $metrics, $width, $height);
         }
     }
 
@@ -142,7 +94,8 @@ final class QrPrintablePageTenantBranding
      *     logo_max_h: int,
      *     font_max: int,
      *     font_min: int,
-     *     gap: int
+     *     gap: int,
+     *     address_max_w: int
      * }
      */
     private static function metrics(int $width, int $height): array
@@ -150,14 +103,16 @@ final class QrPrintablePageTenantBranding
         $short = min($width, $height);
 
         return [
-            'pad_side' => max(12, (int) round($width * 0.04)),
-            'pad_top' => max(12, (int) round($height * 0.035)),
-            'pad_bottom' => max(10, (int) round($height * 0.03)),
-            'logo_max_w' => max(48, (int) round($width * 0.16)),
-            'logo_max_h' => max(36, (int) round($height * 0.065)),
-            'font_max' => max(14, (int) round($short * 0.026)),
-            'font_min' => max(10, (int) round($short * 0.016)),
-            'gap' => max(8, (int) round($width * 0.02)),
+            'pad_side' => max(10, (int) round($width * 0.035)),
+            'pad_top' => max(10, (int) round($height * 0.03)),
+            'pad_bottom' => max(8, (int) round($height * 0.022)),
+            // Larger logo; compact address card beside it.
+            'logo_max_w' => max(56, (int) round($width * 0.24)),
+            'logo_max_h' => max(44, (int) round($height * 0.11)),
+            'font_max' => max(9, (int) round($short * 0.014)),
+            'font_min' => max(7, (int) round($short * 0.01)),
+            'gap' => max(6, (int) round($width * 0.015)),
+            'address_max_w' => max(64, (int) round($width * 0.42)),
         ];
     }
 
@@ -171,92 +126,206 @@ final class QrPrintablePageTenantBranding
      *     logo_max_h: int,
      *     font_max: int,
      *     font_min: int,
-     *     gap: int
+     *     gap: int,
+     *     address_max_w: int
+     * }  $metrics
+     * @param  GdImage|resource  $canvas
+     */
+    private static function drawAddressFrameOnGd(
+        $canvas,
+        array $lines,
+        array $metrics,
+        int $canvasWidth,
+        int $canvasHeight,
+        QrStickerTenantLogoPlacement $logoPlacement,
+        bool $hasBottomLogo,
+    ): void {
+        $layout = self::addressFrameLayout($lines, $metrics, $canvasWidth, $canvasHeight, $logoPlacement, $hasBottomLogo);
+        if ($layout === null) {
+            return;
+        }
+
+        BrandedQrStickerSurfaceFrame::drawOnGd(
+            $canvas,
+            $layout['box_x'],
+            $layout['box_y'],
+            $layout['box_width'],
+            $layout['box_height'],
+        );
+        self::drawTextOnGd($canvas, $layout['text']);
+    }
+
+    /**
+     * @param  list<string>  $lines
+     * @param  array{
+     *     pad_side: int,
+     *     pad_top: int,
+     *     pad_bottom: int,
+     *     logo_max_w: int,
+     *     logo_max_h: int,
+     *     font_max: int,
+     *     font_min: int,
+     *     gap: int,
+     *     address_max_w: int
+     * }  $metrics
+     */
+    private static function drawAddressFrameOnImagick(
+        Imagick $canvas,
+        array $lines,
+        array $metrics,
+        int $canvasWidth,
+        int $canvasHeight,
+        QrStickerTenantLogoPlacement $logoPlacement,
+        bool $hasBottomLogo,
+    ): void {
+        $layout = self::addressFrameLayout($lines, $metrics, $canvasWidth, $canvasHeight, $logoPlacement, $hasBottomLogo);
+        if ($layout === null) {
+            return;
+        }
+
+        BrandedQrStickerSurfaceFrame::drawOnImagick(
+            $canvas,
+            $layout['box_x'],
+            $layout['box_y'],
+            $layout['box_width'],
+            $layout['box_height'],
+        );
+        self::drawTextOnImagick($canvas, $layout['text']);
+    }
+
+    /**
+     * @param  array{
+     *     pad_side: int,
+     *     pad_top: int,
+     *     pad_bottom: int,
+     *     logo_max_w: int,
+     *     logo_max_h: int,
+     *     font_max: int,
+     *     font_min: int,
+     *     gap: int,
+     *     address_max_w: int
+     * }  $metrics
+     * @param  GdImage|resource  $canvas
+     */
+    private static function drawBottomLogoFrameOnGd(
+        $canvas,
+        string $logoPath,
+        QrStickerTenantLogoPlacement $placement,
+        array $metrics,
+        int $canvasWidth,
+        int $canvasHeight,
+    ): void {
+        [$logoW, $logoH] = self::fitLogoSize($logoPath, $metrics);
+        $boxW = $logoW + BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $boxH = $logoH + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+        $boxX = $placement === QrStickerTenantLogoPlacement::BottomLeft
+            ? $metrics['pad_side']
+            : $canvasWidth - $metrics['pad_side'] - $boxW;
+        $boxY = $canvasHeight - $metrics['pad_bottom'] - $boxH;
+        $inset = BrandedQrStickerSurfaceFrame::contentInsetPx();
+
+        BrandedQrStickerSurfaceFrame::drawOnGd($canvas, $boxX, $boxY, $boxW, $boxH);
+        BrandedQrStickerLogoRaster::compositeOnGd($canvas, $logoPath, $boxX + $inset, $boxY + $inset, $logoW, $logoH);
+    }
+
+    /**
+     * @param  array{
+     *     pad_side: int,
+     *     pad_top: int,
+     *     pad_bottom: int,
+     *     logo_max_w: int,
+     *     logo_max_h: int,
+     *     font_max: int,
+     *     font_min: int,
+     *     gap: int,
+     *     address_max_w: int
+     * }  $metrics
+     */
+    private static function drawBottomLogoFrameOnImagick(
+        Imagick $canvas,
+        string $logoPath,
+        QrStickerTenantLogoPlacement $placement,
+        array $metrics,
+        int $canvasWidth,
+        int $canvasHeight,
+    ): void {
+        [$logoW, $logoH] = self::fitLogoSize($logoPath, $metrics);
+        $boxW = $logoW + BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $boxH = $logoH + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+        $boxX = $placement === QrStickerTenantLogoPlacement::BottomLeft
+            ? $metrics['pad_side']
+            : $canvasWidth - $metrics['pad_side'] - $boxW;
+        $boxY = $canvasHeight - $metrics['pad_bottom'] - $boxH;
+        $inset = BrandedQrStickerSurfaceFrame::contentInsetPx();
+
+        BrandedQrStickerSurfaceFrame::drawOnImagick($canvas, $boxX, $boxY, $boxW, $boxH);
+        BrandedQrStickerLogoRaster::compositeOnImagick($canvas, $logoPath, $boxX + $inset, $boxY + $inset, $logoW, $logoH);
+    }
+
+    /**
+     * Compact address card — sized to text, not full page width.
+     *
+     * @param  list<string>  $lines
+     * @param  array{
+     *     pad_side: int,
+     *     pad_top: int,
+     *     pad_bottom: int,
+     *     logo_max_w: int,
+     *     logo_max_h: int,
+     *     font_max: int,
+     *     font_min: int,
+     *     gap: int,
+     *     address_max_w: int
      * }  $metrics
      * @return array{
      *     box_x: int,
      *     box_y: int,
      *     box_width: int,
      *     box_height: int,
-     *     text: ?array{lines: list<string>, font: string, font_size: int, line_height: int, x: int, y: int},
-     *     logo: ?array{path: string, x: int, y: int, width: int, height: int}
+     *     text: array{lines: list<string>, font: string, font_size: int, line_height: int, x: int, y: int}
      * }|null
      */
-    private static function bottomBandLayout(
+    private static function addressFrameLayout(
+        array $lines,
+        array $metrics,
         int $canvasWidth,
         int $canvasHeight,
-        array $lines,
-        ?string $logoPath,
         QrStickerTenantLogoPlacement $logoPlacement,
-        array $metrics,
+        bool $hasBottomLogo,
     ): ?array {
-        $showBottomLogo = $logoPath !== null && $logoPath !== '' && is_file($logoPath);
-        if ($lines === [] && ! $showBottomLogo) {
+        if ($lines === []) {
             return null;
         }
 
-        $boxX = $metrics['pad_side'];
-        $boxWidth = $canvasWidth - $metrics['pad_side'] - $metrics['pad_side'];
         $inset = BrandedQrStickerSurfaceFrame::contentInsetPx();
-        $innerWidth = $boxWidth - BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
-        $gap = $metrics['gap'];
-
-        $logoLayout = null;
-        $logoWidth = 0;
-        $logoHeight = 0;
-
-        if ($showBottomLogo) {
-            [$logoWidth, $logoHeight] = self::fitLogoSize($logoPath, $metrics);
-            $logoX = match ($logoPlacement) {
-                QrStickerTenantLogoPlacement::BottomLeft => $boxX + $inset,
-                default => $boxX + $boxWidth - $inset - $logoWidth,
-            };
-            $logoLayout = [
-                'path' => $logoPath,
-                'x' => $logoX,
-                'y' => 0,
-                'width' => $logoWidth,
-                'height' => $logoHeight,
-            ];
+        $textMaxWidth = $metrics['address_max_w'];
+        if ($hasBottomLogo) {
+            $reserved = $metrics['logo_max_w'] + $metrics['gap'];
+            $textMaxWidth = min(
+                $textMaxWidth,
+                max(48, $canvasWidth - (2 * $metrics['pad_side']) - $reserved),
+            );
         }
 
-        $textMaxWidth = $innerWidth;
-        if ($showBottomLogo) {
-            $textMaxWidth = max(1, $innerWidth - $logoWidth - $gap);
+        $font = BrandedQrStickerFont::headerBoldAbsolutePath();
+        $fontSize = self::fitFontSize($lines, $font, $textMaxWidth, $metrics);
+        $lineHeight = (int) round($fontSize * self::LINE_HEIGHT_RATIO);
+        $textHeight = $lineHeight * count($lines);
+        $textWidth = 0;
+        foreach ($lines as $line) {
+            $bbox = imagettfbbox($fontSize, 0, $font, $line);
+            $textWidth = max($textWidth, is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0);
         }
+        $textWidth = min($textMaxWidth, max(1, $textWidth));
 
-        $textLayout = null;
-        $textHeight = 0;
-
-        if ($lines !== []) {
-            $font = BrandedQrStickerFont::headerBoldAbsolutePath();
-            $fontSize = self::fitFontSize($lines, $font, $textMaxWidth, $metrics);
-            $lineHeight = (int) round($fontSize * self::LINE_HEIGHT_RATIO);
-            $textHeight = $lineHeight * count($lines);
-            $textX = $boxX + $inset;
-            if ($showBottomLogo && $logoPlacement === QrStickerTenantLogoPlacement::BottomLeft) {
-                $textX = $boxX + $inset + $logoWidth + $gap;
-            }
-            $textLayout = [
-                'lines' => $lines,
-                'font' => $font,
-                'font_size' => $fontSize,
-                'line_height' => $lineHeight,
-                'x' => $textX,
-                'y' => 0,
-            ];
-        }
-
-        $innerHeight = max($textHeight, $logoHeight, 1);
-        $boxHeight = $innerHeight + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
+        $boxWidth = $textWidth + BrandedQrStickerSurfaceFrame::horizontalOverheadPx();
+        $boxHeight = $textHeight + BrandedQrStickerSurfaceFrame::verticalOverheadPx();
         $boxY = $canvasHeight - $metrics['pad_bottom'] - $boxHeight;
-        $innerY = $boxY + $inset;
 
-        if ($textLayout !== null) {
-            $textLayout['y'] = $innerY + (int) floor(($innerHeight - $textHeight) / 2);
-        }
-        if ($logoLayout !== null) {
-            $logoLayout['y'] = $innerY + (int) floor(($innerHeight - $logoHeight) / 2);
+        // Keep address opposite the bottom logo when both are present.
+        $boxX = $metrics['pad_side'];
+        if ($hasBottomLogo && $logoPlacement === QrStickerTenantLogoPlacement::BottomLeft) {
+            $boxX = $canvasWidth - $metrics['pad_side'] - $boxWidth;
         }
 
         return [
@@ -264,8 +333,14 @@ final class QrPrintablePageTenantBranding
             'box_y' => $boxY,
             'box_width' => $boxWidth,
             'box_height' => $boxHeight,
-            'text' => $textLayout,
-            'logo' => $logoLayout,
+            'text' => [
+                'lines' => $lines,
+                'font' => $font,
+                'font_size' => $fontSize,
+                'line_height' => $lineHeight,
+                'x' => $boxX + $inset,
+                'y' => $boxY + $inset,
+            ],
         ];
     }
 
@@ -278,7 +353,8 @@ final class QrPrintablePageTenantBranding
      *     logo_max_h: int,
      *     font_max: int,
      *     font_min: int,
-     *     gap: int
+     *     gap: int,
+     *     address_max_w: int
      * }  $metrics
      * @param  GdImage|resource  $canvas
      */
@@ -307,7 +383,8 @@ final class QrPrintablePageTenantBranding
      *     logo_max_h: int,
      *     font_max: int,
      *     font_min: int,
-     *     gap: int
+     *     gap: int,
+     *     address_max_w: int
      * }  $metrics
      */
     private static function drawCornerLogoOnImagick(
@@ -342,7 +419,8 @@ final class QrPrintablePageTenantBranding
      *     logo_max_h: int,
      *     font_max: int,
      *     font_min: int,
-     *     gap: int
+     *     gap: int,
+     *     address_max_w: int
      * }  $metrics
      * @return array{0: int, 1: int}
      */
@@ -401,8 +479,8 @@ final class QrPrintablePageTenantBranding
         $x = (float) $text['x'];
         $y = (float) $text['y'];
         foreach ($text['lines'] as $line) {
-            $metrics = $canvas->queryFontMetrics($draw, $line);
-            $ascent = is_array($metrics) ? (float) ($metrics['ascender'] ?? $text['font_size']) : (float) $text['font_size'];
+            $fontMetrics = $canvas->queryFontMetrics($draw, $line);
+            $ascent = is_array($fontMetrics) ? (float) ($fontMetrics['ascender'] ?? $text['font_size']) : (float) $text['font_size'];
             $canvas->annotateImage($draw, $x, $y + $ascent, 0, $line);
             $y += $text['line_height'];
         }
@@ -504,8 +582,7 @@ final class QrPrintablePageTenantBranding
                 }
             }
 
-            $lineHeight = $fontSize * self::LINE_HEIGHT_RATIO;
-            if ($fits && ($lineHeight * count($lines)) <= $metrics['logo_max_h'] + 24) {
+            if ($fits) {
                 return $fontSize;
             }
         }
