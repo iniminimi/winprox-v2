@@ -189,7 +189,12 @@
     "updates": {
         "kind": {
             "worker_note": "Uitvoerder",
-            "worker_photos": "Foto's uitvoerder"
+            "worker_photos": "Foto's uitvoerder",
+            "note": "Notitie",
+            "pause": "Pauze",
+            "status_reason": "Statuswijziging",
+            "close_reason": "Melding gesloten",
+            "reopen_reason": "Melding heropend"
         },
         "errors": {
             "description_required": "Geef een notitie.",

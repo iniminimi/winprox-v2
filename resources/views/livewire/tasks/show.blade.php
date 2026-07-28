@@ -254,12 +254,34 @@
     @if ($issue?->updates->isNotEmpty())
         <div class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-section-title">{{ __('tasks.show.updates') }}</h2>
+            <p class="wp-muted wp-text-sm">{{ __('tasks.show.updates_hint') }}</p>
             @foreach ($issue->updates->sortByDesc('created_at') as $update)
-                <div class="wp-stack-tight" wire:key="update-{{ $update->id }}">
-                    <p class="wp-muted">{{ optional($update->created_at)->format('d/m/Y H:i') }}
-                        @if ($update->user) — {{ $update->user->name }} @endif
-                    </p>
-                    <p>{{ $update->description }}</p>
+                <div class="wp-card wp-card-pad wp-stack-tight wp-surface-muted" wire:key="task-update-{{ $update->id }}">
+                    <div class="wp-row">
+                        <span aria-hidden="true"></span>
+                        <p class="wp-muted wp-text-sm">{{ $update->created_at?->format('d/m/Y H:i') }}</p>
+                    </div>
+
+                    @if ($update->worker)
+                        <p class="wp-muted wp-text-sm">
+                            {{ __('issues.show.added_by_worker') }} {{ $update->worker->displayName() }}
+                        </p>
+                    @elseif ($update->user)
+                        <p class="wp-muted wp-text-sm">
+                            {{ __('issues.show.added_by') }} {{ $update->user->name }}
+                        </p>
+                    @endif
+
+                    @if (filled($update->description))
+                        <p class="wp-text-body">{{ $update->description }}</p>
+                    @elseif ($update->kind && $update->kind !== 'note')
+                        <p class="wp-text-body">{{ __('issues.updates.kind.'.$update->kind) }}</p>
+                    @endif
+
+                    @include('partials.wp-issue-photo-gallery', [
+                        'photos' => $update->photos,
+                        'wireKeyPrefix' => 'task-up-'.$update->id,
+                    ])
                 </div>
             @endforeach
         </div>

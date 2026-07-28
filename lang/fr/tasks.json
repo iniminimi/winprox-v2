@@ -70,11 +70,12 @@
         "confirm_status": "Appliquer le statut",
         "pause": "Note de pause",
         "pause_submit": "Enregistrer la pause",
-        "updates": "Mises à jour du signalement",
+        "updates": "Avancement",
         "errors": {
             "team_required": "Choisissez une équipe.",
             "issue_not_approved": "Le signalement doit d'abord être validé avant de modifier les tâches."
-        }
+        },
+        "updates_hint": "Notes, photos et actions des exécutants et administrateurs lors de la résolution de ce signalement."
     },
     "errors": {
         "invalid_transition": "Ce changement de statut n'est pas autorisé.",

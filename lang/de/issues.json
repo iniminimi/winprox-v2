@@ -189,7 +189,12 @@
     "updates": {
         "kind": {
             "worker_note": "Ausführender",
-            "worker_photos": "Fotos Ausführender"
+            "worker_photos": "Fotos Ausführender",
+            "note": "Notiz",
+            "pause": "Pause",
+            "status_reason": "Statusänderung",
+            "close_reason": "Meldung geschlossen",
+            "reopen_reason": "Meldung wieder geöffnet"
         },
         "errors": {
             "description_required": "Geben Sie eine Notiz ein.",

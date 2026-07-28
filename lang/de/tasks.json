@@ -70,11 +70,12 @@
         "confirm_status": "Status anwenden",
         "pause": "Pausennotiz",
         "pause_submit": "Pausennotiz speichern",
-        "updates": "Meldungs-Updates",
+        "updates": "Fortschritt",
         "errors": {
             "team_required": "Wählen Sie ein Team.",
             "issue_not_approved": "Die Meldung muss zuerst freigegeben werden, bevor Aufgaben bearbeitet werden können."
-        }
+        },
+        "updates_hint": "Notizen, Fotos und Aktionen von Ausführenden und Administratoren bei der Lösung dieser Meldung."
     },
     "errors": {
         "invalid_transition": "Diese Statusänderung ist nicht erlaubt.",

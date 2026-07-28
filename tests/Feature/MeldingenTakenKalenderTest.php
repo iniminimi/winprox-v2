@@ -529,3 +529,62 @@ it('sorteert meldingen en taken binnen status op id aflopend', function () {
                 && $group['tasks']->pluck('id')->all() === [$newerTask->id, $olderTask->id];
         });
 });
+
+it('toont op taakdetail voortgang met uitvoerder en foto-updates van de melding', function () {
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create();
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $worker = \App\Models\Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Uitvoerder',
+    ]);
+
+    \App\Models\IssueUpdate::query()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'worker_id' => $worker->id,
+        'kind' => 'worker_note',
+        'description' => 'Intercom was ok',
+    ]);
+
+    $photos = \App\Models\IssueUpdate::query()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'worker_id' => $worker->id,
+        'kind' => 'worker_photos',
+        'description' => null,
+    ]);
+
+    IssuePhoto::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'issue_update_id' => $photos->id,
+        'path' => 'issue-photos/task-progress.jpg',
+    ]);
+    Storage::disk('public')->put('issue-photos/task-progress.jpg', 'jpeg');
+
+    Livewire::actingAs($user)
+        ->test(TaskShow::class, ['task' => $task])
+        ->assertSee(__('tasks.show.updates'))
+        ->assertSee(__('tasks.show.updates_hint'))
+        ->assertSee('Intercom was ok')
+        ->assertSee(__('issues.show.added_by_worker'))
+        ->assertSee('Jan Uitvoerder')
+        ->assertSee(__('issues.updates.kind.worker_photos'))
+        ->assertSee('/storage/issue-photos/task-progress.jpg', false);
+});

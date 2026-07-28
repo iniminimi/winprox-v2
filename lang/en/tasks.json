@@ -70,11 +70,12 @@
         "confirm_status": "Apply status",
         "pause": "Pause note",
         "pause_submit": "Save pause note",
-        "updates": "Issue updates",
+        "updates": "Progress",
         "errors": {
             "team_required": "Choose a team.",
             "issue_not_approved": "The issue must be approved before tasks can be edited."
-        }
+        },
+        "updates_hint": "Notes, photos and actions by workers and admins while resolving this issue."
     },
     "errors": {
         "invalid_transition": "This status change is not allowed.",

@@ -189,7 +189,12 @@
     "updates": {
         "kind": {
             "worker_note": "Exécutant",
-            "worker_photos": "Photos exécutant"
+            "worker_photos": "Photos exécutant",
+            "note": "Note",
+            "pause": "Pause",
+            "status_reason": "Changement de statut",
+            "close_reason": "Signalement clôturé",
+            "reopen_reason": "Signalement rouvert"
         },
         "errors": {
             "description_required": "Saisissez une note.",

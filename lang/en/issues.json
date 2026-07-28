@@ -189,7 +189,12 @@
     "updates": {
         "kind": {
             "worker_note": "Field worker",
-            "worker_photos": "Field worker photos"
+            "worker_photos": "Field worker photos",
+            "note": "Note",
+            "pause": "Pause",
+            "status_reason": "Status change",
+            "close_reason": "Issue closed",
+            "reopen_reason": "Issue reopened"
         },
         "errors": {
             "description_required": "Enter a note.",
