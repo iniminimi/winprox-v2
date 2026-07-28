@@ -94,6 +94,60 @@
                         </div>
                         @error('taskNote') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
+
+                    @if (filled(trim((string) ($task->description ?? ''))))
+                        <div class="wp-field" x-data="{ open: false }">
+                            <span class="wp-label">{{ __('tasks.translation_edit.label') }}</span>
+
+                            <div class="wp-field-panel" :class="{ 'is-open': open }">
+                                <button
+                                    type="button"
+                                    class="wp-field-panel__trigger"
+                                    @click="open = !open"
+                                    :aria-expanded="open"
+                                >
+                                    <span>{{ __('tasks.translation_edit.open') }}</span>
+                                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                                </button>
+
+                                <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                                    <div class="wp-cluster wp-issue-description-row">
+                                        <select
+                                            class="wp-select wp-select--compact"
+                                            wire:model.live="taskPreviewLocale"
+                                            aria-label="{{ __('issues.show.description_language') }}"
+                                        >
+                                            @foreach ($taskTranslationLocales as $code => $label)
+                                                <option value="{{ $code }}">{{ $label }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <label class="wp-field">
+                                        <span class="wp-label">{{ __('tasks.translation_edit.description') }}</span>
+                                        <textarea class="wp-textarea" wire:model="taskTranslationDescription" rows="3"></textarea>
+                                        @error('taskTranslationDescription') <span class="wp-error">{{ $message }}</span> @enderror
+                                    </label>
+
+                                    <div class="wp-row">
+                                        <button
+                                            type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="saveTaskTranslationOverride"
+                                            wire:loading.attr="disabled"
+                                            wire:target="saveTaskTranslationOverride"
+                                        >
+                                            <span wire:loading wire:target="saveTaskTranslationOverride" class="wp-mr-2">
+                                                <x-wp-spinner size="sm" />
+                                            </span>
+                                            <span>{{ __('tasks.translation_edit.save') }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="wp-field">
                         <label class="wp-label" for="taskScheduledFor">{{ __('issues.show.task_scheduled_label') }}</label>
                         <input type="date" id="taskScheduledFor" class="wp-input" wire:model="taskScheduledFor">

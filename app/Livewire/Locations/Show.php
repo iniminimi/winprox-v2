@@ -12,6 +12,7 @@ use App\Actions\Locations\DeleteUnitBulkBatchAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Actions\Locations\UpdateUnitAction;
 use App\Actions\QrCodes\DeleteQrLinkPhotoAction;
+use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Units\DeleteImportBatchAction;
 use App\Actions\Units\ImportUnitsAction;
@@ -127,6 +128,10 @@ class Show extends Component
 
     public string $unitTranslationDescription = '';
 
+    public string $locationPreviewLocale = '';
+
+    public string $locationTranslationName = '';
+
     public function updatedUnitCategoryFilter(): void
     {
         $this->resetPage();
@@ -173,7 +178,10 @@ class Show extends Component
     {
         $this->authorize('update', $this->location);
         $this->location->refresh();
+        $this->location->loadMissing('translations');
         $this->fillLocationFormFromModel();
+        $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($this->location);
+        $this->hydrateLocationTranslationInput($this->location);
         $this->resetErrorBag();
         $this->showLocationModal = true;
     }
@@ -184,6 +192,65 @@ class Show extends Component
         $this->location->refresh();
         $this->resetLocationForm();
         $this->resetErrorBag();
+    }
+
+    public function updatedLocationPreviewLocale(): void
+    {
+        $this->location->loadMissing('translations');
+        $this->hydrateLocationTranslationInput($this->location);
+    }
+
+    public function saveLocationTranslationOverride(ImportLocationTranslationsAction $importLocationTranslations): void
+    {
+        $this->authorize('update', $this->location);
+
+        if (! $this->location->is_active) {
+            $this->addError('locationTranslationName', __('locations.errors.translation_requires_active'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'locationTranslationName' => ['required', 'string', 'max:255'],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->locationPreviewLocale);
+        if ($locale === $this->location->normalizedOriginalLanguage()) {
+            $this->addError('locationTranslationName', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) $validated['locationTranslationName']);
+        if ($name === '') {
+            $this->addError('locationTranslationName', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importLocationTranslations->handle([
+                [
+                    'location_id' => $this->location->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (is_array($messages)) {
+                    foreach ($messages as $message) {
+                        $this->addError('locationTranslationName', (string) $message);
+                    }
+                }
+            }
+
+            return;
+        }
+
+        $this->location = $this->location->fresh('translations');
+        $this->hydrateLocationTranslationInput($this->location);
+        session()->flash('success', __('locations.flash.translation_saved'));
     }
 
     public function saveLocation(UpdateLocationAction $updateLocation): void
@@ -232,8 +299,42 @@ class Show extends Component
             'locationFormPostalCode',
             'locationFormCity',
             'locationFormNotes',
+            'locationPreviewLocale',
+            'locationTranslationName',
         ]);
         $this->locationFormCountryCode = 'BE';
+    }
+
+    private function hydrateLocationTranslationInput(?Location $location): void
+    {
+        if ($location === null) {
+            $this->locationTranslationName = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->locationPreviewLocale);
+        if ($locale === $location->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForLocation($location);
+            $this->locationPreviewLocale = $locale;
+        }
+
+        $translation = $location->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->locationTranslationName = (string) ($translation?->name ?? '');
+    }
+
+    private function defaultTranslationLocaleForLocation(Location $location): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($location->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     public function deactivateLocation(DeactivateLocationAction $deactivateLocation): void
@@ -883,6 +984,16 @@ class Show extends Component
             }
         }
 
+        $locationTranslationLocales = config('locales.labels', []);
+        if ($this->showLocationModal) {
+            $sourceLocale = $this->location->normalizedOriginalLanguage();
+            $locationTranslationLocales = array_filter(
+                $locationTranslationLocales,
+                fn (string $label, string $code): bool => $code !== $sourceLocale,
+                ARRAY_FILTER_USE_BOTH,
+            );
+        }
+
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
@@ -903,6 +1014,7 @@ class Show extends Component
             'qrPackTemplates' => QrStickerSheetTemplate::cases(),
             'previewUnit' => $previewUnit,
             'descriptionLocales' => $descriptionLocales,
+            'locationTranslationLocales' => $locationTranslationLocales,
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
         ]);
     }

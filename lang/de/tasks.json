@@ -82,5 +82,14 @@
         "pause_only_in_progress": "Pausieren ist nur während der Bearbeitung möglich.",
         "translation_requires_description": "Übersetzungen sind nur möglich, wenn die Aufgabe eine Beschreibung hat.",
         "translation_import_missing": "Aufgabe nicht gefunden oder ohne Beschreibung."
+    },
+    "translation_edit": {
+        "label": "Übersetzung",
+        "open": "Hier klicken zum Bearbeiten",
+        "description": "Übersetzte Aufgabenbeschreibung",
+        "save": "Übersetzung speichern"
+    },
+    "flash": {
+        "translation_saved": "Aufgabenübersetzung gespeichert."
     }
 }

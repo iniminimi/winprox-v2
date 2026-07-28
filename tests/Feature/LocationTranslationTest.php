@@ -147,3 +147,64 @@ it('exporteert locatievertalingen via translation:export', function () {
 
     expect($locationIds)->toContain($location->id);
 });
+
+it('laat een admin een locatievertaling opslaan vanuit de index-bewerk-popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    Tenancy::actAs($tenant->id);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Hoofddepot',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Locations\Index::class)
+        ->call('openEdit', $location->id)
+        ->set('locationPreviewLocale', 'en')
+        ->set('locationTranslationName', 'Main depot')
+        ->call('saveLocationTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = LocationTranslation::query()
+        ->where('location_id', $location->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->name)->toBe('Main depot')
+        ->and($translation?->status)->toBe(LocationTranslationStatus::Completed);
+});
+
+it('laat een admin een locatievertaling opslaan vanuit de detail-bewerk-popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id, 'locale' => 'en']);
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Magazijn Zuid',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Locations\Show::class, ['location' => $location])
+        ->call('openEditLocation')
+        ->set('locationPreviewLocale', 'en')
+        ->set('locationTranslationName', 'South warehouse')
+        ->call('saveLocationTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = LocationTranslation::query()
+        ->where('location_id', $location->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->name)->toBe('South warehouse')
+        ->and($translation?->status)->toBe(LocationTranslationStatus::Completed);
+});

@@ -4,6 +4,7 @@ namespace App\Livewire\Locations;
 
 use App\Actions\Categories\SyncCategoryTeamsAction;
 use App\Actions\Communication\ImportCategoryTranslationsAction;
+use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
@@ -53,6 +54,10 @@ class Index extends Component
     public string $locationFormCountryCode = 'BE';
 
     public string $locationFormNotes = '';
+
+    public string $locationPreviewLocale = '';
+
+    public string $locationTranslationName = '';
 
     public bool $showCategoriesModal = false;
 
@@ -110,8 +115,87 @@ class Index extends Component
         $this->locationFormCity = (string) ($location->city ?? '');
         $this->locationFormCountryCode = (string) ($location->country_code ?? 'BE');
         $this->locationFormNotes = (string) ($location->notes ?? '');
+        $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($location);
+        $this->hydrateLocationTranslationInput($location->fresh('translations'));
         $this->resetErrorBag();
         $this->showModal = true;
+    }
+
+    public function updatedLocationPreviewLocale(): void
+    {
+        if ($this->editingLocationId === null) {
+            $this->locationTranslationName = '';
+
+            return;
+        }
+
+        $location = Location::query()
+            ->with('translations')
+            ->find($this->editingLocationId);
+
+        $this->hydrateLocationTranslationInput($location);
+    }
+
+    public function saveLocationTranslationOverride(ImportLocationTranslationsAction $importLocationTranslations): void
+    {
+        if ($this->editingLocationId === null) {
+            return;
+        }
+
+        $location = Location::query()
+            ->with('translations')
+            ->findOrFail($this->editingLocationId);
+
+        $this->authorize('update', $location);
+
+        if (! $location->is_active) {
+            $this->addError('locationTranslationName', __('locations.errors.translation_requires_active'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'locationTranslationName' => ['required', 'string', 'max:255'],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->locationPreviewLocale);
+        if ($locale === $location->normalizedOriginalLanguage()) {
+            $this->addError('locationTranslationName', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) $validated['locationTranslationName']);
+        if ($name === '') {
+            $this->addError('locationTranslationName', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importLocationTranslations->handle([
+                [
+                    'location_id' => $location->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                ],
+            ], (int) auth()->id());
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (! is_array($messages)) {
+                    continue;
+                }
+
+                foreach ($messages as $message) {
+                    $this->addError('locationTranslationName', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->hydrateLocationTranslationInput($location->fresh('translations'));
+        session()->flash('success', __('locations.flash.translation_saved'));
     }
 
     public function closeModal(): void
@@ -189,10 +273,43 @@ class Index extends Component
     {
         $this->reset([
             'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'editingLocationId',
+            'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;
         $this->locationFormCountryCode = 'BE';
         $this->resetErrorBag();
+    }
+
+    private function hydrateLocationTranslationInput(?Location $location): void
+    {
+        if ($location === null) {
+            $this->locationTranslationName = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->locationPreviewLocale);
+        if ($locale === $location->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForLocation($location);
+            $this->locationPreviewLocale = $locale;
+        }
+
+        $translation = $location->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->locationTranslationName = (string) ($translation?->name ?? '');
+    }
+
+    private function defaultTranslationLocaleForLocation(Location $location): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($location->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     public function openCategoriesModal(): void
@@ -451,12 +568,29 @@ class Index extends Component
             }
         }
 
+        $locationTranslationLocales = config('locales.labels', []);
+        $editingLocation = null;
+        if ($this->showModal && $this->editingLocationId !== null) {
+            $editingLocation = Location::query()->find($this->editingLocationId);
+
+            if ($editingLocation !== null) {
+                $sourceLocale = $editingLocation->normalizedOriginalLanguage();
+                $locationTranslationLocales = array_filter(
+                    $locationTranslationLocales,
+                    fn (string $label, string $code): bool => $code !== $sourceLocale,
+                    ARRAY_FILTER_USE_BOTH,
+                );
+            }
+        }
+
         return view('livewire.locations.index', [
             'locations' => $locations,
             'hasAnyLocation' => $hasAnyLocation,
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
+            'editingLocation' => $editingLocation,
+            'locationTranslationLocales' => $locationTranslationLocales,
             'categoryTranslationLocales' => $categoryTranslationLocales,
             'onboarding' => TenantOnboardingState::current(),
         ]);

@@ -85,7 +85,8 @@
         "updated": "Sede aggiornata.",
         "deactivated": "Sede disattivata.",
         "activated": "Sede attivata.",
-        "imported": ":count unità importate."
+        "imported": ":count unità importate.",
+        "translation_saved": "Traduzione della sede salvata."
     },
     "units": {
         "create_title": "Aggiungi unità",
@@ -243,7 +244,8 @@
         "unit_limit": "Ha raggiunto il limite unità del Suo piano. Aggiorni l'abbonamento per aggiungere altre unità.",
         "location_limit": "Ha raggiunto il limite sedi del Suo piano. Aggiorni l'abbonamento per aggiungere altre sedi.",
         "translation_import_missing": "Sede non trovata o non attiva.",
-        "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo."
+        "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo.",
+        "translation_requires_active": "Le traduzioni sono disponibili solo per sedi attive."
     },
     "qr_pack": {
         "unavailable": "Esportazione QR non disponibile su questo server.",
@@ -349,5 +351,11 @@
             "updated": "Annuncio aggiornato.",
             "deleted": "Annuncio eliminato."
         }
+    },
+    "translation_edit": {
+        "label": "Traduzione",
+        "open": "Clicchi qui per modificare",
+        "name": "Nome sede tradotto",
+        "save": "Salva traduzione"
     }
 }

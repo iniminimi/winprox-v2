@@ -85,7 +85,8 @@
         "updated": "Standort aktualisiert.",
         "deactivated": "Standort deaktiviert.",
         "activated": "Standort aktiviert.",
-        "imported": ":count Units importiert."
+        "imported": ":count Units importiert.",
+        "translation_saved": "Standortübersetzung gespeichert."
     },
     "units": {
         "create_title": "Unit hinzufügen",
@@ -243,7 +244,8 @@
         "unit_limit": "Das Unit-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Units hinzuzufügen.",
         "location_limit": "Das Standort-Limit Ihres Tarifs ist erreicht. Wechseln Sie zu einem höheren Abonnement, um weitere Standorte hinzuzufügen.",
         "translation_import_missing": "Standort nicht gefunden oder nicht aktiv.",
-        "translation_import_name_too_long": "Der übersetzte Standortname ist zu lang."
+        "translation_import_name_too_long": "Der übersetzte Standortname ist zu lang.",
+        "translation_requires_active": "Übersetzungen sind nur für aktive Standorte möglich."
     },
     "qr_pack": {
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
@@ -349,5 +351,11 @@
             "updated": "Mitteilung aktualisiert.",
             "deleted": "Mitteilung gelöscht."
         }
+    },
+    "translation_edit": {
+        "label": "Übersetzung",
+        "open": "Hier klicken zum Bearbeiten",
+        "name": "Übersetzter Standortname",
+        "save": "Übersetzung speichern"
     }
 }

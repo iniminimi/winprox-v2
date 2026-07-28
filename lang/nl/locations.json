@@ -85,7 +85,8 @@
         "updated": "Locatie bijgewerkt.",
         "deactivated": "Locatie gedeactiveerd.",
         "activated": "Locatie geactiveerd.",
-        "imported": ":count units geïmporteerd."
+        "imported": ":count units geïmporteerd.",
+        "translation_saved": "Locatievertaling opgeslagen."
     },
     "units": {
         "create_title": "Unit toevoegen",
@@ -243,7 +244,8 @@
         "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen.",
         "location_limit": "Je planlimiet voor locaties is bereikt. Upgrade je abonnement om meer locaties toe te voegen.",
         "translation_import_missing": "Locatie niet gevonden of niet actief.",
-        "translation_import_name_too_long": "De vertaalde locatienaam is te lang."
+        "translation_import_name_too_long": "De vertaalde locatienaam is te lang.",
+        "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve locaties."
     },
     "qr_pack": {
         "unavailable": "QR-export is niet beschikbaar op deze server.",
@@ -349,5 +351,11 @@
             "updated": "Mededeling bijgewerkt.",
             "deleted": "Mededeling verwijderd."
         }
+    },
+    "translation_edit": {
+        "label": "Vertaling",
+        "open": "Klik hier om aan te passen",
+        "name": "Vertaalde locatienaam",
+        "save": "Vertaling opslaan"
     }
 }

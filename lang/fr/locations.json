@@ -85,7 +85,8 @@
         "updated": "Site mis à jour.",
         "deactivated": "Site désactivé.",
         "activated": "Site activé.",
-        "imported": ":count unités importées."
+        "imported": ":count unités importées.",
+        "translation_saved": "Traduction du site enregistrée."
     },
     "units": {
         "create_title": "Ajouter une unité",
@@ -243,7 +244,8 @@
         "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "location_limit": "La limite de sites de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "translation_import_missing": "Site introuvable ou inactif.",
-        "translation_import_name_too_long": "Le nom de site traduit est trop long."
+        "translation_import_name_too_long": "Le nom de site traduit est trop long.",
+        "translation_requires_active": "Les traductions ne sont possibles que pour les sites actifs."
     },
     "qr_pack": {
         "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
@@ -349,5 +351,11 @@
             "updated": "Annonce mise à jour.",
             "deleted": "Annonce supprimée."
         }
+    },
+    "translation_edit": {
+        "label": "Traduction",
+        "open": "Cliquez ici pour modifier",
+        "name": "Nom de site traduit",
+        "save": "Enregistrer la traduction"
     }
 }

@@ -82,5 +82,14 @@
         "pause_only_in_progress": "La pause n'est possible qu'en cours d'exécution.",
         "translation_requires_description": "Les traductions ne sont disponibles que si la tâche a une description.",
         "translation_import_missing": "Tâche introuvable ou sans description."
+    },
+    "translation_edit": {
+        "label": "Traduction",
+        "open": "Cliquez ici pour modifier",
+        "description": "Description de tâche traduite",
+        "save": "Enregistrer la traduction"
+    },
+    "flash": {
+        "translation_saved": "Traduction de la tâche enregistrée."
     }
 }

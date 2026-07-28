@@ -82,5 +82,14 @@
         "pause_only_in_progress": "Le note di pausa sono consentite solo in corso.",
         "translation_requires_description": "Le traduzioni sono disponibili solo quando l'attività ha una descrizione.",
         "translation_import_missing": "Attività non trovata o senza descrizione."
+    },
+    "translation_edit": {
+        "label": "Traduzione",
+        "open": "Clicchi qui per modificare",
+        "description": "Descrizione attività tradotta",
+        "save": "Salva traduzione"
+    },
+    "flash": {
+        "translation_saved": "Traduzione attività salvata."
     }
 }

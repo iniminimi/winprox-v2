@@ -82,5 +82,14 @@
         "pause_only_in_progress": "Las notas de pausa solo están permitidas mientras está en curso.",
         "translation_requires_description": "Las traducciones solo están disponibles cuando la tarea tiene una descripción.",
         "translation_import_missing": "Tarea no encontrada o sin descripción."
+    },
+    "translation_edit": {
+        "label": "Traducción",
+        "open": "Haga clic aquí para editar",
+        "description": "Descripción de tarea traducida",
+        "save": "Guardar traducción"
+    },
+    "flash": {
+        "translation_saved": "Traducción de tarea guardada."
     }
 }

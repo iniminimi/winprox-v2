@@ -82,5 +82,14 @@
         "pause_only_in_progress": "Pause notes are only allowed while in progress.",
         "translation_requires_description": "Translations are only available when the task has a description.",
         "translation_import_missing": "Task not found or has no description."
+    },
+    "translation_edit": {
+        "label": "Translation",
+        "open": "Click here to edit",
+        "description": "Translated task description",
+        "save": "Save translation"
+    },
+    "flash": {
+        "translation_saved": "Task translation saved."
     }
 }

@@ -85,7 +85,8 @@
         "updated": "Location updated.",
         "deactivated": "Location deactivated.",
         "activated": "Location activated.",
-        "imported": ":count units imported."
+        "imported": ":count units imported.",
+        "translation_saved": "Location translation saved."
     },
     "units": {
         "create_title": "Add unit",
@@ -243,7 +244,8 @@
         "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units.",
         "location_limit": "Your plan location limit has been reached. Upgrade your subscription to add more locations.",
         "translation_import_missing": "Location not found or not active.",
-        "translation_import_name_too_long": "The translated location name is too long."
+        "translation_import_name_too_long": "The translated location name is too long.",
+        "translation_requires_active": "Translations are only available for active locations."
     },
     "qr_pack": {
         "unavailable": "QR export is unavailable on this server.",
@@ -349,5 +351,11 @@
             "updated": "Announcement updated.",
             "deleted": "Announcement deleted."
         }
+    },
+    "translation_edit": {
+        "label": "Translation",
+        "open": "Click here to edit",
+        "name": "Translated location name",
+        "save": "Save translation"
     }
 }

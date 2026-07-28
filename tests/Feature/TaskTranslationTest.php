@@ -8,6 +8,7 @@ use App\Actions\Tasks\CreateTaskAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Enums\TaskTranslationStatus;
 use App\Livewire\Tasks\Index;
+use App\Livewire\Tasks\Show as TaskShow;
 use App\Models\Category;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
@@ -195,4 +196,37 @@ it('toont vertaalde taakomschrijving in takenlijst volgens gebruikerstaal', func
     Livewire::actingAs($user)
         ->test(Index::class)
         ->assertSee('Replace gasket');
+});
+
+it('laat een admin een taakvertaling opslaan vanuit de bewerk-popup', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id, 'locale' => 'en', 'role' => User::ROLE_ADMIN]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::actAs($tenant->id);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'original_language' => 'nl',
+        'approved_at' => now(),
+        'approved_by' => $user->id,
+    ]);
+
+    $task = app(CreateTaskAction::class)->handle($issue, $team->id, description: 'Vervang pakking');
+
+    Livewire::actingAs($user)
+        ->test(TaskShow::class, ['task' => $task])
+        ->call('openEditTaskModal')
+        ->set('taskPreviewLocale', 'en')
+        ->set('taskTranslationDescription', 'Replace gasket manually')
+        ->call('saveTaskTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = TaskTranslation::query()
+        ->where('task_id', $task->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->description)->toBe('Replace gasket manually')
+        ->and($translation?->status)->toBe(TaskTranslationStatus::Completed);
 });

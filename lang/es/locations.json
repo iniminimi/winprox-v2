@@ -85,7 +85,8 @@
         "updated": "Ubicación actualizada.",
         "deactivated": "Ubicación desactivada.",
         "activated": "Ubicación activada.",
-        "imported": ":count unidades importadas."
+        "imported": ":count unidades importadas.",
+        "translation_saved": "Traducción de ubicación guardada."
     },
     "units": {
         "create_title": "Añadir unidad",
@@ -243,7 +244,8 @@
         "unit_limit": "Ha alcanzado el límite de unidades de su plan. Actualice su suscripción para añadir más unidades.",
         "location_limit": "Ha alcanzado el límite de ubicaciones de su plan. Actualice su suscripción para añadir más ubicaciones.",
         "translation_import_missing": "Ubicación no encontrada o no activa.",
-        "translation_import_name_too_long": "El nombre de ubicación traducido es demasiado largo."
+        "translation_import_name_too_long": "El nombre de ubicación traducido es demasiado largo.",
+        "translation_requires_active": "Las traducciones solo están disponibles para ubicaciones activas."
     },
     "qr_pack": {
         "unavailable": "La exportación QR no está disponible en este servidor.",
@@ -349,5 +351,11 @@
             "updated": "Anuncio actualizado.",
             "deleted": "Anuncio eliminado."
         }
+    },
+    "translation_edit": {
+        "label": "Traducción",
+        "open": "Haga clic aquí para editar",
+        "name": "Nombre de ubicación traducido",
+        "save": "Guardar traducción"
     }
 }

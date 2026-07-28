@@ -200,6 +200,59 @@
                 </div>
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
+
+                    @if ($location->is_active)
+                        <div class="wp-field" x-data="{ open: false }">
+                            <span class="wp-label">{{ __('locations.translation_edit.label') }}</span>
+
+                            <div class="wp-field-panel" :class="{ 'is-open': open }">
+                                <button
+                                    type="button"
+                                    class="wp-field-panel__trigger"
+                                    @click="open = !open"
+                                    :aria-expanded="open"
+                                >
+                                    <span>{{ __('locations.translation_edit.open') }}</span>
+                                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                                </button>
+
+                                <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                                    <div class="wp-cluster wp-issue-description-row">
+                                        <select
+                                            class="wp-select wp-select--compact"
+                                            wire:model.live="locationPreviewLocale"
+                                            aria-label="{{ __('issues.show.description_language') }}"
+                                        >
+                                            @foreach ($locationTranslationLocales as $code => $label)
+                                                <option value="{{ $code }}">{{ $label }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <label class="wp-field">
+                                        <span class="wp-label">{{ __('locations.translation_edit.name') }}</span>
+                                        <textarea class="wp-input" wire:model="locationTranslationName" rows="1"></textarea>
+                                        @error('locationTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                                    </label>
+
+                                    <div class="wp-row">
+                                        <button
+                                            type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="saveLocationTranslationOverride"
+                                            wire:loading.attr="disabled"
+                                            wire:target="saveLocationTranslationOverride"
+                                        >
+                                            <span wire:loading wire:target="saveLocationTranslationOverride" class="wp-mr-2">
+                                                <x-wp-spinner size="sm" />
+                                            </span>
+                                            <span>{{ __('locations.translation_edit.save') }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLocationModal">{{ __('common.button.cancel') }}</button>

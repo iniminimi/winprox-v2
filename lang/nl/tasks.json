@@ -82,5 +82,14 @@
         "pause_only_in_progress": "Pauzeren kan alleen tijdens in uitvoering.",
         "translation_requires_description": "Vertalingen zijn alleen mogelijk wanneer de taak een omschrijving heeft.",
         "translation_import_missing": "Taak niet gevonden of zonder omschrijving."
+    },
+    "translation_edit": {
+        "label": "Vertaling",
+        "open": "Klik hier om aan te passen",
+        "description": "Vertaalde taakomschrijving",
+        "save": "Vertaling opslaan"
+    },
+    "flash": {
+        "translation_saved": "Taakvertaling opgeslagen."
     }
 }

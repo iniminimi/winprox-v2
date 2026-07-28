@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Tasks;
 
+use App\Actions\Communication\ImportTaskTranslationsAction;
 use App\Actions\Tasks\PauseTaskAction;
 use App\Actions\Tasks\UpdateTaskDetailsAction;
 use App\Actions\Tasks\UpdateTaskPriorityAction;
@@ -14,7 +15,9 @@ use App\Models\Task;
 use App\Support\EntityDetailNavigation;
 use App\Support\Esg\EsgOperationChainPresenter;
 use App\Support\Tasks\TaskStatusTransitions;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Validation\TextDescriptionLimits;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -41,6 +44,10 @@ class Show extends Component
 
     public bool $showEditTaskModal = false;
 
+    public string $taskPreviewLocale = '';
+
+    public string $taskTranslationDescription = '';
+
     public function mount(Task $task): void
     {
         $this->authorize('view', $task);
@@ -64,6 +71,9 @@ class Show extends Component
     {
         $this->authorize('update', $this->task);
         $this->syncFormFromTask();
+        $this->task->loadMissing('translations');
+        $this->taskPreviewLocale = $this->defaultTranslationLocaleForTask($this->task);
+        $this->hydrateTaskTranslationInput($this->task);
         $this->resetValidation();
         $this->showEditTaskModal = true;
     }
@@ -71,6 +81,81 @@ class Show extends Component
     public function closeEditTaskModal(): void
     {
         $this->showEditTaskModal = false;
+        $this->taskPreviewLocale = '';
+        $this->taskTranslationDescription = '';
+    }
+
+    public function updatedTaskPreviewLocale(): void
+    {
+        $this->task->loadMissing('translations');
+        $this->hydrateTaskTranslationInput($this->task);
+    }
+
+    public function saveTaskTranslationOverride(ImportTaskTranslationsAction $importTaskTranslations): void
+    {
+        $this->authorize('update', $this->task);
+
+        if (! filled(trim((string) ($this->task->description ?? '')))) {
+            $this->addError('taskTranslationDescription', __('tasks.errors.translation_requires_description'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'taskTranslationDescription' => ['required', 'string', 'max:'.TextDescriptionLimits::TRANSLATION_MAX],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->taskPreviewLocale);
+        if ($locale === $this->task->normalizedOriginalLanguage()) {
+            $this->addError('taskTranslationDescription', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $description = trim((string) $validated['taskTranslationDescription']);
+        if ($description === '') {
+            $this->addError('taskTranslationDescription', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importTaskTranslations->handle([
+                [
+                    'task_id' => $this->task->id,
+                    'locale' => $locale,
+                    'description' => $description,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (! is_array($messages)) {
+                    continue;
+                }
+
+                foreach ($messages as $message) {
+                    $this->addError('taskTranslationDescription', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->task = $this->task->fresh([
+            'issue.location',
+            'issue.unit.translations',
+            'issue.esgIndicator.translations',
+            'issue.translations',
+            'issue.updates.user',
+            'issue.updates.worker',
+            'translations',
+            'team.translations',
+            'esgThresholdMeasurement.indicator.translations',
+            'esgThresholdMeasurement.task',
+            'esgThresholdMeasurement.thresholdFollowUpTask',
+        ]);
+        $this->hydrateTaskTranslationInput($this->task);
+        session()->flash('success', __('tasks.flash.translation_saved'));
     }
 
     public function saveDetails(
@@ -187,6 +272,32 @@ class Show extends Component
         $this->taskScheduledFor = $this->task->scheduled_for?->format('Y-m-d');
     }
 
+    private function hydrateTaskTranslationInput(Task $task): void
+    {
+        $locale = LocaleSupport::normalize($this->taskPreviewLocale);
+        if ($locale === $task->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForTask($task);
+            $this->taskPreviewLocale = $locale;
+        }
+
+        $translation = $task->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->taskTranslationDescription = (string) ($translation?->description ?? '');
+    }
+
+    private function defaultTranslationLocaleForTask(Task $task): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($task->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
+    }
+
     public function render()
     {
         $current = $this->task->status instanceof TaskStatus
@@ -205,6 +316,16 @@ class Show extends Component
             ? trim(($location->country_code ?: 'BE').' '.$location->formattedAddress())
             : '';
 
+        $taskTranslationLocales = config('locales.labels', []);
+        if ($this->showEditTaskModal) {
+            $sourceLocale = $this->task->normalizedOriginalLanguage();
+            $taskTranslationLocales = array_filter(
+                $taskTranslationLocales,
+                fn (string $label, string $code): bool => $code !== $sourceLocale,
+                ARRAY_FILTER_USE_BOTH,
+            );
+        }
+
         return view('livewire.tasks.show', [
             'task' => $this->task,
             'headline' => $headline,
@@ -220,6 +341,7 @@ class Show extends Component
             'requiresReason' => $target !== null && TaskStatusTransitions::requiresReason($current, $target),
             'nav' => EntityDetailNavigation::forTask($this->task),
             'esgChainSteps' => EsgOperationChainPresenter::stepsForTask($this->task),
+            'taskTranslationLocales' => $taskTranslationLocales,
         ]);
     }
 }
