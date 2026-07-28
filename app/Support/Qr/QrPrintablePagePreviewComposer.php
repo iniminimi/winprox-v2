@@ -257,18 +257,24 @@ final class QrPrintablePagePreviewComposer
         $primaryFontPx = max(9.0, $height * 0.026);
         $secondaryFontPx = max(12.0, $height * 0.038);
         $labelGap = max(4, (int) round($height * 0.012));
-        $lineGap = max(2, (int) round($height * 0.008));
+        $aboveQrGap = max(10, (int) round($height * 0.035));
         $secondaryText = trim((string) $secondaryLabel);
 
-        $labelBlock = $labelGap + (int) ceil($primaryFontPx) + 2;
+        $aboveBlock = $secondaryText !== ''
+            ? (int) ceil($secondaryFontPx) + 2 + $aboveQrGap
+            : 0;
+        $belowBlock = $labelGap + (int) ceil($primaryFontPx) + 2;
+        $blockHeight = $aboveBlock + $qrPx + $belowBlock;
+        $blockTop = (int) round(($height - $blockHeight) / 2);
+
+        $secondaryY = 0;
+        $qrY = $blockTop;
         if ($secondaryText !== '') {
-            $labelBlock += $lineGap + (int) ceil($secondaryFontPx) + 2;
+            $secondaryY = $blockTop + (int) round($secondaryFontPx);
+            $qrY = $secondaryY + $aboveQrGap;
         }
 
-        $blockHeight = $qrPx + $labelBlock;
-        $qrY = (int) round(($height - $blockHeight) / 2);
         $primaryY = $qrY + $qrPx + $labelGap + (int) round($primaryFontPx);
-        $secondaryY = $primaryY + $lineGap + (int) round($secondaryFontPx);
 
         return [
             'qrPx' => $qrPx,

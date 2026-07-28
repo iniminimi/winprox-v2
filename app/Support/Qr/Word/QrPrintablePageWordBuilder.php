@@ -39,7 +39,8 @@ final class QrPrintablePageWordBuilder
 
     private const LABEL_GAP_MM = 2.5;
 
-    private const LINE_GAP_MM = 1.2;
+    /** Space between location caption (above) and the QR code. */
+    private const ABOVE_QR_GAP_MM = 6.0;
 
     private const PRIMARY_FONT_MM = 2.8;
 
@@ -496,24 +497,29 @@ final class QrPrintablePageWordBuilder
         $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM);
         $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM);
         $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM);
-        $lineGapPx = self::mmToPixelAtDpi(self::LINE_GAP_MM);
+        $aboveQrGapPx = self::mmToPixelAtDpi(self::ABOVE_QR_GAP_MM);
 
-        $labelBlock = 0;
-        if ($primaryText !== '') {
-            $labelBlock += $labelGapPx + (int) ceil($primaryFontPx) + 2;
-        }
+        $aboveBlock = 0;
         if ($secondaryText !== '') {
-            $labelBlock += ($primaryText !== '' ? $lineGapPx : $labelGapPx) + (int) ceil($secondaryFontPx) + 2;
+            $aboveBlock = (int) ceil($secondaryFontPx) + 2 + $aboveQrGapPx;
         }
 
-        $blockHeight = $qrPx + $labelBlock;
+        $belowBlock = 0;
+        if ($primaryText !== '') {
+            $belowBlock = $labelGapPx + (int) ceil($primaryFontPx) + 2;
+        }
+
+        $blockHeight = $aboveBlock + $qrPx + $belowBlock;
         $blockTop = (int) round(($heightPx - $blockHeight) / 2);
+
+        $secondaryY = 0;
         $qrY = $blockTop;
+        if ($secondaryText !== '') {
+            $secondaryY = $blockTop + (int) round($secondaryFontPx);
+            $qrY = $secondaryY + $aboveQrGapPx;
+        }
 
         $primaryY = $qrY + $qrPx + $labelGapPx + (int) round($primaryFontPx);
-        $secondaryY = $primaryText !== ''
-            ? $primaryY + $lineGapPx + (int) round($secondaryFontPx)
-            : $qrY + $qrPx + $labelGapPx + (int) round($secondaryFontPx);
 
         return [
             'qrPx' => $qrPx,
