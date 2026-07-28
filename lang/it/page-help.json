@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Aggiungi segnalazione",
-                    "text": "Crei una segnalazione in due passi: sede\/unità + descrizione, poi un'attività per il team giusto."
+                    "text": "Crei una segnalazione in due passi: sede/unità + descrizione, poi un'attività per il team giusto."
                 }
             ],
             "status_note": "Lo stato segnalazione sulla dashboard segue lo stato delle attività collegate.",
@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Misurazione e follow-up",
-                    "text": "Visibile solo sulle attività di misurazione ESG. Mostra il valore registrato, un eventuale allarme soglia, il task di misurazione e un task di follow-up. <strong>Apri<\/strong> su Misurazione porta alla panoramica filtrata; su Task di misurazione apre il task collegato."
+                    "text": "Visibile solo sulle attività di misurazione ESG. Mostra il valore registrato, un eventuale allarme soglia, il task di misurazione e un task di follow-up. <strong>Apri</strong> su Misurazione porta alla panoramica filtrata; su Task di misurazione apre il task collegato."
                 }
             ],
             "status_note": "In produzione, i lavoratori avviano e completano attività tramite il portale QR unità (dopo l'accesso tramite il QR Clock Point).",
@@ -197,7 +197,7 @@
             "actions": [
                 {
                     "label": "Aggiungi unità",
-                    "text": "Aggiunga un oggetto\/macchina\/asset\/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
+                    "text": "Aggiunga un oggetto/macchina/asset/spazio con token QR e team predefinito. Un'unità può essere molto diversa: una camera d'hotel, una trapanatrice, una piattaforma aerea, un dispositivo fitness, ecc. Dipende dal settore in cui opera l'azienda. Imposti per unità se i visitatori possono inviare segnalazioni."
                 },
                 {
                     "label": "Traduzioni sede",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "Foglio di stampa QR",
-                    "text": "Scarichi un file Word con adesivi QR (Avery\/HERMA) o fogli a pagina intera (A6\/A5\/A4, 1 QR per pagina) per tutte le unità in questa sede. Può anche generare codici QR dinamici liberi non ancora collegati a un'unità. Questi possono prima essere appiccicati a un'unità e poi assegnati a un'unità tramite lo stesso codice QR. Amministratori\/dipendenti possono collegare tutte le unità a questi codici QR dinamici. I lavoratori del team possono collegare solo unità collegate al proprio team."
+                    "text": "Scarichi un file Word con adesivi QR (Avery/HERMA) o fogli a pagina intera (A6/A5/A4, 1 QR per pagina) per tutte le unità in questa sede. Può anche generare codici QR dinamici liberi non ancora collegati a un'unità. Questi possono prima essere appiccicati a un'unità e poi assegnati a un'unità tramite lo stesso codice QR. Amministratori/dipendenti possono collegare tutte le unità a questi codici QR dinamici. I lavoratori del team possono collegare solo unità collegate al proprio team."
                 },
                 {
                     "label": "GPS",
@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "Prenotazioni",
-                    "text": "Mostra hold pending attivi e prenotazioni confermate (annullate o scadute non compaiono qui). Per elemento: unità e fascia oraria; in vista settimana\/giorno anche il nome dell’ospite. Un clic apre l’elenco prenotazioni."
+                    "text": "Mostra hold pending attivi e prenotazioni confermate (annullate o scadute non compaiono qui). Per elemento: unità e fascia oraria; in vista settimana/giorno anche il nome dell’ospite. Un clic apre l’elenco prenotazioni."
                 },
                 {
                     "label": "Filtri",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Settimana e giorno",
-                    "text": "Schede elenco per giorno. In vista giorno, scorri le pagine con precedente\/successivo se ci sono più di 50 elementi."
+                    "text": "Schede elenco per giorno. In vista giorno, scorri le pagine con precedente/successivo se ci sono più di 50 elementi."
                 },
                 {
                     "label": "Briefing",
@@ -308,7 +308,7 @@
                 },
                 {
                     "label": "Ospite",
-                    "text": "Un ospite prenota via QR, ha 30 minuti di hold e conferma via e-mail. Modifica\/annulla dal link e-mail o di nuovo via QR (nome\/e-mail in cookie)."
+                    "text": "Un ospite prenota via QR, ha 30 minuti di hold e conferma via e-mail. Modifica/annulla dal link e-mail o di nuovo via QR (nome/e-mail in cookie)."
                 },
                 {
                     "label": "Amministrazione",
@@ -348,7 +348,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Il QR Clock Point è il QR stampabile con cui i lavoratori accedono (nome + icona) e timbrano entrata o uscita. Gestiscilo e stampalo in <strong>Time → Clock Points<\/strong>."
+                    "text": "Il QR Clock Point è il QR stampabile con cui i lavoratori accedono (nome + icona) e timbrano entrata o uscita. Gestiscilo e stampalo in <strong>Time → Clock Points</strong>."
                 },
                 {
                     "label": "Lavoratori",
@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Lavoratori esterni",
-                    "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno<\/strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elettricità Rossi). Nell’elenco li riconosce dal badge <strong>Ext<\/strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
+                    "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno</strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elettricità Rossi). Nell’elenco li riconosce dal badge <strong>Ext</strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
                 },
                 {
                     "label": "Ordine di visualizzazione",
@@ -397,7 +397,7 @@
             "actions": [
                 {
                     "label": "Panoramica configurazione",
-                    "text": "In cima alla pagina trova una panoramica comprimibile dello stato di configurazione del vostro ambiente. Apra il pannello per vedere l'indicatore di completezza, otto conteggi (sedi, unità, team e lavoratori inattivi; categorie con o senza GPS; documenti attivi e inattivi) e le azioni principali con un link diretto <strong>Correggi<\/strong>. Se il pannello mostra un badge, ci sono azioni aperte. Tramite <strong>Apri panoramica completa<\/strong> accede alla pagina di configurazione dedicata con tutte le azioni e le schede filtro per tipo."
+                    "text": "In cima alla pagina trova una panoramica comprimibile dello stato di configurazione del vostro ambiente. Apra il pannello per vedere l'indicatore di completezza, otto conteggi (sedi, unità, team e lavoratori inattivi; categorie con o senza GPS; documenti attivi e inattivi) e le azioni principali con un link diretto <strong>Correggi</strong>. Se il pannello mostra un badge, ci sono azioni aperte. Tramite <strong>Apri panoramica completa</strong> accede alla pagina di configurazione dedicata con tutte le azioni e le schede filtro per tipo."
                 },
                 {
                     "label": "Dati organizzazione",
@@ -405,11 +405,11 @@
                 },
                 {
                     "label": "Logo organizzazione",
-                    "text": "L'amministratore carica un logo organizzazione (PNG\/JPG, max. 2 MB). Come dipendente vede solo il logo attuale come riferimento. Compare al centro di ogni codice QR sugli adesivi e nel portale segnalazioni. Per il posizionamento nell'angolo sugli adesivi, veda la sezione Logo e indirizzo sotto Fogli adesivi QR."
+                    "text": "L'amministratore carica un logo organizzazione (PNG/JPG, max. 2 MB). Come dipendente vede solo il logo attuale come riferimento. Compare al centro di ogni codice QR sugli adesivi e nel portale segnalazioni. Per il posizionamento nell'angolo sugli adesivi, veda la sezione Logo e indirizzo sotto Fogli adesivi QR."
                 },
                 {
                     "label": "Sfondo portale",
-                    "text": "Immagine di sfondo facoltativa per il portale segnalazioni dopo la scansione di un codice QR (PNG\/JPG, max. 4 MB). Non è lo stesso dello sfondo adesivo sotto Fogli adesivi QR."
+                    "text": "Immagine di sfondo facoltativa per il portale segnalazioni dopo la scansione di un codice QR (PNG/JPG, max. 4 MB). Non è lo stesso dello sfondo adesivo sotto Fogli adesivi QR."
                 },
                 {
                     "label": "Stile WinProx",
@@ -420,7 +420,7 @@
                     "text": "Attivi «Usa stile portale personalizzato» per scegliere colori di sfondo e pulsanti per il portale segnalazioni. La scheda anteprima mostra come i reporter vedono il portale dopo una scansione. Non influisce sull'interfaccia admin."
                 },
                 {
-                    "label": "Fogli adesivi QR",
+                    "label": "Foglio di stampa QR",
                     "text": "Branding per adesivi Avery 62×89-R stampati (9 etichette per foglio). Scarichi il foglio adesivi per sede dal pacchetto QR."
                 },
                 {
@@ -436,7 +436,7 @@
                 {
                     "label": "Sfondo",
                     "nested": true,
-                    "text": "Scelga un'immagine personalizzata (PNG\/JPG, max. 4 MB); viene salvata immediatamente. Senza sfondo personalizzato WinProx usa il design adesivo predefinito. Usi «Rimuovi sfondo personalizzato» per tornare a quel predefinito."
+                    "text": "Scelga un'immagine personalizzata (PNG/JPG, max. 4 MB); viene salvata immediatamente. Senza sfondo personalizzato WinProx usa il design adesivo predefinito. Usi «Rimuovi sfondo personalizzato» per tornare a quel predefinito."
                 },
                 {
                     "label": "Anteprima",
@@ -474,7 +474,7 @@
                 },
                 {
                     "label": "Cosa può fare l'API?",
-                    "text": "Con un token valido, il software può tra l'altro leggere segnalazioni e attività, elencare sedi\/unità\/team\/lavoratori, creare o approvare segnalazioni e avviare o completare attività. Per documentazione tecnica, chieda al Suo partner IT o al supporto WinProx."
+                    "text": "Con un token valido, il software può tra l'altro leggere segnalazioni e attività, elencare sedi/unità/team/lavoratori, creare o approvare segnalazioni e avviare o completare attività. Per documentazione tecnica, chieda al Suo partner IT o al supporto WinProx."
                 },
                 {
                     "label": "Webhooks — cosa sono?",
@@ -482,7 +482,7 @@
                 },
                 {
                     "label": "Aggiungere un endpoint webhook",
-                    "text": "Inserisca un URL completo che inizia con https:\/\/ (connessione sicura). Selezioni gli eventi che vuole ricevere. Aggiunga facoltativamente una descrizione (es. «ERP produzione»). Salvi — WinProx memorizza l'indirizzo e invia automaticamente dati per quegli eventi."
+                    "text": "Inserisca un URL completo che inizia con https:// (connessione sicura). Selezioni gli eventi che vuole ricevere. Aggiunga facoltativamente una descrizione (es. «ERP produzione»). Salvi — WinProx memorizza l'indirizzo e invia automaticamente dati per quegli eventi."
                 },
                 {
                     "label": "Event: issue.created",
@@ -552,7 +552,7 @@
             "actions": [
                 {
                     "label": "Knowledge base",
-                    "text": "Risposte alle domande frequenti su WinProx, QR, team, Time, ESG, approvazione\/sfocatura del portale e aiuto pagina (?)."
+                    "text": "Risposte alle domande frequenti su WinProx, QR, team, Time, ESG, approvazione/sfocatura del portale e aiuto pagina (?)."
                 }
             ]
         },
@@ -583,7 +583,7 @@
             "actions": [
                 {
                     "label": "Benvenuto",
-                    "text": "Benvenuto nel portale pubblico di :tenant. Legga qui sotto per maggiori informazioni. Interessato al portale aziendale? Clicchi su <a href=\"https:\/\/winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app<\/a>."
+                    "text": "Benvenuto nel portale pubblico di :tenant. Legga qui sotto per maggiori informazioni. Interessato al portale aziendale? Clicchi su <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Segnala problema",
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Timbratura entrata e uscita",
-                    "text": "Solo quando la Sua organizzazione ha il <strong>modulo Time<\/strong>: timbri entrata, uscita e registri le pause qui. Senza modulo Time, questo portale serve solo per l'accesso e la panoramica delle attività."
+                    "text": "Solo quando la Sua organizzazione ha il <strong>modulo Time</strong>: timbri entrata, uscita e registri le pause qui. Senza modulo Time, questo portale serve solo per l'accesso e la panoramica delle attività."
                 },
                 {
                     "label": "Esci",
@@ -780,7 +780,7 @@
                 },
                 {
                     "label": "Locale via Ollama",
-                    "text": "Come superuser sul Suo laptop: avvii <code>php artisan queue:work<\/code>, clicchi « Avvia traduzioni ». Segnalazioni, annunci, unità, attività e documenti in sospeso vengono esportati, tradotti in locale e reimportati sul server."
+                    "text": "Come superuser sul Suo laptop: avvii <code>php artisan queue:work</code>, clicchi « Avvia traduzioni ». Segnalazioni, annunci, unità, attività e documenti in sospeso vengono esportati, tradotti in locale e reimportati sul server."
                 },
                 {
                     "label": "Stato server",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Moduli",
-                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point<\/strong> in Team solo per l'accesso."
+                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
                 }
             ]
         },
@@ -827,23 +827,23 @@
             "actions": [
                 {
                     "label": "A cosa serve questa schermata?",
-                    "text": "Gestite gli indirizzi che non ricevono più le <strong>e-mail WinProx<\/strong> — marketing, contatto e mail di sistema. Solo i superuser vedono questa pagina."
+                    "text": "Gestite gli indirizzi che non ricevono più le <strong>e-mail WinProx</strong> — marketing, contatto e mail di sistema. Solo i superuser vedono questa pagina."
                 },
                 {
                     "label": "Bloccare un indirizzo",
-                    "text": "Aggiungete manualmente un indirizzo e-mail per bloccarlo. La riga riceve l’origine <strong>Bloccato manualmente<\/strong>."
+                    "text": "Aggiungete manualmente un indirizzo e-mail per bloccarlo. La riga riceve l’origine <strong>Bloccato manualmente</strong>."
                 },
                 {
                     "label": "Ricerca e filtro",
-                    "text": "Cercate per indirizzo e-mail. Di default (casella spenta) gli indirizzi bounce sono nascosti. Attivate <strong>Non recapitabile (bounce)<\/strong> per vedere solo gli indirizzi bloccati automaticamente dopo una mail promo non recapitata; il totale è tra parentesi."
+                    "text": "Cercate per indirizzo e-mail. Di default (casella spenta) gli indirizzi bounce sono nascosti. Attivate <strong>Non recapitabile (bounce)</strong> per vedere solo gli indirizzi bloccati automaticamente dopo una mail promo non recapitata; il totale è tra parentesi."
                 },
                 {
                     "label": "Origine della disiscrizione",
-                    "text": "<strong>Disiscrizione volontaria<\/strong> = tramite il link di disiscrizione in una mail. <strong>Non recapitabile (bounce)<\/strong> = automatico dopo una mail promo non recapitabile. <strong>Bloccato manualmente<\/strong> = da questa schermata."
+                    "text": "<strong>Disiscrizione volontaria</strong> = tramite il link di disiscrizione in una mail. <strong>Non recapitabile (bounce)</strong> = automatico dopo una mail promo non recapitabile. <strong>Bloccato manualmente</strong> = da questa schermata."
                 },
                 {
                     "label": "Ripristina",
-                    "text": "Con <strong>Ripristina<\/strong> rimuovete l’indirizzo dall’elenco; tornerà a ricevere e-mail."
+                    "text": "Con <strong>Ripristina</strong> rimuovete l’indirizzo dall’elenco; tornerà a ricevere e-mail."
                 }
             ]
         },
@@ -852,47 +852,47 @@
             "actions": [
                 {
                     "label": "Cos'è questa schermata?",
-                    "text": "Il dashboard ESG offre una panoramica operativa del programma di misurazione: ultimi valori, allarmi di soglia, trend e azioni di follow-up aperte. È il punto di partenza per la gestione ESG quotidiana — dettagli e storico sono nella scheda <strong>Misurazioni<\/strong>."
+                    "text": "Il dashboard ESG offre una panoramica operativa del programma di misurazione: ultimi valori, allarmi di soglia, trend e azioni di follow-up aperte. È il punto di partenza per la gestione ESG quotidiana — dettagli e storico sono nella scheda <strong>Misurazioni</strong>."
                 },
                 {
                     "label": "Schede KPI in alto",
-                    "text": "La prima scheda mostra il numero di <strong>allarmi di soglia<\/strong> nel campione recente. Vedi anche l'<strong>ultima lettura<\/strong> per indicatore numerico attivo e quando è stata registrata. In rosso = fuori dal minimo o massimo. Clicca una scheda per aprire l'elenco filtrato delle misurazioni."
+                    "text": "La prima scheda mostra il numero di <strong>allarmi di soglia</strong> nel campione recente. Vedi anche l'<strong>ultima lettura</strong> per indicatore numerico attivo e quando è stata registrata. In rosso = fuori dal minimo o massimo. Clicca una scheda per aprire l'elenco filtrato delle misurazioni."
                 },
                 {
                     "label": "Trend di consumo",
-                    "text": "Grafico a linee dell'indicatore selezionato negli ultimi 30 giorni. Le letture per giorno vengono <strong>sommate<\/strong> (utile per consumi come kWh). Scegli un altro indicatore in alto a destra per confrontare i trend."
+                    "text": "Grafico a linee dell'indicatore selezionato negli ultimi 30 giorni. Le letture per giorno vengono <strong>sommate</strong> (utile per consumi come kWh). Scegli un altro indicatore in alto a destra per confrontare i trend."
                 },
                 {
                     "label": "Misurazioni entro i limiti",
-                    "text": "Il donut mostra la percentuale di misurazioni recenti (campione) che restano <strong>entro le soglie configurate<\/strong>. La didascalia indica quanti allarmi ci sono in quel campione. Clicca per aprire l'elenco misurazioni."
+                    "text": "Il donut mostra la percentuale di misurazioni recenti (campione) che restano <strong>entro le soglie configurate</strong>. La didascalia indica quanti allarmi ci sono in quel campione. Clicca per aprire l'elenco misurazioni."
                 },
                 {
                     "label": "Consumo più alto per sede",
-                    "text": "Classifica delle sedi per la <strong>somma totale<\/strong> delle letture dell'indicatore selezionato negli ultimi 30 giorni. Utile per capire quale edificio o sito contribuisce di più. Clicca una riga per le misurazioni in quella sede."
+                    "text": "Classifica delle sedi per la <strong>somma totale</strong> delle letture dell'indicatore selezionato negli ultimi 30 giorni. Utile per capire quale edificio o sito contribuisce di più. Clicca una riga per le misurazioni in quella sede."
                 },
                 {
                     "label": "Punteggio ESG (conformità)",
-                    "text": "Punteggio ponderato su 30 giorni: <strong>60 % rispetto soglie<\/strong> (misurazioni con soglie entro i limiti) + <strong>40 % copertura misurazioni<\/strong> (indicatori numerici attivi con almeno una lettura). Sotto il donut vedi le percentuali singole."
+                    "text": "Punteggio ponderato su 30 giorni: <strong>60 % rispetto soglie</strong> (misurazioni con soglie entro i limiti) + <strong>40 % copertura misurazioni</strong> (indicatori numerici attivi con almeno una lettura). Sotto il donut vedi le percentuali singole."
                 },
                 {
                     "label": "Distribuzione per categoria",
-                    "text": "Donut del numero di misurazioni per categoria indicatore (es. energia, rifiuti, sicurezza) negli ultimi 30 giorni. Imposta le categorie creando o modificando un indicatore in <strong>Indicatori<\/strong>."
+                    "text": "Donut del numero di misurazioni per categoria indicatore (es. energia, rifiuti, sicurezza) negli ultimi 30 giorni. Imposta le categorie creando o modificando un indicatore in <strong>Indicatori</strong>."
                 },
                 {
                     "label": "Attività ESG aperte",
-                    "text": "Attività collegate a un indicatore ESG non ancora completate — sia misurazioni periodiche sia follow-up automatici. Il badge <strong>Allarme auto<\/strong> contrassegna le attività create da WinProx dopo un superamento di soglia."
+                    "text": "Attività collegate a un indicatore ESG non ancora completate — sia misurazioni periodiche sia follow-up automatici. Il badge <strong>Allarme auto</strong> contrassegna le attività create da WinProx dopo un superamento di soglia."
                 },
                 {
                     "label": "Allarme auto e attività di follow-up",
-                    "text": "Quando una lettura è fuori dal minimo o massimo configurato, WinProx può creare automaticamente un'<strong>attività di follow-up priorità 2<\/strong> (al massimo un'attività aperta per indicatore e unità). Il pulsante <strong>Attività di follow-up<\/strong> su letture recenti e allarmi porta direttamente a quell'attività. Il team assegnato segue quello dell'attività di misurazione originale."
+                    "text": "Quando una lettura è fuori dal minimo o massimo configurato, WinProx può creare automaticamente un'<strong>attività di follow-up priorità 2</strong> (al massimo un'attività aperta per indicatore e unità). Il pulsante <strong>Attività di follow-up</strong> su letture recenti e allarmi porta direttamente a quell'attività. Il team assegnato segue quello dell'attività di misurazione originale."
                 },
                 {
                     "label": "Misurazioni recenti e allarmi di soglia",
-                    "text": "Due elenchi in basso: tutte le letture recenti e, separatamente, quelle con allarme di soglia. I valori fuori limite hanno l'etichetta <strong>Fuori soglia<\/strong>. Con <strong>Attività<\/strong> apri l'attività di misurazione dal portale QR."
+                    "text": "Due elenchi in basso: tutte le letture recenti e, separatamente, quelle con allarme di soglia. I valori fuori limite hanno l'etichetta <strong>Fuori soglia</strong>. Con <strong>Attività</strong> apri l'attività di misurazione dal portale QR."
                 },
                 {
                     "label": "Dashboard vuoto",
-                    "text": "Ancora nessun indicatore o misurazione? WinProx mostra i passi iniziali: modulo attivo, creare indicatore, collegare a una segnalazione ricorrente. La guida dettagliata sugli indicatori è nella scheda <strong>Indicatori<\/strong>."
+                    "text": "Ancora nessun indicatore o misurazione? WinProx mostra i passi iniziali: modulo attivo, creare indicatore, collegare a una segnalazione ricorrente. La guida dettagliata sugli indicatori è nella scheda <strong>Indicatori</strong>."
                 }
             ]
         },
@@ -909,7 +909,7 @@
                 },
                 {
                     "label": "Passo 1 — Crea un indicatore",
-                    "text": "Un indicatore descrive <strong>cosa<\/strong> vuole misurare: un contatore elettrico, un controllo estintore o un’ispezione periodica. Dia un nome chiaro e, per i numeri, un’unità (es. kWh, m³) mostrata correttamente in fase di inserimento."
+                    "text": "Un indicatore descrive <strong>cosa</strong> vuole misurare: un contatore elettrico, un controllo estintore o un’ispezione periodica. Dia un nome chiaro e, per i numeri, un’unità (es. kWh, m³) mostrata correttamente in fase di inserimento."
                 },
                 {
                     "label": "Numero",
@@ -917,7 +917,7 @@
                     "text": "Per letture contatore o conteggi (es. elettricità in kWh, acqua in m³, chilometraggio). Può impostare minimo e massimo per segnalare inserimenti irrealistici (es. una lettura negativa)."
                 },
                 {
-                    "label": "Sì\/No",
+                    "label": "Sì/No",
                     "nested": true,
                     "text": "Per controlli rapidi (es. «L’uscita di emergenza è libera?», «L’estintore è revisionato?»)."
                 },
@@ -938,11 +938,11 @@
                 },
                 {
                     "label": "Passo 2 — Collega a segnalazione ricorrente",
-                    "text": "Creando una <strong>segnalazione ricorrente<\/strong> su un’unità, può collegare un indicatore ESG. Da quel momento, ogni ciclo chiede automaticamente la lettura corrispondente — ad esempio la lettura mensile del contatore di quell’unità."
+                    "text": "Creando una <strong>segnalazione ricorrente</strong> su un’unità, può collegare un indicatore ESG. Da quel momento, ogni ciclo chiede automaticamente la lettura corrispondente — ad esempio la lettura mensile del contatore di quell’unità."
                 },
                 {
                     "label": "Passo 3 — Le misurazioni vengono salvate",
-                    "text": "Ogni volta che un collaboratore completa il compito, il valore inserito viene salvato con data e unità. Costruisce così gradualmente uno storico per punto di misura, utile per report (es. consumo energetico per edificio nel tempo).<br><br>Una volta registrata, una misurazione non può essere modificata — i dati restano affidabili e verificabili, anche in audit esterno. La panoramica è nella scheda <strong>Misurazioni<\/strong>."
+                    "text": "Ogni volta che un collaboratore completa il compito, il valore inserito viene salvato con data e unità. Costruisce così gradualmente uno storico per punto di misura, utile per report (es. consumo energetico per edificio nel tempo).<br><br>Una volta registrata, una misurazione non può essere modificata — i dati restano affidabili e verificabili, anche in audit esterno. La panoramica è nella scheda <strong>Misurazioni</strong>."
                 },
                 {
                     "label": "Disattiva indicatore",
@@ -959,7 +959,7 @@
                 },
                 {
                     "label": "Misurazione e follow-up",
-                    "text": "Sotto ogni misurazione nella timeline vede i passaggi collegati: la <strong>misurazione<\/strong> (valore), eventualmente un <strong>allarme soglia<\/strong>, il <strong>task di misurazione<\/strong> usato per l'inserimento e un <strong>task di follow-up<\/strong> se il valore era fuori soglia. Usi <strong>Apri<\/strong> per andare alla panoramica misurazioni o al task."
+                    "text": "Sotto ogni misurazione nella timeline vede i passaggi collegati: la <strong>misurazione</strong> (valore), eventualmente un <strong>allarme soglia</strong>, il <strong>task di misurazione</strong> usato per l'inserimento e un <strong>task di follow-up</strong> se il valore era fuori soglia. Usi <strong>Apri</strong> per andare alla panoramica misurazioni o al task."
                 },
                 {
                     "label": "Trend",
@@ -972,7 +972,7 @@
             "actions": [
                 {
                     "label": "Cosa vede qui?",
-                    "text": "Tutte le letture inserite dai collaboratori al completamento di un compito, con indicatore, sede, unità, data e chi ha effettuato la misurazione. Clicchi su <strong>Compito<\/strong> per vedere l’esecuzione sottostante."
+                    "text": "Tutte le letture inserite dai collaboratori al completamento di un compito, con indicatore, sede, unità, data e chi ha effettuato la misurazione. Clicchi su <strong>Compito</strong> per vedere l’esecuzione sottostante."
                 },
                 {
                     "label": "Filtri",
@@ -997,11 +997,11 @@
                 },
                 {
                     "label": "Dashboard",
-                    "text": "KPI live in alto: timbrati, attivi, pausa, non timbrati e attenzione. <strong>Attenzione<\/strong> apre la schermata Allarmi."
+                    "text": "KPI live in alto: timbrati, attivi, pausa, non timbrati e attenzione. <strong>Attenzione</strong> apre la schermata Allarmi."
                 },
                 {
                     "label": "Vista",
-                    "text": "Scelga <strong>Team<\/strong>, <strong>Schede team<\/strong> o <strong>Sedi<\/strong>. Espanda un team solo per vedere i lavoratori."
+                    "text": "Scelga <strong>Team</strong>, <strong>Schede team</strong> o <strong>Sedi</strong>. Espanda un team solo per vedere i lavoratori."
                 },
                 {
                     "label": "Filtri",
@@ -1013,7 +1013,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>\/time\/…<\/code>)."
+                    "text": "I lavoratori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>)."
                 }
             ]
         },
@@ -1026,11 +1026,11 @@
                 },
                 {
                     "label": "Tipi",
-                    "text": "Filtri: <strong>Turno lungo<\/strong> (&gt;10 h), <strong>Non timbrato in uscita<\/strong> (&gt;16 h) o <strong>Nessuna pausa<\/strong> (&gt;6 h)."
+                    "text": "Filtri: <strong>Turno lungo</strong> (&gt;10 h), <strong>Non timbrato in uscita</strong> (&gt;16 h) o <strong>Nessuna pausa</strong> (&gt;6 h)."
                 },
                 {
                     "label": "Azione",
-                    "text": "Usi <strong>Chiudi turno<\/strong> con motivo. Il badge nella navigazione mostra il numero di allarmi."
+                    "text": "Usi <strong>Chiudi turno</strong> con motivo. Il badge nella navigazione mostra il numero di allarmi."
                 }
             ]
         },
@@ -1039,11 +1039,11 @@
             "actions": [
                 {
                     "label": "Modulo Time",
-                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point<\/strong> in Team solo per l'accesso."
+                    "text": "La registrazione ore richiede il modulo Time. Senza modulo, usi il pulsante <strong>QR Clock Point</strong> in Team solo per l'accesso."
                 },
                 {
                     "label": "Periodo e filtri",
-                    "text": "Scelga date di inizio e fine e filtri facoltativamente per team, lavoratore o clock point. Clicchi <strong>Applica<\/strong> per aggiornare l'elenco."
+                    "text": "Scelga date di inizio e fine e filtri facoltativamente per team, lavoratore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
                 {
                     "label": "Esporta CSV",
@@ -1051,11 +1051,11 @@
                 },
                 {
                     "label": "Stampa",
-                    "text": "Apri un foglio ore stampabile con gli stessi filtri. Usi <strong>Stampa<\/strong> del browser per salvare o condividere un PDF."
+                    "text": "Apri un foglio ore stampabile con gli stessi filtri. Usi <strong>Stampa</strong> del browser per salvare o condividere un PDF."
                 },
                 {
                     "label": "Correggi",
-                    "text": "Su un turno chiuso, un amministratore può modificare orari di entrata\/uscita o minuti di pausa con motivo obbligatorio. Le modifiche sono registrate nel log di audit."
+                    "text": "Su un turno chiuso, un amministratore può modificare orari di entrata/uscita o minuti di pausa con motivo obbligatorio. Le modifiche sono registrate nel log di audit."
                 },
                 {
                     "label": "Chiudi turno",
@@ -1063,7 +1063,7 @@
                 },
                 {
                     "label": "Stati",
-                    "text": "<strong>Aperto<\/strong> — ancora timbrato. <strong>Chiuso<\/strong> — uscita normale. <strong>Chiuso (admin)<\/strong> — chiuso manualmente dall'amministratore. <strong>Chiuso (automatico)<\/strong> — il sistema chiude un turno dimenticato dopo la soglia."
+                    "text": "<strong>Aperto</strong> — ancora timbrato. <strong>Chiuso</strong> — uscita normale. <strong>Chiuso (admin)</strong> — chiuso manualmente dall'amministratore. <strong>Chiuso (automatico)</strong> — il sistema chiude un turno dimenticato dopo la soglia."
                 },
                 {
                     "label": "Collega attività",
@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Senza modulo Time",
-                    "text": "Gestisca il QR di accesso tramite il pulsante <strong>QR Clock Point<\/strong> in Utenti → Team. Se necessario, viene creato automaticamente un clock point predefinito."
+                    "text": "Gestisca il QR di accesso tramite il pulsante <strong>QR Clock Point</strong> in Utenti → Team. Se necessario, viene creato automaticamente un clock point predefinito."
                 },
                 {
                     "label": "Stampa QR",
@@ -1099,7 +1099,7 @@
                     "text": "Quando qualcuno usa un QR scaduto, viene rifiutato e registrato. Compare un avviso qui se ci sono stati tentativi bloccati negli ultimi 7 giorni."
                 },
                 {
-                    "label": "Attivo \/ inattivo",
+                    "label": "Attivo / inattivo",
                     "text": "Disattivi temporaneamente un clock point (es. per lavori sul posto). Il portale indica che la timbratura non è disponibile."
                 }
             ]
@@ -1118,7 +1118,7 @@
             "actions": [
                 {
                     "label": "A cosa serve questa schermata?",
-                    "text": "È il <strong>registro attività<\/strong> di WinProx: chi ha fatto cosa, quando e in quale organizzazione. In linguaggio chiaro, senza codici tecnici."
+                    "text": "È il <strong>registro attività</strong> di WinProx: chi ha fatto cosa, quando e in quale organizzazione. In linguaggio chiaro, senza codici tecnici."
                 },
                 {
                     "label": "Leggere una riga",
@@ -1126,7 +1126,7 @@
                 },
                 {
                     "label": "Cerca",
-                    "text": "Cerca con parole semplici (es. <em>segnalazione<\/em>, <em>promo<\/em>), nome organizzazione o nome\/email dell’utente."
+                    "text": "Cerca con parole semplici (es. <em>segnalazione</em>, <em>promo</em>), nome organizzazione o nome/email dell’utente."
                 },
                 {
                     "label": "Perché è utile",
@@ -1139,35 +1139,35 @@
             "actions": [
                 {
                     "label": "A cosa serve questa schermata?",
-                    "text": "Qui gestisce <strong>gateway<\/strong>, <strong>sensori<\/strong>, <strong>regole di allarme<\/strong> e consulta gli <strong>eventi<\/strong> recenti. WinProx riceve i dati dei sensori; i sensori fisici e i protocolli restano presso il gateway \/ fornitore."
+                    "text": "Qui gestisce <strong>gateway</strong>, <strong>sensori</strong>, <strong>regole di allarme</strong> e consulta gli <strong>eventi</strong> recenti. WinProx riceve i dati dei sensori; i sensori fisici e i protocolli restano presso il gateway / fornitore."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:<\/strong> gli allarmi diventano segnalazioni approvate con attività. <strong>Corporate:<\/strong> lo stesso, più le misurazioni dei sensori verso ESG quando il sensore ha un’unità e un indicatore ESG numerico."
+                    "text": "<strong>Facility:</strong> gli allarmi diventano segnalazioni approvate con attività. <strong>Corporate:</strong> lo stesso, più le misurazioni dei sensori verso ESG quando il sensore ha un’unità e un indicatore ESG numerico."
                 },
                 {
                     "label": "Modifica",
-                    "text": "In seguito può <strong>modificare<\/strong> o <strong>disattivare<\/strong> gateway, sensori e regole. Per un gateway può anche rinnovare il token (quello precedente non funziona più). Nessuna eliminazione definitiva: gli eventi restano conservati."
+                    "text": "In seguito può <strong>modificare</strong> o <strong>disattivare</strong> gateway, sensori e regole. Per un gateway può anche rinnovare il token (quello precedente non funziona più). Nessuna eliminazione definitiva: gli eventi restano conservati."
                 },
                 {
                     "label": "Cos’è un gateway?",
-                    "text": "Un <strong>gateway<\/strong> è il ponte tra i tuoi sensori e WinProx. I sensori spesso comunicano via LoRaWAN, Zigbee, Bluetooth o MQTT con un gateway del fornitore. Quel gateway traduce i dati e invia a WinProx solo gli eventi rilevanti (via HTTPS). WinProx non vende sensori o gateway: qui registri un gateway logico con un token così WinProx sa quale organizzazione può ricevere gli eventi."
+                    "text": "Un <strong>gateway</strong> è il ponte tra i tuoi sensori e WinProx. I sensori spesso comunicano via LoRaWAN, Zigbee, Bluetooth o MQTT con un gateway del fornitore. Quel gateway traduce i dati e invia a WinProx solo gli eventi rilevanti (via HTTPS). WinProx non vende sensori o gateway: qui registri un gateway logico con un token così WinProx sa quale organizzazione può ricevere gli eventi."
                 },
                 {
                     "label": "Creare un gateway",
-                    "text": "Crei un gateway e <strong>salvi subito il token<\/strong> — viene mostrato una sola volta. Lo configuri nel gateway IoT (header <code>X-WinProx-Iot-Key<\/code> o Bearer)."
+                    "text": "Crei un gateway e <strong>salvi subito il token</strong> — viene mostrato una sola volta. Lo configuri nel gateway IoT (header <code>X-WinProx-Iot-Key</code> o Bearer)."
                 },
                 {
                     "label": "Sensori",
-                    "text": "Colleghi un <strong>ID sensore esterno<\/strong> (come inviato dal gateway) a un nome, un tipo e preferibilmente un’unità. Per le misurazioni ESG (Corporate) colleghi anche un indicatore ESG numerico attivo."
+                    "text": "Colleghi un <strong>ID sensore esterno</strong> (come inviato dal gateway) a un nome, un tipo e preferibilmente un’unità. Per le misurazioni ESG (Corporate) colleghi anche un indicatore ESG numerico attivo."
                 },
                 {
                     "label": "Regole di allarme",
-                    "text": "Una regola decide quando un evento diventa una segnalazione: operatore + soglia, testo della segnalazione, team e priorità. Finché esiste un’attività aperta per la stessa regola, i nuovi allarmi vengono <strong>deduplicati<\/strong>."
+                    "text": "Una regola decide quando un evento diventa una segnalazione: operatore + soglia, testo della segnalazione, team e priorità. Finché esiste un’attività aperta per la stessa regola, i nuovi allarmi vengono <strong>deduplicati</strong>."
                 },
                 {
                     "label": "Inviare eventi",
-                    "text": "Il gateway invia a <code>POST \/api\/v1\/iot\/events<\/code> con <code>kind<\/code> <em>alarm<\/em> o <em>measurement<\/em>. Opzionale: <code>idempotency_key<\/code> per evitare invii duplicati. Dettagli nella documentazione API (IoT Connect)."
+                    "text": "Il gateway invia a <code>POST /api/v1/iot/events</code> con <code>kind</code> <em>alarm</em> o <em>measurement</em>. Opzionale: <code>idempotency_key</code> per evitare invii duplicati. Dettagli nella documentazione API (IoT Connect)."
                 }
             ]
         }

@@ -1011,7 +1011,7 @@ class Show extends Component
                 ->map(fn ($id) => (int) $id)
                 ->all(),
             'nav' => EntityDetailNavigation::forLocation($this->location),
-            'qrPackTemplates' => QrStickerSheetTemplate::cases(),
+            'qrPackTemplates' => QrStickerSheetTemplate::downloadCases(),
             'previewUnit' => $previewUnit,
             'descriptionLocales' => $descriptionLocales,
             'locationTranslationLocales' => $locationTranslationLocales,

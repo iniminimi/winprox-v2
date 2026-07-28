@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Melding toevoegen",
-                    "text": "Maak een melding in twee stappen: locatie\/unit + omschrijving, daarna een taak voor het juiste team."
+                    "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
                 }
             ],
             "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",
@@ -67,7 +67,7 @@
             "actions": [
                 {
                     "label": "Taak toevoegen",
-                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t\/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie. Uitvoerders starten taken via het unit-QR-portaal nadat ze zijn ingelogd via de Clock Point QR."
+                    "text": "Voeg een taak toe aan een bestaand melding of bewerk een bestaande taak. Geef een duidelijke, concrete beschrijving van het probleem of de uit te voeren handeling (bijv. \"Printer drukt vuil\"). Selecteer een specifieke uitvoerdatum via de kalender. Laat dit leeg als de taak direct of flexibel moet worden opgepakt. Bepaal de urgentie van de taak (Prio 1 t/m 3). Dit veld is exclusief voor beheerders om prioriteitsinflatie op de werkvloer te voorkomen. Wijs de taak toe aan het juiste operationele team. Dit team krijgt direct een notificatie. Uitvoerders starten taken via het unit-QR-portaal nadat ze zijn ingelogd via de Clock Point QR."
                 },
                 {
                     "label": "Update plaatsen",
@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Meting en opvolging",
-                    "text": "Verschijnt alleen bij ESG-meettaken. Toont de geregistreerde waarde, eventueel een drempelalarm, de meettaak en een opvolgtaak. <strong>Openen<\/strong> bij Meting gaat naar het gefilterde metingenoverzicht; bij Meettaak opent u de gekoppelde taak."
+                    "text": "Verschijnt alleen bij ESG-meettaken. Toont de geregistreerde waarde, eventueel een drempelalarm, de meettaak en een opvolgtaak. <strong>Openen</strong> bij Meting gaat naar het gefilterde metingenoverzicht; bij Meettaak opent u de gekoppelde taak."
                 }
             ],
             "status_note": "Op de werkvloer starten en ronden uitvoerders taken af via het unit-QR-portaal (na inloggen via Clock Point QR).",
@@ -197,7 +197,7 @@
             "actions": [
                 {
                     "label": "Unit toevoegen",
-                    "text": "Voeg een voorwerp\/machine\/asset\/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
+                    "text": "Voeg een voorwerp/machine/asset/ruimte toe met QR-token en standaard team. Een unit kan dus heel uitlopend zijn : een hotelkamer, een boormachine, een hoogtewerker, een fitnesstoestel,.... Het hangt af in welke sector het bedrijf werkt. Geef per unit toestemming om meldingen te maken."
                 },
                 {
                     "label": "Locatievertalingen",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "QR-afdrukblad",
-                    "text": "Download een Word-bestand met QR-stickers (Avery\/HERMA) of full-page afdrukbladen (A6\/A5\/A4, 1 QR per blad) voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders\/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
+                    "text": "Download een Word-bestand met QR-stickers (Avery/HERMA) of full-page afdrukbladen (A6/A5/A4, 1 QR per blad) voor alle units op deze locatie. Je kunt ook vrije dynamische QR-codes genereren die nog niet gekoppeld zijn aan een unit. Deze kunnen eerst bevestigd worden op een unit en dan via dezelfde QR-code toegewezen worden aan een unit. Beheerders/medewerkers kunnen alle units koppelen aan deze dynamische QR-codes. Team werkers kunnen enkel units koppelen die aan hun Team verbonden zijn."
                 },
                 {
                     "label": "GPS",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Week en dag",
-                    "text": "Lijstkaarten per dag. In dagweergave blader je met vorige\/volgende pagina als er meer dan 50 items zijn."
+                    "text": "Lijstkaarten per dag. In dagweergave blader je met vorige/volgende pagina als er meer dan 50 items zijn."
                 },
                 {
                     "label": "Briefing",
@@ -308,7 +308,7 @@
                 },
                 {
                     "label": "Gastflow",
-                    "text": "Een gast boekt via de QR, krijgt 30 minuten hold en bevestigt per e-mail. Wijzigen of annuleren kan via de mail-link of opnieuw via de QR (naam\/e-mail onthouden in een cookie)."
+                    "text": "Een gast boekt via de QR, krijgt 30 minuten hold en bevestigt per e-mail. Wijzigen of annuleren kan via de mail-link of opnieuw via de QR (naam/e-mail onthouden in een cookie)."
                 },
                 {
                     "label": "Beheer",
@@ -348,7 +348,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon) en in- of uitklokken. Beheer en print deze via <strong>Time → Clock Points<\/strong>."
+                    "text": "De Clock Point QR is de printbare QR waarmee uitvoerders zich aanmelden (naam + icoon) en in- of uitklokken. Beheer en print deze via <strong>Time → Clock Points</strong>."
                 },
                 {
                     "label": "Uitvoerders",
@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Externe uitvoerders",
-                    "text": "Vink bij het toevoegen of bewerken <strong>Externe uitvoerder<\/strong> aan voor installateurs, schilders, zzp’ers of andere externe krachten. Optioneel vul je daarna een bedrijfsnaam in (bijv. Elektro Peeters). In de lijst herken je hen aan het badge <strong>Ext<\/strong> en eventueel de bedrijfsnaam. Ze gebruiken dezelfde Clock Point- en unit-QR-flow als interne uitvoerders — geen apart portaal of login."
+                    "text": "Vink bij het toevoegen of bewerken <strong>Externe uitvoerder</strong> aan voor installateurs, schilders, zzp’ers of andere externe krachten. Optioneel vul je daarna een bedrijfsnaam in (bijv. Elektro Peeters). In de lijst herken je hen aan het badge <strong>Ext</strong> en eventueel de bedrijfsnaam. Ze gebruiken dezelfde Clock Point- en unit-QR-flow als interne uitvoerders — geen apart portaal of login."
                 },
                 {
                     "label": "Sorteervolgorde",
@@ -397,7 +397,7 @@
             "actions": [
                 {
                     "label": "Configuratie-overzicht",
-                    "text": "Helemaal bovenaan staat een inklapbaar overzicht van de configuratiestatus van jullie omgeving. Klap het open om de volledigheidsmeter te zien, acht tellingen (inactieve locaties, units, teams en uitvoerders; categorieën met of zonder GPS; actieve en inactieve documenten) en de belangrijkste actiepunten met een directe <strong>Oplossen<\/strong>-link. Staat er een badge op het kader, dan zijn er openstaande actiepunten. Via <strong>Volledig overzicht openen<\/strong> ga je naar de aparte configuratiepagina met alle actiepunten en filterkaarten per type."
+                    "text": "Helemaal bovenaan staat een inklapbaar overzicht van de configuratiestatus van jullie omgeving. Klap het open om de volledigheidsmeter te zien, acht tellingen (inactieve locaties, units, teams en uitvoerders; categorieën met of zonder GPS; actieve en inactieve documenten) en de belangrijkste actiepunten met een directe <strong>Oplossen</strong>-link. Staat er een badge op het kader, dan zijn er openstaande actiepunten. Via <strong>Volledig overzicht openen</strong> ga je naar de aparte configuratiepagina met alle actiepunten en filterkaarten per type."
                 },
                 {
                     "label": "Organisatiegegevens",
@@ -405,11 +405,11 @@
                 },
                 {
                     "label": "Organisatielogo",
-                    "text": "De beheerder uploadt een organisatielogo (PNG\/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
+                    "text": "De beheerder uploadt een organisatielogo (PNG/JPG, max. 2 MB). Als medewerker zie je het huidige logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
                 },
                 {
                     "label": "Portaal-achtergrond",
-                    "text": "Optionele achtergrondafbeelding voor het meldportaal na het scannen van een QR-code (PNG\/JPG, max. 4 MB). Dit is niet hetzelfde als de sticker-achtergrond bij QR-code stickervellen."
+                    "text": "Optionele achtergrondafbeelding voor het meldportaal na het scannen van een QR-code (PNG/JPG, max. 4 MB). Dit is niet hetzelfde als de sticker-achtergrond bij QR-code stickervellen."
                 },
                 {
                     "label": "WinProx-stijl",
@@ -420,7 +420,7 @@
                     "text": "Schakel 'Eigen portaal-stijl gebruiken' in om achtergrond- en knopkleur van het meldportaal te kiezen. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
                 },
                 {
-                    "label": "QR-code stickervellen",
+                    "label": "QR-afdrukblad",
                     "text": "Branding voor gedrukte Avery 62×89-R stickers (9 etiketten per vel). Het stickervel download je per locatie via het QR-pack."
                 },
                 {
@@ -436,7 +436,7 @@
                 {
                     "label": "Achtergrond",
                     "nested": true,
-                    "text": "Kies een eigen afbeelding (PNG\/JPG, max. 4 MB); die wordt meteen opgeslagen. Zonder eigen achtergrond gebruikt WinProx het standaard stickerdesign. Met 'Eigen achtergrond verwijderen' keer je terug naar dat standaarddesign."
+                    "text": "Kies een eigen afbeelding (PNG/JPG, max. 4 MB); die wordt meteen opgeslagen. Zonder eigen achtergrond gebruikt WinProx het standaard stickerdesign. Met 'Eigen achtergrond verwijderen' keer je terug naar dat standaarddesign."
                 },
                 {
                     "label": "Voorbeeld",
@@ -458,7 +458,7 @@
                 },
                 {
                     "label": "Heb ik dit nodig?",
-                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV\/Excel-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
+                    "text": "Meestal niet. Als je WinProx enkel via de website en QR-codes gebruikt, hoef je hier niets in te stellen.<br><br>Voor eenmalige inrichting: Wil je in één keer duizenden units of uitvoerders importeren? Gebruik dan de CSV/Excel-import op een locatie (units) of bij Teams (uitvoerders). Dat is vaak sneller en eenvoudiger voor een eerste migratie.<br><br>Voor continue automatisering: Deze API-pagina is bedoeld voor beheerders of IT-partners die een live koppeling willen bouwen om systemen automatisch met elkaar te laten praten (bijv. voor realtime ERP-koppelingen of eigen dashboards)."
                 },
                 {
                     "label": "API — wat is dat?",
@@ -474,7 +474,7 @@
                 },
                 {
                     "label": "Wat kan de API?",
-                    "text": "Met een geldig token kan software o.a. meldingen en taken opvragen, locaties\/units\/teams\/uitvoerders inlezen, meldingen aanmaken of goedkeuren, en taken starten of afhandelen. Technische documentatie: vraag je IT-partner of neem contact op met WinProx-support."
+                    "text": "Met een geldig token kan software o.a. meldingen en taken opvragen, locaties/units/teams/uitvoerders inlezen, meldingen aanmaken of goedkeuren, en taken starten of afhandelen. Technische documentatie: vraag je IT-partner of neem contact op met WinProx-support."
                 },
                 {
                     "label": "Webhooks — wat is dat?",
@@ -482,7 +482,7 @@
                 },
                 {
                     "label": "Webhook-endpoint toevoegen",
-                    "text": "Vul een volledige URL in die begint met https:\/\/ (beveiligde verbinding). Vink aan welke gebeurtenissen je wilt ontvangen. Optioneel: voeg een omschrijving toe (bv. \"Productie ERP\"). Sla op — WinProx bewaart het adres en stuurt bij die events automatisch data."
+                    "text": "Vul een volledige URL in die begint met https:// (beveiligde verbinding). Vink aan welke gebeurtenissen je wilt ontvangen. Optioneel: voeg een omschrijving toe (bv. \"Productie ERP\"). Sla op — WinProx bewaart het adres en stuurt bij die events automatisch data."
                 },
                 {
                     "label": "Gebeurtenis: issue.created",
@@ -552,7 +552,7 @@
             "actions": [
                 {
                     "label": "Kennisbank",
-                    "text": "Antwoorden op veelgestelde vragen over WinProx, QR, teams, Time, ESG, goedkeuring\/blur op het portaal en paginahulp (?)."
+                    "text": "Antwoorden op veelgestelde vragen over WinProx, QR, teams, Time, ESG, goedkeuring/blur op het portaal en paginahulp (?)."
                 }
             ]
         },
@@ -583,7 +583,7 @@
             "actions": [
                 {
                     "label": "Welkom",
-                    "text": "Welkom op het publieke portaal van :tenant. Lees hieronder verder voor meer informatie. Heb je interesse in een eigen bedrijfsportaal? Klik dan op <a href=\"https:\/\/winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app<\/a>."
+                    "text": "Welkom op het publieke portaal van :tenant. Lees hieronder verder voor meer informatie. Heb je interesse in een eigen bedrijfsportaal? Klik dan op <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Melding doen",
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Alleen wanneer uw organisatie de <strong>Time-module<\/strong> heeft: klok hier in, uit en registreer pauzes. Zonder Time-module is dit portaal enkel voor inloggen en het takenoverzicht."
+                    "text": "Alleen wanneer uw organisatie de <strong>Time-module</strong> heeft: klok hier in, uit en registreer pauzes. Zonder Time-module is dit portaal enkel voor inloggen en het takenoverzicht."
                 },
                 {
                     "label": "Afmelden",
@@ -780,7 +780,7 @@
                 },
                 {
                     "label": "Lokaal via Ollama",
-                    "text": "Als superuser op uw laptop: start <code>php artisan queue:work<\/code>, klik op « Vertalingen starten ». Pending meldingen, mededelingen, units, taken en documenten worden geëxporteerd, lokaal vertaald en terug geïmporteerd op de server."
+                    "text": "Als superuser op uw laptop: start <code>php artisan queue:work</code>, klik op « Vertalingen starten ». Pending meldingen, mededelingen, units, taken en documenten worden geëxporteerd, lokaal vertaald en terug geïmporteerd op de server."
                 },
                 {
                     "label": "Serverstatus",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Modules",
-                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code<\/strong> op Teams alleen voor inloggen."
+                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
                 }
             ]
         },
@@ -827,23 +827,23 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Hier beheert u adressen die <strong>geen WinProx-e-mails<\/strong> meer ontvangen — marketing, contact en systeemmails. Alleen superusers zien deze pagina."
+                    "text": "Hier beheert u adressen die <strong>geen WinProx-e-mails</strong> meer ontvangen — marketing, contact en systeemmails. Alleen superusers zien deze pagina."
                 },
                 {
                     "label": "Adres blokkeren",
-                    "text": "Voeg handmatig een e-mailadres toe om het te blokkeren. Die rij krijgt de bron <strong>Handmatig geblokkeerd<\/strong>."
+                    "text": "Voeg handmatig een e-mailadres toe om het te blokkeren. Die rij krijgt de bron <strong>Handmatig geblokkeerd</strong>."
                 },
                 {
                     "label": "Zoeken en filter",
-                    "text": "Zoek op e-mailadres. Standaard (vinkje uit) ziet u geen bounce-adressen. Zet <strong>Onbezorgbaar (bounce)<\/strong> aan om alleen de automatisch geblokkeerde adressen na een mislukte promo-mail te tonen; het aantal staat tussen haakjes."
+                    "text": "Zoek op e-mailadres. Standaard (vinkje uit) ziet u geen bounce-adressen. Zet <strong>Onbezorgbaar (bounce)</strong> aan om alleen de automatisch geblokkeerde adressen na een mislukte promo-mail te tonen; het aantal staat tussen haakjes."
                 },
                 {
                     "label": "Bron van de uitschrijving",
-                    "text": "<strong>Zelf uitgeschreven<\/strong> = via de uitschrijflink in een mail. <strong>Onbezorgbaar (bounce)<\/strong> = automatisch na een undeliverable promo-mail. <strong>Handmatig geblokkeerd<\/strong> = via dit scherm."
+                    "text": "<strong>Zelf uitgeschreven</strong> = via de uitschrijflink in een mail. <strong>Onbezorgbaar (bounce)</strong> = automatisch na een undeliverable promo-mail. <strong>Handmatig geblokkeerd</strong> = via dit scherm."
                 },
                 {
                     "label": "Herstellen",
-                    "text": "Met <strong>Herstellen<\/strong> verwijdert u het adres van de lijst; het ontvangt daarna weer e-mails."
+                    "text": "Met <strong>Herstellen</strong> verwijdert u het adres van de lijst; het ontvangt daarna weer e-mails."
                 }
             ]
         },
@@ -852,47 +852,47 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Het ESG-dashboard geeft een operationeel overzicht van uw meetprogramma: laatste waarden, drempelalarmen, trends en openstaande opvolgacties. Het is uw startpunt voor dagelijks ESG-beheer — detail en historiek vindt u onder <strong>Metingen<\/strong>."
+                    "text": "Het ESG-dashboard geeft een operationeel overzicht van uw meetprogramma: laatste waarden, drempelalarmen, trends en openstaande opvolgacties. Het is uw startpunt voor dagelijks ESG-beheer — detail en historiek vindt u onder <strong>Metingen</strong>."
                 },
                 {
                     "label": "KPI-kaarten bovenaan",
-                    "text": "De eerste kaart toont het aantal <strong>drempelalarmen<\/strong> in de recente steekproef. Daarnaast ziet u per actieve numerieke indicator de <strong>laatste meetwaarde<\/strong> en wanneer die is geregistreerd. Rood gemarkeerd = buiten minimum of maximum. Klik een kaart om naar het gefilterde metingenoverzicht te gaan."
+                    "text": "De eerste kaart toont het aantal <strong>drempelalarmen</strong> in de recente steekproef. Daarnaast ziet u per actieve numerieke indicator de <strong>laatste meetwaarde</strong> en wanneer die is geregistreerd. Rood gemarkeerd = buiten minimum of maximum. Klik een kaart om naar het gefilterde metingenoverzicht te gaan."
                 },
                 {
                     "label": "Verbruikstrend",
-                    "text": "Lijngrafiek van de geselecteerde indicator over de laatste 30 dagen. Per dag worden alle meetwaarden <strong>opgeteld<\/strong> (handig voor verbruiksindicatoren zoals kWh). Kies rechtsboven een andere indicator om de trend te vergelijken."
+                    "text": "Lijngrafiek van de geselecteerde indicator over de laatste 30 dagen. Per dag worden alle meetwaarden <strong>opgeteld</strong> (handig voor verbruiksindicatoren zoals kWh). Kies rechtsboven een andere indicator om de trend te vergelijken."
                 },
                 {
                     "label": "Metingen binnen grens",
-                    "text": "Donut toont het percentage recente metingen (steekproef) dat <strong>binnen de ingestelde drempels<\/strong> valt. Het bijschrift onderaan geeft aan hoeveel alarmen er in die steekproef zitten. Klik om naar het metingenoverzicht te gaan."
+                    "text": "Donut toont het percentage recente metingen (steekproef) dat <strong>binnen de ingestelde drempels</strong> valt. Het bijschrift onderaan geeft aan hoeveel alarmen er in die steekproef zitten. Klik om naar het metingenoverzicht te gaan."
                 },
                 {
                     "label": "Hoogste verbruik per locatie",
-                    "text": "Rangschikking van locaties op basis van de <strong>totale som<\/strong> van meetwaarden voor de geselecteerde indicator in de laatste 30 dagen. Handig om te zien welk gebouw of site het meest bijdraagt. Klik een rij voor metingen op die locatie."
+                    "text": "Rangschikking van locaties op basis van de <strong>totale som</strong> van meetwaarden voor de geselecteerde indicator in de laatste 30 dagen. Handig om te zien welk gebouw of site het meest bijdraagt. Klik een rij voor metingen op die locatie."
                 },
                 {
                     "label": "ESG-score (compliance)",
-                    "text": "Gewogen score over de laatste 30 dagen: <strong>60% drempelnaleving<\/strong> (metingen met drempels die binnen grens liggen) + <strong>40% meetdekking<\/strong> (actieve numerieke indicatoren die minstens één meting hebben). Onder de donut ziet u de afzonderlijke percentages."
+                    "text": "Gewogen score over de laatste 30 dagen: <strong>60% drempelnaleving</strong> (metingen met drempels die binnen grens liggen) + <strong>40% meetdekking</strong> (actieve numerieke indicatoren die minstens één meting hebben). Onder de donut ziet u de afzonderlijke percentages."
                 },
                 {
                     "label": "Verdeling per categorie",
-                    "text": "Donut van het aantal metingen per indicatorcategorie (bv. energie, afval, veiligheid) in de laatste 30 dagen. Stel categorieën in bij het aanmaken of bewerken van een indicator onder <strong>Indicatoren<\/strong>."
+                    "text": "Donut van het aantal metingen per indicatorcategorie (bv. energie, afval, veiligheid) in de laatste 30 dagen. Stel categorieën in bij het aanmaken of bewerken van een indicator onder <strong>Indicatoren</strong>."
                 },
                 {
                     "label": "Openstaande ESG-taken",
-                    "text": "Taken gekoppeld aan een ESG-indicator die nog niet afgehandeld zijn — zowel periodieke metingstaken als automatische opvolgacties. De badge <strong>Auto-alarm<\/strong> markeert taken die WinProx aanmaakte na een drempeloverschrijding."
+                    "text": "Taken gekoppeld aan een ESG-indicator die nog niet afgehandeld zijn — zowel periodieke metingstaken als automatische opvolgacties. De badge <strong>Auto-alarm</strong> markeert taken die WinProx aanmaakte na een drempeloverschrijding."
                 },
                 {
                     "label": "Auto-alarm en opvolgtaak",
-                    "text": "Wanneer een meting buiten de ingestelde minimum- of maximumwaarde valt, kan WinProx automatisch een <strong>prio-2 opvolgtaak<\/strong> aanmaken (maximaal één open taak per indicator en unit). De knop <strong>Opvolgtaak<\/strong> op recente metingen en alarmen leidt rechtstreeks naar die taak. Het toegewezen team volgt het team van de oorspronkelijke meettaak."
+                    "text": "Wanneer een meting buiten de ingestelde minimum- of maximumwaarde valt, kan WinProx automatisch een <strong>prio-2 opvolgtaak</strong> aanmaken (maximaal één open taak per indicator en unit). De knop <strong>Opvolgtaak</strong> op recente metingen en alarmen leidt rechtstreeks naar die taak. Het toegewezen team volgt het team van de oorspronkelijke meettaak."
                 },
                 {
                     "label": "Recente metingen en drempelalarmen",
-                    "text": "Twee lijsten onderaan: alle recente meetwaarden, en apart de metingen met drempelalarm. Waarden buiten grens krijgen het label <strong>Buiten drempels<\/strong>. Via <strong>Taak<\/strong> opent u de meettaak op het QR-portaal."
+                    "text": "Twee lijsten onderaan: alle recente meetwaarden, en apart de metingen met drempelalarm. Waarden buiten grens krijgen het label <strong>Buiten drempels</strong>. Via <strong>Taak</strong> opent u de meettaak op het QR-portaal."
                 },
                 {
                     "label": "Leeg dashboard",
-                    "text": "Zijn er nog geen indicatoren of metingen? Dan toont WinProx de opstartstappen: module actief, indicator aanmaken, koppelen aan terugkerende melding. Uitgebreide uitleg over indicatoren staat onder het tabblad <strong>Indicatoren<\/strong>."
+                    "text": "Zijn er nog geen indicatoren of metingen? Dan toont WinProx de opstartstappen: module actief, indicator aanmaken, koppelen aan terugkerende melding. Uitgebreide uitleg over indicatoren staat onder het tabblad <strong>Indicatoren</strong>."
                 }
             ]
         },
@@ -909,7 +909,7 @@
                 },
                 {
                     "label": "Stap 1 — Indicator aanmaken",
-                    "text": "Een indicator omschrijft <strong>wat<\/strong> u precies wil meten: een elektriciteitsmeter, een brandblusser-controle of een periodieke controle. Geef een duidelijke naam en, bij een getal, een eenheid (bv. kWh, m³) zodat die correct getoond wordt bij de invoer."
+                    "text": "Een indicator omschrijft <strong>wat</strong> u precies wil meten: een elektriciteitsmeter, een brandblusser-controle of een periodieke controle. Geef een duidelijke naam en, bij een getal, een eenheid (bv. kWh, m³) zodat die correct getoond wordt bij de invoer."
                 },
                 {
                     "label": "Getal",
@@ -917,7 +917,7 @@
                     "text": "Voor meterstanden of tellingen (bv. elektriciteit in kWh, water in m³, kilometerstand van een voertuig). U kan een minimum- en maximumwaarde instellen, zodat onrealistische invoer (bv. een negatieve meterstand) wordt opgemerkt."
                 },
                 {
-                    "label": "Ja\/Nee",
+                    "label": "Ja/Nee",
                     "nested": true,
                     "text": "Voor snelle controles (bv. \"Is de nooduitgang vrij?\", \"Is de brandblusser gekeurd?\")."
                 },
@@ -938,11 +938,11 @@
                 },
                 {
                     "label": "Stap 2 — Koppel aan terugkerende melding",
-                    "text": "Bij het aanmaken van een <strong>terugkerende melding<\/strong> op een unit kunt u een ESG-indicator koppelen. Vanaf dat moment wordt bij elke cyclus automatisch gevraagd om de bijhorende meetwaarde — bijvoorbeeld elke maand de meterstand van die unit."
+                    "text": "Bij het aanmaken van een <strong>terugkerende melding</strong> op een unit kunt u een ESG-indicator koppelen. Vanaf dat moment wordt bij elke cyclus automatisch gevraagd om de bijhorende meetwaarde — bijvoorbeeld elke maand de meterstand van die unit."
                 },
                 {
                     "label": "Stap 3 — Metingen worden bewaard",
-                    "text": "Telkens een medewerker de taak afrondt, wordt de ingevoerde waarde bewaard samen met datum en unit. Zo bouwt u geleidelijk een historiek per meetpunt op, bruikbaar voor rapportage (bv. energieverbruik per gebouw over tijd).<br><br>Eenmaal ingevoerd kan een meting niet meer gewijzigd worden — dit garandeert betrouwbare, controleerbare gegevens, ook bij een externe audit. Het overzicht vindt u onder het tabblad <strong>Metingen<\/strong>."
+                    "text": "Telkens een medewerker de taak afrondt, wordt de ingevoerde waarde bewaard samen met datum en unit. Zo bouwt u geleidelijk een historiek per meetpunt op, bruikbaar voor rapportage (bv. energieverbruik per gebouw over tijd).<br><br>Eenmaal ingevoerd kan een meting niet meer gewijzigd worden — dit garandeert betrouwbare, controleerbare gegevens, ook bij een externe audit. Het overzicht vindt u onder het tabblad <strong>Metingen</strong>."
                 },
                 {
                     "label": "Indicator deactiveren",
@@ -959,7 +959,7 @@
                 },
                 {
                     "label": "Meting en opvolging",
-                    "text": "Onder elke meting in de tijdlijn ziet u gekoppelde stappen: de <strong>meting<\/strong> (waarde), eventueel een <strong>drempelalarm<\/strong>, de <strong>meettaak<\/strong> waarmee de waarde werd ingevoerd, en een <strong>opvolgtaak<\/strong> als de waarde buiten de grenzen viel. Met <strong>Openen<\/strong> springt u naar het metingenoverzicht of de taak."
+                    "text": "Onder elke meting in de tijdlijn ziet u gekoppelde stappen: de <strong>meting</strong> (waarde), eventueel een <strong>drempelalarm</strong>, de <strong>meettaak</strong> waarmee de waarde werd ingevoerd, en een <strong>opvolgtaak</strong> als de waarde buiten de grenzen viel. Met <strong>Openen</strong> springt u naar het metingenoverzicht of de taak."
                 },
                 {
                     "label": "Trend",
@@ -972,7 +972,7 @@
             "actions": [
                 {
                     "label": "Wat ziet u hier?",
-                    "text": "Alle meetwaarden die medewerkers hebben ingevoerd bij het afronden van een taak, met indicator, locatie, unit, tijdstip en wie de meting deed. Klik op <strong>Taak<\/strong> om de onderliggende uitvoering te bekijken."
+                    "text": "Alle meetwaarden die medewerkers hebben ingevoerd bij het afronden van een taak, met indicator, locatie, unit, tijdstip en wie de meting deed. Klik op <strong>Taak</strong> om de onderliggende uitvoering te bekijken."
                 },
                 {
                     "label": "Filters",
@@ -997,11 +997,11 @@
                 },
                 {
                     "label": "Dashboard",
-                    "text": "Bovenaan ziet u live KPI's: ingelogd, actief, pauze, niet ingeklokt en aandacht. Klik op een tegel om te filteren. <strong>Aandacht<\/strong> opent het alarmenscherm."
+                    "text": "Bovenaan ziet u live KPI's: ingelogd, actief, pauze, niet ingeklokt en aandacht. Klik op een tegel om te filteren. <strong>Aandacht</strong> opent het alarmenscherm."
                 },
                 {
                     "label": "Weergave",
-                    "text": "Kies tussen <strong>Teams<\/strong> (accordion), <strong>Teamkaarten<\/strong> (overzicht per team) of <strong>Locaties<\/strong> (ingeklokt per vestiging). Open een team pas wanneer u medewerkers wilt zien."
+                    "text": "Kies tussen <strong>Teams</strong> (accordion), <strong>Teamkaarten</strong> (overzicht per team) of <strong>Locaties</strong> (ingeklokt per vestiging). Open een team pas wanneer u medewerkers wilt zien."
                 },
                 {
                     "label": "Filters",
@@ -1013,7 +1013,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>\/time\/…<\/code>). Identificatie gebeurt met naam en icoon — geen aparte login."
+                    "text": "Medewerkers klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon — geen aparte login."
                 }
             ]
         },
@@ -1026,11 +1026,11 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift<\/strong> (&gt;10 uur), <strong>Niet uitgeklokt<\/strong> (&gt;16 uur) of <strong>Geen pauze<\/strong> (&gt;6 uur zonder break)."
+                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur) of <strong>Geen pauze</strong> (&gt;6 uur zonder break)."
                 },
                 {
                     "label": "Actie",
-                    "text": "Gebruik <strong>Shift sluiten<\/strong> om een shift af te sluiten met reden. De badge in de navigatie toont het totaal aantal alarmen."
+                    "text": "Gebruik <strong>Shift sluiten</strong> om een shift af te sluiten met reden. De badge in de navigatie toont het totaal aantal alarmen."
                 }
             ]
         },
@@ -1039,11 +1039,11 @@
             "actions": [
                 {
                     "label": "Time-module",
-                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code<\/strong> op Teams alleen voor inloggen."
+                    "text": "Urenregistratie vereist de Time-module. Zonder module gebruikt u de knop <strong>Clock Point QR-code</strong> op Teams alleen voor inloggen."
                 },
                 {
                     "label": "Periode en filters",
-                    "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen<\/strong> om de lijst bij te werken."
+                    "text": "Kies een van- en tot-datum en filter optioneel op team, medewerker of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
                     "label": "Exporteer CSV",
@@ -1051,7 +1051,7 @@
                 },
                 {
                     "label": "Afdrukken",
-                    "text": "Open een afdrukbare urenstaat voor dezelfde filters. Gebruik <strong>Afdrukken<\/strong> in de browser om een PDF te bewaren of te delen."
+                    "text": "Open een afdrukbare urenstaat voor dezelfde filters. Gebruik <strong>Afdrukken</strong> in de browser om een PDF te bewaren of te delen."
                 },
                 {
                     "label": "Corrigeren",
@@ -1063,7 +1063,7 @@
                 },
                 {
                     "label": "Statussen",
-                    "text": "<strong>Open<\/strong> — nog ingeklokt. <strong>Gesloten<\/strong> — normaal uitgeklokt. <strong>Gesloten (admin)<\/strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)<\/strong> — systeem sloot een vergeten shift na de drempel."
+                    "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
                 },
                 {
                     "label": "Taken koppelen",
@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Zonder Time-module",
-                    "text": "Beheer de inlog-QR via de knop <strong>Clock Point QR-code<\/strong> op Gebruikers → Teams. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
+                    "text": "Beheer de inlog-QR via de knop <strong>Clock Point QR-code</strong> op Gebruikers → Teams. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
                 },
                 {
                     "label": "QR-code afdrukken",
@@ -1099,7 +1099,7 @@
                     "text": "Wanneer iemand een verlopen QR gebruikt, wordt dat geweigerd en gelogd. Een waarschuwing verschijnt hier als er in de laatste 7 dagen geblokkeerde pogingen waren."
                 },
                 {
-                    "label": "Actief \/ inactief",
+                    "label": "Actief / inactief",
                     "text": "Deactiveer een clock point tijdelijk (bv. bij werken op locatie). Het portaal toont dan dat inklokken niet beschikbaar is."
                 }
             ]
@@ -1118,7 +1118,7 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Dit is het <strong>activiteitenlog<\/strong> van WinProx: wie deed wat, wanneer, en bij welke organisatie. Geen technische codes, maar leesbare gebeurtenissen."
+                    "text": "Dit is het <strong>activiteitenlog</strong> van WinProx: wie deed wat, wanneer, en bij welke organisatie. Geen technische codes, maar leesbare gebeurtenissen."
                 },
                 {
                     "label": "Lees een rij",
@@ -1126,7 +1126,7 @@
                 },
                 {
                     "label": "Zoeken",
-                    "text": "Zoek op gewone woorden (bv. <em>melding<\/em>, <em>promo<\/em>), op organisatienaam of op e-mail\/naam van de gebruiker."
+                    "text": "Zoek op gewone woorden (bv. <em>melding</em>, <em>promo</em>), op organisatienaam of op e-mail/naam van de gebruiker."
                 },
                 {
                     "label": "Waarom nuttig?",
@@ -1139,35 +1139,35 @@
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
-                    "text": "Hier beheert u <strong>gateways<\/strong>, <strong>sensoren<\/strong>, <strong>alarmregels<\/strong> en bekijkt u recente <strong>events<\/strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway\/leverancier."
+                    "text": "Hier beheert u <strong>gateways</strong>, <strong>sensoren</strong>, <strong>alarmregels</strong> en bekijkt u recente <strong>events</strong>. WinProx ontvangt sensordata; de fysieke sensoren en protocollen blijven bij uw gateway/leverancier."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:<\/strong> alarmen worden goedgekeurde meldingen met taken. <strong>Corporate:<\/strong> hetzelfde, plus sensor-metingen naar ESG wanneer de sensor een unit en numerieke ESG-indicator heeft."
+                    "text": "<strong>Facility:</strong> alarmen worden goedgekeurde meldingen met taken. <strong>Corporate:</strong> hetzelfde, plus sensor-metingen naar ESG wanneer de sensor een unit en numerieke ESG-indicator heeft."
                 },
                 {
                     "label": "Bewerken",
-                    "text": "Gateways, sensoren en regels kunt u achteraf <strong>bewerken<\/strong> of <strong>deactiveren<\/strong>. Bij een gateway kunt u ook het token vernieuwen (oud token werkt dan niet meer). Hard verwijderen doen we niet: events blijven bewaard."
+                    "text": "Gateways, sensoren en regels kunt u achteraf <strong>bewerken</strong> of <strong>deactiveren</strong>. Bij een gateway kunt u ook het token vernieuwen (oud token werkt dan niet meer). Hard verwijderen doen we niet: events blijven bewaard."
                 },
                 {
                     "label": "Wat is een gateway?",
-                    "text": "Een <strong>gateway<\/strong> is de brug tussen uw sensoren en WinProx. Sensoren praten vaak via LoRaWAN, Zigbee, Bluetooth of MQTT met een gateway van uw leverancier. Die gateway vertaalt de data en stuurt alleen relevante events door naar WinProx (via HTTPS). WinProx verkoopt zelf geen sensoren of gateways: u koppelt hier een logische gateway met een token, zodat WinProx weet welke organisatie de events mag ontvangen."
+                    "text": "Een <strong>gateway</strong> is de brug tussen uw sensoren en WinProx. Sensoren praten vaak via LoRaWAN, Zigbee, Bluetooth of MQTT met een gateway van uw leverancier. Die gateway vertaalt de data en stuurt alleen relevante events door naar WinProx (via HTTPS). WinProx verkoopt zelf geen sensoren of gateways: u koppelt hier een logische gateway met een token, zodat WinProx weet welke organisatie de events mag ontvangen."
                 },
                 {
                     "label": "Gateway aanmaken",
-                    "text": "Maak een gateway aan en <strong>bewaar het token meteen<\/strong> — het wordt maar één keer getoond. Configureer dit token in uw IoT-gateway (header <code>X-WinProx-Iot-Key<\/code> of Bearer)."
+                    "text": "Maak een gateway aan en <strong>bewaar het token meteen</strong> — het wordt maar één keer getoond. Configureer dit token in uw IoT-gateway (header <code>X-WinProx-Iot-Key</code> of Bearer)."
                 },
                 {
                     "label": "Sensoren",
-                    "text": "Koppel een <strong>externe sensor-ID<\/strong> (zoals de gateway die stuurt) aan een naam, type en bij voorkeur een unit. Voor ESG-metingen (Corporate) koppelt u ook een actieve numerieke ESG-indicator."
+                    "text": "Koppel een <strong>externe sensor-ID</strong> (zoals de gateway die stuurt) aan een naam, type en bij voorkeur een unit. Voor ESG-metingen (Corporate) koppelt u ook een actieve numerieke ESG-indicator."
                 },
                 {
                     "label": "Alarmregels",
-                    "text": "Een regel bepaalt wanneer een event een melding wordt: operator + drempel, meldingstekst, team en prioriteit. Zolang er een open taak is voor dezelfde regel, worden nieuwe alarms <strong>gededupliceerd<\/strong>."
+                    "text": "Een regel bepaalt wanneer een event een melding wordt: operator + drempel, meldingstekst, team en prioriteit. Zolang er een open taak is voor dezelfde regel, worden nieuwe alarms <strong>gededupliceerd</strong>."
                 },
                 {
                     "label": "Events versturen",
-                    "text": "De gateway post naar <code>POST \/api\/v1\/iot\/events<\/code> met <code>kind<\/code> <em>alarm<\/em> of <em>measurement<\/em>. Optioneel: <code>idempotency_key<\/code> om dubbele posts te voorkomen. Details staan in de API-docs (IoT Connect)."
+                    "text": "De gateway post naar <code>POST /api/v1/iot/events</code> met <code>kind</code> <em>alarm</em> of <em>measurement</em>. Optioneel: <code>idempotency_key</code> om dubbele posts te voorkomen. Details staan in de API-docs (IoT Connect)."
                 }
             ]
         }

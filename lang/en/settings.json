@@ -39,8 +39,8 @@
         "theme_preview_issue_desc": "Lift 3 is not working"
     },
     "qr_stickers": {
-        "title": "QR sticker sheets",
-        "hint": "Branding for printed Avery 62×89-R QR stickers (sheet download on a location).",
+        "title": "QR print sheet",
+        "hint": "Branding for Avery 62×89-R stickers and A6/A5/A4 print sheets (download per location).",
         "avery_62x89_r": {
             "title": "Avery 62×89-R",
             "hint": "9 labels per sheet (62 × 89 mm) — Avery L7108REV.",
@@ -67,6 +67,26 @@
             "preview_loading": "Updating preview…",
             "preview_unavailable": "Preview unavailable (GD or Imagick required).",
             "preview_portal_fallback": "Demo location · Machine 12"
+        },
+        "printable_page": {
+            "title": "Print sheet A6 / A5 / A4",
+            "hint": "One background for all paper sizes (1 QR per page).",
+            "section_preset": "Preset background",
+            "section_background": "Custom background",
+            "preset_label": "Background",
+            "preset_blue": "Blue",
+            "preset_green": "Green",
+            "preset_multi": "Multi-colour",
+            "preset_hint": "Applies to A6, A5 and A4. A custom upload overrides the preset.",
+            "background_hint": "Optional: custom background (PNG/JPG, max. 4 MB).",
+            "background_uploading": "Saving background…",
+            "background_remove": "Remove custom background",
+            "background_remove_confirm": "Remove the custom background and fall back to the selected preset?",
+            "save_hint": "Save the preset. Uploads apply as soon as you choose a file.",
+            "preview_label": "Background preview",
+            "preview_alt": "Preview of the QR print sheet background",
+            "preview_loading": "Updating preview…",
+            "preview_unavailable": "Preview unavailable."
         }
     },
     "notifications": {

@@ -39,8 +39,8 @@
         "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht"
     },
     "qr_stickers": {
-        "title": "QR-Etikettenbögen",
-        "hint": "Branding für gedruckte Avery 62×89-R QR-Etiketten (Bogen-Download auf einem Standort).",
+        "title": "QR-Druckbogen",
+        "hint": "Branding für Avery 62×89-R-Etiketten und A6/A5/A4-Druckbögen (Download pro Standort).",
         "avery_62x89_r": {
             "title": "Avery 62×89-R",
             "hint": "9 Etiketten pro Bogen (62 × 89 mm) — Avery L7108REV.",
@@ -67,6 +67,26 @@
             "preview_loading": "Vorschau wird aktualisiert…",
             "preview_unavailable": "Vorschau nicht verfügbar (GD oder Imagick erforderlich).",
             "preview_portal_fallback": "Demo-Standort · Maschine 12"
+        },
+        "printable_page": {
+            "title": "Druckbogen A6 / A5 / A4",
+            "hint": "Ein Hintergrund für alle Papierformate (1 QR pro Blatt).",
+            "section_preset": "Beispielhintergrund",
+            "section_background": "Eigener Hintergrund",
+            "preset_label": "Hintergrund",
+            "preset_blue": "Blau",
+            "preset_green": "Grün",
+            "preset_multi": "Mehrfarbig",
+            "preset_hint": "Gilt für A6, A5 und A4. Ein eigener Upload überschreibt die Vorgabe.",
+            "background_hint": "Optional: eigener Hintergrund (PNG/JPG, max. 4 MB).",
+            "background_uploading": "Hintergrund wird gespeichert…",
+            "background_remove": "Eigenen Hintergrund entfernen",
+            "background_remove_confirm": "Eigenen Hintergrund entfernen und zur gewählten Vorgabe zurückkehren?",
+            "save_hint": "Vorgabe speichern. Upload gilt sofort nach Dateiauswahl.",
+            "preview_label": "Hintergrundvorschau",
+            "preview_alt": "Vorschau des QR-Druckbogen-Hintergrunds",
+            "preview_loading": "Vorschau wird aktualisiert…",
+            "preview_unavailable": "Vorschau nicht verfügbar."
         }
     },
     "notifications": {

@@ -69,7 +69,9 @@ final class QrStickerWordExporter
         }
 
         $tenant?->loadMissing('qrStickerSheetSettings');
-        $sheetSettings = $tenant?->qrStickerSheetSetting($template);
+        $sheetSettings = $template->isPrintablePage()
+            ? $tenant?->qrStickerSheetSetting(QrStickerSheetTemplate::printablePageSettings())
+            : $tenant?->qrStickerSheetSetting($template);
 
         try {
             return match ($template) {

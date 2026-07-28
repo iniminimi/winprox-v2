@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Meldung hinzufügen",
-                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort\/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
+                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
                 }
             ],
             "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",
@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Messung und Nachverfolgung",
-                    "text": "Nur bei ESG-Messaufgaben sichtbar. Zeigt den erfassten Wert, ggf. einen Schwellenalarm, die Messaufgabe und eine Folgeaufgabe. <strong>Öffnen<\/strong> bei Messung führt zur gefilterten Messungsübersicht; bei Messaufgabe zur verknüpften Aufgabe."
+                    "text": "Nur bei ESG-Messaufgaben sichtbar. Zeigt den erfassten Wert, ggf. einen Schwellenalarm, die Messaufgabe und eine Folgeaufgabe. <strong>Öffnen</strong> bei Messung führt zur gefilterten Messungsübersicht; bei Messaufgabe zur verknüpften Aufgabe."
                 }
             ],
             "status_note": "Auf der Baustelle starten und schließen Ausführende Aufgaben über das Unit-QR-Portal (nach Anmeldung über die Clock Point QR).",
@@ -197,7 +197,7 @@
             "actions": [
                 {
                     "label": "Unit hinzufügen",
-                    "text": "Fügen Sie ein Objekt\/Maschine\/Asset\/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
+                    "text": "Fügen Sie ein Objekt/Maschine/Asset/Raum mit QR-Token und Standardteam hinzu. Eine Unit kann sehr unterschiedlich sein: ein Hotelzimmer, eine Bohrmaschine, eine Arbeitsbühne, ein Fitnessgerät usw. Es hängt davon ab, in welchem Sektor das Unternehmen tätig ist. Legen Sie pro Unit fest, ob Besucher Meldungen erstellen dürfen."
                 },
                 {
                     "label": "Standort-Übersetzungen",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "QR-Druckbogen",
-                    "text": "Laden Sie eine Word-Datei mit QR-Aufklebern (Avery\/HERMA) oder ganzseitigen Druckbögen (A6\/A5\/A4, 1 QR pro Blatt) für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren\/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
+                    "text": "Laden Sie eine Word-Datei mit QR-Aufklebern (Avery/HERMA) oder ganzseitigen Druckbögen (A6/A5/A4, 1 QR pro Blatt) für alle Units an diesem Standort herunter. Sie können auch freie dynamische QR-Codes generieren, die noch nicht mit einer Unit verknüpft sind. Diese können zuerst an einer Unit befestigt und dann über denselben QR-Code einer Unit zugewiesen werden. Administratoren/Mitarbeiter können alle Units mit diesen dynamischen QR-Codes verknüpfen. Team-Mitarbeiter können nur Units verknüpfen, die mit ihrem Team verbunden sind."
                 },
                 {
                     "label": "GPS",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Woche und Tag",
-                    "text": "Listenkarten pro Tag. In der Tagesansicht blättern Sie mit vorheriger\/nächster Seite bei mehr als 50 Einträgen."
+                    "text": "Listenkarten pro Tag. In der Tagesansicht blättern Sie mit vorheriger/nächster Seite bei mehr als 50 Einträgen."
                 },
                 {
                     "label": "Briefing",
@@ -308,7 +308,7 @@
                 },
                 {
                     "label": "Gastflow",
-                    "text": "Ein Gast bucht per QR, erhält 30 Minuten Hold und bestätigt per E-Mail. Ändern\/stornieren über den Mail-Link oder erneut per QR (Name\/E-Mail im Cookie)."
+                    "text": "Ein Gast bucht per QR, erhält 30 Minuten Hold und bestätigt per E-Mail. Ändern/stornieren über den Mail-Link oder erneut per QR (Name/E-Mail im Cookie)."
                 },
                 {
                     "label": "Verwaltung",
@@ -348,7 +348,7 @@
                 },
                 {
                     "label": "Clock Point QR-code",
-                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Icon) und ein- oder ausstempeln. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points<\/strong>."
+                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Icon) und ein- oder ausstempeln. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong>."
                 },
                 {
                     "label": "Ausführende",
@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Externe Ausführende",
-                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter<\/strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Müller). In der Liste erkennen Sie sie am Badge <strong>Ext<\/strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
+                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Müller). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
                 },
                 {
                     "label": "Sortierreihenfolge",
@@ -397,7 +397,7 @@
             "actions": [
                 {
                     "label": "Konfigurationsübersicht",
-                    "text": "Ganz oben finden Sie eine aufklappbare Übersicht des Konfigurationsstatus Ihrer Umgebung. Klappen Sie sie auf, um die Vollständigkeitsanzeige, acht Zähler (inaktive Standorte, Units, Teams und Mitarbeiter; Kategorien mit oder ohne GPS; aktive und inaktive Dokumente) und die wichtigsten Maßnahmen mit direktem Link <strong>Beheben<\/strong> zu sehen. Zeigt das Feld ein Badge, liegen offene Maßnahmen vor. Über <strong>Vollständige Übersicht öffnen<\/strong> gelangen Sie zur eigenen Konfigurationsseite mit allen Maßnahmen und Filterkarten pro Typ."
+                    "text": "Ganz oben finden Sie eine aufklappbare Übersicht des Konfigurationsstatus Ihrer Umgebung. Klappen Sie sie auf, um die Vollständigkeitsanzeige, acht Zähler (inaktive Standorte, Units, Teams und Mitarbeiter; Kategorien mit oder ohne GPS; aktive und inaktive Dokumente) und die wichtigsten Maßnahmen mit direktem Link <strong>Beheben</strong> zu sehen. Zeigt das Feld ein Badge, liegen offene Maßnahmen vor. Über <strong>Vollständige Übersicht öffnen</strong> gelangen Sie zur eigenen Konfigurationsseite mit allen Maßnahmen und Filterkarten pro Typ."
                 },
                 {
                     "label": "Organisationsdaten",
@@ -405,11 +405,11 @@
                 },
                 {
                     "label": "Organisationslogo",
-                    "text": "Der Administrator lädt ein Organisationslogo hoch (PNG\/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
+                    "text": "Der Administrator lädt ein Organisationslogo hoch (PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie das aktuelle Logo nur zur Information. Es erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "Portal-Hintergrund",
-                    "text": "Optionales Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG\/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen."
+                    "text": "Optionales Hintergrundbild für das Meldeportal nach dem Scannen eines QR-Codes (PNG/JPG, max. 4 MB). Das ist nicht derselbe Hintergrund wie der Aufkleber-Hintergrund unter QR-Aufkleberbögen."
                 },
                 {
                     "label": "WinProx-Stil",
@@ -420,7 +420,7 @@
                     "text": "Aktivieren Sie 'Eigenes Portal-Design verwenden', um Hintergrund- und Buttonfarbe des Meldeportals zu wählen. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
                 },
                 {
-                    "label": "QR-Aufkleberbögen",
+                    "label": "QR-Druckbogen",
                     "text": "Branding für gedruckte Avery 62×89-R-Aufkleber (9 Etiketten pro Bogen). Den Aufkleberbogen laden Sie pro Standort über das QR-Paket herunter."
                 },
                 {
@@ -436,7 +436,7 @@
                 {
                     "label": "Hintergrund",
                     "nested": true,
-                    "text": "Wählen Sie ein eigenes Bild (PNG\/JPG, max. 4 MB); es wird sofort gespeichert. Ohne eigenen Hintergrund nutzt WinProx das Standard-Aufkleberdesign. Mit 'Eigenen Hintergrund entfernen' kehren Sie zu diesem Standard zurück."
+                    "text": "Wählen Sie ein eigenes Bild (PNG/JPG, max. 4 MB); es wird sofort gespeichert. Ohne eigenen Hintergrund nutzt WinProx das Standard-Aufkleberdesign. Mit 'Eigenen Hintergrund entfernen' kehren Sie zu diesem Standard zurück."
                 },
                 {
                     "label": "Vorschau",
@@ -458,7 +458,7 @@
                 },
                 {
                     "label": "Brauche ich das?",
-                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Units oder Mitarbeiter auf einmal importieren? Nutzen Sie den CSV\/Excel-Import auf einem Standort (Units) oder unter Teams (Mitarbeiter). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
+                    "text": "Meistens nicht. Wenn Sie WinProx nur über Website und QR-Codes nutzen, müssen Sie hier nichts einrichten.<br><br>Für die einmalige Einrichtung: Möchten Sie tausende Units oder Mitarbeiter auf einmal importieren? Nutzen Sie den CSV/Excel-Import auf einem Standort (Units) oder unter Teams (Mitarbeiter). Das ist für eine erste Migration oft schneller und einfacher.<br><br>Für dauerhafte Automatisierung: Diese API-Seite richtet sich an Administratoren oder IT-Partner, die eine Live-Anbindung aufbauen wollen, damit Systeme automatisch miteinander kommunizieren (z. B. für Echtzeit-ERP-Kopplungen oder eigene Dashboards)."
                 },
                 {
                     "label": "API — was ist das?",
@@ -474,7 +474,7 @@
                 },
                 {
                     "label": "Was kann die API?",
-                    "text": "Mit gültigem Token kann Software u. a. Meldungen und Aufgaben lesen, Standorte\/Units\/Teams\/Mitarbeiter auflisten, Meldungen anlegen oder freigeben sowie Aufgaben starten oder abschließen. Technische Doku: IT-Partner oder WinProx-Support."
+                    "text": "Mit gültigem Token kann Software u. a. Meldungen und Aufgaben lesen, Standorte/Units/Teams/Mitarbeiter auflisten, Meldungen anlegen oder freigeben sowie Aufgaben starten oder abschließen. Technische Doku: IT-Partner oder WinProx-Support."
                 },
                 {
                     "label": "Webhooks — was ist das?",
@@ -482,7 +482,7 @@
                 },
                 {
                     "label": "Webhook-Endpoint hinzufügen",
-                    "text": "Vollständige URL mit https:\/\/ eingeben (sichere Verbindung). Gewünschte Ereignisse ankreuzen. Optional Beschreibung (z. B. „Produktions-ERP“). Speichern — WinProx sendet bei diesen Events automatisch Daten."
+                    "text": "Vollständige URL mit https:// eingeben (sichere Verbindung). Gewünschte Ereignisse ankreuzen. Optional Beschreibung (z. B. „Produktions-ERP“). Speichern — WinProx sendet bei diesen Events automatisch Daten."
                 },
                 {
                     "label": "Ereignis: issue.created",
@@ -552,7 +552,7 @@
             "actions": [
                 {
                     "label": "Wissensdatenbank",
-                    "text": "Antworten auf häufig gestellte Fragen zu WinProx, QR, Teams, Time, ESG, Freigabe\/Blur im Portal und Seitenhilfe (?)."
+                    "text": "Antworten auf häufig gestellte Fragen zu WinProx, QR, Teams, Time, ESG, Freigabe/Blur im Portal und Seitenhilfe (?)."
                 }
             ]
         },
@@ -583,7 +583,7 @@
             "actions": [
                 {
                     "label": "Willkommen",
-                    "text": "Willkommen auf dem öffentlichen Portal von :tenant. Lesen Sie unten für weitere Informationen. Interessiert an einem eigenen Unternehmensportal? Klicken Sie auf <a href=\"https:\/\/winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app<\/a>."
+                    "text": "Willkommen auf dem öffentlichen Portal von :tenant. Lesen Sie unten für weitere Informationen. Interessiert an einem eigenen Unternehmensportal? Klicken Sie auf <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Meldung erstellen",
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Ein- und ausstempeln",
-                    "text": "Nur wenn Ihre Organisation das <strong>Time-Modul<\/strong> hat: stempeln Sie hier ein, aus und erfassen Sie Pausen. Ohne Time-Modul dient dieses Portal nur zur Anmeldung und zur Aufgabenübersicht."
+                    "text": "Nur wenn Ihre Organisation das <strong>Time-Modul</strong> hat: stempeln Sie hier ein, aus und erfassen Sie Pausen. Ohne Time-Modul dient dieses Portal nur zur Anmeldung und zur Aufgabenübersicht."
                 },
                 {
                     "label": "Abmelden",
@@ -780,7 +780,7 @@
                 },
                 {
                     "label": "Lokal via Ollama",
-                    "text": "Als Superuser auf Ihrem Laptop: <code>php artisan queue:work<\/code> starten, auf « Übersetzungen starten » klicken. Ausstehende Meldungen, Mitteilungen, Units, Aufgaben und Dokumente werden exportiert, lokal übersetzt und auf dem Server importiert."
+                    "text": "Als Superuser auf Ihrem Laptop: <code>php artisan queue:work</code> starten, auf « Übersetzungen starten » klicken. Ausstehende Meldungen, Mitteilungen, Units, Aufgaben und Dokumente werden exportiert, lokal übersetzt und auf dem Server importiert."
                 },
                 {
                     "label": "Serverstatus",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Module",
-                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code<\/strong> unter Teams nur zur Anmeldung."
+                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
                 }
             ]
         },
@@ -827,23 +827,23 @@
             "actions": [
                 {
                     "label": "Wofür ist dieser Bildschirm?",
-                    "text": "Verwalten Sie Adressen, die keine <strong>WinProx-E-Mails<\/strong> mehr erhalten — Marketing, Kontakt und Systemmails. Nur Superuser sehen diese Seite."
+                    "text": "Verwalten Sie Adressen, die keine <strong>WinProx-E-Mails</strong> mehr erhalten — Marketing, Kontakt und Systemmails. Nur Superuser sehen diese Seite."
                 },
                 {
                     "label": "Adresse sperren",
-                    "text": "Fügen Sie manuell eine E-Mail-Adresse hinzu, um sie zu sperren. Die Zeile erhält die Quelle <strong>Manuell blockiert<\/strong>."
+                    "text": "Fügen Sie manuell eine E-Mail-Adresse hinzu, um sie zu sperren. Die Zeile erhält die Quelle <strong>Manuell blockiert</strong>."
                 },
                 {
                     "label": "Suche und Filter",
-                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig (Häkchen aus) sind Bounce-Adressen ausgeblendet. Aktivieren Sie <strong>Unzustellbar (Bounce)<\/strong>, um nur Adressen zu sehen, die automatisch nach einer fehlgeschlagenen Promo-Mail gesperrt wurden; die Anzahl steht in Klammern."
+                    "text": "Suchen Sie nach E-Mail-Adresse. Standardmäßig (Häkchen aus) sind Bounce-Adressen ausgeblendet. Aktivieren Sie <strong>Unzustellbar (Bounce)</strong>, um nur Adressen zu sehen, die automatisch nach einer fehlgeschlagenen Promo-Mail gesperrt wurden; die Anzahl steht in Klammern."
                 },
                 {
                     "label": "Quelle der Abmeldung",
-                    "text": "<strong>Selbst abgemeldet<\/strong> = über den Abmeldelink in einer Mail. <strong>Unzustellbar (Bounce)<\/strong> = automatisch nach einer unzustellbaren Promo-Mail. <strong>Manuell blockiert<\/strong> = über diesen Bildschirm."
+                    "text": "<strong>Selbst abgemeldet</strong> = über den Abmeldelink in einer Mail. <strong>Unzustellbar (Bounce)</strong> = automatisch nach einer unzustellbaren Promo-Mail. <strong>Manuell blockiert</strong> = über diesen Bildschirm."
                 },
                 {
                     "label": "Wiederherstellen",
-                    "text": "Mit <strong>Wiederherstellen<\/strong> entfernen Sie die Adresse von der Liste; sie erhält danach wieder E-Mails."
+                    "text": "Mit <strong>Wiederherstellen</strong> entfernen Sie die Adresse von der Liste; sie erhält danach wieder E-Mails."
                 }
             ]
         },
@@ -852,47 +852,47 @@
             "actions": [
                 {
                     "label": "Was ist dieser Bildschirm?",
-                    "text": "Das ESG-Dashboard bietet einen operativen Überblick über Ihr Messprogramm: letzte Werte, Schwellenalarme, Trends und offene Folgeaktionen. Es ist Ihr Ausgangspunkt für das tägliche ESG-Management — Details und Historie finden Sie unter <strong>Messungen<\/strong>."
+                    "text": "Das ESG-Dashboard bietet einen operativen Überblick über Ihr Messprogramm: letzte Werte, Schwellenalarme, Trends und offene Folgeaktionen. Es ist Ihr Ausgangspunkt für das tägliche ESG-Management — Details und Historie finden Sie unter <strong>Messungen</strong>."
                 },
                 {
                     "label": "KPI-Karten oben",
-                    "text": "Die erste Karte zeigt die Anzahl der <strong>Schwellenalarme<\/strong> in der aktuellen Stichprobe. Außerdem sehen Sie pro aktivem numerischem Indikator den <strong>letzten Messwert<\/strong> und wann er erfasst wurde. Rot markiert = außerhalb von Minimum oder Maximum. Klicken Sie auf eine Karte für die gefilterte Messungsübersicht."
+                    "text": "Die erste Karte zeigt die Anzahl der <strong>Schwellenalarme</strong> in der aktuellen Stichprobe. Außerdem sehen Sie pro aktivem numerischem Indikator den <strong>letzten Messwert</strong> und wann er erfasst wurde. Rot markiert = außerhalb von Minimum oder Maximum. Klicken Sie auf eine Karte für die gefilterte Messungsübersicht."
                 },
                 {
                     "label": "Verbrauchstrend",
-                    "text": "Liniendiagramm des gewählten Indikators über die letzten 30 Tage. Messwerte pro Tag werden <strong>summiert<\/strong> (nützlich für Verbrauchsindikatoren wie kWh). Wählen Sie oben rechts einen anderen Indikator zum Vergleich."
+                    "text": "Liniendiagramm des gewählten Indikators über die letzten 30 Tage. Messwerte pro Tag werden <strong>summiert</strong> (nützlich für Verbrauchsindikatoren wie kWh). Wählen Sie oben rechts einen anderen Indikator zum Vergleich."
                 },
                 {
                     "label": "Messungen innerhalb der Grenzen",
-                    "text": "Das Donut-Diagramm zeigt den Anteil der jüngsten Messungen (Stichprobe), die <strong>innerhalb der konfigurierten Schwellen<\/strong> liegen. Die Beschriftung unten nennt die Anzahl der Alarme in dieser Stichprobe. Klicken Sie für die Messungsübersicht."
+                    "text": "Das Donut-Diagramm zeigt den Anteil der jüngsten Messungen (Stichprobe), die <strong>innerhalb der konfigurierten Schwellen</strong> liegen. Die Beschriftung unten nennt die Anzahl der Alarme in dieser Stichprobe. Klicken Sie für die Messungsübersicht."
                 },
                 {
                     "label": "Höchster Verbrauch pro Standort",
-                    "text": "Rangliste der Standorte nach der <strong>Gesamtsumme<\/strong> der Messwerte des gewählten Indikators in den letzten 30 Tagen. Nützlich, um zu sehen, welches Gebäude oder welcher Standort am meisten beiträgt. Klicken Sie auf eine Zeile für Messungen an diesem Standort."
+                    "text": "Rangliste der Standorte nach der <strong>Gesamtsumme</strong> der Messwerte des gewählten Indikators in den letzten 30 Tagen. Nützlich, um zu sehen, welches Gebäude oder welcher Standort am meisten beiträgt. Klicken Sie auf eine Zeile für Messungen an diesem Standort."
                 },
                 {
                     "label": "ESG-Score (Compliance)",
-                    "text": "Gewichteter Score über 30 Tage: <strong>60 % Schwelleneinhaltung<\/strong> (Messungen mit Schwellen innerhalb der Grenzen) + <strong>40 % Messabdeckung<\/strong> (aktive numerische Indikatoren mit mindestens einer Messung). Unter dem Donut sehen Sie die Einzelwerte."
+                    "text": "Gewichteter Score über 30 Tage: <strong>60 % Schwelleneinhaltung</strong> (Messungen mit Schwellen innerhalb der Grenzen) + <strong>40 % Messabdeckung</strong> (aktive numerische Indikatoren mit mindestens einer Messung). Unter dem Donut sehen Sie die Einzelwerte."
                 },
                 {
                     "label": "Verteilung nach Kategorie",
-                    "text": "Donut der Messungsanzahl pro Indikatorkategorie (z. B. Energie, Abfall, Sicherheit) in den letzten 30 Tagen. Kategorien legen Sie beim Anlegen oder Bearbeiten eines Indikators unter <strong>Indikatoren<\/strong> fest."
+                    "text": "Donut der Messungsanzahl pro Indikatorkategorie (z. B. Energie, Abfall, Sicherheit) in den letzten 30 Tagen. Kategorien legen Sie beim Anlegen oder Bearbeiten eines Indikators unter <strong>Indikatoren</strong> fest."
                 },
                 {
                     "label": "Offene ESG-Aufgaben",
-                    "text": "Aufgaben zu einem ESG-Indikator, die noch nicht erledigt sind — sowohl periodische Messaufgaben als auch automatische Folgeaktionen. Das Badge <strong>Auto-Alarm<\/strong> kennzeichnet Aufgaben, die WinProx nach einer Schwellenüberschreitung erstellt hat."
+                    "text": "Aufgaben zu einem ESG-Indikator, die noch nicht erledigt sind — sowohl periodische Messaufgaben als auch automatische Folgeaktionen. Das Badge <strong>Auto-Alarm</strong> kennzeichnet Aufgaben, die WinProx nach einer Schwellenüberschreitung erstellt hat."
                 },
                 {
                     "label": "Auto-Alarm und Folgeaufgabe",
-                    "text": "Liegt eine Messung außerhalb des konfigurierten Minimums oder Maximums, kann WinProx automatisch eine <strong>Folgeaufgabe mit Priorität 2<\/strong> anlegen (höchstens eine offene Aufgabe pro Indikator und Unit). Der Button <strong>Folgeaufgabe<\/strong> bei jüngsten Messungen und Alarmen führt direkt dorthin. Das zugewiesene Team folgt dem Team der ursprünglichen Messaufgabe."
+                    "text": "Liegt eine Messung außerhalb des konfigurierten Minimums oder Maximums, kann WinProx automatisch eine <strong>Folgeaufgabe mit Priorität 2</strong> anlegen (höchstens eine offene Aufgabe pro Indikator und Unit). Der Button <strong>Folgeaufgabe</strong> bei jüngsten Messungen und Alarmen führt direkt dorthin. Das zugewiesene Team folgt dem Team der ursprünglichen Messaufgabe."
                 },
                 {
                     "label": "Jüngste Messungen und Schwellenalarme",
-                    "text": "Zwei Listen unten: alle jüngsten Messwerte und separat Messungen mit Schwellenalarm. Werte außerhalb der Grenzen tragen das Label <strong>Außerhalb Schwellen<\/strong>. Über <strong>Aufgabe<\/strong> öffnen Sie die Messaufgabe im QR-Portal."
+                    "text": "Zwei Listen unten: alle jüngsten Messwerte und separat Messungen mit Schwellenalarm. Werte außerhalb der Grenzen tragen das Label <strong>Außerhalb Schwellen</strong>. Über <strong>Aufgabe</strong> öffnen Sie die Messaufgabe im QR-Portal."
                 },
                 {
                     "label": "Leeres Dashboard",
-                    "text": "Noch keine Indikatoren oder Messungen? WinProx zeigt die Startschritte: Modul aktiv, Indikator anlegen, mit wiederkehrender Meldung verknüpfen. Ausführliche Hilfe zu Indikatoren finden Sie unter dem Tab <strong>Indikatoren<\/strong>."
+                    "text": "Noch keine Indikatoren oder Messungen? WinProx zeigt die Startschritte: Modul aktiv, Indikator anlegen, mit wiederkehrender Meldung verknüpfen. Ausführliche Hilfe zu Indikatoren finden Sie unter dem Tab <strong>Indikatoren</strong>."
                 }
             ]
         },
@@ -909,7 +909,7 @@
                 },
                 {
                     "label": "Schritt 1 — Indikator anlegen",
-                    "text": "Ein Indikator beschreibt, <strong>was<\/strong> Sie messen möchten: ein Stromzähler, eine Feuerlöscher-Prüfung oder eine periodische Kontrolle. Geben Sie einen klaren Namen und bei Zahlen eine Einheit (z. B. kWh, m³) an."
+                    "text": "Ein Indikator beschreibt, <strong>was</strong> Sie messen möchten: ein Stromzähler, eine Feuerlöscher-Prüfung oder eine periodische Kontrolle. Geben Sie einen klaren Namen und bei Zahlen eine Einheit (z. B. kWh, m³) an."
                 },
                 {
                     "label": "Zahl",
@@ -917,7 +917,7 @@
                     "text": "Für Zählerstände oder Zählungen (z. B. Strom in kWh, Wasser in m³, Fahrzeugkilometer). Minimum und Maximum können gesetzt werden, damit unrealistische Eingaben (z. B. negativer Zählerstand) auffallen."
                 },
                 {
-                    "label": "Ja\/Nein",
+                    "label": "Ja/Nein",
                     "nested": true,
                     "text": "Für schnelle Kontrollen (z. B. „Ist der Notausgang frei?“, „Ist der Feuerlöscher geprüft?“)."
                 },
@@ -938,11 +938,11 @@
                 },
                 {
                     "label": "Schritt 2 — Mit wiederkehrender Meldung verknüpfen",
-                    "text": "Beim Anlegen einer <strong>wiederkehrenden Meldung<\/strong> auf einer Unit können Sie einen ESG-Indikator verknüpfen. Ab dann wird in jedem Zyklus automatisch der zugehörige Messwert abgefragt — z. B. monatlich der Zählerstand dieser Unit."
+                    "text": "Beim Anlegen einer <strong>wiederkehrenden Meldung</strong> auf einer Unit können Sie einen ESG-Indikator verknüpfen. Ab dann wird in jedem Zyklus automatisch der zugehörige Messwert abgefragt — z. B. monatlich der Zählerstand dieser Unit."
                 },
                 {
                     "label": "Schritt 3 — Messungen werden gespeichert",
-                    "text": "Jedes Mal, wenn ein Mitarbeiter die Aufgabe abschließt, werden Wert, Datum und Unit gespeichert. So entsteht nach und nach eine Historie pro Messpunkt, nutzbar für Berichte (z. B. Energieverbrauch pro Gebäude über die Zeit).<br><br>Eine einmal erfasste Messung kann nicht mehr geändert werden — das hält Ihre Daten zuverlässig und prüfbar. Die Übersicht finden Sie unter dem Tab <strong>Messungen<\/strong>."
+                    "text": "Jedes Mal, wenn ein Mitarbeiter die Aufgabe abschließt, werden Wert, Datum und Unit gespeichert. So entsteht nach und nach eine Historie pro Messpunkt, nutzbar für Berichte (z. B. Energieverbrauch pro Gebäude über die Zeit).<br><br>Eine einmal erfasste Messung kann nicht mehr geändert werden — das hält Ihre Daten zuverlässig und prüfbar. Die Übersicht finden Sie unter dem Tab <strong>Messungen</strong>."
                 },
                 {
                     "label": "Indikator deaktivieren",
@@ -959,7 +959,7 @@
                 },
                 {
                     "label": "Messung und Nachverfolgung",
-                    "text": "Unter jeder Messung in der Zeitachse sehen Sie verknüpfte Schritte: die <strong>Messung<\/strong> (Wert), ggf. einen <strong>Schwellenalarm<\/strong>, die <strong>Messaufgabe<\/strong> zur Eingabe und eine <strong>Folgeaufgabe<\/strong> bei Grenzwertüberschreitung. Mit <strong>Öffnen<\/strong> springen Sie zur Messungsübersicht oder zur Aufgabe."
+                    "text": "Unter jeder Messung in der Zeitachse sehen Sie verknüpfte Schritte: die <strong>Messung</strong> (Wert), ggf. einen <strong>Schwellenalarm</strong>, die <strong>Messaufgabe</strong> zur Eingabe und eine <strong>Folgeaufgabe</strong> bei Grenzwertüberschreitung. Mit <strong>Öffnen</strong> springen Sie zur Messungsübersicht oder zur Aufgabe."
                 },
                 {
                     "label": "Trend",
@@ -972,7 +972,7 @@
             "actions": [
                 {
                     "label": "Was sehen Sie hier?",
-                    "text": "Alle Messwerte, die Mitarbeiter beim Abschließen einer Aufgabe eingegeben haben, mit Indikator, Standort, Unit, Zeitstempel und wer gemessen hat. Klicken Sie auf <strong>Aufgabe<\/strong> für die zugrunde liegende Ausführung."
+                    "text": "Alle Messwerte, die Mitarbeiter beim Abschließen einer Aufgabe eingegeben haben, mit Indikator, Standort, Unit, Zeitstempel und wer gemessen hat. Klicken Sie auf <strong>Aufgabe</strong> für die zugrunde liegende Ausführung."
                 },
                 {
                     "label": "Filter",
@@ -997,11 +997,11 @@
                 },
                 {
                     "label": "Dashboard",
-                    "text": "Oben sehen Sie Live-KPIs: eingestempelt, aktiv, Pause, nicht eingestempelt und Aufmerksamkeit. <strong>Aufmerksamkeit<\/strong> öffnet den Alarmbildschirm."
+                    "text": "Oben sehen Sie Live-KPIs: eingestempelt, aktiv, Pause, nicht eingestempelt und Aufmerksamkeit. <strong>Aufmerksamkeit</strong> öffnet den Alarmbildschirm."
                 },
                 {
                     "label": "Ansicht",
-                    "text": "Wählen Sie <strong>Teams<\/strong> (Akkordeon), <strong>Teamkarten<\/strong> oder <strong>Standorte<\/strong>. Klappen Sie ein Team erst auf, wenn Sie Mitarbeitende sehen möchten."
+                    "text": "Wählen Sie <strong>Teams</strong> (Akkordeon), <strong>Teamkarten</strong> oder <strong>Standorte</strong>. Klappen Sie ein Team erst auf, wenn Sie Mitarbeitende sehen möchten."
                 },
                 {
                     "label": "Filter",
@@ -1013,7 +1013,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>\/time\/…<\/code>)."
+                    "text": "Mitarbeiter stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>)."
                 }
             ]
         },
@@ -1026,11 +1026,11 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter: <strong>Lange Schicht<\/strong> (&gt;10 Std.), <strong>Nicht ausgestempelt<\/strong> (&gt;16 Std.) oder <strong>Keine Pause<\/strong> (&gt;6 Std.)."
+                    "text": "Filter: <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.) oder <strong>Keine Pause</strong> (&gt;6 Std.)."
                 },
                 {
                     "label": "Aktion",
-                    "text": "Mit <strong>Schicht schließen<\/strong> beenden Sie eine Schicht mit Begründung. Das Badge in der Navigation zeigt die Anzahl."
+                    "text": "Mit <strong>Schicht schließen</strong> beenden Sie eine Schicht mit Begründung. Das Badge in der Navigation zeigt die Anzahl."
                 }
             ]
         },
@@ -1039,11 +1039,11 @@
             "actions": [
                 {
                     "label": "Time-Modul",
-                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code<\/strong> unter Teams nur zur Anmeldung."
+                    "text": "Zeiterfassung erfordert das Time-Modul. Ohne Modul nutzen Sie die Schaltfläche <strong>Clock Point QR-code</strong> unter Teams nur zur Anmeldung."
                 },
                 {
                     "label": "Zeitraum und Filter",
-                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden<\/strong>, um die Liste zu aktualisieren."
+                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Mitarbeiter oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
                 {
                     "label": "CSV exportieren",
@@ -1051,7 +1051,7 @@
                 },
                 {
                     "label": "Drucken",
-                    "text": "Öffnen Sie eine druckbare Stundenzettel-Ansicht für dieselben Filter. Verwenden Sie <strong>Drucken<\/strong> im Browser, um ein PDF zu speichern oder zu teilen."
+                    "text": "Öffnen Sie eine druckbare Stundenzettel-Ansicht für dieselben Filter. Verwenden Sie <strong>Drucken</strong> im Browser, um ein PDF zu speichern oder zu teilen."
                 },
                 {
                     "label": "Korrigieren",
@@ -1063,7 +1063,7 @@
                 },
                 {
                     "label": "Status",
-                    "text": "<strong>Offen<\/strong> — noch eingestempelt. <strong>Geschlossen<\/strong> — normal ausgestempelt. <strong>Geschlossen (Admin)<\/strong> — manuell vom Administrator geschlossen. <strong>Geschlossen (automatisch)<\/strong> — System schließt eine vergessene Schicht nach der Schwelle."
+                    "text": "<strong>Offen</strong> — noch eingestempelt. <strong>Geschlossen</strong> — normal ausgestempelt. <strong>Geschlossen (Admin)</strong> — manuell vom Administrator geschlossen. <strong>Geschlossen (automatisch)</strong> — System schließt eine vergessene Schicht nach der Schwelle."
                 },
                 {
                     "label": "Aufgaben verknüpfen",
@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Ohne Time-Modul",
-                    "text": "Verwalten Sie den Anmelde-QR über die Schaltfläche <strong>Clock Point QR-code<\/strong> unter Benutzer → Teams. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
+                    "text": "Verwalten Sie den Anmelde-QR über die Schaltfläche <strong>Clock Point QR-code</strong> unter Benutzer → Teams. Bei Bedarf wird automatisch ein Standard-Clock-Point erstellt."
                 },
                 {
                     "label": "QR-Code drucken",
@@ -1099,7 +1099,7 @@
                     "text": "Wenn jemand einen abgelaufenen QR verwendet, wird das abgelehnt und protokolliert. Eine Warnung erscheint hier, wenn es in den letzten 7 Tagen gesperrte Versuche gab."
                 },
                 {
-                    "label": "Aktiv \/ inaktiv",
+                    "label": "Aktiv / inaktiv",
                     "text": "Deaktivieren Sie einen Clock Point vorübergehend (z. B. bei Arbeiten vor Ort). Das Portal zeigt dann an, dass Einstempeln nicht verfügbar ist."
                 }
             ]
@@ -1118,7 +1118,7 @@
             "actions": [
                 {
                     "label": "Wofür ist dieser Bildschirm?",
-                    "text": "Das ist das <strong>Aktivitätsprotokoll<\/strong> von WinProx: wer hat was wann bei welcher Organisation gemacht. Klartext statt technischer Codes."
+                    "text": "Das ist das <strong>Aktivitätsprotokoll</strong> von WinProx: wer hat was wann bei welcher Organisation gemacht. Klartext statt technischer Codes."
                 },
                 {
                     "label": "Eine Zeile lesen",
@@ -1126,7 +1126,7 @@
                 },
                 {
                     "label": "Suche",
-                    "text": "Suchen Sie mit normalen Worten (z. B. <em>Meldung<\/em>, <em>Promo<\/em>), Organisationsname oder Name\/E-Mail des Nutzers."
+                    "text": "Suchen Sie mit normalen Worten (z. B. <em>Meldung</em>, <em>Promo</em>), Organisationsname oder Name/E-Mail des Nutzers."
                 },
                 {
                     "label": "Warum hilfreich?",
@@ -1139,35 +1139,35 @@
             "actions": [
                 {
                     "label": "Was ist dieser Bildschirm?",
-                    "text": "Hier verwalten Sie <strong>Gateways<\/strong>, <strong>Sensoren<\/strong>, <strong>Alarmregeln<\/strong> und sehen aktuelle <strong>Events<\/strong>. WinProx empfängt Sensordaten; die physischen Sensoren und Protokolle bleiben bei Ihrem Gateway bzw. Anbieter."
+                    "text": "Hier verwalten Sie <strong>Gateways</strong>, <strong>Sensoren</strong>, <strong>Alarmregeln</strong> und sehen aktuelle <strong>Events</strong>. WinProx empfängt Sensordaten; die physischen Sensoren und Protokolle bleiben bei Ihrem Gateway bzw. Anbieter."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:<\/strong> Alarme werden freigegebene Meldungen mit Aufgaben. <strong>Corporate:<\/strong> dasselbe, plus Sensormessungen in ESG, wenn der Sensor eine Unit und einen numerischen ESG-Indikator hat."
+                    "text": "<strong>Facility:</strong> Alarme werden freigegebene Meldungen mit Aufgaben. <strong>Corporate:</strong> dasselbe, plus Sensormessungen in ESG, wenn der Sensor eine Unit und einen numerischen ESG-Indikator hat."
                 },
                 {
                     "label": "Bearbeiten",
-                    "text": "Gateways, Sensoren und Regeln können Sie später <strong>bearbeiten<\/strong> oder <strong>deaktivieren<\/strong>. Bei einem Gateway können Sie auch das Token erneuern (das alte Token funktioniert dann nicht mehr). Hartes Löschen gibt es nicht: Events bleiben erhalten."
+                    "text": "Gateways, Sensoren und Regeln können Sie später <strong>bearbeiten</strong> oder <strong>deaktivieren</strong>. Bei einem Gateway können Sie auch das Token erneuern (das alte Token funktioniert dann nicht mehr). Hartes Löschen gibt es nicht: Events bleiben erhalten."
                 },
                 {
                     "label": "Was ist ein Gateway?",
-                    "text": "Ein <strong>Gateway<\/strong> ist die Brücke zwischen Ihren Sensoren und WinProx. Sensoren sprechen oft über LoRaWAN, Zigbee, Bluetooth oder MQTT mit einem Gateway Ihres Anbieters. Dieses Gateway übersetzt die Daten und sendet nur relevante Events an WinProx (per HTTPS). WinProx verkauft keine Sensoren oder Gateways: Hier hinterlegen Sie ein logisches Gateway mit Token, damit WinProx weiß, welche Organisation die Events empfangen darf."
+                    "text": "Ein <strong>Gateway</strong> ist die Brücke zwischen Ihren Sensoren und WinProx. Sensoren sprechen oft über LoRaWAN, Zigbee, Bluetooth oder MQTT mit einem Gateway Ihres Anbieters. Dieses Gateway übersetzt die Daten und sendet nur relevante Events an WinProx (per HTTPS). WinProx verkauft keine Sensoren oder Gateways: Hier hinterlegen Sie ein logisches Gateway mit Token, damit WinProx weiß, welche Organisation die Events empfangen darf."
                 },
                 {
                     "label": "Gateway anlegen",
-                    "text": "Legen Sie ein Gateway an und <strong>speichern Sie das Token sofort<\/strong> — es wird nur einmal angezeigt. Konfigurieren Sie dieses Token in Ihrem IoT-Gateway (Header <code>X-WinProx-Iot-Key<\/code> oder Bearer)."
+                    "text": "Legen Sie ein Gateway an und <strong>speichern Sie das Token sofort</strong> — es wird nur einmal angezeigt. Konfigurieren Sie dieses Token in Ihrem IoT-Gateway (Header <code>X-WinProx-Iot-Key</code> oder Bearer)."
                 },
                 {
                     "label": "Sensoren",
-                    "text": "Verknüpfen Sie eine <strong>externe Sensor-ID<\/strong> (wie sie das Gateway sendet) mit einem Namen, Typ und möglichst einer Unit. Für ESG-Messungen (Corporate) verknüpfen Sie auch einen aktiven numerischen ESG-Indikator."
+                    "text": "Verknüpfen Sie eine <strong>externe Sensor-ID</strong> (wie sie das Gateway sendet) mit einem Namen, Typ und möglichst einer Unit. Für ESG-Messungen (Corporate) verknüpfen Sie auch einen aktiven numerischen ESG-Indikator."
                 },
                 {
                     "label": "Alarmregeln",
-                    "text": "Eine Regel bestimmt, wann ein Event zur Meldung wird: Operator + Schwellenwert, Meldungstext, Team und Priorität. Solange für dieselbe Regel eine offene Aufgabe existiert, werden neue Alarme <strong>dedupliziert<\/strong>."
+                    "text": "Eine Regel bestimmt, wann ein Event zur Meldung wird: Operator + Schwellenwert, Meldungstext, Team und Priorität. Solange für dieselbe Regel eine offene Aufgabe existiert, werden neue Alarme <strong>dedupliziert</strong>."
                 },
                 {
                     "label": "Events senden",
-                    "text": "Das Gateway sendet an <code>POST \/api\/v1\/iot\/events<\/code> mit <code>kind<\/code> <em>alarm<\/em> oder <em>measurement<\/em>. Optional: <code>idempotency_key<\/code>, um doppelte Posts zu vermeiden. Details stehen in den API-Docs (IoT Connect)."
+                    "text": "Das Gateway sendet an <code>POST /api/v1/iot/events</code> mit <code>kind</code> <em>alarm</em> oder <em>measurement</em>. Optional: <code>idempotency_key</code>, um doppelte Posts zu vermeiden. Details stehen in den API-Docs (IoT Connect)."
                 }
             ]
         }

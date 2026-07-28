@@ -23,7 +23,7 @@
                 },
                 {
                     "label": "Añadir incidencia",
-                    "text": "Cree una incidencia en dos pasos: ubicación\/unidad + descripción, luego una tarea para el equipo correcto."
+                    "text": "Cree una incidencia en dos pasos: ubicación/unidad + descripción, luego una tarea para el equipo correcto."
                 }
             ],
             "status_note": "El estado de la incidencia en el panel de control sigue el estado de las tareas vinculadas.",
@@ -148,7 +148,7 @@
                 },
                 {
                     "label": "Medición y seguimiento",
-                    "text": "Solo en tareas de medición ESG. Muestra el valor registrado, una alarma de umbral si aplica, la tarea de medición y una tarea de seguimiento. <strong>Abrir<\/strong> en Medición lleva al resumen filtrado; en Tarea de medición abre la tarea vinculada."
+                    "text": "Solo en tareas de medición ESG. Muestra el valor registrado, una alarma de umbral si aplica, la tarea de medición y una tarea de seguimiento. <strong>Abrir</strong> en Medición lleva al resumen filtrado; en Tarea de medición abre la tarea vinculada."
                 }
             ],
             "status_note": "En el taller, los trabajadores inician y completan tareas mediante el portal QR de unidad (tras iniciar sesión con el QR Clock Point).",
@@ -197,7 +197,7 @@
             "actions": [
                 {
                     "label": "Añadir unidad",
-                    "text": "Añada un objeto\/máquina\/activo\/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
+                    "text": "Añada un objeto/máquina/activo/espacio con token QR y equipo predeterminado. Una unidad puede ser muy diversa: una habitación de hotel, una taladradora, una plataforma elevadora, un aparato de fitness, etc. Depende del sector en el que opera la empresa. Configure por unidad si los visitantes pueden enviar informes."
                 },
                 {
                     "label": "Traducciones de ubicación",
@@ -225,7 +225,7 @@
                 },
                 {
                     "label": "Hoja de impresión QR",
-                    "text": "Descargue un archivo Word con pegatinas QR (Avery\/HERMA) u hojas a página completa (A6/A5/A4, 1 QR por página) para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores\/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
+                    "text": "Descargue un archivo Word con pegatinas QR (Avery/HERMA) u hojas a página completa (A6/A5/A4, 1 QR por página) para todas las unidades de esta ubicación. También puede generar códigos QR dinámicos libres que aún no están vinculados a una unidad. Estos pueden colocarse primero en una unidad y luego asignarse a una unidad mediante el mismo código QR. Los administradores/empleados pueden vincular todas las unidades a estos códigos QR dinámicos. Los trabajadores de equipo solo pueden vincular unidades conectadas a su equipo."
                 },
                 {
                     "label": "GPS",
@@ -268,7 +268,7 @@
                 },
                 {
                     "label": "Reservas",
-                    "text": "Muestra holds pending activos y reservas confirmadas (canceladas o caducadas no aparecen aquí). Por elemento: unidad y franja; en vista semana\/día también el nombre del invitado. Un clic abre la lista de reservas."
+                    "text": "Muestra holds pending activos y reservas confirmadas (canceladas o caducadas no aparecen aquí). Por elemento: unidad y franja; en vista semana/día también el nombre del invitado. Un clic abre la lista de reservas."
                 },
                 {
                     "label": "Filtros",
@@ -280,7 +280,7 @@
                 },
                 {
                     "label": "Semana y día",
-                    "text": "Tarjetas de lista por día. En vista día, pase páginas con anterior\/siguiente si hay más de 50 elementos."
+                    "text": "Tarjetas de lista por día. En vista día, pase páginas con anterior/siguiente si hay más de 50 elementos."
                 },
                 {
                     "label": "Briefing",
@@ -308,7 +308,7 @@
                 },
                 {
                     "label": "Invitado",
-                    "text": "Un invitado reserva por QR, tiene 30 minutos de retención y confirma por correo. Cambiar o cancelar vía el enlace del correo o de nuevo por QR (nombre\/correo en cookie)."
+                    "text": "Un invitado reserva por QR, tiene 30 minutos de retención y confirma por correo. Cambiar o cancelar vía el enlace del correo o de nuevo por QR (nombre/correo en cookie)."
                 },
                 {
                     "label": "Administración",
@@ -348,7 +348,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "El QR Clock Point es el QR imprimible con el que los trabajadores inician sesión (nombre + icono) y fichan la entrada o la salida. Gestione e imprímalo en <strong>Time → Clock Points<\/strong>."
+                    "text": "El QR Clock Point es el QR imprimible con el que los trabajadores inician sesión (nombre + icono) y fichan la entrada o la salida. Gestione e imprímalo en <strong>Time → Clock Points</strong>."
                 },
                 {
                     "label": "Trabajadores",
@@ -356,7 +356,7 @@
                 },
                 {
                     "label": "Trabajadores externos",
-                    "text": "Al añadir o editar, marque <strong>Trabajador externo<\/strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Electricidad García). En la lista se reconocen por la insignia <strong>Ext<\/strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
+                    "text": "Al añadir o editar, marque <strong>Trabajador externo</strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Electricidad García). En la lista se reconocen por la insignia <strong>Ext</strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
                 },
                 {
                     "label": "Orden",
@@ -397,7 +397,7 @@
             "actions": [
                 {
                     "label": "Resumen de configuración",
-                    "text": "En la parte superior hay un resumen plegable del estado de configuración de su entorno. Despliéguelo para ver el indicador de completitud, ocho recuentos (ubicaciones, unidades, equipos y trabajadores inactivos; categorías con o sin GPS; documentos activos e inactivos) y las acciones principales con un enlace directo <strong>Corregir<\/strong>. Si el panel muestra una insignia, hay acciones pendientes. Mediante <strong>Abrir resumen completo<\/strong> accede a la página de configuración dedicada con todas las acciones y tarjetas de filtro por tipo."
+                    "text": "En la parte superior hay un resumen plegable del estado de configuración de su entorno. Despliéguelo para ver el indicador de completitud, ocho recuentos (ubicaciones, unidades, equipos y trabajadores inactivos; categorías con o sin GPS; documentos activos e inactivos) y las acciones principales con un enlace directo <strong>Corregir</strong>. Si el panel muestra una insignia, hay acciones pendientes. Mediante <strong>Abrir resumen completo</strong> accede a la página de configuración dedicada con todas las acciones y tarjetas de filtro por tipo."
                 },
                 {
                     "label": "Datos de la organización",
@@ -405,11 +405,11 @@
                 },
                 {
                     "label": "Logotipo de la organización",
-                    "text": "El administrador sube un logotipo de la organización (PNG\/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                    "text": "El administrador sube un logotipo de la organización (PNG/JPG, máx. 2 MB). Como empleado solo ve el logotipo actual como referencia. Aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
                 },
                 {
                     "label": "Fondo del portal",
-                    "text": "Imagen de fondo opcional para el portal de informes tras escanear un código QR (PNG\/JPG, máx. 4 MB). No es lo mismo que el fondo de la pegatina bajo Hojas de pegatinas QR."
+                    "text": "Imagen de fondo opcional para el portal de informes tras escanear un código QR (PNG/JPG, máx. 4 MB). No es lo mismo que el fondo de la pegatina bajo Hojas de pegatinas QR."
                 },
                 {
                     "label": "Estilo WinProx",
@@ -420,7 +420,7 @@
                     "text": "Active «Usar estilo personalizado del portal» para elegir colores de fondo y botones del portal de informes. La tarjeta de vista previa muestra cómo ven el portal los reportadores tras un escaneo. No afecta a la interfaz de administración."
                 },
                 {
-                    "label": "Hojas de pegatinas QR",
+                    "label": "Hoja de impresión QR",
                     "text": "Marca para pegatinas Avery 62×89-R impresas (9 etiquetas por hoja). Descargue la hoja de pegatinas por ubicación desde el paquete QR."
                 },
                 {
@@ -436,7 +436,7 @@
                 {
                     "label": "Fondo",
                     "nested": true,
-                    "text": "Elija una imagen personalizada (PNG\/JPG, máx. 4 MB); se guarda inmediatamente. Sin fondo personalizado, WinProx usa el diseño predeterminado de la pegatina. Use «Eliminar fondo personalizado» para volver a ese diseño."
+                    "text": "Elija una imagen personalizada (PNG/JPG, máx. 4 MB); se guarda inmediatamente. Sin fondo personalizado, WinProx usa el diseño predeterminado de la pegatina. Use «Eliminar fondo personalizado» para volver a ese diseño."
                 },
                 {
                     "label": "Vista previa",
@@ -474,7 +474,7 @@
                 },
                 {
                     "label": "¿Qué puede hacer la API?",
-                    "text": "Con un token válido, el software puede entre otras cosas leer incidencias y tareas, listar ubicaciones\/unidades\/equipos\/trabajadores, crear o aprobar incidencias, e iniciar o completar tareas. Para documentación técnica, consulte a su socio de TI o al soporte de WinProx."
+                    "text": "Con un token válido, el software puede entre otras cosas leer incidencias y tareas, listar ubicaciones/unidades/equipos/trabajadores, crear o aprobar incidencias, e iniciar o completar tareas. Para documentación técnica, consulte a su socio de TI o al soporte de WinProx."
                 },
                 {
                     "label": "Webhooks — ¿qué son?",
@@ -482,7 +482,7 @@
                 },
                 {
                     "label": "Añadir un endpoint de webhook",
-                    "text": "Introduzca una URL completa que comience por https:\/\/ (conexión segura). Marque los eventos que desea recibir. Opcionalmente añada una descripción (p. ej. «ERP producción»). Guarde — WinProx almacena la dirección y envía datos automáticamente para esos eventos."
+                    "text": "Introduzca una URL completa que comience por https:// (conexión segura). Marque los eventos que desea recibir. Opcionalmente añada una descripción (p. ej. «ERP producción»). Guarde — WinProx almacena la dirección y envía datos automáticamente para esos eventos."
                 },
                 {
                     "label": "Event: issue.created",
@@ -552,7 +552,7 @@
             "actions": [
                 {
                     "label": "Base de conocimiento",
-                    "text": "Respuestas a preguntas frecuentes sobre WinProx, QR, equipos, Time, ESG, aprobación\/difuminado del portal y ayuda de página (?)."
+                    "text": "Respuestas a preguntas frecuentes sobre WinProx, QR, equipos, Time, ESG, aprobación/difuminado del portal y ayuda de página (?)."
                 }
             ]
         },
@@ -583,7 +583,7 @@
             "actions": [
                 {
                     "label": "Bienvenida",
-                    "text": "Bienvenido al portal público de :tenant. Lea a continuación para más información. ¿Interesado en su propio portal empresarial? Haga clic en <a href=\"https:\/\/winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app<\/a>."
+                    "text": "Bienvenido al portal público de :tenant. Lea a continuación para más información. ¿Interesado en su propio portal empresarial? Haga clic en <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
                 },
                 {
                     "label": "Informar incidencia",
@@ -763,7 +763,7 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Solo cuando su organización tiene el <strong>módulo Time<\/strong>: fiche entrada, salida y registre pausas aquí. Sin el módulo Time, este portal sirve solo para iniciar sesión y ver el resumen de tareas."
+                    "text": "Solo cuando su organización tiene el <strong>módulo Time</strong>: fiche entrada, salida y registre pausas aquí. Sin el módulo Time, este portal sirve solo para iniciar sesión y ver el resumen de tareas."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -780,7 +780,7 @@
                 },
                 {
                     "label": "Local vía Ollama",
-                    "text": "Como superusuario en su portátil: ejecute <code>php artisan queue:work<\/code>, haga clic en « Iniciar traducciones ». Las incidencias, anuncios, unidades, tareas y documentos pendientes se exportan, traducen en local y se importan de nuevo en el servidor."
+                    "text": "Como superusuario en su portátil: ejecute <code>php artisan queue:work</code>, haga clic en « Iniciar traducciones ». Las incidencias, anuncios, unidades, tareas y documentos pendientes se exportan, traducen en local y se importan de nuevo en el servidor."
                 },
                 {
                     "label": "Estado del servidor",
@@ -805,7 +805,7 @@
                 },
                 {
                     "label": "Módulos",
-                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point<\/strong> en Equipos solo para iniciar sesión."
+                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
                 }
             ]
         },
@@ -827,23 +827,23 @@
             "actions": [
                 {
                     "label": "¿Para qué sirve esta pantalla?",
-                    "text": "Gestione las direcciones que ya no reciben <strong>correos de WinProx<\/strong> — marketing, contacto y correo del sistema. Solo los superusuarios ven esta página."
+                    "text": "Gestione las direcciones que ya no reciben <strong>correos de WinProx</strong> — marketing, contacto y correo del sistema. Solo los superusuarios ven esta página."
                 },
                 {
                     "label": "Bloquear una dirección",
-                    "text": "Añada manualmente una dirección de correo para bloquearla. Esa fila obtiene el origen <strong>Bloqueado manualmente<\/strong>."
+                    "text": "Añada manualmente una dirección de correo para bloquearla. Esa fila obtiene el origen <strong>Bloqueado manualmente</strong>."
                 },
                 {
                     "label": "Búsqueda y filtro",
-                    "text": "Busque por dirección de correo. Por defecto (casilla desmarcada) no se muestran las direcciones bounce. Active <strong>No entregable (bounce)<\/strong> para ver solo las bloqueadas automáticamente tras un correo promo fallido; el total va entre paréntesis."
+                    "text": "Busque por dirección de correo. Por defecto (casilla desmarcada) no se muestran las direcciones bounce. Active <strong>No entregable (bounce)</strong> para ver solo las bloqueadas automáticamente tras un correo promo fallido; el total va entre paréntesis."
                 },
                 {
                     "label": "Origen de la baja",
-                    "text": "<strong>Baja voluntaria<\/strong> = mediante el enlace de baja en un correo. <strong>No entregable (bounce)<\/strong> = automático tras un correo promo no entregable. <strong>Bloqueado manualmente<\/strong> = desde esta pantalla."
+                    "text": "<strong>Baja voluntaria</strong> = mediante el enlace de baja en un correo. <strong>No entregable (bounce)</strong> = automático tras un correo promo no entregable. <strong>Bloqueado manualmente</strong> = desde esta pantalla."
                 },
                 {
                     "label": "Restablecer",
-                    "text": "<strong>Restablecer<\/strong> quita la dirección de la lista; volverá a recibir correos."
+                    "text": "<strong>Restablecer</strong> quita la dirección de la lista; volverá a recibir correos."
                 }
             ]
         },
@@ -852,47 +852,47 @@
             "actions": [
                 {
                     "label": "¿Qué es esta pantalla?",
-                    "text": "El panel ESG ofrece una visión operativa de su programa de medición: últimos valores, alarmas de umbral, tendencias y acciones de seguimiento abiertas. Es su punto de partida para la gestión ESG diaria — el detalle y el historial están en <strong>Mediciones<\/strong>."
+                    "text": "El panel ESG ofrece una visión operativa de su programa de medición: últimos valores, alarmas de umbral, tendencias y acciones de seguimiento abiertas. Es su punto de partida para la gestión ESG diaria — el detalle y el historial están en <strong>Mediciones</strong>."
                 },
                 {
                     "label": "Tarjetas KPI arriba",
-                    "text": "La primera tarjeta muestra el número de <strong>alarmas de umbral<\/strong> en la muestra reciente. También ve la <strong>última lectura<\/strong> por indicador numérico activo y cuándo se registró. En rojo = fuera del mínimo o máximo. Haga clic en una tarjeta para abrir el listado filtrado de mediciones."
+                    "text": "La primera tarjeta muestra el número de <strong>alarmas de umbral</strong> en la muestra reciente. También ve la <strong>última lectura</strong> por indicador numérico activo y cuándo se registró. En rojo = fuera del mínimo o máximo. Haga clic en una tarjeta para abrir el listado filtrado de mediciones."
                 },
                 {
                     "label": "Tendencia de consumo",
-                    "text": "Gráfico de líneas del indicador seleccionado en los últimos 30 días. Las lecturas por día se <strong>suman<\/strong> (útil para consumo, p. ej. kWh). Elija otro indicador arriba a la derecha para comparar tendencias."
+                    "text": "Gráfico de líneas del indicador seleccionado en los últimos 30 días. Las lecturas por día se <strong>suman</strong> (útil para consumo, p. ej. kWh). Elija otro indicador arriba a la derecha para comparar tendencias."
                 },
                 {
                     "label": "Mediciones dentro de límites",
-                    "text": "El donut muestra el porcentaje de mediciones recientes (muestra) que están <strong>dentro de los umbrales configurados<\/strong>. El texto inferior indica cuántas alarmas hay en esa muestra. Haga clic para abrir el listado de mediciones."
+                    "text": "El donut muestra el porcentaje de mediciones recientes (muestra) que están <strong>dentro de los umbrales configurados</strong>. El texto inferior indica cuántas alarmas hay en esa muestra. Haga clic para abrir el listado de mediciones."
                 },
                 {
                     "label": "Mayor consumo por ubicación",
-                    "text": "Clasificación de ubicaciones por la <strong>suma total<\/strong> de lecturas del indicador seleccionado en los últimos 30 días. Útil para ver qué edificio o sitio contribuye más. Haga clic en una fila para mediciones en esa ubicación."
+                    "text": "Clasificación de ubicaciones por la <strong>suma total</strong> de lecturas del indicador seleccionado en los últimos 30 días. Útil para ver qué edificio o sitio contribuye más. Haga clic en una fila para mediciones en esa ubicación."
                 },
                 {
                     "label": "Puntuación ESG (cumplimiento)",
-                    "text": "Puntuación ponderada en 30 días: <strong>60 % cumplimiento de umbrales<\/strong> (mediciones con umbrales dentro de límites) + <strong>40 % cobertura de medición<\/strong> (indicadores numéricos activos con al menos una lectura). Debajo del donut ve los porcentajes individuales."
+                    "text": "Puntuación ponderada en 30 días: <strong>60 % cumplimiento de umbrales</strong> (mediciones con umbrales dentro de límites) + <strong>40 % cobertura de medición</strong> (indicadores numéricos activos con al menos una lectura). Debajo del donut ve los porcentajes individuales."
                 },
                 {
                     "label": "Distribución por categoría",
-                    "text": "Donut del número de mediciones por categoría de indicador (p. ej. energía, residuos, seguridad) en los últimos 30 días. Configure categorías al crear o editar un indicador en <strong>Indicadores<\/strong>."
+                    "text": "Donut del número de mediciones por categoría de indicador (p. ej. energía, residuos, seguridad) en los últimos 30 días. Configure categorías al crear o editar un indicador en <strong>Indicadores</strong>."
                 },
                 {
                     "label": "Tareas ESG abiertas",
-                    "text": "Tareas vinculadas a un indicador ESG aún no completadas — tanto mediciones periódicas como acciones de seguimiento automáticas. La insignia <strong>Alarma auto<\/strong> marca tareas que WinProx creó tras un incumplimiento de umbral."
+                    "text": "Tareas vinculadas a un indicador ESG aún no completadas — tanto mediciones periódicas como acciones de seguimiento automáticas. La insignia <strong>Alarma auto</strong> marca tareas que WinProx creó tras un incumplimiento de umbral."
                 },
                 {
                     "label": "Alarma auto y tarea de seguimiento",
-                    "text": "Cuando una lectura queda fuera del mínimo o máximo configurado, WinProx puede crear automáticamente una <strong>tarea de seguimiento prioridad 2<\/strong> (como máximo una tarea abierta por indicador y unidad). El botón <strong>Tarea de seguimiento<\/strong> en lecturas recientes y alarmas lleva directamente a esa tarea. El equipo asignado sigue al de la tarea de medición original."
+                    "text": "Cuando una lectura queda fuera del mínimo o máximo configurado, WinProx puede crear automáticamente una <strong>tarea de seguimiento prioridad 2</strong> (como máximo una tarea abierta por indicador y unidad). El botón <strong>Tarea de seguimiento</strong> en lecturas recientes y alarmas lleva directamente a esa tarea. El equipo asignado sigue al de la tarea de medición original."
                 },
                 {
                     "label": "Mediciones recientes y alarmas de umbral",
-                    "text": "Dos listas abajo: todas las lecturas recientes y, por separado, las que tienen alarma de umbral. Los valores fuera de límites llevan la etiqueta <strong>Fuera de umbrales<\/strong>. Con <strong>Tarea<\/strong> abre la tarea de medición del portal QR."
+                    "text": "Dos listas abajo: todas las lecturas recientes y, por separado, las que tienen alarma de umbral. Los valores fuera de límites llevan la etiqueta <strong>Fuera de umbrales</strong>. Con <strong>Tarea</strong> abre la tarea de medición del portal QR."
                 },
                 {
                     "label": "Panel vacío",
-                    "text": "¿Aún no hay indicadores o mediciones? WinProx muestra los pasos de inicio: módulo activo, crear indicador, vincular a una incidencia recurrente. La ayuda detallada sobre indicadores está en la pestaña <strong>Indicadores<\/strong>."
+                    "text": "¿Aún no hay indicadores o mediciones? WinProx muestra los pasos de inicio: módulo activo, crear indicador, vincular a una incidencia recurrente. La ayuda detallada sobre indicadores está en la pestaña <strong>Indicadores</strong>."
                 }
             ]
         },
@@ -909,7 +909,7 @@
                 },
                 {
                     "label": "Paso 1 — Crear un indicador",
-                    "text": "Un indicador describe <strong>qué<\/strong> quiere medir: un contador eléctrico, un control de extintor o una inspección periódica. Déle un nombre claro y, para números, una unidad (p. ej. kWh, m³) que se muestre correctamente al introducir el valor."
+                    "text": "Un indicador describe <strong>qué</strong> quiere medir: un contador eléctrico, un control de extintor o una inspección periódica. Déle un nombre claro y, para números, una unidad (p. ej. kWh, m³) que se muestre correctamente al introducir el valor."
                 },
                 {
                     "label": "Número",
@@ -917,7 +917,7 @@
                     "text": "Para lecturas de contador o recuentos (p. ej. electricidad en kWh, agua en m³, kilometraje). Puede establecer un mínimo y un máximo para detectar entradas poco realistas (p. ej. una lectura negativa)."
                 },
                 {
-                    "label": "Sí\/No",
+                    "label": "Sí/No",
                     "nested": true,
                     "text": "Para controles rápidos (p. ej. «¿Está libre la salida de emergencia?», «¿Está revisado el extintor?»)."
                 },
@@ -938,11 +938,11 @@
                 },
                 {
                     "label": "Paso 2 — Vincular a una incidencia recurrente",
-                    "text": "Al crear una <strong>incidencia recurrente<\/strong> en una unidad, puede vincular un indicador ESG. A partir de entonces, cada ciclo pide automáticamente la lectura correspondiente — por ejemplo la lectura mensual del contador de esa unidad."
+                    "text": "Al crear una <strong>incidencia recurrente</strong> en una unidad, puede vincular un indicador ESG. A partir de entonces, cada ciclo pide automáticamente la lectura correspondiente — por ejemplo la lectura mensual del contador de esa unidad."
                 },
                 {
                     "label": "Paso 3 — Las mediciones se guardan",
-                    "text": "Cada vez que un trabajador completa la tarea, el valor introducido se guarda con la fecha y la unidad. Así construye gradualmente un historial por punto de medición, útil para informes (p. ej. consumo energético por edificio a lo largo del tiempo).<br><br>Una vez registrada, una medición no puede modificarse — esto garantiza datos fiables y auditables. El resumen está en la pestaña <strong>Mediciones<\/strong>."
+                    "text": "Cada vez que un trabajador completa la tarea, el valor introducido se guarda con la fecha y la unidad. Así construye gradualmente un historial por punto de medición, útil para informes (p. ej. consumo energético por edificio a lo largo del tiempo).<br><br>Una vez registrada, una medición no puede modificarse — esto garantiza datos fiables y auditables. El resumen está en la pestaña <strong>Mediciones</strong>."
                 },
                 {
                     "label": "Desactivar indicador",
@@ -959,7 +959,7 @@
                 },
                 {
                     "label": "Medición y seguimiento",
-                    "text": "Bajo cada medición en la línea de tiempo ve los pasos vinculados: la <strong>medición<\/strong> (valor), opcionalmente una <strong>alarma de umbral<\/strong>, la <strong>tarea de medición<\/strong> con la que se introdujo el valor, y una <strong>tarea de seguimiento<\/strong> si el valor estaba fuera de límites. Use <strong>Abrir<\/strong> para ir al resumen de mediciones o a la tarea."
+                    "text": "Bajo cada medición en la línea de tiempo ve los pasos vinculados: la <strong>medición</strong> (valor), opcionalmente una <strong>alarma de umbral</strong>, la <strong>tarea de medición</strong> con la que se introdujo el valor, y una <strong>tarea de seguimiento</strong> si el valor estaba fuera de límites. Use <strong>Abrir</strong> para ir al resumen de mediciones o a la tarea."
                 },
                 {
                     "label": "Tendencia",
@@ -972,7 +972,7 @@
             "actions": [
                 {
                     "label": "¿Qué ve aquí?",
-                    "text": "Todas las lecturas que los trabajadores introdujeron al completar una tarea, con indicador, ubicación, unidad, fecha y quién tomó la lectura. Haga clic en <strong>Tarea<\/strong> para ver la ejecución subyacente."
+                    "text": "Todas las lecturas que los trabajadores introdujeron al completar una tarea, con indicador, ubicación, unidad, fecha y quién tomó la lectura. Haga clic en <strong>Tarea</strong> para ver la ejecución subyacente."
                 },
                 {
                     "label": "Filtros",
@@ -997,11 +997,11 @@
                 },
                 {
                     "label": "Panel",
-                    "text": "KPI en vivo arriba: fichados, activos, pausa, no fichados y atención. <strong>Atención<\/strong> abre la pantalla de alertas."
+                    "text": "KPI en vivo arriba: fichados, activos, pausa, no fichados y atención. <strong>Atención</strong> abre la pantalla de alertas."
                 },
                 {
                     "label": "Vista",
-                    "text": "Elija <strong>Equipos<\/strong>, <strong>Tarjetas<\/strong> o <strong>Ubicaciones<\/strong>. Expanda un equipo solo cuando necesite ver trabajadores."
+                    "text": "Elija <strong>Equipos</strong>, <strong>Tarjetas</strong> o <strong>Ubicaciones</strong>. Expanda un equipo solo cuando necesite ver trabajadores."
                 },
                 {
                     "label": "Filtros",
@@ -1013,7 +1013,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>\/time\/…<\/code>)."
+                    "text": "Los trabajadores fichan mediante la pegatina QR en un clock point (<code>/time/…</code>)."
                 }
             ]
         },
@@ -1026,11 +1026,11 @@
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre: <strong>Turno largo<\/strong> (&gt;10 h), <strong>Sin fichar salida<\/strong> (&gt;16 h) o <strong>Sin pausa<\/strong> (&gt;6 h)."
+                    "text": "Filtre: <strong>Turno largo</strong> (&gt;10 h), <strong>Sin fichar salida</strong> (&gt;16 h) o <strong>Sin pausa</strong> (&gt;6 h)."
                 },
                 {
                     "label": "Acción",
-                    "text": "Use <strong>Cerrar turno<\/strong> con motivo. La insignia en la navegación muestra el número de alertas."
+                    "text": "Use <strong>Cerrar turno</strong> con motivo. La insignia en la navegación muestra el número de alertas."
                 }
             ]
         },
@@ -1039,11 +1039,11 @@
             "actions": [
                 {
                     "label": "Módulo Time",
-                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point<\/strong> en Equipos solo para iniciar sesión."
+                    "text": "El registro de horas requiere el módulo Time. Sin módulo, use el botón <strong>QR Clock Point</strong> en Equipos solo para iniciar sesión."
                 },
                 {
                     "label": "Período y filtros",
-                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar<\/strong> para actualizar la lista."
+                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, trabajador o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
                 {
                     "label": "Exportar CSV",
@@ -1051,7 +1051,7 @@
                 },
                 {
                     "label": "Imprimir",
-                    "text": "Abra una hoja de horas imprimible con los mismos filtros. Use <strong>Imprimir<\/strong> del navegador para guardar o compartir un PDF."
+                    "text": "Abra una hoja de horas imprimible con los mismos filtros. Use <strong>Imprimir</strong> del navegador para guardar o compartir un PDF."
                 },
                 {
                     "label": "Corregir",
@@ -1063,7 +1063,7 @@
                 },
                 {
                     "label": "Estados",
-                    "text": "<strong>Abierto<\/strong> — aún fichado. <strong>Cerrado<\/strong> — salida normal. <strong>Cerrado (admin)<\/strong> — cerrado manualmente por el administrador. <strong>Cerrado (automático)<\/strong> — el sistema cierra un turno olvidado tras el umbral."
+                    "text": "<strong>Abierto</strong> — aún fichado. <strong>Cerrado</strong> — salida normal. <strong>Cerrado (admin)</strong> — cerrado manualmente por el administrador. <strong>Cerrado (automático)</strong> — el sistema cierra un turno olvidado tras el umbral."
                 },
                 {
                     "label": "Vincular tareas",
@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Sin módulo Time",
-                    "text": "Gestione el QR de inicio de sesión mediante el botón <strong>QR Clock Point<\/strong> en Usuarios → Equipos. Se crea automáticamente un clock point predeterminado si es necesario."
+                    "text": "Gestione el QR de inicio de sesión mediante el botón <strong>QR Clock Point</strong> en Usuarios → Equipos. Se crea automáticamente un clock point predeterminado si es necesario."
                 },
                 {
                     "label": "Imprimir QR",
@@ -1099,7 +1099,7 @@
                     "text": "Cuando alguien usa un QR caducado, se rechaza y se registra. Aparece una advertencia aquí si hubo intentos bloqueados en los últimos 7 días."
                 },
                 {
-                    "label": "Activo \/ inactivo",
+                    "label": "Activo / inactivo",
                     "text": "Desactive temporalmente un clock point (p. ej. por trabajos en el lugar). El portal indica entonces que el fichaje no está disponible."
                 }
             ]
@@ -1118,7 +1118,7 @@
             "actions": [
                 {
                     "label": "¿Para qué sirve esta pantalla?",
-                    "text": "Es el <strong>registro de actividad<\/strong> de WinProx: quién hizo qué, cuándo y en qué organización. En lenguaje claro, sin códigos técnicos."
+                    "text": "Es el <strong>registro de actividad</strong> de WinProx: quién hizo qué, cuándo y en qué organización. En lenguaje claro, sin códigos técnicos."
                 },
                 {
                     "label": "Leer una fila",
@@ -1126,7 +1126,7 @@
                 },
                 {
                     "label": "Buscar",
-                    "text": "Busque con palabras simples (p. ej. <em>incidencia<\/em>, <em>promo<\/em>), nombre de organización o nombre\/correo del usuario."
+                    "text": "Busque con palabras simples (p. ej. <em>incidencia</em>, <em>promo</em>), nombre de organización o nombre/correo del usuario."
                 },
                 {
                     "label": "Por qué ayuda",
@@ -1139,35 +1139,35 @@
             "actions": [
                 {
                     "label": "¿Qué es esta pantalla?",
-                    "text": "Aquí gestiona <strong>pasarelas<\/strong>, <strong>sensores<\/strong>, <strong>reglas de alarma<\/strong> y consulta los <strong>eventos<\/strong> recientes. WinProx recibe datos de sensores; los sensores físicos y los protocolos permanecen en su pasarela \/ proveedor."
+                    "text": "Aquí gestiona <strong>pasarelas</strong>, <strong>sensores</strong>, <strong>reglas de alarma</strong> y consulta los <strong>eventos</strong> recientes. WinProx recibe datos de sensores; los sensores físicos y los protocolos permanecen en su pasarela / proveedor."
                 },
                 {
                     "label": "Facility vs Corporate",
-                    "text": "<strong>Facility:<\/strong> las alarmas se convierten en incidencias aprobadas con tareas. <strong>Corporate:<\/strong> lo mismo, más mediciones de sensores hacia ESG cuando el sensor tiene una unidad y un indicador ESG numérico."
+                    "text": "<strong>Facility:</strong> las alarmas se convierten en incidencias aprobadas con tareas. <strong>Corporate:</strong> lo mismo, más mediciones de sensores hacia ESG cuando el sensor tiene una unidad y un indicador ESG numérico."
                 },
                 {
                     "label": "Editar",
-                    "text": "Más adelante puede <strong>editar<\/strong> o <strong>desactivar<\/strong> pasarelas, sensores y reglas. En una pasarela también puede renovar el token (el anterior deja de funcionar). No hay borrado definitivo: los eventos se conservan."
+                    "text": "Más adelante puede <strong>editar</strong> o <strong>desactivar</strong> pasarelas, sensores y reglas. En una pasarela también puede renovar el token (el anterior deja de funcionar). No hay borrado definitivo: los eventos se conservan."
                 },
                 {
                     "label": "¿Qué es una pasarela?",
-                    "text": "Una <strong>pasarela<\/strong> (gateway) es el puente entre tus sensores y WinProx. Los sensores suelen hablar por LoRaWAN, Zigbee, Bluetooth o MQTT con una pasarela de tu proveedor. Esa pasarela traduce los datos y envía a WinProx solo los eventos relevantes (por HTTPS). WinProx no vende sensores ni pasarelas: aquí registras una pasarela lógica con un token para que WinProx sepa qué organización puede recibir los eventos."
+                    "text": "Una <strong>pasarela</strong> (gateway) es el puente entre tus sensores y WinProx. Los sensores suelen hablar por LoRaWAN, Zigbee, Bluetooth o MQTT con una pasarela de tu proveedor. Esa pasarela traduce los datos y envía a WinProx solo los eventos relevantes (por HTTPS). WinProx no vende sensores ni pasarelas: aquí registras una pasarela lógica con un token para que WinProx sepa qué organización puede recibir los eventos."
                 },
                 {
                     "label": "Crear una pasarela",
-                    "text": "Cree una pasarela y <strong>guarde el token de inmediato<\/strong> — solo se muestra una vez. Configúrelo en su pasarela IoT (cabecera <code>X-WinProx-Iot-Key<\/code> o Bearer)."
+                    "text": "Cree una pasarela y <strong>guarde el token de inmediato</strong> — solo se muestra una vez. Configúrelo en su pasarela IoT (cabecera <code>X-WinProx-Iot-Key</code> o Bearer)."
                 },
                 {
                     "label": "Sensores",
-                    "text": "Vincule un <strong>ID de sensor externo<\/strong> (como lo envía la pasarela) a un nombre, tipo y preferiblemente una unidad. Para mediciones ESG (Corporate), vincule también un indicador ESG numérico activo."
+                    "text": "Vincule un <strong>ID de sensor externo</strong> (como lo envía la pasarela) a un nombre, tipo y preferiblemente una unidad. Para mediciones ESG (Corporate), vincule también un indicador ESG numérico activo."
                 },
                 {
                     "label": "Reglas de alarma",
-                    "text": "Una regla decide cuándo un evento se convierte en incidencia: operador + umbral, texto de la incidencia, equipo y prioridad. Mientras exista una tarea abierta para la misma regla, las nuevas alarmas se <strong>deduplican<\/strong>."
+                    "text": "Una regla decide cuándo un evento se convierte en incidencia: operador + umbral, texto de la incidencia, equipo y prioridad. Mientras exista una tarea abierta para la misma regla, las nuevas alarmas se <strong>deduplican</strong>."
                 },
                 {
                     "label": "Enviar eventos",
-                    "text": "La pasarela envía a <code>POST \/api\/v1\/iot\/events<\/code> con <code>kind<\/code> <em>alarm<\/em> o <em>measurement<\/em>. Opcional: <code>idempotency_key<\/code> para evitar envíos duplicados. Consulte la documentación de la API (IoT Connect)."
+                    "text": "La pasarela envía a <code>POST /api/v1/iot/events</code> con <code>kind</code> <em>alarm</em> o <em>measurement</em>. Opcional: <code>idempotency_key</code> para evitar envíos duplicados. Consulte la documentación de la API (IoT Connect)."
                 }
             ]
         }

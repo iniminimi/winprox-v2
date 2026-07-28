@@ -39,8 +39,8 @@
         "theme_preview_issue_desc": "L'ascensore 3 non funziona"
     },
     "qr_stickers": {
-        "title": "Fogli adesivi QR",
-        "hint": "Branding per adesivi QR Avery 62×89-R stampati (download foglio su una sede).",
+        "title": "Foglio di stampa QR",
+        "hint": "Branding per adesivi Avery 62×89-R e fogli A6/A5/A4 (download per sede).",
         "avery_62x89_r": {
             "title": "Avery 62×89-R",
             "hint": "9 etichette per foglio (62 × 89 mm) — Avery L7108REV.",
@@ -67,6 +67,26 @@
             "preview_loading": "Aggiornamento anteprima…",
             "preview_unavailable": "Anteprima non disponibile (richiesto GD o Imagick).",
             "preview_portal_fallback": "Sede demo · Macchina 12"
+        },
+        "printable_page": {
+            "title": "Foglio A6 / A5 / A4",
+            "hint": "Uno sfondo per tutti i formati (1 QR per pagina).",
+            "section_preset": "Sfondo predefinito",
+            "section_background": "Sfondo personalizzato",
+            "preset_label": "Sfondo",
+            "preset_blue": "Blu",
+            "preset_green": "Verde",
+            "preset_multi": "Multicolore",
+            "preset_hint": "Vale per A6, A5 e A4. Un caricamento personalizzato sostituisce il preset.",
+            "background_hint": "Opzionale: sfondo personalizzato (PNG/JPG, max. 4 MB).",
+            "background_uploading": "Salvataggio sfondo…",
+            "background_remove": "Rimuovi sfondo personalizzato",
+            "background_remove_confirm": "Rimuovere lo sfondo personalizzato e tornare al preset scelto?",
+            "save_hint": "Salvi il preset. L’upload si applica appena sceglie un file.",
+            "preview_label": "Anteprima sfondo",
+            "preview_alt": "Anteprima dello sfondo del foglio QR",
+            "preview_loading": "Aggiornamento anteprima…",
+            "preview_unavailable": "Anteprima non disponibile."
         }
     },
     "notifications": {

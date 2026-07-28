@@ -39,8 +39,8 @@
         "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas"
     },
     "qr_stickers": {
-        "title": "Feuilles d’étiquettes QR",
-        "hint": "Image de marque pour les étiquettes QR Avery 62×89-R imprimées (téléchargement depuis une localisation).",
+        "title": "Feuille d’impression QR",
+        "hint": "Habillage pour les étiquettes Avery 62×89-R et les feuilles A6/A5/A4 (téléchargement par site).",
         "avery_62x89_r": {
             "title": "Avery 62×89-R",
             "hint": "9 étiquettes par feuille (62 × 89 mm) — Avery L7108REV.",
@@ -67,6 +67,26 @@
             "preview_loading": "Mise à jour de l’aperçu…",
             "preview_unavailable": "Aperçu indisponible (GD ou Imagick requis).",
             "preview_portal_fallback": "Localisation démo · Machine 12"
+        },
+        "printable_page": {
+            "title": "Feuille A6 / A5 / A4",
+            "hint": "Un fond pour tous les formats (1 QR par page).",
+            "section_preset": "Fond prédéfini",
+            "section_background": "Fond personnalisé",
+            "preset_label": "Fond",
+            "preset_blue": "Bleu",
+            "preset_green": "Vert",
+            "preset_multi": "Multicolore",
+            "preset_hint": "S’applique à A6, A5 et A4. Un téléversement remplace le préréglage.",
+            "background_hint": "Optionnel : fond personnalisé (PNG/JPG, max. 4 Mo).",
+            "background_uploading": "Enregistrement du fond…",
+            "background_remove": "Supprimer le fond personnalisé",
+            "background_remove_confirm": "Supprimer le fond personnalisé et revenir au préréglage choisi ?",
+            "save_hint": "Enregistrez le préréglage. L’upload s’applique dès le choix d’un fichier.",
+            "preview_label": "Aperçu du fond",
+            "preview_alt": "Aperçu du fond de feuille QR",
+            "preview_loading": "Mise à jour de l’aperçu…",
+            "preview_unavailable": "Aperçu indisponible."
         }
     },
     "notifications": {

@@ -39,8 +39,8 @@
         "theme_preview_issue_desc": "El ascensor 3 no funciona"
     },
     "qr_stickers": {
-        "title": "Hojas de pegatinas QR",
-        "hint": "Marca para pegatinas QR Avery 62×89-R impresas (descarga de hoja en una ubicación).",
+        "title": "Hoja de impresión QR",
+        "hint": "Marca para pegatinas Avery 62×89-R y hojas A6/A5/A4 (descarga por ubicación).",
         "avery_62x89_r": {
             "title": "Avery 62×89-R",
             "hint": "9 etiquetas por hoja (62 × 89 mm) — Avery L7108REV.",
@@ -67,6 +67,26 @@
             "preview_loading": "Actualizando vista previa…",
             "preview_unavailable": "Vista previa no disponible (se requiere GD o Imagick).",
             "preview_portal_fallback": "Ubicación demo · Máquina 12"
+        },
+        "printable_page": {
+            "title": "Hoja A6 / A5 / A4",
+            "hint": "Un fondo para todos los tamaños (1 QR por página).",
+            "section_preset": "Fondo predefinido",
+            "section_background": "Fondo propio",
+            "preset_label": "Fondo",
+            "preset_blue": "Azul",
+            "preset_green": "Verde",
+            "preset_multi": "Multicolor",
+            "preset_hint": "Aplica a A6, A5 y A4. Una subida propia sustituye el preajuste.",
+            "background_hint": "Opcional: fondo propio (PNG/JPG, máx. 4 MB).",
+            "background_uploading": "Guardando fondo…",
+            "background_remove": "Quitar fondo propio",
+            "background_remove_confirm": "¿Quitar el fondo propio y volver al preajuste elegido?",
+            "save_hint": "Guarde el preajuste. La subida se aplica al elegir un archivo.",
+            "preview_label": "Vista previa del fondo",
+            "preview_alt": "Vista previa del fondo de la hoja QR",
+            "preview_loading": "Actualizando vista previa…",
+            "preview_unavailable": "Vista previa no disponible."
         }
     },
     "notifications": {

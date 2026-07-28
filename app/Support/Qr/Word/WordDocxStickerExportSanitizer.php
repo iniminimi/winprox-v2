@@ -66,7 +66,8 @@ final class WordDocxStickerExportSanitizer
             QrStickerSheetTemplate::Avery62x89R => Avery62x89StickerTableLayout::patchDocument($documentXml),
             QrStickerSheetTemplate::A6Print,
             QrStickerSheetTemplate::A5Print,
-            QrStickerSheetTemplate::A4Print => $documentXml,
+            QrStickerSheetTemplate::A4Print,
+            QrStickerSheetTemplate::PrintablePage => $documentXml,
         };
 
         if ($zip->addFromString('word/document.xml', $documentXml) === false) {
