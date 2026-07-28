@@ -8,6 +8,8 @@ use App\Support\Translation\TranslationSyncCancelledException;
 
 class TranslateExportItemsAction
 {
+    private const SHORT_NAME_MAX = 255;
+
     public function __construct(private TranslationProviderInterface $translator) {}
 
     /**
@@ -42,11 +44,11 @@ class TranslateExportItemsAction
                     continue;
                 }
 
-                $translatedName = trim($this->translator->translate($sourceName, $locale));
+                $translatedName = $this->translateShortName($sourceName, $locale);
                 $row = [
                     'locale' => $locale,
                     'location_id' => $locationId,
-                    'name' => $translatedName !== '' ? $translatedName : $sourceName,
+                    'name' => $translatedName,
                 ];
 
                 $translated[] = $row;
@@ -66,11 +68,11 @@ class TranslateExportItemsAction
                     continue;
                 }
 
-                $translatedName = trim($this->translator->translate($sourceName, $locale));
+                $translatedName = $this->translateShortName($sourceName, $locale);
                 $row = [
                     'locale' => $locale,
                     'esg_indicator_id' => $esgIndicatorId,
-                    'name' => $translatedName !== '' ? $translatedName : $sourceName,
+                    'name' => $translatedName,
                 ];
 
                 $sourceOptions = $item['source_options'] ?? [];
@@ -100,11 +102,7 @@ class TranslateExportItemsAction
                     continue;
                 }
 
-                $translatedName = trim($this->translator->translate($sourceName, $locale));
-
-                if ($translatedName === '') {
-                    $translatedName = $sourceName;
-                }
+                $translatedName = $this->translateShortName($sourceName, $locale);
 
                 $translated[] = [
                     'category_id' => $categoryId,
@@ -127,11 +125,7 @@ class TranslateExportItemsAction
                     continue;
                 }
 
-                $translatedName = trim($this->translator->translate($sourceName, $locale));
-
-                if ($translatedName === '') {
-                    $translatedName = $sourceName;
-                }
+                $translatedName = $this->translateShortName($sourceName, $locale);
 
                 $translated[] = [
                     'internal_team_id' => $internalTeamId,
@@ -159,8 +153,7 @@ class TranslateExportItemsAction
                 $row = ['locale' => $locale, 'unit_id' => $unitId];
 
                 if ($sourceName !== '') {
-                    $translatedName = trim($this->translator->translate($sourceName, $locale));
-                    $row['name'] = $translatedName !== '' ? $translatedName : $sourceName;
+                    $row['name'] = $this->translateShortName($sourceName, $locale);
                 }
 
                 if ($sourceDescription !== '') {
@@ -270,5 +263,23 @@ class TranslateExportItemsAction
         }
 
         return $translated;
+    }
+
+    private function translateShortName(string $sourceName, string $locale): string
+    {
+        $translatedName = trim($this->translator->translate($sourceName, $locale));
+
+        if ($translatedName === '') {
+            $translatedName = $sourceName;
+        }
+
+        $translatedName = preg_replace('/\s+/u', ' ', $translatedName) ?? $translatedName;
+        $translatedName = trim($translatedName);
+
+        if (mb_strlen($translatedName) > self::SHORT_NAME_MAX) {
+            $translatedName = rtrim(mb_substr($translatedName, 0, self::SHORT_NAME_MAX));
+        }
+
+        return $translatedName;
     }
 }

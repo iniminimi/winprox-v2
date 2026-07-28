@@ -100,6 +100,28 @@ it('vertaalt locatie export-items via de provider', function () {
     ]);
 });
 
+it('kapt te lange korte naam-vertalingen af voor locatie-sync', function () {
+    app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
+    {
+        public function translate(string $text, string $targetLanguage): string
+        {
+            return "  {$targetLanguage}  ".str_repeat('x', 400);
+        }
+    });
+
+    $items = app(TranslateExportItemsAction::class)->handle([
+        [
+            'location_id' => 4,
+            'locale' => 'en',
+            'source_name' => 'Hoofddepot',
+        ],
+    ]);
+
+    expect($items)->toHaveCount(1)
+        ->and($items[0]['name'])->toHaveLength(255)
+        ->and($items[0]['name'])->not->toContain('  ');
+});
+
 it('vertaalt categorie export-items via de provider', function () {
     $items = app(TranslateExportItemsAction::class)->handle([
         [
@@ -172,6 +194,34 @@ it('doorloopt de vertaal-sync pipeline met remote fake', function () {
     $status = app(TranslationSyncStatusStore::class)->read();
     expect($status['phase'] ?? null)->toBe(TranslationSyncPhase::Completed->value)
         ->and($status['imported'] ?? null)->toBe(2);
+});
+
+it('doorloopt de vertaal-sync pipeline met te lange locatienaam van provider', function () {
+    $fake = new FakeTranslationSyncRemoteClient;
+    $fake->exportItems = [
+        [
+            'location_id' => 5,
+            'locale' => 'en',
+            'source_name' => 'Hoofddepot',
+        ],
+    ];
+    app()->instance(TranslationSyncRemoteClient::class, $fake);
+    app()->instance(TranslationProviderInterface::class, new class implements TranslationProviderInterface
+    {
+        public function translate(string $text, string $targetLanguage): string
+        {
+            return 'Main depot '.str_repeat('x', 400);
+        }
+    });
+
+    $result = app(RunTranslationSyncPipelineAction::class)->handle(1);
+
+    expect($result)->toBe(['total' => 1, 'imported' => 1])
+        ->and($fake->uploadedImportPath)->not->toBeNull();
+
+    $payload = json_decode(file_get_contents($fake->uploadedImportPath), true, flags: JSON_THROW_ON_ERROR);
+
+    expect($payload['items'][0]['name'])->toHaveLength(255);
 });
 
 it('zet een vertaal-run in de wachtrij voor superuser', function () {
