@@ -218,6 +218,12 @@
         "allow_gps_location_hint": "Erlaubt, den GPS-Standort von Units in dieser Kategorie über das Portal zu übermitteln.",
         "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
         "teams_empty": "Keine Teams verfügbar.",
+        "translation_edit": {
+            "label": "Übersetzung",
+            "open": "Hier klicken zum Anpassen",
+            "name": "Übersetzter Kategoriename",
+            "save": "Übersetzung speichern"
+        },
         "errors": {
             "name_required": "Bitte einen Kategorienamen eingeben.",
             "duplicate_name": "Dieser Kategoriename existiert bereits.",
@@ -226,7 +232,8 @@
         "flash": {
             "created": "Kategorie erstellt.",
             "updated": "Kategorie aktualisiert.",
-            "deleted": "Kategorie gelöscht."
+            "deleted": "Kategorie gelöscht.",
+            "translation_saved": "Kategorie-Übersetzung gespeichert."
         },
         "is_reservable_hint": "Aktiviert Reservierungen für alle Units dieser Kategorie (Raum, Fahrzeug, …)."
     },

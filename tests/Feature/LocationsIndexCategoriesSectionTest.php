@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Locations\Index;
+use App\Models\CategoryTranslation;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
@@ -131,6 +132,34 @@ it('sluit de categorie-modal na annuleren tijdens bewerken', function () {
         ->call('cancelEditCategory')
         ->assertSet('showCategoriesModal', false)
         ->assertSet('editingCategoryId', null);
+});
+
+it('laat een admin een categorievertaling opslaan vanuit bewerken', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Voertuigen',
+        'original_language' => 'nl',
+    ]);
+    $category->teams()->sync([$team->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Index::class)
+        ->set('showCategoriesSection', true)
+        ->call('openEditCategory', $category->id)
+        ->set('categoryPreviewLocale', 'en')
+        ->set('categoryTranslationName', 'Vehicles')
+        ->call('saveCategoryTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = CategoryTranslation::query()
+        ->where('category_id', $category->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->name)->toBe('Vehicles');
 });
 
 it('laat een admin een categorie verwijderen vanuit de sectie', function () {

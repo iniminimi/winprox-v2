@@ -48,6 +48,15 @@
         "deactivate": "Deactivate",
         "activate": "Activate",
         "confirm_delete": "Delete this team?",
+        "translation_edit": {
+            "label": "Translation",
+            "open": "Click here to edit",
+            "name": "Translated team name",
+            "save": "Save translation"
+        },
+        "flash": {
+            "translation_saved": "Team translation saved."
+        },
         "modal": {
             "create_title": "Add team",
             "edit_title": "Edit team",

@@ -218,6 +218,12 @@
         "allow_gps_location_hint": "Sta toe dat de GPS-locatie van units in deze categorie via het portaal wordt doorgegeven.",
         "teams_subtitle": "Selecteer de teams die verantwoordelijk zijn voor deze categorie.",
         "teams_empty": "Geen teams beschikbaar.",
+        "translation_edit": {
+            "label": "Vertaling",
+            "open": "Klik hier om aan te passen",
+            "name": "Vertaalde categorienaam",
+            "save": "Vertaling opslaan"
+        },
         "errors": {
             "name_required": "Vul een categorienaam in.",
             "duplicate_name": "Deze categorienaam bestaat al.",
@@ -226,7 +232,8 @@
         "flash": {
             "created": "Categorie aangemaakt.",
             "updated": "Categorie bijgewerkt.",
-            "deleted": "Categorie verwijderd."
+            "deleted": "Categorie verwijderd.",
+            "translation_saved": "Categorievertaling opgeslagen."
         },
         "is_reservable_hint": "Schakel reserveringen in voor alle units in deze categorie (vergaderzaal, voertuig, …)."
     },

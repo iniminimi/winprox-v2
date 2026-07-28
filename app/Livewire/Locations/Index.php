@@ -3,6 +3,7 @@
 namespace App\Livewire\Locations;
 
 use App\Actions\Categories\SyncCategoryTeamsAction;
+use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
@@ -18,6 +19,7 @@ use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Support\Onboarding\TenantOnboardingState;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -66,6 +68,10 @@ class Index extends Component
 
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
+
+    public string $categoryPreviewLocale = '';
+
+    public string $categoryTranslationName = '';
 
     public function mount(): void
     {
@@ -212,8 +218,25 @@ class Index extends Component
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
         $this->categoryIsReservable = (bool) $category->is_reservable;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
+        $this->categoryPreviewLocale = $this->defaultTranslationLocaleForCategory($category);
+        $this->hydrateCategoryTranslationInput($category->fresh('translations'));
         $this->showCategoriesModal = true;
         $this->resetErrorBag();
+    }
+
+    public function updatedCategoryPreviewLocale(): void
+    {
+        if ($this->editingCategoryId === null) {
+            $this->categoryTranslationName = '';
+
+            return;
+        }
+
+        $category = Category::query()
+            ->with('translations')
+            ->find($this->editingCategoryId);
+
+        $this->hydrateCategoryTranslationInput($category);
     }
 
     public function cancelEditCategory(): void
@@ -270,6 +293,62 @@ class Index extends Component
         $this->closeCategoriesModal();
     }
 
+    public function saveCategoryTranslationOverride(ImportCategoryTranslationsAction $importCategoryTranslations): void
+    {
+        if ($this->editingCategoryId === null) {
+            return;
+        }
+
+        $category = Category::query()
+            ->with('translations')
+            ->findOrFail($this->editingCategoryId);
+
+        $this->authorize('update', $category);
+
+        $validated = $this->validate([
+            'categoryTranslationName' => ['required', 'string', 'max:255'],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->categoryPreviewLocale);
+        if ($locale === $category->normalizedOriginalLanguage()) {
+            $this->addError('categoryTranslationName', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) $validated['categoryTranslationName']);
+        if ($name === '') {
+            $this->addError('categoryTranslationName', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importCategoryTranslations->handle([
+                [
+                    'category_id' => $category->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                ],
+            ], (int) auth()->id());
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (! is_array($messages)) {
+                    continue;
+                }
+
+                foreach ($messages as $message) {
+                    $this->addError('categoryTranslationName', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->hydrateCategoryTranslationInput($category->fresh('translations'));
+        session()->flash('success', __('locations.categories.flash.translation_saved'));
+    }
+
     public function deleteCategory(int $categoryId, DeleteCategoryAction $deleteCategory): void
     {
         $category = Category::query()->findOrFail($categoryId);
@@ -284,6 +363,40 @@ class Index extends Component
         $this->categoryAllowGpsLocation = false;
         $this->categoryIsReservable = false;
         $this->selectedCategoryTeamIds = [];
+        $this->categoryPreviewLocale = '';
+        $this->categoryTranslationName = '';
+    }
+
+    private function hydrateCategoryTranslationInput(?Category $category): void
+    {
+        if ($category === null) {
+            $this->categoryTranslationName = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->categoryPreviewLocale);
+        if ($locale === $category->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForCategory($category);
+            $this->categoryPreviewLocale = $locale;
+        }
+
+        $translation = $category->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->categoryTranslationName = (string) ($translation?->name ?? '');
+    }
+
+    private function defaultTranslationLocaleForCategory(Category $category): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($category->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     public function render()
@@ -324,12 +437,27 @@ class Index extends Component
             ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
+        $categoryTranslationLocales = config('locales.labels', []);
+        if ($this->showCategoriesModal && $this->editingCategoryId !== null) {
+            $editingCategory = Category::query()->find($this->editingCategoryId);
+
+            if ($editingCategory !== null) {
+                $sourceLocale = $editingCategory->normalizedOriginalLanguage();
+                $categoryTranslationLocales = array_filter(
+                    $categoryTranslationLocales,
+                    fn (string $label, string $code): bool => $code !== $sourceLocale,
+                    ARRAY_FILTER_USE_BOTH,
+                );
+            }
+        }
+
         return view('livewire.locations.index', [
             'locations' => $locations,
             'hasAnyLocation' => $hasAnyLocation,
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
+            'categoryTranslationLocales' => $categoryTranslationLocales,
             'onboarding' => TenantOnboardingState::current(),
         ]);
     }

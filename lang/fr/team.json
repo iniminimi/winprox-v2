@@ -48,6 +48,15 @@
         "deactivate": "Désactiver",
         "activate": "Activer",
         "confirm_delete": "Supprimer cette équipe ?",
+        "translation_edit": {
+            "label": "Traduction",
+            "open": "Cliquez ici pour modifier",
+            "name": "Nom d'équipe traduit",
+            "save": "Enregistrer la traduction"
+        },
+        "flash": {
+            "translation_saved": "Traduction d'équipe enregistrée."
+        },
         "modal": {
             "create_title": "Ajouter une équipe",
             "edit_title": "Modifier l'équipe",

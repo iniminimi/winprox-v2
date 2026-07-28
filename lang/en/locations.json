@@ -218,6 +218,12 @@
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
         "teams_empty": "No teams available.",
+        "translation_edit": {
+            "label": "Translation",
+            "open": "Click here to edit",
+            "name": "Translated category name",
+            "save": "Save translation"
+        },
         "errors": {
             "name_required": "Enter a category name.",
             "duplicate_name": "This category name already exists.",
@@ -226,7 +232,8 @@
         "flash": {
             "created": "Category created.",
             "updated": "Category updated.",
-            "deleted": "Category deleted."
+            "deleted": "Category deleted.",
+            "translation_saved": "Category translation saved."
         },
         "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …)."
     },

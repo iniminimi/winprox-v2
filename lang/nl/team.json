@@ -48,6 +48,15 @@
         "deactivate": "Deactiveren",
         "activate": "Activeren",
         "confirm_delete": "Dit team verwijderen?",
+        "translation_edit": {
+            "label": "Vertaling",
+            "open": "Klik hier om aan te passen",
+            "name": "Vertaalde teamnaam",
+            "save": "Vertaling opslaan"
+        },
+        "flash": {
+            "translation_saved": "Teamvertaling opgeslagen."
+        },
         "modal": {
             "create_title": "Team toevoegen",
             "edit_title": "Team bewerken",

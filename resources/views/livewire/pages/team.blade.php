@@ -388,6 +388,60 @@
                     <input type="text" id="teamName" class="wp-input" wire:model="teamName">
                     @error('teamName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+
+                @if ($editingTeamId !== null)
+                    <div class="wp-field" x-data="{ open: false }">
+                        <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>
+
+                        <div class="wp-field-panel" :class="{ 'is-open': open }">
+                            <button
+                                type="button"
+                                class="wp-field-panel__trigger"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                            >
+                                <span>{{ __('team.teams.translation_edit.open') }}</span>
+                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                            </button>
+
+                            <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                                <div class="wp-cluster wp-issue-description-row">
+                                    <select
+                                        class="wp-select wp-select--compact"
+                                        wire:model.live="teamPreviewLocale"
+                                        aria-label="{{ __('issues.show.description_language') }}"
+                                    >
+                                        @foreach ($teamTranslationLocales as $code => $label)
+                                            <option value="{{ $code }}">{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('team.teams.translation_edit.name') }}</span>
+                                    <textarea class="wp-input" wire:model="teamTranslationName" rows="1"></textarea>
+                                    @error('teamTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                                </label>
+
+                                <div class="wp-row">
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="saveTeamTranslationOverride"
+                                        wire:loading.attr="disabled"
+                                        wire:target="saveTeamTranslationOverride"
+                                    >
+                                        <span wire:loading wire:target="saveTeamTranslationOverride" class="wp-mr-2">
+                                            <x-wp-spinner size="sm" />
+                                        </span>
+                                        <span>{{ __('team.teams.translation_edit.save') }}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="wp-field">
                     <label class="wp-label" for="teamSortOrder">{{ __('team.teams.modal.sort_order') }}</label>
                     <input type="number" id="teamSortOrder" class="wp-input" wire:model="teamSortOrder" min="0">

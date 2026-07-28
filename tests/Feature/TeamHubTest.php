@@ -4,6 +4,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Team;
 use App\Models\InternalTeam;
+use App\Models\InternalTeamTranslation;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
@@ -436,6 +437,32 @@ it('laat een medewerker teaminhoud bewerken maar niet aanmaken/deactiveren', fun
         ->assertForbidden();
 
     expect($team->fresh()->is_active)->toBeTrue();
+});
+
+it('laat een admin een teamvertaling opslaan vanuit bewerken', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Technische ploeg',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openEditTeam', $team->id)
+        ->set('teamPreviewLocale', 'en')
+        ->set('teamTranslationName', 'Technical team')
+        ->call('saveTeamTranslationOverride')
+        ->assertHasNoErrors();
+
+    $translation = InternalTeamTranslation::query()
+        ->where('internal_team_id', $team->id)
+        ->where('locale', 'en')
+        ->first();
+
+    expect($translation)->not->toBeNull()
+        ->and($translation?->name)->toBe('Technical team');
 });
 
 // --- Workers ---------------------------------------------------------------

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Workers\DeleteWorkerImportBatchAction;
 use App\Actions\Workers\ImportWorkersAction;
 use App\Data\Workers\DeleteWorkerImportBatchData;
@@ -32,9 +33,11 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use App\Support\Translation\LocaleSupport;
 use App\Support\Workers\WorkerImportBatchRegistry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -73,6 +76,8 @@ class Team extends Component
     public bool $teamIsActive = true;
     public string $teamSessionLifespanType = 'daily';
     public ?int $teamSessionLifespanCustomHours = null;
+    public string $teamPreviewLocale = '';
+    public string $teamTranslationName = '';
 
     /** @var list<int> */
     public array $selectedCategoryIds = [];
@@ -341,7 +346,7 @@ class Team extends Component
 
     public function openEditTeam(int $id): void
     {
-        $team = InternalTeam::findOrFail($id);
+        $team = InternalTeam::query()->with('translations')->findOrFail($id);
         Gate::authorize('update', $team);
 
         $this->editingTeamId = $team->id;
@@ -365,9 +370,26 @@ class Team extends Component
         }
 
         $this->selectedCategoryIds = $team->categories()->pluck('categories.id')->toArray();
+        $this->teamPreviewLocale = $this->defaultTranslationLocaleForTeam($team);
+        $this->hydrateTeamTranslationInput($team);
 
         $this->resetErrorBag();
         $this->showTeamModal = true;
+    }
+
+    public function updatedTeamPreviewLocale(): void
+    {
+        if ($this->editingTeamId === null) {
+            $this->teamTranslationName = '';
+
+            return;
+        }
+
+        $team = InternalTeam::query()
+            ->with('translations')
+            ->find($this->editingTeamId);
+
+        $this->hydrateTeamTranslationInput($team);
     }
 
     public function saveTeam(CreateTeamAction $createTeam, UpdateTeamAction $updateTeam, SyncTeamCategoriesAction $syncCategories): void
@@ -427,6 +449,68 @@ class Team extends Component
         $this->dispatch('saved');
     }
 
+    public function saveTeamTranslationOverride(ImportInternalTeamTranslationsAction $importTeamTranslations): void
+    {
+        if ($this->editingTeamId === null) {
+            return;
+        }
+
+        $team = InternalTeam::query()
+            ->with('translations')
+            ->findOrFail($this->editingTeamId);
+
+        Gate::authorize('update', $team);
+
+        if (! $team->is_active) {
+            $this->addError('teamTranslationName', __('team.errors.translation_requires_active'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'teamTranslationName' => ['required', 'string', 'max:255'],
+        ]);
+
+        $locale = LocaleSupport::normalize($this->teamPreviewLocale);
+        if ($locale === $team->normalizedOriginalLanguage()) {
+            $this->addError('teamTranslationName', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) $validated['teamTranslationName']);
+        if ($name === '') {
+            $this->addError('teamTranslationName', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importTeamTranslations->handle([
+                [
+                    'internal_team_id' => $team->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                if (! is_array($messages)) {
+                    continue;
+                }
+
+                foreach ($messages as $message) {
+                    $this->addError('teamTranslationName', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->hydrateTeamTranslationInput($team->fresh('translations'));
+        session()->flash('success', __('team.teams.flash.translation_saved'));
+    }
+
     public function setTeamActive(int $id, bool $active, SetTeamActiveAction $setActive): void
     {
         $team = InternalTeam::findOrFail($id);
@@ -473,12 +557,54 @@ class Team extends Component
 
     private function resetTeamForm(): void
     {
-        $this->reset(['teamName', 'teamSortOrder', 'teamIsActive', 'teamSessionLifespanType', 'teamSessionLifespanCustomHours', 'editingTeamId', 'selectedCategoryIds']);
+        $this->reset([
+            'teamName',
+            'teamSortOrder',
+            'teamIsActive',
+            'teamSessionLifespanType',
+            'teamSessionLifespanCustomHours',
+            'editingTeamId',
+            'selectedCategoryIds',
+            'teamPreviewLocale',
+            'teamTranslationName',
+        ]);
         $this->teamIsActive = true;
         $this->teamSessionLifespanType = 'daily';
         $this->teamSessionLifespanCustomHours = null;
         $this->selectedCategoryIds = [];
         $this->resetErrorBag();
+    }
+
+    private function hydrateTeamTranslationInput(?InternalTeam $team): void
+    {
+        if ($team === null) {
+            $this->teamTranslationName = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->teamPreviewLocale);
+        if ($locale === $team->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForTeam($team);
+            $this->teamPreviewLocale = $locale;
+        }
+
+        $translation = $team->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->teamTranslationName = (string) ($translation?->name ?? '');
+    }
+
+    private function defaultTranslationLocaleForTeam(InternalTeam $team): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($team->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     // --- Workers (admin of medewerker) ------------------------------------
@@ -858,6 +984,20 @@ class Team extends Component
             ->orderBy('name')
             ->get(['id', 'name', 'original_language']);
 
+        $teamTranslationLocales = config('locales.labels', []);
+        if ($this->showTeamModal && $this->editingTeamId !== null) {
+            $editingTeam = InternalTeam::query()->find($this->editingTeamId);
+
+            if ($editingTeam !== null) {
+                $sourceLocale = $editingTeam->normalizedOriginalLanguage();
+                $teamTranslationLocales = array_filter(
+                    $teamTranslationLocales,
+                    fn (string $label, string $code): bool => $code !== $sourceLocale,
+                    ARRAY_FILTER_USE_BOTH,
+                );
+            }
+        }
+
         $tenantId = Tenancy::id();
         $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;
         $workerImportBatches = WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
@@ -877,6 +1017,7 @@ class Team extends Component
             'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,
             'roles' => User::ROLES,
             'categories' => $categories,
+            'teamTranslationLocales' => $teamTranslationLocales,
         ]);
     }
 }
