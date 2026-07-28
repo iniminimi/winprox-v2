@@ -201,7 +201,15 @@
             "rotation_hint": "Na dit interval verschijnt een aanbeveling om de sticker te vernieuwen. 0 = uit (geen aanbevelingen).",
             "rotation_months": "Interval (maanden)",
             "rotation_saved": "QR-rotatie-instelling opgeslagen.",
-            "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen."
+            "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen.",
+            "pack": {
+                "unavailable": "QR-export is niet beschikbaar op deze server.",
+                "generating": "Afdrukblad wordt aangemaakt…",
+                "download_failed": "QR-afdrukblad kon niet worden aangemaakt.",
+                "a6_print": "Word A6",
+                "a5_print": "Word A5",
+                "a4_print": "Word A4"
+            }
         }
     },
     "duration": {

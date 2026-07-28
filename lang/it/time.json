@@ -201,7 +201,15 @@
             "rotation_hint": "Dopo questo intervallo compare una raccomandazione di rinnovo. 0 = disattivato (nessuna raccomandazione).",
             "rotation_months": "Intervallo (mesi)",
             "rotation_saved": "Impostazione rotazione QR salvata.",
-            "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni."
+            "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni.",
+            "pack": {
+                "unavailable": "L'export QR non è disponibile su questo server.",
+                "generating": "Creazione foglio di stampa…",
+                "download_failed": "Impossibile creare il foglio di stampa QR.",
+                "a6_print": "Word A6",
+                "a5_print": "Word A5",
+                "a4_print": "Word A4"
+            }
         }
     },
     "duration": {

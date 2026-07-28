@@ -201,7 +201,15 @@
             "rotation_hint": "After this interval a renewal recommendation appears. 0 = off (no recommendations).",
             "rotation_months": "Interval (months)",
             "rotation_saved": "QR rotation setting saved.",
-            "blocked_attempts": ":count blocked QR scan(s) in the last 7 days."
+            "blocked_attempts": ":count blocked QR scan(s) in the last 7 days.",
+            "pack": {
+                "unavailable": "QR export is not available on this server.",
+                "generating": "Creating print sheet…",
+                "download_failed": "Could not create the QR print sheet.",
+                "a6_print": "Word A6",
+                "a5_print": "Word A5",
+                "a4_print": "Word A4"
+            }
         }
     },
     "duration": {

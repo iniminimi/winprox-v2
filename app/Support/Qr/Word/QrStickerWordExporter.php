@@ -33,6 +33,15 @@ final class QrStickerWordExporter
         );
     }
 
+    public function downloadFilenameForClockPoint(QrStickerSheetTemplate $template): string
+    {
+        return sprintf(
+            'winprox-qr-clock-%s-%s.docx',
+            $template->fileSlug(),
+            Carbon::now()->timezone(config('app.timezone'))->format('Y-m-d-His'),
+        );
+    }
+
     public function buildDocxBinary(Location $location, QrStickerSheetTemplate $template): string
     {
         if (! QrCodePngWriter::canGenerate()) {
