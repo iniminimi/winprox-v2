@@ -34,8 +34,13 @@
 .wp-app {
     min-height: 100vh;
     min-height: 100dvh;
-    /* Beheer: thumbs ~50% van portaal-formaat (lightbox blijft aanklikbaar). */
-    --wp-photo-thumb-columns: 8;
+    /* Beheer: vaste thumb-maat (~50% van 80px); max 4 foto's, geen extra kolommen. */
+    --wp-photo-thumb-size: 2.5rem;
+}
+
+.wp-app .wp-photo-grid--gallery {
+    grid-template-columns: repeat(var(--wp-photo-thumb-columns), var(--wp-photo-thumb-size));
+    justify-content: start;
 }
 
 .wp-sidebar {

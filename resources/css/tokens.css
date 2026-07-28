@@ -28,7 +28,7 @@
     /* Transitie */
     --wp-transition: 0.15s ease;
 
-    /* Foto-thumbnails: portaal 4 kolommen; beheer (.wp-app) overschrijft naar 8 (~50%). */
+    /* Foto-thumbnails (QR-portaal: 4 naast elkaar op smal scherm; beheer zet --wp-photo-thumb-size). */
     --wp-photo-thumb-columns: 4;
     --wp-photo-thumb-gap: 0.375rem;
     --wp-photo-add-border-width: 4px;
