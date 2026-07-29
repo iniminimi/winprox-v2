@@ -13,7 +13,7 @@
             "type": "steps",
             "title": "Wie funktioniert WinProx?",
             "intro": "WinProx folgt einem Kernfluss: Meldung → Aufgaben → Abschluss. Time (Stempeln) gehört standardmäßig dazu; ESG (Messungen) ist optional.",
-            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Optional: Time und ESG.",
+            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time inklusive; ESG optional.",
             "steps": [
                 {
                     "title": "Standorte und Units",
@@ -49,7 +49,7 @@
             "type": "pricing",
             "title": "Was kostet WinProx?",
             "intro": "Sie starten mit einem kostenlosen Probemonat (Facility- und Time-Funktionen). Danach wählen Sie Time, Facility oder Corporate unter Abonnement. Limits gelten für Ihre gesamte Organisation (Units, Standorte, Dokumente, Fotos, Benutzer).",
-            "summary": "Testphase, dann WinProx Time, Facility oder Corporate. Time und Facility ohne API; Corporate mit ESG, API und Webhooks.",
+            "summary": "Testphase, dann WinProx Time, Facility oder Corporate. Time in allen Formeln; IoT Connect bei Facility und Corporate; ESG, API und Webhooks bei Corporate.",
             "content_note": "Dokumente und Fotos zählen für die gesamte Organisation. Während der Testphase gelten niedrigere Limits (u.a. max. 10 Dokumente/Fotos). Genaue Limits und Preise stehen unter Abonnement.",
             "plans": {
                 "time": {
@@ -62,16 +62,16 @@
                 "facility": {
                     "units": "Bis zu 100 Units / Standorte / Dokumente / Fotos",
                     "users": "1 Administrator + bis zu 4 Mitarbeiter · unbegrenzt Ausführende (CSV/Excel)",
-                    "announcements": "399 € / Monat · Time inklusive",
+                    "announcements": "€399 / Monat · Time und IoT Connect inklusive",
                     "documents": "CSV/Excel-Import für Units und Ausführende · keine API",
-                    "description": "Vollständige Facility-Workflows in größerem Maßstab, inklusive WinProx Time."
+                    "description": "Vollständige Facility-Workflows in größerem Maßstab, inklusive WinProx Time und IoT Connect."
                 },
                 "corporate": {
                     "units": "Unbegrenzte Daten",
                     "users": "Skalierbar für große Portfolios",
-                    "announcements": "999 € / Monat · ESG, API und Webhooks",
+                    "announcements": "€999 / Monat · ESG, IoT, API und Webhooks",
                     "documents": "Prioritäts-Support",
-                    "description": "Für Enterprise-Portfolios und Integrationen."
+                    "description": "Für Enterprise-Portfolios und Integrationen, inklusive ESG und IoT Connect."
                 }
             }
         },
@@ -194,6 +194,13 @@
             "body": "Aufgaben erscheinen in Aufgaben, im Kalender, im Briefing und am Team-/Unit-QR. Ausführende starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplanten Fälligkeitsdaten.",
             "summary": "Nachverfolgung über Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen inklusive."
         },
+        "reservations": {
+            "slug": "reservations",
+            "type": "text",
+            "title": "Wie funktionieren Reservierungen?",
+            "body": "Reservierungen gelten für gemeinsam genutzte Ressourcen mit Zeitslot (Besprechungsräume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie; optional pro Unit deaktivieren. Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung erstellt, ändert und storniert Buchungen; überlappende Slots werden blockiert.",
+            "summary": "Reservierbare Units über Kategorie; Gast bucht per QR mit E-Mail-Bestätigung; Verwaltung über Reservierungen und Kalender."
+        },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
@@ -247,15 +254,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API und Webhooks?",
-            "body": "Bei Corporate (oder wenn API freigegeben ist) verwalten Sie unter Einstellungen API-Tokens und ausgehende Webhooks (HMAC-signiert). So verbinden Sie WinProx mit anderen Systemen für Meldungen, Aufgaben und ESG-Messungen.",
-            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); HMAC-signierte Zustellungen."
+            "body": "Bei Corporate (oder wenn die API freigeschaltet ist) verwalten Sie unter Einstellungen API-Tokens und ausgehende Webhooks (HMAC-signiert). So koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben und ESG-Messungen. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (auch bei Facility).",
+            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); HMAC-signierte Zustellungen. IoT-Ingest per Gateway-Token auch bei Facility."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Was ist IoT Connect?",
             "body": "IoT Connect verbindet Sensor-Gateways mit WinProx, ohne dass WinProx Hardware verkauft. Alarme (z. B. Wasserleck, Tür zu lange offen) erzeugen automatisch eine freigegebene Meldung und Aufgabe. Auf Corporate können Sensorwerte auch als ESG-Messungen gespeichert werden. Verwalten Sie Gateways, Sensoren und Regeln unter IoT Connect; das Gateway sendet an POST /api/v1/iot/events mit Gateway-Token (auch auf Facility, ohne vollständige REST-API).",
-            "summary": "IoT Connect: Sensoralarme → Meldungen (Facility+); Messungen → ESG (Corporate). Gateway-Token-Ingest."
+            "summary": "IoT Connect: Sensoralarme → Meldungen (Facility und Corporate); Messungen → ESG (Corporate). Gateway-Token-Ingest."
         }
     }
 }

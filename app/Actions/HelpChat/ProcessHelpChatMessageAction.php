@@ -78,7 +78,25 @@ class ProcessHelpChatMessageAction
 
     protected function isInsightRequest(string $message): bool
     {
-        $needles = ['status', 'overzicht', 'overview', 'statistiek', 'statistics', 'zahlen', 'aperçu'];
+        // Avoid bare "status" — that is page-help / issue status language, not tenant counts.
+        $needles = [
+            'mijn overzicht',
+            'tenant overzicht',
+            'organisatie overzicht',
+            'overzicht organisatie',
+            'overzicht',
+            'mijn status',
+            'tenant status',
+            'organisatie status',
+            'overview',
+            'statistiek',
+            'statistics',
+            'zahlen',
+            'aperçu',
+            'apercu',
+            'cómo va',
+            'come va',
+        ];
 
         $normalized = mb_strtolower($message);
 

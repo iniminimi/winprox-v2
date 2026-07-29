@@ -1,17 +1,29 @@
 <?php
 
 return [
+    /*
+    | FAQ substring matcher for the in-app assistant (not an LLM).
+    | Order matters: first matching pattern wins. Prefer specific phrases over
+    | single ambiguous words (e.g. avoid bare "status", "?", "app", "klok").
+    */
     'entries' => [
         [
-            'patterns' => ['qr', 'scan', 'melden', 'melder', 'code qr', 'clock point', 'klok'],
+            'patterns' => ['qr', 'scan', 'melden', 'melder', 'code qr', 'clock point'],
             'body_key' => 'faq.items.qr_code.summary',
         ],
         [
-            'patterns' => ['melding', 'issue', 'report', 'signalement'],
+            'patterns' => [
+                'reservatie', 'reservering', 'reservation', 'reservierung', 'réservation',
+                'reserva', 'prenotazione', 'boeking', 'booking', 'vergaderruimte', 'meeting room',
+            ],
+            'body_key' => 'faq.items.reservations.summary',
+        ],
+        [
+            'patterns' => ['melding', 'issue', 'report', 'signalement', 'inciden'],
             'body_key' => 'faq.items.how_it_works.summary',
         ],
         [
-            'patterns' => ['blur', 'goedkeur', 'moderatie', 'wacht op controle', 'approve'],
+            'patterns' => ['blur', 'goedkeur', 'moderatie', 'wacht op controle', 'approve', 'freigabe'],
             'body_key' => 'faq.items.moderation.summary',
         ],
         [
@@ -19,11 +31,11 @@ return [
             'body_key' => 'faq.items.photos.summary',
         ],
         [
-            'patterns' => ['time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift'],
+            'patterns' => ['time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage'],
             'body_key' => 'faq.items.time_clock.summary',
         ],
         [
-            'patterns' => ['esg', 'compliance', 'meting', 'indicator', 'duurzaam'],
+            'patterns' => ['esg', 'compliance', 'meting', 'indicator', 'duurzaam', 'nachhalt'],
             'body_key' => 'faq.items.esg.summary',
         ],
         [
@@ -51,8 +63,18 @@ return [
             'body_key' => 'faq.items.reporter_portal.summary',
         ],
         [
-            'patterns' => ['status', 'hulp', 'help', 'pagina-hulp', 'page help', '?'],
+            'patterns' => [
+                'pagina-hulp', 'page help', 'page-help', 'hulpknop', 'help button',
+                'hilfe-button', 'bouton aide', 'seitenhilfe', 'pagina hulp',
+            ],
             'body_key' => 'faq.items.page_help.summary',
+        ],
+        [
+            'patterns' => [
+                'voor wie', 'for who', 'for whom', 'doelgroep', 'hospitality', 'aannemer',
+                'contractor', 'pour qui', 'für wen', 'para quién', 'para quien', 'per chi',
+            ],
+            'body_key' => 'faq.items.for_who.summary',
         ],
         [
             'patterns' => ['abonnement', 'subscription', 'trial', 'proef', 'prijs', 'kost', 'plan', 'formule', 'corporate', 'facility'],
@@ -81,7 +103,7 @@ return [
             'body_key' => 'faq.items.mobile.summary',
         ],
         [
-            'patterns' => ['install', 'app', 'software'],
+            'patterns' => ['install', 'installeren', 'app store', 'software', 'applicatie'],
             'body_key' => 'faq.items.install.summary',
         ],
         [

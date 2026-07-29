@@ -13,7 +13,7 @@
             "type": "steps",
             "title": "Comment fonctionne WinProx ?",
             "intro": "WinProx suit un flux central : signalement → tâches → clôture. Time (pointage) est inclus par défaut ; ESG (mesures) est optionnel.",
-            "summary": "Sites et units, signalement via QR ou gestion, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. En option : Time et ESG.",
+            "summary": "Sites et units, signalement via QR ou gestion, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. Time inclus ; ESG en option.",
             "steps": [
                 {
                     "title": "Sites et units",
@@ -49,7 +49,7 @@
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
             "intro": "Vous commencez avec un mois d'essai gratuit (fonctions facility et time). Ensuite, choisissez Time, Facility ou Corporate sous Abonnement. Les limites s'appliquent à toute votre organisation (units, sites, documents, photos, utilisateurs).",
-            "summary": "Période d'essai, puis WinProx Time, Facility ou Corporate. Time et Facility sans API ; Corporate avec ESG, API et webhooks.",
+            "summary": "Période d'essai, puis WinProx Time, Facility ou Corporate. Time sur toutes les formules ; IoT Connect sur Facility et Corporate ; ESG, API et webhooks sur Corporate.",
             "content_note": "Documents et photos comptent pour toute l'organisation. Pendant l'essai, des limites plus basses s'appliquent (p.ex. max. 10 documents/photos). Les limites et prix exacts figurent sous Abonnement.",
             "plans": {
                 "time": {
@@ -62,16 +62,16 @@
                 "facility": {
                     "units": "Jusqu'à 100 units / sites / documents / photos",
                     "users": "1 administrateur + jusqu'à 4 collaborateurs · exécutants illimités (CSV/Excel)",
-                    "announcements": "399 € / mois · Time inclus",
+                    "announcements": "€399 / mois · Time et IoT Connect inclus",
                     "documents": "Import CSV/Excel pour unités et exécutants · pas d'API",
-                    "description": "Workflows facility complets à grande échelle, y compris WinProx Time."
+                    "description": "Workflows facility complets à plus grande échelle, y compris WinProx Time et IoT Connect."
                 },
                 "corporate": {
                     "units": "Données illimitées",
                     "users": "Évolutif pour grands portefeuilles",
-                    "announcements": "999 € / mois · ESG, API et webhooks",
+                    "announcements": "€999 / mois · ESG, IoT, API et webhooks",
                     "documents": "Support prioritaire",
-                    "description": "Pour portefeuilles enterprise et intégrations."
+                    "description": "Pour portefeuilles enterprise et intégrations, y compris ESG et IoT Connect."
                 }
             }
         },
@@ -194,6 +194,13 @@
             "body": "Les tâches apparaissent dans Tâches, au calendrier, au briefing et sur le QR équipe/unit. Les exécutants démarrent et clôturent sur site. Les coordinateurs suivent le statut en gestion. Les signalements récurrents génèrent des cycles avec dates d'échéance planifiées.",
             "summary": "Suivi via Tâches, calendrier, briefing et QR ; cycles récurrents inclus."
         },
+        "reservations": {
+            "slug": "reservations",
+            "type": "text",
+            "title": "Comment fonctionnent les réservations ?",
+            "body": "Les réservations concernent des ressources partageables avec créneau (salles de réunion, véhicules, clés) — pas les signalements de défaut. Activez Réservable sur la catégorie ; désactivez éventuellement par unit. Les invités réservent via le QR unit (retenue 30 min + confirmation e-mail). La gestion crée, modifie et annule ; les créneaux qui se chevauchent sont bloqués.",
+            "summary": "Units réservables via catégorie ; invité réserve via QR avec confirmation e-mail ; gestion via Réservations et calendrier."
+        },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
@@ -247,15 +254,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API et webhooks ?",
-            "body": "Sur Corporate (ou quand l'API est activée), gérez sous Paramètres les tokens API et webhooks sortants (signés HMAC). Cela connecte WinProx à d'autres systèmes pour signalements, tâches et mesures ESG.",
-            "summary": "Tokens API et webhooks sous Paramètres (Corporate) ; livraisons signées HMAC."
+            "body": "Sur Corporate (ou lorsque l'API est activée), gérez sous Paramètres les jetons API et les webhooks sortants (signés HMAC). Ainsi vous reliez WinProx à d'autres systèmes pour signalements, tâches et mesures ESG. IoT Connect utilise un jeton passerelle séparé pour l'ingest capteurs (aussi sur Facility).",
+            "summary": "Jetons API et webhooks sous Paramètres (Corporate) ; livraisons signées HMAC. Ingest IoT via jeton passerelle aussi sur Facility."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Qu’est-ce que IoT Connect ?",
             "body": "IoT Connect relie des passerelles capteurs à WinProx sans que WinProx vende du matériel. Les alarmes (fuite d’eau, porte ouverte trop longtemps) créent automatiquement un signalement et une tâche approuvés. Sur Corporate, les mesures capteurs peuvent aussi être enregistrées comme mesures ESG. Gérez passerelles, capteurs et règles sous IoT Connect ; la passerelle envoie vers POST /api/v1/iot/events avec un jeton passerelle (aussi sur Facility, sans API REST complète).",
-            "summary": "IoT Connect : alarmes capteurs → signalements (Facility+) ; mesures → ESG (Corporate). Ingest par jeton passerelle."
+            "summary": "IoT Connect : alarmes capteurs → signalements (Facility et Corporate) ; mesures → ESG (Corporate). Ingest par jeton passerelle."
         }
     }
 }

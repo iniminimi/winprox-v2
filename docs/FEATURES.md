@@ -569,7 +569,7 @@ battery-PNG-widget (vervangen door tekstcapsule).
 ## 8. FAQ & kennisbank (+ WinProx-assistent)
 
 **Doel:** in-app FAQ-accordeon voor ingelogde gebruikers; voedt de **help-chat/assistent**
-(zie dashboard §1). Bron: `faq.blade.php`, `lang/*/faq.php`, `HelpChat.php`,
+(zie dashboard §1). Bron: `faq.blade.php`, `lang/*/faq.json`, `HelpChat.php`,
 `config/help_chat_faq.php`, `HelpChatKnowledgeBaseEntry`, `HelpChatUnansweredQuestion`.
 
 ### 8.1 FAQ-pagina

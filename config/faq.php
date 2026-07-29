@@ -18,6 +18,7 @@ return [
         'user_roles',
         'internal_teams',
         'team_follow_up',
+        'reservations',
         'multiple_locations',
         'page_help',
         'mobile',

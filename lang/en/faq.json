@@ -13,7 +13,7 @@
             "type": "steps",
             "title": "How does WinProx work?",
             "intro": "WinProx follows one core flow: issue → tasks → completion. Time (clocking) is included by default; ESG (measurements) is optional.",
-            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Optional: Time and ESG.",
+            "summary": "Sites and units, issues via QR or admin, approval on the public portal, tasks per team, follow-up via dashboard, briefing, and calendar. Time included; ESG optional.",
             "steps": [
                 {
                     "title": "Sites and units",
@@ -49,7 +49,7 @@
             "type": "pricing",
             "title": "How much does WinProx cost?",
             "intro": "You start with a free trial month (facility and time features). After that, choose Time, Facility, or Corporate under Subscription. Limits apply to your entire organisation (units, sites, documents, photos, users).",
-            "summary": "Trial period, then WinProx Time, Facility, or Corporate. Time and Facility without API; Corporate with ESG, API, and webhooks.",
+            "summary": "Trial period, then WinProx Time, Facility, or Corporate. Time on all plans; IoT Connect on Facility and Corporate; ESG, API, and webhooks on Corporate.",
             "content_note": "Documents and photos count for the entire organisation. During the trial, lower limits apply (e.g. max. 10 documents/photos). Exact limits and prices are shown under Subscription.",
             "plans": {
                 "time": {
@@ -62,16 +62,16 @@
                 "facility": {
                     "units": "Up to 100 units / sites / documents / photos",
                     "users": "1 administrator + up to 4 staff members · unlimited field workers (CSV/Excel)",
-                    "announcements": "€399 / month · Time included",
+                    "announcements": "€399 / month · Time and IoT Connect included",
                     "documents": "CSV/Excel import for units and workers · no API",
-                    "description": "Full facility workflows at scale, including WinProx Time."
+                    "description": "Full facility workflows at scale, including WinProx Time and IoT Connect."
                 },
                 "corporate": {
                     "units": "Unlimited data",
                     "users": "Scalable for large portfolios",
-                    "announcements": "€999 / month · ESG, API, and webhooks",
+                    "announcements": "€999 / month · ESG, IoT, API, and webhooks",
                     "documents": "Priority support",
-                    "description": "For enterprise portfolios and integrations."
+                    "description": "For enterprise portfolios and integrations, including ESG and IoT Connect."
                 }
             }
         },
@@ -194,6 +194,13 @@
             "body": "Tasks appear in Tasks, on the calendar, in the briefing, and on the team/unit QR. Field workers start and complete on site. Coordinators track status in admin. Recurring issues generate cycles with planned due dates.",
             "summary": "Follow-up via Tasks, calendar, briefing, and QR; recurring cycles included."
         },
+        "reservations": {
+            "slug": "reservations",
+            "type": "text",
+            "title": "How do reservations work?",
+            "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Enable Reservable on the category; optionally disable per unit. Guests book via the unit QR (30-minute hold + email confirmation). Admins create, change, and cancel bookings; overlapping slots are blocked.",
+            "summary": "Reservable units via category; guest books via QR with email confirmation; manage via Reservations and calendar."
+        },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
@@ -247,15 +254,15 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. This connects WinProx to other systems for issues, tasks, and ESG measurements.",
-            "summary": "API tokens and webhooks under Settings (Corporate); HMAC-signed deliveries."
+            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. This connects WinProx to other systems for issues, tasks, and ESG measurements. IoT Connect uses a separate gateway token for sensor ingest (also on Facility).",
+            "summary": "API tokens and webhooks under Settings (Corporate); HMAC-signed deliveries. IoT ingest via gateway token also on Facility."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "What is IoT Connect?",
             "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST /api/v1/iot/events with a gateway token (also on Facility, without full REST API).",
-            "summary": "IoT Connect: sensor alarms → issues (Facility+); measurements → ESG (Corporate). Gateway-token ingest."
+            "summary": "IoT Connect: sensor alarms → issues (Facility and Corporate); measurements → ESG (Corporate). Gateway-token ingest."
         }
     }
 }

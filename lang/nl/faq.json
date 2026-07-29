@@ -13,7 +13,7 @@
             "type": "steps",
             "title": "Hoe werkt WinProx?",
             "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (klokken) hoort er standaard bij; ESG (metingen) is optioneel.",
-            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Optioneel: Time en ESG.",
+            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Time standaard; ESG optioneel.",
             "steps": [
                 {
                     "title": "Locaties en units",
@@ -49,7 +49,7 @@
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
             "intro": "U start met een gratis proefmaand (facility- en time-functies). Daarna kiest u Time, Facility of Corporate onder Abonnement. Limieten gelden voor uw hele organisatie (units, locaties, documenten, foto's, gebruikers).",
-            "summary": "Proefperiode, daarna WinProx Time, Facility of Corporate. Time en Facility zonder API; Corporate met ESG, API en webhooks.",
+            "summary": "Proefperiode, daarna WinProx Time, Facility of Corporate. Time op alle formules; IoT Connect op Facility en Corporate; ESG, API en webhooks op Corporate.",
             "content_note": "Documenten en foto's tellen mee voor de hele organisatie. Tijdens de proefperiode gelden lagere limieten (o.a. max. 10 documenten/foto's). Exacte limieten en prijzen staan onder Abonnement.",
             "plans": {
                 "time": {
@@ -62,16 +62,16 @@
                 "facility": {
                     "units": "Tot 100 units / locaties / documenten / foto's",
                     "users": "1 beheerder + tot 4 medewerkers · onbeperkt uitvoerders (CSV/Excel)",
-                    "announcements": "€399 / maand · Time inbegrepen",
+                    "announcements": "€399 / maand · Time en IoT Connect inbegrepen",
                     "documents": "CSV/Excel-import voor units en uitvoerders · geen API",
-                    "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time."
+                    "description": "Volledige facility-workflows op grotere schaal, inclusief WinProx Time en IoT Connect."
                 },
                 "corporate": {
                     "units": "Onbeperkt data",
                     "users": "Schaalbaar voor grote portefeuilles",
-                    "announcements": "€999 / maand · ESG, API en webhooks",
+                    "announcements": "€999 / maand · ESG, IoT, API en webhooks",
                     "documents": "Prioritaire support",
-                    "description": "Voor enterprise-portefeuilles en integraties."
+                    "description": "Voor enterprise-portefeuilles en integraties, inclusief ESG en IoT Connect."
                 }
             }
         },
@@ -194,6 +194,13 @@
             "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data.",
             "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli inbegrepen."
         },
+        "reservations": {
+            "slug": "reservations",
+            "type": "text",
+            "title": "Hoe werken reserveringen?",
+            "body": "Reserveringen zijn voor deelbare middelen met een tijdslot (vergaderzalen, voertuigen, sleutels) — niet voor defectmeldingen. Zet op de categorie Reserveerbaar aan; optioneel per unit uitzetten. Gasten boeken via de unit-QR (30 min hold + e-mailbevestiging). Beheer maakt, wijzigt en annuleert boekingen; overlappende slots worden geblokkeerd.",
+            "summary": "Reserveerbare units via categorie; gast boekt via QR met e-mailbevestiging; beheer via Reserveringen en kalender."
+        },
         "multiple_locations": {
             "slug": "multiple_locations",
             "type": "text",
@@ -248,14 +255,14 @@
             "type": "text",
             "title": "API en webhooks?",
             "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken en ESG-metingen. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (ook op Facility).",
-            "summary": "API-tokens en webhooks onder Instellingen (Corporate); HMAC-ondertekende leveringen."
+            "summary": "API-tokens en webhooks onder Instellingen (Corporate); HMAC-ondertekende leveringen. IoT-ingest via gateway-token ook op Facility."
         },
         "iot": {
             "slug": "iot",
             "type": "text",
             "title": "Wat is IoT Connect?",
             "body": "IoT Connect koppelt sensorgateways aan WinProx zonder dat WinProx zelf hardware verkoopt. Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Op Corporate kunnen sensor-metingen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST /api/v1/iot/events met een gateway-token (ook op Facility, zonder volledige REST API).",
-            "summary": "IoT Connect: sensor-alarmen → meldingen (Facility+); metingen → ESG (Corporate). Gateway-token ingest."
+            "summary": "IoT Connect: sensor-alarmen → meldingen (Facility en Corporate); metingen → ESG (Corporate). Gateway-token ingest."
         }
     }
 }
