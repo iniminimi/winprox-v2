@@ -645,15 +645,6 @@
     background-color: rgb(255 255 255 / 0.12);
 }
 
-@media (max-width: 30rem) {
-    .wp-help-avatar,
-    .wp-help-avatar__img {
-        width: 120px;
-        height: 120px;
-        border-radius: var(--wp-radius);
-    }
-}
-
 .wp-sidebar-scrim {
     display: none;
 }
