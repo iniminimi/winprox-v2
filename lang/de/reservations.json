@@ -42,6 +42,13 @@
     },
     "errors": {
         "unit_not_reservable": "Diese Unit ist nicht reservierbar.",
+        "unit_required": "Wählen Sie eine Unit.",
+        "first_name_required": "Geben Sie einen Vornamen ein.",
+        "last_name_required": "Geben Sie einen Nachnamen ein.",
+        "email_required": "Geben Sie eine E-Mail-Adresse ein.",
+        "email_invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "start_required": "Wählen Sie eine Startzeit.",
+        "end_required": "Wählen Sie eine Endzeit.",
         "end_after_start": "Ende muss nach dem Start liegen.",
         "start_in_past": "Start darf nicht in der Vergangenheit liegen.",
         "min_duration": "Mindestdauer: 30 Minuten.",

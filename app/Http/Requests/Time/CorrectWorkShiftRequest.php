@@ -28,4 +28,14 @@ class CorrectWorkShiftRequest extends FormRequest
             'reason' => ['required', 'string', 'min:3', 'max:500'],
         ];
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'clock_out_at.after' => __('time.corrections.errors.clock_out_before_clock_in'),
+        ];
+    }
 }

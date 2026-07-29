@@ -113,7 +113,7 @@ class ReservationsIndex extends Component
             'end_at' => $this->endAt,
         ];
 
-        $validator = Validator::make($payload, $rules);
+        $validator = Validator::make($payload, $rules, StoreReservationRequest::validationMessages());
 
         if ($validator->fails()) {
             foreach ($validator->errors()->messages() as $field => $messages) {

@@ -5,6 +5,7 @@ namespace App\Livewire\Public;
 use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\UpdateReservationAction;
 use App\Data\Reservations\ReservationBookingData;
+use App\Http\Requests\Reservations\StoreReservationRequest;
 use App\Http\Requests\Reservations\UpdateReservationRequest;
 use App\Models\Reservation;
 use App\Support\Portal\ReservationGuestSession;
@@ -64,7 +65,11 @@ class ReservationManage extends Component
             'end_at' => $this->endAt,
         ];
 
-        $validator = Validator::make($payload, UpdateReservationRequest::ruleSet());
+        $validator = Validator::make(
+            $payload,
+            UpdateReservationRequest::ruleSet(),
+            StoreReservationRequest::validationMessages(),
+        );
         if ($validator->fails()) {
             foreach ($validator->errors()->messages() as $field => $messages) {
                 foreach ($messages as $message) {

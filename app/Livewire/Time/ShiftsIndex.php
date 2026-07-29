@@ -99,7 +99,9 @@ class ShiftsIndex extends Component
                 'correctionBreakMinutes' => ['required', 'integer', 'min:0', 'max:1440'],
                 'correctionReason' => ['required', 'string', 'min:3', 'max:500'],
             ],
-            [],
+            [
+                'correctionClockOut.after' => __('time.corrections.errors.clock_out_before_clock_in'),
+            ],
             [
                 'correctionClockIn' => __('time.corrections.fields.clock_in'),
                 'correctionClockOut' => __('time.corrections.fields.clock_out'),

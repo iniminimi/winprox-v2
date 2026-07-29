@@ -4,6 +4,7 @@ use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\ConfirmReservationAction;
 use App\Actions\Reservations\CreateReservationAction;
 use App\Data\Reservations\ReservationBookingData;
+use App\Http\Requests\Reservations\StoreReservationRequest;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Reservation;
@@ -12,6 +13,7 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 function reservationFixture(): array
@@ -114,6 +116,26 @@ it('weigert tijden die niet op een half uur vallen', function () {
             'end_at' => $end->format('Y-m-d H:i:s'),
         ]),
     ))->toThrow(ValidationException::class);
+});
+
+it('toont vertaalde fout als eindtijd niet na starttijd ligt', function () {
+    app()->setLocale('nl');
+
+    $validator = Validator::make(
+        [
+            'guest_first_name' => 'Ada',
+            'guest_last_name' => 'Lovelace',
+            'guest_email' => 'ada@example.com',
+            'start_at' => '2030-01-01T10:00',
+            'end_at' => '2030-01-01T10:00',
+        ],
+        StoreReservationRequest::ruleSet(),
+        StoreReservationRequest::validationMessages(),
+    );
+
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->first('end_at'))->toBe(__('reservations.errors.end_after_start'))
+        ->and($validator->errors()->first('end_at'))->not->toBe('validation.after');
 });
 
 it('bevestigt via confirm-token en weigert verlopen holds', function () {

@@ -42,6 +42,13 @@
     },
     "errors": {
         "unit_not_reservable": "Questa unità non è prenotabile.",
+        "unit_required": "Scelga un'unità.",
+        "first_name_required": "Inserisca un nome.",
+        "last_name_required": "Inserisca un cognome.",
+        "email_required": "Inserisca un indirizzo e-mail.",
+        "email_invalid": "Inserisca un indirizzo e-mail valido.",
+        "start_required": "Scelga un orario di inizio.",
+        "end_required": "Scelga un orario di fine.",
         "end_after_start": "La fine deve essere dopo l’inizio.",
         "start_in_past": "L’inizio non può essere nel passato.",
         "min_duration": "Durata minima: 30 minuti.",

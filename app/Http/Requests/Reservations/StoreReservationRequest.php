@@ -34,4 +34,32 @@ class StoreReservationRequest extends FormRequest
     {
         return self::ruleSet();
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return self::validationMessages();
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function validationMessages(): array
+    {
+        return [
+            'unit_id.required' => __('reservations.errors.unit_required'),
+            'unit_id.exists' => __('reservations.errors.unit_required'),
+            'guest_first_name.required' => __('reservations.errors.first_name_required'),
+            'guest_last_name.required' => __('reservations.errors.last_name_required'),
+            'guest_email.required' => __('reservations.errors.email_required'),
+            'guest_email.email' => __('reservations.errors.email_invalid'),
+            'start_at.required' => __('reservations.errors.start_required'),
+            'start_at.date' => __('reservations.errors.start_required'),
+            'end_at.required' => __('reservations.errors.end_required'),
+            'end_at.date' => __('reservations.errors.end_required'),
+            'end_at.after' => __('reservations.errors.end_after_start'),
+        ];
+    }
 }

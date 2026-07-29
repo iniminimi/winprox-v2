@@ -42,6 +42,13 @@
     },
     "errors": {
         "unit_not_reservable": "Deze unit is niet reserveerbaar.",
+        "unit_required": "Kies een unit.",
+        "first_name_required": "Vul een voornaam in.",
+        "last_name_required": "Vul een achternaam in.",
+        "email_required": "Vul een e-mailadres in.",
+        "email_invalid": "Geef een geldig e-mailadres op.",
+        "start_required": "Kies een starttijd.",
+        "end_required": "Kies een eindtijd.",
         "end_after_start": "Eindtijd moet na starttijd liggen.",
         "start_in_past": "Starttijd mag niet in het verleden liggen.",
         "min_duration": "Minimale duur is 30 minuten.",

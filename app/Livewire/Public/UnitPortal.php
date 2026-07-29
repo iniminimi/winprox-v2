@@ -331,7 +331,11 @@ class UnitPortal extends Component
             'end_at' => $this->reserveEndAt,
         ];
 
-        $validator = Validator::make($payload, StoreReservationRequest::ruleSet());
+        $validator = Validator::make(
+            $payload,
+            StoreReservationRequest::ruleSet(),
+            StoreReservationRequest::validationMessages(),
+        );
 
         if ($validator->fails()) {
             foreach ($validator->errors()->getMessages() as $field => $messages) {

@@ -26,4 +26,12 @@ class UpdateReservationRequest extends FormRequest
     {
         return self::ruleSet();
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return StoreReservationRequest::validationMessages();
+    }
 }
