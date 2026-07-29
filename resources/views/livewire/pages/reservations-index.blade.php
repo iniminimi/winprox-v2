@@ -124,7 +124,23 @@
 
     @if ($showForm)
         <x-wp-modal closeMethod="closeForm" aria-labelledby="reservation-form-title">
-            <form wire:submit="save" class="wp-card wp-modal-card wp-modal-card--form">
+            <form
+                wire:submit="save"
+                class="wp-card wp-modal-card wp-modal-card--form"
+                @if ($editingId === null)
+                    x-data
+                    x-init="
+                        $nextTick(() => {
+                            if ($wire.startAt || $wire.endAt || ! window.wpDefaultReservationWindow) {
+                                return;
+                            }
+                            const windowDefaults = window.wpDefaultReservationWindow();
+                            $wire.set('startAt', windowDefaults.start);
+                            $wire.set('endAt', windowDefaults.end);
+                        })
+                    "
+                @endif
+            >
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="reservation-form-title" class="wp-section-title">
                         {{ $editingId ? __('reservations.actions.edit') : __('reservations.actions.create') }}

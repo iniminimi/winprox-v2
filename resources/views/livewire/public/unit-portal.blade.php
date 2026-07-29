@@ -528,7 +528,21 @@
             <x-wp-portal-back wire:click="openSection('home')" />
             <x-wp-page-head-title variant="portal" icon="calendar" :title="__('portal.reservations.title')" />
 
-            <form wire:submit="submitReservation" class="wp-card wp-card-pad wp-stack">
+            <form
+                wire:submit="submitReservation"
+                class="wp-card wp-card-pad wp-stack"
+                x-data
+                x-init="
+                    $nextTick(() => {
+                        if ($wire.reserveStartAt || $wire.reserveEndAt || ! window.wpDefaultReservationWindow) {
+                            return;
+                        }
+                        const windowDefaults = window.wpDefaultReservationWindow();
+                        $wire.set('reserveStartAt', windowDefaults.start);
+                        $wire.set('reserveEndAt', windowDefaults.end);
+                    })
+                "
+            >
                 <div class="wp-field">
                     <label class="wp-label">{{ __('portal.reservations.fields.first_name') }}</label>
                     <input type="text" class="wp-input" wire:model="reserveFirstName">
