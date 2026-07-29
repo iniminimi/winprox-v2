@@ -33,12 +33,12 @@
                 </label>
                 <label class="wp-field">
                     <span>{{ __('reservations.fields.start_at') }}</span>
-                    <input type="datetime-local" class="wp-input" wire:model="startAt" step="1800">
+                    <x-wp-half-hour-datetime wire:model="startAt" />
                     @error('start_at') <p class="wp-error">{{ $message }}</p> @enderror
                 </label>
                 <label class="wp-field">
                     <span>{{ __('reservations.fields.end_at') }}</span>
-                    <input type="datetime-local" class="wp-input" wire:model="endAt" step="1800">
+                    <x-wp-half-hour-datetime wire:model="endAt" />
                     @error('end_at') <p class="wp-error">{{ $message }}</p> @enderror
                 </label>
                 <div class="wp-cluster">
