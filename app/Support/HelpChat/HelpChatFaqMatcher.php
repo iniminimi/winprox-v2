@@ -7,6 +7,10 @@ use Illuminate\Support\Str;
 
 class HelpChatFaqMatcher
 {
+    public function __construct(
+        private HelpChatPageHelpMatcher $pageHelpMatcher,
+    ) {}
+
     public function match(string $message, string $locale): ?string
     {
         $normalized = $this->normalize($message);
@@ -18,6 +22,12 @@ class HelpChatFaqMatcher
         $kbAnswer = $this->matchKnowledgeBase($normalized, $locale);
         if ($kbAnswer !== null) {
             return $kbAnswer;
+        }
+
+        // Prefer page-help / handleiding (richer how-to) over short FAQ summaries.
+        $pageHelpAnswer = $this->pageHelpMatcher->match($message, $locale);
+        if ($pageHelpAnswer !== null) {
+            return $pageHelpAnswer;
         }
 
         return $this->matchConfigFaq($normalized, $locale);

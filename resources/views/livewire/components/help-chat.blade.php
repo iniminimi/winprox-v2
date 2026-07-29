@@ -2,7 +2,7 @@
     <div class="wp-help-chat-messages" role="log" aria-live="polite">
         @foreach ($messages as $message)
             <div class="wp-help-chat-bubble wp-help-chat-bubble--{{ $message['role'] }}" wire:key="msg-{{ $message['id'] }}">
-                <p>{{ $message['content'] }}</p>
+                <p>{!! nl2br(e($message['content'])) !!}</p>
             </div>
         @endforeach
     </div>

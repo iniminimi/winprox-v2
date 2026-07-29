@@ -569,8 +569,9 @@ battery-PNG-widget (vervangen door tekstcapsule).
 ## 8. FAQ & kennisbank (+ WinProx-assistent)
 
 **Doel:** in-app FAQ-accordeon voor ingelogde gebruikers; voedt de **help-chat/assistent**
-(zie dashboard §1). Bron: `faq.blade.php`, `lang/*/faq.json`, `HelpChat.php`,
-`config/help_chat_faq.php`, `HelpChatKnowledgeBaseEntry`, `HelpChatUnansweredQuestion`.
+(zie dashboard §1). Bron: `faq.blade.php`, `lang/*/faq.json`, `lang/*/page-help.json`,
+`HelpChat.php`, `config/help_chat_faq.php`, `config/help_chat_page_help.php`,
+`HelpChatKnowledgeBaseEntry`, `HelpChatUnansweredQuestion`.
 
 ### 8.1 FAQ-pagina
 - Accordeon met FAQ-items per **slug** (geen DB-categoriemodel nodig). Facility-specifieke items
@@ -580,7 +581,9 @@ battery-PNG-widget (vervangen door tekstcapsule).
   gebruik unieke per-page keys.
 
 ### 8.2 WinProx-assistent (help-chat)
-- Volgorde: **tenant-inzicht** (DB-tellingen) → **FAQ-matcher** (KB-entries + patroonconfig) →
+- Volgorde: **tenant-inzicht** (DB-tellingen) → **kennisbank** → **pagina-hulp / handleiding**
+  (`page-help.json` via `HelpChatPageHelpMatcher`, zelfde bron als ManualChapters) →
+  **FAQ-samenvattingen** (`config/help_chat_faq.php`) →
   **geen match** → vraag opslaan (`help_chat_unanswered_questions`) + **e-mail naar helpdesk/
   superuser**; gebruiker kan een antwoord laten **escaleren** naar de helpdesk.
 - Rate-limit (bv. 30/min). Gekoppeld aan de FAQ (§dashboard-assistent = dezelfde feature).
