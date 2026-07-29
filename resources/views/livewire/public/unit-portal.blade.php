@@ -546,12 +546,12 @@
                 </div>
                 <div class="wp-field">
                     <label class="wp-label">{{ __('portal.reservations.fields.start_at') }}</label>
-                    <input type="datetime-local" class="wp-input" wire:model="reserveStartAt">
+                    <input type="datetime-local" class="wp-input" wire:model="reserveStartAt" step="1800">
                     @error('reserveStartAt') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label">{{ __('portal.reservations.fields.end_at') }}</label>
-                    <input type="datetime-local" class="wp-input" wire:model="reserveEndAt">
+                    <input type="datetime-local" class="wp-input" wire:model="reserveEndAt" step="1800">
                     @error('reserveEndAt') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <p class="wp-muted">{{ __('portal.reservations.hold_hint', ['minutes' => \App\Models\Reservation::HOLD_MINUTES]) }}</p>

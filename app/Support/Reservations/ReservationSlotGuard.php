@@ -29,13 +29,19 @@ final class ReservationSlotGuard
             ]);
         }
 
+        if (! self::isHalfHourAligned($start) || ! self::isHalfHourAligned($end)) {
+            throw ValidationException::withMessages([
+                'start_at' => [__('reservations.errors.half_hour_slot')],
+            ]);
+        }
+
         if ($start->lt(now()->subMinute())) {
             throw ValidationException::withMessages([
                 'start_at' => [__('reservations.errors.start_in_past')],
             ]);
         }
 
-        if ($start->diffInMinutes($end) < 15) {
+        if ($start->diffInMinutes($end) < 30) {
             throw ValidationException::withMessages([
                 'end_at' => [__('reservations.errors.min_duration')],
             ]);
@@ -46,6 +52,11 @@ final class ReservationSlotGuard
                 'end_at' => [__('reservations.errors.max_duration')],
             ]);
         }
+    }
+
+    private static function isHalfHourAligned(CarbonInterface $moment): bool
+    {
+        return $moment->second === 0 && ($moment->minute % 30) === 0;
     }
 
     public static function assertNoOverlap(Unit $unit, CarbonInterface $start, CarbonInterface $end, ?int $ignoreReservationId = null): void

@@ -41,6 +41,8 @@ function reservationFixture(): array
 function reservationWindow(int $hoursFromNow = 2, int $durationHours = 1): array
 {
     $start = now()->addHours($hoursFromNow)->seconds(0);
+    $minute = $start->minute < 30 ? 0 : 30;
+    $start->minute($minute);
     $end = $start->copy()->addHours($durationHours);
 
     return [$start->format('Y-m-d H:i:s'), $end->format('Y-m-d H:i:s')];
@@ -95,6 +97,25 @@ it('blokkeert overlappende reserveringen tijdens de hold', function () {
     ))->toThrow(ValidationException::class);
 });
 
+it('weigert tijden die niet op een half uur vallen', function () {
+    Mail::fake();
+    [, , $unit] = reservationFixture();
+
+    $start = now()->addDays(1)->startOfHour()->addMinutes(17);
+    $end = $start->copy()->addHour();
+
+    expect(fn () => app(CreateReservationAction::class)->handle(
+        $unit,
+        ReservationBookingData::fromValidated([
+            'guest_first_name' => 'Ada',
+            'guest_last_name' => 'Lovelace',
+            'guest_email' => 'ada@example.com',
+            'start_at' => $start->format('Y-m-d H:i:s'),
+            'end_at' => $end->format('Y-m-d H:i:s'),
+        ]),
+    ))->toThrow(ValidationException::class);
+});
+
 it('bevestigt via confirm-token en weigert verlopen holds', function () {
     Mail::fake();
     [, , $unit] = reservationFixture();
@@ -117,14 +138,16 @@ it('bevestigt via confirm-token en weigert verlopen holds', function () {
 
     expect($reservation->fresh()->isConfirmed())->toBeTrue();
 
+    [$expiredStart, $expiredEnd] = reservationWindow(hoursFromNow: 24);
+
     $expired = app(CreateReservationAction::class)->handle(
         $unit,
         ReservationBookingData::fromValidated([
             'guest_first_name' => 'Alan',
             'guest_last_name' => 'Turing',
             'guest_email' => 'alan@example.com',
-            'start_at' => now()->addDays(1)->format('Y-m-d H:i:s'),
-            'end_at' => now()->addDays(1)->addHour()->format('Y-m-d H:i:s'),
+            'start_at' => $expiredStart,
+            'end_at' => $expiredEnd,
         ]),
     );
     $expired->forceFill(['expires_at' => now()->subMinute()])->save();

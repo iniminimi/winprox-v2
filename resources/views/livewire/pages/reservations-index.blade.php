@@ -165,12 +165,12 @@
                     <div class="wp-form-grid-2">
                         <label class="wp-field">
                             <span class="wp-label">{{ __('reservations.fields.start_at') }}</span>
-                            <input type="datetime-local" class="wp-input" wire:model="startAt">
+                            <input type="datetime-local" class="wp-input" wire:model="startAt" step="1800">
                             @error('start_at') <p class="wp-error">{{ $message }}</p> @enderror
                         </label>
                         <label class="wp-field">
                             <span class="wp-label">{{ __('reservations.fields.end_at') }}</span>
-                            <input type="datetime-local" class="wp-input" wire:model="endAt">
+                            <input type="datetime-local" class="wp-input" wire:model="endAt" step="1800">
                             @error('end_at') <p class="wp-error">{{ $message }}</p> @enderror
                         </label>
                     </div>
