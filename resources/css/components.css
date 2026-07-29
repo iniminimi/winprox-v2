@@ -3660,8 +3660,8 @@ svg.wp-release-worker-row__icon,
 
 .wp-help-chat-form {
     flex-shrink: 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--wp-border);
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--wp-border);
 }
 
 .wp-help-chat-messages {
