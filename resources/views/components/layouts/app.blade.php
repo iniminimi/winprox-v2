@@ -91,7 +91,43 @@
         ];
     @endphp
 
-    <div class="wp-app" x-data="{ nav: false, help: false }">
+    <div
+        class="wp-app"
+        x-data="{
+            nav: false,
+            help: false,
+            helpGifSrc: '',
+            helpGifUrl: @js(asset('images/assistant.gif')),
+            helpGifReady: false,
+            preloadHelpGif() {
+                if (this.helpGifReady) {
+                    return Promise.resolve();
+                }
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        this.helpGifReady = true;
+                        resolve();
+                    };
+                    img.onerror = () => {
+                        this.helpGifReady = true;
+                        resolve();
+                    };
+                    img.src = this.helpGifUrl;
+                });
+            },
+            async toggleHelp() {
+                if (this.help) {
+                    this.help = false;
+                    return;
+                }
+                await this.preloadHelpGif();
+                // Restart GIF from frame 0 each open (uses browser cache after preload).
+                this.helpGifSrc = this.helpGifUrl + '?t=' + Date.now();
+                this.help = true;
+            },
+        }"
+    >
         <aside class="wp-sidebar" :class="{ 'is-open': nav }"
                 @php
                     $tenant = auth()->user()?->tenant;
@@ -218,12 +254,30 @@
                     <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
                     <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">×</button>
                 </div>
-                <livewire:components.help-chat />
+                <div class="wp-help-panel-body">
+                    <div class="wp-help-avatar">
+                        <template x-if="help && helpGifSrc">
+                            <img
+                                class="wp-help-avatar__img"
+                                :src="helpGifSrc"
+                                alt="{{ __('help.avatar_alt') }}"
+                                width="96"
+                                height="96"
+                                decoding="async"
+                            >
+                        </template>
+                    </div>
+                    <div class="wp-help-panel-chat">
+                        <livewire:components.help-chat />
+                    </div>
+                </div>
             </div>
             <button
                 type="button"
                 class="wp-help-button"
-                @click="help = !help"
+                @click="toggleHelp()"
+                @mouseenter="preloadHelpGif()"
+                @focus="preloadHelpGif()"
                 :aria-expanded="help ? 'true' : 'false'"
                 aria-controls="wp-help-chat-panel"
                 :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
