@@ -199,7 +199,7 @@
             "type": "text",
             "title": "How do reservations work?",
             "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Enable Reservable on the category; optionally disable per unit. Guests book via the unit QR (30-minute hold + email confirmation). Admins create, change, and cancel bookings; overlapping slots are blocked.",
-            "summary": "Reservable units via category; guest books via QR with email confirmation; manage via Reservations and calendar."
+            "summary": "In the app: Reservations menu (and calendar). Reservable units via category; guest books via QR with email confirmation."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

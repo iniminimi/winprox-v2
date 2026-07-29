@@ -12,9 +12,13 @@ return [
             'body_key' => 'faq.items.qr_code.summary',
         ],
         [
+            // Stem "reserv" covers NL reserveren/reservering/reservatie and EN reservation.
             'patterns' => [
-                'reservatie', 'reservering', 'reservation', 'reservierung', 'réservation',
-                'reserva', 'prenotazione', 'boeking', 'booking', 'vergaderruimte', 'meeting room',
+                'reserv', 'reserveren', 'reservering', 'reserveer', 'reserveerbaar', 'reservatie',
+                'reservation', 'reserve', 'reservieren', 'reservierung',
+                'réserver', 'réservation',
+                'reservar', 'reserva', 'prenotare', 'prenotazione',
+                'boeking', 'boeken', 'booking', 'vergaderruimte', 'meeting room', 'meetingroom',
             ],
             'body_key' => 'faq.items.reservations.summary',
         ],

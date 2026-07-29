@@ -199,7 +199,7 @@
             "type": "text",
             "title": "Hoe werken reserveringen?",
             "body": "Reserveringen zijn voor deelbare middelen met een tijdslot (vergaderzalen, voertuigen, sleutels) — niet voor defectmeldingen. Zet op de categorie Reserveerbaar aan; optioneel per unit uitzetten. Gasten boeken via de unit-QR (30 min hold + e-mailbevestiging). Beheer maakt, wijzigt en annuleert boekingen; overlappende slots worden geblokkeerd.",
-            "summary": "Reserveerbare units via categorie; gast boekt via QR met e-mailbevestiging; beheer via Reserveringen en kalender."
+            "summary": "In de app: menu Reserveringen (en kalender). Reserveerbare units via categorie; gast boekt via QR met e-mailbevestiging."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

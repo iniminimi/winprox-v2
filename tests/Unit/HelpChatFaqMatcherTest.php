@@ -25,6 +25,10 @@ it('beantwoordt reserveringsvragen', function (): void {
 
     expect($matcher->match('Hoe werken reserveringen?', 'nl'))
         ->toBe(__('faq.items.reservations.summary'));
+
+    expect($matcher->match('reserveren', 'nl'))
+        ->toBe(__('faq.items.reservations.summary'))
+        ->and($matcher->match('reserveren', 'nl'))->toContain('Reserveringen');
 });
 
 it('beantwoordt pricing met IoT op Facility', function (): void {

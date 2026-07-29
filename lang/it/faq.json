@@ -199,7 +199,7 @@
             "type": "text",
             "title": "Come funzionano le prenotazioni?",
             "body": "Le prenotazioni sono per risorse condivise con fascia oraria (sale riunioni, veicoli, chiavi) — non per guasti. Attivate Prenotabile sulla categoria; opzionalmente disattivate per unit. Gli ospiti prenotano via QR unit (hold 30 min + conferma e-mail). La gestione crea, modifica e annulla; gli slot sovrapposti sono bloccati.",
-            "summary": "Unit prenotabili via categoria; ospite prenota via QR con conferma e-mail; gestione via Prenotazioni e calendario."
+            "summary": "Nell’app: menu Prenotazioni (e calendario). Unit prenotabili via categoria; ospite prenota via QR con conferma e-mail."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

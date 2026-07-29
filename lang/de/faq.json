@@ -199,7 +199,7 @@
             "type": "text",
             "title": "Wie funktionieren Reservierungen?",
             "body": "Reservierungen gelten für gemeinsam genutzte Ressourcen mit Zeitslot (Besprechungsräume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie; optional pro Unit deaktivieren. Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung erstellt, ändert und storniert Buchungen; überlappende Slots werden blockiert.",
-            "summary": "Reservierbare Units über Kategorie; Gast bucht per QR mit E-Mail-Bestätigung; Verwaltung über Reservierungen und Kalender."
+            "summary": "In der App: Menü Reservierungen (und Kalender). Reservierbare Units über Kategorie; Gast bucht per QR mit E-Mail-Bestätigung."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

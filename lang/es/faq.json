@@ -199,7 +199,7 @@
             "type": "text",
             "title": "¿Cómo funcionan las reservas?",
             "body": "Las reservas son para recursos compartidos con franja horaria (salas de reuniones, vehículos, llaves) — no para averías. Active Reservable en la categoría; opcionalmente desactive por unit. Los invitados reservan vía QR de unit (retención 30 min + confirmación por correo). La gestión crea, modifica y cancela; se bloquean solapamientos.",
-            "summary": "Units reservables vía categoría; invitado reserva vía QR con confirmación por correo; gestión vía Reservas y calendario."
+            "summary": "En la app: menú Reservas (y calendario). Units reservables vía categoría; invitado reserva vía QR con confirmación por correo."
         },
         "multiple_locations": {
             "slug": "multiple_locations",
