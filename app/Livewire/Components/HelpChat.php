@@ -8,19 +8,18 @@ use Livewire\Component;
 
 class HelpChat extends Component
 {
-    /** @var list<array{role: string, content: string}> */
+    /** @var list<array{id: int, role: string, content: string}> */
     public array $messages = [];
 
     public string $draft = '';
 
     public ?string $lastQuestion = null;
 
+    public int $messageSeq = 0;
+
     public function mount(): void
     {
-        $this->messages[] = [
-            'role' => 'assistant',
-            'content' => __('help.welcome'),
-        ];
+        $this->messages[] = $this->makeMessage('assistant', __('help.welcome'));
     }
 
     public function send(ProcessHelpChatMessageAction $process): void
@@ -31,15 +30,17 @@ class HelpChat extends Component
             return;
         }
 
-        $this->messages[] = ['role' => 'user', 'content' => $text];
         $this->lastQuestion = $text;
         $this->draft = '';
 
         $reply = $process->handle(auth()->user(), $text);
-        $this->messages[] = [
-            'role' => $reply['role'],
-            'content' => $reply['content'],
-        ];
+
+        // Newest exchange at the top of the panel (under the form).
+        array_unshift(
+            $this->messages,
+            $this->makeMessage('user', $text),
+            $this->makeMessage($reply['role'], $reply['content']),
+        );
     }
 
     public function escalateToHelpdesk(EscalateHelpChatAnswerAction $escalate): void
@@ -48,11 +49,29 @@ class HelpChat extends Component
             return;
         }
 
-        $escalate->escalate(auth()->user(), $this->lastQuestion, collect($this->messages)->last()['content'] ?? null);
+        $escalate->escalate(
+            auth()->user(),
+            $this->lastQuestion,
+            collect($this->messages)->firstWhere('role', 'assistant')['content'] ?? null,
+        );
 
-        $this->messages[] = [
-            'role' => 'assistant',
-            'content' => __('help.escalated'),
+        array_unshift(
+            $this->messages,
+            $this->makeMessage('assistant', __('help.escalated')),
+        );
+    }
+
+    /**
+     * @return array{id: int, role: string, content: string}
+     */
+    protected function makeMessage(string $role, string $content): array
+    {
+        $this->messageSeq++;
+
+        return [
+            'id' => $this->messageSeq,
+            'role' => $role,
+            'content' => $content,
         ];
     }
 
