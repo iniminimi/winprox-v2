@@ -261,8 +261,8 @@
                                 class="wp-help-avatar__img"
                                 :src="helpGifSrc"
                                 alt="{{ __('help.avatar_alt') }}"
-                                width="96"
-                                height="96"
+                                width="150"
+                                height="150"
                                 decoding="async"
                             >
                         </template>
