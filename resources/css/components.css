@@ -3669,8 +3669,7 @@ svg.wp-release-worker-row__icon,
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    min-height: 8rem;
-    max-height: min(18rem, 45vh);
+    min-height: 0;
     flex: 1;
 }
 
