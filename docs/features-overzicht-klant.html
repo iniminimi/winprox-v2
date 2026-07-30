@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WinProx — Features-overzicht</title>
+  <style>
+    @page { size: A4; margin: 12mm 14mm; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: #1a1a1a;
+      font: 9.2pt/1.35 "Segoe UI", system-ui, sans-serif;
+      background: #fff;
+    }
+    .sheet {
+      max-width: 190mm;
+      margin: 0 auto;
+      padding: 8mm 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2.5px solid #059669;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 16pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #064e3b;
+    }
+    .tagline {
+      margin: 2px 0 0;
+      font-size: 8.5pt;
+      color: #374151;
+    }
+    .meta {
+      text-align: right;
+      font-size: 8pt;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+    .intro {
+      margin: 0 0 10px;
+      font-size: 8.8pt;
+      color: #374151;
+    }
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 0 0 10px;
+      padding: 7px 10px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      font-size: 8.8pt;
+      color: #065f46;
+      font-weight: 600;
+    }
+    .flow span.arrow { color: #059669; font-weight: 700; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 12px;
+    }
+    article {
+      break-inside: avoid;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 7px 9px 8px;
+      background: #fafafa;
+    }
+    article.wide { grid-column: 1 / -1; }
+    h2 {
+      margin: 0 0 3px;
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #047857;
+    }
+    .badge {
+      display: inline-block;
+      margin-left: 4px;
+      padding: 1px 5px;
+      border-radius: 999px;
+      font-size: 7pt;
+      font-weight: 600;
+      background: #d1fae5;
+      color: #065f46;
+      vertical-align: middle;
+    }
+    .badge--opt {
+      background: #e0e7ff;
+      color: #3730a3;
+    }
+    p { margin: 0; font-size: 8.6pt; color: #374151; }
+    footer {
+      margin-top: 10px;
+      padding-top: 6px;
+      border-top: 1px solid #d1d5db;
+      font-size: 7.5pt;
+      color: #6b7280;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    @media print {
+      body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .sheet { padding: 0; max-width: none; }
+      .no-print { display: none !important; }
+    }
+    .hint {
+      margin: 0 0 10px;
+      padding: 8px 10px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      font-size: 8.5pt;
+      color: #065f46;
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <p class="hint no-print">
+      Open in de browser → <strong>Ctrl+P</strong> → PDF of printer. Samen met de technische fiche
+      een set van 2 A4’s voor de meeting.
+    </p>
+
+    <header>
+      <div>
+        <h1>WinProx — Features-overzicht</h1>
+        <p class="tagline">De belangrijkste functies in één oogopslag</p>
+      </div>
+      <div class="meta">
+        winprox.app<br />
+        Versie meeting · juli 2026
+      </div>
+    </header>
+
+    <p class="intro">
+      WinProx is één facility-platform: meldingen komen binnen, worden taken, en worden
+      afgehandeld door teams — zonder aparte app te installeren.
+    </p>
+
+    <div class="flow">
+      <span>QR-scan</span><span class="arrow">→</span>
+      <span>Melding</span><span class="arrow">→</span>
+      <span>Taken</span><span class="arrow">→</span>
+      <span>Afhandeling</span>
+    </div>
+
+    <div class="grid">
+      <article>
+        <h2>QR-portals</h2>
+        <p>
+          Elke locatie of unit krijgt een QR-code. Scannen opent een portaal in de browser:
+          melden, taken afhandelen, reserveren — zonder login voor de melder.
+        </p>
+      </article>
+
+      <article>
+        <h2>Geen app nodig</h2>
+        <p>
+          Werkt in elke moderne browser op smartphone of computer. Geen App Store,
+          geen installatie, geen updates voor eindgebruikers.
+        </p>
+      </article>
+
+      <article>
+        <h2>Facility <span class="badge">kern</span></h2>
+        <p>
+          Locaties, units, teams en workers. Bulk units, QR-stickerbladen (Word/Avery),
+          dashboard, kalender en dagbriefing voor teams.
+        </p>
+      </article>
+
+      <article>
+        <h2>Multi-tenant</h2>
+        <p>
+          Elke organisatie heeft een eigen, afgeschermde omgeving. Gegevens van klanten
+          zijn strikt gescheiden.
+        </p>
+      </article>
+
+      <article>
+        <h2>Meldingen</h2>
+        <p>
+          Via QR of vanuit beheer. Statussen, filters, goedkeuring van QR-meldingen,
+          terugkerende meldingen. Beheer ziet alles onverkort; publieke QR-pagina’s
+          blurren gevoelige inhoud tot goedkeuring.
+        </p>
+      </article>
+
+      <article>
+        <h2>Taken</h2>
+        <p>
+          Eén melding kan meerdere taken hebben, elk toegewezen aan één team.
+          Starten, afronden, notities — op desktop of via het veldportaal.
+        </p>
+      </article>
+
+      <article>
+        <h2>Foto’s</h2>
+        <p>
+          Tot 4 foto’s per melding of afhandeling. Compressie op het toestel vóór upload
+          (sneller, minder data). Preview meteen zichtbaar.
+        </p>
+      </article>
+
+      <article>
+        <h2>Time <span class="badge">module</span></h2>
+        <p>
+          Aanwezigheid via clock-point QR: in-/uitklokken, pauzes, overzicht “nu aanwezig”
+          en aandachtspunten bij uitzonderingen.
+        </p>
+      </article>
+
+      <article>
+        <h2>ESG &amp; Compliance <span class="badge badge--opt">optioneel</span></h2>
+        <p>
+          Indicatoren en metingen (getal, ja/nee, keuze, …), drempels, correcties en
+          opvolgtaken. Registratie via beheer, taak/QR of API.
+        </p>
+      </article>
+
+      <article>
+        <h2>IoT Connect <span class="badge badge--opt">optioneel</span></h2>
+        <p>
+          Gateways sturen events naar WinProx. Alarmen worden meldingen/taken;
+          metingen kunnen naar ESG (Corporate). Geen aparte IoT-cloud nodig in WinProx.
+        </p>
+      </article>
+
+      <article>
+        <h2>GPS</h2>
+        <p>
+          Units kunnen GPS-rapporten vastleggen (positie-historiek). Bruikbaar voor
+          mobiele assets; webhook bij nieuwe rapporten.
+        </p>
+      </article>
+
+      <article>
+        <h2>Reserveringen</h2>
+        <p>
+          Units als vergaderzaal, voertuig of sleutel reserveren via de unit-QR.
+          Beheer in de kalender en reserveringenlijst.
+        </p>
+      </article>
+
+      <article>
+        <h2>AI-vertaling <span class="badge badge--opt">optioneel</span></h2>
+        <p>
+          Automatische vertaling van operationele teksten via lokale Ollama
+          (geen externe AI-cloud). Uitzetbaar; handmatig corrigeerbaar.
+        </p>
+      </article>
+
+      <article>
+        <h2>Meertalig</h2>
+        <p>
+          Interface in NL, EN, FR, DE, ES, IT. Geschikt voor internationale teams
+          en gemengde werkvloeren.
+        </p>
+      </article>
+
+      <article>
+        <h2>API <span class="badge">Corporate</span></h2>
+        <p>
+          REST API (JSON) met Bearer-tokens en scopes: meldingen, taken, locaties,
+          units, teams, workers, ESG, vertalingen. Rate limit 60/min.
+        </p>
+      </article>
+
+      <article>
+        <h2>Webhooks <span class="badge">Corporate</span></h2>
+        <p>
+          Realtime events naar jullie systemen (HMAC-ondertekend), met automatische
+          retries. Koppeling met ERP, ticketing of monitoring.
+        </p>
+      </article>
+
+      <article class="wide">
+        <h2>Rollen &amp; teams</h2>
+        <p>
+          <strong>Beheerder</strong> (alles) · <strong>Medewerker</strong> (operationeel) ·
+          <strong>Worker</strong> (veld, via QR + icoon, zonder login) ·
+          <strong>Teamleader</strong> (kan iconen vrijgeven). Helder, zonder complexe rechtenmatrices.
+        </p>
+      </article>
+    </div>
+
+    <footer>
+      <span>WinProx · info@winprox.app · Productoverzicht voor prospects / IT-kickoff</span>
+      <span>Zie ook: Technische fiche (hosting, GDPR, API, veiligheid)</span>
+    </footer>
+  </div>
+</body>
+</html>
