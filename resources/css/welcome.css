@@ -1694,10 +1694,12 @@
 }
 
 [data-theme='standard'] .wp-welcome-trust-phone .wp-video-player {
+    display: block;
     width: 100%;
+    height: auto;
     max-height: none;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
+    aspect-ratio: auto;
+    object-fit: contain;
     background: var(--wp-surface-2);
 }
 
@@ -1716,7 +1718,7 @@
 [data-theme='standard'] .wp-welcome-trust-phone .wp-welcome-media-placeholder--video {
     margin-top: 0;
     width: 100%;
-    aspect-ratio: 9 / 16;
+    aspect-ratio: 3 / 4;
     display: flex;
     align-items: center;
     justify-content: center;
