@@ -267,8 +267,8 @@
                                 x-ref="helpVideo"
                                 class="wp-help-avatar__video"
                                 src="{{ asset('video/assistant_small.mp4') }}"
-                                width="140"
-                                height="140"
+                                width="80"
+                                height="80"
                                 muted
                                 loop
                                 playsinline
@@ -305,6 +305,7 @@
     @livewireScripts
 </body>
 </html>
+
 
 
 

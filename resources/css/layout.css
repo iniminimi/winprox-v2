@@ -336,7 +336,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    min-height: 2.25rem;
+    min-height: 80px;
     padding: 0 0.75rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-pill);
@@ -590,8 +590,8 @@
 }
 
 .wp-help-avatar--header {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 80px;
+    height: 80px;
 }
 
 .wp-help-avatar__video {
@@ -1215,4 +1215,5 @@
         width: 100%;
     }
 }
+
 
