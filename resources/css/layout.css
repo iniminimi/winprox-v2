@@ -336,7 +336,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    min-height: 80px;
+    min-height: 2.25rem;
     padding: 0 0.75rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-lg);
