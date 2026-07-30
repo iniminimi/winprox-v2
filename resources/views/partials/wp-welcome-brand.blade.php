@@ -1,5 +1,15 @@
 <a href="{{ route('welcome') }}" class="wp-welcome-brand" aria-label="{{ __('welcome.back_home') }}">
     <span class="wp-welcome-brand-logo wp-welcome-brand-logo--sm">
+        <img
+            class="wp-welcome-brand-logo__media"
+            src="{{ asset('images/Winprox_logo_100.png') }}"
+            alt=""
+            width="80"
+            height="80"
+            decoding="async"
+        />
+    </span>
+    <span class="wp-welcome-brand-logo wp-welcome-brand-logo--sm wp-welcome-brand-logo--assistant">
         <video
             class="wp-welcome-brand-logo__media"
             src="{{ asset('video/assistant_small.mp4') }}"
