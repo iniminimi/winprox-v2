@@ -796,6 +796,22 @@ a.wp-kpi:hover {
     height: 80px;
     padding: 0;
     overflow: hidden;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+.wp-kpi--has-assistant {
+    padding: 0.5rem 0.625rem;
+}
+
+.wp-kpi--has-assistant .wp-kpi-body {
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wp-kpi--has-assistant .wp-kpi-stats {
+    margin-top: 0.25rem;
 }
 
 /* ---------------------------------------------------------------------------
