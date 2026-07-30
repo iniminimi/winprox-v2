@@ -4,6 +4,7 @@ use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
 use App\Http\Controllers\LegalDocumentController;
+use App\Http\Controllers\ProductDocumentController;
 use App\Http\Controllers\IndexNowKeyController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SitemapController;
@@ -182,6 +183,10 @@ foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
     Route::get("/legal/{$legalDoc}", $redirectToLocalized($legalMeta['route']));
 }
 
+foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
+    Route::get("/docs/{$productDoc}", $redirectToLocalized($productMeta['route']));
+}
+
 Route::prefix('{locale}')
     ->where(['locale' => $localePattern])
     ->group(function () {
@@ -203,6 +208,12 @@ Route::prefix('{locale}')
             Route::get("/legal/{$legalDoc}", function () use ($legalDoc) {
                 return app(LegalDocumentController::class)->show(request(), $legalDoc);
             })->name($legalMeta['route']);
+        }
+
+        foreach (config('product_docs.documents', []) as $productDoc => $productMeta) {
+            Route::get("/docs/{$productDoc}", function () use ($productDoc) {
+                return app(ProductDocumentController::class)->show(request(), $productDoc);
+            })->name($productMeta['route']);
         }
     });
 

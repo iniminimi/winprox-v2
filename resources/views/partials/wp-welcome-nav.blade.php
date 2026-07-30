@@ -24,6 +24,8 @@
                     <a href="{{ $welcomeSection('organisaties') }}">{{ __('welcome.nav.sectors') }}</a>
                     <a href="{{ $welcomeSection('video') }}">{{ __('welcome.nav.video') }}</a>
                     <a href="{{ route('faq.public') }}" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
+                    <a href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
+                    <a href="{{ route('product.technical') }}" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                     <a href="{{ route('api.public') }}" @if (request()->routeIs('api.public')) aria-current="page" @endif>{{ __('welcome.nav.api') }}</a>
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                 </div>
@@ -57,6 +59,8 @@
                         <div class="wp-welcome-nav-group__panel" role="list">
                             <a href="{{ route('about') }}" role="listitem" @if (request()->routeIs('about')) aria-current="page" @endif>{{ __('welcome.nav.about') }}</a>
                             <a href="{{ route('faq.public') }}" role="listitem" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
+                            <a href="{{ route('product.features') }}" role="listitem" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
+                            <a href="{{ route('product.technical') }}" role="listitem" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                             <a href="{{ route('api.public') }}" role="listitem" @if (request()->routeIs('api.public')) aria-current="page" @endif>{{ __('welcome.nav.api') }}</a>
                         </div>
                     </details>

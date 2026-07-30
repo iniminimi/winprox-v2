@@ -16,6 +16,7 @@ class EnsureTenantHasAppAccess
         'account.*',
         'platform.*',
         'legal.*',
+        'product.*',
         'logout',
         'livewire.*',
         'locale.*',

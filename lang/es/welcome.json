@@ -23,7 +23,9 @@
         "pricing": "Precios",
         "group_products": "Productos",
         "group_how": "Funcionamiento",
-        "group_more": "Más"
+        "group_more": "Más",
+        "features_overview": "Resumen de funciones",
+        "technical_sheet": "Ficha técnica"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",

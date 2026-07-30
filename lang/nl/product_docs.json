@@ -1,0 +1,227 @@
+{
+    "chrome": {
+        "nav_label": "Productdocumentatie",
+        "back_home": "Terug naar startpagina",
+        "print_hint": "Afdrukken: Ctrl+P → PDF. Marges Minimaal/Geen, geen kop- en voetteksten.",
+        "last_updated": "Laatst bijgewerkt: :date"
+    },
+    "documents": {
+        "features": {
+            "label": "Features-overzicht"
+        },
+        "technical": {
+            "label": "Technische fiche"
+        }
+    },
+    "features": {
+        "label": "Features-overzicht",
+        "tagline": "Belangrijkste functies · afgestemd op de huidige handleiding",
+        "intro": "WinProx is één Facility-webapp: meldingen komen binnen, worden taken, en worden afgehandeld door teams — plus Time (uren) standaard.",
+        "flow": [
+            "QR-scan",
+            "Melding",
+            "Taken",
+            "Afhandeling",
+            "(+ Time via Clock Point)"
+        ],
+        "source": "Bronnen: Handleiding (Aan de slag + hoofdstukken) en FAQ in de app.",
+        "footer_left": "WinProx · info@winprox.app · Productoverzicht (handleiding/FAQ)",
+        "footer_right": "Zie ook: Technische fiche (hosting, GDPR, veiligheid)",
+        "left": [
+            {
+                "title": "Geen app nodig",
+                "body": "Alles in de browser. Beheer desktop-first; veld- en QR-portalen mobiel-first. Geen App Store, geen installatie."
+            },
+            {
+                "title": "QR-portals",
+                "body": "Unit-QR (melden + taken op locatie) · Clock Point-QR (aanmelden + in-/uitklokken + teamtaken) · Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
+            },
+            {
+                "title": "Meldingen",
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
+            },
+            {
+                "title": "Foto’s",
+                "body": "Tot 4 foto’s bij melding of afhandeling. Verkleining op het toestel vóór upload. In beheer meteen zichtbaar; op het publieke portaal pas na goedkeuring."
+            },
+            {
+                "title": "GPS",
+                "body": "Per categorie: “GPS-locatie toestaan” voor mobiele units (voertuig, machine, …). Locatie vastleggen via het portaal; historiek in beheer, openen in Maps."
+            },
+            {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: meetwaarden voor milieu, veiligheid en compliance (energie, inspecties, …). Optionele module: indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via portaal, beheer of API."
+            },
+            {
+                "title": "AI-vertaling",
+                "body": "Na goedkeuring: automatische vertaling van o.a. meldingen, taken, documenten en mededelingen (Platform → Vertalingen). Handmatig corrigeerbaar per taal. Lokaal via Ollama — geen externe AI-cloud."
+            }
+        ],
+        "right": [
+            {
+                "title": "Multi-tenant",
+                "body": "Elke organisatie heeft een eigen omgeving met limieten per abonnement (Time / Facility / Corporate)."
+            },
+            {
+                "title": "Facility",
+                "badge": "kern",
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, briefing, kalender, documenten en mededelingen op het portaal."
+            },
+            {
+                "title": "Taken",
+                "body": "Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities. Opvolging via Taken, kalender, briefing en QR op de werkvloer."
+            },
+            {
+                "title": "Time",
+                "badge": "standaard",
+                "body": "Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit (pauzes/shifts). Overzicht “nu aanwezig” en aandachtspunten. Time hoort bij elk abonnement."
+            },
+            {
+                "title": "Reserveringen",
+                "body": "Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Gast boekt via unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender."
+            },
+            {
+                "title": "IoT Connect",
+                "badge": "Facility+",
+                "body": "Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak. Metingen → ESG op Corporate. Gateway-token (ook zonder volledige REST API)."
+            },
+            {
+                "title": "API & webhooks",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token. Zie ook technische fiche."
+            }
+        ],
+        "full": [
+            {
+                "title": "Rollen",
+                "body": "Beheerder — volledige controle + abonnement · Medewerker — dagelijkse opvolging (geen billing/accounts) · Uitvoerder — veldwerk via Clock Point + unit-QR, zonder WinProx-login · Teamleader — icoon vrijgeven en coördineren via Clock Point-portaal."
+            }
+        ]
+    },
+    "technical": {
+        "label": "Technische fiche",
+        "tagline": "Facility-meldingen: QR → taken → afhandeling · SaaS voor operationele teams",
+        "intro": "Overzicht voor IT / security. WinProx is een multi-tenant webapplicatie (Laravel + MySQL) waarop elke klantorganisatie haar eigen afgeschermde omgeving heeft.",
+        "footer_left": "WinProx · info@winprox.app · Productoverzicht, geen juridisch advies of SLA.",
+        "footer_right": "Vragen? We lichten DPA, subverwerkers en integraties graag toe.",
+        "left": [
+            {
+                "title": "Hosting",
+                "items": [
+                    "Productie op **Linux** (EU), bij **Cloud86**.",
+                    "Toegang via **HTTPS** (versleutelde verbinding, TLS).",
+                    "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite-frontend.",
+                    "E-mail via SMTP in de EU; betalingen optioneel via Stripe."
+                ]
+            },
+            {
+                "title": "Backups",
+                "items": [
+                    "Automatische **dagelijkse** backups via Cloud86 (bestanden + database), bewaard **7 dagen**.",
+                    "**RPO ≈ 24 uur**: in het slechtste geval verlies je data sinds de laatste nachtelijke backup (Recovery Point Objective = max. aanvaardbaar dataverlies).",
+                    "**RTO: best effort, doorgaans binnen 1 werkdag** (Recovery Time Objective = tijd tot de dienst weer beschikbaar is na herstel).",
+                    "Bij volledige organisatieverwijdering: aparte technische SQL-snapshot **zonder media**, max. **30 dagen** (niet hetzelfde als disaster-recovery-backup)."
+                ]
+            },
+            {
+                "title": "Database",
+                "items": [
+                    "**MySQL**, relationeel model per tenant.",
+                    "Strikte **tenant-isolatie**: elke query/API-call blijft binnen de eigen organisatie.",
+                    "Geen gedeelde zichtbaarheid tussen klanten."
+                ]
+            },
+            {
+                "title": "Rechten",
+                "items": [
+                    "**Beheerder**: alles (users, bedrijf, abonnement, teams).",
+                    "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.",
+                    "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen vrijgeven.",
+                    "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles."
+                ]
+            },
+            {
+                "title": "API",
+                "items": [
+                    "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
+                    "O.a. meldingen, taken, locaties, units, teams, workers, ESG, vertalingen.",
+                    "Beschikbaar op **Corporate** (proef op verzoek).",
+                    "IoT-ingest apart via gateway-token (Facility + Corporate)."
+                ]
+            }
+        ],
+        "right": [
+            {
+                "title": "GDPR / AVG",
+                "items": [
+                    "**Klant = verwerkingsverantwoordelijke**; WinProx = **verwerker**.",
+                    "Kader: EU-AVG + Belgische wet (30 juli 2018).",
+                    "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
+                    "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
+                    "Gegevens blijven in de **EU** (hosting/e-mail); Stripe EU/US indien betalend."
+                ]
+            },
+            {
+                "title": "Beschikbaarheid",
+                "items": [
+                    "24/7 bereikbaar als SaaS (browser + QR-portalen).",
+                    "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
+                    "Formele uptime-SLA: op vraag contractueel af te spreken."
+                ]
+            },
+            {
+                "title": "Authenticatie",
+                "items": [
+                    "Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.",
+                    "**SSO** (Single Sign-On, één bedrijfs-login): later eventueel beschikbaar voor beheerders en medewerkers. Uitvoerders houden we bewust eenvoudig (QR + icoon, geen SSO).",
+                    "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
+                    "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon.",
+                    "Melders: publiek QR-portaal zonder account."
+                ]
+            },
+            {
+                "title": "Veiligheid",
+                "items": [
+                    "HTTPS; wachtwoorden gehasht; API-tokens intrekbaar.",
+                    "**CSRF-bescherming**: voorkomt dat een andere website stiekem acties uitvoert in naam van een ingelogde gebruiker.",
+                    "Tenant-scoping; audit-/activiteitenlogs.",
+                    "Webhooks met **HMAC-SHA256**-handtekening (bewijs dat het bericht van WinProx komt).",
+                    "API: max. **60 verzoeken/minuut** per token.",
+                    "Supporttoegang: uitzonderlijk, standaard alleen-lezen."
+                ]
+            },
+            {
+                "title": "Webhooks",
+                "items": [
+                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, ESG, GPS).",
+                    "Configuratie onder Instellingen → API; secret voor verificatie.",
+                    "Automatische retries bij falen (tot enkele pogingen met oplopende pauze).",
+                    "Zelfde planvereiste als API (Corporate)."
+                ]
+            }
+        ],
+        "full": [
+            {
+                "title": "Spam & misbruik (limieten)",
+                "items": [
+                    "**Publieke QR-meldingen** (per apparaat/IP, per unit): max. **1 melding per 3 minuten**; max. **5 meldingen per 30 minuten** op dezelfde unit; max. **20 meldingen per uur** over alle units van dezelfde organisatie. (Aangemelde uitvoerders vallen hierbuiten.)",
+                    "**Uitvoerders-aanmelding (icoon)**: na **2 foute icoonkeuzes** wordt de uitvoerder geblokkeerd tot een teamleader of beheerder vrijgeeft.",
+                    "**Beheer-login** (e-mail/wachtwoord): wachtwoorden gehasht; geen aparte app-rate-limit op mislukte logins (kan infra/contractueel versterkt worden).",
+                    "Extra: QR-meldingen op het publieke portaal blijven **onzichtbaar tot goedkeuring**; API heeft eigen rate limit (60/min)."
+                ]
+            },
+            {
+                "title": "AI (Artificial Intelligence = kunstmatige intelligentie)",
+                "items": [
+                    "**Optioneel**: AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …).",
+                    "Draait op een **lokale Ollama-instantie** — geen ChatGPT / externe AI-cloud voor deze functie.",
+                    "Teksten blijven binnen jullie verwerkingskader; beheerders kunnen vertalingen corrigeren of de functie uitzetten.",
+                    "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."
+                ]
+            }
+        ]
+    }
+}

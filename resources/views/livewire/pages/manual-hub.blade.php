@@ -27,6 +27,20 @@
                 </a>
                 <p class="wp-muted">{{ __('manual.hub.teamleaders_desc') }}</p>
             </div>
+
+            <div class="wp-stack-tight">
+                <a href="{{ route('product.features') }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
+                    {{ __('manual.hub.features_overview') }}
+                </a>
+                <p class="wp-muted">{{ __('manual.hub.features_overview_desc') }}</p>
+            </div>
+
+            <div class="wp-stack-tight">
+                <a href="{{ route('product.technical') }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
+                    {{ __('manual.hub.technical_sheet') }}
+                </a>
+                <p class="wp-muted">{{ __('manual.hub.technical_sheet_desc') }}</p>
+            </div>
         </div>
     </div>
 </div>

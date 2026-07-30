@@ -332,6 +332,31 @@ Roadmap-principes (QR first, worker first, mobile first, simplicity wins) **info
 
 ---
 
+## 10a. Productfiches (features + technisch) — up-to-date houden (hard)
+
+Publieke + in-app documentatie voor prospects en IT:
+
+| Fiche | Route | Bron |
+|---|---|---|
+| Features-overzicht | `/{locale}/docs/features` (`product.features`) | `lang/*/product_docs.json` → `features` |
+| Technische fiche | `/{locale}/docs/technical` (`product.technical`) | `lang/*/product_docs.json` → `technical` |
+
+**Links:** welcome-nav/footer · Handleidingen-hub (`/manual`) · sitemap via `MarketingSeo`.
+
+### Onderhoud (verplicht bij elke relevante wijziging)
+Als je iets toevoegt of wijzigt dat de fiches raakt (nieuwe module/feature, hosting/GDPR/backup,
+API/webhooks, authenticatie/rechten, spam-limieten, AI, plan-grenzen), dan **in dezelfde taak**:
+
+1. Update **`lang/{nl,en,fr,de,es,it}/product_docs.json`** (alle talen in **pariteit**).
+2. Zet **`PRODUCT_DOCS_LAST_UPDATED`** / default in `config/product_docs.php` op vandaag.
+3. Houd de tekst in **mensentaal** (geen jargon zonder uitleg) en consistent met handleiding/FAQ/legal.
+4. `npm run check:locales:parity` groen.
+
+De oude print-HTML’s in `docs/*-klant.html` zijn **geen** bron van waarheid meer — alleen
+eventueel als lokale print-referentie; de app/website-JSON is leidend.
+
+---
+
 ## 13. Onderhoud na V2-alignment (hard voor AI & mensen)
 
 De brede architectuur-alignment is **afgerond**. **Geen** repo-brede “alles nalopen”-runs meer —

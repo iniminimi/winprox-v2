@@ -69,7 +69,11 @@
         "workers": "Handleiding uitvoerders",
         "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, taken en foto's.",
         "teamleaders": "Handleiding teamleaders",
-        "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het Clock Point-portaal."
+        "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het Clock Point-portaal.",
+        "features_overview": "Features-overzicht",
+        "features_overview_desc": "Belangrijkste functies in één oogopslag (publiek + printbaar).",
+        "technical_sheet": "Technische fiche",
+        "technical_sheet_desc": "Hosting, GDPR, API, veiligheid — voor IT (publiek + printbaar)."
     },
     "workers": {
         "cover": {

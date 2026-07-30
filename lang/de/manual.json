@@ -69,7 +69,11 @@
         "workers": "Mitarbeiter-Handbuch",
         "workers_desc": "Clock Point QR und Unit-QR vor Ort — Anmeldung, Aufgaben und Fotos.",
         "teamleaders": "Teamleiter-Handbuch",
-        "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Clock Point-Portal koordinieren."
+        "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Clock Point-Portal koordinieren.",
+        "features_overview": "Feature-Übersicht",
+        "features_overview_desc": "Wichtigste Funktionen auf einen Blick (öffentlich + druckbar).",
+        "technical_sheet": "Technisches Datenblatt",
+        "technical_sheet_desc": "Hosting, DSGVO, API, Sicherheit — für IT (öffentlich + druckbar)."
     },
     "workers": {
         "cover": {

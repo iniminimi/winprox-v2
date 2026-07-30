@@ -35,6 +35,12 @@ final class MarketingSeo
             }
         }
 
+        foreach (config('product_docs.documents', []) as $meta) {
+            if (isset($meta['route']) && is_string($meta['route'])) {
+                $names[] = $meta['route'];
+            }
+        }
+
         return $names;
     }
 

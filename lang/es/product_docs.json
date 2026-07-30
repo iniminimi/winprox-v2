@@ -1,0 +1,227 @@
+{
+    "chrome": {
+        "nav_label": "Documentación del producto",
+        "back_home": "Volver al inicio",
+        "print_hint": "Imprimir: Ctrl+P → PDF. Márgenes Mínimos/Ninguno, sin encabezados ni pies.",
+        "last_updated": "Última actualización: :date"
+    },
+    "documents": {
+        "features": {
+            "label": "Resumen de funciones"
+        },
+        "technical": {
+            "label": "Ficha técnica"
+        }
+    },
+    "features": {
+        "label": "Resumen de funciones",
+        "tagline": "Key capabilities · aligned with the current in-app manual",
+        "intro": "WinProx is one Facility web app: issues come in, become tasks, and are handled by teams — plus Time (attendance) by default.",
+        "flow": [
+            "QR scan",
+            "Issue",
+            "Tasks",
+            "Completion",
+            "(+ Time via Clock Point)"
+        ],
+        "source": "Sources: Manual (Getting started + chapters) and FAQ in the app.",
+        "footer_left": "WinProx · info@winprox.app · Product overview (manual/FAQ)",
+        "footer_right": "See also: Technical fact sheet (hosting, GDPR, security)",
+        "left": [
+            {
+                "title": "No app required",
+                "body": "Everything runs in the browser. Back office is desktop-first; field and QR portals are mobile-first. No App Store, no install."
+            },
+            {
+                "title": "QR portals",
+                "body": "Unit QR (report + on-site tasks) · Clock Point QR (sign-in + clock in/out + team tasks) · Location QR. Printable as sticker sheets (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later."
+            },
+            {
+                "title": "Issues",
+                "body": "Via unit QR, manually in the back office, or (with IoT) a sensor alarm. Filters, approval of QR issues, recurring maintenance. On public QR pages only visible after approval; back office sees everything immediately."
+            },
+            {
+                "title": "Photos",
+                "body": "Up to 4 photos per issue or completion. Resized on the device before upload. Visible immediately in the back office; on the public portal only after approval."
+            },
+            {
+                "title": "GPS",
+                "body": "Per category: “Allow GPS location” for mobile units (vehicle, machine, …). Capture location via the portal; history in the back office, open in Maps."
+            },
+            {
+                "title": "ESG & Compliance",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "ESG = Environmental, Social & Governance: readings for environment, safety and compliance (energy, inspections, …). Optional module: indicators, measurements and follow-up tasks for recurring checks. Record via portal, back office or API."
+            },
+            {
+                "title": "AI translation",
+                "body": "After approval: automatic translation of issues, tasks, documents and announcements (Platform → Translations). Manually editable per language. Local via Ollama — no external AI cloud."
+            }
+        ],
+        "right": [
+            {
+                "title": "Multi-tenant",
+                "body": "Each organisation has its own environment with plan limits (Time / Facility / Corporate)."
+            },
+            {
+                "title": "Facility",
+                "badge": "core",
+                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, briefing, calendar, documents and announcements on the portal."
+            },
+            {
+                "title": "Tasks",
+                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via Tasks, calendar, briefing and QR on the floor."
+            },
+            {
+                "title": "Time",
+                "badge": "standard",
+                "body": "Clock Points: workers sign in (name + icon) and clock in/out (breaks/shifts). “Present now” overview and attention items. Time is included on every plan."
+            },
+            {
+                "title": "Reservations",
+                "body": "For shareable resources with a time slot (room, vehicle, key). Guests book via unit QR (hold + email confirmation). Manage via Reservations and calendar."
+            },
+            {
+                "title": "IoT Connect",
+                "badge": "Facility+",
+                "body": "Sensor gateways send events; alarms become an approved issue + task. Readings → ESG on Corporate. Gateway token (also without full REST API)."
+            },
+            {
+                "title": "API & webhooks",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "REST API tokens and outbound webhooks (HMAC) under Settings. Connect issues, tasks, ESG, … IoT ingest via a separate gateway token. See also the technical fact sheet."
+            }
+        ],
+        "full": [
+            {
+                "title": "Roles",
+                "body": "Admin — full control + subscription · Employee — day-to-day follow-up (no billing/accounts) · Worker — field work via Clock Point + unit QR, without WinProx login · Team leader — release icons and coordinate via the Clock Point portal."
+            }
+        ]
+    },
+    "technical": {
+        "label": "Ficha técnica",
+        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
+        "intro": "Overview for IT / security. WinProx is a multi-tenant web application (Laravel + MySQL) where each customer organisation has its own isolated environment.",
+        "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
+        "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
+        "left": [
+            {
+                "title": "Hosting",
+                "items": [
+                    "Production on **Linux** (EU), at **Cloud86**.",
+                    "Access via **HTTPS** (encrypted connection, TLS).",
+                    "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
+                    "Email via SMTP in the EU; payments optional via Stripe."
+                ]
+            },
+            {
+                "title": "Backups",
+                "items": [
+                    "Automatic **daily** backups via Cloud86 (files + database), retained for **7 days**.",
+                    "**RPO ≈ 24 hours**: in the worst case you lose data since the last nightly backup (Recovery Point Objective = max. acceptable data loss).",
+                    "**RTO: best effort, typically within 1 business day** (Recovery Time Objective = time until the service is available again after restore).",
+                    "On full organisation deletion: separate technical SQL snapshot **without media**, max. **30 days** (not the same as a disaster-recovery backup)."
+                ]
+            },
+            {
+                "title": "Database",
+                "items": [
+                    "**MySQL**, relational model per tenant.",
+                    "Strict **tenant isolation**: every query/API call stays within the organisation.",
+                    "No shared visibility between customers."
+                ]
+            },
+            {
+                "title": "Permissions",
+                "items": [
+                    "**Admin**: everything (users, company, subscription, teams).",
+                    "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
+                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons.",
+                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything."
+                ]
+            },
+            {
+                "title": "API",
+                "items": [
+                    "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
+                    "Including issues, tasks, locations, units, teams, workers, ESG, translations.",
+                    "Available on **Corporate** (trial on request).",
+                    "IoT ingest separately via gateway token (Facility + Corporate)."
+                ]
+            }
+        ],
+        "right": [
+            {
+                "title": "GDPR",
+                "items": [
+                    "**Customer = controller**; WinProx = **processor**.",
+                    "Framework: EU GDPR + Belgian Act of 30 July 2018.",
+                    "Data Processing Agreement (DPA) and subprocessor list available.",
+                    "Data export (account), self-service organisation deletion, retention periods documented.",
+                    "Data stays in the **EU** (hosting/email); Stripe EU/US when paying."
+                ]
+            },
+            {
+                "title": "Availability",
+                "items": [
+                    "Available 24/7 as SaaS (browser + QR portals).",
+                    "Planned maintenance preferably outside business hours, with notice where possible.",
+                    "Formal uptime SLA: available contractually on request."
+                ]
+            },
+            {
+                "title": "Authentication",
+                "items": [
+                    "Back office: email + password (stored hashed), sessions.",
+                    "**SSO** (Single Sign-On): may be offered later for admins and employees. Workers stay deliberately simple (QR + icon, no SSO).",
+                    "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
+                    "Workers: **no email login** — Clock Point QR + name + personal icon.",
+                    "Reporters: public QR portal without an account."
+                ]
+            },
+            {
+                "title": "Security",
+                "items": [
+                    "HTTPS; hashed passwords; revocable API tokens.",
+                    "**CSRF protection**: prevents another website from secretly performing actions as a logged-in user.",
+                    "Tenant scoping; audit/activity logs.",
+                    "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
+                    "API: max. **60 requests/minute** per token.",
+                    "Support access: exceptional, read-only by default."
+                ]
+            },
+            {
+                "title": "Webhooks",
+                "items": [
+                    "Outbound HTTP POST on events (e.g. issue/task status, ESG, GPS).",
+                    "Configured under Settings → API; secret for verification.",
+                    "Automatic retries on failure (several attempts with increasing delay).",
+                    "Same plan requirement as API (Corporate)."
+                ]
+            }
+        ],
+        "full": [
+            {
+                "title": "Spam & abuse (limits)",
+                "items": [
+                    "**Public QR issues** (per device/IP, per unit): max. **1 issue per 3 minutes**; max. **5 issues per 30 minutes** on the same unit; max. **20 issues per hour** across all units of the same organisation. (Signed-in workers are exempt.)",
+                    "**Worker sign-in (icon)**: after **2 wrong icon choices** the worker is locked until a team leader or admin releases them.",
+                    "**Back-office login** (email/password): passwords hashed; no separate app rate limit on failed logins (can be strengthened via infra/contract).",
+                    "Extra: QR issues on the public portal stay **invisible until approval**; API has its own rate limit (60/min)."
+                ]
+            },
+            {
+                "title": "AI (Artificial Intelligence)",
+                "items": [
+                    "**Optional**: AI translations of operational texts (issues, tasks, units, announcements, …).",
+                    "Runs on a **local Ollama instance** — no ChatGPT / external AI cloud for this feature.",
+                    "Texts stay within your processing framework; admins can correct translations or turn the feature off.",
+                    "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
+                ]
+            }
+        ]
+    }
+}

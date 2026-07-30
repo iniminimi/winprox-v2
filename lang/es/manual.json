@@ -69,7 +69,11 @@
         "workers": "Manual de trabajadores",
         "workers_desc": "QR Clock Point y QR de unidad en el lugar — inicio de sesión, tareas y fotos.",
         "teamleaders": "Manual de jefe de equipo",
-        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point."
+        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point.",
+        "features_overview": "Resumen de funciones",
+        "features_overview_desc": "Funciones clave de un vistazo (público + imprimible).",
+        "technical_sheet": "Ficha técnica",
+        "technical_sheet_desc": "Hosting, RGPD, API, seguridad — para IT (público + imprimible)."
     },
     "workers": {
         "cover": {

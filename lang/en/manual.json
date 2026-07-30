@@ -69,7 +69,11 @@
         "workers": "Workers manual",
         "workers_desc": "Clock Point QR and unit QR on site — sign in, tasks and photos.",
         "teamleaders": "Team leader manual",
-        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the Clock Point portal."
+        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the Clock Point portal.",
+        "features_overview": "Features overview",
+        "features_overview_desc": "Key capabilities at a glance (public + printable).",
+        "technical_sheet": "Technical fact sheet",
+        "technical_sheet_desc": "Hosting, GDPR, API, security — for IT (public + printable)."
     },
     "workers": {
         "cover": {

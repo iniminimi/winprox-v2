@@ -423,6 +423,9 @@
         <div class="wp-welcome-footer-inner">
             @include('partials.wp-welcome-brand')
             <nav class="wp-welcome-footer-nav" aria-label="{{ __('legal.index_title') }}">
+                @foreach (config('product_docs.documents', []) as $docMeta)
+                    <a href="{{ route($docMeta['route']) }}">{{ __($docMeta['label_key']) }}</a>
+                @endforeach
                 @foreach (config('legal.documents', []) as $docMeta)
                     <a href="{{ route($docMeta['route']) }}" target="_blank" rel="noopener">{{ __($docMeta['label_key']) }}</a>
                 @endforeach
