@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WinProx — Features-overzicht</title>
   <style>
-    @page { size: A4; margin: 12mm 14mm; }
+    @page { size: A4; margin: 8mm 8mm; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -14,9 +14,10 @@
       background: #fff;
     }
     .sheet {
-      max-width: 190mm;
-      margin: 0 auto;
-      padding: 8mm 0;
+      max-width: none;
+      width: 100%;
+      margin: 0;
+      padding: 4mm 0 6mm;
     }
     header {
       display: flex;
@@ -72,7 +73,8 @@
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px 10px;
+      gap: 6px 8px;
+      align-items: start;
     }
     article {
       break-inside: avoid;
@@ -120,7 +122,7 @@
     }
     @media print {
       body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .sheet { padding: 0; max-width: none; }
+      .sheet { padding: 0; max-width: none; width: 100%; }
       .no-print { display: none !important; }
     }
     .hint {
