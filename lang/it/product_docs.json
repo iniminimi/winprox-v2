@@ -37,6 +37,10 @@
                 "body": "Unit QR (report + on-site tasks) · Clock Point QR (sign-in + clock in/out + team tasks) · Location QR. Printable as sticker sheets (Avery) or full-page A6/A5/A4. Dynamic QRs that can be linked to a unit later."
             },
             {
+                "title": "Branding & QR",
+                "body": "Organisation logo and portal background; unit photos and a background photo per unit. Avery or A6/A5/A4 sticker formats under Settings — print-ready."
+            },
+            {
                 "title": "Issues",
                 "body": "Via unit QR, manually in the back office, or (with IoT) a sensor alarm. Filters, approval of QR issues, recurring maintenance. On public QR pages only visible after approval; back office sees everything immediately."
             },
@@ -67,16 +71,24 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, briefing, calendar, documents and announcements on the portal."
+                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, documents and announcements on the portal."
             },
             {
                 "title": "Tasks",
-                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via Tasks, calendar, briefing and QR on the floor."
+                "body": "One issue → one or more tasks, each for one team. Priority, due date, notes. Follow-up via the Tasks list and QR on the floor."
+            },
+            {
+                "title": "Briefing",
+                "body": "Printable report of open tasks for the selected day, grouped by team. Available from Dashboard, Tasks and Calendar — useful at shift start."
+            },
+            {
+                "title": "Calendar",
+                "body": "Month, week and day views of tasks, issues and reservations. From the calendar you can also print the briefing for that day."
             },
             {
                 "title": "Time",
                 "badge": "standard",
-                "body": "Clock Points: workers sign in (name + icon) and clock in/out (breaks/shifts). “Present now” overview and attention items. Time is included on every plan."
+                "body": "Clock Points: workers sign in (name + icon) and clock in/out (breaks/shifts). Attendance overview (present / break / away), filters by team or location, and attention items for open shifts. Time is included on every plan."
             },
             {
                 "title": "Reservations",

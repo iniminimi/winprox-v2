@@ -37,6 +37,10 @@
                 "body": "Unit-QR (melden + taken op locatie) · Clock Point-QR (aanmelden + in-/uitklokken + teamtaken) · Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
             },
             {
+                "title": "Branding & QR",
+                "body": "Organisatielogo en portaalachtergrond; unitfoto’s en achtergrondfoto per unit. Stickerformats Avery of A6/A5/A4 onder Instellingen — klaar voor print."
+            },
+            {
                 "title": "Meldingen",
                 "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
             },
@@ -67,16 +71,24 @@
             {
                 "title": "Facility",
                 "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, briefing, kalender, documenten en mededelingen op het portaal."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal."
             },
             {
                 "title": "Taken",
-                "body": "Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities. Opvolging via Taken, kalender, briefing en QR op de werkvloer."
+                "body": "Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities. Opvolging via Taken-lijst en QR op de werkvloer."
+            },
+            {
+                "title": "Briefing",
+                "body": "Printbaar verslag van de open taken van de gekozen dag, gegroepeerd per team. Beschikbaar vanaf Dashboard, Taken en Kalender — handig voor de shiftstart."
+            },
+            {
+                "title": "Kalender",
+                "body": "Maand-, week- en dagweergave van taken, meldingen en reserveringen. Vanuit de kalender ook briefing afdrukken voor die dag."
             },
             {
                 "title": "Time",
                 "badge": "standaard",
-                "body": "Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit (pauzes/shifts). Overzicht “nu aanwezig” en aandachtspunten. Time hoort bij elk abonnement."
+                "body": "Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit (pauzes/shifts). Aanwezigheidsoverzicht (aanwezig / pauze / afwezig), filters op team of locatie, en aandachtspunten bij open shifts. Time hoort bij elk abonnement."
             },
             {
                 "title": "Reserveringen",
