@@ -154,8 +154,7 @@
 
     <p class="intro">
       WinProx is één Facility-webapp: meldingen komen binnen, worden taken, en worden
-      afgehandeld door teams — plus Time (uren) standaard. Geen aparte hospitality- of
-      aannemersportalen.
+      afgehandeld door teams — plus Time (uren) standaard.
     </p>
 
     <div class="flow">
@@ -189,10 +188,10 @@
         <h2>QR-portals</h2>
         <p>
           <strong>Unit-QR</strong> (melden + taken op locatie) ·
-          <strong>Team-QR</strong> (teamtaken) ·
-          <strong>Clock Point-QR</strong> (aanmelden + in-/uitklokken) ·
-          <strong>Locatie-QR</strong>. Stickervellen (Avery) en dynamische QR’s die later
-          aan een unit gekoppeld worden.
+          <strong>Clock Point-QR</strong> (aanmelden + in-/uitklokken + teamtaken) ·
+          <strong>Locatie-QR</strong>.
+          Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die
+          later aan een unit gekoppeld worden.
         </p>
       </article>
 
@@ -209,8 +208,8 @@
         <h2>Meldingen</h2>
         <p>
           Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring
-          van QR-meldingen, terugkerend onderhoud. Publieke QR-pagina’s blurren tekst/foto’s
-          tot goedkeuring; beheer ziet alles onverkort.
+          van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar
+          na goedkeuring; beheer ziet alles meteen.
         </p>
       </article>
 
@@ -226,7 +225,7 @@
         <h2>Foto’s</h2>
         <p>
           Tot 4 foto’s bij melding of afhandeling. Verkleining op het toestel vóór upload.
-          Scherp in beheer; geblurd op publiek portaal tot goedkeuring.
+          In beheer meteen zichtbaar; op het publieke portaal pas na goedkeuring.
         </p>
       </article>
 
@@ -242,7 +241,7 @@
       <article>
         <h2>GPS</h2>
         <p>
-          Per categorie: “GPS-locatie toestaan” voor mobiele units (kraan, machine, …).
+          Per categorie: “GPS-locatie toestaan” voor mobiele units (voertuig, machine, …).
           Locatie vastleggen via het portaal; historiek in beheer, openen in Maps.
         </p>
       </article>
@@ -258,8 +257,10 @@
       <article>
         <h2>ESG &amp; Compliance <span class="badge badge--corp">Corporate</span></h2>
         <p>
-          Optionele module: indicatoren, metingen en opvolgtaken bij terugkerende
-          inspecties. Registratie via portaal, beheer of API.
+          <strong>ESG</strong> = Environmental, Social &amp; Governance: meetwaarden voor
+          milieu, veiligheid en compliance (energie, inspecties, …). Optionele module:
+          indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via
+          portaal, beheer of API.
         </p>
       </article>
 
@@ -285,6 +286,7 @@
         <p>
           REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen.
           Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token.
+          Zie ook technische fiche.
         </p>
       </article>
 
@@ -293,7 +295,7 @@
         <p>
           <strong>Beheerder</strong> — volledige controle + abonnement ·
           <strong>Medewerker</strong> — dagelijkse opvolging (geen billing/accounts) ·
-          <strong>Uitvoerder</strong> — veldwerk via Clock Point + unit-/team-QR, zonder
+          <strong>Uitvoerder</strong> — veldwerk via Clock Point + unit-QR, zonder
           WinProx-login · <strong>Teamleader</strong> — icoon vrijgeven en coördineren
           via Clock Point-portaal.
         </p>
