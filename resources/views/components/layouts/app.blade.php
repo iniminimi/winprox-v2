@@ -276,7 +276,10 @@
                                 aria-label="{{ __('help.avatar_alt') }}"
                             ></video>
                         </div>
-                        <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
+                        <div class="wp-help-panel-title-wrap">
+                            <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
+                            <p class="wp-help-panel-subtitle">{{ __('help.welcome') }}</p>
+                        </div>
                     </div>
                     <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">&times;</button>
                 </div>
@@ -305,6 +308,7 @@
     @livewireScripts
 </body>
 </html>
+
 
 
 

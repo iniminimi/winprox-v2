@@ -635,6 +635,14 @@
     align-items: center;
     gap: 0.6rem;
     min-width: 0;
+    flex: 1;
+}
+
+.wp-help-panel-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
 }
 
 .wp-help-panel-title {
@@ -643,7 +651,14 @@
     font-weight: 700;
     color: #ffffff;
     line-height: 1.25;
-    white-space: nowrap;
+}
+
+.wp-help-panel-subtitle {
+    margin: 0;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: rgb(255 255 255 / 0.92);
 }
 
 .wp-help-panel-close {
@@ -1215,5 +1230,6 @@
         width: 100%;
     }
 }
+
 
 

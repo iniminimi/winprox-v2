@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 namespace App\Livewire\Components;
 
@@ -17,10 +17,6 @@ class HelpChat extends Component
 
     public int $messageSeq = 0;
 
-    public function mount(): void
-    {
-        $this->messages[] = $this->makeMessage('assistant', __('help.welcome'));
-    }
 
     public function send(ProcessHelpChatMessageAction $process): void
     {
@@ -80,3 +76,5 @@ class HelpChat extends Component
         return view('livewire.components.help-chat');
     }
 }
+
+
