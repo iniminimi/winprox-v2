@@ -791,6 +791,13 @@ a.wp-kpi:hover {
     pointer-events: none;
 }
 
+.wp-kpi--has-assistant .wp-kpi-icon {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    overflow: hidden;
+}
+
 /* ---------------------------------------------------------------------------
  | Configuratiegezondheid — donut + dashboard-widget.
  * ------------------------------------------------------------------------- */

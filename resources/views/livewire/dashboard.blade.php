@@ -82,7 +82,7 @@
         <div class="wp-kpis">
             @foreach ($stats->kpiTiles() as $kpi)
                 <a href="{{ $kpiLinks[$kpi['href_key']] }}"
-                   @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert']])
+                   @class(['wp-kpi', 'wp-kpi--'.$kpi['key'], 'wp-kpi--alert' => $kpi['alert'], 'wp-kpi--has-assistant' => $kpi['key'] === 'time_attention'])
                    wire:key="kpi-{{ $kpi['key'] }}">
                     <div class="wp-kpi-body">
                         <div class="wp-kpi-main">
@@ -99,8 +99,8 @@
                                 <video
                                     class="wp-kpi-icon__video"
                                     src="{{ asset('video/assistant_attention.mp4') }}"
-                                    width="40"
-                                    height="40"
+                                    width="80"
+                                    height="80"
                                     muted
                                     playsinline
                                     preload="auto"
