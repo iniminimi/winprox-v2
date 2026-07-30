@@ -95,7 +95,26 @@
                             </p>
                         </div>
                         <span class="wp-kpi-icon" aria-hidden="true">
-                            <x-wp-icon :name="$kpi['icon']" />
+                            @if ($kpi['key'] === 'time_attention')
+                                <video
+                                    class="wp-kpi-icon__video"
+                                    src="{{ asset('video/assistant_attention.mp4') }}"
+                                    width="40"
+                                    height="40"
+                                    muted
+                                    playsinline
+                                    preload="auto"
+                                    x-data
+                                    x-init="
+                                        setTimeout(() => {
+                                            $el.currentTime = 0;
+                                            $el.play().catch(() => {});
+                                        }, 1000);
+                                    "
+                                ></video>
+                            @else
+                                <x-wp-icon :name="$kpi['icon']" />
+                            @endif
                         </span>
                     </div>
                 </a>
