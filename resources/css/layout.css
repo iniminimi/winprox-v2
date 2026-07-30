@@ -339,7 +339,7 @@
     min-height: 80px;
     padding: 0 0.75rem;
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-pill);
+    border-radius: var(--wp-radius-lg);
     background-color: var(--wp-surface);
     color: var(--wp-text-body);
     font-size: 0.8125rem;
@@ -527,7 +527,7 @@
     height: 4rem;
     padding: 0;
     border: 2px solid #ffffff;
-    border-radius: var(--wp-radius-pill);
+    border-radius: var(--wp-radius-lg);
     background-color: #059669;
     color: #ffffff;
     cursor: pointer;
@@ -1248,6 +1248,7 @@
         width: 100%;
     }
 }
+
 
 
 
