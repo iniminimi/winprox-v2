@@ -806,12 +806,12 @@ a.wp-kpi:hover {
 }
 
 .wp-kpi--has-assistant .wp-kpi-body {
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
 }
 
 .wp-kpi--has-assistant .wp-kpi-stats {
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
 }
 
 /* ---------------------------------------------------------------------------
