@@ -104,7 +104,7 @@
                     const key = 'wp_help_fab_page_count';
                     const next = (parseInt(sessionStorage.getItem(key) || '0', 10) || 0) + 1;
                     sessionStorage.setItem(key, String(next));
-                    this.helpFabShowQuestion = next % 5 === 0;
+                    this.helpFabShowQuestion = next % 3 === 0;
                 } catch (e) {
                     this.helpFabShowQuestion = false;
                 }
