@@ -299,7 +299,9 @@
                 aria-controls="wp-help-chat-panel"
                 :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
             >
-                <x-wp-icon name="chat-bubble" class="wp-icon wp-help-button-icon" x-show="!help" />
+                <span class="wp-help-button-avatar" x-show="!help" x-cloak aria-hidden="true">
+                    <img src="{{ asset('images/assistant_small.jpg') }}" alt="" width="56" height="56">
+                </span>
                 <x-wp-icon name="x-mark" class="wp-icon wp-help-button-icon" x-show="help" x-cloak />
             </button>
         </div>
@@ -308,6 +310,7 @@
     @livewireScripts
 </body>
 </html>
+
 
 
 
