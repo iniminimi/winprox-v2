@@ -5,19 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WinProx — Features-overzicht</title>
   <style>
-    @page { size: A4; margin: 8mm 8mm; }
+    @page { size: A4; margin: 10mm 12mm; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: #1a1a1a;
       font: 9.1pt/1.32 "Segoe UI", system-ui, sans-serif;
-      background: #fff;
+      background: #e5e7eb;
     }
     .sheet {
-      max-width: none;
-      width: 100%;
-      margin: 0;
-      padding: 4mm 0 6mm;
+      max-width: 170mm;
+      margin: 0 auto;
+      padding: 6mm 8mm 8mm;
+      background: #fff;
     }
     header {
       display: flex;
@@ -70,11 +70,17 @@
       font-size: 7.5pt;
       color: #6b7280;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 8px;
-      align-items: start;
+    .columns {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
     article {
       break-inside: avoid;
@@ -83,7 +89,9 @@
       padding: 6px 8px 7px;
       background: #fafafa;
     }
-    article.wide { grid-column: 1 / -1; }
+    .full {
+      margin-top: 6px;
+    }
     h2 {
       margin: 0 0 2px;
       font-size: 9.2pt;
@@ -101,10 +109,6 @@
       color: #065f46;
       vertical-align: middle;
     }
-    .badge--opt {
-      background: #e0e7ff;
-      color: #3730a3;
-    }
     .badge--corp {
       background: #fef3c7;
       color: #92400e;
@@ -121,8 +125,16 @@
       gap: 12px;
     }
     @media print {
-      body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-      .sheet { padding: 0; max-width: none; width: 100%; }
+      body {
+        background: #fff;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .sheet {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+      }
       .no-print { display: none !important; }
     }
     .hint {
@@ -169,130 +181,136 @@
 
     <p class="source">Bronnen: Handleiding (Aan de slag + hoofdstukken) en FAQ in de app.</p>
 
-    <div class="grid">
-      <article>
-        <h2>Geen app nodig</h2>
-        <p>
-          Alles in de browser. Beheer desktop-first; veld- en QR-portalen mobiel-first.
-          Geen App Store, geen installatie.
-        </p>
-      </article>
+    <div class="columns">
+      <div class="col">
+        <article>
+          <h2>Geen app nodig</h2>
+          <p>
+            Alles in de browser. Beheer desktop-first; veld- en QR-portalen mobiel-first.
+            Geen App Store, geen installatie.
+          </p>
+        </article>
 
-      <article>
-        <h2>Multi-tenant</h2>
-        <p>
-          Elke organisatie heeft een eigen omgeving met limieten per abonnement
-          (Time / Facility / Corporate).
-        </p>
-      </article>
+        <article>
+          <h2>QR-portals</h2>
+          <p>
+            <strong>Unit-QR</strong> (melden + taken op locatie) ·
+            <strong>Clock Point-QR</strong> (aanmelden + in-/uitklokken + teamtaken) ·
+            <strong>Locatie-QR</strong>.
+            Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die
+            later aan een unit gekoppeld worden.
+          </p>
+        </article>
 
-      <article>
-        <h2>QR-portals</h2>
-        <p>
-          <strong>Unit-QR</strong> (melden + taken op locatie) ·
-          <strong>Clock Point-QR</strong> (aanmelden + in-/uitklokken + teamtaken) ·
-          <strong>Locatie-QR</strong>.
-          Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die
-          later aan een unit gekoppeld worden.
-        </p>
-      </article>
+        <article>
+          <h2>Meldingen</h2>
+          <p>
+            Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring
+            van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar
+            na goedkeuring; beheer ziet alles meteen.
+          </p>
+        </article>
 
-      <article>
-        <h2>Facility <span class="badge">kern</span></h2>
-        <p>
-          Locaties, units, categorieën, teams en uitvoerders (intern of extern).
-          Bulk/CSV-import, dashboard, briefing, kalender, documenten en mededelingen
-          op het portaal.
-        </p>
-      </article>
+        <article>
+          <h2>Foto’s</h2>
+          <p>
+            Tot 4 foto’s bij melding of afhandeling. Verkleining op het toestel vóór upload.
+            In beheer meteen zichtbaar; op het publieke portaal pas na goedkeuring.
+          </p>
+        </article>
 
-      <article>
-        <h2>Meldingen</h2>
-        <p>
-          Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring
-          van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar
-          na goedkeuring; beheer ziet alles meteen.
-        </p>
-      </article>
+        <article>
+          <h2>GPS</h2>
+          <p>
+            Per categorie: “GPS-locatie toestaan” voor mobiele units (voertuig, machine, …).
+            Locatie vastleggen via het portaal; historiek in beheer, openen in Maps.
+          </p>
+        </article>
 
-      <article>
-        <h2>Taken</h2>
-        <p>
-          Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities.
-          Opvolging via Taken, kalender, briefing en QR op de werkvloer.
-        </p>
-      </article>
+        <article>
+          <h2>ESG &amp; Compliance <span class="badge badge--corp">Corporate</span></h2>
+          <p>
+            <strong>ESG</strong> = Environmental, Social &amp; Governance: meetwaarden voor
+            milieu, veiligheid en compliance (energie, inspecties, …). Optionele module:
+            indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via
+            portaal, beheer of API.
+          </p>
+        </article>
 
-      <article>
-        <h2>Foto’s</h2>
-        <p>
-          Tot 4 foto’s bij melding of afhandeling. Verkleining op het toestel vóór upload.
-          In beheer meteen zichtbaar; op het publieke portaal pas na goedkeuring.
-        </p>
-      </article>
+        <article>
+          <h2>AI-vertaling</h2>
+          <p>
+            Na goedkeuring: automatische vertaling van o.a. meldingen, taken, documenten
+            en mededelingen (Platform → Vertalingen). Handmatig corrigeerbaar per taal.
+            Lokaal via Ollama — geen externe AI-cloud.
+          </p>
+        </article>
+      </div>
 
-      <article>
-        <h2>Time <span class="badge">standaard</span></h2>
-        <p>
-          Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit
-          (pauzes/shifts). Overzicht “nu aanwezig” en aandachtspunten. Time hoort bij
-          elk abonnement.
-        </p>
-      </article>
+      <div class="col">
+        <article>
+          <h2>Multi-tenant</h2>
+          <p>
+            Elke organisatie heeft een eigen omgeving met limieten per abonnement
+            (Time / Facility / Corporate).
+          </p>
+        </article>
 
-      <article>
-        <h2>GPS</h2>
-        <p>
-          Per categorie: “GPS-locatie toestaan” voor mobiele units (voertuig, machine, …).
-          Locatie vastleggen via het portaal; historiek in beheer, openen in Maps.
-        </p>
-      </article>
+        <article>
+          <h2>Facility <span class="badge">kern</span></h2>
+          <p>
+            Locaties, units, categorieën, teams en uitvoerders (intern of extern).
+            Bulk/CSV-import, dashboard, briefing, kalender, documenten en mededelingen
+            op het portaal.
+          </p>
+        </article>
 
-      <article>
-        <h2>Reserveringen</h2>
-        <p>
-          Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Gast boekt via
-          unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender.
-        </p>
-      </article>
+        <article>
+          <h2>Taken</h2>
+          <p>
+            Eén melding → één of meer taken, elk voor één team. Prio, deadline, notities.
+            Opvolging via Taken, kalender, briefing en QR op de werkvloer.
+          </p>
+        </article>
 
-      <article>
-        <h2>ESG &amp; Compliance <span class="badge badge--corp">Corporate</span></h2>
-        <p>
-          <strong>ESG</strong> = Environmental, Social &amp; Governance: meetwaarden voor
-          milieu, veiligheid en compliance (energie, inspecties, …). Optionele module:
-          indicatoren, metingen en opvolgtaken bij terugkerende controles. Registratie via
-          portaal, beheer of API.
-        </p>
-      </article>
+        <article>
+          <h2>Time <span class="badge">standaard</span></h2>
+          <p>
+            Clock Points: uitvoerders melden zich aan (naam + icoon) en klokken in/uit
+            (pauzes/shifts). Overzicht “nu aanwezig” en aandachtspunten. Time hoort bij
+            elk abonnement.
+          </p>
+        </article>
 
-      <article>
-        <h2>IoT Connect <span class="badge">Facility+</span></h2>
-        <p>
-          Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak.
-          Metingen → ESG op Corporate. Gateway-token (ook zonder volledige REST API).
-        </p>
-      </article>
+        <article>
+          <h2>Reserveringen</h2>
+          <p>
+            Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Gast boekt via
+            unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender.
+          </p>
+        </article>
 
-      <article>
-        <h2>AI-vertaling</h2>
-        <p>
-          Na goedkeuring: automatische vertaling van o.a. meldingen, taken, documenten
-          en mededelingen (Platform → Vertalingen). Handmatig corrigeerbaar per taal.
-          Lokaal via Ollama — geen externe AI-cloud.
-        </p>
-      </article>
+        <article>
+          <h2>IoT Connect <span class="badge">Facility+</span></h2>
+          <p>
+            Sensor-gateways sturen events; alarmen worden goedgekeurde melding + taak.
+            Metingen → ESG op Corporate. Gateway-token (ook zonder volledige REST API).
+          </p>
+        </article>
 
-      <article>
-        <h2>API &amp; webhooks <span class="badge badge--corp">Corporate</span></h2>
-        <p>
-          REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen.
-          Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token.
-          Zie ook technische fiche.
-        </p>
-      </article>
+        <article>
+          <h2>API &amp; webhooks <span class="badge badge--corp">Corporate</span></h2>
+          <p>
+            REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen.
+            Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token.
+            Zie ook technische fiche.
+          </p>
+        </article>
+      </div>
+    </div>
 
-      <article class="wide">
+    <div class="full">
+      <article>
         <h2>Rollen</h2>
         <p>
           <strong>Beheerder</strong> — volledige controle + abonnement ·
