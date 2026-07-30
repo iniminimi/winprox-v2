@@ -150,9 +150,10 @@
       <section>
         <h2>Backups</h2>
         <ul>
-          <li>Infrastructuurbackups via de hostingprovider (Cloud86).</li>
-          <li>Bij volledige organisatieverwijdering: technische SQL-snapshot <strong>zonder media</strong>, max. <strong>30 dagen</strong>.</li>
-          <li>Herstelafspraken en <strong>RPO/RTO</strong> (hoeveel data-verlies / hoe lang tot herstel acceptabel is): in overleg / contractueel vast te leggen.</li>
+          <li>Automatische <strong>dagelijkse</strong> backups via Cloud86 (bestanden + database), bewaard <strong>7 dagen</strong>.</li>
+          <li><strong>RPO ≈ 24 uur</strong>: in het slechtste geval verlies je data sinds de laatste nachtelijke backup (Recovery Point Objective = max. aanvaardbaar dataverlies).</li>
+          <li><strong>RTO: best effort, doorgaans binnen 1 werkdag</strong> (Recovery Time Objective = tijd tot de dienst weer beschikbaar is na herstel).</li>
+          <li>Bij volledige organisatieverwijdering: aparte technische SQL-snapshot <strong>zonder media</strong>, max. <strong>30 dagen</strong> (niet hetzelfde als disaster-recovery-backup).</li>
         </ul>
       </section>
 
