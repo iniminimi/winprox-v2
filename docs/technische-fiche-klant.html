@@ -5,66 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WinProx — Technische fiche</title>
   <style>
-    @page { size: A4; margin: 12mm 14mm; }
+    @page { size: A4; margin: 11mm 13mm; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: #1a1a1a;
-      font: 9.2pt/1.35 "Segoe UI", system-ui, sans-serif;
+      font: 8.7pt/1.3 "Segoe UI", system-ui, sans-serif;
       background: #fff;
     }
     .sheet {
       max-width: 190mm;
       margin: 0 auto;
-      padding: 8mm 0;
+      padding: 6mm 0;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       border-bottom: 2.5px solid #059669;
-      padding-bottom: 6px;
-      margin-bottom: 10px;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
     }
     h1 {
       margin: 0;
-      font-size: 16pt;
+      font-size: 15pt;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #064e3b;
     }
     .tagline {
       margin: 2px 0 0;
-      font-size: 8.5pt;
+      font-size: 8pt;
       color: #374151;
     }
     .meta {
       text-align: right;
-      font-size: 8pt;
+      font-size: 7.5pt;
       color: #6b7280;
-      line-height: 1.3;
+      line-height: 1.25;
     }
     .intro {
-      margin: 0 0 10px;
-      font-size: 8.8pt;
+      margin: 0 0 8px;
+      font-size: 8.3pt;
       color: #374151;
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 7px 12px;
+      gap: 6px 10px;
     }
     section {
       break-inside: avoid;
       border: 1px solid #e5e7eb;
       border-radius: 6px;
-      padding: 7px 9px 8px;
+      padding: 6px 8px 7px;
       background: #fafafa;
     }
     section.wide { grid-column: 1 / -1; }
     h2 {
-      margin: 0 0 4px;
-      font-size: 9.5pt;
+      margin: 0 0 3px;
+      font-size: 9pt;
       font-weight: 700;
       color: #047857;
       letter-spacing: 0.01em;
@@ -72,15 +72,15 @@
     p, li { margin: 0; }
     ul {
       margin: 0;
-      padding-left: 1.1em;
+      padding-left: 1.05em;
     }
-    li + li { margin-top: 2px; }
+    li + li { margin-top: 1.5px; }
     strong { font-weight: 600; }
     footer {
-      margin-top: 10px;
-      padding-top: 6px;
+      margin-top: 8px;
+      padding-top: 5px;
       border-top: 1px solid #d1d5db;
-      font-size: 7.5pt;
+      font-size: 7pt;
       color: #6b7280;
       display: flex;
       justify-content: space-between;
@@ -92,12 +92,12 @@
       .no-print { display: none !important; }
     }
     .hint {
-      margin: 0 0 10px;
-      padding: 8px 10px;
+      margin: 0 0 8px;
+      padding: 7px 9px;
       background: #ecfdf5;
       border: 1px solid #a7f3d0;
       border-radius: 6px;
-      font-size: 8.5pt;
+      font-size: 8pt;
       color: #065f46;
     }
   </style>
@@ -105,8 +105,8 @@
 <body>
   <div class="sheet">
     <p class="hint no-print">
-      Open in de browser → <strong>Ctrl+P</strong> → bestemming <strong>Microsoft Print to PDF</strong> of printer.
-      Marges op “Standaard” / geen kop- en voetteksten. Past op 1 A4.
+      Open in de browser → <strong>Ctrl+P</strong> → PDF of printer.
+      Marges “Standaard” / geen kop- en voetteksten. Past op 1 A4.
     </p>
 
     <header>
@@ -129,8 +129,8 @@
       <section>
         <h2>Hosting</h2>
         <ul>
-          <li>Productie op <strong>Linux</strong> (EU), bij <strong>Cloud86</strong> (gedeelde hosting / Plesk).</li>
-          <li>Toegang via <strong>HTTPS</strong> (TLS).</li>
+          <li>Productie op <strong>Linux</strong> (EU), bij <strong>Cloud86</strong>.</li>
+          <li>Toegang via <strong>HTTPS</strong> (versleutelde verbinding, TLS).</li>
           <li>Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite-frontend.</li>
           <li>E-mail via SMTP in de EU; betalingen optioneel via Stripe.</li>
         </ul>
@@ -152,7 +152,7 @@
         <ul>
           <li>Infrastructuurbackups via de hostingprovider (Cloud86).</li>
           <li>Bij volledige organisatieverwijdering: technische SQL-snapshot <strong>zonder media</strong>, max. <strong>30 dagen</strong>.</li>
-          <li>Herstelafspraken en RPO/RTO: in overleg / contractueel vast te leggen.</li>
+          <li>Herstelafspraken en <strong>RPO/RTO</strong> (hoeveel data-verlies / hoe lang tot herstel acceptabel is): in overleg / contractueel vast te leggen.</li>
         </ul>
       </section>
 
@@ -177,9 +177,9 @@
       <section>
         <h2>Authenticatie</h2>
         <ul>
-          <li>Beheer: e-mail + wachtwoord (gehashte opslag), sessies.</li>
-          <li>API: <strong>Bearer-tokens</strong> (Laravel Sanctum), intrekbaar, met scopes.</li>
-          <li>Veldteams: <strong>geen login</strong> — team-QR + persoonlijk icoon.</li>
+          <li>Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.</li>
+          <li>API: persoonlijke <strong>toegangssleutel</strong> (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.</li>
+          <li>Uitvoerders: <strong>geen e-maillogin</strong> — Clock Point-QR + naam + persoonlijk icoon.</li>
           <li>Melders: publiek QR-portaal zonder account.</li>
         </ul>
       </section>
@@ -189,7 +189,7 @@
         <ul>
           <li><strong>Beheerder</strong>: alles (users, bedrijf, abonnement, teams).</li>
           <li><strong>Medewerker</strong>: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.</li>
-          <li><strong>Worker / teamleader</strong>: taken afhandelen via veldportaal; teamleader kan iconen vrijgeven.</li>
+          <li><strong>Uitvoerder / teamleader</strong>: taken via veldportaal; teamleader kan iconen vrijgeven.</li>
           <li>Autorisatie via policies (least privilege); API-tokens met aparte abilities.</li>
         </ul>
       </section>
@@ -197,10 +197,11 @@
       <section>
         <h2>Veiligheid</h2>
         <ul>
-          <li>HTTPS, CSRF-bescherming, gehashte wachtwoorden, intrekbaar tokens.</li>
-          <li>Tenant-scoping op alle data-toegang; audit-/activiteitenlogs.</li>
-          <li>Webhooks met <strong>HMAC-SHA256</strong>-handtekening.</li>
-          <li>API rate limit: <strong>60 req/min</strong> per token.</li>
+          <li>HTTPS; wachtwoorden gehasht; API-tokens intrekbaar.</li>
+          <li><strong>CSRF-bescherming</strong>: voorkomt dat een andere website stiekem acties uitvoert in naam van een ingelogde gebruiker.</li>
+          <li>Tenant-scoping; audit-/activiteitenlogs.</li>
+          <li>Webhooks met <strong>HMAC-SHA256</strong>-handtekening (bewijs dat het bericht van WinProx komt).</li>
+          <li>API: max. <strong>60 verzoeken/minuut</strong> per token.</li>
           <li>Supporttoegang: uitzonderlijk, standaard alleen-lezen.</li>
         </ul>
       </section>
@@ -208,8 +209,8 @@
       <section>
         <h2>API</h2>
         <ul>
-          <li>REST API v1 (JSON), documentatie in-app + docs.</li>
-          <li>Resources o.a.: meldingen, taken, locaties, units, teams, workers, ESG, vertalingen.</li>
+          <li><strong>REST API v1</strong> (vaste URL’s + HTTP-methodes) met antwoorden in <strong>JSON</strong> (standaard gegevensformaat). Documentatie in-app + docs.</li>
+          <li>O.a. meldingen, taken, locaties, units, teams, workers, ESG, vertalingen.</li>
           <li>Beschikbaar op <strong>Corporate</strong> (proef op verzoek).</li>
           <li>IoT-ingest apart via gateway-token (Facility + Corporate).</li>
         </ul>
@@ -226,7 +227,17 @@
       </section>
 
       <section class="wide">
-        <h2>AI</h2>
+        <h2>Spam &amp; misbruik (limieten)</h2>
+        <ul>
+          <li><strong>Publieke QR-meldingen</strong> (per apparaat/IP, per unit): max. <strong>1 melding per 3 minuten</strong>; max. <strong>5 meldingen per 30 minuten</strong> op dezelfde unit; max. <strong>20 meldingen per uur</strong> over alle units van dezelfde organisatie. (Aangemelde uitvoerders vallen hierbuiten.)</li>
+          <li><strong>Uitvoerders-aanmelding (icoon)</strong>: na <strong>2 foute icoonkeuzes</strong> wordt de uitvoerder geblokkeerd tot een teamleader of beheerder vrijgeeft.</li>
+          <li><strong>Beheer-login</strong> (e-mail/wachtwoord): wachtwoorden gehasht; geen aparte app-rate-limit op mislukte logins (kan infra/contractueel versterkt worden).</li>
+          <li>Extra: QR-meldingen blijven publiek geblurd tot goedkeuring; API heeft eigen rate limit (60/min).</li>
+        </ul>
+      </section>
+
+      <section class="wide">
+        <h2>AI <span style="font-weight:500;color:#374151;font-size:8pt">(Artificial Intelligence = kunstmatige intelligentie)</span></h2>
         <ul>
           <li><strong>Optioneel</strong>: AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …).</li>
           <li>Draait op een <strong>lokale Ollama-instantie</strong> — geen ChatGPT / externe AI-cloud voor deze functie.</li>
@@ -237,7 +248,7 @@
     </div>
 
     <footer>
-      <span>WinProx · info@winprox.app · Dit is een productoverzicht, geen juridisch advies of SLA.</span>
+      <span>WinProx · info@winprox.app · Productoverzicht, geen juridisch advies of SLA.</span>
       <span>Vragen? We lichten DPA, subverwerkers en integraties graag toe in de meeting.</span>
     </footer>
   </div>
