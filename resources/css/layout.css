@@ -584,8 +584,8 @@
 .wp-help-avatar {
     flex-shrink: 0;
     align-self: flex-start;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: var(--wp-radius-lg);
     overflow: hidden;
     border: 1px solid var(--wp-border);
@@ -593,11 +593,12 @@
     box-shadow: var(--wp-shadow-sm);
 }
 
-.wp-help-avatar__img {
+.wp-help-avatar__video {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .wp-help-panel-chat {

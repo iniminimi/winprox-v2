@@ -96,24 +96,35 @@
         x-data="{
             nav: false,
             help: false,
-            helpGifSrc: '',
-            helpGifUrl: @js(asset('images/assistant.gif')),
-            helpGifReady: false,
-            preloadHelpGif() {
-                if (this.helpGifReady) {
+            helpVideoUrl: @js(asset('video/assistant.mp4')),
+            helpVideoReady: false,
+            preloadHelpVideo() {
+                if (this.helpVideoReady) {
                     return Promise.resolve();
                 }
                 return new Promise((resolve) => {
-                    const img = new Image();
-                    img.onload = () => {
-                        this.helpGifReady = true;
+                    const video = document.createElement('video');
+                    video.preload = 'auto';
+                    video.muted = true;
+                    video.playsInline = true;
+                    const done = () => {
+                        this.helpVideoReady = true;
                         resolve();
                     };
-                    img.onerror = () => {
-                        this.helpGifReady = true;
-                        resolve();
-                    };
-                    img.src = this.helpGifUrl;
+                    video.oncanplaythrough = done;
+                    video.onerror = done;
+                    video.src = this.helpVideoUrl;
+                    video.load();
+                });
+            },
+            restartHelpVideo() {
+                this.$nextTick(() => {
+                    const video = this.$refs.helpVideo;
+                    if (! video) {
+                        return;
+                    }
+                    video.currentTime = 0;
+                    video.play().catch(() => {});
                 });
             },
             async toggleHelp() {
@@ -121,10 +132,9 @@
                     this.help = false;
                     return;
                 }
-                await this.preloadHelpGif();
-                // Restart GIF from frame 0 each open (uses browser cache after preload).
-                this.helpGifSrc = this.helpGifUrl + '?t=' + Date.now();
+                await this.preloadHelpVideo();
                 this.help = true;
+                this.restartHelpVideo();
             },
         }"
     >
@@ -256,16 +266,18 @@
                 </div>
                 <div class="wp-help-panel-body">
                     <div class="wp-help-avatar">
-                        <template x-if="help && helpGifSrc">
-                            <img
-                                class="wp-help-avatar__img"
-                                :src="helpGifSrc"
-                                alt="{{ __('help.avatar_alt') }}"
-                                width="150"
-                                height="150"
-                                decoding="async"
-                            >
-                        </template>
+                        <video
+                            x-ref="helpVideo"
+                            class="wp-help-avatar__video"
+                            src="{{ asset('video/assistant.mp4') }}"
+                            width="140"
+                            height="140"
+                            muted
+                            loop
+                            playsinline
+                            preload="auto"
+                            aria-label="{{ __('help.avatar_alt') }}"
+                        ></video>
                     </div>
                     <div class="wp-help-panel-chat">
                         <livewire:components.help-chat />
@@ -276,8 +288,8 @@
                 type="button"
                 class="wp-help-button"
                 @click="toggleHelp()"
-                @mouseenter="preloadHelpGif()"
-                @focus="preloadHelpGif()"
+                @mouseenter="preloadHelpVideo()"
+                @focus="preloadHelpVideo()"
                 :aria-expanded="help ? 'true' : 'false'"
                 aria-controls="wp-help-chat-panel"
                 :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
