@@ -42,6 +42,15 @@ final class QrStickerWordExporter
         );
     }
 
+    public function downloadFilenameForUnit(QrStickerSheetTemplate $template): string
+    {
+        return sprintf(
+            'winprox-qr-unit-%s-%s.docx',
+            $template->fileSlug(),
+            Carbon::now()->timezone(config('app.timezone'))->format('Y-m-d-His'),
+        );
+    }
+
     public function buildDocxBinary(Location $location, QrStickerSheetTemplate $template): string
     {
         if (! QrCodePngWriter::canGenerate()) {

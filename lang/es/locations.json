@@ -62,6 +62,14 @@
     "location_qr_subtitle": "QR general de la ubicación para informes sin unidad.",
     "unit_qr": "QR de unidad",
     "unit_qr_subtitle": "Código QR de esta unidad — enlaza al portal de informes.",
+    "unit_qr_pack": {
+        "button": "Hoja de impresión QR",
+        "modal_title": "Hoja de impresión QR",
+        "modal_subtitle": "Elija el formato de papel para :name.",
+        "unavailable": "La exportación QR no está disponible en este servidor.",
+        "generating": "Creando hoja de impresión…",
+        "download_failed": "No se pudo crear la hoja de impresión QR."
+    },
     "qr_pack_download": "Hoja de impresión QR",
     "nav_label": "Navegación de ubicaciones",
     "prev": "Ubicación anterior",

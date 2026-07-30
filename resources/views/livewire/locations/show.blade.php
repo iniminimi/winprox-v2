@@ -165,6 +165,7 @@
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
                                 @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
                         <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
                         @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
                             <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
                         @endif
@@ -736,6 +737,71 @@
                                 <p class="wp-muted wp-cluster" x-show="downloading === @js($template->value)" x-cloak>
                                     <x-wp-spinner size="sm" :visible="true" />
                                     <span>{{ __('locations.qr_pack.generating') }}</span>
+                                </p>
+                            </div>
+                        </button>
+                    @endforeach
+
+                    <p class="wp-error" x-show="error" x-text="error" x-cloak></p>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showUnitQrPackModal && $unitQrPackUnit)
+        <x-wp-modal closeMethod="closeUnitQrPackModal" aria-labelledby="unit-qr-pack-modal-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="unit-qr-pack-modal-title" class="wp-section-title">{{ __('locations.unit_qr_pack.modal_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeUnitQrPackModal" />
+                </div>
+
+                <p class="wp-muted">{{ __('locations.unit_qr_pack.modal_subtitle', ['name' => $unitQrPackUnit->name]) }}</p>
+
+                <div
+                    class="wp-list wp-list--entity-rows"
+                    x-data="{
+                        downloading: null,
+                        error: null,
+                        async download(url, key) {
+                            if (this.downloading) {
+                                return;
+                            }
+
+                            this.downloading = key;
+                            this.error = null;
+
+                            try {
+                                await window.wpDownloadQrPackUrl(url);
+                            } catch (exception) {
+                                this.error = exception?.message || @js(__('locations.unit_qr_pack.download_failed'));
+                            } finally {
+                                this.downloading = null;
+                            }
+                        },
+                    }"
+                >
+                    @foreach ($unitQrPackTemplates as $template)
+                        @php
+                            $unitQrPackDownloadUrl = route('units.qr-pack', [
+                                'unit' => $unitQrPackUnit,
+                                'template' => $template->value,
+                            ]);
+                        @endphp
+                        <button
+                            type="button"
+                            class="wp-issue-row"
+                            wire:key="unit-qr-pack-format-{{ $unitQrPackUnit->id }}-{{ $template->value }}"
+                            @click="download(@js($unitQrPackDownloadUrl), @js($template->value))"
+                            :disabled="downloading !== null"
+                            :aria-busy="downloading === @js($template->value)"
+                        >
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title">{{ __('locations.qr_pack.formats.'.$template->value.'.title') }}</p>
+                                <p class="wp-muted" x-show="downloading !== @js($template->value)">{{ __('locations.qr_pack.formats.'.$template->value.'.description') }}</p>
+                                <p class="wp-muted wp-cluster" x-show="downloading === @js($template->value)" x-cloak>
+                                    <x-wp-spinner size="sm" :visible="true" />
+                                    <span>{{ __('locations.unit_qr_pack.generating') }}</span>
                                 </p>
                             </div>
                         </button>

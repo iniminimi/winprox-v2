@@ -62,6 +62,14 @@
     "location_qr_subtitle": "Allgemeiner Standort-QR für Meldungen ohne Unit.",
     "unit_qr": "Unit-QR",
     "unit_qr_subtitle": "QR-Code für diese Unit — Link zum Meldeportal.",
+    "unit_qr_pack": {
+        "button": "QR-Druckbogen",
+        "modal_title": "QR-Druckbogen",
+        "modal_subtitle": "Wählen Sie das Papierformat für :name.",
+        "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
+        "generating": "Druckbogen wird erstellt…",
+        "download_failed": "QR-Druckbogen konnte nicht erstellt werden."
+    },
     "qr_pack_download": "QR-Druckbogen",
     "nav_label": "Standortnavigation",
     "prev": "Vorheriger Standort",

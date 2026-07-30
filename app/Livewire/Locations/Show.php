@@ -86,6 +86,10 @@ class Show extends Component
 
     public string $qrPackDynamicCount = '15';
 
+    public bool $showUnitQrPackModal = false;
+
+    public ?int $unitQrPackUnitId = null;
+
     public ?int $editingUnitId = null;
 
     public string $locationFormName = '';
@@ -421,6 +425,24 @@ class Show extends Component
     public function closeQrPackModal(): void
     {
         $this->showQrPackModal = false;
+    }
+
+    public function openUnitQrPackModal(int $unitId): void
+    {
+        $unit = Unit::query()
+            ->where('location_id', $this->location->id)
+            ->findOrFail($unitId);
+
+        $this->authorize('view', $unit);
+
+        $this->unitQrPackUnitId = $unit->id;
+        $this->showUnitQrPackModal = true;
+    }
+
+    public function closeUnitQrPackModal(): void
+    {
+        $this->showUnitQrPackModal = false;
+        $this->unitQrPackUnitId = null;
     }
 
     public function removeUnitPhoto(int $photoId, DeleteQrLinkPhotoAction $deletePhoto): void
@@ -1012,6 +1034,12 @@ class Show extends Component
                 ->all(),
             'nav' => EntityDetailNavigation::forLocation($this->location),
             'qrPackTemplates' => QrStickerSheetTemplate::downloadCases(),
+            'unitQrPackUnit' => $this->unitQrPackUnitId !== null
+                ? Unit::query()
+                    ->where('location_id', $this->location->id)
+                    ->find($this->unitQrPackUnitId)
+                : null,
+            'unitQrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
             'previewUnit' => $previewUnit,
             'descriptionLocales' => $descriptionLocales,
             'locationTranslationLocales' => $locationTranslationLocales,
