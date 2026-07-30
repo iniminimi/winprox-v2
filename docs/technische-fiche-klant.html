@@ -5,66 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>WinProx — Technische fiche</title>
   <style>
-    @page { size: A4; margin: 11mm 13mm; }
+    @page { size: A4; margin: 14mm 16mm; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: #1a1a1a;
-      font: 8.7pt/1.3 "Segoe UI", system-ui, sans-serif;
+      font: 10.5pt/1.4 "Segoe UI", system-ui, sans-serif;
       background: #fff;
     }
     .sheet {
-      max-width: 190mm;
+      max-width: 180mm;
       margin: 0 auto;
-      padding: 6mm 0;
+      padding: 8mm 0 12mm;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       border-bottom: 2.5px solid #059669;
-      padding-bottom: 5px;
-      margin-bottom: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
     }
     h1 {
       margin: 0;
-      font-size: 15pt;
+      font-size: 18pt;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #064e3b;
     }
     .tagline {
-      margin: 2px 0 0;
-      font-size: 8pt;
+      margin: 3px 0 0;
+      font-size: 10pt;
       color: #374151;
     }
     .meta {
       text-align: right;
-      font-size: 7.5pt;
+      font-size: 9pt;
       color: #6b7280;
-      line-height: 1.25;
+      line-height: 1.35;
     }
     .intro {
-      margin: 0 0 8px;
-      font-size: 8.3pt;
+      margin: 0 0 12px;
+      font-size: 10.5pt;
       color: #374151;
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px 10px;
+      gap: 10px 12px;
     }
     section {
       break-inside: avoid;
       border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      padding: 6px 8px 7px;
+      border-radius: 8px;
+      padding: 10px 12px 11px;
       background: #fafafa;
     }
     section.wide { grid-column: 1 / -1; }
     h2 {
-      margin: 0 0 3px;
-      font-size: 9pt;
+      margin: 0 0 6px;
+      font-size: 11.5pt;
       font-weight: 700;
       color: #047857;
       letter-spacing: 0.01em;
@@ -72,32 +72,33 @@
     p, li { margin: 0; }
     ul {
       margin: 0;
-      padding-left: 1.05em;
+      padding-left: 1.15em;
     }
-    li + li { margin-top: 1.5px; }
+    li + li { margin-top: 4px; }
     strong { font-weight: 600; }
     footer {
-      margin-top: 8px;
-      padding-top: 5px;
+      margin-top: 14px;
+      padding-top: 8px;
       border-top: 1px solid #d1d5db;
-      font-size: 7pt;
+      font-size: 8.5pt;
       color: #6b7280;
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
     }
     @media print {
       body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
       .sheet { padding: 0; max-width: none; }
       .no-print { display: none !important; }
+      footer { break-inside: avoid; }
     }
     .hint {
-      margin: 0 0 8px;
-      padding: 7px 9px;
+      margin: 0 0 12px;
+      padding: 10px 12px;
       background: #ecfdf5;
       border: 1px solid #a7f3d0;
-      border-radius: 6px;
-      font-size: 8pt;
+      border-radius: 8px;
+      font-size: 9.5pt;
       color: #065f46;
     }
   </style>
@@ -106,7 +107,7 @@
   <div class="sheet">
     <p class="hint no-print">
       Open in de browser → <strong>Ctrl+P</strong> → PDF of printer.
-      Marges “Standaard” / geen kop- en voetteksten. Past op 1 A4.
+      Marges “Standaard” / geen kop- en voetteksten. Bedoeld voor <strong>2 A4-pagina’s</strong>.
     </p>
 
     <header>
@@ -121,7 +122,7 @@
     </header>
 
     <p class="intro">
-      Kort overzicht voor IT / security. WinProx is een multi-tenant webapplicatie (Laravel + MySQL)
+      Overzicht voor IT / security. WinProx is een multi-tenant webapplicatie (Laravel + MySQL)
       waarop elke klantorganisatie haar eigen afgeschermde omgeving heeft.
     </p>
 
@@ -179,6 +180,7 @@
         <h2>Authenticatie</h2>
         <ul>
           <li>Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.</li>
+          <li><strong>SSO</strong> (Single Sign-On, één bedrijfs-login): later eventueel beschikbaar voor beheerders en medewerkers. Uitvoerders houden we bewust eenvoudig (QR + icoon, geen SSO).</li>
           <li>API: persoonlijke <strong>toegangssleutel</strong> (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.</li>
           <li>Uitvoerders: <strong>geen e-maillogin</strong> — Clock Point-QR + naam + persoonlijk icoon.</li>
           <li>Melders: publiek QR-portaal zonder account.</li>
@@ -191,7 +193,7 @@
           <li><strong>Beheerder</strong>: alles (users, bedrijf, abonnement, teams).</li>
           <li><strong>Medewerker</strong>: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer.</li>
           <li><strong>Uitvoerder / teamleader</strong>: taken via veldportaal; teamleader kan iconen vrijgeven.</li>
-          <li>Autorisatie via policies (least privilege); API-tokens met aparte abilities.</li>
+          <li>Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (<strong>minimale rechten</strong>). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.</li>
         </ul>
       </section>
 
@@ -233,12 +235,12 @@
           <li><strong>Publieke QR-meldingen</strong> (per apparaat/IP, per unit): max. <strong>1 melding per 3 minuten</strong>; max. <strong>5 meldingen per 30 minuten</strong> op dezelfde unit; max. <strong>20 meldingen per uur</strong> over alle units van dezelfde organisatie. (Aangemelde uitvoerders vallen hierbuiten.)</li>
           <li><strong>Uitvoerders-aanmelding (icoon)</strong>: na <strong>2 foute icoonkeuzes</strong> wordt de uitvoerder geblokkeerd tot een teamleader of beheerder vrijgeeft.</li>
           <li><strong>Beheer-login</strong> (e-mail/wachtwoord): wachtwoorden gehasht; geen aparte app-rate-limit op mislukte logins (kan infra/contractueel versterkt worden).</li>
-          <li>Extra: QR-meldingen op het publieke portaal pas zichtbaar na goedkeuring; API heeft eigen rate limit (60/min).</li>
+          <li>Extra: QR-meldingen op het publieke portaal blijven <strong>onzichtbaar tot goedkeuring</strong>; API heeft eigen rate limit (60/min).</li>
         </ul>
       </section>
 
       <section class="wide">
-        <h2>AI <span style="font-weight:500;color:#374151;font-size:8pt">(Artificial Intelligence = kunstmatige intelligentie)</span></h2>
+        <h2>AI <span style="font-weight:500;color:#374151;font-size:10pt">(Artificial Intelligence = kunstmatige intelligentie)</span></h2>
         <ul>
           <li><strong>Optioneel</strong>: AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …).</li>
           <li>Draait op een <strong>lokale Ollama-instantie</strong> — geen ChatGPT / externe AI-cloud voor deze functie.</li>
