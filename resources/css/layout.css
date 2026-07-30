@@ -1,4 +1,4 @@
-/* Layout: app-shell (beheer, desktop-first), auth-schermen en veldportalen. */
+﻿/* Layout: app-shell (beheer, desktop-first), auth-schermen en veldportalen. */
 
 [x-cloak] {
     display: none !important;
@@ -34,7 +34,7 @@
 .wp-app {
     min-height: 100vh;
     min-height: 100dvh;
-    /* Beheer: ~50% van eerdere fluid-thumbs (~160px → 80px); max 4 slots. */
+    /* Beheer: ~50% van eerdere fluid-thumbs (~160px â†’ 80px); max 4 slots. */
     --wp-photo-thumb-size: 5rem;
 }
 
@@ -66,7 +66,7 @@
     }
 }
 
-/* Één scrollkolom met menu + taal/gebruiker eronder (geen overlap). */
+/* Ã‰Ã©n scrollkolom met menu + taal/gebruiker eronder (geen overlap). */
 .wp-sidebar-body {
     flex: 1 1 auto;
     min-height: 0;
@@ -106,7 +106,7 @@
     border: 2px solid var(--wp-warning) !important;
 }
 
-/* Zelfde pulse als PRIO1 (.wp-badge-critical) — stopt zodra het kader opengeklapt is. */
+/* Zelfde pulse als PRIO1 (.wp-badge-critical) â€” stopt zodra het kader opengeklapt is. */
 .wp-card--prio-pulse {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     border-color: #dc2626 !important;
@@ -426,7 +426,7 @@
     min-width: 0;
 }
 
-/* Hoofdkolom (geen topbalk — logo zweeft rechtsboven). */
+/* Hoofdkolom (geen topbalk â€” logo zweeft rechtsboven). */
 .wp-content {
     min-width: 0;
     display: flex;
@@ -574,7 +574,6 @@
 .wp-help-panel-body {
     display: flex;
     align-items: stretch;
-    gap: 0.75rem;
     min-height: 0;
     flex: 1;
     padding: 0.75rem;
@@ -583,20 +582,22 @@
 
 .wp-help-avatar {
     flex-shrink: 0;
-    align-self: flex-start;
-    width: 140px;
-    height: 140px;
-    border-radius: var(--wp-radius-lg);
+    border-radius: var(--wp-radius);
     overflow: hidden;
-    border: 1px solid var(--wp-border);
-    background-color: var(--wp-surface-2);
-    box-shadow: var(--wp-shadow-sm);
+    border: 1px solid rgb(255 255 255 / 0.32);
+    background-color: rgb(255 255 255 / 0.16);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.12);
+}
+
+.wp-help-avatar--header {
+    width: 2.25rem;
+    height: 2.25rem;
 }
 
 .wp-help-avatar__video {
     display: block;
-    width: 140px;
-    height: 140px;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
     pointer-events: none;
 }
@@ -623,10 +624,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 0.75rem;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--wp-border);
     background-color: #059669;
+}
+
+.wp-help-panel-headline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
 }
 
 .wp-help-panel-title {
@@ -635,6 +643,7 @@
     font-weight: 700;
     color: #ffffff;
     line-height: 1.25;
+    white-space: nowrap;
 }
 
 .wp-help-panel-close {
@@ -706,7 +715,7 @@
 }
 
 /* ---------------------------------------------------------------------------
- | Gast-/auth-schermen (V1-layout): één kaart, taal rechtsboven, juridische footer.
+ | Gast-/auth-schermen (V1-layout): Ã©Ã©n kaart, taal rechtsboven, juridische footer.
  * ------------------------------------------------------------------------- */
 .wp-auth-body {
     background: linear-gradient(
@@ -953,7 +962,7 @@
     color: var(--wp-text);
 }
 
-/* Bestandskiezer — vervangt browser-tekst (Browse / No file selected). */
+/* Bestandskiezer â€” vervangt browser-tekst (Browse / No file selected). */
 .wp-file-input {
     display: flex;
     flex-wrap: wrap;
@@ -978,7 +987,7 @@
     word-break: break-word;
 }
 
-/* Instellingen — form links, voorbeeld rechts (zelfde grid als eigen portaal-stijl). */
+/* Instellingen â€” form links, voorbeeld rechts (zelfde grid als eigen portaal-stijl). */
 .wp-settings-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1007,7 +1016,7 @@
 }
 
 /* ---------------------------------------------------------------------------
- | Veld-/publieke schermen — MOBIEL-FIRST (§6.5).
+ | Veld-/publieke schermen â€” MOBIEL-FIRST (Â§6.5).
  * ------------------------------------------------------------------------- */
 .wp-portal {
     width: 100%;
@@ -1086,7 +1095,7 @@
     margin-bottom: 0;
 }
 
-/* Zelfde pulse als PRIO1 (.wp-badge-critical) — alleen ingeklapt (Alpine verwijdert class bij uitklappen). */
+/* Zelfde pulse als PRIO1 (.wp-badge-critical) â€” alleen ingeklapt (Alpine verwijdert class bij uitklappen). */
 .wp-portal-open-tasks-card--attention {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     border-color: #dc2626;
@@ -1133,7 +1142,7 @@
 }
 
 /* ---------------------------------------------------------------------------
- | Foutpagina's (401, 403, 404, 419, 429, 500, 503) — standalone layout.
+ | Foutpagina's (401, 403, 404, 419, 429, 500, 503) â€” standalone layout.
  * ------------------------------------------------------------------------- */
 .wp-error-body {
     background: var(--wp-bg);
@@ -1206,3 +1215,4 @@
         width: 100%;
     }
 }
+

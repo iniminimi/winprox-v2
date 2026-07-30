@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" translate="no" data-theme="{{ $uiTheme ?? 'simple' }}">
 <head>
     <meta charset="utf-8">
@@ -96,7 +96,7 @@
         x-data="{
             nav: false,
             help: false,
-            helpVideoUrl: @js(asset('video/assistant.mp4')),
+            helpVideoUrl: @js(asset('video/assistant_small.mp4')),
             helpVideoReady: false,
             preloadHelpVideo() {
                 if (this.helpVideoReady) {
@@ -261,24 +261,26 @@
         <div class="wp-help">
             <div class="wp-help-panel" x-show="help" x-cloak x-transition id="wp-help-chat-panel" role="dialog" aria-modal="true" aria-labelledby="wp-help-chat-title">
                 <div class="wp-help-panel-header">
-                    <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
-                    <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">×</button>
+                    <div class="wp-help-panel-headline">
+                        <div class="wp-help-avatar wp-help-avatar--header">
+                            <video
+                                x-ref="helpVideo"
+                                class="wp-help-avatar__video"
+                                src="{{ asset('video/assistant_small.mp4') }}"
+                                width="140"
+                                height="140"
+                                muted
+                                loop
+                                playsinline
+                                preload="auto"
+                                aria-label="{{ __('help.avatar_alt') }}"
+                            ></video>
+                        </div>
+                        <h3 id="wp-help-chat-title" class="wp-help-panel-title">{{ __('help.panel_title') }}</h3>
+                    </div>
+                    <button type="button" class="wp-help-panel-close" @click="help = false" aria-label="{{ __('help.close_fab') }}">&times;</button>
                 </div>
                 <div class="wp-help-panel-body">
-                    <div class="wp-help-avatar">
-                        <video
-                            x-ref="helpVideo"
-                            class="wp-help-avatar__video"
-                            src="{{ asset('video/assistant.mp4') }}"
-                            width="140"
-                            height="140"
-                            muted
-                            loop
-                            playsinline
-                            preload="auto"
-                            aria-label="{{ __('help.avatar_alt') }}"
-                        ></video>
-                    </div>
                     <div class="wp-help-panel-chat">
                         <livewire:components.help-chat />
                     </div>
@@ -303,3 +305,6 @@
     @livewireScripts
 </body>
 </html>
+
+
+
