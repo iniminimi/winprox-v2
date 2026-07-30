@@ -107,13 +107,14 @@
     über Meldungen und Aufgaben). Der Kunde bleibt verantwortlich für Sensorquellen und Event-Inhalte.
 </p>
 
-<h2>4. KI-Übersetzungen (optional)</h2>
-<p>Falls vom Administrator aktiviert, kann die Plattform KI-Übersetzungen verwenden:</p>
+<h2>4. KI-Übersetzungen</h2>
+<p>Die Plattform verwendet KI-Übersetzungen für die mehrsprachige Anzeige:</p>
 <ul>
-    <li>automatische Übersetzung von Texten, die mehrsprachig in der Plattform oder im QR-Portal angezeigt werden (u. a. Meldungen, Aufgaben, Units, Mitteilungen, Dokumentbeschreibungen, Standorte, Kategorien, Teamnamen und ESG-Indikatortexte).</li>
-    <li>Verwendung einer lokalen Ollama-Instanz (keine externen Dienste).</li>
-    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt; Administratoren können Übersetzungen in der Plattform manuell korrigieren.</li>
-    <li>diese Funktion ist optional und kann jederzeit deaktiviert werden.</li>
+    <li>Übersetzung von Texten, die mehrsprachig in der Plattform oder im QR-Portal angezeigt werden (u. a. Meldungen, Aufgaben, Units, Mitteilungen, Dokumentbeschreibungen, Standorte, Kategorien, Teamnamen und ESG-Indikatortexte); Texte werden nach Freigabe zur Übersetzung vorgemerkt.</li>
+    <li>Verwendung einer lokalen Ollama-Instanz (keine externen KI-Dienste / Cloud).</li>
+    <li>WinProx führt diese Übersetzungen periodisch aus (in der Regel täglich), ohne garantierte Durchlaufzeit.</li>
+    <li>Übersetzungen werden gemäß Aufbewahrungsrichtlinie gespeichert und aufbewahrt; Organisationsadministratoren können Übersetzungen in der Plattform manuell korrigieren oder ergänzen.</li>
+    <li>es gibt keinen An/Aus-Schalter pro Organisation; WinProx kann die Übersetzungspipeline auf Plattformebene anhalten.</li>
 </ul>
 
 <h2>5. Zwecke der Verarbeitung</h2>
@@ -126,7 +127,7 @@
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Produktverbesserung durch Onboarding-Statistiken (soweit möglich aggregiert).</li>
     <li>Sicherheit und Protokollierung.</li>
-    <li>mehrsprachige Unterstützung durch KI-Übersetzungen (falls aktiviert).</li>
+    <li>mehrsprachige Unterstützung durch KI-Übersetzungen (periodisch durch WinProx ausgeführt, ohne garantierte Durchlaufzeit).</li>
     <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
     <li>Verarbeitung von IoT-Events zu Meldungen, Aufgaben und/oder ESG-Messungen (falls IoT Connect aktiviert ist).</li>
 </ul>

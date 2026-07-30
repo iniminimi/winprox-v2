@@ -205,7 +205,7 @@
                 },
                 {
                     "label": "Traductions d'unité",
-                    "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Platform → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique par WinProx (périodiquement) est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Autoriser les réservations",

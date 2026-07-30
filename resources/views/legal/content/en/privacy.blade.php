@@ -107,13 +107,14 @@
     via issues and tasks). The customer remains responsible for sensor sources and event content.
 </p>
 
-<h2>4. AI Translations (optional)</h2>
-<p>If enabled by the administrator, the platform may use AI translations:</p>
+<h2>4. AI Translations</h2>
+<p>The platform uses AI translations for multilingual display:</p>
 <ul>
-    <li>automatic translation of texts shown multilingually in the platform or QR portal (including issues, tasks, units, announcements, document descriptions, locations, categories, team names and ESG indicator texts).</li>
-    <li>using a local Ollama instance (no external services).</li>
-    <li>translations are stored and retained according to the retention policy; administrators can manually correct translations in the platform.</li>
-    <li>this feature is optional and can be disabled at any time.</li>
+    <li>translation of texts shown multilingually in the platform or QR portal (including issues, tasks, units, announcements, document descriptions, locations, categories, team names and ESG indicator texts); texts are queued for translation after approval.</li>
+    <li>using a local Ollama instance (no external AI services / cloud).</li>
+    <li>WinProx runs these translations periodically (typically daily), with no guaranteed turnaround time.</li>
+    <li>translations are stored and retained according to the retention policy; organisation administrators can manually correct or complete translations in the platform.</li>
+    <li>there is no per-organisation on/off switch; WinProx may pause the translation pipeline at platform level.</li>
 </ul>
 
 <h2>5. Processing purposes</h2>
@@ -126,7 +127,7 @@
     <li>sending email notifications on the customer’s instructions.</li>
     <li>product improvement through superuser onboarding statistics (aggregated where possible).</li>
     <li>security and logging.</li>
-    <li>multilingual support via AI translations (if enabled).</li>
+    <li>multilingual support via AI translations (run periodically by WinProx, with no guaranteed turnaround).</li>
     <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
     <li>processing IoT events into issues, tasks and/or ESG measurements (if IoT Connect is enabled).</li>
 </ul>

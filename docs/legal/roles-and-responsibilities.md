@@ -21,5 +21,5 @@ This is a working draft for legal validation under **Belgian / EU** data protect
 ## Decisions to Validate
 
 - Is any processing done as independent controller by WinProx? `TODO`
-- Are any subprocessors involved in email delivery or hosting? Cloud86 (EU hosting + daily backups), SMTP (EU), optional Ollama (local), optional Stripe (EU/US) — see public subprocessors page.
+- Are any subprocessors involved in email delivery or hosting? Cloud86 (EU hosting + daily backups), SMTP (EU), local Ollama (AI translations run periodically by WinProx), optional Stripe (EU/US) — see public subprocessors page.
 - Do contracts and privacy texts align with this matrix? `TODO`

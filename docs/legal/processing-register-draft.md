@@ -10,7 +10,7 @@
 | IoT Connect (optionele module) | Uitvoering overeenkomst (sensor → workflow) | Indirect via meldingen/taken/ESG; gateway-tokens | Contractperiode + 36 maanden (events/metadata) | Gateways van de klant pushen naar WinProx; geen externe IoT-cloud van WinProx |
 | Eigenaarscommunicatie | Uitvoering overeenkomst (instructie klant) | Eigenaars, zoals door klant ingevoerd | Zie retentiebeleid | E‑mailprovider |
 | Facturatie / Stripe | Uitvoering overeenkomst / wettelijke verplichting | Facturatiecontacten | Naar boekhoudvereisten | Stripe, zie subprocessors (niet operationeel - toekomstige functionaliteit) |
-| AI vertalingen (Ollama) | Uitvoering overeenkomst (meertalige ondersteuning) | Meldingsteksten, gebruikers | Zie retentiebeleid (issue translations) | Lokale Ollama instance (optioneel, configureerbaar) |
+| AI vertalingen (Ollama) | Uitvoering overeenkomst (meertalige ondersteuning) | Meldingsteksten, gebruikers | Zie retentiebeleid (issue translations) | Lokale Ollama-instantie (periodiek door WinProx uitgevoerd, zonder SLA) |
 | Activity / audit logs | Gerechtvaardigd belang (beveiliging, verantwoording) | Gebruikers (actoren) | Configureerbaar; default zie retentie | — |
 | Infrastructuurbackups | Beschikbaarheid / beveiliging (gerechtvaardigd belang / uitvoering overeenkomst) | Alle klantdata in backupset | 7 dagen (Cloud86) | Cloud86 (EU) |
 

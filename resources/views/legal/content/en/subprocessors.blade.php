@@ -24,8 +24,8 @@
             <td>EU</td>
         </tr>
         <tr>
-            <td>Ollama (optional)</td>
-            <td>AI translations (if enabled)</td>
+            <td>Ollama (local)</td>
+            <td>AI translations (periodically by WinProx)</td>
             <td>Local/On-premise</td>
         </tr>
         <tr>

@@ -107,13 +107,14 @@
     via meldingen en taken). De klant blijft verantwoordelijk voor de sensorbronnen en de inhoud van events.
 </p>
 
-<h2>4. AI Vertalingen (optioneel)</h2>
-<p>Indien geactiveerd door de beheerder, kan het platform gebruikmaken van AI-vertalingen:</p>
+<h2>4. AI Vertalingen</h2>
+<p>Het platform gebruikt AI-vertalingen voor meertalige weergave:</p>
 <ul>
-    <li>automatische vertaling van teksten die meertalig in het platform of QR-portaal worden getoond (onder meer meldingen, taken, units, mededelingen, documentomschrijvingen, locaties, categorieën, teamnamen en ESG-indicatorteksten).</li>
-    <li>gebruik van een lokale Ollama-instantie (geen externe diensten).</li>
-    <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid; beheerders kunnen vertalingen in het platform handmatig corrigeren.</li>
-    <li>deze functie is optioneel en kan te allen tijde worden uitgeschakeld.</li>
+    <li>vertaling van teksten die meertalig in het platform of QR-portaal worden getoond (onder meer meldingen, taken, units, mededelingen, documentomschrijvingen, locaties, categorieën, teamnamen en ESG-indicatorteksten); teksten worden na goedkeuring klaargezet voor vertaling.</li>
+    <li>gebruik van een lokale Ollama-instantie (geen externe AI-diensten / cloud).</li>
+    <li>WinProx voert deze vertalingen periodiek uit (doorgaans dagelijks), zonder vaste doorlooptijd of garantie.</li>
+    <li>vertalingen worden opgeslagen en bewaard volgens het retentiebeleid; organisatiebeheerders kunnen vertalingen in het platform handmatig corrigeren of aanvullen.</li>
+    <li>er is geen aan/uit-schakelaar per organisatie; WinProx kan de vertaalpipeline op platformniveau stilleggen.</li>
 </ul>
 
 <h2>5. Doeleinden van verwerking</h2>
@@ -126,7 +127,7 @@
     <li>het verzenden van e-mailnotificaties in opdracht van de klant.</li>
     <li>productverbetering via onboarding-statistieken (geaggregeerd waar mogelijk).</li>
     <li>beveiliging en logging.</li>
-    <li>meertalige ondersteuning via AI-vertalingen (indien geactiveerd).</li>
+    <li>meertalige ondersteuning via AI-vertalingen (periodiek door WinProx uitgevoerd, zonder vaste doorlooptijd).</li>
     <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
     <li>verwerking van IoT-events tot meldingen, taken en/of ESG-metingen (indien IoT Connect is geactiveerd).</li>
 </ul>

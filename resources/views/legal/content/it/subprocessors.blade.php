@@ -24,8 +24,8 @@
             <td>UE</td>
         </tr>
         <tr>
-            <td>Ollama (opzionale)</td>
-            <td>Traduzioni IA (se abilitato)</td>
+            <td>Ollama (locale)</td>
+            <td>Traduzioni IA (periodicamente da WinProx)</td>
             <td>Locale / On-premise</td>
         </tr>
         <tr>

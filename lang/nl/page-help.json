@@ -79,11 +79,11 @@
                 },
                 {
                     "label": "Vertaling omschrijving",
-                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald via Platform → Vertalingen. Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen en actieve documenten volgen hetzelfde principe op de locatiepagina. Taken met een eigen omschrijving tonen de vertaalde tekst in lijsten en portaal zodra die klaar is."
+                    "text": "Bij goedgekeurde meldingen kiest u links naast de omschrijving een taal (NL, EN, FR, DE). De omschrijving wordt na goedkeuring automatisch vertaald door WinProx (periodiek). Staat een vertaling nog niet klaar, dan leest u «Nog niet vertaald». In overzichten en zoekresultaten wordt tot die tijd de brontekst getoond. Mededelingen en actieve documenten volgen hetzelfde principe op de locatiepagina. Taken met een eigen omschrijving tonen de vertaalde tekst in lijsten en portaal zodra die klaar is."
                 },
                 {
                     "label": "Taakvertalingen",
-                    "text": "In het taak-bewerkformulier kun je de taakomschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Alleen beschikbaar wanneer de taak een eigen omschrijving heeft. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het taak-bewerkformulier kun je de taakomschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Alleen beschikbaar wanneer de taak een eigen omschrijving heeft. Opslaan maakt de vertaling definitief voor die taal."
                 }
             ],
             "status_note": "Wijzig de meldingstatus door de taken bij te werken.",
@@ -140,7 +140,7 @@
                 },
                 {
                     "label": "Vertaling omschrijving",
-                    "text": "Heeft de taak een eigen omschrijving (niet alleen die van de melding), dan wordt die automatisch vertaald via Platform → Vertalingen. In het taak-bewerkformulier kun je die omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal. Zonder eigen omschrijving volgt de taak de vertaling van de gekoppelde melding."
+                    "text": "Heeft de taak een eigen omschrijving (niet alleen die van de melding), dan wordt die automatisch vertaald door WinProx (periodiek). In het taak-bewerkformulier kun je die omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal. Zonder eigen omschrijving volgt de taak de vertaling van de gekoppelde melding."
                 },
                 {
                     "label": "Melding openen",
@@ -176,7 +176,7 @@
                 },
                 {
                     "label": "Locatievertalingen",
-                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Categorieën",
@@ -184,7 +184,7 @@
                 },
                 {
                     "label": "Categorievertalingen",
-                    "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Reserveerbaar",
@@ -201,11 +201,11 @@
                 },
                 {
                     "label": "Locatievertalingen",
-                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Unitvertalingen",
-                    "text": "In het unit-bewerkformulier kun je naam en omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het unit-bewerkformulier kun je naam en omschrijving per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Reserveringen toestaan",
@@ -235,7 +235,7 @@
                 },
                 {
                     "label": "Documenten & mededelingen",
-                    "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald via Platform → Vertalingen (omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
+                    "text": "Beheer documenten en mededelingen voor het unit-QR-portaal. Documenten: zet «Actief» aan om het in het portaal te publiceren. Zonder «Alleen voor uitvoerders» kan elke bezoeker het document bekijken en downloaden. Met «Alleen voor uitvoerders» ziet en downloadt alleen een uitvoerder die zich in het portaal heeft aangemeld (naam + icoon) — niet via het beheerscherm met e-mail. Niet-actieve documenten blijven alleen hier zichtbaar. Actieve documenten worden automatisch vertaald door WinProx (periodiek; omschrijving); in het bewerkformulier ziet u een vertaal-preview per taal. De titel blijft in de brontaal."
                 }
             ]
         },
@@ -344,7 +344,7 @@
                 },
                 {
                     "label": "Teamvertalingen",
-                    "text": "In het team-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling via Platform → Vertalingen niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het team-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
                 {
                     "label": "Clock Point QR-code",

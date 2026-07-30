@@ -107,13 +107,14 @@
     tramite segnalazioni e attività). Il cliente resta responsabile delle fonti sensore e del contenuto degli eventi.
 </p>
 
-<h2>4. Traduzioni IA (opzionale)</h2>
-<p>Se abilitato dall'amministratore, la piattaforma può utilizzare traduzioni IA:</p>
+<h2>4. Traduzioni IA</h2>
+<p>La piattaforma utilizza traduzioni IA per la visualizzazione multilingue:</p>
 <ul>
-    <li>traduzione automatica dei testi mostrati in più lingue nella piattaforma o nel portale QR (incluse segnalazioni, attività, unità, annunci, descrizioni di documenti, sedi, categorie, nomi dei team e testi degli indicatori ESG).</li>
-    <li>mediante un'istanza locale Ollama (senza servizi esterni).</li>
-    <li>le traduzioni vengono archiviate e conservate conformemente alla politica di conservazione; gli amministratori possono correggerle manualmente nella piattaforma.</li>
-    <li>questa funzione è opzionale e può essere disattivata in qualsiasi momento.</li>
+    <li>traduzione dei testi mostrati in più lingue nella piattaforma o nel portale QR (incluse segnalazioni, attività, unità, annunci, descrizioni di documenti, sedi, categorie, nomi dei team e testi degli indicatori ESG); i testi vengono messi in coda per la traduzione dopo l’approvazione.</li>
+    <li>mediante un’istanza locale Ollama (nessun servizio / cloud IA esterno).</li>
+    <li>WinProx esegue queste traduzioni periodicamente (di norma ogni giorno), senza tempi di elaborazione garantiti.</li>
+    <li>le traduzioni vengono archiviate e conservate conformemente alla politica di conservazione; gli amministratori dell’organizzazione possono correggerle o completarle manualmente nella piattaforma.</li>
+    <li>non esiste un interruttore on/off per organizzazione; WinProx può sospendere la pipeline di traduzione a livello di piattaforma.</li>
 </ul>
 
 <h2>5. Finalità del trattamento</h2>
@@ -126,7 +127,7 @@
     <li>l'invio di notifiche e-mail seguendo le istruzioni del cliente.</li>
     <li>il miglioramento del prodotto tramite statistiche di onboarding dei superutenti (aggregate ove possibile).</li>
     <li>sicurezza e registrazione delle attività.</li>
-    <li>supporto multilingue tramite traduzioni IA (se abilitato).</li>
+    <li>supporto multilingue tramite traduzioni IA (eseguite periodicamente da WinProx, senza tempi garantiti).</li>
     <li>registrazione e follow-up delle misurazioni ESG/conformità (se il modulo è attivato).</li>
     <li>elaborazione degli eventi IoT in segnalazioni, attività e/o misurazioni ESG (se IoT Connect è attivato).</li>
 </ul>

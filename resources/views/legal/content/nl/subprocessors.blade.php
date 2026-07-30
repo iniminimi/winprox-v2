@@ -24,8 +24,8 @@
             <td>EU</td>
         </tr>
         <tr>
-            <td>Ollama (optioneel)</td>
-            <td>AI vertalingen (indien geactiveerd)</td>
+            <td>Ollama (lokaal)</td>
+            <td>AI-vertalingen (periodiek door WinProx)</td>
             <td>Lokaal/On-premise</td>
         </tr>
         <tr>

@@ -56,7 +56,7 @@
             },
             {
                 "title": "AI-vertaling",
-                "body": "Na goedkeuring worden teksten automatisch vertaald (meldingen, taken, documenten, mededelingen, …) via Platform → Vertalingen (lokale Ollama — geen externe AI-cloud). Beheerders kunnen vertalingen handmatig corrigeren; er is geen aan/uit-schakelaar per organisatie."
+                "body": "Na goedkeuring worden teksten klaargezet voor vertaling (meldingen, taken, documenten, mededelingen, …). WinProx vult de andere talen periodiek via lokale AI (geen externe AI-cloud), doorgaans dagelijks — zonder vaste doorlooptijd of garantie. Organisatiebeheerders kunnen vertalingen handmatig corrigeren; er is geen aan/uit-schakelaar per organisatie."
             }
         ],
         "right": [
@@ -216,9 +216,9 @@
             {
                 "title": "AI (Artificial Intelligence = kunstmatige intelligentie)",
                 "items": [
-                    "Automatische AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …) na goedkeuring.",
+                    "Na goedkeuring worden operationele teksten (meldingen, taken, units, mededelingen, …) klaargezet voor AI-vertaling.",
                     "Draait op een **lokale Ollama-instantie** — geen ChatGPT / externe AI-cloud voor deze functie.",
-                    "Teksten blijven binnen jullie verwerkingskader; beheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie — de pipeline is platformgestuurd.",
+                    "WinProx voert vertalingen **periodiek** uit (doorgaans dagelijks), **zonder vaste doorlooptijd of garantie**. Organisatiebeheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie.",
                     "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."
                 ]
             }

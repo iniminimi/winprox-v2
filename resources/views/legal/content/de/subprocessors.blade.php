@@ -24,8 +24,8 @@
             <td>EU</td>
         </tr>
         <tr>
-            <td>Ollama (optional)</td>
-            <td>KI-Übersetzungen (falls aktiviert)</td>
+            <td>Ollama (lokal)</td>
+            <td>KI-Übersetzungen (periodisch durch WinProx)</td>
             <td>Lokal/On-premise</td>
         </tr>
         <tr>

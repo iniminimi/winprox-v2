@@ -205,7 +205,7 @@
                 },
                 {
                     "label": "Traducciones de unidad",
-                    "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Platform → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática por WinProx (periódicamente) es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Permitir reservas",

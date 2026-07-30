@@ -205,7 +205,7 @@
                 },
                 {
                     "label": "Unit-Übersetzungen",
-                    "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Platform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung durch WinProx (periodisch) falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Reservierungen erlauben",

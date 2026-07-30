@@ -205,7 +205,7 @@
                 },
                 {
                     "label": "Traduzioni unità",
-                    "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Platform → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica da WinProx (periodicamente) è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Consenti prenotazioni",
