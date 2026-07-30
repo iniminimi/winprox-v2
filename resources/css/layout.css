@@ -532,7 +532,7 @@
     color: #059669;
     cursor: pointer;
     overflow: hidden;
-    box-shadow:`n        0 4px 14px rgb(5 150 105 / 0.30),`n        0 0 0 1px rgb(255 255 255 / 0.95) inset,`n        0 0 0 2px rgb(6 95 70 / 0.12);
+    box-shadow:`r`n        0 4px 14px rgb(5 150 105 / 0.30),`r`n        0 0 0 1px rgb(255 255 255 / 0.95) inset,`r`n        0 0 0 2px rgb(6 95 70 / 0.12);
     transition: transform var(--wp-transition), box-shadow var(--wp-transition), background-color var(--wp-transition);
 }
 
@@ -547,14 +547,14 @@
     height: 100%;
     border-radius: inherit;
     overflow: hidden;
-`n    background-color: #ffffff;`n}
+    background-color: #ffffff;`r`n}
 
 .wp-help-button-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-`n    background-color: #ffffff;`n}
+    background-color: #ffffff;`r`n}
 
 .wp-help-button:focus {
     outline: none;
@@ -1245,6 +1245,7 @@
         width: 100%;
     }
 }
+
 
 
 
