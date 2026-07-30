@@ -300,7 +300,22 @@
                 :aria-label="help ? @js(__('help.close_fab')) : @js(__('help.open_fab'))"
             >
                 <span class="wp-help-button-avatar" x-show="!help" x-cloak aria-hidden="true">
-                    <img src="{{ asset('images/assistant_small.jpg') }}" alt="" width="56" height="56">
+                    <video
+                        class="wp-help-button-avatar__video"
+                        src="{{ asset('video/assistant_question.mp4') }}"
+                        width="80"
+                        height="80"
+                        muted
+                        playsinline
+                        preload="auto"
+                        x-data
+                        x-init="
+                            setTimeout(() => {
+                                $el.currentTime = 0;
+                                $el.play().catch(() => {});
+                            }, 1000);
+                        "
+                    ></video>
                 </span>
                 <x-wp-icon name="x-mark" class="wp-icon wp-help-button-icon" x-show="help" x-cloak />
             </button>
