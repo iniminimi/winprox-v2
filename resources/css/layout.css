@@ -529,7 +529,7 @@
     border: 2px solid #ffffff;
     border-radius: var(--wp-radius-lg);
     background-color: #059669;
-    color: #ffffff;
+    color: #059669;
     cursor: pointer;
     overflow: hidden;
     box-shadow:
@@ -541,7 +541,7 @@
 
 .wp-help-button:hover {
     transform: translateY(-1px);
-    background-color: #047857;
+    background-color: #f8fafc;
 }
 
 .wp-help-button-avatar {
@@ -667,7 +667,7 @@
     margin: 0;
     font-size: 0.875rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #059669;
     line-height: 1.25;
 }
 
@@ -689,7 +689,7 @@
     border: none;
     border-radius: var(--wp-radius-md);
     background: transparent;
-    color: #ffffff;
+    color: #059669;
     font-size: 1.125rem;
     line-height: 1;
     cursor: pointer;
@@ -1248,6 +1248,7 @@
         width: 100%;
     }
 }
+
 
 
 
