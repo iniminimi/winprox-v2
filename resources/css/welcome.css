@@ -280,7 +280,7 @@
     outline-offset: 3px;
 }
 
-[data-theme='standard'] .wp-welcome-brand:hover .wp-welcome-brand-logo img {
+[data-theme='standard'] .wp-welcome-brand:hover .wp-welcome-brand-logo__media {
     opacity: 0.9;
 }
 
@@ -290,8 +290,9 @@
     justify-content: center;
     border-radius: var(--wp-radius-lg);
     border: 1px solid var(--wp-border);
-    background: var(--wp-surface);
+    background: #ffffff;
     box-shadow: var(--wp-shadow-sm);
+    overflow: hidden;
 }
 
 [data-theme='standard'] .wp-welcome-nav-actions {
@@ -1887,15 +1888,17 @@
 }
 
 [data-theme='standard'] .wp-welcome-brand-logo--sm {
-    padding: 0.25rem 0.375rem;
+    width: 80px;
+    height: 80px;
+    padding: 0;
 }
 
-[data-theme='standard'] .wp-welcome-brand-logo--sm img {
+[data-theme='standard'] .wp-welcome-brand-logo--sm .wp-welcome-brand-logo__media {
     display: block;
-    width: auto;
-    height: 1.75rem;
-    max-width: 100%;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 [data-theme='standard'] .wp-welcome-cta-row .btn--lg {
