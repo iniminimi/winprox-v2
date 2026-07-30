@@ -42,7 +42,7 @@
             },
             {
                 "title": "Photos",
-                "body": "Up to 4 photos per issue or completion. Resized on the device before upload. Visible immediately in the back office; on the public portal only after approval."
+                "body": "Up to 4 photos per issue or completion (resized on the device before upload). Also: up to 4 unit photos and a background photo per unit for the QR portal. Visible immediately in the back office; reporter photos on the public portal only after approval."
             },
             {
                 "title": "GPS",
@@ -56,7 +56,7 @@
             },
             {
                 "title": "AI translation",
-                "body": "After approval: automatic translation of issues, tasks, documents and announcements (Platform → Translations). Manually editable per language. Local via Ollama — no external AI cloud."
+                "body": "After approval, texts are translated automatically (issues, tasks, documents, announcements, …) via Platform → Translations (local Ollama — no external AI cloud). Admins can correct translations manually; there is no per-organisation on/off switch."
             }
         ],
         "right": [
@@ -216,9 +216,9 @@
             {
                 "title": "AI (Artificial Intelligence)",
                 "items": [
-                    "**Optional**: AI translations of operational texts (issues, tasks, units, announcements, …).",
+                    "Automatic AI translations of operational texts (issues, tasks, units, announcements, …) after approval.",
                     "Runs on a **local Ollama instance** — no ChatGPT / external AI cloud for this feature.",
-                    "Texts stay within your processing framework; admins can correct translations or turn the feature off.",
+                    "Texts stay within your processing framework; admins can **correct translations manually**. No per-organisation on/off switch — the pipeline is platform-operated.",
                     "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
                 ]
             }

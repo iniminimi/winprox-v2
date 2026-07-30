@@ -42,7 +42,7 @@
             },
             {
                 "title": "Foto’s",
-                "body": "Tot 4 foto’s bij melding of afhandeling. Verkleining op het toestel vóór upload. In beheer meteen zichtbaar; op het publieke portaal pas na goedkeuring."
+                "body": "Tot 4 foto’s bij melding of afhandeling (verkleining op het toestel vóór upload). Daarnaast: tot 4 unitfoto’s en een achtergrondfoto per unit voor het QR-portaal. In beheer meteen zichtbaar; melderfoto’s op het publieke portaal pas na goedkeuring."
             },
             {
                 "title": "GPS",
@@ -56,7 +56,7 @@
             },
             {
                 "title": "AI-vertaling",
-                "body": "Na goedkeuring: automatische vertaling van o.a. meldingen, taken, documenten en mededelingen (Platform → Vertalingen). Handmatig corrigeerbaar per taal. Lokaal via Ollama — geen externe AI-cloud."
+                "body": "Na goedkeuring worden teksten automatisch vertaald (meldingen, taken, documenten, mededelingen, …) via Platform → Vertalingen (lokale Ollama — geen externe AI-cloud). Beheerders kunnen vertalingen handmatig corrigeren; er is geen aan/uit-schakelaar per organisatie."
             }
         ],
         "right": [
@@ -216,9 +216,9 @@
             {
                 "title": "AI (Artificial Intelligence = kunstmatige intelligentie)",
                 "items": [
-                    "**Optioneel**: AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …).",
+                    "Automatische AI-vertalingen van operationele teksten (meldingen, taken, units, mededelingen, …) na goedkeuring.",
                     "Draait op een **lokale Ollama-instantie** — geen ChatGPT / externe AI-cloud voor deze functie.",
-                    "Teksten blijven binnen jullie verwerkingskader; beheerders kunnen vertalingen corrigeren of de functie uitzetten.",
+                    "Teksten blijven binnen jullie verwerkingskader; beheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie — de pipeline is platformgestuurd.",
                     "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."
                 ]
             }
