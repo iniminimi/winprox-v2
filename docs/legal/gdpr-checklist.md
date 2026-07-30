@@ -15,6 +15,7 @@ Status legend: `TODO`, `IN PROGRESS`, `DONE`
 
 - [ ] `TODO` Document legal basis per flow (issues, tasks, owner notifications, logs).
 - [x] `DONE` Privacy / terms / DPA describe self-service organisation deletion, trial vs paid cool-down, expired-trial auto-purge, export path, and snapshot without media (2026-07-28).
+- [x] `DONE` Operational backups / RPO≈24h / RTO best effort ≤1 business day aligned across privacy, DPA, terms, subprocessors and tech fiche (2026-07-30).
 - [ ] `TODO` Define when explicit consent is needed vs legitimate interest.
 
 ## 3) Contracts

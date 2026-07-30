@@ -70,6 +70,8 @@
     <li>tenant-isolatie.</li>
     <li>toegangscontrole.</li>
     <li>logging.</li>
+    <li>automatische dagelijkse backups via de hostingprovider (Cloud86), 7 dagen bewaard.</li>
+    <li>richtwaarde herstel: RPO ≈ 24 uur (max. dataverlies sinds de laatste nachtelijke backup); RTO best effort, doorgaans binnen 1 werkdag.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>foto’s: 24 maanden na afsluiten.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken.</li>
     <li>IoT-events en gateway-/sensormetadata: contractperiode + 36 maanden (behoudens eerdere tenant-verwijdering).</li>
+    <li>operationele infrastructuurbackups (hosting/Cloud86): 7 dagen.</li>
     <li>technische SQL-snapshot na volledige organisatieverwijdering (zonder media): max. 30 dagen.</li>
 </ul>
 

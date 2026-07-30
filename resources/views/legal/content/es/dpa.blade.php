@@ -70,6 +70,8 @@
     <li>aislamiento por inquilino.</li>
     <li>control de acceso.</li>
     <li>registro de actividad.</li>
+    <li>copias de seguridad diarias automáticas a través del proveedor de hosting (Cloud86), retenidas 7 días.</li>
+    <li>objetivos de recuperación: RPO ≈ 24 horas (pérdida máxima desde la última copia nocturna); RTO best effort, normalmente en 1 día laborable.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>fotos: 24 meses tras el cierre.</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas.</li>
     <li>eventos IoT y metadatos de pasarela/sensor: duración del contrato + 36 meses (salvo eliminación anterior del inquilino).</li>
+    <li>copias de seguridad operativas de infraestructura (hosting/Cloud86): 7 días.</li>
     <li>instantánea SQL técnica tras la eliminación completa de la organización (sin multimedia): máx. 30 días.</li>
 </ul>
 

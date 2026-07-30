@@ -77,6 +77,11 @@
 <p>
     WinProx haftet nicht für vorübergehende Unterbrechungen.
 </p>
+<p>
+    WinProx nutzt automatische tägliche Backups über den Hosting-Anbieter (Cloud86), mit 7 Tagen Aufbewahrung.
+    Richtwerte: RPO ≈ 24 Stunden (maximaler Datenverlust seit dem letzten nächtlichen Backup) und RTO best effort, in der Regel innerhalb eines Werktags.
+    Dies ist keine Verfügbarkeitsgarantie mit Vertragsstrafe. Ein technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Medien, max. 30 Tage) ist von diesen betrieblichen Backups zu unterscheiden.
+</p>
 
 <h2>8. Abonnement, Testphase und Zahlung</h2>
 <p>

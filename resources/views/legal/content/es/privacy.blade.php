@@ -161,6 +161,7 @@
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas (duración del contrato + 36 meses)</li>
     <li>eventos IoT, metadatos de pasarela y sensor: duración del contrato + 36 meses (o menos si la incidencia/tarea subyacente se elimina antes al borrar la organización)</li>
+    <li>copias de seguridad operativas de infraestructura (hosting/Cloud86): 7 días</li>
     <li>instantánea SQL técnica tras la eliminación completa de la organización (sin archivos multimedia): máximo 30 días, después destrucción</li>
 </ul>
 <p>
@@ -249,6 +250,8 @@
     <li>aislamiento por inquilino</li>
     <li>control de acceso</li>
     <li>registro de actividad</li>
+    <li>copias de seguridad diarias automáticas a través del proveedor de hosting (Cloud86), retenidas 7 días</li>
+    <li>objetivos de recuperación: RPO ≈ 24 horas (pérdida máxima desde la última copia nocturna); RTO best effort, normalmente en 1 día laborable</li>
 </ul>
 <p>
     Consulte también la <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> para información sobre

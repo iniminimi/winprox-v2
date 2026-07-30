@@ -70,6 +70,8 @@
     <li>isolamento per tenant.</li>
     <li>controllo degli accessi.</li>
     <li>registrazione delle attività.</li>
+    <li>backup giornalieri automatici tramite il provider di hosting (Cloud86), conservati 7 giorni.</li>
+    <li>obiettivi di ripristino: RPO ≈ 24 ore (perdita massima dai dati dall’ultimo backup notturno); RTO best effort, di norma entro 1 giorno lavorativo.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>foto: 24 mesi dopo la chiusura.</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività.</li>
     <li>eventi IoT e metadati gateway/sensore: durata del contratto + 36 mesi (salvo cancellazione precedente del tenant).</li>
+    <li>backup operativi di infrastruttura (hosting/Cloud86): 7 giorni.</li>
     <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza media): max. 30 giorni.</li>
 </ul>
 

@@ -15,7 +15,7 @@
     <tbody>
         <tr>
             <td>Cloud86</td>
-            <td>Alojamiento de la plataforma</td>
+            <td>Alojamiento de la plataforma (incl. copias diarias)</td>
             <td>UE</td>
         </tr>
         <tr>

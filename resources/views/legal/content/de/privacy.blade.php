@@ -162,6 +162,7 @@
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
     <li>IoT-Events, Gateway- und Sensor-Metadaten: Vertragslaufzeit + 36 Monate (oder kürzer, wenn die zugrunde liegende Meldung/Aufgabe bei Organisationslöschung früher entfernt wird).</li>
+    <li>betriebliche Infrastruktur-Backups (Hosting/Cloud86): 7 Tage.</li>
     <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Mediendateien): maximal 30 Tage, danach Vernichtung.</li>
 </ul>
 <p>
@@ -250,6 +251,8 @@
     <li>Mandantenisolierung.</li>
     <li>Zugangskontrolle.</li>
     <li>Protokollierung.</li>
+    <li>automatische tägliche Backups über den Hosting-Anbieter (Cloud86), 7 Tage Aufbewahrung.</li>
+    <li>Wiederherstellungsziele: RPO ≈ 24 Stunden (max. Datenverlust seit dem letzten nächtlichen Backup); RTO best effort, in der Regel innerhalb eines Werktags.</li>
 </ul>
 <p>
     Siehe auch die <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> für Informationen zu

@@ -77,6 +77,11 @@
 <p>
     WinProx is not liable for temporary interruptions.
 </p>
+<p>
+    WinProx uses automatic daily backups via the hosting provider (Cloud86), retained for 7 days.
+    Targets: RPO ≈ 24 hours (maximum data loss since the last nightly backup) and RTO best effort, typically within 1 business day.
+    This is not an uptime guarantee with liquidated damages. A technical SQL snapshot after full organisation deletion (without media, max. 30 days) is separate from these operational backups.
+</p>
 
 <h2>8. Subscription, trial and payment</h2>
 <p>

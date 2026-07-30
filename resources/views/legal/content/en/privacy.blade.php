@@ -161,6 +161,7 @@
     <li>media (photos): 24 months after closing the relevant issue or task</li>
     <li>ESG measurements: same retention as issues and tasks (contract period + 36 months)</li>
     <li>IoT events, gateway and sensor metadata: contract period + 36 months (or shorter if the underlying issue/task is removed earlier upon organisation deletion)</li>
+    <li>operational infrastructure backups (hosting/Cloud86): 7 days</li>
     <li>technical SQL snapshot after a full organisation deletion (without media files): maximum 30 days, then destruction</li>
 </ul>
 <p>
@@ -249,6 +250,8 @@
     <li>tenant isolation</li>
     <li>access control</li>
     <li>logging</li>
+    <li>automatic daily backups via the hosting provider (Cloud86), retained for 7 days</li>
+    <li>recovery targets: RPO ≈ 24 hours (max. data loss since the last nightly backup); RTO best effort, typically within 1 business day</li>
 </ul>
 <p>
     See also the <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> for information on

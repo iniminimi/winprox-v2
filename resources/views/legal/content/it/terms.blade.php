@@ -77,6 +77,11 @@
 <p>
     WinProx non è responsabile per interruzioni temporanee.
 </p>
+<p>
+    WinProx utilizza backup giornalieri automatici tramite il provider di hosting (Cloud86), conservati 7 giorni.
+    Obiettivi: RPO ≈ 24 ore (perdita massima dall’ultimo backup notturno) e RTO best effort, di norma entro 1 giorno lavorativo.
+    Non si tratta di una garanzia di uptime con penali. Uno snapshot SQL tecnico dopo la cancellazione completa dell’organizzazione (senza media, max. 30 giorni) è distinto da questi backup operativi.
+</p>
 
 <h2>8. Abbonamento, periodo di prova e pagamento</h2>
 <p>

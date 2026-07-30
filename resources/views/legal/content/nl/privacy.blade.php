@@ -162,6 +162,7 @@
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
     <li>IoT-events, gateway- en sensormetadata: contractperiode + 36 maanden (of korter indien de onderliggende melding/taak eerder wordt verwijderd in het kader van organisatieverwijdering).</li>
+    <li>operationele infrastructuurbackups (hosting/Cloud86): 7 dagen.</li>
     <li>technische SQL-snapshot na een volledige organisatieverwijdering (zonder mediabestanden): maximaal 30 dagen, daarna vernietiging.</li>
 </ul>
 <p>
@@ -250,6 +251,8 @@
     <li>tenant-isolatie.</li>
     <li>toegangscontrole.</li>
     <li>logging.</li>
+    <li>automatische dagelijkse backups via de hostingprovider (Cloud86), 7 dagen bewaard.</li>
+    <li>richtwaarde herstel: RPO ≈ 24 uur (max. dataverlies sinds de laatste nachtelijke backup); RTO best effort, doorgaans binnen 1 werkdag.</li>
 </ul>
 <p>
     Zie ook het <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> voor informatie over

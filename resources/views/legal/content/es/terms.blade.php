@@ -77,6 +77,11 @@
 <p>
     WinProx no es responsable de interrupciones temporales.
 </p>
+<p>
+    WinProx utiliza copias de seguridad diarias automáticas a través del proveedor de hosting (Cloud86), retenidas 7 días.
+    Objetivos: RPO ≈ 24 horas (pérdida máxima desde la última copia nocturna) y RTO best effort, normalmente en 1 día laborable.
+    Esto no es una garantía de disponibilidad con penalizaciones. Una instantánea SQL técnica tras el borrado completo de la organización (sin medios, máx. 30 días) es distinta de estas copias operativas.
+</p>
 
 <h2>8. Suscripción, periodo de prueba y pago</h2>
 <p>

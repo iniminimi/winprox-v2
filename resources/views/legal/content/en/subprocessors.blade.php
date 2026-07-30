@@ -15,7 +15,7 @@
     <tbody>
         <tr>
             <td>Cloud86</td>
-            <td>Platform hosting</td>
+            <td>Platform hosting (incl. daily backups)</td>
             <td>EU</td>
         </tr>
         <tr>

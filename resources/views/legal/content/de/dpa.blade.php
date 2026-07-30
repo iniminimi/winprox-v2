@@ -70,6 +70,8 @@
     <li>Mandantenisolierung.</li>
     <li>Zugangskontrolle.</li>
     <li>Protokollierung.</li>
+    <li>automatische tägliche Backups über den Hosting-Anbieter (Cloud86), 7 Tage Aufbewahrung.</li>
+    <li>Wiederherstellungsziele: RPO ≈ 24 Stunden (max. Datenverlust seit dem letzten nächtlichen Backup); RTO best effort, in der Regel innerhalb eines Werktags.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>Fotos: 24 Monate nach Abschluss.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
     <li>IoT-Events und Gateway-/Sensor-Metadaten: Vertragslaufzeit + 36 Monate (sofern nicht früher durch Tenant-Löschung entfernt).</li>
+    <li>betriebliche Infrastruktur-Backups (Hosting/Cloud86): 7 Tage.</li>
     <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Medien): max. 30 Tage.</li>
 </ul>
 

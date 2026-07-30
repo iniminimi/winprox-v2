@@ -70,6 +70,8 @@
     <li>tenant isolation.</li>
     <li>access control.</li>
     <li>logging.</li>
+    <li>automatic daily backups via the hosting provider (Cloud86), retained for 7 days.</li>
+    <li>recovery targets: RPO ≈ 24 hours (max. data loss since the last nightly backup); RTO best effort, typically within 1 business day.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>photos: 24 months after closing.</li>
     <li>ESG measurements: same retention as issues and tasks.</li>
     <li>IoT events and gateway/sensor metadata: contract period + 36 months (unless earlier tenant deletion).</li>
+    <li>operational infrastructure backups (hosting/Cloud86): 7 days.</li>
     <li>technical SQL snapshot after full organisation deletion (without media): max. 30 days.</li>
 </ul>
 

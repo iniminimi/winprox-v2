@@ -9,6 +9,7 @@ This policy is a draft and requires legal approval.
 - Keep only data needed for service delivery, legal duties, and security.
 - Prefer anonymization or deletion when retention expires.
 - Apply the same policy across backups where technically feasible.
+- **Operational infrastructure backups** (Cloud86): automatic daily backups, retained **7 days**. Recovery targets: **RPO ≈ 24 hours**, **RTO best effort (typically within 1 business day)**. These are separate from the post-purge technical SQL snapshot (max. 30 days, without media).
 
 ## Retention Table
 
@@ -24,6 +25,8 @@ This policy is a draft and requires legal approval.
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
 | Activity logs | Security and audit events | 24 months | Delete or anonymize |
 | Uploaded media | Issue photos and updates | 24 months after related record closes | Delete |
+| Operational infrastructure backups | Cloud86 daily backups of files/DB | 7 days | Rotate/overwrite by provider |
+| Tenant-purge SQL snapshot | Technical snapshot after organisation wipe (no media) | Max. 30 days | Destroy |
 
 ## Operational Requirements
 

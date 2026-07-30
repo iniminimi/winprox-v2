@@ -70,6 +70,8 @@
     <li>isolation des tenants.</li>
     <li>contrôle d’accès.</li>
     <li>journalisation.</li>
+    <li>sauvegardes quotidiennes automatiques via l’hébergeur (Cloud86), conservées 7 jours.</li>
+    <li>objectifs de reprise : RPO ≈ 24 heures (perte de données max. depuis la dernière sauvegarde nocturne) ; RTO best effort, en principe sous 1 jour ouvrable.</li>
 </ul>
 
 <h2>7. {{ __('legal.documents.subprocessors') }}</h2>
@@ -111,6 +113,7 @@
     <li>photos : 24 mois après clôture.</li>
     <li>mesures ESG : même durée de conservation que les issues et tâches.</li>
     <li>événements IoT et métadonnées gateway/capteur : durée du contrat + 36 mois (sauf suppression antérieure du tenant).</li>
+    <li>sauvegardes opérationnelles d’infrastructure (hébergement/Cloud86) : 7 jours.</li>
     <li>instantané SQL technique après suppression complète de l’organisation (sans médias) : max. 30 jours.</li>
 </ul>
 

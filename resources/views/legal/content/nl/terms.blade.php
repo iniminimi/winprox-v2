@@ -77,6 +77,11 @@
 <p>
     WinProx is niet aansprakelijk voor tijdelijke onderbrekingen.
 </p>
+<p>
+    WinProx maakt gebruik van automatische dagelijkse backups via de hostingprovider (Cloud86), bewaard gedurende 7 dagen.
+    Richtwaarde: RPO ≈ 24 uur (maximaal dataverlies sinds de laatste nachtelijke backup) en RTO best effort, doorgaans binnen 1 werkdag.
+    Dit is geen uptime-garantie met boetebeding. Een technische SQL-snapshot na volledige organisatieverwijdering (zonder media, max. 30 dagen) is iets anders dan deze operationele backups.
+</p>
 
 <h2>8. Abonnement, proefperiode en betaling</h2>
 <p>

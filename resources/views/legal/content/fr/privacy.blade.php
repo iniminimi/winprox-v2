@@ -161,6 +161,7 @@
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>
     <li>mesures ESG : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
     <li>événements IoT, métadonnées de gateway et de capteur : durée du contrat + 36 mois (ou plus court si le signalement/la tâche sous-jacent est supprimé plus tôt lors d’une suppression d’organisation).</li>
+    <li>sauvegardes opérationnelles d’infrastructure (hébergement/Cloud86) : 7 jours.</li>
     <li>instantané SQL technique après suppression complète de l’organisation (sans fichiers médias) : maximum 30 jours, puis destruction.</li>
 </ul>
 <p>
@@ -249,6 +250,8 @@
     <li>isolation des tenants.</li>
     <li>contrôle d’accès.</li>
     <li>journalisation.</li>
+    <li>sauvegardes quotidiennes automatiques via l’hébergeur (Cloud86), conservées 7 jours.</li>
+    <li>objectifs de reprise : RPO ≈ 24 heures (perte de données max. depuis la dernière sauvegarde nocturne) ; RTO best effort, en principe sous 1 jour ouvrable.</li>
 </ul>
 <p>
     Voir aussi la <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> pour les cookies strictement nécessaires.

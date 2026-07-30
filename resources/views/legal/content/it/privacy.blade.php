@@ -161,6 +161,7 @@
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività (durata del contratto + 36 mesi)</li>
     <li>eventi IoT, metadati di gateway e sensore: durata del contratto + 36 mesi (o più breve se la problematica/attività sottostante viene rimossa prima con la cancellazione dell’organizzazione)</li>
+    <li>backup operativi di infrastruttura (hosting/Cloud86): 7 giorni</li>
     <li>snapshot SQL tecnico dopo la cancellazione completa dell'organizzazione (senza file media): massimo 30 giorni, poi distruzione</li>
 </ul>
 <p>
@@ -249,6 +250,8 @@
     <li>isolamento per tenant</li>
     <li>controllo degli accessi</li>
     <li>registrazione delle attività</li>
+    <li>backup giornalieri automatici tramite il provider di hosting (Cloud86), conservati 7 giorni</li>
+    <li>obiettivi di ripristino: RPO ≈ 24 ore (perdita massima dai dati dall’ultimo backup notturno); RTO best effort, di norma entro 1 giorno lavorativo</li>
 </ul>
 <p>
     Consulti anche la <a href="{{ route('legal.cookies') }}">{{ __('legal.documents.cookies') }}</a> per informazioni sui
