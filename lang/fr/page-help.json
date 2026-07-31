@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Réservable",
-                    "text": "Activez Réservable sur une catégorie pour les ressources partagées avec créneau (salle de réunion, véhicule, clé, …). Toutes les unités de cette catégorie deviennent réservables et affichent la tuile Réserver sur le QR unité. Les signalements de défaut restent via Signalement → tâche."
+                    "text": "Activez Réservable sur une catégorie pour les ressources partagées avec créneau (salle, véhicule, clé, …). Activez ensuite Autoriser les réservations par unité (désactivé par défaut). Le QR de l’unité affiche alors la tuile Réserver. Les signalements de défaut restent via Signalement → tâche."
+                },
+                {
+                    "label": "Coordonnées obligatoires",
+                    "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Autoriser les réservations",
-                    "text": "Uniquement pertinent si la catégorie est Réservable. Activé par défaut ; désactivez pour exclure cette unité des réservations tandis que les autres unités de la même catégorie restent réservables."
+                    "text": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité. Les autres unités de la même catégorie restent indépendantes."
+                },
+                {
+                    "label": "Coordonnées obligatoires",
+                    "text": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalants anonymes via QR (prénom, nom et e-mail), pas aux agents connectés via Clock Point."
                 },
                 {
                     "label": "Unités en masse",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Activer",
-                    "text": "Activez Réservable sur la catégorie. Toutes les unités deviennent réservables ; désactivez Autoriser les réservations par unité pour en exclure une. Le QR affiche alors Réserver."
+                    "text": "Activez Réservable sur la catégorie. Activez ensuite Autoriser les réservations par unité (désactivé par défaut). Le QR de l’unité affiche alors la tuile Réserver."
                 },
                 {
                     "label": "Invité",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Signaler un problème",
-                    "text": "Cliquez sur \"Créer un signalement\", décrivez le problème et ajoutez éventuellement jusqu'à quatre photos. Une tâche est ensuite créée pour l'équipe. Notez que le signalement doit d'abord être approuvé avant d'être visible sur le portail. Pour éviter le spam, des limites s'appliquent : au maximum un signalement toutes les 3 minutes et au maximum cinq signalements par 30 minutes pour cette unité (par appareil)."
+                    "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
                 },
                 {
                     "label": "Réserver",

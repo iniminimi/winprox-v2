@@ -42,7 +42,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Via unit QR, manually in the back office, or (with IoT) a sensor alarm. Filters, approval of QR issues, recurring maintenance. On public QR pages only visible after approval; back office sees everything immediately."
+                "body": "Via unit QR, manually in admin, or (with IoT) a sensor alarm. Filters, approval of QR reports, recurring maintenance. Optional: required contact details for anonymous QR reporters (category and unit). On public QR pages visible only after approval; admin sees everything immediately."
             },
             {
                 "title": "Photos",
@@ -92,7 +92,7 @@
             },
             {
                 "title": "Reservations",
-                "body": "For shareable resources with a time slot (room, vehicle, key). Guests book via unit QR (hold + email confirmation). Manage via Reservations and calendar."
+                "body": "For shared resources with a time slot (room, vehicle, key). Category Reservable + Allow reservations per unit (off by default). Guest books via unit QR (hold + email confirmation). Manage via Reservations menu and calendar."
             },
             {
                 "title": "IoT Connect",

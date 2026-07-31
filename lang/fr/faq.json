@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "Nouveau signalement",
-                    "text": "Décrivez le problème et ajoutez éventuellement jusqu'à 4 photos. Les photos sont compressées sur l'appareil avant l'envoi. Des limites anti-spam s'appliquent (p.ex. max. un signalement toutes les quelques minutes par appareil)."
+                    "text": "Décrivez le problème et ajoutez éventuellement jusqu’à 4 photos. Les photos sont redimensionnées sur l’appareil avant l’envoi. Prénom, nom et e-mail sont facultatifs, sauf si l’administrateur a rendu les coordonnées obligatoires (catégorie et unité). Les agents connectés n’ont pas à remplir ces champs. Des limites anti-spam s’appliquent (p. ex. au plus un signalement toutes les quelques minutes par appareil)."
                 },
                 {
                     "title": "En attente de contrôle",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "Comment fonctionnent les réservations ?",
-            "body": "Les réservations concernent des ressources partageables avec créneau (salles de réunion, véhicules, clés) — pas les signalements de défaut. Activez Réservable sur la catégorie ; désactivez éventuellement par unit. Les invités réservent via le QR unit (retenue 30 min + confirmation e-mail). La gestion crée, modifie et annule ; les créneaux qui se chevauchent sont bloqués.",
-            "summary": "Dans l’app : menu Réservations (et calendrier). Units réservables via catégorie ; invité réserve via QR avec confirmation e-mail."
+            "body": "Les réservations concernent les ressources partagées avec créneau (salles, véhicules, clés) — pas les signalements de défaut. Activez Réservable sur la catégorie et Autoriser les réservations sur l’unité (désactivé par défaut). Les invités réservent via le QR de l’unité (retenue 30 min + confirmation e-mail). Le personnel crée, modifie et annule ; les créneaux qui se chevauchent sont bloqués.",
+            "summary": "Dans l’app : menu Réservations (et calendrier). Catégorie Réservable + unité Autoriser les réservations (désactivé par défaut) ; l’invité réserve via QR avec confirmation e-mail."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

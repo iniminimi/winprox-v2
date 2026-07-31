@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "Neue Meldung",
-                    "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät vor dem Upload verkleinert. Es gelten Limits gegen Spam (u.a. max. eine Meldung alle paar Minuten pro Gerät)."
+                    "text": "Beschreiben Sie das Problem und fügen Sie optional bis zu 4 Fotos hinzu. Fotos werden auf dem Gerät verkleinert vor dem Upload. Vorname, Name und E-Mail sind optional, es sei denn die Verwaltung hat Kontaktdaten Pflicht gemacht (Kategorie und Unit). Angemeldete Mitarbeiter müssen diese Felder nicht ausfüllen. Gegen Spam gelten Limits (z. B. höchstens eine Meldung alle paar Minuten pro Gerät)."
                 },
                 {
                     "title": "Wartet auf Prüfung",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "Wie funktionieren Reservierungen?",
-            "body": "Reservierungen gelten für gemeinsam genutzte Ressourcen mit Zeitslot (Besprechungsräume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie; optional pro Unit deaktivieren. Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung erstellt, ändert und storniert Buchungen; überlappende Slots werden blockiert.",
-            "summary": "In der App: Menü Reservierungen (und Kalender). Reservierbare Units über Kategorie; Gast bucht per QR mit E-Mail-Bestätigung."
+            "body": "Reservierungen sind für teilbare Ressourcen mit Zeitslot (Räume, Fahrzeuge, Schlüssel) — nicht für Störungsmeldungen. Aktivieren Sie Reservierbar an der Kategorie und Reservierungen erlauben an der Unit (standardmäßig aus). Gäste buchen über den Unit-QR (30 Min. Hold + E-Mail-Bestätigung). Die Verwaltung legt an, ändert und storniert; überlappende Slots werden blockiert.",
+            "summary": "In der App: Menü Reservierungen (und Kalender). Kategorie Reservierbar + Unit Reservierungen erlauben (standardmäßig aus); Gast bucht per QR mit E-Mail-Bestätigung."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

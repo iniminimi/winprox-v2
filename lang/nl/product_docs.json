@@ -42,7 +42,7 @@
             },
             {
                 "title": "Meldingen",
-                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud. Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
+                "body": "Via unit-QR, handmatig in beheer, of (met IoT) sensoralarm. Filters, goedkeuring van QR-meldingen, terugkerend onderhoud. Optioneel: contactgegevens verplicht voor anonieme QR-melders (categorie én unit). Op publieke QR-pagina’s pas zichtbaar na goedkeuring; beheer ziet alles meteen."
             },
             {
                 "title": "Foto’s",
@@ -92,7 +92,7 @@
             },
             {
                 "title": "Reserveringen",
-                "body": "Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Gast boekt via unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender."
+                "body": "Voor deelbare middelen met tijdslot (zaal, voertuig, sleutel). Categorie Reserveerbaar + per unit Reserveringen toestaan (standaard uit). Gast boekt via unit-QR (hold + e-mailbevestiging). Beheer via menu Reserveringen en kalender."
             },
             {
                 "title": "IoT Connect",

@@ -42,7 +42,7 @@
             },
             {
                 "title": "Issues",
-                "body": "Via unit QR, manually in the back office, or (with IoT) a sensor alarm. Filters, approval of QR issues, recurring maintenance. On public QR pages only visible after approval; back office sees everything immediately."
+                "body": "Via QR unità, manualmente in amministrazione, o (con IoT) allarme sensore. Filtri, approvazione delle segnalazioni QR, manutenzione ricorrente. Opzionale: dati di contatto obbligatori per segnalanti anonimi via QR (categoria e unità). Sulle pagine QR pubbliche visibili solo dopo approvazione; l’amministrazione vede tutto subito."
             },
             {
                 "title": "Photos",
@@ -92,7 +92,7 @@
             },
             {
                 "title": "Reservations",
-                "body": "For shareable resources with a time slot (room, vehicle, key). Guests book via unit QR (hold + email confirmation). Manage via Reservations and calendar."
+                "body": "Per risorse condivise con fascia (sala, veicolo, chiave). Categoria Prenotabile + Consenti prenotazioni per unità (disattivo di default). L’ospite prenota via QR unità (hold + conferma e-mail). Gestione via menu Prenotazioni e calendario."
             },
             {
                 "title": "IoT Connect",

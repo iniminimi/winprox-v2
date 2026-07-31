@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Reservable",
-                    "text": "Turn on Reservable on a category for shared resources with a time slot (meeting room, vehicle, key, …). All units in that category become reservable and show the Reserve tile on the unit QR. Defect reports remain via Issue → task."
+                    "text": "Turn on Reservable on a category for shared resources with a time slot (meeting room, vehicle, key, …). Then turn on Allow reservations per unit (off by default). The unit QR then shows the Reserve tile. Defect reports remain via Issue → task."
+                },
+                {
+                    "label": "Require contact details",
+                    "text": "Turn this on if anonymous reporters via the unit QR must enter first name, last name and email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers — they are already identified."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Allow reservations",
-                    "text": "Only relevant if the category is Reservable. On by default; turn off to exclude this unit from reservations while other units in the same category stay reservable."
+                    "text": "Only relevant if the category is Reservable. Off by default; turn on to allow reservations for this unit. Other units in the same category stay independent."
+                },
+                {
+                    "label": "Require contact details",
+                    "text": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters (first name, last name and email), not to workers signed in via Clock Point."
                 },
                 {
                     "label": "Bulk units",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Enable",
-                    "text": "Turn on Reservable on the category. All units in that category become bookable; turn off Allow reservations per unit to exclude one. The unit QR then shows the Reserve tile."
+                    "text": "Turn on Reservable on the category. Then turn on Allow reservations per unit (off by default). The unit QR then shows the Reserve tile."
                 },
                 {
                     "label": "Guest flow",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Report issue",
-                    "text": "Click on \"Create issue\", describe the problem and optionally add up to four photos. A task is then created for the team. Please note that the issue must first be approved before it becomes visible on the portal. To prevent spam, limits apply: at most one report every 3 minutes and a maximum of five reports per 30 minutes for this unit (per device)."
+                    "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
                 },
                 {
                     "label": "Reserve",

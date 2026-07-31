@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "New issue",
-                    "text": "Describe the problem and optionally add up to 4 photos. Photos are compressed on the device before upload. Limits apply against spam (e.g. max. one issue every few minutes per device)."
+                    "text": "Describe the problem and optionally add up to 4 photos. Photos are resized on the device before upload. First name, last name and email are optional unless the administrator required contact details (category and unit). Signed-in workers do not need those fields. Anti-spam limits apply (e.g. at most one report every few minutes per device)."
                 },
                 {
                     "title": "Awaiting review",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "How do reservations work?",
-            "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Enable Reservable on the category; optionally disable per unit. Guests book via the unit QR (30-minute hold + email confirmation). Admins create, change, and cancel bookings; overlapping slots are blocked.",
-            "summary": "In the app: Reservations menu (and calendar). Reservable units via category; guest books via QR with email confirmation."
+            "body": "Reservations are for shared resources with a time slot (meeting rooms, vehicles, keys) — not for defect reports. Turn on Reservable on the category and Allow reservations on the unit (off by default). Guests book via the unit QR (30 min hold + email confirmation). Staff create, edit and cancel bookings; overlapping slots are blocked.",
+            "summary": "In the app: Reservations menu (and calendar). Category Reservable + unit Allow reservations (off by default); guest books via QR with email confirmation."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

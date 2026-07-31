@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "Nueva incidencia",
-                    "text": "Describa el problema y añada opcionalmente hasta 4 fotos. Las fotos se comprimen en el dispositivo antes de subir. Hay límites anti-spam (p.ej. máx. una incidencia cada pocos minutos por dispositivo)."
+                    "text": "Describa el problema y añada opcionalmente hasta 4 fotos. Las fotos se reducen en el dispositivo antes de subir. Nombre, apellidos y correo son opcionales, salvo que el administrador haya hecho obligatorios los datos de contacto (categoría y unidad). Los trabajadores conectados no necesitan esos campos. Hay límites anti-spam (p. ej. como máximo un aviso cada pocos minutos por dispositivo)."
                 },
                 {
                     "title": "Esperando revisión",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "¿Cómo funcionan las reservas?",
-            "body": "Las reservas son para recursos compartidos con franja horaria (salas de reuniones, vehículos, llaves) — no para averías. Active Reservable en la categoría; opcionalmente desactive por unit. Los invitados reservan vía QR de unit (retención 30 min + confirmación por correo). La gestión crea, modifica y cancela; se bloquean solapamientos.",
-            "summary": "En la app: menú Reservas (y calendario). Units reservables vía categoría; invitado reserva vía QR con confirmación por correo."
+            "body": "Las reservas son para recursos compartidos con franja (salas, vehículos, llaves) — no para avisos de avería. Active Reservable en la categoría y Permitir reservas en la unidad (desactivado por defecto). Los invitados reservan vía QR de la unidad (retención 30 min + confirmación por correo). El personal crea, edita y cancela; se bloquean franjas solapadas.",
+            "summary": "En la app: menú Reservas (y calendario). Categoría Reservable + unidad Permitir reservas (desactivado por defecto); el invitado reserva vía QR con confirmación por correo."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Reservierbar",
-                    "text": "Aktivieren Sie bei einer Kategorie Reservierbar für teilbare Ressourcen mit Zeitfenster (Besprechungsraum, Fahrzeug, Schlüssel, …). Alle Units dieser Kategorie werden reservierbar und zeigen auf dem Unit-QR die Kachel Reservieren. Störungsmeldungen bleiben über Meldung → Aufgabe."
+                    "text": "Aktivieren Sie Reservierbar an einer Kategorie für teilbare Ressourcen mit Zeitslot (Raum, Fahrzeug, Schlüssel, …). Schalten Sie danach pro Unit Reservierungen erlauben ein (standardmäßig aus). Der Unit-QR zeigt dann die Kachel Reservieren. Störungsmeldungen bleiben über Meldung → Aufgabe."
+                },
+                {
+                    "label": "Kontaktdaten Pflicht",
+                    "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Reservierungen erlauben",
-                    "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig an; schalten Sie aus, um diese Unit von Reservierungen auszuschließen, während andere Units derselben Kategorie reservierbar bleiben."
+                    "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben. Andere Units derselben Kategorie bleiben unabhängig."
+                },
+                {
+                    "label": "Kontaktdaten Pflicht",
+                    "text": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder (Vorname, Name und E-Mail), nicht für über Clock Point angemeldete Mitarbeiter."
                 },
                 {
                     "label": "Bulk-Units",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Aktivieren",
-                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Alle Units werden buchbar; schalten Sie Reservierungen erlauben pro Unit aus, um eine auszuschließen. Der Unit-QR zeigt dann Reservieren."
+                    "text": "Aktivieren Sie Reservierbar an der Kategorie. Schalten Sie danach pro Unit Reservierungen erlauben ein (standardmäßig aus). Der Unit-QR zeigt dann die Kachel Reservieren."
                 },
                 {
                     "label": "Gastflow",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Meldung erstellen",
-                    "text": "Klicken Sie auf \"Meldung erstellen\", beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Es wird dann eine Aufgabe für das Team erstellt. Beachten Sie, dass die Meldung zuerst genehmigt werden muss, bevor sie auf dem Portal sichtbar wird. Um Spam zu vermeiden, gelten Limits: höchstens eine Meldung alle 3 Minuten und höchstens fünf Meldungen pro 30 Minuten für diese Unit (pro Gerät)."
+                    "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
                 },
                 {
                     "label": "Reservieren",

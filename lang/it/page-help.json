@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Prenotabile",
-                    "text": "Attivi Prenotabile su una categoria per risorse condivise con fascia oraria (sala riunioni, veicolo, chiave, …). Tutte le unità di quella categoria diventano prenotabili e mostrano il riquadro Prenota sul QR unità. Le segnalazioni di guasto restano via Segnalazione → attività."
+                    "text": "Attivi Prenotabile su una categoria per risorse condivise con fascia oraria (sala, veicolo, chiave, …). Poi attivi Consenti prenotazioni per unità (disattivo di default). Il QR dell’unità mostra allora la tessera Prenota. Le segnalazioni di guasto restano via Segnalazione → compito."
+                },
+                {
+                    "label": "Dati di contatto obbligatori",
+                    "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono indicare nome, cognome e e-mail. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per operatori sul campo già autenticati — sono già identificati."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Consenti prenotazioni",
-                    "text": "Rilevante solo se la categoria è Prenotabile. Attivo di default; disattivi per escludere questa unità dalle prenotazioni mentre le altre unità della stessa categoria restano prenotabili."
+                    "text": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attivi per consentire prenotazioni su questa unità. Le altre unità della stessa categoria restano indipendenti."
+                },
+                {
+                    "label": "Dati di contatto obbligatori",
+                    "text": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR (nome, cognome e e-mail), non per operatori autenticati via Clock Point."
                 },
                 {
                     "label": "Unità in blocco",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Abilitare",
-                    "text": "Attiva Prenotabile sulla categoria. Tutte le unità diventano prenotabili; disattiva Consenti prenotazioni per unità per escluderne una. Il QR mostra Prenota."
+                    "text": "Attivi Prenotabile sulla categoria. Poi attivi Consenti prenotazioni per unità (disattivo di default). Il QR dell’unità mostra allora la tessera Prenota."
                 },
                 {
                     "label": "Ospite",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Segnala problema",
-                    "text": "Clicchi su «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Viene poi creata un'attività per il team. Noti che la segnalazione deve prima essere approvata prima di diventare visibile sul portale. Per prevenire spam, si applicano limiti: al massimo una segnalazione ogni 3 minuti e un massimo di cinque segnalazioni per 30 minuti per questa unità (per dispositivo)."
+                    "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
                 },
                 {
                     "label": "Prenota",

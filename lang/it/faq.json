@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "Nuova segnalazione",
-                    "text": "Descrivi il problema e aggiungi opzionalmente fino a 4 foto. Le foto vengono compresse sul dispositivo prima dell'upload. Valgono limiti anti-spam (es. max. una segnalazione ogni pochi minuti per dispositivo)."
+                    "text": "Descriva il problema e aggiunga facoltativamente fino a 4 foto. Le foto sono ridimensionate sul dispositivo prima del caricamento. Nome, cognome e e-mail sono facoltativi, salvo che l’amministratore abbia reso obbligatori i dati di contatto (categoria e unità). Gli operatori autenticati non devono compilare quei campi. Si applicano limiti anti-spam (es. al massimo una segnalazione ogni pochi minuti per dispositivo)."
                 },
                 {
                     "title": "In attesa di controllo",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "Come funzionano le prenotazioni?",
-            "body": "Le prenotazioni sono per risorse condivise con fascia oraria (sale riunioni, veicoli, chiavi) — non per guasti. Attivate Prenotabile sulla categoria; opzionalmente disattivate per unit. Gli ospiti prenotano via QR unit (hold 30 min + conferma e-mail). La gestione crea, modifica e annulla; gli slot sovrapposti sono bloccati.",
-            "summary": "Nell’app: menu Prenotazioni (e calendario). Unit prenotabili via categoria; ospite prenota via QR con conferma e-mail."
+            "body": "Le prenotazioni sono per risorse condivise con fascia (sale, veicoli, chiavi) — non per segnalazioni di guasto. Attivi Prenotabile sulla categoria e Consenti prenotazioni sull’unità (disattivo di default). Gli ospiti prenotano via QR dell’unità (hold 30 min + conferma e-mail). Il personale crea, modifica e annulla; le fasce sovrapposte sono bloccate.",
+            "summary": "Nell’app: menu Prenotazioni (e calendario). Categoria Prenotabile + unità Consenti prenotazioni (disattivo di default); l’ospite prenota via QR con conferma e-mail."
         },
         "multiple_locations": {
             "slug": "multiple_locations",

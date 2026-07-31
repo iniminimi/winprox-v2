@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Reserveerbaar",
-                    "text": "Zet bij een categorie Reserveerbaar aan voor deelbare middelen met een tijdslot (vergaderzaal, voertuig, sleutel, …). Alle units in die categorie worden reserveerbaar en tonen op de unit-QR de tegel Reserveren. Defectmeldingen blijven via Melding → taak."
+                    "text": "Zet bij een categorie Reserveerbaar aan voor deelbare middelen met een tijdslot (vergaderzaal, voertuig, sleutel, …). Zet daarna per unit Reserveringen toestaan aan (standaard uit). Op de unit-QR verschijnt dan de tegel Reserveren. Defectmeldingen blijven via Melding → taak."
+                },
+                {
+                    "label": "Contactgegevens invullen verplicht",
+                    "text": "Zet dit aan als anonieme melders via de unit-QR hun voornaam, naam en e-mail moeten invullen. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders (veldwerkers) geldt dit niet — zij zijn al bekend."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Reserveringen toestaan",
-                    "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard aan; zet uit om deze unit uit te sluiten van reserveringen terwijl andere units in dezelfde categorie wel reserveerbaar blijven."
+                    "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan. Andere units in dezelfde categorie blijven onafhankelijk."
+                },
+                {
+                    "label": "Contactgegevens invullen verplicht",
+                    "text": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders (voornaam, naam en e-mail), niet voor uitvoerders die zich via Clock Point hebben aangemeld."
                 },
                 {
                     "label": "Bulk units",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Inschakelen",
-                    "text": "Zet op de categorie Reserveerbaar aan. Alle units in die categorie worden reserveerbaar; zet per unit Reserveringen toestaan uit om er een uit te sluiten. Daarna verschijnt op de unit-QR de tegel Reserveren."
+                    "text": "Zet op de categorie Reserveerbaar aan. Zet daarna per unit Reserveringen toestaan aan (standaard uit). Daarna verschijnt op de unit-QR de tegel Reserveren."
                 },
                 {
                     "label": "Gastflow",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Melding doen",
-                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Er wordt vervolgens een taak aangemaakt voor het team. Houd er rekening mee dat de melding eerst moet worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Ter voorkoming van spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
+                    "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
                 },
                 {
                     "label": "Reserveren",

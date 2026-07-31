@@ -188,7 +188,11 @@
                 },
                 {
                     "label": "Reservable",
-                    "text": "Active Reservable en una categoría para recursos compartidos con franja horaria (sala de reuniones, vehículo, llave, …). Todas las unidades de esa categoría pasan a ser reservables y muestran el mosaico Reservar en el QR de la unidad. Los informes de defectos siguen vía Incidencia → tarea."
+                    "text": "Active Reservable en una categoría para recursos compartidos con franja horaria (sala, vehículo, llave, …). Luego active Permitir reservas por unidad (desactivado por defecto). El QR de la unidad muestra entonces la ficha Reservar. Los avisos de avería siguen vía Aviso → tarea."
+                },
+                {
+                    "label": "Datos de contacto obligatorios",
+                    "text": "Actívelo si los informantes anónimos vía QR de la unidad deben indicar nombre, apellidos y correo. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores de campo conectados — ya están identificados."
                 }
             ]
         },
@@ -209,7 +213,11 @@
                 },
                 {
                     "label": "Permitir reservas",
-                    "text": "Solo relevante si la categoría es Reservable. Activado por defecto; desactívelo para excluir esta unidad de las reservas mientras otras unidades de la misma categoría siguen siendo reservables."
+                    "text": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad. Otras unidades de la misma categoría siguen independientes."
+                },
+                {
+                    "label": "Datos de contacto obligatorios",
+                    "text": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR (nombre, apellidos y correo), no para trabajadores conectados vía Clock Point."
                 },
                 {
                     "label": "Unidades en bloque",
@@ -304,7 +312,7 @@
                 },
                 {
                     "label": "Activar",
-                    "text": "Active Reservable en la categoría. Todas las unidades pasan a ser reservables; desactive Permitir reservas por unidad para excluir una. El QR mostrará Reservar."
+                    "text": "Active Reservable en la categoría. Luego active Permitir reservas por unidad (desactivado por defecto). El QR de la unidad muestra entonces la ficha Reservar."
                 },
                 {
                     "label": "Invitado",
@@ -587,7 +595,7 @@
                 },
                 {
                     "label": "Informar incidencia",
-                    "text": "Haga clic en «Crear informe», describa el problema y opcionalmente añada hasta cuatro fotos. Se crea entonces una tarea para el equipo. Tenga en cuenta que la incidencia debe aprobarse primero antes de ser visible en el portal. Para evitar spam, se aplican límites: como máximo un informe cada 3 minutos y un máximo de cinco informes por 30 minutos para esta unidad (por dispositivo)."
+                    "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
                 },
                 {
                     "label": "Reservar",

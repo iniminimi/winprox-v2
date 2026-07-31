@@ -91,7 +91,7 @@
             "sections": [
                 {
                     "title": "Nieuwe melding",
-                    "text": "Beschrijf het probleem en voeg optioneel tot 4 foto's toe. Foto's worden op het toestel verkleind vóór upload. Er gelden limieten tegen spam (o.a. max. één melding per paar minuten per apparaat)."
+                    "text": "Beschrijf het probleem en voeg optioneel tot 4 foto's toe. Foto's worden op het toestel verkleind vóór upload. Voornaam, naam en e-mail zijn optioneel, tenzij de beheerder contactgegevens verplicht heeft gezet (categorie én unit). Uitvoerders die zijn aangemeld hoeven die velden niet in te vullen. Er gelden limieten tegen spam (o.a. max. één melding per paar minuten per apparaat)."
                 },
                 {
                     "title": "Wacht op controle",
@@ -198,8 +198,8 @@
             "slug": "reservations",
             "type": "text",
             "title": "Hoe werken reserveringen?",
-            "body": "Reserveringen zijn voor deelbare middelen met een tijdslot (vergaderzalen, voertuigen, sleutels) — niet voor defectmeldingen. Zet op de categorie Reserveerbaar aan; optioneel per unit uitzetten. Gasten boeken via de unit-QR (30 min hold + e-mailbevestiging). Beheer maakt, wijzigt en annuleert boekingen; overlappende slots worden geblokkeerd.",
-            "summary": "In de app: menu Reserveringen (en kalender). Reserveerbare units via categorie; gast boekt via QR met e-mailbevestiging."
+            "body": "Reserveringen zijn voor deelbare middelen met een tijdslot (vergaderzalen, voertuigen, sleutels) — niet voor defectmeldingen. Zet op de categorie Reserveerbaar aan en per unit Reserveringen toestaan aan (standaard uit). Gasten boeken via de unit-QR (30 min hold + e-mailbevestiging). Beheer maakt, wijzigt en annuleert boekingen; overlappende slots worden geblokkeerd.",
+            "summary": "In de app: menu Reserveringen (en kalender). Categorie Reserveerbaar + unit Reserveringen toestaan (standaard uit); gast boekt via QR met e-mailbevestiging."
         },
         "multiple_locations": {
             "slug": "multiple_locations",
