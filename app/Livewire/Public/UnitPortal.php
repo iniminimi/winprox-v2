@@ -272,20 +272,26 @@ class UnitPortal extends Component
         $this->reporter_last_name = trim($this->reporter_last_name);
         $this->reporter_email = trim($this->reporter_email);
 
-        $this->validate(ReportIssueRequest::portalRules(), ReportIssueRequest::validationMessages());
+        $worker = $this->authorizedWorker();
+        $requireReporterContact = $worker === null && $this->unit()->requiresReporterContact();
+
+        $this->validate(
+            ReportIssueRequest::portalRules($requireReporterContact),
+            ReportIssueRequest::validationMessages(),
+        );
 
         try {
             $submitReport->handle(
                 $this->unit(),
                 ReportIssueRequest::issueDataFromInput([
                     'description' => $this->description,
-                    'reporter_first_name' => $this->reporter_first_name,
-                    'reporter_last_name' => $this->reporter_last_name,
-                    'reporter_email' => $this->reporter_email,
+                    'reporter_first_name' => $worker === null ? $this->reporter_first_name : '',
+                    'reporter_last_name' => $worker === null ? $this->reporter_last_name : '',
+                    'reporter_email' => $worker === null ? $this->reporter_email : '',
                     'original_language' => $this->locale,
                 ]),
                 $this->photos,
-                $this->authorizedWorker(),
+                $worker,
                 request()->ip(),
             );
         } catch (PublicReportRateLimitExceededException $exception) {
@@ -950,6 +956,7 @@ class UnitPortal extends Component
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
             'showNewReportSection' => $this->showNewReportSection(),
+            'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),
             'worker' => $worker,
             'team' => $team,
             'phase' => $phase,

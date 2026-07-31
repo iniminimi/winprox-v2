@@ -37,6 +37,9 @@ class CreateUnitAction
             'allow_reservations' => array_key_exists('allow_reservations', $data)
                 ? (bool) $data['allow_reservations']
                 : false,
+            'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
+                ? (bool) $data['require_reporter_contact']
+                : false,
         ];
 
         if (Schema::hasColumn('units', 'category_id')) {

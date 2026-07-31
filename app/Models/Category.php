@@ -21,11 +21,13 @@ class Category extends Model
         'original_language',
         'allow_gps_location',
         'is_reservable',
+        'require_reporter_contact',
     ];
 
     protected $casts = [
         'allow_gps_location' => 'boolean',
         'is_reservable' => 'boolean',
+        'require_reporter_contact' => 'boolean',
     ];
 
     public function tenant(): BelongsTo

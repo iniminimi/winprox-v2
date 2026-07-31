@@ -13,13 +13,21 @@ class ReportIssueRequest extends FormRequest
     }
 
     /** @return array<string, mixed> */
-    public static function portalRules(): array
+    public static function portalRules(bool $requireReporterContact = false): array
     {
+        $nameRules = $requireReporterContact
+            ? ['required', 'string', 'max:120']
+            : ['nullable', 'string', 'max:120'];
+
+        $emailRules = $requireReporterContact
+            ? ['required', 'email', 'max:255']
+            : ['nullable', 'email', 'max:255'];
+
         return [
             'description' => ['required', 'string', 'min:3', 'max:'.TextDescriptionLimits::MAX],
-            'reporter_first_name' => ['nullable', 'string', 'max:120'],
-            'reporter_last_name' => ['nullable', 'string', 'max:120'],
-            'reporter_email' => ['nullable', 'email', 'max:255'],
+            'reporter_first_name' => $nameRules,
+            'reporter_last_name' => $nameRules,
+            'reporter_email' => $emailRules,
             'photos' => ['nullable', 'array', 'max:4'],
             'photos.*' => ['image', 'max:10240'],
         ];
@@ -42,6 +50,9 @@ class ReportIssueRequest extends FormRequest
             'description.required' => __('portal.report.errors.description_required'),
             'description.min' => __('portal.report.errors.description_required'),
             'description.max' => __('portal.report.errors.description_max'),
+            'reporter_first_name.required' => __('portal.report.errors.reporter_first_name_required'),
+            'reporter_last_name.required' => __('portal.report.errors.reporter_last_name_required'),
+            'reporter_email.required' => __('portal.report.errors.reporter_email_required'),
             'reporter_email.email' => __('portal.report.errors.reporter_email_invalid'),
             'photos.max' => __('portal.report.errors.photos_max'),
             'photos.*.image' => __('portal.report.errors.photos_image'),

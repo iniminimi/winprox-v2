@@ -110,7 +110,8 @@
             "description": "Description",
             "category": "Category",
             "public_reports_enabled": "Visitors can submit a report via the QR portal",
-            "allow_reservations": "Allow reservations"
+            "allow_reservations": "Allow reservations",
+            "require_reporter_contact": "Require contact details"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -161,7 +162,8 @@
         "delete_blocked_tasks": "This unit has tasks and cannot be deleted.",
         "delete_blocked_esg_measurements": "This unit has ESG measurements and cannot be deleted.",
         "delete_blocked": "This unit cannot be deleted.",
-        "allow_reservations_hint": "Only relevant when the category is Reservable. On by default; turn off to exclude this unit."
+        "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
+        "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers."
     },
     "bulk": {
         "title": "Add bulk units",
@@ -222,7 +224,8 @@
             "name": "Category name",
             "teams": "Teams",
             "allow_gps_location": "Allow GPS location",
-            "is_reservable": "Reservable"
+            "is_reservable": "Reservable",
+            "require_reporter_contact": "Require contact details"
         },
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
@@ -244,7 +247,8 @@
             "deleted": "Category deleted.",
             "translation_saved": "Category translation saved."
         },
-        "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …)."
+        "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …).",
+        "require_reporter_contact_hint": "Require first name, last name and email for anonymous reports via the unit QR. Off by default. Only takes effect when also enabled on the unit."
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",

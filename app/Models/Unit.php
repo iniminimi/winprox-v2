@@ -29,6 +29,7 @@ class Unit extends Model
         'is_active',
         'public_reports_enabled',
         'allow_reservations',
+        'require_reporter_contact',
         'background_photo_path',
     ];
 
@@ -36,6 +37,7 @@ class Unit extends Model
         'is_active' => 'boolean',
         'public_reports_enabled' => 'boolean',
         'allow_reservations' => 'boolean',
+        'require_reporter_contact' => 'boolean',
     ];
 
     protected static function booted(): void
@@ -80,6 +82,13 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->is_reservable && $this->allow_reservations;
+    }
+
+    public function requiresReporterContact(): bool
+    {
+        $this->loadMissing('category');
+
+        return (bool) $this->category?->require_reporter_contact && $this->require_reporter_contact;
     }
 
     public function issues(): HasMany

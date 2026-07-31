@@ -65,8 +65,14 @@
             "photos_qr_missing": "Er is geen actieve QR-code gekoppeld aan deze unit. De foto's kunnen niet worden opgeslagen.",
             "photos_failed": "De foto's konden niet worden opgeslagen. Probeer het opnieuw.",
             "cooldown": "Je verstuurde net een melding. Om spam te voorkomen kun je pas over :seconds seconden opnieuw een melding voor deze unit maken.",
-            "rate_limited": "Je hebt het maximum van :max meldingen voor deze unit bereikt. Probeer het over :minutes minuten opnieuw."
-        }
+            "rate_limited": "Je hebt het maximum van :max meldingen voor deze unit bereikt. Probeer het over :minutes minuten opnieuw.",
+            "reporter_first_name_required": "Vul je voornaam in.",
+            "reporter_last_name_required": "Vul je achternaam in.",
+            "reporter_email_required": "Vul je e-mailadres in."
+        },
+        "reporter_first_name_ph_required": "Voornaam",
+        "reporter_last_name_ph_required": "Achternaam",
+        "reporter_email_ph_required": "E-mail"
     },
     "worker": {
         "title": "Aanmelden als medewerker",

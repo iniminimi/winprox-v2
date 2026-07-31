@@ -15,7 +15,7 @@ class CreateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, original_language?: string|null}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, require_reporter_contact?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -25,6 +25,7 @@ class CreateCategoryAction
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
+            'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
         ]);
 
         $this->ensureSlots->handle($category);
@@ -40,6 +41,7 @@ class CreateCategoryAction
                 'name' => $category->name,
                 'allow_gps_location' => $category->allow_gps_location,
                 'is_reservable' => $category->is_reservable,
+                'require_reporter_contact' => $category->require_reporter_contact,
             ],
         );
 

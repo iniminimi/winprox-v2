@@ -280,6 +280,16 @@
                 </div>
 
                 <div class="wp-field">
+                    <x-wp-tooltip :text="__('locations.categories.require_reporter_contact_hint')" wrap>
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="categoryRequireReporterContact" />
+                            <span>{{ __('locations.categories.fields.require_reporter_contact') }}</span>
+                        </label>
+                    </x-wp-tooltip>
+                    @error('categoryRequireReporterContact') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-field">
                     <h3 class="wp-label">{{ __('locations.categories.fields.teams') }}</h3>
                     <p class="wp-hint">{{ __('locations.categories.teams_subtitle') }}</p>
                 </div>

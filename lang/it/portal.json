@@ -65,8 +65,14 @@
             "photos_qr_missing": "Non c'è un codice QR attivo collegato a questa unità. Le foto non possono essere salvate.",
             "photos_failed": "Le foto non sono state salvate. Riprovi.",
             "cooldown": "Ha appena inviato una segnalazione. Per prevenire spam, può inviare una nuova segnalazione per questa unità tra :seconds secondi.",
-            "rate_limited": "Ha raggiunto il massimo di :max segnalazioni per questa unità. Riprovi tra :minutes minuti."
-        }
+            "rate_limited": "Ha raggiunto il massimo di :max segnalazioni per questa unità. Riprovi tra :minutes minuti.",
+            "reporter_first_name_required": "Inserisca il nome.",
+            "reporter_last_name_required": "Inserisca il cognome.",
+            "reporter_email_required": "Inserisca l’indirizzo e-mail."
+        },
+        "reporter_first_name_ph_required": "Nome",
+        "reporter_last_name_ph_required": "Cognome",
+        "reporter_email_ph_required": "E-mail"
     },
     "worker": {
         "title": "Accedi come lavoratore",

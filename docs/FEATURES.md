@@ -329,7 +329,7 @@ zonder SSO of verplichte account-login.
 
 ### Instellingen
 - **Categorie:** vinkje `is_reservable` schakelt reserveren in voor alle units in die categorie.
-- **Unit:** vinkje `allow_reservations` (standaard aan) kan reserveren per unit uitzetten.
+- **Unit:** vinkje `allow_reservations` (standaard **uit**) kan reserveren per unit aanzetten.
 
 ### Gastflow (unit-QR)
 - Tegel **Reserveren** op het portaal wanneer de unit reserveerbaar is.
@@ -698,7 +698,9 @@ params, `DemoSectorCopy`. Property→Location in copy.
   niet leeg — **Open meldingen**, **Mededelingen**, **Documenten**. Voor veldworkers extra: blok met
   open taken + sign-in.
 - **new** (melden): veld **omschrijving** (verplicht, min 3) + **tot 4 foto's** (`image`, max 10 MB).
-  Geen naam/e-mail/categorie op de Facility-unitpagina. Submit → maakt:
+  Optioneel voornaam/achternaam/e-mail; verplicht wanneer categorie **én** unit
+  `require_reporter_contact` aan staan (alleen anonieme QR-melders — niet voor ingelogde
+  veldwerkers). Submit → maakt:
   - `Issue` (`source=tenant`, `category=unspecified`, `priority=medium`, `status=new`,
     `report_finalized_at=now`), gescoped op tenant/location/unit.
   - Foto's via `IssuePhotoStorage` (client comprimeert ≤1600px/JPEG ~72%, queue; server geen resize).

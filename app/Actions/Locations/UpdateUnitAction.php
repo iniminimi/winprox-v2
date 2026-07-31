@@ -42,6 +42,10 @@ class UpdateUnitAction
             $payload['allow_reservations'] = (bool) $data['allow_reservations'];
         }
 
+        if (array_key_exists('require_reporter_contact', $data)) {
+            $payload['require_reporter_contact'] = (bool) $data['require_reporter_contact'];
+        }
+
         if (Schema::hasColumn('units', 'category_id')) {
             $payload['category_id'] = $data['category_id'] ?? null;
         }

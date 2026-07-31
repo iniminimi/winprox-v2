@@ -65,8 +65,14 @@
             "photos_qr_missing": "There is no active QR code linked to this unit. Photos cannot be saved.",
             "photos_failed": "The photos could not be saved. Please try again.",
             "cooldown": "You just submitted a report. To prevent spam, you can submit a new report for this unit again in :seconds seconds.",
-            "rate_limited": "You have reached the maximum of :max reports for this unit. Please try again in :minutes minutes."
-        }
+            "rate_limited": "You have reached the maximum of :max reports for this unit. Please try again in :minutes minutes.",
+            "reporter_first_name_required": "Please enter your first name.",
+            "reporter_last_name_required": "Please enter your last name.",
+            "reporter_email_required": "Please enter your email address."
+        },
+        "reporter_first_name_ph_required": "First name",
+        "reporter_last_name_ph_required": "Last name",
+        "reporter_email_ph_required": "Email"
     },
     "worker": {
         "title": "Sign in as worker",

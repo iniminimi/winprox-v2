@@ -42,6 +42,7 @@ class StoreUnitRequest extends FormRequest
             'category_id' => $categoryRules,
             'public_reports_enabled' => ['boolean'],
             'allow_reservations' => ['boolean'],
+            'require_reporter_contact' => ['boolean'],
         ];
     }
 

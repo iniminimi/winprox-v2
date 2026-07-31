@@ -116,6 +116,8 @@ class Show extends Component
 
     public bool $unitAllowReservations = false;
 
+    public bool $unitRequireReporterContact = false;
+
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $unitPhotos = [];
 
@@ -359,6 +361,7 @@ class Show extends Component
         $this->unitCategoryId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
+        $this->unitRequireReporterContact = false;
         $this->resetErrorBag();
         $this->showUnitModal = true;
     }
@@ -375,6 +378,7 @@ class Show extends Component
         $this->unitCategoryId = $unit->category_id;
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
+        $this->unitRequireReporterContact = (bool) $unit->require_reporter_contact;
         $this->unitPhotos = [];
         $this->previewLocale = $this->defaultTranslationLocaleFor($unit);
         $this->hydrateUnitTranslationInputs($unit->fresh('translations'));
@@ -393,6 +397,7 @@ class Show extends Component
         $this->unitCategoryId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
+        $this->unitRequireReporterContact = false;
         $this->unitPhotos = [];
         $this->unitTranslationName = '';
         $this->unitTranslationDescription = '';
@@ -475,6 +480,7 @@ class Show extends Component
             'unitCategoryId' => $rules['category_id'],
             'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitAllowReservations' => $rules['allow_reservations'],
+            'unitRequireReporterContact' => $rules['require_reporter_contact'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
         ], [
@@ -492,6 +498,7 @@ class Show extends Component
             'category_id' => $validated['unitCategoryId'] ?? null,
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
+            'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
             'original_language' => auth()->user()->locale ?? null,
         ];
 

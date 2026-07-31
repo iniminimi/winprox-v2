@@ -71,6 +71,8 @@ class Index extends Component
 
     public bool $categoryIsReservable = false;
 
+    public bool $categoryRequireReporterContact = false;
+
     /** @var array<int, int> */
     public array $selectedCategoryTeamIds = [];
 
@@ -334,6 +336,7 @@ class Index extends Component
         $this->categoryName = (string) $category->name;
         $this->categoryAllowGpsLocation = (bool) $category->allow_gps_location;
         $this->categoryIsReservable = (bool) $category->is_reservable;
+        $this->categoryRequireReporterContact = (bool) $category->require_reporter_contact;
         $this->selectedCategoryTeamIds = $category->teams()->pluck('internal_teams.id')->toArray();
         $this->categoryPreviewLocale = $this->defaultTranslationLocaleForCategory($category);
         $this->hydrateCategoryTranslationInput($category->fresh('translations'));
@@ -373,6 +376,7 @@ class Index extends Component
             'categoryName' => $rules['name'],
             'categoryAllowGpsLocation' => $rules['allow_gps_location'],
             'categoryIsReservable' => $rules['is_reservable'],
+            'categoryRequireReporterContact' => $rules['require_reporter_contact'],
             'selectedCategoryTeamIds' => 'required|array|min:1',
             'selectedCategoryTeamIds.*' => 'exists:internal_teams,id',
         ], [
@@ -388,6 +392,7 @@ class Index extends Component
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
+                'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
                 'original_language' => auth()->user()?->locale,
             ], (int) auth()->id());
         } else {
@@ -397,6 +402,7 @@ class Index extends Component
                 'name' => $validated['categoryName'],
                 'allow_gps_location' => (bool) $validated['categoryAllowGpsLocation'],
                 'is_reservable' => (bool) $validated['categoryIsReservable'],
+                'require_reporter_contact' => (bool) $validated['categoryRequireReporterContact'],
             ], (int) auth()->id());
         }
 
@@ -479,6 +485,7 @@ class Index extends Component
         $this->categoryName = '';
         $this->categoryAllowGpsLocation = false;
         $this->categoryIsReservable = false;
+        $this->categoryRequireReporterContact = false;
         $this->selectedCategoryTeamIds = [];
         $this->categoryPreviewLocale = '';
         $this->categoryTranslationName = '';

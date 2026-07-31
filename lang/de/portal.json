@@ -65,8 +65,14 @@
             "photos_qr_missing": "Es ist kein aktiver QR-Code mit dieser Einheit verknüpft. Fotos können nicht gespeichert werden.",
             "photos_failed": "Die Fotos konnten nicht gespeichert werden. Bitte versuchen Sie es erneut.",
             "cooldown": "Sie haben gerade eine Meldung gesendet. Um Spam zu vermeiden, können Sie in :seconds Sekunden erneut eine Meldung für diese Einheit senden.",
-            "rate_limited": "Sie haben das Maximum von :max Meldungen für diese Einheit erreicht. Bitte versuchen Sie es in :minutes Minuten erneut."
-        }
+            "rate_limited": "Sie haben das Maximum von :max Meldungen für diese Einheit erreicht. Bitte versuchen Sie es in :minutes Minuten erneut.",
+            "reporter_first_name_required": "Bitte geben Sie Ihren Vornamen ein.",
+            "reporter_last_name_required": "Bitte geben Sie Ihren Nachnamen ein.",
+            "reporter_email_required": "Bitte geben Sie Ihre E-Mail-Adresse ein."
+        },
+        "reporter_first_name_ph_required": "Vorname",
+        "reporter_last_name_ph_required": "Nachname",
+        "reporter_email_ph_required": "E-Mail"
     },
     "worker": {
         "title": "Als Mitarbeiter anmelden",

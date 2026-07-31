@@ -148,6 +148,73 @@ it('allows anonymous submit without reporter fields', function () {
         ->and($issue->reporter_contact)->toBeNull();
 });
 
+it('requires reporter contact for anonymous QR when category and unit flags are on', function () {
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_contact' => true]);
+    $unit->update(['require_reporter_contact' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->call('submitReport')
+        ->assertHasErrors(['reporter_first_name', 'reporter_last_name', 'reporter_email']);
+
+    expect(Issue::count())->toBe(0);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Lekkage in de keuken.')
+        ->set('reporter_first_name', 'Ada')
+        ->set('reporter_last_name', 'Lovelace')
+        ->set('reporter_email', 'ada@example.com')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    $issue = Issue::first();
+    expect($issue)->not->toBeNull()
+        ->and($issue->reporter_name)->toBe('Ada Lovelace')
+        ->and($issue->reporter_contact)->toBe('ada@example.com');
+});
+
+it('does not require reporter contact for signed-in workers even when flags are on', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_contact' => true]);
+    $unit->update(['require_reporter_contact' => true]);
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->set('description', 'Worker melding zonder contactvelden.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    $issue = Issue::first();
+    expect($issue)->not->toBeNull()
+        ->and($issue->reporter_name)->toBeNull()
+        ->and($issue->reporter_contact)->toBeNull();
+});
+
+it('keeps reporter contact optional when only the category flag is on', function () {
+    ['unit' => $unit] = unitPortalScaffold();
+    $unit->category->update(['require_reporter_contact' => true]);
+    $unit->update(['require_reporter_contact' => false]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Optioneel contact blijft mogelijk.')
+        ->call('submitReport')
+        ->assertHasNoErrors();
+
+    expect(Issue::count())->toBe(1);
+});
+
 it('returns 404 for an unknown unit token', function () {
     $this->get('/melden/bestaat-niet')->assertNotFound();
 });

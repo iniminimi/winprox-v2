@@ -65,8 +65,14 @@
             "photos_qr_missing": "No hay un código QR activo vinculado a esta unidad. No se pueden guardar las fotos.",
             "photos_failed": "No se han podido guardar las fotos. Inténtelo de nuevo.",
             "cooldown": "Acaba de enviar un informe. Para evitar spam, puede enviar un nuevo informe para esta unidad en :seconds segundos.",
-            "rate_limited": "Ha alcanzado el máximo de :max informes para esta unidad. Inténtelo de nuevo en :minutes minutos."
-        }
+            "rate_limited": "Ha alcanzado el máximo de :max informes para esta unidad. Inténtelo de nuevo en :minutes minutos.",
+            "reporter_first_name_required": "Introduzca su nombre.",
+            "reporter_last_name_required": "Introduzca sus apellidos.",
+            "reporter_email_required": "Introduzca su dirección de correo."
+        },
+        "reporter_first_name_ph_required": "Nombre",
+        "reporter_last_name_ph_required": "Apellidos",
+        "reporter_email_ph_required": "Correo"
     },
     "worker": {
         "title": "Iniciar sesión como trabajador",
