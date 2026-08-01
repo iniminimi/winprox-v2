@@ -1170,6 +1170,27 @@
                     "text": "The gateway posts to <code>POST /api/v1/iot/events</code> with <code>kind</code> <em>alarm</em> or <em>measurement</em>. Optional: <code>idempotency_key</code> to avoid duplicate posts. See the API docs (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Help — Unit checks",
+            "actions": [
+                {
+                    "label": "What is a unit check?",
+                    "text": "A quick confirmation on the unit QR: OK or Not OK, with worker, timestamp and optional GPS. OK does not create an issue."
+                },
+                {
+                    "label": "Not OK",
+                    "text": "Not OK stores the check and then lets the worker create a normal report via the portal."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter by result (OK / Not OK) and location. Open GPS to view coordinates on a map."
+                },
+                {
+                    "label": "Webhooks",
+                    "text": "Each check fires unit.check.recorded so external systems can update rounds later."
+                }
+            ]
         }
     }
 }

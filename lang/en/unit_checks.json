@@ -1,0 +1,24 @@
+{
+    "title": "Unit checks",
+    "subtitle": "History of OK / Not OK checks via QR.",
+    "list_title": "Recent checks",
+    "empty": "No unit checks yet.",
+    "worker_unknown": "Unknown worker",
+    "gps_link": "GPS on map",
+    "filters": {
+        "result": "Result",
+        "all_results": "All results",
+        "location": "Location",
+        "all_locations": "All locations"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "Not OK"
+    },
+    "validation": {
+        "result_required": "Choose OK or Not OK.",
+        "result_invalid": "Invalid result.",
+        "checked_at_required": "Timestamp is required.",
+        "checked_at_invalid": "Invalid timestamp."
+    }
+}

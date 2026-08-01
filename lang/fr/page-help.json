@@ -1170,6 +1170,27 @@
                     "text": "La passerelle envoie vers <code>POST /api/v1/iot/events</code> avec <code>kind</code> <em>alarm</em> ou <em>measurement</em>. Optionnel : <code>idempotency_key</code> pour éviter les envois en double. Voir la doc API (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Aide — Contrôles unit",
+            "actions": [
+                {
+                    "label": "Qu’est-ce qu’un contrôle unit ?",
+                    "text": "Une confirmation rapide via le QR unit : OK ou Pas OK, avec exécutant, horodatage et GPS optionnel. OK ne crée pas de signalement."
+                },
+                {
+                    "label": "Pas OK",
+                    "text": "Pas OK enregistre le contrôle, puis l’exécutant peut créer un signalement normal via le portail."
+                },
+                {
+                    "label": "Filtres",
+                    "text": "Filtrez par résultat (OK / Pas OK) et site. Ouvrez le GPS pour voir les coordonnées sur la carte."
+                },
+                {
+                    "label": "Webhooks",
+                    "text": "Chaque contrôle déclenche unit.check.recorded pour les systèmes externes."
+                }
+            ]
         }
     }
 }

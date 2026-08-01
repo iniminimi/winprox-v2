@@ -1170,6 +1170,27 @@
                     "text": "De gateway post naar <code>POST /api/v1/iot/events</code> met <code>kind</code> <em>alarm</em> of <em>measurement</em>. Optioneel: <code>idempotency_key</code> om dubbele posts te voorkomen. Details staan in de API-docs (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Hulp — Unit checks",
+            "actions": [
+                {
+                    "label": "Wat is een unit check?",
+                    "text": "Een snelle bevestiging op de unit-QR: OK of Niet OK, met uitvoerder, tijdstip en optioneel GPS. Geen aparte melding bij OK."
+                },
+                {
+                    "label": "Niet OK",
+                    "text": "Bij Niet OK wordt de check opgeslagen en kan de uitvoerder daarna een gewone melding maken via het portaal."
+                },
+                {
+                    "label": "Filters",
+                    "text": "Filter op resultaat (OK / Niet OK) en locatie. Klik op GPS om de coördinaten op de kaart te openen."
+                },
+                {
+                    "label": "Webhooks",
+                    "text": "Elke check triggert unit.check.recorded zodat externe systemen (later bv. Planon) de ronde kunnen bijwerken."
+                }
+            ]
         }
     }
 }

@@ -35,7 +35,9 @@
         "announcements": "Announcements",
         "documents": "Documents",
         "reserve": "Reserve",
-        "my_reservations": "My reservations"
+        "my_reservations": "My reservations",
+        "unit_check": "Unit check",
+        "unit_check_sub": "Confirm this unit is OK"
     },
     "report": {
         "title": "Create a report",
@@ -244,6 +246,23 @@
             "email": "Email",
             "start_at": "Start",
             "end_at": "End"
+        }
+    },
+    "unit_check": {
+        "title": "Unit check",
+        "lead": "Confirm whether this unit is OK. Your GPS may be included as location proof.",
+        "ok": "OK",
+        "not_ok": "Not OK",
+        "capturing_gps": "Getting GPS…",
+        "gps_ready": "GPS location included.",
+        "gps_unavailable": "GPS is not available on this device.",
+        "recorded_ok": "Unit check saved: OK.",
+        "recorded_not_ok": "Unit check saved: not OK. Create a report if needed.",
+        "errors": {
+            "result_required": "Choose OK or Not OK.",
+            "result_invalid": "Invalid result.",
+            "checked_at_required": "Timestamp is missing.",
+            "checked_at_invalid": "Invalid timestamp."
         }
     }
 }

@@ -1,0 +1,24 @@
+{
+    "title": "Contrôles unit",
+    "subtitle": "Historique des contrôles OK / Pas OK via QR.",
+    "list_title": "Contrôles récents",
+    "empty": "Aucun contrôle unit pour le moment.",
+    "worker_unknown": "Exécutant inconnu",
+    "gps_link": "GPS sur la carte",
+    "filters": {
+        "result": "Résultat",
+        "all_results": "Tous les résultats",
+        "location": "Site",
+        "all_locations": "Tous les sites"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "Pas OK"
+    },
+    "validation": {
+        "result_required": "Choisissez OK ou Pas OK.",
+        "result_invalid": "Résultat invalide.",
+        "checked_at_required": "Horodatage requis.",
+        "checked_at_invalid": "Horodatage invalide."
+    }
+}

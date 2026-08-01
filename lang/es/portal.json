@@ -35,7 +35,9 @@
         "announcements": "Anuncios",
         "documents": "Documentos",
         "reserve": "Reservar",
-        "my_reservations": "Mis reservas"
+        "my_reservations": "Mis reservas",
+        "unit_check": "Chequeo de unit",
+        "unit_check_sub": "Confirmar que esta unit está OK"
     },
     "report": {
         "title": "Crear un informe",
@@ -244,6 +246,23 @@
             "email": "Correo",
             "start_at": "Inicio",
             "end_at": "Fin"
+        }
+    },
+    "unit_check": {
+        "title": "Chequeo de unit",
+        "lead": "Confirma si esta unit está en orden. El GPS puede usarse como prueba de ubicación.",
+        "ok": "OK",
+        "not_ok": "No OK",
+        "capturing_gps": "Obteniendo GPS…",
+        "gps_ready": "Ubicación GPS incluida.",
+        "gps_unavailable": "GPS no disponible en este dispositivo.",
+        "recorded_ok": "Chequeo guardado: OK.",
+        "recorded_not_ok": "Chequeo guardado: no OK. Crea un aviso si hace falta.",
+        "errors": {
+            "result_required": "Elige OK o No OK.",
+            "result_invalid": "Resultado no válido.",
+            "checked_at_required": "Falta la fecha/hora.",
+            "checked_at_invalid": "Fecha/hora no válida."
         }
     }
 }

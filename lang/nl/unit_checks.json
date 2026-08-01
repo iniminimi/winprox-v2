@@ -1,0 +1,24 @@
+{
+    "title": "Unit checks",
+    "subtitle": "Historiek van OK / Niet OK controles via QR.",
+    "list_title": "Recente checks",
+    "empty": "Nog geen unit checks.",
+    "worker_unknown": "Onbekende uitvoerder",
+    "gps_link": "GPS op kaart",
+    "filters": {
+        "result": "Resultaat",
+        "all_results": "Alle resultaten",
+        "location": "Locatie",
+        "all_locations": "Alle locaties"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "Niet OK"
+    },
+    "validation": {
+        "result_required": "Kies OK of Niet OK.",
+        "result_invalid": "Ongeldig resultaat.",
+        "checked_at_required": "Tijdstip is verplicht.",
+        "checked_at_invalid": "Ongeldig tijdstip."
+    }
+}

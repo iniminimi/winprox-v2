@@ -19,7 +19,8 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
 Menu-volgorde (sidebar): Dashboard · Locaties/units · Meldingen · Taken · Kalender ·
-ESG & Compliance (optioneel, module) · IoT Connect (Facility+/Corporate) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
+Reserveringen · Unit checks · ESG & Compliance (optioneel, module) · IoT Connect
+(Facility+/Corporate) · Team · Abonnement · FAQ & kennisbank · Juridische documenten · Contact.
 
 ---
 
@@ -346,6 +347,31 @@ zonder SSO of verplichte account-login.
 
 ### API & webhooks
 - `/api/v1/reservations` (CRUD/cancel) + events `reservation.created|confirmed|updated|cancelled`.
+
+---
+
+## 5d. Unit checks (Facility)
+
+**Doel:** snelle OK / Niet OK-controle op de unit-QR (security, schoonmaak, techniek) zonder
+de meldingenlijst te vervuilen. Los van ESG.
+
+### Portaal (geverifieerde worker)
+- Tegel **Unit check** boven/naast melding maken.
+- Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
+- **OK** → rij in `unit_checks`, terug naar home.
+- **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
+- Geen checklist-UI in fase 1; schema is checklist-ready (`checklist_items`, `task_id` nullable).
+
+### Beheer (`/unit-checks`)
+- Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
+- Filters: resultaat, locatie. Admin + medewerker via Policy.
+
+### API & webhooks
+- `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
+- Webhook `unit.check.recorded` bij elke nieuwe rij.
+
+### Later (niet in fase 1)
+Checklist-templates, dagelijks terugkerende rondetaken, Planon-specifieke mapping.
 
 ---
 

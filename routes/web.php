@@ -84,6 +84,7 @@ use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnassignedQrPortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Pages\ReservationsIndex;
+use App\Livewire\Pages\UnitChecksIndex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -309,6 +310,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/tasks/{task}', TaskShow::class)->name('tasks.show');
         Route::get('/calendar', Calendar::class)->name('calendar.index');
         Route::get('/reservations', ReservationsIndex::class)->name('reservations.index');
+        Route::get('/unit-checks', UnitChecksIndex::class)->name('unit-checks.index');
         Route::get('/esg', EsgDashboard::class)->name('esg.dashboard');
         Route::get('/esg/indicators', EsgIndicatorsIndex::class)->name('esg.indicators.index');
         Route::get('/esg/measurements', EsgMeasurementsIndex::class)->name('esg.measurements.index');

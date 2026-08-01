@@ -235,8 +235,14 @@
             </div>
 
             <div class="wp-tiles">
+                @if ($canAct)
+                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('unit_check')">
+                        <span class="wp-tile-title">{{ __('portal.tiles.unit_check') }}</span>
+                        <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>
+                    </button>
+                @endif
                 @if ($showNewReportSection)
-                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
+                    <button type="button" class="wp-tile {{ $canAct ? '' : 'wp-tile--primary' }}" wire:click="openSection('new')">
                         <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
                     </button>
@@ -322,6 +328,97 @@
                     </div>
                 @endif
             @endif
+            </div>
+        @endif
+
+        {{-- ============================ UNIT CHECK ============================ --}}
+        @if ($portalSection === 'unit_check' && $canAct)
+            <div
+                data-manual-capture="portal-unit-check"
+                class="wp-stack"
+                x-data="{
+                    capturing: false,
+                    gpsError: '',
+                    browserLocalIso() {
+                        const d = new Date();
+                        const pad = (n) => String(n).padStart(2, '0');
+                        const offset = -d.getTimezoneOffset();
+                        const sign = offset >= 0 ? '+' : '-';
+                        const oh = pad(Math.floor(Math.abs(offset) / 60));
+                        const om = pad(Math.abs(offset) % 60);
+                        return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}${sign}${oh}:${om}`;
+                    },
+                    async captureGps() {
+                        this.gpsError = '';
+                        if (!navigator.geolocation) {
+                            this.gpsError = @js(__('portal.unit_check.gps_unavailable'));
+                            return;
+                        }
+                        this.capturing = true;
+                        try {
+                            const pos = await new Promise((resolve, reject) => {
+                                navigator.geolocation.getCurrentPosition(resolve, reject, {
+                                    enableHighAccuracy: true,
+                                    timeout: 15000,
+                                    maximumAge: 60000,
+                                });
+                            });
+                            $wire.checkLatitude = pos.coords.latitude;
+                            $wire.checkLongitude = pos.coords.longitude;
+                            $wire.checkCheckedAt = this.browserLocalIso();
+                        } catch (e) {
+                            this.gpsError = @js(__('portal.unit.gps_denied_hint'));
+                        } finally {
+                            this.capturing = false;
+                        }
+                    },
+                    async submit(result) {
+                        $wire.checkResult = result;
+                        if (!$wire.checkCheckedAt) {
+                            $wire.checkCheckedAt = this.browserLocalIso();
+                        }
+                        await $wire.submitUnitCheck();
+                    }
+                }"
+                x-init="captureGps()"
+            >
+                <x-wp-portal-back wire:click="openSection('home')" />
+                <x-wp-page-head-title variant="portal" icon="tasks" :title="__('portal.unit_check.title')" />
+
+                <div class="wp-card wp-card-pad wp-stack">
+                    <p class="wp-muted">{{ __('portal.unit_check.lead') }}</p>
+
+                    <div class="wp-cluster wp-cluster--wrap">
+                        <button
+                            type="button"
+                            class="btn btn--primary"
+                            :disabled="capturing"
+                            @click="submit('ok')"
+                            wire:loading.attr="disabled"
+                        >
+                            {{ __('portal.unit_check.ok') }}
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn--ghost"
+                            :disabled="capturing"
+                            @click="submit('not_ok')"
+                            wire:loading.attr="disabled"
+                        >
+                            {{ __('portal.unit_check.not_ok') }}
+                        </button>
+                    </div>
+
+                    <p class="wp-muted wp-text-sm" x-show="capturing" x-cloak>{{ __('portal.unit_check.capturing_gps') }}</p>
+                    <p class="wp-muted wp-text-sm" x-show="!capturing && $wire.checkLatitude" x-cloak>
+                        {{ __('portal.unit_check.gps_ready') }}
+                    </p>
+                    <p class="wp-error" x-show="gpsError" x-text="gpsError" x-cloak></p>
+                    @error('checkResult') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('checkLatitude') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('checkLongitude') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('checkCheckedAt') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
             </div>
         @endif
 

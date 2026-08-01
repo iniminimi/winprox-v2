@@ -29,6 +29,7 @@ class WebhookEndpoint extends Model
         'time.shift.started',
         'time.shift.ended',
         'unit.gps_reported',
+        'unit.check.recorded',
         'esg.measurement.recorded',
         'esg.threshold.follow_up_created',
         'reservation.created',

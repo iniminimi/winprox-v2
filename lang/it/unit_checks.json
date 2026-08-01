@@ -1,0 +1,24 @@
+{
+    "title": "Controlli unit",
+    "subtitle": "Cronologia dei controlli OK / Non OK via QR.",
+    "list_title": "Controlli recenti",
+    "empty": "Nessun controllo unit ancora.",
+    "worker_unknown": "Esecutore sconosciuto",
+    "gps_link": "GPS sulla mappa",
+    "filters": {
+        "result": "Risultato",
+        "all_results": "Tutti i risultati",
+        "location": "Sede",
+        "all_locations": "Tutte le sedi"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "Non OK"
+    },
+    "validation": {
+        "result_required": "Scegli OK o Non OK.",
+        "result_invalid": "Risultato non valido.",
+        "checked_at_required": "Data/ora obbligatoria.",
+        "checked_at_invalid": "Data/ora non valida."
+    }
+}

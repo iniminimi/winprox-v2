@@ -1,0 +1,24 @@
+{
+    "title": "Chequeos de unit",
+    "subtitle": "Historial de chequeos OK / No OK vía QR.",
+    "list_title": "Chequeos recientes",
+    "empty": "Aún no hay chequeos de unit.",
+    "worker_unknown": "Ejecutor desconocido",
+    "gps_link": "GPS en el mapa",
+    "filters": {
+        "result": "Resultado",
+        "all_results": "Todos los resultados",
+        "location": "Ubicación",
+        "all_locations": "Todas las ubicaciones"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "No OK"
+    },
+    "validation": {
+        "result_required": "Elige OK o No OK.",
+        "result_invalid": "Resultado no válido.",
+        "checked_at_required": "La fecha/hora es obligatoria.",
+        "checked_at_invalid": "Fecha/hora no válida."
+    }
+}

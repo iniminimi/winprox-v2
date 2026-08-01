@@ -1170,6 +1170,27 @@
                     "text": "La pasarela envía a <code>POST /api/v1/iot/events</code> con <code>kind</code> <em>alarm</em> o <em>measurement</em>. Opcional: <code>idempotency_key</code> para evitar envíos duplicados. Consulte la documentación de la API (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Ayuda — Chequeos de unit",
+            "actions": [
+                {
+                    "label": "¿Qué es un chequeo de unit?",
+                    "text": "Una confirmación rápida en el QR de la unit: OK o No OK, con ejecutor, fecha/hora y GPS opcional. OK no crea un aviso."
+                },
+                {
+                    "label": "No OK",
+                    "text": "No OK guarda el chequeo y luego el ejecutor puede crear un aviso normal en el portal."
+                },
+                {
+                    "label": "Filtros",
+                    "text": "Filtra por resultado (OK / No OK) y ubicación. Abre el GPS para ver las coordenadas en el mapa."
+                },
+                {
+                    "label": "Webhooks",
+                    "text": "Cada chequeo dispara unit.check.recorded para sistemas externos."
+                }
+            ]
         }
     }
 }

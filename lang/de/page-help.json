@@ -1170,6 +1170,27 @@
                     "text": "Das Gateway sendet an <code>POST /api/v1/iot/events</code> mit <code>kind</code> <em>alarm</em> oder <em>measurement</em>. Optional: <code>idempotency_key</code>, um doppelte Posts zu vermeiden. Details stehen in den API-Docs (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Hilfe — Unit-Checks",
+            "actions": [
+                {
+                    "label": "Was ist ein Unit-Check?",
+                    "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitstempel und optionalem GPS. OK erzeugt keine Meldung."
+                },
+                {
+                    "label": "Nicht OK",
+                    "text": "Nicht OK speichert den Check; danach kann der Ausführende eine normale Meldung im Portal erstellen."
+                },
+                {
+                    "label": "Filter",
+                    "text": "Filter nach Ergebnis (OK / Nicht OK) und Standort. GPS öffnet die Koordinaten auf der Karte."
+                },
+                {
+                    "label": "Webhooks",
+                    "text": "Jeder Check löst unit.check.recorded für externe Systeme aus."
+                }
+            ]
         }
     }
 }

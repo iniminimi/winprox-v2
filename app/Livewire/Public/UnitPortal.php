@@ -14,10 +14,14 @@ use App\Actions\Time\ResolveDefaultClockPointAction;
 use App\Actions\Units\DeleteUnitBackgroundPhotoAction;
 use App\Actions\Units\UpdateUnitBackgroundPhotoAction;
 use App\Actions\Units\RecordUnitGpsReportAction;
+use App\Actions\Units\RecordUnitCheckAction;
 use App\Actions\QrCodes\StoreQrLinkPhotosAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Data\Reservations\ReservationBookingData;
+use App\Data\Units\RecordUnitCheckData;
+use App\Enums\UnitCheckResult;
+use App\Enums\UnitCheckSource;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
@@ -28,6 +32,7 @@ use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Http\Requests\Reservations\StoreReservationRequest;
 use App\Data\Units\RecordUnitGpsReportData;
 use App\Http\Requests\Units\RecordUnitGpsReportRequest;
+use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Models\Reservation;
 use App\Models\Task;
 use App\Models\Tenant;
@@ -110,6 +115,11 @@ class UnitPortal extends Component
     public ?float $gpsLatitude = null;
     public ?float $gpsLongitude = null;
     public ?string $gpsReportedAt = null;
+
+    public string $checkResult = '';
+    public ?float $checkLatitude = null;
+    public ?float $checkLongitude = null;
+    public ?string $checkCheckedAt = null;
 
     public string $reserveFirstName = '';
     public string $reserveLastName = '';
@@ -196,7 +206,11 @@ class UnitPortal extends Component
             return;
         }
 
-        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations'], true)) {
+        if ($section === 'unit_check' && $this->authorizedWorker() === null) {
+            return;
+        }
+
+        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations', 'unit_check'], true)) {
             return;
         }
 
@@ -211,9 +225,84 @@ class UnitPortal extends Component
             $this->dispatch('wp-prepare-photo-inputs');
         }
 
+        if ($section === 'unit_check') {
+            $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt');
+            $this->resetErrorBag(['checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt']);
+        }
+
         if ($section === 'reserve') {
             $this->prefillReservationGuest();
         }
+    }
+
+    public function submitUnitCheck(RecordUnitCheckAction $recordUnitCheck): void
+    {
+        if ($this->inactiveReasonKey !== null) {
+            return;
+        }
+
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            $this->addError('checkResult', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        if ($this->checkCheckedAt === null || $this->checkCheckedAt === '') {
+            $this->checkCheckedAt = now()->toIso8601String();
+        }
+
+        $this->validate(
+            RecordUnitCheckRequest::portalRuleSet(),
+            RecordUnitCheckRequest::portalValidationMessages(),
+        );
+
+        $checkedAtValidator = Validator::make(
+            ['checkCheckedAt' => $this->checkCheckedAt],
+            ['checkCheckedAt' => ['required', 'date']],
+        );
+        RecordUnitCheckRequest::assertPortalCheckedAt((string) $this->checkCheckedAt, $checkedAtValidator);
+        if ($checkedAtValidator->fails()) {
+            foreach ($checkedAtValidator->errors()->getMessages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $this->addError($field, $message);
+                }
+            }
+
+            return;
+        }
+
+        $result = UnitCheckResult::from($this->checkResult);
+
+        $recordUnitCheck->handle(
+            unit: $this->unit(),
+            data: new RecordUnitCheckData(
+                result: $result,
+                checkedAt: \Carbon\CarbonImmutable::parse((string) $this->checkCheckedAt),
+                source: UnitCheckSource::Portal,
+                latitude: $this->checkLatitude,
+                longitude: $this->checkLongitude,
+            ),
+            tenantId: $this->tenantId,
+            worker: $worker,
+        );
+
+        $this->reset('checkResult', 'checkLatitude', 'checkLongitude', 'checkCheckedAt');
+
+        if ($result === UnitCheckResult::NotOk) {
+            $this->flashMessage = __('portal.unit_check.recorded_not_ok');
+            if ($this->showNewReportSection()) {
+                $this->portalSection = 'new';
+                $this->dispatch('wp-prepare-photo-inputs');
+            } else {
+                $this->portalSection = 'home';
+            }
+
+            return;
+        }
+
+        $this->flashMessage = __('portal.unit_check.recorded_ok');
+        $this->portalSection = 'home';
     }
 
     private function prefillReservationGuest(): void

@@ -35,7 +35,9 @@
         "announcements": "Mitteilungen",
         "documents": "Dokumente",
         "reserve": "Reservieren",
-        "my_reservations": "Meine Reservierungen"
+        "my_reservations": "Meine Reservierungen",
+        "unit_check": "Unit-Check",
+        "unit_check_sub": "Bestätigen, dass diese Unit OK ist"
     },
     "report": {
         "title": "Eine Meldung erstellen",
@@ -244,6 +246,23 @@
             "email": "E-Mail",
             "start_at": "Start",
             "end_at": "Ende"
+        }
+    },
+    "unit_check": {
+        "title": "Unit-Check",
+        "lead": "Bestätigen Sie, ob diese Unit in Ordnung ist. GPS kann als Standortnachweis mitgeführt werden.",
+        "ok": "OK",
+        "not_ok": "Nicht OK",
+        "capturing_gps": "GPS wird abgerufen…",
+        "gps_ready": "GPS-Standort übernommen.",
+        "gps_unavailable": "GPS ist auf diesem Gerät nicht verfügbar.",
+        "recorded_ok": "Unit-Check gespeichert: OK.",
+        "recorded_not_ok": "Unit-Check gespeichert: nicht OK. Erstellen Sie ggf. eine Meldung.",
+        "errors": {
+            "result_required": "Wählen Sie OK oder Nicht OK.",
+            "result_invalid": "Ungültiges Ergebnis.",
+            "checked_at_required": "Zeitstempel fehlt.",
+            "checked_at_invalid": "Ungültiger Zeitstempel."
         }
     }
 }

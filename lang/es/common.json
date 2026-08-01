@@ -20,7 +20,8 @@
         "legal": "Documentos legales",
         "contact": "Contacto",
         "reservations": "Reservas",
-        "iot": "IoT Connect"
+        "iot": "IoT Connect",
+        "unit_checks": "Chequeos de unit"
     },
     "status": {
         "new": "Nueva (Abierta)",

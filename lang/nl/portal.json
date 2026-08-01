@@ -35,7 +35,9 @@
         "announcements": "Mededelingen",
         "documents": "Documenten",
         "reserve": "Reserveren",
-        "my_reservations": "Mijn reserveringen"
+        "my_reservations": "Mijn reserveringen",
+        "unit_check": "Unit check",
+        "unit_check_sub": "Bevestig dat deze unit OK is"
     },
     "report": {
         "title": "Een melding maken",
@@ -244,6 +246,23 @@
             "email": "E-mail",
             "start_at": "Start",
             "end_at": "Einde"
+        }
+    },
+    "unit_check": {
+        "title": "Unit check",
+        "lead": "Bevestig of deze unit in orde is. Optioneel wordt je GPS meegenomen als locatiebewijs.",
+        "ok": "OK",
+        "not_ok": "Niet OK",
+        "capturing_gps": "GPS ophalen…",
+        "gps_ready": "GPS-locatie meegenomen.",
+        "gps_unavailable": "GPS is niet beschikbaar op dit toestel.",
+        "recorded_ok": "Unit check opgeslagen: OK.",
+        "recorded_not_ok": "Unit check opgeslagen: niet OK. Maak indien nodig een melding.",
+        "errors": {
+            "result_required": "Kies OK of Niet OK.",
+            "result_invalid": "Ongeldig resultaat.",
+            "checked_at_required": "Tijdstip ontbreekt.",
+            "checked_at_invalid": "Ongeldig tijdstip."
         }
     }
 }

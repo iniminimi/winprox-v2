@@ -121,6 +121,11 @@ class Unit extends Model
         return $this->hasMany(UnitGpsReport::class);
     }
 
+    public function unitChecks(): HasMany
+    {
+        return $this->hasMany(UnitCheck::class);
+    }
+
     public function translations(): HasMany
     {
         return $this->hasMany(UnitTranslation::class);

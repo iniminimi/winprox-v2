@@ -961,9 +961,8 @@ it('rejects an overly long worker completion note', function () {
     expect($task->fresh()->status)->toBe(TaskStatus::InProgress);
 });
 
-it('lets a verified worker upload a unit background photo', function () {
-    Storage::fake('public');
-    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+it('lets a verified worker record an ok unit check', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
 
     $worker = Worker::factory()->withIcon('star')->create([
         'tenant_id' => $tenant->id,
@@ -972,17 +971,56 @@ it('lets a verified worker upload a unit background photo', function () {
     WorkerVerification::markVerified($team, $worker);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->set('backgroundPhoto', [
-            UploadedFile::fake()->create('background.jpg', 120, 'image/jpeg'),
-        ])
-        ->call('uploadBackgroundPhoto')
+        ->call('openSection', 'unit_check')
+        ->assertSet('portalSection', 'unit_check')
+        ->set('checkResult', 'ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->set('checkLatitude', 51.05)
+        ->set('checkLongitude', 3.72)
+        ->call('submitUnitCheck')
         ->assertHasNoErrors()
-        ->assertSet('backgroundPhoto', [])
-        ->assertSee(__('portal.unit.background_photo_updated'));
+        ->assertSet('portalSection', 'home')
+        ->assertSee(__('portal.unit_check.recorded_ok'));
 
-    $unit->refresh();
-    expect($unit->background_photo_path)->not->toBeNull()
-        ->and(Storage::disk('public')->exists((string) $unit->background_photo_path))->toBeTrue();
+    $check = \App\Models\UnitCheck::query()->first();
+    expect($check)->not->toBeNull()
+        ->and($check->tenant_id)->toBe($tenant->id)
+        ->and($check->unit_id)->toBe($unit->id)
+        ->and($check->location_id)->toBe($location->id)
+        ->and($check->worker_id)->toBe($worker->id)
+        ->and($check->result->value)->toBe('ok')
+        ->and($check->latitude)->toBe(51.05);
+});
+
+it('opens the report form after a not_ok unit check', function () {
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('openSection', 'unit_check')
+        ->set('checkResult', 'not_ok')
+        ->set('checkCheckedAt', now()->toIso8601String())
+        ->call('submitUnitCheck')
+        ->assertHasNoErrors()
+        ->assertSet('portalSection', 'new')
+        ->assertSee(__('portal.unit_check.recorded_not_ok'));
+
+    expect(\App\Models\UnitCheck::query()->where('result', 'not_ok')->count())->toBe(1)
+        ->and(Issue::query()->count())->toBe(0);
+});
+
+it('hides unit check from guests without worker verification', function () {
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.unit_check'))
+        ->call('openSection', 'unit_check')
+        ->assertSet('portalSection', 'home');
 });
 
 it('rejects unit photo uploads that exceed the four-photo limit', function () {

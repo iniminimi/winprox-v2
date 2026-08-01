@@ -46,6 +46,7 @@
                 ['route' => 'tasks.index', 'active' => 'tasks.*', 'icon' => 'tasks', 'label' => 'common.nav.tasks'],
                 ['route' => 'calendar.index', 'active' => 'calendar.*', 'icon' => 'calendar', 'label' => 'common.nav.calendar'],
                 ['route' => 'reservations.index', 'active' => 'reservations.*', 'icon' => 'calendar', 'label' => 'common.nav.reservations'],
+                ['route' => 'unit-checks.index', 'active' => 'unit-checks.*', 'icon' => 'tasks', 'label' => 'common.nav.unit_checks'],
                 ...($showTimeNav ? [
                     ['route' => 'time.presence.index', 'active' => 'time.*', 'icon' => 'clock', 'label' => 'common.nav.time'],
                 ] : []),

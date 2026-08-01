@@ -1170,6 +1170,27 @@
                     "text": "Il gateway invia a <code>POST /api/v1/iot/events</code> con <code>kind</code> <em>alarm</em> o <em>measurement</em>. Opzionale: <code>idempotency_key</code> per evitare invii duplicati. Dettagli nella documentazione API (IoT Connect)."
                 }
             ]
+        },
+        "unit-checks": {
+            "title": "Aiuto — Controlli unit",
+            "actions": [
+                {
+                    "label": "Cos’è un controllo unit?",
+                    "text": "Una conferma rapida sul QR della unit: OK o Non OK, con esecutore, data/ora e GPS opzionale. OK non crea una segnalazione."
+                },
+                {
+                    "label": "Non OK",
+                    "text": "Non OK salva il controllo; poi l’esecutore può creare una segnalazione normale dal portale."
+                },
+                {
+                    "label": "Filtri",
+                    "text": "Filtra per risultato (OK / Non OK) e sede. Apri il GPS per vedere le coordinate sulla mappa."
+                },
+                {
+                    "label": "Webhook",
+                    "text": "Ogni controllo attiva unit.check.recorded per i sistemi esterni."
+                }
+            ]
         }
     }
 }

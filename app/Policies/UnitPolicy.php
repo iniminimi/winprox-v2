@@ -34,6 +34,11 @@ class UnitPolicy
         return $this->view($user, $unit);
     }
 
+    public function createCheck(User $user, Unit $unit): bool
+    {
+        return $this->view($user, $unit);
+    }
+
     public function deactivate(User $user, Unit $unit): bool
     {
         return $this->view($user, $unit);

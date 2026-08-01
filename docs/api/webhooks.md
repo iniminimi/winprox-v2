@@ -29,6 +29,7 @@ Webhooks allow you to receive real-time notifications about events in WinProx. W
 | `task.started` | A task was started | Task data |
 | `task.completed` | A task was completed | Task data |
 | `unit.gps_reported` | A GPS report was recorded for a unit | GPS report metadata |
+| `unit.check.recorded` | A unit check (OK / Not OK) was recorded | Check metadata + optional GPS |
 | `esg.measurement.recorded` | An ESG measurement was recorded | Measurement metadata |
 
 ### ESG measurement webhook payload

@@ -1,0 +1,24 @@
+{
+    "title": "Unit-Checks",
+    "subtitle": "Historie der OK / Nicht-OK-Kontrollen per QR.",
+    "list_title": "Aktuelle Checks",
+    "empty": "Noch keine Unit-Checks.",
+    "worker_unknown": "Unbekannter Ausführender",
+    "gps_link": "GPS auf Karte",
+    "filters": {
+        "result": "Ergebnis",
+        "all_results": "Alle Ergebnisse",
+        "location": "Standort",
+        "all_locations": "Alle Standorte"
+    },
+    "result": {
+        "ok": "OK",
+        "not_ok": "Nicht OK"
+    },
+    "validation": {
+        "result_required": "Wählen Sie OK oder Nicht OK.",
+        "result_invalid": "Ungültiges Ergebnis.",
+        "checked_at_required": "Zeitstempel ist erforderlich.",
+        "checked_at_invalid": "Ungültiger Zeitstempel."
+    }
+}

@@ -35,7 +35,9 @@
         "announcements": "Annonces",
         "documents": "Documents",
         "reserve": "Réserver",
-        "my_reservations": "Mes réservations"
+        "my_reservations": "Mes réservations",
+        "unit_check": "Contrôle unit",
+        "unit_check_sub": "Confirmer que cette unit est OK"
     },
     "report": {
         "title": "Créer un signalement",
@@ -244,6 +246,23 @@
             "email": "E-mail",
             "start_at": "Début",
             "end_at": "Fin"
+        }
+    },
+    "unit_check": {
+        "title": "Contrôle unit",
+        "lead": "Confirmez si cette unit est en ordre. Le GPS peut servir de preuve de présence.",
+        "ok": "OK",
+        "not_ok": "Pas OK",
+        "capturing_gps": "Récupération GPS…",
+        "gps_ready": "Position GPS incluse.",
+        "gps_unavailable": "GPS indisponible sur cet appareil.",
+        "recorded_ok": "Contrôle enregistré : OK.",
+        "recorded_not_ok": "Contrôle enregistré : pas OK. Créez un signalement si besoin.",
+        "errors": {
+            "result_required": "Choisissez OK ou Pas OK.",
+            "result_invalid": "Résultat invalide.",
+            "checked_at_required": "Horodatage manquant.",
+            "checked_at_invalid": "Horodatage invalide."
         }
     }
 }
