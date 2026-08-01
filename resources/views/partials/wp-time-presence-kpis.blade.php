@@ -30,16 +30,12 @@
                     src="{{ asset('video/assistant_time.mp4') }}"
                     width="80"
                     height="80"
+                    autoplay
+                    loop
                     muted
                     playsinline
                     preload="auto"
-                    x-data
-                    x-init="
-                        setTimeout(() => {
-                            $el.currentTime = 0;
-                            $el.play().catch(() => {});
-                        }, 1000);
-                    "
+                    aria-hidden="true"
                 ></video>
             </span>
         </div>
