@@ -1038,8 +1038,9 @@ class Show extends Component
                     $query->orWhereIn('internal_team_id', $categoryTeamIds);
                 }
             })
+            ->with('translations')
             ->orderBy('name')
-            ->get(['id', 'name']);
+            ->get(['id', 'name', 'original_language']);
 
         // Keep currently attached list selectable while editing (inactive or out of filter).
         if ($this->unitCheckListId !== null && ! $unitCheckLists->contains('id', $this->unitCheckListId)) {
@@ -1052,7 +1053,7 @@ class Show extends Component
             }
 
             if ($savedListId !== null && (int) $savedListId === (int) $this->unitCheckListId) {
-                $currentList = UnitCheckList::query()->find($this->unitCheckListId);
+                $currentList = UnitCheckList::query()->with('translations')->find($this->unitCheckListId);
                 if ($currentList !== null) {
                     $unitCheckLists = $unitCheckLists->prepend($currentList)->unique('id')->values();
                 }

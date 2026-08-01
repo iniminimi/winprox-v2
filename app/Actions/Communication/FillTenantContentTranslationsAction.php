@@ -19,6 +19,8 @@ use App\Models\LocationTranslation;
 use App\Models\Task;
 use App\Models\TaskTranslation;
 use App\Models\Unit;
+use App\Models\UnitCheckList;
+use App\Models\UnitCheckListTranslation;
 use App\Models\UnitTranslation;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +41,7 @@ class FillTenantContentTranslationsAction
         private BackfillEsgIndicatorTranslationSlotsAction $backfillEsgIndicators,
         private BackfillCategoryTranslationSlotsAction $backfillCategories,
         private BackfillInternalTeamTranslationSlotsAction $backfillTeams,
+        private BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         private TranslateExportItemsAction $translateItems,
         private ImportIssueTranslationsAction $importIssues,
         private ImportAnnouncementTranslationsAction $importAnnouncements,
@@ -49,6 +52,7 @@ class FillTenantContentTranslationsAction
         private ImportEsgIndicatorTranslationsAction $importEsgIndicators,
         private ImportCategoryTranslationsAction $importCategories,
         private ImportInternalTeamTranslationsAction $importTeams,
+        private ImportUnitCheckListTranslationsAction $importUnitCheckLists,
         private ExportPendingIssueTranslationsAction $exportIssues,
         private ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         private ExportPendingLocationTranslationsAction $exportLocations,
@@ -58,6 +62,7 @@ class FillTenantContentTranslationsAction
         private ExportPendingEsgIndicatorTranslationsAction $exportEsgIndicators,
         private ExportPendingCategoryTranslationsAction $exportCategories,
         private ExportPendingInternalTeamTranslationsAction $exportTeams,
+        private ExportPendingUnitCheckListTranslationsAction $exportUnitCheckLists,
     ) {}
 
     /**
@@ -77,6 +82,7 @@ class FillTenantContentTranslationsAction
             'esg' => $this->backfillEsgIndicators->handle($tenantId),
             'categories' => $this->backfillCategories->handle($tenantId),
             'teams' => $this->backfillTeams->handle($tenantId),
+            'unit_check_lists' => $this->backfillUnitCheckLists->handle($tenantId),
         ];
 
         $pending = [];
@@ -90,6 +96,7 @@ class FillTenantContentTranslationsAction
             $this->exportEsgIndicators->handle(),
             $this->exportCategories->handle(),
             $this->exportTeams->handle(),
+            $this->exportUnitCheckLists->handle(),
         ] as $batch) {
             if (! is_array($batch)) {
                 continue;
@@ -141,6 +148,10 @@ class FillTenantContentTranslationsAction
             )
             + $this->importTeams->handle(
                 array_values(array_filter($translated, static fn (array $i): bool => isset($i['internal_team_id']))),
+                $actorUserId,
+            )
+            + $this->importUnitCheckLists->handle(
+                array_values(array_filter($translated, static fn (array $i): bool => isset($i['unit_check_list_id']))),
                 $actorUserId,
             );
 
@@ -210,6 +221,13 @@ class FillTenantContentTranslationsAction
             InternalTeamTranslation::class,
             'internal_team_id',
             static fn (InternalTeam $row): string => trim((string) $row->name),
+        );
+
+        $changed += $this->repointSourceLanguage(
+            UnitCheckList::query()->where('tenant_id', $tenantId)->where('is_active', true)->get(),
+            UnitCheckListTranslation::class,
+            'unit_check_list_id',
+            static fn (UnitCheckList $row): string => trim((string) $row->name),
         );
 
         // Units: alleen herlabelen als naam+omschrijving geen duidelijk Nederlands bevatten.

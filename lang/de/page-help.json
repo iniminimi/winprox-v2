@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein. Nach dem Speichern übersetzt WinProx Name und Punkte automatisch in die anderen Sprachen (Ollama); Ändern der Quellsprache stellt Übersetzungen erneut in die Warteschlange."
                 },
                 {
                     "label": "Vorlagen",

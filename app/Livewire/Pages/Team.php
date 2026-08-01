@@ -1005,6 +1005,11 @@ class Team extends Component
             'internal_team_id' => $this->checkListTeamId,
         ];
 
+        // Nieuwe lijst: brontaal = huidige app-taal. Bij bewerken blijft de brontaal ongewijzigd.
+        if ($this->editingCheckListId === null) {
+            $payload['original_language'] = LocaleSupport::normalize(app()->getLocale());
+        }
+
         $validator = Validator::make(
             $payload,
             SaveUnitCheckListRequest::staticRules($tenantId),
@@ -1174,7 +1179,7 @@ class Team extends Component
             'categories' => $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
             'checkLists' => UnitCheckList::query()
-                ->with(['internalTeam.translations'])
+                ->with(['internalTeam.translations', 'translations'])
                 ->withCount('items')
                 ->orderBy('name')
                 ->get(),

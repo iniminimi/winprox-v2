@@ -12,6 +12,7 @@ use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
+use App\Actions\Communication\ExportPendingUnitCheckListTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -34,6 +35,7 @@ class TranslationExportCommand extends Command
         ExportPendingDocumentTranslationsAction $exportDocuments,
         ExportPendingCategoryTranslationsAction $exportCategories,
         ExportPendingInternalTeamTranslationsAction $exportTeams,
+        ExportPendingUnitCheckListTranslationsAction $exportUnitCheckLists,
     ): int {
         $backfillCategories->handle();
         $backfillTeams->handle();
@@ -48,6 +50,7 @@ class TranslationExportCommand extends Command
             $exportDocuments->handle(),
             $exportCategories->handle(),
             $exportTeams->handle(),
+            $exportUnitCheckLists->handle(),
         );
 
         $payload = [

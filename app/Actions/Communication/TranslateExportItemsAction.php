@@ -33,6 +33,7 @@ class TranslateExportItemsAction
             $taskId = (int) ($item['task_id'] ?? 0);
             $documentId = (int) ($item['document_id'] ?? 0);
             $esgIndicatorId = (int) ($item['esg_indicator_id'] ?? 0);
+            $unitCheckListId = (int) ($item['unit_check_list_id'] ?? 0);
             $categoryId = (int) ($item['category_id'] ?? 0);
             $internalTeamId = (int) ($item['internal_team_id'] ?? 0);
             $locale = LocaleSupport::normalize((string) ($item['locale'] ?? ''));
@@ -90,6 +91,38 @@ class TranslateExportItemsAction
                 if ($onProgress !== null) {
                     $onProgress($index + 1, $total, [
                         'esg_indicator_id' => $esgIndicatorId,
+                        'locale' => $locale,
+                    ]);
+                }
+
+                continue;
+            }
+
+            if ($unitCheckListId > 0) {
+                if ($locale === '' || $sourceName === '') {
+                    continue;
+                }
+
+                $row = [
+                    'locale' => $locale,
+                    'unit_check_list_id' => $unitCheckListId,
+                    'name' => $this->translateShortName($sourceName, $locale),
+                ];
+
+                $sourceItems = $item['source_items'] ?? [];
+                if (is_array($sourceItems) && $sourceItems !== []) {
+                    $translatedItems = [];
+                    foreach ($sourceItems as $label) {
+                        $translatedItems[] = $this->translateShortName((string) $label, $locale);
+                    }
+                    $row['items'] = $translatedItems;
+                }
+
+                $translated[] = $row;
+
+                if ($onProgress !== null) {
+                    $onProgress($index + 1, $total, [
+                        'unit_check_list_id' => $unitCheckListId,
                         'locale' => $locale,
                     ]);
                 }

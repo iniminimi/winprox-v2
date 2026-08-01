@@ -4,17 +4,24 @@ declare(strict_types=1);
 
 namespace App\Actions\Units;
 
+use App\Actions\Communication\EnsureUnitCheckListTranslationSlotsAction;
+use App\Actions\Communication\InvalidateUnitCheckListTranslationsOnSourceChangeAction;
 use App\Data\Units\SaveUnitCheckListData;
 use App\Models\InternalTeam;
 use App\Models\UnitCheckList;
 use App\Models\UnitCheckListItem;
 use App\Support\Audit\AuditRecorder;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class SaveUnitCheckListAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private InvalidateUnitCheckListTranslationsOnSourceChangeAction $invalidateTranslations,
+        private EnsureUnitCheckListTranslationSlotsAction $ensureTranslationSlots,
+    ) {}
 
     public function handle(
         SaveUnitCheckListData $data,
@@ -48,13 +55,19 @@ class SaveUnitCheckListAction
                 'internal_team_id' => $data->internalTeamId,
             ];
 
+            $previousName = null;
+            $previousItems = [];
+
             if ($list === null) {
                 $list = UnitCheckList::query()->create([
                     'tenant_id' => $tenantId,
+                    'original_language' => LocaleSupport::normalize($data->originalLanguage ?? app()->getLocale()),
                     ...$payload,
                 ]);
                 $action = 'unit_check_list.created';
             } else {
+                $previousName = (string) $list->name;
+                $previousItems = $list->sourceItemLabels();
                 $list->update($payload);
                 $action = 'unit_check_list.updated';
             }
@@ -86,7 +99,15 @@ class SaveUnitCheckListAction
                 ],
             );
 
-            return $list->fresh(['items', 'internalTeam']);
+            $list = $list->fresh(['items', 'internalTeam']);
+
+            if ($previousName !== null) {
+                $this->invalidateTranslations->handle($list, $previousName, $previousItems, $actorUserId);
+            }
+
+            $this->ensureTranslationSlots->handle($list);
+
+            return $list;
         });
     }
 }

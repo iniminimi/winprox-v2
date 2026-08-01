@@ -31,6 +31,7 @@ class SaveUnitCheckListRequest extends FormRequest
             'items' => ['required'],
             'is_active' => ['sometimes', 'boolean'],
             'internal_team_id' => $teamRules,
+            'original_language' => ['sometimes', 'nullable', 'string', Rule::in(config('locales.supported', []))],
         ];
     }
 

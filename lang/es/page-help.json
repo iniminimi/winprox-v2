@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Traducciones de equipo",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Plantillas",

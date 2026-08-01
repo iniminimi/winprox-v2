@@ -394,7 +394,7 @@
                             @foreach ($unitCheckListItems as $item)
                                 <label class="wp-check" wire:key="check-item-{{ $item->id }}">
                                     <input type="checkbox" value="{{ $item->label }}" wire:model="checkChecklistItems">
-                                    <span>{{ $item->label }}</span>
+                                    <span>{{ $unitCheckList?->localizedItemLabel($item->label) ?? $item->label }}</span>
                                 </label>
                             @endforeach
                             @error('checkChecklistItems') <p class="wp-error">{{ $message }}</p> @enderror

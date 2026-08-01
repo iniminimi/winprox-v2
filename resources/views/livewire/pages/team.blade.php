@@ -104,7 +104,7 @@
                     <div class="wp-issue-row" wire:key="unit-check-list-{{ $list->id }}">
                         <div class="wp-grow wp-stack-tight">
                             <div class="wp-cluster">
-                                <p class="wp-issue-card-title">{{ $list->name }}</p>
+                                <p class="wp-issue-card-title">{{ $list->localizedName() }}</p>
                                 @if (! $list->is_active)
                                     <span class="wp-pill wp-pill--closed">{{ __('unit_checks.lists.inactive') }}</span>
                                 @endif

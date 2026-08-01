@@ -48,7 +48,12 @@
             "name_required": "Name ist erforderlich.",
             "items_required": "Fügen Sie mindestens einen Punkt hinzu.",
             "invalid_team": "Ungültiges Team.",
-            "invalid_starter": "Ungültige Vorlage."
+            "invalid_starter": "Ungültige Vorlage.",
+            "translation_requires_active": "Übersetzungen sind nur für aktive Checklisten möglich.",
+            "translation_import_missing": "Checkliste nicht gefunden oder nicht aktiv.",
+            "translation_import_name_too_long": "Der übersetzte Checklistenname ist zu lang.",
+            "translation_import_items_mismatch": "Die Anzahl der übersetzten Punkte weicht von der Quelle ab.",
+            "translation_import_item_too_long": "Ein übersetzter Checklistenpunkt ist zu lang."
         },
         "team_shared": "Alle Teams",
         "starters_label": "Mit Vorlage starten:"

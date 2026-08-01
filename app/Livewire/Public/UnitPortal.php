@@ -1047,6 +1047,7 @@ class UnitPortal extends Component
         $isReservable = $unit->isReservable();
         $guestReservations = collect();
         $unitCheckListItems = collect();
+        $unitCheckList = null;
 
         if ($isReservable && in_array($this->portalSection, ['home', 'my_reservations'], true)) {
             $guestReservations = $this->guestReservationsForUnit();
@@ -1054,9 +1055,10 @@ class UnitPortal extends Component
 
         if ($this->inactiveReasonKey === null) {
             if ($this->portalSection === 'unit_check' && $canAct) {
-                $unit->loadMissing(['unitCheckList.items']);
+                $unit->loadMissing(['unitCheckList.items', 'unitCheckList.translations']);
                 if ($unit->unitCheckList?->is_active) {
-                    $unitCheckListItems = $unit->unitCheckList->items;
+                    $unitCheckList = $unit->unitCheckList;
+                    $unitCheckListItems = $unitCheckList->items;
                 }
             }
             if (in_array($this->portalSection, ['home', 'issues', 'issue_detail'], true)) {
@@ -1105,6 +1107,7 @@ class UnitPortal extends Component
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
             'allowsUnitChecks' => $unit->allowsUnitChecks(),
+            'unitCheckList' => $unitCheckList,
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),

@@ -48,7 +48,12 @@
             "name_required": "Naam is verplicht.",
             "items_required": "Voeg minstens één checklistpunt toe.",
             "invalid_team": "Ongeldig team.",
-            "invalid_starter": "Ongeldig sjabloon."
+            "invalid_starter": "Ongeldig sjabloon.",
+            "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve checklists.",
+            "translation_import_missing": "Checklist niet gevonden of niet actief.",
+            "translation_import_name_too_long": "De vertaalde checklistnaam is te lang.",
+            "translation_import_items_mismatch": "Het aantal vertaalde checklistpunten wijkt af van de bron.",
+            "translation_import_item_too_long": "Een vertaald checklistpunt is te lang."
         },
         "team_shared": "Alle teams",
         "starters_label": "Start vanaf sjabloon:"

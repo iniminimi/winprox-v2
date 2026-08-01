@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK. Na opslaan vertaalt WinProx naam en punten automatisch naar de andere talen (Ollama); bewerken in de brontaal zet vertalingen opnieuw in de wachtrij."
                 },
                 {
                     "label": "Starters",

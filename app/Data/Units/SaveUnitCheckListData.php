@@ -14,6 +14,7 @@ readonly class SaveUnitCheckListData
         public array $itemLabels,
         public bool $isActive = true,
         public ?int $internalTeamId = null,
+        public ?string $originalLanguage = null,
     ) {}
 
     /**
@@ -21,7 +22,8 @@ readonly class SaveUnitCheckListData
      *     name: string,
      *     items?: list<string>|string,
      *     is_active?: bool,
-     *     internal_team_id?: int|string|null
+     *     internal_team_id?: int|string|null,
+     *     original_language?: string|null
      * }  $input
      */
     public static function fromValidated(array $input): self
@@ -50,11 +52,14 @@ readonly class SaveUnitCheckListData
             $teamId = (int) $teamId;
         }
 
+        $originalLanguage = $input['original_language'] ?? null;
+
         return new self(
             name: trim((string) $input['name']),
             itemLabels: array_values($labels),
             isActive: (bool) ($input['is_active'] ?? true),
             internalTeamId: $teamId,
+            originalLanguage: is_string($originalLanguage) && $originalLanguage !== '' ? $originalLanguage : null,
         );
     }
 }

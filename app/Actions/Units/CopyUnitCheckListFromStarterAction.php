@@ -6,6 +6,7 @@ namespace App\Actions\Units;
 
 use App\Data\Units\SaveUnitCheckListData;
 use App\Models\UnitCheckList;
+use App\Support\Translation\LocaleSupport;
 use Illuminate\Validation\ValidationException;
 
 class CopyUnitCheckListFromStarterAction
@@ -51,6 +52,7 @@ class CopyUnitCheckListFromStarterAction
                 itemLabels: $items,
                 isActive: true,
                 internalTeamId: $internalTeamId,
+                originalLanguage: LocaleSupport::normalize(app()->getLocale()),
             ),
             $tenantId,
             null,

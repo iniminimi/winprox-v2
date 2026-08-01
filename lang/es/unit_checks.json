@@ -48,7 +48,12 @@
             "name_required": "El nombre es obligatorio.",
             "items_required": "Añade al menos un punto.",
             "invalid_team": "Equipo no válido.",
-            "invalid_starter": "Plantilla no válida."
+            "invalid_starter": "Plantilla no válida.",
+            "translation_requires_active": "Las traducciones solo son posibles para listas activas.",
+            "translation_import_missing": "Lista no encontrada o no activa.",
+            "translation_import_name_too_long": "El nombre de lista traducido es demasiado largo.",
+            "translation_import_items_mismatch": "El número de puntos traducidos no coincide con el origen.",
+            "translation_import_item_too_long": "Un punto de lista traducido es demasiado largo."
         },
         "team_shared": "Todos los equipos",
         "starters_label": "Empezar desde plantilla:"

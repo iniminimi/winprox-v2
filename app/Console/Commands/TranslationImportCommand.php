@@ -10,6 +10,7 @@ use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
+use App\Actions\Communication\ImportUnitCheckListTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
@@ -31,6 +32,7 @@ class TranslationImportCommand extends Command
         ImportDocumentTranslationsAction $importDocuments,
         ImportCategoryTranslationsAction $importCategories,
         ImportInternalTeamTranslationsAction $importTeams,
+        ImportUnitCheckListTranslationsAction $importUnitCheckLists,
     ): int {
         $path = storage_path('app/imports/translated.json');
 
@@ -67,13 +69,16 @@ class TranslationImportCommand extends Command
         $documentItems = [];
         $categoryItems = [];
         $teamItems = [];
+        $unitCheckListItems = [];
 
         foreach ($items as $item) {
             if (! is_array($item)) {
                 continue;
             }
 
-            if (isset($item['document_id'])) {
+            if (isset($item['unit_check_list_id'])) {
+                $unitCheckListItems[] = $item;
+            } elseif (isset($item['document_id'])) {
                 $documentItems[] = $item;
             } elseif (isset($item['task_id'])) {
                 $taskItems[] = $item;
@@ -103,7 +108,8 @@ class TranslationImportCommand extends Command
                 + $importTasks->handle($taskItems)
                 + $importDocuments->handle($documentItems)
                 + $importCategories->handle($categoryItems)
-                + $importTeams->handle($teamItems);
+                + $importTeams->handle($teamItems)
+                + $importUnitCheckLists->handle($unitCheckListItems);
         } catch (ValidationException $exception) {
             $this->error($exception->getMessage());
 

@@ -397,7 +397,7 @@
                             <select class="wp-input" wire:model="unitCheckListId">
                                 <option value="">{{ __('locations.units.no_check_list') }}</option>
                                 @foreach ($unitCheckLists as $checkList)
-                                    <option value="{{ $checkList->id }}">{{ $checkList->name }}</option>
+                                    <option value="{{ $checkList->id }}">{{ $checkList->localizedName() }}</option>
                                 @endforeach
                             </select>
                             @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror

@@ -10,6 +10,7 @@ use App\Actions\Communication\BackfillDocumentTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
 use App\Actions\Communication\BackfillLocationTranslationSlotsAction;
 use App\Actions\Communication\BackfillTaskTranslationSlotsAction;
+use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\BackfillUnitTranslationSlotsAction;
 use Illuminate\Console\Command;
 
@@ -17,7 +18,7 @@ class TranslationBackfillSlotsCommand extends Command
 {
     protected $signature = 'translation:backfill-slots {--tenant= : Alleen voor deze tenant-id}';
 
-    protected $description = 'Maak ontbrekende vertaal-slots voor goedgekeurde meldingen, actieve mededelingen, actieve locaties, actieve units, ESG-indicatoren, taken met omschrijving en actieve documenten';
+    protected $description = 'Maak ontbrekende vertaal-slots voor goedgekeurde meldingen, actieve mededelingen, actieve locaties, actieve units, ESG-indicatoren, actieve checklists, taken met omschrijving en actieve documenten';
 
     public function handle(
         BackfillIssueTranslationSlotsAction $backfillIssues,
@@ -29,6 +30,7 @@ class TranslationBackfillSlotsCommand extends Command
         BackfillDocumentTranslationSlotsAction $backfillDocuments,
         BackfillCategoryTranslationSlotsAction $backfillCategories,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
+        BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
     ): int {
         $tenantId = $this->option('tenant');
         $tenantFilter = $tenantId !== null && $tenantId !== '' ? (int) $tenantId : null;
@@ -42,6 +44,7 @@ class TranslationBackfillSlotsCommand extends Command
         $documents = $backfillDocuments->handle($tenantFilter);
         $categories = $backfillCategories->handle($tenantFilter);
         $teams = $backfillTeams->handle($tenantFilter);
+        $unitCheckLists = $backfillUnitCheckLists->handle($tenantFilter);
 
         $this->info(
             "Verwerkt: {$issues['issues']} melding(en), {$issues['slots_created']} melding-slot(s); "
@@ -52,7 +55,8 @@ class TranslationBackfillSlotsCommand extends Command
             ."{$tasks['tasks']} taak/taken, {$tasks['slots_created']} taak-slot(s); "
             ."{$documents['documents']} document(en), {$documents['slots_created']} document-slot(s); "
             ."{$categories['categories']} categorie(ën), {$categories['slots_created']} categorie-slot(s); "
-            ."{$teams['teams']} team(s), {$teams['slots_created']} team-slot(s)."
+            ."{$teams['teams']} team(s), {$teams['slots_created']} team-slot(s); "
+            ."{$unitCheckLists['lists']} checklist(s), {$unitCheckLists['slots_created']} checklist-slot(s)."
         );
 
         return self::SUCCESS;

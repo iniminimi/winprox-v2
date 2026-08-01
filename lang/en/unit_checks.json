@@ -48,7 +48,12 @@
             "name_required": "Name is required.",
             "items_required": "Add at least one checklist item.",
             "invalid_team": "Invalid team.",
-            "invalid_starter": "Invalid template."
+            "invalid_starter": "Invalid template.",
+            "translation_requires_active": "Translations are only possible for active checklists.",
+            "translation_import_missing": "Checklist not found or not active.",
+            "translation_import_name_too_long": "The translated checklist name is too long.",
+            "translation_import_items_mismatch": "The number of translated checklist items does not match the source.",
+            "translation_import_item_too_long": "A translated checklist item is too long."
         },
         "team_shared": "All teams",
         "starters_label": "Start from template:"

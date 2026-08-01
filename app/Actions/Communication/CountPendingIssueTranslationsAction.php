@@ -10,6 +10,7 @@ use App\Enums\CategoryTranslationStatus;
 use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\LocationTranslationStatus;
 use App\Enums\TaskTranslationStatus;
+use App\Enums\UnitCheckListTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
 use App\Models\CategoryTranslation;
@@ -19,6 +20,7 @@ use App\Models\InternalTeamTranslation;
 use App\Models\IssueTranslation;
 use App\Models\LocationTranslation;
 use App\Models\TaskTranslation;
+use App\Models\UnitCheckListTranslation;
 use App\Models\UnitTranslation;
 
 class CountPendingIssueTranslationsAction
@@ -72,6 +74,11 @@ class CountPendingIssueTranslationsAction
             ->whereHas('team', fn ($query) => $query->where('is_active', true)->where('name', '!=', ''))
             ->count();
 
-        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators + $categories + $teams;
+        $unitCheckLists = UnitCheckListTranslation::query()
+            ->where('status', UnitCheckListTranslationStatus::Pending)
+            ->whereHas('list', fn ($query) => $query->where('is_active', true))
+            ->count();
+
+        return $issues + $announcements + $locations + $units + $tasks + $documents + $esgIndicators + $categories + $teams + $unitCheckLists;
     }
 }

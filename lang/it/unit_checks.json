@@ -48,7 +48,12 @@
             "name_required": "Il nome è obbligatorio.",
             "items_required": "Aggiungi almeno un punto.",
             "invalid_team": "Team non valido.",
-            "invalid_starter": "Modello non valido."
+            "invalid_starter": "Modello non valido.",
+            "translation_requires_active": "Le traduzioni sono possibili solo per checklist attive.",
+            "translation_import_missing": "Checklist non trovata o non attiva.",
+            "translation_import_name_too_long": "Il nome della checklist tradotto è troppo lungo.",
+            "translation_import_items_mismatch": "Il numero di punti tradotti non corrisponde all'origine.",
+            "translation_import_item_too_long": "Un punto della checklist tradotto è troppo lungo."
         },
         "team_shared": "Tutti i team",
         "starters_label": "Parti da modello:"

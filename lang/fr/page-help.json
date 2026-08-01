@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Modèles",

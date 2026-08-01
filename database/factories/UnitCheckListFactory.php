@@ -16,6 +16,7 @@ class UnitCheckListFactory extends Factory
         return [
             'tenant_id' => Tenant::factory(),
             'name' => fake()->words(2, true),
+            'original_language' => 'nl',
             'is_active' => true,
         ];
     }

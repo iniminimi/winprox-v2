@@ -378,6 +378,10 @@ de meldingenlijst te vervuilen. Los van ESG.
 - Koppelen aan unit via Locaties → unit bewerken. Dropdown toont gedeelde checklists én
   checklists van teams die aan de categorie van de unit hangen.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
+- Checklistnaam en vinkpunten zijn **tenant-content**: brontaal in `original_language`,
+  overige talen automatisch via Ollama (`unit_check_list_translations`, pending →
+  completed/failed) zoals meldingen, locaties en ESG-indicatoren. Het portaal toont de
+  vertaalde labels; opgeslagen check-snapshots gebruiken altijd de **bronlabels**.
 
 ### Dagelijks terugkeren
 - Interval-eenheid **dag** beschikbaar op terugkerende meldingen (naast week/maand/…).

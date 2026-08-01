@@ -5,12 +5,14 @@ namespace App\Console\Commands;
 use App\Actions\Communication\RunPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
+use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\RunPendingCategoryTranslationsAction;
 use App\Actions\Communication\RunPendingDocumentTranslationsAction;
 use App\Actions\Communication\RunPendingEsgIndicatorTranslationsAction;
 use App\Actions\Communication\RunPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\RunPendingIssueTranslationsAction;
 use App\Actions\Communication\RunPendingTaskTranslationsAction;
+use App\Actions\Communication\RunPendingUnitCheckListTranslationsAction;
 use App\Actions\Communication\RunPendingUnitTranslationsAction;
 use App\Enums\AnnouncementTranslationStatus;
 use App\Enums\CategoryTranslationStatus;
@@ -19,6 +21,7 @@ use App\Enums\EsgIndicatorTranslationStatus;
 use App\Enums\InternalTeamTranslationStatus;
 use App\Enums\IssueTranslationStatus;
 use App\Enums\TaskTranslationStatus;
+use App\Enums\UnitCheckListTranslationStatus;
 use App\Enums\UnitTranslationStatus;
 use App\Models\AnnouncementTranslation;
 use App\Models\CategoryTranslation;
@@ -27,6 +30,7 @@ use App\Models\EsgIndicatorTranslation;
 use App\Models\InternalTeamTranslation;
 use App\Models\IssueTranslation;
 use App\Models\TaskTranslation;
+use App\Models\UnitCheckListTranslation;
 use App\Models\UnitTranslation;
 use Illuminate\Console\Command;
 
@@ -42,6 +46,7 @@ class TranslateLocalAllCommand extends Command
     public function handle(
         BackfillCategoryTranslationSlotsAction $backfillCategories,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
+        BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         RunPendingIssueTranslationsAction $runIssues,
         RunPendingTaskTranslationsAction $runTasks,
         RunPendingAnnouncementTranslationsAction $runAnnouncements,
@@ -50,6 +55,7 @@ class TranslateLocalAllCommand extends Command
         RunPendingEsgIndicatorTranslationsAction $runEsgIndicators,
         RunPendingCategoryTranslationsAction $runCategories,
         RunPendingInternalTeamTranslationsAction $runTeams,
+        RunPendingUnitCheckListTranslationsAction $runUnitCheckLists,
     ): int {
         $processAll = (bool) $this->option('all');
         $limit = $this->option('limit');
@@ -66,9 +72,11 @@ class TranslateLocalAllCommand extends Command
 
         $categoryBackfill = $backfillCategories->handle();
         $teamBackfill = $backfillTeams->handle();
+        $checkListBackfill = $backfillUnitCheckLists->handle();
         $this->line(
             "Backfill done: categories {$categoryBackfill['categories']} (+{$categoryBackfill['slots_created']} slots), "
-            ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots)."
+            ."teams {$teamBackfill['teams']} (+{$teamBackfill['slots_created']} slots), "
+            ."check lists {$checkListBackfill['lists']} (+{$checkListBackfill['slots_created']} slots)."
         );
 
         $totals = [
@@ -80,6 +88,7 @@ class TranslateLocalAllCommand extends Command
             'esg_indicators' => 0,
             'categories' => 0,
             'teams' => 0,
+            'unit_check_lists' => 0,
         ];
 
         do {
@@ -98,7 +107,7 @@ class TranslateLocalAllCommand extends Command
 
             $progressBar = null;
             if ($showProgress) {
-                $progressBar = $this->output->createProgressBar(8);
+                $progressBar = $this->output->createProgressBar(9);
                 $progressBar->start();
             }
 
@@ -118,6 +127,8 @@ class TranslateLocalAllCommand extends Command
             $progressBar?->advance();
             $teamCount = $runTeams->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Teams') : null);
             $progressBar?->advance();
+            $checkListCount = $runUnitCheckLists->handle($parsedLimit, null, $showProgress ? $this->progressLogger('Check lists') : null);
+            $progressBar?->advance();
 
             if ($progressBar !== null) {
                 $progressBar->finish();
@@ -132,8 +143,9 @@ class TranslateLocalAllCommand extends Command
             $totals['esg_indicators'] += $esgIndicatorCount;
             $totals['categories'] += $categoryCount;
             $totals['teams'] += $teamCount;
+            $totals['unit_check_lists'] += $checkListCount;
 
-            $processedThisRound = $issueCount + $taskCount + $announcementCount + $documentCount + $unitCount + $esgIndicatorCount + $categoryCount + $teamCount;
+            $processedThisRound = $issueCount + $taskCount + $announcementCount + $documentCount + $unitCount + $esgIndicatorCount + $categoryCount + $teamCount + $checkListCount;
 
             if (! $processAll) {
                 break;
@@ -159,6 +171,7 @@ class TranslateLocalAllCommand extends Command
         $this->line("ESG indicators: {$totals['esg_indicators']}");
         $this->line("Categories: {$totals['categories']}");
         $this->line("Teams: {$totals['teams']}");
+        $this->line("Check lists: {$totals['unit_check_lists']}");
         $this->newLine();
         $this->line('Still pending:');
         $this->printPendingCounts($pendingAfter);
@@ -175,7 +188,7 @@ class TranslateLocalAllCommand extends Command
     }
 
     /**
-     * @return array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int}
+     * @return array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int, unit_check_lists: int}
      */
     private function pendingCounts(): array
     {
@@ -212,11 +225,15 @@ class TranslateLocalAllCommand extends Command
                 ->where('status', InternalTeamTranslationStatus::Pending)
                 ->whereHas('team', fn ($query) => $query->where('is_active', true)->where('name', '!=', ''))
                 ->count(),
+            'unit_check_lists' => UnitCheckListTranslation::query()
+                ->where('status', UnitCheckListTranslationStatus::Pending)
+                ->whereHas('list', fn ($query) => $query->where('is_active', true))
+                ->count(),
         ];
     }
 
     /**
-     * @param  array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int}  $counts
+     * @param  array{issues: int, tasks: int, announcements: int, documents: int, units: int, esg_indicators: int, categories: int, teams: int, unit_check_lists: int}  $counts
      */
     private function printPendingCounts(array $counts): void
     {
@@ -228,6 +245,7 @@ class TranslateLocalAllCommand extends Command
         $this->line("ESG indicators: {$counts['esg_indicators']}");
         $this->line("Categories: {$counts['categories']}");
         $this->line("Teams: {$counts['teams']}");
+        $this->line("Check lists: {$counts['unit_check_lists']}");
         $this->line('Total: '.array_sum($counts));
     }
 
