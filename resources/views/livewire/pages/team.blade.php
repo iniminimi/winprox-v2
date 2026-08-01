@@ -65,6 +65,78 @@
         </div>
     @endif
 
+    <x-wp-disclosure-card
+        :title="__('unit_checks.lists.title')"
+        :subtitle="__('team.checklists.click_to_manage')"
+        :count="$checkLists->count()"
+        entangle="showCheckListsSection"
+    >
+        <x-slot:toolbar>
+            @can('create', App\Models\UnitCheckList::class)
+                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateCheckList">
+                    {{ __('unit_checks.lists.create') }}
+                </button>
+            @endcan
+        </x-slot:toolbar>
+
+        <p class="wp-muted wp-text-sm">{{ __('unit_checks.lists.lead') }}</p>
+
+        @can('create', App\Models\UnitCheckList::class)
+            @if ($checkListStarters !== [])
+                <div class="wp-cluster">
+                    <span class="wp-muted wp-text-sm">{{ __('unit_checks.lists.starters_label') }}</span>
+                    @foreach ($checkListStarters as $starter)
+                        <button
+                            type="button"
+                            class="btn btn--ghost btn--sm"
+                            wire:click="copyCheckListFromStarter('{{ $starter['key'] }}')"
+                        >
+                            {{ __($starter['name']) }}
+                        </button>
+                    @endforeach
+                </div>
+            @endif
+        @endcan
+
+        @if ($checkLists->isNotEmpty())
+            <div class="wp-list wp-list--entity-rows">
+                @foreach ($checkLists as $list)
+                    <div class="wp-issue-row" wire:key="unit-check-list-{{ $list->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <div class="wp-cluster">
+                                <p class="wp-issue-card-title">{{ $list->name }}</p>
+                                @if (! $list->is_active)
+                                    <span class="wp-pill wp-pill--closed">{{ __('unit_checks.lists.inactive') }}</span>
+                                @endif
+                            </div>
+                            <p class="wp-muted wp-text-sm">
+                                {{ $list->internalTeam?->localizedName() ?? __('unit_checks.lists.team_shared') }}
+                                ·
+                                {{ trans_choice('unit_checks.lists.item_count', $list->items_count, ['count' => $list->items_count]) }}
+                            </p>
+                        </div>
+                        <div class="wp-cluster">
+                            @can('update', $list)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCheckList({{ $list->id }})">
+                                    {{ __('common.button.edit') }}
+                                </button>
+                            @endcan
+                            @can('delete', $list)
+                                @if ($list->is_active)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateCheckList({{ $list->id }})">
+                                        {{ __('unit_checks.lists.deactivate') }}
+                                    </button>
+                                @endif
+                            @endcan
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="wp-muted">{{ __('unit_checks.lists.empty') }}</p>
+        @endif
+    </x-wp-disclosure-card>
+
     {{-- Teams ---------------------------------------------------------------}}
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">
@@ -492,6 +564,60 @@
                 <div class="wp-cluster wp-cluster--tight">
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                     <button type="button" class="btn btn--ghost" wire:click="cancelTeam">{{ __('common.button.cancel') }}</button>
+                </div>
+            </form>
+        </x-wp-modal>
+    @endif
+
+    @if ($showCheckListModal)
+        <x-wp-modal closeMethod="closeCheckListModal">
+            <form wire:submit="saveCheckList" class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 class="wp-section-title">
+                        {{ $editingCheckListId ? __('unit_checks.lists.edit_title') : __('unit_checks.lists.create_title') }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeCheckListModal" />
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="checkListName">{{ __('unit_checks.lists.fields.name') }}</label>
+                    <input type="text" id="checkListName" class="wp-input" wire:model="checkListName" maxlength="255">
+                    @error('checkListName') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="checkListTeamId">{{ __('unit_checks.lists.fields.team') }}</label>
+                    <select id="checkListTeamId" class="wp-input" wire:model="checkListTeamId">
+                        <option value="">{{ __('unit_checks.lists.fields.team_shared_option') }}</option>
+                        @foreach ($checkListTeams as $teamOption)
+                            <option value="{{ $teamOption->id }}">{{ $teamOption->localizedName() }}</option>
+                        @endforeach
+                    </select>
+                    <p class="wp-hint">{{ __('unit_checks.lists.fields.team_hint') }}</p>
+                    @error('checkListTeamId') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="checkListItemsText">{{ __('unit_checks.lists.fields.items') }}</label>
+                    <textarea
+                        id="checkListItemsText"
+                        class="wp-input"
+                        rows="6"
+                        wire:model="checkListItemsText"
+                        placeholder="{{ __('unit_checks.lists.fields.items_ph') }}"
+                    ></textarea>
+                    <p class="wp-hint">{{ __('unit_checks.lists.fields.items_hint') }}</p>
+                    @error('checkListItemsText') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="checkListIsActive">
+                    {{ __('unit_checks.lists.fields.active') }}
+                </label>
+
+                <div class="wp-cluster wp-cluster--tight">
+                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeCheckListModal">{{ __('common.button.cancel') }}</button>
                 </div>
             </form>
         </x-wp-modal>

@@ -187,5 +187,8 @@
         "import_file_type": "Il file deve essere un file CSV.",
         "import_file_max": "Il file non può superare 10 MB.",
         "translation_requires_active": "Le traduzioni sono disponibili solo per team attivi."
+    },
+    "checklists": {
+        "click_to_manage": "Clicca qui per gestire le checklist"
     }
 }

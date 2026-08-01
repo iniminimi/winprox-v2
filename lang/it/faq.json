@@ -272,7 +272,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Cosa sono i controlli unità?",
-            "body": "Controlli unità: rapide conferme OK/Non OK sul QR unit da esecutori (dopo Clock Point). Abilitare prima su categoria e unit (disattivo di default). Checklist opzionali per unit (gestione in Sedi → Checklist). Storico e filtri in Controlli unità; webhook unit.check.recorded per integrazioni. Separati da segnalazioni e misurazioni ESG.",
+            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Checklist opzionali per unità (gestione in Team). Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
             "summary": "OK/Non OK via QR unit (categoria + unit); checklist opzionali; OK senza segnalazione; webhook unit.check.recorded."
         }
     }

@@ -191,10 +191,6 @@
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
                 },
                 {
-                    "label": "Checklists",
-                    "text": "Onder Locaties → Checklists maak je templates met vinkpunten. Koppel daarna per unit via unit bewerken. Punten moeten afgevinkt zijn vóór OK."
-                },
-                {
                     "label": "Categorievertalingen",
                     "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
@@ -241,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit (templates onder Locaties → Checklists). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK of Niet OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder Teams). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
@@ -377,6 +373,10 @@
                 {
                     "label": "Operationele teams",
                     "text": "Maak teams en uitvoerders aan, wijs teamleaders toe. Aan een unit moet een team gekoppeld zijn zodat een uitvoerder taken kan afhandelen van deze unit. Zolang er geen uitvoerders in het team zijn, kan je het team nog verwijderen."
+                },
+                {
+                    "label": "Checklists",
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Locaties → Checklists en koppel ze per unit via Locaties → unit bewerken. Punten moeten afgevinkt worden vóór OK."
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
                 },
                 {
                     "label": "OK en open taken",

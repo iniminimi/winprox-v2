@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder Locaties. Schakel eerst Unit checks in op categorie én unit.",
+    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder Teams. Schakel eerst Unit checks in op categorie én unit.",
     "list_title": "Recente checks",
     "empty": "Nog geen unit checks.",
     "worker_unknown": "Onbekende uitvoerder",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Maak checklists hier en koppel ze per unit via Locaties → unit bewerken (nadat Unit checks op categorie én unit aanstaan). Op de unit-QR verschijnen de vinkjes bij Unit check.",
+        "lead": "Maak checklists hier (optioneel gekoppeld aan een team) en koppel ze per unit via Locaties → unit bewerken. Op de unit-QR verschijnen de vinkjes bij Unit check; bij OK moeten alle punten afgevinkt zijn.",
         "create": "Checklist toevoegen",
         "create_title": "Checklist toevoegen",
         "edit_title": "Checklist bewerken",
@@ -39,11 +39,48 @@
             "items": "Punten",
             "items_ph": "Eén punt per regel",
             "items_hint": "Schrijf elk checklistpunt op een nieuwe regel.",
-            "active": "Actief"
+            "active": "Actief",
+            "team": "Team (optioneel)",
+            "team_shared_option": "Alle teams (gedeeld)",
+            "team_hint": "Gedeelde checklists zijn overal beschikbaar. Team-checklists alleen voor units waarvan de categorie aan dat team hangt."
         },
         "errors": {
             "name_required": "Naam is verplicht.",
-            "items_required": "Voeg minstens één checklistpunt toe."
+            "items_required": "Voeg minstens één checklistpunt toe.",
+            "invalid_team": "Ongeldig team.",
+            "invalid_starter": "Ongeldig sjabloon."
+        },
+        "team_shared": "Alle teams",
+        "starters_label": "Start vanaf sjabloon:"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Schoonmaak",
+            "items": {
+                "floor": "Vloer schoon",
+                "surfaces": "Oppervlakken afgenomen",
+                "bins": "Vuilbakken geleegd",
+                "toilets": "Toiletten in orde",
+                "supplies": "Verbruiksmateriaal aangevuld"
+            }
+        },
+        "technical": {
+            "name": "Techniek",
+            "items": {
+                "power": "Stroom / schakelaars OK",
+                "leaks": "Geen lekken",
+                "safety": "Veiligheid in orde",
+                "equipment": "Apparatuur werkt"
+            }
+        },
+        "security": {
+            "name": "Security",
+            "items": {
+                "doors": "Deuren / toegang OK",
+                "lights": "Verlichting OK",
+                "alarms": "Alarm / sensoren OK",
+                "exits": "Nooduitgangen vrij"
+            }
         }
     }
 }

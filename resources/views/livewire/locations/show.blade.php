@@ -352,7 +352,7 @@
 
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.fields.category') }}</span>
-                    <select class="wp-input" wire:model="unitCategoryId">
+                    <select class="wp-input" wire:model.live="unitCategoryId">
                         <option value="">{{ __('locations.units.no_category') }}</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>

@@ -205,10 +205,6 @@
                 {
                     "label": "Kontaktdaten Pflicht",
                     "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
-                },
-                {
-                    "label": "Checklisten",
-                    "text": "Unter Standorte → Checklisten erstellen Sie Vorlagen mit Punkten. Verknüpfen Sie sie danach pro Unit. Punkte müssen vor OK abgehakt sein."
                 }
             ]
         },
@@ -237,7 +233,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Standorte → Checklisten). Beim Unit-Check im Portal hakt der Ausführer jeden Punkt ab, bevor OK oder Nicht OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Teams). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
@@ -377,6 +373,10 @@
                 {
                     "label": "Operative Teams",
                     "text": "Erstellen Sie Teams und Mitarbeiter, weisen Sie Teamleiter zu. Eine Unit muss mit einem Team verknüpft sein, damit ein Mitarbeiter Aufgaben für diese Unit bearbeiten kann. Solange keine Mitarbeiter im Team sind, können Sie das Team noch löschen."
+                },
+                {
+                    "label": "Checklisten",
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter Standorte → Checklisten und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten. Punkte müssen vor OK abgehakt werden."
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
                 },
                 {
                     "label": "OK und offene Aufgaben",

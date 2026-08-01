@@ -1,6 +1,6 @@
 {
     "title": "Chequeos de unit",
-    "subtitle": "Historial de comprobaciones OK / No OK vía QR. Gestione las listas en Ubicaciones. Active primero unit checks en categoría y unidad.",
+    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en Equipos. Active primero los unit checks en categoría y unidad.",
     "list_title": "Chequeos recientes",
     "empty": "Aún no hay chequeos de unit.",
     "worker_unknown": "Ejecutor desconocido",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Listas de comprobación",
-        "lead": "Cree listas aquí y vincúlelas por unidad en Ubicaciones → editar unidad (tras activar unit checks en categoría y unidad). En el QR de la unidad aparecen los puntos en Unit check.",
+        "lead": "Cree listas aquí (opcionalmente vinculadas a un equipo) y asígnelas por unidad en Ubicaciones → editar unidad. En el QR de la unidad aparecen los puntos en Unit check; para OK deben marcarse todos.",
         "create": "Añadir lista",
         "create_title": "Añadir lista",
         "edit_title": "Editar lista",
@@ -39,11 +39,48 @@
             "items": "Puntos",
             "items_ph": "Un punto por línea",
             "items_hint": "Escribe cada punto en una línea nueva.",
-            "active": "Activa"
+            "active": "Activa",
+            "team": "Equipo (opcional)",
+            "team_shared_option": "Todos los equipos (compartida)",
+            "team_hint": "Las listas compartidas están disponibles en todas partes. Las de equipo solo para unidades cuya categoría esté vinculada a ese equipo."
         },
         "errors": {
             "name_required": "El nombre es obligatorio.",
-            "items_required": "Añade al menos un punto."
+            "items_required": "Añade al menos un punto.",
+            "invalid_team": "Equipo no válido.",
+            "invalid_starter": "Plantilla no válida."
+        },
+        "team_shared": "Todos los equipos",
+        "starters_label": "Empezar desde plantilla:"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Limpieza",
+            "items": {
+                "floor": "Suelo limpio",
+                "surfaces": "Superficies limpiadas",
+                "bins": "Cubos vaciados",
+                "toilets": "Aseos en orden",
+                "supplies": "Consumibles repuestos"
+            }
+        },
+        "technical": {
+            "name": "Técnica",
+            "items": {
+                "power": "Corriente / interruptores OK",
+                "leaks": "Sin fugas",
+                "safety": "Seguridad en orden",
+                "equipment": "Equipos funcionan"
+            }
+        },
+        "security": {
+            "name": "Seguridad",
+            "items": {
+                "doors": "Puertas / acceso OK",
+                "lights": "Iluminación OK",
+                "alarms": "Alarma / sensores OK",
+                "exits": "Salidas de emergencia libres"
+            }
         }
     }
 }

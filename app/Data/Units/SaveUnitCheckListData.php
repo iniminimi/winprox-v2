@@ -13,10 +13,16 @@ readonly class SaveUnitCheckListData
         public string $name,
         public array $itemLabels,
         public bool $isActive = true,
+        public ?int $internalTeamId = null,
     ) {}
 
     /**
-     * @param  array{name: string, items?: list<string>|string, is_active?: bool}  $input
+     * @param  array{
+     *     name: string,
+     *     items?: list<string>|string,
+     *     is_active?: bool,
+     *     internal_team_id?: int|string|null
+     * }  $input
      */
     public static function fromValidated(array $input): self
     {
@@ -37,10 +43,18 @@ readonly class SaveUnitCheckListData
             $labels[] = $label;
         }
 
+        $teamId = $input['internal_team_id'] ?? null;
+        if ($teamId === '' || $teamId === null) {
+            $teamId = null;
+        } else {
+            $teamId = (int) $teamId;
+        }
+
         return new self(
             name: trim((string) $input['name']),
             itemLabels: array_values($labels),
             isActive: (bool) ($input['is_active'] ?? true),
+            internalTeamId: $teamId,
         );
     }
 }

@@ -143,22 +143,87 @@ it('saves a unit check list via action', function () {
         ->and($list->items->pluck('label')->all())->toBe(['Parking', 'Nooddeur A']);
 });
 
-it('creates a checklist from the locations page', function () {
+it('creates a checklist from the teams page', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
 
     Livewire::actingAs($user)
-        ->test(\App\Livewire\Locations\Index::class)
+        ->test(\App\Livewire\Pages\Team::class)
         ->call('openCreateCheckList')
         ->set('checkListName', 'Security ronde')
         ->set('checkListItemsText', "Parking\nNooddeur A")
         ->set('checkListIsActive', true)
+        ->set('checkListTeamId', $team->id)
         ->call('saveCheckList')
         ->assertHasNoErrors()
         ->assertSet('showCheckListModal', false);
 
     $list = UnitCheckList::query()->where('name', 'Security ronde')->first();
     expect($list)->not->toBeNull()
+        ->and($list->internal_team_id)->toBe($team->id)
         ->and($list->items)->toHaveCount(2);
+});
+
+it('copies a starter checklist', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Pages\Team::class)
+        ->call('copyCheckListFromStarter', 'cleaning')
+        ->assertHasNoErrors();
+
+    $list = UnitCheckList::query()->where('internal_team_id', null)->latest('id')->first();
+    expect($list)->not->toBeNull()
+        ->and($list->items->count())->toBeGreaterThan(0);
+});
+
+it('filters unit checklist dropdown by category teams', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true, 'name' => 'Team A']);
+    $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true, 'name' => 'Team B']);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'allow_unit_checks' => true,
+    ]);
+    $category->teams()->sync([$teamA->id]);
+
+    $shared = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Shared list',
+        'is_active' => true,
+        'internal_team_id' => null,
+    ]);
+    $forA = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Team A list',
+        'is_active' => true,
+        'internal_team_id' => $teamA->id,
+    ]);
+    $forB = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Team B list',
+        'is_active' => true,
+        'internal_team_id' => $teamB->id,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Locations\Show::class, ['location' => $location])
+        ->call('openCreateUnit')
+        ->set('unitAllowUnitChecks', true)
+        ->set('unitCategoryId', $category->id)
+        ->assertSee('Shared list')
+        ->assertSee('Team A list')
+        ->assertDontSee('Team B list');
+
+    expect($shared->id)->toBeInt()
+        ->and($forA->id)->toBeInt()
+        ->and($forB->id)->toBeInt();
 });

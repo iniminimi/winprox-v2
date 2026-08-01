@@ -187,5 +187,8 @@
         "import_file_type": "Het bestand moet een CSV-bestand zijn.",
         "import_file_max": "Het bestand mag maximaal 10MB groot zijn.",
         "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve teams."
+    },
+    "checklists": {
+        "click_to_manage": "Klik hier om checklists te beheren"
     }
 }

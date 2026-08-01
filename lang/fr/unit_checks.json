@@ -1,6 +1,6 @@
 {
     "title": "Contrôles unit",
-    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous Sites. Activez d’abord les contrôles unit sur catégorie et unité.",
+    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous Équipes. Activez d’abord les unit checks sur la catégorie et l’unité.",
     "list_title": "Contrôles récents",
     "empty": "Aucun contrôle unit pour le moment.",
     "worker_unknown": "Exécutant inconnu",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Listes de contrôle",
-        "lead": "Créez des listes ici et associez-les par unité via Sites → modifier l’unité (après activation des contrôles unit sur catégorie et unité). Sur le QR unité, les points apparaissent sous Contrôle unit.",
+        "lead": "Créez des listes ici (optionnellement liées à une équipe) et associez-les par unité via Sites → modifier l’unité. Sur le QR unité, les points apparaissent sous Unit check ; pour OK tous les points doivent être cochés.",
         "create": "Ajouter une liste",
         "create_title": "Ajouter une liste",
         "edit_title": "Modifier la liste",
@@ -39,11 +39,48 @@
             "items": "Points",
             "items_ph": "Un point par ligne",
             "items_hint": "Écrivez chaque point sur une nouvelle ligne.",
-            "active": "Active"
+            "active": "Active",
+            "team": "Équipe (optionnel)",
+            "team_shared_option": "Toutes les équipes (partagée)",
+            "team_hint": "Les listes partagées sont disponibles partout. Les listes d’équipe uniquement pour les unités dont la catégorie est liée à cette équipe."
         },
         "errors": {
             "name_required": "Le nom est obligatoire.",
-            "items_required": "Ajoutez au moins un point."
+            "items_required": "Ajoutez au moins un point.",
+            "invalid_team": "Équipe invalide.",
+            "invalid_starter": "Modèle invalide."
+        },
+        "team_shared": "Toutes les équipes",
+        "starters_label": "Partir d’un modèle :"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Nettoyage",
+            "items": {
+                "floor": "Sol propre",
+                "surfaces": "Surfaces essuyées",
+                "bins": "Poubelles vidées",
+                "toilets": "Toilettes en ordre",
+                "supplies": "Consommables réapprovisionnés"
+            }
+        },
+        "technical": {
+            "name": "Technique",
+            "items": {
+                "power": "Alimentation / interrupteurs OK",
+                "leaks": "Pas de fuites",
+                "safety": "Sécurité en ordre",
+                "equipment": "Équipement fonctionne"
+            }
+        },
+        "security": {
+            "name": "Sécurité",
+            "items": {
+                "doors": "Portes / accès OK",
+                "lights": "Éclairage OK",
+                "alarms": "Alarme / capteurs OK",
+                "exits": "Issues de secours libres"
+            }
         }
     }
 }

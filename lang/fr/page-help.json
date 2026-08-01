@@ -205,10 +205,6 @@
                 {
                     "label": "Coordonnées obligatoires",
                     "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
-                },
-                {
-                    "label": "Listes de contrôle",
-                    "text": "Sous Sites → Listes de contrôle, créez des modèles avec des points. Associez-les ensuite par unité. Les points doivent être cochés avant OK."
                 }
             ]
         },
@@ -237,7 +233,7 @@
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
-                    "text": "Associez éventuellement une liste à l'unité (modèles sous Sites → Listes de contrôle). Lors du contrôle unit sur le portail, l'exécutant coche chaque point avant d'enregistrer OK ou Pas OK."
+                    "text": "Associez éventuellement une liste à l’unité (modèles sous Équipes). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
                 },
                 {
                     "label": "Coordonnées obligatoires",
@@ -377,6 +373,10 @@
                 {
                     "label": "Équipes opérationnelles",
                     "text": "Créez des équipes et des exécutants, assignez des chefs d'équipe. Une unité doit avoir une équipe liée pour qu'un exécutant puisse traiter les tâches de cette unité. Tant qu'il n'y a pas d'exécutants dans l'équipe, vous pouvez encore supprimer l'équipe."
+                },
+                {
+                    "label": "Listes de contrôle",
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Créez des listes sous Sites → Listes de contrôle et associez-les par unité via Sites → modifier l’unité. Les points doivent être cochés avant OK."
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
                 },
                 {
                     "label": "OK et tâches ouvertes",

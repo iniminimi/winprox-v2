@@ -28,10 +28,17 @@ use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Http\Requests\Team\UpdateWorkerRequest;
+use App\Actions\Units\CopyUnitCheckListFromStarterAction;
+use App\Actions\Units\DeactivateUnitCheckListAction;
+use App\Actions\Units\SaveUnitCheckListAction;
+use App\Data\Units\SaveUnitCheckListData;
+use App\Http\Requests\Units\SaveUnitCheckListRequest;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
+use App\Models\UnitCheckList;
 use App\Models\User;
 use App\Models\Worker;
+use Illuminate\Support\Facades\Validator;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Workers\WorkerImportBatchRegistry;
@@ -115,6 +122,21 @@ class Team extends Component
     public ?int $workerImportedCount = null;
     public ?string $workersImportNotice = null;
     public string $workersImportNoticeType = 'success';
+
+    // Unit-check checklists (templates, optional team owner)
+    public bool $showCheckListsSection = false;
+
+    public bool $showCheckListModal = false;
+
+    public ?int $editingCheckListId = null;
+
+    public string $checkListName = '';
+
+    public string $checkListItemsText = '';
+
+    public bool $checkListIsActive = true;
+
+    public ?int $checkListTeamId = null;
 
     public function mount(): void
     {
@@ -936,6 +958,139 @@ class Team extends Component
         }
     }
 
+    public function openCreateCheckList(): void
+    {
+        $this->authorize('create', UnitCheckList::class);
+        $this->editingCheckListId = null;
+        $this->checkListName = '';
+        $this->checkListItemsText = '';
+        $this->checkListIsActive = true;
+        $this->checkListTeamId = null;
+        $this->showCheckListsSection = true;
+        $this->showCheckListModal = true;
+        $this->resetErrorBag();
+    }
+
+    public function openEditCheckList(int $listId): void
+    {
+        $list = UnitCheckList::query()->with('items')->findOrFail($listId);
+        $this->authorize('update', $list);
+        $this->editingCheckListId = (int) $list->id;
+        $this->checkListName = $list->name;
+        $this->checkListItemsText = $list->items->pluck('label')->implode("\n");
+        $this->checkListIsActive = (bool) $list->is_active;
+        $this->checkListTeamId = $list->internal_team_id;
+        $this->showCheckListModal = true;
+        $this->resetErrorBag();
+    }
+
+    public function closeCheckListModal(): void
+    {
+        $this->showCheckListModal = false;
+        $this->editingCheckListId = null;
+        $this->checkListName = '';
+        $this->checkListItemsText = '';
+        $this->checkListIsActive = true;
+        $this->checkListTeamId = null;
+        $this->resetErrorBag();
+    }
+
+    public function saveCheckList(SaveUnitCheckListAction $saveList): void
+    {
+        $tenantId = (int) Tenancy::id();
+        $payload = [
+            'name' => trim($this->checkListName),
+            'items' => $this->checkListItemsText,
+            'is_active' => $this->checkListIsActive,
+            'internal_team_id' => $this->checkListTeamId,
+        ];
+
+        $validator = Validator::make(
+            $payload,
+            SaveUnitCheckListRequest::staticRules($tenantId),
+            SaveUnitCheckListRequest::validationMessages(),
+        );
+
+        if ($validator->fails()) {
+            foreach ($validator->errors()->messages() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $map = [
+                        'items' => 'checkListItemsText',
+                        'name' => 'checkListName',
+                        'internal_team_id' => 'checkListTeamId',
+                    ];
+                    $this->addError($map[$field] ?? $field, $message);
+                }
+            }
+
+            return;
+        }
+
+        try {
+            if ($this->editingCheckListId === null) {
+                $this->authorize('create', UnitCheckList::class);
+                $saveList->handle(
+                    SaveUnitCheckListData::fromValidated($validator->validated()),
+                    $tenantId,
+                    null,
+                    (int) auth()->id(),
+                );
+            } else {
+                $list = UnitCheckList::query()->findOrFail($this->editingCheckListId);
+                $this->authorize('update', $list);
+                $saveList->handle(
+                    SaveUnitCheckListData::fromValidated($validator->validated()),
+                    $tenantId,
+                    $list,
+                    (int) auth()->id(),
+                );
+            }
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $field => $messages) {
+                foreach ($messages as $message) {
+                    $map = [
+                        'items' => 'checkListItemsText',
+                        'name' => 'checkListName',
+                        'internal_team_id' => 'checkListTeamId',
+                    ];
+                    $this->addError($map[$field] ?? $field, $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->closeCheckListModal();
+    }
+
+    public function copyCheckListFromStarter(string $starterKey, CopyUnitCheckListFromStarterAction $copy): void
+    {
+        $this->authorize('create', UnitCheckList::class);
+        $this->showCheckListsSection = true;
+
+        try {
+            $copy->handle(
+                $starterKey,
+                (int) Tenancy::id(),
+                null,
+                (int) auth()->id(),
+            );
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                foreach ($messages as $message) {
+                    $this->addError('checkListName', (string) $message);
+                }
+            }
+        }
+    }
+
+    public function deactivateCheckList(int $listId, DeactivateUnitCheckListAction $deactivate): void
+    {
+        $list = UnitCheckList::query()->findOrFail($listId);
+        $this->authorize('delete', $list);
+        $deactivate->handle($list, (int) auth()->id());
+    }
+
     public function render()
     {
         $user = auth()->user();
@@ -1018,6 +1173,18 @@ class Team extends Component
             'roles' => User::ROLES,
             'categories' => $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
+            'checkLists' => UnitCheckList::query()
+                ->with(['internalTeam.translations'])
+                ->withCount('items')
+                ->orderBy('name')
+                ->get(),
+            'checkListTeams' => InternalTeam::query()
+                ->where('is_active', true)
+                ->with('translations')
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get(['id', 'name', 'original_language']),
+            'checkListStarters' => config('unit_check_starters', []),
         ]);
     }
 }

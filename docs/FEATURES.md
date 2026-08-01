@@ -370,9 +370,12 @@ de meldingenlijst te vervuilen. Los van ESG.
 - **Aan/uit:** Locaties → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
 
-### Checklists (Locaties)
-- Templates met vinkpunten: Locaties → uitklap **Checklists** (onder Categorieën).
-- Koppelen aan unit via Locaties → unit bewerken.
+### Checklists (Teams)
+- Templates met vinkpunten: Teams → uitklap **Checklists** (optioneel gekoppeld aan een
+  team, of gedeeld voor alle teams). Starters (schoonmaak / techniek / security) zijn
+  kopieerbaar.
+- Koppelen aan unit via Locaties → unit bewerken. Dropdown toont gedeelde checklists én
+  checklists van teams die aan de categorie van de unit hangen.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
 
 ### Dagelijks terugkeren

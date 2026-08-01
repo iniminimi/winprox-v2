@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben.",
         "require_reporter_contact_hint": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für Feldmitarbeiter.",
         "no_check_list": "Keine Checkliste",
-        "check_list_hint": "Optional. Checklisten unter Standorte (Bereich Checklisten) anlegen. Die verknüpfte Checkliste erscheint auf dem Unit-QR bei Unit-Check.",
+        "check_list_hint": "Optional. Erstellen Sie Checklisten unter Teams. Nur geteilte Checklisten oder Checklisten von Teams, die mit der Kategorie dieser Unit verknüpft sind.",
         "allow_unit_checks_hint": "Nur relevant, wenn die Kategorie Unit-Checks erlaubt. Standardmäßig aus; einschalten, um die Unit-Check-Kachel auf dem Unit-QR zu zeigen.",
         "external_id_hint": "Optional. ID dieser Unit in Ihrer externen Facility-Software (IWMS, CMMS, ERP, …). Nur mit API-Zugang (Corporate). Erforderlich für eingehende Unit-Checks über die API."
     },
@@ -392,8 +392,5 @@
         "open": "Hier klicken zum Bearbeiten",
         "name": "Übersetzter Standortname",
         "save": "Übersetzung speichern"
-    },
-    "checklists": {
-        "click_to_manage": "Klicken Sie hier, um Checklisten zu verwalten"
     }
 }

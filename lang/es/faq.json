@@ -272,7 +272,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "¿Qué son las comprobaciones de unit?",
-            "body": "Comprobaciones de unit: confirmaciones OK/No OK rápidas en el QR de la unit por ejecutores (tras Clock Point). Active primero en categoría y unit (desactivado por defecto). Checklists opcionales por unit (gestión en Ubicaciones → Listas). Historial y filtros en Comprobaciones de unit; webhook unit.check.recorded para integraciones. Separado de avisos y mediciones ESG.",
+            "body": "Los unit checks son confirmaciones rápidas OK/No OK en el QR de la unidad por operarios (tras Clock Point). Active primero en categoría y unidad (desactivado por defecto). Listas opcionales por unidad (gestión en Equipos). Historial y filtros en Unit checks; webhook unit.check.recorded para integraciones. Separado de incidencias y mediciones ESG.",
             "summary": "OK/No OK vía QR unit (categoría + unit); checklists opcionales; OK sin aviso; webhook unit.check.recorded."
         }
     }

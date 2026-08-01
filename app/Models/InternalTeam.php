@@ -26,6 +26,11 @@ class InternalTeam extends Model
         return $this->hasMany(Worker::class);
     }
 
+    public function unitCheckLists(): HasMany
+    {
+        return $this->hasMany(UnitCheckList::class);
+    }
+
     public function activeWorkerCount(): int
     {
         return (int) $this->workers()->where('is_active', true)->count();

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Units;
 
 use App\Data\Units\SaveUnitCheckListData;
+use App\Models\InternalTeam;
 use App\Models\UnitCheckList;
 use App\Models\UnitCheckListItem;
 use App\Support\Audit\AuditRecorder;
@@ -27,19 +28,34 @@ class SaveUnitCheckListAction
             ]);
         }
 
+        if ($data->internalTeamId !== null) {
+            $teamOk = InternalTeam::query()
+                ->where('tenant_id', $tenantId)
+                ->whereKey($data->internalTeamId)
+                ->exists();
+
+            if (! $teamOk) {
+                throw ValidationException::withMessages([
+                    'internal_team_id' => [__('unit_checks.lists.errors.invalid_team')],
+                ]);
+            }
+        }
+
         return DB::transaction(function () use ($data, $tenantId, $list, $actorUserId) {
+            $payload = [
+                'name' => $data->name,
+                'is_active' => $data->isActive,
+                'internal_team_id' => $data->internalTeamId,
+            ];
+
             if ($list === null) {
                 $list = UnitCheckList::query()->create([
                     'tenant_id' => $tenantId,
-                    'name' => $data->name,
-                    'is_active' => $data->isActive,
+                    ...$payload,
                 ]);
                 $action = 'unit_check_list.created';
             } else {
-                $list->update([
-                    'name' => $data->name,
-                    'is_active' => $data->isActive,
-                ]);
+                $list->update($payload);
                 $action = 'unit_check_list.updated';
             }
 
@@ -64,12 +80,13 @@ class SaveUnitCheckListAction
                 payload: [
                     'id' => $list->id,
                     'name' => $list->name,
+                    'internal_team_id' => $list->internal_team_id,
                     'item_count' => count($data->itemLabels),
                     'is_active' => $list->is_active,
                 ],
             );
 
-            return $list->fresh('items');
+            return $list->fresh(['items', 'internalTeam']);
         });
     }
 }

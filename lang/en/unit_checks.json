@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under Locations. First enable unit checks on category and unit.",
+    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under Teams. First enable unit checks on category and unit.",
     "list_title": "Recent checks",
     "empty": "No unit checks yet.",
     "worker_unknown": "Unknown worker",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Create checklists here and link them per unit via Locations → edit unit (after unit checks are enabled on category and unit). On the unit QR the points appear under Unit check.",
+        "lead": "Create checklists here (optionally linked to a team) and assign them per unit via Locations → edit unit. On the unit QR the points appear under Unit check; for OK all points must be ticked.",
         "create": "Add checklist",
         "create_title": "Add checklist",
         "edit_title": "Edit checklist",
@@ -39,11 +39,48 @@
             "items": "Items",
             "items_ph": "One item per line",
             "items_hint": "Write each checklist item on a new line.",
-            "active": "Active"
+            "active": "Active",
+            "team": "Team (optional)",
+            "team_shared_option": "All teams (shared)",
+            "team_hint": "Shared checklists are available everywhere. Team checklists only for units whose category is linked to that team."
         },
         "errors": {
             "name_required": "Name is required.",
-            "items_required": "Add at least one checklist item."
+            "items_required": "Add at least one checklist item.",
+            "invalid_team": "Invalid team.",
+            "invalid_starter": "Invalid template."
+        },
+        "team_shared": "All teams",
+        "starters_label": "Start from template:"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Cleaning",
+            "items": {
+                "floor": "Floor clean",
+                "surfaces": "Surfaces wiped",
+                "bins": "Bins emptied",
+                "toilets": "Toilets OK",
+                "supplies": "Supplies topped up"
+            }
+        },
+        "technical": {
+            "name": "Technical",
+            "items": {
+                "power": "Power / switches OK",
+                "leaks": "No leaks",
+                "safety": "Safety OK",
+                "equipment": "Equipment working"
+            }
+        },
+        "security": {
+            "name": "Security",
+            "items": {
+                "doors": "Doors / access OK",
+                "lights": "Lighting OK",
+                "alarms": "Alarm / sensors OK",
+                "exits": "Emergency exits clear"
+            }
         }
     }
 }

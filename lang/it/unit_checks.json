@@ -1,6 +1,6 @@
 {
     "title": "Controlli unit",
-    "subtitle": "Storico dei controlli OK / Non OK via QR. Gestisci le checklist sotto Sedi. Abilita prima i unit check su categoria e unit.",
+    "subtitle": "Cronologia dei controlli OK / Non OK via QR. Gestisci le checklist in Team. Abilita prima i unit check su categoria e unità.",
     "list_title": "Controlli recenti",
     "empty": "Nessun controllo unit ancora.",
     "worker_unknown": "Esecutore sconosciuto",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklist",
-        "lead": "Crea checklist qui e collegale per unit via Sedi → modifica unit (dopo aver abilitato i unit check su categoria e unit). Sul QR della unit i punti appaiono in Unit check.",
+        "lead": "Crea checklist qui (opzionalmente collegate a un team) e collegale per unità in Sedi → modifica unità. Sul QR unità i punti compaiono in Unit check; per OK tutti i punti devono essere spuntati.",
         "create": "Aggiungi checklist",
         "create_title": "Aggiungi checklist",
         "edit_title": "Modifica checklist",
@@ -39,11 +39,48 @@
             "items": "Punti",
             "items_ph": "Un punto per riga",
             "items_hint": "Scrivi ogni punto su una nuova riga.",
-            "active": "Attiva"
+            "active": "Attiva",
+            "team": "Team (opzionale)",
+            "team_shared_option": "Tutti i team (condivisa)",
+            "team_hint": "Le checklist condivise sono disponibili ovunque. Quelle di team solo per unità la cui categoria è collegata a quel team."
         },
         "errors": {
             "name_required": "Il nome è obbligatorio.",
-            "items_required": "Aggiungi almeno un punto."
+            "items_required": "Aggiungi almeno un punto.",
+            "invalid_team": "Team non valido.",
+            "invalid_starter": "Modello non valido."
+        },
+        "team_shared": "Tutti i team",
+        "starters_label": "Parti da modello:"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Pulizia",
+            "items": {
+                "floor": "Pavimento pulito",
+                "surfaces": "Superfici detergute",
+                "bins": "Cestini svuotati",
+                "toilets": "Toilette in ordine",
+                "supplies": "Materiali di consumo riforniti"
+            }
+        },
+        "technical": {
+            "name": "Tecnica",
+            "items": {
+                "power": "Corrente / interruttori OK",
+                "leaks": "Nessuna perdita",
+                "safety": "Sicurezza in ordine",
+                "equipment": "Apparecchiature funzionanti"
+            }
+        },
+        "security": {
+            "name": "Security",
+            "items": {
+                "doors": "Porte / accesso OK",
+                "lights": "Illuminazione OK",
+                "alarms": "Allarme / sensori OK",
+                "exits": "Uscite di emergenza libere"
+            }
         }
     }
 }

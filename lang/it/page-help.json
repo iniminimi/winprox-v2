@@ -191,10 +191,6 @@
                     "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
                 },
                 {
-                    "label": "Checklist",
-                    "text": "In Sedi → Checklist crei template con punti. Poi collegali per unit. I punti devono essere spuntati prima di OK."
-                },
-                {
                     "label": "Traduzioni categoria",
                     "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
@@ -237,7 +233,7 @@
                 },
                 {
                     "label": "Checklist (controllo unità)",
-                    "text": "Collega opzionalmente una checklist all'unità (template in Sedi → Checklist). Nel controllo unità sul portale l'esecutore spunta ogni punto prima di salvare OK o Non OK."
+                    "text": "Collega opzionalmente una checklist all’unità (modelli in Team). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
@@ -377,6 +373,10 @@
                 {
                     "label": "Team operativi",
                     "text": "Crei team e lavoratori, assegni capisquadra. Un'unità deve avere un team collegato affinché un lavoratore possa gestire attività per quell'unità. Finché non ci sono lavoratori nel team, può ancora eliminare il team."
+                },
+                {
+                    "label": "Checklist",
+                    "text": "Crea checklist in Team (opzionalmente per team o condivise). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK."
                 },
                 {
                     "label": "Traduzioni team",
@@ -1212,7 +1212,7 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist in Sedi → Checklist e collegale per unit via Sedi → modifica unit. I punti devono essere spuntati prima di OK."
+                    "text": "Crea checklist in Team (opzionalmente per team o condivise). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK."
                 },
                 {
                     "label": "OK e task aperti",

@@ -12,24 +12,16 @@ use App\Actions\Locations\DeactivateLocationAction;
 use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
-use App\Actions\Units\DeactivateUnitCheckListAction;
-use App\Actions\Units\SaveUnitCheckListAction;
-use App\Data\Units\SaveUnitCheckListData;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
-use App\Http\Requests\Units\SaveUnitCheckListRequest;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Location;
-use App\Models\UnitCheckList;
 use App\Support\Onboarding\TenantOnboardingState;
-use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -89,18 +81,6 @@ class Index extends Component
     public string $categoryPreviewLocale = '';
 
     public string $categoryTranslationName = '';
-
-    public bool $showCheckListsSection = false;
-
-    public bool $showCheckListModal = false;
-
-    public ?int $editingCheckListId = null;
-
-    public string $checkListName = '';
-
-    public string $checkListItemsText = '';
-
-    public bool $checkListIsActive = true;
 
     public function mount(): void
     {
@@ -505,108 +485,6 @@ class Index extends Component
         $deleteCategory->handle($category, (int) auth()->id());
     }
 
-    public function openCreateCheckList(): void
-    {
-        $this->authorize('create', UnitCheckList::class);
-        $this->editingCheckListId = null;
-        $this->checkListName = '';
-        $this->checkListItemsText = '';
-        $this->checkListIsActive = true;
-        $this->showCheckListModal = true;
-        $this->resetErrorBag();
-    }
-
-    public function openEditCheckList(int $listId): void
-    {
-        $list = UnitCheckList::query()->with('items')->findOrFail($listId);
-        $this->authorize('update', $list);
-        $this->editingCheckListId = (int) $list->id;
-        $this->checkListName = $list->name;
-        $this->checkListItemsText = $list->items->pluck('label')->implode("\n");
-        $this->checkListIsActive = (bool) $list->is_active;
-        $this->showCheckListModal = true;
-        $this->resetErrorBag();
-    }
-
-    public function closeCheckListModal(): void
-    {
-        $this->showCheckListModal = false;
-        $this->editingCheckListId = null;
-        $this->checkListName = '';
-        $this->checkListItemsText = '';
-        $this->checkListIsActive = true;
-        $this->resetErrorBag();
-    }
-
-    public function saveCheckList(SaveUnitCheckListAction $saveList): void
-    {
-        $payload = [
-            'name' => trim($this->checkListName),
-            'items' => $this->checkListItemsText,
-            'is_active' => $this->checkListIsActive,
-        ];
-
-        $validator = Validator::make(
-            $payload,
-            SaveUnitCheckListRequest::staticRules(),
-            SaveUnitCheckListRequest::validationMessages(),
-        );
-
-        if ($validator->fails()) {
-            foreach ($validator->errors()->messages() as $field => $messages) {
-                foreach ($messages as $message) {
-                    $this->addError(
-                        $field === 'items' ? 'checkListItemsText' : ($field === 'name' ? 'checkListName' : $field),
-                        $message,
-                    );
-                }
-            }
-
-            return;
-        }
-
-        try {
-            if ($this->editingCheckListId === null) {
-                $this->authorize('create', UnitCheckList::class);
-                $saveList->handle(
-                    SaveUnitCheckListData::fromValidated($validator->validated()),
-                    Tenancy::id(),
-                    null,
-                    (int) auth()->id(),
-                );
-            } else {
-                $list = UnitCheckList::query()->findOrFail($this->editingCheckListId);
-                $this->authorize('update', $list);
-                $saveList->handle(
-                    SaveUnitCheckListData::fromValidated($validator->validated()),
-                    Tenancy::id(),
-                    $list,
-                    (int) auth()->id(),
-                );
-            }
-        } catch (ValidationException $exception) {
-            foreach ($exception->errors() as $field => $messages) {
-                foreach ($messages as $message) {
-                    $this->addError(
-                        $field === 'items' ? 'checkListItemsText' : ($field === 'name' ? 'checkListName' : $field),
-                        $message,
-                    );
-                }
-            }
-
-            return;
-        }
-
-        $this->closeCheckListModal();
-    }
-
-    public function deactivateCheckList(int $listId, DeactivateUnitCheckListAction $deactivate): void
-    {
-        $list = UnitCheckList::query()->findOrFail($listId);
-        $this->authorize('delete', $list);
-        $deactivate->handle($list, (int) auth()->id());
-    }
-
     private function resetCategoryForm(): void
     {
         $this->editingCategoryId = null;
@@ -690,10 +568,6 @@ class Index extends Component
             ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
-        $checkLists = Schema::hasTable('unit_check_lists')
-            ? UnitCheckList::query()->withCount('items')->orderBy('name')->get()
-            : collect();
-
         $categoryTranslationLocales = config('locales.labels', []);
         if ($this->showCategoriesModal && $this->editingCategoryId !== null) {
             $editingCategory = Category::query()->find($this->editingCategoryId);
@@ -729,7 +603,6 @@ class Index extends Component
             'hasInactiveLocations' => $hasInactiveLocations,
             'teams' => $teams,
             'categories' => $categories,
-            'checkLists' => $checkLists,
             'editingLocation' => $editingLocation,
             'locationTranslationLocales' => $locationTranslationLocales,
             'categoryTranslationLocales' => $categoryTranslationLocales,

@@ -60,57 +60,6 @@
         @endif
     </x-wp-disclosure-card>
 
-    <x-wp-disclosure-card
-        :title="__('unit_checks.lists.title')"
-        :subtitle="__('locations.checklists.click_to_manage')"
-        :count="$checkLists->count()"
-        entangle="showCheckListsSection"
-    >
-        <x-slot:toolbar>
-            @can('create', App\Models\UnitCheckList::class)
-                <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateCheckList">
-                    {{ __('unit_checks.lists.create') }}
-                </button>
-            @endcan
-        </x-slot:toolbar>
-
-        @if ($checkLists->isNotEmpty())
-            <div class="wp-list wp-list--entity-rows">
-                @foreach ($checkLists as $list)
-                    <div class="wp-issue-row" wire:key="unit-check-list-{{ $list->id }}">
-                        <div class="wp-grow wp-stack-tight">
-                            <div class="wp-cluster wp-cluster--wrap">
-                                <p class="wp-issue-card-title">{{ $list->name }}</p>
-                                @if (! $list->is_active)
-                                    <span class="wp-pill wp-pill--closed">{{ __('unit_checks.lists.inactive') }}</span>
-                                @endif
-                            </div>
-                            <p class="wp-muted wp-text-sm">
-                                {{ trans_choice('unit_checks.lists.item_count', $list->items_count, ['count' => $list->items_count]) }}
-                            </p>
-                        </div>
-                        <div class="wp-cluster">
-                            @can('update', $list)
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditCheckList({{ $list->id }})">
-                                    {{ __('common.button.edit') }}
-                                </button>
-                            @endcan
-                            @can('delete', $list)
-                                @if ($list->is_active)
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateCheckList({{ $list->id }})">
-                                        {{ __('unit_checks.lists.deactivate') }}
-                                    </button>
-                                @endif
-                            @endcan
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @else
-            <p class="wp-muted">{{ __('unit_checks.lists.empty') }}</p>
-        @endif
-    </x-wp-disclosure-card>
-
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-grow">
             <h2 class="wp-section-title">{{ __('locations.title') }}</h2>
@@ -385,42 +334,6 @@
                         </span>
                         <span>{{ $editingCategoryId !== null ? __('common.button.save') : __('locations.categories.add') }}</span>
                     </button>
-                </div>
-            </form>
-        </x-wp-modal>
-    @endif
-
-    @if ($showCheckListModal)
-        <x-wp-modal closeMethod="closeCheckListModal">
-            <form wire:submit="saveCheckList" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 class="wp-section-title">
-                        {{ $editingCheckListId ? __('unit_checks.lists.edit_title') : __('unit_checks.lists.create_title') }}
-                    </h2>
-                    <x-wp-modal-close wire:click="closeCheckListModal" />
-                </div>
-
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('unit_checks.lists.fields.name') }}</span>
-                    <input type="text" class="wp-input" wire:model="checkListName" />
-                    @error('checkListName') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
-
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('unit_checks.lists.fields.items') }}</span>
-                    <textarea class="wp-textarea" rows="6" wire:model="checkListItemsText" placeholder="{{ __('unit_checks.lists.fields.items_ph') }}"></textarea>
-                    <span class="wp-muted wp-text-sm">{{ __('unit_checks.lists.fields.items_hint') }}</span>
-                    @error('checkListItemsText') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
-
-                <label class="wp-field wp-cluster">
-                    <input type="checkbox" wire:model="checkListIsActive" />
-                    <span>{{ __('unit_checks.lists.fields.active') }}</span>
-                </label>
-
-                <div class="wp-cluster wp-cluster--end">
-                    <button type="button" class="btn btn--ghost" wire:click="closeCheckListModal">{{ __('common.button.cancel') }}</button>
-                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>
             </form>
         </x-wp-modal>

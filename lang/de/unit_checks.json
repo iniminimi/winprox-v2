@@ -1,6 +1,6 @@
 {
     "title": "Unit-Checks",
-    "subtitle": "Historie der OK / Nicht-OK-Checks per QR. Checklisten verwalten Sie unter Standorte. Aktivieren Sie zuerst Unit-Checks an Kategorie und Unit.",
+    "subtitle": "Verlauf von OK / Nicht OK Kontrollen per QR. Checklisten verwalten Sie unter Teams. Aktivieren Sie Unit-Checks zuerst an Kategorie und Unit.",
     "list_title": "Aktuelle Checks",
     "empty": "Noch keine Unit-Checks.",
     "worker_unknown": "Unbekannter Ausführender",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklisten",
-        "lead": "Erstellen Sie Checklisten hier und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten (nachdem Unit-Checks an Kategorie und Unit aktiviert sind). Auf dem Unit-QR erscheinen die Punkte bei Unit-Check.",
+        "lead": "Erstellen Sie hier Checklisten (optional einem Team zugeordnet) und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten. Auf dem Unit-QR erscheinen die Punkte bei Unit-Check; bei OK müssen alle Punkte abgehakt sein.",
         "create": "Checkliste hinzufügen",
         "create_title": "Checkliste hinzufügen",
         "edit_title": "Checkliste bearbeiten",
@@ -39,11 +39,48 @@
             "items": "Punkte",
             "items_ph": "Ein Punkt pro Zeile",
             "items_hint": "Schreiben Sie jeden Punkt in eine neue Zeile.",
-            "active": "Aktiv"
+            "active": "Aktiv",
+            "team": "Team (optional)",
+            "team_shared_option": "Alle Teams (geteilt)",
+            "team_hint": "Geteilte Checklisten sind überall verfügbar. Team-Checklisten nur für Units, deren Kategorie mit diesem Team verknüpft ist."
         },
         "errors": {
             "name_required": "Name ist erforderlich.",
-            "items_required": "Fügen Sie mindestens einen Punkt hinzu."
+            "items_required": "Fügen Sie mindestens einen Punkt hinzu.",
+            "invalid_team": "Ungültiges Team.",
+            "invalid_starter": "Ungültige Vorlage."
+        },
+        "team_shared": "Alle Teams",
+        "starters_label": "Mit Vorlage starten:"
+    },
+    "starters": {
+        "cleaning": {
+            "name": "Reinigung",
+            "items": {
+                "floor": "Boden sauber",
+                "surfaces": "Oberflächen abgewischt",
+                "bins": "Abfallbehälter geleert",
+                "toilets": "Toiletten in Ordnung",
+                "supplies": "Verbrauchsmaterial aufgefüllt"
+            }
+        },
+        "technical": {
+            "name": "Technik",
+            "items": {
+                "power": "Strom / Schalter OK",
+                "leaks": "Keine Undichtigkeiten",
+                "safety": "Sicherheit in Ordnung",
+                "equipment": "Geräte funktionieren"
+            }
+        },
+        "security": {
+            "name": "Security",
+            "items": {
+                "doors": "Türen / Zugang OK",
+                "lights": "Beleuchtung OK",
+                "alarms": "Alarm / Sensoren OK",
+                "exits": "Notausgänge frei"
+            }
         }
     }
 }

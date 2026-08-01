@@ -1019,16 +1019,45 @@ class Show extends Component
             ? Category::query()->with('translations')->orderBy('name')->get(['id', 'name', 'original_language'])
             : collect();
 
+        $categoryTeamIds = [];
+        if ($this->unitCategoryId !== null) {
+            $categoryTeamIds = Category::query()
+                ->whereKey($this->unitCategoryId)
+                ->first()
+                ?->teams()
+                ->pluck('internal_teams.id')
+                ->map(fn ($id) => (int) $id)
+                ->all() ?? [];
+        }
+
         $unitCheckLists = UnitCheckList::query()
             ->where('is_active', true)
+            ->where(function ($query) use ($categoryTeamIds): void {
+                $query->whereNull('internal_team_id');
+                if ($categoryTeamIds !== []) {
+                    $query->orWhereIn('internal_team_id', $categoryTeamIds);
+                }
+            })
             ->orderBy('name')
             ->get(['id', 'name']);
 
-        // Keep currently attached inactive list selectable while editing.
+        // Keep currently attached list selectable while editing (inactive or out of filter).
         if ($this->unitCheckListId !== null && ! $unitCheckLists->contains('id', $this->unitCheckListId)) {
-            $currentList = UnitCheckList::query()->find($this->unitCheckListId);
-            if ($currentList !== null) {
-                $unitCheckLists = $unitCheckLists->prepend($currentList)->unique('id')->values();
+            $savedListId = null;
+            if ($this->editingUnitId !== null) {
+                $savedListId = Unit::query()
+                    ->where('location_id', $this->location->id)
+                    ->whereKey($this->editingUnitId)
+                    ->value('unit_check_list_id');
+            }
+
+            if ($savedListId !== null && (int) $savedListId === (int) $this->unitCheckListId) {
+                $currentList = UnitCheckList::query()->find($this->unitCheckListId);
+                if ($currentList !== null) {
+                    $unitCheckLists = $unitCheckLists->prepend($currentList)->unique('id')->values();
+                }
+            } else {
+                $this->unitCheckListId = null;
             }
         }
 

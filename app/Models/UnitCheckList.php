@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UnitCheckList extends Model
@@ -15,6 +16,7 @@ class UnitCheckList extends Model
 
     protected $fillable = [
         'tenant_id',
+        'internal_team_id',
         'name',
         'is_active',
     ];
@@ -31,5 +33,10 @@ class UnitCheckList extends Model
     public function units(): HasMany
     {
         return $this->hasMany(Unit::class);
+    }
+
+    public function internalTeam(): BelongsTo
+    {
+        return $this->belongsTo(InternalTeam::class, 'internal_team_id');
     }
 }
