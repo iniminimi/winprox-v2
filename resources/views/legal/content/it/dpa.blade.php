@@ -111,6 +111,7 @@
 <ul>
     <li>account utente: attivi + 24 mesi.</li>
     <li>problematiche e attività: durata del contratto + 36 mesi.</li>
+    <li>controlli unità: stesso periodo di conservazione di problematiche e attività.</li>
     <li>registri: 6 mesi.</li>
     <li>foto: 24 mesi dopo la chiusura.</li>
     <li>misurazioni ESG: stesso periodo di conservazione di problematiche e attività.</li>

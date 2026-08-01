@@ -106,7 +106,7 @@
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "Token API REST e webhook in uscita (HMAC) in Impostazioni. Collegamento per segnalazioni, compiti, ESG, … Ingest IoT con token gateway separato. Vedi anche la scheda API & Webhooks e la scheda tecnica."
+                "body": "Token API REST e webhook in uscita (HMAC) sotto Impostazioni. Collegamento per segnalazioni, attività, controlli unità, ESG, … Ingest IoT con token gateway separato. Vedi anche la scheda API & Webhooks e la scheda tecnica."
             }
         ],
         "full": [
@@ -162,7 +162,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Including issues, tasks, locations, units, teams, workers, ESG, translations.",
+                    "Tra l’altro segnalazioni, attività, ubicazioni, unità, team, esecutori, controlli unità, ESG, traduzioni.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Facility + Corporate)."
                 ]
@@ -211,7 +211,7 @@
             {
                 "title": "Webhooks",
                 "items": [
-                    "Outbound HTTP POST on events (e.g. issue/task status, ESG, GPS).",
+                    "HTTP POST in uscita su eventi (tra l’altro stato issue/attività, controllo unità, ESG, GPS).",
                     "Configured under Settings → API; secret for verification.",
                     "Automatic retries on failure (several attempts with increasing delay).",
                     "Same plan requirement as API (Corporate)."
@@ -243,7 +243,7 @@
         "label": "API & Webhooks",
         "tagline": "Integra WinProx con il tuo software esistente tramite API e webhook.",
         "highlight": "WinProx non sostituisce i sistemi IWMS o ERP esistenti. Grazie ad API e webhook, WinProx lavora insieme a loro.",
-        "intro": "WinProx è pensato perché altro software possa usare gli stessi dati, segnalazioni e compiti di WinProx. Gestisci token e documentazione in Impostazioni → API.",
+        "intro": "WinProx è pensato perché altro software usi gli stessi dati, segnalazioni, attività e controlli unità di WinProx. Gestione e docs in Impostazioni → API.",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Vedi anche: panoramica funzioni · scheda tecnica",
         "left": [
@@ -252,6 +252,7 @@
                 "body": "Con l’API e i webhook, WinProx può collaborare con il software esistente. Ad esempio:",
                 "items": [
                     "inoltrare automaticamente una segnalazione a Planon o Ultimo;",
+                    "inoltrare un controllo unità (OK/Non OK) a Planon o Ultimo;",
                     "sincronizzare compiti con un ERP;",
                     "mostrare dati in Power BI;",
                     "far creare segnalazioni automaticamente ai sensori IoT;",
@@ -319,7 +320,7 @@
                     "rows": [
                         [
                             "Facility",
-                            "Segnalazioni, Compiti, Sedi, Unità, Team, Operatori"
+                            "Segnalazioni, Attività, Ubicazioni, Unità, Team, Esecutori, Controlli unità"
                         ],
                         [
                             "Time",

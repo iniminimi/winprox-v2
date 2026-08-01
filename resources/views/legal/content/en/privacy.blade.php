@@ -163,6 +163,7 @@
 <ul>
     <li>user accounts: active + 24 months</li>
     <li>issues and tasks: contract period + 36 months</li>
+    <li>unit checks: same retention as issues and tasks (contract term + 36 months).</li>
     <li>logs: 6 months</li>
     <li>onboarding events per user (for onboarding statistics): 6 months; aggregated onboarding figures without personal data may be retained longer</li>
     <li>media (photos): 24 months after closing the relevant issue or task</li>

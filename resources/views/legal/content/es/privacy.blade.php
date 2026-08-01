@@ -163,6 +163,7 @@
 <ul>
     <li>cuentas de usuario: activas + 24 meses</li>
     <li>incidencias y tareas: duración del contrato + 36 meses</li>
+    <li>comprobaciones de unidad: mismo plazo que avisos y tareas (duración del contrato + 36 meses).</li>
     <li>registros: 6 meses</li>
     <li>eventos de incorporación por usuario (para estadísticas de incorporación): 6 meses; las cifras agregadas de incorporación sin datos personales pueden conservarse más tiempo</li>
     <li>medios (fotos): 24 meses tras cerrar la incidencia o tarea correspondiente</li>

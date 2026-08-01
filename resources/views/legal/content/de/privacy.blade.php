@@ -164,6 +164,7 @@
 <ul>
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
+    <li>Unit-Checks: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Onboarding-Ereignisse pro Benutzer (für Onboarding-Statistiken): 6 Monate; aggregierte Onboarding-Kennzahlen ohne Personendaten können länger aufbewahrt werden.</li>
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>

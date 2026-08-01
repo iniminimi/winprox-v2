@@ -6,6 +6,7 @@ Record a quick **OK / Not OK** visit check on a unit (security rounds, cleaning 
 
 - API token with ability `units:update`
 - Unit must belong to the token’s tenant
+- **Unit checks must be enabled** on both the unit’s **category** and the **unit** (`allow_unit_checks`; both default off). Otherwise `createCheck` is denied.
 
 ## Record a check
 
@@ -21,9 +22,9 @@ Record a quick **OK / Not OK** visit check on a unit (security rounds, cleaning 
 | `checked_at` | string (ISO-8601) | Yes | Client timestamp |
 | `latitude` | number | No | Requires `longitude` |
 | `longitude` | number | No | Requires `latitude` |
-| `task_id` | integer | No | Reserved for future checklist/round linking |
+| `task_id` | integer | No | Optional link to a related task |
 | `issue_id` | integer | No | Optional link when a follow-up issue exists |
-| `checklist_items` | string[] | No | Reserved for future checklists |
+| `checklist_items` | string[] | No | Labels of checked checklist points (when the unit has a checklist) |
 
 ### Example
 
@@ -36,7 +37,8 @@ Content-Type: application/json
   "result": "ok",
   "checked_at": "2026-08-01T10:15:00+02:00",
   "latitude": 51.05,
-  "longitude": 3.72
+  "longitude": 3.72,
+  "checklist_items": ["Floor", "WC"]
 }
 ```
 

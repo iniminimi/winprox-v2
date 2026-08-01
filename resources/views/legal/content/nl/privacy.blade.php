@@ -164,6 +164,7 @@
 <ul>
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
+    <li>unit checks: dezelfde bewaartermijn als meldingen en taken (contractperiode + 36 maanden).</li>
     <li>logs: 6 maanden.</li>
     <li>onboarding-events per gebruiker (voor onboarding-statistieken): 6 maanden; geaggregeerde onboardingcijfers zonder persoonsdata blijven langer bewaard.</li>
     <li>media (foto’s): 24 maanden na afsluiten van de betreffende melding of taak.</li>

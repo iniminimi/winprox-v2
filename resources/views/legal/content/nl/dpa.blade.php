@@ -111,6 +111,7 @@
 <ul>
     <li>gebruikersaccounts: actief + 24 maanden.</li>
     <li>meldingen en taken: contractperiode + 36 maanden.</li>
+    <li>unit checks: dezelfde bewaartermijn als meldingen en taken.</li>
     <li>logs: 6 maanden.</li>
     <li>foto’s: 24 maanden na afsluiten.</li>
     <li>ESG-metingen: dezelfde bewaartermijn als meldingen en taken.</li>

@@ -163,6 +163,7 @@
 <ul>
     <li>comptes utilisateurs : actif + 24 mois.</li>
     <li>issues et tâches : durée du contrat + 36 mois.</li>
+    <li>contrôles d’unité : même durée de conservation que les signalements et tâches (durée du contrat + 36 mois).</li>
     <li>journaux : 6 mois.</li>
     <li>événements d’onboarding par utilisateur (statistiques d’onboarding) : 6 mois ; les chiffres agrégés sans données personnelles peuvent être conservés plus longtemps.</li>
     <li>médias (photos) : 24 mois après clôture du signalement ou de la tâche concerné(e).</li>

@@ -111,6 +111,7 @@
 <ul>
     <li>user accounts: active + 24 months.</li>
     <li>issues and tasks: contract period + 36 months.</li>
+    <li>unit checks: same retention as issues and tasks.</li>
     <li>logs: 6 months.</li>
     <li>photos: 24 months after closing.</li>
     <li>ESG measurements: same retention as issues and tasks.</li>

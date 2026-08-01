@@ -111,6 +111,7 @@
 <ul>
     <li>Benutzerkonten: aktiv + 24 Monate.</li>
     <li>Issues und Aufgaben: Vertragslaufzeit + 36 Monate.</li>
+    <li>Unit-Checks: gleiche Aufbewahrung wie Issues und Aufgaben.</li>
     <li>Protokolle: 6 Monate.</li>
     <li>Fotos: 24 Monate nach Abschluss.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Issues und Aufgaben.</li>

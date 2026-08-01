@@ -111,6 +111,7 @@
 <ul>
     <li>comptes utilisateurs : actif + 24 mois.</li>
     <li>issues et tâches : durée du contrat + 36 mois.</li>
+    <li>contrôles d’unité : même durée de conservation que les issues et tâches.</li>
     <li>journaux : 6 mois.</li>
     <li>photos : 24 mois après clôture.</li>
     <li>mesures ESG : même durée de conservation que les issues et tâches.</li>

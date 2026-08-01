@@ -163,6 +163,7 @@
 <ul>
     <li>account utente: attivi + 24 mesi</li>
     <li>problematiche e attività: durata del contratto + 36 mesi</li>
+    <li>controlli unità: stesso periodo di conservazione di segnalazioni e attività (durata del contratto + 36 mesi).</li>
     <li>registri: 6 mesi</li>
     <li>eventi di onboarding per utente (per statistiche di onboarding): 6 mesi; i dati aggregati di onboarding senza dati personali possono essere conservati più a lungo</li>
     <li>media (foto): 24 mesi dopo la chiusura della relativa problematica o attività</li>

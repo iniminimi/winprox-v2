@@ -111,6 +111,7 @@
 <ul>
     <li>cuentas de usuario: activas + 24 meses.</li>
     <li>incidencias y tareas: duración del contrato + 36 meses.</li>
+    <li>comprobaciones de unidad: mismo plazo que incidencias y tareas.</li>
     <li>registros: 6 meses.</li>
     <li>fotos: 24 meses tras el cierre.</li>
     <li>mediciones ESG: mismo plazo que incidencias y tareas.</li>
