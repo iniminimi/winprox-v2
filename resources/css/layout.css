@@ -870,6 +870,12 @@
     gap: var(--wp-space-4, 1rem);
 }
 
+.wp-auth-card:has(.wp-auth-login--attention-focus) .wp-auth-top,
+.wp-auth-card:has(.wp-auth-login--attention-focus) .wp-auth-legal,
+.wp-auth-card:has(.wp-auth-login--attention-focus) .wp-auth-copyright {
+    visibility: hidden;
+}
+
 .wp-auth-tagline {
     display: block;
     margin-top: 0.375rem;
