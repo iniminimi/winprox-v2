@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Optionally link a checklist to the unit (templates under Teams, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
+                    "text": "Optionally link a checklist to the unit (templates under the Users → Teams page, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
                 },
                 {
                     "label": "Require contact details",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under Teams (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
+                    "text": "Create checklists under the Users → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Team translations",
@@ -1212,11 +1212,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under Teams (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
+                    "text": "Create checklists under the Users → Teams page (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK. After saving, WinProx automatically translates the name and items into the other languages (Ollama); editing the source language queues translations again."
                 },
                 {
                     "label": "Starters",
-                    "text": "Under Teams → Checklists you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
+                    "text": "Under the Users → Teams → Checklists section you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
                 },
                 {
                     "label": "OK and open tasks",

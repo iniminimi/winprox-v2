@@ -1,6 +1,6 @@
 {
     "title": "Contrôles unit",
-    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous Équipes. Activez d’abord les unit checks sur la catégorie et l’unité.",
+    "subtitle": "Historique des contrôles OK / Pas OK via QR. Gérez les listes sous la page Utilisateurs → Équipes. Activez d’abord les unit checks sur la catégorie et l’unité.",
     "list_title": "Contrôles récents",
     "empty": "Aucun contrôle unit pour le moment.",
     "worker_unknown": "Exécutant inconnu",

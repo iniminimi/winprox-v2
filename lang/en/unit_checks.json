@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under Teams. First enable unit checks on category and unit.",
+    "subtitle": "History of OK / Not OK checks via QR. Manage checklists under the Users → Teams page. First enable unit checks on category and unit.",
     "list_title": "Recent checks",
     "empty": "No unit checks yet.",
     "worker_unknown": "Unknown worker",

@@ -233,7 +233,7 @@
                 },
                 {
                     "label": "Checklist (controllo unità)",
-                    "text": "Collega opzionalmente una checklist all’unità (modelli in Team, condivisa o dei team della categoria). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
+                    "text": "Collega opzionalmente una checklist all’unità (modelli nella pagina Utenti → Team, condivisa o dei team della categoria). Nel Unit check del portale l’esecutore spunta ogni punto prima che OK venga salvato."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist in Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
+                    "text": "Crea checklist nella pagina Utenti → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
                 },
                 {
                     "label": "Traduzioni team",
@@ -1212,11 +1212,11 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist in Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
+                    "text": "Crea checklist nella pagina Utenti → Team (opzionalmente per team o condivise). Copia eventualmente un modello (pulizia, tecnica, security). Poi collegale per unità in Sedi → modifica unità. Solo checklist di team collegati alla categoria (o condivise) compaiono nel menu. I punti devono essere spuntati prima di OK. Dopo il salvataggio WinProx traduce automaticamente nome e punti nelle altre lingue (Ollama); modificare la lingua di origine rimette le traduzioni in coda."
                 },
                 {
                     "label": "Modelli",
-                    "text": "In Team → Checklist puoi copiare un modello (pulizia, tecnica, security) e poi adattarlo. Dopodiché collega la checklist per unità."
+                    "text": "Nella pagina Utenti → Team → Checklist puoi copiare un modello (pulizia, tecnica, security) e poi adattarlo. Dopodiché collega la checklist per unità."
                 },
                 {
                     "label": "OK e task aperti",

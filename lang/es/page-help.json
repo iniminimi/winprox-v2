@@ -233,7 +233,7 @@
                 },
                 {
                     "label": "Checklist (comprobación de unit)",
-                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en Equipos). En Unit check del portal el operario marca cada punto antes de guardar OK."
+                    "text": "Vincule opcionalmente una lista a la unidad (plantillas en la página Usuarios → Equipos, compartida o de los equipos de la categoría). En Unit check del portal el operario marca cada punto antes de guardar OK."
                 },
                 {
                     "label": "Datos de contacto obligatorios",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
+                    "text": "Cree listas en la página Usuarios → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Traducciones de equipo",
@@ -1212,11 +1212,11 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
+                    "text": "Cree listas en la página Usuarios → Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK. Tras guardar, WinProx traduce automáticamente el nombre y los puntos a los demás idiomas (Ollama); editar el idioma de origen vuelve a poner las traducciones en cola."
                 },
                 {
                     "label": "Plantillas",
-                    "text": "En Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
+                    "text": "En la página Usuarios → Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
                 },
                 {
                     "label": "OK y tareas abiertas",

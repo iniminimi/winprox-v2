@@ -233,7 +233,7 @@
                 },
                 {
                     "label": "Checklist (contrôle d'unité)",
-                    "text": "Associez éventuellement une liste à l’unité (modèles sous Équipes). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
+                    "text": "Associez éventuellement une liste à l’unité (modèles sous la page Utilisateurs → Équipes, partagée ou des équipes de la catégorie). Lors du Unit check sur le portail, l’exécutant coche chaque point avant l’enregistrement de OK."
                 },
                 {
                     "label": "Coordonnées obligatoires",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
+                    "text": "Créez des listes sous la page Utilisateurs → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -1212,11 +1212,11 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
+                    "text": "Créez des listes sous la page Utilisateurs → Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK. Après enregistrement, WinProx traduit automatiquement le nom et les points vers les autres langues (Ollama) ; modifier la langue source remet les traductions en file."
                 },
                 {
                     "label": "Modèles",
-                    "text": "Sous Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
+                    "text": "Sous la page Utilisateurs → Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
                 },
                 {
                     "label": "OK et tâches ouvertes",

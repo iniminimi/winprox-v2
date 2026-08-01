@@ -1,6 +1,6 @@
 {
     "title": "Unit-Checks",
-    "subtitle": "Verlauf von OK / Nicht OK Kontrollen per QR. Checklisten verwalten Sie unter Teams. Aktivieren Sie Unit-Checks zuerst an Kategorie und Unit.",
+    "subtitle": "Verlauf von OK / Nicht OK Kontrollen per QR. Checklisten verwalten Sie unter der Seite Benutzer → Teams. Aktivieren Sie Unit-Checks zuerst an Kategorie und Unit.",
     "list_title": "Aktuelle Checks",
     "empty": "Noch keine Unit-Checks.",
     "worker_unknown": "Unbekannter Ausführender",

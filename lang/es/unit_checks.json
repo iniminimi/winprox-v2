@@ -1,6 +1,6 @@
 {
     "title": "Chequeos de unit",
-    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en Equipos. Active primero los unit checks en categoría y unidad.",
+    "subtitle": "Historial de controles OK / No OK vía QR. Gestione las listas en la página Usuarios → Equipos. Active primero los unit checks en categoría y unidad.",
     "list_title": "Chequeos recientes",
     "empty": "Aún no hay chequeos de unit.",
     "worker_unknown": "Ejecutor desconocido",
