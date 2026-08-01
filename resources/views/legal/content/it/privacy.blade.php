@@ -51,6 +51,7 @@
     <li>descrizioni, stati e follow-up</li>
     <li>comunicazioni e cronologia all'interno della piattaforma</li>
     <li>foto e allegati aggiunti a problematiche o attività</li>
+    <li>controlli unità (OK/Non OK via QR unit da esecutori), se attivati su categoria e unit.</li>
 </ul>
 
 <p><strong>Lavoratori (senza accesso)</strong></p>
@@ -68,6 +69,11 @@
     <li>dati inviati volontariamente tramite un portale QR pubblico (come nome, indirizzo e-mail o descrizione)</li>
     <li>metadati tecnici necessari per la sicurezza e la prevenzione degli abusi</li>
 </ul>
+<p><strong>Controlli unità</strong></p>
+<p>
+    Se il cliente attiva i controlli unità su categoria e unit, gli esecutori possono registrare OK o Non OK via QR unit (dopo Clock Point), eventualmente con checklist e GPS. Non è una segnalazione: OK non crea issue. WinProx conserva risultato, timestamp, unit, coordinate GPS opzionali ed esecutore. Conservazione come per segnalazioni e task, salvo policy interna diversa.
+</p>
+
 
 <p><strong>ESG e conformità (modulo opzionale)</strong></p>
 <p>

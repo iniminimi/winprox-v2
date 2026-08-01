@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Which QR codes are there?",
-            "body": "Unit QR: reporters submit an issue; field workers (after Clock Point sign-in) complete open tasks on that unit. Team QR: overview of team tasks on site. Clock Point QR: field workers sign in and clock in/out. Site QR: general link to the site. Everything opens in the browser — no app.",
-            "summary": "Unit QR (report/tasks), team QR (team tasks), Clock Point QR (sign in/clock), site QR — all in the browser."
+            "body": "Unit QR: reporters submit issues; workers (after Clock Point sign-in) handle open tasks on that unit and can — when category and unit both allow unit checks — record OK/Not OK. Team QR: team task overview on site. Clock Point QR: workers sign in and clock in/out. Location QR: general link to the site. Everything opens in the browser — no app.",
+            "summary": "Unit QR (reports/tasks/unit check), team QR (team tasks), Clock Point QR (sign-in/clock), location QR — all in the browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "How does the reporter portal work?",
-            "intro": "After scanning the unit QR, a web page opens for that unit. Reporters report problems; approved issues and shared documents/announcements are visible. Field workers with team access can complete open tasks there.",
-            "summary": "Unit QR portal: issue (up to 4 photos), open issues after approval, documents, announcements, on-site tasks for field workers.",
+            "intro": "Scanning the unit QR opens a web page for that unit. Reporters describe problems; approved issues and shared documents/announcements are visible. Workers with team access can complete open tasks and — when enabled — run unit checks.",
+            "summary": "Unit QR portal: report, approved issues, documents, announcements, on-site tasks and optional unit check for workers.",
             "sections": [
                 {
                     "title": "New issue",
@@ -108,6 +108,10 @@
                 {
                     "title": "Tasks on site",
                     "text": "Field workers signed in via Clock Point and belonging to the team start and complete tasks via unit QR — the same flow as via team QR."
+                },
+                {
+                    "title": "Unit check (workers)",
+                    "text": "Workers only, after Clock Point sign-in, and only when the administrator enabled unit checks on category and unit. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK a normal report can follow."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "How do teams follow up on tasks?",
-            "body": "Tasks appear in Tasks, on the calendar, in the briefing, and on the team/unit QR. Field workers start and complete on site. Coordinators track status in admin. Recurring issues generate cycles with planned due dates.",
-            "summary": "Follow-up via Tasks, calendar, briefing, and QR; recurring cycles included."
+            "body": "Tasks appear in Tasks, on the calendar, in the briefing and on team/unit QR. Workers start and complete on site. Coordinators follow status in admin. Recurring issues generate cycles with planned due dates; recurring tasks show the Recurring pill.",
+            "summary": "Follow-up via Tasks, calendar, briefing and QR; recurring cycles with Recurring pill."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API and webhooks?",
-            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. This connects WinProx to other systems for issues, tasks, and ESG measurements. IoT Connect uses a separate gateway token for sensor ingest (also on Facility).",
-            "summary": "API tokens and webhooks under Settings (Corporate); HMAC-signed deliveries. IoT ingest via gateway token also on Facility."
+            "body": "On Corporate (or when API is enabled), manage API tokens and outgoing webhooks (HMAC-signed) under Settings. Connect WinProx to other systems for issues, tasks, unit checks (unit.check.recorded), ESG measurements and more. IoT Connect uses a separate gateway token for sensor ingest (also on Facility).",
+            "summary": "API tokens and webhooks under Settings (Corporate); issues, tasks, unit checks, ESG, etc.; HMAC deliveries. IoT ingest via gateway token also on Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "What is IoT Connect?",
             "body": "IoT Connect links sensor gateways to WinProx without WinProx selling hardware. Alarms (e.g. water leak, door open too long) automatically create an approved issue and task. On Corporate, sensor readings can also be stored as ESG measurements. Manage gateways, sensors and rules under IoT Connect; the gateway posts to POST /api/v1/iot/events with a gateway token (also on Facility, without full REST API).",
             "summary": "IoT Connect: sensor alarms → issues (Facility and Corporate); measurements → ESG (Corporate). Gateway-token ingest."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "What are unit checks?",
+            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by workers (after Clock Point). Enable on category and unit first (off by default). Optional checklists per unit. History and filters under Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
+            "summary": "OK/Not OK via unit QR (enable category + unit); optional checklists; OK does not create an issue; webhook unit.check.recorded."
         }
     }
 }

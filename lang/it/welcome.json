@@ -79,6 +79,7 @@
             "bullets": [
                 "Segnalazioni e attività",
                 "Sedi e unità",
+                "Controlli unità opzionali",
                 "ESG opzionale",
                 "Time opzionale"
             ]
@@ -107,6 +108,7 @@
                 "bullets": [
                     "Segnalazioni",
                     "Attività",
+                    "Controlli unità opzionali",
                     "Manutenzione",
                     "Sedi e unità"
                 ]

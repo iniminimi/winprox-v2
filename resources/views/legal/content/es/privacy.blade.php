@@ -51,6 +51,7 @@
     <li>descripciones, estados y seguimiento</li>
     <li>comunicación e historial dentro de la plataforma</li>
     <li>fotos y archivos adjuntos añadidos a incidencias o tareas</li>
+    <li>comprobaciones de unit (OK/No OK vía QR de la unit por ejecutores), si están activadas en categoría y unit.</li>
 </ul>
 
 <p><strong>Trabajadores (sin inicio de sesión)</strong></p>
@@ -68,6 +69,11 @@
     <li>datos enviados voluntariamente a través de un portal QR público (como nombre, dirección de correo electrónico o descripción)</li>
     <li>metadatos técnicos necesarios para la seguridad y la prevención de abusos</li>
 </ul>
+<p><strong>Comprobaciones de unit</strong></p>
+<p>
+    Si el cliente activa comprobaciones de unit en categoría y unit, los ejecutores pueden registrar OK o No OK vía el QR de la unit (tras Clock Point), opcionalmente con checklist y GPS. No es un aviso: OK no crea issue. WinProx guarda resultado, marca de tiempo, unit, coordenadas GPS opcionales y ejecutor. Retención igual que avisos y tareas, salvo política interna distinta.
+</p>
+
 
 <p><strong>ESG y cumplimiento (módulo opcional)</strong></p>
 <p>

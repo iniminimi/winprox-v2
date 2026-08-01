@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Optioneel unit checks per categorie én unit (OK/Niet OK op de unit-QR)."
             },
             {
                 "title": "Taken",
@@ -345,7 +345,7 @@
                     "**Instellen:** Instellingen → API → Webhooks (URL + welke events). Secret één keer tonen — bewaar die veilig.",
                     "**Bewijs van herkomst:** elk bericht heeft een HMAC-handtekening (controleerbaar met jouw secret).",
                     "**Betrouwbaarheid:** mislukt het? WinProx probeert opnieuw (met oplopende pauze). Leveringen zie je in een log.",
-                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop."
+                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd."
                 ],
                 "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie ERP of Planon, zodat daar onmiddellijk een werkorder kan worden bijgewerkt."
             }

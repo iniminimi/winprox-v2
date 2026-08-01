@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "¿Qué códigos QR hay?",
-            "body": "QR de unidad: los informantes envían una incidencia; los trabajadores (tras acceso Clock Point) completan tareas abiertas en esa unidad. QR de equipo: resumen de tareas del equipo in situ. QR Clock Point: los trabajadores inician sesión y fichan. QR de ubicación: enlace general al sitio. Todo se abre en el navegador — sin app.",
-            "summary": "QR unit (reportar/tareas), QR equipo (tareas equipo), QR Clock Point (registro/fichaje), QR sitio — todo en el navegador."
+            "body": "QR de unit: los avisadores crean avisos; los ejecutores (tras Clock Point) gestionan tareas abiertas y pueden — si categoría y unit permiten comprobaciones — registrar OK/No OK. QR de equipo: tareas del equipo en sitio. QR Clock Point: acceso y fichaje. QR de ubicación: enlace general. Todo en el navegador — sin app.",
+            "summary": "QR unit (avisos/tareas/comprobación de unit), QR equipo, QR Clock Point, QR ubicación — todo en el navegador."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "¿Cómo funciona el portal de reportadores?",
-            "intro": "Tras escanear el QR unit, se abre una página web para esa unit. Los reportadores comunican problemas; incidencias aprobadas y documentos/anuncios compartidos son visibles. Operarios con acceso de equipo pueden completar tareas abiertas allí.",
-            "summary": "Portal QR unit: incidencia (hasta 4 fotos), incidencias abiertas tras aprobación, documentos, anuncios, tareas en sitio para operarios.",
+            "intro": "Al escanear el QR de la unit se abre una página web. Los avisadores describen problemas; avisos aprobados, documentos y anuncios compartidos visibles. Ejecutores con acceso al equipo completan tareas abiertas y — si está activado — comprobaciones de unit.",
+            "summary": "Portal QR unit: aviso, avisos aprobados, documentos, anuncios, tareas en sitio y comprobación de unit opcional para ejecutores.",
             "sections": [
                 {
                     "title": "Nueva incidencia",
@@ -108,6 +108,10 @@
                 {
                     "title": "Tareas en sitio",
                     "text": "Operarios registrados vía Clock Point y del equipo inician y completan tareas vía QR unit — el mismo flujo que vía QR equipo."
+                },
+                {
+                    "title": "Comprobación de unit (ejecutores)",
+                    "text": "Solo ejecutores tras Clock Point, y solo si el administrador activó comprobaciones en categoría y unit. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso normal."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "¿Cómo siguen los equipos las tareas?",
-            "body": "Las tareas aparecen en Tareas, en el calendario, en el briefing y en el QR equipo/unit. Los operarios inician y completan en sitio. Los coordinadores siguen el estado en gestión. Las incidencias recurrentes generan ciclos con fechas de vencimiento planificadas.",
-            "summary": "Seguimiento vía Tareas, calendario, briefing y QR; ciclos recurrentes incluidos."
+            "body": "Las tareas aparecen en Tareas, calendario, briefing y QR de equipo/unit. Los ejecutores inician y completan en sitio. Los coordinadores siguen el estado en administración. Los avisos recurrentes generan ciclos con vencimientos planificados; las tareas recurrentes muestran la pastilla «Recurrente».",
+            "summary": "Seguimiento vía Tareas, calendario, briefing y QR; ciclos recurrentes con pastilla «Recurrente»."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "¿API y webhooks?",
-            "body": "En Corporate (o cuando la API está habilitada), gestione en Ajustes tokens API y webhooks salientes (firmados HMAC). Así conecta WinProx a otros sistemas para incidencias, tareas y mediciones ESG. IoT Connect usa un token de pasarela aparte para la ingesta de sensores (también en Facility).",
-            "summary": "Tokens API y webhooks en Ajustes (Corporate); entregas firmadas HMAC. Ingesta IoT vía token de pasarela también en Facility."
+            "body": "En Corporate (o con API activada), gestione tokens API y webhooks salientes (HMAC) en Ajustes. Conecte WinProx a otros sistemas para avisos, tareas, comprobaciones de unit (unit.check.recorded), mediciones ESG, etc. IoT Connect usa un token gateway separado (también en Facility).",
+            "summary": "Tokens API y webhooks en Ajustes (Corporate); avisos, tareas, comprobaciones de unit, ESG; entregas HMAC. Ingest IoT vía token gateway también en Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "¿Qué es IoT Connect?",
             "body": "IoT Connect conecta pasarelas de sensores a WinProx sin que WinProx venda hardware. Las alarmas (fuga de agua, puerta abierta demasiado tiempo) crean automáticamente una incidencia y tarea aprobadas. En Corporate, las lecturas también pueden guardarse como mediciones ESG. Gestione pasarelas, sensores y reglas en IoT Connect; la pasarela envía a POST /api/v1/iot/events con un token de pasarela (también en Facility, sin API REST completa).",
             "summary": "IoT Connect: alarmas de sensores → incidencias (Facility y Corporate); mediciones → ESG (Corporate). Ingesta con token de pasarela."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "¿Qué son las comprobaciones de unit?",
+            "body": "Comprobaciones de unit: confirmaciones OK/No OK rápidas en el QR de la unit por ejecutores (tras Clock Point). Active primero en categoría y unit (desactivado por defecto). Checklists opcionales por unit. Historial y filtros en Comprobaciones de unit; webhook unit.check.recorded para integraciones. Separado de avisos y mediciones ESG.",
+            "summary": "OK/No OK vía QR unit (categoría + unit); checklists opcionales; OK sin aviso; webhook unit.check.recorded."
         }
     }
 }

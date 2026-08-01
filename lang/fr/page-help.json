@@ -117,6 +117,10 @@
                 {
                     "label": "Ouvrir une tâche",
                     "text": "Cliquez sur une tâche pour le détail, le changement de statut et le lien vers le signalement."
+                },
+                {
+                    "label": "Récurrent",
+                    "text": "Filtrez les tâches récurrentes (pastille « Récurrent »). Elles proviennent de signalements récurrents avec une échéance planifiée par cycle."
                 }
             ],
             "status_note": "Les statuts sont souvent mis à jour automatiquement via le portail QR unité. Vous pouvez aussi les ajuster manuellement.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Aide — Détail de la tâche",
             "actions": [
+                {
+                    "label": "Récurrent",
+                    "text": "Si la tâche vient d'un signalement récurrent, vous voyez la pastille « Récurrent » et l'échéance planifiée de ce cycle. Chaque nouveau cycle crée automatiquement une nouvelle tâche."
+                },
                 {
                     "label": "Assigner une équipe",
                     "text": "Choisissez une équipe et enregistrez. Vous pouvez aussi modifier une assignation existante."
@@ -191,6 +199,10 @@
                     "text": "Activez Réservable sur une catégorie pour les ressources partagées avec créneau (salle, véhicule, clé, …). Activez ensuite Autoriser les réservations par unité (désactivé par défaut). Le QR de l’unité affiche alors la tuile Réserver. Les signalements de défaut restent via Signalement → tâche."
                 },
                 {
+                    "label": "Autoriser les contrôles d'unité",
+                    "text": "Activez Autoriser les contrôles d'unité sur une catégorie pour des rondes OK/Non OK rapides (sécurité, ménage, …). Puis activez par unité (désactivé par défaut). Les deux doivent être actifs avant que les exécutants voient la tuile Contrôle d'unité sur le QR. Distinct des mesures ESG."
+                },
+                {
                     "label": "Coordonnées obligatoires",
                     "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Autoriser les réservations",
                     "text": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité. Les autres unités de la même catégorie restent indépendantes."
+                },
+                {
+                    "label": "Autoriser les contrôles d'unité",
+                    "text": "Uniquement si la catégorie autorise les contrôles d'unité. Désactivé par défaut ; activez pour permettre OK/Non OK via le QR de l'unité."
+                },
+                {
+                    "label": "Checklist (contrôle d'unité)",
+                    "text": "Liez optionnellement une checklist à l'unité. Lors du contrôle d'unité sur le portail, l'exécutant coche chaque point avant d'enregistrer OK ou Non OK."
                 },
                 {
                     "label": "Coordonnées obligatoires",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "QR unité",
-                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous d'abord via le QR Clock Point ; puis scannez le QR unité pour démarrer ou terminer les tâches ouvertes sur cette unité."
+                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous d'abord via le QR Clock Point ; puis scannez le QR unité pour démarrer ou terminer les tâches ouvertes sur cette unité. Si les contrôles d'unité sont activés, les exécutants connectés peuvent aussi enregistrer OK/Non OK (checklist optionnelle)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -596,6 +616,10 @@
                 {
                     "label": "Signaler un problème",
                     "text": "Appuyez sur « Créer un signalement », décrivez le problème et ajoutez éventuellement jusqu’à quatre photos. Prénom, nom et e-mail sont facultatifs — sauf si l’administrateur a rendu les coordonnées obligatoires ; remplissez-les alors. Une tâche est créée pour l’équipe. Le signalement doit d’abord être approuvé avant d’apparaître sur le portail. Limites anti-spam : au plus un signalement toutes les 3 minutes et cinq toutes les 30 minutes pour cette unité (par appareil)."
+                },
+                {
+                    "label": "Contrôle d'unité",
+                    "text": "Réservé aux exécutants connectés via Clock Point, et seulement si catégorie et unité autorisent les contrôles. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK, un signalement peut suivre."
                 },
                 {
                     "label": "Réserver",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Aide — Contrôles unit",
             "actions": [
+                {
+                    "label": "Activer",
+                    "text": "Activez sur la catégorie, puis par unité (désactivé par défaut). Le contrôle d'unité n'apparaît alors sur le portail que pour les exécutants connectés."
+                },
+                {
+                    "label": "Checklists",
+                    "text": "Créez des checklists sous Contrôles d'unité → Checklists et attachez-les par unité via Sites. Chaque point doit être coché avant OK/Non OK."
+                },
+                {
+                    "label": "OK et tâches ouvertes",
+                    "text": "OK enregistre seulement le contrôle (pas de signalement). Non OK enregistre le contrôle ; l'exécutant peut ensuite créer un signalement classique. Les tâches ouvertes restent séparées sur le portail."
+                },
                 {
                     "label": "Qu’est-ce qu’un contrôle unit ?",
                     "text": "Une confirmation rapide via le QR unit : OK ou Pas OK, avec exécutant, horodatage et GPS optionnel. OK ne crée pas de signalement."

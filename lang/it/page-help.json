@@ -117,6 +117,10 @@
                 {
                     "label": "Apri attività",
                     "text": "Clicchi su un'attività per dettaglio, cambi di stato e il link alla segnalazione."
+                },
+                {
+                    "label": "Ricorrente",
+                    "text": "Filtra task ricorrenti (pill «Ricorrente»). Provengono da segnalazioni ricorrenti con scadenza pianificata per ciclo."
                 }
             ],
             "status_note": "Gli stati vengono spesso aggiornati automaticamente tramite il portale QR unità. Può anche modificarli manualmente.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Aiuto — Dettaglio attività",
             "actions": [
+                {
+                    "label": "Ricorrente",
+                    "text": "Se il task proviene da una segnalazione ricorrente, vedi la pill «Ricorrente» e la scadenza pianificata di questo ciclo. Ogni nuovo ciclo crea automaticamente un nuovo task."
+                },
                 {
                     "label": "Assegna team",
                     "text": "Scelga un team operativo e salvi. Può anche cambiare un'assegnazione esistente."
@@ -191,6 +199,10 @@
                     "text": "Attivi Prenotabile su una categoria per risorse condivise con fascia oraria (sala, veicolo, chiave, …). Poi attivi Consenti prenotazioni per unità (disattivo di default). Il QR dell’unità mostra allora la tessera Prenota. Le segnalazioni di guasto restano via Segnalazione → compito."
                 },
                 {
+                    "label": "Consenti controlli unità",
+                    "text": "Attiva Consenti controlli unità su una categoria per rapide ronde OK/Non OK (sicurezza, pulizie, …). Poi attiva per unit (disattivo di default). Entrambi devono essere attivi prima che gli esecutori vedano la tile Controllo unità sul QR. Separato dalle misurazioni ESG."
+                },
+                {
                     "label": "Dati di contatto obbligatori",
                     "text": "Attivi se i segnalanti anonimi tramite QR dell’unità devono indicare nome, cognome e e-mail. Disattivo di default. Vale solo se attivato anche sull’unità. Non vale per operatori sul campo già autenticati — sono già identificati."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Consenti prenotazioni",
                     "text": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attivi per consentire prenotazioni su questa unità. Le altre unità della stessa categoria restano indipendenti."
+                },
+                {
+                    "label": "Consenti controlli unità",
+                    "text": "Rilevante solo se la categoria consente i controlli unità. Disattivo di default; attiva per permettere OK/Non OK via QR dell'unità."
+                },
+                {
+                    "label": "Checklist (controllo unità)",
+                    "text": "Collega opzionalmente una checklist all'unità. Nel controllo unità sul portale l'esecutore spunta ogni punto prima di salvare OK o Non OK."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "QR unità",
-                    "text": "Applicato a una macchina, stanza o asset. I cittadini possono segnalare problemi qui. Come lavoratore, acceda prima tramite il QR Clock Point; poi scansioni il QR unità per avviare o completare attività aperte su quell'unità."
+                    "text": "Applicato a una macchina, stanza o asset. I cittadini possono segnalare problemi qui. Come lavoratore, acceda prima tramite il QR Clock Point; poi scansioni il QR unità per avviare o completare attività aperte su quell'unità. Con i controlli unità attivi, gli esecutori con accesso possono anche registrare OK/Non OK (checklist opzionale)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -596,6 +616,10 @@
                 {
                     "label": "Segnala problema",
                     "text": "Tocchi «Crea segnalazione», descriva il problema e aggiunga facoltativamente fino a quattro foto. Nome, cognome e e-mail sono facoltativi — salvo che l’amministratore abbia reso obbligatori i dati di contatto; li compili allora. Viene creato un compito per il team. La segnalazione deve essere approvata prima di apparire sul portale. Limiti anti-spam: al massimo una segnalazione ogni 3 minuti e cinque ogni 30 minuti per questa unità (per dispositivo)."
+                },
+                {
+                    "label": "Controllo unità",
+                    "text": "Solo esecutori dopo accesso Clock Point, e solo se categoria e unit consentono i controlli. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione."
                 },
                 {
                     "label": "Prenota",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Aiuto — Controlli unit",
             "actions": [
+                {
+                    "label": "Abilitare",
+                    "text": "Attiva sulla categoria e poi per unit (disattivo di default). Solo allora Controllo unità appare sul portale per esecutori con accesso."
+                },
+                {
+                    "label": "Checklist",
+                    "text": "Crea checklist in Controlli unità → Checklist e collegale per unit in Sedi. I punti vanno spuntati prima di OK/Non OK."
+                },
+                {
+                    "label": "OK e task aperti",
+                    "text": "OK salva solo il controllo (nessuna segnalazione). Non OK salva il controllo; poi l'esecutore può creare una segnalazione normale. I task aperti restano separati sul portale."
+                },
                 {
                     "label": "Cos’è un controllo unit?",
                     "text": "Una conferma rapida sul QR della unit: OK o Non OK, con esecutore, data/ora e GPS opzionale. OK non crea una segnalazione."

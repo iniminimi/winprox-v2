@@ -1,6 +1,6 @@
 {
     "title": "Chequeos de unit",
-    "subtitle": "Historial de chequeos OK / No OK vía QR.",
+    "subtitle": "Historial de comprobaciones OK / No OK vía QR. Active primero comprobaciones en categoría y unit.",
     "list_title": "Chequeos recientes",
     "empty": "Aún no hay chequeos de unit.",
     "worker_unknown": "Ejecutor desconocido",
@@ -23,7 +23,7 @@
     },
     "lists": {
         "title": "Listas de comprobación",
-        "lead": "Crea listas y asígnalas a units en Ubicaciones. Aparecen en el chequeo del QR.",
+        "lead": "Cree checklists y asígnelas a units en Ubicaciones (cuando comprobaciones estén activas en categoría y unit). Aparecen como marcas en el QR de la unit en Comprobación de unit.",
         "create": "Añadir lista",
         "create_title": "Añadir lista",
         "edit_title": "Editar lista",

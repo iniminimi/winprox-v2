@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welke QR-codes zijn er?",
-            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken op die unit af. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan en klokken in/uit. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
-            "summary": "Unit-QR (melden/taken), team-QR (teamtaken), Clock Point-QR (aanmelden/klokken), locatie-QR — allemaal in de browser."
+            "body": "Unit-QR: melders doen een melding; uitvoerders (na Clock Point-aanmelding) handelen open taken af en kunnen — als categorie én unit Unit checks toestaan — OK/Niet OK registreren. Team-QR: overzicht van teamtaken op locatie. Clock Point-QR: uitvoerders melden zich aan en klokken in/uit. Locatie-QR: algemene link naar de locatie. Alles opent in de browser — zonder app.",
+            "summary": "Unit-QR (melden/taken/unit check), team-QR (teamtaken), Clock Point-QR (aanmelden/klokken), locatie-QR — allemaal in de browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Hoe werkt het meldersportaal?",
-            "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen er open taken afhandelen.",
-            "summary": "Unit-QR-portaal: melding (tot 4 foto's), open meldingen na goedkeuring, documenten, mededelingen, taken op locatie voor uitvoerders.",
+            "intro": "Na het scannen van de unit-QR opent een webpagina voor die unit. Melders geven problemen door; goedgekeurde meldingen en gedeelde documenten/mededelingen zijn zichtbaar. Uitvoerders met teamtoegang kunnen open taken afhandelen en — wanneer ingeschakeld — unit checks uitvoeren.",
+            "summary": "Unit-QR-portaal: melding, open meldingen na goedkeuring, documenten, mededelingen, taken en optionele unit check voor uitvoerders.",
             "sections": [
                 {
                     "title": "Nieuwe melding",
@@ -108,6 +108,10 @@
                 {
                     "title": "Taken op locatie",
                     "text": "Uitvoerders die via Clock Point zijn aangemeld en bij het team horen, starten en ronden taken af via unit-QR — dezelfde flow als via team-QR."
+                },
+                {
+                    "title": "Unit check (uitvoerders)",
+                    "text": "Alleen voor uitvoerders na Clock Point-aanmelding, en alleen als de beheerder Unit checks toestaat op categorie én unit. Registreer OK of Niet OK, eventueel met checklist. OK maakt geen melding; bij Niet OK kan daarna een gewone melding volgen."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "Hoe volgen teams taken op?",
-            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data.",
-            "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli inbegrepen."
+            "body": "Taken verschijnen in Taken, op de kalender, in de briefing en op de team-/unit-QR. Uitvoerders starten en ronden af op locatie. Coördinatoren volgen status in het beheer. Terugkerende meldingen genereren cycli met geplande due-data; terugkerende taken tonen de pill «Terugkerend».",
+            "summary": "Opvolging via Taken, kalender, briefing en QR; terugkerende cycli met pill «Terugkerend»."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API en webhooks?",
-            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken en ESG-metingen. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (ook op Facility).",
-            "summary": "API-tokens en webhooks onder Instellingen (Corporate); HMAC-ondertekende leveringen. IoT-ingest via gateway-token ook op Facility."
+            "body": "Op Corporate (of wanneer API is vrijgegeven) beheert u onder Instellingen API-tokens en uitgaande webhooks (HMAC-ondertekend). Zo koppelt u WinProx aan andere systemen voor meldingen, taken, unit checks (unit.check.recorded), ESG-metingen en meer. IoT Connect gebruikt een apart gateway-token voor sensor-ingest (ook op Facility).",
+            "summary": "API-tokens en webhooks onder Instellingen (Corporate); o.a. meldingen, taken, unit checks, ESG; HMAC-leveringen. IoT-ingest via gateway-token ook op Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "Wat is IoT Connect?",
             "body": "IoT Connect koppelt sensorgateways aan WinProx zonder dat WinProx zelf hardware verkoopt. Alarmen (bv. waterlek, deur te lang open) maken automatisch een goedgekeurde melding en taak aan. Op Corporate kunnen sensor-metingen ook als ESG-metingen worden bewaard. Beheer gateways, sensoren en regels onder IoT Connect; de gateway stuurt events naar POST /api/v1/iot/events met een gateway-token (ook op Facility, zonder volledige REST API).",
             "summary": "IoT Connect: sensor-alarmen → meldingen (Facility en Corporate); metingen → ESG (Corporate). Gateway-token ingest."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "Wat zijn unit checks?",
+            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists per unit. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
+            "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists optioneel; geen melding bij OK; webhook unit.check.recorded."
         }
     }
 }

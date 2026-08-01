@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, documents and announcements on the portal."
+                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, documents and announcements on the portal. Optional unit checks per category and unit (OK/Not OK on the unit QR)."
             },
             {
                 "title": "Tasks",
@@ -345,7 +345,7 @@
                     "**Setup:** Settings → API → Webhooks (URL + which events). The secret is shown once — store it safely.",
                     "**Proof of origin:** each message has an HMAC signature (verifiable with your secret).",
                     "**Reliability:** if delivery fails, WinProx retries (with increasing delay). Deliveries appear in a log.",
-                    "**Other events include:** issue created / approved / status changed · task created / started / completed · Time · GPS · ESG · reservations · test button."
+                    "**Other events include:** issue created / approved / status changed · task created / started / completed · Time · GPS · ESG · reservations · test button · unit check recorded."
                 ],
                 "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your ERP or Planon so a work order can be updated immediately."
             }

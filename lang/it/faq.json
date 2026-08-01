@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quali codici QR ci sono?",
-            "body": "QR unità: i segnalatori inviano una segnalazione; i lavoratori (dopo accesso Clock Point) completano attività aperte su quell'unità. QR team: panoramica delle attività del team sul posto. QR Clock Point: i lavoratori accedono e timbrano. QR sede: link generale alla sede. Tutto si apre nel browser — senza app.",
-            "summary": "QR unit (segnalare/task), QR team (task team), QR Clock Point (registrazione/timbratura), QR sede — tutto nel browser."
+            "body": "QR unit: i segnalatori creano segnalazioni; gli esecutori (dopo Clock Point) gestiscono task aperti e possono — se categoria e unit consentono controlli — registrare OK/Non OK. QR team: task del team in sito. QR Clock Point: accesso e timbratura. QR sede: link generale. Tutto nel browser — senza app.",
+            "summary": "QR unit (segnalazioni/task/controllo unità), QR team, QR Clock Point, QR sede — tutto nel browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Come funziona il portale segnalatori?",
-            "intro": "Dopo la scansione del QR unit si apre una pagina web per quella unit. I segnalatori comunicano problemi; segnalazioni approvate e documenti/comunicazioni condivisi sono visibili. Gli esecutori con accesso team possono completare task aperti lì.",
-            "summary": "Portale QR unit: segnalazione (fino a 4 foto), segnalazioni aperte dopo approvazione, documenti, comunicazioni, task sul posto per esecutori.",
+            "intro": "La scansione del QR unit apre una pagina web per quell'unità. I segnalatori descrivono i problemi; segnalazioni approvate, documenti e avvisi condivisi visibili. Gli esecutori con accesso team completano task aperti e — se attivato — controlli unità.",
+            "summary": "Portale QR unit: segnalazione, segnalazioni approvate, documenti, avvisi, task in sito e controllo unità opzionale per esecutori.",
             "sections": [
                 {
                     "title": "Nuova segnalazione",
@@ -108,6 +108,10 @@
                 {
                     "title": "Task sul posto",
                     "text": "Gli esecutori registrati via Clock Point e del team avviano e completano task via QR unit — lo stesso flusso del QR team."
+                },
+                {
+                    "title": "Controllo unità (esecutori)",
+                    "text": "Solo esecutori dopo Clock Point, e solo se l'amministratore ha attivato i controlli su categoria e unit. Registra OK o Non OK, eventualmente con checklist. OK non crea segnalazione; dopo Non OK può seguire una segnalazione normale."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "Come seguono i team i task?",
-            "body": "I task compaiono in Task, nel calendario, nel briefing e sul QR team/unit. Gli esecutori avviano e completano sul posto. I coordinatori seguono lo stato in gestione. Le segnalazioni ricorrenti generano cicli con scadenze pianificate.",
-            "summary": "Follow-up via Task, calendario, briefing e QR; cicli ricorrenti inclusi."
+            "body": "I task compaiono in Task, calendario, briefing e QR team/unit. Gli esecutori avviano e completano in sito. I coordinatori seguono lo stato in amministrazione. Le segnalazioni ricorrenti generano cicli con scadenze pianificate; i task ricorrenti mostrano la pill «Ricorrente».",
+            "summary": "Follow-up via Task, calendario, briefing e QR; cicli ricorrenti con pill «Ricorrente»."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API e webhook?",
-            "body": "Su Corporate (o quando l'API è abilitata), gestite in Impostazioni token API e webhook in uscita (firmati HMAC). Così collegate WinProx ad altri sistemi per segnalazioni, task e misure ESG. IoT Connect usa un token gateway separato per l'ingest sensori (anche su Facility).",
-            "summary": "Token API e webhook in Impostazioni (Corporate); consegne firmate HMAC. Ingest IoT via token gateway anche su Facility."
+            "body": "Su Corporate (o con API attiva), gestite token API e webhook in uscita (HMAC) in Impostazioni. Collegate WinProx ad altri sistemi per segnalazioni, task, controlli unità (unit.check.recorded), misurazioni ESG, ecc. IoT Connect usa un token gateway separato (anche su Facility).",
+            "summary": "Token API e webhook in Impostazioni (Corporate); segnalazioni, task, controlli unità, ESG; consegne HMAC. Ingest IoT via token gateway anche su Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "Cos’è IoT Connect?",
             "body": "IoT Connect collega gateway di sensori a WinProx senza che WinProx venda hardware. Gli allarmi (perdita d’acqua, porta aperta troppo a lungo) creano automaticamente una segnalazione e un task approvati. Su Corporate le letture possono anche essere salvate come misurazioni ESG. Gestisci gateway, sensori e regole in IoT Connect; il gateway invia a POST /api/v1/iot/events con un token gateway (anche su Facility, senza API REST completa).",
             "summary": "IoT Connect: allarmi sensori → segnalazioni (Facility e Corporate); misure → ESG (Corporate). Ingest con token gateway."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "Cosa sono i controlli unità?",
+            "body": "Controlli unità: rapide conferme OK/Non OK sul QR unit da esecutori (dopo Clock Point). Abilitare prima su categoria e unit (disattivo di default). Checklist opzionali per unit. Storico e filtri in Controlli unità; webhook unit.check.recorded per integrazioni. Separati da segnalazioni e misurazioni ESG.",
+            "summary": "OK/Non OK via QR unit (categoria + unit); checklist opzionali; OK senza segnalazione; webhook unit.check.recorded."
         }
     }
 }

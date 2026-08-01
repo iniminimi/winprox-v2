@@ -117,6 +117,10 @@
                 {
                     "label": "Aufgabe öffnen",
                     "text": "Klicken Sie auf eine Aufgabe für Details, Statusänderung und Verknüpfung zur Meldung."
+                },
+                {
+                    "label": "Wiederkehrend",
+                    "text": "Filtern Sie wiederkehrende Aufgaben (Pill «Wiederkehrend»). Diese stammen aus wiederkehrenden Meldungen mit geplantem Fälligkeitsdatum pro Zyklus."
                 }
             ],
             "status_note": "Status werden oft automatisch über das Unit-QR-Portal aktualisiert. Sie können sie auch manuell anpassen.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Hilfe — Aufgabendetail",
             "actions": [
+                {
+                    "label": "Wiederkehrend",
+                    "text": "Stammt die Aufgabe aus einer wiederkehrenden Meldung, sehen Sie die Pill «Wiederkehrend» und das geplante Fälligkeitsdatum dieses Zyklus. Jeder neue Zyklus erzeugt automatisch eine neue Aufgabe."
+                },
                 {
                     "label": "Team zuweisen",
                     "text": "Wählen Sie ein Team und speichern. So ändern Sie auch eine bestehende Zuweisung."
@@ -191,6 +199,10 @@
                     "text": "Aktivieren Sie Reservierbar an einer Kategorie für teilbare Ressourcen mit Zeitslot (Raum, Fahrzeug, Schlüssel, …). Schalten Sie danach pro Unit Reservierungen erlauben ein (standardmäßig aus). Der Unit-QR zeigt dann die Kachel Reservieren. Störungsmeldungen bleiben über Meldung → Aufgabe."
                 },
                 {
+                    "label": "Unit-Checks erlauben",
+                    "text": "Aktivieren Sie Unit-Checks erlauben an einer Kategorie für schnelle OK/Nicht-OK-Runden (Sicherheit, Reinigung, …). Schalten Sie danach pro Unit Unit-Checks erlauben ein (standardmäßig aus). Beides muss an sein, bevor Ausführer auf dem Unit-QR die Kachel Unit-Check sehen. Getrennt von ESG-Messungen."
+                },
+                {
                     "label": "Kontaktdaten Pflicht",
                     "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Reservierungen erlauben",
                     "text": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben. Andere Units derselben Kategorie bleiben unabhängig."
+                },
+                {
+                    "label": "Unit-Checks erlauben",
+                    "text": "Nur relevant, wenn die Kategorie Unit-Checks erlaubt. Standardmäßig aus; einschalten, damit Ausführer OK/Nicht OK über den Unit-QR erfassen können."
+                },
+                {
+                    "label": "Checkliste (Unit-Check)",
+                    "text": "Optional eine Checkliste an die Unit koppeln. Beim Unit-Check im Portal hakt der Ausführer jeden Punkt ab, bevor OK oder Nicht OK gespeichert wird."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "Unit-QR",
-                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Ausführender melden Sie sich zuerst über die Clock Point QR an; danach scannen Sie die Unit-QR, um offene Aufgaben an dieser Unit zu starten oder abzuschließen."
+                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Ausführender melden Sie sich zuerst über die Clock Point QR an; danach scannen Sie die Unit-QR, um offene Aufgaben an dieser Unit zu starten oder abzuschließen. Sind Unit-Checks aktiv, können angemeldete Ausführer auch OK/Nicht OK erfassen (optional mit Checkliste)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -596,6 +616,10 @@
                 {
                     "label": "Meldung erstellen",
                     "text": "Tippen Sie auf „Meldung erstellen“, beschreiben Sie das Problem und fügen Sie optional bis zu vier Fotos hinzu. Vorname, Name und E-Mail sind optional — außer die Verwaltung hat Kontaktdaten zur Pflicht gemacht; füllen Sie sie dann aus. Anschließend wird eine Aufgabe für das Team erstellt. Die Meldung muss erst freigegeben werden, bevor sie im Portal sichtbar ist. Gegen Spam gelten Limits: höchstens eine Meldung alle 3 Minuten und fünf alle 30 Minuten für diese Unit (pro Gerät)."
+                },
+                {
+                    "label": "Unit-Check",
+                    "text": "Nur für Ausführer nach Clock-Point-Anmeldung und nur wenn Kategorie und Unit Unit-Checks erlauben. OK oder Nicht OK erfassen, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine Meldung folgen."
                 },
                 {
                     "label": "Reservieren",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Hilfe — Unit-Checks",
             "actions": [
+                {
+                    "label": "Aktivieren",
+                    "text": "Unit-Checks erlauben an der Kategorie und danach pro Unit (standardmäßig aus). Erst dann erscheint Unit-Check im Portal für angemeldete Ausführer."
+                },
+                {
+                    "label": "Checklisten",
+                    "text": "Checklisten unter Unit-Checks → Checklisten anlegen und pro Unit unter Standorte zuweisen. Punkte müssen vor OK/Nicht OK abgehakt werden."
+                },
+                {
+                    "label": "OK und offene Aufgaben",
+                    "text": "OK speichert nur den Check (keine Meldung). Nicht OK speichert den Check; danach kann der Ausführer eine normale Meldung erstellen. Offene Aufgaben bleiben separat im Portal."
+                },
                 {
                     "label": "Was ist ein Unit-Check?",
                     "text": "Eine schnelle Bestätigung am Unit-QR: OK oder Nicht OK, mit Ausführendem, Zeitstempel und optionalem GPS. OK erzeugt keine Meldung."

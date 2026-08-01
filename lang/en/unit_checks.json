@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "History of OK / Not OK checks via QR.",
+    "subtitle": "History of OK / Not OK checks via QR. Enable unit checks on category and unit first.",
     "list_title": "Recent checks",
     "empty": "No unit checks yet.",
     "worker_unknown": "Unknown worker",
@@ -23,7 +23,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Create checklists and attach them to units under Locations. They appear as ticks on the unit QR Unit check.",
+        "lead": "Create checklists and attach them to units under Locations (after unit checks are on for category and unit). They appear as ticks on the unit QR Unit check.",
         "create": "Add checklist",
         "create_title": "Add checklist",
         "edit_title": "Edit checklist",

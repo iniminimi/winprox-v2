@@ -29,6 +29,7 @@
 
 <ul>
     <li>beheer van meldingen (issues) en taken.</li>
+    <li>registratie van unit checks (OK/Niet OK via unit-QR), indien ingeschakeld op categorie en unit.</li>
     <li>beheer van gebruikers en interne teams.</li>
     <li>beheer van uitvoerders (zonder login) en toewijzing aan taken.</li>
     <li>beheer van locaties en units.</li>
@@ -44,6 +45,7 @@
     <li>identificatiegegevens (naam, e-mailadres, telefoonnummer indien ingevoerd).</li>
     <li>locatie- en unitgegevens (adressen, locatiedetails).</li>
     <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen).</li>
+    <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
     <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld.</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>

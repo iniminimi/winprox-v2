@@ -23,6 +23,14 @@ return [
             'body_key' => 'faq.items.reservations.summary',
         ],
         [
+            'patterns' => [
+                'unit check', 'unit-check', 'unit checks', 'unitcheck',
+                'ok/niet ok', 'ok/nicht ok', 'ok/not ok', 'ok/non ok', 'ok/no ok',
+                'checklist', 'checklists', 'controle unit', 'unit-Check', 'Unit check',
+            ],
+            'body_key' => 'faq.items.unit_checks.summary',
+        ],
+        [
             'patterns' => ['melding', 'issue', 'report', 'signalement', 'inciden'],
             'body_key' => 'faq.items.how_it_works.summary',
         ],

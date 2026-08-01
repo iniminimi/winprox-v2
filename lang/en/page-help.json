@@ -117,6 +117,10 @@
                 {
                     "label": "Open task",
                     "text": "Click a task for detail, status changes and the link to the issue."
+                },
+                {
+                    "label": "Recurring",
+                    "text": "Filter recurring tasks (Recurring pill). These come from recurring issues with a planned due date per cycle."
                 }
             ],
             "status_note": "Statuses are often updated automatically via the unit QR portal. You can also adjust them manually.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Help — Task detail",
             "actions": [
+                {
+                    "label": "Recurring",
+                    "text": "If the task comes from a recurring issue, you see the Recurring pill and this cycle's planned due date. Each new cycle automatically creates a new task."
+                },
                 {
                     "label": "Assign team",
                     "text": "Choose an operational team and save. You can also change an existing assignment."
@@ -191,6 +199,10 @@
                     "text": "Turn on Reservable on a category for shared resources with a time slot (meeting room, vehicle, key, …). Then turn on Allow reservations per unit (off by default). The unit QR then shows the Reserve tile. Defect reports remain via Issue → task."
                 },
                 {
+                    "label": "Allow unit checks",
+                    "text": "Turn on Allow unit checks on a category for quick OK/Not OK rounds (security, cleaning, …). Then turn on Allow unit checks per unit (off by default). Both must be on before workers see the Unit check tile on the unit QR. Separate from ESG measurements."
+                },
+                {
                     "label": "Require contact details",
                     "text": "Turn this on if anonymous reporters via the unit QR must enter first name, last name and email. Off by default. Only takes effect when also enabled on the unit. Does not apply to signed-in field workers — they are already identified."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Allow reservations",
                     "text": "Only relevant if the category is Reservable. Off by default; turn on to allow reservations for this unit. Other units in the same category stay independent."
+                },
+                {
+                    "label": "Allow unit checks",
+                    "text": "Only relevant when the category allows unit checks. Off by default; turn on so workers can record OK/Not OK via the unit QR."
+                },
+                {
+                    "label": "Checklist (unit check)",
+                    "text": "Optionally link a checklist to the unit. On Unit check in the portal the worker ticks each item before OK or Not OK is saved."
                 },
                 {
                     "label": "Require contact details",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "Unit QR",
-                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in first via the Clock Point QR; then scan the unit QR to start or complete open tasks on that unit."
+                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in first via the Clock Point QR; then scan the unit QR to start or complete open tasks on that unit. When unit checks are enabled, signed-in workers can also record OK/Not OK (with an optional checklist)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -596,6 +616,10 @@
                 {
                     "label": "Report issue",
                     "text": "Tap \"Create report\", describe the problem and optionally add up to four photos. First name, last name and email are optional — unless the administrator made contact details required; then fill them in. A task is then created for the team. The report must be approved before it appears on the portal. Anti-spam limits apply: at most one report per 3 minutes and five reports per 30 minutes for this unit (per device)."
+                },
+                {
+                    "label": "Unit check",
+                    "text": "Workers only, after Clock Point sign-in, and only when category and unit both allow unit checks. Record OK or Not OK, optionally with a checklist. OK does not create an issue; after Not OK the worker can create a report."
                 },
                 {
                     "label": "Reserve",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Help — Unit checks",
             "actions": [
+                {
+                    "label": "Enable",
+                    "text": "Turn on Allow unit checks on the category, then per unit (off by default). Only then does Unit check appear on the portal for signed-in workers."
+                },
+                {
+                    "label": "Checklists",
+                    "text": "Create checklists under Unit checks → Checklists and attach them per unit under Locations. Items must be ticked before OK/Not OK."
+                },
+                {
+                    "label": "OK and open tasks",
+                    "text": "OK only stores the check (no issue). Not OK stores the check; the worker can then create a normal report. Open tasks remain separate on the portal."
+                },
                 {
                     "label": "What is a unit check?",
                     "text": "A quick confirmation on the unit QR: OK or Not OK, with worker, timestamp and optional GPS. OK does not create an issue."

@@ -29,6 +29,7 @@
 
 <ul>
     <li>Verwaltung von Issues und Aufgaben.</li>
+    <li>Erfassung von Unit-Checks (OK/Nicht OK über Unit-QR), sofern für Kategorie und Unit aktiviert.</li>
     <li>Verwaltung von Benutzern und internen Teams.</li>
     <li>Verwaltung von Ausführenden (ohne Login) und Zuweisung zu Aufgaben.</li>
     <li>Verwaltung von Standorten und Units.</li>
@@ -44,6 +45,7 @@
     <li>Identifikationsdaten (Name, E-Mail-Adresse, Telefonnummer, soweit eingegeben).</li>
     <li>Standort- und Unit-Daten (Adressen, Standortdetails).</li>
     <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen).</li>
+    <li>Unit-Check-Daten (Ergebnis, Zeitpunkt, Unit, optional GPS, Ausführender).</li>
     <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben.</li>
     <li>Zugangs- und Sitzungsdaten.</li>
     <li>Abonnement- und Zugriffsmetadaten.</li>

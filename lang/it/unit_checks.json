@@ -1,6 +1,6 @@
 {
     "title": "Controlli unit",
-    "subtitle": "Cronologia dei controlli OK / Non OK via QR.",
+    "subtitle": "Storico controlli OK / Non OK via QR. Abilitare prima i controlli su categoria e unit.",
     "list_title": "Controlli recenti",
     "empty": "Nessun controllo unit ancora.",
     "worker_unknown": "Esecutore sconosciuto",
@@ -23,7 +23,7 @@
     },
     "lists": {
         "title": "Checklist",
-        "lead": "Crea checklist e collegale alle unit in Sedi. Compaino sul controllo QR.",
+        "lead": "Crea checklist e collegale alle unit in Sedi (dopo aver attivato i controlli su categoria e unit). Compaiono come spunte sul QR unit in Controllo unità.",
         "create": "Aggiungi checklist",
         "create_title": "Aggiungi checklist",
         "edit_title": "Modifica checklist",

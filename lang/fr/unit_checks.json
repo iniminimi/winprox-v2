@@ -1,6 +1,6 @@
 {
     "title": "Contrôles unit",
-    "subtitle": "Historique des contrôles OK / Pas OK via QR.",
+    "subtitle": "Historique des contrôles OK / Non OK via QR. Activez d'abord les contrôles sur catégorie et unité.",
     "list_title": "Contrôles récents",
     "empty": "Aucun contrôle unit pour le moment.",
     "worker_unknown": "Exécutant inconnu",
@@ -23,7 +23,7 @@
     },
     "lists": {
         "title": "Listes de contrôle",
-        "lead": "Créez des listes et liez-les aux units sous Sites. Elles apparaissent sur le QR unit.",
+        "lead": "Créez des checklists et liez-les aux unités via Sites (une fois les contrôles activés sur catégorie et unité). Les cases apparaissent sur le QR unité lors du contrôle d'unité.",
         "create": "Ajouter une liste",
         "create_title": "Ajouter une liste",
         "edit_title": "Modifier la liste",

@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Welche QR-Codes gibt es?",
-            "body": "Unit-QR: Melder erfassen eine Meldung; Ausführende (nach Clock-Point-Anmeldung) erledigen offene Aufgaben an dieser Unit. Team-QR: Übersicht der Teamaufgaben vor Ort. Clock Point-QR: Ausführende melden sich an und stempeln ein/aus. Standort-QR: allgemeiner Link zum Standort. Alles öffnet im Browser — ohne App.",
-            "summary": "Unit-QR (melden/Aufgaben), Team-QR (Teamaufgaben), Clock-Point-QR (Anmeldung/Stempeln), Standort-QR — alles im Browser."
+            "body": "Unit-QR: Melder erstellen Meldungen; Ausführer (nach Clock-Point-Anmeldung) bearbeiten offene Aufgaben und können — wenn Kategorie und Unit Unit-Checks erlauben — OK/Nicht OK erfassen. Team-QR: Teamaufgaben-Übersicht vor Ort. Clock-Point-QR: Anmeldung und Ein-/Ausstempeln. Standort-QR: allgemeiner Link zum Standort. Alles im Browser — ohne App.",
+            "summary": "Unit-QR (Meldungen/Aufgaben/Unit-Check), Team-QR, Clock-Point-QR, Standort-QR — alles im Browser."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Wie funktioniert das Melderportal?",
-            "intro": "Nach dem Scannen des Unit-QR öffnet sich eine Webseite für diese Unit. Melder melden Probleme; freigegebene Meldungen und geteilte Dokumente/Mitteilungen sind sichtbar. Ausführende mit Teamzugang können dort offene Aufgaben erledigen.",
-            "summary": "Unit-QR-Portal: Meldung (bis zu 4 Fotos), offene Meldungen nach Freigabe, Dokumente, Mitteilungen, Aufgaben vor Ort für Ausführende.",
+            "intro": "Nach dem Scannen des Unit-QR öffnet sich eine Webseite für diese Unit. Melder beschreiben Probleme; freigegebene Meldungen sowie Dokumente/Mitteilungen sind sichtbar. Ausführer mit Teamzugang bearbeiten offene Aufgaben und — wenn aktiviert — Unit-Checks.",
+            "summary": "Unit-QR-Portal: Meldung, freigegebene Meldungen, Dokumente, Mitteilungen, Aufgaben vor Ort und optional Unit-Check für Ausführer.",
             "sections": [
                 {
                     "title": "Neue Meldung",
@@ -108,6 +108,10 @@
                 {
                     "title": "Aufgaben vor Ort",
                     "text": "Ausführende, die über Clock Point angemeldet sind und zum Team gehören, starten und schließen Aufgaben über Unit-QR ab — derselbe Ablauf wie über Team-QR."
+                },
+                {
+                    "title": "Unit-Check (Ausführer)",
+                    "text": "Nur für Ausführer nach Clock-Point-Anmeldung und nur wenn der Administrator Unit-Checks an Kategorie und Unit aktiviert hat. OK oder Nicht OK erfassen, optional mit Checkliste. OK erstellt keine Meldung; nach Nicht OK kann eine normale Meldung folgen."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "Wie verfolgen Teams Aufgaben?",
-            "body": "Aufgaben erscheinen in Aufgaben, im Kalender, im Briefing und am Team-/Unit-QR. Ausführende starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplanten Fälligkeitsdaten.",
-            "summary": "Nachverfolgung über Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen inklusive."
+            "body": "Aufgaben erscheinen in Aufgaben, Kalender, Briefing und Team-/Unit-QR. Ausführer starten und schließen vor Ort ab. Koordinatoren verfolgen den Status in der Verwaltung. Wiederkehrende Meldungen erzeugen Zyklen mit geplantem Fälligkeitsdatum; wiederkehrende Aufgaben zeigen die Pill «Wiederkehrend».",
+            "summary": "Nachverfolgung via Aufgaben, Kalender, Briefing und QR; wiederkehrende Zyklen mit Pill «Wiederkehrend»."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API und Webhooks?",
-            "body": "Bei Corporate (oder wenn die API freigeschaltet ist) verwalten Sie unter Einstellungen API-Tokens und ausgehende Webhooks (HMAC-signiert). So koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben und ESG-Messungen. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (auch bei Facility).",
-            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); HMAC-signierte Zustellungen. IoT-Ingest per Gateway-Token auch bei Facility."
+            "body": "Auf Corporate (oder wenn API freigeschaltet) verwalten Sie unter Einstellungen API-Tokens und ausgehende Webhooks (HMAC-signiert). So koppeln Sie WinProx an andere Systeme für Meldungen, Aufgaben, Unit-Checks (unit.check.recorded), ESG-Messungen und mehr. IoT Connect nutzt ein separates Gateway-Token für Sensor-Ingest (auch auf Facility).",
+            "summary": "API-Tokens und Webhooks unter Einstellungen (Corporate); u. a. Meldungen, Aufgaben, Unit-Checks, ESG; HMAC-Zustellung. IoT-Ingest via Gateway-Token auch auf Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "Was ist IoT Connect?",
             "body": "IoT Connect verbindet Sensor-Gateways mit WinProx, ohne dass WinProx Hardware verkauft. Alarme (z. B. Wasserleck, Tür zu lange offen) erzeugen automatisch eine freigegebene Meldung und Aufgabe. Auf Corporate können Sensorwerte auch als ESG-Messungen gespeichert werden. Verwalten Sie Gateways, Sensoren und Regeln unter IoT Connect; das Gateway sendet an POST /api/v1/iot/events mit Gateway-Token (auch auf Facility, ohne vollständige REST-API).",
             "summary": "IoT Connect: Sensoralarme → Meldungen (Facility und Corporate); Messungen → ESG (Corporate). Gateway-Token-Ingest."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "Was sind Unit-Checks?",
+            "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen am Unit-QR durch Ausführer (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten pro Unit. Historie und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
+            "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); optionale Checklisten; OK ohne Meldung; Webhook unit.check.recorded."
         }
     }
 }

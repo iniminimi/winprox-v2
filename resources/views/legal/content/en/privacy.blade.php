@@ -51,6 +51,7 @@
     <li>descriptions, statuses and follow-up</li>
     <li>communication and history within the platform</li>
     <li>photos and attachments added to issues or tasks</li>
+    <li>unit checks (OK/Not OK via unit QR by workers), when enabled on category and unit.</li>
 </ul>
 
 <p><strong>Workers (without login)</strong></p>
@@ -68,6 +69,11 @@
     <li>data voluntarily submitted via a public QR portal (such as name, email address or description)</li>
     <li>technical metadata required for security and abuse prevention</li>
 </ul>
+<p><strong>Unit checks</strong></p>
+<p>
+    If the customer enables unit checks on category and unit, workers can record an OK or Not OK result via the unit QR (after Clock Point sign-in), optionally with checklist and GPS. This is not an issue: OK does not create a report. WinProx stores the result, timestamp, unit, optional GPS coordinates and the worker. Retention follows the same policy as for issues and tasks unless your organisation specifies otherwise.
+</p>
+
 
 <p><strong>ESG & Compliance (optional module)</strong></p>
 <p>

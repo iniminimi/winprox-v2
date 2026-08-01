@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR codes sur le terrain",
-            "intro": "Aide pour le QR unité et le QR Clock Point sur site : connexion, signalements, réservations, tâches, photos, bannière nouvelles tâches d'équipe et fonctions chef d'équipe."
+            "intro": "Aide pour QR unité et QR Clock Point sur site : connexion, signalements, contrôle d'unité, réservations, tâches, photos, bannière nouvelles tâches d'équipe et fonctions team leader."
         }
     },
     "statuses": "Statuts",
@@ -53,21 +53,21 @@
     "step_1_title": "Créer des équipes & exécutants",
     "step_1_text": "Composez des équipes opérationnelles, ajoutez des exécutants (internes ou externes avec nom d'entreprise optionnel) et désignez un chef d'équipe. Liez les équipes à des catégories spécifiques pour que les tâches parviennent toujours aux bons professionnels. Les exécutants se connectent facilement avec leur nom et une icône personnelle. Vous pouvez également ajouter des équipes et des exécutants en une seule fois via un import en masse (CSV/Excel).",
     "step_2_title": "Configurer les sites & unités",
-    "step_2_text": "Regroupez les unités en catégories (par ex. perceuses, sanitaires, fitness, bureau ou électricité). Marquez les catégories comme Réservable si les unités doivent accepter des créneaux, et activez Autoriser les réservations par unité (désactivé par défaut). Optionnel : Coordonnées obligatoires (catégorie et unité) pour les signalants anonymes via QR. En reliant les équipes aux catégories, WinProx assure que les tâches vont à la bonne équipe. Ajoutez aussi des sites et créez des unités par site — via le formulaire, une série en masse ou un import CSV/Excel. Les noms et descriptions d’unités peuvent être mis à jour manuellement par langue.",
+    "step_2_text": "Regroupez les unités en catégories (par ex. perceuses, sanitaires, fitness, bureau ou électricité). Marquez les catégories comme Réservable si les unités doivent accepter des créneaux, et activez Autoriser les réservations par unité (désactivé par défaut). Optionnel : Coordonnées obligatoires (catégorie et unité) pour les signalants anonymes via QR. En reliant les équipes aux catégories, WinProx assure que les tâches vont à la bonne équipe. Ajoutez aussi des sites et créez des unités par site — via le formulaire, une série en masse ou un import CSV/Excel. Les noms et descriptions d’unités peuvent être mis à jour manuellement par langue. Optionnel : autoriser les contrôles d'unité (catégorie et unité, désactivé par défaut) pour des rondes OK/Non OK via le portail — distinct des mesures ESG.",
     "step_3_title": "Imprimer & accrocher les QR",
-    "step_3_text": "Créez d'abord un ou plusieurs Clock Points (menu Time → Clock Points), imprimez l'autocollant QR ou la feuille d'impression QR et placez-le à l'entrée, à l'entrepôt ou à l'atelier — les exécutants s'y connectent et pointent. Imprimez également le QR unité depuis la page de détail du site ou de l'unité et fixez-le aux machines, salles ou actifs. Les citoyens et visiteurs scannent le QR unité pour les signalements, documents et éventuellement les réservations. Les exécutants scannent d'abord le QR Clock Point (nom + icône), puis le QR unité sur site pour le GPS, les photos et les tâches.",
+    "step_3_text": "Créez d'abord un ou plusieurs Clock Points (menu Time → Clock Points), imprimez l'autocollant QR ou la feuille d'impression QR et placez-le à l'entrée, à l'entrepôt ou à l'atelier — les exécutants s'y connectent et pointent. Imprimez également le QR unité depuis la page de détail du site ou de l'unité et fixez-le aux machines, salles ou actifs. Les citoyens et visiteurs scannent le QR unité pour les signalements, documents et éventuellement les réservations. Les exécutants scannent d'abord le QR Clock Point (nom + icône), puis le QR unité sur site pour le GPS, les photos et les tâches. Sur le QR unité, les exécutants peuvent aussi faire un contrôle d'unité lorsque catégorie et unité l'autorisent.",
     "step_3_text_time": "Créez au moins un Clock Point sous Time → Clock Points (p. ex. entrée ou entrepôt). Imprimez l'autocollant QR ou la feuille d'impression QR et placez-le bien en vue. Imprimez aussi les QR unité par site ou unité et fixez-les aux machines ou salles. Les exécutants scannent d'abord le QR Clock Point pour se connecter et pointer ; puis le QR unité sur site pour le GPS, les photos et les tâches.",
     "step_4_title": "Recevoir des signalements & assigner des tâches",
     "step_4_text": "Les signalements arrivent via un scan QR, une saisie manuelle ou (avec IoT Connect) une alarme capteur. Pour chaque signalement, une tâche est automatiquement créée et directement liée à l'équipe responsable. Il est possible de créer plusieurs tâches pour un signalement. Définissez une date limite et suivez la progression via le tableau de bord, le calendrier et — pour les réservations — Réservations.",
     "step_5_title": "Suivre & clôturer",
-    "step_5_text": "Les exécutants exécutent les tâches sur place via le portail QR unité (après connexion via QR Clock Point) ; une bannière apparaît en cas de nouvelles tâches d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Optionnel : mesures ESG, présence Time, IoT Connect et réservations d'unité — voir les chapitres correspondants. Effacez les données d'organisation via Abonnement (après export dans Paramètres).",
+    "step_5_text": "Les exécutants exécutent les tâches sur place via le portail QR unité (après connexion via QR Clock Point) ; une bannière apparaît en cas de nouvelles tâches d'équipe. Une fois toutes les tâches pour un signalement traitées, l'administrateur peut clôturer définitivement le signalement. Optionnel : contrôles d'unité (OK/Non OK sur le QR unité), mesures ESG, présence Time, IoT Connect et réservations d'unité — voir les chapitres correspondants. Effacez les données d'organisation via Abonnement (après export dans Paramètres).",
     "hub": {
         "title": "Manuels",
         "subtitle": "Choisissez le manuel adapté à votre rôle",
         "general": "Manuel général",
         "general_desc": "Application WinProx complète pour administrateurs et collaborateurs, avec réservations, modules ESG/Time/IoT en option, abonnement et aide des portails QR — imprimer ou enregistrer en PDF.",
         "workers": "Manuel exécutants",
-        "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, tâches et photos.",
+        "workers_desc": "QR Clock Point et QR unité sur le terrain — connexion, contrôle d'unité, tâches et photos.",
         "teamleaders": "Manuel chefs d'équipe",
         "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail Clock Point.",
         "features_overview": "Aperçu des fonctionnalités",

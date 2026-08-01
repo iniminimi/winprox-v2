@@ -51,6 +51,7 @@
     <li>Beschreibungen, Status und Nachverfolgung.</li>
     <li>Kommunikation und Verlauf innerhalb der Plattform.</li>
     <li>Fotos und Anhänge zu Meldungen oder Aufgaben.</li>
+    <li>Unit-Checks (OK/Nicht OK via Unit-QR durch Ausführer), wenn an Kategorie und Unit aktiviert.</li>
 </ul>
 
 <p><strong>Ausführende (ohne Login)</strong></p>
@@ -68,6 +69,11 @@
     <li>Daten, die eine meldende Person freiwillig über ein öffentliches QR-Portal eingibt (z. B. Name, E-Mail-Adresse oder Beschreibung).</li>
     <li>technische Metadaten, die für Sicherheit und Missbrauchsprävention erforderlich sind.</li>
 </ul>
+<p><strong>Unit-Checks</strong></p>
+<p>
+    Aktiviert der Kunde Unit-Checks an Kategorie und Unit, können Ausführer über den Unit-QR (nach Clock-Point-Anmeldung) ein OK- oder Nicht-OK-Ergebnis erfassen, optional mit Checkliste und GPS. Dies ist keine Meldung: OK erstellt kein Issue. WinProx speichert Ergebnis, Zeitstempel, Unit, optional GPS-Koordinaten und den Ausführer. Aufbewahrung wie bei Meldungen und Aufgaben, sofern Ihre Organisation nichts anderes festlegt.
+</p>
+
 
 <p><strong>ESG & Compliance (optionales Modul)</strong></p>
 <p>

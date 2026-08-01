@@ -117,6 +117,10 @@
                 {
                     "label": "Taak openen",
                     "text": "Klik op een taak voor detail, statuswijziging en koppeling naar de melding."
+                },
+                {
+                    "label": "Terugkerend",
+                    "text": "Filter op terugkerende taken (pill «Terugkerend»). Deze komen uit terugkerende meldingen met een geplande vervaldatum per cyclus."
                 }
             ],
             "status_note": "Statussen worden vaak automatisch bijgewerkt via het unit-QR-portaal. Je kan ze ook handmatig aanpassen.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Hulp — Taakdetail",
             "actions": [
+                {
+                    "label": "Terugkerend",
+                    "text": "Komt de taak uit een terugkerende melding, dan zie je de pill «Terugkerend» en de geplande vervaldatum van deze cyclus. Elke nieuwe cyclus maakt automatisch een nieuwe taak aan."
+                },
                 {
                     "label": "Team toewijzen",
                     "text": "Kies een operationeel team en sla op. Zo wijzig je ook een bestaande toewijzing."
@@ -191,6 +199,10 @@
                     "text": "Zet bij een categorie Reserveerbaar aan voor deelbare middelen met een tijdslot (vergaderzaal, voertuig, sleutel, …). Zet daarna per unit Reserveringen toestaan aan (standaard uit). Op de unit-QR verschijnt dan de tegel Reserveren. Defectmeldingen blijven via Melding → taak."
                 },
                 {
+                    "label": "Unit checks toestaan",
+                    "text": "Zet bij een categorie Unit checks toestaan aan voor snelle OK/Niet OK-rondes (security, schoonmaak, …). Zet daarna per unit Unit checks toestaan aan (standaard uit). Beide moeten aanstaan voordat uitvoerders op de unit-QR de tegel Unit check zien. Los van ESG-metingen."
+                },
+                {
                     "label": "Contactgegevens invullen verplicht",
                     "text": "Zet dit aan als anonieme melders via de unit-QR hun voornaam, naam en e-mail moeten invullen. Staat standaard uit. Werkt alleen als het ook op de unit aanstaat. Voor ingelogde uitvoerders (veldwerkers) geldt dit niet — zij zijn al bekend."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Reserveringen toestaan",
                     "text": "Alleen relevant als de categorie Reserveerbaar is. Staat standaard uit; zet aan om reserveringen voor deze unit toe te staan. Andere units in dezelfde categorie blijven onafhankelijk."
+                },
+                {
+                    "label": "Unit checks toestaan",
+                    "text": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan zodat uitvoerders OK/Niet OK kunnen registreren via de unit-QR."
+                },
+                {
+                    "label": "Checklist (unit check)",
+                    "text": "Koppel optioneel een checklist aan de unit. Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK of Niet OK wordt opgeslagen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "Unit-QR",
-                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je eerst aan via de Clock Point QR; daarna scan je de unit-QR om open taken op die unit te starten of af te ronden."
+                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je eerst aan via de Clock Point QR; daarna scan je de unit-QR om open taken op die unit te starten of af te ronden. Wanneer Unit checks aanstaan, kunnen ingelogde uitvoerders ook OK/Niet OK registreren (met optionele checklist)."
                 },
                 {
                     "label": "Clock Point QR",
@@ -596,6 +616,10 @@
                 {
                     "label": "Melding doen",
                     "text": "Klik op \"Melding maken\", beschrijf het probleem en voeg optioneel maximaal vier foto's toe. Voornaam, naam en e-mail zijn optioneel — tenzij de beheerder contactgegevens verplicht heeft gemaakt; vul ze dan in. Er wordt vervolgens een taak aangemaakt voor het team. De melding moet eerst worden goedgekeurd voordat deze zichtbaar wordt op het portaal. Tegen spam gelden limieten: maximaal één melding per 3 minuten en maximaal vijf meldingen per 30 minuten voor deze unit (per apparaat)."
+                },
+                {
+                    "label": "Unit check",
+                    "text": "Alleen voor uitvoerders die via Clock Point zijn aangemeld, en alleen als categorie én unit Unit checks toestaan. Registreer OK of Niet OK, eventueel met checklist. Geen melding bij OK; bij Niet OK kan daarna Melding maken."
                 },
                 {
                     "label": "Reserveren",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Hulp — Unit checks",
             "actions": [
+                {
+                    "label": "Inschakelen",
+                    "text": "Zet op de categorie Unit checks toestaan aan en daarna per unit (standaard uit). Pas dan verschijnt Unit check op het portaal voor ingelogde uitvoerders."
+                },
+                {
+                    "label": "Checklists",
+                    "text": "Maak checklists onder Unit checks → Checklists en koppel ze per unit via Locaties. Punten moeten afgevinkt worden vóór OK/Niet OK."
+                },
+                {
+                    "label": "OK en open taken",
+                    "text": "OK slaat alleen de check op (geen melding). Niet OK slaat de check op; daarna kan de uitvoerder een gewone melding maken. Open taken blijven apart via het portaal."
+                },
                 {
                     "label": "Wat is een unit check?",
                     "text": "Een snelle bevestiging op de unit-QR: OK of Niet OK, met uitvoerder, tijdstip en optioneel GPS. Geen aparte melding bij OK."

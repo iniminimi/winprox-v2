@@ -29,6 +29,7 @@
 
 <ul>
     <li>gestion des issues et tâches.</li>
+    <li>enregistrement des contrôles d’unité (OK/Pas OK via QR d’unité), s’ils sont activés sur catégorie et unité.</li>
     <li>gestion des utilisateurs et équipes internes.</li>
     <li>gestion des exécutants (sans connexion) et affectation aux tâches.</li>
     <li>gestion des sites et unités.</li>
@@ -44,6 +45,7 @@
     <li>données d’identification (nom, adresse e-mail, numéro de téléphone le cas échéant).</li>
     <li>données de site et d’unité (adresses, détails de localisation).</li>
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
+    <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client.</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>

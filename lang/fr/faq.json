@@ -79,15 +79,15 @@
             "slug": "qr_code",
             "type": "text",
             "title": "Quels codes QR existent ?",
-            "body": "QR unité : les déclarants signalent un problème ; les exécutants (après connexion Clock Point) traitent les tâches ouvertes sur cette unité. QR équipe : aperçu des tâches d'équipe sur site. QR Clock Point : les exécutants se connectent et pointent. QR site : lien général vers le site. Tout s'ouvre dans le navigateur — sans application.",
-            "summary": "QR unit (signaler/tâches), QR équipe (tâches équipe), QR Clock Point (enregistrement/pointage), QR site — tout dans le navigateur."
+            "body": "QR unité : les signaleurs créent un signalement ; les exécutants (après Clock Point) traitent les tâches ouvertes et peuvent — si catégorie et unité autorisent les contrôles — enregistrer OK/Non OK. QR équipe : vue des tâches d'équipe sur site. QR Clock Point : connexion et pointage. QR site : lien général. Tout s'ouvre dans le navigateur — sans app.",
+            "summary": "QR unité (signalements/tâches/contrôle d'unité), QR équipe, QR Clock Point, QR site — tout dans le navigateur."
         },
         "reporter_portal": {
             "slug": "reporter_portal",
             "type": "portal",
             "title": "Comment fonctionne le portail rapporteurs ?",
-            "intro": "Après scan du QR unit, une page web s'ouvre pour cette unit. Les rapporteurs signalent des problèmes ; les signalements approuvés et documents/annonces partagés sont visibles. Les exécutants avec accès équipe peuvent y traiter les tâches ouvertes.",
-            "summary": "Portail QR unit : signalement (jusqu'à 4 photos), signalements ouverts après approbation, documents, annonces, tâches sur site pour exécutants.",
+            "intro": "Le scan du QR unité ouvre une page web pour cette unité. Les signaleurs décrivent les problèmes ; signalements approuvés, documents et annonces partagés visibles. Les exécutants avec accès équipe traitent les tâches ouvertes et — si activé — les contrôles d'unité.",
+            "summary": "Portail QR unité : signalement, signalements approuvés, documents, annonces, tâches sur site et contrôle d'unité optionnel pour exécutants.",
             "sections": [
                 {
                     "title": "Nouveau signalement",
@@ -108,6 +108,10 @@
                 {
                     "title": "Tâches sur site",
                     "text": "Les exécutants enregistrés via Clock Point et appartenant à l'équipe démarrent et clôturent les tâches via QR unit — le même flux que via QR équipe."
+                },
+                {
+                    "title": "Contrôle d'unité (exécutants)",
+                    "text": "Réservé aux exécutants après Clock Point, et seulement si l'administrateur a activé les contrôles sur catégorie et unité. Enregistrez OK ou Non OK, éventuellement avec checklist. OK ne crée pas de signalement ; après Non OK un signalement classique peut suivre."
                 }
             ]
         },
@@ -191,8 +195,8 @@
             "slug": "team_follow_up",
             "type": "text",
             "title": "Comment les équipes suivent-elles les tâches ?",
-            "body": "Les tâches apparaissent dans Tâches, au calendrier, au briefing et sur le QR équipe/unit. Les exécutants démarrent et clôturent sur site. Les coordinateurs suivent le statut en gestion. Les signalements récurrents génèrent des cycles avec dates d'échéance planifiées.",
-            "summary": "Suivi via Tâches, calendrier, briefing et QR ; cycles récurrents inclus."
+            "body": "Les tâches apparaissent dans Tâches, le calendrier, le briefing et les QR équipe/unité. Les exécutants démarrent et terminent sur site. Les coordinateurs suivent le statut dans l'admin. Les signalements récurrents génèrent des cycles avec échéances ; les tâches récurrentes affichent la pastille « Récurrent ».",
+            "summary": "Suivi via Tâches, calendrier, briefing et QR ; cycles récurrents avec pastille « Récurrent »."
         },
         "reservations": {
             "slug": "reservations",
@@ -254,8 +258,8 @@
             "slug": "api_webhooks",
             "type": "text",
             "title": "API et webhooks ?",
-            "body": "Sur Corporate (ou lorsque l'API est activée), gérez sous Paramètres les jetons API et les webhooks sortants (signés HMAC). Ainsi vous reliez WinProx à d'autres systèmes pour signalements, tâches et mesures ESG. IoT Connect utilise un jeton passerelle séparé pour l'ingest capteurs (aussi sur Facility).",
-            "summary": "Jetons API et webhooks sous Paramètres (Corporate) ; livraisons signées HMAC. Ingest IoT via jeton passerelle aussi sur Facility."
+            "body": "Sur Corporate (ou API activée), gérez sous Paramètres les jetons API et webhooks sortants (signés HMAC). Connectez WinProx à d'autres systèmes pour signalements, tâches, contrôles d'unité (unit.check.recorded), mesures ESG, etc. IoT Connect utilise un jeton gateway séparé (aussi sur Facility).",
+            "summary": "Jetons API et webhooks sous Paramètres (Corporate) ; signalements, tâches, contrôles d'unité, ESG ; livraisons HMAC. Ingest IoT via jeton gateway aussi sur Facility."
         },
         "iot": {
             "slug": "iot",
@@ -263,6 +267,13 @@
             "title": "Qu’est-ce que IoT Connect ?",
             "body": "IoT Connect relie des passerelles capteurs à WinProx sans que WinProx vende du matériel. Les alarmes (fuite d’eau, porte ouverte trop longtemps) créent automatiquement un signalement et une tâche approuvés. Sur Corporate, les mesures capteurs peuvent aussi être enregistrées comme mesures ESG. Gérez passerelles, capteurs et règles sous IoT Connect ; la passerelle envoie vers POST /api/v1/iot/events avec un jeton passerelle (aussi sur Facility, sans API REST complète).",
             "summary": "IoT Connect : alarmes capteurs → signalements (Facility et Corporate) ; mesures → ESG (Corporate). Ingest par jeton passerelle."
+        },
+        "unit_checks": {
+            "slug": "unit_checks",
+            "type": "text",
+            "title": "Que sont les contrôles d'unité ?",
+            "body": "Contrôles d'unité : confirmations OK/Non OK rapides sur le QR unité par les exécutants (après Clock Point). Activez d'abord sur catégorie et unité (désactivé par défaut). Checklists optionnelles par unité. Historique et filtres sous Contrôles d'unité ; webhook unit.check.recorded pour intégrations. Distinct des signalements et mesures ESG.",
+            "summary": "OK/Non OK via QR unité (catégorie + unité) ; checklists optionnelles ; pas de signalement si OK ; webhook unit.check.recorded."
         }
     }
 }

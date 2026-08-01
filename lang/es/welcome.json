@@ -79,6 +79,7 @@
             "bullets": [
                 "Incidencias y tareas",
                 "Ubicaciones y unidades",
+                "Comprobaciones de unit opcionales",
                 "ESG opcional",
                 "Time opcional"
             ]
@@ -107,6 +108,7 @@
                 "bullets": [
                     "Incidencias",
                     "Tareas",
+                    "Comprobaciones de unit opcionales",
                     "Mantenimiento",
                     "Ubicaciones y unidades"
                 ]

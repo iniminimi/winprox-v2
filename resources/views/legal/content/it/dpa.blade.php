@@ -29,6 +29,7 @@
 
 <ul>
     <li>gestione di problematiche e attività.</li>
+    <li>registrazione dei controlli unità (OK/Non OK via QR unità), se attivati su categoria e unità.</li>
     <li>gestione di utenti e team interni.</li>
     <li>gestione di lavoratori (senza accesso) e assegnazione ad attività.</li>
     <li>gestione di sedi e unità.</li>
@@ -44,6 +45,7 @@
     <li>dati identificativi (nome, indirizzo e-mail, numero di telefono ove inseriti).</li>
     <li>dati di sede e unità (indirizzi, dettagli di localizzazione).</li>
     <li>dati di problematiche e attività (inclusi foto e descrizioni).</li>
+    <li>dati di controllo unità (risultato, orario, unità, GPS opzionale, esecutore).</li>
     <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente.</li>
     <li>dati di accesso e sessione.</li>
     <li>metadati di abbonamento e accesso.</li>

@@ -51,6 +51,7 @@
     <li>descriptions, statuts et suivi.</li>
     <li>communication et historique au sein de la plateforme.</li>
     <li>photos et pièces jointes ajoutées aux signalements ou tâches.</li>
+    <li>contrôles d'unité (OK/Non OK via QR unité par exécutants), si activés sur catégorie et unité.</li>
 </ul>
 
 <p><strong>Exécutants (sans connexion)</strong></p>
@@ -68,6 +69,11 @@
     <li>données fournies volontairement via un portail QR public (nom, adresse e-mail ou description).</li>
     <li>métadonnées techniques nécessaires à la sécurité et à la prévention des abus.</li>
 </ul>
+<p><strong>Contrôles d'unité</strong></p>
+<p>
+    Si le client active les contrôles d'unité sur catégorie et unité, les exécutants peuvent enregistrer un résultat OK ou Non OK via le QR unité (après Clock Point), éventuellement avec checklist et GPS. Ce n'est pas un signalement : OK ne crée pas d'issue. WinProx conserve le résultat, l'horodatage, l'unité, les coordonnées GPS optionnelles et l'exécutant. Conservation identique aux signalements et tâches, sauf règle interne différente.
+</p>
+
 
 <p><strong>ESG & Conformité (module optionnel)</strong></p>
 <p>

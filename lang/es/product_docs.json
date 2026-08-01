@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Locations, units, categories, teams and workers (internal or external). Bulk/CSV import, dashboard, documents and announcements on the portal."
+                "body": "Ubicaciones, units, categorías, equipos y ejecutores (internos o externos). Importación bulk/CSV, panel, documentos y anuncios en el portal. Comprobaciones de unit opcionales por categoría y unit (OK/No OK en el QR de la unit)."
             },
             {
                 "title": "Tasks",
@@ -345,7 +345,7 @@
                     "**Configuración:** Ajustes → API → Webhooks (URL + eventos). El secreto se muestra una vez — guárdelo bien.",
                     "**Prueba de origen:** cada mensaje lleva una firma HMAC (verificable con su secreto).",
                     "**Fiabilidad:** si falla, WinProx reintenta (con pausa creciente). Las entregas aparecen en un registro.",
-                    "**Otros eventos p. ej.:** aviso creado / aprobado / estado cambiado · tarea creada / iniciada / completada · Time · GPS · ESG · reservas · botón de prueba."
+                    "**Otros eventos p. ej.:** aviso creado / aprobado / estado cambiado · tarea creada / iniciada / completada · Time · GPS · ESG · reservas · botón de prueba · comprobación de unit registrada."
                 ],
                 "emphasis": "Ejemplo: un trabajador cierra una tarea. WinProx envía automáticamente un webhook a su ERP o Planon para actualizar de inmediato una orden de trabajo."
             }

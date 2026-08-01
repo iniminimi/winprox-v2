@@ -51,6 +51,7 @@
     <li>beschrijvingen, statussen en opvolging.</li>
     <li>communicatie en historiek binnen het platform.</li>
     <li>foto’s en bijlagen die bij meldingen of taken worden toegevoegd.</li>
+    <li>unit checks (OK/Niet OK via unit-QR door uitvoerders), indien ingeschakeld op categorie en unit.</li>
 </ul>
 
 <p><strong>Uitvoerders (zonder login)</strong></p>
@@ -68,6 +69,11 @@
     <li>gegevens die een melder vrijwillig invult via een publiek QR-portaal (zoals naam, e-mailadres of beschrijving).</li>
     <li>technische metadata die nodig is voor beveiliging en misbruikpreventie.</li>
 </ul>
+<p><strong>Unit checks</strong></p>
+<p>
+    Indien de klant Unit checks inschakelt op categorie én unit, kunnen uitvoerders via de unit-QR (na aanmelding via Clock Point) een OK- of Niet OK-resultaat registreren, eventueel met checklist en GPS. Dit is geen melding: bij OK wordt geen issue aangemaakt. WinProx bewaart resultaat, tijdstip, unit, optioneel GPS-coördinaten en de uitvoerder. Bewaartermijn geldt dezelfde als voor meldingen en taken, tenzij anders bepaald in uw organisatie.
+</p>
+
 
 <p><strong>ESG & Compliance (optionele module)</strong></p>
 <p>

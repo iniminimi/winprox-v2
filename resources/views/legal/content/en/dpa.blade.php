@@ -29,6 +29,7 @@
 
 <ul>
     <li>management of issues and tasks.</li>
+    <li>recording of unit checks (OK/Not OK via unit QR), when enabled on category and unit.</li>
     <li>management of users and internal teams.</li>
     <li>management of workers (without login) and assignment to tasks.</li>
     <li>management of locations and units.</li>
@@ -44,6 +45,7 @@
     <li>identification data (name, email address, phone number where entered).</li>
     <li>location and unit data (addresses, location details).</li>
     <li>issue and task data (including photos and descriptions).</li>
+    <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
     <li>data of workers and QR reporters, to the extent collected by the customer.</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>

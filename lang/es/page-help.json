@@ -117,6 +117,10 @@
                 {
                     "label": "Abrir tarea",
                     "text": "Haga clic en una tarea para ver el detalle, cambios de estado y el enlace a la incidencia."
+                },
+                {
+                    "label": "Recurrente",
+                    "text": "Filtre tareas recurrentes (pastilla «Recurrente»). Provienen de avisos recurrentes con fecha de vencimiento planificada por ciclo."
                 }
             ],
             "status_note": "Los estados se actualizan a menudo automáticamente mediante el portal QR de unidad. También puede ajustarlos manualmente.",
@@ -130,6 +134,10 @@
         "tasks.show": {
             "title": "Ayuda — Detalle de tarea",
             "actions": [
+                {
+                    "label": "Recurrente",
+                    "text": "Si la tarea proviene de un aviso recurrente, verá la pastilla «Recurrente» y la fecha planificada de este ciclo. Cada nuevo ciclo crea automáticamente una nueva tarea."
+                },
                 {
                     "label": "Asignar equipo",
                     "text": "Elija un equipo operativo y guarde. También puede cambiar una asignación existente."
@@ -191,6 +199,10 @@
                     "text": "Active Reservable en una categoría para recursos compartidos con franja horaria (sala, vehículo, llave, …). Luego active Permitir reservas por unidad (desactivado por defecto). El QR de la unidad muestra entonces la ficha Reservar. Los avisos de avería siguen vía Aviso → tarea."
                 },
                 {
+                    "label": "Permitir comprobaciones de unidad",
+                    "text": "Active Permitir comprobaciones de unidad en una categoría para rondas rápidas OK/No OK (seguridad, limpieza, …). Luego actívelo por unit (desactivado por defecto). Ambos deben estar activos antes de que los ejecutores vean la ficha Comprobación de unidad en el QR. Separado de las mediciones ESG."
+                },
+                {
                     "label": "Datos de contacto obligatorios",
                     "text": "Actívelo si los informantes anónimos vía QR de la unidad deben indicar nombre, apellidos y correo. Desactivado por defecto. Solo aplica si también está activado en la unidad. No aplica a trabajadores de campo conectados — ya están identificados."
                 }
@@ -214,6 +226,14 @@
                 {
                     "label": "Permitir reservas",
                     "text": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad. Otras unidades de la misma categoría siguen independientes."
+                },
+                {
+                    "label": "Permitir comprobaciones de unidad",
+                    "text": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para que los ejecutores registren OK/No OK vía el QR de la unit."
+                },
+                {
+                    "label": "Checklist (comprobación de unit)",
+                    "text": "Opcionalmente vincule una checklist a la unit. En Comprobación de unit en el portal, el ejecutor marca cada punto antes de guardar OK o No OK."
                 },
                 {
                     "label": "Datos de contacto obligatorios",
@@ -578,7 +598,7 @@
             "actions": [
                 {
                     "label": "QR de unidad",
-                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión primero mediante el QR Clock Point; luego escanee el QR de unidad para iniciar o completar tareas abiertas en esa unidad."
+                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión primero mediante el QR Clock Point; luego escanee el QR de unidad para iniciar o completar tareas abiertas en esa unidad. Con comprobaciones activadas, los ejecutores con sesión también pueden registrar OK/No OK (checklist opcional)."
                 },
                 {
                     "label": "QR Clock Point",
@@ -596,6 +616,10 @@
                 {
                     "label": "Informar incidencia",
                     "text": "Pulse «Crear aviso», describa el problema y añada opcionalmente hasta cuatro fotos. Nombre, apellidos y correo son opcionales — salvo que el administrador haya hecho obligatorios los datos de contacto; rellénelos entonces. Se crea una tarea para el equipo. El aviso debe aprobarse antes de verse en el portal. Límites anti-spam: como máximo un aviso cada 3 minutos y cinco cada 30 minutos para esta unidad (por dispositivo)."
+                },
+                {
+                    "label": "Comprobación de unit",
+                    "text": "Solo ejecutores tras iniciar sesión en Clock Point, y solo si categoría y unit permiten comprobaciones. Registre OK o No OK, opcionalmente con checklist. OK no crea aviso; tras No OK puede seguir un aviso."
                 },
                 {
                     "label": "Reservar",
@@ -1174,6 +1198,18 @@
         "unit-checks": {
             "title": "Ayuda — Chequeos de unit",
             "actions": [
+                {
+                    "label": "Activar",
+                    "text": "Active en la categoría y luego por unit (desactivado por defecto). Solo entonces aparece Comprobación de unit en el portal para ejecutores con sesión."
+                },
+                {
+                    "label": "Checklists",
+                    "text": "Cree checklists en Comprobaciones de unit → Checklists y asígnelas por unit en Ubicaciones. Los puntos deben marcarse antes de OK/No OK."
+                },
+                {
+                    "label": "OK y tareas abiertas",
+                    "text": "OK solo guarda la comprobación (sin aviso). No OK guarda la comprobación; después el ejecutor puede crear un aviso normal. Las tareas abiertas siguen aparte en el portal."
+                },
                 {
                     "label": "¿Qué es un chequeo de unit?",
                     "text": "Una confirmación rápida en el QR de la unit: OK o No OK, con ejecutor, fecha/hora y GPS opcional. OK no crea un aviso."

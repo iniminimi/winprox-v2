@@ -79,6 +79,7 @@
             "bullets": [
                 "Issues & tasks",
                 "Locations & units",
+                "Optional Unit checks",
                 "Optional ESG",
                 "Optional Time"
             ]
@@ -107,6 +108,7 @@
                 "bullets": [
                     "Issues",
                     "Tasks",
+                    "Optional Unit checks",
                     "Maintenance",
                     "Locations & units"
                 ]
