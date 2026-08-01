@@ -362,7 +362,8 @@ de meldingenlijst te vervuilen. Los van ESG.
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
-- Optionele **checklist** (indien gekoppeld aan de unit): vinkjes vóór OK.
+- Optionele **checklist** (indien gekoppeld aan de unit; templates onder **Teams**):
+  vinkjes vóór OK.
 
 ### Beheer (`/unit-checks`)
 - Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.

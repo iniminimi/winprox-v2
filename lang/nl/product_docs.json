@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR-portals",
-                "body": "Unit-QR (melden + optionele unit check OK/Niet OK — aan via categorie én unit + taken op locatie) · Clock Point-QR (aanmelden + in-/uitklokken + teamtaken) · Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
+                "body": "Unit-QR (melden + optionele unit check OK/Niet OK — aan via categorie én unit, optioneel met checklist + taken op locatie) · Clock Point-QR (aanmelden + in-/uitklokken + teamtaken) · Locatie-QR. Printbaar als stickervel (Avery) of full-page A6/A5/A4. Dynamische QR’s die later aan een unit gekoppeld worden."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "kern",
-                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Optioneel unit checks per categorie én unit (OK/Niet OK op de unit-QR)."
+                "body": "Locaties, units, categorieën, teams en uitvoerders (intern of extern). Bulk/CSV-import, dashboard, documenten en mededelingen op het portaal. Optioneel unit checks per categorie én unit (OK/Niet OK op de unit-QR); checklists beheer je onder Teams (gedeeld of per team)."
             },
             {
                 "title": "Taken",

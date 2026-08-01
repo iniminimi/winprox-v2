@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Koppel optioneel een checklist aan de unit (templates onder Teams). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
+                    "text": "Koppel optioneel een checklist aan de unit (templates onder Teams, gedeeld of van teams van de categorie). Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK wordt opgeslagen."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
                 },
                 {
                     "label": "Teamvertalingen",
@@ -1212,7 +1212,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
+                    "text": "Maak checklists onder Teams (optioneel per team of gedeeld). Gebruik eventueel een starter (schoonmaak, techniek, security). Koppel daarna per unit via Locaties → unit bewerken. Alleen checklists van teams die aan de categorie hangen (of gedeelde) verschijnen in de dropdown. Punten moeten afgevinkt zijn vóór OK."
+                },
+                {
+                    "label": "Starters",
+                    "text": "Onder Teams → Checklists kun je een sjabloon kopiëren (schoonmaak, techniek, security) en daarna aanpassen. Daarna koppel je de checklist per unit."
                 },
                 {
                     "label": "OK en open taken",

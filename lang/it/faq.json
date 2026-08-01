@@ -188,8 +188,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Come configuro i team interni?",
-            "body": "Vai a Team: crea team, aggiungi esecutori (manualmente, CSV o Excel), collega team a unit e opzionalmente a categorie. Stampa o invia il QR team e QR Clock Point per il reparto.",
-            "summary": "Team sotto Team; collegamento a unit/categorie; QR Clock Point e team per il reparto."
+            "body": "Vada in Team: crei team, aggiunga esecutori (manuale, CSV o Excel), colleghi i team alle unità e opzionalmente alle categorie. In Team gestisce anche le checklist per i unit check (condivise o per team). Stampi o invii il QR team e il QR Clock Point per il piano.",
+            "summary": "Team in Team; checklist unit check; collegamento a unità/categorie; QR Clock Point e team per il piano."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -272,8 +272,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Cosa sono i controlli unità?",
-            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Checklist opzionali per unità (gestione in Team). Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
-            "summary": "OK/Non OK via QR unit (categoria + unit); checklist opzionali; OK senza segnalazione; webhook unit.check.recorded."
+            "body": "I unit check sono conferme rapide OK/Non OK sul QR unità da parte degli esecutori (dopo Clock Point). Abilita prima su categoria e unità (disattivato di default). Le checklist opzionali si gestiscono in Team (condivise o collegate a un team; modelli pulizia, tecnica e security) e si collegano per unità. Per OK tutti i punti devono essere spuntati. Cronologia e filtri in Unit checks; webhook unit.check.recorded per integrazioni. Separato da segnalazioni e misure ESG.",
+            "summary": "OK/Non OK via QR unit (categoria + unit); checklist in Team; OK senza segnalazione; webhook unit.check.recorded."
         }
     }
 }

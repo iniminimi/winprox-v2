@@ -188,8 +188,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "How do I set up internal teams?",
-            "body": "Go to Team: create teams, add field workers (manually, CSV or Excel), link teams to units and optionally to categories. Print or email the team QR and Clock Point QR for the shop floor.",
-            "summary": "Teams under Team; link to units/categories; Clock Point and team QR for the floor."
+            "body": "Go to Team: create teams, add workers (manually, CSV or Excel), link teams to units and optionally to categories. Under Teams you also manage unit-check checklists (shared or per team). Print or email the team QR and Clock Point QR for the floor.",
+            "summary": "Teams under Team; unit-check checklists; link to units/categories; Clock Point and team QR for the floor."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -272,8 +272,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "What are unit checks?",
-            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists per unit (managed under Teams). History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
-            "summary": "OK/Not OK via unit QR (enable category + unit); optional checklists; OK does not create an issue; webhook unit.check.recorded."
+            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by field workers (after Clock Point). Enable first on category and unit (off by default). Optional checklists are managed under Teams (shared or linked to a team; starters for cleaning, technical and security) and linked per unit. For OK all points must be ticked. History and filters in Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
+            "summary": "OK/Not OK via unit QR (enable category + unit); checklists under Teams; OK does not create an issue; webhook unit.check.recorded."
         }
     }
 }

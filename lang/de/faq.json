@@ -188,8 +188,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Wie richte ich interne Teams ein?",
-            "body": "Gehen Sie zu Team: erstellen Sie Teams, fügen Sie Ausführende hinzu (manuell, CSV oder Excel), verknüpfen Sie Teams mit Units und optional mit Kategorien. Drucken oder mailen Sie den Team-QR und Clock-Point-QR für die Werkstatt.",
-            "summary": "Teams unter Team; Verknüpfung mit Units/Kategorien; Clock-Point- und Team-QR für die Werkstatt."
+            "body": "Gehen Sie zu Team: Teams anlegen, Ausführende hinzufügen (manuell, CSV oder Excel), Teams an Units und optional an Kategorien koppeln. Unter Teams verwalten Sie auch Checklisten für Unit-Checks (geteilt oder pro Team). Drucken oder mailen Sie Team-QR und Clock-Point-QR für die Fläche.",
+            "summary": "Teams unter Team; Checklisten für Unit-Checks; Kopplung an Units/Kategorien; Clock-Point- und Team-QR für die Fläche."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -272,8 +272,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Was sind Unit-Checks?",
-            "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten pro Unit (Verwaltung unter Teams). Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
-            "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); optionale Checklisten; OK ohne Meldung; Webhook unit.check.recorded."
+            "body": "Unit-Checks sind schnelle OK/Nicht-OK-Bestätigungen auf dem Unit-QR durch Ausführende (nach Clock Point). Zuerst an Kategorie und Unit aktivieren (standardmäßig aus). Optionale Checklisten erstellen Sie unter Teams (geteilt oder einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen sie pro Unit. Bei OK müssen alle Punkte abgehakt sein. Verlauf und Filter unter Unit-Checks; Webhook unit.check.recorded für Integrationen. Getrennt von Meldungen und ESG-Messungen.",
+            "summary": "OK/Nicht OK via Unit-QR (Kategorie + Unit an); Checklisten unter Teams; OK ohne Meldung; Webhook unit.check.recorded."
         }
     }
 }

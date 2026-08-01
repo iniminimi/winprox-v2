@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Create checklists here (optionally linked to a team) and assign them per unit via Locations → edit unit. On the unit QR the points appear under Unit check; for OK all points must be ticked.",
+        "lead": "Create checklists here (optionally linked to a team; starters for cleaning, technical and security) and assign them per unit via Locations → edit unit. On the unit QR the points appear under Unit check; for OK all points must be ticked.",
         "create": "Add checklist",
         "create_title": "Add checklist",
         "edit_title": "Edit checklist",

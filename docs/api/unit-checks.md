@@ -24,7 +24,7 @@ Record a quick **OK / Not OK** visit check on a unit (security rounds, cleaning 
 | `longitude` | number | No | Requires `latitude` |
 | `task_id` | integer | No | Optional link to a related task |
 | `issue_id` | integer | No | Optional link when a follow-up issue exists |
-| `checklist_items` | string[] | No | Labels of checked checklist points (when the unit has a checklist) |
+| `checklist_items` | string[] | No | Labels of checked checklist points (when the unit has a checklist; templates are managed under **Teams** in the admin UI) |
 | `external_id` | string | No | Idempotency key from the caller (unique per tenant) |
 
 ### Example

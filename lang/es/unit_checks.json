@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Listas de comprobación",
-        "lead": "Cree listas aquí (opcionalmente vinculadas a un equipo) y asígnelas por unidad en Ubicaciones → editar unidad. En el QR de la unidad aparecen los puntos en Unit check; para OK deben marcarse todos.",
+        "lead": "Cree listas aquí (opcionalmente vinculadas a un equipo; plantillas de limpieza, técnica y seguridad) y asígnelas por unidad en Ubicaciones → editar unidad. En el QR de la unidad aparecen los puntos en Unit check; para OK deben marcarse todos.",
         "create": "Añadir lista",
         "create_title": "Añadir lista",
         "edit_title": "Editar lista",

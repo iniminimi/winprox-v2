@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR de unidad (aviso + comprobación de unidad opcional OK/No OK — activar en categoría y unidad + tareas in situ) · QR de punto de fichaje (acceso + fichar entrada/salida + tareas de equipo) · QR de ubicación. Imprimible como hojas de pegatinas (Avery) o página completa A6/A5/A4. QR dinámicos que se pueden vincular a una unidad más adelante."
+                "body": "QR de unidad (aviso + unit check OK/No OK opcional — activar en categoría y unidad, checklist opcional + tareas in situ) · QR Clock Point (acceso + fichaje + tareas de equipo) · QR de ubicación. Imprimible como hoja de etiquetas (Avery) o página completa A6/A5/A4. QR dinámicos que luego se pueden vincular a una unidad."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Ubicaciones, units, categorías, equipos y ejecutores (internos o externos). Importación bulk/CSV, panel, documentos y anuncios en el portal. Comprobaciones de unit opcionales por categoría y unit (OK/No OK en el QR de la unit)."
+                "body": "Ubicaciones, unidades, categorías, equipos y operarios (internos o externos). Importación masiva/CSV, panel, documentos y anuncios en el portal. Comprobaciones de unidad opcionales por categoría y unidad (OK/No OK en el QR de unidad); listas en Equipos (compartidas o por equipo)."
             },
             {
                 "title": "Tasks",

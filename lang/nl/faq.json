@@ -188,8 +188,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "Hoe richt ik interne teams in?",
-            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
-            "summary": "Teams onder Team; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
+            "body": "Ga naar Team: maak teams aan, voeg uitvoerders toe (handmatig, CSV of Excel), koppel teams aan units en optioneel aan categorieën. Onder Teams beheer je ook checklists voor unit checks (gedeeld of per team). Print of mail de team-QR en Clock Point-QR voor de werkvloer.",
+            "summary": "Teams onder Team; checklists voor unit checks; koppel aan units/categorieën; Clock Point- en team-QR voor de vloer."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -272,8 +272,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Wat zijn unit checks?",
-            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists per unit (beheer onder Teams). Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
-            "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists optioneel; geen melding bij OK; webhook unit.check.recorded."
+            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists maak je onder Teams (gedeeld of gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel je per unit. Bij OK moeten alle punten afgevinkt zijn. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
+            "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists onder Teams; geen melding bij OK; webhook unit.check.recorded."
         }
     }
 }

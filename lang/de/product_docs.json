@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "Unit-QR (Melden + optionaler Unit-Check OK/Nicht OK — aktivieren über Kategorie und Unit + Aufgaben vor Ort) · Clock Point-QR (Anmelden + Ein-/Ausstempeln + Teamaufgaben) · Standort-QR. Druckbar als Stickerbögen (Avery) oder vollseitig A6/A5/A4. Dynamische QRs, die später einer Unit zugeordnet werden."
+                "body": "Unit-QR (melden + optionaler Unit-Check OK/Nicht OK — aktivieren über Kategorie und Unit, optional mit Checkliste + Aufgaben vor Ort) · Clock-Point-QR (Anmelden + Ein-/Ausstempeln + Teamaufgaben) · Standort-QR. Druckbar als Etikettenbogen (Avery) oder Ganzseite A6/A5/A4. Dynamische QRs, die später einer Unit zugeordnet werden."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Standorte, Units, Kategorien, Teams und Ausführer (intern oder extern). Bulk/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Optional Unit-Checks pro Kategorie und Unit (OK/Nicht OK am Unit-QR)."
+                "body": "Standorte, Units, Kategorien, Teams und Ausführende (intern oder extern). Massen-/CSV-Import, Dashboard, Dokumente und Mitteilungen im Portal. Optionale Unit-Checks pro Kategorie und Unit (OK/Nicht OK auf dem Unit-QR); Checklisten verwalten Sie unter Teams (geteilt oder pro Team)."
             },
             {
                 "title": "Tasks",

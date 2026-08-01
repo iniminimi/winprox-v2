@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Listes de contrôle",
-        "lead": "Créez des listes ici (optionnellement liées à une équipe) et associez-les par unité via Sites → modifier l’unité. Sur le QR unité, les points apparaissent sous Unit check ; pour OK tous les points doivent être cochés.",
+        "lead": "Créez des listes ici (optionnellement liées à une équipe ; modèles nettoyage, technique et sécurité) et associez-les par unité via Sites → modifier l’unité. Sur le QR unité, les points apparaissent sous Unit check ; pour OK tous les points doivent être cochés.",
         "create": "Ajouter une liste",
         "create_title": "Ajouter une liste",
         "edit_title": "Modifier la liste",

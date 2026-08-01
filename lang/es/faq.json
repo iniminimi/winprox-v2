@@ -188,8 +188,8 @@
             "slug": "internal_teams",
             "type": "text",
             "title": "¿Cómo configuro equipos internos?",
-            "body": "Vaya a Team: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a units y opcionalmente a categorías. Imprima o envíe el QR equipo y QR Clock Point para la planta.",
-            "summary": "Equipos en Team; vincular a units/categorías; QR Clock Point y equipo para la planta."
+            "body": "Vaya a Equipo: cree equipos, añada operarios (manual, CSV o Excel), vincule equipos a unidades y opcionalmente a categorías. En Equipos también gestiona las listas de unit checks (compartidas o por equipo). Imprima o envíe el QR de equipo y el QR Clock Point para el terreno.",
+            "summary": "Equipos en Equipo; listas de unit checks; vínculo a unidades/categorías; QR Clock Point y de equipo para el terreno."
         },
         "team_follow_up": {
             "slug": "team_follow_up",
@@ -272,8 +272,8 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "¿Qué son las comprobaciones de unit?",
-            "body": "Los unit checks son confirmaciones rápidas OK/No OK en el QR de la unidad por operarios (tras Clock Point). Active primero en categoría y unidad (desactivado por defecto). Listas opcionales por unidad (gestión en Equipos). Historial y filtros en Unit checks; webhook unit.check.recorded para integraciones. Separado de incidencias y mediciones ESG.",
-            "summary": "OK/No OK vía QR unit (categoría + unit); checklists opcionales; OK sin aviso; webhook unit.check.recorded."
+            "body": "Los unit checks son confirmaciones rápidas OK/No OK en el QR de la unidad por operarios (tras Clock Point). Active primero en categoría y unidad (desactivado por defecto). Las listas opcionales se gestionan en Equipos (compartidas o vinculadas a un equipo; plantillas de limpieza, técnica y seguridad) y se vinculan por unidad. Para OK deben marcarse todos los puntos. Historial y filtros en Unit checks; webhook unit.check.recorded para integraciones. Separado de incidencias y mediciones ESG.",
+            "summary": "OK/No OK vía QR unit (categoría + unit); listas en Equipos; OK sin aviso; webhook unit.check.recorded."
         }
     }
 }

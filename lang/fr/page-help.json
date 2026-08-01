@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listes de contrôle",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
                 },
                 {
                     "label": "Traductions d’équipe",
@@ -1211,8 +1211,12 @@
                     "text": "Activez sur la catégorie, puis par unité (désactivé par défaut). Le contrôle d'unité n'apparaît alors sur le portail que pour les exécutants connectés."
                 },
                 {
-                    "label": "Checklists",
-                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                    "label": "Listes de contrôle",
+                    "text": "Créez des listes sous Équipes (optionnellement par équipe ou partagée). Copiez éventuellement un modèle (nettoyage, technique, sécurité). Associez-les ensuite par unité via Sites → modifier l’unité. Seules les listes des équipes liées à la catégorie (ou partagées) apparaissent. Les points doivent être cochés avant OK."
+                },
+                {
+                    "label": "Modèles",
+                    "text": "Sous Équipes → Listes de contrôle vous pouvez copier un modèle (nettoyage, technique, sécurité) puis l’ajuster. Ensuite associez la liste par unité."
                 },
                 {
                     "label": "OK et tâches ouvertes",

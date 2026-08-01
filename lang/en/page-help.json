@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Checklist (unit check)",
-                    "text": "Optionally link a checklist to the unit (templates under Teams). On Unit check in the portal the worker ticks each item before OK is saved."
+                    "text": "Optionally link a checklist to the unit (templates under Teams, shared or from the category’s teams). On Unit check in the portal the worker ticks each item before OK is saved."
                 },
                 {
                     "label": "Require contact details",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under Teams (optionally per team or shared). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK."
+                    "text": "Create checklists under Teams (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK."
                 },
                 {
                     "label": "Team translations",
@@ -1212,7 +1212,11 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Create checklists under Teams (optionally per team or shared). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK."
+                    "text": "Create checklists under Teams (optionally per team or shared). Optionally copy a starter (cleaning, technical, security). Then link them per unit via Locations → edit unit. Only checklists of teams linked to the category (or shared) appear in the dropdown. Points must be checked before OK."
+                },
+                {
+                    "label": "Starters",
+                    "text": "Under Teams → Checklists you can copy a template (cleaning, technical, security) and then adjust it. Afterwards link the checklist per unit."
                 },
                 {
                     "label": "OK and open tasks",

@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Maak checklists hier (optioneel gekoppeld aan een team) en koppel ze per unit via Locaties → unit bewerken. Op de unit-QR verschijnen de vinkjes bij Unit check; bij OK moeten alle punten afgevinkt zijn.",
+        "lead": "Maak checklists hier (optioneel gekoppeld aan een team; starters voor schoonmaak, techniek en security) en koppel ze per unit via Locaties → unit bewerken. Op de unit-QR verschijnen de vinkjes bij Unit check; bij OK moeten alle punten afgevinkt zijn.",
         "create": "Checklist toevoegen",
         "create_title": "Checklist toevoegen",
         "edit_title": "Checklist bewerken",

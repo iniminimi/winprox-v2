@@ -1,6 +1,6 @@
 {
     "title": "Utenti",
-    "subtitle": "Gestisca utenti colleghi, team operativi e lavoratori.",
+    "subtitle": "Gestisci utenti colleghi, team operativi, esecutori e checklist per i unit check.",
     "briefing": "Stampa briefing",
     "colleagues": {
         "title": "Utenti colleghi",

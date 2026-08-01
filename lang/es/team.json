@@ -1,6 +1,6 @@
 {
     "title": "Usuarios",
-    "subtitle": "Gestione usuarios colegas, equipos operativos y trabajadores.",
+    "subtitle": "Gestione usuarios colegas, equipos operativos, operarios y listas de comprobación de unit checks.",
     "briefing": "Imprimir briefing",
     "colleagues": {
         "title": "Usuarios colegas",

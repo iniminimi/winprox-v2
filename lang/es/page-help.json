@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Listas de comprobación",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
                 },
                 {
                     "label": "Traducciones de equipo",
@@ -1211,8 +1211,12 @@
                     "text": "Active en la categoría y luego por unit (desactivado por defecto). Solo entonces aparece Comprobación de unit en el portal para ejecutores con sesión."
                 },
                 {
-                    "label": "Checklists",
-                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                    "label": "Listas de comprobación",
+                    "text": "Cree listas en Equipos (opcionalmente por equipo o compartida). Copie opcionalmente una plantilla (limpieza, técnica, seguridad). Luego vincúlelas por unidad en Ubicaciones → editar unidad. Solo aparecen listas de equipos vinculados a la categoría (o compartidas). Los puntos deben marcarse antes de OK."
+                },
+                {
+                    "label": "Plantillas",
+                    "text": "En Equipos → Listas de comprobación puede copiar una plantilla (limpieza, técnica, seguridad) y luego ajustarla. Después vincule la lista por unidad."
                 },
                 {
                     "label": "OK y tareas abiertas",

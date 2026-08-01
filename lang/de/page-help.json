@@ -233,7 +233,7 @@
                 },
                 {
                     "label": "Checkliste (Unit-Check)",
-                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Teams). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
+                    "text": "Optional eine Checkliste an die Unit koppeln (Vorlagen unter Teams, geteilt oder von Teams der Kategorie). Beim Unit-Check im Portal hakt der Ausführende jeden Punkt ab, bevor OK gespeichert wird."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
@@ -376,7 +376,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
                 },
                 {
                     "label": "Team-Übersetzungen",
@@ -1212,7 +1212,11 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
+                    "text": "Erstellen Sie Checklisten unter Teams (optional pro Team oder geteilt). Optional eine Vorlage kopieren (Reinigung, Technik, Security). Verknüpfen Sie sie danach pro Unit unter Standorte → Unit bearbeiten. Nur Checklisten von Teams der Kategorie (oder geteilte) erscheinen in der Auswahlliste. Punkte müssen vor OK abgehakt sein."
+                },
+                {
+                    "label": "Vorlagen",
+                    "text": "Unter Teams → Checklisten können Sie eine Vorlage kopieren (Reinigung, Technik, Security) und danach anpassen. Anschließend verknüpfen Sie die Checkliste pro Unit."
                 },
                 {
                     "label": "OK und offene Aufgaben",

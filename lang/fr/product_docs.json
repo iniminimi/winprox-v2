@@ -37,7 +37,7 @@
             },
             {
                 "title": "QR portals",
-                "body": "QR unité (signalement + contrôle d’unité optionnel OK/Pas OK — activer sur catégorie et unité + tâches sur site) · QR point d’horloge (connexion + pointage + tâches d’équipe) · QR lieu. Imprimable en planches stickers (Avery) ou pleine page A6/A5/A4. QR dynamiques pouvant être liés à une unité plus tard."
+                "body": "QR unité (signalement + contrôle unit OK/Non OK optionnel — activer via catégorie et unité, checklist optionnelle + tâches sur site) · QR Clock Point (connexion + pointage + tâches d’équipe) · QR site. Imprimable en planche d’étiquettes (Avery) ou page entière A6/A5/A4. QR dynamiques pouvant être liés plus tard à une unité."
             },
             {
                 "title": "Branding & QR",
@@ -74,7 +74,7 @@
             {
                 "title": "Facility",
                 "badge": "core",
-                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Import bulk/CSV, tableau de bord, documents et annonces sur le portail. Contrôles d'unité optionnels par catégorie et unité (OK/Non OK sur le QR unité)."
+                "body": "Sites, unités, catégories, équipes et exécutants (internes ou externes). Import masse/CSV, tableau de bord, documents et annonces sur le portail. Contrôles d’unité optionnels par catégorie et unité (OK/Non OK sur le QR unité) ; listes de contrôle sous Équipes (partagées ou par équipe)."
             },
             {
                 "title": "Tasks",

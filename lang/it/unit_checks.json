@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklist",
-        "lead": "Crea checklist qui (opzionalmente collegate a un team) e collegale per unità in Sedi → modifica unità. Sul QR unità i punti compaiono in Unit check; per OK tutti i punti devono essere spuntati.",
+        "lead": "Crea checklist qui (opzionalmente collegate a un team; modelli pulizia, tecnica e security) e collegale per unità in Sedi → modifica unità. Sul QR unità i punti compaiono in Unit check; per OK tutti i punti devono essere spuntati.",
         "create": "Aggiungi checklist",
         "create_title": "Aggiungi checklist",
         "edit_title": "Modifica checklist",

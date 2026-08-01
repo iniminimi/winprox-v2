@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklisten",
-        "lead": "Erstellen Sie hier Checklisten (optional einem Team zugeordnet) und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten. Auf dem Unit-QR erscheinen die Punkte bei Unit-Check; bei OK müssen alle Punkte abgehakt sein.",
+        "lead": "Erstellen Sie hier Checklisten (optional einem Team zugeordnet; Vorlagen für Reinigung, Technik und Security) und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten. Auf dem Unit-QR erscheinen die Punkte bei Unit-Check; bei OK müssen alle Punkte abgehakt sein.",
         "create": "Checkliste hinzufügen",
         "create_title": "Checkliste hinzufügen",
         "edit_title": "Checkliste bearbeiten",
