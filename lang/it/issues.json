@@ -185,7 +185,8 @@
         "added_by_worker": "Lavoratore sul campo",
         "updates_photos": "Foto",
         "photo_enlarge": "Ingrandisci foto",
-        "photos_heading": "Foto"
+        "photos_heading": "Foto",
+        "edit_task_recurring_hint": "Questo compito appartiene a una segnalazione ricorrente. Intervallo e serie si gestiscono sulla segnalazione; qui regola solo questa esecuzione (descrizione, data pianificata, priorità, team)."
     },
     "updates": {
         "kind": {

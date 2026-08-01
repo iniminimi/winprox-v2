@@ -185,7 +185,8 @@
         "added_by_worker": "Uitvoerder",
         "updates_photos": "Foto's",
         "photo_enlarge": "Foto vergroten",
-        "photos_heading": "Foto's"
+        "photos_heading": "Foto's",
+        "edit_task_recurring_hint": "Deze taak hoort bij een terugkerende melding. Interval en reeksregel je op de melding; hier pas je alleen deze uitvoering aan (omschrijving, gepland op, prio, team)."
     },
     "updates": {
         "kind": {

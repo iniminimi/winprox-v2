@@ -185,7 +185,8 @@
         "added_by_worker": "Ausführender",
         "updates_photos": "Fotos",
         "photo_enlarge": "Foto vergrößern",
-        "photos_heading": "Fotos"
+        "photos_heading": "Fotos",
+        "edit_task_recurring_hint": "Diese Aufgabe gehört zu einer wiederkehrenden Meldung. Intervall und Serie steuern Sie an der Meldung; hier passen Sie nur diese Ausführung an (Beschreibung, geplant am, Prio, Team)."
     },
     "updates": {
         "kind": {

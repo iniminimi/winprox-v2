@@ -185,7 +185,8 @@
         "added_by_worker": "Field worker",
         "updates_photos": "Photos",
         "photo_enlarge": "Enlarge photo",
-        "photos_heading": "Photos"
+        "photos_heading": "Photos",
+        "edit_task_recurring_hint": "This task belongs to a recurring issue. Interval and series are managed on the issue; here you only adjust this occurrence (description, planned date, priority, team)."
     },
     "updates": {
         "kind": {

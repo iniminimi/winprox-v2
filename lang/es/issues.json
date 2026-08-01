@@ -185,7 +185,8 @@
         "added_by_worker": "Trabajador de campo",
         "updates_photos": "Fotos",
         "photo_enlarge": "Ampliar foto",
-        "photos_heading": "Fotos"
+        "photos_heading": "Fotos",
+        "edit_task_recurring_hint": "Esta tarea pertenece a un aviso recurrente. El intervalo y la serie se gestionan en el aviso; aquí solo ajusta esta ejecución (descripción, fecha planificada, prioridad, equipo)."
     },
     "updates": {
         "kind": {

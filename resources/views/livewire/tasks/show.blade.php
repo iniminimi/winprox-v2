@@ -104,6 +104,7 @@
                 </div>
                 <div class="wp-modal-body wp-stack">
                     <p class="wp-muted">{{ __('issues.show.edit_task_modal_subtitle') }}</p>
+                    @include('partials.wp-edit-task-recurring-hint', ['issue' => $issue])
                     <div class="wp-field">
                         <label class="wp-label" for="taskNote">{{ __('issues.show.task_note_label') }}</label>
                         <div x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">

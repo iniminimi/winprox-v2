@@ -185,7 +185,8 @@
         "added_by_worker": "Exécutant",
         "updates_photos": "Photos",
         "photo_enlarge": "Agrandir la photo",
-        "photos_heading": "Photos"
+        "photos_heading": "Photos",
+        "edit_task_recurring_hint": "Cette tâche appartient à un signalement récurrent. L’intervalle et la série se règlent sur le signalement ; ici vous n’ajustez que cette exécution (description, date planifiée, priorité, équipe)."
     },
     "updates": {
         "kind": {
