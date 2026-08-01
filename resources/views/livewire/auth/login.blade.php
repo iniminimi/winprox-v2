@@ -8,8 +8,8 @@
                 <span class="wp-auth-logo-frame">
                     <video
                         class="wp-auth-logo-video"
-                        width="120"
-                        height="120"
+                        width="80"
+                        height="80"
                         autoplay
                         loop
                         muted

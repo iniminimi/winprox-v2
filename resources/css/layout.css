@@ -848,8 +848,8 @@
 }
 
 .wp-auth-logo-frame:has(.wp-auth-logo-video) {
-    width: 7.5rem;
-    height: 7.5rem;
+    width: 5rem;
+    height: 5rem;
     max-width: none;
     padding: 0;
 }
