@@ -361,24 +361,26 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
-                    <select class="wp-input" wire:model="unitCheckListId">
-                        <option value="">{{ __('locations.units.no_check_list') }}</option>
-                        @foreach ($unitCheckLists as $checkList)
-                            <option value="{{ $checkList->id }}">{{ $checkList->name }}</option>
-                        @endforeach
-                    </select>
-                    <span class="wp-muted wp-text-sm">{{ __('locations.units.check_list_hint') }}</span>
-                    @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
+                        <select class="wp-input" wire:model="unitCheckListId">
+                            <option value="">{{ __('locations.units.no_check_list') }}</option>
+                            @foreach ($unitCheckLists as $checkList)
+                                <option value="{{ $checkList->id }}">{{ $checkList->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </x-wp-tooltip>
 
-                <label class="wp-field">
-                    <span class="wp-label">{{ __('locations.units.fields.external_id') }}</span>
-                    <input type="text" class="wp-input" wire:model="unitExternalId" maxlength="100" autocomplete="off">
-                    <span class="wp-muted wp-text-sm">{{ __('locations.units.external_id_hint') }}</span>
-                    @error('unitExternalId') <span class="wp-error">{{ $message }}</span> @enderror
-                </label>
+                <x-wp-tooltip :text="__('locations.units.external_id_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-field">
+                        <span class="wp-label">{{ __('locations.units.fields.external_id') }}</span>
+                        <input type="text" class="wp-input" wire:model="unitExternalId" maxlength="100" autocomplete="off">
+                        @error('unitExternalId') <span class="wp-error">{{ $message }}</span> @enderror
+                    </label>
+                </x-wp-tooltip>
 
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model="unitPublicReportsEnabled">
