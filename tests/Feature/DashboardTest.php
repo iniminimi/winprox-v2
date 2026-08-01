@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\TaskPriority;
 use App\Enums\TaskStatus;
 use App\Livewire\Dashboard;
 use App\Models\Category;
@@ -8,7 +7,6 @@ use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
-use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
