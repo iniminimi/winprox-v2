@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhooks",
-                    "text": "Each check fires unit.check.recorded so external systems can update rounds later."
+                    "text": "Each check triggers unit.check.recorded so external systems (IWMS, CMMS, ERP, …) can update the round."
                 }
             ]
         }

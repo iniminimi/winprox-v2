@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhook",
-                    "text": "Ogni controllo attiva unit.check.recorded per i sistemi esterni."
+                    "text": "Ogni controllo attiva unit.check.recorded così i sistemi esterni (IWMS, CMMS, ERP, …) possono aggiornare il giro."
                 }
             ]
         }

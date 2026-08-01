@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhooks",
-                    "text": "Chaque contrôle déclenche unit.check.recorded pour les systèmes externes."
+                    "text": "Chaque contrôle déclenche unit.check.recorded afin que les systèmes externes (GMAO, IWMS, ERP, …) puissent mettre à jour la ronde."
                 }
             ]
         }

@@ -251,8 +251,8 @@
                 "title": "Perché API e webhook?",
                 "body": "Con l’API e i webhook, WinProx può collaborare con il software esistente. Ad esempio:",
                 "items": [
-                    "inoltrare automaticamente una segnalazione a Planon o Ultimo;",
-                    "inoltrare un controllo unità (OK/Non OK) a Planon o Ultimo;",
+                    "inoltrare automaticamente una segnalazione al vostro IWMS, CMMS o ERP;",
+                    "inoltrare un controllo unità (OK/Non OK) al vostro software facility esterno;",
                     "sincronizzare compiti con un ERP;",
                     "mostrare dati in Power BI;",
                     "far creare segnalazioni automaticamente ai sensori IoT;",
@@ -348,20 +348,20 @@
                     "**Affidabilità:** se fallisce, WinProx riprova (con pausa crescente). Le consegne appaiono in un registro.",
                     "**Altri eventi es.:** segnalazione creata / approvata / stato modificato · compito creato / avviato / completato · Time · GPS · ESG · prenotazioni · pulsante di test · controllo unità registrato."
                 ],
-                "emphasis": "Esempio: un operatore chiude un compito. WinProx invia automaticamente un webhook al tuo ERP o a Planon così un ordine di lavoro può essere aggiornato subito."
+                "emphasis": "Esempio: un operatore chiude un’attività. WinProx invia automaticamente un webhook al vostro sistema esterno (IWMS, CMMS o ERP) così un ordine di lavoro può essere aggiornato subito."
             }
         ],
         "full": [
             {
                 "title": "Pronto per l’integrazione",
-                "body": "WinProx è pensato per lavorare accanto ai sistemi esistenti. Adatto all’integrazione con, tra gli altri:",
+                "body": "WinProx è pensato per lavorare accanto ai sistemi esistenti. Adatto all’integrazione, tra l’altro, con:",
                 "items": [
-                    "Planon",
-                    "Ultimo",
-                    "SAP",
+                    "IWMS / facility management",
+                    "CMMS / manutenzione",
+                    "ERP",
                     "Microsoft Power Automate",
                     "Power BI",
-                    "Il tuo software",
+                    "Software proprietario",
                     "Piattaforme IoT"
                 ],
                 "emphasis": "Hai già un ambiente IT? Esploriamo volentieri insieme come inserire WinProx. Contatto: info@winprox.app · Documentazione: Impostazioni → API → Docs"

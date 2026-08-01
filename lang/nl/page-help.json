@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhooks",
-                    "text": "Elke check triggert unit.check.recorded zodat externe systemen (later bv. Planon) de ronde kunnen bijwerken."
+                    "text": "Elke check triggert unit.check.recorded zodat externe systemen (IWMS, CMMS, ERP, …) de ronde kunnen bijwerken."
                 }
             ]
         }

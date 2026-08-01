@@ -251,8 +251,8 @@
                 "title": "Warum APIs und Webhooks?",
                 "body": "Mit API und Webhooks kann WinProx mit bestehender Software zusammenarbeiten. Zum Beispiel:",
                 "items": [
-                    "eine Meldung automatisch an Planon oder Ultimo weiterleiten;",
-                    "einen Unit-Check (OK/Nicht OK) an Planon oder Ultimo weiterleiten;",
+                    "eine Meldung automatisch an Ihr IWMS, CMMS oder ERP weiterleiten;",
+                    "einen Unit-Check (OK/Nicht OK) an Ihre externe Facility-Software weiterleiten;",
                     "Aufgaben mit einem ERP synchronisieren;",
                     "Daten in Power BI anzeigen;",
                     "IoT-Sensoren automatisch Meldungen erstellen lassen;",
@@ -348,17 +348,17 @@
                     "**Zuverlässigkeit:** schlägt die Zustellung fehl, versucht WinProx es erneut (mit steigender Pause). Zustellungen sehen Sie im Protokoll.",
                     "**Weitere Ereignisse u. a.:** Meldung erstellt / freigegeben / Status geändert · Aufgabe erstellt / gestartet / abgeschlossen · Time · GPS · ESG · Reservierungen · Testbutton · Unit-Check erfasst."
                 ],
-                "emphasis": "Beispiel: ein Mitarbeiter schließt eine Aufgabe ab. WinProx sendet automatisch einen Webhook an Ihr ERP oder Planon, damit dort sofort ein Arbeitsauftrag aktualisiert werden kann."
+                "emphasis": "Beispiel: ein Mitarbeiter schließt eine Aufgabe ab. WinProx sendet automatisch einen Webhook an Ihr externes System (IWMS, CMMS oder ERP), damit dort sofort ein Arbeitsauftrag aktualisiert werden kann."
             }
         ],
         "full": [
             {
                 "title": "Bereit für die Integration",
-                "body": "WinProx ist dafür gemacht, neben bestehenden Systemen zu arbeiten. Geeignet für Integration mit unter anderem:",
+                "body": "WinProx ist darauf ausgelegt, neben bestehenden Systemen zu arbeiten. Geeignet für die Integration u. a. mit:",
                 "items": [
-                    "Planon",
-                    "Ultimo",
-                    "SAP",
+                    "IWMS / Facility Management",
+                    "CMMS / Instandhaltungssysteme",
+                    "ERP",
                     "Microsoft Power Automate",
                     "Power BI",
                     "Eigene Software",

@@ -251,8 +251,8 @@
                 "title": "Why APIs and webhooks?",
                 "body": "With the API and webhooks, WinProx can work with existing software. For example:",
                 "items": [
-                    "automatically forward an issue to Planon or Ultimo;",
-                    "forward a unit check (OK/Not OK) to Planon or Ultimo;",
+                    "automatically forward an issue to your IWMS, CMMS or ERP;",
+                    "forward a unit check (OK/Not OK) to your external facility software;",
                     "synchronise tasks with an ERP system;",
                     "show data in Power BI;",
                     "let IoT sensors create issues automatically;",
@@ -348,7 +348,7 @@
                     "**Reliability:** if delivery fails, WinProx retries (with increasing delay). Deliveries appear in a log.",
                     "**Other events include:** issue created / approved / status changed · task created / started / completed · Time · GPS · ESG · reservations · test button · unit check recorded."
                 ],
-                "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your ERP or Planon so a work order can be updated immediately."
+                "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your external system (IWMS, CMMS or ERP) so a work order can be updated immediately."
             }
         ],
         "full": [
@@ -356,12 +356,12 @@
                 "title": "Ready for integration",
                 "body": "WinProx is designed to work alongside existing systems. Suitable for integration with, among others:",
                 "items": [
-                    "Planon",
-                    "Ultimo",
-                    "SAP",
+                    "IWMS / facility management",
+                    "CMMS / maintenance systems",
+                    "ERP",
                     "Microsoft Power Automate",
                     "Power BI",
-                    "Your own software",
+                    "Custom software",
                     "IoT platforms"
                 ],
                 "emphasis": "Have an existing IT landscape? We are happy to explore how WinProx fits. Contact: info@winprox.app · Documentation: Settings → API → Docs"

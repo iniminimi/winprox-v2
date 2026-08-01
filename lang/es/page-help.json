@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhooks",
-                    "text": "Cada chequeo dispara unit.check.recorded para sistemas externos."
+                    "text": "Cada comprobación dispara unit.check.recorded para que los sistemas externos (IWMS, GMAO, ERP, …) puedan actualizar la ronda."
                 }
             ]
         }

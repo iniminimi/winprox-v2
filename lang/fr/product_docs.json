@@ -251,8 +251,8 @@
                 "title": "Pourquoi des API et des webhooks ?",
                 "body": "Avec l’API et les webhooks, WinProx peut collaborer avec vos logiciels existants. Par exemple :",
                 "items": [
-                    "transmettre automatiquement un signalement à Planon ou Ultimo ;",
-                    "transmettre un contrôle d’unité (OK/Pas OK) vers Planon ou Ultimo ;",
+                    "transmettre automatiquement un signalement vers votre GMAO, IWMS ou ERP ;",
+                    "transmettre un contrôle d’unité (OK/Pas OK) vers votre logiciel de facility externe ;",
                     "synchroniser des tâches avec un ERP ;",
                     "afficher des données dans Power BI ;",
                     "laisser des capteurs IoT créer des signalements automatiquement ;",
@@ -348,20 +348,20 @@
                     "**Fiabilité :** en cas d’échec, WinProx réessaie (avec pause croissante). Les livraisons apparaissent dans un journal.",
                     "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré."
                 ],
-                "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre ERP ou Planon pour mettre à jour immédiatement un ordre de travail."
+                "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre système externe (GMAO, IWMS ou ERP) pour mettre à jour immédiatement un ordre de travail."
             }
         ],
         "full": [
             {
                 "title": "Prêt pour l’intégration",
-                "body": "WinProx est conçu pour fonctionner aux côtés des systèmes existants. Adapté à une intégration avec, entre autres :",
+                "body": "WinProx est conçu pour fonctionner aux côtés des systèmes existants. Adapté à l’intégration notamment avec :",
                 "items": [
-                    "Planon",
-                    "Ultimo",
-                    "SAP",
+                    "IWMS / facility management",
+                    "GMAO / maintenance",
+                    "ERP",
                     "Microsoft Power Automate",
                     "Power BI",
-                    "Votre propre logiciel",
+                    "Logiciel propriétaire",
                     "Plateformes IoT"
                 ],
                 "emphasis": "Vous avez déjà un paysage IT ? Nous examinons volontiers comment WinProx s’y intègre. Contact : info@winprox.app · Documentation : Paramètres → API → Docs"

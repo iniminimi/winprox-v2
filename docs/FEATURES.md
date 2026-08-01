@@ -390,7 +390,8 @@ de meldingenlijst te vervuilen. Los van ESG.
 | **3** | Interval **dag** + checklists + taakkoppeling via `task_id` | Klaar |
 
 ### Later
-Planon-specifieke mapping / inbound sync (`external_id`, push vanuit Planon) — niet nu.
+Koppeling met externe beheersoftware (IWMS, CMMS, ERP, …): mapping / inbound sync
+(`external_id`, push vanuit het externe systeem) — niet nu.
 
 ---
 

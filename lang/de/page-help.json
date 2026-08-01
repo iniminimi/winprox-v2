@@ -1224,7 +1224,7 @@
                 },
                 {
                     "label": "Webhooks",
-                    "text": "Jeder Check löst unit.check.recorded für externe Systeme aus."
+                    "text": "Jeder Check löst unit.check.recorded aus, damit externe Systeme (IWMS, CMMS, ERP, …) die Runde aktualisieren können."
                 }
             ]
         }
