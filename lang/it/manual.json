@@ -73,7 +73,9 @@
         "features_overview": "Panoramica funzionalità",
         "features_overview_desc": "Funzionalità principali a colpo d’occhio (pubblico + stampabile).",
         "technical_sheet": "Scheda tecnica",
-        "technical_sheet_desc": "Hosting, GDPR, API, sicurezza — per IT (pubblico + stampabile)."
+        "technical_sheet_desc": "Hosting, GDPR, API, sicurezza — per IT (pubblico + stampabile).",
+        "api_webhooks": "API & Webhooks",
+        "api_webhooks_desc": "Integrazione con software esistente via API e webhook — per decisori e IT (pubblico + stampabile)."
     },
     "workers": {
         "cover": {

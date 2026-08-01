@@ -340,6 +340,7 @@ Publieke + in-app documentatie voor prospects en IT:
 |---|---|---|
 | Features-overzicht | `/{locale}/docs/features` (`product.features`) | `lang/*/product_docs.json` → `features` |
 | Technische fiche | `/{locale}/docs/technical` (`product.technical`) | `lang/*/product_docs.json` → `technical` |
+| API & Webhooks | `/{locale}/docs/api_webhooks` (`product.api_webhooks`) | `lang/*/product_docs.json` → `api_webhooks` |
 
 **Links:** welcome-nav/footer · Handleidingen-hub (`/manual`) · sitemap via `MarketingSeo`.
 

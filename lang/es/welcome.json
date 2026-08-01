@@ -25,7 +25,8 @@
         "group_how": "Funcionamiento",
         "group_more": "Más",
         "features_overview": "Resumen de funciones",
-        "technical_sheet": "Ficha técnica"
+        "technical_sheet": "Ficha técnica",
+        "api_webhooks": "API & Webhooks"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",

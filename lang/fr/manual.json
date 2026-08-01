@@ -73,7 +73,9 @@
         "features_overview": "Aperçu des fonctionnalités",
         "features_overview_desc": "Fonctions principales en un coup d’œil (public + imprimable).",
         "technical_sheet": "Fiche technique",
-        "technical_sheet_desc": "Hébergement, RGPD, API, sécurité — pour l’IT (public + imprimable)."
+        "technical_sheet_desc": "Hébergement, RGPD, API, sécurité — pour l’IT (public + imprimable).",
+        "api_webhooks": "API & Webhooks",
+        "api_webhooks_desc": "Intégration avec les logiciels existants via API et webhooks — pour décideurs et IT (public + imprimable)."
     },
     "workers": {
         "cover": {

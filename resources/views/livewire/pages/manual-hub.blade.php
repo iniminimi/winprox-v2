@@ -41,6 +41,13 @@
                 </a>
                 <p class="wp-muted">{{ __('manual.hub.technical_sheet_desc') }}</p>
             </div>
+
+            <div class="wp-stack-tight">
+                <a href="{{ route('product.api_webhooks') }}" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">
+                    {{ __('manual.hub.api_webhooks') }}
+                </a>
+                <p class="wp-muted">{{ __('manual.hub.api_webhooks_desc') }}</p>
+            </div>
         </div>
     </div>
 </div>

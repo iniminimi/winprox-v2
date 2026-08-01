@@ -61,6 +61,18 @@
     color: #374151;
 }
 
+.wp-product-doc-highlight {
+    margin: 0 0 0.85rem;
+    padding: 0.55rem 0.75rem;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #065f46;
+    line-height: 1.4;
+}
+
 .wp-product-doc-flow {
     display: flex;
     flex-wrap: wrap;
@@ -127,6 +139,52 @@
     font-size: 0.85rem;
     color: #374151;
     line-height: 1.35;
+}
+
+.wp-product-doc-card__body + .wp-product-doc-card__list,
+.wp-product-doc-card__body + .wp-product-doc-table-wrap,
+.wp-product-doc-card__list + .wp-product-doc-table-wrap,
+.wp-product-doc-card__list + .wp-product-doc-card__emphasis,
+.wp-product-doc-table-wrap + .wp-product-doc-card__emphasis {
+    margin-top: 0.45rem;
+}
+
+.wp-product-doc-card__emphasis {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #065f46;
+    line-height: 1.35;
+}
+
+.wp-product-doc-table-wrap {
+    overflow-x: auto;
+}
+
+.wp-product-doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    color: #1a1a1a;
+}
+
+.wp-product-doc-table th,
+.wp-product-doc-table td {
+    border: 1px solid #e5e7eb;
+    padding: 0.35rem 0.45rem;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.3;
+}
+
+.wp-product-doc-table th {
+    background: #ecfdf5;
+    color: #065f46;
+    font-weight: 700;
+}
+
+.wp-product-doc-table tbody tr:nth-child(even) {
+    background: #f9fafb;
 }
 
 .wp-product-doc-card__list {

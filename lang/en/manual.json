@@ -73,7 +73,9 @@
         "features_overview": "Features overview",
         "features_overview_desc": "Key capabilities at a glance (public + printable).",
         "technical_sheet": "Technical fact sheet",
-        "technical_sheet_desc": "Hosting, GDPR, API, security — for IT (public + printable)."
+        "technical_sheet_desc": "Hosting, GDPR, API, security — for IT (public + printable).",
+        "api_webhooks": "API & Webhooks",
+        "api_webhooks_desc": "Integrate with existing software via APIs and webhooks — for decision makers and IT (public + printable)."
     },
     "workers": {
         "cover": {

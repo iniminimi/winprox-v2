@@ -25,7 +25,8 @@
         "group_how": "Werking",
         "group_more": "Meer",
         "features_overview": "Features-overzicht",
-        "technical_sheet": "Technische fiche"
+        "technical_sheet": "Technische fiche",
+        "api_webhooks": "API & Webhooks"
     },
     "hero": {
         "badge": "Facility · Time · ESG · IoT",

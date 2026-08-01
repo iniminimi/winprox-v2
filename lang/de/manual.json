@@ -73,7 +73,9 @@
         "features_overview": "Feature-Übersicht",
         "features_overview_desc": "Wichtigste Funktionen auf einen Blick (öffentlich + druckbar).",
         "technical_sheet": "Technisches Datenblatt",
-        "technical_sheet_desc": "Hosting, DSGVO, API, Sicherheit — für IT (öffentlich + druckbar)."
+        "technical_sheet_desc": "Hosting, DSGVO, API, Sicherheit — für IT (öffentlich + druckbar).",
+        "api_webhooks": "API & Webhooks",
+        "api_webhooks_desc": "Integration mit bestehender Software über APIs und Webhooks — für Entscheider und IT (öffentlich + druckbar)."
     },
     "workers": {
         "cover": {

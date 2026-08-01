@@ -44,6 +44,10 @@
             </div>
         </header>
 
+        @if (! empty($content['highlight']))
+            <p class="wp-product-doc-highlight">{{ $content['highlight'] }}</p>
+        @endif
+
         @if (! empty($content['intro']))
             <p class="wp-product-doc-intro">{{ $content['intro'] }}</p>
         @endif

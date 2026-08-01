@@ -11,6 +11,9 @@
         },
         "technical": {
             "label": "Technische fiche"
+        },
+        "api_webhooks": {
+            "label": "API & Webhooks"
         }
     },
     "features": {
@@ -103,7 +106,7 @@
                 "title": "API & webhooks",
                 "badge": "Corporate",
                 "badge_mod": "corp",
-                "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token. Zie ook technische fiche."
+                "body": "REST API-tokens en uitgaande webhooks (HMAC) onder Instellingen. Koppeling voor meldingen, taken, ESG, … IoT-ingest apart via gateway-token. Zie ook de fiche API & Webhooks en de technische fiche."
             }
         ],
         "full": [
@@ -233,6 +236,134 @@
                     "WinProx voert vertalingen **periodiek** uit (doorgaans dagelijks), **zonder vaste doorlooptijd of garantie**. Organisatiebeheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie.",
                     "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."
                 ]
+            }
+        ]
+    },
+    "api_webhooks": {
+        "label": "API & Webhooks",
+        "tagline": "Integreer WinProx met je bestaande software via API's en webhooks.",
+        "highlight": "WinProx is geen vervanger van bestaande IWMS- of ERP-systemen. Dankzij API's en webhooks werkt WinProx er net mee samen.",
+        "intro": "WinProx is gebouwd zodat andere software dezelfde gegevens, meldingen en taken kan gebruiken als WinProx zelf. Beheer en documentatie vind je onder Instellingen → API.",
+        "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
+        "footer_right": "Zie ook: Features-overzicht · Technische fiche",
+        "left": [
+            {
+                "title": "Waarom API's en webhooks?",
+                "body": "Met de API en webhooks kan WinProx samenwerken met bestaande software. Bijvoorbeeld:",
+                "items": [
+                    "een melding automatisch doorsturen naar Planon of Ultimo;",
+                    "taken synchroniseren met een ERP-systeem;",
+                    "gegevens tonen in Power BI;",
+                    "IoT-sensoren automatisch meldingen laten aanmaken;",
+                    "koppelen met eigen software of Microsoft Power Automate."
+                ],
+                "emphasis": "Zo blijft je centrale systeem (IWMS, ERP, BI) leidend — WinProx vult het aan op de werkvloer."
+            },
+            {
+                "title": "Wat is wat?",
+                "table": {
+                    "headers": [
+                        "",
+                        "API",
+                        "Webhook"
+                    ],
+                    "rows": [
+                        [
+                            "Richting",
+                            "Jouw systeem vraagt iets aan WinProx",
+                            "WinProx stuurt een bericht naar jouw systeem"
+                        ],
+                        [
+                            "Voorbeeld",
+                            "“Geef me open taken” / “Maak een melding”",
+                            "“Er is net een melding goedgekeurd”"
+                        ],
+                        [
+                            "Wanneer",
+                            "Wanneer jij wilt",
+                            "Direct na een gebeurtenis"
+                        ]
+                    ]
+                }
+            },
+            {
+                "title": "Wat dit níet is",
+                "items": [
+                    "Niet elke actie is via de API beschikbaar. Sommige onderdelen zijn bewust alleen leesbaar of ondersteunen enkel specifieke acties. Zo blijft de integratie veilig en beheersbaar.",
+                    "Webhooks beheer je in de app, niet via de API.",
+                    "Een generiek “inkomend webhook-adres” voor willekeurige externe systemen is nog geen productfunctie (IoT en Stripe hebben hun eigen paden).",
+                    "API & uitgaande webhooks: Corporate (proef-API op verzoek)."
+                ]
+            }
+        ],
+        "right": [
+            {
+                "title": "REST API",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "De API laat andere software veilig gegevens opvragen of acties uitvoeren binnen WinProx. De communicatie gebeurt via standaard REST-endpoints en JSON.",
+                "items": [
+                    "**Toegang:** persoonlijke toegangssleutel (Bearer-token). Intrekbaar. Per sleutel kies je rechten (scopes), bv. alleen meldingen lezen.",
+                    "**Organisatie-grens:** elke sleutel hoort bij één organisatie; je ziet nooit data van anderen.",
+                    "**Veiligheid:** limiet op verzoeken per minuut. Optionele Idempotency-Key zodat een herhaald verzoek geen dubbele actie veroorzaakt.",
+                    "**IoT apart:** sensoren sturen via een gateway-token (Facility+ / Corporate), niet via dezelfde API-sleutel."
+                ]
+            },
+            {
+                "title": "Wat je o.a. kunt",
+                "table": {
+                    "headers": [
+                        "Domein",
+                        "Mogelijkheden"
+                    ],
+                    "rows": [
+                        [
+                            "Facility",
+                            "Meldingen, Taken, Locaties, Units, Teams, Uitvoerders"
+                        ],
+                        [
+                            "Time",
+                            "In-/uitklokken, Shifts"
+                        ],
+                        [
+                            "ESG",
+                            "Metingen registreren"
+                        ],
+                        [
+                            "Reserveringen",
+                            "Aanmaken, wijzigen, annuleren"
+                        ]
+                    ]
+                }
+            },
+            {
+                "title": "Uitgaande webhooks",
+                "badge": "Corporate",
+                "badge_mod": "corp",
+                "body": "WinProx doet een HTTP POST naar een URL die jij opgeeft, zodra iets gebeurt.",
+                "items": [
+                    "**Instellen:** Instellingen → API → Webhooks (URL + welke events). Secret één keer tonen — bewaar die veilig.",
+                    "**Bewijs van herkomst:** elk bericht heeft een HMAC-handtekening (controleerbaar met jouw secret).",
+                    "**Betrouwbaarheid:** mislukt het? WinProx probeert opnieuw (met oplopende pauze). Leveringen zie je in een log.",
+                    "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop."
+                ],
+                "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie ERP of Planon, zodat daar onmiddellijk een werkorder kan worden bijgewerkt."
+            }
+        ],
+        "full": [
+            {
+                "title": "Klaar voor integratie",
+                "body": "WinProx is ontworpen om naast bestaande systemen te werken. Geschikt voor integratie met onder andere:",
+                "items": [
+                    "Planon",
+                    "Ultimo",
+                    "SAP",
+                    "Microsoft Power Automate",
+                    "Power BI",
+                    "Eigen software",
+                    "IoT-platformen"
+                ],
+                "emphasis": "Heb je een bestaande IT-omgeving? Dan bekijken we graag samen hoe WinProx daarin past. Contact: info@winprox.app · Documentatie: Instellingen → API → Docs"
             }
         ]
     }
