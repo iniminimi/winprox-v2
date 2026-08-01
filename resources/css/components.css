@@ -326,6 +326,10 @@
     align-items: flex-start;
 }
 
+.wp-page-head-main--assistant {
+    align-items: center;
+}
+
 .wp-page-actions {
     flex-shrink: 0;
     align-self: flex-start;

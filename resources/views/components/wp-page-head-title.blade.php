@@ -9,6 +9,7 @@
 
 <div @class([
     'wp-cluster wp-page-head-main',
+    'wp-page-head-main--assistant' => (bool) $assistantVideo,
     'wp-card wp-card-pad' => $variant === 'portal',
 ])>
     @if ($assistantVideo)
