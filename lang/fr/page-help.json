@@ -264,6 +264,10 @@
                 {
                     "label": "Documents & annonces",
                     "text": "Gérez les documents et annonces pour le portail QR unité. Documents : activez « Actif » pour publier dans le portail. Sans « Exécutants uniquement », tout visiteur peut consulter et télécharger le fichier. Avec « Exécutants uniquement », seul un exécutant connecté au portail (nom + icône) peut le voir et le télécharger — pas via l'écran d'administration avec connexion e-mail. Les documents inactifs restent visibles uniquement ici. Les documents actifs sont traduits automatiquement via Plateforme → Traductions (description) ; le formulaire d'édition affiche un aperçu par langue. Le titre reste dans la langue source."
+                },
+                {
+                    "label": "ID externe",
+                    "text": "Associez l'unité à votre logiciel facility (GMAO, IWMS, ERP, …) via l'ID externe. Les systèmes externes peuvent alors pousser des contrôles via POST /api/v1/units/checks."
                 }
             ]
         },
@@ -1225,6 +1229,10 @@
                 {
                     "label": "Webhooks",
                     "text": "Chaque contrôle déclenche unit.check.recorded afin que les systèmes externes (GMAO, IWMS, ERP, …) puissent mettre à jour la ronde."
+                },
+                {
+                    "label": "API entrante",
+                    "text": "Les systèmes externes envoient des contrôles avec external_unit_id (l'ID externe de l'unité). external_id optionnel sur le contrôle pour des retries idempotents. Voir la doc API Unit Checks."
                 }
             ]
         }

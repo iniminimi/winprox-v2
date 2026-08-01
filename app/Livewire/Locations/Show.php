@@ -115,6 +115,8 @@ class Show extends Component
 
     public ?int $unitCheckListId = null;
 
+    public string $unitExternalId = '';
+
     public bool $unitPublicReportsEnabled = true;
 
     public bool $unitAllowReservations = false;
@@ -365,6 +367,7 @@ class Show extends Component
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitCheckListId = null;
+        $this->unitExternalId = '';
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
@@ -384,6 +387,7 @@ class Show extends Component
         $this->unitDescription = $unit->description ?? '';
         $this->unitCategoryId = $unit->category_id;
         $this->unitCheckListId = $unit->unit_check_list_id;
+        $this->unitExternalId = (string) ($unit->external_id ?? '');
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitAllowUnitChecks = (bool) $unit->allow_unit_checks;
@@ -405,6 +409,7 @@ class Show extends Component
         $this->unitDescription = '';
         $this->unitCategoryId = null;
         $this->unitCheckListId = null;
+        $this->unitExternalId = '';
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
@@ -490,6 +495,7 @@ class Show extends Component
             'unitDescription' => $rules['description'],
             'unitCategoryId' => $rules['category_id'],
             'unitCheckListId' => $rules['unit_check_list_id'],
+            'unitExternalId' => $rules['external_id'],
             'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitAllowUnitChecks' => $rules['allow_unit_checks'],
@@ -501,6 +507,7 @@ class Show extends Component
             'unitName.unique' => __('locations.units.errors.duplicate_name'),
             'unitCategoryId.exists' => __('locations.units.errors.invalid_category'),
             'unitCheckListId.exists' => __('locations.units.errors.invalid_check_list'),
+            'unitExternalId.unique' => __('locations.units.errors.external_id_taken'),
             'unitPhotos.max' => __('portal.report.errors.photos_max'),
             'unitPhotos.*.image' => __('portal.report.errors.photos_image'),
             'unitPhotos.*.max' => __('portal.report.errors.photos_size'),
@@ -511,6 +518,7 @@ class Show extends Component
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
             'unit_check_list_id' => $validated['unitCheckListId'] ?? null,
+            'external_id' => $validated['unitExternalId'] ?? null,
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
             'allow_unit_checks' => (bool) $validated['unitAllowUnitChecks'],

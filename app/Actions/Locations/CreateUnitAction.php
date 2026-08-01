@@ -53,6 +53,11 @@ class CreateUnitAction
             $payload['unit_check_list_id'] = $data['unit_check_list_id'] ?? null;
         }
 
+        if (Schema::hasColumn('units', 'external_id') && array_key_exists('external_id', $data)) {
+            $externalId = trim((string) ($data['external_id'] ?? ''));
+            $payload['external_id'] = $externalId !== '' ? $externalId : null;
+        }
+
         $unit = Unit::create($payload);
 
         $this->audit->record(

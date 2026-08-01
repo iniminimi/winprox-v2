@@ -22,6 +22,7 @@ readonly class RecordUnitCheckData
         public ?int $taskId = null,
         public ?int $issueId = null,
         public ?array $checklistItems = null,
+        public ?string $externalId = null,
     ) {}
 
     /**
@@ -33,13 +34,15 @@ readonly class RecordUnitCheckData
      *     longitude?: float|int|string|null,
      *     task_id?: int|null,
      *     issue_id?: int|null,
-     *     checklist_items?: list<string>|null
+     *     checklist_items?: list<string>|null,
+     *     external_id?: string|null
      * }  $input
      */
     public static function fromValidated(array $input): self
     {
         $latitude = $input['latitude'] ?? null;
         $longitude = $input['longitude'] ?? null;
+        $externalId = isset($input['external_id']) ? trim((string) $input['external_id']) : null;
 
         return new self(
             result: UnitCheckResult::from((string) $input['result']),
@@ -50,6 +53,7 @@ readonly class RecordUnitCheckData
             taskId: isset($input['task_id']) ? (int) $input['task_id'] : null,
             issueId: isset($input['issue_id']) ? (int) $input['issue_id'] : null,
             checklistItems: $input['checklist_items'] ?? null,
+            externalId: $externalId !== null && $externalId !== '' ? $externalId : null,
         );
     }
 }

@@ -8,6 +8,7 @@ enum UnitCheckSource: string
 {
     case Portal = 'portal';
     case Api = 'api';
+    case External = 'external';
 
     /**
      * @return list<string>

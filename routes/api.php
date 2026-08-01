@@ -95,6 +95,9 @@ Route::prefix('v1')->group(function () {
             Route::post('units/{unit}/gps-reports', [UnitGpsReportController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':units:update'])
                 ->name('api.v1.units.gps-reports.store');
+            Route::post('units/checks', [UnitCheckController::class, 'storeByExternalId'])
+                ->middleware([CheckTokenAbilities::class.':units:update', 'idempotency'])
+                ->name('api.v1.units.checks.store-by-external');
             Route::post('units/{unit}/checks', [UnitCheckController::class, 'store'])
                 ->middleware([CheckTokenAbilities::class.':units:update'])
                 ->name('api.v1.units.checks.store');

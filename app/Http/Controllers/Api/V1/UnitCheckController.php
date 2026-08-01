@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\Units\IngestUnitCheckByExternalIdAction;
 use App\Actions\Units\RecordUnitCheckAction;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\UnitCheckSource;
+use App\Http\Requests\Units\IngestUnitCheckByExternalIdRequest;
 use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Http\Resources\UnitCheckResource;
 use App\Models\Unit;
@@ -33,6 +35,36 @@ class UnitCheckController extends Controller
             actorUserId: (int) auth()->id(),
         );
 
-        return $this->success(new UnitCheckResource($check), 201);
+        return $this->item(new UnitCheckResource($check), 201);
+    }
+
+    /**
+     * Inbound check from external facility software, keyed by unit external_id.
+     */
+    public function storeByExternalId(
+        IngestUnitCheckByExternalIdRequest $request,
+        IngestUnitCheckByExternalIdAction $ingest,
+    ): JsonResponse {
+        $validated = $request->validated();
+        $tenantId = Tenancy::id();
+
+        $unit = Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->where('external_id', trim((string) $validated['external_unit_id']))
+            ->first();
+
+        if ($unit !== null) {
+            $this->authorize('view', $unit);
+        }
+
+        $check = $ingest->handle(
+            validated: $validated,
+            tenantId: $tenantId,
+            actorUserId: (int) auth()->id(),
+        );
+
+        $status = $check->wasRecentlyCreated ? 201 : 200;
+
+        return $this->item(new UnitCheckResource($check), $status);
     }
 }

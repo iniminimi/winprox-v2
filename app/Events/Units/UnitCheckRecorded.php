@@ -25,6 +25,8 @@ class UnitCheckRecorded implements WebhookEvent
 
     public function webhookPayload(): array
     {
+        $this->check->loadMissing('unit');
+
         $payload = [
             'id' => $this->check->id,
             'unit_id' => $this->check->unit_id,
@@ -39,6 +41,8 @@ class UnitCheckRecorded implements WebhookEvent
             'task_id' => $this->check->task_id,
             'issue_id' => $this->check->issue_id,
             'checklist_items' => $this->check->checklist_items,
+            'external_id' => $this->check->external_id,
+            'unit_external_id' => $this->check->unit?->external_id,
             'google_maps_url' => $this->check->googleMapsUrl(),
         ];
 

@@ -113,7 +113,8 @@
             "allow_reservations": "Reserveringen toestaan",
             "require_reporter_contact": "Contactgegevens invullen verplicht",
             "check_list": "Checklist (unit check)",
-            "allow_unit_checks": "Unit checks toestaan"
+            "allow_unit_checks": "Unit checks toestaan",
+            "external_id": "Externe ID"
         },
         "translation_preview": "Vertaling (portaal)",
         "translation_edit": {
@@ -151,7 +152,8 @@
             "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve units.",
             "translation_import_missing": "Unit niet gevonden of niet actief.",
             "translation_import_name_too_long": "De vertaalde unitnaam is te lang.",
-            "invalid_check_list": "Ongeldige checklist."
+            "invalid_check_list": "Ongeldige checklist.",
+            "external_id_taken": "Deze externe ID is al in gebruik bij een andere unit."
         },
         "flash": {
             "created": "Unit aangemaakt.",
@@ -169,7 +171,8 @@
         "require_reporter_contact_hint": "Alleen relevant als de categorie dit verplicht. Staat standaard uit. Geldt alleen voor anonieme QR-melders, niet voor veldwerkers.",
         "no_check_list": "Geen checklist",
         "check_list_hint": "Optioneel. Gekoppelde checklist verschijnt op de unit-QR bij Unit check.",
-        "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen."
+        "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen.",
+        "external_id_hint": "Optioneel. ID van deze unit in jullie externe beheersoftware (IWMS, CMMS, ERP, …). Nodig voor inbound unit checks via de API."
     },
     "bulk": {
         "title": "Bulk units toevoegen",

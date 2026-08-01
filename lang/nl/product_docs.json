@@ -162,7 +162,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
-                    "O.a. meldingen, taken, locaties, units, teams, workers, unit checks, ESG, vertalingen.",
+                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit checks (ook inbound via externe unit-ID), ESG, vertalingen.",
                     "Beschikbaar op **Corporate** (proef op verzoek).",
                     "IoT-ingest apart via gateway-token (Facility + Corporate)."
                 ]
@@ -253,6 +253,7 @@
                 "items": [
                     "een melding automatisch doorsturen naar jullie IWMS, CMMS of ERP;",
                     "een unit check (OK/Niet OK) doorsturen naar jullie externe beheersoftware;",
+                    "een unit check ontvangen vanuit jullie externe beheersoftware (via externe unit-ID);",
                     "taken synchroniseren met een ERP-systeem;",
                     "gegevens tonen in Power BI;",
                     "IoT-sensoren automatisch meldingen laten aanmaken;",

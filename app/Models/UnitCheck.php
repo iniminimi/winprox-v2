@@ -31,6 +31,7 @@ class UnitCheck extends Model
         'task_id',
         'issue_id',
         'checklist_items',
+        'external_id',
     ];
 
     protected $casts = [

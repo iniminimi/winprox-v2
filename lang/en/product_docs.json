@@ -162,7 +162,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Incl. issues, tasks, locations, units, teams, workers, unit checks, ESG, translations.",
+                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit checks (also inbound via external unit ID), ESG, translations.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Facility + Corporate)."
                 ]
@@ -253,6 +253,7 @@
                 "items": [
                     "automatically forward an issue to your IWMS, CMMS or ERP;",
                     "forward a unit check (OK/Not OK) to your external facility software;",
+                    "receive a unit check from your external facility software (via external unit ID);",
                     "synchronise tasks with an ERP system;",
                     "show data in Power BI;",
                     "let IoT sensors create issues automatically;",

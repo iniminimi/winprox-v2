@@ -48,6 +48,7 @@ class RecordUnitCheckRequest extends FormRequest
             'issue_id' => ['nullable', 'integer', 'exists:issues,id'],
             'checklist_items' => ['nullable', 'array'],
             'checklist_items.*' => ['string', 'max:200'],
+            'external_id' => ['nullable', 'string', 'max:100'],
         ];
     }
 
@@ -110,8 +111,13 @@ class RecordUnitCheckRequest extends FormRequest
                 return;
             }
 
-            self::assertCheckedAtIsReasonable($checkedAt, 'checked_at', $validator);
+            self::assertApiCheckedAt($checkedAt, $validator);
         });
+    }
+
+    public static function assertApiCheckedAt(string $checkedAt, Validator $validator): void
+    {
+        self::assertCheckedAtIsReasonable($checkedAt, 'checked_at', $validator);
     }
 
     public static function assertPortalCheckedAt(string $checkedAt, Validator $validator): void

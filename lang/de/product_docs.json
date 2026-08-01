@@ -162,7 +162,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "U. a. Meldungen, Aufgaben, Standorte, Units, Teams, Ausführende, Unit-Checks, ESG, Übersetzungen.",
+                    "U. a. Meldungen, Aufgaben, Standorte, Units (inkl. externe ID), Teams, Mitarbeiter, Unit-Checks (auch eingehend über externe Unit-ID), ESG, Übersetzungen.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Facility + Corporate)."
                 ]
@@ -253,6 +253,7 @@
                 "items": [
                     "eine Meldung automatisch an Ihr IWMS, CMMS oder ERP weiterleiten;",
                     "einen Unit-Check (OK/Nicht OK) an Ihre externe Facility-Software weiterleiten;",
+                    "einen Unit-Check aus Ihrer externen Facility-Software empfangen (über externe Unit-ID);",
                     "Aufgaben mit einem ERP synchronisieren;",
                     "Daten in Power BI anzeigen;",
                     "IoT-Sensoren automatisch Meldungen erstellen lassen;",

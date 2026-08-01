@@ -19,7 +19,10 @@
         "result_required": "Wählen Sie OK oder Nicht OK.",
         "result_invalid": "Ungültiges Ergebnis.",
         "checked_at_required": "Zeitstempel ist erforderlich.",
-        "checked_at_invalid": "Ungültiger Zeitstempel."
+        "checked_at_invalid": "Ungültiger Zeitstempel.",
+        "external_unit_id_required": "Externe Unit-ID ist erforderlich.",
+        "external_unit_not_found": "Keine Unit mit dieser externen ID gefunden.",
+        "unit_checks_disabled": "Unit-Checks sind für diese Unit nicht aktiviert."
     },
     "lists": {
         "title": "Checklisten",

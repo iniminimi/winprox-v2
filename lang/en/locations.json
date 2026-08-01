@@ -113,7 +113,8 @@
             "allow_reservations": "Allow reservations",
             "require_reporter_contact": "Require contact details",
             "check_list": "Checklist (unit check)",
-            "allow_unit_checks": "Allow unit checks"
+            "allow_unit_checks": "Allow unit checks",
+            "external_id": "External ID"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -151,7 +152,8 @@
             "translation_requires_active": "Translations are only available for active units.",
             "translation_import_missing": "Unit not found or not active.",
             "translation_import_name_too_long": "The translated unit name is too long.",
-            "invalid_check_list": "Invalid checklist."
+            "invalid_check_list": "Invalid checklist.",
+            "external_id_taken": "This external ID is already used by another unit."
         },
         "flash": {
             "created": "Unit created.",
@@ -169,7 +171,8 @@
         "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
         "no_check_list": "No checklist",
         "check_list_hint": "Optional. The linked checklist appears on the unit QR Unit check.",
-        "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR."
+        "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
+        "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Required for inbound unit checks via the API."
     },
     "bulk": {
         "title": "Add bulk units",

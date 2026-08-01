@@ -19,6 +19,17 @@ class RecordUnitCheckAction
         ?Worker $worker = null,
         ?int $actorUserId = null,
     ): UnitCheck {
+        if ($data->externalId !== null) {
+            $existing = UnitCheck::query()
+                ->where('tenant_id', $tenantId)
+                ->where('external_id', $data->externalId)
+                ->first();
+
+            if ($existing !== null) {
+                return $existing;
+            }
+        }
+
         $unit->loadMissing('location');
 
         $check = UnitCheck::query()->create([
@@ -35,6 +46,7 @@ class RecordUnitCheckAction
             'task_id' => $data->taskId,
             'issue_id' => $data->issueId,
             'checklist_items' => $data->checklistItems,
+            'external_id' => $data->externalId,
         ]);
 
         event(new UnitCheckRecorded(

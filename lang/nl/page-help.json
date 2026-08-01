@@ -232,6 +232,10 @@
                     "text": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan zodat uitvoerders OK/Niet OK kunnen registreren via de unit-QR."
                 },
                 {
+                    "label": "Externe ID",
+                    "text": "Koppel de unit aan jullie externe beheersoftware (IWMS, CMMS, ERP, …) via Externe ID. Externe systemen kunnen dan unit checks pushen via POST /api/v1/units/checks."
+                },
+                {
                     "label": "Checklist (unit check)",
                     "text": "Koppel optioneel een checklist aan de unit. Bij Unit check op het portaal vinkt de uitvoerder elk punt af vóór OK of Niet OK wordt opgeslagen."
                 },
@@ -1225,6 +1229,10 @@
                 {
                     "label": "Webhooks",
                     "text": "Elke check triggert unit.check.recorded zodat externe systemen (IWMS, CMMS, ERP, …) de ronde kunnen bijwerken."
+                },
+                {
+                    "label": "Inbound API",
+                    "text": "Externe systemen pushen checks met external_unit_id (de Externe ID van de unit). Optioneel external_id op de check voor idempotente retries. Zie documentatie Unit Checks API."
                 }
             ]
         }

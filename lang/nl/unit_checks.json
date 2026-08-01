@@ -19,7 +19,10 @@
         "result_required": "Kies OK of Niet OK.",
         "result_invalid": "Ongeldig resultaat.",
         "checked_at_required": "Tijdstip is verplicht.",
-        "checked_at_invalid": "Ongeldig tijdstip."
+        "checked_at_invalid": "Ongeldig tijdstip.",
+        "external_unit_id_required": "Externe unit-ID is verplicht.",
+        "external_unit_not_found": "Geen unit gevonden met deze externe ID.",
+        "unit_checks_disabled": "Unit checks staan niet aan voor deze unit."
     },
     "lists": {
         "title": "Checklists",

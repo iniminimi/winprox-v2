@@ -162,7 +162,7 @@
                 "title": "API",
                 "items": [
                     "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Not. signalements, tâches, lieux, unités, équipes, exécutants, contrôles d’unité, ESG, traductions.",
+                    "Not. signalements, tâches, lieux, unités (ID externe inclus), équipes, exécutants, contrôles d’unité (aussi entrants via ID d’unité externe), ESG, traductions.",
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Facility + Corporate)."
                 ]
@@ -253,6 +253,7 @@
                 "items": [
                     "transmettre automatiquement un signalement vers votre GMAO, IWMS ou ERP ;",
                     "transmettre un contrôle d’unité (OK/Pas OK) vers votre logiciel de facility externe ;",
+                    "recevoir un contrôle unit depuis votre logiciel facility externe (via l'ID d'unité externe);",
                     "synchroniser des tâches avec un ERP ;",
                     "afficher des données dans Power BI ;",
                     "laisser des capteurs IoT créer des signalements automatiquement ;",

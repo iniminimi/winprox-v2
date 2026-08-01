@@ -379,8 +379,11 @@ de meldingenlijst te vervuilen. Los van ESG.
 
 ### API & webhooks
 - `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
-  Vereist `allow_unit_checks` op categorie én unit.
-- Webhook `unit.check.recorded` bij elke nieuwe rij.
+  Vereist `allow_unit_checks` op categorie én unit. `source=api`.
+- `POST /api/v1/units/checks` — inbound sync via `external_unit_id` (unit-mapping
+  `units.external_id`); optioneel `external_id` op de check (idempotent). `source=external`.
+- Webhook `unit.check.recorded` bij elke **nieuwe** rij (payload bevat `external_id` /
+  `unit_external_id` indien gezet).
 
 ### Fasering (afgerond)
 | Fase | Levert | Status |
@@ -388,10 +391,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 | **1** | Portaal OK/Niet OK → `unit_checks` + beheerlijst; Niet OK → meldflow; GPS optioneel | Klaar |
 | **2** | Webhook `unit.check.recorded` + API POST | Klaar (meegeleverd met fase 1) |
 | **3** | Interval **dag** + checklists + taakkoppeling via `task_id` | Klaar |
-
-### Later
-Koppeling met externe beheersoftware (IWMS, CMMS, ERP, …): mapping / inbound sync
-(`external_id`, push vanuit het externe systeem) — niet nu.
+| **4** | Externe ID-mapping op unit + inbound `POST /units/checks` (IWMS/CMMS/ERP) | Klaar |
 
 ---
 

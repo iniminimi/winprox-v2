@@ -26,6 +26,8 @@ class UnitResource extends JsonResource
                 fn () => $this->completedTranslationMap(),
             ),
             'is_active' => (bool) $this->is_active,
+            'external_id' => $this->external_id,
+            'allow_unit_checks' => (bool) $this->allow_unit_checks,
         ];
     }
 }

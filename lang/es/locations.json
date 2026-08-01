@@ -113,7 +113,8 @@
             "allow_reservations": "Permitir reservas",
             "require_reporter_contact": "Datos de contacto obligatorios",
             "check_list": "Lista (chequeo de unit)",
-            "allow_unit_checks": "Permitir comprobaciones de unidad"
+            "allow_unit_checks": "Permitir comprobaciones de unidad",
+            "external_id": "ID externo"
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -151,7 +152,8 @@
             "translation_requires_active": "Las traducciones solo están disponibles para unidades activas.",
             "translation_import_missing": "Unidad no encontrada o no activa.",
             "translation_import_name_too_long": "El nombre traducido de la unidad es demasiado largo.",
-            "invalid_check_list": "Lista no válida."
+            "invalid_check_list": "Lista no válida.",
+            "external_id_taken": "Este ID externo ya está en uso en otra unidad."
         },
         "flash": {
             "created": "Unidad creada.",
@@ -169,7 +171,8 @@
         "require_reporter_contact_hint": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores de campo.",
         "no_check_list": "Sin lista",
         "check_list_hint": "Opcional. La lista vinculada aparece en el chequeo del QR.",
-        "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad."
+        "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad.",
+        "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Necesario para comprobaciones unit entrantes vía API."
     },
     "bulk": {
         "title": "Añadir unidades en bloque",

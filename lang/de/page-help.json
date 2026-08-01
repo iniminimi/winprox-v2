@@ -264,6 +264,10 @@
                 {
                     "label": "Dokumente & Mitteilungen",
                     "text": "Verwalten Sie Dokumente und Mitteilungen für das Unit-QR-Portal. Dokumente: «Aktiv» einschalten, um im Portal zu veröffentlichen. Ohne «Nur Ausführende» kann jeder Besucher die Datei ansehen und herunterladen. Mit «Nur Ausführende» sieht und lädt nur ein Ausführender, der sich im Portal angemeldet hat (Name + Icon), herunter — nicht über den Verwaltungsbildschirm mit E-Mail-Anmeldung. Inaktive Dokumente bleiben nur hier sichtbar. Aktive Dokumente werden automatisch über Plattform → Übersetzungen übersetzt (Beschreibung); im Bearbeitungsformular sehen Sie eine Übersetzungsvorschau pro Sprache. Der Titel bleibt in der Ausgangssprache."
+                },
+                {
+                    "label": "Externe ID",
+                    "text": "Verknüpfen Sie die Unit über Externe ID mit Ihrer Facility-Software (IWMS, CMMS, ERP, …). Externe Systeme können dann Unit-Checks per POST /api/v1/units/checks senden."
                 }
             ]
         },
@@ -1225,6 +1229,10 @@
                 {
                     "label": "Webhooks",
                     "text": "Jeder Check löst unit.check.recorded aus, damit externe Systeme (IWMS, CMMS, ERP, …) die Runde aktualisieren können."
+                },
+                {
+                    "label": "Inbound-API",
+                    "text": "Externe Systeme senden Checks mit external_unit_id (die Externe ID der Unit). Optional external_id am Check für idempotente Retries. Siehe Unit-Checks-API-Doku."
                 }
             ]
         }

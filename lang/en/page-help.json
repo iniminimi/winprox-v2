@@ -232,6 +232,10 @@
                     "text": "Only relevant when the category allows unit checks. Off by default; turn on so workers can record OK/Not OK via the unit QR."
                 },
                 {
+                    "label": "External ID",
+                    "text": "Map the unit to your external facility software (IWMS, CMMS, ERP, …) with External ID. External systems can then push unit checks via POST /api/v1/units/checks."
+                },
+                {
                     "label": "Checklist (unit check)",
                     "text": "Optionally link a checklist to the unit. On Unit check in the portal the worker ticks each item before OK or Not OK is saved."
                 },
@@ -1225,6 +1229,10 @@
                 {
                     "label": "Webhooks",
                     "text": "Each check triggers unit.check.recorded so external systems (IWMS, CMMS, ERP, …) can update the round."
+                },
+                {
+                    "label": "Inbound API",
+                    "text": "External systems push checks with external_unit_id (the unit's External ID). Optional external_id on the check for idempotent retries. See Unit Checks API docs."
                 }
             ]
         }

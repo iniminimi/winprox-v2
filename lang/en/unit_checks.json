@@ -19,7 +19,10 @@
         "result_required": "Choose OK or Not OK.",
         "result_invalid": "Invalid result.",
         "checked_at_required": "Timestamp is required.",
-        "checked_at_invalid": "Invalid timestamp."
+        "checked_at_invalid": "Invalid timestamp.",
+        "external_unit_id_required": "External unit ID is required.",
+        "external_unit_not_found": "No unit found with this external ID.",
+        "unit_checks_disabled": "Unit checks are not enabled for this unit."
     },
     "lists": {
         "title": "Checklists",

@@ -33,6 +33,7 @@ class Unit extends Model
         'require_reporter_contact',
         'background_photo_path',
         'unit_check_list_id',
+        'external_id',
     ];
 
     protected $casts = [

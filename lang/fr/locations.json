@@ -113,7 +113,8 @@
             "allow_reservations": "Autoriser les réservations",
             "require_reporter_contact": "Coordonnées obligatoires",
             "check_list": "Liste de contrôle (contrôle unit)",
-            "allow_unit_checks": "Autoriser les contrôles d’unité"
+            "allow_unit_checks": "Autoriser les contrôles d’unité",
+            "external_id": "ID externe"
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
@@ -151,7 +152,8 @@
             "translation_requires_active": "Les traductions ne sont possibles que pour les unités actives.",
             "translation_import_missing": "Unité introuvable ou inactive.",
             "translation_import_name_too_long": "Le nom d'unité traduit est trop long.",
-            "invalid_check_list": "Liste invalide."
+            "invalid_check_list": "Liste invalide.",
+            "external_id_taken": "Cet ID externe est déjà utilisé par une autre unité."
         },
         "flash": {
             "created": "Unité créée.",
@@ -169,7 +171,8 @@
         "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
         "no_check_list": "Aucune liste",
         "check_list_hint": "Optionnel. La liste liée apparaît sur le QR unit.",
-        "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité."
+        "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité.",
+        "external_id_hint": "Facultatif. ID de cette unité dans votre logiciel facility externe (GMAO, IWMS, ERP, …). Requis pour les contrôles unit entrants via l'API."
     },
     "bulk": {
         "title": "Ajouter des unités en masse",

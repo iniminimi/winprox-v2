@@ -373,6 +373,13 @@
                     @error('unitCheckListId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.fields.external_id') }}</span>
+                    <input type="text" class="wp-input" wire:model="unitExternalId" maxlength="100" autocomplete="off">
+                    <span class="wp-muted wp-text-sm">{{ __('locations.units.external_id_hint') }}</span>
+                    @error('unitExternalId') <span class="wp-error">{{ $message }}</span> @enderror
+                </label>
+
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model="unitPublicReportsEnabled">
                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>

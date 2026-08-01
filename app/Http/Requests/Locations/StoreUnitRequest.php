@@ -45,11 +45,22 @@ class StoreUnitRequest extends FormRequest
             $checkListRules = ['nullable', 'integer', $checkListExists];
         }
 
+        $externalIdRules = ['nullable', 'string', 'max:100'];
+        if (Schema::hasColumn('units', 'external_id') && $tenantId !== null) {
+            $externalUnique = Rule::unique('units', 'external_id')
+                ->where(fn ($q) => $q->where('tenant_id', $tenantId));
+            if ($ignoreUnitId !== null) {
+                $externalUnique->ignore($ignoreUnitId);
+            }
+            $externalIdRules[] = $externalUnique;
+        }
+
         return [
             'name' => ['required', 'string', 'min:1', 'max:255', $unique],
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
             'category_id' => $categoryRules,
             'unit_check_list_id' => $checkListRules,
+            'external_id' => $externalIdRules,
             'public_reports_enabled' => ['boolean'],
             'allow_reservations' => ['boolean'],
             'allow_unit_checks' => ['boolean'],
