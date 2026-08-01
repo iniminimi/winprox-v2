@@ -53,10 +53,12 @@
             "translation_import_missing": "Checklist introuvable ou inactive.",
             "translation_import_name_too_long": "Le nom de checklist traduit est trop long.",
             "translation_import_items_mismatch": "Le nombre de points traduits ne correspond pas à la source.",
-            "translation_import_item_too_long": "Un point de checklist traduit est trop long."
+            "translation_import_item_too_long": "Un point de checklist traduit est trop long.",
+            "in_use": "Cette liste est liée à une ou plusieurs unités et ne peut pas être supprimée. Désactivez-la ou dissociez d’abord les unités."
         },
         "team_shared": "Toutes les équipes",
-        "starters_label": "Partir d’un modèle :"
+        "starters_label": "Partir d’un modèle :",
+        "confirm_delete": "Supprimer définitivement cette liste de contrôle ?"
     },
     "starters": {
         "cleaning": {

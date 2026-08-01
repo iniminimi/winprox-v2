@@ -53,10 +53,12 @@
             "translation_import_missing": "Checklist niet gevonden of niet actief.",
             "translation_import_name_too_long": "De vertaalde checklistnaam is te lang.",
             "translation_import_items_mismatch": "Het aantal vertaalde checklistpunten wijkt af van de bron.",
-            "translation_import_item_too_long": "Een vertaald checklistpunt is te lang."
+            "translation_import_item_too_long": "Een vertaald checklistpunt is te lang.",
+            "in_use": "Deze checklist is gekoppeld aan een of meer units en kan niet worden verwijderd. Deactiveer ze of ontkoppel eerst de units."
         },
         "team_shared": "Alle teams",
-        "starters_label": "Start vanaf sjabloon:"
+        "starters_label": "Start vanaf sjabloon:",
+        "confirm_delete": "Deze checklist definitief verwijderen?"
     },
     "starters": {
         "cleaning": {

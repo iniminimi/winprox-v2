@@ -30,6 +30,7 @@ use App\Http\Requests\Team\UpdateColleagueRequest;
 use App\Http\Requests\Team\UpdateWorkerRequest;
 use App\Actions\Units\CopyUnitCheckListFromStarterAction;
 use App\Actions\Units\DeactivateUnitCheckListAction;
+use App\Actions\Units\DeleteUnitCheckListAction;
 use App\Actions\Units\SaveUnitCheckListAction;
 use App\Data\Units\SaveUnitCheckListData;
 use App\Http\Requests\Units\SaveUnitCheckListRequest;
@@ -1096,6 +1097,28 @@ class Team extends Component
         $deactivate->handle($list, (int) auth()->id());
     }
 
+    public function deleteCheckList(int $listId, DeleteUnitCheckListAction $delete): void
+    {
+        $list = UnitCheckList::query()->findOrFail($listId);
+        $this->authorize('delete', $list);
+
+        try {
+            $delete->handle($list, (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                foreach ($messages as $message) {
+                    $this->addError('checkListName', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        if ($this->editingCheckListId === $listId) {
+            $this->closeCheckListModal();
+        }
+    }
+
     public function render()
     {
         $user = auth()->user();
@@ -1180,7 +1203,7 @@ class Team extends Component
             'teamTranslationLocales' => $teamTranslationLocales,
             'checkLists' => UnitCheckList::query()
                 ->with(['internalTeam.translations', 'translations'])
-                ->withCount('items')
+                ->withCount(['items', 'units'])
                 ->orderBy('name')
                 ->get(),
             'checkListTeams' => InternalTeam::query()

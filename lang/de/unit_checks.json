@@ -53,10 +53,12 @@
             "translation_import_missing": "Checkliste nicht gefunden oder nicht aktiv.",
             "translation_import_name_too_long": "Der übersetzte Checklistenname ist zu lang.",
             "translation_import_items_mismatch": "Die Anzahl der übersetzten Punkte weicht von der Quelle ab.",
-            "translation_import_item_too_long": "Ein übersetzter Checklistenpunkt ist zu lang."
+            "translation_import_item_too_long": "Ein übersetzter Checklistenpunkt ist zu lang.",
+            "in_use": "Diese Checkliste ist mit einer oder mehreren Units verknüpft und kann nicht gelöscht werden. Deaktivieren Sie sie oder trennen Sie zuerst die Units."
         },
         "team_shared": "Alle Teams",
-        "starters_label": "Mit Vorlage starten:"
+        "starters_label": "Mit Vorlage starten:",
+        "confirm_delete": "Diese Checkliste endgültig löschen?"
     },
     "starters": {
         "cleaning": {

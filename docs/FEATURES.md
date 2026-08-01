@@ -374,7 +374,7 @@ de meldingenlijst te vervuilen. Los van ESG.
 ### Checklists (Teams)
 - Templates met vinkpunten: Teams → uitklap **Checklists** (optioneel gekoppeld aan een
   team, of gedeeld voor alle teams). Starters (schoonmaak / techniek / security) zijn
-  kopieerbaar.
+  kopieerbaar. Checklists zonder gekoppelde units kun je verwijderen; anders deactiveren.
 - Koppelen aan unit via Locaties → unit bewerken. Dropdown toont gedeelde checklists én
   checklists van teams die aan de categorie van de unit hangen.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.

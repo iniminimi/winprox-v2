@@ -181,6 +181,56 @@ it('copies a starter checklist', function () {
         ->and($list->items->count())->toBeGreaterThan(0);
 });
 
+it('deletes an unused checklist from the teams page', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $list = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Tijdelijk',
+        'is_active' => true,
+    ]);
+    UnitCheckListItem::query()->create([
+        'unit_check_list_id' => $list->id,
+        'label' => 'Punt A',
+        'sort_order' => 0,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Pages\Team::class)
+        ->call('deleteCheckList', $list->id)
+        ->assertHasNoErrors();
+
+    expect(UnitCheckList::query()->whereKey($list->id)->exists())->toBeFalse();
+});
+
+it('refuses to delete a checklist that is linked to a unit', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+
+    $list = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'In gebruik',
+        'is_active' => true,
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_check_list_id' => $list->id,
+        'is_active' => true,
+    ]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Pages\Team::class)
+        ->call('deleteCheckList', $list->id)
+        ->assertHasErrors(['checkListName']);
+
+    expect(UnitCheckList::query()->whereKey($list->id)->exists())->toBeTrue();
+});
+
 it('filters unit checklist dropdown by category teams', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

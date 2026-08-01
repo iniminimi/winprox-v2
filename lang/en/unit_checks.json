@@ -53,10 +53,12 @@
             "translation_import_missing": "Checklist not found or not active.",
             "translation_import_name_too_long": "The translated checklist name is too long.",
             "translation_import_items_mismatch": "The number of translated checklist items does not match the source.",
-            "translation_import_item_too_long": "A translated checklist item is too long."
+            "translation_import_item_too_long": "A translated checklist item is too long.",
+            "in_use": "This checklist is linked to one or more units and cannot be deleted. Deactivate it or unlink the units first."
         },
         "team_shared": "All teams",
-        "starters_label": "Start from template:"
+        "starters_label": "Start from template:",
+        "confirm_delete": "Delete this checklist permanently?"
     },
     "starters": {
         "cleaning": {

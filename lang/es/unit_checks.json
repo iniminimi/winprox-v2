@@ -53,10 +53,12 @@
             "translation_import_missing": "Lista no encontrada o no activa.",
             "translation_import_name_too_long": "El nombre de lista traducido es demasiado largo.",
             "translation_import_items_mismatch": "El número de puntos traducidos no coincide con el origen.",
-            "translation_import_item_too_long": "Un punto de lista traducido es demasiado largo."
+            "translation_import_item_too_long": "Un punto de lista traducido es demasiado largo.",
+            "in_use": "Esta lista está vinculada a una o más unidades y no se puede eliminar. Desactívela o desvincule primero las unidades."
         },
         "team_shared": "Todos los equipos",
-        "starters_label": "Empezar desde plantilla:"
+        "starters_label": "Empezar desde plantilla:",
+        "confirm_delete": "¿Eliminar definitivamente esta lista de comprobación?"
     },
     "starters": {
         "cleaning": {

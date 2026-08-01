@@ -80,6 +80,9 @@
         </x-slot:toolbar>
 
         <p class="wp-muted wp-text-sm">{{ __('unit_checks.lists.lead') }}</p>
+        @error('checkListName')
+            <div class="wp-flash wp-flash--warning">{{ $message }}</div>
+        @enderror
 
         @can('create', App\Models\UnitCheckList::class)
             @if ($checkListStarters !== [])
@@ -125,6 +128,16 @@
                                 @if ($list->is_active)
                                     <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateCheckList({{ $list->id }})">
                                         {{ __('unit_checks.lists.deactivate') }}
+                                    </button>
+                                @endif
+                                @if ($list->units_count === 0)
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="deleteCheckList({{ $list->id }})"
+                                        wire:confirm="{{ __('unit_checks.lists.confirm_delete') }}"
+                                    >
+                                        {{ __('common.button.delete') }}
                                     </button>
                                 @endif
                             @endcan
