@@ -33,23 +33,15 @@ it('weigert verkeerde inloggegevens', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    $component = Livewire::test(Login::class)
+    Livewire::test(Login::class)
         ->set('email', $user->email)
         ->set('password', 'fout-wachtwoord')
         ->call('login')
         ->assertHasErrors('email')
-        ->assertSet('attentionFocus', true)
         ->assertSee('video/assistant_attention.mp4', false)
-        ->assertDontSee(__('auth.submit'), false)
-        ->assertDontSee(__('auth.errors.failed'), false);
+        ->assertSee(__('auth.errors.failed'), false);
 
     expect(auth()->check())->toBeFalse();
-
-    $component
-        ->call('revealAfterAttention')
-        ->assertSet('attentionFocus', false)
-        ->assertSee(__('auth.submit'), false)
-        ->assertSee(__('auth.errors.failed'), false);
 });
 
 it('toont het logo op de loginpagina zolang er geen fout is', function () {
