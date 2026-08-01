@@ -37,9 +37,17 @@ it('weigert verkeerde inloggegevens', function () {
         ->set('email', $user->email)
         ->set('password', 'fout-wachtwoord')
         ->call('login')
-        ->assertHasErrors('email');
+        ->assertHasErrors('email')
+        ->assertSee('video/assistant_attention.mp4', false)
+        ->assertSee(__('auth.errors.failed'), false);
 
     expect(auth()->check())->toBeFalse();
+});
+
+it('toont het logo op de loginpagina zolang er geen fout is', function () {
+    Livewire::test(Login::class)
+        ->assertDontSee('video/assistant_attention.mp4', false)
+        ->assertSee('Winprox_logo', false);
 });
 
 it('toont beheerschermen NOOIT geblurd, ook niet voor een niet-goedgekeurde melding', function () {

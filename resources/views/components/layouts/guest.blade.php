@@ -16,16 +16,18 @@
                 @include('partials.wp-lang-switch', ['variant' => 'inline'])
             </div>
 
-            <a href="{{ route('welcome') }}" class="wp-auth-logo-link" aria-label="{{ __('welcome.back_home') }}">
-                @if (file_exists(public_path('images/Winprox_logo_200.png')))
-                    <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" class="wp-auth-logo-img" width="180" height="auto" />
-                @elseif (file_exists(public_path('images/Winprox_logo_300.png')))
-                    <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="" class="wp-auth-logo-img" width="120" height="120" />
-                @else
-                    <span class="wp-auth-logo">WinProx</span>
-                @endif
-                <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
-            </a>
+            @unless ($hideAuthLogo ?? false)
+                <a href="{{ route('welcome') }}" class="wp-auth-logo-link" aria-label="{{ __('welcome.back_home') }}">
+                    @if (file_exists(public_path('images/Winprox_logo_200.png')))
+                        <img src="{{ asset('images/Winprox_logo_200.png') }}" alt="" class="wp-auth-logo-img" width="180" height="auto" />
+                    @elseif (file_exists(public_path('images/Winprox_logo_300.png')))
+                        <img src="{{ asset('images/Winprox_logo_300.png') }}" alt="" class="wp-auth-logo-img" width="120" height="120" />
+                    @else
+                        <span class="wp-auth-logo">WinProx</span>
+                    @endif
+                    <span class="wp-auth-tagline">{{ __('common.brand.tagline') }}</span>
+                </a>
+            @endunless
 
             <div class="wp-auth-content">
                 {{ $slot }}
