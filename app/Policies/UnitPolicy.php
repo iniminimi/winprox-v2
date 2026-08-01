@@ -36,7 +36,7 @@ class UnitPolicy
 
     public function createCheck(User $user, Unit $unit): bool
     {
-        return $this->view($user, $unit);
+        return $this->view($user, $unit) && $unit->allowsUnitChecks();
     }
 
     public function deactivate(User $user, Unit $unit): bool

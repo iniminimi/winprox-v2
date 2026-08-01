@@ -37,6 +37,9 @@ class CreateUnitAction
             'allow_reservations' => array_key_exists('allow_reservations', $data)
                 ? (bool) $data['allow_reservations']
                 : false,
+            'allow_unit_checks' => array_key_exists('allow_unit_checks', $data)
+                ? (bool) $data['allow_unit_checks']
+                : false,
             'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
                 ? (bool) $data['require_reporter_contact']
                 : false,

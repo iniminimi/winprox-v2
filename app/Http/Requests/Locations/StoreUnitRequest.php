@@ -52,6 +52,7 @@ class StoreUnitRequest extends FormRequest
             'unit_check_list_id' => $checkListRules,
             'public_reports_enabled' => ['boolean'],
             'allow_reservations' => ['boolean'],
+            'allow_unit_checks' => ['boolean'],
             'require_reporter_contact' => ['boolean'],
         ];
     }

@@ -38,7 +38,11 @@ function unitPortalScaffold(array $unitOverrides = []): array
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Test Category',
+        'allow_unit_checks' => true,
+    ]);
     $category->teams()->sync([$team->id]);
 
     $qrToken = $unitOverrides['qr_token'] ?? 'unit-token';
@@ -49,6 +53,7 @@ function unitPortalScaffold(array $unitOverrides = []): array
         'location_id' => $location->id,
         'category_id' => $category->id,
         'is_active' => true,
+        'allow_unit_checks' => true,
     ], $unitOverrides));
 
     return compact('tenant', 'location', 'team', 'unit');
@@ -1016,6 +1021,29 @@ it('opens the report form after a not_ok unit check', function () {
 
 it('hides unit check from guests without worker verification', function () {
     unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.unit_check'))
+        ->call('openSection', 'unit_check')
+        ->assertSet('portalSection', 'home');
+});
+
+it('hides unit check when unit or category flag is off', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold(['allow_unit_checks' => false]);
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.unit_check'))
+        ->call('openSection', 'unit_check')
+        ->assertSet('portalSection', 'home');
+
+    $unit->update(['allow_unit_checks' => true]);
+    $unit->category->update(['allow_unit_checks' => false]);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->assertDontSee(__('portal.tiles.unit_check'))

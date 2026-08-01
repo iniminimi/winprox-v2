@@ -29,6 +29,7 @@ class Unit extends Model
         'is_active',
         'public_reports_enabled',
         'allow_reservations',
+        'allow_unit_checks',
         'require_reporter_contact',
         'background_photo_path',
         'unit_check_list_id',
@@ -38,6 +39,7 @@ class Unit extends Model
         'is_active' => 'boolean',
         'public_reports_enabled' => 'boolean',
         'allow_reservations' => 'boolean',
+        'allow_unit_checks' => 'boolean',
         'require_reporter_contact' => 'boolean',
     ];
 
@@ -88,6 +90,13 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->is_reservable && $this->allow_reservations;
+    }
+
+    public function allowsUnitChecks(): bool
+    {
+        $this->loadMissing('category');
+
+        return (bool) $this->category?->allow_unit_checks && $this->allow_unit_checks;
     }
 
     public function requiresReporterContact(): bool

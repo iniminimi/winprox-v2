@@ -112,7 +112,8 @@
             "public_reports_enabled": "Besucher können über das QR-Portal eine Meldung erstellen",
             "allow_reservations": "Reservierungen erlauben",
             "require_reporter_contact": "Kontaktdaten Pflicht",
-            "check_list": "Checkliste (Unit-Check)"
+            "check_list": "Checkliste (Unit-Check)",
+            "allow_unit_checks": "Unit-Checks erlauben"
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
@@ -167,7 +168,8 @@
         "allow_reservations_hint": "Nur relevant, wenn die Kategorie Reservierbar ist. Standardmäßig aus; einschalten, um Reservierungen für diese Unit zu erlauben.",
         "require_reporter_contact_hint": "Nur relevant, wenn die Kategorie dies verlangt. Standardmäßig aus. Gilt nur für anonyme QR-Melder, nicht für Feldmitarbeiter.",
         "no_check_list": "Keine Checkliste",
-        "check_list_hint": "Optional. Die verknüpfte Checkliste erscheint beim Unit-Check auf dem QR."
+        "check_list_hint": "Optional. Die verknüpfte Checkliste erscheint beim Unit-Check auf dem QR.",
+        "allow_unit_checks_hint": "Nur relevant, wenn die Kategorie Unit-Checks erlaubt. Standardmäßig aus; einschalten, um die Unit-Check-Kachel auf dem Unit-QR zu zeigen."
     },
     "bulk": {
         "title": "Bulk-Units hinzufügen",
@@ -229,7 +231,8 @@
             "teams": "Teams",
             "allow_gps_location": "GPS-Standort erlauben",
             "is_reservable": "Reservierbar",
-            "require_reporter_contact": "Kontaktdaten Pflicht"
+            "require_reporter_contact": "Kontaktdaten Pflicht",
+            "allow_unit_checks": "Unit-Checks erlauben"
         },
         "allow_gps_location_hint": "Erlaubt, den GPS-Standort von Units in dieser Kategorie über das Portal zu übermitteln.",
         "teams_subtitle": "Wählen Sie die für diese Kategorie verantwortlichen Teams aus.",
@@ -252,7 +255,8 @@
             "translation_saved": "Kategorie-Übersetzung gespeichert."
         },
         "is_reservable_hint": "Aktiviert Reservierungen für alle Units dieser Kategorie (Raum, Fahrzeug, …).",
-        "require_reporter_contact_hint": "Vorname, Name und E-Mail bei anonymen Meldungen über den Unit-QR verlangen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert."
+        "require_reporter_contact_hint": "Vorname, Name und E-Mail bei anonymen Meldungen über den Unit-QR verlangen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert.",
+        "allow_unit_checks_hint": "Aktiviert Unit-Checks für alle Units dieser Kategorie (Sicherheitsrunde, Reinigungskontrolle, …). Standardmäßig aus; muss auch pro Unit aktiviert werden."
     },
     "errors": {
         "name_or_address_required": "Geben Sie einen Standortnamen an oder füllen Sie Straße, Postleitzahl und Ort vollständig aus.",

@@ -356,7 +356,9 @@ zonder SSO of verplichte account-login.
 de meldingenlijst te vervuilen. Los van ESG.
 
 ### Portaal (geverifieerde worker)
-- Tegel **Unit check** boven/naast melding maken.
+- Alleen zichtbaar als **categorie én unit** Unit checks toestaan (beide standaard uit;
+  Locaties → categorieën / unit bewerken).
+- Tegel **Unit check** even breed als **Melding maken** (primaire tegel).
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
@@ -367,6 +369,8 @@ de meldingenlijst te vervuilen. Los van ESG.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
 - **Checklists:** templates met vinkpunten; koppelen aan unit via Locaties → unit bewerken.
   Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
+- **Aan/uit:** Locaties → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
+  beide nodig, beide default uit.
 
 ### Dagelijks terugkeren
 - Interval-eenheid **dag** beschikbaar op terugkerende meldingen (naast week/maand/…).

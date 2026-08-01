@@ -15,7 +15,7 @@ class CreateCategoryAction
     ) {}
 
     /**
-     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, require_reporter_contact?: bool, original_language?: string|null}  $data
+     * @param  array{name: string, allow_gps_location?: bool, is_reservable?: bool, allow_unit_checks?: bool, require_reporter_contact?: bool, original_language?: string|null}  $data
      */
     public function handle(int $tenantId, array $data, ?int $actorUserId = null): Category
     {
@@ -25,6 +25,7 @@ class CreateCategoryAction
             'original_language' => LocaleSupport::normalize($data['original_language'] ?? null),
             'allow_gps_location' => (bool) ($data['allow_gps_location'] ?? false),
             'is_reservable' => (bool) ($data['is_reservable'] ?? false),
+            'allow_unit_checks' => (bool) ($data['allow_unit_checks'] ?? false),
             'require_reporter_contact' => (bool) ($data['require_reporter_contact'] ?? false),
         ]);
 
@@ -41,6 +42,7 @@ class CreateCategoryAction
                 'name' => $category->name,
                 'allow_gps_location' => $category->allow_gps_location,
                 'is_reservable' => $category->is_reservable,
+                'allow_unit_checks' => $category->allow_unit_checks,
                 'require_reporter_contact' => $category->require_reporter_contact,
             ],
         );

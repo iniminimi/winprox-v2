@@ -21,12 +21,14 @@ class Category extends Model
         'original_language',
         'allow_gps_location',
         'is_reservable',
+        'allow_unit_checks',
         'require_reporter_contact',
     ];
 
     protected $casts = [
         'allow_gps_location' => 'boolean',
         'is_reservable' => 'boolean',
+        'allow_unit_checks' => 'boolean',
         'require_reporter_contact' => 'boolean',
     ];
 

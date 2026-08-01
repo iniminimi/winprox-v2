@@ -209,7 +209,7 @@ class UnitPortal extends Component
             return;
         }
 
-        if ($section === 'unit_check' && $this->authorizedWorker() === null) {
+        if ($section === 'unit_check' && ($this->authorizedWorker() === null || ! $this->unit()->allowsUnitChecks())) {
             return;
         }
 
@@ -250,6 +250,12 @@ class UnitPortal extends Component
 
         $worker = $this->authorizedWorker();
         if ($worker === null) {
+            $this->addError('checkResult', __('portal.worker.errors.no_permission'));
+
+            return;
+        }
+
+        if (! $this->unit()->allowsUnitChecks()) {
             $this->addError('checkResult', __('portal.worker.errors.no_permission'));
 
             return;
@@ -1103,6 +1109,7 @@ class UnitPortal extends Component
 
         return view('livewire.public.unit-portal', [
             'canAct' => $canAct,
+            'allowsUnitChecks' => $unit->allowsUnitChecks(),
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),

@@ -119,6 +119,8 @@ class Show extends Component
 
     public bool $unitAllowReservations = false;
 
+    public bool $unitAllowUnitChecks = false;
+
     public bool $unitRequireReporterContact = false;
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
@@ -365,6 +367,7 @@ class Show extends Component
         $this->unitCheckListId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
+        $this->unitAllowUnitChecks = false;
         $this->unitRequireReporterContact = false;
         $this->resetErrorBag();
         $this->showUnitModal = true;
@@ -383,6 +386,7 @@ class Show extends Component
         $this->unitCheckListId = $unit->unit_check_list_id;
         $this->unitPublicReportsEnabled = (bool) $unit->public_reports_enabled;
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
+        $this->unitAllowUnitChecks = (bool) $unit->allow_unit_checks;
         $this->unitRequireReporterContact = (bool) $unit->require_reporter_contact;
         $this->unitPhotos = [];
         $this->previewLocale = $this->defaultTranslationLocaleFor($unit);
@@ -403,6 +407,7 @@ class Show extends Component
         $this->unitCheckListId = null;
         $this->unitPublicReportsEnabled = true;
         $this->unitAllowReservations = false;
+        $this->unitAllowUnitChecks = false;
         $this->unitRequireReporterContact = false;
         $this->unitPhotos = [];
         $this->unitTranslationName = '';
@@ -487,6 +492,7 @@ class Show extends Component
             'unitCheckListId' => $rules['unit_check_list_id'],
             'unitPublicReportsEnabled' => $rules['public_reports_enabled'],
             'unitAllowReservations' => $rules['allow_reservations'],
+            'unitAllowUnitChecks' => $rules['allow_unit_checks'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
             'unitPhotos' => ['nullable', 'array', 'max:4'],
             'unitPhotos.*' => ['image', 'max:10240'],
@@ -507,6 +513,7 @@ class Show extends Component
             'unit_check_list_id' => $validated['unitCheckListId'] ?? null,
             'public_reports_enabled' => (bool) $validated['unitPublicReportsEnabled'],
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
+            'allow_unit_checks' => (bool) $validated['unitAllowUnitChecks'],
             'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
             'original_language' => auth()->user()->locale ?? null,
         ];

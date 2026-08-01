@@ -112,7 +112,8 @@
             "public_reports_enabled": "Los visitantes pueden enviar un informe mediante el portal QR",
             "allow_reservations": "Permitir reservas",
             "require_reporter_contact": "Datos de contacto obligatorios",
-            "check_list": "Lista (chequeo de unit)"
+            "check_list": "Lista (chequeo de unit)",
+            "allow_unit_checks": "Permitir comprobaciones de unidad"
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -167,7 +168,8 @@
         "allow_reservations_hint": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad.",
         "require_reporter_contact_hint": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores de campo.",
         "no_check_list": "Sin lista",
-        "check_list_hint": "Opcional. La lista vinculada aparece en el chequeo del QR."
+        "check_list_hint": "Opcional. La lista vinculada aparece en el chequeo del QR.",
+        "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad."
     },
     "bulk": {
         "title": "Añadir unidades en bloque",
@@ -229,7 +231,8 @@
             "teams": "Equipos",
             "allow_gps_location": "Permitir ubicación GPS",
             "is_reservable": "Reservable",
-            "require_reporter_contact": "Datos de contacto obligatorios"
+            "require_reporter_contact": "Datos de contacto obligatorios",
+            "allow_unit_checks": "Permitir comprobaciones de unidad"
         },
         "allow_gps_location_hint": "Permitir que la ubicación GPS de las unidades de esta categoría se envíe mediante el portal.",
         "teams_subtitle": "Seleccione los equipos responsables de esta categoría.",
@@ -252,7 +255,8 @@
             "translation_saved": "Traducción de categoría guardada."
         },
         "is_reservable_hint": "Activa reservas para todas las unidades de esta categoría (sala, vehículo, …).",
-        "require_reporter_contact_hint": "Exige nombre, apellidos y correo en informes anónimos vía el QR de la unidad. Desactivado por defecto. Solo aplica si también está activado en la unidad."
+        "require_reporter_contact_hint": "Exige nombre, apellidos y correo en informes anónimos vía el QR de la unidad. Desactivado por defecto. Solo aplica si también está activado en la unidad.",
+        "allow_unit_checks_hint": "Activa las comprobaciones de unidad para todas las unidades de esta categoría (ronda de seguridad, control de limpieza, …). Desactivado por defecto; también debe activarse por unidad."
     },
     "errors": {
         "name_or_address_required": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad.",

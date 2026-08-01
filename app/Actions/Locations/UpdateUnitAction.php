@@ -42,6 +42,10 @@ class UpdateUnitAction
             $payload['allow_reservations'] = (bool) $data['allow_reservations'];
         }
 
+        if (array_key_exists('allow_unit_checks', $data)) {
+            $payload['allow_unit_checks'] = (bool) $data['allow_unit_checks'];
+        }
+
         if (array_key_exists('require_reporter_contact', $data)) {
             $payload['require_reporter_contact'] = (bool) $data['require_reporter_contact'];
         }

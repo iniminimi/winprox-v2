@@ -34,7 +34,11 @@ function unitCheckListPortalScaffold(): array
 
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
-    $category = Category::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Test Category']);
+    $category = Category::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Test Category',
+        'allow_unit_checks' => true,
+    ]);
     $category->teams()->sync([$team->id]);
 
     $unit = Unit::factory()->withQrToken('unit-check-list-token')->create([
@@ -42,6 +46,7 @@ function unitCheckListPortalScaffold(): array
         'location_id' => $location->id,
         'category_id' => $category->id,
         'is_active' => true,
+        'allow_unit_checks' => true,
     ]);
 
     return compact('tenant', 'location', 'team', 'unit');

@@ -235,14 +235,14 @@
             </div>
 
             <div class="wp-tiles">
-                @if ($canAct)
+                @if ($canAct && ($allowsUnitChecks ?? false))
                     <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('unit_check')">
                         <span class="wp-tile-title">{{ __('portal.tiles.unit_check') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.unit_check_sub') }}</span>
                     </button>
                 @endif
                 @if ($showNewReportSection)
-                    <button type="button" class="wp-tile {{ $canAct ? '' : 'wp-tile--primary' }}" wire:click="openSection('new')">
+                    <button type="button" class="wp-tile wp-tile--primary" wire:click="openSection('new')">
                         <span class="wp-tile-title">{{ __('portal.tiles.new') }}</span>
                         <span class="wp-tile-sub">{{ __('portal.tiles.new_sub') }}</span>
                     </button>

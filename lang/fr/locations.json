@@ -112,7 +112,8 @@
             "public_reports_enabled": "Les visiteurs peuvent faire un signalement via le portail QR",
             "allow_reservations": "Autoriser les réservations",
             "require_reporter_contact": "Coordonnées obligatoires",
-            "check_list": "Liste de contrôle (contrôle unit)"
+            "check_list": "Liste de contrôle (contrôle unit)",
+            "allow_unit_checks": "Autoriser les contrôles d’unité"
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
@@ -167,7 +168,8 @@
         "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité.",
         "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
         "no_check_list": "Aucune liste",
-        "check_list_hint": "Optionnel. La liste liée apparaît sur le QR unit."
+        "check_list_hint": "Optionnel. La liste liée apparaît sur le QR unit.",
+        "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité."
     },
     "bulk": {
         "title": "Ajouter des unités en masse",
@@ -229,7 +231,8 @@
             "teams": "Équipes",
             "allow_gps_location": "Autoriser la localisation GPS",
             "is_reservable": "Réservable",
-            "require_reporter_contact": "Coordonnées obligatoires"
+            "require_reporter_contact": "Coordonnées obligatoires",
+            "allow_unit_checks": "Autoriser les contrôles d’unité"
         },
         "allow_gps_location_hint": "Autorise la transmission de la localisation GPS des unités de cette catégorie via le portail.",
         "teams_subtitle": "Sélectionnez les équipes responsables de cette catégorie.",
@@ -252,7 +255,8 @@
             "translation_saved": "Traduction de catégorie enregistrée."
         },
         "is_reservable_hint": "Active les réservations pour toutes les unités de cette catégorie (salle, véhicule, …).",
-        "require_reporter_contact_hint": "Exige prénom, nom et e-mail pour les signalements anonymes via le QR de l’unité. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité."
+        "require_reporter_contact_hint": "Exige prénom, nom et e-mail pour les signalements anonymes via le QR de l’unité. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité.",
+        "allow_unit_checks_hint": "Active les contrôles d’unité pour toutes les unités de cette catégorie (ronde sécurité, contrôle ménage, …). Désactivé par défaut ; doit aussi être activé par unité."
     },
     "errors": {
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",

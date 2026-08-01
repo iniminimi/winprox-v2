@@ -385,6 +385,13 @@
                     </label>
                 </x-wp-tooltip>
 
+                <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="unitAllowUnitChecks">
+                        <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
+                    </label>
+                </x-wp-tooltip>
+
                 <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
                     <label class="wp-check wp-check--boxed">
                         <input type="checkbox" wire:model="unitRequireReporterContact">

@@ -112,7 +112,8 @@
             "public_reports_enabled": "Visitors can submit a report via the QR portal",
             "allow_reservations": "Allow reservations",
             "require_reporter_contact": "Require contact details",
-            "check_list": "Checklist (unit check)"
+            "check_list": "Checklist (unit check)",
+            "allow_unit_checks": "Allow unit checks"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -167,7 +168,8 @@
         "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
         "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
         "no_check_list": "No checklist",
-        "check_list_hint": "Optional. The linked checklist appears on the unit QR Unit check."
+        "check_list_hint": "Optional. The linked checklist appears on the unit QR Unit check.",
+        "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR."
     },
     "bulk": {
         "title": "Add bulk units",
@@ -229,7 +231,8 @@
             "teams": "Teams",
             "allow_gps_location": "Allow GPS location",
             "is_reservable": "Reservable",
-            "require_reporter_contact": "Require contact details"
+            "require_reporter_contact": "Require contact details",
+            "allow_unit_checks": "Allow unit checks"
         },
         "allow_gps_location_hint": "Allow the GPS location of units in this category to be submitted via the portal.",
         "teams_subtitle": "Select the teams responsible for this category.",
@@ -252,7 +255,8 @@
             "translation_saved": "Category translation saved."
         },
         "is_reservable_hint": "Enable reservations for all units in this category (meeting room, vehicle, …).",
-        "require_reporter_contact_hint": "Require first name, last name and email for anonymous reports via the unit QR. Off by default. Only takes effect when also enabled on the unit."
+        "require_reporter_contact_hint": "Require first name, last name and email for anonymous reports via the unit QR. Off by default. Only takes effect when also enabled on the unit.",
+        "allow_unit_checks_hint": "Enable unit checks for all units in this category (security round, cleaning check, …). Off by default; must also be enabled per unit."
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",
