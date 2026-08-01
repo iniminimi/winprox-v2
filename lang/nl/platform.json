@@ -274,7 +274,7 @@
     "translation_sync": {
         "nav": "Vertalingen",
         "title": "Vertalingen",
-        "subtitle": "Haal pending vertalingen (meldingen, mededelingen, units, taken en documenten) van de server op, vertaal lokaal via Ollama en stuur ze terug.",
+        "subtitle": "Haal pending vertalingen (meldingen, mededelingen, units, checklists, taken en documenten) van de server op, vertaal lokaal via Ollama en stuur ze terug.",
         "intro": "Eén klik: export op de server (goedgekeurde meldingen, actieve mededelingen/units/documenten en taken met omschrijving), download, Ollama-vertaling met voortgang, upload en directe import. Op de server verwerkt een cron elk uur eventuele importbestanden opnieuw.",
         "setup_hint": "Zet TRANSLATION_SYNC_ENABLED=true en vul TRANSLATION_SYNC_SSH_* in .env (lokaal). Zet QUEUE_CONNECTION=database en draai php artisan queue:work in PowerShell (niet sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH werkt niet via Apache. Zet database in .env en draai php artisan queue:work in PowerShell.",

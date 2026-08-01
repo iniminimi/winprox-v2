@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
+use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
+use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingEsgIndicatorTranslationsAction;
@@ -26,6 +27,7 @@ class TranslationExportCommand extends Command
     public function handle(
         BackfillCategoryTranslationSlotsAction $backfillCategories,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
+        BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingLocationTranslationsAction $exportLocations,
@@ -39,6 +41,7 @@ class TranslationExportCommand extends Command
     ): int {
         $backfillCategories->handle();
         $backfillTeams->handle();
+        $backfillUnitCheckLists->handle();
 
         $items = array_merge(
             $exportIssues->handle()['items'],

@@ -274,7 +274,7 @@
     "translation_sync": {
         "nav": "Übersetzungen",
         "title": "Übersetzungen",
-        "subtitle": "Ausstehende Übersetzungen (Meldungen, Mitteilungen, Units, Aufgaben und Dokumente) vom Server holen, lokal via Ollama übersetzen und zurücksenden.",
+        "subtitle": "Ausstehende Übersetzungen (Meldungen, Mitteilungen, Units, Checklisten, Aufgaben und Dokumente) vom Server holen, lokal via Ollama übersetzen und zurücksenden.",
         "intro": "Ein Klick: Export auf dem Server (freigegebene Meldungen, aktive Mitteilungen/Units/Dokumente und Aufgaben mit Beschreibung), Download, Ollama-Übersetzung mit Fortschritt, Upload und sofortiger Import. Auf dem Server verarbeitet eine Cron stündlich Importdateien erneut.",
         "setup_hint": "TRANSLATION_SYNC_ENABLED=true setzen und TRANSLATION_SYNC_SSH_* in .env (lokal). QUEUE_CONNECTION=database setzen und php artisan queue:work in PowerShell ausführen (nicht sync via Apache).",
         "sync_queue_warning": "QUEUE_CONNECTION=sync: SSH funktioniert nicht über Apache. database in .env und php artisan queue:work in PowerShell.",

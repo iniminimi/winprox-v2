@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Communication\ExportPendingAnnouncementTranslationsAction;
 use App\Actions\Communication\BackfillCategoryTranslationSlotsAction;
 use App\Actions\Communication\BackfillInternalTeamTranslationSlotsAction;
+use App\Actions\Communication\BackfillUnitCheckListTranslationSlotsAction;
 use App\Actions\Communication\ExportPendingCategoryTranslationsAction;
 use App\Actions\Communication\ExportPendingDocumentTranslationsAction;
 use App\Actions\Communication\ExportPendingInternalTeamTranslationsAction;
 use App\Actions\Communication\ExportPendingIssueTranslationsAction;
 use App\Actions\Communication\ExportPendingLocationTranslationsAction;
 use App\Actions\Communication\ExportPendingTaskTranslationsAction;
+use App\Actions\Communication\ExportPendingUnitCheckListTranslationsAction;
 use App\Actions\Communication\ExportPendingUnitTranslationsAction;
 use App\Actions\Communication\ImportAnnouncementTranslationsAction;
 use App\Actions\Communication\ImportCategoryTranslationsAction;
@@ -19,6 +21,7 @@ use App\Actions\Communication\ImportInternalTeamTranslationsAction;
 use App\Actions\Communication\ImportIssueTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Communication\ImportTaskTranslationsAction;
+use App\Actions\Communication\ImportUnitCheckListTranslationsAction;
 use App\Actions\Communication\ImportUnitTranslationsAction;
 use App\Actions\Communication\ReadTranslationSyncStatusAction;
 use App\Models\User;
@@ -30,6 +33,7 @@ class TranslationController extends Controller
     public function export(
         BackfillCategoryTranslationSlotsAction $backfillCategories,
         BackfillInternalTeamTranslationSlotsAction $backfillTeams,
+        BackfillUnitCheckListTranslationSlotsAction $backfillUnitCheckLists,
         ExportPendingIssueTranslationsAction $exportIssues,
         ExportPendingAnnouncementTranslationsAction $exportAnnouncements,
         ExportPendingLocationTranslationsAction $exportLocations,
@@ -38,12 +42,14 @@ class TranslationController extends Controller
         ExportPendingDocumentTranslationsAction $exportDocuments,
         ExportPendingCategoryTranslationsAction $exportCategories,
         ExportPendingInternalTeamTranslationsAction $exportTeams,
+        ExportPendingUnitCheckListTranslationsAction $exportUnitCheckLists,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
-        // Ensure legacy categories/teams receive translation slots before export.
+        // Ensure legacy categories/teams/checklists receive translation slots before export.
         $backfillCategories->handle();
         $backfillTeams->handle();
+        $backfillUnitCheckLists->handle();
 
         $items = array_merge(
             $exportIssues->handle()['items'],
@@ -54,6 +60,7 @@ class TranslationController extends Controller
             $exportDocuments->handle(),
             $exportCategories->handle(),
             $exportTeams->handle(),
+            $exportUnitCheckLists->handle(),
         );
 
         return $this->success([
@@ -73,6 +80,7 @@ class TranslationController extends Controller
         ImportDocumentTranslationsAction $importDocuments,
         ImportCategoryTranslationsAction $importCategories,
         ImportInternalTeamTranslationsAction $importTeams,
+        ImportUnitCheckListTranslationsAction $importUnitCheckLists,
     ): JsonResponse {
         $this->authorize('runTranslationSync', User::class);
 
@@ -81,6 +89,8 @@ class TranslationController extends Controller
             'items.*.locale' => ['required', 'string'],
             'items.*.description' => ['nullable', 'string'],
             'items.*.name' => ['nullable', 'string'],
+            'items.*.items' => ['nullable', 'array'],
+            'items.*.items.*' => ['nullable', 'string'],
         ]);
 
         $items = $validated['items'];
@@ -94,6 +104,7 @@ class TranslationController extends Controller
         $documentItems = [];
         $categoryItems = [];
         $teamItems = [];
+        $unitCheckListItems = [];
 
         foreach ($items as $item) {
             if (isset($item['document_id'])) {
@@ -110,6 +121,8 @@ class TranslationController extends Controller
                 $categoryItems[] = $item;
             } elseif (isset($item['internal_team_id'])) {
                 $teamItems[] = $item;
+            } elseif (isset($item['unit_check_list_id'])) {
+                $unitCheckListItems[] = $item;
             } else {
                 $issueItems[] = $item;
             }
@@ -122,7 +135,8 @@ class TranslationController extends Controller
             + $importTasks->handle($taskItems, $actorUserId)
             + $importDocuments->handle($documentItems, $actorUserId)
             + $importCategories->handle($categoryItems, $actorUserId)
-            + $importTeams->handle($teamItems, $actorUserId);
+            + $importTeams->handle($teamItems, $actorUserId)
+            + $importUnitCheckLists->handle($unitCheckListItems, $actorUserId);
 
         return $this->success(['imported' => $imported]);
     }
