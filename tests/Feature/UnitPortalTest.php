@@ -1097,6 +1097,8 @@ it('lets a signed-in worker create a report when public reports are disabled for
     $worker = Worker::factory()->withIcon('star')->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,
+        'first_name' => 'Sara',
+        'last_name' => 'Technieker',
     ]);
     WorkerVerification::markVerified($team, $worker);
 
@@ -1107,7 +1109,8 @@ it('lets a signed-in worker create a report when public reports are disabled for
         ->assertHasNoErrors()
         ->assertSet('portalSection', 'issues');
 
-    expect(Issue::count())->toBe(1);
+    expect(Issue::count())->toBe(1)
+        ->and(Issue::first()->reporter_name)->toBe('Sara Technieker');
 });
 
 it('blokkeert anonieme burgers na het bereiken van de rate limit per unit', function () {

@@ -55,11 +55,25 @@ class SubmitReportAction
             }
         }
 
+        $reporterName = $data['reporter_name'] ?? null;
+        $reporterContact = $data['reporter_contact'] ?? null;
+
+        if ($fieldWorker !== null) {
+            $workerName = trim($fieldWorker->displayName());
+            if ($workerName !== '') {
+                $reporterName = $workerName;
+            }
+            $workerEmail = trim((string) ($fieldWorker->email ?? ''));
+            if ($workerEmail !== '') {
+                $reporterContact = $workerEmail;
+            }
+        }
+
         $issue = $this->createIssue->handle([
             'location_id' => $unit->location_id,
             'unit_id' => $unit->id,
-            'reporter_name' => $data['reporter_name'] ?? null,
-            'reporter_contact' => $data['reporter_contact'] ?? null,
+            'reporter_name' => $reporterName,
+            'reporter_contact' => $reporterContact,
             'description' => $data['description'],
             'source' => 'qr',
             'original_language' => $data['original_language'] ?? null,
