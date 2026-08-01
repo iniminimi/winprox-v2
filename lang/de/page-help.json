@@ -271,7 +271,7 @@
                 },
                 {
                     "label": "Externe ID",
-                    "text": "Verknüpfen Sie die Unit über Externe ID mit Ihrer Facility-Software (IWMS, CMMS, ERP, …). Externe Systeme können dann Unit-Checks per POST /api/v1/units/checks senden."
+                    "text": "Nur sichtbar mit API-Zugang (Corporate oder Testphase mit API). Verknüpfen Sie die Unit mit Ihrer Facility-Software (IWMS, CMMS, ERP, …). Externe Systeme können dann Unit-Checks per POST /api/v1/units/checks senden."
                 }
             ]
         },

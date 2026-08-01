@@ -172,7 +172,7 @@
         "no_check_list": "Geen checklist",
         "check_list_hint": "Optioneel. Maak checklists onder Locaties (uitklap Checklists). Gekoppelde checklist verschijnt op de unit-QR bij Unit check.",
         "allow_unit_checks_hint": "Alleen relevant als de categorie Unit checks toestaat. Staat standaard uit; zet aan om de Unit check-tegel op de unit-QR te tonen.",
-        "external_id_hint": "Optioneel. ID van deze unit in jullie externe beheersoftware (IWMS, CMMS, ERP, …). Nodig voor inbound unit checks via de API."
+        "external_id_hint": "Optioneel. ID van deze unit in jullie externe beheersoftware (IWMS, CMMS, ERP, …). Alleen bij API-toegang (Corporate). Nodig voor inbound unit checks via de API."
     },
     "bulk": {
         "title": "Bulk units toevoegen",

@@ -172,7 +172,7 @@
         "no_check_list": "Sin lista",
         "check_list_hint": "Opcional. Cree listas en Ubicaciones (sección Listas). La lista vinculada aparece en el QR de la unidad en Unit check.",
         "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad.",
-        "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Necesario para comprobaciones unit entrantes vía API."
+        "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Solo con acceso API (Corporate). Necesario para comprobaciones unit entrantes vía API."
     },
     "bulk": {
         "title": "Añadir unidades en bloque",

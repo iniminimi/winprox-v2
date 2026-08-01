@@ -361,13 +361,15 @@
                     @error('unitCategoryId') <span class="wp-error">{{ $message }}</span> @enderror
                 </label>
 
-                <x-wp-tooltip :text="__('locations.units.external_id_hint')" wrap class="wp-tooltip--block">
-                    <label class="wp-field">
-                        <span class="wp-label">{{ __('locations.units.fields.external_id') }}</span>
-                        <input type="text" class="wp-input" wire:model="unitExternalId" maxlength="100" autocomplete="off">
-                        @error('unitExternalId') <span class="wp-error">{{ $message }}</span> @enderror
-                    </label>
-                </x-wp-tooltip>
+                @if ($hasApiAccess)
+                    <x-wp-tooltip :text="__('locations.units.external_id_hint')" wrap class="wp-tooltip--block">
+                        <label class="wp-field">
+                            <span class="wp-label">{{ __('locations.units.fields.external_id') }}</span>
+                            <input type="text" class="wp-input" wire:model="unitExternalId" maxlength="100" autocomplete="off">
+                            @error('unitExternalId') <span class="wp-error">{{ $message }}</span> @enderror
+                        </label>
+                    </x-wp-tooltip>
+                @endif
 
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model="unitPublicReportsEnabled">

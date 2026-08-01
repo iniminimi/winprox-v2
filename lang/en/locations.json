@@ -172,7 +172,7 @@
         "no_check_list": "No checklist",
         "check_list_hint": "Optional. Create checklists under Locations (Checklists disclosure). The linked checklist appears on the unit QR under Unit check.",
         "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
-        "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Required for inbound unit checks via the API."
+        "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Only with API access (Corporate). Required for inbound unit checks via the API."
     },
     "bulk": {
         "title": "Add bulk units",

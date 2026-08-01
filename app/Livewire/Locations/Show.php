@@ -1061,6 +1061,8 @@ class Show extends Component
             );
         }
 
+        $tenant = Tenant::query()->whereKey($this->location->tenant_id)->first();
+
         return view('livewire.locations.show', [
             'units' => $units,
             'bulkSummaries' => $bulkSummaries,
@@ -1068,9 +1070,8 @@ class Show extends Component
             'teams' => $teams,
             'categories' => $categories,
             'unitCheckLists' => $unitCheckLists,
-            'hasEsgModule' => (bool) Tenant::query()
-                ->whereKey($this->location->tenant_id)
-                ->value('has_esg_module'),
+            'hasApiAccess' => (bool) $tenant?->hasApiAccess(),
+            'hasEsgModule' => (bool) ($tenant?->has_esg_module),
             'unitIdsWithEsgMeasurements' => EsgMeasurement::query()
                 ->where('location_id', $this->location->id)
                 ->whereNotNull('unit_id')

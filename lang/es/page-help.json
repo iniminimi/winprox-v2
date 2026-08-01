@@ -271,7 +271,7 @@
                 },
                 {
                     "label": "ID externo",
-                    "text": "Vincule la unidad a su software de facility (IWMS, GMAO, ERP, …) con el ID externo. Los sistemas externos pueden enviar comprobaciones vía POST /api/v1/units/checks."
+                    "text": "Visible solo con acceso API (Corporate, o prueba con API). Vincule la unidad a su software de facility (IWMS, GMAO, ERP, …). Los sistemas externos pueden enviar comprobaciones vía POST /api/v1/units/checks."
                 }
             ]
         },

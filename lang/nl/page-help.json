@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "Externe ID",
-                    "text": "Koppel de unit aan jullie externe beheersoftware (IWMS, CMMS, ERP, …) via Externe ID. Externe systemen kunnen dan unit checks pushen via POST /api/v1/units/checks."
+                    "text": "Alleen zichtbaar met API-toegang (Corporate, of proef met API). Koppel de unit aan jullie externe beheersoftware (IWMS, CMMS, ERP, …). Externe systemen kunnen dan unit checks pushen via POST /api/v1/units/checks."
                 },
                 {
                     "label": "Checklist (unit check)",

@@ -384,7 +384,8 @@ de meldingenlijst te vervuilen. Los van ESG.
 - `POST /api/v1/units/{unit}/checks` — ability `units:update`; zie `docs/api/unit-checks.md`.
   Vereist `allow_unit_checks` op categorie én unit. `source=api`.
 - `POST /api/v1/units/checks` — inbound sync via `external_unit_id` (unit-mapping
-  `units.external_id`); optioneel `external_id` op de check (idempotent). `source=external`.
+  `units.external_id`, beheer alleen zichtbaar met **API-toegang** / Corporate);
+  optioneel `external_id` op de check (idempotent). `source=external`.
 - Webhook `unit.check.recorded` bij elke **nieuwe** rij (payload bevat `external_id` /
   `unit_external_id` indien gezet).
 

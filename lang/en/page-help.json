@@ -237,7 +237,7 @@
                 },
                 {
                     "label": "External ID",
-                    "text": "Map the unit to your external facility software (IWMS, CMMS, ERP, …) with External ID. External systems can then push unit checks via POST /api/v1/units/checks."
+                    "text": "Only visible with API access (Corporate, or trial with API). Map the unit to your external facility software (IWMS, CMMS, ERP, …). External systems can then push unit checks via POST /api/v1/units/checks."
                 },
                 {
                     "label": "Checklist (unit check)",

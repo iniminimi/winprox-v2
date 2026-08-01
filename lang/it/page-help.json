@@ -271,7 +271,7 @@
                 },
                 {
                     "label": "ID esterno",
-                    "text": "Collega la unit al vostro software facility (IWMS, CMMS, ERP, …) con l'ID esterno. I sistemi esterni possono inviare unit check via POST /api/v1/units/checks."
+                    "text": "Visibile solo con accesso API (Corporate, o prova con API). Collega la unit al vostro software facility (IWMS, CMMS, ERP, …). I sistemi esterni possono inviare unit check via POST /api/v1/units/checks."
                 }
             ]
         },

@@ -271,7 +271,7 @@
                 },
                 {
                     "label": "ID externe",
-                    "text": "Associez l'unité à votre logiciel facility (GMAO, IWMS, ERP, …) via l'ID externe. Les systèmes externes peuvent alors pousser des contrôles via POST /api/v1/units/checks."
+                    "text": "Visible uniquement avec accès API (Corporate, ou essai avec API). Associez l’unité à votre logiciel facility (GMAO, IWMS, ERP, …). Les systèmes externes peuvent alors pousser des contrôles via POST /api/v1/units/checks."
                 }
             ]
         },
