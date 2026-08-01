@@ -181,6 +181,29 @@ it('copies a starter checklist', function () {
         ->and($list->items->count())->toBeGreaterThan(0);
 });
 
+it('copies the technical starter with five detailed points', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Pages\Team::class)
+        ->call('copyCheckListFromStarter', 'technical')
+        ->assertHasNoErrors();
+
+    $list = UnitCheckList::query()->where('name', __('unit_checks.starters.technical.name'))->latest('id')->first();
+
+    expect($list)->not->toBeNull()
+        ->and($list->items)->toHaveCount(5)
+        ->and($list->items->pluck('label')->all())->toBe([
+            __('unit_checks.starters.technical.items.installations'),
+            __('unit_checks.starters.technical.items.climate'),
+            __('unit_checks.starters.technical.items.electrical'),
+            __('unit_checks.starters.technical.items.safety_fire'),
+            __('unit_checks.starters.technical.items.building'),
+        ]);
+});
+
 it('deletes an unused checklist from the teams page', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

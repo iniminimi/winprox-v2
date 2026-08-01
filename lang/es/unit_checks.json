@@ -85,10 +85,11 @@
         "technical": {
             "name": "Técnica",
             "items": {
-                "power": "Corriente / interruptores OK",
-                "leaks": "Sin fugas",
-                "safety": "Seguridad en orden",
-                "equipment": "Equipos funcionan"
+                "installations": "Instalaciones y equipos: El equipo crítico de la sala funciona sin fallos.",
+                "climate": "Clima y ventilación: Las rejillas de ventilación, aparatos de aire acondicionado o radiadores funcionan correctamente.",
+                "electrical": "Electricidad e iluminación: Todas las luminarias funcionan; enchufes, interruptores y canaletas están intactos y seguros.",
+                "safety_fire": "Seguridad y extinción: La iluminación de emergencia funciona; extintores/salidas de emergencia están libres de obstáculos.",
+                "building": "Edificación y entorno: Puertas, cerraduras, ventanas y marcos cierran bien y no presentan defectos."
             }
         },
         "security": {

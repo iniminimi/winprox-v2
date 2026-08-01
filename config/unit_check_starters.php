@@ -19,10 +19,11 @@ return [
         'key' => 'technical',
         'name' => 'unit_checks.starters.technical.name',
         'items' => [
-            'unit_checks.starters.technical.items.power',
-            'unit_checks.starters.technical.items.leaks',
-            'unit_checks.starters.technical.items.safety',
-            'unit_checks.starters.technical.items.equipment',
+            'unit_checks.starters.technical.items.installations',
+            'unit_checks.starters.technical.items.climate',
+            'unit_checks.starters.technical.items.electrical',
+            'unit_checks.starters.technical.items.safety_fire',
+            'unit_checks.starters.technical.items.building',
         ],
     ],
     [

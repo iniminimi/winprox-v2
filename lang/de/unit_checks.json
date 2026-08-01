@@ -85,10 +85,11 @@
         "technical": {
             "name": "Technik",
             "items": {
-                "power": "Strom / Schalter OK",
-                "leaks": "Keine Undichtigkeiten",
-                "safety": "Sicherheit in Ordnung",
-                "equipment": "Geräte funktionieren"
+                "installations": "Installationen & Geräte: Kritische Geräte im Raum funktionieren störungsfrei.",
+                "climate": "Klima & Lüftung: Lüftungsgitter, Klimageräte oder Heizkörper funktionieren einwandfrei.",
+                "electrical": "Elektro & Beleuchtung: Alle Leuchten brennen; Steckdosen, Schalter und Kabelkanäle sind unbeschädigt und sicher.",
+                "safety_fire": "Sicherheit & Löschmittel: Notbeleuchtung funktioniert; Feuerlöscher/Notausgänge sind frei von Hindernissen.",
+                "building": "Baukonstruktion & Umgebung: Türen, Schlösser, Fenster und Rahmen schließen einwandfrei und weisen keine Mängel auf."
             }
         },
         "security": {

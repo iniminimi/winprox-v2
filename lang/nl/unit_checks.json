@@ -85,10 +85,11 @@
         "technical": {
             "name": "Techniek",
             "items": {
-                "power": "Stroom / schakelaars OK",
-                "leaks": "Geen lekken",
-                "safety": "Veiligheid in orde",
-                "equipment": "Apparatuur werkt"
+                "installations": "Installaties & Apparatuur: Kritieke apparatuur in de ruimte functioneert storingsvrij.",
+                "climate": "Klimaat & Ventilatie: Ventilatieroosters, airco-units of radiatoren werken naar behoren.",
+                "electrical": "Elektra & Verlichting: Alle verlichtingsarmaturen branden; stopcontacten, schakelaars en kabelgoten zijn onbeschadigd en veilig.",
+                "safety_fire": "Veiligheid & Blusmiddelen: Noodverlichting brandt; brandblusmiddelen/nooduitgangen zijn vrij van obstakels.",
+                "building": "Bouwkundig & Omgeving: Deuren, sloten, ramen en kozijnen sluiten goed en vertonen geen gebreken."
             }
         },
         "security": {

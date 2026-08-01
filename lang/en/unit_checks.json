@@ -85,10 +85,11 @@
         "technical": {
             "name": "Technical",
             "items": {
-                "power": "Power / switches OK",
-                "leaks": "No leaks",
-                "safety": "Safety OK",
-                "equipment": "Equipment working"
+                "installations": "Installations & Equipment: Critical equipment in the room operates without faults.",
+                "climate": "Climate & Ventilation: Ventilation grilles, air-conditioning units or radiators work properly.",
+                "electrical": "Electrics & Lighting: All light fittings work; sockets, switches and cable trays are undamaged and safe.",
+                "safety_fire": "Safety & Fire Equipment: Emergency lighting is on; fire extinguishers/emergency exits are clear of obstacles.",
+                "building": "Building & Environment: Doors, locks, windows and frames close properly and show no defects."
             }
         },
         "security": {
