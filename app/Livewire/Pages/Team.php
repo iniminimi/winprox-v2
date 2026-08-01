@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Actions\Communication\ImportInternalTeamTranslationsAction;
+use App\Actions\Communication\ImportUnitCheckListTranslationsAction;
 use App\Actions\Workers\DeleteWorkerImportBatchAction;
 use App\Actions\Workers\ImportWorkersAction;
 use App\Data\Workers\DeleteWorkerImportBatchData;
@@ -138,6 +139,12 @@ class Team extends Component
     public bool $checkListIsActive = true;
 
     public ?int $checkListTeamId = null;
+
+    public string $checkListPreviewLocale = '';
+
+    public string $checkListTranslationName = '';
+
+    public string $checkListTranslationItemsText = '';
 
     public function mount(): void
     {
@@ -967,6 +974,9 @@ class Team extends Component
         $this->checkListItemsText = '';
         $this->checkListIsActive = true;
         $this->checkListTeamId = null;
+        $this->checkListPreviewLocale = '';
+        $this->checkListTranslationName = '';
+        $this->checkListTranslationItemsText = '';
         $this->showCheckListsSection = true;
         $this->showCheckListModal = true;
         $this->resetErrorBag();
@@ -974,15 +984,105 @@ class Team extends Component
 
     public function openEditCheckList(int $listId): void
     {
-        $list = UnitCheckList::query()->with('items')->findOrFail($listId);
+        $list = UnitCheckList::query()->with(['items', 'translations'])->findOrFail($listId);
         $this->authorize('update', $list);
         $this->editingCheckListId = (int) $list->id;
         $this->checkListName = $list->name;
         $this->checkListItemsText = $list->items->pluck('label')->implode("\n");
         $this->checkListIsActive = (bool) $list->is_active;
         $this->checkListTeamId = $list->internal_team_id;
+        $this->checkListPreviewLocale = $this->defaultTranslationLocaleForCheckList($list);
+        $this->hydrateCheckListTranslationInput($list);
         $this->showCheckListModal = true;
         $this->resetErrorBag();
+    }
+
+    public function updatedCheckListPreviewLocale(): void
+    {
+        if ($this->editingCheckListId === null) {
+            $this->checkListTranslationName = '';
+            $this->checkListTranslationItemsText = '';
+
+            return;
+        }
+
+        $list = UnitCheckList::query()
+            ->with(['items', 'translations'])
+            ->find($this->editingCheckListId);
+
+        $this->hydrateCheckListTranslationInput($list);
+    }
+
+    public function saveCheckListTranslationOverride(ImportUnitCheckListTranslationsAction $importTranslations): void
+    {
+        if ($this->editingCheckListId === null) {
+            return;
+        }
+
+        $list = UnitCheckList::query()
+            ->with(['items', 'translations'])
+            ->findOrFail($this->editingCheckListId);
+        $this->authorize('update', $list);
+
+        if (! $list->is_active) {
+            $this->addError('checkListTranslationName', __('unit_checks.lists.errors.translation_requires_active'));
+
+            return;
+        }
+
+        $validated = $this->validate([
+            'checkListPreviewLocale' => ['required', 'string', 'max:5'],
+            'checkListTranslationName' => ['required', 'string', 'max:255'],
+            'checkListTranslationItemsText' => ['required', 'string'],
+        ], [
+            'checkListTranslationName.required' => __('unit_checks.lists.errors.name_required'),
+            'checkListTranslationItemsText.required' => __('unit_checks.lists.errors.items_required'),
+        ]);
+
+        $locale = LocaleSupport::normalize((string) $validated['checkListPreviewLocale']);
+        if ($locale === $list->normalizedOriginalLanguage()) {
+            $this->addError('checkListTranslationName', __('issues.errors.translation_same_as_source'));
+
+            return;
+        }
+
+        $name = trim((string) $validated['checkListTranslationName']);
+        $rawItems = preg_split("/\r\n|\n|\r/", (string) $validated['checkListTranslationItemsText']) ?: [];
+        $items = [];
+        foreach ($rawItems as $item) {
+            $label = trim((string) $item);
+            if ($label !== '') {
+                $items[] = $label;
+            }
+        }
+
+        if ($name === '' || $items === []) {
+            $this->addError('checkListTranslationName', __('issues.errors.translation_import_invalid'));
+
+            return;
+        }
+
+        try {
+            $importTranslations->handle([
+                [
+                    'unit_check_list_id' => $list->id,
+                    'locale' => $locale,
+                    'name' => $name,
+                    'items' => $items,
+                ],
+            ], (int) auth()->id());
+        } catch (ValidationException $exception) {
+            foreach ($exception->errors() as $messages) {
+                foreach ($messages as $message) {
+                    $this->addError('checkListTranslationName', (string) $message);
+                }
+            }
+
+            return;
+        }
+
+        $this->hydrateCheckListTranslationInput($list->fresh(['items', 'translations']));
+        session()->flash('success', __('unit_checks.lists.flash.translation_saved'));
     }
 
     public function closeCheckListModal(): void
@@ -993,7 +1093,48 @@ class Team extends Component
         $this->checkListItemsText = '';
         $this->checkListIsActive = true;
         $this->checkListTeamId = null;
+        $this->checkListPreviewLocale = '';
+        $this->checkListTranslationName = '';
+        $this->checkListTranslationItemsText = '';
         $this->resetErrorBag();
+    }
+
+    private function hydrateCheckListTranslationInput(?UnitCheckList $list): void
+    {
+        if ($list === null) {
+            $this->checkListTranslationName = '';
+            $this->checkListTranslationItemsText = '';
+
+            return;
+        }
+
+        $locale = LocaleSupport::normalize($this->checkListPreviewLocale);
+        if ($locale === '' || $locale === $list->normalizedOriginalLanguage()) {
+            $locale = $this->defaultTranslationLocaleForCheckList($list);
+            $this->checkListPreviewLocale = $locale;
+        }
+
+        $translation = $list->translations
+            ->first(fn ($row) => $row->locale === $locale);
+
+        $this->checkListTranslationName = (string) ($translation?->name ?? '');
+        $translatedItems = is_array($translation?->items) ? $translation->items : [];
+        $this->checkListTranslationItemsText = collect($translatedItems)
+            ->map(static fn ($item) => trim((string) $item))
+            ->filter(static fn (string $item) => $item !== '')
+            ->implode("\n");
+    }
+
+    private function defaultTranslationLocaleForCheckList(UnitCheckList $list): string
+    {
+        $targets = LocaleSupport::targetLocalesForSource($list->normalizedOriginalLanguage());
+        $preferred = LocaleSupport::normalize(auth()->user()?->locale ?? app()->getLocale());
+
+        if (in_array($preferred, $targets, true)) {
+            return $preferred;
+        }
+
+        return $targets[0] ?? $preferred;
     }
 
     public function saveCheckList(SaveUnitCheckListAction $saveList): void
@@ -1181,6 +1322,20 @@ class Team extends Component
             }
         }
 
+        $checkListTranslationLocales = config('locales.labels', []);
+        if ($this->showCheckListModal && $this->editingCheckListId !== null) {
+            $editingCheckList = UnitCheckList::query()->find($this->editingCheckListId);
+
+            if ($editingCheckList !== null) {
+                $sourceLocale = $editingCheckList->normalizedOriginalLanguage();
+                $checkListTranslationLocales = array_filter(
+                    $checkListTranslationLocales,
+                    fn (string $label, string $code): bool => $code !== $sourceLocale,
+                    ARRAY_FILTER_USE_BOTH,
+                );
+            }
+        }
+
         $tenantId = Tenancy::id();
         $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;
         $workerImportBatches = WorkerImportBatchRegistry::recentBatchesForTenant($tenantId)
@@ -1201,6 +1356,7 @@ class Team extends Component
             'roles' => User::ROLES,
             'categories' => $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
+            'checkListTranslationLocales' => $checkListTranslationLocales,
             'checkLists' => UnitCheckList::query()
                 ->with(['internalTeam.translations', 'translations'])
                 ->withCount(['items', 'units'])

@@ -58,7 +58,18 @@
         },
         "team_shared": "Alle Teams",
         "starters_label": "Mit Vorlage starten:",
-        "confirm_delete": "Diese Checkliste endgültig löschen?"
+        "confirm_delete": "Diese Checkliste endgültig löschen?",
+        "translation_edit": {
+            "label": "Übersetzung",
+            "open": "Klicken Sie hier zum Anpassen",
+            "name": "Übersetzter Checklistename",
+            "items": "Übersetzte Punkte",
+            "items_hint": "Gleiche Anzahl Zeilen wie die Quellpunkte, in derselben Reihenfolge.",
+            "save": "Übersetzung speichern"
+        },
+        "flash": {
+            "translation_saved": "Checklisten-Übersetzung gespeichert."
+        }
     },
     "starters": {
         "cleaning": {

@@ -598,6 +598,71 @@
                     @error('checkListName') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
 
+                @if ($editingCheckListId !== null)
+                    <div class="wp-field" x-data="{ open: false }">
+                        <span class="wp-label">{{ __('unit_checks.lists.translation_edit.label') }}</span>
+
+                        <div class="wp-field-panel" :class="{ 'is-open': open }">
+                            <button
+                                type="button"
+                                class="wp-field-panel__trigger"
+                                @click="open = !open"
+                                :aria-expanded="open"
+                            >
+                                <span>{{ __('unit_checks.lists.translation_edit.open') }}</span>
+                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                            </button>
+
+                            <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                                <div class="wp-cluster wp-issue-description-row">
+                                    <select
+                                        class="wp-select wp-select--compact"
+                                        wire:model.live="checkListPreviewLocale"
+                                        aria-label="{{ __('issues.show.description_language') }}"
+                                    >
+                                        @foreach ($checkListTranslationLocales as $code => $label)
+                                            <option value="{{ $code }}">{{ $label }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('unit_checks.lists.translation_edit.name') }}</span>
+                                    <textarea class="wp-input" wire:model="checkListTranslationName" rows="1"></textarea>
+                                    @error('checkListTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                                </label>
+
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('unit_checks.lists.translation_edit.items') }}</span>
+                                    <textarea
+                                        class="wp-input"
+                                        rows="6"
+                                        wire:model="checkListTranslationItemsText"
+                                        placeholder="{{ __('unit_checks.lists.fields.items_ph') }}"
+                                    ></textarea>
+                                    <p class="wp-hint">{{ __('unit_checks.lists.translation_edit.items_hint') }}</p>
+                                    @error('checkListTranslationItemsText') <span class="wp-error">{{ $message }}</span> @enderror
+                                </label>
+
+                                <div class="wp-row">
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="saveCheckListTranslationOverride"
+                                        wire:loading.attr="disabled"
+                                        wire:target="saveCheckListTranslationOverride"
+                                    >
+                                        <span wire:loading wire:target="saveCheckListTranslationOverride" class="wp-mr-2">
+                                            <x-wp-spinner size="sm" />
+                                        </span>
+                                        <span>{{ __('unit_checks.lists.translation_edit.save') }}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <div class="wp-field">
                     <label class="wp-label" for="checkListTeamId">{{ __('unit_checks.lists.fields.team') }}</label>
                     <select id="checkListTeamId" class="wp-input" wire:model="checkListTeamId">

@@ -58,7 +58,18 @@
         },
         "team_shared": "Todos los equipos",
         "starters_label": "Empezar desde plantilla:",
-        "confirm_delete": "¿Eliminar definitivamente esta lista de comprobación?"
+        "confirm_delete": "¿Eliminar definitivamente esta lista de comprobación?",
+        "translation_edit": {
+            "label": "Traducción",
+            "open": "Haga clic aquí para ajustar",
+            "name": "Nombre de lista traducido",
+            "items": "Puntos traducidos",
+            "items_hint": "El mismo número de líneas que los puntos de origen, en el mismo orden.",
+            "save": "Guardar traducción"
+        },
+        "flash": {
+            "translation_saved": "Traducción de la lista guardada."
+        }
     },
     "starters": {
         "cleaning": {

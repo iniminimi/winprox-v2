@@ -58,7 +58,18 @@
         },
         "team_shared": "Alle teams",
         "starters_label": "Start vanaf sjabloon:",
-        "confirm_delete": "Deze checklist definitief verwijderen?"
+        "confirm_delete": "Deze checklist definitief verwijderen?",
+        "translation_edit": {
+            "label": "Vertaling",
+            "open": "Klik hier om aan te passen",
+            "name": "Vertaalde checklistnaam",
+            "items": "Vertaalde punten",
+            "items_hint": "Zelfde aantal regels als de bronpunten, in dezelfde volgorde.",
+            "save": "Vertaling opslaan"
+        },
+        "flash": {
+            "translation_saved": "Checklistvertaling opgeslagen."
+        }
     },
     "starters": {
         "cleaning": {

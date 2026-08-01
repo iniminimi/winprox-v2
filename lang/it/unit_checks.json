@@ -58,7 +58,18 @@
         },
         "team_shared": "Tutti i team",
         "starters_label": "Parti da modello:",
-        "confirm_delete": "Eliminare definitivamente questa checklist?"
+        "confirm_delete": "Eliminare definitivamente questa checklist?",
+        "translation_edit": {
+            "label": "Traduzione",
+            "open": "Clicca qui per modificare",
+            "name": "Nome checklist tradotto",
+            "items": "Punti tradotti",
+            "items_hint": "Stesso numero di righe dei punti sorgente, nello stesso ordine.",
+            "save": "Salva traduzione"
+        },
+        "flash": {
+            "translation_saved": "Traduzione checklist salvata."
+        }
     },
     "starters": {
         "cleaning": {

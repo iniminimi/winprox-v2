@@ -58,7 +58,18 @@
         },
         "team_shared": "Toutes les équipes",
         "starters_label": "Partir d’un modèle :",
-        "confirm_delete": "Supprimer définitivement cette liste de contrôle ?"
+        "confirm_delete": "Supprimer définitivement cette liste de contrôle ?",
+        "translation_edit": {
+            "label": "Traduction",
+            "open": "Cliquez ici pour modifier",
+            "name": "Nom de liste traduit",
+            "items": "Points traduits",
+            "items_hint": "Même nombre de lignes que les points source, dans le même ordre.",
+            "save": "Enregistrer la traduction"
+        },
+        "flash": {
+            "translation_saved": "Traduction de la liste enregistrée."
+        }
     },
     "starters": {
         "cleaning": {

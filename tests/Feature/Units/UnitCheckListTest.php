@@ -231,6 +231,46 @@ it('refuses to delete a checklist that is linked to a unit', function () {
     expect(UnitCheckList::query()->whereKey($list->id)->exists())->toBeTrue();
 });
 
+it('shows and saves checklist translations in the edit modal', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id, 'locale' => 'nl']);
+
+    $list = UnitCheckList::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Schoonmaak',
+        'original_language' => 'nl',
+        'is_active' => true,
+    ]);
+    UnitCheckListItem::query()->create([
+        'unit_check_list_id' => $list->id,
+        'label' => 'Vloer',
+        'sort_order' => 0,
+    ]);
+    UnitCheckListItem::query()->create([
+        'unit_check_list_id' => $list->id,
+        'label' => 'WC',
+        'sort_order' => 1,
+    ]);
+    app(\App\Actions\Communication\EnsureUnitCheckListTranslationSlotsAction::class)->handle($list);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Pages\Team::class)
+        ->call('openEditCheckList', $list->id)
+        ->assertSet('showCheckListModal', true)
+        ->set('checkListPreviewLocale', 'en')
+        ->set('checkListTranslationName', 'Cleaning')
+        ->set('checkListTranslationItemsText', "Floor\nToilet")
+        ->call('saveCheckListTranslationOverride')
+        ->assertHasNoErrors();
+
+    $row = $list->translations()->where('locale', 'en')->first();
+    expect($row)->not->toBeNull()
+        ->and($row->name)->toBe('Cleaning')
+        ->and($row->items)->toBe(['Floor', 'Toilet'])
+        ->and($row->status->value)->toBe('completed');
+});
+
 it('filters unit checklist dropdown by category teams', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

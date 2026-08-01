@@ -58,7 +58,18 @@
         },
         "team_shared": "All teams",
         "starters_label": "Start from template:",
-        "confirm_delete": "Delete this checklist permanently?"
+        "confirm_delete": "Delete this checklist permanently?",
+        "translation_edit": {
+            "label": "Translation",
+            "open": "Click here to edit",
+            "name": "Translated checklist name",
+            "items": "Translated items",
+            "items_hint": "Same number of lines as the source items, in the same order.",
+            "save": "Save translation"
+        },
+        "flash": {
+            "translation_saved": "Checklist translation saved."
+        }
     },
     "starters": {
         "cleaning": {
