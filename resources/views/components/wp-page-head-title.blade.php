@@ -1,5 +1,6 @@
 @props([
     'icon' => null,
+    'assistantVideo' => null,
     'title',
     'helpPage' => null,
     'subtitle' => null,
@@ -10,7 +11,20 @@
     'wp-cluster wp-page-head-main',
     'wp-card wp-card-pad' => $variant === 'portal',
 ])>
-    @if ($icon)
+    @if ($assistantVideo)
+        <span class="wp-page-icon wp-page-icon--assistant" aria-hidden="true">
+            <video
+                class="wp-page-icon__video"
+                src="{{ $assistantVideo }}"
+                width="80"
+                height="80"
+                autoplay
+                muted
+                playsinline
+                preload="auto"
+            ></video>
+        </span>
+    @elseif ($icon)
         <span @class($variant === 'portal' ? 'wp-icon-frame' : 'wp-page-icon') aria-hidden="true">
             <x-wp-icon :name="$icon" />
         </span>

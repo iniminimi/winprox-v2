@@ -25,6 +25,18 @@ use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
+it('toont de assistant_issue-clip in de meldingenpaginakop', function () {
+    $tenant = Tenant::factory()->create();
+    seedTenantPastOnboarding($tenant);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($user)
+        ->get(route('issues.index'))
+        ->assertOk()
+        ->assertSee('video/assistant_issue.mp4', false)
+        ->assertSee('wp-page-icon--assistant', false);
+});
+
 it('maakt een melding aan via 2-staps flow met taak in uitvoering', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);

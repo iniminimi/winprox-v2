@@ -366,6 +366,26 @@
     height: 1.125rem;
 }
 
+.wp-page-icon--assistant {
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    overflow: hidden;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: none;
+}
+
+.wp-page-icon__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: inherit;
+    background-color: #ffffff;
+    pointer-events: none;
+}
+
 /* Paginahulp (?-knop + modal) — V1 Actiehulp + Statushulp unified */
 .wp-page-help {
     position: relative;
