@@ -277,7 +277,9 @@
                         </label>
                     </x-wp-tooltip>
                     @error('categoryIsReservable') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
 
+                <div class="wp-field">
                     <x-wp-tooltip :text="__('locations.categories.allow_unit_checks_hint')" wrap>
                         <label class="wp-check">
                             <input type="checkbox" wire:model="categoryAllowUnitChecks" />
