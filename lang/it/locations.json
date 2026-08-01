@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Rilevante solo se la categoria è Prenotabile. Disattivo di default; attiva per consentire prenotazioni su questa unità.",
         "require_reporter_contact_hint": "Rilevante solo se la categoria lo richiede. Disattivo di default. Solo per segnalanti anonimi via QR, non per operatori sul campo.",
         "no_check_list": "Nessuna checklist",
-        "check_list_hint": "Opzionale. La checklist collegata appare sul controllo QR.",
+        "check_list_hint": "Facoltativo. Crea checklist sotto Sedi (sezione Checklist). La checklist collegata appare sul QR della unit in Unit check.",
         "allow_unit_checks_hint": "Rilevante solo se la categoria consente i controlli unità. Disattivo di default; attiva per mostrare il riquadro Controllo unità sul QR dell’unità.",
         "external_id_hint": "Facoltativo. ID di questa unit nel vostro software facility esterno (IWMS, CMMS, ERP, …). Necessario per i unit check in ingresso via API."
     },
@@ -392,5 +392,8 @@
         "open": "Clicchi qui per modificare",
         "name": "Nome sede tradotto",
         "save": "Salva traduzione"
+    },
+    "checklists": {
+        "click_to_manage": "Clicca qui per gestire le checklist"
     }
 }

@@ -205,6 +205,10 @@
                 {
                     "label": "Coordonnées obligatoires",
                     "text": "Activez si les signalants anonymes via le QR de l’unité doivent indiquer prénom, nom et e-mail. Désactivé par défaut. Ne s’applique que si aussi activé sur l’unité. Ne concerne pas les agents de terrain connectés — ils sont déjà identifiés."
+                },
+                {
+                    "label": "Listes de contrôle",
+                    "text": "Sous Sites → Listes de contrôle, créez des modèles avec des points. Associez-les ensuite par unité. Les points doivent être cochés avant OK."
                 }
             ]
         },
@@ -1208,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Créez des checklists sous Contrôles d'unité → Checklists et attachez-les par unité via Sites. Chaque point doit être coché avant OK/Non OK."
+                    "text": "Créez des listes sous Sites → Listes de contrôle et associez-les par unité via Sites → modifier l’unité. Les points doivent être cochés avant OK."
                 },
                 {
                     "label": "OK et tâches ouvertes",

@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Solo si la categoría es Reservable. Desactivado por defecto; actívelo para permitir reservas en esta unidad.",
         "require_reporter_contact_hint": "Solo relevante si la categoría lo exige. Desactivado por defecto. Solo para informantes anónimos por QR, no para trabajadores de campo.",
         "no_check_list": "Sin lista",
-        "check_list_hint": "Opcional. La lista vinculada aparece en el chequeo del QR.",
+        "check_list_hint": "Opcional. Cree listas en Ubicaciones (sección Listas). La lista vinculada aparece en el QR de la unidad en Unit check.",
         "allow_unit_checks_hint": "Solo si la categoría permite comprobaciones de unidad. Desactivado por defecto; actívelo para mostrar la ficha Comprobación de unidad en el QR de la unidad.",
         "external_id_hint": "Opcional. ID de esta unidad en su software de facility externo (IWMS, GMAO, ERP, …). Necesario para comprobaciones unit entrantes vía API."
     },
@@ -392,5 +392,8 @@
         "open": "Haga clic aquí para editar",
         "name": "Nombre de ubicación traducido",
         "save": "Guardar traducción"
+    },
+    "checklists": {
+        "click_to_manage": "Haga clic aquí para gestionar las listas de comprobación"
     }
 }

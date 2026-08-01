@@ -272,7 +272,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "What are unit checks?",
-            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by workers (after Clock Point). Enable on category and unit first (off by default). Optional checklists per unit. History and filters under Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
+            "body": "Unit checks are quick OK/Not OK confirmations on the unit QR by workers (after Clock Point). Enable on category and unit first (off by default). Optional checklists per unit (manage under Locations → Checklists). History and filters under Unit checks; webhook unit.check.recorded for integrations. Separate from issues and ESG measurements.",
             "summary": "OK/Not OK via unit QR (enable category + unit); optional checklists; OK does not create an issue; webhook unit.check.recorded."
         }
     }

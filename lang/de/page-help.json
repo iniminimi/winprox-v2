@@ -205,6 +205,10 @@
                 {
                     "label": "Kontaktdaten Pflicht",
                     "text": "Aktivieren Sie dies, wenn anonyme Melder über den Unit-QR Vorname, Name und E-Mail angeben müssen. Standardmäßig aus. Wirkt nur, wenn auch an der Unit aktiviert. Gilt nicht für angemeldete Feldmitarbeiter — sie sind bereits bekannt."
+                },
+                {
+                    "label": "Checklisten",
+                    "text": "Unter Standorte → Checklisten erstellen Sie Vorlagen mit Punkten. Verknüpfen Sie sie danach pro Unit. Punkte müssen vor OK abgehakt sein."
                 }
             ]
         },
@@ -1208,7 +1212,7 @@
                 },
                 {
                     "label": "Checklisten",
-                    "text": "Checklisten unter Unit-Checks → Checklisten anlegen und pro Unit unter Standorte zuweisen. Punkte müssen vor OK/Nicht OK abgehakt werden."
+                    "text": "Erstellen Sie Checklisten unter Standorte → Checklisten und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten. Punkte müssen vor OK abgehakt werden."
                 },
                 {
                     "label": "OK und offene Aufgaben",

@@ -191,6 +191,10 @@
                     "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
                 },
                 {
+                    "label": "Listas de comprobación",
+                    "text": "En Ubicaciones → Listas cree plantillas con puntos. Luego vincúlelas por unidad. Los puntos deben marcarse antes de OK."
+                },
+                {
                     "label": "Traducciones de categoría",
                     "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
@@ -1208,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Cree checklists en Comprobaciones de unit → Checklists y asígnelas por unit en Ubicaciones. Los puntos deben marcarse antes de OK/No OK."
+                    "text": "Cree listas en Ubicaciones → Listas y vincúlelas por unidad en Ubicaciones → editar unidad. Los puntos deben marcarse antes de OK."
                 },
                 {
                     "label": "OK y tareas abiertas",

@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Only relevant when the category is Reservable. Off by default; turn on to allow reservations for this unit.",
         "require_reporter_contact_hint": "Only relevant when the category requires this. Off by default. Applies only to anonymous QR reporters, not field workers.",
         "no_check_list": "No checklist",
-        "check_list_hint": "Optional. The linked checklist appears on the unit QR Unit check.",
+        "check_list_hint": "Optional. Create checklists under Locations (Checklists disclosure). The linked checklist appears on the unit QR under Unit check.",
         "allow_unit_checks_hint": "Only relevant when the category allows unit checks. Off by default; turn on to show the Unit check tile on the unit QR.",
         "external_id_hint": "Optional. ID of this unit in your external facility software (IWMS, CMMS, ERP, …). Required for inbound unit checks via the API."
     },
@@ -392,5 +392,8 @@
         "open": "Click here to edit",
         "name": "Translated location name",
         "save": "Save translation"
+    },
+    "checklists": {
+        "click_to_manage": "Click here to manage checklists"
     }
 }

@@ -170,7 +170,7 @@
         "allow_reservations_hint": "Uniquement si la catégorie est Réservable. Désactivé par défaut ; activez pour autoriser les réservations pour cette unité.",
         "require_reporter_contact_hint": "Uniquement si la catégorie l’exige. Désactivé par défaut. S’applique seulement aux signalements QR anonymes, pas aux agents de terrain.",
         "no_check_list": "Aucune liste",
-        "check_list_hint": "Optionnel. La liste liée apparaît sur le QR unit.",
+        "check_list_hint": "Facultatif. Créez des listes sous Sites (section Listes de contrôle). La liste liée apparaît sur le QR unité sous Contrôle unit.",
         "allow_unit_checks_hint": "Uniquement si la catégorie autorise les contrôles d’unité. Désactivé par défaut ; activez pour afficher la tuile Contrôle d’unité sur le QR de l’unité.",
         "external_id_hint": "Facultatif. ID de cette unité dans votre logiciel facility externe (GMAO, IWMS, ERP, …). Requis pour les contrôles unit entrants via l'API."
     },
@@ -392,5 +392,8 @@
         "open": "Cliquez ici pour modifier",
         "name": "Nom de site traduit",
         "save": "Enregistrer la traduction"
+    },
+    "checklists": {
+        "click_to_manage": "Cliquez ici pour gérer les listes de contrôle"
     }
 }

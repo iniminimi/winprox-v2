@@ -367,10 +367,13 @@ de meldingenlijst te vervuilen. Los van ESG.
 ### Beheer (`/unit-checks`)
 - Historiek: tijdstip, resultaat, locatie/unit, uitvoerder/team, GPS-link.
 - Filters: resultaat, locatie. Admin + medewerker via Policy.
-- **Checklists:** templates met vinkpunten; koppelen aan unit via Locaties → unit bewerken.
-  Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
 - **Aan/uit:** Locaties → Categorieën (`allow_unit_checks`) én unit bewerken (`allow_unit_checks`);
   beide nodig, beide default uit.
+
+### Checklists (Locaties)
+- Templates met vinkpunten: Locaties → uitklap **Checklists** (onder Categorieën).
+- Koppelen aan unit via Locaties → unit bewerken.
+  Op de unit-QR verschijnen de vinkjes; bij **OK** moeten alle punten afgevinkt zijn.
 
 ### Dagelijks terugkeren
 - Interval-eenheid **dag** beschikbaar op terugkerende meldingen (naast week/maand/…).

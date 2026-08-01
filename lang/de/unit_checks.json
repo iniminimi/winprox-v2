@@ -1,6 +1,6 @@
 {
     "title": "Unit-Checks",
-    "subtitle": "Historie von OK / Nicht-OK-Checks via QR. Zuerst Unit-Checks an Kategorie und Unit aktivieren.",
+    "subtitle": "Historie der OK / Nicht-OK-Checks per QR. Checklisten verwalten Sie unter Standorte. Aktivieren Sie zuerst Unit-Checks an Kategorie und Unit.",
     "list_title": "Aktuelle Checks",
     "empty": "Noch keine Unit-Checks.",
     "worker_unknown": "Unbekannter Ausführender",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklisten",
-        "lead": "Checklisten anlegen und Units unter Standorte zuweisen (nachdem Unit-Checks an Kategorie und Unit aktiv sind). Auf dem Unit-QR erscheinen die Häkchen beim Unit-Check.",
+        "lead": "Erstellen Sie Checklisten hier und verknüpfen Sie sie pro Unit unter Standorte → Unit bearbeiten (nachdem Unit-Checks an Kategorie und Unit aktiviert sind). Auf dem Unit-QR erscheinen die Punkte bei Unit-Check.",
         "create": "Checkliste hinzufügen",
         "create_title": "Checkliste hinzufügen",
         "edit_title": "Checkliste bearbeiten",

@@ -1,6 +1,6 @@
 {
     "title": "Unit checks",
-    "subtitle": "Historiek van OK / Niet OK controles via QR. Schakel eerst Unit checks in op categorie én unit.",
+    "subtitle": "Historiek van OK / Niet OK controles via QR. Checklists beheer je onder Locaties. Schakel eerst Unit checks in op categorie én unit.",
     "list_title": "Recente checks",
     "empty": "Nog geen unit checks.",
     "worker_unknown": "Onbekende uitvoerder",
@@ -26,7 +26,7 @@
     },
     "lists": {
         "title": "Checklists",
-        "lead": "Maak checklists en koppel ze aan units via Locaties (nadat Unit checks op categorie én unit aanstaan). Op de unit-QR verschijnen de vinkjes bij Unit check.",
+        "lead": "Maak checklists hier en koppel ze per unit via Locaties → unit bewerken (nadat Unit checks op categorie én unit aanstaan). Op de unit-QR verschijnen de vinkjes bij Unit check.",
         "create": "Checklist toevoegen",
         "create_title": "Checklist toevoegen",
         "edit_title": "Checklist bewerken",

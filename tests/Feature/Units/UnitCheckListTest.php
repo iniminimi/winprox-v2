@@ -142,3 +142,23 @@ it('saves a unit check list via action', function () {
         ->and($list->items)->toHaveCount(2)
         ->and($list->items->pluck('label')->all())->toBe(['Parking', 'Nooddeur A']);
 });
+
+it('creates a checklist from the locations page', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = \App\Models\User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(\App\Livewire\Locations\Index::class)
+        ->call('openCreateCheckList')
+        ->set('checkListName', 'Security ronde')
+        ->set('checkListItemsText', "Parking\nNooddeur A")
+        ->set('checkListIsActive', true)
+        ->call('saveCheckList')
+        ->assertHasNoErrors()
+        ->assertSet('showCheckListModal', false);
+
+    $list = UnitCheckList::query()->where('name', 'Security ronde')->first();
+    expect($list)->not->toBeNull()
+        ->and($list->items)->toHaveCount(2);
+});

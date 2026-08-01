@@ -272,7 +272,7 @@
             "slug": "unit_checks",
             "type": "text",
             "title": "Wat zijn unit checks?",
-            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists per unit. Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
+            "body": "Unit checks zijn snelle OK/Niet OK-bevestigingen op de unit-QR door uitvoerders (na Clock Point). Schakel eerst in op categorie én unit (standaard uit). Optionele checklists per unit (beheer onder Locaties → Checklists). Historiek en filters in Unit checks; webhook unit.check.recorded voor integraties. Los van meldingen en ESG-metingen.",
             "summary": "OK/Niet OK via unit-QR (categorie + unit aan); checklists optioneel; geen melding bij OK; webhook unit.check.recorded."
         }
     }

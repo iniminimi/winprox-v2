@@ -191,6 +191,10 @@
                     "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
                 },
                 {
+                    "label": "Checklists",
+                    "text": "Onder Locaties → Checklists maak je templates met vinkpunten. Koppel daarna per unit via unit bewerken. Punten moeten afgevinkt zijn vóór OK."
+                },
+                {
                     "label": "Categorievertalingen",
                     "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
                 },
@@ -1208,7 +1212,7 @@
                 },
                 {
                     "label": "Checklists",
-                    "text": "Maak checklists onder Unit checks → Checklists en koppel ze per unit via Locaties. Punten moeten afgevinkt worden vóór OK/Niet OK."
+                    "text": "Maak checklists onder Locaties → Checklists en koppel ze per unit via Locaties → unit bewerken. Punten moeten afgevinkt worden vóór OK."
                 },
                 {
                     "label": "OK en open taken",

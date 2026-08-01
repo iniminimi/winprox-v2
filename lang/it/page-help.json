@@ -191,6 +191,10 @@
                     "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
                 },
                 {
+                    "label": "Checklist",
+                    "text": "In Sedi → Checklist crei template con punti. Poi collegali per unit. I punti devono essere spuntati prima di OK."
+                },
+                {
                     "label": "Traduzioni categoria",
                     "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
@@ -1208,7 +1212,7 @@
                 },
                 {
                     "label": "Checklist",
-                    "text": "Crea checklist in Controlli unità → Checklist e collegale per unit in Sedi. I punti vanno spuntati prima di OK/Non OK."
+                    "text": "Crea checklist in Sedi → Checklist e collegale per unit via Sedi → modifica unit. I punti devono essere spuntati prima di OK."
                 },
                 {
                     "label": "OK e task aperti",
