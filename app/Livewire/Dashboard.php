@@ -4,8 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
-use App\Enums\TaskStatus;
-use App\Models\Issue;
+use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Support\Admin\AdminHealthService;
 use App\Support\Dashboard\TopScannedUnitsService;
 use App\Support\Onboarding\TenantOnboardingState;
@@ -21,6 +20,7 @@ class Dashboard extends Component
     public function render(
         RealignSubscriptionPeriodAction $realign,
         BuildDashboardStatsAction $buildStats,
+        ListDashboardRecentIssuesAction $listRecentIssues,
         AdminHealthService $healthService,
         TopScannedUnitsService $topScannedUnits,
     ) {
@@ -34,18 +34,7 @@ class Dashboard extends Component
         $hasIotModule = $tenant?->hasIotModule() ?? false;
 
         $stats = $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
-
-        $recent = Issue::query()
-            ->where('status', '!=', TaskStatus::Closed->value)
-            ->with(['location', 'unit.translations', 'tasks.team', 'translations'])
-            ->get()
-            ->sortBy(fn ($issue) => [
-                $issue->status->sortOrder(),
-                $issue->tasks->min(fn ($t) => $t->priority?->sortOrder() ?? 99),
-                $issue->created_at->timestamp,
-            ])
-            ->take(5)
-            ->values();
+        $recent = $listRecentIssues->handle($tenantId);
 
         return view('livewire.dashboard', [
             'stats' => $stats,

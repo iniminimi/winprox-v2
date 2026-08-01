@@ -64,7 +64,7 @@ it('toont meldingen van een andere tenant niet op het dashboard', function () {
         ->assertDontSee('Melding van een andere tenant');
 });
 
-it('sorteert recente meldingen op status en prioriteit', function () {
+it('zet wacht-op-controle meldingen bovenaan en daarna de nieuwste', function () {
     $tenant = Tenant::factory()->create();
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
@@ -77,28 +77,36 @@ it('sorteert recente meldingen op status en prioriteit', function () {
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
     ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
 
-    $makeIssue = function (TaskStatus $status, TaskPriority $priority, string $description) use ($tenant) {
-        $issue = Issue::factory()->create([
+    $makeApproved = function (string $description, \Carbon\CarbonInterface $createdAt) use ($tenant) {
+        return Issue::factory()->create([
             'tenant_id' => $tenant->id,
-            'status' => $status,
+            'status' => TaskStatus::New,
             'approved_at' => now(),
             'description' => $description,
+            'created_at' => $createdAt,
+            'updated_at' => $createdAt,
         ]);
-
-        Task::factory()->create([
-            'tenant_id' => $tenant->id,
-            'issue_id' => $issue->id,
-            'status' => $status,
-            'priority' => $priority,
-        ]);
-
-        return $issue;
     };
 
-    $makeIssue(TaskStatus::Done, TaskPriority::Prio1, 'Afgehandeld prio 1');
-    $makeIssue(TaskStatus::InProgress, TaskPriority::Prio2, 'In uitvoering prio 2');
-    $makeIssue(TaskStatus::New, TaskPriority::Prio3, 'Nieuw prio 3');
-    $makeIssue(TaskStatus::New, TaskPriority::Prio1, 'Nieuw prio 1');
+    $makeApproved('Oudere goedgekeurd', now()->subDays(3));
+    $makeApproved('Nieuwere goedgekeurd', now()->subDay());
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => null,
+        'description' => 'Oudere wacht op controle',
+        'created_at' => now()->subHours(5),
+        'updated_at' => now()->subHours(5),
+    ]);
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'status' => TaskStatus::New,
+        'approved_at' => null,
+        'description' => 'Recente wacht op controle',
+        'created_at' => now()->subHour(),
+        'updated_at' => now()->subHour(),
+    ]);
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
@@ -111,10 +119,10 @@ it('sorteert recente meldingen op status en prioriteit', function () {
         ->test(Dashboard::class)
         ->assertDontSee('Gesloten verborgen')
         ->assertSeeInOrder([
-            'Nieuw prio 1',
-            'Nieuw prio 3',
-            'In uitvoering prio 2',
-            'Afgehandeld prio 1',
+            'Recente wacht op controle',
+            'Oudere wacht op controle',
+            'Nieuwere goedgekeurd',
+            'Oudere goedgekeurd',
         ]);
 });
 
