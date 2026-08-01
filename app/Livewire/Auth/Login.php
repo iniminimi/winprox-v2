@@ -18,13 +18,23 @@ class Login extends Component
 
     public bool $remember = false;
 
+    /** Bumps so the attention clip can refocus after each failed attempt. */
+    public int $attentionTick = 0;
+
     public function login()
     {
         $request = new LoginRequest;
 
-        $this->validate($request->rules(), $request->messages());
+        try {
+            $this->validate($request->rules(), $request->messages());
+        } catch (\Illuminate\Validation\ValidationException $exception) {
+            $this->attentionTick++;
+
+            throw $exception;
+        }
 
         if (! Auth::attempt(['email' => $this->email, 'password' => $this->password, 'is_active' => true], $this->remember)) {
+            $this->attentionTick++;
             $this->addError('email', __('auth.errors.failed'));
 
             return;
