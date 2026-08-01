@@ -27,7 +27,6 @@
                     <a href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
                     <a href="{{ route('product.technical') }}" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                     <a href="{{ route('product.api_webhooks') }}" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
-                    <a href="{{ route('api.public') }}" @if (request()->routeIs('api.public')) aria-current="page" @endif>{{ __('welcome.nav.api') }}</a>
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                 </div>
 
@@ -63,7 +62,6 @@
                             <a href="{{ route('product.features') }}" role="listitem" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
                             <a href="{{ route('product.technical') }}" role="listitem" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                             <a href="{{ route('product.api_webhooks') }}" role="listitem" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
-                            <a href="{{ route('api.public') }}" role="listitem" @if (request()->routeIs('api.public')) aria-current="page" @endif>{{ __('welcome.nav.api') }}</a>
                         </div>
                     </details>
                 </div>

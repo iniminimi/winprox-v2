@@ -64,7 +64,7 @@ class FeaturePage extends Component
         }
 
         $links[] = ['label' => __('features.shared.links.about'), 'url' => route('about')];
-        $links[] = ['label' => __('features.shared.links.api'), 'url' => route('api.public')];
+        $links[] = ['label' => __('features.shared.links.api'), 'url' => route('product.api_webhooks')];
         $links[] = ['label' => __('features.shared.links.faq'), 'url' => route('faq.public')];
         $links[] = ['label' => __('features.shared.links.pricing'), 'url' => route('pricing')];
 

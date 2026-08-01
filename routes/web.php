@@ -53,7 +53,6 @@ use App\Livewire\Pages\ManualIndex;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Pages\Pricing;
-use App\Livewire\Pages\PublicApi;
 use App\Livewire\Pages\PublicFaq;
 use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
@@ -173,7 +172,7 @@ Route::get('/promo', $redirectToLocalized('promo'));
 Route::get('/pricing', $redirectToLocalized('pricing'));
 Route::get('/contact', $redirectToLocalized('contact.index'));
 Route::get('/about', $redirectToLocalized('about'));
-Route::get('/api', $redirectToLocalized('api.public'));
+Route::get('/api', $redirectToLocalized('product.api_webhooks'));
 Route::get('/features/facility', $redirectToLocalized('features.facility'));
 Route::get('/features/time', $redirectToLocalized('features.time'));
 Route::get('/features/esg', $redirectToLocalized('features.esg'));
@@ -197,7 +196,9 @@ Route::prefix('{locale}')
         Route::get('/pricing', Pricing::class)->name('pricing');
         Route::get('/faq', PublicFaq::class)->name('faq.public');
         Route::get('/about', About::class)->name('about');
-        Route::get('/api', PublicApi::class)->name('api.public');
+        Route::get('/api', function (string $locale) {
+            return redirect()->route('product.api_webhooks', ['locale' => $locale], 301);
+        });
         Route::get('/features/facility', FeaturePage::class)->name('features.facility');
         Route::get('/features/time', FeaturePage::class)->name('features.time');
         Route::get('/features/esg', FeaturePage::class)->name('features.esg');

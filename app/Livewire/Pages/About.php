@@ -35,7 +35,7 @@ class About extends Component
             ['label' => __('about.links.esg'), 'url' => route('features.esg')],
             ['label' => __('about.links.iot'), 'url' => route('features.iot')],
             ['label' => __('about.links.qr'), 'url' => route('features.qr')],
-            ['label' => __('about.links.api'), 'url' => route('api.public')],
+            ['label' => __('about.links.api'), 'url' => route('product.api_webhooks')],
             ['label' => __('about.links.faq'), 'url' => route('faq.public')],
             ['label' => __('about.links.pricing'), 'url' => route('pricing')],
         ];

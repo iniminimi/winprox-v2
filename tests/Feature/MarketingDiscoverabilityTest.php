@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 use App\Support\Marketing\JsonLd;
 
-it('serveert about, api-intro en feature-pagina\'s met JSON-LD', function () {
+it('serveert about en feature-pagina\'s met JSON-LD', function () {
     $this->get(route('about', ['locale' => 'en']))
         ->assertOk()
         ->assertSee(__('about.title', [], 'en'))
         ->assertSee('"@type":"Organization"', false)
-        ->assertSee('"@type":"SoftwareApplication"', false);
-
-    $this->get(route('api.public', ['locale' => 'nl']))
-        ->assertOk()
-        ->assertSee(__('api_public.title', [], 'nl'))
         ->assertSee('"@type":"SoftwareApplication"', false);
 
     foreach (['facility', 'time', 'esg', 'qr'] as $slug) {
@@ -21,6 +16,15 @@ it('serveert about, api-intro en feature-pagina\'s met JSON-LD', function () {
             ->assertOk()
             ->assertSee(__('features.'.$slug.'.title', [], 'en'));
     }
+});
+
+it('redirect bare /api naar de API & Webhooks fiche', function () {
+    $this->withHeader('Accept-Language', 'nl-BE,nl;q=0.9')
+        ->get('/api')
+        ->assertRedirect();
+
+    $this->get('/nl/api')
+        ->assertRedirect(route('product.api_webhooks', ['locale' => 'nl']));
 });
 
 it('redirect bare marketing feature-URL\'s naar locale-prefix', function () {
@@ -52,10 +56,10 @@ it('toont FAQPage schema op publieke FAQ', function () {
         ->assertSee('"@type":"FAQPage"', false);
 });
 
-it('llms.txt bevat about en feature-URL\'s', function () {
+it('llms.txt bevat about, features en API & Webhooks fiche', function () {
     $this->get(route('llms.txt'))
         ->assertOk()
         ->assertSee(route('about', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('features.facility', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(route('api.public', ['locale' => 'en'], absolute: true), false);
+        ->assertSee(route('product.api_webhooks', ['locale' => 'en'], absolute: true), false);
 });

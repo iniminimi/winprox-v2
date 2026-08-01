@@ -21,7 +21,6 @@ final class MarketingSeo
             'contact.index',
             'faq.public',
             'about',
-            'api.public',
             'features.facility',
             'features.time',
             'features.esg',
