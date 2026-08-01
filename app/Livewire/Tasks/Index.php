@@ -79,7 +79,12 @@ class Index extends Component
             ->when($this->statusFilter === '', fn ($q) => $q->where('status', '!=', TaskStatus::Closed))
             ->when($this->priorityFilter !== '', fn ($q) => $q->where('priority', $this->priorityFilter))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
-            ->when($this->recurring, fn ($q) => $q->where('is_recurring_cycle', true))
+            ->when($this->recurring, function ($q) {
+                $q->where(function ($query) {
+                    $query->where('is_recurring_cycle', true)
+                        ->orWhereHas('issue', fn ($issue) => $issue->where('is_recurring', true));
+                });
+            })
             ->when(trim($this->search) !== '', function ($q) {
                 $term = '%'.trim($this->search).'%';
                 $q->where(function ($query) use ($term) {

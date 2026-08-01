@@ -144,6 +144,9 @@
                                     {{ $task->priority->label() }}
                                 </span>
                                 <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
+                                @if ($task->isRecurring())
+                                    <span class="wp-pill wp-pill--done">{{ __('tasks.card.recurring') }}</span>
+                                @endif
                                 <span class="wp-issue-card-title">{{ $teamName }}</span>
                             </div>
                             @if ($taskDescription !== '')

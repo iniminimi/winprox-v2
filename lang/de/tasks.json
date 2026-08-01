@@ -28,7 +28,7 @@
         "search": "Suchen",
         "search_placeholder": "Suche nach Notiz, Meldung, Standort, Adresse, PLZ, Ort oder Unit",
         "recurring": "Wiederkehrende Aufgabe",
-        "recurring_only": "Nur wiederkehrende Zyklen",
+        "recurring_only": "Nur wiederkehrende Aufgaben",
         "apply": "GO!",
         "reset": "Filter zurücksetzen",
         "hint": "Klicken Sie auf eine Aufgabe, um Details anzuzeigen und zu bearbeiten."
@@ -75,7 +75,11 @@
             "team_required": "Wählen Sie ein Team.",
             "issue_not_approved": "Die Meldung muss zuerst freigegeben werden, bevor Aufgaben bearbeitet werden können."
         },
-        "updates_hint": "Nur Notizen, Fotos und Statusaktionen dieser Aufgabe."
+        "updates_hint": "Nur Notizen, Fotos und Statusaktionen dieser Aufgabe.",
+        "recurring_title": "Wiederkehrende Aufgabe",
+        "recurring_cycle": "Zyklus #:nr",
+        "recurring_interval": "Intervall: alle :value :unit",
+        "recurring_next_due": "Nächster Zyklus: :date"
     },
     "errors": {
         "invalid_transition": "Diese Statusänderung ist nicht erlaubt.",

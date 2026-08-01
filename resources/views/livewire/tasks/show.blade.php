@@ -37,6 +37,9 @@
             @if ($issue)
                 <a href="{{ route('issues.show', $issue) }}" class="wp-muted">{{ __('tasks.card.issue_nr', ['nr' => $issue->id]) }}</a>
             @endif
+            @if ($task->isRecurring())
+                <span class="wp-pill wp-pill--done">{{ __('tasks.card.recurring') }}</span>
+            @endif
             <span class="wp-badge {{ $task->priority->badgeClass() }}">
                 <x-wp-icon :name="$task->priority->icon()" class="wp-icon wp-icon--sm" />
                 {{ $task->priority->label() }}
@@ -44,6 +47,24 @@
             <span class="wp-pill wp-pill--{{ $task->status->pillModifier() }}">{{ __($task->status->labelKey()) }}</span>
         </x-slot>
     </x-wp-entity-detail-head>
+
+    @if ($task->isRecurring())
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <p class="wp-section-title">{{ __('tasks.show.recurring_title') }}</p>
+            @if ($task->is_recurring_cycle)
+                <p class="wp-muted">{{ __('tasks.show.recurring_cycle', ['nr' => $task->cycle_number ?? 1]) }}</p>
+            @endif
+            @if ($issue?->recurrence_interval_value && $issue?->recurrence_interval_unit)
+                <p class="wp-muted">{{ __('tasks.show.recurring_interval', [
+                    'value' => $issue->recurrence_interval_value,
+                    'unit' => __('issues.create.unit_'.$issue->recurrence_interval_unit->value),
+                ]) }}</p>
+            @endif
+            @if ($issue?->recurrence_next_due_at)
+                <p class="wp-muted">{{ __('tasks.show.recurring_next_due', ['date' => $issue->recurrence_next_due_at->format('d-m-Y')]) }}</p>
+            @endif
+        </div>
+    @endif
 
     <div class="wp-card wp-card-pad wp-stack-tight">
         <div class="wp-row">

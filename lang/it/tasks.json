@@ -28,7 +28,7 @@
         "search": "Cerca",
         "search_placeholder": "Cerca per nota, segnalazione, sede, indirizzo, CAP, città o unità",
         "recurring": "Attività ricorrente",
-        "recurring_only": "Solo cicli ricorrenti",
+        "recurring_only": "Solo attività ricorrenti",
         "apply": "VAI!",
         "reset": "Cancella filtri",
         "hint": "Clicchi su un'attività per visualizzare e modificare i dettagli."
@@ -75,7 +75,11 @@
             "team_required": "Scelga un team.",
             "issue_not_approved": "La segnalazione deve essere approvata prima di poter modificare le attività."
         },
-        "updates_hint": "Solo note, foto e azioni di stato di questa attività."
+        "updates_hint": "Solo note, foto e azioni di stato di questa attività.",
+        "recurring_title": "Attività ricorrente",
+        "recurring_cycle": "Ciclo n. :nr",
+        "recurring_interval": "Intervallo: ogni :value :unit",
+        "recurring_next_due": "Prossimo ciclo: :date"
     },
     "errors": {
         "invalid_transition": "Questo cambio di stato non è consentito.",

@@ -28,7 +28,7 @@
         "search": "Rechercher",
         "search_placeholder": "Recherche par note, signalement, site, adresse, code postal, ville ou unité",
         "recurring": "Tâche récurrente",
-        "recurring_only": "Cycles récurrents uniquement",
+        "recurring_only": "Tâches récurrentes uniquement",
         "apply": "GO!",
         "reset": "Effacer les filtres",
         "hint": "Cliquez sur une tâche pour voir et modifier les détails."
@@ -75,7 +75,11 @@
             "team_required": "Choisissez une équipe.",
             "issue_not_approved": "Le signalement doit d'abord être validé avant de modifier les tâches."
         },
-        "updates_hint": "Uniquement les notes, photos et actions de statut de cette tâche."
+        "updates_hint": "Uniquement les notes, photos et actions de statut de cette tâche.",
+        "recurring_title": "Tâche récurrente",
+        "recurring_cycle": "Cycle n° :nr",
+        "recurring_interval": "Intervalle : toutes les :value :unit",
+        "recurring_next_due": "Prochain cycle : :date"
     },
     "errors": {
         "invalid_transition": "Ce changement de statut n'est pas autorisé.",

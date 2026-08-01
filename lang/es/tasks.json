@@ -28,7 +28,7 @@
         "search": "Buscar",
         "search_placeholder": "Buscar por nota, incidencia, ubicación, dirección, código postal, ciudad o unidad",
         "recurring": "Tarea recurrente",
-        "recurring_only": "Solo ciclos recurrentes",
+        "recurring_only": "Solo tareas recurrentes",
         "apply": "¡IR!",
         "reset": "Borrar filtros",
         "hint": "Haga clic en una tarea para ver y editar los detalles."
@@ -75,7 +75,11 @@
             "team_required": "Elija un equipo.",
             "issue_not_approved": "La incidencia debe estar aprobada antes de poder editar las tareas."
         },
-        "updates_hint": "Solo notas, fotos y acciones de estado de esta tarea."
+        "updates_hint": "Solo notas, fotos y acciones de estado de esta tarea.",
+        "recurring_title": "Tarea recurrente",
+        "recurring_cycle": "Ciclo n.º :nr",
+        "recurring_interval": "Intervalo: cada :value :unit",
+        "recurring_next_due": "Próximo ciclo: :date"
     },
     "errors": {
         "invalid_transition": "Este cambio de estado no está permitido.",

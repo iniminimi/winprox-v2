@@ -58,6 +58,18 @@ class Task extends Model
         return $this->belongsTo(Issue::class);
     }
 
+    /** Taak uit een terugkerende cyclus, of gekoppeld aan een terugkerende melding. */
+    public function isRecurring(): bool
+    {
+        if ($this->is_recurring_cycle) {
+            return true;
+        }
+
+        $this->loadMissing('issue');
+
+        return (bool) ($this->issue?->is_recurring);
+    }
+
     /** Afhandelingsnotities/foto's die bij deze taak horen (IssueUpdate met task_id). */
     public function updates(): HasMany
     {

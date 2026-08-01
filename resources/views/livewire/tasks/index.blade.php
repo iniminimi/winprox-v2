@@ -142,7 +142,7 @@
                                 @endif
                             </div>
                             <div class="wp-issue-row-meta">
-                                @if ($task->is_recurring_cycle)
+                                @if ($task->isRecurring())
                                     <span class="wp-pill wp-pill--done">{{ __('tasks.card.recurring') }}</span>
                                 @endif
                                 <span class="wp-badge {{ $task->priority->badgeClass() }}">
