@@ -4,6 +4,8 @@
 @endphp
 <div @class(['wp-stack', 'wp-time-presence-page', 'wp-time-presence-page--board' => $presenceView === \App\Enums\TimePresenceViewMode::Board]) wire:poll.visible.30s data-manual-capture="time-presence">
     <x-wp-page-head-title
+        :assistant-video="asset('video/assistant_time.mp4')"
+        assistant-video-loop
         :title="__('time.title')"
         help-page="time.presence"
         :subtitle="__('time.presence.subtitle')"

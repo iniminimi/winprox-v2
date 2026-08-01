@@ -14,7 +14,7 @@
     <button type="button"
             wire:click="setStatusFilter('all')"
             @class([
-                'wp-kpi wp-kpi--present_now wp-kpi--has-assistant',
+                'wp-kpi wp-kpi--present_now',
                 'wp-kpi--selected' => $statusFilter === TimePresenceStatusFilter::All,
             ])>
         <div class="wp-kpi-body">
@@ -25,18 +25,7 @@
                 </p>
             </div>
             <span class="wp-kpi-icon" aria-hidden="true">
-                <video
-                    class="wp-kpi-icon__video"
-                    src="{{ asset('video/assistant_time.mp4') }}"
-                    width="80"
-                    height="80"
-                    autoplay
-                    loop
-                    muted
-                    playsinline
-                    preload="auto"
-                    aria-hidden="true"
-                ></video>
+                <x-wp-icon name="clock" />
             </span>
         </div>
     </button>

@@ -1,6 +1,7 @@
 @props([
     'icon' => null,
     'assistantVideo' => null,
+    'assistantVideoLoop' => false,
     'title',
     'helpPage' => null,
     'subtitle' => null,
@@ -20,6 +21,7 @@
                 width="80"
                 height="80"
                 autoplay
+                @if ($assistantVideoLoop) loop @endif
                 muted
                 playsinline
                 preload="auto"

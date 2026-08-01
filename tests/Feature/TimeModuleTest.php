@@ -46,7 +46,8 @@ it('laat een admin het time-aanwezigheidsscherm openen', function () {
         ->get(route('time.presence.index'))
         ->assertOk()
         ->assertSee('video/assistant_time.mp4', false)
-        ->assertSee('wp-kpi--has-assistant', false);
+        ->assertSee('wp-page-icon--assistant', false)
+        ->assertDontSee('wp-kpi--has-assistant', false);
 });
 
 it('laadt afwezige werknemers in board-dashboard', function () {
