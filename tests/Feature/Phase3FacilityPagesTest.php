@@ -241,5 +241,7 @@ it('toont contact voor gasten', function () {
     $this->get(route('contact.index'))
         ->assertOk()
         ->assertSee('info@winprox.app')
-        ->assertSee(__('contact.title'));
+        ->assertSee(__('contact.title'))
+        ->assertSee('video/assistant.mp4', false)
+        ->assertSee('wp-contact-assistant__video', false);
 });

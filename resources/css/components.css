@@ -2283,6 +2283,32 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
     --wp-stack-gap: 1.25rem;
 }
 
+.wp-contact-view:not(.wp-contact-view--ready) {
+    visibility: hidden;
+}
+
+.wp-contact-view__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--wp-stack-gap, 1.25rem);
+}
+
+.wp-contact-assistant {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.wp-contact-assistant__video {
+    display: block;
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    background-color: #ffffff;
+    border-radius: var(--wp-radius-sm);
+    pointer-events: none;
+}
+
 .wp-contact-header {
     display: flex;
     flex-direction: row;
