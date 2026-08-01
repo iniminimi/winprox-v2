@@ -17,6 +17,7 @@ use App\Models\Unit;
 use App\Models\UnitCheck;
 use App\Models\UnitCheckList;
 use App\Models\UnitCheckListItem;
+use App\Models\UnitCheckListTranslation;
 use App\Models\Worker;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
@@ -219,13 +220,18 @@ it('deletes an unused checklist from the teams page', function () {
         'label' => 'Punt A',
         'sort_order' => 0,
     ]);
+    app(\App\Actions\Communication\EnsureUnitCheckListTranslationSlotsAction::class)->handle($list);
+
+    expect(UnitCheckListTranslation::query()->where('unit_check_list_id', $list->id)->count())->toBeGreaterThan(0);
 
     Livewire::actingAs($user)
         ->test(\App\Livewire\Pages\Team::class)
         ->call('deleteCheckList', $list->id)
         ->assertHasNoErrors();
 
-    expect(UnitCheckList::query()->whereKey($list->id)->exists())->toBeFalse();
+    expect(UnitCheckList::query()->whereKey($list->id)->exists())->toBeFalse()
+        ->and(UnitCheckListTranslation::query()->where('unit_check_list_id', $list->id)->count())->toBe(0)
+        ->and(UnitCheckListItem::query()->where('unit_check_list_id', $list->id)->count())->toBe(0);
 });
 
 it('refuses to delete a checklist that is linked to a unit', function () {
